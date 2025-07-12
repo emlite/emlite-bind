@@ -2,6 +2,7 @@ use emlite::FromVal;
 use std::marker::PhantomData;
 use std::ops::{Deref, DerefMut};
 
+/// Parameterised wrapper around a JavaScript array object.
 #[derive(Clone, Debug)]
 pub struct Sequence<T> {
     inner: emlite::Val,
@@ -23,6 +24,14 @@ impl<T> emlite::FromVal for Sequence<T> {
     }
 }
 
+impl<T> From<Sequence<T>> for emlite::Val {
+    fn from(x: Sequence<T>) -> emlite::Val {
+        let handle = x.inner.as_handle();
+        std::mem::forget(x);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
 impl<T> Deref for Sequence<T> {
     type Target = emlite::Val;
 
@@ -37,15 +46,9 @@ impl<T> DerefMut for Sequence<T> {
     }
 }
 
-impl<T> From<Sequence<T>> for emlite::Val {
-    fn from(x: Sequence<T>) -> emlite::Val {
-        let handle = x.inner.as_handle();
-        std::mem::forget(x);
-        emlite::Val::take_ownership(handle)
-    }
-}
-
 impl<T> Sequence<T> {
+    /// Construct a new JS array from a Rust slice, pushing each element
+    /// through `Into<Val>`.
     pub fn new_from_slice(slice: &[T]) -> Self
     where
         T: Clone + Into<emlite::Val>,
@@ -59,16 +62,19 @@ impl<T> Sequence<T> {
             phantom: PhantomData,
         }
     }
+
+    /// Number of elements (`array.length`).
     #[inline]
     pub fn len(&self) -> usize {
         self.inner.get("length").as_::<usize>()
     }
+    /// True when `len() == 0`.
     #[inline]
     pub fn is_empty(&self) -> bool {
         self.len() == 0
     }
 
-    /// Push a single element (JS `Array.prototype.push`).
+    /// Push a single element to the end of the array.
     pub fn push(&mut self, value: T)
     where
         T: Into<emlite::Val>,
@@ -76,7 +82,7 @@ impl<T> Sequence<T> {
         self.inner.call("push", &[value.into()]);
     }
 
-    /// Get a **copy** of the element at `idx`.
+    /// Return a copy of the element at `idx` converted to `T`.
     pub fn get(&self, idx: usize) -> T
     where
         T: FromVal,
@@ -133,7 +139,7 @@ impl<T> Sequence<T>
 where
     T: FromVal,
 {
-    /// Immutable iterator (mirrors the C++ `begin()/end()` pair).
+    /// Return an iterator over owned elements.
     pub fn iter(&self) -> SequenceIter<'_, T> {
         self.into_iter()
     }

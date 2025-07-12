@@ -2,6 +2,9 @@ use crate::utils::bind;
 
 macro_rules! declare_string {
     ($name:ident) => {
+        #[doc = concat!(
+                    "Wrapper for WebIDL `", stringify!($name), "`.\n\n"
+                )]
         #[derive(Clone)]
         pub struct $name {
             inner: emlite::Val,
@@ -22,16 +25,19 @@ macro_rules! declare_string {
         }
 
         impl $name {
+            /// Number of UTF‑8 bytes (same as `str::len()`).
             pub fn len(&self) -> usize {
                 self.as_str().len()
             }
+            /// `len() == 0` convenience.
             pub fn is_empty(&self) -> bool {
                 self.len() == 0
             }
+            /// Scalar lookup; returns `None` if index is out of bounds.
             pub fn char_at(&self, i: usize) -> Option<char> {
                 self.as_str().chars().nth(i)
             }
-
+            /// Borrow the JavaScript string as `&str` (UTF‑8 view).
             pub fn as_str(&self) -> &str {
                 self.inner.as_::<&str>()
             }

@@ -2,9 +2,14 @@ use emlite::FromVal;
 use std::marker::PhantomData;
 use std::ops::{Deref, DerefMut};
 
+/// Web‑IDL `record<K, V>` wrapper.
+#[derive(Clone, Debug)]
 pub struct Record<K, V> {
+    /// Underlying JavaScript object.
     inner: emlite::Val,
+    /// Marks the key type at compile‑time.
     phantom1: PhantomData<K>,
+    /// Marks the value type at compile‑time.
     phantom2: PhantomData<V>,
 }
 
@@ -24,6 +29,14 @@ impl<K, V> emlite::FromVal for Record<K, V> {
     }
 }
 
+impl<K, V> From<Record<K, V>> for emlite::Val {
+    fn from(x: Record<K, V>) -> emlite::Val {
+        let handle = x.inner.as_handle();
+        std::mem::forget(x);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
 impl<K, V> Deref for Record<K, V> {
     type Target = emlite::Val;
 
@@ -35,13 +48,5 @@ impl<K, V> Deref for Record<K, V> {
 impl<K, V> DerefMut for Record<K, V> {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
-    }
-}
-
-impl<K, V> From<Record<K, V>> for emlite::Val {
-    fn from(x: Record<K, V>) -> emlite::Val {
-        let handle = x.inner.as_handle();
-        std::mem::forget(x);
-        emlite::Val::take_ownership(handle)
     }
 }
