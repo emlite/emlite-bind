@@ -3,7 +3,7 @@ use crate::utils::bind;
 /// The struct merely carries the underlying `emlite::Val` so it can be
 /// passed through JS APIs; there is only one meaningful instance,
 /// exposed as [`Undefined::VALUE`].
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Undefined {
     inner: emlite::Val,
 }

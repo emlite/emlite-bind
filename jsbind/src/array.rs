@@ -40,7 +40,7 @@ pub type Float64Array = TypedArray<f64>;
 pub type Array = Sequence<Any>;
 
 /// A raw, fixed‑length buffer of bytes as defined by the ECMAScript spec.
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct ArrayBuffer {
     /// Underlying JavaScript value (always a `Promise` object in JS land).
     inner: emlite::Val,

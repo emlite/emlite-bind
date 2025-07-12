@@ -1,7 +1,7 @@
 use crate::utils::bind;
 
 /// Only a single instance has semantic meaning—see [`Null::VALUE`].
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct Null {
     inner: emlite::Val,
 }

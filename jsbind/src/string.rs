@@ -5,7 +5,7 @@ macro_rules! declare_string {
         #[doc = concat!(
                     "Wrapper for WebIDL `", stringify!($name), "`.\n\n"
                 )]
-        #[derive(Clone)]
+        #[derive(Clone, Debug)]
         pub struct $name {
             inner: emlite::Val,
         }
