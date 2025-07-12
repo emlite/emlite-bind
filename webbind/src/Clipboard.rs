@@ -1,0 +1,113 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct ClipboardUnsanitizedFormats {
+    inner: emlite::Val,
+}
+impl FromVal for ClipboardUnsanitizedFormats {
+    fn from_val(v: &emlite::Val) -> Self {
+        ClipboardUnsanitizedFormats { inner: v.clone() }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for ClipboardUnsanitizedFormats {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for ClipboardUnsanitizedFormats {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<ClipboardUnsanitizedFormats> for emlite::Val {
+    fn from(s: ClipboardUnsanitizedFormats) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl ClipboardUnsanitizedFormats {
+    pub fn unsanitized(&self) -> jsbind::Sequence<jsbind::DOMString> {
+        self.inner
+            .get("unsanitized")
+            .as_::<jsbind::Sequence<jsbind::DOMString>>()
+    }
+
+    pub fn set_unsanitized(&mut self, value: jsbind::Sequence<jsbind::DOMString>) {
+        self.inner.set("unsanitized", value);
+    }
+}
+#[derive(Clone, Debug)]
+pub struct Clipboard {
+    inner: EventTarget,
+}
+impl FromVal for Clipboard {
+    fn from_val(v: &emlite::Val) -> Self {
+        Clipboard {
+            inner: EventTarget::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for Clipboard {
+    type Target = EventTarget;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for Clipboard {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<Clipboard> for emlite::Val {
+    fn from(s: Clipboard) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl Clipboard {
+    pub fn read0(&self) -> jsbind::Promise {
+        self.inner.call("read", &[]).as_::<jsbind::Promise>()
+    }
+
+    pub fn read1(&self, formats: ClipboardUnsanitizedFormats) -> jsbind::Promise {
+        self.inner
+            .call("read", &[formats.into()])
+            .as_::<jsbind::Promise>()
+    }
+}
+impl Clipboard {
+    pub fn read_text(&self) -> jsbind::Promise {
+        self.inner.call("readText", &[]).as_::<jsbind::Promise>()
+    }
+}
+impl Clipboard {
+    pub fn write(&self, data: jsbind::Any) -> jsbind::Promise {
+        self.inner
+            .call("write", &[data.into()])
+            .as_::<jsbind::Promise>()
+    }
+}
+impl Clipboard {
+    pub fn write_text(&self, data: jsbind::DOMString) -> jsbind::Promise {
+        self.inner
+            .call("writeText", &[data.into()])
+            .as_::<jsbind::Promise>()
+    }
+}

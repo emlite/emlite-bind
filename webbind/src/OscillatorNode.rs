@@ -1,0 +1,81 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct OscillatorNode {
+    inner: AudioScheduledSourceNode,
+}
+impl FromVal for OscillatorNode {
+    fn from_val(v: &emlite::Val) -> Self {
+        OscillatorNode {
+            inner: AudioScheduledSourceNode::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for OscillatorNode {
+    type Target = AudioScheduledSourceNode;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for OscillatorNode {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<OscillatorNode> for emlite::Val {
+    fn from(s: OscillatorNode) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl OscillatorNode {
+    pub fn new0(context: BaseAudioContext) -> OscillatorNode {
+        Self {
+            inner: emlite::Val::global("OscillatorNode")
+                .new(&[context.into()])
+                .as_::<AudioScheduledSourceNode>(),
+        }
+    }
+
+    pub fn new1(context: BaseAudioContext, options: jsbind::Any) -> OscillatorNode {
+        Self {
+            inner: emlite::Val::global("OscillatorNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioScheduledSourceNode>(),
+        }
+    }
+}
+impl OscillatorNode {
+    pub fn type_(&self) -> OscillatorType {
+        self.inner.get("type").as_::<OscillatorType>()
+    }
+
+    pub fn set_type_(&mut self, value: OscillatorType) {
+        self.inner.set("type", value);
+    }
+}
+impl OscillatorNode {
+    pub fn frequency(&self) -> AudioParam {
+        self.inner.get("frequency").as_::<AudioParam>()
+    }
+}
+impl OscillatorNode {
+    pub fn detune(&self) -> AudioParam {
+        self.inner.get("detune").as_::<AudioParam>()
+    }
+}
+impl OscillatorNode {
+    pub fn set_periodic_wave(&self, periodic_wave: PeriodicWave) -> jsbind::Undefined {
+        self.inner
+            .call("setPeriodicWave", &[periodic_wave.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}

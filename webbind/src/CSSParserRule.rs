@@ -1,0 +1,37 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct CSSParserRule {
+    inner: emlite::Val,
+}
+impl FromVal for CSSParserRule {
+    fn from_val(v: &emlite::Val) -> Self {
+        CSSParserRule {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for CSSParserRule {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for CSSParserRule {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<CSSParserRule> for emlite::Val {
+    fn from(s: CSSParserRule) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}

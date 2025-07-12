@@ -1,0 +1,63 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct SequenceEffect {
+    inner: GroupEffect,
+}
+impl FromVal for SequenceEffect {
+    fn from_val(v: &emlite::Val) -> Self {
+        SequenceEffect {
+            inner: GroupEffect::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for SequenceEffect {
+    type Target = GroupEffect;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for SequenceEffect {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<SequenceEffect> for emlite::Val {
+    fn from(s: SequenceEffect) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl SequenceEffect {
+    pub fn new0(children: jsbind::Sequence<AnimationEffect>) -> SequenceEffect {
+        Self {
+            inner: emlite::Val::global("SequenceEffect")
+                .new(&[children.into()])
+                .as_::<GroupEffect>(),
+        }
+    }
+
+    pub fn new1(
+        children: jsbind::Sequence<AnimationEffect>,
+        timing: jsbind::Any,
+    ) -> SequenceEffect {
+        Self {
+            inner: emlite::Val::global("SequenceEffect")
+                .new(&[children.into(), timing.into()])
+                .as_::<GroupEffect>(),
+        }
+    }
+}
+impl SequenceEffect {
+    pub fn clone_(&self) -> SequenceEffect {
+        self.inner.call("clone", &[]).as_::<SequenceEffect>()
+    }
+}

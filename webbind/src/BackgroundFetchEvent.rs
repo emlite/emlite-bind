@@ -1,0 +1,54 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct BackgroundFetchEvent {
+    inner: ExtendableEvent,
+}
+impl FromVal for BackgroundFetchEvent {
+    fn from_val(v: &emlite::Val) -> Self {
+        BackgroundFetchEvent {
+            inner: ExtendableEvent::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for BackgroundFetchEvent {
+    type Target = ExtendableEvent;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for BackgroundFetchEvent {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<BackgroundFetchEvent> for emlite::Val {
+    fn from(s: BackgroundFetchEvent) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl BackgroundFetchEvent {
+    pub fn new(type_: jsbind::DOMString, init: jsbind::Any) -> BackgroundFetchEvent {
+        Self {
+            inner: emlite::Val::global("BackgroundFetchEvent")
+                .new(&[type_.into(), init.into()])
+                .as_::<ExtendableEvent>(),
+        }
+    }
+}
+impl BackgroundFetchEvent {
+    pub fn registration(&self) -> BackgroundFetchRegistration {
+        self.inner
+            .get("registration")
+            .as_::<BackgroundFetchRegistration>()
+    }
+}

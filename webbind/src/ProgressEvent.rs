@@ -1,0 +1,70 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct ProgressEvent {
+    inner: Event,
+}
+impl FromVal for ProgressEvent {
+    fn from_val(v: &emlite::Val) -> Self {
+        ProgressEvent {
+            inner: Event::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for ProgressEvent {
+    type Target = Event;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for ProgressEvent {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<ProgressEvent> for emlite::Val {
+    fn from(s: ProgressEvent) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl ProgressEvent {
+    pub fn new0(type_: jsbind::DOMString) -> ProgressEvent {
+        Self {
+            inner: emlite::Val::global("ProgressEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
+        }
+    }
+
+    pub fn new1(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> ProgressEvent {
+        Self {
+            inner: emlite::Val::global("ProgressEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
+    }
+}
+impl ProgressEvent {
+    pub fn length_computable(&self) -> bool {
+        self.inner.get("lengthComputable").as_::<bool>()
+    }
+}
+impl ProgressEvent {
+    pub fn loaded(&self) -> f64 {
+        self.inner.get("loaded").as_::<f64>()
+    }
+}
+impl ProgressEvent {
+    pub fn total(&self) -> f64 {
+        self.inner.get("total").as_::<f64>()
+    }
+}

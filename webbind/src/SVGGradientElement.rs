@@ -1,0 +1,64 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct SVGGradientElement {
+    inner: SVGElement,
+}
+impl FromVal for SVGGradientElement {
+    fn from_val(v: &emlite::Val) -> Self {
+        SVGGradientElement {
+            inner: SVGElement::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for SVGGradientElement {
+    type Target = SVGElement;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for SVGGradientElement {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<SVGGradientElement> for emlite::Val {
+    fn from(s: SVGGradientElement) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl SVGGradientElement {
+    pub fn gradient_units(&self) -> SVGAnimatedEnumeration {
+        self.inner
+            .get("gradientUnits")
+            .as_::<SVGAnimatedEnumeration>()
+    }
+}
+impl SVGGradientElement {
+    pub fn gradient_transform(&self) -> SVGAnimatedTransformList {
+        self.inner
+            .get("gradientTransform")
+            .as_::<SVGAnimatedTransformList>()
+    }
+}
+impl SVGGradientElement {
+    pub fn spread_method(&self) -> SVGAnimatedEnumeration {
+        self.inner
+            .get("spreadMethod")
+            .as_::<SVGAnimatedEnumeration>()
+    }
+}
+impl SVGGradientElement {
+    pub fn href(&self) -> SVGAnimatedString {
+        self.inner.get("href").as_::<SVGAnimatedString>()
+    }
+}

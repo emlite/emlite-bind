@@ -1,0 +1,74 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct HTMLFontElement {
+    inner: HTMLElement,
+}
+impl FromVal for HTMLFontElement {
+    fn from_val(v: &emlite::Val) -> Self {
+        HTMLFontElement {
+            inner: HTMLElement::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for HTMLFontElement {
+    type Target = HTMLElement;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for HTMLFontElement {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<HTMLFontElement> for emlite::Val {
+    fn from(s: HTMLFontElement) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl HTMLFontElement {
+    pub fn new() -> HTMLFontElement {
+        Self {
+            inner: emlite::Val::global("HTMLFontElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLFontElement {
+    pub fn color(&self) -> jsbind::DOMString {
+        self.inner.get("color").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_color(&mut self, value: jsbind::DOMString) {
+        self.inner.set("color", value);
+    }
+}
+impl HTMLFontElement {
+    pub fn face(&self) -> jsbind::DOMString {
+        self.inner.get("face").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_face(&mut self, value: jsbind::DOMString) {
+        self.inner.set("face", value);
+    }
+}
+impl HTMLFontElement {
+    pub fn size(&self) -> jsbind::DOMString {
+        self.inner.get("size").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_size(&mut self, value: jsbind::DOMString) {
+        self.inner.set("size", value);
+    }
+}

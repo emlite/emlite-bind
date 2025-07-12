@@ -1,0 +1,43 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct PresentationReceiver {
+    inner: emlite::Val,
+}
+impl FromVal for PresentationReceiver {
+    fn from_val(v: &emlite::Val) -> Self {
+        PresentationReceiver {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for PresentationReceiver {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for PresentationReceiver {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<PresentationReceiver> for emlite::Val {
+    fn from(s: PresentationReceiver) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl PresentationReceiver {
+    pub fn connection_list(&self) -> jsbind::Promise {
+        self.inner.get("connectionList").as_::<jsbind::Promise>()
+    }
+}

@@ -1,0 +1,48 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct SVGAnimatedRect {
+    inner: emlite::Val,
+}
+impl FromVal for SVGAnimatedRect {
+    fn from_val(v: &emlite::Val) -> Self {
+        SVGAnimatedRect {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for SVGAnimatedRect {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for SVGAnimatedRect {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<SVGAnimatedRect> for emlite::Val {
+    fn from(s: SVGAnimatedRect) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl SVGAnimatedRect {
+    pub fn base_val(&self) -> DOMRect {
+        self.inner.get("baseVal").as_::<DOMRect>()
+    }
+}
+impl SVGAnimatedRect {
+    pub fn anim_val(&self) -> DOMRectReadOnly {
+        self.inner.get("animVal").as_::<DOMRectReadOnly>()
+    }
+}

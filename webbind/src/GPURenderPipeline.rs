@@ -1,0 +1,54 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct GPURenderPipeline {
+    inner: emlite::Val,
+}
+impl FromVal for GPURenderPipeline {
+    fn from_val(v: &emlite::Val) -> Self {
+        GPURenderPipeline {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for GPURenderPipeline {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for GPURenderPipeline {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<GPURenderPipeline> for emlite::Val {
+    fn from(s: GPURenderPipeline) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl GPURenderPipeline {
+    pub fn label(&self) -> jsbind::USVString {
+        self.inner.get("label").as_::<jsbind::USVString>()
+    }
+
+    pub fn set_label(&mut self, value: jsbind::USVString) {
+        self.inner.set("label", value);
+    }
+}
+impl GPURenderPipeline {
+    pub fn get_bind_group_layout(&self, index: u32) -> GPUBindGroupLayout {
+        self.inner
+            .call("getBindGroupLayout", &[index.into()])
+            .as_::<GPUBindGroupLayout>()
+    }
+}

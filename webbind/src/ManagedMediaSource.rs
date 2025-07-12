@@ -1,0 +1,70 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct ManagedMediaSource {
+    inner: MediaSource,
+}
+impl FromVal for ManagedMediaSource {
+    fn from_val(v: &emlite::Val) -> Self {
+        ManagedMediaSource {
+            inner: MediaSource::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for ManagedMediaSource {
+    type Target = MediaSource;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for ManagedMediaSource {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<ManagedMediaSource> for emlite::Val {
+    fn from(s: ManagedMediaSource) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl ManagedMediaSource {
+    pub fn new() -> ManagedMediaSource {
+        Self {
+            inner: emlite::Val::global("ManagedMediaSource")
+                .new(&[])
+                .as_::<MediaSource>(),
+        }
+    }
+}
+impl ManagedMediaSource {
+    pub fn streaming(&self) -> bool {
+        self.inner.get("streaming").as_::<bool>()
+    }
+}
+impl ManagedMediaSource {
+    pub fn onstartstreaming(&self) -> jsbind::Any {
+        self.inner.get("onstartstreaming").as_::<jsbind::Any>()
+    }
+
+    pub fn set_onstartstreaming(&mut self, value: jsbind::Any) {
+        self.inner.set("onstartstreaming", value);
+    }
+}
+impl ManagedMediaSource {
+    pub fn onendstreaming(&self) -> jsbind::Any {
+        self.inner.get("onendstreaming").as_::<jsbind::Any>()
+    }
+
+    pub fn set_onendstreaming(&mut self, value: jsbind::Any) {
+        self.inner.set("onendstreaming", value);
+    }
+}

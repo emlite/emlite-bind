@@ -1,0 +1,48 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct Lock {
+    inner: emlite::Val,
+}
+impl FromVal for Lock {
+    fn from_val(v: &emlite::Val) -> Self {
+        Lock {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for Lock {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for Lock {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<Lock> for emlite::Val {
+    fn from(s: Lock) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl Lock {
+    pub fn name(&self) -> jsbind::DOMString {
+        self.inner.get("name").as_::<jsbind::DOMString>()
+    }
+}
+impl Lock {
+    pub fn mode(&self) -> LockMode {
+        self.inner.get("mode").as_::<LockMode>()
+    }
+}

@@ -1,0 +1,80 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct ErrorEvent {
+    inner: Event,
+}
+impl FromVal for ErrorEvent {
+    fn from_val(v: &emlite::Val) -> Self {
+        ErrorEvent {
+            inner: Event::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for ErrorEvent {
+    type Target = Event;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for ErrorEvent {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<ErrorEvent> for emlite::Val {
+    fn from(s: ErrorEvent) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl ErrorEvent {
+    pub fn new0(type_: jsbind::DOMString) -> ErrorEvent {
+        Self {
+            inner: emlite::Val::global("ErrorEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
+        }
+    }
+
+    pub fn new1(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> ErrorEvent {
+        Self {
+            inner: emlite::Val::global("ErrorEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
+    }
+}
+impl ErrorEvent {
+    pub fn message(&self) -> jsbind::DOMString {
+        self.inner.get("message").as_::<jsbind::DOMString>()
+    }
+}
+impl ErrorEvent {
+    pub fn filename(&self) -> jsbind::USVString {
+        self.inner.get("filename").as_::<jsbind::USVString>()
+    }
+}
+impl ErrorEvent {
+    pub fn lineno(&self) -> u32 {
+        self.inner.get("lineno").as_::<u32>()
+    }
+}
+impl ErrorEvent {
+    pub fn colno(&self) -> u32 {
+        self.inner.get("colno").as_::<u32>()
+    }
+}
+impl ErrorEvent {
+    pub fn error(&self) -> jsbind::Any {
+        self.inner.get("error").as_::<jsbind::Any>()
+    }
+}

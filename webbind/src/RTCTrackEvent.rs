@@ -1,0 +1,69 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct RTCTrackEvent {
+    inner: Event,
+}
+impl FromVal for RTCTrackEvent {
+    fn from_val(v: &emlite::Val) -> Self {
+        RTCTrackEvent {
+            inner: Event::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for RTCTrackEvent {
+    type Target = Event;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for RTCTrackEvent {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<RTCTrackEvent> for emlite::Val {
+    fn from(s: RTCTrackEvent) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl RTCTrackEvent {
+    pub fn new(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> RTCTrackEvent {
+        Self {
+            inner: emlite::Val::global("RTCTrackEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
+    }
+}
+impl RTCTrackEvent {
+    pub fn receiver(&self) -> RTCRtpReceiver {
+        self.inner.get("receiver").as_::<RTCRtpReceiver>()
+    }
+}
+impl RTCTrackEvent {
+    pub fn track(&self) -> MediaStreamTrack {
+        self.inner.get("track").as_::<MediaStreamTrack>()
+    }
+}
+impl RTCTrackEvent {
+    pub fn streams(&self) -> jsbind::FrozenArray<MediaStream> {
+        self.inner
+            .get("streams")
+            .as_::<jsbind::FrozenArray<MediaStream>>()
+    }
+}
+impl RTCTrackEvent {
+    pub fn transceiver(&self) -> RTCRtpTransceiver {
+        self.inner.get("transceiver").as_::<RTCRtpTransceiver>()
+    }
+}

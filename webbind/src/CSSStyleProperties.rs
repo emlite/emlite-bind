@@ -1,0 +1,47 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct CSSStyleProperties {
+    inner: CSSStyleDeclaration,
+}
+impl FromVal for CSSStyleProperties {
+    fn from_val(v: &emlite::Val) -> Self {
+        CSSStyleProperties {
+            inner: CSSStyleDeclaration::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for CSSStyleProperties {
+    type Target = CSSStyleDeclaration;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for CSSStyleProperties {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<CSSStyleProperties> for emlite::Val {
+    fn from(s: CSSStyleProperties) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl CSSStyleProperties {
+    pub fn css_float(&self) -> jsbind::CSSOMString {
+        self.inner.get("cssFloat").as_::<jsbind::CSSOMString>()
+    }
+
+    pub fn set_css_float(&mut self, value: jsbind::CSSOMString) {
+        self.inner.set("cssFloat", value);
+    }
+}

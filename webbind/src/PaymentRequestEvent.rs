@@ -1,0 +1,676 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct PaymentMethodData {
+    inner: emlite::Val,
+}
+impl FromVal for PaymentMethodData {
+    fn from_val(v: &emlite::Val) -> Self {
+        PaymentMethodData { inner: v.clone() }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for PaymentMethodData {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for PaymentMethodData {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<PaymentMethodData> for emlite::Val {
+    fn from(s: PaymentMethodData) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl PaymentMethodData {
+    pub fn supported_methods(&self) -> jsbind::DOMString {
+        self.inner
+            .get("supportedMethods")
+            .as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_supported_methods(&mut self, value: jsbind::DOMString) {
+        self.inner.set("supportedMethods", value);
+    }
+}
+impl PaymentMethodData {
+    pub fn data(&self) -> jsbind::Object {
+        self.inner.get("data").as_::<jsbind::Object>()
+    }
+
+    pub fn set_data(&mut self, value: jsbind::Object) {
+        self.inner.set("data", value);
+    }
+}
+#[derive(Clone, Debug)]
+pub struct PaymentDetailsModifier {
+    inner: emlite::Val,
+}
+impl FromVal for PaymentDetailsModifier {
+    fn from_val(v: &emlite::Val) -> Self {
+        PaymentDetailsModifier { inner: v.clone() }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for PaymentDetailsModifier {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for PaymentDetailsModifier {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<PaymentDetailsModifier> for emlite::Val {
+    fn from(s: PaymentDetailsModifier) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl PaymentDetailsModifier {
+    pub fn supported_methods(&self) -> jsbind::DOMString {
+        self.inner
+            .get("supportedMethods")
+            .as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_supported_methods(&mut self, value: jsbind::DOMString) {
+        self.inner.set("supportedMethods", value);
+    }
+}
+impl PaymentDetailsModifier {
+    pub fn total(&self) -> jsbind::Any {
+        self.inner.get("total").as_::<jsbind::Any>()
+    }
+
+    pub fn set_total(&mut self, value: jsbind::Any) {
+        self.inner.set("total", value);
+    }
+}
+impl PaymentDetailsModifier {
+    pub fn additional_display_items(&self) -> jsbind::Sequence<jsbind::Any> {
+        self.inner
+            .get("additionalDisplayItems")
+            .as_::<jsbind::Sequence<jsbind::Any>>()
+    }
+
+    pub fn set_additional_display_items(&mut self, value: jsbind::Sequence<jsbind::Any>) {
+        self.inner.set("additionalDisplayItems", value);
+    }
+}
+impl PaymentDetailsModifier {
+    pub fn data(&self) -> jsbind::Object {
+        self.inner.get("data").as_::<jsbind::Object>()
+    }
+
+    pub fn set_data(&mut self, value: jsbind::Object) {
+        self.inner.set("data", value);
+    }
+}
+#[derive(Clone, Debug)]
+pub struct PaymentShippingOption {
+    inner: emlite::Val,
+}
+impl FromVal for PaymentShippingOption {
+    fn from_val(v: &emlite::Val) -> Self {
+        PaymentShippingOption { inner: v.clone() }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for PaymentShippingOption {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for PaymentShippingOption {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<PaymentShippingOption> for emlite::Val {
+    fn from(s: PaymentShippingOption) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl PaymentShippingOption {
+    pub fn id(&self) -> jsbind::DOMString {
+        self.inner.get("id").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_id(&mut self, value: jsbind::DOMString) {
+        self.inner.set("id", value);
+    }
+}
+impl PaymentShippingOption {
+    pub fn label(&self) -> jsbind::DOMString {
+        self.inner.get("label").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_label(&mut self, value: jsbind::DOMString) {
+        self.inner.set("label", value);
+    }
+}
+impl PaymentShippingOption {
+    pub fn amount(&self) -> jsbind::Any {
+        self.inner.get("amount").as_::<jsbind::Any>()
+    }
+
+    pub fn set_amount(&mut self, value: jsbind::Any) {
+        self.inner.set("amount", value);
+    }
+}
+impl PaymentShippingOption {
+    pub fn selected(&self) -> bool {
+        self.inner.get("selected").as_::<bool>()
+    }
+
+    pub fn set_selected(&mut self, value: bool) {
+        self.inner.set("selected", value);
+    }
+}
+#[derive(Clone, Debug)]
+pub struct PaymentRequestDetailsUpdate {
+    inner: emlite::Val,
+}
+impl FromVal for PaymentRequestDetailsUpdate {
+    fn from_val(v: &emlite::Val) -> Self {
+        PaymentRequestDetailsUpdate { inner: v.clone() }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for PaymentRequestDetailsUpdate {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for PaymentRequestDetailsUpdate {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<PaymentRequestDetailsUpdate> for emlite::Val {
+    fn from(s: PaymentRequestDetailsUpdate) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl PaymentRequestDetailsUpdate {
+    pub fn error(&self) -> jsbind::DOMString {
+        self.inner.get("error").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_error(&mut self, value: jsbind::DOMString) {
+        self.inner.set("error", value);
+    }
+}
+impl PaymentRequestDetailsUpdate {
+    pub fn total(&self) -> jsbind::Any {
+        self.inner.get("total").as_::<jsbind::Any>()
+    }
+
+    pub fn set_total(&mut self, value: jsbind::Any) {
+        self.inner.set("total", value);
+    }
+}
+impl PaymentRequestDetailsUpdate {
+    pub fn modifiers(&self) -> jsbind::Sequence<PaymentDetailsModifier> {
+        self.inner
+            .get("modifiers")
+            .as_::<jsbind::Sequence<PaymentDetailsModifier>>()
+    }
+
+    pub fn set_modifiers(&mut self, value: jsbind::Sequence<PaymentDetailsModifier>) {
+        self.inner.set("modifiers", value);
+    }
+}
+impl PaymentRequestDetailsUpdate {
+    pub fn shipping_options(&self) -> jsbind::Sequence<PaymentShippingOption> {
+        self.inner
+            .get("shippingOptions")
+            .as_::<jsbind::Sequence<PaymentShippingOption>>()
+    }
+
+    pub fn set_shipping_options(&mut self, value: jsbind::Sequence<PaymentShippingOption>) {
+        self.inner.set("shippingOptions", value);
+    }
+}
+impl PaymentRequestDetailsUpdate {
+    pub fn payment_method_errors(&self) -> jsbind::Object {
+        self.inner
+            .get("paymentMethodErrors")
+            .as_::<jsbind::Object>()
+    }
+
+    pub fn set_payment_method_errors(&mut self, value: jsbind::Object) {
+        self.inner.set("paymentMethodErrors", value);
+    }
+}
+impl PaymentRequestDetailsUpdate {
+    pub fn shipping_address_errors(&self) -> jsbind::Any {
+        self.inner.get("shippingAddressErrors").as_::<jsbind::Any>()
+    }
+
+    pub fn set_shipping_address_errors(&mut self, value: jsbind::Any) {
+        self.inner.set("shippingAddressErrors", value);
+    }
+}
+#[derive(Clone, Debug)]
+pub struct AddressInit {
+    inner: emlite::Val,
+}
+impl FromVal for AddressInit {
+    fn from_val(v: &emlite::Val) -> Self {
+        AddressInit { inner: v.clone() }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for AddressInit {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for AddressInit {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<AddressInit> for emlite::Val {
+    fn from(s: AddressInit) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl AddressInit {
+    pub fn country(&self) -> jsbind::DOMString {
+        self.inner.get("country").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_country(&mut self, value: jsbind::DOMString) {
+        self.inner.set("country", value);
+    }
+}
+impl AddressInit {
+    pub fn address_line(&self) -> jsbind::Sequence<jsbind::DOMString> {
+        self.inner
+            .get("addressLine")
+            .as_::<jsbind::Sequence<jsbind::DOMString>>()
+    }
+
+    pub fn set_address_line(&mut self, value: jsbind::Sequence<jsbind::DOMString>) {
+        self.inner.set("addressLine", value);
+    }
+}
+impl AddressInit {
+    pub fn region(&self) -> jsbind::DOMString {
+        self.inner.get("region").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_region(&mut self, value: jsbind::DOMString) {
+        self.inner.set("region", value);
+    }
+}
+impl AddressInit {
+    pub fn city(&self) -> jsbind::DOMString {
+        self.inner.get("city").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_city(&mut self, value: jsbind::DOMString) {
+        self.inner.set("city", value);
+    }
+}
+impl AddressInit {
+    pub fn dependent_locality(&self) -> jsbind::DOMString {
+        self.inner
+            .get("dependentLocality")
+            .as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_dependent_locality(&mut self, value: jsbind::DOMString) {
+        self.inner.set("dependentLocality", value);
+    }
+}
+impl AddressInit {
+    pub fn postal_code(&self) -> jsbind::DOMString {
+        self.inner.get("postalCode").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_postal_code(&mut self, value: jsbind::DOMString) {
+        self.inner.set("postalCode", value);
+    }
+}
+impl AddressInit {
+    pub fn sorting_code(&self) -> jsbind::DOMString {
+        self.inner.get("sortingCode").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_sorting_code(&mut self, value: jsbind::DOMString) {
+        self.inner.set("sortingCode", value);
+    }
+}
+impl AddressInit {
+    pub fn organization(&self) -> jsbind::DOMString {
+        self.inner.get("organization").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_organization(&mut self, value: jsbind::DOMString) {
+        self.inner.set("organization", value);
+    }
+}
+impl AddressInit {
+    pub fn recipient(&self) -> jsbind::DOMString {
+        self.inner.get("recipient").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_recipient(&mut self, value: jsbind::DOMString) {
+        self.inner.set("recipient", value);
+    }
+}
+impl AddressInit {
+    pub fn phone(&self) -> jsbind::DOMString {
+        self.inner.get("phone").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_phone(&mut self, value: jsbind::DOMString) {
+        self.inner.set("phone", value);
+    }
+}
+#[derive(Clone, Debug)]
+pub struct PaymentHandlerResponse {
+    inner: emlite::Val,
+}
+impl FromVal for PaymentHandlerResponse {
+    fn from_val(v: &emlite::Val) -> Self {
+        PaymentHandlerResponse { inner: v.clone() }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for PaymentHandlerResponse {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for PaymentHandlerResponse {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<PaymentHandlerResponse> for emlite::Val {
+    fn from(s: PaymentHandlerResponse) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl PaymentHandlerResponse {
+    pub fn method_name(&self) -> jsbind::DOMString {
+        self.inner.get("methodName").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_method_name(&mut self, value: jsbind::DOMString) {
+        self.inner.set("methodName", value);
+    }
+}
+impl PaymentHandlerResponse {
+    pub fn details(&self) -> jsbind::Object {
+        self.inner.get("details").as_::<jsbind::Object>()
+    }
+
+    pub fn set_details(&mut self, value: jsbind::Object) {
+        self.inner.set("details", value);
+    }
+}
+impl PaymentHandlerResponse {
+    pub fn payer_name(&self) -> jsbind::DOMString {
+        self.inner.get("payerName").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_payer_name(&mut self, value: jsbind::DOMString) {
+        self.inner.set("payerName", value);
+    }
+}
+impl PaymentHandlerResponse {
+    pub fn payer_email(&self) -> jsbind::DOMString {
+        self.inner.get("payerEmail").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_payer_email(&mut self, value: jsbind::DOMString) {
+        self.inner.set("payerEmail", value);
+    }
+}
+impl PaymentHandlerResponse {
+    pub fn payer_phone(&self) -> jsbind::DOMString {
+        self.inner.get("payerPhone").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_payer_phone(&mut self, value: jsbind::DOMString) {
+        self.inner.set("payerPhone", value);
+    }
+}
+impl PaymentHandlerResponse {
+    pub fn shipping_address(&self) -> AddressInit {
+        self.inner.get("shippingAddress").as_::<AddressInit>()
+    }
+
+    pub fn set_shipping_address(&mut self, value: AddressInit) {
+        self.inner.set("shippingAddress", value);
+    }
+}
+impl PaymentHandlerResponse {
+    pub fn shipping_option(&self) -> jsbind::DOMString {
+        self.inner.get("shippingOption").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_shipping_option(&mut self, value: jsbind::DOMString) {
+        self.inner.set("shippingOption", value);
+    }
+}
+#[derive(Clone, Debug)]
+pub struct PaymentRequestEvent {
+    inner: ExtendableEvent,
+}
+impl FromVal for PaymentRequestEvent {
+    fn from_val(v: &emlite::Val) -> Self {
+        PaymentRequestEvent {
+            inner: ExtendableEvent::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for PaymentRequestEvent {
+    type Target = ExtendableEvent;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for PaymentRequestEvent {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<PaymentRequestEvent> for emlite::Val {
+    fn from(s: PaymentRequestEvent) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl PaymentRequestEvent {
+    pub fn new0(type_: jsbind::DOMString) -> PaymentRequestEvent {
+        Self {
+            inner: emlite::Val::global("PaymentRequestEvent")
+                .new(&[type_.into()])
+                .as_::<ExtendableEvent>(),
+        }
+    }
+
+    pub fn new1(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> PaymentRequestEvent {
+        Self {
+            inner: emlite::Val::global("PaymentRequestEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<ExtendableEvent>(),
+        }
+    }
+}
+impl PaymentRequestEvent {
+    pub fn top_origin(&self) -> jsbind::USVString {
+        self.inner.get("topOrigin").as_::<jsbind::USVString>()
+    }
+}
+impl PaymentRequestEvent {
+    pub fn payment_request_origin(&self) -> jsbind::USVString {
+        self.inner
+            .get("paymentRequestOrigin")
+            .as_::<jsbind::USVString>()
+    }
+}
+impl PaymentRequestEvent {
+    pub fn payment_request_id(&self) -> jsbind::DOMString {
+        self.inner
+            .get("paymentRequestId")
+            .as_::<jsbind::DOMString>()
+    }
+}
+impl PaymentRequestEvent {
+    pub fn method_data(&self) -> jsbind::FrozenArray<PaymentMethodData> {
+        self.inner
+            .get("methodData")
+            .as_::<jsbind::FrozenArray<PaymentMethodData>>()
+    }
+}
+impl PaymentRequestEvent {
+    pub fn total(&self) -> jsbind::Object {
+        self.inner.get("total").as_::<jsbind::Object>()
+    }
+}
+impl PaymentRequestEvent {
+    pub fn modifiers(&self) -> jsbind::FrozenArray<PaymentDetailsModifier> {
+        self.inner
+            .get("modifiers")
+            .as_::<jsbind::FrozenArray<PaymentDetailsModifier>>()
+    }
+}
+impl PaymentRequestEvent {
+    pub fn payment_options(&self) -> jsbind::Object {
+        self.inner.get("paymentOptions").as_::<jsbind::Object>()
+    }
+}
+impl PaymentRequestEvent {
+    pub fn shipping_options(&self) -> jsbind::FrozenArray<PaymentShippingOption> {
+        self.inner
+            .get("shippingOptions")
+            .as_::<jsbind::FrozenArray<PaymentShippingOption>>()
+    }
+}
+impl PaymentRequestEvent {
+    pub fn open_window(&self, url: jsbind::USVString) -> jsbind::Promise {
+        self.inner
+            .call("openWindow", &[url.into()])
+            .as_::<jsbind::Promise>()
+    }
+}
+impl PaymentRequestEvent {
+    pub fn change_payment_method0(&self, method_name: jsbind::DOMString) -> jsbind::Promise {
+        self.inner
+            .call("changePaymentMethod", &[method_name.into()])
+            .as_::<jsbind::Promise>()
+    }
+
+    pub fn change_payment_method1(
+        &self,
+        method_name: jsbind::DOMString,
+        method_details: jsbind::Object,
+    ) -> jsbind::Promise {
+        self.inner
+            .call(
+                "changePaymentMethod",
+                &[method_name.into(), method_details.into()],
+            )
+            .as_::<jsbind::Promise>()
+    }
+}
+impl PaymentRequestEvent {
+    pub fn change_shipping_address0(&self) -> jsbind::Promise {
+        self.inner
+            .call("changeShippingAddress", &[])
+            .as_::<jsbind::Promise>()
+    }
+
+    pub fn change_shipping_address1(&self, shipping_address: AddressInit) -> jsbind::Promise {
+        self.inner
+            .call("changeShippingAddress", &[shipping_address.into()])
+            .as_::<jsbind::Promise>()
+    }
+}
+impl PaymentRequestEvent {
+    pub fn change_shipping_option(&self, shipping_option: jsbind::DOMString) -> jsbind::Promise {
+        self.inner
+            .call("changeShippingOption", &[shipping_option.into()])
+            .as_::<jsbind::Promise>()
+    }
+}
+impl PaymentRequestEvent {
+    pub fn respond_with(&self, handler_response_promise: jsbind::Promise) -> jsbind::Undefined {
+        self.inner
+            .call("respondWith", &[handler_response_promise.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}

@@ -1,0 +1,37 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct OES_standard_derivatives {
+    inner: emlite::Val,
+}
+impl FromVal for OES_standard_derivatives {
+    fn from_val(v: &emlite::Val) -> Self {
+        OES_standard_derivatives {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for OES_standard_derivatives {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for OES_standard_derivatives {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<OES_standard_derivatives> for emlite::Val {
+    fn from(s: OES_standard_derivatives) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}

@@ -1,0 +1,45 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct CSSColorValue {
+    inner: CSSStyleValue,
+}
+impl FromVal for CSSColorValue {
+    fn from_val(v: &emlite::Val) -> Self {
+        CSSColorValue {
+            inner: CSSStyleValue::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for CSSColorValue {
+    type Target = CSSStyleValue;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for CSSColorValue {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<CSSColorValue> for emlite::Val {
+    fn from(s: CSSColorValue) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl CSSColorValue {
+    pub fn parse(css_text: jsbind::USVString) -> jsbind::Any {
+        emlite::Val::global("csscolorvalue")
+            .call("parse", &[css_text.into()])
+            .as_::<jsbind::Any>()
+    }
+}

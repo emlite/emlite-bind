@@ -1,0 +1,124 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct SecurityPolicyViolationEvent {
+    inner: Event,
+}
+impl FromVal for SecurityPolicyViolationEvent {
+    fn from_val(v: &emlite::Val) -> Self {
+        SecurityPolicyViolationEvent {
+            inner: Event::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for SecurityPolicyViolationEvent {
+    type Target = Event;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for SecurityPolicyViolationEvent {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<SecurityPolicyViolationEvent> for emlite::Val {
+    fn from(s: SecurityPolicyViolationEvent) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl SecurityPolicyViolationEvent {
+    pub fn new0(type_: jsbind::DOMString) -> SecurityPolicyViolationEvent {
+        Self {
+            inner: emlite::Val::global("SecurityPolicyViolationEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
+        }
+    }
+
+    pub fn new1(
+        type_: jsbind::DOMString,
+        event_init_dict: jsbind::Any,
+    ) -> SecurityPolicyViolationEvent {
+        Self {
+            inner: emlite::Val::global("SecurityPolicyViolationEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
+    }
+}
+impl SecurityPolicyViolationEvent {
+    pub fn document_uri(&self) -> jsbind::USVString {
+        self.inner.get("documentURI").as_::<jsbind::USVString>()
+    }
+}
+impl SecurityPolicyViolationEvent {
+    pub fn referrer(&self) -> jsbind::USVString {
+        self.inner.get("referrer").as_::<jsbind::USVString>()
+    }
+}
+impl SecurityPolicyViolationEvent {
+    pub fn blocked_uri(&self) -> jsbind::USVString {
+        self.inner.get("blockedURI").as_::<jsbind::USVString>()
+    }
+}
+impl SecurityPolicyViolationEvent {
+    pub fn effective_directive(&self) -> jsbind::DOMString {
+        self.inner
+            .get("effectiveDirective")
+            .as_::<jsbind::DOMString>()
+    }
+}
+impl SecurityPolicyViolationEvent {
+    pub fn violated_directive(&self) -> jsbind::DOMString {
+        self.inner
+            .get("violatedDirective")
+            .as_::<jsbind::DOMString>()
+    }
+}
+impl SecurityPolicyViolationEvent {
+    pub fn original_policy(&self) -> jsbind::DOMString {
+        self.inner.get("originalPolicy").as_::<jsbind::DOMString>()
+    }
+}
+impl SecurityPolicyViolationEvent {
+    pub fn source_file(&self) -> jsbind::USVString {
+        self.inner.get("sourceFile").as_::<jsbind::USVString>()
+    }
+}
+impl SecurityPolicyViolationEvent {
+    pub fn sample(&self) -> jsbind::DOMString {
+        self.inner.get("sample").as_::<jsbind::DOMString>()
+    }
+}
+impl SecurityPolicyViolationEvent {
+    pub fn disposition(&self) -> SecurityPolicyViolationEventDisposition {
+        self.inner
+            .get("disposition")
+            .as_::<SecurityPolicyViolationEventDisposition>()
+    }
+}
+impl SecurityPolicyViolationEvent {
+    pub fn status_code(&self) -> u16 {
+        self.inner.get("statusCode").as_::<u16>()
+    }
+}
+impl SecurityPolicyViolationEvent {
+    pub fn line_number(&self) -> u32 {
+        self.inner.get("lineNumber").as_::<u32>()
+    }
+}
+impl SecurityPolicyViolationEvent {
+    pub fn column_number(&self) -> u32 {
+        self.inner.get("columnNumber").as_::<u32>()
+    }
+}

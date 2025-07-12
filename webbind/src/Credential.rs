@@ -1,0 +1,62 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct Credential {
+    inner: emlite::Val,
+}
+impl FromVal for Credential {
+    fn from_val(v: &emlite::Val) -> Self {
+        Credential {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for Credential {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for Credential {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<Credential> for emlite::Val {
+    fn from(s: Credential) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl Credential {
+    pub fn id(&self) -> jsbind::USVString {
+        self.inner.get("id").as_::<jsbind::USVString>()
+    }
+}
+impl Credential {
+    pub fn type_(&self) -> jsbind::DOMString {
+        self.inner.get("type").as_::<jsbind::DOMString>()
+    }
+}
+impl Credential {
+    pub fn is_conditional_mediation_available() -> jsbind::Promise {
+        emlite::Val::global("credential")
+            .call("isConditionalMediationAvailable", &[])
+            .as_::<jsbind::Promise>()
+    }
+}
+impl Credential {
+    pub fn will_request_conditional_creation() -> jsbind::Promise {
+        emlite::Val::global("credential")
+            .call("willRequestConditionalCreation", &[])
+            .as_::<jsbind::Promise>()
+    }
+}

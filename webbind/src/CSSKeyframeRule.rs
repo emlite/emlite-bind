@@ -1,0 +1,52 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct CSSKeyframeRule {
+    inner: CSSRule,
+}
+impl FromVal for CSSKeyframeRule {
+    fn from_val(v: &emlite::Val) -> Self {
+        CSSKeyframeRule {
+            inner: CSSRule::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for CSSKeyframeRule {
+    type Target = CSSRule;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for CSSKeyframeRule {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<CSSKeyframeRule> for emlite::Val {
+    fn from(s: CSSKeyframeRule) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl CSSKeyframeRule {
+    pub fn key_text(&self) -> jsbind::CSSOMString {
+        self.inner.get("keyText").as_::<jsbind::CSSOMString>()
+    }
+
+    pub fn set_key_text(&mut self, value: jsbind::CSSOMString) {
+        self.inner.set("keyText", value);
+    }
+}
+impl CSSKeyframeRule {
+    pub fn style(&self) -> CSSStyleProperties {
+        self.inner.get("style").as_::<CSSStyleProperties>()
+    }
+}

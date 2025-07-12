@@ -1,0 +1,85 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct RTCError {
+    inner: DOMException,
+}
+impl FromVal for RTCError {
+    fn from_val(v: &emlite::Val) -> Self {
+        RTCError {
+            inner: DOMException::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for RTCError {
+    type Target = DOMException;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for RTCError {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<RTCError> for emlite::Val {
+    fn from(s: RTCError) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl RTCError {
+    pub fn new0(init: jsbind::Any) -> RTCError {
+        Self {
+            inner: emlite::Val::global("RTCError")
+                .new(&[init.into()])
+                .as_::<DOMException>(),
+        }
+    }
+
+    pub fn new1(init: jsbind::Any, message: jsbind::DOMString) -> RTCError {
+        Self {
+            inner: emlite::Val::global("RTCError")
+                .new(&[init.into(), message.into()])
+                .as_::<DOMException>(),
+        }
+    }
+}
+impl RTCError {
+    pub fn error_detail(&self) -> RTCErrorDetailType {
+        self.inner.get("errorDetail").as_::<RTCErrorDetailType>()
+    }
+}
+impl RTCError {
+    pub fn sdp_line_number(&self) -> i32 {
+        self.inner.get("sdpLineNumber").as_::<i32>()
+    }
+}
+impl RTCError {
+    pub fn sctp_cause_code(&self) -> i32 {
+        self.inner.get("sctpCauseCode").as_::<i32>()
+    }
+}
+impl RTCError {
+    pub fn received_alert(&self) -> u32 {
+        self.inner.get("receivedAlert").as_::<u32>()
+    }
+}
+impl RTCError {
+    pub fn sent_alert(&self) -> u32 {
+        self.inner.get("sentAlert").as_::<u32>()
+    }
+}
+impl RTCError {
+    pub fn http_request_status_code(&self) -> i32 {
+        self.inner.get("httpRequestStatusCode").as_::<i32>()
+    }
+}

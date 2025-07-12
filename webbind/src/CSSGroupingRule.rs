@@ -1,0 +1,61 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct CSSGroupingRule {
+    inner: CSSRule,
+}
+impl FromVal for CSSGroupingRule {
+    fn from_val(v: &emlite::Val) -> Self {
+        CSSGroupingRule {
+            inner: CSSRule::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for CSSGroupingRule {
+    type Target = CSSRule;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for CSSGroupingRule {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<CSSGroupingRule> for emlite::Val {
+    fn from(s: CSSGroupingRule) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl CSSGroupingRule {
+    pub fn css_rules(&self) -> CSSRuleList {
+        self.inner.get("cssRules").as_::<CSSRuleList>()
+    }
+}
+impl CSSGroupingRule {
+    pub fn insert_rule0(&self, rule: jsbind::CSSOMString) -> u32 {
+        self.inner.call("insertRule", &[rule.into()]).as_::<u32>()
+    }
+
+    pub fn insert_rule1(&self, rule: jsbind::CSSOMString, index: u32) -> u32 {
+        self.inner
+            .call("insertRule", &[rule.into(), index.into()])
+            .as_::<u32>()
+    }
+}
+impl CSSGroupingRule {
+    pub fn delete_rule(&self, index: u32) -> jsbind::Undefined {
+        self.inner
+            .call("deleteRule", &[index.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}

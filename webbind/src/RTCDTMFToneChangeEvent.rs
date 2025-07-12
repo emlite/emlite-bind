@@ -1,0 +1,60 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct RTCDTMFToneChangeEvent {
+    inner: Event,
+}
+impl FromVal for RTCDTMFToneChangeEvent {
+    fn from_val(v: &emlite::Val) -> Self {
+        RTCDTMFToneChangeEvent {
+            inner: Event::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for RTCDTMFToneChangeEvent {
+    type Target = Event;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for RTCDTMFToneChangeEvent {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<RTCDTMFToneChangeEvent> for emlite::Val {
+    fn from(s: RTCDTMFToneChangeEvent) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl RTCDTMFToneChangeEvent {
+    pub fn new0(type_: jsbind::DOMString) -> RTCDTMFToneChangeEvent {
+        Self {
+            inner: emlite::Val::global("RTCDTMFToneChangeEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
+        }
+    }
+
+    pub fn new1(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> RTCDTMFToneChangeEvent {
+        Self {
+            inner: emlite::Val::global("RTCDTMFToneChangeEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
+    }
+}
+impl RTCDTMFToneChangeEvent {
+    pub fn tone(&self) -> jsbind::DOMString {
+        self.inner.get("tone").as_::<jsbind::DOMString>()
+    }
+}

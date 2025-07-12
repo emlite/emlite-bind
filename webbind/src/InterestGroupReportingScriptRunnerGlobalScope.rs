@@ -1,0 +1,66 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct InterestGroupReportingScriptRunnerGlobalScope {
+    inner: InterestGroupScriptRunnerGlobalScope,
+}
+impl FromVal for InterestGroupReportingScriptRunnerGlobalScope {
+    fn from_val(v: &emlite::Val) -> Self {
+        InterestGroupReportingScriptRunnerGlobalScope {
+            inner: InterestGroupScriptRunnerGlobalScope::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for InterestGroupReportingScriptRunnerGlobalScope {
+    type Target = InterestGroupScriptRunnerGlobalScope;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for InterestGroupReportingScriptRunnerGlobalScope {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<InterestGroupReportingScriptRunnerGlobalScope> for emlite::Val {
+    fn from(s: InterestGroupReportingScriptRunnerGlobalScope) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl InterestGroupReportingScriptRunnerGlobalScope {
+    pub fn send_report_to(&self, url: jsbind::DOMString) -> jsbind::Undefined {
+        self.inner
+            .call("sendReportTo", &[url.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}
+impl InterestGroupReportingScriptRunnerGlobalScope {
+    pub fn register_ad_beacon(
+        &self,
+        map: jsbind::Record<jsbind::DOMString, jsbind::USVString>,
+    ) -> jsbind::Undefined {
+        self.inner
+            .call("registerAdBeacon", &[map.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}
+impl InterestGroupReportingScriptRunnerGlobalScope {
+    pub fn register_ad_macro(
+        &self,
+        name: jsbind::DOMString,
+        value: jsbind::USVString,
+    ) -> jsbind::Undefined {
+        self.inner
+            .call("registerAdMacro", &[name.into(), value.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}

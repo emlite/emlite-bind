@@ -1,0 +1,57 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct DecompressionStream {
+    inner: emlite::Val,
+}
+impl FromVal for DecompressionStream {
+    fn from_val(v: &emlite::Val) -> Self {
+        DecompressionStream {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for DecompressionStream {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for DecompressionStream {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<DecompressionStream> for emlite::Val {
+    fn from(s: DecompressionStream) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl DecompressionStream {
+    pub fn new(format: CompressionFormat) -> DecompressionStream {
+        Self {
+            inner: emlite::Val::global("DecompressionStream")
+                .new(&[format.into()])
+                .as_::<emlite::Val>(),
+        }
+    }
+}
+impl DecompressionStream {
+    pub fn readable(&self) -> ReadableStream {
+        self.inner.get("readable").as_::<ReadableStream>()
+    }
+}
+impl DecompressionStream {
+    pub fn writable(&self) -> WritableStream {
+        self.inner.get("writable").as_::<WritableStream>()
+    }
+}

@@ -1,0 +1,67 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct BluetoothRemoteGATTDescriptor {
+    inner: emlite::Val,
+}
+impl FromVal for BluetoothRemoteGATTDescriptor {
+    fn from_val(v: &emlite::Val) -> Self {
+        BluetoothRemoteGATTDescriptor {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for BluetoothRemoteGATTDescriptor {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for BluetoothRemoteGATTDescriptor {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<BluetoothRemoteGATTDescriptor> for emlite::Val {
+    fn from(s: BluetoothRemoteGATTDescriptor) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl BluetoothRemoteGATTDescriptor {
+    pub fn characteristic(&self) -> BluetoothRemoteGATTCharacteristic {
+        self.inner
+            .get("characteristic")
+            .as_::<BluetoothRemoteGATTCharacteristic>()
+    }
+}
+impl BluetoothRemoteGATTDescriptor {
+    pub fn uuid(&self) -> jsbind::Any {
+        self.inner.get("uuid").as_::<jsbind::Any>()
+    }
+}
+impl BluetoothRemoteGATTDescriptor {
+    pub fn value(&self) -> jsbind::DataView {
+        self.inner.get("value").as_::<jsbind::DataView>()
+    }
+}
+impl BluetoothRemoteGATTDescriptor {
+    pub fn read_value(&self) -> jsbind::Promise {
+        self.inner.call("readValue", &[]).as_::<jsbind::Promise>()
+    }
+}
+impl BluetoothRemoteGATTDescriptor {
+    pub fn write_value(&self, value: jsbind::Any) -> jsbind::Promise {
+        self.inner
+            .call("writeValue", &[value.into()])
+            .as_::<jsbind::Promise>()
+    }
+}

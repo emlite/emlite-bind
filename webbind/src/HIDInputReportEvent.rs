@@ -1,0 +1,62 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct HIDInputReportEvent {
+    inner: Event,
+}
+impl FromVal for HIDInputReportEvent {
+    fn from_val(v: &emlite::Val) -> Self {
+        HIDInputReportEvent {
+            inner: Event::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for HIDInputReportEvent {
+    type Target = Event;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for HIDInputReportEvent {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<HIDInputReportEvent> for emlite::Val {
+    fn from(s: HIDInputReportEvent) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl HIDInputReportEvent {
+    pub fn new(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> HIDInputReportEvent {
+        Self {
+            inner: emlite::Val::global("HIDInputReportEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
+    }
+}
+impl HIDInputReportEvent {
+    pub fn device(&self) -> HIDDevice {
+        self.inner.get("device").as_::<HIDDevice>()
+    }
+}
+impl HIDInputReportEvent {
+    pub fn report_id(&self) -> u8 {
+        self.inner.get("reportId").as_::<u8>()
+    }
+}
+impl HIDInputReportEvent {
+    pub fn data(&self) -> jsbind::DataView {
+        self.inner.get("data").as_::<jsbind::DataView>()
+    }
+}

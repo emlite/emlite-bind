@@ -1,0 +1,144 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct Text {
+    inner: CharacterData,
+}
+impl FromVal for Text {
+    fn from_val(v: &emlite::Val) -> Self {
+        Text {
+            inner: CharacterData::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for Text {
+    type Target = CharacterData;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for Text {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<Text> for emlite::Val {
+    fn from(s: Text) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl Text {
+    pub fn new0() -> Text {
+        Self {
+            inner: emlite::Val::global("Text").new(&[]).as_::<CharacterData>(),
+        }
+    }
+
+    pub fn new1(data: jsbind::DOMString) -> Text {
+        Self {
+            inner: emlite::Val::global("Text")
+                .new(&[data.into()])
+                .as_::<CharacterData>(),
+        }
+    }
+}
+impl Text {
+    pub fn split_text(&self, offset: u32) -> Text {
+        self.inner.call("splitText", &[offset.into()]).as_::<Text>()
+    }
+}
+impl Text {
+    pub fn whole_text(&self) -> jsbind::DOMString {
+        self.inner.get("wholeText").as_::<jsbind::DOMString>()
+    }
+}
+impl Text {
+    pub fn get_box_quads0(&self) -> jsbind::Sequence<DOMQuad> {
+        self.inner
+            .call("getBoxQuads", &[])
+            .as_::<jsbind::Sequence<DOMQuad>>()
+    }
+
+    pub fn get_box_quads1(&self, options: BoxQuadOptions) -> jsbind::Sequence<DOMQuad> {
+        self.inner
+            .call("getBoxQuads", &[options.into()])
+            .as_::<jsbind::Sequence<DOMQuad>>()
+    }
+}
+impl Text {
+    pub fn convert_quad_from_node0(&self, quad: DOMQuadInit, from: jsbind::Any) -> DOMQuad {
+        self.inner
+            .call("convertQuadFromNode", &[quad.into(), from.into()])
+            .as_::<DOMQuad>()
+    }
+
+    pub fn convert_quad_from_node1(
+        &self,
+        quad: DOMQuadInit,
+        from: jsbind::Any,
+        options: ConvertCoordinateOptions,
+    ) -> DOMQuad {
+        self.inner
+            .call(
+                "convertQuadFromNode",
+                &[quad.into(), from.into(), options.into()],
+            )
+            .as_::<DOMQuad>()
+    }
+}
+impl Text {
+    pub fn convert_rect_from_node0(&self, rect: DOMRectReadOnly, from: jsbind::Any) -> DOMQuad {
+        self.inner
+            .call("convertRectFromNode", &[rect.into(), from.into()])
+            .as_::<DOMQuad>()
+    }
+
+    pub fn convert_rect_from_node1(
+        &self,
+        rect: DOMRectReadOnly,
+        from: jsbind::Any,
+        options: ConvertCoordinateOptions,
+    ) -> DOMQuad {
+        self.inner
+            .call(
+                "convertRectFromNode",
+                &[rect.into(), from.into(), options.into()],
+            )
+            .as_::<DOMQuad>()
+    }
+}
+impl Text {
+    pub fn convert_point_from_node0(&self, point: DOMPointInit, from: jsbind::Any) -> DOMPoint {
+        self.inner
+            .call("convertPointFromNode", &[point.into(), from.into()])
+            .as_::<DOMPoint>()
+    }
+
+    pub fn convert_point_from_node1(
+        &self,
+        point: DOMPointInit,
+        from: jsbind::Any,
+        options: ConvertCoordinateOptions,
+    ) -> DOMPoint {
+        self.inner
+            .call(
+                "convertPointFromNode",
+                &[point.into(), from.into(), options.into()],
+            )
+            .as_::<DOMPoint>()
+    }
+}
+impl Text {
+    pub fn assigned_slot(&self) -> HTMLSlotElement {
+        self.inner.get("assignedSlot").as_::<HTMLSlotElement>()
+    }
+}

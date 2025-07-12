@@ -1,0 +1,55 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct AuthenticatorAssertionResponse {
+    inner: AuthenticatorResponse,
+}
+impl FromVal for AuthenticatorAssertionResponse {
+    fn from_val(v: &emlite::Val) -> Self {
+        AuthenticatorAssertionResponse {
+            inner: AuthenticatorResponse::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for AuthenticatorAssertionResponse {
+    type Target = AuthenticatorResponse;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for AuthenticatorAssertionResponse {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<AuthenticatorAssertionResponse> for emlite::Val {
+    fn from(s: AuthenticatorAssertionResponse) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl AuthenticatorAssertionResponse {
+    pub fn authenticator_data(&self) -> jsbind::ArrayBuffer {
+        self.inner
+            .get("authenticatorData")
+            .as_::<jsbind::ArrayBuffer>()
+    }
+}
+impl AuthenticatorAssertionResponse {
+    pub fn signature(&self) -> jsbind::ArrayBuffer {
+        self.inner.get("signature").as_::<jsbind::ArrayBuffer>()
+    }
+}
+impl AuthenticatorAssertionResponse {
+    pub fn user_handle(&self) -> jsbind::ArrayBuffer {
+        self.inner.get("userHandle").as_::<jsbind::ArrayBuffer>()
+    }
+}

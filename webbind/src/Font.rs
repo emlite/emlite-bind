@@ -1,0 +1,48 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct Font {
+    inner: emlite::Val,
+}
+impl FromVal for Font {
+    fn from_val(v: &emlite::Val) -> Self {
+        Font {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for Font {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for Font {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<Font> for emlite::Val {
+    fn from(s: Font) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl Font {
+    pub fn name(&self) -> jsbind::DOMString {
+        self.inner.get("name").as_::<jsbind::DOMString>()
+    }
+}
+impl Font {
+    pub fn glyphs_rendered(&self) -> u32 {
+        self.inner.get("glyphsRendered").as_::<u32>()
+    }
+}

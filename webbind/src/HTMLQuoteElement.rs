@@ -1,0 +1,56 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct HTMLQuoteElement {
+    inner: HTMLElement,
+}
+impl FromVal for HTMLQuoteElement {
+    fn from_val(v: &emlite::Val) -> Self {
+        HTMLQuoteElement {
+            inner: HTMLElement::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for HTMLQuoteElement {
+    type Target = HTMLElement;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for HTMLQuoteElement {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<HTMLQuoteElement> for emlite::Val {
+    fn from(s: HTMLQuoteElement) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl HTMLQuoteElement {
+    pub fn new() -> HTMLQuoteElement {
+        Self {
+            inner: emlite::Val::global("HTMLQuoteElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLQuoteElement {
+    pub fn cite(&self) -> jsbind::USVString {
+        self.inner.get("cite").as_::<jsbind::USVString>()
+    }
+
+    pub fn set_cite(&mut self, value: jsbind::USVString) {
+        self.inner.set("cite", value);
+    }
+}

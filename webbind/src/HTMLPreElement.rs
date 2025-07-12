@@ -1,0 +1,56 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct HTMLPreElement {
+    inner: HTMLElement,
+}
+impl FromVal for HTMLPreElement {
+    fn from_val(v: &emlite::Val) -> Self {
+        HTMLPreElement {
+            inner: HTMLElement::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for HTMLPreElement {
+    type Target = HTMLElement;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for HTMLPreElement {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<HTMLPreElement> for emlite::Val {
+    fn from(s: HTMLPreElement) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl HTMLPreElement {
+    pub fn new() -> HTMLPreElement {
+        Self {
+            inner: emlite::Val::global("HTMLPreElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLPreElement {
+    pub fn width(&self) -> i32 {
+        self.inner.get("width").as_::<i32>()
+    }
+
+    pub fn set_width(&mut self, value: i32) {
+        self.inner.set("width", value);
+    }
+}

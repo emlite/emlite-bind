@@ -1,0 +1,74 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct DataTransferItem {
+    inner: emlite::Val,
+}
+impl FromVal for DataTransferItem {
+    fn from_val(v: &emlite::Val) -> Self {
+        DataTransferItem {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for DataTransferItem {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for DataTransferItem {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<DataTransferItem> for emlite::Val {
+    fn from(s: DataTransferItem) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl DataTransferItem {
+    pub fn kind(&self) -> jsbind::DOMString {
+        self.inner.get("kind").as_::<jsbind::DOMString>()
+    }
+}
+impl DataTransferItem {
+    pub fn type_(&self) -> jsbind::DOMString {
+        self.inner.get("type").as_::<jsbind::DOMString>()
+    }
+}
+impl DataTransferItem {
+    pub fn get_as_string(&self, callback: jsbind::Any) -> jsbind::Undefined {
+        self.inner
+            .call("getAsString", &[callback.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}
+impl DataTransferItem {
+    pub fn get_as_file(&self) -> File {
+        self.inner.call("getAsFile", &[]).as_::<File>()
+    }
+}
+impl DataTransferItem {
+    pub fn webkit_get_as_entry(&self) -> FileSystemEntry {
+        self.inner
+            .call("webkitGetAsEntry", &[])
+            .as_::<FileSystemEntry>()
+    }
+}
+impl DataTransferItem {
+    pub fn get_as_file_system_handle(&self) -> jsbind::Promise {
+        self.inner
+            .call("getAsFileSystemHandle", &[])
+            .as_::<jsbind::Promise>()
+    }
+}

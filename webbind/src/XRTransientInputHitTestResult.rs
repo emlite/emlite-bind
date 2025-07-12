@@ -1,0 +1,50 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct XRTransientInputHitTestResult {
+    inner: emlite::Val,
+}
+impl FromVal for XRTransientInputHitTestResult {
+    fn from_val(v: &emlite::Val) -> Self {
+        XRTransientInputHitTestResult {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for XRTransientInputHitTestResult {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for XRTransientInputHitTestResult {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<XRTransientInputHitTestResult> for emlite::Val {
+    fn from(s: XRTransientInputHitTestResult) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl XRTransientInputHitTestResult {
+    pub fn input_source(&self) -> XRInputSource {
+        self.inner.get("inputSource").as_::<XRInputSource>()
+    }
+}
+impl XRTransientInputHitTestResult {
+    pub fn results(&self) -> jsbind::FrozenArray<XRHitTestResult> {
+        self.inner
+            .get("results")
+            .as_::<jsbind::FrozenArray<XRHitTestResult>>()
+    }
+}

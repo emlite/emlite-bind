@@ -1,0 +1,61 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct SourceBufferList {
+    inner: EventTarget,
+}
+impl FromVal for SourceBufferList {
+    fn from_val(v: &emlite::Val) -> Self {
+        SourceBufferList {
+            inner: EventTarget::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for SourceBufferList {
+    type Target = EventTarget;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for SourceBufferList {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<SourceBufferList> for emlite::Val {
+    fn from(s: SourceBufferList) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl SourceBufferList {
+    pub fn length(&self) -> u32 {
+        self.inner.get("length").as_::<u32>()
+    }
+}
+impl SourceBufferList {
+    pub fn onaddsourcebuffer(&self) -> jsbind::Any {
+        self.inner.get("onaddsourcebuffer").as_::<jsbind::Any>()
+    }
+
+    pub fn set_onaddsourcebuffer(&mut self, value: jsbind::Any) {
+        self.inner.set("onaddsourcebuffer", value);
+    }
+}
+impl SourceBufferList {
+    pub fn onremovesourcebuffer(&self) -> jsbind::Any {
+        self.inner.get("onremovesourcebuffer").as_::<jsbind::Any>()
+    }
+
+    pub fn set_onremovesourcebuffer(&mut self, value: jsbind::Any) {
+        self.inner.set("onremovesourcebuffer", value);
+    }
+}

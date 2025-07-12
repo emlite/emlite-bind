@@ -1,0 +1,14 @@
+[package]
+name = "jsbind"
+version = "0.1.0"
+edition = "2024"
+description = "Bindings for basic JS types required for webbind"
+documentation = "https://docs.rs/jsbind"
+license = "MIT"
+readme = "../README.md"
+repository = "https://github.com/MoAlyousef/emlite-bind"
+keywords = ["wasm", "wasi", "polyfill", "shim", "bindings"]
+categories = ["api-bindings", "wasm"]
+
+[dependencies]
+emlite = "0.1.26"

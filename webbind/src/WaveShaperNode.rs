@@ -1,0 +1,73 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct WaveShaperNode {
+    inner: AudioNode,
+}
+impl FromVal for WaveShaperNode {
+    fn from_val(v: &emlite::Val) -> Self {
+        WaveShaperNode {
+            inner: AudioNode::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for WaveShaperNode {
+    type Target = AudioNode;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for WaveShaperNode {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<WaveShaperNode> for emlite::Val {
+    fn from(s: WaveShaperNode) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl WaveShaperNode {
+    pub fn new0(context: BaseAudioContext) -> WaveShaperNode {
+        Self {
+            inner: emlite::Val::global("WaveShaperNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
+        }
+    }
+
+    pub fn new1(context: BaseAudioContext, options: jsbind::Any) -> WaveShaperNode {
+        Self {
+            inner: emlite::Val::global("WaveShaperNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
+        }
+    }
+}
+impl WaveShaperNode {
+    pub fn curve(&self) -> jsbind::Float32Array {
+        self.inner.get("curve").as_::<jsbind::Float32Array>()
+    }
+
+    pub fn set_curve(&mut self, value: jsbind::Float32Array) {
+        self.inner.set("curve", value);
+    }
+}
+impl WaveShaperNode {
+    pub fn oversample(&self) -> OverSampleType {
+        self.inner.get("oversample").as_::<OverSampleType>()
+    }
+
+    pub fn set_oversample(&mut self, value: OverSampleType) {
+        self.inner.set("oversample", value);
+    }
+}

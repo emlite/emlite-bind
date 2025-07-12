@@ -1,0 +1,28 @@
+{
+  "name": "emlite-bind",
+  "version": "0.1.0",
+  "description": "emlite-bind wraps webidl types in Rust.",
+  "main": "scripts/index.js",
+  "type": "module",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "cargo": "cargo build --target=wasm32-unknown-unknown --examples --release",
+    "regen": "node scripts/index.js",
+    "test:all": "npm run regen && npm run cargo",
+    "serve": "npx http-server"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@webref/idl": "^3.65.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.1",
+    "change-case": "^5.4.4",
+    "eslint": "^9.30.1",
+    "globals": "^16.3.0",
+    "http-server": "^14.1.1"
+  }
+}

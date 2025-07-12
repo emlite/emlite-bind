@@ -1,0 +1,83 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct ServiceWorker {
+    inner: EventTarget,
+}
+impl FromVal for ServiceWorker {
+    fn from_val(v: &emlite::Val) -> Self {
+        ServiceWorker {
+            inner: EventTarget::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for ServiceWorker {
+    type Target = EventTarget;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for ServiceWorker {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<ServiceWorker> for emlite::Val {
+    fn from(s: ServiceWorker) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl ServiceWorker {
+    pub fn script_url(&self) -> jsbind::USVString {
+        self.inner.get("scriptURL").as_::<jsbind::USVString>()
+    }
+}
+impl ServiceWorker {
+    pub fn state(&self) -> ServiceWorkerState {
+        self.inner.get("state").as_::<ServiceWorkerState>()
+    }
+}
+impl ServiceWorker {
+    pub fn post_message0(&self, message: jsbind::Any) -> jsbind::Undefined {
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<jsbind::Undefined>()
+    }
+
+    pub fn post_message1(
+        &self,
+        message: jsbind::Any,
+        options: StructuredSerializeOptions,
+    ) -> jsbind::Undefined {
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}
+impl ServiceWorker {
+    pub fn onstatechange(&self) -> jsbind::Any {
+        self.inner.get("onstatechange").as_::<jsbind::Any>()
+    }
+
+    pub fn set_onstatechange(&mut self, value: jsbind::Any) {
+        self.inner.set("onstatechange", value);
+    }
+}
+impl ServiceWorker {
+    pub fn onerror(&self) -> jsbind::Any {
+        self.inner.get("onerror").as_::<jsbind::Any>()
+    }
+
+    pub fn set_onerror(&mut self, value: jsbind::Any) {
+        self.inner.set("onerror", value);
+    }
+}

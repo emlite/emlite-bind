@@ -1,0 +1,48 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct GPUDeviceLostInfo {
+    inner: emlite::Val,
+}
+impl FromVal for GPUDeviceLostInfo {
+    fn from_val(v: &emlite::Val) -> Self {
+        GPUDeviceLostInfo {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for GPUDeviceLostInfo {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for GPUDeviceLostInfo {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<GPUDeviceLostInfo> for emlite::Val {
+    fn from(s: GPUDeviceLostInfo) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl GPUDeviceLostInfo {
+    pub fn reason(&self) -> GPUDeviceLostReason {
+        self.inner.get("reason").as_::<GPUDeviceLostReason>()
+    }
+}
+impl GPUDeviceLostInfo {
+    pub fn message(&self) -> jsbind::DOMString {
+        self.inner.get("message").as_::<jsbind::DOMString>()
+    }
+}

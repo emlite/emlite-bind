@@ -1,0 +1,54 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct XRReferenceSpace {
+    inner: XRSpace,
+}
+impl FromVal for XRReferenceSpace {
+    fn from_val(v: &emlite::Val) -> Self {
+        XRReferenceSpace {
+            inner: XRSpace::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for XRReferenceSpace {
+    type Target = XRSpace;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for XRReferenceSpace {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<XRReferenceSpace> for emlite::Val {
+    fn from(s: XRReferenceSpace) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl XRReferenceSpace {
+    pub fn get_offset_reference_space(&self, origin_offset: XRRigidTransform) -> XRReferenceSpace {
+        self.inner
+            .call("getOffsetReferenceSpace", &[origin_offset.into()])
+            .as_::<XRReferenceSpace>()
+    }
+}
+impl XRReferenceSpace {
+    pub fn onreset(&self) -> jsbind::Any {
+        self.inner.get("onreset").as_::<jsbind::Any>()
+    }
+
+    pub fn set_onreset(&mut self, value: jsbind::Any) {
+        self.inner.set("onreset", value);
+    }
+}

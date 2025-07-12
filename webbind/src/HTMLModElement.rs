@@ -1,0 +1,65 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct HTMLModElement {
+    inner: HTMLElement,
+}
+impl FromVal for HTMLModElement {
+    fn from_val(v: &emlite::Val) -> Self {
+        HTMLModElement {
+            inner: HTMLElement::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for HTMLModElement {
+    type Target = HTMLElement;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for HTMLModElement {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<HTMLModElement> for emlite::Val {
+    fn from(s: HTMLModElement) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl HTMLModElement {
+    pub fn new() -> HTMLModElement {
+        Self {
+            inner: emlite::Val::global("HTMLModElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLModElement {
+    pub fn cite(&self) -> jsbind::USVString {
+        self.inner.get("cite").as_::<jsbind::USVString>()
+    }
+
+    pub fn set_cite(&mut self, value: jsbind::USVString) {
+        self.inner.set("cite", value);
+    }
+}
+impl HTMLModElement {
+    pub fn date_time(&self) -> jsbind::DOMString {
+        self.inner.get("dateTime").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_date_time(&mut self, value: jsbind::DOMString) {
+        self.inner.set("dateTime", value);
+    }
+}

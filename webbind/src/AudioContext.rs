@@ -1,0 +1,206 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct AudioTimestamp {
+    inner: emlite::Val,
+}
+impl FromVal for AudioTimestamp {
+    fn from_val(v: &emlite::Val) -> Self {
+        AudioTimestamp { inner: v.clone() }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for AudioTimestamp {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for AudioTimestamp {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<AudioTimestamp> for emlite::Val {
+    fn from(s: AudioTimestamp) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl AudioTimestamp {
+    pub fn context_time(&self) -> f64 {
+        self.inner.get("contextTime").as_::<f64>()
+    }
+
+    pub fn set_context_time(&mut self, value: f64) {
+        self.inner.set("contextTime", value);
+    }
+}
+impl AudioTimestamp {
+    pub fn performance_time(&self) -> jsbind::Any {
+        self.inner.get("performanceTime").as_::<jsbind::Any>()
+    }
+
+    pub fn set_performance_time(&mut self, value: jsbind::Any) {
+        self.inner.set("performanceTime", value);
+    }
+}
+#[derive(Clone, Debug)]
+pub struct AudioContext {
+    inner: BaseAudioContext,
+}
+impl FromVal for AudioContext {
+    fn from_val(v: &emlite::Val) -> Self {
+        AudioContext {
+            inner: BaseAudioContext::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for AudioContext {
+    type Target = BaseAudioContext;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for AudioContext {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<AudioContext> for emlite::Val {
+    fn from(s: AudioContext) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl AudioContext {
+    pub fn new0() -> AudioContext {
+        Self {
+            inner: emlite::Val::global("AudioContext")
+                .new(&[])
+                .as_::<BaseAudioContext>(),
+        }
+    }
+
+    pub fn new1(context_options: jsbind::Any) -> AudioContext {
+        Self {
+            inner: emlite::Val::global("AudioContext")
+                .new(&[context_options.into()])
+                .as_::<BaseAudioContext>(),
+        }
+    }
+}
+impl AudioContext {
+    pub fn base_latency(&self) -> f64 {
+        self.inner.get("baseLatency").as_::<f64>()
+    }
+}
+impl AudioContext {
+    pub fn output_latency(&self) -> f64 {
+        self.inner.get("outputLatency").as_::<f64>()
+    }
+}
+impl AudioContext {
+    pub fn sink_id(&self) -> jsbind::Any {
+        self.inner.get("sinkId").as_::<jsbind::Any>()
+    }
+}
+impl AudioContext {
+    pub fn onsinkchange(&self) -> jsbind::Any {
+        self.inner.get("onsinkchange").as_::<jsbind::Any>()
+    }
+
+    pub fn set_onsinkchange(&mut self, value: jsbind::Any) {
+        self.inner.set("onsinkchange", value);
+    }
+}
+impl AudioContext {
+    pub fn onerror(&self) -> jsbind::Any {
+        self.inner.get("onerror").as_::<jsbind::Any>()
+    }
+
+    pub fn set_onerror(&mut self, value: jsbind::Any) {
+        self.inner.set("onerror", value);
+    }
+}
+impl AudioContext {
+    pub fn get_output_timestamp(&self) -> AudioTimestamp {
+        self.inner
+            .call("getOutputTimestamp", &[])
+            .as_::<AudioTimestamp>()
+    }
+}
+impl AudioContext {
+    pub fn resume(&self) -> jsbind::Promise {
+        self.inner.call("resume", &[]).as_::<jsbind::Promise>()
+    }
+}
+impl AudioContext {
+    pub fn suspend(&self) -> jsbind::Promise {
+        self.inner.call("suspend", &[]).as_::<jsbind::Promise>()
+    }
+}
+impl AudioContext {
+    pub fn close(&self) -> jsbind::Promise {
+        self.inner.call("close", &[]).as_::<jsbind::Promise>()
+    }
+}
+impl AudioContext {
+    pub fn set_sink_id(&self, sink_id: jsbind::Any) -> jsbind::Promise {
+        self.inner
+            .call("setSinkId", &[sink_id.into()])
+            .as_::<jsbind::Promise>()
+    }
+}
+impl AudioContext {
+    pub fn create_media_element_source(
+        &self,
+        media_element: HTMLMediaElement,
+    ) -> MediaElementAudioSourceNode {
+        self.inner
+            .call("createMediaElementSource", &[media_element.into()])
+            .as_::<MediaElementAudioSourceNode>()
+    }
+}
+impl AudioContext {
+    pub fn create_media_stream_source(
+        &self,
+        media_stream: MediaStream,
+    ) -> MediaStreamAudioSourceNode {
+        self.inner
+            .call("createMediaStreamSource", &[media_stream.into()])
+            .as_::<MediaStreamAudioSourceNode>()
+    }
+}
+impl AudioContext {
+    pub fn create_media_stream_track_source(
+        &self,
+        media_stream_track: MediaStreamTrack,
+    ) -> MediaStreamTrackAudioSourceNode {
+        self.inner
+            .call("createMediaStreamTrackSource", &[media_stream_track.into()])
+            .as_::<MediaStreamTrackAudioSourceNode>()
+    }
+}
+impl AudioContext {
+    pub fn create_media_stream_destination(&self) -> MediaStreamAudioDestinationNode {
+        self.inner
+            .call("createMediaStreamDestination", &[])
+            .as_::<MediaStreamAudioDestinationNode>()
+    }
+}

@@ -1,0 +1,52 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct CSSMathSum {
+    inner: CSSMathValue,
+}
+impl FromVal for CSSMathSum {
+    fn from_val(v: &emlite::Val) -> Self {
+        CSSMathSum {
+            inner: CSSMathValue::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for CSSMathSum {
+    type Target = CSSMathValue;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for CSSMathSum {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<CSSMathSum> for emlite::Val {
+    fn from(s: CSSMathSum) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl CSSMathSum {
+    pub fn new(args: jsbind::Any) -> CSSMathSum {
+        Self {
+            inner: emlite::Val::global("CSSMathSum")
+                .new(&[args.into()])
+                .as_::<CSSMathValue>(),
+        }
+    }
+}
+impl CSSMathSum {
+    pub fn values(&self) -> CSSNumericArray {
+        self.inner.get("values").as_::<CSSNumericArray>()
+    }
+}

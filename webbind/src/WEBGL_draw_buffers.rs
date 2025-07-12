@@ -1,0 +1,45 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct WEBGL_draw_buffers {
+    inner: emlite::Val,
+}
+impl FromVal for WEBGL_draw_buffers {
+    fn from_val(v: &emlite::Val) -> Self {
+        WEBGL_draw_buffers {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for WEBGL_draw_buffers {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for WEBGL_draw_buffers {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<WEBGL_draw_buffers> for emlite::Val {
+    fn from(s: WEBGL_draw_buffers) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl WEBGL_draw_buffers {
+    pub fn draw_buffers_webgl(&self, buffers: jsbind::Sequence<jsbind::Any>) -> jsbind::Undefined {
+        self.inner
+            .call("drawBuffersWEBGL", &[buffers.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}

@@ -1,0 +1,64 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct StylePropertyMap {
+    inner: StylePropertyMapReadOnly,
+}
+impl FromVal for StylePropertyMap {
+    fn from_val(v: &emlite::Val) -> Self {
+        StylePropertyMap {
+            inner: StylePropertyMapReadOnly::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for StylePropertyMap {
+    type Target = StylePropertyMapReadOnly;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for StylePropertyMap {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<StylePropertyMap> for emlite::Val {
+    fn from(s: StylePropertyMap) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl StylePropertyMap {
+    pub fn set(&self, property: jsbind::USVString, values: jsbind::Any) -> jsbind::Undefined {
+        self.inner
+            .call("set", &[property.into(), values.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}
+impl StylePropertyMap {
+    pub fn append(&self, property: jsbind::USVString, values: jsbind::Any) -> jsbind::Undefined {
+        self.inner
+            .call("append", &[property.into(), values.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}
+impl StylePropertyMap {
+    pub fn delete(&self, property: jsbind::USVString) -> jsbind::Undefined {
+        self.inner
+            .call("delete", &[property.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}
+impl StylePropertyMap {
+    pub fn clear(&self) -> jsbind::Undefined {
+        self.inner.call("clear", &[]).as_::<jsbind::Undefined>()
+    }
+}

@@ -1,0 +1,56 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct CSSSkewY {
+    inner: CSSTransformComponent,
+}
+impl FromVal for CSSSkewY {
+    fn from_val(v: &emlite::Val) -> Self {
+        CSSSkewY {
+            inner: CSSTransformComponent::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for CSSSkewY {
+    type Target = CSSTransformComponent;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for CSSSkewY {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<CSSSkewY> for emlite::Val {
+    fn from(s: CSSSkewY) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl CSSSkewY {
+    pub fn new(ay: CSSNumericValue) -> CSSSkewY {
+        Self {
+            inner: emlite::Val::global("CSSSkewY")
+                .new(&[ay.into()])
+                .as_::<CSSTransformComponent>(),
+        }
+    }
+}
+impl CSSSkewY {
+    pub fn ay(&self) -> CSSNumericValue {
+        self.inner.get("ay").as_::<CSSNumericValue>()
+    }
+
+    pub fn set_ay(&mut self, value: CSSNumericValue) {
+        self.inner.set("ay", value);
+    }
+}

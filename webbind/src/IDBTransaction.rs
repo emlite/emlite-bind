@@ -1,0 +1,109 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct IDBTransaction {
+    inner: EventTarget,
+}
+impl FromVal for IDBTransaction {
+    fn from_val(v: &emlite::Val) -> Self {
+        IDBTransaction {
+            inner: EventTarget::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for IDBTransaction {
+    type Target = EventTarget;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for IDBTransaction {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<IDBTransaction> for emlite::Val {
+    fn from(s: IDBTransaction) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl IDBTransaction {
+    pub fn object_store_names(&self) -> DOMStringList {
+        self.inner.get("objectStoreNames").as_::<DOMStringList>()
+    }
+}
+impl IDBTransaction {
+    pub fn mode(&self) -> IDBTransactionMode {
+        self.inner.get("mode").as_::<IDBTransactionMode>()
+    }
+}
+impl IDBTransaction {
+    pub fn durability(&self) -> IDBTransactionDurability {
+        self.inner
+            .get("durability")
+            .as_::<IDBTransactionDurability>()
+    }
+}
+impl IDBTransaction {
+    pub fn db(&self) -> IDBDatabase {
+        self.inner.get("db").as_::<IDBDatabase>()
+    }
+}
+impl IDBTransaction {
+    pub fn error(&self) -> DOMException {
+        self.inner.get("error").as_::<DOMException>()
+    }
+}
+impl IDBTransaction {
+    pub fn object_store(&self, name: jsbind::DOMString) -> IDBObjectStore {
+        self.inner
+            .call("objectStore", &[name.into()])
+            .as_::<IDBObjectStore>()
+    }
+}
+impl IDBTransaction {
+    pub fn commit(&self) -> jsbind::Undefined {
+        self.inner.call("commit", &[]).as_::<jsbind::Undefined>()
+    }
+}
+impl IDBTransaction {
+    pub fn abort(&self) -> jsbind::Undefined {
+        self.inner.call("abort", &[]).as_::<jsbind::Undefined>()
+    }
+}
+impl IDBTransaction {
+    pub fn onabort(&self) -> jsbind::Any {
+        self.inner.get("onabort").as_::<jsbind::Any>()
+    }
+
+    pub fn set_onabort(&mut self, value: jsbind::Any) {
+        self.inner.set("onabort", value);
+    }
+}
+impl IDBTransaction {
+    pub fn oncomplete(&self) -> jsbind::Any {
+        self.inner.get("oncomplete").as_::<jsbind::Any>()
+    }
+
+    pub fn set_oncomplete(&mut self, value: jsbind::Any) {
+        self.inner.set("oncomplete", value);
+    }
+}
+impl IDBTransaction {
+    pub fn onerror(&self) -> jsbind::Any {
+        self.inner.get("onerror").as_::<jsbind::Any>()
+    }
+
+    pub fn set_onerror(&mut self, value: jsbind::Any) {
+        self.inner.set("onerror", value);
+    }
+}

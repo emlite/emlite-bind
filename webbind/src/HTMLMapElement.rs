@@ -1,0 +1,61 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct HTMLMapElement {
+    inner: HTMLElement,
+}
+impl FromVal for HTMLMapElement {
+    fn from_val(v: &emlite::Val) -> Self {
+        HTMLMapElement {
+            inner: HTMLElement::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for HTMLMapElement {
+    type Target = HTMLElement;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for HTMLMapElement {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<HTMLMapElement> for emlite::Val {
+    fn from(s: HTMLMapElement) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl HTMLMapElement {
+    pub fn new() -> HTMLMapElement {
+        Self {
+            inner: emlite::Val::global("HTMLMapElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLMapElement {
+    pub fn name(&self) -> jsbind::DOMString {
+        self.inner.get("name").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_name(&mut self, value: jsbind::DOMString) {
+        self.inner.set("name", value);
+    }
+}
+impl HTMLMapElement {
+    pub fn areas(&self) -> HTMLCollection {
+        self.inner.get("areas").as_::<HTMLCollection>()
+    }
+}

@@ -1,0 +1,71 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct VirtualKeyboard {
+    inner: EventTarget,
+}
+impl FromVal for VirtualKeyboard {
+    fn from_val(v: &emlite::Val) -> Self {
+        VirtualKeyboard {
+            inner: EventTarget::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for VirtualKeyboard {
+    type Target = EventTarget;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for VirtualKeyboard {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<VirtualKeyboard> for emlite::Val {
+    fn from(s: VirtualKeyboard) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl VirtualKeyboard {
+    pub fn show(&self) -> jsbind::Undefined {
+        self.inner.call("show", &[]).as_::<jsbind::Undefined>()
+    }
+}
+impl VirtualKeyboard {
+    pub fn hide(&self) -> jsbind::Undefined {
+        self.inner.call("hide", &[]).as_::<jsbind::Undefined>()
+    }
+}
+impl VirtualKeyboard {
+    pub fn bounding_rect(&self) -> DOMRect {
+        self.inner.get("boundingRect").as_::<DOMRect>()
+    }
+}
+impl VirtualKeyboard {
+    pub fn overlays_content(&self) -> bool {
+        self.inner.get("overlaysContent").as_::<bool>()
+    }
+
+    pub fn set_overlays_content(&mut self, value: bool) {
+        self.inner.set("overlaysContent", value);
+    }
+}
+impl VirtualKeyboard {
+    pub fn ongeometrychange(&self) -> jsbind::Any {
+        self.inner.get("ongeometrychange").as_::<jsbind::Any>()
+    }
+
+    pub fn set_ongeometrychange(&mut self, value: jsbind::Any) {
+        self.inner.set("ongeometrychange", value);
+    }
+}

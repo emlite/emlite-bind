@@ -1,0 +1,190 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct EffectTiming {
+    inner: emlite::Val,
+}
+impl FromVal for EffectTiming {
+    fn from_val(v: &emlite::Val) -> Self {
+        EffectTiming { inner: v.clone() }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for EffectTiming {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for EffectTiming {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<EffectTiming> for emlite::Val {
+    fn from(s: EffectTiming) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl EffectTiming {
+    pub fn fill(&self) -> FillMode {
+        self.inner.get("fill").as_::<FillMode>()
+    }
+
+    pub fn set_fill(&mut self, value: FillMode) {
+        self.inner.set("fill", value);
+    }
+}
+impl EffectTiming {
+    pub fn iteration_start(&self) -> f64 {
+        self.inner.get("iterationStart").as_::<f64>()
+    }
+
+    pub fn set_iteration_start(&mut self, value: f64) {
+        self.inner.set("iterationStart", value);
+    }
+}
+impl EffectTiming {
+    pub fn iterations(&self) -> f64 {
+        self.inner.get("iterations").as_::<f64>()
+    }
+
+    pub fn set_iterations(&mut self, value: f64) {
+        self.inner.set("iterations", value);
+    }
+}
+impl EffectTiming {
+    pub fn direction(&self) -> PlaybackDirection {
+        self.inner.get("direction").as_::<PlaybackDirection>()
+    }
+
+    pub fn set_direction(&mut self, value: PlaybackDirection) {
+        self.inner.set("direction", value);
+    }
+}
+impl EffectTiming {
+    pub fn easing(&self) -> jsbind::DOMString {
+        self.inner.get("easing").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_easing(&mut self, value: jsbind::DOMString) {
+        self.inner.set("easing", value);
+    }
+}
+#[derive(Clone, Debug)]
+pub struct ComputedEffectTiming {
+    inner: emlite::Val,
+}
+impl FromVal for ComputedEffectTiming {
+    fn from_val(v: &emlite::Val) -> Self {
+        ComputedEffectTiming { inner: v.clone() }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for ComputedEffectTiming {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for ComputedEffectTiming {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<ComputedEffectTiming> for emlite::Val {
+    fn from(s: ComputedEffectTiming) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl ComputedEffectTiming {
+    pub fn progress(&self) -> f64 {
+        self.inner.get("progress").as_::<f64>()
+    }
+
+    pub fn set_progress(&mut self, value: f64) {
+        self.inner.set("progress", value);
+    }
+}
+impl ComputedEffectTiming {
+    pub fn current_iteration(&self) -> f64 {
+        self.inner.get("currentIteration").as_::<f64>()
+    }
+
+    pub fn set_current_iteration(&mut self, value: f64) {
+        self.inner.set("currentIteration", value);
+    }
+}
+#[derive(Clone, Debug)]
+pub struct WorkletAnimationEffect {
+    inner: emlite::Val,
+}
+impl FromVal for WorkletAnimationEffect {
+    fn from_val(v: &emlite::Val) -> Self {
+        WorkletAnimationEffect {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for WorkletAnimationEffect {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for WorkletAnimationEffect {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<WorkletAnimationEffect> for emlite::Val {
+    fn from(s: WorkletAnimationEffect) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl WorkletAnimationEffect {
+    pub fn get_timing(&self) -> EffectTiming {
+        self.inner.call("getTiming", &[]).as_::<EffectTiming>()
+    }
+}
+impl WorkletAnimationEffect {
+    pub fn get_computed_timing(&self) -> ComputedEffectTiming {
+        self.inner
+            .call("getComputedTiming", &[])
+            .as_::<ComputedEffectTiming>()
+    }
+}
+impl WorkletAnimationEffect {
+    pub fn local_time(&self) -> f64 {
+        self.inner.get("localTime").as_::<f64>()
+    }
+
+    pub fn set_local_time(&mut self, value: f64) {
+        self.inner.set("localTime", value);
+    }
+}

@@ -1,0 +1,73 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct IdentityCredentialError {
+    inner: DOMException,
+}
+impl FromVal for IdentityCredentialError {
+    fn from_val(v: &emlite::Val) -> Self {
+        IdentityCredentialError {
+            inner: DOMException::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for IdentityCredentialError {
+    type Target = DOMException;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for IdentityCredentialError {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<IdentityCredentialError> for emlite::Val {
+    fn from(s: IdentityCredentialError) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl IdentityCredentialError {
+    pub fn new0() -> IdentityCredentialError {
+        Self {
+            inner: emlite::Val::global("IdentityCredentialError")
+                .new(&[])
+                .as_::<DOMException>(),
+        }
+    }
+
+    pub fn new1(message: jsbind::DOMString) -> IdentityCredentialError {
+        Self {
+            inner: emlite::Val::global("IdentityCredentialError")
+                .new(&[message.into()])
+                .as_::<DOMException>(),
+        }
+    }
+
+    pub fn new2(message: jsbind::DOMString, options: jsbind::Any) -> IdentityCredentialError {
+        Self {
+            inner: emlite::Val::global("IdentityCredentialError")
+                .new(&[message.into(), options.into()])
+                .as_::<DOMException>(),
+        }
+    }
+}
+impl IdentityCredentialError {
+    pub fn error(&self) -> jsbind::DOMString {
+        self.inner.get("error").as_::<jsbind::DOMString>()
+    }
+}
+impl IdentityCredentialError {
+    pub fn url(&self) -> jsbind::USVString {
+        self.inner.get("url").as_::<jsbind::USVString>()
+    }
+}

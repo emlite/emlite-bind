@@ -1,0 +1,37 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct OES_fbo_render_mipmap {
+    inner: emlite::Val,
+}
+impl FromVal for OES_fbo_render_mipmap {
+    fn from_val(v: &emlite::Val) -> Self {
+        OES_fbo_render_mipmap {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for OES_fbo_render_mipmap {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for OES_fbo_render_mipmap {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<OES_fbo_render_mipmap> for emlite::Val {
+    fn from(s: OES_fbo_render_mipmap) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}

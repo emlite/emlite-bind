@@ -1,0 +1,58 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct CryptoKey {
+    inner: emlite::Val,
+}
+impl FromVal for CryptoKey {
+    fn from_val(v: &emlite::Val) -> Self {
+        CryptoKey {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for CryptoKey {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for CryptoKey {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<CryptoKey> for emlite::Val {
+    fn from(s: CryptoKey) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl CryptoKey {
+    pub fn type_(&self) -> KeyType {
+        self.inner.get("type").as_::<KeyType>()
+    }
+}
+impl CryptoKey {
+    pub fn extractable(&self) -> bool {
+        self.inner.get("extractable").as_::<bool>()
+    }
+}
+impl CryptoKey {
+    pub fn algorithm(&self) -> jsbind::Object {
+        self.inner.get("algorithm").as_::<jsbind::Object>()
+    }
+}
+impl CryptoKey {
+    pub fn usages(&self) -> jsbind::Object {
+        self.inner.get("usages").as_::<jsbind::Object>()
+    }
+}

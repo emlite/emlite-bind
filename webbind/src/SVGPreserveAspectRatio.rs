@@ -1,0 +1,56 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct SVGPreserveAspectRatio {
+    inner: emlite::Val,
+}
+impl FromVal for SVGPreserveAspectRatio {
+    fn from_val(v: &emlite::Val) -> Self {
+        SVGPreserveAspectRatio {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for SVGPreserveAspectRatio {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for SVGPreserveAspectRatio {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<SVGPreserveAspectRatio> for emlite::Val {
+    fn from(s: SVGPreserveAspectRatio) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl SVGPreserveAspectRatio {
+    pub fn align(&self) -> u16 {
+        self.inner.get("align").as_::<u16>()
+    }
+
+    pub fn set_align(&mut self, value: u16) {
+        self.inner.set("align", value);
+    }
+}
+impl SVGPreserveAspectRatio {
+    pub fn meet_or_slice(&self) -> u16 {
+        self.inner.get("meetOrSlice").as_::<u16>()
+    }
+
+    pub fn set_meet_or_slice(&mut self, value: u16) {
+        self.inner.set("meetOrSlice", value);
+    }
+}

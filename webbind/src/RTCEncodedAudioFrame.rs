@@ -1,0 +1,126 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct RTCEncodedAudioFrameMetadata {
+    inner: emlite::Val,
+}
+impl FromVal for RTCEncodedAudioFrameMetadata {
+    fn from_val(v: &emlite::Val) -> Self {
+        RTCEncodedAudioFrameMetadata { inner: v.clone() }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for RTCEncodedAudioFrameMetadata {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for RTCEncodedAudioFrameMetadata {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<RTCEncodedAudioFrameMetadata> for emlite::Val {
+    fn from(s: RTCEncodedAudioFrameMetadata) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl RTCEncodedAudioFrameMetadata {
+    pub fn sequence_number(&self) -> i16 {
+        self.inner.get("sequenceNumber").as_::<i16>()
+    }
+
+    pub fn set_sequence_number(&mut self, value: i16) {
+        self.inner.set("sequenceNumber", value);
+    }
+}
+impl RTCEncodedAudioFrameMetadata {
+    pub fn audio_level(&self) -> f64 {
+        self.inner.get("audioLevel").as_::<f64>()
+    }
+
+    pub fn set_audio_level(&mut self, value: f64) {
+        self.inner.set("audioLevel", value);
+    }
+}
+#[derive(Clone, Debug)]
+pub struct RTCEncodedAudioFrame {
+    inner: emlite::Val,
+}
+impl FromVal for RTCEncodedAudioFrame {
+    fn from_val(v: &emlite::Val) -> Self {
+        RTCEncodedAudioFrame {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for RTCEncodedAudioFrame {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for RTCEncodedAudioFrame {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<RTCEncodedAudioFrame> for emlite::Val {
+    fn from(s: RTCEncodedAudioFrame) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl RTCEncodedAudioFrame {
+    pub fn new0(original_frame: RTCEncodedAudioFrame) -> RTCEncodedAudioFrame {
+        Self {
+            inner: emlite::Val::global("RTCEncodedAudioFrame")
+                .new(&[original_frame.into()])
+                .as_::<emlite::Val>(),
+        }
+    }
+
+    pub fn new1(
+        original_frame: RTCEncodedAudioFrame,
+        options: jsbind::Any,
+    ) -> RTCEncodedAudioFrame {
+        Self {
+            inner: emlite::Val::global("RTCEncodedAudioFrame")
+                .new(&[original_frame.into(), options.into()])
+                .as_::<emlite::Val>(),
+        }
+    }
+}
+impl RTCEncodedAudioFrame {
+    pub fn data(&self) -> jsbind::ArrayBuffer {
+        self.inner.get("data").as_::<jsbind::ArrayBuffer>()
+    }
+
+    pub fn set_data(&mut self, value: jsbind::ArrayBuffer) {
+        self.inner.set("data", value);
+    }
+}
+impl RTCEncodedAudioFrame {
+    pub fn get_metadata(&self) -> RTCEncodedAudioFrameMetadata {
+        self.inner
+            .call("getMetadata", &[])
+            .as_::<RTCEncodedAudioFrameMetadata>()
+    }
+}

@@ -1,0 +1,58 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct VisibilityStateEntry {
+    inner: PerformanceEntry,
+}
+impl FromVal for VisibilityStateEntry {
+    fn from_val(v: &emlite::Val) -> Self {
+        VisibilityStateEntry {
+            inner: PerformanceEntry::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for VisibilityStateEntry {
+    type Target = PerformanceEntry;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for VisibilityStateEntry {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<VisibilityStateEntry> for emlite::Val {
+    fn from(s: VisibilityStateEntry) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl VisibilityStateEntry {
+    pub fn name(&self) -> jsbind::DOMString {
+        self.inner.get("name").as_::<jsbind::DOMString>()
+    }
+}
+impl VisibilityStateEntry {
+    pub fn entry_type(&self) -> jsbind::DOMString {
+        self.inner.get("entryType").as_::<jsbind::DOMString>()
+    }
+}
+impl VisibilityStateEntry {
+    pub fn start_time(&self) -> jsbind::Any {
+        self.inner.get("startTime").as_::<jsbind::Any>()
+    }
+}
+impl VisibilityStateEntry {
+    pub fn duration(&self) -> u32 {
+        self.inner.get("duration").as_::<u32>()
+    }
+}

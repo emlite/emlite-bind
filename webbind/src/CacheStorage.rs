@@ -1,0 +1,124 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct MultiCacheQueryOptions {
+    inner: emlite::Val,
+}
+impl FromVal for MultiCacheQueryOptions {
+    fn from_val(v: &emlite::Val) -> Self {
+        MultiCacheQueryOptions { inner: v.clone() }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for MultiCacheQueryOptions {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for MultiCacheQueryOptions {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<MultiCacheQueryOptions> for emlite::Val {
+    fn from(s: MultiCacheQueryOptions) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl MultiCacheQueryOptions {
+    pub fn cache_name(&self) -> jsbind::DOMString {
+        self.inner.get("cacheName").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_cache_name(&mut self, value: jsbind::DOMString) {
+        self.inner.set("cacheName", value);
+    }
+}
+#[derive(Clone, Debug)]
+pub struct CacheStorage {
+    inner: emlite::Val,
+}
+impl FromVal for CacheStorage {
+    fn from_val(v: &emlite::Val) -> Self {
+        CacheStorage {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for CacheStorage {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for CacheStorage {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<CacheStorage> for emlite::Val {
+    fn from(s: CacheStorage) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl CacheStorage {
+    pub fn match_0(&self, request: jsbind::Any) -> jsbind::Promise {
+        self.inner
+            .call("match", &[request.into()])
+            .as_::<jsbind::Promise>()
+    }
+
+    pub fn match_1(
+        &self,
+        request: jsbind::Any,
+        options: MultiCacheQueryOptions,
+    ) -> jsbind::Promise {
+        self.inner
+            .call("match", &[request.into(), options.into()])
+            .as_::<jsbind::Promise>()
+    }
+}
+impl CacheStorage {
+    pub fn has(&self, cache_name: jsbind::DOMString) -> jsbind::Promise {
+        self.inner
+            .call("has", &[cache_name.into()])
+            .as_::<jsbind::Promise>()
+    }
+}
+impl CacheStorage {
+    pub fn open(&self, cache_name: jsbind::DOMString) -> jsbind::Promise {
+        self.inner
+            .call("open", &[cache_name.into()])
+            .as_::<jsbind::Promise>()
+    }
+}
+impl CacheStorage {
+    pub fn delete(&self, cache_name: jsbind::DOMString) -> jsbind::Promise {
+        self.inner
+            .call("delete", &[cache_name.into()])
+            .as_::<jsbind::Promise>()
+    }
+}
+impl CacheStorage {
+    pub fn keys(&self) -> jsbind::Promise {
+        self.inner.call("keys", &[]).as_::<jsbind::Promise>()
+    }
+}

@@ -1,0 +1,43 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct TrustedScriptURL {
+    inner: emlite::Val,
+}
+impl FromVal for TrustedScriptURL {
+    fn from_val(v: &emlite::Val) -> Self {
+        TrustedScriptURL {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for TrustedScriptURL {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for TrustedScriptURL {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<TrustedScriptURL> for emlite::Val {
+    fn from(s: TrustedScriptURL) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl TrustedScriptURL {
+    pub fn to_json(&self) -> jsbind::USVString {
+        self.inner.call("toJSON", &[]).as_::<jsbind::USVString>()
+    }
+}

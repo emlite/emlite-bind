@@ -1,0 +1,76 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct Storage {
+    inner: emlite::Val,
+}
+impl FromVal for Storage {
+    fn from_val(v: &emlite::Val) -> Self {
+        Storage {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for Storage {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for Storage {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<Storage> for emlite::Val {
+    fn from(s: Storage) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl Storage {
+    pub fn length(&self) -> u32 {
+        self.inner.get("length").as_::<u32>()
+    }
+}
+impl Storage {
+    pub fn key(&self, index: u32) -> jsbind::DOMString {
+        self.inner
+            .call("key", &[index.into()])
+            .as_::<jsbind::DOMString>()
+    }
+}
+impl Storage {
+    pub fn get_item(&self, key: jsbind::DOMString) -> jsbind::DOMString {
+        self.inner
+            .call("getItem", &[key.into()])
+            .as_::<jsbind::DOMString>()
+    }
+}
+impl Storage {
+    pub fn set_item(&self, key: jsbind::DOMString, value: jsbind::DOMString) -> jsbind::Undefined {
+        self.inner
+            .call("setItem", &[key.into(), value.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}
+impl Storage {
+    pub fn remove_item(&self, key: jsbind::DOMString) -> jsbind::Undefined {
+        self.inner
+            .call("removeItem", &[key.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}
+impl Storage {
+    pub fn clear(&self) -> jsbind::Undefined {
+        self.inner.call("clear", &[]).as_::<jsbind::Undefined>()
+    }
+}

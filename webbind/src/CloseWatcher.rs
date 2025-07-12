@@ -1,0 +1,90 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct CloseWatcher {
+    inner: EventTarget,
+}
+impl FromVal for CloseWatcher {
+    fn from_val(v: &emlite::Val) -> Self {
+        CloseWatcher {
+            inner: EventTarget::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for CloseWatcher {
+    type Target = EventTarget;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for CloseWatcher {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<CloseWatcher> for emlite::Val {
+    fn from(s: CloseWatcher) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl CloseWatcher {
+    pub fn new0() -> CloseWatcher {
+        Self {
+            inner: emlite::Val::global("CloseWatcher")
+                .new(&[])
+                .as_::<EventTarget>(),
+        }
+    }
+
+    pub fn new1(options: jsbind::Any) -> CloseWatcher {
+        Self {
+            inner: emlite::Val::global("CloseWatcher")
+                .new(&[options.into()])
+                .as_::<EventTarget>(),
+        }
+    }
+}
+impl CloseWatcher {
+    pub fn request_close(&self) -> jsbind::Undefined {
+        self.inner
+            .call("requestClose", &[])
+            .as_::<jsbind::Undefined>()
+    }
+}
+impl CloseWatcher {
+    pub fn close(&self) -> jsbind::Undefined {
+        self.inner.call("close", &[]).as_::<jsbind::Undefined>()
+    }
+}
+impl CloseWatcher {
+    pub fn destroy(&self) -> jsbind::Undefined {
+        self.inner.call("destroy", &[]).as_::<jsbind::Undefined>()
+    }
+}
+impl CloseWatcher {
+    pub fn oncancel(&self) -> jsbind::Any {
+        self.inner.get("oncancel").as_::<jsbind::Any>()
+    }
+
+    pub fn set_oncancel(&mut self, value: jsbind::Any) {
+        self.inner.set("oncancel", value);
+    }
+}
+impl CloseWatcher {
+    pub fn onclose(&self) -> jsbind::Any {
+        self.inner.get("onclose").as_::<jsbind::Any>()
+    }
+
+    pub fn set_onclose(&mut self, value: jsbind::Any) {
+        self.inner.set("onclose", value);
+    }
+}

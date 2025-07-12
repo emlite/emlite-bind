@@ -1,0 +1,60 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct NavigationCurrentEntryChangeEvent {
+    inner: Event,
+}
+impl FromVal for NavigationCurrentEntryChangeEvent {
+    fn from_val(v: &emlite::Val) -> Self {
+        NavigationCurrentEntryChangeEvent {
+            inner: Event::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for NavigationCurrentEntryChangeEvent {
+    type Target = Event;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for NavigationCurrentEntryChangeEvent {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<NavigationCurrentEntryChangeEvent> for emlite::Val {
+    fn from(s: NavigationCurrentEntryChangeEvent) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl NavigationCurrentEntryChangeEvent {
+    pub fn new(
+        type_: jsbind::DOMString,
+        event_init_dict: jsbind::Any,
+    ) -> NavigationCurrentEntryChangeEvent {
+        Self {
+            inner: emlite::Val::global("NavigationCurrentEntryChangeEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
+    }
+}
+impl NavigationCurrentEntryChangeEvent {
+    pub fn navigation_type(&self) -> NavigationType {
+        self.inner.get("navigationType").as_::<NavigationType>()
+    }
+}
+impl NavigationCurrentEntryChangeEvent {
+    pub fn from(&self) -> NavigationHistoryEntry {
+        self.inner.get("from").as_::<NavigationHistoryEntry>()
+    }
+}

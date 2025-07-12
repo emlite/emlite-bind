@@ -1,0 +1,55 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct DocumentPictureInPictureEvent {
+    inner: Event,
+}
+impl FromVal for DocumentPictureInPictureEvent {
+    fn from_val(v: &emlite::Val) -> Self {
+        DocumentPictureInPictureEvent {
+            inner: Event::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for DocumentPictureInPictureEvent {
+    type Target = Event;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for DocumentPictureInPictureEvent {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<DocumentPictureInPictureEvent> for emlite::Val {
+    fn from(s: DocumentPictureInPictureEvent) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl DocumentPictureInPictureEvent {
+    pub fn new(
+        type_: jsbind::DOMString,
+        event_init_dict: jsbind::Any,
+    ) -> DocumentPictureInPictureEvent {
+        Self {
+            inner: emlite::Val::global("DocumentPictureInPictureEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
+    }
+}
+impl DocumentPictureInPictureEvent {
+    pub fn window(&self) -> Window {
+        self.inner.get("window").as_::<Window>()
+    }
+}

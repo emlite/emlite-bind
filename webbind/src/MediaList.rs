@@ -1,0 +1,73 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct MediaList {
+    inner: emlite::Val,
+}
+impl FromVal for MediaList {
+    fn from_val(v: &emlite::Val) -> Self {
+        MediaList {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for MediaList {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for MediaList {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<MediaList> for emlite::Val {
+    fn from(s: MediaList) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl MediaList {
+    pub fn media_text(&self) -> jsbind::CSSOMString {
+        self.inner.get("mediaText").as_::<jsbind::CSSOMString>()
+    }
+
+    pub fn set_media_text(&mut self, value: jsbind::CSSOMString) {
+        self.inner.set("mediaText", value);
+    }
+}
+impl MediaList {
+    pub fn length(&self) -> u32 {
+        self.inner.get("length").as_::<u32>()
+    }
+}
+impl MediaList {
+    pub fn item(&self, index: u32) -> jsbind::CSSOMString {
+        self.inner
+            .call("item", &[index.into()])
+            .as_::<jsbind::CSSOMString>()
+    }
+}
+impl MediaList {
+    pub fn append_medium(&self, medium: jsbind::CSSOMString) -> jsbind::Undefined {
+        self.inner
+            .call("appendMedium", &[medium.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}
+impl MediaList {
+    pub fn delete_medium(&self, medium: jsbind::CSSOMString) -> jsbind::Undefined {
+        self.inner
+            .call("deleteMedium", &[medium.into()])
+            .as_::<jsbind::Undefined>()
+    }
+}

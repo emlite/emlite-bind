@@ -1,0 +1,47 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct MediaStreamTrackAudioSourceNode {
+    inner: AudioNode,
+}
+impl FromVal for MediaStreamTrackAudioSourceNode {
+    fn from_val(v: &emlite::Val) -> Self {
+        MediaStreamTrackAudioSourceNode {
+            inner: AudioNode::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for MediaStreamTrackAudioSourceNode {
+    type Target = AudioNode;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for MediaStreamTrackAudioSourceNode {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<MediaStreamTrackAudioSourceNode> for emlite::Val {
+    fn from(s: MediaStreamTrackAudioSourceNode) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl MediaStreamTrackAudioSourceNode {
+    pub fn new(context: AudioContext, options: jsbind::Any) -> MediaStreamTrackAudioSourceNode {
+        Self {
+            inner: emlite::Val::global("MediaStreamTrackAudioSourceNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
+        }
+    }
+}

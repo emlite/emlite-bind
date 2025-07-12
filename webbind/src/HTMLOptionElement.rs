@@ -1,0 +1,111 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct HTMLOptionElement {
+    inner: HTMLElement,
+}
+impl FromVal for HTMLOptionElement {
+    fn from_val(v: &emlite::Val) -> Self {
+        HTMLOptionElement {
+            inner: HTMLElement::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for HTMLOptionElement {
+    type Target = HTMLElement;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for HTMLOptionElement {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<HTMLOptionElement> for emlite::Val {
+    fn from(s: HTMLOptionElement) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl HTMLOptionElement {
+    pub fn new() -> HTMLOptionElement {
+        Self {
+            inner: emlite::Val::global("HTMLOptionElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLOptionElement {
+    pub fn disabled(&self) -> bool {
+        self.inner.get("disabled").as_::<bool>()
+    }
+
+    pub fn set_disabled(&mut self, value: bool) {
+        self.inner.set("disabled", value);
+    }
+}
+impl HTMLOptionElement {
+    pub fn form(&self) -> HTMLFormElement {
+        self.inner.get("form").as_::<HTMLFormElement>()
+    }
+}
+impl HTMLOptionElement {
+    pub fn label(&self) -> jsbind::DOMString {
+        self.inner.get("label").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_label(&mut self, value: jsbind::DOMString) {
+        self.inner.set("label", value);
+    }
+}
+impl HTMLOptionElement {
+    pub fn default_selected(&self) -> bool {
+        self.inner.get("defaultSelected").as_::<bool>()
+    }
+
+    pub fn set_default_selected(&mut self, value: bool) {
+        self.inner.set("defaultSelected", value);
+    }
+}
+impl HTMLOptionElement {
+    pub fn selected(&self) -> bool {
+        self.inner.get("selected").as_::<bool>()
+    }
+
+    pub fn set_selected(&mut self, value: bool) {
+        self.inner.set("selected", value);
+    }
+}
+impl HTMLOptionElement {
+    pub fn value(&self) -> jsbind::DOMString {
+        self.inner.get("value").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_value(&mut self, value: jsbind::DOMString) {
+        self.inner.set("value", value);
+    }
+}
+impl HTMLOptionElement {
+    pub fn text(&self) -> jsbind::DOMString {
+        self.inner.get("text").as_::<jsbind::DOMString>()
+    }
+
+    pub fn set_text(&mut self, value: jsbind::DOMString) {
+        self.inner.set("text", value);
+    }
+}
+impl HTMLOptionElement {
+    pub fn index(&self) -> i32 {
+        self.inner.get("index").as_::<i32>()
+    }
+}

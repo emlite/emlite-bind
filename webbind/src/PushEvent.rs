@@ -1,0 +1,60 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct PushEvent {
+    inner: ExtendableEvent,
+}
+impl FromVal for PushEvent {
+    fn from_val(v: &emlite::Val) -> Self {
+        PushEvent {
+            inner: ExtendableEvent::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for PushEvent {
+    type Target = ExtendableEvent;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for PushEvent {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<PushEvent> for emlite::Val {
+    fn from(s: PushEvent) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl PushEvent {
+    pub fn new0(type_: jsbind::DOMString) -> PushEvent {
+        Self {
+            inner: emlite::Val::global("PushEvent")
+                .new(&[type_.into()])
+                .as_::<ExtendableEvent>(),
+        }
+    }
+
+    pub fn new1(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> PushEvent {
+        Self {
+            inner: emlite::Val::global("PushEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<ExtendableEvent>(),
+        }
+    }
+}
+impl PushEvent {
+    pub fn data(&self) -> PushMessageData {
+        self.inner.get("data").as_::<PushMessageData>()
+    }
+}

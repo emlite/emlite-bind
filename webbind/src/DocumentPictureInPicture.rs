@@ -1,0 +1,135 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct DocumentPictureInPictureOptions {
+    inner: emlite::Val,
+}
+impl FromVal for DocumentPictureInPictureOptions {
+    fn from_val(v: &emlite::Val) -> Self {
+        DocumentPictureInPictureOptions { inner: v.clone() }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for DocumentPictureInPictureOptions {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for DocumentPictureInPictureOptions {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<DocumentPictureInPictureOptions> for emlite::Val {
+    fn from(s: DocumentPictureInPictureOptions) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl DocumentPictureInPictureOptions {
+    pub fn width(&self) -> u64 {
+        self.inner.get("width").as_::<u64>()
+    }
+
+    pub fn set_width(&mut self, value: u64) {
+        self.inner.set("width", value);
+    }
+}
+impl DocumentPictureInPictureOptions {
+    pub fn height(&self) -> u64 {
+        self.inner.get("height").as_::<u64>()
+    }
+
+    pub fn set_height(&mut self, value: u64) {
+        self.inner.set("height", value);
+    }
+}
+impl DocumentPictureInPictureOptions {
+    pub fn disallow_return_to_opener(&self) -> bool {
+        self.inner.get("disallowReturnToOpener").as_::<bool>()
+    }
+
+    pub fn set_disallow_return_to_opener(&mut self, value: bool) {
+        self.inner.set("disallowReturnToOpener", value);
+    }
+}
+impl DocumentPictureInPictureOptions {
+    pub fn prefer_initial_window_placement(&self) -> bool {
+        self.inner.get("preferInitialWindowPlacement").as_::<bool>()
+    }
+
+    pub fn set_prefer_initial_window_placement(&mut self, value: bool) {
+        self.inner.set("preferInitialWindowPlacement", value);
+    }
+}
+#[derive(Clone, Debug)]
+pub struct DocumentPictureInPicture {
+    inner: EventTarget,
+}
+impl FromVal for DocumentPictureInPicture {
+    fn from_val(v: &emlite::Val) -> Self {
+        DocumentPictureInPicture {
+            inner: EventTarget::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for DocumentPictureInPicture {
+    type Target = EventTarget;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for DocumentPictureInPicture {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<DocumentPictureInPicture> for emlite::Val {
+    fn from(s: DocumentPictureInPicture) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl DocumentPictureInPicture {
+    pub fn request_window0(&self) -> jsbind::Promise {
+        self.inner
+            .call("requestWindow", &[])
+            .as_::<jsbind::Promise>()
+    }
+
+    pub fn request_window1(&self, options: DocumentPictureInPictureOptions) -> jsbind::Promise {
+        self.inner
+            .call("requestWindow", &[options.into()])
+            .as_::<jsbind::Promise>()
+    }
+}
+impl DocumentPictureInPicture {
+    pub fn window(&self) -> Window {
+        self.inner.get("window").as_::<Window>()
+    }
+}
+impl DocumentPictureInPicture {
+    pub fn onenter(&self) -> jsbind::Any {
+        self.inner.get("onenter").as_::<jsbind::Any>()
+    }
+
+    pub fn set_onenter(&mut self, value: jsbind::Any) {
+        self.inner.set("onenter", value);
+    }
+}

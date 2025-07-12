@@ -1,0 +1,70 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct Accelerometer {
+    inner: Sensor,
+}
+impl FromVal for Accelerometer {
+    fn from_val(v: &emlite::Val) -> Self {
+        Accelerometer {
+            inner: Sensor::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for Accelerometer {
+    type Target = Sensor;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for Accelerometer {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<Accelerometer> for emlite::Val {
+    fn from(s: Accelerometer) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl Accelerometer {
+    pub fn new0() -> Accelerometer {
+        Self {
+            inner: emlite::Val::global("Accelerometer")
+                .new(&[])
+                .as_::<Sensor>(),
+        }
+    }
+
+    pub fn new1(options: jsbind::Any) -> Accelerometer {
+        Self {
+            inner: emlite::Val::global("Accelerometer")
+                .new(&[options.into()])
+                .as_::<Sensor>(),
+        }
+    }
+}
+impl Accelerometer {
+    pub fn x(&self) -> f64 {
+        self.inner.get("x").as_::<f64>()
+    }
+}
+impl Accelerometer {
+    pub fn y(&self) -> f64 {
+        self.inner.get("y").as_::<f64>()
+    }
+}
+impl Accelerometer {
+    pub fn z(&self) -> f64 {
+        self.inner.get("z").as_::<f64>()
+    }
+}

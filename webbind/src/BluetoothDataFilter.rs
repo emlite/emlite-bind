@@ -1,0 +1,65 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct BluetoothDataFilter {
+    inner: emlite::Val,
+}
+impl FromVal for BluetoothDataFilter {
+    fn from_val(v: &emlite::Val) -> Self {
+        BluetoothDataFilter {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for BluetoothDataFilter {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for BluetoothDataFilter {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<BluetoothDataFilter> for emlite::Val {
+    fn from(s: BluetoothDataFilter) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl BluetoothDataFilter {
+    pub fn new0() -> BluetoothDataFilter {
+        Self {
+            inner: emlite::Val::global("BluetoothDataFilter")
+                .new(&[])
+                .as_::<emlite::Val>(),
+        }
+    }
+
+    pub fn new1(init: jsbind::Any) -> BluetoothDataFilter {
+        Self {
+            inner: emlite::Val::global("BluetoothDataFilter")
+                .new(&[init.into()])
+                .as_::<emlite::Val>(),
+        }
+    }
+}
+impl BluetoothDataFilter {
+    pub fn data_prefix(&self) -> jsbind::ArrayBuffer {
+        self.inner.get("dataPrefix").as_::<jsbind::ArrayBuffer>()
+    }
+}
+impl BluetoothDataFilter {
+    pub fn mask(&self) -> jsbind::ArrayBuffer {
+        self.inner.get("mask").as_::<jsbind::ArrayBuffer>()
+    }
+}

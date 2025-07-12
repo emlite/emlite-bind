@@ -1,0 +1,56 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct HTMLDListElement {
+    inner: HTMLElement,
+}
+impl FromVal for HTMLDListElement {
+    fn from_val(v: &emlite::Val) -> Self {
+        HTMLDListElement {
+            inner: HTMLElement::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for HTMLDListElement {
+    type Target = HTMLElement;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for HTMLDListElement {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<HTMLDListElement> for emlite::Val {
+    fn from(s: HTMLDListElement) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl HTMLDListElement {
+    pub fn new() -> HTMLDListElement {
+        Self {
+            inner: emlite::Val::global("HTMLDListElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
+        }
+    }
+}
+impl HTMLDListElement {
+    pub fn compact(&self) -> bool {
+        self.inner.get("compact").as_::<bool>()
+    }
+
+    pub fn set_compact(&mut self, value: bool) {
+        self.inner.set("compact", value);
+    }
+}

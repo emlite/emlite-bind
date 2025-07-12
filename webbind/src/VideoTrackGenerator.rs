@@ -1,0 +1,66 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct VideoTrackGenerator {
+    inner: emlite::Val,
+}
+impl FromVal for VideoTrackGenerator {
+    fn from_val(v: &emlite::Val) -> Self {
+        VideoTrackGenerator {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for VideoTrackGenerator {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for VideoTrackGenerator {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<VideoTrackGenerator> for emlite::Val {
+    fn from(s: VideoTrackGenerator) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl VideoTrackGenerator {
+    pub fn new() -> VideoTrackGenerator {
+        Self {
+            inner: emlite::Val::global("VideoTrackGenerator")
+                .new(&[])
+                .as_::<emlite::Val>(),
+        }
+    }
+}
+impl VideoTrackGenerator {
+    pub fn writable(&self) -> WritableStream {
+        self.inner.get("writable").as_::<WritableStream>()
+    }
+}
+impl VideoTrackGenerator {
+    pub fn muted(&self) -> bool {
+        self.inner.get("muted").as_::<bool>()
+    }
+
+    pub fn set_muted(&mut self, value: bool) {
+        self.inner.set("muted", value);
+    }
+}
+impl VideoTrackGenerator {
+    pub fn track(&self) -> MediaStreamTrack {
+        self.inner.get("track").as_::<MediaStreamTrack>()
+    }
+}

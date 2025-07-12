@@ -1,0 +1,52 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct ScriptProcessorNode {
+    inner: AudioNode,
+}
+impl FromVal for ScriptProcessorNode {
+    fn from_val(v: &emlite::Val) -> Self {
+        ScriptProcessorNode {
+            inner: AudioNode::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for ScriptProcessorNode {
+    type Target = AudioNode;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for ScriptProcessorNode {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<ScriptProcessorNode> for emlite::Val {
+    fn from(s: ScriptProcessorNode) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl ScriptProcessorNode {
+    pub fn onaudioprocess(&self) -> jsbind::Any {
+        self.inner.get("onaudioprocess").as_::<jsbind::Any>()
+    }
+
+    pub fn set_onaudioprocess(&mut self, value: jsbind::Any) {
+        self.inner.set("onaudioprocess", value);
+    }
+}
+impl ScriptProcessorNode {
+    pub fn buffer_size(&self) -> i32 {
+        self.inner.get("bufferSize").as_::<i32>()
+    }
+}

@@ -1,0 +1,52 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct CSSTransformComponent {
+    inner: emlite::Val,
+}
+impl FromVal for CSSTransformComponent {
+    fn from_val(v: &emlite::Val) -> Self {
+        CSSTransformComponent {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for CSSTransformComponent {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for CSSTransformComponent {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<CSSTransformComponent> for emlite::Val {
+    fn from(s: CSSTransformComponent) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl CSSTransformComponent {
+    pub fn is2_d(&self) -> bool {
+        self.inner.get("is2D").as_::<bool>()
+    }
+
+    pub fn set_is2_d(&mut self, value: bool) {
+        self.inner.set("is2D", value);
+    }
+}
+impl CSSTransformComponent {
+    pub fn to_matrix(&self) -> DOMMatrix {
+        self.inner.call("toMatrix", &[]).as_::<DOMMatrix>()
+    }
+}

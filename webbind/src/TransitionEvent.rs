@@ -1,0 +1,73 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct TransitionEvent {
+    inner: Event,
+}
+impl FromVal for TransitionEvent {
+    fn from_val(v: &emlite::Val) -> Self {
+        TransitionEvent {
+            inner: Event::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for TransitionEvent {
+    type Target = Event;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for TransitionEvent {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<TransitionEvent> for emlite::Val {
+    fn from(s: TransitionEvent) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl TransitionEvent {
+    pub fn new0(type_: jsbind::CSSOMString) -> TransitionEvent {
+        Self {
+            inner: emlite::Val::global("TransitionEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
+        }
+    }
+
+    pub fn new1(
+        type_: jsbind::CSSOMString,
+        transition_event_init_dict: jsbind::Any,
+    ) -> TransitionEvent {
+        Self {
+            inner: emlite::Val::global("TransitionEvent")
+                .new(&[type_.into(), transition_event_init_dict.into()])
+                .as_::<Event>(),
+        }
+    }
+}
+impl TransitionEvent {
+    pub fn property_name(&self) -> jsbind::CSSOMString {
+        self.inner.get("propertyName").as_::<jsbind::CSSOMString>()
+    }
+}
+impl TransitionEvent {
+    pub fn elapsed_time(&self) -> f64 {
+        self.inner.get("elapsedTime").as_::<f64>()
+    }
+}
+impl TransitionEvent {
+    pub fn pseudo_element(&self) -> jsbind::CSSOMString {
+        self.inner.get("pseudoElement").as_::<jsbind::CSSOMString>()
+    }
+}

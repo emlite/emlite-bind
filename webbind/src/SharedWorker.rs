@@ -1,0 +1,69 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct SharedWorker {
+    inner: EventTarget,
+}
+impl FromVal for SharedWorker {
+    fn from_val(v: &emlite::Val) -> Self {
+        SharedWorker {
+            inner: EventTarget::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for SharedWorker {
+    type Target = EventTarget;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for SharedWorker {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<SharedWorker> for emlite::Val {
+    fn from(s: SharedWorker) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl SharedWorker {
+    pub fn new0(script_url: jsbind::Any) -> SharedWorker {
+        Self {
+            inner: emlite::Val::global("SharedWorker")
+                .new(&[script_url.into()])
+                .as_::<EventTarget>(),
+        }
+    }
+
+    pub fn new1(script_url: jsbind::Any, options: jsbind::Any) -> SharedWorker {
+        Self {
+            inner: emlite::Val::global("SharedWorker")
+                .new(&[script_url.into(), options.into()])
+                .as_::<EventTarget>(),
+        }
+    }
+}
+impl SharedWorker {
+    pub fn port(&self) -> jsbind::Any {
+        self.inner.get("port").as_::<jsbind::Any>()
+    }
+}
+impl SharedWorker {
+    pub fn onerror(&self) -> jsbind::Any {
+        self.inner.get("onerror").as_::<jsbind::Any>()
+    }
+
+    pub fn set_onerror(&mut self, value: jsbind::Any) {
+        self.inner.set("onerror", value);
+    }
+}

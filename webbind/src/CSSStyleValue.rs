@@ -1,0 +1,55 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct CSSStyleValue {
+    inner: emlite::Val,
+}
+impl FromVal for CSSStyleValue {
+    fn from_val(v: &emlite::Val) -> Self {
+        CSSStyleValue {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for CSSStyleValue {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for CSSStyleValue {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<CSSStyleValue> for emlite::Val {
+    fn from(s: CSSStyleValue) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl CSSStyleValue {
+    pub fn parse(property: jsbind::USVString, css_text: jsbind::USVString) -> CSSStyleValue {
+        emlite::Val::global("cssstylevalue")
+            .call("parse", &[property.into(), css_text.into()])
+            .as_::<CSSStyleValue>()
+    }
+}
+impl CSSStyleValue {
+    pub fn parse_all(
+        property: jsbind::USVString,
+        css_text: jsbind::USVString,
+    ) -> jsbind::Sequence<CSSStyleValue> {
+        emlite::Val::global("cssstylevalue")
+            .call("parseAll", &[property.into(), css_text.into()])
+            .as_::<jsbind::Sequence<CSSStyleValue>>()
+    }
+}

@@ -1,0 +1,67 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct SFrameTransformErrorEvent {
+    inner: Event,
+}
+impl FromVal for SFrameTransformErrorEvent {
+    fn from_val(v: &emlite::Val) -> Self {
+        SFrameTransformErrorEvent {
+            inner: Event::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for SFrameTransformErrorEvent {
+    type Target = Event;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for SFrameTransformErrorEvent {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<SFrameTransformErrorEvent> for emlite::Val {
+    fn from(s: SFrameTransformErrorEvent) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl SFrameTransformErrorEvent {
+    pub fn new(
+        type_: jsbind::DOMString,
+        event_init_dict: jsbind::Any,
+    ) -> SFrameTransformErrorEvent {
+        Self {
+            inner: emlite::Val::global("SFrameTransformErrorEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
+        }
+    }
+}
+impl SFrameTransformErrorEvent {
+    pub fn error_type(&self) -> SFrameTransformErrorEventType {
+        self.inner
+            .get("errorType")
+            .as_::<SFrameTransformErrorEventType>()
+    }
+}
+impl SFrameTransformErrorEvent {
+    pub fn key_id(&self) -> jsbind::Any {
+        self.inner.get("keyID").as_::<jsbind::Any>()
+    }
+}
+impl SFrameTransformErrorEvent {
+    pub fn frame(&self) -> jsbind::Any {
+        self.inner.get("frame").as_::<jsbind::Any>()
+    }
+}

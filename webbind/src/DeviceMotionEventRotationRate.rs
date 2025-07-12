@@ -1,0 +1,53 @@
+use super::*;
+
+#[derive(Clone, Debug)]
+pub struct DeviceMotionEventRotationRate {
+    inner: emlite::Val,
+}
+impl FromVal for DeviceMotionEventRotationRate {
+    fn from_val(v: &emlite::Val) -> Self {
+        DeviceMotionEventRotationRate {
+            inner: emlite::Val::from_val(v),
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+impl std::ops::Deref for DeviceMotionEventRotationRate {
+    type Target = emlite::Val;
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+impl std::ops::DerefMut for DeviceMotionEventRotationRate {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl From<DeviceMotionEventRotationRate> for emlite::Val {
+    fn from(s: DeviceMotionEventRotationRate) -> emlite::Val {
+        let handle = s.inner.as_handle();
+        std::mem::forget(s);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl DeviceMotionEventRotationRate {
+    pub fn alpha(&self) -> f64 {
+        self.inner.get("alpha").as_::<f64>()
+    }
+}
+impl DeviceMotionEventRotationRate {
+    pub fn beta(&self) -> f64 {
+        self.inner.get("beta").as_::<f64>()
+    }
+}
+impl DeviceMotionEventRotationRate {
+    pub fn gamma(&self) -> f64 {
+        self.inner.get("gamma").as_::<f64>()
+    }
+}
