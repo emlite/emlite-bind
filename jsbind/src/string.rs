@@ -2,9 +2,7 @@ use crate::utils::bind;
 
 macro_rules! declare_string {
     ($name:ident) => {
-        #[doc = concat!(
-                    "Wrapper for WebIDL `", stringify!($name), "`.\n\n"
-                )]
+        #[doc = concat!("Wrapper for WebIDL `", stringify!($name), "`.\n\n")]
         #[derive(Clone, Debug)]
         pub struct $name {
             inner: emlite::Val,
@@ -14,6 +12,9 @@ macro_rules! declare_string {
 
         impl From<&str> for $name {
             fn from(s: &str) -> Self {
+                if std::any::TypeId::of::<$name>() == std::any::TypeId::of::<ByteString>() {
+                    assert!(s.is_ascii(), "ByteString must be ASCII/Latin-1");
+                }
                 emlite::Val::from(s).as_::<Self>()
             }
         }
@@ -24,14 +25,20 @@ macro_rules! declare_string {
             }
         }
 
+        impl AsRef<str> for $name {
+            fn as_ref(&self) -> &str {
+                self.as_str()
+            }
+        }
+
         impl $name {
             /// Number of UTF‑8 bytes (same as `str::len()`).
-            pub fn len(&self) -> usize {
+            pub fn byte_len(&self) -> usize {
                 self.as_str().len()
             }
             /// `len() == 0` convenience.
             pub fn is_empty(&self) -> bool {
-                self.len() == 0
+                self.length() == 0
             }
             /// Scalar lookup; returns `None` if index is out of bounds.
             pub fn char_at(&self, i: usize) -> Option<char> {
@@ -40,6 +47,21 @@ macro_rules! declare_string {
             /// Borrow the JavaScript string as `&str` (UTF‑8 view).
             pub fn as_str(&self) -> &str {
                 self.inner.as_::<&str>()
+            }
+            
+            /// Number of UTF-16 code units (`JSString.length`).
+            pub fn length(&self) -> usize {
+                self.inner.get("length").as_::<usize>()
+            }
+
+            /// Returns the 16-bit code unit at `idx` (like `charCodeAt`).
+            pub fn char_code_at(&self, idx: usize) -> u16 {
+                self.inner.call("charCodeAt", &[idx.into()]).as_::<u16>()
+            }
+
+            pub fn set(&self, idx: usize, val: char)
+            {
+                self.inner.set(idx, val as u8);
             }
         }
 

@@ -50,3 +50,21 @@ impl<K, V> DerefMut for Record<K, V> {
         &mut self.inner
     }
 }
+
+impl<K, V: Clone + FromVal> Record<K, V> {
+    pub fn set(&self, item: K, val: V)
+    where
+        emlite::Val: From<K>,
+        emlite::Val: From<V>,
+    {
+        self.inner.set(item, val.clone());
+    }
+
+    pub fn get(&self, item: K) -> V
+    where
+        emlite::Val: From<K>,
+        emlite::Val: From<V>,
+    {
+        self.inner.get(item).as_::<V>()
+    }
+}

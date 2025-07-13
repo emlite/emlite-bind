@@ -1,3 +1,4 @@
+use crate::Any;
 use crate::utils::bind;
 use emlite::FromVal;
 
@@ -35,6 +36,10 @@ impl Object {
     /// return `false`.
     pub fn has_own_property(&self, prop: &str) -> bool {
         self.inner.has_own_property(prop)
+    }
+
+    pub fn set(&self, item: &str, val: &Any) {
+        self.inner.set(item, val.clone());
     }
 }
 

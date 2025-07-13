@@ -14,6 +14,7 @@ import {
   typedefs,
   callbacks,
 } from "./globals.js";
+import * as changeCase from "change-case";
 
 function emitAttr(attr, owner, isStatic = false) {
   const S = [`impl ${owner} {`];
@@ -239,55 +240,54 @@ export function generate(specAst) {
 
   {
     const src = ["\n"];
-    const parent = "emlite::Val";
     for (const e of enums.values()) {
+     src.push(
+        `#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]`,
+        `pub enum ${e.name} {`);
+      for (const v of e.values) {
+        src.push(
+          `    ${fixIdent(v.value).toUpperCase()},`);
+      }
+      src.push("}");
       src.push(
-        `#[derive(Clone, Debug)]`,
-        `pub struct ${e.name} {`,
-        `    inner: ${parent},`,
-        `}`,
-        `impl FromVal for ${e.name} {`,
-        `    fn from_val(v: &emlite::Val) -> Self {`,
-        `        ${e.name} { inner: v.clone(), }`,
-        `    }`,
-        `    fn take_ownership(v: emlite::env::Handle) -> Self {`,
-        `        Self::from_val(&emlite::Val::take_ownership(v))`,
-        `    }`,
-        `    fn as_handle(&self) -> emlite::env::Handle {`,
-        `        self.inner.as_handle()`,
-        `    }`,
-        `}`,
-        `impl std::ops::Deref for ${e.name} {`,
-        `    type Target = emlite::Val;`,
-        `    fn deref(&self) -> &Self::Target {`,
-        `        &self.inner`,
-        `    }`,
-        `}`,
-        `impl std::ops::DerefMut for ${e.name} {`,
-        `    fn deref_mut(&mut self) -> &mut Self::Target {`,
-        `        &mut self.inner`,
-        `    }`,
-        `}`,
+      `impl FromVal for ${e.name} {`,
+      `    fn from_val(v: &emlite::Val) -> Self {`,
+      `         match v.as_::<&str>() {`
+      );
+      for (const v of e.values) {
+        src.push(
+          `            "${v.value}" => Self::${fixIdent(v.value).toUpperCase()},`
+        );
+      }
+      src.push(
+      `             _ => unreachable!(),`,
+      `        }`,
+      `    }`,
+      `    fn take_ownership(v: emlite::env::Handle) -> Self {`,
+      `        Self::from_val(&emlite::Val::take_ownership(v))`,
+      `    }`,
+      `    fn as_handle(&self) -> emlite::env::Handle {`,
+      `        emlite::Val::from(*self).as_handle()`,
+      `    }`,
+      `}`,
+      );
+      src.push(
         `impl From<${e.name}> for emlite::Val {`,
         `    fn from(s: ${e.name}) -> emlite::Val {`,
-        `        let handle = s.inner.as_handle();`,
-        `        std::mem::forget(s);`,
-        `        emlite::Val::take_ownership(handle)`,
-        `    }`,
+        `         match s {`);
+      for (const v of e.values) {
+        src.push(
+          `            ${e.name}::${fixIdent(v.value).toUpperCase()} => emlite::Val::from("${
+            v.value
+          }"),`
+        );
+      }
+      src.push("         }");
+      src.push(`    }`,
         `}`,
         ""
       );
       src.push("");
-      src.push(`impl ${e.name} {`);
-      for (const v of e.values) {
-        src.push(
-          `    pub const ${fixIdent(v.value).toUpperCase()}: &str = "${
-            v.value
-          }";`
-        );
-      }
-
-      src.push("}", "");
     }
 
     writeSrcFile("enums", src);

@@ -71,6 +71,14 @@ impl ArrayBuffer {
         }
         .as_::<Self>()
     }
+
+    pub fn is_view(buf: &Any) -> bool {
+        emlite::Val::global("ArrayBuffer").call("isView", &[buf.clone()]).as_::<bool>()
+    }
+
+    pub fn resizable(&self) -> bool {
+        self.inner.get("resizable").as_::<bool>()
+    }
 }
 
 bind!(ArrayBuffer);

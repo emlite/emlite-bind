@@ -1,15338 +1,13199 @@
 use super::*;
 
-#[derive(Clone, Debug)]
-pub struct SecurityPolicyViolationEventDisposition {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SecurityPolicyViolationEventDisposition {
+    ENFORCE,
+    REPORT,
 }
 impl FromVal for SecurityPolicyViolationEventDisposition {
     fn from_val(v: &emlite::Val) -> Self {
-        SecurityPolicyViolationEventDisposition { inner: v.clone() }
+        match v.as_::<&str>() {
+            "enforce" => Self::ENFORCE,
+            "report" => Self::REPORT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SecurityPolicyViolationEventDisposition {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SecurityPolicyViolationEventDisposition {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SecurityPolicyViolationEventDisposition> for emlite::Val {
     fn from(s: SecurityPolicyViolationEventDisposition) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SecurityPolicyViolationEventDisposition::ENFORCE => emlite::Val::from("enforce"),
+            SecurityPolicyViolationEventDisposition::REPORT => emlite::Val::from("report"),
+        }
     }
 }
 
-impl SecurityPolicyViolationEventDisposition {
-    pub const ENFORCE: &str = "enforce";
-    pub const REPORT: &str = "report";
-}
-
-#[derive(Clone, Debug)]
-pub struct EndingType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum EndingType {
+    TRANSPARENT,
+    NATIVE,
 }
 impl FromVal for EndingType {
     fn from_val(v: &emlite::Val) -> Self {
-        EndingType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "transparent" => Self::TRANSPARENT,
+            "native" => Self::NATIVE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for EndingType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for EndingType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<EndingType> for emlite::Val {
     fn from(s: EndingType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            EndingType::TRANSPARENT => emlite::Val::from("transparent"),
+            EndingType::NATIVE => emlite::Val::from("native"),
+        }
     }
 }
 
-impl EndingType {
-    pub const TRANSPARENT: &str = "transparent";
-    pub const NATIVE: &str = "native";
-}
-
-#[derive(Clone, Debug)]
-pub struct IDBRequestReadyState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum IDBRequestReadyState {
+    PENDING,
+    DONE,
 }
 impl FromVal for IDBRequestReadyState {
     fn from_val(v: &emlite::Val) -> Self {
-        IDBRequestReadyState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "pending" => Self::PENDING,
+            "done" => Self::DONE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for IDBRequestReadyState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for IDBRequestReadyState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<IDBRequestReadyState> for emlite::Val {
     fn from(s: IDBRequestReadyState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            IDBRequestReadyState::PENDING => emlite::Val::from("pending"),
+            IDBRequestReadyState::DONE => emlite::Val::from("done"),
+        }
     }
 }
 
-impl IDBRequestReadyState {
-    pub const PENDING: &str = "pending";
-    pub const DONE: &str = "done";
-}
-
-#[derive(Clone, Debug)]
-pub struct IDBTransactionDurability {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum IDBTransactionDurability {
+    DEFAULT,
+    STRICT,
+    RELAXED,
 }
 impl FromVal for IDBTransactionDurability {
     fn from_val(v: &emlite::Val) -> Self {
-        IDBTransactionDurability { inner: v.clone() }
+        match v.as_::<&str>() {
+            "default" => Self::DEFAULT,
+            "strict" => Self::STRICT,
+            "relaxed" => Self::RELAXED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for IDBTransactionDurability {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for IDBTransactionDurability {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<IDBTransactionDurability> for emlite::Val {
     fn from(s: IDBTransactionDurability) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            IDBTransactionDurability::DEFAULT => emlite::Val::from("default"),
+            IDBTransactionDurability::STRICT => emlite::Val::from("strict"),
+            IDBTransactionDurability::RELAXED => emlite::Val::from("relaxed"),
+        }
     }
 }
 
-impl IDBTransactionDurability {
-    pub const DEFAULT: &str = "default";
-    pub const STRICT: &str = "strict";
-    pub const RELAXED: &str = "relaxed";
-}
-
-#[derive(Clone, Debug)]
-pub struct IDBCursorDirection {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum IDBCursorDirection {
+    NEXT,
+    NEXTUNIQUE,
+    PREV,
+    PREVUNIQUE,
 }
 impl FromVal for IDBCursorDirection {
     fn from_val(v: &emlite::Val) -> Self {
-        IDBCursorDirection { inner: v.clone() }
+        match v.as_::<&str>() {
+            "next" => Self::NEXT,
+            "nextunique" => Self::NEXTUNIQUE,
+            "prev" => Self::PREV,
+            "prevunique" => Self::PREVUNIQUE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for IDBCursorDirection {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for IDBCursorDirection {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<IDBCursorDirection> for emlite::Val {
     fn from(s: IDBCursorDirection) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            IDBCursorDirection::NEXT => emlite::Val::from("next"),
+            IDBCursorDirection::NEXTUNIQUE => emlite::Val::from("nextunique"),
+            IDBCursorDirection::PREV => emlite::Val::from("prev"),
+            IDBCursorDirection::PREVUNIQUE => emlite::Val::from("prevunique"),
+        }
     }
 }
 
-impl IDBCursorDirection {
-    pub const NEXT: &str = "next";
-    pub const NEXTUNIQUE: &str = "nextunique";
-    pub const PREV: &str = "prev";
-    pub const PREVUNIQUE: &str = "prevunique";
-}
-
-#[derive(Clone, Debug)]
-pub struct IDBTransactionMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum IDBTransactionMode {
+    READONLY,
+    READWRITE,
+    VERSIONCHANGE,
 }
 impl FromVal for IDBTransactionMode {
     fn from_val(v: &emlite::Val) -> Self {
-        IDBTransactionMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "readonly" => Self::READONLY,
+            "readwrite" => Self::READWRITE,
+            "versionchange" => Self::VERSIONCHANGE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for IDBTransactionMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for IDBTransactionMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<IDBTransactionMode> for emlite::Val {
     fn from(s: IDBTransactionMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            IDBTransactionMode::READONLY => emlite::Val::from("readonly"),
+            IDBTransactionMode::READWRITE => emlite::Val::from("readwrite"),
+            IDBTransactionMode::VERSIONCHANGE => emlite::Val::from("versionchange"),
+        }
     }
 }
 
-impl IDBTransactionMode {
-    pub const READONLY: &str = "readonly";
-    pub const READWRITE: &str = "readwrite";
-    pub const VERSIONCHANGE: &str = "versionchange";
-}
-
-#[derive(Clone, Debug)]
-pub struct AccelerometerLocalCoordinateSystem {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AccelerometerLocalCoordinateSystem {
+    DEVICE,
+    SCREEN,
 }
 impl FromVal for AccelerometerLocalCoordinateSystem {
     fn from_val(v: &emlite::Val) -> Self {
-        AccelerometerLocalCoordinateSystem { inner: v.clone() }
+        match v.as_::<&str>() {
+            "device" => Self::DEVICE,
+            "screen" => Self::SCREEN,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AccelerometerLocalCoordinateSystem {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AccelerometerLocalCoordinateSystem {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AccelerometerLocalCoordinateSystem> for emlite::Val {
     fn from(s: AccelerometerLocalCoordinateSystem) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AccelerometerLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
+            AccelerometerLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+        }
     }
 }
 
-impl AccelerometerLocalCoordinateSystem {
-    pub const DEVICE: &str = "device";
-    pub const SCREEN: &str = "screen";
-}
-
-#[derive(Clone, Debug)]
-pub struct AudioSessionType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AudioSessionType {
+    AUTO,
+    PLAYBACK,
+    TRANSIENT,
+    TRANSIENT_SOLO,
+    AMBIENT,
+    PLAY_AND_RECORD,
 }
 impl FromVal for AudioSessionType {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioSessionType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "auto" => Self::AUTO,
+            "playback" => Self::PLAYBACK,
+            "transient" => Self::TRANSIENT,
+            "transient-solo" => Self::TRANSIENT_SOLO,
+            "ambient" => Self::AMBIENT,
+            "play-and-record" => Self::PLAY_AND_RECORD,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AudioSessionType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AudioSessionType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AudioSessionType> for emlite::Val {
     fn from(s: AudioSessionType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AudioSessionType::AUTO => emlite::Val::from("auto"),
+            AudioSessionType::PLAYBACK => emlite::Val::from("playback"),
+            AudioSessionType::TRANSIENT => emlite::Val::from("transient"),
+            AudioSessionType::TRANSIENT_SOLO => emlite::Val::from("transient-solo"),
+            AudioSessionType::AMBIENT => emlite::Val::from("ambient"),
+            AudioSessionType::PLAY_AND_RECORD => emlite::Val::from("play-and-record"),
+        }
     }
 }
 
-impl AudioSessionType {
-    pub const AUTO: &str = "auto";
-    pub const PLAYBACK: &str = "playback";
-    pub const TRANSIENT: &str = "transient";
-    pub const TRANSIENT_SOLO: &str = "transient-solo";
-    pub const AMBIENT: &str = "ambient";
-    pub const PLAY_AND_RECORD: &str = "play-and-record";
-}
-
-#[derive(Clone, Debug)]
-pub struct AudioSessionState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AudioSessionState {
+    INACTIVE,
+    ACTIVE,
+    INTERRUPTED,
 }
 impl FromVal for AudioSessionState {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioSessionState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "inactive" => Self::INACTIVE,
+            "active" => Self::ACTIVE,
+            "interrupted" => Self::INTERRUPTED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AudioSessionState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AudioSessionState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AudioSessionState> for emlite::Val {
     fn from(s: AudioSessionState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AudioSessionState::INACTIVE => emlite::Val::from("inactive"),
+            AudioSessionState::ACTIVE => emlite::Val::from("active"),
+            AudioSessionState::INTERRUPTED => emlite::Val::from("interrupted"),
+        }
     }
 }
 
-impl AudioSessionState {
-    pub const INACTIVE: &str = "inactive";
-    pub const ACTIVE: &str = "active";
-    pub const INTERRUPTED: &str = "interrupted";
-}
-
-#[derive(Clone, Debug)]
-pub struct AutoplayPolicy {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AutoplayPolicy {
+    ALLOWED,
+    ALLOWED_MUTED,
+    DISALLOWED,
 }
 impl FromVal for AutoplayPolicy {
     fn from_val(v: &emlite::Val) -> Self {
-        AutoplayPolicy { inner: v.clone() }
+        match v.as_::<&str>() {
+            "allowed" => Self::ALLOWED,
+            "allowed-muted" => Self::ALLOWED_MUTED,
+            "disallowed" => Self::DISALLOWED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AutoplayPolicy {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AutoplayPolicy {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AutoplayPolicy> for emlite::Val {
     fn from(s: AutoplayPolicy) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AutoplayPolicy::ALLOWED => emlite::Val::from("allowed"),
+            AutoplayPolicy::ALLOWED_MUTED => emlite::Val::from("allowed-muted"),
+            AutoplayPolicy::DISALLOWED => emlite::Val::from("disallowed"),
+        }
     }
 }
 
-impl AutoplayPolicy {
-    pub const ALLOWED: &str = "allowed";
-    pub const ALLOWED_MUTED: &str = "allowed-muted";
-    pub const DISALLOWED: &str = "disallowed";
-}
-
-#[derive(Clone, Debug)]
-pub struct AutoplayPolicyMediaType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AutoplayPolicyMediaType {
+    MEDIAELEMENT,
+    AUDIOCONTEXT,
 }
 impl FromVal for AutoplayPolicyMediaType {
     fn from_val(v: &emlite::Val) -> Self {
-        AutoplayPolicyMediaType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "mediaelement" => Self::MEDIAELEMENT,
+            "audiocontext" => Self::AUDIOCONTEXT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AutoplayPolicyMediaType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AutoplayPolicyMediaType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AutoplayPolicyMediaType> for emlite::Val {
     fn from(s: AutoplayPolicyMediaType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AutoplayPolicyMediaType::MEDIAELEMENT => emlite::Val::from("mediaelement"),
+            AutoplayPolicyMediaType::AUDIOCONTEXT => emlite::Val::from("audiocontext"),
+        }
     }
 }
 
-impl AutoplayPolicyMediaType {
-    pub const MEDIAELEMENT: &str = "mediaelement";
-    pub const AUDIOCONTEXT: &str = "audiocontext";
-}
-
-#[derive(Clone, Debug)]
-pub struct BackgroundFetchResult {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum BackgroundFetchResult {
+    NONE,
+    SUCCESS,
+    FAILURE,
 }
 impl FromVal for BackgroundFetchResult {
     fn from_val(v: &emlite::Val) -> Self {
-        BackgroundFetchResult { inner: v.clone() }
+        match v.as_::<&str>() {
+            "" => Self::NONE,
+            "success" => Self::SUCCESS,
+            "failure" => Self::FAILURE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for BackgroundFetchResult {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for BackgroundFetchResult {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<BackgroundFetchResult> for emlite::Val {
     fn from(s: BackgroundFetchResult) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            BackgroundFetchResult::NONE => emlite::Val::from(""),
+            BackgroundFetchResult::SUCCESS => emlite::Val::from("success"),
+            BackgroundFetchResult::FAILURE => emlite::Val::from("failure"),
+        }
     }
 }
 
-impl BackgroundFetchResult {
-    pub const NONE: &str = "";
-    pub const SUCCESS: &str = "success";
-    pub const FAILURE: &str = "failure";
-}
-
-#[derive(Clone, Debug)]
-pub struct BackgroundFetchFailureReason {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum BackgroundFetchFailureReason {
+    NONE,
+    ABORTED,
+    BAD_STATUS,
+    FETCH_ERROR,
+    QUOTA_EXCEEDED,
+    DOWNLOAD_TOTAL_EXCEEDED,
 }
 impl FromVal for BackgroundFetchFailureReason {
     fn from_val(v: &emlite::Val) -> Self {
-        BackgroundFetchFailureReason { inner: v.clone() }
+        match v.as_::<&str>() {
+            "" => Self::NONE,
+            "aborted" => Self::ABORTED,
+            "bad-status" => Self::BAD_STATUS,
+            "fetch-error" => Self::FETCH_ERROR,
+            "quota-exceeded" => Self::QUOTA_EXCEEDED,
+            "download-total-exceeded" => Self::DOWNLOAD_TOTAL_EXCEEDED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for BackgroundFetchFailureReason {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for BackgroundFetchFailureReason {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<BackgroundFetchFailureReason> for emlite::Val {
     fn from(s: BackgroundFetchFailureReason) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            BackgroundFetchFailureReason::NONE => emlite::Val::from(""),
+            BackgroundFetchFailureReason::ABORTED => emlite::Val::from("aborted"),
+            BackgroundFetchFailureReason::BAD_STATUS => emlite::Val::from("bad-status"),
+            BackgroundFetchFailureReason::FETCH_ERROR => emlite::Val::from("fetch-error"),
+            BackgroundFetchFailureReason::QUOTA_EXCEEDED => emlite::Val::from("quota-exceeded"),
+            BackgroundFetchFailureReason::DOWNLOAD_TOTAL_EXCEEDED => {
+                emlite::Val::from("download-total-exceeded")
+            }
+        }
     }
 }
 
-impl BackgroundFetchFailureReason {
-    pub const NONE: &str = "";
-    pub const ABORTED: &str = "aborted";
-    pub const BAD_STATUS: &str = "bad-status";
-    pub const FETCH_ERROR: &str = "fetch-error";
-    pub const QUOTA_EXCEEDED: &str = "quota-exceeded";
-    pub const DOWNLOAD_TOTAL_EXCEEDED: &str = "download-total-exceeded";
-}
-
-#[derive(Clone, Debug)]
-pub struct PresentationStyle {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PresentationStyle {
+    UNSPECIFIED,
+    INLINE,
+    ATTACHMENT,
 }
 impl FromVal for PresentationStyle {
     fn from_val(v: &emlite::Val) -> Self {
-        PresentationStyle { inner: v.clone() }
+        match v.as_::<&str>() {
+            "unspecified" => Self::UNSPECIFIED,
+            "inline" => Self::INLINE,
+            "attachment" => Self::ATTACHMENT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PresentationStyle {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PresentationStyle {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PresentationStyle> for emlite::Val {
     fn from(s: PresentationStyle) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PresentationStyle::UNSPECIFIED => emlite::Val::from("unspecified"),
+            PresentationStyle::INLINE => emlite::Val::from("inline"),
+            PresentationStyle::ATTACHMENT => emlite::Val::from("attachment"),
+        }
     }
 }
 
-impl PresentationStyle {
-    pub const UNSPECIFIED: &str = "unspecified";
-    pub const INLINE: &str = "inline";
-    pub const ATTACHMENT: &str = "attachment";
-}
-
-#[derive(Clone, Debug)]
-pub struct CompressionFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CompressionFormat {
+    DEFLATE,
+    DEFLATE_RAW,
+    GZIP,
 }
 impl FromVal for CompressionFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        CompressionFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "deflate" => Self::DEFLATE,
+            "deflate-raw" => Self::DEFLATE_RAW,
+            "gzip" => Self::GZIP,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CompressionFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CompressionFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CompressionFormat> for emlite::Val {
     fn from(s: CompressionFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CompressionFormat::DEFLATE => emlite::Val::from("deflate"),
+            CompressionFormat::DEFLATE_RAW => emlite::Val::from("deflate-raw"),
+            CompressionFormat::GZIP => emlite::Val::from("gzip"),
+        }
     }
 }
 
-impl CompressionFormat {
-    pub const DEFLATE: &str = "deflate";
-    pub const DEFLATE_RAW: &str = "deflate-raw";
-    pub const GZIP: &str = "gzip";
-}
-
-#[derive(Clone, Debug)]
-pub struct PressureSource {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PressureSource {
+    CPU,
 }
 impl FromVal for PressureSource {
     fn from_val(v: &emlite::Val) -> Self {
-        PressureSource { inner: v.clone() }
+        match v.as_::<&str>() {
+            "cpu" => Self::CPU,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PressureSource {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PressureSource {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PressureSource> for emlite::Val {
     fn from(s: PressureSource) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PressureSource::CPU => emlite::Val::from("cpu"),
+        }
     }
 }
 
-impl PressureSource {
-    pub const CPU: &str = "cpu";
-}
-
-#[derive(Clone, Debug)]
-pub struct PressureState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PressureState {
+    NOMINAL,
+    FAIR,
+    SERIOUS,
+    CRITICAL,
 }
 impl FromVal for PressureState {
     fn from_val(v: &emlite::Val) -> Self {
-        PressureState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "nominal" => Self::NOMINAL,
+            "fair" => Self::FAIR,
+            "serious" => Self::SERIOUS,
+            "critical" => Self::CRITICAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PressureState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PressureState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PressureState> for emlite::Val {
     fn from(s: PressureState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PressureState::NOMINAL => emlite::Val::from("nominal"),
+            PressureState::FAIR => emlite::Val::from("fair"),
+            PressureState::SERIOUS => emlite::Val::from("serious"),
+            PressureState::CRITICAL => emlite::Val::from("critical"),
+        }
     }
 }
 
-impl PressureState {
-    pub const NOMINAL: &str = "nominal";
-    pub const FAIR: &str = "fair";
-    pub const SERIOUS: &str = "serious";
-    pub const CRITICAL: &str = "critical";
-}
-
-#[derive(Clone, Debug)]
-pub struct ContactProperty {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ContactProperty {
+    ADDRESS,
+    EMAIL,
+    ICON,
+    NAME,
+    TEL,
 }
 impl FromVal for ContactProperty {
     fn from_val(v: &emlite::Val) -> Self {
-        ContactProperty { inner: v.clone() }
+        match v.as_::<&str>() {
+            "address" => Self::ADDRESS,
+            "email" => Self::EMAIL,
+            "icon" => Self::ICON,
+            "name" => Self::NAME,
+            "tel" => Self::TEL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ContactProperty {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ContactProperty {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ContactProperty> for emlite::Val {
     fn from(s: ContactProperty) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ContactProperty::ADDRESS => emlite::Val::from("address"),
+            ContactProperty::EMAIL => emlite::Val::from("email"),
+            ContactProperty::ICON => emlite::Val::from("icon"),
+            ContactProperty::NAME => emlite::Val::from("name"),
+            ContactProperty::TEL => emlite::Val::from("tel"),
+        }
     }
 }
 
-impl ContactProperty {
-    pub const ADDRESS: &str = "address";
-    pub const EMAIL: &str = "email";
-    pub const ICON: &str = "icon";
-    pub const NAME: &str = "name";
-    pub const TEL: &str = "tel";
-}
-
-#[derive(Clone, Debug)]
-pub struct ContentCategory {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ContentCategory {
+    NONE,
+    HOMEPAGE,
+    ARTICLE,
+    VIDEO,
+    AUDIO,
 }
 impl FromVal for ContentCategory {
     fn from_val(v: &emlite::Val) -> Self {
-        ContentCategory { inner: v.clone() }
+        match v.as_::<&str>() {
+            "" => Self::NONE,
+            "homepage" => Self::HOMEPAGE,
+            "article" => Self::ARTICLE,
+            "video" => Self::VIDEO,
+            "audio" => Self::AUDIO,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ContentCategory {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ContentCategory {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ContentCategory> for emlite::Val {
     fn from(s: ContentCategory) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ContentCategory::NONE => emlite::Val::from(""),
+            ContentCategory::HOMEPAGE => emlite::Val::from("homepage"),
+            ContentCategory::ARTICLE => emlite::Val::from("article"),
+            ContentCategory::VIDEO => emlite::Val::from("video"),
+            ContentCategory::AUDIO => emlite::Val::from("audio"),
+        }
     }
 }
 
-impl ContentCategory {
-    pub const NONE: &str = "";
-    pub const HOMEPAGE: &str = "homepage";
-    pub const ARTICLE: &str = "article";
-    pub const VIDEO: &str = "video";
-    pub const AUDIO: &str = "audio";
-}
-
-#[derive(Clone, Debug)]
-pub struct CookieSameSite {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CookieSameSite {
+    STRICT,
+    LAX,
+    NONE,
 }
 impl FromVal for CookieSameSite {
     fn from_val(v: &emlite::Val) -> Self {
-        CookieSameSite { inner: v.clone() }
+        match v.as_::<&str>() {
+            "strict" => Self::STRICT,
+            "lax" => Self::LAX,
+            "none" => Self::NONE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CookieSameSite {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CookieSameSite {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CookieSameSite> for emlite::Val {
     fn from(s: CookieSameSite) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CookieSameSite::STRICT => emlite::Val::from("strict"),
+            CookieSameSite::LAX => emlite::Val::from("lax"),
+            CookieSameSite::NONE => emlite::Val::from("none"),
+        }
     }
 }
 
-impl CookieSameSite {
-    pub const STRICT: &str = "strict";
-    pub const LAX: &str = "lax";
-    pub const NONE: &str = "none";
-}
-
-#[derive(Clone, Debug)]
-pub struct CredentialMediationRequirement {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CredentialMediationRequirement {
+    SILENT,
+    OPTIONAL,
+    CONDITIONAL,
+    REQUIRED,
 }
 impl FromVal for CredentialMediationRequirement {
     fn from_val(v: &emlite::Val) -> Self {
-        CredentialMediationRequirement { inner: v.clone() }
+        match v.as_::<&str>() {
+            "silent" => Self::SILENT,
+            "optional" => Self::OPTIONAL,
+            "conditional" => Self::CONDITIONAL,
+            "required" => Self::REQUIRED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CredentialMediationRequirement {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CredentialMediationRequirement {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CredentialMediationRequirement> for emlite::Val {
     fn from(s: CredentialMediationRequirement) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CredentialMediationRequirement::SILENT => emlite::Val::from("silent"),
+            CredentialMediationRequirement::OPTIONAL => emlite::Val::from("optional"),
+            CredentialMediationRequirement::CONDITIONAL => emlite::Val::from("conditional"),
+            CredentialMediationRequirement::REQUIRED => emlite::Val::from("required"),
+        }
     }
 }
 
-impl CredentialMediationRequirement {
-    pub const SILENT: &str = "silent";
-    pub const OPTIONAL: &str = "optional";
-    pub const CONDITIONAL: &str = "conditional";
-    pub const REQUIRED: &str = "required";
-}
-
-#[derive(Clone, Debug)]
-pub struct ScriptingPolicyViolationType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ScriptingPolicyViolationType {
+    EXTERNAL_SCRIPT,
+    INLINE_SCRIPT,
+    INLINE_EVENT_HANDLER,
+    EVAL,
 }
 impl FromVal for ScriptingPolicyViolationType {
     fn from_val(v: &emlite::Val) -> Self {
-        ScriptingPolicyViolationType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "externalScript" => Self::EXTERNAL_SCRIPT,
+            "inlineScript" => Self::INLINE_SCRIPT,
+            "inlineEventHandler" => Self::INLINE_EVENT_HANDLER,
+            "eval" => Self::EVAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ScriptingPolicyViolationType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ScriptingPolicyViolationType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ScriptingPolicyViolationType> for emlite::Val {
     fn from(s: ScriptingPolicyViolationType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ScriptingPolicyViolationType::EXTERNAL_SCRIPT => emlite::Val::from("externalScript"),
+            ScriptingPolicyViolationType::INLINE_SCRIPT => emlite::Val::from("inlineScript"),
+            ScriptingPolicyViolationType::INLINE_EVENT_HANDLER => {
+                emlite::Val::from("inlineEventHandler")
+            }
+            ScriptingPolicyViolationType::EVAL => emlite::Val::from("eval"),
+        }
     }
 }
 
-impl ScriptingPolicyViolationType {
-    pub const EXTERNAL_SCRIPT: &str = "externalScript";
-    pub const INLINE_SCRIPT: &str = "inlineScript";
-    pub const INLINE_EVENT_HANDLER: &str = "inlineEventHandler";
-    pub const EVAL: &str = "eval";
-}
-
-#[derive(Clone, Debug)]
-pub struct FontFaceLoadStatus {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum FontFaceLoadStatus {
+    UNLOADED,
+    LOADING,
+    LOADED,
+    ERROR,
 }
 impl FromVal for FontFaceLoadStatus {
     fn from_val(v: &emlite::Val) -> Self {
-        FontFaceLoadStatus { inner: v.clone() }
+        match v.as_::<&str>() {
+            "unloaded" => Self::UNLOADED,
+            "loading" => Self::LOADING,
+            "loaded" => Self::LOADED,
+            "error" => Self::ERROR,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for FontFaceLoadStatus {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for FontFaceLoadStatus {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<FontFaceLoadStatus> for emlite::Val {
     fn from(s: FontFaceLoadStatus) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            FontFaceLoadStatus::UNLOADED => emlite::Val::from("unloaded"),
+            FontFaceLoadStatus::LOADING => emlite::Val::from("loading"),
+            FontFaceLoadStatus::LOADED => emlite::Val::from("loaded"),
+            FontFaceLoadStatus::ERROR => emlite::Val::from("error"),
+        }
     }
 }
 
-impl FontFaceLoadStatus {
-    pub const UNLOADED: &str = "unloaded";
-    pub const LOADING: &str = "loading";
-    pub const LOADED: &str = "loaded";
-    pub const ERROR: &str = "error";
-}
-
-#[derive(Clone, Debug)]
-pub struct FontFaceSetLoadStatus {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum FontFaceSetLoadStatus {
+    LOADING,
+    LOADED,
 }
 impl FromVal for FontFaceSetLoadStatus {
     fn from_val(v: &emlite::Val) -> Self {
-        FontFaceSetLoadStatus { inner: v.clone() }
+        match v.as_::<&str>() {
+            "loading" => Self::LOADING,
+            "loaded" => Self::LOADED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for FontFaceSetLoadStatus {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for FontFaceSetLoadStatus {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<FontFaceSetLoadStatus> for emlite::Val {
     fn from(s: FontFaceSetLoadStatus) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            FontFaceSetLoadStatus::LOADING => emlite::Val::from("loading"),
+            FontFaceSetLoadStatus::LOADED => emlite::Val::from("loaded"),
+        }
     }
 }
 
-impl FontFaceSetLoadStatus {
-    pub const LOADING: &str = "loading";
-    pub const LOADED: &str = "loaded";
-}
-
-#[derive(Clone, Debug)]
-pub struct HighlightType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum HighlightType {
+    HIGHLIGHT,
+    SPELLING_ERROR,
+    GRAMMAR_ERROR,
 }
 impl FromVal for HighlightType {
     fn from_val(v: &emlite::Val) -> Self {
-        HighlightType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "highlight" => Self::HIGHLIGHT,
+            "spelling-error" => Self::SPELLING_ERROR,
+            "grammar-error" => Self::GRAMMAR_ERROR,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for HighlightType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for HighlightType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<HighlightType> for emlite::Val {
     fn from(s: HighlightType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            HighlightType::HIGHLIGHT => emlite::Val::from("highlight"),
+            HighlightType::SPELLING_ERROR => emlite::Val::from("spelling-error"),
+            HighlightType::GRAMMAR_ERROR => emlite::Val::from("grammar-error"),
+        }
     }
 }
 
-impl HighlightType {
-    pub const HIGHLIGHT: &str = "highlight";
-    pub const SPELLING_ERROR: &str = "spelling-error";
-    pub const GRAMMAR_ERROR: &str = "grammar-error";
-}
-
-#[derive(Clone, Debug)]
-pub struct ChildDisplayType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ChildDisplayType {
+    BLOCK,
+    NORMAL,
 }
 impl FromVal for ChildDisplayType {
     fn from_val(v: &emlite::Val) -> Self {
-        ChildDisplayType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "block" => Self::BLOCK,
+            "normal" => Self::NORMAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ChildDisplayType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ChildDisplayType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ChildDisplayType> for emlite::Val {
     fn from(s: ChildDisplayType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ChildDisplayType::BLOCK => emlite::Val::from("block"),
+            ChildDisplayType::NORMAL => emlite::Val::from("normal"),
+        }
     }
 }
 
-impl ChildDisplayType {
-    pub const BLOCK: &str = "block";
-    pub const NORMAL: &str = "normal";
-}
-
-#[derive(Clone, Debug)]
-pub struct LayoutSizingMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum LayoutSizingMode {
+    BLOCK_LIKE,
+    MANUAL,
 }
 impl FromVal for LayoutSizingMode {
     fn from_val(v: &emlite::Val) -> Self {
-        LayoutSizingMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "block-like" => Self::BLOCK_LIKE,
+            "manual" => Self::MANUAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for LayoutSizingMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for LayoutSizingMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<LayoutSizingMode> for emlite::Val {
     fn from(s: LayoutSizingMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            LayoutSizingMode::BLOCK_LIKE => emlite::Val::from("block-like"),
+            LayoutSizingMode::MANUAL => emlite::Val::from("manual"),
+        }
     }
 }
 
-impl LayoutSizingMode {
-    pub const BLOCK_LIKE: &str = "block-like";
-    pub const MANUAL: &str = "manual";
-}
-
-#[derive(Clone, Debug)]
-pub struct BlockFragmentationType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum BlockFragmentationType {
+    NONE,
+    PAGE,
+    COLUMN,
+    REGION,
 }
 impl FromVal for BlockFragmentationType {
     fn from_val(v: &emlite::Val) -> Self {
-        BlockFragmentationType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "page" => Self::PAGE,
+            "column" => Self::COLUMN,
+            "region" => Self::REGION,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for BlockFragmentationType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for BlockFragmentationType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<BlockFragmentationType> for emlite::Val {
     fn from(s: BlockFragmentationType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            BlockFragmentationType::NONE => emlite::Val::from("none"),
+            BlockFragmentationType::PAGE => emlite::Val::from("page"),
+            BlockFragmentationType::COLUMN => emlite::Val::from("column"),
+            BlockFragmentationType::REGION => emlite::Val::from("region"),
+        }
     }
 }
 
-impl BlockFragmentationType {
-    pub const NONE: &str = "none";
-    pub const PAGE: &str = "page";
-    pub const COLUMN: &str = "column";
-    pub const REGION: &str = "region";
-}
-
-#[derive(Clone, Debug)]
-pub struct BreakType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum BreakType {
+    NONE,
+    LINE,
+    COLUMN,
+    PAGE,
+    REGION,
 }
 impl FromVal for BreakType {
     fn from_val(v: &emlite::Val) -> Self {
-        BreakType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "line" => Self::LINE,
+            "column" => Self::COLUMN,
+            "page" => Self::PAGE,
+            "region" => Self::REGION,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for BreakType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for BreakType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<BreakType> for emlite::Val {
     fn from(s: BreakType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            BreakType::NONE => emlite::Val::from("none"),
+            BreakType::LINE => emlite::Val::from("line"),
+            BreakType::COLUMN => emlite::Val::from("column"),
+            BreakType::PAGE => emlite::Val::from("page"),
+            BreakType::REGION => emlite::Val::from("region"),
+        }
     }
 }
 
-impl BreakType {
-    pub const NONE: &str = "none";
-    pub const LINE: &str = "line";
-    pub const COLUMN: &str = "column";
-    pub const PAGE: &str = "page";
-    pub const REGION: &str = "region";
-}
-
-#[derive(Clone, Debug)]
-pub struct SpatialNavigationDirection {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SpatialNavigationDirection {
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT,
 }
 impl FromVal for SpatialNavigationDirection {
     fn from_val(v: &emlite::Val) -> Self {
-        SpatialNavigationDirection { inner: v.clone() }
+        match v.as_::<&str>() {
+            "up" => Self::UP,
+            "down" => Self::DOWN,
+            "left" => Self::LEFT,
+            "right" => Self::RIGHT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SpatialNavigationDirection {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SpatialNavigationDirection {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SpatialNavigationDirection> for emlite::Val {
     fn from(s: SpatialNavigationDirection) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SpatialNavigationDirection::UP => emlite::Val::from("up"),
+            SpatialNavigationDirection::DOWN => emlite::Val::from("down"),
+            SpatialNavigationDirection::LEFT => emlite::Val::from("left"),
+            SpatialNavigationDirection::RIGHT => emlite::Val::from("right"),
+        }
     }
 }
 
-impl SpatialNavigationDirection {
-    pub const UP: &str = "up";
-    pub const DOWN: &str = "down";
-    pub const LEFT: &str = "left";
-    pub const RIGHT: &str = "right";
-}
-
-#[derive(Clone, Debug)]
-pub struct FocusableAreaSearchMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum FocusableAreaSearchMode {
+    VISIBLE,
+    ALL,
 }
 impl FromVal for FocusableAreaSearchMode {
     fn from_val(v: &emlite::Val) -> Self {
-        FocusableAreaSearchMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "visible" => Self::VISIBLE,
+            "all" => Self::ALL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for FocusableAreaSearchMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for FocusableAreaSearchMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<FocusableAreaSearchMode> for emlite::Val {
     fn from(s: FocusableAreaSearchMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            FocusableAreaSearchMode::VISIBLE => emlite::Val::from("visible"),
+            FocusableAreaSearchMode::ALL => emlite::Val::from("all"),
+        }
     }
 }
 
-impl FocusableAreaSearchMode {
-    pub const VISIBLE: &str = "visible";
-    pub const ALL: &str = "all";
-}
-
-#[derive(Clone, Debug)]
-pub struct CSSNumericBaseType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CSSNumericBaseType {
+    LENGTH,
+    ANGLE,
+    TIME,
+    FREQUENCY,
+    RESOLUTION,
+    FLEX,
+    PERCENT,
 }
 impl FromVal for CSSNumericBaseType {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSNumericBaseType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "length" => Self::LENGTH,
+            "angle" => Self::ANGLE,
+            "time" => Self::TIME,
+            "frequency" => Self::FREQUENCY,
+            "resolution" => Self::RESOLUTION,
+            "flex" => Self::FLEX,
+            "percent" => Self::PERCENT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CSSNumericBaseType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CSSNumericBaseType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CSSNumericBaseType> for emlite::Val {
     fn from(s: CSSNumericBaseType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CSSNumericBaseType::LENGTH => emlite::Val::from("length"),
+            CSSNumericBaseType::ANGLE => emlite::Val::from("angle"),
+            CSSNumericBaseType::TIME => emlite::Val::from("time"),
+            CSSNumericBaseType::FREQUENCY => emlite::Val::from("frequency"),
+            CSSNumericBaseType::RESOLUTION => emlite::Val::from("resolution"),
+            CSSNumericBaseType::FLEX => emlite::Val::from("flex"),
+            CSSNumericBaseType::PERCENT => emlite::Val::from("percent"),
+        }
     }
 }
 
-impl CSSNumericBaseType {
-    pub const LENGTH: &str = "length";
-    pub const ANGLE: &str = "angle";
-    pub const TIME: &str = "time";
-    pub const FREQUENCY: &str = "frequency";
-    pub const RESOLUTION: &str = "resolution";
-    pub const FLEX: &str = "flex";
-    pub const PERCENT: &str = "percent";
-}
-
-#[derive(Clone, Debug)]
-pub struct CSSMathOperator {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CSSMathOperator {
+    SUM,
+    PRODUCT,
+    NEGATE,
+    INVERT,
+    MIN,
+    MAX,
+    CLAMP,
 }
 impl FromVal for CSSMathOperator {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSMathOperator { inner: v.clone() }
+        match v.as_::<&str>() {
+            "sum" => Self::SUM,
+            "product" => Self::PRODUCT,
+            "negate" => Self::NEGATE,
+            "invert" => Self::INVERT,
+            "min" => Self::MIN,
+            "max" => Self::MAX,
+            "clamp" => Self::CLAMP,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CSSMathOperator {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CSSMathOperator {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CSSMathOperator> for emlite::Val {
     fn from(s: CSSMathOperator) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CSSMathOperator::SUM => emlite::Val::from("sum"),
+            CSSMathOperator::PRODUCT => emlite::Val::from("product"),
+            CSSMathOperator::NEGATE => emlite::Val::from("negate"),
+            CSSMathOperator::INVERT => emlite::Val::from("invert"),
+            CSSMathOperator::MIN => emlite::Val::from("min"),
+            CSSMathOperator::MAX => emlite::Val::from("max"),
+            CSSMathOperator::CLAMP => emlite::Val::from("clamp"),
+        }
     }
 }
 
-impl CSSMathOperator {
-    pub const SUM: &str = "sum";
-    pub const PRODUCT: &str = "product";
-    pub const NEGATE: &str = "negate";
-    pub const INVERT: &str = "invert";
-    pub const MIN: &str = "min";
-    pub const MAX: &str = "max";
-    pub const CLAMP: &str = "clamp";
-}
-
-#[derive(Clone, Debug)]
-pub struct ScrollBehavior {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ScrollBehavior {
+    AUTO,
+    INSTANT,
+    SMOOTH,
 }
 impl FromVal for ScrollBehavior {
     fn from_val(v: &emlite::Val) -> Self {
-        ScrollBehavior { inner: v.clone() }
+        match v.as_::<&str>() {
+            "auto" => Self::AUTO,
+            "instant" => Self::INSTANT,
+            "smooth" => Self::SMOOTH,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ScrollBehavior {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ScrollBehavior {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ScrollBehavior> for emlite::Val {
     fn from(s: ScrollBehavior) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ScrollBehavior::AUTO => emlite::Val::from("auto"),
+            ScrollBehavior::INSTANT => emlite::Val::from("instant"),
+            ScrollBehavior::SMOOTH => emlite::Val::from("smooth"),
+        }
     }
 }
 
-impl ScrollBehavior {
-    pub const AUTO: &str = "auto";
-    pub const INSTANT: &str = "instant";
-    pub const SMOOTH: &str = "smooth";
-}
-
-#[derive(Clone, Debug)]
-pub struct ScrollLogicalPosition {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ScrollLogicalPosition {
+    START,
+    CENTER,
+    END,
+    NEAREST,
 }
 impl FromVal for ScrollLogicalPosition {
     fn from_val(v: &emlite::Val) -> Self {
-        ScrollLogicalPosition { inner: v.clone() }
+        match v.as_::<&str>() {
+            "start" => Self::START,
+            "center" => Self::CENTER,
+            "end" => Self::END,
+            "nearest" => Self::NEAREST,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ScrollLogicalPosition {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ScrollLogicalPosition {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ScrollLogicalPosition> for emlite::Val {
     fn from(s: ScrollLogicalPosition) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ScrollLogicalPosition::START => emlite::Val::from("start"),
+            ScrollLogicalPosition::CENTER => emlite::Val::from("center"),
+            ScrollLogicalPosition::END => emlite::Val::from("end"),
+            ScrollLogicalPosition::NEAREST => emlite::Val::from("nearest"),
+        }
     }
 }
 
-impl ScrollLogicalPosition {
-    pub const START: &str = "start";
-    pub const CENTER: &str = "center";
-    pub const END: &str = "end";
-    pub const NEAREST: &str = "nearest";
-}
-
-#[derive(Clone, Debug)]
-pub struct ScrollIntoViewContainer {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ScrollIntoViewContainer {
+    ALL,
+    NEAREST,
 }
 impl FromVal for ScrollIntoViewContainer {
     fn from_val(v: &emlite::Val) -> Self {
-        ScrollIntoViewContainer { inner: v.clone() }
+        match v.as_::<&str>() {
+            "all" => Self::ALL,
+            "nearest" => Self::NEAREST,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ScrollIntoViewContainer {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ScrollIntoViewContainer {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ScrollIntoViewContainer> for emlite::Val {
     fn from(s: ScrollIntoViewContainer) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ScrollIntoViewContainer::ALL => emlite::Val::from("all"),
+            ScrollIntoViewContainer::NEAREST => emlite::Val::from("nearest"),
+        }
     }
 }
 
-impl ScrollIntoViewContainer {
-    pub const ALL: &str = "all";
-    pub const NEAREST: &str = "nearest";
-}
-
-#[derive(Clone, Debug)]
-pub struct CSSBoxType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CSSBoxType {
+    MARGIN,
+    BORDER,
+    PADDING,
+    CONTENT,
 }
 impl FromVal for CSSBoxType {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSBoxType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "margin" => Self::MARGIN,
+            "border" => Self::BORDER,
+            "padding" => Self::PADDING,
+            "content" => Self::CONTENT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CSSBoxType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CSSBoxType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CSSBoxType> for emlite::Val {
     fn from(s: CSSBoxType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CSSBoxType::MARGIN => emlite::Val::from("margin"),
+            CSSBoxType::BORDER => emlite::Val::from("border"),
+            CSSBoxType::PADDING => emlite::Val::from("padding"),
+            CSSBoxType::CONTENT => emlite::Val::from("content"),
+        }
     }
 }
 
-impl CSSBoxType {
-    pub const MARGIN: &str = "margin";
-    pub const BORDER: &str = "border";
-    pub const PADDING: &str = "padding";
-    pub const CONTENT: &str = "content";
-}
-
-#[derive(Clone, Debug)]
-pub struct DevicePostureType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum DevicePostureType {
+    CONTINUOUS,
+    FOLDED,
 }
 impl FromVal for DevicePostureType {
     fn from_val(v: &emlite::Val) -> Self {
-        DevicePostureType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "continuous" => Self::CONTINUOUS,
+            "folded" => Self::FOLDED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for DevicePostureType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for DevicePostureType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<DevicePostureType> for emlite::Val {
     fn from(s: DevicePostureType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            DevicePostureType::CONTINUOUS => emlite::Val::from("continuous"),
+            DevicePostureType::FOLDED => emlite::Val::from("folded"),
+        }
     }
 }
 
-impl DevicePostureType {
-    pub const CONTINUOUS: &str = "continuous";
-    pub const FOLDED: &str = "folded";
-}
-
-#[derive(Clone, Debug)]
-pub struct ItemType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ItemType {
+    PRODUCT,
+    SUBSCRIPTION,
 }
 impl FromVal for ItemType {
     fn from_val(v: &emlite::Val) -> Self {
-        ItemType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "product" => Self::PRODUCT,
+            "subscription" => Self::SUBSCRIPTION,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ItemType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ItemType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ItemType> for emlite::Val {
     fn from(s: ItemType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ItemType::PRODUCT => emlite::Val::from("product"),
+            ItemType::SUBSCRIPTION => emlite::Val::from("subscription"),
+        }
     }
 }
 
-impl ItemType {
-    pub const PRODUCT: &str = "product";
-    pub const SUBSCRIPTION: &str = "subscription";
-}
-
-#[derive(Clone, Debug)]
-pub struct ShadowRootMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ShadowRootMode {
+    OPEN,
+    CLOSED,
 }
 impl FromVal for ShadowRootMode {
     fn from_val(v: &emlite::Val) -> Self {
-        ShadowRootMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "open" => Self::OPEN,
+            "closed" => Self::CLOSED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ShadowRootMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ShadowRootMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ShadowRootMode> for emlite::Val {
     fn from(s: ShadowRootMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ShadowRootMode::OPEN => emlite::Val::from("open"),
+            ShadowRootMode::CLOSED => emlite::Val::from("closed"),
+        }
     }
 }
 
-impl ShadowRootMode {
-    pub const OPEN: &str = "open";
-    pub const CLOSED: &str = "closed";
-}
-
-#[derive(Clone, Debug)]
-pub struct SlotAssignmentMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SlotAssignmentMode {
+    MANUAL,
+    NAMED,
 }
 impl FromVal for SlotAssignmentMode {
     fn from_val(v: &emlite::Val) -> Self {
-        SlotAssignmentMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "manual" => Self::MANUAL,
+            "named" => Self::NAMED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SlotAssignmentMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SlotAssignmentMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SlotAssignmentMode> for emlite::Val {
     fn from(s: SlotAssignmentMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SlotAssignmentMode::MANUAL => emlite::Val::from("manual"),
+            SlotAssignmentMode::NAMED => emlite::Val::from("named"),
+        }
     }
 }
 
-impl SlotAssignmentMode {
-    pub const MANUAL: &str = "manual";
-    pub const NAMED: &str = "named";
-}
-
-#[derive(Clone, Debug)]
-pub struct UnderlineStyle {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum UnderlineStyle {
+    NONE,
+    SOLID,
+    DOTTED,
+    DASHED,
+    WAVY,
 }
 impl FromVal for UnderlineStyle {
     fn from_val(v: &emlite::Val) -> Self {
-        UnderlineStyle { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "solid" => Self::SOLID,
+            "dotted" => Self::DOTTED,
+            "dashed" => Self::DASHED,
+            "wavy" => Self::WAVY,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for UnderlineStyle {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for UnderlineStyle {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<UnderlineStyle> for emlite::Val {
     fn from(s: UnderlineStyle) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            UnderlineStyle::NONE => emlite::Val::from("none"),
+            UnderlineStyle::SOLID => emlite::Val::from("solid"),
+            UnderlineStyle::DOTTED => emlite::Val::from("dotted"),
+            UnderlineStyle::DASHED => emlite::Val::from("dashed"),
+            UnderlineStyle::WAVY => emlite::Val::from("wavy"),
+        }
     }
 }
 
-impl UnderlineStyle {
-    pub const NONE: &str = "none";
-    pub const SOLID: &str = "solid";
-    pub const DOTTED: &str = "dotted";
-    pub const DASHED: &str = "dashed";
-    pub const WAVY: &str = "wavy";
-}
-
-#[derive(Clone, Debug)]
-pub struct UnderlineThickness {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum UnderlineThickness {
+    NONE,
+    THIN,
+    THICK,
 }
 impl FromVal for UnderlineThickness {
     fn from_val(v: &emlite::Val) -> Self {
-        UnderlineThickness { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "thin" => Self::THIN,
+            "thick" => Self::THICK,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for UnderlineThickness {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for UnderlineThickness {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<UnderlineThickness> for emlite::Val {
     fn from(s: UnderlineThickness) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            UnderlineThickness::NONE => emlite::Val::from("none"),
+            UnderlineThickness::THIN => emlite::Val::from("thin"),
+            UnderlineThickness::THICK => emlite::Val::from("thick"),
+        }
     }
 }
 
-impl UnderlineThickness {
-    pub const NONE: &str = "none";
-    pub const THIN: &str = "thin";
-    pub const THICK: &str = "thick";
-}
-
-#[derive(Clone, Debug)]
-pub struct MediaKeysRequirement {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MediaKeysRequirement {
+    REQUIRED,
+    OPTIONAL,
+    NOT_ALLOWED,
 }
 impl FromVal for MediaKeysRequirement {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaKeysRequirement { inner: v.clone() }
+        match v.as_::<&str>() {
+            "required" => Self::REQUIRED,
+            "optional" => Self::OPTIONAL,
+            "not-allowed" => Self::NOT_ALLOWED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MediaKeysRequirement {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MediaKeysRequirement {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MediaKeysRequirement> for emlite::Val {
     fn from(s: MediaKeysRequirement) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MediaKeysRequirement::REQUIRED => emlite::Val::from("required"),
+            MediaKeysRequirement::OPTIONAL => emlite::Val::from("optional"),
+            MediaKeysRequirement::NOT_ALLOWED => emlite::Val::from("not-allowed"),
+        }
     }
 }
 
-impl MediaKeysRequirement {
-    pub const REQUIRED: &str = "required";
-    pub const OPTIONAL: &str = "optional";
-    pub const NOT_ALLOWED: &str = "not-allowed";
-}
-
-#[derive(Clone, Debug)]
-pub struct MediaKeySessionType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MediaKeySessionType {
+    TEMPORARY,
+    PERSISTENT_LICENSE,
 }
 impl FromVal for MediaKeySessionType {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaKeySessionType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "temporary" => Self::TEMPORARY,
+            "persistent-license" => Self::PERSISTENT_LICENSE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MediaKeySessionType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MediaKeySessionType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MediaKeySessionType> for emlite::Val {
     fn from(s: MediaKeySessionType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MediaKeySessionType::TEMPORARY => emlite::Val::from("temporary"),
+            MediaKeySessionType::PERSISTENT_LICENSE => emlite::Val::from("persistent-license"),
+        }
     }
 }
 
-impl MediaKeySessionType {
-    pub const TEMPORARY: &str = "temporary";
-    pub const PERSISTENT_LICENSE: &str = "persistent-license";
-}
-
-#[derive(Clone, Debug)]
-pub struct MediaKeySessionClosedReason {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MediaKeySessionClosedReason {
+    INTERNAL_ERROR,
+    CLOSED_BY_APPLICATION,
+    RELEASE_ACKNOWLEDGED,
+    HARDWARE_CONTEXT_RESET,
+    RESOURCE_EVICTED,
 }
 impl FromVal for MediaKeySessionClosedReason {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaKeySessionClosedReason { inner: v.clone() }
+        match v.as_::<&str>() {
+            "internal-error" => Self::INTERNAL_ERROR,
+            "closed-by-application" => Self::CLOSED_BY_APPLICATION,
+            "release-acknowledged" => Self::RELEASE_ACKNOWLEDGED,
+            "hardware-context-reset" => Self::HARDWARE_CONTEXT_RESET,
+            "resource-evicted" => Self::RESOURCE_EVICTED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MediaKeySessionClosedReason {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MediaKeySessionClosedReason {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MediaKeySessionClosedReason> for emlite::Val {
     fn from(s: MediaKeySessionClosedReason) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MediaKeySessionClosedReason::INTERNAL_ERROR => emlite::Val::from("internal-error"),
+            MediaKeySessionClosedReason::CLOSED_BY_APPLICATION => {
+                emlite::Val::from("closed-by-application")
+            }
+            MediaKeySessionClosedReason::RELEASE_ACKNOWLEDGED => {
+                emlite::Val::from("release-acknowledged")
+            }
+            MediaKeySessionClosedReason::HARDWARE_CONTEXT_RESET => {
+                emlite::Val::from("hardware-context-reset")
+            }
+            MediaKeySessionClosedReason::RESOURCE_EVICTED => emlite::Val::from("resource-evicted"),
+        }
     }
 }
 
-impl MediaKeySessionClosedReason {
-    pub const INTERNAL_ERROR: &str = "internal-error";
-    pub const CLOSED_BY_APPLICATION: &str = "closed-by-application";
-    pub const RELEASE_ACKNOWLEDGED: &str = "release-acknowledged";
-    pub const HARDWARE_CONTEXT_RESET: &str = "hardware-context-reset";
-    pub const RESOURCE_EVICTED: &str = "resource-evicted";
-}
-
-#[derive(Clone, Debug)]
-pub struct MediaKeyStatus {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MediaKeyStatus {
+    USABLE,
+    EXPIRED,
+    RELEASED,
+    OUTPUT_RESTRICTED,
+    OUTPUT_DOWNSCALED,
+    USABLE_IN_FUTURE,
+    STATUS_PENDING,
+    INTERNAL_ERROR,
 }
 impl FromVal for MediaKeyStatus {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaKeyStatus { inner: v.clone() }
+        match v.as_::<&str>() {
+            "usable" => Self::USABLE,
+            "expired" => Self::EXPIRED,
+            "released" => Self::RELEASED,
+            "output-restricted" => Self::OUTPUT_RESTRICTED,
+            "output-downscaled" => Self::OUTPUT_DOWNSCALED,
+            "usable-in-future" => Self::USABLE_IN_FUTURE,
+            "status-pending" => Self::STATUS_PENDING,
+            "internal-error" => Self::INTERNAL_ERROR,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MediaKeyStatus {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MediaKeyStatus {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MediaKeyStatus> for emlite::Val {
     fn from(s: MediaKeyStatus) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MediaKeyStatus::USABLE => emlite::Val::from("usable"),
+            MediaKeyStatus::EXPIRED => emlite::Val::from("expired"),
+            MediaKeyStatus::RELEASED => emlite::Val::from("released"),
+            MediaKeyStatus::OUTPUT_RESTRICTED => emlite::Val::from("output-restricted"),
+            MediaKeyStatus::OUTPUT_DOWNSCALED => emlite::Val::from("output-downscaled"),
+            MediaKeyStatus::USABLE_IN_FUTURE => emlite::Val::from("usable-in-future"),
+            MediaKeyStatus::STATUS_PENDING => emlite::Val::from("status-pending"),
+            MediaKeyStatus::INTERNAL_ERROR => emlite::Val::from("internal-error"),
+        }
     }
 }
 
-impl MediaKeyStatus {
-    pub const USABLE: &str = "usable";
-    pub const EXPIRED: &str = "expired";
-    pub const RELEASED: &str = "released";
-    pub const OUTPUT_RESTRICTED: &str = "output-restricted";
-    pub const OUTPUT_DOWNSCALED: &str = "output-downscaled";
-    pub const USABLE_IN_FUTURE: &str = "usable-in-future";
-    pub const STATUS_PENDING: &str = "status-pending";
-    pub const INTERNAL_ERROR: &str = "internal-error";
-}
-
-#[derive(Clone, Debug)]
-pub struct MediaKeyMessageType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MediaKeyMessageType {
+    LICENSE_REQUEST,
+    LICENSE_RENEWAL,
+    LICENSE_RELEASE,
+    INDIVIDUALIZATION_REQUEST,
 }
 impl FromVal for MediaKeyMessageType {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaKeyMessageType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "license-request" => Self::LICENSE_REQUEST,
+            "license-renewal" => Self::LICENSE_RENEWAL,
+            "license-release" => Self::LICENSE_RELEASE,
+            "individualization-request" => Self::INDIVIDUALIZATION_REQUEST,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MediaKeyMessageType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MediaKeyMessageType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MediaKeyMessageType> for emlite::Val {
     fn from(s: MediaKeyMessageType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MediaKeyMessageType::LICENSE_REQUEST => emlite::Val::from("license-request"),
+            MediaKeyMessageType::LICENSE_RENEWAL => emlite::Val::from("license-renewal"),
+            MediaKeyMessageType::LICENSE_RELEASE => emlite::Val::from("license-release"),
+            MediaKeyMessageType::INDIVIDUALIZATION_REQUEST => {
+                emlite::Val::from("individualization-request")
+            }
+        }
     }
 }
 
-impl MediaKeyMessageType {
-    pub const LICENSE_REQUEST: &str = "license-request";
-    pub const LICENSE_RENEWAL: &str = "license-renewal";
-    pub const LICENSE_RELEASE: &str = "license-release";
-    pub const INDIVIDUALIZATION_REQUEST: &str = "individualization-request";
-}
-
-#[derive(Clone, Debug)]
-pub struct IdentityCredentialRequestOptionsContext {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum IdentityCredentialRequestOptionsContext {
+    SIGNIN,
+    SIGNUP,
+    USE_,
+    CONTINUE_,
 }
 impl FromVal for IdentityCredentialRequestOptionsContext {
     fn from_val(v: &emlite::Val) -> Self {
-        IdentityCredentialRequestOptionsContext { inner: v.clone() }
+        match v.as_::<&str>() {
+            "signin" => Self::SIGNIN,
+            "signup" => Self::SIGNUP,
+            "use" => Self::USE_,
+            "continue" => Self::CONTINUE_,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for IdentityCredentialRequestOptionsContext {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for IdentityCredentialRequestOptionsContext {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<IdentityCredentialRequestOptionsContext> for emlite::Val {
     fn from(s: IdentityCredentialRequestOptionsContext) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            IdentityCredentialRequestOptionsContext::SIGNIN => emlite::Val::from("signin"),
+            IdentityCredentialRequestOptionsContext::SIGNUP => emlite::Val::from("signup"),
+            IdentityCredentialRequestOptionsContext::USE_ => emlite::Val::from("use"),
+            IdentityCredentialRequestOptionsContext::CONTINUE_ => emlite::Val::from("continue"),
+        }
     }
 }
 
-impl IdentityCredentialRequestOptionsContext {
-    pub const SIGNIN: &str = "signin";
-    pub const SIGNUP: &str = "signup";
-    pub const USE_: &str = "use";
-    pub const CONTINUE_: &str = "continue";
-}
-
-#[derive(Clone, Debug)]
-pub struct IdentityCredentialRequestOptionsMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum IdentityCredentialRequestOptionsMode {
+    ACTIVE,
+    PASSIVE,
 }
 impl FromVal for IdentityCredentialRequestOptionsMode {
     fn from_val(v: &emlite::Val) -> Self {
-        IdentityCredentialRequestOptionsMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "active" => Self::ACTIVE,
+            "passive" => Self::PASSIVE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for IdentityCredentialRequestOptionsMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for IdentityCredentialRequestOptionsMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<IdentityCredentialRequestOptionsMode> for emlite::Val {
     fn from(s: IdentityCredentialRequestOptionsMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            IdentityCredentialRequestOptionsMode::ACTIVE => emlite::Val::from("active"),
+            IdentityCredentialRequestOptionsMode::PASSIVE => emlite::Val::from("passive"),
+        }
     }
 }
 
-impl IdentityCredentialRequestOptionsMode {
-    pub const ACTIVE: &str = "active";
-    pub const PASSIVE: &str = "passive";
-}
-
-#[derive(Clone, Debug)]
-pub struct OpaqueProperty {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum OpaqueProperty {
+    OPAQUE,
 }
 impl FromVal for OpaqueProperty {
     fn from_val(v: &emlite::Val) -> Self {
-        OpaqueProperty { inner: v.clone() }
+        match v.as_::<&str>() {
+            "opaque" => Self::OPAQUE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for OpaqueProperty {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for OpaqueProperty {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<OpaqueProperty> for emlite::Val {
     fn from(s: OpaqueProperty) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            OpaqueProperty::OPAQUE => emlite::Val::from("opaque"),
+        }
     }
 }
 
-impl OpaqueProperty {
-    pub const OPAQUE: &str = "opaque";
-}
-
-#[derive(Clone, Debug)]
-pub struct FenceReportingDestination {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum FenceReportingDestination {
+    BUYER,
+    SELLER,
+    COMPONENT_SELLER,
+    DIRECT_SELLER,
+    SHARED_STORAGE_SELECT_URL,
 }
 impl FromVal for FenceReportingDestination {
     fn from_val(v: &emlite::Val) -> Self {
-        FenceReportingDestination { inner: v.clone() }
+        match v.as_::<&str>() {
+            "buyer" => Self::BUYER,
+            "seller" => Self::SELLER,
+            "component-seller" => Self::COMPONENT_SELLER,
+            "direct-seller" => Self::DIRECT_SELLER,
+            "shared-storage-select-url" => Self::SHARED_STORAGE_SELECT_URL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for FenceReportingDestination {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for FenceReportingDestination {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<FenceReportingDestination> for emlite::Val {
     fn from(s: FenceReportingDestination) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            FenceReportingDestination::BUYER => emlite::Val::from("buyer"),
+            FenceReportingDestination::SELLER => emlite::Val::from("seller"),
+            FenceReportingDestination::COMPONENT_SELLER => emlite::Val::from("component-seller"),
+            FenceReportingDestination::DIRECT_SELLER => emlite::Val::from("direct-seller"),
+            FenceReportingDestination::SHARED_STORAGE_SELECT_URL => {
+                emlite::Val::from("shared-storage-select-url")
+            }
+        }
     }
 }
 
-impl FenceReportingDestination {
-    pub const BUYER: &str = "buyer";
-    pub const SELLER: &str = "seller";
-    pub const COMPONENT_SELLER: &str = "component-seller";
-    pub const DIRECT_SELLER: &str = "direct-seller";
-    pub const SHARED_STORAGE_SELECT_URL: &str = "shared-storage-select-url";
-}
-
-#[derive(Clone, Debug)]
-pub struct RequestDestination {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RequestDestination {
+    NONE,
+    AUDIO,
+    AUDIOWORKLET,
+    DOCUMENT,
+    EMBED,
+    FONT,
+    FRAME,
+    IFRAME,
+    IMAGE,
+    JSON,
+    MANIFEST,
+    OBJECT,
+    PAINTWORKLET,
+    REPORT,
+    SCRIPT,
+    SHAREDWORKER,
+    STYLE,
+    TRACK,
+    VIDEO,
+    WORKER,
+    XSLT,
 }
 impl FromVal for RequestDestination {
     fn from_val(v: &emlite::Val) -> Self {
-        RequestDestination { inner: v.clone() }
+        match v.as_::<&str>() {
+            "" => Self::NONE,
+            "audio" => Self::AUDIO,
+            "audioworklet" => Self::AUDIOWORKLET,
+            "document" => Self::DOCUMENT,
+            "embed" => Self::EMBED,
+            "font" => Self::FONT,
+            "frame" => Self::FRAME,
+            "iframe" => Self::IFRAME,
+            "image" => Self::IMAGE,
+            "json" => Self::JSON,
+            "manifest" => Self::MANIFEST,
+            "object" => Self::OBJECT,
+            "paintworklet" => Self::PAINTWORKLET,
+            "report" => Self::REPORT,
+            "script" => Self::SCRIPT,
+            "sharedworker" => Self::SHAREDWORKER,
+            "style" => Self::STYLE,
+            "track" => Self::TRACK,
+            "video" => Self::VIDEO,
+            "worker" => Self::WORKER,
+            "xslt" => Self::XSLT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RequestDestination {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RequestDestination {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RequestDestination> for emlite::Val {
     fn from(s: RequestDestination) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RequestDestination::NONE => emlite::Val::from(""),
+            RequestDestination::AUDIO => emlite::Val::from("audio"),
+            RequestDestination::AUDIOWORKLET => emlite::Val::from("audioworklet"),
+            RequestDestination::DOCUMENT => emlite::Val::from("document"),
+            RequestDestination::EMBED => emlite::Val::from("embed"),
+            RequestDestination::FONT => emlite::Val::from("font"),
+            RequestDestination::FRAME => emlite::Val::from("frame"),
+            RequestDestination::IFRAME => emlite::Val::from("iframe"),
+            RequestDestination::IMAGE => emlite::Val::from("image"),
+            RequestDestination::JSON => emlite::Val::from("json"),
+            RequestDestination::MANIFEST => emlite::Val::from("manifest"),
+            RequestDestination::OBJECT => emlite::Val::from("object"),
+            RequestDestination::PAINTWORKLET => emlite::Val::from("paintworklet"),
+            RequestDestination::REPORT => emlite::Val::from("report"),
+            RequestDestination::SCRIPT => emlite::Val::from("script"),
+            RequestDestination::SHAREDWORKER => emlite::Val::from("sharedworker"),
+            RequestDestination::STYLE => emlite::Val::from("style"),
+            RequestDestination::TRACK => emlite::Val::from("track"),
+            RequestDestination::VIDEO => emlite::Val::from("video"),
+            RequestDestination::WORKER => emlite::Val::from("worker"),
+            RequestDestination::XSLT => emlite::Val::from("xslt"),
+        }
     }
 }
 
-impl RequestDestination {
-    pub const NONE: &str = "";
-    pub const AUDIO: &str = "audio";
-    pub const AUDIOWORKLET: &str = "audioworklet";
-    pub const DOCUMENT: &str = "document";
-    pub const EMBED: &str = "embed";
-    pub const FONT: &str = "font";
-    pub const FRAME: &str = "frame";
-    pub const IFRAME: &str = "iframe";
-    pub const IMAGE: &str = "image";
-    pub const JSON: &str = "json";
-    pub const MANIFEST: &str = "manifest";
-    pub const OBJECT: &str = "object";
-    pub const PAINTWORKLET: &str = "paintworklet";
-    pub const REPORT: &str = "report";
-    pub const SCRIPT: &str = "script";
-    pub const SHAREDWORKER: &str = "sharedworker";
-    pub const STYLE: &str = "style";
-    pub const TRACK: &str = "track";
-    pub const VIDEO: &str = "video";
-    pub const WORKER: &str = "worker";
-    pub const XSLT: &str = "xslt";
-}
-
-#[derive(Clone, Debug)]
-pub struct RequestMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RequestMode {
+    NAVIGATE,
+    SAME_ORIGIN,
+    NO_CORS,
+    CORS,
 }
 impl FromVal for RequestMode {
     fn from_val(v: &emlite::Val) -> Self {
-        RequestMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "navigate" => Self::NAVIGATE,
+            "same-origin" => Self::SAME_ORIGIN,
+            "no-cors" => Self::NO_CORS,
+            "cors" => Self::CORS,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RequestMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RequestMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RequestMode> for emlite::Val {
     fn from(s: RequestMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RequestMode::NAVIGATE => emlite::Val::from("navigate"),
+            RequestMode::SAME_ORIGIN => emlite::Val::from("same-origin"),
+            RequestMode::NO_CORS => emlite::Val::from("no-cors"),
+            RequestMode::CORS => emlite::Val::from("cors"),
+        }
     }
 }
 
-impl RequestMode {
-    pub const NAVIGATE: &str = "navigate";
-    pub const SAME_ORIGIN: &str = "same-origin";
-    pub const NO_CORS: &str = "no-cors";
-    pub const CORS: &str = "cors";
-}
-
-#[derive(Clone, Debug)]
-pub struct RequestCredentials {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RequestCredentials {
+    OMIT,
+    SAME_ORIGIN,
+    INCLUDE,
 }
 impl FromVal for RequestCredentials {
     fn from_val(v: &emlite::Val) -> Self {
-        RequestCredentials { inner: v.clone() }
+        match v.as_::<&str>() {
+            "omit" => Self::OMIT,
+            "same-origin" => Self::SAME_ORIGIN,
+            "include" => Self::INCLUDE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RequestCredentials {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RequestCredentials {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RequestCredentials> for emlite::Val {
     fn from(s: RequestCredentials) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RequestCredentials::OMIT => emlite::Val::from("omit"),
+            RequestCredentials::SAME_ORIGIN => emlite::Val::from("same-origin"),
+            RequestCredentials::INCLUDE => emlite::Val::from("include"),
+        }
     }
 }
 
-impl RequestCredentials {
-    pub const OMIT: &str = "omit";
-    pub const SAME_ORIGIN: &str = "same-origin";
-    pub const INCLUDE: &str = "include";
-}
-
-#[derive(Clone, Debug)]
-pub struct RequestCache {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RequestCache {
+    DEFAULT,
+    NO_STORE,
+    RELOAD,
+    NO_CACHE,
+    FORCE_CACHE,
+    ONLY_IF_CACHED,
 }
 impl FromVal for RequestCache {
     fn from_val(v: &emlite::Val) -> Self {
-        RequestCache { inner: v.clone() }
+        match v.as_::<&str>() {
+            "default" => Self::DEFAULT,
+            "no-store" => Self::NO_STORE,
+            "reload" => Self::RELOAD,
+            "no-cache" => Self::NO_CACHE,
+            "force-cache" => Self::FORCE_CACHE,
+            "only-if-cached" => Self::ONLY_IF_CACHED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RequestCache {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RequestCache {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RequestCache> for emlite::Val {
     fn from(s: RequestCache) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RequestCache::DEFAULT => emlite::Val::from("default"),
+            RequestCache::NO_STORE => emlite::Val::from("no-store"),
+            RequestCache::RELOAD => emlite::Val::from("reload"),
+            RequestCache::NO_CACHE => emlite::Val::from("no-cache"),
+            RequestCache::FORCE_CACHE => emlite::Val::from("force-cache"),
+            RequestCache::ONLY_IF_CACHED => emlite::Val::from("only-if-cached"),
+        }
     }
 }
 
-impl RequestCache {
-    pub const DEFAULT: &str = "default";
-    pub const NO_STORE: &str = "no-store";
-    pub const RELOAD: &str = "reload";
-    pub const NO_CACHE: &str = "no-cache";
-    pub const FORCE_CACHE: &str = "force-cache";
-    pub const ONLY_IF_CACHED: &str = "only-if-cached";
-}
-
-#[derive(Clone, Debug)]
-pub struct RequestRedirect {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RequestRedirect {
+    FOLLOW,
+    ERROR,
+    MANUAL,
 }
 impl FromVal for RequestRedirect {
     fn from_val(v: &emlite::Val) -> Self {
-        RequestRedirect { inner: v.clone() }
+        match v.as_::<&str>() {
+            "follow" => Self::FOLLOW,
+            "error" => Self::ERROR,
+            "manual" => Self::MANUAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RequestRedirect {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RequestRedirect {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RequestRedirect> for emlite::Val {
     fn from(s: RequestRedirect) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RequestRedirect::FOLLOW => emlite::Val::from("follow"),
+            RequestRedirect::ERROR => emlite::Val::from("error"),
+            RequestRedirect::MANUAL => emlite::Val::from("manual"),
+        }
     }
 }
 
-impl RequestRedirect {
-    pub const FOLLOW: &str = "follow";
-    pub const ERROR: &str = "error";
-    pub const MANUAL: &str = "manual";
-}
-
-#[derive(Clone, Debug)]
-pub struct RequestDuplex {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RequestDuplex {
+    HALF,
 }
 impl FromVal for RequestDuplex {
     fn from_val(v: &emlite::Val) -> Self {
-        RequestDuplex { inner: v.clone() }
+        match v.as_::<&str>() {
+            "half" => Self::HALF,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RequestDuplex {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RequestDuplex {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RequestDuplex> for emlite::Val {
     fn from(s: RequestDuplex) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RequestDuplex::HALF => emlite::Val::from("half"),
+        }
     }
 }
 
-impl RequestDuplex {
-    pub const HALF: &str = "half";
-}
-
-#[derive(Clone, Debug)]
-pub struct RequestPriority {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RequestPriority {
+    HIGH,
+    LOW,
+    AUTO,
 }
 impl FromVal for RequestPriority {
     fn from_val(v: &emlite::Val) -> Self {
-        RequestPriority { inner: v.clone() }
+        match v.as_::<&str>() {
+            "high" => Self::HIGH,
+            "low" => Self::LOW,
+            "auto" => Self::AUTO,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RequestPriority {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RequestPriority {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RequestPriority> for emlite::Val {
     fn from(s: RequestPriority) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RequestPriority::HIGH => emlite::Val::from("high"),
+            RequestPriority::LOW => emlite::Val::from("low"),
+            RequestPriority::AUTO => emlite::Val::from("auto"),
+        }
     }
 }
 
-impl RequestPriority {
-    pub const HIGH: &str = "high";
-    pub const LOW: &str = "low";
-    pub const AUTO: &str = "auto";
-}
-
-#[derive(Clone, Debug)]
-pub struct ResponseType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ResponseType {
+    BASIC,
+    CORS,
+    DEFAULT,
+    ERROR,
+    OPAQUE,
+    OPAQUEREDIRECT,
 }
 impl FromVal for ResponseType {
     fn from_val(v: &emlite::Val) -> Self {
-        ResponseType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "basic" => Self::BASIC,
+            "cors" => Self::CORS,
+            "default" => Self::DEFAULT,
+            "error" => Self::ERROR,
+            "opaque" => Self::OPAQUE,
+            "opaqueredirect" => Self::OPAQUEREDIRECT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ResponseType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ResponseType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ResponseType> for emlite::Val {
     fn from(s: ResponseType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ResponseType::BASIC => emlite::Val::from("basic"),
+            ResponseType::CORS => emlite::Val::from("cors"),
+            ResponseType::DEFAULT => emlite::Val::from("default"),
+            ResponseType::ERROR => emlite::Val::from("error"),
+            ResponseType::OPAQUE => emlite::Val::from("opaque"),
+            ResponseType::OPAQUEREDIRECT => emlite::Val::from("opaqueredirect"),
+        }
     }
 }
 
-impl ResponseType {
-    pub const BASIC: &str = "basic";
-    pub const CORS: &str = "cors";
-    pub const DEFAULT: &str = "default";
-    pub const ERROR: &str = "error";
-    pub const OPAQUE: &str = "opaque";
-    pub const OPAQUEREDIRECT: &str = "opaqueredirect";
-}
-
-#[derive(Clone, Debug)]
-pub struct FileSystemPermissionMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum FileSystemPermissionMode {
+    READ,
+    READWRITE,
 }
 impl FromVal for FileSystemPermissionMode {
     fn from_val(v: &emlite::Val) -> Self {
-        FileSystemPermissionMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "read" => Self::READ,
+            "readwrite" => Self::READWRITE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for FileSystemPermissionMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for FileSystemPermissionMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<FileSystemPermissionMode> for emlite::Val {
     fn from(s: FileSystemPermissionMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            FileSystemPermissionMode::READ => emlite::Val::from("read"),
+            FileSystemPermissionMode::READWRITE => emlite::Val::from("readwrite"),
+        }
     }
 }
 
-impl FileSystemPermissionMode {
-    pub const READ: &str = "read";
-    pub const READWRITE: &str = "readwrite";
-}
-
-#[derive(Clone, Debug)]
-pub struct WellKnownDirectory {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum WellKnownDirectory {
+    DESKTOP,
+    DOCUMENTS,
+    DOWNLOADS,
+    MUSIC,
+    PICTURES,
+    VIDEOS,
 }
 impl FromVal for WellKnownDirectory {
     fn from_val(v: &emlite::Val) -> Self {
-        WellKnownDirectory { inner: v.clone() }
+        match v.as_::<&str>() {
+            "desktop" => Self::DESKTOP,
+            "documents" => Self::DOCUMENTS,
+            "downloads" => Self::DOWNLOADS,
+            "music" => Self::MUSIC,
+            "pictures" => Self::PICTURES,
+            "videos" => Self::VIDEOS,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for WellKnownDirectory {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for WellKnownDirectory {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<WellKnownDirectory> for emlite::Val {
     fn from(s: WellKnownDirectory) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            WellKnownDirectory::DESKTOP => emlite::Val::from("desktop"),
+            WellKnownDirectory::DOCUMENTS => emlite::Val::from("documents"),
+            WellKnownDirectory::DOWNLOADS => emlite::Val::from("downloads"),
+            WellKnownDirectory::MUSIC => emlite::Val::from("music"),
+            WellKnownDirectory::PICTURES => emlite::Val::from("pictures"),
+            WellKnownDirectory::VIDEOS => emlite::Val::from("videos"),
+        }
     }
 }
 
-impl WellKnownDirectory {
-    pub const DESKTOP: &str = "desktop";
-    pub const DOCUMENTS: &str = "documents";
-    pub const DOWNLOADS: &str = "downloads";
-    pub const MUSIC: &str = "music";
-    pub const PICTURES: &str = "pictures";
-    pub const VIDEOS: &str = "videos";
-}
-
-#[derive(Clone, Debug)]
-pub struct FileSystemHandleKind {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum FileSystemHandleKind {
+    FILE,
+    DIRECTORY,
 }
 impl FromVal for FileSystemHandleKind {
     fn from_val(v: &emlite::Val) -> Self {
-        FileSystemHandleKind { inner: v.clone() }
+        match v.as_::<&str>() {
+            "file" => Self::FILE,
+            "directory" => Self::DIRECTORY,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for FileSystemHandleKind {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for FileSystemHandleKind {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<FileSystemHandleKind> for emlite::Val {
     fn from(s: FileSystemHandleKind) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            FileSystemHandleKind::FILE => emlite::Val::from("file"),
+            FileSystemHandleKind::DIRECTORY => emlite::Val::from("directory"),
+        }
     }
 }
 
-impl FileSystemHandleKind {
-    pub const FILE: &str = "file";
-    pub const DIRECTORY: &str = "directory";
-}
-
-#[derive(Clone, Debug)]
-pub struct WriteCommandType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum WriteCommandType {
+    WRITE,
+    SEEK,
+    TRUNCATE,
 }
 impl FromVal for WriteCommandType {
     fn from_val(v: &emlite::Val) -> Self {
-        WriteCommandType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "write" => Self::WRITE,
+            "seek" => Self::SEEK,
+            "truncate" => Self::TRUNCATE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for WriteCommandType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for WriteCommandType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<WriteCommandType> for emlite::Val {
     fn from(s: WriteCommandType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            WriteCommandType::WRITE => emlite::Val::from("write"),
+            WriteCommandType::SEEK => emlite::Val::from("seek"),
+            WriteCommandType::TRUNCATE => emlite::Val::from("truncate"),
+        }
     }
 }
 
-impl WriteCommandType {
-    pub const WRITE: &str = "write";
-    pub const SEEK: &str = "seek";
-    pub const TRUNCATE: &str = "truncate";
-}
-
-#[derive(Clone, Debug)]
-pub struct FullscreenNavigationUI {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum FullscreenNavigationUI {
+    AUTO,
+    SHOW,
+    HIDE,
 }
 impl FromVal for FullscreenNavigationUI {
     fn from_val(v: &emlite::Val) -> Self {
-        FullscreenNavigationUI { inner: v.clone() }
+        match v.as_::<&str>() {
+            "auto" => Self::AUTO,
+            "show" => Self::SHOW,
+            "hide" => Self::HIDE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for FullscreenNavigationUI {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for FullscreenNavigationUI {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<FullscreenNavigationUI> for emlite::Val {
     fn from(s: FullscreenNavigationUI) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            FullscreenNavigationUI::AUTO => emlite::Val::from("auto"),
+            FullscreenNavigationUI::SHOW => emlite::Val::from("show"),
+            FullscreenNavigationUI::HIDE => emlite::Val::from("hide"),
+        }
     }
 }
 
-impl FullscreenNavigationUI {
-    pub const AUTO: &str = "auto";
-    pub const SHOW: &str = "show";
-    pub const HIDE: &str = "hide";
-}
-
-#[derive(Clone, Debug)]
-pub struct GamepadHand {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GamepadHand {
+    NONE,
+    LEFT,
+    RIGHT,
 }
 impl FromVal for GamepadHand {
     fn from_val(v: &emlite::Val) -> Self {
-        GamepadHand { inner: v.clone() }
+        match v.as_::<&str>() {
+            "" => Self::NONE,
+            "left" => Self::LEFT,
+            "right" => Self::RIGHT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GamepadHand {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GamepadHand {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GamepadHand> for emlite::Val {
     fn from(s: GamepadHand) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GamepadHand::NONE => emlite::Val::from(""),
+            GamepadHand::LEFT => emlite::Val::from("left"),
+            GamepadHand::RIGHT => emlite::Val::from("right"),
+        }
     }
 }
 
-impl GamepadHand {
-    pub const NONE: &str = "";
-    pub const LEFT: &str = "left";
-    pub const RIGHT: &str = "right";
-}
-
-#[derive(Clone, Debug)]
-pub struct GamepadMappingType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GamepadMappingType {
+    NONE,
+    STANDARD,
+    XR_STANDARD,
 }
 impl FromVal for GamepadMappingType {
     fn from_val(v: &emlite::Val) -> Self {
-        GamepadMappingType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "" => Self::NONE,
+            "standard" => Self::STANDARD,
+            "xr-standard" => Self::XR_STANDARD,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GamepadMappingType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GamepadMappingType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GamepadMappingType> for emlite::Val {
     fn from(s: GamepadMappingType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GamepadMappingType::NONE => emlite::Val::from(""),
+            GamepadMappingType::STANDARD => emlite::Val::from("standard"),
+            GamepadMappingType::XR_STANDARD => emlite::Val::from("xr-standard"),
+        }
     }
 }
 
-impl GamepadMappingType {
-    pub const NONE: &str = "";
-    pub const STANDARD: &str = "standard";
-    pub const XR_STANDARD: &str = "xr-standard";
-}
-
-#[derive(Clone, Debug)]
-pub struct GamepadHapticsResult {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GamepadHapticsResult {
+    COMPLETE,
+    PREEMPTED,
 }
 impl FromVal for GamepadHapticsResult {
     fn from_val(v: &emlite::Val) -> Self {
-        GamepadHapticsResult { inner: v.clone() }
+        match v.as_::<&str>() {
+            "complete" => Self::COMPLETE,
+            "preempted" => Self::PREEMPTED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GamepadHapticsResult {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GamepadHapticsResult {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GamepadHapticsResult> for emlite::Val {
     fn from(s: GamepadHapticsResult) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GamepadHapticsResult::COMPLETE => emlite::Val::from("complete"),
+            GamepadHapticsResult::PREEMPTED => emlite::Val::from("preempted"),
+        }
     }
 }
 
-impl GamepadHapticsResult {
-    pub const COMPLETE: &str = "complete";
-    pub const PREEMPTED: &str = "preempted";
-}
-
-#[derive(Clone, Debug)]
-pub struct GamepadHapticEffectType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GamepadHapticEffectType {
+    DUAL_RUMBLE,
+    TRIGGER_RUMBLE,
 }
 impl FromVal for GamepadHapticEffectType {
     fn from_val(v: &emlite::Val) -> Self {
-        GamepadHapticEffectType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "dual-rumble" => Self::DUAL_RUMBLE,
+            "trigger-rumble" => Self::TRIGGER_RUMBLE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GamepadHapticEffectType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GamepadHapticEffectType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GamepadHapticEffectType> for emlite::Val {
     fn from(s: GamepadHapticEffectType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GamepadHapticEffectType::DUAL_RUMBLE => emlite::Val::from("dual-rumble"),
+            GamepadHapticEffectType::TRIGGER_RUMBLE => emlite::Val::from("trigger-rumble"),
+        }
     }
 }
 
-impl GamepadHapticEffectType {
-    pub const DUAL_RUMBLE: &str = "dual-rumble";
-    pub const TRIGGER_RUMBLE: &str = "trigger-rumble";
-}
-
-#[derive(Clone, Debug)]
-pub struct GyroscopeLocalCoordinateSystem {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GyroscopeLocalCoordinateSystem {
+    DEVICE,
+    SCREEN,
 }
 impl FromVal for GyroscopeLocalCoordinateSystem {
     fn from_val(v: &emlite::Val) -> Self {
-        GyroscopeLocalCoordinateSystem { inner: v.clone() }
+        match v.as_::<&str>() {
+            "device" => Self::DEVICE,
+            "screen" => Self::SCREEN,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GyroscopeLocalCoordinateSystem {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GyroscopeLocalCoordinateSystem {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GyroscopeLocalCoordinateSystem> for emlite::Val {
     fn from(s: GyroscopeLocalCoordinateSystem) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GyroscopeLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
+            GyroscopeLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+        }
     }
 }
 
-impl GyroscopeLocalCoordinateSystem {
-    pub const DEVICE: &str = "device";
-    pub const SCREEN: &str = "screen";
-}
-
-#[derive(Clone, Debug)]
-pub struct HandwritingRecognitionType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum HandwritingRecognitionType {
+    TEXT,
+    PER_CHARACTER,
 }
 impl FromVal for HandwritingRecognitionType {
     fn from_val(v: &emlite::Val) -> Self {
-        HandwritingRecognitionType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "text" => Self::TEXT,
+            "per-character" => Self::PER_CHARACTER,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for HandwritingRecognitionType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for HandwritingRecognitionType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<HandwritingRecognitionType> for emlite::Val {
     fn from(s: HandwritingRecognitionType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            HandwritingRecognitionType::TEXT => emlite::Val::from("text"),
+            HandwritingRecognitionType::PER_CHARACTER => emlite::Val::from("per-character"),
+        }
     }
 }
 
-impl HandwritingRecognitionType {
-    pub const TEXT: &str = "text";
-    pub const PER_CHARACTER: &str = "per-character";
-}
-
-#[derive(Clone, Debug)]
-pub struct HandwritingInputType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum HandwritingInputType {
+    MOUSE,
+    STYLUS,
+    TOUCH,
 }
 impl FromVal for HandwritingInputType {
     fn from_val(v: &emlite::Val) -> Self {
-        HandwritingInputType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "mouse" => Self::MOUSE,
+            "stylus" => Self::STYLUS,
+            "touch" => Self::TOUCH,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for HandwritingInputType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for HandwritingInputType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<HandwritingInputType> for emlite::Val {
     fn from(s: HandwritingInputType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            HandwritingInputType::MOUSE => emlite::Val::from("mouse"),
+            HandwritingInputType::STYLUS => emlite::Val::from("stylus"),
+            HandwritingInputType::TOUCH => emlite::Val::from("touch"),
+        }
     }
 }
 
-impl HandwritingInputType {
-    pub const MOUSE: &str = "mouse";
-    pub const STYLUS: &str = "stylus";
-    pub const TOUCH: &str = "touch";
-}
-
-#[derive(Clone, Debug)]
-pub struct DocumentReadyState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum DocumentReadyState {
+    LOADING,
+    INTERACTIVE,
+    COMPLETE,
 }
 impl FromVal for DocumentReadyState {
     fn from_val(v: &emlite::Val) -> Self {
-        DocumentReadyState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "loading" => Self::LOADING,
+            "interactive" => Self::INTERACTIVE,
+            "complete" => Self::COMPLETE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for DocumentReadyState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for DocumentReadyState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<DocumentReadyState> for emlite::Val {
     fn from(s: DocumentReadyState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            DocumentReadyState::LOADING => emlite::Val::from("loading"),
+            DocumentReadyState::INTERACTIVE => emlite::Val::from("interactive"),
+            DocumentReadyState::COMPLETE => emlite::Val::from("complete"),
+        }
     }
 }
 
-impl DocumentReadyState {
-    pub const LOADING: &str = "loading";
-    pub const INTERACTIVE: &str = "interactive";
-    pub const COMPLETE: &str = "complete";
-}
-
-#[derive(Clone, Debug)]
-pub struct DocumentVisibilityState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum DocumentVisibilityState {
+    VISIBLE,
+    HIDDEN,
 }
 impl FromVal for DocumentVisibilityState {
     fn from_val(v: &emlite::Val) -> Self {
-        DocumentVisibilityState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "visible" => Self::VISIBLE,
+            "hidden" => Self::HIDDEN,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for DocumentVisibilityState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for DocumentVisibilityState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<DocumentVisibilityState> for emlite::Val {
     fn from(s: DocumentVisibilityState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            DocumentVisibilityState::VISIBLE => emlite::Val::from("visible"),
+            DocumentVisibilityState::HIDDEN => emlite::Val::from("hidden"),
+        }
     }
 }
 
-impl DocumentVisibilityState {
-    pub const VISIBLE: &str = "visible";
-    pub const HIDDEN: &str = "hidden";
-}
-
-#[derive(Clone, Debug)]
-pub struct CanPlayTypeResult {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CanPlayTypeResult {
+    NONE,
+    MAYBE,
+    PROBABLY,
 }
 impl FromVal for CanPlayTypeResult {
     fn from_val(v: &emlite::Val) -> Self {
-        CanPlayTypeResult { inner: v.clone() }
+        match v.as_::<&str>() {
+            "" => Self::NONE,
+            "maybe" => Self::MAYBE,
+            "probably" => Self::PROBABLY,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CanPlayTypeResult {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CanPlayTypeResult {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CanPlayTypeResult> for emlite::Val {
     fn from(s: CanPlayTypeResult) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CanPlayTypeResult::NONE => emlite::Val::from(""),
+            CanPlayTypeResult::MAYBE => emlite::Val::from("maybe"),
+            CanPlayTypeResult::PROBABLY => emlite::Val::from("probably"),
+        }
     }
 }
 
-impl CanPlayTypeResult {
-    pub const NONE: &str = "";
-    pub const MAYBE: &str = "maybe";
-    pub const PROBABLY: &str = "probably";
-}
-
-#[derive(Clone, Debug)]
-pub struct TextTrackMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum TextTrackMode {
+    DISABLED,
+    HIDDEN,
+    SHOWING,
 }
 impl FromVal for TextTrackMode {
     fn from_val(v: &emlite::Val) -> Self {
-        TextTrackMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "disabled" => Self::DISABLED,
+            "hidden" => Self::HIDDEN,
+            "showing" => Self::SHOWING,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for TextTrackMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for TextTrackMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<TextTrackMode> for emlite::Val {
     fn from(s: TextTrackMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            TextTrackMode::DISABLED => emlite::Val::from("disabled"),
+            TextTrackMode::HIDDEN => emlite::Val::from("hidden"),
+            TextTrackMode::SHOWING => emlite::Val::from("showing"),
+        }
     }
 }
 
-impl TextTrackMode {
-    pub const DISABLED: &str = "disabled";
-    pub const HIDDEN: &str = "hidden";
-    pub const SHOWING: &str = "showing";
-}
-
-#[derive(Clone, Debug)]
-pub struct TextTrackKind {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum TextTrackKind {
+    SUBTITLES,
+    CAPTIONS,
+    DESCRIPTIONS,
+    CHAPTERS,
+    METADATA,
 }
 impl FromVal for TextTrackKind {
     fn from_val(v: &emlite::Val) -> Self {
-        TextTrackKind { inner: v.clone() }
+        match v.as_::<&str>() {
+            "subtitles" => Self::SUBTITLES,
+            "captions" => Self::CAPTIONS,
+            "descriptions" => Self::DESCRIPTIONS,
+            "chapters" => Self::CHAPTERS,
+            "metadata" => Self::METADATA,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for TextTrackKind {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for TextTrackKind {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<TextTrackKind> for emlite::Val {
     fn from(s: TextTrackKind) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            TextTrackKind::SUBTITLES => emlite::Val::from("subtitles"),
+            TextTrackKind::CAPTIONS => emlite::Val::from("captions"),
+            TextTrackKind::DESCRIPTIONS => emlite::Val::from("descriptions"),
+            TextTrackKind::CHAPTERS => emlite::Val::from("chapters"),
+            TextTrackKind::METADATA => emlite::Val::from("metadata"),
+        }
     }
 }
 
-impl TextTrackKind {
-    pub const SUBTITLES: &str = "subtitles";
-    pub const CAPTIONS: &str = "captions";
-    pub const DESCRIPTIONS: &str = "descriptions";
-    pub const CHAPTERS: &str = "chapters";
-    pub const METADATA: &str = "metadata";
-}
-
-#[derive(Clone, Debug)]
-pub struct SelectionMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SelectionMode {
+    SELECT,
+    START,
+    END,
+    PRESERVE,
 }
 impl FromVal for SelectionMode {
     fn from_val(v: &emlite::Val) -> Self {
-        SelectionMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "select" => Self::SELECT,
+            "start" => Self::START,
+            "end" => Self::END,
+            "preserve" => Self::PRESERVE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SelectionMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SelectionMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SelectionMode> for emlite::Val {
     fn from(s: SelectionMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SelectionMode::SELECT => emlite::Val::from("select"),
+            SelectionMode::START => emlite::Val::from("start"),
+            SelectionMode::END => emlite::Val::from("end"),
+            SelectionMode::PRESERVE => emlite::Val::from("preserve"),
+        }
     }
 }
 
-impl SelectionMode {
-    pub const SELECT: &str = "select";
-    pub const START: &str = "start";
-    pub const END: &str = "end";
-    pub const PRESERVE: &str = "preserve";
-}
-
-#[derive(Clone, Debug)]
-pub struct PredefinedColorSpace {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PredefinedColorSpace {
+    SRGB,
+    DISPLAY_P3,
 }
 impl FromVal for PredefinedColorSpace {
     fn from_val(v: &emlite::Val) -> Self {
-        PredefinedColorSpace { inner: v.clone() }
+        match v.as_::<&str>() {
+            "srgb" => Self::SRGB,
+            "display-p3" => Self::DISPLAY_P3,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PredefinedColorSpace {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PredefinedColorSpace {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PredefinedColorSpace> for emlite::Val {
     fn from(s: PredefinedColorSpace) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PredefinedColorSpace::SRGB => emlite::Val::from("srgb"),
+            PredefinedColorSpace::DISPLAY_P3 => emlite::Val::from("display-p3"),
+        }
     }
 }
 
-impl PredefinedColorSpace {
-    pub const SRGB: &str = "srgb";
-    pub const DISPLAY_P3: &str = "display-p3";
-}
-
-#[derive(Clone, Debug)]
-pub struct CanvasColorType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CanvasColorType {
+    UNORM8,
+    FLOAT16,
 }
 impl FromVal for CanvasColorType {
     fn from_val(v: &emlite::Val) -> Self {
-        CanvasColorType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "unorm8" => Self::UNORM8,
+            "float16" => Self::FLOAT16,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CanvasColorType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CanvasColorType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CanvasColorType> for emlite::Val {
     fn from(s: CanvasColorType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CanvasColorType::UNORM8 => emlite::Val::from("unorm8"),
+            CanvasColorType::FLOAT16 => emlite::Val::from("float16"),
+        }
     }
 }
 
-impl CanvasColorType {
-    pub const UNORM8: &str = "unorm8";
-    pub const FLOAT16: &str = "float16";
-}
-
-#[derive(Clone, Debug)]
-pub struct CanvasFillRule {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CanvasFillRule {
+    NONZERO,
+    EVENODD,
 }
 impl FromVal for CanvasFillRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CanvasFillRule { inner: v.clone() }
+        match v.as_::<&str>() {
+            "nonzero" => Self::NONZERO,
+            "evenodd" => Self::EVENODD,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CanvasFillRule {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CanvasFillRule {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CanvasFillRule> for emlite::Val {
     fn from(s: CanvasFillRule) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CanvasFillRule::NONZERO => emlite::Val::from("nonzero"),
+            CanvasFillRule::EVENODD => emlite::Val::from("evenodd"),
+        }
     }
 }
 
-impl CanvasFillRule {
-    pub const NONZERO: &str = "nonzero";
-    pub const EVENODD: &str = "evenodd";
-}
-
-#[derive(Clone, Debug)]
-pub struct ImageSmoothingQuality {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ImageSmoothingQuality {
+    LOW,
+    MEDIUM,
+    HIGH,
 }
 impl FromVal for ImageSmoothingQuality {
     fn from_val(v: &emlite::Val) -> Self {
-        ImageSmoothingQuality { inner: v.clone() }
+        match v.as_::<&str>() {
+            "low" => Self::LOW,
+            "medium" => Self::MEDIUM,
+            "high" => Self::HIGH,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ImageSmoothingQuality {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ImageSmoothingQuality {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ImageSmoothingQuality> for emlite::Val {
     fn from(s: ImageSmoothingQuality) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ImageSmoothingQuality::LOW => emlite::Val::from("low"),
+            ImageSmoothingQuality::MEDIUM => emlite::Val::from("medium"),
+            ImageSmoothingQuality::HIGH => emlite::Val::from("high"),
+        }
     }
 }
 
-impl ImageSmoothingQuality {
-    pub const LOW: &str = "low";
-    pub const MEDIUM: &str = "medium";
-    pub const HIGH: &str = "high";
-}
-
-#[derive(Clone, Debug)]
-pub struct CanvasLineCap {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CanvasLineCap {
+    BUTT,
+    ROUND,
+    SQUARE,
 }
 impl FromVal for CanvasLineCap {
     fn from_val(v: &emlite::Val) -> Self {
-        CanvasLineCap { inner: v.clone() }
+        match v.as_::<&str>() {
+            "butt" => Self::BUTT,
+            "round" => Self::ROUND,
+            "square" => Self::SQUARE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CanvasLineCap {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CanvasLineCap {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CanvasLineCap> for emlite::Val {
     fn from(s: CanvasLineCap) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CanvasLineCap::BUTT => emlite::Val::from("butt"),
+            CanvasLineCap::ROUND => emlite::Val::from("round"),
+            CanvasLineCap::SQUARE => emlite::Val::from("square"),
+        }
     }
 }
 
-impl CanvasLineCap {
-    pub const BUTT: &str = "butt";
-    pub const ROUND: &str = "round";
-    pub const SQUARE: &str = "square";
-}
-
-#[derive(Clone, Debug)]
-pub struct CanvasLineJoin {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CanvasLineJoin {
+    ROUND,
+    BEVEL,
+    MITER,
 }
 impl FromVal for CanvasLineJoin {
     fn from_val(v: &emlite::Val) -> Self {
-        CanvasLineJoin { inner: v.clone() }
+        match v.as_::<&str>() {
+            "round" => Self::ROUND,
+            "bevel" => Self::BEVEL,
+            "miter" => Self::MITER,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CanvasLineJoin {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CanvasLineJoin {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CanvasLineJoin> for emlite::Val {
     fn from(s: CanvasLineJoin) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CanvasLineJoin::ROUND => emlite::Val::from("round"),
+            CanvasLineJoin::BEVEL => emlite::Val::from("bevel"),
+            CanvasLineJoin::MITER => emlite::Val::from("miter"),
+        }
     }
 }
 
-impl CanvasLineJoin {
-    pub const ROUND: &str = "round";
-    pub const BEVEL: &str = "bevel";
-    pub const MITER: &str = "miter";
-}
-
-#[derive(Clone, Debug)]
-pub struct CanvasTextAlign {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CanvasTextAlign {
+    START,
+    END,
+    LEFT,
+    RIGHT,
+    CENTER,
 }
 impl FromVal for CanvasTextAlign {
     fn from_val(v: &emlite::Val) -> Self {
-        CanvasTextAlign { inner: v.clone() }
+        match v.as_::<&str>() {
+            "start" => Self::START,
+            "end" => Self::END,
+            "left" => Self::LEFT,
+            "right" => Self::RIGHT,
+            "center" => Self::CENTER,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CanvasTextAlign {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CanvasTextAlign {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CanvasTextAlign> for emlite::Val {
     fn from(s: CanvasTextAlign) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CanvasTextAlign::START => emlite::Val::from("start"),
+            CanvasTextAlign::END => emlite::Val::from("end"),
+            CanvasTextAlign::LEFT => emlite::Val::from("left"),
+            CanvasTextAlign::RIGHT => emlite::Val::from("right"),
+            CanvasTextAlign::CENTER => emlite::Val::from("center"),
+        }
     }
 }
 
-impl CanvasTextAlign {
-    pub const START: &str = "start";
-    pub const END: &str = "end";
-    pub const LEFT: &str = "left";
-    pub const RIGHT: &str = "right";
-    pub const CENTER: &str = "center";
-}
-
-#[derive(Clone, Debug)]
-pub struct CanvasTextBaseline {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CanvasTextBaseline {
+    TOP,
+    HANGING,
+    MIDDLE,
+    ALPHABETIC,
+    IDEOGRAPHIC,
+    BOTTOM,
 }
 impl FromVal for CanvasTextBaseline {
     fn from_val(v: &emlite::Val) -> Self {
-        CanvasTextBaseline { inner: v.clone() }
+        match v.as_::<&str>() {
+            "top" => Self::TOP,
+            "hanging" => Self::HANGING,
+            "middle" => Self::MIDDLE,
+            "alphabetic" => Self::ALPHABETIC,
+            "ideographic" => Self::IDEOGRAPHIC,
+            "bottom" => Self::BOTTOM,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CanvasTextBaseline {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CanvasTextBaseline {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CanvasTextBaseline> for emlite::Val {
     fn from(s: CanvasTextBaseline) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CanvasTextBaseline::TOP => emlite::Val::from("top"),
+            CanvasTextBaseline::HANGING => emlite::Val::from("hanging"),
+            CanvasTextBaseline::MIDDLE => emlite::Val::from("middle"),
+            CanvasTextBaseline::ALPHABETIC => emlite::Val::from("alphabetic"),
+            CanvasTextBaseline::IDEOGRAPHIC => emlite::Val::from("ideographic"),
+            CanvasTextBaseline::BOTTOM => emlite::Val::from("bottom"),
+        }
     }
 }
 
-impl CanvasTextBaseline {
-    pub const TOP: &str = "top";
-    pub const HANGING: &str = "hanging";
-    pub const MIDDLE: &str = "middle";
-    pub const ALPHABETIC: &str = "alphabetic";
-    pub const IDEOGRAPHIC: &str = "ideographic";
-    pub const BOTTOM: &str = "bottom";
-}
-
-#[derive(Clone, Debug)]
-pub struct CanvasDirection {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CanvasDirection {
+    LTR,
+    RTL,
+    INHERIT,
 }
 impl FromVal for CanvasDirection {
     fn from_val(v: &emlite::Val) -> Self {
-        CanvasDirection { inner: v.clone() }
+        match v.as_::<&str>() {
+            "ltr" => Self::LTR,
+            "rtl" => Self::RTL,
+            "inherit" => Self::INHERIT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CanvasDirection {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CanvasDirection {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CanvasDirection> for emlite::Val {
     fn from(s: CanvasDirection) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CanvasDirection::LTR => emlite::Val::from("ltr"),
+            CanvasDirection::RTL => emlite::Val::from("rtl"),
+            CanvasDirection::INHERIT => emlite::Val::from("inherit"),
+        }
     }
 }
 
-impl CanvasDirection {
-    pub const LTR: &str = "ltr";
-    pub const RTL: &str = "rtl";
-    pub const INHERIT: &str = "inherit";
-}
-
-#[derive(Clone, Debug)]
-pub struct CanvasFontKerning {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CanvasFontKerning {
+    AUTO,
+    NORMAL,
+    NONE,
 }
 impl FromVal for CanvasFontKerning {
     fn from_val(v: &emlite::Val) -> Self {
-        CanvasFontKerning { inner: v.clone() }
+        match v.as_::<&str>() {
+            "auto" => Self::AUTO,
+            "normal" => Self::NORMAL,
+            "none" => Self::NONE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CanvasFontKerning {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CanvasFontKerning {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CanvasFontKerning> for emlite::Val {
     fn from(s: CanvasFontKerning) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CanvasFontKerning::AUTO => emlite::Val::from("auto"),
+            CanvasFontKerning::NORMAL => emlite::Val::from("normal"),
+            CanvasFontKerning::NONE => emlite::Val::from("none"),
+        }
     }
 }
 
-impl CanvasFontKerning {
-    pub const AUTO: &str = "auto";
-    pub const NORMAL: &str = "normal";
-    pub const NONE: &str = "none";
-}
-
-#[derive(Clone, Debug)]
-pub struct CanvasFontStretch {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CanvasFontStretch {
+    ULTRA_CONDENSED,
+    EXTRA_CONDENSED,
+    CONDENSED,
+    SEMI_CONDENSED,
+    NORMAL,
+    SEMI_EXPANDED,
+    EXPANDED,
+    EXTRA_EXPANDED,
+    ULTRA_EXPANDED,
 }
 impl FromVal for CanvasFontStretch {
     fn from_val(v: &emlite::Val) -> Self {
-        CanvasFontStretch { inner: v.clone() }
+        match v.as_::<&str>() {
+            "ultra-condensed" => Self::ULTRA_CONDENSED,
+            "extra-condensed" => Self::EXTRA_CONDENSED,
+            "condensed" => Self::CONDENSED,
+            "semi-condensed" => Self::SEMI_CONDENSED,
+            "normal" => Self::NORMAL,
+            "semi-expanded" => Self::SEMI_EXPANDED,
+            "expanded" => Self::EXPANDED,
+            "extra-expanded" => Self::EXTRA_EXPANDED,
+            "ultra-expanded" => Self::ULTRA_EXPANDED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CanvasFontStretch {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CanvasFontStretch {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CanvasFontStretch> for emlite::Val {
     fn from(s: CanvasFontStretch) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CanvasFontStretch::ULTRA_CONDENSED => emlite::Val::from("ultra-condensed"),
+            CanvasFontStretch::EXTRA_CONDENSED => emlite::Val::from("extra-condensed"),
+            CanvasFontStretch::CONDENSED => emlite::Val::from("condensed"),
+            CanvasFontStretch::SEMI_CONDENSED => emlite::Val::from("semi-condensed"),
+            CanvasFontStretch::NORMAL => emlite::Val::from("normal"),
+            CanvasFontStretch::SEMI_EXPANDED => emlite::Val::from("semi-expanded"),
+            CanvasFontStretch::EXPANDED => emlite::Val::from("expanded"),
+            CanvasFontStretch::EXTRA_EXPANDED => emlite::Val::from("extra-expanded"),
+            CanvasFontStretch::ULTRA_EXPANDED => emlite::Val::from("ultra-expanded"),
+        }
     }
 }
 
-impl CanvasFontStretch {
-    pub const ULTRA_CONDENSED: &str = "ultra-condensed";
-    pub const EXTRA_CONDENSED: &str = "extra-condensed";
-    pub const CONDENSED: &str = "condensed";
-    pub const SEMI_CONDENSED: &str = "semi-condensed";
-    pub const NORMAL: &str = "normal";
-    pub const SEMI_EXPANDED: &str = "semi-expanded";
-    pub const EXPANDED: &str = "expanded";
-    pub const EXTRA_EXPANDED: &str = "extra-expanded";
-    pub const ULTRA_EXPANDED: &str = "ultra-expanded";
-}
-
-#[derive(Clone, Debug)]
-pub struct CanvasFontVariantCaps {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CanvasFontVariantCaps {
+    NORMAL,
+    SMALL_CAPS,
+    ALL_SMALL_CAPS,
+    PETITE_CAPS,
+    ALL_PETITE_CAPS,
+    UNICASE,
+    TITLING_CAPS,
 }
 impl FromVal for CanvasFontVariantCaps {
     fn from_val(v: &emlite::Val) -> Self {
-        CanvasFontVariantCaps { inner: v.clone() }
+        match v.as_::<&str>() {
+            "normal" => Self::NORMAL,
+            "small-caps" => Self::SMALL_CAPS,
+            "all-small-caps" => Self::ALL_SMALL_CAPS,
+            "petite-caps" => Self::PETITE_CAPS,
+            "all-petite-caps" => Self::ALL_PETITE_CAPS,
+            "unicase" => Self::UNICASE,
+            "titling-caps" => Self::TITLING_CAPS,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CanvasFontVariantCaps {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CanvasFontVariantCaps {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CanvasFontVariantCaps> for emlite::Val {
     fn from(s: CanvasFontVariantCaps) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CanvasFontVariantCaps::NORMAL => emlite::Val::from("normal"),
+            CanvasFontVariantCaps::SMALL_CAPS => emlite::Val::from("small-caps"),
+            CanvasFontVariantCaps::ALL_SMALL_CAPS => emlite::Val::from("all-small-caps"),
+            CanvasFontVariantCaps::PETITE_CAPS => emlite::Val::from("petite-caps"),
+            CanvasFontVariantCaps::ALL_PETITE_CAPS => emlite::Val::from("all-petite-caps"),
+            CanvasFontVariantCaps::UNICASE => emlite::Val::from("unicase"),
+            CanvasFontVariantCaps::TITLING_CAPS => emlite::Val::from("titling-caps"),
+        }
     }
 }
 
-impl CanvasFontVariantCaps {
-    pub const NORMAL: &str = "normal";
-    pub const SMALL_CAPS: &str = "small-caps";
-    pub const ALL_SMALL_CAPS: &str = "all-small-caps";
-    pub const PETITE_CAPS: &str = "petite-caps";
-    pub const ALL_PETITE_CAPS: &str = "all-petite-caps";
-    pub const UNICASE: &str = "unicase";
-    pub const TITLING_CAPS: &str = "titling-caps";
-}
-
-#[derive(Clone, Debug)]
-pub struct CanvasTextRendering {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CanvasTextRendering {
+    AUTO,
+    OPTIMIZE_SPEED,
+    OPTIMIZE_LEGIBILITY,
+    GEOMETRIC_PRECISION,
 }
 impl FromVal for CanvasTextRendering {
     fn from_val(v: &emlite::Val) -> Self {
-        CanvasTextRendering { inner: v.clone() }
+        match v.as_::<&str>() {
+            "auto" => Self::AUTO,
+            "optimizeSpeed" => Self::OPTIMIZE_SPEED,
+            "optimizeLegibility" => Self::OPTIMIZE_LEGIBILITY,
+            "geometricPrecision" => Self::GEOMETRIC_PRECISION,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CanvasTextRendering {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CanvasTextRendering {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CanvasTextRendering> for emlite::Val {
     fn from(s: CanvasTextRendering) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CanvasTextRendering::AUTO => emlite::Val::from("auto"),
+            CanvasTextRendering::OPTIMIZE_SPEED => emlite::Val::from("optimizeSpeed"),
+            CanvasTextRendering::OPTIMIZE_LEGIBILITY => emlite::Val::from("optimizeLegibility"),
+            CanvasTextRendering::GEOMETRIC_PRECISION => emlite::Val::from("geometricPrecision"),
+        }
     }
 }
 
-impl CanvasTextRendering {
-    pub const AUTO: &str = "auto";
-    pub const OPTIMIZE_SPEED: &str = "optimizeSpeed";
-    pub const OPTIMIZE_LEGIBILITY: &str = "optimizeLegibility";
-    pub const GEOMETRIC_PRECISION: &str = "geometricPrecision";
-}
-
-#[derive(Clone, Debug)]
-pub struct OffscreenRenderingContextId {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum OffscreenRenderingContextId {
+    _2D,
+    BITMAPRENDERER,
+    WEBGL,
+    WEBGL2,
+    WEBGPU,
 }
 impl FromVal for OffscreenRenderingContextId {
     fn from_val(v: &emlite::Val) -> Self {
-        OffscreenRenderingContextId { inner: v.clone() }
+        match v.as_::<&str>() {
+            "2d" => Self::_2D,
+            "bitmaprenderer" => Self::BITMAPRENDERER,
+            "webgl" => Self::WEBGL,
+            "webgl2" => Self::WEBGL2,
+            "webgpu" => Self::WEBGPU,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for OffscreenRenderingContextId {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for OffscreenRenderingContextId {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<OffscreenRenderingContextId> for emlite::Val {
     fn from(s: OffscreenRenderingContextId) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            OffscreenRenderingContextId::_2D => emlite::Val::from("2d"),
+            OffscreenRenderingContextId::BITMAPRENDERER => emlite::Val::from("bitmaprenderer"),
+            OffscreenRenderingContextId::WEBGL => emlite::Val::from("webgl"),
+            OffscreenRenderingContextId::WEBGL2 => emlite::Val::from("webgl2"),
+            OffscreenRenderingContextId::WEBGPU => emlite::Val::from("webgpu"),
+        }
     }
 }
 
-impl OffscreenRenderingContextId {
-    pub const _2D: &str = "2d";
-    pub const BITMAPRENDERER: &str = "bitmaprenderer";
-    pub const WEBGL: &str = "webgl";
-    pub const WEBGL2: &str = "webgl2";
-    pub const WEBGPU: &str = "webgpu";
-}
-
-#[derive(Clone, Debug)]
-pub struct ScrollRestoration {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ScrollRestoration {
+    AUTO,
+    MANUAL,
 }
 impl FromVal for ScrollRestoration {
     fn from_val(v: &emlite::Val) -> Self {
-        ScrollRestoration { inner: v.clone() }
+        match v.as_::<&str>() {
+            "auto" => Self::AUTO,
+            "manual" => Self::MANUAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ScrollRestoration {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ScrollRestoration {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ScrollRestoration> for emlite::Val {
     fn from(s: ScrollRestoration) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ScrollRestoration::AUTO => emlite::Val::from("auto"),
+            ScrollRestoration::MANUAL => emlite::Val::from("manual"),
+        }
     }
 }
 
-impl ScrollRestoration {
-    pub const AUTO: &str = "auto";
-    pub const MANUAL: &str = "manual";
-}
-
-#[derive(Clone, Debug)]
-pub struct NavigationHistoryBehavior {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum NavigationHistoryBehavior {
+    AUTO,
+    PUSH,
+    REPLACE,
 }
 impl FromVal for NavigationHistoryBehavior {
     fn from_val(v: &emlite::Val) -> Self {
-        NavigationHistoryBehavior { inner: v.clone() }
+        match v.as_::<&str>() {
+            "auto" => Self::AUTO,
+            "push" => Self::PUSH,
+            "replace" => Self::REPLACE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for NavigationHistoryBehavior {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for NavigationHistoryBehavior {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<NavigationHistoryBehavior> for emlite::Val {
     fn from(s: NavigationHistoryBehavior) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            NavigationHistoryBehavior::AUTO => emlite::Val::from("auto"),
+            NavigationHistoryBehavior::PUSH => emlite::Val::from("push"),
+            NavigationHistoryBehavior::REPLACE => emlite::Val::from("replace"),
+        }
     }
 }
 
-impl NavigationHistoryBehavior {
-    pub const AUTO: &str = "auto";
-    pub const PUSH: &str = "push";
-    pub const REPLACE: &str = "replace";
-}
-
-#[derive(Clone, Debug)]
-pub struct NavigationType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum NavigationType {
+    PUSH,
+    REPLACE,
+    RELOAD,
+    TRAVERSE,
 }
 impl FromVal for NavigationType {
     fn from_val(v: &emlite::Val) -> Self {
-        NavigationType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "push" => Self::PUSH,
+            "replace" => Self::REPLACE,
+            "reload" => Self::RELOAD,
+            "traverse" => Self::TRAVERSE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for NavigationType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for NavigationType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<NavigationType> for emlite::Val {
     fn from(s: NavigationType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            NavigationType::PUSH => emlite::Val::from("push"),
+            NavigationType::REPLACE => emlite::Val::from("replace"),
+            NavigationType::RELOAD => emlite::Val::from("reload"),
+            NavigationType::TRAVERSE => emlite::Val::from("traverse"),
+        }
     }
 }
 
-impl NavigationType {
-    pub const PUSH: &str = "push";
-    pub const REPLACE: &str = "replace";
-    pub const RELOAD: &str = "reload";
-    pub const TRAVERSE: &str = "traverse";
-}
-
-#[derive(Clone, Debug)]
-pub struct NavigationFocusReset {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum NavigationFocusReset {
+    AFTER_TRANSITION,
+    MANUAL,
 }
 impl FromVal for NavigationFocusReset {
     fn from_val(v: &emlite::Val) -> Self {
-        NavigationFocusReset { inner: v.clone() }
+        match v.as_::<&str>() {
+            "after-transition" => Self::AFTER_TRANSITION,
+            "manual" => Self::MANUAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for NavigationFocusReset {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for NavigationFocusReset {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<NavigationFocusReset> for emlite::Val {
     fn from(s: NavigationFocusReset) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            NavigationFocusReset::AFTER_TRANSITION => emlite::Val::from("after-transition"),
+            NavigationFocusReset::MANUAL => emlite::Val::from("manual"),
+        }
     }
 }
 
-impl NavigationFocusReset {
-    pub const AFTER_TRANSITION: &str = "after-transition";
-    pub const MANUAL: &str = "manual";
-}
-
-#[derive(Clone, Debug)]
-pub struct NavigationScrollBehavior {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum NavigationScrollBehavior {
+    AFTER_TRANSITION,
+    MANUAL,
 }
 impl FromVal for NavigationScrollBehavior {
     fn from_val(v: &emlite::Val) -> Self {
-        NavigationScrollBehavior { inner: v.clone() }
+        match v.as_::<&str>() {
+            "after-transition" => Self::AFTER_TRANSITION,
+            "manual" => Self::MANUAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for NavigationScrollBehavior {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for NavigationScrollBehavior {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<NavigationScrollBehavior> for emlite::Val {
     fn from(s: NavigationScrollBehavior) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            NavigationScrollBehavior::AFTER_TRANSITION => emlite::Val::from("after-transition"),
+            NavigationScrollBehavior::MANUAL => emlite::Val::from("manual"),
+        }
     }
 }
 
-impl NavigationScrollBehavior {
-    pub const AFTER_TRANSITION: &str = "after-transition";
-    pub const MANUAL: &str = "manual";
-}
-
-#[derive(Clone, Debug)]
-pub struct DOMParserSupportedType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum DOMParserSupportedType {
+    TEXT_HTML,
+    TEXT_XML,
+    APPLICATION_XML,
+    APPLICATION_XHTML_XML,
+    IMAGE_SVG_XML,
 }
 impl FromVal for DOMParserSupportedType {
     fn from_val(v: &emlite::Val) -> Self {
-        DOMParserSupportedType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "text/html" => Self::TEXT_HTML,
+            "text/xml" => Self::TEXT_XML,
+            "application/xml" => Self::APPLICATION_XML,
+            "application/xhtml+xml" => Self::APPLICATION_XHTML_XML,
+            "image/svg+xml" => Self::IMAGE_SVG_XML,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for DOMParserSupportedType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for DOMParserSupportedType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<DOMParserSupportedType> for emlite::Val {
     fn from(s: DOMParserSupportedType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            DOMParserSupportedType::TEXT_HTML => emlite::Val::from("text/html"),
+            DOMParserSupportedType::TEXT_XML => emlite::Val::from("text/xml"),
+            DOMParserSupportedType::APPLICATION_XML => emlite::Val::from("application/xml"),
+            DOMParserSupportedType::APPLICATION_XHTML_XML => {
+                emlite::Val::from("application/xhtml+xml")
+            }
+            DOMParserSupportedType::IMAGE_SVG_XML => emlite::Val::from("image/svg+xml"),
+        }
     }
 }
 
-impl DOMParserSupportedType {
-    pub const TEXT_HTML: &str = "text/html";
-    pub const TEXT_XML: &str = "text/xml";
-    pub const APPLICATION_XML: &str = "application/xml";
-    pub const APPLICATION_XHTML_XML: &str = "application/xhtml+xml";
-    pub const IMAGE_SVG_XML: &str = "image/svg+xml";
-}
-
-#[derive(Clone, Debug)]
-pub struct ImageDataPixelFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ImageDataPixelFormat {
+    RGBA_UNORM8,
+    RGBA_FLOAT16,
 }
 impl FromVal for ImageDataPixelFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        ImageDataPixelFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "rgba-unorm8" => Self::RGBA_UNORM8,
+            "rgba-float16" => Self::RGBA_FLOAT16,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ImageDataPixelFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ImageDataPixelFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ImageDataPixelFormat> for emlite::Val {
     fn from(s: ImageDataPixelFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ImageDataPixelFormat::RGBA_UNORM8 => emlite::Val::from("rgba-unorm8"),
+            ImageDataPixelFormat::RGBA_FLOAT16 => emlite::Val::from("rgba-float16"),
+        }
     }
 }
 
-impl ImageDataPixelFormat {
-    pub const RGBA_UNORM8: &str = "rgba-unorm8";
-    pub const RGBA_FLOAT16: &str = "rgba-float16";
-}
-
-#[derive(Clone, Debug)]
-pub struct ImageOrientation {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ImageOrientation {
+    FROM_IMAGE,
+    FLIP_Y,
 }
 impl FromVal for ImageOrientation {
     fn from_val(v: &emlite::Val) -> Self {
-        ImageOrientation { inner: v.clone() }
+        match v.as_::<&str>() {
+            "from-image" => Self::FROM_IMAGE,
+            "flipY" => Self::FLIP_Y,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ImageOrientation {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ImageOrientation {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ImageOrientation> for emlite::Val {
     fn from(s: ImageOrientation) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ImageOrientation::FROM_IMAGE => emlite::Val::from("from-image"),
+            ImageOrientation::FLIP_Y => emlite::Val::from("flipY"),
+        }
     }
 }
 
-impl ImageOrientation {
-    pub const FROM_IMAGE: &str = "from-image";
-    pub const FLIP_Y: &str = "flipY";
-}
-
-#[derive(Clone, Debug)]
-pub struct PremultiplyAlpha {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PremultiplyAlpha {
+    NONE,
+    PREMULTIPLY,
+    DEFAULT,
 }
 impl FromVal for PremultiplyAlpha {
     fn from_val(v: &emlite::Val) -> Self {
-        PremultiplyAlpha { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "premultiply" => Self::PREMULTIPLY,
+            "default" => Self::DEFAULT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PremultiplyAlpha {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PremultiplyAlpha {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PremultiplyAlpha> for emlite::Val {
     fn from(s: PremultiplyAlpha) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PremultiplyAlpha::NONE => emlite::Val::from("none"),
+            PremultiplyAlpha::PREMULTIPLY => emlite::Val::from("premultiply"),
+            PremultiplyAlpha::DEFAULT => emlite::Val::from("default"),
+        }
     }
 }
 
-impl PremultiplyAlpha {
-    pub const NONE: &str = "none";
-    pub const PREMULTIPLY: &str = "premultiply";
-    pub const DEFAULT: &str = "default";
-}
-
-#[derive(Clone, Debug)]
-pub struct ColorSpaceConversion {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ColorSpaceConversion {
+    NONE,
+    DEFAULT,
 }
 impl FromVal for ColorSpaceConversion {
     fn from_val(v: &emlite::Val) -> Self {
-        ColorSpaceConversion { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "default" => Self::DEFAULT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ColorSpaceConversion {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ColorSpaceConversion {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ColorSpaceConversion> for emlite::Val {
     fn from(s: ColorSpaceConversion) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ColorSpaceConversion::NONE => emlite::Val::from("none"),
+            ColorSpaceConversion::DEFAULT => emlite::Val::from("default"),
+        }
     }
 }
 
-impl ColorSpaceConversion {
-    pub const NONE: &str = "none";
-    pub const DEFAULT: &str = "default";
-}
-
-#[derive(Clone, Debug)]
-pub struct ResizeQuality {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ResizeQuality {
+    PIXELATED,
+    LOW,
+    MEDIUM,
+    HIGH,
 }
 impl FromVal for ResizeQuality {
     fn from_val(v: &emlite::Val) -> Self {
-        ResizeQuality { inner: v.clone() }
+        match v.as_::<&str>() {
+            "pixelated" => Self::PIXELATED,
+            "low" => Self::LOW,
+            "medium" => Self::MEDIUM,
+            "high" => Self::HIGH,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ResizeQuality {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ResizeQuality {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ResizeQuality> for emlite::Val {
     fn from(s: ResizeQuality) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ResizeQuality::PIXELATED => emlite::Val::from("pixelated"),
+            ResizeQuality::LOW => emlite::Val::from("low"),
+            ResizeQuality::MEDIUM => emlite::Val::from("medium"),
+            ResizeQuality::HIGH => emlite::Val::from("high"),
+        }
     }
 }
 
-impl ResizeQuality {
-    pub const PIXELATED: &str = "pixelated";
-    pub const LOW: &str = "low";
-    pub const MEDIUM: &str = "medium";
-    pub const HIGH: &str = "high";
-}
-
-#[derive(Clone, Debug)]
-pub struct WorkerType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum WorkerType {
+    CLASSIC,
+    MODULE,
 }
 impl FromVal for WorkerType {
     fn from_val(v: &emlite::Val) -> Self {
-        WorkerType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "classic" => Self::CLASSIC,
+            "module" => Self::MODULE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for WorkerType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for WorkerType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<WorkerType> for emlite::Val {
     fn from(s: WorkerType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            WorkerType::CLASSIC => emlite::Val::from("classic"),
+            WorkerType::MODULE => emlite::Val::from("module"),
+        }
     }
 }
 
-impl WorkerType {
-    pub const CLASSIC: &str = "classic";
-    pub const MODULE: &str = "module";
-}
-
-#[derive(Clone, Debug)]
-pub struct UserIdleState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum UserIdleState {
+    ACTIVE,
+    IDLE,
 }
 impl FromVal for UserIdleState {
     fn from_val(v: &emlite::Val) -> Self {
-        UserIdleState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "active" => Self::ACTIVE,
+            "idle" => Self::IDLE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for UserIdleState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for UserIdleState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<UserIdleState> for emlite::Val {
     fn from(s: UserIdleState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            UserIdleState::ACTIVE => emlite::Val::from("active"),
+            UserIdleState::IDLE => emlite::Val::from("idle"),
+        }
     }
 }
 
-impl UserIdleState {
-    pub const ACTIVE: &str = "active";
-    pub const IDLE: &str = "idle";
-}
-
-#[derive(Clone, Debug)]
-pub struct ScreenIdleState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ScreenIdleState {
+    LOCKED,
+    UNLOCKED,
 }
 impl FromVal for ScreenIdleState {
     fn from_val(v: &emlite::Val) -> Self {
-        ScreenIdleState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "locked" => Self::LOCKED,
+            "unlocked" => Self::UNLOCKED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ScreenIdleState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ScreenIdleState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ScreenIdleState> for emlite::Val {
     fn from(s: ScreenIdleState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ScreenIdleState::LOCKED => emlite::Val::from("locked"),
+            ScreenIdleState::UNLOCKED => emlite::Val::from("unlocked"),
+        }
     }
 }
 
-impl ScreenIdleState {
-    pub const LOCKED: &str = "locked";
-    pub const UNLOCKED: &str = "unlocked";
-}
-
-#[derive(Clone, Debug)]
-pub struct RedEyeReduction {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RedEyeReduction {
+    NEVER,
+    ALWAYS,
+    CONTROLLABLE,
 }
 impl FromVal for RedEyeReduction {
     fn from_val(v: &emlite::Val) -> Self {
-        RedEyeReduction { inner: v.clone() }
+        match v.as_::<&str>() {
+            "never" => Self::NEVER,
+            "always" => Self::ALWAYS,
+            "controllable" => Self::CONTROLLABLE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RedEyeReduction {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RedEyeReduction {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RedEyeReduction> for emlite::Val {
     fn from(s: RedEyeReduction) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RedEyeReduction::NEVER => emlite::Val::from("never"),
+            RedEyeReduction::ALWAYS => emlite::Val::from("always"),
+            RedEyeReduction::CONTROLLABLE => emlite::Val::from("controllable"),
+        }
     }
 }
 
-impl RedEyeReduction {
-    pub const NEVER: &str = "never";
-    pub const ALWAYS: &str = "always";
-    pub const CONTROLLABLE: &str = "controllable";
-}
-
-#[derive(Clone, Debug)]
-pub struct FillLightMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum FillLightMode {
+    AUTO,
+    OFF,
+    FLASH,
 }
 impl FromVal for FillLightMode {
     fn from_val(v: &emlite::Val) -> Self {
-        FillLightMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "auto" => Self::AUTO,
+            "off" => Self::OFF,
+            "flash" => Self::FLASH,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for FillLightMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for FillLightMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<FillLightMode> for emlite::Val {
     fn from(s: FillLightMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            FillLightMode::AUTO => emlite::Val::from("auto"),
+            FillLightMode::OFF => emlite::Val::from("off"),
+            FillLightMode::FLASH => emlite::Val::from("flash"),
+        }
     }
 }
 
-impl FillLightMode {
-    pub const AUTO: &str = "auto";
-    pub const OFF: &str = "off";
-    pub const FLASH: &str = "flash";
-}
-
-#[derive(Clone, Debug)]
-pub struct MeteringMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MeteringMode {
+    NONE,
+    MANUAL,
+    SINGLE_SHOT,
+    CONTINUOUS,
 }
 impl FromVal for MeteringMode {
     fn from_val(v: &emlite::Val) -> Self {
-        MeteringMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "manual" => Self::MANUAL,
+            "single-shot" => Self::SINGLE_SHOT,
+            "continuous" => Self::CONTINUOUS,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MeteringMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MeteringMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MeteringMode> for emlite::Val {
     fn from(s: MeteringMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MeteringMode::NONE => emlite::Val::from("none"),
+            MeteringMode::MANUAL => emlite::Val::from("manual"),
+            MeteringMode::SINGLE_SHOT => emlite::Val::from("single-shot"),
+            MeteringMode::CONTINUOUS => emlite::Val::from("continuous"),
+        }
     }
 }
 
-impl MeteringMode {
-    pub const NONE: &str = "none";
-    pub const MANUAL: &str = "manual";
-    pub const SINGLE_SHOT: &str = "single-shot";
-    pub const CONTINUOUS: &str = "continuous";
-}
-
-#[derive(Clone, Debug)]
-pub struct LoginStatus {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum LoginStatus {
+    LOGGED_IN,
+    LOGGED_OUT,
 }
 impl FromVal for LoginStatus {
     fn from_val(v: &emlite::Val) -> Self {
-        LoginStatus { inner: v.clone() }
+        match v.as_::<&str>() {
+            "logged-in" => Self::LOGGED_IN,
+            "logged-out" => Self::LOGGED_OUT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for LoginStatus {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for LoginStatus {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<LoginStatus> for emlite::Val {
     fn from(s: LoginStatus) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            LoginStatus::LOGGED_IN => emlite::Val::from("logged-in"),
+            LoginStatus::LOGGED_OUT => emlite::Val::from("logged-out"),
+        }
     }
 }
 
-impl LoginStatus {
-    pub const LOGGED_IN: &str = "logged-in";
-    pub const LOGGED_OUT: &str = "logged-out";
-}
-
-#[derive(Clone, Debug)]
-pub struct ScriptInvokerType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ScriptInvokerType {
+    CLASSIC_SCRIPT,
+    MODULE_SCRIPT,
+    EVENT_LISTENER,
+    USER_CALLBACK,
+    RESOLVE_PROMISE,
+    REJECT_PROMISE,
 }
 impl FromVal for ScriptInvokerType {
     fn from_val(v: &emlite::Val) -> Self {
-        ScriptInvokerType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "classic-script" => Self::CLASSIC_SCRIPT,
+            "module-script" => Self::MODULE_SCRIPT,
+            "event-listener" => Self::EVENT_LISTENER,
+            "user-callback" => Self::USER_CALLBACK,
+            "resolve-promise" => Self::RESOLVE_PROMISE,
+            "reject-promise" => Self::REJECT_PROMISE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ScriptInvokerType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ScriptInvokerType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ScriptInvokerType> for emlite::Val {
     fn from(s: ScriptInvokerType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ScriptInvokerType::CLASSIC_SCRIPT => emlite::Val::from("classic-script"),
+            ScriptInvokerType::MODULE_SCRIPT => emlite::Val::from("module-script"),
+            ScriptInvokerType::EVENT_LISTENER => emlite::Val::from("event-listener"),
+            ScriptInvokerType::USER_CALLBACK => emlite::Val::from("user-callback"),
+            ScriptInvokerType::RESOLVE_PROMISE => emlite::Val::from("resolve-promise"),
+            ScriptInvokerType::REJECT_PROMISE => emlite::Val::from("reject-promise"),
+        }
     }
 }
 
-impl ScriptInvokerType {
-    pub const CLASSIC_SCRIPT: &str = "classic-script";
-    pub const MODULE_SCRIPT: &str = "module-script";
-    pub const EVENT_LISTENER: &str = "event-listener";
-    pub const USER_CALLBACK: &str = "user-callback";
-    pub const RESOLVE_PROMISE: &str = "resolve-promise";
-    pub const REJECT_PROMISE: &str = "reject-promise";
-}
-
-#[derive(Clone, Debug)]
-pub struct ScriptWindowAttribution {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ScriptWindowAttribution {
+    SELF_,
+    DESCENDANT,
+    ANCESTOR,
+    SAME_PAGE,
+    OTHER,
 }
 impl FromVal for ScriptWindowAttribution {
     fn from_val(v: &emlite::Val) -> Self {
-        ScriptWindowAttribution { inner: v.clone() }
+        match v.as_::<&str>() {
+            "self" => Self::SELF_,
+            "descendant" => Self::DESCENDANT,
+            "ancestor" => Self::ANCESTOR,
+            "same-page" => Self::SAME_PAGE,
+            "other" => Self::OTHER,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ScriptWindowAttribution {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ScriptWindowAttribution {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ScriptWindowAttribution> for emlite::Val {
     fn from(s: ScriptWindowAttribution) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ScriptWindowAttribution::SELF_ => emlite::Val::from("self"),
+            ScriptWindowAttribution::DESCENDANT => emlite::Val::from("descendant"),
+            ScriptWindowAttribution::ANCESTOR => emlite::Val::from("ancestor"),
+            ScriptWindowAttribution::SAME_PAGE => emlite::Val::from("same-page"),
+            ScriptWindowAttribution::OTHER => emlite::Val::from("other"),
+        }
     }
 }
 
-impl ScriptWindowAttribution {
-    pub const SELF_: &str = "self";
-    pub const DESCENDANT: &str = "descendant";
-    pub const ANCESTOR: &str = "ancestor";
-    pub const SAME_PAGE: &str = "same-page";
-    pub const OTHER: &str = "other";
-}
-
-#[derive(Clone, Debug)]
-pub struct MagnetometerLocalCoordinateSystem {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MagnetometerLocalCoordinateSystem {
+    DEVICE,
+    SCREEN,
 }
 impl FromVal for MagnetometerLocalCoordinateSystem {
     fn from_val(v: &emlite::Val) -> Self {
-        MagnetometerLocalCoordinateSystem { inner: v.clone() }
+        match v.as_::<&str>() {
+            "device" => Self::DEVICE,
+            "screen" => Self::SCREEN,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MagnetometerLocalCoordinateSystem {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MagnetometerLocalCoordinateSystem {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MagnetometerLocalCoordinateSystem> for emlite::Val {
     fn from(s: MagnetometerLocalCoordinateSystem) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MagnetometerLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
+            MagnetometerLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+        }
     }
 }
 
-impl MagnetometerLocalCoordinateSystem {
-    pub const DEVICE: &str = "device";
-    pub const SCREEN: &str = "screen";
-}
-
-#[derive(Clone, Debug)]
-pub struct AppBannerPromptOutcome {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AppBannerPromptOutcome {
+    ACCEPTED,
+    DISMISSED,
 }
 impl FromVal for AppBannerPromptOutcome {
     fn from_val(v: &emlite::Val) -> Self {
-        AppBannerPromptOutcome { inner: v.clone() }
+        match v.as_::<&str>() {
+            "accepted" => Self::ACCEPTED,
+            "dismissed" => Self::DISMISSED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AppBannerPromptOutcome {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AppBannerPromptOutcome {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AppBannerPromptOutcome> for emlite::Val {
     fn from(s: AppBannerPromptOutcome) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AppBannerPromptOutcome::ACCEPTED => emlite::Val::from("accepted"),
+            AppBannerPromptOutcome::DISMISSED => emlite::Val::from("dismissed"),
+        }
     }
 }
 
-impl AppBannerPromptOutcome {
-    pub const ACCEPTED: &str = "accepted";
-    pub const DISMISSED: &str = "dismissed";
-}
-
-#[derive(Clone, Debug)]
-pub struct MediaDecodingType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MediaDecodingType {
+    FILE,
+    MEDIA_SOURCE,
+    WEBRTC,
 }
 impl FromVal for MediaDecodingType {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaDecodingType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "file" => Self::FILE,
+            "media-source" => Self::MEDIA_SOURCE,
+            "webrtc" => Self::WEBRTC,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MediaDecodingType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MediaDecodingType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MediaDecodingType> for emlite::Val {
     fn from(s: MediaDecodingType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MediaDecodingType::FILE => emlite::Val::from("file"),
+            MediaDecodingType::MEDIA_SOURCE => emlite::Val::from("media-source"),
+            MediaDecodingType::WEBRTC => emlite::Val::from("webrtc"),
+        }
     }
 }
 
-impl MediaDecodingType {
-    pub const FILE: &str = "file";
-    pub const MEDIA_SOURCE: &str = "media-source";
-    pub const WEBRTC: &str = "webrtc";
-}
-
-#[derive(Clone, Debug)]
-pub struct MediaEncodingType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MediaEncodingType {
+    RECORD,
+    WEBRTC,
 }
 impl FromVal for MediaEncodingType {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaEncodingType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "record" => Self::RECORD,
+            "webrtc" => Self::WEBRTC,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MediaEncodingType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MediaEncodingType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MediaEncodingType> for emlite::Val {
     fn from(s: MediaEncodingType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MediaEncodingType::RECORD => emlite::Val::from("record"),
+            MediaEncodingType::WEBRTC => emlite::Val::from("webrtc"),
+        }
     }
 }
 
-impl MediaEncodingType {
-    pub const RECORD: &str = "record";
-    pub const WEBRTC: &str = "webrtc";
-}
-
-#[derive(Clone, Debug)]
-pub struct HdrMetadataType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum HdrMetadataType {
+    SMPTE_ST2086,
+    SMPTE_ST2094_10,
+    SMPTE_ST2094_40,
 }
 impl FromVal for HdrMetadataType {
     fn from_val(v: &emlite::Val) -> Self {
-        HdrMetadataType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "smpteSt2086" => Self::SMPTE_ST2086,
+            "smpteSt2094-10" => Self::SMPTE_ST2094_10,
+            "smpteSt2094-40" => Self::SMPTE_ST2094_40,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for HdrMetadataType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for HdrMetadataType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<HdrMetadataType> for emlite::Val {
     fn from(s: HdrMetadataType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            HdrMetadataType::SMPTE_ST2086 => emlite::Val::from("smpteSt2086"),
+            HdrMetadataType::SMPTE_ST2094_10 => emlite::Val::from("smpteSt2094-10"),
+            HdrMetadataType::SMPTE_ST2094_40 => emlite::Val::from("smpteSt2094-40"),
+        }
     }
 }
 
-impl HdrMetadataType {
-    pub const SMPTE_ST2086: &str = "smpteSt2086";
-    pub const SMPTE_ST2094_10: &str = "smpteSt2094-10";
-    pub const SMPTE_ST2094_40: &str = "smpteSt2094-40";
-}
-
-#[derive(Clone, Debug)]
-pub struct ColorGamut {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ColorGamut {
+    SRGB,
+    P3,
+    REC2020,
 }
 impl FromVal for ColorGamut {
     fn from_val(v: &emlite::Val) -> Self {
-        ColorGamut { inner: v.clone() }
+        match v.as_::<&str>() {
+            "srgb" => Self::SRGB,
+            "p3" => Self::P3,
+            "rec2020" => Self::REC2020,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ColorGamut {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ColorGamut {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ColorGamut> for emlite::Val {
     fn from(s: ColorGamut) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ColorGamut::SRGB => emlite::Val::from("srgb"),
+            ColorGamut::P3 => emlite::Val::from("p3"),
+            ColorGamut::REC2020 => emlite::Val::from("rec2020"),
+        }
     }
 }
 
-impl ColorGamut {
-    pub const SRGB: &str = "srgb";
-    pub const P3: &str = "p3";
-    pub const REC2020: &str = "rec2020";
-}
-
-#[derive(Clone, Debug)]
-pub struct TransferFunction {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum TransferFunction {
+    SRGB,
+    PQ,
+    HLG,
 }
 impl FromVal for TransferFunction {
     fn from_val(v: &emlite::Val) -> Self {
-        TransferFunction { inner: v.clone() }
+        match v.as_::<&str>() {
+            "srgb" => Self::SRGB,
+            "pq" => Self::PQ,
+            "hlg" => Self::HLG,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for TransferFunction {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for TransferFunction {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<TransferFunction> for emlite::Val {
     fn from(s: TransferFunction) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            TransferFunction::SRGB => emlite::Val::from("srgb"),
+            TransferFunction::PQ => emlite::Val::from("pq"),
+            TransferFunction::HLG => emlite::Val::from("hlg"),
+        }
     }
 }
 
-impl TransferFunction {
-    pub const SRGB: &str = "srgb";
-    pub const PQ: &str = "pq";
-    pub const HLG: &str = "hlg";
-}
-
-#[derive(Clone, Debug)]
-pub struct ReadyState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ReadyState {
+    CLOSED,
+    OPEN,
+    ENDED,
 }
 impl FromVal for ReadyState {
     fn from_val(v: &emlite::Val) -> Self {
-        ReadyState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "closed" => Self::CLOSED,
+            "open" => Self::OPEN,
+            "ended" => Self::ENDED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ReadyState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ReadyState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ReadyState> for emlite::Val {
     fn from(s: ReadyState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ReadyState::CLOSED => emlite::Val::from("closed"),
+            ReadyState::OPEN => emlite::Val::from("open"),
+            ReadyState::ENDED => emlite::Val::from("ended"),
+        }
     }
 }
 
-impl ReadyState {
-    pub const CLOSED: &str = "closed";
-    pub const OPEN: &str = "open";
-    pub const ENDED: &str = "ended";
-}
-
-#[derive(Clone, Debug)]
-pub struct EndOfStreamError {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum EndOfStreamError {
+    NETWORK,
+    DECODE,
 }
 impl FromVal for EndOfStreamError {
     fn from_val(v: &emlite::Val) -> Self {
-        EndOfStreamError { inner: v.clone() }
+        match v.as_::<&str>() {
+            "network" => Self::NETWORK,
+            "decode" => Self::DECODE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for EndOfStreamError {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for EndOfStreamError {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<EndOfStreamError> for emlite::Val {
     fn from(s: EndOfStreamError) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            EndOfStreamError::NETWORK => emlite::Val::from("network"),
+            EndOfStreamError::DECODE => emlite::Val::from("decode"),
+        }
     }
 }
 
-impl EndOfStreamError {
-    pub const NETWORK: &str = "network";
-    pub const DECODE: &str = "decode";
-}
-
-#[derive(Clone, Debug)]
-pub struct AppendMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AppendMode {
+    SEGMENTS,
+    SEQUENCE,
 }
 impl FromVal for AppendMode {
     fn from_val(v: &emlite::Val) -> Self {
-        AppendMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "segments" => Self::SEGMENTS,
+            "sequence" => Self::SEQUENCE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AppendMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AppendMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AppendMode> for emlite::Val {
     fn from(s: AppendMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AppendMode::SEGMENTS => emlite::Val::from("segments"),
+            AppendMode::SEQUENCE => emlite::Val::from("sequence"),
+        }
     }
 }
 
-impl AppendMode {
-    pub const SEGMENTS: &str = "segments";
-    pub const SEQUENCE: &str = "sequence";
-}
-
-#[derive(Clone, Debug)]
-pub struct MockCapturePromptResult {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MockCapturePromptResult {
+    GRANTED,
+    DENIED,
 }
 impl FromVal for MockCapturePromptResult {
     fn from_val(v: &emlite::Val) -> Self {
-        MockCapturePromptResult { inner: v.clone() }
+        match v.as_::<&str>() {
+            "granted" => Self::GRANTED,
+            "denied" => Self::DENIED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MockCapturePromptResult {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MockCapturePromptResult {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MockCapturePromptResult> for emlite::Val {
     fn from(s: MockCapturePromptResult) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MockCapturePromptResult::GRANTED => emlite::Val::from("granted"),
+            MockCapturePromptResult::DENIED => emlite::Val::from("denied"),
+        }
     }
 }
 
-impl MockCapturePromptResult {
-    pub const GRANTED: &str = "granted";
-    pub const DENIED: &str = "denied";
-}
-
-#[derive(Clone, Debug)]
-pub struct CaptureAction {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CaptureAction {
+    NEXT,
+    PREVIOUS,
+    FIRST,
+    LAST,
 }
 impl FromVal for CaptureAction {
     fn from_val(v: &emlite::Val) -> Self {
-        CaptureAction { inner: v.clone() }
+        match v.as_::<&str>() {
+            "next" => Self::NEXT,
+            "previous" => Self::PREVIOUS,
+            "first" => Self::FIRST,
+            "last" => Self::LAST,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CaptureAction {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CaptureAction {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CaptureAction> for emlite::Val {
     fn from(s: CaptureAction) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CaptureAction::NEXT => emlite::Val::from("next"),
+            CaptureAction::PREVIOUS => emlite::Val::from("previous"),
+            CaptureAction::FIRST => emlite::Val::from("first"),
+            CaptureAction::LAST => emlite::Val::from("last"),
+        }
     }
 }
 
-impl CaptureAction {
-    pub const NEXT: &str = "next";
-    pub const PREVIOUS: &str = "previous";
-    pub const FIRST: &str = "first";
-    pub const LAST: &str = "last";
-}
-
-#[derive(Clone, Debug)]
-pub struct MediaStreamTrackState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MediaStreamTrackState {
+    LIVE,
+    ENDED,
 }
 impl FromVal for MediaStreamTrackState {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaStreamTrackState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "live" => Self::LIVE,
+            "ended" => Self::ENDED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MediaStreamTrackState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MediaStreamTrackState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MediaStreamTrackState> for emlite::Val {
     fn from(s: MediaStreamTrackState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MediaStreamTrackState::LIVE => emlite::Val::from("live"),
+            MediaStreamTrackState::ENDED => emlite::Val::from("ended"),
+        }
     }
 }
 
-impl MediaStreamTrackState {
-    pub const LIVE: &str = "live";
-    pub const ENDED: &str = "ended";
-}
-
-#[derive(Clone, Debug)]
-pub struct VideoFacingModeEnum {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum VideoFacingModeEnum {
+    USER,
+    ENVIRONMENT,
+    LEFT,
+    RIGHT,
 }
 impl FromVal for VideoFacingModeEnum {
     fn from_val(v: &emlite::Val) -> Self {
-        VideoFacingModeEnum { inner: v.clone() }
+        match v.as_::<&str>() {
+            "user" => Self::USER,
+            "environment" => Self::ENVIRONMENT,
+            "left" => Self::LEFT,
+            "right" => Self::RIGHT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for VideoFacingModeEnum {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for VideoFacingModeEnum {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<VideoFacingModeEnum> for emlite::Val {
     fn from(s: VideoFacingModeEnum) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            VideoFacingModeEnum::USER => emlite::Val::from("user"),
+            VideoFacingModeEnum::ENVIRONMENT => emlite::Val::from("environment"),
+            VideoFacingModeEnum::LEFT => emlite::Val::from("left"),
+            VideoFacingModeEnum::RIGHT => emlite::Val::from("right"),
+        }
     }
 }
 
-impl VideoFacingModeEnum {
-    pub const USER: &str = "user";
-    pub const ENVIRONMENT: &str = "environment";
-    pub const LEFT: &str = "left";
-    pub const RIGHT: &str = "right";
-}
-
-#[derive(Clone, Debug)]
-pub struct VideoResizeModeEnum {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum VideoResizeModeEnum {
+    NONE,
+    CROP_AND_SCALE,
 }
 impl FromVal for VideoResizeModeEnum {
     fn from_val(v: &emlite::Val) -> Self {
-        VideoResizeModeEnum { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "crop-and-scale" => Self::CROP_AND_SCALE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for VideoResizeModeEnum {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for VideoResizeModeEnum {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<VideoResizeModeEnum> for emlite::Val {
     fn from(s: VideoResizeModeEnum) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            VideoResizeModeEnum::NONE => emlite::Val::from("none"),
+            VideoResizeModeEnum::CROP_AND_SCALE => emlite::Val::from("crop-and-scale"),
+        }
     }
 }
 
-impl VideoResizeModeEnum {
-    pub const NONE: &str = "none";
-    pub const CROP_AND_SCALE: &str = "crop-and-scale";
-}
-
-#[derive(Clone, Debug)]
-pub struct EchoCancellationModeEnum {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum EchoCancellationModeEnum {
+    ALL,
+    REMOTE_ONLY,
 }
 impl FromVal for EchoCancellationModeEnum {
     fn from_val(v: &emlite::Val) -> Self {
-        EchoCancellationModeEnum { inner: v.clone() }
+        match v.as_::<&str>() {
+            "all" => Self::ALL,
+            "remote-only" => Self::REMOTE_ONLY,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for EchoCancellationModeEnum {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for EchoCancellationModeEnum {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<EchoCancellationModeEnum> for emlite::Val {
     fn from(s: EchoCancellationModeEnum) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            EchoCancellationModeEnum::ALL => emlite::Val::from("all"),
+            EchoCancellationModeEnum::REMOTE_ONLY => emlite::Val::from("remote-only"),
+        }
     }
 }
 
-impl EchoCancellationModeEnum {
-    pub const ALL: &str = "all";
-    pub const REMOTE_ONLY: &str = "remote-only";
-}
-
-#[derive(Clone, Debug)]
-pub struct MediaDeviceKind {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MediaDeviceKind {
+    AUDIOINPUT,
+    AUDIOOUTPUT,
+    VIDEOINPUT,
 }
 impl FromVal for MediaDeviceKind {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaDeviceKind { inner: v.clone() }
+        match v.as_::<&str>() {
+            "audioinput" => Self::AUDIOINPUT,
+            "audiooutput" => Self::AUDIOOUTPUT,
+            "videoinput" => Self::VIDEOINPUT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MediaDeviceKind {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MediaDeviceKind {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MediaDeviceKind> for emlite::Val {
     fn from(s: MediaDeviceKind) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MediaDeviceKind::AUDIOINPUT => emlite::Val::from("audioinput"),
+            MediaDeviceKind::AUDIOOUTPUT => emlite::Val::from("audiooutput"),
+            MediaDeviceKind::VIDEOINPUT => emlite::Val::from("videoinput"),
+        }
     }
 }
 
-impl MediaDeviceKind {
-    pub const AUDIOINPUT: &str = "audioinput";
-    pub const AUDIOOUTPUT: &str = "audiooutput";
-    pub const VIDEOINPUT: &str = "videoinput";
-}
-
-#[derive(Clone, Debug)]
-pub struct MediaSessionPlaybackState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MediaSessionPlaybackState {
+    NONE,
+    PAUSED,
+    PLAYING,
 }
 impl FromVal for MediaSessionPlaybackState {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaSessionPlaybackState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "paused" => Self::PAUSED,
+            "playing" => Self::PLAYING,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MediaSessionPlaybackState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MediaSessionPlaybackState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MediaSessionPlaybackState> for emlite::Val {
     fn from(s: MediaSessionPlaybackState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MediaSessionPlaybackState::NONE => emlite::Val::from("none"),
+            MediaSessionPlaybackState::PAUSED => emlite::Val::from("paused"),
+            MediaSessionPlaybackState::PLAYING => emlite::Val::from("playing"),
+        }
     }
 }
 
-impl MediaSessionPlaybackState {
-    pub const NONE: &str = "none";
-    pub const PAUSED: &str = "paused";
-    pub const PLAYING: &str = "playing";
-}
-
-#[derive(Clone, Debug)]
-pub struct MediaSessionAction {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MediaSessionAction {
+    PLAY,
+    PAUSE,
+    SEEKBACKWARD,
+    SEEKFORWARD,
+    PREVIOUSTRACK,
+    NEXTTRACK,
+    SKIPAD,
+    STOP,
+    SEEKTO,
+    TOGGLEMICROPHONE,
+    TOGGLECAMERA,
+    TOGGLESCREENSHARE,
+    HANGUP,
+    PREVIOUSSLIDE,
+    NEXTSLIDE,
+    ENTERPICTUREINPICTURE,
+    VOICEACTIVITY,
 }
 impl FromVal for MediaSessionAction {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaSessionAction { inner: v.clone() }
+        match v.as_::<&str>() {
+            "play" => Self::PLAY,
+            "pause" => Self::PAUSE,
+            "seekbackward" => Self::SEEKBACKWARD,
+            "seekforward" => Self::SEEKFORWARD,
+            "previoustrack" => Self::PREVIOUSTRACK,
+            "nexttrack" => Self::NEXTTRACK,
+            "skipad" => Self::SKIPAD,
+            "stop" => Self::STOP,
+            "seekto" => Self::SEEKTO,
+            "togglemicrophone" => Self::TOGGLEMICROPHONE,
+            "togglecamera" => Self::TOGGLECAMERA,
+            "togglescreenshare" => Self::TOGGLESCREENSHARE,
+            "hangup" => Self::HANGUP,
+            "previousslide" => Self::PREVIOUSSLIDE,
+            "nextslide" => Self::NEXTSLIDE,
+            "enterpictureinpicture" => Self::ENTERPICTUREINPICTURE,
+            "voiceactivity" => Self::VOICEACTIVITY,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MediaSessionAction {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MediaSessionAction {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MediaSessionAction> for emlite::Val {
     fn from(s: MediaSessionAction) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MediaSessionAction::PLAY => emlite::Val::from("play"),
+            MediaSessionAction::PAUSE => emlite::Val::from("pause"),
+            MediaSessionAction::SEEKBACKWARD => emlite::Val::from("seekbackward"),
+            MediaSessionAction::SEEKFORWARD => emlite::Val::from("seekforward"),
+            MediaSessionAction::PREVIOUSTRACK => emlite::Val::from("previoustrack"),
+            MediaSessionAction::NEXTTRACK => emlite::Val::from("nexttrack"),
+            MediaSessionAction::SKIPAD => emlite::Val::from("skipad"),
+            MediaSessionAction::STOP => emlite::Val::from("stop"),
+            MediaSessionAction::SEEKTO => emlite::Val::from("seekto"),
+            MediaSessionAction::TOGGLEMICROPHONE => emlite::Val::from("togglemicrophone"),
+            MediaSessionAction::TOGGLECAMERA => emlite::Val::from("togglecamera"),
+            MediaSessionAction::TOGGLESCREENSHARE => emlite::Val::from("togglescreenshare"),
+            MediaSessionAction::HANGUP => emlite::Val::from("hangup"),
+            MediaSessionAction::PREVIOUSSLIDE => emlite::Val::from("previousslide"),
+            MediaSessionAction::NEXTSLIDE => emlite::Val::from("nextslide"),
+            MediaSessionAction::ENTERPICTUREINPICTURE => emlite::Val::from("enterpictureinpicture"),
+            MediaSessionAction::VOICEACTIVITY => emlite::Val::from("voiceactivity"),
+        }
     }
 }
 
-impl MediaSessionAction {
-    pub const PLAY: &str = "play";
-    pub const PAUSE: &str = "pause";
-    pub const SEEKBACKWARD: &str = "seekbackward";
-    pub const SEEKFORWARD: &str = "seekforward";
-    pub const PREVIOUSTRACK: &str = "previoustrack";
-    pub const NEXTTRACK: &str = "nexttrack";
-    pub const SKIPAD: &str = "skipad";
-    pub const STOP: &str = "stop";
-    pub const SEEKTO: &str = "seekto";
-    pub const TOGGLEMICROPHONE: &str = "togglemicrophone";
-    pub const TOGGLECAMERA: &str = "togglecamera";
-    pub const TOGGLESCREENSHARE: &str = "togglescreenshare";
-    pub const HANGUP: &str = "hangup";
-    pub const PREVIOUSSLIDE: &str = "previousslide";
-    pub const NEXTSLIDE: &str = "nextslide";
-    pub const ENTERPICTUREINPICTURE: &str = "enterpictureinpicture";
-    pub const VOICEACTIVITY: &str = "voiceactivity";
-}
-
-#[derive(Clone, Debug)]
-pub struct BitrateMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum BitrateMode {
+    CONSTANT,
+    VARIABLE,
 }
 impl FromVal for BitrateMode {
     fn from_val(v: &emlite::Val) -> Self {
-        BitrateMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "constant" => Self::CONSTANT,
+            "variable" => Self::VARIABLE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for BitrateMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for BitrateMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<BitrateMode> for emlite::Val {
     fn from(s: BitrateMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            BitrateMode::CONSTANT => emlite::Val::from("constant"),
+            BitrateMode::VARIABLE => emlite::Val::from("variable"),
+        }
     }
 }
 
-impl BitrateMode {
-    pub const CONSTANT: &str = "constant";
-    pub const VARIABLE: &str = "variable";
-}
-
-#[derive(Clone, Debug)]
-pub struct RecordingState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RecordingState {
+    INACTIVE,
+    RECORDING,
+    PAUSED,
 }
 impl FromVal for RecordingState {
     fn from_val(v: &emlite::Val) -> Self {
-        RecordingState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "inactive" => Self::INACTIVE,
+            "recording" => Self::RECORDING,
+            "paused" => Self::PAUSED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RecordingState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RecordingState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RecordingState> for emlite::Val {
     fn from(s: RecordingState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RecordingState::INACTIVE => emlite::Val::from("inactive"),
+            RecordingState::RECORDING => emlite::Val::from("recording"),
+            RecordingState::PAUSED => emlite::Val::from("paused"),
+        }
     }
 }
 
-impl RecordingState {
-    pub const INACTIVE: &str = "inactive";
-    pub const RECORDING: &str = "recording";
-    pub const PAUSED: &str = "paused";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCDegradationPreference {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCDegradationPreference {
+    MAINTAIN_FRAMERATE,
+    MAINTAIN_RESOLUTION,
+    BALANCED,
 }
 impl FromVal for RTCDegradationPreference {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCDegradationPreference { inner: v.clone() }
+        match v.as_::<&str>() {
+            "maintain-framerate" => Self::MAINTAIN_FRAMERATE,
+            "maintain-resolution" => Self::MAINTAIN_RESOLUTION,
+            "balanced" => Self::BALANCED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCDegradationPreference {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCDegradationPreference {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCDegradationPreference> for emlite::Val {
     fn from(s: RTCDegradationPreference) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCDegradationPreference::MAINTAIN_FRAMERATE => emlite::Val::from("maintain-framerate"),
+            RTCDegradationPreference::MAINTAIN_RESOLUTION => {
+                emlite::Val::from("maintain-resolution")
+            }
+            RTCDegradationPreference::BALANCED => emlite::Val::from("balanced"),
+        }
     }
 }
 
-impl RTCDegradationPreference {
-    pub const MAINTAIN_FRAMERATE: &str = "maintain-framerate";
-    pub const MAINTAIN_RESOLUTION: &str = "maintain-resolution";
-    pub const BALANCED: &str = "balanced";
-}
-
-#[derive(Clone, Debug)]
-pub struct NavigationTimingType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum NavigationTimingType {
+    NAVIGATE,
+    RELOAD,
+    BACK_FORWARD,
+    PRERENDER,
 }
 impl FromVal for NavigationTimingType {
     fn from_val(v: &emlite::Val) -> Self {
-        NavigationTimingType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "navigate" => Self::NAVIGATE,
+            "reload" => Self::RELOAD,
+            "back_forward" => Self::BACK_FORWARD,
+            "prerender" => Self::PRERENDER,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for NavigationTimingType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for NavigationTimingType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<NavigationTimingType> for emlite::Val {
     fn from(s: NavigationTimingType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            NavigationTimingType::NAVIGATE => emlite::Val::from("navigate"),
+            NavigationTimingType::RELOAD => emlite::Val::from("reload"),
+            NavigationTimingType::BACK_FORWARD => emlite::Val::from("back_forward"),
+            NavigationTimingType::PRERENDER => emlite::Val::from("prerender"),
+        }
     }
 }
 
-impl NavigationTimingType {
-    pub const NAVIGATE: &str = "navigate";
-    pub const RELOAD: &str = "reload";
-    pub const BACK_FORWARD: &str = "back_forward";
-    pub const PRERENDER: &str = "prerender";
-}
-
-#[derive(Clone, Debug)]
-pub struct ConnectionType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ConnectionType {
+    BLUETOOTH,
+    CELLULAR,
+    ETHERNET,
+    MIXED,
+    NONE,
+    OTHER,
+    UNKNOWN,
+    WIFI,
+    WIMAX,
 }
 impl FromVal for ConnectionType {
     fn from_val(v: &emlite::Val) -> Self {
-        ConnectionType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "bluetooth" => Self::BLUETOOTH,
+            "cellular" => Self::CELLULAR,
+            "ethernet" => Self::ETHERNET,
+            "mixed" => Self::MIXED,
+            "none" => Self::NONE,
+            "other" => Self::OTHER,
+            "unknown" => Self::UNKNOWN,
+            "wifi" => Self::WIFI,
+            "wimax" => Self::WIMAX,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ConnectionType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ConnectionType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ConnectionType> for emlite::Val {
     fn from(s: ConnectionType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ConnectionType::BLUETOOTH => emlite::Val::from("bluetooth"),
+            ConnectionType::CELLULAR => emlite::Val::from("cellular"),
+            ConnectionType::ETHERNET => emlite::Val::from("ethernet"),
+            ConnectionType::MIXED => emlite::Val::from("mixed"),
+            ConnectionType::NONE => emlite::Val::from("none"),
+            ConnectionType::OTHER => emlite::Val::from("other"),
+            ConnectionType::UNKNOWN => emlite::Val::from("unknown"),
+            ConnectionType::WIFI => emlite::Val::from("wifi"),
+            ConnectionType::WIMAX => emlite::Val::from("wimax"),
+        }
     }
 }
 
-impl ConnectionType {
-    pub const BLUETOOTH: &str = "bluetooth";
-    pub const CELLULAR: &str = "cellular";
-    pub const ETHERNET: &str = "ethernet";
-    pub const MIXED: &str = "mixed";
-    pub const NONE: &str = "none";
-    pub const OTHER: &str = "other";
-    pub const UNKNOWN: &str = "unknown";
-    pub const WIFI: &str = "wifi";
-    pub const WIMAX: &str = "wimax";
-}
-
-#[derive(Clone, Debug)]
-pub struct EffectiveConnectionType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum EffectiveConnectionType {
+    _2G,
+    _3G,
+    _4G,
+    SLOW_2G,
 }
 impl FromVal for EffectiveConnectionType {
     fn from_val(v: &emlite::Val) -> Self {
-        EffectiveConnectionType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "2g" => Self::_2G,
+            "3g" => Self::_3G,
+            "4g" => Self::_4G,
+            "slow-2g" => Self::SLOW_2G,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for EffectiveConnectionType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for EffectiveConnectionType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<EffectiveConnectionType> for emlite::Val {
     fn from(s: EffectiveConnectionType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            EffectiveConnectionType::_2G => emlite::Val::from("2g"),
+            EffectiveConnectionType::_3G => emlite::Val::from("3g"),
+            EffectiveConnectionType::_4G => emlite::Val::from("4g"),
+            EffectiveConnectionType::SLOW_2G => emlite::Val::from("slow-2g"),
+        }
     }
 }
 
-impl EffectiveConnectionType {
-    pub const _2G: &str = "2g";
-    pub const _3G: &str = "3g";
-    pub const _4G: &str = "4g";
-    pub const SLOW_2G: &str = "slow-2g";
-}
-
-#[derive(Clone, Debug)]
-pub struct NotificationPermission {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum NotificationPermission {
+    DEFAULT,
+    DENIED,
+    GRANTED,
 }
 impl FromVal for NotificationPermission {
     fn from_val(v: &emlite::Val) -> Self {
-        NotificationPermission { inner: v.clone() }
+        match v.as_::<&str>() {
+            "default" => Self::DEFAULT,
+            "denied" => Self::DENIED,
+            "granted" => Self::GRANTED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for NotificationPermission {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for NotificationPermission {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<NotificationPermission> for emlite::Val {
     fn from(s: NotificationPermission) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            NotificationPermission::DEFAULT => emlite::Val::from("default"),
+            NotificationPermission::DENIED => emlite::Val::from("denied"),
+            NotificationPermission::GRANTED => emlite::Val::from("granted"),
+        }
     }
 }
 
-impl NotificationPermission {
-    pub const DEFAULT: &str = "default";
-    pub const DENIED: &str = "denied";
-    pub const GRANTED: &str = "granted";
-}
-
-#[derive(Clone, Debug)]
-pub struct NotificationDirection {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum NotificationDirection {
+    AUTO,
+    LTR,
+    RTL,
 }
 impl FromVal for NotificationDirection {
     fn from_val(v: &emlite::Val) -> Self {
-        NotificationDirection { inner: v.clone() }
+        match v.as_::<&str>() {
+            "auto" => Self::AUTO,
+            "ltr" => Self::LTR,
+            "rtl" => Self::RTL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for NotificationDirection {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for NotificationDirection {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<NotificationDirection> for emlite::Val {
     fn from(s: NotificationDirection) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            NotificationDirection::AUTO => emlite::Val::from("auto"),
+            NotificationDirection::LTR => emlite::Val::from("ltr"),
+            NotificationDirection::RTL => emlite::Val::from("rtl"),
+        }
     }
 }
 
-impl NotificationDirection {
-    pub const AUTO: &str = "auto";
-    pub const LTR: &str = "ltr";
-    pub const RTL: &str = "rtl";
-}
-
-#[derive(Clone, Debug)]
-pub struct OrientationSensorLocalCoordinateSystem {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum OrientationSensorLocalCoordinateSystem {
+    DEVICE,
+    SCREEN,
 }
 impl FromVal for OrientationSensorLocalCoordinateSystem {
     fn from_val(v: &emlite::Val) -> Self {
-        OrientationSensorLocalCoordinateSystem { inner: v.clone() }
+        match v.as_::<&str>() {
+            "device" => Self::DEVICE,
+            "screen" => Self::SCREEN,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for OrientationSensorLocalCoordinateSystem {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for OrientationSensorLocalCoordinateSystem {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<OrientationSensorLocalCoordinateSystem> for emlite::Val {
     fn from(s: OrientationSensorLocalCoordinateSystem) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            OrientationSensorLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
+            OrientationSensorLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+        }
     }
 }
 
-impl OrientationSensorLocalCoordinateSystem {
-    pub const DEVICE: &str = "device";
-    pub const SCREEN: &str = "screen";
-}
-
-#[derive(Clone, Debug)]
-pub struct ClientLifecycleState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ClientLifecycleState {
+    ACTIVE,
+    FROZEN,
 }
 impl FromVal for ClientLifecycleState {
     fn from_val(v: &emlite::Val) -> Self {
-        ClientLifecycleState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "active" => Self::ACTIVE,
+            "frozen" => Self::FROZEN,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ClientLifecycleState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ClientLifecycleState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ClientLifecycleState> for emlite::Val {
     fn from(s: ClientLifecycleState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ClientLifecycleState::ACTIVE => emlite::Val::from("active"),
+            ClientLifecycleState::FROZEN => emlite::Val::from("frozen"),
+        }
     }
 }
 
-impl ClientLifecycleState {
-    pub const ACTIVE: &str = "active";
-    pub const FROZEN: &str = "frozen";
-}
-
-#[derive(Clone, Debug)]
-pub struct PaymentDelegation {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PaymentDelegation {
+    SHIPPING_ADDRESS,
+    PAYER_NAME,
+    PAYER_PHONE,
+    PAYER_EMAIL,
 }
 impl FromVal for PaymentDelegation {
     fn from_val(v: &emlite::Val) -> Self {
-        PaymentDelegation { inner: v.clone() }
+        match v.as_::<&str>() {
+            "shippingAddress" => Self::SHIPPING_ADDRESS,
+            "payerName" => Self::PAYER_NAME,
+            "payerPhone" => Self::PAYER_PHONE,
+            "payerEmail" => Self::PAYER_EMAIL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PaymentDelegation {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PaymentDelegation {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PaymentDelegation> for emlite::Val {
     fn from(s: PaymentDelegation) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PaymentDelegation::SHIPPING_ADDRESS => emlite::Val::from("shippingAddress"),
+            PaymentDelegation::PAYER_NAME => emlite::Val::from("payerName"),
+            PaymentDelegation::PAYER_PHONE => emlite::Val::from("payerPhone"),
+            PaymentDelegation::PAYER_EMAIL => emlite::Val::from("payerEmail"),
+        }
     }
 }
 
-impl PaymentDelegation {
-    pub const SHIPPING_ADDRESS: &str = "shippingAddress";
-    pub const PAYER_NAME: &str = "payerName";
-    pub const PAYER_PHONE: &str = "payerPhone";
-    pub const PAYER_EMAIL: &str = "payerEmail";
-}
-
-#[derive(Clone, Debug)]
-pub struct PaymentShippingType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PaymentShippingType {
+    SHIPPING,
+    DELIVERY,
+    PICKUP,
 }
 impl FromVal for PaymentShippingType {
     fn from_val(v: &emlite::Val) -> Self {
-        PaymentShippingType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "shipping" => Self::SHIPPING,
+            "delivery" => Self::DELIVERY,
+            "pickup" => Self::PICKUP,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PaymentShippingType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PaymentShippingType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PaymentShippingType> for emlite::Val {
     fn from(s: PaymentShippingType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PaymentShippingType::SHIPPING => emlite::Val::from("shipping"),
+            PaymentShippingType::DELIVERY => emlite::Val::from("delivery"),
+            PaymentShippingType::PICKUP => emlite::Val::from("pickup"),
+        }
     }
 }
 
-impl PaymentShippingType {
-    pub const SHIPPING: &str = "shipping";
-    pub const DELIVERY: &str = "delivery";
-    pub const PICKUP: &str = "pickup";
-}
-
-#[derive(Clone, Debug)]
-pub struct PaymentComplete {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PaymentComplete {
+    FAIL,
+    SUCCESS,
+    UNKNOWN,
 }
 impl FromVal for PaymentComplete {
     fn from_val(v: &emlite::Val) -> Self {
-        PaymentComplete { inner: v.clone() }
+        match v.as_::<&str>() {
+            "fail" => Self::FAIL,
+            "success" => Self::SUCCESS,
+            "unknown" => Self::UNKNOWN,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PaymentComplete {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PaymentComplete {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PaymentComplete> for emlite::Val {
     fn from(s: PaymentComplete) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PaymentComplete::FAIL => emlite::Val::from("fail"),
+            PaymentComplete::SUCCESS => emlite::Val::from("success"),
+            PaymentComplete::UNKNOWN => emlite::Val::from("unknown"),
+        }
     }
 }
 
-impl PaymentComplete {
-    pub const FAIL: &str = "fail";
-    pub const SUCCESS: &str = "success";
-    pub const UNKNOWN: &str = "unknown";
-}
-
-#[derive(Clone, Debug)]
-pub struct PermissionState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PermissionState {
+    GRANTED,
+    DENIED,
+    PROMPT,
 }
 impl FromVal for PermissionState {
     fn from_val(v: &emlite::Val) -> Self {
-        PermissionState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "granted" => Self::GRANTED,
+            "denied" => Self::DENIED,
+            "prompt" => Self::PROMPT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PermissionState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PermissionState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PermissionState> for emlite::Val {
     fn from(s: PermissionState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PermissionState::GRANTED => emlite::Val::from("granted"),
+            PermissionState::DENIED => emlite::Val::from("denied"),
+            PermissionState::PROMPT => emlite::Val::from("prompt"),
+        }
     }
 }
 
-impl PermissionState {
-    pub const GRANTED: &str = "granted";
-    pub const DENIED: &str = "denied";
-    pub const PROMPT: &str = "prompt";
-}
-
-#[derive(Clone, Debug)]
-pub struct PointerAxis {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PointerAxis {
+    BLOCK,
+    INLINE,
+    X,
+    Y,
 }
 impl FromVal for PointerAxis {
     fn from_val(v: &emlite::Val) -> Self {
-        PointerAxis { inner: v.clone() }
+        match v.as_::<&str>() {
+            "block" => Self::BLOCK,
+            "inline" => Self::INLINE,
+            "x" => Self::X,
+            "y" => Self::Y,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PointerAxis {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PointerAxis {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PointerAxis> for emlite::Val {
     fn from(s: PointerAxis) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PointerAxis::BLOCK => emlite::Val::from("block"),
+            PointerAxis::INLINE => emlite::Val::from("inline"),
+            PointerAxis::X => emlite::Val::from("x"),
+            PointerAxis::Y => emlite::Val::from("y"),
+        }
     }
 }
 
-impl PointerAxis {
-    pub const BLOCK: &str = "block";
-    pub const INLINE: &str = "inline";
-    pub const X: &str = "x";
-    pub const Y: &str = "y";
-}
-
-#[derive(Clone, Debug)]
-pub struct PresentationConnectionState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PresentationConnectionState {
+    CONNECTING,
+    CONNECTED,
+    CLOSED,
+    TERMINATED,
 }
 impl FromVal for PresentationConnectionState {
     fn from_val(v: &emlite::Val) -> Self {
-        PresentationConnectionState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "connecting" => Self::CONNECTING,
+            "connected" => Self::CONNECTED,
+            "closed" => Self::CLOSED,
+            "terminated" => Self::TERMINATED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PresentationConnectionState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PresentationConnectionState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PresentationConnectionState> for emlite::Val {
     fn from(s: PresentationConnectionState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PresentationConnectionState::CONNECTING => emlite::Val::from("connecting"),
+            PresentationConnectionState::CONNECTED => emlite::Val::from("connected"),
+            PresentationConnectionState::CLOSED => emlite::Val::from("closed"),
+            PresentationConnectionState::TERMINATED => emlite::Val::from("terminated"),
+        }
     }
 }
 
-impl PresentationConnectionState {
-    pub const CONNECTING: &str = "connecting";
-    pub const CONNECTED: &str = "connected";
-    pub const CLOSED: &str = "closed";
-    pub const TERMINATED: &str = "terminated";
-}
-
-#[derive(Clone, Debug)]
-pub struct PresentationConnectionCloseReason {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PresentationConnectionCloseReason {
+    ERROR,
+    CLOSED,
+    WENTAWAY,
 }
 impl FromVal for PresentationConnectionCloseReason {
     fn from_val(v: &emlite::Val) -> Self {
-        PresentationConnectionCloseReason { inner: v.clone() }
+        match v.as_::<&str>() {
+            "error" => Self::ERROR,
+            "closed" => Self::CLOSED,
+            "wentaway" => Self::WENTAWAY,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PresentationConnectionCloseReason {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PresentationConnectionCloseReason {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PresentationConnectionCloseReason> for emlite::Val {
     fn from(s: PresentationConnectionCloseReason) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PresentationConnectionCloseReason::ERROR => emlite::Val::from("error"),
+            PresentationConnectionCloseReason::CLOSED => emlite::Val::from("closed"),
+            PresentationConnectionCloseReason::WENTAWAY => emlite::Val::from("wentaway"),
+        }
     }
 }
 
-impl PresentationConnectionCloseReason {
-    pub const ERROR: &str = "error";
-    pub const CLOSED: &str = "closed";
-    pub const WENTAWAY: &str = "wentaway";
-}
-
-#[derive(Clone, Debug)]
-pub struct PrivateAttributionAggregationProtocol {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PrivateAttributionAggregationProtocol {
+    DAP_12_HISTOGRAM,
+    TEE_00,
 }
 impl FromVal for PrivateAttributionAggregationProtocol {
     fn from_val(v: &emlite::Val) -> Self {
-        PrivateAttributionAggregationProtocol { inner: v.clone() }
+        match v.as_::<&str>() {
+            "dap-12-histogram" => Self::DAP_12_HISTOGRAM,
+            "tee-00" => Self::TEE_00,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PrivateAttributionAggregationProtocol {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PrivateAttributionAggregationProtocol {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PrivateAttributionAggregationProtocol> for emlite::Val {
     fn from(s: PrivateAttributionAggregationProtocol) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PrivateAttributionAggregationProtocol::DAP_12_HISTOGRAM => {
+                emlite::Val::from("dap-12-histogram")
+            }
+            PrivateAttributionAggregationProtocol::TEE_00 => emlite::Val::from("tee-00"),
+        }
     }
 }
 
-impl PrivateAttributionAggregationProtocol {
-    pub const DAP_12_HISTOGRAM: &str = "dap-12-histogram";
-    pub const TEE_00: &str = "tee-00";
-}
-
-#[derive(Clone, Debug)]
-pub struct AttributionLogic {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AttributionLogic {
+    LAST_TOUCH,
 }
 impl FromVal for AttributionLogic {
     fn from_val(v: &emlite::Val) -> Self {
-        AttributionLogic { inner: v.clone() }
+        match v.as_::<&str>() {
+            "last-touch" => Self::LAST_TOUCH,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AttributionLogic {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AttributionLogic {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AttributionLogic> for emlite::Val {
     fn from(s: AttributionLogic) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AttributionLogic::LAST_TOUCH => emlite::Val::from("last-touch"),
+        }
     }
 }
 
-impl AttributionLogic {
-    pub const LAST_TOUCH: &str = "last-touch";
-}
-
-#[derive(Clone, Debug)]
-pub struct IPAddressSpace {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum IPAddressSpace {
+    PUBLIC,
+    PRIVATE,
+    LOCAL,
 }
 impl FromVal for IPAddressSpace {
     fn from_val(v: &emlite::Val) -> Self {
-        IPAddressSpace { inner: v.clone() }
+        match v.as_::<&str>() {
+            "public" => Self::PUBLIC,
+            "private" => Self::PRIVATE,
+            "local" => Self::LOCAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for IPAddressSpace {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for IPAddressSpace {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<IPAddressSpace> for emlite::Val {
     fn from(s: IPAddressSpace) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            IPAddressSpace::PUBLIC => emlite::Val::from("public"),
+            IPAddressSpace::PRIVATE => emlite::Val::from("private"),
+            IPAddressSpace::LOCAL => emlite::Val::from("local"),
+        }
     }
 }
 
-impl IPAddressSpace {
-    pub const PUBLIC: &str = "public";
-    pub const PRIVATE: &str = "private";
-    pub const LOCAL: &str = "local";
-}
-
-#[derive(Clone, Debug)]
-pub struct PushEncryptionKeyName {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PushEncryptionKeyName {
+    P256DH,
+    AUTH,
 }
 impl FromVal for PushEncryptionKeyName {
     fn from_val(v: &emlite::Val) -> Self {
-        PushEncryptionKeyName { inner: v.clone() }
+        match v.as_::<&str>() {
+            "p256dh" => Self::P256DH,
+            "auth" => Self::AUTH,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PushEncryptionKeyName {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PushEncryptionKeyName {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PushEncryptionKeyName> for emlite::Val {
     fn from(s: PushEncryptionKeyName) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PushEncryptionKeyName::P256DH => emlite::Val::from("p256dh"),
+            PushEncryptionKeyName::AUTH => emlite::Val::from("auth"),
+        }
     }
 }
 
-impl PushEncryptionKeyName {
-    pub const P256DH: &str = "p256dh";
-    pub const AUTH: &str = "auth";
-}
-
-#[derive(Clone, Debug)]
-pub struct ReferrerPolicy {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ReferrerPolicy {
+    NONE,
+    NO_REFERRER,
+    NO_REFERRER_WHEN_DOWNGRADE,
+    SAME_ORIGIN,
+    ORIGIN,
+    STRICT_ORIGIN,
+    ORIGIN_WHEN_CROSS_ORIGIN,
+    STRICT_ORIGIN_WHEN_CROSS_ORIGIN,
+    UNSAFE_URL,
 }
 impl FromVal for ReferrerPolicy {
     fn from_val(v: &emlite::Val) -> Self {
-        ReferrerPolicy { inner: v.clone() }
+        match v.as_::<&str>() {
+            "" => Self::NONE,
+            "no-referrer" => Self::NO_REFERRER,
+            "no-referrer-when-downgrade" => Self::NO_REFERRER_WHEN_DOWNGRADE,
+            "same-origin" => Self::SAME_ORIGIN,
+            "origin" => Self::ORIGIN,
+            "strict-origin" => Self::STRICT_ORIGIN,
+            "origin-when-cross-origin" => Self::ORIGIN_WHEN_CROSS_ORIGIN,
+            "strict-origin-when-cross-origin" => Self::STRICT_ORIGIN_WHEN_CROSS_ORIGIN,
+            "unsafe-url" => Self::UNSAFE_URL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ReferrerPolicy {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ReferrerPolicy {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ReferrerPolicy> for emlite::Val {
     fn from(s: ReferrerPolicy) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ReferrerPolicy::NONE => emlite::Val::from(""),
+            ReferrerPolicy::NO_REFERRER => emlite::Val::from("no-referrer"),
+            ReferrerPolicy::NO_REFERRER_WHEN_DOWNGRADE => {
+                emlite::Val::from("no-referrer-when-downgrade")
+            }
+            ReferrerPolicy::SAME_ORIGIN => emlite::Val::from("same-origin"),
+            ReferrerPolicy::ORIGIN => emlite::Val::from("origin"),
+            ReferrerPolicy::STRICT_ORIGIN => emlite::Val::from("strict-origin"),
+            ReferrerPolicy::ORIGIN_WHEN_CROSS_ORIGIN => {
+                emlite::Val::from("origin-when-cross-origin")
+            }
+            ReferrerPolicy::STRICT_ORIGIN_WHEN_CROSS_ORIGIN => {
+                emlite::Val::from("strict-origin-when-cross-origin")
+            }
+            ReferrerPolicy::UNSAFE_URL => emlite::Val::from("unsafe-url"),
+        }
     }
 }
 
-impl ReferrerPolicy {
-    pub const NONE: &str = "";
-    pub const NO_REFERRER: &str = "no-referrer";
-    pub const NO_REFERRER_WHEN_DOWNGRADE: &str = "no-referrer-when-downgrade";
-    pub const SAME_ORIGIN: &str = "same-origin";
-    pub const ORIGIN: &str = "origin";
-    pub const STRICT_ORIGIN: &str = "strict-origin";
-    pub const ORIGIN_WHEN_CROSS_ORIGIN: &str = "origin-when-cross-origin";
-    pub const STRICT_ORIGIN_WHEN_CROSS_ORIGIN: &str = "strict-origin-when-cross-origin";
-    pub const UNSAFE_URL: &str = "unsafe-url";
-}
-
-#[derive(Clone, Debug)]
-pub struct RemotePlaybackState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RemotePlaybackState {
+    CONNECTING,
+    CONNECTED,
+    DISCONNECTED,
 }
 impl FromVal for RemotePlaybackState {
     fn from_val(v: &emlite::Val) -> Self {
-        RemotePlaybackState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "connecting" => Self::CONNECTING,
+            "connected" => Self::CONNECTED,
+            "disconnected" => Self::DISCONNECTED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RemotePlaybackState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RemotePlaybackState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RemotePlaybackState> for emlite::Val {
     fn from(s: RemotePlaybackState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RemotePlaybackState::CONNECTING => emlite::Val::from("connecting"),
+            RemotePlaybackState::CONNECTED => emlite::Val::from("connected"),
+            RemotePlaybackState::DISCONNECTED => emlite::Val::from("disconnected"),
+        }
     }
 }
 
-impl RemotePlaybackState {
-    pub const CONNECTING: &str = "connecting";
-    pub const CONNECTED: &str = "connected";
-    pub const DISCONNECTED: &str = "disconnected";
-}
-
-#[derive(Clone, Debug)]
-pub struct ResizeObserverBoxOptions {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ResizeObserverBoxOptions {
+    BORDER_BOX,
+    CONTENT_BOX,
+    DEVICE_PIXEL_CONTENT_BOX,
 }
 impl FromVal for ResizeObserverBoxOptions {
     fn from_val(v: &emlite::Val) -> Self {
-        ResizeObserverBoxOptions { inner: v.clone() }
+        match v.as_::<&str>() {
+            "border-box" => Self::BORDER_BOX,
+            "content-box" => Self::CONTENT_BOX,
+            "device-pixel-content-box" => Self::DEVICE_PIXEL_CONTENT_BOX,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ResizeObserverBoxOptions {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ResizeObserverBoxOptions {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ResizeObserverBoxOptions> for emlite::Val {
     fn from(s: ResizeObserverBoxOptions) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ResizeObserverBoxOptions::BORDER_BOX => emlite::Val::from("border-box"),
+            ResizeObserverBoxOptions::CONTENT_BOX => emlite::Val::from("content-box"),
+            ResizeObserverBoxOptions::DEVICE_PIXEL_CONTENT_BOX => {
+                emlite::Val::from("device-pixel-content-box")
+            }
+        }
     }
 }
 
-impl ResizeObserverBoxOptions {
-    pub const BORDER_BOX: &str = "border-box";
-    pub const CONTENT_BOX: &str = "content-box";
-    pub const DEVICE_PIXEL_CONTENT_BOX: &str = "device-pixel-content-box";
-}
-
-#[derive(Clone, Debug)]
-pub struct RenderBlockingStatusType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RenderBlockingStatusType {
+    BLOCKING,
+    NON_BLOCKING,
 }
 impl FromVal for RenderBlockingStatusType {
     fn from_val(v: &emlite::Val) -> Self {
-        RenderBlockingStatusType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "blocking" => Self::BLOCKING,
+            "non-blocking" => Self::NON_BLOCKING,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RenderBlockingStatusType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RenderBlockingStatusType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RenderBlockingStatusType> for emlite::Val {
     fn from(s: RenderBlockingStatusType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RenderBlockingStatusType::BLOCKING => emlite::Val::from("blocking"),
+            RenderBlockingStatusType::NON_BLOCKING => emlite::Val::from("non-blocking"),
+        }
     }
 }
 
-impl RenderBlockingStatusType {
-    pub const BLOCKING: &str = "blocking";
-    pub const NON_BLOCKING: &str = "non-blocking";
-}
-
-#[derive(Clone, Debug)]
-pub struct SameSiteCookiesType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SameSiteCookiesType {
+    ALL,
+    NONE,
 }
 impl FromVal for SameSiteCookiesType {
     fn from_val(v: &emlite::Val) -> Self {
-        SameSiteCookiesType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "all" => Self::ALL,
+            "none" => Self::NONE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SameSiteCookiesType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SameSiteCookiesType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SameSiteCookiesType> for emlite::Val {
     fn from(s: SameSiteCookiesType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SameSiteCookiesType::ALL => emlite::Val::from("all"),
+            SameSiteCookiesType::NONE => emlite::Val::from("none"),
+        }
     }
 }
 
-impl SameSiteCookiesType {
-    pub const ALL: &str = "all";
-    pub const NONE: &str = "none";
-}
-
-#[derive(Clone, Debug)]
-pub struct SanitizerPresets {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SanitizerPresets {
+    DEFAULT,
 }
 impl FromVal for SanitizerPresets {
     fn from_val(v: &emlite::Val) -> Self {
-        SanitizerPresets { inner: v.clone() }
+        match v.as_::<&str>() {
+            "default" => Self::DEFAULT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SanitizerPresets {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SanitizerPresets {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SanitizerPresets> for emlite::Val {
     fn from(s: SanitizerPresets) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SanitizerPresets::DEFAULT => emlite::Val::from("default"),
+        }
     }
 }
 
-impl SanitizerPresets {
-    pub const DEFAULT: &str = "default";
-}
-
-#[derive(Clone, Debug)]
-pub struct TaskPriority {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum TaskPriority {
+    USER_BLOCKING,
+    USER_VISIBLE,
+    BACKGROUND,
 }
 impl FromVal for TaskPriority {
     fn from_val(v: &emlite::Val) -> Self {
-        TaskPriority { inner: v.clone() }
+        match v.as_::<&str>() {
+            "user-blocking" => Self::USER_BLOCKING,
+            "user-visible" => Self::USER_VISIBLE,
+            "background" => Self::BACKGROUND,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for TaskPriority {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for TaskPriority {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<TaskPriority> for emlite::Val {
     fn from(s: TaskPriority) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            TaskPriority::USER_BLOCKING => emlite::Val::from("user-blocking"),
+            TaskPriority::USER_VISIBLE => emlite::Val::from("user-visible"),
+            TaskPriority::BACKGROUND => emlite::Val::from("background"),
+        }
     }
 }
 
-impl TaskPriority {
-    pub const USER_BLOCKING: &str = "user-blocking";
-    pub const USER_VISIBLE: &str = "user-visible";
-    pub const BACKGROUND: &str = "background";
-}
-
-#[derive(Clone, Debug)]
-pub struct CaptureStartFocusBehavior {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CaptureStartFocusBehavior {
+    FOCUS_CAPTURING_APPLICATION,
+    FOCUS_CAPTURED_SURFACE,
+    NO_FOCUS_CHANGE,
 }
 impl FromVal for CaptureStartFocusBehavior {
     fn from_val(v: &emlite::Val) -> Self {
-        CaptureStartFocusBehavior { inner: v.clone() }
+        match v.as_::<&str>() {
+            "focus-capturing-application" => Self::FOCUS_CAPTURING_APPLICATION,
+            "focus-captured-surface" => Self::FOCUS_CAPTURED_SURFACE,
+            "no-focus-change" => Self::NO_FOCUS_CHANGE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CaptureStartFocusBehavior {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CaptureStartFocusBehavior {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CaptureStartFocusBehavior> for emlite::Val {
     fn from(s: CaptureStartFocusBehavior) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CaptureStartFocusBehavior::FOCUS_CAPTURING_APPLICATION => {
+                emlite::Val::from("focus-capturing-application")
+            }
+            CaptureStartFocusBehavior::FOCUS_CAPTURED_SURFACE => {
+                emlite::Val::from("focus-captured-surface")
+            }
+            CaptureStartFocusBehavior::NO_FOCUS_CHANGE => emlite::Val::from("no-focus-change"),
+        }
     }
 }
 
-impl CaptureStartFocusBehavior {
-    pub const FOCUS_CAPTURING_APPLICATION: &str = "focus-capturing-application";
-    pub const FOCUS_CAPTURED_SURFACE: &str = "focus-captured-surface";
-    pub const NO_FOCUS_CHANGE: &str = "no-focus-change";
-}
-
-#[derive(Clone, Debug)]
-pub struct SelfCapturePreferenceEnum {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SelfCapturePreferenceEnum {
+    INCLUDE,
+    EXCLUDE,
 }
 impl FromVal for SelfCapturePreferenceEnum {
     fn from_val(v: &emlite::Val) -> Self {
-        SelfCapturePreferenceEnum { inner: v.clone() }
+        match v.as_::<&str>() {
+            "include" => Self::INCLUDE,
+            "exclude" => Self::EXCLUDE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SelfCapturePreferenceEnum {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SelfCapturePreferenceEnum {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SelfCapturePreferenceEnum> for emlite::Val {
     fn from(s: SelfCapturePreferenceEnum) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SelfCapturePreferenceEnum::INCLUDE => emlite::Val::from("include"),
+            SelfCapturePreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+        }
     }
 }
 
-impl SelfCapturePreferenceEnum {
-    pub const INCLUDE: &str = "include";
-    pub const EXCLUDE: &str = "exclude";
-}
-
-#[derive(Clone, Debug)]
-pub struct SystemAudioPreferenceEnum {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SystemAudioPreferenceEnum {
+    INCLUDE,
+    EXCLUDE,
 }
 impl FromVal for SystemAudioPreferenceEnum {
     fn from_val(v: &emlite::Val) -> Self {
-        SystemAudioPreferenceEnum { inner: v.clone() }
+        match v.as_::<&str>() {
+            "include" => Self::INCLUDE,
+            "exclude" => Self::EXCLUDE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SystemAudioPreferenceEnum {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SystemAudioPreferenceEnum {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SystemAudioPreferenceEnum> for emlite::Val {
     fn from(s: SystemAudioPreferenceEnum) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SystemAudioPreferenceEnum::INCLUDE => emlite::Val::from("include"),
+            SystemAudioPreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+        }
     }
 }
 
-impl SystemAudioPreferenceEnum {
-    pub const INCLUDE: &str = "include";
-    pub const EXCLUDE: &str = "exclude";
-}
-
-#[derive(Clone, Debug)]
-pub struct WindowAudioPreferenceEnum {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum WindowAudioPreferenceEnum {
+    SYSTEM,
+    WINDOW,
+    EXCLUDE,
 }
 impl FromVal for WindowAudioPreferenceEnum {
     fn from_val(v: &emlite::Val) -> Self {
-        WindowAudioPreferenceEnum { inner: v.clone() }
+        match v.as_::<&str>() {
+            "system" => Self::SYSTEM,
+            "window" => Self::WINDOW,
+            "exclude" => Self::EXCLUDE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for WindowAudioPreferenceEnum {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for WindowAudioPreferenceEnum {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<WindowAudioPreferenceEnum> for emlite::Val {
     fn from(s: WindowAudioPreferenceEnum) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            WindowAudioPreferenceEnum::SYSTEM => emlite::Val::from("system"),
+            WindowAudioPreferenceEnum::WINDOW => emlite::Val::from("window"),
+            WindowAudioPreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+        }
     }
 }
 
-impl WindowAudioPreferenceEnum {
-    pub const SYSTEM: &str = "system";
-    pub const WINDOW: &str = "window";
-    pub const EXCLUDE: &str = "exclude";
-}
-
-#[derive(Clone, Debug)]
-pub struct SurfaceSwitchingPreferenceEnum {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SurfaceSwitchingPreferenceEnum {
+    INCLUDE,
+    EXCLUDE,
 }
 impl FromVal for SurfaceSwitchingPreferenceEnum {
     fn from_val(v: &emlite::Val) -> Self {
-        SurfaceSwitchingPreferenceEnum { inner: v.clone() }
+        match v.as_::<&str>() {
+            "include" => Self::INCLUDE,
+            "exclude" => Self::EXCLUDE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SurfaceSwitchingPreferenceEnum {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SurfaceSwitchingPreferenceEnum {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SurfaceSwitchingPreferenceEnum> for emlite::Val {
     fn from(s: SurfaceSwitchingPreferenceEnum) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SurfaceSwitchingPreferenceEnum::INCLUDE => emlite::Val::from("include"),
+            SurfaceSwitchingPreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+        }
     }
 }
 
-impl SurfaceSwitchingPreferenceEnum {
-    pub const INCLUDE: &str = "include";
-    pub const EXCLUDE: &str = "exclude";
-}
-
-#[derive(Clone, Debug)]
-pub struct MonitorTypeSurfacesEnum {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MonitorTypeSurfacesEnum {
+    INCLUDE,
+    EXCLUDE,
 }
 impl FromVal for MonitorTypeSurfacesEnum {
     fn from_val(v: &emlite::Val) -> Self {
-        MonitorTypeSurfacesEnum { inner: v.clone() }
+        match v.as_::<&str>() {
+            "include" => Self::INCLUDE,
+            "exclude" => Self::EXCLUDE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MonitorTypeSurfacesEnum {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MonitorTypeSurfacesEnum {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MonitorTypeSurfacesEnum> for emlite::Val {
     fn from(s: MonitorTypeSurfacesEnum) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MonitorTypeSurfacesEnum::INCLUDE => emlite::Val::from("include"),
+            MonitorTypeSurfacesEnum::EXCLUDE => emlite::Val::from("exclude"),
+        }
     }
 }
 
-impl MonitorTypeSurfacesEnum {
-    pub const INCLUDE: &str = "include";
-    pub const EXCLUDE: &str = "exclude";
-}
-
-#[derive(Clone, Debug)]
-pub struct DisplayCaptureSurfaceType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum DisplayCaptureSurfaceType {
+    MONITOR,
+    WINDOW,
+    BROWSER,
 }
 impl FromVal for DisplayCaptureSurfaceType {
     fn from_val(v: &emlite::Val) -> Self {
-        DisplayCaptureSurfaceType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "monitor" => Self::MONITOR,
+            "window" => Self::WINDOW,
+            "browser" => Self::BROWSER,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for DisplayCaptureSurfaceType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for DisplayCaptureSurfaceType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<DisplayCaptureSurfaceType> for emlite::Val {
     fn from(s: DisplayCaptureSurfaceType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            DisplayCaptureSurfaceType::MONITOR => emlite::Val::from("monitor"),
+            DisplayCaptureSurfaceType::WINDOW => emlite::Val::from("window"),
+            DisplayCaptureSurfaceType::BROWSER => emlite::Val::from("browser"),
+        }
     }
 }
 
-impl DisplayCaptureSurfaceType {
-    pub const MONITOR: &str = "monitor";
-    pub const WINDOW: &str = "window";
-    pub const BROWSER: &str = "browser";
-}
-
-#[derive(Clone, Debug)]
-pub struct CursorCaptureConstraint {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CursorCaptureConstraint {
+    NEVER,
+    ALWAYS,
+    MOTION,
 }
 impl FromVal for CursorCaptureConstraint {
     fn from_val(v: &emlite::Val) -> Self {
-        CursorCaptureConstraint { inner: v.clone() }
+        match v.as_::<&str>() {
+            "never" => Self::NEVER,
+            "always" => Self::ALWAYS,
+            "motion" => Self::MOTION,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CursorCaptureConstraint {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CursorCaptureConstraint {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CursorCaptureConstraint> for emlite::Val {
     fn from(s: CursorCaptureConstraint) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CursorCaptureConstraint::NEVER => emlite::Val::from("never"),
+            CursorCaptureConstraint::ALWAYS => emlite::Val::from("always"),
+            CursorCaptureConstraint::MOTION => emlite::Val::from("motion"),
+        }
     }
 }
 
-impl CursorCaptureConstraint {
-    pub const NEVER: &str = "never";
-    pub const ALWAYS: &str = "always";
-    pub const MOTION: &str = "motion";
-}
-
-#[derive(Clone, Debug)]
-pub struct OrientationLockType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum OrientationLockType {
+    ANY,
+    NATURAL,
+    LANDSCAPE,
+    PORTRAIT,
+    PORTRAIT_PRIMARY,
+    PORTRAIT_SECONDARY,
+    LANDSCAPE_PRIMARY,
+    LANDSCAPE_SECONDARY,
 }
 impl FromVal for OrientationLockType {
     fn from_val(v: &emlite::Val) -> Self {
-        OrientationLockType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "any" => Self::ANY,
+            "natural" => Self::NATURAL,
+            "landscape" => Self::LANDSCAPE,
+            "portrait" => Self::PORTRAIT,
+            "portrait-primary" => Self::PORTRAIT_PRIMARY,
+            "portrait-secondary" => Self::PORTRAIT_SECONDARY,
+            "landscape-primary" => Self::LANDSCAPE_PRIMARY,
+            "landscape-secondary" => Self::LANDSCAPE_SECONDARY,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for OrientationLockType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for OrientationLockType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<OrientationLockType> for emlite::Val {
     fn from(s: OrientationLockType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            OrientationLockType::ANY => emlite::Val::from("any"),
+            OrientationLockType::NATURAL => emlite::Val::from("natural"),
+            OrientationLockType::LANDSCAPE => emlite::Val::from("landscape"),
+            OrientationLockType::PORTRAIT => emlite::Val::from("portrait"),
+            OrientationLockType::PORTRAIT_PRIMARY => emlite::Val::from("portrait-primary"),
+            OrientationLockType::PORTRAIT_SECONDARY => emlite::Val::from("portrait-secondary"),
+            OrientationLockType::LANDSCAPE_PRIMARY => emlite::Val::from("landscape-primary"),
+            OrientationLockType::LANDSCAPE_SECONDARY => emlite::Val::from("landscape-secondary"),
+        }
     }
 }
 
-impl OrientationLockType {
-    pub const ANY: &str = "any";
-    pub const NATURAL: &str = "natural";
-    pub const LANDSCAPE: &str = "landscape";
-    pub const PORTRAIT: &str = "portrait";
-    pub const PORTRAIT_PRIMARY: &str = "portrait-primary";
-    pub const PORTRAIT_SECONDARY: &str = "portrait-secondary";
-    pub const LANDSCAPE_PRIMARY: &str = "landscape-primary";
-    pub const LANDSCAPE_SECONDARY: &str = "landscape-secondary";
-}
-
-#[derive(Clone, Debug)]
-pub struct OrientationType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum OrientationType {
+    PORTRAIT_PRIMARY,
+    PORTRAIT_SECONDARY,
+    LANDSCAPE_PRIMARY,
+    LANDSCAPE_SECONDARY,
 }
 impl FromVal for OrientationType {
     fn from_val(v: &emlite::Val) -> Self {
-        OrientationType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "portrait-primary" => Self::PORTRAIT_PRIMARY,
+            "portrait-secondary" => Self::PORTRAIT_SECONDARY,
+            "landscape-primary" => Self::LANDSCAPE_PRIMARY,
+            "landscape-secondary" => Self::LANDSCAPE_SECONDARY,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for OrientationType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for OrientationType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<OrientationType> for emlite::Val {
     fn from(s: OrientationType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            OrientationType::PORTRAIT_PRIMARY => emlite::Val::from("portrait-primary"),
+            OrientationType::PORTRAIT_SECONDARY => emlite::Val::from("portrait-secondary"),
+            OrientationType::LANDSCAPE_PRIMARY => emlite::Val::from("landscape-primary"),
+            OrientationType::LANDSCAPE_SECONDARY => emlite::Val::from("landscape-secondary"),
+        }
     }
 }
 
-impl OrientationType {
-    pub const PORTRAIT_PRIMARY: &str = "portrait-primary";
-    pub const PORTRAIT_SECONDARY: &str = "portrait-secondary";
-    pub const LANDSCAPE_PRIMARY: &str = "landscape-primary";
-    pub const LANDSCAPE_SECONDARY: &str = "landscape-secondary";
-}
-
-#[derive(Clone, Debug)]
-pub struct WakeLockType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum WakeLockType {
+    SCREEN,
 }
 impl FromVal for WakeLockType {
     fn from_val(v: &emlite::Val) -> Self {
-        WakeLockType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "screen" => Self::SCREEN,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for WakeLockType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for WakeLockType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<WakeLockType> for emlite::Val {
     fn from(s: WakeLockType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            WakeLockType::SCREEN => emlite::Val::from("screen"),
+        }
     }
 }
 
-impl WakeLockType {
-    pub const SCREEN: &str = "screen";
-}
-
-#[derive(Clone, Debug)]
-pub struct ScrollAxis {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ScrollAxis {
+    BLOCK,
+    INLINE,
+    X,
+    Y,
 }
 impl FromVal for ScrollAxis {
     fn from_val(v: &emlite::Val) -> Self {
-        ScrollAxis { inner: v.clone() }
+        match v.as_::<&str>() {
+            "block" => Self::BLOCK,
+            "inline" => Self::INLINE,
+            "x" => Self::X,
+            "y" => Self::Y,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ScrollAxis {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ScrollAxis {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ScrollAxis> for emlite::Val {
     fn from(s: ScrollAxis) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ScrollAxis::BLOCK => emlite::Val::from("block"),
+            ScrollAxis::INLINE => emlite::Val::from("inline"),
+            ScrollAxis::X => emlite::Val::from("x"),
+            ScrollAxis::Y => emlite::Val::from("y"),
+        }
     }
 }
 
-impl ScrollAxis {
-    pub const BLOCK: &str = "block";
-    pub const INLINE: &str = "inline";
-    pub const X: &str = "x";
-    pub const Y: &str = "y";
-}
-
-#[derive(Clone, Debug)]
-pub struct SecurePaymentConfirmationAvailability {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SecurePaymentConfirmationAvailability {
+    AVAILABLE,
+    UNAVAILABLE_UNKNOWN_REASON,
+    UNAVAILABLE_FEATURE_NOT_ENABLED,
+    UNAVAILABLE_NO_PERMISSION_POLICY,
+    UNAVAILABLE_NO_USER_VERIFYING_PLATFORM_AUTHENTICATOR,
 }
 impl FromVal for SecurePaymentConfirmationAvailability {
     fn from_val(v: &emlite::Val) -> Self {
-        SecurePaymentConfirmationAvailability { inner: v.clone() }
+        match v.as_::<&str>() {
+            "available" => Self::AVAILABLE,
+            "unavailable-unknown-reason" => Self::UNAVAILABLE_UNKNOWN_REASON,
+            "unavailable-feature-not-enabled" => Self::UNAVAILABLE_FEATURE_NOT_ENABLED,
+            "unavailable-no-permission-policy" => Self::UNAVAILABLE_NO_PERMISSION_POLICY,
+            "unavailable-no-user-verifying-platform-authenticator" => {
+                Self::UNAVAILABLE_NO_USER_VERIFYING_PLATFORM_AUTHENTICATOR
+            }
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SecurePaymentConfirmationAvailability {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SecurePaymentConfirmationAvailability {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SecurePaymentConfirmationAvailability> for emlite::Val {
     fn from(s: SecurePaymentConfirmationAvailability) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SecurePaymentConfirmationAvailability::AVAILABLE => emlite::Val::from("available"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_UNKNOWN_REASON => emlite::Val::from("unavailable-unknown-reason"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_FEATURE_NOT_ENABLED => emlite::Val::from("unavailable-feature-not-enabled"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_NO_PERMISSION_POLICY => emlite::Val::from("unavailable-no-permission-policy"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_NO_USER_VERIFYING_PLATFORM_AUTHENTICATOR => emlite::Val::from("unavailable-no-user-verifying-platform-authenticator"),
+         }
     }
 }
 
-impl SecurePaymentConfirmationAvailability {
-    pub const AVAILABLE: &str = "available";
-    pub const UNAVAILABLE_UNKNOWN_REASON: &str = "unavailable-unknown-reason";
-    pub const UNAVAILABLE_FEATURE_NOT_ENABLED: &str = "unavailable-feature-not-enabled";
-    pub const UNAVAILABLE_NO_PERMISSION_POLICY: &str = "unavailable-no-permission-policy";
-    pub const UNAVAILABLE_NO_USER_VERIFYING_PLATFORM_AUTHENTICATOR: &str =
-        "unavailable-no-user-verifying-platform-authenticator";
-}
-
-#[derive(Clone, Debug)]
-pub struct ParityType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ParityType {
+    NONE,
+    EVEN,
+    ODD,
 }
 impl FromVal for ParityType {
     fn from_val(v: &emlite::Val) -> Self {
-        ParityType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "even" => Self::EVEN,
+            "odd" => Self::ODD,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ParityType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ParityType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ParityType> for emlite::Val {
     fn from(s: ParityType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ParityType::NONE => emlite::Val::from("none"),
+            ParityType::EVEN => emlite::Val::from("even"),
+            ParityType::ODD => emlite::Val::from("odd"),
+        }
     }
 }
 
-impl ParityType {
-    pub const NONE: &str = "none";
-    pub const EVEN: &str = "even";
-    pub const ODD: &str = "odd";
-}
-
-#[derive(Clone, Debug)]
-pub struct FlowControlType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum FlowControlType {
+    NONE,
+    HARDWARE,
 }
 impl FromVal for FlowControlType {
     fn from_val(v: &emlite::Val) -> Self {
-        FlowControlType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "hardware" => Self::HARDWARE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for FlowControlType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for FlowControlType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<FlowControlType> for emlite::Val {
     fn from(s: FlowControlType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            FlowControlType::NONE => emlite::Val::from("none"),
+            FlowControlType::HARDWARE => emlite::Val::from("hardware"),
+        }
     }
 }
 
-impl FlowControlType {
-    pub const NONE: &str = "none";
-    pub const HARDWARE: &str = "hardware";
-}
-
-#[derive(Clone, Debug)]
-pub struct ServiceWorkerState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ServiceWorkerState {
+    PARSED,
+    INSTALLING,
+    INSTALLED,
+    ACTIVATING,
+    ACTIVATED,
+    REDUNDANT,
 }
 impl FromVal for ServiceWorkerState {
     fn from_val(v: &emlite::Val) -> Self {
-        ServiceWorkerState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "parsed" => Self::PARSED,
+            "installing" => Self::INSTALLING,
+            "installed" => Self::INSTALLED,
+            "activating" => Self::ACTIVATING,
+            "activated" => Self::ACTIVATED,
+            "redundant" => Self::REDUNDANT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ServiceWorkerState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ServiceWorkerState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ServiceWorkerState> for emlite::Val {
     fn from(s: ServiceWorkerState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ServiceWorkerState::PARSED => emlite::Val::from("parsed"),
+            ServiceWorkerState::INSTALLING => emlite::Val::from("installing"),
+            ServiceWorkerState::INSTALLED => emlite::Val::from("installed"),
+            ServiceWorkerState::ACTIVATING => emlite::Val::from("activating"),
+            ServiceWorkerState::ACTIVATED => emlite::Val::from("activated"),
+            ServiceWorkerState::REDUNDANT => emlite::Val::from("redundant"),
+        }
     }
 }
 
-impl ServiceWorkerState {
-    pub const PARSED: &str = "parsed";
-    pub const INSTALLING: &str = "installing";
-    pub const INSTALLED: &str = "installed";
-    pub const ACTIVATING: &str = "activating";
-    pub const ACTIVATED: &str = "activated";
-    pub const REDUNDANT: &str = "redundant";
-}
-
-#[derive(Clone, Debug)]
-pub struct ServiceWorkerUpdateViaCache {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ServiceWorkerUpdateViaCache {
+    IMPORTS,
+    ALL,
+    NONE,
 }
 impl FromVal for ServiceWorkerUpdateViaCache {
     fn from_val(v: &emlite::Val) -> Self {
-        ServiceWorkerUpdateViaCache { inner: v.clone() }
+        match v.as_::<&str>() {
+            "imports" => Self::IMPORTS,
+            "all" => Self::ALL,
+            "none" => Self::NONE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ServiceWorkerUpdateViaCache {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ServiceWorkerUpdateViaCache {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ServiceWorkerUpdateViaCache> for emlite::Val {
     fn from(s: ServiceWorkerUpdateViaCache) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ServiceWorkerUpdateViaCache::IMPORTS => emlite::Val::from("imports"),
+            ServiceWorkerUpdateViaCache::ALL => emlite::Val::from("all"),
+            ServiceWorkerUpdateViaCache::NONE => emlite::Val::from("none"),
+        }
     }
 }
 
-impl ServiceWorkerUpdateViaCache {
-    pub const IMPORTS: &str = "imports";
-    pub const ALL: &str = "all";
-    pub const NONE: &str = "none";
-}
-
-#[derive(Clone, Debug)]
-pub struct FrameType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum FrameType {
+    AUXILIARY,
+    TOP_LEVEL,
+    NESTED,
+    NONE,
 }
 impl FromVal for FrameType {
     fn from_val(v: &emlite::Val) -> Self {
-        FrameType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "auxiliary" => Self::AUXILIARY,
+            "top-level" => Self::TOP_LEVEL,
+            "nested" => Self::NESTED,
+            "none" => Self::NONE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for FrameType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for FrameType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<FrameType> for emlite::Val {
     fn from(s: FrameType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            FrameType::AUXILIARY => emlite::Val::from("auxiliary"),
+            FrameType::TOP_LEVEL => emlite::Val::from("top-level"),
+            FrameType::NESTED => emlite::Val::from("nested"),
+            FrameType::NONE => emlite::Val::from("none"),
+        }
     }
 }
 
-impl FrameType {
-    pub const AUXILIARY: &str = "auxiliary";
-    pub const TOP_LEVEL: &str = "top-level";
-    pub const NESTED: &str = "nested";
-    pub const NONE: &str = "none";
-}
-
-#[derive(Clone, Debug)]
-pub struct ClientType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ClientType {
+    WINDOW,
+    WORKER,
+    SHAREDWORKER,
+    ALL,
 }
 impl FromVal for ClientType {
     fn from_val(v: &emlite::Val) -> Self {
-        ClientType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "window" => Self::WINDOW,
+            "worker" => Self::WORKER,
+            "sharedworker" => Self::SHAREDWORKER,
+            "all" => Self::ALL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ClientType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ClientType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ClientType> for emlite::Val {
     fn from(s: ClientType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ClientType::WINDOW => emlite::Val::from("window"),
+            ClientType::WORKER => emlite::Val::from("worker"),
+            ClientType::SHAREDWORKER => emlite::Val::from("sharedworker"),
+            ClientType::ALL => emlite::Val::from("all"),
+        }
     }
 }
 
-impl ClientType {
-    pub const WINDOW: &str = "window";
-    pub const WORKER: &str = "worker";
-    pub const SHAREDWORKER: &str = "sharedworker";
-    pub const ALL: &str = "all";
-}
-
-#[derive(Clone, Debug)]
-pub struct RunningStatus {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RunningStatus {
+    RUNNING,
+    NOT_RUNNING,
 }
 impl FromVal for RunningStatus {
     fn from_val(v: &emlite::Val) -> Self {
-        RunningStatus { inner: v.clone() }
+        match v.as_::<&str>() {
+            "running" => Self::RUNNING,
+            "not-running" => Self::NOT_RUNNING,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RunningStatus {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RunningStatus {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RunningStatus> for emlite::Val {
     fn from(s: RunningStatus) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RunningStatus::RUNNING => emlite::Val::from("running"),
+            RunningStatus::NOT_RUNNING => emlite::Val::from("not-running"),
+        }
     }
 }
 
-impl RunningStatus {
-    pub const RUNNING: &str = "running";
-    pub const NOT_RUNNING: &str = "not-running";
-}
-
-#[derive(Clone, Debug)]
-pub struct RouterSourceEnum {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RouterSourceEnum {
+    CACHE,
+    FETCH_EVENT,
+    NETWORK,
+    RACE_NETWORK_AND_FETCH_HANDLER,
 }
 impl FromVal for RouterSourceEnum {
     fn from_val(v: &emlite::Val) -> Self {
-        RouterSourceEnum { inner: v.clone() }
+        match v.as_::<&str>() {
+            "cache" => Self::CACHE,
+            "fetch-event" => Self::FETCH_EVENT,
+            "network" => Self::NETWORK,
+            "race-network-and-fetch-handler" => Self::RACE_NETWORK_AND_FETCH_HANDLER,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RouterSourceEnum {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RouterSourceEnum {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RouterSourceEnum> for emlite::Val {
     fn from(s: RouterSourceEnum) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RouterSourceEnum::CACHE => emlite::Val::from("cache"),
+            RouterSourceEnum::FETCH_EVENT => emlite::Val::from("fetch-event"),
+            RouterSourceEnum::NETWORK => emlite::Val::from("network"),
+            RouterSourceEnum::RACE_NETWORK_AND_FETCH_HANDLER => {
+                emlite::Val::from("race-network-and-fetch-handler")
+            }
+        }
     }
 }
 
-impl RouterSourceEnum {
-    pub const CACHE: &str = "cache";
-    pub const FETCH_EVENT: &str = "fetch-event";
-    pub const NETWORK: &str = "network";
-    pub const RACE_NETWORK_AND_FETCH_HANDLER: &str = "race-network-and-fetch-handler";
-}
-
-#[derive(Clone, Debug)]
-pub struct LandmarkType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum LandmarkType {
+    MOUTH,
+    EYE,
+    NOSE,
 }
 impl FromVal for LandmarkType {
     fn from_val(v: &emlite::Val) -> Self {
-        LandmarkType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "mouth" => Self::MOUTH,
+            "eye" => Self::EYE,
+            "nose" => Self::NOSE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for LandmarkType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for LandmarkType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<LandmarkType> for emlite::Val {
     fn from(s: LandmarkType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            LandmarkType::MOUTH => emlite::Val::from("mouth"),
+            LandmarkType::EYE => emlite::Val::from("eye"),
+            LandmarkType::NOSE => emlite::Val::from("nose"),
+        }
     }
 }
 
-impl LandmarkType {
-    pub const MOUTH: &str = "mouth";
-    pub const EYE: &str = "eye";
-    pub const NOSE: &str = "nose";
-}
-
-#[derive(Clone, Debug)]
-pub struct BarcodeFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum BarcodeFormat {
+    AZTEC,
+    CODE_128,
+    CODE_39,
+    CODE_93,
+    CODABAR,
+    DATA_MATRIX,
+    EAN_13,
+    EAN_8,
+    ITF,
+    PDF417,
+    QR_CODE,
+    UNKNOWN,
+    UPC_A,
+    UPC_E,
 }
 impl FromVal for BarcodeFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        BarcodeFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "aztec" => Self::AZTEC,
+            "code_128" => Self::CODE_128,
+            "code_39" => Self::CODE_39,
+            "code_93" => Self::CODE_93,
+            "codabar" => Self::CODABAR,
+            "data_matrix" => Self::DATA_MATRIX,
+            "ean_13" => Self::EAN_13,
+            "ean_8" => Self::EAN_8,
+            "itf" => Self::ITF,
+            "pdf417" => Self::PDF417,
+            "qr_code" => Self::QR_CODE,
+            "unknown" => Self::UNKNOWN,
+            "upc_a" => Self::UPC_A,
+            "upc_e" => Self::UPC_E,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for BarcodeFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for BarcodeFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<BarcodeFormat> for emlite::Val {
     fn from(s: BarcodeFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            BarcodeFormat::AZTEC => emlite::Val::from("aztec"),
+            BarcodeFormat::CODE_128 => emlite::Val::from("code_128"),
+            BarcodeFormat::CODE_39 => emlite::Val::from("code_39"),
+            BarcodeFormat::CODE_93 => emlite::Val::from("code_93"),
+            BarcodeFormat::CODABAR => emlite::Val::from("codabar"),
+            BarcodeFormat::DATA_MATRIX => emlite::Val::from("data_matrix"),
+            BarcodeFormat::EAN_13 => emlite::Val::from("ean_13"),
+            BarcodeFormat::EAN_8 => emlite::Val::from("ean_8"),
+            BarcodeFormat::ITF => emlite::Val::from("itf"),
+            BarcodeFormat::PDF417 => emlite::Val::from("pdf417"),
+            BarcodeFormat::QR_CODE => emlite::Val::from("qr_code"),
+            BarcodeFormat::UNKNOWN => emlite::Val::from("unknown"),
+            BarcodeFormat::UPC_A => emlite::Val::from("upc_a"),
+            BarcodeFormat::UPC_E => emlite::Val::from("upc_e"),
+        }
     }
 }
 
-impl BarcodeFormat {
-    pub const AZTEC: &str = "aztec";
-    pub const CODE_128: &str = "code_128";
-    pub const CODE_39: &str = "code_39";
-    pub const CODE_93: &str = "code_93";
-    pub const CODABAR: &str = "codabar";
-    pub const DATA_MATRIX: &str = "data_matrix";
-    pub const EAN_13: &str = "ean_13";
-    pub const EAN_8: &str = "ean_8";
-    pub const ITF: &str = "itf";
-    pub const PDF417: &str = "pdf417";
-    pub const QR_CODE: &str = "qr_code";
-    pub const UNKNOWN: &str = "unknown";
-    pub const UPC_A: &str = "upc_a";
-    pub const UPC_E: &str = "upc_e";
-}
-
-#[derive(Clone, Debug)]
-pub struct SpeechRecognitionErrorCode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SpeechRecognitionErrorCode {
+    NO_SPEECH,
+    ABORTED,
+    AUDIO_CAPTURE,
+    NETWORK,
+    NOT_ALLOWED,
+    SERVICE_NOT_ALLOWED,
+    LANGUAGE_NOT_SUPPORTED,
+    PHRASES_NOT_SUPPORTED,
 }
 impl FromVal for SpeechRecognitionErrorCode {
     fn from_val(v: &emlite::Val) -> Self {
-        SpeechRecognitionErrorCode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "no-speech" => Self::NO_SPEECH,
+            "aborted" => Self::ABORTED,
+            "audio-capture" => Self::AUDIO_CAPTURE,
+            "network" => Self::NETWORK,
+            "not-allowed" => Self::NOT_ALLOWED,
+            "service-not-allowed" => Self::SERVICE_NOT_ALLOWED,
+            "language-not-supported" => Self::LANGUAGE_NOT_SUPPORTED,
+            "phrases-not-supported" => Self::PHRASES_NOT_SUPPORTED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SpeechRecognitionErrorCode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SpeechRecognitionErrorCode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SpeechRecognitionErrorCode> for emlite::Val {
     fn from(s: SpeechRecognitionErrorCode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SpeechRecognitionErrorCode::NO_SPEECH => emlite::Val::from("no-speech"),
+            SpeechRecognitionErrorCode::ABORTED => emlite::Val::from("aborted"),
+            SpeechRecognitionErrorCode::AUDIO_CAPTURE => emlite::Val::from("audio-capture"),
+            SpeechRecognitionErrorCode::NETWORK => emlite::Val::from("network"),
+            SpeechRecognitionErrorCode::NOT_ALLOWED => emlite::Val::from("not-allowed"),
+            SpeechRecognitionErrorCode::SERVICE_NOT_ALLOWED => {
+                emlite::Val::from("service-not-allowed")
+            }
+            SpeechRecognitionErrorCode::LANGUAGE_NOT_SUPPORTED => {
+                emlite::Val::from("language-not-supported")
+            }
+            SpeechRecognitionErrorCode::PHRASES_NOT_SUPPORTED => {
+                emlite::Val::from("phrases-not-supported")
+            }
+        }
     }
 }
 
-impl SpeechRecognitionErrorCode {
-    pub const NO_SPEECH: &str = "no-speech";
-    pub const ABORTED: &str = "aborted";
-    pub const AUDIO_CAPTURE: &str = "audio-capture";
-    pub const NETWORK: &str = "network";
-    pub const NOT_ALLOWED: &str = "not-allowed";
-    pub const SERVICE_NOT_ALLOWED: &str = "service-not-allowed";
-    pub const LANGUAGE_NOT_SUPPORTED: &str = "language-not-supported";
-    pub const PHRASES_NOT_SUPPORTED: &str = "phrases-not-supported";
-}
-
-#[derive(Clone, Debug)]
-pub struct AvailabilityStatus {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AvailabilityStatus {
+    UNAVAILABLE,
+    DOWNLOADABLE,
+    DOWNLOADING,
+    AVAILABLE,
 }
 impl FromVal for AvailabilityStatus {
     fn from_val(v: &emlite::Val) -> Self {
-        AvailabilityStatus { inner: v.clone() }
+        match v.as_::<&str>() {
+            "unavailable" => Self::UNAVAILABLE,
+            "downloadable" => Self::DOWNLOADABLE,
+            "downloading" => Self::DOWNLOADING,
+            "available" => Self::AVAILABLE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AvailabilityStatus {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AvailabilityStatus {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AvailabilityStatus> for emlite::Val {
     fn from(s: AvailabilityStatus) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AvailabilityStatus::UNAVAILABLE => emlite::Val::from("unavailable"),
+            AvailabilityStatus::DOWNLOADABLE => emlite::Val::from("downloadable"),
+            AvailabilityStatus::DOWNLOADING => emlite::Val::from("downloading"),
+            AvailabilityStatus::AVAILABLE => emlite::Val::from("available"),
+        }
     }
 }
 
-impl AvailabilityStatus {
-    pub const UNAVAILABLE: &str = "unavailable";
-    pub const DOWNLOADABLE: &str = "downloadable";
-    pub const DOWNLOADING: &str = "downloading";
-    pub const AVAILABLE: &str = "available";
-}
-
-#[derive(Clone, Debug)]
-pub struct SpeechSynthesisErrorCode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SpeechSynthesisErrorCode {
+    CANCELED,
+    INTERRUPTED,
+    AUDIO_BUSY,
+    AUDIO_HARDWARE,
+    NETWORK,
+    SYNTHESIS_UNAVAILABLE,
+    SYNTHESIS_FAILED,
+    LANGUAGE_UNAVAILABLE,
+    VOICE_UNAVAILABLE,
+    TEXT_TOO_LONG,
+    INVALID_ARGUMENT,
+    NOT_ALLOWED,
 }
 impl FromVal for SpeechSynthesisErrorCode {
     fn from_val(v: &emlite::Val) -> Self {
-        SpeechSynthesisErrorCode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "canceled" => Self::CANCELED,
+            "interrupted" => Self::INTERRUPTED,
+            "audio-busy" => Self::AUDIO_BUSY,
+            "audio-hardware" => Self::AUDIO_HARDWARE,
+            "network" => Self::NETWORK,
+            "synthesis-unavailable" => Self::SYNTHESIS_UNAVAILABLE,
+            "synthesis-failed" => Self::SYNTHESIS_FAILED,
+            "language-unavailable" => Self::LANGUAGE_UNAVAILABLE,
+            "voice-unavailable" => Self::VOICE_UNAVAILABLE,
+            "text-too-long" => Self::TEXT_TOO_LONG,
+            "invalid-argument" => Self::INVALID_ARGUMENT,
+            "not-allowed" => Self::NOT_ALLOWED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SpeechSynthesisErrorCode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SpeechSynthesisErrorCode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SpeechSynthesisErrorCode> for emlite::Val {
     fn from(s: SpeechSynthesisErrorCode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SpeechSynthesisErrorCode::CANCELED => emlite::Val::from("canceled"),
+            SpeechSynthesisErrorCode::INTERRUPTED => emlite::Val::from("interrupted"),
+            SpeechSynthesisErrorCode::AUDIO_BUSY => emlite::Val::from("audio-busy"),
+            SpeechSynthesisErrorCode::AUDIO_HARDWARE => emlite::Val::from("audio-hardware"),
+            SpeechSynthesisErrorCode::NETWORK => emlite::Val::from("network"),
+            SpeechSynthesisErrorCode::SYNTHESIS_UNAVAILABLE => {
+                emlite::Val::from("synthesis-unavailable")
+            }
+            SpeechSynthesisErrorCode::SYNTHESIS_FAILED => emlite::Val::from("synthesis-failed"),
+            SpeechSynthesisErrorCode::LANGUAGE_UNAVAILABLE => {
+                emlite::Val::from("language-unavailable")
+            }
+            SpeechSynthesisErrorCode::VOICE_UNAVAILABLE => emlite::Val::from("voice-unavailable"),
+            SpeechSynthesisErrorCode::TEXT_TOO_LONG => emlite::Val::from("text-too-long"),
+            SpeechSynthesisErrorCode::INVALID_ARGUMENT => emlite::Val::from("invalid-argument"),
+            SpeechSynthesisErrorCode::NOT_ALLOWED => emlite::Val::from("not-allowed"),
+        }
     }
 }
 
-impl SpeechSynthesisErrorCode {
-    pub const CANCELED: &str = "canceled";
-    pub const INTERRUPTED: &str = "interrupted";
-    pub const AUDIO_BUSY: &str = "audio-busy";
-    pub const AUDIO_HARDWARE: &str = "audio-hardware";
-    pub const NETWORK: &str = "network";
-    pub const SYNTHESIS_UNAVAILABLE: &str = "synthesis-unavailable";
-    pub const SYNTHESIS_FAILED: &str = "synthesis-failed";
-    pub const LANGUAGE_UNAVAILABLE: &str = "language-unavailable";
-    pub const VOICE_UNAVAILABLE: &str = "voice-unavailable";
-    pub const TEXT_TOO_LONG: &str = "text-too-long";
-    pub const INVALID_ARGUMENT: &str = "invalid-argument";
-    pub const NOT_ALLOWED: &str = "not-allowed";
-}
-
-#[derive(Clone, Debug)]
-pub struct ReadableStreamReaderMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ReadableStreamReaderMode {
+    BYOB,
 }
 impl FromVal for ReadableStreamReaderMode {
     fn from_val(v: &emlite::Val) -> Self {
-        ReadableStreamReaderMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "byob" => Self::BYOB,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ReadableStreamReaderMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ReadableStreamReaderMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ReadableStreamReaderMode> for emlite::Val {
     fn from(s: ReadableStreamReaderMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ReadableStreamReaderMode::BYOB => emlite::Val::from("byob"),
+        }
     }
 }
 
-impl ReadableStreamReaderMode {
-    pub const BYOB: &str = "byob";
-}
-
-#[derive(Clone, Debug)]
-pub struct ReadableStreamType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ReadableStreamType {
+    BYTES,
 }
 impl FromVal for ReadableStreamType {
     fn from_val(v: &emlite::Val) -> Self {
-        ReadableStreamType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "bytes" => Self::BYTES,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ReadableStreamType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ReadableStreamType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ReadableStreamType> for emlite::Val {
     fn from(s: ReadableStreamType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ReadableStreamType::BYTES => emlite::Val::from("bytes"),
+        }
     }
 }
 
-impl ReadableStreamType {
-    pub const BYTES: &str = "bytes";
-}
-
-#[derive(Clone, Debug)]
-pub struct TouchType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum TouchType {
+    DIRECT,
+    STYLUS,
 }
 impl FromVal for TouchType {
     fn from_val(v: &emlite::Val) -> Self {
-        TouchType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "direct" => Self::DIRECT,
+            "stylus" => Self::STYLUS,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for TouchType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for TouchType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<TouchType> for emlite::Val {
     fn from(s: TouchType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            TouchType::DIRECT => emlite::Val::from("direct"),
+            TouchType::STYLUS => emlite::Val::from("stylus"),
+        }
     }
 }
 
-impl TouchType {
-    pub const DIRECT: &str = "direct";
-    pub const STYLUS: &str = "stylus";
-}
-
-#[derive(Clone, Debug)]
-pub struct RefreshPolicy {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RefreshPolicy {
+    NONE,
+    REFRESH,
 }
 impl FromVal for RefreshPolicy {
     fn from_val(v: &emlite::Val) -> Self {
-        RefreshPolicy { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "refresh" => Self::REFRESH,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RefreshPolicy {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RefreshPolicy {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RefreshPolicy> for emlite::Val {
     fn from(s: RefreshPolicy) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RefreshPolicy::NONE => emlite::Val::from("none"),
+            RefreshPolicy::REFRESH => emlite::Val::from("refresh"),
+        }
     }
 }
 
-impl RefreshPolicy {
-    pub const NONE: &str = "none";
-    pub const REFRESH: &str = "refresh";
-}
-
-#[derive(Clone, Debug)]
-pub struct TokenVersion {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum TokenVersion {
+    _1,
 }
 impl FromVal for TokenVersion {
     fn from_val(v: &emlite::Val) -> Self {
-        TokenVersion { inner: v.clone() }
+        match v.as_::<&str>() {
+            "1" => Self::_1,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for TokenVersion {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for TokenVersion {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<TokenVersion> for emlite::Val {
     fn from(s: TokenVersion) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            TokenVersion::_1 => emlite::Val::from("1"),
+        }
     }
 }
 
-impl TokenVersion {
-    pub const _1: &str = "1";
-}
-
-#[derive(Clone, Debug)]
-pub struct OperationType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum OperationType {
+    TOKEN_REQUEST,
+    SEND_REDEMPTION_RECORD,
+    TOKEN_REDEMPTION,
 }
 impl FromVal for OperationType {
     fn from_val(v: &emlite::Val) -> Self {
-        OperationType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "token-request" => Self::TOKEN_REQUEST,
+            "send-redemption-record" => Self::SEND_REDEMPTION_RECORD,
+            "token-redemption" => Self::TOKEN_REDEMPTION,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for OperationType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for OperationType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<OperationType> for emlite::Val {
     fn from(s: OperationType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            OperationType::TOKEN_REQUEST => emlite::Val::from("token-request"),
+            OperationType::SEND_REDEMPTION_RECORD => emlite::Val::from("send-redemption-record"),
+            OperationType::TOKEN_REDEMPTION => emlite::Val::from("token-redemption"),
+        }
     }
 }
 
-impl OperationType {
-    pub const TOKEN_REQUEST: &str = "token-request";
-    pub const SEND_REDEMPTION_RECORD: &str = "send-redemption-record";
-    pub const TOKEN_REDEMPTION: &str = "token-redemption";
-}
-
-#[derive(Clone, Debug)]
-pub struct KAnonStatus {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum KAnonStatus {
+    PASSED_AND_ENFORCED,
+    PASSED_NOT_ENFORCED,
+    BELOW_THRESHOLD,
+    NOT_CALCULATED,
 }
 impl FromVal for KAnonStatus {
     fn from_val(v: &emlite::Val) -> Self {
-        KAnonStatus { inner: v.clone() }
+        match v.as_::<&str>() {
+            "passedAndEnforced" => Self::PASSED_AND_ENFORCED,
+            "passedNotEnforced" => Self::PASSED_NOT_ENFORCED,
+            "belowThreshold" => Self::BELOW_THRESHOLD,
+            "notCalculated" => Self::NOT_CALCULATED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for KAnonStatus {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for KAnonStatus {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<KAnonStatus> for emlite::Val {
     fn from(s: KAnonStatus) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            KAnonStatus::PASSED_AND_ENFORCED => emlite::Val::from("passedAndEnforced"),
+            KAnonStatus::PASSED_NOT_ENFORCED => emlite::Val::from("passedNotEnforced"),
+            KAnonStatus::BELOW_THRESHOLD => emlite::Val::from("belowThreshold"),
+            KAnonStatus::NOT_CALCULATED => emlite::Val::from("notCalculated"),
+        }
     }
 }
 
-impl KAnonStatus {
-    pub const PASSED_AND_ENFORCED: &str = "passedAndEnforced";
-    pub const PASSED_NOT_ENFORCED: &str = "passedNotEnforced";
-    pub const BELOW_THRESHOLD: &str = "belowThreshold";
-    pub const NOT_CALCULATED: &str = "notCalculated";
-}
-
-#[derive(Clone, Debug)]
-pub struct ImportExportKind {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ImportExportKind {
+    FUNCTION,
+    TABLE,
+    MEMORY,
+    GLOBAL,
 }
 impl FromVal for ImportExportKind {
     fn from_val(v: &emlite::Val) -> Self {
-        ImportExportKind { inner: v.clone() }
+        match v.as_::<&str>() {
+            "function" => Self::FUNCTION,
+            "table" => Self::TABLE,
+            "memory" => Self::MEMORY,
+            "global" => Self::GLOBAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ImportExportKind {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ImportExportKind {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ImportExportKind> for emlite::Val {
     fn from(s: ImportExportKind) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ImportExportKind::FUNCTION => emlite::Val::from("function"),
+            ImportExportKind::TABLE => emlite::Val::from("table"),
+            ImportExportKind::MEMORY => emlite::Val::from("memory"),
+            ImportExportKind::GLOBAL => emlite::Val::from("global"),
+        }
     }
 }
 
-impl ImportExportKind {
-    pub const FUNCTION: &str = "function";
-    pub const TABLE: &str = "table";
-    pub const MEMORY: &str = "memory";
-    pub const GLOBAL: &str = "global";
-}
-
-#[derive(Clone, Debug)]
-pub struct TableKind {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum TableKind {
+    EXTERNREF,
+    ANYFUNC,
 }
 impl FromVal for TableKind {
     fn from_val(v: &emlite::Val) -> Self {
-        TableKind { inner: v.clone() }
+        match v.as_::<&str>() {
+            "externref" => Self::EXTERNREF,
+            "anyfunc" => Self::ANYFUNC,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for TableKind {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for TableKind {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<TableKind> for emlite::Val {
     fn from(s: TableKind) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            TableKind::EXTERNREF => emlite::Val::from("externref"),
+            TableKind::ANYFUNC => emlite::Val::from("anyfunc"),
+        }
     }
 }
 
-impl TableKind {
-    pub const EXTERNREF: &str = "externref";
-    pub const ANYFUNC: &str = "anyfunc";
-}
-
-#[derive(Clone, Debug)]
-pub struct ValueType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ValueType {
+    I32_,
+    I64_,
+    F32_,
+    F64_,
+    V128,
+    EXTERNREF,
+    ANYFUNC,
 }
 impl FromVal for ValueType {
     fn from_val(v: &emlite::Val) -> Self {
-        ValueType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "i32" => Self::I32_,
+            "i64" => Self::I64_,
+            "f32" => Self::F32_,
+            "f64" => Self::F64_,
+            "v128" => Self::V128,
+            "externref" => Self::EXTERNREF,
+            "anyfunc" => Self::ANYFUNC,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ValueType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ValueType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ValueType> for emlite::Val {
     fn from(s: ValueType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ValueType::I32_ => emlite::Val::from("i32"),
+            ValueType::I64_ => emlite::Val::from("i64"),
+            ValueType::F32_ => emlite::Val::from("f32"),
+            ValueType::F64_ => emlite::Val::from("f64"),
+            ValueType::V128 => emlite::Val::from("v128"),
+            ValueType::EXTERNREF => emlite::Val::from("externref"),
+            ValueType::ANYFUNC => emlite::Val::from("anyfunc"),
+        }
     }
 }
 
-impl ValueType {
-    pub const I32_: &str = "i32";
-    pub const I64_: &str = "i64";
-    pub const F32_: &str = "f32";
-    pub const F64_: &str = "f64";
-    pub const V128: &str = "v128";
-    pub const EXTERNREF: &str = "externref";
-    pub const ANYFUNC: &str = "anyfunc";
-}
-
-#[derive(Clone, Debug)]
-pub struct IterationCompositeOperation {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum IterationCompositeOperation {
+    REPLACE,
+    ACCUMULATE,
 }
 impl FromVal for IterationCompositeOperation {
     fn from_val(v: &emlite::Val) -> Self {
-        IterationCompositeOperation { inner: v.clone() }
+        match v.as_::<&str>() {
+            "replace" => Self::REPLACE,
+            "accumulate" => Self::ACCUMULATE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for IterationCompositeOperation {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for IterationCompositeOperation {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<IterationCompositeOperation> for emlite::Val {
     fn from(s: IterationCompositeOperation) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            IterationCompositeOperation::REPLACE => emlite::Val::from("replace"),
+            IterationCompositeOperation::ACCUMULATE => emlite::Val::from("accumulate"),
+        }
     }
 }
 
-impl IterationCompositeOperation {
-    pub const REPLACE: &str = "replace";
-    pub const ACCUMULATE: &str = "accumulate";
-}
-
-#[derive(Clone, Debug)]
-pub struct AnimationTriggerBehavior {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AnimationTriggerBehavior {
+    ONCE,
+    REPEAT,
+    ALTERNATE,
+    STATE,
 }
 impl FromVal for AnimationTriggerBehavior {
     fn from_val(v: &emlite::Val) -> Self {
-        AnimationTriggerBehavior { inner: v.clone() }
+        match v.as_::<&str>() {
+            "once" => Self::ONCE,
+            "repeat" => Self::REPEAT,
+            "alternate" => Self::ALTERNATE,
+            "state" => Self::STATE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AnimationTriggerBehavior {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AnimationTriggerBehavior {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AnimationTriggerBehavior> for emlite::Val {
     fn from(s: AnimationTriggerBehavior) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AnimationTriggerBehavior::ONCE => emlite::Val::from("once"),
+            AnimationTriggerBehavior::REPEAT => emlite::Val::from("repeat"),
+            AnimationTriggerBehavior::ALTERNATE => emlite::Val::from("alternate"),
+            AnimationTriggerBehavior::STATE => emlite::Val::from("state"),
+        }
     }
 }
 
-impl AnimationTriggerBehavior {
-    pub const ONCE: &str = "once";
-    pub const REPEAT: &str = "repeat";
-    pub const ALTERNATE: &str = "alternate";
-    pub const STATE: &str = "state";
-}
-
-#[derive(Clone, Debug)]
-pub struct AnimationPlayState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AnimationPlayState {
+    IDLE,
+    RUNNING,
+    PAUSED,
+    FINISHED,
 }
 impl FromVal for AnimationPlayState {
     fn from_val(v: &emlite::Val) -> Self {
-        AnimationPlayState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "idle" => Self::IDLE,
+            "running" => Self::RUNNING,
+            "paused" => Self::PAUSED,
+            "finished" => Self::FINISHED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AnimationPlayState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AnimationPlayState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AnimationPlayState> for emlite::Val {
     fn from(s: AnimationPlayState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AnimationPlayState::IDLE => emlite::Val::from("idle"),
+            AnimationPlayState::RUNNING => emlite::Val::from("running"),
+            AnimationPlayState::PAUSED => emlite::Val::from("paused"),
+            AnimationPlayState::FINISHED => emlite::Val::from("finished"),
+        }
     }
 }
 
-impl AnimationPlayState {
-    pub const IDLE: &str = "idle";
-    pub const RUNNING: &str = "running";
-    pub const PAUSED: &str = "paused";
-    pub const FINISHED: &str = "finished";
-}
-
-#[derive(Clone, Debug)]
-pub struct AnimationReplaceState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AnimationReplaceState {
+    ACTIVE,
+    REMOVED,
+    PERSISTED,
 }
 impl FromVal for AnimationReplaceState {
     fn from_val(v: &emlite::Val) -> Self {
-        AnimationReplaceState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "active" => Self::ACTIVE,
+            "removed" => Self::REMOVED,
+            "persisted" => Self::PERSISTED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AnimationReplaceState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AnimationReplaceState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AnimationReplaceState> for emlite::Val {
     fn from(s: AnimationReplaceState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AnimationReplaceState::ACTIVE => emlite::Val::from("active"),
+            AnimationReplaceState::REMOVED => emlite::Val::from("removed"),
+            AnimationReplaceState::PERSISTED => emlite::Val::from("persisted"),
+        }
     }
 }
 
-impl AnimationReplaceState {
-    pub const ACTIVE: &str = "active";
-    pub const REMOVED: &str = "removed";
-    pub const PERSISTED: &str = "persisted";
-}
-
-#[derive(Clone, Debug)]
-pub struct FillMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum FillMode {
+    NONE,
+    FORWARDS,
+    BACKWARDS,
+    BOTH,
+    AUTO,
 }
 impl FromVal for FillMode {
     fn from_val(v: &emlite::Val) -> Self {
-        FillMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "forwards" => Self::FORWARDS,
+            "backwards" => Self::BACKWARDS,
+            "both" => Self::BOTH,
+            "auto" => Self::AUTO,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for FillMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for FillMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<FillMode> for emlite::Val {
     fn from(s: FillMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            FillMode::NONE => emlite::Val::from("none"),
+            FillMode::FORWARDS => emlite::Val::from("forwards"),
+            FillMode::BACKWARDS => emlite::Val::from("backwards"),
+            FillMode::BOTH => emlite::Val::from("both"),
+            FillMode::AUTO => emlite::Val::from("auto"),
+        }
     }
 }
 
-impl FillMode {
-    pub const NONE: &str = "none";
-    pub const FORWARDS: &str = "forwards";
-    pub const BACKWARDS: &str = "backwards";
-    pub const BOTH: &str = "both";
-    pub const AUTO: &str = "auto";
-}
-
-#[derive(Clone, Debug)]
-pub struct PlaybackDirection {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PlaybackDirection {
+    NORMAL,
+    REVERSE,
+    ALTERNATE,
+    ALTERNATE_REVERSE,
 }
 impl FromVal for PlaybackDirection {
     fn from_val(v: &emlite::Val) -> Self {
-        PlaybackDirection { inner: v.clone() }
+        match v.as_::<&str>() {
+            "normal" => Self::NORMAL,
+            "reverse" => Self::REVERSE,
+            "alternate" => Self::ALTERNATE,
+            "alternate-reverse" => Self::ALTERNATE_REVERSE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PlaybackDirection {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PlaybackDirection {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PlaybackDirection> for emlite::Val {
     fn from(s: PlaybackDirection) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PlaybackDirection::NORMAL => emlite::Val::from("normal"),
+            PlaybackDirection::REVERSE => emlite::Val::from("reverse"),
+            PlaybackDirection::ALTERNATE => emlite::Val::from("alternate"),
+            PlaybackDirection::ALTERNATE_REVERSE => emlite::Val::from("alternate-reverse"),
+        }
     }
 }
 
-impl PlaybackDirection {
-    pub const NORMAL: &str = "normal";
-    pub const REVERSE: &str = "reverse";
-    pub const ALTERNATE: &str = "alternate";
-    pub const ALTERNATE_REVERSE: &str = "alternate-reverse";
-}
-
-#[derive(Clone, Debug)]
-pub struct CompositeOperation {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CompositeOperation {
+    REPLACE,
+    ADD,
+    ACCUMULATE,
 }
 impl FromVal for CompositeOperation {
     fn from_val(v: &emlite::Val) -> Self {
-        CompositeOperation { inner: v.clone() }
+        match v.as_::<&str>() {
+            "replace" => Self::REPLACE,
+            "add" => Self::ADD,
+            "accumulate" => Self::ACCUMULATE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CompositeOperation {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CompositeOperation {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CompositeOperation> for emlite::Val {
     fn from(s: CompositeOperation) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CompositeOperation::REPLACE => emlite::Val::from("replace"),
+            CompositeOperation::ADD => emlite::Val::from("add"),
+            CompositeOperation::ACCUMULATE => emlite::Val::from("accumulate"),
+        }
     }
 }
 
-impl CompositeOperation {
-    pub const REPLACE: &str = "replace";
-    pub const ADD: &str = "add";
-    pub const ACCUMULATE: &str = "accumulate";
-}
-
-#[derive(Clone, Debug)]
-pub struct CompositeOperationOrAuto {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CompositeOperationOrAuto {
+    REPLACE,
+    ADD,
+    ACCUMULATE,
+    AUTO,
 }
 impl FromVal for CompositeOperationOrAuto {
     fn from_val(v: &emlite::Val) -> Self {
-        CompositeOperationOrAuto { inner: v.clone() }
+        match v.as_::<&str>() {
+            "replace" => Self::REPLACE,
+            "add" => Self::ADD,
+            "accumulate" => Self::ACCUMULATE,
+            "auto" => Self::AUTO,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CompositeOperationOrAuto {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CompositeOperationOrAuto {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CompositeOperationOrAuto> for emlite::Val {
     fn from(s: CompositeOperationOrAuto) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CompositeOperationOrAuto::REPLACE => emlite::Val::from("replace"),
+            CompositeOperationOrAuto::ADD => emlite::Val::from("add"),
+            CompositeOperationOrAuto::ACCUMULATE => emlite::Val::from("accumulate"),
+            CompositeOperationOrAuto::AUTO => emlite::Val::from("auto"),
+        }
     }
 }
 
-impl CompositeOperationOrAuto {
-    pub const REPLACE: &str = "replace";
-    pub const ADD: &str = "add";
-    pub const ACCUMULATE: &str = "accumulate";
-    pub const AUTO: &str = "auto";
-}
-
-#[derive(Clone, Debug)]
-pub struct LockMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum LockMode {
+    SHARED,
+    EXCLUSIVE,
 }
 impl FromVal for LockMode {
     fn from_val(v: &emlite::Val) -> Self {
-        LockMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "shared" => Self::SHARED,
+            "exclusive" => Self::EXCLUSIVE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for LockMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for LockMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<LockMode> for emlite::Val {
     fn from(s: LockMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            LockMode::SHARED => emlite::Val::from("shared"),
+            LockMode::EXCLUSIVE => emlite::Val::from("exclusive"),
+        }
     }
 }
 
-impl LockMode {
-    pub const SHARED: &str = "shared";
-    pub const EXCLUSIVE: &str = "exclusive";
-}
-
-#[derive(Clone, Debug)]
-pub struct OTPCredentialTransportType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum OTPCredentialTransportType {
+    SMS,
 }
 impl FromVal for OTPCredentialTransportType {
     fn from_val(v: &emlite::Val) -> Self {
-        OTPCredentialTransportType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "sms" => Self::SMS,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for OTPCredentialTransportType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for OTPCredentialTransportType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<OTPCredentialTransportType> for emlite::Val {
     fn from(s: OTPCredentialTransportType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            OTPCredentialTransportType::SMS => emlite::Val::from("sms"),
+        }
     }
 }
 
-impl OTPCredentialTransportType {
-    pub const SMS: &str = "sms";
-}
-
-#[derive(Clone, Debug)]
-pub struct AudioContextState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AudioContextState {
+    SUSPENDED,
+    RUNNING,
+    CLOSED,
+    INTERRUPTED,
 }
 impl FromVal for AudioContextState {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioContextState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "suspended" => Self::SUSPENDED,
+            "running" => Self::RUNNING,
+            "closed" => Self::CLOSED,
+            "interrupted" => Self::INTERRUPTED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AudioContextState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AudioContextState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AudioContextState> for emlite::Val {
     fn from(s: AudioContextState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AudioContextState::SUSPENDED => emlite::Val::from("suspended"),
+            AudioContextState::RUNNING => emlite::Val::from("running"),
+            AudioContextState::CLOSED => emlite::Val::from("closed"),
+            AudioContextState::INTERRUPTED => emlite::Val::from("interrupted"),
+        }
     }
 }
 
-impl AudioContextState {
-    pub const SUSPENDED: &str = "suspended";
-    pub const RUNNING: &str = "running";
-    pub const CLOSED: &str = "closed";
-    pub const INTERRUPTED: &str = "interrupted";
-}
-
-#[derive(Clone, Debug)]
-pub struct AudioContextRenderSizeCategory {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AudioContextRenderSizeCategory {
+    DEFAULT,
+    HARDWARE,
 }
 impl FromVal for AudioContextRenderSizeCategory {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioContextRenderSizeCategory { inner: v.clone() }
+        match v.as_::<&str>() {
+            "default" => Self::DEFAULT,
+            "hardware" => Self::HARDWARE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AudioContextRenderSizeCategory {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AudioContextRenderSizeCategory {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AudioContextRenderSizeCategory> for emlite::Val {
     fn from(s: AudioContextRenderSizeCategory) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AudioContextRenderSizeCategory::DEFAULT => emlite::Val::from("default"),
+            AudioContextRenderSizeCategory::HARDWARE => emlite::Val::from("hardware"),
+        }
     }
 }
 
-impl AudioContextRenderSizeCategory {
-    pub const DEFAULT: &str = "default";
-    pub const HARDWARE: &str = "hardware";
-}
-
-#[derive(Clone, Debug)]
-pub struct AudioContextLatencyCategory {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AudioContextLatencyCategory {
+    BALANCED,
+    INTERACTIVE,
+    PLAYBACK,
 }
 impl FromVal for AudioContextLatencyCategory {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioContextLatencyCategory { inner: v.clone() }
+        match v.as_::<&str>() {
+            "balanced" => Self::BALANCED,
+            "interactive" => Self::INTERACTIVE,
+            "playback" => Self::PLAYBACK,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AudioContextLatencyCategory {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AudioContextLatencyCategory {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AudioContextLatencyCategory> for emlite::Val {
     fn from(s: AudioContextLatencyCategory) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AudioContextLatencyCategory::BALANCED => emlite::Val::from("balanced"),
+            AudioContextLatencyCategory::INTERACTIVE => emlite::Val::from("interactive"),
+            AudioContextLatencyCategory::PLAYBACK => emlite::Val::from("playback"),
+        }
     }
 }
 
-impl AudioContextLatencyCategory {
-    pub const BALANCED: &str = "balanced";
-    pub const INTERACTIVE: &str = "interactive";
-    pub const PLAYBACK: &str = "playback";
-}
-
-#[derive(Clone, Debug)]
-pub struct AudioSinkType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AudioSinkType {
+    NONE,
 }
 impl FromVal for AudioSinkType {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioSinkType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AudioSinkType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AudioSinkType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AudioSinkType> for emlite::Val {
     fn from(s: AudioSinkType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AudioSinkType::NONE => emlite::Val::from("none"),
+        }
     }
 }
 
-impl AudioSinkType {
-    pub const NONE: &str = "none";
-}
-
-#[derive(Clone, Debug)]
-pub struct ChannelCountMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ChannelCountMode {
+    MAX,
+    CLAMPED_MAX,
+    EXPLICIT,
 }
 impl FromVal for ChannelCountMode {
     fn from_val(v: &emlite::Val) -> Self {
-        ChannelCountMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "max" => Self::MAX,
+            "clamped-max" => Self::CLAMPED_MAX,
+            "explicit" => Self::EXPLICIT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ChannelCountMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ChannelCountMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ChannelCountMode> for emlite::Val {
     fn from(s: ChannelCountMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ChannelCountMode::MAX => emlite::Val::from("max"),
+            ChannelCountMode::CLAMPED_MAX => emlite::Val::from("clamped-max"),
+            ChannelCountMode::EXPLICIT => emlite::Val::from("explicit"),
+        }
     }
 }
 
-impl ChannelCountMode {
-    pub const MAX: &str = "max";
-    pub const CLAMPED_MAX: &str = "clamped-max";
-    pub const EXPLICIT: &str = "explicit";
-}
-
-#[derive(Clone, Debug)]
-pub struct ChannelInterpretation {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ChannelInterpretation {
+    SPEAKERS,
+    DISCRETE,
 }
 impl FromVal for ChannelInterpretation {
     fn from_val(v: &emlite::Val) -> Self {
-        ChannelInterpretation { inner: v.clone() }
+        match v.as_::<&str>() {
+            "speakers" => Self::SPEAKERS,
+            "discrete" => Self::DISCRETE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ChannelInterpretation {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ChannelInterpretation {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ChannelInterpretation> for emlite::Val {
     fn from(s: ChannelInterpretation) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ChannelInterpretation::SPEAKERS => emlite::Val::from("speakers"),
+            ChannelInterpretation::DISCRETE => emlite::Val::from("discrete"),
+        }
     }
 }
 
-impl ChannelInterpretation {
-    pub const SPEAKERS: &str = "speakers";
-    pub const DISCRETE: &str = "discrete";
-}
-
-#[derive(Clone, Debug)]
-pub struct AutomationRate {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AutomationRate {
+    A_RATE,
+    K_RATE,
 }
 impl FromVal for AutomationRate {
     fn from_val(v: &emlite::Val) -> Self {
-        AutomationRate { inner: v.clone() }
+        match v.as_::<&str>() {
+            "a-rate" => Self::A_RATE,
+            "k-rate" => Self::K_RATE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AutomationRate {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AutomationRate {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AutomationRate> for emlite::Val {
     fn from(s: AutomationRate) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AutomationRate::A_RATE => emlite::Val::from("a-rate"),
+            AutomationRate::K_RATE => emlite::Val::from("k-rate"),
+        }
     }
 }
 
-impl AutomationRate {
-    pub const A_RATE: &str = "a-rate";
-    pub const K_RATE: &str = "k-rate";
-}
-
-#[derive(Clone, Debug)]
-pub struct BiquadFilterType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum BiquadFilterType {
+    LOWPASS,
+    HIGHPASS,
+    BANDPASS,
+    LOWSHELF,
+    HIGHSHELF,
+    PEAKING,
+    NOTCH,
+    ALLPASS,
 }
 impl FromVal for BiquadFilterType {
     fn from_val(v: &emlite::Val) -> Self {
-        BiquadFilterType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "lowpass" => Self::LOWPASS,
+            "highpass" => Self::HIGHPASS,
+            "bandpass" => Self::BANDPASS,
+            "lowshelf" => Self::LOWSHELF,
+            "highshelf" => Self::HIGHSHELF,
+            "peaking" => Self::PEAKING,
+            "notch" => Self::NOTCH,
+            "allpass" => Self::ALLPASS,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for BiquadFilterType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for BiquadFilterType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<BiquadFilterType> for emlite::Val {
     fn from(s: BiquadFilterType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            BiquadFilterType::LOWPASS => emlite::Val::from("lowpass"),
+            BiquadFilterType::HIGHPASS => emlite::Val::from("highpass"),
+            BiquadFilterType::BANDPASS => emlite::Val::from("bandpass"),
+            BiquadFilterType::LOWSHELF => emlite::Val::from("lowshelf"),
+            BiquadFilterType::HIGHSHELF => emlite::Val::from("highshelf"),
+            BiquadFilterType::PEAKING => emlite::Val::from("peaking"),
+            BiquadFilterType::NOTCH => emlite::Val::from("notch"),
+            BiquadFilterType::ALLPASS => emlite::Val::from("allpass"),
+        }
     }
 }
 
-impl BiquadFilterType {
-    pub const LOWPASS: &str = "lowpass";
-    pub const HIGHPASS: &str = "highpass";
-    pub const BANDPASS: &str = "bandpass";
-    pub const LOWSHELF: &str = "lowshelf";
-    pub const HIGHSHELF: &str = "highshelf";
-    pub const PEAKING: &str = "peaking";
-    pub const NOTCH: &str = "notch";
-    pub const ALLPASS: &str = "allpass";
-}
-
-#[derive(Clone, Debug)]
-pub struct OscillatorType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum OscillatorType {
+    SINE,
+    SQUARE,
+    SAWTOOTH,
+    TRIANGLE,
+    CUSTOM,
 }
 impl FromVal for OscillatorType {
     fn from_val(v: &emlite::Val) -> Self {
-        OscillatorType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "sine" => Self::SINE,
+            "square" => Self::SQUARE,
+            "sawtooth" => Self::SAWTOOTH,
+            "triangle" => Self::TRIANGLE,
+            "custom" => Self::CUSTOM,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for OscillatorType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for OscillatorType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<OscillatorType> for emlite::Val {
     fn from(s: OscillatorType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            OscillatorType::SINE => emlite::Val::from("sine"),
+            OscillatorType::SQUARE => emlite::Val::from("square"),
+            OscillatorType::SAWTOOTH => emlite::Val::from("sawtooth"),
+            OscillatorType::TRIANGLE => emlite::Val::from("triangle"),
+            OscillatorType::CUSTOM => emlite::Val::from("custom"),
+        }
     }
 }
 
-impl OscillatorType {
-    pub const SINE: &str = "sine";
-    pub const SQUARE: &str = "square";
-    pub const SAWTOOTH: &str = "sawtooth";
-    pub const TRIANGLE: &str = "triangle";
-    pub const CUSTOM: &str = "custom";
-}
-
-#[derive(Clone, Debug)]
-pub struct PanningModelType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PanningModelType {
+    EQUALPOWER,
+    HRTF,
 }
 impl FromVal for PanningModelType {
     fn from_val(v: &emlite::Val) -> Self {
-        PanningModelType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "equalpower" => Self::EQUALPOWER,
+            "HRTF" => Self::HRTF,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PanningModelType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PanningModelType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PanningModelType> for emlite::Val {
     fn from(s: PanningModelType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PanningModelType::EQUALPOWER => emlite::Val::from("equalpower"),
+            PanningModelType::HRTF => emlite::Val::from("HRTF"),
+        }
     }
 }
 
-impl PanningModelType {
-    pub const EQUALPOWER: &str = "equalpower";
-    pub const HRTF: &str = "HRTF";
-}
-
-#[derive(Clone, Debug)]
-pub struct DistanceModelType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum DistanceModelType {
+    LINEAR,
+    INVERSE,
+    EXPONENTIAL,
 }
 impl FromVal for DistanceModelType {
     fn from_val(v: &emlite::Val) -> Self {
-        DistanceModelType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "linear" => Self::LINEAR,
+            "inverse" => Self::INVERSE,
+            "exponential" => Self::EXPONENTIAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for DistanceModelType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for DistanceModelType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<DistanceModelType> for emlite::Val {
     fn from(s: DistanceModelType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            DistanceModelType::LINEAR => emlite::Val::from("linear"),
+            DistanceModelType::INVERSE => emlite::Val::from("inverse"),
+            DistanceModelType::EXPONENTIAL => emlite::Val::from("exponential"),
+        }
     }
 }
 
-impl DistanceModelType {
-    pub const LINEAR: &str = "linear";
-    pub const INVERSE: &str = "inverse";
-    pub const EXPONENTIAL: &str = "exponential";
-}
-
-#[derive(Clone, Debug)]
-pub struct OverSampleType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum OverSampleType {
+    NONE,
+    _2X,
+    _4X,
 }
 impl FromVal for OverSampleType {
     fn from_val(v: &emlite::Val) -> Self {
-        OverSampleType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "2x" => Self::_2X,
+            "4x" => Self::_4X,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for OverSampleType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for OverSampleType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<OverSampleType> for emlite::Val {
     fn from(s: OverSampleType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            OverSampleType::NONE => emlite::Val::from("none"),
+            OverSampleType::_2X => emlite::Val::from("2x"),
+            OverSampleType::_4X => emlite::Val::from("4x"),
+        }
     }
 }
 
-impl OverSampleType {
-    pub const NONE: &str = "none";
-    pub const _2X: &str = "2x";
-    pub const _4X: &str = "4x";
-}
-
-#[derive(Clone, Debug)]
-pub struct AuthenticatorAttachment {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AuthenticatorAttachment {
+    PLATFORM,
+    CROSS_PLATFORM,
 }
 impl FromVal for AuthenticatorAttachment {
     fn from_val(v: &emlite::Val) -> Self {
-        AuthenticatorAttachment { inner: v.clone() }
+        match v.as_::<&str>() {
+            "platform" => Self::PLATFORM,
+            "cross-platform" => Self::CROSS_PLATFORM,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AuthenticatorAttachment {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AuthenticatorAttachment {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AuthenticatorAttachment> for emlite::Val {
     fn from(s: AuthenticatorAttachment) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AuthenticatorAttachment::PLATFORM => emlite::Val::from("platform"),
+            AuthenticatorAttachment::CROSS_PLATFORM => emlite::Val::from("cross-platform"),
+        }
     }
 }
 
-impl AuthenticatorAttachment {
-    pub const PLATFORM: &str = "platform";
-    pub const CROSS_PLATFORM: &str = "cross-platform";
-}
-
-#[derive(Clone, Debug)]
-pub struct ResidentKeyRequirement {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ResidentKeyRequirement {
+    DISCOURAGED,
+    PREFERRED,
+    REQUIRED,
 }
 impl FromVal for ResidentKeyRequirement {
     fn from_val(v: &emlite::Val) -> Self {
-        ResidentKeyRequirement { inner: v.clone() }
+        match v.as_::<&str>() {
+            "discouraged" => Self::DISCOURAGED,
+            "preferred" => Self::PREFERRED,
+            "required" => Self::REQUIRED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ResidentKeyRequirement {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ResidentKeyRequirement {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ResidentKeyRequirement> for emlite::Val {
     fn from(s: ResidentKeyRequirement) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ResidentKeyRequirement::DISCOURAGED => emlite::Val::from("discouraged"),
+            ResidentKeyRequirement::PREFERRED => emlite::Val::from("preferred"),
+            ResidentKeyRequirement::REQUIRED => emlite::Val::from("required"),
+        }
     }
 }
 
-impl ResidentKeyRequirement {
-    pub const DISCOURAGED: &str = "discouraged";
-    pub const PREFERRED: &str = "preferred";
-    pub const REQUIRED: &str = "required";
-}
-
-#[derive(Clone, Debug)]
-pub struct AttestationConveyancePreference {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AttestationConveyancePreference {
+    NONE,
+    INDIRECT,
+    DIRECT,
+    ENTERPRISE,
 }
 impl FromVal for AttestationConveyancePreference {
     fn from_val(v: &emlite::Val) -> Self {
-        AttestationConveyancePreference { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "indirect" => Self::INDIRECT,
+            "direct" => Self::DIRECT,
+            "enterprise" => Self::ENTERPRISE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AttestationConveyancePreference {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AttestationConveyancePreference {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AttestationConveyancePreference> for emlite::Val {
     fn from(s: AttestationConveyancePreference) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AttestationConveyancePreference::NONE => emlite::Val::from("none"),
+            AttestationConveyancePreference::INDIRECT => emlite::Val::from("indirect"),
+            AttestationConveyancePreference::DIRECT => emlite::Val::from("direct"),
+            AttestationConveyancePreference::ENTERPRISE => emlite::Val::from("enterprise"),
+        }
     }
 }
 
-impl AttestationConveyancePreference {
-    pub const NONE: &str = "none";
-    pub const INDIRECT: &str = "indirect";
-    pub const DIRECT: &str = "direct";
-    pub const ENTERPRISE: &str = "enterprise";
-}
-
-#[derive(Clone, Debug)]
-pub struct TokenBindingStatus {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum TokenBindingStatus {
+    PRESENT,
+    SUPPORTED,
 }
 impl FromVal for TokenBindingStatus {
     fn from_val(v: &emlite::Val) -> Self {
-        TokenBindingStatus { inner: v.clone() }
+        match v.as_::<&str>() {
+            "present" => Self::PRESENT,
+            "supported" => Self::SUPPORTED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for TokenBindingStatus {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for TokenBindingStatus {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<TokenBindingStatus> for emlite::Val {
     fn from(s: TokenBindingStatus) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            TokenBindingStatus::PRESENT => emlite::Val::from("present"),
+            TokenBindingStatus::SUPPORTED => emlite::Val::from("supported"),
+        }
     }
 }
 
-impl TokenBindingStatus {
-    pub const PRESENT: &str = "present";
-    pub const SUPPORTED: &str = "supported";
-}
-
-#[derive(Clone, Debug)]
-pub struct PublicKeyCredentialType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PublicKeyCredentialType {
+    PUBLIC_KEY,
 }
 impl FromVal for PublicKeyCredentialType {
     fn from_val(v: &emlite::Val) -> Self {
-        PublicKeyCredentialType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "public-key" => Self::PUBLIC_KEY,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PublicKeyCredentialType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PublicKeyCredentialType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PublicKeyCredentialType> for emlite::Val {
     fn from(s: PublicKeyCredentialType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PublicKeyCredentialType::PUBLIC_KEY => emlite::Val::from("public-key"),
+        }
     }
 }
 
-impl PublicKeyCredentialType {
-    pub const PUBLIC_KEY: &str = "public-key";
-}
-
-#[derive(Clone, Debug)]
-pub struct AuthenticatorTransport {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AuthenticatorTransport {
+    USB,
+    NFC,
+    BLE,
+    SMART_CARD,
+    HYBRID,
+    INTERNAL,
 }
 impl FromVal for AuthenticatorTransport {
     fn from_val(v: &emlite::Val) -> Self {
-        AuthenticatorTransport { inner: v.clone() }
+        match v.as_::<&str>() {
+            "usb" => Self::USB,
+            "nfc" => Self::NFC,
+            "ble" => Self::BLE,
+            "smart-card" => Self::SMART_CARD,
+            "hybrid" => Self::HYBRID,
+            "internal" => Self::INTERNAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AuthenticatorTransport {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AuthenticatorTransport {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AuthenticatorTransport> for emlite::Val {
     fn from(s: AuthenticatorTransport) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AuthenticatorTransport::USB => emlite::Val::from("usb"),
+            AuthenticatorTransport::NFC => emlite::Val::from("nfc"),
+            AuthenticatorTransport::BLE => emlite::Val::from("ble"),
+            AuthenticatorTransport::SMART_CARD => emlite::Val::from("smart-card"),
+            AuthenticatorTransport::HYBRID => emlite::Val::from("hybrid"),
+            AuthenticatorTransport::INTERNAL => emlite::Val::from("internal"),
+        }
     }
 }
 
-impl AuthenticatorTransport {
-    pub const USB: &str = "usb";
-    pub const NFC: &str = "nfc";
-    pub const BLE: &str = "ble";
-    pub const SMART_CARD: &str = "smart-card";
-    pub const HYBRID: &str = "hybrid";
-    pub const INTERNAL: &str = "internal";
-}
-
-#[derive(Clone, Debug)]
-pub struct UserVerificationRequirement {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum UserVerificationRequirement {
+    REQUIRED,
+    PREFERRED,
+    DISCOURAGED,
 }
 impl FromVal for UserVerificationRequirement {
     fn from_val(v: &emlite::Val) -> Self {
-        UserVerificationRequirement { inner: v.clone() }
+        match v.as_::<&str>() {
+            "required" => Self::REQUIRED,
+            "preferred" => Self::PREFERRED,
+            "discouraged" => Self::DISCOURAGED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for UserVerificationRequirement {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for UserVerificationRequirement {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<UserVerificationRequirement> for emlite::Val {
     fn from(s: UserVerificationRequirement) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            UserVerificationRequirement::REQUIRED => emlite::Val::from("required"),
+            UserVerificationRequirement::PREFERRED => emlite::Val::from("preferred"),
+            UserVerificationRequirement::DISCOURAGED => emlite::Val::from("discouraged"),
+        }
     }
 }
 
-impl UserVerificationRequirement {
-    pub const REQUIRED: &str = "required";
-    pub const PREFERRED: &str = "preferred";
-    pub const DISCOURAGED: &str = "discouraged";
-}
-
-#[derive(Clone, Debug)]
-pub struct ClientCapability {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ClientCapability {
+    CONDITIONAL_CREATE,
+    CONDITIONAL_GET,
+    HYBRID_TRANSPORT,
+    PASSKEY_PLATFORM_AUTHENTICATOR,
+    USER_VERIFYING_PLATFORM_AUTHENTICATOR,
+    RELATED_ORIGINS,
+    SIGNAL_ALL_ACCEPTED_CREDENTIALS,
+    SIGNAL_CURRENT_USER_DETAILS,
+    SIGNAL_UNKNOWN_CREDENTIAL,
 }
 impl FromVal for ClientCapability {
     fn from_val(v: &emlite::Val) -> Self {
-        ClientCapability { inner: v.clone() }
+        match v.as_::<&str>() {
+            "conditionalCreate" => Self::CONDITIONAL_CREATE,
+            "conditionalGet" => Self::CONDITIONAL_GET,
+            "hybridTransport" => Self::HYBRID_TRANSPORT,
+            "passkeyPlatformAuthenticator" => Self::PASSKEY_PLATFORM_AUTHENTICATOR,
+            "userVerifyingPlatformAuthenticator" => Self::USER_VERIFYING_PLATFORM_AUTHENTICATOR,
+            "relatedOrigins" => Self::RELATED_ORIGINS,
+            "signalAllAcceptedCredentials" => Self::SIGNAL_ALL_ACCEPTED_CREDENTIALS,
+            "signalCurrentUserDetails" => Self::SIGNAL_CURRENT_USER_DETAILS,
+            "signalUnknownCredential" => Self::SIGNAL_UNKNOWN_CREDENTIAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ClientCapability {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ClientCapability {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ClientCapability> for emlite::Val {
     fn from(s: ClientCapability) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ClientCapability::CONDITIONAL_CREATE => emlite::Val::from("conditionalCreate"),
+            ClientCapability::CONDITIONAL_GET => emlite::Val::from("conditionalGet"),
+            ClientCapability::HYBRID_TRANSPORT => emlite::Val::from("hybridTransport"),
+            ClientCapability::PASSKEY_PLATFORM_AUTHENTICATOR => {
+                emlite::Val::from("passkeyPlatformAuthenticator")
+            }
+            ClientCapability::USER_VERIFYING_PLATFORM_AUTHENTICATOR => {
+                emlite::Val::from("userVerifyingPlatformAuthenticator")
+            }
+            ClientCapability::RELATED_ORIGINS => emlite::Val::from("relatedOrigins"),
+            ClientCapability::SIGNAL_ALL_ACCEPTED_CREDENTIALS => {
+                emlite::Val::from("signalAllAcceptedCredentials")
+            }
+            ClientCapability::SIGNAL_CURRENT_USER_DETAILS => {
+                emlite::Val::from("signalCurrentUserDetails")
+            }
+            ClientCapability::SIGNAL_UNKNOWN_CREDENTIAL => {
+                emlite::Val::from("signalUnknownCredential")
+            }
+        }
     }
 }
 
-impl ClientCapability {
-    pub const CONDITIONAL_CREATE: &str = "conditionalCreate";
-    pub const CONDITIONAL_GET: &str = "conditionalGet";
-    pub const HYBRID_TRANSPORT: &str = "hybridTransport";
-    pub const PASSKEY_PLATFORM_AUTHENTICATOR: &str = "passkeyPlatformAuthenticator";
-    pub const USER_VERIFYING_PLATFORM_AUTHENTICATOR: &str = "userVerifyingPlatformAuthenticator";
-    pub const RELATED_ORIGINS: &str = "relatedOrigins";
-    pub const SIGNAL_ALL_ACCEPTED_CREDENTIALS: &str = "signalAllAcceptedCredentials";
-    pub const SIGNAL_CURRENT_USER_DETAILS: &str = "signalCurrentUserDetails";
-    pub const SIGNAL_UNKNOWN_CREDENTIAL: &str = "signalUnknownCredential";
-}
-
-#[derive(Clone, Debug)]
-pub struct PublicKeyCredentialHint {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PublicKeyCredentialHint {
+    SECURITY_KEY,
+    CLIENT_DEVICE,
+    HYBRID,
 }
 impl FromVal for PublicKeyCredentialHint {
     fn from_val(v: &emlite::Val) -> Self {
-        PublicKeyCredentialHint { inner: v.clone() }
+        match v.as_::<&str>() {
+            "security-key" => Self::SECURITY_KEY,
+            "client-device" => Self::CLIENT_DEVICE,
+            "hybrid" => Self::HYBRID,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PublicKeyCredentialHint {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PublicKeyCredentialHint {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PublicKeyCredentialHint> for emlite::Val {
     fn from(s: PublicKeyCredentialHint) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PublicKeyCredentialHint::SECURITY_KEY => emlite::Val::from("security-key"),
+            PublicKeyCredentialHint::CLIENT_DEVICE => emlite::Val::from("client-device"),
+            PublicKeyCredentialHint::HYBRID => emlite::Val::from("hybrid"),
+        }
     }
 }
 
-impl PublicKeyCredentialHint {
-    pub const SECURITY_KEY: &str = "security-key";
-    pub const CLIENT_DEVICE: &str = "client-device";
-    pub const HYBRID: &str = "hybrid";
-}
-
-#[derive(Clone, Debug)]
-pub struct LargeBlobSupport {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum LargeBlobSupport {
+    REQUIRED,
+    PREFERRED,
 }
 impl FromVal for LargeBlobSupport {
     fn from_val(v: &emlite::Val) -> Self {
-        LargeBlobSupport { inner: v.clone() }
+        match v.as_::<&str>() {
+            "required" => Self::REQUIRED,
+            "preferred" => Self::PREFERRED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for LargeBlobSupport {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for LargeBlobSupport {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<LargeBlobSupport> for emlite::Val {
     fn from(s: LargeBlobSupport) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            LargeBlobSupport::REQUIRED => emlite::Val::from("required"),
+            LargeBlobSupport::PREFERRED => emlite::Val::from("preferred"),
+        }
     }
 }
 
-impl LargeBlobSupport {
-    pub const REQUIRED: &str = "required";
-    pub const PREFERRED: &str = "preferred";
-}
-
-#[derive(Clone, Debug)]
-pub struct AacBitstreamFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AacBitstreamFormat {
+    AAC,
+    ADTS,
 }
 impl FromVal for AacBitstreamFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        AacBitstreamFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "aac" => Self::AAC,
+            "adts" => Self::ADTS,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AacBitstreamFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AacBitstreamFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AacBitstreamFormat> for emlite::Val {
     fn from(s: AacBitstreamFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AacBitstreamFormat::AAC => emlite::Val::from("aac"),
+            AacBitstreamFormat::ADTS => emlite::Val::from("adts"),
+        }
     }
 }
 
-impl AacBitstreamFormat {
-    pub const AAC: &str = "aac";
-    pub const ADTS: &str = "adts";
-}
-
-#[derive(Clone, Debug)]
-pub struct AvcBitstreamFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AvcBitstreamFormat {
+    ANNEXB,
+    AVC,
 }
 impl FromVal for AvcBitstreamFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        AvcBitstreamFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "annexb" => Self::ANNEXB,
+            "avc" => Self::AVC,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AvcBitstreamFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AvcBitstreamFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AvcBitstreamFormat> for emlite::Val {
     fn from(s: AvcBitstreamFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AvcBitstreamFormat::ANNEXB => emlite::Val::from("annexb"),
+            AvcBitstreamFormat::AVC => emlite::Val::from("avc"),
+        }
     }
 }
 
-impl AvcBitstreamFormat {
-    pub const ANNEXB: &str = "annexb";
-    pub const AVC: &str = "avc";
-}
-
-#[derive(Clone, Debug)]
-pub struct HevcBitstreamFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum HevcBitstreamFormat {
+    ANNEXB,
+    HEVC,
 }
 impl FromVal for HevcBitstreamFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        HevcBitstreamFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "annexb" => Self::ANNEXB,
+            "hevc" => Self::HEVC,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for HevcBitstreamFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for HevcBitstreamFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<HevcBitstreamFormat> for emlite::Val {
     fn from(s: HevcBitstreamFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            HevcBitstreamFormat::ANNEXB => emlite::Val::from("annexb"),
+            HevcBitstreamFormat::HEVC => emlite::Val::from("hevc"),
+        }
     }
 }
 
-impl HevcBitstreamFormat {
-    pub const ANNEXB: &str = "annexb";
-    pub const HEVC: &str = "hevc";
-}
-
-#[derive(Clone, Debug)]
-pub struct OpusBitstreamFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum OpusBitstreamFormat {
+    OPUS,
+    OGG,
 }
 impl FromVal for OpusBitstreamFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        OpusBitstreamFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "opus" => Self::OPUS,
+            "ogg" => Self::OGG,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for OpusBitstreamFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for OpusBitstreamFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<OpusBitstreamFormat> for emlite::Val {
     fn from(s: OpusBitstreamFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            OpusBitstreamFormat::OPUS => emlite::Val::from("opus"),
+            OpusBitstreamFormat::OGG => emlite::Val::from("ogg"),
+        }
     }
 }
 
-impl OpusBitstreamFormat {
-    pub const OPUS: &str = "opus";
-    pub const OGG: &str = "ogg";
-}
-
-#[derive(Clone, Debug)]
-pub struct OpusSignal {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum OpusSignal {
+    AUTO,
+    MUSIC,
+    VOICE,
 }
 impl FromVal for OpusSignal {
     fn from_val(v: &emlite::Val) -> Self {
-        OpusSignal { inner: v.clone() }
+        match v.as_::<&str>() {
+            "auto" => Self::AUTO,
+            "music" => Self::MUSIC,
+            "voice" => Self::VOICE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for OpusSignal {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for OpusSignal {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<OpusSignal> for emlite::Val {
     fn from(s: OpusSignal) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            OpusSignal::AUTO => emlite::Val::from("auto"),
+            OpusSignal::MUSIC => emlite::Val::from("music"),
+            OpusSignal::VOICE => emlite::Val::from("voice"),
+        }
     }
 }
 
-impl OpusSignal {
-    pub const AUTO: &str = "auto";
-    pub const MUSIC: &str = "music";
-    pub const VOICE: &str = "voice";
-}
-
-#[derive(Clone, Debug)]
-pub struct OpusApplication {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum OpusApplication {
+    VOIP,
+    AUDIO,
+    LOWDELAY,
 }
 impl FromVal for OpusApplication {
     fn from_val(v: &emlite::Val) -> Self {
-        OpusApplication { inner: v.clone() }
+        match v.as_::<&str>() {
+            "voip" => Self::VOIP,
+            "audio" => Self::AUDIO,
+            "lowdelay" => Self::LOWDELAY,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for OpusApplication {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for OpusApplication {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<OpusApplication> for emlite::Val {
     fn from(s: OpusApplication) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            OpusApplication::VOIP => emlite::Val::from("voip"),
+            OpusApplication::AUDIO => emlite::Val::from("audio"),
+            OpusApplication::LOWDELAY => emlite::Val::from("lowdelay"),
+        }
     }
 }
 
-impl OpusApplication {
-    pub const VOIP: &str = "voip";
-    pub const AUDIO: &str = "audio";
-    pub const LOWDELAY: &str = "lowdelay";
-}
-
-#[derive(Clone, Debug)]
-pub struct HardwareAcceleration {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum HardwareAcceleration {
+    NO_PREFERENCE,
+    PREFER_HARDWARE,
+    PREFER_SOFTWARE,
 }
 impl FromVal for HardwareAcceleration {
     fn from_val(v: &emlite::Val) -> Self {
-        HardwareAcceleration { inner: v.clone() }
+        match v.as_::<&str>() {
+            "no-preference" => Self::NO_PREFERENCE,
+            "prefer-hardware" => Self::PREFER_HARDWARE,
+            "prefer-software" => Self::PREFER_SOFTWARE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for HardwareAcceleration {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for HardwareAcceleration {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<HardwareAcceleration> for emlite::Val {
     fn from(s: HardwareAcceleration) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            HardwareAcceleration::NO_PREFERENCE => emlite::Val::from("no-preference"),
+            HardwareAcceleration::PREFER_HARDWARE => emlite::Val::from("prefer-hardware"),
+            HardwareAcceleration::PREFER_SOFTWARE => emlite::Val::from("prefer-software"),
+        }
     }
 }
 
-impl HardwareAcceleration {
-    pub const NO_PREFERENCE: &str = "no-preference";
-    pub const PREFER_HARDWARE: &str = "prefer-hardware";
-    pub const PREFER_SOFTWARE: &str = "prefer-software";
-}
-
-#[derive(Clone, Debug)]
-pub struct AlphaOption {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AlphaOption {
+    KEEP,
+    DISCARD,
 }
 impl FromVal for AlphaOption {
     fn from_val(v: &emlite::Val) -> Self {
-        AlphaOption { inner: v.clone() }
+        match v.as_::<&str>() {
+            "keep" => Self::KEEP,
+            "discard" => Self::DISCARD,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AlphaOption {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AlphaOption {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AlphaOption> for emlite::Val {
     fn from(s: AlphaOption) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AlphaOption::KEEP => emlite::Val::from("keep"),
+            AlphaOption::DISCARD => emlite::Val::from("discard"),
+        }
     }
 }
 
-impl AlphaOption {
-    pub const KEEP: &str = "keep";
-    pub const DISCARD: &str = "discard";
-}
-
-#[derive(Clone, Debug)]
-pub struct LatencyMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum LatencyMode {
+    QUALITY,
+    REALTIME,
 }
 impl FromVal for LatencyMode {
     fn from_val(v: &emlite::Val) -> Self {
-        LatencyMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "quality" => Self::QUALITY,
+            "realtime" => Self::REALTIME,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for LatencyMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for LatencyMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<LatencyMode> for emlite::Val {
     fn from(s: LatencyMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            LatencyMode::QUALITY => emlite::Val::from("quality"),
+            LatencyMode::REALTIME => emlite::Val::from("realtime"),
+        }
     }
 }
 
-impl LatencyMode {
-    pub const QUALITY: &str = "quality";
-    pub const REALTIME: &str = "realtime";
-}
-
-#[derive(Clone, Debug)]
-pub struct VideoEncoderBitrateMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum VideoEncoderBitrateMode {
+    CONSTANT,
+    VARIABLE,
+    QUANTIZER,
 }
 impl FromVal for VideoEncoderBitrateMode {
     fn from_val(v: &emlite::Val) -> Self {
-        VideoEncoderBitrateMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "constant" => Self::CONSTANT,
+            "variable" => Self::VARIABLE,
+            "quantizer" => Self::QUANTIZER,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for VideoEncoderBitrateMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for VideoEncoderBitrateMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<VideoEncoderBitrateMode> for emlite::Val {
     fn from(s: VideoEncoderBitrateMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            VideoEncoderBitrateMode::CONSTANT => emlite::Val::from("constant"),
+            VideoEncoderBitrateMode::VARIABLE => emlite::Val::from("variable"),
+            VideoEncoderBitrateMode::QUANTIZER => emlite::Val::from("quantizer"),
+        }
     }
 }
 
-impl VideoEncoderBitrateMode {
-    pub const CONSTANT: &str = "constant";
-    pub const VARIABLE: &str = "variable";
-    pub const QUANTIZER: &str = "quantizer";
-}
-
-#[derive(Clone, Debug)]
-pub struct CodecState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum CodecState {
+    UNCONFIGURED,
+    CONFIGURED,
+    CLOSED,
 }
 impl FromVal for CodecState {
     fn from_val(v: &emlite::Val) -> Self {
-        CodecState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "unconfigured" => Self::UNCONFIGURED,
+            "configured" => Self::CONFIGURED,
+            "closed" => Self::CLOSED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for CodecState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for CodecState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<CodecState> for emlite::Val {
     fn from(s: CodecState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            CodecState::UNCONFIGURED => emlite::Val::from("unconfigured"),
+            CodecState::CONFIGURED => emlite::Val::from("configured"),
+            CodecState::CLOSED => emlite::Val::from("closed"),
+        }
     }
 }
 
-impl CodecState {
-    pub const UNCONFIGURED: &str = "unconfigured";
-    pub const CONFIGURED: &str = "configured";
-    pub const CLOSED: &str = "closed";
-}
-
-#[derive(Clone, Debug)]
-pub struct EncodedAudioChunkType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum EncodedAudioChunkType {
+    KEY,
+    DELTA,
 }
 impl FromVal for EncodedAudioChunkType {
     fn from_val(v: &emlite::Val) -> Self {
-        EncodedAudioChunkType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "key" => Self::KEY,
+            "delta" => Self::DELTA,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for EncodedAudioChunkType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for EncodedAudioChunkType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<EncodedAudioChunkType> for emlite::Val {
     fn from(s: EncodedAudioChunkType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            EncodedAudioChunkType::KEY => emlite::Val::from("key"),
+            EncodedAudioChunkType::DELTA => emlite::Val::from("delta"),
+        }
     }
 }
 
-impl EncodedAudioChunkType {
-    pub const KEY: &str = "key";
-    pub const DELTA: &str = "delta";
-}
-
-#[derive(Clone, Debug)]
-pub struct EncodedVideoChunkType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum EncodedVideoChunkType {
+    KEY,
+    DELTA,
 }
 impl FromVal for EncodedVideoChunkType {
     fn from_val(v: &emlite::Val) -> Self {
-        EncodedVideoChunkType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "key" => Self::KEY,
+            "delta" => Self::DELTA,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for EncodedVideoChunkType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for EncodedVideoChunkType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<EncodedVideoChunkType> for emlite::Val {
     fn from(s: EncodedVideoChunkType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            EncodedVideoChunkType::KEY => emlite::Val::from("key"),
+            EncodedVideoChunkType::DELTA => emlite::Val::from("delta"),
+        }
     }
 }
 
-impl EncodedVideoChunkType {
-    pub const KEY: &str = "key";
-    pub const DELTA: &str = "delta";
-}
-
-#[derive(Clone, Debug)]
-pub struct AudioSampleFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AudioSampleFormat {
+    U8_,
+    S16,
+    S32,
+    F32_,
+    U8_PLANAR,
+    S16_PLANAR,
+    S32_PLANAR,
+    F32_PLANAR,
 }
 impl FromVal for AudioSampleFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioSampleFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "u8" => Self::U8_,
+            "s16" => Self::S16,
+            "s32" => Self::S32,
+            "f32" => Self::F32_,
+            "u8-planar" => Self::U8_PLANAR,
+            "s16-planar" => Self::S16_PLANAR,
+            "s32-planar" => Self::S32_PLANAR,
+            "f32-planar" => Self::F32_PLANAR,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AudioSampleFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AudioSampleFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AudioSampleFormat> for emlite::Val {
     fn from(s: AudioSampleFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AudioSampleFormat::U8_ => emlite::Val::from("u8"),
+            AudioSampleFormat::S16 => emlite::Val::from("s16"),
+            AudioSampleFormat::S32 => emlite::Val::from("s32"),
+            AudioSampleFormat::F32_ => emlite::Val::from("f32"),
+            AudioSampleFormat::U8_PLANAR => emlite::Val::from("u8-planar"),
+            AudioSampleFormat::S16_PLANAR => emlite::Val::from("s16-planar"),
+            AudioSampleFormat::S32_PLANAR => emlite::Val::from("s32-planar"),
+            AudioSampleFormat::F32_PLANAR => emlite::Val::from("f32-planar"),
+        }
     }
 }
 
-impl AudioSampleFormat {
-    pub const U8_: &str = "u8";
-    pub const S16: &str = "s16";
-    pub const S32: &str = "s32";
-    pub const F32_: &str = "f32";
-    pub const U8_PLANAR: &str = "u8-planar";
-    pub const S16_PLANAR: &str = "s16-planar";
-    pub const S32_PLANAR: &str = "s32-planar";
-    pub const F32_PLANAR: &str = "f32-planar";
-}
-
-#[derive(Clone, Debug)]
-pub struct VideoPixelFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum VideoPixelFormat {
+    I420,
+    I420_P10,
+    I420_P12,
+    I420_A,
+    I420_AP10,
+    I420_AP12,
+    I422,
+    I422_P10,
+    I422_P12,
+    I422_A,
+    I422_AP10,
+    I422_AP12,
+    I444,
+    I444_P10,
+    I444_P12,
+    I444_A,
+    I444_AP10,
+    I444_AP12,
+    NV12,
+    RGBA,
+    RGBX,
+    BGRA,
+    BGRX,
 }
 impl FromVal for VideoPixelFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        VideoPixelFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "I420" => Self::I420,
+            "I420P10" => Self::I420_P10,
+            "I420P12" => Self::I420_P12,
+            "I420A" => Self::I420_A,
+            "I420AP10" => Self::I420_AP10,
+            "I420AP12" => Self::I420_AP12,
+            "I422" => Self::I422,
+            "I422P10" => Self::I422_P10,
+            "I422P12" => Self::I422_P12,
+            "I422A" => Self::I422_A,
+            "I422AP10" => Self::I422_AP10,
+            "I422AP12" => Self::I422_AP12,
+            "I444" => Self::I444,
+            "I444P10" => Self::I444_P10,
+            "I444P12" => Self::I444_P12,
+            "I444A" => Self::I444_A,
+            "I444AP10" => Self::I444_AP10,
+            "I444AP12" => Self::I444_AP12,
+            "NV12" => Self::NV12,
+            "RGBA" => Self::RGBA,
+            "RGBX" => Self::RGBX,
+            "BGRA" => Self::BGRA,
+            "BGRX" => Self::BGRX,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for VideoPixelFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for VideoPixelFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<VideoPixelFormat> for emlite::Val {
     fn from(s: VideoPixelFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            VideoPixelFormat::I420 => emlite::Val::from("I420"),
+            VideoPixelFormat::I420_P10 => emlite::Val::from("I420P10"),
+            VideoPixelFormat::I420_P12 => emlite::Val::from("I420P12"),
+            VideoPixelFormat::I420_A => emlite::Val::from("I420A"),
+            VideoPixelFormat::I420_AP10 => emlite::Val::from("I420AP10"),
+            VideoPixelFormat::I420_AP12 => emlite::Val::from("I420AP12"),
+            VideoPixelFormat::I422 => emlite::Val::from("I422"),
+            VideoPixelFormat::I422_P10 => emlite::Val::from("I422P10"),
+            VideoPixelFormat::I422_P12 => emlite::Val::from("I422P12"),
+            VideoPixelFormat::I422_A => emlite::Val::from("I422A"),
+            VideoPixelFormat::I422_AP10 => emlite::Val::from("I422AP10"),
+            VideoPixelFormat::I422_AP12 => emlite::Val::from("I422AP12"),
+            VideoPixelFormat::I444 => emlite::Val::from("I444"),
+            VideoPixelFormat::I444_P10 => emlite::Val::from("I444P10"),
+            VideoPixelFormat::I444_P12 => emlite::Val::from("I444P12"),
+            VideoPixelFormat::I444_A => emlite::Val::from("I444A"),
+            VideoPixelFormat::I444_AP10 => emlite::Val::from("I444AP10"),
+            VideoPixelFormat::I444_AP12 => emlite::Val::from("I444AP12"),
+            VideoPixelFormat::NV12 => emlite::Val::from("NV12"),
+            VideoPixelFormat::RGBA => emlite::Val::from("RGBA"),
+            VideoPixelFormat::RGBX => emlite::Val::from("RGBX"),
+            VideoPixelFormat::BGRA => emlite::Val::from("BGRA"),
+            VideoPixelFormat::BGRX => emlite::Val::from("BGRX"),
+        }
     }
 }
 
-impl VideoPixelFormat {
-    pub const I420: &str = "I420";
-    pub const I420_P10: &str = "I420P10";
-    pub const I420_P12: &str = "I420P12";
-    pub const I420_A: &str = "I420A";
-    pub const I420_AP10: &str = "I420AP10";
-    pub const I420_AP12: &str = "I420AP12";
-    pub const I422: &str = "I422";
-    pub const I422_P10: &str = "I422P10";
-    pub const I422_P12: &str = "I422P12";
-    pub const I422_A: &str = "I422A";
-    pub const I422_AP10: &str = "I422AP10";
-    pub const I422_AP12: &str = "I422AP12";
-    pub const I444: &str = "I444";
-    pub const I444_P10: &str = "I444P10";
-    pub const I444_P12: &str = "I444P12";
-    pub const I444_A: &str = "I444A";
-    pub const I444_AP10: &str = "I444AP10";
-    pub const I444_AP12: &str = "I444AP12";
-    pub const NV12: &str = "NV12";
-    pub const RGBA: &str = "RGBA";
-    pub const RGBX: &str = "RGBX";
-    pub const BGRA: &str = "BGRA";
-    pub const BGRX: &str = "BGRX";
-}
-
-#[derive(Clone, Debug)]
-pub struct VideoColorPrimaries {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum VideoColorPrimaries {
+    BT709,
+    BT470BG,
+    SMPTE170M,
+    BT2020,
+    SMPTE432,
 }
 impl FromVal for VideoColorPrimaries {
     fn from_val(v: &emlite::Val) -> Self {
-        VideoColorPrimaries { inner: v.clone() }
+        match v.as_::<&str>() {
+            "bt709" => Self::BT709,
+            "bt470bg" => Self::BT470BG,
+            "smpte170m" => Self::SMPTE170M,
+            "bt2020" => Self::BT2020,
+            "smpte432" => Self::SMPTE432,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for VideoColorPrimaries {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for VideoColorPrimaries {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<VideoColorPrimaries> for emlite::Val {
     fn from(s: VideoColorPrimaries) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            VideoColorPrimaries::BT709 => emlite::Val::from("bt709"),
+            VideoColorPrimaries::BT470BG => emlite::Val::from("bt470bg"),
+            VideoColorPrimaries::SMPTE170M => emlite::Val::from("smpte170m"),
+            VideoColorPrimaries::BT2020 => emlite::Val::from("bt2020"),
+            VideoColorPrimaries::SMPTE432 => emlite::Val::from("smpte432"),
+        }
     }
 }
 
-impl VideoColorPrimaries {
-    pub const BT709: &str = "bt709";
-    pub const BT470BG: &str = "bt470bg";
-    pub const SMPTE170M: &str = "smpte170m";
-    pub const BT2020: &str = "bt2020";
-    pub const SMPTE432: &str = "smpte432";
-}
-
-#[derive(Clone, Debug)]
-pub struct VideoTransferCharacteristics {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum VideoTransferCharacteristics {
+    BT709,
+    SMPTE170M,
+    IEC61966_2_1,
+    LINEAR,
+    PQ,
+    HLG,
 }
 impl FromVal for VideoTransferCharacteristics {
     fn from_val(v: &emlite::Val) -> Self {
-        VideoTransferCharacteristics { inner: v.clone() }
+        match v.as_::<&str>() {
+            "bt709" => Self::BT709,
+            "smpte170m" => Self::SMPTE170M,
+            "iec61966-2-1" => Self::IEC61966_2_1,
+            "linear" => Self::LINEAR,
+            "pq" => Self::PQ,
+            "hlg" => Self::HLG,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for VideoTransferCharacteristics {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for VideoTransferCharacteristics {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<VideoTransferCharacteristics> for emlite::Val {
     fn from(s: VideoTransferCharacteristics) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            VideoTransferCharacteristics::BT709 => emlite::Val::from("bt709"),
+            VideoTransferCharacteristics::SMPTE170M => emlite::Val::from("smpte170m"),
+            VideoTransferCharacteristics::IEC61966_2_1 => emlite::Val::from("iec61966-2-1"),
+            VideoTransferCharacteristics::LINEAR => emlite::Val::from("linear"),
+            VideoTransferCharacteristics::PQ => emlite::Val::from("pq"),
+            VideoTransferCharacteristics::HLG => emlite::Val::from("hlg"),
+        }
     }
 }
 
-impl VideoTransferCharacteristics {
-    pub const BT709: &str = "bt709";
-    pub const SMPTE170M: &str = "smpte170m";
-    pub const IEC61966_2_1: &str = "iec61966-2-1";
-    pub const LINEAR: &str = "linear";
-    pub const PQ: &str = "pq";
-    pub const HLG: &str = "hlg";
-}
-
-#[derive(Clone, Debug)]
-pub struct VideoMatrixCoefficients {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum VideoMatrixCoefficients {
+    RGB,
+    BT709,
+    BT470BG,
+    SMPTE170M,
+    BT2020_NCL,
 }
 impl FromVal for VideoMatrixCoefficients {
     fn from_val(v: &emlite::Val) -> Self {
-        VideoMatrixCoefficients { inner: v.clone() }
+        match v.as_::<&str>() {
+            "rgb" => Self::RGB,
+            "bt709" => Self::BT709,
+            "bt470bg" => Self::BT470BG,
+            "smpte170m" => Self::SMPTE170M,
+            "bt2020-ncl" => Self::BT2020_NCL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for VideoMatrixCoefficients {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for VideoMatrixCoefficients {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<VideoMatrixCoefficients> for emlite::Val {
     fn from(s: VideoMatrixCoefficients) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            VideoMatrixCoefficients::RGB => emlite::Val::from("rgb"),
+            VideoMatrixCoefficients::BT709 => emlite::Val::from("bt709"),
+            VideoMatrixCoefficients::BT470BG => emlite::Val::from("bt470bg"),
+            VideoMatrixCoefficients::SMPTE170M => emlite::Val::from("smpte170m"),
+            VideoMatrixCoefficients::BT2020_NCL => emlite::Val::from("bt2020-ncl"),
+        }
     }
 }
 
-impl VideoMatrixCoefficients {
-    pub const RGB: &str = "rgb";
-    pub const BT709: &str = "bt709";
-    pub const BT470BG: &str = "bt470bg";
-    pub const SMPTE170M: &str = "smpte170m";
-    pub const BT2020_NCL: &str = "bt2020-ncl";
-}
-
-#[derive(Clone, Debug)]
-pub struct KeyType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum KeyType {
+    PUBLIC,
+    PRIVATE,
+    SECRET,
 }
 impl FromVal for KeyType {
     fn from_val(v: &emlite::Val) -> Self {
-        KeyType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "public" => Self::PUBLIC,
+            "private" => Self::PRIVATE,
+            "secret" => Self::SECRET,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for KeyType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for KeyType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<KeyType> for emlite::Val {
     fn from(s: KeyType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            KeyType::PUBLIC => emlite::Val::from("public"),
+            KeyType::PRIVATE => emlite::Val::from("private"),
+            KeyType::SECRET => emlite::Val::from("secret"),
+        }
     }
 }
 
-impl KeyType {
-    pub const PUBLIC: &str = "public";
-    pub const PRIVATE: &str = "private";
-    pub const SECRET: &str = "secret";
-}
-
-#[derive(Clone, Debug)]
-pub struct KeyUsage {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum KeyUsage {
+    ENCRYPT,
+    DECRYPT,
+    SIGN,
+    VERIFY,
+    DERIVE_KEY,
+    DERIVE_BITS,
+    WRAP_KEY,
+    UNWRAP_KEY,
 }
 impl FromVal for KeyUsage {
     fn from_val(v: &emlite::Val) -> Self {
-        KeyUsage { inner: v.clone() }
+        match v.as_::<&str>() {
+            "encrypt" => Self::ENCRYPT,
+            "decrypt" => Self::DECRYPT,
+            "sign" => Self::SIGN,
+            "verify" => Self::VERIFY,
+            "deriveKey" => Self::DERIVE_KEY,
+            "deriveBits" => Self::DERIVE_BITS,
+            "wrapKey" => Self::WRAP_KEY,
+            "unwrapKey" => Self::UNWRAP_KEY,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for KeyUsage {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for KeyUsage {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<KeyUsage> for emlite::Val {
     fn from(s: KeyUsage) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            KeyUsage::ENCRYPT => emlite::Val::from("encrypt"),
+            KeyUsage::DECRYPT => emlite::Val::from("decrypt"),
+            KeyUsage::SIGN => emlite::Val::from("sign"),
+            KeyUsage::VERIFY => emlite::Val::from("verify"),
+            KeyUsage::DERIVE_KEY => emlite::Val::from("deriveKey"),
+            KeyUsage::DERIVE_BITS => emlite::Val::from("deriveBits"),
+            KeyUsage::WRAP_KEY => emlite::Val::from("wrapKey"),
+            KeyUsage::UNWRAP_KEY => emlite::Val::from("unwrapKey"),
+        }
     }
 }
 
-impl KeyUsage {
-    pub const ENCRYPT: &str = "encrypt";
-    pub const DECRYPT: &str = "decrypt";
-    pub const SIGN: &str = "sign";
-    pub const VERIFY: &str = "verify";
-    pub const DERIVE_KEY: &str = "deriveKey";
-    pub const DERIVE_BITS: &str = "deriveBits";
-    pub const WRAP_KEY: &str = "wrapKey";
-    pub const UNWRAP_KEY: &str = "unwrapKey";
-}
-
-#[derive(Clone, Debug)]
-pub struct KeyFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum KeyFormat {
+    RAW_,
+    SPKI,
+    PKCS8,
+    JWK,
 }
 impl FromVal for KeyFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        KeyFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "raw" => Self::RAW_,
+            "spki" => Self::SPKI,
+            "pkcs8" => Self::PKCS8,
+            "jwk" => Self::JWK,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for KeyFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for KeyFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<KeyFormat> for emlite::Val {
     fn from(s: KeyFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            KeyFormat::RAW_ => emlite::Val::from("raw"),
+            KeyFormat::SPKI => emlite::Val::from("spki"),
+            KeyFormat::PKCS8 => emlite::Val::from("pkcs8"),
+            KeyFormat::JWK => emlite::Val::from("jwk"),
+        }
     }
 }
 
-impl KeyFormat {
-    pub const RAW_: &str = "raw";
-    pub const SPKI: &str = "spki";
-    pub const PKCS8: &str = "pkcs8";
-    pub const JWK: &str = "jwk";
-}
-
-#[derive(Clone, Debug)]
-pub struct WebGLPowerPreference {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum WebGLPowerPreference {
+    DEFAULT,
+    LOW_POWER,
+    HIGH_PERFORMANCE,
 }
 impl FromVal for WebGLPowerPreference {
     fn from_val(v: &emlite::Val) -> Self {
-        WebGLPowerPreference { inner: v.clone() }
+        match v.as_::<&str>() {
+            "default" => Self::DEFAULT,
+            "low-power" => Self::LOW_POWER,
+            "high-performance" => Self::HIGH_PERFORMANCE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for WebGLPowerPreference {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for WebGLPowerPreference {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<WebGLPowerPreference> for emlite::Val {
     fn from(s: WebGLPowerPreference) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            WebGLPowerPreference::DEFAULT => emlite::Val::from("default"),
+            WebGLPowerPreference::LOW_POWER => emlite::Val::from("low-power"),
+            WebGLPowerPreference::HIGH_PERFORMANCE => emlite::Val::from("high-performance"),
+        }
     }
 }
 
-impl WebGLPowerPreference {
-    pub const DEFAULT: &str = "default";
-    pub const LOW_POWER: &str = "low-power";
-    pub const HIGH_PERFORMANCE: &str = "high-performance";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUPowerPreference {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUPowerPreference {
+    LOW_POWER,
+    HIGH_PERFORMANCE,
 }
 impl FromVal for GPUPowerPreference {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUPowerPreference { inner: v.clone() }
+        match v.as_::<&str>() {
+            "low-power" => Self::LOW_POWER,
+            "high-performance" => Self::HIGH_PERFORMANCE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUPowerPreference {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUPowerPreference {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUPowerPreference> for emlite::Val {
     fn from(s: GPUPowerPreference) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUPowerPreference::LOW_POWER => emlite::Val::from("low-power"),
+            GPUPowerPreference::HIGH_PERFORMANCE => emlite::Val::from("high-performance"),
+        }
     }
 }
 
-impl GPUPowerPreference {
-    pub const LOW_POWER: &str = "low-power";
-    pub const HIGH_PERFORMANCE: &str = "high-performance";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUFeatureName {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUFeatureName {
+    CORE_FEATURES_AND_LIMITS,
+    DEPTH_CLIP_CONTROL,
+    DEPTH32FLOAT_STENCIL8,
+    TEXTURE_COMPRESSION_BC,
+    TEXTURE_COMPRESSION_BC_SLICED_3D,
+    TEXTURE_COMPRESSION_ETC2,
+    TEXTURE_COMPRESSION_ASTC,
+    TEXTURE_COMPRESSION_ASTC_SLICED_3D,
+    TIMESTAMP_QUERY,
+    INDIRECT_FIRST_INSTANCE,
+    SHADER_F16,
+    RG11B10UFLOAT_RENDERABLE,
+    BGRA8UNORM_STORAGE,
+    FLOAT32_FILTERABLE,
+    FLOAT32_BLENDABLE,
+    CLIP_DISTANCES,
+    DUAL_SOURCE_BLENDING,
+    SUBGROUPS,
+    TEXTURE_FORMATS_TIER1,
+    TEXTURE_FORMATS_TIER2,
 }
 impl FromVal for GPUFeatureName {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUFeatureName { inner: v.clone() }
+        match v.as_::<&str>() {
+            "core-features-and-limits" => Self::CORE_FEATURES_AND_LIMITS,
+            "depth-clip-control" => Self::DEPTH_CLIP_CONTROL,
+            "depth32float-stencil8" => Self::DEPTH32FLOAT_STENCIL8,
+            "texture-compression-bc" => Self::TEXTURE_COMPRESSION_BC,
+            "texture-compression-bc-sliced-3d" => Self::TEXTURE_COMPRESSION_BC_SLICED_3D,
+            "texture-compression-etc2" => Self::TEXTURE_COMPRESSION_ETC2,
+            "texture-compression-astc" => Self::TEXTURE_COMPRESSION_ASTC,
+            "texture-compression-astc-sliced-3d" => Self::TEXTURE_COMPRESSION_ASTC_SLICED_3D,
+            "timestamp-query" => Self::TIMESTAMP_QUERY,
+            "indirect-first-instance" => Self::INDIRECT_FIRST_INSTANCE,
+            "shader-f16" => Self::SHADER_F16,
+            "rg11b10ufloat-renderable" => Self::RG11B10UFLOAT_RENDERABLE,
+            "bgra8unorm-storage" => Self::BGRA8UNORM_STORAGE,
+            "float32-filterable" => Self::FLOAT32_FILTERABLE,
+            "float32-blendable" => Self::FLOAT32_BLENDABLE,
+            "clip-distances" => Self::CLIP_DISTANCES,
+            "dual-source-blending" => Self::DUAL_SOURCE_BLENDING,
+            "subgroups" => Self::SUBGROUPS,
+            "texture-formats-tier1" => Self::TEXTURE_FORMATS_TIER1,
+            "texture-formats-tier2" => Self::TEXTURE_FORMATS_TIER2,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUFeatureName {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUFeatureName {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUFeatureName> for emlite::Val {
     fn from(s: GPUFeatureName) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUFeatureName::CORE_FEATURES_AND_LIMITS => {
+                emlite::Val::from("core-features-and-limits")
+            }
+            GPUFeatureName::DEPTH_CLIP_CONTROL => emlite::Val::from("depth-clip-control"),
+            GPUFeatureName::DEPTH32FLOAT_STENCIL8 => emlite::Val::from("depth32float-stencil8"),
+            GPUFeatureName::TEXTURE_COMPRESSION_BC => emlite::Val::from("texture-compression-bc"),
+            GPUFeatureName::TEXTURE_COMPRESSION_BC_SLICED_3D => {
+                emlite::Val::from("texture-compression-bc-sliced-3d")
+            }
+            GPUFeatureName::TEXTURE_COMPRESSION_ETC2 => {
+                emlite::Val::from("texture-compression-etc2")
+            }
+            GPUFeatureName::TEXTURE_COMPRESSION_ASTC => {
+                emlite::Val::from("texture-compression-astc")
+            }
+            GPUFeatureName::TEXTURE_COMPRESSION_ASTC_SLICED_3D => {
+                emlite::Val::from("texture-compression-astc-sliced-3d")
+            }
+            GPUFeatureName::TIMESTAMP_QUERY => emlite::Val::from("timestamp-query"),
+            GPUFeatureName::INDIRECT_FIRST_INSTANCE => emlite::Val::from("indirect-first-instance"),
+            GPUFeatureName::SHADER_F16 => emlite::Val::from("shader-f16"),
+            GPUFeatureName::RG11B10UFLOAT_RENDERABLE => {
+                emlite::Val::from("rg11b10ufloat-renderable")
+            }
+            GPUFeatureName::BGRA8UNORM_STORAGE => emlite::Val::from("bgra8unorm-storage"),
+            GPUFeatureName::FLOAT32_FILTERABLE => emlite::Val::from("float32-filterable"),
+            GPUFeatureName::FLOAT32_BLENDABLE => emlite::Val::from("float32-blendable"),
+            GPUFeatureName::CLIP_DISTANCES => emlite::Val::from("clip-distances"),
+            GPUFeatureName::DUAL_SOURCE_BLENDING => emlite::Val::from("dual-source-blending"),
+            GPUFeatureName::SUBGROUPS => emlite::Val::from("subgroups"),
+            GPUFeatureName::TEXTURE_FORMATS_TIER1 => emlite::Val::from("texture-formats-tier1"),
+            GPUFeatureName::TEXTURE_FORMATS_TIER2 => emlite::Val::from("texture-formats-tier2"),
+        }
     }
 }
 
-impl GPUFeatureName {
-    pub const CORE_FEATURES_AND_LIMITS: &str = "core-features-and-limits";
-    pub const DEPTH_CLIP_CONTROL: &str = "depth-clip-control";
-    pub const DEPTH32FLOAT_STENCIL8: &str = "depth32float-stencil8";
-    pub const TEXTURE_COMPRESSION_BC: &str = "texture-compression-bc";
-    pub const TEXTURE_COMPRESSION_BC_SLICED_3D: &str = "texture-compression-bc-sliced-3d";
-    pub const TEXTURE_COMPRESSION_ETC2: &str = "texture-compression-etc2";
-    pub const TEXTURE_COMPRESSION_ASTC: &str = "texture-compression-astc";
-    pub const TEXTURE_COMPRESSION_ASTC_SLICED_3D: &str = "texture-compression-astc-sliced-3d";
-    pub const TIMESTAMP_QUERY: &str = "timestamp-query";
-    pub const INDIRECT_FIRST_INSTANCE: &str = "indirect-first-instance";
-    pub const SHADER_F16: &str = "shader-f16";
-    pub const RG11B10UFLOAT_RENDERABLE: &str = "rg11b10ufloat-renderable";
-    pub const BGRA8UNORM_STORAGE: &str = "bgra8unorm-storage";
-    pub const FLOAT32_FILTERABLE: &str = "float32-filterable";
-    pub const FLOAT32_BLENDABLE: &str = "float32-blendable";
-    pub const CLIP_DISTANCES: &str = "clip-distances";
-    pub const DUAL_SOURCE_BLENDING: &str = "dual-source-blending";
-    pub const SUBGROUPS: &str = "subgroups";
-    pub const TEXTURE_FORMATS_TIER1: &str = "texture-formats-tier1";
-    pub const TEXTURE_FORMATS_TIER2: &str = "texture-formats-tier2";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUBufferMapState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUBufferMapState {
+    UNMAPPED,
+    PENDING,
+    MAPPED,
 }
 impl FromVal for GPUBufferMapState {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUBufferMapState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "unmapped" => Self::UNMAPPED,
+            "pending" => Self::PENDING,
+            "mapped" => Self::MAPPED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUBufferMapState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUBufferMapState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUBufferMapState> for emlite::Val {
     fn from(s: GPUBufferMapState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUBufferMapState::UNMAPPED => emlite::Val::from("unmapped"),
+            GPUBufferMapState::PENDING => emlite::Val::from("pending"),
+            GPUBufferMapState::MAPPED => emlite::Val::from("mapped"),
+        }
     }
 }
 
-impl GPUBufferMapState {
-    pub const UNMAPPED: &str = "unmapped";
-    pub const PENDING: &str = "pending";
-    pub const MAPPED: &str = "mapped";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUTextureDimension {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUTextureDimension {
+    _1D,
+    _2D,
+    _3D,
 }
 impl FromVal for GPUTextureDimension {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUTextureDimension { inner: v.clone() }
+        match v.as_::<&str>() {
+            "1d" => Self::_1D,
+            "2d" => Self::_2D,
+            "3d" => Self::_3D,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUTextureDimension {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUTextureDimension {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUTextureDimension> for emlite::Val {
     fn from(s: GPUTextureDimension) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUTextureDimension::_1D => emlite::Val::from("1d"),
+            GPUTextureDimension::_2D => emlite::Val::from("2d"),
+            GPUTextureDimension::_3D => emlite::Val::from("3d"),
+        }
     }
 }
 
-impl GPUTextureDimension {
-    pub const _1D: &str = "1d";
-    pub const _2D: &str = "2d";
-    pub const _3D: &str = "3d";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUTextureViewDimension {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUTextureViewDimension {
+    _1D,
+    _2D,
+    _2D_ARRAY,
+    CUBE,
+    CUBE_ARRAY,
+    _3D,
 }
 impl FromVal for GPUTextureViewDimension {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUTextureViewDimension { inner: v.clone() }
+        match v.as_::<&str>() {
+            "1d" => Self::_1D,
+            "2d" => Self::_2D,
+            "2d-array" => Self::_2D_ARRAY,
+            "cube" => Self::CUBE,
+            "cube-array" => Self::CUBE_ARRAY,
+            "3d" => Self::_3D,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUTextureViewDimension {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUTextureViewDimension {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUTextureViewDimension> for emlite::Val {
     fn from(s: GPUTextureViewDimension) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUTextureViewDimension::_1D => emlite::Val::from("1d"),
+            GPUTextureViewDimension::_2D => emlite::Val::from("2d"),
+            GPUTextureViewDimension::_2D_ARRAY => emlite::Val::from("2d-array"),
+            GPUTextureViewDimension::CUBE => emlite::Val::from("cube"),
+            GPUTextureViewDimension::CUBE_ARRAY => emlite::Val::from("cube-array"),
+            GPUTextureViewDimension::_3D => emlite::Val::from("3d"),
+        }
     }
 }
 
-impl GPUTextureViewDimension {
-    pub const _1D: &str = "1d";
-    pub const _2D: &str = "2d";
-    pub const _2D_ARRAY: &str = "2d-array";
-    pub const CUBE: &str = "cube";
-    pub const CUBE_ARRAY: &str = "cube-array";
-    pub const _3D: &str = "3d";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUTextureAspect {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUTextureAspect {
+    ALL,
+    STENCIL_ONLY,
+    DEPTH_ONLY,
 }
 impl FromVal for GPUTextureAspect {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUTextureAspect { inner: v.clone() }
+        match v.as_::<&str>() {
+            "all" => Self::ALL,
+            "stencil-only" => Self::STENCIL_ONLY,
+            "depth-only" => Self::DEPTH_ONLY,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUTextureAspect {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUTextureAspect {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUTextureAspect> for emlite::Val {
     fn from(s: GPUTextureAspect) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUTextureAspect::ALL => emlite::Val::from("all"),
+            GPUTextureAspect::STENCIL_ONLY => emlite::Val::from("stencil-only"),
+            GPUTextureAspect::DEPTH_ONLY => emlite::Val::from("depth-only"),
+        }
     }
 }
 
-impl GPUTextureAspect {
-    pub const ALL: &str = "all";
-    pub const STENCIL_ONLY: &str = "stencil-only";
-    pub const DEPTH_ONLY: &str = "depth-only";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUTextureFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUTextureFormat {
+    R8UNORM,
+    R8SNORM,
+    R8UINT,
+    R8SINT,
+    R16UNORM,
+    R16SNORM,
+    R16UINT,
+    R16SINT,
+    R16FLOAT,
+    RG8UNORM,
+    RG8SNORM,
+    RG8UINT,
+    RG8SINT,
+    R32UINT,
+    R32SINT,
+    R32FLOAT,
+    RG16UNORM,
+    RG16SNORM,
+    RG16UINT,
+    RG16SINT,
+    RG16FLOAT,
+    RGBA8UNORM,
+    RGBA8UNORM_SRGB,
+    RGBA8SNORM,
+    RGBA8UINT,
+    RGBA8SINT,
+    BGRA8UNORM,
+    BGRA8UNORM_SRGB,
+    RGB9E5UFLOAT,
+    RGB10A2UINT,
+    RGB10A2UNORM,
+    RG11B10UFLOAT,
+    RG32UINT,
+    RG32SINT,
+    RG32FLOAT,
+    RGBA16UNORM,
+    RGBA16SNORM,
+    RGBA16UINT,
+    RGBA16SINT,
+    RGBA16FLOAT,
+    RGBA32UINT,
+    RGBA32SINT,
+    RGBA32FLOAT,
+    STENCIL8,
+    DEPTH16UNORM,
+    DEPTH24PLUS,
+    DEPTH24PLUS_STENCIL8,
+    DEPTH32FLOAT,
+    DEPTH32FLOAT_STENCIL8,
+    BC1_RGBA_UNORM,
+    BC1_RGBA_UNORM_SRGB,
+    BC2_RGBA_UNORM,
+    BC2_RGBA_UNORM_SRGB,
+    BC3_RGBA_UNORM,
+    BC3_RGBA_UNORM_SRGB,
+    BC4_R_UNORM,
+    BC4_R_SNORM,
+    BC5_RG_UNORM,
+    BC5_RG_SNORM,
+    BC6H_RGB_UFLOAT,
+    BC6H_RGB_FLOAT,
+    BC7_RGBA_UNORM,
+    BC7_RGBA_UNORM_SRGB,
+    ETC2_RGB8UNORM,
+    ETC2_RGB8UNORM_SRGB,
+    ETC2_RGB8A1UNORM,
+    ETC2_RGB8A1UNORM_SRGB,
+    ETC2_RGBA8UNORM,
+    ETC2_RGBA8UNORM_SRGB,
+    EAC_R11UNORM,
+    EAC_R11SNORM,
+    EAC_RG11UNORM,
+    EAC_RG11SNORM,
+    ASTC_4X4_UNORM,
+    ASTC_4X4_UNORM_SRGB,
+    ASTC_5X4_UNORM,
+    ASTC_5X4_UNORM_SRGB,
+    ASTC_5X5_UNORM,
+    ASTC_5X5_UNORM_SRGB,
+    ASTC_6X5_UNORM,
+    ASTC_6X5_UNORM_SRGB,
+    ASTC_6X6_UNORM,
+    ASTC_6X6_UNORM_SRGB,
+    ASTC_8X5_UNORM,
+    ASTC_8X5_UNORM_SRGB,
+    ASTC_8X6_UNORM,
+    ASTC_8X6_UNORM_SRGB,
+    ASTC_8X8_UNORM,
+    ASTC_8X8_UNORM_SRGB,
+    ASTC_10X5_UNORM,
+    ASTC_10X5_UNORM_SRGB,
+    ASTC_10X6_UNORM,
+    ASTC_10X6_UNORM_SRGB,
+    ASTC_10X8_UNORM,
+    ASTC_10X8_UNORM_SRGB,
+    ASTC_10X10_UNORM,
+    ASTC_10X10_UNORM_SRGB,
+    ASTC_12X10_UNORM,
+    ASTC_12X10_UNORM_SRGB,
+    ASTC_12X12_UNORM,
+    ASTC_12X12_UNORM_SRGB,
 }
 impl FromVal for GPUTextureFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUTextureFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "r8unorm" => Self::R8UNORM,
+            "r8snorm" => Self::R8SNORM,
+            "r8uint" => Self::R8UINT,
+            "r8sint" => Self::R8SINT,
+            "r16unorm" => Self::R16UNORM,
+            "r16snorm" => Self::R16SNORM,
+            "r16uint" => Self::R16UINT,
+            "r16sint" => Self::R16SINT,
+            "r16float" => Self::R16FLOAT,
+            "rg8unorm" => Self::RG8UNORM,
+            "rg8snorm" => Self::RG8SNORM,
+            "rg8uint" => Self::RG8UINT,
+            "rg8sint" => Self::RG8SINT,
+            "r32uint" => Self::R32UINT,
+            "r32sint" => Self::R32SINT,
+            "r32float" => Self::R32FLOAT,
+            "rg16unorm" => Self::RG16UNORM,
+            "rg16snorm" => Self::RG16SNORM,
+            "rg16uint" => Self::RG16UINT,
+            "rg16sint" => Self::RG16SINT,
+            "rg16float" => Self::RG16FLOAT,
+            "rgba8unorm" => Self::RGBA8UNORM,
+            "rgba8unorm-srgb" => Self::RGBA8UNORM_SRGB,
+            "rgba8snorm" => Self::RGBA8SNORM,
+            "rgba8uint" => Self::RGBA8UINT,
+            "rgba8sint" => Self::RGBA8SINT,
+            "bgra8unorm" => Self::BGRA8UNORM,
+            "bgra8unorm-srgb" => Self::BGRA8UNORM_SRGB,
+            "rgb9e5ufloat" => Self::RGB9E5UFLOAT,
+            "rgb10a2uint" => Self::RGB10A2UINT,
+            "rgb10a2unorm" => Self::RGB10A2UNORM,
+            "rg11b10ufloat" => Self::RG11B10UFLOAT,
+            "rg32uint" => Self::RG32UINT,
+            "rg32sint" => Self::RG32SINT,
+            "rg32float" => Self::RG32FLOAT,
+            "rgba16unorm" => Self::RGBA16UNORM,
+            "rgba16snorm" => Self::RGBA16SNORM,
+            "rgba16uint" => Self::RGBA16UINT,
+            "rgba16sint" => Self::RGBA16SINT,
+            "rgba16float" => Self::RGBA16FLOAT,
+            "rgba32uint" => Self::RGBA32UINT,
+            "rgba32sint" => Self::RGBA32SINT,
+            "rgba32float" => Self::RGBA32FLOAT,
+            "stencil8" => Self::STENCIL8,
+            "depth16unorm" => Self::DEPTH16UNORM,
+            "depth24plus" => Self::DEPTH24PLUS,
+            "depth24plus-stencil8" => Self::DEPTH24PLUS_STENCIL8,
+            "depth32float" => Self::DEPTH32FLOAT,
+            "depth32float-stencil8" => Self::DEPTH32FLOAT_STENCIL8,
+            "bc1-rgba-unorm" => Self::BC1_RGBA_UNORM,
+            "bc1-rgba-unorm-srgb" => Self::BC1_RGBA_UNORM_SRGB,
+            "bc2-rgba-unorm" => Self::BC2_RGBA_UNORM,
+            "bc2-rgba-unorm-srgb" => Self::BC2_RGBA_UNORM_SRGB,
+            "bc3-rgba-unorm" => Self::BC3_RGBA_UNORM,
+            "bc3-rgba-unorm-srgb" => Self::BC3_RGBA_UNORM_SRGB,
+            "bc4-r-unorm" => Self::BC4_R_UNORM,
+            "bc4-r-snorm" => Self::BC4_R_SNORM,
+            "bc5-rg-unorm" => Self::BC5_RG_UNORM,
+            "bc5-rg-snorm" => Self::BC5_RG_SNORM,
+            "bc6h-rgb-ufloat" => Self::BC6H_RGB_UFLOAT,
+            "bc6h-rgb-float" => Self::BC6H_RGB_FLOAT,
+            "bc7-rgba-unorm" => Self::BC7_RGBA_UNORM,
+            "bc7-rgba-unorm-srgb" => Self::BC7_RGBA_UNORM_SRGB,
+            "etc2-rgb8unorm" => Self::ETC2_RGB8UNORM,
+            "etc2-rgb8unorm-srgb" => Self::ETC2_RGB8UNORM_SRGB,
+            "etc2-rgb8a1unorm" => Self::ETC2_RGB8A1UNORM,
+            "etc2-rgb8a1unorm-srgb" => Self::ETC2_RGB8A1UNORM_SRGB,
+            "etc2-rgba8unorm" => Self::ETC2_RGBA8UNORM,
+            "etc2-rgba8unorm-srgb" => Self::ETC2_RGBA8UNORM_SRGB,
+            "eac-r11unorm" => Self::EAC_R11UNORM,
+            "eac-r11snorm" => Self::EAC_R11SNORM,
+            "eac-rg11unorm" => Self::EAC_RG11UNORM,
+            "eac-rg11snorm" => Self::EAC_RG11SNORM,
+            "astc-4x4-unorm" => Self::ASTC_4X4_UNORM,
+            "astc-4x4-unorm-srgb" => Self::ASTC_4X4_UNORM_SRGB,
+            "astc-5x4-unorm" => Self::ASTC_5X4_UNORM,
+            "astc-5x4-unorm-srgb" => Self::ASTC_5X4_UNORM_SRGB,
+            "astc-5x5-unorm" => Self::ASTC_5X5_UNORM,
+            "astc-5x5-unorm-srgb" => Self::ASTC_5X5_UNORM_SRGB,
+            "astc-6x5-unorm" => Self::ASTC_6X5_UNORM,
+            "astc-6x5-unorm-srgb" => Self::ASTC_6X5_UNORM_SRGB,
+            "astc-6x6-unorm" => Self::ASTC_6X6_UNORM,
+            "astc-6x6-unorm-srgb" => Self::ASTC_6X6_UNORM_SRGB,
+            "astc-8x5-unorm" => Self::ASTC_8X5_UNORM,
+            "astc-8x5-unorm-srgb" => Self::ASTC_8X5_UNORM_SRGB,
+            "astc-8x6-unorm" => Self::ASTC_8X6_UNORM,
+            "astc-8x6-unorm-srgb" => Self::ASTC_8X6_UNORM_SRGB,
+            "astc-8x8-unorm" => Self::ASTC_8X8_UNORM,
+            "astc-8x8-unorm-srgb" => Self::ASTC_8X8_UNORM_SRGB,
+            "astc-10x5-unorm" => Self::ASTC_10X5_UNORM,
+            "astc-10x5-unorm-srgb" => Self::ASTC_10X5_UNORM_SRGB,
+            "astc-10x6-unorm" => Self::ASTC_10X6_UNORM,
+            "astc-10x6-unorm-srgb" => Self::ASTC_10X6_UNORM_SRGB,
+            "astc-10x8-unorm" => Self::ASTC_10X8_UNORM,
+            "astc-10x8-unorm-srgb" => Self::ASTC_10X8_UNORM_SRGB,
+            "astc-10x10-unorm" => Self::ASTC_10X10_UNORM,
+            "astc-10x10-unorm-srgb" => Self::ASTC_10X10_UNORM_SRGB,
+            "astc-12x10-unorm" => Self::ASTC_12X10_UNORM,
+            "astc-12x10-unorm-srgb" => Self::ASTC_12X10_UNORM_SRGB,
+            "astc-12x12-unorm" => Self::ASTC_12X12_UNORM,
+            "astc-12x12-unorm-srgb" => Self::ASTC_12X12_UNORM_SRGB,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUTextureFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUTextureFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUTextureFormat> for emlite::Val {
     fn from(s: GPUTextureFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUTextureFormat::R8UNORM => emlite::Val::from("r8unorm"),
+            GPUTextureFormat::R8SNORM => emlite::Val::from("r8snorm"),
+            GPUTextureFormat::R8UINT => emlite::Val::from("r8uint"),
+            GPUTextureFormat::R8SINT => emlite::Val::from("r8sint"),
+            GPUTextureFormat::R16UNORM => emlite::Val::from("r16unorm"),
+            GPUTextureFormat::R16SNORM => emlite::Val::from("r16snorm"),
+            GPUTextureFormat::R16UINT => emlite::Val::from("r16uint"),
+            GPUTextureFormat::R16SINT => emlite::Val::from("r16sint"),
+            GPUTextureFormat::R16FLOAT => emlite::Val::from("r16float"),
+            GPUTextureFormat::RG8UNORM => emlite::Val::from("rg8unorm"),
+            GPUTextureFormat::RG8SNORM => emlite::Val::from("rg8snorm"),
+            GPUTextureFormat::RG8UINT => emlite::Val::from("rg8uint"),
+            GPUTextureFormat::RG8SINT => emlite::Val::from("rg8sint"),
+            GPUTextureFormat::R32UINT => emlite::Val::from("r32uint"),
+            GPUTextureFormat::R32SINT => emlite::Val::from("r32sint"),
+            GPUTextureFormat::R32FLOAT => emlite::Val::from("r32float"),
+            GPUTextureFormat::RG16UNORM => emlite::Val::from("rg16unorm"),
+            GPUTextureFormat::RG16SNORM => emlite::Val::from("rg16snorm"),
+            GPUTextureFormat::RG16UINT => emlite::Val::from("rg16uint"),
+            GPUTextureFormat::RG16SINT => emlite::Val::from("rg16sint"),
+            GPUTextureFormat::RG16FLOAT => emlite::Val::from("rg16float"),
+            GPUTextureFormat::RGBA8UNORM => emlite::Val::from("rgba8unorm"),
+            GPUTextureFormat::RGBA8UNORM_SRGB => emlite::Val::from("rgba8unorm-srgb"),
+            GPUTextureFormat::RGBA8SNORM => emlite::Val::from("rgba8snorm"),
+            GPUTextureFormat::RGBA8UINT => emlite::Val::from("rgba8uint"),
+            GPUTextureFormat::RGBA8SINT => emlite::Val::from("rgba8sint"),
+            GPUTextureFormat::BGRA8UNORM => emlite::Val::from("bgra8unorm"),
+            GPUTextureFormat::BGRA8UNORM_SRGB => emlite::Val::from("bgra8unorm-srgb"),
+            GPUTextureFormat::RGB9E5UFLOAT => emlite::Val::from("rgb9e5ufloat"),
+            GPUTextureFormat::RGB10A2UINT => emlite::Val::from("rgb10a2uint"),
+            GPUTextureFormat::RGB10A2UNORM => emlite::Val::from("rgb10a2unorm"),
+            GPUTextureFormat::RG11B10UFLOAT => emlite::Val::from("rg11b10ufloat"),
+            GPUTextureFormat::RG32UINT => emlite::Val::from("rg32uint"),
+            GPUTextureFormat::RG32SINT => emlite::Val::from("rg32sint"),
+            GPUTextureFormat::RG32FLOAT => emlite::Val::from("rg32float"),
+            GPUTextureFormat::RGBA16UNORM => emlite::Val::from("rgba16unorm"),
+            GPUTextureFormat::RGBA16SNORM => emlite::Val::from("rgba16snorm"),
+            GPUTextureFormat::RGBA16UINT => emlite::Val::from("rgba16uint"),
+            GPUTextureFormat::RGBA16SINT => emlite::Val::from("rgba16sint"),
+            GPUTextureFormat::RGBA16FLOAT => emlite::Val::from("rgba16float"),
+            GPUTextureFormat::RGBA32UINT => emlite::Val::from("rgba32uint"),
+            GPUTextureFormat::RGBA32SINT => emlite::Val::from("rgba32sint"),
+            GPUTextureFormat::RGBA32FLOAT => emlite::Val::from("rgba32float"),
+            GPUTextureFormat::STENCIL8 => emlite::Val::from("stencil8"),
+            GPUTextureFormat::DEPTH16UNORM => emlite::Val::from("depth16unorm"),
+            GPUTextureFormat::DEPTH24PLUS => emlite::Val::from("depth24plus"),
+            GPUTextureFormat::DEPTH24PLUS_STENCIL8 => emlite::Val::from("depth24plus-stencil8"),
+            GPUTextureFormat::DEPTH32FLOAT => emlite::Val::from("depth32float"),
+            GPUTextureFormat::DEPTH32FLOAT_STENCIL8 => emlite::Val::from("depth32float-stencil8"),
+            GPUTextureFormat::BC1_RGBA_UNORM => emlite::Val::from("bc1-rgba-unorm"),
+            GPUTextureFormat::BC1_RGBA_UNORM_SRGB => emlite::Val::from("bc1-rgba-unorm-srgb"),
+            GPUTextureFormat::BC2_RGBA_UNORM => emlite::Val::from("bc2-rgba-unorm"),
+            GPUTextureFormat::BC2_RGBA_UNORM_SRGB => emlite::Val::from("bc2-rgba-unorm-srgb"),
+            GPUTextureFormat::BC3_RGBA_UNORM => emlite::Val::from("bc3-rgba-unorm"),
+            GPUTextureFormat::BC3_RGBA_UNORM_SRGB => emlite::Val::from("bc3-rgba-unorm-srgb"),
+            GPUTextureFormat::BC4_R_UNORM => emlite::Val::from("bc4-r-unorm"),
+            GPUTextureFormat::BC4_R_SNORM => emlite::Val::from("bc4-r-snorm"),
+            GPUTextureFormat::BC5_RG_UNORM => emlite::Val::from("bc5-rg-unorm"),
+            GPUTextureFormat::BC5_RG_SNORM => emlite::Val::from("bc5-rg-snorm"),
+            GPUTextureFormat::BC6H_RGB_UFLOAT => emlite::Val::from("bc6h-rgb-ufloat"),
+            GPUTextureFormat::BC6H_RGB_FLOAT => emlite::Val::from("bc6h-rgb-float"),
+            GPUTextureFormat::BC7_RGBA_UNORM => emlite::Val::from("bc7-rgba-unorm"),
+            GPUTextureFormat::BC7_RGBA_UNORM_SRGB => emlite::Val::from("bc7-rgba-unorm-srgb"),
+            GPUTextureFormat::ETC2_RGB8UNORM => emlite::Val::from("etc2-rgb8unorm"),
+            GPUTextureFormat::ETC2_RGB8UNORM_SRGB => emlite::Val::from("etc2-rgb8unorm-srgb"),
+            GPUTextureFormat::ETC2_RGB8A1UNORM => emlite::Val::from("etc2-rgb8a1unorm"),
+            GPUTextureFormat::ETC2_RGB8A1UNORM_SRGB => emlite::Val::from("etc2-rgb8a1unorm-srgb"),
+            GPUTextureFormat::ETC2_RGBA8UNORM => emlite::Val::from("etc2-rgba8unorm"),
+            GPUTextureFormat::ETC2_RGBA8UNORM_SRGB => emlite::Val::from("etc2-rgba8unorm-srgb"),
+            GPUTextureFormat::EAC_R11UNORM => emlite::Val::from("eac-r11unorm"),
+            GPUTextureFormat::EAC_R11SNORM => emlite::Val::from("eac-r11snorm"),
+            GPUTextureFormat::EAC_RG11UNORM => emlite::Val::from("eac-rg11unorm"),
+            GPUTextureFormat::EAC_RG11SNORM => emlite::Val::from("eac-rg11snorm"),
+            GPUTextureFormat::ASTC_4X4_UNORM => emlite::Val::from("astc-4x4-unorm"),
+            GPUTextureFormat::ASTC_4X4_UNORM_SRGB => emlite::Val::from("astc-4x4-unorm-srgb"),
+            GPUTextureFormat::ASTC_5X4_UNORM => emlite::Val::from("astc-5x4-unorm"),
+            GPUTextureFormat::ASTC_5X4_UNORM_SRGB => emlite::Val::from("astc-5x4-unorm-srgb"),
+            GPUTextureFormat::ASTC_5X5_UNORM => emlite::Val::from("astc-5x5-unorm"),
+            GPUTextureFormat::ASTC_5X5_UNORM_SRGB => emlite::Val::from("astc-5x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_6X5_UNORM => emlite::Val::from("astc-6x5-unorm"),
+            GPUTextureFormat::ASTC_6X5_UNORM_SRGB => emlite::Val::from("astc-6x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_6X6_UNORM => emlite::Val::from("astc-6x6-unorm"),
+            GPUTextureFormat::ASTC_6X6_UNORM_SRGB => emlite::Val::from("astc-6x6-unorm-srgb"),
+            GPUTextureFormat::ASTC_8X5_UNORM => emlite::Val::from("astc-8x5-unorm"),
+            GPUTextureFormat::ASTC_8X5_UNORM_SRGB => emlite::Val::from("astc-8x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_8X6_UNORM => emlite::Val::from("astc-8x6-unorm"),
+            GPUTextureFormat::ASTC_8X6_UNORM_SRGB => emlite::Val::from("astc-8x6-unorm-srgb"),
+            GPUTextureFormat::ASTC_8X8_UNORM => emlite::Val::from("astc-8x8-unorm"),
+            GPUTextureFormat::ASTC_8X8_UNORM_SRGB => emlite::Val::from("astc-8x8-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X5_UNORM => emlite::Val::from("astc-10x5-unorm"),
+            GPUTextureFormat::ASTC_10X5_UNORM_SRGB => emlite::Val::from("astc-10x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X6_UNORM => emlite::Val::from("astc-10x6-unorm"),
+            GPUTextureFormat::ASTC_10X6_UNORM_SRGB => emlite::Val::from("astc-10x6-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X8_UNORM => emlite::Val::from("astc-10x8-unorm"),
+            GPUTextureFormat::ASTC_10X8_UNORM_SRGB => emlite::Val::from("astc-10x8-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X10_UNORM => emlite::Val::from("astc-10x10-unorm"),
+            GPUTextureFormat::ASTC_10X10_UNORM_SRGB => emlite::Val::from("astc-10x10-unorm-srgb"),
+            GPUTextureFormat::ASTC_12X10_UNORM => emlite::Val::from("astc-12x10-unorm"),
+            GPUTextureFormat::ASTC_12X10_UNORM_SRGB => emlite::Val::from("astc-12x10-unorm-srgb"),
+            GPUTextureFormat::ASTC_12X12_UNORM => emlite::Val::from("astc-12x12-unorm"),
+            GPUTextureFormat::ASTC_12X12_UNORM_SRGB => emlite::Val::from("astc-12x12-unorm-srgb"),
+        }
     }
 }
 
-impl GPUTextureFormat {
-    pub const R8UNORM: &str = "r8unorm";
-    pub const R8SNORM: &str = "r8snorm";
-    pub const R8UINT: &str = "r8uint";
-    pub const R8SINT: &str = "r8sint";
-    pub const R16UNORM: &str = "r16unorm";
-    pub const R16SNORM: &str = "r16snorm";
-    pub const R16UINT: &str = "r16uint";
-    pub const R16SINT: &str = "r16sint";
-    pub const R16FLOAT: &str = "r16float";
-    pub const RG8UNORM: &str = "rg8unorm";
-    pub const RG8SNORM: &str = "rg8snorm";
-    pub const RG8UINT: &str = "rg8uint";
-    pub const RG8SINT: &str = "rg8sint";
-    pub const R32UINT: &str = "r32uint";
-    pub const R32SINT: &str = "r32sint";
-    pub const R32FLOAT: &str = "r32float";
-    pub const RG16UNORM: &str = "rg16unorm";
-    pub const RG16SNORM: &str = "rg16snorm";
-    pub const RG16UINT: &str = "rg16uint";
-    pub const RG16SINT: &str = "rg16sint";
-    pub const RG16FLOAT: &str = "rg16float";
-    pub const RGBA8UNORM: &str = "rgba8unorm";
-    pub const RGBA8UNORM_SRGB: &str = "rgba8unorm-srgb";
-    pub const RGBA8SNORM: &str = "rgba8snorm";
-    pub const RGBA8UINT: &str = "rgba8uint";
-    pub const RGBA8SINT: &str = "rgba8sint";
-    pub const BGRA8UNORM: &str = "bgra8unorm";
-    pub const BGRA8UNORM_SRGB: &str = "bgra8unorm-srgb";
-    pub const RGB9E5UFLOAT: &str = "rgb9e5ufloat";
-    pub const RGB10A2UINT: &str = "rgb10a2uint";
-    pub const RGB10A2UNORM: &str = "rgb10a2unorm";
-    pub const RG11B10UFLOAT: &str = "rg11b10ufloat";
-    pub const RG32UINT: &str = "rg32uint";
-    pub const RG32SINT: &str = "rg32sint";
-    pub const RG32FLOAT: &str = "rg32float";
-    pub const RGBA16UNORM: &str = "rgba16unorm";
-    pub const RGBA16SNORM: &str = "rgba16snorm";
-    pub const RGBA16UINT: &str = "rgba16uint";
-    pub const RGBA16SINT: &str = "rgba16sint";
-    pub const RGBA16FLOAT: &str = "rgba16float";
-    pub const RGBA32UINT: &str = "rgba32uint";
-    pub const RGBA32SINT: &str = "rgba32sint";
-    pub const RGBA32FLOAT: &str = "rgba32float";
-    pub const STENCIL8: &str = "stencil8";
-    pub const DEPTH16UNORM: &str = "depth16unorm";
-    pub const DEPTH24PLUS: &str = "depth24plus";
-    pub const DEPTH24PLUS_STENCIL8: &str = "depth24plus-stencil8";
-    pub const DEPTH32FLOAT: &str = "depth32float";
-    pub const DEPTH32FLOAT_STENCIL8: &str = "depth32float-stencil8";
-    pub const BC1_RGBA_UNORM: &str = "bc1-rgba-unorm";
-    pub const BC1_RGBA_UNORM_SRGB: &str = "bc1-rgba-unorm-srgb";
-    pub const BC2_RGBA_UNORM: &str = "bc2-rgba-unorm";
-    pub const BC2_RGBA_UNORM_SRGB: &str = "bc2-rgba-unorm-srgb";
-    pub const BC3_RGBA_UNORM: &str = "bc3-rgba-unorm";
-    pub const BC3_RGBA_UNORM_SRGB: &str = "bc3-rgba-unorm-srgb";
-    pub const BC4_R_UNORM: &str = "bc4-r-unorm";
-    pub const BC4_R_SNORM: &str = "bc4-r-snorm";
-    pub const BC5_RG_UNORM: &str = "bc5-rg-unorm";
-    pub const BC5_RG_SNORM: &str = "bc5-rg-snorm";
-    pub const BC6H_RGB_UFLOAT: &str = "bc6h-rgb-ufloat";
-    pub const BC6H_RGB_FLOAT: &str = "bc6h-rgb-float";
-    pub const BC7_RGBA_UNORM: &str = "bc7-rgba-unorm";
-    pub const BC7_RGBA_UNORM_SRGB: &str = "bc7-rgba-unorm-srgb";
-    pub const ETC2_RGB8UNORM: &str = "etc2-rgb8unorm";
-    pub const ETC2_RGB8UNORM_SRGB: &str = "etc2-rgb8unorm-srgb";
-    pub const ETC2_RGB8A1UNORM: &str = "etc2-rgb8a1unorm";
-    pub const ETC2_RGB8A1UNORM_SRGB: &str = "etc2-rgb8a1unorm-srgb";
-    pub const ETC2_RGBA8UNORM: &str = "etc2-rgba8unorm";
-    pub const ETC2_RGBA8UNORM_SRGB: &str = "etc2-rgba8unorm-srgb";
-    pub const EAC_R11UNORM: &str = "eac-r11unorm";
-    pub const EAC_R11SNORM: &str = "eac-r11snorm";
-    pub const EAC_RG11UNORM: &str = "eac-rg11unorm";
-    pub const EAC_RG11SNORM: &str = "eac-rg11snorm";
-    pub const ASTC_4X4_UNORM: &str = "astc-4x4-unorm";
-    pub const ASTC_4X4_UNORM_SRGB: &str = "astc-4x4-unorm-srgb";
-    pub const ASTC_5X4_UNORM: &str = "astc-5x4-unorm";
-    pub const ASTC_5X4_UNORM_SRGB: &str = "astc-5x4-unorm-srgb";
-    pub const ASTC_5X5_UNORM: &str = "astc-5x5-unorm";
-    pub const ASTC_5X5_UNORM_SRGB: &str = "astc-5x5-unorm-srgb";
-    pub const ASTC_6X5_UNORM: &str = "astc-6x5-unorm";
-    pub const ASTC_6X5_UNORM_SRGB: &str = "astc-6x5-unorm-srgb";
-    pub const ASTC_6X6_UNORM: &str = "astc-6x6-unorm";
-    pub const ASTC_6X6_UNORM_SRGB: &str = "astc-6x6-unorm-srgb";
-    pub const ASTC_8X5_UNORM: &str = "astc-8x5-unorm";
-    pub const ASTC_8X5_UNORM_SRGB: &str = "astc-8x5-unorm-srgb";
-    pub const ASTC_8X6_UNORM: &str = "astc-8x6-unorm";
-    pub const ASTC_8X6_UNORM_SRGB: &str = "astc-8x6-unorm-srgb";
-    pub const ASTC_8X8_UNORM: &str = "astc-8x8-unorm";
-    pub const ASTC_8X8_UNORM_SRGB: &str = "astc-8x8-unorm-srgb";
-    pub const ASTC_10X5_UNORM: &str = "astc-10x5-unorm";
-    pub const ASTC_10X5_UNORM_SRGB: &str = "astc-10x5-unorm-srgb";
-    pub const ASTC_10X6_UNORM: &str = "astc-10x6-unorm";
-    pub const ASTC_10X6_UNORM_SRGB: &str = "astc-10x6-unorm-srgb";
-    pub const ASTC_10X8_UNORM: &str = "astc-10x8-unorm";
-    pub const ASTC_10X8_UNORM_SRGB: &str = "astc-10x8-unorm-srgb";
-    pub const ASTC_10X10_UNORM: &str = "astc-10x10-unorm";
-    pub const ASTC_10X10_UNORM_SRGB: &str = "astc-10x10-unorm-srgb";
-    pub const ASTC_12X10_UNORM: &str = "astc-12x10-unorm";
-    pub const ASTC_12X10_UNORM_SRGB: &str = "astc-12x10-unorm-srgb";
-    pub const ASTC_12X12_UNORM: &str = "astc-12x12-unorm";
-    pub const ASTC_12X12_UNORM_SRGB: &str = "astc-12x12-unorm-srgb";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUAddressMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUAddressMode {
+    CLAMP_TO_EDGE,
+    REPEAT,
+    MIRROR_REPEAT,
 }
 impl FromVal for GPUAddressMode {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUAddressMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "clamp-to-edge" => Self::CLAMP_TO_EDGE,
+            "repeat" => Self::REPEAT,
+            "mirror-repeat" => Self::MIRROR_REPEAT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUAddressMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUAddressMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUAddressMode> for emlite::Val {
     fn from(s: GPUAddressMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUAddressMode::CLAMP_TO_EDGE => emlite::Val::from("clamp-to-edge"),
+            GPUAddressMode::REPEAT => emlite::Val::from("repeat"),
+            GPUAddressMode::MIRROR_REPEAT => emlite::Val::from("mirror-repeat"),
+        }
     }
 }
 
-impl GPUAddressMode {
-    pub const CLAMP_TO_EDGE: &str = "clamp-to-edge";
-    pub const REPEAT: &str = "repeat";
-    pub const MIRROR_REPEAT: &str = "mirror-repeat";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUFilterMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUFilterMode {
+    NEAREST,
+    LINEAR,
 }
 impl FromVal for GPUFilterMode {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUFilterMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "nearest" => Self::NEAREST,
+            "linear" => Self::LINEAR,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUFilterMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUFilterMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUFilterMode> for emlite::Val {
     fn from(s: GPUFilterMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUFilterMode::NEAREST => emlite::Val::from("nearest"),
+            GPUFilterMode::LINEAR => emlite::Val::from("linear"),
+        }
     }
 }
 
-impl GPUFilterMode {
-    pub const NEAREST: &str = "nearest";
-    pub const LINEAR: &str = "linear";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUMipmapFilterMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUMipmapFilterMode {
+    NEAREST,
+    LINEAR,
 }
 impl FromVal for GPUMipmapFilterMode {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUMipmapFilterMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "nearest" => Self::NEAREST,
+            "linear" => Self::LINEAR,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUMipmapFilterMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUMipmapFilterMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUMipmapFilterMode> for emlite::Val {
     fn from(s: GPUMipmapFilterMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUMipmapFilterMode::NEAREST => emlite::Val::from("nearest"),
+            GPUMipmapFilterMode::LINEAR => emlite::Val::from("linear"),
+        }
     }
 }
 
-impl GPUMipmapFilterMode {
-    pub const NEAREST: &str = "nearest";
-    pub const LINEAR: &str = "linear";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUCompareFunction {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUCompareFunction {
+    NEVER,
+    LESS,
+    EQUAL,
+    LESS_EQUAL,
+    GREATER,
+    NOT_EQUAL,
+    GREATER_EQUAL,
+    ALWAYS,
 }
 impl FromVal for GPUCompareFunction {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUCompareFunction { inner: v.clone() }
+        match v.as_::<&str>() {
+            "never" => Self::NEVER,
+            "less" => Self::LESS,
+            "equal" => Self::EQUAL,
+            "less-equal" => Self::LESS_EQUAL,
+            "greater" => Self::GREATER,
+            "not-equal" => Self::NOT_EQUAL,
+            "greater-equal" => Self::GREATER_EQUAL,
+            "always" => Self::ALWAYS,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUCompareFunction {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUCompareFunction {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUCompareFunction> for emlite::Val {
     fn from(s: GPUCompareFunction) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUCompareFunction::NEVER => emlite::Val::from("never"),
+            GPUCompareFunction::LESS => emlite::Val::from("less"),
+            GPUCompareFunction::EQUAL => emlite::Val::from("equal"),
+            GPUCompareFunction::LESS_EQUAL => emlite::Val::from("less-equal"),
+            GPUCompareFunction::GREATER => emlite::Val::from("greater"),
+            GPUCompareFunction::NOT_EQUAL => emlite::Val::from("not-equal"),
+            GPUCompareFunction::GREATER_EQUAL => emlite::Val::from("greater-equal"),
+            GPUCompareFunction::ALWAYS => emlite::Val::from("always"),
+        }
     }
 }
 
-impl GPUCompareFunction {
-    pub const NEVER: &str = "never";
-    pub const LESS: &str = "less";
-    pub const EQUAL: &str = "equal";
-    pub const LESS_EQUAL: &str = "less-equal";
-    pub const GREATER: &str = "greater";
-    pub const NOT_EQUAL: &str = "not-equal";
-    pub const GREATER_EQUAL: &str = "greater-equal";
-    pub const ALWAYS: &str = "always";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUBufferBindingType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUBufferBindingType {
+    UNIFORM,
+    STORAGE,
+    READ_ONLY_STORAGE,
 }
 impl FromVal for GPUBufferBindingType {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUBufferBindingType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "uniform" => Self::UNIFORM,
+            "storage" => Self::STORAGE,
+            "read-only-storage" => Self::READ_ONLY_STORAGE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUBufferBindingType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUBufferBindingType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUBufferBindingType> for emlite::Val {
     fn from(s: GPUBufferBindingType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUBufferBindingType::UNIFORM => emlite::Val::from("uniform"),
+            GPUBufferBindingType::STORAGE => emlite::Val::from("storage"),
+            GPUBufferBindingType::READ_ONLY_STORAGE => emlite::Val::from("read-only-storage"),
+        }
     }
 }
 
-impl GPUBufferBindingType {
-    pub const UNIFORM: &str = "uniform";
-    pub const STORAGE: &str = "storage";
-    pub const READ_ONLY_STORAGE: &str = "read-only-storage";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUSamplerBindingType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUSamplerBindingType {
+    FILTERING,
+    NON_FILTERING,
+    COMPARISON,
 }
 impl FromVal for GPUSamplerBindingType {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUSamplerBindingType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "filtering" => Self::FILTERING,
+            "non-filtering" => Self::NON_FILTERING,
+            "comparison" => Self::COMPARISON,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUSamplerBindingType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUSamplerBindingType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUSamplerBindingType> for emlite::Val {
     fn from(s: GPUSamplerBindingType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUSamplerBindingType::FILTERING => emlite::Val::from("filtering"),
+            GPUSamplerBindingType::NON_FILTERING => emlite::Val::from("non-filtering"),
+            GPUSamplerBindingType::COMPARISON => emlite::Val::from("comparison"),
+        }
     }
 }
 
-impl GPUSamplerBindingType {
-    pub const FILTERING: &str = "filtering";
-    pub const NON_FILTERING: &str = "non-filtering";
-    pub const COMPARISON: &str = "comparison";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUTextureSampleType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUTextureSampleType {
+    FLOAT,
+    UNFILTERABLE_FLOAT,
+    DEPTH,
+    SINT,
+    UINT,
 }
 impl FromVal for GPUTextureSampleType {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUTextureSampleType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "float" => Self::FLOAT,
+            "unfilterable-float" => Self::UNFILTERABLE_FLOAT,
+            "depth" => Self::DEPTH,
+            "sint" => Self::SINT,
+            "uint" => Self::UINT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUTextureSampleType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUTextureSampleType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUTextureSampleType> for emlite::Val {
     fn from(s: GPUTextureSampleType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUTextureSampleType::FLOAT => emlite::Val::from("float"),
+            GPUTextureSampleType::UNFILTERABLE_FLOAT => emlite::Val::from("unfilterable-float"),
+            GPUTextureSampleType::DEPTH => emlite::Val::from("depth"),
+            GPUTextureSampleType::SINT => emlite::Val::from("sint"),
+            GPUTextureSampleType::UINT => emlite::Val::from("uint"),
+        }
     }
 }
 
-impl GPUTextureSampleType {
-    pub const FLOAT: &str = "float";
-    pub const UNFILTERABLE_FLOAT: &str = "unfilterable-float";
-    pub const DEPTH: &str = "depth";
-    pub const SINT: &str = "sint";
-    pub const UINT: &str = "uint";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUStorageTextureAccess {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUStorageTextureAccess {
+    WRITE_ONLY,
+    READ_ONLY,
+    READ_WRITE,
 }
 impl FromVal for GPUStorageTextureAccess {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUStorageTextureAccess { inner: v.clone() }
+        match v.as_::<&str>() {
+            "write-only" => Self::WRITE_ONLY,
+            "read-only" => Self::READ_ONLY,
+            "read-write" => Self::READ_WRITE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUStorageTextureAccess {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUStorageTextureAccess {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUStorageTextureAccess> for emlite::Val {
     fn from(s: GPUStorageTextureAccess) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUStorageTextureAccess::WRITE_ONLY => emlite::Val::from("write-only"),
+            GPUStorageTextureAccess::READ_ONLY => emlite::Val::from("read-only"),
+            GPUStorageTextureAccess::READ_WRITE => emlite::Val::from("read-write"),
+        }
     }
 }
 
-impl GPUStorageTextureAccess {
-    pub const WRITE_ONLY: &str = "write-only";
-    pub const READ_ONLY: &str = "read-only";
-    pub const READ_WRITE: &str = "read-write";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUCompilationMessageType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUCompilationMessageType {
+    ERROR,
+    WARNING,
+    INFO,
 }
 impl FromVal for GPUCompilationMessageType {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUCompilationMessageType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "error" => Self::ERROR,
+            "warning" => Self::WARNING,
+            "info" => Self::INFO,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUCompilationMessageType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUCompilationMessageType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUCompilationMessageType> for emlite::Val {
     fn from(s: GPUCompilationMessageType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUCompilationMessageType::ERROR => emlite::Val::from("error"),
+            GPUCompilationMessageType::WARNING => emlite::Val::from("warning"),
+            GPUCompilationMessageType::INFO => emlite::Val::from("info"),
+        }
     }
 }
 
-impl GPUCompilationMessageType {
-    pub const ERROR: &str = "error";
-    pub const WARNING: &str = "warning";
-    pub const INFO: &str = "info";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUPipelineErrorReason {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUPipelineErrorReason {
+    VALIDATION,
+    INTERNAL,
 }
 impl FromVal for GPUPipelineErrorReason {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUPipelineErrorReason { inner: v.clone() }
+        match v.as_::<&str>() {
+            "validation" => Self::VALIDATION,
+            "internal" => Self::INTERNAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUPipelineErrorReason {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUPipelineErrorReason {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUPipelineErrorReason> for emlite::Val {
     fn from(s: GPUPipelineErrorReason) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUPipelineErrorReason::VALIDATION => emlite::Val::from("validation"),
+            GPUPipelineErrorReason::INTERNAL => emlite::Val::from("internal"),
+        }
     }
 }
 
-impl GPUPipelineErrorReason {
-    pub const VALIDATION: &str = "validation";
-    pub const INTERNAL: &str = "internal";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUAutoLayoutMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUAutoLayoutMode {
+    AUTO,
 }
 impl FromVal for GPUAutoLayoutMode {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUAutoLayoutMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "auto" => Self::AUTO,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUAutoLayoutMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUAutoLayoutMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUAutoLayoutMode> for emlite::Val {
     fn from(s: GPUAutoLayoutMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUAutoLayoutMode::AUTO => emlite::Val::from("auto"),
+        }
     }
 }
 
-impl GPUAutoLayoutMode {
-    pub const AUTO: &str = "auto";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUPrimitiveTopology {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUPrimitiveTopology {
+    POINT_LIST,
+    LINE_LIST,
+    LINE_STRIP,
+    TRIANGLE_LIST,
+    TRIANGLE_STRIP,
 }
 impl FromVal for GPUPrimitiveTopology {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUPrimitiveTopology { inner: v.clone() }
+        match v.as_::<&str>() {
+            "point-list" => Self::POINT_LIST,
+            "line-list" => Self::LINE_LIST,
+            "line-strip" => Self::LINE_STRIP,
+            "triangle-list" => Self::TRIANGLE_LIST,
+            "triangle-strip" => Self::TRIANGLE_STRIP,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUPrimitiveTopology {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUPrimitiveTopology {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUPrimitiveTopology> for emlite::Val {
     fn from(s: GPUPrimitiveTopology) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUPrimitiveTopology::POINT_LIST => emlite::Val::from("point-list"),
+            GPUPrimitiveTopology::LINE_LIST => emlite::Val::from("line-list"),
+            GPUPrimitiveTopology::LINE_STRIP => emlite::Val::from("line-strip"),
+            GPUPrimitiveTopology::TRIANGLE_LIST => emlite::Val::from("triangle-list"),
+            GPUPrimitiveTopology::TRIANGLE_STRIP => emlite::Val::from("triangle-strip"),
+        }
     }
 }
 
-impl GPUPrimitiveTopology {
-    pub const POINT_LIST: &str = "point-list";
-    pub const LINE_LIST: &str = "line-list";
-    pub const LINE_STRIP: &str = "line-strip";
-    pub const TRIANGLE_LIST: &str = "triangle-list";
-    pub const TRIANGLE_STRIP: &str = "triangle-strip";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUFrontFace {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUFrontFace {
+    CCW,
+    CW,
 }
 impl FromVal for GPUFrontFace {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUFrontFace { inner: v.clone() }
+        match v.as_::<&str>() {
+            "ccw" => Self::CCW,
+            "cw" => Self::CW,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUFrontFace {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUFrontFace {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUFrontFace> for emlite::Val {
     fn from(s: GPUFrontFace) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUFrontFace::CCW => emlite::Val::from("ccw"),
+            GPUFrontFace::CW => emlite::Val::from("cw"),
+        }
     }
 }
 
-impl GPUFrontFace {
-    pub const CCW: &str = "ccw";
-    pub const CW: &str = "cw";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUCullMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUCullMode {
+    NONE,
+    FRONT,
+    BACK,
 }
 impl FromVal for GPUCullMode {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUCullMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "front" => Self::FRONT,
+            "back" => Self::BACK,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUCullMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUCullMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUCullMode> for emlite::Val {
     fn from(s: GPUCullMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUCullMode::NONE => emlite::Val::from("none"),
+            GPUCullMode::FRONT => emlite::Val::from("front"),
+            GPUCullMode::BACK => emlite::Val::from("back"),
+        }
     }
 }
 
-impl GPUCullMode {
-    pub const NONE: &str = "none";
-    pub const FRONT: &str = "front";
-    pub const BACK: &str = "back";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUBlendFactor {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUBlendFactor {
+    ZERO,
+    ONE,
+    SRC,
+    ONE_MINUS_SRC,
+    SRC_ALPHA,
+    ONE_MINUS_SRC_ALPHA,
+    DST,
+    ONE_MINUS_DST,
+    DST_ALPHA,
+    ONE_MINUS_DST_ALPHA,
+    SRC_ALPHA_SATURATED,
+    CONSTANT,
+    ONE_MINUS_CONSTANT,
+    SRC1,
+    ONE_MINUS_SRC1,
+    SRC1_ALPHA,
+    ONE_MINUS_SRC1_ALPHA,
 }
 impl FromVal for GPUBlendFactor {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUBlendFactor { inner: v.clone() }
+        match v.as_::<&str>() {
+            "zero" => Self::ZERO,
+            "one" => Self::ONE,
+            "src" => Self::SRC,
+            "one-minus-src" => Self::ONE_MINUS_SRC,
+            "src-alpha" => Self::SRC_ALPHA,
+            "one-minus-src-alpha" => Self::ONE_MINUS_SRC_ALPHA,
+            "dst" => Self::DST,
+            "one-minus-dst" => Self::ONE_MINUS_DST,
+            "dst-alpha" => Self::DST_ALPHA,
+            "one-minus-dst-alpha" => Self::ONE_MINUS_DST_ALPHA,
+            "src-alpha-saturated" => Self::SRC_ALPHA_SATURATED,
+            "constant" => Self::CONSTANT,
+            "one-minus-constant" => Self::ONE_MINUS_CONSTANT,
+            "src1" => Self::SRC1,
+            "one-minus-src1" => Self::ONE_MINUS_SRC1,
+            "src1-alpha" => Self::SRC1_ALPHA,
+            "one-minus-src1-alpha" => Self::ONE_MINUS_SRC1_ALPHA,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUBlendFactor {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUBlendFactor {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUBlendFactor> for emlite::Val {
     fn from(s: GPUBlendFactor) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUBlendFactor::ZERO => emlite::Val::from("zero"),
+            GPUBlendFactor::ONE => emlite::Val::from("one"),
+            GPUBlendFactor::SRC => emlite::Val::from("src"),
+            GPUBlendFactor::ONE_MINUS_SRC => emlite::Val::from("one-minus-src"),
+            GPUBlendFactor::SRC_ALPHA => emlite::Val::from("src-alpha"),
+            GPUBlendFactor::ONE_MINUS_SRC_ALPHA => emlite::Val::from("one-minus-src-alpha"),
+            GPUBlendFactor::DST => emlite::Val::from("dst"),
+            GPUBlendFactor::ONE_MINUS_DST => emlite::Val::from("one-minus-dst"),
+            GPUBlendFactor::DST_ALPHA => emlite::Val::from("dst-alpha"),
+            GPUBlendFactor::ONE_MINUS_DST_ALPHA => emlite::Val::from("one-minus-dst-alpha"),
+            GPUBlendFactor::SRC_ALPHA_SATURATED => emlite::Val::from("src-alpha-saturated"),
+            GPUBlendFactor::CONSTANT => emlite::Val::from("constant"),
+            GPUBlendFactor::ONE_MINUS_CONSTANT => emlite::Val::from("one-minus-constant"),
+            GPUBlendFactor::SRC1 => emlite::Val::from("src1"),
+            GPUBlendFactor::ONE_MINUS_SRC1 => emlite::Val::from("one-minus-src1"),
+            GPUBlendFactor::SRC1_ALPHA => emlite::Val::from("src1-alpha"),
+            GPUBlendFactor::ONE_MINUS_SRC1_ALPHA => emlite::Val::from("one-minus-src1-alpha"),
+        }
     }
 }
 
-impl GPUBlendFactor {
-    pub const ZERO: &str = "zero";
-    pub const ONE: &str = "one";
-    pub const SRC: &str = "src";
-    pub const ONE_MINUS_SRC: &str = "one-minus-src";
-    pub const SRC_ALPHA: &str = "src-alpha";
-    pub const ONE_MINUS_SRC_ALPHA: &str = "one-minus-src-alpha";
-    pub const DST: &str = "dst";
-    pub const ONE_MINUS_DST: &str = "one-minus-dst";
-    pub const DST_ALPHA: &str = "dst-alpha";
-    pub const ONE_MINUS_DST_ALPHA: &str = "one-minus-dst-alpha";
-    pub const SRC_ALPHA_SATURATED: &str = "src-alpha-saturated";
-    pub const CONSTANT: &str = "constant";
-    pub const ONE_MINUS_CONSTANT: &str = "one-minus-constant";
-    pub const SRC1: &str = "src1";
-    pub const ONE_MINUS_SRC1: &str = "one-minus-src1";
-    pub const SRC1_ALPHA: &str = "src1-alpha";
-    pub const ONE_MINUS_SRC1_ALPHA: &str = "one-minus-src1-alpha";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUBlendOperation {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUBlendOperation {
+    ADD,
+    SUBTRACT,
+    REVERSE_SUBTRACT,
+    MIN,
+    MAX,
 }
 impl FromVal for GPUBlendOperation {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUBlendOperation { inner: v.clone() }
+        match v.as_::<&str>() {
+            "add" => Self::ADD,
+            "subtract" => Self::SUBTRACT,
+            "reverse-subtract" => Self::REVERSE_SUBTRACT,
+            "min" => Self::MIN,
+            "max" => Self::MAX,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUBlendOperation {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUBlendOperation {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUBlendOperation> for emlite::Val {
     fn from(s: GPUBlendOperation) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUBlendOperation::ADD => emlite::Val::from("add"),
+            GPUBlendOperation::SUBTRACT => emlite::Val::from("subtract"),
+            GPUBlendOperation::REVERSE_SUBTRACT => emlite::Val::from("reverse-subtract"),
+            GPUBlendOperation::MIN => emlite::Val::from("min"),
+            GPUBlendOperation::MAX => emlite::Val::from("max"),
+        }
     }
 }
 
-impl GPUBlendOperation {
-    pub const ADD: &str = "add";
-    pub const SUBTRACT: &str = "subtract";
-    pub const REVERSE_SUBTRACT: &str = "reverse-subtract";
-    pub const MIN: &str = "min";
-    pub const MAX: &str = "max";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUStencilOperation {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUStencilOperation {
+    KEEP,
+    ZERO,
+    REPLACE,
+    INVERT,
+    INCREMENT_CLAMP,
+    DECREMENT_CLAMP,
+    INCREMENT_WRAP,
+    DECREMENT_WRAP,
 }
 impl FromVal for GPUStencilOperation {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUStencilOperation { inner: v.clone() }
+        match v.as_::<&str>() {
+            "keep" => Self::KEEP,
+            "zero" => Self::ZERO,
+            "replace" => Self::REPLACE,
+            "invert" => Self::INVERT,
+            "increment-clamp" => Self::INCREMENT_CLAMP,
+            "decrement-clamp" => Self::DECREMENT_CLAMP,
+            "increment-wrap" => Self::INCREMENT_WRAP,
+            "decrement-wrap" => Self::DECREMENT_WRAP,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUStencilOperation {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUStencilOperation {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUStencilOperation> for emlite::Val {
     fn from(s: GPUStencilOperation) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUStencilOperation::KEEP => emlite::Val::from("keep"),
+            GPUStencilOperation::ZERO => emlite::Val::from("zero"),
+            GPUStencilOperation::REPLACE => emlite::Val::from("replace"),
+            GPUStencilOperation::INVERT => emlite::Val::from("invert"),
+            GPUStencilOperation::INCREMENT_CLAMP => emlite::Val::from("increment-clamp"),
+            GPUStencilOperation::DECREMENT_CLAMP => emlite::Val::from("decrement-clamp"),
+            GPUStencilOperation::INCREMENT_WRAP => emlite::Val::from("increment-wrap"),
+            GPUStencilOperation::DECREMENT_WRAP => emlite::Val::from("decrement-wrap"),
+        }
     }
 }
 
-impl GPUStencilOperation {
-    pub const KEEP: &str = "keep";
-    pub const ZERO: &str = "zero";
-    pub const REPLACE: &str = "replace";
-    pub const INVERT: &str = "invert";
-    pub const INCREMENT_CLAMP: &str = "increment-clamp";
-    pub const DECREMENT_CLAMP: &str = "decrement-clamp";
-    pub const INCREMENT_WRAP: &str = "increment-wrap";
-    pub const DECREMENT_WRAP: &str = "decrement-wrap";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUIndexFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUIndexFormat {
+    UINT16,
+    UINT32,
 }
 impl FromVal for GPUIndexFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUIndexFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "uint16" => Self::UINT16,
+            "uint32" => Self::UINT32,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUIndexFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUIndexFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUIndexFormat> for emlite::Val {
     fn from(s: GPUIndexFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUIndexFormat::UINT16 => emlite::Val::from("uint16"),
+            GPUIndexFormat::UINT32 => emlite::Val::from("uint32"),
+        }
     }
 }
 
-impl GPUIndexFormat {
-    pub const UINT16: &str = "uint16";
-    pub const UINT32: &str = "uint32";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUVertexFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUVertexFormat {
+    UINT8,
+    UINT8X2,
+    UINT8X4,
+    SINT8,
+    SINT8X2,
+    SINT8X4,
+    UNORM8,
+    UNORM8X2,
+    UNORM8X4,
+    SNORM8,
+    SNORM8X2,
+    SNORM8X4,
+    UINT16,
+    UINT16X2,
+    UINT16X4,
+    SINT16,
+    SINT16X2,
+    SINT16X4,
+    UNORM16,
+    UNORM16X2,
+    UNORM16X4,
+    SNORM16,
+    SNORM16X2,
+    SNORM16X4,
+    FLOAT16,
+    FLOAT16X2,
+    FLOAT16X4,
+    FLOAT32,
+    FLOAT32X2,
+    FLOAT32X3,
+    FLOAT32X4,
+    UINT32,
+    UINT32X2,
+    UINT32X3,
+    UINT32X4,
+    SINT32,
+    SINT32X2,
+    SINT32X3,
+    SINT32X4,
+    UNORM10_10_10_2,
+    UNORM8X4_BGRA,
 }
 impl FromVal for GPUVertexFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUVertexFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "uint8" => Self::UINT8,
+            "uint8x2" => Self::UINT8X2,
+            "uint8x4" => Self::UINT8X4,
+            "sint8" => Self::SINT8,
+            "sint8x2" => Self::SINT8X2,
+            "sint8x4" => Self::SINT8X4,
+            "unorm8" => Self::UNORM8,
+            "unorm8x2" => Self::UNORM8X2,
+            "unorm8x4" => Self::UNORM8X4,
+            "snorm8" => Self::SNORM8,
+            "snorm8x2" => Self::SNORM8X2,
+            "snorm8x4" => Self::SNORM8X4,
+            "uint16" => Self::UINT16,
+            "uint16x2" => Self::UINT16X2,
+            "uint16x4" => Self::UINT16X4,
+            "sint16" => Self::SINT16,
+            "sint16x2" => Self::SINT16X2,
+            "sint16x4" => Self::SINT16X4,
+            "unorm16" => Self::UNORM16,
+            "unorm16x2" => Self::UNORM16X2,
+            "unorm16x4" => Self::UNORM16X4,
+            "snorm16" => Self::SNORM16,
+            "snorm16x2" => Self::SNORM16X2,
+            "snorm16x4" => Self::SNORM16X4,
+            "float16" => Self::FLOAT16,
+            "float16x2" => Self::FLOAT16X2,
+            "float16x4" => Self::FLOAT16X4,
+            "float32" => Self::FLOAT32,
+            "float32x2" => Self::FLOAT32X2,
+            "float32x3" => Self::FLOAT32X3,
+            "float32x4" => Self::FLOAT32X4,
+            "uint32" => Self::UINT32,
+            "uint32x2" => Self::UINT32X2,
+            "uint32x3" => Self::UINT32X3,
+            "uint32x4" => Self::UINT32X4,
+            "sint32" => Self::SINT32,
+            "sint32x2" => Self::SINT32X2,
+            "sint32x3" => Self::SINT32X3,
+            "sint32x4" => Self::SINT32X4,
+            "unorm10-10-10-2" => Self::UNORM10_10_10_2,
+            "unorm8x4-bgra" => Self::UNORM8X4_BGRA,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUVertexFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUVertexFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUVertexFormat> for emlite::Val {
     fn from(s: GPUVertexFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUVertexFormat::UINT8 => emlite::Val::from("uint8"),
+            GPUVertexFormat::UINT8X2 => emlite::Val::from("uint8x2"),
+            GPUVertexFormat::UINT8X4 => emlite::Val::from("uint8x4"),
+            GPUVertexFormat::SINT8 => emlite::Val::from("sint8"),
+            GPUVertexFormat::SINT8X2 => emlite::Val::from("sint8x2"),
+            GPUVertexFormat::SINT8X4 => emlite::Val::from("sint8x4"),
+            GPUVertexFormat::UNORM8 => emlite::Val::from("unorm8"),
+            GPUVertexFormat::UNORM8X2 => emlite::Val::from("unorm8x2"),
+            GPUVertexFormat::UNORM8X4 => emlite::Val::from("unorm8x4"),
+            GPUVertexFormat::SNORM8 => emlite::Val::from("snorm8"),
+            GPUVertexFormat::SNORM8X2 => emlite::Val::from("snorm8x2"),
+            GPUVertexFormat::SNORM8X4 => emlite::Val::from("snorm8x4"),
+            GPUVertexFormat::UINT16 => emlite::Val::from("uint16"),
+            GPUVertexFormat::UINT16X2 => emlite::Val::from("uint16x2"),
+            GPUVertexFormat::UINT16X4 => emlite::Val::from("uint16x4"),
+            GPUVertexFormat::SINT16 => emlite::Val::from("sint16"),
+            GPUVertexFormat::SINT16X2 => emlite::Val::from("sint16x2"),
+            GPUVertexFormat::SINT16X4 => emlite::Val::from("sint16x4"),
+            GPUVertexFormat::UNORM16 => emlite::Val::from("unorm16"),
+            GPUVertexFormat::UNORM16X2 => emlite::Val::from("unorm16x2"),
+            GPUVertexFormat::UNORM16X4 => emlite::Val::from("unorm16x4"),
+            GPUVertexFormat::SNORM16 => emlite::Val::from("snorm16"),
+            GPUVertexFormat::SNORM16X2 => emlite::Val::from("snorm16x2"),
+            GPUVertexFormat::SNORM16X4 => emlite::Val::from("snorm16x4"),
+            GPUVertexFormat::FLOAT16 => emlite::Val::from("float16"),
+            GPUVertexFormat::FLOAT16X2 => emlite::Val::from("float16x2"),
+            GPUVertexFormat::FLOAT16X4 => emlite::Val::from("float16x4"),
+            GPUVertexFormat::FLOAT32 => emlite::Val::from("float32"),
+            GPUVertexFormat::FLOAT32X2 => emlite::Val::from("float32x2"),
+            GPUVertexFormat::FLOAT32X3 => emlite::Val::from("float32x3"),
+            GPUVertexFormat::FLOAT32X4 => emlite::Val::from("float32x4"),
+            GPUVertexFormat::UINT32 => emlite::Val::from("uint32"),
+            GPUVertexFormat::UINT32X2 => emlite::Val::from("uint32x2"),
+            GPUVertexFormat::UINT32X3 => emlite::Val::from("uint32x3"),
+            GPUVertexFormat::UINT32X4 => emlite::Val::from("uint32x4"),
+            GPUVertexFormat::SINT32 => emlite::Val::from("sint32"),
+            GPUVertexFormat::SINT32X2 => emlite::Val::from("sint32x2"),
+            GPUVertexFormat::SINT32X3 => emlite::Val::from("sint32x3"),
+            GPUVertexFormat::SINT32X4 => emlite::Val::from("sint32x4"),
+            GPUVertexFormat::UNORM10_10_10_2 => emlite::Val::from("unorm10-10-10-2"),
+            GPUVertexFormat::UNORM8X4_BGRA => emlite::Val::from("unorm8x4-bgra"),
+        }
     }
 }
 
-impl GPUVertexFormat {
-    pub const UINT8: &str = "uint8";
-    pub const UINT8X2: &str = "uint8x2";
-    pub const UINT8X4: &str = "uint8x4";
-    pub const SINT8: &str = "sint8";
-    pub const SINT8X2: &str = "sint8x2";
-    pub const SINT8X4: &str = "sint8x4";
-    pub const UNORM8: &str = "unorm8";
-    pub const UNORM8X2: &str = "unorm8x2";
-    pub const UNORM8X4: &str = "unorm8x4";
-    pub const SNORM8: &str = "snorm8";
-    pub const SNORM8X2: &str = "snorm8x2";
-    pub const SNORM8X4: &str = "snorm8x4";
-    pub const UINT16: &str = "uint16";
-    pub const UINT16X2: &str = "uint16x2";
-    pub const UINT16X4: &str = "uint16x4";
-    pub const SINT16: &str = "sint16";
-    pub const SINT16X2: &str = "sint16x2";
-    pub const SINT16X4: &str = "sint16x4";
-    pub const UNORM16: &str = "unorm16";
-    pub const UNORM16X2: &str = "unorm16x2";
-    pub const UNORM16X4: &str = "unorm16x4";
-    pub const SNORM16: &str = "snorm16";
-    pub const SNORM16X2: &str = "snorm16x2";
-    pub const SNORM16X4: &str = "snorm16x4";
-    pub const FLOAT16: &str = "float16";
-    pub const FLOAT16X2: &str = "float16x2";
-    pub const FLOAT16X4: &str = "float16x4";
-    pub const FLOAT32: &str = "float32";
-    pub const FLOAT32X2: &str = "float32x2";
-    pub const FLOAT32X3: &str = "float32x3";
-    pub const FLOAT32X4: &str = "float32x4";
-    pub const UINT32: &str = "uint32";
-    pub const UINT32X2: &str = "uint32x2";
-    pub const UINT32X3: &str = "uint32x3";
-    pub const UINT32X4: &str = "uint32x4";
-    pub const SINT32: &str = "sint32";
-    pub const SINT32X2: &str = "sint32x2";
-    pub const SINT32X3: &str = "sint32x3";
-    pub const SINT32X4: &str = "sint32x4";
-    pub const UNORM10_10_10_2: &str = "unorm10-10-10-2";
-    pub const UNORM8X4_BGRA: &str = "unorm8x4-bgra";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUVertexStepMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUVertexStepMode {
+    VERTEX,
+    INSTANCE,
 }
 impl FromVal for GPUVertexStepMode {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUVertexStepMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "vertex" => Self::VERTEX,
+            "instance" => Self::INSTANCE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUVertexStepMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUVertexStepMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUVertexStepMode> for emlite::Val {
     fn from(s: GPUVertexStepMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUVertexStepMode::VERTEX => emlite::Val::from("vertex"),
+            GPUVertexStepMode::INSTANCE => emlite::Val::from("instance"),
+        }
     }
 }
 
-impl GPUVertexStepMode {
-    pub const VERTEX: &str = "vertex";
-    pub const INSTANCE: &str = "instance";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPULoadOp {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPULoadOp {
+    LOAD,
+    CLEAR,
 }
 impl FromVal for GPULoadOp {
     fn from_val(v: &emlite::Val) -> Self {
-        GPULoadOp { inner: v.clone() }
+        match v.as_::<&str>() {
+            "load" => Self::LOAD,
+            "clear" => Self::CLEAR,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPULoadOp {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPULoadOp {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPULoadOp> for emlite::Val {
     fn from(s: GPULoadOp) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPULoadOp::LOAD => emlite::Val::from("load"),
+            GPULoadOp::CLEAR => emlite::Val::from("clear"),
+        }
     }
 }
 
-impl GPULoadOp {
-    pub const LOAD: &str = "load";
-    pub const CLEAR: &str = "clear";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUStoreOp {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUStoreOp {
+    STORE,
+    DISCARD,
 }
 impl FromVal for GPUStoreOp {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUStoreOp { inner: v.clone() }
+        match v.as_::<&str>() {
+            "store" => Self::STORE,
+            "discard" => Self::DISCARD,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUStoreOp {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUStoreOp {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUStoreOp> for emlite::Val {
     fn from(s: GPUStoreOp) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUStoreOp::STORE => emlite::Val::from("store"),
+            GPUStoreOp::DISCARD => emlite::Val::from("discard"),
+        }
     }
 }
 
-impl GPUStoreOp {
-    pub const STORE: &str = "store";
-    pub const DISCARD: &str = "discard";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUQueryType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUQueryType {
+    OCCLUSION,
+    TIMESTAMP,
 }
 impl FromVal for GPUQueryType {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUQueryType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "occlusion" => Self::OCCLUSION,
+            "timestamp" => Self::TIMESTAMP,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUQueryType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUQueryType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUQueryType> for emlite::Val {
     fn from(s: GPUQueryType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUQueryType::OCCLUSION => emlite::Val::from("occlusion"),
+            GPUQueryType::TIMESTAMP => emlite::Val::from("timestamp"),
+        }
     }
 }
 
-impl GPUQueryType {
-    pub const OCCLUSION: &str = "occlusion";
-    pub const TIMESTAMP: &str = "timestamp";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUCanvasAlphaMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUCanvasAlphaMode {
+    OPAQUE,
+    PREMULTIPLIED,
 }
 impl FromVal for GPUCanvasAlphaMode {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUCanvasAlphaMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "opaque" => Self::OPAQUE,
+            "premultiplied" => Self::PREMULTIPLIED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUCanvasAlphaMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUCanvasAlphaMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUCanvasAlphaMode> for emlite::Val {
     fn from(s: GPUCanvasAlphaMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUCanvasAlphaMode::OPAQUE => emlite::Val::from("opaque"),
+            GPUCanvasAlphaMode::PREMULTIPLIED => emlite::Val::from("premultiplied"),
+        }
     }
 }
 
-impl GPUCanvasAlphaMode {
-    pub const OPAQUE: &str = "opaque";
-    pub const PREMULTIPLIED: &str = "premultiplied";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUCanvasToneMappingMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUCanvasToneMappingMode {
+    STANDARD,
+    EXTENDED,
 }
 impl FromVal for GPUCanvasToneMappingMode {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUCanvasToneMappingMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "standard" => Self::STANDARD,
+            "extended" => Self::EXTENDED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUCanvasToneMappingMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUCanvasToneMappingMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUCanvasToneMappingMode> for emlite::Val {
     fn from(s: GPUCanvasToneMappingMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUCanvasToneMappingMode::STANDARD => emlite::Val::from("standard"),
+            GPUCanvasToneMappingMode::EXTENDED => emlite::Val::from("extended"),
+        }
     }
 }
 
-impl GPUCanvasToneMappingMode {
-    pub const STANDARD: &str = "standard";
-    pub const EXTENDED: &str = "extended";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUDeviceLostReason {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUDeviceLostReason {
+    UNKNOWN,
+    DESTROYED,
 }
 impl FromVal for GPUDeviceLostReason {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUDeviceLostReason { inner: v.clone() }
+        match v.as_::<&str>() {
+            "unknown" => Self::UNKNOWN,
+            "destroyed" => Self::DESTROYED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUDeviceLostReason {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUDeviceLostReason {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUDeviceLostReason> for emlite::Val {
     fn from(s: GPUDeviceLostReason) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUDeviceLostReason::UNKNOWN => emlite::Val::from("unknown"),
+            GPUDeviceLostReason::DESTROYED => emlite::Val::from("destroyed"),
+        }
     }
 }
 
-impl GPUDeviceLostReason {
-    pub const UNKNOWN: &str = "unknown";
-    pub const DESTROYED: &str = "destroyed";
-}
-
-#[derive(Clone, Debug)]
-pub struct GPUErrorFilter {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum GPUErrorFilter {
+    VALIDATION,
+    OUT_OF_MEMORY,
+    INTERNAL,
 }
 impl FromVal for GPUErrorFilter {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUErrorFilter { inner: v.clone() }
+        match v.as_::<&str>() {
+            "validation" => Self::VALIDATION,
+            "out-of-memory" => Self::OUT_OF_MEMORY,
+            "internal" => Self::INTERNAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for GPUErrorFilter {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for GPUErrorFilter {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<GPUErrorFilter> for emlite::Val {
     fn from(s: GPUErrorFilter) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            GPUErrorFilter::VALIDATION => emlite::Val::from("validation"),
+            GPUErrorFilter::OUT_OF_MEMORY => emlite::Val::from("out-of-memory"),
+            GPUErrorFilter::INTERNAL => emlite::Val::from("internal"),
+        }
     }
 }
 
-impl GPUErrorFilter {
-    pub const VALIDATION: &str = "validation";
-    pub const OUT_OF_MEMORY: &str = "out-of-memory";
-    pub const INTERNAL: &str = "internal";
-}
-
-#[derive(Clone, Debug)]
-pub struct HIDUnitSystem {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum HIDUnitSystem {
+    NONE,
+    SI_LINEAR,
+    SI_ROTATION,
+    ENGLISH_LINEAR,
+    ENGLISH_ROTATION,
+    VENDOR_DEFINED,
+    RESERVED,
 }
 impl FromVal for HIDUnitSystem {
     fn from_val(v: &emlite::Val) -> Self {
-        HIDUnitSystem { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "si-linear" => Self::SI_LINEAR,
+            "si-rotation" => Self::SI_ROTATION,
+            "english-linear" => Self::ENGLISH_LINEAR,
+            "english-rotation" => Self::ENGLISH_ROTATION,
+            "vendor-defined" => Self::VENDOR_DEFINED,
+            "reserved" => Self::RESERVED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for HIDUnitSystem {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for HIDUnitSystem {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<HIDUnitSystem> for emlite::Val {
     fn from(s: HIDUnitSystem) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            HIDUnitSystem::NONE => emlite::Val::from("none"),
+            HIDUnitSystem::SI_LINEAR => emlite::Val::from("si-linear"),
+            HIDUnitSystem::SI_ROTATION => emlite::Val::from("si-rotation"),
+            HIDUnitSystem::ENGLISH_LINEAR => emlite::Val::from("english-linear"),
+            HIDUnitSystem::ENGLISH_ROTATION => emlite::Val::from("english-rotation"),
+            HIDUnitSystem::VENDOR_DEFINED => emlite::Val::from("vendor-defined"),
+            HIDUnitSystem::RESERVED => emlite::Val::from("reserved"),
+        }
     }
 }
 
-impl HIDUnitSystem {
-    pub const NONE: &str = "none";
-    pub const SI_LINEAR: &str = "si-linear";
-    pub const SI_ROTATION: &str = "si-rotation";
-    pub const ENGLISH_LINEAR: &str = "english-linear";
-    pub const ENGLISH_ROTATION: &str = "english-rotation";
-    pub const VENDOR_DEFINED: &str = "vendor-defined";
-    pub const RESERVED: &str = "reserved";
-}
-
-#[derive(Clone, Debug)]
-pub struct MIDIPortType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MIDIPortType {
+    INPUT,
+    OUTPUT,
 }
 impl FromVal for MIDIPortType {
     fn from_val(v: &emlite::Val) -> Self {
-        MIDIPortType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "input" => Self::INPUT,
+            "output" => Self::OUTPUT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MIDIPortType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MIDIPortType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MIDIPortType> for emlite::Val {
     fn from(s: MIDIPortType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MIDIPortType::INPUT => emlite::Val::from("input"),
+            MIDIPortType::OUTPUT => emlite::Val::from("output"),
+        }
     }
 }
 
-impl MIDIPortType {
-    pub const INPUT: &str = "input";
-    pub const OUTPUT: &str = "output";
-}
-
-#[derive(Clone, Debug)]
-pub struct MIDIPortDeviceState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MIDIPortDeviceState {
+    DISCONNECTED,
+    CONNECTED,
 }
 impl FromVal for MIDIPortDeviceState {
     fn from_val(v: &emlite::Val) -> Self {
-        MIDIPortDeviceState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "disconnected" => Self::DISCONNECTED,
+            "connected" => Self::CONNECTED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MIDIPortDeviceState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MIDIPortDeviceState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MIDIPortDeviceState> for emlite::Val {
     fn from(s: MIDIPortDeviceState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MIDIPortDeviceState::DISCONNECTED => emlite::Val::from("disconnected"),
+            MIDIPortDeviceState::CONNECTED => emlite::Val::from("connected"),
+        }
     }
 }
 
-impl MIDIPortDeviceState {
-    pub const DISCONNECTED: &str = "disconnected";
-    pub const CONNECTED: &str = "connected";
-}
-
-#[derive(Clone, Debug)]
-pub struct MIDIPortConnectionState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MIDIPortConnectionState {
+    OPEN,
+    CLOSED,
+    PENDING,
 }
 impl FromVal for MIDIPortConnectionState {
     fn from_val(v: &emlite::Val) -> Self {
-        MIDIPortConnectionState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "open" => Self::OPEN,
+            "closed" => Self::CLOSED,
+            "pending" => Self::PENDING,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MIDIPortConnectionState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MIDIPortConnectionState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MIDIPortConnectionState> for emlite::Val {
     fn from(s: MIDIPortConnectionState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MIDIPortConnectionState::OPEN => emlite::Val::from("open"),
+            MIDIPortConnectionState::CLOSED => emlite::Val::from("closed"),
+            MIDIPortConnectionState::PENDING => emlite::Val::from("pending"),
+        }
     }
 }
 
-impl MIDIPortConnectionState {
-    pub const OPEN: &str = "open";
-    pub const CLOSED: &str = "closed";
-    pub const PENDING: &str = "pending";
-}
-
-#[derive(Clone, Debug)]
-pub struct MLPowerPreference {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MLPowerPreference {
+    DEFAULT,
+    HIGH_PERFORMANCE,
+    LOW_POWER,
 }
 impl FromVal for MLPowerPreference {
     fn from_val(v: &emlite::Val) -> Self {
-        MLPowerPreference { inner: v.clone() }
+        match v.as_::<&str>() {
+            "default" => Self::DEFAULT,
+            "high-performance" => Self::HIGH_PERFORMANCE,
+            "low-power" => Self::LOW_POWER,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MLPowerPreference {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MLPowerPreference {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MLPowerPreference> for emlite::Val {
     fn from(s: MLPowerPreference) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MLPowerPreference::DEFAULT => emlite::Val::from("default"),
+            MLPowerPreference::HIGH_PERFORMANCE => emlite::Val::from("high-performance"),
+            MLPowerPreference::LOW_POWER => emlite::Val::from("low-power"),
+        }
     }
 }
 
-impl MLPowerPreference {
-    pub const DEFAULT: &str = "default";
-    pub const HIGH_PERFORMANCE: &str = "high-performance";
-    pub const LOW_POWER: &str = "low-power";
-}
-
-#[derive(Clone, Debug)]
-pub struct MLInputOperandLayout {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MLInputOperandLayout {
+    NCHW,
+    NHWC,
 }
 impl FromVal for MLInputOperandLayout {
     fn from_val(v: &emlite::Val) -> Self {
-        MLInputOperandLayout { inner: v.clone() }
+        match v.as_::<&str>() {
+            "nchw" => Self::NCHW,
+            "nhwc" => Self::NHWC,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MLInputOperandLayout {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MLInputOperandLayout {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MLInputOperandLayout> for emlite::Val {
     fn from(s: MLInputOperandLayout) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MLInputOperandLayout::NCHW => emlite::Val::from("nchw"),
+            MLInputOperandLayout::NHWC => emlite::Val::from("nhwc"),
+        }
     }
 }
 
-impl MLInputOperandLayout {
-    pub const NCHW: &str = "nchw";
-    pub const NHWC: &str = "nhwc";
-}
-
-#[derive(Clone, Debug)]
-pub struct MLOperandDataType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MLOperandDataType {
+    FLOAT32,
+    FLOAT16,
+    INT32,
+    UINT32,
+    INT64,
+    UINT64,
+    INT8,
+    UINT8,
 }
 impl FromVal for MLOperandDataType {
     fn from_val(v: &emlite::Val) -> Self {
-        MLOperandDataType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "float32" => Self::FLOAT32,
+            "float16" => Self::FLOAT16,
+            "int32" => Self::INT32,
+            "uint32" => Self::UINT32,
+            "int64" => Self::INT64,
+            "uint64" => Self::UINT64,
+            "int8" => Self::INT8,
+            "uint8" => Self::UINT8,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MLOperandDataType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MLOperandDataType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MLOperandDataType> for emlite::Val {
     fn from(s: MLOperandDataType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MLOperandDataType::FLOAT32 => emlite::Val::from("float32"),
+            MLOperandDataType::FLOAT16 => emlite::Val::from("float16"),
+            MLOperandDataType::INT32 => emlite::Val::from("int32"),
+            MLOperandDataType::UINT32 => emlite::Val::from("uint32"),
+            MLOperandDataType::INT64 => emlite::Val::from("int64"),
+            MLOperandDataType::UINT64 => emlite::Val::from("uint64"),
+            MLOperandDataType::INT8 => emlite::Val::from("int8"),
+            MLOperandDataType::UINT8 => emlite::Val::from("uint8"),
+        }
     }
 }
 
-impl MLOperandDataType {
-    pub const FLOAT32: &str = "float32";
-    pub const FLOAT16: &str = "float16";
-    pub const INT32: &str = "int32";
-    pub const UINT32: &str = "uint32";
-    pub const INT64: &str = "int64";
-    pub const UINT64: &str = "uint64";
-    pub const INT8: &str = "int8";
-    pub const UINT8: &str = "uint8";
-}
-
-#[derive(Clone, Debug)]
-pub struct MLConv2dFilterOperandLayout {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MLConv2dFilterOperandLayout {
+    OIHW,
+    HWIO,
+    OHWI,
+    IHWO,
 }
 impl FromVal for MLConv2dFilterOperandLayout {
     fn from_val(v: &emlite::Val) -> Self {
-        MLConv2dFilterOperandLayout { inner: v.clone() }
+        match v.as_::<&str>() {
+            "oihw" => Self::OIHW,
+            "hwio" => Self::HWIO,
+            "ohwi" => Self::OHWI,
+            "ihwo" => Self::IHWO,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MLConv2dFilterOperandLayout {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MLConv2dFilterOperandLayout {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MLConv2dFilterOperandLayout> for emlite::Val {
     fn from(s: MLConv2dFilterOperandLayout) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MLConv2dFilterOperandLayout::OIHW => emlite::Val::from("oihw"),
+            MLConv2dFilterOperandLayout::HWIO => emlite::Val::from("hwio"),
+            MLConv2dFilterOperandLayout::OHWI => emlite::Val::from("ohwi"),
+            MLConv2dFilterOperandLayout::IHWO => emlite::Val::from("ihwo"),
+        }
     }
 }
 
-impl MLConv2dFilterOperandLayout {
-    pub const OIHW: &str = "oihw";
-    pub const HWIO: &str = "hwio";
-    pub const OHWI: &str = "ohwi";
-    pub const IHWO: &str = "ihwo";
-}
-
-#[derive(Clone, Debug)]
-pub struct MLConvTranspose2dFilterOperandLayout {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MLConvTranspose2dFilterOperandLayout {
+    IOHW,
+    HWOI,
+    OHWI,
 }
 impl FromVal for MLConvTranspose2dFilterOperandLayout {
     fn from_val(v: &emlite::Val) -> Self {
-        MLConvTranspose2dFilterOperandLayout { inner: v.clone() }
+        match v.as_::<&str>() {
+            "iohw" => Self::IOHW,
+            "hwoi" => Self::HWOI,
+            "ohwi" => Self::OHWI,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MLConvTranspose2dFilterOperandLayout {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MLConvTranspose2dFilterOperandLayout {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MLConvTranspose2dFilterOperandLayout> for emlite::Val {
     fn from(s: MLConvTranspose2dFilterOperandLayout) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MLConvTranspose2dFilterOperandLayout::IOHW => emlite::Val::from("iohw"),
+            MLConvTranspose2dFilterOperandLayout::HWOI => emlite::Val::from("hwoi"),
+            MLConvTranspose2dFilterOperandLayout::OHWI => emlite::Val::from("ohwi"),
+        }
     }
 }
 
-impl MLConvTranspose2dFilterOperandLayout {
-    pub const IOHW: &str = "iohw";
-    pub const HWOI: &str = "hwoi";
-    pub const OHWI: &str = "ohwi";
-}
-
-#[derive(Clone, Debug)]
-pub struct MLGruWeightLayout {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MLGruWeightLayout {
+    ZRN,
+    RZN,
 }
 impl FromVal for MLGruWeightLayout {
     fn from_val(v: &emlite::Val) -> Self {
-        MLGruWeightLayout { inner: v.clone() }
+        match v.as_::<&str>() {
+            "zrn" => Self::ZRN,
+            "rzn" => Self::RZN,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MLGruWeightLayout {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MLGruWeightLayout {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MLGruWeightLayout> for emlite::Val {
     fn from(s: MLGruWeightLayout) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MLGruWeightLayout::ZRN => emlite::Val::from("zrn"),
+            MLGruWeightLayout::RZN => emlite::Val::from("rzn"),
+        }
     }
 }
 
-impl MLGruWeightLayout {
-    pub const ZRN: &str = "zrn";
-    pub const RZN: &str = "rzn";
-}
-
-#[derive(Clone, Debug)]
-pub struct MLRecurrentNetworkActivation {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MLRecurrentNetworkActivation {
+    RELU,
+    SIGMOID,
+    TANH,
 }
 impl FromVal for MLRecurrentNetworkActivation {
     fn from_val(v: &emlite::Val) -> Self {
-        MLRecurrentNetworkActivation { inner: v.clone() }
+        match v.as_::<&str>() {
+            "relu" => Self::RELU,
+            "sigmoid" => Self::SIGMOID,
+            "tanh" => Self::TANH,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MLRecurrentNetworkActivation {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MLRecurrentNetworkActivation {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MLRecurrentNetworkActivation> for emlite::Val {
     fn from(s: MLRecurrentNetworkActivation) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MLRecurrentNetworkActivation::RELU => emlite::Val::from("relu"),
+            MLRecurrentNetworkActivation::SIGMOID => emlite::Val::from("sigmoid"),
+            MLRecurrentNetworkActivation::TANH => emlite::Val::from("tanh"),
+        }
     }
 }
 
-impl MLRecurrentNetworkActivation {
-    pub const RELU: &str = "relu";
-    pub const SIGMOID: &str = "sigmoid";
-    pub const TANH: &str = "tanh";
-}
-
-#[derive(Clone, Debug)]
-pub struct MLRecurrentNetworkDirection {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MLRecurrentNetworkDirection {
+    FORWARD,
+    BACKWARD,
+    BOTH,
 }
 impl FromVal for MLRecurrentNetworkDirection {
     fn from_val(v: &emlite::Val) -> Self {
-        MLRecurrentNetworkDirection { inner: v.clone() }
+        match v.as_::<&str>() {
+            "forward" => Self::FORWARD,
+            "backward" => Self::BACKWARD,
+            "both" => Self::BOTH,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MLRecurrentNetworkDirection {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MLRecurrentNetworkDirection {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MLRecurrentNetworkDirection> for emlite::Val {
     fn from(s: MLRecurrentNetworkDirection) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MLRecurrentNetworkDirection::FORWARD => emlite::Val::from("forward"),
+            MLRecurrentNetworkDirection::BACKWARD => emlite::Val::from("backward"),
+            MLRecurrentNetworkDirection::BOTH => emlite::Val::from("both"),
+        }
     }
 }
 
-impl MLRecurrentNetworkDirection {
-    pub const FORWARD: &str = "forward";
-    pub const BACKWARD: &str = "backward";
-    pub const BOTH: &str = "both";
-}
-
-#[derive(Clone, Debug)]
-pub struct MLLstmWeightLayout {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MLLstmWeightLayout {
+    IOFG,
+    IFGO,
 }
 impl FromVal for MLLstmWeightLayout {
     fn from_val(v: &emlite::Val) -> Self {
-        MLLstmWeightLayout { inner: v.clone() }
+        match v.as_::<&str>() {
+            "iofg" => Self::IOFG,
+            "ifgo" => Self::IFGO,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MLLstmWeightLayout {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MLLstmWeightLayout {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MLLstmWeightLayout> for emlite::Val {
     fn from(s: MLLstmWeightLayout) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MLLstmWeightLayout::IOFG => emlite::Val::from("iofg"),
+            MLLstmWeightLayout::IFGO => emlite::Val::from("ifgo"),
+        }
     }
 }
 
-impl MLLstmWeightLayout {
-    pub const IOFG: &str = "iofg";
-    pub const IFGO: &str = "ifgo";
-}
-
-#[derive(Clone, Debug)]
-pub struct MLPaddingMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MLPaddingMode {
+    CONSTANT,
+    EDGE,
+    REFLECTION,
 }
 impl FromVal for MLPaddingMode {
     fn from_val(v: &emlite::Val) -> Self {
-        MLPaddingMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "constant" => Self::CONSTANT,
+            "edge" => Self::EDGE,
+            "reflection" => Self::REFLECTION,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MLPaddingMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MLPaddingMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MLPaddingMode> for emlite::Val {
     fn from(s: MLPaddingMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MLPaddingMode::CONSTANT => emlite::Val::from("constant"),
+            MLPaddingMode::EDGE => emlite::Val::from("edge"),
+            MLPaddingMode::REFLECTION => emlite::Val::from("reflection"),
+        }
     }
 }
 
-impl MLPaddingMode {
-    pub const CONSTANT: &str = "constant";
-    pub const EDGE: &str = "edge";
-    pub const REFLECTION: &str = "reflection";
-}
-
-#[derive(Clone, Debug)]
-pub struct MLRoundingType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MLRoundingType {
+    FLOOR,
+    CEIL,
 }
 impl FromVal for MLRoundingType {
     fn from_val(v: &emlite::Val) -> Self {
-        MLRoundingType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "floor" => Self::FLOOR,
+            "ceil" => Self::CEIL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MLRoundingType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MLRoundingType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MLRoundingType> for emlite::Val {
     fn from(s: MLRoundingType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MLRoundingType::FLOOR => emlite::Val::from("floor"),
+            MLRoundingType::CEIL => emlite::Val::from("ceil"),
+        }
     }
 }
 
-impl MLRoundingType {
-    pub const FLOOR: &str = "floor";
-    pub const CEIL: &str = "ceil";
-}
-
-#[derive(Clone, Debug)]
-pub struct MLInterpolationMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum MLInterpolationMode {
+    NEAREST_NEIGHBOR,
+    LINEAR,
 }
 impl FromVal for MLInterpolationMode {
     fn from_val(v: &emlite::Val) -> Self {
-        MLInterpolationMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "nearest-neighbor" => Self::NEAREST_NEIGHBOR,
+            "linear" => Self::LINEAR,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for MLInterpolationMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for MLInterpolationMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<MLInterpolationMode> for emlite::Val {
     fn from(s: MLInterpolationMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            MLInterpolationMode::NEAREST_NEIGHBOR => emlite::Val::from("nearest-neighbor"),
+            MLInterpolationMode::LINEAR => emlite::Val::from("linear"),
+        }
     }
 }
 
-impl MLInterpolationMode {
-    pub const NEAREST_NEIGHBOR: &str = "nearest-neighbor";
-    pub const LINEAR: &str = "linear";
-}
-
-#[derive(Clone, Debug)]
-pub struct SFrameTransformRole {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SFrameTransformRole {
+    ENCRYPT,
+    DECRYPT,
 }
 impl FromVal for SFrameTransformRole {
     fn from_val(v: &emlite::Val) -> Self {
-        SFrameTransformRole { inner: v.clone() }
+        match v.as_::<&str>() {
+            "encrypt" => Self::ENCRYPT,
+            "decrypt" => Self::DECRYPT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SFrameTransformRole {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SFrameTransformRole {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SFrameTransformRole> for emlite::Val {
     fn from(s: SFrameTransformRole) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SFrameTransformRole::ENCRYPT => emlite::Val::from("encrypt"),
+            SFrameTransformRole::DECRYPT => emlite::Val::from("decrypt"),
+        }
     }
 }
 
-impl SFrameTransformRole {
-    pub const ENCRYPT: &str = "encrypt";
-    pub const DECRYPT: &str = "decrypt";
-}
-
-#[derive(Clone, Debug)]
-pub struct SFrameTransformErrorEventType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SFrameTransformErrorEventType {
+    AUTHENTICATION,
+    KEY_ID,
+    SYNTAX,
 }
 impl FromVal for SFrameTransformErrorEventType {
     fn from_val(v: &emlite::Val) -> Self {
-        SFrameTransformErrorEventType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "authentication" => Self::AUTHENTICATION,
+            "keyID" => Self::KEY_ID,
+            "syntax" => Self::SYNTAX,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SFrameTransformErrorEventType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SFrameTransformErrorEventType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SFrameTransformErrorEventType> for emlite::Val {
     fn from(s: SFrameTransformErrorEventType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SFrameTransformErrorEventType::AUTHENTICATION => emlite::Val::from("authentication"),
+            SFrameTransformErrorEventType::KEY_ID => emlite::Val::from("keyID"),
+            SFrameTransformErrorEventType::SYNTAX => emlite::Val::from("syntax"),
+        }
     }
 }
 
-impl SFrameTransformErrorEventType {
-    pub const AUTHENTICATION: &str = "authentication";
-    pub const KEY_ID: &str = "keyID";
-    pub const SYNTAX: &str = "syntax";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCEncodedVideoFrameType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCEncodedVideoFrameType {
+    EMPTY,
+    KEY,
+    DELTA,
 }
 impl FromVal for RTCEncodedVideoFrameType {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCEncodedVideoFrameType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "empty" => Self::EMPTY,
+            "key" => Self::KEY,
+            "delta" => Self::DELTA,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCEncodedVideoFrameType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCEncodedVideoFrameType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCEncodedVideoFrameType> for emlite::Val {
     fn from(s: RTCEncodedVideoFrameType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCEncodedVideoFrameType::EMPTY => emlite::Val::from("empty"),
+            RTCEncodedVideoFrameType::KEY => emlite::Val::from("key"),
+            RTCEncodedVideoFrameType::DELTA => emlite::Val::from("delta"),
+        }
     }
 }
 
-impl RTCEncodedVideoFrameType {
-    pub const EMPTY: &str = "empty";
-    pub const KEY: &str = "key";
-    pub const DELTA: &str = "delta";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCErrorDetailTypeIdp {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCErrorDetailTypeIdp {
+    IDP_BAD_SCRIPT_FAILURE,
+    IDP_EXECUTION_FAILURE,
+    IDP_LOAD_FAILURE,
+    IDP_NEED_LOGIN,
+    IDP_TIMEOUT,
+    IDP_TLS_FAILURE,
+    IDP_TOKEN_EXPIRED,
+    IDP_TOKEN_INVALID,
 }
 impl FromVal for RTCErrorDetailTypeIdp {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCErrorDetailTypeIdp { inner: v.clone() }
+        match v.as_::<&str>() {
+            "idp-bad-script-failure" => Self::IDP_BAD_SCRIPT_FAILURE,
+            "idp-execution-failure" => Self::IDP_EXECUTION_FAILURE,
+            "idp-load-failure" => Self::IDP_LOAD_FAILURE,
+            "idp-need-login" => Self::IDP_NEED_LOGIN,
+            "idp-timeout" => Self::IDP_TIMEOUT,
+            "idp-tls-failure" => Self::IDP_TLS_FAILURE,
+            "idp-token-expired" => Self::IDP_TOKEN_EXPIRED,
+            "idp-token-invalid" => Self::IDP_TOKEN_INVALID,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCErrorDetailTypeIdp {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCErrorDetailTypeIdp {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCErrorDetailTypeIdp> for emlite::Val {
     fn from(s: RTCErrorDetailTypeIdp) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCErrorDetailTypeIdp::IDP_BAD_SCRIPT_FAILURE => {
+                emlite::Val::from("idp-bad-script-failure")
+            }
+            RTCErrorDetailTypeIdp::IDP_EXECUTION_FAILURE => {
+                emlite::Val::from("idp-execution-failure")
+            }
+            RTCErrorDetailTypeIdp::IDP_LOAD_FAILURE => emlite::Val::from("idp-load-failure"),
+            RTCErrorDetailTypeIdp::IDP_NEED_LOGIN => emlite::Val::from("idp-need-login"),
+            RTCErrorDetailTypeIdp::IDP_TIMEOUT => emlite::Val::from("idp-timeout"),
+            RTCErrorDetailTypeIdp::IDP_TLS_FAILURE => emlite::Val::from("idp-tls-failure"),
+            RTCErrorDetailTypeIdp::IDP_TOKEN_EXPIRED => emlite::Val::from("idp-token-expired"),
+            RTCErrorDetailTypeIdp::IDP_TOKEN_INVALID => emlite::Val::from("idp-token-invalid"),
+        }
     }
 }
 
-impl RTCErrorDetailTypeIdp {
-    pub const IDP_BAD_SCRIPT_FAILURE: &str = "idp-bad-script-failure";
-    pub const IDP_EXECUTION_FAILURE: &str = "idp-execution-failure";
-    pub const IDP_LOAD_FAILURE: &str = "idp-load-failure";
-    pub const IDP_NEED_LOGIN: &str = "idp-need-login";
-    pub const IDP_TIMEOUT: &str = "idp-timeout";
-    pub const IDP_TLS_FAILURE: &str = "idp-tls-failure";
-    pub const IDP_TOKEN_EXPIRED: &str = "idp-token-expired";
-    pub const IDP_TOKEN_INVALID: &str = "idp-token-invalid";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCPriorityType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCPriorityType {
+    VERY_LOW,
+    LOW,
+    MEDIUM,
+    HIGH,
 }
 impl FromVal for RTCPriorityType {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCPriorityType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "very-low" => Self::VERY_LOW,
+            "low" => Self::LOW,
+            "medium" => Self::MEDIUM,
+            "high" => Self::HIGH,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCPriorityType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCPriorityType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCPriorityType> for emlite::Val {
     fn from(s: RTCPriorityType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCPriorityType::VERY_LOW => emlite::Val::from("very-low"),
+            RTCPriorityType::LOW => emlite::Val::from("low"),
+            RTCPriorityType::MEDIUM => emlite::Val::from("medium"),
+            RTCPriorityType::HIGH => emlite::Val::from("high"),
+        }
     }
 }
 
-impl RTCPriorityType {
-    pub const VERY_LOW: &str = "very-low";
-    pub const LOW: &str = "low";
-    pub const MEDIUM: &str = "medium";
-    pub const HIGH: &str = "high";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCStatsType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCStatsType {
+    CODEC,
+    INBOUND_RTP,
+    OUTBOUND_RTP,
+    REMOTE_INBOUND_RTP,
+    REMOTE_OUTBOUND_RTP,
+    MEDIA_SOURCE,
+    MEDIA_PLAYOUT,
+    PEER_CONNECTION,
+    DATA_CHANNEL,
+    TRANSPORT,
+    CANDIDATE_PAIR,
+    LOCAL_CANDIDATE,
+    REMOTE_CANDIDATE,
+    CERTIFICATE,
 }
 impl FromVal for RTCStatsType {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCStatsType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "codec" => Self::CODEC,
+            "inbound-rtp" => Self::INBOUND_RTP,
+            "outbound-rtp" => Self::OUTBOUND_RTP,
+            "remote-inbound-rtp" => Self::REMOTE_INBOUND_RTP,
+            "remote-outbound-rtp" => Self::REMOTE_OUTBOUND_RTP,
+            "media-source" => Self::MEDIA_SOURCE,
+            "media-playout" => Self::MEDIA_PLAYOUT,
+            "peer-connection" => Self::PEER_CONNECTION,
+            "data-channel" => Self::DATA_CHANNEL,
+            "transport" => Self::TRANSPORT,
+            "candidate-pair" => Self::CANDIDATE_PAIR,
+            "local-candidate" => Self::LOCAL_CANDIDATE,
+            "remote-candidate" => Self::REMOTE_CANDIDATE,
+            "certificate" => Self::CERTIFICATE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCStatsType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCStatsType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCStatsType> for emlite::Val {
     fn from(s: RTCStatsType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCStatsType::CODEC => emlite::Val::from("codec"),
+            RTCStatsType::INBOUND_RTP => emlite::Val::from("inbound-rtp"),
+            RTCStatsType::OUTBOUND_RTP => emlite::Val::from("outbound-rtp"),
+            RTCStatsType::REMOTE_INBOUND_RTP => emlite::Val::from("remote-inbound-rtp"),
+            RTCStatsType::REMOTE_OUTBOUND_RTP => emlite::Val::from("remote-outbound-rtp"),
+            RTCStatsType::MEDIA_SOURCE => emlite::Val::from("media-source"),
+            RTCStatsType::MEDIA_PLAYOUT => emlite::Val::from("media-playout"),
+            RTCStatsType::PEER_CONNECTION => emlite::Val::from("peer-connection"),
+            RTCStatsType::DATA_CHANNEL => emlite::Val::from("data-channel"),
+            RTCStatsType::TRANSPORT => emlite::Val::from("transport"),
+            RTCStatsType::CANDIDATE_PAIR => emlite::Val::from("candidate-pair"),
+            RTCStatsType::LOCAL_CANDIDATE => emlite::Val::from("local-candidate"),
+            RTCStatsType::REMOTE_CANDIDATE => emlite::Val::from("remote-candidate"),
+            RTCStatsType::CERTIFICATE => emlite::Val::from("certificate"),
+        }
     }
 }
 
-impl RTCStatsType {
-    pub const CODEC: &str = "codec";
-    pub const INBOUND_RTP: &str = "inbound-rtp";
-    pub const OUTBOUND_RTP: &str = "outbound-rtp";
-    pub const REMOTE_INBOUND_RTP: &str = "remote-inbound-rtp";
-    pub const REMOTE_OUTBOUND_RTP: &str = "remote-outbound-rtp";
-    pub const MEDIA_SOURCE: &str = "media-source";
-    pub const MEDIA_PLAYOUT: &str = "media-playout";
-    pub const PEER_CONNECTION: &str = "peer-connection";
-    pub const DATA_CHANNEL: &str = "data-channel";
-    pub const TRANSPORT: &str = "transport";
-    pub const CANDIDATE_PAIR: &str = "candidate-pair";
-    pub const LOCAL_CANDIDATE: &str = "local-candidate";
-    pub const REMOTE_CANDIDATE: &str = "remote-candidate";
-    pub const CERTIFICATE: &str = "certificate";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCQualityLimitationReason {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCQualityLimitationReason {
+    NONE,
+    CPU,
+    BANDWIDTH,
+    OTHER,
 }
 impl FromVal for RTCQualityLimitationReason {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCQualityLimitationReason { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "cpu" => Self::CPU,
+            "bandwidth" => Self::BANDWIDTH,
+            "other" => Self::OTHER,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCQualityLimitationReason {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCQualityLimitationReason {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCQualityLimitationReason> for emlite::Val {
     fn from(s: RTCQualityLimitationReason) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCQualityLimitationReason::NONE => emlite::Val::from("none"),
+            RTCQualityLimitationReason::CPU => emlite::Val::from("cpu"),
+            RTCQualityLimitationReason::BANDWIDTH => emlite::Val::from("bandwidth"),
+            RTCQualityLimitationReason::OTHER => emlite::Val::from("other"),
+        }
     }
 }
 
-impl RTCQualityLimitationReason {
-    pub const NONE: &str = "none";
-    pub const CPU: &str = "cpu";
-    pub const BANDWIDTH: &str = "bandwidth";
-    pub const OTHER: &str = "other";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCDtlsRole {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCDtlsRole {
+    CLIENT,
+    SERVER,
+    UNKNOWN,
 }
 impl FromVal for RTCDtlsRole {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCDtlsRole { inner: v.clone() }
+        match v.as_::<&str>() {
+            "client" => Self::CLIENT,
+            "server" => Self::SERVER,
+            "unknown" => Self::UNKNOWN,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCDtlsRole {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCDtlsRole {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCDtlsRole> for emlite::Val {
     fn from(s: RTCDtlsRole) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCDtlsRole::CLIENT => emlite::Val::from("client"),
+            RTCDtlsRole::SERVER => emlite::Val::from("server"),
+            RTCDtlsRole::UNKNOWN => emlite::Val::from("unknown"),
+        }
     }
 }
 
-impl RTCDtlsRole {
-    pub const CLIENT: &str = "client";
-    pub const SERVER: &str = "server";
-    pub const UNKNOWN: &str = "unknown";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCStatsIceCandidatePairState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCStatsIceCandidatePairState {
+    FROZEN,
+    WAITING,
+    IN_PROGRESS,
+    FAILED,
+    SUCCEEDED,
 }
 impl FromVal for RTCStatsIceCandidatePairState {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCStatsIceCandidatePairState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "frozen" => Self::FROZEN,
+            "waiting" => Self::WAITING,
+            "in-progress" => Self::IN_PROGRESS,
+            "failed" => Self::FAILED,
+            "succeeded" => Self::SUCCEEDED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCStatsIceCandidatePairState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCStatsIceCandidatePairState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCStatsIceCandidatePairState> for emlite::Val {
     fn from(s: RTCStatsIceCandidatePairState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCStatsIceCandidatePairState::FROZEN => emlite::Val::from("frozen"),
+            RTCStatsIceCandidatePairState::WAITING => emlite::Val::from("waiting"),
+            RTCStatsIceCandidatePairState::IN_PROGRESS => emlite::Val::from("in-progress"),
+            RTCStatsIceCandidatePairState::FAILED => emlite::Val::from("failed"),
+            RTCStatsIceCandidatePairState::SUCCEEDED => emlite::Val::from("succeeded"),
+        }
     }
 }
 
-impl RTCStatsIceCandidatePairState {
-    pub const FROZEN: &str = "frozen";
-    pub const WAITING: &str = "waiting";
-    pub const IN_PROGRESS: &str = "in-progress";
-    pub const FAILED: &str = "failed";
-    pub const SUCCEEDED: &str = "succeeded";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCIceTransportPolicy {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCIceTransportPolicy {
+    RELAY,
+    ALL,
 }
 impl FromVal for RTCIceTransportPolicy {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCIceTransportPolicy { inner: v.clone() }
+        match v.as_::<&str>() {
+            "relay" => Self::RELAY,
+            "all" => Self::ALL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCIceTransportPolicy {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCIceTransportPolicy {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCIceTransportPolicy> for emlite::Val {
     fn from(s: RTCIceTransportPolicy) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCIceTransportPolicy::RELAY => emlite::Val::from("relay"),
+            RTCIceTransportPolicy::ALL => emlite::Val::from("all"),
+        }
     }
 }
 
-impl RTCIceTransportPolicy {
-    pub const RELAY: &str = "relay";
-    pub const ALL: &str = "all";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCBundlePolicy {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCBundlePolicy {
+    BALANCED,
+    MAX_COMPAT,
+    MAX_BUNDLE,
 }
 impl FromVal for RTCBundlePolicy {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCBundlePolicy { inner: v.clone() }
+        match v.as_::<&str>() {
+            "balanced" => Self::BALANCED,
+            "max-compat" => Self::MAX_COMPAT,
+            "max-bundle" => Self::MAX_BUNDLE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCBundlePolicy {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCBundlePolicy {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCBundlePolicy> for emlite::Val {
     fn from(s: RTCBundlePolicy) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCBundlePolicy::BALANCED => emlite::Val::from("balanced"),
+            RTCBundlePolicy::MAX_COMPAT => emlite::Val::from("max-compat"),
+            RTCBundlePolicy::MAX_BUNDLE => emlite::Val::from("max-bundle"),
+        }
     }
 }
 
-impl RTCBundlePolicy {
-    pub const BALANCED: &str = "balanced";
-    pub const MAX_COMPAT: &str = "max-compat";
-    pub const MAX_BUNDLE: &str = "max-bundle";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCRtcpMuxPolicy {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCRtcpMuxPolicy {
+    REQUIRE,
 }
 impl FromVal for RTCRtcpMuxPolicy {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCRtcpMuxPolicy { inner: v.clone() }
+        match v.as_::<&str>() {
+            "require" => Self::REQUIRE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCRtcpMuxPolicy {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCRtcpMuxPolicy {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCRtcpMuxPolicy> for emlite::Val {
     fn from(s: RTCRtcpMuxPolicy) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCRtcpMuxPolicy::REQUIRE => emlite::Val::from("require"),
+        }
     }
 }
 
-impl RTCRtcpMuxPolicy {
-    pub const REQUIRE: &str = "require";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCSignalingState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCSignalingState {
+    STABLE,
+    HAVE_LOCAL_OFFER,
+    HAVE_REMOTE_OFFER,
+    HAVE_LOCAL_PRANSWER,
+    HAVE_REMOTE_PRANSWER,
+    CLOSED,
 }
 impl FromVal for RTCSignalingState {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCSignalingState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "stable" => Self::STABLE,
+            "have-local-offer" => Self::HAVE_LOCAL_OFFER,
+            "have-remote-offer" => Self::HAVE_REMOTE_OFFER,
+            "have-local-pranswer" => Self::HAVE_LOCAL_PRANSWER,
+            "have-remote-pranswer" => Self::HAVE_REMOTE_PRANSWER,
+            "closed" => Self::CLOSED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCSignalingState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCSignalingState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCSignalingState> for emlite::Val {
     fn from(s: RTCSignalingState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCSignalingState::STABLE => emlite::Val::from("stable"),
+            RTCSignalingState::HAVE_LOCAL_OFFER => emlite::Val::from("have-local-offer"),
+            RTCSignalingState::HAVE_REMOTE_OFFER => emlite::Val::from("have-remote-offer"),
+            RTCSignalingState::HAVE_LOCAL_PRANSWER => emlite::Val::from("have-local-pranswer"),
+            RTCSignalingState::HAVE_REMOTE_PRANSWER => emlite::Val::from("have-remote-pranswer"),
+            RTCSignalingState::CLOSED => emlite::Val::from("closed"),
+        }
     }
 }
 
-impl RTCSignalingState {
-    pub const STABLE: &str = "stable";
-    pub const HAVE_LOCAL_OFFER: &str = "have-local-offer";
-    pub const HAVE_REMOTE_OFFER: &str = "have-remote-offer";
-    pub const HAVE_LOCAL_PRANSWER: &str = "have-local-pranswer";
-    pub const HAVE_REMOTE_PRANSWER: &str = "have-remote-pranswer";
-    pub const CLOSED: &str = "closed";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCIceGatheringState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCIceGatheringState {
+    NEW,
+    GATHERING,
+    COMPLETE,
 }
 impl FromVal for RTCIceGatheringState {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCIceGatheringState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "new" => Self::NEW,
+            "gathering" => Self::GATHERING,
+            "complete" => Self::COMPLETE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCIceGatheringState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCIceGatheringState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCIceGatheringState> for emlite::Val {
     fn from(s: RTCIceGatheringState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCIceGatheringState::NEW => emlite::Val::from("new"),
+            RTCIceGatheringState::GATHERING => emlite::Val::from("gathering"),
+            RTCIceGatheringState::COMPLETE => emlite::Val::from("complete"),
+        }
     }
 }
 
-impl RTCIceGatheringState {
-    pub const NEW: &str = "new";
-    pub const GATHERING: &str = "gathering";
-    pub const COMPLETE: &str = "complete";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCPeerConnectionState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCPeerConnectionState {
+    CLOSED,
+    FAILED,
+    DISCONNECTED,
+    NEW,
+    CONNECTING,
+    CONNECTED,
 }
 impl FromVal for RTCPeerConnectionState {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCPeerConnectionState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "closed" => Self::CLOSED,
+            "failed" => Self::FAILED,
+            "disconnected" => Self::DISCONNECTED,
+            "new" => Self::NEW,
+            "connecting" => Self::CONNECTING,
+            "connected" => Self::CONNECTED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCPeerConnectionState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCPeerConnectionState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCPeerConnectionState> for emlite::Val {
     fn from(s: RTCPeerConnectionState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCPeerConnectionState::CLOSED => emlite::Val::from("closed"),
+            RTCPeerConnectionState::FAILED => emlite::Val::from("failed"),
+            RTCPeerConnectionState::DISCONNECTED => emlite::Val::from("disconnected"),
+            RTCPeerConnectionState::NEW => emlite::Val::from("new"),
+            RTCPeerConnectionState::CONNECTING => emlite::Val::from("connecting"),
+            RTCPeerConnectionState::CONNECTED => emlite::Val::from("connected"),
+        }
     }
 }
 
-impl RTCPeerConnectionState {
-    pub const CLOSED: &str = "closed";
-    pub const FAILED: &str = "failed";
-    pub const DISCONNECTED: &str = "disconnected";
-    pub const NEW: &str = "new";
-    pub const CONNECTING: &str = "connecting";
-    pub const CONNECTED: &str = "connected";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCIceConnectionState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCIceConnectionState {
+    CLOSED,
+    FAILED,
+    DISCONNECTED,
+    NEW,
+    CHECKING,
+    COMPLETED,
+    CONNECTED,
 }
 impl FromVal for RTCIceConnectionState {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCIceConnectionState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "closed" => Self::CLOSED,
+            "failed" => Self::FAILED,
+            "disconnected" => Self::DISCONNECTED,
+            "new" => Self::NEW,
+            "checking" => Self::CHECKING,
+            "completed" => Self::COMPLETED,
+            "connected" => Self::CONNECTED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCIceConnectionState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCIceConnectionState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCIceConnectionState> for emlite::Val {
     fn from(s: RTCIceConnectionState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCIceConnectionState::CLOSED => emlite::Val::from("closed"),
+            RTCIceConnectionState::FAILED => emlite::Val::from("failed"),
+            RTCIceConnectionState::DISCONNECTED => emlite::Val::from("disconnected"),
+            RTCIceConnectionState::NEW => emlite::Val::from("new"),
+            RTCIceConnectionState::CHECKING => emlite::Val::from("checking"),
+            RTCIceConnectionState::COMPLETED => emlite::Val::from("completed"),
+            RTCIceConnectionState::CONNECTED => emlite::Val::from("connected"),
+        }
     }
 }
 
-impl RTCIceConnectionState {
-    pub const CLOSED: &str = "closed";
-    pub const FAILED: &str = "failed";
-    pub const DISCONNECTED: &str = "disconnected";
-    pub const NEW: &str = "new";
-    pub const CHECKING: &str = "checking";
-    pub const COMPLETED: &str = "completed";
-    pub const CONNECTED: &str = "connected";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCSdpType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCSdpType {
+    OFFER,
+    PRANSWER,
+    ANSWER,
+    ROLLBACK,
 }
 impl FromVal for RTCSdpType {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCSdpType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "offer" => Self::OFFER,
+            "pranswer" => Self::PRANSWER,
+            "answer" => Self::ANSWER,
+            "rollback" => Self::ROLLBACK,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCSdpType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCSdpType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCSdpType> for emlite::Val {
     fn from(s: RTCSdpType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCSdpType::OFFER => emlite::Val::from("offer"),
+            RTCSdpType::PRANSWER => emlite::Val::from("pranswer"),
+            RTCSdpType::ANSWER => emlite::Val::from("answer"),
+            RTCSdpType::ROLLBACK => emlite::Val::from("rollback"),
+        }
     }
 }
 
-impl RTCSdpType {
-    pub const OFFER: &str = "offer";
-    pub const PRANSWER: &str = "pranswer";
-    pub const ANSWER: &str = "answer";
-    pub const ROLLBACK: &str = "rollback";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCIceProtocol {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCIceProtocol {
+    UDP,
+    TCP,
 }
 impl FromVal for RTCIceProtocol {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCIceProtocol { inner: v.clone() }
+        match v.as_::<&str>() {
+            "udp" => Self::UDP,
+            "tcp" => Self::TCP,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCIceProtocol {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCIceProtocol {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCIceProtocol> for emlite::Val {
     fn from(s: RTCIceProtocol) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCIceProtocol::UDP => emlite::Val::from("udp"),
+            RTCIceProtocol::TCP => emlite::Val::from("tcp"),
+        }
     }
 }
 
-impl RTCIceProtocol {
-    pub const UDP: &str = "udp";
-    pub const TCP: &str = "tcp";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCIceTcpCandidateType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCIceTcpCandidateType {
+    ACTIVE,
+    PASSIVE,
+    SO,
 }
 impl FromVal for RTCIceTcpCandidateType {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCIceTcpCandidateType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "active" => Self::ACTIVE,
+            "passive" => Self::PASSIVE,
+            "so" => Self::SO,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCIceTcpCandidateType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCIceTcpCandidateType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCIceTcpCandidateType> for emlite::Val {
     fn from(s: RTCIceTcpCandidateType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCIceTcpCandidateType::ACTIVE => emlite::Val::from("active"),
+            RTCIceTcpCandidateType::PASSIVE => emlite::Val::from("passive"),
+            RTCIceTcpCandidateType::SO => emlite::Val::from("so"),
+        }
     }
 }
 
-impl RTCIceTcpCandidateType {
-    pub const ACTIVE: &str = "active";
-    pub const PASSIVE: &str = "passive";
-    pub const SO: &str = "so";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCIceCandidateType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCIceCandidateType {
+    HOST,
+    SRFLX,
+    PRFLX,
+    RELAY,
 }
 impl FromVal for RTCIceCandidateType {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCIceCandidateType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "host" => Self::HOST,
+            "srflx" => Self::SRFLX,
+            "prflx" => Self::PRFLX,
+            "relay" => Self::RELAY,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCIceCandidateType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCIceCandidateType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCIceCandidateType> for emlite::Val {
     fn from(s: RTCIceCandidateType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCIceCandidateType::HOST => emlite::Val::from("host"),
+            RTCIceCandidateType::SRFLX => emlite::Val::from("srflx"),
+            RTCIceCandidateType::PRFLX => emlite::Val::from("prflx"),
+            RTCIceCandidateType::RELAY => emlite::Val::from("relay"),
+        }
     }
 }
 
-impl RTCIceCandidateType {
-    pub const HOST: &str = "host";
-    pub const SRFLX: &str = "srflx";
-    pub const PRFLX: &str = "prflx";
-    pub const RELAY: &str = "relay";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCIceServerTransportProtocol {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCIceServerTransportProtocol {
+    UDP,
+    TCP,
+    TLS,
 }
 impl FromVal for RTCIceServerTransportProtocol {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCIceServerTransportProtocol { inner: v.clone() }
+        match v.as_::<&str>() {
+            "udp" => Self::UDP,
+            "tcp" => Self::TCP,
+            "tls" => Self::TLS,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCIceServerTransportProtocol {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCIceServerTransportProtocol {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCIceServerTransportProtocol> for emlite::Val {
     fn from(s: RTCIceServerTransportProtocol) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCIceServerTransportProtocol::UDP => emlite::Val::from("udp"),
+            RTCIceServerTransportProtocol::TCP => emlite::Val::from("tcp"),
+            RTCIceServerTransportProtocol::TLS => emlite::Val::from("tls"),
+        }
     }
 }
 
-impl RTCIceServerTransportProtocol {
-    pub const UDP: &str = "udp";
-    pub const TCP: &str = "tcp";
-    pub const TLS: &str = "tls";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCRtpTransceiverDirection {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCRtpTransceiverDirection {
+    SENDRECV,
+    SENDONLY,
+    RECVONLY,
+    INACTIVE,
+    STOPPED,
 }
 impl FromVal for RTCRtpTransceiverDirection {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCRtpTransceiverDirection { inner: v.clone() }
+        match v.as_::<&str>() {
+            "sendrecv" => Self::SENDRECV,
+            "sendonly" => Self::SENDONLY,
+            "recvonly" => Self::RECVONLY,
+            "inactive" => Self::INACTIVE,
+            "stopped" => Self::STOPPED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCRtpTransceiverDirection {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCRtpTransceiverDirection {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCRtpTransceiverDirection> for emlite::Val {
     fn from(s: RTCRtpTransceiverDirection) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCRtpTransceiverDirection::SENDRECV => emlite::Val::from("sendrecv"),
+            RTCRtpTransceiverDirection::SENDONLY => emlite::Val::from("sendonly"),
+            RTCRtpTransceiverDirection::RECVONLY => emlite::Val::from("recvonly"),
+            RTCRtpTransceiverDirection::INACTIVE => emlite::Val::from("inactive"),
+            RTCRtpTransceiverDirection::STOPPED => emlite::Val::from("stopped"),
+        }
     }
 }
 
-impl RTCRtpTransceiverDirection {
-    pub const SENDRECV: &str = "sendrecv";
-    pub const SENDONLY: &str = "sendonly";
-    pub const RECVONLY: &str = "recvonly";
-    pub const INACTIVE: &str = "inactive";
-    pub const STOPPED: &str = "stopped";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCDtlsTransportState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCDtlsTransportState {
+    NEW,
+    CONNECTING,
+    CONNECTED,
+    CLOSED,
+    FAILED,
 }
 impl FromVal for RTCDtlsTransportState {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCDtlsTransportState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "new" => Self::NEW,
+            "connecting" => Self::CONNECTING,
+            "connected" => Self::CONNECTED,
+            "closed" => Self::CLOSED,
+            "failed" => Self::FAILED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCDtlsTransportState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCDtlsTransportState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCDtlsTransportState> for emlite::Val {
     fn from(s: RTCDtlsTransportState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCDtlsTransportState::NEW => emlite::Val::from("new"),
+            RTCDtlsTransportState::CONNECTING => emlite::Val::from("connecting"),
+            RTCDtlsTransportState::CONNECTED => emlite::Val::from("connected"),
+            RTCDtlsTransportState::CLOSED => emlite::Val::from("closed"),
+            RTCDtlsTransportState::FAILED => emlite::Val::from("failed"),
+        }
     }
 }
 
-impl RTCDtlsTransportState {
-    pub const NEW: &str = "new";
-    pub const CONNECTING: &str = "connecting";
-    pub const CONNECTED: &str = "connected";
-    pub const CLOSED: &str = "closed";
-    pub const FAILED: &str = "failed";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCIceGathererState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCIceGathererState {
+    NEW,
+    GATHERING,
+    COMPLETE,
 }
 impl FromVal for RTCIceGathererState {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCIceGathererState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "new" => Self::NEW,
+            "gathering" => Self::GATHERING,
+            "complete" => Self::COMPLETE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCIceGathererState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCIceGathererState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCIceGathererState> for emlite::Val {
     fn from(s: RTCIceGathererState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCIceGathererState::NEW => emlite::Val::from("new"),
+            RTCIceGathererState::GATHERING => emlite::Val::from("gathering"),
+            RTCIceGathererState::COMPLETE => emlite::Val::from("complete"),
+        }
     }
 }
 
-impl RTCIceGathererState {
-    pub const NEW: &str = "new";
-    pub const GATHERING: &str = "gathering";
-    pub const COMPLETE: &str = "complete";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCIceTransportState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCIceTransportState {
+    CLOSED,
+    FAILED,
+    DISCONNECTED,
+    NEW,
+    CHECKING,
+    COMPLETED,
+    CONNECTED,
 }
 impl FromVal for RTCIceTransportState {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCIceTransportState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "closed" => Self::CLOSED,
+            "failed" => Self::FAILED,
+            "disconnected" => Self::DISCONNECTED,
+            "new" => Self::NEW,
+            "checking" => Self::CHECKING,
+            "completed" => Self::COMPLETED,
+            "connected" => Self::CONNECTED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCIceTransportState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCIceTransportState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCIceTransportState> for emlite::Val {
     fn from(s: RTCIceTransportState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCIceTransportState::CLOSED => emlite::Val::from("closed"),
+            RTCIceTransportState::FAILED => emlite::Val::from("failed"),
+            RTCIceTransportState::DISCONNECTED => emlite::Val::from("disconnected"),
+            RTCIceTransportState::NEW => emlite::Val::from("new"),
+            RTCIceTransportState::CHECKING => emlite::Val::from("checking"),
+            RTCIceTransportState::COMPLETED => emlite::Val::from("completed"),
+            RTCIceTransportState::CONNECTED => emlite::Val::from("connected"),
+        }
     }
 }
 
-impl RTCIceTransportState {
-    pub const CLOSED: &str = "closed";
-    pub const FAILED: &str = "failed";
-    pub const DISCONNECTED: &str = "disconnected";
-    pub const NEW: &str = "new";
-    pub const CHECKING: &str = "checking";
-    pub const COMPLETED: &str = "completed";
-    pub const CONNECTED: &str = "connected";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCIceRole {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCIceRole {
+    UNKNOWN,
+    CONTROLLING,
+    CONTROLLED,
 }
 impl FromVal for RTCIceRole {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCIceRole { inner: v.clone() }
+        match v.as_::<&str>() {
+            "unknown" => Self::UNKNOWN,
+            "controlling" => Self::CONTROLLING,
+            "controlled" => Self::CONTROLLED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCIceRole {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCIceRole {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCIceRole> for emlite::Val {
     fn from(s: RTCIceRole) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCIceRole::UNKNOWN => emlite::Val::from("unknown"),
+            RTCIceRole::CONTROLLING => emlite::Val::from("controlling"),
+            RTCIceRole::CONTROLLED => emlite::Val::from("controlled"),
+        }
     }
 }
 
-impl RTCIceRole {
-    pub const UNKNOWN: &str = "unknown";
-    pub const CONTROLLING: &str = "controlling";
-    pub const CONTROLLED: &str = "controlled";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCIceComponent {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCIceComponent {
+    RTP,
+    RTCP,
 }
 impl FromVal for RTCIceComponent {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCIceComponent { inner: v.clone() }
+        match v.as_::<&str>() {
+            "rtp" => Self::RTP,
+            "rtcp" => Self::RTCP,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCIceComponent {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCIceComponent {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCIceComponent> for emlite::Val {
     fn from(s: RTCIceComponent) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCIceComponent::RTP => emlite::Val::from("rtp"),
+            RTCIceComponent::RTCP => emlite::Val::from("rtcp"),
+        }
     }
 }
 
-impl RTCIceComponent {
-    pub const RTP: &str = "rtp";
-    pub const RTCP: &str = "rtcp";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCSctpTransportState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCSctpTransportState {
+    CONNECTING,
+    CONNECTED,
+    CLOSED,
 }
 impl FromVal for RTCSctpTransportState {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCSctpTransportState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "connecting" => Self::CONNECTING,
+            "connected" => Self::CONNECTED,
+            "closed" => Self::CLOSED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCSctpTransportState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCSctpTransportState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCSctpTransportState> for emlite::Val {
     fn from(s: RTCSctpTransportState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCSctpTransportState::CONNECTING => emlite::Val::from("connecting"),
+            RTCSctpTransportState::CONNECTED => emlite::Val::from("connected"),
+            RTCSctpTransportState::CLOSED => emlite::Val::from("closed"),
+        }
     }
 }
 
-impl RTCSctpTransportState {
-    pub const CONNECTING: &str = "connecting";
-    pub const CONNECTED: &str = "connected";
-    pub const CLOSED: &str = "closed";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCDataChannelState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCDataChannelState {
+    CONNECTING,
+    OPEN,
+    CLOSING,
+    CLOSED,
 }
 impl FromVal for RTCDataChannelState {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCDataChannelState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "connecting" => Self::CONNECTING,
+            "open" => Self::OPEN,
+            "closing" => Self::CLOSING,
+            "closed" => Self::CLOSED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCDataChannelState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCDataChannelState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCDataChannelState> for emlite::Val {
     fn from(s: RTCDataChannelState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCDataChannelState::CONNECTING => emlite::Val::from("connecting"),
+            RTCDataChannelState::OPEN => emlite::Val::from("open"),
+            RTCDataChannelState::CLOSING => emlite::Val::from("closing"),
+            RTCDataChannelState::CLOSED => emlite::Val::from("closed"),
+        }
     }
 }
 
-impl RTCDataChannelState {
-    pub const CONNECTING: &str = "connecting";
-    pub const OPEN: &str = "open";
-    pub const CLOSING: &str = "closing";
-    pub const CLOSED: &str = "closed";
-}
-
-#[derive(Clone, Debug)]
-pub struct RTCErrorDetailType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RTCErrorDetailType {
+    DATA_CHANNEL_FAILURE,
+    DTLS_FAILURE,
+    FINGERPRINT_FAILURE,
+    SCTP_FAILURE,
+    SDP_SYNTAX_ERROR,
+    HARDWARE_ENCODER_NOT_AVAILABLE,
+    HARDWARE_ENCODER_ERROR,
 }
 impl FromVal for RTCErrorDetailType {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCErrorDetailType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "data-channel-failure" => Self::DATA_CHANNEL_FAILURE,
+            "dtls-failure" => Self::DTLS_FAILURE,
+            "fingerprint-failure" => Self::FINGERPRINT_FAILURE,
+            "sctp-failure" => Self::SCTP_FAILURE,
+            "sdp-syntax-error" => Self::SDP_SYNTAX_ERROR,
+            "hardware-encoder-not-available" => Self::HARDWARE_ENCODER_NOT_AVAILABLE,
+            "hardware-encoder-error" => Self::HARDWARE_ENCODER_ERROR,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RTCErrorDetailType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RTCErrorDetailType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RTCErrorDetailType> for emlite::Val {
     fn from(s: RTCErrorDetailType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RTCErrorDetailType::DATA_CHANNEL_FAILURE => emlite::Val::from("data-channel-failure"),
+            RTCErrorDetailType::DTLS_FAILURE => emlite::Val::from("dtls-failure"),
+            RTCErrorDetailType::FINGERPRINT_FAILURE => emlite::Val::from("fingerprint-failure"),
+            RTCErrorDetailType::SCTP_FAILURE => emlite::Val::from("sctp-failure"),
+            RTCErrorDetailType::SDP_SYNTAX_ERROR => emlite::Val::from("sdp-syntax-error"),
+            RTCErrorDetailType::HARDWARE_ENCODER_NOT_AVAILABLE => {
+                emlite::Val::from("hardware-encoder-not-available")
+            }
+            RTCErrorDetailType::HARDWARE_ENCODER_ERROR => {
+                emlite::Val::from("hardware-encoder-error")
+            }
+        }
     }
 }
 
-impl RTCErrorDetailType {
-    pub const DATA_CHANNEL_FAILURE: &str = "data-channel-failure";
-    pub const DTLS_FAILURE: &str = "dtls-failure";
-    pub const FINGERPRINT_FAILURE: &str = "fingerprint-failure";
-    pub const SCTP_FAILURE: &str = "sctp-failure";
-    pub const SDP_SYNTAX_ERROR: &str = "sdp-syntax-error";
-    pub const HARDWARE_ENCODER_NOT_AVAILABLE: &str = "hardware-encoder-not-available";
-    pub const HARDWARE_ENCODER_ERROR: &str = "hardware-encoder-error";
-}
-
-#[derive(Clone, Debug)]
-pub struct BinaryType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum BinaryType {
+    BLOB,
+    ARRAYBUFFER,
 }
 impl FromVal for BinaryType {
     fn from_val(v: &emlite::Val) -> Self {
-        BinaryType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "blob" => Self::BLOB,
+            "arraybuffer" => Self::ARRAYBUFFER,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for BinaryType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for BinaryType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<BinaryType> for emlite::Val {
     fn from(s: BinaryType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            BinaryType::BLOB => emlite::Val::from("blob"),
+            BinaryType::ARRAYBUFFER => emlite::Val::from("arraybuffer"),
+        }
     }
 }
 
-impl BinaryType {
-    pub const BLOB: &str = "blob";
-    pub const ARRAYBUFFER: &str = "arraybuffer";
-}
-
-#[derive(Clone, Debug)]
-pub struct WebTransportReliabilityMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum WebTransportReliabilityMode {
+    PENDING,
+    RELIABLE_ONLY,
+    SUPPORTS_UNRELIABLE,
 }
 impl FromVal for WebTransportReliabilityMode {
     fn from_val(v: &emlite::Val) -> Self {
-        WebTransportReliabilityMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "pending" => Self::PENDING,
+            "reliable-only" => Self::RELIABLE_ONLY,
+            "supports-unreliable" => Self::SUPPORTS_UNRELIABLE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for WebTransportReliabilityMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for WebTransportReliabilityMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<WebTransportReliabilityMode> for emlite::Val {
     fn from(s: WebTransportReliabilityMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            WebTransportReliabilityMode::PENDING => emlite::Val::from("pending"),
+            WebTransportReliabilityMode::RELIABLE_ONLY => emlite::Val::from("reliable-only"),
+            WebTransportReliabilityMode::SUPPORTS_UNRELIABLE => {
+                emlite::Val::from("supports-unreliable")
+            }
+        }
     }
 }
 
-impl WebTransportReliabilityMode {
-    pub const PENDING: &str = "pending";
-    pub const RELIABLE_ONLY: &str = "reliable-only";
-    pub const SUPPORTS_UNRELIABLE: &str = "supports-unreliable";
-}
-
-#[derive(Clone, Debug)]
-pub struct WebTransportCongestionControl {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum WebTransportCongestionControl {
+    DEFAULT,
+    THROUGHPUT,
+    LOW_LATENCY,
 }
 impl FromVal for WebTransportCongestionControl {
     fn from_val(v: &emlite::Val) -> Self {
-        WebTransportCongestionControl { inner: v.clone() }
+        match v.as_::<&str>() {
+            "default" => Self::DEFAULT,
+            "throughput" => Self::THROUGHPUT,
+            "low-latency" => Self::LOW_LATENCY,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for WebTransportCongestionControl {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for WebTransportCongestionControl {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<WebTransportCongestionControl> for emlite::Val {
     fn from(s: WebTransportCongestionControl) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            WebTransportCongestionControl::DEFAULT => emlite::Val::from("default"),
+            WebTransportCongestionControl::THROUGHPUT => emlite::Val::from("throughput"),
+            WebTransportCongestionControl::LOW_LATENCY => emlite::Val::from("low-latency"),
+        }
     }
 }
 
-impl WebTransportCongestionControl {
-    pub const DEFAULT: &str = "default";
-    pub const THROUGHPUT: &str = "throughput";
-    pub const LOW_LATENCY: &str = "low-latency";
-}
-
-#[derive(Clone, Debug)]
-pub struct WebTransportErrorSource {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum WebTransportErrorSource {
+    STREAM,
+    SESSION,
 }
 impl FromVal for WebTransportErrorSource {
     fn from_val(v: &emlite::Val) -> Self {
-        WebTransportErrorSource { inner: v.clone() }
+        match v.as_::<&str>() {
+            "stream" => Self::STREAM,
+            "session" => Self::SESSION,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for WebTransportErrorSource {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for WebTransportErrorSource {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<WebTransportErrorSource> for emlite::Val {
     fn from(s: WebTransportErrorSource) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            WebTransportErrorSource::STREAM => emlite::Val::from("stream"),
+            WebTransportErrorSource::SESSION => emlite::Val::from("session"),
+        }
     }
 }
 
-impl WebTransportErrorSource {
-    pub const STREAM: &str = "stream";
-    pub const SESSION: &str = "session";
-}
-
-#[derive(Clone, Debug)]
-pub struct USBTransferStatus {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum USBTransferStatus {
+    OK,
+    STALL,
+    BABBLE,
 }
 impl FromVal for USBTransferStatus {
     fn from_val(v: &emlite::Val) -> Self {
-        USBTransferStatus { inner: v.clone() }
+        match v.as_::<&str>() {
+            "ok" => Self::OK,
+            "stall" => Self::STALL,
+            "babble" => Self::BABBLE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for USBTransferStatus {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for USBTransferStatus {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<USBTransferStatus> for emlite::Val {
     fn from(s: USBTransferStatus) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            USBTransferStatus::OK => emlite::Val::from("ok"),
+            USBTransferStatus::STALL => emlite::Val::from("stall"),
+            USBTransferStatus::BABBLE => emlite::Val::from("babble"),
+        }
     }
 }
 
-impl USBTransferStatus {
-    pub const OK: &str = "ok";
-    pub const STALL: &str = "stall";
-    pub const BABBLE: &str = "babble";
-}
-
-#[derive(Clone, Debug)]
-pub struct USBRequestType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum USBRequestType {
+    STANDARD,
+    CLASS,
+    VENDOR,
 }
 impl FromVal for USBRequestType {
     fn from_val(v: &emlite::Val) -> Self {
-        USBRequestType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "standard" => Self::STANDARD,
+            "class" => Self::CLASS,
+            "vendor" => Self::VENDOR,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for USBRequestType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for USBRequestType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<USBRequestType> for emlite::Val {
     fn from(s: USBRequestType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            USBRequestType::STANDARD => emlite::Val::from("standard"),
+            USBRequestType::CLASS => emlite::Val::from("class"),
+            USBRequestType::VENDOR => emlite::Val::from("vendor"),
+        }
     }
 }
 
-impl USBRequestType {
-    pub const STANDARD: &str = "standard";
-    pub const CLASS: &str = "class";
-    pub const VENDOR: &str = "vendor";
-}
-
-#[derive(Clone, Debug)]
-pub struct USBRecipient {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum USBRecipient {
+    DEVICE,
+    INTERFACE,
+    ENDPOINT,
+    OTHER,
 }
 impl FromVal for USBRecipient {
     fn from_val(v: &emlite::Val) -> Self {
-        USBRecipient { inner: v.clone() }
+        match v.as_::<&str>() {
+            "device" => Self::DEVICE,
+            "interface" => Self::INTERFACE,
+            "endpoint" => Self::ENDPOINT,
+            "other" => Self::OTHER,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for USBRecipient {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for USBRecipient {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<USBRecipient> for emlite::Val {
     fn from(s: USBRecipient) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            USBRecipient::DEVICE => emlite::Val::from("device"),
+            USBRecipient::INTERFACE => emlite::Val::from("interface"),
+            USBRecipient::ENDPOINT => emlite::Val::from("endpoint"),
+            USBRecipient::OTHER => emlite::Val::from("other"),
+        }
     }
 }
 
-impl USBRecipient {
-    pub const DEVICE: &str = "device";
-    pub const INTERFACE: &str = "interface";
-    pub const ENDPOINT: &str = "endpoint";
-    pub const OTHER: &str = "other";
-}
-
-#[derive(Clone, Debug)]
-pub struct USBDirection {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum USBDirection {
+    IN_,
+    OUT,
 }
 impl FromVal for USBDirection {
     fn from_val(v: &emlite::Val) -> Self {
-        USBDirection { inner: v.clone() }
+        match v.as_::<&str>() {
+            "in" => Self::IN_,
+            "out" => Self::OUT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for USBDirection {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for USBDirection {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<USBDirection> for emlite::Val {
     fn from(s: USBDirection) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            USBDirection::IN_ => emlite::Val::from("in"),
+            USBDirection::OUT => emlite::Val::from("out"),
+        }
     }
 }
 
-impl USBDirection {
-    pub const IN_: &str = "in";
-    pub const OUT: &str = "out";
-}
-
-#[derive(Clone, Debug)]
-pub struct USBEndpointType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum USBEndpointType {
+    BULK,
+    INTERRUPT,
+    ISOCHRONOUS,
 }
 impl FromVal for USBEndpointType {
     fn from_val(v: &emlite::Val) -> Self {
-        USBEndpointType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "bulk" => Self::BULK,
+            "interrupt" => Self::INTERRUPT,
+            "isochronous" => Self::ISOCHRONOUS,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for USBEndpointType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for USBEndpointType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<USBEndpointType> for emlite::Val {
     fn from(s: USBEndpointType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            USBEndpointType::BULK => emlite::Val::from("bulk"),
+            USBEndpointType::INTERRUPT => emlite::Val::from("interrupt"),
+            USBEndpointType::ISOCHRONOUS => emlite::Val::from("isochronous"),
+        }
     }
 }
 
-impl USBEndpointType {
-    pub const BULK: &str = "bulk";
-    pub const INTERRUPT: &str = "interrupt";
-    pub const ISOCHRONOUS: &str = "isochronous";
-}
-
-#[derive(Clone, Debug)]
-pub struct AutoKeyword {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AutoKeyword {
+    AUTO,
 }
 impl FromVal for AutoKeyword {
     fn from_val(v: &emlite::Val) -> Self {
-        AutoKeyword { inner: v.clone() }
+        match v.as_::<&str>() {
+            "auto" => Self::AUTO,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AutoKeyword {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AutoKeyword {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AutoKeyword> for emlite::Val {
     fn from(s: AutoKeyword) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AutoKeyword::AUTO => emlite::Val::from("auto"),
+        }
     }
 }
 
-impl AutoKeyword {
-    pub const AUTO: &str = "auto";
-}
-
-#[derive(Clone, Debug)]
-pub struct DirectionSetting {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum DirectionSetting {
+    NONE,
+    RL,
+    LR,
 }
 impl FromVal for DirectionSetting {
     fn from_val(v: &emlite::Val) -> Self {
-        DirectionSetting { inner: v.clone() }
+        match v.as_::<&str>() {
+            "" => Self::NONE,
+            "rl" => Self::RL,
+            "lr" => Self::LR,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for DirectionSetting {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for DirectionSetting {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<DirectionSetting> for emlite::Val {
     fn from(s: DirectionSetting) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            DirectionSetting::NONE => emlite::Val::from(""),
+            DirectionSetting::RL => emlite::Val::from("rl"),
+            DirectionSetting::LR => emlite::Val::from("lr"),
+        }
     }
 }
 
-impl DirectionSetting {
-    pub const NONE: &str = "";
-    pub const RL: &str = "rl";
-    pub const LR: &str = "lr";
-}
-
-#[derive(Clone, Debug)]
-pub struct LineAlignSetting {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum LineAlignSetting {
+    START,
+    CENTER,
+    END,
 }
 impl FromVal for LineAlignSetting {
     fn from_val(v: &emlite::Val) -> Self {
-        LineAlignSetting { inner: v.clone() }
+        match v.as_::<&str>() {
+            "start" => Self::START,
+            "center" => Self::CENTER,
+            "end" => Self::END,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for LineAlignSetting {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for LineAlignSetting {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<LineAlignSetting> for emlite::Val {
     fn from(s: LineAlignSetting) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            LineAlignSetting::START => emlite::Val::from("start"),
+            LineAlignSetting::CENTER => emlite::Val::from("center"),
+            LineAlignSetting::END => emlite::Val::from("end"),
+        }
     }
 }
 
-impl LineAlignSetting {
-    pub const START: &str = "start";
-    pub const CENTER: &str = "center";
-    pub const END: &str = "end";
-}
-
-#[derive(Clone, Debug)]
-pub struct PositionAlignSetting {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum PositionAlignSetting {
+    LINE_LEFT,
+    CENTER,
+    LINE_RIGHT,
+    AUTO,
 }
 impl FromVal for PositionAlignSetting {
     fn from_val(v: &emlite::Val) -> Self {
-        PositionAlignSetting { inner: v.clone() }
+        match v.as_::<&str>() {
+            "line-left" => Self::LINE_LEFT,
+            "center" => Self::CENTER,
+            "line-right" => Self::LINE_RIGHT,
+            "auto" => Self::AUTO,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for PositionAlignSetting {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for PositionAlignSetting {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<PositionAlignSetting> for emlite::Val {
     fn from(s: PositionAlignSetting) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            PositionAlignSetting::LINE_LEFT => emlite::Val::from("line-left"),
+            PositionAlignSetting::CENTER => emlite::Val::from("center"),
+            PositionAlignSetting::LINE_RIGHT => emlite::Val::from("line-right"),
+            PositionAlignSetting::AUTO => emlite::Val::from("auto"),
+        }
     }
 }
 
-impl PositionAlignSetting {
-    pub const LINE_LEFT: &str = "line-left";
-    pub const CENTER: &str = "center";
-    pub const LINE_RIGHT: &str = "line-right";
-    pub const AUTO: &str = "auto";
-}
-
-#[derive(Clone, Debug)]
-pub struct AlignSetting {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum AlignSetting {
+    START,
+    CENTER,
+    END,
+    LEFT,
+    RIGHT,
 }
 impl FromVal for AlignSetting {
     fn from_val(v: &emlite::Val) -> Self {
-        AlignSetting { inner: v.clone() }
+        match v.as_::<&str>() {
+            "start" => Self::START,
+            "center" => Self::CENTER,
+            "end" => Self::END,
+            "left" => Self::LEFT,
+            "right" => Self::RIGHT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for AlignSetting {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for AlignSetting {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<AlignSetting> for emlite::Val {
     fn from(s: AlignSetting) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            AlignSetting::START => emlite::Val::from("start"),
+            AlignSetting::CENTER => emlite::Val::from("center"),
+            AlignSetting::END => emlite::Val::from("end"),
+            AlignSetting::LEFT => emlite::Val::from("left"),
+            AlignSetting::RIGHT => emlite::Val::from("right"),
+        }
     }
 }
 
-impl AlignSetting {
-    pub const START: &str = "start";
-    pub const CENTER: &str = "center";
-    pub const END: &str = "end";
-    pub const LEFT: &str = "left";
-    pub const RIGHT: &str = "right";
-}
-
-#[derive(Clone, Debug)]
-pub struct ScrollSetting {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum ScrollSetting {
+    NONE,
+    UP,
 }
 impl FromVal for ScrollSetting {
     fn from_val(v: &emlite::Val) -> Self {
-        ScrollSetting { inner: v.clone() }
+        match v.as_::<&str>() {
+            "" => Self::NONE,
+            "up" => Self::UP,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for ScrollSetting {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for ScrollSetting {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<ScrollSetting> for emlite::Val {
     fn from(s: ScrollSetting) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            ScrollSetting::NONE => emlite::Val::from(""),
+            ScrollSetting::UP => emlite::Val::from("up"),
+        }
     }
 }
 
-impl ScrollSetting {
-    pub const NONE: &str = "";
-    pub const UP: &str = "up";
-}
-
-#[derive(Clone, Debug)]
-pub struct XREnvironmentBlendMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XREnvironmentBlendMode {
+    OPAQUE,
+    ALPHA_BLEND,
+    ADDITIVE,
 }
 impl FromVal for XREnvironmentBlendMode {
     fn from_val(v: &emlite::Val) -> Self {
-        XREnvironmentBlendMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "opaque" => Self::OPAQUE,
+            "alpha-blend" => Self::ALPHA_BLEND,
+            "additive" => Self::ADDITIVE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XREnvironmentBlendMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XREnvironmentBlendMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XREnvironmentBlendMode> for emlite::Val {
     fn from(s: XREnvironmentBlendMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XREnvironmentBlendMode::OPAQUE => emlite::Val::from("opaque"),
+            XREnvironmentBlendMode::ALPHA_BLEND => emlite::Val::from("alpha-blend"),
+            XREnvironmentBlendMode::ADDITIVE => emlite::Val::from("additive"),
+        }
     }
 }
 
-impl XREnvironmentBlendMode {
-    pub const OPAQUE: &str = "opaque";
-    pub const ALPHA_BLEND: &str = "alpha-blend";
-    pub const ADDITIVE: &str = "additive";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRInteractionMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRInteractionMode {
+    SCREEN_SPACE,
+    WORLD_SPACE,
 }
 impl FromVal for XRInteractionMode {
     fn from_val(v: &emlite::Val) -> Self {
-        XRInteractionMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "screen-space" => Self::SCREEN_SPACE,
+            "world-space" => Self::WORLD_SPACE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRInteractionMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRInteractionMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRInteractionMode> for emlite::Val {
     fn from(s: XRInteractionMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRInteractionMode::SCREEN_SPACE => emlite::Val::from("screen-space"),
+            XRInteractionMode::WORLD_SPACE => emlite::Val::from("world-space"),
+        }
     }
 }
 
-impl XRInteractionMode {
-    pub const SCREEN_SPACE: &str = "screen-space";
-    pub const WORLD_SPACE: &str = "world-space";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRDepthType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRDepthType {
+    RAW_,
+    SMOOTH,
 }
 impl FromVal for XRDepthType {
     fn from_val(v: &emlite::Val) -> Self {
-        XRDepthType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "raw" => Self::RAW_,
+            "smooth" => Self::SMOOTH,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRDepthType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRDepthType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRDepthType> for emlite::Val {
     fn from(s: XRDepthType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRDepthType::RAW_ => emlite::Val::from("raw"),
+            XRDepthType::SMOOTH => emlite::Val::from("smooth"),
+        }
     }
 }
 
-impl XRDepthType {
-    pub const RAW_: &str = "raw";
-    pub const SMOOTH: &str = "smooth";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRDepthUsage {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRDepthUsage {
+    CPU_OPTIMIZED,
+    GPU_OPTIMIZED,
 }
 impl FromVal for XRDepthUsage {
     fn from_val(v: &emlite::Val) -> Self {
-        XRDepthUsage { inner: v.clone() }
+        match v.as_::<&str>() {
+            "cpu-optimized" => Self::CPU_OPTIMIZED,
+            "gpu-optimized" => Self::GPU_OPTIMIZED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRDepthUsage {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRDepthUsage {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRDepthUsage> for emlite::Val {
     fn from(s: XRDepthUsage) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRDepthUsage::CPU_OPTIMIZED => emlite::Val::from("cpu-optimized"),
+            XRDepthUsage::GPU_OPTIMIZED => emlite::Val::from("gpu-optimized"),
+        }
     }
 }
 
-impl XRDepthUsage {
-    pub const CPU_OPTIMIZED: &str = "cpu-optimized";
-    pub const GPU_OPTIMIZED: &str = "gpu-optimized";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRDepthDataFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRDepthDataFormat {
+    LUMINANCE_ALPHA,
+    FLOAT32,
+    UNSIGNED_SHORT,
 }
 impl FromVal for XRDepthDataFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        XRDepthDataFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "luminance-alpha" => Self::LUMINANCE_ALPHA,
+            "float32" => Self::FLOAT32,
+            "unsigned-short" => Self::UNSIGNED_SHORT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRDepthDataFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRDepthDataFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRDepthDataFormat> for emlite::Val {
     fn from(s: XRDepthDataFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRDepthDataFormat::LUMINANCE_ALPHA => emlite::Val::from("luminance-alpha"),
+            XRDepthDataFormat::FLOAT32 => emlite::Val::from("float32"),
+            XRDepthDataFormat::UNSIGNED_SHORT => emlite::Val::from("unsigned-short"),
+        }
     }
 }
 
-impl XRDepthDataFormat {
-    pub const LUMINANCE_ALPHA: &str = "luminance-alpha";
-    pub const FLOAT32: &str = "float32";
-    pub const UNSIGNED_SHORT: &str = "unsigned-short";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRDOMOverlayType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRDOMOverlayType {
+    SCREEN,
+    FLOATING,
+    HEAD_LOCKED,
 }
 impl FromVal for XRDOMOverlayType {
     fn from_val(v: &emlite::Val) -> Self {
-        XRDOMOverlayType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "screen" => Self::SCREEN,
+            "floating" => Self::FLOATING,
+            "head-locked" => Self::HEAD_LOCKED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRDOMOverlayType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRDOMOverlayType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRDOMOverlayType> for emlite::Val {
     fn from(s: XRDOMOverlayType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRDOMOverlayType::SCREEN => emlite::Val::from("screen"),
+            XRDOMOverlayType::FLOATING => emlite::Val::from("floating"),
+            XRDOMOverlayType::HEAD_LOCKED => emlite::Val::from("head-locked"),
+        }
     }
 }
 
-impl XRDOMOverlayType {
-    pub const SCREEN: &str = "screen";
-    pub const FLOATING: &str = "floating";
-    pub const HEAD_LOCKED: &str = "head-locked";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRHandJoint {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRHandJoint {
+    WRIST,
+    THUMB_METACARPAL,
+    THUMB_PHALANX_PROXIMAL,
+    THUMB_PHALANX_DISTAL,
+    THUMB_TIP,
+    INDEX_FINGER_METACARPAL,
+    INDEX_FINGER_PHALANX_PROXIMAL,
+    INDEX_FINGER_PHALANX_INTERMEDIATE,
+    INDEX_FINGER_PHALANX_DISTAL,
+    INDEX_FINGER_TIP,
+    MIDDLE_FINGER_METACARPAL,
+    MIDDLE_FINGER_PHALANX_PROXIMAL,
+    MIDDLE_FINGER_PHALANX_INTERMEDIATE,
+    MIDDLE_FINGER_PHALANX_DISTAL,
+    MIDDLE_FINGER_TIP,
+    RING_FINGER_METACARPAL,
+    RING_FINGER_PHALANX_PROXIMAL,
+    RING_FINGER_PHALANX_INTERMEDIATE,
+    RING_FINGER_PHALANX_DISTAL,
+    RING_FINGER_TIP,
+    PINKY_FINGER_METACARPAL,
+    PINKY_FINGER_PHALANX_PROXIMAL,
+    PINKY_FINGER_PHALANX_INTERMEDIATE,
+    PINKY_FINGER_PHALANX_DISTAL,
+    PINKY_FINGER_TIP,
 }
 impl FromVal for XRHandJoint {
     fn from_val(v: &emlite::Val) -> Self {
-        XRHandJoint { inner: v.clone() }
+        match v.as_::<&str>() {
+            "wrist" => Self::WRIST,
+            "thumb-metacarpal" => Self::THUMB_METACARPAL,
+            "thumb-phalanx-proximal" => Self::THUMB_PHALANX_PROXIMAL,
+            "thumb-phalanx-distal" => Self::THUMB_PHALANX_DISTAL,
+            "thumb-tip" => Self::THUMB_TIP,
+            "index-finger-metacarpal" => Self::INDEX_FINGER_METACARPAL,
+            "index-finger-phalanx-proximal" => Self::INDEX_FINGER_PHALANX_PROXIMAL,
+            "index-finger-phalanx-intermediate" => Self::INDEX_FINGER_PHALANX_INTERMEDIATE,
+            "index-finger-phalanx-distal" => Self::INDEX_FINGER_PHALANX_DISTAL,
+            "index-finger-tip" => Self::INDEX_FINGER_TIP,
+            "middle-finger-metacarpal" => Self::MIDDLE_FINGER_METACARPAL,
+            "middle-finger-phalanx-proximal" => Self::MIDDLE_FINGER_PHALANX_PROXIMAL,
+            "middle-finger-phalanx-intermediate" => Self::MIDDLE_FINGER_PHALANX_INTERMEDIATE,
+            "middle-finger-phalanx-distal" => Self::MIDDLE_FINGER_PHALANX_DISTAL,
+            "middle-finger-tip" => Self::MIDDLE_FINGER_TIP,
+            "ring-finger-metacarpal" => Self::RING_FINGER_METACARPAL,
+            "ring-finger-phalanx-proximal" => Self::RING_FINGER_PHALANX_PROXIMAL,
+            "ring-finger-phalanx-intermediate" => Self::RING_FINGER_PHALANX_INTERMEDIATE,
+            "ring-finger-phalanx-distal" => Self::RING_FINGER_PHALANX_DISTAL,
+            "ring-finger-tip" => Self::RING_FINGER_TIP,
+            "pinky-finger-metacarpal" => Self::PINKY_FINGER_METACARPAL,
+            "pinky-finger-phalanx-proximal" => Self::PINKY_FINGER_PHALANX_PROXIMAL,
+            "pinky-finger-phalanx-intermediate" => Self::PINKY_FINGER_PHALANX_INTERMEDIATE,
+            "pinky-finger-phalanx-distal" => Self::PINKY_FINGER_PHALANX_DISTAL,
+            "pinky-finger-tip" => Self::PINKY_FINGER_TIP,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRHandJoint {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRHandJoint {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRHandJoint> for emlite::Val {
     fn from(s: XRHandJoint) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRHandJoint::WRIST => emlite::Val::from("wrist"),
+            XRHandJoint::THUMB_METACARPAL => emlite::Val::from("thumb-metacarpal"),
+            XRHandJoint::THUMB_PHALANX_PROXIMAL => emlite::Val::from("thumb-phalanx-proximal"),
+            XRHandJoint::THUMB_PHALANX_DISTAL => emlite::Val::from("thumb-phalanx-distal"),
+            XRHandJoint::THUMB_TIP => emlite::Val::from("thumb-tip"),
+            XRHandJoint::INDEX_FINGER_METACARPAL => emlite::Val::from("index-finger-metacarpal"),
+            XRHandJoint::INDEX_FINGER_PHALANX_PROXIMAL => {
+                emlite::Val::from("index-finger-phalanx-proximal")
+            }
+            XRHandJoint::INDEX_FINGER_PHALANX_INTERMEDIATE => {
+                emlite::Val::from("index-finger-phalanx-intermediate")
+            }
+            XRHandJoint::INDEX_FINGER_PHALANX_DISTAL => {
+                emlite::Val::from("index-finger-phalanx-distal")
+            }
+            XRHandJoint::INDEX_FINGER_TIP => emlite::Val::from("index-finger-tip"),
+            XRHandJoint::MIDDLE_FINGER_METACARPAL => emlite::Val::from("middle-finger-metacarpal"),
+            XRHandJoint::MIDDLE_FINGER_PHALANX_PROXIMAL => {
+                emlite::Val::from("middle-finger-phalanx-proximal")
+            }
+            XRHandJoint::MIDDLE_FINGER_PHALANX_INTERMEDIATE => {
+                emlite::Val::from("middle-finger-phalanx-intermediate")
+            }
+            XRHandJoint::MIDDLE_FINGER_PHALANX_DISTAL => {
+                emlite::Val::from("middle-finger-phalanx-distal")
+            }
+            XRHandJoint::MIDDLE_FINGER_TIP => emlite::Val::from("middle-finger-tip"),
+            XRHandJoint::RING_FINGER_METACARPAL => emlite::Val::from("ring-finger-metacarpal"),
+            XRHandJoint::RING_FINGER_PHALANX_PROXIMAL => {
+                emlite::Val::from("ring-finger-phalanx-proximal")
+            }
+            XRHandJoint::RING_FINGER_PHALANX_INTERMEDIATE => {
+                emlite::Val::from("ring-finger-phalanx-intermediate")
+            }
+            XRHandJoint::RING_FINGER_PHALANX_DISTAL => {
+                emlite::Val::from("ring-finger-phalanx-distal")
+            }
+            XRHandJoint::RING_FINGER_TIP => emlite::Val::from("ring-finger-tip"),
+            XRHandJoint::PINKY_FINGER_METACARPAL => emlite::Val::from("pinky-finger-metacarpal"),
+            XRHandJoint::PINKY_FINGER_PHALANX_PROXIMAL => {
+                emlite::Val::from("pinky-finger-phalanx-proximal")
+            }
+            XRHandJoint::PINKY_FINGER_PHALANX_INTERMEDIATE => {
+                emlite::Val::from("pinky-finger-phalanx-intermediate")
+            }
+            XRHandJoint::PINKY_FINGER_PHALANX_DISTAL => {
+                emlite::Val::from("pinky-finger-phalanx-distal")
+            }
+            XRHandJoint::PINKY_FINGER_TIP => emlite::Val::from("pinky-finger-tip"),
+        }
     }
 }
 
-impl XRHandJoint {
-    pub const WRIST: &str = "wrist";
-    pub const THUMB_METACARPAL: &str = "thumb-metacarpal";
-    pub const THUMB_PHALANX_PROXIMAL: &str = "thumb-phalanx-proximal";
-    pub const THUMB_PHALANX_DISTAL: &str = "thumb-phalanx-distal";
-    pub const THUMB_TIP: &str = "thumb-tip";
-    pub const INDEX_FINGER_METACARPAL: &str = "index-finger-metacarpal";
-    pub const INDEX_FINGER_PHALANX_PROXIMAL: &str = "index-finger-phalanx-proximal";
-    pub const INDEX_FINGER_PHALANX_INTERMEDIATE: &str = "index-finger-phalanx-intermediate";
-    pub const INDEX_FINGER_PHALANX_DISTAL: &str = "index-finger-phalanx-distal";
-    pub const INDEX_FINGER_TIP: &str = "index-finger-tip";
-    pub const MIDDLE_FINGER_METACARPAL: &str = "middle-finger-metacarpal";
-    pub const MIDDLE_FINGER_PHALANX_PROXIMAL: &str = "middle-finger-phalanx-proximal";
-    pub const MIDDLE_FINGER_PHALANX_INTERMEDIATE: &str = "middle-finger-phalanx-intermediate";
-    pub const MIDDLE_FINGER_PHALANX_DISTAL: &str = "middle-finger-phalanx-distal";
-    pub const MIDDLE_FINGER_TIP: &str = "middle-finger-tip";
-    pub const RING_FINGER_METACARPAL: &str = "ring-finger-metacarpal";
-    pub const RING_FINGER_PHALANX_PROXIMAL: &str = "ring-finger-phalanx-proximal";
-    pub const RING_FINGER_PHALANX_INTERMEDIATE: &str = "ring-finger-phalanx-intermediate";
-    pub const RING_FINGER_PHALANX_DISTAL: &str = "ring-finger-phalanx-distal";
-    pub const RING_FINGER_TIP: &str = "ring-finger-tip";
-    pub const PINKY_FINGER_METACARPAL: &str = "pinky-finger-metacarpal";
-    pub const PINKY_FINGER_PHALANX_PROXIMAL: &str = "pinky-finger-phalanx-proximal";
-    pub const PINKY_FINGER_PHALANX_INTERMEDIATE: &str = "pinky-finger-phalanx-intermediate";
-    pub const PINKY_FINGER_PHALANX_DISTAL: &str = "pinky-finger-phalanx-distal";
-    pub const PINKY_FINGER_TIP: &str = "pinky-finger-tip";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRHitTestTrackableType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRHitTestTrackableType {
+    POINT,
+    PLANE,
+    MESH,
 }
 impl FromVal for XRHitTestTrackableType {
     fn from_val(v: &emlite::Val) -> Self {
-        XRHitTestTrackableType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "point" => Self::POINT,
+            "plane" => Self::PLANE,
+            "mesh" => Self::MESH,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRHitTestTrackableType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRHitTestTrackableType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRHitTestTrackableType> for emlite::Val {
     fn from(s: XRHitTestTrackableType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRHitTestTrackableType::POINT => emlite::Val::from("point"),
+            XRHitTestTrackableType::PLANE => emlite::Val::from("plane"),
+            XRHitTestTrackableType::MESH => emlite::Val::from("mesh"),
+        }
     }
 }
 
-impl XRHitTestTrackableType {
-    pub const POINT: &str = "point";
-    pub const PLANE: &str = "plane";
-    pub const MESH: &str = "mesh";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRReflectionFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRReflectionFormat {
+    SRGBA8,
+    RGBA16F,
 }
 impl FromVal for XRReflectionFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        XRReflectionFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "srgba8" => Self::SRGBA8,
+            "rgba16f" => Self::RGBA16F,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRReflectionFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRReflectionFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRReflectionFormat> for emlite::Val {
     fn from(s: XRReflectionFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRReflectionFormat::SRGBA8 => emlite::Val::from("srgba8"),
+            XRReflectionFormat::RGBA16F => emlite::Val::from("rgba16f"),
+        }
     }
 }
 
-impl XRReflectionFormat {
-    pub const SRGBA8: &str = "srgba8";
-    pub const RGBA16F: &str = "rgba16f";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRPlaneOrientation {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRPlaneOrientation {
+    HORIZONTAL,
+    VERTICAL,
 }
 impl FromVal for XRPlaneOrientation {
     fn from_val(v: &emlite::Val) -> Self {
-        XRPlaneOrientation { inner: v.clone() }
+        match v.as_::<&str>() {
+            "horizontal" => Self::HORIZONTAL,
+            "vertical" => Self::VERTICAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRPlaneOrientation {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRPlaneOrientation {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRPlaneOrientation> for emlite::Val {
     fn from(s: XRPlaneOrientation) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRPlaneOrientation::HORIZONTAL => emlite::Val::from("horizontal"),
+            XRPlaneOrientation::VERTICAL => emlite::Val::from("vertical"),
+        }
     }
 }
 
-impl XRPlaneOrientation {
-    pub const HORIZONTAL: &str = "horizontal";
-    pub const VERTICAL: &str = "vertical";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRSessionMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRSessionMode {
+    INLINE,
+    IMMERSIVE_VR,
+    IMMERSIVE_AR,
 }
 impl FromVal for XRSessionMode {
     fn from_val(v: &emlite::Val) -> Self {
-        XRSessionMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "inline" => Self::INLINE,
+            "immersive-vr" => Self::IMMERSIVE_VR,
+            "immersive-ar" => Self::IMMERSIVE_AR,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRSessionMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRSessionMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRSessionMode> for emlite::Val {
     fn from(s: XRSessionMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRSessionMode::INLINE => emlite::Val::from("inline"),
+            XRSessionMode::IMMERSIVE_VR => emlite::Val::from("immersive-vr"),
+            XRSessionMode::IMMERSIVE_AR => emlite::Val::from("immersive-ar"),
+        }
     }
 }
 
-impl XRSessionMode {
-    pub const INLINE: &str = "inline";
-    pub const IMMERSIVE_VR: &str = "immersive-vr";
-    pub const IMMERSIVE_AR: &str = "immersive-ar";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRVisibilityState {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRVisibilityState {
+    VISIBLE,
+    VISIBLE_BLURRED,
+    HIDDEN,
 }
 impl FromVal for XRVisibilityState {
     fn from_val(v: &emlite::Val) -> Self {
-        XRVisibilityState { inner: v.clone() }
+        match v.as_::<&str>() {
+            "visible" => Self::VISIBLE,
+            "visible-blurred" => Self::VISIBLE_BLURRED,
+            "hidden" => Self::HIDDEN,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRVisibilityState {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRVisibilityState {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRVisibilityState> for emlite::Val {
     fn from(s: XRVisibilityState) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRVisibilityState::VISIBLE => emlite::Val::from("visible"),
+            XRVisibilityState::VISIBLE_BLURRED => emlite::Val::from("visible-blurred"),
+            XRVisibilityState::HIDDEN => emlite::Val::from("hidden"),
+        }
     }
 }
 
-impl XRVisibilityState {
-    pub const VISIBLE: &str = "visible";
-    pub const VISIBLE_BLURRED: &str = "visible-blurred";
-    pub const HIDDEN: &str = "hidden";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRReferenceSpaceType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRReferenceSpaceType {
+    VIEWER,
+    LOCAL,
+    LOCAL_FLOOR,
+    BOUNDED_FLOOR,
+    UNBOUNDED,
 }
 impl FromVal for XRReferenceSpaceType {
     fn from_val(v: &emlite::Val) -> Self {
-        XRReferenceSpaceType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "viewer" => Self::VIEWER,
+            "local" => Self::LOCAL,
+            "local-floor" => Self::LOCAL_FLOOR,
+            "bounded-floor" => Self::BOUNDED_FLOOR,
+            "unbounded" => Self::UNBOUNDED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRReferenceSpaceType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRReferenceSpaceType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRReferenceSpaceType> for emlite::Val {
     fn from(s: XRReferenceSpaceType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRReferenceSpaceType::VIEWER => emlite::Val::from("viewer"),
+            XRReferenceSpaceType::LOCAL => emlite::Val::from("local"),
+            XRReferenceSpaceType::LOCAL_FLOOR => emlite::Val::from("local-floor"),
+            XRReferenceSpaceType::BOUNDED_FLOOR => emlite::Val::from("bounded-floor"),
+            XRReferenceSpaceType::UNBOUNDED => emlite::Val::from("unbounded"),
+        }
     }
 }
 
-impl XRReferenceSpaceType {
-    pub const VIEWER: &str = "viewer";
-    pub const LOCAL: &str = "local";
-    pub const LOCAL_FLOOR: &str = "local-floor";
-    pub const BOUNDED_FLOOR: &str = "bounded-floor";
-    pub const UNBOUNDED: &str = "unbounded";
-}
-
-#[derive(Clone, Debug)]
-pub struct XREye {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XREye {
+    NONE,
+    LEFT,
+    RIGHT,
 }
 impl FromVal for XREye {
     fn from_val(v: &emlite::Val) -> Self {
-        XREye { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "left" => Self::LEFT,
+            "right" => Self::RIGHT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XREye {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XREye {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XREye> for emlite::Val {
     fn from(s: XREye) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XREye::NONE => emlite::Val::from("none"),
+            XREye::LEFT => emlite::Val::from("left"),
+            XREye::RIGHT => emlite::Val::from("right"),
+        }
     }
 }
 
-impl XREye {
-    pub const NONE: &str = "none";
-    pub const LEFT: &str = "left";
-    pub const RIGHT: &str = "right";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRHandedness {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRHandedness {
+    NONE,
+    LEFT,
+    RIGHT,
 }
 impl FromVal for XRHandedness {
     fn from_val(v: &emlite::Val) -> Self {
-        XRHandedness { inner: v.clone() }
+        match v.as_::<&str>() {
+            "none" => Self::NONE,
+            "left" => Self::LEFT,
+            "right" => Self::RIGHT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRHandedness {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRHandedness {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRHandedness> for emlite::Val {
     fn from(s: XRHandedness) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRHandedness::NONE => emlite::Val::from("none"),
+            XRHandedness::LEFT => emlite::Val::from("left"),
+            XRHandedness::RIGHT => emlite::Val::from("right"),
+        }
     }
 }
 
-impl XRHandedness {
-    pub const NONE: &str = "none";
-    pub const LEFT: &str = "left";
-    pub const RIGHT: &str = "right";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRTargetRayMode {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRTargetRayMode {
+    GAZE,
+    TRACKED_POINTER,
+    SCREEN,
+    TRANSIENT_POINTER,
 }
 impl FromVal for XRTargetRayMode {
     fn from_val(v: &emlite::Val) -> Self {
-        XRTargetRayMode { inner: v.clone() }
+        match v.as_::<&str>() {
+            "gaze" => Self::GAZE,
+            "tracked-pointer" => Self::TRACKED_POINTER,
+            "screen" => Self::SCREEN,
+            "transient-pointer" => Self::TRANSIENT_POINTER,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRTargetRayMode {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRTargetRayMode {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRTargetRayMode> for emlite::Val {
     fn from(s: XRTargetRayMode) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRTargetRayMode::GAZE => emlite::Val::from("gaze"),
+            XRTargetRayMode::TRACKED_POINTER => emlite::Val::from("tracked-pointer"),
+            XRTargetRayMode::SCREEN => emlite::Val::from("screen"),
+            XRTargetRayMode::TRANSIENT_POINTER => emlite::Val::from("transient-pointer"),
+        }
     }
 }
 
-impl XRTargetRayMode {
-    pub const GAZE: &str = "gaze";
-    pub const TRACKED_POINTER: &str = "tracked-pointer";
-    pub const SCREEN: &str = "screen";
-    pub const TRANSIENT_POINTER: &str = "transient-pointer";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRLayerLayout {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRLayerLayout {
+    DEFAULT,
+    MONO,
+    STEREO,
+    STEREO_LEFT_RIGHT,
+    STEREO_TOP_BOTTOM,
 }
 impl FromVal for XRLayerLayout {
     fn from_val(v: &emlite::Val) -> Self {
-        XRLayerLayout { inner: v.clone() }
+        match v.as_::<&str>() {
+            "default" => Self::DEFAULT,
+            "mono" => Self::MONO,
+            "stereo" => Self::STEREO,
+            "stereo-left-right" => Self::STEREO_LEFT_RIGHT,
+            "stereo-top-bottom" => Self::STEREO_TOP_BOTTOM,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRLayerLayout {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRLayerLayout {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRLayerLayout> for emlite::Val {
     fn from(s: XRLayerLayout) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRLayerLayout::DEFAULT => emlite::Val::from("default"),
+            XRLayerLayout::MONO => emlite::Val::from("mono"),
+            XRLayerLayout::STEREO => emlite::Val::from("stereo"),
+            XRLayerLayout::STEREO_LEFT_RIGHT => emlite::Val::from("stereo-left-right"),
+            XRLayerLayout::STEREO_TOP_BOTTOM => emlite::Val::from("stereo-top-bottom"),
+        }
     }
 }
 
-impl XRLayerLayout {
-    pub const DEFAULT: &str = "default";
-    pub const MONO: &str = "mono";
-    pub const STEREO: &str = "stereo";
-    pub const STEREO_LEFT_RIGHT: &str = "stereo-left-right";
-    pub const STEREO_TOP_BOTTOM: &str = "stereo-top-bottom";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRLayerQuality {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRLayerQuality {
+    DEFAULT,
+    TEXT_OPTIMIZED,
+    GRAPHICS_OPTIMIZED,
 }
 impl FromVal for XRLayerQuality {
     fn from_val(v: &emlite::Val) -> Self {
-        XRLayerQuality { inner: v.clone() }
+        match v.as_::<&str>() {
+            "default" => Self::DEFAULT,
+            "text-optimized" => Self::TEXT_OPTIMIZED,
+            "graphics-optimized" => Self::GRAPHICS_OPTIMIZED,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRLayerQuality {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRLayerQuality {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRLayerQuality> for emlite::Val {
     fn from(s: XRLayerQuality) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRLayerQuality::DEFAULT => emlite::Val::from("default"),
+            XRLayerQuality::TEXT_OPTIMIZED => emlite::Val::from("text-optimized"),
+            XRLayerQuality::GRAPHICS_OPTIMIZED => emlite::Val::from("graphics-optimized"),
+        }
     }
 }
 
-impl XRLayerQuality {
-    pub const DEFAULT: &str = "default";
-    pub const TEXT_OPTIMIZED: &str = "text-optimized";
-    pub const GRAPHICS_OPTIMIZED: &str = "graphics-optimized";
-}
-
-#[derive(Clone, Debug)]
-pub struct XRTextureType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XRTextureType {
+    TEXTURE,
+    TEXTURE_ARRAY,
 }
 impl FromVal for XRTextureType {
     fn from_val(v: &emlite::Val) -> Self {
-        XRTextureType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "texture" => Self::TEXTURE,
+            "texture-array" => Self::TEXTURE_ARRAY,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XRTextureType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XRTextureType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XRTextureType> for emlite::Val {
     fn from(s: XRTextureType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XRTextureType::TEXTURE => emlite::Val::from("texture"),
+            XRTextureType::TEXTURE_ARRAY => emlite::Val::from("texture-array"),
+        }
     }
 }
 
-impl XRTextureType {
-    pub const TEXTURE: &str = "texture";
-    pub const TEXTURE_ARRAY: &str = "texture-array";
-}
-
-#[derive(Clone, Debug)]
-pub struct SummarizerType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SummarizerType {
+    TLDR,
+    TEASER,
+    KEY_POINTS,
+    HEADLINE,
 }
 impl FromVal for SummarizerType {
     fn from_val(v: &emlite::Val) -> Self {
-        SummarizerType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "tldr" => Self::TLDR,
+            "teaser" => Self::TEASER,
+            "key-points" => Self::KEY_POINTS,
+            "headline" => Self::HEADLINE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SummarizerType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SummarizerType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SummarizerType> for emlite::Val {
     fn from(s: SummarizerType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SummarizerType::TLDR => emlite::Val::from("tldr"),
+            SummarizerType::TEASER => emlite::Val::from("teaser"),
+            SummarizerType::KEY_POINTS => emlite::Val::from("key-points"),
+            SummarizerType::HEADLINE => emlite::Val::from("headline"),
+        }
     }
 }
 
-impl SummarizerType {
-    pub const TLDR: &str = "tldr";
-    pub const TEASER: &str = "teaser";
-    pub const KEY_POINTS: &str = "key-points";
-    pub const HEADLINE: &str = "headline";
-}
-
-#[derive(Clone, Debug)]
-pub struct SummarizerFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SummarizerFormat {
+    PLAIN_TEXT,
+    MARKDOWN,
 }
 impl FromVal for SummarizerFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        SummarizerFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "plain-text" => Self::PLAIN_TEXT,
+            "markdown" => Self::MARKDOWN,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SummarizerFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SummarizerFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SummarizerFormat> for emlite::Val {
     fn from(s: SummarizerFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SummarizerFormat::PLAIN_TEXT => emlite::Val::from("plain-text"),
+            SummarizerFormat::MARKDOWN => emlite::Val::from("markdown"),
+        }
     }
 }
 
-impl SummarizerFormat {
-    pub const PLAIN_TEXT: &str = "plain-text";
-    pub const MARKDOWN: &str = "markdown";
-}
-
-#[derive(Clone, Debug)]
-pub struct SummarizerLength {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum SummarizerLength {
+    SHORT,
+    MEDIUM,
+    LONG,
 }
 impl FromVal for SummarizerLength {
     fn from_val(v: &emlite::Val) -> Self {
-        SummarizerLength { inner: v.clone() }
+        match v.as_::<&str>() {
+            "short" => Self::SHORT,
+            "medium" => Self::MEDIUM,
+            "long" => Self::LONG,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for SummarizerLength {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for SummarizerLength {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<SummarizerLength> for emlite::Val {
     fn from(s: SummarizerLength) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            SummarizerLength::SHORT => emlite::Val::from("short"),
+            SummarizerLength::MEDIUM => emlite::Val::from("medium"),
+            SummarizerLength::LONG => emlite::Val::from("long"),
+        }
     }
 }
 
-impl SummarizerLength {
-    pub const SHORT: &str = "short";
-    pub const MEDIUM: &str = "medium";
-    pub const LONG: &str = "long";
-}
-
-#[derive(Clone, Debug)]
-pub struct WriterTone {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum WriterTone {
+    FORMAL,
+    NEUTRAL,
+    CASUAL,
 }
 impl FromVal for WriterTone {
     fn from_val(v: &emlite::Val) -> Self {
-        WriterTone { inner: v.clone() }
+        match v.as_::<&str>() {
+            "formal" => Self::FORMAL,
+            "neutral" => Self::NEUTRAL,
+            "casual" => Self::CASUAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for WriterTone {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for WriterTone {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<WriterTone> for emlite::Val {
     fn from(s: WriterTone) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            WriterTone::FORMAL => emlite::Val::from("formal"),
+            WriterTone::NEUTRAL => emlite::Val::from("neutral"),
+            WriterTone::CASUAL => emlite::Val::from("casual"),
+        }
     }
 }
 
-impl WriterTone {
-    pub const FORMAL: &str = "formal";
-    pub const NEUTRAL: &str = "neutral";
-    pub const CASUAL: &str = "casual";
-}
-
-#[derive(Clone, Debug)]
-pub struct WriterFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum WriterFormat {
+    PLAIN_TEXT,
+    MARKDOWN,
 }
 impl FromVal for WriterFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        WriterFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "plain-text" => Self::PLAIN_TEXT,
+            "markdown" => Self::MARKDOWN,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for WriterFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for WriterFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<WriterFormat> for emlite::Val {
     fn from(s: WriterFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            WriterFormat::PLAIN_TEXT => emlite::Val::from("plain-text"),
+            WriterFormat::MARKDOWN => emlite::Val::from("markdown"),
+        }
     }
 }
 
-impl WriterFormat {
-    pub const PLAIN_TEXT: &str = "plain-text";
-    pub const MARKDOWN: &str = "markdown";
-}
-
-#[derive(Clone, Debug)]
-pub struct WriterLength {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum WriterLength {
+    SHORT,
+    MEDIUM,
+    LONG,
 }
 impl FromVal for WriterLength {
     fn from_val(v: &emlite::Val) -> Self {
-        WriterLength { inner: v.clone() }
+        match v.as_::<&str>() {
+            "short" => Self::SHORT,
+            "medium" => Self::MEDIUM,
+            "long" => Self::LONG,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for WriterLength {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for WriterLength {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<WriterLength> for emlite::Val {
     fn from(s: WriterLength) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            WriterLength::SHORT => emlite::Val::from("short"),
+            WriterLength::MEDIUM => emlite::Val::from("medium"),
+            WriterLength::LONG => emlite::Val::from("long"),
+        }
     }
 }
 
-impl WriterLength {
-    pub const SHORT: &str = "short";
-    pub const MEDIUM: &str = "medium";
-    pub const LONG: &str = "long";
-}
-
-#[derive(Clone, Debug)]
-pub struct RewriterTone {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RewriterTone {
+    AS_IS,
+    MORE_FORMAL,
+    MORE_CASUAL,
 }
 impl FromVal for RewriterTone {
     fn from_val(v: &emlite::Val) -> Self {
-        RewriterTone { inner: v.clone() }
+        match v.as_::<&str>() {
+            "as-is" => Self::AS_IS,
+            "more-formal" => Self::MORE_FORMAL,
+            "more-casual" => Self::MORE_CASUAL,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RewriterTone {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RewriterTone {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RewriterTone> for emlite::Val {
     fn from(s: RewriterTone) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RewriterTone::AS_IS => emlite::Val::from("as-is"),
+            RewriterTone::MORE_FORMAL => emlite::Val::from("more-formal"),
+            RewriterTone::MORE_CASUAL => emlite::Val::from("more-casual"),
+        }
     }
 }
 
-impl RewriterTone {
-    pub const AS_IS: &str = "as-is";
-    pub const MORE_FORMAL: &str = "more-formal";
-    pub const MORE_CASUAL: &str = "more-casual";
-}
-
-#[derive(Clone, Debug)]
-pub struct RewriterFormat {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RewriterFormat {
+    AS_IS,
+    PLAIN_TEXT,
+    MARKDOWN,
 }
 impl FromVal for RewriterFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        RewriterFormat { inner: v.clone() }
+        match v.as_::<&str>() {
+            "as-is" => Self::AS_IS,
+            "plain-text" => Self::PLAIN_TEXT,
+            "markdown" => Self::MARKDOWN,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RewriterFormat {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RewriterFormat {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RewriterFormat> for emlite::Val {
     fn from(s: RewriterFormat) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RewriterFormat::AS_IS => emlite::Val::from("as-is"),
+            RewriterFormat::PLAIN_TEXT => emlite::Val::from("plain-text"),
+            RewriterFormat::MARKDOWN => emlite::Val::from("markdown"),
+        }
     }
 }
 
-impl RewriterFormat {
-    pub const AS_IS: &str = "as-is";
-    pub const PLAIN_TEXT: &str = "plain-text";
-    pub const MARKDOWN: &str = "markdown";
-}
-
-#[derive(Clone, Debug)]
-pub struct RewriterLength {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum RewriterLength {
+    AS_IS,
+    SHORTER,
+    LONGER,
 }
 impl FromVal for RewriterLength {
     fn from_val(v: &emlite::Val) -> Self {
-        RewriterLength { inner: v.clone() }
+        match v.as_::<&str>() {
+            "as-is" => Self::AS_IS,
+            "shorter" => Self::SHORTER,
+            "longer" => Self::LONGER,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for RewriterLength {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for RewriterLength {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<RewriterLength> for emlite::Val {
     fn from(s: RewriterLength) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            RewriterLength::AS_IS => emlite::Val::from("as-is"),
+            RewriterLength::SHORTER => emlite::Val::from("shorter"),
+            RewriterLength::LONGER => emlite::Val::from("longer"),
+        }
     }
 }
 
-impl RewriterLength {
-    pub const AS_IS: &str = "as-is";
-    pub const SHORTER: &str = "shorter";
-    pub const LONGER: &str = "longer";
-}
-
-#[derive(Clone, Debug)]
-pub struct Availability {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum Availability {
+    UNAVAILABLE,
+    DOWNLOADABLE,
+    DOWNLOADING,
+    AVAILABLE,
 }
 impl FromVal for Availability {
     fn from_val(v: &emlite::Val) -> Self {
-        Availability { inner: v.clone() }
+        match v.as_::<&str>() {
+            "unavailable" => Self::UNAVAILABLE,
+            "downloadable" => Self::DOWNLOADABLE,
+            "downloading" => Self::DOWNLOADING,
+            "available" => Self::AVAILABLE,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for Availability {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for Availability {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<Availability> for emlite::Val {
     fn from(s: Availability) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            Availability::UNAVAILABLE => emlite::Val::from("unavailable"),
+            Availability::DOWNLOADABLE => emlite::Val::from("downloadable"),
+            Availability::DOWNLOADING => emlite::Val::from("downloading"),
+            Availability::AVAILABLE => emlite::Val::from("available"),
+        }
     }
 }
 
-impl Availability {
-    pub const UNAVAILABLE: &str = "unavailable";
-    pub const DOWNLOADABLE: &str = "downloadable";
-    pub const DOWNLOADING: &str = "downloading";
-    pub const AVAILABLE: &str = "available";
-}
-
-#[derive(Clone, Debug)]
-pub struct XMLHttpRequestResponseType {
-    inner: emlite::Val,
+#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
+pub enum XMLHttpRequestResponseType {
+    NONE,
+    ARRAYBUFFER,
+    BLOB,
+    DOCUMENT,
+    JSON,
+    TEXT,
 }
 impl FromVal for XMLHttpRequestResponseType {
     fn from_val(v: &emlite::Val) -> Self {
-        XMLHttpRequestResponseType { inner: v.clone() }
+        match v.as_::<&str>() {
+            "" => Self::NONE,
+            "arraybuffer" => Self::ARRAYBUFFER,
+            "blob" => Self::BLOB,
+            "document" => Self::DOCUMENT,
+            "json" => Self::JSON,
+            "text" => Self::TEXT,
+            _ => unreachable!(),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
     }
     fn as_handle(&self) -> emlite::env::Handle {
-        self.inner.as_handle()
-    }
-}
-impl std::ops::Deref for XMLHttpRequestResponseType {
-    type Target = emlite::Val;
-    fn deref(&self) -> &Self::Target {
-        &self.inner
-    }
-}
-impl std::ops::DerefMut for XMLHttpRequestResponseType {
-    fn deref_mut(&mut self) -> &mut Self::Target {
-        &mut self.inner
+        emlite::Val::from(*self).as_handle()
     }
 }
 impl From<XMLHttpRequestResponseType> for emlite::Val {
     fn from(s: XMLHttpRequestResponseType) -> emlite::Val {
-        let handle = s.inner.as_handle();
-        std::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        match s {
+            XMLHttpRequestResponseType::NONE => emlite::Val::from(""),
+            XMLHttpRequestResponseType::ARRAYBUFFER => emlite::Val::from("arraybuffer"),
+            XMLHttpRequestResponseType::BLOB => emlite::Val::from("blob"),
+            XMLHttpRequestResponseType::DOCUMENT => emlite::Val::from("document"),
+            XMLHttpRequestResponseType::JSON => emlite::Val::from("json"),
+            XMLHttpRequestResponseType::TEXT => emlite::Val::from("text"),
+        }
     }
-}
-
-impl XMLHttpRequestResponseType {
-    pub const NONE: &str = "";
-    pub const ARRAYBUFFER: &str = "arraybuffer";
-    pub const BLOB: &str = "blob";
-    pub const DOCUMENT: &str = "document";
-    pub const JSON: &str = "json";
-    pub const TEXT: &str = "text";
 }

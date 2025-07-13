@@ -89,6 +89,22 @@ impl<T> Sequence<T> {
     {
         self.inner.get(idx as u32).as_::<T>()
     }
+
+    pub fn set(&self, idx: usize, val: T)
+    where
+        T: FromVal,
+        emlite::Val: From<T>,
+    {
+        self.inner.set(idx, val);
+    }
+
+    /// Returns a Rust Vec from a Sequence
+    pub fn to_vec(&self) -> Vec<T>
+    where
+        T: FromVal,
+    {
+        self.iter().collect()
+    }
 }
 
 pub struct SequenceIter<'a, T> {
@@ -142,5 +158,27 @@ where
     /// Return an iterator over owned elements.
     pub fn iter(&self) -> SequenceIter<'_, T> {
         self.into_iter()
+    }
+}
+
+impl<T: Clone> From<Vec<T>> for Sequence<T>
+where
+    emlite::Val: From<T>,
+{
+    #[inline]
+    fn from(buf: Vec<T>) -> Self {
+        // One copy from Wasm linear memory → JS Uint8Array.
+        Self::new_from_slice(&buf)
+    }
+}
+
+impl<T: Clone> From<&[T]> for Sequence<T>
+where
+    emlite::Val: From<T>,
+{
+    #[inline]
+    fn from(slice: &[T]) -> Self {
+        // Same single copy path.
+        Self::new_from_slice(slice)
     }
 }
