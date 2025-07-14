@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ProfilerTrace {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ProfilerTrace {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ProfilerTrace {
+impl core::ops::Deref for ProfilerTrace {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ProfilerTrace {
+impl core::ops::DerefMut for ProfilerTrace {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ProfilerTrace {
 impl From<ProfilerTrace> for emlite::Val {
     fn from(s: ProfilerTrace) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -78,7 +78,7 @@ impl ProfilerTrace {
         self.inner.set("samples", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Profiler {
     inner: EventTarget,
 }
@@ -95,13 +95,13 @@ impl FromVal for Profiler {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Profiler {
+impl core::ops::Deref for Profiler {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Profiler {
+impl core::ops::DerefMut for Profiler {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -109,7 +109,7 @@ impl std::ops::DerefMut for Profiler {
 impl From<Profiler> for emlite::Val {
     fn from(s: Profiler) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

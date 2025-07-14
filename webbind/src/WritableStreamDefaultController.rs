@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WritableStreamDefaultController {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for WritableStreamDefaultController {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WritableStreamDefaultController {
+impl core::ops::Deref for WritableStreamDefaultController {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WritableStreamDefaultController {
+impl core::ops::DerefMut for WritableStreamDefaultController {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for WritableStreamDefaultController {
 impl From<WritableStreamDefaultController> for emlite::Val {
     fn from(s: WritableStreamDefaultController) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

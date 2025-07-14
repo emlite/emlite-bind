@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct OES_standard_derivatives {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for OES_standard_derivatives {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for OES_standard_derivatives {
+impl core::ops::Deref for OES_standard_derivatives {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for OES_standard_derivatives {
+impl core::ops::DerefMut for OES_standard_derivatives {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for OES_standard_derivatives {
 impl From<OES_standard_derivatives> for emlite::Val {
     fn from(s: OES_standard_derivatives) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WatchAdvertisementsOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for WatchAdvertisementsOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WatchAdvertisementsOptions {
+impl core::ops::Deref for WatchAdvertisementsOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WatchAdvertisementsOptions {
+impl core::ops::DerefMut for WatchAdvertisementsOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for WatchAdvertisementsOptions {
 impl From<WatchAdvertisementsOptions> for emlite::Val {
     fn from(s: WatchAdvertisementsOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl WatchAdvertisementsOptions {
         self.inner.set("signal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BluetoothDevice {
     inner: EventTarget,
 }
@@ -60,13 +60,13 @@ impl FromVal for BluetoothDevice {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BluetoothDevice {
+impl core::ops::Deref for BluetoothDevice {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BluetoothDevice {
+impl core::ops::DerefMut for BluetoothDevice {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for BluetoothDevice {
 impl From<BluetoothDevice> for emlite::Val {
     fn from(s: BluetoothDevice) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

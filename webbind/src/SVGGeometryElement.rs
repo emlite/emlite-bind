@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DOMPointInit {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for DOMPointInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DOMPointInit {
+impl core::ops::Deref for DOMPointInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DOMPointInit {
+impl core::ops::DerefMut for DOMPointInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for DOMPointInit {
 impl From<DOMPointInit> for emlite::Val {
     fn from(s: DOMPointInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -70,7 +70,7 @@ impl DOMPointInit {
         self.inner.set("w", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SVGGeometryElement {
     inner: SVGGraphicsElement,
 }
@@ -87,13 +87,13 @@ impl FromVal for SVGGeometryElement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SVGGeometryElement {
+impl core::ops::Deref for SVGGeometryElement {
     type Target = SVGGraphicsElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SVGGeometryElement {
+impl core::ops::DerefMut for SVGGeometryElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -101,7 +101,7 @@ impl std::ops::DerefMut for SVGGeometryElement {
 impl From<SVGGeometryElement> for emlite::Val {
     fn from(s: SVGGeometryElement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

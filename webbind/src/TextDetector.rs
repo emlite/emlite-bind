@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DetectedText {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for DetectedText {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DetectedText {
+impl core::ops::Deref for DetectedText {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DetectedText {
+impl core::ops::DerefMut for DetectedText {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for DetectedText {
 impl From<DetectedText> for emlite::Val {
     fn from(s: DetectedText) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -63,7 +63,7 @@ impl DetectedText {
         self.inner.set("cornerPoints", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TextDetector {
     inner: emlite::Val,
 }
@@ -80,13 +80,13 @@ impl FromVal for TextDetector {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for TextDetector {
+impl core::ops::Deref for TextDetector {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for TextDetector {
+impl core::ops::DerefMut for TextDetector {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -94,7 +94,7 @@ impl std::ops::DerefMut for TextDetector {
 impl From<TextDetector> for emlite::Val {
     fn from(s: TextDetector) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

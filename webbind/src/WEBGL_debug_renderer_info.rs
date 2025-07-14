@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WEBGL_debug_renderer_info {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for WEBGL_debug_renderer_info {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WEBGL_debug_renderer_info {
+impl core::ops::Deref for WEBGL_debug_renderer_info {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WEBGL_debug_renderer_info {
+impl core::ops::DerefMut for WEBGL_debug_renderer_info {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for WEBGL_debug_renderer_info {
 impl From<WEBGL_debug_renderer_info> for emlite::Val {
     fn from(s: WEBGL_debug_renderer_info) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

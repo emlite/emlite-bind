@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ContentDescription {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ContentDescription {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ContentDescription {
+impl core::ops::Deref for ContentDescription {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ContentDescription {
+impl core::ops::DerefMut for ContentDescription {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ContentDescription {
 impl From<ContentDescription> for emlite::Val {
     fn from(s: ContentDescription) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -90,7 +90,7 @@ impl ContentDescription {
         self.inner.set("url", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ContentIndex {
     inner: emlite::Val,
 }
@@ -107,13 +107,13 @@ impl FromVal for ContentIndex {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ContentIndex {
+impl core::ops::Deref for ContentIndex {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ContentIndex {
+impl core::ops::DerefMut for ContentIndex {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -121,7 +121,7 @@ impl std::ops::DerefMut for ContentIndex {
 impl From<ContentIndex> for emlite::Val {
     fn from(s: ContentIndex) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

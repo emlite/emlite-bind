@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct UncalibratedMagnetometer {
     inner: Sensor,
 }
@@ -17,13 +17,13 @@ impl FromVal for UncalibratedMagnetometer {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for UncalibratedMagnetometer {
+impl core::ops::Deref for UncalibratedMagnetometer {
     type Target = Sensor;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for UncalibratedMagnetometer {
+impl core::ops::DerefMut for UncalibratedMagnetometer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for UncalibratedMagnetometer {
 impl From<UncalibratedMagnetometer> for emlite::Val {
     fn from(s: UncalibratedMagnetometer) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

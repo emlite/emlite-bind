@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct StorageInterestGroup {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for StorageInterestGroup {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for StorageInterestGroup {
+impl core::ops::Deref for StorageInterestGroup {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for StorageInterestGroup {
+impl core::ops::DerefMut for StorageInterestGroup {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for StorageInterestGroup {
 impl From<StorageInterestGroup> for emlite::Val {
     fn from(s: StorageInterestGroup) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -117,7 +117,7 @@ impl StorageInterestGroup {
         self.inner.set("estimatedSize", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SharedStorageWorkletGlobalScope {
     inner: WorkletGlobalScope,
 }
@@ -134,13 +134,13 @@ impl FromVal for SharedStorageWorkletGlobalScope {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SharedStorageWorkletGlobalScope {
+impl core::ops::Deref for SharedStorageWorkletGlobalScope {
     type Target = WorkletGlobalScope;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SharedStorageWorkletGlobalScope {
+impl core::ops::DerefMut for SharedStorageWorkletGlobalScope {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -148,7 +148,7 @@ impl std::ops::DerefMut for SharedStorageWorkletGlobalScope {
 impl From<SharedStorageWorkletGlobalScope> for emlite::Val {
     fn from(s: SharedStorageWorkletGlobalScope) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

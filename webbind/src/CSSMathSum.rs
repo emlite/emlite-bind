@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSMathSum {
     inner: CSSMathValue,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSMathSum {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSMathSum {
+impl core::ops::Deref for CSSMathSum {
     type Target = CSSMathValue;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSMathSum {
+impl core::ops::DerefMut for CSSMathSum {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSMathSum {
 impl From<CSSMathSum> for emlite::Val {
     fn from(s: CSSMathSum) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

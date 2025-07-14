@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ContentVisibilityAutoStateChangeEvent {
     inner: Event,
 }
@@ -17,13 +17,13 @@ impl FromVal for ContentVisibilityAutoStateChangeEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ContentVisibilityAutoStateChangeEvent {
+impl core::ops::Deref for ContentVisibilityAutoStateChangeEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ContentVisibilityAutoStateChangeEvent {
+impl core::ops::DerefMut for ContentVisibilityAutoStateChangeEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for ContentVisibilityAutoStateChangeEvent {
 impl From<ContentVisibilityAutoStateChangeEvent> for emlite::Val {
     fn from(s: ContentVisibilityAutoStateChangeEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

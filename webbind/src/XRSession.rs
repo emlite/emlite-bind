@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRRenderStateInit {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for XRRenderStateInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRRenderStateInit {
+impl core::ops::Deref for XRRenderStateInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRRenderStateInit {
+impl core::ops::DerefMut for XRRenderStateInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for XRRenderStateInit {
 impl From<XRRenderStateInit> for emlite::Val {
     fn from(s: XRRenderStateInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -88,7 +88,7 @@ impl XRRenderStateInit {
         self.inner.set("layers", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRDOMOverlayState {
     inner: emlite::Val,
 }
@@ -103,13 +103,13 @@ impl FromVal for XRDOMOverlayState {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRDOMOverlayState {
+impl core::ops::Deref for XRDOMOverlayState {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRDOMOverlayState {
+impl core::ops::DerefMut for XRDOMOverlayState {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -117,7 +117,7 @@ impl std::ops::DerefMut for XRDOMOverlayState {
 impl From<XRDOMOverlayState> for emlite::Val {
     fn from(s: XRDOMOverlayState) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -131,7 +131,7 @@ impl XRDOMOverlayState {
         self.inner.set("type", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRHitTestOptionsInit {
     inner: emlite::Val,
 }
@@ -146,13 +146,13 @@ impl FromVal for XRHitTestOptionsInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRHitTestOptionsInit {
+impl core::ops::Deref for XRHitTestOptionsInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRHitTestOptionsInit {
+impl core::ops::DerefMut for XRHitTestOptionsInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -160,7 +160,7 @@ impl std::ops::DerefMut for XRHitTestOptionsInit {
 impl From<XRHitTestOptionsInit> for emlite::Val {
     fn from(s: XRHitTestOptionsInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -194,7 +194,7 @@ impl XRHitTestOptionsInit {
         self.inner.set("offsetRay", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRTransientInputHitTestOptionsInit {
     inner: emlite::Val,
 }
@@ -209,13 +209,13 @@ impl FromVal for XRTransientInputHitTestOptionsInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRTransientInputHitTestOptionsInit {
+impl core::ops::Deref for XRTransientInputHitTestOptionsInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRTransientInputHitTestOptionsInit {
+impl core::ops::DerefMut for XRTransientInputHitTestOptionsInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -223,7 +223,7 @@ impl std::ops::DerefMut for XRTransientInputHitTestOptionsInit {
 impl From<XRTransientInputHitTestOptionsInit> for emlite::Val {
     fn from(s: XRTransientInputHitTestOptionsInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -257,7 +257,7 @@ impl XRTransientInputHitTestOptionsInit {
         self.inner.set("offsetRay", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRLightProbeInit {
     inner: emlite::Val,
 }
@@ -272,13 +272,13 @@ impl FromVal for XRLightProbeInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRLightProbeInit {
+impl core::ops::Deref for XRLightProbeInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRLightProbeInit {
+impl core::ops::DerefMut for XRLightProbeInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -286,7 +286,7 @@ impl std::ops::DerefMut for XRLightProbeInit {
 impl From<XRLightProbeInit> for emlite::Val {
     fn from(s: XRLightProbeInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -302,7 +302,7 @@ impl XRLightProbeInit {
         self.inner.set("reflectionFormat", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRSession {
     inner: EventTarget,
 }
@@ -319,13 +319,13 @@ impl FromVal for XRSession {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRSession {
+impl core::ops::Deref for XRSession {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRSession {
+impl core::ops::DerefMut for XRSession {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -333,7 +333,7 @@ impl std::ops::DerefMut for XRSession {
 impl From<XRSession> for emlite::Val {
     fn from(s: XRSession) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DetectedBarcode {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for DetectedBarcode {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DetectedBarcode {
+impl core::ops::Deref for DetectedBarcode {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DetectedBarcode {
+impl core::ops::DerefMut for DetectedBarcode {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for DetectedBarcode {
 impl From<DetectedBarcode> for emlite::Val {
     fn from(s: DetectedBarcode) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -72,7 +72,7 @@ impl DetectedBarcode {
         self.inner.set("cornerPoints", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BarcodeDetector {
     inner: emlite::Val,
 }
@@ -89,13 +89,13 @@ impl FromVal for BarcodeDetector {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BarcodeDetector {
+impl core::ops::Deref for BarcodeDetector {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BarcodeDetector {
+impl core::ops::DerefMut for BarcodeDetector {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -103,7 +103,7 @@ impl std::ops::DerefMut for BarcodeDetector {
 impl From<BarcodeDetector> for emlite::Val {
     fn from(s: BarcodeDetector) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

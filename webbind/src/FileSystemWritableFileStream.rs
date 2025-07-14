@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FileSystemWritableFileStream {
     inner: WritableStream,
 }
@@ -17,13 +17,13 @@ impl FromVal for FileSystemWritableFileStream {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FileSystemWritableFileStream {
+impl core::ops::Deref for FileSystemWritableFileStream {
     type Target = WritableStream;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FileSystemWritableFileStream {
+impl core::ops::DerefMut for FileSystemWritableFileStream {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for FileSystemWritableFileStream {
 impl From<FileSystemWritableFileStream> for emlite::Val {
     fn from(s: FileSystemWritableFileStream) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SVGUseElementShadowRoot {
     inner: ShadowRoot,
 }
@@ -17,13 +17,13 @@ impl FromVal for SVGUseElementShadowRoot {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SVGUseElementShadowRoot {
+impl core::ops::Deref for SVGUseElementShadowRoot {
     type Target = ShadowRoot;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SVGUseElementShadowRoot {
+impl core::ops::DerefMut for SVGUseElementShadowRoot {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for SVGUseElementShadowRoot {
 impl From<SVGUseElementShadowRoot> for emlite::Val {
     fn from(s: SVGUseElementShadowRoot) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

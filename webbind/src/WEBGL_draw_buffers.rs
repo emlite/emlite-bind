@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WEBGL_draw_buffers {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for WEBGL_draw_buffers {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WEBGL_draw_buffers {
+impl core::ops::Deref for WEBGL_draw_buffers {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WEBGL_draw_buffers {
+impl core::ops::DerefMut for WEBGL_draw_buffers {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for WEBGL_draw_buffers {
 impl From<WEBGL_draw_buffers> for emlite::Val {
     fn from(s: WEBGL_draw_buffers) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

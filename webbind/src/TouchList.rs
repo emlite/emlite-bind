@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TouchList {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for TouchList {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for TouchList {
+impl core::ops::Deref for TouchList {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for TouchList {
+impl core::ops::DerefMut for TouchList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for TouchList {
 impl From<TouchList> for emlite::Val {
     fn from(s: TouchList) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

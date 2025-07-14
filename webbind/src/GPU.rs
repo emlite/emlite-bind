@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPURequestAdapterOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for GPURequestAdapterOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPURequestAdapterOptions {
+impl core::ops::Deref for GPURequestAdapterOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPURequestAdapterOptions {
+impl core::ops::DerefMut for GPURequestAdapterOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for GPURequestAdapterOptions {
 impl From<GPURequestAdapterOptions> for emlite::Val {
     fn from(s: GPURequestAdapterOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -72,7 +72,7 @@ impl GPURequestAdapterOptions {
         self.inner.set("xrCompatible", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPU {
     inner: emlite::Val,
 }
@@ -89,13 +89,13 @@ impl FromVal for GPU {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPU {
+impl core::ops::Deref for GPU {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPU {
+impl core::ops::DerefMut for GPU {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -103,7 +103,7 @@ impl std::ops::DerefMut for GPU {
 impl From<GPU> for emlite::Val {
     fn from(s: GPU) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

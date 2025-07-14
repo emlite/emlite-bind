@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SharedStorageDeleteMethod {
     inner: SharedStorageModifierMethod,
 }
@@ -17,13 +17,13 @@ impl FromVal for SharedStorageDeleteMethod {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SharedStorageDeleteMethod {
+impl core::ops::Deref for SharedStorageDeleteMethod {
     type Target = SharedStorageModifierMethod;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SharedStorageDeleteMethod {
+impl core::ops::DerefMut for SharedStorageDeleteMethod {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for SharedStorageDeleteMethod {
 impl From<SharedStorageDeleteMethod> for emlite::Val {
     fn from(s: SharedStorageDeleteMethod) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

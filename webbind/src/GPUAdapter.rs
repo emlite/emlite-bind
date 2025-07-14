@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUDeviceDescriptor {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for GPUDeviceDescriptor {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUDeviceDescriptor {
+impl core::ops::Deref for GPUDeviceDescriptor {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUDeviceDescriptor {
+impl core::ops::DerefMut for GPUDeviceDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for GPUDeviceDescriptor {
 impl From<GPUDeviceDescriptor> for emlite::Val {
     fn from(s: GPUDeviceDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -65,7 +65,7 @@ impl GPUDeviceDescriptor {
         self.inner.set("defaultQueue", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUAdapter {
     inner: emlite::Val,
 }
@@ -82,13 +82,13 @@ impl FromVal for GPUAdapter {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUAdapter {
+impl core::ops::Deref for GPUAdapter {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUAdapter {
+impl core::ops::DerefMut for GPUAdapter {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -96,7 +96,7 @@ impl std::ops::DerefMut for GPUAdapter {
 impl From<GPUAdapter> for emlite::Val {
     fn from(s: GPUAdapter) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ColorSelectionResult {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ColorSelectionResult {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ColorSelectionResult {
+impl core::ops::Deref for ColorSelectionResult {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ColorSelectionResult {
+impl core::ops::DerefMut for ColorSelectionResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ColorSelectionResult {
 impl From<ColorSelectionResult> for emlite::Val {
     fn from(s: ColorSelectionResult) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl ColorSelectionResult {
         self.inner.set("sRGBHex", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ColorSelectionOptions {
     inner: emlite::Val,
 }
@@ -58,13 +58,13 @@ impl FromVal for ColorSelectionOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ColorSelectionOptions {
+impl core::ops::Deref for ColorSelectionOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ColorSelectionOptions {
+impl core::ops::DerefMut for ColorSelectionOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -72,7 +72,7 @@ impl std::ops::DerefMut for ColorSelectionOptions {
 impl From<ColorSelectionOptions> for emlite::Val {
     fn from(s: ColorSelectionOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -86,7 +86,7 @@ impl ColorSelectionOptions {
         self.inner.set("signal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct EyeDropper {
     inner: emlite::Val,
 }
@@ -103,13 +103,13 @@ impl FromVal for EyeDropper {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for EyeDropper {
+impl core::ops::Deref for EyeDropper {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for EyeDropper {
+impl core::ops::DerefMut for EyeDropper {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -117,7 +117,7 @@ impl std::ops::DerefMut for EyeDropper {
 impl From<EyeDropper> for emlite::Val {
     fn from(s: EyeDropper) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

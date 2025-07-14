@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SVGPolylineElement {
     inner: SVGGeometryElement,
 }
@@ -17,13 +17,13 @@ impl FromVal for SVGPolylineElement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SVGPolylineElement {
+impl core::ops::Deref for SVGPolylineElement {
     type Target = SVGGeometryElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SVGPolylineElement {
+impl core::ops::DerefMut for SVGPolylineElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for SVGPolylineElement {
 impl From<SVGPolylineElement> for emlite::Val {
     fn from(s: SVGPolylineElement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

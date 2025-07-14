@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HTMLFormControlsCollection {
     inner: HTMLCollection,
 }
@@ -17,13 +17,13 @@ impl FromVal for HTMLFormControlsCollection {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HTMLFormControlsCollection {
+impl core::ops::Deref for HTMLFormControlsCollection {
     type Target = HTMLCollection;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HTMLFormControlsCollection {
+impl core::ops::DerefMut for HTMLFormControlsCollection {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for HTMLFormControlsCollection {
 impl From<HTMLFormControlsCollection> for emlite::Val {
     fn from(s: HTMLFormControlsCollection) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

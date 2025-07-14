@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AttributionImpressionResult {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for AttributionImpressionResult {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AttributionImpressionResult {
+impl core::ops::Deref for AttributionImpressionResult {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AttributionImpressionResult {
+impl core::ops::DerefMut for AttributionImpressionResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,12 +29,12 @@ impl std::ops::DerefMut for AttributionImpressionResult {
 impl From<AttributionImpressionResult> for emlite::Val {
     fn from(s: AttributionImpressionResult) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AttributionImpressionOptions {
     inner: emlite::Val,
 }
@@ -49,13 +49,13 @@ impl FromVal for AttributionImpressionOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AttributionImpressionOptions {
+impl core::ops::Deref for AttributionImpressionOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AttributionImpressionOptions {
+impl core::ops::DerefMut for AttributionImpressionOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -63,7 +63,7 @@ impl std::ops::DerefMut for AttributionImpressionOptions {
 impl From<AttributionImpressionOptions> for emlite::Val {
     fn from(s: AttributionImpressionOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -117,7 +117,7 @@ impl AttributionImpressionOptions {
         self.inner.set("lifetimeDays", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AttributionConversionResult {
     inner: emlite::Val,
 }
@@ -132,13 +132,13 @@ impl FromVal for AttributionConversionResult {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AttributionConversionResult {
+impl core::ops::Deref for AttributionConversionResult {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AttributionConversionResult {
+impl core::ops::DerefMut for AttributionConversionResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -146,7 +146,7 @@ impl std::ops::DerefMut for AttributionConversionResult {
 impl From<AttributionConversionResult> for emlite::Val {
     fn from(s: AttributionConversionResult) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -160,7 +160,7 @@ impl AttributionConversionResult {
         self.inner.set("report", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AttributionConversionOptions {
     inner: emlite::Val,
 }
@@ -175,13 +175,13 @@ impl FromVal for AttributionConversionOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AttributionConversionOptions {
+impl core::ops::Deref for AttributionConversionOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AttributionConversionOptions {
+impl core::ops::DerefMut for AttributionConversionOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -189,7 +189,7 @@ impl std::ops::DerefMut for AttributionConversionOptions {
 impl From<AttributionConversionOptions> for emlite::Val {
     fn from(s: AttributionConversionOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -290,7 +290,7 @@ impl AttributionConversionOptions {
         self.inner.set("maxValue", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Attribution {
     inner: emlite::Val,
 }
@@ -307,13 +307,13 @@ impl FromVal for Attribution {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Attribution {
+impl core::ops::Deref for Attribution {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Attribution {
+impl core::ops::DerefMut for Attribution {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -321,7 +321,7 @@ impl std::ops::DerefMut for Attribution {
 impl From<Attribution> for emlite::Val {
     fn from(s: Attribution) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

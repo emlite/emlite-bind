@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSFontFaceDescriptors {
     inner: CSSStyleDeclaration,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSFontFaceDescriptors {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSFontFaceDescriptors {
+impl core::ops::Deref for CSSFontFaceDescriptors {
     type Target = CSSStyleDeclaration;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSFontFaceDescriptors {
+impl core::ops::DerefMut for CSSFontFaceDescriptors {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSFontFaceDescriptors {
 impl From<CSSFontFaceDescriptors> for emlite::Val {
     fn from(x: CSSFontFaceDescriptors) -> emlite::Val {
         let handle = x.inner.as_handle();
-        std::mem::forget(x);
+        core::mem::forget(x);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MemoryMeasurement {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for MemoryMeasurement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MemoryMeasurement {
+impl core::ops::Deref for MemoryMeasurement {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MemoryMeasurement {
+impl core::ops::DerefMut for MemoryMeasurement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for MemoryMeasurement {
 impl From<MemoryMeasurement> for emlite::Val {
     fn from(s: MemoryMeasurement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -54,7 +54,7 @@ impl MemoryMeasurement {
         self.inner.set("breakdown", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PerformanceMarkOptions {
     inner: emlite::Val,
 }
@@ -69,13 +69,13 @@ impl FromVal for PerformanceMarkOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PerformanceMarkOptions {
+impl core::ops::Deref for PerformanceMarkOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PerformanceMarkOptions {
+impl core::ops::DerefMut for PerformanceMarkOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for PerformanceMarkOptions {
 impl From<PerformanceMarkOptions> for emlite::Val {
     fn from(s: PerformanceMarkOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -106,7 +106,7 @@ impl PerformanceMarkOptions {
         self.inner.set("startTime", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Performance {
     inner: EventTarget,
 }
@@ -123,13 +123,13 @@ impl FromVal for Performance {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Performance {
+impl core::ops::Deref for Performance {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Performance {
+impl core::ops::DerefMut for Performance {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -137,7 +137,7 @@ impl std::ops::DerefMut for Performance {
 impl From<Performance> for emlite::Val {
     fn from(s: Performance) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

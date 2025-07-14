@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HIDCollectionInfo {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for HIDCollectionInfo {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HIDCollectionInfo {
+impl core::ops::Deref for HIDCollectionInfo {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HIDCollectionInfo {
+impl core::ops::DerefMut for HIDCollectionInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for HIDCollectionInfo {
 impl From<HIDCollectionInfo> for emlite::Val {
     fn from(s: HIDCollectionInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -105,7 +105,7 @@ impl HIDCollectionInfo {
         self.inner.set("featureReports", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HIDDevice {
     inner: EventTarget,
 }
@@ -122,13 +122,13 @@ impl FromVal for HIDDevice {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HIDDevice {
+impl core::ops::Deref for HIDDevice {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HIDDevice {
+impl core::ops::DerefMut for HIDDevice {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -136,7 +136,7 @@ impl std::ops::DerefMut for HIDDevice {
 impl From<HIDDevice> for emlite::Val {
     fn from(s: HIDDevice) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

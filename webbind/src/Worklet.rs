@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WorkletOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for WorkletOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WorkletOptions {
+impl core::ops::Deref for WorkletOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WorkletOptions {
+impl core::ops::DerefMut for WorkletOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for WorkletOptions {
 impl From<WorkletOptions> for emlite::Val {
     fn from(s: WorkletOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl WorkletOptions {
         self.inner.set("credentials", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Worklet {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for Worklet {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Worklet {
+impl core::ops::Deref for Worklet {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Worklet {
+impl core::ops::DerefMut for Worklet {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for Worklet {
 impl From<Worklet> for emlite::Val {
     fn from(s: Worklet) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

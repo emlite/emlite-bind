@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HTMLAudioElement {
     inner: HTMLMediaElement,
 }
@@ -17,13 +17,13 @@ impl FromVal for HTMLAudioElement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HTMLAudioElement {
+impl core::ops::Deref for HTMLAudioElement {
     type Target = HTMLMediaElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HTMLAudioElement {
+impl core::ops::DerefMut for HTMLAudioElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for HTMLAudioElement {
 impl From<HTMLAudioElement> for emlite::Val {
     fn from(s: HTMLAudioElement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

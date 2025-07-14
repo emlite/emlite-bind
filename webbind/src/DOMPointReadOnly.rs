@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DOMMatrixInit {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for DOMMatrixInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DOMMatrixInit {
+impl core::ops::Deref for DOMMatrixInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DOMMatrixInit {
+impl core::ops::DerefMut for DOMMatrixInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for DOMMatrixInit {
 impl From<DOMMatrixInit> for emlite::Val {
     fn from(s: DOMMatrixInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -133,7 +133,7 @@ impl DOMMatrixInit {
         self.inner.set("is2D", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DOMPointReadOnly {
     inner: emlite::Val,
 }
@@ -150,13 +150,13 @@ impl FromVal for DOMPointReadOnly {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DOMPointReadOnly {
+impl core::ops::Deref for DOMPointReadOnly {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DOMPointReadOnly {
+impl core::ops::DerefMut for DOMPointReadOnly {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -164,7 +164,7 @@ impl std::ops::DerefMut for DOMPointReadOnly {
 impl From<DOMPointReadOnly> for emlite::Val {
     fn from(s: DOMPointReadOnly) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

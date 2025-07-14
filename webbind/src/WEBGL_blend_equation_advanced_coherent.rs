@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WEBGL_blend_equation_advanced_coherent {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for WEBGL_blend_equation_advanced_coherent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WEBGL_blend_equation_advanced_coherent {
+impl core::ops::Deref for WEBGL_blend_equation_advanced_coherent {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WEBGL_blend_equation_advanced_coherent {
+impl core::ops::DerefMut for WEBGL_blend_equation_advanced_coherent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for WEBGL_blend_equation_advanced_coherent {
 impl From<WEBGL_blend_equation_advanced_coherent> for emlite::Val {
     fn from(s: WEBGL_blend_equation_advanced_coherent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

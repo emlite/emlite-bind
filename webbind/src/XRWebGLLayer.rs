@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRWebGLLayer {
     inner: XRLayer,
 }
@@ -17,13 +17,13 @@ impl FromVal for XRWebGLLayer {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRWebGLLayer {
+impl core::ops::Deref for XRWebGLLayer {
     type Target = XRLayer;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRWebGLLayer {
+impl core::ops::DerefMut for XRWebGLLayer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for XRWebGLLayer {
 impl From<XRWebGLLayer> for emlite::Val {
     fn from(s: XRWebGLLayer) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

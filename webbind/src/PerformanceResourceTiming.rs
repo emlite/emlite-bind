@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PerformanceResourceTiming {
     inner: PerformanceEntry,
 }
@@ -17,13 +17,13 @@ impl FromVal for PerformanceResourceTiming {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PerformanceResourceTiming {
+impl core::ops::Deref for PerformanceResourceTiming {
     type Target = PerformanceEntry;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PerformanceResourceTiming {
+impl core::ops::DerefMut for PerformanceResourceTiming {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for PerformanceResourceTiming {
 impl From<PerformanceResourceTiming> for emlite::Val {
     fn from(s: PerformanceResourceTiming) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

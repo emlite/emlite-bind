@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SVGLinearGradientElement {
     inner: SVGGradientElement,
 }
@@ -17,13 +17,13 @@ impl FromVal for SVGLinearGradientElement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SVGLinearGradientElement {
+impl core::ops::Deref for SVGLinearGradientElement {
     type Target = SVGGradientElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SVGLinearGradientElement {
+impl core::ops::DerefMut for SVGLinearGradientElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for SVGLinearGradientElement {
 impl From<SVGLinearGradientElement> for emlite::Val {
     fn from(s: SVGLinearGradientElement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

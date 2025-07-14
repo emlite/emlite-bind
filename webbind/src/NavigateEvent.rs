@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NavigationInterceptOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for NavigationInterceptOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NavigationInterceptOptions {
+impl core::ops::Deref for NavigationInterceptOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NavigationInterceptOptions {
+impl core::ops::DerefMut for NavigationInterceptOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for NavigationInterceptOptions {
 impl From<NavigationInterceptOptions> for emlite::Val {
     fn from(s: NavigationInterceptOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl NavigationInterceptOptions {
         self.inner.set("scroll", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NavigateEvent {
     inner: Event,
 }
@@ -78,13 +78,13 @@ impl FromVal for NavigateEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NavigateEvent {
+impl core::ops::Deref for NavigateEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NavigateEvent {
+impl core::ops::DerefMut for NavigateEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -92,7 +92,7 @@ impl std::ops::DerefMut for NavigateEvent {
 impl From<NavigateEvent> for emlite::Val {
     fn from(s: NavigateEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

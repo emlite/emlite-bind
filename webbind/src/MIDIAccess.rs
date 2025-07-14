@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MIDIAccess {
     inner: EventTarget,
 }
@@ -17,13 +17,13 @@ impl FromVal for MIDIAccess {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MIDIAccess {
+impl core::ops::Deref for MIDIAccess {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MIDIAccess {
+impl core::ops::DerefMut for MIDIAccess {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for MIDIAccess {
 impl From<MIDIAccess> for emlite::Val {
     fn from(s: MIDIAccess) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

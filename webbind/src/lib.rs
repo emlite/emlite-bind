@@ -3,6 +3,9 @@
 #![allow(clippy::new_without_default)]
 #![allow(clippy::useless_conversion)]
 #![allow(clippy::too_many_arguments)]
+#![no_std]
+extern crate alloc;
+
 use emlite::FromVal;
 
 #[path = "ANGLE_instanced_arrays.rs"]

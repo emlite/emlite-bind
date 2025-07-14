@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DocumentFragment {
     inner: Node,
 }
@@ -17,13 +17,13 @@ impl FromVal for DocumentFragment {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DocumentFragment {
+impl core::ops::Deref for DocumentFragment {
     type Target = Node;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DocumentFragment {
+impl core::ops::DerefMut for DocumentFragment {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for DocumentFragment {
 impl From<DocumentFragment> for emlite::Val {
     fn from(s: DocumentFragment) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

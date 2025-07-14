@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NavigationUpdateCurrentEntryOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for NavigationUpdateCurrentEntryOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NavigationUpdateCurrentEntryOptions {
+impl core::ops::Deref for NavigationUpdateCurrentEntryOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NavigationUpdateCurrentEntryOptions {
+impl core::ops::DerefMut for NavigationUpdateCurrentEntryOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for NavigationUpdateCurrentEntryOptions {
 impl From<NavigationUpdateCurrentEntryOptions> for emlite::Val {
     fn from(s: NavigationUpdateCurrentEntryOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl NavigationUpdateCurrentEntryOptions {
         self.inner.set("state", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NavigationResult {
     inner: emlite::Val,
 }
@@ -58,13 +58,13 @@ impl FromVal for NavigationResult {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NavigationResult {
+impl core::ops::Deref for NavigationResult {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NavigationResult {
+impl core::ops::DerefMut for NavigationResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -72,7 +72,7 @@ impl std::ops::DerefMut for NavigationResult {
 impl From<NavigationResult> for emlite::Val {
     fn from(s: NavigationResult) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -95,7 +95,7 @@ impl NavigationResult {
         self.inner.set("finished", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NavigationNavigateOptions {
     inner: emlite::Val,
 }
@@ -110,13 +110,13 @@ impl FromVal for NavigationNavigateOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NavigationNavigateOptions {
+impl core::ops::Deref for NavigationNavigateOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NavigationNavigateOptions {
+impl core::ops::DerefMut for NavigationNavigateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -124,7 +124,7 @@ impl std::ops::DerefMut for NavigationNavigateOptions {
 impl From<NavigationNavigateOptions> for emlite::Val {
     fn from(s: NavigationNavigateOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -147,7 +147,7 @@ impl NavigationNavigateOptions {
         self.inner.set("history", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NavigationReloadOptions {
     inner: emlite::Val,
 }
@@ -162,13 +162,13 @@ impl FromVal for NavigationReloadOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NavigationReloadOptions {
+impl core::ops::Deref for NavigationReloadOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NavigationReloadOptions {
+impl core::ops::DerefMut for NavigationReloadOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -176,7 +176,7 @@ impl std::ops::DerefMut for NavigationReloadOptions {
 impl From<NavigationReloadOptions> for emlite::Val {
     fn from(s: NavigationReloadOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -190,7 +190,7 @@ impl NavigationReloadOptions {
         self.inner.set("state", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NavigationOptions {
     inner: emlite::Val,
 }
@@ -205,13 +205,13 @@ impl FromVal for NavigationOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NavigationOptions {
+impl core::ops::Deref for NavigationOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NavigationOptions {
+impl core::ops::DerefMut for NavigationOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -219,7 +219,7 @@ impl std::ops::DerefMut for NavigationOptions {
 impl From<NavigationOptions> for emlite::Val {
     fn from(s: NavigationOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -233,7 +233,7 @@ impl NavigationOptions {
         self.inner.set("info", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Navigation {
     inner: EventTarget,
 }
@@ -250,13 +250,13 @@ impl FromVal for Navigation {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Navigation {
+impl core::ops::Deref for Navigation {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Navigation {
+impl core::ops::DerefMut for Navigation {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -264,7 +264,7 @@ impl std::ops::DerefMut for Navigation {
 impl From<Navigation> for emlite::Val {
     fn from(s: Navigation) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

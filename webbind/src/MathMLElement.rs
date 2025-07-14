@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MathMLElement {
     inner: Element,
 }
@@ -17,13 +17,13 @@ impl FromVal for MathMLElement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MathMLElement {
+impl core::ops::Deref for MathMLElement {
     type Target = Element;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MathMLElement {
+impl core::ops::DerefMut for MathMLElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for MathMLElement {
 impl From<MathMLElement> for emlite::Val {
     fn from(s: MathMLElement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

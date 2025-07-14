@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PaintSize {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for PaintSize {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PaintSize {
+impl core::ops::Deref for PaintSize {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PaintSize {
+impl core::ops::DerefMut for PaintSize {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for PaintSize {
 impl From<PaintSize> for emlite::Val {
     fn from(s: PaintSize) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

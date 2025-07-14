@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BluetoothPermissionResult {
     inner: PermissionStatus,
 }
@@ -17,13 +17,13 @@ impl FromVal for BluetoothPermissionResult {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BluetoothPermissionResult {
+impl core::ops::Deref for BluetoothPermissionResult {
     type Target = PermissionStatus;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BluetoothPermissionResult {
+impl core::ops::DerefMut for BluetoothPermissionResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for BluetoothPermissionResult {
 impl From<BluetoothPermissionResult> for emlite::Val {
     fn from(s: BluetoothPermissionResult) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,9 +1,10 @@
+use alloc::vec::Vec;
+use core::marker::PhantomData;
+use core::ops::{Deref, DerefMut};
 use emlite::FromVal;
-use std::marker::PhantomData;
-use std::ops::{Deref, DerefMut};
 
 /// Parameterised wrapper around a JavaScript array object.
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Sequence<T> {
     inner: emlite::Val,
     phantom: PhantomData<T>,
@@ -27,7 +28,7 @@ impl<T> emlite::FromVal for Sequence<T> {
 impl<T> From<Sequence<T>> for emlite::Val {
     fn from(x: Sequence<T>) -> emlite::Val {
         let handle = x.inner.as_handle();
-        std::mem::forget(x);
+        core::mem::forget(x);
         emlite::Val::take_ownership(handle)
     }
 }

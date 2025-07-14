@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PressureObserverOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for PressureObserverOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PressureObserverOptions {
+impl core::ops::Deref for PressureObserverOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PressureObserverOptions {
+impl core::ops::DerefMut for PressureObserverOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for PressureObserverOptions {
 impl From<PressureObserverOptions> for emlite::Val {
     fn from(s: PressureObserverOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl PressureObserverOptions {
         self.inner.set("sampleInterval", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PressureObserver {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for PressureObserver {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PressureObserver {
+impl core::ops::Deref for PressureObserver {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PressureObserver {
+impl core::ops::DerefMut for PressureObserver {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for PressureObserver {
 impl From<PressureObserver> for emlite::Val {
     fn from(s: PressureObserver) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WebTransportSendOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for WebTransportSendOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WebTransportSendOptions {
+impl core::ops::Deref for WebTransportSendOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WebTransportSendOptions {
+impl core::ops::DerefMut for WebTransportSendOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for WebTransportSendOptions {
 impl From<WebTransportSendOptions> for emlite::Val {
     fn from(s: WebTransportSendOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl WebTransportSendOptions {
         self.inner.set("sendOrder", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WebTransportDatagramDuplexStream {
     inner: emlite::Val,
 }
@@ -69,13 +69,13 @@ impl FromVal for WebTransportDatagramDuplexStream {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WebTransportDatagramDuplexStream {
+impl core::ops::Deref for WebTransportDatagramDuplexStream {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WebTransportDatagramDuplexStream {
+impl core::ops::DerefMut for WebTransportDatagramDuplexStream {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for WebTransportDatagramDuplexStream {
 impl From<WebTransportDatagramDuplexStream> for emlite::Val {
     fn from(s: WebTransportDatagramDuplexStream) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

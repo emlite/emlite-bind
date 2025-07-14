@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AuthenticationExtensionsClientOutputs {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for AuthenticationExtensionsClientOutputs {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AuthenticationExtensionsClientOutputs {
+impl core::ops::Deref for AuthenticationExtensionsClientOutputs {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AuthenticationExtensionsClientOutputs {
+impl core::ops::DerefMut for AuthenticationExtensionsClientOutputs {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for AuthenticationExtensionsClientOutputs {
 impl From<AuthenticationExtensionsClientOutputs> for emlite::Val {
     fn from(s: AuthenticationExtensionsClientOutputs) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl AuthenticationExtensionsClientOutputs {
         self.inner.set("largeBlob", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PublicKeyCredentialCreationOptions {
     inner: emlite::Val,
 }
@@ -58,13 +58,13 @@ impl FromVal for PublicKeyCredentialCreationOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PublicKeyCredentialCreationOptions {
+impl core::ops::Deref for PublicKeyCredentialCreationOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PublicKeyCredentialCreationOptions {
+impl core::ops::DerefMut for PublicKeyCredentialCreationOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -72,7 +72,7 @@ impl std::ops::DerefMut for PublicKeyCredentialCreationOptions {
 impl From<PublicKeyCredentialCreationOptions> for emlite::Val {
     fn from(s: PublicKeyCredentialCreationOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -186,7 +186,7 @@ impl PublicKeyCredentialCreationOptions {
         self.inner.set("extensions", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PublicKeyCredentialCreationOptionsJSON {
     inner: emlite::Val,
 }
@@ -201,13 +201,13 @@ impl FromVal for PublicKeyCredentialCreationOptionsJSON {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PublicKeyCredentialCreationOptionsJSON {
+impl core::ops::Deref for PublicKeyCredentialCreationOptionsJSON {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PublicKeyCredentialCreationOptionsJSON {
+impl core::ops::DerefMut for PublicKeyCredentialCreationOptionsJSON {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -215,7 +215,7 @@ impl std::ops::DerefMut for PublicKeyCredentialCreationOptionsJSON {
 impl From<PublicKeyCredentialCreationOptionsJSON> for emlite::Val {
     fn from(s: PublicKeyCredentialCreationOptionsJSON) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -329,7 +329,7 @@ impl PublicKeyCredentialCreationOptionsJSON {
         self.inner.set("extensions", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PublicKeyCredentialRequestOptions {
     inner: emlite::Val,
 }
@@ -344,13 +344,13 @@ impl FromVal for PublicKeyCredentialRequestOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PublicKeyCredentialRequestOptions {
+impl core::ops::Deref for PublicKeyCredentialRequestOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PublicKeyCredentialRequestOptions {
+impl core::ops::DerefMut for PublicKeyCredentialRequestOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -358,7 +358,7 @@ impl std::ops::DerefMut for PublicKeyCredentialRequestOptions {
 impl From<PublicKeyCredentialRequestOptions> for emlite::Val {
     fn from(s: PublicKeyCredentialRequestOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -432,7 +432,7 @@ impl PublicKeyCredentialRequestOptions {
         self.inner.set("extensions", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PublicKeyCredentialRequestOptionsJSON {
     inner: emlite::Val,
 }
@@ -447,13 +447,13 @@ impl FromVal for PublicKeyCredentialRequestOptionsJSON {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PublicKeyCredentialRequestOptionsJSON {
+impl core::ops::Deref for PublicKeyCredentialRequestOptionsJSON {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PublicKeyCredentialRequestOptionsJSON {
+impl core::ops::DerefMut for PublicKeyCredentialRequestOptionsJSON {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -461,7 +461,7 @@ impl std::ops::DerefMut for PublicKeyCredentialRequestOptionsJSON {
 impl From<PublicKeyCredentialRequestOptionsJSON> for emlite::Val {
     fn from(s: PublicKeyCredentialRequestOptionsJSON) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -535,7 +535,7 @@ impl PublicKeyCredentialRequestOptionsJSON {
         self.inner.set("extensions", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct UnknownCredentialOptions {
     inner: emlite::Val,
 }
@@ -550,13 +550,13 @@ impl FromVal for UnknownCredentialOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for UnknownCredentialOptions {
+impl core::ops::Deref for UnknownCredentialOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for UnknownCredentialOptions {
+impl core::ops::DerefMut for UnknownCredentialOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -564,7 +564,7 @@ impl std::ops::DerefMut for UnknownCredentialOptions {
 impl From<UnknownCredentialOptions> for emlite::Val {
     fn from(s: UnknownCredentialOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -587,7 +587,7 @@ impl UnknownCredentialOptions {
         self.inner.set("credentialId", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AllAcceptedCredentialsOptions {
     inner: emlite::Val,
 }
@@ -602,13 +602,13 @@ impl FromVal for AllAcceptedCredentialsOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AllAcceptedCredentialsOptions {
+impl core::ops::Deref for AllAcceptedCredentialsOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AllAcceptedCredentialsOptions {
+impl core::ops::DerefMut for AllAcceptedCredentialsOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -616,7 +616,7 @@ impl std::ops::DerefMut for AllAcceptedCredentialsOptions {
 impl From<AllAcceptedCredentialsOptions> for emlite::Val {
     fn from(s: AllAcceptedCredentialsOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -650,7 +650,7 @@ impl AllAcceptedCredentialsOptions {
         self.inner.set("allAcceptedCredentialIds", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CurrentUserDetailsOptions {
     inner: emlite::Val,
 }
@@ -665,13 +665,13 @@ impl FromVal for CurrentUserDetailsOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CurrentUserDetailsOptions {
+impl core::ops::Deref for CurrentUserDetailsOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CurrentUserDetailsOptions {
+impl core::ops::DerefMut for CurrentUserDetailsOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -679,7 +679,7 @@ impl std::ops::DerefMut for CurrentUserDetailsOptions {
 impl From<CurrentUserDetailsOptions> for emlite::Val {
     fn from(s: CurrentUserDetailsOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -720,7 +720,7 @@ impl CurrentUserDetailsOptions {
         self.inner.set("displayName", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PublicKeyCredential {
     inner: Credential,
 }
@@ -737,13 +737,13 @@ impl FromVal for PublicKeyCredential {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PublicKeyCredential {
+impl core::ops::Deref for PublicKeyCredential {
     type Target = Credential;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PublicKeyCredential {
+impl core::ops::DerefMut for PublicKeyCredential {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -751,7 +751,7 @@ impl std::ops::DerefMut for PublicKeyCredential {
 impl From<PublicKeyCredential> for emlite::Val {
     fn from(s: PublicKeyCredential) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SharedStorageUrlWithMetadata {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for SharedStorageUrlWithMetadata {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SharedStorageUrlWithMetadata {
+impl core::ops::Deref for SharedStorageUrlWithMetadata {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SharedStorageUrlWithMetadata {
+impl core::ops::DerefMut for SharedStorageUrlWithMetadata {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for SharedStorageUrlWithMetadata {
 impl From<SharedStorageUrlWithMetadata> for emlite::Val {
     fn from(s: SharedStorageUrlWithMetadata) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl SharedStorageUrlWithMetadata {
         self.inner.set("reportingMetadata", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SharedStorageRunOperationMethodOptions {
     inner: emlite::Val,
 }
@@ -67,13 +67,13 @@ impl FromVal for SharedStorageRunOperationMethodOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SharedStorageRunOperationMethodOptions {
+impl core::ops::Deref for SharedStorageRunOperationMethodOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SharedStorageRunOperationMethodOptions {
+impl core::ops::DerefMut for SharedStorageRunOperationMethodOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -81,7 +81,7 @@ impl std::ops::DerefMut for SharedStorageRunOperationMethodOptions {
 impl From<SharedStorageRunOperationMethodOptions> for emlite::Val {
     fn from(s: SharedStorageRunOperationMethodOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -133,7 +133,7 @@ impl SharedStorageRunOperationMethodOptions {
         self.inner.set("savedQuery", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SharedStorageWorklet {
     inner: Worklet,
 }
@@ -150,13 +150,13 @@ impl FromVal for SharedStorageWorklet {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SharedStorageWorklet {
+impl core::ops::Deref for SharedStorageWorklet {
     type Target = Worklet;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SharedStorageWorklet {
+impl core::ops::DerefMut for SharedStorageWorklet {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -164,7 +164,7 @@ impl std::ops::DerefMut for SharedStorageWorklet {
 impl From<SharedStorageWorklet> for emlite::Val {
     fn from(s: SharedStorageWorklet) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

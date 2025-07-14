@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FontFaceSet {
     inner: EventTarget,
 }
@@ -17,13 +17,13 @@ impl FromVal for FontFaceSet {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FontFaceSet {
+impl core::ops::Deref for FontFaceSet {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FontFaceSet {
+impl core::ops::DerefMut for FontFaceSet {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for FontFaceSet {
 impl From<FontFaceSet> for emlite::Val {
     fn from(s: FontFaceSet) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

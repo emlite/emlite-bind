@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HandwritingPrediction {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for HandwritingPrediction {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HandwritingPrediction {
+impl core::ops::Deref for HandwritingPrediction {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HandwritingPrediction {
+impl core::ops::DerefMut for HandwritingPrediction {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for HandwritingPrediction {
 impl From<HandwritingPrediction> for emlite::Val {
     fn from(s: HandwritingPrediction) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -54,7 +54,7 @@ impl HandwritingPrediction {
         self.inner.set("segmentationResult", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HandwritingDrawing {
     inner: emlite::Val,
 }
@@ -71,13 +71,13 @@ impl FromVal for HandwritingDrawing {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HandwritingDrawing {
+impl core::ops::Deref for HandwritingDrawing {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HandwritingDrawing {
+impl core::ops::DerefMut for HandwritingDrawing {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -85,7 +85,7 @@ impl std::ops::DerefMut for HandwritingDrawing {
 impl From<HandwritingDrawing> for emlite::Val {
     fn from(s: HandwritingDrawing) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

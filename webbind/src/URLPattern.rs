@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct URLPatternResult {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for URLPatternResult {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for URLPatternResult {
+impl core::ops::Deref for URLPatternResult {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for URLPatternResult {
+impl core::ops::DerefMut for URLPatternResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for URLPatternResult {
 impl From<URLPatternResult> for emlite::Val {
     fn from(s: URLPatternResult) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -117,7 +117,7 @@ impl URLPatternResult {
         self.inner.set("hash", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct URLPattern {
     inner: emlite::Val,
 }
@@ -134,13 +134,13 @@ impl FromVal for URLPattern {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for URLPattern {
+impl core::ops::Deref for URLPattern {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for URLPattern {
+impl core::ops::DerefMut for URLPattern {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -148,7 +148,7 @@ impl std::ops::DerefMut for URLPattern {
 impl From<URLPattern> for emlite::Val {
     fn from(s: URLPattern) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

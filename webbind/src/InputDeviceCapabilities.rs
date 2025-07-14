@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct InputDeviceCapabilities {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for InputDeviceCapabilities {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for InputDeviceCapabilities {
+impl core::ops::Deref for InputDeviceCapabilities {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for InputDeviceCapabilities {
+impl core::ops::DerefMut for InputDeviceCapabilities {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for InputDeviceCapabilities {
 impl From<InputDeviceCapabilities> for emlite::Val {
     fn from(s: InputDeviceCapabilities) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSKeyframeRule {
     inner: CSSRule,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSKeyframeRule {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSKeyframeRule {
+impl core::ops::Deref for CSSKeyframeRule {
     type Target = CSSRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSKeyframeRule {
+impl core::ops::DerefMut for CSSKeyframeRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSKeyframeRule {
 impl From<CSSKeyframeRule> for emlite::Val {
     fn from(s: CSSKeyframeRule) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

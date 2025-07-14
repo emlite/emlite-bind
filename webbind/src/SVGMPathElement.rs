@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SVGMPathElement {
     inner: SVGElement,
 }
@@ -17,13 +17,13 @@ impl FromVal for SVGMPathElement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SVGMPathElement {
+impl core::ops::Deref for SVGMPathElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SVGMPathElement {
+impl core::ops::DerefMut for SVGMPathElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for SVGMPathElement {
 impl From<SVGMPathElement> for emlite::Val {
     fn from(s: SVGMPathElement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

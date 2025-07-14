@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSPositionTryDescriptors {
     inner: CSSStyleDeclaration,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSPositionTryDescriptors {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSPositionTryDescriptors {
+impl core::ops::Deref for CSSPositionTryDescriptors {
     type Target = CSSStyleDeclaration;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSPositionTryDescriptors {
+impl core::ops::DerefMut for CSSPositionTryDescriptors {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSPositionTryDescriptors {
 impl From<CSSPositionTryDescriptors> for emlite::Val {
     fn from(x: CSSPositionTryDescriptors) -> emlite::Val {
         let handle = x.inner.as_handle();
-        std::mem::forget(x);
+        core::mem::forget(x);
         emlite::Val::take_ownership(handle)
     }
 }

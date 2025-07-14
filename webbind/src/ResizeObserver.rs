@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ResizeObserverOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ResizeObserverOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ResizeObserverOptions {
+impl core::ops::Deref for ResizeObserverOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ResizeObserverOptions {
+impl core::ops::DerefMut for ResizeObserverOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ResizeObserverOptions {
 impl From<ResizeObserverOptions> for emlite::Val {
     fn from(s: ResizeObserverOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl ResizeObserverOptions {
         self.inner.set("box", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ResizeObserver {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for ResizeObserver {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ResizeObserver {
+impl core::ops::Deref for ResizeObserver {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ResizeObserver {
+impl core::ops::DerefMut for ResizeObserver {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for ResizeObserver {
 impl From<ResizeObserver> for emlite::Val {
     fn from(s: ResizeObserver) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

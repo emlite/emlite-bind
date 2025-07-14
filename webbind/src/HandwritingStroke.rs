@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HandwritingPoint {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for HandwritingPoint {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HandwritingPoint {
+impl core::ops::Deref for HandwritingPoint {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HandwritingPoint {
+impl core::ops::DerefMut for HandwritingPoint {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for HandwritingPoint {
 impl From<HandwritingPoint> for emlite::Val {
     fn from(s: HandwritingPoint) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl HandwritingPoint {
         self.inner.set("t", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HandwritingStroke {
     inner: emlite::Val,
 }
@@ -78,13 +78,13 @@ impl FromVal for HandwritingStroke {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HandwritingStroke {
+impl core::ops::Deref for HandwritingStroke {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HandwritingStroke {
+impl core::ops::DerefMut for HandwritingStroke {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -92,7 +92,7 @@ impl std::ops::DerefMut for HandwritingStroke {
 impl From<HandwritingStroke> for emlite::Val {
     fn from(s: HandwritingStroke) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

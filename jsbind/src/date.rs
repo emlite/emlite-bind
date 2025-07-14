@@ -1,10 +1,12 @@
 use crate::Any;
 use crate::utils::bind;
+use alloc::string::String;
+use alloc::vec::Vec;
 
 /// One-to-one wrapper around a JS `Date` instance.
 ///
 /// Construction is lazy: no extra fields, just a shared `emlite::Val`.
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialOrd)]
 pub struct Date {
     inner: emlite::Val,
 }
@@ -79,8 +81,8 @@ impl Date {
     }
 }
 
-impl std::fmt::Display for Date {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl core::fmt::Display for Date {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         f.write_str(&self.to_iso_string())
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ShadowRootInit {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ShadowRootInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ShadowRootInit {
+impl core::ops::Deref for ShadowRootInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ShadowRootInit {
+impl core::ops::DerefMut for ShadowRootInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ShadowRootInit {
 impl From<ShadowRootInit> for emlite::Val {
     fn from(s: ShadowRootInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -90,7 +90,7 @@ impl ShadowRootInit {
         self.inner.set("customElementRegistry", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FocusableAreasOption {
     inner: emlite::Val,
 }
@@ -105,13 +105,13 @@ impl FromVal for FocusableAreasOption {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FocusableAreasOption {
+impl core::ops::Deref for FocusableAreasOption {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FocusableAreasOption {
+impl core::ops::DerefMut for FocusableAreasOption {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -119,7 +119,7 @@ impl std::ops::DerefMut for FocusableAreasOption {
 impl From<FocusableAreasOption> for emlite::Val {
     fn from(s: FocusableAreasOption) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -133,7 +133,7 @@ impl FocusableAreasOption {
         self.inner.set("mode", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SpatialNavigationSearchOptions {
     inner: emlite::Val,
 }
@@ -148,13 +148,13 @@ impl FromVal for SpatialNavigationSearchOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SpatialNavigationSearchOptions {
+impl core::ops::Deref for SpatialNavigationSearchOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SpatialNavigationSearchOptions {
+impl core::ops::DerefMut for SpatialNavigationSearchOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -162,7 +162,7 @@ impl std::ops::DerefMut for SpatialNavigationSearchOptions {
 impl From<SpatialNavigationSearchOptions> for emlite::Val {
     fn from(s: SpatialNavigationSearchOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -185,7 +185,7 @@ impl SpatialNavigationSearchOptions {
         self.inner.set("container", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CheckVisibilityOptions {
     inner: emlite::Val,
 }
@@ -200,13 +200,13 @@ impl FromVal for CheckVisibilityOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CheckVisibilityOptions {
+impl core::ops::Deref for CheckVisibilityOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CheckVisibilityOptions {
+impl core::ops::DerefMut for CheckVisibilityOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -214,7 +214,7 @@ impl std::ops::DerefMut for CheckVisibilityOptions {
 impl From<CheckVisibilityOptions> for emlite::Val {
     fn from(s: CheckVisibilityOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -264,7 +264,7 @@ impl CheckVisibilityOptions {
         self.inner.set("visibilityProperty", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FullscreenOptions {
     inner: emlite::Val,
 }
@@ -279,13 +279,13 @@ impl FromVal for FullscreenOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FullscreenOptions {
+impl core::ops::Deref for FullscreenOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FullscreenOptions {
+impl core::ops::DerefMut for FullscreenOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -293,7 +293,7 @@ impl std::ops::DerefMut for FullscreenOptions {
 impl From<FullscreenOptions> for emlite::Val {
     fn from(s: FullscreenOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -307,7 +307,7 @@ impl FullscreenOptions {
         self.inner.set("screen", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GetHTMLOptions {
     inner: emlite::Val,
 }
@@ -322,13 +322,13 @@ impl FromVal for GetHTMLOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GetHTMLOptions {
+impl core::ops::Deref for GetHTMLOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GetHTMLOptions {
+impl core::ops::DerefMut for GetHTMLOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -336,7 +336,7 @@ impl std::ops::DerefMut for GetHTMLOptions {
 impl From<GetHTMLOptions> for emlite::Val {
     fn from(s: GetHTMLOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -361,7 +361,7 @@ impl GetHTMLOptions {
         self.inner.set("shadowRoots", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PointerLockOptions {
     inner: emlite::Val,
 }
@@ -376,13 +376,13 @@ impl FromVal for PointerLockOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PointerLockOptions {
+impl core::ops::Deref for PointerLockOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PointerLockOptions {
+impl core::ops::DerefMut for PointerLockOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -390,7 +390,7 @@ impl std::ops::DerefMut for PointerLockOptions {
 impl From<PointerLockOptions> for emlite::Val {
     fn from(s: PointerLockOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -404,7 +404,7 @@ impl PointerLockOptions {
         self.inner.set("unadjustedMovement", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GetAnimationsOptions {
     inner: emlite::Val,
 }
@@ -419,13 +419,13 @@ impl FromVal for GetAnimationsOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GetAnimationsOptions {
+impl core::ops::Deref for GetAnimationsOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GetAnimationsOptions {
+impl core::ops::DerefMut for GetAnimationsOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -433,7 +433,7 @@ impl std::ops::DerefMut for GetAnimationsOptions {
 impl From<GetAnimationsOptions> for emlite::Val {
     fn from(s: GetAnimationsOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -456,7 +456,7 @@ impl GetAnimationsOptions {
         self.inner.set("pseudoElement", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Element {
     inner: Node,
 }
@@ -473,13 +473,13 @@ impl FromVal for Element {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Element {
+impl core::ops::Deref for Element {
     type Target = Node;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Element {
+impl core::ops::DerefMut for Element {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -487,7 +487,7 @@ impl std::ops::DerefMut for Element {
 impl From<Element> for emlite::Val {
     fn from(s: Element) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

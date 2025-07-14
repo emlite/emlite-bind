@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HighlightHitResult {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for HighlightHitResult {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HighlightHitResult {
+impl core::ops::Deref for HighlightHitResult {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HighlightHitResult {
+impl core::ops::DerefMut for HighlightHitResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for HighlightHitResult {
 impl From<HighlightHitResult> for emlite::Val {
     fn from(s: HighlightHitResult) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -54,7 +54,7 @@ impl HighlightHitResult {
         self.inner.set("ranges", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HighlightsFromPointOptions {
     inner: emlite::Val,
 }
@@ -69,13 +69,13 @@ impl FromVal for HighlightsFromPointOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HighlightsFromPointOptions {
+impl core::ops::Deref for HighlightsFromPointOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HighlightsFromPointOptions {
+impl core::ops::DerefMut for HighlightsFromPointOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for HighlightsFromPointOptions {
 impl From<HighlightsFromPointOptions> for emlite::Val {
     fn from(s: HighlightsFromPointOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -99,7 +99,7 @@ impl HighlightsFromPointOptions {
         self.inner.set("shadowRoots", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HighlightRegistry {
     inner: emlite::Val,
 }
@@ -116,13 +116,13 @@ impl FromVal for HighlightRegistry {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HighlightRegistry {
+impl core::ops::Deref for HighlightRegistry {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HighlightRegistry {
+impl core::ops::DerefMut for HighlightRegistry {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -130,7 +130,7 @@ impl std::ops::DerefMut for HighlightRegistry {
 impl From<HighlightRegistry> for emlite::Val {
     fn from(s: HighlightRegistry) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

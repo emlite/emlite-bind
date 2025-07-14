@@ -2,7 +2,7 @@ use crate::utils::bind;
 use crate::{Any, Function};
 
 /// JavaScript [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) wrapper.
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Promise {
     inner: emlite::Val,
 }

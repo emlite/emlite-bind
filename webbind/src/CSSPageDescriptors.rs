@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSPageDescriptors {
     inner: CSSStyleDeclaration,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSPageDescriptors {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSPageDescriptors {
+impl core::ops::Deref for CSSPageDescriptors {
     type Target = CSSStyleDeclaration;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSPageDescriptors {
+impl core::ops::DerefMut for CSSPageDescriptors {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSPageDescriptors {
 impl From<CSSPageDescriptors> for emlite::Val {
     fn from(x: CSSPageDescriptors) -> emlite::Val {
         let handle = x.inner.as_handle();
-        std::mem::forget(x);
+        core::mem::forget(x);
         emlite::Val::take_ownership(handle)
     }
 }

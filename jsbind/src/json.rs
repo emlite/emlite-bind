@@ -1,4 +1,6 @@
 use crate::Any;
+use alloc::string::String;
+use alloc::vec;
 use emlite::FromVal;
 
 /// Static‐only namespace: `JSON.parse`, `JSON.stringify`, …
@@ -23,7 +25,7 @@ impl JSON {
         T: FromVal,
     {
         let res = Self::obj().call("parse", &[text.into()]);
-        if res.instanceof(emlite::Val::global("Error")) {
+        if res.is_error() {
             Err(res.into())
         } else {
             Ok(res.as_::<T>())

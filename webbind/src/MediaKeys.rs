@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaKeysPolicy {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for MediaKeysPolicy {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaKeysPolicy {
+impl core::ops::Deref for MediaKeysPolicy {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaKeysPolicy {
+impl core::ops::DerefMut for MediaKeysPolicy {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for MediaKeysPolicy {
 impl From<MediaKeysPolicy> for emlite::Val {
     fn from(s: MediaKeysPolicy) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl MediaKeysPolicy {
         self.inner.set("minHdcpVersion", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaKeys {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for MediaKeys {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaKeys {
+impl core::ops::Deref for MediaKeys {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaKeys {
+impl core::ops::DerefMut for MediaKeys {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for MediaKeys {
 impl From<MediaKeys> for emlite::Val {
     fn from(s: MediaKeys) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

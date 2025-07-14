@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PerformanceObserverInit {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for PerformanceObserverInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PerformanceObserverInit {
+impl core::ops::Deref for PerformanceObserverInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PerformanceObserverInit {
+impl core::ops::DerefMut for PerformanceObserverInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for PerformanceObserverInit {
 impl From<PerformanceObserverInit> for emlite::Val {
     fn from(s: PerformanceObserverInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -63,7 +63,7 @@ impl PerformanceObserverInit {
         self.inner.set("buffered", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PerformanceObserver {
     inner: emlite::Val,
 }
@@ -80,13 +80,13 @@ impl FromVal for PerformanceObserver {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PerformanceObserver {
+impl core::ops::Deref for PerformanceObserver {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PerformanceObserver {
+impl core::ops::DerefMut for PerformanceObserver {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -94,7 +94,7 @@ impl std::ops::DerefMut for PerformanceObserver {
 impl From<PerformanceObserver> for emlite::Val {
     fn from(s: PerformanceObserver) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

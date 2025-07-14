@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GamepadTouch {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for GamepadTouch {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GamepadTouch {
+impl core::ops::Deref for GamepadTouch {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GamepadTouch {
+impl core::ops::DerefMut for GamepadTouch {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for GamepadTouch {
 impl From<GamepadTouch> for emlite::Val {
     fn from(s: GamepadTouch) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -70,7 +70,7 @@ impl GamepadTouch {
         self.inner.set("surfaceDimensions", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Gamepad {
     inner: emlite::Val,
 }
@@ -87,13 +87,13 @@ impl FromVal for Gamepad {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Gamepad {
+impl core::ops::Deref for Gamepad {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Gamepad {
+impl core::ops::DerefMut for Gamepad {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -101,7 +101,7 @@ impl std::ops::DerefMut for Gamepad {
 impl From<Gamepad> for emlite::Val {
     fn from(s: Gamepad) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

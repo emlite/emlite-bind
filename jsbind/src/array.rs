@@ -1,6 +1,7 @@
 use crate::any::Any;
 use crate::sequence::Sequence;
 use crate::utils::bind;
+use alloc::vec;
 use emlite::FromVal;
 
 /// Generic WebIDL typed array ([spec § 2.7]).
@@ -40,7 +41,7 @@ pub type Float64Array = TypedArray<f64>;
 pub type Array = Sequence<Any>;
 
 /// A raw, fixed‑length buffer of bytes as defined by the ECMAScript spec.
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ArrayBuffer {
     /// Underlying JavaScript value (always a `Promise` object in JS land).
     inner: emlite::Val,
@@ -113,7 +114,7 @@ impl Endian {
 /// All accessor methods follow the spec signature `(byteOffset, [value],
 /// littleEndian)` so host code must always pass an [`Endian`] flag to remove
 /// any ambiguity about byte order.
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DataView {
     inner: emlite::Val,
 }

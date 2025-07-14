@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SVGTextPositioningElement {
     inner: SVGTextContentElement,
 }
@@ -17,13 +17,13 @@ impl FromVal for SVGTextPositioningElement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SVGTextPositioningElement {
+impl core::ops::Deref for SVGTextPositioningElement {
     type Target = SVGTextContentElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SVGTextPositioningElement {
+impl core::ops::DerefMut for SVGTextPositioningElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for SVGTextPositioningElement {
 impl From<SVGTextPositioningElement> for emlite::Val {
     fn from(s: SVGTextPositioningElement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

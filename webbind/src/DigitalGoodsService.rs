@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ItemDetails {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ItemDetails {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ItemDetails {
+impl core::ops::Deref for ItemDetails {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ItemDetails {
+impl core::ops::DerefMut for ItemDetails {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ItemDetails {
 impl From<ItemDetails> for emlite::Val {
     fn from(s: ItemDetails) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -139,7 +139,7 @@ impl ItemDetails {
         self.inner.set("introductoryPriceCycles", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PurchaseDetails {
     inner: emlite::Val,
 }
@@ -154,13 +154,13 @@ impl FromVal for PurchaseDetails {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PurchaseDetails {
+impl core::ops::Deref for PurchaseDetails {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PurchaseDetails {
+impl core::ops::DerefMut for PurchaseDetails {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -168,7 +168,7 @@ impl std::ops::DerefMut for PurchaseDetails {
 impl From<PurchaseDetails> for emlite::Val {
     fn from(s: PurchaseDetails) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -191,7 +191,7 @@ impl PurchaseDetails {
         self.inner.set("purchaseToken", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DigitalGoodsService {
     inner: emlite::Val,
 }
@@ -208,13 +208,13 @@ impl FromVal for DigitalGoodsService {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DigitalGoodsService {
+impl core::ops::Deref for DigitalGoodsService {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DigitalGoodsService {
+impl core::ops::DerefMut for DigitalGoodsService {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -222,7 +222,7 @@ impl std::ops::DerefMut for DigitalGoodsService {
 impl From<DigitalGoodsService> for emlite::Val {
     fn from(s: DigitalGoodsService) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

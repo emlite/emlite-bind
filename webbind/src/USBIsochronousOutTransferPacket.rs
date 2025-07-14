@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct USBIsochronousOutTransferPacket {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for USBIsochronousOutTransferPacket {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for USBIsochronousOutTransferPacket {
+impl core::ops::Deref for USBIsochronousOutTransferPacket {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for USBIsochronousOutTransferPacket {
+impl core::ops::DerefMut for USBIsochronousOutTransferPacket {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for USBIsochronousOutTransferPacket {
 impl From<USBIsochronousOutTransferPacket> for emlite::Val {
     fn from(s: USBIsochronousOutTransferPacket) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

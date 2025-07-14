@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRCylinderLayer {
     inner: XRCompositionLayer,
 }
@@ -17,13 +17,13 @@ impl FromVal for XRCylinderLayer {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRCylinderLayer {
+impl core::ops::Deref for XRCylinderLayer {
     type Target = XRCompositionLayer;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRCylinderLayer {
+impl core::ops::DerefMut for XRCylinderLayer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for XRCylinderLayer {
 impl From<XRCylinderLayer> for emlite::Val {
     fn from(s: XRCylinderLayer) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

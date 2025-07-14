@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SVGBoundingBoxOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for SVGBoundingBoxOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SVGBoundingBoxOptions {
+impl core::ops::Deref for SVGBoundingBoxOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SVGBoundingBoxOptions {
+impl core::ops::DerefMut for SVGBoundingBoxOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for SVGBoundingBoxOptions {
 impl From<SVGBoundingBoxOptions> for emlite::Val {
     fn from(s: SVGBoundingBoxOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -70,7 +70,7 @@ impl SVGBoundingBoxOptions {
         self.inner.set("clipped", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SVGGraphicsElement {
     inner: SVGElement,
 }
@@ -87,13 +87,13 @@ impl FromVal for SVGGraphicsElement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SVGGraphicsElement {
+impl core::ops::Deref for SVGGraphicsElement {
     type Target = SVGElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SVGGraphicsElement {
+impl core::ops::DerefMut for SVGGraphicsElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -101,7 +101,7 @@ impl std::ops::DerefMut for SVGGraphicsElement {
 impl From<SVGGraphicsElement> for emlite::Val {
     fn from(s: SVGGraphicsElement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

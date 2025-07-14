@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSLayerBlockRule {
     inner: CSSGroupingRule,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSLayerBlockRule {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSLayerBlockRule {
+impl core::ops::Deref for CSSLayerBlockRule {
     type Target = CSSGroupingRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSLayerBlockRule {
+impl core::ops::DerefMut for CSSLayerBlockRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSLayerBlockRule {
 impl From<CSSLayerBlockRule> for emlite::Val {
     fn from(s: CSSLayerBlockRule) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

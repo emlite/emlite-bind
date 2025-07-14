@@ -1,8 +1,9 @@
 use crate::utils::bind;
 use crate::{Any, Uint8Array};
+use alloc::string::String;
 
 /// JavaScript `TextEncoder` (`new TextEncoder()`).
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TextEncoder {
     inner: emlite::Val,
 }
@@ -31,7 +32,7 @@ impl TextEncoder {
 }
 
 /// JavaScript `TextDecoder`
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TextDecoder {
     inner: emlite::Val,
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRSessionInit {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for XRSessionInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRSessionInit {
+impl core::ops::Deref for XRSessionInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRSessionInit {
+impl core::ops::DerefMut for XRSessionInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for XRSessionInit {
 impl From<XRSessionInit> for emlite::Val {
     fn from(s: XRSessionInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -56,7 +56,7 @@ impl XRSessionInit {
         self.inner.set("optionalFeatures", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRSystem {
     inner: EventTarget,
 }
@@ -73,13 +73,13 @@ impl FromVal for XRSystem {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRSystem {
+impl core::ops::Deref for XRSystem {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRSystem {
+impl core::ops::DerefMut for XRSystem {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -87,7 +87,7 @@ impl std::ops::DerefMut for XRSystem {
 impl From<XRSystem> for emlite::Val {
     fn from(s: XRSystem) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

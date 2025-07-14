@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FragmentResult {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for FragmentResult {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FragmentResult {
+impl core::ops::Deref for FragmentResult {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FragmentResult {
+impl core::ops::DerefMut for FragmentResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for FragmentResult {
 impl From<FragmentResult> for emlite::Val {
     fn from(s: FragmentResult) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

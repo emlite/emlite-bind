@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaTrackCapabilities {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for MediaTrackCapabilities {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaTrackCapabilities {
+impl core::ops::Deref for MediaTrackCapabilities {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaTrackCapabilities {
+impl core::ops::DerefMut for MediaTrackCapabilities {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for MediaTrackCapabilities {
 impl From<MediaTrackCapabilities> for emlite::Val {
     fn from(s: MediaTrackCapabilities) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -63,7 +63,7 @@ impl MediaTrackCapabilities {
         self.inner.set("cursor", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaTrackConstraints {
     inner: emlite::Val,
 }
@@ -78,13 +78,13 @@ impl FromVal for MediaTrackConstraints {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaTrackConstraints {
+impl core::ops::Deref for MediaTrackConstraints {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaTrackConstraints {
+impl core::ops::DerefMut for MediaTrackConstraints {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -92,7 +92,7 @@ impl std::ops::DerefMut for MediaTrackConstraints {
 impl From<MediaTrackConstraints> for emlite::Val {
     fn from(s: MediaTrackConstraints) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -108,7 +108,7 @@ impl MediaTrackConstraints {
         self.inner.set("advanced", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaTrackSettings {
     inner: emlite::Val,
 }
@@ -123,13 +123,13 @@ impl FromVal for MediaTrackSettings {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaTrackSettings {
+impl core::ops::Deref for MediaTrackSettings {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaTrackSettings {
+impl core::ops::DerefMut for MediaTrackSettings {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -137,7 +137,7 @@ impl std::ops::DerefMut for MediaTrackSettings {
 impl From<MediaTrackSettings> for emlite::Val {
     fn from(s: MediaTrackSettings) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -196,7 +196,7 @@ impl MediaTrackSettings {
         self.inner.set("screenPixelRatio", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CaptureHandle {
     inner: emlite::Val,
 }
@@ -211,13 +211,13 @@ impl FromVal for CaptureHandle {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CaptureHandle {
+impl core::ops::Deref for CaptureHandle {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CaptureHandle {
+impl core::ops::DerefMut for CaptureHandle {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -225,7 +225,7 @@ impl std::ops::DerefMut for CaptureHandle {
 impl From<CaptureHandle> for emlite::Val {
     fn from(s: CaptureHandle) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -248,7 +248,7 @@ impl CaptureHandle {
         self.inner.set("handle", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaStreamTrack {
     inner: EventTarget,
 }
@@ -265,13 +265,13 @@ impl FromVal for MediaStreamTrack {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaStreamTrack {
+impl core::ops::Deref for MediaStreamTrack {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaStreamTrack {
+impl core::ops::DerefMut for MediaStreamTrack {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -279,7 +279,7 @@ impl std::ops::DerefMut for MediaStreamTrack {
 impl From<MediaStreamTrack> for emlite::Val {
     fn from(s: MediaStreamTrack) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

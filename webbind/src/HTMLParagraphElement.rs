@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HTMLParagraphElement {
     inner: HTMLElement,
 }
@@ -17,13 +17,13 @@ impl FromVal for HTMLParagraphElement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HTMLParagraphElement {
+impl core::ops::Deref for HTMLParagraphElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HTMLParagraphElement {
+impl core::ops::DerefMut for HTMLParagraphElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for HTMLParagraphElement {
 impl From<HTMLParagraphElement> for emlite::Val {
     fn from(s: HTMLParagraphElement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

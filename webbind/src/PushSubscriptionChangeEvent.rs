@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PushSubscriptionChangeEvent {
     inner: ExtendableEvent,
 }
@@ -17,13 +17,13 @@ impl FromVal for PushSubscriptionChangeEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PushSubscriptionChangeEvent {
+impl core::ops::Deref for PushSubscriptionChangeEvent {
     type Target = ExtendableEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PushSubscriptionChangeEvent {
+impl core::ops::DerefMut for PushSubscriptionChangeEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for PushSubscriptionChangeEvent {
 impl From<PushSubscriptionChangeEvent> for emlite::Val {
     fn from(s: PushSubscriptionChangeEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

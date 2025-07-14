@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WEBGL_compressed_texture_etc {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for WEBGL_compressed_texture_etc {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WEBGL_compressed_texture_etc {
+impl core::ops::Deref for WEBGL_compressed_texture_etc {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WEBGL_compressed_texture_etc {
+impl core::ops::DerefMut for WEBGL_compressed_texture_etc {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for WEBGL_compressed_texture_etc {
 impl From<WEBGL_compressed_texture_etc> for emlite::Val {
     fn from(s: WEBGL_compressed_texture_etc) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

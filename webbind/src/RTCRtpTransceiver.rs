@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCRtpCodec {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for RTCRtpCodec {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCRtpCodec {
+impl core::ops::Deref for RTCRtpCodec {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCRtpCodec {
+impl core::ops::DerefMut for RTCRtpCodec {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for RTCRtpCodec {
 impl From<RTCRtpCodec> for emlite::Val {
     fn from(s: RTCRtpCodec) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -70,7 +70,7 @@ impl RTCRtpCodec {
         self.inner.set("sdpFmtpLine", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCRtpTransceiver {
     inner: emlite::Val,
 }
@@ -87,13 +87,13 @@ impl FromVal for RTCRtpTransceiver {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCRtpTransceiver {
+impl core::ops::Deref for RTCRtpTransceiver {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCRtpTransceiver {
+impl core::ops::DerefMut for RTCRtpTransceiver {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -101,7 +101,7 @@ impl std::ops::DerefMut for RTCRtpTransceiver {
 impl From<RTCRtpTransceiver> for emlite::Val {
     fn from(s: RTCRtpTransceiver) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

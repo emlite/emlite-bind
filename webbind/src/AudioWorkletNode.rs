@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AudioWorkletNode {
     inner: AudioNode,
 }
@@ -17,13 +17,13 @@ impl FromVal for AudioWorkletNode {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AudioWorkletNode {
+impl core::ops::Deref for AudioWorkletNode {
     type Target = AudioNode;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AudioWorkletNode {
+impl core::ops::DerefMut for AudioWorkletNode {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for AudioWorkletNode {
 impl From<AudioWorkletNode> for emlite::Val {
     fn from(s: AudioWorkletNode) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

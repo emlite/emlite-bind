@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MIDIInput {
     inner: MIDIPort,
 }
@@ -17,13 +17,13 @@ impl FromVal for MIDIInput {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MIDIInput {
+impl core::ops::Deref for MIDIInput {
     type Target = MIDIPort;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MIDIInput {
+impl core::ops::DerefMut for MIDIInput {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for MIDIInput {
 impl From<MIDIInput> for emlite::Val {
     fn from(s: MIDIInput) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

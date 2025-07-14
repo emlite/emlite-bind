@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct VideoFrameMetadata {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for VideoFrameMetadata {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for VideoFrameMetadata {
+impl core::ops::Deref for VideoFrameMetadata {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for VideoFrameMetadata {
+impl core::ops::DerefMut for VideoFrameMetadata {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,12 +29,12 @@ impl std::ops::DerefMut for VideoFrameMetadata {
 impl From<VideoFrameMetadata> for emlite::Val {
     fn from(s: VideoFrameMetadata) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct VideoFrameCopyToOptions {
     inner: emlite::Val,
 }
@@ -49,13 +49,13 @@ impl FromVal for VideoFrameCopyToOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for VideoFrameCopyToOptions {
+impl core::ops::Deref for VideoFrameCopyToOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for VideoFrameCopyToOptions {
+impl core::ops::DerefMut for VideoFrameCopyToOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -63,7 +63,7 @@ impl std::ops::DerefMut for VideoFrameCopyToOptions {
 impl From<VideoFrameCopyToOptions> for emlite::Val {
     fn from(s: VideoFrameCopyToOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -106,7 +106,7 @@ impl VideoFrameCopyToOptions {
         self.inner.set("colorSpace", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PlaneLayout {
     inner: emlite::Val,
 }
@@ -121,13 +121,13 @@ impl FromVal for PlaneLayout {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PlaneLayout {
+impl core::ops::Deref for PlaneLayout {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PlaneLayout {
+impl core::ops::DerefMut for PlaneLayout {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -135,7 +135,7 @@ impl std::ops::DerefMut for PlaneLayout {
 impl From<PlaneLayout> for emlite::Val {
     fn from(s: PlaneLayout) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -158,7 +158,7 @@ impl PlaneLayout {
         self.inner.set("stride", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct VideoFrame {
     inner: emlite::Val,
 }
@@ -175,13 +175,13 @@ impl FromVal for VideoFrame {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for VideoFrame {
+impl core::ops::Deref for VideoFrame {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for VideoFrame {
+impl core::ops::DerefMut for VideoFrame {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -189,7 +189,7 @@ impl std::ops::DerefMut for VideoFrame {
 impl From<VideoFrame> for emlite::Val {
     fn from(s: VideoFrame) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

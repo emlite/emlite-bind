@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ReadableStreamGetReaderOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ReadableStreamGetReaderOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ReadableStreamGetReaderOptions {
+impl core::ops::Deref for ReadableStreamGetReaderOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ReadableStreamGetReaderOptions {
+impl core::ops::DerefMut for ReadableStreamGetReaderOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ReadableStreamGetReaderOptions {
 impl From<ReadableStreamGetReaderOptions> for emlite::Val {
     fn from(s: ReadableStreamGetReaderOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl ReadableStreamGetReaderOptions {
         self.inner.set("mode", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ReadableWritablePair {
     inner: emlite::Val,
 }
@@ -58,13 +58,13 @@ impl FromVal for ReadableWritablePair {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ReadableWritablePair {
+impl core::ops::Deref for ReadableWritablePair {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ReadableWritablePair {
+impl core::ops::DerefMut for ReadableWritablePair {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -72,7 +72,7 @@ impl std::ops::DerefMut for ReadableWritablePair {
 impl From<ReadableWritablePair> for emlite::Val {
     fn from(s: ReadableWritablePair) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -95,7 +95,7 @@ impl ReadableWritablePair {
         self.inner.set("writable", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct StreamPipeOptions {
     inner: emlite::Val,
 }
@@ -110,13 +110,13 @@ impl FromVal for StreamPipeOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for StreamPipeOptions {
+impl core::ops::Deref for StreamPipeOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for StreamPipeOptions {
+impl core::ops::DerefMut for StreamPipeOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -124,7 +124,7 @@ impl std::ops::DerefMut for StreamPipeOptions {
 impl From<StreamPipeOptions> for emlite::Val {
     fn from(s: StreamPipeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -165,7 +165,7 @@ impl StreamPipeOptions {
         self.inner.set("signal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ReadableStream {
     inner: emlite::Val,
 }
@@ -182,13 +182,13 @@ impl FromVal for ReadableStream {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ReadableStream {
+impl core::ops::Deref for ReadableStream {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ReadableStream {
+impl core::ops::DerefMut for ReadableStream {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -196,7 +196,7 @@ impl std::ops::DerefMut for ReadableStream {
 impl From<ReadableStream> for emlite::Val {
     fn from(s: ReadableStream) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

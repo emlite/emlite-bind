@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ElementDefinitionOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ElementDefinitionOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ElementDefinitionOptions {
+impl core::ops::Deref for ElementDefinitionOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ElementDefinitionOptions {
+impl core::ops::DerefMut for ElementDefinitionOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ElementDefinitionOptions {
 impl From<ElementDefinitionOptions> for emlite::Val {
     fn from(s: ElementDefinitionOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl ElementDefinitionOptions {
         self.inner.set("extends", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CustomElementRegistry {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for CustomElementRegistry {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CustomElementRegistry {
+impl core::ops::Deref for CustomElementRegistry {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CustomElementRegistry {
+impl core::ops::DerefMut for CustomElementRegistry {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for CustomElementRegistry {
 impl From<CustomElementRegistry> for emlite::Val {
     fn from(s: CustomElementRegistry) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSRotate {
     inner: CSSTransformComponent,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSRotate {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSRotate {
+impl core::ops::Deref for CSSRotate {
     type Target = CSSTransformComponent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSRotate {
+impl core::ops::DerefMut for CSSRotate {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSRotate {
 impl From<CSSRotate> for emlite::Val {
     fn from(s: CSSRotate) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

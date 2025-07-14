@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NamedFlowMap {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for NamedFlowMap {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NamedFlowMap {
+impl core::ops::Deref for NamedFlowMap {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NamedFlowMap {
+impl core::ops::DerefMut for NamedFlowMap {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for NamedFlowMap {
 impl From<NamedFlowMap> for emlite::Val {
     fn from(s: NamedFlowMap) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

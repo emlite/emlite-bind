@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct StorageBucketOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for StorageBucketOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for StorageBucketOptions {
+impl core::ops::Deref for StorageBucketOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for StorageBucketOptions {
+impl core::ops::DerefMut for StorageBucketOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for StorageBucketOptions {
 impl From<StorageBucketOptions> for emlite::Val {
     fn from(s: StorageBucketOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl StorageBucketOptions {
         self.inner.set("expires", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct StorageBucketManager {
     inner: emlite::Val,
 }
@@ -78,13 +78,13 @@ impl FromVal for StorageBucketManager {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for StorageBucketManager {
+impl core::ops::Deref for StorageBucketManager {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for StorageBucketManager {
+impl core::ops::DerefMut for StorageBucketManager {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -92,7 +92,7 @@ impl std::ops::DerefMut for StorageBucketManager {
 impl From<StorageBucketManager> for emlite::Val {
     fn from(s: StorageBucketManager) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

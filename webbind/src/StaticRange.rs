@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct StaticRange {
     inner: AbstractRange,
 }
@@ -17,13 +17,13 @@ impl FromVal for StaticRange {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for StaticRange {
+impl core::ops::Deref for StaticRange {
     type Target = AbstractRange;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for StaticRange {
+impl core::ops::DerefMut for StaticRange {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for StaticRange {
 impl From<StaticRange> for emlite::Val {
     fn from(s: StaticRange) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

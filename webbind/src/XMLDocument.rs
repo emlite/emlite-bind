@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XMLDocument {
     inner: Document,
 }
@@ -17,13 +17,13 @@ impl FromVal for XMLDocument {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XMLDocument {
+impl core::ops::Deref for XMLDocument {
     type Target = Document;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XMLDocument {
+impl core::ops::DerefMut for XMLDocument {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for XMLDocument {
 impl From<XMLDocument> for emlite::Val {
     fn from(s: XMLDocument) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

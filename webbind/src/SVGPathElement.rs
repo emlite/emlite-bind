@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SVGPathDataSettings {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for SVGPathDataSettings {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SVGPathDataSettings {
+impl core::ops::Deref for SVGPathDataSettings {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SVGPathDataSettings {
+impl core::ops::DerefMut for SVGPathDataSettings {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for SVGPathDataSettings {
 impl From<SVGPathDataSettings> for emlite::Val {
     fn from(s: SVGPathDataSettings) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl SVGPathDataSettings {
         self.inner.set("normalize", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SVGPathElement {
     inner: SVGGeometryElement,
 }
@@ -60,13 +60,13 @@ impl FromVal for SVGPathElement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SVGPathElement {
+impl core::ops::Deref for SVGPathElement {
     type Target = SVGGeometryElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SVGPathElement {
+impl core::ops::DerefMut for SVGPathElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for SVGPathElement {
 impl From<SVGPathElement> for emlite::Val {
     fn from(s: SVGPathElement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

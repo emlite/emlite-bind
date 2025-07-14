@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SanitizerConfig {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for SanitizerConfig {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SanitizerConfig {
+impl core::ops::Deref for SanitizerConfig {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SanitizerConfig {
+impl core::ops::DerefMut for SanitizerConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for SanitizerConfig {
 impl From<SanitizerConfig> for emlite::Val {
     fn from(s: SanitizerConfig) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -107,7 +107,7 @@ impl SanitizerConfig {
         self.inner.set("dataAttributes", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Sanitizer {
     inner: emlite::Val,
 }
@@ -124,13 +124,13 @@ impl FromVal for Sanitizer {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Sanitizer {
+impl core::ops::Deref for Sanitizer {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Sanitizer {
+impl core::ops::DerefMut for Sanitizer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -138,7 +138,7 @@ impl std::ops::DerefMut for Sanitizer {
 impl From<Sanitizer> for emlite::Val {
     fn from(s: Sanitizer) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ProximitySensor {
     inner: Sensor,
 }
@@ -17,13 +17,13 @@ impl FromVal for ProximitySensor {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ProximitySensor {
+impl core::ops::Deref for ProximitySensor {
     type Target = Sensor;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ProximitySensor {
+impl core::ops::DerefMut for ProximitySensor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for ProximitySensor {
 impl From<ProximitySensor> for emlite::Val {
     fn from(s: ProximitySensor) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

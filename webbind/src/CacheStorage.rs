@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MultiCacheQueryOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for MultiCacheQueryOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MultiCacheQueryOptions {
+impl core::ops::Deref for MultiCacheQueryOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MultiCacheQueryOptions {
+impl core::ops::DerefMut for MultiCacheQueryOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for MultiCacheQueryOptions {
 impl From<MultiCacheQueryOptions> for emlite::Val {
     fn from(s: MultiCacheQueryOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl MultiCacheQueryOptions {
         self.inner.set("cacheName", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CacheStorage {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for CacheStorage {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CacheStorage {
+impl core::ops::Deref for CacheStorage {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CacheStorage {
+impl core::ops::DerefMut for CacheStorage {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for CacheStorage {
 impl From<CacheStorage> for emlite::Val {
     fn from(s: CacheStorage) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

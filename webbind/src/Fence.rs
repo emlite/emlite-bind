@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FenceEvent {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for FenceEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FenceEvent {
+impl core::ops::Deref for FenceEvent {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FenceEvent {
+impl core::ops::DerefMut for FenceEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for FenceEvent {
 impl From<FenceEvent> for emlite::Val {
     fn from(s: FenceEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -90,7 +90,7 @@ impl FenceEvent {
         self.inner.set("destinationURL", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Fence {
     inner: emlite::Val,
 }
@@ -107,13 +107,13 @@ impl FromVal for Fence {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Fence {
+impl core::ops::Deref for Fence {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Fence {
+impl core::ops::DerefMut for Fence {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -121,7 +121,7 @@ impl std::ops::DerefMut for Fence {
 impl From<Fence> for emlite::Val {
     fn from(s: Fence) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

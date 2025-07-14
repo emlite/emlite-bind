@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaImage {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for MediaImage {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaImage {
+impl core::ops::Deref for MediaImage {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaImage {
+impl core::ops::DerefMut for MediaImage {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for MediaImage {
 impl From<MediaImage> for emlite::Val {
     fn from(s: MediaImage) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl MediaImage {
         self.inner.set("type", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ChapterInformation {
     inner: emlite::Val,
 }
@@ -78,13 +78,13 @@ impl FromVal for ChapterInformation {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ChapterInformation {
+impl core::ops::Deref for ChapterInformation {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ChapterInformation {
+impl core::ops::DerefMut for ChapterInformation {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -92,7 +92,7 @@ impl std::ops::DerefMut for ChapterInformation {
 impl From<ChapterInformation> for emlite::Val {
     fn from(s: ChapterInformation) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

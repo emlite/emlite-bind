@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RegistrationOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for RegistrationOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RegistrationOptions {
+impl core::ops::Deref for RegistrationOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RegistrationOptions {
+impl core::ops::DerefMut for RegistrationOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for RegistrationOptions {
 impl From<RegistrationOptions> for emlite::Val {
     fn from(s: RegistrationOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -63,7 +63,7 @@ impl RegistrationOptions {
         self.inner.set("updateViaCache", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ServiceWorkerContainer {
     inner: EventTarget,
 }
@@ -80,13 +80,13 @@ impl FromVal for ServiceWorkerContainer {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ServiceWorkerContainer {
+impl core::ops::Deref for ServiceWorkerContainer {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ServiceWorkerContainer {
+impl core::ops::DerefMut for ServiceWorkerContainer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -94,7 +94,7 @@ impl std::ops::DerefMut for ServiceWorkerContainer {
 impl From<ServiceWorkerContainer> for emlite::Val {
     fn from(s: ServiceWorkerContainer) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

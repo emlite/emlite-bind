@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRJointPose {
     inner: XRPose,
 }
@@ -17,13 +17,13 @@ impl FromVal for XRJointPose {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRJointPose {
+impl core::ops::Deref for XRJointPose {
     type Target = XRPose;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRJointPose {
+impl core::ops::DerefMut for XRJointPose {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for XRJointPose {
 impl From<XRJointPose> for emlite::Val {
     fn from(s: XRJointPose) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

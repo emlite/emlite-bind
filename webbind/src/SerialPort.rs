@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SerialPortInfo {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for SerialPortInfo {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SerialPortInfo {
+impl core::ops::Deref for SerialPortInfo {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SerialPortInfo {
+impl core::ops::DerefMut for SerialPortInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for SerialPortInfo {
 impl From<SerialPortInfo> for emlite::Val {
     fn from(s: SerialPortInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -63,7 +63,7 @@ impl SerialPortInfo {
         self.inner.set("bluetoothServiceClassId", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SerialOptions {
     inner: emlite::Val,
 }
@@ -78,13 +78,13 @@ impl FromVal for SerialOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SerialOptions {
+impl core::ops::Deref for SerialOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SerialOptions {
+impl core::ops::DerefMut for SerialOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -92,7 +92,7 @@ impl std::ops::DerefMut for SerialOptions {
 impl From<SerialOptions> for emlite::Val {
     fn from(s: SerialOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -151,7 +151,7 @@ impl SerialOptions {
         self.inner.set("flowControl", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SerialOutputSignals {
     inner: emlite::Val,
 }
@@ -166,13 +166,13 @@ impl FromVal for SerialOutputSignals {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SerialOutputSignals {
+impl core::ops::Deref for SerialOutputSignals {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SerialOutputSignals {
+impl core::ops::DerefMut for SerialOutputSignals {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -180,7 +180,7 @@ impl std::ops::DerefMut for SerialOutputSignals {
 impl From<SerialOutputSignals> for emlite::Val {
     fn from(s: SerialOutputSignals) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -212,7 +212,7 @@ impl SerialOutputSignals {
         self.inner.set("break", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SerialInputSignals {
     inner: emlite::Val,
 }
@@ -227,13 +227,13 @@ impl FromVal for SerialInputSignals {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SerialInputSignals {
+impl core::ops::Deref for SerialInputSignals {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SerialInputSignals {
+impl core::ops::DerefMut for SerialInputSignals {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -241,7 +241,7 @@ impl std::ops::DerefMut for SerialInputSignals {
 impl From<SerialInputSignals> for emlite::Val {
     fn from(s: SerialInputSignals) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -282,7 +282,7 @@ impl SerialInputSignals {
         self.inner.set("dataSetReady", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SerialPort {
     inner: EventTarget,
 }
@@ -299,13 +299,13 @@ impl FromVal for SerialPort {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SerialPort {
+impl core::ops::Deref for SerialPort {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SerialPort {
+impl core::ops::DerefMut for SerialPort {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -313,7 +313,7 @@ impl std::ops::DerefMut for SerialPort {
 impl From<SerialPort> for emlite::Val {
     fn from(s: SerialPort) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

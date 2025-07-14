@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FileSystemReadWriteOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for FileSystemReadWriteOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FileSystemReadWriteOptions {
+impl core::ops::Deref for FileSystemReadWriteOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FileSystemReadWriteOptions {
+impl core::ops::DerefMut for FileSystemReadWriteOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for FileSystemReadWriteOptions {
 impl From<FileSystemReadWriteOptions> for emlite::Val {
     fn from(s: FileSystemReadWriteOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl FileSystemReadWriteOptions {
         self.inner.set("at", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FileSystemSyncAccessHandle {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for FileSystemSyncAccessHandle {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FileSystemSyncAccessHandle {
+impl core::ops::Deref for FileSystemSyncAccessHandle {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FileSystemSyncAccessHandle {
+impl core::ops::DerefMut for FileSystemSyncAccessHandle {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for FileSystemSyncAccessHandle {
 impl From<FileSystemSyncAccessHandle> for emlite::Val {
     fn from(s: FileSystemSyncAccessHandle) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

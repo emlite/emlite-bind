@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRWebGLDepthInformation {
     inner: XRDepthInformation,
 }
@@ -17,13 +17,13 @@ impl FromVal for XRWebGLDepthInformation {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRWebGLDepthInformation {
+impl core::ops::Deref for XRWebGLDepthInformation {
     type Target = XRDepthInformation;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRWebGLDepthInformation {
+impl core::ops::DerefMut for XRWebGLDepthInformation {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for XRWebGLDepthInformation {
 impl From<XRWebGLDepthInformation> for emlite::Val {
     fn from(s: XRWebGLDepthInformation) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

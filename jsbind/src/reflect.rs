@@ -1,4 +1,6 @@
 use crate::{Any, Function, Sequence};
+use alloc::vec;
+use alloc::vec::Vec;
 
 /// static Reflect struct, never constructed.
 pub struct Reflect;

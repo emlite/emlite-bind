@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct StructuredSerializeOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for StructuredSerializeOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for StructuredSerializeOptions {
+impl core::ops::Deref for StructuredSerializeOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for StructuredSerializeOptions {
+impl core::ops::DerefMut for StructuredSerializeOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for StructuredSerializeOptions {
 impl From<StructuredSerializeOptions> for emlite::Val {
     fn from(s: StructuredSerializeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -45,7 +45,7 @@ impl StructuredSerializeOptions {
         self.inner.set("transfer", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MessagePort {
     inner: EventTarget,
 }
@@ -62,13 +62,13 @@ impl FromVal for MessagePort {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MessagePort {
+impl core::ops::Deref for MessagePort {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MessagePort {
+impl core::ops::DerefMut for MessagePort {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -76,7 +76,7 @@ impl std::ops::DerefMut for MessagePort {
 impl From<MessagePort> for emlite::Val {
     fn from(s: MessagePort) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,9 +1,10 @@
 use crate::Any;
+use alloc::vec::Vec;
 
 pub struct Performance;
 impl Performance {
     /// High-resolution time in milliseconds since the page (or worker)
-    /// was created (akin to `std::time::Instant`).
+    /// was created (akin to `core::time::Instant`).
     #[inline]
     pub fn now() -> f64 {
         emlite::Val::global("performance")

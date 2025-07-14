@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSOKLCH {
     inner: CSSColorValue,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSOKLCH {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSOKLCH {
+impl core::ops::Deref for CSSOKLCH {
     type Target = CSSColorValue;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSOKLCH {
+impl core::ops::DerefMut for CSSOKLCH {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSOKLCH {
 impl From<CSSOKLCH> for emlite::Val {
     fn from(s: CSSOKLCH) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

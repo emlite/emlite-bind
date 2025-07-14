@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AudioOutputOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for AudioOutputOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AudioOutputOptions {
+impl core::ops::Deref for AudioOutputOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AudioOutputOptions {
+impl core::ops::DerefMut for AudioOutputOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for AudioOutputOptions {
 impl From<AudioOutputOptions> for emlite::Val {
     fn from(s: AudioOutputOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl AudioOutputOptions {
         self.inner.set("deviceId", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CaptureHandleConfig {
     inner: emlite::Val,
 }
@@ -58,13 +58,13 @@ impl FromVal for CaptureHandleConfig {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CaptureHandleConfig {
+impl core::ops::Deref for CaptureHandleConfig {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CaptureHandleConfig {
+impl core::ops::DerefMut for CaptureHandleConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -72,7 +72,7 @@ impl std::ops::DerefMut for CaptureHandleConfig {
 impl From<CaptureHandleConfig> for emlite::Val {
     fn from(s: CaptureHandleConfig) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -106,7 +106,7 @@ impl CaptureHandleConfig {
         self.inner.set("permittedOrigins", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaTrackSupportedConstraints {
     inner: emlite::Val,
 }
@@ -121,13 +121,13 @@ impl FromVal for MediaTrackSupportedConstraints {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaTrackSupportedConstraints {
+impl core::ops::Deref for MediaTrackSupportedConstraints {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaTrackSupportedConstraints {
+impl core::ops::DerefMut for MediaTrackSupportedConstraints {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -135,7 +135,7 @@ impl std::ops::DerefMut for MediaTrackSupportedConstraints {
 impl From<MediaTrackSupportedConstraints> for emlite::Val {
     fn from(s: MediaTrackSupportedConstraints) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -185,7 +185,7 @@ impl MediaTrackSupportedConstraints {
         self.inner.set("suppressLocalAudioPlayback", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaStreamConstraints {
     inner: emlite::Val,
 }
@@ -200,13 +200,13 @@ impl FromVal for MediaStreamConstraints {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaStreamConstraints {
+impl core::ops::Deref for MediaStreamConstraints {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaStreamConstraints {
+impl core::ops::DerefMut for MediaStreamConstraints {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -214,7 +214,7 @@ impl std::ops::DerefMut for MediaStreamConstraints {
 impl From<MediaStreamConstraints> for emlite::Val {
     fn from(s: MediaStreamConstraints) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -228,7 +228,7 @@ impl MediaStreamConstraints {
         self.inner.set("peerIdentity", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DisplayMediaStreamOptions {
     inner: emlite::Val,
 }
@@ -243,13 +243,13 @@ impl FromVal for DisplayMediaStreamOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DisplayMediaStreamOptions {
+impl core::ops::Deref for DisplayMediaStreamOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DisplayMediaStreamOptions {
+impl core::ops::DerefMut for DisplayMediaStreamOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -257,7 +257,7 @@ impl std::ops::DerefMut for DisplayMediaStreamOptions {
 impl From<DisplayMediaStreamOptions> for emlite::Val {
     fn from(s: DisplayMediaStreamOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -344,7 +344,7 @@ impl DisplayMediaStreamOptions {
         self.inner.set("monitorTypeSurfaces", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaDevices {
     inner: EventTarget,
 }
@@ -361,13 +361,13 @@ impl FromVal for MediaDevices {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaDevices {
+impl core::ops::Deref for MediaDevices {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaDevices {
+impl core::ops::DerefMut for MediaDevices {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -375,7 +375,7 @@ impl std::ops::DerefMut for MediaDevices {
 impl From<MediaDevices> for emlite::Val {
     fn from(s: MediaDevices) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

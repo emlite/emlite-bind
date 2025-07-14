@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GetRootNodeOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for GetRootNodeOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GetRootNodeOptions {
+impl core::ops::Deref for GetRootNodeOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GetRootNodeOptions {
+impl core::ops::DerefMut for GetRootNodeOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for GetRootNodeOptions {
 impl From<GetRootNodeOptions> for emlite::Val {
     fn from(s: GetRootNodeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl GetRootNodeOptions {
         self.inner.set("composed", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Node {
     inner: EventTarget,
 }
@@ -60,13 +60,13 @@ impl FromVal for Node {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Node {
+impl core::ops::Deref for Node {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Node {
+impl core::ops::DerefMut for Node {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for Node {
 impl From<Node> for emlite::Val {
     fn from(s: Node) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

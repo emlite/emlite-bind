@@ -1,10 +1,10 @@
 use crate::utils::bind;
-use emlite::FromVal;
+use alloc::string::String;
 
 macro_rules! declare_string {
     ($name:ident) => {
         #[doc = concat!("Wrapper for WebIDL `", stringify!($name), "`.\n\n")]
-        #[derive(Clone, Debug)]
+        #[derive(Clone, Debug, PartialEq, PartialOrd)]
         pub struct $name {
             inner: emlite::Val,
         }
@@ -13,7 +13,7 @@ macro_rules! declare_string {
 
         impl From<&str> for $name {
             fn from(s: &str) -> Self {
-                if std::any::TypeId::of::<$name>() == std::any::TypeId::of::<ByteString>() {
+                if core::any::TypeId::of::<$name>() == core::any::TypeId::of::<ByteString>() {
                     assert!(s.is_ascii(), "ByteString must be ASCII/Latin-1");
                 }
                 emlite::Val::from(s).as_::<Self>()
@@ -67,7 +67,7 @@ macro_rules! declare_string {
             /// [`String.prototype.at`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/at)
             pub fn at(&self, idx: isize) -> Option<Self> {
                 let v = self.inner.call("at", &[idx.into()]);
-                if v.as_handle() == 1 {
+                if v.is_undefined() {
                     None
                 } else {
                     Some(v.as_::<Self>())
@@ -76,7 +76,7 @@ macro_rules! declare_string {
             /// [`String.prototype.codePointAt`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt)
             pub fn code_point_at(&self, idx: usize) -> Option<u32> {
                 let v = self.inner.call("codePointAt", &[idx.into()]);
-                if v.as_handle() == 1 {
+                if v.is_undefined() {
                     None
                 } else {
                     Some(v.as_::<u32>())
@@ -229,13 +229,13 @@ macro_rules! declare_string {
             }
         }
 
-        impl std::fmt::Display for $name {
-            fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        impl core::fmt::Display for $name {
+            fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
                 f.write_str(self.as_str())
             }
         }
 
-        impl std::ops::Add for $name {
+        impl core::ops::Add for $name {
             type Output = Self;
             fn add(self, rhs: Self) -> Self::Output {
                 self.call("concat", &[rhs.into()]).as_::<Self>()

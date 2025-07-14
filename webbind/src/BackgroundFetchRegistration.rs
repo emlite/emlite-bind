@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CacheQueryOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for CacheQueryOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CacheQueryOptions {
+impl core::ops::Deref for CacheQueryOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CacheQueryOptions {
+impl core::ops::DerefMut for CacheQueryOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for CacheQueryOptions {
 impl From<CacheQueryOptions> for emlite::Val {
     fn from(s: CacheQueryOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl CacheQueryOptions {
         self.inner.set("ignoreVary", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BackgroundFetchRegistration {
     inner: EventTarget,
 }
@@ -78,13 +78,13 @@ impl FromVal for BackgroundFetchRegistration {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BackgroundFetchRegistration {
+impl core::ops::Deref for BackgroundFetchRegistration {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BackgroundFetchRegistration {
+impl core::ops::DerefMut for BackgroundFetchRegistration {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -92,7 +92,7 @@ impl std::ops::DerefMut for BackgroundFetchRegistration {
 impl From<BackgroundFetchRegistration> for emlite::Val {
     fn from(s: BackgroundFetchRegistration) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

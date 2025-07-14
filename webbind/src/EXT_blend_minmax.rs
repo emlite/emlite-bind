@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct EXT_blend_minmax {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for EXT_blend_minmax {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for EXT_blend_minmax {
+impl core::ops::Deref for EXT_blend_minmax {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for EXT_blend_minmax {
+impl core::ops::DerefMut for EXT_blend_minmax {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for EXT_blend_minmax {
 impl From<EXT_blend_minmax> for emlite::Val {
     fn from(s: EXT_blend_minmax) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

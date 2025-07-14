@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ClientQueryOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ClientQueryOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ClientQueryOptions {
+impl core::ops::Deref for ClientQueryOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ClientQueryOptions {
+impl core::ops::DerefMut for ClientQueryOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ClientQueryOptions {
 impl From<ClientQueryOptions> for emlite::Val {
     fn from(s: ClientQueryOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl ClientQueryOptions {
         self.inner.set("type", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Clients {
     inner: emlite::Val,
 }
@@ -69,13 +69,13 @@ impl FromVal for Clients {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Clients {
+impl core::ops::Deref for Clients {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Clients {
+impl core::ops::DerefMut for Clients {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for Clients {
 impl From<Clients> for emlite::Val {
     fn from(s: Clients) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

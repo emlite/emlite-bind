@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PushSubscriptionOptionsInit {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for PushSubscriptionOptionsInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PushSubscriptionOptionsInit {
+impl core::ops::Deref for PushSubscriptionOptionsInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PushSubscriptionOptionsInit {
+impl core::ops::DerefMut for PushSubscriptionOptionsInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for PushSubscriptionOptionsInit {
 impl From<PushSubscriptionOptionsInit> for emlite::Val {
     fn from(s: PushSubscriptionOptionsInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl PushSubscriptionOptionsInit {
         self.inner.set("applicationServerKey", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PushManager {
     inner: emlite::Val,
 }
@@ -69,13 +69,13 @@ impl FromVal for PushManager {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PushManager {
+impl core::ops::Deref for PushManager {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PushManager {
+impl core::ops::DerefMut for PushManager {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for PushManager {
 impl From<PushManager> for emlite::Val {
     fn from(s: PushManager) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

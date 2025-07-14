@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCRtpCapabilities {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for RTCRtpCapabilities {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCRtpCapabilities {
+impl core::ops::Deref for RTCRtpCapabilities {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCRtpCapabilities {
+impl core::ops::DerefMut for RTCRtpCapabilities {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for RTCRtpCapabilities {
 impl From<RTCRtpCapabilities> for emlite::Val {
     fn from(s: RTCRtpCapabilities) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -56,7 +56,7 @@ impl RTCRtpCapabilities {
         self.inner.set("headerExtensions", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCRtpSendParameters {
     inner: emlite::Val,
 }
@@ -71,13 +71,13 @@ impl FromVal for RTCRtpSendParameters {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCRtpSendParameters {
+impl core::ops::Deref for RTCRtpSendParameters {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCRtpSendParameters {
+impl core::ops::DerefMut for RTCRtpSendParameters {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -85,7 +85,7 @@ impl std::ops::DerefMut for RTCRtpSendParameters {
 impl From<RTCRtpSendParameters> for emlite::Val {
     fn from(s: RTCRtpSendParameters) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -110,7 +110,7 @@ impl RTCRtpSendParameters {
         self.inner.set("encodings", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCSetParameterOptions {
     inner: emlite::Val,
 }
@@ -125,13 +125,13 @@ impl FromVal for RTCSetParameterOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCSetParameterOptions {
+impl core::ops::Deref for RTCSetParameterOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCSetParameterOptions {
+impl core::ops::DerefMut for RTCSetParameterOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -139,12 +139,12 @@ impl std::ops::DerefMut for RTCSetParameterOptions {
 impl From<RTCSetParameterOptions> for emlite::Val {
     fn from(s: RTCSetParameterOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCRtpSender {
     inner: emlite::Val,
 }
@@ -161,13 +161,13 @@ impl FromVal for RTCRtpSender {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCRtpSender {
+impl core::ops::Deref for RTCRtpSender {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCRtpSender {
+impl core::ops::DerefMut for RTCRtpSender {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -175,7 +175,7 @@ impl std::ops::DerefMut for RTCRtpSender {
 impl From<RTCRtpSender> for emlite::Val {
     fn from(s: RTCRtpSender) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSScopeRule {
     inner: CSSGroupingRule,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSScopeRule {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSScopeRule {
+impl core::ops::Deref for CSSScopeRule {
     type Target = CSSGroupingRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSScopeRule {
+impl core::ops::DerefMut for CSSScopeRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSScopeRule {
 impl From<CSSScopeRule> for emlite::Val {
     fn from(s: CSSScopeRule) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

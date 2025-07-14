@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FileSystemGetFileOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for FileSystemGetFileOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FileSystemGetFileOptions {
+impl core::ops::Deref for FileSystemGetFileOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FileSystemGetFileOptions {
+impl core::ops::DerefMut for FileSystemGetFileOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for FileSystemGetFileOptions {
 impl From<FileSystemGetFileOptions> for emlite::Val {
     fn from(s: FileSystemGetFileOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl FileSystemGetFileOptions {
         self.inner.set("create", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FileSystemGetDirectoryOptions {
     inner: emlite::Val,
 }
@@ -58,13 +58,13 @@ impl FromVal for FileSystemGetDirectoryOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FileSystemGetDirectoryOptions {
+impl core::ops::Deref for FileSystemGetDirectoryOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FileSystemGetDirectoryOptions {
+impl core::ops::DerefMut for FileSystemGetDirectoryOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -72,7 +72,7 @@ impl std::ops::DerefMut for FileSystemGetDirectoryOptions {
 impl From<FileSystemGetDirectoryOptions> for emlite::Val {
     fn from(s: FileSystemGetDirectoryOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -86,7 +86,7 @@ impl FileSystemGetDirectoryOptions {
         self.inner.set("create", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FileSystemRemoveOptions {
     inner: emlite::Val,
 }
@@ -101,13 +101,13 @@ impl FromVal for FileSystemRemoveOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FileSystemRemoveOptions {
+impl core::ops::Deref for FileSystemRemoveOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FileSystemRemoveOptions {
+impl core::ops::DerefMut for FileSystemRemoveOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -115,7 +115,7 @@ impl std::ops::DerefMut for FileSystemRemoveOptions {
 impl From<FileSystemRemoveOptions> for emlite::Val {
     fn from(s: FileSystemRemoveOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -129,7 +129,7 @@ impl FileSystemRemoveOptions {
         self.inner.set("recursive", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FileSystemDirectoryHandle {
     inner: FileSystemHandle,
 }
@@ -146,13 +146,13 @@ impl FromVal for FileSystemDirectoryHandle {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FileSystemDirectoryHandle {
+impl core::ops::Deref for FileSystemDirectoryHandle {
     type Target = FileSystemHandle;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FileSystemDirectoryHandle {
+impl core::ops::DerefMut for FileSystemDirectoryHandle {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -160,7 +160,7 @@ impl std::ops::DerefMut for FileSystemDirectoryHandle {
 impl From<FileSystemDirectoryHandle> for emlite::Val {
     fn from(s: FileSystemDirectoryHandle) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

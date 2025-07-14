@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct OES_draw_buffers_indexed {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for OES_draw_buffers_indexed {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for OES_draw_buffers_indexed {
+impl core::ops::Deref for OES_draw_buffers_indexed {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for OES_draw_buffers_indexed {
+impl core::ops::DerefMut for OES_draw_buffers_indexed {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for OES_draw_buffers_indexed {
 impl From<OES_draw_buffers_indexed> for emlite::Val {
     fn from(s: OES_draw_buffers_indexed) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

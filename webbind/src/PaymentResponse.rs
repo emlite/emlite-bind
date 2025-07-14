@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PaymentCompleteDetails {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for PaymentCompleteDetails {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PaymentCompleteDetails {
+impl core::ops::Deref for PaymentCompleteDetails {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PaymentCompleteDetails {
+impl core::ops::DerefMut for PaymentCompleteDetails {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for PaymentCompleteDetails {
 impl From<PaymentCompleteDetails> for emlite::Val {
     fn from(s: PaymentCompleteDetails) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl PaymentCompleteDetails {
         self.inner.set("data", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PaymentValidationErrors {
     inner: emlite::Val,
 }
@@ -58,13 +58,13 @@ impl FromVal for PaymentValidationErrors {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PaymentValidationErrors {
+impl core::ops::Deref for PaymentValidationErrors {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PaymentValidationErrors {
+impl core::ops::DerefMut for PaymentValidationErrors {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -72,7 +72,7 @@ impl std::ops::DerefMut for PaymentValidationErrors {
 impl From<PaymentValidationErrors> for emlite::Val {
     fn from(s: PaymentValidationErrors) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -113,7 +113,7 @@ impl PaymentValidationErrors {
         self.inner.set("paymentMethod", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PaymentResponse {
     inner: EventTarget,
 }
@@ -130,13 +130,13 @@ impl FromVal for PaymentResponse {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PaymentResponse {
+impl core::ops::Deref for PaymentResponse {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PaymentResponse {
+impl core::ops::DerefMut for PaymentResponse {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -144,7 +144,7 @@ impl std::ops::DerefMut for PaymentResponse {
 impl From<PaymentResponse> for emlite::Val {
     fn from(s: PaymentResponse) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

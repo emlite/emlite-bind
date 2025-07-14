@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IsInputPendingOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for IsInputPendingOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IsInputPendingOptions {
+impl core::ops::Deref for IsInputPendingOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IsInputPendingOptions {
+impl core::ops::DerefMut for IsInputPendingOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for IsInputPendingOptions {
 impl From<IsInputPendingOptions> for emlite::Val {
     fn from(s: IsInputPendingOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl IsInputPendingOptions {
         self.inner.set("includeContinuous", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Scheduling {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for Scheduling {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Scheduling {
+impl core::ops::Deref for Scheduling {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Scheduling {
+impl core::ops::DerefMut for Scheduling {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for Scheduling {
 impl From<Scheduling> for emlite::Val {
     fn from(s: Scheduling) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

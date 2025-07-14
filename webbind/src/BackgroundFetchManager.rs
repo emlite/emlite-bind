@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BackgroundFetchOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for BackgroundFetchOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BackgroundFetchOptions {
+impl core::ops::Deref for BackgroundFetchOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BackgroundFetchOptions {
+impl core::ops::DerefMut for BackgroundFetchOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for BackgroundFetchOptions {
 impl From<BackgroundFetchOptions> for emlite::Val {
     fn from(s: BackgroundFetchOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl BackgroundFetchOptions {
         self.inner.set("downloadTotal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BackgroundFetchManager {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for BackgroundFetchManager {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BackgroundFetchManager {
+impl core::ops::Deref for BackgroundFetchManager {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BackgroundFetchManager {
+impl core::ops::DerefMut for BackgroundFetchManager {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for BackgroundFetchManager {
 impl From<BackgroundFetchManager> for emlite::Val {
     fn from(s: BackgroundFetchManager) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

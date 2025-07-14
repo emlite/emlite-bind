@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSNamespaceRule {
     inner: CSSRule,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSNamespaceRule {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSNamespaceRule {
+impl core::ops::Deref for CSSNamespaceRule {
     type Target = CSSRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSNamespaceRule {
+impl core::ops::DerefMut for CSSNamespaceRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSNamespaceRule {
 impl From<CSSNamespaceRule> for emlite::Val {
     fn from(s: CSSNamespaceRule) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

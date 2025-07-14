@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ClipboardEvent {
     inner: Event,
 }
@@ -17,13 +17,13 @@ impl FromVal for ClipboardEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ClipboardEvent {
+impl core::ops::Deref for ClipboardEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ClipboardEvent {
+impl core::ops::DerefMut for ClipboardEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for ClipboardEvent {
 impl From<ClipboardEvent> for emlite::Val {
     fn from(s: ClipboardEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

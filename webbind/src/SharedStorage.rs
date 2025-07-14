@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SharedStorageSetMethodOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for SharedStorageSetMethodOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SharedStorageSetMethodOptions {
+impl core::ops::Deref for SharedStorageSetMethodOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SharedStorageSetMethodOptions {
+impl core::ops::DerefMut for SharedStorageSetMethodOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for SharedStorageSetMethodOptions {
 impl From<SharedStorageSetMethodOptions> for emlite::Val {
     fn from(s: SharedStorageSetMethodOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl SharedStorageSetMethodOptions {
         self.inner.set("ignoreIfPresent", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SharedStorageModifierMethodOptions {
     inner: emlite::Val,
 }
@@ -58,13 +58,13 @@ impl FromVal for SharedStorageModifierMethodOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SharedStorageModifierMethodOptions {
+impl core::ops::Deref for SharedStorageModifierMethodOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SharedStorageModifierMethodOptions {
+impl core::ops::DerefMut for SharedStorageModifierMethodOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -72,7 +72,7 @@ impl std::ops::DerefMut for SharedStorageModifierMethodOptions {
 impl From<SharedStorageModifierMethodOptions> for emlite::Val {
     fn from(s: SharedStorageModifierMethodOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -86,7 +86,7 @@ impl SharedStorageModifierMethodOptions {
         self.inner.set("withLock", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SharedStorageWorkletOptions {
     inner: emlite::Val,
 }
@@ -101,13 +101,13 @@ impl FromVal for SharedStorageWorkletOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SharedStorageWorkletOptions {
+impl core::ops::Deref for SharedStorageWorkletOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SharedStorageWorkletOptions {
+impl core::ops::DerefMut for SharedStorageWorkletOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -115,7 +115,7 @@ impl std::ops::DerefMut for SharedStorageWorkletOptions {
 impl From<SharedStorageWorkletOptions> for emlite::Val {
     fn from(s: SharedStorageWorkletOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -129,7 +129,7 @@ impl SharedStorageWorkletOptions {
         self.inner.set("dataOrigin", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SharedStorage {
     inner: emlite::Val,
 }
@@ -146,13 +146,13 @@ impl FromVal for SharedStorage {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SharedStorage {
+impl core::ops::Deref for SharedStorage {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SharedStorage {
+impl core::ops::DerefMut for SharedStorage {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -160,7 +160,7 @@ impl std::ops::DerefMut for SharedStorage {
 impl From<SharedStorage> for emlite::Val {
     fn from(s: SharedStorage) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

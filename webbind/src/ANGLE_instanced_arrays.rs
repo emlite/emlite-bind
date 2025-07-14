@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ANGLE_instanced_arrays {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for ANGLE_instanced_arrays {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ANGLE_instanced_arrays {
+impl core::ops::Deref for ANGLE_instanced_arrays {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ANGLE_instanced_arrays {
+impl core::ops::DerefMut for ANGLE_instanced_arrays {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for ANGLE_instanced_arrays {
 impl From<ANGLE_instanced_arrays> for emlite::Val {
     fn from(s: ANGLE_instanced_arrays) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

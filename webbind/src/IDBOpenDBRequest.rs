@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IDBOpenDBRequest {
     inner: IDBRequest,
 }
@@ -17,13 +17,13 @@ impl FromVal for IDBOpenDBRequest {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IDBOpenDBRequest {
+impl core::ops::Deref for IDBOpenDBRequest {
     type Target = IDBRequest;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IDBOpenDBRequest {
+impl core::ops::DerefMut for IDBOpenDBRequest {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for IDBOpenDBRequest {
 impl From<IDBOpenDBRequest> for emlite::Val {
     fn from(s: IDBOpenDBRequest) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

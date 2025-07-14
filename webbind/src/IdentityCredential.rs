@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IdentityCredentialDisconnectOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for IdentityCredentialDisconnectOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IdentityCredentialDisconnectOptions {
+impl core::ops::Deref for IdentityCredentialDisconnectOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IdentityCredentialDisconnectOptions {
+impl core::ops::DerefMut for IdentityCredentialDisconnectOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for IdentityCredentialDisconnectOptions {
 impl From<IdentityCredentialDisconnectOptions> for emlite::Val {
     fn from(s: IdentityCredentialDisconnectOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl IdentityCredentialDisconnectOptions {
         self.inner.set("accountHint", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IdentityCredential {
     inner: Credential,
 }
@@ -60,13 +60,13 @@ impl FromVal for IdentityCredential {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IdentityCredential {
+impl core::ops::Deref for IdentityCredential {
     type Target = Credential;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IdentityCredential {
+impl core::ops::DerefMut for IdentityCredential {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for IdentityCredential {
 impl From<IdentityCredential> for emlite::Val {
     fn from(s: IdentityCredential) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

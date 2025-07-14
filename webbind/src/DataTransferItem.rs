@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DataTransferItem {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for DataTransferItem {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DataTransferItem {
+impl core::ops::Deref for DataTransferItem {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DataTransferItem {
+impl core::ops::DerefMut for DataTransferItem {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for DataTransferItem {
 impl From<DataTransferItem> for emlite::Val {
     fn from(s: DataTransferItem) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

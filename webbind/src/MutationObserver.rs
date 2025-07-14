@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MutationObserverInit {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for MutationObserverInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MutationObserverInit {
+impl core::ops::Deref for MutationObserverInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MutationObserverInit {
+impl core::ops::DerefMut for MutationObserverInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for MutationObserverInit {
 impl From<MutationObserverInit> for emlite::Val {
     fn from(s: MutationObserverInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -99,7 +99,7 @@ impl MutationObserverInit {
         self.inner.set("attributeFilter", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MutationObserver {
     inner: emlite::Val,
 }
@@ -116,13 +116,13 @@ impl FromVal for MutationObserver {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MutationObserver {
+impl core::ops::Deref for MutationObserver {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MutationObserver {
+impl core::ops::DerefMut for MutationObserver {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -130,7 +130,7 @@ impl std::ops::DerefMut for MutationObserver {
 impl From<MutationObserver> for emlite::Val {
     fn from(s: MutationObserver) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

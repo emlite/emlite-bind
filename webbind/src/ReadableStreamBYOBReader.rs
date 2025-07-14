@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ReadableStreamBYOBReaderReadOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ReadableStreamBYOBReaderReadOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ReadableStreamBYOBReaderReadOptions {
+impl core::ops::Deref for ReadableStreamBYOBReaderReadOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ReadableStreamBYOBReaderReadOptions {
+impl core::ops::DerefMut for ReadableStreamBYOBReaderReadOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ReadableStreamBYOBReaderReadOptions {
 impl From<ReadableStreamBYOBReaderReadOptions> for emlite::Val {
     fn from(s: ReadableStreamBYOBReaderReadOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl ReadableStreamBYOBReaderReadOptions {
         self.inner.set("min", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ReadableStreamBYOBReader {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for ReadableStreamBYOBReader {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ReadableStreamBYOBReader {
+impl core::ops::Deref for ReadableStreamBYOBReader {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ReadableStreamBYOBReader {
+impl core::ops::DerefMut for ReadableStreamBYOBReader {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for ReadableStreamBYOBReader {
 impl From<ReadableStreamBYOBReader> for emlite::Val {
     fn from(s: ReadableStreamBYOBReader) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

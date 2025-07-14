@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WebGLProgram {
     inner: WebGLObject,
 }
@@ -17,13 +17,13 @@ impl FromVal for WebGLProgram {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WebGLProgram {
+impl core::ops::Deref for WebGLProgram {
     type Target = WebGLObject;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WebGLProgram {
+impl core::ops::DerefMut for WebGLProgram {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for WebGLProgram {
 impl From<WebGLProgram> for emlite::Val {
     fn from(s: WebGLProgram) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

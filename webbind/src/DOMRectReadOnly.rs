@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DOMRectInit {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for DOMRectInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DOMRectInit {
+impl core::ops::Deref for DOMRectInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DOMRectInit {
+impl core::ops::DerefMut for DOMRectInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for DOMRectInit {
 impl From<DOMRectInit> for emlite::Val {
     fn from(s: DOMRectInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -70,7 +70,7 @@ impl DOMRectInit {
         self.inner.set("height", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DOMRectReadOnly {
     inner: emlite::Val,
 }
@@ -87,13 +87,13 @@ impl FromVal for DOMRectReadOnly {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DOMRectReadOnly {
+impl core::ops::Deref for DOMRectReadOnly {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DOMRectReadOnly {
+impl core::ops::DerefMut for DOMRectReadOnly {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -101,7 +101,7 @@ impl std::ops::DerefMut for DOMRectReadOnly {
 impl From<DOMRectReadOnly> for emlite::Val {
     fn from(s: DOMRectReadOnly) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

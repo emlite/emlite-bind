@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PeriodicWaveConstraints {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for PeriodicWaveConstraints {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PeriodicWaveConstraints {
+impl core::ops::Deref for PeriodicWaveConstraints {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PeriodicWaveConstraints {
+impl core::ops::DerefMut for PeriodicWaveConstraints {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for PeriodicWaveConstraints {
 impl From<PeriodicWaveConstraints> for emlite::Val {
     fn from(s: PeriodicWaveConstraints) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl PeriodicWaveConstraints {
         self.inner.set("disableNormalization", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BaseAudioContext {
     inner: EventTarget,
 }
@@ -60,13 +60,13 @@ impl FromVal for BaseAudioContext {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BaseAudioContext {
+impl core::ops::Deref for BaseAudioContext {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BaseAudioContext {
+impl core::ops::DerefMut for BaseAudioContext {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for BaseAudioContext {
 impl From<BaseAudioContext> for emlite::Val {
     fn from(s: BaseAudioContext) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

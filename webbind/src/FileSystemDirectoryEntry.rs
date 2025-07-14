@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FileSystemFlags {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for FileSystemFlags {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FileSystemFlags {
+impl core::ops::Deref for FileSystemFlags {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FileSystemFlags {
+impl core::ops::DerefMut for FileSystemFlags {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for FileSystemFlags {
 impl From<FileSystemFlags> for emlite::Val {
     fn from(s: FileSystemFlags) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl FileSystemFlags {
         self.inner.set("exclusive", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FileSystemDirectoryEntry {
     inner: FileSystemEntry,
 }
@@ -69,13 +69,13 @@ impl FromVal for FileSystemDirectoryEntry {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FileSystemDirectoryEntry {
+impl core::ops::Deref for FileSystemDirectoryEntry {
     type Target = FileSystemEntry;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FileSystemDirectoryEntry {
+impl core::ops::DerefMut for FileSystemDirectoryEntry {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for FileSystemDirectoryEntry {
 impl From<FileSystemDirectoryEntry> for emlite::Val {
     fn from(s: FileSystemDirectoryEntry) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

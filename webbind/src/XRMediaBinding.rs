@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRMediaQuadLayerInit {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for XRMediaQuadLayerInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRMediaQuadLayerInit {
+impl core::ops::Deref for XRMediaQuadLayerInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRMediaQuadLayerInit {
+impl core::ops::DerefMut for XRMediaQuadLayerInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for XRMediaQuadLayerInit {
 impl From<XRMediaQuadLayerInit> for emlite::Val {
     fn from(s: XRMediaQuadLayerInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl XRMediaQuadLayerInit {
         self.inner.set("height", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRMediaCylinderLayerInit {
     inner: emlite::Val,
 }
@@ -76,13 +76,13 @@ impl FromVal for XRMediaCylinderLayerInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRMediaCylinderLayerInit {
+impl core::ops::Deref for XRMediaCylinderLayerInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRMediaCylinderLayerInit {
+impl core::ops::DerefMut for XRMediaCylinderLayerInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -90,7 +90,7 @@ impl std::ops::DerefMut for XRMediaCylinderLayerInit {
 impl From<XRMediaCylinderLayerInit> for emlite::Val {
     fn from(s: XRMediaCylinderLayerInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -131,7 +131,7 @@ impl XRMediaCylinderLayerInit {
         self.inner.set("aspectRatio", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRMediaEquirectLayerInit {
     inner: emlite::Val,
 }
@@ -146,13 +146,13 @@ impl FromVal for XRMediaEquirectLayerInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRMediaEquirectLayerInit {
+impl core::ops::Deref for XRMediaEquirectLayerInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRMediaEquirectLayerInit {
+impl core::ops::DerefMut for XRMediaEquirectLayerInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -160,7 +160,7 @@ impl std::ops::DerefMut for XRMediaEquirectLayerInit {
 impl From<XRMediaEquirectLayerInit> for emlite::Val {
     fn from(s: XRMediaEquirectLayerInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -210,7 +210,7 @@ impl XRMediaEquirectLayerInit {
         self.inner.set("lowerVerticalAngle", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRMediaBinding {
     inner: emlite::Val,
 }
@@ -227,13 +227,13 @@ impl FromVal for XRMediaBinding {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRMediaBinding {
+impl core::ops::Deref for XRMediaBinding {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRMediaBinding {
+impl core::ops::DerefMut for XRMediaBinding {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -241,7 +241,7 @@ impl std::ops::DerefMut for XRMediaBinding {
 impl From<XRMediaBinding> for emlite::Val {
     fn from(s: XRMediaBinding) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

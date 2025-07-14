@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PushMessageData {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for PushMessageData {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PushMessageData {
+impl core::ops::Deref for PushMessageData {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PushMessageData {
+impl core::ops::DerefMut for PushMessageData {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for PushMessageData {
 impl From<PushMessageData> for emlite::Val {
     fn from(s: PushMessageData) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

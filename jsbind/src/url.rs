@@ -1,7 +1,7 @@
 use crate::utils::bind;
-use emlite::FromVal;
+use alloc::string::String;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct URL {
     inner: emlite::Val,
 }
@@ -44,7 +44,7 @@ impl URL {
 }
 
 /// `URLSearchParams` – minimal wrapper.
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct URLSearchParams {
     inner: emlite::Val,
 }
@@ -53,7 +53,7 @@ bind!(URLSearchParams);
 impl URLSearchParams {
     pub fn get(&self, key: &str) -> Option<String> {
         let v = self.inner.call("get", &[key.into()]);
-        if v.as_handle() == 0 {
+        if v.is_null() {
             None
         } else {
             Some(v.as_::<String>())

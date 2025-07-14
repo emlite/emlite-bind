@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BiquadFilterNode {
     inner: AudioNode,
 }
@@ -17,13 +17,13 @@ impl FromVal for BiquadFilterNode {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BiquadFilterNode {
+impl core::ops::Deref for BiquadFilterNode {
     type Target = AudioNode;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BiquadFilterNode {
+impl core::ops::DerefMut for BiquadFilterNode {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for BiquadFilterNode {
 impl From<BiquadFilterNode> for emlite::Val {
     fn from(s: BiquadFilterNode) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

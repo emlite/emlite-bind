@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ObservableEventListenerOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ObservableEventListenerOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ObservableEventListenerOptions {
+impl core::ops::Deref for ObservableEventListenerOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ObservableEventListenerOptions {
+impl core::ops::DerefMut for ObservableEventListenerOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ObservableEventListenerOptions {
 impl From<ObservableEventListenerOptions> for emlite::Val {
     fn from(s: ObservableEventListenerOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl ObservableEventListenerOptions {
         self.inner.set("passive", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct EventTarget {
     inner: emlite::Val,
 }
@@ -69,13 +69,13 @@ impl FromVal for EventTarget {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for EventTarget {
+impl core::ops::Deref for EventTarget {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for EventTarget {
+impl core::ops::DerefMut for EventTarget {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for EventTarget {
 impl From<EventTarget> for emlite::Val {
     fn from(s: EventTarget) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

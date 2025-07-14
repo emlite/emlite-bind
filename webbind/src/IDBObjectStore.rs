@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IDBIndexParameters {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for IDBIndexParameters {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IDBIndexParameters {
+impl core::ops::Deref for IDBIndexParameters {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IDBIndexParameters {
+impl core::ops::DerefMut for IDBIndexParameters {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for IDBIndexParameters {
 impl From<IDBIndexParameters> for emlite::Val {
     fn from(s: IDBIndexParameters) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl IDBIndexParameters {
         self.inner.set("multiEntry", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IDBObjectStore {
     inner: emlite::Val,
 }
@@ -69,13 +69,13 @@ impl FromVal for IDBObjectStore {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IDBObjectStore {
+impl core::ops::Deref for IDBObjectStore {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IDBObjectStore {
+impl core::ops::DerefMut for IDBObjectStore {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for IDBObjectStore {
 impl From<IDBObjectStore> for emlite::Val {
     fn from(s: IDBObjectStore) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

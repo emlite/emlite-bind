@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCDtlsFingerprint {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for RTCDtlsFingerprint {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCDtlsFingerprint {
+impl core::ops::Deref for RTCDtlsFingerprint {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCDtlsFingerprint {
+impl core::ops::DerefMut for RTCDtlsFingerprint {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for RTCDtlsFingerprint {
 impl From<RTCDtlsFingerprint> for emlite::Val {
     fn from(s: RTCDtlsFingerprint) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl RTCDtlsFingerprint {
         self.inner.set("value", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCCertificate {
     inner: emlite::Val,
 }
@@ -69,13 +69,13 @@ impl FromVal for RTCCertificate {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCCertificate {
+impl core::ops::Deref for RTCCertificate {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCCertificate {
+impl core::ops::DerefMut for RTCCertificate {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for RTCCertificate {
 impl From<RTCCertificate> for emlite::Val {
     fn from(s: RTCCertificate) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

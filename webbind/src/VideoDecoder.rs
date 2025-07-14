@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct VideoDecoderConfig {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for VideoDecoderConfig {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for VideoDecoderConfig {
+impl core::ops::Deref for VideoDecoderConfig {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for VideoDecoderConfig {
+impl core::ops::DerefMut for VideoDecoderConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for VideoDecoderConfig {
 impl From<VideoDecoderConfig> for emlite::Val {
     fn from(s: VideoDecoderConfig) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -135,7 +135,7 @@ impl VideoDecoderConfig {
         self.inner.set("flip", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct VideoDecoderSupport {
     inner: emlite::Val,
 }
@@ -150,13 +150,13 @@ impl FromVal for VideoDecoderSupport {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for VideoDecoderSupport {
+impl core::ops::Deref for VideoDecoderSupport {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for VideoDecoderSupport {
+impl core::ops::DerefMut for VideoDecoderSupport {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -164,7 +164,7 @@ impl std::ops::DerefMut for VideoDecoderSupport {
 impl From<VideoDecoderSupport> for emlite::Val {
     fn from(s: VideoDecoderSupport) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -187,7 +187,7 @@ impl VideoDecoderSupport {
         self.inner.set("config", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct VideoDecoder {
     inner: EventTarget,
 }
@@ -204,13 +204,13 @@ impl FromVal for VideoDecoder {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for VideoDecoder {
+impl core::ops::Deref for VideoDecoder {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for VideoDecoder {
+impl core::ops::DerefMut for VideoDecoder {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -218,7 +218,7 @@ impl std::ops::DerefMut for VideoDecoder {
 impl From<VideoDecoder> for emlite::Val {
     fn from(s: VideoDecoder) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

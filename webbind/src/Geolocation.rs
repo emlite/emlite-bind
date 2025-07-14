@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PositionOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for PositionOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PositionOptions {
+impl core::ops::Deref for PositionOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PositionOptions {
+impl core::ops::DerefMut for PositionOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for PositionOptions {
 impl From<PositionOptions> for emlite::Val {
     fn from(s: PositionOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl PositionOptions {
         self.inner.set("maximumAge", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Geolocation {
     inner: emlite::Val,
 }
@@ -78,13 +78,13 @@ impl FromVal for Geolocation {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Geolocation {
+impl core::ops::Deref for Geolocation {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Geolocation {
+impl core::ops::DerefMut for Geolocation {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -92,7 +92,7 @@ impl std::ops::DerefMut for Geolocation {
 impl From<Geolocation> for emlite::Val {
     fn from(s: Geolocation) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SpeechRecognitionOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for SpeechRecognitionOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SpeechRecognitionOptions {
+impl core::ops::Deref for SpeechRecognitionOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SpeechRecognitionOptions {
+impl core::ops::DerefMut for SpeechRecognitionOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for SpeechRecognitionOptions {
 impl From<SpeechRecognitionOptions> for emlite::Val {
     fn from(s: SpeechRecognitionOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -54,7 +54,7 @@ impl SpeechRecognitionOptions {
         self.inner.set("processLocally", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SpeechRecognition {
     inner: EventTarget,
 }
@@ -71,13 +71,13 @@ impl FromVal for SpeechRecognition {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SpeechRecognition {
+impl core::ops::Deref for SpeechRecognition {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SpeechRecognition {
+impl core::ops::DerefMut for SpeechRecognition {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -85,7 +85,7 @@ impl std::ops::DerefMut for SpeechRecognition {
 impl From<SpeechRecognition> for emlite::Val {
     fn from(s: SpeechRecognition) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

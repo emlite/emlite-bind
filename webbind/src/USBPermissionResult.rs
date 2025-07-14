@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct USBPermissionResult {
     inner: PermissionStatus,
 }
@@ -17,13 +17,13 @@ impl FromVal for USBPermissionResult {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for USBPermissionResult {
+impl core::ops::Deref for USBPermissionResult {
     type Target = PermissionStatus;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for USBPermissionResult {
+impl core::ops::DerefMut for USBPermissionResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for USBPermissionResult {
 impl From<USBPermissionResult> for emlite::Val {
     fn from(s: USBPermissionResult) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

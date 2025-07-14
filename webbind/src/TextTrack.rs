@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TextTrack {
     inner: EventTarget,
 }
@@ -17,13 +17,13 @@ impl FromVal for TextTrack {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for TextTrack {
+impl core::ops::Deref for TextTrack {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for TextTrack {
+impl core::ops::DerefMut for TextTrack {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for TextTrack {
 impl From<TextTrack> for emlite::Val {
     fn from(s: TextTrack) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

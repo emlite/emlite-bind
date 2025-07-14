@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CookieListItem {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for CookieListItem {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CookieListItem {
+impl core::ops::Deref for CookieListItem {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CookieListItem {
+impl core::ops::DerefMut for CookieListItem {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for CookieListItem {
 impl From<CookieListItem> for emlite::Val {
     fn from(s: CookieListItem) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -106,7 +106,7 @@ impl CookieListItem {
         self.inner.set("partitioned", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CookieStoreGetOptions {
     inner: emlite::Val,
 }
@@ -121,13 +121,13 @@ impl FromVal for CookieStoreGetOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CookieStoreGetOptions {
+impl core::ops::Deref for CookieStoreGetOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CookieStoreGetOptions {
+impl core::ops::DerefMut for CookieStoreGetOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -135,7 +135,7 @@ impl std::ops::DerefMut for CookieStoreGetOptions {
 impl From<CookieStoreGetOptions> for emlite::Val {
     fn from(s: CookieStoreGetOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -158,7 +158,7 @@ impl CookieStoreGetOptions {
         self.inner.set("url", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CookieInit {
     inner: emlite::Val,
 }
@@ -173,13 +173,13 @@ impl FromVal for CookieInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CookieInit {
+impl core::ops::Deref for CookieInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CookieInit {
+impl core::ops::DerefMut for CookieInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -187,7 +187,7 @@ impl std::ops::DerefMut for CookieInit {
 impl From<CookieInit> for emlite::Val {
     fn from(s: CookieInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -255,7 +255,7 @@ impl CookieInit {
         self.inner.set("partitioned", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CookieStoreDeleteOptions {
     inner: emlite::Val,
 }
@@ -270,13 +270,13 @@ impl FromVal for CookieStoreDeleteOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CookieStoreDeleteOptions {
+impl core::ops::Deref for CookieStoreDeleteOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CookieStoreDeleteOptions {
+impl core::ops::DerefMut for CookieStoreDeleteOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -284,7 +284,7 @@ impl std::ops::DerefMut for CookieStoreDeleteOptions {
 impl From<CookieStoreDeleteOptions> for emlite::Val {
     fn from(s: CookieStoreDeleteOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -325,7 +325,7 @@ impl CookieStoreDeleteOptions {
         self.inner.set("partitioned", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CookieStore {
     inner: EventTarget,
 }
@@ -342,13 +342,13 @@ impl FromVal for CookieStore {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CookieStore {
+impl core::ops::Deref for CookieStore {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CookieStore {
+impl core::ops::DerefMut for CookieStore {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -356,7 +356,7 @@ impl std::ops::DerefMut for CookieStore {
 impl From<CookieStore> for emlite::Val {
     fn from(s: CookieStore) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

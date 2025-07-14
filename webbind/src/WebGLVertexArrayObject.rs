@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WebGLVertexArrayObject {
     inner: WebGLObject,
 }
@@ -17,13 +17,13 @@ impl FromVal for WebGLVertexArrayObject {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WebGLVertexArrayObject {
+impl core::ops::Deref for WebGLVertexArrayObject {
     type Target = WebGLObject;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WebGLVertexArrayObject {
+impl core::ops::DerefMut for WebGLVertexArrayObject {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for WebGLVertexArrayObject {
 impl From<WebGLVertexArrayObject> for emlite::Val {
     fn from(s: WebGLVertexArrayObject) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

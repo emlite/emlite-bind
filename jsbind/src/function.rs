@@ -1,12 +1,14 @@
 use crate::Any;
 use crate::utils::bind;
+use alloc::string::String;
+use alloc::vec::Vec;
 use emlite::FromVal;
 
 /// Wrapper around a runtime JavaScript `Function` object.
 ///
 /// Unlike [`Closure`], this is not created from a Rust callback; it
 /// simply holds an existing function reference coming from JS.
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Function {
     inner: emlite::Val,
 }
@@ -18,7 +20,7 @@ impl Function {
     /// Returns `None` if the global is `undefined` or not callable.
     pub fn global(name: &str) -> Option<Self> {
         let v = emlite::Val::global(name);
-        if v.instanceof(emlite::Val::global("Function")) {
+        if v.is_function() {
             Some(v.as_::<Self>())
         } else {
             None
@@ -74,8 +76,8 @@ impl From<Closure> for Function {
     }
 }
 
-impl std::fmt::Display for Function {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl core::fmt::Display for Function {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         // JS › fn.toString()
         let s: String = self.inner.call("toString", &[]).as_();
         f.write_str(&s)
@@ -93,16 +95,9 @@ impl<'a> From<&'a Function> for Closure {
     }
 }
 
-impl PartialEq for Function {
-    fn eq(&self, other: &Self) -> bool {
-        self.as_handle() == other.as_handle()
-    }
-}
-impl Eq for Function {}
-
 /// The inner value is guaranteed at runtime to be callable (`typeof v ===
 /// "function"`).  All methods are zero‑cost delegates to `emlite::Val` helpers.
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Closure {
     /// Underlying JavaScript function object.
     inner: emlite::Val,

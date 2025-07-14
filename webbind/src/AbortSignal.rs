@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AbortSignal {
     inner: EventTarget,
 }
@@ -17,13 +17,13 @@ impl FromVal for AbortSignal {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AbortSignal {
+impl core::ops::Deref for AbortSignal {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AbortSignal {
+impl core::ops::DerefMut for AbortSignal {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for AbortSignal {
 impl From<AbortSignal> for emlite::Val {
     fn from(s: AbortSignal) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

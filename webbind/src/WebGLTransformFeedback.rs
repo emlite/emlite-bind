@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WebGLTransformFeedback {
     inner: WebGLObject,
 }
@@ -17,13 +17,13 @@ impl FromVal for WebGLTransformFeedback {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WebGLTransformFeedback {
+impl core::ops::Deref for WebGLTransformFeedback {
     type Target = WebGLObject;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WebGLTransformFeedback {
+impl core::ops::DerefMut for WebGLTransformFeedback {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for WebGLTransformFeedback {
 impl From<WebGLTransformFeedback> for emlite::Val {
     fn from(s: WebGLTransformFeedback) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCIdentityProvider {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for RTCIdentityProvider {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCIdentityProvider {
+impl core::ops::Deref for RTCIdentityProvider {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCIdentityProvider {
+impl core::ops::DerefMut for RTCIdentityProvider {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for RTCIdentityProvider {
 impl From<RTCIdentityProvider> for emlite::Val {
     fn from(s: RTCIdentityProvider) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -56,7 +56,7 @@ impl RTCIdentityProvider {
         self.inner.set("validateAssertion", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCIdentityProviderRegistrar {
     inner: emlite::Val,
 }
@@ -73,13 +73,13 @@ impl FromVal for RTCIdentityProviderRegistrar {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCIdentityProviderRegistrar {
+impl core::ops::Deref for RTCIdentityProviderRegistrar {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCIdentityProviderRegistrar {
+impl core::ops::DerefMut for RTCIdentityProviderRegistrar {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -87,7 +87,7 @@ impl std::ops::DerefMut for RTCIdentityProviderRegistrar {
 impl From<RTCIdentityProviderRegistrar> for emlite::Val {
     fn from(s: RTCIdentityProviderRegistrar) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

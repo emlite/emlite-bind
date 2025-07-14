@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AssignedNodesOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for AssignedNodesOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AssignedNodesOptions {
+impl core::ops::Deref for AssignedNodesOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AssignedNodesOptions {
+impl core::ops::DerefMut for AssignedNodesOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for AssignedNodesOptions {
 impl From<AssignedNodesOptions> for emlite::Val {
     fn from(s: AssignedNodesOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl AssignedNodesOptions {
         self.inner.set("flatten", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HTMLSlotElement {
     inner: HTMLElement,
 }
@@ -60,13 +60,13 @@ impl FromVal for HTMLSlotElement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HTMLSlotElement {
+impl core::ops::Deref for HTMLSlotElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HTMLSlotElement {
+impl core::ops::DerefMut for HTMLSlotElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for HTMLSlotElement {
 impl From<HTMLSlotElement> for emlite::Val {
     fn from(s: HTMLSlotElement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

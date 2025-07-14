@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PaintWorkletGlobalScope {
     inner: WorkletGlobalScope,
 }
@@ -17,13 +17,13 @@ impl FromVal for PaintWorkletGlobalScope {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PaintWorkletGlobalScope {
+impl core::ops::Deref for PaintWorkletGlobalScope {
     type Target = WorkletGlobalScope;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PaintWorkletGlobalScope {
+impl core::ops::DerefMut for PaintWorkletGlobalScope {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for PaintWorkletGlobalScope {
 impl From<PaintWorkletGlobalScope> for emlite::Val {
     fn from(s: PaintWorkletGlobalScope) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

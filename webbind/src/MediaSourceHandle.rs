@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaSourceHandle {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for MediaSourceHandle {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaSourceHandle {
+impl core::ops::Deref for MediaSourceHandle {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaSourceHandle {
+impl core::ops::DerefMut for MediaSourceHandle {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for MediaSourceHandle {
 impl From<MediaSourceHandle> for emlite::Val {
     fn from(s: MediaSourceHandle) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

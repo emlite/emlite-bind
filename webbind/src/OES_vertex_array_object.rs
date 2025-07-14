@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct OES_vertex_array_object {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for OES_vertex_array_object {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for OES_vertex_array_object {
+impl core::ops::Deref for OES_vertex_array_object {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for OES_vertex_array_object {
+impl core::ops::DerefMut for OES_vertex_array_object {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for OES_vertex_array_object {
 impl From<OES_vertex_array_object> for emlite::Val {
     fn from(s: OES_vertex_array_object) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

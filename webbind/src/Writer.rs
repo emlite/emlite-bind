@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WriterCreateOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for WriterCreateOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WriterCreateOptions {
+impl core::ops::Deref for WriterCreateOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WriterCreateOptions {
+impl core::ops::DerefMut for WriterCreateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for WriterCreateOptions {
 impl From<WriterCreateOptions> for emlite::Val {
     fn from(s: WriterCreateOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl WriterCreateOptions {
         self.inner.set("sharedContext", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WriterCreateCoreOptions {
     inner: emlite::Val,
 }
@@ -76,13 +76,13 @@ impl FromVal for WriterCreateCoreOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WriterCreateCoreOptions {
+impl core::ops::Deref for WriterCreateCoreOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WriterCreateCoreOptions {
+impl core::ops::DerefMut for WriterCreateCoreOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -90,7 +90,7 @@ impl std::ops::DerefMut for WriterCreateCoreOptions {
 impl From<WriterCreateCoreOptions> for emlite::Val {
     fn from(s: WriterCreateCoreOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -153,7 +153,7 @@ impl WriterCreateCoreOptions {
         self.inner.set("outputLanguage", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WriterWriteOptions {
     inner: emlite::Val,
 }
@@ -168,13 +168,13 @@ impl FromVal for WriterWriteOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WriterWriteOptions {
+impl core::ops::Deref for WriterWriteOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WriterWriteOptions {
+impl core::ops::DerefMut for WriterWriteOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -182,7 +182,7 @@ impl std::ops::DerefMut for WriterWriteOptions {
 impl From<WriterWriteOptions> for emlite::Val {
     fn from(s: WriterWriteOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -205,7 +205,7 @@ impl WriterWriteOptions {
         self.inner.set("signal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Writer {
     inner: emlite::Val,
 }
@@ -222,13 +222,13 @@ impl FromVal for Writer {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Writer {
+impl core::ops::Deref for Writer {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Writer {
+impl core::ops::DerefMut for Writer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -236,7 +236,7 @@ impl std::ops::DerefMut for Writer {
 impl From<Writer> for emlite::Val {
     fn from(s: Writer) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

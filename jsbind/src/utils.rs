@@ -12,7 +12,7 @@ macro_rules! bind {
             }
         }
 
-        impl std::ops::Deref for $i {
+        impl core::ops::Deref for $i {
             type Target = emlite::Val;
 
             fn deref(&self) -> &Self::Target {
@@ -20,7 +20,7 @@ macro_rules! bind {
             }
         }
 
-        impl std::ops::DerefMut for $i {
+        impl core::ops::DerefMut for $i {
             fn deref_mut(&mut self) -> &mut Self::Target {
                 &mut self.inner
             }
@@ -30,7 +30,7 @@ macro_rules! bind {
             fn from(x: $i) -> emlite::Val {
                 use emlite::FromVal;
                 let handle = x.inner.as_handle();
-                std::mem::forget(x);
+                core::mem::forget(x);
                 emlite::Val::take_ownership(handle)
             }
         }

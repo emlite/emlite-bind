@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IDBDatabaseInfo {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for IDBDatabaseInfo {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IDBDatabaseInfo {
+impl core::ops::Deref for IDBDatabaseInfo {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IDBDatabaseInfo {
+impl core::ops::DerefMut for IDBDatabaseInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for IDBDatabaseInfo {
 impl From<IDBDatabaseInfo> for emlite::Val {
     fn from(s: IDBDatabaseInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl IDBDatabaseInfo {
         self.inner.set("version", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IDBFactory {
     inner: emlite::Val,
 }
@@ -69,13 +69,13 @@ impl FromVal for IDBFactory {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IDBFactory {
+impl core::ops::Deref for IDBFactory {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IDBFactory {
+impl core::ops::DerefMut for IDBFactory {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for IDBFactory {
 impl From<IDBFactory> for emlite::Val {
     fn from(s: IDBFactory) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

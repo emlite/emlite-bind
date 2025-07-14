@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLTensorDescriptor {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for MLTensorDescriptor {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLTensorDescriptor {
+impl core::ops::Deref for MLTensorDescriptor {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLTensorDescriptor {
+impl core::ops::DerefMut for MLTensorDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for MLTensorDescriptor {
 impl From<MLTensorDescriptor> for emlite::Val {
     fn from(s: MLTensorDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl MLTensorDescriptor {
         self.inner.set("writable", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLOperandDescriptor {
     inner: emlite::Val,
 }
@@ -67,13 +67,13 @@ impl FromVal for MLOperandDescriptor {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLOperandDescriptor {
+impl core::ops::Deref for MLOperandDescriptor {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLOperandDescriptor {
+impl core::ops::DerefMut for MLOperandDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -81,7 +81,7 @@ impl std::ops::DerefMut for MLOperandDescriptor {
 impl From<MLOperandDescriptor> for emlite::Val {
     fn from(s: MLOperandDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -104,7 +104,7 @@ impl MLOperandDescriptor {
         self.inner.set("shape", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLOpSupportLimits {
     inner: emlite::Val,
 }
@@ -119,13 +119,13 @@ impl FromVal for MLOpSupportLimits {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLOpSupportLimits {
+impl core::ops::Deref for MLOpSupportLimits {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLOpSupportLimits {
+impl core::ops::DerefMut for MLOpSupportLimits {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -133,7 +133,7 @@ impl std::ops::DerefMut for MLOpSupportLimits {
 impl From<MLOpSupportLimits> for emlite::Val {
     fn from(s: MLOpSupportLimits) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -147,7 +147,7 @@ impl MLOpSupportLimits {
         self.inner.set("where", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLContextLostInfo {
     inner: emlite::Val,
 }
@@ -162,13 +162,13 @@ impl FromVal for MLContextLostInfo {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLContextLostInfo {
+impl core::ops::Deref for MLContextLostInfo {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLContextLostInfo {
+impl core::ops::DerefMut for MLContextLostInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -176,7 +176,7 @@ impl std::ops::DerefMut for MLContextLostInfo {
 impl From<MLContextLostInfo> for emlite::Val {
     fn from(s: MLContextLostInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -190,7 +190,7 @@ impl MLContextLostInfo {
         self.inner.set("message", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLContext {
     inner: emlite::Val,
 }
@@ -207,13 +207,13 @@ impl FromVal for MLContext {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLContext {
+impl core::ops::Deref for MLContext {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLContext {
+impl core::ops::DerefMut for MLContext {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -221,7 +221,7 @@ impl std::ops::DerefMut for MLContext {
 impl From<MLContext> for emlite::Val {
     fn from(s: MLContext) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AudioDecoderConfig {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for AudioDecoderConfig {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AudioDecoderConfig {
+impl core::ops::Deref for AudioDecoderConfig {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AudioDecoderConfig {
+impl core::ops::DerefMut for AudioDecoderConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for AudioDecoderConfig {
 impl From<AudioDecoderConfig> for emlite::Val {
     fn from(s: AudioDecoderConfig) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -70,7 +70,7 @@ impl AudioDecoderConfig {
         self.inner.set("description", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AudioDecoderSupport {
     inner: emlite::Val,
 }
@@ -85,13 +85,13 @@ impl FromVal for AudioDecoderSupport {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AudioDecoderSupport {
+impl core::ops::Deref for AudioDecoderSupport {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AudioDecoderSupport {
+impl core::ops::DerefMut for AudioDecoderSupport {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -99,7 +99,7 @@ impl std::ops::DerefMut for AudioDecoderSupport {
 impl From<AudioDecoderSupport> for emlite::Val {
     fn from(s: AudioDecoderSupport) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -122,7 +122,7 @@ impl AudioDecoderSupport {
         self.inner.set("config", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AudioDecoder {
     inner: EventTarget,
 }
@@ -139,13 +139,13 @@ impl FromVal for AudioDecoder {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AudioDecoder {
+impl core::ops::Deref for AudioDecoder {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AudioDecoder {
+impl core::ops::DerefMut for AudioDecoder {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -153,7 +153,7 @@ impl std::ops::DerefMut for AudioDecoder {
 impl From<AudioDecoder> for emlite::Val {
     fn from(s: AudioDecoder) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

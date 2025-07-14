@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NavigationPreloadState {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for NavigationPreloadState {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NavigationPreloadState {
+impl core::ops::Deref for NavigationPreloadState {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NavigationPreloadState {
+impl core::ops::DerefMut for NavigationPreloadState {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for NavigationPreloadState {
 impl From<NavigationPreloadState> for emlite::Val {
     fn from(s: NavigationPreloadState) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl NavigationPreloadState {
         self.inner.set("headerValue", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NavigationPreloadManager {
     inner: emlite::Val,
 }
@@ -69,13 +69,13 @@ impl FromVal for NavigationPreloadManager {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NavigationPreloadManager {
+impl core::ops::Deref for NavigationPreloadManager {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NavigationPreloadManager {
+impl core::ops::DerefMut for NavigationPreloadManager {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for NavigationPreloadManager {
 impl From<NavigationPreloadManager> for emlite::Val {
     fn from(s: NavigationPreloadManager) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

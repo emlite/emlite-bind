@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DOMMatrix2DInit {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for DOMMatrix2DInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DOMMatrix2DInit {
+impl core::ops::Deref for DOMMatrix2DInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DOMMatrix2DInit {
+impl core::ops::DerefMut for DOMMatrix2DInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for DOMMatrix2DInit {
 impl From<DOMMatrix2DInit> for emlite::Val {
     fn from(s: DOMMatrix2DInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -142,7 +142,7 @@ impl DOMMatrix2DInit {
         self.inner.set("m42", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SVGSVGElement {
     inner: SVGGraphicsElement,
 }
@@ -159,13 +159,13 @@ impl FromVal for SVGSVGElement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SVGSVGElement {
+impl core::ops::Deref for SVGSVGElement {
     type Target = SVGGraphicsElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SVGSVGElement {
+impl core::ops::DerefMut for SVGSVGElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -173,7 +173,7 @@ impl std::ops::DerefMut for SVGSVGElement {
 impl From<SVGSVGElement> for emlite::Val {
     fn from(s: SVGSVGElement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

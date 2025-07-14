@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct LayoutConstraintsOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for LayoutConstraintsOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for LayoutConstraintsOptions {
+impl core::ops::Deref for LayoutConstraintsOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for LayoutConstraintsOptions {
+impl core::ops::DerefMut for LayoutConstraintsOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for LayoutConstraintsOptions {
 impl From<LayoutConstraintsOptions> for emlite::Val {
     fn from(s: LayoutConstraintsOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -117,7 +117,7 @@ impl LayoutConstraintsOptions {
         self.inner.set("data", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct LayoutChild {
     inner: emlite::Val,
 }
@@ -134,13 +134,13 @@ impl FromVal for LayoutChild {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for LayoutChild {
+impl core::ops::Deref for LayoutChild {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for LayoutChild {
+impl core::ops::DerefMut for LayoutChild {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -148,7 +148,7 @@ impl std::ops::DerefMut for LayoutChild {
 impl From<LayoutChild> for emlite::Val {
     fn from(s: LayoutChild) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

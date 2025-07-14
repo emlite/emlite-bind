@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct EffectTiming {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for EffectTiming {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for EffectTiming {
+impl core::ops::Deref for EffectTiming {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for EffectTiming {
+impl core::ops::DerefMut for EffectTiming {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for EffectTiming {
 impl From<EffectTiming> for emlite::Val {
     fn from(s: EffectTiming) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -79,7 +79,7 @@ impl EffectTiming {
         self.inner.set("easing", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ComputedEffectTiming {
     inner: emlite::Val,
 }
@@ -94,13 +94,13 @@ impl FromVal for ComputedEffectTiming {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ComputedEffectTiming {
+impl core::ops::Deref for ComputedEffectTiming {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ComputedEffectTiming {
+impl core::ops::DerefMut for ComputedEffectTiming {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -108,7 +108,7 @@ impl std::ops::DerefMut for ComputedEffectTiming {
 impl From<ComputedEffectTiming> for emlite::Val {
     fn from(s: ComputedEffectTiming) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -131,7 +131,7 @@ impl ComputedEffectTiming {
         self.inner.set("currentIteration", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WorkletAnimationEffect {
     inner: emlite::Val,
 }
@@ -148,13 +148,13 @@ impl FromVal for WorkletAnimationEffect {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WorkletAnimationEffect {
+impl core::ops::Deref for WorkletAnimationEffect {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WorkletAnimationEffect {
+impl core::ops::DerefMut for WorkletAnimationEffect {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -162,7 +162,7 @@ impl std::ops::DerefMut for WorkletAnimationEffect {
 impl From<WorkletAnimationEffect> for emlite::Val {
     fn from(s: WorkletAnimationEffect) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

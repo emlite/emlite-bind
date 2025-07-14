@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ImageDecodeResult {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ImageDecodeResult {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ImageDecodeResult {
+impl core::ops::Deref for ImageDecodeResult {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ImageDecodeResult {
+impl core::ops::DerefMut for ImageDecodeResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ImageDecodeResult {
 impl From<ImageDecodeResult> for emlite::Val {
     fn from(s: ImageDecodeResult) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl ImageDecodeResult {
         self.inner.set("complete", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ImageDecodeOptions {
     inner: emlite::Val,
 }
@@ -67,13 +67,13 @@ impl FromVal for ImageDecodeOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ImageDecodeOptions {
+impl core::ops::Deref for ImageDecodeOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ImageDecodeOptions {
+impl core::ops::DerefMut for ImageDecodeOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -81,7 +81,7 @@ impl std::ops::DerefMut for ImageDecodeOptions {
 impl From<ImageDecodeOptions> for emlite::Val {
     fn from(s: ImageDecodeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -104,7 +104,7 @@ impl ImageDecodeOptions {
         self.inner.set("completeFramesOnly", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ImageDecoder {
     inner: emlite::Val,
 }
@@ -121,13 +121,13 @@ impl FromVal for ImageDecoder {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ImageDecoder {
+impl core::ops::Deref for ImageDecoder {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ImageDecoder {
+impl core::ops::DerefMut for ImageDecoder {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -135,7 +135,7 @@ impl std::ops::DerefMut for ImageDecoder {
 impl From<ImageDecoder> for emlite::Val {
     fn from(s: ImageDecoder) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

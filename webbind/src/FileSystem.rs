@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FileSystem {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for FileSystem {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FileSystem {
+impl core::ops::Deref for FileSystem {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FileSystem {
+impl core::ops::DerefMut for FileSystem {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for FileSystem {
 impl From<FileSystem> for emlite::Val {
     fn from(s: FileSystem) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

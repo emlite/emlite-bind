@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RequestDeviceOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for RequestDeviceOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RequestDeviceOptions {
+impl core::ops::Deref for RequestDeviceOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RequestDeviceOptions {
+impl core::ops::DerefMut for RequestDeviceOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for RequestDeviceOptions {
 impl From<RequestDeviceOptions> for emlite::Val {
     fn from(s: RequestDeviceOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -87,7 +87,7 @@ impl RequestDeviceOptions {
         self.inner.set("acceptAllDevices", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BluetoothLEScanOptions {
     inner: emlite::Val,
 }
@@ -102,13 +102,13 @@ impl FromVal for BluetoothLEScanOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BluetoothLEScanOptions {
+impl core::ops::Deref for BluetoothLEScanOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BluetoothLEScanOptions {
+impl core::ops::DerefMut for BluetoothLEScanOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -116,7 +116,7 @@ impl std::ops::DerefMut for BluetoothLEScanOptions {
 impl From<BluetoothLEScanOptions> for emlite::Val {
     fn from(s: BluetoothLEScanOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -150,7 +150,7 @@ impl BluetoothLEScanOptions {
         self.inner.set("acceptAllAdvertisements", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Bluetooth {
     inner: EventTarget,
 }
@@ -167,13 +167,13 @@ impl FromVal for Bluetooth {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Bluetooth {
+impl core::ops::Deref for Bluetooth {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Bluetooth {
+impl core::ops::DerefMut for Bluetooth {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -181,7 +181,7 @@ impl std::ops::DerefMut for Bluetooth {
 impl From<Bluetooth> for emlite::Val {
     fn from(s: Bluetooth) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

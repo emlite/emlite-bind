@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ContactInfo {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ContactInfo {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ContactInfo {
+impl core::ops::Deref for ContactInfo {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ContactInfo {
+impl core::ops::DerefMut for ContactInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ContactInfo {
 impl From<ContactInfo> for emlite::Val {
     fn from(s: ContactInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -87,7 +87,7 @@ impl ContactInfo {
         self.inner.set("tel", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ContactsSelectOptions {
     inner: emlite::Val,
 }
@@ -102,13 +102,13 @@ impl FromVal for ContactsSelectOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ContactsSelectOptions {
+impl core::ops::Deref for ContactsSelectOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ContactsSelectOptions {
+impl core::ops::DerefMut for ContactsSelectOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -116,7 +116,7 @@ impl std::ops::DerefMut for ContactsSelectOptions {
 impl From<ContactsSelectOptions> for emlite::Val {
     fn from(s: ContactsSelectOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -130,7 +130,7 @@ impl ContactsSelectOptions {
         self.inner.set("multiple", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ContactsManager {
     inner: emlite::Val,
 }
@@ -147,13 +147,13 @@ impl FromVal for ContactsManager {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ContactsManager {
+impl core::ops::Deref for ContactsManager {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ContactsManager {
+impl core::ops::DerefMut for ContactsManager {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -161,7 +161,7 @@ impl std::ops::DerefMut for ContactsManager {
 impl From<ContactsManager> for emlite::Val {
     fn from(s: ContactsManager) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

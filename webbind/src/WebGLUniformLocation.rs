@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WebGLUniformLocation {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for WebGLUniformLocation {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WebGLUniformLocation {
+impl core::ops::Deref for WebGLUniformLocation {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WebGLUniformLocation {
+impl core::ops::DerefMut for WebGLUniformLocation {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for WebGLUniformLocation {
 impl From<WebGLUniformLocation> for emlite::Val {
     fn from(s: WebGLUniformLocation) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

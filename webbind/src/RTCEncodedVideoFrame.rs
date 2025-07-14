@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCEncodedVideoFrameMetadata {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for RTCEncodedVideoFrameMetadata {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCEncodedVideoFrameMetadata {
+impl core::ops::Deref for RTCEncodedVideoFrameMetadata {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCEncodedVideoFrameMetadata {
+impl core::ops::DerefMut for RTCEncodedVideoFrameMetadata {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for RTCEncodedVideoFrameMetadata {
 impl From<RTCEncodedVideoFrameMetadata> for emlite::Val {
     fn from(s: RTCEncodedVideoFrameMetadata) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -99,7 +99,7 @@ impl RTCEncodedVideoFrameMetadata {
         self.inner.set("timestamp", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCEncodedVideoFrame {
     inner: emlite::Val,
 }
@@ -116,13 +116,13 @@ impl FromVal for RTCEncodedVideoFrame {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCEncodedVideoFrame {
+impl core::ops::Deref for RTCEncodedVideoFrame {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCEncodedVideoFrame {
+impl core::ops::DerefMut for RTCEncodedVideoFrame {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -130,7 +130,7 @@ impl std::ops::DerefMut for RTCEncodedVideoFrame {
 impl From<RTCEncodedVideoFrame> for emlite::Val {
     fn from(s: RTCEncodedVideoFrame) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

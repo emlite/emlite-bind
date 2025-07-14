@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSMathMin {
     inner: CSSMathValue,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSMathMin {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSMathMin {
+impl core::ops::Deref for CSSMathMin {
     type Target = CSSMathValue;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSMathMin {
+impl core::ops::DerefMut for CSSMathMin {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSMathMin {
 impl From<CSSMathMin> for emlite::Val {
     fn from(s: CSSMathMin) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

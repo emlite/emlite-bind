@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SubscribeOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for SubscribeOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SubscribeOptions {
+impl core::ops::Deref for SubscribeOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SubscribeOptions {
+impl core::ops::DerefMut for SubscribeOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for SubscribeOptions {
 impl From<SubscribeOptions> for emlite::Val {
     fn from(s: SubscribeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl SubscribeOptions {
         self.inner.set("signal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Observable {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for Observable {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Observable {
+impl core::ops::Deref for Observable {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Observable {
+impl core::ops::DerefMut for Observable {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for Observable {
 impl From<Observable> for emlite::Val {
     fn from(s: Observable) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

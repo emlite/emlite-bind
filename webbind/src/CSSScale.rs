@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSScale {
     inner: CSSTransformComponent,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSScale {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSScale {
+impl core::ops::Deref for CSSScale {
     type Target = CSSTransformComponent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSScale {
+impl core::ops::DerefMut for CSSScale {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSScale {
 impl From<CSSScale> for emlite::Val {
     fn from(s: CSSScale) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

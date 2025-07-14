@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRProjectionLayerInit {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for XRProjectionLayerInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRProjectionLayerInit {
+impl core::ops::Deref for XRProjectionLayerInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRProjectionLayerInit {
+impl core::ops::DerefMut for XRProjectionLayerInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for XRProjectionLayerInit {
 impl From<XRProjectionLayerInit> for emlite::Val {
     fn from(s: XRProjectionLayerInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -79,7 +79,7 @@ impl XRProjectionLayerInit {
         self.inner.set("clearOnAccess", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRQuadLayerInit {
     inner: emlite::Val,
 }
@@ -94,13 +94,13 @@ impl FromVal for XRQuadLayerInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRQuadLayerInit {
+impl core::ops::Deref for XRQuadLayerInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRQuadLayerInit {
+impl core::ops::DerefMut for XRQuadLayerInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -108,7 +108,7 @@ impl std::ops::DerefMut for XRQuadLayerInit {
 impl From<XRQuadLayerInit> for emlite::Val {
     fn from(s: XRQuadLayerInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -149,7 +149,7 @@ impl XRQuadLayerInit {
         self.inner.set("height", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRCylinderLayerInit {
     inner: emlite::Val,
 }
@@ -164,13 +164,13 @@ impl FromVal for XRCylinderLayerInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRCylinderLayerInit {
+impl core::ops::Deref for XRCylinderLayerInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRCylinderLayerInit {
+impl core::ops::DerefMut for XRCylinderLayerInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -178,7 +178,7 @@ impl std::ops::DerefMut for XRCylinderLayerInit {
 impl From<XRCylinderLayerInit> for emlite::Val {
     fn from(s: XRCylinderLayerInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -228,7 +228,7 @@ impl XRCylinderLayerInit {
         self.inner.set("aspectRatio", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XREquirectLayerInit {
     inner: emlite::Val,
 }
@@ -243,13 +243,13 @@ impl FromVal for XREquirectLayerInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XREquirectLayerInit {
+impl core::ops::Deref for XREquirectLayerInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XREquirectLayerInit {
+impl core::ops::DerefMut for XREquirectLayerInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -257,7 +257,7 @@ impl std::ops::DerefMut for XREquirectLayerInit {
 impl From<XREquirectLayerInit> for emlite::Val {
     fn from(s: XREquirectLayerInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -316,7 +316,7 @@ impl XREquirectLayerInit {
         self.inner.set("lowerVerticalAngle", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRCubeLayerInit {
     inner: emlite::Val,
 }
@@ -331,13 +331,13 @@ impl FromVal for XRCubeLayerInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRCubeLayerInit {
+impl core::ops::Deref for XRCubeLayerInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRCubeLayerInit {
+impl core::ops::DerefMut for XRCubeLayerInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -345,7 +345,7 @@ impl std::ops::DerefMut for XRCubeLayerInit {
 impl From<XRCubeLayerInit> for emlite::Val {
     fn from(s: XRCubeLayerInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -359,7 +359,7 @@ impl XRCubeLayerInit {
         self.inner.set("orientation", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRWebGLBinding {
     inner: emlite::Val,
 }
@@ -376,13 +376,13 @@ impl FromVal for XRWebGLBinding {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRWebGLBinding {
+impl core::ops::Deref for XRWebGLBinding {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRWebGLBinding {
+impl core::ops::DerefMut for XRWebGLBinding {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -390,7 +390,7 @@ impl std::ops::DerefMut for XRWebGLBinding {
 impl From<XRWebGLBinding> for emlite::Val {
     fn from(s: XRWebGLBinding) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

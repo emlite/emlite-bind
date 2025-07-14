@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLArgMinMaxOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for MLArgMinMaxOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLArgMinMaxOptions {
+impl core::ops::Deref for MLArgMinMaxOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLArgMinMaxOptions {
+impl core::ops::DerefMut for MLArgMinMaxOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for MLArgMinMaxOptions {
 impl From<MLArgMinMaxOptions> for emlite::Val {
     fn from(s: MLArgMinMaxOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl MLArgMinMaxOptions {
         self.inner.set("outputDataType", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLBatchNormalizationOptions {
     inner: emlite::Val,
 }
@@ -67,13 +67,13 @@ impl FromVal for MLBatchNormalizationOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLBatchNormalizationOptions {
+impl core::ops::Deref for MLBatchNormalizationOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLBatchNormalizationOptions {
+impl core::ops::DerefMut for MLBatchNormalizationOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -81,7 +81,7 @@ impl std::ops::DerefMut for MLBatchNormalizationOptions {
 impl From<MLBatchNormalizationOptions> for emlite::Val {
     fn from(s: MLBatchNormalizationOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -122,7 +122,7 @@ impl MLBatchNormalizationOptions {
         self.inner.set("epsilon", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLOperatorOptions {
     inner: emlite::Val,
 }
@@ -137,13 +137,13 @@ impl FromVal for MLOperatorOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLOperatorOptions {
+impl core::ops::Deref for MLOperatorOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLOperatorOptions {
+impl core::ops::DerefMut for MLOperatorOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -151,7 +151,7 @@ impl std::ops::DerefMut for MLOperatorOptions {
 impl From<MLOperatorOptions> for emlite::Val {
     fn from(s: MLOperatorOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -165,7 +165,7 @@ impl MLOperatorOptions {
         self.inner.set("label", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLClampOptions {
     inner: emlite::Val,
 }
@@ -180,13 +180,13 @@ impl FromVal for MLClampOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLClampOptions {
+impl core::ops::Deref for MLClampOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLClampOptions {
+impl core::ops::DerefMut for MLClampOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -194,7 +194,7 @@ impl std::ops::DerefMut for MLClampOptions {
 impl From<MLClampOptions> for emlite::Val {
     fn from(s: MLClampOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -217,7 +217,7 @@ impl MLClampOptions {
         self.inner.set("maxValue", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLConv2dOptions {
     inner: emlite::Val,
 }
@@ -232,13 +232,13 @@ impl FromVal for MLConv2dOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLConv2dOptions {
+impl core::ops::Deref for MLConv2dOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLConv2dOptions {
+impl core::ops::DerefMut for MLConv2dOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -246,7 +246,7 @@ impl std::ops::DerefMut for MLConv2dOptions {
 impl From<MLConv2dOptions> for emlite::Val {
     fn from(s: MLConv2dOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -316,7 +316,7 @@ impl MLConv2dOptions {
         self.inner.set("bias", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLConvTranspose2dOptions {
     inner: emlite::Val,
 }
@@ -331,13 +331,13 @@ impl FromVal for MLConvTranspose2dOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLConvTranspose2dOptions {
+impl core::ops::Deref for MLConvTranspose2dOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLConvTranspose2dOptions {
+impl core::ops::DerefMut for MLConvTranspose2dOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -345,7 +345,7 @@ impl std::ops::DerefMut for MLConvTranspose2dOptions {
 impl From<MLConvTranspose2dOptions> for emlite::Val {
     fn from(s: MLConvTranspose2dOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -435,7 +435,7 @@ impl MLConvTranspose2dOptions {
         self.inner.set("bias", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLCumulativeSumOptions {
     inner: emlite::Val,
 }
@@ -450,13 +450,13 @@ impl FromVal for MLCumulativeSumOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLCumulativeSumOptions {
+impl core::ops::Deref for MLCumulativeSumOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLCumulativeSumOptions {
+impl core::ops::DerefMut for MLCumulativeSumOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -464,7 +464,7 @@ impl std::ops::DerefMut for MLCumulativeSumOptions {
 impl From<MLCumulativeSumOptions> for emlite::Val {
     fn from(s: MLCumulativeSumOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -487,7 +487,7 @@ impl MLCumulativeSumOptions {
         self.inner.set("reversed", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLEluOptions {
     inner: emlite::Val,
 }
@@ -502,13 +502,13 @@ impl FromVal for MLEluOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLEluOptions {
+impl core::ops::Deref for MLEluOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLEluOptions {
+impl core::ops::DerefMut for MLEluOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -516,7 +516,7 @@ impl std::ops::DerefMut for MLEluOptions {
 impl From<MLEluOptions> for emlite::Val {
     fn from(s: MLEluOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -530,7 +530,7 @@ impl MLEluOptions {
         self.inner.set("alpha", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLGatherOptions {
     inner: emlite::Val,
 }
@@ -545,13 +545,13 @@ impl FromVal for MLGatherOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLGatherOptions {
+impl core::ops::Deref for MLGatherOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLGatherOptions {
+impl core::ops::DerefMut for MLGatherOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -559,7 +559,7 @@ impl std::ops::DerefMut for MLGatherOptions {
 impl From<MLGatherOptions> for emlite::Val {
     fn from(s: MLGatherOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -573,7 +573,7 @@ impl MLGatherOptions {
         self.inner.set("axis", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLGemmOptions {
     inner: emlite::Val,
 }
@@ -588,13 +588,13 @@ impl FromVal for MLGemmOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLGemmOptions {
+impl core::ops::Deref for MLGemmOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLGemmOptions {
+impl core::ops::DerefMut for MLGemmOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -602,7 +602,7 @@ impl std::ops::DerefMut for MLGemmOptions {
 impl From<MLGemmOptions> for emlite::Val {
     fn from(s: MLGemmOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -652,7 +652,7 @@ impl MLGemmOptions {
         self.inner.set("bTranspose", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLGruOptions {
     inner: emlite::Val,
 }
@@ -667,13 +667,13 @@ impl FromVal for MLGruOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLGruOptions {
+impl core::ops::Deref for MLGruOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLGruOptions {
+impl core::ops::DerefMut for MLGruOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -681,7 +681,7 @@ impl std::ops::DerefMut for MLGruOptions {
 impl From<MLGruOptions> for emlite::Val {
     fn from(s: MLGruOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -762,7 +762,7 @@ impl MLGruOptions {
         self.inner.set("activations", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLGruCellOptions {
     inner: emlite::Val,
 }
@@ -777,13 +777,13 @@ impl FromVal for MLGruCellOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLGruCellOptions {
+impl core::ops::Deref for MLGruCellOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLGruCellOptions {
+impl core::ops::DerefMut for MLGruCellOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -791,7 +791,7 @@ impl std::ops::DerefMut for MLGruCellOptions {
 impl From<MLGruCellOptions> for emlite::Val {
     fn from(s: MLGruCellOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -843,7 +843,7 @@ impl MLGruCellOptions {
         self.inner.set("activations", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLHardSigmoidOptions {
     inner: emlite::Val,
 }
@@ -858,13 +858,13 @@ impl FromVal for MLHardSigmoidOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLHardSigmoidOptions {
+impl core::ops::Deref for MLHardSigmoidOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLHardSigmoidOptions {
+impl core::ops::DerefMut for MLHardSigmoidOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -872,7 +872,7 @@ impl std::ops::DerefMut for MLHardSigmoidOptions {
 impl From<MLHardSigmoidOptions> for emlite::Val {
     fn from(s: MLHardSigmoidOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -895,7 +895,7 @@ impl MLHardSigmoidOptions {
         self.inner.set("beta", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLInstanceNormalizationOptions {
     inner: emlite::Val,
 }
@@ -910,13 +910,13 @@ impl FromVal for MLInstanceNormalizationOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLInstanceNormalizationOptions {
+impl core::ops::Deref for MLInstanceNormalizationOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLInstanceNormalizationOptions {
+impl core::ops::DerefMut for MLInstanceNormalizationOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -924,7 +924,7 @@ impl std::ops::DerefMut for MLInstanceNormalizationOptions {
 impl From<MLInstanceNormalizationOptions> for emlite::Val {
     fn from(s: MLInstanceNormalizationOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -965,7 +965,7 @@ impl MLInstanceNormalizationOptions {
         self.inner.set("layout", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLLayerNormalizationOptions {
     inner: emlite::Val,
 }
@@ -980,13 +980,13 @@ impl FromVal for MLLayerNormalizationOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLLayerNormalizationOptions {
+impl core::ops::Deref for MLLayerNormalizationOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLLayerNormalizationOptions {
+impl core::ops::DerefMut for MLLayerNormalizationOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -994,7 +994,7 @@ impl std::ops::DerefMut for MLLayerNormalizationOptions {
 impl From<MLLayerNormalizationOptions> for emlite::Val {
     fn from(s: MLLayerNormalizationOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1035,7 +1035,7 @@ impl MLLayerNormalizationOptions {
         self.inner.set("epsilon", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLLeakyReluOptions {
     inner: emlite::Val,
 }
@@ -1050,13 +1050,13 @@ impl FromVal for MLLeakyReluOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLLeakyReluOptions {
+impl core::ops::Deref for MLLeakyReluOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLLeakyReluOptions {
+impl core::ops::DerefMut for MLLeakyReluOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1064,7 +1064,7 @@ impl std::ops::DerefMut for MLLeakyReluOptions {
 impl From<MLLeakyReluOptions> for emlite::Val {
     fn from(s: MLLeakyReluOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1078,7 +1078,7 @@ impl MLLeakyReluOptions {
         self.inner.set("alpha", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLLinearOptions {
     inner: emlite::Val,
 }
@@ -1093,13 +1093,13 @@ impl FromVal for MLLinearOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLLinearOptions {
+impl core::ops::Deref for MLLinearOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLLinearOptions {
+impl core::ops::DerefMut for MLLinearOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1107,7 +1107,7 @@ impl std::ops::DerefMut for MLLinearOptions {
 impl From<MLLinearOptions> for emlite::Val {
     fn from(s: MLLinearOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1130,7 +1130,7 @@ impl MLLinearOptions {
         self.inner.set("beta", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLLstmOptions {
     inner: emlite::Val,
 }
@@ -1145,13 +1145,13 @@ impl FromVal for MLLstmOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLLstmOptions {
+impl core::ops::Deref for MLLstmOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLLstmOptions {
+impl core::ops::DerefMut for MLLstmOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1159,7 +1159,7 @@ impl std::ops::DerefMut for MLLstmOptions {
 impl From<MLLstmOptions> for emlite::Val {
     fn from(s: MLLstmOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1249,7 +1249,7 @@ impl MLLstmOptions {
         self.inner.set("activations", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLLstmCellOptions {
     inner: emlite::Val,
 }
@@ -1264,13 +1264,13 @@ impl FromVal for MLLstmCellOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLLstmCellOptions {
+impl core::ops::Deref for MLLstmCellOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLLstmCellOptions {
+impl core::ops::DerefMut for MLLstmCellOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1278,7 +1278,7 @@ impl std::ops::DerefMut for MLLstmCellOptions {
 impl From<MLLstmCellOptions> for emlite::Val {
     fn from(s: MLLstmCellOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1330,7 +1330,7 @@ impl MLLstmCellOptions {
         self.inner.set("activations", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLPadOptions {
     inner: emlite::Val,
 }
@@ -1345,13 +1345,13 @@ impl FromVal for MLPadOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLPadOptions {
+impl core::ops::Deref for MLPadOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLPadOptions {
+impl core::ops::DerefMut for MLPadOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1359,7 +1359,7 @@ impl std::ops::DerefMut for MLPadOptions {
 impl From<MLPadOptions> for emlite::Val {
     fn from(s: MLPadOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1382,7 +1382,7 @@ impl MLPadOptions {
         self.inner.set("value", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLPool2dOptions {
     inner: emlite::Val,
 }
@@ -1397,13 +1397,13 @@ impl FromVal for MLPool2dOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLPool2dOptions {
+impl core::ops::Deref for MLPool2dOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLPool2dOptions {
+impl core::ops::DerefMut for MLPool2dOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1411,7 +1411,7 @@ impl std::ops::DerefMut for MLPool2dOptions {
 impl From<MLPool2dOptions> for emlite::Val {
     fn from(s: MLPool2dOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1481,7 +1481,7 @@ impl MLPool2dOptions {
         self.inner.set("outputSizes", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLReduceOptions {
     inner: emlite::Val,
 }
@@ -1496,13 +1496,13 @@ impl FromVal for MLReduceOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLReduceOptions {
+impl core::ops::Deref for MLReduceOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLReduceOptions {
+impl core::ops::DerefMut for MLReduceOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1510,7 +1510,7 @@ impl std::ops::DerefMut for MLReduceOptions {
 impl From<MLReduceOptions> for emlite::Val {
     fn from(s: MLReduceOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1533,7 +1533,7 @@ impl MLReduceOptions {
         self.inner.set("keepDimensions", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLResample2dOptions {
     inner: emlite::Val,
 }
@@ -1548,13 +1548,13 @@ impl FromVal for MLResample2dOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLResample2dOptions {
+impl core::ops::Deref for MLResample2dOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLResample2dOptions {
+impl core::ops::DerefMut for MLResample2dOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1562,7 +1562,7 @@ impl std::ops::DerefMut for MLResample2dOptions {
 impl From<MLResample2dOptions> for emlite::Val {
     fn from(s: MLResample2dOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1603,7 +1603,7 @@ impl MLResample2dOptions {
         self.inner.set("axes", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLReverseOptions {
     inner: emlite::Val,
 }
@@ -1618,13 +1618,13 @@ impl FromVal for MLReverseOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLReverseOptions {
+impl core::ops::Deref for MLReverseOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLReverseOptions {
+impl core::ops::DerefMut for MLReverseOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1632,7 +1632,7 @@ impl std::ops::DerefMut for MLReverseOptions {
 impl From<MLReverseOptions> for emlite::Val {
     fn from(s: MLReverseOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1646,7 +1646,7 @@ impl MLReverseOptions {
         self.inner.set("axes", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLScatterOptions {
     inner: emlite::Val,
 }
@@ -1661,13 +1661,13 @@ impl FromVal for MLScatterOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLScatterOptions {
+impl core::ops::Deref for MLScatterOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLScatterOptions {
+impl core::ops::DerefMut for MLScatterOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1675,7 +1675,7 @@ impl std::ops::DerefMut for MLScatterOptions {
 impl From<MLScatterOptions> for emlite::Val {
     fn from(s: MLScatterOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1689,7 +1689,7 @@ impl MLScatterOptions {
         self.inner.set("axis", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLSliceOptions {
     inner: emlite::Val,
 }
@@ -1704,13 +1704,13 @@ impl FromVal for MLSliceOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLSliceOptions {
+impl core::ops::Deref for MLSliceOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLSliceOptions {
+impl core::ops::DerefMut for MLSliceOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1718,7 +1718,7 @@ impl std::ops::DerefMut for MLSliceOptions {
 impl From<MLSliceOptions> for emlite::Val {
     fn from(s: MLSliceOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1732,7 +1732,7 @@ impl MLSliceOptions {
         self.inner.set("strides", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLSplitOptions {
     inner: emlite::Val,
 }
@@ -1747,13 +1747,13 @@ impl FromVal for MLSplitOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLSplitOptions {
+impl core::ops::Deref for MLSplitOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLSplitOptions {
+impl core::ops::DerefMut for MLSplitOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1761,7 +1761,7 @@ impl std::ops::DerefMut for MLSplitOptions {
 impl From<MLSplitOptions> for emlite::Val {
     fn from(s: MLSplitOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1775,7 +1775,7 @@ impl MLSplitOptions {
         self.inner.set("axis", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLTransposeOptions {
     inner: emlite::Val,
 }
@@ -1790,13 +1790,13 @@ impl FromVal for MLTransposeOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLTransposeOptions {
+impl core::ops::Deref for MLTransposeOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLTransposeOptions {
+impl core::ops::DerefMut for MLTransposeOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1804,7 +1804,7 @@ impl std::ops::DerefMut for MLTransposeOptions {
 impl From<MLTransposeOptions> for emlite::Val {
     fn from(s: MLTransposeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1818,7 +1818,7 @@ impl MLTransposeOptions {
         self.inner.set("permutation", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLTriangularOptions {
     inner: emlite::Val,
 }
@@ -1833,13 +1833,13 @@ impl FromVal for MLTriangularOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLTriangularOptions {
+impl core::ops::Deref for MLTriangularOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLTriangularOptions {
+impl core::ops::DerefMut for MLTriangularOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1847,7 +1847,7 @@ impl std::ops::DerefMut for MLTriangularOptions {
 impl From<MLTriangularOptions> for emlite::Val {
     fn from(s: MLTriangularOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1870,7 +1870,7 @@ impl MLTriangularOptions {
         self.inner.set("diagonal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLGraphBuilder {
     inner: emlite::Val,
 }
@@ -1887,13 +1887,13 @@ impl FromVal for MLGraphBuilder {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLGraphBuilder {
+impl core::ops::Deref for MLGraphBuilder {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLGraphBuilder {
+impl core::ops::DerefMut for MLGraphBuilder {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1901,7 +1901,7 @@ impl std::ops::DerefMut for MLGraphBuilder {
 impl From<MLGraphBuilder> for emlite::Val {
     fn from(s: MLGraphBuilder) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

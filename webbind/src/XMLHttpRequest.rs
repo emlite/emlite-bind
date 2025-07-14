@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AttributionReportingRequestOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for AttributionReportingRequestOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AttributionReportingRequestOptions {
+impl core::ops::Deref for AttributionReportingRequestOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AttributionReportingRequestOptions {
+impl core::ops::DerefMut for AttributionReportingRequestOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for AttributionReportingRequestOptions {
 impl From<AttributionReportingRequestOptions> for emlite::Val {
     fn from(s: AttributionReportingRequestOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl AttributionReportingRequestOptions {
         self.inner.set("triggerEligible", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PrivateToken {
     inner: emlite::Val,
 }
@@ -67,13 +67,13 @@ impl FromVal for PrivateToken {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PrivateToken {
+impl core::ops::Deref for PrivateToken {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PrivateToken {
+impl core::ops::DerefMut for PrivateToken {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -81,7 +81,7 @@ impl std::ops::DerefMut for PrivateToken {
 impl From<PrivateToken> for emlite::Val {
     fn from(s: PrivateToken) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -124,7 +124,7 @@ impl PrivateToken {
         self.inner.set("issuers", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XMLHttpRequest {
     inner: XMLHttpRequestEventTarget,
 }
@@ -141,13 +141,13 @@ impl FromVal for XMLHttpRequest {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XMLHttpRequest {
+impl core::ops::Deref for XMLHttpRequest {
     type Target = XMLHttpRequestEventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XMLHttpRequest {
+impl core::ops::DerefMut for XMLHttpRequest {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -155,7 +155,7 @@ impl std::ops::DerefMut for XMLHttpRequest {
 impl From<XMLHttpRequest> for emlite::Val {
     fn from(s: XMLHttpRequest) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

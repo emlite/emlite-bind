@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WindowPostMessageOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for WindowPostMessageOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WindowPostMessageOptions {
+impl core::ops::Deref for WindowPostMessageOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WindowPostMessageOptions {
+impl core::ops::DerefMut for WindowPostMessageOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for WindowPostMessageOptions {
 impl From<WindowPostMessageOptions> for emlite::Val {
     fn from(s: WindowPostMessageOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl WindowPostMessageOptions {
         self.inner.set("targetOrigin", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct OpenFilePickerOptions {
     inner: emlite::Val,
 }
@@ -58,13 +58,13 @@ impl FromVal for OpenFilePickerOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for OpenFilePickerOptions {
+impl core::ops::Deref for OpenFilePickerOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for OpenFilePickerOptions {
+impl core::ops::DerefMut for OpenFilePickerOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -72,7 +72,7 @@ impl std::ops::DerefMut for OpenFilePickerOptions {
 impl From<OpenFilePickerOptions> for emlite::Val {
     fn from(s: OpenFilePickerOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -86,7 +86,7 @@ impl OpenFilePickerOptions {
         self.inner.set("multiple", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SaveFilePickerOptions {
     inner: emlite::Val,
 }
@@ -101,13 +101,13 @@ impl FromVal for SaveFilePickerOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SaveFilePickerOptions {
+impl core::ops::Deref for SaveFilePickerOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SaveFilePickerOptions {
+impl core::ops::DerefMut for SaveFilePickerOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -115,7 +115,7 @@ impl std::ops::DerefMut for SaveFilePickerOptions {
 impl From<SaveFilePickerOptions> for emlite::Val {
     fn from(s: SaveFilePickerOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -129,7 +129,7 @@ impl SaveFilePickerOptions {
         self.inner.set("suggestedName", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DirectoryPickerOptions {
     inner: emlite::Val,
 }
@@ -144,13 +144,13 @@ impl FromVal for DirectoryPickerOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DirectoryPickerOptions {
+impl core::ops::Deref for DirectoryPickerOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DirectoryPickerOptions {
+impl core::ops::DerefMut for DirectoryPickerOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -158,7 +158,7 @@ impl std::ops::DerefMut for DirectoryPickerOptions {
 impl From<DirectoryPickerOptions> for emlite::Val {
     fn from(s: DirectoryPickerOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -190,7 +190,7 @@ impl DirectoryPickerOptions {
         self.inner.set("mode", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct QueryOptions {
     inner: emlite::Val,
 }
@@ -205,13 +205,13 @@ impl FromVal for QueryOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for QueryOptions {
+impl core::ops::Deref for QueryOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for QueryOptions {
+impl core::ops::DerefMut for QueryOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -219,7 +219,7 @@ impl std::ops::DerefMut for QueryOptions {
 impl From<QueryOptions> for emlite::Val {
     fn from(s: QueryOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -235,7 +235,7 @@ impl QueryOptions {
         self.inner.set("postscriptNames", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IdleRequestOptions {
     inner: emlite::Val,
 }
@@ -250,13 +250,13 @@ impl FromVal for IdleRequestOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IdleRequestOptions {
+impl core::ops::Deref for IdleRequestOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IdleRequestOptions {
+impl core::ops::DerefMut for IdleRequestOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -264,7 +264,7 @@ impl std::ops::DerefMut for IdleRequestOptions {
 impl From<IdleRequestOptions> for emlite::Val {
     fn from(s: IdleRequestOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -278,7 +278,7 @@ impl IdleRequestOptions {
         self.inner.set("timeout", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Window {
     inner: EventTarget,
 }
@@ -295,13 +295,13 @@ impl FromVal for Window {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Window {
+impl core::ops::Deref for Window {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Window {
+impl core::ops::DerefMut for Window {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -309,7 +309,7 @@ impl std::ops::DerefMut for Window {
 impl From<Window> for emlite::Val {
     fn from(s: Window) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

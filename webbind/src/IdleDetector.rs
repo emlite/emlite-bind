@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IdleOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for IdleOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IdleOptions {
+impl core::ops::Deref for IdleOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IdleOptions {
+impl core::ops::DerefMut for IdleOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for IdleOptions {
 impl From<IdleOptions> for emlite::Val {
     fn from(s: IdleOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl IdleOptions {
         self.inner.set("signal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IdleDetector {
     inner: EventTarget,
 }
@@ -69,13 +69,13 @@ impl FromVal for IdleDetector {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IdleDetector {
+impl core::ops::Deref for IdleDetector {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IdleDetector {
+impl core::ops::DerefMut for IdleDetector {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for IdleDetector {
 impl From<IdleDetector> for emlite::Val {
     fn from(s: IdleDetector) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

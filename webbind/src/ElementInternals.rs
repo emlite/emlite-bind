@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ValidityStateFlags {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ValidityStateFlags {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ValidityStateFlags {
+impl core::ops::Deref for ValidityStateFlags {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ValidityStateFlags {
+impl core::ops::DerefMut for ValidityStateFlags {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ValidityStateFlags {
 impl From<ValidityStateFlags> for emlite::Val {
     fn from(s: ValidityStateFlags) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -124,7 +124,7 @@ impl ValidityStateFlags {
         self.inner.set("customError", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ElementInternals {
     inner: emlite::Val,
 }
@@ -141,13 +141,13 @@ impl FromVal for ElementInternals {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ElementInternals {
+impl core::ops::Deref for ElementInternals {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ElementInternals {
+impl core::ops::DerefMut for ElementInternals {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -155,7 +155,7 @@ impl std::ops::DerefMut for ElementInternals {
 impl From<ElementInternals> for emlite::Val {
     fn from(s: ElementInternals) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

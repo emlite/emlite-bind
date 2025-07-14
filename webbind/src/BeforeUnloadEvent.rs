@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BeforeUnloadEvent {
     inner: Event,
 }
@@ -17,13 +17,13 @@ impl FromVal for BeforeUnloadEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BeforeUnloadEvent {
+impl core::ops::Deref for BeforeUnloadEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BeforeUnloadEvent {
+impl core::ops::DerefMut for BeforeUnloadEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for BeforeUnloadEvent {
 impl From<BeforeUnloadEvent> for emlite::Val {
     fn from(s: BeforeUnloadEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

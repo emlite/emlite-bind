@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaCapabilitiesDecodingInfo {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for MediaCapabilitiesDecodingInfo {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaCapabilitiesDecodingInfo {
+impl core::ops::Deref for MediaCapabilitiesDecodingInfo {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaCapabilitiesDecodingInfo {
+impl core::ops::DerefMut for MediaCapabilitiesDecodingInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for MediaCapabilitiesDecodingInfo {
 impl From<MediaCapabilitiesDecodingInfo> for emlite::Val {
     fn from(s: MediaCapabilitiesDecodingInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -56,7 +56,7 @@ impl MediaCapabilitiesDecodingInfo {
         self.inner.set("configuration", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaDecodingConfiguration {
     inner: emlite::Val,
 }
@@ -71,13 +71,13 @@ impl FromVal for MediaDecodingConfiguration {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaDecodingConfiguration {
+impl core::ops::Deref for MediaDecodingConfiguration {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaDecodingConfiguration {
+impl core::ops::DerefMut for MediaDecodingConfiguration {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -85,7 +85,7 @@ impl std::ops::DerefMut for MediaDecodingConfiguration {
 impl From<MediaDecodingConfiguration> for emlite::Val {
     fn from(s: MediaDecodingConfiguration) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -110,7 +110,7 @@ impl MediaDecodingConfiguration {
         self.inner.set("keySystemConfiguration", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaCapabilitiesEncodingInfo {
     inner: emlite::Val,
 }
@@ -125,13 +125,13 @@ impl FromVal for MediaCapabilitiesEncodingInfo {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaCapabilitiesEncodingInfo {
+impl core::ops::Deref for MediaCapabilitiesEncodingInfo {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaCapabilitiesEncodingInfo {
+impl core::ops::DerefMut for MediaCapabilitiesEncodingInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -139,7 +139,7 @@ impl std::ops::DerefMut for MediaCapabilitiesEncodingInfo {
 impl From<MediaCapabilitiesEncodingInfo> for emlite::Val {
     fn from(s: MediaCapabilitiesEncodingInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -155,7 +155,7 @@ impl MediaCapabilitiesEncodingInfo {
         self.inner.set("configuration", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaEncodingConfiguration {
     inner: emlite::Val,
 }
@@ -170,13 +170,13 @@ impl FromVal for MediaEncodingConfiguration {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaEncodingConfiguration {
+impl core::ops::Deref for MediaEncodingConfiguration {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaEncodingConfiguration {
+impl core::ops::DerefMut for MediaEncodingConfiguration {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -184,7 +184,7 @@ impl std::ops::DerefMut for MediaEncodingConfiguration {
 impl From<MediaEncodingConfiguration> for emlite::Val {
     fn from(s: MediaEncodingConfiguration) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -198,7 +198,7 @@ impl MediaEncodingConfiguration {
         self.inner.set("type", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaCapabilities {
     inner: emlite::Val,
 }
@@ -215,13 +215,13 @@ impl FromVal for MediaCapabilities {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaCapabilities {
+impl core::ops::Deref for MediaCapabilities {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaCapabilities {
+impl core::ops::DerefMut for MediaCapabilities {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -229,7 +229,7 @@ impl std::ops::DerefMut for MediaCapabilities {
 impl From<MediaCapabilities> for emlite::Val {
     fn from(s: MediaCapabilities) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

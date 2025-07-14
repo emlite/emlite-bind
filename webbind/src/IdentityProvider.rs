@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IdentityResolveOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for IdentityResolveOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IdentityResolveOptions {
+impl core::ops::Deref for IdentityResolveOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IdentityResolveOptions {
+impl core::ops::DerefMut for IdentityResolveOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for IdentityResolveOptions {
 impl From<IdentityResolveOptions> for emlite::Val {
     fn from(s: IdentityResolveOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl IdentityResolveOptions {
         self.inner.set("accountId", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IdentityUserInfo {
     inner: emlite::Val,
 }
@@ -58,13 +58,13 @@ impl FromVal for IdentityUserInfo {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IdentityUserInfo {
+impl core::ops::Deref for IdentityUserInfo {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IdentityUserInfo {
+impl core::ops::DerefMut for IdentityUserInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -72,7 +72,7 @@ impl std::ops::DerefMut for IdentityUserInfo {
 impl From<IdentityUserInfo> for emlite::Val {
     fn from(s: IdentityUserInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -113,7 +113,7 @@ impl IdentityUserInfo {
         self.inner.set("picture", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IdentityProviderConfig {
     inner: emlite::Val,
 }
@@ -128,13 +128,13 @@ impl FromVal for IdentityProviderConfig {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IdentityProviderConfig {
+impl core::ops::Deref for IdentityProviderConfig {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IdentityProviderConfig {
+impl core::ops::DerefMut for IdentityProviderConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -142,7 +142,7 @@ impl std::ops::DerefMut for IdentityProviderConfig {
 impl From<IdentityProviderConfig> for emlite::Val {
     fn from(s: IdentityProviderConfig) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -165,7 +165,7 @@ impl IdentityProviderConfig {
         self.inner.set("clientId", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IdentityProvider {
     inner: emlite::Val,
 }
@@ -182,13 +182,13 @@ impl FromVal for IdentityProvider {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IdentityProvider {
+impl core::ops::Deref for IdentityProvider {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IdentityProvider {
+impl core::ops::DerefMut for IdentityProvider {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -196,7 +196,7 @@ impl std::ops::DerefMut for IdentityProvider {
 impl From<IdentityProvider> for emlite::Val {
     fn from(s: IdentityProvider) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

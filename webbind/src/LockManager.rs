@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct LockOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for LockOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for LockOptions {
+impl core::ops::Deref for LockOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for LockOptions {
+impl core::ops::DerefMut for LockOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for LockOptions {
 impl From<LockOptions> for emlite::Val {
     fn from(s: LockOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -70,7 +70,7 @@ impl LockOptions {
         self.inner.set("signal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct LockManagerSnapshot {
     inner: emlite::Val,
 }
@@ -85,13 +85,13 @@ impl FromVal for LockManagerSnapshot {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for LockManagerSnapshot {
+impl core::ops::Deref for LockManagerSnapshot {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for LockManagerSnapshot {
+impl core::ops::DerefMut for LockManagerSnapshot {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -99,7 +99,7 @@ impl std::ops::DerefMut for LockManagerSnapshot {
 impl From<LockManagerSnapshot> for emlite::Val {
     fn from(s: LockManagerSnapshot) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -126,7 +126,7 @@ impl LockManagerSnapshot {
         self.inner.set("pending", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct LockManager {
     inner: emlite::Val,
 }
@@ -143,13 +143,13 @@ impl FromVal for LockManager {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for LockManager {
+impl core::ops::Deref for LockManager {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for LockManager {
+impl core::ops::DerefMut for LockManager {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -157,7 +157,7 @@ impl std::ops::DerefMut for LockManager {
 impl From<LockManager> for emlite::Val {
     fn from(s: LockManager) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

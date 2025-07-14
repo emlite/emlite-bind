@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SpeechSynthesisUtterance {
     inner: EventTarget,
 }
@@ -17,13 +17,13 @@ impl FromVal for SpeechSynthesisUtterance {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SpeechSynthesisUtterance {
+impl core::ops::Deref for SpeechSynthesisUtterance {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SpeechSynthesisUtterance {
+impl core::ops::DerefMut for SpeechSynthesisUtterance {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for SpeechSynthesisUtterance {
 impl From<SpeechSynthesisUtterance> for emlite::Val {
     fn from(s: SpeechSynthesisUtterance) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

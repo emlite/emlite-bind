@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct OES_element_index_uint {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for OES_element_index_uint {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for OES_element_index_uint {
+impl core::ops::Deref for OES_element_index_uint {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for OES_element_index_uint {
+impl core::ops::DerefMut for OES_element_index_uint {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for OES_element_index_uint {
 impl From<OES_element_index_uint> for emlite::Val {
     fn from(s: OES_element_index_uint) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

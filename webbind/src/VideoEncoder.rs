@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct VideoEncoderConfig {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for VideoEncoderConfig {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for VideoEncoderConfig {
+impl core::ops::Deref for VideoEncoderConfig {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for VideoEncoderConfig {
+impl core::ops::DerefMut for VideoEncoderConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for VideoEncoderConfig {
 impl From<VideoEncoderConfig> for emlite::Val {
     fn from(s: VideoEncoderConfig) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -155,7 +155,7 @@ impl VideoEncoderConfig {
         self.inner.set("contentHint", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct VideoEncoderEncodeOptions {
     inner: emlite::Val,
 }
@@ -170,13 +170,13 @@ impl FromVal for VideoEncoderEncodeOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for VideoEncoderEncodeOptions {
+impl core::ops::Deref for VideoEncoderEncodeOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for VideoEncoderEncodeOptions {
+impl core::ops::DerefMut for VideoEncoderEncodeOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -184,7 +184,7 @@ impl std::ops::DerefMut for VideoEncoderEncodeOptions {
 impl From<VideoEncoderEncodeOptions> for emlite::Val {
     fn from(s: VideoEncoderEncodeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -198,7 +198,7 @@ impl VideoEncoderEncodeOptions {
         self.inner.set("keyFrame", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct VideoEncoderSupport {
     inner: emlite::Val,
 }
@@ -213,13 +213,13 @@ impl FromVal for VideoEncoderSupport {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for VideoEncoderSupport {
+impl core::ops::Deref for VideoEncoderSupport {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for VideoEncoderSupport {
+impl core::ops::DerefMut for VideoEncoderSupport {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -227,7 +227,7 @@ impl std::ops::DerefMut for VideoEncoderSupport {
 impl From<VideoEncoderSupport> for emlite::Val {
     fn from(s: VideoEncoderSupport) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -250,7 +250,7 @@ impl VideoEncoderSupport {
         self.inner.set("config", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct VideoEncoder {
     inner: EventTarget,
 }
@@ -267,13 +267,13 @@ impl FromVal for VideoEncoder {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for VideoEncoder {
+impl core::ops::Deref for VideoEncoder {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for VideoEncoder {
+impl core::ops::DerefMut for VideoEncoder {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -281,7 +281,7 @@ impl std::ops::DerefMut for VideoEncoder {
 impl From<VideoEncoder> for emlite::Val {
     fn from(s: VideoEncoder) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

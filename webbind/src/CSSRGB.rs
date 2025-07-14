@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSRGB {
     inner: CSSColorValue,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSRGB {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSRGB {
+impl core::ops::Deref for CSSRGB {
     type Target = CSSColorValue;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSRGB {
+impl core::ops::DerefMut for CSSRGB {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSRGB {
 impl From<CSSRGB> for emlite::Val {
     fn from(s: CSSRGB) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

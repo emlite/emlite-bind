@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IDBTransactionOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for IDBTransactionOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IDBTransactionOptions {
+impl core::ops::Deref for IDBTransactionOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IDBTransactionOptions {
+impl core::ops::DerefMut for IDBTransactionOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for IDBTransactionOptions {
 impl From<IDBTransactionOptions> for emlite::Val {
     fn from(s: IDBTransactionOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -45,7 +45,7 @@ impl IDBTransactionOptions {
         self.inner.set("durability", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IDBObjectStoreParameters {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for IDBObjectStoreParameters {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IDBObjectStoreParameters {
+impl core::ops::Deref for IDBObjectStoreParameters {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IDBObjectStoreParameters {
+impl core::ops::DerefMut for IDBObjectStoreParameters {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for IDBObjectStoreParameters {
 impl From<IDBObjectStoreParameters> for emlite::Val {
     fn from(s: IDBObjectStoreParameters) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -97,7 +97,7 @@ impl IDBObjectStoreParameters {
         self.inner.set("autoIncrement", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IDBDatabase {
     inner: EventTarget,
 }
@@ -114,13 +114,13 @@ impl FromVal for IDBDatabase {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IDBDatabase {
+impl core::ops::Deref for IDBDatabase {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IDBDatabase {
+impl core::ops::DerefMut for IDBDatabase {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -128,7 +128,7 @@ impl std::ops::DerefMut for IDBDatabase {
 impl From<IDBDatabase> for emlite::Val {
     fn from(s: IDBDatabase) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

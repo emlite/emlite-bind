@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TextDecodeOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for TextDecodeOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for TextDecodeOptions {
+impl core::ops::Deref for TextDecodeOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for TextDecodeOptions {
+impl core::ops::DerefMut for TextDecodeOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for TextDecodeOptions {
 impl From<TextDecodeOptions> for emlite::Val {
     fn from(s: TextDecodeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl TextDecodeOptions {
         self.inner.set("stream", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TextDecoder {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for TextDecoder {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for TextDecoder {
+impl core::ops::Deref for TextDecoder {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for TextDecoder {
+impl core::ops::DerefMut for TextDecoder {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for TextDecoder {
 impl From<TextDecoder> for emlite::Val {
     fn from(s: TextDecoder) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

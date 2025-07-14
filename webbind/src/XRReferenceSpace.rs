@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRReferenceSpace {
     inner: XRSpace,
 }
@@ -17,13 +17,13 @@ impl FromVal for XRReferenceSpace {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRReferenceSpace {
+impl core::ops::Deref for XRReferenceSpace {
     type Target = XRSpace;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRReferenceSpace {
+impl core::ops::DerefMut for XRReferenceSpace {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for XRReferenceSpace {
 impl From<XRReferenceSpace> for emlite::Val {
     fn from(s: XRReferenceSpace) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

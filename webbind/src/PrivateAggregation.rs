@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PAHistogramContribution {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for PAHistogramContribution {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PAHistogramContribution {
+impl core::ops::Deref for PAHistogramContribution {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PAHistogramContribution {
+impl core::ops::DerefMut for PAHistogramContribution {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for PAHistogramContribution {
 impl From<PAHistogramContribution> for emlite::Val {
     fn from(s: PAHistogramContribution) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl PAHistogramContribution {
         self.inner.set("filteringId", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PADebugModeOptions {
     inner: emlite::Val,
 }
@@ -76,13 +76,13 @@ impl FromVal for PADebugModeOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PADebugModeOptions {
+impl core::ops::Deref for PADebugModeOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PADebugModeOptions {
+impl core::ops::DerefMut for PADebugModeOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -90,7 +90,7 @@ impl std::ops::DerefMut for PADebugModeOptions {
 impl From<PADebugModeOptions> for emlite::Val {
     fn from(s: PADebugModeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -104,7 +104,7 @@ impl PADebugModeOptions {
         self.inner.set("debugKey", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PrivateAggregation {
     inner: emlite::Val,
 }
@@ -121,13 +121,13 @@ impl FromVal for PrivateAggregation {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PrivateAggregation {
+impl core::ops::Deref for PrivateAggregation {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PrivateAggregation {
+impl core::ops::DerefMut for PrivateAggregation {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -135,7 +135,7 @@ impl std::ops::DerefMut for PrivateAggregation {
 impl From<PrivateAggregation> for emlite::Val {
     fn from(s: PrivateAggregation) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUCanvasConfiguration {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for GPUCanvasConfiguration {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUCanvasConfiguration {
+impl core::ops::Deref for GPUCanvasConfiguration {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUCanvasConfiguration {
+impl core::ops::DerefMut for GPUCanvasConfiguration {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for GPUCanvasConfiguration {
 impl From<GPUCanvasConfiguration> for emlite::Val {
     fn from(s: GPUCanvasConfiguration) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -99,7 +99,7 @@ impl GPUCanvasConfiguration {
         self.inner.set("alphaMode", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUCanvasContext {
     inner: emlite::Val,
 }
@@ -116,13 +116,13 @@ impl FromVal for GPUCanvasContext {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUCanvasContext {
+impl core::ops::Deref for GPUCanvasContext {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUCanvasContext {
+impl core::ops::DerefMut for GPUCanvasContext {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -130,7 +130,7 @@ impl std::ops::DerefMut for GPUCanvasContext {
 impl From<GPUCanvasContext> for emlite::Val {
     fn from(s: GPUCanvasContext) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

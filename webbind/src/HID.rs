@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HIDDeviceRequestOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for HIDDeviceRequestOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HIDDeviceRequestOptions {
+impl core::ops::Deref for HIDDeviceRequestOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HIDDeviceRequestOptions {
+impl core::ops::DerefMut for HIDDeviceRequestOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for HIDDeviceRequestOptions {
 impl From<HIDDeviceRequestOptions> for emlite::Val {
     fn from(s: HIDDeviceRequestOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -56,7 +56,7 @@ impl HIDDeviceRequestOptions {
         self.inner.set("exclusionFilters", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HID {
     inner: EventTarget,
 }
@@ -73,13 +73,13 @@ impl FromVal for HID {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HID {
+impl core::ops::Deref for HID {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HID {
+impl core::ops::DerefMut for HID {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -87,7 +87,7 @@ impl std::ops::DerefMut for HID {
 impl From<HID> for emlite::Val {
     fn from(s: HID) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct XRRigidTransform {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for XRRigidTransform {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for XRRigidTransform {
+impl core::ops::Deref for XRRigidTransform {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for XRRigidTransform {
+impl core::ops::DerefMut for XRRigidTransform {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for XRRigidTransform {
 impl From<XRRigidTransform> for emlite::Val {
     fn from(s: XRRigidTransform) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

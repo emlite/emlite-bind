@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUTextureViewDescriptor {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for GPUTextureViewDescriptor {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUTextureViewDescriptor {
+impl core::ops::Deref for GPUTextureViewDescriptor {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUTextureViewDescriptor {
+impl core::ops::DerefMut for GPUTextureViewDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for GPUTextureViewDescriptor {
 impl From<GPUTextureViewDescriptor> for emlite::Val {
     fn from(s: GPUTextureViewDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -106,7 +106,7 @@ impl GPUTextureViewDescriptor {
         self.inner.set("arrayLayerCount", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUTexture {
     inner: emlite::Val,
 }
@@ -123,13 +123,13 @@ impl FromVal for GPUTexture {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUTexture {
+impl core::ops::Deref for GPUTexture {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUTexture {
+impl core::ops::DerefMut for GPUTexture {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -137,7 +137,7 @@ impl std::ops::DerefMut for GPUTexture {
 impl From<GPUTexture> for emlite::Val {
     fn from(s: GPUTexture) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RadioNodeList {
     inner: NodeList,
 }
@@ -17,13 +17,13 @@ impl FromVal for RadioNodeList {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RadioNodeList {
+impl core::ops::Deref for RadioNodeList {
     type Target = NodeList;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RadioNodeList {
+impl core::ops::DerefMut for RadioNodeList {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for RadioNodeList {
 impl From<RadioNodeList> for emlite::Val {
     fn from(s: RadioNodeList) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SerialPortRequestOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for SerialPortRequestOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SerialPortRequestOptions {
+impl core::ops::Deref for SerialPortRequestOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SerialPortRequestOptions {
+impl core::ops::DerefMut for SerialPortRequestOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for SerialPortRequestOptions {
 impl From<SerialPortRequestOptions> for emlite::Val {
     fn from(s: SerialPortRequestOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -59,7 +59,7 @@ impl SerialPortRequestOptions {
         self.inner.set("allowedBluetoothServiceClassIds", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Serial {
     inner: EventTarget,
 }
@@ -76,13 +76,13 @@ impl FromVal for Serial {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Serial {
+impl core::ops::Deref for Serial {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Serial {
+impl core::ops::DerefMut for Serial {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -90,7 +90,7 @@ impl std::ops::DerefMut for Serial {
 impl From<Serial> for emlite::Val {
     fn from(s: Serial) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

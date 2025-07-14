@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TrustedTypePolicyOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for TrustedTypePolicyOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for TrustedTypePolicyOptions {
+impl core::ops::Deref for TrustedTypePolicyOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for TrustedTypePolicyOptions {
+impl core::ops::DerefMut for TrustedTypePolicyOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for TrustedTypePolicyOptions {
 impl From<TrustedTypePolicyOptions> for emlite::Val {
     fn from(s: TrustedTypePolicyOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl TrustedTypePolicyOptions {
         self.inner.set("createScriptURL", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TrustedTypePolicyFactory {
     inner: emlite::Val,
 }
@@ -78,13 +78,13 @@ impl FromVal for TrustedTypePolicyFactory {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for TrustedTypePolicyFactory {
+impl core::ops::Deref for TrustedTypePolicyFactory {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for TrustedTypePolicyFactory {
+impl core::ops::DerefMut for TrustedTypePolicyFactory {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -92,7 +92,7 @@ impl std::ops::DerefMut for TrustedTypePolicyFactory {
 impl From<TrustedTypePolicyFactory> for emlite::Val {
     fn from(s: TrustedTypePolicyFactory) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

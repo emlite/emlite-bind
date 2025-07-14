@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSMediaRule {
     inner: CSSConditionRule,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSMediaRule {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSMediaRule {
+impl core::ops::Deref for CSSMediaRule {
     type Target = CSSConditionRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSMediaRule {
+impl core::ops::DerefMut for CSSMediaRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSMediaRule {
 impl From<CSSMediaRule> for emlite::Val {
     fn from(s: CSSMediaRule) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

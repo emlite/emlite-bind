@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CharacterBoundsUpdateEvent {
     inner: Event,
 }
@@ -17,13 +17,13 @@ impl FromVal for CharacterBoundsUpdateEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CharacterBoundsUpdateEvent {
+impl core::ops::Deref for CharacterBoundsUpdateEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CharacterBoundsUpdateEvent {
+impl core::ops::DerefMut for CharacterBoundsUpdateEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CharacterBoundsUpdateEvent {
 impl From<CharacterBoundsUpdateEvent> for emlite::Val {
     fn from(s: CharacterBoundsUpdateEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

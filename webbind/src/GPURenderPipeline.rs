@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPURenderPipeline {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for GPURenderPipeline {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPURenderPipeline {
+impl core::ops::Deref for GPURenderPipeline {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPURenderPipeline {
+impl core::ops::DerefMut for GPURenderPipeline {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for GPURenderPipeline {
 impl From<GPURenderPipeline> for emlite::Val {
     fn from(s: GPURenderPipeline) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

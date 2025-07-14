@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SchedulerPostTaskOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for SchedulerPostTaskOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SchedulerPostTaskOptions {
+impl core::ops::Deref for SchedulerPostTaskOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SchedulerPostTaskOptions {
+impl core::ops::DerefMut for SchedulerPostTaskOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for SchedulerPostTaskOptions {
 impl From<SchedulerPostTaskOptions> for emlite::Val {
     fn from(s: SchedulerPostTaskOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl SchedulerPostTaskOptions {
         self.inner.set("delay", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Scheduler {
     inner: emlite::Val,
 }
@@ -78,13 +78,13 @@ impl FromVal for Scheduler {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Scheduler {
+impl core::ops::Deref for Scheduler {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Scheduler {
+impl core::ops::DerefMut for Scheduler {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -92,7 +92,7 @@ impl std::ops::DerefMut for Scheduler {
 impl From<Scheduler> for emlite::Val {
     fn from(s: Scheduler) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

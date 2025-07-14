@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ModuleExportDescriptor {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ModuleExportDescriptor {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ModuleExportDescriptor {
+impl core::ops::Deref for ModuleExportDescriptor {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ModuleExportDescriptor {
+impl core::ops::DerefMut for ModuleExportDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ModuleExportDescriptor {
 impl From<ModuleExportDescriptor> for emlite::Val {
     fn from(s: ModuleExportDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl ModuleExportDescriptor {
         self.inner.set("kind", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ModuleImportDescriptor {
     inner: emlite::Val,
 }
@@ -67,13 +67,13 @@ impl FromVal for ModuleImportDescriptor {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ModuleImportDescriptor {
+impl core::ops::Deref for ModuleImportDescriptor {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ModuleImportDescriptor {
+impl core::ops::DerefMut for ModuleImportDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -81,7 +81,7 @@ impl std::ops::DerefMut for ModuleImportDescriptor {
 impl From<ModuleImportDescriptor> for emlite::Val {
     fn from(s: ModuleImportDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -113,7 +113,7 @@ impl ModuleImportDescriptor {
         self.inner.set("kind", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Module {
     inner: emlite::Val,
 }
@@ -130,13 +130,13 @@ impl FromVal for Module {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Module {
+impl core::ops::Deref for Module {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Module {
+impl core::ops::DerefMut for Module {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -144,7 +144,7 @@ impl std::ops::DerefMut for Module {
 impl From<Module> for emlite::Val {
     fn from(s: Module) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct KeyframeEffect {
     inner: AnimationEffect,
 }
@@ -17,13 +17,13 @@ impl FromVal for KeyframeEffect {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for KeyframeEffect {
+impl core::ops::Deref for KeyframeEffect {
     type Target = AnimationEffect;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for KeyframeEffect {
+impl core::ops::DerefMut for KeyframeEffect {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for KeyframeEffect {
 impl From<KeyframeEffect> for emlite::Val {
     fn from(s: KeyframeEffect) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

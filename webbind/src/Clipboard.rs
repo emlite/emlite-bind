@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ClipboardUnsanitizedFormats {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ClipboardUnsanitizedFormats {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ClipboardUnsanitizedFormats {
+impl core::ops::Deref for ClipboardUnsanitizedFormats {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ClipboardUnsanitizedFormats {
+impl core::ops::DerefMut for ClipboardUnsanitizedFormats {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ClipboardUnsanitizedFormats {
 impl From<ClipboardUnsanitizedFormats> for emlite::Val {
     fn from(s: ClipboardUnsanitizedFormats) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -45,7 +45,7 @@ impl ClipboardUnsanitizedFormats {
         self.inner.set("unsanitized", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Clipboard {
     inner: EventTarget,
 }
@@ -62,13 +62,13 @@ impl FromVal for Clipboard {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Clipboard {
+impl core::ops::Deref for Clipboard {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Clipboard {
+impl core::ops::DerefMut for Clipboard {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -76,7 +76,7 @@ impl std::ops::DerefMut for Clipboard {
 impl From<Clipboard> for emlite::Val {
     fn from(s: Clipboard) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaKeySystemConfiguration {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for MediaKeySystemConfiguration {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaKeySystemConfiguration {
+impl core::ops::Deref for MediaKeySystemConfiguration {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaKeySystemConfiguration {
+impl core::ops::DerefMut for MediaKeySystemConfiguration {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for MediaKeySystemConfiguration {
 impl From<MediaKeySystemConfiguration> for emlite::Val {
     fn from(s: MediaKeySystemConfiguration) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -109,7 +109,7 @@ impl MediaKeySystemConfiguration {
         self.inner.set("sessionTypes", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RelatedApplication {
     inner: emlite::Val,
 }
@@ -124,13 +124,13 @@ impl FromVal for RelatedApplication {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RelatedApplication {
+impl core::ops::Deref for RelatedApplication {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RelatedApplication {
+impl core::ops::DerefMut for RelatedApplication {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -138,7 +138,7 @@ impl std::ops::DerefMut for RelatedApplication {
 impl From<RelatedApplication> for emlite::Val {
     fn from(s: RelatedApplication) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -179,7 +179,7 @@ impl RelatedApplication {
         self.inner.set("version", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HandwritingRecognizerQueryResult {
     inner: emlite::Val,
 }
@@ -194,13 +194,13 @@ impl FromVal for HandwritingRecognizerQueryResult {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HandwritingRecognizerQueryResult {
+impl core::ops::Deref for HandwritingRecognizerQueryResult {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HandwritingRecognizerQueryResult {
+impl core::ops::DerefMut for HandwritingRecognizerQueryResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -208,7 +208,7 @@ impl std::ops::DerefMut for HandwritingRecognizerQueryResult {
 impl From<HandwritingRecognizerQueryResult> for emlite::Val {
     fn from(s: HandwritingRecognizerQueryResult) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -240,7 +240,7 @@ impl HandwritingRecognizerQueryResult {
         self.inner.set("hints", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HandwritingModelConstraint {
     inner: emlite::Val,
 }
@@ -255,13 +255,13 @@ impl FromVal for HandwritingModelConstraint {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HandwritingModelConstraint {
+impl core::ops::Deref for HandwritingModelConstraint {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HandwritingModelConstraint {
+impl core::ops::DerefMut for HandwritingModelConstraint {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -269,7 +269,7 @@ impl std::ops::DerefMut for HandwritingModelConstraint {
 impl From<HandwritingModelConstraint> for emlite::Val {
     fn from(s: HandwritingModelConstraint) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -285,7 +285,7 @@ impl HandwritingModelConstraint {
         self.inner.set("languages", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AuctionAdInterestGroup {
     inner: emlite::Val,
 }
@@ -300,13 +300,13 @@ impl FromVal for AuctionAdInterestGroup {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AuctionAdInterestGroup {
+impl core::ops::Deref for AuctionAdInterestGroup {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AuctionAdInterestGroup {
+impl core::ops::DerefMut for AuctionAdInterestGroup {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -314,7 +314,7 @@ impl std::ops::DerefMut for AuctionAdInterestGroup {
 impl From<AuctionAdInterestGroup> for emlite::Val {
     fn from(s: AuctionAdInterestGroup) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -373,7 +373,7 @@ impl AuctionAdInterestGroup {
         self.inner.set("privateAggregationConfig", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AuctionAdInterestGroupKey {
     inner: emlite::Val,
 }
@@ -388,13 +388,13 @@ impl FromVal for AuctionAdInterestGroupKey {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AuctionAdInterestGroupKey {
+impl core::ops::Deref for AuctionAdInterestGroupKey {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AuctionAdInterestGroupKey {
+impl core::ops::DerefMut for AuctionAdInterestGroupKey {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -402,7 +402,7 @@ impl std::ops::DerefMut for AuctionAdInterestGroupKey {
 impl From<AuctionAdInterestGroupKey> for emlite::Val {
     fn from(s: AuctionAdInterestGroupKey) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -425,7 +425,7 @@ impl AuctionAdInterestGroupKey {
         self.inner.set("name", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AuctionAdConfig {
     inner: emlite::Val,
 }
@@ -440,13 +440,13 @@ impl FromVal for AuctionAdConfig {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AuctionAdConfig {
+impl core::ops::Deref for AuctionAdConfig {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AuctionAdConfig {
+impl core::ops::DerefMut for AuctionAdConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -454,7 +454,7 @@ impl std::ops::DerefMut for AuctionAdConfig {
 impl From<AuctionAdConfig> for emlite::Val {
     fn from(s: AuctionAdConfig) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -883,7 +883,7 @@ impl AuctionAdConfig {
         self.inner.set("requestId", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AdAuctionData {
     inner: emlite::Val,
 }
@@ -898,13 +898,13 @@ impl FromVal for AdAuctionData {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AdAuctionData {
+impl core::ops::Deref for AdAuctionData {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AdAuctionData {
+impl core::ops::DerefMut for AdAuctionData {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -912,7 +912,7 @@ impl std::ops::DerefMut for AdAuctionData {
 impl From<AdAuctionData> for emlite::Val {
     fn from(s: AdAuctionData) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -946,7 +946,7 @@ impl AdAuctionData {
         self.inner.set("requests", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AdAuctionDataConfig {
     inner: emlite::Val,
 }
@@ -961,13 +961,13 @@ impl FromVal for AdAuctionDataConfig {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AdAuctionDataConfig {
+impl core::ops::Deref for AdAuctionDataConfig {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AdAuctionDataConfig {
+impl core::ops::DerefMut for AdAuctionDataConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -975,7 +975,7 @@ impl std::ops::DerefMut for AdAuctionDataConfig {
 impl From<AdAuctionDataConfig> for emlite::Val {
     fn from(s: AdAuctionDataConfig) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1031,7 +1031,7 @@ impl AdAuctionDataConfig {
         self.inner.set("perBuyerConfig", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ShareData {
     inner: emlite::Val,
 }
@@ -1046,13 +1046,13 @@ impl FromVal for ShareData {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ShareData {
+impl core::ops::Deref for ShareData {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ShareData {
+impl core::ops::DerefMut for ShareData {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1060,7 +1060,7 @@ impl std::ops::DerefMut for ShareData {
 impl From<ShareData> for emlite::Val {
     fn from(s: ShareData) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1101,7 +1101,7 @@ impl ShareData {
         self.inner.set("url", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MIDIOptions {
     inner: emlite::Val,
 }
@@ -1116,13 +1116,13 @@ impl FromVal for MIDIOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MIDIOptions {
+impl core::ops::Deref for MIDIOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MIDIOptions {
+impl core::ops::DerefMut for MIDIOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1130,7 +1130,7 @@ impl std::ops::DerefMut for MIDIOptions {
 impl From<MIDIOptions> for emlite::Val {
     fn from(s: MIDIOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -1153,7 +1153,7 @@ impl MIDIOptions {
         self.inner.set("software", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Navigator {
     inner: emlite::Val,
 }
@@ -1170,13 +1170,13 @@ impl FromVal for Navigator {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Navigator {
+impl core::ops::Deref for Navigator {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Navigator {
+impl core::ops::DerefMut for Navigator {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -1184,7 +1184,7 @@ impl std::ops::DerefMut for Navigator {
 impl From<Navigator> for emlite::Val {
     fn from(s: Navigator) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

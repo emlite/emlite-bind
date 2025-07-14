@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ShowPopoverOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ShowPopoverOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ShowPopoverOptions {
+impl core::ops::Deref for ShowPopoverOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ShowPopoverOptions {
+impl core::ops::DerefMut for ShowPopoverOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ShowPopoverOptions {
 impl From<ShowPopoverOptions> for emlite::Val {
     fn from(s: ShowPopoverOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl ShowPopoverOptions {
         self.inner.set("source", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HTMLElement {
     inner: Element,
 }
@@ -60,13 +60,13 @@ impl FromVal for HTMLElement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HTMLElement {
+impl core::ops::Deref for HTMLElement {
     type Target = Element;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HTMLElement {
+impl core::ops::DerefMut for HTMLElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for HTMLElement {
 impl From<HTMLElement> for emlite::Val {
     fn from(s: HTMLElement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

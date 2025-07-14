@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WebSocket {
     inner: EventTarget,
 }
@@ -17,13 +17,13 @@ impl FromVal for WebSocket {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WebSocket {
+impl core::ops::Deref for WebSocket {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WebSocket {
+impl core::ops::DerefMut for WebSocket {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for WebSocket {
 impl From<WebSocket> for emlite::Val {
     fn from(s: WebSocket) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

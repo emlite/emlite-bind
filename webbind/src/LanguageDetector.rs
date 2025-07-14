@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct LanguageDetectorCreateOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for LanguageDetectorCreateOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for LanguageDetectorCreateOptions {
+impl core::ops::Deref for LanguageDetectorCreateOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for LanguageDetectorCreateOptions {
+impl core::ops::DerefMut for LanguageDetectorCreateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for LanguageDetectorCreateOptions {
 impl From<LanguageDetectorCreateOptions> for emlite::Val {
     fn from(s: LanguageDetectorCreateOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl LanguageDetectorCreateOptions {
         self.inner.set("monitor", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct LanguageDetectorCreateCoreOptions {
     inner: emlite::Val,
 }
@@ -67,13 +67,13 @@ impl FromVal for LanguageDetectorCreateCoreOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for LanguageDetectorCreateCoreOptions {
+impl core::ops::Deref for LanguageDetectorCreateCoreOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for LanguageDetectorCreateCoreOptions {
+impl core::ops::DerefMut for LanguageDetectorCreateCoreOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -81,7 +81,7 @@ impl std::ops::DerefMut for LanguageDetectorCreateCoreOptions {
 impl From<LanguageDetectorCreateCoreOptions> for emlite::Val {
     fn from(s: LanguageDetectorCreateCoreOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -97,7 +97,7 @@ impl LanguageDetectorCreateCoreOptions {
         self.inner.set("expectedInputLanguages", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct LanguageDetectionResult {
     inner: emlite::Val,
 }
@@ -112,13 +112,13 @@ impl FromVal for LanguageDetectionResult {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for LanguageDetectionResult {
+impl core::ops::Deref for LanguageDetectionResult {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for LanguageDetectionResult {
+impl core::ops::DerefMut for LanguageDetectionResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -126,7 +126,7 @@ impl std::ops::DerefMut for LanguageDetectionResult {
 impl From<LanguageDetectionResult> for emlite::Val {
     fn from(s: LanguageDetectionResult) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -151,7 +151,7 @@ impl LanguageDetectionResult {
         self.inner.set("confidence", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct LanguageDetectorDetectOptions {
     inner: emlite::Val,
 }
@@ -166,13 +166,13 @@ impl FromVal for LanguageDetectorDetectOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for LanguageDetectorDetectOptions {
+impl core::ops::Deref for LanguageDetectorDetectOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for LanguageDetectorDetectOptions {
+impl core::ops::DerefMut for LanguageDetectorDetectOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -180,7 +180,7 @@ impl std::ops::DerefMut for LanguageDetectorDetectOptions {
 impl From<LanguageDetectorDetectOptions> for emlite::Val {
     fn from(s: LanguageDetectorDetectOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -194,7 +194,7 @@ impl LanguageDetectorDetectOptions {
         self.inner.set("signal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct LanguageDetector {
     inner: emlite::Val,
 }
@@ -211,13 +211,13 @@ impl FromVal for LanguageDetector {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for LanguageDetector {
+impl core::ops::Deref for LanguageDetector {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for LanguageDetector {
+impl core::ops::DerefMut for LanguageDetector {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -225,7 +225,7 @@ impl std::ops::DerefMut for LanguageDetector {
 impl From<LanguageDetector> for emlite::Val {
     fn from(s: LanguageDetector) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

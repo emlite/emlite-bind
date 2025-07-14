@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CompositionEvent {
     inner: UIEvent,
 }
@@ -17,13 +17,13 @@ impl FromVal for CompositionEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CompositionEvent {
+impl core::ops::Deref for CompositionEvent {
     type Target = UIEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CompositionEvent {
+impl core::ops::DerefMut for CompositionEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CompositionEvent {
 impl From<CompositionEvent> for emlite::Val {
     fn from(s: CompositionEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

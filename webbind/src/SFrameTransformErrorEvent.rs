@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SFrameTransformErrorEvent {
     inner: Event,
 }
@@ -17,13 +17,13 @@ impl FromVal for SFrameTransformErrorEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SFrameTransformErrorEvent {
+impl core::ops::Deref for SFrameTransformErrorEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SFrameTransformErrorEvent {
+impl core::ops::DerefMut for SFrameTransformErrorEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for SFrameTransformErrorEvent {
 impl From<SFrameTransformErrorEvent> for emlite::Val {
     fn from(s: SFrameTransformErrorEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

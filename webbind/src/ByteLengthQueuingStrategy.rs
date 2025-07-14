@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ByteLengthQueuingStrategy {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for ByteLengthQueuingStrategy {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ByteLengthQueuingStrategy {
+impl core::ops::Deref for ByteLengthQueuingStrategy {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ByteLengthQueuingStrategy {
+impl core::ops::DerefMut for ByteLengthQueuingStrategy {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for ByteLengthQueuingStrategy {
 impl From<ByteLengthQueuingStrategy> for emlite::Val {
     fn from(s: ByteLengthQueuingStrategy) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

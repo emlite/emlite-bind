@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GetComposedRangesOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for GetComposedRangesOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GetComposedRangesOptions {
+impl core::ops::Deref for GetComposedRangesOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GetComposedRangesOptions {
+impl core::ops::DerefMut for GetComposedRangesOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for GetComposedRangesOptions {
 impl From<GetComposedRangesOptions> for emlite::Val {
     fn from(s: GetComposedRangesOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -45,7 +45,7 @@ impl GetComposedRangesOptions {
         self.inner.set("shadowRoots", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Selection {
     inner: emlite::Val,
 }
@@ -62,13 +62,13 @@ impl FromVal for Selection {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Selection {
+impl core::ops::Deref for Selection {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Selection {
+impl core::ops::DerefMut for Selection {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -76,7 +76,7 @@ impl std::ops::DerefMut for Selection {
 impl From<Selection> for emlite::Val {
     fn from(s: Selection) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

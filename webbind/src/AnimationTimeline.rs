@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AnimationTimeline {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for AnimationTimeline {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AnimationTimeline {
+impl core::ops::Deref for AnimationTimeline {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AnimationTimeline {
+impl core::ops::DerefMut for AnimationTimeline {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for AnimationTimeline {
 impl From<AnimationTimeline> for emlite::Val {
     fn from(s: AnimationTimeline) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

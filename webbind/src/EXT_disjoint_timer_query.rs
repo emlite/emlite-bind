@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct EXT_disjoint_timer_query {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for EXT_disjoint_timer_query {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for EXT_disjoint_timer_query {
+impl core::ops::Deref for EXT_disjoint_timer_query {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for EXT_disjoint_timer_query {
+impl core::ops::DerefMut for EXT_disjoint_timer_query {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for EXT_disjoint_timer_query {
 impl From<EXT_disjoint_timer_query> for emlite::Val {
     fn from(s: EXT_disjoint_timer_query) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

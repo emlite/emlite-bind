@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CredentialRequestOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for CredentialRequestOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CredentialRequestOptions {
+impl core::ops::Deref for CredentialRequestOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CredentialRequestOptions {
+impl core::ops::DerefMut for CredentialRequestOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for CredentialRequestOptions {
 impl From<CredentialRequestOptions> for emlite::Val {
     fn from(s: CredentialRequestOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -45,7 +45,7 @@ impl CredentialRequestOptions {
         self.inner.set("publicKey", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CredentialCreationOptions {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for CredentialCreationOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CredentialCreationOptions {
+impl core::ops::Deref for CredentialCreationOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CredentialCreationOptions {
+impl core::ops::DerefMut for CredentialCreationOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for CredentialCreationOptions {
 impl From<CredentialCreationOptions> for emlite::Val {
     fn from(s: CredentialCreationOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -90,7 +90,7 @@ impl CredentialCreationOptions {
         self.inner.set("publicKey", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CredentialsContainer {
     inner: emlite::Val,
 }
@@ -107,13 +107,13 @@ impl FromVal for CredentialsContainer {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CredentialsContainer {
+impl core::ops::Deref for CredentialsContainer {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CredentialsContainer {
+impl core::ops::DerefMut for CredentialsContainer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -121,7 +121,7 @@ impl std::ops::DerefMut for CredentialsContainer {
 impl From<CredentialsContainer> for emlite::Val {
     fn from(s: CredentialsContainer) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

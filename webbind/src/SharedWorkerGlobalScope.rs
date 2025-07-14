@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SharedWorkerGlobalScope {
     inner: WorkerGlobalScope,
 }
@@ -17,13 +17,13 @@ impl FromVal for SharedWorkerGlobalScope {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SharedWorkerGlobalScope {
+impl core::ops::Deref for SharedWorkerGlobalScope {
     type Target = WorkerGlobalScope;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SharedWorkerGlobalScope {
+impl core::ops::DerefMut for SharedWorkerGlobalScope {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for SharedWorkerGlobalScope {
 impl From<SharedWorkerGlobalScope> for emlite::Val {
     fn from(s: SharedWorkerGlobalScope) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

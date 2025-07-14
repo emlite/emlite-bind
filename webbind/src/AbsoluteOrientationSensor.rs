@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AbsoluteOrientationSensor {
     inner: OrientationSensor,
 }
@@ -17,13 +17,13 @@ impl FromVal for AbsoluteOrientationSensor {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AbsoluteOrientationSensor {
+impl core::ops::Deref for AbsoluteOrientationSensor {
     type Target = OrientationSensor;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AbsoluteOrientationSensor {
+impl core::ops::DerefMut for AbsoluteOrientationSensor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for AbsoluteOrientationSensor {
 impl From<AbsoluteOrientationSensor> for emlite::Val {
     fn from(s: AbsoluteOrientationSensor) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

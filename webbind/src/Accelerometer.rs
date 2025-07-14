@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Accelerometer {
     inner: Sensor,
 }
@@ -17,13 +17,13 @@ impl FromVal for Accelerometer {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Accelerometer {
+impl core::ops::Deref for Accelerometer {
     type Target = Sensor;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Accelerometer {
+impl core::ops::DerefMut for Accelerometer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for Accelerometer {
 impl From<Accelerometer> for emlite::Val {
     fn from(s: Accelerometer) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

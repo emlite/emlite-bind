@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BackgroundFetchUIOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for BackgroundFetchUIOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BackgroundFetchUIOptions {
+impl core::ops::Deref for BackgroundFetchUIOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BackgroundFetchUIOptions {
+impl core::ops::DerefMut for BackgroundFetchUIOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for BackgroundFetchUIOptions {
 impl From<BackgroundFetchUIOptions> for emlite::Val {
     fn from(s: BackgroundFetchUIOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -54,7 +54,7 @@ impl BackgroundFetchUIOptions {
         self.inner.set("title", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BackgroundFetchUpdateUIEvent {
     inner: BackgroundFetchEvent,
 }
@@ -71,13 +71,13 @@ impl FromVal for BackgroundFetchUpdateUIEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BackgroundFetchUpdateUIEvent {
+impl core::ops::Deref for BackgroundFetchUpdateUIEvent {
     type Target = BackgroundFetchEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BackgroundFetchUpdateUIEvent {
+impl core::ops::DerefMut for BackgroundFetchUpdateUIEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -85,7 +85,7 @@ impl std::ops::DerefMut for BackgroundFetchUpdateUIEvent {
 impl From<BackgroundFetchUpdateUIEvent> for emlite::Val {
     fn from(s: BackgroundFetchUpdateUIEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

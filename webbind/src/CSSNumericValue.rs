@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSNumericType {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for CSSNumericType {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSNumericType {
+impl core::ops::Deref for CSSNumericType {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSNumericType {
+impl core::ops::DerefMut for CSSNumericType {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for CSSNumericType {
 impl From<CSSNumericType> for emlite::Val {
     fn from(s: CSSNumericType) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -106,7 +106,7 @@ impl CSSNumericType {
         self.inner.set("percentHint", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSNumericValue {
     inner: CSSStyleValue,
 }
@@ -123,13 +123,13 @@ impl FromVal for CSSNumericValue {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSNumericValue {
+impl core::ops::Deref for CSSNumericValue {
     type Target = CSSStyleValue;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSNumericValue {
+impl core::ops::DerefMut for CSSNumericValue {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -137,7 +137,7 @@ impl std::ops::DerefMut for CSSNumericValue {
 impl From<CSSNumericValue> for emlite::Val {
     fn from(s: CSSNumericValue) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

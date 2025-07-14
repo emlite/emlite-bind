@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
     inner: InterestGroupScriptRunnerGlobalScope,
 }
@@ -17,13 +17,13 @@ impl FromVal for InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
+impl core::ops::Deref for InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
     type Target = InterestGroupScriptRunnerGlobalScope;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
+impl core::ops::DerefMut for InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for InterestGroupBiddingAndScoringScriptRunnerGlobalScop
 impl From<InterestGroupBiddingAndScoringScriptRunnerGlobalScope> for emlite::Val {
     fn from(s: InterestGroupBiddingAndScoringScriptRunnerGlobalScope) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

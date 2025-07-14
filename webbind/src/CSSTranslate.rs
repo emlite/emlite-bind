@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSTranslate {
     inner: CSSTransformComponent,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSTranslate {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSTranslate {
+impl core::ops::Deref for CSSTranslate {
     type Target = CSSTransformComponent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSTranslate {
+impl core::ops::DerefMut for CSSTranslate {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSTranslate {
 impl From<CSSTranslate> for emlite::Val {
     fn from(s: CSSTranslate) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

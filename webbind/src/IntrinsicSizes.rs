@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IntrinsicSizes {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for IntrinsicSizes {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IntrinsicSizes {
+impl core::ops::Deref for IntrinsicSizes {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IntrinsicSizes {
+impl core::ops::DerefMut for IntrinsicSizes {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for IntrinsicSizes {
 impl From<IntrinsicSizes> for emlite::Val {
     fn from(s: IntrinsicSizes) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

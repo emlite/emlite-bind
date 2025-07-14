@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct LayoutEdges {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for LayoutEdges {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for LayoutEdges {
+impl core::ops::Deref for LayoutEdges {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for LayoutEdges {
+impl core::ops::DerefMut for LayoutEdges {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for LayoutEdges {
 impl From<LayoutEdges> for emlite::Val {
     fn from(s: LayoutEdges) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

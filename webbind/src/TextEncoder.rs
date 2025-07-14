@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TextEncoderEncodeIntoResult {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for TextEncoderEncodeIntoResult {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for TextEncoderEncodeIntoResult {
+impl core::ops::Deref for TextEncoderEncodeIntoResult {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for TextEncoderEncodeIntoResult {
+impl core::ops::DerefMut for TextEncoderEncodeIntoResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for TextEncoderEncodeIntoResult {
 impl From<TextEncoderEncodeIntoResult> for emlite::Val {
     fn from(s: TextEncoderEncodeIntoResult) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl TextEncoderEncodeIntoResult {
         self.inner.set("written", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TextEncoder {
     inner: emlite::Val,
 }
@@ -69,13 +69,13 @@ impl FromVal for TextEncoder {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for TextEncoder {
+impl core::ops::Deref for TextEncoder {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for TextEncoder {
+impl core::ops::DerefMut for TextEncoder {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for TextEncoder {
 impl From<TextEncoder> for emlite::Val {
     fn from(s: TextEncoder) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUPipelineLayout {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for GPUPipelineLayout {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUPipelineLayout {
+impl core::ops::Deref for GPUPipelineLayout {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUPipelineLayout {
+impl core::ops::DerefMut for GPUPipelineLayout {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for GPUPipelineLayout {
 impl From<GPUPipelineLayout> for emlite::Val {
     fn from(s: GPUPipelineLayout) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

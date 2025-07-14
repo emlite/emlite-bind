@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PermissionStatus {
     inner: EventTarget,
 }
@@ -17,13 +17,13 @@ impl FromVal for PermissionStatus {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PermissionStatus {
+impl core::ops::Deref for PermissionStatus {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PermissionStatus {
+impl core::ops::DerefMut for PermissionStatus {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for PermissionStatus {
 impl From<PermissionStatus> for emlite::Val {
     fn from(s: PermissionStatus) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PromptResponseObject {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for PromptResponseObject {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PromptResponseObject {
+impl core::ops::Deref for PromptResponseObject {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PromptResponseObject {
+impl core::ops::DerefMut for PromptResponseObject {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for PromptResponseObject {
 impl From<PromptResponseObject> for emlite::Val {
     fn from(s: PromptResponseObject) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl PromptResponseObject {
         self.inner.set("userChoice", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BeforeInstallPromptEvent {
     inner: Event,
 }
@@ -60,13 +60,13 @@ impl FromVal for BeforeInstallPromptEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BeforeInstallPromptEvent {
+impl core::ops::Deref for BeforeInstallPromptEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BeforeInstallPromptEvent {
+impl core::ops::DerefMut for BeforeInstallPromptEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for BeforeInstallPromptEvent {
 impl From<BeforeInstallPromptEvent> for emlite::Val {
     fn from(s: BeforeInstallPromptEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

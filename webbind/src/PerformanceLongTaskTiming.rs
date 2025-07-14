@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PerformanceLongTaskTiming {
     inner: PerformanceEntry,
 }
@@ -17,13 +17,13 @@ impl FromVal for PerformanceLongTaskTiming {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PerformanceLongTaskTiming {
+impl core::ops::Deref for PerformanceLongTaskTiming {
     type Target = PerformanceEntry;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PerformanceLongTaskTiming {
+impl core::ops::DerefMut for PerformanceLongTaskTiming {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for PerformanceLongTaskTiming {
 impl From<PerformanceLongTaskTiming> for emlite::Val {
     fn from(s: PerformanceLongTaskTiming) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

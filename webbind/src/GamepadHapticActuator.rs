@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GamepadEffectParameters {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for GamepadEffectParameters {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GamepadEffectParameters {
+impl core::ops::Deref for GamepadEffectParameters {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GamepadEffectParameters {
+impl core::ops::DerefMut for GamepadEffectParameters {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for GamepadEffectParameters {
 impl From<GamepadEffectParameters> for emlite::Val {
     fn from(s: GamepadEffectParameters) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -88,7 +88,7 @@ impl GamepadEffectParameters {
         self.inner.set("rightTrigger", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GamepadHapticActuator {
     inner: emlite::Val,
 }
@@ -105,13 +105,13 @@ impl FromVal for GamepadHapticActuator {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GamepadHapticActuator {
+impl core::ops::Deref for GamepadHapticActuator {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GamepadHapticActuator {
+impl core::ops::DerefMut for GamepadHapticActuator {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -119,7 +119,7 @@ impl std::ops::DerefMut for GamepadHapticActuator {
 impl From<GamepadHapticActuator> for emlite::Val {
     fn from(s: GamepadHapticActuator) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

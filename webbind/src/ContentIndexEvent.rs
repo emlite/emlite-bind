@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ContentIndexEvent {
     inner: ExtendableEvent,
 }
@@ -17,13 +17,13 @@ impl FromVal for ContentIndexEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ContentIndexEvent {
+impl core::ops::Deref for ContentIndexEvent {
     type Target = ExtendableEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ContentIndexEvent {
+impl core::ops::DerefMut for ContentIndexEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for ContentIndexEvent {
 impl From<ContentIndexEvent> for emlite::Val {
     fn from(s: ContentIndexEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

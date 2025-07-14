@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NavigatorUABrandVersion {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for NavigatorUABrandVersion {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NavigatorUABrandVersion {
+impl core::ops::Deref for NavigatorUABrandVersion {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NavigatorUABrandVersion {
+impl core::ops::DerefMut for NavigatorUABrandVersion {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for NavigatorUABrandVersion {
 impl From<NavigatorUABrandVersion> for emlite::Val {
     fn from(s: NavigatorUABrandVersion) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl NavigatorUABrandVersion {
         self.inner.set("version", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct UADataValues {
     inner: emlite::Val,
 }
@@ -67,13 +67,13 @@ impl FromVal for UADataValues {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for UADataValues {
+impl core::ops::Deref for UADataValues {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for UADataValues {
+impl core::ops::DerefMut for UADataValues {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -81,7 +81,7 @@ impl std::ops::DerefMut for UADataValues {
 impl From<UADataValues> for emlite::Val {
     fn from(s: UADataValues) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -191,7 +191,7 @@ impl UADataValues {
         self.inner.set("wow64", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct UALowEntropyJSON {
     inner: emlite::Val,
 }
@@ -206,13 +206,13 @@ impl FromVal for UALowEntropyJSON {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for UALowEntropyJSON {
+impl core::ops::Deref for UALowEntropyJSON {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for UALowEntropyJSON {
+impl core::ops::DerefMut for UALowEntropyJSON {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -220,7 +220,7 @@ impl std::ops::DerefMut for UALowEntropyJSON {
 impl From<UALowEntropyJSON> for emlite::Val {
     fn from(s: UALowEntropyJSON) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -254,7 +254,7 @@ impl UALowEntropyJSON {
         self.inner.set("platform", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NavigatorUAData {
     inner: emlite::Val,
 }
@@ -271,13 +271,13 @@ impl FromVal for NavigatorUAData {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NavigatorUAData {
+impl core::ops::Deref for NavigatorUAData {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NavigatorUAData {
+impl core::ops::DerefMut for NavigatorUAData {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -285,7 +285,7 @@ impl std::ops::DerefMut for NavigatorUAData {
 impl From<NavigatorUAData> for emlite::Val {
     fn from(s: NavigatorUAData) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AttributionAggregationServices {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for AttributionAggregationServices {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AttributionAggregationServices {
+impl core::ops::Deref for AttributionAggregationServices {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AttributionAggregationServices {
+impl core::ops::DerefMut for AttributionAggregationServices {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for AttributionAggregationServices {
 impl From<AttributionAggregationServices> for emlite::Val {
     fn from(s: AttributionAggregationServices) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

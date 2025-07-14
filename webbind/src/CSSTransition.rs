@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSTransition {
     inner: Animation,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSTransition {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSTransition {
+impl core::ops::Deref for CSSTransition {
     type Target = Animation;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSTransition {
+impl core::ops::DerefMut for CSSTransition {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSTransition {
 impl From<CSSTransition> for emlite::Val {
     fn from(s: CSSTransition) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

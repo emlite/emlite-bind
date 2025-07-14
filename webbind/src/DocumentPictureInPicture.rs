@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DocumentPictureInPictureOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for DocumentPictureInPictureOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DocumentPictureInPictureOptions {
+impl core::ops::Deref for DocumentPictureInPictureOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DocumentPictureInPictureOptions {
+impl core::ops::DerefMut for DocumentPictureInPictureOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for DocumentPictureInPictureOptions {
 impl From<DocumentPictureInPictureOptions> for emlite::Val {
     fn from(s: DocumentPictureInPictureOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -70,7 +70,7 @@ impl DocumentPictureInPictureOptions {
         self.inner.set("preferInitialWindowPlacement", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DocumentPictureInPicture {
     inner: EventTarget,
 }
@@ -87,13 +87,13 @@ impl FromVal for DocumentPictureInPicture {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DocumentPictureInPicture {
+impl core::ops::Deref for DocumentPictureInPicture {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DocumentPictureInPicture {
+impl core::ops::DerefMut for DocumentPictureInPicture {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -101,7 +101,7 @@ impl std::ops::DerefMut for DocumentPictureInPicture {
 impl From<DocumentPictureInPicture> for emlite::Val {
     fn from(s: DocumentPictureInPicture) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

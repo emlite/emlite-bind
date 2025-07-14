@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ReadableStreamBYOBRequest {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for ReadableStreamBYOBRequest {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ReadableStreamBYOBRequest {
+impl core::ops::Deref for ReadableStreamBYOBRequest {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ReadableStreamBYOBRequest {
+impl core::ops::DerefMut for ReadableStreamBYOBRequest {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for ReadableStreamBYOBRequest {
 impl From<ReadableStreamBYOBRequest> for emlite::Val {
     fn from(s: ReadableStreamBYOBRequest) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

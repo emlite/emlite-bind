@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AudioTimestamp {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for AudioTimestamp {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AudioTimestamp {
+impl core::ops::Deref for AudioTimestamp {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AudioTimestamp {
+impl core::ops::DerefMut for AudioTimestamp {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for AudioTimestamp {
 impl From<AudioTimestamp> for emlite::Val {
     fn from(s: AudioTimestamp) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl AudioTimestamp {
         self.inner.set("performanceTime", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AudioContext {
     inner: BaseAudioContext,
 }
@@ -69,13 +69,13 @@ impl FromVal for AudioContext {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AudioContext {
+impl core::ops::Deref for AudioContext {
     type Target = BaseAudioContext;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AudioContext {
+impl core::ops::DerefMut for AudioContext {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for AudioContext {
 impl From<AudioContext> for emlite::Val {
     fn from(s: AudioContext) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

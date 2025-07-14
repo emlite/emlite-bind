@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct StorageEstimate {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for StorageEstimate {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for StorageEstimate {
+impl core::ops::Deref for StorageEstimate {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for StorageEstimate {
+impl core::ops::DerefMut for StorageEstimate {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for StorageEstimate {
 impl From<StorageEstimate> for emlite::Val {
     fn from(s: StorageEstimate) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl StorageEstimate {
         self.inner.set("quota", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct StorageManager {
     inner: emlite::Val,
 }
@@ -69,13 +69,13 @@ impl FromVal for StorageManager {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for StorageManager {
+impl core::ops::Deref for StorageManager {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for StorageManager {
+impl core::ops::DerefMut for StorageManager {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for StorageManager {
 impl From<StorageManager> for emlite::Val {
     fn from(s: StorageManager) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

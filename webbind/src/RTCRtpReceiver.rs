@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCRtpReceiveParameters {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for RTCRtpReceiveParameters {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCRtpReceiveParameters {
+impl core::ops::Deref for RTCRtpReceiveParameters {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCRtpReceiveParameters {
+impl core::ops::DerefMut for RTCRtpReceiveParameters {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,12 +29,12 @@ impl std::ops::DerefMut for RTCRtpReceiveParameters {
 impl From<RTCRtpReceiveParameters> for emlite::Val {
     fn from(s: RTCRtpReceiveParameters) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCRtpContributingSource {
     inner: emlite::Val,
 }
@@ -49,13 +49,13 @@ impl FromVal for RTCRtpContributingSource {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCRtpContributingSource {
+impl core::ops::Deref for RTCRtpContributingSource {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCRtpContributingSource {
+impl core::ops::DerefMut for RTCRtpContributingSource {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -63,7 +63,7 @@ impl std::ops::DerefMut for RTCRtpContributingSource {
 impl From<RTCRtpContributingSource> for emlite::Val {
     fn from(s: RTCRtpContributingSource) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -104,7 +104,7 @@ impl RTCRtpContributingSource {
         self.inner.set("rtpTimestamp", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCRtpSynchronizationSource {
     inner: emlite::Val,
 }
@@ -119,13 +119,13 @@ impl FromVal for RTCRtpSynchronizationSource {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCRtpSynchronizationSource {
+impl core::ops::Deref for RTCRtpSynchronizationSource {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCRtpSynchronizationSource {
+impl core::ops::DerefMut for RTCRtpSynchronizationSource {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -133,12 +133,12 @@ impl std::ops::DerefMut for RTCRtpSynchronizationSource {
 impl From<RTCRtpSynchronizationSource> for emlite::Val {
     fn from(s: RTCRtpSynchronizationSource) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCRtpReceiver {
     inner: emlite::Val,
 }
@@ -155,13 +155,13 @@ impl FromVal for RTCRtpReceiver {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCRtpReceiver {
+impl core::ops::Deref for RTCRtpReceiver {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCRtpReceiver {
+impl core::ops::DerefMut for RTCRtpReceiver {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -169,7 +169,7 @@ impl std::ops::DerefMut for RTCRtpReceiver {
 impl From<RTCRtpReceiver> for emlite::Val {
     fn from(s: RTCRtpReceiver) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

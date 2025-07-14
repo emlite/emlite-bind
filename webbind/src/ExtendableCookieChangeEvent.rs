@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ExtendableCookieChangeEvent {
     inner: ExtendableEvent,
 }
@@ -17,13 +17,13 @@ impl FromVal for ExtendableCookieChangeEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ExtendableCookieChangeEvent {
+impl core::ops::Deref for ExtendableCookieChangeEvent {
     type Target = ExtendableEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ExtendableCookieChangeEvent {
+impl core::ops::DerefMut for ExtendableCookieChangeEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for ExtendableCookieChangeEvent {
 impl From<ExtendableCookieChangeEvent> for emlite::Val {
     fn from(s: ExtendableCookieChangeEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

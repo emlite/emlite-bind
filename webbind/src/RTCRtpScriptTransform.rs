@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCRtpScriptTransform {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for RTCRtpScriptTransform {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCRtpScriptTransform {
+impl core::ops::Deref for RTCRtpScriptTransform {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCRtpScriptTransform {
+impl core::ops::DerefMut for RTCRtpScriptTransform {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for RTCRtpScriptTransform {
 impl From<RTCRtpScriptTransform> for emlite::Val {
     fn from(s: RTCRtpScriptTransform) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

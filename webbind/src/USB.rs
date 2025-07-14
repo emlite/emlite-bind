@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct USBDeviceRequestOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for USBDeviceRequestOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for USBDeviceRequestOptions {
+impl core::ops::Deref for USBDeviceRequestOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for USBDeviceRequestOptions {
+impl core::ops::DerefMut for USBDeviceRequestOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for USBDeviceRequestOptions {
 impl From<USBDeviceRequestOptions> for emlite::Val {
     fn from(s: USBDeviceRequestOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -56,7 +56,7 @@ impl USBDeviceRequestOptions {
         self.inner.set("exclusionFilters", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct USB {
     inner: EventTarget,
 }
@@ -73,13 +73,13 @@ impl FromVal for USB {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for USB {
+impl core::ops::Deref for USB {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for USB {
+impl core::ops::DerefMut for USB {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -87,7 +87,7 @@ impl std::ops::DerefMut for USB {
 impl From<USB> for emlite::Val {
     fn from(s: USB) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

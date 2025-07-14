@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaKeySession {
     inner: EventTarget,
 }
@@ -17,13 +17,13 @@ impl FromVal for MediaKeySession {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaKeySession {
+impl core::ops::Deref for MediaKeySession {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaKeySession {
+impl core::ops::DerefMut for MediaKeySession {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for MediaKeySession {
 impl From<MediaKeySession> for emlite::Val {
     fn from(s: MediaKeySession) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

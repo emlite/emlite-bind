@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RewriterCreateOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for RewriterCreateOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RewriterCreateOptions {
+impl core::ops::Deref for RewriterCreateOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RewriterCreateOptions {
+impl core::ops::DerefMut for RewriterCreateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for RewriterCreateOptions {
 impl From<RewriterCreateOptions> for emlite::Val {
     fn from(s: RewriterCreateOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl RewriterCreateOptions {
         self.inner.set("sharedContext", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RewriterCreateCoreOptions {
     inner: emlite::Val,
 }
@@ -76,13 +76,13 @@ impl FromVal for RewriterCreateCoreOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RewriterCreateCoreOptions {
+impl core::ops::Deref for RewriterCreateCoreOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RewriterCreateCoreOptions {
+impl core::ops::DerefMut for RewriterCreateCoreOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -90,7 +90,7 @@ impl std::ops::DerefMut for RewriterCreateCoreOptions {
 impl From<RewriterCreateCoreOptions> for emlite::Val {
     fn from(s: RewriterCreateCoreOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -153,7 +153,7 @@ impl RewriterCreateCoreOptions {
         self.inner.set("outputLanguage", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RewriterRewriteOptions {
     inner: emlite::Val,
 }
@@ -168,13 +168,13 @@ impl FromVal for RewriterRewriteOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RewriterRewriteOptions {
+impl core::ops::Deref for RewriterRewriteOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RewriterRewriteOptions {
+impl core::ops::DerefMut for RewriterRewriteOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -182,7 +182,7 @@ impl std::ops::DerefMut for RewriterRewriteOptions {
 impl From<RewriterRewriteOptions> for emlite::Val {
     fn from(s: RewriterRewriteOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -205,7 +205,7 @@ impl RewriterRewriteOptions {
         self.inner.set("signal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Rewriter {
     inner: emlite::Val,
 }
@@ -222,13 +222,13 @@ impl FromVal for Rewriter {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Rewriter {
+impl core::ops::Deref for Rewriter {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Rewriter {
+impl core::ops::DerefMut for Rewriter {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -236,7 +236,7 @@ impl std::ops::DerefMut for Rewriter {
 impl From<Rewriter> for emlite::Val {
     fn from(s: Rewriter) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CanvasRenderingContext2DSettings {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for CanvasRenderingContext2DSettings {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CanvasRenderingContext2DSettings {
+impl core::ops::Deref for CanvasRenderingContext2DSettings {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CanvasRenderingContext2DSettings {
+impl core::ops::DerefMut for CanvasRenderingContext2DSettings {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for CanvasRenderingContext2DSettings {
 impl From<CanvasRenderingContext2DSettings> for emlite::Val {
     fn from(s: CanvasRenderingContext2DSettings) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -79,7 +79,7 @@ impl CanvasRenderingContext2DSettings {
         self.inner.set("willReadFrequently", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ImageDataSettings {
     inner: emlite::Val,
 }
@@ -94,13 +94,13 @@ impl FromVal for ImageDataSettings {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ImageDataSettings {
+impl core::ops::Deref for ImageDataSettings {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ImageDataSettings {
+impl core::ops::DerefMut for ImageDataSettings {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -108,7 +108,7 @@ impl std::ops::DerefMut for ImageDataSettings {
 impl From<ImageDataSettings> for emlite::Val {
     fn from(s: ImageDataSettings) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -131,7 +131,7 @@ impl ImageDataSettings {
         self.inner.set("pixelFormat", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CanvasRenderingContext2D {
     inner: emlite::Val,
 }
@@ -148,13 +148,13 @@ impl FromVal for CanvasRenderingContext2D {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CanvasRenderingContext2D {
+impl core::ops::Deref for CanvasRenderingContext2D {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CanvasRenderingContext2D {
+impl core::ops::DerefMut for CanvasRenderingContext2D {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -162,7 +162,7 @@ impl std::ops::DerefMut for CanvasRenderingContext2D {
 impl From<CanvasRenderingContext2D> for emlite::Val {
     fn from(s: CanvasRenderingContext2D) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

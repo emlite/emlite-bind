@@ -1,9 +1,10 @@
+use alloc::string::String;
+use core::marker::PhantomData;
+use core::ops::{Deref, DerefMut};
 use emlite::FromVal;
-use std::marker::PhantomData;
-use std::ops::{Deref, DerefMut};
 
 /// `Set<T>` – ECMAScript “Set” wrapper  (`new Set()`).
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Set<T> {
     inner: emlite::Val,
     _phantom: PhantomData<T>,
@@ -27,7 +28,7 @@ impl<T> emlite::FromVal for Set<T> {
 impl<T> From<Set<T>> for emlite::Val {
     fn from(x: Set<T>) -> emlite::Val {
         let handle = x.inner.as_handle();
-        std::mem::forget(x);
+        core::mem::forget(x);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -155,7 +156,7 @@ where
     }
 }
 
-impl<T> std::iter::FromIterator<T> for Set<T>
+impl<T> core::iter::FromIterator<T> for Set<T>
 where
     emlite::Val: From<T>,
 {
@@ -168,15 +169,15 @@ where
     }
 }
 
-impl<T> std::fmt::Display for Set<T> {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl<T> core::fmt::Display for Set<T> {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         let s: String = self.inner.call("toString", &[]).as_();
         f.write_str(&s)
     }
 }
 
 /// `WeakSet<T>` – ECMAScript “WeakSet” wrapper  (`new WeakSet()`).
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WeakSet<T> {
     inner: emlite::Val,
     _phantom: PhantomData<T>,
@@ -200,7 +201,7 @@ impl<T> emlite::FromVal for WeakSet<T> {
 impl<T> From<WeakSet<T>> for emlite::Val {
     fn from(x: WeakSet<T>) -> emlite::Val {
         let handle = x.inner.as_handle();
-        std::mem::forget(x);
+        core::mem::forget(x);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -328,7 +329,7 @@ where
     }
 }
 
-impl<T> std::iter::FromIterator<T> for WeakSet<T>
+impl<T> core::iter::FromIterator<T> for WeakSet<T>
 where
     emlite::Val: From<T>,
 {
@@ -341,8 +342,8 @@ where
     }
 }
 
-impl<T> std::fmt::Display for WeakSet<T> {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+impl<T> core::fmt::Display for WeakSet<T> {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         let s: String = self.inner.call("toString", &[]).as_();
         f.write_str(&s)
     }

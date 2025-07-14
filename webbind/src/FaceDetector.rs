@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DetectedFace {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for DetectedFace {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DetectedFace {
+impl core::ops::Deref for DetectedFace {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DetectedFace {
+impl core::ops::DerefMut for DetectedFace {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for DetectedFace {
 impl From<DetectedFace> for emlite::Val {
     fn from(s: DetectedFace) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -54,7 +54,7 @@ impl DetectedFace {
         self.inner.set("landmarks", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FaceDetector {
     inner: emlite::Val,
 }
@@ -71,13 +71,13 @@ impl FromVal for FaceDetector {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FaceDetector {
+impl core::ops::Deref for FaceDetector {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FaceDetector {
+impl core::ops::DerefMut for FaceDetector {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -85,7 +85,7 @@ impl std::ops::DerefMut for FaceDetector {
 impl From<FaceDetector> for emlite::Val {
     fn from(s: FaceDetector) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

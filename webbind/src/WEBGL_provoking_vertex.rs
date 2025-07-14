@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WEBGL_provoking_vertex {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for WEBGL_provoking_vertex {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WEBGL_provoking_vertex {
+impl core::ops::Deref for WEBGL_provoking_vertex {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WEBGL_provoking_vertex {
+impl core::ops::DerefMut for WEBGL_provoking_vertex {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for WEBGL_provoking_vertex {
 impl From<WEBGL_provoking_vertex> for emlite::Val {
     fn from(s: WEBGL_provoking_vertex) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

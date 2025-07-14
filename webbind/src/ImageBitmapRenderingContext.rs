@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ImageBitmapRenderingContext {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for ImageBitmapRenderingContext {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ImageBitmapRenderingContext {
+impl core::ops::Deref for ImageBitmapRenderingContext {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ImageBitmapRenderingContext {
+impl core::ops::DerefMut for ImageBitmapRenderingContext {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for ImageBitmapRenderingContext {
 impl From<ImageBitmapRenderingContext> for emlite::Val {
     fn from(s: ImageBitmapRenderingContext) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

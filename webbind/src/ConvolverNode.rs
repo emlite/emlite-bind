@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ConvolverNode {
     inner: AudioNode,
 }
@@ -17,13 +17,13 @@ impl FromVal for ConvolverNode {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ConvolverNode {
+impl core::ops::Deref for ConvolverNode {
     type Target = AudioNode;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ConvolverNode {
+impl core::ops::DerefMut for ConvolverNode {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for ConvolverNode {
 impl From<ConvolverNode> for emlite::Val {
     fn from(s: ConvolverNode) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

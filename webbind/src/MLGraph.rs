@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MLGraph {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for MLGraph {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MLGraph {
+impl core::ops::Deref for MLGraph {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MLGraph {
+impl core::ops::DerefMut for MLGraph {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for MLGraph {
 impl From<MLGraph> for emlite::Val {
     fn from(s: MLGraph) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

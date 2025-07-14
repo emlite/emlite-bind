@@ -1,3 +1,5 @@
+use alloc::vec::Vec;
+
 macro_rules! unary {
     ($( $(#[$meta:meta])* $name:ident => $js:literal ),* $(,)?) => {$(
         $(#[$meta])*
@@ -17,14 +19,14 @@ impl Math {
         emlite::Val::global("Math")
     }
 
-    pub const E: f64 = std::f64::consts::E;
-    pub const LN2: f64 = std::f64::consts::LN_2;
-    pub const LN10: f64 = std::f64::consts::LN_10;
-    pub const LOG2E: f64 = std::f64::consts::LOG2_E;
-    pub const LOG10E: f64 = std::f64::consts::LOG10_E;
-    pub const PI: f64 = std::f64::consts::PI;
+    pub const E: f64 = core::f64::consts::E;
+    pub const LN2: f64 = core::f64::consts::LN_2;
+    pub const LN10: f64 = core::f64::consts::LN_10;
+    pub const LOG2E: f64 = core::f64::consts::LOG2_E;
+    pub const LOG10E: f64 = core::f64::consts::LOG10_E;
+    pub const PI: f64 = core::f64::consts::PI;
     pub const SQRT1_2: f64 = 0.707_106_781_186_547_6; // 1/√2
-    pub const SQRT2: f64 = std::f64::consts::SQRT_2;
+    pub const SQRT2: f64 = core::f64::consts::SQRT_2;
 
     unary! {
         /// [`Math.abs`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math/abs)

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PhotoSettings {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for PhotoSettings {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PhotoSettings {
+impl core::ops::Deref for PhotoSettings {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PhotoSettings {
+impl core::ops::DerefMut for PhotoSettings {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for PhotoSettings {
 impl From<PhotoSettings> for emlite::Val {
     fn from(s: PhotoSettings) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -70,7 +70,7 @@ impl PhotoSettings {
         self.inner.set("redEyeReduction", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PhotoCapabilities {
     inner: emlite::Val,
 }
@@ -85,13 +85,13 @@ impl FromVal for PhotoCapabilities {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PhotoCapabilities {
+impl core::ops::Deref for PhotoCapabilities {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PhotoCapabilities {
+impl core::ops::DerefMut for PhotoCapabilities {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -99,7 +99,7 @@ impl std::ops::DerefMut for PhotoCapabilities {
 impl From<PhotoCapabilities> for emlite::Val {
     fn from(s: PhotoCapabilities) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -142,7 +142,7 @@ impl PhotoCapabilities {
         self.inner.set("fillLightMode", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ImageCapture {
     inner: emlite::Val,
 }
@@ -159,13 +159,13 @@ impl FromVal for ImageCapture {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ImageCapture {
+impl core::ops::Deref for ImageCapture {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ImageCapture {
+impl core::ops::DerefMut for ImageCapture {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -173,7 +173,7 @@ impl std::ops::DerefMut for ImageCapture {
 impl From<ImageCapture> for emlite::Val {
     fn from(s: ImageCapture) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

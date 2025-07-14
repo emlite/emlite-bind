@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct InkPresenterParam {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for InkPresenterParam {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for InkPresenterParam {
+impl core::ops::Deref for InkPresenterParam {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for InkPresenterParam {
+impl core::ops::DerefMut for InkPresenterParam {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for InkPresenterParam {
 impl From<InkPresenterParam> for emlite::Val {
     fn from(s: InkPresenterParam) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl InkPresenterParam {
         self.inner.set("presentationArea", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Ink {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for Ink {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Ink {
+impl core::ops::Deref for Ink {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Ink {
+impl core::ops::DerefMut for Ink {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for Ink {
 impl From<Ink> for emlite::Val {
     fn from(s: Ink) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

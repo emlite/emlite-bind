@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BrowserCaptureMediaStreamTrack {
     inner: MediaStreamTrack,
 }
@@ -17,13 +17,13 @@ impl FromVal for BrowserCaptureMediaStreamTrack {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BrowserCaptureMediaStreamTrack {
+impl core::ops::Deref for BrowserCaptureMediaStreamTrack {
     type Target = MediaStreamTrack;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BrowserCaptureMediaStreamTrack {
+impl core::ops::DerefMut for BrowserCaptureMediaStreamTrack {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for BrowserCaptureMediaStreamTrack {
 impl From<BrowserCaptureMediaStreamTrack> for emlite::Val {
     fn from(s: BrowserCaptureMediaStreamTrack) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

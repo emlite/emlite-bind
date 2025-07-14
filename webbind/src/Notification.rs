@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NotificationAction {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for NotificationAction {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NotificationAction {
+impl core::ops::Deref for NotificationAction {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NotificationAction {
+impl core::ops::DerefMut for NotificationAction {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for NotificationAction {
 impl From<NotificationAction> for emlite::Val {
     fn from(s: NotificationAction) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl NotificationAction {
         self.inner.set("icon", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Notification {
     inner: EventTarget,
 }
@@ -78,13 +78,13 @@ impl FromVal for Notification {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Notification {
+impl core::ops::Deref for Notification {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Notification {
+impl core::ops::DerefMut for Notification {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -92,7 +92,7 @@ impl std::ops::DerefMut for Notification {
 impl From<Notification> for emlite::Val {
     fn from(s: Notification) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

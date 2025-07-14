@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RealTimeContribution {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for RealTimeContribution {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RealTimeContribution {
+impl core::ops::Deref for RealTimeContribution {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RealTimeContribution {
+impl core::ops::DerefMut for RealTimeContribution {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for RealTimeContribution {
 impl From<RealTimeContribution> for emlite::Val {
     fn from(s: RealTimeContribution) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl RealTimeContribution {
         self.inner.set("latencyThreshold", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RealTimeReporting {
     inner: emlite::Val,
 }
@@ -78,13 +78,13 @@ impl FromVal for RealTimeReporting {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RealTimeReporting {
+impl core::ops::Deref for RealTimeReporting {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RealTimeReporting {
+impl core::ops::DerefMut for RealTimeReporting {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -92,7 +92,7 @@ impl std::ops::DerefMut for RealTimeReporting {
 impl From<RealTimeReporting> for emlite::Val {
     fn from(s: RealTimeReporting) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

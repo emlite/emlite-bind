@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct VideoColorSpaceInit {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for VideoColorSpaceInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for VideoColorSpaceInit {
+impl core::ops::Deref for VideoColorSpaceInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for VideoColorSpaceInit {
+impl core::ops::DerefMut for VideoColorSpaceInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for VideoColorSpaceInit {
 impl From<VideoColorSpaceInit> for emlite::Val {
     fn from(s: VideoColorSpaceInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -72,7 +72,7 @@ impl VideoColorSpaceInit {
         self.inner.set("fullRange", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct VideoColorSpace {
     inner: emlite::Val,
 }
@@ -89,13 +89,13 @@ impl FromVal for VideoColorSpace {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for VideoColorSpace {
+impl core::ops::Deref for VideoColorSpace {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for VideoColorSpace {
+impl core::ops::DerefMut for VideoColorSpace {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -103,7 +103,7 @@ impl std::ops::DerefMut for VideoColorSpace {
 impl From<VideoColorSpace> for emlite::Val {
     fn from(s: VideoColorSpace) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

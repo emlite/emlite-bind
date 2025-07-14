@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SVGAnimatedLength {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for SVGAnimatedLength {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SVGAnimatedLength {
+impl core::ops::Deref for SVGAnimatedLength {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SVGAnimatedLength {
+impl core::ops::DerefMut for SVGAnimatedLength {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for SVGAnimatedLength {
 impl From<SVGAnimatedLength> for emlite::Val {
     fn from(s: SVGAnimatedLength) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

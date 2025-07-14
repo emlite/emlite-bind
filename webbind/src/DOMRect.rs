@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DOMRect {
     inner: DOMRectReadOnly,
 }
@@ -17,13 +17,13 @@ impl FromVal for DOMRect {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DOMRect {
+impl core::ops::Deref for DOMRect {
     type Target = DOMRectReadOnly;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DOMRect {
+impl core::ops::DerefMut for DOMRect {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for DOMRect {
 impl From<DOMRect> for emlite::Val {
     fn from(s: DOMRect) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

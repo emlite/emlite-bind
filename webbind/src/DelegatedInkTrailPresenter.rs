@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct InkTrailStyle {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for InkTrailStyle {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for InkTrailStyle {
+impl core::ops::Deref for InkTrailStyle {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for InkTrailStyle {
+impl core::ops::DerefMut for InkTrailStyle {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for InkTrailStyle {
 impl From<InkTrailStyle> for emlite::Val {
     fn from(s: InkTrailStyle) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl InkTrailStyle {
         self.inner.set("diameter", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DelegatedInkTrailPresenter {
     inner: emlite::Val,
 }
@@ -69,13 +69,13 @@ impl FromVal for DelegatedInkTrailPresenter {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DelegatedInkTrailPresenter {
+impl core::ops::Deref for DelegatedInkTrailPresenter {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DelegatedInkTrailPresenter {
+impl core::ops::DerefMut for DelegatedInkTrailPresenter {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for DelegatedInkTrailPresenter {
 impl From<DelegatedInkTrailPresenter> for emlite::Val {
     fn from(s: DelegatedInkTrailPresenter) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCOfferOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for RTCOfferOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCOfferOptions {
+impl core::ops::Deref for RTCOfferOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCOfferOptions {
+impl core::ops::DerefMut for RTCOfferOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for RTCOfferOptions {
 impl From<RTCOfferOptions> for emlite::Val {
     fn from(s: RTCOfferOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl RTCOfferOptions {
         self.inner.set("offerToReceiveVideo", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCLocalSessionDescriptionInit {
     inner: emlite::Val,
 }
@@ -67,13 +67,13 @@ impl FromVal for RTCLocalSessionDescriptionInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCLocalSessionDescriptionInit {
+impl core::ops::Deref for RTCLocalSessionDescriptionInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCLocalSessionDescriptionInit {
+impl core::ops::DerefMut for RTCLocalSessionDescriptionInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -81,7 +81,7 @@ impl std::ops::DerefMut for RTCLocalSessionDescriptionInit {
 impl From<RTCLocalSessionDescriptionInit> for emlite::Val {
     fn from(s: RTCLocalSessionDescriptionInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -104,7 +104,7 @@ impl RTCLocalSessionDescriptionInit {
         self.inner.set("sdp", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCSessionDescriptionInit {
     inner: emlite::Val,
 }
@@ -119,13 +119,13 @@ impl FromVal for RTCSessionDescriptionInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCSessionDescriptionInit {
+impl core::ops::Deref for RTCSessionDescriptionInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCSessionDescriptionInit {
+impl core::ops::DerefMut for RTCSessionDescriptionInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -133,7 +133,7 @@ impl std::ops::DerefMut for RTCSessionDescriptionInit {
 impl From<RTCSessionDescriptionInit> for emlite::Val {
     fn from(s: RTCSessionDescriptionInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -156,7 +156,7 @@ impl RTCSessionDescriptionInit {
         self.inner.set("sdp", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCConfiguration {
     inner: emlite::Val,
 }
@@ -171,13 +171,13 @@ impl FromVal for RTCConfiguration {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCConfiguration {
+impl core::ops::Deref for RTCConfiguration {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCConfiguration {
+impl core::ops::DerefMut for RTCConfiguration {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -185,7 +185,7 @@ impl std::ops::DerefMut for RTCConfiguration {
 impl From<RTCConfiguration> for emlite::Val {
     fn from(s: RTCConfiguration) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -250,7 +250,7 @@ impl RTCConfiguration {
         self.inner.set("iceCandidatePoolSize", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCIdentityProviderOptions {
     inner: emlite::Val,
 }
@@ -265,13 +265,13 @@ impl FromVal for RTCIdentityProviderOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCIdentityProviderOptions {
+impl core::ops::Deref for RTCIdentityProviderOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCIdentityProviderOptions {
+impl core::ops::DerefMut for RTCIdentityProviderOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -279,7 +279,7 @@ impl std::ops::DerefMut for RTCIdentityProviderOptions {
 impl From<RTCIdentityProviderOptions> for emlite::Val {
     fn from(s: RTCIdentityProviderOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -311,7 +311,7 @@ impl RTCIdentityProviderOptions {
         self.inner.set("peerIdentity", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCRtpTransceiverInit {
     inner: emlite::Val,
 }
@@ -326,13 +326,13 @@ impl FromVal for RTCRtpTransceiverInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCRtpTransceiverInit {
+impl core::ops::Deref for RTCRtpTransceiverInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCRtpTransceiverInit {
+impl core::ops::DerefMut for RTCRtpTransceiverInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -340,7 +340,7 @@ impl std::ops::DerefMut for RTCRtpTransceiverInit {
 impl From<RTCRtpTransceiverInit> for emlite::Val {
     fn from(s: RTCRtpTransceiverInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -378,7 +378,7 @@ impl RTCRtpTransceiverInit {
         self.inner.set("sendEncodings", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCDataChannelInit {
     inner: emlite::Val,
 }
@@ -393,13 +393,13 @@ impl FromVal for RTCDataChannelInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCDataChannelInit {
+impl core::ops::Deref for RTCDataChannelInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCDataChannelInit {
+impl core::ops::DerefMut for RTCDataChannelInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -407,7 +407,7 @@ impl std::ops::DerefMut for RTCDataChannelInit {
 impl From<RTCDataChannelInit> for emlite::Val {
     fn from(s: RTCDataChannelInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -466,7 +466,7 @@ impl RTCDataChannelInit {
         self.inner.set("id", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCPeerConnection {
     inner: EventTarget,
 }
@@ -483,13 +483,13 @@ impl FromVal for RTCPeerConnection {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCPeerConnection {
+impl core::ops::Deref for RTCPeerConnection {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCPeerConnection {
+impl core::ops::DerefMut for RTCPeerConnection {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -497,7 +497,7 @@ impl std::ops::DerefMut for RTCPeerConnection {
 impl From<RTCPeerConnection> for emlite::Val {
     fn from(s: RTCPeerConnection) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

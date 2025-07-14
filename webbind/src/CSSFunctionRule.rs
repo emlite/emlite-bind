@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FunctionParameter {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for FunctionParameter {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FunctionParameter {
+impl core::ops::Deref for FunctionParameter {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FunctionParameter {
+impl core::ops::DerefMut for FunctionParameter {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for FunctionParameter {
 impl From<FunctionParameter> for emlite::Val {
     fn from(s: FunctionParameter) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl FunctionParameter {
         self.inner.set("defaultValue", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSFunctionRule {
     inner: CSSGroupingRule,
 }
@@ -78,13 +78,13 @@ impl FromVal for CSSFunctionRule {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSFunctionRule {
+impl core::ops::Deref for CSSFunctionRule {
     type Target = CSSGroupingRule;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSFunctionRule {
+impl core::ops::DerefMut for CSSFunctionRule {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -92,7 +92,7 @@ impl std::ops::DerefMut for CSSFunctionRule {
 impl From<CSSFunctionRule> for emlite::Val {
     fn from(s: CSSFunctionRule) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

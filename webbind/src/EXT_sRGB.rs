@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct EXT_sRGB {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for EXT_sRGB {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for EXT_sRGB {
+impl core::ops::Deref for EXT_sRGB {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for EXT_sRGB {
+impl core::ops::DerefMut for EXT_sRGB {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for EXT_sRGB {
 impl From<EXT_sRGB> for emlite::Val {
     fn from(s: EXT_sRGB) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

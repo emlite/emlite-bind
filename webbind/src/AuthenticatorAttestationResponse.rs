@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AuthenticatorAttestationResponse {
     inner: AuthenticatorResponse,
 }
@@ -17,13 +17,13 @@ impl FromVal for AuthenticatorAttestationResponse {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AuthenticatorAttestationResponse {
+impl core::ops::Deref for AuthenticatorAttestationResponse {
     type Target = AuthenticatorResponse;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AuthenticatorAttestationResponse {
+impl core::ops::DerefMut for AuthenticatorAttestationResponse {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for AuthenticatorAttestationResponse {
 impl From<AuthenticatorAttestationResponse> for emlite::Val {
     fn from(s: AuthenticatorAttestationResponse) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

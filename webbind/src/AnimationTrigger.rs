@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AnimationTrigger {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for AnimationTrigger {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AnimationTrigger {
+impl core::ops::Deref for AnimationTrigger {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AnimationTrigger {
+impl core::ops::DerefMut for AnimationTrigger {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for AnimationTrigger {
 impl From<AnimationTrigger> for emlite::Val {
     fn from(s: AnimationTrigger) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DOMMatrix {
     inner: DOMMatrixReadOnly,
 }
@@ -17,13 +17,13 @@ impl FromVal for DOMMatrix {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DOMMatrix {
+impl core::ops::Deref for DOMMatrix {
     type Target = DOMMatrixReadOnly;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DOMMatrix {
+impl core::ops::DerefMut for DOMMatrix {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for DOMMatrix {
 impl From<DOMMatrix> for emlite::Val {
     fn from(s: DOMMatrix) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

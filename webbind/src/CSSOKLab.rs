@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CSSOKLab {
     inner: CSSColorValue,
 }
@@ -17,13 +17,13 @@ impl FromVal for CSSOKLab {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CSSOKLab {
+impl core::ops::Deref for CSSOKLab {
     type Target = CSSColorValue;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CSSOKLab {
+impl core::ops::DerefMut for CSSOKLab {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for CSSOKLab {
 impl From<CSSOKLab> for emlite::Val {
     fn from(s: CSSOKLab) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

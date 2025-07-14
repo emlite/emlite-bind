@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DragEvent {
     inner: MouseEvent,
 }
@@ -17,13 +17,13 @@ impl FromVal for DragEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DragEvent {
+impl core::ops::Deref for DragEvent {
     type Target = MouseEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DragEvent {
+impl core::ops::DerefMut for DragEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for DragEvent {
 impl From<DragEvent> for emlite::Val {
     fn from(s: DragEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ProcessingInstruction {
     inner: CharacterData,
 }
@@ -17,13 +17,13 @@ impl FromVal for ProcessingInstruction {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ProcessingInstruction {
+impl core::ops::Deref for ProcessingInstruction {
     type Target = CharacterData;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ProcessingInstruction {
+impl core::ops::DerefMut for ProcessingInstruction {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for ProcessingInstruction {
 impl From<ProcessingInstruction> for emlite::Val {
     fn from(s: ProcessingInstruction) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

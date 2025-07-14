@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SummarizerCreateOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for SummarizerCreateOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SummarizerCreateOptions {
+impl core::ops::Deref for SummarizerCreateOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SummarizerCreateOptions {
+impl core::ops::DerefMut for SummarizerCreateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for SummarizerCreateOptions {
 impl From<SummarizerCreateOptions> for emlite::Val {
     fn from(s: SummarizerCreateOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl SummarizerCreateOptions {
         self.inner.set("sharedContext", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SummarizerCreateCoreOptions {
     inner: emlite::Val,
 }
@@ -76,13 +76,13 @@ impl FromVal for SummarizerCreateCoreOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SummarizerCreateCoreOptions {
+impl core::ops::Deref for SummarizerCreateCoreOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SummarizerCreateCoreOptions {
+impl core::ops::DerefMut for SummarizerCreateCoreOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -90,7 +90,7 @@ impl std::ops::DerefMut for SummarizerCreateCoreOptions {
 impl From<SummarizerCreateCoreOptions> for emlite::Val {
     fn from(s: SummarizerCreateCoreOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -153,7 +153,7 @@ impl SummarizerCreateCoreOptions {
         self.inner.set("outputLanguage", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SummarizerSummarizeOptions {
     inner: emlite::Val,
 }
@@ -168,13 +168,13 @@ impl FromVal for SummarizerSummarizeOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SummarizerSummarizeOptions {
+impl core::ops::Deref for SummarizerSummarizeOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SummarizerSummarizeOptions {
+impl core::ops::DerefMut for SummarizerSummarizeOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -182,7 +182,7 @@ impl std::ops::DerefMut for SummarizerSummarizeOptions {
 impl From<SummarizerSummarizeOptions> for emlite::Val {
     fn from(s: SummarizerSummarizeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -205,7 +205,7 @@ impl SummarizerSummarizeOptions {
         self.inner.set("context", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Summarizer {
     inner: emlite::Val,
 }
@@ -222,13 +222,13 @@ impl FromVal for Summarizer {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Summarizer {
+impl core::ops::Deref for Summarizer {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Summarizer {
+impl core::ops::DerefMut for Summarizer {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -236,7 +236,7 @@ impl std::ops::DerefMut for Summarizer {
 impl From<Summarizer> for emlite::Val {
     fn from(s: Summarizer) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

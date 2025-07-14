@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPURenderBundleDescriptor {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for GPURenderBundleDescriptor {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPURenderBundleDescriptor {
+impl core::ops::Deref for GPURenderBundleDescriptor {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPURenderBundleDescriptor {
+impl core::ops::DerefMut for GPURenderBundleDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,12 +29,12 @@ impl std::ops::DerefMut for GPURenderBundleDescriptor {
 impl From<GPURenderBundleDescriptor> for emlite::Val {
     fn from(s: GPURenderBundleDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPURenderBundleEncoder {
     inner: emlite::Val,
 }
@@ -51,13 +51,13 @@ impl FromVal for GPURenderBundleEncoder {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPURenderBundleEncoder {
+impl core::ops::Deref for GPURenderBundleEncoder {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPURenderBundleEncoder {
+impl core::ops::DerefMut for GPURenderBundleEncoder {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -65,7 +65,7 @@ impl std::ops::DerefMut for GPURenderBundleEncoder {
 impl From<GPURenderBundleEncoder> for emlite::Val {
     fn from(s: GPURenderBundleEncoder) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

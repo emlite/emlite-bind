@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct USBControlTransferParameters {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for USBControlTransferParameters {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for USBControlTransferParameters {
+impl core::ops::Deref for USBControlTransferParameters {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for USBControlTransferParameters {
+impl core::ops::DerefMut for USBControlTransferParameters {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for USBControlTransferParameters {
 impl From<USBControlTransferParameters> for emlite::Val {
     fn from(s: USBControlTransferParameters) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -79,7 +79,7 @@ impl USBControlTransferParameters {
         self.inner.set("index", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct USBDevice {
     inner: emlite::Val,
 }
@@ -96,13 +96,13 @@ impl FromVal for USBDevice {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for USBDevice {
+impl core::ops::Deref for USBDevice {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for USBDevice {
+impl core::ops::DerefMut for USBDevice {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -110,7 +110,7 @@ impl std::ops::DerefMut for USBDevice {
 impl From<USBDevice> for emlite::Val {
     fn from(s: USBDevice) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUTexelCopyBufferLayout {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for GPUTexelCopyBufferLayout {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUTexelCopyBufferLayout {
+impl core::ops::Deref for GPUTexelCopyBufferLayout {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUTexelCopyBufferLayout {
+impl core::ops::DerefMut for GPUTexelCopyBufferLayout {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for GPUTexelCopyBufferLayout {
 impl From<GPUTexelCopyBufferLayout> for emlite::Val {
     fn from(s: GPUTexelCopyBufferLayout) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl GPUTexelCopyBufferLayout {
         self.inner.set("rowsPerImage", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUCopyExternalImageSourceInfo {
     inner: emlite::Val,
 }
@@ -76,13 +76,13 @@ impl FromVal for GPUCopyExternalImageSourceInfo {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUCopyExternalImageSourceInfo {
+impl core::ops::Deref for GPUCopyExternalImageSourceInfo {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUCopyExternalImageSourceInfo {
+impl core::ops::DerefMut for GPUCopyExternalImageSourceInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -90,7 +90,7 @@ impl std::ops::DerefMut for GPUCopyExternalImageSourceInfo {
 impl From<GPUCopyExternalImageSourceInfo> for emlite::Val {
     fn from(s: GPUCopyExternalImageSourceInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -122,7 +122,7 @@ impl GPUCopyExternalImageSourceInfo {
         self.inner.set("flipY", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUCopyExternalImageDestInfo {
     inner: emlite::Val,
 }
@@ -137,13 +137,13 @@ impl FromVal for GPUCopyExternalImageDestInfo {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUCopyExternalImageDestInfo {
+impl core::ops::Deref for GPUCopyExternalImageDestInfo {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUCopyExternalImageDestInfo {
+impl core::ops::DerefMut for GPUCopyExternalImageDestInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -151,7 +151,7 @@ impl std::ops::DerefMut for GPUCopyExternalImageDestInfo {
 impl From<GPUCopyExternalImageDestInfo> for emlite::Val {
     fn from(s: GPUCopyExternalImageDestInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -174,7 +174,7 @@ impl GPUCopyExternalImageDestInfo {
         self.inner.set("premultipliedAlpha", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUQueue {
     inner: emlite::Val,
 }
@@ -191,13 +191,13 @@ impl FromVal for GPUQueue {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUQueue {
+impl core::ops::Deref for GPUQueue {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUQueue {
+impl core::ops::DerefMut for GPUQueue {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -205,7 +205,7 @@ impl std::ops::DerefMut for GPUQueue {
 impl From<GPUQueue> for emlite::Val {
     fn from(s: GPUQueue) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

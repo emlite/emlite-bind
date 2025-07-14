@@ -2,7 +2,7 @@ use crate::utils::bind;
 use crate::{Any, Promise};
 
 /// JavaScript `Response` object returned by `fetch`.
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Response {
     inner: emlite::Val,
 }

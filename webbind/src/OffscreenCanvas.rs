@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ImageEncodeOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for ImageEncodeOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ImageEncodeOptions {
+impl core::ops::Deref for ImageEncodeOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ImageEncodeOptions {
+impl core::ops::DerefMut for ImageEncodeOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for ImageEncodeOptions {
 impl From<ImageEncodeOptions> for emlite::Val {
     fn from(s: ImageEncodeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl ImageEncodeOptions {
         self.inner.set("quality", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct OffscreenCanvas {
     inner: EventTarget,
 }
@@ -69,13 +69,13 @@ impl FromVal for OffscreenCanvas {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for OffscreenCanvas {
+impl core::ops::Deref for OffscreenCanvas {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for OffscreenCanvas {
+impl core::ops::DerefMut for OffscreenCanvas {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for OffscreenCanvas {
 impl From<OffscreenCanvas> for emlite::Val {
     fn from(s: OffscreenCanvas) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

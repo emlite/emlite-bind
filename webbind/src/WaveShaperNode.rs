@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WaveShaperNode {
     inner: AudioNode,
 }
@@ -17,13 +17,13 @@ impl FromVal for WaveShaperNode {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WaveShaperNode {
+impl core::ops::Deref for WaveShaperNode {
     type Target = AudioNode;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WaveShaperNode {
+impl core::ops::DerefMut for WaveShaperNode {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for WaveShaperNode {
 impl From<WaveShaperNode> for emlite::Val {
     fn from(s: WaveShaperNode) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

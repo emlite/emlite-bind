@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TranslatorCreateOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for TranslatorCreateOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for TranslatorCreateOptions {
+impl core::ops::Deref for TranslatorCreateOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for TranslatorCreateOptions {
+impl core::ops::DerefMut for TranslatorCreateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for TranslatorCreateOptions {
 impl From<TranslatorCreateOptions> for emlite::Val {
     fn from(s: TranslatorCreateOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl TranslatorCreateOptions {
         self.inner.set("monitor", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TranslatorCreateCoreOptions {
     inner: emlite::Val,
 }
@@ -67,13 +67,13 @@ impl FromVal for TranslatorCreateCoreOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for TranslatorCreateCoreOptions {
+impl core::ops::Deref for TranslatorCreateCoreOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for TranslatorCreateCoreOptions {
+impl core::ops::DerefMut for TranslatorCreateCoreOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -81,7 +81,7 @@ impl std::ops::DerefMut for TranslatorCreateCoreOptions {
 impl From<TranslatorCreateCoreOptions> for emlite::Val {
     fn from(s: TranslatorCreateCoreOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -104,7 +104,7 @@ impl TranslatorCreateCoreOptions {
         self.inner.set("targetLanguage", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TranslatorTranslateOptions {
     inner: emlite::Val,
 }
@@ -119,13 +119,13 @@ impl FromVal for TranslatorTranslateOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for TranslatorTranslateOptions {
+impl core::ops::Deref for TranslatorTranslateOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for TranslatorTranslateOptions {
+impl core::ops::DerefMut for TranslatorTranslateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -133,7 +133,7 @@ impl std::ops::DerefMut for TranslatorTranslateOptions {
 impl From<TranslatorTranslateOptions> for emlite::Val {
     fn from(s: TranslatorTranslateOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -147,7 +147,7 @@ impl TranslatorTranslateOptions {
         self.inner.set("signal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Translator {
     inner: emlite::Val,
 }
@@ -164,13 +164,13 @@ impl FromVal for Translator {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Translator {
+impl core::ops::Deref for Translator {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Translator {
+impl core::ops::DerefMut for Translator {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -178,7 +178,7 @@ impl std::ops::DerefMut for Translator {
 impl From<Translator> for emlite::Val {
     fn from(s: Translator) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

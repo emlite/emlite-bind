@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct OptionalEffectTiming {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for OptionalEffectTiming {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for OptionalEffectTiming {
+impl core::ops::Deref for OptionalEffectTiming {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for OptionalEffectTiming {
+impl core::ops::DerefMut for OptionalEffectTiming {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for OptionalEffectTiming {
 impl From<OptionalEffectTiming> for emlite::Val {
     fn from(s: OptionalEffectTiming) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -106,7 +106,7 @@ impl OptionalEffectTiming {
         self.inner.set("easing", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AnimationEffect {
     inner: emlite::Val,
 }
@@ -123,13 +123,13 @@ impl FromVal for AnimationEffect {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AnimationEffect {
+impl core::ops::Deref for AnimationEffect {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AnimationEffect {
+impl core::ops::DerefMut for AnimationEffect {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -137,7 +137,7 @@ impl std::ops::DerefMut for AnimationEffect {
 impl From<AnimationEffect> for emlite::Val {
     fn from(s: AnimationEffect) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

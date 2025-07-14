@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WebGLRenderingContext {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for WebGLRenderingContext {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WebGLRenderingContext {
+impl core::ops::Deref for WebGLRenderingContext {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WebGLRenderingContext {
+impl core::ops::DerefMut for WebGLRenderingContext {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for WebGLRenderingContext {
 impl From<WebGLRenderingContext> for emlite::Val {
     fn from(s: WebGLRenderingContext) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

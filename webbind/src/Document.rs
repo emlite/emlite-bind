@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct CaretPositionFromPointOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for CaretPositionFromPointOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for CaretPositionFromPointOptions {
+impl core::ops::Deref for CaretPositionFromPointOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for CaretPositionFromPointOptions {
+impl core::ops::DerefMut for CaretPositionFromPointOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for CaretPositionFromPointOptions {
 impl From<CaretPositionFromPointOptions> for emlite::Val {
     fn from(s: CaretPositionFromPointOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -45,7 +45,7 @@ impl CaretPositionFromPointOptions {
         self.inner.set("shadowRoots", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BoxQuadOptions {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for BoxQuadOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BoxQuadOptions {
+impl core::ops::Deref for BoxQuadOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BoxQuadOptions {
+impl core::ops::DerefMut for BoxQuadOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for BoxQuadOptions {
 impl From<BoxQuadOptions> for emlite::Val {
     fn from(s: BoxQuadOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -97,7 +97,7 @@ impl BoxQuadOptions {
         self.inner.set("relativeTo", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct DOMQuadInit {
     inner: emlite::Val,
 }
@@ -112,13 +112,13 @@ impl FromVal for DOMQuadInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for DOMQuadInit {
+impl core::ops::Deref for DOMQuadInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for DOMQuadInit {
+impl core::ops::DerefMut for DOMQuadInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -126,7 +126,7 @@ impl std::ops::DerefMut for DOMQuadInit {
 impl From<DOMQuadInit> for emlite::Val {
     fn from(s: DOMQuadInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -167,7 +167,7 @@ impl DOMQuadInit {
         self.inner.set("p4", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ConvertCoordinateOptions {
     inner: emlite::Val,
 }
@@ -182,13 +182,13 @@ impl FromVal for ConvertCoordinateOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ConvertCoordinateOptions {
+impl core::ops::Deref for ConvertCoordinateOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ConvertCoordinateOptions {
+impl core::ops::DerefMut for ConvertCoordinateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -196,7 +196,7 @@ impl std::ops::DerefMut for ConvertCoordinateOptions {
 impl From<ConvertCoordinateOptions> for emlite::Val {
     fn from(s: ConvertCoordinateOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -219,7 +219,7 @@ impl ConvertCoordinateOptions {
         self.inner.set("toBox", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Document {
     inner: Node,
 }
@@ -236,13 +236,13 @@ impl FromVal for Document {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Document {
+impl core::ops::Deref for Document {
     type Target = Node;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Document {
+impl core::ops::DerefMut for Document {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -250,7 +250,7 @@ impl std::ops::DerefMut for Document {
 impl From<Document> for emlite::Val {
     fn from(s: Document) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

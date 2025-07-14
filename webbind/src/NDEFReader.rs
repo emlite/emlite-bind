@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NDEFScanOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for NDEFScanOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NDEFScanOptions {
+impl core::ops::Deref for NDEFScanOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NDEFScanOptions {
+impl core::ops::DerefMut for NDEFScanOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for NDEFScanOptions {
 impl From<NDEFScanOptions> for emlite::Val {
     fn from(s: NDEFScanOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl NDEFScanOptions {
         self.inner.set("signal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NDEFWriteOptions {
     inner: emlite::Val,
 }
@@ -58,13 +58,13 @@ impl FromVal for NDEFWriteOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NDEFWriteOptions {
+impl core::ops::Deref for NDEFWriteOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NDEFWriteOptions {
+impl core::ops::DerefMut for NDEFWriteOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -72,7 +72,7 @@ impl std::ops::DerefMut for NDEFWriteOptions {
 impl From<NDEFWriteOptions> for emlite::Val {
     fn from(s: NDEFWriteOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -95,7 +95,7 @@ impl NDEFWriteOptions {
         self.inner.set("signal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NDEFMakeReadOnlyOptions {
     inner: emlite::Val,
 }
@@ -110,13 +110,13 @@ impl FromVal for NDEFMakeReadOnlyOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NDEFMakeReadOnlyOptions {
+impl core::ops::Deref for NDEFMakeReadOnlyOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NDEFMakeReadOnlyOptions {
+impl core::ops::DerefMut for NDEFMakeReadOnlyOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -124,7 +124,7 @@ impl std::ops::DerefMut for NDEFMakeReadOnlyOptions {
 impl From<NDEFMakeReadOnlyOptions> for emlite::Val {
     fn from(s: NDEFMakeReadOnlyOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -138,7 +138,7 @@ impl NDEFMakeReadOnlyOptions {
         self.inner.set("signal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct NDEFReader {
     inner: EventTarget,
 }
@@ -155,13 +155,13 @@ impl FromVal for NDEFReader {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for NDEFReader {
+impl core::ops::Deref for NDEFReader {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for NDEFReader {
+impl core::ops::DerefMut for NDEFReader {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -169,7 +169,7 @@ impl std::ops::DerefMut for NDEFReader {
 impl From<NDEFReader> for emlite::Val {
     fn from(s: NDEFReader) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

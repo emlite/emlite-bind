@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct FocusOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for FocusOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for FocusOptions {
+impl core::ops::Deref for FocusOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for FocusOptions {
+impl core::ops::DerefMut for FocusOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for FocusOptions {
 impl From<FocusOptions> for emlite::Val {
     fn from(s: FocusOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -52,7 +52,7 @@ impl FocusOptions {
         self.inner.set("focusVisible", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct SVGElement {
     inner: Element,
 }
@@ -69,13 +69,13 @@ impl FromVal for SVGElement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for SVGElement {
+impl core::ops::Deref for SVGElement {
     type Target = Element;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for SVGElement {
+impl core::ops::DerefMut for SVGElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for SVGElement {
 impl From<SVGElement> for emlite::Val {
     fn from(s: SVGElement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

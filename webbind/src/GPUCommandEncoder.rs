@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPURenderPassDescriptor {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for GPURenderPassDescriptor {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPURenderPassDescriptor {
+impl core::ops::Deref for GPURenderPassDescriptor {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPURenderPassDescriptor {
+impl core::ops::DerefMut for GPURenderPassDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for GPURenderPassDescriptor {
 impl From<GPURenderPassDescriptor> for emlite::Val {
     fn from(s: GPURenderPassDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -83,7 +83,7 @@ impl GPURenderPassDescriptor {
         self.inner.set("maxDrawCount", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUComputePassDescriptor {
     inner: emlite::Val,
 }
@@ -98,13 +98,13 @@ impl FromVal for GPUComputePassDescriptor {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUComputePassDescriptor {
+impl core::ops::Deref for GPUComputePassDescriptor {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUComputePassDescriptor {
+impl core::ops::DerefMut for GPUComputePassDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -112,7 +112,7 @@ impl std::ops::DerefMut for GPUComputePassDescriptor {
 impl From<GPUComputePassDescriptor> for emlite::Val {
     fn from(s: GPUComputePassDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -126,7 +126,7 @@ impl GPUComputePassDescriptor {
         self.inner.set("timestampWrites", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUTexelCopyBufferInfo {
     inner: emlite::Val,
 }
@@ -141,13 +141,13 @@ impl FromVal for GPUTexelCopyBufferInfo {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUTexelCopyBufferInfo {
+impl core::ops::Deref for GPUTexelCopyBufferInfo {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUTexelCopyBufferInfo {
+impl core::ops::DerefMut for GPUTexelCopyBufferInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -155,7 +155,7 @@ impl std::ops::DerefMut for GPUTexelCopyBufferInfo {
 impl From<GPUTexelCopyBufferInfo> for emlite::Val {
     fn from(s: GPUTexelCopyBufferInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -169,7 +169,7 @@ impl GPUTexelCopyBufferInfo {
         self.inner.set("buffer", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUTexelCopyTextureInfo {
     inner: emlite::Val,
 }
@@ -184,13 +184,13 @@ impl FromVal for GPUTexelCopyTextureInfo {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUTexelCopyTextureInfo {
+impl core::ops::Deref for GPUTexelCopyTextureInfo {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUTexelCopyTextureInfo {
+impl core::ops::DerefMut for GPUTexelCopyTextureInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -198,7 +198,7 @@ impl std::ops::DerefMut for GPUTexelCopyTextureInfo {
 impl From<GPUTexelCopyTextureInfo> for emlite::Val {
     fn from(s: GPUTexelCopyTextureInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -239,7 +239,7 @@ impl GPUTexelCopyTextureInfo {
         self.inner.set("aspect", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUCommandBufferDescriptor {
     inner: emlite::Val,
 }
@@ -254,13 +254,13 @@ impl FromVal for GPUCommandBufferDescriptor {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUCommandBufferDescriptor {
+impl core::ops::Deref for GPUCommandBufferDescriptor {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUCommandBufferDescriptor {
+impl core::ops::DerefMut for GPUCommandBufferDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -268,12 +268,12 @@ impl std::ops::DerefMut for GPUCommandBufferDescriptor {
 impl From<GPUCommandBufferDescriptor> for emlite::Val {
     fn from(s: GPUCommandBufferDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUCommandEncoder {
     inner: emlite::Val,
 }
@@ -290,13 +290,13 @@ impl FromVal for GPUCommandEncoder {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUCommandEncoder {
+impl core::ops::Deref for GPUCommandEncoder {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUCommandEncoder {
+impl core::ops::DerefMut for GPUCommandEncoder {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -304,7 +304,7 @@ impl std::ops::DerefMut for GPUCommandEncoder {
 impl From<GPUCommandEncoder> for emlite::Val {
     fn from(s: GPUCommandEncoder) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

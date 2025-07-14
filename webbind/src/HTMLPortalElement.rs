@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PortalActivateOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for PortalActivateOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PortalActivateOptions {
+impl core::ops::Deref for PortalActivateOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PortalActivateOptions {
+impl core::ops::DerefMut for PortalActivateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for PortalActivateOptions {
 impl From<PortalActivateOptions> for emlite::Val {
     fn from(s: PortalActivateOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl PortalActivateOptions {
         self.inner.set("data", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct HTMLPortalElement {
     inner: HTMLElement,
 }
@@ -60,13 +60,13 @@ impl FromVal for HTMLPortalElement {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for HTMLPortalElement {
+impl core::ops::Deref for HTMLPortalElement {
     type Target = HTMLElement;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for HTMLPortalElement {
+impl core::ops::DerefMut for HTMLPortalElement {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for HTMLPortalElement {
 impl From<HTMLPortalElement> for emlite::Val {
     fn from(s: HTMLPortalElement) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

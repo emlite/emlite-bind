@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TransformStream {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for TransformStream {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for TransformStream {
+impl core::ops::Deref for TransformStream {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for TransformStream {
+impl core::ops::DerefMut for TransformStream {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for TransformStream {
 impl From<TransformStream> for emlite::Val {
     fn from(s: TransformStream) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WebTransportConnectionStats {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for WebTransportConnectionStats {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WebTransportConnectionStats {
+impl core::ops::Deref for WebTransportConnectionStats {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WebTransportConnectionStats {
+impl core::ops::DerefMut for WebTransportConnectionStats {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for WebTransportConnectionStats {
 impl From<WebTransportConnectionStats> for emlite::Val {
     fn from(s: WebTransportConnectionStats) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -142,7 +142,7 @@ impl WebTransportConnectionStats {
         self.inner.set("atSendCapacity", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WebTransportCloseInfo {
     inner: emlite::Val,
 }
@@ -157,13 +157,13 @@ impl FromVal for WebTransportCloseInfo {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WebTransportCloseInfo {
+impl core::ops::Deref for WebTransportCloseInfo {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WebTransportCloseInfo {
+impl core::ops::DerefMut for WebTransportCloseInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -171,7 +171,7 @@ impl std::ops::DerefMut for WebTransportCloseInfo {
 impl From<WebTransportCloseInfo> for emlite::Val {
     fn from(s: WebTransportCloseInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -194,7 +194,7 @@ impl WebTransportCloseInfo {
         self.inner.set("reason", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WebTransportSendStreamOptions {
     inner: emlite::Val,
 }
@@ -209,13 +209,13 @@ impl FromVal for WebTransportSendStreamOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WebTransportSendStreamOptions {
+impl core::ops::Deref for WebTransportSendStreamOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WebTransportSendStreamOptions {
+impl core::ops::DerefMut for WebTransportSendStreamOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -223,7 +223,7 @@ impl std::ops::DerefMut for WebTransportSendStreamOptions {
 impl From<WebTransportSendStreamOptions> for emlite::Val {
     fn from(s: WebTransportSendStreamOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -237,7 +237,7 @@ impl WebTransportSendStreamOptions {
         self.inner.set("waitUntilAvailable", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WebTransport {
     inner: emlite::Val,
 }
@@ -254,13 +254,13 @@ impl FromVal for WebTransport {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WebTransport {
+impl core::ops::Deref for WebTransport {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WebTransport {
+impl core::ops::DerefMut for WebTransport {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -268,7 +268,7 @@ impl std::ops::DerefMut for WebTransport {
 impl From<WebTransport> for emlite::Val {
     fn from(s: WebTransport) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

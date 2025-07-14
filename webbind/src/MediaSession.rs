@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaPositionState {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for MediaPositionState {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaPositionState {
+impl core::ops::Deref for MediaPositionState {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaPositionState {
+impl core::ops::DerefMut for MediaPositionState {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for MediaPositionState {
 impl From<MediaPositionState> for emlite::Val {
     fn from(s: MediaPositionState) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -61,7 +61,7 @@ impl MediaPositionState {
         self.inner.set("position", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaSession {
     inner: emlite::Val,
 }
@@ -78,13 +78,13 @@ impl FromVal for MediaSession {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaSession {
+impl core::ops::Deref for MediaSession {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaSession {
+impl core::ops::DerefMut for MediaSession {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -92,7 +92,7 @@ impl std::ops::DerefMut for MediaSession {
 impl From<MediaSession> for emlite::Val {
     fn from(s: MediaSession) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

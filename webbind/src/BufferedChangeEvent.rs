@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BufferedChangeEvent {
     inner: Event,
 }
@@ -17,13 +17,13 @@ impl FromVal for BufferedChangeEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BufferedChangeEvent {
+impl core::ops::Deref for BufferedChangeEvent {
     type Target = Event;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BufferedChangeEvent {
+impl core::ops::DerefMut for BufferedChangeEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for BufferedChangeEvent {
 impl From<BufferedChangeEvent> for emlite::Val {
     fn from(s: BufferedChangeEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

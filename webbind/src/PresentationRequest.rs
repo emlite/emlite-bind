@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PresentationRequest {
     inner: EventTarget,
 }
@@ -17,13 +17,13 @@ impl FromVal for PresentationRequest {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PresentationRequest {
+impl core::ops::Deref for PresentationRequest {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PresentationRequest {
+impl core::ops::DerefMut for PresentationRequest {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for PresentationRequest {
 impl From<PresentationRequest> for emlite::Val {
     fn from(s: PresentationRequest) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

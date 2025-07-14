@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GeolocationSensorReading {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for GeolocationSensorReading {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GeolocationSensorReading {
+impl core::ops::Deref for GeolocationSensorReading {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GeolocationSensorReading {
+impl core::ops::DerefMut for GeolocationSensorReading {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for GeolocationSensorReading {
 impl From<GeolocationSensorReading> for emlite::Val {
     fn from(s: GeolocationSensorReading) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -106,7 +106,7 @@ impl GeolocationSensorReading {
         self.inner.set("speed", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct ReadOptions {
     inner: emlite::Val,
 }
@@ -121,13 +121,13 @@ impl FromVal for ReadOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for ReadOptions {
+impl core::ops::Deref for ReadOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for ReadOptions {
+impl core::ops::DerefMut for ReadOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -135,7 +135,7 @@ impl std::ops::DerefMut for ReadOptions {
 impl From<ReadOptions> for emlite::Val {
     fn from(s: ReadOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -149,7 +149,7 @@ impl ReadOptions {
         self.inner.set("signal", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GeolocationSensor {
     inner: Sensor,
 }
@@ -166,13 +166,13 @@ impl FromVal for GeolocationSensor {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GeolocationSensor {
+impl core::ops::Deref for GeolocationSensor {
     type Target = Sensor;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GeolocationSensor {
+impl core::ops::DerefMut for GeolocationSensor {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -180,7 +180,7 @@ impl std::ops::DerefMut for GeolocationSensor {
 impl From<GeolocationSensor> for emlite::Val {
     fn from(s: GeolocationSensor) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

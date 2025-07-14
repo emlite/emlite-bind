@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WebTransportError {
     inner: DOMException,
 }
@@ -17,13 +17,13 @@ impl FromVal for WebTransportError {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for WebTransportError {
+impl core::ops::Deref for WebTransportError {
     type Target = DOMException;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for WebTransportError {
+impl core::ops::DerefMut for WebTransportError {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for WebTransportError {
 impl From<WebTransportError> for emlite::Val {
     fn from(s: WebTransportError) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

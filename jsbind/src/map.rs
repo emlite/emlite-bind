@@ -1,10 +1,10 @@
 //! jsbind :: Map<K, V>  (JavaScript Map)
 //! Thin wrapper around `new Map()` that retains generic key/value types.
+use core::marker::PhantomData;
+use core::ops::{Deref, DerefMut};
 use emlite::FromVal;
-use std::marker::PhantomData;
-use std::ops::{Deref, DerefMut};
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Map<K, V> {
     inner: emlite::Val,
     _phantom: PhantomData<(K, V)>,
@@ -28,7 +28,7 @@ impl<K, V> emlite::FromVal for Map<K, V> {
 impl<K, V> From<Map<K, V>> for emlite::Val {
     fn from(x: Map<K, V>) -> emlite::Val {
         let handle = x.inner.as_handle();
-        std::mem::forget(x);
+        core::mem::forget(x);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -157,7 +157,7 @@ where
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct WeakMap<K, V> {
     inner: emlite::Val,
     _phantom: PhantomData<(K, V)>,
@@ -181,7 +181,7 @@ impl<K, V> emlite::FromVal for WeakMap<K, V> {
 impl<K, V> From<WeakMap<K, V>> for emlite::Val {
     fn from(x: WeakMap<K, V>) -> emlite::Val {
         let handle = x.inner.as_handle();
-        std::mem::forget(x);
+        core::mem::forget(x);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCIceParameters {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for RTCIceParameters {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCIceParameters {
+impl core::ops::Deref for RTCIceParameters {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCIceParameters {
+impl core::ops::DerefMut for RTCIceParameters {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for RTCIceParameters {
 impl From<RTCIceParameters> for emlite::Val {
     fn from(s: RTCIceParameters) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -54,7 +54,7 @@ impl RTCIceParameters {
         self.inner.set("password", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCIceGatherOptions {
     inner: emlite::Val,
 }
@@ -69,13 +69,13 @@ impl FromVal for RTCIceGatherOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCIceGatherOptions {
+impl core::ops::Deref for RTCIceGatherOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCIceGatherOptions {
+impl core::ops::DerefMut for RTCIceGatherOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -83,7 +83,7 @@ impl std::ops::DerefMut for RTCIceGatherOptions {
 impl From<RTCIceGatherOptions> for emlite::Val {
     fn from(s: RTCIceGatherOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -110,7 +110,7 @@ impl RTCIceGatherOptions {
         self.inner.set("iceServers", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCIceCandidateInit {
     inner: emlite::Val,
 }
@@ -125,13 +125,13 @@ impl FromVal for RTCIceCandidateInit {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCIceCandidateInit {
+impl core::ops::Deref for RTCIceCandidateInit {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCIceCandidateInit {
+impl core::ops::DerefMut for RTCIceCandidateInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -139,7 +139,7 @@ impl std::ops::DerefMut for RTCIceCandidateInit {
 impl From<RTCIceCandidateInit> for emlite::Val {
     fn from(s: RTCIceCandidateInit) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -182,7 +182,7 @@ impl RTCIceCandidateInit {
         self.inner.set("usernameFragment", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct RTCIceTransport {
     inner: EventTarget,
 }
@@ -199,13 +199,13 @@ impl FromVal for RTCIceTransport {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for RTCIceTransport {
+impl core::ops::Deref for RTCIceTransport {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for RTCIceTransport {
+impl core::ops::DerefMut for RTCIceTransport {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -213,7 +213,7 @@ impl std::ops::DerefMut for RTCIceTransport {
 impl From<RTCIceTransport> for emlite::Val {
     fn from(s: RTCIceTransport) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

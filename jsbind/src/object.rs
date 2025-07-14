@@ -1,9 +1,8 @@
 use crate::Any;
 use crate::utils::bind;
-use emlite::FromVal;
 
 /// ECMAScript ordinary object backed by an `emlite::Val`.
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Object {
     /// Underlying handle (guaranteed to be an object at runtime).
     inner: emlite::Val,
@@ -20,13 +19,13 @@ impl Object {
     /// `=== null` – not just falsy!
     #[inline]
     pub fn is_null(&self) -> bool {
-        self.inner.as_handle() == emlite::EmlitePredefHandles::Null as u32
+        self.inner.is_null()
     }
 
     /// `=== undefined` – distinguishes from `null`.
     #[inline]
     pub fn is_undefined(&self) -> bool {
-        self.inner.as_handle() == emlite::EmlitePredefHandles::Undefined as u32
+        self.inner.is_undefined()
     }
 
     /// `Object.prototype.hasOwnProperty.call(obj, prop)`

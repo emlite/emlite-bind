@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct TextMetrics {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for TextMetrics {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for TextMetrics {
+impl core::ops::Deref for TextMetrics {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for TextMetrics {
+impl core::ops::DerefMut for TextMetrics {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for TextMetrics {
 impl From<TextMetrics> for emlite::Val {
     fn from(s: TextMetrics) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

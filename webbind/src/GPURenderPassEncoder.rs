@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPURenderPassEncoder {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for GPURenderPassEncoder {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPURenderPassEncoder {
+impl core::ops::Deref for GPURenderPassEncoder {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPURenderPassEncoder {
+impl core::ops::DerefMut for GPURenderPassEncoder {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for GPURenderPassEncoder {
 impl From<GPURenderPassEncoder> for emlite::Val {
     fn from(s: GPURenderPassEncoder) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

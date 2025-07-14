@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct MediaStreamTrackAudioSourceNode {
     inner: AudioNode,
 }
@@ -17,13 +17,13 @@ impl FromVal for MediaStreamTrackAudioSourceNode {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for MediaStreamTrackAudioSourceNode {
+impl core::ops::Deref for MediaStreamTrackAudioSourceNode {
     type Target = AudioNode;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for MediaStreamTrackAudioSourceNode {
+impl core::ops::DerefMut for MediaStreamTrackAudioSourceNode {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for MediaStreamTrackAudioSourceNode {
 impl From<MediaStreamTrackAudioSourceNode> for emlite::Val {
     fn from(s: MediaStreamTrackAudioSourceNode) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct BackgroundSyncOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for BackgroundSyncOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for BackgroundSyncOptions {
+impl core::ops::Deref for BackgroundSyncOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for BackgroundSyncOptions {
+impl core::ops::DerefMut for BackgroundSyncOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for BackgroundSyncOptions {
 impl From<BackgroundSyncOptions> for emlite::Val {
     fn from(s: BackgroundSyncOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -43,7 +43,7 @@ impl BackgroundSyncOptions {
         self.inner.set("minInterval", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PeriodicSyncManager {
     inner: emlite::Val,
 }
@@ -60,13 +60,13 @@ impl FromVal for PeriodicSyncManager {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PeriodicSyncManager {
+impl core::ops::Deref for PeriodicSyncManager {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PeriodicSyncManager {
+impl core::ops::DerefMut for PeriodicSyncManager {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -74,7 +74,7 @@ impl std::ops::DerefMut for PeriodicSyncManager {
 impl From<PeriodicSyncManager> for emlite::Val {
     fn from(s: PeriodicSyncManager) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

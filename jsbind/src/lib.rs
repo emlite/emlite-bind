@@ -1,3 +1,6 @@
+#![no_std]
+extern crate alloc;
+
 pub use emlite::Console;
 
 mod null;

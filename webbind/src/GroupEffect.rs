@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GroupEffect {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for GroupEffect {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GroupEffect {
+impl core::ops::Deref for GroupEffect {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GroupEffect {
+impl core::ops::DerefMut for GroupEffect {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for GroupEffect {
 impl From<GroupEffect> for emlite::Val {
     fn from(s: GroupEffect) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

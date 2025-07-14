@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct Comment {
     inner: CharacterData,
 }
@@ -17,13 +17,13 @@ impl FromVal for Comment {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for Comment {
+impl core::ops::Deref for Comment {
     type Target = CharacterData;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for Comment {
+impl core::ops::DerefMut for Comment {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for Comment {
 impl From<Comment> for emlite::Val {
     fn from(s: Comment) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

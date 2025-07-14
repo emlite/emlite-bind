@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct OES_texture_float {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for OES_texture_float {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for OES_texture_float {
+impl core::ops::Deref for OES_texture_float {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for OES_texture_float {
+impl core::ops::DerefMut for OES_texture_float {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for OES_texture_float {
 impl From<OES_texture_float> for emlite::Val {
     fn from(s: OES_texture_float) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

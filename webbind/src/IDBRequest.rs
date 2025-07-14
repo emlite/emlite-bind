@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct IDBRequest {
     inner: EventTarget,
 }
@@ -17,13 +17,13 @@ impl FromVal for IDBRequest {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for IDBRequest {
+impl core::ops::Deref for IDBRequest {
     type Target = EventTarget;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for IDBRequest {
+impl core::ops::DerefMut for IDBRequest {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for IDBRequest {
 impl From<IDBRequest> for emlite::Val {
     fn from(s: IDBRequest) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AudioDataCopyToOptions {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for AudioDataCopyToOptions {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AudioDataCopyToOptions {
+impl core::ops::Deref for AudioDataCopyToOptions {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AudioDataCopyToOptions {
+impl core::ops::DerefMut for AudioDataCopyToOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for AudioDataCopyToOptions {
 impl From<AudioDataCopyToOptions> for emlite::Val {
     fn from(s: AudioDataCopyToOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -70,7 +70,7 @@ impl AudioDataCopyToOptions {
         self.inner.set("format", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct AudioData {
     inner: emlite::Val,
 }
@@ -87,13 +87,13 @@ impl FromVal for AudioData {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for AudioData {
+impl core::ops::Deref for AudioData {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for AudioData {
+impl core::ops::DerefMut for AudioData {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -101,7 +101,7 @@ impl std::ops::DerefMut for AudioData {
 impl From<AudioData> for emlite::Val {
     fn from(s: AudioData) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

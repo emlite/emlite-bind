@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PushSubscriptionJSON {
     inner: emlite::Val,
 }
@@ -15,13 +15,13 @@ impl FromVal for PushSubscriptionJSON {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PushSubscriptionJSON {
+impl core::ops::Deref for PushSubscriptionJSON {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PushSubscriptionJSON {
+impl core::ops::DerefMut for PushSubscriptionJSON {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -29,7 +29,7 @@ impl std::ops::DerefMut for PushSubscriptionJSON {
 impl From<PushSubscriptionJSON> for emlite::Val {
     fn from(s: PushSubscriptionJSON) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
@@ -63,7 +63,7 @@ impl PushSubscriptionJSON {
         self.inner.set("keys", value);
     }
 }
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PushSubscription {
     inner: emlite::Val,
 }
@@ -80,13 +80,13 @@ impl FromVal for PushSubscription {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PushSubscription {
+impl core::ops::Deref for PushSubscription {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PushSubscription {
+impl core::ops::DerefMut for PushSubscription {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -94,7 +94,7 @@ impl std::ops::DerefMut for PushSubscription {
 impl From<PushSubscription> for emlite::Val {
     fn from(s: PushSubscription) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

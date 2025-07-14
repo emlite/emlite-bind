@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct PeriodicSyncEvent {
     inner: ExtendableEvent,
 }
@@ -17,13 +17,13 @@ impl FromVal for PeriodicSyncEvent {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for PeriodicSyncEvent {
+impl core::ops::Deref for PeriodicSyncEvent {
     type Target = ExtendableEvent;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for PeriodicSyncEvent {
+impl core::ops::DerefMut for PeriodicSyncEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for PeriodicSyncEvent {
 impl From<PeriodicSyncEvent> for emlite::Val {
     fn from(s: PeriodicSyncEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }

@@ -1,6 +1,6 @@
 use super::*;
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
 pub struct GPUDeviceLostInfo {
     inner: emlite::Val,
 }
@@ -17,13 +17,13 @@ impl FromVal for GPUDeviceLostInfo {
         self.inner.as_handle()
     }
 }
-impl std::ops::Deref for GPUDeviceLostInfo {
+impl core::ops::Deref for GPUDeviceLostInfo {
     type Target = emlite::Val;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
 }
-impl std::ops::DerefMut for GPUDeviceLostInfo {
+impl core::ops::DerefMut for GPUDeviceLostInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
@@ -31,7 +31,7 @@ impl std::ops::DerefMut for GPUDeviceLostInfo {
 impl From<GPUDeviceLostInfo> for emlite::Val {
     fn from(s: GPUDeviceLostInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
-        std::mem::forget(s);
+        core::mem::forget(s);
         emlite::Val::take_ownership(handle)
     }
 }
