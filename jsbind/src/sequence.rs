@@ -87,7 +87,15 @@ impl<T> Sequence<T> {
     where
         T: FromVal,
     {
-        self.inner.get(idx as u32).as_::<T>()
+        self.inner.get(idx).as_::<T>()
+    }
+
+    /// Returns whether a value exists in the sequence.
+    pub fn has(&self, val: T) -> bool
+    where
+        emlite::Val: From<T>,
+    {
+        self.inner.has(val)
     }
 
     pub fn set(&self, idx: usize, val: T)

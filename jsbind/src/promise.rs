@@ -17,6 +17,12 @@ impl Default for Promise {
 }
 
 impl Promise {
+    /// JavaScript `Promise.all(iterable)`
+    pub fn all(iterable: &crate::Sequence<Any>) -> Self {
+        emlite::Val::global("Promise")
+            .call("all", &[iterable.clone().into()])
+            .as_::<Self>()
+    }
     /// Equivalent to `promise.then(onFulfilled, onRejected)`.
     pub fn then(&self, on_fulfilled: &Function, on_rejected: &Function) -> Self {
         self.inner

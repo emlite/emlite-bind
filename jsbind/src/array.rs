@@ -73,7 +73,9 @@ impl ArrayBuffer {
     }
 
     pub fn is_view(buf: &Any) -> bool {
-        emlite::Val::global("ArrayBuffer").call("isView", &[buf.clone()]).as_::<bool>()
+        emlite::Val::global("ArrayBuffer")
+            .call("isView", &[buf.clone()])
+            .as_::<bool>()
     }
 
     pub fn resizable(&self) -> bool {
@@ -111,6 +113,7 @@ impl Endian {
 /// All accessor methods follow the spec signature `(byteOffset, [value],
 /// littleEndian)` so host code must always pass an [`Endian`] flag to remove
 /// any ambiguity about byte order.
+#[derive(Clone, Debug)]
 pub struct DataView {
     inner: emlite::Val,
 }
@@ -123,20 +126,20 @@ pub struct DataView {
 macro_rules! rw {
     ($get:ident, $set:ident, $ty:ty) => {
         #[doc = concat!("Reads a `", stringify!($ty), "` at byteOffset with the specified endianness.")]
-        pub fn $get(&self, byte_offset: usize, endian: Endian) -> $ty {
+        pub fn $get(&self, byte_offset: usize, endian: Option<Endian>) -> $ty {
             self.inner
                 .call(
                     concat!("get", stringify!($get)),
-                    &[byte_offset.into(), endian.to_str().into()],
+                    &[byte_offset.into(),  endian.unwrap_or(Endian::Little).to_str().into()],
                 )
                 .as_::<$ty>()
         }
 
         #[doc = concat!("Writes value as `", stringify!($ty), "` at byteOffset using the specified endianness.")]
-        pub fn $set(&self, byte_offset: usize, value: $ty, endian: Endian) {
+        pub fn $set(&self, byte_offset: usize, value: $ty, endian: Option<Endian>) {
             self.inner.call(
                 concat!("set", stringify!($get)),
-                &[byte_offset.into(), value.into(), endian.to_str().into()],
+                &[byte_offset.into(), value.into(), endian.unwrap_or(Endian::Little).to_str().into()],
             );
         }
     };

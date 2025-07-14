@@ -1,5 +1,4 @@
-use jsbind::Console;
-use jsbind::Function;
+use jsbind::{Closure, Console};
 use webbind::html_button_element::HTMLButtonElement;
 use webbind::node::Node;
 use webbind::pointer_event::PointerEvent;
@@ -20,9 +19,10 @@ fn main() {
     button.set_text_content("Click me".into());
     button.add_event_listener0(
         "click".into(),
-        Function::typed1(move |p: PointerEvent| {
+        Closure::bind1(move |p: PointerEvent| {
             con.log(&[p.client_x().into()]);
-        }),
+        })
+        .into(),
     );
     body.append_child(button.as_::<Node>());
     let style = button.style();

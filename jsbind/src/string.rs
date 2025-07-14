@@ -1,4 +1,5 @@
 use crate::utils::bind;
+use emlite::FromVal;
 
 macro_rules! declare_string {
     ($name:ident) => {
@@ -48,7 +49,7 @@ macro_rules! declare_string {
             pub fn as_str(&self) -> &str {
                 self.inner.as_::<&str>()
             }
-            
+
             /// Number of UTF-16 code units (`JSString.length`).
             pub fn length(&self) -> usize {
                 self.inner.get("length").as_::<usize>()
@@ -59,9 +60,172 @@ macro_rules! declare_string {
                 self.inner.call("charCodeAt", &[idx.into()]).as_::<u16>()
             }
 
-            pub fn set(&self, idx: usize, val: char)
-            {
+            pub fn set(&self, idx: usize, val: char) {
                 self.inner.set(idx, val as u8);
+            }
+
+            /// [`String.prototype.at`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/at)
+            pub fn at(&self, idx: isize) -> Option<Self> {
+                let v = self.inner.call("at", &[idx.into()]);
+                if v.as_handle() == 1 {
+                    None
+                } else {
+                    Some(v.as_::<Self>())
+                }
+            }
+            /// [`String.prototype.codePointAt`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/codePointAt)
+            pub fn code_point_at(&self, idx: usize) -> Option<u32> {
+                let v = self.inner.call("codePointAt", &[idx.into()]);
+                if v.as_handle() == 1 {
+                    None
+                } else {
+                    Some(v.as_::<u32>())
+                }
+            }
+            /// [`String.prototype.concat`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/concat)
+            pub fn concat(&self, rhs: &Self) -> Self {
+                self.inner
+                    .call("concat", &[rhs.clone().into()])
+                    .as_::<Self>()
+            }
+            /// [`String.prototype.endsWith`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith)
+            pub fn ends_with(&self, pat: &str) -> bool {
+                self.inner.call("endsWith", &[pat.into()]).as_::<bool>()
+            }
+            /// [`String.prototype.includes`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/includes)
+            pub fn includes(&self, pat: &str) -> bool {
+                self.inner.call("includes", &[pat.into()]).as_::<bool>()
+            }
+            /// [`String.prototype.indexOf`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf)
+            /// Returns `None` when not found.
+            pub fn index_of(&self, pat: &str) -> Option<usize> {
+                let n = self.inner.call("indexOf", &[pat.into()]).as_::<i32>();
+                if n == -1 { None } else { Some(n as usize) }
+            }
+            /// [`String.prototype.isWellFormed`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/isWellFormed)
+            pub fn is_well_formed(&self) -> bool {
+                self.inner.call("isWellFormed", &[]).as_::<bool>()
+            }
+            /// [`String.prototype.lastIndexOf`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/lastIndexOf)
+            pub fn last_index_of(&self, pat: &str) -> Option<usize> {
+                let n = self.inner.call("lastIndexOf", &[pat.into()]).as_::<i32>();
+                if n == -1 { None } else { Some(n as usize) }
+            }
+            /// [`String.prototype.localeCompare`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/localeCompare)
+            pub fn locale_compare(&self, other: &str) -> i32 {
+                self.inner
+                    .call("localeCompare", &[other.into()])
+                    .as_::<i32>()
+            }
+            /// [`String.prototype.match`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/match)
+            pub fn match_(&self, pat: &emlite::Val) -> emlite::Val {
+                self.inner.call("match", &[pat.clone()])
+            }
+            /// [`String.prototype.matchAll`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/matchAll)
+            pub fn match_all(&self, pat: &emlite::Val) -> emlite::Val {
+                self.inner.call("matchAll", &[pat.clone()])
+            }
+            /// [`String.prototype.normalize`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/normalize)
+            pub fn normalize(&self, form: Option<&str>) -> Self {
+                match form {
+                    Some(f) => self.inner.call("normalize", &[f.into()]),
+                    None => self.inner.call("normalize", &[]),
+                }
+                .as_::<Self>()
+            }
+            /// [`String.prototype.padEnd`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/padEnd)
+            pub fn pad_end(&self, target_len: usize, pad: Option<&str>) -> Self {
+                match pad {
+                    Some(p) => self.inner.call("padEnd", &[target_len.into(), p.into()]),
+                    None => self.inner.call("padEnd", &[target_len.into()]),
+                }
+                .as_::<Self>()
+            }
+            /// [`String.prototype.padStart`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
+            pub fn pad_start(&self, target_len: usize, pad: Option<&str>) -> Self {
+                match pad {
+                    Some(p) => self.inner.call("padStart", &[target_len.into(), p.into()]),
+                    None => self.inner.call("padStart", &[target_len.into()]),
+                }
+                .as_::<Self>()
+            }
+            /// [`String.prototype.repeat`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/repeat)
+            pub fn repeat(&self, count: usize) -> Self {
+                self.inner.call("repeat", &[count.into()]).as_::<Self>()
+            }
+            /// [`String.prototype.replace`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
+            pub fn replace(&self, pat: &emlite::Val, repl: &emlite::Val) -> Self {
+                self.inner
+                    .call("replace", &[pat.clone(), repl.clone()])
+                    .as_::<Self>()
+            }
+            /// [`String.prototype.replaceAll`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll)
+            pub fn replace_all(&self, pat: &emlite::Val, repl: &emlite::Val) -> Self {
+                self.inner
+                    .call("replaceAll", &[pat.clone(), repl.clone()])
+                    .as_::<Self>()
+            }
+            /// [`String.prototype.search`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/search)
+            pub fn search(&self, pat: &emlite::Val) -> isize {
+                self.inner.call("search", &[pat.clone()]).as_::<i32>() as isize
+            }
+            /// [`String.prototype.slice`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/slice)
+            pub fn slice(&self, start: isize, end: Option<isize>) -> Self {
+                match end {
+                    Some(e) => self.inner.call("slice", &[start.into(), e.into()]),
+                    None => self.inner.call("slice", &[start.into()]),
+                }
+                .as_::<Self>()
+            }
+            /// [`String.prototype.split`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/split)
+            pub fn split(&self, sep: &str) -> crate::Sequence<Self> {
+                self.inner
+                    .call("split", &[sep.into()])
+                    .as_::<crate::Sequence<Self>>()
+            }
+            /// [`String.prototype.startsWith`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith)
+            pub fn starts_with(&self, pat: &str) -> bool {
+                self.inner.call("startsWith", &[pat.into()]).as_::<bool>()
+            }
+            /// [`String.prototype.substring`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/substring)
+            pub fn substring(&self, start: usize, end: Option<usize>) -> Self {
+                match end {
+                    Some(e) => self.inner.call("substring", &[start.into(), e.into()]),
+                    None => self.inner.call("substring", &[start.into()]),
+                }
+                .as_::<Self>()
+            }
+            /// [`String.prototype.toLocaleLowerCase`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/toLocaleLowerCase)
+            pub fn to_locale_lower_case(&self) -> Self {
+                self.inner.call("toLocaleLowerCase", &[]).as_::<Self>()
+            }
+            /// [`String.prototype.toLocaleUpperCase`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/toLocaleUpperCase)
+            pub fn to_locale_upper_case(&self) -> Self {
+                self.inner.call("toLocaleUpperCase", &[]).as_::<Self>()
+            }
+            /// [`String.prototype.toLowerCase`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase)
+            pub fn to_lower_case(&self) -> Self {
+                self.inner.call("toLowerCase", &[]).as_::<Self>()
+            }
+            /// [`String.prototype.toUpperCase`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase)
+            pub fn to_upper_case(&self) -> Self {
+                self.inner.call("toUpperCase", &[]).as_::<Self>()
+            }
+            /// [`String.prototype.toWellFormed`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/toWellFormed)
+            pub fn to_well_formed(&self) -> Self {
+                self.inner.call("toWellFormed", &[]).as_::<Self>()
+            }
+            /// [`String.prototype.trim`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/trim)
+            pub fn trim(&self) -> Self {
+                self.inner.call("trim", &[]).as_::<Self>()
+            }
+            /// [`String.prototype.trimEnd`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/trimEnd)
+            pub fn trim_end(&self) -> Self {
+                self.inner.call("trimEnd", &[]).as_::<Self>()
+            }
+            /// [`String.prototype.trimStart`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/trimStart)
+            pub fn trim_start(&self) -> Self {
+                self.inner.call("trimStart", &[]).as_::<Self>()
             }
         }
 

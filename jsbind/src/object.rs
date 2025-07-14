@@ -41,6 +41,18 @@ impl Object {
     pub fn set(&self, item: &str, val: &Any) {
         self.inner.set(item, val.clone());
     }
+
+    /// Returns whether a value exists in the sequence.
+    pub fn has<T>(&self, item: T) -> bool
+    where
+        emlite::Val: From<T>,
+    {
+        self.inner.has(item)
+    }
+
+    pub fn get(&self, item: &Any) -> Any {
+        self.inner.get(item.clone()).as_::<Any>()
+    }
 }
 
 impl Default for Object {

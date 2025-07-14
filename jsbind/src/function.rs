@@ -1,40 +1,139 @@
+use crate::Any;
 use crate::utils::bind;
 use emlite::FromVal;
 
-/// The inner value is guaranteed at runtime to be callable (`typeof v ===
-/// "function"`).  All methods are zero‑cost delegates to `emlite::Val` helpers.
+/// Wrapper around a runtime JavaScript `Function` object.
+///
+/// Unlike [`Closure`], this is not created from a Rust callback; it
+/// simply holds an existing function reference coming from JS.
 #[derive(Clone, Debug)]
 pub struct Function {
-    /// Underlying JavaScript function object.
     inner: emlite::Val,
 }
 
 bind!(Function);
 
 impl Function {
-    /// Build a `Function` from a raw closure that receives the argument
+    /// Attempt to fetch `globalThis[name]` and treat it as a function.
+    /// Returns `None` if the global is `undefined` or not callable.
+    pub fn global(name: &str) -> Option<Self> {
+        let v = emlite::Val::global(name);
+        if v.instanceof(emlite::Val::global("Function")) {
+            Some(v.as_::<Self>())
+        } else {
+            None
+        }
+    }
+
+    /// Build a new function via the JS `Function` constructor:
+    /// `new Function(arg1, arg2, ..., body)`.
+    ///
+    /// ```
+    /// let f = Function::new(&["a", "b"], "return a + b;");
+    /// let sum: i32 = f.call(&Any::undefined(), &[1.into(), 2.into()]).as_();
+    /// assert_eq!(sum, 3);
+    /// ```
+    pub fn new<S: AsRef<str>>(args: &[S], body: &str) -> Self {
+        let ctor = emlite::Val::global("Function");
+        let mut a: Vec<emlite::Val> = args.iter().map(|s| s.as_ref().into()).collect();
+        a.push(body.into());
+        ctor.new(&a).as_::<Self>()
+    }
+}
+
+impl Function {
+    /// Call `fn.call(this, …args)`.  
+    /// Returns the raw JS value so the caller can choose the concrete type.
+    pub fn call(&self, this_arg: &Any, args: &[Any]) -> Any {
+        // prepend `this` then use `Function.prototype.call`
+        let mut v: Vec<emlite::Val> = Vec::with_capacity(args.len() + 1);
+        v.push(this_arg.clone());
+        v.extend(args.iter().cloned());
+        self.inner.call("call", &v).as_()
+    }
+
+    /// Call `fn.apply(this, args_array)`.
+    pub fn apply(&self, this_arg: &Any, args_array: &crate::Array) -> Any {
+        self.inner
+            .call("apply", &[this_arg.clone(), args_array.clone().into()])
+            .as_()
+    }
+
+    /// Bind a new `this` argument (`fn.bind(this, …pre_args)`).
+    pub fn bind(&self, this_arg: &Any, pre_args: &[Any]) -> Self {
+        let mut a: Vec<emlite::Val> = Vec::with_capacity(pre_args.len() + 1);
+        a.push(this_arg.clone());
+        a.extend(pre_args.iter().cloned());
+        self.inner.call("bind", &a).as_::<Self>()
+    }
+}
+
+impl From<Closure> for Function {
+    fn from(c: Closure) -> Self {
+        c.as_::<Self>()
+    }
+}
+
+impl std::fmt::Display for Function {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        // JS › fn.toString()
+        let s: String = self.inner.call("toString", &[]).as_();
+        f.write_str(&s)
+    }
+}
+
+impl<'a> From<&'a Closure> for Function {
+    fn from(c: &Closure) -> Self {
+        c.clone().into()
+    }
+}
+impl<'a> From<&'a Function> for Closure {
+    fn from(f: &Function) -> Self {
+        f.clone().as_()
+    }
+}
+
+impl PartialEq for Function {
+    fn eq(&self, other: &Self) -> bool {
+        self.as_handle() == other.as_handle()
+    }
+}
+impl Eq for Function {}
+
+/// The inner value is guaranteed at runtime to be callable (`typeof v ===
+/// "function"`).  All methods are zero‑cost delegates to `emlite::Val` helpers.
+#[derive(Clone, Debug)]
+pub struct Closure {
+    /// Underlying JavaScript function object.
+    inner: emlite::Val,
+}
+
+bind!(Closure);
+
+impl Closure {
+    /// Build a `Closure` from a raw closure that receives the argument
     /// array as a slice of `emlite::Val` and must itself return an
     /// `emlite::Val`.
     ///
     /// Use this when the callback signature is not known until runtime or when
     /// you want to support variadic JavaScript calls.
-    pub fn new<F>(cb: F) -> Function
+    pub fn new<F>(cb: F) -> Closure
     where
         F: FnMut(&[emlite::Val]) -> emlite::Val,
     {
-        Function {
+        Closure {
             inner: emlite::Val::make_fn(cb),
         }
     }
 
     /// Create a JS function with no parameters whose Rust body returns a
     /// value convertible into `emlite::Val`.
-    pub fn typed0<Ret, F>(mut cb: F) -> Function
+    pub fn bind0<Ret, F>(mut cb: F) -> Closure
     where
         Ret: Into<emlite::Val>,
         F: FnMut() -> Ret,
     {
-        Function {
+        Closure {
             inner: emlite::Val::make_fn(move |_| {
                 let r: Ret = cb();
                 r.into()
@@ -46,13 +145,13 @@ impl Function {
     ///
     /// `Arg1` – Rust type the first JS argument should be converted into.
     /// `Ret`  – type converted from Rust back to JS for the return value.
-    pub fn typed1<Ret, Arg1, F>(mut cb: F) -> Function
+    pub fn bind1<Ret, Arg1, F>(mut cb: F) -> Closure
     where
         Ret: Into<emlite::Val>,
         Arg1: FromVal,
         F: FnMut(Arg1) -> Ret,
     {
-        Function {
+        Closure {
             inner: emlite::Val::make_fn(move |args| {
                 let arg1 = args[0].as_::<Arg1>();
                 let r: Ret = cb(arg1);
@@ -61,16 +160,16 @@ impl Function {
         }
     }
 
-    /// Two‑argument typed JS function.  See [`typed1`] for the generic
+    /// Two‑argument typed JS function.  See [`bind1`] for the generic
     /// parameter meanings.
-    pub fn typed2<Ret, Arg1, Arg2, F>(mut cb: F) -> Function
+    pub fn bind2<Ret, Arg1, Arg2, F>(mut cb: F) -> Closure
     where
         Ret: Into<emlite::Val>,
         Arg1: FromVal,
         Arg2: FromVal,
         F: FnMut(Arg1, Arg2) -> Ret,
     {
-        Function {
+        Closure {
             inner: emlite::Val::make_fn(move |args| {
                 let r: Ret = cb(args[0].as_::<Arg1>(), args[1].as_::<Arg2>());
                 r.into()
@@ -79,7 +178,7 @@ impl Function {
     }
 
     /// Three‑argument typed JS function.
-    pub fn typed3<Ret, Arg1, Arg2, Arg3, F>(mut cb: F) -> Function
+    pub fn bind3<Ret, Arg1, Arg2, Arg3, F>(mut cb: F) -> Closure
     where
         Ret: Into<emlite::Val>,
         Arg1: FromVal,
@@ -87,7 +186,7 @@ impl Function {
         Arg3: FromVal,
         F: FnMut(Arg1, Arg2, Arg3) -> Ret,
     {
-        Function {
+        Closure {
             inner: emlite::Val::make_fn(move |args| {
                 let r: Ret = cb(
                     args[0].as_::<Arg1>(),
@@ -100,7 +199,7 @@ impl Function {
     }
 
     /// Four‑argument typed JS function.
-    pub fn typed4<Ret, Arg1, Arg2, Arg3, Arg4, F>(mut cb: F) -> Function
+    pub fn bind4<Ret, Arg1, Arg2, Arg3, Arg4, F>(mut cb: F) -> Closure
     where
         Ret: Into<emlite::Val>,
         Arg1: FromVal,
@@ -109,7 +208,7 @@ impl Function {
         Arg4: FromVal,
         F: FnMut(Arg1, Arg2, Arg3, Arg4) -> Ret,
     {
-        Function {
+        Closure {
             inner: emlite::Val::make_fn(move |args| {
                 let r: Ret = cb(
                     args[0].as_::<Arg1>(),
@@ -123,7 +222,7 @@ impl Function {
     }
 
     /// Five‑argument typed JS function.
-    pub fn typed5<Ret, Arg1, Arg2, Arg3, Arg4, Arg5, F>(mut cb: F) -> Function
+    pub fn bind5<Ret, Arg1, Arg2, Arg3, Arg4, Arg5, F>(mut cb: F) -> Closure
     where
         Ret: Into<emlite::Val>,
         Arg1: FromVal,
@@ -133,7 +232,7 @@ impl Function {
         Arg5: FromVal,
         F: FnMut(Arg1, Arg2, Arg3, Arg4, Arg5) -> Ret,
     {
-        Function {
+        Closure {
             inner: emlite::Val::make_fn(move |args| {
                 let r: Ret = cb(
                     args[0].as_::<Arg1>(),
@@ -148,7 +247,7 @@ impl Function {
     }
 
     /// Six‑argument typed JS function.
-    pub fn typed6<Ret, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, F>(mut cb: F) -> Function
+    pub fn bind6<Ret, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, F>(mut cb: F) -> Closure
     where
         Ret: Into<emlite::Val>,
         Arg1: FromVal,
@@ -159,7 +258,7 @@ impl Function {
         Arg6: FromVal,
         F: FnMut(Arg1, Arg2, Arg3, Arg4, Arg5, Arg6) -> Ret,
     {
-        Function {
+        Closure {
             inner: emlite::Val::make_fn(move |args| {
                 let r: Ret = cb(
                     args[0].as_::<Arg1>(),

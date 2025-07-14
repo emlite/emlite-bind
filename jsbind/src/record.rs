@@ -51,20 +51,29 @@ impl<K, V> DerefMut for Record<K, V> {
     }
 }
 
-impl<K, V: Clone + FromVal> Record<K, V> {
+impl<K, V> Record<K, V> {
     pub fn set(&self, item: K, val: V)
     where
         emlite::Val: From<K>,
         emlite::Val: From<V>,
     {
-        self.inner.set(item, val.clone());
+        self.inner.set(item, val);
     }
 
     pub fn get(&self, item: K) -> V
     where
         emlite::Val: From<K>,
         emlite::Val: From<V>,
+        V: FromVal,
     {
         self.inner.get(item).as_::<V>()
+    }
+
+    /// Returns whether a value exists in the sequence.
+    pub fn has(&self, item: K) -> bool
+    where
+        emlite::Val: From<K>,
+    {
+        self.inner.has(item)
     }
 }
