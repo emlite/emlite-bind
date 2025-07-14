@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct StorageInterestGroup {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for StorageInterestGroup {
 }
 impl core::ops::DerefMut for StorageInterestGroup {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for StorageInterestGroup {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for StorageInterestGroup {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -118,6 +129,7 @@ impl StorageInterestGroup {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SharedStorageWorkletGlobalScope {
     inner: WorkletGlobalScope,
 }
@@ -145,6 +157,16 @@ impl core::ops::DerefMut for SharedStorageWorkletGlobalScope {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SharedStorageWorkletGlobalScope {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SharedStorageWorkletGlobalScope {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SharedStorageWorkletGlobalScope> for emlite::Val {
     fn from(s: SharedStorageWorkletGlobalScope) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -152,6 +174,7 @@ impl From<SharedStorageWorkletGlobalScope> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SharedStorageWorkletGlobalScope);
 
 impl SharedStorageWorkletGlobalScope {
     pub fn register(

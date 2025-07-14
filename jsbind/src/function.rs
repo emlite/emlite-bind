@@ -1,5 +1,5 @@
 use crate::Any;
-use crate::utils::bind;
+use crate::utils::*;
 use alloc::string::String;
 use alloc::vec::Vec;
 use emlite::FromVal;
@@ -9,11 +9,13 @@ use emlite::FromVal;
 /// Unlike [`Closure`], this is not created from a Rust callback; it
 /// simply holds an existing function reference coming from JS.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Function {
     inner: emlite::Val,
 }
 
 bind!(Function);
+impl_dyn_cast!(Function);
 
 impl Function {
     /// Attempt to fetch `globalThis[name]` and treat it as a function.
@@ -98,6 +100,7 @@ impl<'a> From<&'a Function> for Closure {
 /// The inner value is guaranteed at runtime to be callable (`typeof v ===
 /// "function"`).  All methods are zero‑cost delegates to `emlite::Val` helpers.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Closure {
     /// Underlying JavaScript function object.
     inner: emlite::Val,

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct TrustedTypePolicyOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for TrustedTypePolicyOptions {
 }
 impl core::ops::DerefMut for TrustedTypePolicyOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for TrustedTypePolicyOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for TrustedTypePolicyOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl TrustedTypePolicyOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct TrustedTypePolicyFactory {
     inner: emlite::Val,
 }
@@ -89,6 +101,16 @@ impl core::ops::DerefMut for TrustedTypePolicyFactory {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for TrustedTypePolicyFactory {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for TrustedTypePolicyFactory {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<TrustedTypePolicyFactory> for emlite::Val {
     fn from(s: TrustedTypePolicyFactory) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -96,6 +118,7 @@ impl From<TrustedTypePolicyFactory> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(TrustedTypePolicyFactory);
 
 impl TrustedTypePolicyFactory {
     pub fn create_policy0(&self, policy_name: jsbind::DOMString) -> TrustedTypePolicy {

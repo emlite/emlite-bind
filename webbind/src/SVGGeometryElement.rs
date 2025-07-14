@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DOMPointInit {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for DOMPointInit {
 }
 impl core::ops::DerefMut for DOMPointInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for DOMPointInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DOMPointInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -71,6 +82,7 @@ impl DOMPointInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SVGGeometryElement {
     inner: SVGGraphicsElement,
 }
@@ -98,6 +110,16 @@ impl core::ops::DerefMut for SVGGeometryElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SVGGeometryElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SVGGeometryElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SVGGeometryElement> for emlite::Val {
     fn from(s: SVGGeometryElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -105,6 +127,7 @@ impl From<SVGGeometryElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SVGGeometryElement);
 
 impl SVGGeometryElement {
     pub fn path_length(&self) -> SVGAnimatedNumber {

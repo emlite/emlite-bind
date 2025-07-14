@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DataCue {
     inner: TextTrackCue,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for DataCue {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for DataCue {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DataCue {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<DataCue> for emlite::Val {
     fn from(s: DataCue) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<DataCue> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(DataCue);
 
 impl DataCue {
     pub fn new0(start_time: f64, end_time: f64, value: jsbind::Any) -> DataCue {

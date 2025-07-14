@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NavigationTransition {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for NavigationTransition {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for NavigationTransition {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NavigationTransition {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<NavigationTransition> for emlite::Val {
     fn from(s: NavigationTransition) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<NavigationTransition> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(NavigationTransition);
 
 impl NavigationTransition {
     pub fn navigation_type(&self) -> NavigationType {

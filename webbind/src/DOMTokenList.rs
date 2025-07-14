@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DOMTokenList {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for DOMTokenList {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for DOMTokenList {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DOMTokenList {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<DOMTokenList> for emlite::Val {
     fn from(s: DOMTokenList) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<DOMTokenList> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(DOMTokenList);
 
 impl DOMTokenList {
     pub fn length(&self) -> u32 {

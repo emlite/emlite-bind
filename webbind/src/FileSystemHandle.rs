@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FileSystemHandlePermissionDescriptor {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for FileSystemHandlePermissionDescriptor {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FileSystemHandlePermissionDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FileSystemHandlePermissionDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FileSystemHandlePermissionDescriptor> for emlite::Val {
     fn from(s: FileSystemHandlePermissionDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl FileSystemHandlePermissionDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FileSystemHandle {
     inner: emlite::Val,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for FileSystemHandle {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FileSystemHandle {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FileSystemHandle {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FileSystemHandle> for emlite::Val {
     fn from(s: FileSystemHandle) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<FileSystemHandle> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(FileSystemHandle);
 
 impl FileSystemHandle {
     pub fn kind(&self) -> FileSystemHandleKind {

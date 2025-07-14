@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SVGGradientElement {
     inner: SVGElement,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for SVGGradientElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SVGGradientElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SVGGradientElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SVGGradientElement> for emlite::Val {
     fn from(s: SVGGradientElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<SVGGradientElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SVGGradientElement);
 
 impl SVGGradientElement {
     pub fn gradient_units(&self) -> SVGAnimatedEnumeration {

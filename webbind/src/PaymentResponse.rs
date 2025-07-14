@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PaymentCompleteDetails {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for PaymentCompleteDetails {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PaymentCompleteDetails {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PaymentCompleteDetails {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PaymentCompleteDetails> for emlite::Val {
     fn from(s: PaymentCompleteDetails) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl PaymentCompleteDetails {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PaymentValidationErrors {
     inner: emlite::Val,
 }
@@ -66,6 +78,16 @@ impl core::ops::Deref for PaymentValidationErrors {
 }
 impl core::ops::DerefMut for PaymentValidationErrors {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PaymentValidationErrors {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PaymentValidationErrors {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -114,6 +136,7 @@ impl PaymentValidationErrors {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PaymentResponse {
     inner: EventTarget,
 }
@@ -141,6 +164,16 @@ impl core::ops::DerefMut for PaymentResponse {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PaymentResponse {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PaymentResponse {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PaymentResponse> for emlite::Val {
     fn from(s: PaymentResponse) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -148,6 +181,7 @@ impl From<PaymentResponse> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(PaymentResponse);
 
 impl PaymentResponse {
     pub fn to_json(&self) -> jsbind::Object {

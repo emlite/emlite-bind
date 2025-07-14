@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CredentialRequestOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for CredentialRequestOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CredentialRequestOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CredentialRequestOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CredentialRequestOptions> for emlite::Val {
     fn from(s: CredentialRequestOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -46,6 +57,7 @@ impl CredentialRequestOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CredentialCreationOptions {
     inner: emlite::Val,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for CredentialCreationOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CredentialCreationOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CredentialCreationOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CredentialCreationOptions> for emlite::Val {
     fn from(s: CredentialCreationOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -91,6 +113,7 @@ impl CredentialCreationOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CredentialsContainer {
     inner: emlite::Val,
 }
@@ -118,6 +141,16 @@ impl core::ops::DerefMut for CredentialsContainer {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CredentialsContainer {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CredentialsContainer {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CredentialsContainer> for emlite::Val {
     fn from(s: CredentialsContainer) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -125,6 +158,7 @@ impl From<CredentialsContainer> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CredentialsContainer);
 
 impl CredentialsContainer {
     pub fn get0(&self) -> jsbind::Promise {

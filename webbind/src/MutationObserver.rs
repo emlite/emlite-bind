@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MutationObserverInit {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for MutationObserverInit {
 }
 impl core::ops::DerefMut for MutationObserverInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MutationObserverInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MutationObserverInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -100,6 +111,7 @@ impl MutationObserverInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MutationObserver {
     inner: emlite::Val,
 }
@@ -127,6 +139,16 @@ impl core::ops::DerefMut for MutationObserver {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MutationObserver {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MutationObserver {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MutationObserver> for emlite::Val {
     fn from(s: MutationObserver) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -134,6 +156,7 @@ impl From<MutationObserver> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(MutationObserver);
 
 impl MutationObserver {
     pub fn new(callback: jsbind::Function) -> MutationObserver {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WebTransportReceiveStreamStats {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for WebTransportReceiveStreamStats {
 }
 impl core::ops::DerefMut for WebTransportReceiveStreamStats {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for WebTransportReceiveStreamStats {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WebTransportReceiveStreamStats {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl WebTransportReceiveStreamStats {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WebTransportReceiveStream {
     inner: ReadableStream,
 }
@@ -80,6 +92,16 @@ impl core::ops::DerefMut for WebTransportReceiveStream {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WebTransportReceiveStream {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WebTransportReceiveStream {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WebTransportReceiveStream> for emlite::Val {
     fn from(s: WebTransportReceiveStream) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -87,6 +109,7 @@ impl From<WebTransportReceiveStream> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(WebTransportReceiveStream);
 
 impl WebTransportReceiveStream {
     pub fn get_stats(&self) -> jsbind::Promise {

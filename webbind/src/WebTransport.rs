@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WebTransportConnectionStats {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for WebTransportConnectionStats {
 }
 impl core::ops::DerefMut for WebTransportConnectionStats {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for WebTransportConnectionStats {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WebTransportConnectionStats {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -143,6 +154,7 @@ impl WebTransportConnectionStats {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WebTransportCloseInfo {
     inner: emlite::Val,
 }
@@ -165,6 +177,16 @@ impl core::ops::Deref for WebTransportCloseInfo {
 }
 impl core::ops::DerefMut for WebTransportCloseInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for WebTransportCloseInfo {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WebTransportCloseInfo {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -195,6 +217,7 @@ impl WebTransportCloseInfo {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WebTransportSendStreamOptions {
     inner: emlite::Val,
 }
@@ -220,6 +243,16 @@ impl core::ops::DerefMut for WebTransportSendStreamOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WebTransportSendStreamOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WebTransportSendStreamOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WebTransportSendStreamOptions> for emlite::Val {
     fn from(s: WebTransportSendStreamOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -238,6 +271,7 @@ impl WebTransportSendStreamOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WebTransport {
     inner: emlite::Val,
 }
@@ -265,6 +299,16 @@ impl core::ops::DerefMut for WebTransport {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WebTransport {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WebTransport {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WebTransport> for emlite::Val {
     fn from(s: WebTransport) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -272,6 +316,7 @@ impl From<WebTransport> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(WebTransport);
 
 impl WebTransport {
     pub fn new0(url: jsbind::USVString) -> WebTransport {

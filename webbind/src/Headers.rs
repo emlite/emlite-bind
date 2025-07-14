@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Headers {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for Headers {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Headers {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Headers {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Headers> for emlite::Val {
     fn from(s: Headers) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<Headers> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Headers);
 
 impl Headers {
     pub fn new0() -> Headers {

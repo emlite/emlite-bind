@@ -1,10 +1,11 @@
-use crate::utils::bind;
+use crate::utils::*;
 use alloc::string::String;
 
 macro_rules! declare_string {
     ($name:ident) => {
         #[doc = concat!("Wrapper for WebIDL `", stringify!($name), "`.\n\n")]
         #[derive(Clone, Debug, PartialEq, PartialOrd)]
+        #[repr(transparent)]
         pub struct $name {
             inner: emlite::Val,
         }
@@ -29,6 +30,22 @@ macro_rules! declare_string {
         impl AsRef<str> for $name {
             fn as_ref(&self) -> &str {
                 self.as_str()
+            }
+        }
+
+        impl crate::prelude::DynCast for $name {
+            #[inline]
+            fn instanceof(val: &emlite::Val) -> bool {
+                let ctor = emlite::Val::global("String");
+                val.instanceof(ctor)
+            }
+            #[inline]
+            fn unchecked_from_val(v: emlite::Val) -> Self {
+                v.as_::<Self>() // zero-cost new-type cast
+            }
+            #[inline]
+            fn unchecked_from_val_ref(v: &emlite::Val) -> &Self {
+                unsafe { &*(v as *const emlite::Val as *const Self) }
             }
         }
 

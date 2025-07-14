@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ReportingObserver {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for ReportingObserver {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ReportingObserver {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ReportingObserver {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ReportingObserver> for emlite::Val {
     fn from(s: ReportingObserver) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<ReportingObserver> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ReportingObserver);
 
 impl ReportingObserver {
     pub fn new0(callback: jsbind::Function) -> ReportingObserver {

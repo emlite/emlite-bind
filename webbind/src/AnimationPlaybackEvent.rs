@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AnimationPlaybackEvent {
     inner: Event,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for AnimationPlaybackEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for AnimationPlaybackEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AnimationPlaybackEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<AnimationPlaybackEvent> for emlite::Val {
     fn from(s: AnimationPlaybackEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<AnimationPlaybackEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(AnimationPlaybackEvent);
 
 impl AnimationPlaybackEvent {
     pub fn new0(type_: jsbind::DOMString) -> AnimationPlaybackEvent {

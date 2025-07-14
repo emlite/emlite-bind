@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CanMakePaymentEvent {
     inner: ExtendableEvent,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for CanMakePaymentEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CanMakePaymentEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CanMakePaymentEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CanMakePaymentEvent> for emlite::Val {
     fn from(s: CanMakePaymentEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<CanMakePaymentEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CanMakePaymentEvent);
 
 impl CanMakePaymentEvent {
     pub fn new(type_: jsbind::DOMString) -> CanMakePaymentEvent {

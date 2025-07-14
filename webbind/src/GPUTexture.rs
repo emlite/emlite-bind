@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUTextureViewDescriptor {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for GPUTextureViewDescriptor {
 }
 impl core::ops::DerefMut for GPUTextureViewDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPUTextureViewDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUTextureViewDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -107,6 +118,7 @@ impl GPUTextureViewDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUTexture {
     inner: emlite::Val,
 }
@@ -134,6 +146,16 @@ impl core::ops::DerefMut for GPUTexture {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUTexture {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUTexture {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUTexture> for emlite::Val {
     fn from(s: GPUTexture) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -141,6 +163,7 @@ impl From<GPUTexture> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(GPUTexture);
 
 impl GPUTexture {
     pub fn create_view0(&self) -> GPUTextureView {

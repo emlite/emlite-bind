@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCDTMFSender {
     inner: EventTarget,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for RTCDTMFSender {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for RTCDTMFSender {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCDTMFSender {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<RTCDTMFSender> for emlite::Val {
     fn from(s: RTCDTMFSender) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<RTCDTMFSender> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(RTCDTMFSender);
 
 impl RTCDTMFSender {
     pub fn insert_dtmf0(&self, tones: jsbind::DOMString) -> jsbind::Undefined {

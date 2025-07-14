@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MediaKeyStatusMap {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for MediaKeyStatusMap {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MediaKeyStatusMap {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MediaKeyStatusMap {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MediaKeyStatusMap> for emlite::Val {
     fn from(s: MediaKeyStatusMap) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<MediaKeyStatusMap> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(MediaKeyStatusMap);
 
 impl MediaKeyStatusMap {
     pub fn size(&self) -> u32 {

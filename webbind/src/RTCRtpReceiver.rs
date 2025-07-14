@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCRtpReceiveParameters {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for RTCRtpReceiveParameters {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for RTCRtpReceiveParameters {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCRtpReceiveParameters {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<RTCRtpReceiveParameters> for emlite::Val {
     fn from(s: RTCRtpReceiveParameters) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<RTCRtpReceiveParameters> for emlite::Val {
 }
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCRtpContributingSource {
     inner: emlite::Val,
 }
@@ -57,6 +69,16 @@ impl core::ops::Deref for RTCRtpContributingSource {
 }
 impl core::ops::DerefMut for RTCRtpContributingSource {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RTCRtpContributingSource {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCRtpContributingSource {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -105,6 +127,7 @@ impl RTCRtpContributingSource {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCRtpSynchronizationSource {
     inner: emlite::Val,
 }
@@ -130,6 +153,16 @@ impl core::ops::DerefMut for RTCRtpSynchronizationSource {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for RTCRtpSynchronizationSource {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCRtpSynchronizationSource {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<RTCRtpSynchronizationSource> for emlite::Val {
     fn from(s: RTCRtpSynchronizationSource) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -139,6 +172,7 @@ impl From<RTCRtpSynchronizationSource> for emlite::Val {
 }
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCRtpReceiver {
     inner: emlite::Val,
 }
@@ -166,6 +200,16 @@ impl core::ops::DerefMut for RTCRtpReceiver {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for RTCRtpReceiver {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCRtpReceiver {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<RTCRtpReceiver> for emlite::Val {
     fn from(s: RTCRtpReceiver) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -173,6 +217,7 @@ impl From<RTCRtpReceiver> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(RTCRtpReceiver);
 
 impl RTCRtpReceiver {
     pub fn track(&self) -> MediaStreamTrack {

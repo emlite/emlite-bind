@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RewriterCreateOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for RewriterCreateOptions {
 }
 impl core::ops::DerefMut for RewriterCreateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RewriterCreateOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RewriterCreateOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl RewriterCreateOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RewriterCreateCoreOptions {
     inner: emlite::Val,
 }
@@ -84,6 +96,16 @@ impl core::ops::Deref for RewriterCreateCoreOptions {
 }
 impl core::ops::DerefMut for RewriterCreateCoreOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RewriterCreateCoreOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RewriterCreateCoreOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -154,6 +176,7 @@ impl RewriterCreateCoreOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RewriterRewriteOptions {
     inner: emlite::Val,
 }
@@ -176,6 +199,16 @@ impl core::ops::Deref for RewriterRewriteOptions {
 }
 impl core::ops::DerefMut for RewriterRewriteOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RewriterRewriteOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RewriterRewriteOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -206,6 +239,7 @@ impl RewriterRewriteOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Rewriter {
     inner: emlite::Val,
 }
@@ -233,6 +267,16 @@ impl core::ops::DerefMut for Rewriter {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Rewriter {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Rewriter {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Rewriter> for emlite::Val {
     fn from(s: Rewriter) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -240,6 +284,7 @@ impl From<Rewriter> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Rewriter);
 
 impl Rewriter {
     pub fn create0() -> jsbind::Promise {

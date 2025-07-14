@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SharedWorkerGlobalScope {
     inner: WorkerGlobalScope,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for SharedWorkerGlobalScope {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SharedWorkerGlobalScope {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SharedWorkerGlobalScope {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SharedWorkerGlobalScope> for emlite::Val {
     fn from(s: SharedWorkerGlobalScope) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<SharedWorkerGlobalScope> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SharedWorkerGlobalScope);
 
 impl SharedWorkerGlobalScope {
     pub fn name(&self) -> jsbind::DOMString {

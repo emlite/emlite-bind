@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct InterestGroupReportingScriptRunnerGlobalScope {
     inner: InterestGroupScriptRunnerGlobalScope,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for InterestGroupReportingScriptRunnerGlobalScope {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for InterestGroupReportingScriptRunnerGlobalScope {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for InterestGroupReportingScriptRunnerGlobalScope {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<InterestGroupReportingScriptRunnerGlobalScope> for emlite::Val {
     fn from(s: InterestGroupReportingScriptRunnerGlobalScope) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<InterestGroupReportingScriptRunnerGlobalScope> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(InterestGroupReportingScriptRunnerGlobalScope);
 
 impl InterestGroupReportingScriptRunnerGlobalScope {
     pub fn send_report_to(&self, url: jsbind::DOMString) -> jsbind::Undefined {

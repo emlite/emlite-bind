@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WindowPostMessageOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for WindowPostMessageOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WindowPostMessageOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WindowPostMessageOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WindowPostMessageOptions> for emlite::Val {
     fn from(s: WindowPostMessageOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl WindowPostMessageOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct OpenFilePickerOptions {
     inner: emlite::Val,
 }
@@ -69,6 +81,16 @@ impl core::ops::DerefMut for OpenFilePickerOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for OpenFilePickerOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for OpenFilePickerOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<OpenFilePickerOptions> for emlite::Val {
     fn from(s: OpenFilePickerOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -87,6 +109,7 @@ impl OpenFilePickerOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SaveFilePickerOptions {
     inner: emlite::Val,
 }
@@ -112,6 +135,16 @@ impl core::ops::DerefMut for SaveFilePickerOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SaveFilePickerOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SaveFilePickerOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SaveFilePickerOptions> for emlite::Val {
     fn from(s: SaveFilePickerOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -130,6 +163,7 @@ impl SaveFilePickerOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DirectoryPickerOptions {
     inner: emlite::Val,
 }
@@ -152,6 +186,16 @@ impl core::ops::Deref for DirectoryPickerOptions {
 }
 impl core::ops::DerefMut for DirectoryPickerOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for DirectoryPickerOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DirectoryPickerOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -191,6 +235,7 @@ impl DirectoryPickerOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct QueryOptions {
     inner: emlite::Val,
 }
@@ -216,6 +261,16 @@ impl core::ops::DerefMut for QueryOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for QueryOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for QueryOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<QueryOptions> for emlite::Val {
     fn from(s: QueryOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -236,6 +291,7 @@ impl QueryOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct IdleRequestOptions {
     inner: emlite::Val,
 }
@@ -261,6 +317,16 @@ impl core::ops::DerefMut for IdleRequestOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for IdleRequestOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for IdleRequestOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<IdleRequestOptions> for emlite::Val {
     fn from(s: IdleRequestOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -279,6 +345,7 @@ impl IdleRequestOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Window {
     inner: EventTarget,
 }
@@ -306,6 +373,16 @@ impl core::ops::DerefMut for Window {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Window {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Window {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Window> for emlite::Val {
     fn from(s: Window) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -313,6 +390,7 @@ impl From<Window> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Window);
 
 impl Window {
     pub fn window(&self) -> jsbind::Any {

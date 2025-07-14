@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct IdentityCredentialError {
     inner: DOMException,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for IdentityCredentialError {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for IdentityCredentialError {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for IdentityCredentialError {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<IdentityCredentialError> for emlite::Val {
     fn from(s: IdentityCredentialError) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<IdentityCredentialError> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(IdentityCredentialError);
 
 impl IdentityCredentialError {
     pub fn new0() -> IdentityCredentialError {

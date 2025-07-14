@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DeviceMotionEventRotationRate {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for DeviceMotionEventRotationRate {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for DeviceMotionEventRotationRate {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DeviceMotionEventRotationRate {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<DeviceMotionEventRotationRate> for emlite::Val {
     fn from(s: DeviceMotionEventRotationRate) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<DeviceMotionEventRotationRate> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(DeviceMotionEventRotationRate);
 
 impl DeviceMotionEventRotationRate {
     pub fn alpha(&self) -> f64 {

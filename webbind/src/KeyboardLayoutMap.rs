@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct KeyboardLayoutMap {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for KeyboardLayoutMap {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for KeyboardLayoutMap {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for KeyboardLayoutMap {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<KeyboardLayoutMap> for emlite::Val {
     fn from(s: KeyboardLayoutMap) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,3 +46,4 @@ impl From<KeyboardLayoutMap> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(KeyboardLayoutMap);

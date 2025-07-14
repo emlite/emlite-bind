@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRSessionInit {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for XRSessionInit {
 }
 impl core::ops::DerefMut for XRSessionInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for XRSessionInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRSessionInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -57,6 +68,7 @@ impl XRSessionInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRSystem {
     inner: EventTarget,
 }
@@ -84,6 +96,16 @@ impl core::ops::DerefMut for XRSystem {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for XRSystem {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRSystem {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<XRSystem> for emlite::Val {
     fn from(s: XRSystem) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -91,6 +113,7 @@ impl From<XRSystem> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(XRSystem);
 
 impl XRSystem {
     pub fn is_session_supported(&self, mode: XRSessionMode) -> jsbind::Promise {

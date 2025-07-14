@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRProjectionLayerInit {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for XRProjectionLayerInit {
 }
 impl core::ops::DerefMut for XRProjectionLayerInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for XRProjectionLayerInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRProjectionLayerInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -80,6 +91,7 @@ impl XRProjectionLayerInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRQuadLayerInit {
     inner: emlite::Val,
 }
@@ -102,6 +114,16 @@ impl core::ops::Deref for XRQuadLayerInit {
 }
 impl core::ops::DerefMut for XRQuadLayerInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for XRQuadLayerInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRQuadLayerInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -150,6 +172,7 @@ impl XRQuadLayerInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRCylinderLayerInit {
     inner: emlite::Val,
 }
@@ -172,6 +195,16 @@ impl core::ops::Deref for XRCylinderLayerInit {
 }
 impl core::ops::DerefMut for XRCylinderLayerInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for XRCylinderLayerInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRCylinderLayerInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -229,6 +262,7 @@ impl XRCylinderLayerInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XREquirectLayerInit {
     inner: emlite::Val,
 }
@@ -251,6 +285,16 @@ impl core::ops::Deref for XREquirectLayerInit {
 }
 impl core::ops::DerefMut for XREquirectLayerInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for XREquirectLayerInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XREquirectLayerInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -317,6 +361,7 @@ impl XREquirectLayerInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRCubeLayerInit {
     inner: emlite::Val,
 }
@@ -342,6 +387,16 @@ impl core::ops::DerefMut for XRCubeLayerInit {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for XRCubeLayerInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRCubeLayerInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<XRCubeLayerInit> for emlite::Val {
     fn from(s: XRCubeLayerInit) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -360,6 +415,7 @@ impl XRCubeLayerInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRWebGLBinding {
     inner: emlite::Val,
 }
@@ -387,6 +443,16 @@ impl core::ops::DerefMut for XRWebGLBinding {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for XRWebGLBinding {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRWebGLBinding {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<XRWebGLBinding> for emlite::Val {
     fn from(s: XRWebGLBinding) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -394,6 +460,7 @@ impl From<XRWebGLBinding> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(XRWebGLBinding);
 
 impl XRWebGLBinding {
     pub fn new(session: XRSession, context: jsbind::Any) -> XRWebGLBinding {

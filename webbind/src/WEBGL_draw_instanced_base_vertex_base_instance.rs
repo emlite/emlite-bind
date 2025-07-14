@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WEBGL_draw_instanced_base_vertex_base_instance {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for WEBGL_draw_instanced_base_vertex_base_instance {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WEBGL_draw_instanced_base_vertex_base_instance {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WEBGL_draw_instanced_base_vertex_base_instance {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WEBGL_draw_instanced_base_vertex_base_instance> for emlite::Val {
     fn from(s: WEBGL_draw_instanced_base_vertex_base_instance) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<WEBGL_draw_instanced_base_vertex_base_instance> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(WEBGL_draw_instanced_base_vertex_base_instance);
 
 impl WEBGL_draw_instanced_base_vertex_base_instance {
     pub fn draw_arrays_instanced_base_instance_webgl(

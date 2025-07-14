@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct InkPresenterParam {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for InkPresenterParam {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for InkPresenterParam {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for InkPresenterParam {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<InkPresenterParam> for emlite::Val {
     fn from(s: InkPresenterParam) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl InkPresenterParam {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Ink {
     inner: emlite::Val,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for Ink {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Ink {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Ink {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Ink> for emlite::Val {
     fn from(s: Ink) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<Ink> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Ink);
 
 impl Ink {
     pub fn request_presenter0(&self) -> jsbind::Promise {

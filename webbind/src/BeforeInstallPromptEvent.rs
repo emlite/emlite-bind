@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PromptResponseObject {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for PromptResponseObject {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PromptResponseObject {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PromptResponseObject {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PromptResponseObject> for emlite::Val {
     fn from(s: PromptResponseObject) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl PromptResponseObject {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct BeforeInstallPromptEvent {
     inner: Event,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for BeforeInstallPromptEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for BeforeInstallPromptEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for BeforeInstallPromptEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<BeforeInstallPromptEvent> for emlite::Val {
     fn from(s: BeforeInstallPromptEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<BeforeInstallPromptEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(BeforeInstallPromptEvent);
 
 impl BeforeInstallPromptEvent {
     pub fn new0(type_: jsbind::DOMString) -> BeforeInstallPromptEvent {

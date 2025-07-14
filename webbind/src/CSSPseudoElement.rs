@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSPseudoElement {
     inner: EventTarget,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for CSSPseudoElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CSSPseudoElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CSSPseudoElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CSSPseudoElement> for emlite::Val {
     fn from(s: CSSPseudoElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<CSSPseudoElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CSSPseudoElement);
 
 impl CSSPseudoElement {
     pub fn type_(&self) -> jsbind::CSSOMString {

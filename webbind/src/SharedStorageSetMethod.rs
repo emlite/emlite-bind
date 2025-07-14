@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SharedStorageSetMethod {
     inner: SharedStorageModifierMethod,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for SharedStorageSetMethod {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SharedStorageSetMethod {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SharedStorageSetMethod {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SharedStorageSetMethod> for emlite::Val {
     fn from(s: SharedStorageSetMethod) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<SharedStorageSetMethod> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SharedStorageSetMethod);
 
 impl SharedStorageSetMethod {
     pub fn new0(key: jsbind::DOMString, value: jsbind::DOMString) -> SharedStorageSetMethod {

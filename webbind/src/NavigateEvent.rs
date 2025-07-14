@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NavigationInterceptOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for NavigationInterceptOptions {
 }
 impl core::ops::DerefMut for NavigationInterceptOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for NavigationInterceptOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NavigationInterceptOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl NavigationInterceptOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NavigateEvent {
     inner: Event,
 }
@@ -89,6 +101,16 @@ impl core::ops::DerefMut for NavigateEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for NavigateEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NavigateEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<NavigateEvent> for emlite::Val {
     fn from(s: NavigateEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -96,6 +118,7 @@ impl From<NavigateEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(NavigateEvent);
 
 impl NavigateEvent {
     pub fn new(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> NavigateEvent {

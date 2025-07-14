@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NavigationPreloadState {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for NavigationPreloadState {
 }
 impl core::ops::DerefMut for NavigationPreloadState {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for NavigationPreloadState {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NavigationPreloadState {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl NavigationPreloadState {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NavigationPreloadManager {
     inner: emlite::Val,
 }
@@ -80,6 +92,16 @@ impl core::ops::DerefMut for NavigationPreloadManager {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for NavigationPreloadManager {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NavigationPreloadManager {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<NavigationPreloadManager> for emlite::Val {
     fn from(s: NavigationPreloadManager) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -87,6 +109,7 @@ impl From<NavigationPreloadManager> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(NavigationPreloadManager);
 
 impl NavigationPreloadManager {
     pub fn enable(&self) -> jsbind::Promise {

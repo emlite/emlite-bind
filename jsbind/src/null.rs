@@ -1,7 +1,8 @@
-use crate::utils::bind;
+use crate::utils::*;
 
 /// Only a single instance has semantic meaning—see [`Null::VALUE`].
 #[derive(Clone, Debug)]
+#[repr(transparent)]
 pub struct Null {
     inner: emlite::Val,
 }
@@ -23,3 +24,18 @@ impl Null {
 }
 
 bind!(Null);
+
+impl crate::prelude::DynCast for Null {
+    #[inline]
+    fn instanceof(_val: &emlite::Val) -> bool {
+        false
+    }
+    #[inline]
+    fn unchecked_from_val(v: emlite::Val) -> Self {
+        v.as_::<Self>() // zero-cost new-type cast
+    }
+    #[inline]
+    fn unchecked_from_val_ref(v: &emlite::Val) -> &Self {
+        unsafe { &*(v as *const emlite::Val as *const Self) }
+    }
+}

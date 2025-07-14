@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PerformanceServerTiming {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for PerformanceServerTiming {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PerformanceServerTiming {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PerformanceServerTiming {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PerformanceServerTiming> for emlite::Val {
     fn from(s: PerformanceServerTiming) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<PerformanceServerTiming> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(PerformanceServerTiming);
 
 impl PerformanceServerTiming {
     pub fn name(&self) -> jsbind::DOMString {

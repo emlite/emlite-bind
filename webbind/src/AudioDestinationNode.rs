@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AudioDestinationNode {
     inner: AudioNode,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for AudioDestinationNode {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for AudioDestinationNode {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AudioDestinationNode {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<AudioDestinationNode> for emlite::Val {
     fn from(s: AudioDestinationNode) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<AudioDestinationNode> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(AudioDestinationNode);
 
 impl AudioDestinationNode {
     pub fn max_channel_count(&self) -> u32 {

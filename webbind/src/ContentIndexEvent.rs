@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ContentIndexEvent {
     inner: ExtendableEvent,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for ContentIndexEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ContentIndexEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ContentIndexEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ContentIndexEvent> for emlite::Val {
     fn from(s: ContentIndexEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<ContentIndexEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ContentIndexEvent);
 
 impl ContentIndexEvent {
     pub fn new(type_: jsbind::DOMString, init: jsbind::Any) -> ContentIndexEvent {

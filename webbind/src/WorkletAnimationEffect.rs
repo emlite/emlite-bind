@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct EffectTiming {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for EffectTiming {
 }
 impl core::ops::DerefMut for EffectTiming {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for EffectTiming {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for EffectTiming {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -80,6 +91,7 @@ impl EffectTiming {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ComputedEffectTiming {
     inner: emlite::Val,
 }
@@ -102,6 +114,16 @@ impl core::ops::Deref for ComputedEffectTiming {
 }
 impl core::ops::DerefMut for ComputedEffectTiming {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ComputedEffectTiming {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ComputedEffectTiming {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -132,6 +154,7 @@ impl ComputedEffectTiming {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WorkletAnimationEffect {
     inner: emlite::Val,
 }
@@ -159,6 +182,16 @@ impl core::ops::DerefMut for WorkletAnimationEffect {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WorkletAnimationEffect {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WorkletAnimationEffect {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WorkletAnimationEffect> for emlite::Val {
     fn from(s: WorkletAnimationEffect) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -166,6 +199,7 @@ impl From<WorkletAnimationEffect> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(WorkletAnimationEffect);
 
 impl WorkletAnimationEffect {
     pub fn get_timing(&self) -> EffectTiming {

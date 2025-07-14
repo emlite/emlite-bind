@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSSkew {
     inner: CSSTransformComponent,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for CSSSkew {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CSSSkew {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CSSSkew {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CSSSkew> for emlite::Val {
     fn from(s: CSSSkew) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<CSSSkew> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CSSSkew);
 
 impl CSSSkew {
     pub fn new(ax: CSSNumericValue, ay: CSSNumericValue) -> CSSSkew {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SerialPortInfo {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for SerialPortInfo {
 }
 impl core::ops::DerefMut for SerialPortInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for SerialPortInfo {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SerialPortInfo {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -64,6 +75,7 @@ impl SerialPortInfo {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SerialOptions {
     inner: emlite::Val,
 }
@@ -86,6 +98,16 @@ impl core::ops::Deref for SerialOptions {
 }
 impl core::ops::DerefMut for SerialOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for SerialOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SerialOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -152,6 +174,7 @@ impl SerialOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SerialOutputSignals {
     inner: emlite::Val,
 }
@@ -174,6 +197,16 @@ impl core::ops::Deref for SerialOutputSignals {
 }
 impl core::ops::DerefMut for SerialOutputSignals {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for SerialOutputSignals {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SerialOutputSignals {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -213,6 +246,7 @@ impl SerialOutputSignals {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SerialInputSignals {
     inner: emlite::Val,
 }
@@ -235,6 +269,16 @@ impl core::ops::Deref for SerialInputSignals {
 }
 impl core::ops::DerefMut for SerialInputSignals {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for SerialInputSignals {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SerialInputSignals {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -283,6 +327,7 @@ impl SerialInputSignals {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SerialPort {
     inner: EventTarget,
 }
@@ -310,6 +355,16 @@ impl core::ops::DerefMut for SerialPort {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SerialPort {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SerialPort {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SerialPort> for emlite::Val {
     fn from(s: SerialPort) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -317,6 +372,7 @@ impl From<SerialPort> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SerialPort);
 
 impl SerialPort {
     pub fn onconnect(&self) -> jsbind::Any {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct USBDeviceRequestOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for USBDeviceRequestOptions {
 }
 impl core::ops::DerefMut for USBDeviceRequestOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for USBDeviceRequestOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for USBDeviceRequestOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -57,6 +68,7 @@ impl USBDeviceRequestOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct USB {
     inner: EventTarget,
 }
@@ -84,6 +96,16 @@ impl core::ops::DerefMut for USB {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for USB {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for USB {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<USB> for emlite::Val {
     fn from(s: USB) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -91,6 +113,7 @@ impl From<USB> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(USB);
 
 impl USB {
     pub fn onconnect(&self) -> jsbind::Any {

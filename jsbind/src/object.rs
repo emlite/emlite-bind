@@ -1,8 +1,9 @@
 use crate::Any;
-use crate::utils::bind;
+use crate::utils::*;
 
 /// ECMAScript ordinary object backed by an `emlite::Val`.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Object {
     /// Underlying handle (guaranteed to be an object at runtime).
     inner: emlite::Val,
@@ -61,3 +62,4 @@ impl Default for Object {
 }
 
 bind!(Object);
+impl_dyn_cast!(Object);

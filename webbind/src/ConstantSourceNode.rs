@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ConstantSourceNode {
     inner: AudioScheduledSourceNode,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for ConstantSourceNode {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ConstantSourceNode {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ConstantSourceNode {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ConstantSourceNode> for emlite::Val {
     fn from(s: ConstantSourceNode) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<ConstantSourceNode> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ConstantSourceNode);
 
 impl ConstantSourceNode {
     pub fn new0(context: BaseAudioContext) -> ConstantSourceNode {

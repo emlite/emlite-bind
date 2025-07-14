@@ -1,9 +1,25 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSPositionTryDescriptors {
     inner: CSSStyleDeclaration,
 }
+
+jsbind::utils::impl_dyn_cast!(CSSPositionTryDescriptors);
+
+impl AsRef<emlite::Val> for CSSPositionTryDescriptors {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+
+impl AsMut<emlite::Val> for CSSPositionTryDescriptors {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
+
 impl FromVal for CSSPositionTryDescriptors {
     fn from_val(v: &emlite::Val) -> Self {
         CSSPositionTryDescriptors {

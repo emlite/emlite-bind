@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct TranslatorCreateOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for TranslatorCreateOptions {
 }
 impl core::ops::DerefMut for TranslatorCreateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for TranslatorCreateOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for TranslatorCreateOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl TranslatorCreateOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct TranslatorCreateCoreOptions {
     inner: emlite::Val,
 }
@@ -75,6 +87,16 @@ impl core::ops::Deref for TranslatorCreateCoreOptions {
 }
 impl core::ops::DerefMut for TranslatorCreateCoreOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for TranslatorCreateCoreOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for TranslatorCreateCoreOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -105,6 +127,7 @@ impl TranslatorCreateCoreOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct TranslatorTranslateOptions {
     inner: emlite::Val,
 }
@@ -130,6 +153,16 @@ impl core::ops::DerefMut for TranslatorTranslateOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for TranslatorTranslateOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for TranslatorTranslateOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<TranslatorTranslateOptions> for emlite::Val {
     fn from(s: TranslatorTranslateOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -148,6 +181,7 @@ impl TranslatorTranslateOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Translator {
     inner: emlite::Val,
 }
@@ -175,6 +209,16 @@ impl core::ops::DerefMut for Translator {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Translator {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Translator {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Translator> for emlite::Val {
     fn from(s: Translator) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -182,6 +226,7 @@ impl From<Translator> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Translator);
 
 impl Translator {
     pub fn create(options: TranslatorCreateOptions) -> jsbind::Promise {

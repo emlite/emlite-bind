@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PushSubscriptionJSON {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for PushSubscriptionJSON {
 }
 impl core::ops::DerefMut for PushSubscriptionJSON {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PushSubscriptionJSON {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PushSubscriptionJSON {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -64,6 +75,7 @@ impl PushSubscriptionJSON {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PushSubscription {
     inner: emlite::Val,
 }
@@ -91,6 +103,16 @@ impl core::ops::DerefMut for PushSubscription {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PushSubscription {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PushSubscription {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PushSubscription> for emlite::Val {
     fn from(s: PushSubscription) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -98,6 +120,7 @@ impl From<PushSubscription> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(PushSubscription);
 
 impl PushSubscription {
     pub fn endpoint(&self) -> jsbind::USVString {

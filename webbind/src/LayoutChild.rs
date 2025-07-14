@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct LayoutConstraintsOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for LayoutConstraintsOptions {
 }
 impl core::ops::DerefMut for LayoutConstraintsOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for LayoutConstraintsOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for LayoutConstraintsOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -118,6 +129,7 @@ impl LayoutConstraintsOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct LayoutChild {
     inner: emlite::Val,
 }
@@ -145,6 +157,16 @@ impl core::ops::DerefMut for LayoutChild {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for LayoutChild {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for LayoutChild {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<LayoutChild> for emlite::Val {
     fn from(s: LayoutChild) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -152,6 +174,7 @@ impl From<LayoutChild> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(LayoutChild);
 
 impl LayoutChild {
     pub fn style_map(&self) -> StylePropertyMapReadOnly {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct USBConfiguration {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for USBConfiguration {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for USBConfiguration {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for USBConfiguration {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<USBConfiguration> for emlite::Val {
     fn from(s: USBConfiguration) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<USBConfiguration> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(USBConfiguration);
 
 impl USBConfiguration {
     pub fn new(device: USBDevice, configuration_value: u8) -> USBConfiguration {

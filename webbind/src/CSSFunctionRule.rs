@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FunctionParameter {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for FunctionParameter {
 }
 impl core::ops::DerefMut for FunctionParameter {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for FunctionParameter {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FunctionParameter {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl FunctionParameter {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSFunctionRule {
     inner: CSSGroupingRule,
 }
@@ -89,6 +101,16 @@ impl core::ops::DerefMut for CSSFunctionRule {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CSSFunctionRule {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CSSFunctionRule {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CSSFunctionRule> for emlite::Val {
     fn from(s: CSSFunctionRule) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -96,6 +118,7 @@ impl From<CSSFunctionRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CSSFunctionRule);
 
 impl CSSFunctionRule {
     pub fn name(&self) -> jsbind::CSSOMString {

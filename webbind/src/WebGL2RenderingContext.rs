@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WebGL2RenderingContext {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for WebGL2RenderingContext {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WebGL2RenderingContext {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WebGL2RenderingContext {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WebGL2RenderingContext> for emlite::Val {
     fn from(s: WebGL2RenderingContext) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<WebGL2RenderingContext> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(WebGL2RenderingContext);
 
 impl WebGL2RenderingContext {
     pub fn make_xr_compatible(&self) -> jsbind::Promise {

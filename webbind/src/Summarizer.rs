@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SummarizerCreateOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for SummarizerCreateOptions {
 }
 impl core::ops::DerefMut for SummarizerCreateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for SummarizerCreateOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SummarizerCreateOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl SummarizerCreateOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SummarizerCreateCoreOptions {
     inner: emlite::Val,
 }
@@ -84,6 +96,16 @@ impl core::ops::Deref for SummarizerCreateCoreOptions {
 }
 impl core::ops::DerefMut for SummarizerCreateCoreOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for SummarizerCreateCoreOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SummarizerCreateCoreOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -154,6 +176,7 @@ impl SummarizerCreateCoreOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SummarizerSummarizeOptions {
     inner: emlite::Val,
 }
@@ -176,6 +199,16 @@ impl core::ops::Deref for SummarizerSummarizeOptions {
 }
 impl core::ops::DerefMut for SummarizerSummarizeOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for SummarizerSummarizeOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SummarizerSummarizeOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -206,6 +239,7 @@ impl SummarizerSummarizeOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Summarizer {
     inner: emlite::Val,
 }
@@ -233,6 +267,16 @@ impl core::ops::DerefMut for Summarizer {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Summarizer {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Summarizer {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Summarizer> for emlite::Val {
     fn from(s: Summarizer) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -240,6 +284,7 @@ impl From<Summarizer> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Summarizer);
 
 impl Summarizer {
     pub fn create0() -> jsbind::Promise {

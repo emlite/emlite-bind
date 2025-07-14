@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ContentDescription {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for ContentDescription {
 }
 impl core::ops::DerefMut for ContentDescription {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ContentDescription {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ContentDescription {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -91,6 +102,7 @@ impl ContentDescription {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ContentIndex {
     inner: emlite::Val,
 }
@@ -118,6 +130,16 @@ impl core::ops::DerefMut for ContentIndex {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ContentIndex {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ContentIndex {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ContentIndex> for emlite::Val {
     fn from(s: ContentIndex) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -125,6 +147,7 @@ impl From<ContentIndex> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ContentIndex);
 
 impl ContentIndex {
     pub fn add(&self, description: ContentDescription) -> jsbind::Promise {

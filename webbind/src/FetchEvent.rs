@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FetchEvent {
     inner: ExtendableEvent,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for FetchEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FetchEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FetchEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FetchEvent> for emlite::Val {
     fn from(s: FetchEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<FetchEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(FetchEvent);
 
 impl FetchEvent {
     pub fn new(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> FetchEvent {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PhotoSettings {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for PhotoSettings {
 }
 impl core::ops::DerefMut for PhotoSettings {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PhotoSettings {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PhotoSettings {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -71,6 +82,7 @@ impl PhotoSettings {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PhotoCapabilities {
     inner: emlite::Val,
 }
@@ -93,6 +105,16 @@ impl core::ops::Deref for PhotoCapabilities {
 }
 impl core::ops::DerefMut for PhotoCapabilities {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PhotoCapabilities {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PhotoCapabilities {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -143,6 +165,7 @@ impl PhotoCapabilities {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ImageCapture {
     inner: emlite::Val,
 }
@@ -170,6 +193,16 @@ impl core::ops::DerefMut for ImageCapture {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ImageCapture {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ImageCapture {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ImageCapture> for emlite::Val {
     fn from(s: ImageCapture) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -177,6 +210,7 @@ impl From<ImageCapture> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ImageCapture);
 
 impl ImageCapture {
     pub fn new(video_track: MediaStreamTrack) -> ImageCapture {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CaretPositionFromPointOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for CaretPositionFromPointOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CaretPositionFromPointOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CaretPositionFromPointOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CaretPositionFromPointOptions> for emlite::Val {
     fn from(s: CaretPositionFromPointOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -46,6 +57,7 @@ impl CaretPositionFromPointOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct BoxQuadOptions {
     inner: emlite::Val,
 }
@@ -68,6 +80,16 @@ impl core::ops::Deref for BoxQuadOptions {
 }
 impl core::ops::DerefMut for BoxQuadOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for BoxQuadOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for BoxQuadOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -98,6 +120,7 @@ impl BoxQuadOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DOMQuadInit {
     inner: emlite::Val,
 }
@@ -120,6 +143,16 @@ impl core::ops::Deref for DOMQuadInit {
 }
 impl core::ops::DerefMut for DOMQuadInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for DOMQuadInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DOMQuadInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -168,6 +201,7 @@ impl DOMQuadInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ConvertCoordinateOptions {
     inner: emlite::Val,
 }
@@ -190,6 +224,16 @@ impl core::ops::Deref for ConvertCoordinateOptions {
 }
 impl core::ops::DerefMut for ConvertCoordinateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ConvertCoordinateOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ConvertCoordinateOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -220,6 +264,7 @@ impl ConvertCoordinateOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Document {
     inner: Node,
 }
@@ -247,6 +292,16 @@ impl core::ops::DerefMut for Document {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Document {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Document {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Document> for emlite::Val {
     fn from(s: Document) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -254,6 +309,7 @@ impl From<Document> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Document);
 
 impl Document {
     pub fn new() -> Document {

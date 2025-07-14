@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CompositionEvent {
     inner: UIEvent,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for CompositionEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CompositionEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CompositionEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CompositionEvent> for emlite::Val {
     fn from(s: CompositionEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<CompositionEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CompositionEvent);
 
 impl CompositionEvent {
     pub fn new0(type_: jsbind::DOMString) -> CompositionEvent {

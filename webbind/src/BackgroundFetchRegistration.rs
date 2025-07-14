@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CacheQueryOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for CacheQueryOptions {
 }
 impl core::ops::DerefMut for CacheQueryOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for CacheQueryOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CacheQueryOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl CacheQueryOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct BackgroundFetchRegistration {
     inner: EventTarget,
 }
@@ -89,6 +101,16 @@ impl core::ops::DerefMut for BackgroundFetchRegistration {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for BackgroundFetchRegistration {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for BackgroundFetchRegistration {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<BackgroundFetchRegistration> for emlite::Val {
     fn from(s: BackgroundFetchRegistration) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -96,6 +118,7 @@ impl From<BackgroundFetchRegistration> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(BackgroundFetchRegistration);
 
 impl BackgroundFetchRegistration {
     pub fn id(&self) -> jsbind::DOMString {

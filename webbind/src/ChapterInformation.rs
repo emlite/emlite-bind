@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MediaImage {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for MediaImage {
 }
 impl core::ops::DerefMut for MediaImage {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MediaImage {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MediaImage {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl MediaImage {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ChapterInformation {
     inner: emlite::Val,
 }
@@ -89,6 +101,16 @@ impl core::ops::DerefMut for ChapterInformation {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ChapterInformation {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ChapterInformation {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ChapterInformation> for emlite::Val {
     fn from(s: ChapterInformation) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -96,6 +118,7 @@ impl From<ChapterInformation> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ChapterInformation);
 
 impl ChapterInformation {
     pub fn title(&self) -> jsbind::DOMString {

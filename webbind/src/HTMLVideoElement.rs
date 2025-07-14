@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct HTMLVideoElement {
     inner: HTMLMediaElement,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for HTMLVideoElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for HTMLVideoElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for HTMLVideoElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<HTMLVideoElement> for emlite::Val {
     fn from(s: HTMLVideoElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<HTMLVideoElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(HTMLVideoElement);
 
 impl HTMLVideoElement {
     pub fn new() -> HTMLVideoElement {

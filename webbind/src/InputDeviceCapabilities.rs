@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct InputDeviceCapabilities {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for InputDeviceCapabilities {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for InputDeviceCapabilities {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for InputDeviceCapabilities {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<InputDeviceCapabilities> for emlite::Val {
     fn from(s: InputDeviceCapabilities) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<InputDeviceCapabilities> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(InputDeviceCapabilities);
 
 impl InputDeviceCapabilities {
     pub fn new0() -> InputDeviceCapabilities {

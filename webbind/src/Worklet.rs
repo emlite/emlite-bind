@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WorkletOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for WorkletOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WorkletOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WorkletOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WorkletOptions> for emlite::Val {
     fn from(s: WorkletOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl WorkletOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Worklet {
     inner: emlite::Val,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for Worklet {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Worklet {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Worklet {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Worklet> for emlite::Val {
     fn from(s: Worklet) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<Worklet> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Worklet);
 
 impl Worklet {
     pub fn add_module0(&self, module_url: jsbind::USVString) -> jsbind::Promise {

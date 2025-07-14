@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DocumentPictureInPictureOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for DocumentPictureInPictureOptions {
 }
 impl core::ops::DerefMut for DocumentPictureInPictureOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for DocumentPictureInPictureOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DocumentPictureInPictureOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -71,6 +82,7 @@ impl DocumentPictureInPictureOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DocumentPictureInPicture {
     inner: EventTarget,
 }
@@ -98,6 +110,16 @@ impl core::ops::DerefMut for DocumentPictureInPicture {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for DocumentPictureInPicture {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DocumentPictureInPicture {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<DocumentPictureInPicture> for emlite::Val {
     fn from(s: DocumentPictureInPicture) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -105,6 +127,7 @@ impl From<DocumentPictureInPicture> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(DocumentPictureInPicture);
 
 impl DocumentPictureInPicture {
     pub fn request_window0(&self) -> jsbind::Promise {

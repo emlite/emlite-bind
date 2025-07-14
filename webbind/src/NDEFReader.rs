@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NDEFScanOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for NDEFScanOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for NDEFScanOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NDEFScanOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<NDEFScanOptions> for emlite::Val {
     fn from(s: NDEFScanOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl NDEFScanOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NDEFWriteOptions {
     inner: emlite::Val,
 }
@@ -66,6 +78,16 @@ impl core::ops::Deref for NDEFWriteOptions {
 }
 impl core::ops::DerefMut for NDEFWriteOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for NDEFWriteOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NDEFWriteOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -96,6 +118,7 @@ impl NDEFWriteOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NDEFMakeReadOnlyOptions {
     inner: emlite::Val,
 }
@@ -121,6 +144,16 @@ impl core::ops::DerefMut for NDEFMakeReadOnlyOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for NDEFMakeReadOnlyOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NDEFMakeReadOnlyOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<NDEFMakeReadOnlyOptions> for emlite::Val {
     fn from(s: NDEFMakeReadOnlyOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -139,6 +172,7 @@ impl NDEFMakeReadOnlyOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NDEFReader {
     inner: EventTarget,
 }
@@ -166,6 +200,16 @@ impl core::ops::DerefMut for NDEFReader {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for NDEFReader {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NDEFReader {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<NDEFReader> for emlite::Val {
     fn from(s: NDEFReader) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -173,6 +217,7 @@ impl From<NDEFReader> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(NDEFReader);
 
 impl NDEFReader {
     pub fn new() -> NDEFReader {

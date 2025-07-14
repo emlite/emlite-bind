@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ElementDefinitionOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for ElementDefinitionOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ElementDefinitionOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ElementDefinitionOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ElementDefinitionOptions> for emlite::Val {
     fn from(s: ElementDefinitionOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl ElementDefinitionOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CustomElementRegistry {
     inner: emlite::Val,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for CustomElementRegistry {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CustomElementRegistry {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CustomElementRegistry {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CustomElementRegistry> for emlite::Val {
     fn from(s: CustomElementRegistry) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<CustomElementRegistry> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CustomElementRegistry);
 
 impl CustomElementRegistry {
     pub fn new() -> CustomElementRegistry {

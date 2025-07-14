@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DragEvent {
     inner: MouseEvent,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for DragEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for DragEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DragEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<DragEvent> for emlite::Val {
     fn from(s: DragEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<DragEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(DragEvent);
 
 impl DragEvent {
     pub fn new0(type_: jsbind::DOMString) -> DragEvent {

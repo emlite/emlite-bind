@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SFrameTransformErrorEvent {
     inner: Event,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for SFrameTransformErrorEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SFrameTransformErrorEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SFrameTransformErrorEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SFrameTransformErrorEvent> for emlite::Val {
     fn from(s: SFrameTransformErrorEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<SFrameTransformErrorEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SFrameTransformErrorEvent);
 
 impl SFrameTransformErrorEvent {
     pub fn new(

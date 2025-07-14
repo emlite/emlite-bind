@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct LanguageDetectorCreateOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for LanguageDetectorCreateOptions {
 }
 impl core::ops::DerefMut for LanguageDetectorCreateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for LanguageDetectorCreateOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for LanguageDetectorCreateOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl LanguageDetectorCreateOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct LanguageDetectorCreateCoreOptions {
     inner: emlite::Val,
 }
@@ -78,6 +90,16 @@ impl core::ops::DerefMut for LanguageDetectorCreateCoreOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for LanguageDetectorCreateCoreOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for LanguageDetectorCreateCoreOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<LanguageDetectorCreateCoreOptions> for emlite::Val {
     fn from(s: LanguageDetectorCreateCoreOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -98,6 +120,7 @@ impl LanguageDetectorCreateCoreOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct LanguageDetectionResult {
     inner: emlite::Val,
 }
@@ -120,6 +143,16 @@ impl core::ops::Deref for LanguageDetectionResult {
 }
 impl core::ops::DerefMut for LanguageDetectionResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for LanguageDetectionResult {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for LanguageDetectionResult {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -152,6 +185,7 @@ impl LanguageDetectionResult {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct LanguageDetectorDetectOptions {
     inner: emlite::Val,
 }
@@ -177,6 +211,16 @@ impl core::ops::DerefMut for LanguageDetectorDetectOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for LanguageDetectorDetectOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for LanguageDetectorDetectOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<LanguageDetectorDetectOptions> for emlite::Val {
     fn from(s: LanguageDetectorDetectOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -195,6 +239,7 @@ impl LanguageDetectorDetectOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct LanguageDetector {
     inner: emlite::Val,
 }
@@ -222,6 +267,16 @@ impl core::ops::DerefMut for LanguageDetector {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for LanguageDetector {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for LanguageDetector {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<LanguageDetector> for emlite::Val {
     fn from(s: LanguageDetector) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -229,6 +284,7 @@ impl From<LanguageDetector> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(LanguageDetector);
 
 impl LanguageDetector {
     pub fn create0() -> jsbind::Promise {

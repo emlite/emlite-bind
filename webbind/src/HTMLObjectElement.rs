@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct HTMLObjectElement {
     inner: HTMLElement,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for HTMLObjectElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for HTMLObjectElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for HTMLObjectElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<HTMLObjectElement> for emlite::Val {
     fn from(s: HTMLObjectElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<HTMLObjectElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(HTMLObjectElement);
 
 impl HTMLObjectElement {
     pub fn new() -> HTMLObjectElement {

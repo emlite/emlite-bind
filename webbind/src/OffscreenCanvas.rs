@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ImageEncodeOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for ImageEncodeOptions {
 }
 impl core::ops::DerefMut for ImageEncodeOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ImageEncodeOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ImageEncodeOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl ImageEncodeOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct OffscreenCanvas {
     inner: EventTarget,
 }
@@ -80,6 +92,16 @@ impl core::ops::DerefMut for OffscreenCanvas {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for OffscreenCanvas {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for OffscreenCanvas {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<OffscreenCanvas> for emlite::Val {
     fn from(s: OffscreenCanvas) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -87,6 +109,7 @@ impl From<OffscreenCanvas> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(OffscreenCanvas);
 
 impl OffscreenCanvas {
     pub fn new(width: u64, height: u64) -> OffscreenCanvas {

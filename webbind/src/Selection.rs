@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GetComposedRangesOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for GetComposedRangesOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GetComposedRangesOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GetComposedRangesOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GetComposedRangesOptions> for emlite::Val {
     fn from(s: GetComposedRangesOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -46,6 +57,7 @@ impl GetComposedRangesOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Selection {
     inner: emlite::Val,
 }
@@ -73,6 +85,16 @@ impl core::ops::DerefMut for Selection {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Selection {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Selection {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Selection> for emlite::Val {
     fn from(s: Selection) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -80,6 +102,7 @@ impl From<Selection> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Selection);
 
 impl Selection {
     pub fn anchor_node(&self) -> Node {

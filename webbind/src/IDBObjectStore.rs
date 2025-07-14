@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct IDBIndexParameters {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for IDBIndexParameters {
 }
 impl core::ops::DerefMut for IDBIndexParameters {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for IDBIndexParameters {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for IDBIndexParameters {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl IDBIndexParameters {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct IDBObjectStore {
     inner: emlite::Val,
 }
@@ -80,6 +92,16 @@ impl core::ops::DerefMut for IDBObjectStore {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for IDBObjectStore {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for IDBObjectStore {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<IDBObjectStore> for emlite::Val {
     fn from(s: IDBObjectStore) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -87,6 +109,7 @@ impl From<IDBObjectStore> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(IDBObjectStore);
 
 impl IDBObjectStore {
     pub fn name(&self) -> jsbind::DOMString {

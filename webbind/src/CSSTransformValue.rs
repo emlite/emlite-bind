@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSTransformValue {
     inner: CSSStyleValue,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for CSSTransformValue {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CSSTransformValue {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CSSTransformValue {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CSSTransformValue> for emlite::Val {
     fn from(s: CSSTransformValue) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<CSSTransformValue> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CSSTransformValue);
 
 impl CSSTransformValue {
     pub fn new(transforms: jsbind::Sequence<CSSTransformComponent>) -> CSSTransformValue {

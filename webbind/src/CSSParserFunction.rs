@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSParserFunction {
     inner: CSSParserValue,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for CSSParserFunction {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CSSParserFunction {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CSSParserFunction {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CSSParserFunction> for emlite::Val {
     fn from(s: CSSParserFunction) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<CSSParserFunction> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CSSParserFunction);
 
 impl CSSParserFunction {
     pub fn new(

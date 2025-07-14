@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SVGAnimatedAngle {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for SVGAnimatedAngle {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SVGAnimatedAngle {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SVGAnimatedAngle {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SVGAnimatedAngle> for emlite::Val {
     fn from(s: SVGAnimatedAngle) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<SVGAnimatedAngle> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SVGAnimatedAngle);
 
 impl SVGAnimatedAngle {
     pub fn base_val(&self) -> SVGAngle {

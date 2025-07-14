@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct TaskSignalAnyInit {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for TaskSignalAnyInit {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for TaskSignalAnyInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for TaskSignalAnyInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<TaskSignalAnyInit> for emlite::Val {
     fn from(s: TaskSignalAnyInit) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl TaskSignalAnyInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct TaskSignal {
     inner: AbortSignal,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for TaskSignal {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for TaskSignal {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for TaskSignal {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<TaskSignal> for emlite::Val {
     fn from(s: TaskSignal) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<TaskSignal> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(TaskSignal);
 
 impl TaskSignal {
     pub fn any0(signals: jsbind::Sequence<AbortSignal>) -> TaskSignal {

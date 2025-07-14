@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct IDBDatabaseInfo {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for IDBDatabaseInfo {
 }
 impl core::ops::DerefMut for IDBDatabaseInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for IDBDatabaseInfo {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for IDBDatabaseInfo {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl IDBDatabaseInfo {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct IDBFactory {
     inner: emlite::Val,
 }
@@ -80,6 +92,16 @@ impl core::ops::DerefMut for IDBFactory {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for IDBFactory {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for IDBFactory {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<IDBFactory> for emlite::Val {
     fn from(s: IDBFactory) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -87,6 +109,7 @@ impl From<IDBFactory> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(IDBFactory);
 
 impl IDBFactory {
     pub fn open0(&self, name: jsbind::DOMString) -> IDBOpenDBRequest {

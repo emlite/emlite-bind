@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MediaPositionState {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for MediaPositionState {
 }
 impl core::ops::DerefMut for MediaPositionState {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MediaPositionState {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MediaPositionState {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl MediaPositionState {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MediaSession {
     inner: emlite::Val,
 }
@@ -89,6 +101,16 @@ impl core::ops::DerefMut for MediaSession {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MediaSession {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MediaSession {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MediaSession> for emlite::Val {
     fn from(s: MediaSession) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -96,6 +118,7 @@ impl From<MediaSession> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(MediaSession);
 
 impl MediaSession {
     pub fn metadata(&self) -> MediaMetadata {

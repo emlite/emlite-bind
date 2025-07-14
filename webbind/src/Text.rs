@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Text {
     inner: CharacterData,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for Text {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Text {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Text {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Text> for emlite::Val {
     fn from(s: Text) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<Text> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Text);
 
 impl Text {
     pub fn new0() -> Text {

@@ -1,11 +1,13 @@
-use crate::utils::bind;
+use crate::utils::*;
 use alloc::string::String;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct URL {
     inner: emlite::Val,
 }
 bind!(URL);
+impl_dyn_cast!(URL);
 
 impl URL {
     /// `new URL(input, base?)`
@@ -45,10 +47,12 @@ impl URL {
 
 /// `URLSearchParams` – minimal wrapper.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct URLSearchParams {
     inner: emlite::Val,
 }
 bind!(URLSearchParams);
+impl_dyn_cast!(URLSearchParams);
 
 impl URLSearchParams {
     pub fn get(&self, key: &str) -> Option<String> {

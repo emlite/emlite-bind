@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ShadowRoot {
     inner: DocumentFragment,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for ShadowRoot {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ShadowRoot {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ShadowRoot {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ShadowRoot> for emlite::Val {
     fn from(s: ShadowRoot) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<ShadowRoot> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ShadowRoot);
 
 impl ShadowRoot {
     pub fn mode(&self) -> ShadowRootMode {

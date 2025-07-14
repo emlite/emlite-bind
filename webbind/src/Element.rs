@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ShadowRootInit {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for ShadowRootInit {
 }
 impl core::ops::DerefMut for ShadowRootInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ShadowRootInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ShadowRootInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -91,6 +102,7 @@ impl ShadowRootInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FocusableAreasOption {
     inner: emlite::Val,
 }
@@ -116,6 +128,16 @@ impl core::ops::DerefMut for FocusableAreasOption {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FocusableAreasOption {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FocusableAreasOption {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FocusableAreasOption> for emlite::Val {
     fn from(s: FocusableAreasOption) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -134,6 +156,7 @@ impl FocusableAreasOption {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SpatialNavigationSearchOptions {
     inner: emlite::Val,
 }
@@ -156,6 +179,16 @@ impl core::ops::Deref for SpatialNavigationSearchOptions {
 }
 impl core::ops::DerefMut for SpatialNavigationSearchOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for SpatialNavigationSearchOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SpatialNavigationSearchOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -186,6 +219,7 @@ impl SpatialNavigationSearchOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CheckVisibilityOptions {
     inner: emlite::Val,
 }
@@ -208,6 +242,16 @@ impl core::ops::Deref for CheckVisibilityOptions {
 }
 impl core::ops::DerefMut for CheckVisibilityOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for CheckVisibilityOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CheckVisibilityOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -265,6 +309,7 @@ impl CheckVisibilityOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FullscreenOptions {
     inner: emlite::Val,
 }
@@ -290,6 +335,16 @@ impl core::ops::DerefMut for FullscreenOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FullscreenOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FullscreenOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FullscreenOptions> for emlite::Val {
     fn from(s: FullscreenOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -308,6 +363,7 @@ impl FullscreenOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GetHTMLOptions {
     inner: emlite::Val,
 }
@@ -330,6 +386,16 @@ impl core::ops::Deref for GetHTMLOptions {
 }
 impl core::ops::DerefMut for GetHTMLOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GetHTMLOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GetHTMLOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -362,6 +428,7 @@ impl GetHTMLOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PointerLockOptions {
     inner: emlite::Val,
 }
@@ -387,6 +454,16 @@ impl core::ops::DerefMut for PointerLockOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PointerLockOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PointerLockOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PointerLockOptions> for emlite::Val {
     fn from(s: PointerLockOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -405,6 +482,7 @@ impl PointerLockOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GetAnimationsOptions {
     inner: emlite::Val,
 }
@@ -427,6 +505,16 @@ impl core::ops::Deref for GetAnimationsOptions {
 }
 impl core::ops::DerefMut for GetAnimationsOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GetAnimationsOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GetAnimationsOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -457,6 +545,7 @@ impl GetAnimationsOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Element {
     inner: Node,
 }
@@ -484,6 +573,16 @@ impl core::ops::DerefMut for Element {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Element {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Element {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Element> for emlite::Val {
     fn from(s: Element) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -491,6 +590,7 @@ impl From<Element> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Element);
 
 impl Element {
     pub fn namespace_uri(&self) -> jsbind::DOMString {

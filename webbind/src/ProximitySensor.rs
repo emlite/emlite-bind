@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ProximitySensor {
     inner: Sensor,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for ProximitySensor {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ProximitySensor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ProximitySensor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ProximitySensor> for emlite::Val {
     fn from(s: ProximitySensor) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<ProximitySensor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ProximitySensor);
 
 impl ProximitySensor {
     pub fn new0() -> ProximitySensor {

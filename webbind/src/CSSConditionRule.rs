@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSConditionRule {
     inner: CSSGroupingRule,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for CSSConditionRule {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CSSConditionRule {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CSSConditionRule {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CSSConditionRule> for emlite::Val {
     fn from(s: CSSConditionRule) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<CSSConditionRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CSSConditionRule);
 
 impl CSSConditionRule {
     pub fn condition_text(&self) -> jsbind::CSSOMString {

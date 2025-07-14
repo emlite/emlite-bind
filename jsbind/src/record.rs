@@ -4,6 +4,7 @@ use emlite::FromVal;
 
 /// Web‑IDL `record<K, V>` wrapper.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Record<K, V> {
     /// Underlying JavaScript object.
     inner: emlite::Val,
@@ -47,6 +48,18 @@ impl<K, V> Deref for Record<K, V> {
 
 impl<K, V> DerefMut for Record<K, V> {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+
+impl<K, V> AsRef<emlite::Val> for Record<K, V> {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+
+impl<K, V> AsMut<emlite::Val> for Record<K, V> {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }

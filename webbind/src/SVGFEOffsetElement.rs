@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SVGFEOffsetElement {
     inner: SVGElement,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for SVGFEOffsetElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SVGFEOffsetElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SVGFEOffsetElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SVGFEOffsetElement> for emlite::Val {
     fn from(s: SVGFEOffsetElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<SVGFEOffsetElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SVGFEOffsetElement);
 
 impl SVGFEOffsetElement {
     pub fn in1(&self) -> SVGAnimatedString {

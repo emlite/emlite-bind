@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct BackgroundFetchOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for BackgroundFetchOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for BackgroundFetchOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for BackgroundFetchOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<BackgroundFetchOptions> for emlite::Val {
     fn from(s: BackgroundFetchOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl BackgroundFetchOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct BackgroundFetchManager {
     inner: emlite::Val,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for BackgroundFetchManager {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for BackgroundFetchManager {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for BackgroundFetchManager {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<BackgroundFetchManager> for emlite::Val {
     fn from(s: BackgroundFetchManager) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<BackgroundFetchManager> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(BackgroundFetchManager);
 
 impl BackgroundFetchManager {
     pub fn fetch0(&self, id: jsbind::DOMString, requests: jsbind::Any) -> jsbind::Promise {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct HandwritingPoint {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for HandwritingPoint {
 }
 impl core::ops::DerefMut for HandwritingPoint {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for HandwritingPoint {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for HandwritingPoint {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl HandwritingPoint {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct HandwritingStroke {
     inner: emlite::Val,
 }
@@ -89,6 +101,16 @@ impl core::ops::DerefMut for HandwritingStroke {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for HandwritingStroke {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for HandwritingStroke {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<HandwritingStroke> for emlite::Val {
     fn from(s: HandwritingStroke) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -96,6 +118,7 @@ impl From<HandwritingStroke> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(HandwritingStroke);
 
 impl HandwritingStroke {
     pub fn new() -> HandwritingStroke {

@@ -1,6 +1,6 @@
 use crate::any::Any;
 use crate::sequence::Sequence;
-use crate::utils::bind;
+use crate::utils::*;
 use alloc::vec;
 use emlite::FromVal;
 
@@ -34,14 +34,24 @@ pub type Int32Array = TypedArray<i32>;
 pub type Float32Array = TypedArray<f32>;
 pub type Float64Array = TypedArray<f64>;
 
+crate::utils::impl_dyn_cast!(Uint8Array, "Uint8Array");
+crate::utils::impl_dyn_cast!(Int8Array, "Int8Array");
+crate::utils::impl_dyn_cast!(Uint32Array, "Uint32Array");
+crate::utils::impl_dyn_cast!(Int32Array, "Int32Array");
+crate::utils::impl_dyn_cast!(Float32Array, "Float32Array");
+crate::utils::impl_dyn_cast!(Float64Array, "Float64Array");
+
 /// Heterogeneous JavaScript `Array` (equivalent to `Vec<JsValue>`).
 ///
 /// Using `Sequence<Any>` means every element is an arbitrary JS value that can
 /// be converted on demand with `as_::<T>()`.
 pub type Array = Sequence<Any>;
 
+crate::utils::impl_dyn_cast!(Array, "Array");
+
 /// A raw, fixed‑length buffer of bytes as defined by the ECMAScript spec.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ArrayBuffer {
     /// Underlying JavaScript value (always a `Promise` object in JS land).
     inner: emlite::Val,
@@ -85,6 +95,7 @@ impl ArrayBuffer {
 }
 
 bind!(ArrayBuffer);
+impl_dyn_cast!(ArrayBuffer);
 
 /// Explicit byte‑order flag for `DataView` getters / setters.
 ///
@@ -115,6 +126,7 @@ impl Endian {
 /// littleEndian)` so host code must always pass an [`Endian`] flag to remove
 /// any ambiguity about byte order.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DataView {
     inner: emlite::Val,
 }
@@ -181,3 +193,4 @@ impl DataView {
 }
 
 bind!(DataView);
+impl_dyn_cast!(DataView);

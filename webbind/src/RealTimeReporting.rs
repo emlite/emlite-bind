@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RealTimeContribution {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for RealTimeContribution {
 }
 impl core::ops::DerefMut for RealTimeContribution {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RealTimeContribution {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RealTimeContribution {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl RealTimeContribution {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RealTimeReporting {
     inner: emlite::Val,
 }
@@ -89,6 +101,16 @@ impl core::ops::DerefMut for RealTimeReporting {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for RealTimeReporting {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RealTimeReporting {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<RealTimeReporting> for emlite::Val {
     fn from(s: RealTimeReporting) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -96,6 +118,7 @@ impl From<RealTimeReporting> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(RealTimeReporting);
 
 impl RealTimeReporting {
     pub fn contribute_to_histogram(&self, contribution: RealTimeContribution) -> jsbind::Undefined {

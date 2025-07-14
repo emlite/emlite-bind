@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCOfferOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for RTCOfferOptions {
 }
 impl core::ops::DerefMut for RTCOfferOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RTCOfferOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCOfferOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl RTCOfferOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCLocalSessionDescriptionInit {
     inner: emlite::Val,
 }
@@ -75,6 +87,16 @@ impl core::ops::Deref for RTCLocalSessionDescriptionInit {
 }
 impl core::ops::DerefMut for RTCLocalSessionDescriptionInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RTCLocalSessionDescriptionInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCLocalSessionDescriptionInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -105,6 +127,7 @@ impl RTCLocalSessionDescriptionInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCSessionDescriptionInit {
     inner: emlite::Val,
 }
@@ -127,6 +150,16 @@ impl core::ops::Deref for RTCSessionDescriptionInit {
 }
 impl core::ops::DerefMut for RTCSessionDescriptionInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RTCSessionDescriptionInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCSessionDescriptionInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -157,6 +190,7 @@ impl RTCSessionDescriptionInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCConfiguration {
     inner: emlite::Val,
 }
@@ -179,6 +213,16 @@ impl core::ops::Deref for RTCConfiguration {
 }
 impl core::ops::DerefMut for RTCConfiguration {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RTCConfiguration {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCConfiguration {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -251,6 +295,7 @@ impl RTCConfiguration {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCIdentityProviderOptions {
     inner: emlite::Val,
 }
@@ -273,6 +318,16 @@ impl core::ops::Deref for RTCIdentityProviderOptions {
 }
 impl core::ops::DerefMut for RTCIdentityProviderOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RTCIdentityProviderOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCIdentityProviderOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -312,6 +367,7 @@ impl RTCIdentityProviderOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCRtpTransceiverInit {
     inner: emlite::Val,
 }
@@ -334,6 +390,16 @@ impl core::ops::Deref for RTCRtpTransceiverInit {
 }
 impl core::ops::DerefMut for RTCRtpTransceiverInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RTCRtpTransceiverInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCRtpTransceiverInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -379,6 +445,7 @@ impl RTCRtpTransceiverInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCDataChannelInit {
     inner: emlite::Val,
 }
@@ -401,6 +468,16 @@ impl core::ops::Deref for RTCDataChannelInit {
 }
 impl core::ops::DerefMut for RTCDataChannelInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RTCDataChannelInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCDataChannelInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -467,6 +544,7 @@ impl RTCDataChannelInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCPeerConnection {
     inner: EventTarget,
 }
@@ -494,6 +572,16 @@ impl core::ops::DerefMut for RTCPeerConnection {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for RTCPeerConnection {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCPeerConnection {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<RTCPeerConnection> for emlite::Val {
     fn from(s: RTCPeerConnection) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -501,6 +589,7 @@ impl From<RTCPeerConnection> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(RTCPeerConnection);
 
 impl RTCPeerConnection {
     pub fn new0() -> RTCPeerConnection {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct BluetoothCharacteristicProperties {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for BluetoothCharacteristicProperties {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for BluetoothCharacteristicProperties {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for BluetoothCharacteristicProperties {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<BluetoothCharacteristicProperties> for emlite::Val {
     fn from(s: BluetoothCharacteristicProperties) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<BluetoothCharacteristicProperties> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(BluetoothCharacteristicProperties);
 
 impl BluetoothCharacteristicProperties {
     pub fn broadcast(&self) -> bool {

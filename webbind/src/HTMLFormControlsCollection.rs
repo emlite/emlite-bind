@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct HTMLFormControlsCollection {
     inner: HTMLCollection,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for HTMLFormControlsCollection {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for HTMLFormControlsCollection {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for HTMLFormControlsCollection {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<HTMLFormControlsCollection> for emlite::Val {
     fn from(s: HTMLFormControlsCollection) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<HTMLFormControlsCollection> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(HTMLFormControlsCollection);
 
 impl HTMLFormControlsCollection {
     pub fn named_item(&self, name: jsbind::DOMString) -> jsbind::Any {

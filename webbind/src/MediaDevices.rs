@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AudioOutputOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for AudioOutputOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for AudioOutputOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AudioOutputOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<AudioOutputOptions> for emlite::Val {
     fn from(s: AudioOutputOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl AudioOutputOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CaptureHandleConfig {
     inner: emlite::Val,
 }
@@ -66,6 +78,16 @@ impl core::ops::Deref for CaptureHandleConfig {
 }
 impl core::ops::DerefMut for CaptureHandleConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for CaptureHandleConfig {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CaptureHandleConfig {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -107,6 +129,7 @@ impl CaptureHandleConfig {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MediaTrackSupportedConstraints {
     inner: emlite::Val,
 }
@@ -129,6 +152,16 @@ impl core::ops::Deref for MediaTrackSupportedConstraints {
 }
 impl core::ops::DerefMut for MediaTrackSupportedConstraints {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MediaTrackSupportedConstraints {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MediaTrackSupportedConstraints {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -186,6 +219,7 @@ impl MediaTrackSupportedConstraints {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MediaStreamConstraints {
     inner: emlite::Val,
 }
@@ -211,6 +245,16 @@ impl core::ops::DerefMut for MediaStreamConstraints {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MediaStreamConstraints {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MediaStreamConstraints {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MediaStreamConstraints> for emlite::Val {
     fn from(s: MediaStreamConstraints) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -229,6 +273,7 @@ impl MediaStreamConstraints {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DisplayMediaStreamOptions {
     inner: emlite::Val,
 }
@@ -251,6 +296,16 @@ impl core::ops::Deref for DisplayMediaStreamOptions {
 }
 impl core::ops::DerefMut for DisplayMediaStreamOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for DisplayMediaStreamOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DisplayMediaStreamOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -345,6 +400,7 @@ impl DisplayMediaStreamOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MediaDevices {
     inner: EventTarget,
 }
@@ -372,6 +428,16 @@ impl core::ops::DerefMut for MediaDevices {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MediaDevices {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MediaDevices {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MediaDevices> for emlite::Val {
     fn from(s: MediaDevices) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -379,6 +445,7 @@ impl From<MediaDevices> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(MediaDevices);
 
 impl MediaDevices {
     pub fn ondevicechange(&self) -> jsbind::Any {

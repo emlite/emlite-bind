@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FileSystemGetFileOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for FileSystemGetFileOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FileSystemGetFileOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FileSystemGetFileOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FileSystemGetFileOptions> for emlite::Val {
     fn from(s: FileSystemGetFileOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl FileSystemGetFileOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FileSystemGetDirectoryOptions {
     inner: emlite::Val,
 }
@@ -69,6 +81,16 @@ impl core::ops::DerefMut for FileSystemGetDirectoryOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FileSystemGetDirectoryOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FileSystemGetDirectoryOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FileSystemGetDirectoryOptions> for emlite::Val {
     fn from(s: FileSystemGetDirectoryOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -87,6 +109,7 @@ impl FileSystemGetDirectoryOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FileSystemRemoveOptions {
     inner: emlite::Val,
 }
@@ -112,6 +135,16 @@ impl core::ops::DerefMut for FileSystemRemoveOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FileSystemRemoveOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FileSystemRemoveOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FileSystemRemoveOptions> for emlite::Val {
     fn from(s: FileSystemRemoveOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -130,6 +163,7 @@ impl FileSystemRemoveOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FileSystemDirectoryHandle {
     inner: FileSystemHandle,
 }
@@ -157,6 +191,16 @@ impl core::ops::DerefMut for FileSystemDirectoryHandle {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FileSystemDirectoryHandle {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FileSystemDirectoryHandle {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FileSystemDirectoryHandle> for emlite::Val {
     fn from(s: FileSystemDirectoryHandle) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -164,6 +208,7 @@ impl From<FileSystemDirectoryHandle> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(FileSystemDirectoryHandle);
 
 impl FileSystemDirectoryHandle {
     pub fn get_file_handle0(&self, name: jsbind::USVString) -> jsbind::Promise {

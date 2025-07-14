@@ -3,14 +3,15 @@ use core::marker::PhantomData;
 use core::ops::{Deref, DerefMut};
 use emlite::FromVal;
 
-/// `Set<T>` – ECMAScript “Set” wrapper  (`new Set()`).
+/// `TypedSet<T>` – ECMAScript “TypedSet” wrapper  (`new TypedSet()`).
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
-pub struct Set<T> {
+#[repr(transparent)]
+pub struct TypedSet<T> {
     inner: emlite::Val,
     _phantom: PhantomData<T>,
 }
 
-impl<T> emlite::FromVal for Set<T> {
+impl<T> emlite::FromVal for TypedSet<T> {
     fn from_val(v: &emlite::Val) -> Self {
         Self {
             inner: v.clone(),
@@ -25,15 +26,15 @@ impl<T> emlite::FromVal for Set<T> {
     }
 }
 
-impl<T> From<Set<T>> for emlite::Val {
-    fn from(x: Set<T>) -> emlite::Val {
+impl<T> From<TypedSet<T>> for emlite::Val {
+    fn from(x: TypedSet<T>) -> emlite::Val {
         let handle = x.inner.as_handle();
         core::mem::forget(x);
         emlite::Val::take_ownership(handle)
     }
 }
 
-impl<T> Deref for Set<T> {
+impl<T> Deref for TypedSet<T> {
     type Target = emlite::Val;
 
     fn deref(&self) -> &Self::Target {
@@ -41,16 +42,28 @@ impl<T> Deref for Set<T> {
     }
 }
 
-impl<T> DerefMut for Set<T> {
+impl<T> DerefMut for TypedSet<T> {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
 
-impl<T> Set<T> {
-    /// `new Set()` — empty set.
+impl<T> AsRef<emlite::Val> for TypedSet<T> {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+
+impl<T> AsMut<emlite::Val> for TypedSet<T> {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
+
+impl<T> TypedSet<T> {
+    /// `new TypedSet()` — empty set.
     pub fn new() -> Self {
-        emlite::Val::global("Set").new(&[]).as_::<Self>()
+        emlite::Val::global("TypedSet").new(&[]).as_::<Self>()
     }
 
     /// `set.size`
@@ -109,25 +122,25 @@ impl<T> Set<T> {
     }
 }
 
-pub struct SetIter<'a, T> {
-    it: crate::Set<emlite::Val>,
+pub struct TypedSetIter<'a, T> {
+    it: crate::TypedSet<emlite::Val>,
     idx: usize,
     _phantom: PhantomData<&'a T>,
 }
 
-impl<'a, T> IntoIterator for &'a Set<T>
+impl<'a, T> IntoIterator for &'a TypedSet<T>
 where
     T: FromVal,
 {
     type Item = T;
-    type IntoIter = SetIter<'a, T>;
+    type IntoIter = TypedSetIter<'a, T>;
 
     fn into_iter(self) -> Self::IntoIter {
         let iter = self.inner.call("values", &[]);
         let vec = emlite::Val::global("Array")
             .call("from", &[iter])
-            .as_::<crate::Set<emlite::Val>>();
-        SetIter {
+            .as_::<crate::TypedSet<emlite::Val>>();
+        TypedSetIter {
             it: vec,
             idx: 0,
             _phantom: PhantomData,
@@ -135,7 +148,7 @@ where
     }
 }
 
-impl<'a, T> Iterator for SetIter<'a, T>
+impl<'a, T> Iterator for TypedSetIter<'a, T>
 where
     T: FromVal,
 {
@@ -156,7 +169,7 @@ where
     }
 }
 
-impl<T> core::iter::FromIterator<T> for Set<T>
+impl<T> core::iter::FromIterator<T> for TypedSet<T>
 where
     emlite::Val: From<T>,
 {
@@ -169,21 +182,25 @@ where
     }
 }
 
-impl<T> core::fmt::Display for Set<T> {
+impl<T> core::fmt::Display for TypedSet<T> {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         let s: String = self.inner.call("toString", &[]).as_();
         f.write_str(&s)
     }
 }
 
-/// `WeakSet<T>` – ECMAScript “WeakSet” wrapper  (`new WeakSet()`).
+pub type Set = TypedSet<crate::Any>;
+crate::utils::impl_dyn_cast!(Set, "Set");
+
+/// `TypedWeakSet<T>` – ECMAScript “TypedWeakSet” wrapper  (`new TypedWeakSet()`).
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
-pub struct WeakSet<T> {
+#[repr(transparent)]
+pub struct TypedWeakSet<T> {
     inner: emlite::Val,
     _phantom: PhantomData<T>,
 }
 
-impl<T> emlite::FromVal for WeakSet<T> {
+impl<T> emlite::FromVal for TypedWeakSet<T> {
     fn from_val(v: &emlite::Val) -> Self {
         Self {
             inner: v.clone(),
@@ -198,15 +215,15 @@ impl<T> emlite::FromVal for WeakSet<T> {
     }
 }
 
-impl<T> From<WeakSet<T>> for emlite::Val {
-    fn from(x: WeakSet<T>) -> emlite::Val {
+impl<T> From<TypedWeakSet<T>> for emlite::Val {
+    fn from(x: TypedWeakSet<T>) -> emlite::Val {
         let handle = x.inner.as_handle();
         core::mem::forget(x);
         emlite::Val::take_ownership(handle)
     }
 }
 
-impl<T> Deref for WeakSet<T> {
+impl<T> Deref for TypedWeakSet<T> {
     type Target = emlite::Val;
 
     fn deref(&self) -> &Self::Target {
@@ -214,16 +231,16 @@ impl<T> Deref for WeakSet<T> {
     }
 }
 
-impl<T> DerefMut for WeakSet<T> {
+impl<T> DerefMut for TypedWeakSet<T> {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
 
-impl<T> WeakSet<T> {
-    /// `new WeakSet()` — empty set.
+impl<T> TypedWeakSet<T> {
+    /// `new TypedWeakSet()` — empty set.
     pub fn new() -> Self {
-        emlite::Val::global("WeakSet").new(&[]).as_::<Self>()
+        emlite::Val::global("TypedWeakSet").new(&[]).as_::<Self>()
     }
 
     /// `set.size`
@@ -282,25 +299,25 @@ impl<T> WeakSet<T> {
     }
 }
 
-pub struct WeakSetIter<'a, T> {
-    it: crate::WeakSet<emlite::Val>,
+pub struct TypedWeakSetIter<'a, T> {
+    it: crate::TypedWeakSet<emlite::Val>,
     idx: usize,
     _phantom: PhantomData<&'a T>,
 }
 
-impl<'a, T> IntoIterator for &'a WeakSet<T>
+impl<'a, T> IntoIterator for &'a TypedWeakSet<T>
 where
     T: FromVal,
 {
     type Item = T;
-    type IntoIter = WeakSetIter<'a, T>;
+    type IntoIter = TypedWeakSetIter<'a, T>;
 
     fn into_iter(self) -> Self::IntoIter {
         let iter = self.inner.call("values", &[]);
         let vec = emlite::Val::global("Array")
             .call("from", &[iter])
-            .as_::<crate::WeakSet<emlite::Val>>();
-        WeakSetIter {
+            .as_::<crate::TypedWeakSet<emlite::Val>>();
+        TypedWeakSetIter {
             it: vec,
             idx: 0,
             _phantom: PhantomData,
@@ -308,7 +325,7 @@ where
     }
 }
 
-impl<'a, T> Iterator for WeakSetIter<'a, T>
+impl<'a, T> Iterator for TypedWeakSetIter<'a, T>
 where
     T: FromVal,
 {
@@ -329,7 +346,7 @@ where
     }
 }
 
-impl<T> core::iter::FromIterator<T> for WeakSet<T>
+impl<T> core::iter::FromIterator<T> for TypedWeakSet<T>
 where
     emlite::Val: From<T>,
 {
@@ -342,9 +359,24 @@ where
     }
 }
 
-impl<T> core::fmt::Display for WeakSet<T> {
+impl<T> core::fmt::Display for TypedWeakSet<T> {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         let s: String = self.inner.call("toString", &[]).as_();
         f.write_str(&s)
     }
 }
+
+impl<T> AsRef<emlite::Val> for TypedWeakSet<T> {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+
+impl<T> AsMut<emlite::Val> for TypedWeakSet<T> {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
+
+pub type WeakSet = TypedWeakSet<crate::Any>;
+crate::utils::impl_dyn_cast!(WeakSet, "WeakSet");

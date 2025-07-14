@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MemoryMeasurement {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for MemoryMeasurement {
 }
 impl core::ops::DerefMut for MemoryMeasurement {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MemoryMeasurement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MemoryMeasurement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -55,6 +66,7 @@ impl MemoryMeasurement {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PerformanceMarkOptions {
     inner: emlite::Val,
 }
@@ -77,6 +89,16 @@ impl core::ops::Deref for PerformanceMarkOptions {
 }
 impl core::ops::DerefMut for PerformanceMarkOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PerformanceMarkOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PerformanceMarkOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -107,6 +129,7 @@ impl PerformanceMarkOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Performance {
     inner: EventTarget,
 }
@@ -134,6 +157,16 @@ impl core::ops::DerefMut for Performance {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Performance {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Performance {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Performance> for emlite::Val {
     fn from(s: Performance) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -141,6 +174,7 @@ impl From<Performance> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Performance);
 
 impl Performance {
     pub fn now(&self) -> jsbind::Any {

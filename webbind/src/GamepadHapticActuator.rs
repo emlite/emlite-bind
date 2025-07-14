@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GamepadEffectParameters {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for GamepadEffectParameters {
 }
 impl core::ops::DerefMut for GamepadEffectParameters {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GamepadEffectParameters {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GamepadEffectParameters {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -89,6 +100,7 @@ impl GamepadEffectParameters {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GamepadHapticActuator {
     inner: emlite::Val,
 }
@@ -116,6 +128,16 @@ impl core::ops::DerefMut for GamepadHapticActuator {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GamepadHapticActuator {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GamepadHapticActuator {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GamepadHapticActuator> for emlite::Val {
     fn from(s: GamepadHapticActuator) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -123,6 +145,7 @@ impl From<GamepadHapticActuator> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(GamepadHapticActuator);
 
 impl GamepadHapticActuator {
     pub fn effects(&self) -> jsbind::FrozenArray<GamepadHapticEffectType> {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MIDIOutput {
     inner: MIDIPort,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for MIDIOutput {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MIDIOutput {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MIDIOutput {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MIDIOutput> for emlite::Val {
     fn from(s: MIDIOutput) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<MIDIOutput> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(MIDIOutput);
 
 impl MIDIOutput {
     pub fn send0(&self, data: jsbind::Sequence<u8>) -> jsbind::Undefined {

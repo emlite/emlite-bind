@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WriterCreateOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for WriterCreateOptions {
 }
 impl core::ops::DerefMut for WriterCreateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for WriterCreateOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WriterCreateOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl WriterCreateOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WriterCreateCoreOptions {
     inner: emlite::Val,
 }
@@ -84,6 +96,16 @@ impl core::ops::Deref for WriterCreateCoreOptions {
 }
 impl core::ops::DerefMut for WriterCreateCoreOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for WriterCreateCoreOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WriterCreateCoreOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -154,6 +176,7 @@ impl WriterCreateCoreOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WriterWriteOptions {
     inner: emlite::Val,
 }
@@ -176,6 +199,16 @@ impl core::ops::Deref for WriterWriteOptions {
 }
 impl core::ops::DerefMut for WriterWriteOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for WriterWriteOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WriterWriteOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -206,6 +239,7 @@ impl WriterWriteOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Writer {
     inner: emlite::Val,
 }
@@ -233,6 +267,16 @@ impl core::ops::DerefMut for Writer {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Writer {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Writer {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Writer> for emlite::Val {
     fn from(s: Writer) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -240,6 +284,7 @@ impl From<Writer> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Writer);
 
 impl Writer {
     pub fn create0() -> jsbind::Promise {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRRenderStateInit {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for XRRenderStateInit {
 }
 impl core::ops::DerefMut for XRRenderStateInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for XRRenderStateInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRRenderStateInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -89,6 +100,7 @@ impl XRRenderStateInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRDOMOverlayState {
     inner: emlite::Val,
 }
@@ -114,6 +126,16 @@ impl core::ops::DerefMut for XRDOMOverlayState {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for XRDOMOverlayState {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRDOMOverlayState {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<XRDOMOverlayState> for emlite::Val {
     fn from(s: XRDOMOverlayState) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -132,6 +154,7 @@ impl XRDOMOverlayState {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRHitTestOptionsInit {
     inner: emlite::Val,
 }
@@ -154,6 +177,16 @@ impl core::ops::Deref for XRHitTestOptionsInit {
 }
 impl core::ops::DerefMut for XRHitTestOptionsInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for XRHitTestOptionsInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRHitTestOptionsInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -195,6 +228,7 @@ impl XRHitTestOptionsInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRTransientInputHitTestOptionsInit {
     inner: emlite::Val,
 }
@@ -217,6 +251,16 @@ impl core::ops::Deref for XRTransientInputHitTestOptionsInit {
 }
 impl core::ops::DerefMut for XRTransientInputHitTestOptionsInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for XRTransientInputHitTestOptionsInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRTransientInputHitTestOptionsInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -258,6 +302,7 @@ impl XRTransientInputHitTestOptionsInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRLightProbeInit {
     inner: emlite::Val,
 }
@@ -283,6 +328,16 @@ impl core::ops::DerefMut for XRLightProbeInit {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for XRLightProbeInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRLightProbeInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<XRLightProbeInit> for emlite::Val {
     fn from(s: XRLightProbeInit) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -303,6 +358,7 @@ impl XRLightProbeInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRSession {
     inner: EventTarget,
 }
@@ -330,6 +386,16 @@ impl core::ops::DerefMut for XRSession {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for XRSession {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRSession {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<XRSession> for emlite::Val {
     fn from(s: XRSession) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -337,6 +403,7 @@ impl From<XRSession> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(XRSession);
 
 impl XRSession {
     pub fn visibility_state(&self) -> XRVisibilityState {

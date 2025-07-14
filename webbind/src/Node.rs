@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GetRootNodeOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for GetRootNodeOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GetRootNodeOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GetRootNodeOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GetRootNodeOptions> for emlite::Val {
     fn from(s: GetRootNodeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl GetRootNodeOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Node {
     inner: EventTarget,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for Node {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Node {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Node {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Node> for emlite::Val {
     fn from(s: Node) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<Node> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Node);
 
 impl Node {
     pub fn node_type(&self) -> u16 {

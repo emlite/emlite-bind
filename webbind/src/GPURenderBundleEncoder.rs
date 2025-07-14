@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPURenderBundleDescriptor {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for GPURenderBundleDescriptor {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPURenderBundleDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPURenderBundleDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPURenderBundleDescriptor> for emlite::Val {
     fn from(s: GPURenderBundleDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<GPURenderBundleDescriptor> for emlite::Val {
 }
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPURenderBundleEncoder {
     inner: emlite::Val,
 }
@@ -62,6 +74,16 @@ impl core::ops::DerefMut for GPURenderBundleEncoder {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPURenderBundleEncoder {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPURenderBundleEncoder {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPURenderBundleEncoder> for emlite::Val {
     fn from(s: GPURenderBundleEncoder) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -69,6 +91,7 @@ impl From<GPURenderBundleEncoder> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(GPURenderBundleEncoder);
 
 impl GPURenderBundleEncoder {
     pub fn finish0(&self) -> GPURenderBundle {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PaintWorkletGlobalScope {
     inner: WorkletGlobalScope,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for PaintWorkletGlobalScope {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PaintWorkletGlobalScope {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PaintWorkletGlobalScope {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PaintWorkletGlobalScope> for emlite::Val {
     fn from(s: PaintWorkletGlobalScope) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<PaintWorkletGlobalScope> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(PaintWorkletGlobalScope);
 
 impl PaintWorkletGlobalScope {
     pub fn register_paint(

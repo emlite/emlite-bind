@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WebTransportSendStreamStats {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for WebTransportSendStreamStats {
 }
 impl core::ops::DerefMut for WebTransportSendStreamStats {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for WebTransportSendStreamStats {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WebTransportSendStreamStats {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl WebTransportSendStreamStats {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WebTransportSendStream {
     inner: WritableStream,
 }
@@ -89,6 +101,16 @@ impl core::ops::DerefMut for WebTransportSendStream {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WebTransportSendStream {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WebTransportSendStream {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WebTransportSendStream> for emlite::Val {
     fn from(s: WebTransportSendStream) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -96,6 +118,7 @@ impl From<WebTransportSendStream> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(WebTransportSendStream);
 
 impl WebTransportSendStream {
     pub fn send_group(&self) -> WebTransportSendGroup {

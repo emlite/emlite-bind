@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLArgMinMaxOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for MLArgMinMaxOptions {
 }
 impl core::ops::DerefMut for MLArgMinMaxOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLArgMinMaxOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLArgMinMaxOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl MLArgMinMaxOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLBatchNormalizationOptions {
     inner: emlite::Val,
 }
@@ -75,6 +87,16 @@ impl core::ops::Deref for MLBatchNormalizationOptions {
 }
 impl core::ops::DerefMut for MLBatchNormalizationOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLBatchNormalizationOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLBatchNormalizationOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -123,6 +145,7 @@ impl MLBatchNormalizationOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLOperatorOptions {
     inner: emlite::Val,
 }
@@ -148,6 +171,16 @@ impl core::ops::DerefMut for MLOperatorOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MLOperatorOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLOperatorOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MLOperatorOptions> for emlite::Val {
     fn from(s: MLOperatorOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -166,6 +199,7 @@ impl MLOperatorOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLClampOptions {
     inner: emlite::Val,
 }
@@ -188,6 +222,16 @@ impl core::ops::Deref for MLClampOptions {
 }
 impl core::ops::DerefMut for MLClampOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLClampOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLClampOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -218,6 +262,7 @@ impl MLClampOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLConv2dOptions {
     inner: emlite::Val,
 }
@@ -240,6 +285,16 @@ impl core::ops::Deref for MLConv2dOptions {
 }
 impl core::ops::DerefMut for MLConv2dOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLConv2dOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLConv2dOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -317,6 +372,7 @@ impl MLConv2dOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLConvTranspose2dOptions {
     inner: emlite::Val,
 }
@@ -339,6 +395,16 @@ impl core::ops::Deref for MLConvTranspose2dOptions {
 }
 impl core::ops::DerefMut for MLConvTranspose2dOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLConvTranspose2dOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLConvTranspose2dOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -436,6 +502,7 @@ impl MLConvTranspose2dOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLCumulativeSumOptions {
     inner: emlite::Val,
 }
@@ -458,6 +525,16 @@ impl core::ops::Deref for MLCumulativeSumOptions {
 }
 impl core::ops::DerefMut for MLCumulativeSumOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLCumulativeSumOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLCumulativeSumOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -488,6 +565,7 @@ impl MLCumulativeSumOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLEluOptions {
     inner: emlite::Val,
 }
@@ -513,6 +591,16 @@ impl core::ops::DerefMut for MLEluOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MLEluOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLEluOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MLEluOptions> for emlite::Val {
     fn from(s: MLEluOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -531,6 +619,7 @@ impl MLEluOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLGatherOptions {
     inner: emlite::Val,
 }
@@ -556,6 +645,16 @@ impl core::ops::DerefMut for MLGatherOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MLGatherOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLGatherOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MLGatherOptions> for emlite::Val {
     fn from(s: MLGatherOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -574,6 +673,7 @@ impl MLGatherOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLGemmOptions {
     inner: emlite::Val,
 }
@@ -596,6 +696,16 @@ impl core::ops::Deref for MLGemmOptions {
 }
 impl core::ops::DerefMut for MLGemmOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLGemmOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLGemmOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -653,6 +763,7 @@ impl MLGemmOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLGruOptions {
     inner: emlite::Val,
 }
@@ -675,6 +786,16 @@ impl core::ops::Deref for MLGruOptions {
 }
 impl core::ops::DerefMut for MLGruOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLGruOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLGruOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -763,6 +884,7 @@ impl MLGruOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLGruCellOptions {
     inner: emlite::Val,
 }
@@ -785,6 +907,16 @@ impl core::ops::Deref for MLGruCellOptions {
 }
 impl core::ops::DerefMut for MLGruCellOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLGruCellOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLGruCellOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -844,6 +976,7 @@ impl MLGruCellOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLHardSigmoidOptions {
     inner: emlite::Val,
 }
@@ -866,6 +999,16 @@ impl core::ops::Deref for MLHardSigmoidOptions {
 }
 impl core::ops::DerefMut for MLHardSigmoidOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLHardSigmoidOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLHardSigmoidOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -896,6 +1039,7 @@ impl MLHardSigmoidOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLInstanceNormalizationOptions {
     inner: emlite::Val,
 }
@@ -918,6 +1062,16 @@ impl core::ops::Deref for MLInstanceNormalizationOptions {
 }
 impl core::ops::DerefMut for MLInstanceNormalizationOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLInstanceNormalizationOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLInstanceNormalizationOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -966,6 +1120,7 @@ impl MLInstanceNormalizationOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLLayerNormalizationOptions {
     inner: emlite::Val,
 }
@@ -988,6 +1143,16 @@ impl core::ops::Deref for MLLayerNormalizationOptions {
 }
 impl core::ops::DerefMut for MLLayerNormalizationOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLLayerNormalizationOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLLayerNormalizationOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -1036,6 +1201,7 @@ impl MLLayerNormalizationOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLLeakyReluOptions {
     inner: emlite::Val,
 }
@@ -1061,6 +1227,16 @@ impl core::ops::DerefMut for MLLeakyReluOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MLLeakyReluOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLLeakyReluOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MLLeakyReluOptions> for emlite::Val {
     fn from(s: MLLeakyReluOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -1079,6 +1255,7 @@ impl MLLeakyReluOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLLinearOptions {
     inner: emlite::Val,
 }
@@ -1101,6 +1278,16 @@ impl core::ops::Deref for MLLinearOptions {
 }
 impl core::ops::DerefMut for MLLinearOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLLinearOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLLinearOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -1131,6 +1318,7 @@ impl MLLinearOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLLstmOptions {
     inner: emlite::Val,
 }
@@ -1153,6 +1341,16 @@ impl core::ops::Deref for MLLstmOptions {
 }
 impl core::ops::DerefMut for MLLstmOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLLstmOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLLstmOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -1250,6 +1448,7 @@ impl MLLstmOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLLstmCellOptions {
     inner: emlite::Val,
 }
@@ -1272,6 +1471,16 @@ impl core::ops::Deref for MLLstmCellOptions {
 }
 impl core::ops::DerefMut for MLLstmCellOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLLstmCellOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLLstmCellOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -1331,6 +1540,7 @@ impl MLLstmCellOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLPadOptions {
     inner: emlite::Val,
 }
@@ -1353,6 +1563,16 @@ impl core::ops::Deref for MLPadOptions {
 }
 impl core::ops::DerefMut for MLPadOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLPadOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLPadOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -1383,6 +1603,7 @@ impl MLPadOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLPool2dOptions {
     inner: emlite::Val,
 }
@@ -1405,6 +1626,16 @@ impl core::ops::Deref for MLPool2dOptions {
 }
 impl core::ops::DerefMut for MLPool2dOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLPool2dOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLPool2dOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -1482,6 +1713,7 @@ impl MLPool2dOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLReduceOptions {
     inner: emlite::Val,
 }
@@ -1504,6 +1736,16 @@ impl core::ops::Deref for MLReduceOptions {
 }
 impl core::ops::DerefMut for MLReduceOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLReduceOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLReduceOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -1534,6 +1776,7 @@ impl MLReduceOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLResample2dOptions {
     inner: emlite::Val,
 }
@@ -1556,6 +1799,16 @@ impl core::ops::Deref for MLResample2dOptions {
 }
 impl core::ops::DerefMut for MLResample2dOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLResample2dOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLResample2dOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -1604,6 +1857,7 @@ impl MLResample2dOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLReverseOptions {
     inner: emlite::Val,
 }
@@ -1629,6 +1883,16 @@ impl core::ops::DerefMut for MLReverseOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MLReverseOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLReverseOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MLReverseOptions> for emlite::Val {
     fn from(s: MLReverseOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -1647,6 +1911,7 @@ impl MLReverseOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLScatterOptions {
     inner: emlite::Val,
 }
@@ -1672,6 +1937,16 @@ impl core::ops::DerefMut for MLScatterOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MLScatterOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLScatterOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MLScatterOptions> for emlite::Val {
     fn from(s: MLScatterOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -1690,6 +1965,7 @@ impl MLScatterOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLSliceOptions {
     inner: emlite::Val,
 }
@@ -1715,6 +1991,16 @@ impl core::ops::DerefMut for MLSliceOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MLSliceOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLSliceOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MLSliceOptions> for emlite::Val {
     fn from(s: MLSliceOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -1733,6 +2019,7 @@ impl MLSliceOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLSplitOptions {
     inner: emlite::Val,
 }
@@ -1758,6 +2045,16 @@ impl core::ops::DerefMut for MLSplitOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MLSplitOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLSplitOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MLSplitOptions> for emlite::Val {
     fn from(s: MLSplitOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -1776,6 +2073,7 @@ impl MLSplitOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLTransposeOptions {
     inner: emlite::Val,
 }
@@ -1801,6 +2099,16 @@ impl core::ops::DerefMut for MLTransposeOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MLTransposeOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLTransposeOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MLTransposeOptions> for emlite::Val {
     fn from(s: MLTransposeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -1819,6 +2127,7 @@ impl MLTransposeOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLTriangularOptions {
     inner: emlite::Val,
 }
@@ -1841,6 +2150,16 @@ impl core::ops::Deref for MLTriangularOptions {
 }
 impl core::ops::DerefMut for MLTriangularOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLTriangularOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLTriangularOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -1871,6 +2190,7 @@ impl MLTriangularOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLGraphBuilder {
     inner: emlite::Val,
 }
@@ -1898,6 +2218,16 @@ impl core::ops::DerefMut for MLGraphBuilder {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MLGraphBuilder {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLGraphBuilder {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MLGraphBuilder> for emlite::Val {
     fn from(s: MLGraphBuilder) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -1905,6 +2235,7 @@ impl From<MLGraphBuilder> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(MLGraphBuilder);
 
 impl MLGraphBuilder {
     pub fn new(context: MLContext) -> MLGraphBuilder {

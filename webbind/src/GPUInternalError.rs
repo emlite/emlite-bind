@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUInternalError {
     inner: GPUError,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for GPUInternalError {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUInternalError {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUInternalError {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUInternalError> for emlite::Val {
     fn from(s: GPUInternalError) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<GPUInternalError> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(GPUInternalError);
 
 impl GPUInternalError {
     pub fn new(message: jsbind::DOMString) -> GPUInternalError {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct BroadcastChannel {
     inner: EventTarget,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for BroadcastChannel {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for BroadcastChannel {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for BroadcastChannel {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<BroadcastChannel> for emlite::Val {
     fn from(s: BroadcastChannel) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<BroadcastChannel> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(BroadcastChannel);
 
 impl BroadcastChannel {
     pub fn new(name: jsbind::DOMString) -> BroadcastChannel {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SVGFEImageElement {
     inner: SVGElement,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for SVGFEImageElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SVGFEImageElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SVGFEImageElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SVGFEImageElement> for emlite::Val {
     fn from(s: SVGFEImageElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<SVGFEImageElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SVGFEImageElement);
 
 impl SVGFEImageElement {
     pub fn preserve_aspect_ratio(&self) -> SVGAnimatedPreserveAspectRatio {

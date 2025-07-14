@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCEncodedAudioFrameMetadata {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for RTCEncodedAudioFrameMetadata {
 }
 impl core::ops::DerefMut for RTCEncodedAudioFrameMetadata {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RTCEncodedAudioFrameMetadata {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCEncodedAudioFrameMetadata {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl RTCEncodedAudioFrameMetadata {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCEncodedAudioFrame {
     inner: emlite::Val,
 }
@@ -80,6 +92,16 @@ impl core::ops::DerefMut for RTCEncodedAudioFrame {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for RTCEncodedAudioFrame {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCEncodedAudioFrame {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<RTCEncodedAudioFrame> for emlite::Val {
     fn from(s: RTCEncodedAudioFrame) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -87,6 +109,7 @@ impl From<RTCEncodedAudioFrame> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(RTCEncodedAudioFrame);
 
 impl RTCEncodedAudioFrame {
     pub fn new0(original_frame: RTCEncodedAudioFrame) -> RTCEncodedAudioFrame {

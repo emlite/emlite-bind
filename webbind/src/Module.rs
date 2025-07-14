@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ModuleExportDescriptor {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for ModuleExportDescriptor {
 }
 impl core::ops::DerefMut for ModuleExportDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ModuleExportDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ModuleExportDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl ModuleExportDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ModuleImportDescriptor {
     inner: emlite::Val,
 }
@@ -75,6 +87,16 @@ impl core::ops::Deref for ModuleImportDescriptor {
 }
 impl core::ops::DerefMut for ModuleImportDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ModuleImportDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ModuleImportDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -114,6 +136,7 @@ impl ModuleImportDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Module {
     inner: emlite::Val,
 }
@@ -141,6 +164,16 @@ impl core::ops::DerefMut for Module {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Module {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Module {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Module> for emlite::Val {
     fn from(s: Module) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -148,6 +181,7 @@ impl From<Module> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Module);
 
 impl Module {
     pub fn new(bytes: jsbind::Any) -> Module {

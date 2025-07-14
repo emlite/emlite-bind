@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SVGAnimatedTransformList {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for SVGAnimatedTransformList {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SVGAnimatedTransformList {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SVGAnimatedTransformList {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SVGAnimatedTransformList> for emlite::Val {
     fn from(s: SVGAnimatedTransformList) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<SVGAnimatedTransformList> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SVGAnimatedTransformList);
 
 impl SVGAnimatedTransformList {
     pub fn base_val(&self) -> SVGTransformList {

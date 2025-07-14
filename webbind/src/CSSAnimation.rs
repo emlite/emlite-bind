@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSAnimation {
     inner: Animation,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for CSSAnimation {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CSSAnimation {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CSSAnimation {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CSSAnimation> for emlite::Val {
     fn from(s: CSSAnimation) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<CSSAnimation> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CSSAnimation);
 
 impl CSSAnimation {
     pub fn animation_name(&self) -> jsbind::CSSOMString {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SVGRadialGradientElement {
     inner: SVGGradientElement,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for SVGRadialGradientElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SVGRadialGradientElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SVGRadialGradientElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SVGRadialGradientElement> for emlite::Val {
     fn from(s: SVGRadialGradientElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<SVGRadialGradientElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SVGRadialGradientElement);
 
 impl SVGRadialGradientElement {
     pub fn cx(&self) -> SVGAnimatedLength {

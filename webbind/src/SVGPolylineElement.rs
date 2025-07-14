@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SVGPolylineElement {
     inner: SVGGeometryElement,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for SVGPolylineElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SVGPolylineElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SVGPolylineElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SVGPolylineElement> for emlite::Val {
     fn from(s: SVGPolylineElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<SVGPolylineElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SVGPolylineElement);
 
 impl SVGPolylineElement {
     pub fn points(&self) -> SVGPointList {

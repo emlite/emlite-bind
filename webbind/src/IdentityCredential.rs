@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct IdentityCredentialDisconnectOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for IdentityCredentialDisconnectOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for IdentityCredentialDisconnectOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for IdentityCredentialDisconnectOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<IdentityCredentialDisconnectOptions> for emlite::Val {
     fn from(s: IdentityCredentialDisconnectOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl IdentityCredentialDisconnectOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct IdentityCredential {
     inner: Credential,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for IdentityCredential {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for IdentityCredential {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for IdentityCredential {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<IdentityCredential> for emlite::Val {
     fn from(s: IdentityCredential) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<IdentityCredential> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(IdentityCredential);
 
 impl IdentityCredential {
     pub fn disconnect(options: IdentityCredentialDisconnectOptions) -> jsbind::Promise {

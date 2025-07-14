@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WebSocket {
     inner: EventTarget,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for WebSocket {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WebSocket {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WebSocket {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WebSocket> for emlite::Val {
     fn from(s: WebSocket) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<WebSocket> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(WebSocket);
 
 impl WebSocket {
     pub fn new0(url: jsbind::USVString) -> WebSocket {

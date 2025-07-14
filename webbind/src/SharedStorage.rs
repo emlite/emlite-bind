@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SharedStorageSetMethodOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for SharedStorageSetMethodOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SharedStorageSetMethodOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SharedStorageSetMethodOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SharedStorageSetMethodOptions> for emlite::Val {
     fn from(s: SharedStorageSetMethodOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl SharedStorageSetMethodOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SharedStorageModifierMethodOptions {
     inner: emlite::Val,
 }
@@ -69,6 +81,16 @@ impl core::ops::DerefMut for SharedStorageModifierMethodOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SharedStorageModifierMethodOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SharedStorageModifierMethodOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SharedStorageModifierMethodOptions> for emlite::Val {
     fn from(s: SharedStorageModifierMethodOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -87,6 +109,7 @@ impl SharedStorageModifierMethodOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SharedStorageWorkletOptions {
     inner: emlite::Val,
 }
@@ -112,6 +135,16 @@ impl core::ops::DerefMut for SharedStorageWorkletOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SharedStorageWorkletOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SharedStorageWorkletOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SharedStorageWorkletOptions> for emlite::Val {
     fn from(s: SharedStorageWorkletOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -130,6 +163,7 @@ impl SharedStorageWorkletOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SharedStorage {
     inner: emlite::Val,
 }
@@ -157,6 +191,16 @@ impl core::ops::DerefMut for SharedStorage {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SharedStorage {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SharedStorage {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SharedStorage> for emlite::Val {
     fn from(s: SharedStorage) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -164,6 +208,7 @@ impl From<SharedStorage> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SharedStorage);
 
 impl SharedStorage {
     pub fn get(&self, key: jsbind::DOMString) -> jsbind::Promise {

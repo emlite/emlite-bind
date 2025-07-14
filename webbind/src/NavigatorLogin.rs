@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NavigatorLogin {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for NavigatorLogin {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for NavigatorLogin {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NavigatorLogin {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<NavigatorLogin> for emlite::Val {
     fn from(s: NavigatorLogin) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<NavigatorLogin> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(NavigatorLogin);
 
 impl NavigatorLogin {
     pub fn set_status(&self, status: LoginStatus) -> jsbind::Promise {

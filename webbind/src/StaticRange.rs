@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct StaticRange {
     inner: AbstractRange,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for StaticRange {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for StaticRange {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for StaticRange {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<StaticRange> for emlite::Val {
     fn from(s: StaticRange) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<StaticRange> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(StaticRange);
 
 impl StaticRange {
     pub fn new(init: jsbind::Any) -> StaticRange {

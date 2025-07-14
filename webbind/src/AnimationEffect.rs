@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct OptionalEffectTiming {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for OptionalEffectTiming {
 }
 impl core::ops::DerefMut for OptionalEffectTiming {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for OptionalEffectTiming {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for OptionalEffectTiming {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -107,6 +118,7 @@ impl OptionalEffectTiming {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AnimationEffect {
     inner: emlite::Val,
 }
@@ -134,6 +146,16 @@ impl core::ops::DerefMut for AnimationEffect {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for AnimationEffect {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AnimationEffect {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<AnimationEffect> for emlite::Val {
     fn from(s: AnimationEffect) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -141,6 +163,7 @@ impl From<AnimationEffect> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(AnimationEffect);
 
 impl AnimationEffect {
     pub fn get_timing(&self) -> EffectTiming {

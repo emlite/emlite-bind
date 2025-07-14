@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ReadableStreamBYOBReaderReadOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for ReadableStreamBYOBReaderReadOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ReadableStreamBYOBReaderReadOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ReadableStreamBYOBReaderReadOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ReadableStreamBYOBReaderReadOptions> for emlite::Val {
     fn from(s: ReadableStreamBYOBReaderReadOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl ReadableStreamBYOBReaderReadOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ReadableStreamBYOBReader {
     inner: emlite::Val,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for ReadableStreamBYOBReader {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ReadableStreamBYOBReader {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ReadableStreamBYOBReader {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ReadableStreamBYOBReader> for emlite::Val {
     fn from(s: ReadableStreamBYOBReader) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<ReadableStreamBYOBReader> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ReadableStreamBYOBReader);
 
 impl ReadableStreamBYOBReader {
     pub fn new(stream: ReadableStream) -> ReadableStreamBYOBReader {

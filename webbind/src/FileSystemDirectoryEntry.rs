@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FileSystemFlags {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for FileSystemFlags {
 }
 impl core::ops::DerefMut for FileSystemFlags {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for FileSystemFlags {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FileSystemFlags {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl FileSystemFlags {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FileSystemDirectoryEntry {
     inner: FileSystemEntry,
 }
@@ -80,6 +92,16 @@ impl core::ops::DerefMut for FileSystemDirectoryEntry {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FileSystemDirectoryEntry {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FileSystemDirectoryEntry {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FileSystemDirectoryEntry> for emlite::Val {
     fn from(s: FileSystemDirectoryEntry) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -87,6 +109,7 @@ impl From<FileSystemDirectoryEntry> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(FileSystemDirectoryEntry);
 
 impl FileSystemDirectoryEntry {
     pub fn create_reader(&self) -> FileSystemDirectoryReader {

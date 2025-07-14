@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PAHistogramContribution {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for PAHistogramContribution {
 }
 impl core::ops::DerefMut for PAHistogramContribution {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PAHistogramContribution {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PAHistogramContribution {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl PAHistogramContribution {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PADebugModeOptions {
     inner: emlite::Val,
 }
@@ -87,6 +99,16 @@ impl core::ops::DerefMut for PADebugModeOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PADebugModeOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PADebugModeOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PADebugModeOptions> for emlite::Val {
     fn from(s: PADebugModeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -105,6 +127,7 @@ impl PADebugModeOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PrivateAggregation {
     inner: emlite::Val,
 }
@@ -132,6 +155,16 @@ impl core::ops::DerefMut for PrivateAggregation {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PrivateAggregation {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PrivateAggregation {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PrivateAggregation> for emlite::Val {
     fn from(s: PrivateAggregation) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -139,6 +172,7 @@ impl From<PrivateAggregation> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(PrivateAggregation);
 
 impl PrivateAggregation {
     pub fn contribute_to_histogram(

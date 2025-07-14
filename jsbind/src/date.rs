@@ -1,5 +1,5 @@
 use crate::Any;
-use crate::utils::bind;
+use crate::utils::*;
 use alloc::string::String;
 use alloc::vec::Vec;
 
@@ -7,11 +7,13 @@ use alloc::vec::Vec;
 ///
 /// Construction is lazy: no extra fields, just a shared `emlite::Val`.
 #[derive(Clone, Debug, PartialOrd)]
+#[repr(transparent)]
 pub struct Date {
     inner: emlite::Val,
 }
 
 bind!(Date);
+impl_dyn_cast!(Date);
 
 impl Date {
     /// `new Date()` → current time.

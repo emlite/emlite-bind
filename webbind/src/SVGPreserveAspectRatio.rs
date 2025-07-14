@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SVGPreserveAspectRatio {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for SVGPreserveAspectRatio {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SVGPreserveAspectRatio {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SVGPreserveAspectRatio {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SVGPreserveAspectRatio> for emlite::Val {
     fn from(s: SVGPreserveAspectRatio) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<SVGPreserveAspectRatio> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SVGPreserveAspectRatio);
 
 impl SVGPreserveAspectRatio {
     pub fn align(&self) -> u16 {

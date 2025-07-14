@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NavigationUpdateCurrentEntryOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for NavigationUpdateCurrentEntryOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for NavigationUpdateCurrentEntryOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NavigationUpdateCurrentEntryOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<NavigationUpdateCurrentEntryOptions> for emlite::Val {
     fn from(s: NavigationUpdateCurrentEntryOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl NavigationUpdateCurrentEntryOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NavigationResult {
     inner: emlite::Val,
 }
@@ -66,6 +78,16 @@ impl core::ops::Deref for NavigationResult {
 }
 impl core::ops::DerefMut for NavigationResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for NavigationResult {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NavigationResult {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -96,6 +118,7 @@ impl NavigationResult {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NavigationNavigateOptions {
     inner: emlite::Val,
 }
@@ -118,6 +141,16 @@ impl core::ops::Deref for NavigationNavigateOptions {
 }
 impl core::ops::DerefMut for NavigationNavigateOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for NavigationNavigateOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NavigationNavigateOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -148,6 +181,7 @@ impl NavigationNavigateOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NavigationReloadOptions {
     inner: emlite::Val,
 }
@@ -173,6 +207,16 @@ impl core::ops::DerefMut for NavigationReloadOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for NavigationReloadOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NavigationReloadOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<NavigationReloadOptions> for emlite::Val {
     fn from(s: NavigationReloadOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -191,6 +235,7 @@ impl NavigationReloadOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NavigationOptions {
     inner: emlite::Val,
 }
@@ -216,6 +261,16 @@ impl core::ops::DerefMut for NavigationOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for NavigationOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NavigationOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<NavigationOptions> for emlite::Val {
     fn from(s: NavigationOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -234,6 +289,7 @@ impl NavigationOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Navigation {
     inner: EventTarget,
 }
@@ -261,6 +317,16 @@ impl core::ops::DerefMut for Navigation {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Navigation {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Navigation {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Navigation> for emlite::Val {
     fn from(s: Navigation) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -268,6 +334,7 @@ impl From<Navigation> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Navigation);
 
 impl Navigation {
     pub fn entries(&self) -> jsbind::Sequence<NavigationHistoryEntry> {

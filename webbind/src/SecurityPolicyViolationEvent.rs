@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SecurityPolicyViolationEvent {
     inner: Event,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for SecurityPolicyViolationEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SecurityPolicyViolationEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SecurityPolicyViolationEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SecurityPolicyViolationEvent> for emlite::Val {
     fn from(s: SecurityPolicyViolationEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<SecurityPolicyViolationEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SecurityPolicyViolationEvent);
 
 impl SecurityPolicyViolationEvent {
     pub fn new0(type_: jsbind::DOMString) -> SecurityPolicyViolationEvent {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct NotificationOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for NotificationOptions {
 }
 impl core::ops::DerefMut for NotificationOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for NotificationOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for NotificationOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -163,6 +174,7 @@ impl NotificationOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GetNotificationOptions {
     inner: emlite::Val,
 }
@@ -188,6 +200,16 @@ impl core::ops::DerefMut for GetNotificationOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GetNotificationOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GetNotificationOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GetNotificationOptions> for emlite::Val {
     fn from(s: GetNotificationOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -206,6 +228,7 @@ impl GetNotificationOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ServiceWorkerRegistration {
     inner: EventTarget,
 }
@@ -233,6 +256,16 @@ impl core::ops::DerefMut for ServiceWorkerRegistration {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ServiceWorkerRegistration {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ServiceWorkerRegistration {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ServiceWorkerRegistration> for emlite::Val {
     fn from(s: ServiceWorkerRegistration) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -240,6 +273,7 @@ impl From<ServiceWorkerRegistration> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ServiceWorkerRegistration);
 
 impl ServiceWorkerRegistration {
     pub fn installing(&self) -> ServiceWorker {

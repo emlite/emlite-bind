@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLTensorDescriptor {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for MLTensorDescriptor {
 }
 impl core::ops::DerefMut for MLTensorDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLTensorDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLTensorDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl MLTensorDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLOperandDescriptor {
     inner: emlite::Val,
 }
@@ -75,6 +87,16 @@ impl core::ops::Deref for MLOperandDescriptor {
 }
 impl core::ops::DerefMut for MLOperandDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MLOperandDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLOperandDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -105,6 +127,7 @@ impl MLOperandDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLOpSupportLimits {
     inner: emlite::Val,
 }
@@ -130,6 +153,16 @@ impl core::ops::DerefMut for MLOpSupportLimits {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MLOpSupportLimits {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLOpSupportLimits {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MLOpSupportLimits> for emlite::Val {
     fn from(s: MLOpSupportLimits) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -148,6 +181,7 @@ impl MLOpSupportLimits {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLContextLostInfo {
     inner: emlite::Val,
 }
@@ -173,6 +207,16 @@ impl core::ops::DerefMut for MLContextLostInfo {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MLContextLostInfo {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLContextLostInfo {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MLContextLostInfo> for emlite::Val {
     fn from(s: MLContextLostInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -191,6 +235,7 @@ impl MLContextLostInfo {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MLContext {
     inner: emlite::Val,
 }
@@ -218,6 +263,16 @@ impl core::ops::DerefMut for MLContext {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MLContext {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MLContext {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MLContext> for emlite::Val {
     fn from(s: MLContext) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -225,6 +280,7 @@ impl From<MLContext> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(MLContext);
 
 impl MLContext {
     pub fn dispatch(

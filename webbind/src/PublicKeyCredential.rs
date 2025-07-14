@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AuthenticationExtensionsClientOutputs {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for AuthenticationExtensionsClientOutputs {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for AuthenticationExtensionsClientOutputs {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AuthenticationExtensionsClientOutputs {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<AuthenticationExtensionsClientOutputs> for emlite::Val {
     fn from(s: AuthenticationExtensionsClientOutputs) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl AuthenticationExtensionsClientOutputs {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PublicKeyCredentialCreationOptions {
     inner: emlite::Val,
 }
@@ -66,6 +78,16 @@ impl core::ops::Deref for PublicKeyCredentialCreationOptions {
 }
 impl core::ops::DerefMut for PublicKeyCredentialCreationOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PublicKeyCredentialCreationOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PublicKeyCredentialCreationOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -187,6 +209,7 @@ impl PublicKeyCredentialCreationOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PublicKeyCredentialCreationOptionsJSON {
     inner: emlite::Val,
 }
@@ -209,6 +232,16 @@ impl core::ops::Deref for PublicKeyCredentialCreationOptionsJSON {
 }
 impl core::ops::DerefMut for PublicKeyCredentialCreationOptionsJSON {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PublicKeyCredentialCreationOptionsJSON {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PublicKeyCredentialCreationOptionsJSON {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -330,6 +363,7 @@ impl PublicKeyCredentialCreationOptionsJSON {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PublicKeyCredentialRequestOptions {
     inner: emlite::Val,
 }
@@ -352,6 +386,16 @@ impl core::ops::Deref for PublicKeyCredentialRequestOptions {
 }
 impl core::ops::DerefMut for PublicKeyCredentialRequestOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PublicKeyCredentialRequestOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PublicKeyCredentialRequestOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -433,6 +477,7 @@ impl PublicKeyCredentialRequestOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PublicKeyCredentialRequestOptionsJSON {
     inner: emlite::Val,
 }
@@ -455,6 +500,16 @@ impl core::ops::Deref for PublicKeyCredentialRequestOptionsJSON {
 }
 impl core::ops::DerefMut for PublicKeyCredentialRequestOptionsJSON {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PublicKeyCredentialRequestOptionsJSON {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PublicKeyCredentialRequestOptionsJSON {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -536,6 +591,7 @@ impl PublicKeyCredentialRequestOptionsJSON {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct UnknownCredentialOptions {
     inner: emlite::Val,
 }
@@ -558,6 +614,16 @@ impl core::ops::Deref for UnknownCredentialOptions {
 }
 impl core::ops::DerefMut for UnknownCredentialOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for UnknownCredentialOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for UnknownCredentialOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -588,6 +654,7 @@ impl UnknownCredentialOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AllAcceptedCredentialsOptions {
     inner: emlite::Val,
 }
@@ -610,6 +677,16 @@ impl core::ops::Deref for AllAcceptedCredentialsOptions {
 }
 impl core::ops::DerefMut for AllAcceptedCredentialsOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for AllAcceptedCredentialsOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AllAcceptedCredentialsOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -651,6 +728,7 @@ impl AllAcceptedCredentialsOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CurrentUserDetailsOptions {
     inner: emlite::Val,
 }
@@ -673,6 +751,16 @@ impl core::ops::Deref for CurrentUserDetailsOptions {
 }
 impl core::ops::DerefMut for CurrentUserDetailsOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for CurrentUserDetailsOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CurrentUserDetailsOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -721,6 +809,7 @@ impl CurrentUserDetailsOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PublicKeyCredential {
     inner: Credential,
 }
@@ -748,6 +837,16 @@ impl core::ops::DerefMut for PublicKeyCredential {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PublicKeyCredential {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PublicKeyCredential {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PublicKeyCredential> for emlite::Val {
     fn from(s: PublicKeyCredential) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -755,6 +854,7 @@ impl From<PublicKeyCredential> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(PublicKeyCredential);
 
 impl PublicKeyCredential {
     pub fn raw_id(&self) -> jsbind::ArrayBuffer {

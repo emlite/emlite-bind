@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRProjectionLayer {
     inner: XRCompositionLayer,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for XRProjectionLayer {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for XRProjectionLayer {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRProjectionLayer {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<XRProjectionLayer> for emlite::Val {
     fn from(s: XRProjectionLayer) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<XRProjectionLayer> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(XRProjectionLayer);
 
 impl XRProjectionLayer {
     pub fn texture_width(&self) -> u32 {

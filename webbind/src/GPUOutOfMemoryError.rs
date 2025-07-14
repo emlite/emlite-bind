@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUOutOfMemoryError {
     inner: GPUError,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for GPUOutOfMemoryError {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUOutOfMemoryError {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUOutOfMemoryError {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUOutOfMemoryError> for emlite::Val {
     fn from(s: GPUOutOfMemoryError) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<GPUOutOfMemoryError> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(GPUOutOfMemoryError);
 
 impl GPUOutOfMemoryError {
     pub fn new(message: jsbind::DOMString) -> GPUOutOfMemoryError {

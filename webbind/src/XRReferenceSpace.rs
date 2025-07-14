@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRReferenceSpace {
     inner: XRSpace,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for XRReferenceSpace {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for XRReferenceSpace {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRReferenceSpace {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<XRReferenceSpace> for emlite::Val {
     fn from(s: XRReferenceSpace) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<XRReferenceSpace> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(XRReferenceSpace);
 
 impl XRReferenceSpace {
     pub fn get_offset_reference_space(&self, origin_offset: XRRigidTransform) -> XRReferenceSpace {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUSupportedLimits {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for GPUSupportedLimits {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUSupportedLimits {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUSupportedLimits {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUSupportedLimits> for emlite::Val {
     fn from(s: GPUSupportedLimits) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<GPUSupportedLimits> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(GPUSupportedLimits);
 
 impl GPUSupportedLimits {
     pub fn max_texture_dimension1_d(&self) -> u32 {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AudioProcessingEvent {
     inner: Event,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for AudioProcessingEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for AudioProcessingEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AudioProcessingEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<AudioProcessingEvent> for emlite::Val {
     fn from(s: AudioProcessingEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<AudioProcessingEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(AudioProcessingEvent);
 
 impl AudioProcessingEvent {
     pub fn new(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> AudioProcessingEvent {

@@ -1,9 +1,10 @@
-use crate::utils::bind;
+use crate::utils::*;
 
 /// The struct merely carries the underlying `emlite::Val` so it can be
 /// passed through JS APIs; there is only one meaningful instance,
 /// exposed as [`Undefined::VALUE`].
 #[derive(Clone, Debug)]
+#[repr(transparent)]
 pub struct Undefined {
     inner: emlite::Val,
 }
@@ -32,3 +33,18 @@ impl Undefined {
 }
 
 bind!(Undefined);
+
+impl crate::prelude::DynCast for Undefined {
+    #[inline]
+    fn instanceof(_val: &emlite::Val) -> bool {
+        false
+    }
+    #[inline]
+    fn unchecked_from_val(v: emlite::Val) -> Self {
+        v.as_::<Self>() // zero-cost new-type cast
+    }
+    #[inline]
+    fn unchecked_from_val_ref(v: &emlite::Val) -> &Self {
+        unsafe { &*(v as *const emlite::Val as *const Self) }
+    }
+}

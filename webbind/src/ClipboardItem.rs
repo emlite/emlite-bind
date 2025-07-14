@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ClipboardItem {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for ClipboardItem {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ClipboardItem {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ClipboardItem {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ClipboardItem> for emlite::Val {
     fn from(s: ClipboardItem) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<ClipboardItem> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ClipboardItem);
 
 impl ClipboardItem {
     pub fn new0(items: jsbind::Record<jsbind::DOMString, jsbind::Any>) -> ClipboardItem {

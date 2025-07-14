@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct LayoutConstraints {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for LayoutConstraints {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for LayoutConstraints {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for LayoutConstraints {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<LayoutConstraints> for emlite::Val {
     fn from(s: LayoutConstraints) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<LayoutConstraints> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(LayoutConstraints);
 
 impl LayoutConstraints {
     pub fn available_inline_size(&self) -> f64 {

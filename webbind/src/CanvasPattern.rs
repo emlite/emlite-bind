@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CanvasPattern {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for CanvasPattern {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CanvasPattern {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CanvasPattern {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CanvasPattern> for emlite::Val {
     fn from(s: CanvasPattern) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<CanvasPattern> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CanvasPattern);
 
 impl CanvasPattern {
     pub fn set_transform0(&self) -> jsbind::Undefined {

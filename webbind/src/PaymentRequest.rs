@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PaymentDetailsUpdate {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for PaymentDetailsUpdate {
 }
 impl core::ops::DerefMut for PaymentDetailsUpdate {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PaymentDetailsUpdate {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PaymentDetailsUpdate {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -82,6 +93,7 @@ impl PaymentDetailsUpdate {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PaymentRequest {
     inner: EventTarget,
 }
@@ -109,6 +121,16 @@ impl core::ops::DerefMut for PaymentRequest {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PaymentRequest {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PaymentRequest {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PaymentRequest> for emlite::Val {
     fn from(s: PaymentRequest) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -116,6 +138,7 @@ impl From<PaymentRequest> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(PaymentRequest);
 
 impl PaymentRequest {
     pub fn new0(

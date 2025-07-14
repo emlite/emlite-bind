@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PerformanceLongTaskTiming {
     inner: PerformanceEntry,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for PerformanceLongTaskTiming {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PerformanceLongTaskTiming {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PerformanceLongTaskTiming {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PerformanceLongTaskTiming> for emlite::Val {
     fn from(s: PerformanceLongTaskTiming) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<PerformanceLongTaskTiming> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(PerformanceLongTaskTiming);
 
 impl PerformanceLongTaskTiming {
     pub fn start_time(&self) -> jsbind::Any {

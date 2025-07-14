@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct LayoutFragment {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for LayoutFragment {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for LayoutFragment {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for LayoutFragment {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<LayoutFragment> for emlite::Val {
     fn from(s: LayoutFragment) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<LayoutFragment> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(LayoutFragment);
 
 impl LayoutFragment {
     pub fn inline_size(&self) -> f64 {

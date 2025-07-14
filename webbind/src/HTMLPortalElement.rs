@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PortalActivateOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for PortalActivateOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PortalActivateOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PortalActivateOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PortalActivateOptions> for emlite::Val {
     fn from(s: PortalActivateOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl PortalActivateOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct HTMLPortalElement {
     inner: HTMLElement,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for HTMLPortalElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for HTMLPortalElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for HTMLPortalElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<HTMLPortalElement> for emlite::Val {
     fn from(s: HTMLPortalElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<HTMLPortalElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(HTMLPortalElement);
 
 impl HTMLPortalElement {
     pub fn new() -> HTMLPortalElement {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FocusEvent {
     inner: UIEvent,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for FocusEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FocusEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FocusEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FocusEvent> for emlite::Val {
     fn from(s: FocusEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<FocusEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(FocusEvent);
 
 impl FocusEvent {
     pub fn new0(type_: jsbind::DOMString) -> FocusEvent {

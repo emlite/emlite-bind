@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSMathMin {
     inner: CSSMathValue,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for CSSMathMin {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CSSMathMin {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CSSMathMin {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CSSMathMin> for emlite::Val {
     fn from(s: CSSMathMin) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<CSSMathMin> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CSSMathMin);
 
 impl CSSMathMin {
     pub fn new(args: jsbind::Any) -> CSSMathMin {

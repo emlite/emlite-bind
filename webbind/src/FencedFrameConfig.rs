@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FencedFrameConfig {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for FencedFrameConfig {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FencedFrameConfig {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FencedFrameConfig {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FencedFrameConfig> for emlite::Val {
     fn from(s: FencedFrameConfig) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<FencedFrameConfig> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(FencedFrameConfig);
 
 impl FencedFrameConfig {
     pub fn new(url: jsbind::USVString) -> FencedFrameConfig {

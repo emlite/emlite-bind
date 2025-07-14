@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct StructuredSerializeOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for StructuredSerializeOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for StructuredSerializeOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for StructuredSerializeOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<StructuredSerializeOptions> for emlite::Val {
     fn from(s: StructuredSerializeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -46,6 +57,7 @@ impl StructuredSerializeOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MessagePort {
     inner: EventTarget,
 }
@@ -73,6 +85,16 @@ impl core::ops::DerefMut for MessagePort {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MessagePort {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MessagePort {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MessagePort> for emlite::Val {
     fn from(s: MessagePort) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -80,6 +102,7 @@ impl From<MessagePort> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(MessagePort);
 
 impl MessagePort {
     pub fn post_message0(&self, message: jsbind::Any) -> jsbind::Undefined {

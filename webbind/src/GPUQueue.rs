@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUTexelCopyBufferLayout {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for GPUTexelCopyBufferLayout {
 }
 impl core::ops::DerefMut for GPUTexelCopyBufferLayout {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPUTexelCopyBufferLayout {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUTexelCopyBufferLayout {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl GPUTexelCopyBufferLayout {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUCopyExternalImageSourceInfo {
     inner: emlite::Val,
 }
@@ -84,6 +96,16 @@ impl core::ops::Deref for GPUCopyExternalImageSourceInfo {
 }
 impl core::ops::DerefMut for GPUCopyExternalImageSourceInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPUCopyExternalImageSourceInfo {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUCopyExternalImageSourceInfo {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -123,6 +145,7 @@ impl GPUCopyExternalImageSourceInfo {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUCopyExternalImageDestInfo {
     inner: emlite::Val,
 }
@@ -145,6 +168,16 @@ impl core::ops::Deref for GPUCopyExternalImageDestInfo {
 }
 impl core::ops::DerefMut for GPUCopyExternalImageDestInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPUCopyExternalImageDestInfo {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUCopyExternalImageDestInfo {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -175,6 +208,7 @@ impl GPUCopyExternalImageDestInfo {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUQueue {
     inner: emlite::Val,
 }
@@ -202,6 +236,16 @@ impl core::ops::DerefMut for GPUQueue {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUQueue {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUQueue {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUQueue> for emlite::Val {
     fn from(s: GPUQueue) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -209,6 +253,7 @@ impl From<GPUQueue> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(GPUQueue);
 
 impl GPUQueue {
     pub fn submit(&self, command_buffers: jsbind::Sequence<GPUCommandBuffer>) -> jsbind::Undefined {

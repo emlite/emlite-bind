@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CookieListItem {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for CookieListItem {
 }
 impl core::ops::DerefMut for CookieListItem {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for CookieListItem {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CookieListItem {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -107,6 +118,7 @@ impl CookieListItem {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CookieStoreGetOptions {
     inner: emlite::Val,
 }
@@ -129,6 +141,16 @@ impl core::ops::Deref for CookieStoreGetOptions {
 }
 impl core::ops::DerefMut for CookieStoreGetOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for CookieStoreGetOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CookieStoreGetOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -159,6 +181,7 @@ impl CookieStoreGetOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CookieInit {
     inner: emlite::Val,
 }
@@ -181,6 +204,16 @@ impl core::ops::Deref for CookieInit {
 }
 impl core::ops::DerefMut for CookieInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for CookieInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CookieInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -256,6 +289,7 @@ impl CookieInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CookieStoreDeleteOptions {
     inner: emlite::Val,
 }
@@ -278,6 +312,16 @@ impl core::ops::Deref for CookieStoreDeleteOptions {
 }
 impl core::ops::DerefMut for CookieStoreDeleteOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for CookieStoreDeleteOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CookieStoreDeleteOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -326,6 +370,7 @@ impl CookieStoreDeleteOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CookieStore {
     inner: EventTarget,
 }
@@ -353,6 +398,16 @@ impl core::ops::DerefMut for CookieStore {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CookieStore {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CookieStore {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CookieStore> for emlite::Val {
     fn from(s: CookieStore) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -360,6 +415,7 @@ impl From<CookieStore> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CookieStore);
 
 impl CookieStore {
     pub fn get0(&self) -> jsbind::Promise {

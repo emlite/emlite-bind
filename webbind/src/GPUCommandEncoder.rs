@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPURenderPassDescriptor {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for GPURenderPassDescriptor {
 }
 impl core::ops::DerefMut for GPURenderPassDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPURenderPassDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPURenderPassDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -84,6 +95,7 @@ impl GPURenderPassDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUComputePassDescriptor {
     inner: emlite::Val,
 }
@@ -109,6 +121,16 @@ impl core::ops::DerefMut for GPUComputePassDescriptor {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUComputePassDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUComputePassDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUComputePassDescriptor> for emlite::Val {
     fn from(s: GPUComputePassDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -127,6 +149,7 @@ impl GPUComputePassDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUTexelCopyBufferInfo {
     inner: emlite::Val,
 }
@@ -152,6 +175,16 @@ impl core::ops::DerefMut for GPUTexelCopyBufferInfo {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUTexelCopyBufferInfo {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUTexelCopyBufferInfo {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUTexelCopyBufferInfo> for emlite::Val {
     fn from(s: GPUTexelCopyBufferInfo) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -170,6 +203,7 @@ impl GPUTexelCopyBufferInfo {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUTexelCopyTextureInfo {
     inner: emlite::Val,
 }
@@ -192,6 +226,16 @@ impl core::ops::Deref for GPUTexelCopyTextureInfo {
 }
 impl core::ops::DerefMut for GPUTexelCopyTextureInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPUTexelCopyTextureInfo {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUTexelCopyTextureInfo {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -240,6 +284,7 @@ impl GPUTexelCopyTextureInfo {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUCommandBufferDescriptor {
     inner: emlite::Val,
 }
@@ -265,6 +310,16 @@ impl core::ops::DerefMut for GPUCommandBufferDescriptor {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUCommandBufferDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUCommandBufferDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUCommandBufferDescriptor> for emlite::Val {
     fn from(s: GPUCommandBufferDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -274,6 +329,7 @@ impl From<GPUCommandBufferDescriptor> for emlite::Val {
 }
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUCommandEncoder {
     inner: emlite::Val,
 }
@@ -301,6 +357,16 @@ impl core::ops::DerefMut for GPUCommandEncoder {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUCommandEncoder {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUCommandEncoder {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUCommandEncoder> for emlite::Val {
     fn from(s: GPUCommandEncoder) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -308,6 +374,7 @@ impl From<GPUCommandEncoder> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(GPUCommandEncoder);
 
 impl GPUCommandEncoder {
     pub fn begin_render_pass(&self, descriptor: GPURenderPassDescriptor) -> GPURenderPassEncoder {

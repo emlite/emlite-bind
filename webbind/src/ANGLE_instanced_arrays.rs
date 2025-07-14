@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ANGLE_instanced_arrays {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for ANGLE_instanced_arrays {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ANGLE_instanced_arrays {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ANGLE_instanced_arrays {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ANGLE_instanced_arrays> for emlite::Val {
     fn from(s: ANGLE_instanced_arrays) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<ANGLE_instanced_arrays> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ANGLE_instanced_arrays);
 
 impl ANGLE_instanced_arrays {
     pub fn draw_arrays_instanced_angle(

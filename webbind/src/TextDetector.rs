@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DetectedText {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for DetectedText {
 }
 impl core::ops::DerefMut for DetectedText {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for DetectedText {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DetectedText {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -64,6 +75,7 @@ impl DetectedText {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct TextDetector {
     inner: emlite::Val,
 }
@@ -91,6 +103,16 @@ impl core::ops::DerefMut for TextDetector {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for TextDetector {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for TextDetector {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<TextDetector> for emlite::Val {
     fn from(s: TextDetector) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -98,6 +120,7 @@ impl From<TextDetector> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(TextDetector);
 
 impl TextDetector {
     pub fn new() -> TextDetector {

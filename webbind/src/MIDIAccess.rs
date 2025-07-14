@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MIDIAccess {
     inner: EventTarget,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for MIDIAccess {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MIDIAccess {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MIDIAccess {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MIDIAccess> for emlite::Val {
     fn from(s: MIDIAccess) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<MIDIAccess> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(MIDIAccess);
 
 impl MIDIAccess {
     pub fn inputs(&self) -> MIDIInputMap {

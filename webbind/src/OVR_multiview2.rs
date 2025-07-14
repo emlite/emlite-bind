@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct OVR_multiview2 {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for OVR_multiview2 {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for OVR_multiview2 {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for OVR_multiview2 {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<OVR_multiview2> for emlite::Val {
     fn from(s: OVR_multiview2) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<OVR_multiview2> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(OVR_multiview2);
 
 impl OVR_multiview2 {
     pub fn framebuffer_texture_multiview_ovr(

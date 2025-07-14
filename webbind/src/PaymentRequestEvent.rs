@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PaymentMethodData {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for PaymentMethodData {
 }
 impl core::ops::DerefMut for PaymentMethodData {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PaymentMethodData {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PaymentMethodData {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -55,6 +66,7 @@ impl PaymentMethodData {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PaymentDetailsModifier {
     inner: emlite::Val,
 }
@@ -77,6 +89,16 @@ impl core::ops::Deref for PaymentDetailsModifier {
 }
 impl core::ops::DerefMut for PaymentDetailsModifier {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PaymentDetailsModifier {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PaymentDetailsModifier {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -129,6 +151,7 @@ impl PaymentDetailsModifier {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PaymentShippingOption {
     inner: emlite::Val,
 }
@@ -151,6 +174,16 @@ impl core::ops::Deref for PaymentShippingOption {
 }
 impl core::ops::DerefMut for PaymentShippingOption {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PaymentShippingOption {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PaymentShippingOption {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -199,6 +232,7 @@ impl PaymentShippingOption {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PaymentRequestDetailsUpdate {
     inner: emlite::Val,
 }
@@ -221,6 +255,16 @@ impl core::ops::Deref for PaymentRequestDetailsUpdate {
 }
 impl core::ops::DerefMut for PaymentRequestDetailsUpdate {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PaymentRequestDetailsUpdate {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PaymentRequestDetailsUpdate {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -293,6 +337,7 @@ impl PaymentRequestDetailsUpdate {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AddressInit {
     inner: emlite::Val,
 }
@@ -315,6 +360,16 @@ impl core::ops::Deref for AddressInit {
 }
 impl core::ops::DerefMut for AddressInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for AddressInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AddressInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -421,6 +476,7 @@ impl AddressInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PaymentHandlerResponse {
     inner: emlite::Val,
 }
@@ -443,6 +499,16 @@ impl core::ops::Deref for PaymentHandlerResponse {
 }
 impl core::ops::DerefMut for PaymentHandlerResponse {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PaymentHandlerResponse {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PaymentHandlerResponse {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -518,6 +584,7 @@ impl PaymentHandlerResponse {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PaymentRequestEvent {
     inner: ExtendableEvent,
 }
@@ -545,6 +612,16 @@ impl core::ops::DerefMut for PaymentRequestEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PaymentRequestEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PaymentRequestEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PaymentRequestEvent> for emlite::Val {
     fn from(s: PaymentRequestEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -552,6 +629,7 @@ impl From<PaymentRequestEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(PaymentRequestEvent);
 
 impl PaymentRequestEvent {
     pub fn new0(type_: jsbind::DOMString) -> PaymentRequestEvent {

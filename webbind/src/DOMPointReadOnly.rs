@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DOMMatrixInit {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for DOMMatrixInit {
 }
 impl core::ops::DerefMut for DOMMatrixInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for DOMMatrixInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DOMMatrixInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -134,6 +145,7 @@ impl DOMMatrixInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DOMPointReadOnly {
     inner: emlite::Val,
 }
@@ -161,6 +173,16 @@ impl core::ops::DerefMut for DOMPointReadOnly {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for DOMPointReadOnly {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DOMPointReadOnly {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<DOMPointReadOnly> for emlite::Val {
     fn from(s: DOMPointReadOnly) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -168,6 +190,7 @@ impl From<DOMPointReadOnly> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(DOMPointReadOnly);
 
 impl DOMPointReadOnly {
     pub fn new0() -> DOMPointReadOnly {

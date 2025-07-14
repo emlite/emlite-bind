@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WebTransportSendOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for WebTransportSendOptions {
 }
 impl core::ops::DerefMut for WebTransportSendOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for WebTransportSendOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WebTransportSendOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl WebTransportSendOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WebTransportDatagramDuplexStream {
     inner: emlite::Val,
 }
@@ -80,6 +92,16 @@ impl core::ops::DerefMut for WebTransportDatagramDuplexStream {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WebTransportDatagramDuplexStream {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WebTransportDatagramDuplexStream {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WebTransportDatagramDuplexStream> for emlite::Val {
     fn from(s: WebTransportDatagramDuplexStream) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -87,6 +109,7 @@ impl From<WebTransportDatagramDuplexStream> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(WebTransportDatagramDuplexStream);
 
 impl WebTransportDatagramDuplexStream {
     pub fn create_writable0(&self) -> WebTransportDatagramsWritable {

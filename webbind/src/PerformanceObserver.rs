@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PerformanceObserverInit {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for PerformanceObserverInit {
 }
 impl core::ops::DerefMut for PerformanceObserverInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PerformanceObserverInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PerformanceObserverInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -64,6 +75,7 @@ impl PerformanceObserverInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PerformanceObserver {
     inner: emlite::Val,
 }
@@ -91,6 +103,16 @@ impl core::ops::DerefMut for PerformanceObserver {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PerformanceObserver {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PerformanceObserver {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PerformanceObserver> for emlite::Val {
     fn from(s: PerformanceObserver) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -98,6 +120,7 @@ impl From<PerformanceObserver> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(PerformanceObserver);
 
 impl PerformanceObserver {
     pub fn new(callback: jsbind::Function) -> PerformanceObserver {

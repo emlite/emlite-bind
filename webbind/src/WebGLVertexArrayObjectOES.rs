@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WebGLVertexArrayObjectOES {
     inner: WebGLObject,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for WebGLVertexArrayObjectOES {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WebGLVertexArrayObjectOES {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WebGLVertexArrayObjectOES {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WebGLVertexArrayObjectOES> for emlite::Val {
     fn from(s: WebGLVertexArrayObjectOES) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,3 +46,4 @@ impl From<WebGLVertexArrayObjectOES> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(WebGLVertexArrayObjectOES);

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ReadableStreamGetReaderOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for ReadableStreamGetReaderOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ReadableStreamGetReaderOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ReadableStreamGetReaderOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ReadableStreamGetReaderOptions> for emlite::Val {
     fn from(s: ReadableStreamGetReaderOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl ReadableStreamGetReaderOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ReadableWritablePair {
     inner: emlite::Val,
 }
@@ -66,6 +78,16 @@ impl core::ops::Deref for ReadableWritablePair {
 }
 impl core::ops::DerefMut for ReadableWritablePair {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ReadableWritablePair {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ReadableWritablePair {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -96,6 +118,7 @@ impl ReadableWritablePair {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct StreamPipeOptions {
     inner: emlite::Val,
 }
@@ -118,6 +141,16 @@ impl core::ops::Deref for StreamPipeOptions {
 }
 impl core::ops::DerefMut for StreamPipeOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for StreamPipeOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for StreamPipeOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -166,6 +199,7 @@ impl StreamPipeOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ReadableStream {
     inner: emlite::Val,
 }
@@ -193,6 +227,16 @@ impl core::ops::DerefMut for ReadableStream {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ReadableStream {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ReadableStream {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ReadableStream> for emlite::Val {
     fn from(s: ReadableStream) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -200,6 +244,7 @@ impl From<ReadableStream> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ReadableStream);
 
 impl ReadableStream {
     pub fn new0() -> ReadableStream {

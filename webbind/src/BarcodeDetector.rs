@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DetectedBarcode {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for DetectedBarcode {
 }
 impl core::ops::DerefMut for DetectedBarcode {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for DetectedBarcode {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DetectedBarcode {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -73,6 +84,7 @@ impl DetectedBarcode {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct BarcodeDetector {
     inner: emlite::Val,
 }
@@ -100,6 +112,16 @@ impl core::ops::DerefMut for BarcodeDetector {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for BarcodeDetector {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for BarcodeDetector {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<BarcodeDetector> for emlite::Val {
     fn from(s: BarcodeDetector) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -107,6 +129,7 @@ impl From<BarcodeDetector> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(BarcodeDetector);
 
 impl BarcodeDetector {
     pub fn new0() -> BarcodeDetector {

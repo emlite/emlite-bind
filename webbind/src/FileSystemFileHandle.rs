@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FileSystemCreateWritableOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for FileSystemCreateWritableOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FileSystemCreateWritableOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FileSystemCreateWritableOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FileSystemCreateWritableOptions> for emlite::Val {
     fn from(s: FileSystemCreateWritableOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl FileSystemCreateWritableOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FileSystemFileHandle {
     inner: FileSystemHandle,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for FileSystemFileHandle {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FileSystemFileHandle {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FileSystemFileHandle {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FileSystemFileHandle> for emlite::Val {
     fn from(s: FileSystemFileHandle) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<FileSystemFileHandle> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(FileSystemFileHandle);
 
 impl FileSystemFileHandle {
     pub fn get_file(&self) -> jsbind::Promise {

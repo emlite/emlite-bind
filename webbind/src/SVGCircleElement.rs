@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SVGCircleElement {
     inner: SVGGeometryElement,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for SVGCircleElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SVGCircleElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SVGCircleElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SVGCircleElement> for emlite::Val {
     fn from(s: SVGCircleElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<SVGCircleElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SVGCircleElement);
 
 impl SVGCircleElement {
     pub fn cx(&self) -> SVGAnimatedLength {

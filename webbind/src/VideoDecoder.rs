@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct VideoDecoderConfig {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for VideoDecoderConfig {
 }
 impl core::ops::DerefMut for VideoDecoderConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for VideoDecoderConfig {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for VideoDecoderConfig {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -136,6 +147,7 @@ impl VideoDecoderConfig {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct VideoDecoderSupport {
     inner: emlite::Val,
 }
@@ -158,6 +170,16 @@ impl core::ops::Deref for VideoDecoderSupport {
 }
 impl core::ops::DerefMut for VideoDecoderSupport {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for VideoDecoderSupport {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for VideoDecoderSupport {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -188,6 +210,7 @@ impl VideoDecoderSupport {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct VideoDecoder {
     inner: EventTarget,
 }
@@ -215,6 +238,16 @@ impl core::ops::DerefMut for VideoDecoder {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for VideoDecoder {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for VideoDecoder {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<VideoDecoder> for emlite::Val {
     fn from(s: VideoDecoder) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -222,6 +255,7 @@ impl From<VideoDecoder> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(VideoDecoder);
 
 impl VideoDecoder {
     pub fn new(init: jsbind::Any) -> VideoDecoder {

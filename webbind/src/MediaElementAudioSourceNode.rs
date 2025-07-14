@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MediaElementAudioSourceNode {
     inner: AudioNode,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for MediaElementAudioSourceNode {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MediaElementAudioSourceNode {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MediaElementAudioSourceNode {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MediaElementAudioSourceNode> for emlite::Val {
     fn from(s: MediaElementAudioSourceNode) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<MediaElementAudioSourceNode> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(MediaElementAudioSourceNode);
 
 impl MediaElementAudioSourceNode {
     pub fn new(context: AudioContext, options: jsbind::Any) -> MediaElementAudioSourceNode {

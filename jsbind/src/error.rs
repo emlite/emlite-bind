@@ -1,14 +1,14 @@
-use crate::Any;
-use crate::utils::bind;
+use crate::utils::*;
 use alloc::string::String;
-use emlite::FromVal;
 
 /// Macro to generate `struct RangeError { inner: Val }` plus boilerplate.
 macro_rules! declare_error {
     ($base:ident $(, $name:ident)*) => {
         #[derive(Clone, Debug, PartialEq, PartialOrd)]
+        #[repr(transparent)]
         pub struct $base { inner: emlite::Val }
         bind!($base);
+        impl_dyn_cast!($base);
 
         impl $base {
             /// `new Error(message?)`
@@ -37,8 +37,10 @@ macro_rules! declare_error {
 
         $(
             #[derive(Clone, Debug, PartialEq, PartialOrd)]
+            #[repr(transparent)]
             pub struct $name { inner: emlite::Val }
             bind!($name);
+            impl_dyn_cast!($name);
 
             impl $name {
                 /// Construct `new $Name(message?)`.
@@ -75,127 +77,3 @@ declare_error!(
     URIError,
     AggregateError
 );
-
-/// Throws a JS exception.
-#[cold]
-#[inline(never)]
-pub fn throw_str(s: &str) -> ! {
-    throw_val(s.into())
-}
-
-/// Throws a JS exception
-#[cold]
-#[inline(never)]
-pub fn throw_val(s: Any) -> ! {
-    unsafe {
-        let handle = s.as_handle();
-        core::mem::forget(s);
-        emlite::env::emlite_val_throw(handle)
-    }
-}
-
-// Implementations copied from wasm-bindgen
-pub trait UnwrapThrowExt<T>: Sized {
-    fn unwrap_throw(self) -> T {
-        let loc = core::panic::Location::caller();
-        let msg = alloc::format!(
-            "called `{}::unwrap_throw()` ({}:{}:{})",
-            core::any::type_name::<Self>(),
-            loc.file(),
-            loc.line(),
-            loc.column()
-        );
-        self.expect_throw(&msg)
-    }
-
-    fn expect_throw(self, message: &str) -> T;
-}
-
-// Implementations copied from wasm-bindgen
-impl<T> UnwrapThrowExt<T> for Option<T> {
-    fn unwrap_throw(self) -> T {
-        const MSG: &str = "called `Option::unwrap_throw()` on a `None` value";
-        if let Some(val) = self {
-            val
-        } else if cfg!(debug_assertions) {
-            let loc = core::panic::Location::caller();
-            let msg = alloc::format!("{} ({}:{}:{})", MSG, loc.file(), loc.line(), loc.column(),);
-
-            throw_str(&msg)
-        } else {
-            throw_str(MSG)
-        }
-    }
-
-    fn expect_throw(self, message: &str) -> T {
-        if let Some(val) = self {
-            val
-        } else if cfg!(debug_assertions) {
-            let loc = core::panic::Location::caller();
-            let msg = alloc::format!(
-                "{} ({}:{}:{})",
-                message,
-                loc.file(),
-                loc.line(),
-                loc.column(),
-            );
-
-            throw_str(&msg)
-        } else {
-            throw_str(message)
-        }
-    }
-}
-
-// Implementations copied from wasm-bindgen
-impl<T, E> UnwrapThrowExt<T> for Result<T, E>
-where
-    E: core::fmt::Debug,
-{
-    fn unwrap_throw(self) -> T {
-        const MSG: &str = "called `Result::unwrap_throw()` on an `Err` value";
-        match self {
-            Ok(val) => val,
-            Err(err) => {
-                if cfg!(debug_assertions) {
-                    let loc = core::panic::Location::caller();
-                    let msg = alloc::format!(
-                        "{} ({}:{}:{}): {:?}",
-                        MSG,
-                        loc.file(),
-                        loc.line(),
-                        loc.column(),
-                        err
-                    );
-
-                    throw_str(&msg)
-                } else {
-                    throw_str(MSG)
-                }
-            }
-        }
-    }
-
-    fn expect_throw(self, message: &str) -> T {
-        match self {
-            Ok(val) => val,
-            Err(err) => {
-                if cfg!(debug_assertions) {
-                    let loc = core::panic::Location::caller();
-                    let msg = alloc::format!(
-                        "{} ({}:{}:{}): {:?}",
-                        message,
-                        loc.file(),
-                        loc.line(),
-                        loc.column(),
-                        err
-                    );
-
-                    throw_str(&msg)
-                } else {
-                    throw_str(message)
-                }
-            }
-        }
-    }
-}

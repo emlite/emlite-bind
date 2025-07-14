@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SpeechRecognitionResult {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for SpeechRecognitionResult {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SpeechRecognitionResult {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SpeechRecognitionResult {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SpeechRecognitionResult> for emlite::Val {
     fn from(s: SpeechRecognitionResult) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<SpeechRecognitionResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SpeechRecognitionResult);
 
 impl SpeechRecognitionResult {
     pub fn length(&self) -> u32 {

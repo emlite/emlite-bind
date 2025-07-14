@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DOMRectInit {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for DOMRectInit {
 }
 impl core::ops::DerefMut for DOMRectInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for DOMRectInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DOMRectInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -71,6 +82,7 @@ impl DOMRectInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DOMRectReadOnly {
     inner: emlite::Val,
 }
@@ -98,6 +110,16 @@ impl core::ops::DerefMut for DOMRectReadOnly {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for DOMRectReadOnly {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DOMRectReadOnly {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<DOMRectReadOnly> for emlite::Val {
     fn from(s: DOMRectReadOnly) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -105,6 +127,7 @@ impl From<DOMRectReadOnly> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(DOMRectReadOnly);
 
 impl DOMRectReadOnly {
     pub fn new0() -> DOMRectReadOnly {

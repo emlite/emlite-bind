@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FileSystemReadWriteOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for FileSystemReadWriteOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FileSystemReadWriteOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FileSystemReadWriteOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FileSystemReadWriteOptions> for emlite::Val {
     fn from(s: FileSystemReadWriteOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl FileSystemReadWriteOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FileSystemSyncAccessHandle {
     inner: emlite::Val,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for FileSystemSyncAccessHandle {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FileSystemSyncAccessHandle {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FileSystemSyncAccessHandle {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FileSystemSyncAccessHandle> for emlite::Val {
     fn from(s: FileSystemSyncAccessHandle) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<FileSystemSyncAccessHandle> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(FileSystemSyncAccessHandle);
 
 impl FileSystemSyncAccessHandle {
     pub fn read0(&self, buffer: jsbind::Any) -> u64 {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRMediaQuadLayerInit {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for XRMediaQuadLayerInit {
 }
 impl core::ops::DerefMut for XRMediaQuadLayerInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for XRMediaQuadLayerInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRMediaQuadLayerInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl XRMediaQuadLayerInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRMediaCylinderLayerInit {
     inner: emlite::Val,
 }
@@ -84,6 +96,16 @@ impl core::ops::Deref for XRMediaCylinderLayerInit {
 }
 impl core::ops::DerefMut for XRMediaCylinderLayerInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for XRMediaCylinderLayerInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRMediaCylinderLayerInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -132,6 +154,7 @@ impl XRMediaCylinderLayerInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRMediaEquirectLayerInit {
     inner: emlite::Val,
 }
@@ -154,6 +177,16 @@ impl core::ops::Deref for XRMediaEquirectLayerInit {
 }
 impl core::ops::DerefMut for XRMediaEquirectLayerInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for XRMediaEquirectLayerInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRMediaEquirectLayerInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -211,6 +244,7 @@ impl XRMediaEquirectLayerInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRMediaBinding {
     inner: emlite::Val,
 }
@@ -238,6 +272,16 @@ impl core::ops::DerefMut for XRMediaBinding {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for XRMediaBinding {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRMediaBinding {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<XRMediaBinding> for emlite::Val {
     fn from(s: XRMediaBinding) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -245,6 +289,7 @@ impl From<XRMediaBinding> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(XRMediaBinding);
 
 impl XRMediaBinding {
     pub fn new(session: XRSession) -> XRMediaBinding {

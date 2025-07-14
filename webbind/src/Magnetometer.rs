@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Magnetometer {
     inner: Sensor,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for Magnetometer {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Magnetometer {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Magnetometer {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Magnetometer> for emlite::Val {
     fn from(s: Magnetometer) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<Magnetometer> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Magnetometer);
 
 impl Magnetometer {
     pub fn new0() -> Magnetometer {

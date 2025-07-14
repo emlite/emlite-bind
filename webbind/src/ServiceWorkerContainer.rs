@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RegistrationOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for RegistrationOptions {
 }
 impl core::ops::DerefMut for RegistrationOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RegistrationOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RegistrationOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -64,6 +75,7 @@ impl RegistrationOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ServiceWorkerContainer {
     inner: EventTarget,
 }
@@ -91,6 +103,16 @@ impl core::ops::DerefMut for ServiceWorkerContainer {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ServiceWorkerContainer {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ServiceWorkerContainer {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ServiceWorkerContainer> for emlite::Val {
     fn from(s: ServiceWorkerContainer) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -98,6 +120,7 @@ impl From<ServiceWorkerContainer> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ServiceWorkerContainer);
 
 impl ServiceWorkerContainer {
     pub fn controller(&self) -> ServiceWorker {

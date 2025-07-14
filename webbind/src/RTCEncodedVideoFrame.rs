@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCEncodedVideoFrameMetadata {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for RTCEncodedVideoFrameMetadata {
 }
 impl core::ops::DerefMut for RTCEncodedVideoFrameMetadata {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RTCEncodedVideoFrameMetadata {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCEncodedVideoFrameMetadata {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -100,6 +111,7 @@ impl RTCEncodedVideoFrameMetadata {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCEncodedVideoFrame {
     inner: emlite::Val,
 }
@@ -127,6 +139,16 @@ impl core::ops::DerefMut for RTCEncodedVideoFrame {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for RTCEncodedVideoFrame {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCEncodedVideoFrame {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<RTCEncodedVideoFrame> for emlite::Val {
     fn from(s: RTCEncodedVideoFrame) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -134,6 +156,7 @@ impl From<RTCEncodedVideoFrame> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(RTCEncodedVideoFrame);
 
 impl RTCEncodedVideoFrame {
     pub fn new0(original_frame: RTCEncodedVideoFrame) -> RTCEncodedVideoFrame {

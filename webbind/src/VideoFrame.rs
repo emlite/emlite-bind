@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct VideoFrameMetadata {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for VideoFrameMetadata {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for VideoFrameMetadata {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for VideoFrameMetadata {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<VideoFrameMetadata> for emlite::Val {
     fn from(s: VideoFrameMetadata) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<VideoFrameMetadata> for emlite::Val {
 }
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct VideoFrameCopyToOptions {
     inner: emlite::Val,
 }
@@ -57,6 +69,16 @@ impl core::ops::Deref for VideoFrameCopyToOptions {
 }
 impl core::ops::DerefMut for VideoFrameCopyToOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for VideoFrameCopyToOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for VideoFrameCopyToOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -107,6 +129,7 @@ impl VideoFrameCopyToOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PlaneLayout {
     inner: emlite::Val,
 }
@@ -129,6 +152,16 @@ impl core::ops::Deref for PlaneLayout {
 }
 impl core::ops::DerefMut for PlaneLayout {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PlaneLayout {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PlaneLayout {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -159,6 +192,7 @@ impl PlaneLayout {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct VideoFrame {
     inner: emlite::Val,
 }
@@ -186,6 +220,16 @@ impl core::ops::DerefMut for VideoFrame {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for VideoFrame {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for VideoFrame {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<VideoFrame> for emlite::Val {
     fn from(s: VideoFrame) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -193,6 +237,7 @@ impl From<VideoFrame> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(VideoFrame);
 
 impl VideoFrame {
     pub fn new(data: jsbind::Any, init: jsbind::Any) -> VideoFrame {

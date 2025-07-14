@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct TaskController {
     inner: AbortController,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for TaskController {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for TaskController {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for TaskController {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<TaskController> for emlite::Val {
     fn from(s: TaskController) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<TaskController> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(TaskController);
 
 impl TaskController {
     pub fn new0() -> TaskController {

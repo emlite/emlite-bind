@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SharedStorageUrlWithMetadata {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for SharedStorageUrlWithMetadata {
 }
 impl core::ops::DerefMut for SharedStorageUrlWithMetadata {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for SharedStorageUrlWithMetadata {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SharedStorageUrlWithMetadata {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl SharedStorageUrlWithMetadata {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SharedStorageRunOperationMethodOptions {
     inner: emlite::Val,
 }
@@ -75,6 +87,16 @@ impl core::ops::Deref for SharedStorageRunOperationMethodOptions {
 }
 impl core::ops::DerefMut for SharedStorageRunOperationMethodOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for SharedStorageRunOperationMethodOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SharedStorageRunOperationMethodOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -134,6 +156,7 @@ impl SharedStorageRunOperationMethodOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SharedStorageWorklet {
     inner: Worklet,
 }
@@ -161,6 +184,16 @@ impl core::ops::DerefMut for SharedStorageWorklet {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SharedStorageWorklet {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SharedStorageWorklet {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SharedStorageWorklet> for emlite::Val {
     fn from(s: SharedStorageWorklet) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -168,6 +201,7 @@ impl From<SharedStorageWorklet> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SharedStorageWorklet);
 
 impl SharedStorageWorklet {
     pub fn select_url0(

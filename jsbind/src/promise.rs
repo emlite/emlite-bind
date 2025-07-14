@@ -1,13 +1,15 @@
-use crate::utils::bind;
+use crate::utils::*;
 use crate::{Any, Function};
 
 /// JavaScript [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) wrapper.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Promise {
     inner: emlite::Val,
 }
 
 bind!(Promise);
+impl_dyn_cast!(Promise);
 
 impl Default for Promise {
     /// A default promise is simply JavaScript `undefined`

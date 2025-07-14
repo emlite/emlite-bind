@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSPropertyRule {
     inner: CSSRule,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for CSSPropertyRule {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CSSPropertyRule {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CSSPropertyRule {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CSSPropertyRule> for emlite::Val {
     fn from(s: CSSPropertyRule) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<CSSPropertyRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CSSPropertyRule);
 
 impl CSSPropertyRule {
     pub fn name(&self) -> jsbind::CSSOMString {

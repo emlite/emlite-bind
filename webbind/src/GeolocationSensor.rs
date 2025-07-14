@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GeolocationSensorReading {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for GeolocationSensorReading {
 }
 impl core::ops::DerefMut for GeolocationSensorReading {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GeolocationSensorReading {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GeolocationSensorReading {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -107,6 +118,7 @@ impl GeolocationSensorReading {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ReadOptions {
     inner: emlite::Val,
 }
@@ -132,6 +144,16 @@ impl core::ops::DerefMut for ReadOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ReadOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ReadOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ReadOptions> for emlite::Val {
     fn from(s: ReadOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -150,6 +172,7 @@ impl ReadOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GeolocationSensor {
     inner: Sensor,
 }
@@ -177,6 +200,16 @@ impl core::ops::DerefMut for GeolocationSensor {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GeolocationSensor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GeolocationSensor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GeolocationSensor> for emlite::Val {
     fn from(s: GeolocationSensor) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -184,6 +217,7 @@ impl From<GeolocationSensor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(GeolocationSensor);
 
 impl GeolocationSensor {
     pub fn new0() -> GeolocationSensor {

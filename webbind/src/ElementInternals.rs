@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ValidityStateFlags {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for ValidityStateFlags {
 }
 impl core::ops::DerefMut for ValidityStateFlags {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ValidityStateFlags {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ValidityStateFlags {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -125,6 +136,7 @@ impl ValidityStateFlags {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ElementInternals {
     inner: emlite::Val,
 }
@@ -152,6 +164,16 @@ impl core::ops::DerefMut for ElementInternals {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ElementInternals {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ElementInternals {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ElementInternals> for emlite::Val {
     fn from(s: ElementInternals) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -159,6 +181,7 @@ impl From<ElementInternals> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ElementInternals);
 
 impl ElementInternals {
     pub fn shadow_root(&self) -> ShadowRoot {

@@ -1,9 +1,25 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSFontFaceDescriptors {
     inner: CSSStyleDeclaration,
 }
+
+jsbind::utils::impl_dyn_cast!(CSSFontFaceDescriptors);
+
+impl AsRef<emlite::Val> for CSSFontFaceDescriptors {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+
+impl AsMut<emlite::Val> for CSSFontFaceDescriptors {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
+
 impl FromVal for CSSFontFaceDescriptors {
     fn from_val(v: &emlite::Val) -> Self {
         CSSFontFaceDescriptors {

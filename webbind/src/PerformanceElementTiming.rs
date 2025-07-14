@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PerformanceElementTiming {
     inner: PerformanceEntry,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for PerformanceElementTiming {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PerformanceElementTiming {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PerformanceElementTiming {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PerformanceElementTiming> for emlite::Val {
     fn from(s: PerformanceElementTiming) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<PerformanceElementTiming> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(PerformanceElementTiming);
 
 impl PerformanceElementTiming {
     pub fn render_time(&self) -> jsbind::Any {

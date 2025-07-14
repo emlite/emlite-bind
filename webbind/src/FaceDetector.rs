@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DetectedFace {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for DetectedFace {
 }
 impl core::ops::DerefMut for DetectedFace {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for DetectedFace {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DetectedFace {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -55,6 +66,7 @@ impl DetectedFace {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FaceDetector {
     inner: emlite::Val,
 }
@@ -82,6 +94,16 @@ impl core::ops::DerefMut for FaceDetector {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for FaceDetector {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FaceDetector {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<FaceDetector> for emlite::Val {
     fn from(s: FaceDetector) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -89,6 +111,7 @@ impl From<FaceDetector> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(FaceDetector);
 
 impl FaceDetector {
     pub fn new0() -> FaceDetector {

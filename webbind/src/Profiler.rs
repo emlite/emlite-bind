@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ProfilerTrace {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for ProfilerTrace {
 }
 impl core::ops::DerefMut for ProfilerTrace {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ProfilerTrace {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ProfilerTrace {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -79,6 +90,7 @@ impl ProfilerTrace {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Profiler {
     inner: EventTarget,
 }
@@ -106,6 +118,16 @@ impl core::ops::DerefMut for Profiler {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Profiler {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Profiler {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Profiler> for emlite::Val {
     fn from(s: Profiler) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -113,6 +135,7 @@ impl From<Profiler> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Profiler);
 
 impl Profiler {
     pub fn sample_interval(&self) -> jsbind::Any {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MediaTrackCapabilities {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for MediaTrackCapabilities {
 }
 impl core::ops::DerefMut for MediaTrackCapabilities {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MediaTrackCapabilities {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MediaTrackCapabilities {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -64,6 +75,7 @@ impl MediaTrackCapabilities {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MediaTrackConstraints {
     inner: emlite::Val,
 }
@@ -89,6 +101,16 @@ impl core::ops::DerefMut for MediaTrackConstraints {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MediaTrackConstraints {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MediaTrackConstraints {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MediaTrackConstraints> for emlite::Val {
     fn from(s: MediaTrackConstraints) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -109,6 +131,7 @@ impl MediaTrackConstraints {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MediaTrackSettings {
     inner: emlite::Val,
 }
@@ -131,6 +154,16 @@ impl core::ops::Deref for MediaTrackSettings {
 }
 impl core::ops::DerefMut for MediaTrackSettings {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MediaTrackSettings {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MediaTrackSettings {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -197,6 +230,7 @@ impl MediaTrackSettings {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CaptureHandle {
     inner: emlite::Val,
 }
@@ -219,6 +253,16 @@ impl core::ops::Deref for CaptureHandle {
 }
 impl core::ops::DerefMut for CaptureHandle {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for CaptureHandle {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CaptureHandle {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -249,6 +293,7 @@ impl CaptureHandle {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MediaStreamTrack {
     inner: EventTarget,
 }
@@ -276,6 +321,16 @@ impl core::ops::DerefMut for MediaStreamTrack {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MediaStreamTrack {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MediaStreamTrack {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MediaStreamTrack> for emlite::Val {
     fn from(s: MediaStreamTrack) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -283,6 +338,7 @@ impl From<MediaStreamTrack> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(MediaStreamTrack);
 
 impl MediaStreamTrack {
     pub fn kind(&self) -> jsbind::DOMString {

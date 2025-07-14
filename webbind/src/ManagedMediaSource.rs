@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ManagedMediaSource {
     inner: MediaSource,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for ManagedMediaSource {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ManagedMediaSource {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ManagedMediaSource {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ManagedMediaSource> for emlite::Val {
     fn from(s: ManagedMediaSource) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<ManagedMediaSource> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ManagedMediaSource);
 
 impl ManagedMediaSource {
     pub fn new() -> ManagedMediaSource {

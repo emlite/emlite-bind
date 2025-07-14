@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ContactInfo {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for ContactInfo {
 }
 impl core::ops::DerefMut for ContactInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ContactInfo {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ContactInfo {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -88,6 +99,7 @@ impl ContactInfo {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ContactsSelectOptions {
     inner: emlite::Val,
 }
@@ -113,6 +125,16 @@ impl core::ops::DerefMut for ContactsSelectOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ContactsSelectOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ContactsSelectOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ContactsSelectOptions> for emlite::Val {
     fn from(s: ContactsSelectOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -131,6 +153,7 @@ impl ContactsSelectOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ContactsManager {
     inner: emlite::Val,
 }
@@ -158,6 +181,16 @@ impl core::ops::DerefMut for ContactsManager {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ContactsManager {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ContactsManager {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ContactsManager> for emlite::Val {
     fn from(s: ContactsManager) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -165,6 +198,7 @@ impl From<ContactsManager> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ContactsManager);
 
 impl ContactsManager {
     pub fn get_properties(&self) -> jsbind::Promise {

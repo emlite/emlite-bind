@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MathMLElement {
     inner: Element,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for MathMLElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for MathMLElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MathMLElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<MathMLElement> for emlite::Val {
     fn from(s: MathMLElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<MathMLElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(MathMLElement);
 
 impl MathMLElement {
     pub fn style(&self) -> CSSStyleDeclaration {

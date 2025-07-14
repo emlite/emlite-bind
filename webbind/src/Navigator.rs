@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MediaKeySystemConfiguration {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for MediaKeySystemConfiguration {
 }
 impl core::ops::DerefMut for MediaKeySystemConfiguration {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MediaKeySystemConfiguration {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MediaKeySystemConfiguration {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -110,6 +121,7 @@ impl MediaKeySystemConfiguration {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RelatedApplication {
     inner: emlite::Val,
 }
@@ -132,6 +144,16 @@ impl core::ops::Deref for RelatedApplication {
 }
 impl core::ops::DerefMut for RelatedApplication {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RelatedApplication {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RelatedApplication {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -180,6 +202,7 @@ impl RelatedApplication {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct HandwritingRecognizerQueryResult {
     inner: emlite::Val,
 }
@@ -202,6 +225,16 @@ impl core::ops::Deref for HandwritingRecognizerQueryResult {
 }
 impl core::ops::DerefMut for HandwritingRecognizerQueryResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for HandwritingRecognizerQueryResult {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for HandwritingRecognizerQueryResult {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -241,6 +274,7 @@ impl HandwritingRecognizerQueryResult {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct HandwritingModelConstraint {
     inner: emlite::Val,
 }
@@ -266,6 +300,16 @@ impl core::ops::DerefMut for HandwritingModelConstraint {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for HandwritingModelConstraint {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for HandwritingModelConstraint {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<HandwritingModelConstraint> for emlite::Val {
     fn from(s: HandwritingModelConstraint) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -286,6 +330,7 @@ impl HandwritingModelConstraint {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AuctionAdInterestGroup {
     inner: emlite::Val,
 }
@@ -308,6 +353,16 @@ impl core::ops::Deref for AuctionAdInterestGroup {
 }
 impl core::ops::DerefMut for AuctionAdInterestGroup {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for AuctionAdInterestGroup {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AuctionAdInterestGroup {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -374,6 +429,7 @@ impl AuctionAdInterestGroup {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AuctionAdInterestGroupKey {
     inner: emlite::Val,
 }
@@ -396,6 +452,16 @@ impl core::ops::Deref for AuctionAdInterestGroupKey {
 }
 impl core::ops::DerefMut for AuctionAdInterestGroupKey {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for AuctionAdInterestGroupKey {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AuctionAdInterestGroupKey {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -426,6 +492,7 @@ impl AuctionAdInterestGroupKey {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AuctionAdConfig {
     inner: emlite::Val,
 }
@@ -448,6 +515,16 @@ impl core::ops::Deref for AuctionAdConfig {
 }
 impl core::ops::DerefMut for AuctionAdConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for AuctionAdConfig {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AuctionAdConfig {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -884,6 +961,7 @@ impl AuctionAdConfig {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AdAuctionData {
     inner: emlite::Val,
 }
@@ -906,6 +984,16 @@ impl core::ops::Deref for AdAuctionData {
 }
 impl core::ops::DerefMut for AdAuctionData {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for AdAuctionData {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AdAuctionData {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -947,6 +1035,7 @@ impl AdAuctionData {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AdAuctionDataConfig {
     inner: emlite::Val,
 }
@@ -969,6 +1058,16 @@ impl core::ops::Deref for AdAuctionDataConfig {
 }
 impl core::ops::DerefMut for AdAuctionDataConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for AdAuctionDataConfig {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AdAuctionDataConfig {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -1032,6 +1131,7 @@ impl AdAuctionDataConfig {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ShareData {
     inner: emlite::Val,
 }
@@ -1054,6 +1154,16 @@ impl core::ops::Deref for ShareData {
 }
 impl core::ops::DerefMut for ShareData {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ShareData {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ShareData {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -1102,6 +1212,7 @@ impl ShareData {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct MIDIOptions {
     inner: emlite::Val,
 }
@@ -1124,6 +1235,16 @@ impl core::ops::Deref for MIDIOptions {
 }
 impl core::ops::DerefMut for MIDIOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for MIDIOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for MIDIOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -1154,6 +1275,7 @@ impl MIDIOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Navigator {
     inner: emlite::Val,
 }
@@ -1181,6 +1303,16 @@ impl core::ops::DerefMut for Navigator {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Navigator {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Navigator {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Navigator> for emlite::Val {
     fn from(s: Navigator) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -1188,6 +1320,7 @@ impl From<Navigator> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Navigator);
 
 impl Navigator {
     pub fn audio_session(&self) -> AudioSession {

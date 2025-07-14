@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ColorSelectionResult {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for ColorSelectionResult {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ColorSelectionResult {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ColorSelectionResult {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ColorSelectionResult> for emlite::Val {
     fn from(s: ColorSelectionResult) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl ColorSelectionResult {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ColorSelectionOptions {
     inner: emlite::Val,
 }
@@ -69,6 +81,16 @@ impl core::ops::DerefMut for ColorSelectionOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ColorSelectionOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ColorSelectionOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ColorSelectionOptions> for emlite::Val {
     fn from(s: ColorSelectionOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -87,6 +109,7 @@ impl ColorSelectionOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct EyeDropper {
     inner: emlite::Val,
 }
@@ -114,6 +137,16 @@ impl core::ops::DerefMut for EyeDropper {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for EyeDropper {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for EyeDropper {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<EyeDropper> for emlite::Val {
     fn from(s: EyeDropper) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -121,6 +154,7 @@ impl From<EyeDropper> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(EyeDropper);
 
 impl EyeDropper {
     pub fn new() -> EyeDropper {

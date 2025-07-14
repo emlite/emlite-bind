@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ImageDecodeResult {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for ImageDecodeResult {
 }
 impl core::ops::DerefMut for ImageDecodeResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ImageDecodeResult {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ImageDecodeResult {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl ImageDecodeResult {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ImageDecodeOptions {
     inner: emlite::Val,
 }
@@ -75,6 +87,16 @@ impl core::ops::Deref for ImageDecodeOptions {
 }
 impl core::ops::DerefMut for ImageDecodeOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ImageDecodeOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ImageDecodeOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -105,6 +127,7 @@ impl ImageDecodeOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ImageDecoder {
     inner: emlite::Val,
 }
@@ -132,6 +155,16 @@ impl core::ops::DerefMut for ImageDecoder {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ImageDecoder {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ImageDecoder {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ImageDecoder> for emlite::Val {
     fn from(s: ImageDecoder) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -139,6 +172,7 @@ impl From<ImageDecoder> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ImageDecoder);
 
 impl ImageDecoder {
     pub fn new(init: jsbind::Any) -> ImageDecoder {

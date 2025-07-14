@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct LockOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for LockOptions {
 }
 impl core::ops::DerefMut for LockOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for LockOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for LockOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -71,6 +82,7 @@ impl LockOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct LockManagerSnapshot {
     inner: emlite::Val,
 }
@@ -93,6 +105,16 @@ impl core::ops::Deref for LockManagerSnapshot {
 }
 impl core::ops::DerefMut for LockManagerSnapshot {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for LockManagerSnapshot {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for LockManagerSnapshot {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -127,6 +149,7 @@ impl LockManagerSnapshot {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct LockManager {
     inner: emlite::Val,
 }
@@ -154,6 +177,16 @@ impl core::ops::DerefMut for LockManager {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for LockManager {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for LockManager {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<LockManager> for emlite::Val {
     fn from(s: LockManager) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -161,6 +194,7 @@ impl From<LockManager> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(LockManager);
 
 impl LockManager {
     pub fn request(

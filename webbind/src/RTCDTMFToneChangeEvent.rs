@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCDTMFToneChangeEvent {
     inner: Event,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for RTCDTMFToneChangeEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for RTCDTMFToneChangeEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCDTMFToneChangeEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<RTCDTMFToneChangeEvent> for emlite::Val {
     fn from(s: RTCDTMFToneChangeEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<RTCDTMFToneChangeEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(RTCDTMFToneChangeEvent);
 
 impl RTCDTMFToneChangeEvent {
     pub fn new0(type_: jsbind::DOMString) -> RTCDTMFToneChangeEvent {

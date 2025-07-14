@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AttributionReportingRequestOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for AttributionReportingRequestOptions {
 }
 impl core::ops::DerefMut for AttributionReportingRequestOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for AttributionReportingRequestOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AttributionReportingRequestOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl AttributionReportingRequestOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PrivateToken {
     inner: emlite::Val,
 }
@@ -75,6 +87,16 @@ impl core::ops::Deref for PrivateToken {
 }
 impl core::ops::DerefMut for PrivateToken {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PrivateToken {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PrivateToken {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -125,6 +147,7 @@ impl PrivateToken {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XMLHttpRequest {
     inner: XMLHttpRequestEventTarget,
 }
@@ -152,6 +175,16 @@ impl core::ops::DerefMut for XMLHttpRequest {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for XMLHttpRequest {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XMLHttpRequest {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<XMLHttpRequest> for emlite::Val {
     fn from(s: XMLHttpRequest) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -159,6 +192,7 @@ impl From<XMLHttpRequest> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(XMLHttpRequest);
 
 impl XMLHttpRequest {
     pub fn new() -> XMLHttpRequest {

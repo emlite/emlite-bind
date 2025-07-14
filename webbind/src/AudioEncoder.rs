@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AudioEncoderConfig {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for AudioEncoderConfig {
 }
 impl core::ops::DerefMut for AudioEncoderConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for AudioEncoderConfig {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AudioEncoderConfig {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -80,6 +91,7 @@ impl AudioEncoderConfig {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AudioEncoderSupport {
     inner: emlite::Val,
 }
@@ -102,6 +114,16 @@ impl core::ops::Deref for AudioEncoderSupport {
 }
 impl core::ops::DerefMut for AudioEncoderSupport {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for AudioEncoderSupport {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AudioEncoderSupport {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -132,6 +154,7 @@ impl AudioEncoderSupport {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AudioEncoder {
     inner: EventTarget,
 }
@@ -159,6 +182,16 @@ impl core::ops::DerefMut for AudioEncoder {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for AudioEncoder {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AudioEncoder {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<AudioEncoder> for emlite::Val {
     fn from(s: AudioEncoder) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -166,6 +199,7 @@ impl From<AudioEncoder> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(AudioEncoder);
 
 impl AudioEncoder {
     pub fn new(init: jsbind::Any) -> AudioEncoder {

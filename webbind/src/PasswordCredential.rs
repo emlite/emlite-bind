@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PasswordCredential {
     inner: Credential,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for PasswordCredential {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PasswordCredential {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PasswordCredential {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PasswordCredential> for emlite::Val {
     fn from(s: PasswordCredential) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<PasswordCredential> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(PasswordCredential);
 
 impl PasswordCredential {
     pub fn new(data: jsbind::Any) -> PasswordCredential {

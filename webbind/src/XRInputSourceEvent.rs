@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct XRInputSourceEvent {
     inner: Event,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for XRInputSourceEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for XRInputSourceEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for XRInputSourceEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<XRInputSourceEvent> for emlite::Val {
     fn from(s: XRInputSourceEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<XRInputSourceEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(XRInputSourceEvent);
 
 impl XRInputSourceEvent {
     pub fn new(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> XRInputSourceEvent {

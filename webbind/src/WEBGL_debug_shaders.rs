@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WEBGL_debug_shaders {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for WEBGL_debug_shaders {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WEBGL_debug_shaders {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WEBGL_debug_shaders {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WEBGL_debug_shaders> for emlite::Val {
     fn from(s: WEBGL_debug_shaders) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<WEBGL_debug_shaders> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(WEBGL_debug_shaders);
 
 impl WEBGL_debug_shaders {
     pub fn get_translated_shader_source(&self, shader: WebGLShader) -> jsbind::DOMString {

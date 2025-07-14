@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SVGPathDataSettings {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for SVGPathDataSettings {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SVGPathDataSettings {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SVGPathDataSettings {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SVGPathDataSettings> for emlite::Val {
     fn from(s: SVGPathDataSettings) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl SVGPathDataSettings {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SVGPathElement {
     inner: SVGGeometryElement,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for SVGPathElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SVGPathElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SVGPathElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SVGPathElement> for emlite::Val {
     fn from(s: SVGPathElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<SVGPathElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SVGPathElement);
 
 impl SVGPathElement {
     pub fn path_length(&self) -> SVGAnimatedNumber {

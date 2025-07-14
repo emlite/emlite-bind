@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPURequestAdapterOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for GPURequestAdapterOptions {
 }
 impl core::ops::DerefMut for GPURequestAdapterOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPURequestAdapterOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPURequestAdapterOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -73,6 +84,7 @@ impl GPURequestAdapterOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPU {
     inner: emlite::Val,
 }
@@ -100,6 +112,16 @@ impl core::ops::DerefMut for GPU {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPU {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPU {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPU> for emlite::Val {
     fn from(s: GPU) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -107,6 +129,7 @@ impl From<GPU> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(GPU);
 
 impl GPU {
     pub fn request_adapter0(&self) -> jsbind::Promise {

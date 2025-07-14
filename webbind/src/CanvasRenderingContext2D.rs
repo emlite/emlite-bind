@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CanvasRenderingContext2DSettings {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for CanvasRenderingContext2DSettings {
 }
 impl core::ops::DerefMut for CanvasRenderingContext2DSettings {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for CanvasRenderingContext2DSettings {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CanvasRenderingContext2DSettings {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -80,6 +91,7 @@ impl CanvasRenderingContext2DSettings {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ImageDataSettings {
     inner: emlite::Val,
 }
@@ -102,6 +114,16 @@ impl core::ops::Deref for ImageDataSettings {
 }
 impl core::ops::DerefMut for ImageDataSettings {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ImageDataSettings {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ImageDataSettings {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -132,6 +154,7 @@ impl ImageDataSettings {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CanvasRenderingContext2D {
     inner: emlite::Val,
 }
@@ -159,6 +182,16 @@ impl core::ops::DerefMut for CanvasRenderingContext2D {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CanvasRenderingContext2D {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CanvasRenderingContext2D {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CanvasRenderingContext2D> for emlite::Val {
     fn from(s: CanvasRenderingContext2D) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -166,6 +199,7 @@ impl From<CanvasRenderingContext2D> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CanvasRenderingContext2D);
 
 impl CanvasRenderingContext2D {
     pub fn canvas(&self) -> HTMLCanvasElement {

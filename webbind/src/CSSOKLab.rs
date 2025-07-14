@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSOKLab {
     inner: CSSColorValue,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for CSSOKLab {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CSSOKLab {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CSSOKLab {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CSSOKLab> for emlite::Val {
     fn from(s: CSSOKLab) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<CSSOKLab> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CSSOKLab);
 
 impl CSSOKLab {
     pub fn new0(l: jsbind::Any, a: jsbind::Any, b: jsbind::Any) -> CSSOKLab {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUDeviceDescriptor {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for GPUDeviceDescriptor {
 }
 impl core::ops::DerefMut for GPUDeviceDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPUDeviceDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUDeviceDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -66,6 +77,7 @@ impl GPUDeviceDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUAdapter {
     inner: emlite::Val,
 }
@@ -93,6 +105,16 @@ impl core::ops::DerefMut for GPUAdapter {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUAdapter {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUAdapter {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUAdapter> for emlite::Val {
     fn from(s: GPUAdapter) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -100,6 +122,7 @@ impl From<GPUAdapter> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(GPUAdapter);
 
 impl GPUAdapter {
     pub fn features(&self) -> GPUSupportedFeatures {

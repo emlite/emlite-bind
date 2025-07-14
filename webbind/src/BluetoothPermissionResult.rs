@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct BluetoothPermissionResult {
     inner: PermissionStatus,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for BluetoothPermissionResult {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for BluetoothPermissionResult {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for BluetoothPermissionResult {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<BluetoothPermissionResult> for emlite::Val {
     fn from(s: BluetoothPermissionResult) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<BluetoothPermissionResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(BluetoothPermissionResult);
 
 impl BluetoothPermissionResult {
     pub fn devices(&self) -> jsbind::FrozenArray<BluetoothDevice> {

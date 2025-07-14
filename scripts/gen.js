@@ -117,6 +117,7 @@ function embedDict(dict, src, ownerName) {
   }
   src.push(
     `#[derive(Clone, Debug, PartialEq, PartialOrd)]`,
+    `#[repr(transparent)]`,
     `pub struct ${dict.name} {`,
     `    inner: emlite::Val,`,
     `}`,
@@ -141,6 +142,16 @@ function embedDict(dict, src, ownerName) {
     `    fn deref_mut(&mut self) -> &mut Self::Target {`,
     `        &mut self.inner`,
     `    }`,
+    `}`,
+    `impl AsRef<emlite::Val> for ${dict.name} {`,
+    `    fn as_ref(&self) -> &emlite::Val {`,
+    `        &self.inner`,
+    `    }`,
+    `}`,
+    `impl AsMut<emlite::Val> for ${dict.name} {`,
+    `    fn as_mut(&mut self) -> &mut emlite::Val {`,
+    `      &mut self.inner`,
+    `  }`,
     `}`,
     `impl From<${dict.name}> for emlite::Val {`,
     `    fn from(s: ${dict.name}) -> emlite::Val {`,
@@ -376,6 +387,7 @@ export function generate(specAst) {
 
     src.push(
       `#[derive(Clone, Debug, PartialEq, PartialOrd)]`,
+      `#[repr(transparent)]`,
       `pub struct ${iname} {`,
       `    inner: ${parent},`,
       `}`,
@@ -401,6 +413,16 @@ export function generate(specAst) {
       `        &mut self.inner`,
       `    }`,
       `}`,
+      `impl AsRef<emlite::Val> for ${iname} {`,
+      `    fn as_ref(&self) -> &emlite::Val {`,
+      `        &self.inner`,
+      `    }`,
+      `}`,
+      `impl AsMut<emlite::Val> for ${iname} {`,
+      `    fn as_mut(&mut self) -> &mut emlite::Val {`,
+      `      &mut self.inner`,
+      `  }`,
+      `}`,
       `impl From<${iname}> for emlite::Val {`,
       `    fn from(s: ${iname}) -> emlite::Val {`,
       `        let handle = s.inner.as_handle();`,
@@ -408,6 +430,7 @@ export function generate(specAst) {
       `        emlite::Val::take_ownership(handle)`,
       `    }`,
       `}`,
+      `jsbind::utils::impl_dyn_cast!(${iname});`,
       ""
     );
     src.push("");

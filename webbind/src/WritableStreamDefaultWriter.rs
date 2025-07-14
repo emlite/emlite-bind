@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WritableStreamDefaultWriter {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for WritableStreamDefaultWriter {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WritableStreamDefaultWriter {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WritableStreamDefaultWriter {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WritableStreamDefaultWriter> for emlite::Val {
     fn from(s: WritableStreamDefaultWriter) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<WritableStreamDefaultWriter> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(WritableStreamDefaultWriter);
 
 impl WritableStreamDefaultWriter {
     pub fn new(stream: WritableStream) -> WritableStreamDefaultWriter {

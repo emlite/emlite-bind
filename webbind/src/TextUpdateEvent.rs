@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct TextUpdateEvent {
     inner: Event,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for TextUpdateEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for TextUpdateEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for TextUpdateEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<TextUpdateEvent> for emlite::Val {
     fn from(s: TextUpdateEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<TextUpdateEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(TextUpdateEvent);
 
 impl TextUpdateEvent {
     pub fn new0(type_: jsbind::DOMString) -> TextUpdateEvent {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct USBControlTransferParameters {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for USBControlTransferParameters {
 }
 impl core::ops::DerefMut for USBControlTransferParameters {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for USBControlTransferParameters {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for USBControlTransferParameters {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -80,6 +91,7 @@ impl USBControlTransferParameters {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct USBDevice {
     inner: emlite::Val,
 }
@@ -107,6 +119,16 @@ impl core::ops::DerefMut for USBDevice {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for USBDevice {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for USBDevice {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<USBDevice> for emlite::Val {
     fn from(s: USBDevice) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -114,6 +136,7 @@ impl From<USBDevice> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(USBDevice);
 
 impl USBDevice {
     pub fn usb_version_major(&self) -> u8 {

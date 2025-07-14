@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WatchAdvertisementsOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for WatchAdvertisementsOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WatchAdvertisementsOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WatchAdvertisementsOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WatchAdvertisementsOptions> for emlite::Val {
     fn from(s: WatchAdvertisementsOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl WatchAdvertisementsOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct BluetoothDevice {
     inner: EventTarget,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for BluetoothDevice {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for BluetoothDevice {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for BluetoothDevice {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<BluetoothDevice> for emlite::Val {
     fn from(s: BluetoothDevice) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<BluetoothDevice> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(BluetoothDevice);
 
 impl BluetoothDevice {
     pub fn id(&self) -> jsbind::DOMString {

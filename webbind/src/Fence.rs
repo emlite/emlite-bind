@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct FenceEvent {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for FenceEvent {
 }
 impl core::ops::DerefMut for FenceEvent {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for FenceEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for FenceEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -91,6 +102,7 @@ impl FenceEvent {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Fence {
     inner: emlite::Val,
 }
@@ -118,6 +130,16 @@ impl core::ops::DerefMut for Fence {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Fence {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Fence {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Fence> for emlite::Val {
     fn from(s: Fence) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -125,6 +147,7 @@ impl From<Fence> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Fence);
 
 impl Fence {
     pub fn report_event0(&self) -> jsbind::Undefined {

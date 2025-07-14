@@ -26,6 +26,18 @@ macro_rules! bind {
             }
         }
 
+        impl AsRef<emlite::Val> for $i {
+            fn as_ref(&self) -> &emlite::Val {
+                &self.inner
+            }
+        }
+
+        impl AsMut<emlite::Val> for $i {
+            fn as_mut(&mut self) -> &mut emlite::Val {
+                &mut self.inner
+            }
+        }
+
         impl From<$i> for emlite::Val {
             fn from(x: $i) -> emlite::Val {
                 use emlite::FromVal;
@@ -38,3 +50,45 @@ macro_rules! bind {
 }
 
 pub(crate) use bind;
+
+#[macro_export]
+macro_rules! impl_dyn_cast {
+    ($ty:ty) => {
+        impl $crate::prelude::DynCast for $ty {
+            #[inline]
+            fn instanceof(val: &emlite::Val) -> bool {
+                // assumes `emlite::Val::instance_of(&ctor)` exists
+                let ctor = emlite::Val::global(stringify!($ty));
+                val.instanceof(ctor)
+            }
+            #[inline]
+            fn unchecked_from_val(v: emlite::Val) -> Self {
+                v.as_::<Self>() // zero-cost new-type cast
+            }
+            #[inline]
+            fn unchecked_from_val_ref(v: &emlite::Val) -> &Self {
+                unsafe { &*(v as *const emlite::Val as *const Self) }
+            }
+        }
+    };
+    ($ty:ty, $global_ctor:expr) => {
+        impl $crate::prelude::DynCast for $ty {
+            #[inline]
+            fn instanceof(val: &emlite::Val) -> bool {
+                // assumes `emlite::Val::instance_of(&ctor)` exists
+                let ctor = emlite::Val::global($global_ctor);
+                val.instanceof(ctor)
+            }
+            #[inline]
+            fn unchecked_from_val(v: emlite::Val) -> Self {
+                v.as_::<Self>() // zero-cost new-type cast
+            }
+            #[inline]
+            fn unchecked_from_val_ref(v: &emlite::Val) -> &Self {
+                unsafe { &*(v as *const emlite::Val as *const Self) }
+            }
+        }
+    };
+}
+
+pub use impl_dyn_cast;

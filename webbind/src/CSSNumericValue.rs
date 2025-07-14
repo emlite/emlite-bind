@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSNumericType {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for CSSNumericType {
 }
 impl core::ops::DerefMut for CSSNumericType {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for CSSNumericType {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CSSNumericType {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -107,6 +118,7 @@ impl CSSNumericType {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSNumericValue {
     inner: CSSStyleValue,
 }
@@ -134,6 +146,16 @@ impl core::ops::DerefMut for CSSNumericValue {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CSSNumericValue {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CSSNumericValue {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CSSNumericValue> for emlite::Val {
     fn from(s: CSSNumericValue) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -141,6 +163,7 @@ impl From<CSSNumericValue> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CSSNumericValue);
 
 impl CSSNumericValue {
     pub fn add(&self, values: jsbind::Any) -> CSSNumericValue {

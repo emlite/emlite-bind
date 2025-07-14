@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WebTransportError {
     inner: DOMException,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for WebTransportError {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WebTransportError {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WebTransportError {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WebTransportError> for emlite::Val {
     fn from(s: WebTransportError) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<WebTransportError> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(WebTransportError);
 
 impl WebTransportError {
     pub fn new0() -> WebTransportError {

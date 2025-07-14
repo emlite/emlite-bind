@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct StorageAccessHandle {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for StorageAccessHandle {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for StorageAccessHandle {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for StorageAccessHandle {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<StorageAccessHandle> for emlite::Val {
     fn from(s: StorageAccessHandle) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<StorageAccessHandle> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(StorageAccessHandle);
 
 impl StorageAccessHandle {
     pub fn session_storage(&self) -> Storage {

@@ -1,16 +1,17 @@
-//! jsbind :: Map<K, V>  (JavaScript Map)
+//! jsbind :: TypedMap<K, V>  (JavaScript dMap)
 //! Thin wrapper around `new Map()` that retains generic key/value types.
 use core::marker::PhantomData;
 use core::ops::{Deref, DerefMut};
 use emlite::FromVal;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
-pub struct Map<K, V> {
+#[repr(transparent)]
+pub struct TypedMap<K, V> {
     inner: emlite::Val,
     _phantom: PhantomData<(K, V)>,
 }
 
-impl<K, V> emlite::FromVal for Map<K, V> {
+impl<K, V> emlite::FromVal for TypedMap<K, V> {
     fn from_val(v: &emlite::Val) -> Self {
         Self {
             inner: v.clone(),
@@ -25,15 +26,15 @@ impl<K, V> emlite::FromVal for Map<K, V> {
     }
 }
 
-impl<K, V> From<Map<K, V>> for emlite::Val {
-    fn from(x: Map<K, V>) -> emlite::Val {
+impl<K, V> From<TypedMap<K, V>> for emlite::Val {
+    fn from(x: TypedMap<K, V>) -> emlite::Val {
         let handle = x.inner.as_handle();
         core::mem::forget(x);
         emlite::Val::take_ownership(handle)
     }
 }
 
-impl<K, V> Deref for Map<K, V> {
+impl<K, V> Deref for TypedMap<K, V> {
     type Target = emlite::Val;
 
     fn deref(&self) -> &Self::Target {
@@ -41,16 +42,31 @@ impl<K, V> Deref for Map<K, V> {
     }
 }
 
-impl<K, V> DerefMut for Map<K, V> {
+impl<K, V> DerefMut for TypedMap<K, V> {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
 
-impl<K, V> Map<K, V> {
-    /// `new Map(iterable?)`
+impl<K, V> AsRef<emlite::Val> for TypedMap<K, V> {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+
+impl<K, V> AsMut<emlite::Val> for TypedMap<K, V> {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
+
+pub type Map = TypedMap<crate::Any, crate::Any>;
+crate::utils::impl_dyn_cast!(Map, "Map");
+
+impl<K, V> TypedMap<K, V> {
+    /// `new TypedMap(iterable?)`
     pub fn new() -> Self {
-        emlite::Val::global("Map").new(&[]).as_::<Self>()
+        emlite::Val::global("TypedMap").new(&[]).as_::<Self>()
     }
 
     /// JavaScript `map.size`
@@ -97,19 +113,19 @@ impl<K, V> Map<K, V> {
     }
 }
 
-pub struct MapIter<'a, K, V> {
+pub struct TypedMapIter<'a, K, V> {
     it: crate::Sequence<crate::Any>,
     idx: usize,
     _phantom: PhantomData<(&'a K, &'a V)>,
 }
 
-impl<'a, K, V> IntoIterator for &'a Map<K, V>
+impl<'a, K, V> IntoIterator for &'a TypedMap<K, V>
 where
     K: FromVal,
     V: FromVal,
 {
     type Item = (K, V);
-    type IntoIter = MapIter<'a, K, V>;
+    type IntoIter = TypedMapIter<'a, K, V>;
 
     fn into_iter(self) -> Self::IntoIter {
         let iter = self.inner.call("entries", &[]).as_::<crate::Any>(); // JS iterator
@@ -118,7 +134,7 @@ where
             .new(&[])
             .call("from", &[iter])
             .as_::<crate::Sequence<crate::Any>>();
-        MapIter {
+        TypedMapIter {
             it: vec,
             idx: 0,
             _phantom: PhantomData,
@@ -126,7 +142,7 @@ where
     }
 }
 
-impl<'a, K, V> Iterator for MapIter<'a, K, V>
+impl<'a, K, V> Iterator for TypedMapIter<'a, K, V>
 where
     K: FromVal,
     V: FromVal,
@@ -144,26 +160,27 @@ where
     }
 }
 
-impl<K, V> From<crate::Record<K, V>> for Map<K, V>
+impl<K, V> From<crate::Record<K, V>> for TypedMap<K, V>
 where
     K: FromVal + Into<emlite::Val>,
     V: FromVal + Into<emlite::Val>,
 {
     fn from(rec: crate::Record<K, V>) -> Self {
         let map_ctor = emlite::Val::global("Map");
-        // Map entries: Object.entries(obj)
+        // TypedMap entries: Object.entries(obj)
         let entries = emlite::Val::global("Object").call("entries", &[rec.clone().into()]);
         map_ctor.new(&[entries]).as_::<Self>()
     }
 }
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
-pub struct WeakMap<K, V> {
+#[repr(transparent)]
+pub struct TypedWeakMap<K, V> {
     inner: emlite::Val,
     _phantom: PhantomData<(K, V)>,
 }
 
-impl<K, V> emlite::FromVal for WeakMap<K, V> {
+impl<K, V> emlite::FromVal for TypedWeakMap<K, V> {
     fn from_val(v: &emlite::Val) -> Self {
         Self {
             inner: v.clone(),
@@ -178,15 +195,15 @@ impl<K, V> emlite::FromVal for WeakMap<K, V> {
     }
 }
 
-impl<K, V> From<WeakMap<K, V>> for emlite::Val {
-    fn from(x: WeakMap<K, V>) -> emlite::Val {
+impl<K, V> From<TypedWeakMap<K, V>> for emlite::Val {
+    fn from(x: TypedWeakMap<K, V>) -> emlite::Val {
         let handle = x.inner.as_handle();
         core::mem::forget(x);
         emlite::Val::take_ownership(handle)
     }
 }
 
-impl<K, V> Deref for WeakMap<K, V> {
+impl<K, V> Deref for TypedWeakMap<K, V> {
     type Target = emlite::Val;
 
     fn deref(&self) -> &Self::Target {
@@ -194,16 +211,28 @@ impl<K, V> Deref for WeakMap<K, V> {
     }
 }
 
-impl<K, V> DerefMut for WeakMap<K, V> {
+impl<K, V> DerefMut for TypedWeakMap<K, V> {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.inner
     }
 }
 
-impl<K, V> WeakMap<K, V> {
-    /// `new WeakMap(iterable?)`
+impl<K, V> AsRef<emlite::Val> for TypedWeakMap<K, V> {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+
+impl<K, V> AsMut<emlite::Val> for TypedWeakMap<K, V> {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
+
+impl<K, V> TypedWeakMap<K, V> {
+    /// `new TypedWeakMap(iterable?)`
     pub fn new() -> Self {
-        emlite::Val::global("WeakMap").new(&[]).as_::<Self>()
+        emlite::Val::global("TypedWeakMap").new(&[]).as_::<Self>()
     }
 
     /// JavaScript `map.size`
@@ -250,19 +279,19 @@ impl<K, V> WeakMap<K, V> {
     }
 }
 
-pub struct WeakMapIter<'a, K, V> {
+pub struct TypedWeakMapIter<'a, K, V> {
     it: crate::Sequence<crate::Any>,
     idx: usize,
     _phantom: PhantomData<(&'a K, &'a V)>,
 }
 
-impl<'a, K, V> IntoIterator for &'a WeakMap<K, V>
+impl<'a, K, V> IntoIterator for &'a TypedWeakMap<K, V>
 where
     K: FromVal,
     V: FromVal,
 {
     type Item = (K, V);
-    type IntoIter = WeakMapIter<'a, K, V>;
+    type IntoIter = TypedWeakMapIter<'a, K, V>;
 
     fn into_iter(self) -> Self::IntoIter {
         let iter = self.inner.call("entries", &[]).as_::<crate::Any>(); // JS iterator
@@ -271,7 +300,7 @@ where
             .new(&[])
             .call("from", &[iter])
             .as_::<crate::Sequence<crate::Any>>();
-        WeakMapIter {
+        TypedWeakMapIter {
             it: vec,
             idx: 0,
             _phantom: PhantomData,
@@ -279,7 +308,7 @@ where
     }
 }
 
-impl<'a, K, V> Iterator for WeakMapIter<'a, K, V>
+impl<'a, K, V> Iterator for TypedWeakMapIter<'a, K, V>
 where
     K: FromVal,
     V: FromVal,
@@ -297,15 +326,18 @@ where
     }
 }
 
-impl<K, V> From<crate::Record<K, V>> for WeakMap<K, V>
+impl<K, V> From<crate::Record<K, V>> for TypedWeakMap<K, V>
 where
     K: FromVal + Into<emlite::Val>,
     V: FromVal + Into<emlite::Val>,
 {
     fn from(rec: crate::Record<K, V>) -> Self {
         let map_ctor = emlite::Val::global("WeakMap");
-        // WeakMap entries: Object.entries(obj)
+        // TypedWeakMap entries: Object.entries(obj)
         let entries = emlite::Val::global("Object").call("entries", &[rec.clone().into()]);
         map_ctor.new(&[entries]).as_::<Self>()
     }
 }
+
+pub type WeakMap = TypedWeakMap<crate::Any, crate::Any>;
+crate::utils::impl_dyn_cast!(WeakMap, "WeakMap");

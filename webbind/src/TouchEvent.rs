@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct TouchEvent {
     inner: UIEvent,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for TouchEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for TouchEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for TouchEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<TouchEvent> for emlite::Val {
     fn from(s: TouchEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<TouchEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(TouchEvent);
 
 impl TouchEvent {
     pub fn new0(type_: jsbind::DOMString) -> TouchEvent {

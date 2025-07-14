@@ -1,4 +1,4 @@
-use jsbind::Console;
+use jsbind::prelude::Console;
 use jsbind::DOMString;
 
 fn main() {

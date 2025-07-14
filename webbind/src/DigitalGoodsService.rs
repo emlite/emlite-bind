@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ItemDetails {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for ItemDetails {
 }
 impl core::ops::DerefMut for ItemDetails {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for ItemDetails {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ItemDetails {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -140,6 +151,7 @@ impl ItemDetails {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PurchaseDetails {
     inner: emlite::Val,
 }
@@ -162,6 +174,16 @@ impl core::ops::Deref for PurchaseDetails {
 }
 impl core::ops::DerefMut for PurchaseDetails {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for PurchaseDetails {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PurchaseDetails {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -192,6 +214,7 @@ impl PurchaseDetails {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DigitalGoodsService {
     inner: emlite::Val,
 }
@@ -219,6 +242,16 @@ impl core::ops::DerefMut for DigitalGoodsService {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for DigitalGoodsService {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DigitalGoodsService {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<DigitalGoodsService> for emlite::Val {
     fn from(s: DigitalGoodsService) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -226,6 +259,7 @@ impl From<DigitalGoodsService> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(DigitalGoodsService);
 
 impl DigitalGoodsService {
     pub fn get_details(&self, item_ids: jsbind::Sequence<jsbind::DOMString>) -> jsbind::Promise {

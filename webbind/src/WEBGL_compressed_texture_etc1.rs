@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct WEBGL_compressed_texture_etc1 {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for WEBGL_compressed_texture_etc1 {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for WEBGL_compressed_texture_etc1 {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for WEBGL_compressed_texture_etc1 {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<WEBGL_compressed_texture_etc1> for emlite::Val {
     fn from(s: WEBGL_compressed_texture_etc1) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,3 +46,4 @@ impl From<WEBGL_compressed_texture_etc1> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(WEBGL_compressed_texture_etc1);

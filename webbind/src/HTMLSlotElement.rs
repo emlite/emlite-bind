@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AssignedNodesOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for AssignedNodesOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for AssignedNodesOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AssignedNodesOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<AssignedNodesOptions> for emlite::Val {
     fn from(s: AssignedNodesOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl AssignedNodesOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct HTMLSlotElement {
     inner: HTMLElement,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for HTMLSlotElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for HTMLSlotElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for HTMLSlotElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<HTMLSlotElement> for emlite::Val {
     fn from(s: HTMLSlotElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<HTMLSlotElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(HTMLSlotElement);
 
 impl HTMLSlotElement {
     pub fn new() -> HTMLSlotElement {

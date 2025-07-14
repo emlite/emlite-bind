@@ -1,9 +1,25 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSPageDescriptors {
     inner: CSSStyleDeclaration,
 }
+
+jsbind::utils::impl_dyn_cast!(CSSPageDescriptors);
+
+impl AsRef<emlite::Val> for CSSPageDescriptors {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+
+impl AsMut<emlite::Val> for CSSPageDescriptors {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
+
 impl FromVal for CSSPageDescriptors {
     fn from_val(v: &emlite::Val) -> Self {
         CSSPageDescriptors {

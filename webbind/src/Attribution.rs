@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AttributionImpressionResult {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for AttributionImpressionResult {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for AttributionImpressionResult {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AttributionImpressionResult {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<AttributionImpressionResult> for emlite::Val {
     fn from(s: AttributionImpressionResult) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<AttributionImpressionResult> for emlite::Val {
 }
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AttributionImpressionOptions {
     inner: emlite::Val,
 }
@@ -57,6 +69,16 @@ impl core::ops::Deref for AttributionImpressionOptions {
 }
 impl core::ops::DerefMut for AttributionImpressionOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for AttributionImpressionOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AttributionImpressionOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -118,6 +140,7 @@ impl AttributionImpressionOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AttributionConversionResult {
     inner: emlite::Val,
 }
@@ -143,6 +166,16 @@ impl core::ops::DerefMut for AttributionConversionResult {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for AttributionConversionResult {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AttributionConversionResult {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<AttributionConversionResult> for emlite::Val {
     fn from(s: AttributionConversionResult) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -161,6 +194,7 @@ impl AttributionConversionResult {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AttributionConversionOptions {
     inner: emlite::Val,
 }
@@ -183,6 +217,16 @@ impl core::ops::Deref for AttributionConversionOptions {
 }
 impl core::ops::DerefMut for AttributionConversionOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for AttributionConversionOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AttributionConversionOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -291,6 +335,7 @@ impl AttributionConversionOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Attribution {
     inner: emlite::Val,
 }
@@ -318,6 +363,16 @@ impl core::ops::DerefMut for Attribution {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Attribution {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Attribution {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Attribution> for emlite::Val {
     fn from(s: Attribution) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -325,6 +380,7 @@ impl From<Attribution> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Attribution);
 
 impl Attribution {
     pub fn aggregation_services(&self) -> AttributionAggregationServices {

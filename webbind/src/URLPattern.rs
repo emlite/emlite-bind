@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct URLPatternResult {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for URLPatternResult {
 }
 impl core::ops::DerefMut for URLPatternResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for URLPatternResult {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for URLPatternResult {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -118,6 +129,7 @@ impl URLPatternResult {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct URLPattern {
     inner: emlite::Val,
 }
@@ -145,6 +157,16 @@ impl core::ops::DerefMut for URLPattern {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for URLPattern {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for URLPattern {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<URLPattern> for emlite::Val {
     fn from(s: URLPattern) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -152,6 +174,7 @@ impl From<URLPattern> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(URLPattern);
 
 impl URLPattern {
     pub fn new0() -> URLPattern {

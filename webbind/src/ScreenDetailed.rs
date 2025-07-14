@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ScreenDetailed {
     inner: Screen,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for ScreenDetailed {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ScreenDetailed {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ScreenDetailed {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ScreenDetailed> for emlite::Val {
     fn from(s: ScreenDetailed) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<ScreenDetailed> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ScreenDetailed);
 
 impl ScreenDetailed {
     pub fn avail_left(&self) -> i32 {

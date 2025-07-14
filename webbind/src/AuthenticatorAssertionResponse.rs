@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct AuthenticatorAssertionResponse {
     inner: AuthenticatorResponse,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for AuthenticatorAssertionResponse {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for AuthenticatorAssertionResponse {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for AuthenticatorAssertionResponse {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<AuthenticatorAssertionResponse> for emlite::Val {
     fn from(s: AuthenticatorAssertionResponse) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<AuthenticatorAssertionResponse> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(AuthenticatorAssertionResponse);
 
 impl AuthenticatorAssertionResponse {
     pub fn authenticator_data(&self) -> jsbind::ArrayBuffer {

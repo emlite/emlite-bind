@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct StylePropertyMapReadOnly {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for StylePropertyMapReadOnly {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for StylePropertyMapReadOnly {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for StylePropertyMapReadOnly {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<StylePropertyMapReadOnly> for emlite::Val {
     fn from(s: StylePropertyMapReadOnly) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<StylePropertyMapReadOnly> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(StylePropertyMapReadOnly);
 
 impl StylePropertyMapReadOnly {
     pub fn get(&self, property: jsbind::USVString) -> jsbind::Any {

@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUCanvasConfiguration {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for GPUCanvasConfiguration {
 }
 impl core::ops::DerefMut for GPUCanvasConfiguration {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPUCanvasConfiguration {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUCanvasConfiguration {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -100,6 +111,7 @@ impl GPUCanvasConfiguration {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUCanvasContext {
     inner: emlite::Val,
 }
@@ -127,6 +139,16 @@ impl core::ops::DerefMut for GPUCanvasContext {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUCanvasContext {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUCanvasContext {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUCanvasContext> for emlite::Val {
     fn from(s: GPUCanvasContext) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -134,6 +156,7 @@ impl From<GPUCanvasContext> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(GPUCanvasContext);
 
 impl GPUCanvasContext {
     pub fn canvas(&self) -> jsbind::Any {

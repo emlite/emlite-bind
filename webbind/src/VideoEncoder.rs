@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct VideoEncoderConfig {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for VideoEncoderConfig {
 }
 impl core::ops::DerefMut for VideoEncoderConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for VideoEncoderConfig {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for VideoEncoderConfig {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -156,6 +167,7 @@ impl VideoEncoderConfig {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct VideoEncoderEncodeOptions {
     inner: emlite::Val,
 }
@@ -181,6 +193,16 @@ impl core::ops::DerefMut for VideoEncoderEncodeOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for VideoEncoderEncodeOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for VideoEncoderEncodeOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<VideoEncoderEncodeOptions> for emlite::Val {
     fn from(s: VideoEncoderEncodeOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -199,6 +221,7 @@ impl VideoEncoderEncodeOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct VideoEncoderSupport {
     inner: emlite::Val,
 }
@@ -221,6 +244,16 @@ impl core::ops::Deref for VideoEncoderSupport {
 }
 impl core::ops::DerefMut for VideoEncoderSupport {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for VideoEncoderSupport {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for VideoEncoderSupport {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -251,6 +284,7 @@ impl VideoEncoderSupport {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct VideoEncoder {
     inner: EventTarget,
 }
@@ -278,6 +312,16 @@ impl core::ops::DerefMut for VideoEncoder {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for VideoEncoder {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for VideoEncoder {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<VideoEncoder> for emlite::Val {
     fn from(s: VideoEncoder) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -285,6 +329,7 @@ impl From<VideoEncoder> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(VideoEncoder);
 
 impl VideoEncoder {
     pub fn new(init: jsbind::Any) -> VideoEncoder {

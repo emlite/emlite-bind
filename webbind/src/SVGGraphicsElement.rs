@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SVGBoundingBoxOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for SVGBoundingBoxOptions {
 }
 impl core::ops::DerefMut for SVGBoundingBoxOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for SVGBoundingBoxOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SVGBoundingBoxOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -71,6 +82,7 @@ impl SVGBoundingBoxOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SVGGraphicsElement {
     inner: SVGElement,
 }
@@ -98,6 +110,16 @@ impl core::ops::DerefMut for SVGGraphicsElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SVGGraphicsElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SVGGraphicsElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SVGGraphicsElement> for emlite::Val {
     fn from(s: SVGGraphicsElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -105,6 +127,7 @@ impl From<SVGGraphicsElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SVGGraphicsElement);
 
 impl SVGGraphicsElement {
     pub fn transform(&self) -> SVGAnimatedTransformList {

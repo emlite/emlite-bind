@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PeriodicWaveConstraints {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for PeriodicWaveConstraints {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PeriodicWaveConstraints {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PeriodicWaveConstraints {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PeriodicWaveConstraints> for emlite::Val {
     fn from(s: PeriodicWaveConstraints) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl PeriodicWaveConstraints {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct BaseAudioContext {
     inner: EventTarget,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for BaseAudioContext {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for BaseAudioContext {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for BaseAudioContext {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<BaseAudioContext> for emlite::Val {
     fn from(s: BaseAudioContext) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<BaseAudioContext> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(BaseAudioContext);
 
 impl BaseAudioContext {
     pub fn destination(&self) -> AudioDestinationNode {

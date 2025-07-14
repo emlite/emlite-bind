@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct InkTrailStyle {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for InkTrailStyle {
 }
 impl core::ops::DerefMut for InkTrailStyle {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for InkTrailStyle {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for InkTrailStyle {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -53,6 +64,7 @@ impl InkTrailStyle {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DelegatedInkTrailPresenter {
     inner: emlite::Val,
 }
@@ -80,6 +92,16 @@ impl core::ops::DerefMut for DelegatedInkTrailPresenter {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for DelegatedInkTrailPresenter {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DelegatedInkTrailPresenter {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<DelegatedInkTrailPresenter> for emlite::Val {
     fn from(s: DelegatedInkTrailPresenter) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -87,6 +109,7 @@ impl From<DelegatedInkTrailPresenter> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(DelegatedInkTrailPresenter);
 
 impl DelegatedInkTrailPresenter {
     pub fn presentation_area(&self) -> Element {

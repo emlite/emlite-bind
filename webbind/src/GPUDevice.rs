@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUBufferDescriptor {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for GPUBufferDescriptor {
 }
 impl core::ops::DerefMut for GPUBufferDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPUBufferDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUBufferDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -62,6 +73,7 @@ impl GPUBufferDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUTextureDescriptor {
     inner: emlite::Val,
 }
@@ -84,6 +96,16 @@ impl core::ops::Deref for GPUTextureDescriptor {
 }
 impl core::ops::DerefMut for GPUTextureDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPUTextureDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUTextureDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -161,6 +183,7 @@ impl GPUTextureDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUSamplerDescriptor {
     inner: emlite::Val,
 }
@@ -183,6 +206,16 @@ impl core::ops::Deref for GPUSamplerDescriptor {
 }
 impl core::ops::DerefMut for GPUSamplerDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPUSamplerDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUSamplerDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -285,6 +318,7 @@ impl GPUSamplerDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUExternalTextureDescriptor {
     inner: emlite::Val,
 }
@@ -307,6 +341,16 @@ impl core::ops::Deref for GPUExternalTextureDescriptor {
 }
 impl core::ops::DerefMut for GPUExternalTextureDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPUExternalTextureDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUExternalTextureDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -337,6 +381,7 @@ impl GPUExternalTextureDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUBindGroupLayoutDescriptor {
     inner: emlite::Val,
 }
@@ -362,6 +407,16 @@ impl core::ops::DerefMut for GPUBindGroupLayoutDescriptor {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUBindGroupLayoutDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUBindGroupLayoutDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUBindGroupLayoutDescriptor> for emlite::Val {
     fn from(s: GPUBindGroupLayoutDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -382,6 +437,7 @@ impl GPUBindGroupLayoutDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUPipelineLayoutDescriptor {
     inner: emlite::Val,
 }
@@ -407,6 +463,16 @@ impl core::ops::DerefMut for GPUPipelineLayoutDescriptor {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUPipelineLayoutDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUPipelineLayoutDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUPipelineLayoutDescriptor> for emlite::Val {
     fn from(s: GPUPipelineLayoutDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -427,6 +493,7 @@ impl GPUPipelineLayoutDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUBindGroupDescriptor {
     inner: emlite::Val,
 }
@@ -449,6 +516,16 @@ impl core::ops::Deref for GPUBindGroupDescriptor {
 }
 impl core::ops::DerefMut for GPUBindGroupDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPUBindGroupDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUBindGroupDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -481,6 +558,7 @@ impl GPUBindGroupDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUShaderModuleDescriptor {
     inner: emlite::Val,
 }
@@ -503,6 +581,16 @@ impl core::ops::Deref for GPUShaderModuleDescriptor {
 }
 impl core::ops::DerefMut for GPUShaderModuleDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPUShaderModuleDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUShaderModuleDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -535,6 +623,7 @@ impl GPUShaderModuleDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUComputePipelineDescriptor {
     inner: emlite::Val,
 }
@@ -560,6 +649,16 @@ impl core::ops::DerefMut for GPUComputePipelineDescriptor {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUComputePipelineDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUComputePipelineDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUComputePipelineDescriptor> for emlite::Val {
     fn from(s: GPUComputePipelineDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -578,6 +677,7 @@ impl GPUComputePipelineDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPURenderPipelineDescriptor {
     inner: emlite::Val,
 }
@@ -600,6 +700,16 @@ impl core::ops::Deref for GPURenderPipelineDescriptor {
 }
 impl core::ops::DerefMut for GPURenderPipelineDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPURenderPipelineDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPURenderPipelineDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -657,6 +767,7 @@ impl GPURenderPipelineDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUCommandEncoderDescriptor {
     inner: emlite::Val,
 }
@@ -682,6 +793,16 @@ impl core::ops::DerefMut for GPUCommandEncoderDescriptor {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUCommandEncoderDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUCommandEncoderDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUCommandEncoderDescriptor> for emlite::Val {
     fn from(s: GPUCommandEncoderDescriptor) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -691,6 +812,7 @@ impl From<GPUCommandEncoderDescriptor> for emlite::Val {
 }
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPURenderBundleEncoderDescriptor {
     inner: emlite::Val,
 }
@@ -713,6 +835,16 @@ impl core::ops::Deref for GPURenderBundleEncoderDescriptor {
 }
 impl core::ops::DerefMut for GPURenderBundleEncoderDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPURenderBundleEncoderDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPURenderBundleEncoderDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -743,6 +875,7 @@ impl GPURenderBundleEncoderDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUQuerySetDescriptor {
     inner: emlite::Val,
 }
@@ -765,6 +898,16 @@ impl core::ops::Deref for GPUQuerySetDescriptor {
 }
 impl core::ops::DerefMut for GPUQuerySetDescriptor {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for GPUQuerySetDescriptor {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUQuerySetDescriptor {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -795,6 +938,7 @@ impl GPUQuerySetDescriptor {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct GPUDevice {
     inner: EventTarget,
 }
@@ -822,6 +966,16 @@ impl core::ops::DerefMut for GPUDevice {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for GPUDevice {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for GPUDevice {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<GPUDevice> for emlite::Val {
     fn from(s: GPUDevice) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -829,6 +983,7 @@ impl From<GPUDevice> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(GPUDevice);
 
 impl GPUDevice {
     pub fn features(&self) -> GPUSupportedFeatures {

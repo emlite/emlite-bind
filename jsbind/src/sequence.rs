@@ -5,6 +5,7 @@ use emlite::FromVal;
 
 /// Parameterised wrapper around a JavaScript array object.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Sequence<T> {
     inner: emlite::Val,
     phantom: PhantomData<T>,
@@ -43,6 +44,18 @@ impl<T> Deref for Sequence<T> {
 
 impl<T> DerefMut for Sequence<T> {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+
+impl<T> AsRef<emlite::Val> for Sequence<T> {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+
+impl<T> AsMut<emlite::Val> for Sequence<T> {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }

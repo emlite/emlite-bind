@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SpeechRecognitionOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for SpeechRecognitionOptions {
 }
 impl core::ops::DerefMut for SpeechRecognitionOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for SpeechRecognitionOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SpeechRecognitionOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -55,6 +66,7 @@ impl SpeechRecognitionOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SpeechRecognition {
     inner: EventTarget,
 }
@@ -82,6 +94,16 @@ impl core::ops::DerefMut for SpeechRecognition {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SpeechRecognition {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SpeechRecognition {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SpeechRecognition> for emlite::Val {
     fn from(s: SpeechRecognition) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -89,6 +111,7 @@ impl From<SpeechRecognition> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SpeechRecognition);
 
 impl SpeechRecognition {
     pub fn new() -> SpeechRecognition {

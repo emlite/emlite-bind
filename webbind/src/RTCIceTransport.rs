@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCIceParameters {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for RTCIceParameters {
 }
 impl core::ops::DerefMut for RTCIceParameters {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RTCIceParameters {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCIceParameters {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -55,6 +66,7 @@ impl RTCIceParameters {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCIceGatherOptions {
     inner: emlite::Val,
 }
@@ -77,6 +89,16 @@ impl core::ops::Deref for RTCIceGatherOptions {
 }
 impl core::ops::DerefMut for RTCIceGatherOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RTCIceGatherOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCIceGatherOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -111,6 +133,7 @@ impl RTCIceGatherOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCIceCandidateInit {
     inner: emlite::Val,
 }
@@ -133,6 +156,16 @@ impl core::ops::Deref for RTCIceCandidateInit {
 }
 impl core::ops::DerefMut for RTCIceCandidateInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RTCIceCandidateInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCIceCandidateInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -183,6 +216,7 @@ impl RTCIceCandidateInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCIceTransport {
     inner: EventTarget,
 }
@@ -210,6 +244,16 @@ impl core::ops::DerefMut for RTCIceTransport {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for RTCIceTransport {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCIceTransport {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<RTCIceTransport> for emlite::Val {
     fn from(s: RTCIceTransport) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -217,6 +261,7 @@ impl From<RTCIceTransport> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(RTCIceTransport);
 
 impl RTCIceTransport {
     pub fn role(&self) -> RTCIceRole {

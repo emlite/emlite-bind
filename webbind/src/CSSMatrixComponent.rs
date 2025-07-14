@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct CSSMatrixComponent {
     inner: CSSTransformComponent,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for CSSMatrixComponent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for CSSMatrixComponent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for CSSMatrixComponent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<CSSMatrixComponent> for emlite::Val {
     fn from(s: CSSMatrixComponent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<CSSMatrixComponent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(CSSMatrixComponent);
 
 impl CSSMatrixComponent {
     pub fn new0(matrix: DOMMatrixReadOnly) -> CSSMatrixComponent {

@@ -1,13 +1,15 @@
-use crate::utils::bind;
+use crate::utils::*;
 use crate::{Any, Uint8Array};
 use alloc::string::String;
 
 /// JavaScript `TextEncoder` (`new TextEncoder()`).
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct TextEncoder {
     inner: emlite::Val,
 }
 bind!(TextEncoder);
+impl_dyn_cast!(TextEncoder);
 
 impl TextEncoder {
     /// `new TextEncoder()` (always UTF-8 in browsers/Node).
@@ -33,10 +35,12 @@ impl TextEncoder {
 
 /// JavaScript `TextDecoder`
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct TextDecoder {
     inner: emlite::Val,
 }
 bind!(TextDecoder);
+impl_dyn_cast!(TextDecoder);
 
 impl TextDecoder {
     /// `new TextDecoder(label?, options?)`

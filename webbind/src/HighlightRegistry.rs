@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct HighlightHitResult {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for HighlightHitResult {
 }
 impl core::ops::DerefMut for HighlightHitResult {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for HighlightHitResult {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for HighlightHitResult {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -55,6 +66,7 @@ impl HighlightHitResult {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct HighlightsFromPointOptions {
     inner: emlite::Val,
 }
@@ -80,6 +92,16 @@ impl core::ops::DerefMut for HighlightsFromPointOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for HighlightsFromPointOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for HighlightsFromPointOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<HighlightsFromPointOptions> for emlite::Val {
     fn from(s: HighlightsFromPointOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -100,6 +122,7 @@ impl HighlightsFromPointOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct HighlightRegistry {
     inner: emlite::Val,
 }
@@ -127,6 +150,16 @@ impl core::ops::DerefMut for HighlightRegistry {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for HighlightRegistry {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for HighlightRegistry {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<HighlightRegistry> for emlite::Val {
     fn from(s: HighlightRegistry) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -134,6 +167,7 @@ impl From<HighlightRegistry> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(HighlightRegistry);
 
 impl HighlightRegistry {
     pub fn highlights_from_point0(&self, x: f32, y: f32) -> jsbind::Sequence<HighlightHitResult> {

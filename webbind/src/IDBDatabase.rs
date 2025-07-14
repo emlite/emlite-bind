@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct IDBTransactionOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for IDBTransactionOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for IDBTransactionOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for IDBTransactionOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<IDBTransactionOptions> for emlite::Val {
     fn from(s: IDBTransactionOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -46,6 +57,7 @@ impl IDBTransactionOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct IDBObjectStoreParameters {
     inner: emlite::Val,
 }
@@ -68,6 +80,16 @@ impl core::ops::Deref for IDBObjectStoreParameters {
 }
 impl core::ops::DerefMut for IDBObjectStoreParameters {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for IDBObjectStoreParameters {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for IDBObjectStoreParameters {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -98,6 +120,7 @@ impl IDBObjectStoreParameters {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct IDBDatabase {
     inner: EventTarget,
 }
@@ -125,6 +148,16 @@ impl core::ops::DerefMut for IDBDatabase {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for IDBDatabase {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for IDBDatabase {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<IDBDatabase> for emlite::Val {
     fn from(s: IDBDatabase) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -132,6 +165,7 @@ impl From<IDBDatabase> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(IDBDatabase);
 
 impl IDBDatabase {
     pub fn name(&self) -> jsbind::DOMString {

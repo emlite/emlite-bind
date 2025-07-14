@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Attr {
     inner: Node,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for Attr {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Attr {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Attr {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Attr> for emlite::Val {
     fn from(s: Attr) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<Attr> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Attr);
 
 impl Attr {
     pub fn namespace_uri(&self) -> jsbind::DOMString {

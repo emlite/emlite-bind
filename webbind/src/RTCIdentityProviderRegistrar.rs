@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCIdentityProvider {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for RTCIdentityProvider {
 }
 impl core::ops::DerefMut for RTCIdentityProvider {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for RTCIdentityProvider {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCIdentityProvider {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -57,6 +68,7 @@ impl RTCIdentityProvider {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct RTCIdentityProviderRegistrar {
     inner: emlite::Val,
 }
@@ -84,6 +96,16 @@ impl core::ops::DerefMut for RTCIdentityProviderRegistrar {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for RTCIdentityProviderRegistrar {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for RTCIdentityProviderRegistrar {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<RTCIdentityProviderRegistrar> for emlite::Val {
     fn from(s: RTCIdentityProviderRegistrar) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -91,6 +113,7 @@ impl From<RTCIdentityProviderRegistrar> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(RTCIdentityProviderRegistrar);
 
 impl RTCIdentityProviderRegistrar {
     pub fn register(&self, idp: RTCIdentityProvider) -> jsbind::Undefined {

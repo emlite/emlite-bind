@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
     inner: InterestGroupScriptRunnerGlobalScope,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for InterestGroupBiddingAndScoringScriptRunnerGlobalSco
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<InterestGroupBiddingAndScoringScriptRunnerGlobalScope> for emlite::Val {
     fn from(s: InterestGroupBiddingAndScoringScriptRunnerGlobalScope) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<InterestGroupBiddingAndScoringScriptRunnerGlobalScope> for emlite::Val
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(InterestGroupBiddingAndScoringScriptRunnerGlobalScope);
 
 impl InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
     pub fn for_debugging_only(&self) -> ForDebuggingOnly {

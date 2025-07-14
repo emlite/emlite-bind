@@ -1,12 +1,14 @@
-use crate::utils::bind;
+use crate::utils::*;
 use crate::{Any, Promise};
 
 /// JavaScript `Response` object returned by `fetch`.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Response {
     inner: emlite::Val,
 }
 bind!(Response);
+impl_dyn_cast!(Response);
 
 impl Response {
     /// `response.ok`

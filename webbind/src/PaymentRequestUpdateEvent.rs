@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct PaymentRequestUpdateEvent {
     inner: Event,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for PaymentRequestUpdateEvent {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for PaymentRequestUpdateEvent {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for PaymentRequestUpdateEvent {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<PaymentRequestUpdateEvent> for emlite::Val {
     fn from(s: PaymentRequestUpdateEvent) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<PaymentRequestUpdateEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(PaymentRequestUpdateEvent);
 
 impl PaymentRequestUpdateEvent {
     pub fn new0(type_: jsbind::DOMString) -> PaymentRequestUpdateEvent {

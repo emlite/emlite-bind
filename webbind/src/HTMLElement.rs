@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ShowPopoverOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for ShowPopoverOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ShowPopoverOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ShowPopoverOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ShowPopoverOptions> for emlite::Val {
     fn from(s: ShowPopoverOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl ShowPopoverOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct HTMLElement {
     inner: Element,
 }
@@ -71,6 +83,16 @@ impl core::ops::DerefMut for HTMLElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for HTMLElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for HTMLElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<HTMLElement> for emlite::Val {
     fn from(s: HTMLElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -78,6 +100,7 @@ impl From<HTMLElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(HTMLElement);
 
 impl HTMLElement {
     pub fn new() -> HTMLElement {

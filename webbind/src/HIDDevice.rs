@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct HIDCollectionInfo {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for HIDCollectionInfo {
 }
 impl core::ops::DerefMut for HIDCollectionInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for HIDCollectionInfo {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for HIDCollectionInfo {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -106,6 +117,7 @@ impl HIDCollectionInfo {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct HIDDevice {
     inner: EventTarget,
 }
@@ -133,6 +145,16 @@ impl core::ops::DerefMut for HIDDevice {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for HIDDevice {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for HIDDevice {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<HIDDevice> for emlite::Val {
     fn from(s: HIDDevice) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -140,6 +162,7 @@ impl From<HIDDevice> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(HIDDevice);
 
 impl HIDDevice {
     pub fn oninputreport(&self) -> jsbind::Any {

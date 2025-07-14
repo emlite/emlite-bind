@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct IdentityResolveOptions {
     inner: emlite::Val,
 }
@@ -26,6 +27,16 @@ impl core::ops::DerefMut for IdentityResolveOptions {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for IdentityResolveOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for IdentityResolveOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<IdentityResolveOptions> for emlite::Val {
     fn from(s: IdentityResolveOptions) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -44,6 +55,7 @@ impl IdentityResolveOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct IdentityUserInfo {
     inner: emlite::Val,
 }
@@ -66,6 +78,16 @@ impl core::ops::Deref for IdentityUserInfo {
 }
 impl core::ops::DerefMut for IdentityUserInfo {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for IdentityUserInfo {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for IdentityUserInfo {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -114,6 +136,7 @@ impl IdentityUserInfo {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct IdentityProviderConfig {
     inner: emlite::Val,
 }
@@ -136,6 +159,16 @@ impl core::ops::Deref for IdentityProviderConfig {
 }
 impl core::ops::DerefMut for IdentityProviderConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for IdentityProviderConfig {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for IdentityProviderConfig {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -166,6 +199,7 @@ impl IdentityProviderConfig {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct IdentityProvider {
     inner: emlite::Val,
 }
@@ -193,6 +227,16 @@ impl core::ops::DerefMut for IdentityProvider {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for IdentityProvider {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for IdentityProvider {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<IdentityProvider> for emlite::Val {
     fn from(s: IdentityProvider) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -200,6 +244,7 @@ impl From<IdentityProvider> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(IdentityProvider);
 
 impl IdentityProvider {
     pub fn close() -> jsbind::Undefined {

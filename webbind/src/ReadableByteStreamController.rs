@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct ReadableByteStreamController {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for ReadableByteStreamController {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for ReadableByteStreamController {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for ReadableByteStreamController {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<ReadableByteStreamController> for emlite::Val {
     fn from(s: ReadableByteStreamController) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<ReadableByteStreamController> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(ReadableByteStreamController);
 
 impl ReadableByteStreamController {
     pub fn byob_request(&self) -> ReadableStreamBYOBRequest {

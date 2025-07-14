@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct LaunchQueue {
     inner: emlite::Val,
 }
@@ -28,6 +29,16 @@ impl core::ops::DerefMut for LaunchQueue {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for LaunchQueue {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for LaunchQueue {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<LaunchQueue> for emlite::Val {
     fn from(s: LaunchQueue) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -35,6 +46,7 @@ impl From<LaunchQueue> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(LaunchQueue);
 
 impl LaunchQueue {
     pub fn set_consumer(&self, consumer: jsbind::Function) -> jsbind::Undefined {

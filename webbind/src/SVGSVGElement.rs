@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct DOMMatrix2DInit {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for DOMMatrix2DInit {
 }
 impl core::ops::DerefMut for DOMMatrix2DInit {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for DOMMatrix2DInit {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for DOMMatrix2DInit {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -143,6 +154,7 @@ impl DOMMatrix2DInit {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SVGSVGElement {
     inner: SVGGraphicsElement,
 }
@@ -170,6 +182,16 @@ impl core::ops::DerefMut for SVGSVGElement {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for SVGSVGElement {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SVGSVGElement {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<SVGSVGElement> for emlite::Val {
     fn from(s: SVGSVGElement) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -177,6 +199,7 @@ impl From<SVGSVGElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(SVGSVGElement);
 
 impl SVGSVGElement {
     pub fn x(&self) -> SVGAnimatedLength {

@@ -1,4 +1,5 @@
-use jsbind::{Closure, Console};
+use jsbind::prelude::*;
+use jsbind::{Closure};
 use webbind::html_button_element::HTMLButtonElement;
 use webbind::node::Node;
 use webbind::pointer_event::PointerEvent;

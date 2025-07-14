@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SanitizerConfig {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for SanitizerConfig {
 }
 impl core::ops::DerefMut for SanitizerConfig {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for SanitizerConfig {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SanitizerConfig {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -108,6 +119,7 @@ impl SanitizerConfig {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Sanitizer {
     inner: emlite::Val,
 }
@@ -135,6 +147,16 @@ impl core::ops::DerefMut for Sanitizer {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Sanitizer {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Sanitizer {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Sanitizer> for emlite::Val {
     fn from(s: Sanitizer) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -142,6 +164,7 @@ impl From<Sanitizer> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Sanitizer);
 
 impl Sanitizer {
     pub fn new0() -> Sanitizer {

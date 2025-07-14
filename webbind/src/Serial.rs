@@ -1,6 +1,7 @@
 use super::*;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct SerialPortRequestOptions {
     inner: emlite::Val,
 }
@@ -23,6 +24,16 @@ impl core::ops::Deref for SerialPortRequestOptions {
 }
 impl core::ops::DerefMut for SerialPortRequestOptions {
     fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+impl AsRef<emlite::Val> for SerialPortRequestOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for SerialPortRequestOptions {
+    fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
     }
 }
@@ -60,6 +71,7 @@ impl SerialPortRequestOptions {
     }
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
 pub struct Serial {
     inner: EventTarget,
 }
@@ -87,6 +99,16 @@ impl core::ops::DerefMut for Serial {
         &mut self.inner
     }
 }
+impl AsRef<emlite::Val> for Serial {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+impl AsMut<emlite::Val> for Serial {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
 impl From<Serial> for emlite::Val {
     fn from(s: Serial) -> emlite::Val {
         let handle = s.inner.as_handle();
@@ -94,6 +116,7 @@ impl From<Serial> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+jsbind::utils::impl_dyn_cast!(Serial);
 
 impl Serial {
     pub fn onconnect(&self) -> jsbind::Any {
