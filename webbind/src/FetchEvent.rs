@@ -54,7 +54,7 @@ impl From<&FetchEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(FetchEvent);
 
 impl FetchEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> FetchEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> FetchEvent {
         Self {
             inner: emlite::Val::global("FetchEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -73,18 +73,18 @@ impl FetchEvent {
     }
 }
 impl FetchEvent {
-    pub fn client_id(&self) -> DOMString {
-        self.inner.get("clientId").as_::<DOMString>()
+    pub fn client_id(&self) -> String {
+        self.inner.get("clientId").as_::<String>()
     }
 }
 impl FetchEvent {
-    pub fn resulting_client_id(&self) -> DOMString {
-        self.inner.get("resultingClientId").as_::<DOMString>()
+    pub fn resulting_client_id(&self) -> String {
+        self.inner.get("resultingClientId").as_::<String>()
     }
 }
 impl FetchEvent {
-    pub fn replaces_client_id(&self) -> DOMString {
-        self.inner.get("replacesClientId").as_::<DOMString>()
+    pub fn replaces_client_id(&self) -> String {
+        self.inner.get("replacesClientId").as_::<String>()
     }
 }
 impl FetchEvent {
@@ -93,7 +93,7 @@ impl FetchEvent {
     }
 }
 impl FetchEvent {
-    pub fn respond_with(&self, r: Promise) -> Undefined {
+    pub fn respond_with(&self, r: &Promise) -> Undefined {
         self.inner
             .call("respondWith", &[r.into()])
             .as_::<Undefined>()

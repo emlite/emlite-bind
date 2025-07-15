@@ -54,24 +54,24 @@ impl From<&TextEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(TextEvent);
 
 impl TextEvent {
-    pub fn data(&self) -> DOMString {
-        self.inner.get("data").as_::<DOMString>()
+    pub fn data(&self) -> String {
+        self.inner.get("data").as_::<String>()
     }
 }
 impl TextEvent {
-    pub fn init_text_event0(&self, type_: DOMString) -> Undefined {
+    pub fn init_text_event0(&self, type_: &str) -> Undefined {
         self.inner
             .call("initTextEvent", &[type_.into()])
             .as_::<Undefined>()
     }
 
-    pub fn init_text_event1(&self, type_: DOMString, bubbles: bool) -> Undefined {
+    pub fn init_text_event1(&self, type_: &str, bubbles: bool) -> Undefined {
         self.inner
             .call("initTextEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
     }
 
-    pub fn init_text_event2(&self, type_: DOMString, bubbles: bool, cancelable: bool) -> Undefined {
+    pub fn init_text_event2(&self, type_: &str, bubbles: bool, cancelable: bool) -> Undefined {
         self.inner
             .call(
                 "initTextEvent",
@@ -82,10 +82,10 @@ impl TextEvent {
 
     pub fn init_text_event3(
         &self,
-        type_: DOMString,
+        type_: &str,
         bubbles: bool,
         cancelable: bool,
-        view: Window,
+        view: &Window,
     ) -> Undefined {
         self.inner
             .call(
@@ -97,11 +97,11 @@ impl TextEvent {
 
     pub fn init_text_event4(
         &self,
-        type_: DOMString,
+        type_: &str,
         bubbles: bool,
         cancelable: bool,
-        view: Window,
-        data: DOMString,
+        view: &Window,
+        data: &str,
     ) -> Undefined {
         self.inner
             .call(

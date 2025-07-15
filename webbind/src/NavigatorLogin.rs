@@ -54,7 +54,7 @@ impl From<&NavigatorLogin> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(NavigatorLogin);
 
 impl NavigatorLogin {
-    pub fn set_status(&self, status: LoginStatus) -> Promise {
+    pub fn set_status(&self, status: &LoginStatus) -> Promise {
         self.inner
             .call("setStatus", &[status.into()])
             .as_::<Promise>()

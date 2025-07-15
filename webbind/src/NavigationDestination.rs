@@ -54,18 +54,18 @@ impl From<&NavigationDestination> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(NavigationDestination);
 
 impl NavigationDestination {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }
 impl NavigationDestination {
-    pub fn key(&self) -> DOMString {
-        self.inner.get("key").as_::<DOMString>()
+    pub fn key(&self) -> String {
+        self.inner.get("key").as_::<String>()
     }
 }
 impl NavigationDestination {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl NavigationDestination {

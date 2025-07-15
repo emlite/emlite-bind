@@ -63,11 +63,11 @@ impl HTMLTitleElement {
     }
 }
 impl HTMLTitleElement {
-    pub fn text(&self) -> DOMString {
-        self.inner.get("text").as_::<DOMString>()
+    pub fn text(&self) -> String {
+        self.inner.get("text").as_::<String>()
     }
 
-    pub fn set_text(&mut self, value: DOMString) {
+    pub fn set_text(&mut self, value: &str) {
         self.inner.set("text", value);
     }
 }

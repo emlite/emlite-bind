@@ -54,7 +54,7 @@ impl From<&CharacterBoundsUpdateEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CharacterBoundsUpdateEvent);
 
 impl CharacterBoundsUpdateEvent {
-    pub fn new0(type_: DOMString) -> CharacterBoundsUpdateEvent {
+    pub fn new0(type_: &str) -> CharacterBoundsUpdateEvent {
         Self {
             inner: emlite::Val::global("CharacterBoundsUpdateEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl CharacterBoundsUpdateEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, options: Any) -> CharacterBoundsUpdateEvent {
+    pub fn new1(type_: &str, options: &Any) -> CharacterBoundsUpdateEvent {
         Self {
             inner: emlite::Val::global("CharacterBoundsUpdateEvent")
                 .new(&[type_.into(), options.into()])

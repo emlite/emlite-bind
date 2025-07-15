@@ -54,7 +54,7 @@ impl From<&LayoutWorkletGlobalScope> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(LayoutWorkletGlobalScope);
 
 impl LayoutWorkletGlobalScope {
-    pub fn register_layout(&self, name: DOMString, layout_ctor: Any) -> Undefined {
+    pub fn register_layout(&self, name: &str, layout_ctor: &Any) -> Undefined {
         self.inner
             .call("registerLayout", &[name.into(), layout_ctor.into()])
             .as_::<Undefined>()

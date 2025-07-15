@@ -54,8 +54,8 @@ impl From<&MediaKeySession> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MediaKeySession);
 
 impl MediaKeySession {
-    pub fn session_id(&self) -> DOMString {
-        self.inner.get("sessionId").as_::<DOMString>()
+    pub fn session_id(&self) -> String {
+        self.inner.get("sessionId").as_::<String>()
     }
 }
 impl MediaKeySession {
@@ -78,7 +78,7 @@ impl MediaKeySession {
         self.inner.get("onkeystatuseschange").as_::<Any>()
     }
 
-    pub fn set_onkeystatuseschange(&mut self, value: Any) {
+    pub fn set_onkeystatuseschange(&mut self, value: &Any) {
         self.inner.set("onkeystatuseschange", value);
     }
 }
@@ -87,12 +87,12 @@ impl MediaKeySession {
         self.inner.get("onmessage").as_::<Any>()
     }
 
-    pub fn set_onmessage(&mut self, value: Any) {
+    pub fn set_onmessage(&mut self, value: &Any) {
         self.inner.set("onmessage", value);
     }
 }
 impl MediaKeySession {
-    pub fn generate_request(&self, init_data_type: DOMString, init_data: Any) -> Promise {
+    pub fn generate_request(&self, init_data_type: &str, init_data: &Any) -> Promise {
         self.inner
             .call(
                 "generateRequest",
@@ -102,14 +102,14 @@ impl MediaKeySession {
     }
 }
 impl MediaKeySession {
-    pub fn load(&self, session_id: DOMString) -> Promise {
+    pub fn load(&self, session_id: &str) -> Promise {
         self.inner
             .call("load", &[session_id.into()])
             .as_::<Promise>()
     }
 }
 impl MediaKeySession {
-    pub fn update(&self, response: Any) -> Promise {
+    pub fn update(&self, response: &Any) -> Promise {
         self.inner
             .call("update", &[response.into()])
             .as_::<Promise>()

@@ -135,7 +135,7 @@ impl MediaSession {
         self.inner.get("metadata").as_::<MediaMetadata>()
     }
 
-    pub fn set_metadata(&mut self, value: MediaMetadata) {
+    pub fn set_metadata(&mut self, value: &MediaMetadata) {
         self.inner.set("metadata", value);
     }
 }
@@ -146,12 +146,12 @@ impl MediaSession {
             .as_::<MediaSessionPlaybackState>()
     }
 
-    pub fn set_playback_state(&mut self, value: MediaSessionPlaybackState) {
+    pub fn set_playback_state(&mut self, value: &MediaSessionPlaybackState) {
         self.inner.set("playbackState", value);
     }
 }
 impl MediaSession {
-    pub fn set_action_handler(&self, action: MediaSessionAction, handler: Function) -> Undefined {
+    pub fn set_action_handler(&self, action: &MediaSessionAction, handler: &Function) -> Undefined {
         self.inner
             .call("setActionHandler", &[action.into(), handler.into()])
             .as_::<Undefined>()
@@ -162,7 +162,7 @@ impl MediaSession {
         self.inner.call("setPositionState", &[]).as_::<Undefined>()
     }
 
-    pub fn set_position_state1(&self, state: MediaPositionState) -> Undefined {
+    pub fn set_position_state1(&self, state: &MediaPositionState) -> Undefined {
         self.inner
             .call("setPositionState", &[state.into()])
             .as_::<Undefined>()

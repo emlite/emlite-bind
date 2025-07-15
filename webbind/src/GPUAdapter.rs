@@ -57,18 +57,18 @@ impl GPUDeviceDescriptor {
             .as_::<Sequence<GPUFeatureName>>()
     }
 
-    pub fn set_required_features(&mut self, value: Sequence<GPUFeatureName>) {
+    pub fn set_required_features(&mut self, value: &Sequence<GPUFeatureName>) {
         self.inner.set("requiredFeatures", value);
     }
 }
 impl GPUDeviceDescriptor {
-    pub fn required_limits(&self) -> Record<DOMString, Any> {
+    pub fn required_limits(&self) -> Record<String, Any> {
         self.inner
             .get("requiredLimits")
-            .as_::<Record<DOMString, Any>>()
+            .as_::<Record<String, Any>>()
     }
 
-    pub fn set_required_limits(&mut self, value: Record<DOMString, Any>) {
+    pub fn set_required_limits(&mut self, value: &Record<String, Any>) {
         self.inner.set("requiredLimits", value);
     }
 }
@@ -77,7 +77,7 @@ impl GPUDeviceDescriptor {
         self.inner.get("defaultQueue").as_::<Any>()
     }
 
-    pub fn set_default_queue(&mut self, value: Any) {
+    pub fn set_default_queue(&mut self, value: &Any) {
         self.inner.set("defaultQueue", value);
     }
 }
@@ -154,7 +154,7 @@ impl GPUAdapter {
         self.inner.call("requestDevice", &[]).as_::<Promise>()
     }
 
-    pub fn request_device1(&self, descriptor: GPUDeviceDescriptor) -> Promise {
+    pub fn request_device1(&self, descriptor: &GPUDeviceDescriptor) -> Promise {
         self.inner
             .call("requestDevice", &[descriptor.into()])
             .as_::<Promise>()

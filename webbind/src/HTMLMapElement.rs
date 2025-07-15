@@ -63,11 +63,11 @@ impl HTMLMapElement {
     }
 }
 impl HTMLMapElement {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }

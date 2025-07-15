@@ -59,7 +59,7 @@ impl HTMLAllCollection {
     }
 }
 impl HTMLAllCollection {
-    pub fn named_item(&self, name: DOMString) -> Any {
+    pub fn named_item(&self, name: &str) -> Any {
         self.inner.call("namedItem", &[name.into()]).as_::<Any>()
     }
 }
@@ -68,7 +68,7 @@ impl HTMLAllCollection {
         self.inner.call("item", &[]).as_::<Any>()
     }
 
-    pub fn item1(&self, name_or_index: DOMString) -> Any {
+    pub fn item1(&self, name_or_index: &str) -> Any {
         self.inner
             .call("item", &[name_or_index.into()])
             .as_::<Any>()

@@ -62,7 +62,7 @@ impl UncalibratedMagnetometer {
         }
     }
 
-    pub fn new1(sensor_options: Any) -> UncalibratedMagnetometer {
+    pub fn new1(sensor_options: &Any) -> UncalibratedMagnetometer {
         Self {
             inner: emlite::Val::global("UncalibratedMagnetometer")
                 .new(&[sensor_options.into()])

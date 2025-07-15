@@ -54,8 +54,8 @@ impl From<&MediaDeviceInfo> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MediaDeviceInfo);
 
 impl MediaDeviceInfo {
-    pub fn device_id(&self) -> DOMString {
-        self.inner.get("deviceId").as_::<DOMString>()
+    pub fn device_id(&self) -> String {
+        self.inner.get("deviceId").as_::<String>()
     }
 }
 impl MediaDeviceInfo {
@@ -64,13 +64,13 @@ impl MediaDeviceInfo {
     }
 }
 impl MediaDeviceInfo {
-    pub fn label(&self) -> DOMString {
-        self.inner.get("label").as_::<DOMString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 }
 impl MediaDeviceInfo {
-    pub fn group_id(&self) -> DOMString {
-        self.inner.get("groupId").as_::<DOMString>()
+    pub fn group_id(&self) -> String {
+        self.inner.get("groupId").as_::<String>()
     }
 }
 impl MediaDeviceInfo {

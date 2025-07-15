@@ -54,7 +54,7 @@ impl From<&DragEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(DragEvent);
 
 impl DragEvent {
-    pub fn new0(type_: DOMString) -> DragEvent {
+    pub fn new0(type_: &str) -> DragEvent {
         Self {
             inner: emlite::Val::global("DragEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl DragEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> DragEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> DragEvent {
         Self {
             inner: emlite::Val::global("DragEvent")
                 .new(&[type_.into(), event_init_dict.into()])

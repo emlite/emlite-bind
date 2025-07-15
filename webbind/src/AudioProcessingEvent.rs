@@ -54,7 +54,7 @@ impl From<&AudioProcessingEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(AudioProcessingEvent);
 
 impl AudioProcessingEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> AudioProcessingEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> AudioProcessingEvent {
         Self {
             inner: emlite::Val::global("AudioProcessingEvent")
                 .new(&[type_.into(), event_init_dict.into()])

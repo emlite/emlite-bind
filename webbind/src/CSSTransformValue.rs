@@ -54,7 +54,7 @@ impl From<&CSSTransformValue> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSTransformValue);
 
 impl CSSTransformValue {
-    pub fn new(transforms: Sequence<CSSTransformComponent>) -> CSSTransformValue {
+    pub fn new(transforms: &Sequence<CSSTransformComponent>) -> CSSTransformValue {
         Self {
             inner: emlite::Val::global("CSSTransformValue")
                 .new(&[transforms.into()])

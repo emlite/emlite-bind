@@ -55,7 +55,7 @@ impl WatchAdvertisementsOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -113,13 +113,13 @@ impl From<&BluetoothDevice> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(BluetoothDevice);
 
 impl BluetoothDevice {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl BluetoothDevice {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl BluetoothDevice {
@@ -137,7 +137,7 @@ impl BluetoothDevice {
         self.inner.call("watchAdvertisements", &[]).as_::<Promise>()
     }
 
-    pub fn watch_advertisements1(&self, options: WatchAdvertisementsOptions) -> Promise {
+    pub fn watch_advertisements1(&self, options: &WatchAdvertisementsOptions) -> Promise {
         self.inner
             .call("watchAdvertisements", &[options.into()])
             .as_::<Promise>()
@@ -153,7 +153,7 @@ impl BluetoothDevice {
         self.inner.get("onadvertisementreceived").as_::<Any>()
     }
 
-    pub fn set_onadvertisementreceived(&mut self, value: Any) {
+    pub fn set_onadvertisementreceived(&mut self, value: &Any) {
         self.inner.set("onadvertisementreceived", value);
     }
 }
@@ -162,7 +162,7 @@ impl BluetoothDevice {
         self.inner.get("ongattserverdisconnected").as_::<Any>()
     }
 
-    pub fn set_ongattserverdisconnected(&mut self, value: Any) {
+    pub fn set_ongattserverdisconnected(&mut self, value: &Any) {
         self.inner.set("ongattserverdisconnected", value);
     }
 }
@@ -171,7 +171,7 @@ impl BluetoothDevice {
         self.inner.get("oncharacteristicvaluechanged").as_::<Any>()
     }
 
-    pub fn set_oncharacteristicvaluechanged(&mut self, value: Any) {
+    pub fn set_oncharacteristicvaluechanged(&mut self, value: &Any) {
         self.inner.set("oncharacteristicvaluechanged", value);
     }
 }
@@ -180,7 +180,7 @@ impl BluetoothDevice {
         self.inner.get("onserviceadded").as_::<Any>()
     }
 
-    pub fn set_onserviceadded(&mut self, value: Any) {
+    pub fn set_onserviceadded(&mut self, value: &Any) {
         self.inner.set("onserviceadded", value);
     }
 }
@@ -189,7 +189,7 @@ impl BluetoothDevice {
         self.inner.get("onservicechanged").as_::<Any>()
     }
 
-    pub fn set_onservicechanged(&mut self, value: Any) {
+    pub fn set_onservicechanged(&mut self, value: &Any) {
         self.inner.set("onservicechanged", value);
     }
 }
@@ -198,7 +198,7 @@ impl BluetoothDevice {
         self.inner.get("onserviceremoved").as_::<Any>()
     }
 
-    pub fn set_onserviceremoved(&mut self, value: Any) {
+    pub fn set_onserviceremoved(&mut self, value: &Any) {
         self.inner.set("onserviceremoved", value);
     }
 }

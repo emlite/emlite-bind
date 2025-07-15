@@ -113,22 +113,22 @@ impl From<&FileSystemSyncAccessHandle> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(FileSystemSyncAccessHandle);
 
 impl FileSystemSyncAccessHandle {
-    pub fn read0(&self, buffer: Any) -> u64 {
+    pub fn read0(&self, buffer: &Any) -> u64 {
         self.inner.call("read", &[buffer.into()]).as_::<u64>()
     }
 
-    pub fn read1(&self, buffer: Any, options: FileSystemReadWriteOptions) -> u64 {
+    pub fn read1(&self, buffer: &Any, options: &FileSystemReadWriteOptions) -> u64 {
         self.inner
             .call("read", &[buffer.into(), options.into()])
             .as_::<u64>()
     }
 }
 impl FileSystemSyncAccessHandle {
-    pub fn write0(&self, buffer: Any) -> u64 {
+    pub fn write0(&self, buffer: &Any) -> u64 {
         self.inner.call("write", &[buffer.into()]).as_::<u64>()
     }
 
-    pub fn write1(&self, buffer: Any, options: FileSystemReadWriteOptions) -> u64 {
+    pub fn write1(&self, buffer: &Any, options: &FileSystemReadWriteOptions) -> u64 {
         self.inner
             .call("write", &[buffer.into(), options.into()])
             .as_::<u64>()

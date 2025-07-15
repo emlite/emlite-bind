@@ -58,7 +58,7 @@ impl AudioSession {
         self.inner.get("type").as_::<AudioSessionType>()
     }
 
-    pub fn set_type_(&mut self, value: AudioSessionType) {
+    pub fn set_type_(&mut self, value: &AudioSessionType) {
         self.inner.set("type", value);
     }
 }
@@ -72,7 +72,7 @@ impl AudioSession {
         self.inner.get("onstatechange").as_::<Any>()
     }
 
-    pub fn set_onstatechange(&mut self, value: Any) {
+    pub fn set_onstatechange(&mut self, value: &Any) {
         self.inner.set("onstatechange", value);
     }
 }

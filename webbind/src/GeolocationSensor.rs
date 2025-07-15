@@ -55,7 +55,7 @@ impl GeolocationSensorReading {
         self.inner.get("timestamp").as_::<Any>()
     }
 
-    pub fn set_timestamp(&mut self, value: Any) {
+    pub fn set_timestamp(&mut self, value: &Any) {
         self.inner.set("timestamp", value);
     }
 }
@@ -177,7 +177,7 @@ impl ReadOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -243,7 +243,7 @@ impl GeolocationSensor {
         }
     }
 
-    pub fn new1(options: Any) -> GeolocationSensor {
+    pub fn new1(options: &Any) -> GeolocationSensor {
         Self {
             inner: emlite::Val::global("GeolocationSensor")
                 .new(&[options.into()])
@@ -258,7 +258,7 @@ impl GeolocationSensor {
             .as_::<Promise>()
     }
 
-    pub fn read1(read_options: ReadOptions) -> Promise {
+    pub fn read1(read_options: &ReadOptions) -> Promise {
         emlite::Val::global("GeolocationSensor")
             .call("read", &[read_options.into()])
             .as_::<Promise>()

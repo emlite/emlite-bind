@@ -54,7 +54,7 @@ impl From<&CSSParserFunction> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSParserFunction);
 
 impl CSSParserFunction {
-    pub fn new(name: DOMString, args: Sequence<Sequence<CSSParserValue>>) -> CSSParserFunction {
+    pub fn new(name: &str, args: &Sequence<Sequence<CSSParserValue>>) -> CSSParserFunction {
         Self {
             inner: emlite::Val::global("CSSParserFunction")
                 .new(&[name.into(), args.into()])
@@ -63,8 +63,8 @@ impl CSSParserFunction {
     }
 }
 impl CSSParserFunction {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl CSSParserFunction {

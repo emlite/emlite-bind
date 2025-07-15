@@ -63,7 +63,7 @@ impl SourceBufferList {
         self.inner.get("onaddsourcebuffer").as_::<Any>()
     }
 
-    pub fn set_onaddsourcebuffer(&mut self, value: Any) {
+    pub fn set_onaddsourcebuffer(&mut self, value: &Any) {
         self.inner.set("onaddsourcebuffer", value);
     }
 }
@@ -72,7 +72,7 @@ impl SourceBufferList {
         self.inner.get("onremovesourcebuffer").as_::<Any>()
     }
 
-    pub fn set_onremovesourcebuffer(&mut self, value: Any) {
+    pub fn set_onremovesourcebuffer(&mut self, value: &Any) {
         self.inner.set("onremovesourcebuffer", value);
     }
 }

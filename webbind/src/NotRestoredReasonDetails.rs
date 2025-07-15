@@ -54,8 +54,8 @@ impl From<&NotRestoredReasonDetails> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(NotRestoredReasonDetails);
 
 impl NotRestoredReasonDetails {
-    pub fn reason(&self) -> DOMString {
-        self.inner.get("reason").as_::<DOMString>()
+    pub fn reason(&self) -> String {
+        self.inner.get("reason").as_::<String>()
     }
 }
 impl NotRestoredReasonDetails {

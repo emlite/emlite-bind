@@ -54,7 +54,7 @@ impl From<&OTPCredential> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(OTPCredential);
 
 impl OTPCredential {
-    pub fn code(&self) -> DOMString {
-        self.inner.get("code").as_::<DOMString>()
+    pub fn code(&self) -> String {
+        self.inner.get("code").as_::<String>()
     }
 }

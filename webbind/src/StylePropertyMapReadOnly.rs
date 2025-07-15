@@ -54,19 +54,19 @@ impl From<&StylePropertyMapReadOnly> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(StylePropertyMapReadOnly);
 
 impl StylePropertyMapReadOnly {
-    pub fn get(&self, property: USVString) -> Any {
+    pub fn get(&self, property: &str) -> Any {
         self.inner.call("get", &[property.into()]).as_::<Any>()
     }
 }
 impl StylePropertyMapReadOnly {
-    pub fn get_all(&self, property: USVString) -> Sequence<CSSStyleValue> {
+    pub fn get_all(&self, property: &str) -> Sequence<CSSStyleValue> {
         self.inner
             .call("getAll", &[property.into()])
             .as_::<Sequence<CSSStyleValue>>()
     }
 }
 impl StylePropertyMapReadOnly {
-    pub fn has(&self, property: USVString) -> bool {
+    pub fn has(&self, property: &str) -> bool {
         self.inner.call("has", &[property.into()]).as_::<bool>()
     }
 }

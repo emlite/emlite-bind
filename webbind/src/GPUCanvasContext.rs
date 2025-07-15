@@ -55,7 +55,7 @@ impl GPUCanvasConfiguration {
         self.inner.get("device").as_::<GPUDevice>()
     }
 
-    pub fn set_device(&mut self, value: GPUDevice) {
+    pub fn set_device(&mut self, value: &GPUDevice) {
         self.inner.set("device", value);
     }
 }
@@ -64,7 +64,7 @@ impl GPUCanvasConfiguration {
         self.inner.get("format").as_::<GPUTextureFormat>()
     }
 
-    pub fn set_format(&mut self, value: GPUTextureFormat) {
+    pub fn set_format(&mut self, value: &GPUTextureFormat) {
         self.inner.set("format", value);
     }
 }
@@ -73,7 +73,7 @@ impl GPUCanvasConfiguration {
         self.inner.get("usage").as_::<Any>()
     }
 
-    pub fn set_usage(&mut self, value: Any) {
+    pub fn set_usage(&mut self, value: &Any) {
         self.inner.set("usage", value);
     }
 }
@@ -84,7 +84,7 @@ impl GPUCanvasConfiguration {
             .as_::<Sequence<GPUTextureFormat>>()
     }
 
-    pub fn set_view_formats(&mut self, value: Sequence<GPUTextureFormat>) {
+    pub fn set_view_formats(&mut self, value: &Sequence<GPUTextureFormat>) {
         self.inner.set("viewFormats", value);
     }
 }
@@ -93,7 +93,7 @@ impl GPUCanvasConfiguration {
         self.inner.get("colorSpace").as_::<PredefinedColorSpace>()
     }
 
-    pub fn set_color_space(&mut self, value: PredefinedColorSpace) {
+    pub fn set_color_space(&mut self, value: &PredefinedColorSpace) {
         self.inner.set("colorSpace", value);
     }
 }
@@ -102,7 +102,7 @@ impl GPUCanvasConfiguration {
         self.inner.get("toneMapping").as_::<Any>()
     }
 
-    pub fn set_tone_mapping(&mut self, value: Any) {
+    pub fn set_tone_mapping(&mut self, value: &Any) {
         self.inner.set("toneMapping", value);
     }
 }
@@ -111,7 +111,7 @@ impl GPUCanvasConfiguration {
         self.inner.get("alphaMode").as_::<GPUCanvasAlphaMode>()
     }
 
-    pub fn set_alpha_mode(&mut self, value: GPUCanvasAlphaMode) {
+    pub fn set_alpha_mode(&mut self, value: &GPUCanvasAlphaMode) {
         self.inner.set("alphaMode", value);
     }
 }
@@ -174,7 +174,7 @@ impl GPUCanvasContext {
     }
 }
 impl GPUCanvasContext {
-    pub fn configure(&self, configuration: GPUCanvasConfiguration) -> Undefined {
+    pub fn configure(&self, configuration: &GPUCanvasConfiguration) -> Undefined {
         self.inner
             .call("configure", &[configuration.into()])
             .as_::<Undefined>()

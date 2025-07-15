@@ -113,7 +113,7 @@ impl From<&ReadableStreamBYOBReader> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ReadableStreamBYOBReader);
 
 impl ReadableStreamBYOBReader {
-    pub fn new(stream: ReadableStream) -> ReadableStreamBYOBReader {
+    pub fn new(stream: &ReadableStream) -> ReadableStreamBYOBReader {
         Self {
             inner: emlite::Val::global("ReadableStreamBYOBReader")
                 .new(&[stream.into()])
@@ -122,11 +122,11 @@ impl ReadableStreamBYOBReader {
     }
 }
 impl ReadableStreamBYOBReader {
-    pub fn read0(&self, view: Any) -> Promise {
+    pub fn read0(&self, view: &Any) -> Promise {
         self.inner.call("read", &[view.into()]).as_::<Promise>()
     }
 
-    pub fn read1(&self, view: Any, options: ReadableStreamBYOBReaderReadOptions) -> Promise {
+    pub fn read1(&self, view: &Any, options: &ReadableStreamBYOBReaderReadOptions) -> Promise {
         self.inner
             .call("read", &[view.into(), options.into()])
             .as_::<Promise>()
@@ -147,7 +147,7 @@ impl ReadableStreamBYOBReader {
         self.inner.call("cancel", &[]).as_::<Promise>()
     }
 
-    pub fn cancel1(&self, reason: Any) -> Promise {
+    pub fn cancel1(&self, reason: &Any) -> Promise {
         self.inner.call("cancel", &[reason.into()]).as_::<Promise>()
     }
 }

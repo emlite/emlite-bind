@@ -69,7 +69,7 @@ impl SVGPointList {
     }
 }
 impl SVGPointList {
-    pub fn initialize(&self, new_item: DOMPoint) -> DOMPoint {
+    pub fn initialize(&self, new_item: &DOMPoint) -> DOMPoint {
         self.inner
             .call("initialize", &[new_item.into()])
             .as_::<DOMPoint>()
@@ -83,14 +83,14 @@ impl SVGPointList {
     }
 }
 impl SVGPointList {
-    pub fn insert_item_before(&self, new_item: DOMPoint, index: u32) -> DOMPoint {
+    pub fn insert_item_before(&self, new_item: &DOMPoint, index: u32) -> DOMPoint {
         self.inner
             .call("insertItemBefore", &[new_item.into(), index.into()])
             .as_::<DOMPoint>()
     }
 }
 impl SVGPointList {
-    pub fn replace_item(&self, new_item: DOMPoint, index: u32) -> DOMPoint {
+    pub fn replace_item(&self, new_item: &DOMPoint, index: u32) -> DOMPoint {
         self.inner
             .call("replaceItem", &[new_item.into(), index.into()])
             .as_::<DOMPoint>()
@@ -104,7 +104,7 @@ impl SVGPointList {
     }
 }
 impl SVGPointList {
-    pub fn append_item(&self, new_item: DOMPoint) -> DOMPoint {
+    pub fn append_item(&self, new_item: &DOMPoint) -> DOMPoint {
         self.inner
             .call("appendItem", &[new_item.into()])
             .as_::<DOMPoint>()

@@ -57,7 +57,7 @@ impl MediaCapabilitiesDecodingInfo {
             .as_::<MediaKeySystemAccess>()
     }
 
-    pub fn set_key_system_access(&mut self, value: MediaKeySystemAccess) {
+    pub fn set_key_system_access(&mut self, value: &MediaKeySystemAccess) {
         self.inner.set("keySystemAccess", value);
     }
 }
@@ -68,7 +68,7 @@ impl MediaCapabilitiesDecodingInfo {
             .as_::<MediaDecodingConfiguration>()
     }
 
-    pub fn set_configuration(&mut self, value: MediaDecodingConfiguration) {
+    pub fn set_configuration(&mut self, value: &MediaDecodingConfiguration) {
         self.inner.set("configuration", value);
     }
 }
@@ -127,7 +127,7 @@ impl MediaDecodingConfiguration {
         self.inner.get("type").as_::<MediaDecodingType>()
     }
 
-    pub fn set_type_(&mut self, value: MediaDecodingType) {
+    pub fn set_type_(&mut self, value: &MediaDecodingType) {
         self.inner.set("type", value);
     }
 }
@@ -136,7 +136,7 @@ impl MediaDecodingConfiguration {
         self.inner.get("keySystemConfiguration").as_::<Any>()
     }
 
-    pub fn set_key_system_configuration(&mut self, value: Any) {
+    pub fn set_key_system_configuration(&mut self, value: &Any) {
         self.inner.set("keySystemConfiguration", value);
     }
 }
@@ -197,7 +197,7 @@ impl MediaCapabilitiesEncodingInfo {
             .as_::<MediaEncodingConfiguration>()
     }
 
-    pub fn set_configuration(&mut self, value: MediaEncodingConfiguration) {
+    pub fn set_configuration(&mut self, value: &MediaEncodingConfiguration) {
         self.inner.set("configuration", value);
     }
 }
@@ -256,7 +256,7 @@ impl MediaEncodingConfiguration {
         self.inner.get("type").as_::<MediaEncodingType>()
     }
 
-    pub fn set_type_(&mut self, value: MediaEncodingType) {
+    pub fn set_type_(&mut self, value: &MediaEncodingType) {
         self.inner.set("type", value);
     }
 }
@@ -314,14 +314,14 @@ impl From<&MediaCapabilities> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MediaCapabilities);
 
 impl MediaCapabilities {
-    pub fn decoding_info(&self, configuration: MediaDecodingConfiguration) -> Promise {
+    pub fn decoding_info(&self, configuration: &MediaDecodingConfiguration) -> Promise {
         self.inner
             .call("decodingInfo", &[configuration.into()])
             .as_::<Promise>()
     }
 }
 impl MediaCapabilities {
-    pub fn encoding_info(&self, configuration: MediaEncodingConfiguration) -> Promise {
+    pub fn encoding_info(&self, configuration: &MediaEncodingConfiguration) -> Promise {
         self.inner
             .call("encodingInfo", &[configuration.into()])
             .as_::<Promise>()

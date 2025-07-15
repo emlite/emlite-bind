@@ -62,7 +62,7 @@ impl PointerTimeline {
         }
     }
 
-    pub fn new1(options: Any) -> PointerTimeline {
+    pub fn new1(options: &Any) -> PointerTimeline {
         Self {
             inner: emlite::Val::global("PointerTimeline")
                 .new(&[options.into()])

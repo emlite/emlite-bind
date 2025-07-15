@@ -64,7 +64,7 @@ impl MLArgMinMaxOptions {
         self.inner.get("outputDataType").as_::<MLOperandDataType>()
     }
 
-    pub fn set_output_data_type(&mut self, value: MLOperandDataType) {
+    pub fn set_output_data_type(&mut self, value: &MLOperandDataType) {
         self.inner.set("outputDataType", value);
     }
 }
@@ -123,7 +123,7 @@ impl MLBatchNormalizationOptions {
         self.inner.get("scale").as_::<MLOperand>()
     }
 
-    pub fn set_scale(&mut self, value: MLOperand) {
+    pub fn set_scale(&mut self, value: &MLOperand) {
         self.inner.set("scale", value);
     }
 }
@@ -132,7 +132,7 @@ impl MLBatchNormalizationOptions {
         self.inner.get("bias").as_::<MLOperand>()
     }
 
-    pub fn set_bias(&mut self, value: MLOperand) {
+    pub fn set_bias(&mut self, value: &MLOperand) {
         self.inner.set("bias", value);
     }
 }
@@ -205,11 +205,11 @@ impl From<&MLOperatorOptions> for emlite::Val {
 }
 
 impl MLOperatorOptions {
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 
-    pub fn set_label(&mut self, value: USVString) {
+    pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }
 }
@@ -268,7 +268,7 @@ impl MLClampOptions {
         self.inner.get("minValue").as_::<Any>()
     }
 
-    pub fn set_min_value(&mut self, value: Any) {
+    pub fn set_min_value(&mut self, value: &Any) {
         self.inner.set("minValue", value);
     }
 }
@@ -277,7 +277,7 @@ impl MLClampOptions {
         self.inner.get("maxValue").as_::<Any>()
     }
 
-    pub fn set_max_value(&mut self, value: Any) {
+    pub fn set_max_value(&mut self, value: &Any) {
         self.inner.set("maxValue", value);
     }
 }
@@ -372,7 +372,7 @@ impl MLConv2dOptions {
         self.inner.get("inputLayout").as_::<MLInputOperandLayout>()
     }
 
-    pub fn set_input_layout(&mut self, value: MLInputOperandLayout) {
+    pub fn set_input_layout(&mut self, value: &MLInputOperandLayout) {
         self.inner.set("inputLayout", value);
     }
 }
@@ -383,7 +383,7 @@ impl MLConv2dOptions {
             .as_::<MLConv2dFilterOperandLayout>()
     }
 
-    pub fn set_filter_layout(&mut self, value: MLConv2dFilterOperandLayout) {
+    pub fn set_filter_layout(&mut self, value: &MLConv2dFilterOperandLayout) {
         self.inner.set("filterLayout", value);
     }
 }
@@ -392,7 +392,7 @@ impl MLConv2dOptions {
         self.inner.get("bias").as_::<MLOperand>()
     }
 
-    pub fn set_bias(&mut self, value: MLOperand) {
+    pub fn set_bias(&mut self, value: &MLOperand) {
         self.inner.set("bias", value);
     }
 }
@@ -505,7 +505,7 @@ impl MLConvTranspose2dOptions {
         self.inner.get("inputLayout").as_::<MLInputOperandLayout>()
     }
 
-    pub fn set_input_layout(&mut self, value: MLInputOperandLayout) {
+    pub fn set_input_layout(&mut self, value: &MLInputOperandLayout) {
         self.inner.set("inputLayout", value);
     }
 }
@@ -516,7 +516,7 @@ impl MLConvTranspose2dOptions {
             .as_::<MLConvTranspose2dFilterOperandLayout>()
     }
 
-    pub fn set_filter_layout(&mut self, value: MLConvTranspose2dFilterOperandLayout) {
+    pub fn set_filter_layout(&mut self, value: &MLConvTranspose2dFilterOperandLayout) {
         self.inner.set("filterLayout", value);
     }
 }
@@ -525,7 +525,7 @@ impl MLConvTranspose2dOptions {
         self.inner.get("bias").as_::<MLOperand>()
     }
 
-    pub fn set_bias(&mut self, value: MLOperand) {
+    pub fn set_bias(&mut self, value: &MLOperand) {
         self.inner.set("bias", value);
     }
 }
@@ -770,7 +770,7 @@ impl MLGemmOptions {
         self.inner.get("c").as_::<MLOperand>()
     }
 
-    pub fn set_c(&mut self, value: MLOperand) {
+    pub fn set_c(&mut self, value: &MLOperand) {
         self.inner.set("c", value);
     }
 }
@@ -865,7 +865,7 @@ impl MLGruOptions {
         self.inner.get("bias").as_::<MLOperand>()
     }
 
-    pub fn set_bias(&mut self, value: MLOperand) {
+    pub fn set_bias(&mut self, value: &MLOperand) {
         self.inner.set("bias", value);
     }
 }
@@ -874,7 +874,7 @@ impl MLGruOptions {
         self.inner.get("recurrentBias").as_::<MLOperand>()
     }
 
-    pub fn set_recurrent_bias(&mut self, value: MLOperand) {
+    pub fn set_recurrent_bias(&mut self, value: &MLOperand) {
         self.inner.set("recurrentBias", value);
     }
 }
@@ -883,7 +883,7 @@ impl MLGruOptions {
         self.inner.get("initialHiddenState").as_::<MLOperand>()
     }
 
-    pub fn set_initial_hidden_state(&mut self, value: MLOperand) {
+    pub fn set_initial_hidden_state(&mut self, value: &MLOperand) {
         self.inner.set("initialHiddenState", value);
     }
 }
@@ -912,7 +912,7 @@ impl MLGruOptions {
             .as_::<MLRecurrentNetworkDirection>()
     }
 
-    pub fn set_direction(&mut self, value: MLRecurrentNetworkDirection) {
+    pub fn set_direction(&mut self, value: &MLRecurrentNetworkDirection) {
         self.inner.set("direction", value);
     }
 }
@@ -921,7 +921,7 @@ impl MLGruOptions {
         self.inner.get("layout").as_::<MLGruWeightLayout>()
     }
 
-    pub fn set_layout(&mut self, value: MLGruWeightLayout) {
+    pub fn set_layout(&mut self, value: &MLGruWeightLayout) {
         self.inner.set("layout", value);
     }
 }
@@ -932,7 +932,7 @@ impl MLGruOptions {
             .as_::<Sequence<MLRecurrentNetworkActivation>>()
     }
 
-    pub fn set_activations(&mut self, value: Sequence<MLRecurrentNetworkActivation>) {
+    pub fn set_activations(&mut self, value: &Sequence<MLRecurrentNetworkActivation>) {
         self.inner.set("activations", value);
     }
 }
@@ -991,7 +991,7 @@ impl MLGruCellOptions {
         self.inner.get("bias").as_::<MLOperand>()
     }
 
-    pub fn set_bias(&mut self, value: MLOperand) {
+    pub fn set_bias(&mut self, value: &MLOperand) {
         self.inner.set("bias", value);
     }
 }
@@ -1000,7 +1000,7 @@ impl MLGruCellOptions {
         self.inner.get("recurrentBias").as_::<MLOperand>()
     }
 
-    pub fn set_recurrent_bias(&mut self, value: MLOperand) {
+    pub fn set_recurrent_bias(&mut self, value: &MLOperand) {
         self.inner.set("recurrentBias", value);
     }
 }
@@ -1018,7 +1018,7 @@ impl MLGruCellOptions {
         self.inner.get("layout").as_::<MLGruWeightLayout>()
     }
 
-    pub fn set_layout(&mut self, value: MLGruWeightLayout) {
+    pub fn set_layout(&mut self, value: &MLGruWeightLayout) {
         self.inner.set("layout", value);
     }
 }
@@ -1029,7 +1029,7 @@ impl MLGruCellOptions {
             .as_::<Sequence<MLRecurrentNetworkActivation>>()
     }
 
-    pub fn set_activations(&mut self, value: Sequence<MLRecurrentNetworkActivation>) {
+    pub fn set_activations(&mut self, value: &Sequence<MLRecurrentNetworkActivation>) {
         self.inner.set("activations", value);
     }
 }
@@ -1156,7 +1156,7 @@ impl MLInstanceNormalizationOptions {
         self.inner.get("scale").as_::<MLOperand>()
     }
 
-    pub fn set_scale(&mut self, value: MLOperand) {
+    pub fn set_scale(&mut self, value: &MLOperand) {
         self.inner.set("scale", value);
     }
 }
@@ -1165,7 +1165,7 @@ impl MLInstanceNormalizationOptions {
         self.inner.get("bias").as_::<MLOperand>()
     }
 
-    pub fn set_bias(&mut self, value: MLOperand) {
+    pub fn set_bias(&mut self, value: &MLOperand) {
         self.inner.set("bias", value);
     }
 }
@@ -1183,7 +1183,7 @@ impl MLInstanceNormalizationOptions {
         self.inner.get("layout").as_::<MLInputOperandLayout>()
     }
 
-    pub fn set_layout(&mut self, value: MLInputOperandLayout) {
+    pub fn set_layout(&mut self, value: &MLInputOperandLayout) {
         self.inner.set("layout", value);
     }
 }
@@ -1242,7 +1242,7 @@ impl MLLayerNormalizationOptions {
         self.inner.get("scale").as_::<MLOperand>()
     }
 
-    pub fn set_scale(&mut self, value: MLOperand) {
+    pub fn set_scale(&mut self, value: &MLOperand) {
         self.inner.set("scale", value);
     }
 }
@@ -1251,7 +1251,7 @@ impl MLLayerNormalizationOptions {
         self.inner.get("bias").as_::<MLOperand>()
     }
 
-    pub fn set_bias(&mut self, value: MLOperand) {
+    pub fn set_bias(&mut self, value: &MLOperand) {
         self.inner.set("bias", value);
     }
 }
@@ -1455,7 +1455,7 @@ impl MLLstmOptions {
         self.inner.get("bias").as_::<MLOperand>()
     }
 
-    pub fn set_bias(&mut self, value: MLOperand) {
+    pub fn set_bias(&mut self, value: &MLOperand) {
         self.inner.set("bias", value);
     }
 }
@@ -1464,7 +1464,7 @@ impl MLLstmOptions {
         self.inner.get("recurrentBias").as_::<MLOperand>()
     }
 
-    pub fn set_recurrent_bias(&mut self, value: MLOperand) {
+    pub fn set_recurrent_bias(&mut self, value: &MLOperand) {
         self.inner.set("recurrentBias", value);
     }
 }
@@ -1473,7 +1473,7 @@ impl MLLstmOptions {
         self.inner.get("peepholeWeight").as_::<MLOperand>()
     }
 
-    pub fn set_peephole_weight(&mut self, value: MLOperand) {
+    pub fn set_peephole_weight(&mut self, value: &MLOperand) {
         self.inner.set("peepholeWeight", value);
     }
 }
@@ -1482,7 +1482,7 @@ impl MLLstmOptions {
         self.inner.get("initialHiddenState").as_::<MLOperand>()
     }
 
-    pub fn set_initial_hidden_state(&mut self, value: MLOperand) {
+    pub fn set_initial_hidden_state(&mut self, value: &MLOperand) {
         self.inner.set("initialHiddenState", value);
     }
 }
@@ -1491,7 +1491,7 @@ impl MLLstmOptions {
         self.inner.get("initialCellState").as_::<MLOperand>()
     }
 
-    pub fn set_initial_cell_state(&mut self, value: MLOperand) {
+    pub fn set_initial_cell_state(&mut self, value: &MLOperand) {
         self.inner.set("initialCellState", value);
     }
 }
@@ -1511,7 +1511,7 @@ impl MLLstmOptions {
             .as_::<MLRecurrentNetworkDirection>()
     }
 
-    pub fn set_direction(&mut self, value: MLRecurrentNetworkDirection) {
+    pub fn set_direction(&mut self, value: &MLRecurrentNetworkDirection) {
         self.inner.set("direction", value);
     }
 }
@@ -1520,7 +1520,7 @@ impl MLLstmOptions {
         self.inner.get("layout").as_::<MLLstmWeightLayout>()
     }
 
-    pub fn set_layout(&mut self, value: MLLstmWeightLayout) {
+    pub fn set_layout(&mut self, value: &MLLstmWeightLayout) {
         self.inner.set("layout", value);
     }
 }
@@ -1531,7 +1531,7 @@ impl MLLstmOptions {
             .as_::<Sequence<MLRecurrentNetworkActivation>>()
     }
 
-    pub fn set_activations(&mut self, value: Sequence<MLRecurrentNetworkActivation>) {
+    pub fn set_activations(&mut self, value: &Sequence<MLRecurrentNetworkActivation>) {
         self.inner.set("activations", value);
     }
 }
@@ -1590,7 +1590,7 @@ impl MLLstmCellOptions {
         self.inner.get("bias").as_::<MLOperand>()
     }
 
-    pub fn set_bias(&mut self, value: MLOperand) {
+    pub fn set_bias(&mut self, value: &MLOperand) {
         self.inner.set("bias", value);
     }
 }
@@ -1599,7 +1599,7 @@ impl MLLstmCellOptions {
         self.inner.get("recurrentBias").as_::<MLOperand>()
     }
 
-    pub fn set_recurrent_bias(&mut self, value: MLOperand) {
+    pub fn set_recurrent_bias(&mut self, value: &MLOperand) {
         self.inner.set("recurrentBias", value);
     }
 }
@@ -1608,7 +1608,7 @@ impl MLLstmCellOptions {
         self.inner.get("peepholeWeight").as_::<MLOperand>()
     }
 
-    pub fn set_peephole_weight(&mut self, value: MLOperand) {
+    pub fn set_peephole_weight(&mut self, value: &MLOperand) {
         self.inner.set("peepholeWeight", value);
     }
 }
@@ -1617,7 +1617,7 @@ impl MLLstmCellOptions {
         self.inner.get("layout").as_::<MLLstmWeightLayout>()
     }
 
-    pub fn set_layout(&mut self, value: MLLstmWeightLayout) {
+    pub fn set_layout(&mut self, value: &MLLstmWeightLayout) {
         self.inner.set("layout", value);
     }
 }
@@ -1628,7 +1628,7 @@ impl MLLstmCellOptions {
             .as_::<Sequence<MLRecurrentNetworkActivation>>()
     }
 
-    pub fn set_activations(&mut self, value: Sequence<MLRecurrentNetworkActivation>) {
+    pub fn set_activations(&mut self, value: &Sequence<MLRecurrentNetworkActivation>) {
         self.inner.set("activations", value);
     }
 }
@@ -1687,7 +1687,7 @@ impl MLPadOptions {
         self.inner.get("mode").as_::<MLPaddingMode>()
     }
 
-    pub fn set_mode(&mut self, value: MLPaddingMode) {
+    pub fn set_mode(&mut self, value: &MLPaddingMode) {
         self.inner.set("mode", value);
     }
 }
@@ -1696,7 +1696,7 @@ impl MLPadOptions {
         self.inner.get("value").as_::<Any>()
     }
 
-    pub fn set_value(&mut self, value: Any) {
+    pub fn set_value(&mut self, value: &Any) {
         self.inner.set("value", value);
     }
 }
@@ -1791,7 +1791,7 @@ impl MLPool2dOptions {
         self.inner.get("layout").as_::<MLInputOperandLayout>()
     }
 
-    pub fn set_layout(&mut self, value: MLInputOperandLayout) {
+    pub fn set_layout(&mut self, value: &MLInputOperandLayout) {
         self.inner.set("layout", value);
     }
 }
@@ -1800,7 +1800,7 @@ impl MLPool2dOptions {
         self.inner.get("roundingType").as_::<MLRoundingType>()
     }
 
-    pub fn set_rounding_type(&mut self, value: MLRoundingType) {
+    pub fn set_rounding_type(&mut self, value: &MLRoundingType) {
         self.inner.set("roundingType", value);
     }
 }
@@ -1936,7 +1936,7 @@ impl MLResample2dOptions {
         self.inner.get("mode").as_::<MLInterpolationMode>()
     }
 
-    pub fn set_mode(&mut self, value: MLInterpolationMode) {
+    pub fn set_mode(&mut self, value: &MLInterpolationMode) {
         self.inner.set("mode", value);
     }
 }
@@ -2384,7 +2384,7 @@ impl From<&MLGraphBuilder> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MLGraphBuilder);
 
 impl MLGraphBuilder {
-    pub fn new(context: MLContext) -> MLGraphBuilder {
+    pub fn new(context: &MLContext) -> MLGraphBuilder {
         Self {
             inner: emlite::Val::global("MLGraphBuilder")
                 .new(&[context.into()])
@@ -2393,45 +2393,55 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn input(&self, name: USVString, descriptor: MLOperandDescriptor) -> MLOperand {
+    pub fn input(&self, name: &str, descriptor: &MLOperandDescriptor) -> MLOperand {
         self.inner
             .call("input", &[name.into(), descriptor.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn constant(&self, tensor: MLTensor) -> MLOperand {
+    pub fn constant(&self, tensor: &MLTensor) -> MLOperand {
         self.inner
             .call("constant", &[tensor.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn build(&self, outputs: Any) -> Promise {
+    pub fn build(&self, outputs: &Any) -> Promise {
         self.inner.call("build", &[outputs.into()]).as_::<Promise>()
     }
 }
 impl MLGraphBuilder {
-    pub fn arg_min0(&self, input: MLOperand, axis: u32) -> MLOperand {
+    pub fn arg_min0(&self, input: &MLOperand, axis: u32) -> MLOperand {
         self.inner
             .call("argMin", &[input.into(), axis.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn arg_min1(&self, input: MLOperand, axis: u32, options: MLArgMinMaxOptions) -> MLOperand {
+    pub fn arg_min1(
+        &self,
+        input: &MLOperand,
+        axis: u32,
+        options: &MLArgMinMaxOptions,
+    ) -> MLOperand {
         self.inner
             .call("argMin", &[input.into(), axis.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn arg_max0(&self, input: MLOperand, axis: u32) -> MLOperand {
+    pub fn arg_max0(&self, input: &MLOperand, axis: u32) -> MLOperand {
         self.inner
             .call("argMax", &[input.into(), axis.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn arg_max1(&self, input: MLOperand, axis: u32, options: MLArgMinMaxOptions) -> MLOperand {
+    pub fn arg_max1(
+        &self,
+        input: &MLOperand,
+        axis: u32,
+        options: &MLArgMinMaxOptions,
+    ) -> MLOperand {
         self.inner
             .call("argMax", &[input.into(), axis.into(), options.into()])
             .as_::<MLOperand>()
@@ -2440,9 +2450,9 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     pub fn batch_normalization0(
         &self,
-        input: MLOperand,
-        mean: MLOperand,
-        variance: MLOperand,
+        input: &MLOperand,
+        mean: &MLOperand,
+        variance: &MLOperand,
     ) -> MLOperand {
         self.inner
             .call(
@@ -2454,10 +2464,10 @@ impl MLGraphBuilder {
 
     pub fn batch_normalization1(
         &self,
-        input: MLOperand,
-        mean: MLOperand,
-        variance: MLOperand,
-        options: MLBatchNormalizationOptions,
+        input: &MLOperand,
+        mean: &MLOperand,
+        variance: &MLOperand,
+        options: &MLBatchNormalizationOptions,
     ) -> MLOperand {
         self.inner
             .call(
@@ -2468,7 +2478,7 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn cast0(&self, input: MLOperand, type_: MLOperandDataType) -> MLOperand {
+    pub fn cast0(&self, input: &MLOperand, type_: &MLOperandDataType) -> MLOperand {
         self.inner
             .call("cast", &[input.into(), type_.into()])
             .as_::<MLOperand>()
@@ -2476,9 +2486,9 @@ impl MLGraphBuilder {
 
     pub fn cast1(
         &self,
-        input: MLOperand,
-        type_: MLOperandDataType,
-        options: MLOperatorOptions,
+        input: &MLOperand,
+        type_: &MLOperandDataType,
+        options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
             .call("cast", &[input.into(), type_.into(), options.into()])
@@ -2486,18 +2496,18 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn clamp0(&self, input: MLOperand) -> MLOperand {
+    pub fn clamp0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("clamp", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn clamp1(&self, input: MLOperand, options: MLClampOptions) -> MLOperand {
+    pub fn clamp1(&self, input: &MLOperand, options: &MLClampOptions) -> MLOperand {
         self.inner
             .call("clamp", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn concat0(&self, inputs: Sequence<MLOperand>, axis: u32) -> MLOperand {
+    pub fn concat0(&self, inputs: &Sequence<MLOperand>, axis: u32) -> MLOperand {
         self.inner
             .call("concat", &[inputs.into(), axis.into()])
             .as_::<MLOperand>()
@@ -2505,9 +2515,9 @@ impl MLGraphBuilder {
 
     pub fn concat1(
         &self,
-        inputs: Sequence<MLOperand>,
+        inputs: &Sequence<MLOperand>,
         axis: u32,
-        options: MLOperatorOptions,
+        options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
             .call("concat", &[inputs.into(), axis.into(), options.into()])
@@ -2515,7 +2525,7 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn conv2d0(&self, input: MLOperand, filter: MLOperand) -> MLOperand {
+    pub fn conv2d0(&self, input: &MLOperand, filter: &MLOperand) -> MLOperand {
         self.inner
             .call("conv2d", &[input.into(), filter.into()])
             .as_::<MLOperand>()
@@ -2523,9 +2533,9 @@ impl MLGraphBuilder {
 
     pub fn conv2d1(
         &self,
-        input: MLOperand,
-        filter: MLOperand,
-        options: MLConv2dOptions,
+        input: &MLOperand,
+        filter: &MLOperand,
+        options: &MLConv2dOptions,
     ) -> MLOperand {
         self.inner
             .call("conv2d", &[input.into(), filter.into(), options.into()])
@@ -2533,7 +2543,7 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn conv_transpose2d0(&self, input: MLOperand, filter: MLOperand) -> MLOperand {
+    pub fn conv_transpose2d0(&self, input: &MLOperand, filter: &MLOperand) -> MLOperand {
         self.inner
             .call("convTranspose2d", &[input.into(), filter.into()])
             .as_::<MLOperand>()
@@ -2541,9 +2551,9 @@ impl MLGraphBuilder {
 
     pub fn conv_transpose2d1(
         &self,
-        input: MLOperand,
-        filter: MLOperand,
-        options: MLConvTranspose2dOptions,
+        input: &MLOperand,
+        filter: &MLOperand,
+        options: &MLConvTranspose2dOptions,
     ) -> MLOperand {
         self.inner
             .call(
@@ -2554,7 +2564,7 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn cumulative_sum0(&self, input: MLOperand, axis: u32) -> MLOperand {
+    pub fn cumulative_sum0(&self, input: &MLOperand, axis: u32) -> MLOperand {
         self.inner
             .call("cumulativeSum", &[input.into(), axis.into()])
             .as_::<MLOperand>()
@@ -2562,9 +2572,9 @@ impl MLGraphBuilder {
 
     pub fn cumulative_sum1(
         &self,
-        input: MLOperand,
+        input: &MLOperand,
         axis: u32,
-        options: MLCumulativeSumOptions,
+        options: &MLCumulativeSumOptions,
     ) -> MLOperand {
         self.inner
             .call(
@@ -2575,137 +2585,142 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn add0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn add0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("add", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn add1(&self, a: MLOperand, b: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn add1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("add", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn sub0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn sub0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("sub", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn sub1(&self, a: MLOperand, b: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn sub1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("sub", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn mul0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn mul0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("mul", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn mul1(&self, a: MLOperand, b: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn mul1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("mul", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn div0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn div0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("div", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn div1(&self, a: MLOperand, b: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn div1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("div", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn max0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn max0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("max", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn max1(&self, a: MLOperand, b: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn max1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("max", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn min0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn min0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("min", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn min1(&self, a: MLOperand, b: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn min1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("min", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn pow0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn pow0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("pow", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn pow1(&self, a: MLOperand, b: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn pow1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("pow", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn equal0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn equal0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("equal", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn equal1(&self, a: MLOperand, b: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn equal1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("equal", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn not_equal0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn not_equal0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("notEqual", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn not_equal1(&self, a: MLOperand, b: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn not_equal1(
+        &self,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("notEqual", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn greater0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn greater0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("greater", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn greater1(&self, a: MLOperand, b: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn greater1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("greater", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn greater_or_equal0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn greater_or_equal0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("greaterOrEqual", &[a.into(), b.into()])
             .as_::<MLOperand>()
@@ -2713,9 +2728,9 @@ impl MLGraphBuilder {
 
     pub fn greater_or_equal1(
         &self,
-        a: MLOperand,
-        b: MLOperand,
-        options: MLOperatorOptions,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
             .call("greaterOrEqual", &[a.into(), b.into(), options.into()])
@@ -2723,20 +2738,20 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn lesser0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn lesser0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("lesser", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn lesser1(&self, a: MLOperand, b: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn lesser1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("lesser", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn lesser_or_equal0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn lesser_or_equal0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("lesserOrEqual", &[a.into(), b.into()])
             .as_::<MLOperand>()
@@ -2744,9 +2759,9 @@ impl MLGraphBuilder {
 
     pub fn lesser_or_equal1(
         &self,
-        a: MLOperand,
-        b: MLOperand,
-        options: MLOperatorOptions,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
             .call("lesserOrEqual", &[a.into(), b.into(), options.into()])
@@ -2754,20 +2769,20 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn logical_not0(&self, a: MLOperand) -> MLOperand {
+    pub fn logical_not0(&self, a: &MLOperand) -> MLOperand {
         self.inner
             .call("logicalNot", &[a.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn logical_not1(&self, a: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn logical_not1(&self, a: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("logicalNot", &[a.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn logical_and0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn logical_and0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("logicalAnd", &[a.into(), b.into()])
             .as_::<MLOperand>()
@@ -2775,9 +2790,9 @@ impl MLGraphBuilder {
 
     pub fn logical_and1(
         &self,
-        a: MLOperand,
-        b: MLOperand,
-        options: MLOperatorOptions,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
             .call("logicalAnd", &[a.into(), b.into(), options.into()])
@@ -2785,20 +2800,25 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn logical_or0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn logical_or0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("logicalOr", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn logical_or1(&self, a: MLOperand, b: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn logical_or1(
+        &self,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
+    ) -> MLOperand {
         self.inner
             .call("logicalOr", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn logical_xor0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn logical_xor0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("logicalXor", &[a.into(), b.into()])
             .as_::<MLOperand>()
@@ -2806,9 +2826,9 @@ impl MLGraphBuilder {
 
     pub fn logical_xor1(
         &self,
-        a: MLOperand,
-        b: MLOperand,
-        options: MLOperatorOptions,
+        a: &MLOperand,
+        b: &MLOperand,
+        options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
             .call("logicalXor", &[a.into(), b.into(), options.into()])
@@ -2816,158 +2836,158 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn abs0(&self, input: MLOperand) -> MLOperand {
+    pub fn abs0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("abs", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn abs1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn abs1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("abs", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn ceil0(&self, input: MLOperand) -> MLOperand {
+    pub fn ceil0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("ceil", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn ceil1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn ceil1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("ceil", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn cos0(&self, input: MLOperand) -> MLOperand {
+    pub fn cos0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("cos", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn cos1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn cos1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("cos", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn erf0(&self, input: MLOperand) -> MLOperand {
+    pub fn erf0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("erf", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn erf1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn erf1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("erf", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn exp0(&self, input: MLOperand) -> MLOperand {
+    pub fn exp0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("exp", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn exp1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn exp1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("exp", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn floor0(&self, input: MLOperand) -> MLOperand {
+    pub fn floor0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("floor", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn floor1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn floor1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("floor", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn identity0(&self, input: MLOperand) -> MLOperand {
+    pub fn identity0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("identity", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn identity1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn identity1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("identity", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn log0(&self, input: MLOperand) -> MLOperand {
+    pub fn log0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("log", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn log1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn log1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("log", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn neg0(&self, input: MLOperand) -> MLOperand {
+    pub fn neg0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("neg", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn neg1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn neg1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("neg", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn reciprocal0(&self, input: MLOperand) -> MLOperand {
+    pub fn reciprocal0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reciprocal", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn reciprocal1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn reciprocal1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("reciprocal", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn sin0(&self, input: MLOperand) -> MLOperand {
+    pub fn sin0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("sin", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn sin1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn sin1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("sin", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn sign0(&self, input: MLOperand) -> MLOperand {
+    pub fn sign0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("sign", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn sign1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn sign1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("sign", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn sqrt0(&self, input: MLOperand) -> MLOperand {
+    pub fn sqrt0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("sqrt", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn sqrt1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn sqrt1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("sqrt", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn tan0(&self, input: MLOperand) -> MLOperand {
+    pub fn tan0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("tan", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn tan1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn tan1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("tan", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -2976,9 +2996,9 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     pub fn dequantize_linear0(
         &self,
-        input: MLOperand,
-        scale: MLOperand,
-        zero_point: MLOperand,
+        input: &MLOperand,
+        scale: &MLOperand,
+        zero_point: &MLOperand,
     ) -> MLOperand {
         self.inner
             .call(
@@ -2990,10 +3010,10 @@ impl MLGraphBuilder {
 
     pub fn dequantize_linear1(
         &self,
-        input: MLOperand,
-        scale: MLOperand,
-        zero_point: MLOperand,
-        options: MLOperatorOptions,
+        input: &MLOperand,
+        scale: &MLOperand,
+        zero_point: &MLOperand,
+        options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
             .call(
@@ -3011,9 +3031,9 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     pub fn quantize_linear0(
         &self,
-        input: MLOperand,
-        scale: MLOperand,
-        zero_point: MLOperand,
+        input: &MLOperand,
+        scale: &MLOperand,
+        zero_point: &MLOperand,
     ) -> MLOperand {
         self.inner
             .call(
@@ -3025,10 +3045,10 @@ impl MLGraphBuilder {
 
     pub fn quantize_linear1(
         &self,
-        input: MLOperand,
-        scale: MLOperand,
-        zero_point: MLOperand,
-        options: MLOperatorOptions,
+        input: &MLOperand,
+        scale: &MLOperand,
+        zero_point: &MLOperand,
+        options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
             .call(
@@ -3044,18 +3064,18 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn elu0(&self, input: MLOperand) -> MLOperand {
+    pub fn elu0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("elu", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn elu1(&self, input: MLOperand, options: MLEluOptions) -> MLOperand {
+    pub fn elu1(&self, input: &MLOperand, options: &MLEluOptions) -> MLOperand {
         self.inner
             .call("elu", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn expand0(&self, input: MLOperand, new_shape: Sequence<u32>) -> MLOperand {
+    pub fn expand0(&self, input: &MLOperand, new_shape: Sequence<u32>) -> MLOperand {
         self.inner
             .call("expand", &[input.into(), new_shape.into()])
             .as_::<MLOperand>()
@@ -3063,9 +3083,9 @@ impl MLGraphBuilder {
 
     pub fn expand1(
         &self,
-        input: MLOperand,
+        input: &MLOperand,
         new_shape: Sequence<u32>,
-        options: MLOperatorOptions,
+        options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
             .call("expand", &[input.into(), new_shape.into(), options.into()])
@@ -3073,7 +3093,7 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn gather0(&self, input: MLOperand, indices: MLOperand) -> MLOperand {
+    pub fn gather0(&self, input: &MLOperand, indices: &MLOperand) -> MLOperand {
         self.inner
             .call("gather", &[input.into(), indices.into()])
             .as_::<MLOperand>()
@@ -3081,9 +3101,9 @@ impl MLGraphBuilder {
 
     pub fn gather1(
         &self,
-        input: MLOperand,
-        indices: MLOperand,
-        options: MLGatherOptions,
+        input: &MLOperand,
+        indices: &MLOperand,
+        options: &MLGatherOptions,
     ) -> MLOperand {
         self.inner
             .call("gather", &[input.into(), indices.into(), options.into()])
@@ -3091,7 +3111,7 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn gather_elements0(&self, input: MLOperand, indices: MLOperand) -> MLOperand {
+    pub fn gather_elements0(&self, input: &MLOperand, indices: &MLOperand) -> MLOperand {
         self.inner
             .call("gatherElements", &[input.into(), indices.into()])
             .as_::<MLOperand>()
@@ -3099,9 +3119,9 @@ impl MLGraphBuilder {
 
     pub fn gather_elements1(
         &self,
-        input: MLOperand,
-        indices: MLOperand,
-        options: MLGatherOptions,
+        input: &MLOperand,
+        indices: &MLOperand,
+        options: &MLGatherOptions,
     ) -> MLOperand {
         self.inner
             .call(
@@ -3112,7 +3132,7 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn gather_nd0(&self, input: MLOperand, indices: MLOperand) -> MLOperand {
+    pub fn gather_nd0(&self, input: &MLOperand, indices: &MLOperand) -> MLOperand {
         self.inner
             .call("gatherND", &[input.into(), indices.into()])
             .as_::<MLOperand>()
@@ -3120,9 +3140,9 @@ impl MLGraphBuilder {
 
     pub fn gather_nd1(
         &self,
-        input: MLOperand,
-        indices: MLOperand,
-        options: MLOperatorOptions,
+        input: &MLOperand,
+        indices: &MLOperand,
+        options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
             .call("gatherND", &[input.into(), indices.into(), options.into()])
@@ -3130,24 +3150,24 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn gelu0(&self, input: MLOperand) -> MLOperand {
+    pub fn gelu0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("gelu", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn gelu1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn gelu1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("gelu", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn gemm0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn gemm0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("gemm", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn gemm1(&self, a: MLOperand, b: MLOperand, options: MLGemmOptions) -> MLOperand {
+    pub fn gemm1(&self, a: &MLOperand, b: &MLOperand, options: &MLGemmOptions) -> MLOperand {
         self.inner
             .call("gemm", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
@@ -3156,9 +3176,9 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     pub fn gru0(
         &self,
-        input: MLOperand,
-        weight: MLOperand,
-        recurrent_weight: MLOperand,
+        input: &MLOperand,
+        weight: &MLOperand,
+        recurrent_weight: &MLOperand,
         steps: u32,
         hidden_size: u32,
     ) -> Sequence<MLOperand> {
@@ -3178,12 +3198,12 @@ impl MLGraphBuilder {
 
     pub fn gru1(
         &self,
-        input: MLOperand,
-        weight: MLOperand,
-        recurrent_weight: MLOperand,
+        input: &MLOperand,
+        weight: &MLOperand,
+        recurrent_weight: &MLOperand,
         steps: u32,
         hidden_size: u32,
-        options: MLGruOptions,
+        options: &MLGruOptions,
     ) -> Sequence<MLOperand> {
         self.inner
             .call(
@@ -3203,10 +3223,10 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     pub fn gru_cell0(
         &self,
-        input: MLOperand,
-        weight: MLOperand,
-        recurrent_weight: MLOperand,
-        hidden_state: MLOperand,
+        input: &MLOperand,
+        weight: &MLOperand,
+        recurrent_weight: &MLOperand,
+        hidden_state: &MLOperand,
         hidden_size: u32,
     ) -> MLOperand {
         self.inner
@@ -3225,12 +3245,12 @@ impl MLGraphBuilder {
 
     pub fn gru_cell1(
         &self,
-        input: MLOperand,
-        weight: MLOperand,
-        recurrent_weight: MLOperand,
-        hidden_state: MLOperand,
+        input: &MLOperand,
+        weight: &MLOperand,
+        recurrent_weight: &MLOperand,
+        hidden_state: &MLOperand,
         hidden_size: u32,
-        options: MLGruCellOptions,
+        options: &MLGruCellOptions,
     ) -> MLOperand {
         self.inner
             .call(
@@ -3248,33 +3268,33 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn hard_sigmoid0(&self, input: MLOperand) -> MLOperand {
+    pub fn hard_sigmoid0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("hardSigmoid", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn hard_sigmoid1(&self, input: MLOperand, options: MLHardSigmoidOptions) -> MLOperand {
+    pub fn hard_sigmoid1(&self, input: &MLOperand, options: &MLHardSigmoidOptions) -> MLOperand {
         self.inner
             .call("hardSigmoid", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn hard_swish0(&self, input: MLOperand) -> MLOperand {
+    pub fn hard_swish0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("hardSwish", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn hard_swish1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn hard_swish1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("hardSwish", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn instance_normalization0(&self, input: MLOperand) -> MLOperand {
+    pub fn instance_normalization0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("instanceNormalization", &[input.into()])
             .as_::<MLOperand>()
@@ -3282,8 +3302,8 @@ impl MLGraphBuilder {
 
     pub fn instance_normalization1(
         &self,
-        input: MLOperand,
-        options: MLInstanceNormalizationOptions,
+        input: &MLOperand,
+        options: &MLInstanceNormalizationOptions,
     ) -> MLOperand {
         self.inner
             .call("instanceNormalization", &[input.into(), options.into()])
@@ -3291,7 +3311,7 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn layer_normalization0(&self, input: MLOperand) -> MLOperand {
+    pub fn layer_normalization0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("layerNormalization", &[input.into()])
             .as_::<MLOperand>()
@@ -3299,8 +3319,8 @@ impl MLGraphBuilder {
 
     pub fn layer_normalization1(
         &self,
-        input: MLOperand,
-        options: MLLayerNormalizationOptions,
+        input: &MLOperand,
+        options: &MLLayerNormalizationOptions,
     ) -> MLOperand {
         self.inner
             .call("layerNormalization", &[input.into(), options.into()])
@@ -3308,26 +3328,26 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn leaky_relu0(&self, input: MLOperand) -> MLOperand {
+    pub fn leaky_relu0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("leakyRelu", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn leaky_relu1(&self, input: MLOperand, options: MLLeakyReluOptions) -> MLOperand {
+    pub fn leaky_relu1(&self, input: &MLOperand, options: &MLLeakyReluOptions) -> MLOperand {
         self.inner
             .call("leakyRelu", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn linear0(&self, input: MLOperand) -> MLOperand {
+    pub fn linear0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("linear", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn linear1(&self, input: MLOperand, options: MLLinearOptions) -> MLOperand {
+    pub fn linear1(&self, input: &MLOperand, options: &MLLinearOptions) -> MLOperand {
         self.inner
             .call("linear", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -3336,9 +3356,9 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     pub fn lstm0(
         &self,
-        input: MLOperand,
-        weight: MLOperand,
-        recurrent_weight: MLOperand,
+        input: &MLOperand,
+        weight: &MLOperand,
+        recurrent_weight: &MLOperand,
         steps: u32,
         hidden_size: u32,
     ) -> Sequence<MLOperand> {
@@ -3358,12 +3378,12 @@ impl MLGraphBuilder {
 
     pub fn lstm1(
         &self,
-        input: MLOperand,
-        weight: MLOperand,
-        recurrent_weight: MLOperand,
+        input: &MLOperand,
+        weight: &MLOperand,
+        recurrent_weight: &MLOperand,
         steps: u32,
         hidden_size: u32,
-        options: MLLstmOptions,
+        options: &MLLstmOptions,
     ) -> Sequence<MLOperand> {
         self.inner
             .call(
@@ -3383,11 +3403,11 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     pub fn lstm_cell0(
         &self,
-        input: MLOperand,
-        weight: MLOperand,
-        recurrent_weight: MLOperand,
-        hidden_state: MLOperand,
-        cell_state: MLOperand,
+        input: &MLOperand,
+        weight: &MLOperand,
+        recurrent_weight: &MLOperand,
+        hidden_state: &MLOperand,
+        cell_state: &MLOperand,
         hidden_size: u32,
     ) -> Sequence<MLOperand> {
         self.inner
@@ -3407,13 +3427,13 @@ impl MLGraphBuilder {
 
     pub fn lstm_cell1(
         &self,
-        input: MLOperand,
-        weight: MLOperand,
-        recurrent_weight: MLOperand,
-        hidden_state: MLOperand,
-        cell_state: MLOperand,
+        input: &MLOperand,
+        weight: &MLOperand,
+        recurrent_weight: &MLOperand,
+        hidden_state: &MLOperand,
+        cell_state: &MLOperand,
         hidden_size: u32,
-        options: MLLstmCellOptions,
+        options: &MLLstmCellOptions,
     ) -> Sequence<MLOperand> {
         self.inner
             .call(
@@ -3432,13 +3452,13 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn matmul0(&self, a: MLOperand, b: MLOperand) -> MLOperand {
+    pub fn matmul0(&self, a: &MLOperand, b: &MLOperand) -> MLOperand {
         self.inner
             .call("matmul", &[a.into(), b.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn matmul1(&self, a: MLOperand, b: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn matmul1(&self, a: &MLOperand, b: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("matmul", &[a.into(), b.into(), options.into()])
             .as_::<MLOperand>()
@@ -3447,7 +3467,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     pub fn pad0(
         &self,
-        input: MLOperand,
+        input: &MLOperand,
         beginning_padding: Sequence<u32>,
         ending_padding: Sequence<u32>,
     ) -> MLOperand {
@@ -3465,10 +3485,10 @@ impl MLGraphBuilder {
 
     pub fn pad1(
         &self,
-        input: MLOperand,
+        input: &MLOperand,
         beginning_padding: Sequence<u32>,
         ending_padding: Sequence<u32>,
-        options: MLPadOptions,
+        options: &MLPadOptions,
     ) -> MLOperand {
         self.inner
             .call(
@@ -3484,46 +3504,46 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn average_pool2d0(&self, input: MLOperand) -> MLOperand {
+    pub fn average_pool2d0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("averagePool2d", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn average_pool2d1(&self, input: MLOperand, options: MLPool2dOptions) -> MLOperand {
+    pub fn average_pool2d1(&self, input: &MLOperand, options: &MLPool2dOptions) -> MLOperand {
         self.inner
             .call("averagePool2d", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn l2_pool2d0(&self, input: MLOperand) -> MLOperand {
+    pub fn l2_pool2d0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("l2Pool2d", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn l2_pool2d1(&self, input: MLOperand, options: MLPool2dOptions) -> MLOperand {
+    pub fn l2_pool2d1(&self, input: &MLOperand, options: &MLPool2dOptions) -> MLOperand {
         self.inner
             .call("l2Pool2d", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn max_pool2d0(&self, input: MLOperand) -> MLOperand {
+    pub fn max_pool2d0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("maxPool2d", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn max_pool2d1(&self, input: MLOperand, options: MLPool2dOptions) -> MLOperand {
+    pub fn max_pool2d1(&self, input: &MLOperand, options: &MLPool2dOptions) -> MLOperand {
         self.inner
             .call("maxPool2d", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn prelu0(&self, input: MLOperand, slope: MLOperand) -> MLOperand {
+    pub fn prelu0(&self, input: &MLOperand, slope: &MLOperand) -> MLOperand {
         self.inner
             .call("prelu", &[input.into(), slope.into()])
             .as_::<MLOperand>()
@@ -3531,9 +3551,9 @@ impl MLGraphBuilder {
 
     pub fn prelu1(
         &self,
-        input: MLOperand,
-        slope: MLOperand,
-        options: MLOperatorOptions,
+        input: &MLOperand,
+        slope: &MLOperand,
+        options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
             .call("prelu", &[input.into(), slope.into(), options.into()])
@@ -3541,161 +3561,161 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn reduce_l10(&self, input: MLOperand) -> MLOperand {
+    pub fn reduce_l10(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceL1", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn reduce_l11(&self, input: MLOperand, options: MLReduceOptions) -> MLOperand {
+    pub fn reduce_l11(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
         self.inner
             .call("reduceL1", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn reduce_l20(&self, input: MLOperand) -> MLOperand {
+    pub fn reduce_l20(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceL2", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn reduce_l21(&self, input: MLOperand, options: MLReduceOptions) -> MLOperand {
+    pub fn reduce_l21(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
         self.inner
             .call("reduceL2", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn reduce_log_sum0(&self, input: MLOperand) -> MLOperand {
+    pub fn reduce_log_sum0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceLogSum", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn reduce_log_sum1(&self, input: MLOperand, options: MLReduceOptions) -> MLOperand {
+    pub fn reduce_log_sum1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
         self.inner
             .call("reduceLogSum", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn reduce_log_sum_exp0(&self, input: MLOperand) -> MLOperand {
+    pub fn reduce_log_sum_exp0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceLogSumExp", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn reduce_log_sum_exp1(&self, input: MLOperand, options: MLReduceOptions) -> MLOperand {
+    pub fn reduce_log_sum_exp1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
         self.inner
             .call("reduceLogSumExp", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn reduce_max0(&self, input: MLOperand) -> MLOperand {
+    pub fn reduce_max0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceMax", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn reduce_max1(&self, input: MLOperand, options: MLReduceOptions) -> MLOperand {
+    pub fn reduce_max1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
         self.inner
             .call("reduceMax", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn reduce_mean0(&self, input: MLOperand) -> MLOperand {
+    pub fn reduce_mean0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceMean", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn reduce_mean1(&self, input: MLOperand, options: MLReduceOptions) -> MLOperand {
+    pub fn reduce_mean1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
         self.inner
             .call("reduceMean", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn reduce_min0(&self, input: MLOperand) -> MLOperand {
+    pub fn reduce_min0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceMin", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn reduce_min1(&self, input: MLOperand, options: MLReduceOptions) -> MLOperand {
+    pub fn reduce_min1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
         self.inner
             .call("reduceMin", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn reduce_product0(&self, input: MLOperand) -> MLOperand {
+    pub fn reduce_product0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceProduct", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn reduce_product1(&self, input: MLOperand, options: MLReduceOptions) -> MLOperand {
+    pub fn reduce_product1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
         self.inner
             .call("reduceProduct", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn reduce_sum0(&self, input: MLOperand) -> MLOperand {
+    pub fn reduce_sum0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceSum", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn reduce_sum1(&self, input: MLOperand, options: MLReduceOptions) -> MLOperand {
+    pub fn reduce_sum1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
         self.inner
             .call("reduceSum", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn reduce_sum_square0(&self, input: MLOperand) -> MLOperand {
+    pub fn reduce_sum_square0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reduceSumSquare", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn reduce_sum_square1(&self, input: MLOperand, options: MLReduceOptions) -> MLOperand {
+    pub fn reduce_sum_square1(&self, input: &MLOperand, options: &MLReduceOptions) -> MLOperand {
         self.inner
             .call("reduceSumSquare", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn relu0(&self, input: MLOperand) -> MLOperand {
+    pub fn relu0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("relu", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn relu1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn relu1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("relu", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn resample2d0(&self, input: MLOperand) -> MLOperand {
+    pub fn resample2d0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("resample2d", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn resample2d1(&self, input: MLOperand, options: MLResample2dOptions) -> MLOperand {
+    pub fn resample2d1(&self, input: &MLOperand, options: &MLResample2dOptions) -> MLOperand {
         self.inner
             .call("resample2d", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn reshape0(&self, input: MLOperand, new_shape: Sequence<u32>) -> MLOperand {
+    pub fn reshape0(&self, input: &MLOperand, new_shape: Sequence<u32>) -> MLOperand {
         self.inner
             .call("reshape", &[input.into(), new_shape.into()])
             .as_::<MLOperand>()
@@ -3703,9 +3723,9 @@ impl MLGraphBuilder {
 
     pub fn reshape1(
         &self,
-        input: MLOperand,
+        input: &MLOperand,
         new_shape: Sequence<u32>,
-        options: MLOperatorOptions,
+        options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
             .call("reshape", &[input.into(), new_shape.into(), options.into()])
@@ -3713,13 +3733,13 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn reverse0(&self, input: MLOperand) -> MLOperand {
+    pub fn reverse0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("reverse", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn reverse1(&self, input: MLOperand, options: MLReverseOptions) -> MLOperand {
+    pub fn reverse1(&self, input: &MLOperand, options: &MLReverseOptions) -> MLOperand {
         self.inner
             .call("reverse", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -3728,9 +3748,9 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     pub fn scatter_elements0(
         &self,
-        input: MLOperand,
-        indices: MLOperand,
-        updates: MLOperand,
+        input: &MLOperand,
+        indices: &MLOperand,
+        updates: &MLOperand,
     ) -> MLOperand {
         self.inner
             .call(
@@ -3742,10 +3762,10 @@ impl MLGraphBuilder {
 
     pub fn scatter_elements1(
         &self,
-        input: MLOperand,
-        indices: MLOperand,
-        updates: MLOperand,
-        options: MLScatterOptions,
+        input: &MLOperand,
+        indices: &MLOperand,
+        updates: &MLOperand,
+        options: &MLScatterOptions,
     ) -> MLOperand {
         self.inner
             .call(
@@ -3758,9 +3778,9 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     pub fn scatter_nd0(
         &self,
-        input: MLOperand,
-        indices: MLOperand,
-        updates: MLOperand,
+        input: &MLOperand,
+        indices: &MLOperand,
+        updates: &MLOperand,
     ) -> MLOperand {
         self.inner
             .call("scatterND", &[input.into(), indices.into(), updates.into()])
@@ -3769,10 +3789,10 @@ impl MLGraphBuilder {
 
     pub fn scatter_nd1(
         &self,
-        input: MLOperand,
-        indices: MLOperand,
-        updates: MLOperand,
-        options: MLOperatorOptions,
+        input: &MLOperand,
+        indices: &MLOperand,
+        updates: &MLOperand,
+        options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
             .call(
@@ -3783,13 +3803,13 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn sigmoid0(&self, input: MLOperand) -> MLOperand {
+    pub fn sigmoid0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("sigmoid", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn sigmoid1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn sigmoid1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("sigmoid", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -3798,7 +3818,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     pub fn slice0(
         &self,
-        input: MLOperand,
+        input: &MLOperand,
         starts: Sequence<u32>,
         sizes: Sequence<u32>,
     ) -> MLOperand {
@@ -3809,10 +3829,10 @@ impl MLGraphBuilder {
 
     pub fn slice1(
         &self,
-        input: MLOperand,
+        input: &MLOperand,
         starts: Sequence<u32>,
         sizes: Sequence<u32>,
-        options: MLSliceOptions,
+        options: &MLSliceOptions,
     ) -> MLOperand {
         self.inner
             .call(
@@ -3823,46 +3843,46 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn softmax0(&self, input: MLOperand, axis: u32) -> MLOperand {
+    pub fn softmax0(&self, input: &MLOperand, axis: u32) -> MLOperand {
         self.inner
             .call("softmax", &[input.into(), axis.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn softmax1(&self, input: MLOperand, axis: u32, options: MLOperatorOptions) -> MLOperand {
+    pub fn softmax1(&self, input: &MLOperand, axis: u32, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("softmax", &[input.into(), axis.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn softplus0(&self, input: MLOperand) -> MLOperand {
+    pub fn softplus0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("softplus", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn softplus1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn softplus1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("softplus", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn softsign0(&self, input: MLOperand) -> MLOperand {
+    pub fn softsign0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("softsign", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn softsign1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn softsign1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("softsign", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn split0(&self, input: MLOperand, splits: Any) -> Sequence<MLOperand> {
+    pub fn split0(&self, input: &MLOperand, splits: &Any) -> Sequence<MLOperand> {
         self.inner
             .call("split", &[input.into(), splits.into()])
             .as_::<Sequence<MLOperand>>()
@@ -3870,9 +3890,9 @@ impl MLGraphBuilder {
 
     pub fn split1(
         &self,
-        input: MLOperand,
-        splits: Any,
-        options: MLSplitOptions,
+        input: &MLOperand,
+        splits: &Any,
+        options: &MLSplitOptions,
     ) -> Sequence<MLOperand> {
         self.inner
             .call("split", &[input.into(), splits.into(), options.into()])
@@ -3880,18 +3900,18 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn tanh0(&self, input: MLOperand) -> MLOperand {
+    pub fn tanh0(&self, input: &MLOperand) -> MLOperand {
         self.inner.call("tanh", &[input.into()]).as_::<MLOperand>()
     }
 
-    pub fn tanh1(&self, input: MLOperand, options: MLOperatorOptions) -> MLOperand {
+    pub fn tanh1(&self, input: &MLOperand, options: &MLOperatorOptions) -> MLOperand {
         self.inner
             .call("tanh", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn tile0(&self, input: MLOperand, repetitions: Sequence<u32>) -> MLOperand {
+    pub fn tile0(&self, input: &MLOperand, repetitions: Sequence<u32>) -> MLOperand {
         self.inner
             .call("tile", &[input.into(), repetitions.into()])
             .as_::<MLOperand>()
@@ -3899,9 +3919,9 @@ impl MLGraphBuilder {
 
     pub fn tile1(
         &self,
-        input: MLOperand,
+        input: &MLOperand,
         repetitions: Sequence<u32>,
-        options: MLOperatorOptions,
+        options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
             .call("tile", &[input.into(), repetitions.into(), options.into()])
@@ -3909,26 +3929,26 @@ impl MLGraphBuilder {
     }
 }
 impl MLGraphBuilder {
-    pub fn transpose0(&self, input: MLOperand) -> MLOperand {
+    pub fn transpose0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("transpose", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn transpose1(&self, input: MLOperand, options: MLTransposeOptions) -> MLOperand {
+    pub fn transpose1(&self, input: &MLOperand, options: &MLTransposeOptions) -> MLOperand {
         self.inner
             .call("transpose", &[input.into(), options.into()])
             .as_::<MLOperand>()
     }
 }
 impl MLGraphBuilder {
-    pub fn triangular0(&self, input: MLOperand) -> MLOperand {
+    pub fn triangular0(&self, input: &MLOperand) -> MLOperand {
         self.inner
             .call("triangular", &[input.into()])
             .as_::<MLOperand>()
     }
 
-    pub fn triangular1(&self, input: MLOperand, options: MLTriangularOptions) -> MLOperand {
+    pub fn triangular1(&self, input: &MLOperand, options: &MLTriangularOptions) -> MLOperand {
         self.inner
             .call("triangular", &[input.into(), options.into()])
             .as_::<MLOperand>()
@@ -3937,9 +3957,9 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     pub fn where_0(
         &self,
-        condition: MLOperand,
-        true_value: MLOperand,
-        false_value: MLOperand,
+        condition: &MLOperand,
+        true_value: &MLOperand,
+        false_value: &MLOperand,
     ) -> MLOperand {
         self.inner
             .call(
@@ -3951,10 +3971,10 @@ impl MLGraphBuilder {
 
     pub fn where_1(
         &self,
-        condition: MLOperand,
-        true_value: MLOperand,
-        false_value: MLOperand,
-        options: MLOperatorOptions,
+        condition: &MLOperand,
+        true_value: &MLOperand,
+        false_value: &MLOperand,
+        options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
             .call(

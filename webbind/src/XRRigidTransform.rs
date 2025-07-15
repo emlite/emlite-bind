@@ -62,7 +62,7 @@ impl XRRigidTransform {
         }
     }
 
-    pub fn new1(position: DOMPointInit) -> XRRigidTransform {
+    pub fn new1(position: &DOMPointInit) -> XRRigidTransform {
         Self {
             inner: emlite::Val::global("XRRigidTransform")
                 .new(&[position.into()])
@@ -70,7 +70,7 @@ impl XRRigidTransform {
         }
     }
 
-    pub fn new2(position: DOMPointInit, orientation: DOMPointInit) -> XRRigidTransform {
+    pub fn new2(position: &DOMPointInit, orientation: &DOMPointInit) -> XRRigidTransform {
         Self {
             inner: emlite::Val::global("XRRigidTransform")
                 .new(&[position.into(), orientation.into()])

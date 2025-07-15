@@ -63,11 +63,11 @@ impl HTMLQuoteElement {
     }
 }
 impl HTMLQuoteElement {
-    pub fn cite(&self) -> USVString {
-        self.inner.get("cite").as_::<USVString>()
+    pub fn cite(&self) -> String {
+        self.inner.get("cite").as_::<String>()
     }
 
-    pub fn set_cite(&mut self, value: USVString) {
+    pub fn set_cite(&mut self, value: &str) {
         self.inner.set("cite", value);
     }
 }

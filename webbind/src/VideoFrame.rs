@@ -105,7 +105,7 @@ impl VideoFrameCopyToOptions {
         self.inner.get("rect").as_::<DOMRectInit>()
     }
 
-    pub fn set_rect(&mut self, value: DOMRectInit) {
+    pub fn set_rect(&mut self, value: &DOMRectInit) {
         self.inner.set("rect", value);
     }
 }
@@ -114,7 +114,7 @@ impl VideoFrameCopyToOptions {
         self.inner.get("layout").as_::<Sequence<PlaneLayout>>()
     }
 
-    pub fn set_layout(&mut self, value: Sequence<PlaneLayout>) {
+    pub fn set_layout(&mut self, value: &Sequence<PlaneLayout>) {
         self.inner.set("layout", value);
     }
 }
@@ -123,7 +123,7 @@ impl VideoFrameCopyToOptions {
         self.inner.get("format").as_::<VideoPixelFormat>()
     }
 
-    pub fn set_format(&mut self, value: VideoPixelFormat) {
+    pub fn set_format(&mut self, value: &VideoPixelFormat) {
         self.inner.set("format", value);
     }
 }
@@ -132,7 +132,7 @@ impl VideoFrameCopyToOptions {
         self.inner.get("colorSpace").as_::<PredefinedColorSpace>()
     }
 
-    pub fn set_color_space(&mut self, value: PredefinedColorSpace) {
+    pub fn set_color_space(&mut self, value: &PredefinedColorSpace) {
         self.inner.set("colorSpace", value);
     }
 }
@@ -258,7 +258,7 @@ impl From<&VideoFrame> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(VideoFrame);
 
 impl VideoFrame {
-    pub fn new(data: Any, init: Any) -> VideoFrame {
+    pub fn new(data: &Any, init: &Any) -> VideoFrame {
         Self {
             inner: emlite::Val::global("VideoFrame")
                 .new(&[data.into(), init.into()])
@@ -336,20 +336,20 @@ impl VideoFrame {
         self.inner.call("allocationSize", &[]).as_::<u32>()
     }
 
-    pub fn allocation_size1(&self, options: VideoFrameCopyToOptions) -> u32 {
+    pub fn allocation_size1(&self, options: &VideoFrameCopyToOptions) -> u32 {
         self.inner
             .call("allocationSize", &[options.into()])
             .as_::<u32>()
     }
 }
 impl VideoFrame {
-    pub fn copy_to0(&self, destination: Any) -> Promise {
+    pub fn copy_to0(&self, destination: &Any) -> Promise {
         self.inner
             .call("copyTo", &[destination.into()])
             .as_::<Promise>()
     }
 
-    pub fn copy_to1(&self, destination: Any, options: VideoFrameCopyToOptions) -> Promise {
+    pub fn copy_to1(&self, destination: &Any, options: &VideoFrameCopyToOptions) -> Promise {
         self.inner
             .call("copyTo", &[destination.into(), options.into()])
             .as_::<Promise>()

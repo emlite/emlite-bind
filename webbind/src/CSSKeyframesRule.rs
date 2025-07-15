@@ -54,11 +54,11 @@ impl From<&CSSKeyframesRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSKeyframesRule);
 
 impl CSSKeyframesRule {
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: CSSOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
@@ -73,21 +73,21 @@ impl CSSKeyframesRule {
     }
 }
 impl CSSKeyframesRule {
-    pub fn append_rule(&self, rule: CSSOMString) -> Undefined {
+    pub fn append_rule(&self, rule: &str) -> Undefined {
         self.inner
             .call("appendRule", &[rule.into()])
             .as_::<Undefined>()
     }
 }
 impl CSSKeyframesRule {
-    pub fn delete_rule(&self, select: CSSOMString) -> Undefined {
+    pub fn delete_rule(&self, select: &str) -> Undefined {
         self.inner
             .call("deleteRule", &[select.into()])
             .as_::<Undefined>()
     }
 }
 impl CSSKeyframesRule {
-    pub fn find_rule(&self, select: CSSOMString) -> CSSKeyframeRule {
+    pub fn find_rule(&self, select: &str) -> CSSKeyframeRule {
         self.inner
             .call("findRule", &[select.into()])
             .as_::<CSSKeyframeRule>()

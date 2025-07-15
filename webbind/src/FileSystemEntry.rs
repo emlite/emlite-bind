@@ -64,13 +64,13 @@ impl FileSystemEntry {
     }
 }
 impl FileSystemEntry {
-    pub fn name(&self) -> USVString {
-        self.inner.get("name").as_::<USVString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl FileSystemEntry {
-    pub fn full_path(&self) -> USVString {
-        self.inner.get("fullPath").as_::<USVString>()
+    pub fn full_path(&self) -> String {
+        self.inner.get("fullPath").as_::<String>()
     }
 }
 impl FileSystemEntry {
@@ -83,13 +83,13 @@ impl FileSystemEntry {
         self.inner.call("getParent", &[]).as_::<Undefined>()
     }
 
-    pub fn get_parent1(&self, success_callback: Function) -> Undefined {
+    pub fn get_parent1(&self, success_callback: &Function) -> Undefined {
         self.inner
             .call("getParent", &[success_callback.into()])
             .as_::<Undefined>()
     }
 
-    pub fn get_parent2(&self, success_callback: Function, error_callback: Function) -> Undefined {
+    pub fn get_parent2(&self, success_callback: &Function, error_callback: &Function) -> Undefined {
         self.inner
             .call(
                 "getParent",

@@ -54,7 +54,7 @@ impl From<&FileSystemWritableFileStream> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(FileSystemWritableFileStream);
 
 impl FileSystemWritableFileStream {
-    pub fn write(&self, data: Any) -> Promise {
+    pub fn write(&self, data: &Any) -> Promise {
         self.inner.call("write", &[data.into()]).as_::<Promise>()
     }
 }

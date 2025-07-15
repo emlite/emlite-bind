@@ -55,7 +55,7 @@ impl ResizeObserverOptions {
         self.inner.get("box").as_::<ResizeObserverBoxOptions>()
     }
 
-    pub fn set_box_(&mut self, value: ResizeObserverBoxOptions) {
+    pub fn set_box_(&mut self, value: &ResizeObserverBoxOptions) {
         self.inner.set("box", value);
     }
 }
@@ -113,7 +113,7 @@ impl From<&ResizeObserver> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ResizeObserver);
 
 impl ResizeObserver {
-    pub fn new(callback: Function) -> ResizeObserver {
+    pub fn new(callback: &Function) -> ResizeObserver {
         Self {
             inner: emlite::Val::global("ResizeObserver")
                 .new(&[callback.into()])
@@ -122,20 +122,20 @@ impl ResizeObserver {
     }
 }
 impl ResizeObserver {
-    pub fn observe0(&self, target: Element) -> Undefined {
+    pub fn observe0(&self, target: &Element) -> Undefined {
         self.inner
             .call("observe", &[target.into()])
             .as_::<Undefined>()
     }
 
-    pub fn observe1(&self, target: Element, options: ResizeObserverOptions) -> Undefined {
+    pub fn observe1(&self, target: &Element, options: &ResizeObserverOptions) -> Undefined {
         self.inner
             .call("observe", &[target.into(), options.into()])
             .as_::<Undefined>()
     }
 }
 impl ResizeObserver {
-    pub fn unobserve(&self, target: Element) -> Undefined {
+    pub fn unobserve(&self, target: &Element) -> Undefined {
         self.inner
             .call("unobserve", &[target.into()])
             .as_::<Undefined>()

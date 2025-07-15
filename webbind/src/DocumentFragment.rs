@@ -63,7 +63,7 @@ impl DocumentFragment {
     }
 }
 impl DocumentFragment {
-    pub fn get_element_by_id(&self, element_id: DOMString) -> Element {
+    pub fn get_element_by_id(&self, element_id: &str) -> Element {
         self.inner
             .call("getElementById", &[element_id.into()])
             .as_::<Element>()
@@ -90,42 +90,42 @@ impl DocumentFragment {
     }
 }
 impl DocumentFragment {
-    pub fn prepend(&self, nodes: Any) -> Undefined {
+    pub fn prepend(&self, nodes: &Any) -> Undefined {
         self.inner
             .call("prepend", &[nodes.into()])
             .as_::<Undefined>()
     }
 }
 impl DocumentFragment {
-    pub fn append(&self, nodes: Any) -> Undefined {
+    pub fn append(&self, nodes: &Any) -> Undefined {
         self.inner
             .call("append", &[nodes.into()])
             .as_::<Undefined>()
     }
 }
 impl DocumentFragment {
-    pub fn replace_children(&self, nodes: Any) -> Undefined {
+    pub fn replace_children(&self, nodes: &Any) -> Undefined {
         self.inner
             .call("replaceChildren", &[nodes.into()])
             .as_::<Undefined>()
     }
 }
 impl DocumentFragment {
-    pub fn move_before(&self, node: Node, child: Node) -> Undefined {
+    pub fn move_before(&self, node: &Node, child: &Node) -> Undefined {
         self.inner
             .call("moveBefore", &[node.into(), child.into()])
             .as_::<Undefined>()
     }
 }
 impl DocumentFragment {
-    pub fn query_selector(&self, selectors: DOMString) -> Element {
+    pub fn query_selector(&self, selectors: &str) -> Element {
         self.inner
             .call("querySelector", &[selectors.into()])
             .as_::<Element>()
     }
 }
 impl DocumentFragment {
-    pub fn query_selector_all(&self, selectors: DOMString) -> NodeList {
+    pub fn query_selector_all(&self, selectors: &str) -> NodeList {
         self.inner
             .call("querySelectorAll", &[selectors.into()])
             .as_::<NodeList>()

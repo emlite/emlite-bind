@@ -55,7 +55,7 @@ impl GPUTexelCopyBufferLayout {
         self.inner.get("offset").as_::<Any>()
     }
 
-    pub fn set_offset(&mut self, value: Any) {
+    pub fn set_offset(&mut self, value: &Any) {
         self.inner.set("offset", value);
     }
 }
@@ -64,7 +64,7 @@ impl GPUTexelCopyBufferLayout {
         self.inner.get("bytesPerRow").as_::<Any>()
     }
 
-    pub fn set_bytes_per_row(&mut self, value: Any) {
+    pub fn set_bytes_per_row(&mut self, value: &Any) {
         self.inner.set("bytesPerRow", value);
     }
 }
@@ -73,7 +73,7 @@ impl GPUTexelCopyBufferLayout {
         self.inner.get("rowsPerImage").as_::<Any>()
     }
 
-    pub fn set_rows_per_image(&mut self, value: Any) {
+    pub fn set_rows_per_image(&mut self, value: &Any) {
         self.inner.set("rowsPerImage", value);
     }
 }
@@ -132,7 +132,7 @@ impl GPUCopyExternalImageSourceInfo {
         self.inner.get("source").as_::<Any>()
     }
 
-    pub fn set_source(&mut self, value: Any) {
+    pub fn set_source(&mut self, value: &Any) {
         self.inner.set("source", value);
     }
 }
@@ -141,7 +141,7 @@ impl GPUCopyExternalImageSourceInfo {
         self.inner.get("origin").as_::<Any>()
     }
 
-    pub fn set_origin(&mut self, value: Any) {
+    pub fn set_origin(&mut self, value: &Any) {
         self.inner.set("origin", value);
     }
 }
@@ -209,7 +209,7 @@ impl GPUCopyExternalImageDestInfo {
         self.inner.get("colorSpace").as_::<PredefinedColorSpace>()
     }
 
-    pub fn set_color_space(&mut self, value: PredefinedColorSpace) {
+    pub fn set_color_space(&mut self, value: &PredefinedColorSpace) {
         self.inner.set("colorSpace", value);
     }
 }
@@ -276,7 +276,7 @@ impl From<&GPUQueue> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(GPUQueue);
 
 impl GPUQueue {
-    pub fn submit(&self, command_buffers: Sequence<GPUCommandBuffer>) -> Undefined {
+    pub fn submit(&self, command_buffers: &Sequence<GPUCommandBuffer>) -> Undefined {
         self.inner
             .call("submit", &[command_buffers.into()])
             .as_::<Undefined>()
@@ -288,7 +288,7 @@ impl GPUQueue {
     }
 }
 impl GPUQueue {
-    pub fn write_buffer0(&self, buffer: GPUBuffer, buffer_offset: Any, data: Any) -> Undefined {
+    pub fn write_buffer0(&self, buffer: &GPUBuffer, buffer_offset: &Any, data: &Any) -> Undefined {
         self.inner
             .call(
                 "writeBuffer",
@@ -299,10 +299,10 @@ impl GPUQueue {
 
     pub fn write_buffer1(
         &self,
-        buffer: GPUBuffer,
-        buffer_offset: Any,
-        data: Any,
-        data_offset: Any,
+        buffer: &GPUBuffer,
+        buffer_offset: &Any,
+        data: &Any,
+        data_offset: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -319,11 +319,11 @@ impl GPUQueue {
 
     pub fn write_buffer2(
         &self,
-        buffer: GPUBuffer,
-        buffer_offset: Any,
-        data: Any,
-        data_offset: Any,
-        size: Any,
+        buffer: &GPUBuffer,
+        buffer_offset: &Any,
+        data: &Any,
+        data_offset: &Any,
+        size: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -342,10 +342,10 @@ impl GPUQueue {
 impl GPUQueue {
     pub fn write_texture(
         &self,
-        destination: GPUTexelCopyTextureInfo,
-        data: Any,
-        data_layout: GPUTexelCopyBufferLayout,
-        size: Any,
+        destination: &GPUTexelCopyTextureInfo,
+        data: &Any,
+        data_layout: &GPUTexelCopyBufferLayout,
+        size: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -363,9 +363,9 @@ impl GPUQueue {
 impl GPUQueue {
     pub fn copy_external_image_to_texture(
         &self,
-        source: GPUCopyExternalImageSourceInfo,
-        destination: GPUCopyExternalImageDestInfo,
-        copy_size: Any,
+        source: &GPUCopyExternalImageSourceInfo,
+        destination: &GPUCopyExternalImageDestInfo,
+        copy_size: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -376,11 +376,11 @@ impl GPUQueue {
     }
 }
 impl GPUQueue {
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 
-    pub fn set_label(&mut self, value: USVString) {
+    pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }
 }

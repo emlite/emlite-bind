@@ -59,14 +59,14 @@ impl WebGLRenderingContext {
     }
 }
 impl WebGLRenderingContext {
-    pub fn buffer_data(&self, target: Any, data: Any, usage: Any) -> Undefined {
+    pub fn buffer_data(&self, target: &Any, data: &Any, usage: &Any) -> Undefined {
         self.inner
             .call("bufferData", &[target.into(), data.into(), usage.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGLRenderingContext {
-    pub fn buffer_sub_data(&self, target: Any, offset: Any, data: Any) -> Undefined {
+    pub fn buffer_sub_data(&self, target: &Any, offset: &Any, data: &Any) -> Undefined {
         self.inner
             .call(
                 "bufferSubData",
@@ -78,13 +78,13 @@ impl WebGLRenderingContext {
 impl WebGLRenderingContext {
     pub fn compressed_tex_image2_d(
         &self,
-        target: Any,
-        level: Any,
-        internalformat: Any,
-        width: Any,
-        height: Any,
-        border: Any,
-        data: Any,
+        target: &Any,
+        level: &Any,
+        internalformat: &Any,
+        width: &Any,
+        height: &Any,
+        border: &Any,
+        data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -105,14 +105,14 @@ impl WebGLRenderingContext {
 impl WebGLRenderingContext {
     pub fn compressed_tex_sub_image2_d(
         &self,
-        target: Any,
-        level: Any,
-        xoffset: Any,
-        yoffset: Any,
-        width: Any,
-        height: Any,
-        format: Any,
-        data: Any,
+        target: &Any,
+        level: &Any,
+        xoffset: &Any,
+        yoffset: &Any,
+        width: &Any,
+        height: &Any,
+        format: &Any,
+        data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -134,13 +134,13 @@ impl WebGLRenderingContext {
 impl WebGLRenderingContext {
     pub fn read_pixels(
         &self,
-        x: Any,
-        y: Any,
-        width: Any,
-        height: Any,
-        format: Any,
-        type_: Any,
-        pixels: Any,
+        x: &Any,
+        y: &Any,
+        width: &Any,
+        height: &Any,
+        format: &Any,
+        type_: &Any,
+        pixels: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -161,12 +161,12 @@ impl WebGLRenderingContext {
 impl WebGLRenderingContext {
     pub fn tex_image2_d(
         &self,
-        target: Any,
-        level: Any,
-        internalformat: Any,
-        format: Any,
-        type_: Any,
-        source: Any,
+        target: &Any,
+        level: &Any,
+        internalformat: &Any,
+        format: &Any,
+        type_: &Any,
+        source: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -186,13 +186,13 @@ impl WebGLRenderingContext {
 impl WebGLRenderingContext {
     pub fn tex_sub_image2_d(
         &self,
-        target: Any,
-        level: Any,
-        xoffset: Any,
-        yoffset: Any,
-        format: Any,
-        type_: Any,
-        source: Any,
+        target: &Any,
+        level: &Any,
+        xoffset: &Any,
+        yoffset: &Any,
+        format: &Any,
+        type_: &Any,
+        source: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -211,56 +211,56 @@ impl WebGLRenderingContext {
     }
 }
 impl WebGLRenderingContext {
-    pub fn uniform1fv(&self, location: WebGLUniformLocation, v: Any) -> Undefined {
+    pub fn uniform1fv(&self, location: &WebGLUniformLocation, v: &Any) -> Undefined {
         self.inner
             .call("uniform1fv", &[location.into(), v.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGLRenderingContext {
-    pub fn uniform2fv(&self, location: WebGLUniformLocation, v: Any) -> Undefined {
+    pub fn uniform2fv(&self, location: &WebGLUniformLocation, v: &Any) -> Undefined {
         self.inner
             .call("uniform2fv", &[location.into(), v.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGLRenderingContext {
-    pub fn uniform3fv(&self, location: WebGLUniformLocation, v: Any) -> Undefined {
+    pub fn uniform3fv(&self, location: &WebGLUniformLocation, v: &Any) -> Undefined {
         self.inner
             .call("uniform3fv", &[location.into(), v.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGLRenderingContext {
-    pub fn uniform4fv(&self, location: WebGLUniformLocation, v: Any) -> Undefined {
+    pub fn uniform4fv(&self, location: &WebGLUniformLocation, v: &Any) -> Undefined {
         self.inner
             .call("uniform4fv", &[location.into(), v.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGLRenderingContext {
-    pub fn uniform1iv(&self, location: WebGLUniformLocation, v: Any) -> Undefined {
+    pub fn uniform1iv(&self, location: &WebGLUniformLocation, v: &Any) -> Undefined {
         self.inner
             .call("uniform1iv", &[location.into(), v.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGLRenderingContext {
-    pub fn uniform2iv(&self, location: WebGLUniformLocation, v: Any) -> Undefined {
+    pub fn uniform2iv(&self, location: &WebGLUniformLocation, v: &Any) -> Undefined {
         self.inner
             .call("uniform2iv", &[location.into(), v.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGLRenderingContext {
-    pub fn uniform3iv(&self, location: WebGLUniformLocation, v: Any) -> Undefined {
+    pub fn uniform3iv(&self, location: &WebGLUniformLocation, v: &Any) -> Undefined {
         self.inner
             .call("uniform3iv", &[location.into(), v.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGLRenderingContext {
-    pub fn uniform4iv(&self, location: WebGLUniformLocation, v: Any) -> Undefined {
+    pub fn uniform4iv(&self, location: &WebGLUniformLocation, v: &Any) -> Undefined {
         self.inner
             .call("uniform4iv", &[location.into(), v.into()])
             .as_::<Undefined>()
@@ -269,9 +269,9 @@ impl WebGLRenderingContext {
 impl WebGLRenderingContext {
     pub fn uniform_matrix2fv(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        value: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        value: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -284,9 +284,9 @@ impl WebGLRenderingContext {
 impl WebGLRenderingContext {
     pub fn uniform_matrix3fv(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        value: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        value: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -299,9 +299,9 @@ impl WebGLRenderingContext {
 impl WebGLRenderingContext {
     pub fn uniform_matrix4fv(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        value: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        value: &Any,
     ) -> Undefined {
         self.inner
             .call(

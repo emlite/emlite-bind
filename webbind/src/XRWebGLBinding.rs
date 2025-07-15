@@ -55,7 +55,7 @@ impl XRProjectionLayerInit {
         self.inner.get("textureType").as_::<XRTextureType>()
     }
 
-    pub fn set_texture_type(&mut self, value: XRTextureType) {
+    pub fn set_texture_type(&mut self, value: &XRTextureType) {
         self.inner.set("textureType", value);
     }
 }
@@ -64,7 +64,7 @@ impl XRProjectionLayerInit {
         self.inner.get("colorFormat").as_::<Any>()
     }
 
-    pub fn set_color_format(&mut self, value: Any) {
+    pub fn set_color_format(&mut self, value: &Any) {
         self.inner.set("colorFormat", value);
     }
 }
@@ -73,7 +73,7 @@ impl XRProjectionLayerInit {
         self.inner.get("depthFormat").as_::<Any>()
     }
 
-    pub fn set_depth_format(&mut self, value: Any) {
+    pub fn set_depth_format(&mut self, value: &Any) {
         self.inner.set("depthFormat", value);
     }
 }
@@ -150,7 +150,7 @@ impl XRQuadLayerInit {
         self.inner.get("textureType").as_::<XRTextureType>()
     }
 
-    pub fn set_texture_type(&mut self, value: XRTextureType) {
+    pub fn set_texture_type(&mut self, value: &XRTextureType) {
         self.inner.set("textureType", value);
     }
 }
@@ -159,7 +159,7 @@ impl XRQuadLayerInit {
         self.inner.get("transform").as_::<XRRigidTransform>()
     }
 
-    pub fn set_transform(&mut self, value: XRRigidTransform) {
+    pub fn set_transform(&mut self, value: &XRRigidTransform) {
         self.inner.set("transform", value);
     }
 }
@@ -236,7 +236,7 @@ impl XRCylinderLayerInit {
         self.inner.get("textureType").as_::<XRTextureType>()
     }
 
-    pub fn set_texture_type(&mut self, value: XRTextureType) {
+    pub fn set_texture_type(&mut self, value: &XRTextureType) {
         self.inner.set("textureType", value);
     }
 }
@@ -245,7 +245,7 @@ impl XRCylinderLayerInit {
         self.inner.get("transform").as_::<XRRigidTransform>()
     }
 
-    pub fn set_transform(&mut self, value: XRRigidTransform) {
+    pub fn set_transform(&mut self, value: &XRRigidTransform) {
         self.inner.set("transform", value);
     }
 }
@@ -331,7 +331,7 @@ impl XREquirectLayerInit {
         self.inner.get("textureType").as_::<XRTextureType>()
     }
 
-    pub fn set_texture_type(&mut self, value: XRTextureType) {
+    pub fn set_texture_type(&mut self, value: &XRTextureType) {
         self.inner.set("textureType", value);
     }
 }
@@ -340,7 +340,7 @@ impl XREquirectLayerInit {
         self.inner.get("transform").as_::<XRRigidTransform>()
     }
 
-    pub fn set_transform(&mut self, value: XRRigidTransform) {
+    pub fn set_transform(&mut self, value: &XRRigidTransform) {
         self.inner.set("transform", value);
     }
 }
@@ -435,7 +435,7 @@ impl XRCubeLayerInit {
         self.inner.get("orientation").as_::<DOMPointReadOnly>()
     }
 
-    pub fn set_orientation(&mut self, value: DOMPointReadOnly) {
+    pub fn set_orientation(&mut self, value: &DOMPointReadOnly) {
         self.inner.set("orientation", value);
     }
 }
@@ -493,7 +493,7 @@ impl From<&XRWebGLBinding> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(XRWebGLBinding);
 
 impl XRWebGLBinding {
-    pub fn new(session: XRSession, context: Any) -> XRWebGLBinding {
+    pub fn new(session: &XRSession, context: &Any) -> XRWebGLBinding {
         Self {
             inner: emlite::Val::global("XRWebGLBinding")
                 .new(&[session.into(), context.into()])
@@ -518,7 +518,7 @@ impl XRWebGLBinding {
             .as_::<XRProjectionLayer>()
     }
 
-    pub fn create_projection_layer1(&self, init: XRProjectionLayerInit) -> XRProjectionLayer {
+    pub fn create_projection_layer1(&self, init: &XRProjectionLayerInit) -> XRProjectionLayer {
         self.inner
             .call("createProjectionLayer", &[init.into()])
             .as_::<XRProjectionLayer>()
@@ -529,7 +529,7 @@ impl XRWebGLBinding {
         self.inner.call("createQuadLayer", &[]).as_::<XRQuadLayer>()
     }
 
-    pub fn create_quad_layer1(&self, init: XRQuadLayerInit) -> XRQuadLayer {
+    pub fn create_quad_layer1(&self, init: &XRQuadLayerInit) -> XRQuadLayer {
         self.inner
             .call("createQuadLayer", &[init.into()])
             .as_::<XRQuadLayer>()
@@ -542,7 +542,7 @@ impl XRWebGLBinding {
             .as_::<XRCylinderLayer>()
     }
 
-    pub fn create_cylinder_layer1(&self, init: XRCylinderLayerInit) -> XRCylinderLayer {
+    pub fn create_cylinder_layer1(&self, init: &XRCylinderLayerInit) -> XRCylinderLayer {
         self.inner
             .call("createCylinderLayer", &[init.into()])
             .as_::<XRCylinderLayer>()
@@ -555,7 +555,7 @@ impl XRWebGLBinding {
             .as_::<XREquirectLayer>()
     }
 
-    pub fn create_equirect_layer1(&self, init: XREquirectLayerInit) -> XREquirectLayer {
+    pub fn create_equirect_layer1(&self, init: &XREquirectLayerInit) -> XREquirectLayer {
         self.inner
             .call("createEquirectLayer", &[init.into()])
             .as_::<XREquirectLayer>()
@@ -566,14 +566,14 @@ impl XRWebGLBinding {
         self.inner.call("createCubeLayer", &[]).as_::<XRCubeLayer>()
     }
 
-    pub fn create_cube_layer1(&self, init: XRCubeLayerInit) -> XRCubeLayer {
+    pub fn create_cube_layer1(&self, init: &XRCubeLayerInit) -> XRCubeLayer {
         self.inner
             .call("createCubeLayer", &[init.into()])
             .as_::<XRCubeLayer>()
     }
 }
 impl XRWebGLBinding {
-    pub fn get_sub_image0(&self, layer: XRCompositionLayer, frame: XRFrame) -> XRWebGLSubImage {
+    pub fn get_sub_image0(&self, layer: &XRCompositionLayer, frame: &XRFrame) -> XRWebGLSubImage {
         self.inner
             .call("getSubImage", &[layer.into(), frame.into()])
             .as_::<XRWebGLSubImage>()
@@ -581,9 +581,9 @@ impl XRWebGLBinding {
 
     pub fn get_sub_image1(
         &self,
-        layer: XRCompositionLayer,
-        frame: XRFrame,
-        eye: XREye,
+        layer: &XRCompositionLayer,
+        frame: &XRFrame,
+        eye: &XREye,
     ) -> XRWebGLSubImage {
         self.inner
             .call("getSubImage", &[layer.into(), frame.into(), eye.into()])
@@ -591,14 +591,14 @@ impl XRWebGLBinding {
     }
 }
 impl XRWebGLBinding {
-    pub fn get_view_sub_image(&self, layer: XRProjectionLayer, view: XRView) -> XRWebGLSubImage {
+    pub fn get_view_sub_image(&self, layer: &XRProjectionLayer, view: &XRView) -> XRWebGLSubImage {
         self.inner
             .call("getViewSubImage", &[layer.into(), view.into()])
             .as_::<XRWebGLSubImage>()
     }
 }
 impl XRWebGLBinding {
-    pub fn foveate_bound_texture(&self, target: Any, fixed_foveation: f32) -> Undefined {
+    pub fn foveate_bound_texture(&self, target: &Any, fixed_foveation: f32) -> Undefined {
         self.inner
             .call(
                 "foveateBoundTexture",
@@ -608,21 +608,21 @@ impl XRWebGLBinding {
     }
 }
 impl XRWebGLBinding {
-    pub fn get_camera_image(&self, camera: XRCamera) -> WebGLTexture {
+    pub fn get_camera_image(&self, camera: &XRCamera) -> WebGLTexture {
         self.inner
             .call("getCameraImage", &[camera.into()])
             .as_::<WebGLTexture>()
     }
 }
 impl XRWebGLBinding {
-    pub fn get_depth_information(&self, view: XRView) -> XRWebGLDepthInformation {
+    pub fn get_depth_information(&self, view: &XRView) -> XRWebGLDepthInformation {
         self.inner
             .call("getDepthInformation", &[view.into()])
             .as_::<XRWebGLDepthInformation>()
     }
 }
 impl XRWebGLBinding {
-    pub fn get_reflection_cube_map(&self, light_probe: XRLightProbe) -> WebGLTexture {
+    pub fn get_reflection_cube_map(&self, light_probe: &XRLightProbe) -> WebGLTexture {
         self.inner
             .call("getReflectionCubeMap", &[light_probe.into()])
             .as_::<WebGLTexture>()

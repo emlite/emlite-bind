@@ -58,7 +58,7 @@ impl InterestGroupBiddingScriptRunnerGlobalScope {
         self.inner.call("setBid", &[]).as_::<bool>()
     }
 
-    pub fn set_bid1(&self, one_or_many_bids: Any) -> bool {
+    pub fn set_bid1(&self, one_or_many_bids: &Any) -> bool {
         self.inner
             .call("setBid", &[one_or_many_bids.into()])
             .as_::<bool>()
@@ -72,13 +72,13 @@ impl InterestGroupBiddingScriptRunnerGlobalScope {
     }
 }
 impl InterestGroupBiddingScriptRunnerGlobalScope {
-    pub fn set_priority_signals_override0(&self, key: DOMString) -> Undefined {
+    pub fn set_priority_signals_override0(&self, key: &str) -> Undefined {
         self.inner
             .call("setPrioritySignalsOverride", &[key.into()])
             .as_::<Undefined>()
     }
 
-    pub fn set_priority_signals_override1(&self, key: DOMString, priority: f64) -> Undefined {
+    pub fn set_priority_signals_override1(&self, key: &str, priority: f64) -> Undefined {
         self.inner
             .call("setPrioritySignalsOverride", &[key.into(), priority.into()])
             .as_::<Undefined>()

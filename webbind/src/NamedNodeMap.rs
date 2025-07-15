@@ -64,42 +64,42 @@ impl NamedNodeMap {
     }
 }
 impl NamedNodeMap {
-    pub fn get_named_item(&self, qualified_name: DOMString) -> Attr {
+    pub fn get_named_item(&self, qualified_name: &str) -> Attr {
         self.inner
             .call("getNamedItem", &[qualified_name.into()])
             .as_::<Attr>()
     }
 }
 impl NamedNodeMap {
-    pub fn get_named_item_ns(&self, namespace: DOMString, local_name: DOMString) -> Attr {
+    pub fn get_named_item_ns(&self, namespace: &str, local_name: &str) -> Attr {
         self.inner
             .call("getNamedItemNS", &[namespace.into(), local_name.into()])
             .as_::<Attr>()
     }
 }
 impl NamedNodeMap {
-    pub fn set_named_item(&self, attr: Attr) -> Attr {
+    pub fn set_named_item(&self, attr: &Attr) -> Attr {
         self.inner
             .call("setNamedItem", &[attr.into()])
             .as_::<Attr>()
     }
 }
 impl NamedNodeMap {
-    pub fn set_named_item_ns(&self, attr: Attr) -> Attr {
+    pub fn set_named_item_ns(&self, attr: &Attr) -> Attr {
         self.inner
             .call("setNamedItemNS", &[attr.into()])
             .as_::<Attr>()
     }
 }
 impl NamedNodeMap {
-    pub fn remove_named_item(&self, qualified_name: DOMString) -> Attr {
+    pub fn remove_named_item(&self, qualified_name: &str) -> Attr {
         self.inner
             .call("removeNamedItem", &[qualified_name.into()])
             .as_::<Attr>()
     }
 }
 impl NamedNodeMap {
-    pub fn remove_named_item_ns(&self, namespace: DOMString, local_name: DOMString) -> Attr {
+    pub fn remove_named_item_ns(&self, namespace: &str, local_name: &str) -> Attr {
         self.inner
             .call("removeNamedItemNS", &[namespace.into(), local_name.into()])
             .as_::<Attr>()

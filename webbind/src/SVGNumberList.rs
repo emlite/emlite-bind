@@ -69,7 +69,7 @@ impl SVGNumberList {
     }
 }
 impl SVGNumberList {
-    pub fn initialize(&self, new_item: SVGNumber) -> SVGNumber {
+    pub fn initialize(&self, new_item: &SVGNumber) -> SVGNumber {
         self.inner
             .call("initialize", &[new_item.into()])
             .as_::<SVGNumber>()
@@ -83,14 +83,14 @@ impl SVGNumberList {
     }
 }
 impl SVGNumberList {
-    pub fn insert_item_before(&self, new_item: SVGNumber, index: u32) -> SVGNumber {
+    pub fn insert_item_before(&self, new_item: &SVGNumber, index: u32) -> SVGNumber {
         self.inner
             .call("insertItemBefore", &[new_item.into(), index.into()])
             .as_::<SVGNumber>()
     }
 }
 impl SVGNumberList {
-    pub fn replace_item(&self, new_item: SVGNumber, index: u32) -> SVGNumber {
+    pub fn replace_item(&self, new_item: &SVGNumber, index: u32) -> SVGNumber {
         self.inner
             .call("replaceItem", &[new_item.into(), index.into()])
             .as_::<SVGNumber>()
@@ -104,7 +104,7 @@ impl SVGNumberList {
     }
 }
 impl SVGNumberList {
-    pub fn append_item(&self, new_item: SVGNumber) -> SVGNumber {
+    pub fn append_item(&self, new_item: &SVGNumber) -> SVGNumber {
         self.inner
             .call("appendItem", &[new_item.into()])
             .as_::<SVGNumber>()

@@ -55,9 +55,9 @@ jsbind::utils::impl_dyn_cast!(USBEndpoint);
 
 impl USBEndpoint {
     pub fn new(
-        alternate: USBAlternateInterface,
+        alternate: &USBAlternateInterface,
         endpoint_number: u8,
-        direction: USBDirection,
+        direction: &USBDirection,
     ) -> USBEndpoint {
         Self {
             inner: emlite::Val::global("USBEndpoint")

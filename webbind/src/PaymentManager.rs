@@ -54,16 +54,16 @@ impl From<&PaymentManager> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PaymentManager);
 
 impl PaymentManager {
-    pub fn user_hint(&self) -> DOMString {
-        self.inner.get("userHint").as_::<DOMString>()
+    pub fn user_hint(&self) -> String {
+        self.inner.get("userHint").as_::<String>()
     }
 
-    pub fn set_user_hint(&mut self, value: DOMString) {
+    pub fn set_user_hint(&mut self, value: &str) {
         self.inner.set("userHint", value);
     }
 }
 impl PaymentManager {
-    pub fn enable_delegations(&self, delegations: Sequence<PaymentDelegation>) -> Promise {
+    pub fn enable_delegations(&self, delegations: &Sequence<PaymentDelegation>) -> Promise {
         self.inner
             .call("enableDelegations", &[delegations.into()])
             .as_::<Promise>()

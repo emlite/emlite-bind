@@ -54,7 +54,7 @@ impl From<&CompositionEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CompositionEvent);
 
 impl CompositionEvent {
-    pub fn new0(type_: DOMString) -> CompositionEvent {
+    pub fn new0(type_: &str) -> CompositionEvent {
         Self {
             inner: emlite::Val::global("CompositionEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl CompositionEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> CompositionEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> CompositionEvent {
         Self {
             inner: emlite::Val::global("CompositionEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -71,18 +71,18 @@ impl CompositionEvent {
     }
 }
 impl CompositionEvent {
-    pub fn data(&self) -> USVString {
-        self.inner.get("data").as_::<USVString>()
+    pub fn data(&self) -> String {
+        self.inner.get("data").as_::<String>()
     }
 }
 impl CompositionEvent {
-    pub fn init_composition_event0(&self, type_arg: DOMString) -> Undefined {
+    pub fn init_composition_event0(&self, type_arg: &str) -> Undefined {
         self.inner
             .call("initCompositionEvent", &[type_arg.into()])
             .as_::<Undefined>()
     }
 
-    pub fn init_composition_event1(&self, type_arg: DOMString, bubbles_arg: bool) -> Undefined {
+    pub fn init_composition_event1(&self, type_arg: &str, bubbles_arg: bool) -> Undefined {
         self.inner
             .call(
                 "initCompositionEvent",
@@ -93,7 +93,7 @@ impl CompositionEvent {
 
     pub fn init_composition_event2(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
     ) -> Undefined {
@@ -107,10 +107,10 @@ impl CompositionEvent {
 
     pub fn init_composition_event3(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Any,
+        view_arg: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -127,11 +127,11 @@ impl CompositionEvent {
 
     pub fn init_composition_event4(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Any,
-        data_arg: DOMString,
+        view_arg: &Any,
+        data_arg: &str,
     ) -> Undefined {
         self.inner
             .call(

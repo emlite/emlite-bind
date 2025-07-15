@@ -54,7 +54,7 @@ impl From<&DynamicsCompressorNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(DynamicsCompressorNode);
 
 impl DynamicsCompressorNode {
-    pub fn new0(context: BaseAudioContext) -> DynamicsCompressorNode {
+    pub fn new0(context: &BaseAudioContext) -> DynamicsCompressorNode {
         Self {
             inner: emlite::Val::global("DynamicsCompressorNode")
                 .new(&[context.into()])
@@ -62,7 +62,7 @@ impl DynamicsCompressorNode {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: Any) -> DynamicsCompressorNode {
+    pub fn new1(context: &BaseAudioContext, options: &Any) -> DynamicsCompressorNode {
         Self {
             inner: emlite::Val::global("DynamicsCompressorNode")
                 .new(&[context.into(), options.into()])

@@ -55,7 +55,7 @@ impl AuthenticationExtensionsClientOutputs {
         self.inner.get("largeBlob").as_::<Any>()
     }
 
-    pub fn set_large_blob(&mut self, value: Any) {
+    pub fn set_large_blob(&mut self, value: &Any) {
         self.inner.set("largeBlob", value);
     }
 }
@@ -114,7 +114,7 @@ impl PublicKeyCredentialCreationOptions {
         self.inner.get("rp").as_::<Any>()
     }
 
-    pub fn set_rp(&mut self, value: Any) {
+    pub fn set_rp(&mut self, value: &Any) {
         self.inner.set("rp", value);
     }
 }
@@ -123,7 +123,7 @@ impl PublicKeyCredentialCreationOptions {
         self.inner.get("user").as_::<Any>()
     }
 
-    pub fn set_user(&mut self, value: Any) {
+    pub fn set_user(&mut self, value: &Any) {
         self.inner.set("user", value);
     }
 }
@@ -132,7 +132,7 @@ impl PublicKeyCredentialCreationOptions {
         self.inner.get("challenge").as_::<Any>()
     }
 
-    pub fn set_challenge(&mut self, value: Any) {
+    pub fn set_challenge(&mut self, value: &Any) {
         self.inner.set("challenge", value);
     }
 }
@@ -141,7 +141,7 @@ impl PublicKeyCredentialCreationOptions {
         self.inner.get("pubKeyCredParams").as_::<Sequence<Any>>()
     }
 
-    pub fn set_pub_key_cred_params(&mut self, value: Sequence<Any>) {
+    pub fn set_pub_key_cred_params(&mut self, value: &Sequence<Any>) {
         self.inner.set("pubKeyCredParams", value);
     }
 }
@@ -159,7 +159,7 @@ impl PublicKeyCredentialCreationOptions {
         self.inner.get("excludeCredentials").as_::<Sequence<Any>>()
     }
 
-    pub fn set_exclude_credentials(&mut self, value: Sequence<Any>) {
+    pub fn set_exclude_credentials(&mut self, value: &Sequence<Any>) {
         self.inner.set("excludeCredentials", value);
     }
 }
@@ -168,36 +168,36 @@ impl PublicKeyCredentialCreationOptions {
         self.inner.get("authenticatorSelection").as_::<Any>()
     }
 
-    pub fn set_authenticator_selection(&mut self, value: Any) {
+    pub fn set_authenticator_selection(&mut self, value: &Any) {
         self.inner.set("authenticatorSelection", value);
     }
 }
 impl PublicKeyCredentialCreationOptions {
-    pub fn hints(&self) -> Sequence<DOMString> {
-        self.inner.get("hints").as_::<Sequence<DOMString>>()
+    pub fn hints(&self) -> Sequence<String> {
+        self.inner.get("hints").as_::<Sequence<String>>()
     }
 
-    pub fn set_hints(&mut self, value: Sequence<DOMString>) {
+    pub fn set_hints(&mut self, value: &Sequence<String>) {
         self.inner.set("hints", value);
     }
 }
 impl PublicKeyCredentialCreationOptions {
-    pub fn attestation(&self) -> DOMString {
-        self.inner.get("attestation").as_::<DOMString>()
+    pub fn attestation(&self) -> String {
+        self.inner.get("attestation").as_::<String>()
     }
 
-    pub fn set_attestation(&mut self, value: DOMString) {
+    pub fn set_attestation(&mut self, value: &str) {
         self.inner.set("attestation", value);
     }
 }
 impl PublicKeyCredentialCreationOptions {
-    pub fn attestation_formats(&self) -> Sequence<DOMString> {
+    pub fn attestation_formats(&self) -> Sequence<String> {
         self.inner
             .get("attestationFormats")
-            .as_::<Sequence<DOMString>>()
+            .as_::<Sequence<String>>()
     }
 
-    pub fn set_attestation_formats(&mut self, value: Sequence<DOMString>) {
+    pub fn set_attestation_formats(&mut self, value: &Sequence<String>) {
         self.inner.set("attestationFormats", value);
     }
 }
@@ -206,7 +206,7 @@ impl PublicKeyCredentialCreationOptions {
         self.inner.get("extensions").as_::<Any>()
     }
 
-    pub fn set_extensions(&mut self, value: Any) {
+    pub fn set_extensions(&mut self, value: &Any) {
         self.inner.set("extensions", value);
     }
 }
@@ -265,7 +265,7 @@ impl PublicKeyCredentialCreationOptionsJSON {
         self.inner.get("rp").as_::<Any>()
     }
 
-    pub fn set_rp(&mut self, value: Any) {
+    pub fn set_rp(&mut self, value: &Any) {
         self.inner.set("rp", value);
     }
 }
@@ -274,7 +274,7 @@ impl PublicKeyCredentialCreationOptionsJSON {
         self.inner.get("user").as_::<Any>()
     }
 
-    pub fn set_user(&mut self, value: Any) {
+    pub fn set_user(&mut self, value: &Any) {
         self.inner.set("user", value);
     }
 }
@@ -283,7 +283,7 @@ impl PublicKeyCredentialCreationOptionsJSON {
         self.inner.get("challenge").as_::<Any>()
     }
 
-    pub fn set_challenge(&mut self, value: Any) {
+    pub fn set_challenge(&mut self, value: &Any) {
         self.inner.set("challenge", value);
     }
 }
@@ -292,7 +292,7 @@ impl PublicKeyCredentialCreationOptionsJSON {
         self.inner.get("pubKeyCredParams").as_::<Sequence<Any>>()
     }
 
-    pub fn set_pub_key_cred_params(&mut self, value: Sequence<Any>) {
+    pub fn set_pub_key_cred_params(&mut self, value: &Sequence<Any>) {
         self.inner.set("pubKeyCredParams", value);
     }
 }
@@ -310,7 +310,7 @@ impl PublicKeyCredentialCreationOptionsJSON {
         self.inner.get("excludeCredentials").as_::<Sequence<Any>>()
     }
 
-    pub fn set_exclude_credentials(&mut self, value: Sequence<Any>) {
+    pub fn set_exclude_credentials(&mut self, value: &Sequence<Any>) {
         self.inner.set("excludeCredentials", value);
     }
 }
@@ -319,36 +319,36 @@ impl PublicKeyCredentialCreationOptionsJSON {
         self.inner.get("authenticatorSelection").as_::<Any>()
     }
 
-    pub fn set_authenticator_selection(&mut self, value: Any) {
+    pub fn set_authenticator_selection(&mut self, value: &Any) {
         self.inner.set("authenticatorSelection", value);
     }
 }
 impl PublicKeyCredentialCreationOptionsJSON {
-    pub fn hints(&self) -> Sequence<DOMString> {
-        self.inner.get("hints").as_::<Sequence<DOMString>>()
+    pub fn hints(&self) -> Sequence<String> {
+        self.inner.get("hints").as_::<Sequence<String>>()
     }
 
-    pub fn set_hints(&mut self, value: Sequence<DOMString>) {
+    pub fn set_hints(&mut self, value: &Sequence<String>) {
         self.inner.set("hints", value);
     }
 }
 impl PublicKeyCredentialCreationOptionsJSON {
-    pub fn attestation(&self) -> DOMString {
-        self.inner.get("attestation").as_::<DOMString>()
+    pub fn attestation(&self) -> String {
+        self.inner.get("attestation").as_::<String>()
     }
 
-    pub fn set_attestation(&mut self, value: DOMString) {
+    pub fn set_attestation(&mut self, value: &str) {
         self.inner.set("attestation", value);
     }
 }
 impl PublicKeyCredentialCreationOptionsJSON {
-    pub fn attestation_formats(&self) -> Sequence<DOMString> {
+    pub fn attestation_formats(&self) -> Sequence<String> {
         self.inner
             .get("attestationFormats")
-            .as_::<Sequence<DOMString>>()
+            .as_::<Sequence<String>>()
     }
 
-    pub fn set_attestation_formats(&mut self, value: Sequence<DOMString>) {
+    pub fn set_attestation_formats(&mut self, value: &Sequence<String>) {
         self.inner.set("attestationFormats", value);
     }
 }
@@ -357,7 +357,7 @@ impl PublicKeyCredentialCreationOptionsJSON {
         self.inner.get("extensions").as_::<Any>()
     }
 
-    pub fn set_extensions(&mut self, value: Any) {
+    pub fn set_extensions(&mut self, value: &Any) {
         self.inner.set("extensions", value);
     }
 }
@@ -416,7 +416,7 @@ impl PublicKeyCredentialRequestOptions {
         self.inner.get("challenge").as_::<Any>()
     }
 
-    pub fn set_challenge(&mut self, value: Any) {
+    pub fn set_challenge(&mut self, value: &Any) {
         self.inner.set("challenge", value);
     }
 }
@@ -430,11 +430,11 @@ impl PublicKeyCredentialRequestOptions {
     }
 }
 impl PublicKeyCredentialRequestOptions {
-    pub fn rp_id(&self) -> DOMString {
-        self.inner.get("rpId").as_::<DOMString>()
+    pub fn rp_id(&self) -> String {
+        self.inner.get("rpId").as_::<String>()
     }
 
-    pub fn set_rp_id(&mut self, value: DOMString) {
+    pub fn set_rp_id(&mut self, value: &str) {
         self.inner.set("rpId", value);
     }
 }
@@ -443,25 +443,25 @@ impl PublicKeyCredentialRequestOptions {
         self.inner.get("allowCredentials").as_::<Sequence<Any>>()
     }
 
-    pub fn set_allow_credentials(&mut self, value: Sequence<Any>) {
+    pub fn set_allow_credentials(&mut self, value: &Sequence<Any>) {
         self.inner.set("allowCredentials", value);
     }
 }
 impl PublicKeyCredentialRequestOptions {
-    pub fn user_verification(&self) -> DOMString {
-        self.inner.get("userVerification").as_::<DOMString>()
+    pub fn user_verification(&self) -> String {
+        self.inner.get("userVerification").as_::<String>()
     }
 
-    pub fn set_user_verification(&mut self, value: DOMString) {
+    pub fn set_user_verification(&mut self, value: &str) {
         self.inner.set("userVerification", value);
     }
 }
 impl PublicKeyCredentialRequestOptions {
-    pub fn hints(&self) -> Sequence<DOMString> {
-        self.inner.get("hints").as_::<Sequence<DOMString>>()
+    pub fn hints(&self) -> Sequence<String> {
+        self.inner.get("hints").as_::<Sequence<String>>()
     }
 
-    pub fn set_hints(&mut self, value: Sequence<DOMString>) {
+    pub fn set_hints(&mut self, value: &Sequence<String>) {
         self.inner.set("hints", value);
     }
 }
@@ -470,7 +470,7 @@ impl PublicKeyCredentialRequestOptions {
         self.inner.get("extensions").as_::<Any>()
     }
 
-    pub fn set_extensions(&mut self, value: Any) {
+    pub fn set_extensions(&mut self, value: &Any) {
         self.inner.set("extensions", value);
     }
 }
@@ -529,7 +529,7 @@ impl PublicKeyCredentialRequestOptionsJSON {
         self.inner.get("challenge").as_::<Any>()
     }
 
-    pub fn set_challenge(&mut self, value: Any) {
+    pub fn set_challenge(&mut self, value: &Any) {
         self.inner.set("challenge", value);
     }
 }
@@ -543,11 +543,11 @@ impl PublicKeyCredentialRequestOptionsJSON {
     }
 }
 impl PublicKeyCredentialRequestOptionsJSON {
-    pub fn rp_id(&self) -> DOMString {
-        self.inner.get("rpId").as_::<DOMString>()
+    pub fn rp_id(&self) -> String {
+        self.inner.get("rpId").as_::<String>()
     }
 
-    pub fn set_rp_id(&mut self, value: DOMString) {
+    pub fn set_rp_id(&mut self, value: &str) {
         self.inner.set("rpId", value);
     }
 }
@@ -556,25 +556,25 @@ impl PublicKeyCredentialRequestOptionsJSON {
         self.inner.get("allowCredentials").as_::<Sequence<Any>>()
     }
 
-    pub fn set_allow_credentials(&mut self, value: Sequence<Any>) {
+    pub fn set_allow_credentials(&mut self, value: &Sequence<Any>) {
         self.inner.set("allowCredentials", value);
     }
 }
 impl PublicKeyCredentialRequestOptionsJSON {
-    pub fn user_verification(&self) -> DOMString {
-        self.inner.get("userVerification").as_::<DOMString>()
+    pub fn user_verification(&self) -> String {
+        self.inner.get("userVerification").as_::<String>()
     }
 
-    pub fn set_user_verification(&mut self, value: DOMString) {
+    pub fn set_user_verification(&mut self, value: &str) {
         self.inner.set("userVerification", value);
     }
 }
 impl PublicKeyCredentialRequestOptionsJSON {
-    pub fn hints(&self) -> Sequence<DOMString> {
-        self.inner.get("hints").as_::<Sequence<DOMString>>()
+    pub fn hints(&self) -> Sequence<String> {
+        self.inner.get("hints").as_::<Sequence<String>>()
     }
 
-    pub fn set_hints(&mut self, value: Sequence<DOMString>) {
+    pub fn set_hints(&mut self, value: &Sequence<String>) {
         self.inner.set("hints", value);
     }
 }
@@ -583,7 +583,7 @@ impl PublicKeyCredentialRequestOptionsJSON {
         self.inner.get("extensions").as_::<Any>()
     }
 
-    pub fn set_extensions(&mut self, value: Any) {
+    pub fn set_extensions(&mut self, value: &Any) {
         self.inner.set("extensions", value);
     }
 }
@@ -638,11 +638,11 @@ impl From<&UnknownCredentialOptions> for emlite::Val {
 }
 
 impl UnknownCredentialOptions {
-    pub fn rp_id(&self) -> DOMString {
-        self.inner.get("rpId").as_::<DOMString>()
+    pub fn rp_id(&self) -> String {
+        self.inner.get("rpId").as_::<String>()
     }
 
-    pub fn set_rp_id(&mut self, value: DOMString) {
+    pub fn set_rp_id(&mut self, value: &str) {
         self.inner.set("rpId", value);
     }
 }
@@ -651,7 +651,7 @@ impl UnknownCredentialOptions {
         self.inner.get("credentialId").as_::<Any>()
     }
 
-    pub fn set_credential_id(&mut self, value: Any) {
+    pub fn set_credential_id(&mut self, value: &Any) {
         self.inner.set("credentialId", value);
     }
 }
@@ -706,11 +706,11 @@ impl From<&AllAcceptedCredentialsOptions> for emlite::Val {
 }
 
 impl AllAcceptedCredentialsOptions {
-    pub fn rp_id(&self) -> DOMString {
-        self.inner.get("rpId").as_::<DOMString>()
+    pub fn rp_id(&self) -> String {
+        self.inner.get("rpId").as_::<String>()
     }
 
-    pub fn set_rp_id(&mut self, value: DOMString) {
+    pub fn set_rp_id(&mut self, value: &str) {
         self.inner.set("rpId", value);
     }
 }
@@ -719,7 +719,7 @@ impl AllAcceptedCredentialsOptions {
         self.inner.get("userId").as_::<Any>()
     }
 
-    pub fn set_user_id(&mut self, value: Any) {
+    pub fn set_user_id(&mut self, value: &Any) {
         self.inner.set("userId", value);
     }
 }
@@ -730,7 +730,7 @@ impl AllAcceptedCredentialsOptions {
             .as_::<Sequence<Any>>()
     }
 
-    pub fn set_all_accepted_credential_ids(&mut self, value: Sequence<Any>) {
+    pub fn set_all_accepted_credential_ids(&mut self, value: &Sequence<Any>) {
         self.inner.set("allAcceptedCredentialIds", value);
     }
 }
@@ -785,11 +785,11 @@ impl From<&CurrentUserDetailsOptions> for emlite::Val {
 }
 
 impl CurrentUserDetailsOptions {
-    pub fn rp_id(&self) -> DOMString {
-        self.inner.get("rpId").as_::<DOMString>()
+    pub fn rp_id(&self) -> String {
+        self.inner.get("rpId").as_::<String>()
     }
 
-    pub fn set_rp_id(&mut self, value: DOMString) {
+    pub fn set_rp_id(&mut self, value: &str) {
         self.inner.set("rpId", value);
     }
 }
@@ -798,25 +798,25 @@ impl CurrentUserDetailsOptions {
         self.inner.get("userId").as_::<Any>()
     }
 
-    pub fn set_user_id(&mut self, value: Any) {
+    pub fn set_user_id(&mut self, value: &Any) {
         self.inner.set("userId", value);
     }
 }
 impl CurrentUserDetailsOptions {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
 impl CurrentUserDetailsOptions {
-    pub fn display_name(&self) -> DOMString {
-        self.inner.get("displayName").as_::<DOMString>()
+    pub fn display_name(&self) -> String {
+        self.inner.get("displayName").as_::<String>()
     }
 
-    pub fn set_display_name(&mut self, value: DOMString) {
+    pub fn set_display_name(&mut self, value: &str) {
         self.inner.set("displayName", value);
     }
 }
@@ -884,8 +884,8 @@ impl PublicKeyCredential {
     }
 }
 impl PublicKeyCredential {
-    pub fn authenticator_attachment(&self) -> DOMString {
-        self.inner.get("authenticatorAttachment").as_::<DOMString>()
+    pub fn authenticator_attachment(&self) -> String {
+        self.inner.get("authenticatorAttachment").as_::<String>()
     }
 }
 impl PublicKeyCredential {
@@ -923,7 +923,7 @@ impl PublicKeyCredential {
 }
 impl PublicKeyCredential {
     pub fn parse_creation_options_from_json(
-        options: PublicKeyCredentialCreationOptionsJSON,
+        options: &PublicKeyCredentialCreationOptionsJSON,
     ) -> PublicKeyCredentialCreationOptions {
         emlite::Val::global("PublicKeyCredential")
             .call("parseCreationOptionsFromJSON", &[options.into()])
@@ -932,7 +932,7 @@ impl PublicKeyCredential {
 }
 impl PublicKeyCredential {
     pub fn parse_request_options_from_json(
-        options: PublicKeyCredentialRequestOptionsJSON,
+        options: &PublicKeyCredentialRequestOptionsJSON,
     ) -> PublicKeyCredentialRequestOptions {
         emlite::Val::global("PublicKeyCredential")
             .call("parseRequestOptionsFromJSON", &[options.into()])
@@ -940,21 +940,21 @@ impl PublicKeyCredential {
     }
 }
 impl PublicKeyCredential {
-    pub fn signal_unknown_credential(options: UnknownCredentialOptions) -> Promise {
+    pub fn signal_unknown_credential(options: &UnknownCredentialOptions) -> Promise {
         emlite::Val::global("PublicKeyCredential")
             .call("signalUnknownCredential", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl PublicKeyCredential {
-    pub fn signal_all_accepted_credentials(options: AllAcceptedCredentialsOptions) -> Promise {
+    pub fn signal_all_accepted_credentials(options: &AllAcceptedCredentialsOptions) -> Promise {
         emlite::Val::global("PublicKeyCredential")
             .call("signalAllAcceptedCredentials", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl PublicKeyCredential {
-    pub fn signal_current_user_details(options: CurrentUserDetailsOptions) -> Promise {
+    pub fn signal_current_user_details(options: &CurrentUserDetailsOptions) -> Promise {
         emlite::Val::global("PublicKeyCredential")
             .call("signalCurrentUserDetails", &[options.into()])
             .as_::<Promise>()

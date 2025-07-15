@@ -63,8 +63,8 @@ impl TextEncoderStream {
     }
 }
 impl TextEncoderStream {
-    pub fn encoding(&self) -> DOMString {
-        self.inner.get("encoding").as_::<DOMString>()
+    pub fn encoding(&self) -> String {
+        self.inner.get("encoding").as_::<String>()
     }
 }
 impl TextEncoderStream {

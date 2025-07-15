@@ -54,11 +54,11 @@ impl From<&CSSFontFeatureValuesRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSFontFeatureValuesRule);
 
 impl CSSFontFeatureValuesRule {
-    pub fn font_family(&self) -> CSSOMString {
-        self.inner.get("fontFamily").as_::<CSSOMString>()
+    pub fn font_family(&self) -> String {
+        self.inner.get("fontFamily").as_::<String>()
     }
 
-    pub fn set_font_family(&mut self, value: CSSOMString) {
+    pub fn set_font_family(&mut self, value: &str) {
         self.inner.set("fontFamily", value);
     }
 }

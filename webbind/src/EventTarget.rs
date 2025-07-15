@@ -131,7 +131,7 @@ impl EventTarget {
     }
 }
 impl EventTarget {
-    pub fn add_event_listener0(&self, type_: DOMString, callback: Function) -> Undefined {
+    pub fn add_event_listener0(&self, type_: &str, callback: &Function) -> Undefined {
         self.inner
             .call("addEventListener", &[type_.into(), callback.into()])
             .as_::<Undefined>()
@@ -139,9 +139,9 @@ impl EventTarget {
 
     pub fn add_event_listener1(
         &self,
-        type_: DOMString,
-        callback: Function,
-        options: Any,
+        type_: &str,
+        callback: &Function,
+        options: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -152,7 +152,7 @@ impl EventTarget {
     }
 }
 impl EventTarget {
-    pub fn remove_event_listener0(&self, type_: DOMString, callback: Function) -> Undefined {
+    pub fn remove_event_listener0(&self, type_: &str, callback: &Function) -> Undefined {
         self.inner
             .call("removeEventListener", &[type_.into(), callback.into()])
             .as_::<Undefined>()
@@ -160,9 +160,9 @@ impl EventTarget {
 
     pub fn remove_event_listener1(
         &self,
-        type_: DOMString,
-        callback: Function,
-        options: Any,
+        type_: &str,
+        callback: &Function,
+        options: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -173,18 +173,18 @@ impl EventTarget {
     }
 }
 impl EventTarget {
-    pub fn dispatch_event(&self, event: Event) -> bool {
+    pub fn dispatch_event(&self, event: &Event) -> bool {
         self.inner
             .call("dispatchEvent", &[event.into()])
             .as_::<bool>()
     }
 }
 impl EventTarget {
-    pub fn when0(&self, type_: DOMString) -> Observable {
+    pub fn when0(&self, type_: &str) -> Observable {
         self.inner.call("when", &[type_.into()]).as_::<Observable>()
     }
 
-    pub fn when1(&self, type_: DOMString, options: ObservableEventListenerOptions) -> Observable {
+    pub fn when1(&self, type_: &str, options: &ObservableEventListenerOptions) -> Observable {
         self.inner
             .call("when", &[type_.into(), options.into()])
             .as_::<Observable>()

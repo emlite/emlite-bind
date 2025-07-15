@@ -54,47 +54,47 @@ impl From<&WorkerLocation> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(WorkerLocation);
 
 impl WorkerLocation {
-    pub fn href(&self) -> USVString {
-        self.inner.get("href").as_::<USVString>()
+    pub fn href(&self) -> String {
+        self.inner.get("href").as_::<String>()
     }
 }
 impl WorkerLocation {
-    pub fn origin(&self) -> USVString {
-        self.inner.get("origin").as_::<USVString>()
+    pub fn origin(&self) -> String {
+        self.inner.get("origin").as_::<String>()
     }
 }
 impl WorkerLocation {
-    pub fn protocol(&self) -> USVString {
-        self.inner.get("protocol").as_::<USVString>()
+    pub fn protocol(&self) -> String {
+        self.inner.get("protocol").as_::<String>()
     }
 }
 impl WorkerLocation {
-    pub fn host(&self) -> USVString {
-        self.inner.get("host").as_::<USVString>()
+    pub fn host(&self) -> String {
+        self.inner.get("host").as_::<String>()
     }
 }
 impl WorkerLocation {
-    pub fn hostname(&self) -> USVString {
-        self.inner.get("hostname").as_::<USVString>()
+    pub fn hostname(&self) -> String {
+        self.inner.get("hostname").as_::<String>()
     }
 }
 impl WorkerLocation {
-    pub fn port(&self) -> USVString {
-        self.inner.get("port").as_::<USVString>()
+    pub fn port(&self) -> String {
+        self.inner.get("port").as_::<String>()
     }
 }
 impl WorkerLocation {
-    pub fn pathname(&self) -> USVString {
-        self.inner.get("pathname").as_::<USVString>()
+    pub fn pathname(&self) -> String {
+        self.inner.get("pathname").as_::<String>()
     }
 }
 impl WorkerLocation {
-    pub fn search(&self) -> USVString {
-        self.inner.get("search").as_::<USVString>()
+    pub fn search(&self) -> String {
+        self.inner.get("search").as_::<String>()
     }
 }
 impl WorkerLocation {
-    pub fn hash(&self) -> USVString {
-        self.inner.get("hash").as_::<USVString>()
+    pub fn hash(&self) -> String {
+        self.inner.get("hash").as_::<String>()
     }
 }

@@ -54,7 +54,7 @@ impl From<&CSSUnitValue> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSUnitValue);
 
 impl CSSUnitValue {
-    pub fn new(value: f64, unit: USVString) -> CSSUnitValue {
+    pub fn new(value: f64, unit: &str) -> CSSUnitValue {
         Self {
             inner: emlite::Val::global("CSSUnitValue")
                 .new(&[value.into(), unit.into()])
@@ -72,7 +72,7 @@ impl CSSUnitValue {
     }
 }
 impl CSSUnitValue {
-    pub fn unit(&self) -> USVString {
-        self.inner.get("unit").as_::<USVString>()
+    pub fn unit(&self) -> String {
+        self.inner.get("unit").as_::<String>()
     }
 }

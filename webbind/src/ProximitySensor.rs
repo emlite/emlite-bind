@@ -62,7 +62,7 @@ impl ProximitySensor {
         }
     }
 
-    pub fn new1(sensor_options: Any) -> ProximitySensor {
+    pub fn new1(sensor_options: &Any) -> ProximitySensor {
         Self {
             inner: emlite::Val::global("ProximitySensor")
                 .new(&[sensor_options.into()])

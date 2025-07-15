@@ -54,7 +54,7 @@ impl From<&CSSAnimation> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSAnimation);
 
 impl CSSAnimation {
-    pub fn animation_name(&self) -> CSSOMString {
-        self.inner.get("animationName").as_::<CSSOMString>()
+    pub fn animation_name(&self) -> String {
+        self.inner.get("animationName").as_::<String>()
     }
 }

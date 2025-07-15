@@ -54,7 +54,7 @@ impl From<&ContentIndexEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ContentIndexEvent);
 
 impl ContentIndexEvent {
-    pub fn new(type_: DOMString, init: Any) -> ContentIndexEvent {
+    pub fn new(type_: &str, init: &Any) -> ContentIndexEvent {
         Self {
             inner: emlite::Val::global("ContentIndexEvent")
                 .new(&[type_.into(), init.into()])
@@ -63,7 +63,7 @@ impl ContentIndexEvent {
     }
 }
 impl ContentIndexEvent {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }

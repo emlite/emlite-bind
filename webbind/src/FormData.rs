@@ -62,7 +62,7 @@ impl FormData {
         }
     }
 
-    pub fn new1(form: HTMLFormElement) -> FormData {
+    pub fn new1(form: &HTMLFormElement) -> FormData {
         Self {
             inner: emlite::Val::global("FormData")
                 .new(&[form.into()])
@@ -70,7 +70,7 @@ impl FormData {
         }
     }
 
-    pub fn new2(form: HTMLFormElement, submitter: HTMLElement) -> FormData {
+    pub fn new2(form: &HTMLFormElement, submitter: &HTMLElement) -> FormData {
         Self {
             inner: emlite::Val::global("FormData")
                 .new(&[form.into(), submitter.into()])
@@ -79,48 +79,48 @@ impl FormData {
     }
 }
 impl FormData {
-    pub fn append0(&self, name: USVString, blob_value: Blob) -> Undefined {
+    pub fn append0(&self, name: &str, blob_value: &Blob) -> Undefined {
         self.inner
             .call("append", &[name.into(), blob_value.into()])
             .as_::<Undefined>()
     }
 
-    pub fn append1(&self, name: USVString, blob_value: Blob, filename: USVString) -> Undefined {
+    pub fn append1(&self, name: &str, blob_value: &Blob, filename: &str) -> Undefined {
         self.inner
             .call("append", &[name.into(), blob_value.into(), filename.into()])
             .as_::<Undefined>()
     }
 }
 impl FormData {
-    pub fn delete(&self, name: USVString) -> Undefined {
+    pub fn delete(&self, name: &str) -> Undefined {
         self.inner.call("delete", &[name.into()]).as_::<Undefined>()
     }
 }
 impl FormData {
-    pub fn get(&self, name: USVString) -> Any {
+    pub fn get(&self, name: &str) -> Any {
         self.inner.call("get", &[name.into()]).as_::<Any>()
     }
 }
 impl FormData {
-    pub fn get_all(&self, name: USVString) -> Sequence<Any> {
+    pub fn get_all(&self, name: &str) -> Sequence<Any> {
         self.inner
             .call("getAll", &[name.into()])
             .as_::<Sequence<Any>>()
     }
 }
 impl FormData {
-    pub fn has(&self, name: USVString) -> bool {
+    pub fn has(&self, name: &str) -> bool {
         self.inner.call("has", &[name.into()]).as_::<bool>()
     }
 }
 impl FormData {
-    pub fn set0(&self, name: USVString, blob_value: Blob) -> Undefined {
+    pub fn set0(&self, name: &str, blob_value: &Blob) -> Undefined {
         self.inner
             .call("set", &[name.into(), blob_value.into()])
             .as_::<Undefined>()
     }
 
-    pub fn set1(&self, name: USVString, blob_value: Blob, filename: USVString) -> Undefined {
+    pub fn set1(&self, name: &str, blob_value: &Blob, filename: &str) -> Undefined {
         self.inner
             .call("set", &[name.into(), blob_value.into(), filename.into()])
             .as_::<Undefined>()

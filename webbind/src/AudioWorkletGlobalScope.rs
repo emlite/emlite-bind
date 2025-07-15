@@ -54,7 +54,7 @@ impl From<&AudioWorkletGlobalScope> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(AudioWorkletGlobalScope);
 
 impl AudioWorkletGlobalScope {
-    pub fn register_processor(&self, name: DOMString, processor_ctor: Function) -> Undefined {
+    pub fn register_processor(&self, name: &str, processor_ctor: &Function) -> Undefined {
         self.inner
             .call("registerProcessor", &[name.into(), processor_ctor.into()])
             .as_::<Undefined>()

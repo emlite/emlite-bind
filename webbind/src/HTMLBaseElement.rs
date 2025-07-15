@@ -63,20 +63,20 @@ impl HTMLBaseElement {
     }
 }
 impl HTMLBaseElement {
-    pub fn href(&self) -> USVString {
-        self.inner.get("href").as_::<USVString>()
+    pub fn href(&self) -> String {
+        self.inner.get("href").as_::<String>()
     }
 
-    pub fn set_href(&mut self, value: USVString) {
+    pub fn set_href(&mut self, value: &str) {
         self.inner.set("href", value);
     }
 }
 impl HTMLBaseElement {
-    pub fn target(&self) -> DOMString {
-        self.inner.get("target").as_::<DOMString>()
+    pub fn target(&self) -> String {
+        self.inner.get("target").as_::<String>()
     }
 
-    pub fn set_target(&mut self, value: DOMString) {
+    pub fn set_target(&mut self, value: &str) {
         self.inner.set("target", value);
     }
 }

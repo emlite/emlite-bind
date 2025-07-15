@@ -54,7 +54,7 @@ impl From<&StaticRange> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(StaticRange);
 
 impl StaticRange {
-    pub fn new(init: Any) -> StaticRange {
+    pub fn new(init: &Any) -> StaticRange {
         Self {
             inner: emlite::Val::global("StaticRange")
                 .new(&[init.into()])

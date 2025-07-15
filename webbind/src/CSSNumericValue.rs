@@ -118,7 +118,7 @@ impl CSSNumericType {
         self.inner.get("percentHint").as_::<CSSNumericBaseType>()
     }
 
-    pub fn set_percent_hint(&mut self, value: CSSNumericBaseType) {
+    pub fn set_percent_hint(&mut self, value: &CSSNumericBaseType) {
         self.inner.set("percentHint", value);
     }
 }
@@ -176,59 +176,59 @@ impl From<&CSSNumericValue> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSNumericValue);
 
 impl CSSNumericValue {
-    pub fn add(&self, values: Any) -> CSSNumericValue {
+    pub fn add(&self, values: &Any) -> CSSNumericValue {
         self.inner
             .call("add", &[values.into()])
             .as_::<CSSNumericValue>()
     }
 }
 impl CSSNumericValue {
-    pub fn sub(&self, values: Any) -> CSSNumericValue {
+    pub fn sub(&self, values: &Any) -> CSSNumericValue {
         self.inner
             .call("sub", &[values.into()])
             .as_::<CSSNumericValue>()
     }
 }
 impl CSSNumericValue {
-    pub fn mul(&self, values: Any) -> CSSNumericValue {
+    pub fn mul(&self, values: &Any) -> CSSNumericValue {
         self.inner
             .call("mul", &[values.into()])
             .as_::<CSSNumericValue>()
     }
 }
 impl CSSNumericValue {
-    pub fn div(&self, values: Any) -> CSSNumericValue {
+    pub fn div(&self, values: &Any) -> CSSNumericValue {
         self.inner
             .call("div", &[values.into()])
             .as_::<CSSNumericValue>()
     }
 }
 impl CSSNumericValue {
-    pub fn min(&self, values: Any) -> CSSNumericValue {
+    pub fn min(&self, values: &Any) -> CSSNumericValue {
         self.inner
             .call("min", &[values.into()])
             .as_::<CSSNumericValue>()
     }
 }
 impl CSSNumericValue {
-    pub fn max(&self, values: Any) -> CSSNumericValue {
+    pub fn max(&self, values: &Any) -> CSSNumericValue {
         self.inner
             .call("max", &[values.into()])
             .as_::<CSSNumericValue>()
     }
 }
 impl CSSNumericValue {
-    pub fn equals(&self, value: Any) -> bool {
+    pub fn equals(&self, value: &Any) -> bool {
         self.inner.call("equals", &[value.into()]).as_::<bool>()
     }
 }
 impl CSSNumericValue {
-    pub fn to(&self, unit: USVString) -> CSSUnitValue {
+    pub fn to(&self, unit: &str) -> CSSUnitValue {
         self.inner.call("to", &[unit.into()]).as_::<CSSUnitValue>()
     }
 }
 impl CSSNumericValue {
-    pub fn to_sum(&self, units: USVString) -> CSSMathSum {
+    pub fn to_sum(&self, units: &str) -> CSSMathSum {
         self.inner
             .call("toSum", &[units.into()])
             .as_::<CSSMathSum>()
@@ -240,7 +240,7 @@ impl CSSNumericValue {
     }
 }
 impl CSSNumericValue {
-    pub fn parse(css_text: USVString) -> CSSNumericValue {
+    pub fn parse(css_text: &str) -> CSSNumericValue {
         emlite::Val::global("CSSNumericValue")
             .call("parse", &[css_text.into()])
             .as_::<CSSNumericValue>()

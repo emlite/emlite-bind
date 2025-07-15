@@ -54,8 +54,8 @@ impl From<&SharedWorkerGlobalScope> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SharedWorkerGlobalScope);
 
 impl SharedWorkerGlobalScope {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl SharedWorkerGlobalScope {
@@ -68,7 +68,7 @@ impl SharedWorkerGlobalScope {
         self.inner.get("onconnect").as_::<Any>()
     }
 
-    pub fn set_onconnect(&mut self, value: Any) {
+    pub fn set_onconnect(&mut self, value: &Any) {
         self.inner.set("onconnect", value);
     }
 }

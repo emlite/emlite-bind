@@ -54,11 +54,11 @@ impl From<&GPURenderBundle> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(GPURenderBundle);
 
 impl GPURenderBundle {
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 
-    pub fn set_label(&mut self, value: USVString) {
+    pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }
 }

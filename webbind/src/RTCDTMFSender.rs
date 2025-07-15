@@ -54,19 +54,19 @@ impl From<&RTCDTMFSender> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(RTCDTMFSender);
 
 impl RTCDTMFSender {
-    pub fn insert_dtmf0(&self, tones: DOMString) -> Undefined {
+    pub fn insert_dtmf0(&self, tones: &str) -> Undefined {
         self.inner
             .call("insertDTMF", &[tones.into()])
             .as_::<Undefined>()
     }
 
-    pub fn insert_dtmf1(&self, tones: DOMString, duration: u32) -> Undefined {
+    pub fn insert_dtmf1(&self, tones: &str, duration: u32) -> Undefined {
         self.inner
             .call("insertDTMF", &[tones.into(), duration.into()])
             .as_::<Undefined>()
     }
 
-    pub fn insert_dtmf2(&self, tones: DOMString, duration: u32, inter_tone_gap: u32) -> Undefined {
+    pub fn insert_dtmf2(&self, tones: &str, duration: u32, inter_tone_gap: u32) -> Undefined {
         self.inner
             .call(
                 "insertDTMF",
@@ -80,7 +80,7 @@ impl RTCDTMFSender {
         self.inner.get("ontonechange").as_::<Any>()
     }
 
-    pub fn set_ontonechange(&mut self, value: Any) {
+    pub fn set_ontonechange(&mut self, value: &Any) {
         self.inner.set("ontonechange", value);
     }
 }
@@ -90,7 +90,7 @@ impl RTCDTMFSender {
     }
 }
 impl RTCDTMFSender {
-    pub fn tone_buffer(&self) -> DOMString {
-        self.inner.get("toneBuffer").as_::<DOMString>()
+    pub fn tone_buffer(&self) -> String {
+        self.inner.get("toneBuffer").as_::<String>()
     }
 }

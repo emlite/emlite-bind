@@ -143,14 +143,14 @@ impl SVGPathElement {
             .as_::<Sequence<SVGPathSegment>>()
     }
 
-    pub fn get_path_data1(&self, settings: SVGPathDataSettings) -> Sequence<SVGPathSegment> {
+    pub fn get_path_data1(&self, settings: &SVGPathDataSettings) -> Sequence<SVGPathSegment> {
         self.inner
             .call("getPathData", &[settings.into()])
             .as_::<Sequence<SVGPathSegment>>()
     }
 }
 impl SVGPathElement {
-    pub fn set_path_data(&self, path_data: Sequence<SVGPathSegment>) -> Undefined {
+    pub fn set_path_data(&self, path_data: &Sequence<SVGPathSegment>) -> Undefined {
         self.inner
             .call("setPathData", &[path_data.into()])
             .as_::<Undefined>()

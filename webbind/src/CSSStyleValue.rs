@@ -54,14 +54,14 @@ impl From<&CSSStyleValue> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSStyleValue);
 
 impl CSSStyleValue {
-    pub fn parse(property: USVString, css_text: USVString) -> CSSStyleValue {
+    pub fn parse(property: &str, css_text: &str) -> CSSStyleValue {
         emlite::Val::global("CSSStyleValue")
             .call("parse", &[property.into(), css_text.into()])
             .as_::<CSSStyleValue>()
     }
 }
 impl CSSStyleValue {
-    pub fn parse_all(property: USVString, css_text: USVString) -> Sequence<CSSStyleValue> {
+    pub fn parse_all(property: &str, css_text: &str) -> Sequence<CSSStyleValue> {
         emlite::Val::global("CSSStyleValue")
             .call("parseAll", &[property.into(), css_text.into()])
             .as_::<Sequence<CSSStyleValue>>()

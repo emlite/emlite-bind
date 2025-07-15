@@ -59,7 +59,7 @@ impl GeolocationPositionError {
     }
 }
 impl GeolocationPositionError {
-    pub fn message(&self) -> DOMString {
-        self.inner.get("message").as_::<DOMString>()
+    pub fn message(&self) -> String {
+        self.inner.get("message").as_::<String>()
     }
 }

@@ -248,8 +248,8 @@ impl SVGSVGElement {
 impl SVGSVGElement {
     pub fn get_intersection_list(
         &self,
-        rect: DOMRectReadOnly,
-        reference_element: SVGElement,
+        rect: &DOMRectReadOnly,
+        reference_element: &SVGElement,
     ) -> NodeList {
         self.inner
             .call(
@@ -262,8 +262,8 @@ impl SVGSVGElement {
 impl SVGSVGElement {
     pub fn get_enclosure_list(
         &self,
-        rect: DOMRectReadOnly,
-        reference_element: SVGElement,
+        rect: &DOMRectReadOnly,
+        reference_element: &SVGElement,
     ) -> NodeList {
         self.inner
             .call("getEnclosureList", &[rect.into(), reference_element.into()])
@@ -271,14 +271,14 @@ impl SVGSVGElement {
     }
 }
 impl SVGSVGElement {
-    pub fn check_intersection(&self, element: SVGElement, rect: DOMRectReadOnly) -> bool {
+    pub fn check_intersection(&self, element: &SVGElement, rect: &DOMRectReadOnly) -> bool {
         self.inner
             .call("checkIntersection", &[element.into(), rect.into()])
             .as_::<bool>()
     }
 }
 impl SVGSVGElement {
-    pub fn check_enclosure(&self, element: SVGElement, rect: DOMRectReadOnly) -> bool {
+    pub fn check_enclosure(&self, element: &SVGElement, rect: &DOMRectReadOnly) -> bool {
         self.inner
             .call("checkEnclosure", &[element.into(), rect.into()])
             .as_::<bool>()
@@ -333,14 +333,14 @@ impl SVGSVGElement {
             .as_::<SVGTransform>()
     }
 
-    pub fn create_svg_transform_from_matrix1(&self, matrix: DOMMatrix2DInit) -> SVGTransform {
+    pub fn create_svg_transform_from_matrix1(&self, matrix: &DOMMatrix2DInit) -> SVGTransform {
         self.inner
             .call("createSVGTransformFromMatrix", &[matrix.into()])
             .as_::<SVGTransform>()
     }
 }
 impl SVGSVGElement {
-    pub fn get_element_by_id(&self, element_id: DOMString) -> Element {
+    pub fn get_element_by_id(&self, element_id: &str) -> Element {
         self.inner
             .call("getElementById", &[element_id.into()])
             .as_::<Element>()
@@ -416,7 +416,7 @@ impl SVGSVGElement {
         self.inner.get("onportalactivate").as_::<Any>()
     }
 
-    pub fn set_onportalactivate(&mut self, value: Any) {
+    pub fn set_onportalactivate(&mut self, value: &Any) {
         self.inner.set("onportalactivate", value);
     }
 }

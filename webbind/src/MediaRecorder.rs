@@ -54,7 +54,7 @@ impl From<&MediaRecorder> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MediaRecorder);
 
 impl MediaRecorder {
-    pub fn new0(stream: MediaStream) -> MediaRecorder {
+    pub fn new0(stream: &MediaStream) -> MediaRecorder {
         Self {
             inner: emlite::Val::global("MediaRecorder")
                 .new(&[stream.into()])
@@ -62,7 +62,7 @@ impl MediaRecorder {
         }
     }
 
-    pub fn new1(stream: MediaStream, options: Any) -> MediaRecorder {
+    pub fn new1(stream: &MediaStream, options: &Any) -> MediaRecorder {
         Self {
             inner: emlite::Val::global("MediaRecorder")
                 .new(&[stream.into(), options.into()])
@@ -76,8 +76,8 @@ impl MediaRecorder {
     }
 }
 impl MediaRecorder {
-    pub fn mime_type(&self) -> DOMString {
-        self.inner.get("mimeType").as_::<DOMString>()
+    pub fn mime_type(&self) -> String {
+        self.inner.get("mimeType").as_::<String>()
     }
 }
 impl MediaRecorder {
@@ -90,7 +90,7 @@ impl MediaRecorder {
         self.inner.get("onstart").as_::<Any>()
     }
 
-    pub fn set_onstart(&mut self, value: Any) {
+    pub fn set_onstart(&mut self, value: &Any) {
         self.inner.set("onstart", value);
     }
 }
@@ -99,7 +99,7 @@ impl MediaRecorder {
         self.inner.get("onstop").as_::<Any>()
     }
 
-    pub fn set_onstop(&mut self, value: Any) {
+    pub fn set_onstop(&mut self, value: &Any) {
         self.inner.set("onstop", value);
     }
 }
@@ -108,7 +108,7 @@ impl MediaRecorder {
         self.inner.get("ondataavailable").as_::<Any>()
     }
 
-    pub fn set_ondataavailable(&mut self, value: Any) {
+    pub fn set_ondataavailable(&mut self, value: &Any) {
         self.inner.set("ondataavailable", value);
     }
 }
@@ -117,7 +117,7 @@ impl MediaRecorder {
         self.inner.get("onpause").as_::<Any>()
     }
 
-    pub fn set_onpause(&mut self, value: Any) {
+    pub fn set_onpause(&mut self, value: &Any) {
         self.inner.set("onpause", value);
     }
 }
@@ -126,7 +126,7 @@ impl MediaRecorder {
         self.inner.get("onresume").as_::<Any>()
     }
 
-    pub fn set_onresume(&mut self, value: Any) {
+    pub fn set_onresume(&mut self, value: &Any) {
         self.inner.set("onresume", value);
     }
 }
@@ -135,7 +135,7 @@ impl MediaRecorder {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }
@@ -186,7 +186,7 @@ impl MediaRecorder {
     }
 }
 impl MediaRecorder {
-    pub fn is_type_supported(type_: DOMString) -> bool {
+    pub fn is_type_supported(type_: &str) -> bool {
         emlite::Val::global("MediaRecorder")
             .call("isTypeSupported", &[type_.into()])
             .as_::<bool>()

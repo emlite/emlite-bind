@@ -55,7 +55,7 @@ impl PhotoSettings {
         self.inner.get("fillLightMode").as_::<FillLightMode>()
     }
 
-    pub fn set_fill_light_mode(&mut self, value: FillLightMode) {
+    pub fn set_fill_light_mode(&mut self, value: &FillLightMode) {
         self.inner.set("fillLightMode", value);
     }
 }
@@ -141,7 +141,7 @@ impl PhotoCapabilities {
         self.inner.get("redEyeReduction").as_::<RedEyeReduction>()
     }
 
-    pub fn set_red_eye_reduction(&mut self, value: RedEyeReduction) {
+    pub fn set_red_eye_reduction(&mut self, value: &RedEyeReduction) {
         self.inner.set("redEyeReduction", value);
     }
 }
@@ -150,7 +150,7 @@ impl PhotoCapabilities {
         self.inner.get("imageHeight").as_::<Any>()
     }
 
-    pub fn set_image_height(&mut self, value: Any) {
+    pub fn set_image_height(&mut self, value: &Any) {
         self.inner.set("imageHeight", value);
     }
 }
@@ -159,7 +159,7 @@ impl PhotoCapabilities {
         self.inner.get("imageWidth").as_::<Any>()
     }
 
-    pub fn set_image_width(&mut self, value: Any) {
+    pub fn set_image_width(&mut self, value: &Any) {
         self.inner.set("imageWidth", value);
     }
 }
@@ -170,7 +170,7 @@ impl PhotoCapabilities {
             .as_::<Sequence<FillLightMode>>()
     }
 
-    pub fn set_fill_light_mode(&mut self, value: Sequence<FillLightMode>) {
+    pub fn set_fill_light_mode(&mut self, value: &Sequence<FillLightMode>) {
         self.inner.set("fillLightMode", value);
     }
 }
@@ -228,7 +228,7 @@ impl From<&ImageCapture> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ImageCapture);
 
 impl ImageCapture {
-    pub fn new(video_track: MediaStreamTrack) -> ImageCapture {
+    pub fn new(video_track: &MediaStreamTrack) -> ImageCapture {
         Self {
             inner: emlite::Val::global("ImageCapture")
                 .new(&[video_track.into()])
@@ -241,7 +241,7 @@ impl ImageCapture {
         self.inner.call("takePhoto", &[]).as_::<Promise>()
     }
 
-    pub fn take_photo1(&self, photo_settings: PhotoSettings) -> Promise {
+    pub fn take_photo1(&self, photo_settings: &PhotoSettings) -> Promise {
         self.inner
             .call("takePhoto", &[photo_settings.into()])
             .as_::<Promise>()

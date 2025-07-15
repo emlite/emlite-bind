@@ -54,7 +54,7 @@ impl From<&NavigatorManagedData> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(NavigatorManagedData);
 
 impl NavigatorManagedData {
-    pub fn get_managed_configuration(&self, keys: Sequence<DOMString>) -> Promise {
+    pub fn get_managed_configuration(&self, keys: &Sequence<String>) -> Promise {
         self.inner
             .call("getManagedConfiguration", &[keys.into()])
             .as_::<Promise>()
@@ -65,7 +65,7 @@ impl NavigatorManagedData {
         self.inner.get("onmanagedconfigurationchange").as_::<Any>()
     }
 
-    pub fn set_onmanagedconfigurationchange(&mut self, value: Any) {
+    pub fn set_onmanagedconfigurationchange(&mut self, value: &Any) {
         self.inner.set("onmanagedconfigurationchange", value);
     }
 }

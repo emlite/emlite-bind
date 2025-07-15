@@ -64,12 +64,7 @@ impl TimeEvent {
     }
 }
 impl TimeEvent {
-    pub fn init_time_event(
-        &self,
-        type_arg: DOMString,
-        view_arg: Window,
-        detail_arg: i32,
-    ) -> Undefined {
+    pub fn init_time_event(&self, type_arg: &str, view_arg: &Window, detail_arg: i32) -> Undefined {
         self.inner
             .call(
                 "initTimeEvent",

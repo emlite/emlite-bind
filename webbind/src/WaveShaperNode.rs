@@ -54,7 +54,7 @@ impl From<&WaveShaperNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(WaveShaperNode);
 
 impl WaveShaperNode {
-    pub fn new0(context: BaseAudioContext) -> WaveShaperNode {
+    pub fn new0(context: &BaseAudioContext) -> WaveShaperNode {
         Self {
             inner: emlite::Val::global("WaveShaperNode")
                 .new(&[context.into()])
@@ -62,7 +62,7 @@ impl WaveShaperNode {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: Any) -> WaveShaperNode {
+    pub fn new1(context: &BaseAudioContext, options: &Any) -> WaveShaperNode {
         Self {
             inner: emlite::Val::global("WaveShaperNode")
                 .new(&[context.into(), options.into()])
@@ -75,7 +75,7 @@ impl WaveShaperNode {
         self.inner.get("curve").as_::<Float32Array>()
     }
 
-    pub fn set_curve(&mut self, value: Float32Array) {
+    pub fn set_curve(&mut self, value: &Float32Array) {
         self.inner.set("curve", value);
     }
 }
@@ -84,7 +84,7 @@ impl WaveShaperNode {
         self.inner.get("oversample").as_::<OverSampleType>()
     }
 
-    pub fn set_oversample(&mut self, value: OverSampleType) {
+    pub fn set_oversample(&mut self, value: &OverSampleType) {
         self.inner.set("oversample", value);
     }
 }

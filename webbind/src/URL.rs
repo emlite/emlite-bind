@@ -54,7 +54,7 @@ impl From<&URL> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(URL);
 
 impl URL {
-    pub fn new0(url: USVString) -> URL {
+    pub fn new0(url: &str) -> URL {
         Self {
             inner: emlite::Val::global("URL")
                 .new(&[url.into()])
@@ -62,7 +62,7 @@ impl URL {
         }
     }
 
-    pub fn new1(url: USVString, base: USVString) -> URL {
+    pub fn new1(url: &str, base: &str) -> URL {
         Self {
             inner: emlite::Val::global("URL")
                 .new(&[url.into(), base.into()])
@@ -71,114 +71,114 @@ impl URL {
     }
 }
 impl URL {
-    pub fn parse0(url: USVString) -> URL {
+    pub fn parse0(url: &str) -> URL {
         emlite::Val::global("URL")
             .call("parse", &[url.into()])
             .as_::<URL>()
     }
 
-    pub fn parse1(url: USVString, base: USVString) -> URL {
+    pub fn parse1(url: &str, base: &str) -> URL {
         emlite::Val::global("URL")
             .call("parse", &[url.into(), base.into()])
             .as_::<URL>()
     }
 }
 impl URL {
-    pub fn can_parse0(url: USVString) -> bool {
+    pub fn can_parse0(url: &str) -> bool {
         emlite::Val::global("URL")
             .call("canParse", &[url.into()])
             .as_::<bool>()
     }
 
-    pub fn can_parse1(url: USVString, base: USVString) -> bool {
+    pub fn can_parse1(url: &str, base: &str) -> bool {
         emlite::Val::global("URL")
             .call("canParse", &[url.into(), base.into()])
             .as_::<bool>()
     }
 }
 impl URL {
-    pub fn href(&self) -> USVString {
-        self.inner.get("href").as_::<USVString>()
+    pub fn href(&self) -> String {
+        self.inner.get("href").as_::<String>()
     }
 
-    pub fn set_href(&mut self, value: USVString) {
+    pub fn set_href(&mut self, value: &str) {
         self.inner.set("href", value);
     }
 }
 impl URL {
-    pub fn origin(&self) -> USVString {
-        self.inner.get("origin").as_::<USVString>()
+    pub fn origin(&self) -> String {
+        self.inner.get("origin").as_::<String>()
     }
 }
 impl URL {
-    pub fn protocol(&self) -> USVString {
-        self.inner.get("protocol").as_::<USVString>()
+    pub fn protocol(&self) -> String {
+        self.inner.get("protocol").as_::<String>()
     }
 
-    pub fn set_protocol(&mut self, value: USVString) {
+    pub fn set_protocol(&mut self, value: &str) {
         self.inner.set("protocol", value);
     }
 }
 impl URL {
-    pub fn username(&self) -> USVString {
-        self.inner.get("username").as_::<USVString>()
+    pub fn username(&self) -> String {
+        self.inner.get("username").as_::<String>()
     }
 
-    pub fn set_username(&mut self, value: USVString) {
+    pub fn set_username(&mut self, value: &str) {
         self.inner.set("username", value);
     }
 }
 impl URL {
-    pub fn password(&self) -> USVString {
-        self.inner.get("password").as_::<USVString>()
+    pub fn password(&self) -> String {
+        self.inner.get("password").as_::<String>()
     }
 
-    pub fn set_password(&mut self, value: USVString) {
+    pub fn set_password(&mut self, value: &str) {
         self.inner.set("password", value);
     }
 }
 impl URL {
-    pub fn host(&self) -> USVString {
-        self.inner.get("host").as_::<USVString>()
+    pub fn host(&self) -> String {
+        self.inner.get("host").as_::<String>()
     }
 
-    pub fn set_host(&mut self, value: USVString) {
+    pub fn set_host(&mut self, value: &str) {
         self.inner.set("host", value);
     }
 }
 impl URL {
-    pub fn hostname(&self) -> USVString {
-        self.inner.get("hostname").as_::<USVString>()
+    pub fn hostname(&self) -> String {
+        self.inner.get("hostname").as_::<String>()
     }
 
-    pub fn set_hostname(&mut self, value: USVString) {
+    pub fn set_hostname(&mut self, value: &str) {
         self.inner.set("hostname", value);
     }
 }
 impl URL {
-    pub fn port(&self) -> USVString {
-        self.inner.get("port").as_::<USVString>()
+    pub fn port(&self) -> String {
+        self.inner.get("port").as_::<String>()
     }
 
-    pub fn set_port(&mut self, value: USVString) {
+    pub fn set_port(&mut self, value: &str) {
         self.inner.set("port", value);
     }
 }
 impl URL {
-    pub fn pathname(&self) -> USVString {
-        self.inner.get("pathname").as_::<USVString>()
+    pub fn pathname(&self) -> String {
+        self.inner.get("pathname").as_::<String>()
     }
 
-    pub fn set_pathname(&mut self, value: USVString) {
+    pub fn set_pathname(&mut self, value: &str) {
         self.inner.set("pathname", value);
     }
 }
 impl URL {
-    pub fn search(&self) -> USVString {
-        self.inner.get("search").as_::<USVString>()
+    pub fn search(&self) -> String {
+        self.inner.get("search").as_::<String>()
     }
 
-    pub fn set_search(&mut self, value: USVString) {
+    pub fn set_search(&mut self, value: &str) {
         self.inner.set("search", value);
     }
 }
@@ -188,28 +188,28 @@ impl URL {
     }
 }
 impl URL {
-    pub fn hash(&self) -> USVString {
-        self.inner.get("hash").as_::<USVString>()
+    pub fn hash(&self) -> String {
+        self.inner.get("hash").as_::<String>()
     }
 
-    pub fn set_hash(&mut self, value: USVString) {
+    pub fn set_hash(&mut self, value: &str) {
         self.inner.set("hash", value);
     }
 }
 impl URL {
-    pub fn to_json(&self) -> USVString {
-        self.inner.call("toJSON", &[]).as_::<USVString>()
+    pub fn to_json(&self) -> String {
+        self.inner.call("toJSON", &[]).as_::<String>()
     }
 }
 impl URL {
-    pub fn create_object_url(obj: Any) -> DOMString {
+    pub fn create_object_url(obj: &Any) -> String {
         emlite::Val::global("URL")
             .call("createObjectURL", &[obj.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl URL {
-    pub fn revoke_object_url(url: DOMString) -> Undefined {
+    pub fn revoke_object_url(url: &str) -> Undefined {
         emlite::Val::global("URL")
             .call("revokeObjectURL", &[url.into()])
             .as_::<Undefined>()

@@ -54,7 +54,7 @@ impl From<&CSSFontFeatureValuesMap> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSFontFeatureValuesMap);
 
 impl CSSFontFeatureValuesMap {
-    pub fn set(&self, feature_value_name: CSSOMString, values: Any) -> Undefined {
+    pub fn set(&self, feature_value_name: &str, values: &Any) -> Undefined {
         self.inner
             .call("set", &[feature_value_name.into(), values.into()])
             .as_::<Undefined>()

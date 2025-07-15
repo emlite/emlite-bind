@@ -55,7 +55,7 @@ impl WriterCreateOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -64,16 +64,16 @@ impl WriterCreateOptions {
         self.inner.get("monitor").as_::<Function>()
     }
 
-    pub fn set_monitor(&mut self, value: Function) {
+    pub fn set_monitor(&mut self, value: &Function) {
         self.inner.set("monitor", value);
     }
 }
 impl WriterCreateOptions {
-    pub fn shared_context(&self) -> DOMString {
-        self.inner.get("sharedContext").as_::<DOMString>()
+    pub fn shared_context(&self) -> String {
+        self.inner.get("sharedContext").as_::<String>()
     }
 
-    pub fn set_shared_context(&mut self, value: DOMString) {
+    pub fn set_shared_context(&mut self, value: &str) {
         self.inner.set("sharedContext", value);
     }
 }
@@ -132,7 +132,7 @@ impl WriterCreateCoreOptions {
         self.inner.get("tone").as_::<WriterTone>()
     }
 
-    pub fn set_tone(&mut self, value: WriterTone) {
+    pub fn set_tone(&mut self, value: &WriterTone) {
         self.inner.set("tone", value);
     }
 }
@@ -141,7 +141,7 @@ impl WriterCreateCoreOptions {
         self.inner.get("format").as_::<WriterFormat>()
     }
 
-    pub fn set_format(&mut self, value: WriterFormat) {
+    pub fn set_format(&mut self, value: &WriterFormat) {
         self.inner.set("format", value);
     }
 }
@@ -150,38 +150,38 @@ impl WriterCreateCoreOptions {
         self.inner.get("length").as_::<WriterLength>()
     }
 
-    pub fn set_length(&mut self, value: WriterLength) {
+    pub fn set_length(&mut self, value: &WriterLength) {
         self.inner.set("length", value);
     }
 }
 impl WriterCreateCoreOptions {
-    pub fn expected_input_languages(&self) -> Sequence<DOMString> {
+    pub fn expected_input_languages(&self) -> Sequence<String> {
         self.inner
             .get("expectedInputLanguages")
-            .as_::<Sequence<DOMString>>()
+            .as_::<Sequence<String>>()
     }
 
-    pub fn set_expected_input_languages(&mut self, value: Sequence<DOMString>) {
+    pub fn set_expected_input_languages(&mut self, value: &Sequence<String>) {
         self.inner.set("expectedInputLanguages", value);
     }
 }
 impl WriterCreateCoreOptions {
-    pub fn expected_context_languages(&self) -> Sequence<DOMString> {
+    pub fn expected_context_languages(&self) -> Sequence<String> {
         self.inner
             .get("expectedContextLanguages")
-            .as_::<Sequence<DOMString>>()
+            .as_::<Sequence<String>>()
     }
 
-    pub fn set_expected_context_languages(&mut self, value: Sequence<DOMString>) {
+    pub fn set_expected_context_languages(&mut self, value: &Sequence<String>) {
         self.inner.set("expectedContextLanguages", value);
     }
 }
 impl WriterCreateCoreOptions {
-    pub fn output_language(&self) -> DOMString {
-        self.inner.get("outputLanguage").as_::<DOMString>()
+    pub fn output_language(&self) -> String {
+        self.inner.get("outputLanguage").as_::<String>()
     }
 
-    pub fn set_output_language(&mut self, value: DOMString) {
+    pub fn set_output_language(&mut self, value: &str) {
         self.inner.set("outputLanguage", value);
     }
 }
@@ -236,11 +236,11 @@ impl From<&WriterWriteOptions> for emlite::Val {
 }
 
 impl WriterWriteOptions {
-    pub fn context(&self) -> DOMString {
-        self.inner.get("context").as_::<DOMString>()
+    pub fn context(&self) -> String {
+        self.inner.get("context").as_::<String>()
     }
 
-    pub fn set_context(&mut self, value: DOMString) {
+    pub fn set_context(&mut self, value: &str) {
         self.inner.set("context", value);
     }
 }
@@ -249,7 +249,7 @@ impl WriterWriteOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -313,7 +313,7 @@ impl Writer {
             .as_::<Promise>()
     }
 
-    pub fn create1(options: WriterCreateOptions) -> Promise {
+    pub fn create1(options: &WriterCreateOptions) -> Promise {
         emlite::Val::global("Writer")
             .call("create", &[options.into()])
             .as_::<Promise>()
@@ -326,43 +326,39 @@ impl Writer {
             .as_::<Promise>()
     }
 
-    pub fn availability1(options: WriterCreateCoreOptions) -> Promise {
+    pub fn availability1(options: &WriterCreateCoreOptions) -> Promise {
         emlite::Val::global("Writer")
             .call("availability", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl Writer {
-    pub fn write0(&self, input: DOMString) -> Promise {
+    pub fn write0(&self, input: &str) -> Promise {
         self.inner.call("write", &[input.into()]).as_::<Promise>()
     }
 
-    pub fn write1(&self, input: DOMString, options: WriterWriteOptions) -> Promise {
+    pub fn write1(&self, input: &str, options: &WriterWriteOptions) -> Promise {
         self.inner
             .call("write", &[input.into(), options.into()])
             .as_::<Promise>()
     }
 }
 impl Writer {
-    pub fn write_streaming0(&self, input: DOMString) -> ReadableStream {
+    pub fn write_streaming0(&self, input: &str) -> ReadableStream {
         self.inner
             .call("writeStreaming", &[input.into()])
             .as_::<ReadableStream>()
     }
 
-    pub fn write_streaming1(
-        &self,
-        input: DOMString,
-        options: WriterWriteOptions,
-    ) -> ReadableStream {
+    pub fn write_streaming1(&self, input: &str, options: &WriterWriteOptions) -> ReadableStream {
         self.inner
             .call("writeStreaming", &[input.into(), options.into()])
             .as_::<ReadableStream>()
     }
 }
 impl Writer {
-    pub fn shared_context(&self) -> DOMString {
-        self.inner.get("sharedContext").as_::<DOMString>()
+    pub fn shared_context(&self) -> String {
+        self.inner.get("sharedContext").as_::<String>()
     }
 }
 impl Writer {
@@ -381,32 +377,32 @@ impl Writer {
     }
 }
 impl Writer {
-    pub fn expected_input_languages(&self) -> FrozenArray<DOMString> {
+    pub fn expected_input_languages(&self) -> FrozenArray<String> {
         self.inner
             .get("expectedInputLanguages")
-            .as_::<FrozenArray<DOMString>>()
+            .as_::<FrozenArray<String>>()
     }
 }
 impl Writer {
-    pub fn expected_context_languages(&self) -> FrozenArray<DOMString> {
+    pub fn expected_context_languages(&self) -> FrozenArray<String> {
         self.inner
             .get("expectedContextLanguages")
-            .as_::<FrozenArray<DOMString>>()
+            .as_::<FrozenArray<String>>()
     }
 }
 impl Writer {
-    pub fn output_language(&self) -> DOMString {
-        self.inner.get("outputLanguage").as_::<DOMString>()
+    pub fn output_language(&self) -> String {
+        self.inner.get("outputLanguage").as_::<String>()
     }
 }
 impl Writer {
-    pub fn measure_input_usage0(&self, input: DOMString) -> Promise {
+    pub fn measure_input_usage0(&self, input: &str) -> Promise {
         self.inner
             .call("measureInputUsage", &[input.into()])
             .as_::<Promise>()
     }
 
-    pub fn measure_input_usage1(&self, input: DOMString, options: WriterWriteOptions) -> Promise {
+    pub fn measure_input_usage1(&self, input: &str, options: &WriterWriteOptions) -> Promise {
         self.inner
             .call("measureInputUsage", &[input.into(), options.into()])
             .as_::<Promise>()

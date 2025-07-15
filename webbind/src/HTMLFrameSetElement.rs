@@ -63,20 +63,20 @@ impl HTMLFrameSetElement {
     }
 }
 impl HTMLFrameSetElement {
-    pub fn cols(&self) -> DOMString {
-        self.inner.get("cols").as_::<DOMString>()
+    pub fn cols(&self) -> String {
+        self.inner.get("cols").as_::<String>()
     }
 
-    pub fn set_cols(&mut self, value: DOMString) {
+    pub fn set_cols(&mut self, value: &str) {
         self.inner.set("cols", value);
     }
 }
 impl HTMLFrameSetElement {
-    pub fn rows(&self) -> DOMString {
-        self.inner.get("rows").as_::<DOMString>()
+    pub fn rows(&self) -> String {
+        self.inner.get("rows").as_::<String>()
     }
 
-    pub fn set_rows(&mut self, value: DOMString) {
+    pub fn set_rows(&mut self, value: &str) {
         self.inner.set("rows", value);
     }
 }
@@ -85,7 +85,7 @@ impl HTMLFrameSetElement {
         self.inner.get("onportalactivate").as_::<Any>()
     }
 
-    pub fn set_onportalactivate(&mut self, value: Any) {
+    pub fn set_onportalactivate(&mut self, value: &Any) {
         self.inner.set("onportalactivate", value);
     }
 }

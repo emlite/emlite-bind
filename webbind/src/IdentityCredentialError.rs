@@ -62,7 +62,7 @@ impl IdentityCredentialError {
         }
     }
 
-    pub fn new1(message: DOMString) -> IdentityCredentialError {
+    pub fn new1(message: &str) -> IdentityCredentialError {
         Self {
             inner: emlite::Val::global("IdentityCredentialError")
                 .new(&[message.into()])
@@ -70,7 +70,7 @@ impl IdentityCredentialError {
         }
     }
 
-    pub fn new2(message: DOMString, options: Any) -> IdentityCredentialError {
+    pub fn new2(message: &str, options: &Any) -> IdentityCredentialError {
         Self {
             inner: emlite::Val::global("IdentityCredentialError")
                 .new(&[message.into(), options.into()])
@@ -79,12 +79,12 @@ impl IdentityCredentialError {
     }
 }
 impl IdentityCredentialError {
-    pub fn error(&self) -> DOMString {
-        self.inner.get("error").as_::<DOMString>()
+    pub fn error(&self) -> String {
+        self.inner.get("error").as_::<String>()
     }
 }
 impl IdentityCredentialError {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }

@@ -63,36 +63,36 @@ impl FileReaderSync {
     }
 }
 impl FileReaderSync {
-    pub fn read_as_array_buffer(&self, blob: Blob) -> ArrayBuffer {
+    pub fn read_as_array_buffer(&self, blob: &Blob) -> ArrayBuffer {
         self.inner
             .call("readAsArrayBuffer", &[blob.into()])
             .as_::<ArrayBuffer>()
     }
 }
 impl FileReaderSync {
-    pub fn read_as_binary_string(&self, blob: Blob) -> DOMString {
+    pub fn read_as_binary_string(&self, blob: &Blob) -> String {
         self.inner
             .call("readAsBinaryString", &[blob.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl FileReaderSync {
-    pub fn read_as_text0(&self, blob: Blob) -> DOMString {
+    pub fn read_as_text0(&self, blob: &Blob) -> String {
         self.inner
             .call("readAsText", &[blob.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 
-    pub fn read_as_text1(&self, blob: Blob, encoding: DOMString) -> DOMString {
+    pub fn read_as_text1(&self, blob: &Blob, encoding: &str) -> String {
         self.inner
             .call("readAsText", &[blob.into(), encoding.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl FileReaderSync {
-    pub fn read_as_data_url(&self, blob: Blob) -> DOMString {
+    pub fn read_as_data_url(&self, blob: &Blob) -> String {
         self.inner
             .call("readAsDataURL", &[blob.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }

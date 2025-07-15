@@ -54,7 +54,7 @@ impl From<&MouseEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MouseEvent);
 
 impl MouseEvent {
-    pub fn new0(type_: DOMString) -> MouseEvent {
+    pub fn new0(type_: &str) -> MouseEvent {
         Self {
             inner: emlite::Val::global("MouseEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl MouseEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> MouseEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> MouseEvent {
         Self {
             inner: emlite::Val::global("MouseEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -136,7 +136,7 @@ impl MouseEvent {
     }
 }
 impl MouseEvent {
-    pub fn get_modifier_state(&self, key_arg: DOMString) -> bool {
+    pub fn get_modifier_state(&self, key_arg: &str) -> bool {
         self.inner
             .call("getModifierState", &[key_arg.into()])
             .as_::<bool>()
@@ -183,13 +183,13 @@ impl MouseEvent {
     }
 }
 impl MouseEvent {
-    pub fn init_mouse_event0(&self, type_arg: DOMString) -> Undefined {
+    pub fn init_mouse_event0(&self, type_arg: &str) -> Undefined {
         self.inner
             .call("initMouseEvent", &[type_arg.into()])
             .as_::<Undefined>()
     }
 
-    pub fn init_mouse_event1(&self, type_arg: DOMString, bubbles_arg: bool) -> Undefined {
+    pub fn init_mouse_event1(&self, type_arg: &str, bubbles_arg: bool) -> Undefined {
         self.inner
             .call("initMouseEvent", &[type_arg.into(), bubbles_arg.into()])
             .as_::<Undefined>()
@@ -197,7 +197,7 @@ impl MouseEvent {
 
     pub fn init_mouse_event2(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
     ) -> Undefined {
@@ -211,10 +211,10 @@ impl MouseEvent {
 
     pub fn init_mouse_event3(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Window,
+        view_arg: &Window,
     ) -> Undefined {
         self.inner
             .call(
@@ -231,10 +231,10 @@ impl MouseEvent {
 
     pub fn init_mouse_event4(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Window,
+        view_arg: &Window,
         detail_arg: i32,
     ) -> Undefined {
         self.inner
@@ -253,10 +253,10 @@ impl MouseEvent {
 
     pub fn init_mouse_event5(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Window,
+        view_arg: &Window,
         detail_arg: i32,
         screen_x_arg: i32,
     ) -> Undefined {
@@ -277,10 +277,10 @@ impl MouseEvent {
 
     pub fn init_mouse_event6(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Window,
+        view_arg: &Window,
         detail_arg: i32,
         screen_x_arg: i32,
         screen_y_arg: i32,
@@ -303,10 +303,10 @@ impl MouseEvent {
 
     pub fn init_mouse_event7(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Window,
+        view_arg: &Window,
         detail_arg: i32,
         screen_x_arg: i32,
         screen_y_arg: i32,
@@ -331,10 +331,10 @@ impl MouseEvent {
 
     pub fn init_mouse_event8(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Window,
+        view_arg: &Window,
         detail_arg: i32,
         screen_x_arg: i32,
         screen_y_arg: i32,
@@ -361,10 +361,10 @@ impl MouseEvent {
 
     pub fn init_mouse_event9(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Window,
+        view_arg: &Window,
         detail_arg: i32,
         screen_x_arg: i32,
         screen_y_arg: i32,
@@ -393,10 +393,10 @@ impl MouseEvent {
 
     pub fn init_mouse_event10(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Window,
+        view_arg: &Window,
         detail_arg: i32,
         screen_x_arg: i32,
         screen_y_arg: i32,
@@ -427,10 +427,10 @@ impl MouseEvent {
 
     pub fn init_mouse_event11(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Window,
+        view_arg: &Window,
         detail_arg: i32,
         screen_x_arg: i32,
         screen_y_arg: i32,
@@ -463,10 +463,10 @@ impl MouseEvent {
 
     pub fn init_mouse_event12(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Window,
+        view_arg: &Window,
         detail_arg: i32,
         screen_x_arg: i32,
         screen_y_arg: i32,
@@ -501,10 +501,10 @@ impl MouseEvent {
 
     pub fn init_mouse_event13(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Window,
+        view_arg: &Window,
         detail_arg: i32,
         screen_x_arg: i32,
         screen_y_arg: i32,
@@ -541,10 +541,10 @@ impl MouseEvent {
 
     pub fn init_mouse_event14(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Window,
+        view_arg: &Window,
         detail_arg: i32,
         screen_x_arg: i32,
         screen_y_arg: i32,
@@ -555,7 +555,7 @@ impl MouseEvent {
         shift_key_arg: bool,
         meta_key_arg: bool,
         button_arg: i16,
-        related_target_arg: EventTarget,
+        related_target_arg: &EventTarget,
     ) -> Undefined {
         self.inner
             .call(

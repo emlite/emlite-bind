@@ -51,11 +51,11 @@ impl From<&IdentityCredentialDisconnectOptions> for emlite::Val {
 }
 
 impl IdentityCredentialDisconnectOptions {
-    pub fn account_hint(&self) -> USVString {
-        self.inner.get("accountHint").as_::<USVString>()
+    pub fn account_hint(&self) -> String {
+        self.inner.get("accountHint").as_::<String>()
     }
 
-    pub fn set_account_hint(&mut self, value: USVString) {
+    pub fn set_account_hint(&mut self, value: &str) {
         self.inner.set("accountHint", value);
     }
 }
@@ -113,15 +113,15 @@ impl From<&IdentityCredential> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(IdentityCredential);
 
 impl IdentityCredential {
-    pub fn disconnect(options: IdentityCredentialDisconnectOptions) -> Promise {
+    pub fn disconnect(options: &IdentityCredentialDisconnectOptions) -> Promise {
         emlite::Val::global("IdentityCredential")
             .call("disconnect", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl IdentityCredential {
-    pub fn token(&self) -> USVString {
-        self.inner.get("token").as_::<USVString>()
+    pub fn token(&self) -> String {
+        self.inner.get("token").as_::<String>()
     }
 }
 impl IdentityCredential {
@@ -130,7 +130,7 @@ impl IdentityCredential {
     }
 }
 impl IdentityCredential {
-    pub fn config_url(&self) -> USVString {
-        self.inner.get("configURL").as_::<USVString>()
+    pub fn config_url(&self) -> String {
+        self.inner.get("configURL").as_::<String>()
     }
 }

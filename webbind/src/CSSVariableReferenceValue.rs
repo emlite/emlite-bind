@@ -54,7 +54,7 @@ impl From<&CSSVariableReferenceValue> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSVariableReferenceValue);
 
 impl CSSVariableReferenceValue {
-    pub fn new0(variable: USVString) -> CSSVariableReferenceValue {
+    pub fn new0(variable: &str) -> CSSVariableReferenceValue {
         Self {
             inner: emlite::Val::global("CSSVariableReferenceValue")
                 .new(&[variable.into()])
@@ -62,7 +62,7 @@ impl CSSVariableReferenceValue {
         }
     }
 
-    pub fn new1(variable: USVString, fallback: CSSUnparsedValue) -> CSSVariableReferenceValue {
+    pub fn new1(variable: &str, fallback: &CSSUnparsedValue) -> CSSVariableReferenceValue {
         Self {
             inner: emlite::Val::global("CSSVariableReferenceValue")
                 .new(&[variable.into(), fallback.into()])
@@ -71,11 +71,11 @@ impl CSSVariableReferenceValue {
     }
 }
 impl CSSVariableReferenceValue {
-    pub fn variable(&self) -> USVString {
-        self.inner.get("variable").as_::<USVString>()
+    pub fn variable(&self) -> String {
+        self.inner.get("variable").as_::<String>()
     }
 
-    pub fn set_variable(&mut self, value: USVString) {
+    pub fn set_variable(&mut self, value: &str) {
         self.inner.set("variable", value);
     }
 }

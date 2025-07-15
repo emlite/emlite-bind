@@ -77,11 +77,11 @@ impl HTMLOptionElement {
     }
 }
 impl HTMLOptionElement {
-    pub fn label(&self) -> DOMString {
-        self.inner.get("label").as_::<DOMString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 
-    pub fn set_label(&mut self, value: DOMString) {
+    pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }
 }
@@ -104,20 +104,20 @@ impl HTMLOptionElement {
     }
 }
 impl HTMLOptionElement {
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> String {
+        self.inner.get("value").as_::<String>()
     }
 
-    pub fn set_value(&mut self, value: DOMString) {
+    pub fn set_value(&mut self, value: &str) {
         self.inner.set("value", value);
     }
 }
 impl HTMLOptionElement {
-    pub fn text(&self) -> DOMString {
-        self.inner.get("text").as_::<DOMString>()
+    pub fn text(&self) -> String {
+        self.inner.get("text").as_::<String>()
     }
 
-    pub fn set_text(&mut self, value: DOMString) {
+    pub fn set_text(&mut self, value: &str) {
         self.inner.set("text", value);
     }
 }

@@ -54,7 +54,7 @@ impl From<&OfflineAudioCompletionEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(OfflineAudioCompletionEvent);
 
 impl OfflineAudioCompletionEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> OfflineAudioCompletionEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> OfflineAudioCompletionEvent {
         Self {
             inner: emlite::Val::global("OfflineAudioCompletionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -54,7 +54,7 @@ impl From<&CSSLCH> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSLCH);
 
 impl CSSLCH {
-    pub fn new0(l: Any, c: Any, h: Any) -> CSSLCH {
+    pub fn new0(l: &Any, c: &Any, h: &Any) -> CSSLCH {
         Self {
             inner: emlite::Val::global("CSSLCH")
                 .new(&[l.into(), c.into(), h.into()])
@@ -62,7 +62,7 @@ impl CSSLCH {
         }
     }
 
-    pub fn new1(l: Any, c: Any, h: Any, alpha: Any) -> CSSLCH {
+    pub fn new1(l: &Any, c: &Any, h: &Any, alpha: &Any) -> CSSLCH {
         Self {
             inner: emlite::Val::global("CSSLCH")
                 .new(&[l.into(), c.into(), h.into(), alpha.into()])
@@ -75,7 +75,7 @@ impl CSSLCH {
         self.inner.get("l").as_::<Any>()
     }
 
-    pub fn set_l(&mut self, value: Any) {
+    pub fn set_l(&mut self, value: &Any) {
         self.inner.set("l", value);
     }
 }
@@ -84,7 +84,7 @@ impl CSSLCH {
         self.inner.get("c").as_::<Any>()
     }
 
-    pub fn set_c(&mut self, value: Any) {
+    pub fn set_c(&mut self, value: &Any) {
         self.inner.set("c", value);
     }
 }
@@ -93,7 +93,7 @@ impl CSSLCH {
         self.inner.get("h").as_::<Any>()
     }
 
-    pub fn set_h(&mut self, value: Any) {
+    pub fn set_h(&mut self, value: &Any) {
         self.inner.set("h", value);
     }
 }
@@ -102,7 +102,7 @@ impl CSSLCH {
         self.inner.get("alpha").as_::<Any>()
     }
 
-    pub fn set_alpha(&mut self, value: Any) {
+    pub fn set_alpha(&mut self, value: &Any) {
         self.inner.set("alpha", value);
     }
 }

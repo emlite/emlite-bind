@@ -55,7 +55,7 @@ impl ShadowRootInit {
         self.inner.get("mode").as_::<ShadowRootMode>()
     }
 
-    pub fn set_mode(&mut self, value: ShadowRootMode) {
+    pub fn set_mode(&mut self, value: &ShadowRootMode) {
         self.inner.set("mode", value);
     }
 }
@@ -73,7 +73,7 @@ impl ShadowRootInit {
         self.inner.get("slotAssignment").as_::<SlotAssignmentMode>()
     }
 
-    pub fn set_slot_assignment(&mut self, value: SlotAssignmentMode) {
+    pub fn set_slot_assignment(&mut self, value: &SlotAssignmentMode) {
         self.inner.set("slotAssignment", value);
     }
 }
@@ -102,7 +102,7 @@ impl ShadowRootInit {
             .as_::<CustomElementRegistry>()
     }
 
-    pub fn set_custom_element_registry(&mut self, value: CustomElementRegistry) {
+    pub fn set_custom_element_registry(&mut self, value: &CustomElementRegistry) {
         self.inner.set("customElementRegistry", value);
     }
 }
@@ -161,7 +161,7 @@ impl FocusableAreasOption {
         self.inner.get("mode").as_::<FocusableAreaSearchMode>()
     }
 
-    pub fn set_mode(&mut self, value: FocusableAreaSearchMode) {
+    pub fn set_mode(&mut self, value: &FocusableAreaSearchMode) {
         self.inner.set("mode", value);
     }
 }
@@ -220,7 +220,7 @@ impl SpatialNavigationSearchOptions {
         self.inner.get("candidates").as_::<Sequence<Node>>()
     }
 
-    pub fn set_candidates(&mut self, value: Sequence<Node>) {
+    pub fn set_candidates(&mut self, value: &Sequence<Node>) {
         self.inner.set("candidates", value);
     }
 }
@@ -229,7 +229,7 @@ impl SpatialNavigationSearchOptions {
         self.inner.get("container").as_::<Node>()
     }
 
-    pub fn set_container(&mut self, value: Node) {
+    pub fn set_container(&mut self, value: &Node) {
         self.inner.set("container", value);
     }
 }
@@ -383,7 +383,7 @@ impl FullscreenOptions {
         self.inner.get("screen").as_::<ScreenDetailed>()
     }
 
-    pub fn set_screen(&mut self, value: ScreenDetailed) {
+    pub fn set_screen(&mut self, value: &ScreenDetailed) {
         self.inner.set("screen", value);
     }
 }
@@ -451,7 +451,7 @@ impl GetHTMLOptions {
         self.inner.get("shadowRoots").as_::<Sequence<ShadowRoot>>()
     }
 
-    pub fn set_shadow_roots(&mut self, value: Sequence<ShadowRoot>) {
+    pub fn set_shadow_roots(&mut self, value: &Sequence<ShadowRoot>) {
         self.inner.set("shadowRoots", value);
     }
 }
@@ -574,11 +574,11 @@ impl GetAnimationsOptions {
     }
 }
 impl GetAnimationsOptions {
-    pub fn pseudo_element(&self) -> CSSOMString {
-        self.inner.get("pseudoElement").as_::<CSSOMString>()
+    pub fn pseudo_element(&self) -> String {
+        self.inner.get("pseudoElement").as_::<String>()
     }
 
-    pub fn set_pseudo_element(&mut self, value: CSSOMString) {
+    pub fn set_pseudo_element(&mut self, value: &str) {
         self.inner.set("pseudoElement", value);
     }
 }
@@ -636,40 +636,40 @@ impl From<&Element> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Element);
 
 impl Element {
-    pub fn namespace_uri(&self) -> DOMString {
-        self.inner.get("namespaceURI").as_::<DOMString>()
+    pub fn namespace_uri(&self) -> String {
+        self.inner.get("namespaceURI").as_::<String>()
     }
 }
 impl Element {
-    pub fn prefix(&self) -> DOMString {
-        self.inner.get("prefix").as_::<DOMString>()
+    pub fn prefix(&self) -> String {
+        self.inner.get("prefix").as_::<String>()
     }
 }
 impl Element {
-    pub fn local_name(&self) -> DOMString {
-        self.inner.get("localName").as_::<DOMString>()
+    pub fn local_name(&self) -> String {
+        self.inner.get("localName").as_::<String>()
     }
 }
 impl Element {
-    pub fn tag_name(&self) -> DOMString {
-        self.inner.get("tagName").as_::<DOMString>()
+    pub fn tag_name(&self) -> String {
+        self.inner.get("tagName").as_::<String>()
     }
 }
 impl Element {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 
-    pub fn set_id(&mut self, value: DOMString) {
+    pub fn set_id(&mut self, value: &str) {
         self.inner.set("id", value);
     }
 }
 impl Element {
-    pub fn class_name(&self) -> DOMString {
-        self.inner.get("className").as_::<DOMString>()
+    pub fn class_name(&self) -> String {
+        self.inner.get("className").as_::<String>()
     }
 
-    pub fn set_class_name(&mut self, value: DOMString) {
+    pub fn set_class_name(&mut self, value: &str) {
         self.inner.set("className", value);
     }
 }
@@ -679,11 +679,11 @@ impl Element {
     }
 }
 impl Element {
-    pub fn slot(&self) -> DOMString {
-        self.inner.get("slot").as_::<DOMString>()
+    pub fn slot(&self) -> String {
+        self.inner.get("slot").as_::<String>()
     }
 
-    pub fn set_slot(&mut self, value: DOMString) {
+    pub fn set_slot(&mut self, value: &str) {
         self.inner.set("slot", value);
     }
 }
@@ -698,28 +698,28 @@ impl Element {
     }
 }
 impl Element {
-    pub fn get_attribute_names(&self) -> Sequence<DOMString> {
+    pub fn get_attribute_names(&self) -> Sequence<String> {
         self.inner
             .call("getAttributeNames", &[])
-            .as_::<Sequence<DOMString>>()
+            .as_::<Sequence<String>>()
     }
 }
 impl Element {
-    pub fn get_attribute(&self, qualified_name: DOMString) -> DOMString {
+    pub fn get_attribute(&self, qualified_name: &str) -> String {
         self.inner
             .call("getAttribute", &[qualified_name.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl Element {
-    pub fn get_attribute_ns(&self, namespace: DOMString, local_name: DOMString) -> DOMString {
+    pub fn get_attribute_ns(&self, namespace: &str, local_name: &str) -> String {
         self.inner
             .call("getAttributeNS", &[namespace.into(), local_name.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl Element {
-    pub fn set_attribute(&self, qualified_name: DOMString, value: DOMString) -> Undefined {
+    pub fn set_attribute(&self, qualified_name: &str, value: &str) -> Undefined {
         self.inner
             .call("setAttribute", &[qualified_name.into(), value.into()])
             .as_::<Undefined>()
@@ -728,9 +728,9 @@ impl Element {
 impl Element {
     pub fn set_attribute_ns(
         &self,
-        namespace: DOMString,
-        qualified_name: DOMString,
-        value: DOMString,
+        namespace: &str,
+        qualified_name: &str,
+        value: &str,
     ) -> Undefined {
         self.inner
             .call(
@@ -741,83 +741,83 @@ impl Element {
     }
 }
 impl Element {
-    pub fn remove_attribute(&self, qualified_name: DOMString) -> Undefined {
+    pub fn remove_attribute(&self, qualified_name: &str) -> Undefined {
         self.inner
             .call("removeAttribute", &[qualified_name.into()])
             .as_::<Undefined>()
     }
 }
 impl Element {
-    pub fn remove_attribute_ns(&self, namespace: DOMString, local_name: DOMString) -> Undefined {
+    pub fn remove_attribute_ns(&self, namespace: &str, local_name: &str) -> Undefined {
         self.inner
             .call("removeAttributeNS", &[namespace.into(), local_name.into()])
             .as_::<Undefined>()
     }
 }
 impl Element {
-    pub fn toggle_attribute0(&self, qualified_name: DOMString) -> bool {
+    pub fn toggle_attribute0(&self, qualified_name: &str) -> bool {
         self.inner
             .call("toggleAttribute", &[qualified_name.into()])
             .as_::<bool>()
     }
 
-    pub fn toggle_attribute1(&self, qualified_name: DOMString, force: bool) -> bool {
+    pub fn toggle_attribute1(&self, qualified_name: &str, force: bool) -> bool {
         self.inner
             .call("toggleAttribute", &[qualified_name.into(), force.into()])
             .as_::<bool>()
     }
 }
 impl Element {
-    pub fn has_attribute(&self, qualified_name: DOMString) -> bool {
+    pub fn has_attribute(&self, qualified_name: &str) -> bool {
         self.inner
             .call("hasAttribute", &[qualified_name.into()])
             .as_::<bool>()
     }
 }
 impl Element {
-    pub fn has_attribute_ns(&self, namespace: DOMString, local_name: DOMString) -> bool {
+    pub fn has_attribute_ns(&self, namespace: &str, local_name: &str) -> bool {
         self.inner
             .call("hasAttributeNS", &[namespace.into(), local_name.into()])
             .as_::<bool>()
     }
 }
 impl Element {
-    pub fn get_attribute_node(&self, qualified_name: DOMString) -> Attr {
+    pub fn get_attribute_node(&self, qualified_name: &str) -> Attr {
         self.inner
             .call("getAttributeNode", &[qualified_name.into()])
             .as_::<Attr>()
     }
 }
 impl Element {
-    pub fn get_attribute_node_ns(&self, namespace: DOMString, local_name: DOMString) -> Attr {
+    pub fn get_attribute_node_ns(&self, namespace: &str, local_name: &str) -> Attr {
         self.inner
             .call("getAttributeNodeNS", &[namespace.into(), local_name.into()])
             .as_::<Attr>()
     }
 }
 impl Element {
-    pub fn set_attribute_node(&self, attr: Attr) -> Attr {
+    pub fn set_attribute_node(&self, attr: &Attr) -> Attr {
         self.inner
             .call("setAttributeNode", &[attr.into()])
             .as_::<Attr>()
     }
 }
 impl Element {
-    pub fn set_attribute_node_ns(&self, attr: Attr) -> Attr {
+    pub fn set_attribute_node_ns(&self, attr: &Attr) -> Attr {
         self.inner
             .call("setAttributeNodeNS", &[attr.into()])
             .as_::<Attr>()
     }
 }
 impl Element {
-    pub fn remove_attribute_node(&self, attr: Attr) -> Attr {
+    pub fn remove_attribute_node(&self, attr: &Attr) -> Attr {
         self.inner
             .call("removeAttributeNode", &[attr.into()])
             .as_::<Attr>()
     }
 }
 impl Element {
-    pub fn attach_shadow(&self, init: ShadowRootInit) -> ShadowRoot {
+    pub fn attach_shadow(&self, init: &ShadowRootInit) -> ShadowRoot {
         self.inner
             .call("attachShadow", &[init.into()])
             .as_::<ShadowRoot>()
@@ -836,39 +836,35 @@ impl Element {
     }
 }
 impl Element {
-    pub fn closest(&self, selectors: DOMString) -> Element {
+    pub fn closest(&self, selectors: &str) -> Element {
         self.inner
             .call("closest", &[selectors.into()])
             .as_::<Element>()
     }
 }
 impl Element {
-    pub fn matches(&self, selectors: DOMString) -> bool {
+    pub fn matches(&self, selectors: &str) -> bool {
         self.inner
             .call("matches", &[selectors.into()])
             .as_::<bool>()
     }
 }
 impl Element {
-    pub fn webkit_matches_selector(&self, selectors: DOMString) -> bool {
+    pub fn webkit_matches_selector(&self, selectors: &str) -> bool {
         self.inner
             .call("webkitMatchesSelector", &[selectors.into()])
             .as_::<bool>()
     }
 }
 impl Element {
-    pub fn get_elements_by_tag_name(&self, qualified_name: DOMString) -> HTMLCollection {
+    pub fn get_elements_by_tag_name(&self, qualified_name: &str) -> HTMLCollection {
         self.inner
             .call("getElementsByTagName", &[qualified_name.into()])
             .as_::<HTMLCollection>()
     }
 }
 impl Element {
-    pub fn get_elements_by_tag_name_ns(
-        &self,
-        namespace: DOMString,
-        local_name: DOMString,
-    ) -> HTMLCollection {
+    pub fn get_elements_by_tag_name_ns(&self, namespace: &str, local_name: &str) -> HTMLCollection {
         self.inner
             .call(
                 "getElementsByTagNameNS",
@@ -878,21 +874,21 @@ impl Element {
     }
 }
 impl Element {
-    pub fn get_elements_by_class_name(&self, class_names: DOMString) -> HTMLCollection {
+    pub fn get_elements_by_class_name(&self, class_names: &str) -> HTMLCollection {
         self.inner
             .call("getElementsByClassName", &[class_names.into()])
             .as_::<HTMLCollection>()
     }
 }
 impl Element {
-    pub fn insert_adjacent_element(&self, where_: DOMString, element: Element) -> Element {
+    pub fn insert_adjacent_element(&self, where_: &str, element: &Element) -> Element {
         self.inner
             .call("insertAdjacentElement", &[where_.into(), element.into()])
             .as_::<Element>()
     }
 }
 impl Element {
-    pub fn insert_adjacent_text(&self, where_: DOMString, data: DOMString) -> Undefined {
+    pub fn insert_adjacent_text(&self, where_: &str, data: &str) -> Undefined {
         self.inner
             .call("insertAdjacentText", &[where_.into(), data.into()])
             .as_::<Undefined>()
@@ -912,14 +908,14 @@ impl Element {
             .as_::<Sequence<Node>>()
     }
 
-    pub fn focusable_areas1(&self, option: FocusableAreasOption) -> Sequence<Node> {
+    pub fn focusable_areas1(&self, option: &FocusableAreasOption) -> Sequence<Node> {
         self.inner
             .call("focusableAreas", &[option.into()])
             .as_::<Sequence<Node>>()
     }
 }
 impl Element {
-    pub fn spatial_navigation_search0(&self, dir: SpatialNavigationDirection) -> Node {
+    pub fn spatial_navigation_search0(&self, dir: &SpatialNavigationDirection) -> Node {
         self.inner
             .call("spatialNavigationSearch", &[dir.into()])
             .as_::<Node>()
@@ -927,8 +923,8 @@ impl Element {
 
     pub fn spatial_navigation_search1(
         &self,
-        dir: SpatialNavigationDirection,
-        options: SpatialNavigationSearchOptions,
+        dir: &SpatialNavigationDirection,
+        options: &SpatialNavigationSearchOptions,
     ) -> Node {
         self.inner
             .call("spatialNavigationSearch", &[dir.into(), options.into()])
@@ -936,7 +932,7 @@ impl Element {
     }
 }
 impl Element {
-    pub fn pseudo(&self, type_: CSSOMString) -> CSSPseudoElement {
+    pub fn pseudo(&self, type_: &str) -> CSSPseudoElement {
         self.inner
             .call("pseudo", &[type_.into()])
             .as_::<CSSPseudoElement>()
@@ -971,7 +967,7 @@ impl Element {
         self.inner.call("checkVisibility", &[]).as_::<bool>()
     }
 
-    pub fn check_visibility1(&self, options: CheckVisibilityOptions) -> bool {
+    pub fn check_visibility1(&self, options: &CheckVisibilityOptions) -> bool {
         self.inner
             .call("checkVisibility", &[options.into()])
             .as_::<bool>()
@@ -982,7 +978,7 @@ impl Element {
         self.inner.call("scrollIntoView", &[]).as_::<Undefined>()
     }
 
-    pub fn scroll_into_view1(&self, arg: Any) -> Undefined {
+    pub fn scroll_into_view1(&self, arg: &Any) -> Undefined {
         self.inner
             .call("scrollIntoView", &[arg.into()])
             .as_::<Undefined>()
@@ -1063,11 +1059,11 @@ impl Element {
     }
 }
 impl Element {
-    pub fn element_timing(&self) -> DOMString {
-        self.inner.get("elementTiming").as_::<DOMString>()
+    pub fn element_timing(&self) -> String {
+        self.inner.get("elementTiming").as_::<String>()
     }
 
-    pub fn set_element_timing(&mut self, value: DOMString) {
+    pub fn set_element_timing(&mut self, value: &str) {
         self.inner.set("elementTiming", value);
     }
 }
@@ -1076,7 +1072,7 @@ impl Element {
         self.inner.call("requestFullscreen", &[]).as_::<Promise>()
     }
 
-    pub fn request_fullscreen1(&self, options: FullscreenOptions) -> Promise {
+    pub fn request_fullscreen1(&self, options: &FullscreenOptions) -> Promise {
         self.inner
             .call("requestFullscreen", &[options.into()])
             .as_::<Promise>()
@@ -1087,7 +1083,7 @@ impl Element {
         self.inner.get("onfullscreenchange").as_::<Any>()
     }
 
-    pub fn set_onfullscreenchange(&mut self, value: Any) {
+    pub fn set_onfullscreenchange(&mut self, value: &Any) {
         self.inner.set("onfullscreenchange", value);
     }
 }
@@ -1096,26 +1092,26 @@ impl Element {
         self.inner.get("onfullscreenerror").as_::<Any>()
     }
 
-    pub fn set_onfullscreenerror(&mut self, value: Any) {
+    pub fn set_onfullscreenerror(&mut self, value: &Any) {
         self.inner.set("onfullscreenerror", value);
     }
 }
 impl Element {
-    pub fn set_html_unsafe(&self, html: Any) -> Undefined {
+    pub fn set_html_unsafe(&self, html: &Any) -> Undefined {
         self.inner
             .call("setHTMLUnsafe", &[html.into()])
             .as_::<Undefined>()
     }
 }
 impl Element {
-    pub fn get_html0(&self) -> DOMString {
-        self.inner.call("getHTML", &[]).as_::<DOMString>()
+    pub fn get_html0(&self) -> String {
+        self.inner.call("getHTML", &[]).as_::<String>()
     }
 
-    pub fn get_html1(&self, options: GetHTMLOptions) -> DOMString {
+    pub fn get_html1(&self, options: &GetHTMLOptions) -> String {
         self.inner
             .call("getHTML", &[options.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl Element {
@@ -1123,7 +1119,7 @@ impl Element {
         self.inner.get("innerHTML").as_::<Any>()
     }
 
-    pub fn set_inner_html(&mut self, value: Any) {
+    pub fn set_inner_html(&mut self, value: &Any) {
         self.inner.set("innerHTML", value);
     }
 }
@@ -1132,12 +1128,12 @@ impl Element {
         self.inner.get("outerHTML").as_::<Any>()
     }
 
-    pub fn set_outer_html(&mut self, value: Any) {
+    pub fn set_outer_html(&mut self, value: &Any) {
         self.inner.set("outerHTML", value);
     }
 }
 impl Element {
-    pub fn insert_adjacent_html(&self, position: DOMString, string: Any) -> Undefined {
+    pub fn insert_adjacent_html(&self, position: &str, string: &Any) -> Undefined {
         self.inner
             .call("insertAdjacentHTML", &[position.into(), string.into()])
             .as_::<Undefined>()
@@ -1169,15 +1165,15 @@ impl Element {
         self.inner.call("requestPointerLock", &[]).as_::<Promise>()
     }
 
-    pub fn request_pointer_lock1(&self, options: PointerLockOptions) -> Promise {
+    pub fn request_pointer_lock1(&self, options: &PointerLockOptions) -> Promise {
         self.inner
             .call("requestPointerLock", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl Element {
-    pub fn region_overset(&self) -> CSSOMString {
-        self.inner.get("regionOverset").as_::<CSSOMString>()
+    pub fn region_overset(&self) -> String {
+        self.inner.get("regionOverset").as_::<String>()
     }
 }
 impl Element {
@@ -1194,14 +1190,14 @@ impl Element {
             .as_::<Sequence<DOMQuad>>()
     }
 
-    pub fn get_box_quads1(&self, options: BoxQuadOptions) -> Sequence<DOMQuad> {
+    pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> Sequence<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[options.into()])
             .as_::<Sequence<DOMQuad>>()
     }
 }
 impl Element {
-    pub fn convert_quad_from_node0(&self, quad: DOMQuadInit, from: Any) -> DOMQuad {
+    pub fn convert_quad_from_node0(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
         self.inner
             .call("convertQuadFromNode", &[quad.into(), from.into()])
             .as_::<DOMQuad>()
@@ -1209,9 +1205,9 @@ impl Element {
 
     pub fn convert_quad_from_node1(
         &self,
-        quad: DOMQuadInit,
-        from: Any,
-        options: ConvertCoordinateOptions,
+        quad: &DOMQuadInit,
+        from: &Any,
+        options: &ConvertCoordinateOptions,
     ) -> DOMQuad {
         self.inner
             .call(
@@ -1222,7 +1218,7 @@ impl Element {
     }
 }
 impl Element {
-    pub fn convert_rect_from_node0(&self, rect: DOMRectReadOnly, from: Any) -> DOMQuad {
+    pub fn convert_rect_from_node0(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
         self.inner
             .call("convertRectFromNode", &[rect.into(), from.into()])
             .as_::<DOMQuad>()
@@ -1230,9 +1226,9 @@ impl Element {
 
     pub fn convert_rect_from_node1(
         &self,
-        rect: DOMRectReadOnly,
-        from: Any,
-        options: ConvertCoordinateOptions,
+        rect: &DOMRectReadOnly,
+        from: &Any,
+        options: &ConvertCoordinateOptions,
     ) -> DOMQuad {
         self.inner
             .call(
@@ -1243,7 +1239,7 @@ impl Element {
     }
 }
 impl Element {
-    pub fn convert_point_from_node0(&self, point: DOMPointInit, from: Any) -> DOMPoint {
+    pub fn convert_point_from_node0(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
         self.inner
             .call("convertPointFromNode", &[point.into(), from.into()])
             .as_::<DOMPoint>()
@@ -1251,9 +1247,9 @@ impl Element {
 
     pub fn convert_point_from_node1(
         &self,
-        point: DOMPointInit,
-        from: Any,
-        options: ConvertCoordinateOptions,
+        point: &DOMPointInit,
+        from: &Any,
+        options: &ConvertCoordinateOptions,
     ) -> DOMPoint {
         self.inner
             .call(
@@ -1284,42 +1280,42 @@ impl Element {
     }
 }
 impl Element {
-    pub fn prepend(&self, nodes: Any) -> Undefined {
+    pub fn prepend(&self, nodes: &Any) -> Undefined {
         self.inner
             .call("prepend", &[nodes.into()])
             .as_::<Undefined>()
     }
 }
 impl Element {
-    pub fn append(&self, nodes: Any) -> Undefined {
+    pub fn append(&self, nodes: &Any) -> Undefined {
         self.inner
             .call("append", &[nodes.into()])
             .as_::<Undefined>()
     }
 }
 impl Element {
-    pub fn replace_children(&self, nodes: Any) -> Undefined {
+    pub fn replace_children(&self, nodes: &Any) -> Undefined {
         self.inner
             .call("replaceChildren", &[nodes.into()])
             .as_::<Undefined>()
     }
 }
 impl Element {
-    pub fn move_before(&self, node: Node, child: Node) -> Undefined {
+    pub fn move_before(&self, node: &Node, child: &Node) -> Undefined {
         self.inner
             .call("moveBefore", &[node.into(), child.into()])
             .as_::<Undefined>()
     }
 }
 impl Element {
-    pub fn query_selector(&self, selectors: DOMString) -> Element {
+    pub fn query_selector(&self, selectors: &str) -> Element {
         self.inner
             .call("querySelector", &[selectors.into()])
             .as_::<Element>()
     }
 }
 impl Element {
-    pub fn query_selector_all(&self, selectors: DOMString) -> NodeList {
+    pub fn query_selector_all(&self, selectors: &str) -> NodeList {
         self.inner
             .call("querySelectorAll", &[selectors.into()])
             .as_::<NodeList>()
@@ -1336,19 +1332,19 @@ impl Element {
     }
 }
 impl Element {
-    pub fn before(&self, nodes: Any) -> Undefined {
+    pub fn before(&self, nodes: &Any) -> Undefined {
         self.inner
             .call("before", &[nodes.into()])
             .as_::<Undefined>()
     }
 }
 impl Element {
-    pub fn after(&self, nodes: Any) -> Undefined {
+    pub fn after(&self, nodes: &Any) -> Undefined {
         self.inner.call("after", &[nodes.into()]).as_::<Undefined>()
     }
 }
 impl Element {
-    pub fn replace_with(&self, nodes: Any) -> Undefined {
+    pub fn replace_with(&self, nodes: &Any) -> Undefined {
         self.inner
             .call("replaceWith", &[nodes.into()])
             .as_::<Undefined>()
@@ -1365,11 +1361,11 @@ impl Element {
     }
 }
 impl Element {
-    pub fn role(&self) -> DOMString {
-        self.inner.get("role").as_::<DOMString>()
+    pub fn role(&self) -> String {
+        self.inner.get("role").as_::<String>()
     }
 
-    pub fn set_role(&mut self, value: DOMString) {
+    pub fn set_role(&mut self, value: &str) {
         self.inner.set("role", value);
     }
 }
@@ -1380,99 +1376,97 @@ impl Element {
             .as_::<Element>()
     }
 
-    pub fn set_aria_active_descendant_element(&mut self, value: Element) {
+    pub fn set_aria_active_descendant_element(&mut self, value: &Element) {
         self.inner.set("ariaActiveDescendantElement", value);
     }
 }
 impl Element {
-    pub fn aria_atomic(&self) -> DOMString {
-        self.inner.get("ariaAtomic").as_::<DOMString>()
+    pub fn aria_atomic(&self) -> String {
+        self.inner.get("ariaAtomic").as_::<String>()
     }
 
-    pub fn set_aria_atomic(&mut self, value: DOMString) {
+    pub fn set_aria_atomic(&mut self, value: &str) {
         self.inner.set("ariaAtomic", value);
     }
 }
 impl Element {
-    pub fn aria_auto_complete(&self) -> DOMString {
-        self.inner.get("ariaAutoComplete").as_::<DOMString>()
+    pub fn aria_auto_complete(&self) -> String {
+        self.inner.get("ariaAutoComplete").as_::<String>()
     }
 
-    pub fn set_aria_auto_complete(&mut self, value: DOMString) {
+    pub fn set_aria_auto_complete(&mut self, value: &str) {
         self.inner.set("ariaAutoComplete", value);
     }
 }
 impl Element {
-    pub fn aria_braille_label(&self) -> DOMString {
-        self.inner.get("ariaBrailleLabel").as_::<DOMString>()
+    pub fn aria_braille_label(&self) -> String {
+        self.inner.get("ariaBrailleLabel").as_::<String>()
     }
 
-    pub fn set_aria_braille_label(&mut self, value: DOMString) {
+    pub fn set_aria_braille_label(&mut self, value: &str) {
         self.inner.set("ariaBrailleLabel", value);
     }
 }
 impl Element {
-    pub fn aria_braille_role_description(&self) -> DOMString {
-        self.inner
-            .get("ariaBrailleRoleDescription")
-            .as_::<DOMString>()
+    pub fn aria_braille_role_description(&self) -> String {
+        self.inner.get("ariaBrailleRoleDescription").as_::<String>()
     }
 
-    pub fn set_aria_braille_role_description(&mut self, value: DOMString) {
+    pub fn set_aria_braille_role_description(&mut self, value: &str) {
         self.inner.set("ariaBrailleRoleDescription", value);
     }
 }
 impl Element {
-    pub fn aria_busy(&self) -> DOMString {
-        self.inner.get("ariaBusy").as_::<DOMString>()
+    pub fn aria_busy(&self) -> String {
+        self.inner.get("ariaBusy").as_::<String>()
     }
 
-    pub fn set_aria_busy(&mut self, value: DOMString) {
+    pub fn set_aria_busy(&mut self, value: &str) {
         self.inner.set("ariaBusy", value);
     }
 }
 impl Element {
-    pub fn aria_checked(&self) -> DOMString {
-        self.inner.get("ariaChecked").as_::<DOMString>()
+    pub fn aria_checked(&self) -> String {
+        self.inner.get("ariaChecked").as_::<String>()
     }
 
-    pub fn set_aria_checked(&mut self, value: DOMString) {
+    pub fn set_aria_checked(&mut self, value: &str) {
         self.inner.set("ariaChecked", value);
     }
 }
 impl Element {
-    pub fn aria_col_count(&self) -> DOMString {
-        self.inner.get("ariaColCount").as_::<DOMString>()
+    pub fn aria_col_count(&self) -> String {
+        self.inner.get("ariaColCount").as_::<String>()
     }
 
-    pub fn set_aria_col_count(&mut self, value: DOMString) {
+    pub fn set_aria_col_count(&mut self, value: &str) {
         self.inner.set("ariaColCount", value);
     }
 }
 impl Element {
-    pub fn aria_col_index(&self) -> DOMString {
-        self.inner.get("ariaColIndex").as_::<DOMString>()
+    pub fn aria_col_index(&self) -> String {
+        self.inner.get("ariaColIndex").as_::<String>()
     }
 
-    pub fn set_aria_col_index(&mut self, value: DOMString) {
+    pub fn set_aria_col_index(&mut self, value: &str) {
         self.inner.set("ariaColIndex", value);
     }
 }
 impl Element {
-    pub fn aria_col_index_text(&self) -> DOMString {
-        self.inner.get("ariaColIndexText").as_::<DOMString>()
+    pub fn aria_col_index_text(&self) -> String {
+        self.inner.get("ariaColIndexText").as_::<String>()
     }
 
-    pub fn set_aria_col_index_text(&mut self, value: DOMString) {
+    pub fn set_aria_col_index_text(&mut self, value: &str) {
         self.inner.set("ariaColIndexText", value);
     }
 }
 impl Element {
-    pub fn aria_col_span(&self) -> DOMString {
-        self.inner.get("ariaColSpan").as_::<DOMString>()
+    pub fn aria_col_span(&self) -> String {
+        self.inner.get("ariaColSpan").as_::<String>()
     }
 
-    pub fn set_aria_col_span(&mut self, value: DOMString) {
+    pub fn set_aria_col_span(&mut self, value: &str) {
         self.inner.set("ariaColSpan", value);
     }
 }
@@ -1483,16 +1477,16 @@ impl Element {
             .as_::<FrozenArray<Element>>()
     }
 
-    pub fn set_aria_controls_elements(&mut self, value: FrozenArray<Element>) {
+    pub fn set_aria_controls_elements(&mut self, value: &FrozenArray<Element>) {
         self.inner.set("ariaControlsElements", value);
     }
 }
 impl Element {
-    pub fn aria_current(&self) -> DOMString {
-        self.inner.get("ariaCurrent").as_::<DOMString>()
+    pub fn aria_current(&self) -> String {
+        self.inner.get("ariaCurrent").as_::<String>()
     }
 
-    pub fn set_aria_current(&mut self, value: DOMString) {
+    pub fn set_aria_current(&mut self, value: &str) {
         self.inner.set("ariaCurrent", value);
     }
 }
@@ -1503,16 +1497,16 @@ impl Element {
             .as_::<FrozenArray<Element>>()
     }
 
-    pub fn set_aria_described_by_elements(&mut self, value: FrozenArray<Element>) {
+    pub fn set_aria_described_by_elements(&mut self, value: &FrozenArray<Element>) {
         self.inner.set("ariaDescribedByElements", value);
     }
 }
 impl Element {
-    pub fn aria_description(&self) -> DOMString {
-        self.inner.get("ariaDescription").as_::<DOMString>()
+    pub fn aria_description(&self) -> String {
+        self.inner.get("ariaDescription").as_::<String>()
     }
 
-    pub fn set_aria_description(&mut self, value: DOMString) {
+    pub fn set_aria_description(&mut self, value: &str) {
         self.inner.set("ariaDescription", value);
     }
 }
@@ -1523,16 +1517,16 @@ impl Element {
             .as_::<FrozenArray<Element>>()
     }
 
-    pub fn set_aria_details_elements(&mut self, value: FrozenArray<Element>) {
+    pub fn set_aria_details_elements(&mut self, value: &FrozenArray<Element>) {
         self.inner.set("ariaDetailsElements", value);
     }
 }
 impl Element {
-    pub fn aria_disabled(&self) -> DOMString {
-        self.inner.get("ariaDisabled").as_::<DOMString>()
+    pub fn aria_disabled(&self) -> String {
+        self.inner.get("ariaDisabled").as_::<String>()
     }
 
-    pub fn set_aria_disabled(&mut self, value: DOMString) {
+    pub fn set_aria_disabled(&mut self, value: &str) {
         self.inner.set("ariaDisabled", value);
     }
 }
@@ -1543,16 +1537,16 @@ impl Element {
             .as_::<FrozenArray<Element>>()
     }
 
-    pub fn set_aria_error_message_elements(&mut self, value: FrozenArray<Element>) {
+    pub fn set_aria_error_message_elements(&mut self, value: &FrozenArray<Element>) {
         self.inner.set("ariaErrorMessageElements", value);
     }
 }
 impl Element {
-    pub fn aria_expanded(&self) -> DOMString {
-        self.inner.get("ariaExpanded").as_::<DOMString>()
+    pub fn aria_expanded(&self) -> String {
+        self.inner.get("ariaExpanded").as_::<String>()
     }
 
-    pub fn set_aria_expanded(&mut self, value: DOMString) {
+    pub fn set_aria_expanded(&mut self, value: &str) {
         self.inner.set("ariaExpanded", value);
     }
 }
@@ -1563,52 +1557,52 @@ impl Element {
             .as_::<FrozenArray<Element>>()
     }
 
-    pub fn set_aria_flow_to_elements(&mut self, value: FrozenArray<Element>) {
+    pub fn set_aria_flow_to_elements(&mut self, value: &FrozenArray<Element>) {
         self.inner.set("ariaFlowToElements", value);
     }
 }
 impl Element {
-    pub fn aria_has_popup(&self) -> DOMString {
-        self.inner.get("ariaHasPopup").as_::<DOMString>()
+    pub fn aria_has_popup(&self) -> String {
+        self.inner.get("ariaHasPopup").as_::<String>()
     }
 
-    pub fn set_aria_has_popup(&mut self, value: DOMString) {
+    pub fn set_aria_has_popup(&mut self, value: &str) {
         self.inner.set("ariaHasPopup", value);
     }
 }
 impl Element {
-    pub fn aria_hidden(&self) -> DOMString {
-        self.inner.get("ariaHidden").as_::<DOMString>()
+    pub fn aria_hidden(&self) -> String {
+        self.inner.get("ariaHidden").as_::<String>()
     }
 
-    pub fn set_aria_hidden(&mut self, value: DOMString) {
+    pub fn set_aria_hidden(&mut self, value: &str) {
         self.inner.set("ariaHidden", value);
     }
 }
 impl Element {
-    pub fn aria_invalid(&self) -> DOMString {
-        self.inner.get("ariaInvalid").as_::<DOMString>()
+    pub fn aria_invalid(&self) -> String {
+        self.inner.get("ariaInvalid").as_::<String>()
     }
 
-    pub fn set_aria_invalid(&mut self, value: DOMString) {
+    pub fn set_aria_invalid(&mut self, value: &str) {
         self.inner.set("ariaInvalid", value);
     }
 }
 impl Element {
-    pub fn aria_key_shortcuts(&self) -> DOMString {
-        self.inner.get("ariaKeyShortcuts").as_::<DOMString>()
+    pub fn aria_key_shortcuts(&self) -> String {
+        self.inner.get("ariaKeyShortcuts").as_::<String>()
     }
 
-    pub fn set_aria_key_shortcuts(&mut self, value: DOMString) {
+    pub fn set_aria_key_shortcuts(&mut self, value: &str) {
         self.inner.set("ariaKeyShortcuts", value);
     }
 }
 impl Element {
-    pub fn aria_label(&self) -> DOMString {
-        self.inner.get("ariaLabel").as_::<DOMString>()
+    pub fn aria_label(&self) -> String {
+        self.inner.get("ariaLabel").as_::<String>()
     }
 
-    pub fn set_aria_label(&mut self, value: DOMString) {
+    pub fn set_aria_label(&mut self, value: &str) {
         self.inner.set("ariaLabel", value);
     }
 }
@@ -1619,61 +1613,61 @@ impl Element {
             .as_::<FrozenArray<Element>>()
     }
 
-    pub fn set_aria_labelled_by_elements(&mut self, value: FrozenArray<Element>) {
+    pub fn set_aria_labelled_by_elements(&mut self, value: &FrozenArray<Element>) {
         self.inner.set("ariaLabelledByElements", value);
     }
 }
 impl Element {
-    pub fn aria_level(&self) -> DOMString {
-        self.inner.get("ariaLevel").as_::<DOMString>()
+    pub fn aria_level(&self) -> String {
+        self.inner.get("ariaLevel").as_::<String>()
     }
 
-    pub fn set_aria_level(&mut self, value: DOMString) {
+    pub fn set_aria_level(&mut self, value: &str) {
         self.inner.set("ariaLevel", value);
     }
 }
 impl Element {
-    pub fn aria_live(&self) -> DOMString {
-        self.inner.get("ariaLive").as_::<DOMString>()
+    pub fn aria_live(&self) -> String {
+        self.inner.get("ariaLive").as_::<String>()
     }
 
-    pub fn set_aria_live(&mut self, value: DOMString) {
+    pub fn set_aria_live(&mut self, value: &str) {
         self.inner.set("ariaLive", value);
     }
 }
 impl Element {
-    pub fn aria_modal(&self) -> DOMString {
-        self.inner.get("ariaModal").as_::<DOMString>()
+    pub fn aria_modal(&self) -> String {
+        self.inner.get("ariaModal").as_::<String>()
     }
 
-    pub fn set_aria_modal(&mut self, value: DOMString) {
+    pub fn set_aria_modal(&mut self, value: &str) {
         self.inner.set("ariaModal", value);
     }
 }
 impl Element {
-    pub fn aria_multi_line(&self) -> DOMString {
-        self.inner.get("ariaMultiLine").as_::<DOMString>()
+    pub fn aria_multi_line(&self) -> String {
+        self.inner.get("ariaMultiLine").as_::<String>()
     }
 
-    pub fn set_aria_multi_line(&mut self, value: DOMString) {
+    pub fn set_aria_multi_line(&mut self, value: &str) {
         self.inner.set("ariaMultiLine", value);
     }
 }
 impl Element {
-    pub fn aria_multi_selectable(&self) -> DOMString {
-        self.inner.get("ariaMultiSelectable").as_::<DOMString>()
+    pub fn aria_multi_selectable(&self) -> String {
+        self.inner.get("ariaMultiSelectable").as_::<String>()
     }
 
-    pub fn set_aria_multi_selectable(&mut self, value: DOMString) {
+    pub fn set_aria_multi_selectable(&mut self, value: &str) {
         self.inner.set("ariaMultiSelectable", value);
     }
 }
 impl Element {
-    pub fn aria_orientation(&self) -> DOMString {
-        self.inner.get("ariaOrientation").as_::<DOMString>()
+    pub fn aria_orientation(&self) -> String {
+        self.inner.get("ariaOrientation").as_::<String>()
     }
 
-    pub fn set_aria_orientation(&mut self, value: DOMString) {
+    pub fn set_aria_orientation(&mut self, value: &str) {
         self.inner.set("ariaOrientation", value);
     }
 }
@@ -1684,180 +1678,180 @@ impl Element {
             .as_::<FrozenArray<Element>>()
     }
 
-    pub fn set_aria_owns_elements(&mut self, value: FrozenArray<Element>) {
+    pub fn set_aria_owns_elements(&mut self, value: &FrozenArray<Element>) {
         self.inner.set("ariaOwnsElements", value);
     }
 }
 impl Element {
-    pub fn aria_placeholder(&self) -> DOMString {
-        self.inner.get("ariaPlaceholder").as_::<DOMString>()
+    pub fn aria_placeholder(&self) -> String {
+        self.inner.get("ariaPlaceholder").as_::<String>()
     }
 
-    pub fn set_aria_placeholder(&mut self, value: DOMString) {
+    pub fn set_aria_placeholder(&mut self, value: &str) {
         self.inner.set("ariaPlaceholder", value);
     }
 }
 impl Element {
-    pub fn aria_pos_in_set(&self) -> DOMString {
-        self.inner.get("ariaPosInSet").as_::<DOMString>()
+    pub fn aria_pos_in_set(&self) -> String {
+        self.inner.get("ariaPosInSet").as_::<String>()
     }
 
-    pub fn set_aria_pos_in_set(&mut self, value: DOMString) {
+    pub fn set_aria_pos_in_set(&mut self, value: &str) {
         self.inner.set("ariaPosInSet", value);
     }
 }
 impl Element {
-    pub fn aria_pressed(&self) -> DOMString {
-        self.inner.get("ariaPressed").as_::<DOMString>()
+    pub fn aria_pressed(&self) -> String {
+        self.inner.get("ariaPressed").as_::<String>()
     }
 
-    pub fn set_aria_pressed(&mut self, value: DOMString) {
+    pub fn set_aria_pressed(&mut self, value: &str) {
         self.inner.set("ariaPressed", value);
     }
 }
 impl Element {
-    pub fn aria_read_only(&self) -> DOMString {
-        self.inner.get("ariaReadOnly").as_::<DOMString>()
+    pub fn aria_read_only(&self) -> String {
+        self.inner.get("ariaReadOnly").as_::<String>()
     }
 
-    pub fn set_aria_read_only(&mut self, value: DOMString) {
+    pub fn set_aria_read_only(&mut self, value: &str) {
         self.inner.set("ariaReadOnly", value);
     }
 }
 impl Element {
-    pub fn aria_relevant(&self) -> DOMString {
-        self.inner.get("ariaRelevant").as_::<DOMString>()
+    pub fn aria_relevant(&self) -> String {
+        self.inner.get("ariaRelevant").as_::<String>()
     }
 
-    pub fn set_aria_relevant(&mut self, value: DOMString) {
+    pub fn set_aria_relevant(&mut self, value: &str) {
         self.inner.set("ariaRelevant", value);
     }
 }
 impl Element {
-    pub fn aria_required(&self) -> DOMString {
-        self.inner.get("ariaRequired").as_::<DOMString>()
+    pub fn aria_required(&self) -> String {
+        self.inner.get("ariaRequired").as_::<String>()
     }
 
-    pub fn set_aria_required(&mut self, value: DOMString) {
+    pub fn set_aria_required(&mut self, value: &str) {
         self.inner.set("ariaRequired", value);
     }
 }
 impl Element {
-    pub fn aria_role_description(&self) -> DOMString {
-        self.inner.get("ariaRoleDescription").as_::<DOMString>()
+    pub fn aria_role_description(&self) -> String {
+        self.inner.get("ariaRoleDescription").as_::<String>()
     }
 
-    pub fn set_aria_role_description(&mut self, value: DOMString) {
+    pub fn set_aria_role_description(&mut self, value: &str) {
         self.inner.set("ariaRoleDescription", value);
     }
 }
 impl Element {
-    pub fn aria_row_count(&self) -> DOMString {
-        self.inner.get("ariaRowCount").as_::<DOMString>()
+    pub fn aria_row_count(&self) -> String {
+        self.inner.get("ariaRowCount").as_::<String>()
     }
 
-    pub fn set_aria_row_count(&mut self, value: DOMString) {
+    pub fn set_aria_row_count(&mut self, value: &str) {
         self.inner.set("ariaRowCount", value);
     }
 }
 impl Element {
-    pub fn aria_row_index(&self) -> DOMString {
-        self.inner.get("ariaRowIndex").as_::<DOMString>()
+    pub fn aria_row_index(&self) -> String {
+        self.inner.get("ariaRowIndex").as_::<String>()
     }
 
-    pub fn set_aria_row_index(&mut self, value: DOMString) {
+    pub fn set_aria_row_index(&mut self, value: &str) {
         self.inner.set("ariaRowIndex", value);
     }
 }
 impl Element {
-    pub fn aria_row_index_text(&self) -> DOMString {
-        self.inner.get("ariaRowIndexText").as_::<DOMString>()
+    pub fn aria_row_index_text(&self) -> String {
+        self.inner.get("ariaRowIndexText").as_::<String>()
     }
 
-    pub fn set_aria_row_index_text(&mut self, value: DOMString) {
+    pub fn set_aria_row_index_text(&mut self, value: &str) {
         self.inner.set("ariaRowIndexText", value);
     }
 }
 impl Element {
-    pub fn aria_row_span(&self) -> DOMString {
-        self.inner.get("ariaRowSpan").as_::<DOMString>()
+    pub fn aria_row_span(&self) -> String {
+        self.inner.get("ariaRowSpan").as_::<String>()
     }
 
-    pub fn set_aria_row_span(&mut self, value: DOMString) {
+    pub fn set_aria_row_span(&mut self, value: &str) {
         self.inner.set("ariaRowSpan", value);
     }
 }
 impl Element {
-    pub fn aria_selected(&self) -> DOMString {
-        self.inner.get("ariaSelected").as_::<DOMString>()
+    pub fn aria_selected(&self) -> String {
+        self.inner.get("ariaSelected").as_::<String>()
     }
 
-    pub fn set_aria_selected(&mut self, value: DOMString) {
+    pub fn set_aria_selected(&mut self, value: &str) {
         self.inner.set("ariaSelected", value);
     }
 }
 impl Element {
-    pub fn aria_set_size(&self) -> DOMString {
-        self.inner.get("ariaSetSize").as_::<DOMString>()
+    pub fn aria_set_size(&self) -> String {
+        self.inner.get("ariaSetSize").as_::<String>()
     }
 
-    pub fn set_aria_set_size(&mut self, value: DOMString) {
+    pub fn set_aria_set_size(&mut self, value: &str) {
         self.inner.set("ariaSetSize", value);
     }
 }
 impl Element {
-    pub fn aria_sort(&self) -> DOMString {
-        self.inner.get("ariaSort").as_::<DOMString>()
+    pub fn aria_sort(&self) -> String {
+        self.inner.get("ariaSort").as_::<String>()
     }
 
-    pub fn set_aria_sort(&mut self, value: DOMString) {
+    pub fn set_aria_sort(&mut self, value: &str) {
         self.inner.set("ariaSort", value);
     }
 }
 impl Element {
-    pub fn aria_value_max(&self) -> DOMString {
-        self.inner.get("ariaValueMax").as_::<DOMString>()
+    pub fn aria_value_max(&self) -> String {
+        self.inner.get("ariaValueMax").as_::<String>()
     }
 
-    pub fn set_aria_value_max(&mut self, value: DOMString) {
+    pub fn set_aria_value_max(&mut self, value: &str) {
         self.inner.set("ariaValueMax", value);
     }
 }
 impl Element {
-    pub fn aria_value_min(&self) -> DOMString {
-        self.inner.get("ariaValueMin").as_::<DOMString>()
+    pub fn aria_value_min(&self) -> String {
+        self.inner.get("ariaValueMin").as_::<String>()
     }
 
-    pub fn set_aria_value_min(&mut self, value: DOMString) {
+    pub fn set_aria_value_min(&mut self, value: &str) {
         self.inner.set("ariaValueMin", value);
     }
 }
 impl Element {
-    pub fn aria_value_now(&self) -> DOMString {
-        self.inner.get("ariaValueNow").as_::<DOMString>()
+    pub fn aria_value_now(&self) -> String {
+        self.inner.get("ariaValueNow").as_::<String>()
     }
 
-    pub fn set_aria_value_now(&mut self, value: DOMString) {
+    pub fn set_aria_value_now(&mut self, value: &str) {
         self.inner.set("ariaValueNow", value);
     }
 }
 impl Element {
-    pub fn aria_value_text(&self) -> DOMString {
-        self.inner.get("ariaValueText").as_::<DOMString>()
+    pub fn aria_value_text(&self) -> String {
+        self.inner.get("ariaValueText").as_::<String>()
     }
 
-    pub fn set_aria_value_text(&mut self, value: DOMString) {
+    pub fn set_aria_value_text(&mut self, value: &str) {
         self.inner.set("ariaValueText", value);
     }
 }
 impl Element {
-    pub fn animate0(&self, keyframes: Object) -> Animation {
+    pub fn animate0(&self, keyframes: &Object) -> Animation {
         self.inner
             .call("animate", &[keyframes.into()])
             .as_::<Animation>()
     }
 
-    pub fn animate1(&self, keyframes: Object, options: Any) -> Animation {
+    pub fn animate1(&self, keyframes: &Object, options: &Any) -> Animation {
         self.inner
             .call("animate", &[keyframes.into(), options.into()])
             .as_::<Animation>()
@@ -1870,7 +1864,7 @@ impl Element {
             .as_::<Sequence<Animation>>()
     }
 
-    pub fn get_animations1(&self, options: GetAnimationsOptions) -> Sequence<Animation> {
+    pub fn get_animations1(&self, options: &GetAnimationsOptions) -> Sequence<Animation> {
         self.inner
             .call("getAnimations", &[options.into()])
             .as_::<Sequence<Animation>>()

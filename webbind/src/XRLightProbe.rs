@@ -63,7 +63,7 @@ impl XRLightProbe {
         self.inner.get("onreflectionchange").as_::<Any>()
     }
 
-    pub fn set_onreflectionchange(&mut self, value: Any) {
+    pub fn set_onreflectionchange(&mut self, value: &Any) {
         self.inner.set("onreflectionchange", value);
     }
 }

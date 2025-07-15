@@ -54,7 +54,7 @@ impl From<&TransitionEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(TransitionEvent);
 
 impl TransitionEvent {
-    pub fn new0(type_: CSSOMString) -> TransitionEvent {
+    pub fn new0(type_: &str) -> TransitionEvent {
         Self {
             inner: emlite::Val::global("TransitionEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl TransitionEvent {
         }
     }
 
-    pub fn new1(type_: CSSOMString, transition_event_init_dict: Any) -> TransitionEvent {
+    pub fn new1(type_: &str, transition_event_init_dict: &Any) -> TransitionEvent {
         Self {
             inner: emlite::Val::global("TransitionEvent")
                 .new(&[type_.into(), transition_event_init_dict.into()])
@@ -71,8 +71,8 @@ impl TransitionEvent {
     }
 }
 impl TransitionEvent {
-    pub fn property_name(&self) -> CSSOMString {
-        self.inner.get("propertyName").as_::<CSSOMString>()
+    pub fn property_name(&self) -> String {
+        self.inner.get("propertyName").as_::<String>()
     }
 }
 impl TransitionEvent {
@@ -81,7 +81,7 @@ impl TransitionEvent {
     }
 }
 impl TransitionEvent {
-    pub fn pseudo_element(&self) -> CSSOMString {
-        self.inner.get("pseudoElement").as_::<CSSOMString>()
+    pub fn pseudo_element(&self) -> String {
+        self.inner.get("pseudoElement").as_::<String>()
     }
 }

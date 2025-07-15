@@ -54,7 +54,7 @@ impl From<&CSSMathInvert> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSMathInvert);
 
 impl CSSMathInvert {
-    pub fn new(arg: Any) -> CSSMathInvert {
+    pub fn new(arg: &Any) -> CSSMathInvert {
         Self {
             inner: emlite::Val::global("CSSMathInvert")
                 .new(&[arg.into()])

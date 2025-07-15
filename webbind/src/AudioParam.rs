@@ -67,7 +67,7 @@ impl AudioParam {
         self.inner.get("automationRate").as_::<AutomationRate>()
     }
 
-    pub fn set_automation_rate(&mut self, value: AutomationRate) {
+    pub fn set_automation_rate(&mut self, value: &AutomationRate) {
         self.inner.set("automationRate", value);
     }
 }

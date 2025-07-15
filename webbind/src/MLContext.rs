@@ -123,7 +123,7 @@ impl MLOperandDescriptor {
         self.inner.get("dataType").as_::<MLOperandDataType>()
     }
 
-    pub fn set_data_type(&mut self, value: MLOperandDataType) {
+    pub fn set_data_type(&mut self, value: &MLOperandDataType) {
         self.inner.set("dataType", value);
     }
 }
@@ -191,7 +191,7 @@ impl MLOpSupportLimits {
         self.inner.get("where").as_::<Any>()
     }
 
-    pub fn set_where_(&mut self, value: Any) {
+    pub fn set_where_(&mut self, value: &Any) {
         self.inner.set("where", value);
     }
 }
@@ -246,11 +246,11 @@ impl From<&MLContextLostInfo> for emlite::Val {
 }
 
 impl MLContextLostInfo {
-    pub fn message(&self) -> DOMString {
-        self.inner.get("message").as_::<DOMString>()
+    pub fn message(&self) -> String {
+        self.inner.get("message").as_::<String>()
     }
 
-    pub fn set_message(&mut self, value: DOMString) {
+    pub fn set_message(&mut self, value: &str) {
         self.inner.set("message", value);
     }
 }
@@ -308,14 +308,14 @@ impl From<&MLContext> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MLContext);
 
 impl MLContext {
-    pub fn dispatch(&self, graph: MLGraph, inputs: Any, outputs: Any) -> Undefined {
+    pub fn dispatch(&self, graph: &MLGraph, inputs: &Any, outputs: &Any) -> Undefined {
         self.inner
             .call("dispatch", &[graph.into(), inputs.into(), outputs.into()])
             .as_::<Undefined>()
     }
 }
 impl MLContext {
-    pub fn create_tensor(&self, descriptor: MLTensorDescriptor) -> Promise {
+    pub fn create_tensor(&self, descriptor: &MLTensorDescriptor) -> Promise {
         self.inner
             .call("createTensor", &[descriptor.into()])
             .as_::<Promise>()
@@ -324,8 +324,8 @@ impl MLContext {
 impl MLContext {
     pub fn create_constant_tensor(
         &self,
-        descriptor: MLOperandDescriptor,
-        input_data: Any,
+        descriptor: &MLOperandDescriptor,
+        input_data: &Any,
     ) -> Promise {
         self.inner
             .call(
@@ -336,14 +336,14 @@ impl MLContext {
     }
 }
 impl MLContext {
-    pub fn read_tensor(&self, tensor: MLTensor, output_data: Any) -> Promise {
+    pub fn read_tensor(&self, tensor: &MLTensor, output_data: &Any) -> Promise {
         self.inner
             .call("readTensor", &[tensor.into(), output_data.into()])
             .as_::<Promise>()
     }
 }
 impl MLContext {
-    pub fn write_tensor(&self, tensor: MLTensor, input_data: Any) -> Undefined {
+    pub fn write_tensor(&self, tensor: &MLTensor, input_data: &Any) -> Undefined {
         self.inner
             .call("writeTensor", &[tensor.into(), input_data.into()])
             .as_::<Undefined>()

@@ -70,7 +70,7 @@ impl ScreenDetails {
         self.inner.get("onscreenschange").as_::<Any>()
     }
 
-    pub fn set_onscreenschange(&mut self, value: Any) {
+    pub fn set_onscreenschange(&mut self, value: &Any) {
         self.inner.set("onscreenschange", value);
     }
 }
@@ -79,7 +79,7 @@ impl ScreenDetails {
         self.inner.get("oncurrentscreenchange").as_::<Any>()
     }
 
-    pub fn set_oncurrentscreenchange(&mut self, value: Any) {
+    pub fn set_oncurrentscreenchange(&mut self, value: &Any) {
         self.inner.set("oncurrentscreenchange", value);
     }
 }

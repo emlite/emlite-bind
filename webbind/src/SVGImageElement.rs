@@ -81,11 +81,11 @@ impl SVGImageElement {
     }
 }
 impl SVGImageElement {
-    pub fn cross_origin(&self) -> DOMString {
-        self.inner.get("crossOrigin").as_::<DOMString>()
+    pub fn cross_origin(&self) -> String {
+        self.inner.get("crossOrigin").as_::<String>()
     }
 
-    pub fn set_cross_origin(&mut self, value: DOMString) {
+    pub fn set_cross_origin(&mut self, value: &str) {
         self.inner.set("crossOrigin", value);
     }
 }

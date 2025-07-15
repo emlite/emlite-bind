@@ -63,11 +63,11 @@ impl HTMLHtmlElement {
     }
 }
 impl HTMLHtmlElement {
-    pub fn version(&self) -> DOMString {
-        self.inner.get("version").as_::<DOMString>()
+    pub fn version(&self) -> String {
+        self.inner.get("version").as_::<String>()
     }
 
-    pub fn set_version(&mut self, value: DOMString) {
+    pub fn set_version(&mut self, value: &str) {
         self.inner.set("version", value);
     }
 }

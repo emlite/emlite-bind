@@ -59,24 +59,24 @@ impl Storage {
     }
 }
 impl Storage {
-    pub fn key(&self, index: u32) -> DOMString {
-        self.inner.call("key", &[index.into()]).as_::<DOMString>()
+    pub fn key(&self, index: u32) -> String {
+        self.inner.call("key", &[index.into()]).as_::<String>()
     }
 }
 impl Storage {
-    pub fn get_item(&self, key: DOMString) -> DOMString {
-        self.inner.call("getItem", &[key.into()]).as_::<DOMString>()
+    pub fn get_item(&self, key: &str) -> String {
+        self.inner.call("getItem", &[key.into()]).as_::<String>()
     }
 }
 impl Storage {
-    pub fn set_item(&self, key: DOMString, value: DOMString) -> Undefined {
+    pub fn set_item(&self, key: &str, value: &str) -> Undefined {
         self.inner
             .call("setItem", &[key.into(), value.into()])
             .as_::<Undefined>()
     }
 }
 impl Storage {
-    pub fn remove_item(&self, key: DOMString) -> Undefined {
+    pub fn remove_item(&self, key: &str) -> Undefined {
         self.inner
             .call("removeItem", &[key.into()])
             .as_::<Undefined>()

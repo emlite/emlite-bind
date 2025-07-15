@@ -63,38 +63,38 @@ impl HTMLLinkElement {
     }
 }
 impl HTMLLinkElement {
-    pub fn href(&self) -> USVString {
-        self.inner.get("href").as_::<USVString>()
+    pub fn href(&self) -> String {
+        self.inner.get("href").as_::<String>()
     }
 
-    pub fn set_href(&mut self, value: USVString) {
+    pub fn set_href(&mut self, value: &str) {
         self.inner.set("href", value);
     }
 }
 impl HTMLLinkElement {
-    pub fn cross_origin(&self) -> DOMString {
-        self.inner.get("crossOrigin").as_::<DOMString>()
+    pub fn cross_origin(&self) -> String {
+        self.inner.get("crossOrigin").as_::<String>()
     }
 
-    pub fn set_cross_origin(&mut self, value: DOMString) {
+    pub fn set_cross_origin(&mut self, value: &str) {
         self.inner.set("crossOrigin", value);
     }
 }
 impl HTMLLinkElement {
-    pub fn rel(&self) -> DOMString {
-        self.inner.get("rel").as_::<DOMString>()
+    pub fn rel(&self) -> String {
+        self.inner.get("rel").as_::<String>()
     }
 
-    pub fn set_rel(&mut self, value: DOMString) {
+    pub fn set_rel(&mut self, value: &str) {
         self.inner.set("rel", value);
     }
 }
 impl HTMLLinkElement {
-    pub fn as_(&self) -> DOMString {
-        self.inner.get("as").as_::<DOMString>()
+    pub fn as_(&self) -> String {
+        self.inner.get("as").as_::<String>()
     }
 
-    pub fn set_as_(&mut self, value: DOMString) {
+    pub fn set_as_(&mut self, value: &str) {
         self.inner.set("as", value);
     }
 }
@@ -104,38 +104,38 @@ impl HTMLLinkElement {
     }
 }
 impl HTMLLinkElement {
-    pub fn media(&self) -> DOMString {
-        self.inner.get("media").as_::<DOMString>()
+    pub fn media(&self) -> String {
+        self.inner.get("media").as_::<String>()
     }
 
-    pub fn set_media(&mut self, value: DOMString) {
+    pub fn set_media(&mut self, value: &str) {
         self.inner.set("media", value);
     }
 }
 impl HTMLLinkElement {
-    pub fn integrity(&self) -> DOMString {
-        self.inner.get("integrity").as_::<DOMString>()
+    pub fn integrity(&self) -> String {
+        self.inner.get("integrity").as_::<String>()
     }
 
-    pub fn set_integrity(&mut self, value: DOMString) {
+    pub fn set_integrity(&mut self, value: &str) {
         self.inner.set("integrity", value);
     }
 }
 impl HTMLLinkElement {
-    pub fn hreflang(&self) -> DOMString {
-        self.inner.get("hreflang").as_::<DOMString>()
+    pub fn hreflang(&self) -> String {
+        self.inner.get("hreflang").as_::<String>()
     }
 
-    pub fn set_hreflang(&mut self, value: DOMString) {
+    pub fn set_hreflang(&mut self, value: &str) {
         self.inner.set("hreflang", value);
     }
 }
 impl HTMLLinkElement {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: DOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }
@@ -145,29 +145,29 @@ impl HTMLLinkElement {
     }
 }
 impl HTMLLinkElement {
-    pub fn image_srcset(&self) -> USVString {
-        self.inner.get("imageSrcset").as_::<USVString>()
+    pub fn image_srcset(&self) -> String {
+        self.inner.get("imageSrcset").as_::<String>()
     }
 
-    pub fn set_image_srcset(&mut self, value: USVString) {
+    pub fn set_image_srcset(&mut self, value: &str) {
         self.inner.set("imageSrcset", value);
     }
 }
 impl HTMLLinkElement {
-    pub fn image_sizes(&self) -> DOMString {
-        self.inner.get("imageSizes").as_::<DOMString>()
+    pub fn image_sizes(&self) -> String {
+        self.inner.get("imageSizes").as_::<String>()
     }
 
-    pub fn set_image_sizes(&mut self, value: DOMString) {
+    pub fn set_image_sizes(&mut self, value: &str) {
         self.inner.set("imageSizes", value);
     }
 }
 impl HTMLLinkElement {
-    pub fn referrer_policy(&self) -> DOMString {
-        self.inner.get("referrerPolicy").as_::<DOMString>()
+    pub fn referrer_policy(&self) -> String {
+        self.inner.get("referrerPolicy").as_::<String>()
     }
 
-    pub fn set_referrer_policy(&mut self, value: DOMString) {
+    pub fn set_referrer_policy(&mut self, value: &str) {
         self.inner.set("referrerPolicy", value);
     }
 }
@@ -186,38 +186,38 @@ impl HTMLLinkElement {
     }
 }
 impl HTMLLinkElement {
-    pub fn fetch_priority(&self) -> DOMString {
-        self.inner.get("fetchPriority").as_::<DOMString>()
+    pub fn fetch_priority(&self) -> String {
+        self.inner.get("fetchPriority").as_::<String>()
     }
 
-    pub fn set_fetch_priority(&mut self, value: DOMString) {
+    pub fn set_fetch_priority(&mut self, value: &str) {
         self.inner.set("fetchPriority", value);
     }
 }
 impl HTMLLinkElement {
-    pub fn charset(&self) -> DOMString {
-        self.inner.get("charset").as_::<DOMString>()
+    pub fn charset(&self) -> String {
+        self.inner.get("charset").as_::<String>()
     }
 
-    pub fn set_charset(&mut self, value: DOMString) {
+    pub fn set_charset(&mut self, value: &str) {
         self.inner.set("charset", value);
     }
 }
 impl HTMLLinkElement {
-    pub fn rev(&self) -> DOMString {
-        self.inner.get("rev").as_::<DOMString>()
+    pub fn rev(&self) -> String {
+        self.inner.get("rev").as_::<String>()
     }
 
-    pub fn set_rev(&mut self, value: DOMString) {
+    pub fn set_rev(&mut self, value: &str) {
         self.inner.set("rev", value);
     }
 }
 impl HTMLLinkElement {
-    pub fn target(&self) -> DOMString {
-        self.inner.get("target").as_::<DOMString>()
+    pub fn target(&self) -> String {
+        self.inner.get("target").as_::<String>()
     }
 
-    pub fn set_target(&mut self, value: DOMString) {
+    pub fn set_target(&mut self, value: &str) {
         self.inner.set("target", value);
     }
 }

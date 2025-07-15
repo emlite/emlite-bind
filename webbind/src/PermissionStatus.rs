@@ -59,8 +59,8 @@ impl PermissionStatus {
     }
 }
 impl PermissionStatus {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl PermissionStatus {
@@ -68,7 +68,7 @@ impl PermissionStatus {
         self.inner.get("onchange").as_::<Any>()
     }
 
-    pub fn set_onchange(&mut self, value: Any) {
+    pub fn set_onchange(&mut self, value: &Any) {
         self.inner.set("onchange", value);
     }
 }

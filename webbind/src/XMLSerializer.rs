@@ -63,9 +63,9 @@ impl XMLSerializer {
     }
 }
 impl XMLSerializer {
-    pub fn serialize_to_string(&self, root: Node) -> DOMString {
+    pub fn serialize_to_string(&self, root: &Node) -> String {
         self.inner
             .call("serializeToString", &[root.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }

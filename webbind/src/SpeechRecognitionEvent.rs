@@ -54,7 +54,7 @@ impl From<&SpeechRecognitionEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionEvent);
 
 impl SpeechRecognitionEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> SpeechRecognitionEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> SpeechRecognitionEvent {
         Self {
             inner: emlite::Val::global("SpeechRecognitionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

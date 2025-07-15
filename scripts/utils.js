@@ -65,10 +65,10 @@ export function rust(idlType) {
   const { n, unsigned } = flat(idlType);
   const jsbindMap = {
     undefined: "Undefined",
-    DOMString: "DOMString",
-    USVString: "USVString",
-    ByteString: "ByteString",
-    CSSOMString: "CSSOMString",
+    DOMString: "String",
+    USVString: "String",
+    ByteString: "String",
+    CSSOMString: "String",
     Promise: "Promise",
     object: "Object",
     any: "Any",
@@ -136,7 +136,8 @@ export function rust(idlType) {
 
 const primitiveRE = /\b(?:i8|i16|i32|i64|u8|u16|u32|u64|bool|f32|f64)\b/;
 export function argtypeFix(type) {
-  return primitiveRE.test(type) ? type : `${type}`;
+  if (type === "String") return "&str";
+  return primitiveRE.test(type) ? type : `&${type}`;
 }
 
 export function fixIdent(name0) {

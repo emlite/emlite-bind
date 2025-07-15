@@ -54,7 +54,7 @@ impl From<&BlobEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(BlobEvent);
 
 impl BlobEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> BlobEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> BlobEvent {
         Self {
             inner: emlite::Val::global("BlobEvent")
                 .new(&[type_.into(), event_init_dict.into()])

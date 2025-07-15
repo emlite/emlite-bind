@@ -54,7 +54,7 @@ impl From<&SharedStorageDeleteMethod> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SharedStorageDeleteMethod);
 
 impl SharedStorageDeleteMethod {
-    pub fn new0(key: DOMString) -> SharedStorageDeleteMethod {
+    pub fn new0(key: &str) -> SharedStorageDeleteMethod {
         Self {
             inner: emlite::Val::global("SharedStorageDeleteMethod")
                 .new(&[key.into()])
@@ -63,8 +63,8 @@ impl SharedStorageDeleteMethod {
     }
 
     pub fn new1(
-        key: DOMString,
-        options: SharedStorageModifierMethodOptions,
+        key: &str,
+        options: &SharedStorageModifierMethodOptions,
     ) -> SharedStorageDeleteMethod {
         Self {
             inner: emlite::Val::global("SharedStorageDeleteMethod")

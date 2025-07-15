@@ -72,7 +72,7 @@ impl ManagedMediaSource {
         self.inner.get("onstartstreaming").as_::<Any>()
     }
 
-    pub fn set_onstartstreaming(&mut self, value: Any) {
+    pub fn set_onstartstreaming(&mut self, value: &Any) {
         self.inner.set("onstartstreaming", value);
     }
 }
@@ -81,7 +81,7 @@ impl ManagedMediaSource {
         self.inner.get("onendstreaming").as_::<Any>()
     }
 
-    pub fn set_onendstreaming(&mut self, value: Any) {
+    pub fn set_onendstreaming(&mut self, value: &Any) {
         self.inner.set("onendstreaming", value);
     }
 }

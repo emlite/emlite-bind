@@ -122,11 +122,11 @@ impl From<&IDBObjectStore> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(IDBObjectStore);
 
 impl IDBObjectStore {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
@@ -151,29 +151,29 @@ impl IDBObjectStore {
     }
 }
 impl IDBObjectStore {
-    pub fn put0(&self, value: Any) -> IDBRequest {
+    pub fn put0(&self, value: &Any) -> IDBRequest {
         self.inner.call("put", &[value.into()]).as_::<IDBRequest>()
     }
 
-    pub fn put1(&self, value: Any, key: Any) -> IDBRequest {
+    pub fn put1(&self, value: &Any, key: &Any) -> IDBRequest {
         self.inner
             .call("put", &[value.into(), key.into()])
             .as_::<IDBRequest>()
     }
 }
 impl IDBObjectStore {
-    pub fn add0(&self, value: Any) -> IDBRequest {
+    pub fn add0(&self, value: &Any) -> IDBRequest {
         self.inner.call("add", &[value.into()]).as_::<IDBRequest>()
     }
 
-    pub fn add1(&self, value: Any, key: Any) -> IDBRequest {
+    pub fn add1(&self, value: &Any, key: &Any) -> IDBRequest {
         self.inner
             .call("add", &[value.into(), key.into()])
             .as_::<IDBRequest>()
     }
 }
 impl IDBObjectStore {
-    pub fn delete(&self, query: Any) -> IDBRequest {
+    pub fn delete(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("delete", &[query.into()])
             .as_::<IDBRequest>()
@@ -185,12 +185,12 @@ impl IDBObjectStore {
     }
 }
 impl IDBObjectStore {
-    pub fn get(&self, query: Any) -> IDBRequest {
+    pub fn get(&self, query: &Any) -> IDBRequest {
         self.inner.call("get", &[query.into()]).as_::<IDBRequest>()
     }
 }
 impl IDBObjectStore {
-    pub fn get_key(&self, query: Any) -> IDBRequest {
+    pub fn get_key(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("getKey", &[query.into()])
             .as_::<IDBRequest>()
@@ -201,13 +201,13 @@ impl IDBObjectStore {
         self.inner.call("getAll", &[]).as_::<IDBRequest>()
     }
 
-    pub fn get_all1(&self, query: Any) -> IDBRequest {
+    pub fn get_all1(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("getAll", &[query.into()])
             .as_::<IDBRequest>()
     }
 
-    pub fn get_all2(&self, query: Any, count: u32) -> IDBRequest {
+    pub fn get_all2(&self, query: &Any, count: u32) -> IDBRequest {
         self.inner
             .call("getAll", &[query.into(), count.into()])
             .as_::<IDBRequest>()
@@ -218,13 +218,13 @@ impl IDBObjectStore {
         self.inner.call("getAllKeys", &[]).as_::<IDBRequest>()
     }
 
-    pub fn get_all_keys1(&self, query: Any) -> IDBRequest {
+    pub fn get_all_keys1(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("getAllKeys", &[query.into()])
             .as_::<IDBRequest>()
     }
 
-    pub fn get_all_keys2(&self, query: Any, count: u32) -> IDBRequest {
+    pub fn get_all_keys2(&self, query: &Any, count: u32) -> IDBRequest {
         self.inner
             .call("getAllKeys", &[query.into(), count.into()])
             .as_::<IDBRequest>()
@@ -235,7 +235,7 @@ impl IDBObjectStore {
         self.inner.call("count", &[]).as_::<IDBRequest>()
     }
 
-    pub fn count1(&self, query: Any) -> IDBRequest {
+    pub fn count1(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("count", &[query.into()])
             .as_::<IDBRequest>()
@@ -246,13 +246,13 @@ impl IDBObjectStore {
         self.inner.call("openCursor", &[]).as_::<IDBRequest>()
     }
 
-    pub fn open_cursor1(&self, query: Any) -> IDBRequest {
+    pub fn open_cursor1(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("openCursor", &[query.into()])
             .as_::<IDBRequest>()
     }
 
-    pub fn open_cursor2(&self, query: Any, direction: IDBCursorDirection) -> IDBRequest {
+    pub fn open_cursor2(&self, query: &Any, direction: &IDBCursorDirection) -> IDBRequest {
         self.inner
             .call("openCursor", &[query.into(), direction.into()])
             .as_::<IDBRequest>()
@@ -263,25 +263,25 @@ impl IDBObjectStore {
         self.inner.call("openKeyCursor", &[]).as_::<IDBRequest>()
     }
 
-    pub fn open_key_cursor1(&self, query: Any) -> IDBRequest {
+    pub fn open_key_cursor1(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("openKeyCursor", &[query.into()])
             .as_::<IDBRequest>()
     }
 
-    pub fn open_key_cursor2(&self, query: Any, direction: IDBCursorDirection) -> IDBRequest {
+    pub fn open_key_cursor2(&self, query: &Any, direction: &IDBCursorDirection) -> IDBRequest {
         self.inner
             .call("openKeyCursor", &[query.into(), direction.into()])
             .as_::<IDBRequest>()
     }
 }
 impl IDBObjectStore {
-    pub fn index(&self, name: DOMString) -> IDBIndex {
+    pub fn index(&self, name: &str) -> IDBIndex {
         self.inner.call("index", &[name.into()]).as_::<IDBIndex>()
     }
 }
 impl IDBObjectStore {
-    pub fn create_index0(&self, name: DOMString, key_path: Any) -> IDBIndex {
+    pub fn create_index0(&self, name: &str, key_path: &Any) -> IDBIndex {
         self.inner
             .call("createIndex", &[name.into(), key_path.into()])
             .as_::<IDBIndex>()
@@ -289,9 +289,9 @@ impl IDBObjectStore {
 
     pub fn create_index1(
         &self,
-        name: DOMString,
-        key_path: Any,
-        options: IDBIndexParameters,
+        name: &str,
+        key_path: &Any,
+        options: &IDBIndexParameters,
     ) -> IDBIndex {
         self.inner
             .call(
@@ -302,7 +302,7 @@ impl IDBObjectStore {
     }
 }
 impl IDBObjectStore {
-    pub fn delete_index(&self, name: DOMString) -> Undefined {
+    pub fn delete_index(&self, name: &str) -> Undefined {
         self.inner
             .call("deleteIndex", &[name.into()])
             .as_::<Undefined>()

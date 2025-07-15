@@ -54,11 +54,11 @@ impl From<&MediaList> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MediaList);
 
 impl MediaList {
-    pub fn media_text(&self) -> CSSOMString {
-        self.inner.get("mediaText").as_::<CSSOMString>()
+    pub fn media_text(&self) -> String {
+        self.inner.get("mediaText").as_::<String>()
     }
 
-    pub fn set_media_text(&mut self, value: CSSOMString) {
+    pub fn set_media_text(&mut self, value: &str) {
         self.inner.set("mediaText", value);
     }
 }
@@ -68,21 +68,19 @@ impl MediaList {
     }
 }
 impl MediaList {
-    pub fn item(&self, index: u32) -> CSSOMString {
-        self.inner
-            .call("item", &[index.into()])
-            .as_::<CSSOMString>()
+    pub fn item(&self, index: u32) -> String {
+        self.inner.call("item", &[index.into()]).as_::<String>()
     }
 }
 impl MediaList {
-    pub fn append_medium(&self, medium: CSSOMString) -> Undefined {
+    pub fn append_medium(&self, medium: &str) -> Undefined {
         self.inner
             .call("appendMedium", &[medium.into()])
             .as_::<Undefined>()
     }
 }
 impl MediaList {
-    pub fn delete_medium(&self, medium: CSSOMString) -> Undefined {
+    pub fn delete_medium(&self, medium: &str) -> Undefined {
         self.inner
             .call("deleteMedium", &[medium.into()])
             .as_::<Undefined>()

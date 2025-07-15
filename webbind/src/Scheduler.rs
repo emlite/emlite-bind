@@ -55,7 +55,7 @@ impl SchedulerPostTaskOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -64,7 +64,7 @@ impl SchedulerPostTaskOptions {
         self.inner.get("priority").as_::<TaskPriority>()
     }
 
-    pub fn set_priority(&mut self, value: TaskPriority) {
+    pub fn set_priority(&mut self, value: &TaskPriority) {
         self.inner.set("priority", value);
     }
 }
@@ -131,13 +131,13 @@ impl From<&Scheduler> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Scheduler);
 
 impl Scheduler {
-    pub fn post_task0(&self, callback: Function) -> Promise {
+    pub fn post_task0(&self, callback: &Function) -> Promise {
         self.inner
             .call("postTask", &[callback.into()])
             .as_::<Promise>()
     }
 
-    pub fn post_task1(&self, callback: Function, options: SchedulerPostTaskOptions) -> Promise {
+    pub fn post_task1(&self, callback: &Function, options: &SchedulerPostTaskOptions) -> Promise {
         self.inner
             .call("postTask", &[callback.into(), options.into()])
             .as_::<Promise>()

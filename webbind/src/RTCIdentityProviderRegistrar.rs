@@ -55,7 +55,7 @@ impl RTCIdentityProvider {
         self.inner.get("generateAssertion").as_::<Function>()
     }
 
-    pub fn set_generate_assertion(&mut self, value: Function) {
+    pub fn set_generate_assertion(&mut self, value: &Function) {
         self.inner.set("generateAssertion", value);
     }
 }
@@ -64,7 +64,7 @@ impl RTCIdentityProvider {
         self.inner.get("validateAssertion").as_::<Function>()
     }
 
-    pub fn set_validate_assertion(&mut self, value: Function) {
+    pub fn set_validate_assertion(&mut self, value: &Function) {
         self.inner.set("validateAssertion", value);
     }
 }
@@ -122,7 +122,7 @@ impl From<&RTCIdentityProviderRegistrar> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(RTCIdentityProviderRegistrar);
 
 impl RTCIdentityProviderRegistrar {
-    pub fn register(&self, idp: RTCIdentityProvider) -> Undefined {
+    pub fn register(&self, idp: &RTCIdentityProvider) -> Undefined {
         self.inner
             .call("register", &[idp.into()])
             .as_::<Undefined>()

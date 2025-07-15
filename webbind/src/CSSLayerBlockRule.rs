@@ -54,7 +54,7 @@ impl From<&CSSLayerBlockRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSLayerBlockRule);
 
 impl CSSLayerBlockRule {
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }

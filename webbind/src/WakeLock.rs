@@ -58,7 +58,7 @@ impl WakeLock {
         self.inner.call("request", &[]).as_::<Promise>()
     }
 
-    pub fn request1(&self, type_: WakeLockType) -> Promise {
+    pub fn request1(&self, type_: &WakeLockType) -> Promise {
         self.inner.call("request", &[type_.into()]).as_::<Promise>()
     }
 }

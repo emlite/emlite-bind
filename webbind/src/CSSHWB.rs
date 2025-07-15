@@ -54,7 +54,7 @@ impl From<&CSSHWB> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSHWB);
 
 impl CSSHWB {
-    pub fn new0(h: CSSNumericValue, w: Any, b: Any) -> CSSHWB {
+    pub fn new0(h: &CSSNumericValue, w: &Any, b: &Any) -> CSSHWB {
         Self {
             inner: emlite::Val::global("CSSHWB")
                 .new(&[h.into(), w.into(), b.into()])
@@ -62,7 +62,7 @@ impl CSSHWB {
         }
     }
 
-    pub fn new1(h: CSSNumericValue, w: Any, b: Any, alpha: Any) -> CSSHWB {
+    pub fn new1(h: &CSSNumericValue, w: &Any, b: &Any, alpha: &Any) -> CSSHWB {
         Self {
             inner: emlite::Val::global("CSSHWB")
                 .new(&[h.into(), w.into(), b.into(), alpha.into()])
@@ -75,7 +75,7 @@ impl CSSHWB {
         self.inner.get("h").as_::<CSSNumericValue>()
     }
 
-    pub fn set_h(&mut self, value: CSSNumericValue) {
+    pub fn set_h(&mut self, value: &CSSNumericValue) {
         self.inner.set("h", value);
     }
 }
@@ -84,7 +84,7 @@ impl CSSHWB {
         self.inner.get("w").as_::<Any>()
     }
 
-    pub fn set_w(&mut self, value: Any) {
+    pub fn set_w(&mut self, value: &Any) {
         self.inner.set("w", value);
     }
 }
@@ -93,7 +93,7 @@ impl CSSHWB {
         self.inner.get("b").as_::<Any>()
     }
 
-    pub fn set_b(&mut self, value: Any) {
+    pub fn set_b(&mut self, value: &Any) {
         self.inner.set("b", value);
     }
 }
@@ -102,7 +102,7 @@ impl CSSHWB {
         self.inner.get("alpha").as_::<Any>()
     }
 
-    pub fn set_alpha(&mut self, value: Any) {
+    pub fn set_alpha(&mut self, value: &Any) {
         self.inner.set("alpha", value);
     }
 }

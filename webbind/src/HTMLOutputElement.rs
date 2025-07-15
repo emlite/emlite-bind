@@ -73,34 +73,34 @@ impl HTMLOutputElement {
     }
 }
 impl HTMLOutputElement {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
 impl HTMLOutputElement {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 }
 impl HTMLOutputElement {
-    pub fn default_value(&self) -> DOMString {
-        self.inner.get("defaultValue").as_::<DOMString>()
+    pub fn default_value(&self) -> String {
+        self.inner.get("defaultValue").as_::<String>()
     }
 
-    pub fn set_default_value(&mut self, value: DOMString) {
+    pub fn set_default_value(&mut self, value: &str) {
         self.inner.set("defaultValue", value);
     }
 }
 impl HTMLOutputElement {
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> String {
+        self.inner.get("value").as_::<String>()
     }
 
-    pub fn set_value(&mut self, value: DOMString) {
+    pub fn set_value(&mut self, value: &str) {
         self.inner.set("value", value);
     }
 }
@@ -115,8 +115,8 @@ impl HTMLOutputElement {
     }
 }
 impl HTMLOutputElement {
-    pub fn validation_message(&self) -> DOMString {
-        self.inner.get("validationMessage").as_::<DOMString>()
+    pub fn validation_message(&self) -> String {
+        self.inner.get("validationMessage").as_::<String>()
     }
 }
 impl HTMLOutputElement {
@@ -130,7 +130,7 @@ impl HTMLOutputElement {
     }
 }
 impl HTMLOutputElement {
-    pub fn set_custom_validity(&self, error: DOMString) -> Undefined {
+    pub fn set_custom_validity(&self, error: &str) -> Undefined {
         self.inner
             .call("setCustomValidity", &[error.into()])
             .as_::<Undefined>()

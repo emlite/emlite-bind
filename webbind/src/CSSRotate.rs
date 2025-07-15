@@ -54,7 +54,7 @@ impl From<&CSSRotate> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSRotate);
 
 impl CSSRotate {
-    pub fn new(x: Any, y: Any, z: Any, angle: CSSNumericValue) -> CSSRotate {
+    pub fn new(x: &Any, y: &Any, z: &Any, angle: &CSSNumericValue) -> CSSRotate {
         Self {
             inner: emlite::Val::global("CSSRotate")
                 .new(&[x.into(), y.into(), z.into(), angle.into()])
@@ -67,7 +67,7 @@ impl CSSRotate {
         self.inner.get("x").as_::<Any>()
     }
 
-    pub fn set_x(&mut self, value: Any) {
+    pub fn set_x(&mut self, value: &Any) {
         self.inner.set("x", value);
     }
 }
@@ -76,7 +76,7 @@ impl CSSRotate {
         self.inner.get("y").as_::<Any>()
     }
 
-    pub fn set_y(&mut self, value: Any) {
+    pub fn set_y(&mut self, value: &Any) {
         self.inner.set("y", value);
     }
 }
@@ -85,7 +85,7 @@ impl CSSRotate {
         self.inner.get("z").as_::<Any>()
     }
 
-    pub fn set_z(&mut self, value: Any) {
+    pub fn set_z(&mut self, value: &Any) {
         self.inner.set("z", value);
     }
 }
@@ -94,7 +94,7 @@ impl CSSRotate {
         self.inner.get("angle").as_::<CSSNumericValue>()
     }
 
-    pub fn set_angle(&mut self, value: CSSNumericValue) {
+    pub fn set_angle(&mut self, value: &CSSNumericValue) {
         self.inner.set("angle", value);
     }
 }

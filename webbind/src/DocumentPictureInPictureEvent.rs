@@ -54,7 +54,7 @@ impl From<&DocumentPictureInPictureEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(DocumentPictureInPictureEvent);
 
 impl DocumentPictureInPictureEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> DocumentPictureInPictureEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> DocumentPictureInPictureEvent {
         Self {
             inner: emlite::Val::global("DocumentPictureInPictureEvent")
                 .new(&[type_.into(), event_init_dict.into()])

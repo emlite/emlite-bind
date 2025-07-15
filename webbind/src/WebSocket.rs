@@ -54,7 +54,7 @@ impl From<&WebSocket> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(WebSocket);
 
 impl WebSocket {
-    pub fn new0(url: USVString) -> WebSocket {
+    pub fn new0(url: &str) -> WebSocket {
         Self {
             inner: emlite::Val::global("WebSocket")
                 .new(&[url.into()])
@@ -62,7 +62,7 @@ impl WebSocket {
         }
     }
 
-    pub fn new1(url: USVString, protocols: Any) -> WebSocket {
+    pub fn new1(url: &str, protocols: &Any) -> WebSocket {
         Self {
             inner: emlite::Val::global("WebSocket")
                 .new(&[url.into(), protocols.into()])
@@ -71,8 +71,8 @@ impl WebSocket {
     }
 }
 impl WebSocket {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }
 impl WebSocket {
@@ -90,7 +90,7 @@ impl WebSocket {
         self.inner.get("onopen").as_::<Any>()
     }
 
-    pub fn set_onopen(&mut self, value: Any) {
+    pub fn set_onopen(&mut self, value: &Any) {
         self.inner.set("onopen", value);
     }
 }
@@ -99,7 +99,7 @@ impl WebSocket {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }
@@ -108,18 +108,18 @@ impl WebSocket {
         self.inner.get("onclose").as_::<Any>()
     }
 
-    pub fn set_onclose(&mut self, value: Any) {
+    pub fn set_onclose(&mut self, value: &Any) {
         self.inner.set("onclose", value);
     }
 }
 impl WebSocket {
-    pub fn extensions(&self) -> DOMString {
-        self.inner.get("extensions").as_::<DOMString>()
+    pub fn extensions(&self) -> String {
+        self.inner.get("extensions").as_::<String>()
     }
 }
 impl WebSocket {
-    pub fn protocol(&self) -> DOMString {
-        self.inner.get("protocol").as_::<DOMString>()
+    pub fn protocol(&self) -> String {
+        self.inner.get("protocol").as_::<String>()
     }
 }
 impl WebSocket {
@@ -131,7 +131,7 @@ impl WebSocket {
         self.inner.call("close", &[code.into()]).as_::<Undefined>()
     }
 
-    pub fn close2(&self, code: u16, reason: USVString) -> Undefined {
+    pub fn close2(&self, code: u16, reason: &str) -> Undefined {
         self.inner
             .call("close", &[code.into(), reason.into()])
             .as_::<Undefined>()
@@ -142,7 +142,7 @@ impl WebSocket {
         self.inner.get("onmessage").as_::<Any>()
     }
 
-    pub fn set_onmessage(&mut self, value: Any) {
+    pub fn set_onmessage(&mut self, value: &Any) {
         self.inner.set("onmessage", value);
     }
 }
@@ -151,12 +151,12 @@ impl WebSocket {
         self.inner.get("binaryType").as_::<BinaryType>()
     }
 
-    pub fn set_binary_type(&mut self, value: BinaryType) {
+    pub fn set_binary_type(&mut self, value: &BinaryType) {
         self.inner.set("binaryType", value);
     }
 }
 impl WebSocket {
-    pub fn send(&self, data: Any) -> Undefined {
+    pub fn send(&self, data: &Any) -> Undefined {
         self.inner.call("send", &[data.into()]).as_::<Undefined>()
     }
 }

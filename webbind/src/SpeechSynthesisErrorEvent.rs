@@ -54,7 +54,7 @@ impl From<&SpeechSynthesisErrorEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SpeechSynthesisErrorEvent);
 
 impl SpeechSynthesisErrorEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> SpeechSynthesisErrorEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> SpeechSynthesisErrorEvent {
         Self {
             inner: emlite::Val::global("SpeechSynthesisErrorEvent")
                 .new(&[type_.into(), event_init_dict.into()])

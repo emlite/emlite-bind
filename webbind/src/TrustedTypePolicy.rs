@@ -54,26 +54,26 @@ impl From<&TrustedTypePolicy> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(TrustedTypePolicy);
 
 impl TrustedTypePolicy {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl TrustedTypePolicy {
-    pub fn create_html(&self, input: DOMString, arguments: Any) -> TrustedHTML {
+    pub fn create_html(&self, input: &str, arguments: &Any) -> TrustedHTML {
         self.inner
             .call("createHTML", &[input.into(), arguments.into()])
             .as_::<TrustedHTML>()
     }
 }
 impl TrustedTypePolicy {
-    pub fn create_script(&self, input: DOMString, arguments: Any) -> TrustedScript {
+    pub fn create_script(&self, input: &str, arguments: &Any) -> TrustedScript {
         self.inner
             .call("createScript", &[input.into(), arguments.into()])
             .as_::<TrustedScript>()
     }
 }
 impl TrustedTypePolicy {
-    pub fn create_script_url(&self, input: DOMString, arguments: Any) -> TrustedScriptURL {
+    pub fn create_script_url(&self, input: &str, arguments: &Any) -> TrustedScriptURL {
         self.inner
             .call("createScriptURL", &[input.into(), arguments.into()])
             .as_::<TrustedScriptURL>()

@@ -58,7 +58,7 @@ impl CreateMonitor {
         self.inner.get("ondownloadprogress").as_::<Any>()
     }
 
-    pub fn set_ondownloadprogress(&mut self, value: Any) {
+    pub fn set_ondownloadprogress(&mut self, value: &Any) {
         self.inner.set("ondownloadprogress", value);
     }
 }

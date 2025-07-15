@@ -54,7 +54,7 @@ impl From<&BluetoothAdvertisingEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(BluetoothAdvertisingEvent);
 
 impl BluetoothAdvertisingEvent {
-    pub fn new(type_: DOMString, init: Any) -> BluetoothAdvertisingEvent {
+    pub fn new(type_: &str, init: &Any) -> BluetoothAdvertisingEvent {
         Self {
             inner: emlite::Val::global("BluetoothAdvertisingEvent")
                 .new(&[type_.into(), init.into()])
@@ -73,8 +73,8 @@ impl BluetoothAdvertisingEvent {
     }
 }
 impl BluetoothAdvertisingEvent {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl BluetoothAdvertisingEvent {

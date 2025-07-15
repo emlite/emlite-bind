@@ -54,7 +54,7 @@ impl From<&RestrictionTarget> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(RestrictionTarget);
 
 impl RestrictionTarget {
-    pub fn from_element(element: Element) -> Promise {
+    pub fn from_element(element: &Element) -> Promise {
         emlite::Val::global("RestrictionTarget")
             .call("fromElement", &[element.into()])
             .as_::<Promise>()

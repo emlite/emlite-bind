@@ -54,7 +54,7 @@ impl From<&HashChangeEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(HashChangeEvent);
 
 impl HashChangeEvent {
-    pub fn new0(type_: DOMString) -> HashChangeEvent {
+    pub fn new0(type_: &str) -> HashChangeEvent {
         Self {
             inner: emlite::Val::global("HashChangeEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl HashChangeEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> HashChangeEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> HashChangeEvent {
         Self {
             inner: emlite::Val::global("HashChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -71,12 +71,12 @@ impl HashChangeEvent {
     }
 }
 impl HashChangeEvent {
-    pub fn old_url(&self) -> USVString {
-        self.inner.get("oldURL").as_::<USVString>()
+    pub fn old_url(&self) -> String {
+        self.inner.get("oldURL").as_::<String>()
     }
 }
 impl HashChangeEvent {
-    pub fn new_url(&self) -> USVString {
-        self.inner.get("newURL").as_::<USVString>()
+    pub fn new_url(&self) -> String {
+        self.inner.get("newURL").as_::<String>()
     }
 }

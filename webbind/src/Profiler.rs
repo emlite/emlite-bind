@@ -55,7 +55,7 @@ impl ProfilerTrace {
         self.inner.get("resources").as_::<Sequence<Any>>()
     }
 
-    pub fn set_resources(&mut self, value: Sequence<Any>) {
+    pub fn set_resources(&mut self, value: &Sequence<Any>) {
         self.inner.set("resources", value);
     }
 }
@@ -64,7 +64,7 @@ impl ProfilerTrace {
         self.inner.get("frames").as_::<Sequence<Any>>()
     }
 
-    pub fn set_frames(&mut self, value: Sequence<Any>) {
+    pub fn set_frames(&mut self, value: &Sequence<Any>) {
         self.inner.set("frames", value);
     }
 }
@@ -73,7 +73,7 @@ impl ProfilerTrace {
         self.inner.get("stacks").as_::<Sequence<Any>>()
     }
 
-    pub fn set_stacks(&mut self, value: Sequence<Any>) {
+    pub fn set_stacks(&mut self, value: &Sequence<Any>) {
         self.inner.set("stacks", value);
     }
 }
@@ -82,7 +82,7 @@ impl ProfilerTrace {
         self.inner.get("samples").as_::<Sequence<Any>>()
     }
 
-    pub fn set_samples(&mut self, value: Sequence<Any>) {
+    pub fn set_samples(&mut self, value: &Sequence<Any>) {
         self.inner.set("samples", value);
     }
 }
@@ -151,7 +151,7 @@ impl Profiler {
 }
 
 impl Profiler {
-    pub fn new(options: Any) -> Profiler {
+    pub fn new(options: &Any) -> Profiler {
         Self {
             inner: emlite::Val::global("Profiler")
                 .new(&[options.into()])

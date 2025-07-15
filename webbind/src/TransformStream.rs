@@ -62,7 +62,7 @@ impl TransformStream {
         }
     }
 
-    pub fn new1(transformer: Object) -> TransformStream {
+    pub fn new1(transformer: &Object) -> TransformStream {
         Self {
             inner: emlite::Val::global("TransformStream")
                 .new(&[transformer.into()])
@@ -70,7 +70,7 @@ impl TransformStream {
         }
     }
 
-    pub fn new2(transformer: Object, writable_strategy: Any) -> TransformStream {
+    pub fn new2(transformer: &Object, writable_strategy: &Any) -> TransformStream {
         Self {
             inner: emlite::Val::global("TransformStream")
                 .new(&[transformer.into(), writable_strategy.into()])
@@ -79,9 +79,9 @@ impl TransformStream {
     }
 
     pub fn new3(
-        transformer: Object,
-        writable_strategy: Any,
-        readable_strategy: Any,
+        transformer: &Object,
+        writable_strategy: &Any,
+        readable_strategy: &Any,
     ) -> TransformStream {
         Self {
             inner: emlite::Val::global("TransformStream")

@@ -54,7 +54,7 @@ impl From<&PageTransitionEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PageTransitionEvent);
 
 impl PageTransitionEvent {
-    pub fn new0(type_: DOMString) -> PageTransitionEvent {
+    pub fn new0(type_: &str) -> PageTransitionEvent {
         Self {
             inner: emlite::Val::global("PageTransitionEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl PageTransitionEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> PageTransitionEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> PageTransitionEvent {
         Self {
             inner: emlite::Val::global("PageTransitionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

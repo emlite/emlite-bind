@@ -55,7 +55,7 @@ impl NavigationUpdateCurrentEntryOptions {
         self.inner.get("state").as_::<Any>()
     }
 
-    pub fn set_state(&mut self, value: Any) {
+    pub fn set_state(&mut self, value: &Any) {
         self.inner.set("state", value);
     }
 }
@@ -114,7 +114,7 @@ impl NavigationResult {
         self.inner.get("committed").as_::<Promise>()
     }
 
-    pub fn set_committed(&mut self, value: Promise) {
+    pub fn set_committed(&mut self, value: &Promise) {
         self.inner.set("committed", value);
     }
 }
@@ -123,7 +123,7 @@ impl NavigationResult {
         self.inner.get("finished").as_::<Promise>()
     }
 
-    pub fn set_finished(&mut self, value: Promise) {
+    pub fn set_finished(&mut self, value: &Promise) {
         self.inner.set("finished", value);
     }
 }
@@ -182,7 +182,7 @@ impl NavigationNavigateOptions {
         self.inner.get("state").as_::<Any>()
     }
 
-    pub fn set_state(&mut self, value: Any) {
+    pub fn set_state(&mut self, value: &Any) {
         self.inner.set("state", value);
     }
 }
@@ -191,7 +191,7 @@ impl NavigationNavigateOptions {
         self.inner.get("history").as_::<NavigationHistoryBehavior>()
     }
 
-    pub fn set_history(&mut self, value: NavigationHistoryBehavior) {
+    pub fn set_history(&mut self, value: &NavigationHistoryBehavior) {
         self.inner.set("history", value);
     }
 }
@@ -250,7 +250,7 @@ impl NavigationReloadOptions {
         self.inner.get("state").as_::<Any>()
     }
 
-    pub fn set_state(&mut self, value: Any) {
+    pub fn set_state(&mut self, value: &Any) {
         self.inner.set("state", value);
     }
 }
@@ -309,7 +309,7 @@ impl NavigationOptions {
         self.inner.get("info").as_::<Any>()
     }
 
-    pub fn set_info(&mut self, value: Any) {
+    pub fn set_info(&mut self, value: &Any) {
         self.inner.set("info", value);
     }
 }
@@ -381,7 +381,7 @@ impl Navigation {
     }
 }
 impl Navigation {
-    pub fn update_current_entry(&self, options: NavigationUpdateCurrentEntryOptions) -> Undefined {
+    pub fn update_current_entry(&self, options: &NavigationUpdateCurrentEntryOptions) -> Undefined {
         self.inner
             .call("updateCurrentEntry", &[options.into()])
             .as_::<Undefined>()
@@ -408,17 +408,13 @@ impl Navigation {
     }
 }
 impl Navigation {
-    pub fn navigate0(&self, url: USVString) -> NavigationResult {
+    pub fn navigate0(&self, url: &str) -> NavigationResult {
         self.inner
             .call("navigate", &[url.into()])
             .as_::<NavigationResult>()
     }
 
-    pub fn navigate1(
-        &self,
-        url: USVString,
-        options: NavigationNavigateOptions,
-    ) -> NavigationResult {
+    pub fn navigate1(&self, url: &str, options: &NavigationNavigateOptions) -> NavigationResult {
         self.inner
             .call("navigate", &[url.into(), options.into()])
             .as_::<NavigationResult>()
@@ -429,20 +425,20 @@ impl Navigation {
         self.inner.call("reload", &[]).as_::<NavigationResult>()
     }
 
-    pub fn reload1(&self, options: NavigationReloadOptions) -> NavigationResult {
+    pub fn reload1(&self, options: &NavigationReloadOptions) -> NavigationResult {
         self.inner
             .call("reload", &[options.into()])
             .as_::<NavigationResult>()
     }
 }
 impl Navigation {
-    pub fn traverse_to0(&self, key: DOMString) -> NavigationResult {
+    pub fn traverse_to0(&self, key: &str) -> NavigationResult {
         self.inner
             .call("traverseTo", &[key.into()])
             .as_::<NavigationResult>()
     }
 
-    pub fn traverse_to1(&self, key: DOMString, options: NavigationOptions) -> NavigationResult {
+    pub fn traverse_to1(&self, key: &str, options: &NavigationOptions) -> NavigationResult {
         self.inner
             .call("traverseTo", &[key.into(), options.into()])
             .as_::<NavigationResult>()
@@ -453,7 +449,7 @@ impl Navigation {
         self.inner.call("back", &[]).as_::<NavigationResult>()
     }
 
-    pub fn back1(&self, options: NavigationOptions) -> NavigationResult {
+    pub fn back1(&self, options: &NavigationOptions) -> NavigationResult {
         self.inner
             .call("back", &[options.into()])
             .as_::<NavigationResult>()
@@ -464,7 +460,7 @@ impl Navigation {
         self.inner.call("forward", &[]).as_::<NavigationResult>()
     }
 
-    pub fn forward1(&self, options: NavigationOptions) -> NavigationResult {
+    pub fn forward1(&self, options: &NavigationOptions) -> NavigationResult {
         self.inner
             .call("forward", &[options.into()])
             .as_::<NavigationResult>()
@@ -475,7 +471,7 @@ impl Navigation {
         self.inner.get("onnavigate").as_::<Any>()
     }
 
-    pub fn set_onnavigate(&mut self, value: Any) {
+    pub fn set_onnavigate(&mut self, value: &Any) {
         self.inner.set("onnavigate", value);
     }
 }
@@ -484,7 +480,7 @@ impl Navigation {
         self.inner.get("onnavigatesuccess").as_::<Any>()
     }
 
-    pub fn set_onnavigatesuccess(&mut self, value: Any) {
+    pub fn set_onnavigatesuccess(&mut self, value: &Any) {
         self.inner.set("onnavigatesuccess", value);
     }
 }
@@ -493,7 +489,7 @@ impl Navigation {
         self.inner.get("onnavigateerror").as_::<Any>()
     }
 
-    pub fn set_onnavigateerror(&mut self, value: Any) {
+    pub fn set_onnavigateerror(&mut self, value: &Any) {
         self.inner.set("onnavigateerror", value);
     }
 }
@@ -502,7 +498,7 @@ impl Navigation {
         self.inner.get("oncurrententrychange").as_::<Any>()
     }
 
-    pub fn set_oncurrententrychange(&mut self, value: Any) {
+    pub fn set_oncurrententrychange(&mut self, value: &Any) {
         self.inner.set("oncurrententrychange", value);
     }
 }

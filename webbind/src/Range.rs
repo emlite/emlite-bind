@@ -66,42 +66,42 @@ impl Range {
     }
 }
 impl Range {
-    pub fn set_start(&self, node: Node, offset: u32) -> Undefined {
+    pub fn set_start(&self, node: &Node, offset: u32) -> Undefined {
         self.inner
             .call("setStart", &[node.into(), offset.into()])
             .as_::<Undefined>()
     }
 }
 impl Range {
-    pub fn set_end(&self, node: Node, offset: u32) -> Undefined {
+    pub fn set_end(&self, node: &Node, offset: u32) -> Undefined {
         self.inner
             .call("setEnd", &[node.into(), offset.into()])
             .as_::<Undefined>()
     }
 }
 impl Range {
-    pub fn set_start_before(&self, node: Node) -> Undefined {
+    pub fn set_start_before(&self, node: &Node) -> Undefined {
         self.inner
             .call("setStartBefore", &[node.into()])
             .as_::<Undefined>()
     }
 }
 impl Range {
-    pub fn set_start_after(&self, node: Node) -> Undefined {
+    pub fn set_start_after(&self, node: &Node) -> Undefined {
         self.inner
             .call("setStartAfter", &[node.into()])
             .as_::<Undefined>()
     }
 }
 impl Range {
-    pub fn set_end_before(&self, node: Node) -> Undefined {
+    pub fn set_end_before(&self, node: &Node) -> Undefined {
         self.inner
             .call("setEndBefore", &[node.into()])
             .as_::<Undefined>()
     }
 }
 impl Range {
-    pub fn set_end_after(&self, node: Node) -> Undefined {
+    pub fn set_end_after(&self, node: &Node) -> Undefined {
         self.inner
             .call("setEndAfter", &[node.into()])
             .as_::<Undefined>()
@@ -119,21 +119,21 @@ impl Range {
     }
 }
 impl Range {
-    pub fn select_node(&self, node: Node) -> Undefined {
+    pub fn select_node(&self, node: &Node) -> Undefined {
         self.inner
             .call("selectNode", &[node.into()])
             .as_::<Undefined>()
     }
 }
 impl Range {
-    pub fn select_node_contents(&self, node: Node) -> Undefined {
+    pub fn select_node_contents(&self, node: &Node) -> Undefined {
         self.inner
             .call("selectNodeContents", &[node.into()])
             .as_::<Undefined>()
     }
 }
 impl Range {
-    pub fn compare_boundary_points(&self, how: u16, source_range: Range) -> i16 {
+    pub fn compare_boundary_points(&self, how: u16, source_range: &Range) -> i16 {
         self.inner
             .call("compareBoundaryPoints", &[how.into(), source_range.into()])
             .as_::<i16>()
@@ -159,14 +159,14 @@ impl Range {
     }
 }
 impl Range {
-    pub fn insert_node(&self, node: Node) -> Undefined {
+    pub fn insert_node(&self, node: &Node) -> Undefined {
         self.inner
             .call("insertNode", &[node.into()])
             .as_::<Undefined>()
     }
 }
 impl Range {
-    pub fn surround_contents(&self, new_parent: Node) -> Undefined {
+    pub fn surround_contents(&self, new_parent: &Node) -> Undefined {
         self.inner
             .call("surroundContents", &[new_parent.into()])
             .as_::<Undefined>()
@@ -183,21 +183,21 @@ impl Range {
     }
 }
 impl Range {
-    pub fn is_point_in_range(&self, node: Node, offset: u32) -> bool {
+    pub fn is_point_in_range(&self, node: &Node, offset: u32) -> bool {
         self.inner
             .call("isPointInRange", &[node.into(), offset.into()])
             .as_::<bool>()
     }
 }
 impl Range {
-    pub fn compare_point(&self, node: Node, offset: u32) -> i16 {
+    pub fn compare_point(&self, node: &Node, offset: u32) -> i16 {
         self.inner
             .call("comparePoint", &[node.into(), offset.into()])
             .as_::<i16>()
     }
 }
 impl Range {
-    pub fn intersects_node(&self, node: Node) -> bool {
+    pub fn intersects_node(&self, node: &Node) -> bool {
         self.inner
             .call("intersectsNode", &[node.into()])
             .as_::<bool>()
@@ -216,7 +216,7 @@ impl Range {
     }
 }
 impl Range {
-    pub fn create_contextual_fragment(&self, string: Any) -> DocumentFragment {
+    pub fn create_contextual_fragment(&self, string: &Any) -> DocumentFragment {
         self.inner
             .call("createContextualFragment", &[string.into()])
             .as_::<DocumentFragment>()

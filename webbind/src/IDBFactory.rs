@@ -51,11 +51,11 @@ impl From<&IDBDatabaseInfo> for emlite::Val {
 }
 
 impl IDBDatabaseInfo {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
@@ -122,20 +122,20 @@ impl From<&IDBFactory> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(IDBFactory);
 
 impl IDBFactory {
-    pub fn open0(&self, name: DOMString) -> IDBOpenDBRequest {
+    pub fn open0(&self, name: &str) -> IDBOpenDBRequest {
         self.inner
             .call("open", &[name.into()])
             .as_::<IDBOpenDBRequest>()
     }
 
-    pub fn open1(&self, name: DOMString, version: u64) -> IDBOpenDBRequest {
+    pub fn open1(&self, name: &str, version: u64) -> IDBOpenDBRequest {
         self.inner
             .call("open", &[name.into(), version.into()])
             .as_::<IDBOpenDBRequest>()
     }
 }
 impl IDBFactory {
-    pub fn delete_database(&self, name: DOMString) -> IDBOpenDBRequest {
+    pub fn delete_database(&self, name: &str) -> IDBOpenDBRequest {
         self.inner
             .call("deleteDatabase", &[name.into()])
             .as_::<IDBOpenDBRequest>()
@@ -147,7 +147,7 @@ impl IDBFactory {
     }
 }
 impl IDBFactory {
-    pub fn cmp(&self, first: Any, second: Any) -> i16 {
+    pub fn cmp(&self, first: &Any, second: &Any) -> i16 {
         self.inner
             .call("cmp", &[first.into(), second.into()])
             .as_::<i16>()

@@ -64,7 +64,7 @@ impl IdleOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -145,7 +145,7 @@ impl IdleDetector {
         self.inner.get("onchange").as_::<Any>()
     }
 
-    pub fn set_onchange(&mut self, value: Any) {
+    pub fn set_onchange(&mut self, value: &Any) {
         self.inner.set("onchange", value);
     }
 }
@@ -161,7 +161,7 @@ impl IdleDetector {
         self.inner.call("start", &[]).as_::<Promise>()
     }
 
-    pub fn start1(&self, options: IdleOptions) -> Promise {
+    pub fn start1(&self, options: &IdleOptions) -> Promise {
         self.inner.call("start", &[options.into()]).as_::<Promise>()
     }
 }

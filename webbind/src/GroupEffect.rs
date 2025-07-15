@@ -54,7 +54,7 @@ impl From<&GroupEffect> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(GroupEffect);
 
 impl GroupEffect {
-    pub fn new0(children: Sequence<AnimationEffect>) -> GroupEffect {
+    pub fn new0(children: &Sequence<AnimationEffect>) -> GroupEffect {
         Self {
             inner: emlite::Val::global("GroupEffect")
                 .new(&[children.into()])
@@ -62,7 +62,7 @@ impl GroupEffect {
         }
     }
 
-    pub fn new1(children: Sequence<AnimationEffect>, timing: Any) -> GroupEffect {
+    pub fn new1(children: &Sequence<AnimationEffect>, timing: &Any) -> GroupEffect {
         Self {
             inner: emlite::Val::global("GroupEffect")
                 .new(&[children.into(), timing.into()])
@@ -91,14 +91,14 @@ impl GroupEffect {
     }
 }
 impl GroupEffect {
-    pub fn prepend(&self, effects: AnimationEffect) -> Undefined {
+    pub fn prepend(&self, effects: &AnimationEffect) -> Undefined {
         self.inner
             .call("prepend", &[effects.into()])
             .as_::<Undefined>()
     }
 }
 impl GroupEffect {
-    pub fn append(&self, effects: AnimationEffect) -> Undefined {
+    pub fn append(&self, effects: &AnimationEffect) -> Undefined {
         self.inner
             .call("append", &[effects.into()])
             .as_::<Undefined>()

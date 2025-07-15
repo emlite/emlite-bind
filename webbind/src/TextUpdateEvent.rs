@@ -54,7 +54,7 @@ impl From<&TextUpdateEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(TextUpdateEvent);
 
 impl TextUpdateEvent {
-    pub fn new0(type_: DOMString) -> TextUpdateEvent {
+    pub fn new0(type_: &str) -> TextUpdateEvent {
         Self {
             inner: emlite::Val::global("TextUpdateEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl TextUpdateEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, options: Any) -> TextUpdateEvent {
+    pub fn new1(type_: &str, options: &Any) -> TextUpdateEvent {
         Self {
             inner: emlite::Val::global("TextUpdateEvent")
                 .new(&[type_.into(), options.into()])
@@ -81,8 +81,8 @@ impl TextUpdateEvent {
     }
 }
 impl TextUpdateEvent {
-    pub fn text(&self) -> DOMString {
-        self.inner.get("text").as_::<DOMString>()
+    pub fn text(&self) -> String {
+        self.inner.get("text").as_::<String>()
     }
 }
 impl TextUpdateEvent {

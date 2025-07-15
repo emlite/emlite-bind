@@ -54,7 +54,7 @@ impl From<&USBConfiguration> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(USBConfiguration);
 
 impl USBConfiguration {
-    pub fn new(device: USBDevice, configuration_value: u8) -> USBConfiguration {
+    pub fn new(device: &USBDevice, configuration_value: u8) -> USBConfiguration {
         Self {
             inner: emlite::Val::global("USBConfiguration")
                 .new(&[device.into(), configuration_value.into()])
@@ -68,8 +68,8 @@ impl USBConfiguration {
     }
 }
 impl USBConfiguration {
-    pub fn configuration_name(&self) -> DOMString {
-        self.inner.get("configurationName").as_::<DOMString>()
+    pub fn configuration_name(&self) -> String {
+        self.inner.get("configurationName").as_::<String>()
     }
 }
 impl USBConfiguration {

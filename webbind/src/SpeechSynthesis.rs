@@ -73,12 +73,12 @@ impl SpeechSynthesis {
         self.inner.get("onvoiceschanged").as_::<Any>()
     }
 
-    pub fn set_onvoiceschanged(&mut self, value: Any) {
+    pub fn set_onvoiceschanged(&mut self, value: &Any) {
         self.inner.set("onvoiceschanged", value);
     }
 }
 impl SpeechSynthesis {
-    pub fn speak(&self, utterance: SpeechSynthesisUtterance) -> Undefined {
+    pub fn speak(&self, utterance: &SpeechSynthesisUtterance) -> Undefined {
         self.inner
             .call("speak", &[utterance.into()])
             .as_::<Undefined>()

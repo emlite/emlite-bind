@@ -51,11 +51,11 @@ impl From<&AudioEncoderConfig> for emlite::Val {
 }
 
 impl AudioEncoderConfig {
-    pub fn codec(&self) -> DOMString {
-        self.inner.get("codec").as_::<DOMString>()
+    pub fn codec(&self) -> String {
+        self.inner.get("codec").as_::<String>()
     }
 
-    pub fn set_codec(&mut self, value: DOMString) {
+    pub fn set_codec(&mut self, value: &str) {
         self.inner.set("codec", value);
     }
 }
@@ -91,7 +91,7 @@ impl AudioEncoderConfig {
         self.inner.get("bitrateMode").as_::<BitrateMode>()
     }
 
-    pub fn set_bitrate_mode(&mut self, value: BitrateMode) {
+    pub fn set_bitrate_mode(&mut self, value: &BitrateMode) {
         self.inner.set("bitrateMode", value);
     }
 }
@@ -159,7 +159,7 @@ impl AudioEncoderSupport {
         self.inner.get("config").as_::<AudioEncoderConfig>()
     }
 
-    pub fn set_config(&mut self, value: AudioEncoderConfig) {
+    pub fn set_config(&mut self, value: &AudioEncoderConfig) {
         self.inner.set("config", value);
     }
 }
@@ -217,7 +217,7 @@ impl From<&AudioEncoder> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(AudioEncoder);
 
 impl AudioEncoder {
-    pub fn new(init: Any) -> AudioEncoder {
+    pub fn new(init: &Any) -> AudioEncoder {
         Self {
             inner: emlite::Val::global("AudioEncoder")
                 .new(&[init.into()])
@@ -240,19 +240,19 @@ impl AudioEncoder {
         self.inner.get("ondequeue").as_::<Any>()
     }
 
-    pub fn set_ondequeue(&mut self, value: Any) {
+    pub fn set_ondequeue(&mut self, value: &Any) {
         self.inner.set("ondequeue", value);
     }
 }
 impl AudioEncoder {
-    pub fn configure(&self, config: AudioEncoderConfig) -> Undefined {
+    pub fn configure(&self, config: &AudioEncoderConfig) -> Undefined {
         self.inner
             .call("configure", &[config.into()])
             .as_::<Undefined>()
     }
 }
 impl AudioEncoder {
-    pub fn encode(&self, data: AudioData) -> Undefined {
+    pub fn encode(&self, data: &AudioData) -> Undefined {
         self.inner.call("encode", &[data.into()]).as_::<Undefined>()
     }
 }
@@ -272,7 +272,7 @@ impl AudioEncoder {
     }
 }
 impl AudioEncoder {
-    pub fn is_config_supported(config: AudioEncoderConfig) -> Promise {
+    pub fn is_config_supported(config: &AudioEncoderConfig) -> Promise {
         emlite::Val::global("AudioEncoder")
             .call("isConfigSupported", &[config.into()])
             .as_::<Promise>()

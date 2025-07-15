@@ -54,11 +54,11 @@ impl From<&BeforeUnloadEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(BeforeUnloadEvent);
 
 impl BeforeUnloadEvent {
-    pub fn return_value(&self) -> DOMString {
-        self.inner.get("returnValue").as_::<DOMString>()
+    pub fn return_value(&self) -> String {
+        self.inner.get("returnValue").as_::<String>()
     }
 
-    pub fn set_return_value(&mut self, value: DOMString) {
+    pub fn set_return_value(&mut self, value: &str) {
         self.inner.set("returnValue", value);
     }
 }

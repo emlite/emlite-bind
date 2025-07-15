@@ -54,7 +54,7 @@ impl From<&PeriodicWave> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PeriodicWave);
 
 impl PeriodicWave {
-    pub fn new0(context: BaseAudioContext) -> PeriodicWave {
+    pub fn new0(context: &BaseAudioContext) -> PeriodicWave {
         Self {
             inner: emlite::Val::global("PeriodicWave")
                 .new(&[context.into()])
@@ -62,7 +62,7 @@ impl PeriodicWave {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: Any) -> PeriodicWave {
+    pub fn new1(context: &BaseAudioContext, options: &Any) -> PeriodicWave {
         Self {
             inner: emlite::Val::global("PeriodicWave")
                 .new(&[context.into(), options.into()])

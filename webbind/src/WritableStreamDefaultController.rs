@@ -63,7 +63,7 @@ impl WritableStreamDefaultController {
         self.inner.call("error", &[]).as_::<Undefined>()
     }
 
-    pub fn error1(&self, e: Any) -> Undefined {
+    pub fn error1(&self, e: &Any) -> Undefined {
         self.inner.call("error", &[e.into()]).as_::<Undefined>()
     }
 }

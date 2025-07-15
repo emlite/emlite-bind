@@ -55,16 +55,16 @@ impl ContactInfo {
         self.inner.get("address").as_::<Sequence<ContactAddress>>()
     }
 
-    pub fn set_address(&mut self, value: Sequence<ContactAddress>) {
+    pub fn set_address(&mut self, value: &Sequence<ContactAddress>) {
         self.inner.set("address", value);
     }
 }
 impl ContactInfo {
-    pub fn email(&self) -> Sequence<DOMString> {
-        self.inner.get("email").as_::<Sequence<DOMString>>()
+    pub fn email(&self) -> Sequence<String> {
+        self.inner.get("email").as_::<Sequence<String>>()
     }
 
-    pub fn set_email(&mut self, value: Sequence<DOMString>) {
+    pub fn set_email(&mut self, value: &Sequence<String>) {
         self.inner.set("email", value);
     }
 }
@@ -73,25 +73,25 @@ impl ContactInfo {
         self.inner.get("icon").as_::<Sequence<Blob>>()
     }
 
-    pub fn set_icon(&mut self, value: Sequence<Blob>) {
+    pub fn set_icon(&mut self, value: &Sequence<Blob>) {
         self.inner.set("icon", value);
     }
 }
 impl ContactInfo {
-    pub fn name(&self) -> Sequence<DOMString> {
-        self.inner.get("name").as_::<Sequence<DOMString>>()
+    pub fn name(&self) -> Sequence<String> {
+        self.inner.get("name").as_::<Sequence<String>>()
     }
 
-    pub fn set_name(&mut self, value: Sequence<DOMString>) {
+    pub fn set_name(&mut self, value: &Sequence<String>) {
         self.inner.set("name", value);
     }
 }
 impl ContactInfo {
-    pub fn tel(&self) -> Sequence<DOMString> {
-        self.inner.get("tel").as_::<Sequence<DOMString>>()
+    pub fn tel(&self) -> Sequence<String> {
+        self.inner.get("tel").as_::<Sequence<String>>()
     }
 
-    pub fn set_tel(&mut self, value: Sequence<DOMString>) {
+    pub fn set_tel(&mut self, value: &Sequence<String>) {
         self.inner.set("tel", value);
     }
 }
@@ -213,7 +213,7 @@ impl ContactsManager {
     }
 }
 impl ContactsManager {
-    pub fn select0(&self, properties: Sequence<ContactProperty>) -> Promise {
+    pub fn select0(&self, properties: &Sequence<ContactProperty>) -> Promise {
         self.inner
             .call("select", &[properties.into()])
             .as_::<Promise>()
@@ -221,8 +221,8 @@ impl ContactsManager {
 
     pub fn select1(
         &self,
-        properties: Sequence<ContactProperty>,
-        options: ContactsSelectOptions,
+        properties: &Sequence<ContactProperty>,
+        options: &ContactsSelectOptions,
     ) -> Promise {
         self.inner
             .call("select", &[properties.into(), options.into()])

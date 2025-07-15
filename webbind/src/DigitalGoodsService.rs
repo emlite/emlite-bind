@@ -51,20 +51,20 @@ impl From<&ItemDetails> for emlite::Val {
 }
 
 impl ItemDetails {
-    pub fn item_id(&self) -> DOMString {
-        self.inner.get("itemId").as_::<DOMString>()
+    pub fn item_id(&self) -> String {
+        self.inner.get("itemId").as_::<String>()
     }
 
-    pub fn set_item_id(&mut self, value: DOMString) {
+    pub fn set_item_id(&mut self, value: &str) {
         self.inner.set("itemId", value);
     }
 }
 impl ItemDetails {
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> String {
+        self.inner.get("title").as_::<String>()
     }
 
-    pub fn set_title(&mut self, value: DOMString) {
+    pub fn set_title(&mut self, value: &str) {
         self.inner.set("title", value);
     }
 }
@@ -73,7 +73,7 @@ impl ItemDetails {
         self.inner.get("price").as_::<Any>()
     }
 
-    pub fn set_price(&mut self, value: Any) {
+    pub fn set_price(&mut self, value: &Any) {
         self.inner.set("price", value);
     }
 }
@@ -82,43 +82,43 @@ impl ItemDetails {
         self.inner.get("type").as_::<ItemType>()
     }
 
-    pub fn set_type_(&mut self, value: ItemType) {
+    pub fn set_type_(&mut self, value: &ItemType) {
         self.inner.set("type", value);
     }
 }
 impl ItemDetails {
-    pub fn description(&self) -> DOMString {
-        self.inner.get("description").as_::<DOMString>()
+    pub fn description(&self) -> String {
+        self.inner.get("description").as_::<String>()
     }
 
-    pub fn set_description(&mut self, value: DOMString) {
+    pub fn set_description(&mut self, value: &str) {
         self.inner.set("description", value);
     }
 }
 impl ItemDetails {
-    pub fn icon_ur_ls(&self) -> Sequence<DOMString> {
-        self.inner.get("iconURLs").as_::<Sequence<DOMString>>()
+    pub fn icon_ur_ls(&self) -> Sequence<String> {
+        self.inner.get("iconURLs").as_::<Sequence<String>>()
     }
 
-    pub fn set_icon_ur_ls(&mut self, value: Sequence<DOMString>) {
+    pub fn set_icon_ur_ls(&mut self, value: &Sequence<String>) {
         self.inner.set("iconURLs", value);
     }
 }
 impl ItemDetails {
-    pub fn subscription_period(&self) -> DOMString {
-        self.inner.get("subscriptionPeriod").as_::<DOMString>()
+    pub fn subscription_period(&self) -> String {
+        self.inner.get("subscriptionPeriod").as_::<String>()
     }
 
-    pub fn set_subscription_period(&mut self, value: DOMString) {
+    pub fn set_subscription_period(&mut self, value: &str) {
         self.inner.set("subscriptionPeriod", value);
     }
 }
 impl ItemDetails {
-    pub fn free_trial_period(&self) -> DOMString {
-        self.inner.get("freeTrialPeriod").as_::<DOMString>()
+    pub fn free_trial_period(&self) -> String {
+        self.inner.get("freeTrialPeriod").as_::<String>()
     }
 
-    pub fn set_free_trial_period(&mut self, value: DOMString) {
+    pub fn set_free_trial_period(&mut self, value: &str) {
         self.inner.set("freeTrialPeriod", value);
     }
 }
@@ -127,16 +127,16 @@ impl ItemDetails {
         self.inner.get("introductoryPrice").as_::<Any>()
     }
 
-    pub fn set_introductory_price(&mut self, value: Any) {
+    pub fn set_introductory_price(&mut self, value: &Any) {
         self.inner.set("introductoryPrice", value);
     }
 }
 impl ItemDetails {
-    pub fn introductory_price_period(&self) -> DOMString {
-        self.inner.get("introductoryPricePeriod").as_::<DOMString>()
+    pub fn introductory_price_period(&self) -> String {
+        self.inner.get("introductoryPricePeriod").as_::<String>()
     }
 
-    pub fn set_introductory_price_period(&mut self, value: DOMString) {
+    pub fn set_introductory_price_period(&mut self, value: &str) {
         self.inner.set("introductoryPricePeriod", value);
     }
 }
@@ -200,20 +200,20 @@ impl From<&PurchaseDetails> for emlite::Val {
 }
 
 impl PurchaseDetails {
-    pub fn item_id(&self) -> DOMString {
-        self.inner.get("itemId").as_::<DOMString>()
+    pub fn item_id(&self) -> String {
+        self.inner.get("itemId").as_::<String>()
     }
 
-    pub fn set_item_id(&mut self, value: DOMString) {
+    pub fn set_item_id(&mut self, value: &str) {
         self.inner.set("itemId", value);
     }
 }
 impl PurchaseDetails {
-    pub fn purchase_token(&self) -> DOMString {
-        self.inner.get("purchaseToken").as_::<DOMString>()
+    pub fn purchase_token(&self) -> String {
+        self.inner.get("purchaseToken").as_::<String>()
     }
 
-    pub fn set_purchase_token(&mut self, value: DOMString) {
+    pub fn set_purchase_token(&mut self, value: &str) {
         self.inner.set("purchaseToken", value);
     }
 }
@@ -271,7 +271,7 @@ impl From<&DigitalGoodsService> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(DigitalGoodsService);
 
 impl DigitalGoodsService {
-    pub fn get_details(&self, item_ids: Sequence<DOMString>) -> Promise {
+    pub fn get_details(&self, item_ids: &Sequence<String>) -> Promise {
         self.inner
             .call("getDetails", &[item_ids.into()])
             .as_::<Promise>()
@@ -288,7 +288,7 @@ impl DigitalGoodsService {
     }
 }
 impl DigitalGoodsService {
-    pub fn consume(&self, purchase_token: DOMString) -> Promise {
+    pub fn consume(&self, purchase_token: &str) -> Promise {
         self.inner
             .call("consume", &[purchase_token.into()])
             .as_::<Promise>()

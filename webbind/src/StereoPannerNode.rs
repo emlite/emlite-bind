@@ -54,7 +54,7 @@ impl From<&StereoPannerNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(StereoPannerNode);
 
 impl StereoPannerNode {
-    pub fn new0(context: BaseAudioContext) -> StereoPannerNode {
+    pub fn new0(context: &BaseAudioContext) -> StereoPannerNode {
         Self {
             inner: emlite::Val::global("StereoPannerNode")
                 .new(&[context.into()])
@@ -62,7 +62,7 @@ impl StereoPannerNode {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: Any) -> StereoPannerNode {
+    pub fn new1(context: &BaseAudioContext, options: &Any) -> StereoPannerNode {
         Self {
             inner: emlite::Val::global("StereoPannerNode")
                 .new(&[context.into(), options.into()])

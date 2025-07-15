@@ -54,23 +54,23 @@ impl From<&GPUAdapterInfo> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(GPUAdapterInfo);
 
 impl GPUAdapterInfo {
-    pub fn vendor(&self) -> DOMString {
-        self.inner.get("vendor").as_::<DOMString>()
+    pub fn vendor(&self) -> String {
+        self.inner.get("vendor").as_::<String>()
     }
 }
 impl GPUAdapterInfo {
-    pub fn architecture(&self) -> DOMString {
-        self.inner.get("architecture").as_::<DOMString>()
+    pub fn architecture(&self) -> String {
+        self.inner.get("architecture").as_::<String>()
     }
 }
 impl GPUAdapterInfo {
-    pub fn device(&self) -> DOMString {
-        self.inner.get("device").as_::<DOMString>()
+    pub fn device(&self) -> String {
+        self.inner.get("device").as_::<String>()
     }
 }
 impl GPUAdapterInfo {
-    pub fn description(&self) -> DOMString {
-        self.inner.get("description").as_::<DOMString>()
+    pub fn description(&self) -> String {
+        self.inner.get("description").as_::<String>()
     }
 }
 impl GPUAdapterInfo {

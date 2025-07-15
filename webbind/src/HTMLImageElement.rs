@@ -63,56 +63,56 @@ impl HTMLImageElement {
     }
 }
 impl HTMLImageElement {
-    pub fn alt(&self) -> DOMString {
-        self.inner.get("alt").as_::<DOMString>()
+    pub fn alt(&self) -> String {
+        self.inner.get("alt").as_::<String>()
     }
 
-    pub fn set_alt(&mut self, value: DOMString) {
+    pub fn set_alt(&mut self, value: &str) {
         self.inner.set("alt", value);
     }
 }
 impl HTMLImageElement {
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> String {
+        self.inner.get("src").as_::<String>()
     }
 
-    pub fn set_src(&mut self, value: USVString) {
+    pub fn set_src(&mut self, value: &str) {
         self.inner.set("src", value);
     }
 }
 impl HTMLImageElement {
-    pub fn srcset(&self) -> USVString {
-        self.inner.get("srcset").as_::<USVString>()
+    pub fn srcset(&self) -> String {
+        self.inner.get("srcset").as_::<String>()
     }
 
-    pub fn set_srcset(&mut self, value: USVString) {
+    pub fn set_srcset(&mut self, value: &str) {
         self.inner.set("srcset", value);
     }
 }
 impl HTMLImageElement {
-    pub fn sizes(&self) -> DOMString {
-        self.inner.get("sizes").as_::<DOMString>()
+    pub fn sizes(&self) -> String {
+        self.inner.get("sizes").as_::<String>()
     }
 
-    pub fn set_sizes(&mut self, value: DOMString) {
+    pub fn set_sizes(&mut self, value: &str) {
         self.inner.set("sizes", value);
     }
 }
 impl HTMLImageElement {
-    pub fn cross_origin(&self) -> DOMString {
-        self.inner.get("crossOrigin").as_::<DOMString>()
+    pub fn cross_origin(&self) -> String {
+        self.inner.get("crossOrigin").as_::<String>()
     }
 
-    pub fn set_cross_origin(&mut self, value: DOMString) {
+    pub fn set_cross_origin(&mut self, value: &str) {
         self.inner.set("crossOrigin", value);
     }
 }
 impl HTMLImageElement {
-    pub fn use_map(&self) -> DOMString {
-        self.inner.get("useMap").as_::<DOMString>()
+    pub fn use_map(&self) -> String {
+        self.inner.get("useMap").as_::<String>()
     }
 
-    pub fn set_use_map(&mut self, value: DOMString) {
+    pub fn set_use_map(&mut self, value: &str) {
         self.inner.set("useMap", value);
     }
 }
@@ -159,43 +159,43 @@ impl HTMLImageElement {
     }
 }
 impl HTMLImageElement {
-    pub fn current_src(&self) -> USVString {
-        self.inner.get("currentSrc").as_::<USVString>()
+    pub fn current_src(&self) -> String {
+        self.inner.get("currentSrc").as_::<String>()
     }
 }
 impl HTMLImageElement {
-    pub fn referrer_policy(&self) -> DOMString {
-        self.inner.get("referrerPolicy").as_::<DOMString>()
+    pub fn referrer_policy(&self) -> String {
+        self.inner.get("referrerPolicy").as_::<String>()
     }
 
-    pub fn set_referrer_policy(&mut self, value: DOMString) {
+    pub fn set_referrer_policy(&mut self, value: &str) {
         self.inner.set("referrerPolicy", value);
     }
 }
 impl HTMLImageElement {
-    pub fn decoding(&self) -> DOMString {
-        self.inner.get("decoding").as_::<DOMString>()
+    pub fn decoding(&self) -> String {
+        self.inner.get("decoding").as_::<String>()
     }
 
-    pub fn set_decoding(&mut self, value: DOMString) {
+    pub fn set_decoding(&mut self, value: &str) {
         self.inner.set("decoding", value);
     }
 }
 impl HTMLImageElement {
-    pub fn loading(&self) -> DOMString {
-        self.inner.get("loading").as_::<DOMString>()
+    pub fn loading(&self) -> String {
+        self.inner.get("loading").as_::<String>()
     }
 
-    pub fn set_loading(&mut self, value: DOMString) {
+    pub fn set_loading(&mut self, value: &str) {
         self.inner.set("loading", value);
     }
 }
 impl HTMLImageElement {
-    pub fn fetch_priority(&self) -> DOMString {
-        self.inner.get("fetchPriority").as_::<DOMString>()
+    pub fn fetch_priority(&self) -> String {
+        self.inner.get("fetchPriority").as_::<String>()
     }
 
-    pub fn set_fetch_priority(&mut self, value: DOMString) {
+    pub fn set_fetch_priority(&mut self, value: &str) {
         self.inner.set("fetchPriority", value);
     }
 }
@@ -215,29 +215,29 @@ impl HTMLImageElement {
     }
 }
 impl HTMLImageElement {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
 impl HTMLImageElement {
-    pub fn lowsrc(&self) -> USVString {
-        self.inner.get("lowsrc").as_::<USVString>()
+    pub fn lowsrc(&self) -> String {
+        self.inner.get("lowsrc").as_::<String>()
     }
 
-    pub fn set_lowsrc(&mut self, value: USVString) {
+    pub fn set_lowsrc(&mut self, value: &str) {
         self.inner.set("lowsrc", value);
     }
 }
 impl HTMLImageElement {
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> String {
+        self.inner.get("align").as_::<String>()
     }
 
-    pub fn set_align(&mut self, value: DOMString) {
+    pub fn set_align(&mut self, value: &str) {
         self.inner.set("align", value);
     }
 }
@@ -260,29 +260,29 @@ impl HTMLImageElement {
     }
 }
 impl HTMLImageElement {
-    pub fn long_desc(&self) -> USVString {
-        self.inner.get("longDesc").as_::<USVString>()
+    pub fn long_desc(&self) -> String {
+        self.inner.get("longDesc").as_::<String>()
     }
 
-    pub fn set_long_desc(&mut self, value: USVString) {
+    pub fn set_long_desc(&mut self, value: &str) {
         self.inner.set("longDesc", value);
     }
 }
 impl HTMLImageElement {
-    pub fn border(&self) -> DOMString {
-        self.inner.get("border").as_::<DOMString>()
+    pub fn border(&self) -> String {
+        self.inner.get("border").as_::<String>()
     }
 
-    pub fn set_border(&mut self, value: DOMString) {
+    pub fn set_border(&mut self, value: &str) {
         self.inner.set("border", value);
     }
 }
 impl HTMLImageElement {
-    pub fn attribution_src(&self) -> USVString {
-        self.inner.get("attributionSrc").as_::<USVString>()
+    pub fn attribution_src(&self) -> String {
+        self.inner.get("attributionSrc").as_::<String>()
     }
 
-    pub fn set_attribution_src(&mut self, value: USVString) {
+    pub fn set_attribution_src(&mut self, value: &str) {
         self.inner.set("attributionSrc", value);
     }
 }

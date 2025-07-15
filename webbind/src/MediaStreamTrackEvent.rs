@@ -54,7 +54,7 @@ impl From<&MediaStreamTrackEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MediaStreamTrackEvent);
 
 impl MediaStreamTrackEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> MediaStreamTrackEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> MediaStreamTrackEvent {
         Self {
             inner: emlite::Val::global("MediaStreamTrackEvent")
                 .new(&[type_.into(), event_init_dict.into()])

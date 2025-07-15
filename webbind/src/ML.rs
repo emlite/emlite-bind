@@ -54,7 +54,7 @@ impl From<&ML> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ML);
 
 impl ML {
-    pub fn create_context(&self, gpu_device: GPUDevice) -> Promise {
+    pub fn create_context(&self, gpu_device: &GPUDevice) -> Promise {
         self.inner
             .call("createContext", &[gpu_device.into()])
             .as_::<Promise>()

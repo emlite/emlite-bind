@@ -54,7 +54,7 @@ impl From<&NotificationEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(NotificationEvent);
 
 impl NotificationEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> NotificationEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> NotificationEvent {
         Self {
             inner: emlite::Val::global("NotificationEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -68,7 +68,7 @@ impl NotificationEvent {
     }
 }
 impl NotificationEvent {
-    pub fn action(&self) -> DOMString {
-        self.inner.get("action").as_::<DOMString>()
+    pub fn action(&self) -> String {
+        self.inner.get("action").as_::<String>()
     }
 }

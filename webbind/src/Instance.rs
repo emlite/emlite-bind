@@ -54,7 +54,7 @@ impl From<&Instance> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Instance);
 
 impl Instance {
-    pub fn new0(module: Module) -> Instance {
+    pub fn new0(module: &Module) -> Instance {
         Self {
             inner: emlite::Val::global("Instance")
                 .new(&[module.into()])
@@ -62,7 +62,7 @@ impl Instance {
         }
     }
 
-    pub fn new1(module: Module, import_object: Object) -> Instance {
+    pub fn new1(module: &Module, import_object: &Object) -> Instance {
         Self {
             inner: emlite::Val::global("Instance")
                 .new(&[module.into(), import_object.into()])

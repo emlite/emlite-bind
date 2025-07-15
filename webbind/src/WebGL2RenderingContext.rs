@@ -61,11 +61,11 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn copy_buffer_sub_data(
         &self,
-        read_target: Any,
-        write_target: Any,
-        read_offset: Any,
-        write_offset: Any,
-        size: Any,
+        read_target: &Any,
+        write_target: &Any,
+        read_offset: &Any,
+        write_offset: &Any,
+        size: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -84,9 +84,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn get_buffer_sub_data0(
         &self,
-        target: Any,
-        src_byte_offset: Any,
-        dst_buffer: Any,
+        target: &Any,
+        src_byte_offset: &Any,
+        dst_buffer: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -98,9 +98,9 @@ impl WebGL2RenderingContext {
 
     pub fn get_buffer_sub_data1(
         &self,
-        target: Any,
-        src_byte_offset: Any,
-        dst_buffer: Any,
+        target: &Any,
+        src_byte_offset: &Any,
+        dst_buffer: &Any,
         dst_offset: u64,
     ) -> Undefined {
         self.inner
@@ -118,11 +118,11 @@ impl WebGL2RenderingContext {
 
     pub fn get_buffer_sub_data2(
         &self,
-        target: Any,
-        src_byte_offset: Any,
-        dst_buffer: Any,
+        target: &Any,
+        src_byte_offset: &Any,
+        dst_buffer: &Any,
         dst_offset: u64,
-        length: Any,
+        length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -141,16 +141,16 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn blit_framebuffer(
         &self,
-        src_x0: Any,
-        src_y0: Any,
-        src_x1: Any,
-        src_y1: Any,
-        dst_x0: Any,
-        dst_y0: Any,
-        dst_x1: Any,
-        dst_y1: Any,
-        mask: Any,
-        filter: Any,
+        src_x0: &Any,
+        src_y0: &Any,
+        src_x1: &Any,
+        src_y1: &Any,
+        dst_x0: &Any,
+        dst_y0: &Any,
+        dst_x1: &Any,
+        dst_y1: &Any,
+        mask: &Any,
+        filter: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -174,11 +174,11 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn framebuffer_texture_layer(
         &self,
-        target: Any,
-        attachment: Any,
-        texture: WebGLTexture,
-        level: Any,
-        layer: Any,
+        target: &Any,
+        attachment: &Any,
+        texture: &WebGLTexture,
+        level: &Any,
+        layer: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -195,7 +195,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn invalidate_framebuffer(&self, target: Any, attachments: Sequence<Any>) -> Undefined {
+    pub fn invalidate_framebuffer(&self, target: &Any, attachments: &Sequence<Any>) -> Undefined {
         self.inner
             .call(
                 "invalidateFramebuffer",
@@ -207,12 +207,12 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn invalidate_sub_framebuffer(
         &self,
-        target: Any,
-        attachments: Sequence<Any>,
-        x: Any,
-        y: Any,
-        width: Any,
-        height: Any,
+        target: &Any,
+        attachments: &Sequence<Any>,
+        x: &Any,
+        y: &Any,
+        width: &Any,
+        height: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -230,7 +230,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn read_buffer(&self, src: Any) -> Undefined {
+    pub fn read_buffer(&self, src: &Any) -> Undefined {
         self.inner
             .call("readBuffer", &[src.into()])
             .as_::<Undefined>()
@@ -239,9 +239,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn get_internalformat_parameter(
         &self,
-        target: Any,
-        internalformat: Any,
-        pname: Any,
+        target: &Any,
+        internalformat: &Any,
+        pname: &Any,
     ) -> Any {
         self.inner
             .call(
@@ -254,11 +254,11 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn renderbuffer_storage_multisample(
         &self,
-        target: Any,
-        samples: Any,
-        internalformat: Any,
-        width: Any,
-        height: Any,
+        target: &Any,
+        samples: &Any,
+        internalformat: &Any,
+        width: &Any,
+        height: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -277,11 +277,11 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn tex_storage2_d(
         &self,
-        target: Any,
-        levels: Any,
-        internalformat: Any,
-        width: Any,
-        height: Any,
+        target: &Any,
+        levels: &Any,
+        internalformat: &Any,
+        width: &Any,
+        height: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -300,12 +300,12 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn tex_storage3_d(
         &self,
-        target: Any,
-        levels: Any,
-        internalformat: Any,
-        width: Any,
-        height: Any,
-        depth: Any,
+        target: &Any,
+        levels: &Any,
+        internalformat: &Any,
+        width: &Any,
+        height: &Any,
+        depth: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -325,16 +325,16 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn tex_image3_d(
         &self,
-        target: Any,
-        level: Any,
-        internalformat: Any,
-        width: Any,
-        height: Any,
-        depth: Any,
-        border: Any,
-        format: Any,
-        type_: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        internalformat: &Any,
+        width: &Any,
+        height: &Any,
+        depth: &Any,
+        border: &Any,
+        format: &Any,
+        type_: &Any,
+        src_data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -360,17 +360,17 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn tex_sub_image3_d0(
         &self,
-        target: Any,
-        level: Any,
-        xoffset: Any,
-        yoffset: Any,
-        zoffset: Any,
-        width: Any,
-        height: Any,
-        depth: Any,
-        format: Any,
-        type_: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        xoffset: &Any,
+        yoffset: &Any,
+        zoffset: &Any,
+        width: &Any,
+        height: &Any,
+        depth: &Any,
+        format: &Any,
+        type_: &Any,
+        src_data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -394,17 +394,17 @@ impl WebGL2RenderingContext {
 
     pub fn tex_sub_image3_d1(
         &self,
-        target: Any,
-        level: Any,
-        xoffset: Any,
-        yoffset: Any,
-        zoffset: Any,
-        width: Any,
-        height: Any,
-        depth: Any,
-        format: Any,
-        type_: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        xoffset: &Any,
+        yoffset: &Any,
+        zoffset: &Any,
+        width: &Any,
+        height: &Any,
+        depth: &Any,
+        format: &Any,
+        type_: &Any,
+        src_data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -431,15 +431,15 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn copy_tex_sub_image3_d(
         &self,
-        target: Any,
-        level: Any,
-        xoffset: Any,
-        yoffset: Any,
-        zoffset: Any,
-        x: Any,
-        y: Any,
-        width: Any,
-        height: Any,
+        target: &Any,
+        level: &Any,
+        xoffset: &Any,
+        yoffset: &Any,
+        zoffset: &Any,
+        x: &Any,
+        y: &Any,
+        width: &Any,
+        height: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -462,14 +462,14 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn compressed_tex_image3_d0(
         &self,
-        target: Any,
-        level: Any,
-        internalformat: Any,
-        width: Any,
-        height: Any,
-        depth: Any,
-        border: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        internalformat: &Any,
+        width: &Any,
+        height: &Any,
+        depth: &Any,
+        border: &Any,
+        src_data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -490,14 +490,14 @@ impl WebGL2RenderingContext {
 
     pub fn compressed_tex_image3_d1(
         &self,
-        target: Any,
-        level: Any,
-        internalformat: Any,
-        width: Any,
-        height: Any,
-        depth: Any,
-        border: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        internalformat: &Any,
+        width: &Any,
+        height: &Any,
+        depth: &Any,
+        border: &Any,
+        src_data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -520,16 +520,16 @@ impl WebGL2RenderingContext {
 
     pub fn compressed_tex_image3_d2(
         &self,
-        target: Any,
-        level: Any,
-        internalformat: Any,
-        width: Any,
-        height: Any,
-        depth: Any,
-        border: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        internalformat: &Any,
+        width: &Any,
+        height: &Any,
+        depth: &Any,
+        border: &Any,
+        src_data: &Any,
         src_offset: u64,
-        src_length_override: Any,
+        src_length_override: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -553,16 +553,16 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn compressed_tex_sub_image3_d0(
         &self,
-        target: Any,
-        level: Any,
-        xoffset: Any,
-        yoffset: Any,
-        zoffset: Any,
-        width: Any,
-        height: Any,
-        depth: Any,
-        format: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        xoffset: &Any,
+        yoffset: &Any,
+        zoffset: &Any,
+        width: &Any,
+        height: &Any,
+        depth: &Any,
+        format: &Any,
+        src_data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -585,16 +585,16 @@ impl WebGL2RenderingContext {
 
     pub fn compressed_tex_sub_image3_d1(
         &self,
-        target: Any,
-        level: Any,
-        xoffset: Any,
-        yoffset: Any,
-        zoffset: Any,
-        width: Any,
-        height: Any,
-        depth: Any,
-        format: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        xoffset: &Any,
+        yoffset: &Any,
+        zoffset: &Any,
+        width: &Any,
+        height: &Any,
+        depth: &Any,
+        format: &Any,
+        src_data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -619,18 +619,18 @@ impl WebGL2RenderingContext {
 
     pub fn compressed_tex_sub_image3_d2(
         &self,
-        target: Any,
-        level: Any,
-        xoffset: Any,
-        yoffset: Any,
-        zoffset: Any,
-        width: Any,
-        height: Any,
-        depth: Any,
-        format: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        xoffset: &Any,
+        yoffset: &Any,
+        zoffset: &Any,
+        width: &Any,
+        height: &Any,
+        depth: &Any,
+        format: &Any,
+        src_data: &Any,
         src_offset: u64,
-        src_length_override: Any,
+        src_length_override: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -654,21 +654,21 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn get_frag_data_location(&self, program: WebGLProgram, name: DOMString) -> Any {
+    pub fn get_frag_data_location(&self, program: &WebGLProgram, name: &str) -> Any {
         self.inner
             .call("getFragDataLocation", &[program.into(), name.into()])
             .as_::<Any>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn uniform1ui(&self, location: WebGLUniformLocation, v0: Any) -> Undefined {
+    pub fn uniform1ui(&self, location: &WebGLUniformLocation, v0: &Any) -> Undefined {
         self.inner
             .call("uniform1ui", &[location.into(), v0.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn uniform2ui(&self, location: WebGLUniformLocation, v0: Any, v1: Any) -> Undefined {
+    pub fn uniform2ui(&self, location: &WebGLUniformLocation, v0: &Any, v1: &Any) -> Undefined {
         self.inner
             .call("uniform2ui", &[location.into(), v0.into(), v1.into()])
             .as_::<Undefined>()
@@ -677,10 +677,10 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn uniform3ui(
         &self,
-        location: WebGLUniformLocation,
-        v0: Any,
-        v1: Any,
-        v2: Any,
+        location: &WebGLUniformLocation,
+        v0: &Any,
+        v1: &Any,
+        v2: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -693,11 +693,11 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn uniform4ui(
         &self,
-        location: WebGLUniformLocation,
-        v0: Any,
-        v1: Any,
-        v2: Any,
-        v3: Any,
+        location: &WebGLUniformLocation,
+        v0: &Any,
+        v1: &Any,
+        v2: &Any,
+        v3: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -708,7 +708,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn uniform1uiv0(&self, location: WebGLUniformLocation, data: Any) -> Undefined {
+    pub fn uniform1uiv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform1uiv", &[location.into(), data.into()])
             .as_::<Undefined>()
@@ -716,8 +716,8 @@ impl WebGL2RenderingContext {
 
     pub fn uniform1uiv1(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -730,10 +730,10 @@ impl WebGL2RenderingContext {
 
     pub fn uniform1uiv2(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -749,7 +749,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn uniform2uiv0(&self, location: WebGLUniformLocation, data: Any) -> Undefined {
+    pub fn uniform2uiv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform2uiv", &[location.into(), data.into()])
             .as_::<Undefined>()
@@ -757,8 +757,8 @@ impl WebGL2RenderingContext {
 
     pub fn uniform2uiv1(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -771,10 +771,10 @@ impl WebGL2RenderingContext {
 
     pub fn uniform2uiv2(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -790,7 +790,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn uniform3uiv0(&self, location: WebGLUniformLocation, data: Any) -> Undefined {
+    pub fn uniform3uiv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform3uiv", &[location.into(), data.into()])
             .as_::<Undefined>()
@@ -798,8 +798,8 @@ impl WebGL2RenderingContext {
 
     pub fn uniform3uiv1(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -812,10 +812,10 @@ impl WebGL2RenderingContext {
 
     pub fn uniform3uiv2(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -831,7 +831,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn uniform4uiv0(&self, location: WebGLUniformLocation, data: Any) -> Undefined {
+    pub fn uniform4uiv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform4uiv", &[location.into(), data.into()])
             .as_::<Undefined>()
@@ -839,8 +839,8 @@ impl WebGL2RenderingContext {
 
     pub fn uniform4uiv1(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -853,10 +853,10 @@ impl WebGL2RenderingContext {
 
     pub fn uniform4uiv2(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -874,9 +874,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn uniform_matrix3x2fv0(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -888,9 +888,9 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix3x2fv1(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -908,11 +908,11 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix3x2fv2(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -931,9 +931,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn uniform_matrix4x2fv0(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -945,9 +945,9 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix4x2fv1(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -965,11 +965,11 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix4x2fv2(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -988,9 +988,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn uniform_matrix2x3fv0(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1002,9 +1002,9 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix2x3fv1(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -1022,11 +1022,11 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix2x3fv2(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1045,9 +1045,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn uniform_matrix4x3fv0(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1059,9 +1059,9 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix4x3fv1(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -1079,11 +1079,11 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix4x3fv2(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1102,9 +1102,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn uniform_matrix2x4fv0(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1116,9 +1116,9 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix2x4fv1(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -1136,11 +1136,11 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix2x4fv2(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1159,9 +1159,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn uniform_matrix3x4fv0(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1173,9 +1173,9 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix3x4fv1(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -1193,11 +1193,11 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix3x4fv2(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1214,7 +1214,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn vertex_attrib_i4i(&self, index: Any, x: Any, y: Any, z: Any, w: Any) -> Undefined {
+    pub fn vertex_attrib_i4i(&self, index: &Any, x: &Any, y: &Any, z: &Any, w: &Any) -> Undefined {
         self.inner
             .call(
                 "vertexAttribI4i",
@@ -1224,14 +1224,14 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn vertex_attrib_i4iv(&self, index: Any, values: Any) -> Undefined {
+    pub fn vertex_attrib_i4iv(&self, index: &Any, values: &Any) -> Undefined {
         self.inner
             .call("vertexAttribI4iv", &[index.into(), values.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn vertex_attrib_i4ui(&self, index: Any, x: Any, y: Any, z: Any, w: Any) -> Undefined {
+    pub fn vertex_attrib_i4ui(&self, index: &Any, x: &Any, y: &Any, z: &Any, w: &Any) -> Undefined {
         self.inner
             .call(
                 "vertexAttribI4ui",
@@ -1241,7 +1241,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn vertex_attrib_i4uiv(&self, index: Any, values: Any) -> Undefined {
+    pub fn vertex_attrib_i4uiv(&self, index: &Any, values: &Any) -> Undefined {
         self.inner
             .call("vertexAttribI4uiv", &[index.into(), values.into()])
             .as_::<Undefined>()
@@ -1250,11 +1250,11 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn vertex_attrib_i_pointer(
         &self,
-        index: Any,
-        size: Any,
-        type_: Any,
-        stride: Any,
-        offset: Any,
+        index: &Any,
+        size: &Any,
+        type_: &Any,
+        stride: &Any,
+        offset: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1271,7 +1271,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn vertex_attrib_divisor(&self, index: Any, divisor: Any) -> Undefined {
+    pub fn vertex_attrib_divisor(&self, index: &Any, divisor: &Any) -> Undefined {
         self.inner
             .call("vertexAttribDivisor", &[index.into(), divisor.into()])
             .as_::<Undefined>()
@@ -1280,10 +1280,10 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn draw_arrays_instanced(
         &self,
-        mode: Any,
-        first: Any,
-        count: Any,
-        instance_count: Any,
+        mode: &Any,
+        first: &Any,
+        count: &Any,
+        instance_count: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1301,11 +1301,11 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn draw_elements_instanced(
         &self,
-        mode: Any,
-        count: Any,
-        type_: Any,
-        offset: Any,
-        instance_count: Any,
+        mode: &Any,
+        count: &Any,
+        type_: &Any,
+        offset: &Any,
+        instance_count: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1324,12 +1324,12 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn draw_range_elements(
         &self,
-        mode: Any,
-        start: Any,
-        end: Any,
-        count: Any,
-        type_: Any,
-        offset: Any,
+        mode: &Any,
+        start: &Any,
+        end: &Any,
+        count: &Any,
+        type_: &Any,
+        offset: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1347,14 +1347,14 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn draw_buffers(&self, buffers: Sequence<Any>) -> Undefined {
+    pub fn draw_buffers(&self, buffers: &Sequence<Any>) -> Undefined {
         self.inner
             .call("drawBuffers", &[buffers.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn clear_bufferfv0(&self, buffer: Any, drawbuffer: Any, values: Any) -> Undefined {
+    pub fn clear_bufferfv0(&self, buffer: &Any, drawbuffer: &Any, values: &Any) -> Undefined {
         self.inner
             .call(
                 "clearBufferfv",
@@ -1365,9 +1365,9 @@ impl WebGL2RenderingContext {
 
     pub fn clear_bufferfv1(
         &self,
-        buffer: Any,
-        drawbuffer: Any,
-        values: Any,
+        buffer: &Any,
+        drawbuffer: &Any,
+        values: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -1384,7 +1384,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn clear_bufferiv0(&self, buffer: Any, drawbuffer: Any, values: Any) -> Undefined {
+    pub fn clear_bufferiv0(&self, buffer: &Any, drawbuffer: &Any, values: &Any) -> Undefined {
         self.inner
             .call(
                 "clearBufferiv",
@@ -1395,9 +1395,9 @@ impl WebGL2RenderingContext {
 
     pub fn clear_bufferiv1(
         &self,
-        buffer: Any,
-        drawbuffer: Any,
-        values: Any,
+        buffer: &Any,
+        drawbuffer: &Any,
+        values: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -1414,7 +1414,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn clear_bufferuiv0(&self, buffer: Any, drawbuffer: Any, values: Any) -> Undefined {
+    pub fn clear_bufferuiv0(&self, buffer: &Any, drawbuffer: &Any, values: &Any) -> Undefined {
         self.inner
             .call(
                 "clearBufferuiv",
@@ -1425,9 +1425,9 @@ impl WebGL2RenderingContext {
 
     pub fn clear_bufferuiv1(
         &self,
-        buffer: Any,
-        drawbuffer: Any,
-        values: Any,
+        buffer: &Any,
+        drawbuffer: &Any,
+        values: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -1446,10 +1446,10 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn clear_bufferfi(
         &self,
-        buffer: Any,
-        drawbuffer: Any,
-        depth: Any,
-        stencil: Any,
+        buffer: &Any,
+        drawbuffer: &Any,
+        depth: &Any,
+        stencil: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1470,40 +1470,40 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn delete_query(&self, query: WebGLQuery) -> Undefined {
+    pub fn delete_query(&self, query: &WebGLQuery) -> Undefined {
         self.inner
             .call("deleteQuery", &[query.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn is_query(&self, query: WebGLQuery) -> Any {
+    pub fn is_query(&self, query: &WebGLQuery) -> Any {
         self.inner.call("isQuery", &[query.into()]).as_::<Any>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn begin_query(&self, target: Any, query: WebGLQuery) -> Undefined {
+    pub fn begin_query(&self, target: &Any, query: &WebGLQuery) -> Undefined {
         self.inner
             .call("beginQuery", &[target.into(), query.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn end_query(&self, target: Any) -> Undefined {
+    pub fn end_query(&self, target: &Any) -> Undefined {
         self.inner
             .call("endQuery", &[target.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn get_query(&self, target: Any, pname: Any) -> WebGLQuery {
+    pub fn get_query(&self, target: &Any, pname: &Any) -> WebGLQuery {
         self.inner
             .call("getQuery", &[target.into(), pname.into()])
             .as_::<WebGLQuery>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn get_query_parameter(&self, query: WebGLQuery, pname: Any) -> Any {
+    pub fn get_query_parameter(&self, query: &WebGLQuery, pname: &Any) -> Any {
         self.inner
             .call("getQueryParameter", &[query.into(), pname.into()])
             .as_::<Any>()
@@ -1515,26 +1515,31 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn delete_sampler(&self, sampler: WebGLSampler) -> Undefined {
+    pub fn delete_sampler(&self, sampler: &WebGLSampler) -> Undefined {
         self.inner
             .call("deleteSampler", &[sampler.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn is_sampler(&self, sampler: WebGLSampler) -> Any {
+    pub fn is_sampler(&self, sampler: &WebGLSampler) -> Any {
         self.inner.call("isSampler", &[sampler.into()]).as_::<Any>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn bind_sampler(&self, unit: Any, sampler: WebGLSampler) -> Undefined {
+    pub fn bind_sampler(&self, unit: &Any, sampler: &WebGLSampler) -> Undefined {
         self.inner
             .call("bindSampler", &[unit.into(), sampler.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn sampler_parameteri(&self, sampler: WebGLSampler, pname: Any, param: Any) -> Undefined {
+    pub fn sampler_parameteri(
+        &self,
+        sampler: &WebGLSampler,
+        pname: &Any,
+        param: &Any,
+    ) -> Undefined {
         self.inner
             .call(
                 "samplerParameteri",
@@ -1544,7 +1549,12 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn sampler_parameterf(&self, sampler: WebGLSampler, pname: Any, param: Any) -> Undefined {
+    pub fn sampler_parameterf(
+        &self,
+        sampler: &WebGLSampler,
+        pname: &Any,
+        param: &Any,
+    ) -> Undefined {
         self.inner
             .call(
                 "samplerParameterf",
@@ -1554,33 +1564,33 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn get_sampler_parameter(&self, sampler: WebGLSampler, pname: Any) -> Any {
+    pub fn get_sampler_parameter(&self, sampler: &WebGLSampler, pname: &Any) -> Any {
         self.inner
             .call("getSamplerParameter", &[sampler.into(), pname.into()])
             .as_::<Any>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn fence_sync(&self, condition: Any, flags: Any) -> WebGLSync {
+    pub fn fence_sync(&self, condition: &Any, flags: &Any) -> WebGLSync {
         self.inner
             .call("fenceSync", &[condition.into(), flags.into()])
             .as_::<WebGLSync>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn is_sync(&self, sync: WebGLSync) -> Any {
+    pub fn is_sync(&self, sync: &WebGLSync) -> Any {
         self.inner.call("isSync", &[sync.into()]).as_::<Any>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn delete_sync(&self, sync: WebGLSync) -> Undefined {
+    pub fn delete_sync(&self, sync: &WebGLSync) -> Undefined {
         self.inner
             .call("deleteSync", &[sync.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn client_wait_sync(&self, sync: WebGLSync, flags: Any, timeout: Any) -> Any {
+    pub fn client_wait_sync(&self, sync: &WebGLSync, flags: &Any, timeout: &Any) -> Any {
         self.inner
             .call(
                 "clientWaitSync",
@@ -1590,14 +1600,14 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn wait_sync(&self, sync: WebGLSync, flags: Any, timeout: Any) -> Undefined {
+    pub fn wait_sync(&self, sync: &WebGLSync, flags: &Any, timeout: &Any) -> Undefined {
         self.inner
             .call("waitSync", &[sync.into(), flags.into(), timeout.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn get_sync_parameter(&self, sync: WebGLSync, pname: Any) -> Any {
+    pub fn get_sync_parameter(&self, sync: &WebGLSync, pname: &Any) -> Any {
         self.inner
             .call("getSyncParameter", &[sync.into(), pname.into()])
             .as_::<Any>()
@@ -1611,28 +1621,28 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn delete_transform_feedback(&self, tf: WebGLTransformFeedback) -> Undefined {
+    pub fn delete_transform_feedback(&self, tf: &WebGLTransformFeedback) -> Undefined {
         self.inner
             .call("deleteTransformFeedback", &[tf.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn is_transform_feedback(&self, tf: WebGLTransformFeedback) -> Any {
+    pub fn is_transform_feedback(&self, tf: &WebGLTransformFeedback) -> Any {
         self.inner
             .call("isTransformFeedback", &[tf.into()])
             .as_::<Any>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn bind_transform_feedback(&self, target: Any, tf: WebGLTransformFeedback) -> Undefined {
+    pub fn bind_transform_feedback(&self, target: &Any, tf: &WebGLTransformFeedback) -> Undefined {
         self.inner
             .call("bindTransformFeedback", &[target.into(), tf.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn begin_transform_feedback(&self, primitive_mode: Any) -> Undefined {
+    pub fn begin_transform_feedback(&self, primitive_mode: &Any) -> Undefined {
         self.inner
             .call("beginTransformFeedback", &[primitive_mode.into()])
             .as_::<Undefined>()
@@ -1648,9 +1658,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn transform_feedback_varyings(
         &self,
-        program: WebGLProgram,
-        varyings: Sequence<DOMString>,
-        buffer_mode: Any,
+        program: &WebGLProgram,
+        varyings: &Sequence<String>,
+        buffer_mode: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1663,8 +1673,8 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn get_transform_feedback_varying(
         &self,
-        program: WebGLProgram,
-        index: Any,
+        program: &WebGLProgram,
+        index: &Any,
     ) -> WebGLActiveInfo {
         self.inner
             .call(
@@ -1689,7 +1699,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn bind_buffer_base(&self, target: Any, index: Any, buffer: WebGLBuffer) -> Undefined {
+    pub fn bind_buffer_base(&self, target: &Any, index: &Any, buffer: &WebGLBuffer) -> Undefined {
         self.inner
             .call(
                 "bindBufferBase",
@@ -1701,11 +1711,11 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn bind_buffer_range(
         &self,
-        target: Any,
-        index: Any,
-        buffer: WebGLBuffer,
-        offset: Any,
-        size: Any,
+        target: &Any,
+        index: &Any,
+        buffer: &WebGLBuffer,
+        offset: &Any,
+        size: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1722,7 +1732,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn get_indexed_parameter(&self, target: Any, index: Any) -> Any {
+    pub fn get_indexed_parameter(&self, target: &Any, index: &Any) -> Any {
         self.inner
             .call("getIndexedParameter", &[target.into(), index.into()])
             .as_::<Any>()
@@ -1731,8 +1741,8 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn get_uniform_indices(
         &self,
-        program: WebGLProgram,
-        uniform_names: Sequence<DOMString>,
+        program: &WebGLProgram,
+        uniform_names: &Sequence<String>,
     ) -> Sequence<Any> {
         self.inner
             .call("getUniformIndices", &[program.into(), uniform_names.into()])
@@ -1742,9 +1752,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn get_active_uniforms(
         &self,
-        program: WebGLProgram,
-        uniform_indices: Sequence<Any>,
-        pname: Any,
+        program: &WebGLProgram,
+        uniform_indices: &Sequence<Any>,
+        pname: &Any,
     ) -> Any {
         self.inner
             .call(
@@ -1755,11 +1765,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn get_uniform_block_index(
-        &self,
-        program: WebGLProgram,
-        uniform_block_name: DOMString,
-    ) -> Any {
+    pub fn get_uniform_block_index(&self, program: &WebGLProgram, uniform_block_name: &str) -> Any {
         self.inner
             .call(
                 "getUniformBlockIndex",
@@ -1771,9 +1777,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn get_active_uniform_block_parameter(
         &self,
-        program: WebGLProgram,
-        uniform_block_index: Any,
-        pname: Any,
+        program: &WebGLProgram,
+        uniform_block_index: &Any,
+        pname: &Any,
     ) -> Any {
         self.inner
             .call(
@@ -1786,23 +1792,23 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn get_active_uniform_block_name(
         &self,
-        program: WebGLProgram,
-        uniform_block_index: Any,
-    ) -> DOMString {
+        program: &WebGLProgram,
+        uniform_block_index: &Any,
+    ) -> String {
         self.inner
             .call(
                 "getActiveUniformBlockName",
                 &[program.into(), uniform_block_index.into()],
             )
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl WebGL2RenderingContext {
     pub fn uniform_block_binding(
         &self,
-        program: WebGLProgram,
-        uniform_block_index: Any,
-        uniform_block_binding: Any,
+        program: &WebGLProgram,
+        uniform_block_index: &Any,
+        uniform_block_binding: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1824,21 +1830,21 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn delete_vertex_array(&self, vertex_array: WebGLVertexArrayObject) -> Undefined {
+    pub fn delete_vertex_array(&self, vertex_array: &WebGLVertexArrayObject) -> Undefined {
         self.inner
             .call("deleteVertexArray", &[vertex_array.into()])
             .as_::<Undefined>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn is_vertex_array(&self, vertex_array: WebGLVertexArrayObject) -> Any {
+    pub fn is_vertex_array(&self, vertex_array: &WebGLVertexArrayObject) -> Any {
         self.inner
             .call("isVertexArray", &[vertex_array.into()])
             .as_::<Any>()
     }
 }
 impl WebGL2RenderingContext {
-    pub fn bind_vertex_array(&self, array: WebGLVertexArrayObject) -> Undefined {
+    pub fn bind_vertex_array(&self, array: &WebGLVertexArrayObject) -> Undefined {
         self.inner
             .call("bindVertexArray", &[array.into()])
             .as_::<Undefined>()
@@ -1847,9 +1853,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn buffer_data0(
         &self,
-        target: Any,
-        src_data: Any,
-        usage: Any,
+        target: &Any,
+        src_data: &Any,
+        usage: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -1867,11 +1873,11 @@ impl WebGL2RenderingContext {
 
     pub fn buffer_data1(
         &self,
-        target: Any,
-        src_data: Any,
-        usage: Any,
+        target: &Any,
+        src_data: &Any,
+        usage: &Any,
         src_offset: u64,
-        length: Any,
+        length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1890,9 +1896,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn buffer_sub_data0(
         &self,
-        target: Any,
-        dst_byte_offset: Any,
-        src_data: Any,
+        target: &Any,
+        dst_byte_offset: &Any,
+        src_data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -1910,11 +1916,11 @@ impl WebGL2RenderingContext {
 
     pub fn buffer_sub_data1(
         &self,
-        target: Any,
-        dst_byte_offset: Any,
-        src_data: Any,
+        target: &Any,
+        dst_byte_offset: &Any,
+        src_data: &Any,
         src_offset: u64,
-        length: Any,
+        length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -1933,15 +1939,15 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn tex_image2_d(
         &self,
-        target: Any,
-        level: Any,
-        internalformat: Any,
-        width: Any,
-        height: Any,
-        border: Any,
-        format: Any,
-        type_: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        internalformat: &Any,
+        width: &Any,
+        height: &Any,
+        border: &Any,
+        format: &Any,
+        type_: &Any,
+        src_data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -1966,15 +1972,15 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn tex_sub_image2_d(
         &self,
-        target: Any,
-        level: Any,
-        xoffset: Any,
-        yoffset: Any,
-        width: Any,
-        height: Any,
-        format: Any,
-        type_: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        xoffset: &Any,
+        yoffset: &Any,
+        width: &Any,
+        height: &Any,
+        format: &Any,
+        type_: &Any,
+        src_data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -1999,13 +2005,13 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn compressed_tex_image2_d0(
         &self,
-        target: Any,
-        level: Any,
-        internalformat: Any,
-        width: Any,
-        height: Any,
-        border: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        internalformat: &Any,
+        width: &Any,
+        height: &Any,
+        border: &Any,
+        src_data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2025,13 +2031,13 @@ impl WebGL2RenderingContext {
 
     pub fn compressed_tex_image2_d1(
         &self,
-        target: Any,
-        level: Any,
-        internalformat: Any,
-        width: Any,
-        height: Any,
-        border: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        internalformat: &Any,
+        width: &Any,
+        height: &Any,
+        border: &Any,
+        src_data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -2053,15 +2059,15 @@ impl WebGL2RenderingContext {
 
     pub fn compressed_tex_image2_d2(
         &self,
-        target: Any,
-        level: Any,
-        internalformat: Any,
-        width: Any,
-        height: Any,
-        border: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        internalformat: &Any,
+        width: &Any,
+        height: &Any,
+        border: &Any,
+        src_data: &Any,
         src_offset: u64,
-        src_length_override: Any,
+        src_length_override: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2084,14 +2090,14 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn compressed_tex_sub_image2_d0(
         &self,
-        target: Any,
-        level: Any,
-        xoffset: Any,
-        yoffset: Any,
-        width: Any,
-        height: Any,
-        format: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        xoffset: &Any,
+        yoffset: &Any,
+        width: &Any,
+        height: &Any,
+        format: &Any,
+        src_data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2112,14 +2118,14 @@ impl WebGL2RenderingContext {
 
     pub fn compressed_tex_sub_image2_d1(
         &self,
-        target: Any,
-        level: Any,
-        xoffset: Any,
-        yoffset: Any,
-        width: Any,
-        height: Any,
-        format: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        xoffset: &Any,
+        yoffset: &Any,
+        width: &Any,
+        height: &Any,
+        format: &Any,
+        src_data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -2142,16 +2148,16 @@ impl WebGL2RenderingContext {
 
     pub fn compressed_tex_sub_image2_d2(
         &self,
-        target: Any,
-        level: Any,
-        xoffset: Any,
-        yoffset: Any,
-        width: Any,
-        height: Any,
-        format: Any,
-        src_data: Any,
+        target: &Any,
+        level: &Any,
+        xoffset: &Any,
+        yoffset: &Any,
+        width: &Any,
+        height: &Any,
+        format: &Any,
+        src_data: &Any,
         src_offset: u64,
-        src_length_override: Any,
+        src_length_override: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2173,7 +2179,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn uniform1fv0(&self, location: WebGLUniformLocation, data: Any) -> Undefined {
+    pub fn uniform1fv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform1fv", &[location.into(), data.into()])
             .as_::<Undefined>()
@@ -2181,8 +2187,8 @@ impl WebGL2RenderingContext {
 
     pub fn uniform1fv1(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -2195,10 +2201,10 @@ impl WebGL2RenderingContext {
 
     pub fn uniform1fv2(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2214,7 +2220,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn uniform2fv0(&self, location: WebGLUniformLocation, data: Any) -> Undefined {
+    pub fn uniform2fv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform2fv", &[location.into(), data.into()])
             .as_::<Undefined>()
@@ -2222,8 +2228,8 @@ impl WebGL2RenderingContext {
 
     pub fn uniform2fv1(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -2236,10 +2242,10 @@ impl WebGL2RenderingContext {
 
     pub fn uniform2fv2(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2255,7 +2261,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn uniform3fv0(&self, location: WebGLUniformLocation, data: Any) -> Undefined {
+    pub fn uniform3fv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform3fv", &[location.into(), data.into()])
             .as_::<Undefined>()
@@ -2263,8 +2269,8 @@ impl WebGL2RenderingContext {
 
     pub fn uniform3fv1(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -2277,10 +2283,10 @@ impl WebGL2RenderingContext {
 
     pub fn uniform3fv2(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2296,7 +2302,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn uniform4fv0(&self, location: WebGLUniformLocation, data: Any) -> Undefined {
+    pub fn uniform4fv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform4fv", &[location.into(), data.into()])
             .as_::<Undefined>()
@@ -2304,8 +2310,8 @@ impl WebGL2RenderingContext {
 
     pub fn uniform4fv1(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -2318,10 +2324,10 @@ impl WebGL2RenderingContext {
 
     pub fn uniform4fv2(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2337,7 +2343,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn uniform1iv0(&self, location: WebGLUniformLocation, data: Any) -> Undefined {
+    pub fn uniform1iv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform1iv", &[location.into(), data.into()])
             .as_::<Undefined>()
@@ -2345,8 +2351,8 @@ impl WebGL2RenderingContext {
 
     pub fn uniform1iv1(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -2359,10 +2365,10 @@ impl WebGL2RenderingContext {
 
     pub fn uniform1iv2(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2378,7 +2384,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn uniform2iv0(&self, location: WebGLUniformLocation, data: Any) -> Undefined {
+    pub fn uniform2iv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform2iv", &[location.into(), data.into()])
             .as_::<Undefined>()
@@ -2386,8 +2392,8 @@ impl WebGL2RenderingContext {
 
     pub fn uniform2iv1(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -2400,10 +2406,10 @@ impl WebGL2RenderingContext {
 
     pub fn uniform2iv2(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2419,7 +2425,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn uniform3iv0(&self, location: WebGLUniformLocation, data: Any) -> Undefined {
+    pub fn uniform3iv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform3iv", &[location.into(), data.into()])
             .as_::<Undefined>()
@@ -2427,8 +2433,8 @@ impl WebGL2RenderingContext {
 
     pub fn uniform3iv1(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -2441,10 +2447,10 @@ impl WebGL2RenderingContext {
 
     pub fn uniform3iv2(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2460,7 +2466,7 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
-    pub fn uniform4iv0(&self, location: WebGLUniformLocation, data: Any) -> Undefined {
+    pub fn uniform4iv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform4iv", &[location.into(), data.into()])
             .as_::<Undefined>()
@@ -2468,8 +2474,8 @@ impl WebGL2RenderingContext {
 
     pub fn uniform4iv1(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -2482,10 +2488,10 @@ impl WebGL2RenderingContext {
 
     pub fn uniform4iv2(
         &self,
-        location: WebGLUniformLocation,
-        data: Any,
+        location: &WebGLUniformLocation,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2503,9 +2509,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn uniform_matrix2fv0(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2517,9 +2523,9 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix2fv1(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -2537,11 +2543,11 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix2fv2(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2560,9 +2566,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn uniform_matrix3fv0(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2574,9 +2580,9 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix3fv1(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -2594,11 +2600,11 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix3fv2(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2617,9 +2623,9 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn uniform_matrix4fv0(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2631,9 +2637,9 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix4fv1(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
     ) -> Undefined {
         self.inner
@@ -2651,11 +2657,11 @@ impl WebGL2RenderingContext {
 
     pub fn uniform_matrix4fv2(
         &self,
-        location: WebGLUniformLocation,
-        transpose: Any,
-        data: Any,
+        location: &WebGLUniformLocation,
+        transpose: &Any,
+        data: &Any,
         src_offset: u64,
-        src_length: Any,
+        src_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -2674,13 +2680,13 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     pub fn read_pixels(
         &self,
-        x: Any,
-        y: Any,
-        width: Any,
-        height: Any,
-        format: Any,
-        type_: Any,
-        dst_data: Any,
+        x: &Any,
+        y: &Any,
+        width: &Any,
+        height: &Any,
+        format: &Any,
+        type_: &Any,
+        dst_data: &Any,
         dst_offset: u64,
     ) -> Undefined {
         self.inner

@@ -54,7 +54,7 @@ impl From<&CSSConditionRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSConditionRule);
 
 impl CSSConditionRule {
-    pub fn condition_text(&self) -> CSSOMString {
-        self.inner.get("conditionText").as_::<CSSOMString>()
+    pub fn condition_text(&self) -> String {
+        self.inner.get("conditionText").as_::<String>()
     }
 }

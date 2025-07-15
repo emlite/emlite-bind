@@ -54,28 +54,28 @@ impl From<&SubtleCrypto> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SubtleCrypto);
 
 impl SubtleCrypto {
-    pub fn encrypt(&self, algorithm: Any, key: CryptoKey, data: Any) -> Promise {
+    pub fn encrypt(&self, algorithm: &Any, key: &CryptoKey, data: &Any) -> Promise {
         self.inner
             .call("encrypt", &[algorithm.into(), key.into(), data.into()])
             .as_::<Promise>()
     }
 }
 impl SubtleCrypto {
-    pub fn decrypt(&self, algorithm: Any, key: CryptoKey, data: Any) -> Promise {
+    pub fn decrypt(&self, algorithm: &Any, key: &CryptoKey, data: &Any) -> Promise {
         self.inner
             .call("decrypt", &[algorithm.into(), key.into(), data.into()])
             .as_::<Promise>()
     }
 }
 impl SubtleCrypto {
-    pub fn sign(&self, algorithm: Any, key: CryptoKey, data: Any) -> Promise {
+    pub fn sign(&self, algorithm: &Any, key: &CryptoKey, data: &Any) -> Promise {
         self.inner
             .call("sign", &[algorithm.into(), key.into(), data.into()])
             .as_::<Promise>()
     }
 }
 impl SubtleCrypto {
-    pub fn verify(&self, algorithm: Any, key: CryptoKey, signature: Any, data: Any) -> Promise {
+    pub fn verify(&self, algorithm: &Any, key: &CryptoKey, signature: &Any, data: &Any) -> Promise {
         self.inner
             .call(
                 "verify",
@@ -85,7 +85,7 @@ impl SubtleCrypto {
     }
 }
 impl SubtleCrypto {
-    pub fn digest(&self, algorithm: Any, data: Any) -> Promise {
+    pub fn digest(&self, algorithm: &Any, data: &Any) -> Promise {
         self.inner
             .call("digest", &[algorithm.into(), data.into()])
             .as_::<Promise>()
@@ -94,9 +94,9 @@ impl SubtleCrypto {
 impl SubtleCrypto {
     pub fn generate_key(
         &self,
-        algorithm: Any,
+        algorithm: &Any,
         extractable: bool,
-        key_usages: Sequence<KeyUsage>,
+        key_usages: &Sequence<KeyUsage>,
     ) -> Promise {
         self.inner
             .call(
@@ -109,11 +109,11 @@ impl SubtleCrypto {
 impl SubtleCrypto {
     pub fn derive_key(
         &self,
-        algorithm: Any,
-        base_key: CryptoKey,
-        derived_key_type: Any,
+        algorithm: &Any,
+        base_key: &CryptoKey,
+        derived_key_type: &Any,
         extractable: bool,
-        key_usages: Sequence<KeyUsage>,
+        key_usages: &Sequence<KeyUsage>,
     ) -> Promise {
         self.inner
             .call(
@@ -130,13 +130,13 @@ impl SubtleCrypto {
     }
 }
 impl SubtleCrypto {
-    pub fn derive_bits0(&self, algorithm: Any, base_key: CryptoKey) -> Promise {
+    pub fn derive_bits0(&self, algorithm: &Any, base_key: &CryptoKey) -> Promise {
         self.inner
             .call("deriveBits", &[algorithm.into(), base_key.into()])
             .as_::<Promise>()
     }
 
-    pub fn derive_bits1(&self, algorithm: Any, base_key: CryptoKey, length: u32) -> Promise {
+    pub fn derive_bits1(&self, algorithm: &Any, base_key: &CryptoKey, length: u32) -> Promise {
         self.inner
             .call(
                 "deriveBits",
@@ -148,11 +148,11 @@ impl SubtleCrypto {
 impl SubtleCrypto {
     pub fn import_key(
         &self,
-        format: KeyFormat,
-        key_data: Any,
-        algorithm: Any,
+        format: &KeyFormat,
+        key_data: &Any,
+        algorithm: &Any,
         extractable: bool,
-        key_usages: Sequence<KeyUsage>,
+        key_usages: &Sequence<KeyUsage>,
     ) -> Promise {
         self.inner
             .call(
@@ -169,7 +169,7 @@ impl SubtleCrypto {
     }
 }
 impl SubtleCrypto {
-    pub fn export_key(&self, format: KeyFormat, key: CryptoKey) -> Promise {
+    pub fn export_key(&self, format: &KeyFormat, key: &CryptoKey) -> Promise {
         self.inner
             .call("exportKey", &[format.into(), key.into()])
             .as_::<Promise>()
@@ -178,10 +178,10 @@ impl SubtleCrypto {
 impl SubtleCrypto {
     pub fn wrap_key(
         &self,
-        format: KeyFormat,
-        key: CryptoKey,
-        wrapping_key: CryptoKey,
-        wrap_algorithm: Any,
+        format: &KeyFormat,
+        key: &CryptoKey,
+        wrapping_key: &CryptoKey,
+        wrap_algorithm: &Any,
     ) -> Promise {
         self.inner
             .call(
@@ -199,13 +199,13 @@ impl SubtleCrypto {
 impl SubtleCrypto {
     pub fn unwrap_key(
         &self,
-        format: KeyFormat,
-        wrapped_key: Any,
-        unwrapping_key: CryptoKey,
-        unwrap_algorithm: Any,
-        unwrapped_key_algorithm: Any,
+        format: &KeyFormat,
+        wrapped_key: &Any,
+        unwrapping_key: &CryptoKey,
+        unwrap_algorithm: &Any,
+        unwrapped_key_algorithm: &Any,
         extractable: bool,
-        key_usages: Sequence<KeyUsage>,
+        key_usages: &Sequence<KeyUsage>,
     ) -> Promise {
         self.inner
             .call(

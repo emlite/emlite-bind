@@ -54,21 +54,21 @@ impl From<&OES_draw_buffers_indexed> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(OES_draw_buffers_indexed);
 
 impl OES_draw_buffers_indexed {
-    pub fn enablei_oes(&self, target: Any, index: Any) -> Undefined {
+    pub fn enablei_oes(&self, target: &Any, index: &Any) -> Undefined {
         self.inner
             .call("enableiOES", &[target.into(), index.into()])
             .as_::<Undefined>()
     }
 }
 impl OES_draw_buffers_indexed {
-    pub fn disablei_oes(&self, target: Any, index: Any) -> Undefined {
+    pub fn disablei_oes(&self, target: &Any, index: &Any) -> Undefined {
         self.inner
             .call("disableiOES", &[target.into(), index.into()])
             .as_::<Undefined>()
     }
 }
 impl OES_draw_buffers_indexed {
-    pub fn blend_equationi_oes(&self, buf: Any, mode: Any) -> Undefined {
+    pub fn blend_equationi_oes(&self, buf: &Any, mode: &Any) -> Undefined {
         self.inner
             .call("blendEquationiOES", &[buf.into(), mode.into()])
             .as_::<Undefined>()
@@ -77,9 +77,9 @@ impl OES_draw_buffers_indexed {
 impl OES_draw_buffers_indexed {
     pub fn blend_equation_separatei_oes(
         &self,
-        buf: Any,
-        mode_rgb: Any,
-        mode_alpha: Any,
+        buf: &Any,
+        mode_rgb: &Any,
+        mode_alpha: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -90,7 +90,7 @@ impl OES_draw_buffers_indexed {
     }
 }
 impl OES_draw_buffers_indexed {
-    pub fn blend_funci_oes(&self, buf: Any, src: Any, dst: Any) -> Undefined {
+    pub fn blend_funci_oes(&self, buf: &Any, src: &Any, dst: &Any) -> Undefined {
         self.inner
             .call("blendFunciOES", &[buf.into(), src.into(), dst.into()])
             .as_::<Undefined>()
@@ -99,11 +99,11 @@ impl OES_draw_buffers_indexed {
 impl OES_draw_buffers_indexed {
     pub fn blend_func_separatei_oes(
         &self,
-        buf: Any,
-        src_rgb: Any,
-        dst_rgb: Any,
-        src_alpha: Any,
-        dst_alpha: Any,
+        buf: &Any,
+        src_rgb: &Any,
+        dst_rgb: &Any,
+        src_alpha: &Any,
+        dst_alpha: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -120,7 +120,7 @@ impl OES_draw_buffers_indexed {
     }
 }
 impl OES_draw_buffers_indexed {
-    pub fn color_maski_oes(&self, buf: Any, r: Any, g: Any, b: Any, a: Any) -> Undefined {
+    pub fn color_maski_oes(&self, buf: &Any, r: &Any, g: &Any, b: &Any, a: &Any) -> Undefined {
         self.inner
             .call(
                 "colorMaskiOES",

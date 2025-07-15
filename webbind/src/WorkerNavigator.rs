@@ -119,18 +119,18 @@ impl WorkerNavigator {
     }
 }
 impl WorkerNavigator {
-    pub fn oscpu(&self) -> DOMString {
-        self.inner.get("oscpu").as_::<DOMString>()
+    pub fn oscpu(&self) -> String {
+        self.inner.get("oscpu").as_::<String>()
     }
 }
 impl WorkerNavigator {
-    pub fn language(&self) -> DOMString {
-        self.inner.get("language").as_::<DOMString>()
+    pub fn language(&self) -> String {
+        self.inner.get("language").as_::<String>()
     }
 }
 impl WorkerNavigator {
-    pub fn languages(&self) -> FrozenArray<DOMString> {
-        self.inner.get("languages").as_::<FrozenArray<DOMString>>()
+    pub fn languages(&self) -> FrozenArray<String> {
+        self.inner.get("languages").as_::<FrozenArray<String>>()
     }
 }
 impl WorkerNavigator {

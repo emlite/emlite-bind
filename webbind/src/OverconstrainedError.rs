@@ -54,7 +54,7 @@ impl From<&OverconstrainedError> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(OverconstrainedError);
 
 impl OverconstrainedError {
-    pub fn new0(constraint: DOMString) -> OverconstrainedError {
+    pub fn new0(constraint: &str) -> OverconstrainedError {
         Self {
             inner: emlite::Val::global("OverconstrainedError")
                 .new(&[constraint.into()])
@@ -62,7 +62,7 @@ impl OverconstrainedError {
         }
     }
 
-    pub fn new1(constraint: DOMString, message: DOMString) -> OverconstrainedError {
+    pub fn new1(constraint: &str, message: &str) -> OverconstrainedError {
         Self {
             inner: emlite::Val::global("OverconstrainedError")
                 .new(&[constraint.into(), message.into()])
@@ -71,7 +71,7 @@ impl OverconstrainedError {
     }
 }
 impl OverconstrainedError {
-    pub fn constraint(&self) -> DOMString {
-        self.inner.get("constraint").as_::<DOMString>()
+    pub fn constraint(&self) -> String {
+        self.inner.get("constraint").as_::<String>()
     }
 }

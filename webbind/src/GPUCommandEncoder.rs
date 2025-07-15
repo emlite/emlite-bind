@@ -55,7 +55,7 @@ impl GPURenderPassDescriptor {
         self.inner.get("colorAttachments").as_::<Sequence<Any>>()
     }
 
-    pub fn set_color_attachments(&mut self, value: Sequence<Any>) {
+    pub fn set_color_attachments(&mut self, value: &Sequence<Any>) {
         self.inner.set("colorAttachments", value);
     }
 }
@@ -64,7 +64,7 @@ impl GPURenderPassDescriptor {
         self.inner.get("depthStencilAttachment").as_::<Any>()
     }
 
-    pub fn set_depth_stencil_attachment(&mut self, value: Any) {
+    pub fn set_depth_stencil_attachment(&mut self, value: &Any) {
         self.inner.set("depthStencilAttachment", value);
     }
 }
@@ -73,7 +73,7 @@ impl GPURenderPassDescriptor {
         self.inner.get("occlusionQuerySet").as_::<GPUQuerySet>()
     }
 
-    pub fn set_occlusion_query_set(&mut self, value: GPUQuerySet) {
+    pub fn set_occlusion_query_set(&mut self, value: &GPUQuerySet) {
         self.inner.set("occlusionQuerySet", value);
     }
 }
@@ -82,7 +82,7 @@ impl GPURenderPassDescriptor {
         self.inner.get("timestampWrites").as_::<Any>()
     }
 
-    pub fn set_timestamp_writes(&mut self, value: Any) {
+    pub fn set_timestamp_writes(&mut self, value: &Any) {
         self.inner.set("timestampWrites", value);
     }
 }
@@ -91,7 +91,7 @@ impl GPURenderPassDescriptor {
         self.inner.get("maxDrawCount").as_::<Any>()
     }
 
-    pub fn set_max_draw_count(&mut self, value: Any) {
+    pub fn set_max_draw_count(&mut self, value: &Any) {
         self.inner.set("maxDrawCount", value);
     }
 }
@@ -150,7 +150,7 @@ impl GPUComputePassDescriptor {
         self.inner.get("timestampWrites").as_::<Any>()
     }
 
-    pub fn set_timestamp_writes(&mut self, value: Any) {
+    pub fn set_timestamp_writes(&mut self, value: &Any) {
         self.inner.set("timestampWrites", value);
     }
 }
@@ -209,7 +209,7 @@ impl GPUTexelCopyBufferInfo {
         self.inner.get("buffer").as_::<GPUBuffer>()
     }
 
-    pub fn set_buffer(&mut self, value: GPUBuffer) {
+    pub fn set_buffer(&mut self, value: &GPUBuffer) {
         self.inner.set("buffer", value);
     }
 }
@@ -268,7 +268,7 @@ impl GPUTexelCopyTextureInfo {
         self.inner.get("texture").as_::<GPUTexture>()
     }
 
-    pub fn set_texture(&mut self, value: GPUTexture) {
+    pub fn set_texture(&mut self, value: &GPUTexture) {
         self.inner.set("texture", value);
     }
 }
@@ -277,7 +277,7 @@ impl GPUTexelCopyTextureInfo {
         self.inner.get("mipLevel").as_::<Any>()
     }
 
-    pub fn set_mip_level(&mut self, value: Any) {
+    pub fn set_mip_level(&mut self, value: &Any) {
         self.inner.set("mipLevel", value);
     }
 }
@@ -286,7 +286,7 @@ impl GPUTexelCopyTextureInfo {
         self.inner.get("origin").as_::<Any>()
     }
 
-    pub fn set_origin(&mut self, value: Any) {
+    pub fn set_origin(&mut self, value: &Any) {
         self.inner.set("origin", value);
     }
 }
@@ -295,7 +295,7 @@ impl GPUTexelCopyTextureInfo {
         self.inner.get("aspect").as_::<GPUTextureAspect>()
     }
 
-    pub fn set_aspect(&mut self, value: GPUTextureAspect) {
+    pub fn set_aspect(&mut self, value: &GPUTextureAspect) {
         self.inner.set("aspect", value);
     }
 }
@@ -403,7 +403,7 @@ impl From<&GPUCommandEncoder> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(GPUCommandEncoder);
 
 impl GPUCommandEncoder {
-    pub fn begin_render_pass(&self, descriptor: GPURenderPassDescriptor) -> GPURenderPassEncoder {
+    pub fn begin_render_pass(&self, descriptor: &GPURenderPassDescriptor) -> GPURenderPassEncoder {
         self.inner
             .call("beginRenderPass", &[descriptor.into()])
             .as_::<GPURenderPassEncoder>()
@@ -418,7 +418,7 @@ impl GPUCommandEncoder {
 
     pub fn begin_compute_pass1(
         &self,
-        descriptor: GPUComputePassDescriptor,
+        descriptor: &GPUComputePassDescriptor,
     ) -> GPUComputePassEncoder {
         self.inner
             .call("beginComputePass", &[descriptor.into()])
@@ -428,10 +428,10 @@ impl GPUCommandEncoder {
 impl GPUCommandEncoder {
     pub fn copy_buffer_to_buffer0(
         &self,
-        source: GPUBuffer,
-        source_offset: Any,
-        destination: GPUBuffer,
-        destination_offset: Any,
+        source: &GPUBuffer,
+        source_offset: &Any,
+        destination: &GPUBuffer,
+        destination_offset: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -448,11 +448,11 @@ impl GPUCommandEncoder {
 
     pub fn copy_buffer_to_buffer1(
         &self,
-        source: GPUBuffer,
-        source_offset: Any,
-        destination: GPUBuffer,
-        destination_offset: Any,
-        size: Any,
+        source: &GPUBuffer,
+        source_offset: &Any,
+        destination: &GPUBuffer,
+        destination_offset: &Any,
+        size: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -471,9 +471,9 @@ impl GPUCommandEncoder {
 impl GPUCommandEncoder {
     pub fn copy_buffer_to_texture(
         &self,
-        source: GPUTexelCopyBufferInfo,
-        destination: GPUTexelCopyTextureInfo,
-        copy_size: Any,
+        source: &GPUTexelCopyBufferInfo,
+        destination: &GPUTexelCopyTextureInfo,
+        copy_size: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -486,9 +486,9 @@ impl GPUCommandEncoder {
 impl GPUCommandEncoder {
     pub fn copy_texture_to_buffer(
         &self,
-        source: GPUTexelCopyTextureInfo,
-        destination: GPUTexelCopyBufferInfo,
-        copy_size: Any,
+        source: &GPUTexelCopyTextureInfo,
+        destination: &GPUTexelCopyBufferInfo,
+        copy_size: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -501,9 +501,9 @@ impl GPUCommandEncoder {
 impl GPUCommandEncoder {
     pub fn copy_texture_to_texture(
         &self,
-        source: GPUTexelCopyTextureInfo,
-        destination: GPUTexelCopyTextureInfo,
-        copy_size: Any,
+        source: &GPUTexelCopyTextureInfo,
+        destination: &GPUTexelCopyTextureInfo,
+        copy_size: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -514,19 +514,19 @@ impl GPUCommandEncoder {
     }
 }
 impl GPUCommandEncoder {
-    pub fn clear_buffer0(&self, buffer: GPUBuffer) -> Undefined {
+    pub fn clear_buffer0(&self, buffer: &GPUBuffer) -> Undefined {
         self.inner
             .call("clearBuffer", &[buffer.into()])
             .as_::<Undefined>()
     }
 
-    pub fn clear_buffer1(&self, buffer: GPUBuffer, offset: Any) -> Undefined {
+    pub fn clear_buffer1(&self, buffer: &GPUBuffer, offset: &Any) -> Undefined {
         self.inner
             .call("clearBuffer", &[buffer.into(), offset.into()])
             .as_::<Undefined>()
     }
 
-    pub fn clear_buffer2(&self, buffer: GPUBuffer, offset: Any, size: Any) -> Undefined {
+    pub fn clear_buffer2(&self, buffer: &GPUBuffer, offset: &Any, size: &Any) -> Undefined {
         self.inner
             .call("clearBuffer", &[buffer.into(), offset.into(), size.into()])
             .as_::<Undefined>()
@@ -535,11 +535,11 @@ impl GPUCommandEncoder {
 impl GPUCommandEncoder {
     pub fn resolve_query_set(
         &self,
-        query_set: GPUQuerySet,
-        first_query: Any,
-        query_count: Any,
-        destination: GPUBuffer,
-        destination_offset: Any,
+        query_set: &GPUQuerySet,
+        first_query: &Any,
+        query_count: &Any,
+        destination: &GPUBuffer,
+        destination_offset: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -560,23 +560,23 @@ impl GPUCommandEncoder {
         self.inner.call("finish", &[]).as_::<GPUCommandBuffer>()
     }
 
-    pub fn finish1(&self, descriptor: GPUCommandBufferDescriptor) -> GPUCommandBuffer {
+    pub fn finish1(&self, descriptor: &GPUCommandBufferDescriptor) -> GPUCommandBuffer {
         self.inner
             .call("finish", &[descriptor.into()])
             .as_::<GPUCommandBuffer>()
     }
 }
 impl GPUCommandEncoder {
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 
-    pub fn set_label(&mut self, value: USVString) {
+    pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }
 }
 impl GPUCommandEncoder {
-    pub fn push_debug_group(&self, group_label: USVString) -> Undefined {
+    pub fn push_debug_group(&self, group_label: &str) -> Undefined {
         self.inner
             .call("pushDebugGroup", &[group_label.into()])
             .as_::<Undefined>()
@@ -588,7 +588,7 @@ impl GPUCommandEncoder {
     }
 }
 impl GPUCommandEncoder {
-    pub fn insert_debug_marker(&self, marker_label: USVString) -> Undefined {
+    pub fn insert_debug_marker(&self, marker_label: &str) -> Undefined {
         self.inner
             .call("insertDebugMarker", &[marker_label.into()])
             .as_::<Undefined>()

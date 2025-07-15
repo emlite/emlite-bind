@@ -123,16 +123,16 @@ impl RTCLocalSessionDescriptionInit {
         self.inner.get("type").as_::<RTCSdpType>()
     }
 
-    pub fn set_type_(&mut self, value: RTCSdpType) {
+    pub fn set_type_(&mut self, value: &RTCSdpType) {
         self.inner.set("type", value);
     }
 }
 impl RTCLocalSessionDescriptionInit {
-    pub fn sdp(&self) -> DOMString {
-        self.inner.get("sdp").as_::<DOMString>()
+    pub fn sdp(&self) -> String {
+        self.inner.get("sdp").as_::<String>()
     }
 
-    pub fn set_sdp(&mut self, value: DOMString) {
+    pub fn set_sdp(&mut self, value: &str) {
         self.inner.set("sdp", value);
     }
 }
@@ -191,16 +191,16 @@ impl RTCSessionDescriptionInit {
         self.inner.get("type").as_::<RTCSdpType>()
     }
 
-    pub fn set_type_(&mut self, value: RTCSdpType) {
+    pub fn set_type_(&mut self, value: &RTCSdpType) {
         self.inner.set("type", value);
     }
 }
 impl RTCSessionDescriptionInit {
-    pub fn sdp(&self) -> DOMString {
-        self.inner.get("sdp").as_::<DOMString>()
+    pub fn sdp(&self) -> String {
+        self.inner.get("sdp").as_::<String>()
     }
 
-    pub fn set_sdp(&mut self, value: DOMString) {
+    pub fn set_sdp(&mut self, value: &str) {
         self.inner.set("sdp", value);
     }
 }
@@ -259,7 +259,7 @@ impl RTCConfiguration {
         self.inner.get("iceServers").as_::<Sequence<Any>>()
     }
 
-    pub fn set_ice_servers(&mut self, value: Sequence<Any>) {
+    pub fn set_ice_servers(&mut self, value: &Sequence<Any>) {
         self.inner.set("iceServers", value);
     }
 }
@@ -270,7 +270,7 @@ impl RTCConfiguration {
             .as_::<RTCIceTransportPolicy>()
     }
 
-    pub fn set_ice_transport_policy(&mut self, value: RTCIceTransportPolicy) {
+    pub fn set_ice_transport_policy(&mut self, value: &RTCIceTransportPolicy) {
         self.inner.set("iceTransportPolicy", value);
     }
 }
@@ -279,7 +279,7 @@ impl RTCConfiguration {
         self.inner.get("bundlePolicy").as_::<RTCBundlePolicy>()
     }
 
-    pub fn set_bundle_policy(&mut self, value: RTCBundlePolicy) {
+    pub fn set_bundle_policy(&mut self, value: &RTCBundlePolicy) {
         self.inner.set("bundlePolicy", value);
     }
 }
@@ -288,7 +288,7 @@ impl RTCConfiguration {
         self.inner.get("rtcpMuxPolicy").as_::<RTCRtcpMuxPolicy>()
     }
 
-    pub fn set_rtcp_mux_policy(&mut self, value: RTCRtcpMuxPolicy) {
+    pub fn set_rtcp_mux_policy(&mut self, value: &RTCRtcpMuxPolicy) {
         self.inner.set("rtcpMuxPolicy", value);
     }
 }
@@ -299,7 +299,7 @@ impl RTCConfiguration {
             .as_::<Sequence<RTCCertificate>>()
     }
 
-    pub fn set_certificates(&mut self, value: Sequence<RTCCertificate>) {
+    pub fn set_certificates(&mut self, value: &Sequence<RTCCertificate>) {
         self.inner.set("certificates", value);
     }
 }
@@ -363,29 +363,29 @@ impl From<&RTCIdentityProviderOptions> for emlite::Val {
 }
 
 impl RTCIdentityProviderOptions {
-    pub fn protocol(&self) -> DOMString {
-        self.inner.get("protocol").as_::<DOMString>()
+    pub fn protocol(&self) -> String {
+        self.inner.get("protocol").as_::<String>()
     }
 
-    pub fn set_protocol(&mut self, value: DOMString) {
+    pub fn set_protocol(&mut self, value: &str) {
         self.inner.set("protocol", value);
     }
 }
 impl RTCIdentityProviderOptions {
-    pub fn username_hint(&self) -> DOMString {
-        self.inner.get("usernameHint").as_::<DOMString>()
+    pub fn username_hint(&self) -> String {
+        self.inner.get("usernameHint").as_::<String>()
     }
 
-    pub fn set_username_hint(&mut self, value: DOMString) {
+    pub fn set_username_hint(&mut self, value: &str) {
         self.inner.set("usernameHint", value);
     }
 }
 impl RTCIdentityProviderOptions {
-    pub fn peer_identity(&self) -> DOMString {
-        self.inner.get("peerIdentity").as_::<DOMString>()
+    pub fn peer_identity(&self) -> String {
+        self.inner.get("peerIdentity").as_::<String>()
     }
 
-    pub fn set_peer_identity(&mut self, value: DOMString) {
+    pub fn set_peer_identity(&mut self, value: &str) {
         self.inner.set("peerIdentity", value);
     }
 }
@@ -446,7 +446,7 @@ impl RTCRtpTransceiverInit {
             .as_::<RTCRtpTransceiverDirection>()
     }
 
-    pub fn set_direction(&mut self, value: RTCRtpTransceiverDirection) {
+    pub fn set_direction(&mut self, value: &RTCRtpTransceiverDirection) {
         self.inner.set("direction", value);
     }
 }
@@ -455,7 +455,7 @@ impl RTCRtpTransceiverInit {
         self.inner.get("streams").as_::<Sequence<MediaStream>>()
     }
 
-    pub fn set_streams(&mut self, value: Sequence<MediaStream>) {
+    pub fn set_streams(&mut self, value: &Sequence<MediaStream>) {
         self.inner.set("streams", value);
     }
 }
@@ -464,7 +464,7 @@ impl RTCRtpTransceiverInit {
         self.inner.get("sendEncodings").as_::<Sequence<Any>>()
     }
 
-    pub fn set_send_encodings(&mut self, value: Sequence<Any>) {
+    pub fn set_send_encodings(&mut self, value: &Sequence<Any>) {
         self.inner.set("sendEncodings", value);
     }
 }
@@ -546,11 +546,11 @@ impl RTCDataChannelInit {
     }
 }
 impl RTCDataChannelInit {
-    pub fn protocol(&self) -> USVString {
-        self.inner.get("protocol").as_::<USVString>()
+    pub fn protocol(&self) -> String {
+        self.inner.get("protocol").as_::<String>()
     }
 
-    pub fn set_protocol(&mut self, value: USVString) {
+    pub fn set_protocol(&mut self, value: &str) {
         self.inner.set("protocol", value);
     }
 }
@@ -634,7 +634,7 @@ impl RTCPeerConnection {
         }
     }
 
-    pub fn new1(configuration: RTCConfiguration) -> RTCPeerConnection {
+    pub fn new1(configuration: &RTCConfiguration) -> RTCPeerConnection {
         Self {
             inner: emlite::Val::global("RTCPeerConnection")
                 .new(&[configuration.into()])
@@ -643,7 +643,11 @@ impl RTCPeerConnection {
     }
 }
 impl RTCPeerConnection {
-    pub fn create_offer0(&self, success_callback: Function, failure_callback: Function) -> Promise {
+    pub fn create_offer0(
+        &self,
+        success_callback: &Function,
+        failure_callback: &Function,
+    ) -> Promise {
         self.inner
             .call(
                 "createOffer",
@@ -654,9 +658,9 @@ impl RTCPeerConnection {
 
     pub fn create_offer1(
         &self,
-        success_callback: Function,
-        failure_callback: Function,
-        options: RTCOfferOptions,
+        success_callback: &Function,
+        failure_callback: &Function,
+        options: &RTCOfferOptions,
     ) -> Promise {
         self.inner
             .call(
@@ -671,7 +675,11 @@ impl RTCPeerConnection {
     }
 }
 impl RTCPeerConnection {
-    pub fn create_answer(&self, success_callback: Function, failure_callback: Function) -> Promise {
+    pub fn create_answer(
+        &self,
+        success_callback: &Function,
+        failure_callback: &Function,
+    ) -> Promise {
         self.inner
             .call(
                 "createAnswer",
@@ -683,9 +691,9 @@ impl RTCPeerConnection {
 impl RTCPeerConnection {
     pub fn set_local_description(
         &self,
-        description: RTCLocalSessionDescriptionInit,
-        success_callback: Any,
-        failure_callback: Function,
+        description: &RTCLocalSessionDescriptionInit,
+        success_callback: &Any,
+        failure_callback: &Function,
     ) -> Promise {
         self.inner
             .call(
@@ -723,9 +731,9 @@ impl RTCPeerConnection {
 impl RTCPeerConnection {
     pub fn set_remote_description(
         &self,
-        description: RTCSessionDescriptionInit,
-        success_callback: Any,
-        failure_callback: Function,
+        description: &RTCSessionDescriptionInit,
+        success_callback: &Any,
+        failure_callback: &Function,
     ) -> Promise {
         self.inner
             .call(
@@ -763,9 +771,9 @@ impl RTCPeerConnection {
 impl RTCPeerConnection {
     pub fn add_ice_candidate(
         &self,
-        candidate: RTCIceCandidateInit,
-        success_callback: Any,
-        failure_callback: Function,
+        candidate: &RTCIceCandidateInit,
+        success_callback: &Any,
+        failure_callback: &Function,
     ) -> Promise {
         self.inner
             .call(
@@ -827,7 +835,7 @@ impl RTCPeerConnection {
         self.inner.call("setConfiguration", &[]).as_::<Undefined>()
     }
 
-    pub fn set_configuration1(&self, configuration: RTCConfiguration) -> Undefined {
+    pub fn set_configuration1(&self, configuration: &RTCConfiguration) -> Undefined {
         self.inner
             .call("setConfiguration", &[configuration.into()])
             .as_::<Undefined>()
@@ -843,7 +851,7 @@ impl RTCPeerConnection {
         self.inner.get("onnegotiationneeded").as_::<Any>()
     }
 
-    pub fn set_onnegotiationneeded(&mut self, value: Any) {
+    pub fn set_onnegotiationneeded(&mut self, value: &Any) {
         self.inner.set("onnegotiationneeded", value);
     }
 }
@@ -852,7 +860,7 @@ impl RTCPeerConnection {
         self.inner.get("onicecandidate").as_::<Any>()
     }
 
-    pub fn set_onicecandidate(&mut self, value: Any) {
+    pub fn set_onicecandidate(&mut self, value: &Any) {
         self.inner.set("onicecandidate", value);
     }
 }
@@ -861,7 +869,7 @@ impl RTCPeerConnection {
         self.inner.get("onicecandidateerror").as_::<Any>()
     }
 
-    pub fn set_onicecandidateerror(&mut self, value: Any) {
+    pub fn set_onicecandidateerror(&mut self, value: &Any) {
         self.inner.set("onicecandidateerror", value);
     }
 }
@@ -870,7 +878,7 @@ impl RTCPeerConnection {
         self.inner.get("onsignalingstatechange").as_::<Any>()
     }
 
-    pub fn set_onsignalingstatechange(&mut self, value: Any) {
+    pub fn set_onsignalingstatechange(&mut self, value: &Any) {
         self.inner.set("onsignalingstatechange", value);
     }
 }
@@ -879,7 +887,7 @@ impl RTCPeerConnection {
         self.inner.get("oniceconnectionstatechange").as_::<Any>()
     }
 
-    pub fn set_oniceconnectionstatechange(&mut self, value: Any) {
+    pub fn set_oniceconnectionstatechange(&mut self, value: &Any) {
         self.inner.set("oniceconnectionstatechange", value);
     }
 }
@@ -888,7 +896,7 @@ impl RTCPeerConnection {
         self.inner.get("onicegatheringstatechange").as_::<Any>()
     }
 
-    pub fn set_onicegatheringstatechange(&mut self, value: Any) {
+    pub fn set_onicegatheringstatechange(&mut self, value: &Any) {
         self.inner.set("onicegatheringstatechange", value);
     }
 }
@@ -897,12 +905,12 @@ impl RTCPeerConnection {
         self.inner.get("onconnectionstatechange").as_::<Any>()
     }
 
-    pub fn set_onconnectionstatechange(&mut self, value: Any) {
+    pub fn set_onconnectionstatechange(&mut self, value: &Any) {
         self.inner.set("onconnectionstatechange", value);
     }
 }
 impl RTCPeerConnection {
-    pub fn set_identity_provider0(&self, provider: DOMString) -> Undefined {
+    pub fn set_identity_provider0(&self, provider: &str) -> Undefined {
         self.inner
             .call("setIdentityProvider", &[provider.into()])
             .as_::<Undefined>()
@@ -910,8 +918,8 @@ impl RTCPeerConnection {
 
     pub fn set_identity_provider1(
         &self,
-        provider: DOMString,
-        options: RTCIdentityProviderOptions,
+        provider: &str,
+        options: &RTCIdentityProviderOptions,
     ) -> Undefined {
         self.inner
             .call("setIdentityProvider", &[provider.into(), options.into()])
@@ -931,17 +939,17 @@ impl RTCPeerConnection {
     }
 }
 impl RTCPeerConnection {
-    pub fn idp_login_url(&self) -> DOMString {
-        self.inner.get("idpLoginUrl").as_::<DOMString>()
+    pub fn idp_login_url(&self) -> String {
+        self.inner.get("idpLoginUrl").as_::<String>()
     }
 }
 impl RTCPeerConnection {
-    pub fn idp_error_info(&self) -> DOMString {
-        self.inner.get("idpErrorInfo").as_::<DOMString>()
+    pub fn idp_error_info(&self) -> String {
+        self.inner.get("idpErrorInfo").as_::<String>()
     }
 }
 impl RTCPeerConnection {
-    pub fn generate_certificate(keygen_algorithm: Any) -> Promise {
+    pub fn generate_certificate(keygen_algorithm: &Any) -> Promise {
         emlite::Val::global("RTCPeerConnection")
             .call("generateCertificate", &[keygen_algorithm.into()])
             .as_::<Promise>()
@@ -969,21 +977,21 @@ impl RTCPeerConnection {
     }
 }
 impl RTCPeerConnection {
-    pub fn add_track(&self, track: MediaStreamTrack, streams: MediaStream) -> RTCRtpSender {
+    pub fn add_track(&self, track: &MediaStreamTrack, streams: &MediaStream) -> RTCRtpSender {
         self.inner
             .call("addTrack", &[track.into(), streams.into()])
             .as_::<RTCRtpSender>()
     }
 }
 impl RTCPeerConnection {
-    pub fn remove_track(&self, sender: RTCRtpSender) -> Undefined {
+    pub fn remove_track(&self, sender: &RTCRtpSender) -> Undefined {
         self.inner
             .call("removeTrack", &[sender.into()])
             .as_::<Undefined>()
     }
 }
 impl RTCPeerConnection {
-    pub fn add_transceiver0(&self, track_or_kind: Any) -> RTCRtpTransceiver {
+    pub fn add_transceiver0(&self, track_or_kind: &Any) -> RTCRtpTransceiver {
         self.inner
             .call("addTransceiver", &[track_or_kind.into()])
             .as_::<RTCRtpTransceiver>()
@@ -991,8 +999,8 @@ impl RTCPeerConnection {
 
     pub fn add_transceiver1(
         &self,
-        track_or_kind: Any,
-        init: RTCRtpTransceiverInit,
+        track_or_kind: &Any,
+        init: &RTCRtpTransceiverInit,
     ) -> RTCRtpTransceiver {
         self.inner
             .call("addTransceiver", &[track_or_kind.into(), init.into()])
@@ -1004,7 +1012,7 @@ impl RTCPeerConnection {
         self.inner.get("ontrack").as_::<Any>()
     }
 
-    pub fn set_ontrack(&mut self, value: Any) {
+    pub fn set_ontrack(&mut self, value: &Any) {
         self.inner.set("ontrack", value);
     }
 }
@@ -1014,7 +1022,7 @@ impl RTCPeerConnection {
     }
 }
 impl RTCPeerConnection {
-    pub fn create_data_channel0(&self, label: USVString) -> RTCDataChannel {
+    pub fn create_data_channel0(&self, label: &str) -> RTCDataChannel {
         self.inner
             .call("createDataChannel", &[label.into()])
             .as_::<RTCDataChannel>()
@@ -1022,8 +1030,8 @@ impl RTCPeerConnection {
 
     pub fn create_data_channel1(
         &self,
-        label: USVString,
-        data_channel_dict: RTCDataChannelInit,
+        label: &str,
+        data_channel_dict: &RTCDataChannelInit,
     ) -> RTCDataChannel {
         self.inner
             .call(
@@ -1038,7 +1046,7 @@ impl RTCPeerConnection {
         self.inner.get("ondatachannel").as_::<Any>()
     }
 
-    pub fn set_ondatachannel(&mut self, value: Any) {
+    pub fn set_ondatachannel(&mut self, value: &Any) {
         self.inner.set("ondatachannel", value);
     }
 }
@@ -1047,7 +1055,7 @@ impl RTCPeerConnection {
         self.inner.call("getStats", &[]).as_::<Promise>()
     }
 
-    pub fn get_stats1(&self, selector: MediaStreamTrack) -> Promise {
+    pub fn get_stats1(&self, selector: &MediaStreamTrack) -> Promise {
         self.inner
             .call("getStats", &[selector.into()])
             .as_::<Promise>()

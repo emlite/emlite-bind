@@ -54,34 +54,34 @@ impl From<&DocumentType> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(DocumentType);
 
 impl DocumentType {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl DocumentType {
-    pub fn public_id(&self) -> DOMString {
-        self.inner.get("publicId").as_::<DOMString>()
+    pub fn public_id(&self) -> String {
+        self.inner.get("publicId").as_::<String>()
     }
 }
 impl DocumentType {
-    pub fn system_id(&self) -> DOMString {
-        self.inner.get("systemId").as_::<DOMString>()
+    pub fn system_id(&self) -> String {
+        self.inner.get("systemId").as_::<String>()
     }
 }
 impl DocumentType {
-    pub fn before(&self, nodes: Any) -> Undefined {
+    pub fn before(&self, nodes: &Any) -> Undefined {
         self.inner
             .call("before", &[nodes.into()])
             .as_::<Undefined>()
     }
 }
 impl DocumentType {
-    pub fn after(&self, nodes: Any) -> Undefined {
+    pub fn after(&self, nodes: &Any) -> Undefined {
         self.inner.call("after", &[nodes.into()]).as_::<Undefined>()
     }
 }
 impl DocumentType {
-    pub fn replace_with(&self, nodes: Any) -> Undefined {
+    pub fn replace_with(&self, nodes: &Any) -> Undefined {
         self.inner
             .call("replaceWith", &[nodes.into()])
             .as_::<Undefined>()

@@ -54,22 +54,22 @@ impl From<&CSSFontPaletteValuesRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSFontPaletteValuesRule);
 
 impl CSSFontPaletteValuesRule {
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl CSSFontPaletteValuesRule {
-    pub fn font_family(&self) -> CSSOMString {
-        self.inner.get("fontFamily").as_::<CSSOMString>()
+    pub fn font_family(&self) -> String {
+        self.inner.get("fontFamily").as_::<String>()
     }
 }
 impl CSSFontPaletteValuesRule {
-    pub fn base_palette(&self) -> CSSOMString {
-        self.inner.get("basePalette").as_::<CSSOMString>()
+    pub fn base_palette(&self) -> String {
+        self.inner.get("basePalette").as_::<String>()
     }
 }
 impl CSSFontPaletteValuesRule {
-    pub fn override_colors(&self) -> CSSOMString {
-        self.inner.get("overrideColors").as_::<CSSOMString>()
+    pub fn override_colors(&self) -> String {
+        self.inner.get("overrideColors").as_::<String>()
     }
 }

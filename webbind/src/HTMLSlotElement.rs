@@ -122,11 +122,11 @@ impl HTMLSlotElement {
     }
 }
 impl HTMLSlotElement {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
@@ -137,7 +137,7 @@ impl HTMLSlotElement {
             .as_::<Sequence<Node>>()
     }
 
-    pub fn assigned_nodes1(&self, options: AssignedNodesOptions) -> Sequence<Node> {
+    pub fn assigned_nodes1(&self, options: &AssignedNodesOptions) -> Sequence<Node> {
         self.inner
             .call("assignedNodes", &[options.into()])
             .as_::<Sequence<Node>>()
@@ -150,14 +150,14 @@ impl HTMLSlotElement {
             .as_::<Sequence<Element>>()
     }
 
-    pub fn assigned_elements1(&self, options: AssignedNodesOptions) -> Sequence<Element> {
+    pub fn assigned_elements1(&self, options: &AssignedNodesOptions) -> Sequence<Element> {
         self.inner
             .call("assignedElements", &[options.into()])
             .as_::<Sequence<Element>>()
     }
 }
 impl HTMLSlotElement {
-    pub fn assign(&self, nodes: Any) -> Undefined {
+    pub fn assign(&self, nodes: &Any) -> Undefined {
         self.inner
             .call("assign", &[nodes.into()])
             .as_::<Undefined>()

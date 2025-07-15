@@ -54,12 +54,12 @@ impl From<&Subscriber> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Subscriber);
 
 impl Subscriber {
-    pub fn next(&self, value: Any) -> Undefined {
+    pub fn next(&self, value: &Any) -> Undefined {
         self.inner.call("next", &[value.into()]).as_::<Undefined>()
     }
 }
 impl Subscriber {
-    pub fn error(&self, error: Any) -> Undefined {
+    pub fn error(&self, error: &Any) -> Undefined {
         self.inner.call("error", &[error.into()]).as_::<Undefined>()
     }
 }
@@ -69,7 +69,7 @@ impl Subscriber {
     }
 }
 impl Subscriber {
-    pub fn add_teardown(&self, teardown: Any) -> Undefined {
+    pub fn add_teardown(&self, teardown: &Any) -> Undefined {
         self.inner
             .call("addTeardown", &[teardown.into()])
             .as_::<Undefined>()

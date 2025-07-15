@@ -59,12 +59,12 @@ impl MediaKeyStatusMap {
     }
 }
 impl MediaKeyStatusMap {
-    pub fn has(&self, key_id: Any) -> bool {
+    pub fn has(&self, key_id: &Any) -> bool {
         self.inner.call("has", &[key_id.into()]).as_::<bool>()
     }
 }
 impl MediaKeyStatusMap {
-    pub fn get(&self, key_id: Any) -> Any {
+    pub fn get(&self, key_id: &Any) -> Any {
         self.inner.call("get", &[key_id.into()]).as_::<Any>()
     }
 }

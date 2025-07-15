@@ -54,7 +54,7 @@ impl From<&CSSMathMax> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSMathMax);
 
 impl CSSMathMax {
-    pub fn new(args: Any) -> CSSMathMax {
+    pub fn new(args: &Any) -> CSSMathMax {
         Self {
             inner: emlite::Val::global("CSSMathMax")
                 .new(&[args.into()])

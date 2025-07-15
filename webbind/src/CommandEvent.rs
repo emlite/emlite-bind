@@ -54,7 +54,7 @@ impl From<&CommandEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CommandEvent);
 
 impl CommandEvent {
-    pub fn new0(type_: DOMString) -> CommandEvent {
+    pub fn new0(type_: &str) -> CommandEvent {
         Self {
             inner: emlite::Val::global("CommandEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl CommandEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> CommandEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> CommandEvent {
         Self {
             inner: emlite::Val::global("CommandEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -76,7 +76,7 @@ impl CommandEvent {
     }
 }
 impl CommandEvent {
-    pub fn command(&self) -> DOMString {
-        self.inner.get("command").as_::<DOMString>()
+    pub fn command(&self) -> String {
+        self.inner.get("command").as_::<String>()
     }
 }

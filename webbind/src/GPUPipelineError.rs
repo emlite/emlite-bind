@@ -62,7 +62,7 @@ impl GPUPipelineError {
         }
     }
 
-    pub fn new1(message: DOMString) -> GPUPipelineError {
+    pub fn new1(message: &str) -> GPUPipelineError {
         Self {
             inner: emlite::Val::global("GPUPipelineError")
                 .new(&[message.into()])
@@ -70,7 +70,7 @@ impl GPUPipelineError {
         }
     }
 
-    pub fn new2(message: DOMString, options: Any) -> GPUPipelineError {
+    pub fn new2(message: &str, options: &Any) -> GPUPipelineError {
         Self {
             inner: emlite::Val::global("GPUPipelineError")
                 .new(&[message.into(), options.into()])

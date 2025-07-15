@@ -55,7 +55,7 @@ impl GetComposedRangesOptions {
         self.inner.get("shadowRoots").as_::<Sequence<ShadowRoot>>()
     }
 
-    pub fn set_shadow_roots(&mut self, value: Sequence<ShadowRoot>) {
+    pub fn set_shadow_roots(&mut self, value: &Sequence<ShadowRoot>) {
         self.inner.set("shadowRoots", value);
     }
 }
@@ -143,13 +143,13 @@ impl Selection {
     }
 }
 impl Selection {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 }
 impl Selection {
-    pub fn direction(&self) -> DOMString {
-        self.inner.get("direction").as_::<DOMString>()
+    pub fn direction(&self) -> String {
+        self.inner.get("direction").as_::<String>()
     }
 }
 impl Selection {
@@ -160,14 +160,14 @@ impl Selection {
     }
 }
 impl Selection {
-    pub fn add_range(&self, range: Range) -> Undefined {
+    pub fn add_range(&self, range: &Range) -> Undefined {
         self.inner
             .call("addRange", &[range.into()])
             .as_::<Undefined>()
     }
 }
 impl Selection {
-    pub fn remove_range(&self, range: Range) -> Undefined {
+    pub fn remove_range(&self, range: &Range) -> Undefined {
         self.inner
             .call("removeRange", &[range.into()])
             .as_::<Undefined>()
@@ -190,33 +190,36 @@ impl Selection {
             .as_::<Sequence<StaticRange>>()
     }
 
-    pub fn get_composed_ranges1(&self, options: GetComposedRangesOptions) -> Sequence<StaticRange> {
+    pub fn get_composed_ranges1(
+        &self,
+        options: &GetComposedRangesOptions,
+    ) -> Sequence<StaticRange> {
         self.inner
             .call("getComposedRanges", &[options.into()])
             .as_::<Sequence<StaticRange>>()
     }
 }
 impl Selection {
-    pub fn collapse0(&self, node: Node) -> Undefined {
+    pub fn collapse0(&self, node: &Node) -> Undefined {
         self.inner
             .call("collapse", &[node.into()])
             .as_::<Undefined>()
     }
 
-    pub fn collapse1(&self, node: Node, offset: u32) -> Undefined {
+    pub fn collapse1(&self, node: &Node, offset: u32) -> Undefined {
         self.inner
             .call("collapse", &[node.into(), offset.into()])
             .as_::<Undefined>()
     }
 }
 impl Selection {
-    pub fn set_position0(&self, node: Node) -> Undefined {
+    pub fn set_position0(&self, node: &Node) -> Undefined {
         self.inner
             .call("setPosition", &[node.into()])
             .as_::<Undefined>()
     }
 
-    pub fn set_position1(&self, node: Node, offset: u32) -> Undefined {
+    pub fn set_position1(&self, node: &Node, offset: u32) -> Undefined {
         self.inner
             .call("setPosition", &[node.into(), offset.into()])
             .as_::<Undefined>()
@@ -233,11 +236,11 @@ impl Selection {
     }
 }
 impl Selection {
-    pub fn extend0(&self, node: Node) -> Undefined {
+    pub fn extend0(&self, node: &Node) -> Undefined {
         self.inner.call("extend", &[node.into()]).as_::<Undefined>()
     }
 
-    pub fn extend1(&self, node: Node, offset: u32) -> Undefined {
+    pub fn extend1(&self, node: &Node, offset: u32) -> Undefined {
         self.inner
             .call("extend", &[node.into(), offset.into()])
             .as_::<Undefined>()
@@ -246,9 +249,9 @@ impl Selection {
 impl Selection {
     pub fn set_base_and_extent(
         &self,
-        anchor_node: Node,
+        anchor_node: &Node,
         anchor_offset: u32,
-        focus_node: Node,
+        focus_node: &Node,
         focus_offset: u32,
     ) -> Undefined {
         self.inner
@@ -265,7 +268,7 @@ impl Selection {
     }
 }
 impl Selection {
-    pub fn select_all_children(&self, node: Node) -> Undefined {
+    pub fn select_all_children(&self, node: &Node) -> Undefined {
         self.inner
             .call("selectAllChildren", &[node.into()])
             .as_::<Undefined>()
@@ -276,24 +279,19 @@ impl Selection {
         self.inner.call("modify", &[]).as_::<Undefined>()
     }
 
-    pub fn modify1(&self, alter: DOMString) -> Undefined {
+    pub fn modify1(&self, alter: &str) -> Undefined {
         self.inner
             .call("modify", &[alter.into()])
             .as_::<Undefined>()
     }
 
-    pub fn modify2(&self, alter: DOMString, direction: DOMString) -> Undefined {
+    pub fn modify2(&self, alter: &str, direction: &str) -> Undefined {
         self.inner
             .call("modify", &[alter.into(), direction.into()])
             .as_::<Undefined>()
     }
 
-    pub fn modify3(
-        &self,
-        alter: DOMString,
-        direction: DOMString,
-        granularity: DOMString,
-    ) -> Undefined {
+    pub fn modify3(&self, alter: &str, direction: &str, granularity: &str) -> Undefined {
         self.inner
             .call(
                 "modify",
@@ -310,13 +308,13 @@ impl Selection {
     }
 }
 impl Selection {
-    pub fn contains_node0(&self, node: Node) -> bool {
+    pub fn contains_node0(&self, node: &Node) -> bool {
         self.inner
             .call("containsNode", &[node.into()])
             .as_::<bool>()
     }
 
-    pub fn contains_node1(&self, node: Node, allow_partial_containment: bool) -> bool {
+    pub fn contains_node1(&self, node: &Node, allow_partial_containment: bool) -> bool {
         self.inner
             .call(
                 "containsNode",

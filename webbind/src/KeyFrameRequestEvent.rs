@@ -54,7 +54,7 @@ impl From<&KeyFrameRequestEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(KeyFrameRequestEvent);
 
 impl KeyFrameRequestEvent {
-    pub fn new0(type_: DOMString) -> KeyFrameRequestEvent {
+    pub fn new0(type_: &str) -> KeyFrameRequestEvent {
         Self {
             inner: emlite::Val::global("KeyFrameRequestEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl KeyFrameRequestEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, rid: DOMString) -> KeyFrameRequestEvent {
+    pub fn new1(type_: &str, rid: &str) -> KeyFrameRequestEvent {
         Self {
             inner: emlite::Val::global("KeyFrameRequestEvent")
                 .new(&[type_.into(), rid.into()])
@@ -71,7 +71,7 @@ impl KeyFrameRequestEvent {
     }
 }
 impl KeyFrameRequestEvent {
-    pub fn rid(&self) -> DOMString {
-        self.inner.get("rid").as_::<DOMString>()
+    pub fn rid(&self) -> String {
+        self.inner.get("rid").as_::<String>()
     }
 }

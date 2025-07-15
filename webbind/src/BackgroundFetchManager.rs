@@ -113,20 +113,20 @@ impl From<&BackgroundFetchManager> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(BackgroundFetchManager);
 
 impl BackgroundFetchManager {
-    pub fn fetch0(&self, id: DOMString, requests: Any) -> Promise {
+    pub fn fetch0(&self, id: &str, requests: &Any) -> Promise {
         self.inner
             .call("fetch", &[id.into(), requests.into()])
             .as_::<Promise>()
     }
 
-    pub fn fetch1(&self, id: DOMString, requests: Any, options: BackgroundFetchOptions) -> Promise {
+    pub fn fetch1(&self, id: &str, requests: &Any, options: &BackgroundFetchOptions) -> Promise {
         self.inner
             .call("fetch", &[id.into(), requests.into(), options.into()])
             .as_::<Promise>()
     }
 }
 impl BackgroundFetchManager {
-    pub fn get(&self, id: DOMString) -> Promise {
+    pub fn get(&self, id: &str) -> Promise {
         self.inner.call("get", &[id.into()]).as_::<Promise>()
     }
 }

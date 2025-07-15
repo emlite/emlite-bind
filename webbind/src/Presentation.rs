@@ -60,7 +60,7 @@ impl Presentation {
             .as_::<PresentationRequest>()
     }
 
-    pub fn set_default_request(&mut self, value: PresentationRequest) {
+    pub fn set_default_request(&mut self, value: &PresentationRequest) {
         self.inner.set("defaultRequest", value);
     }
 }

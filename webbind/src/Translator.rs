@@ -55,7 +55,7 @@ impl TranslatorCreateOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -64,7 +64,7 @@ impl TranslatorCreateOptions {
         self.inner.get("monitor").as_::<Function>()
     }
 
-    pub fn set_monitor(&mut self, value: Function) {
+    pub fn set_monitor(&mut self, value: &Function) {
         self.inner.set("monitor", value);
     }
 }
@@ -119,20 +119,20 @@ impl From<&TranslatorCreateCoreOptions> for emlite::Val {
 }
 
 impl TranslatorCreateCoreOptions {
-    pub fn source_language(&self) -> DOMString {
-        self.inner.get("sourceLanguage").as_::<DOMString>()
+    pub fn source_language(&self) -> String {
+        self.inner.get("sourceLanguage").as_::<String>()
     }
 
-    pub fn set_source_language(&mut self, value: DOMString) {
+    pub fn set_source_language(&mut self, value: &str) {
         self.inner.set("sourceLanguage", value);
     }
 }
 impl TranslatorCreateCoreOptions {
-    pub fn target_language(&self) -> DOMString {
-        self.inner.get("targetLanguage").as_::<DOMString>()
+    pub fn target_language(&self) -> String {
+        self.inner.get("targetLanguage").as_::<String>()
     }
 
-    pub fn set_target_language(&mut self, value: DOMString) {
+    pub fn set_target_language(&mut self, value: &str) {
         self.inner.set("targetLanguage", value);
     }
 }
@@ -191,7 +191,7 @@ impl TranslatorTranslateOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -249,34 +249,34 @@ impl From<&Translator> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Translator);
 
 impl Translator {
-    pub fn create(options: TranslatorCreateOptions) -> Promise {
+    pub fn create(options: &TranslatorCreateOptions) -> Promise {
         emlite::Val::global("Translator")
             .call("create", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl Translator {
-    pub fn availability(options: TranslatorCreateCoreOptions) -> Promise {
+    pub fn availability(options: &TranslatorCreateCoreOptions) -> Promise {
         emlite::Val::global("Translator")
             .call("availability", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl Translator {
-    pub fn translate0(&self, input: DOMString) -> Promise {
+    pub fn translate0(&self, input: &str) -> Promise {
         self.inner
             .call("translate", &[input.into()])
             .as_::<Promise>()
     }
 
-    pub fn translate1(&self, input: DOMString, options: TranslatorTranslateOptions) -> Promise {
+    pub fn translate1(&self, input: &str, options: &TranslatorTranslateOptions) -> Promise {
         self.inner
             .call("translate", &[input.into(), options.into()])
             .as_::<Promise>()
     }
 }
 impl Translator {
-    pub fn translate_streaming0(&self, input: DOMString) -> ReadableStream {
+    pub fn translate_streaming0(&self, input: &str) -> ReadableStream {
         self.inner
             .call("translateStreaming", &[input.into()])
             .as_::<ReadableStream>()
@@ -284,8 +284,8 @@ impl Translator {
 
     pub fn translate_streaming1(
         &self,
-        input: DOMString,
-        options: TranslatorTranslateOptions,
+        input: &str,
+        options: &TranslatorTranslateOptions,
     ) -> ReadableStream {
         self.inner
             .call("translateStreaming", &[input.into(), options.into()])
@@ -293,17 +293,17 @@ impl Translator {
     }
 }
 impl Translator {
-    pub fn source_language(&self) -> DOMString {
-        self.inner.get("sourceLanguage").as_::<DOMString>()
+    pub fn source_language(&self) -> String {
+        self.inner.get("sourceLanguage").as_::<String>()
     }
 }
 impl Translator {
-    pub fn target_language(&self) -> DOMString {
-        self.inner.get("targetLanguage").as_::<DOMString>()
+    pub fn target_language(&self) -> String {
+        self.inner.get("targetLanguage").as_::<String>()
     }
 }
 impl Translator {
-    pub fn measure_input_usage0(&self, input: DOMString) -> Promise {
+    pub fn measure_input_usage0(&self, input: &str) -> Promise {
         self.inner
             .call("measureInputUsage", &[input.into()])
             .as_::<Promise>()
@@ -311,8 +311,8 @@ impl Translator {
 
     pub fn measure_input_usage1(
         &self,
-        input: DOMString,
-        options: TranslatorTranslateOptions,
+        input: &str,
+        options: &TranslatorTranslateOptions,
     ) -> Promise {
         self.inner
             .call("measureInputUsage", &[input.into(), options.into()])

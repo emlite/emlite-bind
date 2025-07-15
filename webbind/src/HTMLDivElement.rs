@@ -63,11 +63,11 @@ impl HTMLDivElement {
     }
 }
 impl HTMLDivElement {
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> String {
+        self.inner.get("align").as_::<String>()
     }
 
-    pub fn set_align(&mut self, value: DOMString) {
+    pub fn set_align(&mut self, value: &str) {
         self.inner.set("align", value);
     }
 }

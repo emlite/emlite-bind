@@ -72,11 +72,11 @@ impl HTMLUListElement {
     }
 }
 impl HTMLUListElement {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: DOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }

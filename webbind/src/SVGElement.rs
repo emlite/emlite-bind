@@ -141,7 +141,7 @@ impl SVGElement {
         self.inner.get("onbeforexrselect").as_::<Any>()
     }
 
-    pub fn set_onbeforexrselect(&mut self, value: Any) {
+    pub fn set_onbeforexrselect(&mut self, value: &Any) {
         self.inner.set("onbeforexrselect", value);
     }
 }
@@ -163,11 +163,11 @@ impl SVGElement {
     }
 }
 impl SVGElement {
-    pub fn nonce(&self) -> DOMString {
-        self.inner.get("nonce").as_::<DOMString>()
+    pub fn nonce(&self) -> String {
+        self.inner.get("nonce").as_::<String>()
     }
 
-    pub fn set_nonce(&mut self, value: DOMString) {
+    pub fn set_nonce(&mut self, value: &str) {
         self.inner.set("nonce", value);
     }
 }
@@ -194,7 +194,7 @@ impl SVGElement {
         self.inner.call("focus", &[]).as_::<Undefined>()
     }
 
-    pub fn focus1(&self, options: FocusOptions) -> Undefined {
+    pub fn focus1(&self, options: &FocusOptions) -> Undefined {
         self.inner
             .call("focus", &[options.into()])
             .as_::<Undefined>()

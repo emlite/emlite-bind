@@ -51,11 +51,11 @@ impl From<&MediaKeysPolicy> for emlite::Val {
 }
 
 impl MediaKeysPolicy {
-    pub fn min_hdcp_version(&self) -> DOMString {
-        self.inner.get("minHdcpVersion").as_::<DOMString>()
+    pub fn min_hdcp_version(&self) -> String {
+        self.inner.get("minHdcpVersion").as_::<String>()
     }
 
-    pub fn set_min_hdcp_version(&mut self, value: DOMString) {
+    pub fn set_min_hdcp_version(&mut self, value: &str) {
         self.inner.set("minHdcpVersion", value);
     }
 }
@@ -119,7 +119,7 @@ impl MediaKeys {
             .as_::<MediaKeySession>()
     }
 
-    pub fn create_session1(&self, session_type: MediaKeySessionType) -> MediaKeySession {
+    pub fn create_session1(&self, session_type: &MediaKeySessionType) -> MediaKeySession {
         self.inner
             .call("createSession", &[session_type.into()])
             .as_::<MediaKeySession>()
@@ -130,14 +130,14 @@ impl MediaKeys {
         self.inner.call("getStatusForPolicy", &[]).as_::<Promise>()
     }
 
-    pub fn get_status_for_policy1(&self, policy: MediaKeysPolicy) -> Promise {
+    pub fn get_status_for_policy1(&self, policy: &MediaKeysPolicy) -> Promise {
         self.inner
             .call("getStatusForPolicy", &[policy.into()])
             .as_::<Promise>()
     }
 }
 impl MediaKeys {
-    pub fn set_server_certificate(&self, server_certificate: Any) -> Promise {
+    pub fn set_server_certificate(&self, server_certificate: &Any) -> Promise {
         self.inner
             .call("setServerCertificate", &[server_certificate.into()])
             .as_::<Promise>()

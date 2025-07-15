@@ -54,7 +54,7 @@ impl From<&RTCError> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(RTCError);
 
 impl RTCError {
-    pub fn new0(init: Any) -> RTCError {
+    pub fn new0(init: &Any) -> RTCError {
         Self {
             inner: emlite::Val::global("RTCError")
                 .new(&[init.into()])
@@ -62,7 +62,7 @@ impl RTCError {
         }
     }
 
-    pub fn new1(init: Any, message: DOMString) -> RTCError {
+    pub fn new1(init: &Any, message: &str) -> RTCError {
         Self {
             inner: emlite::Val::global("RTCError")
                 .new(&[init.into(), message.into()])

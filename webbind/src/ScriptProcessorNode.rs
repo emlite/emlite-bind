@@ -58,7 +58,7 @@ impl ScriptProcessorNode {
         self.inner.get("onaudioprocess").as_::<Any>()
     }
 
-    pub fn set_onaudioprocess(&mut self, value: Any) {
+    pub fn set_onaudioprocess(&mut self, value: &Any) {
         self.inner.set("onaudioprocess", value);
     }
 }

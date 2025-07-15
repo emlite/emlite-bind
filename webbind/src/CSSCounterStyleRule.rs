@@ -54,101 +54,101 @@ impl From<&CSSCounterStyleRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSCounterStyleRule);
 
 impl CSSCounterStyleRule {
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: CSSOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
 impl CSSCounterStyleRule {
-    pub fn system(&self) -> CSSOMString {
-        self.inner.get("system").as_::<CSSOMString>()
+    pub fn system(&self) -> String {
+        self.inner.get("system").as_::<String>()
     }
 
-    pub fn set_system(&mut self, value: CSSOMString) {
+    pub fn set_system(&mut self, value: &str) {
         self.inner.set("system", value);
     }
 }
 impl CSSCounterStyleRule {
-    pub fn symbols(&self) -> CSSOMString {
-        self.inner.get("symbols").as_::<CSSOMString>()
+    pub fn symbols(&self) -> String {
+        self.inner.get("symbols").as_::<String>()
     }
 
-    pub fn set_symbols(&mut self, value: CSSOMString) {
+    pub fn set_symbols(&mut self, value: &str) {
         self.inner.set("symbols", value);
     }
 }
 impl CSSCounterStyleRule {
-    pub fn additive_symbols(&self) -> CSSOMString {
-        self.inner.get("additiveSymbols").as_::<CSSOMString>()
+    pub fn additive_symbols(&self) -> String {
+        self.inner.get("additiveSymbols").as_::<String>()
     }
 
-    pub fn set_additive_symbols(&mut self, value: CSSOMString) {
+    pub fn set_additive_symbols(&mut self, value: &str) {
         self.inner.set("additiveSymbols", value);
     }
 }
 impl CSSCounterStyleRule {
-    pub fn negative(&self) -> CSSOMString {
-        self.inner.get("negative").as_::<CSSOMString>()
+    pub fn negative(&self) -> String {
+        self.inner.get("negative").as_::<String>()
     }
 
-    pub fn set_negative(&mut self, value: CSSOMString) {
+    pub fn set_negative(&mut self, value: &str) {
         self.inner.set("negative", value);
     }
 }
 impl CSSCounterStyleRule {
-    pub fn prefix(&self) -> CSSOMString {
-        self.inner.get("prefix").as_::<CSSOMString>()
+    pub fn prefix(&self) -> String {
+        self.inner.get("prefix").as_::<String>()
     }
 
-    pub fn set_prefix(&mut self, value: CSSOMString) {
+    pub fn set_prefix(&mut self, value: &str) {
         self.inner.set("prefix", value);
     }
 }
 impl CSSCounterStyleRule {
-    pub fn suffix(&self) -> CSSOMString {
-        self.inner.get("suffix").as_::<CSSOMString>()
+    pub fn suffix(&self) -> String {
+        self.inner.get("suffix").as_::<String>()
     }
 
-    pub fn set_suffix(&mut self, value: CSSOMString) {
+    pub fn set_suffix(&mut self, value: &str) {
         self.inner.set("suffix", value);
     }
 }
 impl CSSCounterStyleRule {
-    pub fn range(&self) -> CSSOMString {
-        self.inner.get("range").as_::<CSSOMString>()
+    pub fn range(&self) -> String {
+        self.inner.get("range").as_::<String>()
     }
 
-    pub fn set_range(&mut self, value: CSSOMString) {
+    pub fn set_range(&mut self, value: &str) {
         self.inner.set("range", value);
     }
 }
 impl CSSCounterStyleRule {
-    pub fn pad(&self) -> CSSOMString {
-        self.inner.get("pad").as_::<CSSOMString>()
+    pub fn pad(&self) -> String {
+        self.inner.get("pad").as_::<String>()
     }
 
-    pub fn set_pad(&mut self, value: CSSOMString) {
+    pub fn set_pad(&mut self, value: &str) {
         self.inner.set("pad", value);
     }
 }
 impl CSSCounterStyleRule {
-    pub fn speak_as(&self) -> CSSOMString {
-        self.inner.get("speakAs").as_::<CSSOMString>()
+    pub fn speak_as(&self) -> String {
+        self.inner.get("speakAs").as_::<String>()
     }
 
-    pub fn set_speak_as(&mut self, value: CSSOMString) {
+    pub fn set_speak_as(&mut self, value: &str) {
         self.inner.set("speakAs", value);
     }
 }
 impl CSSCounterStyleRule {
-    pub fn fallback(&self) -> CSSOMString {
-        self.inner.get("fallback").as_::<CSSOMString>()
+    pub fn fallback(&self) -> String {
+        self.inner.get("fallback").as_::<String>()
     }
 
-    pub fn set_fallback(&mut self, value: CSSOMString) {
+    pub fn set_fallback(&mut self, value: &str) {
         self.inner.set("fallback", value);
     }
 }

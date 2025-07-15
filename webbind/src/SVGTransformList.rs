@@ -69,7 +69,7 @@ impl SVGTransformList {
     }
 }
 impl SVGTransformList {
-    pub fn initialize(&self, new_item: SVGTransform) -> SVGTransform {
+    pub fn initialize(&self, new_item: &SVGTransform) -> SVGTransform {
         self.inner
             .call("initialize", &[new_item.into()])
             .as_::<SVGTransform>()
@@ -83,14 +83,14 @@ impl SVGTransformList {
     }
 }
 impl SVGTransformList {
-    pub fn insert_item_before(&self, new_item: SVGTransform, index: u32) -> SVGTransform {
+    pub fn insert_item_before(&self, new_item: &SVGTransform, index: u32) -> SVGTransform {
         self.inner
             .call("insertItemBefore", &[new_item.into(), index.into()])
             .as_::<SVGTransform>()
     }
 }
 impl SVGTransformList {
-    pub fn replace_item(&self, new_item: SVGTransform, index: u32) -> SVGTransform {
+    pub fn replace_item(&self, new_item: &SVGTransform, index: u32) -> SVGTransform {
         self.inner
             .call("replaceItem", &[new_item.into(), index.into()])
             .as_::<SVGTransform>()
@@ -104,7 +104,7 @@ impl SVGTransformList {
     }
 }
 impl SVGTransformList {
-    pub fn append_item(&self, new_item: SVGTransform) -> SVGTransform {
+    pub fn append_item(&self, new_item: &SVGTransform) -> SVGTransform {
         self.inner
             .call("appendItem", &[new_item.into()])
             .as_::<SVGTransform>()
@@ -117,7 +117,7 @@ impl SVGTransformList {
             .as_::<SVGTransform>()
     }
 
-    pub fn create_svg_transform_from_matrix1(&self, matrix: DOMMatrix2DInit) -> SVGTransform {
+    pub fn create_svg_transform_from_matrix1(&self, matrix: &DOMMatrix2DInit) -> SVGTransform {
         self.inner
             .call("createSVGTransformFromMatrix", &[matrix.into()])
             .as_::<SVGTransform>()

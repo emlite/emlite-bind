@@ -63,38 +63,38 @@ impl HTMLEmbedElement {
     }
 }
 impl HTMLEmbedElement {
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> String {
+        self.inner.get("src").as_::<String>()
     }
 
-    pub fn set_src(&mut self, value: USVString) {
+    pub fn set_src(&mut self, value: &str) {
         self.inner.set("src", value);
     }
 }
 impl HTMLEmbedElement {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: DOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }
 impl HTMLEmbedElement {
-    pub fn width(&self) -> DOMString {
-        self.inner.get("width").as_::<DOMString>()
+    pub fn width(&self) -> String {
+        self.inner.get("width").as_::<String>()
     }
 
-    pub fn set_width(&mut self, value: DOMString) {
+    pub fn set_width(&mut self, value: &str) {
         self.inner.set("width", value);
     }
 }
 impl HTMLEmbedElement {
-    pub fn height(&self) -> DOMString {
-        self.inner.get("height").as_::<DOMString>()
+    pub fn height(&self) -> String {
+        self.inner.get("height").as_::<String>()
     }
 
-    pub fn set_height(&mut self, value: DOMString) {
+    pub fn set_height(&mut self, value: &str) {
         self.inner.set("height", value);
     }
 }
@@ -104,20 +104,20 @@ impl HTMLEmbedElement {
     }
 }
 impl HTMLEmbedElement {
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> String {
+        self.inner.get("align").as_::<String>()
     }
 
-    pub fn set_align(&mut self, value: DOMString) {
+    pub fn set_align(&mut self, value: &str) {
         self.inner.set("align", value);
     }
 }
 impl HTMLEmbedElement {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }

@@ -63,29 +63,29 @@ impl HTMLFontElement {
     }
 }
 impl HTMLFontElement {
-    pub fn color(&self) -> DOMString {
-        self.inner.get("color").as_::<DOMString>()
+    pub fn color(&self) -> String {
+        self.inner.get("color").as_::<String>()
     }
 
-    pub fn set_color(&mut self, value: DOMString) {
+    pub fn set_color(&mut self, value: &str) {
         self.inner.set("color", value);
     }
 }
 impl HTMLFontElement {
-    pub fn face(&self) -> DOMString {
-        self.inner.get("face").as_::<DOMString>()
+    pub fn face(&self) -> String {
+        self.inner.get("face").as_::<String>()
     }
 
-    pub fn set_face(&mut self, value: DOMString) {
+    pub fn set_face(&mut self, value: &str) {
         self.inner.set("face", value);
     }
 }
 impl HTMLFontElement {
-    pub fn size(&self) -> DOMString {
-        self.inner.get("size").as_::<DOMString>()
+    pub fn size(&self) -> String {
+        self.inner.get("size").as_::<String>()
     }
 
-    pub fn set_size(&mut self, value: DOMString) {
+    pub fn set_size(&mut self, value: &str) {
         self.inner.set("size", value);
     }
 }

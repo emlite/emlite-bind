@@ -54,7 +54,7 @@ impl From<&NavigationEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(NavigationEvent);
 
 impl NavigationEvent {
-    pub fn new0(type_: DOMString) -> NavigationEvent {
+    pub fn new0(type_: &str) -> NavigationEvent {
         Self {
             inner: emlite::Val::global("NavigationEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl NavigationEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> NavigationEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> NavigationEvent {
         Self {
             inner: emlite::Val::global("NavigationEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -54,21 +54,21 @@ impl From<&BluetoothUUID> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(BluetoothUUID);
 
 impl BluetoothUUID {
-    pub fn get_service(name: Any) -> Any {
+    pub fn get_service(name: &Any) -> Any {
         emlite::Val::global("BluetoothUUID")
             .call("getService", &[name.into()])
             .as_::<Any>()
     }
 }
 impl BluetoothUUID {
-    pub fn get_characteristic(name: Any) -> Any {
+    pub fn get_characteristic(name: &Any) -> Any {
         emlite::Val::global("BluetoothUUID")
             .call("getCharacteristic", &[name.into()])
             .as_::<Any>()
     }
 }
 impl BluetoothUUID {
-    pub fn get_descriptor(name: Any) -> Any {
+    pub fn get_descriptor(name: &Any) -> Any {
         emlite::Val::global("BluetoothUUID")
             .call("getDescriptor", &[name.into()])
             .as_::<Any>()

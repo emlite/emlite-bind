@@ -63,11 +63,11 @@ impl VTTRegion {
     }
 }
 impl VTTRegion {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 
-    pub fn set_id(&mut self, value: DOMString) {
+    pub fn set_id(&mut self, value: &str) {
         self.inner.set("id", value);
     }
 }
@@ -130,7 +130,7 @@ impl VTTRegion {
         self.inner.get("scroll").as_::<ScrollSetting>()
     }
 
-    pub fn set_scroll(&mut self, value: ScrollSetting) {
+    pub fn set_scroll(&mut self, value: &ScrollSetting) {
         self.inner.set("scroll", value);
     }
 }

@@ -64,13 +64,13 @@ impl PerformanceScriptTiming {
     }
 }
 impl PerformanceScriptTiming {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl PerformanceScriptTiming {
-    pub fn entry_type(&self) -> DOMString {
-        self.inner.get("entryType").as_::<DOMString>()
+    pub fn entry_type(&self) -> String {
+        self.inner.get("entryType").as_::<String>()
     }
 }
 impl PerformanceScriptTiming {
@@ -79,8 +79,8 @@ impl PerformanceScriptTiming {
     }
 }
 impl PerformanceScriptTiming {
-    pub fn invoker(&self) -> DOMString {
-        self.inner.get("invoker").as_::<DOMString>()
+    pub fn invoker(&self) -> String {
+        self.inner.get("invoker").as_::<String>()
     }
 }
 impl PerformanceScriptTiming {
@@ -89,13 +89,13 @@ impl PerformanceScriptTiming {
     }
 }
 impl PerformanceScriptTiming {
-    pub fn source_url(&self) -> DOMString {
-        self.inner.get("sourceURL").as_::<DOMString>()
+    pub fn source_url(&self) -> String {
+        self.inner.get("sourceURL").as_::<String>()
     }
 }
 impl PerformanceScriptTiming {
-    pub fn source_function_name(&self) -> DOMString {
-        self.inner.get("sourceFunctionName").as_::<DOMString>()
+    pub fn source_function_name(&self) -> String {
+        self.inner.get("sourceFunctionName").as_::<String>()
     }
 }
 impl PerformanceScriptTiming {

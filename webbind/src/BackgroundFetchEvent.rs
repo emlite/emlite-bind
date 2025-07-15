@@ -54,7 +54,7 @@ impl From<&BackgroundFetchEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(BackgroundFetchEvent);
 
 impl BackgroundFetchEvent {
-    pub fn new(type_: DOMString, init: Any) -> BackgroundFetchEvent {
+    pub fn new(type_: &str, init: &Any) -> BackgroundFetchEvent {
         Self {
             inner: emlite::Val::global("BackgroundFetchEvent")
                 .new(&[type_.into(), init.into()])

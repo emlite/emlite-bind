@@ -51,20 +51,20 @@ impl From<&RTCDtlsFingerprint> for emlite::Val {
 }
 
 impl RTCDtlsFingerprint {
-    pub fn algorithm(&self) -> DOMString {
-        self.inner.get("algorithm").as_::<DOMString>()
+    pub fn algorithm(&self) -> String {
+        self.inner.get("algorithm").as_::<String>()
     }
 
-    pub fn set_algorithm(&mut self, value: DOMString) {
+    pub fn set_algorithm(&mut self, value: &str) {
         self.inner.set("algorithm", value);
     }
 }
 impl RTCDtlsFingerprint {
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> String {
+        self.inner.get("value").as_::<String>()
     }
 
-    pub fn set_value(&mut self, value: DOMString) {
+    pub fn set_value(&mut self, value: &str) {
         self.inner.set("value", value);
     }
 }

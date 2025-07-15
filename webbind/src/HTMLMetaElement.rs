@@ -63,47 +63,47 @@ impl HTMLMetaElement {
     }
 }
 impl HTMLMetaElement {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
 impl HTMLMetaElement {
-    pub fn http_equiv(&self) -> DOMString {
-        self.inner.get("httpEquiv").as_::<DOMString>()
+    pub fn http_equiv(&self) -> String {
+        self.inner.get("httpEquiv").as_::<String>()
     }
 
-    pub fn set_http_equiv(&mut self, value: DOMString) {
+    pub fn set_http_equiv(&mut self, value: &str) {
         self.inner.set("httpEquiv", value);
     }
 }
 impl HTMLMetaElement {
-    pub fn content(&self) -> DOMString {
-        self.inner.get("content").as_::<DOMString>()
+    pub fn content(&self) -> String {
+        self.inner.get("content").as_::<String>()
     }
 
-    pub fn set_content(&mut self, value: DOMString) {
+    pub fn set_content(&mut self, value: &str) {
         self.inner.set("content", value);
     }
 }
 impl HTMLMetaElement {
-    pub fn media(&self) -> DOMString {
-        self.inner.get("media").as_::<DOMString>()
+    pub fn media(&self) -> String {
+        self.inner.get("media").as_::<String>()
     }
 
-    pub fn set_media(&mut self, value: DOMString) {
+    pub fn set_media(&mut self, value: &str) {
         self.inner.set("media", value);
     }
 }
 impl HTMLMetaElement {
-    pub fn scheme(&self) -> DOMString {
-        self.inner.get("scheme").as_::<DOMString>()
+    pub fn scheme(&self) -> String {
+        self.inner.get("scheme").as_::<String>()
     }
 
-    pub fn set_scheme(&mut self, value: DOMString) {
+    pub fn set_scheme(&mut self, value: &str) {
         self.inner.set("scheme", value);
     }
 }

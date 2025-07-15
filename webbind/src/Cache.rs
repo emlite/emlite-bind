@@ -54,11 +54,11 @@ impl From<&Cache> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Cache);
 
 impl Cache {
-    pub fn match_0(&self, request: Any) -> Promise {
+    pub fn match_0(&self, request: &Any) -> Promise {
         self.inner.call("match", &[request.into()]).as_::<Promise>()
     }
 
-    pub fn match_1(&self, request: Any, options: CacheQueryOptions) -> Promise {
+    pub fn match_1(&self, request: &Any, options: &CacheQueryOptions) -> Promise {
         self.inner
             .call("match", &[request.into(), options.into()])
             .as_::<Promise>()
@@ -69,45 +69,45 @@ impl Cache {
         self.inner.call("matchAll", &[]).as_::<Promise>()
     }
 
-    pub fn match_all1(&self, request: Any) -> Promise {
+    pub fn match_all1(&self, request: &Any) -> Promise {
         self.inner
             .call("matchAll", &[request.into()])
             .as_::<Promise>()
     }
 
-    pub fn match_all2(&self, request: Any, options: CacheQueryOptions) -> Promise {
+    pub fn match_all2(&self, request: &Any, options: &CacheQueryOptions) -> Promise {
         self.inner
             .call("matchAll", &[request.into(), options.into()])
             .as_::<Promise>()
     }
 }
 impl Cache {
-    pub fn add(&self, request: Any) -> Promise {
+    pub fn add(&self, request: &Any) -> Promise {
         self.inner.call("add", &[request.into()]).as_::<Promise>()
     }
 }
 impl Cache {
-    pub fn add_all(&self, requests: Sequence<Any>) -> Promise {
+    pub fn add_all(&self, requests: &Sequence<Any>) -> Promise {
         self.inner
             .call("addAll", &[requests.into()])
             .as_::<Promise>()
     }
 }
 impl Cache {
-    pub fn put(&self, request: Any, response: Response) -> Promise {
+    pub fn put(&self, request: &Any, response: &Response) -> Promise {
         self.inner
             .call("put", &[request.into(), response.into()])
             .as_::<Promise>()
     }
 }
 impl Cache {
-    pub fn delete0(&self, request: Any) -> Promise {
+    pub fn delete0(&self, request: &Any) -> Promise {
         self.inner
             .call("delete", &[request.into()])
             .as_::<Promise>()
     }
 
-    pub fn delete1(&self, request: Any, options: CacheQueryOptions) -> Promise {
+    pub fn delete1(&self, request: &Any, options: &CacheQueryOptions) -> Promise {
         self.inner
             .call("delete", &[request.into(), options.into()])
             .as_::<Promise>()
@@ -118,11 +118,11 @@ impl Cache {
         self.inner.call("keys", &[]).as_::<Promise>()
     }
 
-    pub fn keys1(&self, request: Any) -> Promise {
+    pub fn keys1(&self, request: &Any) -> Promise {
         self.inner.call("keys", &[request.into()]).as_::<Promise>()
     }
 
-    pub fn keys2(&self, request: Any, options: CacheQueryOptions) -> Promise {
+    pub fn keys2(&self, request: &Any, options: &CacheQueryOptions) -> Promise {
         self.inner
             .call("keys", &[request.into(), options.into()])
             .as_::<Promise>()

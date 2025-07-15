@@ -63,38 +63,38 @@ impl HTMLTrackElement {
     }
 }
 impl HTMLTrackElement {
-    pub fn kind(&self) -> DOMString {
-        self.inner.get("kind").as_::<DOMString>()
+    pub fn kind(&self) -> String {
+        self.inner.get("kind").as_::<String>()
     }
 
-    pub fn set_kind(&mut self, value: DOMString) {
+    pub fn set_kind(&mut self, value: &str) {
         self.inner.set("kind", value);
     }
 }
 impl HTMLTrackElement {
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> String {
+        self.inner.get("src").as_::<String>()
     }
 
-    pub fn set_src(&mut self, value: USVString) {
+    pub fn set_src(&mut self, value: &str) {
         self.inner.set("src", value);
     }
 }
 impl HTMLTrackElement {
-    pub fn srclang(&self) -> DOMString {
-        self.inner.get("srclang").as_::<DOMString>()
+    pub fn srclang(&self) -> String {
+        self.inner.get("srclang").as_::<String>()
     }
 
-    pub fn set_srclang(&mut self, value: DOMString) {
+    pub fn set_srclang(&mut self, value: &str) {
         self.inner.set("srclang", value);
     }
 }
 impl HTMLTrackElement {
-    pub fn label(&self) -> DOMString {
-        self.inner.get("label").as_::<DOMString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 
-    pub fn set_label(&mut self, value: DOMString) {
+    pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }
 }

@@ -59,7 +59,7 @@ impl OrientationSensor {
     }
 }
 impl OrientationSensor {
-    pub fn populate_matrix(&self, target_matrix: Any) -> Undefined {
+    pub fn populate_matrix(&self, target_matrix: &Any) -> Undefined {
         self.inner
             .call("populateMatrix", &[target_matrix.into()])
             .as_::<Undefined>()

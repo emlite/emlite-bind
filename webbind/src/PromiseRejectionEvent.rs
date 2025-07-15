@@ -54,7 +54,7 @@ impl From<&PromiseRejectionEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PromiseRejectionEvent);
 
 impl PromiseRejectionEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> PromiseRejectionEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> PromiseRejectionEvent {
         Self {
             inner: emlite::Val::global("PromiseRejectionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -54,8 +54,8 @@ impl From<&PerformanceServerTiming> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PerformanceServerTiming);
 
 impl PerformanceServerTiming {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl PerformanceServerTiming {
@@ -64,8 +64,8 @@ impl PerformanceServerTiming {
     }
 }
 impl PerformanceServerTiming {
-    pub fn description(&self) -> DOMString {
-        self.inner.get("description").as_::<DOMString>()
+    pub fn description(&self) -> String {
+        self.inner.get("description").as_::<String>()
     }
 }
 impl PerformanceServerTiming {

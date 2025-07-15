@@ -63,11 +63,11 @@ impl HTMLOptionsCollection {
     }
 }
 impl HTMLOptionsCollection {
-    pub fn add0(&self, element: Any) -> Undefined {
+    pub fn add0(&self, element: &Any) -> Undefined {
         self.inner.call("add", &[element.into()]).as_::<Undefined>()
     }
 
-    pub fn add1(&self, element: Any, before: Any) -> Undefined {
+    pub fn add1(&self, element: &Any, before: &Any) -> Undefined {
         self.inner
             .call("add", &[element.into(), before.into()])
             .as_::<Undefined>()

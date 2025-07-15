@@ -72,11 +72,11 @@ impl HTMLOptGroupElement {
     }
 }
 impl HTMLOptGroupElement {
-    pub fn label(&self) -> DOMString {
-        self.inner.get("label").as_::<DOMString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 
-    pub fn set_label(&mut self, value: DOMString) {
+    pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }
 }

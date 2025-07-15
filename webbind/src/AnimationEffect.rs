@@ -73,7 +73,7 @@ impl OptionalEffectTiming {
         self.inner.get("fill").as_::<FillMode>()
     }
 
-    pub fn set_fill(&mut self, value: FillMode) {
+    pub fn set_fill(&mut self, value: &FillMode) {
         self.inner.set("fill", value);
     }
 }
@@ -100,7 +100,7 @@ impl OptionalEffectTiming {
         self.inner.get("duration").as_::<Any>()
     }
 
-    pub fn set_duration(&mut self, value: Any) {
+    pub fn set_duration(&mut self, value: &Any) {
         self.inner.set("duration", value);
     }
 }
@@ -109,16 +109,16 @@ impl OptionalEffectTiming {
         self.inner.get("direction").as_::<PlaybackDirection>()
     }
 
-    pub fn set_direction(&mut self, value: PlaybackDirection) {
+    pub fn set_direction(&mut self, value: &PlaybackDirection) {
         self.inner.set("direction", value);
     }
 }
 impl OptionalEffectTiming {
-    pub fn easing(&self) -> DOMString {
-        self.inner.get("easing").as_::<DOMString>()
+    pub fn easing(&self) -> String {
+        self.inner.get("easing").as_::<String>()
     }
 
-    pub fn set_easing(&mut self, value: DOMString) {
+    pub fn set_easing(&mut self, value: &str) {
         self.inner.set("easing", value);
     }
 }
@@ -192,7 +192,7 @@ impl AnimationEffect {
         self.inner.call("updateTiming", &[]).as_::<Undefined>()
     }
 
-    pub fn update_timing1(&self, timing: OptionalEffectTiming) -> Undefined {
+    pub fn update_timing1(&self, timing: &OptionalEffectTiming) -> Undefined {
         self.inner
             .call("updateTiming", &[timing.into()])
             .as_::<Undefined>()
@@ -214,21 +214,21 @@ impl AnimationEffect {
     }
 }
 impl AnimationEffect {
-    pub fn before(&self, effects: AnimationEffect) -> Undefined {
+    pub fn before(&self, effects: &AnimationEffect) -> Undefined {
         self.inner
             .call("before", &[effects.into()])
             .as_::<Undefined>()
     }
 }
 impl AnimationEffect {
-    pub fn after(&self, effects: AnimationEffect) -> Undefined {
+    pub fn after(&self, effects: &AnimationEffect) -> Undefined {
         self.inner
             .call("after", &[effects.into()])
             .as_::<Undefined>()
     }
 }
 impl AnimationEffect {
-    pub fn replace(&self, effects: AnimationEffect) -> Undefined {
+    pub fn replace(&self, effects: &AnimationEffect) -> Undefined {
         self.inner
             .call("replace", &[effects.into()])
             .as_::<Undefined>()

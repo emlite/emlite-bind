@@ -54,7 +54,7 @@ impl From<&CSSSkewX> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSSkewX);
 
 impl CSSSkewX {
-    pub fn new(ax: CSSNumericValue) -> CSSSkewX {
+    pub fn new(ax: &CSSNumericValue) -> CSSSkewX {
         Self {
             inner: emlite::Val::global("CSSSkewX")
                 .new(&[ax.into()])
@@ -67,7 +67,7 @@ impl CSSSkewX {
         self.inner.get("ax").as_::<CSSNumericValue>()
     }
 
-    pub fn set_ax(&mut self, value: CSSNumericValue) {
+    pub fn set_ax(&mut self, value: &CSSNumericValue) {
         self.inner.set("ax", value);
     }
 }

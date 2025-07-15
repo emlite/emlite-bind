@@ -54,31 +54,31 @@ impl From<&Attr> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Attr);
 
 impl Attr {
-    pub fn namespace_uri(&self) -> DOMString {
-        self.inner.get("namespaceURI").as_::<DOMString>()
+    pub fn namespace_uri(&self) -> String {
+        self.inner.get("namespaceURI").as_::<String>()
     }
 }
 impl Attr {
-    pub fn prefix(&self) -> DOMString {
-        self.inner.get("prefix").as_::<DOMString>()
+    pub fn prefix(&self) -> String {
+        self.inner.get("prefix").as_::<String>()
     }
 }
 impl Attr {
-    pub fn local_name(&self) -> DOMString {
-        self.inner.get("localName").as_::<DOMString>()
+    pub fn local_name(&self) -> String {
+        self.inner.get("localName").as_::<String>()
     }
 }
 impl Attr {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl Attr {
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> String {
+        self.inner.get("value").as_::<String>()
     }
 
-    pub fn set_value(&mut self, value: DOMString) {
+    pub fn set_value(&mut self, value: &str) {
         self.inner.set("value", value);
     }
 }

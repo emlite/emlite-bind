@@ -54,7 +54,7 @@ impl From<&CSSPerspective> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSPerspective);
 
 impl CSSPerspective {
-    pub fn new(length: Any) -> CSSPerspective {
+    pub fn new(length: &Any) -> CSSPerspective {
         Self {
             inner: emlite::Val::global("CSSPerspective")
                 .new(&[length.into()])
@@ -67,7 +67,7 @@ impl CSSPerspective {
         self.inner.get("length").as_::<Any>()
     }
 
-    pub fn set_length(&mut self, value: Any) {
+    pub fn set_length(&mut self, value: &Any) {
         self.inner.set("length", value);
     }
 }

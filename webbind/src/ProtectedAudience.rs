@@ -54,7 +54,7 @@ impl From<&ProtectedAudience> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ProtectedAudience);
 
 impl ProtectedAudience {
-    pub fn query_feature_support(&self, feature: DOMString) -> Any {
+    pub fn query_feature_support(&self, feature: &str) -> Any {
         self.inner
             .call("queryFeatureSupport", &[feature.into()])
             .as_::<Any>()

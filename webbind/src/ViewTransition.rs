@@ -78,7 +78,7 @@ impl ViewTransition {
         self.inner.get("types").as_::<ViewTransitionTypeSet>()
     }
 
-    pub fn set_types(&mut self, value: ViewTransitionTypeSet) {
+    pub fn set_types(&mut self, value: &ViewTransitionTypeSet) {
         self.inner.set("types", value);
     }
 }

@@ -54,7 +54,7 @@ impl From<&ErrorEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ErrorEvent);
 
 impl ErrorEvent {
-    pub fn new0(type_: DOMString) -> ErrorEvent {
+    pub fn new0(type_: &str) -> ErrorEvent {
         Self {
             inner: emlite::Val::global("ErrorEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl ErrorEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> ErrorEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> ErrorEvent {
         Self {
             inner: emlite::Val::global("ErrorEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -71,13 +71,13 @@ impl ErrorEvent {
     }
 }
 impl ErrorEvent {
-    pub fn message(&self) -> DOMString {
-        self.inner.get("message").as_::<DOMString>()
+    pub fn message(&self) -> String {
+        self.inner.get("message").as_::<String>()
     }
 }
 impl ErrorEvent {
-    pub fn filename(&self) -> USVString {
-        self.inner.get("filename").as_::<USVString>()
+    pub fn filename(&self) -> String {
+        self.inner.get("filename").as_::<String>()
     }
 }
 impl ErrorEvent {

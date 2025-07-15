@@ -105,7 +105,7 @@ impl RTCRtpContributingSource {
         self.inner.get("timestamp").as_::<Any>()
     }
 
-    pub fn set_timestamp(&mut self, value: Any) {
+    pub fn set_timestamp(&mut self, value: &Any) {
         self.inner.set("timestamp", value);
     }
 }
@@ -250,7 +250,7 @@ impl RTCRtpReceiver {
     }
 }
 impl RTCRtpReceiver {
-    pub fn get_capabilities(kind: DOMString) -> RTCRtpCapabilities {
+    pub fn get_capabilities(kind: &str) -> RTCRtpCapabilities {
         emlite::Val::global("RTCRtpReceiver")
             .call("getCapabilities", &[kind.into()])
             .as_::<RTCRtpCapabilities>()
@@ -287,7 +287,7 @@ impl RTCRtpReceiver {
         self.inner.get("jitterBufferTarget").as_::<Any>()
     }
 
-    pub fn set_jitter_buffer_target(&mut self, value: Any) {
+    pub fn set_jitter_buffer_target(&mut self, value: &Any) {
         self.inner.set("jitterBufferTarget", value);
     }
 }
@@ -296,7 +296,7 @@ impl RTCRtpReceiver {
         self.inner.get("transform").as_::<Any>()
     }
 
-    pub fn set_transform(&mut self, value: Any) {
+    pub fn set_transform(&mut self, value: &Any) {
         self.inner.set("transform", value);
     }
 }

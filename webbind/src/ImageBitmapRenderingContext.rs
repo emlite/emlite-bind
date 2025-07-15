@@ -59,7 +59,7 @@ impl ImageBitmapRenderingContext {
     }
 }
 impl ImageBitmapRenderingContext {
-    pub fn transfer_from_image_bitmap(&self, bitmap: ImageBitmap) -> Undefined {
+    pub fn transfer_from_image_bitmap(&self, bitmap: &ImageBitmap) -> Undefined {
         self.inner
             .call("transferFromImageBitmap", &[bitmap.into()])
             .as_::<Undefined>()

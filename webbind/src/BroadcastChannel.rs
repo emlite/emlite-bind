@@ -54,7 +54,7 @@ impl From<&BroadcastChannel> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(BroadcastChannel);
 
 impl BroadcastChannel {
-    pub fn new(name: DOMString) -> BroadcastChannel {
+    pub fn new(name: &str) -> BroadcastChannel {
         Self {
             inner: emlite::Val::global("BroadcastChannel")
                 .new(&[name.into()])
@@ -63,12 +63,12 @@ impl BroadcastChannel {
     }
 }
 impl BroadcastChannel {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl BroadcastChannel {
-    pub fn post_message(&self, message: Any) -> Undefined {
+    pub fn post_message(&self, message: &Any) -> Undefined {
         self.inner
             .call("postMessage", &[message.into()])
             .as_::<Undefined>()
@@ -84,7 +84,7 @@ impl BroadcastChannel {
         self.inner.get("onmessage").as_::<Any>()
     }
 
-    pub fn set_onmessage(&mut self, value: Any) {
+    pub fn set_onmessage(&mut self, value: &Any) {
         self.inner.set("onmessage", value);
     }
 }
@@ -93,7 +93,7 @@ impl BroadcastChannel {
         self.inner.get("onmessageerror").as_::<Any>()
     }
 
-    pub fn set_onmessageerror(&mut self, value: Any) {
+    pub fn set_onmessageerror(&mut self, value: &Any) {
         self.inner.set("onmessageerror", value);
     }
 }

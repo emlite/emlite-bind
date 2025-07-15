@@ -54,14 +54,14 @@ impl From<&GPUComputePassEncoder> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(GPUComputePassEncoder);
 
 impl GPUComputePassEncoder {
-    pub fn set_pipeline(&self, pipeline: GPUComputePipeline) -> Undefined {
+    pub fn set_pipeline(&self, pipeline: &GPUComputePipeline) -> Undefined {
         self.inner
             .call("setPipeline", &[pipeline.into()])
             .as_::<Undefined>()
     }
 }
 impl GPUComputePassEncoder {
-    pub fn dispatch_workgroups0(&self, workgroup_count_x: Any) -> Undefined {
+    pub fn dispatch_workgroups0(&self, workgroup_count_x: &Any) -> Undefined {
         self.inner
             .call("dispatchWorkgroups", &[workgroup_count_x.into()])
             .as_::<Undefined>()
@@ -69,8 +69,8 @@ impl GPUComputePassEncoder {
 
     pub fn dispatch_workgroups1(
         &self,
-        workgroup_count_x: Any,
-        workgroup_count_y: Any,
+        workgroup_count_x: &Any,
+        workgroup_count_y: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -82,9 +82,9 @@ impl GPUComputePassEncoder {
 
     pub fn dispatch_workgroups2(
         &self,
-        workgroup_count_x: Any,
-        workgroup_count_y: Any,
-        workgroup_count_z: Any,
+        workgroup_count_x: &Any,
+        workgroup_count_y: &Any,
+        workgroup_count_z: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -101,8 +101,8 @@ impl GPUComputePassEncoder {
 impl GPUComputePassEncoder {
     pub fn dispatch_workgroups_indirect(
         &self,
-        indirect_buffer: GPUBuffer,
-        indirect_offset: Any,
+        indirect_buffer: &GPUBuffer,
+        indirect_offset: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -118,16 +118,16 @@ impl GPUComputePassEncoder {
     }
 }
 impl GPUComputePassEncoder {
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 
-    pub fn set_label(&mut self, value: USVString) {
+    pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }
 }
 impl GPUComputePassEncoder {
-    pub fn push_debug_group(&self, group_label: USVString) -> Undefined {
+    pub fn push_debug_group(&self, group_label: &str) -> Undefined {
         self.inner
             .call("pushDebugGroup", &[group_label.into()])
             .as_::<Undefined>()
@@ -139,7 +139,7 @@ impl GPUComputePassEncoder {
     }
 }
 impl GPUComputePassEncoder {
-    pub fn insert_debug_marker(&self, marker_label: USVString) -> Undefined {
+    pub fn insert_debug_marker(&self, marker_label: &str) -> Undefined {
         self.inner
             .call("insertDebugMarker", &[marker_label.into()])
             .as_::<Undefined>()
@@ -148,11 +148,11 @@ impl GPUComputePassEncoder {
 impl GPUComputePassEncoder {
     pub fn set_bind_group(
         &self,
-        index: Any,
-        bind_group: GPUBindGroup,
-        dynamic_offsets_data: Uint32Array,
-        dynamic_offsets_data_start: Any,
-        dynamic_offsets_data_length: Any,
+        index: &Any,
+        bind_group: &GPUBindGroup,
+        dynamic_offsets_data: &Uint32Array,
+        dynamic_offsets_data_start: &Any,
+        dynamic_offsets_data_length: &Any,
     ) -> Undefined {
         self.inner
             .call(

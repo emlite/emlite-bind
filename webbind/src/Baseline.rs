@@ -54,8 +54,8 @@ impl From<&Baseline> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Baseline);
 
 impl Baseline {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl Baseline {

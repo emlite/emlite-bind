@@ -62,7 +62,7 @@ impl AmbientLightSensor {
         }
     }
 
-    pub fn new1(sensor_options: Any) -> AmbientLightSensor {
+    pub fn new1(sensor_options: &Any) -> AmbientLightSensor {
         Self {
             inner: emlite::Val::global("AmbientLightSensor")
                 .new(&[sensor_options.into()])

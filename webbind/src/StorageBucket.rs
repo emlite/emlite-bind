@@ -54,8 +54,8 @@ impl From<&StorageBucket> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(StorageBucket);
 
 impl StorageBucket {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl StorageBucket {
@@ -74,7 +74,7 @@ impl StorageBucket {
     }
 }
 impl StorageBucket {
-    pub fn set_expires(&self, expires: Any) -> Promise {
+    pub fn set_expires(&self, expires: &Any) -> Promise {
         self.inner
             .call("setExpires", &[expires.into()])
             .as_::<Promise>()

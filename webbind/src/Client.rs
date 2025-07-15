@@ -54,8 +54,8 @@ impl From<&Client> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Client);
 
 impl Client {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }
 impl Client {
@@ -64,8 +64,8 @@ impl Client {
     }
 }
 impl Client {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl Client {
@@ -74,13 +74,13 @@ impl Client {
     }
 }
 impl Client {
-    pub fn post_message0(&self, message: Any) -> Undefined {
+    pub fn post_message0(&self, message: &Any) -> Undefined {
         self.inner
             .call("postMessage", &[message.into()])
             .as_::<Undefined>()
     }
 
-    pub fn post_message1(&self, message: Any, options: StructuredSerializeOptions) -> Undefined {
+    pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
         self.inner
             .call("postMessage", &[message.into(), options.into()])
             .as_::<Undefined>()

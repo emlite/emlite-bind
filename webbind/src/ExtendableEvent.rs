@@ -54,7 +54,7 @@ impl From<&ExtendableEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ExtendableEvent);
 
 impl ExtendableEvent {
-    pub fn new0(type_: DOMString) -> ExtendableEvent {
+    pub fn new0(type_: &str) -> ExtendableEvent {
         Self {
             inner: emlite::Val::global("ExtendableEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl ExtendableEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> ExtendableEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> ExtendableEvent {
         Self {
             inner: emlite::Val::global("ExtendableEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -71,7 +71,7 @@ impl ExtendableEvent {
     }
 }
 impl ExtendableEvent {
-    pub fn wait_until(&self, f: Promise) -> Undefined {
+    pub fn wait_until(&self, f: &Promise) -> Undefined {
         self.inner.call("waitUntil", &[f.into()]).as_::<Undefined>()
     }
 }

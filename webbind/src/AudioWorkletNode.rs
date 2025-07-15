@@ -54,7 +54,7 @@ impl From<&AudioWorkletNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(AudioWorkletNode);
 
 impl AudioWorkletNode {
-    pub fn new0(context: BaseAudioContext, name: DOMString) -> AudioWorkletNode {
+    pub fn new0(context: &BaseAudioContext, name: &str) -> AudioWorkletNode {
         Self {
             inner: emlite::Val::global("AudioWorkletNode")
                 .new(&[context.into(), name.into()])
@@ -62,7 +62,7 @@ impl AudioWorkletNode {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, name: DOMString, options: Any) -> AudioWorkletNode {
+    pub fn new1(context: &BaseAudioContext, name: &str, options: &Any) -> AudioWorkletNode {
         Self {
             inner: emlite::Val::global("AudioWorkletNode")
                 .new(&[context.into(), name.into(), options.into()])
@@ -85,7 +85,7 @@ impl AudioWorkletNode {
         self.inner.get("onprocessorerror").as_::<Any>()
     }
 
-    pub fn set_onprocessorerror(&mut self, value: Any) {
+    pub fn set_onprocessorerror(&mut self, value: &Any) {
         self.inner.set("onprocessorerror", value);
     }
 }

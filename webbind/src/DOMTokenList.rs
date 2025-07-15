@@ -59,56 +59,56 @@ impl DOMTokenList {
     }
 }
 impl DOMTokenList {
-    pub fn item(&self, index: u32) -> DOMString {
-        self.inner.call("item", &[index.into()]).as_::<DOMString>()
+    pub fn item(&self, index: u32) -> String {
+        self.inner.call("item", &[index.into()]).as_::<String>()
     }
 }
 impl DOMTokenList {
-    pub fn contains(&self, token: DOMString) -> bool {
+    pub fn contains(&self, token: &str) -> bool {
         self.inner.call("contains", &[token.into()]).as_::<bool>()
     }
 }
 impl DOMTokenList {
-    pub fn add(&self, tokens: DOMString) -> Undefined {
+    pub fn add(&self, tokens: &str) -> Undefined {
         self.inner.call("add", &[tokens.into()]).as_::<Undefined>()
     }
 }
 impl DOMTokenList {
-    pub fn remove(&self, tokens: DOMString) -> Undefined {
+    pub fn remove(&self, tokens: &str) -> Undefined {
         self.inner
             .call("remove", &[tokens.into()])
             .as_::<Undefined>()
     }
 }
 impl DOMTokenList {
-    pub fn toggle0(&self, token: DOMString) -> bool {
+    pub fn toggle0(&self, token: &str) -> bool {
         self.inner.call("toggle", &[token.into()]).as_::<bool>()
     }
 
-    pub fn toggle1(&self, token: DOMString, force: bool) -> bool {
+    pub fn toggle1(&self, token: &str, force: bool) -> bool {
         self.inner
             .call("toggle", &[token.into(), force.into()])
             .as_::<bool>()
     }
 }
 impl DOMTokenList {
-    pub fn replace(&self, token: DOMString, new_token: DOMString) -> bool {
+    pub fn replace(&self, token: &str, new_token: &str) -> bool {
         self.inner
             .call("replace", &[token.into(), new_token.into()])
             .as_::<bool>()
     }
 }
 impl DOMTokenList {
-    pub fn supports(&self, token: DOMString) -> bool {
+    pub fn supports(&self, token: &str) -> bool {
         self.inner.call("supports", &[token.into()]).as_::<bool>()
     }
 }
 impl DOMTokenList {
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> String {
+        self.inner.get("value").as_::<String>()
     }
 
-    pub fn set_value(&mut self, value: DOMString) {
+    pub fn set_value(&mut self, value: &str) {
         self.inner.set("value", value);
     }
 }

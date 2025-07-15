@@ -62,7 +62,7 @@ impl CaptureActionEvent {
         }
     }
 
-    pub fn new1(init: Any) -> CaptureActionEvent {
+    pub fn new1(init: &Any) -> CaptureActionEvent {
         Self {
             inner: emlite::Val::global("CaptureActionEvent")
                 .new(&[init.into()])

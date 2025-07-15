@@ -62,7 +62,7 @@ impl Animation {
         }
     }
 
-    pub fn new1(effect: AnimationEffect) -> Animation {
+    pub fn new1(effect: &AnimationEffect) -> Animation {
         Self {
             inner: emlite::Val::global("Animation")
                 .new(&[effect.into()])
@@ -70,7 +70,7 @@ impl Animation {
         }
     }
 
-    pub fn new2(effect: AnimationEffect, timeline: AnimationTimeline) -> Animation {
+    pub fn new2(effect: &AnimationEffect, timeline: &AnimationTimeline) -> Animation {
         Self {
             inner: emlite::Val::global("Animation")
                 .new(&[effect.into(), timeline.into()])
@@ -79,11 +79,11 @@ impl Animation {
     }
 }
 impl Animation {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 
-    pub fn set_id(&mut self, value: DOMString) {
+    pub fn set_id(&mut self, value: &str) {
         self.inner.set("id", value);
     }
 }
@@ -92,7 +92,7 @@ impl Animation {
         self.inner.get("effect").as_::<AnimationEffect>()
     }
 
-    pub fn set_effect(&mut self, value: AnimationEffect) {
+    pub fn set_effect(&mut self, value: &AnimationEffect) {
         self.inner.set("effect", value);
     }
 }
@@ -101,7 +101,7 @@ impl Animation {
         self.inner.get("timeline").as_::<AnimationTimeline>()
     }
 
-    pub fn set_timeline(&mut self, value: AnimationTimeline) {
+    pub fn set_timeline(&mut self, value: &AnimationTimeline) {
         self.inner.set("timeline", value);
     }
 }
@@ -146,7 +146,7 @@ impl Animation {
         self.inner.get("onfinish").as_::<Any>()
     }
 
-    pub fn set_onfinish(&mut self, value: Any) {
+    pub fn set_onfinish(&mut self, value: &Any) {
         self.inner.set("onfinish", value);
     }
 }
@@ -155,7 +155,7 @@ impl Animation {
         self.inner.get("oncancel").as_::<Any>()
     }
 
-    pub fn set_oncancel(&mut self, value: Any) {
+    pub fn set_oncancel(&mut self, value: &Any) {
         self.inner.set("oncancel", value);
     }
 }
@@ -164,7 +164,7 @@ impl Animation {
         self.inner.get("onremove").as_::<Any>()
     }
 
-    pub fn set_onremove(&mut self, value: Any) {
+    pub fn set_onremove(&mut self, value: &Any) {
         self.inner.set("onremove", value);
     }
 }
@@ -215,7 +215,7 @@ impl Animation {
         self.inner.get("startTime").as_::<Any>()
     }
 
-    pub fn set_start_time(&mut self, value: Any) {
+    pub fn set_start_time(&mut self, value: &Any) {
         self.inner.set("startTime", value);
     }
 }
@@ -224,7 +224,7 @@ impl Animation {
         self.inner.get("currentTime").as_::<Any>()
     }
 
-    pub fn set_current_time(&mut self, value: Any) {
+    pub fn set_current_time(&mut self, value: &Any) {
         self.inner.set("currentTime", value);
     }
 }
@@ -233,7 +233,7 @@ impl Animation {
         self.inner.get("trigger").as_::<AnimationTrigger>()
     }
 
-    pub fn set_trigger(&mut self, value: AnimationTrigger) {
+    pub fn set_trigger(&mut self, value: &AnimationTrigger) {
         self.inner.set("trigger", value);
     }
 }

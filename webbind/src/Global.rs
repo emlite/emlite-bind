@@ -54,7 +54,7 @@ impl From<&Global> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Global);
 
 impl Global {
-    pub fn new0(descriptor: Any) -> Global {
+    pub fn new0(descriptor: &Any) -> Global {
         Self {
             inner: emlite::Val::global("Global")
                 .new(&[descriptor.into()])
@@ -62,7 +62,7 @@ impl Global {
         }
     }
 
-    pub fn new1(descriptor: Any, v: Any) -> Global {
+    pub fn new1(descriptor: &Any, v: &Any) -> Global {
         Self {
             inner: emlite::Val::global("Global")
                 .new(&[descriptor.into(), v.into()])
@@ -80,7 +80,7 @@ impl Global {
         self.inner.get("value").as_::<Any>()
     }
 
-    pub fn set_value(&mut self, value: Any) {
+    pub fn set_value(&mut self, value: &Any) {
         self.inner.set("value", value);
     }
 }

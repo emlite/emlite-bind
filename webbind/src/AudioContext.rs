@@ -64,7 +64,7 @@ impl AudioTimestamp {
         self.inner.get("performanceTime").as_::<Any>()
     }
 
-    pub fn set_performance_time(&mut self, value: Any) {
+    pub fn set_performance_time(&mut self, value: &Any) {
         self.inner.set("performanceTime", value);
     }
 }
@@ -130,7 +130,7 @@ impl AudioContext {
         }
     }
 
-    pub fn new1(context_options: Any) -> AudioContext {
+    pub fn new1(context_options: &Any) -> AudioContext {
         Self {
             inner: emlite::Val::global("AudioContext")
                 .new(&[context_options.into()])
@@ -158,7 +158,7 @@ impl AudioContext {
         self.inner.get("onsinkchange").as_::<Any>()
     }
 
-    pub fn set_onsinkchange(&mut self, value: Any) {
+    pub fn set_onsinkchange(&mut self, value: &Any) {
         self.inner.set("onsinkchange", value);
     }
 }
@@ -167,7 +167,7 @@ impl AudioContext {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }
@@ -194,7 +194,7 @@ impl AudioContext {
     }
 }
 impl AudioContext {
-    pub fn set_sink_id(&self, sink_id: Any) -> Promise {
+    pub fn set_sink_id(&self, sink_id: &Any) -> Promise {
         self.inner
             .call("setSinkId", &[sink_id.into()])
             .as_::<Promise>()
@@ -203,7 +203,7 @@ impl AudioContext {
 impl AudioContext {
     pub fn create_media_element_source(
         &self,
-        media_element: HTMLMediaElement,
+        media_element: &HTMLMediaElement,
     ) -> MediaElementAudioSourceNode {
         self.inner
             .call("createMediaElementSource", &[media_element.into()])
@@ -213,7 +213,7 @@ impl AudioContext {
 impl AudioContext {
     pub fn create_media_stream_source(
         &self,
-        media_stream: MediaStream,
+        media_stream: &MediaStream,
     ) -> MediaStreamAudioSourceNode {
         self.inner
             .call("createMediaStreamSource", &[media_stream.into()])
@@ -223,7 +223,7 @@ impl AudioContext {
 impl AudioContext {
     pub fn create_media_stream_track_source(
         &self,
-        media_stream_track: MediaStreamTrack,
+        media_stream_track: &MediaStreamTrack,
     ) -> MediaStreamTrackAudioSourceNode {
         self.inner
             .call("createMediaStreamTrackSource", &[media_stream_track.into()])

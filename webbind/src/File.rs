@@ -54,7 +54,7 @@ impl From<&File> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(File);
 
 impl File {
-    pub fn new0(file_bits: Sequence<Any>, file_name: USVString) -> File {
+    pub fn new0(file_bits: &Sequence<Any>, file_name: &str) -> File {
         Self {
             inner: emlite::Val::global("File")
                 .new(&[file_bits.into(), file_name.into()])
@@ -62,7 +62,7 @@ impl File {
         }
     }
 
-    pub fn new1(file_bits: Sequence<Any>, file_name: USVString, options: Any) -> File {
+    pub fn new1(file_bits: &Sequence<Any>, file_name: &str, options: &Any) -> File {
         Self {
             inner: emlite::Val::global("File")
                 .new(&[file_bits.into(), file_name.into(), options.into()])
@@ -71,8 +71,8 @@ impl File {
     }
 }
 impl File {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl File {
@@ -81,7 +81,7 @@ impl File {
     }
 }
 impl File {
-    pub fn webkit_relative_path(&self) -> USVString {
-        self.inner.get("webkitRelativePath").as_::<USVString>()
+    pub fn webkit_relative_path(&self) -> String {
+        self.inner.get("webkitRelativePath").as_::<String>()
     }
 }

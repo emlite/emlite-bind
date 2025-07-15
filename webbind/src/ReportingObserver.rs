@@ -54,7 +54,7 @@ impl From<&ReportingObserver> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ReportingObserver);
 
 impl ReportingObserver {
-    pub fn new0(callback: Function) -> ReportingObserver {
+    pub fn new0(callback: &Function) -> ReportingObserver {
         Self {
             inner: emlite::Val::global("ReportingObserver")
                 .new(&[callback.into()])
@@ -62,7 +62,7 @@ impl ReportingObserver {
         }
     }
 
-    pub fn new1(callback: Function, options: Any) -> ReportingObserver {
+    pub fn new1(callback: &Function, options: &Any) -> ReportingObserver {
         Self {
             inner: emlite::Val::global("ReportingObserver")
                 .new(&[callback.into(), options.into()])

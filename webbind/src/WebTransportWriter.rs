@@ -58,7 +58,7 @@ impl WebTransportWriter {
         self.inner.call("atomicWrite", &[]).as_::<Promise>()
     }
 
-    pub fn atomic_write1(&self, chunk: Any) -> Promise {
+    pub fn atomic_write1(&self, chunk: &Any) -> Promise {
         self.inner
             .call("atomicWrite", &[chunk.into()])
             .as_::<Promise>()

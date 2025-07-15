@@ -55,16 +55,16 @@ impl DetectedBarcode {
         self.inner.get("boundingBox").as_::<DOMRectReadOnly>()
     }
 
-    pub fn set_bounding_box(&mut self, value: DOMRectReadOnly) {
+    pub fn set_bounding_box(&mut self, value: &DOMRectReadOnly) {
         self.inner.set("boundingBox", value);
     }
 }
 impl DetectedBarcode {
-    pub fn raw_value(&self) -> DOMString {
-        self.inner.get("rawValue").as_::<DOMString>()
+    pub fn raw_value(&self) -> String {
+        self.inner.get("rawValue").as_::<String>()
     }
 
-    pub fn set_raw_value(&mut self, value: DOMString) {
+    pub fn set_raw_value(&mut self, value: &str) {
         self.inner.set("rawValue", value);
     }
 }
@@ -73,7 +73,7 @@ impl DetectedBarcode {
         self.inner.get("format").as_::<BarcodeFormat>()
     }
 
-    pub fn set_format(&mut self, value: BarcodeFormat) {
+    pub fn set_format(&mut self, value: &BarcodeFormat) {
         self.inner.set("format", value);
     }
 }
@@ -82,7 +82,7 @@ impl DetectedBarcode {
         self.inner.get("cornerPoints").as_::<Sequence<Any>>()
     }
 
-    pub fn set_corner_points(&mut self, value: Sequence<Any>) {
+    pub fn set_corner_points(&mut self, value: &Sequence<Any>) {
         self.inner.set("cornerPoints", value);
     }
 }
@@ -148,7 +148,7 @@ impl BarcodeDetector {
         }
     }
 
-    pub fn new1(barcode_detector_options: Any) -> BarcodeDetector {
+    pub fn new1(barcode_detector_options: &Any) -> BarcodeDetector {
         Self {
             inner: emlite::Val::global("BarcodeDetector")
                 .new(&[barcode_detector_options.into()])
@@ -164,7 +164,7 @@ impl BarcodeDetector {
     }
 }
 impl BarcodeDetector {
-    pub fn detect(&self, image: Any) -> Promise {
+    pub fn detect(&self, image: &Any) -> Promise {
         self.inner.call("detect", &[image.into()]).as_::<Promise>()
     }
 }

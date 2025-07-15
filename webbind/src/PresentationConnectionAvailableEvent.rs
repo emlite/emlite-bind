@@ -54,7 +54,7 @@ impl From<&PresentationConnectionAvailableEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PresentationConnectionAvailableEvent);
 
 impl PresentationConnectionAvailableEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> PresentationConnectionAvailableEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> PresentationConnectionAvailableEvent {
         Self {
             inner: emlite::Val::global("PresentationConnectionAvailableEvent")
                 .new(&[type_.into(), event_init_dict.into()])

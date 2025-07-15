@@ -54,16 +54,16 @@ impl From<&SVGAnimatedString> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SVGAnimatedString);
 
 impl SVGAnimatedString {
-    pub fn base_val(&self) -> DOMString {
-        self.inner.get("baseVal").as_::<DOMString>()
+    pub fn base_val(&self) -> String {
+        self.inner.get("baseVal").as_::<String>()
     }
 
-    pub fn set_base_val(&mut self, value: DOMString) {
+    pub fn set_base_val(&mut self, value: &str) {
         self.inner.set("baseVal", value);
     }
 }
 impl SVGAnimatedString {
-    pub fn anim_val(&self) -> DOMString {
-        self.inner.get("animVal").as_::<DOMString>()
+    pub fn anim_val(&self) -> String {
+        self.inner.get("animVal").as_::<String>()
     }
 }

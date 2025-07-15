@@ -55,7 +55,7 @@ impl InkPresenterParam {
         self.inner.get("presentationArea").as_::<Element>()
     }
 
-    pub fn set_presentation_area(&mut self, value: Element) {
+    pub fn set_presentation_area(&mut self, value: &Element) {
         self.inner.set("presentationArea", value);
     }
 }
@@ -117,7 +117,7 @@ impl Ink {
         self.inner.call("requestPresenter", &[]).as_::<Promise>()
     }
 
-    pub fn request_presenter1(&self, param: InkPresenterParam) -> Promise {
+    pub fn request_presenter1(&self, param: &InkPresenterParam) -> Promise {
         self.inner
             .call("requestPresenter", &[param.into()])
             .as_::<Promise>()

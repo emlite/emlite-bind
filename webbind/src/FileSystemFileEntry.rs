@@ -54,13 +54,13 @@ impl From<&FileSystemFileEntry> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(FileSystemFileEntry);
 
 impl FileSystemFileEntry {
-    pub fn file0(&self, success_callback: Function) -> Undefined {
+    pub fn file0(&self, success_callback: &Function) -> Undefined {
         self.inner
             .call("file", &[success_callback.into()])
             .as_::<Undefined>()
     }
 
-    pub fn file1(&self, success_callback: Function, error_callback: Function) -> Undefined {
+    pub fn file1(&self, success_callback: &Function, error_callback: &Function) -> Undefined {
         self.inner
             .call("file", &[success_callback.into(), error_callback.into()])
             .as_::<Undefined>()

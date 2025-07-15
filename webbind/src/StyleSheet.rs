@@ -54,13 +54,13 @@ impl From<&StyleSheet> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(StyleSheet);
 
 impl StyleSheet {
-    pub fn type_(&self) -> CSSOMString {
-        self.inner.get("type").as_::<CSSOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 }
 impl StyleSheet {
-    pub fn href(&self) -> USVString {
-        self.inner.get("href").as_::<USVString>()
+    pub fn href(&self) -> String {
+        self.inner.get("href").as_::<String>()
     }
 }
 impl StyleSheet {
@@ -74,8 +74,8 @@ impl StyleSheet {
     }
 }
 impl StyleSheet {
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> String {
+        self.inner.get("title").as_::<String>()
     }
 }
 impl StyleSheet {

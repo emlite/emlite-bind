@@ -54,11 +54,11 @@ impl From<&CSSStyleDeclaration> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSStyleDeclaration);
 
 impl CSSStyleDeclaration {
-    pub fn css_text(&self) -> CSSOMString {
-        self.inner.get("cssText").as_::<CSSOMString>()
+    pub fn css_text(&self) -> String {
+        self.inner.get("cssText").as_::<String>()
     }
 
-    pub fn set_css_text(&mut self, value: CSSOMString) {
+    pub fn set_css_text(&mut self, value: &str) {
         self.inner.set("cssText", value);
     }
 }
@@ -68,39 +68,32 @@ impl CSSStyleDeclaration {
     }
 }
 impl CSSStyleDeclaration {
-    pub fn item(&self, index: u32) -> CSSOMString {
-        self.inner
-            .call("item", &[index.into()])
-            .as_::<CSSOMString>()
+    pub fn item(&self, index: u32) -> String {
+        self.inner.call("item", &[index.into()]).as_::<String>()
     }
 }
 impl CSSStyleDeclaration {
-    pub fn get_property_value(&self, property: CSSOMString) -> CSSOMString {
+    pub fn get_property_value(&self, property: &str) -> String {
         self.inner
             .call("getPropertyValue", &[property.into()])
-            .as_::<CSSOMString>()
+            .as_::<String>()
     }
 }
 impl CSSStyleDeclaration {
-    pub fn get_property_priority(&self, property: CSSOMString) -> CSSOMString {
+    pub fn get_property_priority(&self, property: &str) -> String {
         self.inner
             .call("getPropertyPriority", &[property.into()])
-            .as_::<CSSOMString>()
+            .as_::<String>()
     }
 }
 impl CSSStyleDeclaration {
-    pub fn set_property0(&self, property: CSSOMString, value: CSSOMString) -> Undefined {
+    pub fn set_property0(&self, property: &str, value: &str) -> Undefined {
         self.inner
             .call("setProperty", &[property.into(), value.into()])
             .as_::<Undefined>()
     }
 
-    pub fn set_property1(
-        &self,
-        property: CSSOMString,
-        value: CSSOMString,
-        priority: CSSOMString,
-    ) -> Undefined {
+    pub fn set_property1(&self, property: &str, value: &str, priority: &str) -> Undefined {
         self.inner
             .call(
                 "setProperty",
@@ -110,10 +103,10 @@ impl CSSStyleDeclaration {
     }
 }
 impl CSSStyleDeclaration {
-    pub fn remove_property(&self, property: CSSOMString) -> CSSOMString {
+    pub fn remove_property(&self, property: &str) -> String {
         self.inner
             .call("removeProperty", &[property.into()])
-            .as_::<CSSOMString>()
+            .as_::<String>()
     }
 }
 impl CSSStyleDeclaration {

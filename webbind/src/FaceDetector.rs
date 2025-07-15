@@ -55,7 +55,7 @@ impl DetectedFace {
         self.inner.get("boundingBox").as_::<DOMRectReadOnly>()
     }
 
-    pub fn set_bounding_box(&mut self, value: DOMRectReadOnly) {
+    pub fn set_bounding_box(&mut self, value: &DOMRectReadOnly) {
         self.inner.set("boundingBox", value);
     }
 }
@@ -64,7 +64,7 @@ impl DetectedFace {
         self.inner.get("landmarks").as_::<Sequence<Any>>()
     }
 
-    pub fn set_landmarks(&mut self, value: Sequence<Any>) {
+    pub fn set_landmarks(&mut self, value: &Sequence<Any>) {
         self.inner.set("landmarks", value);
     }
 }
@@ -130,7 +130,7 @@ impl FaceDetector {
         }
     }
 
-    pub fn new1(face_detector_options: Any) -> FaceDetector {
+    pub fn new1(face_detector_options: &Any) -> FaceDetector {
         Self {
             inner: emlite::Val::global("FaceDetector")
                 .new(&[face_detector_options.into()])
@@ -139,7 +139,7 @@ impl FaceDetector {
     }
 }
 impl FaceDetector {
-    pub fn detect(&self, image: Any) -> Promise {
+    pub fn detect(&self, image: &Any) -> Promise {
         self.inner.call("detect", &[image.into()]).as_::<Promise>()
     }
 }

@@ -54,7 +54,7 @@ impl From<&CountQueuingStrategy> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CountQueuingStrategy);
 
 impl CountQueuingStrategy {
-    pub fn new(init: Any) -> CountQueuingStrategy {
+    pub fn new(init: &Any) -> CountQueuingStrategy {
         Self {
             inner: emlite::Val::global("CountQueuingStrategy")
                 .new(&[init.into()])

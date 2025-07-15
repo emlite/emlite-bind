@@ -54,7 +54,7 @@ impl From<&ValueEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ValueEvent);
 
 impl ValueEvent {
-    pub fn new0(type_: DOMString) -> ValueEvent {
+    pub fn new0(type_: &str) -> ValueEvent {
         Self {
             inner: emlite::Val::global("ValueEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl ValueEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, init_dict: Any) -> ValueEvent {
+    pub fn new1(type_: &str, init_dict: &Any) -> ValueEvent {
         Self {
             inner: emlite::Val::global("ValueEvent")
                 .new(&[type_.into(), init_dict.into()])

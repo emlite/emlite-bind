@@ -54,7 +54,7 @@ impl From<&WEBGL_provoking_vertex> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(WEBGL_provoking_vertex);
 
 impl WEBGL_provoking_vertex {
-    pub fn provoking_vertex_webgl(&self, provoke_mode: Any) -> Undefined {
+    pub fn provoking_vertex_webgl(&self, provoke_mode: &Any) -> Undefined {
         self.inner
             .call("provokingVertexWEBGL", &[provoke_mode.into()])
             .as_::<Undefined>()

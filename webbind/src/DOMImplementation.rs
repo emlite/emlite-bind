@@ -56,9 +56,9 @@ jsbind::utils::impl_dyn_cast!(DOMImplementation);
 impl DOMImplementation {
     pub fn create_document_type(
         &self,
-        name: DOMString,
-        public_id: DOMString,
-        system_id: DOMString,
+        name: &str,
+        public_id: &str,
+        system_id: &str,
     ) -> DocumentType {
         self.inner
             .call(
@@ -69,7 +69,7 @@ impl DOMImplementation {
     }
 }
 impl DOMImplementation {
-    pub fn create_document0(&self, namespace: DOMString, qualified_name: DOMString) -> XMLDocument {
+    pub fn create_document0(&self, namespace: &str, qualified_name: &str) -> XMLDocument {
         self.inner
             .call("createDocument", &[namespace.into(), qualified_name.into()])
             .as_::<XMLDocument>()
@@ -77,9 +77,9 @@ impl DOMImplementation {
 
     pub fn create_document1(
         &self,
-        namespace: DOMString,
-        qualified_name: DOMString,
-        doctype: DocumentType,
+        namespace: &str,
+        qualified_name: &str,
+        doctype: &DocumentType,
     ) -> XMLDocument {
         self.inner
             .call(
@@ -94,7 +94,7 @@ impl DOMImplementation {
         self.inner.call("createHTMLDocument", &[]).as_::<Document>()
     }
 
-    pub fn create_html_document1(&self, title: DOMString) -> Document {
+    pub fn create_html_document1(&self, title: &str) -> Document {
         self.inner
             .call("createHTMLDocument", &[title.into()])
             .as_::<Document>()

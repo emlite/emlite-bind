@@ -54,23 +54,23 @@ impl From<&NotRestoredReasons> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(NotRestoredReasons);
 
 impl NotRestoredReasons {
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> String {
+        self.inner.get("src").as_::<String>()
     }
 }
 impl NotRestoredReasons {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl NotRestoredReasons {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl NotRestoredReasons {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }
 impl NotRestoredReasons {

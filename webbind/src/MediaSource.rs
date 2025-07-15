@@ -98,7 +98,7 @@ impl MediaSource {
         self.inner.get("onsourceopen").as_::<Any>()
     }
 
-    pub fn set_onsourceopen(&mut self, value: Any) {
+    pub fn set_onsourceopen(&mut self, value: &Any) {
         self.inner.set("onsourceopen", value);
     }
 }
@@ -107,7 +107,7 @@ impl MediaSource {
         self.inner.get("onsourceended").as_::<Any>()
     }
 
-    pub fn set_onsourceended(&mut self, value: Any) {
+    pub fn set_onsourceended(&mut self, value: &Any) {
         self.inner.set("onsourceended", value);
     }
 }
@@ -116,7 +116,7 @@ impl MediaSource {
         self.inner.get("onsourceclose").as_::<Any>()
     }
 
-    pub fn set_onsourceclose(&mut self, value: Any) {
+    pub fn set_onsourceclose(&mut self, value: &Any) {
         self.inner.set("onsourceclose", value);
     }
 }
@@ -128,14 +128,14 @@ impl MediaSource {
     }
 }
 impl MediaSource {
-    pub fn add_source_buffer(&self, type_: DOMString) -> SourceBuffer {
+    pub fn add_source_buffer(&self, type_: &str) -> SourceBuffer {
         self.inner
             .call("addSourceBuffer", &[type_.into()])
             .as_::<SourceBuffer>()
     }
 }
 impl MediaSource {
-    pub fn remove_source_buffer(&self, source_buffer: SourceBuffer) -> Undefined {
+    pub fn remove_source_buffer(&self, source_buffer: &SourceBuffer) -> Undefined {
         self.inner
             .call("removeSourceBuffer", &[source_buffer.into()])
             .as_::<Undefined>()
@@ -146,7 +146,7 @@ impl MediaSource {
         self.inner.call("endOfStream", &[]).as_::<Undefined>()
     }
 
-    pub fn end_of_stream1(&self, error: EndOfStreamError) -> Undefined {
+    pub fn end_of_stream1(&self, error: &EndOfStreamError) -> Undefined {
         self.inner
             .call("endOfStream", &[error.into()])
             .as_::<Undefined>()
@@ -167,7 +167,7 @@ impl MediaSource {
     }
 }
 impl MediaSource {
-    pub fn is_type_supported(type_: DOMString) -> bool {
+    pub fn is_type_supported(type_: &str) -> bool {
         emlite::Val::global("MediaSource")
             .call("isTypeSupported", &[type_.into()])
             .as_::<bool>()

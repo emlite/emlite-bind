@@ -117,7 +117,7 @@ impl Scheduling {
         self.inner.call("isInputPending", &[]).as_::<bool>()
     }
 
-    pub fn is_input_pending1(&self, is_input_pending_options: IsInputPendingOptions) -> bool {
+    pub fn is_input_pending1(&self, is_input_pending_options: &IsInputPendingOptions) -> bool {
         self.inner
             .call("isInputPending", &[is_input_pending_options.into()])
             .as_::<bool>()

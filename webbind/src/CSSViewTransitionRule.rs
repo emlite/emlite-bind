@@ -54,12 +54,12 @@ impl From<&CSSViewTransitionRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSViewTransitionRule);
 
 impl CSSViewTransitionRule {
-    pub fn navigation(&self) -> CSSOMString {
-        self.inner.get("navigation").as_::<CSSOMString>()
+    pub fn navigation(&self) -> String {
+        self.inner.get("navigation").as_::<String>()
     }
 }
 impl CSSViewTransitionRule {
-    pub fn types(&self) -> FrozenArray<CSSOMString> {
-        self.inner.get("types").as_::<FrozenArray<CSSOMString>>()
+    pub fn types(&self) -> FrozenArray<String> {
+        self.inner.get("types").as_::<FrozenArray<String>>()
     }
 }

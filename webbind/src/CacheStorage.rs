@@ -51,11 +51,11 @@ impl From<&MultiCacheQueryOptions> for emlite::Val {
 }
 
 impl MultiCacheQueryOptions {
-    pub fn cache_name(&self) -> DOMString {
-        self.inner.get("cacheName").as_::<DOMString>()
+    pub fn cache_name(&self) -> String {
+        self.inner.get("cacheName").as_::<String>()
     }
 
-    pub fn set_cache_name(&mut self, value: DOMString) {
+    pub fn set_cache_name(&mut self, value: &str) {
         self.inner.set("cacheName", value);
     }
 }
@@ -113,32 +113,32 @@ impl From<&CacheStorage> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CacheStorage);
 
 impl CacheStorage {
-    pub fn match_0(&self, request: Any) -> Promise {
+    pub fn match_0(&self, request: &Any) -> Promise {
         self.inner.call("match", &[request.into()]).as_::<Promise>()
     }
 
-    pub fn match_1(&self, request: Any, options: MultiCacheQueryOptions) -> Promise {
+    pub fn match_1(&self, request: &Any, options: &MultiCacheQueryOptions) -> Promise {
         self.inner
             .call("match", &[request.into(), options.into()])
             .as_::<Promise>()
     }
 }
 impl CacheStorage {
-    pub fn has(&self, cache_name: DOMString) -> Promise {
+    pub fn has(&self, cache_name: &str) -> Promise {
         self.inner
             .call("has", &[cache_name.into()])
             .as_::<Promise>()
     }
 }
 impl CacheStorage {
-    pub fn open(&self, cache_name: DOMString) -> Promise {
+    pub fn open(&self, cache_name: &str) -> Promise {
         self.inner
             .call("open", &[cache_name.into()])
             .as_::<Promise>()
     }
 }
 impl CacheStorage {
-    pub fn delete(&self, cache_name: DOMString) -> Promise {
+    pub fn delete(&self, cache_name: &str) -> Promise {
         self.inner
             .call("delete", &[cache_name.into()])
             .as_::<Promise>()

@@ -54,18 +54,18 @@ impl From<&NavigationHistoryEntry> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(NavigationHistoryEntry);
 
 impl NavigationHistoryEntry {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }
 impl NavigationHistoryEntry {
-    pub fn key(&self) -> DOMString {
-        self.inner.get("key").as_::<DOMString>()
+    pub fn key(&self) -> String {
+        self.inner.get("key").as_::<String>()
     }
 }
 impl NavigationHistoryEntry {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl NavigationHistoryEntry {
@@ -88,7 +88,7 @@ impl NavigationHistoryEntry {
         self.inner.get("ondispose").as_::<Any>()
     }
 
-    pub fn set_ondispose(&mut self, value: Any) {
+    pub fn set_ondispose(&mut self, value: &Any) {
         self.inner.set("ondispose", value);
     }
 }

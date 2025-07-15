@@ -62,7 +62,7 @@ impl FragmentResult {
         }
     }
 
-    pub fn new1(options: Any) -> FragmentResult {
+    pub fn new1(options: &Any) -> FragmentResult {
         Self {
             inner: emlite::Val::global("FragmentResult")
                 .new(&[options.into()])

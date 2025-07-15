@@ -83,7 +83,7 @@ impl IDBRequest {
         self.inner.get("onsuccess").as_::<Any>()
     }
 
-    pub fn set_onsuccess(&mut self, value: Any) {
+    pub fn set_onsuccess(&mut self, value: &Any) {
         self.inner.set("onsuccess", value);
     }
 }
@@ -92,7 +92,7 @@ impl IDBRequest {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }

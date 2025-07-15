@@ -62,7 +62,7 @@ impl AnimationTrigger {
         }
     }
 
-    pub fn new1(options: Any) -> AnimationTrigger {
+    pub fn new1(options: &Any) -> AnimationTrigger {
         Self {
             inner: emlite::Val::global("AnimationTrigger")
                 .new(&[options.into()])
@@ -75,7 +75,7 @@ impl AnimationTrigger {
         self.inner.get("timeline").as_::<AnimationTimeline>()
     }
 
-    pub fn set_timeline(&mut self, value: AnimationTimeline) {
+    pub fn set_timeline(&mut self, value: &AnimationTimeline) {
         self.inner.set("timeline", value);
     }
 }
@@ -84,7 +84,7 @@ impl AnimationTrigger {
         self.inner.get("behavior").as_::<AnimationTriggerBehavior>()
     }
 
-    pub fn set_behavior(&mut self, value: AnimationTriggerBehavior) {
+    pub fn set_behavior(&mut self, value: &AnimationTriggerBehavior) {
         self.inner.set("behavior", value);
     }
 }
@@ -93,7 +93,7 @@ impl AnimationTrigger {
         self.inner.get("rangeStart").as_::<Any>()
     }
 
-    pub fn set_range_start(&mut self, value: Any) {
+    pub fn set_range_start(&mut self, value: &Any) {
         self.inner.set("rangeStart", value);
     }
 }
@@ -102,7 +102,7 @@ impl AnimationTrigger {
         self.inner.get("rangeEnd").as_::<Any>()
     }
 
-    pub fn set_range_end(&mut self, value: Any) {
+    pub fn set_range_end(&mut self, value: &Any) {
         self.inner.set("rangeEnd", value);
     }
 }
@@ -111,7 +111,7 @@ impl AnimationTrigger {
         self.inner.get("exitRangeStart").as_::<Any>()
     }
 
-    pub fn set_exit_range_start(&mut self, value: Any) {
+    pub fn set_exit_range_start(&mut self, value: &Any) {
         self.inner.set("exitRangeStart", value);
     }
 }
@@ -120,7 +120,7 @@ impl AnimationTrigger {
         self.inner.get("exitRangeEnd").as_::<Any>()
     }
 
-    pub fn set_exit_range_end(&mut self, value: Any) {
+    pub fn set_exit_range_end(&mut self, value: &Any) {
         self.inner.set("exitRangeEnd", value);
     }
 }

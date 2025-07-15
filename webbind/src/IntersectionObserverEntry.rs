@@ -54,7 +54,7 @@ impl From<&IntersectionObserverEntry> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(IntersectionObserverEntry);
 
 impl IntersectionObserverEntry {
-    pub fn new(intersection_observer_entry_init: Any) -> IntersectionObserverEntry {
+    pub fn new(intersection_observer_entry_init: &Any) -> IntersectionObserverEntry {
         Self {
             inner: emlite::Val::global("IntersectionObserverEntry")
                 .new(&[intersection_observer_entry_init.into()])

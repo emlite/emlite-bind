@@ -55,7 +55,7 @@ impl LockOptions {
         self.inner.get("mode").as_::<LockMode>()
     }
 
-    pub fn set_mode(&mut self, value: LockMode) {
+    pub fn set_mode(&mut self, value: &LockMode) {
         self.inner.set("mode", value);
     }
 }
@@ -82,7 +82,7 @@ impl LockOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -141,7 +141,7 @@ impl LockManagerSnapshot {
         self.inner.get("held").as_::<Sequence<Any>>()
     }
 
-    pub fn set_held(&mut self, value: Sequence<Any>) {
+    pub fn set_held(&mut self, value: &Sequence<Any>) {
         self.inner.set("held", value);
     }
 }
@@ -150,7 +150,7 @@ impl LockManagerSnapshot {
         self.inner.get("pending").as_::<Sequence<Any>>()
     }
 
-    pub fn set_pending(&mut self, value: Sequence<Any>) {
+    pub fn set_pending(&mut self, value: &Sequence<Any>) {
         self.inner.set("pending", value);
     }
 }
@@ -208,7 +208,7 @@ impl From<&LockManager> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(LockManager);
 
 impl LockManager {
-    pub fn request(&self, name: DOMString, options: LockOptions, callback: Function) -> Promise {
+    pub fn request(&self, name: &str, options: &LockOptions, callback: &Function) -> Promise {
         self.inner
             .call("request", &[name.into(), options.into(), callback.into()])
             .as_::<Promise>()

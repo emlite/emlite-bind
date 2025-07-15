@@ -56,10 +56,10 @@ jsbind::utils::impl_dyn_cast!(ANGLE_instanced_arrays);
 impl ANGLE_instanced_arrays {
     pub fn draw_arrays_instanced_angle(
         &self,
-        mode: Any,
-        first: Any,
-        count: Any,
-        primcount: Any,
+        mode: &Any,
+        first: &Any,
+        count: &Any,
+        primcount: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -72,11 +72,11 @@ impl ANGLE_instanced_arrays {
 impl ANGLE_instanced_arrays {
     pub fn draw_elements_instanced_angle(
         &self,
-        mode: Any,
-        count: Any,
-        type_: Any,
-        offset: Any,
-        primcount: Any,
+        mode: &Any,
+        count: &Any,
+        type_: &Any,
+        offset: &Any,
+        primcount: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -93,7 +93,7 @@ impl ANGLE_instanced_arrays {
     }
 }
 impl ANGLE_instanced_arrays {
-    pub fn vertex_attrib_divisor_angle(&self, index: Any, divisor: Any) -> Undefined {
+    pub fn vertex_attrib_divisor_angle(&self, index: &Any, divisor: &Any) -> Undefined {
         self.inner
             .call("vertexAttribDivisorANGLE", &[index.into(), divisor.into()])
             .as_::<Undefined>()

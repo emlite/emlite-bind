@@ -54,7 +54,7 @@ impl From<&ChannelSplitterNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ChannelSplitterNode);
 
 impl ChannelSplitterNode {
-    pub fn new0(context: BaseAudioContext) -> ChannelSplitterNode {
+    pub fn new0(context: &BaseAudioContext) -> ChannelSplitterNode {
         Self {
             inner: emlite::Val::global("ChannelSplitterNode")
                 .new(&[context.into()])
@@ -62,7 +62,7 @@ impl ChannelSplitterNode {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: Any) -> ChannelSplitterNode {
+    pub fn new1(context: &BaseAudioContext, options: &Any) -> ChannelSplitterNode {
         Self {
             inner: emlite::Val::global("ChannelSplitterNode")
                 .new(&[context.into(), options.into()])

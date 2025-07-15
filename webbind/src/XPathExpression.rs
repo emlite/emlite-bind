@@ -54,19 +54,19 @@ impl From<&XPathExpression> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(XPathExpression);
 
 impl XPathExpression {
-    pub fn evaluate0(&self, context_node: Node) -> XPathResult {
+    pub fn evaluate0(&self, context_node: &Node) -> XPathResult {
         self.inner
             .call("evaluate", &[context_node.into()])
             .as_::<XPathResult>()
     }
 
-    pub fn evaluate1(&self, context_node: Node, type_: u16) -> XPathResult {
+    pub fn evaluate1(&self, context_node: &Node, type_: u16) -> XPathResult {
         self.inner
             .call("evaluate", &[context_node.into(), type_.into()])
             .as_::<XPathResult>()
     }
 
-    pub fn evaluate2(&self, context_node: Node, type_: u16, result: XPathResult) -> XPathResult {
+    pub fn evaluate2(&self, context_node: &Node, type_: u16, result: &XPathResult) -> XPathResult {
         self.inner
             .call(
                 "evaluate",

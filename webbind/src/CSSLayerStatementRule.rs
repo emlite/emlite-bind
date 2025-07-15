@@ -54,7 +54,7 @@ impl From<&CSSLayerStatementRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSLayerStatementRule);
 
 impl CSSLayerStatementRule {
-    pub fn name_list(&self) -> FrozenArray<CSSOMString> {
-        self.inner.get("nameList").as_::<FrozenArray<CSSOMString>>()
+    pub fn name_list(&self) -> FrozenArray<String> {
+        self.inner.get("nameList").as_::<FrozenArray<String>>()
     }
 }

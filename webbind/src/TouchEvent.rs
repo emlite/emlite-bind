@@ -54,7 +54,7 @@ impl From<&TouchEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(TouchEvent);
 
 impl TouchEvent {
-    pub fn new0(type_: DOMString) -> TouchEvent {
+    pub fn new0(type_: &str) -> TouchEvent {
         Self {
             inner: emlite::Val::global("TouchEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl TouchEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> TouchEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> TouchEvent {
         Self {
             inner: emlite::Val::global("TouchEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -106,7 +106,7 @@ impl TouchEvent {
     }
 }
 impl TouchEvent {
-    pub fn get_modifier_state(&self, key_arg: DOMString) -> bool {
+    pub fn get_modifier_state(&self, key_arg: &str) -> bool {
         self.inner
             .call("getModifierState", &[key_arg.into()])
             .as_::<bool>()

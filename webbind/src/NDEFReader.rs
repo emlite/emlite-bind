@@ -55,7 +55,7 @@ impl NDEFScanOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -123,7 +123,7 @@ impl NDEFWriteOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -182,7 +182,7 @@ impl NDEFMakeReadOnlyOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -253,7 +253,7 @@ impl NDEFReader {
         self.inner.get("onreading").as_::<Any>()
     }
 
-    pub fn set_onreading(&mut self, value: Any) {
+    pub fn set_onreading(&mut self, value: &Any) {
         self.inner.set("onreading", value);
     }
 }
@@ -262,7 +262,7 @@ impl NDEFReader {
         self.inner.get("onreadingerror").as_::<Any>()
     }
 
-    pub fn set_onreadingerror(&mut self, value: Any) {
+    pub fn set_onreadingerror(&mut self, value: &Any) {
         self.inner.set("onreadingerror", value);
     }
 }
@@ -271,16 +271,16 @@ impl NDEFReader {
         self.inner.call("scan", &[]).as_::<Promise>()
     }
 
-    pub fn scan1(&self, options: NDEFScanOptions) -> Promise {
+    pub fn scan1(&self, options: &NDEFScanOptions) -> Promise {
         self.inner.call("scan", &[options.into()]).as_::<Promise>()
     }
 }
 impl NDEFReader {
-    pub fn write0(&self, message: Any) -> Promise {
+    pub fn write0(&self, message: &Any) -> Promise {
         self.inner.call("write", &[message.into()]).as_::<Promise>()
     }
 
-    pub fn write1(&self, message: Any, options: NDEFWriteOptions) -> Promise {
+    pub fn write1(&self, message: &Any, options: &NDEFWriteOptions) -> Promise {
         self.inner
             .call("write", &[message.into(), options.into()])
             .as_::<Promise>()
@@ -291,7 +291,7 @@ impl NDEFReader {
         self.inner.call("makeReadOnly", &[]).as_::<Promise>()
     }
 
-    pub fn make_read_only1(&self, options: NDEFMakeReadOnlyOptions) -> Promise {
+    pub fn make_read_only1(&self, options: &NDEFMakeReadOnlyOptions) -> Promise {
         self.inner
             .call("makeReadOnly", &[options.into()])
             .as_::<Promise>()

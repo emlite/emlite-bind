@@ -56,12 +56,12 @@ jsbind::utils::impl_dyn_cast!(WEBGL_multi_draw);
 impl WEBGL_multi_draw {
     pub fn multi_draw_arrays_webgl(
         &self,
-        mode: Any,
-        firsts_list: Any,
+        mode: &Any,
+        firsts_list: &Any,
         firsts_offset: u64,
-        counts_list: Any,
+        counts_list: &Any,
         counts_offset: u64,
-        drawcount: Any,
+        drawcount: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -81,13 +81,13 @@ impl WEBGL_multi_draw {
 impl WEBGL_multi_draw {
     pub fn multi_draw_elements_webgl(
         &self,
-        mode: Any,
-        counts_list: Any,
+        mode: &Any,
+        counts_list: &Any,
         counts_offset: u64,
-        type_: Any,
-        offsets_list: Any,
+        type_: &Any,
+        offsets_list: &Any,
         offsets_offset: u64,
-        drawcount: Any,
+        drawcount: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -108,14 +108,14 @@ impl WEBGL_multi_draw {
 impl WEBGL_multi_draw {
     pub fn multi_draw_arrays_instanced_webgl(
         &self,
-        mode: Any,
-        firsts_list: Any,
+        mode: &Any,
+        firsts_list: &Any,
         firsts_offset: u64,
-        counts_list: Any,
+        counts_list: &Any,
         counts_offset: u64,
-        instance_counts_list: Any,
+        instance_counts_list: &Any,
         instance_counts_offset: u64,
-        drawcount: Any,
+        drawcount: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -137,15 +137,15 @@ impl WEBGL_multi_draw {
 impl WEBGL_multi_draw {
     pub fn multi_draw_elements_instanced_webgl(
         &self,
-        mode: Any,
-        counts_list: Any,
+        mode: &Any,
+        counts_list: &Any,
         counts_offset: u64,
-        type_: Any,
-        offsets_list: Any,
+        type_: &Any,
+        offsets_list: &Any,
         offsets_offset: u64,
-        instance_counts_list: Any,
+        instance_counts_list: &Any,
         instance_counts_offset: u64,
-        drawcount: Any,
+        drawcount: &Any,
     ) -> Undefined {
         self.inner
             .call(

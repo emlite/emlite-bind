@@ -73,7 +73,7 @@ impl CanvasRenderingContext2DSettings {
         self.inner.get("colorSpace").as_::<PredefinedColorSpace>()
     }
 
-    pub fn set_color_space(&mut self, value: PredefinedColorSpace) {
+    pub fn set_color_space(&mut self, value: &PredefinedColorSpace) {
         self.inner.set("colorSpace", value);
     }
 }
@@ -82,7 +82,7 @@ impl CanvasRenderingContext2DSettings {
         self.inner.get("colorType").as_::<CanvasColorType>()
     }
 
-    pub fn set_color_type(&mut self, value: CanvasColorType) {
+    pub fn set_color_type(&mut self, value: &CanvasColorType) {
         self.inner.set("colorType", value);
     }
 }
@@ -150,7 +150,7 @@ impl ImageDataSettings {
         self.inner.get("colorSpace").as_::<PredefinedColorSpace>()
     }
 
-    pub fn set_color_space(&mut self, value: PredefinedColorSpace) {
+    pub fn set_color_space(&mut self, value: &PredefinedColorSpace) {
         self.inner.set("colorSpace", value);
     }
 }
@@ -159,7 +159,7 @@ impl ImageDataSettings {
         self.inner.get("pixelFormat").as_::<ImageDataPixelFormat>()
     }
 
-    pub fn set_pixel_format(&mut self, value: ImageDataPixelFormat) {
+    pub fn set_pixel_format(&mut self, value: &ImageDataPixelFormat) {
         self.inner.set("pixelFormat", value);
     }
 }
@@ -289,7 +289,7 @@ impl CanvasRenderingContext2D {
         self.inner.call("setTransform", &[]).as_::<Undefined>()
     }
 
-    pub fn set_transform1(&self, transform: DOMMatrix2DInit) -> Undefined {
+    pub fn set_transform1(&self, transform: &DOMMatrix2DInit) -> Undefined {
         self.inner
             .call("setTransform", &[transform.into()])
             .as_::<Undefined>()
@@ -310,13 +310,11 @@ impl CanvasRenderingContext2D {
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn global_composite_operation(&self) -> DOMString {
-        self.inner
-            .get("globalCompositeOperation")
-            .as_::<DOMString>()
+    pub fn global_composite_operation(&self) -> String {
+        self.inner.get("globalCompositeOperation").as_::<String>()
     }
 
-    pub fn set_global_composite_operation(&mut self, value: DOMString) {
+    pub fn set_global_composite_operation(&mut self, value: &str) {
         self.inner.set("globalCompositeOperation", value);
     }
 }
@@ -336,7 +334,7 @@ impl CanvasRenderingContext2D {
             .as_::<ImageSmoothingQuality>()
     }
 
-    pub fn set_image_smoothing_quality(&mut self, value: ImageSmoothingQuality) {
+    pub fn set_image_smoothing_quality(&mut self, value: &ImageSmoothingQuality) {
         self.inner.set("imageSmoothingQuality", value);
     }
 }
@@ -345,7 +343,7 @@ impl CanvasRenderingContext2D {
         self.inner.get("strokeStyle").as_::<Any>()
     }
 
-    pub fn set_stroke_style(&mut self, value: Any) {
+    pub fn set_stroke_style(&mut self, value: &Any) {
         self.inner.set("strokeStyle", value);
     }
 }
@@ -354,7 +352,7 @@ impl CanvasRenderingContext2D {
         self.inner.get("fillStyle").as_::<Any>()
     }
 
-    pub fn set_fill_style(&mut self, value: Any) {
+    pub fn set_fill_style(&mut self, value: &Any) {
         self.inner.set("fillStyle", value);
     }
 }
@@ -404,7 +402,7 @@ impl CanvasRenderingContext2D {
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn create_pattern(&self, image: Any, repetition: DOMString) -> CanvasPattern {
+    pub fn create_pattern(&self, image: &Any, repetition: &str) -> CanvasPattern {
         self.inner
             .call("createPattern", &[image.into(), repetition.into()])
             .as_::<CanvasPattern>()
@@ -438,20 +436,20 @@ impl CanvasRenderingContext2D {
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn shadow_color(&self) -> DOMString {
-        self.inner.get("shadowColor").as_::<DOMString>()
+    pub fn shadow_color(&self) -> String {
+        self.inner.get("shadowColor").as_::<String>()
     }
 
-    pub fn set_shadow_color(&mut self, value: DOMString) {
+    pub fn set_shadow_color(&mut self, value: &str) {
         self.inner.set("shadowColor", value);
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn filter(&self) -> DOMString {
-        self.inner.get("filter").as_::<DOMString>()
+    pub fn filter(&self) -> String {
+        self.inner.get("filter").as_::<String>()
     }
 
-    pub fn set_filter(&mut self, value: DOMString) {
+    pub fn set_filter(&mut self, value: &str) {
         self.inner.set("filter", value);
     }
 }
@@ -482,34 +480,34 @@ impl CanvasRenderingContext2D {
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn fill0(&self, path: Path2D) -> Undefined {
+    pub fn fill0(&self, path: &Path2D) -> Undefined {
         self.inner.call("fill", &[path.into()]).as_::<Undefined>()
     }
 
-    pub fn fill1(&self, path: Path2D, fill_rule: CanvasFillRule) -> Undefined {
+    pub fn fill1(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
         self.inner
             .call("fill", &[path.into(), fill_rule.into()])
             .as_::<Undefined>()
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn stroke(&self, path: Path2D) -> Undefined {
+    pub fn stroke(&self, path: &Path2D) -> Undefined {
         self.inner.call("stroke", &[path.into()]).as_::<Undefined>()
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn clip0(&self, path: Path2D) -> Undefined {
+    pub fn clip0(&self, path: &Path2D) -> Undefined {
         self.inner.call("clip", &[path.into()]).as_::<Undefined>()
     }
 
-    pub fn clip1(&self, path: Path2D, fill_rule: CanvasFillRule) -> Undefined {
+    pub fn clip1(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
         self.inner
             .call("clip", &[path.into(), fill_rule.into()])
             .as_::<Undefined>()
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn is_point_in_path0(&self, path: Path2D, x: f64, y: f64) -> bool {
+    pub fn is_point_in_path0(&self, path: &Path2D, x: f64, y: f64) -> bool {
         self.inner
             .call("isPointInPath", &[path.into(), x.into(), y.into()])
             .as_::<bool>()
@@ -517,10 +515,10 @@ impl CanvasRenderingContext2D {
 
     pub fn is_point_in_path1(
         &self,
-        path: Path2D,
+        path: &Path2D,
         x: f64,
         y: f64,
-        fill_rule: CanvasFillRule,
+        fill_rule: &CanvasFillRule,
     ) -> bool {
         self.inner
             .call(
@@ -531,27 +529,27 @@ impl CanvasRenderingContext2D {
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn is_point_in_stroke(&self, path: Path2D, x: f64, y: f64) -> bool {
+    pub fn is_point_in_stroke(&self, path: &Path2D, x: f64, y: f64) -> bool {
         self.inner
             .call("isPointInStroke", &[path.into(), x.into(), y.into()])
             .as_::<bool>()
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn draw_focus_if_needed(&self, path: Path2D, element: Element) -> Undefined {
+    pub fn draw_focus_if_needed(&self, path: &Path2D, element: &Element) -> Undefined {
         self.inner
             .call("drawFocusIfNeeded", &[path.into(), element.into()])
             .as_::<Undefined>()
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn fill_text0(&self, text: DOMString, x: f64, y: f64) -> Undefined {
+    pub fn fill_text0(&self, text: &str, x: f64, y: f64) -> Undefined {
         self.inner
             .call("fillText", &[text.into(), x.into(), y.into()])
             .as_::<Undefined>()
     }
 
-    pub fn fill_text1(&self, text: DOMString, x: f64, y: f64, max_width: f64) -> Undefined {
+    pub fn fill_text1(&self, text: &str, x: f64, y: f64, max_width: f64) -> Undefined {
         self.inner
             .call(
                 "fillText",
@@ -561,13 +559,13 @@ impl CanvasRenderingContext2D {
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn stroke_text0(&self, text: DOMString, x: f64, y: f64) -> Undefined {
+    pub fn stroke_text0(&self, text: &str, x: f64, y: f64) -> Undefined {
         self.inner
             .call("strokeText", &[text.into(), x.into(), y.into()])
             .as_::<Undefined>()
     }
 
-    pub fn stroke_text1(&self, text: DOMString, x: f64, y: f64, max_width: f64) -> Undefined {
+    pub fn stroke_text1(&self, text: &str, x: f64, y: f64, max_width: f64) -> Undefined {
         self.inner
             .call(
                 "strokeText",
@@ -577,7 +575,7 @@ impl CanvasRenderingContext2D {
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn measure_text(&self, text: DOMString) -> TextMetrics {
+    pub fn measure_text(&self, text: &str) -> TextMetrics {
         self.inner
             .call("measureText", &[text.into()])
             .as_::<TextMetrics>()
@@ -586,7 +584,7 @@ impl CanvasRenderingContext2D {
 impl CanvasRenderingContext2D {
     pub fn draw_image(
         &self,
-        image: Any,
+        image: &Any,
         sx: f64,
         sy: f64,
         sw: f64,
@@ -615,7 +613,7 @@ impl CanvasRenderingContext2D {
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn create_image_data(&self, image_data: ImageData) -> ImageData {
+    pub fn create_image_data(&self, image_data: &ImageData) -> ImageData {
         self.inner
             .call("createImageData", &[image_data.into()])
             .as_::<ImageData>()
@@ -637,7 +635,7 @@ impl CanvasRenderingContext2D {
         sy: i32,
         sw: i32,
         sh: i32,
-        settings: ImageDataSettings,
+        settings: &ImageDataSettings,
     ) -> ImageData {
         self.inner
             .call(
@@ -650,7 +648,7 @@ impl CanvasRenderingContext2D {
 impl CanvasRenderingContext2D {
     pub fn put_image_data(
         &self,
-        image_data: ImageData,
+        image_data: &ImageData,
         dx: i32,
         dy: i32,
         dirty_x: i32,
@@ -688,7 +686,7 @@ impl CanvasRenderingContext2D {
         self.inner.get("lineCap").as_::<CanvasLineCap>()
     }
 
-    pub fn set_line_cap(&mut self, value: CanvasLineCap) {
+    pub fn set_line_cap(&mut self, value: &CanvasLineCap) {
         self.inner.set("lineCap", value);
     }
 }
@@ -697,7 +695,7 @@ impl CanvasRenderingContext2D {
         self.inner.get("lineJoin").as_::<CanvasLineJoin>()
     }
 
-    pub fn set_line_join(&mut self, value: CanvasLineJoin) {
+    pub fn set_line_join(&mut self, value: &CanvasLineJoin) {
         self.inner.set("lineJoin", value);
     }
 }
@@ -732,20 +730,20 @@ impl CanvasRenderingContext2D {
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn lang(&self) -> DOMString {
-        self.inner.get("lang").as_::<DOMString>()
+    pub fn lang(&self) -> String {
+        self.inner.get("lang").as_::<String>()
     }
 
-    pub fn set_lang(&mut self, value: DOMString) {
+    pub fn set_lang(&mut self, value: &str) {
         self.inner.set("lang", value);
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn font(&self) -> DOMString {
-        self.inner.get("font").as_::<DOMString>()
+    pub fn font(&self) -> String {
+        self.inner.get("font").as_::<String>()
     }
 
-    pub fn set_font(&mut self, value: DOMString) {
+    pub fn set_font(&mut self, value: &str) {
         self.inner.set("font", value);
     }
 }
@@ -754,7 +752,7 @@ impl CanvasRenderingContext2D {
         self.inner.get("textAlign").as_::<CanvasTextAlign>()
     }
 
-    pub fn set_text_align(&mut self, value: CanvasTextAlign) {
+    pub fn set_text_align(&mut self, value: &CanvasTextAlign) {
         self.inner.set("textAlign", value);
     }
 }
@@ -763,7 +761,7 @@ impl CanvasRenderingContext2D {
         self.inner.get("textBaseline").as_::<CanvasTextBaseline>()
     }
 
-    pub fn set_text_baseline(&mut self, value: CanvasTextBaseline) {
+    pub fn set_text_baseline(&mut self, value: &CanvasTextBaseline) {
         self.inner.set("textBaseline", value);
     }
 }
@@ -772,16 +770,16 @@ impl CanvasRenderingContext2D {
         self.inner.get("direction").as_::<CanvasDirection>()
     }
 
-    pub fn set_direction(&mut self, value: CanvasDirection) {
+    pub fn set_direction(&mut self, value: &CanvasDirection) {
         self.inner.set("direction", value);
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn letter_spacing(&self) -> DOMString {
-        self.inner.get("letterSpacing").as_::<DOMString>()
+    pub fn letter_spacing(&self) -> String {
+        self.inner.get("letterSpacing").as_::<String>()
     }
 
-    pub fn set_letter_spacing(&mut self, value: DOMString) {
+    pub fn set_letter_spacing(&mut self, value: &str) {
         self.inner.set("letterSpacing", value);
     }
 }
@@ -790,7 +788,7 @@ impl CanvasRenderingContext2D {
         self.inner.get("fontKerning").as_::<CanvasFontKerning>()
     }
 
-    pub fn set_font_kerning(&mut self, value: CanvasFontKerning) {
+    pub fn set_font_kerning(&mut self, value: &CanvasFontKerning) {
         self.inner.set("fontKerning", value);
     }
 }
@@ -799,7 +797,7 @@ impl CanvasRenderingContext2D {
         self.inner.get("fontStretch").as_::<CanvasFontStretch>()
     }
 
-    pub fn set_font_stretch(&mut self, value: CanvasFontStretch) {
+    pub fn set_font_stretch(&mut self, value: &CanvasFontStretch) {
         self.inner.set("fontStretch", value);
     }
 }
@@ -810,7 +808,7 @@ impl CanvasRenderingContext2D {
             .as_::<CanvasFontVariantCaps>()
     }
 
-    pub fn set_font_variant_caps(&mut self, value: CanvasFontVariantCaps) {
+    pub fn set_font_variant_caps(&mut self, value: &CanvasFontVariantCaps) {
         self.inner.set("fontVariantCaps", value);
     }
 }
@@ -819,16 +817,16 @@ impl CanvasRenderingContext2D {
         self.inner.get("textRendering").as_::<CanvasTextRendering>()
     }
 
-    pub fn set_text_rendering(&mut self, value: CanvasTextRendering) {
+    pub fn set_text_rendering(&mut self, value: &CanvasTextRendering) {
         self.inner.set("textRendering", value);
     }
 }
 impl CanvasRenderingContext2D {
-    pub fn word_spacing(&self) -> DOMString {
-        self.inner.get("wordSpacing").as_::<DOMString>()
+    pub fn word_spacing(&self) -> String {
+        self.inner.get("wordSpacing").as_::<String>()
     }
 
-    pub fn set_word_spacing(&mut self, value: DOMString) {
+    pub fn set_word_spacing(&mut self, value: &str) {
         self.inner.set("wordSpacing", value);
     }
 }
@@ -910,7 +908,7 @@ impl CanvasRenderingContext2D {
             .as_::<Undefined>()
     }
 
-    pub fn round_rect1(&self, x: f64, y: f64, w: f64, h: f64, radii: Any) -> Undefined {
+    pub fn round_rect1(&self, x: f64, y: f64, w: f64, h: f64, radii: &Any) -> Undefined {
         self.inner
             .call(
                 "roundRect",

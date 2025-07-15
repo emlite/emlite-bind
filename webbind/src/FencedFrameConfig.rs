@@ -54,7 +54,7 @@ impl From<&FencedFrameConfig> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(FencedFrameConfig);
 
 impl FencedFrameConfig {
-    pub fn new(url: USVString) -> FencedFrameConfig {
+    pub fn new(url: &str) -> FencedFrameConfig {
         Self {
             inner: emlite::Val::global("FencedFrameConfig")
                 .new(&[url.into()])
@@ -63,7 +63,7 @@ impl FencedFrameConfig {
     }
 }
 impl FencedFrameConfig {
-    pub fn set_shared_storage_context(&self, context_string: DOMString) -> Undefined {
+    pub fn set_shared_storage_context(&self, context_string: &str) -> Undefined {
         self.inner
             .call("setSharedStorageContext", &[context_string.into()])
             .as_::<Undefined>()

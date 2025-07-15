@@ -58,7 +58,7 @@ impl SourceBuffer {
         self.inner.get("mode").as_::<AppendMode>()
     }
 
-    pub fn set_mode(&mut self, value: AppendMode) {
+    pub fn set_mode(&mut self, value: &AppendMode) {
         self.inner.set("mode", value);
     }
 }
@@ -119,7 +119,7 @@ impl SourceBuffer {
         self.inner.get("onupdatestart").as_::<Any>()
     }
 
-    pub fn set_onupdatestart(&mut self, value: Any) {
+    pub fn set_onupdatestart(&mut self, value: &Any) {
         self.inner.set("onupdatestart", value);
     }
 }
@@ -128,7 +128,7 @@ impl SourceBuffer {
         self.inner.get("onupdate").as_::<Any>()
     }
 
-    pub fn set_onupdate(&mut self, value: Any) {
+    pub fn set_onupdate(&mut self, value: &Any) {
         self.inner.set("onupdate", value);
     }
 }
@@ -137,7 +137,7 @@ impl SourceBuffer {
         self.inner.get("onupdateend").as_::<Any>()
     }
 
-    pub fn set_onupdateend(&mut self, value: Any) {
+    pub fn set_onupdateend(&mut self, value: &Any) {
         self.inner.set("onupdateend", value);
     }
 }
@@ -146,7 +146,7 @@ impl SourceBuffer {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }
@@ -155,12 +155,12 @@ impl SourceBuffer {
         self.inner.get("onabort").as_::<Any>()
     }
 
-    pub fn set_onabort(&mut self, value: Any) {
+    pub fn set_onabort(&mut self, value: &Any) {
         self.inner.set("onabort", value);
     }
 }
 impl SourceBuffer {
-    pub fn append_buffer(&self, data: Any) -> Undefined {
+    pub fn append_buffer(&self, data: &Any) -> Undefined {
         self.inner
             .call("appendBuffer", &[data.into()])
             .as_::<Undefined>()
@@ -172,7 +172,7 @@ impl SourceBuffer {
     }
 }
 impl SourceBuffer {
-    pub fn change_type(&self, type_: DOMString) -> Undefined {
+    pub fn change_type(&self, type_: &str) -> Undefined {
         self.inner
             .call("changeType", &[type_.into()])
             .as_::<Undefined>()

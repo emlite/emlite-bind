@@ -63,20 +63,20 @@ impl HTMLScriptElement {
     }
 }
 impl HTMLScriptElement {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: DOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }
 impl HTMLScriptElement {
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> String {
+        self.inner.get("src").as_::<String>()
     }
 
-    pub fn set_src(&mut self, value: USVString) {
+    pub fn set_src(&mut self, value: &str) {
         self.inner.set("src", value);
     }
 }
@@ -113,90 +113,90 @@ impl HTMLScriptElement {
     }
 }
 impl HTMLScriptElement {
-    pub fn cross_origin(&self) -> DOMString {
-        self.inner.get("crossOrigin").as_::<DOMString>()
+    pub fn cross_origin(&self) -> String {
+        self.inner.get("crossOrigin").as_::<String>()
     }
 
-    pub fn set_cross_origin(&mut self, value: DOMString) {
+    pub fn set_cross_origin(&mut self, value: &str) {
         self.inner.set("crossOrigin", value);
     }
 }
 impl HTMLScriptElement {
-    pub fn referrer_policy(&self) -> DOMString {
-        self.inner.get("referrerPolicy").as_::<DOMString>()
+    pub fn referrer_policy(&self) -> String {
+        self.inner.get("referrerPolicy").as_::<String>()
     }
 
-    pub fn set_referrer_policy(&mut self, value: DOMString) {
+    pub fn set_referrer_policy(&mut self, value: &str) {
         self.inner.set("referrerPolicy", value);
     }
 }
 impl HTMLScriptElement {
-    pub fn integrity(&self) -> DOMString {
-        self.inner.get("integrity").as_::<DOMString>()
+    pub fn integrity(&self) -> String {
+        self.inner.get("integrity").as_::<String>()
     }
 
-    pub fn set_integrity(&mut self, value: DOMString) {
+    pub fn set_integrity(&mut self, value: &str) {
         self.inner.set("integrity", value);
     }
 }
 impl HTMLScriptElement {
-    pub fn fetch_priority(&self) -> DOMString {
-        self.inner.get("fetchPriority").as_::<DOMString>()
+    pub fn fetch_priority(&self) -> String {
+        self.inner.get("fetchPriority").as_::<String>()
     }
 
-    pub fn set_fetch_priority(&mut self, value: DOMString) {
+    pub fn set_fetch_priority(&mut self, value: &str) {
         self.inner.set("fetchPriority", value);
     }
 }
 impl HTMLScriptElement {
-    pub fn text(&self) -> DOMString {
-        self.inner.get("text").as_::<DOMString>()
+    pub fn text(&self) -> String {
+        self.inner.get("text").as_::<String>()
     }
 
-    pub fn set_text(&mut self, value: DOMString) {
+    pub fn set_text(&mut self, value: &str) {
         self.inner.set("text", value);
     }
 }
 impl HTMLScriptElement {
-    pub fn supports(type_: DOMString) -> bool {
+    pub fn supports(type_: &str) -> bool {
         emlite::Val::global("HTMLScriptElement")
             .call("supports", &[type_.into()])
             .as_::<bool>()
     }
 }
 impl HTMLScriptElement {
-    pub fn charset(&self) -> DOMString {
-        self.inner.get("charset").as_::<DOMString>()
+    pub fn charset(&self) -> String {
+        self.inner.get("charset").as_::<String>()
     }
 
-    pub fn set_charset(&mut self, value: DOMString) {
+    pub fn set_charset(&mut self, value: &str) {
         self.inner.set("charset", value);
     }
 }
 impl HTMLScriptElement {
-    pub fn event(&self) -> DOMString {
-        self.inner.get("event").as_::<DOMString>()
+    pub fn event(&self) -> String {
+        self.inner.get("event").as_::<String>()
     }
 
-    pub fn set_event(&mut self, value: DOMString) {
+    pub fn set_event(&mut self, value: &str) {
         self.inner.set("event", value);
     }
 }
 impl HTMLScriptElement {
-    pub fn html_for(&self) -> DOMString {
-        self.inner.get("htmlFor").as_::<DOMString>()
+    pub fn html_for(&self) -> String {
+        self.inner.get("htmlFor").as_::<String>()
     }
 
-    pub fn set_html_for(&mut self, value: DOMString) {
+    pub fn set_html_for(&mut self, value: &str) {
         self.inner.set("htmlFor", value);
     }
 }
 impl HTMLScriptElement {
-    pub fn attribution_src(&self) -> USVString {
-        self.inner.get("attributionSrc").as_::<USVString>()
+    pub fn attribution_src(&self) -> String {
+        self.inner.get("attributionSrc").as_::<String>()
     }
 
-    pub fn set_attribution_src(&mut self, value: USVString) {
+    pub fn set_attribution_src(&mut self, value: &str) {
         self.inner.set("attributionSrc", value);
     }
 }

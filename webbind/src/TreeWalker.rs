@@ -73,7 +73,7 @@ impl TreeWalker {
         self.inner.get("currentNode").as_::<Node>()
     }
 
-    pub fn set_current_node(&mut self, value: Node) {
+    pub fn set_current_node(&mut self, value: &Node) {
         self.inner.set("currentNode", value);
     }
 }

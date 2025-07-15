@@ -54,7 +54,7 @@ impl From<&CSSMathMin> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSMathMin);
 
 impl CSSMathMin {
-    pub fn new(args: Any) -> CSSMathMin {
+    pub fn new(args: &Any) -> CSSMathMin {
         Self {
             inner: emlite::Val::global("CSSMathMin")
                 .new(&[args.into()])

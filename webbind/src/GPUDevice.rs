@@ -55,7 +55,7 @@ impl GPUBufferDescriptor {
         self.inner.get("size").as_::<Any>()
     }
 
-    pub fn set_size(&mut self, value: Any) {
+    pub fn set_size(&mut self, value: &Any) {
         self.inner.set("size", value);
     }
 }
@@ -64,7 +64,7 @@ impl GPUBufferDescriptor {
         self.inner.get("usage").as_::<Any>()
     }
 
-    pub fn set_usage(&mut self, value: Any) {
+    pub fn set_usage(&mut self, value: &Any) {
         self.inner.set("usage", value);
     }
 }
@@ -132,7 +132,7 @@ impl GPUTextureDescriptor {
         self.inner.get("size").as_::<Any>()
     }
 
-    pub fn set_size(&mut self, value: Any) {
+    pub fn set_size(&mut self, value: &Any) {
         self.inner.set("size", value);
     }
 }
@@ -141,7 +141,7 @@ impl GPUTextureDescriptor {
         self.inner.get("mipLevelCount").as_::<Any>()
     }
 
-    pub fn set_mip_level_count(&mut self, value: Any) {
+    pub fn set_mip_level_count(&mut self, value: &Any) {
         self.inner.set("mipLevelCount", value);
     }
 }
@@ -150,7 +150,7 @@ impl GPUTextureDescriptor {
         self.inner.get("sampleCount").as_::<Any>()
     }
 
-    pub fn set_sample_count(&mut self, value: Any) {
+    pub fn set_sample_count(&mut self, value: &Any) {
         self.inner.set("sampleCount", value);
     }
 }
@@ -159,7 +159,7 @@ impl GPUTextureDescriptor {
         self.inner.get("dimension").as_::<GPUTextureDimension>()
     }
 
-    pub fn set_dimension(&mut self, value: GPUTextureDimension) {
+    pub fn set_dimension(&mut self, value: &GPUTextureDimension) {
         self.inner.set("dimension", value);
     }
 }
@@ -168,7 +168,7 @@ impl GPUTextureDescriptor {
         self.inner.get("format").as_::<GPUTextureFormat>()
     }
 
-    pub fn set_format(&mut self, value: GPUTextureFormat) {
+    pub fn set_format(&mut self, value: &GPUTextureFormat) {
         self.inner.set("format", value);
     }
 }
@@ -177,7 +177,7 @@ impl GPUTextureDescriptor {
         self.inner.get("usage").as_::<Any>()
     }
 
-    pub fn set_usage(&mut self, value: Any) {
+    pub fn set_usage(&mut self, value: &Any) {
         self.inner.set("usage", value);
     }
 }
@@ -188,7 +188,7 @@ impl GPUTextureDescriptor {
             .as_::<Sequence<GPUTextureFormat>>()
     }
 
-    pub fn set_view_formats(&mut self, value: Sequence<GPUTextureFormat>) {
+    pub fn set_view_formats(&mut self, value: &Sequence<GPUTextureFormat>) {
         self.inner.set("viewFormats", value);
     }
 }
@@ -247,7 +247,7 @@ impl GPUSamplerDescriptor {
         self.inner.get("addressModeU").as_::<GPUAddressMode>()
     }
 
-    pub fn set_address_mode_u(&mut self, value: GPUAddressMode) {
+    pub fn set_address_mode_u(&mut self, value: &GPUAddressMode) {
         self.inner.set("addressModeU", value);
     }
 }
@@ -256,7 +256,7 @@ impl GPUSamplerDescriptor {
         self.inner.get("addressModeV").as_::<GPUAddressMode>()
     }
 
-    pub fn set_address_mode_v(&mut self, value: GPUAddressMode) {
+    pub fn set_address_mode_v(&mut self, value: &GPUAddressMode) {
         self.inner.set("addressModeV", value);
     }
 }
@@ -265,7 +265,7 @@ impl GPUSamplerDescriptor {
         self.inner.get("addressModeW").as_::<GPUAddressMode>()
     }
 
-    pub fn set_address_mode_w(&mut self, value: GPUAddressMode) {
+    pub fn set_address_mode_w(&mut self, value: &GPUAddressMode) {
         self.inner.set("addressModeW", value);
     }
 }
@@ -274,7 +274,7 @@ impl GPUSamplerDescriptor {
         self.inner.get("magFilter").as_::<GPUFilterMode>()
     }
 
-    pub fn set_mag_filter(&mut self, value: GPUFilterMode) {
+    pub fn set_mag_filter(&mut self, value: &GPUFilterMode) {
         self.inner.set("magFilter", value);
     }
 }
@@ -283,7 +283,7 @@ impl GPUSamplerDescriptor {
         self.inner.get("minFilter").as_::<GPUFilterMode>()
     }
 
-    pub fn set_min_filter(&mut self, value: GPUFilterMode) {
+    pub fn set_min_filter(&mut self, value: &GPUFilterMode) {
         self.inner.set("minFilter", value);
     }
 }
@@ -292,7 +292,7 @@ impl GPUSamplerDescriptor {
         self.inner.get("mipmapFilter").as_::<GPUMipmapFilterMode>()
     }
 
-    pub fn set_mipmap_filter(&mut self, value: GPUMipmapFilterMode) {
+    pub fn set_mipmap_filter(&mut self, value: &GPUMipmapFilterMode) {
         self.inner.set("mipmapFilter", value);
     }
 }
@@ -319,7 +319,7 @@ impl GPUSamplerDescriptor {
         self.inner.get("compare").as_::<GPUCompareFunction>()
     }
 
-    pub fn set_compare(&mut self, value: GPUCompareFunction) {
+    pub fn set_compare(&mut self, value: &GPUCompareFunction) {
         self.inner.set("compare", value);
     }
 }
@@ -387,7 +387,7 @@ impl GPUExternalTextureDescriptor {
         self.inner.get("source").as_::<Any>()
     }
 
-    pub fn set_source(&mut self, value: Any) {
+    pub fn set_source(&mut self, value: &Any) {
         self.inner.set("source", value);
     }
 }
@@ -396,7 +396,7 @@ impl GPUExternalTextureDescriptor {
         self.inner.get("colorSpace").as_::<PredefinedColorSpace>()
     }
 
-    pub fn set_color_space(&mut self, value: PredefinedColorSpace) {
+    pub fn set_color_space(&mut self, value: &PredefinedColorSpace) {
         self.inner.set("colorSpace", value);
     }
 }
@@ -455,7 +455,7 @@ impl GPUBindGroupLayoutDescriptor {
         self.inner.get("entries").as_::<Sequence<Any>>()
     }
 
-    pub fn set_entries(&mut self, value: Sequence<Any>) {
+    pub fn set_entries(&mut self, value: &Sequence<Any>) {
         self.inner.set("entries", value);
     }
 }
@@ -516,7 +516,7 @@ impl GPUPipelineLayoutDescriptor {
             .as_::<Sequence<GPUBindGroupLayout>>()
     }
 
-    pub fn set_bind_group_layouts(&mut self, value: Sequence<GPUBindGroupLayout>) {
+    pub fn set_bind_group_layouts(&mut self, value: &Sequence<GPUBindGroupLayout>) {
         self.inner.set("bindGroupLayouts", value);
     }
 }
@@ -575,7 +575,7 @@ impl GPUBindGroupDescriptor {
         self.inner.get("layout").as_::<GPUBindGroupLayout>()
     }
 
-    pub fn set_layout(&mut self, value: GPUBindGroupLayout) {
+    pub fn set_layout(&mut self, value: &GPUBindGroupLayout) {
         self.inner.set("layout", value);
     }
 }
@@ -584,7 +584,7 @@ impl GPUBindGroupDescriptor {
         self.inner.get("entries").as_::<Sequence<Any>>()
     }
 
-    pub fn set_entries(&mut self, value: Sequence<Any>) {
+    pub fn set_entries(&mut self, value: &Sequence<Any>) {
         self.inner.set("entries", value);
     }
 }
@@ -639,11 +639,11 @@ impl From<&GPUShaderModuleDescriptor> for emlite::Val {
 }
 
 impl GPUShaderModuleDescriptor {
-    pub fn code(&self) -> USVString {
-        self.inner.get("code").as_::<USVString>()
+    pub fn code(&self) -> String {
+        self.inner.get("code").as_::<String>()
     }
 
-    pub fn set_code(&mut self, value: USVString) {
+    pub fn set_code(&mut self, value: &str) {
         self.inner.set("code", value);
     }
 }
@@ -652,7 +652,7 @@ impl GPUShaderModuleDescriptor {
         self.inner.get("compilationHints").as_::<Sequence<Any>>()
     }
 
-    pub fn set_compilation_hints(&mut self, value: Sequence<Any>) {
+    pub fn set_compilation_hints(&mut self, value: &Sequence<Any>) {
         self.inner.set("compilationHints", value);
     }
 }
@@ -711,7 +711,7 @@ impl GPUComputePipelineDescriptor {
         self.inner.get("compute").as_::<Any>()
     }
 
-    pub fn set_compute(&mut self, value: Any) {
+    pub fn set_compute(&mut self, value: &Any) {
         self.inner.set("compute", value);
     }
 }
@@ -770,7 +770,7 @@ impl GPURenderPipelineDescriptor {
         self.inner.get("vertex").as_::<Any>()
     }
 
-    pub fn set_vertex(&mut self, value: Any) {
+    pub fn set_vertex(&mut self, value: &Any) {
         self.inner.set("vertex", value);
     }
 }
@@ -779,7 +779,7 @@ impl GPURenderPipelineDescriptor {
         self.inner.get("primitive").as_::<Any>()
     }
 
-    pub fn set_primitive(&mut self, value: Any) {
+    pub fn set_primitive(&mut self, value: &Any) {
         self.inner.set("primitive", value);
     }
 }
@@ -788,7 +788,7 @@ impl GPURenderPipelineDescriptor {
         self.inner.get("depthStencil").as_::<Any>()
     }
 
-    pub fn set_depth_stencil(&mut self, value: Any) {
+    pub fn set_depth_stencil(&mut self, value: &Any) {
         self.inner.set("depthStencil", value);
     }
 }
@@ -797,7 +797,7 @@ impl GPURenderPipelineDescriptor {
         self.inner.get("multisample").as_::<Any>()
     }
 
-    pub fn set_multisample(&mut self, value: Any) {
+    pub fn set_multisample(&mut self, value: &Any) {
         self.inner.set("multisample", value);
     }
 }
@@ -806,7 +806,7 @@ impl GPURenderPipelineDescriptor {
         self.inner.get("fragment").as_::<Any>()
     }
 
-    pub fn set_fragment(&mut self, value: Any) {
+    pub fn set_fragment(&mut self, value: &Any) {
         self.inner.set("fragment", value);
     }
 }
@@ -983,7 +983,7 @@ impl GPUQuerySetDescriptor {
         self.inner.get("type").as_::<GPUQueryType>()
     }
 
-    pub fn set_type_(&mut self, value: GPUQueryType) {
+    pub fn set_type_(&mut self, value: &GPUQueryType) {
         self.inner.set("type", value);
     }
 }
@@ -992,7 +992,7 @@ impl GPUQuerySetDescriptor {
         self.inner.get("count").as_::<Any>()
     }
 
-    pub fn set_count(&mut self, value: Any) {
+    pub fn set_count(&mut self, value: &Any) {
         self.inner.set("count", value);
     }
 }
@@ -1075,14 +1075,14 @@ impl GPUDevice {
     }
 }
 impl GPUDevice {
-    pub fn create_buffer(&self, descriptor: GPUBufferDescriptor) -> GPUBuffer {
+    pub fn create_buffer(&self, descriptor: &GPUBufferDescriptor) -> GPUBuffer {
         self.inner
             .call("createBuffer", &[descriptor.into()])
             .as_::<GPUBuffer>()
     }
 }
 impl GPUDevice {
-    pub fn create_texture(&self, descriptor: GPUTextureDescriptor) -> GPUTexture {
+    pub fn create_texture(&self, descriptor: &GPUTextureDescriptor) -> GPUTexture {
         self.inner
             .call("createTexture", &[descriptor.into()])
             .as_::<GPUTexture>()
@@ -1093,7 +1093,7 @@ impl GPUDevice {
         self.inner.call("createSampler", &[]).as_::<GPUSampler>()
     }
 
-    pub fn create_sampler1(&self, descriptor: GPUSamplerDescriptor) -> GPUSampler {
+    pub fn create_sampler1(&self, descriptor: &GPUSamplerDescriptor) -> GPUSampler {
         self.inner
             .call("createSampler", &[descriptor.into()])
             .as_::<GPUSampler>()
@@ -1102,7 +1102,7 @@ impl GPUDevice {
 impl GPUDevice {
     pub fn import_external_texture(
         &self,
-        descriptor: GPUExternalTextureDescriptor,
+        descriptor: &GPUExternalTextureDescriptor,
     ) -> GPUExternalTexture {
         self.inner
             .call("importExternalTexture", &[descriptor.into()])
@@ -1112,7 +1112,7 @@ impl GPUDevice {
 impl GPUDevice {
     pub fn create_bind_group_layout(
         &self,
-        descriptor: GPUBindGroupLayoutDescriptor,
+        descriptor: &GPUBindGroupLayoutDescriptor,
     ) -> GPUBindGroupLayout {
         self.inner
             .call("createBindGroupLayout", &[descriptor.into()])
@@ -1122,7 +1122,7 @@ impl GPUDevice {
 impl GPUDevice {
     pub fn create_pipeline_layout(
         &self,
-        descriptor: GPUPipelineLayoutDescriptor,
+        descriptor: &GPUPipelineLayoutDescriptor,
     ) -> GPUPipelineLayout {
         self.inner
             .call("createPipelineLayout", &[descriptor.into()])
@@ -1130,14 +1130,14 @@ impl GPUDevice {
     }
 }
 impl GPUDevice {
-    pub fn create_bind_group(&self, descriptor: GPUBindGroupDescriptor) -> GPUBindGroup {
+    pub fn create_bind_group(&self, descriptor: &GPUBindGroupDescriptor) -> GPUBindGroup {
         self.inner
             .call("createBindGroup", &[descriptor.into()])
             .as_::<GPUBindGroup>()
     }
 }
 impl GPUDevice {
-    pub fn create_shader_module(&self, descriptor: GPUShaderModuleDescriptor) -> GPUShaderModule {
+    pub fn create_shader_module(&self, descriptor: &GPUShaderModuleDescriptor) -> GPUShaderModule {
         self.inner
             .call("createShaderModule", &[descriptor.into()])
             .as_::<GPUShaderModule>()
@@ -1146,7 +1146,7 @@ impl GPUDevice {
 impl GPUDevice {
     pub fn create_compute_pipeline(
         &self,
-        descriptor: GPUComputePipelineDescriptor,
+        descriptor: &GPUComputePipelineDescriptor,
     ) -> GPUComputePipeline {
         self.inner
             .call("createComputePipeline", &[descriptor.into()])
@@ -1156,7 +1156,7 @@ impl GPUDevice {
 impl GPUDevice {
     pub fn create_render_pipeline(
         &self,
-        descriptor: GPURenderPipelineDescriptor,
+        descriptor: &GPURenderPipelineDescriptor,
     ) -> GPURenderPipeline {
         self.inner
             .call("createRenderPipeline", &[descriptor.into()])
@@ -1166,7 +1166,7 @@ impl GPUDevice {
 impl GPUDevice {
     pub fn create_compute_pipeline_async(
         &self,
-        descriptor: GPUComputePipelineDescriptor,
+        descriptor: &GPUComputePipelineDescriptor,
     ) -> Promise {
         self.inner
             .call("createComputePipelineAsync", &[descriptor.into()])
@@ -1174,7 +1174,10 @@ impl GPUDevice {
     }
 }
 impl GPUDevice {
-    pub fn create_render_pipeline_async(&self, descriptor: GPURenderPipelineDescriptor) -> Promise {
+    pub fn create_render_pipeline_async(
+        &self,
+        descriptor: &GPURenderPipelineDescriptor,
+    ) -> Promise {
         self.inner
             .call("createRenderPipelineAsync", &[descriptor.into()])
             .as_::<Promise>()
@@ -1189,7 +1192,7 @@ impl GPUDevice {
 
     pub fn create_command_encoder1(
         &self,
-        descriptor: GPUCommandEncoderDescriptor,
+        descriptor: &GPUCommandEncoderDescriptor,
     ) -> GPUCommandEncoder {
         self.inner
             .call("createCommandEncoder", &[descriptor.into()])
@@ -1199,7 +1202,7 @@ impl GPUDevice {
 impl GPUDevice {
     pub fn create_render_bundle_encoder(
         &self,
-        descriptor: GPURenderBundleEncoderDescriptor,
+        descriptor: &GPURenderBundleEncoderDescriptor,
     ) -> GPURenderBundleEncoder {
         self.inner
             .call("createRenderBundleEncoder", &[descriptor.into()])
@@ -1207,7 +1210,7 @@ impl GPUDevice {
     }
 }
 impl GPUDevice {
-    pub fn create_query_set(&self, descriptor: GPUQuerySetDescriptor) -> GPUQuerySet {
+    pub fn create_query_set(&self, descriptor: &GPUQuerySetDescriptor) -> GPUQuerySet {
         self.inner
             .call("createQuerySet", &[descriptor.into()])
             .as_::<GPUQuerySet>()
@@ -1219,7 +1222,7 @@ impl GPUDevice {
     }
 }
 impl GPUDevice {
-    pub fn push_error_scope(&self, filter: GPUErrorFilter) -> Undefined {
+    pub fn push_error_scope(&self, filter: &GPUErrorFilter) -> Undefined {
         self.inner
             .call("pushErrorScope", &[filter.into()])
             .as_::<Undefined>()
@@ -1235,16 +1238,16 @@ impl GPUDevice {
         self.inner.get("onuncapturederror").as_::<Any>()
     }
 
-    pub fn set_onuncapturederror(&mut self, value: Any) {
+    pub fn set_onuncapturederror(&mut self, value: &Any) {
         self.inner.set("onuncapturederror", value);
     }
 }
 impl GPUDevice {
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 
-    pub fn set_label(&mut self, value: USVString) {
+    pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }
 }

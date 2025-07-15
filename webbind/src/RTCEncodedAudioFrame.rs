@@ -122,7 +122,7 @@ impl From<&RTCEncodedAudioFrame> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(RTCEncodedAudioFrame);
 
 impl RTCEncodedAudioFrame {
-    pub fn new0(original_frame: RTCEncodedAudioFrame) -> RTCEncodedAudioFrame {
+    pub fn new0(original_frame: &RTCEncodedAudioFrame) -> RTCEncodedAudioFrame {
         Self {
             inner: emlite::Val::global("RTCEncodedAudioFrame")
                 .new(&[original_frame.into()])
@@ -130,7 +130,7 @@ impl RTCEncodedAudioFrame {
         }
     }
 
-    pub fn new1(original_frame: RTCEncodedAudioFrame, options: Any) -> RTCEncodedAudioFrame {
+    pub fn new1(original_frame: &RTCEncodedAudioFrame, options: &Any) -> RTCEncodedAudioFrame {
         Self {
             inner: emlite::Val::global("RTCEncodedAudioFrame")
                 .new(&[original_frame.into(), options.into()])
@@ -143,7 +143,7 @@ impl RTCEncodedAudioFrame {
         self.inner.get("data").as_::<ArrayBuffer>()
     }
 
-    pub fn set_data(&mut self, value: ArrayBuffer) {
+    pub fn set_data(&mut self, value: &ArrayBuffer) {
         self.inner.set("data", value);
     }
 }

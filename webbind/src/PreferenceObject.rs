@@ -54,20 +54,18 @@ impl From<&PreferenceObject> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PreferenceObject);
 
 impl PreferenceObject {
-    pub fn override_(&self) -> DOMString {
-        self.inner.get("override").as_::<DOMString>()
+    pub fn override_(&self) -> String {
+        self.inner.get("override").as_::<String>()
     }
 }
 impl PreferenceObject {
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> String {
+        self.inner.get("value").as_::<String>()
     }
 }
 impl PreferenceObject {
-    pub fn valid_values(&self) -> FrozenArray<DOMString> {
-        self.inner
-            .get("validValues")
-            .as_::<FrozenArray<DOMString>>()
+    pub fn valid_values(&self) -> FrozenArray<String> {
+        self.inner.get("validValues").as_::<FrozenArray<String>>()
     }
 }
 impl PreferenceObject {
@@ -76,7 +74,7 @@ impl PreferenceObject {
     }
 }
 impl PreferenceObject {
-    pub fn request_override(&self, value: DOMString) -> Promise {
+    pub fn request_override(&self, value: &str) -> Promise {
         self.inner
             .call("requestOverride", &[value.into()])
             .as_::<Promise>()
@@ -87,7 +85,7 @@ impl PreferenceObject {
         self.inner.get("onchange").as_::<Any>()
     }
 
-    pub fn set_onchange(&mut self, value: Any) {
+    pub fn set_onchange(&mut self, value: &Any) {
         self.inner.set("onchange", value);
     }
 }

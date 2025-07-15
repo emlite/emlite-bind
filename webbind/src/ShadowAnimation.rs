@@ -54,7 +54,7 @@ impl From<&ShadowAnimation> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ShadowAnimation);
 
 impl ShadowAnimation {
-    pub fn new(source: Animation, new_target: Any) -> ShadowAnimation {
+    pub fn new(source: &Animation, new_target: &Any) -> ShadowAnimation {
         Self {
             inner: emlite::Val::global("ShadowAnimation")
                 .new(&[source.into(), new_target.into()])

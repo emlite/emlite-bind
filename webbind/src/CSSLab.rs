@@ -54,7 +54,7 @@ impl From<&CSSLab> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSLab);
 
 impl CSSLab {
-    pub fn new0(l: Any, a: Any, b: Any) -> CSSLab {
+    pub fn new0(l: &Any, a: &Any, b: &Any) -> CSSLab {
         Self {
             inner: emlite::Val::global("CSSLab")
                 .new(&[l.into(), a.into(), b.into()])
@@ -62,7 +62,7 @@ impl CSSLab {
         }
     }
 
-    pub fn new1(l: Any, a: Any, b: Any, alpha: Any) -> CSSLab {
+    pub fn new1(l: &Any, a: &Any, b: &Any, alpha: &Any) -> CSSLab {
         Self {
             inner: emlite::Val::global("CSSLab")
                 .new(&[l.into(), a.into(), b.into(), alpha.into()])
@@ -75,7 +75,7 @@ impl CSSLab {
         self.inner.get("l").as_::<Any>()
     }
 
-    pub fn set_l(&mut self, value: Any) {
+    pub fn set_l(&mut self, value: &Any) {
         self.inner.set("l", value);
     }
 }
@@ -84,7 +84,7 @@ impl CSSLab {
         self.inner.get("a").as_::<Any>()
     }
 
-    pub fn set_a(&mut self, value: Any) {
+    pub fn set_a(&mut self, value: &Any) {
         self.inner.set("a", value);
     }
 }
@@ -93,7 +93,7 @@ impl CSSLab {
         self.inner.get("b").as_::<Any>()
     }
 
-    pub fn set_b(&mut self, value: Any) {
+    pub fn set_b(&mut self, value: &Any) {
         self.inner.set("b", value);
     }
 }
@@ -102,7 +102,7 @@ impl CSSLab {
         self.inner.get("alpha").as_::<Any>()
     }
 
-    pub fn set_alpha(&mut self, value: Any) {
+    pub fn set_alpha(&mut self, value: &Any) {
         self.inner.set("alpha", value);
     }
 }

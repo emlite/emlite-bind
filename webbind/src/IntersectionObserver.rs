@@ -54,7 +54,7 @@ impl From<&IntersectionObserver> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(IntersectionObserver);
 
 impl IntersectionObserver {
-    pub fn new0(callback: Function) -> IntersectionObserver {
+    pub fn new0(callback: &Function) -> IntersectionObserver {
         Self {
             inner: emlite::Val::global("IntersectionObserver")
                 .new(&[callback.into()])
@@ -62,7 +62,7 @@ impl IntersectionObserver {
         }
     }
 
-    pub fn new1(callback: Function, options: Any) -> IntersectionObserver {
+    pub fn new1(callback: &Function, options: &Any) -> IntersectionObserver {
         Self {
             inner: emlite::Val::global("IntersectionObserver")
                 .new(&[callback.into(), options.into()])
@@ -76,13 +76,13 @@ impl IntersectionObserver {
     }
 }
 impl IntersectionObserver {
-    pub fn root_margin(&self) -> DOMString {
-        self.inner.get("rootMargin").as_::<DOMString>()
+    pub fn root_margin(&self) -> String {
+        self.inner.get("rootMargin").as_::<String>()
     }
 }
 impl IntersectionObserver {
-    pub fn scroll_margin(&self) -> DOMString {
-        self.inner.get("scrollMargin").as_::<DOMString>()
+    pub fn scroll_margin(&self) -> String {
+        self.inner.get("scrollMargin").as_::<String>()
     }
 }
 impl IntersectionObserver {
@@ -101,14 +101,14 @@ impl IntersectionObserver {
     }
 }
 impl IntersectionObserver {
-    pub fn observe(&self, target: Element) -> Undefined {
+    pub fn observe(&self, target: &Element) -> Undefined {
         self.inner
             .call("observe", &[target.into()])
             .as_::<Undefined>()
     }
 }
 impl IntersectionObserver {
-    pub fn unobserve(&self, target: Element) -> Undefined {
+    pub fn unobserve(&self, target: &Element) -> Undefined {
         self.inner
             .call("unobserve", &[target.into()])
             .as_::<Undefined>()

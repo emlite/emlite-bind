@@ -68,7 +68,7 @@ impl AnimationTimeline {
         self.inner.call("play", &[]).as_::<Animation>()
     }
 
-    pub fn play1(&self, effect: AnimationEffect) -> Animation {
+    pub fn play1(&self, effect: &AnimationEffect) -> Animation {
         self.inner.call("play", &[effect.into()]).as_::<Animation>()
     }
 }

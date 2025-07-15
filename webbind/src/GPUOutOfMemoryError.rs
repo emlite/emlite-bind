@@ -54,7 +54,7 @@ impl From<&GPUOutOfMemoryError> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(GPUOutOfMemoryError);
 
 impl GPUOutOfMemoryError {
-    pub fn new(message: DOMString) -> GPUOutOfMemoryError {
+    pub fn new(message: &str) -> GPUOutOfMemoryError {
         Self {
             inner: emlite::Val::global("GPUOutOfMemoryError")
                 .new(&[message.into()])

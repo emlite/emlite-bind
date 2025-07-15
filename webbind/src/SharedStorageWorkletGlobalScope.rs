@@ -73,16 +73,16 @@ impl StorageInterestGroup {
         self.inner.get("prevWinsMs").as_::<Sequence<Any>>()
     }
 
-    pub fn set_prev_wins_ms(&mut self, value: Sequence<Any>) {
+    pub fn set_prev_wins_ms(&mut self, value: &Sequence<Any>) {
         self.inner.set("prevWinsMs", value);
     }
 }
 impl StorageInterestGroup {
-    pub fn joining_origin(&self) -> USVString {
-        self.inner.get("joiningOrigin").as_::<USVString>()
+    pub fn joining_origin(&self) -> String {
+        self.inner.get("joiningOrigin").as_::<String>()
     }
 
-    pub fn set_joining_origin(&mut self, value: USVString) {
+    pub fn set_joining_origin(&mut self, value: &str) {
         self.inner.set("joiningOrigin", value);
     }
 }
@@ -185,7 +185,7 @@ impl From<&SharedStorageWorkletGlobalScope> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SharedStorageWorkletGlobalScope);
 
 impl SharedStorageWorkletGlobalScope {
-    pub fn register(&self, name: DOMString, operation_ctor: Function) -> Undefined {
+    pub fn register(&self, name: &str, operation_ctor: &Function) -> Undefined {
         self.inner
             .call("register", &[name.into(), operation_ctor.into()])
             .as_::<Undefined>()

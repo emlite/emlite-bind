@@ -51,29 +51,29 @@ impl From<&HandwritingHints> for emlite::Val {
 }
 
 impl HandwritingHints {
-    pub fn recognition_type(&self) -> DOMString {
-        self.inner.get("recognitionType").as_::<DOMString>()
+    pub fn recognition_type(&self) -> String {
+        self.inner.get("recognitionType").as_::<String>()
     }
 
-    pub fn set_recognition_type(&mut self, value: DOMString) {
+    pub fn set_recognition_type(&mut self, value: &str) {
         self.inner.set("recognitionType", value);
     }
 }
 impl HandwritingHints {
-    pub fn input_type(&self) -> DOMString {
-        self.inner.get("inputType").as_::<DOMString>()
+    pub fn input_type(&self) -> String {
+        self.inner.get("inputType").as_::<String>()
     }
 
-    pub fn set_input_type(&mut self, value: DOMString) {
+    pub fn set_input_type(&mut self, value: &str) {
         self.inner.set("inputType", value);
     }
 }
 impl HandwritingHints {
-    pub fn text_context(&self) -> DOMString {
-        self.inner.get("textContext").as_::<DOMString>()
+    pub fn text_context(&self) -> String {
+        self.inner.get("textContext").as_::<String>()
     }
 
-    pub fn set_text_context(&mut self, value: DOMString) {
+    pub fn set_text_context(&mut self, value: &str) {
         self.inner.set("textContext", value);
     }
 }
@@ -146,7 +146,7 @@ impl HandwritingRecognizer {
             .as_::<HandwritingDrawing>()
     }
 
-    pub fn start_drawing1(&self, hints: HandwritingHints) -> HandwritingDrawing {
+    pub fn start_drawing1(&self, hints: &HandwritingHints) -> HandwritingDrawing {
         self.inner
             .call("startDrawing", &[hints.into()])
             .as_::<HandwritingDrawing>()

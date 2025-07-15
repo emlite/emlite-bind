@@ -54,7 +54,7 @@ impl From<&HTMLFormControlsCollection> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(HTMLFormControlsCollection);
 
 impl HTMLFormControlsCollection {
-    pub fn named_item(&self, name: DOMString) -> Any {
+    pub fn named_item(&self, name: &str) -> Any {
         self.inner.call("namedItem", &[name.into()]).as_::<Any>()
     }
 }

@@ -74,8 +74,8 @@ impl XRInputSource {
     }
 }
 impl XRInputSource {
-    pub fn profiles(&self) -> FrozenArray<DOMString> {
-        self.inner.get("profiles").as_::<FrozenArray<DOMString>>()
+    pub fn profiles(&self) -> FrozenArray<String> {
+        self.inner.get("profiles").as_::<FrozenArray<String>>()
     }
 }
 impl XRInputSource {

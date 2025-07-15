@@ -54,7 +54,7 @@ impl From<&CSSRGB> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSRGB);
 
 impl CSSRGB {
-    pub fn new0(r: Any, g: Any, b: Any) -> CSSRGB {
+    pub fn new0(r: &Any, g: &Any, b: &Any) -> CSSRGB {
         Self {
             inner: emlite::Val::global("CSSRGB")
                 .new(&[r.into(), g.into(), b.into()])
@@ -62,7 +62,7 @@ impl CSSRGB {
         }
     }
 
-    pub fn new1(r: Any, g: Any, b: Any, alpha: Any) -> CSSRGB {
+    pub fn new1(r: &Any, g: &Any, b: &Any, alpha: &Any) -> CSSRGB {
         Self {
             inner: emlite::Val::global("CSSRGB")
                 .new(&[r.into(), g.into(), b.into(), alpha.into()])
@@ -75,7 +75,7 @@ impl CSSRGB {
         self.inner.get("r").as_::<Any>()
     }
 
-    pub fn set_r(&mut self, value: Any) {
+    pub fn set_r(&mut self, value: &Any) {
         self.inner.set("r", value);
     }
 }
@@ -84,7 +84,7 @@ impl CSSRGB {
         self.inner.get("g").as_::<Any>()
     }
 
-    pub fn set_g(&mut self, value: Any) {
+    pub fn set_g(&mut self, value: &Any) {
         self.inner.set("g", value);
     }
 }
@@ -93,7 +93,7 @@ impl CSSRGB {
         self.inner.get("b").as_::<Any>()
     }
 
-    pub fn set_b(&mut self, value: Any) {
+    pub fn set_b(&mut self, value: &Any) {
         self.inner.set("b", value);
     }
 }
@@ -102,7 +102,7 @@ impl CSSRGB {
         self.inner.get("alpha").as_::<Any>()
     }
 
-    pub fn set_alpha(&mut self, value: Any) {
+    pub fn set_alpha(&mut self, value: &Any) {
         self.inner.set("alpha", value);
     }
 }

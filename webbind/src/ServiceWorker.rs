@@ -54,8 +54,8 @@ impl From<&ServiceWorker> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ServiceWorker);
 
 impl ServiceWorker {
-    pub fn script_url(&self) -> USVString {
-        self.inner.get("scriptURL").as_::<USVString>()
+    pub fn script_url(&self) -> String {
+        self.inner.get("scriptURL").as_::<String>()
     }
 }
 impl ServiceWorker {
@@ -64,13 +64,13 @@ impl ServiceWorker {
     }
 }
 impl ServiceWorker {
-    pub fn post_message0(&self, message: Any) -> Undefined {
+    pub fn post_message0(&self, message: &Any) -> Undefined {
         self.inner
             .call("postMessage", &[message.into()])
             .as_::<Undefined>()
     }
 
-    pub fn post_message1(&self, message: Any, options: StructuredSerializeOptions) -> Undefined {
+    pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
         self.inner
             .call("postMessage", &[message.into(), options.into()])
             .as_::<Undefined>()
@@ -81,7 +81,7 @@ impl ServiceWorker {
         self.inner.get("onstatechange").as_::<Any>()
     }
 
-    pub fn set_onstatechange(&mut self, value: Any) {
+    pub fn set_onstatechange(&mut self, value: &Any) {
         self.inner.set("onstatechange", value);
     }
 }
@@ -90,7 +90,7 @@ impl ServiceWorker {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }

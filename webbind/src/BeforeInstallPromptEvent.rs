@@ -55,7 +55,7 @@ impl PromptResponseObject {
         self.inner.get("userChoice").as_::<AppBannerPromptOutcome>()
     }
 
-    pub fn set_user_choice(&mut self, value: AppBannerPromptOutcome) {
+    pub fn set_user_choice(&mut self, value: &AppBannerPromptOutcome) {
         self.inner.set("userChoice", value);
     }
 }
@@ -113,7 +113,7 @@ impl From<&BeforeInstallPromptEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(BeforeInstallPromptEvent);
 
 impl BeforeInstallPromptEvent {
-    pub fn new0(type_: DOMString) -> BeforeInstallPromptEvent {
+    pub fn new0(type_: &str) -> BeforeInstallPromptEvent {
         Self {
             inner: emlite::Val::global("BeforeInstallPromptEvent")
                 .new(&[type_.into()])
@@ -121,7 +121,7 @@ impl BeforeInstallPromptEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> BeforeInstallPromptEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> BeforeInstallPromptEvent {
         Self {
             inner: emlite::Val::global("BeforeInstallPromptEvent")
                 .new(&[type_.into(), event_init_dict.into()])

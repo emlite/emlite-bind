@@ -62,7 +62,7 @@ impl DOMMatrix {
         }
     }
 
-    pub fn new1(init: Any) -> DOMMatrix {
+    pub fn new1(init: &Any) -> DOMMatrix {
         Self {
             inner: emlite::Val::global("DOMMatrix")
                 .new(&[init.into()])
@@ -77,21 +77,21 @@ impl DOMMatrix {
             .as_::<DOMMatrix>()
     }
 
-    pub fn from_matrix1(other: DOMMatrixInit) -> DOMMatrix {
+    pub fn from_matrix1(other: &DOMMatrixInit) -> DOMMatrix {
         emlite::Val::global("DOMMatrix")
             .call("fromMatrix", &[other.into()])
             .as_::<DOMMatrix>()
     }
 }
 impl DOMMatrix {
-    pub fn from_float32_array(array32: Float32Array) -> DOMMatrix {
+    pub fn from_float32_array(array32: &Float32Array) -> DOMMatrix {
         emlite::Val::global("DOMMatrix")
             .call("fromFloat32Array", &[array32.into()])
             .as_::<DOMMatrix>()
     }
 }
 impl DOMMatrix {
-    pub fn from_float64_array(array64: Float64Array) -> DOMMatrix {
+    pub fn from_float64_array(array64: &Float64Array) -> DOMMatrix {
         emlite::Val::global("DOMMatrix")
             .call("fromFloat64Array", &[array64.into()])
             .as_::<DOMMatrix>()
@@ -300,7 +300,7 @@ impl DOMMatrix {
         self.inner.call("multiplySelf", &[]).as_::<DOMMatrix>()
     }
 
-    pub fn multiply_self1(&self, other: DOMMatrixInit) -> DOMMatrix {
+    pub fn multiply_self1(&self, other: &DOMMatrixInit) -> DOMMatrix {
         self.inner
             .call("multiplySelf", &[other.into()])
             .as_::<DOMMatrix>()
@@ -311,7 +311,7 @@ impl DOMMatrix {
         self.inner.call("preMultiplySelf", &[]).as_::<DOMMatrix>()
     }
 
-    pub fn pre_multiply_self1(&self, other: DOMMatrixInit) -> DOMMatrix {
+    pub fn pre_multiply_self1(&self, other: &DOMMatrixInit) -> DOMMatrix {
         self.inner
             .call("preMultiplySelf", &[other.into()])
             .as_::<DOMMatrix>()
@@ -582,7 +582,7 @@ impl DOMMatrix {
     }
 }
 impl DOMMatrix {
-    pub fn set_matrix_value(&self, transform_list: DOMString) -> DOMMatrix {
+    pub fn set_matrix_value(&self, transform_list: &str) -> DOMMatrix {
         self.inner
             .call("setMatrixValue", &[transform_list.into()])
             .as_::<DOMMatrix>()

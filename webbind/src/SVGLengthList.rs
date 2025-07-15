@@ -69,7 +69,7 @@ impl SVGLengthList {
     }
 }
 impl SVGLengthList {
-    pub fn initialize(&self, new_item: SVGLength) -> SVGLength {
+    pub fn initialize(&self, new_item: &SVGLength) -> SVGLength {
         self.inner
             .call("initialize", &[new_item.into()])
             .as_::<SVGLength>()
@@ -83,14 +83,14 @@ impl SVGLengthList {
     }
 }
 impl SVGLengthList {
-    pub fn insert_item_before(&self, new_item: SVGLength, index: u32) -> SVGLength {
+    pub fn insert_item_before(&self, new_item: &SVGLength, index: u32) -> SVGLength {
         self.inner
             .call("insertItemBefore", &[new_item.into(), index.into()])
             .as_::<SVGLength>()
     }
 }
 impl SVGLengthList {
-    pub fn replace_item(&self, new_item: SVGLength, index: u32) -> SVGLength {
+    pub fn replace_item(&self, new_item: &SVGLength, index: u32) -> SVGLength {
         self.inner
             .call("replaceItem", &[new_item.into(), index.into()])
             .as_::<SVGLength>()
@@ -104,7 +104,7 @@ impl SVGLengthList {
     }
 }
 impl SVGLengthList {
-    pub fn append_item(&self, new_item: SVGLength) -> SVGLength {
+    pub fn append_item(&self, new_item: &SVGLength) -> SVGLength {
         self.inner
             .call("appendItem", &[new_item.into()])
             .as_::<SVGLength>()

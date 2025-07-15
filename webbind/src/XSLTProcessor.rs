@@ -63,33 +63,28 @@ impl XSLTProcessor {
     }
 }
 impl XSLTProcessor {
-    pub fn import_stylesheet(&self, style: Node) -> Undefined {
+    pub fn import_stylesheet(&self, style: &Node) -> Undefined {
         self.inner
             .call("importStylesheet", &[style.into()])
             .as_::<Undefined>()
     }
 }
 impl XSLTProcessor {
-    pub fn transform_to_fragment(&self, source: Node, output: Document) -> DocumentFragment {
+    pub fn transform_to_fragment(&self, source: &Node, output: &Document) -> DocumentFragment {
         self.inner
             .call("transformToFragment", &[source.into(), output.into()])
             .as_::<DocumentFragment>()
     }
 }
 impl XSLTProcessor {
-    pub fn transform_to_document(&self, source: Node) -> Document {
+    pub fn transform_to_document(&self, source: &Node) -> Document {
         self.inner
             .call("transformToDocument", &[source.into()])
             .as_::<Document>()
     }
 }
 impl XSLTProcessor {
-    pub fn set_parameter(
-        &self,
-        namespace_uri: DOMString,
-        local_name: DOMString,
-        value: Any,
-    ) -> Undefined {
+    pub fn set_parameter(&self, namespace_uri: &str, local_name: &str, value: &Any) -> Undefined {
         self.inner
             .call(
                 "setParameter",
@@ -99,14 +94,14 @@ impl XSLTProcessor {
     }
 }
 impl XSLTProcessor {
-    pub fn get_parameter(&self, namespace_uri: DOMString, local_name: DOMString) -> Any {
+    pub fn get_parameter(&self, namespace_uri: &str, local_name: &str) -> Any {
         self.inner
             .call("getParameter", &[namespace_uri.into(), local_name.into()])
             .as_::<Any>()
     }
 }
 impl XSLTProcessor {
-    pub fn remove_parameter(&self, namespace_uri: DOMString, local_name: DOMString) -> Undefined {
+    pub fn remove_parameter(&self, namespace_uri: &str, local_name: &str) -> Undefined {
         self.inner
             .call(
                 "removeParameter",

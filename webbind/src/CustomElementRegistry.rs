@@ -51,11 +51,11 @@ impl From<&ElementDefinitionOptions> for emlite::Val {
 }
 
 impl ElementDefinitionOptions {
-    pub fn extends(&self) -> DOMString {
-        self.inner.get("extends").as_::<DOMString>()
+    pub fn extends(&self) -> String {
+        self.inner.get("extends").as_::<String>()
     }
 
-    pub fn set_extends(&mut self, value: DOMString) {
+    pub fn set_extends(&mut self, value: &str) {
         self.inner.set("extends", value);
     }
 }
@@ -122,7 +122,7 @@ impl CustomElementRegistry {
     }
 }
 impl CustomElementRegistry {
-    pub fn define0(&self, name: DOMString, constructor: Function) -> Undefined {
+    pub fn define0(&self, name: &str, constructor: &Function) -> Undefined {
         self.inner
             .call("define", &[name.into(), constructor.into()])
             .as_::<Undefined>()
@@ -130,9 +130,9 @@ impl CustomElementRegistry {
 
     pub fn define1(
         &self,
-        name: DOMString,
-        constructor: Function,
-        options: ElementDefinitionOptions,
+        name: &str,
+        constructor: &Function,
+        options: &ElementDefinitionOptions,
     ) -> Undefined {
         self.inner
             .call("define", &[name.into(), constructor.into(), options.into()])
@@ -140,33 +140,33 @@ impl CustomElementRegistry {
     }
 }
 impl CustomElementRegistry {
-    pub fn get(&self, name: DOMString) -> Any {
+    pub fn get(&self, name: &str) -> Any {
         self.inner.call("get", &[name.into()]).as_::<Any>()
     }
 }
 impl CustomElementRegistry {
-    pub fn get_name(&self, constructor: Function) -> DOMString {
+    pub fn get_name(&self, constructor: &Function) -> String {
         self.inner
             .call("getName", &[constructor.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl CustomElementRegistry {
-    pub fn when_defined(&self, name: DOMString) -> Promise {
+    pub fn when_defined(&self, name: &str) -> Promise {
         self.inner
             .call("whenDefined", &[name.into()])
             .as_::<Promise>()
     }
 }
 impl CustomElementRegistry {
-    pub fn upgrade(&self, root: Node) -> Undefined {
+    pub fn upgrade(&self, root: &Node) -> Undefined {
         self.inner
             .call("upgrade", &[root.into()])
             .as_::<Undefined>()
     }
 }
 impl CustomElementRegistry {
-    pub fn initialize(&self, root: Node) -> Undefined {
+    pub fn initialize(&self, root: &Node) -> Undefined {
         self.inner
             .call("initialize", &[root.into()])
             .as_::<Undefined>()

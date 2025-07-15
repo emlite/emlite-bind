@@ -54,7 +54,7 @@ impl From<&TrackEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(TrackEvent);
 
 impl TrackEvent {
-    pub fn new0(type_: DOMString) -> TrackEvent {
+    pub fn new0(type_: &str) -> TrackEvent {
         Self {
             inner: emlite::Val::global("TrackEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl TrackEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> TrackEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> TrackEvent {
         Self {
             inner: emlite::Val::global("TrackEvent")
                 .new(&[type_.into(), event_init_dict.into()])

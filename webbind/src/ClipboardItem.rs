@@ -54,7 +54,7 @@ impl From<&ClipboardItem> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ClipboardItem);
 
 impl ClipboardItem {
-    pub fn new0(items: Record<DOMString, Any>) -> ClipboardItem {
+    pub fn new0(items: &Record<String, Any>) -> ClipboardItem {
         Self {
             inner: emlite::Val::global("ClipboardItem")
                 .new(&[items.into()])
@@ -62,7 +62,7 @@ impl ClipboardItem {
         }
     }
 
-    pub fn new1(items: Record<DOMString, Any>, options: Any) -> ClipboardItem {
+    pub fn new1(items: &Record<String, Any>, options: &Any) -> ClipboardItem {
         Self {
             inner: emlite::Val::global("ClipboardItem")
                 .new(&[items.into(), options.into()])
@@ -78,17 +78,17 @@ impl ClipboardItem {
     }
 }
 impl ClipboardItem {
-    pub fn types(&self) -> FrozenArray<DOMString> {
-        self.inner.get("types").as_::<FrozenArray<DOMString>>()
+    pub fn types(&self) -> FrozenArray<String> {
+        self.inner.get("types").as_::<FrozenArray<String>>()
     }
 }
 impl ClipboardItem {
-    pub fn get_type(&self, type_: DOMString) -> Promise {
+    pub fn get_type(&self, type_: &str) -> Promise {
         self.inner.call("getType", &[type_.into()]).as_::<Promise>()
     }
 }
 impl ClipboardItem {
-    pub fn supports(type_: DOMString) -> bool {
+    pub fn supports(type_: &str) -> bool {
         emlite::Val::global("ClipboardItem")
             .call("supports", &[type_.into()])
             .as_::<bool>()

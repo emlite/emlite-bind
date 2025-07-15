@@ -63,47 +63,47 @@ impl HTMLSourceElement {
     }
 }
 impl HTMLSourceElement {
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> String {
+        self.inner.get("src").as_::<String>()
     }
 
-    pub fn set_src(&mut self, value: USVString) {
+    pub fn set_src(&mut self, value: &str) {
         self.inner.set("src", value);
     }
 }
 impl HTMLSourceElement {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: DOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }
 impl HTMLSourceElement {
-    pub fn srcset(&self) -> USVString {
-        self.inner.get("srcset").as_::<USVString>()
+    pub fn srcset(&self) -> String {
+        self.inner.get("srcset").as_::<String>()
     }
 
-    pub fn set_srcset(&mut self, value: USVString) {
+    pub fn set_srcset(&mut self, value: &str) {
         self.inner.set("srcset", value);
     }
 }
 impl HTMLSourceElement {
-    pub fn sizes(&self) -> DOMString {
-        self.inner.get("sizes").as_::<DOMString>()
+    pub fn sizes(&self) -> String {
+        self.inner.get("sizes").as_::<String>()
     }
 
-    pub fn set_sizes(&mut self, value: DOMString) {
+    pub fn set_sizes(&mut self, value: &str) {
         self.inner.set("sizes", value);
     }
 }
 impl HTMLSourceElement {
-    pub fn media(&self) -> DOMString {
-        self.inner.get("media").as_::<DOMString>()
+    pub fn media(&self) -> String {
+        self.inner.get("media").as_::<String>()
     }
 
-    pub fn set_media(&mut self, value: DOMString) {
+    pub fn set_media(&mut self, value: &str) {
         self.inner.set("media", value);
     }
 }

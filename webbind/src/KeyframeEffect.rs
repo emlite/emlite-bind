@@ -54,7 +54,7 @@ impl From<&KeyframeEffect> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(KeyframeEffect);
 
 impl KeyframeEffect {
-    pub fn new(source: KeyframeEffect) -> KeyframeEffect {
+    pub fn new(source: &KeyframeEffect) -> KeyframeEffect {
         Self {
             inner: emlite::Val::global("KeyframeEffect")
                 .new(&[source.into()])
@@ -67,16 +67,16 @@ impl KeyframeEffect {
         self.inner.get("target").as_::<Element>()
     }
 
-    pub fn set_target(&mut self, value: Element) {
+    pub fn set_target(&mut self, value: &Element) {
         self.inner.set("target", value);
     }
 }
 impl KeyframeEffect {
-    pub fn pseudo_element(&self) -> CSSOMString {
-        self.inner.get("pseudoElement").as_::<CSSOMString>()
+    pub fn pseudo_element(&self) -> String {
+        self.inner.get("pseudoElement").as_::<String>()
     }
 
-    pub fn set_pseudo_element(&mut self, value: CSSOMString) {
+    pub fn set_pseudo_element(&mut self, value: &str) {
         self.inner.set("pseudoElement", value);
     }
 }
@@ -85,7 +85,7 @@ impl KeyframeEffect {
         self.inner.get("composite").as_::<CompositeOperation>()
     }
 
-    pub fn set_composite(&mut self, value: CompositeOperation) {
+    pub fn set_composite(&mut self, value: &CompositeOperation) {
         self.inner.set("composite", value);
     }
 }
@@ -97,7 +97,7 @@ impl KeyframeEffect {
     }
 }
 impl KeyframeEffect {
-    pub fn set_keyframes(&self, keyframes: Object) -> Undefined {
+    pub fn set_keyframes(&self, keyframes: &Object) -> Undefined {
         self.inner
             .call("setKeyframes", &[keyframes.into()])
             .as_::<Undefined>()
@@ -110,7 +110,7 @@ impl KeyframeEffect {
             .as_::<IterationCompositeOperation>()
     }
 
-    pub fn set_iteration_composite(&mut self, value: IterationCompositeOperation) {
+    pub fn set_iteration_composite(&mut self, value: &IterationCompositeOperation) {
         self.inner.set("iterationComposite", value);
     }
 }

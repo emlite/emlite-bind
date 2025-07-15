@@ -250,7 +250,7 @@ impl DOMPointReadOnly {
             .as_::<DOMPointReadOnly>()
     }
 
-    pub fn from_point1(other: DOMPointInit) -> DOMPointReadOnly {
+    pub fn from_point1(other: &DOMPointInit) -> DOMPointReadOnly {
         emlite::Val::global("DOMPointReadOnly")
             .call("fromPoint", &[other.into()])
             .as_::<DOMPointReadOnly>()
@@ -281,7 +281,7 @@ impl DOMPointReadOnly {
         self.inner.call("matrixTransform", &[]).as_::<DOMPoint>()
     }
 
-    pub fn matrix_transform1(&self, matrix: DOMMatrixInit) -> DOMPoint {
+    pub fn matrix_transform1(&self, matrix: &DOMMatrixInit) -> DOMPoint {
         self.inner
             .call("matrixTransform", &[matrix.into()])
             .as_::<DOMPoint>()

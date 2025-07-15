@@ -58,7 +58,7 @@ impl XMLHttpRequestEventTarget {
         self.inner.get("onloadstart").as_::<Any>()
     }
 
-    pub fn set_onloadstart(&mut self, value: Any) {
+    pub fn set_onloadstart(&mut self, value: &Any) {
         self.inner.set("onloadstart", value);
     }
 }
@@ -67,7 +67,7 @@ impl XMLHttpRequestEventTarget {
         self.inner.get("onprogress").as_::<Any>()
     }
 
-    pub fn set_onprogress(&mut self, value: Any) {
+    pub fn set_onprogress(&mut self, value: &Any) {
         self.inner.set("onprogress", value);
     }
 }
@@ -76,7 +76,7 @@ impl XMLHttpRequestEventTarget {
         self.inner.get("onabort").as_::<Any>()
     }
 
-    pub fn set_onabort(&mut self, value: Any) {
+    pub fn set_onabort(&mut self, value: &Any) {
         self.inner.set("onabort", value);
     }
 }
@@ -85,7 +85,7 @@ impl XMLHttpRequestEventTarget {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }
@@ -94,7 +94,7 @@ impl XMLHttpRequestEventTarget {
         self.inner.get("onload").as_::<Any>()
     }
 
-    pub fn set_onload(&mut self, value: Any) {
+    pub fn set_onload(&mut self, value: &Any) {
         self.inner.set("onload", value);
     }
 }
@@ -103,7 +103,7 @@ impl XMLHttpRequestEventTarget {
         self.inner.get("ontimeout").as_::<Any>()
     }
 
-    pub fn set_ontimeout(&mut self, value: Any) {
+    pub fn set_ontimeout(&mut self, value: &Any) {
         self.inner.set("ontimeout", value);
     }
 }
@@ -112,7 +112,7 @@ impl XMLHttpRequestEventTarget {
         self.inner.get("onloadend").as_::<Any>()
     }
 
-    pub fn set_onloadend(&mut self, value: Any) {
+    pub fn set_onloadend(&mut self, value: &Any) {
         self.inner.set("onloadend", value);
     }
 }

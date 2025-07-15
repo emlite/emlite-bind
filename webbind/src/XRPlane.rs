@@ -76,7 +76,7 @@ impl XRPlane {
     }
 }
 impl XRPlane {
-    pub fn semantic_label(&self) -> DOMString {
-        self.inner.get("semanticLabel").as_::<DOMString>()
+    pub fn semantic_label(&self) -> String {
+        self.inner.get("semanticLabel").as_::<String>()
     }
 }

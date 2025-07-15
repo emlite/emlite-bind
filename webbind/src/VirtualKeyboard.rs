@@ -82,7 +82,7 @@ impl VirtualKeyboard {
         self.inner.get("ongeometrychange").as_::<Any>()
     }
 
-    pub fn set_ongeometrychange(&mut self, value: Any) {
+    pub fn set_ongeometrychange(&mut self, value: &Any) {
         self.inner.set("ongeometrychange", value);
     }
 }

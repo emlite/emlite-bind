@@ -7,29 +7,29 @@ use webbind::window;
 fn main() {
     let con = Console::get();
     let document = window().document();
-    let bodies = document.get_elements_by_tag_name("body".into());
+    let bodies = document.get_elements_by_tag_name("body");
     if bodies.length() == 0 {
         con.log(&["I Ain't got Nobody!".into()]);
         return;
     }
     let body = bodies.item(0);
     let mut button = document
-        .create_element0("BUTTON".into())
+        .create_element0("BUTTON")
         .dyn_into::<HTMLButtonElement>()
         .unwrap();
 
     let style = button.style();
-    style.set_property0("color".into(), "red".into());
-    style.set_property0("background-color".into(), "#aaf".into());
-    style.set_property0("border".into(), "solid".into());
+    style.set_property0("color", "red");
+    style.set_property0("background-color", "#aaf");
+    style.set_property0("border", "solid");
 
-    button.set_text_content("Click me".into());
+    button.set_text_content("Click me");
     button.add_event_listener0(
-        "click".into(),
-        Closure::bind1(move |p: PointerEvent| {
+        "click",
+        &Closure::bind1(move |p: PointerEvent| {
             con.log(&[p.client_x().into()]);
         })
         .into(),
     );
-    body.append_child(button.dyn_into::<Node>().unwrap().clone());
+    body.append_child(button.dyn_ref::<Node>().unwrap());
 }

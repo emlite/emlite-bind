@@ -54,7 +54,7 @@ impl From<&MediaKeyMessageEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MediaKeyMessageEvent);
 
 impl MediaKeyMessageEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> MediaKeyMessageEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> MediaKeyMessageEvent {
         Self {
             inner: emlite::Val::global("MediaKeyMessageEvent")
                 .new(&[type_.into(), event_init_dict.into()])

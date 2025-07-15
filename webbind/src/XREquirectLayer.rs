@@ -58,7 +58,7 @@ impl XREquirectLayer {
         self.inner.get("space").as_::<XRSpace>()
     }
 
-    pub fn set_space(&mut self, value: XRSpace) {
+    pub fn set_space(&mut self, value: &XRSpace) {
         self.inner.set("space", value);
     }
 }
@@ -67,7 +67,7 @@ impl XREquirectLayer {
         self.inner.get("transform").as_::<XRRigidTransform>()
     }
 
-    pub fn set_transform(&mut self, value: XRRigidTransform) {
+    pub fn set_transform(&mut self, value: &XRRigidTransform) {
         self.inner.set("transform", value);
     }
 }
@@ -112,7 +112,7 @@ impl XREquirectLayer {
         self.inner.get("onredraw").as_::<Any>()
     }
 
-    pub fn set_onredraw(&mut self, value: Any) {
+    pub fn set_onredraw(&mut self, value: &Any) {
         self.inner.set("onredraw", value);
     }
 }

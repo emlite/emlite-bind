@@ -62,7 +62,7 @@ impl GravitySensor {
         }
     }
 
-    pub fn new1(options: Any) -> GravitySensor {
+    pub fn new1(options: &Any) -> GravitySensor {
         Self {
             inner: emlite::Val::global("GravitySensor")
                 .new(&[options.into()])

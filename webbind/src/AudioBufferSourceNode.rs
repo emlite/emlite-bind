@@ -54,7 +54,7 @@ impl From<&AudioBufferSourceNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(AudioBufferSourceNode);
 
 impl AudioBufferSourceNode {
-    pub fn new0(context: BaseAudioContext) -> AudioBufferSourceNode {
+    pub fn new0(context: &BaseAudioContext) -> AudioBufferSourceNode {
         Self {
             inner: emlite::Val::global("AudioBufferSourceNode")
                 .new(&[context.into()])
@@ -62,7 +62,7 @@ impl AudioBufferSourceNode {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: Any) -> AudioBufferSourceNode {
+    pub fn new1(context: &BaseAudioContext, options: &Any) -> AudioBufferSourceNode {
         Self {
             inner: emlite::Val::global("AudioBufferSourceNode")
                 .new(&[context.into(), options.into()])
@@ -75,7 +75,7 @@ impl AudioBufferSourceNode {
         self.inner.get("buffer").as_::<AudioBuffer>()
     }
 
-    pub fn set_buffer(&mut self, value: AudioBuffer) {
+    pub fn set_buffer(&mut self, value: &AudioBuffer) {
         self.inner.set("buffer", value);
     }
 }

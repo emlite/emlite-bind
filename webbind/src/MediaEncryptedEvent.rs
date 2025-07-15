@@ -54,7 +54,7 @@ impl From<&MediaEncryptedEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MediaEncryptedEvent);
 
 impl MediaEncryptedEvent {
-    pub fn new0(type_: DOMString) -> MediaEncryptedEvent {
+    pub fn new0(type_: &str) -> MediaEncryptedEvent {
         Self {
             inner: emlite::Val::global("MediaEncryptedEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl MediaEncryptedEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> MediaEncryptedEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> MediaEncryptedEvent {
         Self {
             inner: emlite::Val::global("MediaEncryptedEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -71,8 +71,8 @@ impl MediaEncryptedEvent {
     }
 }
 impl MediaEncryptedEvent {
-    pub fn init_data_type(&self) -> DOMString {
-        self.inner.get("initDataType").as_::<DOMString>()
+    pub fn init_data_type(&self) -> String {
+        self.inner.get("initDataType").as_::<String>()
     }
 }
 impl MediaEncryptedEvent {

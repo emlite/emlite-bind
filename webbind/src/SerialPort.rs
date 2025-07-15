@@ -73,7 +73,7 @@ impl SerialPortInfo {
         self.inner.get("bluetoothServiceClassId").as_::<Any>()
     }
 
-    pub fn set_bluetooth_service_class_id(&mut self, value: Any) {
+    pub fn set_bluetooth_service_class_id(&mut self, value: &Any) {
         self.inner.set("bluetoothServiceClassId", value);
     }
 }
@@ -159,7 +159,7 @@ impl SerialOptions {
         self.inner.get("parity").as_::<ParityType>()
     }
 
-    pub fn set_parity(&mut self, value: ParityType) {
+    pub fn set_parity(&mut self, value: &ParityType) {
         self.inner.set("parity", value);
     }
 }
@@ -177,7 +177,7 @@ impl SerialOptions {
         self.inner.get("flowControl").as_::<FlowControlType>()
     }
 
-    pub fn set_flow_control(&mut self, value: FlowControlType) {
+    pub fn set_flow_control(&mut self, value: &FlowControlType) {
         self.inner.set("flowControl", value);
     }
 }
@@ -402,7 +402,7 @@ impl SerialPort {
         self.inner.get("onconnect").as_::<Any>()
     }
 
-    pub fn set_onconnect(&mut self, value: Any) {
+    pub fn set_onconnect(&mut self, value: &Any) {
         self.inner.set("onconnect", value);
     }
 }
@@ -411,7 +411,7 @@ impl SerialPort {
         self.inner.get("ondisconnect").as_::<Any>()
     }
 
-    pub fn set_ondisconnect(&mut self, value: Any) {
+    pub fn set_ondisconnect(&mut self, value: &Any) {
         self.inner.set("ondisconnect", value);
     }
 }
@@ -436,7 +436,7 @@ impl SerialPort {
     }
 }
 impl SerialPort {
-    pub fn open(&self, options: SerialOptions) -> Promise {
+    pub fn open(&self, options: &SerialOptions) -> Promise {
         self.inner.call("open", &[options.into()]).as_::<Promise>()
     }
 }
@@ -445,7 +445,7 @@ impl SerialPort {
         self.inner.call("setSignals", &[]).as_::<Promise>()
     }
 
-    pub fn set_signals1(&self, signals: SerialOutputSignals) -> Promise {
+    pub fn set_signals1(&self, signals: &SerialOutputSignals) -> Promise {
         self.inner
             .call("setSignals", &[signals.into()])
             .as_::<Promise>()

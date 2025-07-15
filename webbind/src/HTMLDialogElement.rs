@@ -72,20 +72,20 @@ impl HTMLDialogElement {
     }
 }
 impl HTMLDialogElement {
-    pub fn return_value(&self) -> DOMString {
-        self.inner.get("returnValue").as_::<DOMString>()
+    pub fn return_value(&self) -> String {
+        self.inner.get("returnValue").as_::<String>()
     }
 
-    pub fn set_return_value(&mut self, value: DOMString) {
+    pub fn set_return_value(&mut self, value: &str) {
         self.inner.set("returnValue", value);
     }
 }
 impl HTMLDialogElement {
-    pub fn closed_by(&self) -> DOMString {
-        self.inner.get("closedBy").as_::<DOMString>()
+    pub fn closed_by(&self) -> String {
+        self.inner.get("closedBy").as_::<String>()
     }
 
-    pub fn set_closed_by(&mut self, value: DOMString) {
+    pub fn set_closed_by(&mut self, value: &str) {
         self.inner.set("closedBy", value);
     }
 }
@@ -104,7 +104,7 @@ impl HTMLDialogElement {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 
-    pub fn close1(&self, return_value: DOMString) -> Undefined {
+    pub fn close1(&self, return_value: &str) -> Undefined {
         self.inner
             .call("close", &[return_value.into()])
             .as_::<Undefined>()
@@ -115,7 +115,7 @@ impl HTMLDialogElement {
         self.inner.call("requestClose", &[]).as_::<Undefined>()
     }
 
-    pub fn request_close1(&self, return_value: DOMString) -> Undefined {
+    pub fn request_close1(&self, return_value: &str) -> Undefined {
         self.inner
             .call("requestClose", &[return_value.into()])
             .as_::<Undefined>()

@@ -54,7 +54,7 @@ impl From<&GainNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(GainNode);
 
 impl GainNode {
-    pub fn new0(context: BaseAudioContext) -> GainNode {
+    pub fn new0(context: &BaseAudioContext) -> GainNode {
         Self {
             inner: emlite::Val::global("GainNode")
                 .new(&[context.into()])
@@ -62,7 +62,7 @@ impl GainNode {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: Any) -> GainNode {
+    pub fn new1(context: &BaseAudioContext, options: &Any) -> GainNode {
         Self {
             inner: emlite::Val::global("GainNode")
                 .new(&[context.into(), options.into()])

@@ -54,7 +54,7 @@ impl From<&CloseEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CloseEvent);
 
 impl CloseEvent {
-    pub fn new0(type_: DOMString) -> CloseEvent {
+    pub fn new0(type_: &str) -> CloseEvent {
         Self {
             inner: emlite::Val::global("CloseEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl CloseEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> CloseEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> CloseEvent {
         Self {
             inner: emlite::Val::global("CloseEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -81,7 +81,7 @@ impl CloseEvent {
     }
 }
 impl CloseEvent {
-    pub fn reason(&self) -> USVString {
-        self.inner.get("reason").as_::<USVString>()
+    pub fn reason(&self) -> String {
+        self.inner.get("reason").as_::<String>()
     }
 }

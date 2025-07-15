@@ -54,8 +54,8 @@ impl From<&CSSPseudoElement> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSPseudoElement);
 
 impl CSSPseudoElement {
-    pub fn type_(&self) -> CSSOMString {
-        self.inner.get("type").as_::<CSSOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 }
 impl CSSPseudoElement {
@@ -69,7 +69,7 @@ impl CSSPseudoElement {
     }
 }
 impl CSSPseudoElement {
-    pub fn pseudo(&self, type_: CSSOMString) -> CSSPseudoElement {
+    pub fn pseudo(&self, type_: &str) -> CSSPseudoElement {
         self.inner
             .call("pseudo", &[type_.into()])
             .as_::<CSSPseudoElement>()
@@ -82,14 +82,14 @@ impl CSSPseudoElement {
             .as_::<Sequence<DOMQuad>>()
     }
 
-    pub fn get_box_quads1(&self, options: BoxQuadOptions) -> Sequence<DOMQuad> {
+    pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> Sequence<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[options.into()])
             .as_::<Sequence<DOMQuad>>()
     }
 }
 impl CSSPseudoElement {
-    pub fn convert_quad_from_node0(&self, quad: DOMQuadInit, from: Any) -> DOMQuad {
+    pub fn convert_quad_from_node0(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
         self.inner
             .call("convertQuadFromNode", &[quad.into(), from.into()])
             .as_::<DOMQuad>()
@@ -97,9 +97,9 @@ impl CSSPseudoElement {
 
     pub fn convert_quad_from_node1(
         &self,
-        quad: DOMQuadInit,
-        from: Any,
-        options: ConvertCoordinateOptions,
+        quad: &DOMQuadInit,
+        from: &Any,
+        options: &ConvertCoordinateOptions,
     ) -> DOMQuad {
         self.inner
             .call(
@@ -110,7 +110,7 @@ impl CSSPseudoElement {
     }
 }
 impl CSSPseudoElement {
-    pub fn convert_rect_from_node0(&self, rect: DOMRectReadOnly, from: Any) -> DOMQuad {
+    pub fn convert_rect_from_node0(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
         self.inner
             .call("convertRectFromNode", &[rect.into(), from.into()])
             .as_::<DOMQuad>()
@@ -118,9 +118,9 @@ impl CSSPseudoElement {
 
     pub fn convert_rect_from_node1(
         &self,
-        rect: DOMRectReadOnly,
-        from: Any,
-        options: ConvertCoordinateOptions,
+        rect: &DOMRectReadOnly,
+        from: &Any,
+        options: &ConvertCoordinateOptions,
     ) -> DOMQuad {
         self.inner
             .call(
@@ -131,7 +131,7 @@ impl CSSPseudoElement {
     }
 }
 impl CSSPseudoElement {
-    pub fn convert_point_from_node0(&self, point: DOMPointInit, from: Any) -> DOMPoint {
+    pub fn convert_point_from_node0(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
         self.inner
             .call("convertPointFromNode", &[point.into(), from.into()])
             .as_::<DOMPoint>()
@@ -139,9 +139,9 @@ impl CSSPseudoElement {
 
     pub fn convert_point_from_node1(
         &self,
-        point: DOMPointInit,
-        from: Any,
-        options: ConvertCoordinateOptions,
+        point: &DOMPointInit,
+        from: &Any,
+        options: &ConvertCoordinateOptions,
     ) -> DOMPoint {
         self.inner
             .call(

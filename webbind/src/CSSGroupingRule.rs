@@ -59,11 +59,11 @@ impl CSSGroupingRule {
     }
 }
 impl CSSGroupingRule {
-    pub fn insert_rule0(&self, rule: CSSOMString) -> u32 {
+    pub fn insert_rule0(&self, rule: &str) -> u32 {
         self.inner.call("insertRule", &[rule.into()]).as_::<u32>()
     }
 
-    pub fn insert_rule1(&self, rule: CSSOMString, index: u32) -> u32 {
+    pub fn insert_rule1(&self, rule: &str, index: u32) -> u32 {
         self.inner
             .call("insertRule", &[rule.into(), index.into()])
             .as_::<u32>()

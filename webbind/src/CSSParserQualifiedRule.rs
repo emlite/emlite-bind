@@ -54,7 +54,7 @@ impl From<&CSSParserQualifiedRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSParserQualifiedRule);
 
 impl CSSParserQualifiedRule {
-    pub fn new0(prelude: Sequence<Any>) -> CSSParserQualifiedRule {
+    pub fn new0(prelude: &Sequence<Any>) -> CSSParserQualifiedRule {
         Self {
             inner: emlite::Val::global("CSSParserQualifiedRule")
                 .new(&[prelude.into()])
@@ -62,7 +62,7 @@ impl CSSParserQualifiedRule {
         }
     }
 
-    pub fn new1(prelude: Sequence<Any>, body: Sequence<CSSParserRule>) -> CSSParserQualifiedRule {
+    pub fn new1(prelude: &Sequence<Any>, body: &Sequence<CSSParserRule>) -> CSSParserQualifiedRule {
         Self {
             inner: emlite::Val::global("CSSParserQualifiedRule")
                 .new(&[prelude.into(), body.into()])

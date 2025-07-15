@@ -65,7 +65,7 @@ impl PresentationConnectionList {
         self.inner.get("onconnectionavailable").as_::<Any>()
     }
 
-    pub fn set_onconnectionavailable(&mut self, value: Any) {
+    pub fn set_onconnectionavailable(&mut self, value: &Any) {
         self.inner.set("onconnectionavailable", value);
     }
 }

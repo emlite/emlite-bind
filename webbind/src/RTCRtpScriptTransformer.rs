@@ -63,7 +63,7 @@ impl RTCRtpScriptTransformer {
         self.inner.call("generateKeyFrame", &[]).as_::<Promise>()
     }
 
-    pub fn generate_key_frame1(&self, rid: DOMString) -> Promise {
+    pub fn generate_key_frame1(&self, rid: &str) -> Promise {
         self.inner
             .call("generateKeyFrame", &[rid.into()])
             .as_::<Promise>()
@@ -84,7 +84,7 @@ impl RTCRtpScriptTransformer {
         self.inner.get("onkeyframerequest").as_::<Any>()
     }
 
-    pub fn set_onkeyframerequest(&mut self, value: Any) {
+    pub fn set_onkeyframerequest(&mut self, value: &Any) {
         self.inner.set("onkeyframerequest", value);
     }
 }

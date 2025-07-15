@@ -54,7 +54,7 @@ impl From<&IIRFilterNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(IIRFilterNode);
 
 impl IIRFilterNode {
-    pub fn new(context: BaseAudioContext, options: Any) -> IIRFilterNode {
+    pub fn new(context: &BaseAudioContext, options: &Any) -> IIRFilterNode {
         Self {
             inner: emlite::Val::global("IIRFilterNode")
                 .new(&[context.into(), options.into()])
@@ -65,9 +65,9 @@ impl IIRFilterNode {
 impl IIRFilterNode {
     pub fn get_frequency_response(
         &self,
-        frequency_hz: Float32Array,
-        mag_response: Float32Array,
-        phase_response: Float32Array,
+        frequency_hz: &Float32Array,
+        mag_response: &Float32Array,
+        phase_response: &Float32Array,
     ) -> Undefined {
         self.inner
             .call(

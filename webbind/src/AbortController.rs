@@ -72,7 +72,7 @@ impl AbortController {
         self.inner.call("abort", &[]).as_::<Undefined>()
     }
 
-    pub fn abort1(&self, reason: Any) -> Undefined {
+    pub fn abort1(&self, reason: &Any) -> Undefined {
         self.inner
             .call("abort", &[reason.into()])
             .as_::<Undefined>()

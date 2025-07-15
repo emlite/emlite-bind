@@ -64,13 +64,13 @@ impl LargestContentfulPaint {
     }
 }
 impl LargestContentfulPaint {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl LargestContentfulPaint {
-    pub fn url(&self) -> DOMString {
-        self.inner.get("url").as_::<DOMString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }
 impl LargestContentfulPaint {

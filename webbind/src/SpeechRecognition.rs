@@ -51,11 +51,11 @@ impl From<&SpeechRecognitionOptions> for emlite::Val {
 }
 
 impl SpeechRecognitionOptions {
-    pub fn langs(&self) -> Sequence<DOMString> {
-        self.inner.get("langs").as_::<Sequence<DOMString>>()
+    pub fn langs(&self) -> Sequence<String> {
+        self.inner.get("langs").as_::<Sequence<String>>()
     }
 
-    pub fn set_langs(&mut self, value: Sequence<DOMString>) {
+    pub fn set_langs(&mut self, value: &Sequence<String>) {
         self.inner.set("langs", value);
     }
 }
@@ -135,16 +135,16 @@ impl SpeechRecognition {
         self.inner.get("grammars").as_::<SpeechGrammarList>()
     }
 
-    pub fn set_grammars(&mut self, value: SpeechGrammarList) {
+    pub fn set_grammars(&mut self, value: &SpeechGrammarList) {
         self.inner.set("grammars", value);
     }
 }
 impl SpeechRecognition {
-    pub fn lang(&self) -> DOMString {
-        self.inner.get("lang").as_::<DOMString>()
+    pub fn lang(&self) -> String {
+        self.inner.get("lang").as_::<String>()
     }
 
-    pub fn set_lang(&mut self, value: DOMString) {
+    pub fn set_lang(&mut self, value: &str) {
         self.inner.set("lang", value);
     }
 }
@@ -191,12 +191,12 @@ impl SpeechRecognition {
             .as_::<ObservableArray<SpeechRecognitionPhrase>>()
     }
 
-    pub fn set_phrases(&mut self, value: ObservableArray<SpeechRecognitionPhrase>) {
+    pub fn set_phrases(&mut self, value: &ObservableArray<SpeechRecognitionPhrase>) {
         self.inner.set("phrases", value);
     }
 }
 impl SpeechRecognition {
-    pub fn start(&self, audio_track: MediaStreamTrack) -> Undefined {
+    pub fn start(&self, audio_track: &MediaStreamTrack) -> Undefined {
         self.inner
             .call("start", &[audio_track.into()])
             .as_::<Undefined>()
@@ -213,14 +213,14 @@ impl SpeechRecognition {
     }
 }
 impl SpeechRecognition {
-    pub fn available(options: SpeechRecognitionOptions) -> Promise {
+    pub fn available(options: &SpeechRecognitionOptions) -> Promise {
         emlite::Val::global("SpeechRecognition")
             .call("available", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl SpeechRecognition {
-    pub fn install(options: SpeechRecognitionOptions) -> Promise {
+    pub fn install(options: &SpeechRecognitionOptions) -> Promise {
         emlite::Val::global("SpeechRecognition")
             .call("install", &[options.into()])
             .as_::<Promise>()
@@ -231,7 +231,7 @@ impl SpeechRecognition {
         self.inner.get("onaudiostart").as_::<Any>()
     }
 
-    pub fn set_onaudiostart(&mut self, value: Any) {
+    pub fn set_onaudiostart(&mut self, value: &Any) {
         self.inner.set("onaudiostart", value);
     }
 }
@@ -240,7 +240,7 @@ impl SpeechRecognition {
         self.inner.get("onsoundstart").as_::<Any>()
     }
 
-    pub fn set_onsoundstart(&mut self, value: Any) {
+    pub fn set_onsoundstart(&mut self, value: &Any) {
         self.inner.set("onsoundstart", value);
     }
 }
@@ -249,7 +249,7 @@ impl SpeechRecognition {
         self.inner.get("onspeechstart").as_::<Any>()
     }
 
-    pub fn set_onspeechstart(&mut self, value: Any) {
+    pub fn set_onspeechstart(&mut self, value: &Any) {
         self.inner.set("onspeechstart", value);
     }
 }
@@ -258,7 +258,7 @@ impl SpeechRecognition {
         self.inner.get("onspeechend").as_::<Any>()
     }
 
-    pub fn set_onspeechend(&mut self, value: Any) {
+    pub fn set_onspeechend(&mut self, value: &Any) {
         self.inner.set("onspeechend", value);
     }
 }
@@ -267,7 +267,7 @@ impl SpeechRecognition {
         self.inner.get("onsoundend").as_::<Any>()
     }
 
-    pub fn set_onsoundend(&mut self, value: Any) {
+    pub fn set_onsoundend(&mut self, value: &Any) {
         self.inner.set("onsoundend", value);
     }
 }
@@ -276,7 +276,7 @@ impl SpeechRecognition {
         self.inner.get("onaudioend").as_::<Any>()
     }
 
-    pub fn set_onaudioend(&mut self, value: Any) {
+    pub fn set_onaudioend(&mut self, value: &Any) {
         self.inner.set("onaudioend", value);
     }
 }
@@ -285,7 +285,7 @@ impl SpeechRecognition {
         self.inner.get("onresult").as_::<Any>()
     }
 
-    pub fn set_onresult(&mut self, value: Any) {
+    pub fn set_onresult(&mut self, value: &Any) {
         self.inner.set("onresult", value);
     }
 }
@@ -294,7 +294,7 @@ impl SpeechRecognition {
         self.inner.get("onnomatch").as_::<Any>()
     }
 
-    pub fn set_onnomatch(&mut self, value: Any) {
+    pub fn set_onnomatch(&mut self, value: &Any) {
         self.inner.set("onnomatch", value);
     }
 }
@@ -303,7 +303,7 @@ impl SpeechRecognition {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }
@@ -312,7 +312,7 @@ impl SpeechRecognition {
         self.inner.get("onstart").as_::<Any>()
     }
 
-    pub fn set_onstart(&mut self, value: Any) {
+    pub fn set_onstart(&mut self, value: &Any) {
         self.inner.set("onstart", value);
     }
 }
@@ -321,7 +321,7 @@ impl SpeechRecognition {
         self.inner.get("onend").as_::<Any>()
     }
 
-    pub fn set_onend(&mut self, value: Any) {
+    pub fn set_onend(&mut self, value: &Any) {
         self.inner.set("onend", value);
     }
 }

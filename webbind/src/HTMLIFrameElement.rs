@@ -63,11 +63,11 @@ impl HTMLIFrameElement {
     }
 }
 impl HTMLIFrameElement {
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> String {
+        self.inner.get("src").as_::<String>()
     }
 
-    pub fn set_src(&mut self, value: USVString) {
+    pub fn set_src(&mut self, value: &str) {
         self.inner.set("src", value);
     }
 }
@@ -76,16 +76,16 @@ impl HTMLIFrameElement {
         self.inner.get("srcdoc").as_::<Any>()
     }
 
-    pub fn set_srcdoc(&mut self, value: Any) {
+    pub fn set_srcdoc(&mut self, value: &Any) {
         self.inner.set("srcdoc", value);
     }
 }
 impl HTMLIFrameElement {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
@@ -95,11 +95,11 @@ impl HTMLIFrameElement {
     }
 }
 impl HTMLIFrameElement {
-    pub fn allow(&self) -> DOMString {
-        self.inner.get("allow").as_::<DOMString>()
+    pub fn allow(&self) -> String {
+        self.inner.get("allow").as_::<String>()
     }
 
-    pub fn set_allow(&mut self, value: DOMString) {
+    pub fn set_allow(&mut self, value: &str) {
         self.inner.set("allow", value);
     }
 }
@@ -113,38 +113,38 @@ impl HTMLIFrameElement {
     }
 }
 impl HTMLIFrameElement {
-    pub fn width(&self) -> DOMString {
-        self.inner.get("width").as_::<DOMString>()
+    pub fn width(&self) -> String {
+        self.inner.get("width").as_::<String>()
     }
 
-    pub fn set_width(&mut self, value: DOMString) {
+    pub fn set_width(&mut self, value: &str) {
         self.inner.set("width", value);
     }
 }
 impl HTMLIFrameElement {
-    pub fn height(&self) -> DOMString {
-        self.inner.get("height").as_::<DOMString>()
+    pub fn height(&self) -> String {
+        self.inner.get("height").as_::<String>()
     }
 
-    pub fn set_height(&mut self, value: DOMString) {
+    pub fn set_height(&mut self, value: &str) {
         self.inner.set("height", value);
     }
 }
 impl HTMLIFrameElement {
-    pub fn referrer_policy(&self) -> DOMString {
-        self.inner.get("referrerPolicy").as_::<DOMString>()
+    pub fn referrer_policy(&self) -> String {
+        self.inner.get("referrerPolicy").as_::<String>()
     }
 
-    pub fn set_referrer_policy(&mut self, value: DOMString) {
+    pub fn set_referrer_policy(&mut self, value: &str) {
         self.inner.set("referrerPolicy", value);
     }
 }
 impl HTMLIFrameElement {
-    pub fn loading(&self) -> DOMString {
-        self.inner.get("loading").as_::<DOMString>()
+    pub fn loading(&self) -> String {
+        self.inner.get("loading").as_::<String>()
     }
 
-    pub fn set_loading(&mut self, value: DOMString) {
+    pub fn set_loading(&mut self, value: &str) {
         self.inner.set("loading", value);
     }
 }
@@ -173,65 +173,65 @@ impl HTMLIFrameElement {
     }
 }
 impl HTMLIFrameElement {
-    pub fn csp(&self) -> DOMString {
-        self.inner.get("csp").as_::<DOMString>()
+    pub fn csp(&self) -> String {
+        self.inner.get("csp").as_::<String>()
     }
 
-    pub fn set_csp(&mut self, value: DOMString) {
+    pub fn set_csp(&mut self, value: &str) {
         self.inner.set("csp", value);
     }
 }
 impl HTMLIFrameElement {
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> String {
+        self.inner.get("align").as_::<String>()
     }
 
-    pub fn set_align(&mut self, value: DOMString) {
+    pub fn set_align(&mut self, value: &str) {
         self.inner.set("align", value);
     }
 }
 impl HTMLIFrameElement {
-    pub fn scrolling(&self) -> DOMString {
-        self.inner.get("scrolling").as_::<DOMString>()
+    pub fn scrolling(&self) -> String {
+        self.inner.get("scrolling").as_::<String>()
     }
 
-    pub fn set_scrolling(&mut self, value: DOMString) {
+    pub fn set_scrolling(&mut self, value: &str) {
         self.inner.set("scrolling", value);
     }
 }
 impl HTMLIFrameElement {
-    pub fn frame_border(&self) -> DOMString {
-        self.inner.get("frameBorder").as_::<DOMString>()
+    pub fn frame_border(&self) -> String {
+        self.inner.get("frameBorder").as_::<String>()
     }
 
-    pub fn set_frame_border(&mut self, value: DOMString) {
+    pub fn set_frame_border(&mut self, value: &str) {
         self.inner.set("frameBorder", value);
     }
 }
 impl HTMLIFrameElement {
-    pub fn long_desc(&self) -> USVString {
-        self.inner.get("longDesc").as_::<USVString>()
+    pub fn long_desc(&self) -> String {
+        self.inner.get("longDesc").as_::<String>()
     }
 
-    pub fn set_long_desc(&mut self, value: USVString) {
+    pub fn set_long_desc(&mut self, value: &str) {
         self.inner.set("longDesc", value);
     }
 }
 impl HTMLIFrameElement {
-    pub fn margin_height(&self) -> DOMString {
-        self.inner.get("marginHeight").as_::<DOMString>()
+    pub fn margin_height(&self) -> String {
+        self.inner.get("marginHeight").as_::<String>()
     }
 
-    pub fn set_margin_height(&mut self, value: DOMString) {
+    pub fn set_margin_height(&mut self, value: &str) {
         self.inner.set("marginHeight", value);
     }
 }
 impl HTMLIFrameElement {
-    pub fn margin_width(&self) -> DOMString {
-        self.inner.get("marginWidth").as_::<DOMString>()
+    pub fn margin_width(&self) -> String {
+        self.inner.get("marginWidth").as_::<String>()
     }
 
-    pub fn set_margin_width(&mut self, value: DOMString) {
+    pub fn set_margin_width(&mut self, value: &str) {
         self.inner.set("marginWidth", value);
     }
 }
@@ -243,11 +243,11 @@ impl HTMLIFrameElement {
     }
 }
 impl HTMLIFrameElement {
-    pub fn private_token(&self) -> DOMString {
-        self.inner.get("privateToken").as_::<DOMString>()
+    pub fn private_token(&self) -> String {
+        self.inner.get("privateToken").as_::<String>()
     }
 
-    pub fn set_private_token(&mut self, value: DOMString) {
+    pub fn set_private_token(&mut self, value: &str) {
         self.inner.set("privateToken", value);
     }
 }

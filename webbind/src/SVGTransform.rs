@@ -73,7 +73,7 @@ impl SVGTransform {
         self.inner.call("setMatrix", &[]).as_::<Undefined>()
     }
 
-    pub fn set_matrix1(&self, matrix: DOMMatrix2DInit) -> Undefined {
+    pub fn set_matrix1(&self, matrix: &DOMMatrix2DInit) -> Undefined {
         self.inner
             .call("setMatrix", &[matrix.into()])
             .as_::<Undefined>()

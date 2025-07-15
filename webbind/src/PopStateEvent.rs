@@ -54,7 +54,7 @@ impl From<&PopStateEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PopStateEvent);
 
 impl PopStateEvent {
-    pub fn new0(type_: DOMString) -> PopStateEvent {
+    pub fn new0(type_: &str) -> PopStateEvent {
         Self {
             inner: emlite::Val::global("PopStateEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl PopStateEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> PopStateEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> PopStateEvent {
         Self {
             inner: emlite::Val::global("PopStateEvent")
                 .new(&[type_.into(), event_init_dict.into()])

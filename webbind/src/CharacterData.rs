@@ -54,11 +54,11 @@ impl From<&CharacterData> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CharacterData);
 
 impl CharacterData {
-    pub fn data(&self) -> DOMString {
-        self.inner.get("data").as_::<DOMString>()
+    pub fn data(&self) -> String {
+        self.inner.get("data").as_::<String>()
     }
 
-    pub fn set_data(&mut self, value: DOMString) {
+    pub fn set_data(&mut self, value: &str) {
         self.inner.set("data", value);
     }
 }
@@ -68,21 +68,21 @@ impl CharacterData {
     }
 }
 impl CharacterData {
-    pub fn substring_data(&self, offset: u32, count: u32) -> DOMString {
+    pub fn substring_data(&self, offset: u32, count: u32) -> String {
         self.inner
             .call("substringData", &[offset.into(), count.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl CharacterData {
-    pub fn append_data(&self, data: DOMString) -> Undefined {
+    pub fn append_data(&self, data: &str) -> Undefined {
         self.inner
             .call("appendData", &[data.into()])
             .as_::<Undefined>()
     }
 }
 impl CharacterData {
-    pub fn insert_data(&self, offset: u32, data: DOMString) -> Undefined {
+    pub fn insert_data(&self, offset: u32, data: &str) -> Undefined {
         self.inner
             .call("insertData", &[offset.into(), data.into()])
             .as_::<Undefined>()
@@ -96,7 +96,7 @@ impl CharacterData {
     }
 }
 impl CharacterData {
-    pub fn replace_data(&self, offset: u32, count: u32, data: DOMString) -> Undefined {
+    pub fn replace_data(&self, offset: u32, count: u32, data: &str) -> Undefined {
         self.inner
             .call("replaceData", &[offset.into(), count.into(), data.into()])
             .as_::<Undefined>()
@@ -113,19 +113,19 @@ impl CharacterData {
     }
 }
 impl CharacterData {
-    pub fn before(&self, nodes: Any) -> Undefined {
+    pub fn before(&self, nodes: &Any) -> Undefined {
         self.inner
             .call("before", &[nodes.into()])
             .as_::<Undefined>()
     }
 }
 impl CharacterData {
-    pub fn after(&self, nodes: Any) -> Undefined {
+    pub fn after(&self, nodes: &Any) -> Undefined {
         self.inner.call("after", &[nodes.into()]).as_::<Undefined>()
     }
 }
 impl CharacterData {
-    pub fn replace_with(&self, nodes: Any) -> Undefined {
+    pub fn replace_with(&self, nodes: &Any) -> Undefined {
         self.inner
             .call("replaceWith", &[nodes.into()])
             .as_::<Undefined>()

@@ -62,7 +62,7 @@ impl MediaMetadata {
         }
     }
 
-    pub fn new1(init: Any) -> MediaMetadata {
+    pub fn new1(init: &Any) -> MediaMetadata {
         Self {
             inner: emlite::Val::global("MediaMetadata")
                 .new(&[init.into()])
@@ -71,29 +71,29 @@ impl MediaMetadata {
     }
 }
 impl MediaMetadata {
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> String {
+        self.inner.get("title").as_::<String>()
     }
 
-    pub fn set_title(&mut self, value: DOMString) {
+    pub fn set_title(&mut self, value: &str) {
         self.inner.set("title", value);
     }
 }
 impl MediaMetadata {
-    pub fn artist(&self) -> DOMString {
-        self.inner.get("artist").as_::<DOMString>()
+    pub fn artist(&self) -> String {
+        self.inner.get("artist").as_::<String>()
     }
 
-    pub fn set_artist(&mut self, value: DOMString) {
+    pub fn set_artist(&mut self, value: &str) {
         self.inner.set("artist", value);
     }
 }
 impl MediaMetadata {
-    pub fn album(&self) -> DOMString {
-        self.inner.get("album").as_::<DOMString>()
+    pub fn album(&self) -> String {
+        self.inner.get("album").as_::<String>()
     }
 
-    pub fn set_album(&mut self, value: DOMString) {
+    pub fn set_album(&mut self, value: &str) {
         self.inner.set("album", value);
     }
 }
@@ -102,7 +102,7 @@ impl MediaMetadata {
         self.inner.get("artwork").as_::<FrozenArray<Object>>()
     }
 
-    pub fn set_artwork(&mut self, value: FrozenArray<Object>) {
+    pub fn set_artwork(&mut self, value: &FrozenArray<Object>) {
         self.inner.set("artwork", value);
     }
 }

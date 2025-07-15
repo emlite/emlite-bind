@@ -54,7 +54,7 @@ impl From<&PushEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PushEvent);
 
 impl PushEvent {
-    pub fn new0(type_: DOMString) -> PushEvent {
+    pub fn new0(type_: &str) -> PushEvent {
         Self {
             inner: emlite::Val::global("PushEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl PushEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> PushEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> PushEvent {
         Self {
             inner: emlite::Val::global("PushEvent")
                 .new(&[type_.into(), event_init_dict.into()])

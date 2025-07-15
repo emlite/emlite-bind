@@ -64,13 +64,13 @@ impl PerformanceLongTaskTiming {
     }
 }
 impl PerformanceLongTaskTiming {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl PerformanceLongTaskTiming {
-    pub fn entry_type(&self) -> DOMString {
-        self.inner.get("entryType").as_::<DOMString>()
+    pub fn entry_type(&self) -> String {
+        self.inner.get("entryType").as_::<String>()
     }
 }
 impl PerformanceLongTaskTiming {

@@ -101,7 +101,7 @@ impl DOMPoint {
             .as_::<DOMPoint>()
     }
 
-    pub fn from_point1(other: DOMPointInit) -> DOMPoint {
+    pub fn from_point1(other: &DOMPointInit) -> DOMPoint {
         emlite::Val::global("DOMPoint")
             .call("fromPoint", &[other.into()])
             .as_::<DOMPoint>()

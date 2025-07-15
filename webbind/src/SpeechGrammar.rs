@@ -54,11 +54,11 @@ impl From<&SpeechGrammar> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SpeechGrammar);
 
 impl SpeechGrammar {
-    pub fn src(&self) -> DOMString {
-        self.inner.get("src").as_::<DOMString>()
+    pub fn src(&self) -> String {
+        self.inner.get("src").as_::<String>()
     }
 
-    pub fn set_src(&mut self, value: DOMString) {
+    pub fn set_src(&mut self, value: &str) {
         self.inner.set("src", value);
     }
 }

@@ -54,7 +54,7 @@ impl From<&RTCPeerConnectionIceErrorEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(RTCPeerConnectionIceErrorEvent);
 
 impl RTCPeerConnectionIceErrorEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> RTCPeerConnectionIceErrorEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> RTCPeerConnectionIceErrorEvent {
         Self {
             inner: emlite::Val::global("RTCPeerConnectionIceErrorEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -63,8 +63,8 @@ impl RTCPeerConnectionIceErrorEvent {
     }
 }
 impl RTCPeerConnectionIceErrorEvent {
-    pub fn address(&self) -> DOMString {
-        self.inner.get("address").as_::<DOMString>()
+    pub fn address(&self) -> String {
+        self.inner.get("address").as_::<String>()
     }
 }
 impl RTCPeerConnectionIceErrorEvent {
@@ -73,8 +73,8 @@ impl RTCPeerConnectionIceErrorEvent {
     }
 }
 impl RTCPeerConnectionIceErrorEvent {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }
 impl RTCPeerConnectionIceErrorEvent {
@@ -83,7 +83,7 @@ impl RTCPeerConnectionIceErrorEvent {
     }
 }
 impl RTCPeerConnectionIceErrorEvent {
-    pub fn error_text(&self) -> USVString {
-        self.inner.get("errorText").as_::<USVString>()
+    pub fn error_text(&self) -> String {
+        self.inner.get("errorText").as_::<String>()
     }
 }

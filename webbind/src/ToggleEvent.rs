@@ -54,7 +54,7 @@ impl From<&ToggleEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ToggleEvent);
 
 impl ToggleEvent {
-    pub fn new0(type_: DOMString) -> ToggleEvent {
+    pub fn new0(type_: &str) -> ToggleEvent {
         Self {
             inner: emlite::Val::global("ToggleEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl ToggleEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> ToggleEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> ToggleEvent {
         Self {
             inner: emlite::Val::global("ToggleEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -71,13 +71,13 @@ impl ToggleEvent {
     }
 }
 impl ToggleEvent {
-    pub fn old_state(&self) -> DOMString {
-        self.inner.get("oldState").as_::<DOMString>()
+    pub fn old_state(&self) -> String {
+        self.inner.get("oldState").as_::<String>()
     }
 }
 impl ToggleEvent {
-    pub fn new_state(&self) -> DOMString {
-        self.inner.get("newState").as_::<DOMString>()
+    pub fn new_state(&self) -> String {
+        self.inner.get("newState").as_::<String>()
     }
 }
 impl ToggleEvent {

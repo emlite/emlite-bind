@@ -56,11 +56,11 @@ jsbind::utils::impl_dyn_cast!(WEBGL_draw_instanced_base_vertex_base_instance);
 impl WEBGL_draw_instanced_base_vertex_base_instance {
     pub fn draw_arrays_instanced_base_instance_webgl(
         &self,
-        mode: Any,
-        first: Any,
-        count: Any,
-        instance_count: Any,
-        base_instance: Any,
+        mode: &Any,
+        first: &Any,
+        count: &Any,
+        instance_count: &Any,
+        base_instance: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -79,13 +79,13 @@ impl WEBGL_draw_instanced_base_vertex_base_instance {
 impl WEBGL_draw_instanced_base_vertex_base_instance {
     pub fn draw_elements_instanced_base_vertex_base_instance_webgl(
         &self,
-        mode: Any,
-        count: Any,
-        type_: Any,
-        offset: Any,
-        instance_count: Any,
-        base_vertex: Any,
-        base_instance: Any,
+        mode: &Any,
+        count: &Any,
+        type_: &Any,
+        offset: &Any,
+        instance_count: &Any,
+        base_vertex: &Any,
+        base_instance: &Any,
     ) -> Undefined {
         self.inner
             .call(

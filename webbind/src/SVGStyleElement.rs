@@ -54,29 +54,29 @@ impl From<&SVGStyleElement> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SVGStyleElement);
 
 impl SVGStyleElement {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: DOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }
 impl SVGStyleElement {
-    pub fn media(&self) -> DOMString {
-        self.inner.get("media").as_::<DOMString>()
+    pub fn media(&self) -> String {
+        self.inner.get("media").as_::<String>()
     }
 
-    pub fn set_media(&mut self, value: DOMString) {
+    pub fn set_media(&mut self, value: &str) {
         self.inner.set("media", value);
     }
 }
 impl SVGStyleElement {
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> String {
+        self.inner.get("title").as_::<String>()
     }
 
-    pub fn set_title(&mut self, value: DOMString) {
+    pub fn set_title(&mut self, value: &str) {
         self.inner.set("title", value);
     }
 }

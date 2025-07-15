@@ -54,7 +54,7 @@ impl From<&PushSubscriptionChangeEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PushSubscriptionChangeEvent);
 
 impl PushSubscriptionChangeEvent {
-    pub fn new0(type_: DOMString) -> PushSubscriptionChangeEvent {
+    pub fn new0(type_: &str) -> PushSubscriptionChangeEvent {
         Self {
             inner: emlite::Val::global("PushSubscriptionChangeEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl PushSubscriptionChangeEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> PushSubscriptionChangeEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> PushSubscriptionChangeEvent {
         Self {
             inner: emlite::Val::global("PushSubscriptionChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

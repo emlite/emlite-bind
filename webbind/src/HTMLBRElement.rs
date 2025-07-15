@@ -63,11 +63,11 @@ impl HTMLBRElement {
     }
 }
 impl HTMLBRElement {
-    pub fn clear(&self) -> DOMString {
-        self.inner.get("clear").as_::<DOMString>()
+    pub fn clear(&self) -> String {
+        self.inner.get("clear").as_::<String>()
     }
 
-    pub fn set_clear(&mut self, value: DOMString) {
+    pub fn set_clear(&mut self, value: &str) {
         self.inner.set("clear", value);
     }
 }

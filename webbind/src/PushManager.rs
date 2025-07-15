@@ -64,7 +64,7 @@ impl PushSubscriptionOptionsInit {
         self.inner.get("applicationServerKey").as_::<Any>()
     }
 
-    pub fn set_application_server_key(&mut self, value: Any) {
+    pub fn set_application_server_key(&mut self, value: &Any) {
         self.inner.set("applicationServerKey", value);
     }
 }
@@ -122,10 +122,10 @@ impl From<&PushManager> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PushManager);
 
 impl PushManager {
-    pub fn supported_content_encodings() -> FrozenArray<DOMString> {
+    pub fn supported_content_encodings() -> FrozenArray<String> {
         emlite::Val::global("PushManager")
             .get("supportedContentEncodings")
-            .as_::<FrozenArray<DOMString>>()
+            .as_::<FrozenArray<String>>()
     }
 }
 impl PushManager {
@@ -133,7 +133,7 @@ impl PushManager {
         self.inner.call("subscribe", &[]).as_::<Promise>()
     }
 
-    pub fn subscribe1(&self, options: PushSubscriptionOptionsInit) -> Promise {
+    pub fn subscribe1(&self, options: &PushSubscriptionOptionsInit) -> Promise {
         self.inner
             .call("subscribe", &[options.into()])
             .as_::<Promise>()
@@ -149,7 +149,7 @@ impl PushManager {
         self.inner.call("permissionState", &[]).as_::<Promise>()
     }
 
-    pub fn permission_state1(&self, options: PushSubscriptionOptionsInit) -> Promise {
+    pub fn permission_state1(&self, options: &PushSubscriptionOptionsInit) -> Promise {
         self.inner
             .call("permissionState", &[options.into()])
             .as_::<Promise>()

@@ -62,7 +62,7 @@ impl DOMMatrixReadOnly {
         }
     }
 
-    pub fn new1(init: Any) -> DOMMatrixReadOnly {
+    pub fn new1(init: &Any) -> DOMMatrixReadOnly {
         Self {
             inner: emlite::Val::global("DOMMatrixReadOnly")
                 .new(&[init.into()])
@@ -77,21 +77,21 @@ impl DOMMatrixReadOnly {
             .as_::<DOMMatrixReadOnly>()
     }
 
-    pub fn from_matrix1(other: DOMMatrixInit) -> DOMMatrixReadOnly {
+    pub fn from_matrix1(other: &DOMMatrixInit) -> DOMMatrixReadOnly {
         emlite::Val::global("DOMMatrixReadOnly")
             .call("fromMatrix", &[other.into()])
             .as_::<DOMMatrixReadOnly>()
     }
 }
 impl DOMMatrixReadOnly {
-    pub fn from_float32_array(array32: Float32Array) -> DOMMatrixReadOnly {
+    pub fn from_float32_array(array32: &Float32Array) -> DOMMatrixReadOnly {
         emlite::Val::global("DOMMatrixReadOnly")
             .call("fromFloat32Array", &[array32.into()])
             .as_::<DOMMatrixReadOnly>()
     }
 }
 impl DOMMatrixReadOnly {
-    pub fn from_float64_array(array64: Float64Array) -> DOMMatrixReadOnly {
+    pub fn from_float64_array(array64: &Float64Array) -> DOMMatrixReadOnly {
         emlite::Val::global("DOMMatrixReadOnly")
             .call("fromFloat64Array", &[array64.into()])
             .as_::<DOMMatrixReadOnly>()
@@ -472,7 +472,7 @@ impl DOMMatrixReadOnly {
         self.inner.call("multiply", &[]).as_::<DOMMatrix>()
     }
 
-    pub fn multiply1(&self, other: DOMMatrixInit) -> DOMMatrix {
+    pub fn multiply1(&self, other: &DOMMatrixInit) -> DOMMatrix {
         self.inner
             .call("multiply", &[other.into()])
             .as_::<DOMMatrix>()
@@ -498,7 +498,7 @@ impl DOMMatrixReadOnly {
         self.inner.call("transformPoint", &[]).as_::<DOMPoint>()
     }
 
-    pub fn transform_point1(&self, point: DOMPointInit) -> DOMPoint {
+    pub fn transform_point1(&self, point: &DOMPointInit) -> DOMPoint {
         self.inner
             .call("transformPoint", &[point.into()])
             .as_::<DOMPoint>()

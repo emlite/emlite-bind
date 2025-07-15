@@ -105,13 +105,11 @@ impl MutationObserverInit {
     }
 }
 impl MutationObserverInit {
-    pub fn attribute_filter(&self) -> Sequence<DOMString> {
-        self.inner
-            .get("attributeFilter")
-            .as_::<Sequence<DOMString>>()
+    pub fn attribute_filter(&self) -> Sequence<String> {
+        self.inner.get("attributeFilter").as_::<Sequence<String>>()
     }
 
-    pub fn set_attribute_filter(&mut self, value: Sequence<DOMString>) {
+    pub fn set_attribute_filter(&mut self, value: &Sequence<String>) {
         self.inner.set("attributeFilter", value);
     }
 }
@@ -169,7 +167,7 @@ impl From<&MutationObserver> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MutationObserver);
 
 impl MutationObserver {
-    pub fn new(callback: Function) -> MutationObserver {
+    pub fn new(callback: &Function) -> MutationObserver {
         Self {
             inner: emlite::Val::global("MutationObserver")
                 .new(&[callback.into()])
@@ -178,13 +176,13 @@ impl MutationObserver {
     }
 }
 impl MutationObserver {
-    pub fn observe0(&self, target: Node) -> Undefined {
+    pub fn observe0(&self, target: &Node) -> Undefined {
         self.inner
             .call("observe", &[target.into()])
             .as_::<Undefined>()
     }
 
-    pub fn observe1(&self, target: Node, options: MutationObserverInit) -> Undefined {
+    pub fn observe1(&self, target: &Node, options: &MutationObserverInit) -> Undefined {
         self.inner
             .call("observe", &[target.into(), options.into()])
             .as_::<Undefined>()

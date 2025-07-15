@@ -54,7 +54,7 @@ impl From<&GPUInternalError> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(GPUInternalError);
 
 impl GPUInternalError {
-    pub fn new(message: DOMString) -> GPUInternalError {
+    pub fn new(message: &str) -> GPUInternalError {
         Self {
             inner: emlite::Val::global("GPUInternalError")
                 .new(&[message.into()])

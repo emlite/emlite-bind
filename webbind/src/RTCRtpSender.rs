@@ -55,7 +55,7 @@ impl RTCRtpCapabilities {
         self.inner.get("codecs").as_::<Sequence<RTCRtpCodec>>()
     }
 
-    pub fn set_codecs(&mut self, value: Sequence<RTCRtpCodec>) {
+    pub fn set_codecs(&mut self, value: &Sequence<RTCRtpCodec>) {
         self.inner.set("codecs", value);
     }
 }
@@ -64,7 +64,7 @@ impl RTCRtpCapabilities {
         self.inner.get("headerExtensions").as_::<Sequence<Any>>()
     }
 
-    pub fn set_header_extensions(&mut self, value: Sequence<Any>) {
+    pub fn set_header_extensions(&mut self, value: &Sequence<Any>) {
         self.inner.set("headerExtensions", value);
     }
 }
@@ -119,11 +119,11 @@ impl From<&RTCRtpSendParameters> for emlite::Val {
 }
 
 impl RTCRtpSendParameters {
-    pub fn transaction_id(&self) -> DOMString {
-        self.inner.get("transactionId").as_::<DOMString>()
+    pub fn transaction_id(&self) -> String {
+        self.inner.get("transactionId").as_::<String>()
     }
 
-    pub fn set_transaction_id(&mut self, value: DOMString) {
+    pub fn set_transaction_id(&mut self, value: &str) {
         self.inner.set("transactionId", value);
     }
 }
@@ -132,7 +132,7 @@ impl RTCRtpSendParameters {
         self.inner.get("encodings").as_::<Sequence<Any>>()
     }
 
-    pub fn set_encodings(&mut self, value: Sequence<Any>) {
+    pub fn set_encodings(&mut self, value: &Sequence<Any>) {
         self.inner.set("encodings", value);
     }
 }
@@ -250,14 +250,14 @@ impl RTCRtpSender {
     }
 }
 impl RTCRtpSender {
-    pub fn get_capabilities(kind: DOMString) -> RTCRtpCapabilities {
+    pub fn get_capabilities(kind: &str) -> RTCRtpCapabilities {
         emlite::Val::global("RTCRtpSender")
             .call("getCapabilities", &[kind.into()])
             .as_::<RTCRtpCapabilities>()
     }
 }
 impl RTCRtpSender {
-    pub fn set_parameters0(&self, parameters: RTCRtpSendParameters) -> Promise {
+    pub fn set_parameters0(&self, parameters: &RTCRtpSendParameters) -> Promise {
         self.inner
             .call("setParameters", &[parameters.into()])
             .as_::<Promise>()
@@ -265,8 +265,8 @@ impl RTCRtpSender {
 
     pub fn set_parameters1(
         &self,
-        parameters: RTCRtpSendParameters,
-        set_parameter_options: RTCSetParameterOptions,
+        parameters: &RTCRtpSendParameters,
+        set_parameter_options: &RTCSetParameterOptions,
     ) -> Promise {
         self.inner
             .call(
@@ -284,14 +284,14 @@ impl RTCRtpSender {
     }
 }
 impl RTCRtpSender {
-    pub fn replace_track(&self, with_track: MediaStreamTrack) -> Promise {
+    pub fn replace_track(&self, with_track: &MediaStreamTrack) -> Promise {
         self.inner
             .call("replaceTrack", &[with_track.into()])
             .as_::<Promise>()
     }
 }
 impl RTCRtpSender {
-    pub fn set_streams(&self, streams: MediaStream) -> Undefined {
+    pub fn set_streams(&self, streams: &MediaStream) -> Undefined {
         self.inner
             .call("setStreams", &[streams.into()])
             .as_::<Undefined>()
@@ -307,7 +307,7 @@ impl RTCRtpSender {
         self.inner.get("transform").as_::<Any>()
     }
 
-    pub fn set_transform(&mut self, value: Any) {
+    pub fn set_transform(&mut self, value: &Any) {
         self.inner.set("transform", value);
     }
 }
@@ -316,7 +316,7 @@ impl RTCRtpSender {
         self.inner.call("generateKeyFrame", &[]).as_::<Promise>()
     }
 
-    pub fn generate_key_frame1(&self, rids: Sequence<DOMString>) -> Promise {
+    pub fn generate_key_frame1(&self, rids: &Sequence<String>) -> Promise {
         self.inner
             .call("generateKeyFrame", &[rids.into()])
             .as_::<Promise>()

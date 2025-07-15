@@ -59,7 +59,7 @@ impl TextTrackCueList {
     }
 }
 impl TextTrackCueList {
-    pub fn get_cue_by_id(&self, id: DOMString) -> TextTrackCue {
+    pub fn get_cue_by_id(&self, id: &str) -> TextTrackCue {
         self.inner
             .call("getCueById", &[id.into()])
             .as_::<TextTrackCue>()

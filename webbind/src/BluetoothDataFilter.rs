@@ -62,7 +62,7 @@ impl BluetoothDataFilter {
         }
     }
 
-    pub fn new1(init: Any) -> BluetoothDataFilter {
+    pub fn new1(init: &Any) -> BluetoothDataFilter {
         Self {
             inner: emlite::Val::global("BluetoothDataFilter")
                 .new(&[init.into()])

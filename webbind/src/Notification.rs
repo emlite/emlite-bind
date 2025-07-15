@@ -51,29 +51,29 @@ impl From<&NotificationAction> for emlite::Val {
 }
 
 impl NotificationAction {
-    pub fn action(&self) -> DOMString {
-        self.inner.get("action").as_::<DOMString>()
+    pub fn action(&self) -> String {
+        self.inner.get("action").as_::<String>()
     }
 
-    pub fn set_action(&mut self, value: DOMString) {
+    pub fn set_action(&mut self, value: &str) {
         self.inner.set("action", value);
     }
 }
 impl NotificationAction {
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> String {
+        self.inner.get("title").as_::<String>()
     }
 
-    pub fn set_title(&mut self, value: DOMString) {
+    pub fn set_title(&mut self, value: &str) {
         self.inner.set("title", value);
     }
 }
 impl NotificationAction {
-    pub fn icon(&self) -> USVString {
-        self.inner.get("icon").as_::<USVString>()
+    pub fn icon(&self) -> String {
+        self.inner.get("icon").as_::<String>()
     }
 
-    pub fn set_icon(&mut self, value: USVString) {
+    pub fn set_icon(&mut self, value: &str) {
         self.inner.set("icon", value);
     }
 }
@@ -131,7 +131,7 @@ impl From<&Notification> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Notification);
 
 impl Notification {
-    pub fn new0(title: DOMString) -> Notification {
+    pub fn new0(title: &str) -> Notification {
         Self {
             inner: emlite::Val::global("Notification")
                 .new(&[title.into()])
@@ -139,7 +139,7 @@ impl Notification {
         }
     }
 
-    pub fn new1(title: DOMString, options: NotificationOptions) -> Notification {
+    pub fn new1(title: &str, options: &NotificationOptions) -> Notification {
         Self {
             inner: emlite::Val::global("Notification")
                 .new(&[title.into(), options.into()])
@@ -161,7 +161,7 @@ impl Notification {
             .as_::<Promise>()
     }
 
-    pub fn request_permission1(deprecated_callback: Function) -> Promise {
+    pub fn request_permission1(deprecated_callback: &Function) -> Promise {
         emlite::Val::global("Notification")
             .call("requestPermission", &[deprecated_callback.into()])
             .as_::<Promise>()
@@ -179,7 +179,7 @@ impl Notification {
         self.inner.get("onclick").as_::<Any>()
     }
 
-    pub fn set_onclick(&mut self, value: Any) {
+    pub fn set_onclick(&mut self, value: &Any) {
         self.inner.set("onclick", value);
     }
 }
@@ -188,7 +188,7 @@ impl Notification {
         self.inner.get("onshow").as_::<Any>()
     }
 
-    pub fn set_onshow(&mut self, value: Any) {
+    pub fn set_onshow(&mut self, value: &Any) {
         self.inner.set("onshow", value);
     }
 }
@@ -197,7 +197,7 @@ impl Notification {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }
@@ -206,13 +206,13 @@ impl Notification {
         self.inner.get("onclose").as_::<Any>()
     }
 
-    pub fn set_onclose(&mut self, value: Any) {
+    pub fn set_onclose(&mut self, value: &Any) {
         self.inner.set("onclose", value);
     }
 }
 impl Notification {
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> String {
+        self.inner.get("title").as_::<String>()
     }
 }
 impl Notification {
@@ -221,33 +221,33 @@ impl Notification {
     }
 }
 impl Notification {
-    pub fn lang(&self) -> DOMString {
-        self.inner.get("lang").as_::<DOMString>()
+    pub fn lang(&self) -> String {
+        self.inner.get("lang").as_::<String>()
     }
 }
 impl Notification {
-    pub fn body(&self) -> DOMString {
-        self.inner.get("body").as_::<DOMString>()
+    pub fn body(&self) -> String {
+        self.inner.get("body").as_::<String>()
     }
 }
 impl Notification {
-    pub fn tag(&self) -> DOMString {
-        self.inner.get("tag").as_::<DOMString>()
+    pub fn tag(&self) -> String {
+        self.inner.get("tag").as_::<String>()
     }
 }
 impl Notification {
-    pub fn image(&self) -> USVString {
-        self.inner.get("image").as_::<USVString>()
+    pub fn image(&self) -> String {
+        self.inner.get("image").as_::<String>()
     }
 }
 impl Notification {
-    pub fn icon(&self) -> USVString {
-        self.inner.get("icon").as_::<USVString>()
+    pub fn icon(&self) -> String {
+        self.inner.get("icon").as_::<String>()
     }
 }
 impl Notification {
-    pub fn badge(&self) -> USVString {
-        self.inner.get("badge").as_::<USVString>()
+    pub fn badge(&self) -> String {
+        self.inner.get("badge").as_::<String>()
     }
 }
 impl Notification {

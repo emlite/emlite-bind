@@ -54,11 +54,11 @@ impl From<&XRPermissionStatus> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(XRPermissionStatus);
 
 impl XRPermissionStatus {
-    pub fn granted(&self) -> FrozenArray<DOMString> {
-        self.inner.get("granted").as_::<FrozenArray<DOMString>>()
+    pub fn granted(&self) -> FrozenArray<String> {
+        self.inner.get("granted").as_::<FrozenArray<String>>()
     }
 
-    pub fn set_granted(&mut self, value: FrozenArray<DOMString>) {
+    pub fn set_granted(&mut self, value: &FrozenArray<String>) {
         self.inner.set("granted", value);
     }
 }

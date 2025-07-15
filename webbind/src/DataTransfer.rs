@@ -63,20 +63,20 @@ impl DataTransfer {
     }
 }
 impl DataTransfer {
-    pub fn drop_effect(&self) -> DOMString {
-        self.inner.get("dropEffect").as_::<DOMString>()
+    pub fn drop_effect(&self) -> String {
+        self.inner.get("dropEffect").as_::<String>()
     }
 
-    pub fn set_drop_effect(&mut self, value: DOMString) {
+    pub fn set_drop_effect(&mut self, value: &str) {
         self.inner.set("dropEffect", value);
     }
 }
 impl DataTransfer {
-    pub fn effect_allowed(&self) -> DOMString {
-        self.inner.get("effectAllowed").as_::<DOMString>()
+    pub fn effect_allowed(&self) -> String {
+        self.inner.get("effectAllowed").as_::<String>()
     }
 
-    pub fn set_effect_allowed(&mut self, value: DOMString) {
+    pub fn set_effect_allowed(&mut self, value: &str) {
         self.inner.set("effectAllowed", value);
     }
 }
@@ -86,26 +86,24 @@ impl DataTransfer {
     }
 }
 impl DataTransfer {
-    pub fn set_drag_image(&self, image: Element, x: i32, y: i32) -> Undefined {
+    pub fn set_drag_image(&self, image: &Element, x: i32, y: i32) -> Undefined {
         self.inner
             .call("setDragImage", &[image.into(), x.into(), y.into()])
             .as_::<Undefined>()
     }
 }
 impl DataTransfer {
-    pub fn types(&self) -> FrozenArray<DOMString> {
-        self.inner.get("types").as_::<FrozenArray<DOMString>>()
+    pub fn types(&self) -> FrozenArray<String> {
+        self.inner.get("types").as_::<FrozenArray<String>>()
     }
 }
 impl DataTransfer {
-    pub fn get_data(&self, format: DOMString) -> DOMString {
-        self.inner
-            .call("getData", &[format.into()])
-            .as_::<DOMString>()
+    pub fn get_data(&self, format: &str) -> String {
+        self.inner.call("getData", &[format.into()]).as_::<String>()
     }
 }
 impl DataTransfer {
-    pub fn set_data(&self, format: DOMString, data: DOMString) -> Undefined {
+    pub fn set_data(&self, format: &str, data: &str) -> Undefined {
         self.inner
             .call("setData", &[format.into(), data.into()])
             .as_::<Undefined>()
@@ -116,7 +114,7 @@ impl DataTransfer {
         self.inner.call("clearData", &[]).as_::<Undefined>()
     }
 
-    pub fn clear_data1(&self, format: DOMString) -> Undefined {
+    pub fn clear_data1(&self, format: &str) -> Undefined {
         self.inner
             .call("clearData", &[format.into()])
             .as_::<Undefined>()

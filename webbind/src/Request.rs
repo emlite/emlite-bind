@@ -54,7 +54,7 @@ impl From<&Request> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Request);
 
 impl Request {
-    pub fn new0(input: Any) -> Request {
+    pub fn new0(input: &Any) -> Request {
         Self {
             inner: emlite::Val::global("Request")
                 .new(&[input.into()])
@@ -62,7 +62,7 @@ impl Request {
         }
     }
 
-    pub fn new1(input: Any, init: Any) -> Request {
+    pub fn new1(input: &Any, init: &Any) -> Request {
         Self {
             inner: emlite::Val::global("Request")
                 .new(&[input.into(), init.into()])
@@ -71,13 +71,13 @@ impl Request {
     }
 }
 impl Request {
-    pub fn method(&self) -> ByteString {
-        self.inner.get("method").as_::<ByteString>()
+    pub fn method(&self) -> String {
+        self.inner.get("method").as_::<String>()
     }
 }
 impl Request {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }
 impl Request {
@@ -91,8 +91,8 @@ impl Request {
     }
 }
 impl Request {
-    pub fn referrer(&self) -> USVString {
-        self.inner.get("referrer").as_::<USVString>()
+    pub fn referrer(&self) -> String {
+        self.inner.get("referrer").as_::<String>()
     }
 }
 impl Request {
@@ -121,8 +121,8 @@ impl Request {
     }
 }
 impl Request {
-    pub fn integrity(&self) -> DOMString {
-        self.inner.get("integrity").as_::<DOMString>()
+    pub fn integrity(&self) -> String {
+        self.inner.get("integrity").as_::<String>()
     }
 }
 impl Request {

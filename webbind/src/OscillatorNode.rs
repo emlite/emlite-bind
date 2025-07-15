@@ -54,7 +54,7 @@ impl From<&OscillatorNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(OscillatorNode);
 
 impl OscillatorNode {
-    pub fn new0(context: BaseAudioContext) -> OscillatorNode {
+    pub fn new0(context: &BaseAudioContext) -> OscillatorNode {
         Self {
             inner: emlite::Val::global("OscillatorNode")
                 .new(&[context.into()])
@@ -62,7 +62,7 @@ impl OscillatorNode {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: Any) -> OscillatorNode {
+    pub fn new1(context: &BaseAudioContext, options: &Any) -> OscillatorNode {
         Self {
             inner: emlite::Val::global("OscillatorNode")
                 .new(&[context.into(), options.into()])
@@ -75,7 +75,7 @@ impl OscillatorNode {
         self.inner.get("type").as_::<OscillatorType>()
     }
 
-    pub fn set_type_(&mut self, value: OscillatorType) {
+    pub fn set_type_(&mut self, value: &OscillatorType) {
         self.inner.set("type", value);
     }
 }
@@ -90,7 +90,7 @@ impl OscillatorNode {
     }
 }
 impl OscillatorNode {
-    pub fn set_periodic_wave(&self, periodic_wave: PeriodicWave) -> Undefined {
+    pub fn set_periodic_wave(&self, periodic_wave: &PeriodicWave) -> Undefined {
         self.inner
             .call("setPeriodicWave", &[periodic_wave.into()])
             .as_::<Undefined>()

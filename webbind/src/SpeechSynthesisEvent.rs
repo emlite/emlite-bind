@@ -54,7 +54,7 @@ impl From<&SpeechSynthesisEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SpeechSynthesisEvent);
 
 impl SpeechSynthesisEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> SpeechSynthesisEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> SpeechSynthesisEvent {
         Self {
             inner: emlite::Val::global("SpeechSynthesisEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -85,7 +85,7 @@ impl SpeechSynthesisEvent {
     }
 }
 impl SpeechSynthesisEvent {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }

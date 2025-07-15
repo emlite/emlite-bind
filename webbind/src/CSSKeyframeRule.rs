@@ -54,11 +54,11 @@ impl From<&CSSKeyframeRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSKeyframeRule);
 
 impl CSSKeyframeRule {
-    pub fn key_text(&self) -> CSSOMString {
-        self.inner.get("keyText").as_::<CSSOMString>()
+    pub fn key_text(&self) -> String {
+        self.inner.get("keyText").as_::<String>()
     }
 
-    pub fn set_key_text(&mut self, value: CSSOMString) {
+    pub fn set_key_text(&mut self, value: &str) {
         self.inner.set("keyText", value);
     }
 }

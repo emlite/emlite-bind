@@ -62,7 +62,7 @@ impl InputDeviceCapabilities {
         }
     }
 
-    pub fn new1(device_init_dict: Any) -> InputDeviceCapabilities {
+    pub fn new1(device_init_dict: &Any) -> InputDeviceCapabilities {
         Self {
             inner: emlite::Val::global("InputDeviceCapabilities")
                 .new(&[device_init_dict.into()])

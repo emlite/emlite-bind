@@ -123,7 +123,7 @@ impl PrivateToken {
         self.inner.get("version").as_::<TokenVersion>()
     }
 
-    pub fn set_version(&mut self, value: TokenVersion) {
+    pub fn set_version(&mut self, value: &TokenVersion) {
         self.inner.set("version", value);
     }
 }
@@ -132,7 +132,7 @@ impl PrivateToken {
         self.inner.get("operation").as_::<OperationType>()
     }
 
-    pub fn set_operation(&mut self, value: OperationType) {
+    pub fn set_operation(&mut self, value: &OperationType) {
         self.inner.set("operation", value);
     }
 }
@@ -141,16 +141,16 @@ impl PrivateToken {
         self.inner.get("refreshPolicy").as_::<RefreshPolicy>()
     }
 
-    pub fn set_refresh_policy(&mut self, value: RefreshPolicy) {
+    pub fn set_refresh_policy(&mut self, value: &RefreshPolicy) {
         self.inner.set("refreshPolicy", value);
     }
 }
 impl PrivateToken {
-    pub fn issuers(&self) -> Sequence<USVString> {
-        self.inner.get("issuers").as_::<Sequence<USVString>>()
+    pub fn issuers(&self) -> Sequence<String> {
+        self.inner.get("issuers").as_::<Sequence<String>>()
     }
 
-    pub fn set_issuers(&mut self, value: Sequence<USVString>) {
+    pub fn set_issuers(&mut self, value: &Sequence<String>) {
         self.inner.set("issuers", value);
     }
 }
@@ -221,7 +221,7 @@ impl XMLHttpRequest {
         self.inner.get("onreadystatechange").as_::<Any>()
     }
 
-    pub fn set_onreadystatechange(&mut self, value: Any) {
+    pub fn set_onreadystatechange(&mut self, value: &Any) {
         self.inner.set("onreadystatechange", value);
     }
 }
@@ -231,19 +231,13 @@ impl XMLHttpRequest {
     }
 }
 impl XMLHttpRequest {
-    pub fn open0(&self, method: ByteString, url: USVString, async_: bool) -> Undefined {
+    pub fn open0(&self, method: &str, url: &str, async_: bool) -> Undefined {
         self.inner
             .call("open", &[method.into(), url.into(), async_.into()])
             .as_::<Undefined>()
     }
 
-    pub fn open1(
-        &self,
-        method: ByteString,
-        url: USVString,
-        async_: bool,
-        username: USVString,
-    ) -> Undefined {
+    pub fn open1(&self, method: &str, url: &str, async_: bool, username: &str) -> Undefined {
         self.inner
             .call(
                 "open",
@@ -254,11 +248,11 @@ impl XMLHttpRequest {
 
     pub fn open2(
         &self,
-        method: ByteString,
-        url: USVString,
+        method: &str,
+        url: &str,
         async_: bool,
-        username: USVString,
-        password: USVString,
+        username: &str,
+        password: &str,
     ) -> Undefined {
         self.inner
             .call(
@@ -275,7 +269,7 @@ impl XMLHttpRequest {
     }
 }
 impl XMLHttpRequest {
-    pub fn set_request_header(&self, name: ByteString, value: ByteString) -> Undefined {
+    pub fn set_request_header(&self, name: &str, value: &str) -> Undefined {
         self.inner
             .call("setRequestHeader", &[name.into(), value.into()])
             .as_::<Undefined>()
@@ -309,7 +303,7 @@ impl XMLHttpRequest {
         self.inner.call("send", &[]).as_::<Undefined>()
     }
 
-    pub fn send1(&self, body: Any) -> Undefined {
+    pub fn send1(&self, body: &Any) -> Undefined {
         self.inner.call("send", &[body.into()]).as_::<Undefined>()
     }
 }
@@ -319,8 +313,8 @@ impl XMLHttpRequest {
     }
 }
 impl XMLHttpRequest {
-    pub fn response_url(&self) -> USVString {
-        self.inner.get("responseURL").as_::<USVString>()
+    pub fn response_url(&self) -> String {
+        self.inner.get("responseURL").as_::<String>()
     }
 }
 impl XMLHttpRequest {
@@ -329,26 +323,26 @@ impl XMLHttpRequest {
     }
 }
 impl XMLHttpRequest {
-    pub fn status_text(&self) -> ByteString {
-        self.inner.get("statusText").as_::<ByteString>()
+    pub fn status_text(&self) -> String {
+        self.inner.get("statusText").as_::<String>()
     }
 }
 impl XMLHttpRequest {
-    pub fn get_response_header(&self, name: ByteString) -> ByteString {
+    pub fn get_response_header(&self, name: &str) -> String {
         self.inner
             .call("getResponseHeader", &[name.into()])
-            .as_::<ByteString>()
+            .as_::<String>()
     }
 }
 impl XMLHttpRequest {
-    pub fn get_all_response_headers(&self) -> ByteString {
+    pub fn get_all_response_headers(&self) -> String {
         self.inner
             .call("getAllResponseHeaders", &[])
-            .as_::<ByteString>()
+            .as_::<String>()
     }
 }
 impl XMLHttpRequest {
-    pub fn override_mime_type(&self, mime: DOMString) -> Undefined {
+    pub fn override_mime_type(&self, mime: &str) -> Undefined {
         self.inner
             .call("overrideMimeType", &[mime.into()])
             .as_::<Undefined>()
@@ -361,7 +355,7 @@ impl XMLHttpRequest {
             .as_::<XMLHttpRequestResponseType>()
     }
 
-    pub fn set_response_type(&mut self, value: XMLHttpRequestResponseType) {
+    pub fn set_response_type(&mut self, value: &XMLHttpRequestResponseType) {
         self.inner.set("responseType", value);
     }
 }
@@ -371,8 +365,8 @@ impl XMLHttpRequest {
     }
 }
 impl XMLHttpRequest {
-    pub fn response_text(&self) -> USVString {
-        self.inner.get("responseText").as_::<USVString>()
+    pub fn response_text(&self) -> String {
+        self.inner.get("responseText").as_::<String>()
     }
 }
 impl XMLHttpRequest {
@@ -383,7 +377,7 @@ impl XMLHttpRequest {
 impl XMLHttpRequest {
     pub fn set_attribution_reporting(
         &self,
-        options: AttributionReportingRequestOptions,
+        options: &AttributionReportingRequestOptions,
     ) -> Undefined {
         self.inner
             .call("setAttributionReporting", &[options.into()])
@@ -391,7 +385,7 @@ impl XMLHttpRequest {
     }
 }
 impl XMLHttpRequest {
-    pub fn set_private_token(&self, private_token: PrivateToken) -> Undefined {
+    pub fn set_private_token(&self, private_token: &PrivateToken) -> Undefined {
         self.inner
             .call("setPrivateToken", &[private_token.into()])
             .as_::<Undefined>()

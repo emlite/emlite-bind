@@ -54,7 +54,7 @@ impl From<&AnimationEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(AnimationEvent);
 
 impl AnimationEvent {
-    pub fn new0(type_: CSSOMString) -> AnimationEvent {
+    pub fn new0(type_: &str) -> AnimationEvent {
         Self {
             inner: emlite::Val::global("AnimationEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl AnimationEvent {
         }
     }
 
-    pub fn new1(type_: CSSOMString, animation_event_init_dict: Any) -> AnimationEvent {
+    pub fn new1(type_: &str, animation_event_init_dict: &Any) -> AnimationEvent {
         Self {
             inner: emlite::Val::global("AnimationEvent")
                 .new(&[type_.into(), animation_event_init_dict.into()])
@@ -71,8 +71,8 @@ impl AnimationEvent {
     }
 }
 impl AnimationEvent {
-    pub fn animation_name(&self) -> CSSOMString {
-        self.inner.get("animationName").as_::<CSSOMString>()
+    pub fn animation_name(&self) -> String {
+        self.inner.get("animationName").as_::<String>()
     }
 }
 impl AnimationEvent {
@@ -81,7 +81,7 @@ impl AnimationEvent {
     }
 }
 impl AnimationEvent {
-    pub fn pseudo_element(&self) -> CSSOMString {
-        self.inner.get("pseudoElement").as_::<CSSOMString>()
+    pub fn pseudo_element(&self) -> String {
+        self.inner.get("pseudoElement").as_::<String>()
     }
 }

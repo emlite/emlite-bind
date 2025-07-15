@@ -58,7 +58,7 @@ impl ManagedSourceBuffer {
         self.inner.get("onbufferedchange").as_::<Any>()
     }
 
-    pub fn set_onbufferedchange(&mut self, value: Any) {
+    pub fn set_onbufferedchange(&mut self, value: &Any) {
         self.inner.set("onbufferedchange", value);
     }
 }

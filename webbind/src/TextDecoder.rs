@@ -121,7 +121,7 @@ impl TextDecoder {
         }
     }
 
-    pub fn new1(label: DOMString) -> TextDecoder {
+    pub fn new1(label: &str) -> TextDecoder {
         Self {
             inner: emlite::Val::global("TextDecoder")
                 .new(&[label.into()])
@@ -129,7 +129,7 @@ impl TextDecoder {
         }
     }
 
-    pub fn new2(label: DOMString, options: Any) -> TextDecoder {
+    pub fn new2(label: &str, options: &Any) -> TextDecoder {
         Self {
             inner: emlite::Val::global("TextDecoder")
                 .new(&[label.into(), options.into()])
@@ -138,25 +138,23 @@ impl TextDecoder {
     }
 }
 impl TextDecoder {
-    pub fn decode0(&self) -> USVString {
-        self.inner.call("decode", &[]).as_::<USVString>()
+    pub fn decode0(&self) -> String {
+        self.inner.call("decode", &[]).as_::<String>()
     }
 
-    pub fn decode1(&self, input: Any) -> USVString {
-        self.inner
-            .call("decode", &[input.into()])
-            .as_::<USVString>()
+    pub fn decode1(&self, input: &Any) -> String {
+        self.inner.call("decode", &[input.into()]).as_::<String>()
     }
 
-    pub fn decode2(&self, input: Any, options: TextDecodeOptions) -> USVString {
+    pub fn decode2(&self, input: &Any, options: &TextDecodeOptions) -> String {
         self.inner
             .call("decode", &[input.into(), options.into()])
-            .as_::<USVString>()
+            .as_::<String>()
     }
 }
 impl TextDecoder {
-    pub fn encoding(&self) -> DOMString {
-        self.inner.get("encoding").as_::<DOMString>()
+    pub fn encoding(&self) -> String {
+        self.inner.get("encoding").as_::<String>()
     }
 }
 impl TextDecoder {

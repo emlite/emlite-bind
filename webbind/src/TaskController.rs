@@ -62,7 +62,7 @@ impl TaskController {
         }
     }
 
-    pub fn new1(init: Any) -> TaskController {
+    pub fn new1(init: &Any) -> TaskController {
         Self {
             inner: emlite::Val::global("TaskController")
                 .new(&[init.into()])
@@ -71,7 +71,7 @@ impl TaskController {
     }
 }
 impl TaskController {
-    pub fn set_priority(&self, priority: TaskPriority) -> Undefined {
+    pub fn set_priority(&self, priority: &TaskPriority) -> Undefined {
         self.inner
             .call("setPriority", &[priority.into()])
             .as_::<Undefined>()

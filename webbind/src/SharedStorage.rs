@@ -110,11 +110,11 @@ impl From<&SharedStorageModifierMethodOptions> for emlite::Val {
 }
 
 impl SharedStorageModifierMethodOptions {
-    pub fn with_lock(&self) -> DOMString {
-        self.inner.get("withLock").as_::<DOMString>()
+    pub fn with_lock(&self) -> String {
+        self.inner.get("withLock").as_::<String>()
     }
 
-    pub fn set_with_lock(&mut self, value: DOMString) {
+    pub fn set_with_lock(&mut self, value: &str) {
         self.inner.set("withLock", value);
     }
 }
@@ -169,11 +169,11 @@ impl From<&SharedStorageWorkletOptions> for emlite::Val {
 }
 
 impl SharedStorageWorkletOptions {
-    pub fn data_origin(&self) -> USVString {
-        self.inner.get("dataOrigin").as_::<USVString>()
+    pub fn data_origin(&self) -> String {
+        self.inner.get("dataOrigin").as_::<String>()
     }
 
-    pub fn set_data_origin(&mut self, value: USVString) {
+    pub fn set_data_origin(&mut self, value: &str) {
         self.inner.set("dataOrigin", value);
     }
 }
@@ -231,30 +231,25 @@ impl From<&SharedStorage> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SharedStorage);
 
 impl SharedStorage {
-    pub fn get(&self, key: DOMString) -> Promise {
+    pub fn get(&self, key: &str) -> Promise {
         self.inner.call("get", &[key.into()]).as_::<Promise>()
     }
 }
 impl SharedStorage {
-    pub fn set0(&self, key: DOMString, value: DOMString) -> Promise {
+    pub fn set0(&self, key: &str, value: &str) -> Promise {
         self.inner
             .call("set", &[key.into(), value.into()])
             .as_::<Promise>()
     }
 
-    pub fn set1(
-        &self,
-        key: DOMString,
-        value: DOMString,
-        options: SharedStorageSetMethodOptions,
-    ) -> Promise {
+    pub fn set1(&self, key: &str, value: &str, options: &SharedStorageSetMethodOptions) -> Promise {
         self.inner
             .call("set", &[key.into(), value.into(), options.into()])
             .as_::<Promise>()
     }
 }
 impl SharedStorage {
-    pub fn append0(&self, key: DOMString, value: DOMString) -> Promise {
+    pub fn append0(&self, key: &str, value: &str) -> Promise {
         self.inner
             .call("append", &[key.into(), value.into()])
             .as_::<Promise>()
@@ -262,9 +257,9 @@ impl SharedStorage {
 
     pub fn append1(
         &self,
-        key: DOMString,
-        value: DOMString,
-        options: SharedStorageModifierMethodOptions,
+        key: &str,
+        value: &str,
+        options: &SharedStorageModifierMethodOptions,
     ) -> Promise {
         self.inner
             .call("append", &[key.into(), value.into(), options.into()])
@@ -272,11 +267,11 @@ impl SharedStorage {
     }
 }
 impl SharedStorage {
-    pub fn delete0(&self, key: DOMString) -> Promise {
+    pub fn delete0(&self, key: &str) -> Promise {
         self.inner.call("delete", &[key.into()]).as_::<Promise>()
     }
 
-    pub fn delete1(&self, key: DOMString, options: SharedStorageModifierMethodOptions) -> Promise {
+    pub fn delete1(&self, key: &str, options: &SharedStorageModifierMethodOptions) -> Promise {
         self.inner
             .call("delete", &[key.into(), options.into()])
             .as_::<Promise>()
@@ -287,12 +282,12 @@ impl SharedStorage {
         self.inner.call("clear", &[]).as_::<Promise>()
     }
 
-    pub fn clear1(&self, options: SharedStorageModifierMethodOptions) -> Promise {
+    pub fn clear1(&self, options: &SharedStorageModifierMethodOptions) -> Promise {
         self.inner.call("clear", &[options.into()]).as_::<Promise>()
     }
 }
 impl SharedStorage {
-    pub fn batch_update0(&self, methods: Sequence<SharedStorageModifierMethod>) -> Promise {
+    pub fn batch_update0(&self, methods: &Sequence<SharedStorageModifierMethod>) -> Promise {
         self.inner
             .call("batchUpdate", &[methods.into()])
             .as_::<Promise>()
@@ -300,8 +295,8 @@ impl SharedStorage {
 
     pub fn batch_update1(
         &self,
-        methods: Sequence<SharedStorageModifierMethod>,
-        options: SharedStorageModifierMethodOptions,
+        methods: &Sequence<SharedStorageModifierMethod>,
+        options: &SharedStorageModifierMethodOptions,
     ) -> Promise {
         self.inner
             .call("batchUpdate", &[methods.into(), options.into()])
@@ -311,8 +306,8 @@ impl SharedStorage {
 impl SharedStorage {
     pub fn select_url0(
         &self,
-        name: DOMString,
-        urls: Sequence<SharedStorageUrlWithMetadata>,
+        name: &str,
+        urls: &Sequence<SharedStorageUrlWithMetadata>,
     ) -> Promise {
         self.inner
             .call("selectURL", &[name.into(), urls.into()])
@@ -321,9 +316,9 @@ impl SharedStorage {
 
     pub fn select_url1(
         &self,
-        name: DOMString,
-        urls: Sequence<SharedStorageUrlWithMetadata>,
-        options: SharedStorageRunOperationMethodOptions,
+        name: &str,
+        urls: &Sequence<SharedStorageUrlWithMetadata>,
+        options: &SharedStorageRunOperationMethodOptions,
     ) -> Promise {
         self.inner
             .call("selectURL", &[name.into(), urls.into(), options.into()])
@@ -331,22 +326,18 @@ impl SharedStorage {
     }
 }
 impl SharedStorage {
-    pub fn run0(&self, name: DOMString) -> Promise {
+    pub fn run0(&self, name: &str) -> Promise {
         self.inner.call("run", &[name.into()]).as_::<Promise>()
     }
 
-    pub fn run1(
-        &self,
-        name: DOMString,
-        options: SharedStorageRunOperationMethodOptions,
-    ) -> Promise {
+    pub fn run1(&self, name: &str, options: &SharedStorageRunOperationMethodOptions) -> Promise {
         self.inner
             .call("run", &[name.into(), options.into()])
             .as_::<Promise>()
     }
 }
 impl SharedStorage {
-    pub fn create_worklet0(&self, module_url: USVString) -> Promise {
+    pub fn create_worklet0(&self, module_url: &str) -> Promise {
         self.inner
             .call("createWorklet", &[module_url.into()])
             .as_::<Promise>()
@@ -354,8 +345,8 @@ impl SharedStorage {
 
     pub fn create_worklet1(
         &self,
-        module_url: USVString,
-        options: SharedStorageWorkletOptions,
+        module_url: &str,
+        options: &SharedStorageWorkletOptions,
     ) -> Promise {
         self.inner
             .call("createWorklet", &[module_url.into(), options.into()])

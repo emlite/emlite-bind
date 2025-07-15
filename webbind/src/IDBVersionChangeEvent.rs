@@ -54,7 +54,7 @@ impl From<&IDBVersionChangeEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(IDBVersionChangeEvent);
 
 impl IDBVersionChangeEvent {
-    pub fn new0(type_: DOMString) -> IDBVersionChangeEvent {
+    pub fn new0(type_: &str) -> IDBVersionChangeEvent {
         Self {
             inner: emlite::Val::global("IDBVersionChangeEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl IDBVersionChangeEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> IDBVersionChangeEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> IDBVersionChangeEvent {
         Self {
             inner: emlite::Val::global("IDBVersionChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

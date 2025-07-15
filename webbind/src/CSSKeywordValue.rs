@@ -54,7 +54,7 @@ impl From<&CSSKeywordValue> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSKeywordValue);
 
 impl CSSKeywordValue {
-    pub fn new(value: USVString) -> CSSKeywordValue {
+    pub fn new(value: &str) -> CSSKeywordValue {
         Self {
             inner: emlite::Val::global("CSSKeywordValue")
                 .new(&[value.into()])
@@ -63,11 +63,11 @@ impl CSSKeywordValue {
     }
 }
 impl CSSKeywordValue {
-    pub fn value(&self) -> USVString {
-        self.inner.get("value").as_::<USVString>()
+    pub fn value(&self) -> String {
+        self.inner.get("value").as_::<String>()
     }
 
-    pub fn set_value(&mut self, value: USVString) {
+    pub fn set_value(&mut self, value: &str) {
         self.inner.set("value", value);
     }
 }

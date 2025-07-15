@@ -54,7 +54,7 @@ impl From<&BrowserCaptureMediaStreamTrack> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(BrowserCaptureMediaStreamTrack);
 
 impl BrowserCaptureMediaStreamTrack {
-    pub fn crop_to(&self, crop_target: CropTarget) -> Promise {
+    pub fn crop_to(&self, crop_target: &CropTarget) -> Promise {
         self.inner
             .call("cropTo", &[crop_target.into()])
             .as_::<Promise>()
@@ -68,7 +68,7 @@ impl BrowserCaptureMediaStreamTrack {
     }
 }
 impl BrowserCaptureMediaStreamTrack {
-    pub fn restrict_to(&self, restriction_target: RestrictionTarget) -> Promise {
+    pub fn restrict_to(&self, restriction_target: &RestrictionTarget) -> Promise {
         self.inner
             .call("restrictTo", &[restriction_target.into()])
             .as_::<Promise>()

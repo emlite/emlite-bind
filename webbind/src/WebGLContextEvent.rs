@@ -54,7 +54,7 @@ impl From<&WebGLContextEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(WebGLContextEvent);
 
 impl WebGLContextEvent {
-    pub fn new0(type_: DOMString) -> WebGLContextEvent {
+    pub fn new0(type_: &str) -> WebGLContextEvent {
         Self {
             inner: emlite::Val::global("WebGLContextEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl WebGLContextEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init: Any) -> WebGLContextEvent {
+    pub fn new1(type_: &str, event_init: &Any) -> WebGLContextEvent {
         Self {
             inner: emlite::Val::global("WebGLContextEvent")
                 .new(&[type_.into(), event_init.into()])
@@ -71,7 +71,7 @@ impl WebGLContextEvent {
     }
 }
 impl WebGLContextEvent {
-    pub fn status_message(&self) -> DOMString {
-        self.inner.get("statusMessage").as_::<DOMString>()
+    pub fn status_message(&self) -> String {
+        self.inner.get("statusMessage").as_::<String>()
     }
 }

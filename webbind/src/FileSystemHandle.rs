@@ -55,7 +55,7 @@ impl FileSystemHandlePermissionDescriptor {
         self.inner.get("mode").as_::<FileSystemPermissionMode>()
     }
 
-    pub fn set_mode(&mut self, value: FileSystemPermissionMode) {
+    pub fn set_mode(&mut self, value: &FileSystemPermissionMode) {
         self.inner.set("mode", value);
     }
 }
@@ -118,12 +118,12 @@ impl FileSystemHandle {
     }
 }
 impl FileSystemHandle {
-    pub fn name(&self) -> USVString {
-        self.inner.get("name").as_::<USVString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl FileSystemHandle {
-    pub fn is_same_entry(&self, other: FileSystemHandle) -> Promise {
+    pub fn is_same_entry(&self, other: &FileSystemHandle) -> Promise {
         self.inner
             .call("isSameEntry", &[other.into()])
             .as_::<Promise>()
@@ -134,7 +134,7 @@ impl FileSystemHandle {
         self.inner.call("queryPermission", &[]).as_::<Promise>()
     }
 
-    pub fn query_permission1(&self, descriptor: FileSystemHandlePermissionDescriptor) -> Promise {
+    pub fn query_permission1(&self, descriptor: &FileSystemHandlePermissionDescriptor) -> Promise {
         self.inner
             .call("queryPermission", &[descriptor.into()])
             .as_::<Promise>()
@@ -145,7 +145,10 @@ impl FileSystemHandle {
         self.inner.call("requestPermission", &[]).as_::<Promise>()
     }
 
-    pub fn request_permission1(&self, descriptor: FileSystemHandlePermissionDescriptor) -> Promise {
+    pub fn request_permission1(
+        &self,
+        descriptor: &FileSystemHandlePermissionDescriptor,
+    ) -> Promise {
         self.inner
             .call("requestPermission", &[descriptor.into()])
             .as_::<Promise>()

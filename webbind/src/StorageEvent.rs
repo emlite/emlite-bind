@@ -54,7 +54,7 @@ impl From<&StorageEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(StorageEvent);
 
 impl StorageEvent {
-    pub fn new0(type_: DOMString) -> StorageEvent {
+    pub fn new0(type_: &str) -> StorageEvent {
         Self {
             inner: emlite::Val::global("StorageEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl StorageEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> StorageEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> StorageEvent {
         Self {
             inner: emlite::Val::global("StorageEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -71,23 +71,23 @@ impl StorageEvent {
     }
 }
 impl StorageEvent {
-    pub fn key(&self) -> DOMString {
-        self.inner.get("key").as_::<DOMString>()
+    pub fn key(&self) -> String {
+        self.inner.get("key").as_::<String>()
     }
 }
 impl StorageEvent {
-    pub fn old_value(&self) -> DOMString {
-        self.inner.get("oldValue").as_::<DOMString>()
+    pub fn old_value(&self) -> String {
+        self.inner.get("oldValue").as_::<String>()
     }
 }
 impl StorageEvent {
-    pub fn new_value(&self) -> DOMString {
-        self.inner.get("newValue").as_::<DOMString>()
+    pub fn new_value(&self) -> String {
+        self.inner.get("newValue").as_::<String>()
     }
 }
 impl StorageEvent {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }
 impl StorageEvent {
@@ -96,24 +96,19 @@ impl StorageEvent {
     }
 }
 impl StorageEvent {
-    pub fn init_storage_event0(&self, type_: DOMString) -> Undefined {
+    pub fn init_storage_event0(&self, type_: &str) -> Undefined {
         self.inner
             .call("initStorageEvent", &[type_.into()])
             .as_::<Undefined>()
     }
 
-    pub fn init_storage_event1(&self, type_: DOMString, bubbles: bool) -> Undefined {
+    pub fn init_storage_event1(&self, type_: &str, bubbles: bool) -> Undefined {
         self.inner
             .call("initStorageEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
     }
 
-    pub fn init_storage_event2(
-        &self,
-        type_: DOMString,
-        bubbles: bool,
-        cancelable: bool,
-    ) -> Undefined {
+    pub fn init_storage_event2(&self, type_: &str, bubbles: bool, cancelable: bool) -> Undefined {
         self.inner
             .call(
                 "initStorageEvent",
@@ -124,10 +119,10 @@ impl StorageEvent {
 
     pub fn init_storage_event3(
         &self,
-        type_: DOMString,
+        type_: &str,
         bubbles: bool,
         cancelable: bool,
-        key: DOMString,
+        key: &str,
     ) -> Undefined {
         self.inner
             .call(
@@ -139,11 +134,11 @@ impl StorageEvent {
 
     pub fn init_storage_event4(
         &self,
-        type_: DOMString,
+        type_: &str,
         bubbles: bool,
         cancelable: bool,
-        key: DOMString,
-        old_value: DOMString,
+        key: &str,
+        old_value: &str,
     ) -> Undefined {
         self.inner
             .call(
@@ -161,12 +156,12 @@ impl StorageEvent {
 
     pub fn init_storage_event5(
         &self,
-        type_: DOMString,
+        type_: &str,
         bubbles: bool,
         cancelable: bool,
-        key: DOMString,
-        old_value: DOMString,
-        new_value: DOMString,
+        key: &str,
+        old_value: &str,
+        new_value: &str,
     ) -> Undefined {
         self.inner
             .call(
@@ -185,13 +180,13 @@ impl StorageEvent {
 
     pub fn init_storage_event6(
         &self,
-        type_: DOMString,
+        type_: &str,
         bubbles: bool,
         cancelable: bool,
-        key: DOMString,
-        old_value: DOMString,
-        new_value: DOMString,
-        url: USVString,
+        key: &str,
+        old_value: &str,
+        new_value: &str,
+        url: &str,
     ) -> Undefined {
         self.inner
             .call(
@@ -211,14 +206,14 @@ impl StorageEvent {
 
     pub fn init_storage_event7(
         &self,
-        type_: DOMString,
+        type_: &str,
         bubbles: bool,
         cancelable: bool,
-        key: DOMString,
-        old_value: DOMString,
-        new_value: DOMString,
-        url: USVString,
-        storage_area: Storage,
+        key: &str,
+        old_value: &str,
+        new_value: &str,
+        url: &str,
+        storage_area: &Storage,
     ) -> Undefined {
         self.inner
             .call(

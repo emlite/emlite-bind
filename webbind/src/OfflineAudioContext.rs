@@ -89,7 +89,7 @@ impl OfflineAudioContext {
         self.inner.get("oncomplete").as_::<Any>()
     }
 
-    pub fn set_oncomplete(&mut self, value: Any) {
+    pub fn set_oncomplete(&mut self, value: &Any) {
         self.inner.set("oncomplete", value);
     }
 }

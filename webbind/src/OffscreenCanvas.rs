@@ -51,11 +51,11 @@ impl From<&ImageEncodeOptions> for emlite::Val {
 }
 
 impl ImageEncodeOptions {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: DOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }
@@ -149,13 +149,13 @@ impl OffscreenCanvas {
     }
 }
 impl OffscreenCanvas {
-    pub fn get_context0(&self, context_id: OffscreenRenderingContextId) -> Any {
+    pub fn get_context0(&self, context_id: &OffscreenRenderingContextId) -> Any {
         self.inner
             .call("getContext", &[context_id.into()])
             .as_::<Any>()
     }
 
-    pub fn get_context1(&self, context_id: OffscreenRenderingContextId, options: Any) -> Any {
+    pub fn get_context1(&self, context_id: &OffscreenRenderingContextId, options: &Any) -> Any {
         self.inner
             .call("getContext", &[context_id.into(), options.into()])
             .as_::<Any>()
@@ -173,7 +173,7 @@ impl OffscreenCanvas {
         self.inner.call("convertToBlob", &[]).as_::<Promise>()
     }
 
-    pub fn convert_to_blob1(&self, options: ImageEncodeOptions) -> Promise {
+    pub fn convert_to_blob1(&self, options: &ImageEncodeOptions) -> Promise {
         self.inner
             .call("convertToBlob", &[options.into()])
             .as_::<Promise>()
@@ -184,7 +184,7 @@ impl OffscreenCanvas {
         self.inner.get("oncontextlost").as_::<Any>()
     }
 
-    pub fn set_oncontextlost(&mut self, value: Any) {
+    pub fn set_oncontextlost(&mut self, value: &Any) {
         self.inner.set("oncontextlost", value);
     }
 }
@@ -193,7 +193,7 @@ impl OffscreenCanvas {
         self.inner.get("oncontextrestored").as_::<Any>()
     }
 
-    pub fn set_oncontextrestored(&mut self, value: Any) {
+    pub fn set_oncontextrestored(&mut self, value: &Any) {
         self.inner.set("oncontextrestored", value);
     }
 }

@@ -63,38 +63,38 @@ impl HTMLAnchorElement {
     }
 }
 impl HTMLAnchorElement {
-    pub fn target(&self) -> DOMString {
-        self.inner.get("target").as_::<DOMString>()
+    pub fn target(&self) -> String {
+        self.inner.get("target").as_::<String>()
     }
 
-    pub fn set_target(&mut self, value: DOMString) {
+    pub fn set_target(&mut self, value: &str) {
         self.inner.set("target", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn download(&self) -> DOMString {
-        self.inner.get("download").as_::<DOMString>()
+    pub fn download(&self) -> String {
+        self.inner.get("download").as_::<String>()
     }
 
-    pub fn set_download(&mut self, value: DOMString) {
+    pub fn set_download(&mut self, value: &str) {
         self.inner.set("download", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn ping(&self) -> USVString {
-        self.inner.get("ping").as_::<USVString>()
+    pub fn ping(&self) -> String {
+        self.inner.get("ping").as_::<String>()
     }
 
-    pub fn set_ping(&mut self, value: USVString) {
+    pub fn set_ping(&mut self, value: &str) {
         self.inner.set("ping", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn rel(&self) -> DOMString {
-        self.inner.get("rel").as_::<DOMString>()
+    pub fn rel(&self) -> String {
+        self.inner.get("rel").as_::<String>()
     }
 
-    pub fn set_rel(&mut self, value: DOMString) {
+    pub fn set_rel(&mut self, value: &str) {
         self.inner.set("rel", value);
     }
 }
@@ -104,83 +104,83 @@ impl HTMLAnchorElement {
     }
 }
 impl HTMLAnchorElement {
-    pub fn hreflang(&self) -> DOMString {
-        self.inner.get("hreflang").as_::<DOMString>()
+    pub fn hreflang(&self) -> String {
+        self.inner.get("hreflang").as_::<String>()
     }
 
-    pub fn set_hreflang(&mut self, value: DOMString) {
+    pub fn set_hreflang(&mut self, value: &str) {
         self.inner.set("hreflang", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: DOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn text(&self) -> DOMString {
-        self.inner.get("text").as_::<DOMString>()
+    pub fn text(&self) -> String {
+        self.inner.get("text").as_::<String>()
     }
 
-    pub fn set_text(&mut self, value: DOMString) {
+    pub fn set_text(&mut self, value: &str) {
         self.inner.set("text", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn referrer_policy(&self) -> DOMString {
-        self.inner.get("referrerPolicy").as_::<DOMString>()
+    pub fn referrer_policy(&self) -> String {
+        self.inner.get("referrerPolicy").as_::<String>()
     }
 
-    pub fn set_referrer_policy(&mut self, value: DOMString) {
+    pub fn set_referrer_policy(&mut self, value: &str) {
         self.inner.set("referrerPolicy", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn coords(&self) -> DOMString {
-        self.inner.get("coords").as_::<DOMString>()
+    pub fn coords(&self) -> String {
+        self.inner.get("coords").as_::<String>()
     }
 
-    pub fn set_coords(&mut self, value: DOMString) {
+    pub fn set_coords(&mut self, value: &str) {
         self.inner.set("coords", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn charset(&self) -> DOMString {
-        self.inner.get("charset").as_::<DOMString>()
+    pub fn charset(&self) -> String {
+        self.inner.get("charset").as_::<String>()
     }
 
-    pub fn set_charset(&mut self, value: DOMString) {
+    pub fn set_charset(&mut self, value: &str) {
         self.inner.set("charset", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn rev(&self) -> DOMString {
-        self.inner.get("rev").as_::<DOMString>()
+    pub fn rev(&self) -> String {
+        self.inner.get("rev").as_::<String>()
     }
 
-    pub fn set_rev(&mut self, value: DOMString) {
+    pub fn set_rev(&mut self, value: &str) {
         self.inner.set("rev", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn shape(&self) -> DOMString {
-        self.inner.get("shape").as_::<DOMString>()
+    pub fn shape(&self) -> String {
+        self.inner.get("shape").as_::<String>()
     }
 
-    pub fn set_shape(&mut self, value: DOMString) {
+    pub fn set_shape(&mut self, value: &str) {
         self.inner.set("shape", value);
     }
 }
@@ -194,106 +194,106 @@ impl HTMLAnchorElement {
     }
 }
 impl HTMLAnchorElement {
-    pub fn attribution_src(&self) -> USVString {
-        self.inner.get("attributionSrc").as_::<USVString>()
+    pub fn attribution_src(&self) -> String {
+        self.inner.get("attributionSrc").as_::<String>()
     }
 
-    pub fn set_attribution_src(&mut self, value: USVString) {
+    pub fn set_attribution_src(&mut self, value: &str) {
         self.inner.set("attributionSrc", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn href(&self) -> USVString {
-        self.inner.get("href").as_::<USVString>()
+    pub fn href(&self) -> String {
+        self.inner.get("href").as_::<String>()
     }
 
-    pub fn set_href(&mut self, value: USVString) {
+    pub fn set_href(&mut self, value: &str) {
         self.inner.set("href", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn origin(&self) -> USVString {
-        self.inner.get("origin").as_::<USVString>()
+    pub fn origin(&self) -> String {
+        self.inner.get("origin").as_::<String>()
     }
 }
 impl HTMLAnchorElement {
-    pub fn protocol(&self) -> USVString {
-        self.inner.get("protocol").as_::<USVString>()
+    pub fn protocol(&self) -> String {
+        self.inner.get("protocol").as_::<String>()
     }
 
-    pub fn set_protocol(&mut self, value: USVString) {
+    pub fn set_protocol(&mut self, value: &str) {
         self.inner.set("protocol", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn username(&self) -> USVString {
-        self.inner.get("username").as_::<USVString>()
+    pub fn username(&self) -> String {
+        self.inner.get("username").as_::<String>()
     }
 
-    pub fn set_username(&mut self, value: USVString) {
+    pub fn set_username(&mut self, value: &str) {
         self.inner.set("username", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn password(&self) -> USVString {
-        self.inner.get("password").as_::<USVString>()
+    pub fn password(&self) -> String {
+        self.inner.get("password").as_::<String>()
     }
 
-    pub fn set_password(&mut self, value: USVString) {
+    pub fn set_password(&mut self, value: &str) {
         self.inner.set("password", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn host(&self) -> USVString {
-        self.inner.get("host").as_::<USVString>()
+    pub fn host(&self) -> String {
+        self.inner.get("host").as_::<String>()
     }
 
-    pub fn set_host(&mut self, value: USVString) {
+    pub fn set_host(&mut self, value: &str) {
         self.inner.set("host", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn hostname(&self) -> USVString {
-        self.inner.get("hostname").as_::<USVString>()
+    pub fn hostname(&self) -> String {
+        self.inner.get("hostname").as_::<String>()
     }
 
-    pub fn set_hostname(&mut self, value: USVString) {
+    pub fn set_hostname(&mut self, value: &str) {
         self.inner.set("hostname", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn port(&self) -> USVString {
-        self.inner.get("port").as_::<USVString>()
+    pub fn port(&self) -> String {
+        self.inner.get("port").as_::<String>()
     }
 
-    pub fn set_port(&mut self, value: USVString) {
+    pub fn set_port(&mut self, value: &str) {
         self.inner.set("port", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn pathname(&self) -> USVString {
-        self.inner.get("pathname").as_::<USVString>()
+    pub fn pathname(&self) -> String {
+        self.inner.get("pathname").as_::<String>()
     }
 
-    pub fn set_pathname(&mut self, value: USVString) {
+    pub fn set_pathname(&mut self, value: &str) {
         self.inner.set("pathname", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn search(&self) -> USVString {
-        self.inner.get("search").as_::<USVString>()
+    pub fn search(&self) -> String {
+        self.inner.get("search").as_::<String>()
     }
 
-    pub fn set_search(&mut self, value: USVString) {
+    pub fn set_search(&mut self, value: &str) {
         self.inner.set("search", value);
     }
 }
 impl HTMLAnchorElement {
-    pub fn hash(&self) -> USVString {
-        self.inner.get("hash").as_::<USVString>()
+    pub fn hash(&self) -> String {
+        self.inner.get("hash").as_::<String>()
     }
 
-    pub fn set_hash(&mut self, value: USVString) {
+    pub fn set_hash(&mut self, value: &str) {
         self.inner.set("hash", value);
     }
 }

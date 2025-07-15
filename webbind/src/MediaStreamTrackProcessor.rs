@@ -54,7 +54,7 @@ impl From<&MediaStreamTrackProcessor> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MediaStreamTrackProcessor);
 
 impl MediaStreamTrackProcessor {
-    pub fn new(init: Any) -> MediaStreamTrackProcessor {
+    pub fn new(init: &Any) -> MediaStreamTrackProcessor {
         Self {
             inner: emlite::Val::global("MediaStreamTrackProcessor")
                 .new(&[init.into()])

@@ -54,8 +54,8 @@ impl From<&ProcessingInstruction> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ProcessingInstruction);
 
 impl ProcessingInstruction {
-    pub fn target(&self) -> DOMString {
-        self.inner.get("target").as_::<DOMString>()
+    pub fn target(&self) -> String {
+        self.inner.get("target").as_::<String>()
     }
 }
 impl ProcessingInstruction {

@@ -54,7 +54,7 @@ impl From<&BufferedChangeEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(BufferedChangeEvent);
 
 impl BufferedChangeEvent {
-    pub fn new0(type_: DOMString) -> BufferedChangeEvent {
+    pub fn new0(type_: &str) -> BufferedChangeEvent {
         Self {
             inner: emlite::Val::global("BufferedChangeEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl BufferedChangeEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> BufferedChangeEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> BufferedChangeEvent {
         Self {
             inner: emlite::Val::global("BufferedChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -60,7 +60,7 @@ impl Text {
         }
     }
 
-    pub fn new1(data: DOMString) -> Text {
+    pub fn new1(data: &str) -> Text {
         Self {
             inner: emlite::Val::global("Text")
                 .new(&[data.into()])
@@ -74,8 +74,8 @@ impl Text {
     }
 }
 impl Text {
-    pub fn whole_text(&self) -> DOMString {
-        self.inner.get("wholeText").as_::<DOMString>()
+    pub fn whole_text(&self) -> String {
+        self.inner.get("wholeText").as_::<String>()
     }
 }
 impl Text {
@@ -85,14 +85,14 @@ impl Text {
             .as_::<Sequence<DOMQuad>>()
     }
 
-    pub fn get_box_quads1(&self, options: BoxQuadOptions) -> Sequence<DOMQuad> {
+    pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> Sequence<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[options.into()])
             .as_::<Sequence<DOMQuad>>()
     }
 }
 impl Text {
-    pub fn convert_quad_from_node0(&self, quad: DOMQuadInit, from: Any) -> DOMQuad {
+    pub fn convert_quad_from_node0(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
         self.inner
             .call("convertQuadFromNode", &[quad.into(), from.into()])
             .as_::<DOMQuad>()
@@ -100,9 +100,9 @@ impl Text {
 
     pub fn convert_quad_from_node1(
         &self,
-        quad: DOMQuadInit,
-        from: Any,
-        options: ConvertCoordinateOptions,
+        quad: &DOMQuadInit,
+        from: &Any,
+        options: &ConvertCoordinateOptions,
     ) -> DOMQuad {
         self.inner
             .call(
@@ -113,7 +113,7 @@ impl Text {
     }
 }
 impl Text {
-    pub fn convert_rect_from_node0(&self, rect: DOMRectReadOnly, from: Any) -> DOMQuad {
+    pub fn convert_rect_from_node0(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
         self.inner
             .call("convertRectFromNode", &[rect.into(), from.into()])
             .as_::<DOMQuad>()
@@ -121,9 +121,9 @@ impl Text {
 
     pub fn convert_rect_from_node1(
         &self,
-        rect: DOMRectReadOnly,
-        from: Any,
-        options: ConvertCoordinateOptions,
+        rect: &DOMRectReadOnly,
+        from: &Any,
+        options: &ConvertCoordinateOptions,
     ) -> DOMQuad {
         self.inner
             .call(
@@ -134,7 +134,7 @@ impl Text {
     }
 }
 impl Text {
-    pub fn convert_point_from_node0(&self, point: DOMPointInit, from: Any) -> DOMPoint {
+    pub fn convert_point_from_node0(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
         self.inner
             .call("convertPointFromNode", &[point.into(), from.into()])
             .as_::<DOMPoint>()
@@ -142,9 +142,9 @@ impl Text {
 
     pub fn convert_point_from_node1(
         &self,
-        point: DOMPointInit,
-        from: Any,
-        options: ConvertCoordinateOptions,
+        point: &DOMPointInit,
+        from: &Any,
+        options: &ConvertCoordinateOptions,
     ) -> DOMPoint {
         self.inner
             .call(

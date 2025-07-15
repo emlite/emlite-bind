@@ -55,7 +55,7 @@ impl TrustedTypePolicyOptions {
         self.inner.get("createHTML").as_::<Function>()
     }
 
-    pub fn set_create_html(&mut self, value: Function) {
+    pub fn set_create_html(&mut self, value: &Function) {
         self.inner.set("createHTML", value);
     }
 }
@@ -64,7 +64,7 @@ impl TrustedTypePolicyOptions {
         self.inner.get("createScript").as_::<Function>()
     }
 
-    pub fn set_create_script(&mut self, value: Function) {
+    pub fn set_create_script(&mut self, value: &Function) {
         self.inner.set("createScript", value);
     }
 }
@@ -73,7 +73,7 @@ impl TrustedTypePolicyOptions {
         self.inner.get("createScriptURL").as_::<Function>()
     }
 
-    pub fn set_create_script_url(&mut self, value: Function) {
+    pub fn set_create_script_url(&mut self, value: &Function) {
         self.inner.set("createScriptURL", value);
     }
 }
@@ -131,7 +131,7 @@ impl From<&TrustedTypePolicyFactory> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(TrustedTypePolicyFactory);
 
 impl TrustedTypePolicyFactory {
-    pub fn create_policy0(&self, policy_name: DOMString) -> TrustedTypePolicy {
+    pub fn create_policy0(&self, policy_name: &str) -> TrustedTypePolicy {
         self.inner
             .call("createPolicy", &[policy_name.into()])
             .as_::<TrustedTypePolicy>()
@@ -139,8 +139,8 @@ impl TrustedTypePolicyFactory {
 
     pub fn create_policy1(
         &self,
-        policy_name: DOMString,
-        policy_options: TrustedTypePolicyOptions,
+        policy_name: &str,
+        policy_options: &TrustedTypePolicyOptions,
     ) -> TrustedTypePolicy {
         self.inner
             .call("createPolicy", &[policy_name.into(), policy_options.into()])
@@ -148,17 +148,17 @@ impl TrustedTypePolicyFactory {
     }
 }
 impl TrustedTypePolicyFactory {
-    pub fn is_html(&self, value: Any) -> bool {
+    pub fn is_html(&self, value: &Any) -> bool {
         self.inner.call("isHTML", &[value.into()]).as_::<bool>()
     }
 }
 impl TrustedTypePolicyFactory {
-    pub fn is_script(&self, value: Any) -> bool {
+    pub fn is_script(&self, value: &Any) -> bool {
         self.inner.call("isScript", &[value.into()]).as_::<bool>()
     }
 }
 impl TrustedTypePolicyFactory {
-    pub fn is_script_url(&self, value: Any) -> bool {
+    pub fn is_script_url(&self, value: &Any) -> bool {
         self.inner
             .call("isScriptURL", &[value.into()])
             .as_::<bool>()
@@ -175,33 +175,28 @@ impl TrustedTypePolicyFactory {
     }
 }
 impl TrustedTypePolicyFactory {
-    pub fn get_attribute_type0(&self, tag_name: DOMString, attribute: DOMString) -> DOMString {
+    pub fn get_attribute_type0(&self, tag_name: &str, attribute: &str) -> String {
         self.inner
             .call("getAttributeType", &[tag_name.into(), attribute.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 
-    pub fn get_attribute_type1(
-        &self,
-        tag_name: DOMString,
-        attribute: DOMString,
-        element_ns: DOMString,
-    ) -> DOMString {
+    pub fn get_attribute_type1(&self, tag_name: &str, attribute: &str, element_ns: &str) -> String {
         self.inner
             .call(
                 "getAttributeType",
                 &[tag_name.into(), attribute.into(), element_ns.into()],
             )
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 
     pub fn get_attribute_type2(
         &self,
-        tag_name: DOMString,
-        attribute: DOMString,
-        element_ns: DOMString,
-        attr_ns: DOMString,
-    ) -> DOMString {
+        tag_name: &str,
+        attribute: &str,
+        element_ns: &str,
+        attr_ns: &str,
+    ) -> String {
         self.inner
             .call(
                 "getAttributeType",
@@ -212,28 +207,23 @@ impl TrustedTypePolicyFactory {
                     attr_ns.into(),
                 ],
             )
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl TrustedTypePolicyFactory {
-    pub fn get_property_type0(&self, tag_name: DOMString, property: DOMString) -> DOMString {
+    pub fn get_property_type0(&self, tag_name: &str, property: &str) -> String {
         self.inner
             .call("getPropertyType", &[tag_name.into(), property.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 
-    pub fn get_property_type1(
-        &self,
-        tag_name: DOMString,
-        property: DOMString,
-        element_ns: DOMString,
-    ) -> DOMString {
+    pub fn get_property_type1(&self, tag_name: &str, property: &str, element_ns: &str) -> String {
         self.inner
             .call(
                 "getPropertyType",
                 &[tag_name.into(), property.into(), element_ns.into()],
             )
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl TrustedTypePolicyFactory {

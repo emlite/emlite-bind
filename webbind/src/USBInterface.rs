@@ -54,7 +54,7 @@ impl From<&USBInterface> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(USBInterface);
 
 impl USBInterface {
-    pub fn new(configuration: USBConfiguration, interface_number: u8) -> USBInterface {
+    pub fn new(configuration: &USBConfiguration, interface_number: u8) -> USBInterface {
         Self {
             inner: emlite::Val::global("USBInterface")
                 .new(&[configuration.into(), interface_number.into()])

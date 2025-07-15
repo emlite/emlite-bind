@@ -54,8 +54,8 @@ impl From<&NamedFlow> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(NamedFlow);
 
 impl NamedFlow {
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl NamedFlow {
@@ -81,7 +81,7 @@ impl NamedFlow {
     }
 }
 impl NamedFlow {
-    pub fn get_regions_by_content(&self, node: Node) -> Sequence<Element> {
+    pub fn get_regions_by_content(&self, node: &Node) -> Sequence<Element> {
         self.inner
             .call("getRegionsByContent", &[node.into()])
             .as_::<Sequence<Element>>()

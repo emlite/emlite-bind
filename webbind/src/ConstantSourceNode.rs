@@ -54,7 +54,7 @@ impl From<&ConstantSourceNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ConstantSourceNode);
 
 impl ConstantSourceNode {
-    pub fn new0(context: BaseAudioContext) -> ConstantSourceNode {
+    pub fn new0(context: &BaseAudioContext) -> ConstantSourceNode {
         Self {
             inner: emlite::Val::global("ConstantSourceNode")
                 .new(&[context.into()])
@@ -62,7 +62,7 @@ impl ConstantSourceNode {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: Any) -> ConstantSourceNode {
+    pub fn new1(context: &BaseAudioContext, options: &Any) -> ConstantSourceNode {
         Self {
             inner: emlite::Val::global("ConstantSourceNode")
                 .new(&[context.into(), options.into()])

@@ -55,16 +55,16 @@ impl BackgroundFetchUIOptions {
         self.inner.get("icons").as_::<Sequence<Any>>()
     }
 
-    pub fn set_icons(&mut self, value: Sequence<Any>) {
+    pub fn set_icons(&mut self, value: &Sequence<Any>) {
         self.inner.set("icons", value);
     }
 }
 impl BackgroundFetchUIOptions {
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> String {
+        self.inner.get("title").as_::<String>()
     }
 
-    pub fn set_title(&mut self, value: DOMString) {
+    pub fn set_title(&mut self, value: &str) {
         self.inner.set("title", value);
     }
 }
@@ -122,7 +122,7 @@ impl From<&BackgroundFetchUpdateUIEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(BackgroundFetchUpdateUIEvent);
 
 impl BackgroundFetchUpdateUIEvent {
-    pub fn new(type_: DOMString, init: Any) -> BackgroundFetchUpdateUIEvent {
+    pub fn new(type_: &str, init: &Any) -> BackgroundFetchUpdateUIEvent {
         Self {
             inner: emlite::Val::global("BackgroundFetchUpdateUIEvent")
                 .new(&[type_.into(), init.into()])
@@ -135,7 +135,7 @@ impl BackgroundFetchUpdateUIEvent {
         self.inner.call("updateUI", &[]).as_::<Promise>()
     }
 
-    pub fn update_ui1(&self, options: BackgroundFetchUIOptions) -> Promise {
+    pub fn update_ui1(&self, options: &BackgroundFetchUIOptions) -> Promise {
         self.inner
             .call("updateUI", &[options.into()])
             .as_::<Promise>()

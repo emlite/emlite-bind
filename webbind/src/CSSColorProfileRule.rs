@@ -54,22 +54,22 @@ impl From<&CSSColorProfileRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSColorProfileRule);
 
 impl CSSColorProfileRule {
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl CSSColorProfileRule {
-    pub fn src(&self) -> CSSOMString {
-        self.inner.get("src").as_::<CSSOMString>()
+    pub fn src(&self) -> String {
+        self.inner.get("src").as_::<String>()
     }
 }
 impl CSSColorProfileRule {
-    pub fn rendering_intent(&self) -> CSSOMString {
-        self.inner.get("renderingIntent").as_::<CSSOMString>()
+    pub fn rendering_intent(&self) -> String {
+        self.inner.get("renderingIntent").as_::<String>()
     }
 }
 impl CSSColorProfileRule {
-    pub fn components(&self) -> CSSOMString {
-        self.inner.get("components").as_::<CSSOMString>()
+    pub fn components(&self) -> String {
+        self.inner.get("components").as_::<String>()
     }
 }

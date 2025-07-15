@@ -62,7 +62,7 @@ impl ScrollTimeline {
         }
     }
 
-    pub fn new1(options: Any) -> ScrollTimeline {
+    pub fn new1(options: &Any) -> ScrollTimeline {
         Self {
             inner: emlite::Val::global("ScrollTimeline")
                 .new(&[options.into()])

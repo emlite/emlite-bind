@@ -54,7 +54,7 @@ impl From<&ExtendableCookieChangeEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ExtendableCookieChangeEvent);
 
 impl ExtendableCookieChangeEvent {
-    pub fn new0(type_: DOMString) -> ExtendableCookieChangeEvent {
+    pub fn new0(type_: &str) -> ExtendableCookieChangeEvent {
         Self {
             inner: emlite::Val::global("ExtendableCookieChangeEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl ExtendableCookieChangeEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> ExtendableCookieChangeEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> ExtendableCookieChangeEvent {
         Self {
             inner: emlite::Val::global("ExtendableCookieChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

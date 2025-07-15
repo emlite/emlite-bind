@@ -54,7 +54,7 @@ impl From<&EncodedAudioChunk> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(EncodedAudioChunk);
 
 impl EncodedAudioChunk {
-    pub fn new(init: Any) -> EncodedAudioChunk {
+    pub fn new(init: &Any) -> EncodedAudioChunk {
         Self {
             inner: emlite::Val::global("EncodedAudioChunk")
                 .new(&[init.into()])
@@ -83,7 +83,7 @@ impl EncodedAudioChunk {
     }
 }
 impl EncodedAudioChunk {
-    pub fn copy_to(&self, destination: Any) -> Undefined {
+    pub fn copy_to(&self, destination: &Any) -> Undefined {
         self.inner
             .call("copyTo", &[destination.into()])
             .as_::<Undefined>()

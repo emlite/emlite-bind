@@ -67,7 +67,7 @@ impl HTMLTableElement {
         self.inner.get("caption").as_::<HTMLTableCaptionElement>()
     }
 
-    pub fn set_caption(&mut self, value: HTMLTableCaptionElement) {
+    pub fn set_caption(&mut self, value: &HTMLTableCaptionElement) {
         self.inner.set("caption", value);
     }
 }
@@ -88,7 +88,7 @@ impl HTMLTableElement {
         self.inner.get("tHead").as_::<HTMLTableSectionElement>()
     }
 
-    pub fn set_t_head(&mut self, value: HTMLTableSectionElement) {
+    pub fn set_t_head(&mut self, value: &HTMLTableSectionElement) {
         self.inner.set("tHead", value);
     }
 }
@@ -109,7 +109,7 @@ impl HTMLTableElement {
         self.inner.get("tFoot").as_::<HTMLTableSectionElement>()
     }
 
-    pub fn set_t_foot(&mut self, value: HTMLTableSectionElement) {
+    pub fn set_t_foot(&mut self, value: &HTMLTableSectionElement) {
         self.inner.set("tFoot", value);
     }
 }
@@ -163,83 +163,83 @@ impl HTMLTableElement {
     }
 }
 impl HTMLTableElement {
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> String {
+        self.inner.get("align").as_::<String>()
     }
 
-    pub fn set_align(&mut self, value: DOMString) {
+    pub fn set_align(&mut self, value: &str) {
         self.inner.set("align", value);
     }
 }
 impl HTMLTableElement {
-    pub fn border(&self) -> DOMString {
-        self.inner.get("border").as_::<DOMString>()
+    pub fn border(&self) -> String {
+        self.inner.get("border").as_::<String>()
     }
 
-    pub fn set_border(&mut self, value: DOMString) {
+    pub fn set_border(&mut self, value: &str) {
         self.inner.set("border", value);
     }
 }
 impl HTMLTableElement {
-    pub fn frame(&self) -> DOMString {
-        self.inner.get("frame").as_::<DOMString>()
+    pub fn frame(&self) -> String {
+        self.inner.get("frame").as_::<String>()
     }
 
-    pub fn set_frame(&mut self, value: DOMString) {
+    pub fn set_frame(&mut self, value: &str) {
         self.inner.set("frame", value);
     }
 }
 impl HTMLTableElement {
-    pub fn rules(&self) -> DOMString {
-        self.inner.get("rules").as_::<DOMString>()
+    pub fn rules(&self) -> String {
+        self.inner.get("rules").as_::<String>()
     }
 
-    pub fn set_rules(&mut self, value: DOMString) {
+    pub fn set_rules(&mut self, value: &str) {
         self.inner.set("rules", value);
     }
 }
 impl HTMLTableElement {
-    pub fn summary(&self) -> DOMString {
-        self.inner.get("summary").as_::<DOMString>()
+    pub fn summary(&self) -> String {
+        self.inner.get("summary").as_::<String>()
     }
 
-    pub fn set_summary(&mut self, value: DOMString) {
+    pub fn set_summary(&mut self, value: &str) {
         self.inner.set("summary", value);
     }
 }
 impl HTMLTableElement {
-    pub fn width(&self) -> DOMString {
-        self.inner.get("width").as_::<DOMString>()
+    pub fn width(&self) -> String {
+        self.inner.get("width").as_::<String>()
     }
 
-    pub fn set_width(&mut self, value: DOMString) {
+    pub fn set_width(&mut self, value: &str) {
         self.inner.set("width", value);
     }
 }
 impl HTMLTableElement {
-    pub fn bg_color(&self) -> DOMString {
-        self.inner.get("bgColor").as_::<DOMString>()
+    pub fn bg_color(&self) -> String {
+        self.inner.get("bgColor").as_::<String>()
     }
 
-    pub fn set_bg_color(&mut self, value: DOMString) {
+    pub fn set_bg_color(&mut self, value: &str) {
         self.inner.set("bgColor", value);
     }
 }
 impl HTMLTableElement {
-    pub fn cell_padding(&self) -> DOMString {
-        self.inner.get("cellPadding").as_::<DOMString>()
+    pub fn cell_padding(&self) -> String {
+        self.inner.get("cellPadding").as_::<String>()
     }
 
-    pub fn set_cell_padding(&mut self, value: DOMString) {
+    pub fn set_cell_padding(&mut self, value: &str) {
         self.inner.set("cellPadding", value);
     }
 }
 impl HTMLTableElement {
-    pub fn cell_spacing(&self) -> DOMString {
-        self.inner.get("cellSpacing").as_::<DOMString>()
+    pub fn cell_spacing(&self) -> String {
+        self.inner.get("cellSpacing").as_::<String>()
     }
 
-    pub fn set_cell_spacing(&mut self, value: DOMString) {
+    pub fn set_cell_spacing(&mut self, value: &str) {
         self.inner.set("cellSpacing", value);
     }
 }

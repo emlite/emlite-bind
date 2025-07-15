@@ -51,11 +51,11 @@ impl From<&SharedStorageUrlWithMetadata> for emlite::Val {
 }
 
 impl SharedStorageUrlWithMetadata {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 
-    pub fn set_url(&mut self, value: USVString) {
+    pub fn set_url(&mut self, value: &str) {
         self.inner.set("url", value);
     }
 }
@@ -64,7 +64,7 @@ impl SharedStorageUrlWithMetadata {
         self.inner.get("reportingMetadata").as_::<Object>()
     }
 
-    pub fn set_reporting_metadata(&mut self, value: Object) {
+    pub fn set_reporting_metadata(&mut self, value: &Object) {
         self.inner.set("reportingMetadata", value);
     }
 }
@@ -123,7 +123,7 @@ impl SharedStorageRunOperationMethodOptions {
         self.inner.get("data").as_::<Object>()
     }
 
-    pub fn set_data(&mut self, value: Object) {
+    pub fn set_data(&mut self, value: &Object) {
         self.inner.set("data", value);
     }
 }
@@ -150,16 +150,16 @@ impl SharedStorageRunOperationMethodOptions {
         self.inner.get("privateAggregationConfig").as_::<Any>()
     }
 
-    pub fn set_private_aggregation_config(&mut self, value: Any) {
+    pub fn set_private_aggregation_config(&mut self, value: &Any) {
         self.inner.set("privateAggregationConfig", value);
     }
 }
 impl SharedStorageRunOperationMethodOptions {
-    pub fn saved_query(&self) -> DOMString {
-        self.inner.get("savedQuery").as_::<DOMString>()
+    pub fn saved_query(&self) -> String {
+        self.inner.get("savedQuery").as_::<String>()
     }
 
-    pub fn set_saved_query(&mut self, value: DOMString) {
+    pub fn set_saved_query(&mut self, value: &str) {
         self.inner.set("savedQuery", value);
     }
 }
@@ -219,8 +219,8 @@ jsbind::utils::impl_dyn_cast!(SharedStorageWorklet);
 impl SharedStorageWorklet {
     pub fn select_url0(
         &self,
-        name: DOMString,
-        urls: Sequence<SharedStorageUrlWithMetadata>,
+        name: &str,
+        urls: &Sequence<SharedStorageUrlWithMetadata>,
     ) -> Promise {
         self.inner
             .call("selectURL", &[name.into(), urls.into()])
@@ -229,9 +229,9 @@ impl SharedStorageWorklet {
 
     pub fn select_url1(
         &self,
-        name: DOMString,
-        urls: Sequence<SharedStorageUrlWithMetadata>,
-        options: SharedStorageRunOperationMethodOptions,
+        name: &str,
+        urls: &Sequence<SharedStorageUrlWithMetadata>,
+        options: &SharedStorageRunOperationMethodOptions,
     ) -> Promise {
         self.inner
             .call("selectURL", &[name.into(), urls.into(), options.into()])
@@ -239,15 +239,11 @@ impl SharedStorageWorklet {
     }
 }
 impl SharedStorageWorklet {
-    pub fn run0(&self, name: DOMString) -> Promise {
+    pub fn run0(&self, name: &str) -> Promise {
         self.inner.call("run", &[name.into()]).as_::<Promise>()
     }
 
-    pub fn run1(
-        &self,
-        name: DOMString,
-        options: SharedStorageRunOperationMethodOptions,
-    ) -> Promise {
+    pub fn run1(&self, name: &str, options: &SharedStorageRunOperationMethodOptions) -> Promise {
         self.inner
             .call("run", &[name.into(), options.into()])
             .as_::<Promise>()

@@ -90,21 +90,21 @@ impl IDBCursor {
         self.inner.call("continue", &[]).as_::<Undefined>()
     }
 
-    pub fn continue_1(&self, key: Any) -> Undefined {
+    pub fn continue_1(&self, key: &Any) -> Undefined {
         self.inner
             .call("continue", &[key.into()])
             .as_::<Undefined>()
     }
 }
 impl IDBCursor {
-    pub fn continue_primary_key(&self, key: Any, primary_key: Any) -> Undefined {
+    pub fn continue_primary_key(&self, key: &Any, primary_key: &Any) -> Undefined {
         self.inner
             .call("continuePrimaryKey", &[key.into(), primary_key.into()])
             .as_::<Undefined>()
     }
 }
 impl IDBCursor {
-    pub fn update(&self, value: Any) -> IDBRequest {
+    pub fn update(&self, value: &Any) -> IDBRequest {
         self.inner
             .call("update", &[value.into()])
             .as_::<IDBRequest>()

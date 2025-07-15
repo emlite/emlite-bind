@@ -151,7 +151,7 @@ impl SVGGraphicsElement {
         self.inner.call("getBBox", &[]).as_::<DOMRect>()
     }
 
-    pub fn get_b_box1(&self, options: SVGBoundingBoxOptions) -> DOMRect {
+    pub fn get_b_box1(&self, options: &SVGBoundingBoxOptions) -> DOMRect {
         self.inner
             .call("getBBox", &[options.into()])
             .as_::<DOMRect>()

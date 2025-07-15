@@ -54,9 +54,9 @@ impl From<&WEBGL_compressed_texture_astc> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(WEBGL_compressed_texture_astc);
 
 impl WEBGL_compressed_texture_astc {
-    pub fn get_supported_profiles(&self) -> Sequence<DOMString> {
+    pub fn get_supported_profiles(&self) -> Sequence<String> {
         self.inner
             .call("getSupportedProfiles", &[])
-            .as_::<Sequence<DOMString>>()
+            .as_::<Sequence<String>>()
     }
 }

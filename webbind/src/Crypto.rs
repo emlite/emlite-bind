@@ -59,14 +59,14 @@ impl Crypto {
     }
 }
 impl Crypto {
-    pub fn get_random_values(&self, array: Any) -> Any {
+    pub fn get_random_values(&self, array: &Any) -> Any {
         self.inner
             .call("getRandomValues", &[array.into()])
             .as_::<Any>()
     }
 }
 impl Crypto {
-    pub fn random_uuid(&self) -> DOMString {
-        self.inner.call("randomUUID", &[]).as_::<DOMString>()
+    pub fn random_uuid(&self) -> String {
+        self.inner.call("randomUUID", &[]).as_::<String>()
     }
 }

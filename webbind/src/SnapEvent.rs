@@ -54,7 +54,7 @@ impl From<&SnapEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SnapEvent);
 
 impl SnapEvent {
-    pub fn new0(type_: DOMString) -> SnapEvent {
+    pub fn new0(type_: &str) -> SnapEvent {
         Self {
             inner: emlite::Val::global("SnapEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl SnapEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> SnapEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> SnapEvent {
         Self {
             inner: emlite::Val::global("SnapEvent")
                 .new(&[type_.into(), event_init_dict.into()])

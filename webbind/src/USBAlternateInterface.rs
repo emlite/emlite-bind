@@ -54,7 +54,7 @@ impl From<&USBAlternateInterface> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(USBAlternateInterface);
 
 impl USBAlternateInterface {
-    pub fn new(device_interface: USBInterface, alternate_setting: u8) -> USBAlternateInterface {
+    pub fn new(device_interface: &USBInterface, alternate_setting: u8) -> USBAlternateInterface {
         Self {
             inner: emlite::Val::global("USBAlternateInterface")
                 .new(&[device_interface.into(), alternate_setting.into()])
@@ -83,8 +83,8 @@ impl USBAlternateInterface {
     }
 }
 impl USBAlternateInterface {
-    pub fn interface_name(&self) -> DOMString {
-        self.inner.get("interfaceName").as_::<DOMString>()
+    pub fn interface_name(&self) -> String {
+        self.inner.get("interfaceName").as_::<String>()
     }
 }
 impl USBAlternateInterface {

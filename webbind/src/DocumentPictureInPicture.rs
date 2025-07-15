@@ -144,7 +144,7 @@ impl DocumentPictureInPicture {
         self.inner.call("requestWindow", &[]).as_::<Promise>()
     }
 
-    pub fn request_window1(&self, options: DocumentPictureInPictureOptions) -> Promise {
+    pub fn request_window1(&self, options: &DocumentPictureInPictureOptions) -> Promise {
         self.inner
             .call("requestWindow", &[options.into()])
             .as_::<Promise>()
@@ -160,7 +160,7 @@ impl DocumentPictureInPicture {
         self.inner.get("onenter").as_::<Any>()
     }
 
-    pub fn set_onenter(&mut self, value: Any) {
+    pub fn set_onenter(&mut self, value: &Any) {
         self.inner.set("onenter", value);
     }
 }

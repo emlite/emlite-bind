@@ -54,7 +54,7 @@ impl From<&XRHitTestResult> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(XRHitTestResult);
 
 impl XRHitTestResult {
-    pub fn get_pose(&self, base_space: XRSpace) -> XRPose {
+    pub fn get_pose(&self, base_space: &XRSpace) -> XRPose {
         self.inner
             .call("getPose", &[base_space.into()])
             .as_::<XRPose>()

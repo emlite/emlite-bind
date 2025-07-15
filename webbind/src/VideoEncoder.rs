@@ -51,11 +51,11 @@ impl From<&VideoEncoderConfig> for emlite::Val {
 }
 
 impl VideoEncoderConfig {
-    pub fn codec(&self) -> DOMString {
-        self.inner.get("codec").as_::<DOMString>()
+    pub fn codec(&self) -> String {
+        self.inner.get("codec").as_::<String>()
     }
 
-    pub fn set_codec(&mut self, value: DOMString) {
+    pub fn set_codec(&mut self, value: &str) {
         self.inner.set("codec", value);
     }
 }
@@ -120,7 +120,7 @@ impl VideoEncoderConfig {
             .as_::<HardwareAcceleration>()
     }
 
-    pub fn set_hardware_acceleration(&mut self, value: HardwareAcceleration) {
+    pub fn set_hardware_acceleration(&mut self, value: &HardwareAcceleration) {
         self.inner.set("hardwareAcceleration", value);
     }
 }
@@ -129,16 +129,16 @@ impl VideoEncoderConfig {
         self.inner.get("alpha").as_::<AlphaOption>()
     }
 
-    pub fn set_alpha(&mut self, value: AlphaOption) {
+    pub fn set_alpha(&mut self, value: &AlphaOption) {
         self.inner.set("alpha", value);
     }
 }
 impl VideoEncoderConfig {
-    pub fn scalability_mode(&self) -> DOMString {
-        self.inner.get("scalabilityMode").as_::<DOMString>()
+    pub fn scalability_mode(&self) -> String {
+        self.inner.get("scalabilityMode").as_::<String>()
     }
 
-    pub fn set_scalability_mode(&mut self, value: DOMString) {
+    pub fn set_scalability_mode(&mut self, value: &str) {
         self.inner.set("scalabilityMode", value);
     }
 }
@@ -149,7 +149,7 @@ impl VideoEncoderConfig {
             .as_::<VideoEncoderBitrateMode>()
     }
 
-    pub fn set_bitrate_mode(&mut self, value: VideoEncoderBitrateMode) {
+    pub fn set_bitrate_mode(&mut self, value: &VideoEncoderBitrateMode) {
         self.inner.set("bitrateMode", value);
     }
 }
@@ -158,16 +158,16 @@ impl VideoEncoderConfig {
         self.inner.get("latencyMode").as_::<LatencyMode>()
     }
 
-    pub fn set_latency_mode(&mut self, value: LatencyMode) {
+    pub fn set_latency_mode(&mut self, value: &LatencyMode) {
         self.inner.set("latencyMode", value);
     }
 }
 impl VideoEncoderConfig {
-    pub fn content_hint(&self) -> DOMString {
-        self.inner.get("contentHint").as_::<DOMString>()
+    pub fn content_hint(&self) -> String {
+        self.inner.get("contentHint").as_::<String>()
     }
 
-    pub fn set_content_hint(&mut self, value: DOMString) {
+    pub fn set_content_hint(&mut self, value: &str) {
         self.inner.set("contentHint", value);
     }
 }
@@ -294,7 +294,7 @@ impl VideoEncoderSupport {
         self.inner.get("config").as_::<VideoEncoderConfig>()
     }
 
-    pub fn set_config(&mut self, value: VideoEncoderConfig) {
+    pub fn set_config(&mut self, value: &VideoEncoderConfig) {
         self.inner.set("config", value);
     }
 }
@@ -352,7 +352,7 @@ impl From<&VideoEncoder> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(VideoEncoder);
 
 impl VideoEncoder {
-    pub fn new(init: Any) -> VideoEncoder {
+    pub fn new(init: &Any) -> VideoEncoder {
         Self {
             inner: emlite::Val::global("VideoEncoder")
                 .new(&[init.into()])
@@ -375,25 +375,25 @@ impl VideoEncoder {
         self.inner.get("ondequeue").as_::<Any>()
     }
 
-    pub fn set_ondequeue(&mut self, value: Any) {
+    pub fn set_ondequeue(&mut self, value: &Any) {
         self.inner.set("ondequeue", value);
     }
 }
 impl VideoEncoder {
-    pub fn configure(&self, config: VideoEncoderConfig) -> Undefined {
+    pub fn configure(&self, config: &VideoEncoderConfig) -> Undefined {
         self.inner
             .call("configure", &[config.into()])
             .as_::<Undefined>()
     }
 }
 impl VideoEncoder {
-    pub fn encode0(&self, frame: VideoFrame) -> Undefined {
+    pub fn encode0(&self, frame: &VideoFrame) -> Undefined {
         self.inner
             .call("encode", &[frame.into()])
             .as_::<Undefined>()
     }
 
-    pub fn encode1(&self, frame: VideoFrame, options: VideoEncoderEncodeOptions) -> Undefined {
+    pub fn encode1(&self, frame: &VideoFrame, options: &VideoEncoderEncodeOptions) -> Undefined {
         self.inner
             .call("encode", &[frame.into(), options.into()])
             .as_::<Undefined>()
@@ -415,7 +415,7 @@ impl VideoEncoder {
     }
 }
 impl VideoEncoder {
-    pub fn is_config_supported(config: VideoEncoderConfig) -> Promise {
+    pub fn is_config_supported(config: &VideoEncoderConfig) -> Promise {
         emlite::Val::global("VideoEncoder")
             .call("isConfigSupported", &[config.into()])
             .as_::<Promise>()

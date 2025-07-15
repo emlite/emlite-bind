@@ -51,11 +51,11 @@ impl From<&ColorSelectionResult> for emlite::Val {
 }
 
 impl ColorSelectionResult {
-    pub fn s_rgb_hex(&self) -> DOMString {
-        self.inner.get("sRGBHex").as_::<DOMString>()
+    pub fn s_rgb_hex(&self) -> String {
+        self.inner.get("sRGBHex").as_::<String>()
     }
 
-    pub fn set_s_rgb_hex(&mut self, value: DOMString) {
+    pub fn set_s_rgb_hex(&mut self, value: &str) {
         self.inner.set("sRGBHex", value);
     }
 }
@@ -114,7 +114,7 @@ impl ColorSelectionOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -185,7 +185,7 @@ impl EyeDropper {
         self.inner.call("open", &[]).as_::<Promise>()
     }
 
-    pub fn open1(&self, options: ColorSelectionOptions) -> Promise {
+    pub fn open1(&self, options: &ColorSelectionOptions) -> Promise {
         self.inner.call("open", &[options.into()]).as_::<Promise>()
     }
 }

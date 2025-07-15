@@ -64,7 +64,7 @@ impl MemoryMeasurement {
         self.inner.get("breakdown").as_::<Sequence<Any>>()
     }
 
-    pub fn set_breakdown(&mut self, value: Sequence<Any>) {
+    pub fn set_breakdown(&mut self, value: &Sequence<Any>) {
         self.inner.set("breakdown", value);
     }
 }
@@ -123,7 +123,7 @@ impl PerformanceMarkOptions {
         self.inner.get("detail").as_::<Any>()
     }
 
-    pub fn set_detail(&mut self, value: Any) {
+    pub fn set_detail(&mut self, value: &Any) {
         self.inner.set("detail", value);
     }
 }
@@ -132,7 +132,7 @@ impl PerformanceMarkOptions {
         self.inner.get("startTime").as_::<Any>()
     }
 
-    pub fn set_start_time(&mut self, value: Any) {
+    pub fn set_start_time(&mut self, value: &Any) {
         self.inner.set("startTime", value);
     }
 }
@@ -237,20 +237,20 @@ impl Performance {
     }
 }
 impl Performance {
-    pub fn get_entries_by_type(&self, type_: DOMString) -> Any {
+    pub fn get_entries_by_type(&self, type_: &str) -> Any {
         self.inner
             .call("getEntriesByType", &[type_.into()])
             .as_::<Any>()
     }
 }
 impl Performance {
-    pub fn get_entries_by_name0(&self, name: DOMString) -> Any {
+    pub fn get_entries_by_name0(&self, name: &str) -> Any {
         self.inner
             .call("getEntriesByName", &[name.into()])
             .as_::<Any>()
     }
 
-    pub fn get_entries_by_name1(&self, name: DOMString, type_: DOMString) -> Any {
+    pub fn get_entries_by_name1(&self, name: &str, type_: &str) -> Any {
         self.inner
             .call("getEntriesByName", &[name.into(), type_.into()])
             .as_::<Any>()
@@ -275,22 +275,18 @@ impl Performance {
         self.inner.get("onresourcetimingbufferfull").as_::<Any>()
     }
 
-    pub fn set_onresourcetimingbufferfull(&mut self, value: Any) {
+    pub fn set_onresourcetimingbufferfull(&mut self, value: &Any) {
         self.inner.set("onresourcetimingbufferfull", value);
     }
 }
 impl Performance {
-    pub fn mark0(&self, mark_name: DOMString) -> PerformanceMark {
+    pub fn mark0(&self, mark_name: &str) -> PerformanceMark {
         self.inner
             .call("mark", &[mark_name.into()])
             .as_::<PerformanceMark>()
     }
 
-    pub fn mark1(
-        &self,
-        mark_name: DOMString,
-        mark_options: PerformanceMarkOptions,
-    ) -> PerformanceMark {
+    pub fn mark1(&self, mark_name: &str, mark_options: &PerformanceMarkOptions) -> PerformanceMark {
         self.inner
             .call("mark", &[mark_name.into(), mark_options.into()])
             .as_::<PerformanceMark>()
@@ -301,14 +297,14 @@ impl Performance {
         self.inner.call("clearMarks", &[]).as_::<Undefined>()
     }
 
-    pub fn clear_marks1(&self, mark_name: DOMString) -> Undefined {
+    pub fn clear_marks1(&self, mark_name: &str) -> Undefined {
         self.inner
             .call("clearMarks", &[mark_name.into()])
             .as_::<Undefined>()
     }
 }
 impl Performance {
-    pub fn measure0(&self, measure_name: DOMString) -> PerformanceMeasure {
+    pub fn measure0(&self, measure_name: &str) -> PerformanceMeasure {
         self.inner
             .call("measure", &[measure_name.into()])
             .as_::<PerformanceMeasure>()
@@ -316,8 +312,8 @@ impl Performance {
 
     pub fn measure1(
         &self,
-        measure_name: DOMString,
-        start_or_measure_options: Any,
+        measure_name: &str,
+        start_or_measure_options: &Any,
     ) -> PerformanceMeasure {
         self.inner
             .call(
@@ -329,9 +325,9 @@ impl Performance {
 
     pub fn measure2(
         &self,
-        measure_name: DOMString,
-        start_or_measure_options: Any,
-        end_mark: DOMString,
+        measure_name: &str,
+        start_or_measure_options: &Any,
+        end_mark: &str,
     ) -> PerformanceMeasure {
         self.inner
             .call(
@@ -350,7 +346,7 @@ impl Performance {
         self.inner.call("clearMeasures", &[]).as_::<Undefined>()
     }
 
-    pub fn clear_measures1(&self, measure_name: DOMString) -> Undefined {
+    pub fn clear_measures1(&self, measure_name: &str) -> Undefined {
         self.inner
             .call("clearMeasures", &[measure_name.into()])
             .as_::<Undefined>()

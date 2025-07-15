@@ -59,7 +59,7 @@ impl DataTransferItemList {
     }
 }
 impl DataTransferItemList {
-    pub fn add(&self, data: File) -> DataTransferItem {
+    pub fn add(&self, data: &File) -> DataTransferItem {
         self.inner
             .call("add", &[data.into()])
             .as_::<DataTransferItem>()

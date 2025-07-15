@@ -55,7 +55,7 @@ impl EffectTiming {
         self.inner.get("fill").as_::<FillMode>()
     }
 
-    pub fn set_fill(&mut self, value: FillMode) {
+    pub fn set_fill(&mut self, value: &FillMode) {
         self.inner.set("fill", value);
     }
 }
@@ -82,16 +82,16 @@ impl EffectTiming {
         self.inner.get("direction").as_::<PlaybackDirection>()
     }
 
-    pub fn set_direction(&mut self, value: PlaybackDirection) {
+    pub fn set_direction(&mut self, value: &PlaybackDirection) {
         self.inner.set("direction", value);
     }
 }
 impl EffectTiming {
-    pub fn easing(&self) -> DOMString {
-        self.inner.get("easing").as_::<DOMString>()
+    pub fn easing(&self) -> String {
+        self.inner.get("easing").as_::<String>()
     }
 
-    pub fn set_easing(&mut self, value: DOMString) {
+    pub fn set_easing(&mut self, value: &str) {
         self.inner.set("easing", value);
     }
 }

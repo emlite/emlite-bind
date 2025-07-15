@@ -54,7 +54,7 @@ impl From<&MessageEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MessageEvent);
 
 impl MessageEvent {
-    pub fn new0(type_: DOMString) -> MessageEvent {
+    pub fn new0(type_: &str) -> MessageEvent {
         Self {
             inner: emlite::Val::global("MessageEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl MessageEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> MessageEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> MessageEvent {
         Self {
             inner: emlite::Val::global("MessageEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -76,13 +76,13 @@ impl MessageEvent {
     }
 }
 impl MessageEvent {
-    pub fn origin(&self) -> USVString {
-        self.inner.get("origin").as_::<USVString>()
+    pub fn origin(&self) -> String {
+        self.inner.get("origin").as_::<String>()
     }
 }
 impl MessageEvent {
-    pub fn last_event_id(&self) -> DOMString {
-        self.inner.get("lastEventId").as_::<DOMString>()
+    pub fn last_event_id(&self) -> String {
+        self.inner.get("lastEventId").as_::<String>()
     }
 }
 impl MessageEvent {
@@ -96,24 +96,19 @@ impl MessageEvent {
     }
 }
 impl MessageEvent {
-    pub fn init_message_event0(&self, type_: DOMString) -> Undefined {
+    pub fn init_message_event0(&self, type_: &str) -> Undefined {
         self.inner
             .call("initMessageEvent", &[type_.into()])
             .as_::<Undefined>()
     }
 
-    pub fn init_message_event1(&self, type_: DOMString, bubbles: bool) -> Undefined {
+    pub fn init_message_event1(&self, type_: &str, bubbles: bool) -> Undefined {
         self.inner
             .call("initMessageEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
     }
 
-    pub fn init_message_event2(
-        &self,
-        type_: DOMString,
-        bubbles: bool,
-        cancelable: bool,
-    ) -> Undefined {
+    pub fn init_message_event2(&self, type_: &str, bubbles: bool, cancelable: bool) -> Undefined {
         self.inner
             .call(
                 "initMessageEvent",
@@ -124,10 +119,10 @@ impl MessageEvent {
 
     pub fn init_message_event3(
         &self,
-        type_: DOMString,
+        type_: &str,
         bubbles: bool,
         cancelable: bool,
-        data: Any,
+        data: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -139,11 +134,11 @@ impl MessageEvent {
 
     pub fn init_message_event4(
         &self,
-        type_: DOMString,
+        type_: &str,
         bubbles: bool,
         cancelable: bool,
-        data: Any,
-        origin: USVString,
+        data: &Any,
+        origin: &str,
     ) -> Undefined {
         self.inner
             .call(
@@ -161,12 +156,12 @@ impl MessageEvent {
 
     pub fn init_message_event5(
         &self,
-        type_: DOMString,
+        type_: &str,
         bubbles: bool,
         cancelable: bool,
-        data: Any,
-        origin: USVString,
-        last_event_id: DOMString,
+        data: &Any,
+        origin: &str,
+        last_event_id: &str,
     ) -> Undefined {
         self.inner
             .call(
@@ -185,13 +180,13 @@ impl MessageEvent {
 
     pub fn init_message_event6(
         &self,
-        type_: DOMString,
+        type_: &str,
         bubbles: bool,
         cancelable: bool,
-        data: Any,
-        origin: USVString,
-        last_event_id: DOMString,
-        source: Any,
+        data: &Any,
+        origin: &str,
+        last_event_id: &str,
+        source: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -211,14 +206,14 @@ impl MessageEvent {
 
     pub fn init_message_event7(
         &self,
-        type_: DOMString,
+        type_: &str,
         bubbles: bool,
         cancelable: bool,
-        data: Any,
-        origin: USVString,
-        last_event_id: DOMString,
-        source: Any,
-        ports: Sequence<Any>,
+        data: &Any,
+        origin: &str,
+        last_event_id: &str,
+        source: &Any,
+        ports: &Sequence<Any>,
     ) -> Undefined {
         self.inner
             .call(

@@ -58,7 +58,7 @@ impl WebTransportDatagramsWritable {
         self.inner.get("sendGroup").as_::<WebTransportSendGroup>()
     }
 
-    pub fn set_send_group(&mut self, value: WebTransportSendGroup) {
+    pub fn set_send_group(&mut self, value: &WebTransportSendGroup) {
         self.inner.set("sendGroup", value);
     }
 }

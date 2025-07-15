@@ -56,12 +56,12 @@ jsbind::utils::impl_dyn_cast!(OVR_multiview2);
 impl OVR_multiview2 {
     pub fn framebuffer_texture_multiview_ovr(
         &self,
-        target: Any,
-        attachment: Any,
-        texture: WebGLTexture,
-        level: Any,
-        base_view_index: Any,
-        num_views: Any,
+        target: &Any,
+        attachment: &Any,
+        texture: &WebGLTexture,
+        level: &Any,
+        base_view_index: &Any,
+        num_views: &Any,
     ) -> Undefined {
         self.inner
             .call(

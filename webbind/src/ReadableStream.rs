@@ -55,7 +55,7 @@ impl ReadableStreamGetReaderOptions {
         self.inner.get("mode").as_::<ReadableStreamReaderMode>()
     }
 
-    pub fn set_mode(&mut self, value: ReadableStreamReaderMode) {
+    pub fn set_mode(&mut self, value: &ReadableStreamReaderMode) {
         self.inner.set("mode", value);
     }
 }
@@ -114,7 +114,7 @@ impl ReadableWritablePair {
         self.inner.get("readable").as_::<ReadableStream>()
     }
 
-    pub fn set_readable(&mut self, value: ReadableStream) {
+    pub fn set_readable(&mut self, value: &ReadableStream) {
         self.inner.set("readable", value);
     }
 }
@@ -123,7 +123,7 @@ impl ReadableWritablePair {
         self.inner.get("writable").as_::<WritableStream>()
     }
 
-    pub fn set_writable(&mut self, value: WritableStream) {
+    pub fn set_writable(&mut self, value: &WritableStream) {
         self.inner.set("writable", value);
     }
 }
@@ -209,7 +209,7 @@ impl StreamPipeOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -275,7 +275,7 @@ impl ReadableStream {
         }
     }
 
-    pub fn new1(underlying_source: Object) -> ReadableStream {
+    pub fn new1(underlying_source: &Object) -> ReadableStream {
         Self {
             inner: emlite::Val::global("ReadableStream")
                 .new(&[underlying_source.into()])
@@ -283,7 +283,7 @@ impl ReadableStream {
         }
     }
 
-    pub fn new2(underlying_source: Object, strategy: Any) -> ReadableStream {
+    pub fn new2(underlying_source: &Object, strategy: &Any) -> ReadableStream {
         Self {
             inner: emlite::Val::global("ReadableStream")
                 .new(&[underlying_source.into(), strategy.into()])
@@ -292,7 +292,7 @@ impl ReadableStream {
     }
 }
 impl ReadableStream {
-    pub fn from(async_iterable: Any) -> ReadableStream {
+    pub fn from(async_iterable: &Any) -> ReadableStream {
         emlite::Val::global("ReadableStream")
             .call("from", &[async_iterable.into()])
             .as_::<ReadableStream>()
@@ -308,7 +308,7 @@ impl ReadableStream {
         self.inner.call("cancel", &[]).as_::<Promise>()
     }
 
-    pub fn cancel1(&self, reason: Any) -> Promise {
+    pub fn cancel1(&self, reason: &Any) -> Promise {
         self.inner.call("cancel", &[reason.into()]).as_::<Promise>()
     }
 }
@@ -317,12 +317,12 @@ impl ReadableStream {
         self.inner.call("getReader", &[]).as_::<Any>()
     }
 
-    pub fn get_reader1(&self, options: ReadableStreamGetReaderOptions) -> Any {
+    pub fn get_reader1(&self, options: &ReadableStreamGetReaderOptions) -> Any {
         self.inner.call("getReader", &[options.into()]).as_::<Any>()
     }
 }
 impl ReadableStream {
-    pub fn pipe_through0(&self, transform: ReadableWritablePair) -> ReadableStream {
+    pub fn pipe_through0(&self, transform: &ReadableWritablePair) -> ReadableStream {
         self.inner
             .call("pipeThrough", &[transform.into()])
             .as_::<ReadableStream>()
@@ -330,8 +330,8 @@ impl ReadableStream {
 
     pub fn pipe_through1(
         &self,
-        transform: ReadableWritablePair,
-        options: StreamPipeOptions,
+        transform: &ReadableWritablePair,
+        options: &StreamPipeOptions,
     ) -> ReadableStream {
         self.inner
             .call("pipeThrough", &[transform.into(), options.into()])
@@ -339,13 +339,13 @@ impl ReadableStream {
     }
 }
 impl ReadableStream {
-    pub fn pipe_to0(&self, destination: WritableStream) -> Promise {
+    pub fn pipe_to0(&self, destination: &WritableStream) -> Promise {
         self.inner
             .call("pipeTo", &[destination.into()])
             .as_::<Promise>()
     }
 
-    pub fn pipe_to1(&self, destination: WritableStream, options: StreamPipeOptions) -> Promise {
+    pub fn pipe_to1(&self, destination: &WritableStream, options: &StreamPipeOptions) -> Promise {
         self.inner
             .call("pipeTo", &[destination.into(), options.into()])
             .as_::<Promise>()

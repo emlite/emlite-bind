@@ -54,7 +54,7 @@ impl From<&Touch> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Touch);
 
 impl Touch {
-    pub fn new(touch_init_dict: Any) -> Touch {
+    pub fn new(touch_init_dict: &Any) -> Touch {
         Self {
             inner: emlite::Val::global("Touch")
                 .new(&[touch_init_dict.into()])

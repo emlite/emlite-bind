@@ -73,7 +73,7 @@ impl HandwritingPoint {
         self.inner.get("t").as_::<Any>()
     }
 
-    pub fn set_t(&mut self, value: Any) {
+    pub fn set_t(&mut self, value: &Any) {
         self.inner.set("t", value);
     }
 }
@@ -140,7 +140,7 @@ impl HandwritingStroke {
     }
 }
 impl HandwritingStroke {
-    pub fn add_point(&self, point: HandwritingPoint) -> Undefined {
+    pub fn add_point(&self, point: &HandwritingPoint) -> Undefined {
         self.inner
             .call("addPoint", &[point.into()])
             .as_::<Undefined>()

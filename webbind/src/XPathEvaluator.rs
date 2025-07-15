@@ -63,27 +63,27 @@ impl XPathEvaluator {
     }
 }
 impl XPathEvaluator {
-    pub fn create_expression0(&self, expression: DOMString) -> XPathExpression {
+    pub fn create_expression0(&self, expression: &str) -> XPathExpression {
         self.inner
             .call("createExpression", &[expression.into()])
             .as_::<XPathExpression>()
     }
 
-    pub fn create_expression1(&self, expression: DOMString, resolver: Function) -> XPathExpression {
+    pub fn create_expression1(&self, expression: &str, resolver: &Function) -> XPathExpression {
         self.inner
             .call("createExpression", &[expression.into(), resolver.into()])
             .as_::<XPathExpression>()
     }
 }
 impl XPathEvaluator {
-    pub fn create_ns_resolver(&self, node_resolver: Node) -> Node {
+    pub fn create_ns_resolver(&self, node_resolver: &Node) -> Node {
         self.inner
             .call("createNSResolver", &[node_resolver.into()])
             .as_::<Node>()
     }
 }
 impl XPathEvaluator {
-    pub fn evaluate0(&self, expression: DOMString, context_node: Node) -> XPathResult {
+    pub fn evaluate0(&self, expression: &str, context_node: &Node) -> XPathResult {
         self.inner
             .call("evaluate", &[expression.into(), context_node.into()])
             .as_::<XPathResult>()
@@ -91,9 +91,9 @@ impl XPathEvaluator {
 
     pub fn evaluate1(
         &self,
-        expression: DOMString,
-        context_node: Node,
-        resolver: Function,
+        expression: &str,
+        context_node: &Node,
+        resolver: &Function,
     ) -> XPathResult {
         self.inner
             .call(
@@ -105,9 +105,9 @@ impl XPathEvaluator {
 
     pub fn evaluate2(
         &self,
-        expression: DOMString,
-        context_node: Node,
-        resolver: Function,
+        expression: &str,
+        context_node: &Node,
+        resolver: &Function,
         type_: u16,
     ) -> XPathResult {
         self.inner
@@ -125,11 +125,11 @@ impl XPathEvaluator {
 
     pub fn evaluate3(
         &self,
-        expression: DOMString,
-        context_node: Node,
-        resolver: Function,
+        expression: &str,
+        context_node: &Node,
+        resolver: &Function,
         type_: u16,
-        result: XPathResult,
+        result: &XPathResult,
     ) -> XPathResult {
         self.inner
             .call(

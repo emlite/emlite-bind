@@ -54,7 +54,7 @@ impl From<&USBIsochronousOutTransferPacket> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(USBIsochronousOutTransferPacket);
 
 impl USBIsochronousOutTransferPacket {
-    pub fn new0(status: USBTransferStatus) -> USBIsochronousOutTransferPacket {
+    pub fn new0(status: &USBTransferStatus) -> USBIsochronousOutTransferPacket {
         Self {
             inner: emlite::Val::global("USBIsochronousOutTransferPacket")
                 .new(&[status.into()])
@@ -62,7 +62,7 @@ impl USBIsochronousOutTransferPacket {
         }
     }
 
-    pub fn new1(status: USBTransferStatus, bytes_written: u32) -> USBIsochronousOutTransferPacket {
+    pub fn new1(status: &USBTransferStatus, bytes_written: u32) -> USBIsochronousOutTransferPacket {
         Self {
             inner: emlite::Val::global("USBIsochronousOutTransferPacket")
                 .new(&[status.into(), bytes_written.into()])

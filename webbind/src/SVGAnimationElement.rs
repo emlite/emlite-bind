@@ -63,7 +63,7 @@ impl SVGAnimationElement {
         self.inner.get("onbegin").as_::<Any>()
     }
 
-    pub fn set_onbegin(&mut self, value: Any) {
+    pub fn set_onbegin(&mut self, value: &Any) {
         self.inner.set("onbegin", value);
     }
 }
@@ -72,7 +72,7 @@ impl SVGAnimationElement {
         self.inner.get("onend").as_::<Any>()
     }
 
-    pub fn set_onend(&mut self, value: Any) {
+    pub fn set_onend(&mut self, value: &Any) {
         self.inner.set("onend", value);
     }
 }
@@ -81,7 +81,7 @@ impl SVGAnimationElement {
         self.inner.get("onrepeat").as_::<Any>()
     }
 
-    pub fn set_onrepeat(&mut self, value: Any) {
+    pub fn set_onrepeat(&mut self, value: &Any) {
         self.inner.set("onrepeat", value);
     }
 }

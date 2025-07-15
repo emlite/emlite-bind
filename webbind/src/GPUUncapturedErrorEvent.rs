@@ -54,10 +54,7 @@ impl From<&GPUUncapturedErrorEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(GPUUncapturedErrorEvent);
 
 impl GPUUncapturedErrorEvent {
-    pub fn new(
-        type_: DOMString,
-        gpu_uncaptured_error_event_init_dict: Any,
-    ) -> GPUUncapturedErrorEvent {
+    pub fn new(type_: &str, gpu_uncaptured_error_event_init_dict: &Any) -> GPUUncapturedErrorEvent {
         Self {
             inner: emlite::Val::global("GPUUncapturedErrorEvent")
                 .new(&[type_.into(), gpu_uncaptured_error_event_init_dict.into()])

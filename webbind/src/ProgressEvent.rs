@@ -54,7 +54,7 @@ impl From<&ProgressEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ProgressEvent);
 
 impl ProgressEvent {
-    pub fn new0(type_: DOMString) -> ProgressEvent {
+    pub fn new0(type_: &str) -> ProgressEvent {
         Self {
             inner: emlite::Val::global("ProgressEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl ProgressEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> ProgressEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> ProgressEvent {
         Self {
             inner: emlite::Val::global("ProgressEvent")
                 .new(&[type_.into(), event_init_dict.into()])

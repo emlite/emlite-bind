@@ -54,7 +54,7 @@ impl From<&TrustedScript> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(TrustedScript);
 
 impl TrustedScript {
-    pub fn to_json(&self) -> DOMString {
-        self.inner.call("toJSON", &[]).as_::<DOMString>()
+    pub fn to_json(&self) -> String {
+        self.inner.call("toJSON", &[]).as_::<String>()
     }
 }

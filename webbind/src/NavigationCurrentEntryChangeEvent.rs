@@ -54,7 +54,7 @@ impl From<&NavigationCurrentEntryChangeEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(NavigationCurrentEntryChangeEvent);
 
 impl NavigationCurrentEntryChangeEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> NavigationCurrentEntryChangeEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> NavigationCurrentEntryChangeEvent {
         Self {
             inner: emlite::Val::global("NavigationCurrentEntryChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -131,7 +131,7 @@ impl From<&Geolocation> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Geolocation);
 
 impl Geolocation {
-    pub fn get_current_position0(&self, success_callback: Function) -> Undefined {
+    pub fn get_current_position0(&self, success_callback: &Function) -> Undefined {
         self.inner
             .call("getCurrentPosition", &[success_callback.into()])
             .as_::<Undefined>()
@@ -139,8 +139,8 @@ impl Geolocation {
 
     pub fn get_current_position1(
         &self,
-        success_callback: Function,
-        error_callback: Function,
+        success_callback: &Function,
+        error_callback: &Function,
     ) -> Undefined {
         self.inner
             .call(
@@ -152,9 +152,9 @@ impl Geolocation {
 
     pub fn get_current_position2(
         &self,
-        success_callback: Function,
-        error_callback: Function,
-        options: PositionOptions,
+        success_callback: &Function,
+        error_callback: &Function,
+        options: &PositionOptions,
     ) -> Undefined {
         self.inner
             .call(
@@ -169,13 +169,13 @@ impl Geolocation {
     }
 }
 impl Geolocation {
-    pub fn watch_position0(&self, success_callback: Function) -> i32 {
+    pub fn watch_position0(&self, success_callback: &Function) -> i32 {
         self.inner
             .call("watchPosition", &[success_callback.into()])
             .as_::<i32>()
     }
 
-    pub fn watch_position1(&self, success_callback: Function, error_callback: Function) -> i32 {
+    pub fn watch_position1(&self, success_callback: &Function, error_callback: &Function) -> i32 {
         self.inner
             .call(
                 "watchPosition",
@@ -186,9 +186,9 @@ impl Geolocation {
 
     pub fn watch_position2(
         &self,
-        success_callback: Function,
-        error_callback: Function,
-        options: PositionOptions,
+        success_callback: &Function,
+        error_callback: &Function,
+        options: &PositionOptions,
     ) -> i32 {
         self.inner
             .call(

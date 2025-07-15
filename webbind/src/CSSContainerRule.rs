@@ -54,12 +54,12 @@ impl From<&CSSContainerRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSContainerRule);
 
 impl CSSContainerRule {
-    pub fn container_name(&self) -> CSSOMString {
-        self.inner.get("containerName").as_::<CSSOMString>()
+    pub fn container_name(&self) -> String {
+        self.inner.get("containerName").as_::<String>()
     }
 }
 impl CSSContainerRule {
-    pub fn container_query(&self) -> CSSOMString {
-        self.inner.get("containerQuery").as_::<CSSOMString>()
+    pub fn container_query(&self) -> String {
+        self.inner.get("containerQuery").as_::<String>()
     }
 }

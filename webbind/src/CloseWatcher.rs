@@ -62,7 +62,7 @@ impl CloseWatcher {
         }
     }
 
-    pub fn new1(options: Any) -> CloseWatcher {
+    pub fn new1(options: &Any) -> CloseWatcher {
         Self {
             inner: emlite::Val::global("CloseWatcher")
                 .new(&[options.into()])
@@ -90,7 +90,7 @@ impl CloseWatcher {
         self.inner.get("oncancel").as_::<Any>()
     }
 
-    pub fn set_oncancel(&mut self, value: Any) {
+    pub fn set_oncancel(&mut self, value: &Any) {
         self.inner.set("oncancel", value);
     }
 }
@@ -99,7 +99,7 @@ impl CloseWatcher {
         self.inner.get("onclose").as_::<Any>()
     }
 
-    pub fn set_onclose(&mut self, value: Any) {
+    pub fn set_onclose(&mut self, value: &Any) {
         self.inner.set("onclose", value);
     }
 }

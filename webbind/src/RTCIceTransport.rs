@@ -51,20 +51,20 @@ impl From<&RTCIceParameters> for emlite::Val {
 }
 
 impl RTCIceParameters {
-    pub fn username_fragment(&self) -> DOMString {
-        self.inner.get("usernameFragment").as_::<DOMString>()
+    pub fn username_fragment(&self) -> String {
+        self.inner.get("usernameFragment").as_::<String>()
     }
 
-    pub fn set_username_fragment(&mut self, value: DOMString) {
+    pub fn set_username_fragment(&mut self, value: &str) {
         self.inner.set("usernameFragment", value);
     }
 }
 impl RTCIceParameters {
-    pub fn password(&self) -> DOMString {
-        self.inner.get("password").as_::<DOMString>()
+    pub fn password(&self) -> String {
+        self.inner.get("password").as_::<String>()
     }
 
-    pub fn set_password(&mut self, value: DOMString) {
+    pub fn set_password(&mut self, value: &str) {
         self.inner.set("password", value);
     }
 }
@@ -125,7 +125,7 @@ impl RTCIceGatherOptions {
             .as_::<RTCIceTransportPolicy>()
     }
 
-    pub fn set_gather_policy(&mut self, value: RTCIceTransportPolicy) {
+    pub fn set_gather_policy(&mut self, value: &RTCIceTransportPolicy) {
         self.inner.set("gatherPolicy", value);
     }
 }
@@ -134,7 +134,7 @@ impl RTCIceGatherOptions {
         self.inner.get("iceServers").as_::<Sequence<Any>>()
     }
 
-    pub fn set_ice_servers(&mut self, value: Sequence<Any>) {
+    pub fn set_ice_servers(&mut self, value: &Sequence<Any>) {
         self.inner.set("iceServers", value);
     }
 }
@@ -189,20 +189,20 @@ impl From<&RTCIceCandidateInit> for emlite::Val {
 }
 
 impl RTCIceCandidateInit {
-    pub fn candidate(&self) -> DOMString {
-        self.inner.get("candidate").as_::<DOMString>()
+    pub fn candidate(&self) -> String {
+        self.inner.get("candidate").as_::<String>()
     }
 
-    pub fn set_candidate(&mut self, value: DOMString) {
+    pub fn set_candidate(&mut self, value: &str) {
         self.inner.set("candidate", value);
     }
 }
 impl RTCIceCandidateInit {
-    pub fn sdp_mid(&self) -> DOMString {
-        self.inner.get("sdpMid").as_::<DOMString>()
+    pub fn sdp_mid(&self) -> String {
+        self.inner.get("sdpMid").as_::<String>()
     }
 
-    pub fn set_sdp_mid(&mut self, value: DOMString) {
+    pub fn set_sdp_mid(&mut self, value: &str) {
         self.inner.set("sdpMid", value);
     }
 }
@@ -216,11 +216,11 @@ impl RTCIceCandidateInit {
     }
 }
 impl RTCIceCandidateInit {
-    pub fn username_fragment(&self) -> DOMString {
-        self.inner.get("usernameFragment").as_::<DOMString>()
+    pub fn username_fragment(&self) -> String {
+        self.inner.get("usernameFragment").as_::<String>()
     }
 
-    pub fn set_username_fragment(&mut self, value: DOMString) {
+    pub fn set_username_fragment(&mut self, value: &str) {
         self.inner.set("usernameFragment", value);
     }
 }
@@ -339,7 +339,7 @@ impl RTCIceTransport {
         self.inner.get("onstatechange").as_::<Any>()
     }
 
-    pub fn set_onstatechange(&mut self, value: Any) {
+    pub fn set_onstatechange(&mut self, value: &Any) {
         self.inner.set("onstatechange", value);
     }
 }
@@ -348,7 +348,7 @@ impl RTCIceTransport {
         self.inner.get("ongatheringstatechange").as_::<Any>()
     }
 
-    pub fn set_ongatheringstatechange(&mut self, value: Any) {
+    pub fn set_ongatheringstatechange(&mut self, value: &Any) {
         self.inner.set("ongatheringstatechange", value);
     }
 }
@@ -357,7 +357,7 @@ impl RTCIceTransport {
         self.inner.get("onselectedcandidatepairchange").as_::<Any>()
     }
 
-    pub fn set_onselectedcandidatepairchange(&mut self, value: Any) {
+    pub fn set_onselectedcandidatepairchange(&mut self, value: &Any) {
         self.inner.set("onselectedcandidatepairchange", value);
     }
 }
@@ -376,7 +376,7 @@ impl RTCIceTransport {
         self.inner.call("gather", &[]).as_::<Undefined>()
     }
 
-    pub fn gather1(&self, options: RTCIceGatherOptions) -> Undefined {
+    pub fn gather1(&self, options: &RTCIceGatherOptions) -> Undefined {
         self.inner
             .call("gather", &[options.into()])
             .as_::<Undefined>()
@@ -387,13 +387,13 @@ impl RTCIceTransport {
         self.inner.call("start", &[]).as_::<Undefined>()
     }
 
-    pub fn start1(&self, remote_parameters: RTCIceParameters) -> Undefined {
+    pub fn start1(&self, remote_parameters: &RTCIceParameters) -> Undefined {
         self.inner
             .call("start", &[remote_parameters.into()])
             .as_::<Undefined>()
     }
 
-    pub fn start2(&self, remote_parameters: RTCIceParameters, role: RTCIceRole) -> Undefined {
+    pub fn start2(&self, remote_parameters: &RTCIceParameters, role: &RTCIceRole) -> Undefined {
         self.inner
             .call("start", &[remote_parameters.into(), role.into()])
             .as_::<Undefined>()
@@ -411,7 +411,7 @@ impl RTCIceTransport {
             .as_::<Undefined>()
     }
 
-    pub fn add_remote_candidate1(&self, remote_candidate: RTCIceCandidateInit) -> Undefined {
+    pub fn add_remote_candidate1(&self, remote_candidate: &RTCIceCandidateInit) -> Undefined {
         self.inner
             .call("addRemoteCandidate", &[remote_candidate.into()])
             .as_::<Undefined>()
@@ -422,7 +422,7 @@ impl RTCIceTransport {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }
@@ -431,7 +431,7 @@ impl RTCIceTransport {
         self.inner.get("onicecandidate").as_::<Any>()
     }
 
-    pub fn set_onicecandidate(&mut self, value: Any) {
+    pub fn set_onicecandidate(&mut self, value: &Any) {
         self.inner.set("onicecandidate", value);
     }
 }

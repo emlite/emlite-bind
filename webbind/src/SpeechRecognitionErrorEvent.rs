@@ -54,7 +54,7 @@ impl From<&SpeechRecognitionErrorEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionErrorEvent);
 
 impl SpeechRecognitionErrorEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> SpeechRecognitionErrorEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> SpeechRecognitionErrorEvent {
         Self {
             inner: emlite::Val::global("SpeechRecognitionErrorEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -68,7 +68,7 @@ impl SpeechRecognitionErrorEvent {
     }
 }
 impl SpeechRecognitionErrorEvent {
-    pub fn message(&self) -> DOMString {
-        self.inner.get("message").as_::<DOMString>()
+    pub fn message(&self) -> String {
+        self.inner.get("message").as_::<String>()
     }
 }

@@ -51,11 +51,11 @@ impl From<&MediaTrackCapabilities> for emlite::Val {
 }
 
 impl MediaTrackCapabilities {
-    pub fn display_surface(&self) -> DOMString {
-        self.inner.get("displaySurface").as_::<DOMString>()
+    pub fn display_surface(&self) -> String {
+        self.inner.get("displaySurface").as_::<String>()
     }
 
-    pub fn set_display_surface(&mut self, value: DOMString) {
+    pub fn set_display_surface(&mut self, value: &str) {
         self.inner.set("displaySurface", value);
     }
 }
@@ -69,11 +69,11 @@ impl MediaTrackCapabilities {
     }
 }
 impl MediaTrackCapabilities {
-    pub fn cursor(&self) -> Sequence<DOMString> {
-        self.inner.get("cursor").as_::<Sequence<DOMString>>()
+    pub fn cursor(&self) -> Sequence<String> {
+        self.inner.get("cursor").as_::<Sequence<String>>()
     }
 
-    pub fn set_cursor(&mut self, value: Sequence<DOMString>) {
+    pub fn set_cursor(&mut self, value: &Sequence<String>) {
         self.inner.set("cursor", value);
     }
 }
@@ -132,7 +132,7 @@ impl MediaTrackConstraints {
         self.inner.get("advanced").as_::<Sequence<Any>>()
     }
 
-    pub fn set_advanced(&mut self, value: Sequence<Any>) {
+    pub fn set_advanced(&mut self, value: &Sequence<Any>) {
         self.inner.set("advanced", value);
     }
 }
@@ -187,11 +187,11 @@ impl From<&MediaTrackSettings> for emlite::Val {
 }
 
 impl MediaTrackSettings {
-    pub fn display_surface(&self) -> DOMString {
-        self.inner.get("displaySurface").as_::<DOMString>()
+    pub fn display_surface(&self) -> String {
+        self.inner.get("displaySurface").as_::<String>()
     }
 
-    pub fn set_display_surface(&mut self, value: DOMString) {
+    pub fn set_display_surface(&mut self, value: &str) {
         self.inner.set("displaySurface", value);
     }
 }
@@ -205,11 +205,11 @@ impl MediaTrackSettings {
     }
 }
 impl MediaTrackSettings {
-    pub fn cursor(&self) -> DOMString {
-        self.inner.get("cursor").as_::<DOMString>()
+    pub fn cursor(&self) -> String {
+        self.inner.get("cursor").as_::<String>()
     }
 
-    pub fn set_cursor(&mut self, value: DOMString) {
+    pub fn set_cursor(&mut self, value: &str) {
         self.inner.set("cursor", value);
     }
 }
@@ -291,20 +291,20 @@ impl From<&CaptureHandle> for emlite::Val {
 }
 
 impl CaptureHandle {
-    pub fn origin(&self) -> DOMString {
-        self.inner.get("origin").as_::<DOMString>()
+    pub fn origin(&self) -> String {
+        self.inner.get("origin").as_::<String>()
     }
 
-    pub fn set_origin(&mut self, value: DOMString) {
+    pub fn set_origin(&mut self, value: &str) {
         self.inner.set("origin", value);
     }
 }
 impl CaptureHandle {
-    pub fn handle(&self) -> DOMString {
-        self.inner.get("handle").as_::<DOMString>()
+    pub fn handle(&self) -> String {
+        self.inner.get("handle").as_::<String>()
     }
 
-    pub fn set_handle(&mut self, value: DOMString) {
+    pub fn set_handle(&mut self, value: &str) {
         self.inner.set("handle", value);
     }
 }
@@ -362,18 +362,18 @@ impl From<&MediaStreamTrack> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MediaStreamTrack);
 
 impl MediaStreamTrack {
-    pub fn kind(&self) -> DOMString {
-        self.inner.get("kind").as_::<DOMString>()
+    pub fn kind(&self) -> String {
+        self.inner.get("kind").as_::<String>()
     }
 }
 impl MediaStreamTrack {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl MediaStreamTrack {
-    pub fn label(&self) -> DOMString {
-        self.inner.get("label").as_::<DOMString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 }
 impl MediaStreamTrack {
@@ -395,7 +395,7 @@ impl MediaStreamTrack {
         self.inner.get("onmute").as_::<Any>()
     }
 
-    pub fn set_onmute(&mut self, value: Any) {
+    pub fn set_onmute(&mut self, value: &Any) {
         self.inner.set("onmute", value);
     }
 }
@@ -404,7 +404,7 @@ impl MediaStreamTrack {
         self.inner.get("onunmute").as_::<Any>()
     }
 
-    pub fn set_onunmute(&mut self, value: Any) {
+    pub fn set_onunmute(&mut self, value: &Any) {
         self.inner.set("onunmute", value);
     }
 }
@@ -418,7 +418,7 @@ impl MediaStreamTrack {
         self.inner.get("onended").as_::<Any>()
     }
 
-    pub fn set_onended(&mut self, value: Any) {
+    pub fn set_onended(&mut self, value: &Any) {
         self.inner.set("onended", value);
     }
 }
@@ -458,7 +458,7 @@ impl MediaStreamTrack {
         self.inner.call("applyConstraints", &[]).as_::<Promise>()
     }
 
-    pub fn apply_constraints1(&self, constraints: MediaTrackConstraints) -> Promise {
+    pub fn apply_constraints1(&self, constraints: &MediaTrackConstraints) -> Promise {
         self.inner
             .call("applyConstraints", &[constraints.into()])
             .as_::<Promise>()
@@ -476,30 +476,30 @@ impl MediaStreamTrack {
         self.inner.get("oncapturehandlechange").as_::<Any>()
     }
 
-    pub fn set_oncapturehandlechange(&mut self, value: Any) {
+    pub fn set_oncapturehandlechange(&mut self, value: &Any) {
         self.inner.set("oncapturehandlechange", value);
     }
 }
 impl MediaStreamTrack {
-    pub fn get_supported_capture_actions(&self) -> Sequence<DOMString> {
+    pub fn get_supported_capture_actions(&self) -> Sequence<String> {
         self.inner
             .call("getSupportedCaptureActions", &[])
-            .as_::<Sequence<DOMString>>()
+            .as_::<Sequence<String>>()
     }
 }
 impl MediaStreamTrack {
-    pub fn send_capture_action(&self, action: CaptureAction) -> Promise {
+    pub fn send_capture_action(&self, action: &CaptureAction) -> Promise {
         self.inner
             .call("sendCaptureAction", &[action.into()])
             .as_::<Promise>()
     }
 }
 impl MediaStreamTrack {
-    pub fn content_hint(&self) -> DOMString {
-        self.inner.get("contentHint").as_::<DOMString>()
+    pub fn content_hint(&self) -> String {
+        self.inner.get("contentHint").as_::<String>()
     }
 
-    pub fn set_content_hint(&mut self, value: DOMString) {
+    pub fn set_content_hint(&mut self, value: &str) {
         self.inner.set("contentHint", value);
     }
 }
@@ -513,7 +513,7 @@ impl MediaStreamTrack {
         self.inner.get("onisolationchange").as_::<Any>()
     }
 
-    pub fn set_onisolationchange(&mut self, value: Any) {
+    pub fn set_onisolationchange(&mut self, value: &Any) {
         self.inner.set("onisolationchange", value);
     }
 }

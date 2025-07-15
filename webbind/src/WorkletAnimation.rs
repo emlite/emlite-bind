@@ -54,7 +54,7 @@ impl From<&WorkletAnimation> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(WorkletAnimation);
 
 impl WorkletAnimation {
-    pub fn new0(animator_name: DOMString) -> WorkletAnimation {
+    pub fn new0(animator_name: &str) -> WorkletAnimation {
         Self {
             inner: emlite::Val::global("WorkletAnimation")
                 .new(&[animator_name.into()])
@@ -62,7 +62,7 @@ impl WorkletAnimation {
         }
     }
 
-    pub fn new1(animator_name: DOMString, effects: Any) -> WorkletAnimation {
+    pub fn new1(animator_name: &str, effects: &Any) -> WorkletAnimation {
         Self {
             inner: emlite::Val::global("WorkletAnimation")
                 .new(&[animator_name.into(), effects.into()])
@@ -71,9 +71,9 @@ impl WorkletAnimation {
     }
 
     pub fn new2(
-        animator_name: DOMString,
-        effects: Any,
-        timeline: AnimationTimeline,
+        animator_name: &str,
+        effects: &Any,
+        timeline: &AnimationTimeline,
     ) -> WorkletAnimation {
         Self {
             inner: emlite::Val::global("WorkletAnimation")
@@ -83,10 +83,10 @@ impl WorkletAnimation {
     }
 
     pub fn new3(
-        animator_name: DOMString,
-        effects: Any,
-        timeline: AnimationTimeline,
-        options: Any,
+        animator_name: &str,
+        effects: &Any,
+        timeline: &AnimationTimeline,
+        options: &Any,
     ) -> WorkletAnimation {
         Self {
             inner: emlite::Val::global("WorkletAnimation")
@@ -101,7 +101,7 @@ impl WorkletAnimation {
     }
 }
 impl WorkletAnimation {
-    pub fn animator_name(&self) -> DOMString {
-        self.inner.get("animatorName").as_::<DOMString>()
+    pub fn animator_name(&self) -> String {
+        self.inner.get("animatorName").as_::<String>()
     }
 }

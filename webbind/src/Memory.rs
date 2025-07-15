@@ -54,7 +54,7 @@ impl From<&Memory> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Memory);
 
 impl Memory {
-    pub fn new(descriptor: Any) -> Memory {
+    pub fn new(descriptor: &Any) -> Memory {
         Self {
             inner: emlite::Val::global("Memory")
                 .new(&[descriptor.into()])

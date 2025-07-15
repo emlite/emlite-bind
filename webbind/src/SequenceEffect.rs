@@ -54,7 +54,7 @@ impl From<&SequenceEffect> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SequenceEffect);
 
 impl SequenceEffect {
-    pub fn new0(children: Sequence<AnimationEffect>) -> SequenceEffect {
+    pub fn new0(children: &Sequence<AnimationEffect>) -> SequenceEffect {
         Self {
             inner: emlite::Val::global("SequenceEffect")
                 .new(&[children.into()])
@@ -62,7 +62,7 @@ impl SequenceEffect {
         }
     }
 
-    pub fn new1(children: Sequence<AnimationEffect>, timing: Any) -> SequenceEffect {
+    pub fn new1(children: &Sequence<AnimationEffect>, timing: &Any) -> SequenceEffect {
         Self {
             inner: emlite::Val::global("SequenceEffect")
                 .new(&[children.into(), timing.into()])

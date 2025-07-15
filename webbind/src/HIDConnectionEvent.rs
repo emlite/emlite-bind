@@ -54,7 +54,7 @@ impl From<&HIDConnectionEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(HIDConnectionEvent);
 
 impl HIDConnectionEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> HIDConnectionEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> HIDConnectionEvent {
         Self {
             inner: emlite::Val::global("HIDConnectionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

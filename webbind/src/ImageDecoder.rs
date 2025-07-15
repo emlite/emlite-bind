@@ -55,7 +55,7 @@ impl ImageDecodeResult {
         self.inner.get("image").as_::<VideoFrame>()
     }
 
-    pub fn set_image(&mut self, value: VideoFrame) {
+    pub fn set_image(&mut self, value: &VideoFrame) {
         self.inner.set("image", value);
     }
 }
@@ -190,7 +190,7 @@ impl From<&ImageDecoder> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ImageDecoder);
 
 impl ImageDecoder {
-    pub fn new(init: Any) -> ImageDecoder {
+    pub fn new(init: &Any) -> ImageDecoder {
         Self {
             inner: emlite::Val::global("ImageDecoder")
                 .new(&[init.into()])
@@ -199,8 +199,8 @@ impl ImageDecoder {
     }
 }
 impl ImageDecoder {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 }
 impl ImageDecoder {
@@ -223,7 +223,7 @@ impl ImageDecoder {
         self.inner.call("decode", &[]).as_::<Promise>()
     }
 
-    pub fn decode1(&self, options: ImageDecodeOptions) -> Promise {
+    pub fn decode1(&self, options: &ImageDecodeOptions) -> Promise {
         self.inner
             .call("decode", &[options.into()])
             .as_::<Promise>()
@@ -240,7 +240,7 @@ impl ImageDecoder {
     }
 }
 impl ImageDecoder {
-    pub fn is_type_supported(type_: DOMString) -> Promise {
+    pub fn is_type_supported(type_: &str) -> Promise {
         emlite::Val::global("ImageDecoder")
             .call("isTypeSupported", &[type_.into()])
             .as_::<Promise>()

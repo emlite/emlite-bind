@@ -51,11 +51,11 @@ impl From<&InkTrailStyle> for emlite::Val {
 }
 
 impl InkTrailStyle {
-    pub fn color(&self) -> DOMString {
-        self.inner.get("color").as_::<DOMString>()
+    pub fn color(&self) -> String {
+        self.inner.get("color").as_::<String>()
     }
 
-    pub fn set_color(&mut self, value: DOMString) {
+    pub fn set_color(&mut self, value: &str) {
         self.inner.set("color", value);
     }
 }
@@ -129,8 +129,8 @@ impl DelegatedInkTrailPresenter {
 impl DelegatedInkTrailPresenter {
     pub fn update_ink_trail_start_point(
         &self,
-        event: PointerEvent,
-        style: InkTrailStyle,
+        event: &PointerEvent,
+        style: &InkTrailStyle,
     ) -> Undefined {
         self.inner
             .call("updateInkTrailStartPoint", &[event.into(), style.into()])

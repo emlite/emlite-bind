@@ -54,7 +54,7 @@ impl From<&RemotePlayback> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(RemotePlayback);
 
 impl RemotePlayback {
-    pub fn watch_availability(&self, callback: Function) -> Promise {
+    pub fn watch_availability(&self, callback: &Function) -> Promise {
         self.inner
             .call("watchAvailability", &[callback.into()])
             .as_::<Promise>()
@@ -83,7 +83,7 @@ impl RemotePlayback {
         self.inner.get("onconnecting").as_::<Any>()
     }
 
-    pub fn set_onconnecting(&mut self, value: Any) {
+    pub fn set_onconnecting(&mut self, value: &Any) {
         self.inner.set("onconnecting", value);
     }
 }
@@ -92,7 +92,7 @@ impl RemotePlayback {
         self.inner.get("onconnect").as_::<Any>()
     }
 
-    pub fn set_onconnect(&mut self, value: Any) {
+    pub fn set_onconnect(&mut self, value: &Any) {
         self.inner.set("onconnect", value);
     }
 }
@@ -101,7 +101,7 @@ impl RemotePlayback {
         self.inner.get("ondisconnect").as_::<Any>()
     }
 
-    pub fn set_ondisconnect(&mut self, value: Any) {
+    pub fn set_ondisconnect(&mut self, value: &Any) {
         self.inner.set("ondisconnect", value);
     }
 }

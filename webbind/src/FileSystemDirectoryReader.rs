@@ -54,13 +54,17 @@ impl From<&FileSystemDirectoryReader> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(FileSystemDirectoryReader);
 
 impl FileSystemDirectoryReader {
-    pub fn read_entries0(&self, success_callback: Function) -> Undefined {
+    pub fn read_entries0(&self, success_callback: &Function) -> Undefined {
         self.inner
             .call("readEntries", &[success_callback.into()])
             .as_::<Undefined>()
     }
 
-    pub fn read_entries1(&self, success_callback: Function, error_callback: Function) -> Undefined {
+    pub fn read_entries1(
+        &self,
+        success_callback: &Function,
+        error_callback: &Function,
+    ) -> Undefined {
         self.inner
             .call(
                 "readEntries",

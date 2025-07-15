@@ -58,7 +58,7 @@ impl Keyboard {
         self.inner.call("lock", &[]).as_::<Promise>()
     }
 
-    pub fn lock1(&self, key_codes: Sequence<DOMString>) -> Promise {
+    pub fn lock1(&self, key_codes: &Sequence<String>) -> Promise {
         self.inner
             .call("lock", &[key_codes.into()])
             .as_::<Promise>()
@@ -79,7 +79,7 @@ impl Keyboard {
         self.inner.get("onlayoutchange").as_::<Any>()
     }
 
-    pub fn set_onlayoutchange(&mut self, value: Any) {
+    pub fn set_onlayoutchange(&mut self, value: &Any) {
         self.inner.set("onlayoutchange", value);
     }
 }

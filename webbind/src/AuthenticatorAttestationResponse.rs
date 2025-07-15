@@ -59,10 +59,10 @@ impl AuthenticatorAttestationResponse {
     }
 }
 impl AuthenticatorAttestationResponse {
-    pub fn get_transports(&self) -> Sequence<DOMString> {
+    pub fn get_transports(&self) -> Sequence<String> {
         self.inner
             .call("getTransports", &[])
-            .as_::<Sequence<DOMString>>()
+            .as_::<Sequence<String>>()
     }
 }
 impl AuthenticatorAttestationResponse {

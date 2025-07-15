@@ -54,7 +54,7 @@ impl From<&LaunchQueue> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(LaunchQueue);
 
 impl LaunchQueue {
-    pub fn set_consumer(&self, consumer: Function) -> Undefined {
+    pub fn set_consumer(&self, consumer: &Function) -> Undefined {
         self.inner
             .call("setConsumer", &[consumer.into()])
             .as_::<Undefined>()

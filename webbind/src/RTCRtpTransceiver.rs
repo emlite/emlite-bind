@@ -51,11 +51,11 @@ impl From<&RTCRtpCodec> for emlite::Val {
 }
 
 impl RTCRtpCodec {
-    pub fn mime_type(&self) -> DOMString {
-        self.inner.get("mimeType").as_::<DOMString>()
+    pub fn mime_type(&self) -> String {
+        self.inner.get("mimeType").as_::<String>()
     }
 
-    pub fn set_mime_type(&mut self, value: DOMString) {
+    pub fn set_mime_type(&mut self, value: &str) {
         self.inner.set("mimeType", value);
     }
 }
@@ -78,11 +78,11 @@ impl RTCRtpCodec {
     }
 }
 impl RTCRtpCodec {
-    pub fn sdp_fmtp_line(&self) -> DOMString {
-        self.inner.get("sdpFmtpLine").as_::<DOMString>()
+    pub fn sdp_fmtp_line(&self) -> String {
+        self.inner.get("sdpFmtpLine").as_::<String>()
     }
 
-    pub fn set_sdp_fmtp_line(&mut self, value: DOMString) {
+    pub fn set_sdp_fmtp_line(&mut self, value: &str) {
         self.inner.set("sdpFmtpLine", value);
     }
 }
@@ -140,8 +140,8 @@ impl From<&RTCRtpTransceiver> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(RTCRtpTransceiver);
 
 impl RTCRtpTransceiver {
-    pub fn mid(&self) -> DOMString {
-        self.inner.get("mid").as_::<DOMString>()
+    pub fn mid(&self) -> String {
+        self.inner.get("mid").as_::<String>()
     }
 }
 impl RTCRtpTransceiver {
@@ -161,7 +161,7 @@ impl RTCRtpTransceiver {
             .as_::<RTCRtpTransceiverDirection>()
     }
 
-    pub fn set_direction(&mut self, value: RTCRtpTransceiverDirection) {
+    pub fn set_direction(&mut self, value: &RTCRtpTransceiverDirection) {
         self.inner.set("direction", value);
     }
 }
@@ -178,7 +178,7 @@ impl RTCRtpTransceiver {
     }
 }
 impl RTCRtpTransceiver {
-    pub fn set_codec_preferences(&self, codecs: Sequence<RTCRtpCodec>) -> Undefined {
+    pub fn set_codec_preferences(&self, codecs: &Sequence<RTCRtpCodec>) -> Undefined {
         self.inner
             .call("setCodecPreferences", &[codecs.into()])
             .as_::<Undefined>()

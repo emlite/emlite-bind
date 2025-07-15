@@ -54,7 +54,7 @@ impl From<&SecurityPolicyViolationEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SecurityPolicyViolationEvent);
 
 impl SecurityPolicyViolationEvent {
-    pub fn new0(type_: DOMString) -> SecurityPolicyViolationEvent {
+    pub fn new0(type_: &str) -> SecurityPolicyViolationEvent {
         Self {
             inner: emlite::Val::global("SecurityPolicyViolationEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl SecurityPolicyViolationEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> SecurityPolicyViolationEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> SecurityPolicyViolationEvent {
         Self {
             inner: emlite::Val::global("SecurityPolicyViolationEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -71,43 +71,43 @@ impl SecurityPolicyViolationEvent {
     }
 }
 impl SecurityPolicyViolationEvent {
-    pub fn document_uri(&self) -> USVString {
-        self.inner.get("documentURI").as_::<USVString>()
+    pub fn document_uri(&self) -> String {
+        self.inner.get("documentURI").as_::<String>()
     }
 }
 impl SecurityPolicyViolationEvent {
-    pub fn referrer(&self) -> USVString {
-        self.inner.get("referrer").as_::<USVString>()
+    pub fn referrer(&self) -> String {
+        self.inner.get("referrer").as_::<String>()
     }
 }
 impl SecurityPolicyViolationEvent {
-    pub fn blocked_uri(&self) -> USVString {
-        self.inner.get("blockedURI").as_::<USVString>()
+    pub fn blocked_uri(&self) -> String {
+        self.inner.get("blockedURI").as_::<String>()
     }
 }
 impl SecurityPolicyViolationEvent {
-    pub fn effective_directive(&self) -> DOMString {
-        self.inner.get("effectiveDirective").as_::<DOMString>()
+    pub fn effective_directive(&self) -> String {
+        self.inner.get("effectiveDirective").as_::<String>()
     }
 }
 impl SecurityPolicyViolationEvent {
-    pub fn violated_directive(&self) -> DOMString {
-        self.inner.get("violatedDirective").as_::<DOMString>()
+    pub fn violated_directive(&self) -> String {
+        self.inner.get("violatedDirective").as_::<String>()
     }
 }
 impl SecurityPolicyViolationEvent {
-    pub fn original_policy(&self) -> DOMString {
-        self.inner.get("originalPolicy").as_::<DOMString>()
+    pub fn original_policy(&self) -> String {
+        self.inner.get("originalPolicy").as_::<String>()
     }
 }
 impl SecurityPolicyViolationEvent {
-    pub fn source_file(&self) -> USVString {
-        self.inner.get("sourceFile").as_::<USVString>()
+    pub fn source_file(&self) -> String {
+        self.inner.get("sourceFile").as_::<String>()
     }
 }
 impl SecurityPolicyViolationEvent {
-    pub fn sample(&self) -> DOMString {
-        self.inner.get("sample").as_::<DOMString>()
+    pub fn sample(&self) -> String {
+        self.inner.get("sample").as_::<String>()
     }
 }
 impl SecurityPolicyViolationEvent {

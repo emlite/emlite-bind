@@ -54,7 +54,7 @@ impl From<&InputEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(InputEvent);
 
 impl InputEvent {
-    pub fn new0(type_: DOMString) -> InputEvent {
+    pub fn new0(type_: &str) -> InputEvent {
         Self {
             inner: emlite::Val::global("InputEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl InputEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> InputEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> InputEvent {
         Self {
             inner: emlite::Val::global("InputEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -71,8 +71,8 @@ impl InputEvent {
     }
 }
 impl InputEvent {
-    pub fn data(&self) -> USVString {
-        self.inner.get("data").as_::<USVString>()
+    pub fn data(&self) -> String {
+        self.inner.get("data").as_::<String>()
     }
 }
 impl InputEvent {
@@ -81,8 +81,8 @@ impl InputEvent {
     }
 }
 impl InputEvent {
-    pub fn input_type(&self) -> DOMString {
-        self.inner.get("inputType").as_::<DOMString>()
+    pub fn input_type(&self) -> String {
+        self.inner.get("inputType").as_::<String>()
     }
 }
 impl InputEvent {

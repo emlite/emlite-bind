@@ -54,21 +54,21 @@ impl From<&Permissions> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Permissions);
 
 impl Permissions {
-    pub fn query(&self, permission_desc: Object) -> Promise {
+    pub fn query(&self, permission_desc: &Object) -> Promise {
         self.inner
             .call("query", &[permission_desc.into()])
             .as_::<Promise>()
     }
 }
 impl Permissions {
-    pub fn request(&self, permission_desc: Object) -> Promise {
+    pub fn request(&self, permission_desc: &Object) -> Promise {
         self.inner
             .call("request", &[permission_desc.into()])
             .as_::<Promise>()
     }
 }
 impl Permissions {
-    pub fn revoke(&self, permission_desc: Object) -> Promise {
+    pub fn revoke(&self, permission_desc: &Object) -> Promise {
         self.inner
             .call("revoke", &[permission_desc.into()])
             .as_::<Promise>()

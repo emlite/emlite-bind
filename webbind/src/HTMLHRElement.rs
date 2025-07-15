@@ -63,20 +63,20 @@ impl HTMLHRElement {
     }
 }
 impl HTMLHRElement {
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> String {
+        self.inner.get("align").as_::<String>()
     }
 
-    pub fn set_align(&mut self, value: DOMString) {
+    pub fn set_align(&mut self, value: &str) {
         self.inner.set("align", value);
     }
 }
 impl HTMLHRElement {
-    pub fn color(&self) -> DOMString {
-        self.inner.get("color").as_::<DOMString>()
+    pub fn color(&self) -> String {
+        self.inner.get("color").as_::<String>()
     }
 
-    pub fn set_color(&mut self, value: DOMString) {
+    pub fn set_color(&mut self, value: &str) {
         self.inner.set("color", value);
     }
 }
@@ -90,20 +90,20 @@ impl HTMLHRElement {
     }
 }
 impl HTMLHRElement {
-    pub fn size(&self) -> DOMString {
-        self.inner.get("size").as_::<DOMString>()
+    pub fn size(&self) -> String {
+        self.inner.get("size").as_::<String>()
     }
 
-    pub fn set_size(&mut self, value: DOMString) {
+    pub fn set_size(&mut self, value: &str) {
         self.inner.set("size", value);
     }
 }
 impl HTMLHRElement {
-    pub fn width(&self) -> DOMString {
-        self.inner.get("width").as_::<DOMString>()
+    pub fn width(&self) -> String {
+        self.inner.get("width").as_::<String>()
     }
 
-    pub fn set_width(&mut self, value: DOMString) {
+    pub fn set_width(&mut self, value: &str) {
         self.inner.set("width", value);
     }
 }

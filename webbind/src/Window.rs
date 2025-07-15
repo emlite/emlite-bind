@@ -51,11 +51,11 @@ impl From<&WindowPostMessageOptions> for emlite::Val {
 }
 
 impl WindowPostMessageOptions {
-    pub fn target_origin(&self) -> USVString {
-        self.inner.get("targetOrigin").as_::<USVString>()
+    pub fn target_origin(&self) -> String {
+        self.inner.get("targetOrigin").as_::<String>()
     }
 
-    pub fn set_target_origin(&mut self, value: USVString) {
+    pub fn set_target_origin(&mut self, value: &str) {
         self.inner.set("targetOrigin", value);
     }
 }
@@ -169,11 +169,11 @@ impl From<&SaveFilePickerOptions> for emlite::Val {
 }
 
 impl SaveFilePickerOptions {
-    pub fn suggested_name(&self) -> USVString {
-        self.inner.get("suggestedName").as_::<USVString>()
+    pub fn suggested_name(&self) -> String {
+        self.inner.get("suggestedName").as_::<String>()
     }
 
-    pub fn set_suggested_name(&mut self, value: USVString) {
+    pub fn set_suggested_name(&mut self, value: &str) {
         self.inner.set("suggestedName", value);
     }
 }
@@ -228,11 +228,11 @@ impl From<&DirectoryPickerOptions> for emlite::Val {
 }
 
 impl DirectoryPickerOptions {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 
-    pub fn set_id(&mut self, value: DOMString) {
+    pub fn set_id(&mut self, value: &str) {
         self.inner.set("id", value);
     }
 }
@@ -241,7 +241,7 @@ impl DirectoryPickerOptions {
         self.inner.get("startIn").as_::<Any>()
     }
 
-    pub fn set_start_in(&mut self, value: Any) {
+    pub fn set_start_in(&mut self, value: &Any) {
         self.inner.set("startIn", value);
     }
 }
@@ -250,7 +250,7 @@ impl DirectoryPickerOptions {
         self.inner.get("mode").as_::<FileSystemPermissionMode>()
     }
 
-    pub fn set_mode(&mut self, value: FileSystemPermissionMode) {
+    pub fn set_mode(&mut self, value: &FileSystemPermissionMode) {
         self.inner.set("mode", value);
     }
 }
@@ -305,13 +305,11 @@ impl From<&QueryOptions> for emlite::Val {
 }
 
 impl QueryOptions {
-    pub fn postscript_names(&self) -> Sequence<DOMString> {
-        self.inner
-            .get("postscriptNames")
-            .as_::<Sequence<DOMString>>()
+    pub fn postscript_names(&self) -> Sequence<String> {
+        self.inner.get("postscriptNames").as_::<Sequence<String>>()
     }
 
-    pub fn set_postscript_names(&mut self, value: Sequence<DOMString>) {
+    pub fn set_postscript_names(&mut self, value: &Sequence<String>) {
         self.inner.set("postscriptNames", value);
     }
 }
@@ -443,11 +441,11 @@ impl Window {
     }
 }
 impl Window {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
@@ -504,11 +502,11 @@ impl Window {
     }
 }
 impl Window {
-    pub fn status(&self) -> DOMString {
-        self.inner.get("status").as_::<DOMString>()
+    pub fn status(&self) -> String {
+        self.inner.get("status").as_::<String>()
     }
 
-    pub fn set_status(&mut self, value: DOMString) {
+    pub fn set_status(&mut self, value: &str) {
         self.inner.set("status", value);
     }
 }
@@ -557,7 +555,7 @@ impl Window {
         self.inner.get("opener").as_::<Any>()
     }
 
-    pub fn set_opener(&mut self, value: Any) {
+    pub fn set_opener(&mut self, value: &Any) {
         self.inner.set("opener", value);
     }
 }
@@ -576,17 +574,17 @@ impl Window {
         self.inner.call("open", &[]).as_::<Any>()
     }
 
-    pub fn open1(&self, url: USVString) -> Any {
+    pub fn open1(&self, url: &str) -> Any {
         self.inner.call("open", &[url.into()]).as_::<Any>()
     }
 
-    pub fn open2(&self, url: USVString, target: DOMString) -> Any {
+    pub fn open2(&self, url: &str, target: &str) -> Any {
         self.inner
             .call("open", &[url.into(), target.into()])
             .as_::<Any>()
     }
 
-    pub fn open3(&self, url: USVString, target: DOMString, features: DOMString) -> Any {
+    pub fn open3(&self, url: &str, target: &str, features: &str) -> Any {
         self.inner
             .call("open", &[url.into(), target.into(), features.into()])
             .as_::<Any>()
@@ -608,7 +606,7 @@ impl Window {
     }
 }
 impl Window {
-    pub fn alert(&self, message: DOMString) -> Undefined {
+    pub fn alert(&self, message: &str) -> Undefined {
         self.inner
             .call("alert", &[message.into()])
             .as_::<Undefined>()
@@ -619,25 +617,23 @@ impl Window {
         self.inner.call("confirm", &[]).as_::<bool>()
     }
 
-    pub fn confirm1(&self, message: DOMString) -> bool {
+    pub fn confirm1(&self, message: &str) -> bool {
         self.inner.call("confirm", &[message.into()]).as_::<bool>()
     }
 }
 impl Window {
-    pub fn prompt0(&self) -> DOMString {
-        self.inner.call("prompt", &[]).as_::<DOMString>()
+    pub fn prompt0(&self) -> String {
+        self.inner.call("prompt", &[]).as_::<String>()
     }
 
-    pub fn prompt1(&self, message: DOMString) -> DOMString {
-        self.inner
-            .call("prompt", &[message.into()])
-            .as_::<DOMString>()
+    pub fn prompt1(&self, message: &str) -> String {
+        self.inner.call("prompt", &[message.into()]).as_::<String>()
     }
 
-    pub fn prompt2(&self, message: DOMString, default: DOMString) -> DOMString {
+    pub fn prompt2(&self, message: &str, default: &str) -> String {
         self.inner
             .call("prompt", &[message.into(), default.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl Window {
@@ -646,13 +642,13 @@ impl Window {
     }
 }
 impl Window {
-    pub fn post_message0(&self, message: Any) -> Undefined {
+    pub fn post_message0(&self, message: &Any) -> Undefined {
         self.inner
             .call("postMessage", &[message.into()])
             .as_::<Undefined>()
     }
 
-    pub fn post_message1(&self, message: Any, options: WindowPostMessageOptions) -> Undefined {
+    pub fn post_message1(&self, message: &Any, options: &WindowPostMessageOptions) -> Undefined {
         self.inner
             .call("postMessage", &[message.into(), options.into()])
             .as_::<Undefined>()
@@ -673,7 +669,7 @@ impl Window {
         self.inner.get("onorientationchange").as_::<Any>()
     }
 
-    pub fn set_onorientationchange(&mut self, value: Any) {
+    pub fn set_onorientationchange(&mut self, value: &Any) {
         self.inner.set("onorientationchange", value);
     }
 }
@@ -683,7 +679,7 @@ impl Window {
     }
 }
 impl Window {
-    pub fn navigate(&self, dir: SpatialNavigationDirection) -> Undefined {
+    pub fn navigate(&self, dir: &SpatialNavigationDirection) -> Undefined {
         self.inner
             .call("navigate", &[dir.into()])
             .as_::<Undefined>()
@@ -695,7 +691,7 @@ impl Window {
     }
 }
 impl Window {
-    pub fn match_media(&self, query: CSSOMString) -> MediaQueryList {
+    pub fn match_media(&self, query: &str) -> MediaQueryList {
         self.inner
             .call("matchMedia", &[query.into()])
             .as_::<MediaQueryList>()
@@ -826,24 +822,20 @@ impl Window {
     }
 }
 impl Window {
-    pub fn get_computed_style0(&self, elt: Element) -> CSSStyleDeclaration {
+    pub fn get_computed_style0(&self, elt: &Element) -> CSSStyleDeclaration {
         self.inner
             .call("getComputedStyle", &[elt.into()])
             .as_::<CSSStyleDeclaration>()
     }
 
-    pub fn get_computed_style1(
-        &self,
-        elt: Element,
-        pseudo_elt: CSSOMString,
-    ) -> CSSStyleDeclaration {
+    pub fn get_computed_style1(&self, elt: &Element, pseudo_elt: &str) -> CSSStyleDeclaration {
         self.inner
             .call("getComputedStyle", &[elt.into(), pseudo_elt.into()])
             .as_::<CSSStyleDeclaration>()
     }
 }
 impl Window {
-    pub fn get_digital_goods_service(&self, service_provider: DOMString) -> Promise {
+    pub fn get_digital_goods_service(&self, service_provider: &str) -> Promise {
         self.inner
             .call("getDigitalGoodsService", &[service_provider.into()])
             .as_::<Promise>()
@@ -871,7 +863,7 @@ impl Window {
         self.inner.call("showOpenFilePicker", &[]).as_::<Promise>()
     }
 
-    pub fn show_open_file_picker1(&self, options: OpenFilePickerOptions) -> Promise {
+    pub fn show_open_file_picker1(&self, options: &OpenFilePickerOptions) -> Promise {
         self.inner
             .call("showOpenFilePicker", &[options.into()])
             .as_::<Promise>()
@@ -882,7 +874,7 @@ impl Window {
         self.inner.call("showSaveFilePicker", &[]).as_::<Promise>()
     }
 
-    pub fn show_save_file_picker1(&self, options: SaveFilePickerOptions) -> Promise {
+    pub fn show_save_file_picker1(&self, options: &SaveFilePickerOptions) -> Promise {
         self.inner
             .call("showSaveFilePicker", &[options.into()])
             .as_::<Promise>()
@@ -893,7 +885,7 @@ impl Window {
         self.inner.call("showDirectoryPicker", &[]).as_::<Promise>()
     }
 
-    pub fn show_directory_picker1(&self, options: DirectoryPickerOptions) -> Promise {
+    pub fn show_directory_picker1(&self, options: &DirectoryPickerOptions) -> Promise {
         self.inner
             .call("showDirectoryPicker", &[options.into()])
             .as_::<Promise>()
@@ -919,7 +911,7 @@ impl Window {
         self.inner.call("queryLocalFonts", &[]).as_::<Promise>()
     }
 
-    pub fn query_local_fonts1(&self, options: QueryOptions) -> Promise {
+    pub fn query_local_fonts1(&self, options: &QueryOptions) -> Promise {
         self.inner
             .call("queryLocalFonts", &[options.into()])
             .as_::<Promise>()
@@ -930,7 +922,7 @@ impl Window {
         self.inner.get("onappinstalled").as_::<Any>()
     }
 
-    pub fn set_onappinstalled(&mut self, value: Any) {
+    pub fn set_onappinstalled(&mut self, value: &Any) {
         self.inner.set("onappinstalled", value);
     }
 }
@@ -939,7 +931,7 @@ impl Window {
         self.inner.get("onbeforeinstallprompt").as_::<Any>()
     }
 
-    pub fn set_onbeforeinstallprompt(&mut self, value: Any) {
+    pub fn set_onbeforeinstallprompt(&mut self, value: &Any) {
         self.inner.set("onbeforeinstallprompt", value);
     }
 }
@@ -948,7 +940,7 @@ impl Window {
         self.inner.get("ondeviceorientation").as_::<Any>()
     }
 
-    pub fn set_ondeviceorientation(&mut self, value: Any) {
+    pub fn set_ondeviceorientation(&mut self, value: &Any) {
         self.inner.set("ondeviceorientation", value);
     }
 }
@@ -957,7 +949,7 @@ impl Window {
         self.inner.get("ondeviceorientationabsolute").as_::<Any>()
     }
 
-    pub fn set_ondeviceorientationabsolute(&mut self, value: Any) {
+    pub fn set_ondeviceorientationabsolute(&mut self, value: &Any) {
         self.inner.set("ondeviceorientationabsolute", value);
     }
 }
@@ -966,7 +958,7 @@ impl Window {
         self.inner.get("ondevicemotion").as_::<Any>()
     }
 
-    pub fn set_ondevicemotion(&mut self, value: Any) {
+    pub fn set_ondevicemotion(&mut self, value: &Any) {
         self.inner.set("ondevicemotion", value);
     }
 }
@@ -976,13 +968,13 @@ impl Window {
     }
 }
 impl Window {
-    pub fn request_idle_callback0(&self, callback: Function) -> u32 {
+    pub fn request_idle_callback0(&self, callback: &Function) -> u32 {
         self.inner
             .call("requestIdleCallback", &[callback.into()])
             .as_::<u32>()
     }
 
-    pub fn request_idle_callback1(&self, callback: Function, options: IdleRequestOptions) -> u32 {
+    pub fn request_idle_callback1(&self, callback: &Function, options: &IdleRequestOptions) -> u32 {
         self.inner
             .call("requestIdleCallback", &[callback.into(), options.into()])
             .as_::<u32>()
@@ -1025,7 +1017,7 @@ impl Window {
         self.inner.get("onbeforexrselect").as_::<Any>()
     }
 
-    pub fn set_onbeforexrselect(&mut self, value: Any) {
+    pub fn set_onbeforexrselect(&mut self, value: &Any) {
         self.inner.set("onbeforexrselect", value);
     }
 }
@@ -1034,7 +1026,7 @@ impl Window {
         self.inner.get("onportalactivate").as_::<Any>()
     }
 
-    pub fn set_onportalactivate(&mut self, value: Any) {
+    pub fn set_onportalactivate(&mut self, value: &Any) {
         self.inner.set("onportalactivate", value);
     }
 }
@@ -1044,7 +1036,7 @@ impl Window {
     }
 }
 impl Window {
-    pub fn request_animation_frame(&self, callback: Function) -> u32 {
+    pub fn request_animation_frame(&self, callback: &Function) -> u32 {
         self.inner
             .call("requestAnimationFrame", &[callback.into()])
             .as_::<u32>()

@@ -77,11 +77,11 @@ impl SVGAngle {
     }
 }
 impl SVGAngle {
-    pub fn value_as_string(&self) -> DOMString {
-        self.inner.get("valueAsString").as_::<DOMString>()
+    pub fn value_as_string(&self) -> String {
+        self.inner.get("valueAsString").as_::<String>()
     }
 
-    pub fn set_value_as_string(&mut self, value: DOMString) {
+    pub fn set_value_as_string(&mut self, value: &str) {
         self.inner.set("valueAsString", value);
     }
 }

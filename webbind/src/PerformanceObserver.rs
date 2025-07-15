@@ -51,20 +51,20 @@ impl From<&PerformanceObserverInit> for emlite::Val {
 }
 
 impl PerformanceObserverInit {
-    pub fn entry_types(&self) -> Sequence<DOMString> {
-        self.inner.get("entryTypes").as_::<Sequence<DOMString>>()
+    pub fn entry_types(&self) -> Sequence<String> {
+        self.inner.get("entryTypes").as_::<Sequence<String>>()
     }
 
-    pub fn set_entry_types(&mut self, value: Sequence<DOMString>) {
+    pub fn set_entry_types(&mut self, value: &Sequence<String>) {
         self.inner.set("entryTypes", value);
     }
 }
 impl PerformanceObserverInit {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: DOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }
@@ -131,7 +131,7 @@ impl From<&PerformanceObserver> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PerformanceObserver);
 
 impl PerformanceObserver {
-    pub fn new(callback: Function) -> PerformanceObserver {
+    pub fn new(callback: &Function) -> PerformanceObserver {
         Self {
             inner: emlite::Val::global("PerformanceObserver")
                 .new(&[callback.into()])
@@ -144,7 +144,7 @@ impl PerformanceObserver {
         self.inner.call("observe", &[]).as_::<Undefined>()
     }
 
-    pub fn observe1(&self, options: PerformanceObserverInit) -> Undefined {
+    pub fn observe1(&self, options: &PerformanceObserverInit) -> Undefined {
         self.inner
             .call("observe", &[options.into()])
             .as_::<Undefined>()
@@ -161,9 +161,9 @@ impl PerformanceObserver {
     }
 }
 impl PerformanceObserver {
-    pub fn supported_entry_types() -> FrozenArray<DOMString> {
+    pub fn supported_entry_types() -> FrozenArray<String> {
         emlite::Val::global("PerformanceObserver")
             .get("supportedEntryTypes")
-            .as_::<FrozenArray<DOMString>>()
+            .as_::<FrozenArray<String>>()
     }
 }

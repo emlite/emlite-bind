@@ -54,18 +54,18 @@ impl From<&Plugin> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Plugin);
 
 impl Plugin {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl Plugin {
-    pub fn description(&self) -> DOMString {
-        self.inner.get("description").as_::<DOMString>()
+    pub fn description(&self) -> String {
+        self.inner.get("description").as_::<String>()
     }
 }
 impl Plugin {
-    pub fn filename(&self) -> DOMString {
-        self.inner.get("filename").as_::<DOMString>()
+    pub fn filename(&self) -> String {
+        self.inner.get("filename").as_::<String>()
     }
 }
 impl Plugin {
@@ -79,7 +79,7 @@ impl Plugin {
     }
 }
 impl Plugin {
-    pub fn named_item(&self, name: DOMString) -> MimeType {
+    pub fn named_item(&self, name: &str) -> MimeType {
         self.inner
             .call("namedItem", &[name.into()])
             .as_::<MimeType>()

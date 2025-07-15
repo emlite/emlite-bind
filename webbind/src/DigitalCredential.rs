@@ -59,8 +59,8 @@ impl DigitalCredential {
     }
 }
 impl DigitalCredential {
-    pub fn protocol(&self) -> DOMString {
-        self.inner.get("protocol").as_::<DOMString>()
+    pub fn protocol(&self) -> String {
+        self.inner.get("protocol").as_::<String>()
     }
 }
 impl DigitalCredential {
@@ -69,7 +69,7 @@ impl DigitalCredential {
     }
 }
 impl DigitalCredential {
-    pub fn user_agent_allows_protocol(protocol: DOMString) -> bool {
+    pub fn user_agent_allows_protocol(protocol: &str) -> bool {
         emlite::Val::global("DigitalCredential")
             .call("userAgentAllowsProtocol", &[protocol.into()])
             .as_::<bool>()

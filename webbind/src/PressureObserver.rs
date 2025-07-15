@@ -113,7 +113,7 @@ impl From<&PressureObserver> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PressureObserver);
 
 impl PressureObserver {
-    pub fn new(callback: Function) -> PressureObserver {
+    pub fn new(callback: &Function) -> PressureObserver {
         Self {
             inner: emlite::Val::global("PressureObserver")
                 .new(&[callback.into()])
@@ -122,20 +122,20 @@ impl PressureObserver {
     }
 }
 impl PressureObserver {
-    pub fn observe0(&self, source: PressureSource) -> Promise {
+    pub fn observe0(&self, source: &PressureSource) -> Promise {
         self.inner
             .call("observe", &[source.into()])
             .as_::<Promise>()
     }
 
-    pub fn observe1(&self, source: PressureSource, options: PressureObserverOptions) -> Promise {
+    pub fn observe1(&self, source: &PressureSource, options: &PressureObserverOptions) -> Promise {
         self.inner
             .call("observe", &[source.into(), options.into()])
             .as_::<Promise>()
     }
 }
 impl PressureObserver {
-    pub fn unobserve(&self, source: PressureSource) -> Undefined {
+    pub fn unobserve(&self, source: &PressureSource) -> Undefined {
         self.inner
             .call("unobserve", &[source.into()])
             .as_::<Undefined>()

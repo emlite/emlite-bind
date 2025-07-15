@@ -51,29 +51,29 @@ impl From<&ContentDescription> for emlite::Val {
 }
 
 impl ContentDescription {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 
-    pub fn set_id(&mut self, value: DOMString) {
+    pub fn set_id(&mut self, value: &str) {
         self.inner.set("id", value);
     }
 }
 impl ContentDescription {
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> String {
+        self.inner.get("title").as_::<String>()
     }
 
-    pub fn set_title(&mut self, value: DOMString) {
+    pub fn set_title(&mut self, value: &str) {
         self.inner.set("title", value);
     }
 }
 impl ContentDescription {
-    pub fn description(&self) -> DOMString {
-        self.inner.get("description").as_::<DOMString>()
+    pub fn description(&self) -> String {
+        self.inner.get("description").as_::<String>()
     }
 
-    pub fn set_description(&mut self, value: DOMString) {
+    pub fn set_description(&mut self, value: &str) {
         self.inner.set("description", value);
     }
 }
@@ -82,7 +82,7 @@ impl ContentDescription {
         self.inner.get("category").as_::<ContentCategory>()
     }
 
-    pub fn set_category(&mut self, value: ContentCategory) {
+    pub fn set_category(&mut self, value: &ContentCategory) {
         self.inner.set("category", value);
     }
 }
@@ -91,16 +91,16 @@ impl ContentDescription {
         self.inner.get("icons").as_::<Sequence<Any>>()
     }
 
-    pub fn set_icons(&mut self, value: Sequence<Any>) {
+    pub fn set_icons(&mut self, value: &Sequence<Any>) {
         self.inner.set("icons", value);
     }
 }
 impl ContentDescription {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 
-    pub fn set_url(&mut self, value: USVString) {
+    pub fn set_url(&mut self, value: &str) {
         self.inner.set("url", value);
     }
 }
@@ -158,14 +158,14 @@ impl From<&ContentIndex> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ContentIndex);
 
 impl ContentIndex {
-    pub fn add(&self, description: ContentDescription) -> Promise {
+    pub fn add(&self, description: &ContentDescription) -> Promise {
         self.inner
             .call("add", &[description.into()])
             .as_::<Promise>()
     }
 }
 impl ContentIndex {
-    pub fn delete(&self, id: DOMString) -> Promise {
+    pub fn delete(&self, id: &str) -> Promise {
         self.inner.call("delete", &[id.into()]).as_::<Promise>()
     }
 }

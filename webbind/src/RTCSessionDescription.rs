@@ -54,7 +54,7 @@ impl From<&RTCSessionDescription> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(RTCSessionDescription);
 
 impl RTCSessionDescription {
-    pub fn new(description_init_dict: RTCSessionDescriptionInit) -> RTCSessionDescription {
+    pub fn new(description_init_dict: &RTCSessionDescriptionInit) -> RTCSessionDescription {
         Self {
             inner: emlite::Val::global("RTCSessionDescription")
                 .new(&[description_init_dict.into()])
@@ -68,8 +68,8 @@ impl RTCSessionDescription {
     }
 }
 impl RTCSessionDescription {
-    pub fn sdp(&self) -> DOMString {
-        self.inner.get("sdp").as_::<DOMString>()
+    pub fn sdp(&self) -> String {
+        self.inner.get("sdp").as_::<String>()
     }
 }
 impl RTCSessionDescription {

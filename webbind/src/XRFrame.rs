@@ -64,21 +64,21 @@ impl XRFrame {
     }
 }
 impl XRFrame {
-    pub fn get_viewer_pose(&self, reference_space: XRReferenceSpace) -> XRViewerPose {
+    pub fn get_viewer_pose(&self, reference_space: &XRReferenceSpace) -> XRViewerPose {
         self.inner
             .call("getViewerPose", &[reference_space.into()])
             .as_::<XRViewerPose>()
     }
 }
 impl XRFrame {
-    pub fn get_pose(&self, space: XRSpace, base_space: XRSpace) -> XRPose {
+    pub fn get_pose(&self, space: &XRSpace, base_space: &XRSpace) -> XRPose {
         self.inner
             .call("getPose", &[space.into(), base_space.into()])
             .as_::<XRPose>()
     }
 }
 impl XRFrame {
-    pub fn create_anchor(&self, pose: XRRigidTransform, space: XRSpace) -> Promise {
+    pub fn create_anchor(&self, pose: &XRRigidTransform, space: &XRSpace) -> Promise {
         self.inner
             .call("createAnchor", &[pose.into(), space.into()])
             .as_::<Promise>()
@@ -95,14 +95,14 @@ impl XRFrame {
     }
 }
 impl XRFrame {
-    pub fn get_depth_information(&self, view: XRView) -> XRCPUDepthInformation {
+    pub fn get_depth_information(&self, view: &XRView) -> XRCPUDepthInformation {
         self.inner
             .call("getDepthInformation", &[view.into()])
             .as_::<XRCPUDepthInformation>()
     }
 }
 impl XRFrame {
-    pub fn get_joint_pose(&self, joint: XRJointSpace, base_space: XRSpace) -> XRJointPose {
+    pub fn get_joint_pose(&self, joint: &XRJointSpace, base_space: &XRSpace) -> XRJointPose {
         self.inner
             .call("getJointPose", &[joint.into(), base_space.into()])
             .as_::<XRJointPose>()
@@ -111,8 +111,8 @@ impl XRFrame {
 impl XRFrame {
     pub fn fill_joint_radii(
         &self,
-        joint_spaces: Sequence<XRJointSpace>,
-        radii: Float32Array,
+        joint_spaces: &Sequence<XRJointSpace>,
+        radii: &Float32Array,
     ) -> bool {
         self.inner
             .call("fillJointRadii", &[joint_spaces.into(), radii.into()])
@@ -122,9 +122,9 @@ impl XRFrame {
 impl XRFrame {
     pub fn fill_poses(
         &self,
-        spaces: Sequence<XRSpace>,
-        base_space: XRSpace,
-        transforms: Float32Array,
+        spaces: &Sequence<XRSpace>,
+        base_space: &XRSpace,
+        transforms: &Float32Array,
     ) -> bool {
         self.inner
             .call(
@@ -137,7 +137,7 @@ impl XRFrame {
 impl XRFrame {
     pub fn get_hit_test_results(
         &self,
-        hit_test_source: XRHitTestSource,
+        hit_test_source: &XRHitTestSource,
     ) -> Sequence<XRHitTestResult> {
         self.inner
             .call("getHitTestResults", &[hit_test_source.into()])
@@ -147,7 +147,7 @@ impl XRFrame {
 impl XRFrame {
     pub fn get_hit_test_results_for_transient_input(
         &self,
-        hit_test_source: XRTransientInputHitTestSource,
+        hit_test_source: &XRTransientInputHitTestSource,
     ) -> Sequence<XRTransientInputHitTestResult> {
         self.inner
             .call(
@@ -158,7 +158,7 @@ impl XRFrame {
     }
 }
 impl XRFrame {
-    pub fn get_light_estimate(&self, light_probe: XRLightProbe) -> XRLightEstimate {
+    pub fn get_light_estimate(&self, light_probe: &XRLightProbe) -> XRLightEstimate {
         self.inner
             .call("getLightEstimate", &[light_probe.into()])
             .as_::<XRLightEstimate>()

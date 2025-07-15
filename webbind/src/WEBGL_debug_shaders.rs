@@ -54,9 +54,9 @@ impl From<&WEBGL_debug_shaders> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(WEBGL_debug_shaders);
 
 impl WEBGL_debug_shaders {
-    pub fn get_translated_shader_source(&self, shader: WebGLShader) -> DOMString {
+    pub fn get_translated_shader_source(&self, shader: &WebGLShader) -> String {
         self.inner
             .call("getTranslatedShaderSource", &[shader.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }

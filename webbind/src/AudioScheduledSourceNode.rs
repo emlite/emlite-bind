@@ -58,7 +58,7 @@ impl AudioScheduledSourceNode {
         self.inner.get("onended").as_::<Any>()
     }
 
-    pub fn set_onended(&mut self, value: Any) {
+    pub fn set_onended(&mut self, value: &Any) {
         self.inner.set("onended", value);
     }
 }

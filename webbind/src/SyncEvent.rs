@@ -54,7 +54,7 @@ impl From<&SyncEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SyncEvent);
 
 impl SyncEvent {
-    pub fn new(type_: DOMString, init: Any) -> SyncEvent {
+    pub fn new(type_: &str, init: &Any) -> SyncEvent {
         Self {
             inner: emlite::Val::global("SyncEvent")
                 .new(&[type_.into(), init.into()])
@@ -63,8 +63,8 @@ impl SyncEvent {
     }
 }
 impl SyncEvent {
-    pub fn tag(&self) -> DOMString {
-        self.inner.get("tag").as_::<DOMString>()
+    pub fn tag(&self) -> String {
+        self.inner.get("tag").as_::<String>()
     }
 }
 impl SyncEvent {

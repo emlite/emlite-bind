@@ -54,7 +54,7 @@ impl From<&ScreenOrientation> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ScreenOrientation);
 
 impl ScreenOrientation {
-    pub fn lock(&self, orientation: OrientationLockType) -> Promise {
+    pub fn lock(&self, orientation: &OrientationLockType) -> Promise {
         self.inner
             .call("lock", &[orientation.into()])
             .as_::<Promise>()
@@ -80,7 +80,7 @@ impl ScreenOrientation {
         self.inner.get("onchange").as_::<Any>()
     }
 
-    pub fn set_onchange(&mut self, value: Any) {
+    pub fn set_onchange(&mut self, value: &Any) {
         self.inner.set("onchange", value);
     }
 }

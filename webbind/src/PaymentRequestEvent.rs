@@ -51,11 +51,11 @@ impl From<&PaymentMethodData> for emlite::Val {
 }
 
 impl PaymentMethodData {
-    pub fn supported_methods(&self) -> DOMString {
-        self.inner.get("supportedMethods").as_::<DOMString>()
+    pub fn supported_methods(&self) -> String {
+        self.inner.get("supportedMethods").as_::<String>()
     }
 
-    pub fn set_supported_methods(&mut self, value: DOMString) {
+    pub fn set_supported_methods(&mut self, value: &str) {
         self.inner.set("supportedMethods", value);
     }
 }
@@ -64,7 +64,7 @@ impl PaymentMethodData {
         self.inner.get("data").as_::<Object>()
     }
 
-    pub fn set_data(&mut self, value: Object) {
+    pub fn set_data(&mut self, value: &Object) {
         self.inner.set("data", value);
     }
 }
@@ -119,11 +119,11 @@ impl From<&PaymentDetailsModifier> for emlite::Val {
 }
 
 impl PaymentDetailsModifier {
-    pub fn supported_methods(&self) -> DOMString {
-        self.inner.get("supportedMethods").as_::<DOMString>()
+    pub fn supported_methods(&self) -> String {
+        self.inner.get("supportedMethods").as_::<String>()
     }
 
-    pub fn set_supported_methods(&mut self, value: DOMString) {
+    pub fn set_supported_methods(&mut self, value: &str) {
         self.inner.set("supportedMethods", value);
     }
 }
@@ -132,7 +132,7 @@ impl PaymentDetailsModifier {
         self.inner.get("total").as_::<Any>()
     }
 
-    pub fn set_total(&mut self, value: Any) {
+    pub fn set_total(&mut self, value: &Any) {
         self.inner.set("total", value);
     }
 }
@@ -143,7 +143,7 @@ impl PaymentDetailsModifier {
             .as_::<Sequence<Any>>()
     }
 
-    pub fn set_additional_display_items(&mut self, value: Sequence<Any>) {
+    pub fn set_additional_display_items(&mut self, value: &Sequence<Any>) {
         self.inner.set("additionalDisplayItems", value);
     }
 }
@@ -152,7 +152,7 @@ impl PaymentDetailsModifier {
         self.inner.get("data").as_::<Object>()
     }
 
-    pub fn set_data(&mut self, value: Object) {
+    pub fn set_data(&mut self, value: &Object) {
         self.inner.set("data", value);
     }
 }
@@ -207,20 +207,20 @@ impl From<&PaymentShippingOption> for emlite::Val {
 }
 
 impl PaymentShippingOption {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 
-    pub fn set_id(&mut self, value: DOMString) {
+    pub fn set_id(&mut self, value: &str) {
         self.inner.set("id", value);
     }
 }
 impl PaymentShippingOption {
-    pub fn label(&self) -> DOMString {
-        self.inner.get("label").as_::<DOMString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 
-    pub fn set_label(&mut self, value: DOMString) {
+    pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }
 }
@@ -229,7 +229,7 @@ impl PaymentShippingOption {
         self.inner.get("amount").as_::<Any>()
     }
 
-    pub fn set_amount(&mut self, value: Any) {
+    pub fn set_amount(&mut self, value: &Any) {
         self.inner.set("amount", value);
     }
 }
@@ -293,11 +293,11 @@ impl From<&PaymentRequestDetailsUpdate> for emlite::Val {
 }
 
 impl PaymentRequestDetailsUpdate {
-    pub fn error(&self) -> DOMString {
-        self.inner.get("error").as_::<DOMString>()
+    pub fn error(&self) -> String {
+        self.inner.get("error").as_::<String>()
     }
 
-    pub fn set_error(&mut self, value: DOMString) {
+    pub fn set_error(&mut self, value: &str) {
         self.inner.set("error", value);
     }
 }
@@ -306,7 +306,7 @@ impl PaymentRequestDetailsUpdate {
         self.inner.get("total").as_::<Any>()
     }
 
-    pub fn set_total(&mut self, value: Any) {
+    pub fn set_total(&mut self, value: &Any) {
         self.inner.set("total", value);
     }
 }
@@ -317,7 +317,7 @@ impl PaymentRequestDetailsUpdate {
             .as_::<Sequence<PaymentDetailsModifier>>()
     }
 
-    pub fn set_modifiers(&mut self, value: Sequence<PaymentDetailsModifier>) {
+    pub fn set_modifiers(&mut self, value: &Sequence<PaymentDetailsModifier>) {
         self.inner.set("modifiers", value);
     }
 }
@@ -328,7 +328,7 @@ impl PaymentRequestDetailsUpdate {
             .as_::<Sequence<PaymentShippingOption>>()
     }
 
-    pub fn set_shipping_options(&mut self, value: Sequence<PaymentShippingOption>) {
+    pub fn set_shipping_options(&mut self, value: &Sequence<PaymentShippingOption>) {
         self.inner.set("shippingOptions", value);
     }
 }
@@ -337,7 +337,7 @@ impl PaymentRequestDetailsUpdate {
         self.inner.get("paymentMethodErrors").as_::<Object>()
     }
 
-    pub fn set_payment_method_errors(&mut self, value: Object) {
+    pub fn set_payment_method_errors(&mut self, value: &Object) {
         self.inner.set("paymentMethodErrors", value);
     }
 }
@@ -346,7 +346,7 @@ impl PaymentRequestDetailsUpdate {
         self.inner.get("shippingAddressErrors").as_::<Any>()
     }
 
-    pub fn set_shipping_address_errors(&mut self, value: Any) {
+    pub fn set_shipping_address_errors(&mut self, value: &Any) {
         self.inner.set("shippingAddressErrors", value);
     }
 }
@@ -401,92 +401,92 @@ impl From<&AddressInit> for emlite::Val {
 }
 
 impl AddressInit {
-    pub fn country(&self) -> DOMString {
-        self.inner.get("country").as_::<DOMString>()
+    pub fn country(&self) -> String {
+        self.inner.get("country").as_::<String>()
     }
 
-    pub fn set_country(&mut self, value: DOMString) {
+    pub fn set_country(&mut self, value: &str) {
         self.inner.set("country", value);
     }
 }
 impl AddressInit {
-    pub fn address_line(&self) -> Sequence<DOMString> {
-        self.inner.get("addressLine").as_::<Sequence<DOMString>>()
+    pub fn address_line(&self) -> Sequence<String> {
+        self.inner.get("addressLine").as_::<Sequence<String>>()
     }
 
-    pub fn set_address_line(&mut self, value: Sequence<DOMString>) {
+    pub fn set_address_line(&mut self, value: &Sequence<String>) {
         self.inner.set("addressLine", value);
     }
 }
 impl AddressInit {
-    pub fn region(&self) -> DOMString {
-        self.inner.get("region").as_::<DOMString>()
+    pub fn region(&self) -> String {
+        self.inner.get("region").as_::<String>()
     }
 
-    pub fn set_region(&mut self, value: DOMString) {
+    pub fn set_region(&mut self, value: &str) {
         self.inner.set("region", value);
     }
 }
 impl AddressInit {
-    pub fn city(&self) -> DOMString {
-        self.inner.get("city").as_::<DOMString>()
+    pub fn city(&self) -> String {
+        self.inner.get("city").as_::<String>()
     }
 
-    pub fn set_city(&mut self, value: DOMString) {
+    pub fn set_city(&mut self, value: &str) {
         self.inner.set("city", value);
     }
 }
 impl AddressInit {
-    pub fn dependent_locality(&self) -> DOMString {
-        self.inner.get("dependentLocality").as_::<DOMString>()
+    pub fn dependent_locality(&self) -> String {
+        self.inner.get("dependentLocality").as_::<String>()
     }
 
-    pub fn set_dependent_locality(&mut self, value: DOMString) {
+    pub fn set_dependent_locality(&mut self, value: &str) {
         self.inner.set("dependentLocality", value);
     }
 }
 impl AddressInit {
-    pub fn postal_code(&self) -> DOMString {
-        self.inner.get("postalCode").as_::<DOMString>()
+    pub fn postal_code(&self) -> String {
+        self.inner.get("postalCode").as_::<String>()
     }
 
-    pub fn set_postal_code(&mut self, value: DOMString) {
+    pub fn set_postal_code(&mut self, value: &str) {
         self.inner.set("postalCode", value);
     }
 }
 impl AddressInit {
-    pub fn sorting_code(&self) -> DOMString {
-        self.inner.get("sortingCode").as_::<DOMString>()
+    pub fn sorting_code(&self) -> String {
+        self.inner.get("sortingCode").as_::<String>()
     }
 
-    pub fn set_sorting_code(&mut self, value: DOMString) {
+    pub fn set_sorting_code(&mut self, value: &str) {
         self.inner.set("sortingCode", value);
     }
 }
 impl AddressInit {
-    pub fn organization(&self) -> DOMString {
-        self.inner.get("organization").as_::<DOMString>()
+    pub fn organization(&self) -> String {
+        self.inner.get("organization").as_::<String>()
     }
 
-    pub fn set_organization(&mut self, value: DOMString) {
+    pub fn set_organization(&mut self, value: &str) {
         self.inner.set("organization", value);
     }
 }
 impl AddressInit {
-    pub fn recipient(&self) -> DOMString {
-        self.inner.get("recipient").as_::<DOMString>()
+    pub fn recipient(&self) -> String {
+        self.inner.get("recipient").as_::<String>()
     }
 
-    pub fn set_recipient(&mut self, value: DOMString) {
+    pub fn set_recipient(&mut self, value: &str) {
         self.inner.set("recipient", value);
     }
 }
 impl AddressInit {
-    pub fn phone(&self) -> DOMString {
-        self.inner.get("phone").as_::<DOMString>()
+    pub fn phone(&self) -> String {
+        self.inner.get("phone").as_::<String>()
     }
 
-    pub fn set_phone(&mut self, value: DOMString) {
+    pub fn set_phone(&mut self, value: &str) {
         self.inner.set("phone", value);
     }
 }
@@ -541,11 +541,11 @@ impl From<&PaymentHandlerResponse> for emlite::Val {
 }
 
 impl PaymentHandlerResponse {
-    pub fn method_name(&self) -> DOMString {
-        self.inner.get("methodName").as_::<DOMString>()
+    pub fn method_name(&self) -> String {
+        self.inner.get("methodName").as_::<String>()
     }
 
-    pub fn set_method_name(&mut self, value: DOMString) {
+    pub fn set_method_name(&mut self, value: &str) {
         self.inner.set("methodName", value);
     }
 }
@@ -554,34 +554,34 @@ impl PaymentHandlerResponse {
         self.inner.get("details").as_::<Object>()
     }
 
-    pub fn set_details(&mut self, value: Object) {
+    pub fn set_details(&mut self, value: &Object) {
         self.inner.set("details", value);
     }
 }
 impl PaymentHandlerResponse {
-    pub fn payer_name(&self) -> DOMString {
-        self.inner.get("payerName").as_::<DOMString>()
+    pub fn payer_name(&self) -> String {
+        self.inner.get("payerName").as_::<String>()
     }
 
-    pub fn set_payer_name(&mut self, value: DOMString) {
+    pub fn set_payer_name(&mut self, value: &str) {
         self.inner.set("payerName", value);
     }
 }
 impl PaymentHandlerResponse {
-    pub fn payer_email(&self) -> DOMString {
-        self.inner.get("payerEmail").as_::<DOMString>()
+    pub fn payer_email(&self) -> String {
+        self.inner.get("payerEmail").as_::<String>()
     }
 
-    pub fn set_payer_email(&mut self, value: DOMString) {
+    pub fn set_payer_email(&mut self, value: &str) {
         self.inner.set("payerEmail", value);
     }
 }
 impl PaymentHandlerResponse {
-    pub fn payer_phone(&self) -> DOMString {
-        self.inner.get("payerPhone").as_::<DOMString>()
+    pub fn payer_phone(&self) -> String {
+        self.inner.get("payerPhone").as_::<String>()
     }
 
-    pub fn set_payer_phone(&mut self, value: DOMString) {
+    pub fn set_payer_phone(&mut self, value: &str) {
         self.inner.set("payerPhone", value);
     }
 }
@@ -590,16 +590,16 @@ impl PaymentHandlerResponse {
         self.inner.get("shippingAddress").as_::<AddressInit>()
     }
 
-    pub fn set_shipping_address(&mut self, value: AddressInit) {
+    pub fn set_shipping_address(&mut self, value: &AddressInit) {
         self.inner.set("shippingAddress", value);
     }
 }
 impl PaymentHandlerResponse {
-    pub fn shipping_option(&self) -> DOMString {
-        self.inner.get("shippingOption").as_::<DOMString>()
+    pub fn shipping_option(&self) -> String {
+        self.inner.get("shippingOption").as_::<String>()
     }
 
-    pub fn set_shipping_option(&mut self, value: DOMString) {
+    pub fn set_shipping_option(&mut self, value: &str) {
         self.inner.set("shippingOption", value);
     }
 }
@@ -657,7 +657,7 @@ impl From<&PaymentRequestEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PaymentRequestEvent);
 
 impl PaymentRequestEvent {
-    pub fn new0(type_: DOMString) -> PaymentRequestEvent {
+    pub fn new0(type_: &str) -> PaymentRequestEvent {
         Self {
             inner: emlite::Val::global("PaymentRequestEvent")
                 .new(&[type_.into()])
@@ -665,7 +665,7 @@ impl PaymentRequestEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> PaymentRequestEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> PaymentRequestEvent {
         Self {
             inner: emlite::Val::global("PaymentRequestEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -674,18 +674,18 @@ impl PaymentRequestEvent {
     }
 }
 impl PaymentRequestEvent {
-    pub fn top_origin(&self) -> USVString {
-        self.inner.get("topOrigin").as_::<USVString>()
+    pub fn top_origin(&self) -> String {
+        self.inner.get("topOrigin").as_::<String>()
     }
 }
 impl PaymentRequestEvent {
-    pub fn payment_request_origin(&self) -> USVString {
-        self.inner.get("paymentRequestOrigin").as_::<USVString>()
+    pub fn payment_request_origin(&self) -> String {
+        self.inner.get("paymentRequestOrigin").as_::<String>()
     }
 }
 impl PaymentRequestEvent {
-    pub fn payment_request_id(&self) -> DOMString {
-        self.inner.get("paymentRequestId").as_::<DOMString>()
+    pub fn payment_request_id(&self) -> String {
+        self.inner.get("paymentRequestId").as_::<String>()
     }
 }
 impl PaymentRequestEvent {
@@ -720,24 +720,20 @@ impl PaymentRequestEvent {
     }
 }
 impl PaymentRequestEvent {
-    pub fn open_window(&self, url: USVString) -> Promise {
+    pub fn open_window(&self, url: &str) -> Promise {
         self.inner
             .call("openWindow", &[url.into()])
             .as_::<Promise>()
     }
 }
 impl PaymentRequestEvent {
-    pub fn change_payment_method0(&self, method_name: DOMString) -> Promise {
+    pub fn change_payment_method0(&self, method_name: &str) -> Promise {
         self.inner
             .call("changePaymentMethod", &[method_name.into()])
             .as_::<Promise>()
     }
 
-    pub fn change_payment_method1(
-        &self,
-        method_name: DOMString,
-        method_details: Object,
-    ) -> Promise {
+    pub fn change_payment_method1(&self, method_name: &str, method_details: &Object) -> Promise {
         self.inner
             .call(
                 "changePaymentMethod",
@@ -753,21 +749,21 @@ impl PaymentRequestEvent {
             .as_::<Promise>()
     }
 
-    pub fn change_shipping_address1(&self, shipping_address: AddressInit) -> Promise {
+    pub fn change_shipping_address1(&self, shipping_address: &AddressInit) -> Promise {
         self.inner
             .call("changeShippingAddress", &[shipping_address.into()])
             .as_::<Promise>()
     }
 }
 impl PaymentRequestEvent {
-    pub fn change_shipping_option(&self, shipping_option: DOMString) -> Promise {
+    pub fn change_shipping_option(&self, shipping_option: &str) -> Promise {
         self.inner
             .call("changeShippingOption", &[shipping_option.into()])
             .as_::<Promise>()
     }
 }
 impl PaymentRequestEvent {
-    pub fn respond_with(&self, handler_response_promise: Promise) -> Undefined {
+    pub fn respond_with(&self, handler_response_promise: &Promise) -> Undefined {
         self.inner
             .call("respondWith", &[handler_response_promise.into()])
             .as_::<Undefined>()

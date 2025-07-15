@@ -54,7 +54,7 @@ impl From<&ImageData> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ImageData);
 
 impl ImageData {
-    pub fn new0(data: Any, sw: u32) -> ImageData {
+    pub fn new0(data: &Any, sw: u32) -> ImageData {
         Self {
             inner: emlite::Val::global("ImageData")
                 .new(&[data.into(), sw.into()])
@@ -62,7 +62,7 @@ impl ImageData {
         }
     }
 
-    pub fn new1(data: Any, sw: u32, sh: u32) -> ImageData {
+    pub fn new1(data: &Any, sw: u32, sh: u32) -> ImageData {
         Self {
             inner: emlite::Val::global("ImageData")
                 .new(&[data.into(), sw.into(), sh.into()])
@@ -70,7 +70,7 @@ impl ImageData {
         }
     }
 
-    pub fn new2(data: Any, sw: u32, sh: u32, settings: ImageDataSettings) -> ImageData {
+    pub fn new2(data: &Any, sw: u32, sh: u32, settings: &ImageDataSettings) -> ImageData {
         Self {
             inner: emlite::Val::global("ImageData")
                 .new(&[data.into(), sw.into(), sh.into(), settings.into()])

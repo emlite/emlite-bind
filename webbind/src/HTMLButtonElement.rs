@@ -63,11 +63,11 @@ impl HTMLButtonElement {
     }
 }
 impl HTMLButtonElement {
-    pub fn command(&self) -> DOMString {
-        self.inner.get("command").as_::<DOMString>()
+    pub fn command(&self) -> String {
+        self.inner.get("command").as_::<String>()
     }
 
-    pub fn set_command(&mut self, value: DOMString) {
+    pub fn set_command(&mut self, value: &str) {
         self.inner.set("command", value);
     }
 }
@@ -76,7 +76,7 @@ impl HTMLButtonElement {
         self.inner.get("commandForElement").as_::<Element>()
     }
 
-    pub fn set_command_for_element(&mut self, value: Element) {
+    pub fn set_command_for_element(&mut self, value: &Element) {
         self.inner.set("commandForElement", value);
     }
 }
@@ -95,29 +95,29 @@ impl HTMLButtonElement {
     }
 }
 impl HTMLButtonElement {
-    pub fn form_action(&self) -> USVString {
-        self.inner.get("formAction").as_::<USVString>()
+    pub fn form_action(&self) -> String {
+        self.inner.get("formAction").as_::<String>()
     }
 
-    pub fn set_form_action(&mut self, value: USVString) {
+    pub fn set_form_action(&mut self, value: &str) {
         self.inner.set("formAction", value);
     }
 }
 impl HTMLButtonElement {
-    pub fn form_enctype(&self) -> DOMString {
-        self.inner.get("formEnctype").as_::<DOMString>()
+    pub fn form_enctype(&self) -> String {
+        self.inner.get("formEnctype").as_::<String>()
     }
 
-    pub fn set_form_enctype(&mut self, value: DOMString) {
+    pub fn set_form_enctype(&mut self, value: &str) {
         self.inner.set("formEnctype", value);
     }
 }
 impl HTMLButtonElement {
-    pub fn form_method(&self) -> DOMString {
-        self.inner.get("formMethod").as_::<DOMString>()
+    pub fn form_method(&self) -> String {
+        self.inner.get("formMethod").as_::<String>()
     }
 
-    pub fn set_form_method(&mut self, value: DOMString) {
+    pub fn set_form_method(&mut self, value: &str) {
         self.inner.set("formMethod", value);
     }
 }
@@ -131,38 +131,38 @@ impl HTMLButtonElement {
     }
 }
 impl HTMLButtonElement {
-    pub fn form_target(&self) -> DOMString {
-        self.inner.get("formTarget").as_::<DOMString>()
+    pub fn form_target(&self) -> String {
+        self.inner.get("formTarget").as_::<String>()
     }
 
-    pub fn set_form_target(&mut self, value: DOMString) {
+    pub fn set_form_target(&mut self, value: &str) {
         self.inner.set("formTarget", value);
     }
 }
 impl HTMLButtonElement {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
 impl HTMLButtonElement {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: DOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }
 impl HTMLButtonElement {
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> String {
+        self.inner.get("value").as_::<String>()
     }
 
-    pub fn set_value(&mut self, value: DOMString) {
+    pub fn set_value(&mut self, value: &str) {
         self.inner.set("value", value);
     }
 }
@@ -177,8 +177,8 @@ impl HTMLButtonElement {
     }
 }
 impl HTMLButtonElement {
-    pub fn validation_message(&self) -> DOMString {
-        self.inner.get("validationMessage").as_::<DOMString>()
+    pub fn validation_message(&self) -> String {
+        self.inner.get("validationMessage").as_::<String>()
     }
 }
 impl HTMLButtonElement {
@@ -192,7 +192,7 @@ impl HTMLButtonElement {
     }
 }
 impl HTMLButtonElement {
-    pub fn set_custom_validity(&self, error: DOMString) -> Undefined {
+    pub fn set_custom_validity(&self, error: &str) -> Undefined {
         self.inner
             .call("setCustomValidity", &[error.into()])
             .as_::<Undefined>()
@@ -208,16 +208,16 @@ impl HTMLButtonElement {
         self.inner.get("popoverTargetElement").as_::<Element>()
     }
 
-    pub fn set_popover_target_element(&mut self, value: Element) {
+    pub fn set_popover_target_element(&mut self, value: &Element) {
         self.inner.set("popoverTargetElement", value);
     }
 }
 impl HTMLButtonElement {
-    pub fn popover_target_action(&self) -> DOMString {
-        self.inner.get("popoverTargetAction").as_::<DOMString>()
+    pub fn popover_target_action(&self) -> String {
+        self.inner.get("popoverTargetAction").as_::<String>()
     }
 
-    pub fn set_popover_target_action(&mut self, value: DOMString) {
+    pub fn set_popover_target_action(&mut self, value: &str) {
         self.inner.set("popoverTargetAction", value);
     }
 }

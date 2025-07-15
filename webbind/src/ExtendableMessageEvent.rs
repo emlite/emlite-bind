@@ -54,7 +54,7 @@ impl From<&ExtendableMessageEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ExtendableMessageEvent);
 
 impl ExtendableMessageEvent {
-    pub fn new0(type_: DOMString) -> ExtendableMessageEvent {
+    pub fn new0(type_: &str) -> ExtendableMessageEvent {
         Self {
             inner: emlite::Val::global("ExtendableMessageEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl ExtendableMessageEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> ExtendableMessageEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> ExtendableMessageEvent {
         Self {
             inner: emlite::Val::global("ExtendableMessageEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -76,13 +76,13 @@ impl ExtendableMessageEvent {
     }
 }
 impl ExtendableMessageEvent {
-    pub fn origin(&self) -> USVString {
-        self.inner.get("origin").as_::<USVString>()
+    pub fn origin(&self) -> String {
+        self.inner.get("origin").as_::<String>()
     }
 }
 impl ExtendableMessageEvent {
-    pub fn last_event_id(&self) -> DOMString {
-        self.inner.get("lastEventId").as_::<DOMString>()
+    pub fn last_event_id(&self) -> String {
+        self.inner.get("lastEventId").as_::<String>()
     }
 }
 impl ExtendableMessageEvent {

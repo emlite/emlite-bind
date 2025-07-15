@@ -54,11 +54,11 @@ impl From<&CSSFunctionDescriptors> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSFunctionDescriptors);
 
 impl CSSFunctionDescriptors {
-    pub fn result(&self) -> CSSOMString {
-        self.inner.get("result").as_::<CSSOMString>()
+    pub fn result(&self) -> String {
+        self.inner.get("result").as_::<String>()
     }
 
-    pub fn set_result(&mut self, value: CSSOMString) {
+    pub fn set_result(&mut self, value: &str) {
         self.inner.set("result", value);
     }
 }

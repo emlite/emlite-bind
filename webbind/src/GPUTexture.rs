@@ -55,7 +55,7 @@ impl GPUTextureViewDescriptor {
         self.inner.get("format").as_::<GPUTextureFormat>()
     }
 
-    pub fn set_format(&mut self, value: GPUTextureFormat) {
+    pub fn set_format(&mut self, value: &GPUTextureFormat) {
         self.inner.set("format", value);
     }
 }
@@ -64,7 +64,7 @@ impl GPUTextureViewDescriptor {
         self.inner.get("dimension").as_::<GPUTextureViewDimension>()
     }
 
-    pub fn set_dimension(&mut self, value: GPUTextureViewDimension) {
+    pub fn set_dimension(&mut self, value: &GPUTextureViewDimension) {
         self.inner.set("dimension", value);
     }
 }
@@ -73,7 +73,7 @@ impl GPUTextureViewDescriptor {
         self.inner.get("usage").as_::<Any>()
     }
 
-    pub fn set_usage(&mut self, value: Any) {
+    pub fn set_usage(&mut self, value: &Any) {
         self.inner.set("usage", value);
     }
 }
@@ -82,7 +82,7 @@ impl GPUTextureViewDescriptor {
         self.inner.get("aspect").as_::<GPUTextureAspect>()
     }
 
-    pub fn set_aspect(&mut self, value: GPUTextureAspect) {
+    pub fn set_aspect(&mut self, value: &GPUTextureAspect) {
         self.inner.set("aspect", value);
     }
 }
@@ -91,7 +91,7 @@ impl GPUTextureViewDescriptor {
         self.inner.get("baseMipLevel").as_::<Any>()
     }
 
-    pub fn set_base_mip_level(&mut self, value: Any) {
+    pub fn set_base_mip_level(&mut self, value: &Any) {
         self.inner.set("baseMipLevel", value);
     }
 }
@@ -100,7 +100,7 @@ impl GPUTextureViewDescriptor {
         self.inner.get("mipLevelCount").as_::<Any>()
     }
 
-    pub fn set_mip_level_count(&mut self, value: Any) {
+    pub fn set_mip_level_count(&mut self, value: &Any) {
         self.inner.set("mipLevelCount", value);
     }
 }
@@ -109,7 +109,7 @@ impl GPUTextureViewDescriptor {
         self.inner.get("baseArrayLayer").as_::<Any>()
     }
 
-    pub fn set_base_array_layer(&mut self, value: Any) {
+    pub fn set_base_array_layer(&mut self, value: &Any) {
         self.inner.set("baseArrayLayer", value);
     }
 }
@@ -118,7 +118,7 @@ impl GPUTextureViewDescriptor {
         self.inner.get("arrayLayerCount").as_::<Any>()
     }
 
-    pub fn set_array_layer_count(&mut self, value: Any) {
+    pub fn set_array_layer_count(&mut self, value: &Any) {
         self.inner.set("arrayLayerCount", value);
     }
 }
@@ -180,7 +180,7 @@ impl GPUTexture {
         self.inner.call("createView", &[]).as_::<GPUTextureView>()
     }
 
-    pub fn create_view1(&self, descriptor: GPUTextureViewDescriptor) -> GPUTextureView {
+    pub fn create_view1(&self, descriptor: &GPUTextureViewDescriptor) -> GPUTextureView {
         self.inner
             .call("createView", &[descriptor.into()])
             .as_::<GPUTextureView>()
@@ -232,11 +232,11 @@ impl GPUTexture {
     }
 }
 impl GPUTexture {
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 
-    pub fn set_label(&mut self, value: USVString) {
+    pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }
 }

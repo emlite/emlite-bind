@@ -62,7 +62,7 @@ impl WebTransportError {
         }
     }
 
-    pub fn new1(message: DOMString) -> WebTransportError {
+    pub fn new1(message: &str) -> WebTransportError {
         Self {
             inner: emlite::Val::global("WebTransportError")
                 .new(&[message.into()])
@@ -70,7 +70,7 @@ impl WebTransportError {
         }
     }
 
-    pub fn new2(message: DOMString, options: Any) -> WebTransportError {
+    pub fn new2(message: &str, options: &Any) -> WebTransportError {
         Self {
             inner: emlite::Val::global("WebTransportError")
                 .new(&[message.into(), options.into()])

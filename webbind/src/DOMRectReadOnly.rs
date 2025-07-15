@@ -187,7 +187,7 @@ impl DOMRectReadOnly {
             .as_::<DOMRectReadOnly>()
     }
 
-    pub fn from_rect1(other: DOMRectInit) -> DOMRectReadOnly {
+    pub fn from_rect1(other: &DOMRectInit) -> DOMRectReadOnly {
         emlite::Val::global("DOMRectReadOnly")
             .call("fromRect", &[other.into()])
             .as_::<DOMRectReadOnly>()

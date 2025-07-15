@@ -54,7 +54,7 @@ impl From<&XRReferenceSpaceEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(XRReferenceSpaceEvent);
 
 impl XRReferenceSpaceEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> XRReferenceSpaceEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> XRReferenceSpaceEvent {
         Self {
             inner: emlite::Val::global("XRReferenceSpaceEvent")
                 .new(&[type_.into(), event_init_dict.into()])

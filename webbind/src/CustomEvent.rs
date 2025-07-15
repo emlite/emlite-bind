@@ -54,7 +54,7 @@ impl From<&CustomEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CustomEvent);
 
 impl CustomEvent {
-    pub fn new0(type_: DOMString) -> CustomEvent {
+    pub fn new0(type_: &str) -> CustomEvent {
         Self {
             inner: emlite::Val::global("CustomEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl CustomEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> CustomEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> CustomEvent {
         Self {
             inner: emlite::Val::global("CustomEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -76,24 +76,19 @@ impl CustomEvent {
     }
 }
 impl CustomEvent {
-    pub fn init_custom_event0(&self, type_: DOMString) -> Undefined {
+    pub fn init_custom_event0(&self, type_: &str) -> Undefined {
         self.inner
             .call("initCustomEvent", &[type_.into()])
             .as_::<Undefined>()
     }
 
-    pub fn init_custom_event1(&self, type_: DOMString, bubbles: bool) -> Undefined {
+    pub fn init_custom_event1(&self, type_: &str, bubbles: bool) -> Undefined {
         self.inner
             .call("initCustomEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
     }
 
-    pub fn init_custom_event2(
-        &self,
-        type_: DOMString,
-        bubbles: bool,
-        cancelable: bool,
-    ) -> Undefined {
+    pub fn init_custom_event2(&self, type_: &str, bubbles: bool, cancelable: bool) -> Undefined {
         self.inner
             .call(
                 "initCustomEvent",
@@ -104,10 +99,10 @@ impl CustomEvent {
 
     pub fn init_custom_event3(
         &self,
-        type_: DOMString,
+        type_: &str,
         bubbles: bool,
         cancelable: bool,
-        detail: Any,
+        detail: &Any,
     ) -> Undefined {
         self.inner
             .call(

@@ -63,29 +63,29 @@ impl HTMLObjectElement {
     }
 }
 impl HTMLObjectElement {
-    pub fn data(&self) -> USVString {
-        self.inner.get("data").as_::<USVString>()
+    pub fn data(&self) -> String {
+        self.inner.get("data").as_::<String>()
     }
 
-    pub fn set_data(&mut self, value: USVString) {
+    pub fn set_data(&mut self, value: &str) {
         self.inner.set("data", value);
     }
 }
 impl HTMLObjectElement {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: DOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }
 impl HTMLObjectElement {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
@@ -95,20 +95,20 @@ impl HTMLObjectElement {
     }
 }
 impl HTMLObjectElement {
-    pub fn width(&self) -> DOMString {
-        self.inner.get("width").as_::<DOMString>()
+    pub fn width(&self) -> String {
+        self.inner.get("width").as_::<String>()
     }
 
-    pub fn set_width(&mut self, value: DOMString) {
+    pub fn set_width(&mut self, value: &str) {
         self.inner.set("width", value);
     }
 }
 impl HTMLObjectElement {
-    pub fn height(&self) -> DOMString {
-        self.inner.get("height").as_::<DOMString>()
+    pub fn height(&self) -> String {
+        self.inner.get("height").as_::<String>()
     }
 
-    pub fn set_height(&mut self, value: DOMString) {
+    pub fn set_height(&mut self, value: &str) {
         self.inner.set("height", value);
     }
 }
@@ -138,8 +138,8 @@ impl HTMLObjectElement {
     }
 }
 impl HTMLObjectElement {
-    pub fn validation_message(&self) -> DOMString {
-        self.inner.get("validationMessage").as_::<DOMString>()
+    pub fn validation_message(&self) -> String {
+        self.inner.get("validationMessage").as_::<String>()
     }
 }
 impl HTMLObjectElement {
@@ -153,36 +153,36 @@ impl HTMLObjectElement {
     }
 }
 impl HTMLObjectElement {
-    pub fn set_custom_validity(&self, error: DOMString) -> Undefined {
+    pub fn set_custom_validity(&self, error: &str) -> Undefined {
         self.inner
             .call("setCustomValidity", &[error.into()])
             .as_::<Undefined>()
     }
 }
 impl HTMLObjectElement {
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> String {
+        self.inner.get("align").as_::<String>()
     }
 
-    pub fn set_align(&mut self, value: DOMString) {
+    pub fn set_align(&mut self, value: &str) {
         self.inner.set("align", value);
     }
 }
 impl HTMLObjectElement {
-    pub fn archive(&self) -> DOMString {
-        self.inner.get("archive").as_::<DOMString>()
+    pub fn archive(&self) -> String {
+        self.inner.get("archive").as_::<String>()
     }
 
-    pub fn set_archive(&mut self, value: DOMString) {
+    pub fn set_archive(&mut self, value: &str) {
         self.inner.set("archive", value);
     }
 }
 impl HTMLObjectElement {
-    pub fn code(&self) -> DOMString {
-        self.inner.get("code").as_::<DOMString>()
+    pub fn code(&self) -> String {
+        self.inner.get("code").as_::<String>()
     }
 
-    pub fn set_code(&mut self, value: DOMString) {
+    pub fn set_code(&mut self, value: &str) {
         self.inner.set("code", value);
     }
 }
@@ -205,11 +205,11 @@ impl HTMLObjectElement {
     }
 }
 impl HTMLObjectElement {
-    pub fn standby(&self) -> DOMString {
-        self.inner.get("standby").as_::<DOMString>()
+    pub fn standby(&self) -> String {
+        self.inner.get("standby").as_::<String>()
     }
 
-    pub fn set_standby(&mut self, value: DOMString) {
+    pub fn set_standby(&mut self, value: &str) {
         self.inner.set("standby", value);
     }
 }
@@ -223,38 +223,38 @@ impl HTMLObjectElement {
     }
 }
 impl HTMLObjectElement {
-    pub fn code_base(&self) -> DOMString {
-        self.inner.get("codeBase").as_::<DOMString>()
+    pub fn code_base(&self) -> String {
+        self.inner.get("codeBase").as_::<String>()
     }
 
-    pub fn set_code_base(&mut self, value: DOMString) {
+    pub fn set_code_base(&mut self, value: &str) {
         self.inner.set("codeBase", value);
     }
 }
 impl HTMLObjectElement {
-    pub fn code_type(&self) -> DOMString {
-        self.inner.get("codeType").as_::<DOMString>()
+    pub fn code_type(&self) -> String {
+        self.inner.get("codeType").as_::<String>()
     }
 
-    pub fn set_code_type(&mut self, value: DOMString) {
+    pub fn set_code_type(&mut self, value: &str) {
         self.inner.set("codeType", value);
     }
 }
 impl HTMLObjectElement {
-    pub fn use_map(&self) -> DOMString {
-        self.inner.get("useMap").as_::<DOMString>()
+    pub fn use_map(&self) -> String {
+        self.inner.get("useMap").as_::<String>()
     }
 
-    pub fn set_use_map(&mut self, value: DOMString) {
+    pub fn set_use_map(&mut self, value: &str) {
         self.inner.set("useMap", value);
     }
 }
 impl HTMLObjectElement {
-    pub fn border(&self) -> DOMString {
-        self.inner.get("border").as_::<DOMString>()
+    pub fn border(&self) -> String {
+        self.inner.get("border").as_::<String>()
     }
 
-    pub fn set_border(&mut self, value: DOMString) {
+    pub fn set_border(&mut self, value: &str) {
         self.inner.set("border", value);
     }
 }

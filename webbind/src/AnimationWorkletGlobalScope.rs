@@ -54,7 +54,7 @@ impl From<&AnimationWorkletGlobalScope> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(AnimationWorkletGlobalScope);
 
 impl AnimationWorkletGlobalScope {
-    pub fn register_animator(&self, name: DOMString, animator_ctor: Function) -> Undefined {
+    pub fn register_animator(&self, name: &str, animator_ctor: &Function) -> Undefined {
         self.inner
             .call("registerAnimator", &[name.into(), animator_ctor.into()])
             .as_::<Undefined>()

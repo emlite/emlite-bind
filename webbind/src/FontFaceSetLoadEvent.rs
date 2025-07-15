@@ -54,7 +54,7 @@ impl From<&FontFaceSetLoadEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(FontFaceSetLoadEvent);
 
 impl FontFaceSetLoadEvent {
-    pub fn new0(type_: CSSOMString) -> FontFaceSetLoadEvent {
+    pub fn new0(type_: &str) -> FontFaceSetLoadEvent {
         Self {
             inner: emlite::Val::global("FontFaceSetLoadEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl FontFaceSetLoadEvent {
         }
     }
 
-    pub fn new1(type_: CSSOMString, event_init_dict: Any) -> FontFaceSetLoadEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> FontFaceSetLoadEvent {
         Self {
             inner: emlite::Val::global("FontFaceSetLoadEvent")
                 .new(&[type_.into(), event_init_dict.into()])

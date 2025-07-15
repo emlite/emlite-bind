@@ -60,7 +60,7 @@ impl DOMQuad {
         }
     }
 
-    pub fn new1(p1: DOMPointInit) -> DOMQuad {
+    pub fn new1(p1: &DOMPointInit) -> DOMQuad {
         Self {
             inner: emlite::Val::global("DOMQuad")
                 .new(&[p1.into()])
@@ -68,7 +68,7 @@ impl DOMQuad {
         }
     }
 
-    pub fn new2(p1: DOMPointInit, p2: DOMPointInit) -> DOMQuad {
+    pub fn new2(p1: &DOMPointInit, p2: &DOMPointInit) -> DOMQuad {
         Self {
             inner: emlite::Val::global("DOMQuad")
                 .new(&[p1.into(), p2.into()])
@@ -76,7 +76,7 @@ impl DOMQuad {
         }
     }
 
-    pub fn new3(p1: DOMPointInit, p2: DOMPointInit, p3: DOMPointInit) -> DOMQuad {
+    pub fn new3(p1: &DOMPointInit, p2: &DOMPointInit, p3: &DOMPointInit) -> DOMQuad {
         Self {
             inner: emlite::Val::global("DOMQuad")
                 .new(&[p1.into(), p2.into(), p3.into()])
@@ -84,7 +84,12 @@ impl DOMQuad {
         }
     }
 
-    pub fn new4(p1: DOMPointInit, p2: DOMPointInit, p3: DOMPointInit, p4: DOMPointInit) -> DOMQuad {
+    pub fn new4(
+        p1: &DOMPointInit,
+        p2: &DOMPointInit,
+        p3: &DOMPointInit,
+        p4: &DOMPointInit,
+    ) -> DOMQuad {
         Self {
             inner: emlite::Val::global("DOMQuad")
                 .new(&[p1.into(), p2.into(), p3.into(), p4.into()])
@@ -99,7 +104,7 @@ impl DOMQuad {
             .as_::<DOMQuad>()
     }
 
-    pub fn from_rect1(other: DOMRectInit) -> DOMQuad {
+    pub fn from_rect1(other: &DOMRectInit) -> DOMQuad {
         emlite::Val::global("DOMQuad")
             .call("fromRect", &[other.into()])
             .as_::<DOMQuad>()
@@ -112,7 +117,7 @@ impl DOMQuad {
             .as_::<DOMQuad>()
     }
 
-    pub fn from_quad1(other: DOMQuadInit) -> DOMQuad {
+    pub fn from_quad1(other: &DOMQuadInit) -> DOMQuad {
         emlite::Val::global("DOMQuad")
             .call("fromQuad", &[other.into()])
             .as_::<DOMQuad>()

@@ -54,8 +54,8 @@ impl From<&MediaKeySystemAccess> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MediaKeySystemAccess);
 
 impl MediaKeySystemAccess {
-    pub fn key_system(&self) -> DOMString {
-        self.inner.get("keySystem").as_::<DOMString>()
+    pub fn key_system(&self) -> String {
+        self.inner.get("keySystem").as_::<String>()
     }
 }
 impl MediaKeySystemAccess {

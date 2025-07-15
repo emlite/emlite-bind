@@ -55,7 +55,7 @@ impl XRMediaQuadLayerInit {
         self.inner.get("transform").as_::<XRRigidTransform>()
     }
 
-    pub fn set_transform(&mut self, value: XRRigidTransform) {
+    pub fn set_transform(&mut self, value: &XRRigidTransform) {
         self.inner.set("transform", value);
     }
 }
@@ -132,7 +132,7 @@ impl XRMediaCylinderLayerInit {
         self.inner.get("transform").as_::<XRRigidTransform>()
     }
 
-    pub fn set_transform(&mut self, value: XRRigidTransform) {
+    pub fn set_transform(&mut self, value: &XRRigidTransform) {
         self.inner.set("transform", value);
     }
 }
@@ -218,7 +218,7 @@ impl XRMediaEquirectLayerInit {
         self.inner.get("transform").as_::<XRRigidTransform>()
     }
 
-    pub fn set_transform(&mut self, value: XRRigidTransform) {
+    pub fn set_transform(&mut self, value: &XRRigidTransform) {
         self.inner.set("transform", value);
     }
 }
@@ -312,7 +312,7 @@ impl From<&XRMediaBinding> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(XRMediaBinding);
 
 impl XRMediaBinding {
-    pub fn new(session: XRSession) -> XRMediaBinding {
+    pub fn new(session: &XRSession) -> XRMediaBinding {
         Self {
             inner: emlite::Val::global("XRMediaBinding")
                 .new(&[session.into()])
@@ -321,7 +321,7 @@ impl XRMediaBinding {
     }
 }
 impl XRMediaBinding {
-    pub fn create_quad_layer0(&self, video: HTMLVideoElement) -> XRQuadLayer {
+    pub fn create_quad_layer0(&self, video: &HTMLVideoElement) -> XRQuadLayer {
         self.inner
             .call("createQuadLayer", &[video.into()])
             .as_::<XRQuadLayer>()
@@ -329,8 +329,8 @@ impl XRMediaBinding {
 
     pub fn create_quad_layer1(
         &self,
-        video: HTMLVideoElement,
-        init: XRMediaQuadLayerInit,
+        video: &HTMLVideoElement,
+        init: &XRMediaQuadLayerInit,
     ) -> XRQuadLayer {
         self.inner
             .call("createQuadLayer", &[video.into(), init.into()])
@@ -338,7 +338,7 @@ impl XRMediaBinding {
     }
 }
 impl XRMediaBinding {
-    pub fn create_cylinder_layer0(&self, video: HTMLVideoElement) -> XRCylinderLayer {
+    pub fn create_cylinder_layer0(&self, video: &HTMLVideoElement) -> XRCylinderLayer {
         self.inner
             .call("createCylinderLayer", &[video.into()])
             .as_::<XRCylinderLayer>()
@@ -346,8 +346,8 @@ impl XRMediaBinding {
 
     pub fn create_cylinder_layer1(
         &self,
-        video: HTMLVideoElement,
-        init: XRMediaCylinderLayerInit,
+        video: &HTMLVideoElement,
+        init: &XRMediaCylinderLayerInit,
     ) -> XRCylinderLayer {
         self.inner
             .call("createCylinderLayer", &[video.into(), init.into()])
@@ -355,7 +355,7 @@ impl XRMediaBinding {
     }
 }
 impl XRMediaBinding {
-    pub fn create_equirect_layer0(&self, video: HTMLVideoElement) -> XREquirectLayer {
+    pub fn create_equirect_layer0(&self, video: &HTMLVideoElement) -> XREquirectLayer {
         self.inner
             .call("createEquirectLayer", &[video.into()])
             .as_::<XREquirectLayer>()
@@ -363,8 +363,8 @@ impl XRMediaBinding {
 
     pub fn create_equirect_layer1(
         &self,
-        video: HTMLVideoElement,
-        init: XRMediaEquirectLayerInit,
+        video: &HTMLVideoElement,
+        init: &XRMediaEquirectLayerInit,
     ) -> XREquirectLayer {
         self.inner
             .call("createEquirectLayer", &[video.into(), init.into()])

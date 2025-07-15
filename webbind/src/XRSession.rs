@@ -91,7 +91,7 @@ impl XRRenderStateInit {
         self.inner.get("baseLayer").as_::<XRWebGLLayer>()
     }
 
-    pub fn set_base_layer(&mut self, value: XRWebGLLayer) {
+    pub fn set_base_layer(&mut self, value: &XRWebGLLayer) {
         self.inner.set("baseLayer", value);
     }
 }
@@ -100,7 +100,7 @@ impl XRRenderStateInit {
         self.inner.get("layers").as_::<Sequence<XRLayer>>()
     }
 
-    pub fn set_layers(&mut self, value: Sequence<XRLayer>) {
+    pub fn set_layers(&mut self, value: &Sequence<XRLayer>) {
         self.inner.set("layers", value);
     }
 }
@@ -159,7 +159,7 @@ impl XRDOMOverlayState {
         self.inner.get("type").as_::<XRDOMOverlayType>()
     }
 
-    pub fn set_type_(&mut self, value: XRDOMOverlayType) {
+    pub fn set_type_(&mut self, value: &XRDOMOverlayType) {
         self.inner.set("type", value);
     }
 }
@@ -218,7 +218,7 @@ impl XRHitTestOptionsInit {
         self.inner.get("space").as_::<XRSpace>()
     }
 
-    pub fn set_space(&mut self, value: XRSpace) {
+    pub fn set_space(&mut self, value: &XRSpace) {
         self.inner.set("space", value);
     }
 }
@@ -229,7 +229,7 @@ impl XRHitTestOptionsInit {
             .as_::<Sequence<XRHitTestTrackableType>>()
     }
 
-    pub fn set_entity_types(&mut self, value: Sequence<XRHitTestTrackableType>) {
+    pub fn set_entity_types(&mut self, value: &Sequence<XRHitTestTrackableType>) {
         self.inner.set("entityTypes", value);
     }
 }
@@ -238,7 +238,7 @@ impl XRHitTestOptionsInit {
         self.inner.get("offsetRay").as_::<XRRay>()
     }
 
-    pub fn set_offset_ray(&mut self, value: XRRay) {
+    pub fn set_offset_ray(&mut self, value: &XRRay) {
         self.inner.set("offsetRay", value);
     }
 }
@@ -293,11 +293,11 @@ impl From<&XRTransientInputHitTestOptionsInit> for emlite::Val {
 }
 
 impl XRTransientInputHitTestOptionsInit {
-    pub fn profile(&self) -> DOMString {
-        self.inner.get("profile").as_::<DOMString>()
+    pub fn profile(&self) -> String {
+        self.inner.get("profile").as_::<String>()
     }
 
-    pub fn set_profile(&mut self, value: DOMString) {
+    pub fn set_profile(&mut self, value: &str) {
         self.inner.set("profile", value);
     }
 }
@@ -308,7 +308,7 @@ impl XRTransientInputHitTestOptionsInit {
             .as_::<Sequence<XRHitTestTrackableType>>()
     }
 
-    pub fn set_entity_types(&mut self, value: Sequence<XRHitTestTrackableType>) {
+    pub fn set_entity_types(&mut self, value: &Sequence<XRHitTestTrackableType>) {
         self.inner.set("entityTypes", value);
     }
 }
@@ -317,7 +317,7 @@ impl XRTransientInputHitTestOptionsInit {
         self.inner.get("offsetRay").as_::<XRRay>()
     }
 
-    pub fn set_offset_ray(&mut self, value: XRRay) {
+    pub fn set_offset_ray(&mut self, value: &XRRay) {
         self.inner.set("offsetRay", value);
     }
 }
@@ -378,7 +378,7 @@ impl XRLightProbeInit {
             .as_::<XRReflectionFormat>()
     }
 
-    pub fn set_reflection_format(&mut self, value: XRReflectionFormat) {
+    pub fn set_reflection_format(&mut self, value: &XRReflectionFormat) {
         self.inner.set("reflectionFormat", value);
     }
 }
@@ -466,10 +466,10 @@ impl XRSession {
     }
 }
 impl XRSession {
-    pub fn enabled_features(&self) -> FrozenArray<DOMString> {
+    pub fn enabled_features(&self) -> FrozenArray<String> {
         self.inner
             .get("enabledFeatures")
-            .as_::<FrozenArray<DOMString>>()
+            .as_::<FrozenArray<String>>()
     }
 }
 impl XRSession {
@@ -482,7 +482,7 @@ impl XRSession {
         self.inner.call("updateRenderState", &[]).as_::<Undefined>()
     }
 
-    pub fn update_render_state1(&self, state: XRRenderStateInit) -> Undefined {
+    pub fn update_render_state1(&self, state: &XRRenderStateInit) -> Undefined {
         self.inner
             .call("updateRenderState", &[state.into()])
             .as_::<Undefined>()
@@ -496,14 +496,14 @@ impl XRSession {
     }
 }
 impl XRSession {
-    pub fn request_reference_space(&self, type_: XRReferenceSpaceType) -> Promise {
+    pub fn request_reference_space(&self, type_: &XRReferenceSpaceType) -> Promise {
         self.inner
             .call("requestReferenceSpace", &[type_.into()])
             .as_::<Promise>()
     }
 }
 impl XRSession {
-    pub fn request_animation_frame(&self, callback: Function) -> u32 {
+    pub fn request_animation_frame(&self, callback: &Function) -> u32 {
         self.inner
             .call("requestAnimationFrame", &[callback.into()])
             .as_::<u32>()
@@ -526,7 +526,7 @@ impl XRSession {
         self.inner.get("onend").as_::<Any>()
     }
 
-    pub fn set_onend(&mut self, value: Any) {
+    pub fn set_onend(&mut self, value: &Any) {
         self.inner.set("onend", value);
     }
 }
@@ -535,7 +535,7 @@ impl XRSession {
         self.inner.get("oninputsourceschange").as_::<Any>()
     }
 
-    pub fn set_oninputsourceschange(&mut self, value: Any) {
+    pub fn set_oninputsourceschange(&mut self, value: &Any) {
         self.inner.set("oninputsourceschange", value);
     }
 }
@@ -544,7 +544,7 @@ impl XRSession {
         self.inner.get("onselect").as_::<Any>()
     }
 
-    pub fn set_onselect(&mut self, value: Any) {
+    pub fn set_onselect(&mut self, value: &Any) {
         self.inner.set("onselect", value);
     }
 }
@@ -553,7 +553,7 @@ impl XRSession {
         self.inner.get("onselectstart").as_::<Any>()
     }
 
-    pub fn set_onselectstart(&mut self, value: Any) {
+    pub fn set_onselectstart(&mut self, value: &Any) {
         self.inner.set("onselectstart", value);
     }
 }
@@ -562,7 +562,7 @@ impl XRSession {
         self.inner.get("onselectend").as_::<Any>()
     }
 
-    pub fn set_onselectend(&mut self, value: Any) {
+    pub fn set_onselectend(&mut self, value: &Any) {
         self.inner.set("onselectend", value);
     }
 }
@@ -571,7 +571,7 @@ impl XRSession {
         self.inner.get("onsqueeze").as_::<Any>()
     }
 
-    pub fn set_onsqueeze(&mut self, value: Any) {
+    pub fn set_onsqueeze(&mut self, value: &Any) {
         self.inner.set("onsqueeze", value);
     }
 }
@@ -580,7 +580,7 @@ impl XRSession {
         self.inner.get("onsqueezestart").as_::<Any>()
     }
 
-    pub fn set_onsqueezestart(&mut self, value: Any) {
+    pub fn set_onsqueezestart(&mut self, value: &Any) {
         self.inner.set("onsqueezestart", value);
     }
 }
@@ -589,7 +589,7 @@ impl XRSession {
         self.inner.get("onsqueezeend").as_::<Any>()
     }
 
-    pub fn set_onsqueezeend(&mut self, value: Any) {
+    pub fn set_onsqueezeend(&mut self, value: &Any) {
         self.inner.set("onsqueezeend", value);
     }
 }
@@ -598,7 +598,7 @@ impl XRSession {
         self.inner.get("onvisibilitychange").as_::<Any>()
     }
 
-    pub fn set_onvisibilitychange(&mut self, value: Any) {
+    pub fn set_onvisibilitychange(&mut self, value: &Any) {
         self.inner.set("onvisibilitychange", value);
     }
 }
@@ -607,26 +607,26 @@ impl XRSession {
         self.inner.get("onframeratechange").as_::<Any>()
     }
 
-    pub fn set_onframeratechange(&mut self, value: Any) {
+    pub fn set_onframeratechange(&mut self, value: &Any) {
         self.inner.set("onframeratechange", value);
     }
 }
 impl XRSession {
-    pub fn persistent_anchors(&self) -> FrozenArray<DOMString> {
+    pub fn persistent_anchors(&self) -> FrozenArray<String> {
         self.inner
             .get("persistentAnchors")
-            .as_::<FrozenArray<DOMString>>()
+            .as_::<FrozenArray<String>>()
     }
 }
 impl XRSession {
-    pub fn restore_persistent_anchor(&self, uuid: DOMString) -> Promise {
+    pub fn restore_persistent_anchor(&self, uuid: &str) -> Promise {
         self.inner
             .call("restorePersistentAnchor", &[uuid.into()])
             .as_::<Promise>()
     }
 }
 impl XRSession {
-    pub fn delete_persistent_anchor(&self, uuid: DOMString) -> Promise {
+    pub fn delete_persistent_anchor(&self, uuid: &str) -> Promise {
         self.inner
             .call("deletePersistentAnchor", &[uuid.into()])
             .as_::<Promise>()
@@ -682,7 +682,7 @@ impl XRSession {
     }
 }
 impl XRSession {
-    pub fn request_hit_test_source(&self, options: XRHitTestOptionsInit) -> Promise {
+    pub fn request_hit_test_source(&self, options: &XRHitTestOptionsInit) -> Promise {
         self.inner
             .call("requestHitTestSource", &[options.into()])
             .as_::<Promise>()
@@ -691,7 +691,7 @@ impl XRSession {
 impl XRSession {
     pub fn request_hit_test_source_for_transient_input(
         &self,
-        options: XRTransientInputHitTestOptionsInit,
+        options: &XRTransientInputHitTestOptionsInit,
     ) -> Promise {
         self.inner
             .call("requestHitTestSourceForTransientInput", &[options.into()])
@@ -703,7 +703,7 @@ impl XRSession {
         self.inner.call("requestLightProbe", &[]).as_::<Promise>()
     }
 
-    pub fn request_light_probe1(&self, options: XRLightProbeInit) -> Promise {
+    pub fn request_light_probe1(&self, options: &XRLightProbeInit) -> Promise {
         self.inner
             .call("requestLightProbe", &[options.into()])
             .as_::<Promise>()

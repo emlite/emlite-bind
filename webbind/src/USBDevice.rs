@@ -55,7 +55,7 @@ impl USBControlTransferParameters {
         self.inner.get("requestType").as_::<USBRequestType>()
     }
 
-    pub fn set_request_type(&mut self, value: USBRequestType) {
+    pub fn set_request_type(&mut self, value: &USBRequestType) {
         self.inner.set("requestType", value);
     }
 }
@@ -64,7 +64,7 @@ impl USBControlTransferParameters {
         self.inner.get("recipient").as_::<USBRecipient>()
     }
 
-    pub fn set_recipient(&mut self, value: USBRecipient) {
+    pub fn set_recipient(&mut self, value: &USBRecipient) {
         self.inner.set("recipient", value);
     }
 }
@@ -204,18 +204,18 @@ impl USBDevice {
     }
 }
 impl USBDevice {
-    pub fn manufacturer_name(&self) -> DOMString {
-        self.inner.get("manufacturerName").as_::<DOMString>()
+    pub fn manufacturer_name(&self) -> String {
+        self.inner.get("manufacturerName").as_::<String>()
     }
 }
 impl USBDevice {
-    pub fn product_name(&self) -> DOMString {
-        self.inner.get("productName").as_::<DOMString>()
+    pub fn product_name(&self) -> String {
+        self.inner.get("productName").as_::<String>()
     }
 }
 impl USBDevice {
-    pub fn serial_number(&self) -> DOMString {
-        self.inner.get("serialNumber").as_::<DOMString>()
+    pub fn serial_number(&self) -> String {
+        self.inner.get("serialNumber").as_::<String>()
     }
 }
 impl USBDevice {
@@ -286,27 +286,35 @@ impl USBDevice {
     }
 }
 impl USBDevice {
-    pub fn control_transfer_in(&self, setup: USBControlTransferParameters, length: u16) -> Promise {
+    pub fn control_transfer_in(
+        &self,
+        setup: &USBControlTransferParameters,
+        length: u16,
+    ) -> Promise {
         self.inner
             .call("controlTransferIn", &[setup.into(), length.into()])
             .as_::<Promise>()
     }
 }
 impl USBDevice {
-    pub fn control_transfer_out0(&self, setup: USBControlTransferParameters) -> Promise {
+    pub fn control_transfer_out0(&self, setup: &USBControlTransferParameters) -> Promise {
         self.inner
             .call("controlTransferOut", &[setup.into()])
             .as_::<Promise>()
     }
 
-    pub fn control_transfer_out1(&self, setup: USBControlTransferParameters, data: Any) -> Promise {
+    pub fn control_transfer_out1(
+        &self,
+        setup: &USBControlTransferParameters,
+        data: &Any,
+    ) -> Promise {
         self.inner
             .call("controlTransferOut", &[setup.into(), data.into()])
             .as_::<Promise>()
     }
 }
 impl USBDevice {
-    pub fn clear_halt(&self, direction: USBDirection, endpoint_number: u8) -> Promise {
+    pub fn clear_halt(&self, direction: &USBDirection, endpoint_number: u8) -> Promise {
         self.inner
             .call("clearHalt", &[direction.into(), endpoint_number.into()])
             .as_::<Promise>()
@@ -320,7 +328,7 @@ impl USBDevice {
     }
 }
 impl USBDevice {
-    pub fn transfer_out(&self, endpoint_number: u8, data: Any) -> Promise {
+    pub fn transfer_out(&self, endpoint_number: u8, data: &Any) -> Promise {
         self.inner
             .call("transferOut", &[endpoint_number.into(), data.into()])
             .as_::<Promise>()
@@ -344,7 +352,7 @@ impl USBDevice {
     pub fn isochronous_transfer_out(
         &self,
         endpoint_number: u8,
-        data: Any,
+        data: &Any,
         packet_lengths: Sequence<u32>,
     ) -> Promise {
         self.inner

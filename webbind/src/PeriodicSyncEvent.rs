@@ -54,7 +54,7 @@ impl From<&PeriodicSyncEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PeriodicSyncEvent);
 
 impl PeriodicSyncEvent {
-    pub fn new(type_: DOMString, init: Any) -> PeriodicSyncEvent {
+    pub fn new(type_: &str, init: &Any) -> PeriodicSyncEvent {
         Self {
             inner: emlite::Val::global("PeriodicSyncEvent")
                 .new(&[type_.into(), init.into()])
@@ -63,7 +63,7 @@ impl PeriodicSyncEvent {
     }
 }
 impl PeriodicSyncEvent {
-    pub fn tag(&self) -> DOMString {
-        self.inner.get("tag").as_::<DOMString>()
+    pub fn tag(&self) -> String {
+        self.inner.get("tag").as_::<String>()
     }
 }

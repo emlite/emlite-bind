@@ -54,11 +54,11 @@ impl From<&CSSRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSRule);
 
 impl CSSRule {
-    pub fn css_text(&self) -> CSSOMString {
-        self.inner.get("cssText").as_::<CSSOMString>()
+    pub fn css_text(&self) -> String {
+        self.inner.get("cssText").as_::<String>()
     }
 
-    pub fn set_css_text(&mut self, value: CSSOMString) {
+    pub fn set_css_text(&mut self, value: &str) {
         self.inner.set("cssText", value);
     }
 }

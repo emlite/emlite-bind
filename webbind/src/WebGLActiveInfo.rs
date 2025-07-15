@@ -64,7 +64,7 @@ impl WebGLActiveInfo {
     }
 }
 impl WebGLActiveInfo {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }

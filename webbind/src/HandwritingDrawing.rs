@@ -51,11 +51,11 @@ impl From<&HandwritingPrediction> for emlite::Val {
 }
 
 impl HandwritingPrediction {
-    pub fn text(&self) -> DOMString {
-        self.inner.get("text").as_::<DOMString>()
+    pub fn text(&self) -> String {
+        self.inner.get("text").as_::<String>()
     }
 
-    pub fn set_text(&mut self, value: DOMString) {
+    pub fn set_text(&mut self, value: &str) {
         self.inner.set("text", value);
     }
 }
@@ -64,7 +64,7 @@ impl HandwritingPrediction {
         self.inner.get("segmentationResult").as_::<Sequence<Any>>()
     }
 
-    pub fn set_segmentation_result(&mut self, value: Sequence<Any>) {
+    pub fn set_segmentation_result(&mut self, value: &Sequence<Any>) {
         self.inner.set("segmentationResult", value);
     }
 }
@@ -122,14 +122,14 @@ impl From<&HandwritingDrawing> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(HandwritingDrawing);
 
 impl HandwritingDrawing {
-    pub fn add_stroke(&self, stroke: HandwritingStroke) -> Undefined {
+    pub fn add_stroke(&self, stroke: &HandwritingStroke) -> Undefined {
         self.inner
             .call("addStroke", &[stroke.into()])
             .as_::<Undefined>()
     }
 }
 impl HandwritingDrawing {
-    pub fn remove_stroke(&self, stroke: HandwritingStroke) -> Undefined {
+    pub fn remove_stroke(&self, stroke: &HandwritingStroke) -> Undefined {
         self.inner
             .call("removeStroke", &[stroke.into()])
             .as_::<Undefined>()

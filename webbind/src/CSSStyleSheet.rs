@@ -62,7 +62,7 @@ impl CSSStyleSheet {
         }
     }
 
-    pub fn new1(options: Any) -> CSSStyleSheet {
+    pub fn new1(options: &Any) -> CSSStyleSheet {
         Self {
             inner: emlite::Val::global("CSSStyleSheet")
                 .new(&[options.into()])
@@ -81,11 +81,11 @@ impl CSSStyleSheet {
     }
 }
 impl CSSStyleSheet {
-    pub fn insert_rule0(&self, rule: CSSOMString) -> u32 {
+    pub fn insert_rule0(&self, rule: &str) -> u32 {
         self.inner.call("insertRule", &[rule.into()]).as_::<u32>()
     }
 
-    pub fn insert_rule1(&self, rule: CSSOMString, index: u32) -> u32 {
+    pub fn insert_rule1(&self, rule: &str, index: u32) -> u32 {
         self.inner
             .call("insertRule", &[rule.into(), index.into()])
             .as_::<u32>()
@@ -99,12 +99,12 @@ impl CSSStyleSheet {
     }
 }
 impl CSSStyleSheet {
-    pub fn replace(&self, text: USVString) -> Promise {
+    pub fn replace(&self, text: &str) -> Promise {
         self.inner.call("replace", &[text.into()]).as_::<Promise>()
     }
 }
 impl CSSStyleSheet {
-    pub fn replace_sync(&self, text: USVString) -> Undefined {
+    pub fn replace_sync(&self, text: &str) -> Undefined {
         self.inner
             .call("replaceSync", &[text.into()])
             .as_::<Undefined>()
@@ -120,17 +120,17 @@ impl CSSStyleSheet {
         self.inner.call("addRule", &[]).as_::<i32>()
     }
 
-    pub fn add_rule1(&self, selector: DOMString) -> i32 {
+    pub fn add_rule1(&self, selector: &str) -> i32 {
         self.inner.call("addRule", &[selector.into()]).as_::<i32>()
     }
 
-    pub fn add_rule2(&self, selector: DOMString, style: DOMString) -> i32 {
+    pub fn add_rule2(&self, selector: &str, style: &str) -> i32 {
         self.inner
             .call("addRule", &[selector.into(), style.into()])
             .as_::<i32>()
     }
 
-    pub fn add_rule3(&self, selector: DOMString, style: DOMString, index: u32) -> i32 {
+    pub fn add_rule3(&self, selector: &str, style: &str, index: u32) -> i32 {
         self.inner
             .call("addRule", &[selector.into(), style.into(), index.into()])
             .as_::<i32>()

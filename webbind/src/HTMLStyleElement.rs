@@ -72,11 +72,11 @@ impl HTMLStyleElement {
     }
 }
 impl HTMLStyleElement {
-    pub fn media(&self) -> DOMString {
-        self.inner.get("media").as_::<DOMString>()
+    pub fn media(&self) -> String {
+        self.inner.get("media").as_::<String>()
     }
 
-    pub fn set_media(&mut self, value: DOMString) {
+    pub fn set_media(&mut self, value: &str) {
         self.inner.set("media", value);
     }
 }
@@ -86,11 +86,11 @@ impl HTMLStyleElement {
     }
 }
 impl HTMLStyleElement {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: DOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }

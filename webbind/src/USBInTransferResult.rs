@@ -54,7 +54,7 @@ impl From<&USBInTransferResult> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(USBInTransferResult);
 
 impl USBInTransferResult {
-    pub fn new0(status: USBTransferStatus) -> USBInTransferResult {
+    pub fn new0(status: &USBTransferStatus) -> USBInTransferResult {
         Self {
             inner: emlite::Val::global("USBInTransferResult")
                 .new(&[status.into()])
@@ -62,7 +62,7 @@ impl USBInTransferResult {
         }
     }
 
-    pub fn new1(status: USBTransferStatus, data: DataView) -> USBInTransferResult {
+    pub fn new1(status: &USBTransferStatus, data: &DataView) -> USBInTransferResult {
         Self {
             inner: emlite::Val::global("USBInTransferResult")
                 .new(&[status.into(), data.into()])

@@ -55,7 +55,7 @@ impl PaymentCompleteDetails {
         self.inner.get("data").as_::<Object>()
     }
 
-    pub fn set_data(&mut self, value: Object) {
+    pub fn set_data(&mut self, value: &Object) {
         self.inner.set("data", value);
     }
 }
@@ -114,7 +114,7 @@ impl PaymentValidationErrors {
         self.inner.get("payer").as_::<Any>()
     }
 
-    pub fn set_payer(&mut self, value: Any) {
+    pub fn set_payer(&mut self, value: &Any) {
         self.inner.set("payer", value);
     }
 }
@@ -123,16 +123,16 @@ impl PaymentValidationErrors {
         self.inner.get("shippingAddress").as_::<Any>()
     }
 
-    pub fn set_shipping_address(&mut self, value: Any) {
+    pub fn set_shipping_address(&mut self, value: &Any) {
         self.inner.set("shippingAddress", value);
     }
 }
 impl PaymentValidationErrors {
-    pub fn error(&self) -> DOMString {
-        self.inner.get("error").as_::<DOMString>()
+    pub fn error(&self) -> String {
+        self.inner.get("error").as_::<String>()
     }
 
-    pub fn set_error(&mut self, value: DOMString) {
+    pub fn set_error(&mut self, value: &str) {
         self.inner.set("error", value);
     }
 }
@@ -141,7 +141,7 @@ impl PaymentValidationErrors {
         self.inner.get("paymentMethod").as_::<Object>()
     }
 
-    pub fn set_payment_method(&mut self, value: Object) {
+    pub fn set_payment_method(&mut self, value: &Object) {
         self.inner.set("paymentMethod", value);
     }
 }
@@ -204,13 +204,13 @@ impl PaymentResponse {
     }
 }
 impl PaymentResponse {
-    pub fn request_id(&self) -> DOMString {
-        self.inner.get("requestId").as_::<DOMString>()
+    pub fn request_id(&self) -> String {
+        self.inner.get("requestId").as_::<String>()
     }
 }
 impl PaymentResponse {
-    pub fn method_name(&self) -> DOMString {
-        self.inner.get("methodName").as_::<DOMString>()
+    pub fn method_name(&self) -> String {
+        self.inner.get("methodName").as_::<String>()
     }
 }
 impl PaymentResponse {
@@ -224,23 +224,23 @@ impl PaymentResponse {
     }
 }
 impl PaymentResponse {
-    pub fn shipping_option(&self) -> DOMString {
-        self.inner.get("shippingOption").as_::<DOMString>()
+    pub fn shipping_option(&self) -> String {
+        self.inner.get("shippingOption").as_::<String>()
     }
 }
 impl PaymentResponse {
-    pub fn payer_name(&self) -> DOMString {
-        self.inner.get("payerName").as_::<DOMString>()
+    pub fn payer_name(&self) -> String {
+        self.inner.get("payerName").as_::<String>()
     }
 }
 impl PaymentResponse {
-    pub fn payer_email(&self) -> DOMString {
-        self.inner.get("payerEmail").as_::<DOMString>()
+    pub fn payer_email(&self) -> String {
+        self.inner.get("payerEmail").as_::<String>()
     }
 }
 impl PaymentResponse {
-    pub fn payer_phone(&self) -> DOMString {
-        self.inner.get("payerPhone").as_::<DOMString>()
+    pub fn payer_phone(&self) -> String {
+        self.inner.get("payerPhone").as_::<String>()
     }
 }
 impl PaymentResponse {
@@ -248,13 +248,13 @@ impl PaymentResponse {
         self.inner.call("complete", &[]).as_::<Promise>()
     }
 
-    pub fn complete1(&self, result: PaymentComplete) -> Promise {
+    pub fn complete1(&self, result: &PaymentComplete) -> Promise {
         self.inner
             .call("complete", &[result.into()])
             .as_::<Promise>()
     }
 
-    pub fn complete2(&self, result: PaymentComplete, details: PaymentCompleteDetails) -> Promise {
+    pub fn complete2(&self, result: &PaymentComplete, details: &PaymentCompleteDetails) -> Promise {
         self.inner
             .call("complete", &[result.into(), details.into()])
             .as_::<Promise>()
@@ -265,7 +265,7 @@ impl PaymentResponse {
         self.inner.call("retry", &[]).as_::<Promise>()
     }
 
-    pub fn retry1(&self, error_fields: PaymentValidationErrors) -> Promise {
+    pub fn retry1(&self, error_fields: &PaymentValidationErrors) -> Promise {
         self.inner
             .call("retry", &[error_fields.into()])
             .as_::<Promise>()
@@ -276,7 +276,7 @@ impl PaymentResponse {
         self.inner.get("onpayerdetailchange").as_::<Any>()
     }
 
-    pub fn set_onpayerdetailchange(&mut self, value: Any) {
+    pub fn set_onpayerdetailchange(&mut self, value: &Any) {
         self.inner.set("onpayerdetailchange", value);
     }
 }

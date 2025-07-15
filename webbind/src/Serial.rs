@@ -55,7 +55,7 @@ impl SerialPortRequestOptions {
         self.inner.get("filters").as_::<Sequence<Any>>()
     }
 
-    pub fn set_filters(&mut self, value: Sequence<Any>) {
+    pub fn set_filters(&mut self, value: &Sequence<Any>) {
         self.inner.set("filters", value);
     }
 }
@@ -66,7 +66,7 @@ impl SerialPortRequestOptions {
             .as_::<Sequence<Any>>()
     }
 
-    pub fn set_allowed_bluetooth_service_class_ids(&mut self, value: Sequence<Any>) {
+    pub fn set_allowed_bluetooth_service_class_ids(&mut self, value: &Sequence<Any>) {
         self.inner.set("allowedBluetoothServiceClassIds", value);
     }
 }
@@ -128,7 +128,7 @@ impl Serial {
         self.inner.get("onconnect").as_::<Any>()
     }
 
-    pub fn set_onconnect(&mut self, value: Any) {
+    pub fn set_onconnect(&mut self, value: &Any) {
         self.inner.set("onconnect", value);
     }
 }
@@ -137,7 +137,7 @@ impl Serial {
         self.inner.get("ondisconnect").as_::<Any>()
     }
 
-    pub fn set_ondisconnect(&mut self, value: Any) {
+    pub fn set_ondisconnect(&mut self, value: &Any) {
         self.inner.set("ondisconnect", value);
     }
 }
@@ -151,7 +151,7 @@ impl Serial {
         self.inner.call("requestPort", &[]).as_::<Promise>()
     }
 
-    pub fn request_port1(&self, options: SerialPortRequestOptions) -> Promise {
+    pub fn request_port1(&self, options: &SerialPortRequestOptions) -> Promise {
         self.inner
             .call("requestPort", &[options.into()])
             .as_::<Promise>()

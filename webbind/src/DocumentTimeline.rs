@@ -62,7 +62,7 @@ impl DocumentTimeline {
         }
     }
 
-    pub fn new1(options: Any) -> DocumentTimeline {
+    pub fn new1(options: &Any) -> DocumentTimeline {
         Self {
             inner: emlite::Val::global("DocumentTimeline")
                 .new(&[options.into()])

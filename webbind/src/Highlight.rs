@@ -54,7 +54,7 @@ impl From<&Highlight> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Highlight);
 
 impl Highlight {
-    pub fn new(initial_ranges: AbstractRange) -> Highlight {
+    pub fn new(initial_ranges: &AbstractRange) -> Highlight {
         Self {
             inner: emlite::Val::global("Highlight")
                 .new(&[initial_ranges.into()])
@@ -76,7 +76,7 @@ impl Highlight {
         self.inner.get("type").as_::<HighlightType>()
     }
 
-    pub fn set_type_(&mut self, value: HighlightType) {
+    pub fn set_type_(&mut self, value: &HighlightType) {
         self.inner.set("type", value);
     }
 }

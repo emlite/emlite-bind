@@ -55,7 +55,7 @@ impl SubscribeOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -113,7 +113,7 @@ impl From<&Observable> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Observable);
 
 impl Observable {
-    pub fn new(callback: Function) -> Observable {
+    pub fn new(callback: &Function) -> Observable {
         Self {
             inner: emlite::Val::global("Observable")
                 .new(&[callback.into()])
@@ -126,39 +126,39 @@ impl Observable {
         self.inner.call("subscribe", &[]).as_::<Undefined>()
     }
 
-    pub fn subscribe1(&self, observer: Any) -> Undefined {
+    pub fn subscribe1(&self, observer: &Any) -> Undefined {
         self.inner
             .call("subscribe", &[observer.into()])
             .as_::<Undefined>()
     }
 
-    pub fn subscribe2(&self, observer: Any, options: SubscribeOptions) -> Undefined {
+    pub fn subscribe2(&self, observer: &Any, options: &SubscribeOptions) -> Undefined {
         self.inner
             .call("subscribe", &[observer.into(), options.into()])
             .as_::<Undefined>()
     }
 }
 impl Observable {
-    pub fn from(value: Any) -> Observable {
+    pub fn from(value: &Any) -> Observable {
         emlite::Val::global("Observable")
             .call("from", &[value.into()])
             .as_::<Observable>()
     }
 }
 impl Observable {
-    pub fn take_until(&self, value: Any) -> Observable {
+    pub fn take_until(&self, value: &Any) -> Observable {
         self.inner
             .call("takeUntil", &[value.into()])
             .as_::<Observable>()
     }
 }
 impl Observable {
-    pub fn map(&self, mapper: Function) -> Observable {
+    pub fn map(&self, mapper: &Function) -> Observable {
         self.inner.call("map", &[mapper.into()]).as_::<Observable>()
     }
 }
 impl Observable {
-    pub fn filter(&self, predicate: Function) -> Observable {
+    pub fn filter(&self, predicate: &Function) -> Observable {
         self.inner
             .call("filter", &[predicate.into()])
             .as_::<Observable>()
@@ -179,14 +179,14 @@ impl Observable {
     }
 }
 impl Observable {
-    pub fn flat_map(&self, mapper: Function) -> Observable {
+    pub fn flat_map(&self, mapper: &Function) -> Observable {
         self.inner
             .call("flatMap", &[mapper.into()])
             .as_::<Observable>()
     }
 }
 impl Observable {
-    pub fn switch_map(&self, mapper: Function) -> Observable {
+    pub fn switch_map(&self, mapper: &Function) -> Observable {
         self.inner
             .call("switchMap", &[mapper.into()])
             .as_::<Observable>()
@@ -197,21 +197,21 @@ impl Observable {
         self.inner.call("inspect", &[]).as_::<Observable>()
     }
 
-    pub fn inspect1(&self, inspector_union: Any) -> Observable {
+    pub fn inspect1(&self, inspector_union: &Any) -> Observable {
         self.inner
             .call("inspect", &[inspector_union.into()])
             .as_::<Observable>()
     }
 }
 impl Observable {
-    pub fn catch(&self, callback: Function) -> Observable {
+    pub fn catch(&self, callback: &Function) -> Observable {
         self.inner
             .call("catch", &[callback.into()])
             .as_::<Observable>()
     }
 }
 impl Observable {
-    pub fn finally(&self, callback: Any) -> Observable {
+    pub fn finally(&self, callback: &Any) -> Observable {
         self.inner
             .call("finally", &[callback.into()])
             .as_::<Observable>()
@@ -222,33 +222,33 @@ impl Observable {
         self.inner.call("toArray", &[]).as_::<Promise>()
     }
 
-    pub fn to_array1(&self, options: SubscribeOptions) -> Promise {
+    pub fn to_array1(&self, options: &SubscribeOptions) -> Promise {
         self.inner
             .call("toArray", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl Observable {
-    pub fn for_each0(&self, callback: Function) -> Promise {
+    pub fn for_each0(&self, callback: &Function) -> Promise {
         self.inner
             .call("forEach", &[callback.into()])
             .as_::<Promise>()
     }
 
-    pub fn for_each1(&self, callback: Function, options: SubscribeOptions) -> Promise {
+    pub fn for_each1(&self, callback: &Function, options: &SubscribeOptions) -> Promise {
         self.inner
             .call("forEach", &[callback.into(), options.into()])
             .as_::<Promise>()
     }
 }
 impl Observable {
-    pub fn every0(&self, predicate: Function) -> Promise {
+    pub fn every0(&self, predicate: &Function) -> Promise {
         self.inner
             .call("every", &[predicate.into()])
             .as_::<Promise>()
     }
 
-    pub fn every1(&self, predicate: Function, options: SubscribeOptions) -> Promise {
+    pub fn every1(&self, predicate: &Function, options: &SubscribeOptions) -> Promise {
         self.inner
             .call("every", &[predicate.into(), options.into()])
             .as_::<Promise>()
@@ -259,7 +259,7 @@ impl Observable {
         self.inner.call("first", &[]).as_::<Promise>()
     }
 
-    pub fn first1(&self, options: SubscribeOptions) -> Promise {
+    pub fn first1(&self, options: &SubscribeOptions) -> Promise {
         self.inner.call("first", &[options.into()]).as_::<Promise>()
     }
 }
@@ -268,44 +268,44 @@ impl Observable {
         self.inner.call("last", &[]).as_::<Promise>()
     }
 
-    pub fn last1(&self, options: SubscribeOptions) -> Promise {
+    pub fn last1(&self, options: &SubscribeOptions) -> Promise {
         self.inner.call("last", &[options.into()]).as_::<Promise>()
     }
 }
 impl Observable {
-    pub fn find0(&self, predicate: Function) -> Promise {
+    pub fn find0(&self, predicate: &Function) -> Promise {
         self.inner
             .call("find", &[predicate.into()])
             .as_::<Promise>()
     }
 
-    pub fn find1(&self, predicate: Function, options: SubscribeOptions) -> Promise {
+    pub fn find1(&self, predicate: &Function, options: &SubscribeOptions) -> Promise {
         self.inner
             .call("find", &[predicate.into(), options.into()])
             .as_::<Promise>()
     }
 }
 impl Observable {
-    pub fn some0(&self, predicate: Function) -> Promise {
+    pub fn some0(&self, predicate: &Function) -> Promise {
         self.inner
             .call("some", &[predicate.into()])
             .as_::<Promise>()
     }
 
-    pub fn some1(&self, predicate: Function, options: SubscribeOptions) -> Promise {
+    pub fn some1(&self, predicate: &Function, options: &SubscribeOptions) -> Promise {
         self.inner
             .call("some", &[predicate.into(), options.into()])
             .as_::<Promise>()
     }
 }
 impl Observable {
-    pub fn reduce0(&self, reducer: Function) -> Promise {
+    pub fn reduce0(&self, reducer: &Function) -> Promise {
         self.inner
             .call("reduce", &[reducer.into()])
             .as_::<Promise>()
     }
 
-    pub fn reduce1(&self, reducer: Function, initial_value: Any) -> Promise {
+    pub fn reduce1(&self, reducer: &Function, initial_value: &Any) -> Promise {
         self.inner
             .call("reduce", &[reducer.into(), initial_value.into()])
             .as_::<Promise>()
@@ -313,9 +313,9 @@ impl Observable {
 
     pub fn reduce2(
         &self,
-        reducer: Function,
-        initial_value: Any,
-        options: SubscribeOptions,
+        reducer: &Function,
+        initial_value: &Any,
+        options: &SubscribeOptions,
     ) -> Promise {
         self.inner
             .call(

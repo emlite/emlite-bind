@@ -54,11 +54,11 @@ impl From<&CSSStyleProperties> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSStyleProperties);
 
 impl CSSStyleProperties {
-    pub fn css_float(&self) -> CSSOMString {
-        self.inner.get("cssFloat").as_::<CSSOMString>()
+    pub fn css_float(&self) -> String {
+        self.inner.get("cssFloat").as_::<String>()
     }
 
-    pub fn set_css_float(&mut self, value: CSSOMString) {
+    pub fn set_css_float(&mut self, value: &str) {
         self.inner.set("cssFloat", value);
     }
 }

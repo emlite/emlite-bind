@@ -55,61 +55,61 @@ impl NotificationOptions {
         self.inner.get("dir").as_::<NotificationDirection>()
     }
 
-    pub fn set_dir(&mut self, value: NotificationDirection) {
+    pub fn set_dir(&mut self, value: &NotificationDirection) {
         self.inner.set("dir", value);
     }
 }
 impl NotificationOptions {
-    pub fn lang(&self) -> DOMString {
-        self.inner.get("lang").as_::<DOMString>()
+    pub fn lang(&self) -> String {
+        self.inner.get("lang").as_::<String>()
     }
 
-    pub fn set_lang(&mut self, value: DOMString) {
+    pub fn set_lang(&mut self, value: &str) {
         self.inner.set("lang", value);
     }
 }
 impl NotificationOptions {
-    pub fn body(&self) -> DOMString {
-        self.inner.get("body").as_::<DOMString>()
+    pub fn body(&self) -> String {
+        self.inner.get("body").as_::<String>()
     }
 
-    pub fn set_body(&mut self, value: DOMString) {
+    pub fn set_body(&mut self, value: &str) {
         self.inner.set("body", value);
     }
 }
 impl NotificationOptions {
-    pub fn tag(&self) -> DOMString {
-        self.inner.get("tag").as_::<DOMString>()
+    pub fn tag(&self) -> String {
+        self.inner.get("tag").as_::<String>()
     }
 
-    pub fn set_tag(&mut self, value: DOMString) {
+    pub fn set_tag(&mut self, value: &str) {
         self.inner.set("tag", value);
     }
 }
 impl NotificationOptions {
-    pub fn image(&self) -> USVString {
-        self.inner.get("image").as_::<USVString>()
+    pub fn image(&self) -> String {
+        self.inner.get("image").as_::<String>()
     }
 
-    pub fn set_image(&mut self, value: USVString) {
+    pub fn set_image(&mut self, value: &str) {
         self.inner.set("image", value);
     }
 }
 impl NotificationOptions {
-    pub fn icon(&self) -> USVString {
-        self.inner.get("icon").as_::<USVString>()
+    pub fn icon(&self) -> String {
+        self.inner.get("icon").as_::<String>()
     }
 
-    pub fn set_icon(&mut self, value: USVString) {
+    pub fn set_icon(&mut self, value: &str) {
         self.inner.set("icon", value);
     }
 }
 impl NotificationOptions {
-    pub fn badge(&self) -> USVString {
-        self.inner.get("badge").as_::<USVString>()
+    pub fn badge(&self) -> String {
+        self.inner.get("badge").as_::<String>()
     }
 
-    pub fn set_badge(&mut self, value: USVString) {
+    pub fn set_badge(&mut self, value: &str) {
         self.inner.set("badge", value);
     }
 }
@@ -118,7 +118,7 @@ impl NotificationOptions {
         self.inner.get("vibrate").as_::<Any>()
     }
 
-    pub fn set_vibrate(&mut self, value: Any) {
+    pub fn set_vibrate(&mut self, value: &Any) {
         self.inner.set("vibrate", value);
     }
 }
@@ -127,7 +127,7 @@ impl NotificationOptions {
         self.inner.get("timestamp").as_::<Any>()
     }
 
-    pub fn set_timestamp(&mut self, value: Any) {
+    pub fn set_timestamp(&mut self, value: &Any) {
         self.inner.set("timestamp", value);
     }
 }
@@ -163,7 +163,7 @@ impl NotificationOptions {
         self.inner.get("data").as_::<Any>()
     }
 
-    pub fn set_data(&mut self, value: Any) {
+    pub fn set_data(&mut self, value: &Any) {
         self.inner.set("data", value);
     }
 }
@@ -174,7 +174,7 @@ impl NotificationOptions {
             .as_::<Sequence<NotificationAction>>()
     }
 
-    pub fn set_actions(&mut self, value: Sequence<NotificationAction>) {
+    pub fn set_actions(&mut self, value: &Sequence<NotificationAction>) {
         self.inner.set("actions", value);
     }
 }
@@ -229,11 +229,11 @@ impl From<&GetNotificationOptions> for emlite::Val {
 }
 
 impl GetNotificationOptions {
-    pub fn tag(&self) -> DOMString {
-        self.inner.get("tag").as_::<DOMString>()
+    pub fn tag(&self) -> String {
+        self.inner.get("tag").as_::<String>()
     }
 
-    pub fn set_tag(&mut self, value: DOMString) {
+    pub fn set_tag(&mut self, value: &str) {
         self.inner.set("tag", value);
     }
 }
@@ -313,8 +313,8 @@ impl ServiceWorkerRegistration {
     }
 }
 impl ServiceWorkerRegistration {
-    pub fn scope(&self) -> USVString {
-        self.inner.get("scope").as_::<USVString>()
+    pub fn scope(&self) -> String {
+        self.inner.get("scope").as_::<String>()
     }
 }
 impl ServiceWorkerRegistration {
@@ -339,7 +339,7 @@ impl ServiceWorkerRegistration {
         self.inner.get("onupdatefound").as_::<Any>()
     }
 
-    pub fn set_onupdatefound(&mut self, value: Any) {
+    pub fn set_onupdatefound(&mut self, value: &Any) {
         self.inner.set("onupdatefound", value);
     }
 }
@@ -366,13 +366,13 @@ impl ServiceWorkerRegistration {
     }
 }
 impl ServiceWorkerRegistration {
-    pub fn show_notification0(&self, title: DOMString) -> Promise {
+    pub fn show_notification0(&self, title: &str) -> Promise {
         self.inner
             .call("showNotification", &[title.into()])
             .as_::<Promise>()
     }
 
-    pub fn show_notification1(&self, title: DOMString, options: NotificationOptions) -> Promise {
+    pub fn show_notification1(&self, title: &str, options: &NotificationOptions) -> Promise {
         self.inner
             .call("showNotification", &[title.into(), options.into()])
             .as_::<Promise>()
@@ -383,7 +383,7 @@ impl ServiceWorkerRegistration {
         self.inner.call("getNotifications", &[]).as_::<Promise>()
     }
 
-    pub fn get_notifications1(&self, filter: GetNotificationOptions) -> Promise {
+    pub fn get_notifications1(&self, filter: &GetNotificationOptions) -> Promise {
         self.inner
             .call("getNotifications", &[filter.into()])
             .as_::<Promise>()

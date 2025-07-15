@@ -54,13 +54,13 @@ impl From<&FontFaceVariationAxis> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(FontFaceVariationAxis);
 
 impl FontFaceVariationAxis {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl FontFaceVariationAxis {
-    pub fn axis_tag(&self) -> DOMString {
-        self.inner.get("axisTag").as_::<DOMString>()
+    pub fn axis_tag(&self) -> String {
+        self.inner.get("axisTag").as_::<String>()
     }
 }
 impl FontFaceVariationAxis {

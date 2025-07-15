@@ -54,89 +54,89 @@ impl From<&Location> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Location);
 
 impl Location {
-    pub fn href(&self) -> USVString {
-        self.inner.get("href").as_::<USVString>()
+    pub fn href(&self) -> String {
+        self.inner.get("href").as_::<String>()
     }
 
-    pub fn set_href(&mut self, value: USVString) {
+    pub fn set_href(&mut self, value: &str) {
         self.inner.set("href", value);
     }
 }
 impl Location {
-    pub fn origin(&self) -> USVString {
-        self.inner.get("origin").as_::<USVString>()
+    pub fn origin(&self) -> String {
+        self.inner.get("origin").as_::<String>()
     }
 }
 impl Location {
-    pub fn protocol(&self) -> USVString {
-        self.inner.get("protocol").as_::<USVString>()
+    pub fn protocol(&self) -> String {
+        self.inner.get("protocol").as_::<String>()
     }
 
-    pub fn set_protocol(&mut self, value: USVString) {
+    pub fn set_protocol(&mut self, value: &str) {
         self.inner.set("protocol", value);
     }
 }
 impl Location {
-    pub fn host(&self) -> USVString {
-        self.inner.get("host").as_::<USVString>()
+    pub fn host(&self) -> String {
+        self.inner.get("host").as_::<String>()
     }
 
-    pub fn set_host(&mut self, value: USVString) {
+    pub fn set_host(&mut self, value: &str) {
         self.inner.set("host", value);
     }
 }
 impl Location {
-    pub fn hostname(&self) -> USVString {
-        self.inner.get("hostname").as_::<USVString>()
+    pub fn hostname(&self) -> String {
+        self.inner.get("hostname").as_::<String>()
     }
 
-    pub fn set_hostname(&mut self, value: USVString) {
+    pub fn set_hostname(&mut self, value: &str) {
         self.inner.set("hostname", value);
     }
 }
 impl Location {
-    pub fn port(&self) -> USVString {
-        self.inner.get("port").as_::<USVString>()
+    pub fn port(&self) -> String {
+        self.inner.get("port").as_::<String>()
     }
 
-    pub fn set_port(&mut self, value: USVString) {
+    pub fn set_port(&mut self, value: &str) {
         self.inner.set("port", value);
     }
 }
 impl Location {
-    pub fn pathname(&self) -> USVString {
-        self.inner.get("pathname").as_::<USVString>()
+    pub fn pathname(&self) -> String {
+        self.inner.get("pathname").as_::<String>()
     }
 
-    pub fn set_pathname(&mut self, value: USVString) {
+    pub fn set_pathname(&mut self, value: &str) {
         self.inner.set("pathname", value);
     }
 }
 impl Location {
-    pub fn search(&self) -> USVString {
-        self.inner.get("search").as_::<USVString>()
+    pub fn search(&self) -> String {
+        self.inner.get("search").as_::<String>()
     }
 
-    pub fn set_search(&mut self, value: USVString) {
+    pub fn set_search(&mut self, value: &str) {
         self.inner.set("search", value);
     }
 }
 impl Location {
-    pub fn hash(&self) -> USVString {
-        self.inner.get("hash").as_::<USVString>()
+    pub fn hash(&self) -> String {
+        self.inner.get("hash").as_::<String>()
     }
 
-    pub fn set_hash(&mut self, value: USVString) {
+    pub fn set_hash(&mut self, value: &str) {
         self.inner.set("hash", value);
     }
 }
 impl Location {
-    pub fn assign(&self, url: USVString) -> Undefined {
+    pub fn assign(&self, url: &str) -> Undefined {
         self.inner.call("assign", &[url.into()]).as_::<Undefined>()
     }
 }
 impl Location {
-    pub fn replace(&self, url: USVString) -> Undefined {
+    pub fn replace(&self, url: &str) -> Undefined {
         self.inner.call("replace", &[url.into()]).as_::<Undefined>()
     }
 }

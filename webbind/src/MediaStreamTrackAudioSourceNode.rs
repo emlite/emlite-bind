@@ -54,7 +54,7 @@ impl From<&MediaStreamTrackAudioSourceNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MediaStreamTrackAudioSourceNode);
 
 impl MediaStreamTrackAudioSourceNode {
-    pub fn new(context: AudioContext, options: Any) -> MediaStreamTrackAudioSourceNode {
+    pub fn new(context: &AudioContext, options: &Any) -> MediaStreamTrackAudioSourceNode {
         Self {
             inner: emlite::Val::global("MediaStreamTrackAudioSourceNode")
                 .new(&[context.into(), options.into()])

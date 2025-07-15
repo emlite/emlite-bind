@@ -54,7 +54,7 @@ impl From<&ByteLengthQueuingStrategy> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ByteLengthQueuingStrategy);
 
 impl ByteLengthQueuingStrategy {
-    pub fn new(init: Any) -> ByteLengthQueuingStrategy {
+    pub fn new(init: &Any) -> ByteLengthQueuingStrategy {
         Self {
             inner: emlite::Val::global("ByteLengthQueuingStrategy")
                 .new(&[init.into()])

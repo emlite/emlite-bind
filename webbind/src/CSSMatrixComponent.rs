@@ -54,7 +54,7 @@ impl From<&CSSMatrixComponent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSMatrixComponent);
 
 impl CSSMatrixComponent {
-    pub fn new0(matrix: DOMMatrixReadOnly) -> CSSMatrixComponent {
+    pub fn new0(matrix: &DOMMatrixReadOnly) -> CSSMatrixComponent {
         Self {
             inner: emlite::Val::global("CSSMatrixComponent")
                 .new(&[matrix.into()])
@@ -62,7 +62,7 @@ impl CSSMatrixComponent {
         }
     }
 
-    pub fn new1(matrix: DOMMatrixReadOnly, options: Any) -> CSSMatrixComponent {
+    pub fn new1(matrix: &DOMMatrixReadOnly, options: &Any) -> CSSMatrixComponent {
         Self {
             inner: emlite::Val::global("CSSMatrixComponent")
                 .new(&[matrix.into(), options.into()])
@@ -75,7 +75,7 @@ impl CSSMatrixComponent {
         self.inner.get("matrix").as_::<DOMMatrix>()
     }
 
-    pub fn set_matrix(&mut self, value: DOMMatrix) {
+    pub fn set_matrix(&mut self, value: &DOMMatrix) {
         self.inner.set("matrix", value);
     }
 }

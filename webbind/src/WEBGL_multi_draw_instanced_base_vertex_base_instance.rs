@@ -56,16 +56,16 @@ jsbind::utils::impl_dyn_cast!(WEBGL_multi_draw_instanced_base_vertex_base_instan
 impl WEBGL_multi_draw_instanced_base_vertex_base_instance {
     pub fn multi_draw_arrays_instanced_base_instance_webgl(
         &self,
-        mode: Any,
-        firsts_list: Any,
+        mode: &Any,
+        firsts_list: &Any,
         firsts_offset: u64,
-        counts_list: Any,
+        counts_list: &Any,
         counts_offset: u64,
-        instance_counts_list: Any,
+        instance_counts_list: &Any,
         instance_counts_offset: u64,
-        base_instances_list: Any,
+        base_instances_list: &Any,
         base_instances_offset: u64,
-        drawcount: Any,
+        drawcount: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -89,19 +89,19 @@ impl WEBGL_multi_draw_instanced_base_vertex_base_instance {
 impl WEBGL_multi_draw_instanced_base_vertex_base_instance {
     pub fn multi_draw_elements_instanced_base_vertex_base_instance_webgl(
         &self,
-        mode: Any,
-        counts_list: Any,
+        mode: &Any,
+        counts_list: &Any,
         counts_offset: u64,
-        type_: Any,
-        offsets_list: Any,
+        type_: &Any,
+        offsets_list: &Any,
         offsets_offset: u64,
-        instance_counts_list: Any,
+        instance_counts_list: &Any,
         instance_counts_offset: u64,
-        base_vertices_list: Any,
+        base_vertices_list: &Any,
         base_vertices_offset: u64,
-        base_instances_list: Any,
+        base_instances_list: &Any,
         base_instances_offset: u64,
-        drawcount: Any,
+        drawcount: &Any,
     ) -> Undefined {
         self.inner
             .call(

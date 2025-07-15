@@ -68,7 +68,7 @@ impl ReadableStreamDefaultController {
         self.inner.call("enqueue", &[]).as_::<Undefined>()
     }
 
-    pub fn enqueue1(&self, chunk: Any) -> Undefined {
+    pub fn enqueue1(&self, chunk: &Any) -> Undefined {
         self.inner
             .call("enqueue", &[chunk.into()])
             .as_::<Undefined>()
@@ -79,7 +79,7 @@ impl ReadableStreamDefaultController {
         self.inner.call("error", &[]).as_::<Undefined>()
     }
 
-    pub fn error1(&self, e: Any) -> Undefined {
+    pub fn error1(&self, e: &Any) -> Undefined {
         self.inner.call("error", &[e.into()]).as_::<Undefined>()
     }
 }

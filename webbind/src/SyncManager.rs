@@ -54,7 +54,7 @@ impl From<&SyncManager> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SyncManager);
 
 impl SyncManager {
-    pub fn register(&self, tag: DOMString) -> Promise {
+    pub fn register(&self, tag: &str) -> Promise {
         self.inner.call("register", &[tag.into()]).as_::<Promise>()
     }
 }

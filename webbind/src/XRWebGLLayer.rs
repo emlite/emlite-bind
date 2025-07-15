@@ -54,7 +54,7 @@ impl From<&XRWebGLLayer> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(XRWebGLLayer);
 
 impl XRWebGLLayer {
-    pub fn new0(session: XRSession, context: Any) -> XRWebGLLayer {
+    pub fn new0(session: &XRSession, context: &Any) -> XRWebGLLayer {
         Self {
             inner: emlite::Val::global("XRWebGLLayer")
                 .new(&[session.into(), context.into()])
@@ -62,7 +62,7 @@ impl XRWebGLLayer {
         }
     }
 
-    pub fn new1(session: XRSession, context: Any, layer_init: Any) -> XRWebGLLayer {
+    pub fn new1(session: &XRSession, context: &Any, layer_init: &Any) -> XRWebGLLayer {
         Self {
             inner: emlite::Val::global("XRWebGLLayer")
                 .new(&[session.into(), context.into(), layer_init.into()])
@@ -105,14 +105,14 @@ impl XRWebGLLayer {
     }
 }
 impl XRWebGLLayer {
-    pub fn get_viewport(&self, view: XRView) -> XRViewport {
+    pub fn get_viewport(&self, view: &XRView) -> XRViewport {
         self.inner
             .call("getViewport", &[view.into()])
             .as_::<XRViewport>()
     }
 }
 impl XRWebGLLayer {
-    pub fn get_native_framebuffer_scale_factor(session: XRSession) -> f64 {
+    pub fn get_native_framebuffer_scale_factor(session: &XRSession) -> f64 {
         emlite::Val::global("XRWebGLLayer")
             .call("getNativeFramebufferScaleFactor", &[session.into()])
             .as_::<f64>()

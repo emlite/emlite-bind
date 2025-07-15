@@ -131,7 +131,7 @@ impl From<&RealTimeReporting> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(RealTimeReporting);
 
 impl RealTimeReporting {
-    pub fn contribute_to_histogram(&self, contribution: RealTimeContribution) -> Undefined {
+    pub fn contribute_to_histogram(&self, contribution: &RealTimeContribution) -> Undefined {
         self.inner
             .call("contributeToHistogram", &[contribution.into()])
             .as_::<Undefined>()

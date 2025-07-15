@@ -66,7 +66,7 @@ impl ReadableStreamBYOBRequest {
     }
 }
 impl ReadableStreamBYOBRequest {
-    pub fn respond_with_new_view(&self, view: Any) -> Undefined {
+    pub fn respond_with_new_view(&self, view: &Any) -> Undefined {
         self.inner
             .call("respondWithNewView", &[view.into()])
             .as_::<Undefined>()

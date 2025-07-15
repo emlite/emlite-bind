@@ -54,7 +54,7 @@ impl From<&CompressionStream> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CompressionStream);
 
 impl CompressionStream {
-    pub fn new(format: CompressionFormat) -> CompressionStream {
+    pub fn new(format: &CompressionFormat) -> CompressionStream {
         Self {
             inner: emlite::Val::global("CompressionStream")
                 .new(&[format.into()])

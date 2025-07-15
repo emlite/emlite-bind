@@ -54,7 +54,7 @@ impl From<&ChannelMergerNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ChannelMergerNode);
 
 impl ChannelMergerNode {
-    pub fn new0(context: BaseAudioContext) -> ChannelMergerNode {
+    pub fn new0(context: &BaseAudioContext) -> ChannelMergerNode {
         Self {
             inner: emlite::Val::global("ChannelMergerNode")
                 .new(&[context.into()])
@@ -62,7 +62,7 @@ impl ChannelMergerNode {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: Any) -> ChannelMergerNode {
+    pub fn new1(context: &BaseAudioContext, options: &Any) -> ChannelMergerNode {
         Self {
             inner: emlite::Val::global("ChannelMergerNode")
                 .new(&[context.into(), options.into()])

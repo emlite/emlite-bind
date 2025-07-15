@@ -54,7 +54,7 @@ impl From<&RTCRtpScriptTransform> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(RTCRtpScriptTransform);
 
 impl RTCRtpScriptTransform {
-    pub fn new0(worker: Worker) -> RTCRtpScriptTransform {
+    pub fn new0(worker: &Worker) -> RTCRtpScriptTransform {
         Self {
             inner: emlite::Val::global("RTCRtpScriptTransform")
                 .new(&[worker.into()])
@@ -62,7 +62,7 @@ impl RTCRtpScriptTransform {
         }
     }
 
-    pub fn new1(worker: Worker, options: Any) -> RTCRtpScriptTransform {
+    pub fn new1(worker: &Worker, options: &Any) -> RTCRtpScriptTransform {
         Self {
             inner: emlite::Val::global("RTCRtpScriptTransform")
                 .new(&[worker.into(), options.into()])
@@ -70,7 +70,11 @@ impl RTCRtpScriptTransform {
         }
     }
 
-    pub fn new2(worker: Worker, options: Any, transfer: Sequence<Object>) -> RTCRtpScriptTransform {
+    pub fn new2(
+        worker: &Worker,
+        options: &Any,
+        transfer: &Sequence<Object>,
+    ) -> RTCRtpScriptTransform {
         Self {
             inner: emlite::Val::global("RTCRtpScriptTransform")
                 .new(&[worker.into(), options.into(), transfer.into()])

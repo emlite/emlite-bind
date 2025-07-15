@@ -69,7 +69,7 @@ impl BluetoothRemoteGATTService {
     }
 }
 impl BluetoothRemoteGATTService {
-    pub fn get_characteristic(&self, characteristic: Any) -> Promise {
+    pub fn get_characteristic(&self, characteristic: &Any) -> Promise {
         self.inner
             .call("getCharacteristic", &[characteristic.into()])
             .as_::<Promise>()
@@ -80,14 +80,14 @@ impl BluetoothRemoteGATTService {
         self.inner.call("getCharacteristics", &[]).as_::<Promise>()
     }
 
-    pub fn get_characteristics1(&self, characteristic: Any) -> Promise {
+    pub fn get_characteristics1(&self, characteristic: &Any) -> Promise {
         self.inner
             .call("getCharacteristics", &[characteristic.into()])
             .as_::<Promise>()
     }
 }
 impl BluetoothRemoteGATTService {
-    pub fn get_included_service(&self, service: Any) -> Promise {
+    pub fn get_included_service(&self, service: &Any) -> Promise {
         self.inner
             .call("getIncludedService", &[service.into()])
             .as_::<Promise>()
@@ -98,7 +98,7 @@ impl BluetoothRemoteGATTService {
         self.inner.call("getIncludedServices", &[]).as_::<Promise>()
     }
 
-    pub fn get_included_services1(&self, service: Any) -> Promise {
+    pub fn get_included_services1(&self, service: &Any) -> Promise {
         self.inner
             .call("getIncludedServices", &[service.into()])
             .as_::<Promise>()
@@ -109,7 +109,7 @@ impl BluetoothRemoteGATTService {
         self.inner.get("oncharacteristicvaluechanged").as_::<Any>()
     }
 
-    pub fn set_oncharacteristicvaluechanged(&mut self, value: Any) {
+    pub fn set_oncharacteristicvaluechanged(&mut self, value: &Any) {
         self.inner.set("oncharacteristicvaluechanged", value);
     }
 }
@@ -118,7 +118,7 @@ impl BluetoothRemoteGATTService {
         self.inner.get("onserviceadded").as_::<Any>()
     }
 
-    pub fn set_onserviceadded(&mut self, value: Any) {
+    pub fn set_onserviceadded(&mut self, value: &Any) {
         self.inner.set("onserviceadded", value);
     }
 }
@@ -127,7 +127,7 @@ impl BluetoothRemoteGATTService {
         self.inner.get("onservicechanged").as_::<Any>()
     }
 
-    pub fn set_onservicechanged(&mut self, value: Any) {
+    pub fn set_onservicechanged(&mut self, value: &Any) {
         self.inner.set("onservicechanged", value);
     }
 }
@@ -136,7 +136,7 @@ impl BluetoothRemoteGATTService {
         self.inner.get("onserviceremoved").as_::<Any>()
     }
 
-    pub fn set_onserviceremoved(&mut self, value: Any) {
+    pub fn set_onserviceremoved(&mut self, value: &Any) {
         self.inner.set("onserviceremoved", value);
     }
 }

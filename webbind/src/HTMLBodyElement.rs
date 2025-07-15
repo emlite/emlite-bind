@@ -67,61 +67,61 @@ impl HTMLBodyElement {
         self.inner.get("onorientationchange").as_::<Any>()
     }
 
-    pub fn set_onorientationchange(&mut self, value: Any) {
+    pub fn set_onorientationchange(&mut self, value: &Any) {
         self.inner.set("onorientationchange", value);
     }
 }
 impl HTMLBodyElement {
-    pub fn text(&self) -> DOMString {
-        self.inner.get("text").as_::<DOMString>()
+    pub fn text(&self) -> String {
+        self.inner.get("text").as_::<String>()
     }
 
-    pub fn set_text(&mut self, value: DOMString) {
+    pub fn set_text(&mut self, value: &str) {
         self.inner.set("text", value);
     }
 }
 impl HTMLBodyElement {
-    pub fn link(&self) -> DOMString {
-        self.inner.get("link").as_::<DOMString>()
+    pub fn link(&self) -> String {
+        self.inner.get("link").as_::<String>()
     }
 
-    pub fn set_link(&mut self, value: DOMString) {
+    pub fn set_link(&mut self, value: &str) {
         self.inner.set("link", value);
     }
 }
 impl HTMLBodyElement {
-    pub fn v_link(&self) -> DOMString {
-        self.inner.get("vLink").as_::<DOMString>()
+    pub fn v_link(&self) -> String {
+        self.inner.get("vLink").as_::<String>()
     }
 
-    pub fn set_v_link(&mut self, value: DOMString) {
+    pub fn set_v_link(&mut self, value: &str) {
         self.inner.set("vLink", value);
     }
 }
 impl HTMLBodyElement {
-    pub fn a_link(&self) -> DOMString {
-        self.inner.get("aLink").as_::<DOMString>()
+    pub fn a_link(&self) -> String {
+        self.inner.get("aLink").as_::<String>()
     }
 
-    pub fn set_a_link(&mut self, value: DOMString) {
+    pub fn set_a_link(&mut self, value: &str) {
         self.inner.set("aLink", value);
     }
 }
 impl HTMLBodyElement {
-    pub fn bg_color(&self) -> DOMString {
-        self.inner.get("bgColor").as_::<DOMString>()
+    pub fn bg_color(&self) -> String {
+        self.inner.get("bgColor").as_::<String>()
     }
 
-    pub fn set_bg_color(&mut self, value: DOMString) {
+    pub fn set_bg_color(&mut self, value: &str) {
         self.inner.set("bgColor", value);
     }
 }
 impl HTMLBodyElement {
-    pub fn background(&self) -> DOMString {
-        self.inner.get("background").as_::<DOMString>()
+    pub fn background(&self) -> String {
+        self.inner.get("background").as_::<String>()
     }
 
-    pub fn set_background(&mut self, value: DOMString) {
+    pub fn set_background(&mut self, value: &str) {
         self.inner.set("background", value);
     }
 }
@@ -130,7 +130,7 @@ impl HTMLBodyElement {
         self.inner.get("onportalactivate").as_::<Any>()
     }
 
-    pub fn set_onportalactivate(&mut self, value: Any) {
+    pub fn set_onportalactivate(&mut self, value: &Any) {
         self.inner.set("onportalactivate", value);
     }
 }

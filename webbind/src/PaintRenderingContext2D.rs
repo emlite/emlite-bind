@@ -114,7 +114,7 @@ impl PaintRenderingContext2D {
         self.inner.call("setTransform", &[]).as_::<Undefined>()
     }
 
-    pub fn set_transform1(&self, transform: DOMMatrix2DInit) -> Undefined {
+    pub fn set_transform1(&self, transform: &DOMMatrix2DInit) -> Undefined {
         self.inner
             .call("setTransform", &[transform.into()])
             .as_::<Undefined>()
@@ -135,13 +135,11 @@ impl PaintRenderingContext2D {
     }
 }
 impl PaintRenderingContext2D {
-    pub fn global_composite_operation(&self) -> DOMString {
-        self.inner
-            .get("globalCompositeOperation")
-            .as_::<DOMString>()
+    pub fn global_composite_operation(&self) -> String {
+        self.inner.get("globalCompositeOperation").as_::<String>()
     }
 
-    pub fn set_global_composite_operation(&mut self, value: DOMString) {
+    pub fn set_global_composite_operation(&mut self, value: &str) {
         self.inner.set("globalCompositeOperation", value);
     }
 }
@@ -161,7 +159,7 @@ impl PaintRenderingContext2D {
             .as_::<ImageSmoothingQuality>()
     }
 
-    pub fn set_image_smoothing_quality(&mut self, value: ImageSmoothingQuality) {
+    pub fn set_image_smoothing_quality(&mut self, value: &ImageSmoothingQuality) {
         self.inner.set("imageSmoothingQuality", value);
     }
 }
@@ -170,7 +168,7 @@ impl PaintRenderingContext2D {
         self.inner.get("strokeStyle").as_::<Any>()
     }
 
-    pub fn set_stroke_style(&mut self, value: Any) {
+    pub fn set_stroke_style(&mut self, value: &Any) {
         self.inner.set("strokeStyle", value);
     }
 }
@@ -179,7 +177,7 @@ impl PaintRenderingContext2D {
         self.inner.get("fillStyle").as_::<Any>()
     }
 
-    pub fn set_fill_style(&mut self, value: Any) {
+    pub fn set_fill_style(&mut self, value: &Any) {
         self.inner.set("fillStyle", value);
     }
 }
@@ -229,7 +227,7 @@ impl PaintRenderingContext2D {
     }
 }
 impl PaintRenderingContext2D {
-    pub fn create_pattern(&self, image: Any, repetition: DOMString) -> CanvasPattern {
+    pub fn create_pattern(&self, image: &Any, repetition: &str) -> CanvasPattern {
         self.inner
             .call("createPattern", &[image.into(), repetition.into()])
             .as_::<CanvasPattern>()
@@ -263,11 +261,11 @@ impl PaintRenderingContext2D {
     }
 }
 impl PaintRenderingContext2D {
-    pub fn shadow_color(&self) -> DOMString {
-        self.inner.get("shadowColor").as_::<DOMString>()
+    pub fn shadow_color(&self) -> String {
+        self.inner.get("shadowColor").as_::<String>()
     }
 
-    pub fn set_shadow_color(&mut self, value: DOMString) {
+    pub fn set_shadow_color(&mut self, value: &str) {
         self.inner.set("shadowColor", value);
     }
 }
@@ -298,34 +296,34 @@ impl PaintRenderingContext2D {
     }
 }
 impl PaintRenderingContext2D {
-    pub fn fill0(&self, path: Path2D) -> Undefined {
+    pub fn fill0(&self, path: &Path2D) -> Undefined {
         self.inner.call("fill", &[path.into()]).as_::<Undefined>()
     }
 
-    pub fn fill1(&self, path: Path2D, fill_rule: CanvasFillRule) -> Undefined {
+    pub fn fill1(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
         self.inner
             .call("fill", &[path.into(), fill_rule.into()])
             .as_::<Undefined>()
     }
 }
 impl PaintRenderingContext2D {
-    pub fn stroke(&self, path: Path2D) -> Undefined {
+    pub fn stroke(&self, path: &Path2D) -> Undefined {
         self.inner.call("stroke", &[path.into()]).as_::<Undefined>()
     }
 }
 impl PaintRenderingContext2D {
-    pub fn clip0(&self, path: Path2D) -> Undefined {
+    pub fn clip0(&self, path: &Path2D) -> Undefined {
         self.inner.call("clip", &[path.into()]).as_::<Undefined>()
     }
 
-    pub fn clip1(&self, path: Path2D, fill_rule: CanvasFillRule) -> Undefined {
+    pub fn clip1(&self, path: &Path2D, fill_rule: &CanvasFillRule) -> Undefined {
         self.inner
             .call("clip", &[path.into(), fill_rule.into()])
             .as_::<Undefined>()
     }
 }
 impl PaintRenderingContext2D {
-    pub fn is_point_in_path0(&self, path: Path2D, x: f64, y: f64) -> bool {
+    pub fn is_point_in_path0(&self, path: &Path2D, x: f64, y: f64) -> bool {
         self.inner
             .call("isPointInPath", &[path.into(), x.into(), y.into()])
             .as_::<bool>()
@@ -333,10 +331,10 @@ impl PaintRenderingContext2D {
 
     pub fn is_point_in_path1(
         &self,
-        path: Path2D,
+        path: &Path2D,
         x: f64,
         y: f64,
-        fill_rule: CanvasFillRule,
+        fill_rule: &CanvasFillRule,
     ) -> bool {
         self.inner
             .call(
@@ -347,7 +345,7 @@ impl PaintRenderingContext2D {
     }
 }
 impl PaintRenderingContext2D {
-    pub fn is_point_in_stroke(&self, path: Path2D, x: f64, y: f64) -> bool {
+    pub fn is_point_in_stroke(&self, path: &Path2D, x: f64, y: f64) -> bool {
         self.inner
             .call("isPointInStroke", &[path.into(), x.into(), y.into()])
             .as_::<bool>()
@@ -356,7 +354,7 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     pub fn draw_image(
         &self,
-        image: Any,
+        image: &Any,
         sx: f64,
         sy: f64,
         sw: f64,
@@ -398,7 +396,7 @@ impl PaintRenderingContext2D {
         self.inner.get("lineCap").as_::<CanvasLineCap>()
     }
 
-    pub fn set_line_cap(&mut self, value: CanvasLineCap) {
+    pub fn set_line_cap(&mut self, value: &CanvasLineCap) {
         self.inner.set("lineCap", value);
     }
 }
@@ -407,7 +405,7 @@ impl PaintRenderingContext2D {
         self.inner.get("lineJoin").as_::<CanvasLineJoin>()
     }
 
-    pub fn set_line_join(&mut self, value: CanvasLineJoin) {
+    pub fn set_line_join(&mut self, value: &CanvasLineJoin) {
         self.inner.set("lineJoin", value);
     }
 }
@@ -519,7 +517,7 @@ impl PaintRenderingContext2D {
             .as_::<Undefined>()
     }
 
-    pub fn round_rect1(&self, x: f64, y: f64, w: f64, h: f64, radii: Any) -> Undefined {
+    pub fn round_rect1(&self, x: f64, y: f64, w: f64, h: f64, radii: &Any) -> Undefined {
         self.inner
             .call(
                 "roundRect",

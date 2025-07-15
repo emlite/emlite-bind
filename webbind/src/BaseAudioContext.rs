@@ -152,7 +152,7 @@ impl BaseAudioContext {
         self.inner.get("onstatechange").as_::<Any>()
     }
 
-    pub fn set_onstatechange(&mut self, value: Any) {
+    pub fn set_onstatechange(&mut self, value: &Any) {
         self.inner.set("onstatechange", value);
     }
 }
@@ -287,7 +287,7 @@ impl BaseAudioContext {
         &self,
         real: Sequence<f32>,
         imag: Sequence<f32>,
-        constraints: PeriodicWaveConstraints,
+        constraints: &PeriodicWaveConstraints,
     ) -> PeriodicWave {
         self.inner
             .call(
@@ -356,7 +356,7 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
-    pub fn decode_audio_data0(&self, audio_data: ArrayBuffer) -> Promise {
+    pub fn decode_audio_data0(&self, audio_data: &ArrayBuffer) -> Promise {
         self.inner
             .call("decodeAudioData", &[audio_data.into()])
             .as_::<Promise>()
@@ -364,8 +364,8 @@ impl BaseAudioContext {
 
     pub fn decode_audio_data1(
         &self,
-        audio_data: ArrayBuffer,
-        success_callback: Function,
+        audio_data: &ArrayBuffer,
+        success_callback: &Function,
     ) -> Promise {
         self.inner
             .call(
@@ -377,9 +377,9 @@ impl BaseAudioContext {
 
     pub fn decode_audio_data2(
         &self,
-        audio_data: ArrayBuffer,
-        success_callback: Function,
-        error_callback: Function,
+        audio_data: &ArrayBuffer,
+        success_callback: &Function,
+        error_callback: &Function,
     ) -> Promise {
         self.inner
             .call(

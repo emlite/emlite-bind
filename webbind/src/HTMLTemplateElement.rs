@@ -68,11 +68,11 @@ impl HTMLTemplateElement {
     }
 }
 impl HTMLTemplateElement {
-    pub fn shadow_root_mode(&self) -> DOMString {
-        self.inner.get("shadowRootMode").as_::<DOMString>()
+    pub fn shadow_root_mode(&self) -> String {
+        self.inner.get("shadowRootMode").as_::<String>()
     }
 
-    pub fn set_shadow_root_mode(&mut self, value: DOMString) {
+    pub fn set_shadow_root_mode(&mut self, value: &str) {
         self.inner.set("shadowRootMode", value);
     }
 }
@@ -104,13 +104,13 @@ impl HTMLTemplateElement {
     }
 }
 impl HTMLTemplateElement {
-    pub fn shadow_root_custom_element_registry(&self) -> DOMString {
+    pub fn shadow_root_custom_element_registry(&self) -> String {
         self.inner
             .get("shadowRootCustomElementRegistry")
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 
-    pub fn set_shadow_root_custom_element_registry(&mut self, value: DOMString) {
+    pub fn set_shadow_root_custom_element_registry(&mut self, value: &str) {
         self.inner.set("shadowRootCustomElementRegistry", value);
     }
 }

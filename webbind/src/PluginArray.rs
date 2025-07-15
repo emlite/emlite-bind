@@ -69,7 +69,7 @@ impl PluginArray {
     }
 }
 impl PluginArray {
-    pub fn named_item(&self, name: DOMString) -> Plugin {
+    pub fn named_item(&self, name: &str) -> Plugin {
         self.inner.call("namedItem", &[name.into()]).as_::<Plugin>()
     }
 }

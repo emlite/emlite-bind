@@ -82,7 +82,7 @@ impl AudioDataCopyToOptions {
         self.inner.get("format").as_::<AudioSampleFormat>()
     }
 
-    pub fn set_format(&mut self, value: AudioSampleFormat) {
+    pub fn set_format(&mut self, value: &AudioSampleFormat) {
         self.inner.set("format", value);
     }
 }
@@ -140,7 +140,7 @@ impl From<&AudioData> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(AudioData);
 
 impl AudioData {
-    pub fn new(init: Any) -> AudioData {
+    pub fn new(init: &Any) -> AudioData {
         Self {
             inner: emlite::Val::global("AudioData")
                 .new(&[init.into()])
@@ -179,14 +179,14 @@ impl AudioData {
     }
 }
 impl AudioData {
-    pub fn allocation_size(&self, options: AudioDataCopyToOptions) -> u32 {
+    pub fn allocation_size(&self, options: &AudioDataCopyToOptions) -> u32 {
         self.inner
             .call("allocationSize", &[options.into()])
             .as_::<u32>()
     }
 }
 impl AudioData {
-    pub fn copy_to(&self, destination: Any, options: AudioDataCopyToOptions) -> Undefined {
+    pub fn copy_to(&self, destination: &Any, options: &AudioDataCopyToOptions) -> Undefined {
         self.inner
             .call("copyTo", &[destination.into(), options.into()])
             .as_::<Undefined>()

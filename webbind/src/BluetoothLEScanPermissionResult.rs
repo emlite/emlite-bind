@@ -60,7 +60,7 @@ impl BluetoothLEScanPermissionResult {
             .as_::<FrozenArray<BluetoothLEScan>>()
     }
 
-    pub fn set_scans(&mut self, value: FrozenArray<BluetoothLEScan>) {
+    pub fn set_scans(&mut self, value: &FrozenArray<BluetoothLEScan>) {
         self.inner.set("scans", value);
     }
 }

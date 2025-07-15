@@ -54,7 +54,7 @@ impl From<&XRSessionEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(XRSessionEvent);
 
 impl XRSessionEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> XRSessionEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> XRSessionEvent {
         Self {
             inner: emlite::Val::global("XRSessionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

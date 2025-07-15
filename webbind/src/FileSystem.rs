@@ -54,8 +54,8 @@ impl From<&FileSystem> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(FileSystem);
 
 impl FileSystem {
-    pub fn name(&self) -> USVString {
-        self.inner.get("name").as_::<USVString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl FileSystem {

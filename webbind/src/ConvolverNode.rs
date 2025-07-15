@@ -54,7 +54,7 @@ impl From<&ConvolverNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ConvolverNode);
 
 impl ConvolverNode {
-    pub fn new0(context: BaseAudioContext) -> ConvolverNode {
+    pub fn new0(context: &BaseAudioContext) -> ConvolverNode {
         Self {
             inner: emlite::Val::global("ConvolverNode")
                 .new(&[context.into()])
@@ -62,7 +62,7 @@ impl ConvolverNode {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: Any) -> ConvolverNode {
+    pub fn new1(context: &BaseAudioContext, options: &Any) -> ConvolverNode {
         Self {
             inner: emlite::Val::global("ConvolverNode")
                 .new(&[context.into(), options.into()])
@@ -75,7 +75,7 @@ impl ConvolverNode {
         self.inner.get("buffer").as_::<AudioBuffer>()
     }
 
-    pub fn set_buffer(&mut self, value: AudioBuffer) {
+    pub fn set_buffer(&mut self, value: &AudioBuffer) {
         self.inner.set("buffer", value);
     }
 }

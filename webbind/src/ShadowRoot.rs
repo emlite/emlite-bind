@@ -88,26 +88,26 @@ impl ShadowRoot {
         self.inner.get("onslotchange").as_::<Any>()
     }
 
-    pub fn set_onslotchange(&mut self, value: Any) {
+    pub fn set_onslotchange(&mut self, value: &Any) {
         self.inner.set("onslotchange", value);
     }
 }
 impl ShadowRoot {
-    pub fn set_html_unsafe(&self, html: Any) -> Undefined {
+    pub fn set_html_unsafe(&self, html: &Any) -> Undefined {
         self.inner
             .call("setHTMLUnsafe", &[html.into()])
             .as_::<Undefined>()
     }
 }
 impl ShadowRoot {
-    pub fn get_html0(&self) -> DOMString {
-        self.inner.call("getHTML", &[]).as_::<DOMString>()
+    pub fn get_html0(&self) -> String {
+        self.inner.call("getHTML", &[]).as_::<String>()
     }
 
-    pub fn get_html1(&self, options: GetHTMLOptions) -> DOMString {
+    pub fn get_html1(&self, options: &GetHTMLOptions) -> String {
         self.inner
             .call("getHTML", &[options.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl ShadowRoot {
@@ -115,7 +115,7 @@ impl ShadowRoot {
         self.inner.get("innerHTML").as_::<Any>()
     }
 
-    pub fn set_inner_html(&mut self, value: Any) {
+    pub fn set_inner_html(&mut self, value: &Any) {
         self.inner.set("innerHTML", value);
     }
 }

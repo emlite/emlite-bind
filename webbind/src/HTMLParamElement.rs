@@ -63,38 +63,38 @@ impl HTMLParamElement {
     }
 }
 impl HTMLParamElement {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
 impl HTMLParamElement {
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> String {
+        self.inner.get("value").as_::<String>()
     }
 
-    pub fn set_value(&mut self, value: DOMString) {
+    pub fn set_value(&mut self, value: &str) {
         self.inner.set("value", value);
     }
 }
 impl HTMLParamElement {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: DOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }
 impl HTMLParamElement {
-    pub fn value_type(&self) -> DOMString {
-        self.inner.get("valueType").as_::<DOMString>()
+    pub fn value_type(&self) -> String {
+        self.inner.get("valueType").as_::<String>()
     }
 
-    pub fn set_value_type(&mut self, value: DOMString) {
+    pub fn set_value_type(&mut self, value: &str) {
         self.inner.set("valueType", value);
     }
 }

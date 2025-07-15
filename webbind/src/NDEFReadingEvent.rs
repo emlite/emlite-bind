@@ -54,7 +54,7 @@ impl From<&NDEFReadingEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(NDEFReadingEvent);
 
 impl NDEFReadingEvent {
-    pub fn new(type_: DOMString, reading_event_init_dict: Any) -> NDEFReadingEvent {
+    pub fn new(type_: &str, reading_event_init_dict: &Any) -> NDEFReadingEvent {
         Self {
             inner: emlite::Val::global("NDEFReadingEvent")
                 .new(&[type_.into(), reading_event_init_dict.into()])
@@ -63,8 +63,8 @@ impl NDEFReadingEvent {
     }
 }
 impl NDEFReadingEvent {
-    pub fn serial_number(&self) -> DOMString {
-        self.inner.get("serialNumber").as_::<DOMString>()
+    pub fn serial_number(&self) -> String {
+        self.inner.get("serialNumber").as_::<String>()
     }
 }
 impl NDEFReadingEvent {

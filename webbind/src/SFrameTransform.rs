@@ -62,7 +62,7 @@ impl SFrameTransform {
         }
     }
 
-    pub fn new1(options: Any) -> SFrameTransform {
+    pub fn new1(options: &Any) -> SFrameTransform {
         Self {
             inner: emlite::Val::global("SFrameTransform")
                 .new(&[options.into()])
@@ -71,13 +71,13 @@ impl SFrameTransform {
     }
 }
 impl SFrameTransform {
-    pub fn set_encryption_key0(&self, key: CryptoKey) -> Promise {
+    pub fn set_encryption_key0(&self, key: &CryptoKey) -> Promise {
         self.inner
             .call("setEncryptionKey", &[key.into()])
             .as_::<Promise>()
     }
 
-    pub fn set_encryption_key1(&self, key: CryptoKey, key_id: Any) -> Promise {
+    pub fn set_encryption_key1(&self, key: &CryptoKey, key_id: &Any) -> Promise {
         self.inner
             .call("setEncryptionKey", &[key.into(), key_id.into()])
             .as_::<Promise>()
@@ -88,7 +88,7 @@ impl SFrameTransform {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }

@@ -54,7 +54,7 @@ impl From<&CSSMathSum> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSMathSum);
 
 impl CSSMathSum {
-    pub fn new(args: Any) -> CSSMathSum {
+    pub fn new(args: &Any) -> CSSMathSum {
         Self {
             inner: emlite::Val::global("CSSMathSum")
                 .new(&[args.into()])

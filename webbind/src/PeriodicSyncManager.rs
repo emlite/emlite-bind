@@ -113,11 +113,11 @@ impl From<&PeriodicSyncManager> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PeriodicSyncManager);
 
 impl PeriodicSyncManager {
-    pub fn register0(&self, tag: DOMString) -> Promise {
+    pub fn register0(&self, tag: &str) -> Promise {
         self.inner.call("register", &[tag.into()]).as_::<Promise>()
     }
 
-    pub fn register1(&self, tag: DOMString, options: BackgroundSyncOptions) -> Promise {
+    pub fn register1(&self, tag: &str, options: &BackgroundSyncOptions) -> Promise {
         self.inner
             .call("register", &[tag.into(), options.into()])
             .as_::<Promise>()
@@ -129,7 +129,7 @@ impl PeriodicSyncManager {
     }
 }
 impl PeriodicSyncManager {
-    pub fn unregister(&self, tag: DOMString) -> Promise {
+    pub fn unregister(&self, tag: &str) -> Promise {
         self.inner
             .call("unregister", &[tag.into()])
             .as_::<Promise>()

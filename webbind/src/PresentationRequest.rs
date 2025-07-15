@@ -54,7 +54,7 @@ impl From<&PresentationRequest> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PresentationRequest);
 
 impl PresentationRequest {
-    pub fn new(urls: Sequence<USVString>) -> PresentationRequest {
+    pub fn new(urls: &Sequence<String>) -> PresentationRequest {
         Self {
             inner: emlite::Val::global("PresentationRequest")
                 .new(&[urls.into()])
@@ -68,7 +68,7 @@ impl PresentationRequest {
     }
 }
 impl PresentationRequest {
-    pub fn reconnect(&self, presentation_id: USVString) -> Promise {
+    pub fn reconnect(&self, presentation_id: &str) -> Promise {
         self.inner
             .call("reconnect", &[presentation_id.into()])
             .as_::<Promise>()
@@ -84,7 +84,7 @@ impl PresentationRequest {
         self.inner.get("onconnectionavailable").as_::<Any>()
     }
 
-    pub fn set_onconnectionavailable(&mut self, value: Any) {
+    pub fn set_onconnectionavailable(&mut self, value: &Any) {
         self.inner.set("onconnectionavailable", value);
     }
 }

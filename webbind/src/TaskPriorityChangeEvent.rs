@@ -54,7 +54,7 @@ impl From<&TaskPriorityChangeEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(TaskPriorityChangeEvent);
 
 impl TaskPriorityChangeEvent {
-    pub fn new(type_: DOMString, priority_change_event_init_dict: Any) -> TaskPriorityChangeEvent {
+    pub fn new(type_: &str, priority_change_event_init_dict: &Any) -> TaskPriorityChangeEvent {
         Self {
             inner: emlite::Val::global("TaskPriorityChangeEvent")
                 .new(&[type_.into(), priority_change_event_init_dict.into()])

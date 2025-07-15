@@ -59,11 +59,11 @@ impl HTMLMediaElement {
     }
 }
 impl HTMLMediaElement {
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> String {
+        self.inner.get("src").as_::<String>()
     }
 
-    pub fn set_src(&mut self, value: USVString) {
+    pub fn set_src(&mut self, value: &str) {
         self.inner.set("src", value);
     }
 }
@@ -72,21 +72,21 @@ impl HTMLMediaElement {
         self.inner.get("srcObject").as_::<Any>()
     }
 
-    pub fn set_src_object(&mut self, value: Any) {
+    pub fn set_src_object(&mut self, value: &Any) {
         self.inner.set("srcObject", value);
     }
 }
 impl HTMLMediaElement {
-    pub fn current_src(&self) -> USVString {
-        self.inner.get("currentSrc").as_::<USVString>()
+    pub fn current_src(&self) -> String {
+        self.inner.get("currentSrc").as_::<String>()
     }
 }
 impl HTMLMediaElement {
-    pub fn cross_origin(&self) -> DOMString {
-        self.inner.get("crossOrigin").as_::<DOMString>()
+    pub fn cross_origin(&self) -> String {
+        self.inner.get("crossOrigin").as_::<String>()
     }
 
-    pub fn set_cross_origin(&mut self, value: DOMString) {
+    pub fn set_cross_origin(&mut self, value: &str) {
         self.inner.set("crossOrigin", value);
     }
 }
@@ -96,11 +96,11 @@ impl HTMLMediaElement {
     }
 }
 impl HTMLMediaElement {
-    pub fn preload(&self) -> DOMString {
-        self.inner.get("preload").as_::<DOMString>()
+    pub fn preload(&self) -> String {
+        self.inner.get("preload").as_::<String>()
     }
 
-    pub fn set_preload(&mut self, value: DOMString) {
+    pub fn set_preload(&mut self, value: &str) {
         self.inner.set("preload", value);
     }
 }
@@ -115,7 +115,7 @@ impl HTMLMediaElement {
     }
 }
 impl HTMLMediaElement {
-    pub fn can_play_type(&self, type_: DOMString) -> CanPlayTypeResult {
+    pub fn can_play_type(&self, type_: &str) -> CanPlayTypeResult {
         self.inner
             .call("canPlayType", &[type_.into()])
             .as_::<CanPlayTypeResult>()
@@ -284,24 +284,19 @@ impl HTMLMediaElement {
     }
 }
 impl HTMLMediaElement {
-    pub fn add_text_track0(&self, kind: TextTrackKind) -> TextTrack {
+    pub fn add_text_track0(&self, kind: &TextTrackKind) -> TextTrack {
         self.inner
             .call("addTextTrack", &[kind.into()])
             .as_::<TextTrack>()
     }
 
-    pub fn add_text_track1(&self, kind: TextTrackKind, label: DOMString) -> TextTrack {
+    pub fn add_text_track1(&self, kind: &TextTrackKind, label: &str) -> TextTrack {
         self.inner
             .call("addTextTrack", &[kind.into(), label.into()])
             .as_::<TextTrack>()
     }
 
-    pub fn add_text_track2(
-        &self,
-        kind: TextTrackKind,
-        label: DOMString,
-        language: DOMString,
-    ) -> TextTrack {
+    pub fn add_text_track2(&self, kind: &TextTrackKind, label: &str, language: &str) -> TextTrack {
         self.inner
             .call(
                 "addTextTrack",
@@ -311,12 +306,12 @@ impl HTMLMediaElement {
     }
 }
 impl HTMLMediaElement {
-    pub fn sink_id(&self) -> DOMString {
-        self.inner.get("sinkId").as_::<DOMString>()
+    pub fn sink_id(&self) -> String {
+        self.inner.get("sinkId").as_::<String>()
     }
 }
 impl HTMLMediaElement {
-    pub fn set_sink_id(&self, sink_id: DOMString) -> Promise {
+    pub fn set_sink_id(&self, sink_id: &str) -> Promise {
         self.inner
             .call("setSinkId", &[sink_id.into()])
             .as_::<Promise>()
@@ -332,7 +327,7 @@ impl HTMLMediaElement {
         self.inner.get("onencrypted").as_::<Any>()
     }
 
-    pub fn set_onencrypted(&mut self, value: Any) {
+    pub fn set_onencrypted(&mut self, value: &Any) {
         self.inner.set("onencrypted", value);
     }
 }
@@ -341,12 +336,12 @@ impl HTMLMediaElement {
         self.inner.get("onwaitingforkey").as_::<Any>()
     }
 
-    pub fn set_onwaitingforkey(&mut self, value: Any) {
+    pub fn set_onwaitingforkey(&mut self, value: &Any) {
         self.inner.set("onwaitingforkey", value);
     }
 }
 impl HTMLMediaElement {
-    pub fn set_media_keys(&self, media_keys: MediaKeys) -> Promise {
+    pub fn set_media_keys(&self, media_keys: &MediaKeys) -> Promise {
         self.inner
             .call("setMediaKeys", &[media_keys.into()])
             .as_::<Promise>()

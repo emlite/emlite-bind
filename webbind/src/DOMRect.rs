@@ -101,7 +101,7 @@ impl DOMRect {
             .as_::<DOMRect>()
     }
 
-    pub fn from_rect1(other: DOMRectInit) -> DOMRect {
+    pub fn from_rect1(other: &DOMRectInit) -> DOMRect {
         emlite::Val::global("DOMRect")
             .call("fromRect", &[other.into()])
             .as_::<DOMRect>()

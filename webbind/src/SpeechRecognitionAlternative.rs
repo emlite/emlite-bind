@@ -54,8 +54,8 @@ impl From<&SpeechRecognitionAlternative> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionAlternative);
 
 impl SpeechRecognitionAlternative {
-    pub fn transcript(&self) -> DOMString {
-        self.inner.get("transcript").as_::<DOMString>()
+    pub fn transcript(&self) -> String {
+        self.inner.get("transcript").as_::<String>()
     }
 }
 impl SpeechRecognitionAlternative {

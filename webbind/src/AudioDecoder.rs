@@ -51,11 +51,11 @@ impl From<&AudioDecoderConfig> for emlite::Val {
 }
 
 impl AudioDecoderConfig {
-    pub fn codec(&self) -> DOMString {
-        self.inner.get("codec").as_::<DOMString>()
+    pub fn codec(&self) -> String {
+        self.inner.get("codec").as_::<String>()
     }
 
-    pub fn set_codec(&mut self, value: DOMString) {
+    pub fn set_codec(&mut self, value: &str) {
         self.inner.set("codec", value);
     }
 }
@@ -82,7 +82,7 @@ impl AudioDecoderConfig {
         self.inner.get("description").as_::<Any>()
     }
 
-    pub fn set_description(&mut self, value: Any) {
+    pub fn set_description(&mut self, value: &Any) {
         self.inner.set("description", value);
     }
 }
@@ -150,7 +150,7 @@ impl AudioDecoderSupport {
         self.inner.get("config").as_::<AudioDecoderConfig>()
     }
 
-    pub fn set_config(&mut self, value: AudioDecoderConfig) {
+    pub fn set_config(&mut self, value: &AudioDecoderConfig) {
         self.inner.set("config", value);
     }
 }
@@ -208,7 +208,7 @@ impl From<&AudioDecoder> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(AudioDecoder);
 
 impl AudioDecoder {
-    pub fn new(init: Any) -> AudioDecoder {
+    pub fn new(init: &Any) -> AudioDecoder {
         Self {
             inner: emlite::Val::global("AudioDecoder")
                 .new(&[init.into()])
@@ -231,19 +231,19 @@ impl AudioDecoder {
         self.inner.get("ondequeue").as_::<Any>()
     }
 
-    pub fn set_ondequeue(&mut self, value: Any) {
+    pub fn set_ondequeue(&mut self, value: &Any) {
         self.inner.set("ondequeue", value);
     }
 }
 impl AudioDecoder {
-    pub fn configure(&self, config: AudioDecoderConfig) -> Undefined {
+    pub fn configure(&self, config: &AudioDecoderConfig) -> Undefined {
         self.inner
             .call("configure", &[config.into()])
             .as_::<Undefined>()
     }
 }
 impl AudioDecoder {
-    pub fn decode(&self, chunk: EncodedAudioChunk) -> Undefined {
+    pub fn decode(&self, chunk: &EncodedAudioChunk) -> Undefined {
         self.inner
             .call("decode", &[chunk.into()])
             .as_::<Undefined>()
@@ -265,7 +265,7 @@ impl AudioDecoder {
     }
 }
 impl AudioDecoder {
-    pub fn is_config_supported(config: AudioDecoderConfig) -> Promise {
+    pub fn is_config_supported(config: &AudioDecoderConfig) -> Promise {
         emlite::Val::global("AudioDecoder")
             .call("isConfigSupported", &[config.into()])
             .as_::<Promise>()

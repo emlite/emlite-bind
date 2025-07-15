@@ -54,7 +54,7 @@ impl From<&DataCue> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(DataCue);
 
 impl DataCue {
-    pub fn new0(start_time: f64, end_time: f64, value: Any) -> DataCue {
+    pub fn new0(start_time: f64, end_time: f64, value: &Any) -> DataCue {
         Self {
             inner: emlite::Val::global("DataCue")
                 .new(&[start_time.into(), end_time.into(), value.into()])
@@ -62,7 +62,7 @@ impl DataCue {
         }
     }
 
-    pub fn new1(start_time: f64, end_time: f64, value: Any, type_: DOMString) -> DataCue {
+    pub fn new1(start_time: f64, end_time: f64, value: &Any, type_: &str) -> DataCue {
         Self {
             inner: emlite::Val::global("DataCue")
                 .new(&[
@@ -80,12 +80,12 @@ impl DataCue {
         self.inner.get("value").as_::<Any>()
     }
 
-    pub fn set_value(&mut self, value: Any) {
+    pub fn set_value(&mut self, value: &Any) {
         self.inner.set("value", value);
     }
 }
 impl DataCue {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 }

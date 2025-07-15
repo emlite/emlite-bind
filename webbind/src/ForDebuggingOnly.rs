@@ -54,14 +54,14 @@ impl From<&ForDebuggingOnly> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ForDebuggingOnly);
 
 impl ForDebuggingOnly {
-    pub fn report_ad_auction_win(&self, url: USVString) -> Undefined {
+    pub fn report_ad_auction_win(&self, url: &str) -> Undefined {
         self.inner
             .call("reportAdAuctionWin", &[url.into()])
             .as_::<Undefined>()
     }
 }
 impl ForDebuggingOnly {
-    pub fn report_ad_auction_loss(&self, url: USVString) -> Undefined {
+    pub fn report_ad_auction_loss(&self, url: &str) -> Undefined {
         self.inner
             .call("reportAdAuctionLoss", &[url.into()])
             .as_::<Undefined>()

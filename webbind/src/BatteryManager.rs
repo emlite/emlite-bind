@@ -78,7 +78,7 @@ impl BatteryManager {
         self.inner.get("onchargingchange").as_::<Any>()
     }
 
-    pub fn set_onchargingchange(&mut self, value: Any) {
+    pub fn set_onchargingchange(&mut self, value: &Any) {
         self.inner.set("onchargingchange", value);
     }
 }
@@ -87,7 +87,7 @@ impl BatteryManager {
         self.inner.get("onchargingtimechange").as_::<Any>()
     }
 
-    pub fn set_onchargingtimechange(&mut self, value: Any) {
+    pub fn set_onchargingtimechange(&mut self, value: &Any) {
         self.inner.set("onchargingtimechange", value);
     }
 }
@@ -96,7 +96,7 @@ impl BatteryManager {
         self.inner.get("ondischargingtimechange").as_::<Any>()
     }
 
-    pub fn set_ondischargingtimechange(&mut self, value: Any) {
+    pub fn set_ondischargingtimechange(&mut self, value: &Any) {
         self.inner.set("ondischargingtimechange", value);
     }
 }
@@ -105,7 +105,7 @@ impl BatteryManager {
         self.inner.get("onlevelchange").as_::<Any>()
     }
 
-    pub fn set_onlevelchange(&mut self, value: Any) {
+    pub fn set_onlevelchange(&mut self, value: &Any) {
         self.inner.set("onlevelchange", value);
     }
 }

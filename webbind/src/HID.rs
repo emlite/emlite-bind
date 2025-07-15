@@ -55,7 +55,7 @@ impl HIDDeviceRequestOptions {
         self.inner.get("filters").as_::<Sequence<Any>>()
     }
 
-    pub fn set_filters(&mut self, value: Sequence<Any>) {
+    pub fn set_filters(&mut self, value: &Sequence<Any>) {
         self.inner.set("filters", value);
     }
 }
@@ -64,7 +64,7 @@ impl HIDDeviceRequestOptions {
         self.inner.get("exclusionFilters").as_::<Sequence<Any>>()
     }
 
-    pub fn set_exclusion_filters(&mut self, value: Sequence<Any>) {
+    pub fn set_exclusion_filters(&mut self, value: &Sequence<Any>) {
         self.inner.set("exclusionFilters", value);
     }
 }
@@ -126,7 +126,7 @@ impl HID {
         self.inner.get("onconnect").as_::<Any>()
     }
 
-    pub fn set_onconnect(&mut self, value: Any) {
+    pub fn set_onconnect(&mut self, value: &Any) {
         self.inner.set("onconnect", value);
     }
 }
@@ -135,7 +135,7 @@ impl HID {
         self.inner.get("ondisconnect").as_::<Any>()
     }
 
-    pub fn set_ondisconnect(&mut self, value: Any) {
+    pub fn set_ondisconnect(&mut self, value: &Any) {
         self.inner.set("ondisconnect", value);
     }
 }
@@ -145,7 +145,7 @@ impl HID {
     }
 }
 impl HID {
-    pub fn request_device(&self, options: HIDDeviceRequestOptions) -> Promise {
+    pub fn request_device(&self, options: &HIDDeviceRequestOptions) -> Promise {
         self.inner
             .call("requestDevice", &[options.into()])
             .as_::<Promise>()

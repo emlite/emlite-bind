@@ -54,11 +54,11 @@ impl From<&IDBIndex> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(IDBIndex);
 
 impl IDBIndex {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
@@ -83,12 +83,12 @@ impl IDBIndex {
     }
 }
 impl IDBIndex {
-    pub fn get(&self, query: Any) -> IDBRequest {
+    pub fn get(&self, query: &Any) -> IDBRequest {
         self.inner.call("get", &[query.into()]).as_::<IDBRequest>()
     }
 }
 impl IDBIndex {
-    pub fn get_key(&self, query: Any) -> IDBRequest {
+    pub fn get_key(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("getKey", &[query.into()])
             .as_::<IDBRequest>()
@@ -99,13 +99,13 @@ impl IDBIndex {
         self.inner.call("getAll", &[]).as_::<IDBRequest>()
     }
 
-    pub fn get_all1(&self, query: Any) -> IDBRequest {
+    pub fn get_all1(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("getAll", &[query.into()])
             .as_::<IDBRequest>()
     }
 
-    pub fn get_all2(&self, query: Any, count: u32) -> IDBRequest {
+    pub fn get_all2(&self, query: &Any, count: u32) -> IDBRequest {
         self.inner
             .call("getAll", &[query.into(), count.into()])
             .as_::<IDBRequest>()
@@ -116,13 +116,13 @@ impl IDBIndex {
         self.inner.call("getAllKeys", &[]).as_::<IDBRequest>()
     }
 
-    pub fn get_all_keys1(&self, query: Any) -> IDBRequest {
+    pub fn get_all_keys1(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("getAllKeys", &[query.into()])
             .as_::<IDBRequest>()
     }
 
-    pub fn get_all_keys2(&self, query: Any, count: u32) -> IDBRequest {
+    pub fn get_all_keys2(&self, query: &Any, count: u32) -> IDBRequest {
         self.inner
             .call("getAllKeys", &[query.into(), count.into()])
             .as_::<IDBRequest>()
@@ -133,7 +133,7 @@ impl IDBIndex {
         self.inner.call("count", &[]).as_::<IDBRequest>()
     }
 
-    pub fn count1(&self, query: Any) -> IDBRequest {
+    pub fn count1(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("count", &[query.into()])
             .as_::<IDBRequest>()
@@ -144,13 +144,13 @@ impl IDBIndex {
         self.inner.call("openCursor", &[]).as_::<IDBRequest>()
     }
 
-    pub fn open_cursor1(&self, query: Any) -> IDBRequest {
+    pub fn open_cursor1(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("openCursor", &[query.into()])
             .as_::<IDBRequest>()
     }
 
-    pub fn open_cursor2(&self, query: Any, direction: IDBCursorDirection) -> IDBRequest {
+    pub fn open_cursor2(&self, query: &Any, direction: &IDBCursorDirection) -> IDBRequest {
         self.inner
             .call("openCursor", &[query.into(), direction.into()])
             .as_::<IDBRequest>()
@@ -161,13 +161,13 @@ impl IDBIndex {
         self.inner.call("openKeyCursor", &[]).as_::<IDBRequest>()
     }
 
-    pub fn open_key_cursor1(&self, query: Any) -> IDBRequest {
+    pub fn open_key_cursor1(&self, query: &Any) -> IDBRequest {
         self.inner
             .call("openKeyCursor", &[query.into()])
             .as_::<IDBRequest>()
     }
 
-    pub fn open_key_cursor2(&self, query: Any, direction: IDBCursorDirection) -> IDBRequest {
+    pub fn open_key_cursor2(&self, query: &Any, direction: &IDBCursorDirection) -> IDBRequest {
         self.inner
             .call("openKeyCursor", &[query.into(), direction.into()])
             .as_::<IDBRequest>()

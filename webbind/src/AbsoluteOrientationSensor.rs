@@ -62,7 +62,7 @@ impl AbsoluteOrientationSensor {
         }
     }
 
-    pub fn new1(sensor_options: Any) -> AbsoluteOrientationSensor {
+    pub fn new1(sensor_options: &Any) -> AbsoluteOrientationSensor {
         Self {
             inner: emlite::Val::global("AbsoluteOrientationSensor")
                 .new(&[sensor_options.into()])

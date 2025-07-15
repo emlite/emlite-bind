@@ -59,7 +59,7 @@ impl XRHand {
     }
 }
 impl XRHand {
-    pub fn get(&self, key: XRHandJoint) -> XRJointSpace {
+    pub fn get(&self, key: &XRHandJoint) -> XRJointSpace {
         self.inner.call("get", &[key.into()]).as_::<XRJointSpace>()
     }
 }

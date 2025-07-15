@@ -54,7 +54,7 @@ impl From<&BiquadFilterNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(BiquadFilterNode);
 
 impl BiquadFilterNode {
-    pub fn new0(context: BaseAudioContext) -> BiquadFilterNode {
+    pub fn new0(context: &BaseAudioContext) -> BiquadFilterNode {
         Self {
             inner: emlite::Val::global("BiquadFilterNode")
                 .new(&[context.into()])
@@ -62,7 +62,7 @@ impl BiquadFilterNode {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: Any) -> BiquadFilterNode {
+    pub fn new1(context: &BaseAudioContext, options: &Any) -> BiquadFilterNode {
         Self {
             inner: emlite::Val::global("BiquadFilterNode")
                 .new(&[context.into(), options.into()])
@@ -75,7 +75,7 @@ impl BiquadFilterNode {
         self.inner.get("type").as_::<BiquadFilterType>()
     }
 
-    pub fn set_type_(&mut self, value: BiquadFilterType) {
+    pub fn set_type_(&mut self, value: &BiquadFilterType) {
         self.inner.set("type", value);
     }
 }
@@ -102,9 +102,9 @@ impl BiquadFilterNode {
 impl BiquadFilterNode {
     pub fn get_frequency_response(
         &self,
-        frequency_hz: Float32Array,
-        mag_response: Float32Array,
-        phase_response: Float32Array,
+        frequency_hz: &Float32Array,
+        mag_response: &Float32Array,
+        phase_response: &Float32Array,
     ) -> Undefined {
         self.inner
             .call(

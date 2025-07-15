@@ -54,7 +54,7 @@ impl From<&USBOutTransferResult> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(USBOutTransferResult);
 
 impl USBOutTransferResult {
-    pub fn new0(status: USBTransferStatus) -> USBOutTransferResult {
+    pub fn new0(status: &USBTransferStatus) -> USBOutTransferResult {
         Self {
             inner: emlite::Val::global("USBOutTransferResult")
                 .new(&[status.into()])
@@ -62,7 +62,7 @@ impl USBOutTransferResult {
         }
     }
 
-    pub fn new1(status: USBTransferStatus, bytes_written: u32) -> USBOutTransferResult {
+    pub fn new1(status: &USBTransferStatus, bytes_written: u32) -> USBOutTransferResult {
         Self {
             inner: emlite::Val::global("USBOutTransferResult")
                 .new(&[status.into(), bytes_written.into()])

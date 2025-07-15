@@ -63,20 +63,20 @@ impl HTMLModElement {
     }
 }
 impl HTMLModElement {
-    pub fn cite(&self) -> USVString {
-        self.inner.get("cite").as_::<USVString>()
+    pub fn cite(&self) -> String {
+        self.inner.get("cite").as_::<String>()
     }
 
-    pub fn set_cite(&mut self, value: USVString) {
+    pub fn set_cite(&mut self, value: &str) {
         self.inner.set("cite", value);
     }
 }
 impl HTMLModElement {
-    pub fn date_time(&self) -> DOMString {
-        self.inner.get("dateTime").as_::<DOMString>()
+    pub fn date_time(&self) -> String {
+        self.inner.get("dateTime").as_::<String>()
     }
 
-    pub fn set_date_time(&mut self, value: DOMString) {
+    pub fn set_date_time(&mut self, value: &str) {
         self.inner.set("dateTime", value);
     }
 }

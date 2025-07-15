@@ -62,7 +62,7 @@ impl TextDecoderStream {
         }
     }
 
-    pub fn new1(label: DOMString) -> TextDecoderStream {
+    pub fn new1(label: &str) -> TextDecoderStream {
         Self {
             inner: emlite::Val::global("TextDecoderStream")
                 .new(&[label.into()])
@@ -70,7 +70,7 @@ impl TextDecoderStream {
         }
     }
 
-    pub fn new2(label: DOMString, options: Any) -> TextDecoderStream {
+    pub fn new2(label: &str, options: &Any) -> TextDecoderStream {
         Self {
             inner: emlite::Val::global("TextDecoderStream")
                 .new(&[label.into(), options.into()])
@@ -79,8 +79,8 @@ impl TextDecoderStream {
     }
 }
 impl TextDecoderStream {
-    pub fn encoding(&self) -> DOMString {
-        self.inner.get("encoding").as_::<DOMString>()
+    pub fn encoding(&self) -> String {
+        self.inner.get("encoding").as_::<String>()
     }
 }
 impl TextDecoderStream {

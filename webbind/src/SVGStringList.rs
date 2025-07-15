@@ -69,44 +69,42 @@ impl SVGStringList {
     }
 }
 impl SVGStringList {
-    pub fn initialize(&self, new_item: DOMString) -> DOMString {
+    pub fn initialize(&self, new_item: &str) -> String {
         self.inner
             .call("initialize", &[new_item.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl SVGStringList {
-    pub fn get_item(&self, index: u32) -> DOMString {
-        self.inner
-            .call("getItem", &[index.into()])
-            .as_::<DOMString>()
+    pub fn get_item(&self, index: u32) -> String {
+        self.inner.call("getItem", &[index.into()]).as_::<String>()
     }
 }
 impl SVGStringList {
-    pub fn insert_item_before(&self, new_item: DOMString, index: u32) -> DOMString {
+    pub fn insert_item_before(&self, new_item: &str, index: u32) -> String {
         self.inner
             .call("insertItemBefore", &[new_item.into(), index.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl SVGStringList {
-    pub fn replace_item(&self, new_item: DOMString, index: u32) -> DOMString {
+    pub fn replace_item(&self, new_item: &str, index: u32) -> String {
         self.inner
             .call("replaceItem", &[new_item.into(), index.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl SVGStringList {
-    pub fn remove_item(&self, index: u32) -> DOMString {
+    pub fn remove_item(&self, index: u32) -> String {
         self.inner
             .call("removeItem", &[index.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl SVGStringList {
-    pub fn append_item(&self, new_item: DOMString) -> DOMString {
+    pub fn append_item(&self, new_item: &str) -> String {
         self.inner
             .call("appendItem", &[new_item.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }

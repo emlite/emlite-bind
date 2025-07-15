@@ -120,7 +120,7 @@ impl LayoutConstraintsOptions {
             .as_::<BlockFragmentationType>()
     }
 
-    pub fn set_block_fragmentation_type(&mut self, value: BlockFragmentationType) {
+    pub fn set_block_fragmentation_type(&mut self, value: &BlockFragmentationType) {
         self.inner.set("blockFragmentationType", value);
     }
 }
@@ -129,7 +129,7 @@ impl LayoutConstraintsOptions {
         self.inner.get("data").as_::<Any>()
     }
 
-    pub fn set_data(&mut self, value: Any) {
+    pub fn set_data(&mut self, value: &Any) {
         self.inner.set("data", value);
     }
 }
@@ -199,8 +199,8 @@ impl LayoutChild {
 impl LayoutChild {
     pub fn layout_next_fragment(
         &self,
-        constraints: LayoutConstraintsOptions,
-        break_token: ChildBreakToken,
+        constraints: &LayoutConstraintsOptions,
+        break_token: &ChildBreakToken,
     ) -> Promise {
         self.inner
             .call(

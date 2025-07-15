@@ -74,7 +74,7 @@ impl PushMessageData {
     }
 }
 impl PushMessageData {
-    pub fn text(&self) -> USVString {
-        self.inner.call("text", &[]).as_::<USVString>()
+    pub fn text(&self) -> String {
+        self.inner.call("text", &[]).as_::<String>()
     }
 }

@@ -60,7 +60,7 @@ impl Blob {
         }
     }
 
-    pub fn new1(blob_parts: Sequence<Any>) -> Blob {
+    pub fn new1(blob_parts: &Sequence<Any>) -> Blob {
         Self {
             inner: emlite::Val::global("Blob")
                 .new(&[blob_parts.into()])
@@ -68,7 +68,7 @@ impl Blob {
         }
     }
 
-    pub fn new2(blob_parts: Sequence<Any>, options: Any) -> Blob {
+    pub fn new2(blob_parts: &Sequence<Any>, options: &Any) -> Blob {
         Self {
             inner: emlite::Val::global("Blob")
                 .new(&[blob_parts.into(), options.into()])
@@ -82,8 +82,8 @@ impl Blob {
     }
 }
 impl Blob {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 }
 impl Blob {
@@ -101,7 +101,7 @@ impl Blob {
             .as_::<Blob>()
     }
 
-    pub fn slice3(&self, start: i64, end: i64, content_type: DOMString) -> Blob {
+    pub fn slice3(&self, start: i64, end: i64, content_type: &str) -> Blob {
         self.inner
             .call("slice", &[start.into(), end.into(), content_type.into()])
             .as_::<Blob>()

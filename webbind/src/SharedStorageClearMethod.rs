@@ -62,7 +62,7 @@ impl SharedStorageClearMethod {
         }
     }
 
-    pub fn new1(options: SharedStorageModifierMethodOptions) -> SharedStorageClearMethod {
+    pub fn new1(options: &SharedStorageModifierMethodOptions) -> SharedStorageClearMethod {
         Self {
             inner: emlite::Val::global("SharedStorageClearMethod")
                 .new(&[options.into()])

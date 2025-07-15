@@ -54,7 +54,7 @@ impl From<&SharedStorageAppendMethod> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SharedStorageAppendMethod);
 
 impl SharedStorageAppendMethod {
-    pub fn new0(key: DOMString, value: DOMString) -> SharedStorageAppendMethod {
+    pub fn new0(key: &str, value: &str) -> SharedStorageAppendMethod {
         Self {
             inner: emlite::Val::global("SharedStorageAppendMethod")
                 .new(&[key.into(), value.into()])
@@ -63,9 +63,9 @@ impl SharedStorageAppendMethod {
     }
 
     pub fn new1(
-        key: DOMString,
-        value: DOMString,
-        options: SharedStorageModifierMethodOptions,
+        key: &str,
+        value: &str,
+        options: &SharedStorageModifierMethodOptions,
     ) -> SharedStorageAppendMethod {
         Self {
             inner: emlite::Val::global("SharedStorageAppendMethod")

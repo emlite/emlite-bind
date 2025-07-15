@@ -54,18 +54,18 @@ impl From<&DedicatedWorkerGlobalScope> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(DedicatedWorkerGlobalScope);
 
 impl DedicatedWorkerGlobalScope {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl DedicatedWorkerGlobalScope {
-    pub fn post_message0(&self, message: Any) -> Undefined {
+    pub fn post_message0(&self, message: &Any) -> Undefined {
         self.inner
             .call("postMessage", &[message.into()])
             .as_::<Undefined>()
     }
 
-    pub fn post_message1(&self, message: Any, options: StructuredSerializeOptions) -> Undefined {
+    pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
         self.inner
             .call("postMessage", &[message.into(), options.into()])
             .as_::<Undefined>()
@@ -81,12 +81,12 @@ impl DedicatedWorkerGlobalScope {
         self.inner.get("onrtctransform").as_::<Any>()
     }
 
-    pub fn set_onrtctransform(&mut self, value: Any) {
+    pub fn set_onrtctransform(&mut self, value: &Any) {
         self.inner.set("onrtctransform", value);
     }
 }
 impl DedicatedWorkerGlobalScope {
-    pub fn request_animation_frame(&self, callback: Function) -> u32 {
+    pub fn request_animation_frame(&self, callback: &Function) -> u32 {
         self.inner
             .call("requestAnimationFrame", &[callback.into()])
             .as_::<u32>()
@@ -104,7 +104,7 @@ impl DedicatedWorkerGlobalScope {
         self.inner.get("onmessage").as_::<Any>()
     }
 
-    pub fn set_onmessage(&mut self, value: Any) {
+    pub fn set_onmessage(&mut self, value: &Any) {
         self.inner.set("onmessage", value);
     }
 }
@@ -113,7 +113,7 @@ impl DedicatedWorkerGlobalScope {
         self.inner.get("onmessageerror").as_::<Any>()
     }
 
-    pub fn set_onmessageerror(&mut self, value: Any) {
+    pub fn set_onmessageerror(&mut self, value: &Any) {
         self.inner.set("onmessageerror", value);
     }
 }

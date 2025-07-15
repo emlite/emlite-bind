@@ -54,7 +54,7 @@ impl From<&EncodedVideoChunk> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(EncodedVideoChunk);
 
 impl EncodedVideoChunk {
-    pub fn new(init: Any) -> EncodedVideoChunk {
+    pub fn new(init: &Any) -> EncodedVideoChunk {
         Self {
             inner: emlite::Val::global("EncodedVideoChunk")
                 .new(&[init.into()])
@@ -83,7 +83,7 @@ impl EncodedVideoChunk {
     }
 }
 impl EncodedVideoChunk {
-    pub fn copy_to(&self, destination: Any) -> Undefined {
+    pub fn copy_to(&self, destination: &Any) -> Undefined {
         self.inner
             .call("copyTo", &[destination.into()])
             .as_::<Undefined>()

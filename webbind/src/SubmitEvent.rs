@@ -54,7 +54,7 @@ impl From<&SubmitEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SubmitEvent);
 
 impl SubmitEvent {
-    pub fn new0(type_: DOMString) -> SubmitEvent {
+    pub fn new0(type_: &str) -> SubmitEvent {
         Self {
             inner: emlite::Val::global("SubmitEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl SubmitEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> SubmitEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> SubmitEvent {
         Self {
             inner: emlite::Val::global("SubmitEvent")
                 .new(&[type_.into(), event_init_dict.into()])

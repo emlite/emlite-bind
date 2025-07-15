@@ -54,8 +54,8 @@ impl From<&RTCDataChannel> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(RTCDataChannel);
 
 impl RTCDataChannel {
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 }
 impl RTCDataChannel {
@@ -74,8 +74,8 @@ impl RTCDataChannel {
     }
 }
 impl RTCDataChannel {
-    pub fn protocol(&self) -> USVString {
-        self.inner.get("protocol").as_::<USVString>()
+    pub fn protocol(&self) -> String {
+        self.inner.get("protocol").as_::<String>()
     }
 }
 impl RTCDataChannel {
@@ -112,7 +112,7 @@ impl RTCDataChannel {
         self.inner.get("onopen").as_::<Any>()
     }
 
-    pub fn set_onopen(&mut self, value: Any) {
+    pub fn set_onopen(&mut self, value: &Any) {
         self.inner.set("onopen", value);
     }
 }
@@ -121,7 +121,7 @@ impl RTCDataChannel {
         self.inner.get("onbufferedamountlow").as_::<Any>()
     }
 
-    pub fn set_onbufferedamountlow(&mut self, value: Any) {
+    pub fn set_onbufferedamountlow(&mut self, value: &Any) {
         self.inner.set("onbufferedamountlow", value);
     }
 }
@@ -130,7 +130,7 @@ impl RTCDataChannel {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }
@@ -139,7 +139,7 @@ impl RTCDataChannel {
         self.inner.get("onclosing").as_::<Any>()
     }
 
-    pub fn set_onclosing(&mut self, value: Any) {
+    pub fn set_onclosing(&mut self, value: &Any) {
         self.inner.set("onclosing", value);
     }
 }
@@ -148,7 +148,7 @@ impl RTCDataChannel {
         self.inner.get("onclose").as_::<Any>()
     }
 
-    pub fn set_onclose(&mut self, value: Any) {
+    pub fn set_onclose(&mut self, value: &Any) {
         self.inner.set("onclose", value);
     }
 }
@@ -162,7 +162,7 @@ impl RTCDataChannel {
         self.inner.get("onmessage").as_::<Any>()
     }
 
-    pub fn set_onmessage(&mut self, value: Any) {
+    pub fn set_onmessage(&mut self, value: &Any) {
         self.inner.set("onmessage", value);
     }
 }
@@ -171,12 +171,12 @@ impl RTCDataChannel {
         self.inner.get("binaryType").as_::<BinaryType>()
     }
 
-    pub fn set_binary_type(&mut self, value: BinaryType) {
+    pub fn set_binary_type(&mut self, value: &BinaryType) {
         self.inner.set("binaryType", value);
     }
 }
 impl RTCDataChannel {
-    pub fn send(&self, data: Any) -> Undefined {
+    pub fn send(&self, data: &Any) -> Undefined {
         self.inner.call("send", &[data.into()]).as_::<Undefined>()
     }
 }

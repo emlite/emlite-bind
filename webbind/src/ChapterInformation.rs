@@ -51,29 +51,29 @@ impl From<&MediaImage> for emlite::Val {
 }
 
 impl MediaImage {
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> String {
+        self.inner.get("src").as_::<String>()
     }
 
-    pub fn set_src(&mut self, value: USVString) {
+    pub fn set_src(&mut self, value: &str) {
         self.inner.set("src", value);
     }
 }
 impl MediaImage {
-    pub fn sizes(&self) -> DOMString {
-        self.inner.get("sizes").as_::<DOMString>()
+    pub fn sizes(&self) -> String {
+        self.inner.get("sizes").as_::<String>()
     }
 
-    pub fn set_sizes(&mut self, value: DOMString) {
+    pub fn set_sizes(&mut self, value: &str) {
         self.inner.set("sizes", value);
     }
 }
 impl MediaImage {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: DOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }
@@ -131,8 +131,8 @@ impl From<&ChapterInformation> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ChapterInformation);
 
 impl ChapterInformation {
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> String {
+        self.inner.get("title").as_::<String>()
     }
 }
 impl ChapterInformation {

@@ -54,8 +54,8 @@ impl From<&MutationRecord> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MutationRecord);
 
 impl MutationRecord {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 }
 impl MutationRecord {
@@ -84,17 +84,17 @@ impl MutationRecord {
     }
 }
 impl MutationRecord {
-    pub fn attribute_name(&self) -> DOMString {
-        self.inner.get("attributeName").as_::<DOMString>()
+    pub fn attribute_name(&self) -> String {
+        self.inner.get("attributeName").as_::<String>()
     }
 }
 impl MutationRecord {
-    pub fn attribute_namespace(&self) -> DOMString {
-        self.inner.get("attributeNamespace").as_::<DOMString>()
+    pub fn attribute_namespace(&self) -> String {
+        self.inner.get("attributeNamespace").as_::<String>()
     }
 }
 impl MutationRecord {
-    pub fn old_value(&self) -> DOMString {
-        self.inner.get("oldValue").as_::<DOMString>()
+    pub fn old_value(&self) -> String {
+        self.inner.get("oldValue").as_::<String>()
     }
 }

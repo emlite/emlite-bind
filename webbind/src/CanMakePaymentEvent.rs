@@ -54,7 +54,7 @@ impl From<&CanMakePaymentEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CanMakePaymentEvent);
 
 impl CanMakePaymentEvent {
-    pub fn new(type_: DOMString) -> CanMakePaymentEvent {
+    pub fn new(type_: &str) -> CanMakePaymentEvent {
         Self {
             inner: emlite::Val::global("CanMakePaymentEvent")
                 .new(&[type_.into()])
@@ -63,7 +63,7 @@ impl CanMakePaymentEvent {
     }
 }
 impl CanMakePaymentEvent {
-    pub fn respond_with(&self, can_make_payment_response: Promise) -> Undefined {
+    pub fn respond_with(&self, can_make_payment_response: &Promise) -> Undefined {
         self.inner
             .call("respondWith", &[can_make_payment_response.into()])
             .as_::<Undefined>()

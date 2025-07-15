@@ -54,7 +54,7 @@ impl From<&AnalyserNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(AnalyserNode);
 
 impl AnalyserNode {
-    pub fn new0(context: BaseAudioContext) -> AnalyserNode {
+    pub fn new0(context: &BaseAudioContext) -> AnalyserNode {
         Self {
             inner: emlite::Val::global("AnalyserNode")
                 .new(&[context.into()])
@@ -62,7 +62,7 @@ impl AnalyserNode {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: Any) -> AnalyserNode {
+    pub fn new1(context: &BaseAudioContext, options: &Any) -> AnalyserNode {
         Self {
             inner: emlite::Val::global("AnalyserNode")
                 .new(&[context.into(), options.into()])
@@ -71,28 +71,28 @@ impl AnalyserNode {
     }
 }
 impl AnalyserNode {
-    pub fn get_float_frequency_data(&self, array: Float32Array) -> Undefined {
+    pub fn get_float_frequency_data(&self, array: &Float32Array) -> Undefined {
         self.inner
             .call("getFloatFrequencyData", &[array.into()])
             .as_::<Undefined>()
     }
 }
 impl AnalyserNode {
-    pub fn get_byte_frequency_data(&self, array: Uint8Array) -> Undefined {
+    pub fn get_byte_frequency_data(&self, array: &Uint8Array) -> Undefined {
         self.inner
             .call("getByteFrequencyData", &[array.into()])
             .as_::<Undefined>()
     }
 }
 impl AnalyserNode {
-    pub fn get_float_time_domain_data(&self, array: Float32Array) -> Undefined {
+    pub fn get_float_time_domain_data(&self, array: &Float32Array) -> Undefined {
         self.inner
             .call("getFloatTimeDomainData", &[array.into()])
             .as_::<Undefined>()
     }
 }
 impl AnalyserNode {
-    pub fn get_byte_time_domain_data(&self, array: Uint8Array) -> Undefined {
+    pub fn get_byte_time_domain_data(&self, array: &Uint8Array) -> Undefined {
         self.inner
             .call("getByteTimeDomainData", &[array.into()])
             .as_::<Undefined>()

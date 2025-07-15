@@ -69,7 +69,7 @@ impl WorkerGlobalScope {
     }
 }
 impl WorkerGlobalScope {
-    pub fn import_scripts(&self, urls: Any) -> Undefined {
+    pub fn import_scripts(&self, urls: &Any) -> Undefined {
         self.inner
             .call("importScripts", &[urls.into()])
             .as_::<Undefined>()
@@ -80,7 +80,7 @@ impl WorkerGlobalScope {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }
@@ -89,7 +89,7 @@ impl WorkerGlobalScope {
         self.inner.get("onlanguagechange").as_::<Any>()
     }
 
-    pub fn set_onlanguagechange(&mut self, value: Any) {
+    pub fn set_onlanguagechange(&mut self, value: &Any) {
         self.inner.set("onlanguagechange", value);
     }
 }
@@ -98,7 +98,7 @@ impl WorkerGlobalScope {
         self.inner.get("onoffline").as_::<Any>()
     }
 
-    pub fn set_onoffline(&mut self, value: Any) {
+    pub fn set_onoffline(&mut self, value: &Any) {
         self.inner.set("onoffline", value);
     }
 }
@@ -107,7 +107,7 @@ impl WorkerGlobalScope {
         self.inner.get("ononline").as_::<Any>()
     }
 
-    pub fn set_ononline(&mut self, value: Any) {
+    pub fn set_ononline(&mut self, value: &Any) {
         self.inner.set("ononline", value);
     }
 }
@@ -116,7 +116,7 @@ impl WorkerGlobalScope {
         self.inner.get("onrejectionhandled").as_::<Any>()
     }
 
-    pub fn set_onrejectionhandled(&mut self, value: Any) {
+    pub fn set_onrejectionhandled(&mut self, value: &Any) {
         self.inner.set("onrejectionhandled", value);
     }
 }
@@ -125,7 +125,7 @@ impl WorkerGlobalScope {
         self.inner.get("onunhandledrejection").as_::<Any>()
     }
 
-    pub fn set_onunhandledrejection(&mut self, value: Any) {
+    pub fn set_onunhandledrejection(&mut self, value: &Any) {
         self.inner.set("onunhandledrejection", value);
     }
 }

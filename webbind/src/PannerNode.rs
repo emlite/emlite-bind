@@ -54,7 +54,7 @@ impl From<&PannerNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PannerNode);
 
 impl PannerNode {
-    pub fn new0(context: BaseAudioContext) -> PannerNode {
+    pub fn new0(context: &BaseAudioContext) -> PannerNode {
         Self {
             inner: emlite::Val::global("PannerNode")
                 .new(&[context.into()])
@@ -62,7 +62,7 @@ impl PannerNode {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: Any) -> PannerNode {
+    pub fn new1(context: &BaseAudioContext, options: &Any) -> PannerNode {
         Self {
             inner: emlite::Val::global("PannerNode")
                 .new(&[context.into(), options.into()])
@@ -75,7 +75,7 @@ impl PannerNode {
         self.inner.get("panningModel").as_::<PanningModelType>()
     }
 
-    pub fn set_panning_model(&mut self, value: PanningModelType) {
+    pub fn set_panning_model(&mut self, value: &PanningModelType) {
         self.inner.set("panningModel", value);
     }
 }
@@ -114,7 +114,7 @@ impl PannerNode {
         self.inner.get("distanceModel").as_::<DistanceModelType>()
     }
 
-    pub fn set_distance_model(&mut self, value: DistanceModelType) {
+    pub fn set_distance_model(&mut self, value: &DistanceModelType) {
         self.inner.set("distanceModel", value);
     }
 }

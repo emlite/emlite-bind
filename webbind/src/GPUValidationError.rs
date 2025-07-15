@@ -54,7 +54,7 @@ impl From<&GPUValidationError> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(GPUValidationError);
 
 impl GPUValidationError {
-    pub fn new(message: DOMString) -> GPUValidationError {
+    pub fn new(message: &str) -> GPUValidationError {
         Self {
             inner: emlite::Val::global("GPUValidationError")
                 .new(&[message.into()])

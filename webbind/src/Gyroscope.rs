@@ -60,7 +60,7 @@ impl Gyroscope {
         }
     }
 
-    pub fn new1(sensor_options: Any) -> Gyroscope {
+    pub fn new1(sensor_options: &Any) -> Gyroscope {
         Self {
             inner: emlite::Val::global("Gyroscope")
                 .new(&[sensor_options.into()])

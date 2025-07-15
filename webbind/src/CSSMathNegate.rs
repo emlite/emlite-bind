@@ -54,7 +54,7 @@ impl From<&CSSMathNegate> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSMathNegate);
 
 impl CSSMathNegate {
-    pub fn new(arg: Any) -> CSSMathNegate {
+    pub fn new(arg: &Any) -> CSSMathNegate {
         Self {
             inner: emlite::Val::global("CSSMathNegate")
                 .new(&[arg.into()])

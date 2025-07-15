@@ -54,17 +54,17 @@ impl From<&DataTransferItem> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(DataTransferItem);
 
 impl DataTransferItem {
-    pub fn kind(&self) -> DOMString {
-        self.inner.get("kind").as_::<DOMString>()
+    pub fn kind(&self) -> String {
+        self.inner.get("kind").as_::<String>()
     }
 }
 impl DataTransferItem {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 }
 impl DataTransferItem {
-    pub fn get_as_string(&self, callback: Any) -> Undefined {
+    pub fn get_as_string(&self, callback: &Any) -> Undefined {
         self.inner
             .call("getAsString", &[callback.into()])
             .as_::<Undefined>()

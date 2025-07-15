@@ -54,7 +54,7 @@ impl From<&VTTCue> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(VTTCue);
 
 impl VTTCue {
-    pub fn new(start_time: f64, end_time: f64, text: DOMString) -> VTTCue {
+    pub fn new(start_time: f64, end_time: f64, text: &str) -> VTTCue {
         Self {
             inner: emlite::Val::global("VTTCue")
                 .new(&[start_time.into(), end_time.into(), text.into()])
@@ -67,7 +67,7 @@ impl VTTCue {
         self.inner.get("region").as_::<VTTRegion>()
     }
 
-    pub fn set_region(&mut self, value: VTTRegion) {
+    pub fn set_region(&mut self, value: &VTTRegion) {
         self.inner.set("region", value);
     }
 }
@@ -76,7 +76,7 @@ impl VTTCue {
         self.inner.get("vertical").as_::<DirectionSetting>()
     }
 
-    pub fn set_vertical(&mut self, value: DirectionSetting) {
+    pub fn set_vertical(&mut self, value: &DirectionSetting) {
         self.inner.set("vertical", value);
     }
 }
@@ -94,7 +94,7 @@ impl VTTCue {
         self.inner.get("line").as_::<Any>()
     }
 
-    pub fn set_line(&mut self, value: Any) {
+    pub fn set_line(&mut self, value: &Any) {
         self.inner.set("line", value);
     }
 }
@@ -103,7 +103,7 @@ impl VTTCue {
         self.inner.get("lineAlign").as_::<LineAlignSetting>()
     }
 
-    pub fn set_line_align(&mut self, value: LineAlignSetting) {
+    pub fn set_line_align(&mut self, value: &LineAlignSetting) {
         self.inner.set("lineAlign", value);
     }
 }
@@ -112,7 +112,7 @@ impl VTTCue {
         self.inner.get("position").as_::<Any>()
     }
 
-    pub fn set_position(&mut self, value: Any) {
+    pub fn set_position(&mut self, value: &Any) {
         self.inner.set("position", value);
     }
 }
@@ -123,7 +123,7 @@ impl VTTCue {
             .as_::<PositionAlignSetting>()
     }
 
-    pub fn set_position_align(&mut self, value: PositionAlignSetting) {
+    pub fn set_position_align(&mut self, value: &PositionAlignSetting) {
         self.inner.set("positionAlign", value);
     }
 }
@@ -141,16 +141,16 @@ impl VTTCue {
         self.inner.get("align").as_::<AlignSetting>()
     }
 
-    pub fn set_align(&mut self, value: AlignSetting) {
+    pub fn set_align(&mut self, value: &AlignSetting) {
         self.inner.set("align", value);
     }
 }
 impl VTTCue {
-    pub fn text(&self) -> DOMString {
-        self.inner.get("text").as_::<DOMString>()
+    pub fn text(&self) -> String {
+        self.inner.get("text").as_::<String>()
     }
 
-    pub fn set_text(&mut self, value: DOMString) {
+    pub fn set_text(&mut self, value: &str) {
         self.inner.set("text", value);
     }
 }

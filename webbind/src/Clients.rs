@@ -64,7 +64,7 @@ impl ClientQueryOptions {
         self.inner.get("type").as_::<ClientType>()
     }
 
-    pub fn set_type_(&mut self, value: ClientType) {
+    pub fn set_type_(&mut self, value: &ClientType) {
         self.inner.set("type", value);
     }
 }
@@ -122,7 +122,7 @@ impl From<&Clients> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Clients);
 
 impl Clients {
-    pub fn get(&self, id: DOMString) -> Promise {
+    pub fn get(&self, id: &str) -> Promise {
         self.inner.call("get", &[id.into()]).as_::<Promise>()
     }
 }
@@ -131,14 +131,14 @@ impl Clients {
         self.inner.call("matchAll", &[]).as_::<Promise>()
     }
 
-    pub fn match_all1(&self, options: ClientQueryOptions) -> Promise {
+    pub fn match_all1(&self, options: &ClientQueryOptions) -> Promise {
         self.inner
             .call("matchAll", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl Clients {
-    pub fn open_window(&self, url: USVString) -> Promise {
+    pub fn open_window(&self, url: &str) -> Promise {
         self.inner
             .call("openWindow", &[url.into()])
             .as_::<Promise>()

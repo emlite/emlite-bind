@@ -54,7 +54,7 @@ impl From<&AnimationPlaybackEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(AnimationPlaybackEvent);
 
 impl AnimationPlaybackEvent {
-    pub fn new0(type_: DOMString) -> AnimationPlaybackEvent {
+    pub fn new0(type_: &str) -> AnimationPlaybackEvent {
         Self {
             inner: emlite::Val::global("AnimationPlaybackEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl AnimationPlaybackEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> AnimationPlaybackEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> AnimationPlaybackEvent {
         Self {
             inner: emlite::Val::global("AnimationPlaybackEvent")
                 .new(&[type_.into(), event_init_dict.into()])

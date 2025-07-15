@@ -54,7 +54,7 @@ impl From<&PaymentRequestUpdateEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PaymentRequestUpdateEvent);
 
 impl PaymentRequestUpdateEvent {
-    pub fn new0(type_: DOMString) -> PaymentRequestUpdateEvent {
+    pub fn new0(type_: &str) -> PaymentRequestUpdateEvent {
         Self {
             inner: emlite::Val::global("PaymentRequestUpdateEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl PaymentRequestUpdateEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> PaymentRequestUpdateEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> PaymentRequestUpdateEvent {
         Self {
             inner: emlite::Val::global("PaymentRequestUpdateEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -71,7 +71,7 @@ impl PaymentRequestUpdateEvent {
     }
 }
 impl PaymentRequestUpdateEvent {
-    pub fn update_with(&self, details_promise: Promise) -> Undefined {
+    pub fn update_with(&self, details_promise: &Promise) -> Undefined {
         self.inner
             .call("updateWith", &[details_promise.into()])
             .as_::<Undefined>()

@@ -95,7 +95,7 @@ impl XRCompositionLayer {
         self.inner.get("quality").as_::<XRLayerQuality>()
     }
 
-    pub fn set_quality(&mut self, value: XRLayerQuality) {
+    pub fn set_quality(&mut self, value: &XRLayerQuality) {
         self.inner.set("quality", value);
     }
 }

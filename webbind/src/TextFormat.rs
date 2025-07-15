@@ -62,7 +62,7 @@ impl TextFormat {
         }
     }
 
-    pub fn new1(options: Any) -> TextFormat {
+    pub fn new1(options: &Any) -> TextFormat {
         Self {
             inner: emlite::Val::global("TextFormat")
                 .new(&[options.into()])

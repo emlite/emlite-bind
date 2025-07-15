@@ -78,7 +78,7 @@ impl RTCSctpTransport {
         self.inner.get("onstatechange").as_::<Any>()
     }
 
-    pub fn set_onstatechange(&mut self, value: Any) {
+    pub fn set_onstatechange(&mut self, value: &Any) {
         self.inner.set("onstatechange", value);
     }
 }

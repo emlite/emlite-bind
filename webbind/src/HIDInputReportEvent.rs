@@ -54,7 +54,7 @@ impl From<&HIDInputReportEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(HIDInputReportEvent);
 
 impl HIDInputReportEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> HIDInputReportEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> HIDInputReportEvent {
         Self {
             inner: emlite::Val::global("HIDInputReportEvent")
                 .new(&[type_.into(), event_init_dict.into()])

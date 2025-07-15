@@ -54,7 +54,7 @@ impl From<&CSSOKLCH> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSOKLCH);
 
 impl CSSOKLCH {
-    pub fn new0(l: Any, c: Any, h: Any) -> CSSOKLCH {
+    pub fn new0(l: &Any, c: &Any, h: &Any) -> CSSOKLCH {
         Self {
             inner: emlite::Val::global("CSSOKLCH")
                 .new(&[l.into(), c.into(), h.into()])
@@ -62,7 +62,7 @@ impl CSSOKLCH {
         }
     }
 
-    pub fn new1(l: Any, c: Any, h: Any, alpha: Any) -> CSSOKLCH {
+    pub fn new1(l: &Any, c: &Any, h: &Any, alpha: &Any) -> CSSOKLCH {
         Self {
             inner: emlite::Val::global("CSSOKLCH")
                 .new(&[l.into(), c.into(), h.into(), alpha.into()])
@@ -75,7 +75,7 @@ impl CSSOKLCH {
         self.inner.get("l").as_::<Any>()
     }
 
-    pub fn set_l(&mut self, value: Any) {
+    pub fn set_l(&mut self, value: &Any) {
         self.inner.set("l", value);
     }
 }
@@ -84,7 +84,7 @@ impl CSSOKLCH {
         self.inner.get("c").as_::<Any>()
     }
 
-    pub fn set_c(&mut self, value: Any) {
+    pub fn set_c(&mut self, value: &Any) {
         self.inner.set("c", value);
     }
 }
@@ -93,7 +93,7 @@ impl CSSOKLCH {
         self.inner.get("h").as_::<Any>()
     }
 
-    pub fn set_h(&mut self, value: Any) {
+    pub fn set_h(&mut self, value: &Any) {
         self.inner.set("h", value);
     }
 }
@@ -102,7 +102,7 @@ impl CSSOKLCH {
         self.inner.get("alpha").as_::<Any>()
     }
 
-    pub fn set_alpha(&mut self, value: Any) {
+    pub fn set_alpha(&mut self, value: &Any) {
         self.inner.set("alpha", value);
     }
 }

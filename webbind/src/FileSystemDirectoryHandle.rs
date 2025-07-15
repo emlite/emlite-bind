@@ -231,20 +231,20 @@ impl From<&FileSystemDirectoryHandle> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(FileSystemDirectoryHandle);
 
 impl FileSystemDirectoryHandle {
-    pub fn get_file_handle0(&self, name: USVString) -> Promise {
+    pub fn get_file_handle0(&self, name: &str) -> Promise {
         self.inner
             .call("getFileHandle", &[name.into()])
             .as_::<Promise>()
     }
 
-    pub fn get_file_handle1(&self, name: USVString, options: FileSystemGetFileOptions) -> Promise {
+    pub fn get_file_handle1(&self, name: &str, options: &FileSystemGetFileOptions) -> Promise {
         self.inner
             .call("getFileHandle", &[name.into(), options.into()])
             .as_::<Promise>()
     }
 }
 impl FileSystemDirectoryHandle {
-    pub fn get_directory_handle0(&self, name: USVString) -> Promise {
+    pub fn get_directory_handle0(&self, name: &str) -> Promise {
         self.inner
             .call("getDirectoryHandle", &[name.into()])
             .as_::<Promise>()
@@ -252,8 +252,8 @@ impl FileSystemDirectoryHandle {
 
     pub fn get_directory_handle1(
         &self,
-        name: USVString,
-        options: FileSystemGetDirectoryOptions,
+        name: &str,
+        options: &FileSystemGetDirectoryOptions,
     ) -> Promise {
         self.inner
             .call("getDirectoryHandle", &[name.into(), options.into()])
@@ -261,20 +261,20 @@ impl FileSystemDirectoryHandle {
     }
 }
 impl FileSystemDirectoryHandle {
-    pub fn remove_entry0(&self, name: USVString) -> Promise {
+    pub fn remove_entry0(&self, name: &str) -> Promise {
         self.inner
             .call("removeEntry", &[name.into()])
             .as_::<Promise>()
     }
 
-    pub fn remove_entry1(&self, name: USVString, options: FileSystemRemoveOptions) -> Promise {
+    pub fn remove_entry1(&self, name: &str, options: &FileSystemRemoveOptions) -> Promise {
         self.inner
             .call("removeEntry", &[name.into(), options.into()])
             .as_::<Promise>()
     }
 }
 impl FileSystemDirectoryHandle {
-    pub fn resolve(&self, possible_descendant: FileSystemHandle) -> Promise {
+    pub fn resolve(&self, possible_descendant: &FileSystemHandle) -> Promise {
         self.inner
             .call("resolve", &[possible_descendant.into()])
             .as_::<Promise>()

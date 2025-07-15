@@ -60,7 +60,7 @@ impl BluetoothPermissionResult {
             .as_::<FrozenArray<BluetoothDevice>>()
     }
 
-    pub fn set_devices(&mut self, value: FrozenArray<BluetoothDevice>) {
+    pub fn set_devices(&mut self, value: &FrozenArray<BluetoothDevice>) {
         self.inner.set("devices", value);
     }
 }

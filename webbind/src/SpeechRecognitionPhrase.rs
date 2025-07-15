@@ -54,7 +54,7 @@ impl From<&SpeechRecognitionPhrase> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionPhrase);
 
 impl SpeechRecognitionPhrase {
-    pub fn new0(phrase: DOMString) -> SpeechRecognitionPhrase {
+    pub fn new0(phrase: &str) -> SpeechRecognitionPhrase {
         Self {
             inner: emlite::Val::global("SpeechRecognitionPhrase")
                 .new(&[phrase.into()])
@@ -62,7 +62,7 @@ impl SpeechRecognitionPhrase {
         }
     }
 
-    pub fn new1(phrase: DOMString, boost: f32) -> SpeechRecognitionPhrase {
+    pub fn new1(phrase: &str, boost: f32) -> SpeechRecognitionPhrase {
         Self {
             inner: emlite::Val::global("SpeechRecognitionPhrase")
                 .new(&[phrase.into(), boost.into()])
@@ -71,8 +71,8 @@ impl SpeechRecognitionPhrase {
     }
 }
 impl SpeechRecognitionPhrase {
-    pub fn phrase(&self) -> DOMString {
-        self.inner.get("phrase").as_::<DOMString>()
+    pub fn phrase(&self) -> String {
+        self.inner.get("phrase").as_::<String>()
     }
 }
 impl SpeechRecognitionPhrase {

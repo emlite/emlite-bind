@@ -62,7 +62,7 @@ impl Accelerometer {
         }
     }
 
-    pub fn new1(options: Any) -> Accelerometer {
+    pub fn new1(options: &Any) -> Accelerometer {
         Self {
             inner: emlite::Val::global("Accelerometer")
                 .new(&[options.into()])

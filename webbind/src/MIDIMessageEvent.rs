@@ -54,7 +54,7 @@ impl From<&MIDIMessageEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MIDIMessageEvent);
 
 impl MIDIMessageEvent {
-    pub fn new0(type_: DOMString) -> MIDIMessageEvent {
+    pub fn new0(type_: &str) -> MIDIMessageEvent {
         Self {
             inner: emlite::Val::global("MIDIMessageEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl MIDIMessageEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> MIDIMessageEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> MIDIMessageEvent {
         Self {
             inner: emlite::Val::global("MIDIMessageEvent")
                 .new(&[type_.into(), event_init_dict.into()])

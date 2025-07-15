@@ -54,7 +54,7 @@ impl From<&MediaQueryListEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MediaQueryListEvent);
 
 impl MediaQueryListEvent {
-    pub fn new0(type_: CSSOMString) -> MediaQueryListEvent {
+    pub fn new0(type_: &str) -> MediaQueryListEvent {
         Self {
             inner: emlite::Val::global("MediaQueryListEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl MediaQueryListEvent {
         }
     }
 
-    pub fn new1(type_: CSSOMString, event_init_dict: Any) -> MediaQueryListEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> MediaQueryListEvent {
         Self {
             inner: emlite::Val::global("MediaQueryListEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -71,8 +71,8 @@ impl MediaQueryListEvent {
     }
 }
 impl MediaQueryListEvent {
-    pub fn media(&self) -> CSSOMString {
-        self.inner.get("media").as_::<CSSOMString>()
+    pub fn media(&self) -> String {
+        self.inner.get("media").as_::<String>()
     }
 }
 impl MediaQueryListEvent {

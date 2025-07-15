@@ -54,7 +54,7 @@ impl From<&CSSUnparsedValue> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSUnparsedValue);
 
 impl CSSUnparsedValue {
-    pub fn new(members: Sequence<Any>) -> CSSUnparsedValue {
+    pub fn new(members: &Sequence<Any>) -> CSSUnparsedValue {
         Self {
             inner: emlite::Val::global("CSSUnparsedValue")
                 .new(&[members.into()])

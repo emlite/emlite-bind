@@ -54,8 +54,8 @@ impl From<&MediaQueryList> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MediaQueryList);
 
 impl MediaQueryList {
-    pub fn media(&self) -> CSSOMString {
-        self.inner.get("media").as_::<CSSOMString>()
+    pub fn media(&self) -> String {
+        self.inner.get("media").as_::<String>()
     }
 }
 impl MediaQueryList {
@@ -64,14 +64,14 @@ impl MediaQueryList {
     }
 }
 impl MediaQueryList {
-    pub fn add_listener(&self, callback: Function) -> Undefined {
+    pub fn add_listener(&self, callback: &Function) -> Undefined {
         self.inner
             .call("addListener", &[callback.into()])
             .as_::<Undefined>()
     }
 }
 impl MediaQueryList {
-    pub fn remove_listener(&self, callback: Function) -> Undefined {
+    pub fn remove_listener(&self, callback: &Function) -> Undefined {
         self.inner
             .call("removeListener", &[callback.into()])
             .as_::<Undefined>()
@@ -82,7 +82,7 @@ impl MediaQueryList {
         self.inner.get("onchange").as_::<Any>()
     }
 
-    pub fn set_onchange(&mut self, value: Any) {
+    pub fn set_onchange(&mut self, value: &Any) {
         self.inner.set("onchange", value);
     }
 }

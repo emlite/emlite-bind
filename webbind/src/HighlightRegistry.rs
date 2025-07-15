@@ -55,7 +55,7 @@ impl HighlightHitResult {
         self.inner.get("highlight").as_::<Highlight>()
     }
 
-    pub fn set_highlight(&mut self, value: Highlight) {
+    pub fn set_highlight(&mut self, value: &Highlight) {
         self.inner.set("highlight", value);
     }
 }
@@ -64,7 +64,7 @@ impl HighlightHitResult {
         self.inner.get("ranges").as_::<Sequence<AbstractRange>>()
     }
 
-    pub fn set_ranges(&mut self, value: Sequence<AbstractRange>) {
+    pub fn set_ranges(&mut self, value: &Sequence<AbstractRange>) {
         self.inner.set("ranges", value);
     }
 }
@@ -123,7 +123,7 @@ impl HighlightsFromPointOptions {
         self.inner.get("shadowRoots").as_::<Sequence<ShadowRoot>>()
     }
 
-    pub fn set_shadow_roots(&mut self, value: Sequence<ShadowRoot>) {
+    pub fn set_shadow_roots(&mut self, value: &Sequence<ShadowRoot>) {
         self.inner.set("shadowRoots", value);
     }
 }
@@ -191,7 +191,7 @@ impl HighlightRegistry {
         &self,
         x: f32,
         y: f32,
-        options: HighlightsFromPointOptions,
+        options: &HighlightsFromPointOptions,
     ) -> Sequence<HighlightHitResult> {
         self.inner
             .call("highlightsFromPoint", &[x.into(), y.into(), options.into()])

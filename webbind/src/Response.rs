@@ -62,7 +62,7 @@ impl Response {
         }
     }
 
-    pub fn new1(body: Any) -> Response {
+    pub fn new1(body: &Any) -> Response {
         Self {
             inner: emlite::Val::global("Response")
                 .new(&[body.into()])
@@ -70,7 +70,7 @@ impl Response {
         }
     }
 
-    pub fn new2(body: Any, init: Any) -> Response {
+    pub fn new2(body: &Any, init: &Any) -> Response {
         Self {
             inner: emlite::Val::global("Response")
                 .new(&[body.into(), init.into()])
@@ -86,13 +86,13 @@ impl Response {
     }
 }
 impl Response {
-    pub fn redirect0(url: USVString) -> Response {
+    pub fn redirect0(url: &str) -> Response {
         emlite::Val::global("Response")
             .call("redirect", &[url.into()])
             .as_::<Response>()
     }
 
-    pub fn redirect1(url: USVString, status: u16) -> Response {
+    pub fn redirect1(url: &str, status: u16) -> Response {
         emlite::Val::global("Response")
             .call("redirect", &[url.into(), status.into()])
             .as_::<Response>()
@@ -109,8 +109,8 @@ impl Response {
     }
 }
 impl Response {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }
 impl Response {
@@ -129,8 +129,8 @@ impl Response {
     }
 }
 impl Response {
-    pub fn status_text(&self) -> ByteString {
-        self.inner.get("statusText").as_::<ByteString>()
+    pub fn status_text(&self) -> String {
+        self.inner.get("statusText").as_::<String>()
     }
 }
 impl Response {

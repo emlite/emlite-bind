@@ -60,7 +60,7 @@ impl Headers {
         }
     }
 
-    pub fn new1(init: Any) -> Headers {
+    pub fn new1(init: &Any) -> Headers {
         Self {
             inner: emlite::Val::global("Headers")
                 .new(&[init.into()])
@@ -69,36 +69,36 @@ impl Headers {
     }
 }
 impl Headers {
-    pub fn append(&self, name: ByteString, value: ByteString) -> Undefined {
+    pub fn append(&self, name: &str, value: &str) -> Undefined {
         self.inner
             .call("append", &[name.into(), value.into()])
             .as_::<Undefined>()
     }
 }
 impl Headers {
-    pub fn delete(&self, name: ByteString) -> Undefined {
+    pub fn delete(&self, name: &str) -> Undefined {
         self.inner.call("delete", &[name.into()]).as_::<Undefined>()
     }
 }
 impl Headers {
-    pub fn get(&self, name: ByteString) -> ByteString {
-        self.inner.call("get", &[name.into()]).as_::<ByteString>()
+    pub fn get(&self, name: &str) -> String {
+        self.inner.call("get", &[name.into()]).as_::<String>()
     }
 }
 impl Headers {
-    pub fn get_set_cookie(&self) -> Sequence<ByteString> {
+    pub fn get_set_cookie(&self) -> Sequence<String> {
         self.inner
             .call("getSetCookie", &[])
-            .as_::<Sequence<ByteString>>()
+            .as_::<Sequence<String>>()
     }
 }
 impl Headers {
-    pub fn has(&self, name: ByteString) -> bool {
+    pub fn has(&self, name: &str) -> bool {
         self.inner.call("has", &[name.into()]).as_::<bool>()
     }
 }
 impl Headers {
-    pub fn set(&self, name: ByteString, value: ByteString) -> Undefined {
+    pub fn set(&self, name: &str, value: &str) -> Undefined {
         self.inner
             .call("set", &[name.into(), value.into()])
             .as_::<Undefined>()

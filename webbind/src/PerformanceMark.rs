@@ -54,7 +54,7 @@ impl From<&PerformanceMark> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PerformanceMark);
 
 impl PerformanceMark {
-    pub fn new0(mark_name: DOMString) -> PerformanceMark {
+    pub fn new0(mark_name: &str) -> PerformanceMark {
         Self {
             inner: emlite::Val::global("PerformanceMark")
                 .new(&[mark_name.into()])
@@ -62,7 +62,7 @@ impl PerformanceMark {
         }
     }
 
-    pub fn new1(mark_name: DOMString, mark_options: PerformanceMarkOptions) -> PerformanceMark {
+    pub fn new1(mark_name: &str, mark_options: &PerformanceMarkOptions) -> PerformanceMark {
         Self {
             inner: emlite::Val::global("PerformanceMark")
                 .new(&[mark_name.into(), mark_options.into()])

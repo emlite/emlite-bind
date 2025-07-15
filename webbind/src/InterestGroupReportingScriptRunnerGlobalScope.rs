@@ -54,21 +54,21 @@ impl From<&InterestGroupReportingScriptRunnerGlobalScope> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(InterestGroupReportingScriptRunnerGlobalScope);
 
 impl InterestGroupReportingScriptRunnerGlobalScope {
-    pub fn send_report_to(&self, url: DOMString) -> Undefined {
+    pub fn send_report_to(&self, url: &str) -> Undefined {
         self.inner
             .call("sendReportTo", &[url.into()])
             .as_::<Undefined>()
     }
 }
 impl InterestGroupReportingScriptRunnerGlobalScope {
-    pub fn register_ad_beacon(&self, map: Record<DOMString, USVString>) -> Undefined {
+    pub fn register_ad_beacon(&self, map: &Record<String, String>) -> Undefined {
         self.inner
             .call("registerAdBeacon", &[map.into()])
             .as_::<Undefined>()
     }
 }
 impl InterestGroupReportingScriptRunnerGlobalScope {
-    pub fn register_ad_macro(&self, name: DOMString, value: USVString) -> Undefined {
+    pub fn register_ad_macro(&self, name: &str, value: &str) -> Undefined {
         self.inner
             .call("registerAdMacro", &[name.into(), value.into()])
             .as_::<Undefined>()

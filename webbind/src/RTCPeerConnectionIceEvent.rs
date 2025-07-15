@@ -54,7 +54,7 @@ impl From<&RTCPeerConnectionIceEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(RTCPeerConnectionIceEvent);
 
 impl RTCPeerConnectionIceEvent {
-    pub fn new0(type_: DOMString) -> RTCPeerConnectionIceEvent {
+    pub fn new0(type_: &str) -> RTCPeerConnectionIceEvent {
         Self {
             inner: emlite::Val::global("RTCPeerConnectionIceEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl RTCPeerConnectionIceEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> RTCPeerConnectionIceEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> RTCPeerConnectionIceEvent {
         Self {
             inner: emlite::Val::global("RTCPeerConnectionIceEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -76,7 +76,7 @@ impl RTCPeerConnectionIceEvent {
     }
 }
 impl RTCPeerConnectionIceEvent {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }

@@ -66,10 +66,10 @@ impl WindowClient {
     }
 }
 impl WindowClient {
-    pub fn ancestor_origins(&self) -> FrozenArray<USVString> {
+    pub fn ancestor_origins(&self) -> FrozenArray<String> {
         self.inner
             .get("ancestorOrigins")
-            .as_::<FrozenArray<USVString>>()
+            .as_::<FrozenArray<String>>()
     }
 }
 impl WindowClient {
@@ -78,7 +78,7 @@ impl WindowClient {
     }
 }
 impl WindowClient {
-    pub fn navigate(&self, url: USVString) -> Promise {
+    pub fn navigate(&self, url: &str) -> Promise {
         self.inner.call("navigate", &[url.into()]).as_::<Promise>()
     }
 }

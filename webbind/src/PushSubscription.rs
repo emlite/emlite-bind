@@ -51,11 +51,11 @@ impl From<&PushSubscriptionJSON> for emlite::Val {
 }
 
 impl PushSubscriptionJSON {
-    pub fn endpoint(&self) -> USVString {
-        self.inner.get("endpoint").as_::<USVString>()
+    pub fn endpoint(&self) -> String {
+        self.inner.get("endpoint").as_::<String>()
     }
 
-    pub fn set_endpoint(&mut self, value: USVString) {
+    pub fn set_endpoint(&mut self, value: &str) {
         self.inner.set("endpoint", value);
     }
 }
@@ -64,16 +64,16 @@ impl PushSubscriptionJSON {
         self.inner.get("expirationTime").as_::<Any>()
     }
 
-    pub fn set_expiration_time(&mut self, value: Any) {
+    pub fn set_expiration_time(&mut self, value: &Any) {
         self.inner.set("expirationTime", value);
     }
 }
 impl PushSubscriptionJSON {
-    pub fn keys(&self) -> Record<DOMString, USVString> {
-        self.inner.get("keys").as_::<Record<DOMString, USVString>>()
+    pub fn keys(&self) -> Record<String, String> {
+        self.inner.get("keys").as_::<Record<String, String>>()
     }
 
-    pub fn set_keys(&mut self, value: Record<DOMString, USVString>) {
+    pub fn set_keys(&mut self, value: &Record<String, String>) {
         self.inner.set("keys", value);
     }
 }
@@ -131,8 +131,8 @@ impl From<&PushSubscription> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PushSubscription);
 
 impl PushSubscription {
-    pub fn endpoint(&self) -> USVString {
-        self.inner.get("endpoint").as_::<USVString>()
+    pub fn endpoint(&self) -> String {
+        self.inner.get("endpoint").as_::<String>()
     }
 }
 impl PushSubscription {
@@ -146,7 +146,7 @@ impl PushSubscription {
     }
 }
 impl PushSubscription {
-    pub fn get_key(&self, name: PushEncryptionKeyName) -> ArrayBuffer {
+    pub fn get_key(&self, name: &PushEncryptionKeyName) -> ArrayBuffer {
         self.inner
             .call("getKey", &[name.into()])
             .as_::<ArrayBuffer>()

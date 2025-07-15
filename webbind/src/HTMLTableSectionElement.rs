@@ -88,38 +88,38 @@ impl HTMLTableSectionElement {
     }
 }
 impl HTMLTableSectionElement {
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> String {
+        self.inner.get("align").as_::<String>()
     }
 
-    pub fn set_align(&mut self, value: DOMString) {
+    pub fn set_align(&mut self, value: &str) {
         self.inner.set("align", value);
     }
 }
 impl HTMLTableSectionElement {
-    pub fn ch(&self) -> DOMString {
-        self.inner.get("ch").as_::<DOMString>()
+    pub fn ch(&self) -> String {
+        self.inner.get("ch").as_::<String>()
     }
 
-    pub fn set_ch(&mut self, value: DOMString) {
+    pub fn set_ch(&mut self, value: &str) {
         self.inner.set("ch", value);
     }
 }
 impl HTMLTableSectionElement {
-    pub fn ch_off(&self) -> DOMString {
-        self.inner.get("chOff").as_::<DOMString>()
+    pub fn ch_off(&self) -> String {
+        self.inner.get("chOff").as_::<String>()
     }
 
-    pub fn set_ch_off(&mut self, value: DOMString) {
+    pub fn set_ch_off(&mut self, value: &str) {
         self.inner.set("chOff", value);
     }
 }
 impl HTMLTableSectionElement {
-    pub fn v_align(&self) -> DOMString {
-        self.inner.get("vAlign").as_::<DOMString>()
+    pub fn v_align(&self) -> String {
+        self.inner.get("vAlign").as_::<String>()
     }
 
-    pub fn set_v_align(&mut self, value: DOMString) {
+    pub fn set_v_align(&mut self, value: &str) {
         self.inner.set("vAlign", value);
     }
 }

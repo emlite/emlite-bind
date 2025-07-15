@@ -54,7 +54,7 @@ impl From<&PointerEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PointerEvent);
 
 impl PointerEvent {
-    pub fn new0(type_: DOMString) -> PointerEvent {
+    pub fn new0(type_: &str) -> PointerEvent {
         Self {
             inner: emlite::Val::global("PointerEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl PointerEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> PointerEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> PointerEvent {
         Self {
             inner: emlite::Val::global("PointerEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -121,8 +121,8 @@ impl PointerEvent {
     }
 }
 impl PointerEvent {
-    pub fn pointer_type(&self) -> DOMString {
-        self.inner.get("pointerType").as_::<DOMString>()
+    pub fn pointer_type(&self) -> String {
+        self.inner.get("pointerType").as_::<String>()
     }
 }
 impl PointerEvent {

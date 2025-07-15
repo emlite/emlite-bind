@@ -54,36 +54,34 @@ impl From<&PermissionsPolicy> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PermissionsPolicy);
 
 impl PermissionsPolicy {
-    pub fn allows_feature0(&self, feature: DOMString) -> bool {
+    pub fn allows_feature0(&self, feature: &str) -> bool {
         self.inner
             .call("allowsFeature", &[feature.into()])
             .as_::<bool>()
     }
 
-    pub fn allows_feature1(&self, feature: DOMString, origin: DOMString) -> bool {
+    pub fn allows_feature1(&self, feature: &str, origin: &str) -> bool {
         self.inner
             .call("allowsFeature", &[feature.into(), origin.into()])
             .as_::<bool>()
     }
 }
 impl PermissionsPolicy {
-    pub fn features(&self) -> Sequence<DOMString> {
-        self.inner
-            .call("features", &[])
-            .as_::<Sequence<DOMString>>()
+    pub fn features(&self) -> Sequence<String> {
+        self.inner.call("features", &[]).as_::<Sequence<String>>()
     }
 }
 impl PermissionsPolicy {
-    pub fn allowed_features(&self) -> Sequence<DOMString> {
+    pub fn allowed_features(&self) -> Sequence<String> {
         self.inner
             .call("allowedFeatures", &[])
-            .as_::<Sequence<DOMString>>()
+            .as_::<Sequence<String>>()
     }
 }
 impl PermissionsPolicy {
-    pub fn get_allowlist_for_feature(&self, feature: DOMString) -> Sequence<DOMString> {
+    pub fn get_allowlist_for_feature(&self, feature: &str) -> Sequence<String> {
         self.inner
             .call("getAllowlistForFeature", &[feature.into()])
-            .as_::<Sequence<DOMString>>()
+            .as_::<Sequence<String>>()
     }
 }

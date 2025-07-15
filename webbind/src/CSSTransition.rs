@@ -54,7 +54,7 @@ impl From<&CSSTransition> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSTransition);
 
 impl CSSTransition {
-    pub fn transition_property(&self) -> CSSOMString {
-        self.inner.get("transitionProperty").as_::<CSSOMString>()
+    pub fn transition_property(&self) -> String {
+        self.inner.get("transitionProperty").as_::<String>()
     }
 }

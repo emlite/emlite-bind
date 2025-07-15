@@ -63,7 +63,7 @@ impl DOMParser {
     }
 }
 impl DOMParser {
-    pub fn parse_from_string(&self, string: Any, type_: DOMParserSupportedType) -> Document {
+    pub fn parse_from_string(&self, string: &Any, type_: &DOMParserSupportedType) -> Document {
         self.inner
             .call("parseFromString", &[string.into(), type_.into()])
             .as_::<Document>()

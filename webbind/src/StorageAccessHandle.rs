@@ -89,34 +89,34 @@ impl StorageAccessHandle {
     }
 }
 impl StorageAccessHandle {
-    pub fn create_object_url(&self, obj: Any) -> DOMString {
+    pub fn create_object_url(&self, obj: &Any) -> String {
         self.inner
             .call("createObjectURL", &[obj.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl StorageAccessHandle {
-    pub fn revoke_object_url(&self, url: DOMString) -> Undefined {
+    pub fn revoke_object_url(&self, url: &str) -> Undefined {
         self.inner
             .call("revokeObjectURL", &[url.into()])
             .as_::<Undefined>()
     }
 }
 impl StorageAccessHandle {
-    pub fn broadcast_channel(&self, name: DOMString) -> BroadcastChannel {
+    pub fn broadcast_channel(&self, name: &str) -> BroadcastChannel {
         self.inner
             .call("BroadcastChannel", &[name.into()])
             .as_::<BroadcastChannel>()
     }
 }
 impl StorageAccessHandle {
-    pub fn shared_worker0(&self, script_url: USVString) -> SharedWorker {
+    pub fn shared_worker0(&self, script_url: &str) -> SharedWorker {
         self.inner
             .call("SharedWorker", &[script_url.into()])
             .as_::<SharedWorker>()
     }
 
-    pub fn shared_worker1(&self, script_url: USVString, options: Any) -> SharedWorker {
+    pub fn shared_worker1(&self, script_url: &str, options: &Any) -> SharedWorker {
         self.inner
             .call("SharedWorker", &[script_url.into(), options.into()])
             .as_::<SharedWorker>()

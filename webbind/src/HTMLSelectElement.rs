@@ -63,11 +63,11 @@ impl HTMLSelectElement {
     }
 }
 impl HTMLSelectElement {
-    pub fn autocomplete(&self) -> DOMString {
-        self.inner.get("autocomplete").as_::<DOMString>()
+    pub fn autocomplete(&self) -> String {
+        self.inner.get("autocomplete").as_::<String>()
     }
 
-    pub fn set_autocomplete(&mut self, value: DOMString) {
+    pub fn set_autocomplete(&mut self, value: &str) {
         self.inner.set("autocomplete", value);
     }
 }
@@ -95,11 +95,11 @@ impl HTMLSelectElement {
     }
 }
 impl HTMLSelectElement {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
@@ -122,8 +122,8 @@ impl HTMLSelectElement {
     }
 }
 impl HTMLSelectElement {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 }
 impl HTMLSelectElement {
@@ -148,18 +148,18 @@ impl HTMLSelectElement {
     }
 }
 impl HTMLSelectElement {
-    pub fn named_item(&self, name: DOMString) -> HTMLOptionElement {
+    pub fn named_item(&self, name: &str) -> HTMLOptionElement {
         self.inner
             .call("namedItem", &[name.into()])
             .as_::<HTMLOptionElement>()
     }
 }
 impl HTMLSelectElement {
-    pub fn add0(&self, element: Any) -> Undefined {
+    pub fn add0(&self, element: &Any) -> Undefined {
         self.inner.call("add", &[element.into()]).as_::<Undefined>()
     }
 
-    pub fn add1(&self, element: Any, before: Any) -> Undefined {
+    pub fn add1(&self, element: &Any, before: &Any) -> Undefined {
         self.inner
             .call("add", &[element.into(), before.into()])
             .as_::<Undefined>()
@@ -187,11 +187,11 @@ impl HTMLSelectElement {
     }
 }
 impl HTMLSelectElement {
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> String {
+        self.inner.get("value").as_::<String>()
     }
 
-    pub fn set_value(&mut self, value: DOMString) {
+    pub fn set_value(&mut self, value: &str) {
         self.inner.set("value", value);
     }
 }
@@ -206,8 +206,8 @@ impl HTMLSelectElement {
     }
 }
 impl HTMLSelectElement {
-    pub fn validation_message(&self) -> DOMString {
-        self.inner.get("validationMessage").as_::<DOMString>()
+    pub fn validation_message(&self) -> String {
+        self.inner.get("validationMessage").as_::<String>()
     }
 }
 impl HTMLSelectElement {
@@ -221,7 +221,7 @@ impl HTMLSelectElement {
     }
 }
 impl HTMLSelectElement {
-    pub fn set_custom_validity(&self, error: DOMString) -> Undefined {
+    pub fn set_custom_validity(&self, error: &str) -> Undefined {
         self.inner
             .call("setCustomValidity", &[error.into()])
             .as_::<Undefined>()

@@ -54,7 +54,7 @@ impl From<&XRRay> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(XRRay);
 
 impl XRRay {
-    pub fn new(transform: XRRigidTransform) -> XRRay {
+    pub fn new(transform: &XRRigidTransform) -> XRRay {
         Self {
             inner: emlite::Val::global("XRRay")
                 .new(&[transform.into()])

@@ -54,7 +54,7 @@ impl From<&SharedWorker> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SharedWorker);
 
 impl SharedWorker {
-    pub fn new0(script_url: Any) -> SharedWorker {
+    pub fn new0(script_url: &Any) -> SharedWorker {
         Self {
             inner: emlite::Val::global("SharedWorker")
                 .new(&[script_url.into()])
@@ -62,7 +62,7 @@ impl SharedWorker {
         }
     }
 
-    pub fn new1(script_url: Any, options: Any) -> SharedWorker {
+    pub fn new1(script_url: &Any, options: &Any) -> SharedWorker {
         Self {
             inner: emlite::Val::global("SharedWorker")
                 .new(&[script_url.into(), options.into()])
@@ -80,7 +80,7 @@ impl SharedWorker {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }

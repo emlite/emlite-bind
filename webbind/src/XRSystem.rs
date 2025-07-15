@@ -51,24 +51,20 @@ impl From<&XRSessionInit> for emlite::Val {
 }
 
 impl XRSessionInit {
-    pub fn required_features(&self) -> Sequence<DOMString> {
-        self.inner
-            .get("requiredFeatures")
-            .as_::<Sequence<DOMString>>()
+    pub fn required_features(&self) -> Sequence<String> {
+        self.inner.get("requiredFeatures").as_::<Sequence<String>>()
     }
 
-    pub fn set_required_features(&mut self, value: Sequence<DOMString>) {
+    pub fn set_required_features(&mut self, value: &Sequence<String>) {
         self.inner.set("requiredFeatures", value);
     }
 }
 impl XRSessionInit {
-    pub fn optional_features(&self) -> Sequence<DOMString> {
-        self.inner
-            .get("optionalFeatures")
-            .as_::<Sequence<DOMString>>()
+    pub fn optional_features(&self) -> Sequence<String> {
+        self.inner.get("optionalFeatures").as_::<Sequence<String>>()
     }
 
-    pub fn set_optional_features(&mut self, value: Sequence<DOMString>) {
+    pub fn set_optional_features(&mut self, value: &Sequence<String>) {
         self.inner.set("optionalFeatures", value);
     }
 }
@@ -126,20 +122,20 @@ impl From<&XRSystem> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(XRSystem);
 
 impl XRSystem {
-    pub fn is_session_supported(&self, mode: XRSessionMode) -> Promise {
+    pub fn is_session_supported(&self, mode: &XRSessionMode) -> Promise {
         self.inner
             .call("isSessionSupported", &[mode.into()])
             .as_::<Promise>()
     }
 }
 impl XRSystem {
-    pub fn request_session0(&self, mode: XRSessionMode) -> Promise {
+    pub fn request_session0(&self, mode: &XRSessionMode) -> Promise {
         self.inner
             .call("requestSession", &[mode.into()])
             .as_::<Promise>()
     }
 
-    pub fn request_session1(&self, mode: XRSessionMode, options: XRSessionInit) -> Promise {
+    pub fn request_session1(&self, mode: &XRSessionMode, options: &XRSessionInit) -> Promise {
         self.inner
             .call("requestSession", &[mode.into(), options.into()])
             .as_::<Promise>()
@@ -150,7 +146,7 @@ impl XRSystem {
         self.inner.get("ondevicechange").as_::<Any>()
     }
 
-    pub fn set_ondevicechange(&mut self, value: Any) {
+    pub fn set_ondevicechange(&mut self, value: &Any) {
         self.inner.set("ondevicechange", value);
     }
 }

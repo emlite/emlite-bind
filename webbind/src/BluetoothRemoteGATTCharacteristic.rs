@@ -78,7 +78,7 @@ impl BluetoothRemoteGATTCharacteristic {
     }
 }
 impl BluetoothRemoteGATTCharacteristic {
-    pub fn get_descriptor(&self, descriptor: Any) -> Promise {
+    pub fn get_descriptor(&self, descriptor: &Any) -> Promise {
         self.inner
             .call("getDescriptor", &[descriptor.into()])
             .as_::<Promise>()
@@ -89,7 +89,7 @@ impl BluetoothRemoteGATTCharacteristic {
         self.inner.call("getDescriptors", &[]).as_::<Promise>()
     }
 
-    pub fn get_descriptors1(&self, descriptor: Any) -> Promise {
+    pub fn get_descriptors1(&self, descriptor: &Any) -> Promise {
         self.inner
             .call("getDescriptors", &[descriptor.into()])
             .as_::<Promise>()
@@ -101,21 +101,21 @@ impl BluetoothRemoteGATTCharacteristic {
     }
 }
 impl BluetoothRemoteGATTCharacteristic {
-    pub fn write_value(&self, value: Any) -> Promise {
+    pub fn write_value(&self, value: &Any) -> Promise {
         self.inner
             .call("writeValue", &[value.into()])
             .as_::<Promise>()
     }
 }
 impl BluetoothRemoteGATTCharacteristic {
-    pub fn write_value_with_response(&self, value: Any) -> Promise {
+    pub fn write_value_with_response(&self, value: &Any) -> Promise {
         self.inner
             .call("writeValueWithResponse", &[value.into()])
             .as_::<Promise>()
     }
 }
 impl BluetoothRemoteGATTCharacteristic {
-    pub fn write_value_without_response(&self, value: Any) -> Promise {
+    pub fn write_value_without_response(&self, value: &Any) -> Promise {
         self.inner
             .call("writeValueWithoutResponse", &[value.into()])
             .as_::<Promise>()
@@ -136,7 +136,7 @@ impl BluetoothRemoteGATTCharacteristic {
         self.inner.get("oncharacteristicvaluechanged").as_::<Any>()
     }
 
-    pub fn set_oncharacteristicvaluechanged(&mut self, value: Any) {
+    pub fn set_oncharacteristicvaluechanged(&mut self, value: &Any) {
         self.inner.set("oncharacteristicvaluechanged", value);
     }
 }

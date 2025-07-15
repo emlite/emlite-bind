@@ -54,7 +54,7 @@ impl From<&CSSColorValue> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSColorValue);
 
 impl CSSColorValue {
-    pub fn parse(css_text: USVString) -> Any {
+    pub fn parse(css_text: &str) -> Any {
         emlite::Val::global("CSSColorValue")
             .call("parse", &[css_text.into()])
             .as_::<Any>()

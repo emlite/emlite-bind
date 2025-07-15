@@ -54,18 +54,18 @@ impl From<&SpeechSynthesisVoice> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SpeechSynthesisVoice);
 
 impl SpeechSynthesisVoice {
-    pub fn voice_uri(&self) -> DOMString {
-        self.inner.get("voiceURI").as_::<DOMString>()
+    pub fn voice_uri(&self) -> String {
+        self.inner.get("voiceURI").as_::<String>()
     }
 }
 impl SpeechSynthesisVoice {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl SpeechSynthesisVoice {
-    pub fn lang(&self) -> DOMString {
-        self.inner.get("lang").as_::<DOMString>()
+    pub fn lang(&self) -> String {
+        self.inner.get("lang").as_::<String>()
     }
 }
 impl SpeechSynthesisVoice {

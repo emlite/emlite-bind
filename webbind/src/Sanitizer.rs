@@ -55,7 +55,7 @@ impl SanitizerConfig {
         self.inner.get("elements").as_::<Sequence<Any>>()
     }
 
-    pub fn set_elements(&mut self, value: Sequence<Any>) {
+    pub fn set_elements(&mut self, value: &Sequence<Any>) {
         self.inner.set("elements", value);
     }
 }
@@ -64,7 +64,7 @@ impl SanitizerConfig {
         self.inner.get("removeElements").as_::<Sequence<Any>>()
     }
 
-    pub fn set_remove_elements(&mut self, value: Sequence<Any>) {
+    pub fn set_remove_elements(&mut self, value: &Sequence<Any>) {
         self.inner.set("removeElements", value);
     }
 }
@@ -75,7 +75,7 @@ impl SanitizerConfig {
             .as_::<Sequence<Any>>()
     }
 
-    pub fn set_replace_with_children_elements(&mut self, value: Sequence<Any>) {
+    pub fn set_replace_with_children_elements(&mut self, value: &Sequence<Any>) {
         self.inner.set("replaceWithChildrenElements", value);
     }
 }
@@ -84,7 +84,7 @@ impl SanitizerConfig {
         self.inner.get("attributes").as_::<Sequence<Any>>()
     }
 
-    pub fn set_attributes(&mut self, value: Sequence<Any>) {
+    pub fn set_attributes(&mut self, value: &Sequence<Any>) {
         self.inner.set("attributes", value);
     }
 }
@@ -93,7 +93,7 @@ impl SanitizerConfig {
         self.inner.get("removeAttributes").as_::<Sequence<Any>>()
     }
 
-    pub fn set_remove_attributes(&mut self, value: Sequence<Any>) {
+    pub fn set_remove_attributes(&mut self, value: &Sequence<Any>) {
         self.inner.set("removeAttributes", value);
     }
 }
@@ -177,7 +177,7 @@ impl Sanitizer {
         }
     }
 
-    pub fn new1(configuration: Any) -> Sanitizer {
+    pub fn new1(configuration: &Any) -> Sanitizer {
         Self {
             inner: emlite::Val::global("Sanitizer")
                 .new(&[configuration.into()])
@@ -191,35 +191,35 @@ impl Sanitizer {
     }
 }
 impl Sanitizer {
-    pub fn allow_element(&self, element: Any) -> Undefined {
+    pub fn allow_element(&self, element: &Any) -> Undefined {
         self.inner
             .call("allowElement", &[element.into()])
             .as_::<Undefined>()
     }
 }
 impl Sanitizer {
-    pub fn remove_element(&self, element: Any) -> Undefined {
+    pub fn remove_element(&self, element: &Any) -> Undefined {
         self.inner
             .call("removeElement", &[element.into()])
             .as_::<Undefined>()
     }
 }
 impl Sanitizer {
-    pub fn replace_element_with_children(&self, element: Any) -> Undefined {
+    pub fn replace_element_with_children(&self, element: &Any) -> Undefined {
         self.inner
             .call("replaceElementWithChildren", &[element.into()])
             .as_::<Undefined>()
     }
 }
 impl Sanitizer {
-    pub fn allow_attribute(&self, attribute: Any) -> Undefined {
+    pub fn allow_attribute(&self, attribute: &Any) -> Undefined {
         self.inner
             .call("allowAttribute", &[attribute.into()])
             .as_::<Undefined>()
     }
 }
 impl Sanitizer {
-    pub fn remove_attribute(&self, attribute: Any) -> Undefined {
+    pub fn remove_attribute(&self, attribute: &Any) -> Undefined {
         self.inner
             .call("removeAttribute", &[attribute.into()])
             .as_::<Undefined>()

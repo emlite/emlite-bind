@@ -55,16 +55,16 @@ impl DetectedText {
         self.inner.get("boundingBox").as_::<DOMRectReadOnly>()
     }
 
-    pub fn set_bounding_box(&mut self, value: DOMRectReadOnly) {
+    pub fn set_bounding_box(&mut self, value: &DOMRectReadOnly) {
         self.inner.set("boundingBox", value);
     }
 }
 impl DetectedText {
-    pub fn raw_value(&self) -> DOMString {
-        self.inner.get("rawValue").as_::<DOMString>()
+    pub fn raw_value(&self) -> String {
+        self.inner.get("rawValue").as_::<String>()
     }
 
-    pub fn set_raw_value(&mut self, value: DOMString) {
+    pub fn set_raw_value(&mut self, value: &str) {
         self.inner.set("rawValue", value);
     }
 }
@@ -73,7 +73,7 @@ impl DetectedText {
         self.inner.get("cornerPoints").as_::<Sequence<Any>>()
     }
 
-    pub fn set_corner_points(&mut self, value: Sequence<Any>) {
+    pub fn set_corner_points(&mut self, value: &Sequence<Any>) {
         self.inner.set("cornerPoints", value);
     }
 }
@@ -140,7 +140,7 @@ impl TextDetector {
     }
 }
 impl TextDetector {
-    pub fn detect(&self, image: Any) -> Promise {
+    pub fn detect(&self, image: &Any) -> Promise {
         self.inner.call("detect", &[image.into()]).as_::<Promise>()
     }
 }

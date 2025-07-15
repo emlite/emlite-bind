@@ -59,11 +59,11 @@ impl TextTrackCue {
     }
 }
 impl TextTrackCue {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 
-    pub fn set_id(&mut self, value: DOMString) {
+    pub fn set_id(&mut self, value: &str) {
         self.inner.set("id", value);
     }
 }
@@ -99,7 +99,7 @@ impl TextTrackCue {
         self.inner.get("onenter").as_::<Any>()
     }
 
-    pub fn set_onenter(&mut self, value: Any) {
+    pub fn set_onenter(&mut self, value: &Any) {
         self.inner.set("onenter", value);
     }
 }
@@ -108,7 +108,7 @@ impl TextTrackCue {
         self.inner.get("onexit").as_::<Any>()
     }
 
-    pub fn set_onexit(&mut self, value: Any) {
+    pub fn set_onexit(&mut self, value: &Any) {
         self.inner.set("onexit", value);
     }
 }

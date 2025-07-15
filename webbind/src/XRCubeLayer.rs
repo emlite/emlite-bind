@@ -58,7 +58,7 @@ impl XRCubeLayer {
         self.inner.get("space").as_::<XRSpace>()
     }
 
-    pub fn set_space(&mut self, value: XRSpace) {
+    pub fn set_space(&mut self, value: &XRSpace) {
         self.inner.set("space", value);
     }
 }
@@ -67,7 +67,7 @@ impl XRCubeLayer {
         self.inner.get("orientation").as_::<DOMPointReadOnly>()
     }
 
-    pub fn set_orientation(&mut self, value: DOMPointReadOnly) {
+    pub fn set_orientation(&mut self, value: &DOMPointReadOnly) {
         self.inner.set("orientation", value);
     }
 }
@@ -76,7 +76,7 @@ impl XRCubeLayer {
         self.inner.get("onredraw").as_::<Any>()
     }
 
-    pub fn set_onredraw(&mut self, value: Any) {
+    pub fn set_onredraw(&mut self, value: &Any) {
         self.inner.set("onredraw", value);
     }
 }

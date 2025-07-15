@@ -54,7 +54,7 @@ impl From<&CSSOKLab> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSOKLab);
 
 impl CSSOKLab {
-    pub fn new0(l: Any, a: Any, b: Any) -> CSSOKLab {
+    pub fn new0(l: &Any, a: &Any, b: &Any) -> CSSOKLab {
         Self {
             inner: emlite::Val::global("CSSOKLab")
                 .new(&[l.into(), a.into(), b.into()])
@@ -62,7 +62,7 @@ impl CSSOKLab {
         }
     }
 
-    pub fn new1(l: Any, a: Any, b: Any, alpha: Any) -> CSSOKLab {
+    pub fn new1(l: &Any, a: &Any, b: &Any, alpha: &Any) -> CSSOKLab {
         Self {
             inner: emlite::Val::global("CSSOKLab")
                 .new(&[l.into(), a.into(), b.into(), alpha.into()])
@@ -75,7 +75,7 @@ impl CSSOKLab {
         self.inner.get("l").as_::<Any>()
     }
 
-    pub fn set_l(&mut self, value: Any) {
+    pub fn set_l(&mut self, value: &Any) {
         self.inner.set("l", value);
     }
 }
@@ -84,7 +84,7 @@ impl CSSOKLab {
         self.inner.get("a").as_::<Any>()
     }
 
-    pub fn set_a(&mut self, value: Any) {
+    pub fn set_a(&mut self, value: &Any) {
         self.inner.set("a", value);
     }
 }
@@ -93,7 +93,7 @@ impl CSSOKLab {
         self.inner.get("b").as_::<Any>()
     }
 
-    pub fn set_b(&mut self, value: Any) {
+    pub fn set_b(&mut self, value: &Any) {
         self.inner.set("b", value);
     }
 }
@@ -102,7 +102,7 @@ impl CSSOKLab {
         self.inner.get("alpha").as_::<Any>()
     }
 
-    pub fn set_alpha(&mut self, value: Any) {
+    pub fn set_alpha(&mut self, value: &Any) {
         self.inner.set("alpha", value);
     }
 }

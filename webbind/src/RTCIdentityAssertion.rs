@@ -54,7 +54,7 @@ impl From<&RTCIdentityAssertion> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(RTCIdentityAssertion);
 
 impl RTCIdentityAssertion {
-    pub fn new(idp: DOMString, name: DOMString) -> RTCIdentityAssertion {
+    pub fn new(idp: &str, name: &str) -> RTCIdentityAssertion {
         Self {
             inner: emlite::Val::global("RTCIdentityAssertion")
                 .new(&[idp.into(), name.into()])
@@ -63,20 +63,20 @@ impl RTCIdentityAssertion {
     }
 }
 impl RTCIdentityAssertion {
-    pub fn idp(&self) -> DOMString {
-        self.inner.get("idp").as_::<DOMString>()
+    pub fn idp(&self) -> String {
+        self.inner.get("idp").as_::<String>()
     }
 
-    pub fn set_idp(&mut self, value: DOMString) {
+    pub fn set_idp(&mut self, value: &str) {
         self.inner.set("idp", value);
     }
 }
 impl RTCIdentityAssertion {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }

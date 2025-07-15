@@ -63,7 +63,7 @@ impl CaptureController {
     }
 }
 impl CaptureController {
-    pub fn set_focus_behavior(&self, focus_behavior: CaptureStartFocusBehavior) -> Undefined {
+    pub fn set_focus_behavior(&self, focus_behavior: &CaptureStartFocusBehavior) -> Undefined {
         self.inner
             .call("setFocusBehavior", &[focus_behavior.into()])
             .as_::<Undefined>()
@@ -74,7 +74,7 @@ impl CaptureController {
         self.inner.get("oncapturedmousechange").as_::<Any>()
     }
 
-    pub fn set_oncapturedmousechange(&mut self, value: Any) {
+    pub fn set_oncapturedmousechange(&mut self, value: &Any) {
         self.inner.set("oncapturedmousechange", value);
     }
 }
@@ -110,12 +110,12 @@ impl CaptureController {
         self.inner.get("onzoomlevelchange").as_::<Any>()
     }
 
-    pub fn set_onzoomlevelchange(&mut self, value: Any) {
+    pub fn set_onzoomlevelchange(&mut self, value: &Any) {
         self.inner.set("onzoomlevelchange", value);
     }
 }
 impl CaptureController {
-    pub fn forward_wheel(&self, element: HTMLElement) -> Promise {
+    pub fn forward_wheel(&self, element: &HTMLElement) -> Promise {
         self.inner
             .call("forwardWheel", &[element.into()])
             .as_::<Promise>()

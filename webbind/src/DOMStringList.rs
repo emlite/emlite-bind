@@ -59,12 +59,12 @@ impl DOMStringList {
     }
 }
 impl DOMStringList {
-    pub fn item(&self, index: u32) -> DOMString {
-        self.inner.call("item", &[index.into()]).as_::<DOMString>()
+    pub fn item(&self, index: u32) -> String {
+        self.inner.call("item", &[index.into()]).as_::<String>()
     }
 }
 impl DOMStringList {
-    pub fn contains(&self, string: DOMString) -> bool {
+    pub fn contains(&self, string: &str) -> bool {
         self.inner.call("contains", &[string.into()]).as_::<bool>()
     }
 }

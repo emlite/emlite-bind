@@ -54,13 +54,13 @@ impl From<&Credential> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Credential);
 
 impl Credential {
-    pub fn id(&self) -> USVString {
-        self.inner.get("id").as_::<USVString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl Credential {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 }
 impl Credential {

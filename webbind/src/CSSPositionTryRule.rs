@@ -54,8 +54,8 @@ impl From<&CSSPositionTryRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSPositionTryRule);
 
 impl CSSPositionTryRule {
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl CSSPositionTryRule {

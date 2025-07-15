@@ -63,11 +63,11 @@ impl HTMLTextAreaElement {
     }
 }
 impl HTMLTextAreaElement {
-    pub fn autocomplete(&self) -> DOMString {
-        self.inner.get("autocomplete").as_::<DOMString>()
+    pub fn autocomplete(&self) -> String {
+        self.inner.get("autocomplete").as_::<String>()
     }
 
-    pub fn set_autocomplete(&mut self, value: DOMString) {
+    pub fn set_autocomplete(&mut self, value: &str) {
         self.inner.set("autocomplete", value);
     }
 }
@@ -81,11 +81,11 @@ impl HTMLTextAreaElement {
     }
 }
 impl HTMLTextAreaElement {
-    pub fn dir_name(&self) -> DOMString {
-        self.inner.get("dirName").as_::<DOMString>()
+    pub fn dir_name(&self) -> String {
+        self.inner.get("dirName").as_::<String>()
     }
 
-    pub fn set_dir_name(&mut self, value: DOMString) {
+    pub fn set_dir_name(&mut self, value: &str) {
         self.inner.set("dirName", value);
     }
 }
@@ -122,20 +122,20 @@ impl HTMLTextAreaElement {
     }
 }
 impl HTMLTextAreaElement {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
 impl HTMLTextAreaElement {
-    pub fn placeholder(&self) -> DOMString {
-        self.inner.get("placeholder").as_::<DOMString>()
+    pub fn placeholder(&self) -> String {
+        self.inner.get("placeholder").as_::<String>()
     }
 
-    pub fn set_placeholder(&mut self, value: DOMString) {
+    pub fn set_placeholder(&mut self, value: &str) {
         self.inner.set("placeholder", value);
     }
 }
@@ -167,34 +167,34 @@ impl HTMLTextAreaElement {
     }
 }
 impl HTMLTextAreaElement {
-    pub fn wrap(&self) -> DOMString {
-        self.inner.get("wrap").as_::<DOMString>()
+    pub fn wrap(&self) -> String {
+        self.inner.get("wrap").as_::<String>()
     }
 
-    pub fn set_wrap(&mut self, value: DOMString) {
+    pub fn set_wrap(&mut self, value: &str) {
         self.inner.set("wrap", value);
     }
 }
 impl HTMLTextAreaElement {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 }
 impl HTMLTextAreaElement {
-    pub fn default_value(&self) -> DOMString {
-        self.inner.get("defaultValue").as_::<DOMString>()
+    pub fn default_value(&self) -> String {
+        self.inner.get("defaultValue").as_::<String>()
     }
 
-    pub fn set_default_value(&mut self, value: DOMString) {
+    pub fn set_default_value(&mut self, value: &str) {
         self.inner.set("defaultValue", value);
     }
 }
 impl HTMLTextAreaElement {
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> String {
+        self.inner.get("value").as_::<String>()
     }
 
-    pub fn set_value(&mut self, value: DOMString) {
+    pub fn set_value(&mut self, value: &str) {
         self.inner.set("value", value);
     }
 }
@@ -214,8 +214,8 @@ impl HTMLTextAreaElement {
     }
 }
 impl HTMLTextAreaElement {
-    pub fn validation_message(&self) -> DOMString {
-        self.inner.get("validationMessage").as_::<DOMString>()
+    pub fn validation_message(&self) -> String {
+        self.inner.get("validationMessage").as_::<String>()
     }
 }
 impl HTMLTextAreaElement {
@@ -229,7 +229,7 @@ impl HTMLTextAreaElement {
     }
 }
 impl HTMLTextAreaElement {
-    pub fn set_custom_validity(&self, error: DOMString) -> Undefined {
+    pub fn set_custom_validity(&self, error: &str) -> Undefined {
         self.inner
             .call("setCustomValidity", &[error.into()])
             .as_::<Undefined>()
@@ -264,16 +264,16 @@ impl HTMLTextAreaElement {
     }
 }
 impl HTMLTextAreaElement {
-    pub fn selection_direction(&self) -> DOMString {
-        self.inner.get("selectionDirection").as_::<DOMString>()
+    pub fn selection_direction(&self) -> String {
+        self.inner.get("selectionDirection").as_::<String>()
     }
 
-    pub fn set_selection_direction(&mut self, value: DOMString) {
+    pub fn set_selection_direction(&mut self, value: &str) {
         self.inner.set("selectionDirection", value);
     }
 }
 impl HTMLTextAreaElement {
-    pub fn set_range_text0(&self, replacement: DOMString, start: u32, end: u32) -> Undefined {
+    pub fn set_range_text0(&self, replacement: &str, start: u32, end: u32) -> Undefined {
         self.inner
             .call(
                 "setRangeText",
@@ -284,10 +284,10 @@ impl HTMLTextAreaElement {
 
     pub fn set_range_text1(
         &self,
-        replacement: DOMString,
+        replacement: &str,
         start: u32,
         end: u32,
-        selection_mode: SelectionMode,
+        selection_mode: &SelectionMode,
     ) -> Undefined {
         self.inner
             .call(
@@ -309,7 +309,7 @@ impl HTMLTextAreaElement {
             .as_::<Undefined>()
     }
 
-    pub fn set_selection_range1(&self, start: u32, end: u32, direction: DOMString) -> Undefined {
+    pub fn set_selection_range1(&self, start: u32, end: u32, direction: &str) -> Undefined {
         self.inner
             .call(
                 "setSelectionRange",

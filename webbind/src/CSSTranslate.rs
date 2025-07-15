@@ -54,7 +54,7 @@ impl From<&CSSTranslate> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSTranslate);
 
 impl CSSTranslate {
-    pub fn new0(x: CSSNumericValue, y: CSSNumericValue) -> CSSTranslate {
+    pub fn new0(x: &CSSNumericValue, y: &CSSNumericValue) -> CSSTranslate {
         Self {
             inner: emlite::Val::global("CSSTranslate")
                 .new(&[x.into(), y.into()])
@@ -62,7 +62,7 @@ impl CSSTranslate {
         }
     }
 
-    pub fn new1(x: CSSNumericValue, y: CSSNumericValue, z: CSSNumericValue) -> CSSTranslate {
+    pub fn new1(x: &CSSNumericValue, y: &CSSNumericValue, z: &CSSNumericValue) -> CSSTranslate {
         Self {
             inner: emlite::Val::global("CSSTranslate")
                 .new(&[x.into(), y.into(), z.into()])
@@ -75,7 +75,7 @@ impl CSSTranslate {
         self.inner.get("x").as_::<CSSNumericValue>()
     }
 
-    pub fn set_x(&mut self, value: CSSNumericValue) {
+    pub fn set_x(&mut self, value: &CSSNumericValue) {
         self.inner.set("x", value);
     }
 }
@@ -84,7 +84,7 @@ impl CSSTranslate {
         self.inner.get("y").as_::<CSSNumericValue>()
     }
 
-    pub fn set_y(&mut self, value: CSSNumericValue) {
+    pub fn set_y(&mut self, value: &CSSNumericValue) {
         self.inner.set("y", value);
     }
 }
@@ -93,7 +93,7 @@ impl CSSTranslate {
         self.inner.get("z").as_::<CSSNumericValue>()
     }
 
-    pub fn set_z(&mut self, value: CSSNumericValue) {
+    pub fn set_z(&mut self, value: &CSSNumericValue) {
         self.inner.set("z", value);
     }
 }

@@ -64,8 +64,8 @@ impl XPathResult {
     }
 }
 impl XPathResult {
-    pub fn string_value(&self) -> DOMString {
-        self.inner.get("stringValue").as_::<DOMString>()
+    pub fn string_value(&self) -> String {
+        self.inner.get("stringValue").as_::<String>()
     }
 }
 impl XPathResult {

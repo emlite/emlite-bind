@@ -60,7 +60,7 @@ impl Magnetometer {
         }
     }
 
-    pub fn new1(sensor_options: Any) -> Magnetometer {
+    pub fn new1(sensor_options: &Any) -> Magnetometer {
         Self {
             inner: emlite::Val::global("Magnetometer")
                 .new(&[sensor_options.into()])

@@ -54,7 +54,7 @@ impl From<&CanvasGradient> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CanvasGradient);
 
 impl CanvasGradient {
-    pub fn add_color_stop(&self, offset: f64, color: DOMString) -> Undefined {
+    pub fn add_color_stop(&self, offset: f64, color: &str) -> Undefined {
         self.inner
             .call("addColorStop", &[offset.into(), color.into()])
             .as_::<Undefined>()

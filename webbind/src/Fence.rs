@@ -51,20 +51,20 @@ impl From<&FenceEvent> for emlite::Val {
 }
 
 impl FenceEvent {
-    pub fn event_type(&self) -> DOMString {
-        self.inner.get("eventType").as_::<DOMString>()
+    pub fn event_type(&self) -> String {
+        self.inner.get("eventType").as_::<String>()
     }
 
-    pub fn set_event_type(&mut self, value: DOMString) {
+    pub fn set_event_type(&mut self, value: &str) {
         self.inner.set("eventType", value);
     }
 }
 impl FenceEvent {
-    pub fn event_data(&self) -> DOMString {
-        self.inner.get("eventData").as_::<DOMString>()
+    pub fn event_data(&self) -> String {
+        self.inner.get("eventData").as_::<String>()
     }
 
-    pub fn set_event_data(&mut self, value: DOMString) {
+    pub fn set_event_data(&mut self, value: &str) {
         self.inner.set("eventData", value);
     }
 }
@@ -75,7 +75,7 @@ impl FenceEvent {
             .as_::<Sequence<FenceReportingDestination>>()
     }
 
-    pub fn set_destination(&mut self, value: Sequence<FenceReportingDestination>) {
+    pub fn set_destination(&mut self, value: &Sequence<FenceReportingDestination>) {
         self.inner.set("destination", value);
     }
 }
@@ -98,11 +98,11 @@ impl FenceEvent {
     }
 }
 impl FenceEvent {
-    pub fn destination_url(&self) -> USVString {
-        self.inner.get("destinationURL").as_::<USVString>()
+    pub fn destination_url(&self) -> String {
+        self.inner.get("destinationURL").as_::<String>()
     }
 
-    pub fn set_destination_url(&mut self, value: USVString) {
+    pub fn set_destination_url(&mut self, value: &str) {
         self.inner.set("destinationURL", value);
     }
 }
@@ -164,7 +164,7 @@ impl Fence {
         self.inner.call("reportEvent", &[]).as_::<Undefined>()
     }
 
-    pub fn report_event1(&self, event: Any) -> Undefined {
+    pub fn report_event1(&self, event: &Any) -> Undefined {
         self.inner
             .call("reportEvent", &[event.into()])
             .as_::<Undefined>()
@@ -177,7 +177,7 @@ impl Fence {
             .as_::<Undefined>()
     }
 
-    pub fn set_report_event_data_for_automatic_beacons1(&self, event: FenceEvent) -> Undefined {
+    pub fn set_report_event_data_for_automatic_beacons1(&self, event: &FenceEvent) -> Undefined {
         self.inner
             .call("setReportEventDataForAutomaticBeacons", &[event.into()])
             .as_::<Undefined>()
@@ -198,7 +198,7 @@ impl Fence {
     }
 }
 impl Fence {
-    pub fn notify_event(&self, event: Event) -> Undefined {
+    pub fn notify_event(&self, event: &Event) -> Undefined {
         self.inner
             .call("notifyEvent", &[event.into()])
             .as_::<Undefined>()

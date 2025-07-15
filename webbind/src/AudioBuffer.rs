@@ -54,7 +54,7 @@ impl From<&AudioBuffer> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(AudioBuffer);
 
 impl AudioBuffer {
-    pub fn new(options: Any) -> AudioBuffer {
+    pub fn new(options: &Any) -> AudioBuffer {
         Self {
             inner: emlite::Val::global("AudioBuffer")
                 .new(&[options.into()])
@@ -90,7 +90,7 @@ impl AudioBuffer {
     }
 }
 impl AudioBuffer {
-    pub fn copy_from_channel0(&self, destination: Float32Array, channel_number: u32) -> Undefined {
+    pub fn copy_from_channel0(&self, destination: &Float32Array, channel_number: u32) -> Undefined {
         self.inner
             .call(
                 "copyFromChannel",
@@ -101,7 +101,7 @@ impl AudioBuffer {
 
     pub fn copy_from_channel1(
         &self,
-        destination: Float32Array,
+        destination: &Float32Array,
         channel_number: u32,
         buffer_offset: u32,
     ) -> Undefined {
@@ -118,7 +118,7 @@ impl AudioBuffer {
     }
 }
 impl AudioBuffer {
-    pub fn copy_to_channel0(&self, source: Float32Array, channel_number: u32) -> Undefined {
+    pub fn copy_to_channel0(&self, source: &Float32Array, channel_number: u32) -> Undefined {
         self.inner
             .call("copyToChannel", &[source.into(), channel_number.into()])
             .as_::<Undefined>()
@@ -126,7 +126,7 @@ impl AudioBuffer {
 
     pub fn copy_to_channel1(
         &self,
-        source: Float32Array,
+        source: &Float32Array,
         channel_number: u32,
         buffer_offset: u32,
     ) -> Undefined {

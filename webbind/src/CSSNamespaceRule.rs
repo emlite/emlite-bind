@@ -54,12 +54,12 @@ impl From<&CSSNamespaceRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSNamespaceRule);
 
 impl CSSNamespaceRule {
-    pub fn namespace_uri(&self) -> CSSOMString {
-        self.inner.get("namespaceURI").as_::<CSSOMString>()
+    pub fn namespace_uri(&self) -> String {
+        self.inner.get("namespaceURI").as_::<String>()
     }
 }
 impl CSSNamespaceRule {
-    pub fn prefix(&self) -> CSSOMString {
-        self.inner.get("prefix").as_::<CSSOMString>()
+    pub fn prefix(&self) -> String {
+        self.inner.get("prefix").as_::<String>()
     }
 }

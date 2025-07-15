@@ -62,7 +62,7 @@ impl BluetoothLEScanFilter {
         }
     }
 
-    pub fn new1(init: Any) -> BluetoothLEScanFilter {
+    pub fn new1(init: &Any) -> BluetoothLEScanFilter {
         Self {
             inner: emlite::Val::global("BluetoothLEScanFilter")
                 .new(&[init.into()])
@@ -71,13 +71,13 @@ impl BluetoothLEScanFilter {
     }
 }
 impl BluetoothLEScanFilter {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl BluetoothLEScanFilter {
-    pub fn name_prefix(&self) -> DOMString {
-        self.inner.get("namePrefix").as_::<DOMString>()
+    pub fn name_prefix(&self) -> String {
+        self.inner.get("namePrefix").as_::<String>()
     }
 }
 impl BluetoothLEScanFilter {

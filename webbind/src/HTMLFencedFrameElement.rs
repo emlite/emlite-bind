@@ -67,25 +67,25 @@ impl HTMLFencedFrameElement {
         self.inner.get("config").as_::<FencedFrameConfig>()
     }
 
-    pub fn set_config(&mut self, value: FencedFrameConfig) {
+    pub fn set_config(&mut self, value: &FencedFrameConfig) {
         self.inner.set("config", value);
     }
 }
 impl HTMLFencedFrameElement {
-    pub fn width(&self) -> DOMString {
-        self.inner.get("width").as_::<DOMString>()
+    pub fn width(&self) -> String {
+        self.inner.get("width").as_::<String>()
     }
 
-    pub fn set_width(&mut self, value: DOMString) {
+    pub fn set_width(&mut self, value: &str) {
         self.inner.set("width", value);
     }
 }
 impl HTMLFencedFrameElement {
-    pub fn height(&self) -> DOMString {
-        self.inner.get("height").as_::<DOMString>()
+    pub fn height(&self) -> String {
+        self.inner.get("height").as_::<String>()
     }
 
-    pub fn set_height(&mut self, value: DOMString) {
+    pub fn set_height(&mut self, value: &str) {
         self.inner.set("height", value);
     }
 }
@@ -95,11 +95,11 @@ impl HTMLFencedFrameElement {
     }
 }
 impl HTMLFencedFrameElement {
-    pub fn allow(&self) -> DOMString {
-        self.inner.get("allow").as_::<DOMString>()
+    pub fn allow(&self) -> String {
+        self.inner.get("allow").as_::<String>()
     }
 
-    pub fn set_allow(&mut self, value: DOMString) {
+    pub fn set_allow(&mut self, value: &str) {
         self.inner.set("allow", value);
     }
 }

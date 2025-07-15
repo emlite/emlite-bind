@@ -69,17 +69,17 @@ impl GPUBuffer {
     }
 }
 impl GPUBuffer {
-    pub fn map_async0(&self, mode: Any) -> Promise {
+    pub fn map_async0(&self, mode: &Any) -> Promise {
         self.inner.call("mapAsync", &[mode.into()]).as_::<Promise>()
     }
 
-    pub fn map_async1(&self, mode: Any, offset: Any) -> Promise {
+    pub fn map_async1(&self, mode: &Any, offset: &Any) -> Promise {
         self.inner
             .call("mapAsync", &[mode.into(), offset.into()])
             .as_::<Promise>()
     }
 
-    pub fn map_async2(&self, mode: Any, offset: Any, size: Any) -> Promise {
+    pub fn map_async2(&self, mode: &Any, offset: &Any, size: &Any) -> Promise {
         self.inner
             .call("mapAsync", &[mode.into(), offset.into(), size.into()])
             .as_::<Promise>()
@@ -90,13 +90,13 @@ impl GPUBuffer {
         self.inner.call("getMappedRange", &[]).as_::<ArrayBuffer>()
     }
 
-    pub fn get_mapped_range1(&self, offset: Any) -> ArrayBuffer {
+    pub fn get_mapped_range1(&self, offset: &Any) -> ArrayBuffer {
         self.inner
             .call("getMappedRange", &[offset.into()])
             .as_::<ArrayBuffer>()
     }
 
-    pub fn get_mapped_range2(&self, offset: Any, size: Any) -> ArrayBuffer {
+    pub fn get_mapped_range2(&self, offset: &Any, size: &Any) -> ArrayBuffer {
         self.inner
             .call("getMappedRange", &[offset.into(), size.into()])
             .as_::<ArrayBuffer>()
@@ -113,11 +113,11 @@ impl GPUBuffer {
     }
 }
 impl GPUBuffer {
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 
-    pub fn set_label(&mut self, value: USVString) {
+    pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }
 }

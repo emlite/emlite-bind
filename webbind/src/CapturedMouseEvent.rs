@@ -54,7 +54,7 @@ impl From<&CapturedMouseEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CapturedMouseEvent);
 
 impl CapturedMouseEvent {
-    pub fn new0(type_: DOMString) -> CapturedMouseEvent {
+    pub fn new0(type_: &str) -> CapturedMouseEvent {
         Self {
             inner: emlite::Val::global("CapturedMouseEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl CapturedMouseEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> CapturedMouseEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> CapturedMouseEvent {
         Self {
             inner: emlite::Val::global("CapturedMouseEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -109,7 +109,7 @@ impl WebTransportConnectionStats {
         self.inner.get("smoothedRtt").as_::<Any>()
     }
 
-    pub fn set_smoothed_rtt(&mut self, value: Any) {
+    pub fn set_smoothed_rtt(&mut self, value: &Any) {
         self.inner.set("smoothedRtt", value);
     }
 }
@@ -118,7 +118,7 @@ impl WebTransportConnectionStats {
         self.inner.get("rttVariation").as_::<Any>()
     }
 
-    pub fn set_rtt_variation(&mut self, value: Any) {
+    pub fn set_rtt_variation(&mut self, value: &Any) {
         self.inner.set("rttVariation", value);
     }
 }
@@ -127,7 +127,7 @@ impl WebTransportConnectionStats {
         self.inner.get("minRtt").as_::<Any>()
     }
 
-    pub fn set_min_rtt(&mut self, value: Any) {
+    pub fn set_min_rtt(&mut self, value: &Any) {
         self.inner.set("minRtt", value);
     }
 }
@@ -136,7 +136,7 @@ impl WebTransportConnectionStats {
         self.inner.get("datagrams").as_::<Any>()
     }
 
-    pub fn set_datagrams(&mut self, value: Any) {
+    pub fn set_datagrams(&mut self, value: &Any) {
         self.inner.set("datagrams", value);
     }
 }
@@ -218,11 +218,11 @@ impl WebTransportCloseInfo {
     }
 }
 impl WebTransportCloseInfo {
-    pub fn reason(&self) -> USVString {
-        self.inner.get("reason").as_::<USVString>()
+    pub fn reason(&self) -> String {
+        self.inner.get("reason").as_::<String>()
     }
 
-    pub fn set_reason(&mut self, value: USVString) {
+    pub fn set_reason(&mut self, value: &str) {
         self.inner.set("reason", value);
     }
 }
@@ -339,7 +339,7 @@ impl From<&WebTransport> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(WebTransport);
 
 impl WebTransport {
-    pub fn new0(url: USVString) -> WebTransport {
+    pub fn new0(url: &str) -> WebTransport {
         Self {
             inner: emlite::Val::global("WebTransport")
                 .new(&[url.into()])
@@ -347,7 +347,7 @@ impl WebTransport {
         }
     }
 
-    pub fn new1(url: USVString, options: Any) -> WebTransport {
+    pub fn new1(url: &str, options: &Any) -> WebTransport {
         Self {
             inner: emlite::Val::global("WebTransport")
                 .new(&[url.into(), options.into()])
@@ -361,13 +361,13 @@ impl WebTransport {
     }
 }
 impl WebTransport {
-    pub fn export_keying_material0(&self, label: Any) -> Promise {
+    pub fn export_keying_material0(&self, label: &Any) -> Promise {
         self.inner
             .call("exportKeyingMaterial", &[label.into()])
             .as_::<Promise>()
     }
 
-    pub fn export_keying_material1(&self, label: Any, context: Any) -> Promise {
+    pub fn export_keying_material1(&self, label: &Any, context: &Any) -> Promise {
         self.inner
             .call("exportKeyingMaterial", &[label.into(), context.into()])
             .as_::<Promise>()
@@ -417,8 +417,8 @@ impl WebTransport {
     }
 }
 impl WebTransport {
-    pub fn protocol(&self) -> DOMString {
-        self.inner.get("protocol").as_::<DOMString>()
+    pub fn protocol(&self) -> String {
+        self.inner.get("protocol").as_::<String>()
     }
 }
 impl WebTransport {
@@ -436,7 +436,7 @@ impl WebTransport {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 
-    pub fn close1(&self, close_info: WebTransportCloseInfo) -> Undefined {
+    pub fn close1(&self, close_info: &WebTransportCloseInfo) -> Undefined {
         self.inner
             .call("close", &[close_info.into()])
             .as_::<Undefined>()
@@ -456,7 +456,7 @@ impl WebTransport {
             .as_::<Promise>()
     }
 
-    pub fn create_bidirectional_stream1(&self, options: WebTransportSendStreamOptions) -> Promise {
+    pub fn create_bidirectional_stream1(&self, options: &WebTransportSendStreamOptions) -> Promise {
         self.inner
             .call("createBidirectionalStream", &[options.into()])
             .as_::<Promise>()
@@ -476,7 +476,10 @@ impl WebTransport {
             .as_::<Promise>()
     }
 
-    pub fn create_unidirectional_stream1(&self, options: WebTransportSendStreamOptions) -> Promise {
+    pub fn create_unidirectional_stream1(
+        &self,
+        options: &WebTransportSendStreamOptions,
+    ) -> Promise {
         self.inner
             .call("createUnidirectionalStream", &[options.into()])
             .as_::<Promise>()

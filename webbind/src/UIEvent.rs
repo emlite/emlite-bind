@@ -54,7 +54,7 @@ impl From<&UIEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(UIEvent);
 
 impl UIEvent {
-    pub fn new0(type_: DOMString) -> UIEvent {
+    pub fn new0(type_: &str) -> UIEvent {
         Self {
             inner: emlite::Val::global("UIEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl UIEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> UIEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> UIEvent {
         Self {
             inner: emlite::Val::global("UIEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -88,13 +88,13 @@ impl UIEvent {
     }
 }
 impl UIEvent {
-    pub fn init_ui_event0(&self, type_arg: DOMString) -> Undefined {
+    pub fn init_ui_event0(&self, type_arg: &str) -> Undefined {
         self.inner
             .call("initUIEvent", &[type_arg.into()])
             .as_::<Undefined>()
     }
 
-    pub fn init_ui_event1(&self, type_arg: DOMString, bubbles_arg: bool) -> Undefined {
+    pub fn init_ui_event1(&self, type_arg: &str, bubbles_arg: bool) -> Undefined {
         self.inner
             .call("initUIEvent", &[type_arg.into(), bubbles_arg.into()])
             .as_::<Undefined>()
@@ -102,7 +102,7 @@ impl UIEvent {
 
     pub fn init_ui_event2(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
     ) -> Undefined {
@@ -116,10 +116,10 @@ impl UIEvent {
 
     pub fn init_ui_event3(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Window,
+        view_arg: &Window,
     ) -> Undefined {
         self.inner
             .call(
@@ -136,10 +136,10 @@ impl UIEvent {
 
     pub fn init_ui_event4(
         &self,
-        type_arg: DOMString,
+        type_arg: &str,
         bubbles_arg: bool,
         cancelable_arg: bool,
-        view_arg: Window,
+        view_arg: &Window,
         detail_arg: i32,
     ) -> Undefined {
         self.inner

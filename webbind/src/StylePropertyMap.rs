@@ -54,21 +54,21 @@ impl From<&StylePropertyMap> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(StylePropertyMap);
 
 impl StylePropertyMap {
-    pub fn set(&self, property: USVString, values: Any) -> Undefined {
+    pub fn set(&self, property: &str, values: &Any) -> Undefined {
         self.inner
             .call("set", &[property.into(), values.into()])
             .as_::<Undefined>()
     }
 }
 impl StylePropertyMap {
-    pub fn append(&self, property: USVString, values: Any) -> Undefined {
+    pub fn append(&self, property: &str, values: &Any) -> Undefined {
         self.inner
             .call("append", &[property.into(), values.into()])
             .as_::<Undefined>()
     }
 }
 impl StylePropertyMap {
-    pub fn delete(&self, property: USVString) -> Undefined {
+    pub fn delete(&self, property: &str) -> Undefined {
         self.inner
             .call("delete", &[property.into()])
             .as_::<Undefined>()

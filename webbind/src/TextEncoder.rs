@@ -135,7 +135,7 @@ impl TextEncoder {
         self.inner.call("encode", &[]).as_::<Uint8Array>()
     }
 
-    pub fn encode1(&self, input: USVString) -> Uint8Array {
+    pub fn encode1(&self, input: &str) -> Uint8Array {
         self.inner
             .call("encode", &[input.into()])
             .as_::<Uint8Array>()
@@ -144,8 +144,8 @@ impl TextEncoder {
 impl TextEncoder {
     pub fn encode_into(
         &self,
-        source: USVString,
-        destination: Uint8Array,
+        source: &str,
+        destination: &Uint8Array,
     ) -> TextEncoderEncodeIntoResult {
         self.inner
             .call("encodeInto", &[source.into(), destination.into()])
@@ -153,7 +153,7 @@ impl TextEncoder {
     }
 }
 impl TextEncoder {
-    pub fn encoding(&self) -> DOMString {
-        self.inner.get("encoding").as_::<DOMString>()
+    pub fn encoding(&self) -> String {
+        self.inner.get("encoding").as_::<String>()
     }
 }

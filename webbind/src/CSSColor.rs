@@ -54,7 +54,7 @@ impl From<&CSSColor> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSColor);
 
 impl CSSColor {
-    pub fn new0(color_space: Any, channels: Sequence<Any>) -> CSSColor {
+    pub fn new0(color_space: &Any, channels: &Sequence<Any>) -> CSSColor {
         Self {
             inner: emlite::Val::global("CSSColor")
                 .new(&[color_space.into(), channels.into()])
@@ -62,7 +62,7 @@ impl CSSColor {
         }
     }
 
-    pub fn new1(color_space: Any, channels: Sequence<Any>, alpha: Any) -> CSSColor {
+    pub fn new1(color_space: &Any, channels: &Sequence<Any>, alpha: &Any) -> CSSColor {
         Self {
             inner: emlite::Val::global("CSSColor")
                 .new(&[color_space.into(), channels.into(), alpha.into()])
@@ -75,7 +75,7 @@ impl CSSColor {
         self.inner.get("colorSpace").as_::<Any>()
     }
 
-    pub fn set_color_space(&mut self, value: Any) {
+    pub fn set_color_space(&mut self, value: &Any) {
         self.inner.set("colorSpace", value);
     }
 }
@@ -84,7 +84,7 @@ impl CSSColor {
         self.inner.get("channels").as_::<ObservableArray<Any>>()
     }
 
-    pub fn set_channels(&mut self, value: ObservableArray<Any>) {
+    pub fn set_channels(&mut self, value: &ObservableArray<Any>) {
         self.inner.set("channels", value);
     }
 }
@@ -93,7 +93,7 @@ impl CSSColor {
         self.inner.get("alpha").as_::<Any>()
     }
 
-    pub fn set_alpha(&mut self, value: Any) {
+    pub fn set_alpha(&mut self, value: &Any) {
         self.inner.set("alpha", value);
     }
 }

@@ -54,7 +54,7 @@ impl From<&NDEFMessage> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(NDEFMessage);
 
 impl NDEFMessage {
-    pub fn new(message_init: Any) -> NDEFMessage {
+    pub fn new(message_init: &Any) -> NDEFMessage {
         Self {
             inner: emlite::Val::global("NDEFMessage")
                 .new(&[message_init.into()])

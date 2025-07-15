@@ -59,29 +59,29 @@ impl SVGAElement {
     }
 }
 impl SVGAElement {
-    pub fn download(&self) -> DOMString {
-        self.inner.get("download").as_::<DOMString>()
+    pub fn download(&self) -> String {
+        self.inner.get("download").as_::<String>()
     }
 
-    pub fn set_download(&mut self, value: DOMString) {
+    pub fn set_download(&mut self, value: &str) {
         self.inner.set("download", value);
     }
 }
 impl SVGAElement {
-    pub fn ping(&self) -> USVString {
-        self.inner.get("ping").as_::<USVString>()
+    pub fn ping(&self) -> String {
+        self.inner.get("ping").as_::<String>()
     }
 
-    pub fn set_ping(&mut self, value: USVString) {
+    pub fn set_ping(&mut self, value: &str) {
         self.inner.set("ping", value);
     }
 }
 impl SVGAElement {
-    pub fn rel(&self) -> DOMString {
-        self.inner.get("rel").as_::<DOMString>()
+    pub fn rel(&self) -> String {
+        self.inner.get("rel").as_::<String>()
     }
 
-    pub fn set_rel(&mut self, value: DOMString) {
+    pub fn set_rel(&mut self, value: &str) {
         self.inner.set("rel", value);
     }
 }
@@ -91,124 +91,124 @@ impl SVGAElement {
     }
 }
 impl SVGAElement {
-    pub fn hreflang(&self) -> DOMString {
-        self.inner.get("hreflang").as_::<DOMString>()
+    pub fn hreflang(&self) -> String {
+        self.inner.get("hreflang").as_::<String>()
     }
 
-    pub fn set_hreflang(&mut self, value: DOMString) {
+    pub fn set_hreflang(&mut self, value: &str) {
         self.inner.set("hreflang", value);
     }
 }
 impl SVGAElement {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: DOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }
 impl SVGAElement {
-    pub fn text(&self) -> DOMString {
-        self.inner.get("text").as_::<DOMString>()
+    pub fn text(&self) -> String {
+        self.inner.get("text").as_::<String>()
     }
 
-    pub fn set_text(&mut self, value: DOMString) {
+    pub fn set_text(&mut self, value: &str) {
         self.inner.set("text", value);
     }
 }
 impl SVGAElement {
-    pub fn referrer_policy(&self) -> DOMString {
-        self.inner.get("referrerPolicy").as_::<DOMString>()
+    pub fn referrer_policy(&self) -> String {
+        self.inner.get("referrerPolicy").as_::<String>()
     }
 
-    pub fn set_referrer_policy(&mut self, value: DOMString) {
+    pub fn set_referrer_policy(&mut self, value: &str) {
         self.inner.set("referrerPolicy", value);
     }
 }
 impl SVGAElement {
-    pub fn origin(&self) -> USVString {
-        self.inner.get("origin").as_::<USVString>()
+    pub fn origin(&self) -> String {
+        self.inner.get("origin").as_::<String>()
     }
 }
 impl SVGAElement {
-    pub fn protocol(&self) -> USVString {
-        self.inner.get("protocol").as_::<USVString>()
+    pub fn protocol(&self) -> String {
+        self.inner.get("protocol").as_::<String>()
     }
 
-    pub fn set_protocol(&mut self, value: USVString) {
+    pub fn set_protocol(&mut self, value: &str) {
         self.inner.set("protocol", value);
     }
 }
 impl SVGAElement {
-    pub fn username(&self) -> USVString {
-        self.inner.get("username").as_::<USVString>()
+    pub fn username(&self) -> String {
+        self.inner.get("username").as_::<String>()
     }
 
-    pub fn set_username(&mut self, value: USVString) {
+    pub fn set_username(&mut self, value: &str) {
         self.inner.set("username", value);
     }
 }
 impl SVGAElement {
-    pub fn password(&self) -> USVString {
-        self.inner.get("password").as_::<USVString>()
+    pub fn password(&self) -> String {
+        self.inner.get("password").as_::<String>()
     }
 
-    pub fn set_password(&mut self, value: USVString) {
+    pub fn set_password(&mut self, value: &str) {
         self.inner.set("password", value);
     }
 }
 impl SVGAElement {
-    pub fn host(&self) -> USVString {
-        self.inner.get("host").as_::<USVString>()
+    pub fn host(&self) -> String {
+        self.inner.get("host").as_::<String>()
     }
 
-    pub fn set_host(&mut self, value: USVString) {
+    pub fn set_host(&mut self, value: &str) {
         self.inner.set("host", value);
     }
 }
 impl SVGAElement {
-    pub fn hostname(&self) -> USVString {
-        self.inner.get("hostname").as_::<USVString>()
+    pub fn hostname(&self) -> String {
+        self.inner.get("hostname").as_::<String>()
     }
 
-    pub fn set_hostname(&mut self, value: USVString) {
+    pub fn set_hostname(&mut self, value: &str) {
         self.inner.set("hostname", value);
     }
 }
 impl SVGAElement {
-    pub fn port(&self) -> USVString {
-        self.inner.get("port").as_::<USVString>()
+    pub fn port(&self) -> String {
+        self.inner.get("port").as_::<String>()
     }
 
-    pub fn set_port(&mut self, value: USVString) {
+    pub fn set_port(&mut self, value: &str) {
         self.inner.set("port", value);
     }
 }
 impl SVGAElement {
-    pub fn pathname(&self) -> USVString {
-        self.inner.get("pathname").as_::<USVString>()
+    pub fn pathname(&self) -> String {
+        self.inner.get("pathname").as_::<String>()
     }
 
-    pub fn set_pathname(&mut self, value: USVString) {
+    pub fn set_pathname(&mut self, value: &str) {
         self.inner.set("pathname", value);
     }
 }
 impl SVGAElement {
-    pub fn search(&self) -> USVString {
-        self.inner.get("search").as_::<USVString>()
+    pub fn search(&self) -> String {
+        self.inner.get("search").as_::<String>()
     }
 
-    pub fn set_search(&mut self, value: USVString) {
+    pub fn set_search(&mut self, value: &str) {
         self.inner.set("search", value);
     }
 }
 impl SVGAElement {
-    pub fn hash(&self) -> USVString {
-        self.inner.get("hash").as_::<USVString>()
+    pub fn hash(&self) -> String {
+        self.inner.get("hash").as_::<String>()
     }
 
-    pub fn set_hash(&mut self, value: USVString) {
+    pub fn set_hash(&mut self, value: &str) {
         self.inner.set("hash", value);
     }
 }

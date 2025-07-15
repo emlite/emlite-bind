@@ -54,7 +54,7 @@ impl From<&NDEFRecord> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(NDEFRecord);
 
 impl NDEFRecord {
-    pub fn new(record_init: Any) -> NDEFRecord {
+    pub fn new(record_init: &Any) -> NDEFRecord {
         Self {
             inner: emlite::Val::global("NDEFRecord")
                 .new(&[record_init.into()])
@@ -63,18 +63,18 @@ impl NDEFRecord {
     }
 }
 impl NDEFRecord {
-    pub fn record_type(&self) -> USVString {
-        self.inner.get("recordType").as_::<USVString>()
+    pub fn record_type(&self) -> String {
+        self.inner.get("recordType").as_::<String>()
     }
 }
 impl NDEFRecord {
-    pub fn media_type(&self) -> USVString {
-        self.inner.get("mediaType").as_::<USVString>()
+    pub fn media_type(&self) -> String {
+        self.inner.get("mediaType").as_::<String>()
     }
 }
 impl NDEFRecord {
-    pub fn id(&self) -> USVString {
-        self.inner.get("id").as_::<USVString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl NDEFRecord {
@@ -83,13 +83,13 @@ impl NDEFRecord {
     }
 }
 impl NDEFRecord {
-    pub fn encoding(&self) -> USVString {
-        self.inner.get("encoding").as_::<USVString>()
+    pub fn encoding(&self) -> String {
+        self.inner.get("encoding").as_::<String>()
     }
 }
 impl NDEFRecord {
-    pub fn lang(&self) -> USVString {
-        self.inner.get("lang").as_::<USVString>()
+    pub fn lang(&self) -> String {
+        self.inner.get("lang").as_::<String>()
     }
 }
 impl NDEFRecord {

@@ -58,7 +58,7 @@ impl MIDIOutput {
         self.inner.call("send", &[data.into()]).as_::<Undefined>()
     }
 
-    pub fn send1(&self, data: Sequence<u8>, timestamp: Any) -> Undefined {
+    pub fn send1(&self, data: Sequence<u8>, timestamp: &Any) -> Undefined {
         self.inner
             .call("send", &[data.into(), timestamp.into()])
             .as_::<Undefined>()

@@ -55,7 +55,7 @@ impl VideoColorSpaceInit {
         self.inner.get("primaries").as_::<VideoColorPrimaries>()
     }
 
-    pub fn set_primaries(&mut self, value: VideoColorPrimaries) {
+    pub fn set_primaries(&mut self, value: &VideoColorPrimaries) {
         self.inner.set("primaries", value);
     }
 }
@@ -66,7 +66,7 @@ impl VideoColorSpaceInit {
             .as_::<VideoTransferCharacteristics>()
     }
 
-    pub fn set_transfer(&mut self, value: VideoTransferCharacteristics) {
+    pub fn set_transfer(&mut self, value: &VideoTransferCharacteristics) {
         self.inner.set("transfer", value);
     }
 }
@@ -75,7 +75,7 @@ impl VideoColorSpaceInit {
         self.inner.get("matrix").as_::<VideoMatrixCoefficients>()
     }
 
-    pub fn set_matrix(&mut self, value: VideoMatrixCoefficients) {
+    pub fn set_matrix(&mut self, value: &VideoMatrixCoefficients) {
         self.inner.set("matrix", value);
     }
 }
@@ -150,7 +150,7 @@ impl VideoColorSpace {
         }
     }
 
-    pub fn new1(init: VideoColorSpaceInit) -> VideoColorSpace {
+    pub fn new1(init: &VideoColorSpaceInit) -> VideoColorSpace {
         Self {
             inner: emlite::Val::global("VideoColorSpace")
                 .new(&[init.into()])

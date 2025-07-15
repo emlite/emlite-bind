@@ -64,7 +64,7 @@ impl MimeTypeArray {
     }
 }
 impl MimeTypeArray {
-    pub fn named_item(&self, name: DOMString) -> MimeType {
+    pub fn named_item(&self, name: &str) -> MimeType {
         self.inner
             .call("namedItem", &[name.into()])
             .as_::<MimeType>()

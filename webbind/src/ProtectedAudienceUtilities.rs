@@ -54,16 +54,16 @@ impl From<&ProtectedAudienceUtilities> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ProtectedAudienceUtilities);
 
 impl ProtectedAudienceUtilities {
-    pub fn encode_utf8(&self, input: USVString) -> Uint8Array {
+    pub fn encode_utf8(&self, input: &str) -> Uint8Array {
         self.inner
             .call("encodeUtf8", &[input.into()])
             .as_::<Uint8Array>()
     }
 }
 impl ProtectedAudienceUtilities {
-    pub fn decode_utf8(&self, bytes: Uint8Array) -> USVString {
+    pub fn decode_utf8(&self, bytes: &Uint8Array) -> String {
         self.inner
             .call("decodeUtf8", &[bytes.into()])
-            .as_::<USVString>()
+            .as_::<String>()
     }
 }

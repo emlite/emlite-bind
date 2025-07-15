@@ -54,7 +54,7 @@ impl From<&FocusEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(FocusEvent);
 
 impl FocusEvent {
-    pub fn new0(type_: DOMString) -> FocusEvent {
+    pub fn new0(type_: &str) -> FocusEvent {
         Self {
             inner: emlite::Val::global("FocusEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl FocusEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> FocusEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> FocusEvent {
         Self {
             inner: emlite::Val::global("FocusEvent")
                 .new(&[type_.into(), event_init_dict.into()])

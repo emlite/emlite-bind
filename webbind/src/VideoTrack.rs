@@ -54,23 +54,23 @@ impl From<&VideoTrack> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(VideoTrack);
 
 impl VideoTrack {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl VideoTrack {
-    pub fn kind(&self) -> DOMString {
-        self.inner.get("kind").as_::<DOMString>()
+    pub fn kind(&self) -> String {
+        self.inner.get("kind").as_::<String>()
     }
 }
 impl VideoTrack {
-    pub fn label(&self) -> DOMString {
-        self.inner.get("label").as_::<DOMString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 }
 impl VideoTrack {
-    pub fn language(&self) -> DOMString {
-        self.inner.get("language").as_::<DOMString>()
+    pub fn language(&self) -> String {
+        self.inner.get("language").as_::<String>()
     }
 }
 impl VideoTrack {

@@ -122,7 +122,7 @@ impl FileSystemFileHandle {
         self.inner.call("createWritable", &[]).as_::<Promise>()
     }
 
-    pub fn create_writable1(&self, options: FileSystemCreateWritableOptions) -> Promise {
+    pub fn create_writable1(&self, options: &FileSystemCreateWritableOptions) -> Promise {
         self.inner
             .call("createWritable", &[options.into()])
             .as_::<Promise>()

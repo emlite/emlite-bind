@@ -75,26 +75,26 @@ impl SpeechGrammarList {
     }
 }
 impl SpeechGrammarList {
-    pub fn add_from_uri0(&self, src: DOMString) -> Undefined {
+    pub fn add_from_uri0(&self, src: &str) -> Undefined {
         self.inner
             .call("addFromURI", &[src.into()])
             .as_::<Undefined>()
     }
 
-    pub fn add_from_uri1(&self, src: DOMString, weight: f32) -> Undefined {
+    pub fn add_from_uri1(&self, src: &str, weight: f32) -> Undefined {
         self.inner
             .call("addFromURI", &[src.into(), weight.into()])
             .as_::<Undefined>()
     }
 }
 impl SpeechGrammarList {
-    pub fn add_from_string0(&self, string: DOMString) -> Undefined {
+    pub fn add_from_string0(&self, string: &str) -> Undefined {
         self.inner
             .call("addFromString", &[string.into()])
             .as_::<Undefined>()
     }
 
-    pub fn add_from_string1(&self, string: DOMString, weight: f32) -> Undefined {
+    pub fn add_from_string1(&self, string: &str, weight: f32) -> Undefined {
         self.inner
             .call("addFromString", &[string.into(), weight.into()])
             .as_::<Undefined>()

@@ -91,11 +91,11 @@ impl SVGMarkerElement {
     }
 }
 impl SVGMarkerElement {
-    pub fn orient(&self) -> DOMString {
-        self.inner.get("orient").as_::<DOMString>()
+    pub fn orient(&self) -> String {
+        self.inner.get("orient").as_::<String>()
     }
 
-    pub fn set_orient(&mut self, value: DOMString) {
+    pub fn set_orient(&mut self, value: &str) {
         self.inner.set("orient", value);
     }
 }
@@ -105,7 +105,7 @@ impl SVGMarkerElement {
     }
 }
 impl SVGMarkerElement {
-    pub fn set_orient_to_angle(&self, angle: SVGAngle) -> Undefined {
+    pub fn set_orient_to_angle(&self, angle: &SVGAngle) -> Undefined {
         self.inner
             .call("setOrientToAngle", &[angle.into()])
             .as_::<Undefined>()

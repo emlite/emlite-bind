@@ -190,7 +190,7 @@ impl From<&PrivateAggregation> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PrivateAggregation);
 
 impl PrivateAggregation {
-    pub fn contribute_to_histogram(&self, contribution: PAHistogramContribution) -> Undefined {
+    pub fn contribute_to_histogram(&self, contribution: &PAHistogramContribution) -> Undefined {
         self.inner
             .call("contributeToHistogram", &[contribution.into()])
             .as_::<Undefined>()
@@ -199,8 +199,8 @@ impl PrivateAggregation {
 impl PrivateAggregation {
     pub fn contribute_to_histogram_on_event(
         &self,
-        event: DOMString,
-        contribution: Record<DOMString, Any>,
+        event: &str,
+        contribution: &Record<String, Any>,
     ) -> Undefined {
         self.inner
             .call(
@@ -215,7 +215,7 @@ impl PrivateAggregation {
         self.inner.call("enableDebugMode", &[]).as_::<Undefined>()
     }
 
-    pub fn enable_debug_mode1(&self, options: PADebugModeOptions) -> Undefined {
+    pub fn enable_debug_mode1(&self, options: &PADebugModeOptions) -> Undefined {
         self.inner
             .call("enableDebugMode", &[options.into()])
             .as_::<Undefined>()

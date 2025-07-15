@@ -89,7 +89,7 @@ impl ScreenDetailed {
     }
 }
 impl ScreenDetailed {
-    pub fn label(&self) -> DOMString {
-        self.inner.get("label").as_::<DOMString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 }

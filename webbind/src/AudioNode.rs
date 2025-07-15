@@ -54,20 +54,20 @@ impl From<&AudioNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(AudioNode);
 
 impl AudioNode {
-    pub fn connect0(&self, destination_param: AudioParam) -> Undefined {
+    pub fn connect0(&self, destination_param: &AudioParam) -> Undefined {
         self.inner
             .call("connect", &[destination_param.into()])
             .as_::<Undefined>()
     }
 
-    pub fn connect1(&self, destination_param: AudioParam, output: u32) -> Undefined {
+    pub fn connect1(&self, destination_param: &AudioParam, output: u32) -> Undefined {
         self.inner
             .call("connect", &[destination_param.into(), output.into()])
             .as_::<Undefined>()
     }
 }
 impl AudioNode {
-    pub fn disconnect(&self, destination_param: AudioParam, output: u32) -> Undefined {
+    pub fn disconnect(&self, destination_param: &AudioParam, output: u32) -> Undefined {
         self.inner
             .call("disconnect", &[destination_param.into(), output.into()])
             .as_::<Undefined>()
@@ -102,7 +102,7 @@ impl AudioNode {
         self.inner.get("channelCountMode").as_::<ChannelCountMode>()
     }
 
-    pub fn set_channel_count_mode(&mut self, value: ChannelCountMode) {
+    pub fn set_channel_count_mode(&mut self, value: &ChannelCountMode) {
         self.inner.set("channelCountMode", value);
     }
 }
@@ -113,7 +113,7 @@ impl AudioNode {
             .as_::<ChannelInterpretation>()
     }
 
-    pub fn set_channel_interpretation(&mut self, value: ChannelInterpretation) {
+    pub fn set_channel_interpretation(&mut self, value: &ChannelInterpretation) {
         self.inner.set("channelInterpretation", value);
     }
 }

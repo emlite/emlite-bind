@@ -55,7 +55,7 @@ jsbind::utils::impl_dyn_cast!(USBIsochronousInTransferResult);
 
 impl USBIsochronousInTransferResult {
     pub fn new0(
-        packets: Sequence<USBIsochronousInTransferPacket>,
+        packets: &Sequence<USBIsochronousInTransferPacket>,
     ) -> USBIsochronousInTransferResult {
         Self {
             inner: emlite::Val::global("USBIsochronousInTransferResult")
@@ -65,8 +65,8 @@ impl USBIsochronousInTransferResult {
     }
 
     pub fn new1(
-        packets: Sequence<USBIsochronousInTransferPacket>,
-        data: DataView,
+        packets: &Sequence<USBIsochronousInTransferPacket>,
+        data: &DataView,
     ) -> USBIsochronousInTransferResult {
         Self {
             inner: emlite::Val::global("USBIsochronousInTransferResult")

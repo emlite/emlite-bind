@@ -54,7 +54,7 @@ impl From<&FontFace> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(FontFace);
 
 impl FontFace {
-    pub fn new0(family: CSSOMString, source: Any) -> FontFace {
+    pub fn new0(family: &str, source: &Any) -> FontFace {
         Self {
             inner: emlite::Val::global("FontFace")
                 .new(&[family.into(), source.into()])
@@ -62,7 +62,7 @@ impl FontFace {
         }
     }
 
-    pub fn new1(family: CSSOMString, source: Any, descriptors: Any) -> FontFace {
+    pub fn new1(family: &str, source: &Any, descriptors: &Any) -> FontFace {
         Self {
             inner: emlite::Val::global("FontFace")
                 .new(&[family.into(), source.into(), descriptors.into()])
@@ -71,101 +71,101 @@ impl FontFace {
     }
 }
 impl FontFace {
-    pub fn family(&self) -> CSSOMString {
-        self.inner.get("family").as_::<CSSOMString>()
+    pub fn family(&self) -> String {
+        self.inner.get("family").as_::<String>()
     }
 
-    pub fn set_family(&mut self, value: CSSOMString) {
+    pub fn set_family(&mut self, value: &str) {
         self.inner.set("family", value);
     }
 }
 impl FontFace {
-    pub fn style(&self) -> CSSOMString {
-        self.inner.get("style").as_::<CSSOMString>()
+    pub fn style(&self) -> String {
+        self.inner.get("style").as_::<String>()
     }
 
-    pub fn set_style(&mut self, value: CSSOMString) {
+    pub fn set_style(&mut self, value: &str) {
         self.inner.set("style", value);
     }
 }
 impl FontFace {
-    pub fn weight(&self) -> CSSOMString {
-        self.inner.get("weight").as_::<CSSOMString>()
+    pub fn weight(&self) -> String {
+        self.inner.get("weight").as_::<String>()
     }
 
-    pub fn set_weight(&mut self, value: CSSOMString) {
+    pub fn set_weight(&mut self, value: &str) {
         self.inner.set("weight", value);
     }
 }
 impl FontFace {
-    pub fn stretch(&self) -> CSSOMString {
-        self.inner.get("stretch").as_::<CSSOMString>()
+    pub fn stretch(&self) -> String {
+        self.inner.get("stretch").as_::<String>()
     }
 
-    pub fn set_stretch(&mut self, value: CSSOMString) {
+    pub fn set_stretch(&mut self, value: &str) {
         self.inner.set("stretch", value);
     }
 }
 impl FontFace {
-    pub fn unicode_range(&self) -> CSSOMString {
-        self.inner.get("unicodeRange").as_::<CSSOMString>()
+    pub fn unicode_range(&self) -> String {
+        self.inner.get("unicodeRange").as_::<String>()
     }
 
-    pub fn set_unicode_range(&mut self, value: CSSOMString) {
+    pub fn set_unicode_range(&mut self, value: &str) {
         self.inner.set("unicodeRange", value);
     }
 }
 impl FontFace {
-    pub fn feature_settings(&self) -> CSSOMString {
-        self.inner.get("featureSettings").as_::<CSSOMString>()
+    pub fn feature_settings(&self) -> String {
+        self.inner.get("featureSettings").as_::<String>()
     }
 
-    pub fn set_feature_settings(&mut self, value: CSSOMString) {
+    pub fn set_feature_settings(&mut self, value: &str) {
         self.inner.set("featureSettings", value);
     }
 }
 impl FontFace {
-    pub fn variation_settings(&self) -> CSSOMString {
-        self.inner.get("variationSettings").as_::<CSSOMString>()
+    pub fn variation_settings(&self) -> String {
+        self.inner.get("variationSettings").as_::<String>()
     }
 
-    pub fn set_variation_settings(&mut self, value: CSSOMString) {
+    pub fn set_variation_settings(&mut self, value: &str) {
         self.inner.set("variationSettings", value);
     }
 }
 impl FontFace {
-    pub fn display(&self) -> CSSOMString {
-        self.inner.get("display").as_::<CSSOMString>()
+    pub fn display(&self) -> String {
+        self.inner.get("display").as_::<String>()
     }
 
-    pub fn set_display(&mut self, value: CSSOMString) {
+    pub fn set_display(&mut self, value: &str) {
         self.inner.set("display", value);
     }
 }
 impl FontFace {
-    pub fn ascent_override(&self) -> CSSOMString {
-        self.inner.get("ascentOverride").as_::<CSSOMString>()
+    pub fn ascent_override(&self) -> String {
+        self.inner.get("ascentOverride").as_::<String>()
     }
 
-    pub fn set_ascent_override(&mut self, value: CSSOMString) {
+    pub fn set_ascent_override(&mut self, value: &str) {
         self.inner.set("ascentOverride", value);
     }
 }
 impl FontFace {
-    pub fn descent_override(&self) -> CSSOMString {
-        self.inner.get("descentOverride").as_::<CSSOMString>()
+    pub fn descent_override(&self) -> String {
+        self.inner.get("descentOverride").as_::<String>()
     }
 
-    pub fn set_descent_override(&mut self, value: CSSOMString) {
+    pub fn set_descent_override(&mut self, value: &str) {
         self.inner.set("descentOverride", value);
     }
 }
 impl FontFace {
-    pub fn line_gap_override(&self) -> CSSOMString {
-        self.inner.get("lineGapOverride").as_::<CSSOMString>()
+    pub fn line_gap_override(&self) -> String {
+        self.inner.get("lineGapOverride").as_::<String>()
     }
 
-    pub fn set_line_gap_override(&mut self, value: CSSOMString) {
+    pub fn set_line_gap_override(&mut self, value: &str) {
         self.inner.set("lineGapOverride", value);
     }
 }

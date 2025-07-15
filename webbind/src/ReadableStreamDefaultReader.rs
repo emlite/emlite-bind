@@ -55,7 +55,7 @@ impl ReadableStreamReadResult {
         self.inner.get("value").as_::<Any>()
     }
 
-    pub fn set_value(&mut self, value: Any) {
+    pub fn set_value(&mut self, value: &Any) {
         self.inner.set("value", value);
     }
 }
@@ -122,7 +122,7 @@ impl From<&ReadableStreamDefaultReader> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(ReadableStreamDefaultReader);
 
 impl ReadableStreamDefaultReader {
-    pub fn new(stream: ReadableStream) -> ReadableStreamDefaultReader {
+    pub fn new(stream: &ReadableStream) -> ReadableStreamDefaultReader {
         Self {
             inner: emlite::Val::global("ReadableStreamDefaultReader")
                 .new(&[stream.into()])
@@ -150,7 +150,7 @@ impl ReadableStreamDefaultReader {
         self.inner.call("cancel", &[]).as_::<Promise>()
     }
 
-    pub fn cancel1(&self, reason: Any) -> Promise {
+    pub fn cancel1(&self, reason: &Any) -> Promise {
         self.inner.call("cancel", &[reason.into()]).as_::<Promise>()
     }
 }

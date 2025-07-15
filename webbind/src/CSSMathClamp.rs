@@ -54,7 +54,7 @@ impl From<&CSSMathClamp> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSMathClamp);
 
 impl CSSMathClamp {
-    pub fn new(lower: Any, value: Any, upper: Any) -> CSSMathClamp {
+    pub fn new(lower: &Any, value: &Any, upper: &Any) -> CSSMathClamp {
         Self {
             inner: emlite::Val::global("CSSMathClamp")
                 .new(&[lower.into(), value.into(), upper.into()])

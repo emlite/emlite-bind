@@ -54,7 +54,7 @@ impl From<&XRInputSourcesChangeEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(XRInputSourcesChangeEvent);
 
 impl XRInputSourcesChangeEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> XRInputSourcesChangeEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> XRInputSourcesChangeEvent {
         Self {
             inner: emlite::Val::global("XRInputSourcesChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

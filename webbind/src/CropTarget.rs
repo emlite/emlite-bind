@@ -54,7 +54,7 @@ impl From<&CropTarget> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CropTarget);
 
 impl CropTarget {
-    pub fn from_element(element: Element) -> Promise {
+    pub fn from_element(element: &Element) -> Promise {
         emlite::Val::global("CropTarget")
             .call("fromElement", &[element.into()])
             .as_::<Promise>()

@@ -54,7 +54,7 @@ impl From<&PortalActivateEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PortalActivateEvent);
 
 impl PortalActivateEvent {
-    pub fn new0(type_: DOMString) -> PortalActivateEvent {
+    pub fn new0(type_: &str) -> PortalActivateEvent {
         Self {
             inner: emlite::Val::global("PortalActivateEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl PortalActivateEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> PortalActivateEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> PortalActivateEvent {
         Self {
             inner: emlite::Val::global("PortalActivateEvent")
                 .new(&[type_.into(), event_init_dict.into()])

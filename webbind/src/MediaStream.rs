@@ -54,7 +54,7 @@ impl From<&MediaStream> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MediaStream);
 
 impl MediaStream {
-    pub fn new(tracks: Sequence<MediaStreamTrack>) -> MediaStream {
+    pub fn new(tracks: &Sequence<MediaStreamTrack>) -> MediaStream {
         Self {
             inner: emlite::Val::global("MediaStream")
                 .new(&[tracks.into()])
@@ -63,8 +63,8 @@ impl MediaStream {
     }
 }
 impl MediaStream {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl MediaStream {
@@ -89,21 +89,21 @@ impl MediaStream {
     }
 }
 impl MediaStream {
-    pub fn get_track_by_id(&self, track_id: DOMString) -> MediaStreamTrack {
+    pub fn get_track_by_id(&self, track_id: &str) -> MediaStreamTrack {
         self.inner
             .call("getTrackById", &[track_id.into()])
             .as_::<MediaStreamTrack>()
     }
 }
 impl MediaStream {
-    pub fn add_track(&self, track: MediaStreamTrack) -> Undefined {
+    pub fn add_track(&self, track: &MediaStreamTrack) -> Undefined {
         self.inner
             .call("addTrack", &[track.into()])
             .as_::<Undefined>()
     }
 }
 impl MediaStream {
-    pub fn remove_track(&self, track: MediaStreamTrack) -> Undefined {
+    pub fn remove_track(&self, track: &MediaStreamTrack) -> Undefined {
         self.inner
             .call("removeTrack", &[track.into()])
             .as_::<Undefined>()
@@ -124,7 +124,7 @@ impl MediaStream {
         self.inner.get("onaddtrack").as_::<Any>()
     }
 
-    pub fn set_onaddtrack(&mut self, value: Any) {
+    pub fn set_onaddtrack(&mut self, value: &Any) {
         self.inner.set("onaddtrack", value);
     }
 }
@@ -133,7 +133,7 @@ impl MediaStream {
         self.inner.get("onremovetrack").as_::<Any>()
     }
 
-    pub fn set_onremovetrack(&mut self, value: Any) {
+    pub fn set_onremovetrack(&mut self, value: &Any) {
         self.inner.set("onremovetrack", value);
     }
 }

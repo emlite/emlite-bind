@@ -54,7 +54,7 @@ impl From<&XRReferenceSpace> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(XRReferenceSpace);
 
 impl XRReferenceSpace {
-    pub fn get_offset_reference_space(&self, origin_offset: XRRigidTransform) -> XRReferenceSpace {
+    pub fn get_offset_reference_space(&self, origin_offset: &XRRigidTransform) -> XRReferenceSpace {
         self.inner
             .call("getOffsetReferenceSpace", &[origin_offset.into()])
             .as_::<XRReferenceSpace>()
@@ -65,7 +65,7 @@ impl XRReferenceSpace {
         self.inner.get("onreset").as_::<Any>()
     }
 
-    pub fn set_onreset(&mut self, value: Any) {
+    pub fn set_onreset(&mut self, value: &Any) {
         self.inner.set("onreset", value);
     }
 }

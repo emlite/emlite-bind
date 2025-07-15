@@ -84,7 +84,7 @@ impl HIDCollectionInfo {
             .as_::<Sequence<HIDCollectionInfo>>()
     }
 
-    pub fn set_children(&mut self, value: Sequence<HIDCollectionInfo>) {
+    pub fn set_children(&mut self, value: &Sequence<HIDCollectionInfo>) {
         self.inner.set("children", value);
     }
 }
@@ -93,7 +93,7 @@ impl HIDCollectionInfo {
         self.inner.get("inputReports").as_::<Sequence<Any>>()
     }
 
-    pub fn set_input_reports(&mut self, value: Sequence<Any>) {
+    pub fn set_input_reports(&mut self, value: &Sequence<Any>) {
         self.inner.set("inputReports", value);
     }
 }
@@ -102,7 +102,7 @@ impl HIDCollectionInfo {
         self.inner.get("outputReports").as_::<Sequence<Any>>()
     }
 
-    pub fn set_output_reports(&mut self, value: Sequence<Any>) {
+    pub fn set_output_reports(&mut self, value: &Sequence<Any>) {
         self.inner.set("outputReports", value);
     }
 }
@@ -111,7 +111,7 @@ impl HIDCollectionInfo {
         self.inner.get("featureReports").as_::<Sequence<Any>>()
     }
 
-    pub fn set_feature_reports(&mut self, value: Sequence<Any>) {
+    pub fn set_feature_reports(&mut self, value: &Sequence<Any>) {
         self.inner.set("featureReports", value);
     }
 }
@@ -173,7 +173,7 @@ impl HIDDevice {
         self.inner.get("oninputreport").as_::<Any>()
     }
 
-    pub fn set_oninputreport(&mut self, value: Any) {
+    pub fn set_oninputreport(&mut self, value: &Any) {
         self.inner.set("oninputreport", value);
     }
 }
@@ -193,8 +193,8 @@ impl HIDDevice {
     }
 }
 impl HIDDevice {
-    pub fn product_name(&self) -> DOMString {
-        self.inner.get("productName").as_::<DOMString>()
+    pub fn product_name(&self) -> String {
+        self.inner.get("productName").as_::<String>()
     }
 }
 impl HIDDevice {
@@ -220,14 +220,14 @@ impl HIDDevice {
     }
 }
 impl HIDDevice {
-    pub fn send_report(&self, report_id: u8, data: Any) -> Promise {
+    pub fn send_report(&self, report_id: u8, data: &Any) -> Promise {
         self.inner
             .call("sendReport", &[report_id.into(), data.into()])
             .as_::<Promise>()
     }
 }
 impl HIDDevice {
-    pub fn send_feature_report(&self, report_id: u8, data: Any) -> Promise {
+    pub fn send_feature_report(&self, report_id: u8, data: &Any) -> Promise {
         self.inner
             .call("sendFeatureReport", &[report_id.into(), data.into()])
             .as_::<Promise>()

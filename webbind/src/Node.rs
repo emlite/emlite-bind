@@ -118,13 +118,13 @@ impl Node {
     }
 }
 impl Node {
-    pub fn node_name(&self) -> DOMString {
-        self.inner.get("nodeName").as_::<DOMString>()
+    pub fn node_name(&self) -> String {
+        self.inner.get("nodeName").as_::<String>()
     }
 }
 impl Node {
-    pub fn base_uri(&self) -> USVString {
-        self.inner.get("baseURI").as_::<USVString>()
+    pub fn base_uri(&self) -> String {
+        self.inner.get("baseURI").as_::<String>()
     }
 }
 impl Node {
@@ -142,7 +142,7 @@ impl Node {
         self.inner.call("getRootNode", &[]).as_::<Node>()
     }
 
-    pub fn get_root_node1(&self, options: GetRootNodeOptions) -> Node {
+    pub fn get_root_node1(&self, options: &GetRootNodeOptions) -> Node {
         self.inner
             .call("getRootNode", &[options.into()])
             .as_::<Node>()
@@ -189,20 +189,20 @@ impl Node {
     }
 }
 impl Node {
-    pub fn node_value(&self) -> DOMString {
-        self.inner.get("nodeValue").as_::<DOMString>()
+    pub fn node_value(&self) -> String {
+        self.inner.get("nodeValue").as_::<String>()
     }
 
-    pub fn set_node_value(&mut self, value: DOMString) {
+    pub fn set_node_value(&mut self, value: &str) {
         self.inner.set("nodeValue", value);
     }
 }
 impl Node {
-    pub fn text_content(&self) -> DOMString {
-        self.inner.get("textContent").as_::<DOMString>()
+    pub fn text_content(&self) -> String {
+        self.inner.get("textContent").as_::<String>()
     }
 
-    pub fn set_text_content(&mut self, value: DOMString) {
+    pub fn set_text_content(&mut self, value: &str) {
         self.inner.set("textContent", value);
     }
 }
@@ -223,73 +223,73 @@ impl Node {
     }
 }
 impl Node {
-    pub fn is_equal_node(&self, other_node: Node) -> bool {
+    pub fn is_equal_node(&self, other_node: &Node) -> bool {
         self.inner
             .call("isEqualNode", &[other_node.into()])
             .as_::<bool>()
     }
 }
 impl Node {
-    pub fn is_same_node(&self, other_node: Node) -> bool {
+    pub fn is_same_node(&self, other_node: &Node) -> bool {
         self.inner
             .call("isSameNode", &[other_node.into()])
             .as_::<bool>()
     }
 }
 impl Node {
-    pub fn compare_document_position(&self, other: Node) -> u16 {
+    pub fn compare_document_position(&self, other: &Node) -> u16 {
         self.inner
             .call("compareDocumentPosition", &[other.into()])
             .as_::<u16>()
     }
 }
 impl Node {
-    pub fn contains(&self, other: Node) -> bool {
+    pub fn contains(&self, other: &Node) -> bool {
         self.inner.call("contains", &[other.into()]).as_::<bool>()
     }
 }
 impl Node {
-    pub fn lookup_prefix(&self, namespace: DOMString) -> DOMString {
+    pub fn lookup_prefix(&self, namespace: &str) -> String {
         self.inner
             .call("lookupPrefix", &[namespace.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl Node {
-    pub fn lookup_namespace_uri(&self, prefix: DOMString) -> DOMString {
+    pub fn lookup_namespace_uri(&self, prefix: &str) -> String {
         self.inner
             .call("lookupNamespaceURI", &[prefix.into()])
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl Node {
-    pub fn is_default_namespace(&self, namespace: DOMString) -> bool {
+    pub fn is_default_namespace(&self, namespace: &str) -> bool {
         self.inner
             .call("isDefaultNamespace", &[namespace.into()])
             .as_::<bool>()
     }
 }
 impl Node {
-    pub fn insert_before(&self, node: Node, child: Node) -> Node {
+    pub fn insert_before(&self, node: &Node, child: &Node) -> Node {
         self.inner
             .call("insertBefore", &[node.into(), child.into()])
             .as_::<Node>()
     }
 }
 impl Node {
-    pub fn append_child(&self, node: Node) -> Node {
+    pub fn append_child(&self, node: &Node) -> Node {
         self.inner.call("appendChild", &[node.into()]).as_::<Node>()
     }
 }
 impl Node {
-    pub fn replace_child(&self, node: Node, child: Node) -> Node {
+    pub fn replace_child(&self, node: &Node, child: &Node) -> Node {
         self.inner
             .call("replaceChild", &[node.into(), child.into()])
             .as_::<Node>()
     }
 }
 impl Node {
-    pub fn remove_child(&self, child: Node) -> Node {
+    pub fn remove_child(&self, child: &Node) -> Node {
         self.inner
             .call("removeChild", &[child.into()])
             .as_::<Node>()

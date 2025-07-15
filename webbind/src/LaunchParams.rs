@@ -54,8 +54,8 @@ impl From<&LaunchParams> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(LaunchParams);
 
 impl LaunchParams {
-    pub fn target_url(&self) -> DOMString {
-        self.inner.get("targetURL").as_::<DOMString>()
+    pub fn target_url(&self) -> String {
+        self.inner.get("targetURL").as_::<String>()
     }
 }
 impl LaunchParams {

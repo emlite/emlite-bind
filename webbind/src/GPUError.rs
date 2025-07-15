@@ -54,7 +54,7 @@ impl From<&GPUError> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(GPUError);
 
 impl GPUError {
-    pub fn message(&self) -> DOMString {
-        self.inner.get("message").as_::<DOMString>()
+    pub fn message(&self) -> String {
+        self.inner.get("message").as_::<String>()
     }
 }

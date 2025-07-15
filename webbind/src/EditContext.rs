@@ -62,7 +62,7 @@ impl EditContext {
         }
     }
 
-    pub fn new1(options: Any) -> EditContext {
+    pub fn new1(options: &Any) -> EditContext {
         Self {
             inner: emlite::Val::global("EditContext")
                 .new(&[options.into()])
@@ -71,7 +71,7 @@ impl EditContext {
     }
 }
 impl EditContext {
-    pub fn update_text(&self, range_start: u32, range_end: u32, text: DOMString) -> Undefined {
+    pub fn update_text(&self, range_start: u32, range_end: u32, text: &str) -> Undefined {
         self.inner
             .call(
                 "updateText",
@@ -88,14 +88,14 @@ impl EditContext {
     }
 }
 impl EditContext {
-    pub fn update_control_bounds(&self, control_bounds: DOMRect) -> Undefined {
+    pub fn update_control_bounds(&self, control_bounds: &DOMRect) -> Undefined {
         self.inner
             .call("updateControlBounds", &[control_bounds.into()])
             .as_::<Undefined>()
     }
 }
 impl EditContext {
-    pub fn update_selection_bounds(&self, selection_bounds: DOMRect) -> Undefined {
+    pub fn update_selection_bounds(&self, selection_bounds: &DOMRect) -> Undefined {
         self.inner
             .call("updateSelectionBounds", &[selection_bounds.into()])
             .as_::<Undefined>()
@@ -105,7 +105,7 @@ impl EditContext {
     pub fn update_character_bounds(
         &self,
         range_start: u32,
-        character_bounds: Sequence<DOMRect>,
+        character_bounds: &Sequence<DOMRect>,
     ) -> Undefined {
         self.inner
             .call(
@@ -123,8 +123,8 @@ impl EditContext {
     }
 }
 impl EditContext {
-    pub fn text(&self) -> DOMString {
-        self.inner.get("text").as_::<DOMString>()
+    pub fn text(&self) -> String {
+        self.inner.get("text").as_::<String>()
     }
 }
 impl EditContext {
@@ -154,7 +154,7 @@ impl EditContext {
         self.inner.get("ontextupdate").as_::<Any>()
     }
 
-    pub fn set_ontextupdate(&mut self, value: Any) {
+    pub fn set_ontextupdate(&mut self, value: &Any) {
         self.inner.set("ontextupdate", value);
     }
 }
@@ -163,7 +163,7 @@ impl EditContext {
         self.inner.get("ontextformatupdate").as_::<Any>()
     }
 
-    pub fn set_ontextformatupdate(&mut self, value: Any) {
+    pub fn set_ontextformatupdate(&mut self, value: &Any) {
         self.inner.set("ontextformatupdate", value);
     }
 }
@@ -172,7 +172,7 @@ impl EditContext {
         self.inner.get("oncharacterboundsupdate").as_::<Any>()
     }
 
-    pub fn set_oncharacterboundsupdate(&mut self, value: Any) {
+    pub fn set_oncharacterboundsupdate(&mut self, value: &Any) {
         self.inner.set("oncharacterboundsupdate", value);
     }
 }
@@ -181,7 +181,7 @@ impl EditContext {
         self.inner.get("oncompositionstart").as_::<Any>()
     }
 
-    pub fn set_oncompositionstart(&mut self, value: Any) {
+    pub fn set_oncompositionstart(&mut self, value: &Any) {
         self.inner.set("oncompositionstart", value);
     }
 }
@@ -190,7 +190,7 @@ impl EditContext {
         self.inner.get("oncompositionend").as_::<Any>()
     }
 
-    pub fn set_oncompositionend(&mut self, value: Any) {
+    pub fn set_oncompositionend(&mut self, value: &Any) {
         self.inner.set("oncompositionend", value);
     }
 }

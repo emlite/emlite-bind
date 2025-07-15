@@ -63,38 +63,38 @@ impl HTMLMarqueeElement {
     }
 }
 impl HTMLMarqueeElement {
-    pub fn behavior(&self) -> DOMString {
-        self.inner.get("behavior").as_::<DOMString>()
+    pub fn behavior(&self) -> String {
+        self.inner.get("behavior").as_::<String>()
     }
 
-    pub fn set_behavior(&mut self, value: DOMString) {
+    pub fn set_behavior(&mut self, value: &str) {
         self.inner.set("behavior", value);
     }
 }
 impl HTMLMarqueeElement {
-    pub fn bg_color(&self) -> DOMString {
-        self.inner.get("bgColor").as_::<DOMString>()
+    pub fn bg_color(&self) -> String {
+        self.inner.get("bgColor").as_::<String>()
     }
 
-    pub fn set_bg_color(&mut self, value: DOMString) {
+    pub fn set_bg_color(&mut self, value: &str) {
         self.inner.set("bgColor", value);
     }
 }
 impl HTMLMarqueeElement {
-    pub fn direction(&self) -> DOMString {
-        self.inner.get("direction").as_::<DOMString>()
+    pub fn direction(&self) -> String {
+        self.inner.get("direction").as_::<String>()
     }
 
-    pub fn set_direction(&mut self, value: DOMString) {
+    pub fn set_direction(&mut self, value: &str) {
         self.inner.set("direction", value);
     }
 }
 impl HTMLMarqueeElement {
-    pub fn height(&self) -> DOMString {
-        self.inner.get("height").as_::<DOMString>()
+    pub fn height(&self) -> String {
+        self.inner.get("height").as_::<String>()
     }
 
-    pub fn set_height(&mut self, value: DOMString) {
+    pub fn set_height(&mut self, value: &str) {
         self.inner.set("height", value);
     }
 }
@@ -153,11 +153,11 @@ impl HTMLMarqueeElement {
     }
 }
 impl HTMLMarqueeElement {
-    pub fn width(&self) -> DOMString {
-        self.inner.get("width").as_::<DOMString>()
+    pub fn width(&self) -> String {
+        self.inner.get("width").as_::<String>()
     }
 
-    pub fn set_width(&mut self, value: DOMString) {
+    pub fn set_width(&mut self, value: &str) {
         self.inner.set("width", value);
     }
 }

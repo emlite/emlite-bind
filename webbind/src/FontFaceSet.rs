@@ -54,12 +54,12 @@ impl From<&FontFaceSet> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(FontFaceSet);
 
 impl FontFaceSet {
-    pub fn add(&self, font: FontFace) -> FontFaceSet {
+    pub fn add(&self, font: &FontFace) -> FontFaceSet {
         self.inner.call("add", &[font.into()]).as_::<FontFaceSet>()
     }
 }
 impl FontFaceSet {
-    pub fn delete(&self, font: FontFace) -> bool {
+    pub fn delete(&self, font: &FontFace) -> bool {
         self.inner.call("delete", &[font.into()]).as_::<bool>()
     }
 }
@@ -73,7 +73,7 @@ impl FontFaceSet {
         self.inner.get("onloading").as_::<Any>()
     }
 
-    pub fn set_onloading(&mut self, value: Any) {
+    pub fn set_onloading(&mut self, value: &Any) {
         self.inner.set("onloading", value);
     }
 }
@@ -82,7 +82,7 @@ impl FontFaceSet {
         self.inner.get("onloadingdone").as_::<Any>()
     }
 
-    pub fn set_onloadingdone(&mut self, value: Any) {
+    pub fn set_onloadingdone(&mut self, value: &Any) {
         self.inner.set("onloadingdone", value);
     }
 }
@@ -91,27 +91,27 @@ impl FontFaceSet {
         self.inner.get("onloadingerror").as_::<Any>()
     }
 
-    pub fn set_onloadingerror(&mut self, value: Any) {
+    pub fn set_onloadingerror(&mut self, value: &Any) {
         self.inner.set("onloadingerror", value);
     }
 }
 impl FontFaceSet {
-    pub fn load0(&self, font: CSSOMString) -> Promise {
+    pub fn load0(&self, font: &str) -> Promise {
         self.inner.call("load", &[font.into()]).as_::<Promise>()
     }
 
-    pub fn load1(&self, font: CSSOMString, text: CSSOMString) -> Promise {
+    pub fn load1(&self, font: &str, text: &str) -> Promise {
         self.inner
             .call("load", &[font.into(), text.into()])
             .as_::<Promise>()
     }
 }
 impl FontFaceSet {
-    pub fn check0(&self, font: CSSOMString) -> bool {
+    pub fn check0(&self, font: &str) -> bool {
         self.inner.call("check", &[font.into()]).as_::<bool>()
     }
 
-    pub fn check1(&self, font: CSSOMString, text: CSSOMString) -> bool {
+    pub fn check1(&self, font: &str, text: &str) -> bool {
         self.inner
             .call("check", &[font.into(), text.into()])
             .as_::<bool>()

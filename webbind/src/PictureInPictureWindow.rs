@@ -68,7 +68,7 @@ impl PictureInPictureWindow {
         self.inner.get("onresize").as_::<Any>()
     }
 
-    pub fn set_onresize(&mut self, value: Any) {
+    pub fn set_onresize(&mut self, value: &Any) {
         self.inner.set("onresize", value);
     }
 }

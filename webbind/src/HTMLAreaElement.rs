@@ -63,65 +63,65 @@ impl HTMLAreaElement {
     }
 }
 impl HTMLAreaElement {
-    pub fn alt(&self) -> DOMString {
-        self.inner.get("alt").as_::<DOMString>()
+    pub fn alt(&self) -> String {
+        self.inner.get("alt").as_::<String>()
     }
 
-    pub fn set_alt(&mut self, value: DOMString) {
+    pub fn set_alt(&mut self, value: &str) {
         self.inner.set("alt", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn coords(&self) -> DOMString {
-        self.inner.get("coords").as_::<DOMString>()
+    pub fn coords(&self) -> String {
+        self.inner.get("coords").as_::<String>()
     }
 
-    pub fn set_coords(&mut self, value: DOMString) {
+    pub fn set_coords(&mut self, value: &str) {
         self.inner.set("coords", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn shape(&self) -> DOMString {
-        self.inner.get("shape").as_::<DOMString>()
+    pub fn shape(&self) -> String {
+        self.inner.get("shape").as_::<String>()
     }
 
-    pub fn set_shape(&mut self, value: DOMString) {
+    pub fn set_shape(&mut self, value: &str) {
         self.inner.set("shape", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn target(&self) -> DOMString {
-        self.inner.get("target").as_::<DOMString>()
+    pub fn target(&self) -> String {
+        self.inner.get("target").as_::<String>()
     }
 
-    pub fn set_target(&mut self, value: DOMString) {
+    pub fn set_target(&mut self, value: &str) {
         self.inner.set("target", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn download(&self) -> DOMString {
-        self.inner.get("download").as_::<DOMString>()
+    pub fn download(&self) -> String {
+        self.inner.get("download").as_::<String>()
     }
 
-    pub fn set_download(&mut self, value: DOMString) {
+    pub fn set_download(&mut self, value: &str) {
         self.inner.set("download", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn ping(&self) -> USVString {
-        self.inner.get("ping").as_::<USVString>()
+    pub fn ping(&self) -> String {
+        self.inner.get("ping").as_::<String>()
     }
 
-    pub fn set_ping(&mut self, value: USVString) {
+    pub fn set_ping(&mut self, value: &str) {
         self.inner.set("ping", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn rel(&self) -> DOMString {
-        self.inner.get("rel").as_::<DOMString>()
+    pub fn rel(&self) -> String {
+        self.inner.get("rel").as_::<String>()
     }
 
-    pub fn set_rel(&mut self, value: DOMString) {
+    pub fn set_rel(&mut self, value: &str) {
         self.inner.set("rel", value);
     }
 }
@@ -131,11 +131,11 @@ impl HTMLAreaElement {
     }
 }
 impl HTMLAreaElement {
-    pub fn referrer_policy(&self) -> DOMString {
-        self.inner.get("referrerPolicy").as_::<DOMString>()
+    pub fn referrer_policy(&self) -> String {
+        self.inner.get("referrerPolicy").as_::<String>()
     }
 
-    pub fn set_referrer_policy(&mut self, value: DOMString) {
+    pub fn set_referrer_policy(&mut self, value: &str) {
         self.inner.set("referrerPolicy", value);
     }
 }
@@ -149,106 +149,106 @@ impl HTMLAreaElement {
     }
 }
 impl HTMLAreaElement {
-    pub fn attribution_src(&self) -> USVString {
-        self.inner.get("attributionSrc").as_::<USVString>()
+    pub fn attribution_src(&self) -> String {
+        self.inner.get("attributionSrc").as_::<String>()
     }
 
-    pub fn set_attribution_src(&mut self, value: USVString) {
+    pub fn set_attribution_src(&mut self, value: &str) {
         self.inner.set("attributionSrc", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn href(&self) -> USVString {
-        self.inner.get("href").as_::<USVString>()
+    pub fn href(&self) -> String {
+        self.inner.get("href").as_::<String>()
     }
 
-    pub fn set_href(&mut self, value: USVString) {
+    pub fn set_href(&mut self, value: &str) {
         self.inner.set("href", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn origin(&self) -> USVString {
-        self.inner.get("origin").as_::<USVString>()
+    pub fn origin(&self) -> String {
+        self.inner.get("origin").as_::<String>()
     }
 }
 impl HTMLAreaElement {
-    pub fn protocol(&self) -> USVString {
-        self.inner.get("protocol").as_::<USVString>()
+    pub fn protocol(&self) -> String {
+        self.inner.get("protocol").as_::<String>()
     }
 
-    pub fn set_protocol(&mut self, value: USVString) {
+    pub fn set_protocol(&mut self, value: &str) {
         self.inner.set("protocol", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn username(&self) -> USVString {
-        self.inner.get("username").as_::<USVString>()
+    pub fn username(&self) -> String {
+        self.inner.get("username").as_::<String>()
     }
 
-    pub fn set_username(&mut self, value: USVString) {
+    pub fn set_username(&mut self, value: &str) {
         self.inner.set("username", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn password(&self) -> USVString {
-        self.inner.get("password").as_::<USVString>()
+    pub fn password(&self) -> String {
+        self.inner.get("password").as_::<String>()
     }
 
-    pub fn set_password(&mut self, value: USVString) {
+    pub fn set_password(&mut self, value: &str) {
         self.inner.set("password", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn host(&self) -> USVString {
-        self.inner.get("host").as_::<USVString>()
+    pub fn host(&self) -> String {
+        self.inner.get("host").as_::<String>()
     }
 
-    pub fn set_host(&mut self, value: USVString) {
+    pub fn set_host(&mut self, value: &str) {
         self.inner.set("host", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn hostname(&self) -> USVString {
-        self.inner.get("hostname").as_::<USVString>()
+    pub fn hostname(&self) -> String {
+        self.inner.get("hostname").as_::<String>()
     }
 
-    pub fn set_hostname(&mut self, value: USVString) {
+    pub fn set_hostname(&mut self, value: &str) {
         self.inner.set("hostname", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn port(&self) -> USVString {
-        self.inner.get("port").as_::<USVString>()
+    pub fn port(&self) -> String {
+        self.inner.get("port").as_::<String>()
     }
 
-    pub fn set_port(&mut self, value: USVString) {
+    pub fn set_port(&mut self, value: &str) {
         self.inner.set("port", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn pathname(&self) -> USVString {
-        self.inner.get("pathname").as_::<USVString>()
+    pub fn pathname(&self) -> String {
+        self.inner.get("pathname").as_::<String>()
     }
 
-    pub fn set_pathname(&mut self, value: USVString) {
+    pub fn set_pathname(&mut self, value: &str) {
         self.inner.set("pathname", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn search(&self) -> USVString {
-        self.inner.get("search").as_::<USVString>()
+    pub fn search(&self) -> String {
+        self.inner.get("search").as_::<String>()
     }
 
-    pub fn set_search(&mut self, value: USVString) {
+    pub fn set_search(&mut self, value: &str) {
         self.inner.set("search", value);
     }
 }
 impl HTMLAreaElement {
-    pub fn hash(&self) -> USVString {
-        self.inner.get("hash").as_::<USVString>()
+    pub fn hash(&self) -> String {
+        self.inner.get("hash").as_::<String>()
     }
 
-    pub fn set_hash(&mut self, value: USVString) {
+    pub fn set_hash(&mut self, value: &str) {
         self.inner.set("hash", value);
     }
 }

@@ -59,7 +59,7 @@ impl AudioTrackList {
     }
 }
 impl AudioTrackList {
-    pub fn get_track_by_id(&self, id: DOMString) -> AudioTrack {
+    pub fn get_track_by_id(&self, id: &str) -> AudioTrack {
         self.inner
             .call("getTrackById", &[id.into()])
             .as_::<AudioTrack>()
@@ -70,7 +70,7 @@ impl AudioTrackList {
         self.inner.get("onchange").as_::<Any>()
     }
 
-    pub fn set_onchange(&mut self, value: Any) {
+    pub fn set_onchange(&mut self, value: &Any) {
         self.inner.set("onchange", value);
     }
 }
@@ -79,7 +79,7 @@ impl AudioTrackList {
         self.inner.get("onaddtrack").as_::<Any>()
     }
 
-    pub fn set_onaddtrack(&mut self, value: Any) {
+    pub fn set_onaddtrack(&mut self, value: &Any) {
         self.inner.set("onaddtrack", value);
     }
 }
@@ -88,7 +88,7 @@ impl AudioTrackList {
         self.inner.get("onremovetrack").as_::<Any>()
     }
 
-    pub fn set_onremovetrack(&mut self, value: Any) {
+    pub fn set_onremovetrack(&mut self, value: &Any) {
         self.inner.set("onremovetrack", value);
     }
 }

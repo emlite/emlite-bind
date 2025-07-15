@@ -83,7 +83,7 @@ impl Sensor {
         self.inner.get("onreading").as_::<Any>()
     }
 
-    pub fn set_onreading(&mut self, value: Any) {
+    pub fn set_onreading(&mut self, value: &Any) {
         self.inner.set("onreading", value);
     }
 }
@@ -92,7 +92,7 @@ impl Sensor {
         self.inner.get("onactivate").as_::<Any>()
     }
 
-    pub fn set_onactivate(&mut self, value: Any) {
+    pub fn set_onactivate(&mut self, value: &Any) {
         self.inner.set("onactivate", value);
     }
 }
@@ -101,7 +101,7 @@ impl Sensor {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }

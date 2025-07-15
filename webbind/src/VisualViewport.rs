@@ -93,7 +93,7 @@ impl VisualViewport {
         self.inner.get("onresize").as_::<Any>()
     }
 
-    pub fn set_onresize(&mut self, value: Any) {
+    pub fn set_onresize(&mut self, value: &Any) {
         self.inner.set("onresize", value);
     }
 }
@@ -102,7 +102,7 @@ impl VisualViewport {
         self.inner.get("onscroll").as_::<Any>()
     }
 
-    pub fn set_onscroll(&mut self, value: Any) {
+    pub fn set_onscroll(&mut self, value: &Any) {
         self.inner.set("onscroll", value);
     }
 }
@@ -111,7 +111,7 @@ impl VisualViewport {
         self.inner.get("onscrollend").as_::<Any>()
     }
 
-    pub fn set_onscrollend(&mut self, value: Any) {
+    pub fn set_onscrollend(&mut self, value: &Any) {
         self.inner.set("onscrollend", value);
     }
 }

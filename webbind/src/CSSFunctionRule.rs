@@ -51,29 +51,29 @@ impl From<&FunctionParameter> for emlite::Val {
 }
 
 impl FunctionParameter {
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: CSSOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
 impl FunctionParameter {
-    pub fn type_(&self) -> CSSOMString {
-        self.inner.get("type").as_::<CSSOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 
-    pub fn set_type_(&mut self, value: CSSOMString) {
+    pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }
 impl FunctionParameter {
-    pub fn default_value(&self) -> CSSOMString {
-        self.inner.get("defaultValue").as_::<CSSOMString>()
+    pub fn default_value(&self) -> String {
+        self.inner.get("defaultValue").as_::<String>()
     }
 
-    pub fn set_default_value(&mut self, value: CSSOMString) {
+    pub fn set_default_value(&mut self, value: &str) {
         self.inner.set("defaultValue", value);
     }
 }
@@ -131,8 +131,8 @@ impl From<&CSSFunctionRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSFunctionRule);
 
 impl CSSFunctionRule {
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl CSSFunctionRule {
@@ -143,7 +143,7 @@ impl CSSFunctionRule {
     }
 }
 impl CSSFunctionRule {
-    pub fn return_type(&self) -> CSSOMString {
-        self.inner.get("returnType").as_::<CSSOMString>()
+    pub fn return_type(&self) -> String {
+        self.inner.get("returnType").as_::<String>()
     }
 }

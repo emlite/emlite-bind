@@ -54,8 +54,8 @@ impl From<&CSSImportRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSImportRule);
 
 impl CSSImportRule {
-    pub fn href(&self) -> USVString {
-        self.inner.get("href").as_::<USVString>()
+    pub fn href(&self) -> String {
+        self.inner.get("href").as_::<String>()
     }
 }
 impl CSSImportRule {
@@ -69,12 +69,12 @@ impl CSSImportRule {
     }
 }
 impl CSSImportRule {
-    pub fn layer_name(&self) -> CSSOMString {
-        self.inner.get("layerName").as_::<CSSOMString>()
+    pub fn layer_name(&self) -> String {
+        self.inner.get("layerName").as_::<String>()
     }
 }
 impl CSSImportRule {
-    pub fn supports_text(&self) -> CSSOMString {
-        self.inner.get("supportsText").as_::<CSSOMString>()
+    pub fn supports_text(&self) -> String {
+        self.inner.get("supportsText").as_::<String>()
     }
 }

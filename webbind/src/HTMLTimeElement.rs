@@ -63,11 +63,11 @@ impl HTMLTimeElement {
     }
 }
 impl HTMLTimeElement {
-    pub fn date_time(&self) -> DOMString {
-        self.inner.get("dateTime").as_::<DOMString>()
+    pub fn date_time(&self) -> String {
+        self.inner.get("dateTime").as_::<String>()
     }
 
-    pub fn set_date_time(&mut self, value: DOMString) {
+    pub fn set_date_time(&mut self, value: &str) {
         self.inner.set("dateTime", value);
     }
 }

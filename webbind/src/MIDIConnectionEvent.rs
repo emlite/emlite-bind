@@ -54,7 +54,7 @@ impl From<&MIDIConnectionEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MIDIConnectionEvent);
 
 impl MIDIConnectionEvent {
-    pub fn new0(type_: DOMString) -> MIDIConnectionEvent {
+    pub fn new0(type_: &str) -> MIDIConnectionEvent {
         Self {
             inner: emlite::Val::global("MIDIConnectionEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl MIDIConnectionEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> MIDIConnectionEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> MIDIConnectionEvent {
         Self {
             inner: emlite::Val::global("MIDIConnectionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

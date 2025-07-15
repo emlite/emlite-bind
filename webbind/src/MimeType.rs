@@ -54,18 +54,18 @@ impl From<&MimeType> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MimeType);
 
 impl MimeType {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> String {
+        self.inner.get("type").as_::<String>()
     }
 }
 impl MimeType {
-    pub fn description(&self) -> DOMString {
-        self.inner.get("description").as_::<DOMString>()
+    pub fn description(&self) -> String {
+        self.inner.get("description").as_::<String>()
     }
 }
 impl MimeType {
-    pub fn suffixes(&self) -> DOMString {
-        self.inner.get("suffixes").as_::<DOMString>()
+    pub fn suffixes(&self) -> String {
+        self.inner.get("suffixes").as_::<String>()
     }
 }
 impl MimeType {

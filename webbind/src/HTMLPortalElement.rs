@@ -55,7 +55,7 @@ impl PortalActivateOptions {
         self.inner.get("data").as_::<Any>()
     }
 
-    pub fn set_data(&mut self, value: Any) {
+    pub fn set_data(&mut self, value: &Any) {
         self.inner.set("data", value);
     }
 }
@@ -122,20 +122,20 @@ impl HTMLPortalElement {
     }
 }
 impl HTMLPortalElement {
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> String {
+        self.inner.get("src").as_::<String>()
     }
 
-    pub fn set_src(&mut self, value: USVString) {
+    pub fn set_src(&mut self, value: &str) {
         self.inner.set("src", value);
     }
 }
 impl HTMLPortalElement {
-    pub fn referrer_policy(&self) -> DOMString {
-        self.inner.get("referrerPolicy").as_::<DOMString>()
+    pub fn referrer_policy(&self) -> String {
+        self.inner.get("referrerPolicy").as_::<String>()
     }
 
-    pub fn set_referrer_policy(&mut self, value: DOMString) {
+    pub fn set_referrer_policy(&mut self, value: &str) {
         self.inner.set("referrerPolicy", value);
     }
 }
@@ -144,20 +144,20 @@ impl HTMLPortalElement {
         self.inner.call("activate", &[]).as_::<Promise>()
     }
 
-    pub fn activate1(&self, options: PortalActivateOptions) -> Promise {
+    pub fn activate1(&self, options: &PortalActivateOptions) -> Promise {
         self.inner
             .call("activate", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl HTMLPortalElement {
-    pub fn post_message0(&self, message: Any) -> Undefined {
+    pub fn post_message0(&self, message: &Any) -> Undefined {
         self.inner
             .call("postMessage", &[message.into()])
             .as_::<Undefined>()
     }
 
-    pub fn post_message1(&self, message: Any, options: StructuredSerializeOptions) -> Undefined {
+    pub fn post_message1(&self, message: &Any, options: &StructuredSerializeOptions) -> Undefined {
         self.inner
             .call("postMessage", &[message.into(), options.into()])
             .as_::<Undefined>()
@@ -168,7 +168,7 @@ impl HTMLPortalElement {
         self.inner.get("onmessage").as_::<Any>()
     }
 
-    pub fn set_onmessage(&mut self, value: Any) {
+    pub fn set_onmessage(&mut self, value: &Any) {
         self.inner.set("onmessage", value);
     }
 }
@@ -177,7 +177,7 @@ impl HTMLPortalElement {
         self.inner.get("onmessageerror").as_::<Any>()
     }
 
-    pub fn set_onmessageerror(&mut self, value: Any) {
+    pub fn set_onmessageerror(&mut self, value: &Any) {
         self.inner.set("onmessageerror", value);
     }
 }

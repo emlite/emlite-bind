@@ -62,7 +62,7 @@ impl DOMException {
         }
     }
 
-    pub fn new1(message: DOMString) -> DOMException {
+    pub fn new1(message: &str) -> DOMException {
         Self {
             inner: emlite::Val::global("DOMException")
                 .new(&[message.into()])
@@ -70,7 +70,7 @@ impl DOMException {
         }
     }
 
-    pub fn new2(message: DOMString, name: DOMString) -> DOMException {
+    pub fn new2(message: &str, name: &str) -> DOMException {
         Self {
             inner: emlite::Val::global("DOMException")
                 .new(&[message.into(), name.into()])
@@ -79,13 +79,13 @@ impl DOMException {
     }
 }
 impl DOMException {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl DOMException {
-    pub fn message(&self) -> DOMString {
-        self.inner.get("message").as_::<DOMString>()
+    pub fn message(&self) -> String {
+        self.inner.get("message").as_::<String>()
     }
 }
 impl DOMException {

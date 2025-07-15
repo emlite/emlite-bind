@@ -55,7 +55,7 @@ impl WebTransportSendOptions {
         self.inner.get("sendGroup").as_::<WebTransportSendGroup>()
     }
 
-    pub fn set_send_group(&mut self, value: WebTransportSendGroup) {
+    pub fn set_send_group(&mut self, value: &WebTransportSendGroup) {
         self.inner.set("sendGroup", value);
     }
 }
@@ -130,7 +130,7 @@ impl WebTransportDatagramDuplexStream {
 
     pub fn create_writable1(
         &self,
-        options: WebTransportSendOptions,
+        options: &WebTransportSendOptions,
     ) -> WebTransportDatagramsWritable {
         self.inner
             .call("createWritable", &[options.into()])

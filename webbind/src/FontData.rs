@@ -59,22 +59,22 @@ impl FontData {
     }
 }
 impl FontData {
-    pub fn postscript_name(&self) -> USVString {
-        self.inner.get("postscriptName").as_::<USVString>()
+    pub fn postscript_name(&self) -> String {
+        self.inner.get("postscriptName").as_::<String>()
     }
 }
 impl FontData {
-    pub fn full_name(&self) -> USVString {
-        self.inner.get("fullName").as_::<USVString>()
+    pub fn full_name(&self) -> String {
+        self.inner.get("fullName").as_::<String>()
     }
 }
 impl FontData {
-    pub fn family(&self) -> USVString {
-        self.inner.get("family").as_::<USVString>()
+    pub fn family(&self) -> String {
+        self.inner.get("family").as_::<String>()
     }
 }
 impl FontData {
-    pub fn style(&self) -> USVString {
-        self.inner.get("style").as_::<USVString>()
+    pub fn style(&self) -> String {
+        self.inner.get("style").as_::<String>()
     }
 }

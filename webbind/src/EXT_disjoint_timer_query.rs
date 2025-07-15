@@ -61,47 +61,47 @@ impl EXT_disjoint_timer_query {
     }
 }
 impl EXT_disjoint_timer_query {
-    pub fn delete_query_ext(&self, query: WebGLTimerQueryEXT) -> Undefined {
+    pub fn delete_query_ext(&self, query: &WebGLTimerQueryEXT) -> Undefined {
         self.inner
             .call("deleteQueryEXT", &[query.into()])
             .as_::<Undefined>()
     }
 }
 impl EXT_disjoint_timer_query {
-    pub fn is_query_ext(&self, query: WebGLTimerQueryEXT) -> bool {
+    pub fn is_query_ext(&self, query: &WebGLTimerQueryEXT) -> bool {
         self.inner.call("isQueryEXT", &[query.into()]).as_::<bool>()
     }
 }
 impl EXT_disjoint_timer_query {
-    pub fn begin_query_ext(&self, target: Any, query: WebGLTimerQueryEXT) -> Undefined {
+    pub fn begin_query_ext(&self, target: &Any, query: &WebGLTimerQueryEXT) -> Undefined {
         self.inner
             .call("beginQueryEXT", &[target.into(), query.into()])
             .as_::<Undefined>()
     }
 }
 impl EXT_disjoint_timer_query {
-    pub fn end_query_ext(&self, target: Any) -> Undefined {
+    pub fn end_query_ext(&self, target: &Any) -> Undefined {
         self.inner
             .call("endQueryEXT", &[target.into()])
             .as_::<Undefined>()
     }
 }
 impl EXT_disjoint_timer_query {
-    pub fn query_counter_ext(&self, query: WebGLTimerQueryEXT, target: Any) -> Undefined {
+    pub fn query_counter_ext(&self, query: &WebGLTimerQueryEXT, target: &Any) -> Undefined {
         self.inner
             .call("queryCounterEXT", &[query.into(), target.into()])
             .as_::<Undefined>()
     }
 }
 impl EXT_disjoint_timer_query {
-    pub fn get_query_ext(&self, target: Any, pname: Any) -> Any {
+    pub fn get_query_ext(&self, target: &Any, pname: &Any) -> Any {
         self.inner
             .call("getQueryEXT", &[target.into(), pname.into()])
             .as_::<Any>()
     }
 }
 impl EXT_disjoint_timer_query {
-    pub fn get_query_object_ext(&self, query: WebGLTimerQueryEXT, pname: Any) -> Any {
+    pub fn get_query_object_ext(&self, query: &WebGLTimerQueryEXT, pname: &Any) -> Any {
         self.inner
             .call("getQueryObjectEXT", &[query.into(), pname.into()])
             .as_::<Any>()

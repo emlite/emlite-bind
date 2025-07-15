@@ -59,85 +59,85 @@ impl From<&CSSPageDescriptors> for emlite::Val {
 }
 
 impl CSSPageDescriptors {
-    pub fn margin(&self) -> CSSOMString {
-        self.inner.get("margin").as_::<CSSOMString>()
+    pub fn margin(&self) -> String {
+        self.inner.get("margin").as_::<String>()
     }
 
-    pub fn set_margin(&mut self, value: CSSOMString) {
+    pub fn set_margin(&mut self, value: &str) {
         self.inner.set("margin", value);
     }
 }
 impl CSSPageDescriptors {
-    pub fn margin_top(&self) -> CSSOMString {
-        self.inner.get("marginTop").as_::<CSSOMString>()
+    pub fn margin_top(&self) -> String {
+        self.inner.get("marginTop").as_::<String>()
     }
 
-    pub fn set_margin_top(&mut self, value: CSSOMString) {
+    pub fn set_margin_top(&mut self, value: &str) {
         self.inner.set("marginTop", value);
     }
 }
 impl CSSPageDescriptors {
-    pub fn margin_right(&self) -> CSSOMString {
-        self.inner.get("marginRight").as_::<CSSOMString>()
+    pub fn margin_right(&self) -> String {
+        self.inner.get("marginRight").as_::<String>()
     }
 
-    pub fn set_margin_right(&mut self, value: CSSOMString) {
+    pub fn set_margin_right(&mut self, value: &str) {
         self.inner.set("marginRight", value);
     }
 }
 impl CSSPageDescriptors {
-    pub fn margin_bottom(&self) -> CSSOMString {
-        self.inner.get("marginBottom").as_::<CSSOMString>()
+    pub fn margin_bottom(&self) -> String {
+        self.inner.get("marginBottom").as_::<String>()
     }
 
-    pub fn set_margin_bottom(&mut self, value: CSSOMString) {
+    pub fn set_margin_bottom(&mut self, value: &str) {
         self.inner.set("marginBottom", value);
     }
 }
 impl CSSPageDescriptors {
-    pub fn margin_left(&self) -> CSSOMString {
-        self.inner.get("marginLeft").as_::<CSSOMString>()
+    pub fn margin_left(&self) -> String {
+        self.inner.get("marginLeft").as_::<String>()
     }
 
-    pub fn set_margin_left(&mut self, value: CSSOMString) {
+    pub fn set_margin_left(&mut self, value: &str) {
         self.inner.set("marginLeft", value);
     }
 }
 
 impl CSSPageDescriptors {
-    pub fn size(&self) -> CSSOMString {
-        self.inner.get("size").as_::<CSSOMString>()
+    pub fn size(&self) -> String {
+        self.inner.get("size").as_::<String>()
     }
 
-    pub fn set_size(&mut self, value: CSSOMString) {
+    pub fn set_size(&mut self, value: &str) {
         self.inner.set("size", value);
     }
 }
 impl CSSPageDescriptors {
-    pub fn page_orientation(&self) -> CSSOMString {
-        self.inner.get("pageOrientation").as_::<CSSOMString>()
+    pub fn page_orientation(&self) -> String {
+        self.inner.get("pageOrientation").as_::<String>()
     }
 
-    pub fn set_page_orientation(&mut self, value: CSSOMString) {
+    pub fn set_page_orientation(&mut self, value: &str) {
         self.inner.set("pageOrientation", value);
     }
 }
 
 impl CSSPageDescriptors {
-    pub fn marks(&self) -> CSSOMString {
-        self.inner.get("marks").as_::<CSSOMString>()
+    pub fn marks(&self) -> String {
+        self.inner.get("marks").as_::<String>()
     }
 
-    pub fn set_marks(&mut self, value: CSSOMString) {
+    pub fn set_marks(&mut self, value: &str) {
         self.inner.set("marks", value);
     }
 }
 impl CSSPageDescriptors {
-    pub fn bleed(&self) -> CSSOMString {
-        self.inner.get("bleed").as_::<CSSOMString>()
+    pub fn bleed(&self) -> String {
+        self.inner.get("bleed").as_::<String>()
     }
 
-    pub fn set_bleed(&mut self, value: CSSOMString) {
+    pub fn set_bleed(&mut self, value: &str) {
         self.inner.set("bleed", value);
     }
 }

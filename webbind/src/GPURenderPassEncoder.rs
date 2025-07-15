@@ -79,7 +79,7 @@ impl GPURenderPassEncoder {
     }
 }
 impl GPURenderPassEncoder {
-    pub fn set_scissor_rect(&self, x: Any, y: Any, width: Any, height: Any) -> Undefined {
+    pub fn set_scissor_rect(&self, x: &Any, y: &Any, width: &Any, height: &Any) -> Undefined {
         self.inner
             .call(
                 "setScissorRect",
@@ -89,21 +89,21 @@ impl GPURenderPassEncoder {
     }
 }
 impl GPURenderPassEncoder {
-    pub fn set_blend_constant(&self, color: Any) -> Undefined {
+    pub fn set_blend_constant(&self, color: &Any) -> Undefined {
         self.inner
             .call("setBlendConstant", &[color.into()])
             .as_::<Undefined>()
     }
 }
 impl GPURenderPassEncoder {
-    pub fn set_stencil_reference(&self, reference: Any) -> Undefined {
+    pub fn set_stencil_reference(&self, reference: &Any) -> Undefined {
         self.inner
             .call("setStencilReference", &[reference.into()])
             .as_::<Undefined>()
     }
 }
 impl GPURenderPassEncoder {
-    pub fn begin_occlusion_query(&self, query_index: Any) -> Undefined {
+    pub fn begin_occlusion_query(&self, query_index: &Any) -> Undefined {
         self.inner
             .call("beginOcclusionQuery", &[query_index.into()])
             .as_::<Undefined>()
@@ -115,7 +115,7 @@ impl GPURenderPassEncoder {
     }
 }
 impl GPURenderPassEncoder {
-    pub fn execute_bundles(&self, bundles: Sequence<GPURenderBundle>) -> Undefined {
+    pub fn execute_bundles(&self, bundles: &Sequence<GPURenderBundle>) -> Undefined {
         self.inner
             .call("executeBundles", &[bundles.into()])
             .as_::<Undefined>()
@@ -127,16 +127,16 @@ impl GPURenderPassEncoder {
     }
 }
 impl GPURenderPassEncoder {
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 
-    pub fn set_label(&mut self, value: USVString) {
+    pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }
 }
 impl GPURenderPassEncoder {
-    pub fn push_debug_group(&self, group_label: USVString) -> Undefined {
+    pub fn push_debug_group(&self, group_label: &str) -> Undefined {
         self.inner
             .call("pushDebugGroup", &[group_label.into()])
             .as_::<Undefined>()
@@ -148,7 +148,7 @@ impl GPURenderPassEncoder {
     }
 }
 impl GPURenderPassEncoder {
-    pub fn insert_debug_marker(&self, marker_label: USVString) -> Undefined {
+    pub fn insert_debug_marker(&self, marker_label: &str) -> Undefined {
         self.inner
             .call("insertDebugMarker", &[marker_label.into()])
             .as_::<Undefined>()
@@ -157,11 +157,11 @@ impl GPURenderPassEncoder {
 impl GPURenderPassEncoder {
     pub fn set_bind_group(
         &self,
-        index: Any,
-        bind_group: GPUBindGroup,
-        dynamic_offsets_data: Uint32Array,
-        dynamic_offsets_data_start: Any,
-        dynamic_offsets_data_length: Any,
+        index: &Any,
+        bind_group: &GPUBindGroup,
+        dynamic_offsets_data: &Uint32Array,
+        dynamic_offsets_data_start: &Any,
+        dynamic_offsets_data_length: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -178,14 +178,18 @@ impl GPURenderPassEncoder {
     }
 }
 impl GPURenderPassEncoder {
-    pub fn set_pipeline(&self, pipeline: GPURenderPipeline) -> Undefined {
+    pub fn set_pipeline(&self, pipeline: &GPURenderPipeline) -> Undefined {
         self.inner
             .call("setPipeline", &[pipeline.into()])
             .as_::<Undefined>()
     }
 }
 impl GPURenderPassEncoder {
-    pub fn set_index_buffer0(&self, buffer: GPUBuffer, index_format: GPUIndexFormat) -> Undefined {
+    pub fn set_index_buffer0(
+        &self,
+        buffer: &GPUBuffer,
+        index_format: &GPUIndexFormat,
+    ) -> Undefined {
         self.inner
             .call("setIndexBuffer", &[buffer.into(), index_format.into()])
             .as_::<Undefined>()
@@ -193,9 +197,9 @@ impl GPURenderPassEncoder {
 
     pub fn set_index_buffer1(
         &self,
-        buffer: GPUBuffer,
-        index_format: GPUIndexFormat,
-        offset: Any,
+        buffer: &GPUBuffer,
+        index_format: &GPUIndexFormat,
+        offset: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -207,10 +211,10 @@ impl GPURenderPassEncoder {
 
     pub fn set_index_buffer2(
         &self,
-        buffer: GPUBuffer,
-        index_format: GPUIndexFormat,
-        offset: Any,
-        size: Any,
+        buffer: &GPUBuffer,
+        index_format: &GPUIndexFormat,
+        offset: &Any,
+        size: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -226,13 +230,13 @@ impl GPURenderPassEncoder {
     }
 }
 impl GPURenderPassEncoder {
-    pub fn set_vertex_buffer0(&self, slot: Any, buffer: GPUBuffer) -> Undefined {
+    pub fn set_vertex_buffer0(&self, slot: &Any, buffer: &GPUBuffer) -> Undefined {
         self.inner
             .call("setVertexBuffer", &[slot.into(), buffer.into()])
             .as_::<Undefined>()
     }
 
-    pub fn set_vertex_buffer1(&self, slot: Any, buffer: GPUBuffer, offset: Any) -> Undefined {
+    pub fn set_vertex_buffer1(&self, slot: &Any, buffer: &GPUBuffer, offset: &Any) -> Undefined {
         self.inner
             .call(
                 "setVertexBuffer",
@@ -243,10 +247,10 @@ impl GPURenderPassEncoder {
 
     pub fn set_vertex_buffer2(
         &self,
-        slot: Any,
-        buffer: GPUBuffer,
-        offset: Any,
-        size: Any,
+        slot: &Any,
+        buffer: &GPUBuffer,
+        offset: &Any,
+        size: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -257,19 +261,19 @@ impl GPURenderPassEncoder {
     }
 }
 impl GPURenderPassEncoder {
-    pub fn draw0(&self, vertex_count: Any) -> Undefined {
+    pub fn draw0(&self, vertex_count: &Any) -> Undefined {
         self.inner
             .call("draw", &[vertex_count.into()])
             .as_::<Undefined>()
     }
 
-    pub fn draw1(&self, vertex_count: Any, instance_count: Any) -> Undefined {
+    pub fn draw1(&self, vertex_count: &Any, instance_count: &Any) -> Undefined {
         self.inner
             .call("draw", &[vertex_count.into(), instance_count.into()])
             .as_::<Undefined>()
     }
 
-    pub fn draw2(&self, vertex_count: Any, instance_count: Any, first_vertex: Any) -> Undefined {
+    pub fn draw2(&self, vertex_count: &Any, instance_count: &Any, first_vertex: &Any) -> Undefined {
         self.inner
             .call(
                 "draw",
@@ -284,10 +288,10 @@ impl GPURenderPassEncoder {
 
     pub fn draw3(
         &self,
-        vertex_count: Any,
-        instance_count: Any,
-        first_vertex: Any,
-        first_instance: Any,
+        vertex_count: &Any,
+        instance_count: &Any,
+        first_vertex: &Any,
+        first_instance: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -303,13 +307,13 @@ impl GPURenderPassEncoder {
     }
 }
 impl GPURenderPassEncoder {
-    pub fn draw_indexed0(&self, index_count: Any) -> Undefined {
+    pub fn draw_indexed0(&self, index_count: &Any) -> Undefined {
         self.inner
             .call("drawIndexed", &[index_count.into()])
             .as_::<Undefined>()
     }
 
-    pub fn draw_indexed1(&self, index_count: Any, instance_count: Any) -> Undefined {
+    pub fn draw_indexed1(&self, index_count: &Any, instance_count: &Any) -> Undefined {
         self.inner
             .call("drawIndexed", &[index_count.into(), instance_count.into()])
             .as_::<Undefined>()
@@ -317,9 +321,9 @@ impl GPURenderPassEncoder {
 
     pub fn draw_indexed2(
         &self,
-        index_count: Any,
-        instance_count: Any,
-        first_index: Any,
+        index_count: &Any,
+        instance_count: &Any,
+        first_index: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -335,10 +339,10 @@ impl GPURenderPassEncoder {
 
     pub fn draw_indexed3(
         &self,
-        index_count: Any,
-        instance_count: Any,
-        first_index: Any,
-        base_vertex: Any,
+        index_count: &Any,
+        instance_count: &Any,
+        first_index: &Any,
+        base_vertex: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -355,11 +359,11 @@ impl GPURenderPassEncoder {
 
     pub fn draw_indexed4(
         &self,
-        index_count: Any,
-        instance_count: Any,
-        first_index: Any,
-        base_vertex: Any,
-        first_instance: Any,
+        index_count: &Any,
+        instance_count: &Any,
+        first_index: &Any,
+        base_vertex: &Any,
+        first_instance: &Any,
     ) -> Undefined {
         self.inner
             .call(
@@ -376,7 +380,7 @@ impl GPURenderPassEncoder {
     }
 }
 impl GPURenderPassEncoder {
-    pub fn draw_indirect(&self, indirect_buffer: GPUBuffer, indirect_offset: Any) -> Undefined {
+    pub fn draw_indirect(&self, indirect_buffer: &GPUBuffer, indirect_offset: &Any) -> Undefined {
         self.inner
             .call(
                 "drawIndirect",
@@ -388,8 +392,8 @@ impl GPURenderPassEncoder {
 impl GPURenderPassEncoder {
     pub fn draw_indexed_indirect(
         &self,
-        indirect_buffer: GPUBuffer,
-        indirect_offset: Any,
+        indirect_buffer: &GPUBuffer,
+        indirect_offset: &Any,
     ) -> Undefined {
         self.inner
             .call(

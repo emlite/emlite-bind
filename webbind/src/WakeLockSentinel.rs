@@ -73,7 +73,7 @@ impl WakeLockSentinel {
         self.inner.get("onrelease").as_::<Any>()
     }
 
-    pub fn set_onrelease(&mut self, value: Any) {
+    pub fn set_onrelease(&mut self, value: &Any) {
         self.inner.set("onrelease", value);
     }
 }

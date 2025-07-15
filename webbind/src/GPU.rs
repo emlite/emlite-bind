@@ -51,11 +51,11 @@ impl From<&GPURequestAdapterOptions> for emlite::Val {
 }
 
 impl GPURequestAdapterOptions {
-    pub fn feature_level(&self) -> DOMString {
-        self.inner.get("featureLevel").as_::<DOMString>()
+    pub fn feature_level(&self) -> String {
+        self.inner.get("featureLevel").as_::<String>()
     }
 
-    pub fn set_feature_level(&mut self, value: DOMString) {
+    pub fn set_feature_level(&mut self, value: &str) {
         self.inner.set("featureLevel", value);
     }
 }
@@ -66,7 +66,7 @@ impl GPURequestAdapterOptions {
             .as_::<GPUPowerPreference>()
     }
 
-    pub fn set_power_preference(&mut self, value: GPUPowerPreference) {
+    pub fn set_power_preference(&mut self, value: &GPUPowerPreference) {
         self.inner.set("powerPreference", value);
     }
 }
@@ -146,7 +146,7 @@ impl GPU {
         self.inner.call("requestAdapter", &[]).as_::<Promise>()
     }
 
-    pub fn request_adapter1(&self, options: GPURequestAdapterOptions) -> Promise {
+    pub fn request_adapter1(&self, options: &GPURequestAdapterOptions) -> Promise {
         self.inner
             .call("requestAdapter", &[options.into()])
             .as_::<Promise>()

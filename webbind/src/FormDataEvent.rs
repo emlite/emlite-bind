@@ -54,7 +54,7 @@ impl From<&FormDataEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(FormDataEvent);
 
 impl FormDataEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> FormDataEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> FormDataEvent {
         Self {
             inner: emlite::Val::global("FormDataEvent")
                 .new(&[type_.into(), event_init_dict.into()])

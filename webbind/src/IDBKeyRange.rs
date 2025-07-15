@@ -74,52 +74,52 @@ impl IDBKeyRange {
     }
 }
 impl IDBKeyRange {
-    pub fn only(value: Any) -> IDBKeyRange {
+    pub fn only(value: &Any) -> IDBKeyRange {
         emlite::Val::global("IDBKeyRange")
             .call("only", &[value.into()])
             .as_::<IDBKeyRange>()
     }
 }
 impl IDBKeyRange {
-    pub fn lower_bound0(lower: Any) -> IDBKeyRange {
+    pub fn lower_bound0(lower: &Any) -> IDBKeyRange {
         emlite::Val::global("IDBKeyRange")
             .call("lowerBound", &[lower.into()])
             .as_::<IDBKeyRange>()
     }
 
-    pub fn lower_bound1(lower: Any, open: bool) -> IDBKeyRange {
+    pub fn lower_bound1(lower: &Any, open: bool) -> IDBKeyRange {
         emlite::Val::global("IDBKeyRange")
             .call("lowerBound", &[lower.into(), open.into()])
             .as_::<IDBKeyRange>()
     }
 }
 impl IDBKeyRange {
-    pub fn upper_bound0(upper: Any) -> IDBKeyRange {
+    pub fn upper_bound0(upper: &Any) -> IDBKeyRange {
         emlite::Val::global("IDBKeyRange")
             .call("upperBound", &[upper.into()])
             .as_::<IDBKeyRange>()
     }
 
-    pub fn upper_bound1(upper: Any, open: bool) -> IDBKeyRange {
+    pub fn upper_bound1(upper: &Any, open: bool) -> IDBKeyRange {
         emlite::Val::global("IDBKeyRange")
             .call("upperBound", &[upper.into(), open.into()])
             .as_::<IDBKeyRange>()
     }
 }
 impl IDBKeyRange {
-    pub fn bound0(lower: Any, upper: Any) -> IDBKeyRange {
+    pub fn bound0(lower: &Any, upper: &Any) -> IDBKeyRange {
         emlite::Val::global("IDBKeyRange")
             .call("bound", &[lower.into(), upper.into()])
             .as_::<IDBKeyRange>()
     }
 
-    pub fn bound1(lower: Any, upper: Any, lower_open: bool) -> IDBKeyRange {
+    pub fn bound1(lower: &Any, upper: &Any, lower_open: bool) -> IDBKeyRange {
         emlite::Val::global("IDBKeyRange")
             .call("bound", &[lower.into(), upper.into(), lower_open.into()])
             .as_::<IDBKeyRange>()
     }
 
-    pub fn bound2(lower: Any, upper: Any, lower_open: bool, upper_open: bool) -> IDBKeyRange {
+    pub fn bound2(lower: &Any, upper: &Any, lower_open: bool, upper_open: bool) -> IDBKeyRange {
         emlite::Val::global("IDBKeyRange")
             .call(
                 "bound",
@@ -134,7 +134,7 @@ impl IDBKeyRange {
     }
 }
 impl IDBKeyRange {
-    pub fn includes(&self, key: Any) -> bool {
+    pub fn includes(&self, key: &Any) -> bool {
         self.inner.call("includes", &[key.into()]).as_::<bool>()
     }
 }

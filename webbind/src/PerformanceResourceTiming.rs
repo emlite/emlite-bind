@@ -54,18 +54,18 @@ impl From<&PerformanceResourceTiming> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PerformanceResourceTiming);
 
 impl PerformanceResourceTiming {
-    pub fn initiator_type(&self) -> DOMString {
-        self.inner.get("initiatorType").as_::<DOMString>()
+    pub fn initiator_type(&self) -> String {
+        self.inner.get("initiatorType").as_::<String>()
     }
 }
 impl PerformanceResourceTiming {
-    pub fn delivery_type(&self) -> DOMString {
-        self.inner.get("deliveryType").as_::<DOMString>()
+    pub fn delivery_type(&self) -> String {
+        self.inner.get("deliveryType").as_::<String>()
     }
 }
 impl PerformanceResourceTiming {
-    pub fn next_hop_protocol(&self) -> ByteString {
-        self.inner.get("nextHopProtocol").as_::<ByteString>()
+    pub fn next_hop_protocol(&self) -> String {
+        self.inner.get("nextHopProtocol").as_::<String>()
     }
 }
 impl PerformanceResourceTiming {
@@ -166,13 +166,13 @@ impl PerformanceResourceTiming {
     }
 }
 impl PerformanceResourceTiming {
-    pub fn content_type(&self) -> DOMString {
-        self.inner.get("contentType").as_::<DOMString>()
+    pub fn content_type(&self) -> String {
+        self.inner.get("contentType").as_::<String>()
     }
 }
 impl PerformanceResourceTiming {
-    pub fn content_encoding(&self) -> DOMString {
-        self.inner.get("contentEncoding").as_::<DOMString>()
+    pub fn content_encoding(&self) -> String {
+        self.inner.get("contentEncoding").as_::<String>()
     }
 }
 impl PerformanceResourceTiming {

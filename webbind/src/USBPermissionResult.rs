@@ -58,7 +58,7 @@ impl USBPermissionResult {
         self.inner.get("devices").as_::<FrozenArray<USBDevice>>()
     }
 
-    pub fn set_devices(&mut self, value: FrozenArray<USBDevice>) {
+    pub fn set_devices(&mut self, value: &FrozenArray<USBDevice>) {
         self.inner.set("devices", value);
     }
 }

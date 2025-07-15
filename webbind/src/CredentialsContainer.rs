@@ -57,7 +57,7 @@ impl CredentialRequestOptions {
             .as_::<PublicKeyCredentialRequestOptions>()
     }
 
-    pub fn set_public_key(&mut self, value: PublicKeyCredentialRequestOptions) {
+    pub fn set_public_key(&mut self, value: &PublicKeyCredentialRequestOptions) {
         self.inner.set("publicKey", value);
     }
 }
@@ -118,7 +118,7 @@ impl CredentialCreationOptions {
             .as_::<PublicKeyCredentialCreationOptions>()
     }
 
-    pub fn set_public_key(&mut self, value: PublicKeyCredentialCreationOptions) {
+    pub fn set_public_key(&mut self, value: &PublicKeyCredentialCreationOptions) {
         self.inner.set("publicKey", value);
     }
 }
@@ -180,12 +180,12 @@ impl CredentialsContainer {
         self.inner.call("get", &[]).as_::<Promise>()
     }
 
-    pub fn get1(&self, options: CredentialRequestOptions) -> Promise {
+    pub fn get1(&self, options: &CredentialRequestOptions) -> Promise {
         self.inner.call("get", &[options.into()]).as_::<Promise>()
     }
 }
 impl CredentialsContainer {
-    pub fn store(&self, credential: Credential) -> Promise {
+    pub fn store(&self, credential: &Credential) -> Promise {
         self.inner
             .call("store", &[credential.into()])
             .as_::<Promise>()
@@ -196,7 +196,7 @@ impl CredentialsContainer {
         self.inner.call("create", &[]).as_::<Promise>()
     }
 
-    pub fn create1(&self, options: CredentialCreationOptions) -> Promise {
+    pub fn create1(&self, options: &CredentialCreationOptions) -> Promise {
         self.inner
             .call("create", &[options.into()])
             .as_::<Promise>()

@@ -59,25 +59,25 @@ impl TextTrack {
     }
 }
 impl TextTrack {
-    pub fn label(&self) -> DOMString {
-        self.inner.get("label").as_::<DOMString>()
+    pub fn label(&self) -> String {
+        self.inner.get("label").as_::<String>()
     }
 }
 impl TextTrack {
-    pub fn language(&self) -> DOMString {
-        self.inner.get("language").as_::<DOMString>()
+    pub fn language(&self) -> String {
+        self.inner.get("language").as_::<String>()
     }
 }
 impl TextTrack {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl TextTrack {
-    pub fn in_band_metadata_track_dispatch_type(&self) -> DOMString {
+    pub fn in_band_metadata_track_dispatch_type(&self) -> String {
         self.inner
             .get("inBandMetadataTrackDispatchType")
-            .as_::<DOMString>()
+            .as_::<String>()
     }
 }
 impl TextTrack {
@@ -85,7 +85,7 @@ impl TextTrack {
         self.inner.get("mode").as_::<TextTrackMode>()
     }
 
-    pub fn set_mode(&mut self, value: TextTrackMode) {
+    pub fn set_mode(&mut self, value: &TextTrackMode) {
         self.inner.set("mode", value);
     }
 }
@@ -100,12 +100,12 @@ impl TextTrack {
     }
 }
 impl TextTrack {
-    pub fn add_cue(&self, cue: TextTrackCue) -> Undefined {
+    pub fn add_cue(&self, cue: &TextTrackCue) -> Undefined {
         self.inner.call("addCue", &[cue.into()]).as_::<Undefined>()
     }
 }
 impl TextTrack {
-    pub fn remove_cue(&self, cue: TextTrackCue) -> Undefined {
+    pub fn remove_cue(&self, cue: &TextTrackCue) -> Undefined {
         self.inner
             .call("removeCue", &[cue.into()])
             .as_::<Undefined>()
@@ -116,7 +116,7 @@ impl TextTrack {
         self.inner.get("oncuechange").as_::<Any>()
     }
 
-    pub fn set_oncuechange(&mut self, value: Any) {
+    pub fn set_oncuechange(&mut self, value: &Any) {
         self.inner.set("oncuechange", value);
     }
 }

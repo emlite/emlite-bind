@@ -60,7 +60,7 @@ impl AbortSignal {
             .as_::<AbortSignal>()
     }
 
-    pub fn abort1(reason: Any) -> AbortSignal {
+    pub fn abort1(reason: &Any) -> AbortSignal {
         emlite::Val::global("AbortSignal")
             .call("abort", &[reason.into()])
             .as_::<AbortSignal>()
@@ -74,7 +74,7 @@ impl AbortSignal {
     }
 }
 impl AbortSignal {
-    pub fn any(signals: Sequence<AbortSignal>) -> AbortSignal {
+    pub fn any(signals: &Sequence<AbortSignal>) -> AbortSignal {
         emlite::Val::global("AbortSignal")
             .call("any", &[signals.into()])
             .as_::<AbortSignal>()
@@ -100,7 +100,7 @@ impl AbortSignal {
         self.inner.get("onabort").as_::<Any>()
     }
 
-    pub fn set_onabort(&mut self, value: Any) {
+    pub fn set_onabort(&mut self, value: &Any) {
         self.inner.set("onabort", value);
     }
 }

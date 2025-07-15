@@ -58,7 +58,7 @@ impl IDBOpenDBRequest {
         self.inner.get("onblocked").as_::<Any>()
     }
 
-    pub fn set_onblocked(&mut self, value: Any) {
+    pub fn set_onblocked(&mut self, value: &Any) {
         self.inner.set("onblocked", value);
     }
 }
@@ -67,7 +67,7 @@ impl IDBOpenDBRequest {
         self.inner.get("onupgradeneeded").as_::<Any>()
     }
 
-    pub fn set_onupgradeneeded(&mut self, value: Any) {
+    pub fn set_onupgradeneeded(&mut self, value: &Any) {
         self.inner.set("onupgradeneeded", value);
     }
 }

@@ -54,7 +54,7 @@ impl From<&CSSParserAtRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSParserAtRule);
 
 impl CSSParserAtRule {
-    pub fn new0(name: DOMString, prelude: Sequence<Any>) -> CSSParserAtRule {
+    pub fn new0(name: &str, prelude: &Sequence<Any>) -> CSSParserAtRule {
         Self {
             inner: emlite::Val::global("CSSParserAtRule")
                 .new(&[name.into(), prelude.into()])
@@ -63,9 +63,9 @@ impl CSSParserAtRule {
     }
 
     pub fn new1(
-        name: DOMString,
-        prelude: Sequence<Any>,
-        body: Sequence<CSSParserRule>,
+        name: &str,
+        prelude: &Sequence<Any>,
+        body: &Sequence<CSSParserRule>,
     ) -> CSSParserAtRule {
         Self {
             inner: emlite::Val::global("CSSParserAtRule")
@@ -75,8 +75,8 @@ impl CSSParserAtRule {
     }
 }
 impl CSSParserAtRule {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl CSSParserAtRule {

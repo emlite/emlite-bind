@@ -54,7 +54,7 @@ impl From<&CSSParserDeclaration> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSParserDeclaration);
 
 impl CSSParserDeclaration {
-    pub fn new0(name: DOMString) -> CSSParserDeclaration {
+    pub fn new0(name: &str) -> CSSParserDeclaration {
         Self {
             inner: emlite::Val::global("CSSParserDeclaration")
                 .new(&[name.into()])
@@ -62,7 +62,7 @@ impl CSSParserDeclaration {
         }
     }
 
-    pub fn new1(name: DOMString, body: Sequence<CSSParserRule>) -> CSSParserDeclaration {
+    pub fn new1(name: &str, body: &Sequence<CSSParserRule>) -> CSSParserDeclaration {
         Self {
             inner: emlite::Val::global("CSSParserDeclaration")
                 .new(&[name.into(), body.into()])
@@ -71,8 +71,8 @@ impl CSSParserDeclaration {
     }
 }
 impl CSSParserDeclaration {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl CSSParserDeclaration {

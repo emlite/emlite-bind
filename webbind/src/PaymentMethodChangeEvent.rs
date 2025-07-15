@@ -54,7 +54,7 @@ impl From<&PaymentMethodChangeEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PaymentMethodChangeEvent);
 
 impl PaymentMethodChangeEvent {
-    pub fn new0(type_: DOMString) -> PaymentMethodChangeEvent {
+    pub fn new0(type_: &str) -> PaymentMethodChangeEvent {
         Self {
             inner: emlite::Val::global("PaymentMethodChangeEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl PaymentMethodChangeEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> PaymentMethodChangeEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> PaymentMethodChangeEvent {
         Self {
             inner: emlite::Val::global("PaymentMethodChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -71,8 +71,8 @@ impl PaymentMethodChangeEvent {
     }
 }
 impl PaymentMethodChangeEvent {
-    pub fn method_name(&self) -> DOMString {
-        self.inner.get("methodName").as_::<DOMString>()
+    pub fn method_name(&self) -> String {
+        self.inner.get("methodName").as_::<String>()
     }
 }
 impl PaymentMethodChangeEvent {

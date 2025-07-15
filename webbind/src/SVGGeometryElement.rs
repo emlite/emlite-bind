@@ -149,7 +149,7 @@ impl SVGGeometryElement {
         self.inner.call("isPointInFill", &[]).as_::<bool>()
     }
 
-    pub fn is_point_in_fill1(&self, point: DOMPointInit) -> bool {
+    pub fn is_point_in_fill1(&self, point: &DOMPointInit) -> bool {
         self.inner
             .call("isPointInFill", &[point.into()])
             .as_::<bool>()
@@ -160,7 +160,7 @@ impl SVGGeometryElement {
         self.inner.call("isPointInStroke", &[]).as_::<bool>()
     }
 
-    pub fn is_point_in_stroke1(&self, point: DOMPointInit) -> bool {
+    pub fn is_point_in_stroke1(&self, point: &DOMPointInit) -> bool {
         self.inner
             .call("isPointInStroke", &[point.into()])
             .as_::<bool>()

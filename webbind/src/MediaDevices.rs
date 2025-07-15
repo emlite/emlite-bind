@@ -51,11 +51,11 @@ impl From<&AudioOutputOptions> for emlite::Val {
 }
 
 impl AudioOutputOptions {
-    pub fn device_id(&self) -> DOMString {
-        self.inner.get("deviceId").as_::<DOMString>()
+    pub fn device_id(&self) -> String {
+        self.inner.get("deviceId").as_::<String>()
     }
 
-    pub fn set_device_id(&mut self, value: DOMString) {
+    pub fn set_device_id(&mut self, value: &str) {
         self.inner.set("deviceId", value);
     }
 }
@@ -119,22 +119,20 @@ impl CaptureHandleConfig {
     }
 }
 impl CaptureHandleConfig {
-    pub fn handle(&self) -> DOMString {
-        self.inner.get("handle").as_::<DOMString>()
+    pub fn handle(&self) -> String {
+        self.inner.get("handle").as_::<String>()
     }
 
-    pub fn set_handle(&mut self, value: DOMString) {
+    pub fn set_handle(&mut self, value: &str) {
         self.inner.set("handle", value);
     }
 }
 impl CaptureHandleConfig {
-    pub fn permitted_origins(&self) -> Sequence<DOMString> {
-        self.inner
-            .get("permittedOrigins")
-            .as_::<Sequence<DOMString>>()
+    pub fn permitted_origins(&self) -> Sequence<String> {
+        self.inner.get("permittedOrigins").as_::<Sequence<String>>()
     }
 
-    pub fn set_permitted_origins(&mut self, value: Sequence<DOMString>) {
+    pub fn set_permitted_origins(&mut self, value: &Sequence<String>) {
         self.inner.set("permittedOrigins", value);
     }
 }
@@ -284,11 +282,11 @@ impl From<&MediaStreamConstraints> for emlite::Val {
 }
 
 impl MediaStreamConstraints {
-    pub fn peer_identity(&self) -> DOMString {
-        self.inner.get("peerIdentity").as_::<DOMString>()
+    pub fn peer_identity(&self) -> String {
+        self.inner.get("peerIdentity").as_::<String>()
     }
 
-    pub fn set_peer_identity(&mut self, value: DOMString) {
+    pub fn set_peer_identity(&mut self, value: &str) {
         self.inner.set("peerIdentity", value);
     }
 }
@@ -347,7 +345,7 @@ impl DisplayMediaStreamOptions {
         self.inner.get("video").as_::<Any>()
     }
 
-    pub fn set_video(&mut self, value: Any) {
+    pub fn set_video(&mut self, value: &Any) {
         self.inner.set("video", value);
     }
 }
@@ -356,7 +354,7 @@ impl DisplayMediaStreamOptions {
         self.inner.get("audio").as_::<Any>()
     }
 
-    pub fn set_audio(&mut self, value: Any) {
+    pub fn set_audio(&mut self, value: &Any) {
         self.inner.set("audio", value);
     }
 }
@@ -365,7 +363,7 @@ impl DisplayMediaStreamOptions {
         self.inner.get("controller").as_::<CaptureController>()
     }
 
-    pub fn set_controller(&mut self, value: CaptureController) {
+    pub fn set_controller(&mut self, value: &CaptureController) {
         self.inner.set("controller", value);
     }
 }
@@ -376,7 +374,7 @@ impl DisplayMediaStreamOptions {
             .as_::<SelfCapturePreferenceEnum>()
     }
 
-    pub fn set_self_browser_surface(&mut self, value: SelfCapturePreferenceEnum) {
+    pub fn set_self_browser_surface(&mut self, value: &SelfCapturePreferenceEnum) {
         self.inner.set("selfBrowserSurface", value);
     }
 }
@@ -387,7 +385,7 @@ impl DisplayMediaStreamOptions {
             .as_::<SystemAudioPreferenceEnum>()
     }
 
-    pub fn set_system_audio(&mut self, value: SystemAudioPreferenceEnum) {
+    pub fn set_system_audio(&mut self, value: &SystemAudioPreferenceEnum) {
         self.inner.set("systemAudio", value);
     }
 }
@@ -398,7 +396,7 @@ impl DisplayMediaStreamOptions {
             .as_::<WindowAudioPreferenceEnum>()
     }
 
-    pub fn set_window_audio(&mut self, value: WindowAudioPreferenceEnum) {
+    pub fn set_window_audio(&mut self, value: &WindowAudioPreferenceEnum) {
         self.inner.set("windowAudio", value);
     }
 }
@@ -409,7 +407,7 @@ impl DisplayMediaStreamOptions {
             .as_::<SurfaceSwitchingPreferenceEnum>()
     }
 
-    pub fn set_surface_switching(&mut self, value: SurfaceSwitchingPreferenceEnum) {
+    pub fn set_surface_switching(&mut self, value: &SurfaceSwitchingPreferenceEnum) {
         self.inner.set("surfaceSwitching", value);
     }
 }
@@ -420,7 +418,7 @@ impl DisplayMediaStreamOptions {
             .as_::<MonitorTypeSurfacesEnum>()
     }
 
-    pub fn set_monitor_type_surfaces(&mut self, value: MonitorTypeSurfacesEnum) {
+    pub fn set_monitor_type_surfaces(&mut self, value: &MonitorTypeSurfacesEnum) {
         self.inner.set("monitorTypeSurfaces", value);
     }
 }
@@ -482,7 +480,7 @@ impl MediaDevices {
         self.inner.get("ondevicechange").as_::<Any>()
     }
 
-    pub fn set_ondevicechange(&mut self, value: Any) {
+    pub fn set_ondevicechange(&mut self, value: &Any) {
         self.inner.set("ondevicechange", value);
     }
 }
@@ -496,7 +494,7 @@ impl MediaDevices {
         self.inner.call("selectAudioOutput", &[]).as_::<Promise>()
     }
 
-    pub fn select_audio_output1(&self, options: AudioOutputOptions) -> Promise {
+    pub fn select_audio_output1(&self, options: &AudioOutputOptions) -> Promise {
         self.inner
             .call("selectAudioOutput", &[options.into()])
             .as_::<Promise>()
@@ -509,14 +507,14 @@ impl MediaDevices {
             .as_::<Undefined>()
     }
 
-    pub fn set_capture_handle_config1(&self, config: CaptureHandleConfig) -> Undefined {
+    pub fn set_capture_handle_config1(&self, config: &CaptureHandleConfig) -> Undefined {
         self.inner
             .call("setCaptureHandleConfig", &[config.into()])
             .as_::<Undefined>()
     }
 }
 impl MediaDevices {
-    pub fn set_supported_capture_actions(&self, actions: Sequence<DOMString>) -> Undefined {
+    pub fn set_supported_capture_actions(&self, actions: &Sequence<String>) -> Undefined {
         self.inner
             .call("setSupportedCaptureActions", &[actions.into()])
             .as_::<Undefined>()
@@ -527,7 +525,7 @@ impl MediaDevices {
         self.inner.get("oncaptureaction").as_::<Any>()
     }
 
-    pub fn set_oncaptureaction(&mut self, value: Any) {
+    pub fn set_oncaptureaction(&mut self, value: &Any) {
         self.inner.set("oncaptureaction", value);
     }
 }
@@ -543,7 +541,7 @@ impl MediaDevices {
         self.inner.call("getUserMedia", &[]).as_::<Promise>()
     }
 
-    pub fn get_user_media1(&self, constraints: MediaStreamConstraints) -> Promise {
+    pub fn get_user_media1(&self, constraints: &MediaStreamConstraints) -> Promise {
         self.inner
             .call("getUserMedia", &[constraints.into()])
             .as_::<Promise>()
@@ -554,7 +552,7 @@ impl MediaDevices {
         self.inner.call("getViewportMedia", &[]).as_::<Promise>()
     }
 
-    pub fn get_viewport_media1(&self, options: DisplayMediaStreamOptions) -> Promise {
+    pub fn get_viewport_media1(&self, options: &DisplayMediaStreamOptions) -> Promise {
         self.inner
             .call("getViewportMedia", &[options.into()])
             .as_::<Promise>()
@@ -565,7 +563,7 @@ impl MediaDevices {
         self.inner.call("getDisplayMedia", &[]).as_::<Promise>()
     }
 
-    pub fn get_display_media1(&self, options: DisplayMediaStreamOptions) -> Promise {
+    pub fn get_display_media1(&self, options: &DisplayMediaStreamOptions) -> Promise {
         self.inner
             .call("getDisplayMedia", &[options.into()])
             .as_::<Promise>()

@@ -81,7 +81,7 @@ impl IDBTransaction {
     }
 }
 impl IDBTransaction {
-    pub fn object_store(&self, name: DOMString) -> IDBObjectStore {
+    pub fn object_store(&self, name: &str) -> IDBObjectStore {
         self.inner
             .call("objectStore", &[name.into()])
             .as_::<IDBObjectStore>()
@@ -102,7 +102,7 @@ impl IDBTransaction {
         self.inner.get("onabort").as_::<Any>()
     }
 
-    pub fn set_onabort(&mut self, value: Any) {
+    pub fn set_onabort(&mut self, value: &Any) {
         self.inner.set("onabort", value);
     }
 }
@@ -111,7 +111,7 @@ impl IDBTransaction {
         self.inner.get("oncomplete").as_::<Any>()
     }
 
-    pub fn set_oncomplete(&mut self, value: Any) {
+    pub fn set_oncomplete(&mut self, value: &Any) {
         self.inner.set("oncomplete", value);
     }
 }
@@ -120,7 +120,7 @@ impl IDBTransaction {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }

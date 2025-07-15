@@ -81,49 +81,49 @@ impl HTMLCanvasElement {
     }
 }
 impl HTMLCanvasElement {
-    pub fn get_context0(&self, context_id: DOMString) -> Any {
+    pub fn get_context0(&self, context_id: &str) -> Any {
         self.inner
             .call("getContext", &[context_id.into()])
             .as_::<Any>()
     }
 
-    pub fn get_context1(&self, context_id: DOMString, options: Any) -> Any {
+    pub fn get_context1(&self, context_id: &str, options: &Any) -> Any {
         self.inner
             .call("getContext", &[context_id.into(), options.into()])
             .as_::<Any>()
     }
 }
 impl HTMLCanvasElement {
-    pub fn to_data_url0(&self) -> USVString {
-        self.inner.call("toDataURL", &[]).as_::<USVString>()
+    pub fn to_data_url0(&self) -> String {
+        self.inner.call("toDataURL", &[]).as_::<String>()
     }
 
-    pub fn to_data_url1(&self, type_: DOMString) -> USVString {
+    pub fn to_data_url1(&self, type_: &str) -> String {
         self.inner
             .call("toDataURL", &[type_.into()])
-            .as_::<USVString>()
+            .as_::<String>()
     }
 
-    pub fn to_data_url2(&self, type_: DOMString, quality: Any) -> USVString {
+    pub fn to_data_url2(&self, type_: &str, quality: &Any) -> String {
         self.inner
             .call("toDataURL", &[type_.into(), quality.into()])
-            .as_::<USVString>()
+            .as_::<String>()
     }
 }
 impl HTMLCanvasElement {
-    pub fn to_blob0(&self, callback: Function) -> Undefined {
+    pub fn to_blob0(&self, callback: &Function) -> Undefined {
         self.inner
             .call("toBlob", &[callback.into()])
             .as_::<Undefined>()
     }
 
-    pub fn to_blob1(&self, callback: Function, type_: DOMString) -> Undefined {
+    pub fn to_blob1(&self, callback: &Function, type_: &str) -> Undefined {
         self.inner
             .call("toBlob", &[callback.into(), type_.into()])
             .as_::<Undefined>()
     }
 
-    pub fn to_blob2(&self, callback: Function, type_: DOMString, quality: Any) -> Undefined {
+    pub fn to_blob2(&self, callback: &Function, type_: &str, quality: &Any) -> Undefined {
         self.inner
             .call("toBlob", &[callback.into(), type_.into(), quality.into()])
             .as_::<Undefined>()

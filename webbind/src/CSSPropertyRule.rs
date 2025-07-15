@@ -54,13 +54,13 @@ impl From<&CSSPropertyRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSPropertyRule);
 
 impl CSSPropertyRule {
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl CSSPropertyRule {
-    pub fn syntax(&self) -> CSSOMString {
-        self.inner.get("syntax").as_::<CSSOMString>()
+    pub fn syntax(&self) -> String {
+        self.inner.get("syntax").as_::<String>()
     }
 }
 impl CSSPropertyRule {
@@ -69,7 +69,7 @@ impl CSSPropertyRule {
     }
 }
 impl CSSPropertyRule {
-    pub fn initial_value(&self) -> CSSOMString {
-        self.inner.get("initialValue").as_::<CSSOMString>()
+    pub fn initial_value(&self) -> String {
+        self.inner.get("initialValue").as_::<String>()
     }
 }

@@ -62,7 +62,7 @@ impl URLSearchParams {
         }
     }
 
-    pub fn new1(init: Any) -> URLSearchParams {
+    pub fn new1(init: &Any) -> URLSearchParams {
         Self {
             inner: emlite::Val::global("URLSearchParams")
                 .new(&[init.into()])
@@ -76,48 +76,48 @@ impl URLSearchParams {
     }
 }
 impl URLSearchParams {
-    pub fn append(&self, name: USVString, value: USVString) -> Undefined {
+    pub fn append(&self, name: &str, value: &str) -> Undefined {
         self.inner
             .call("append", &[name.into(), value.into()])
             .as_::<Undefined>()
     }
 }
 impl URLSearchParams {
-    pub fn delete0(&self, name: USVString) -> Undefined {
+    pub fn delete0(&self, name: &str) -> Undefined {
         self.inner.call("delete", &[name.into()]).as_::<Undefined>()
     }
 
-    pub fn delete1(&self, name: USVString, value: USVString) -> Undefined {
+    pub fn delete1(&self, name: &str, value: &str) -> Undefined {
         self.inner
             .call("delete", &[name.into(), value.into()])
             .as_::<Undefined>()
     }
 }
 impl URLSearchParams {
-    pub fn get(&self, name: USVString) -> USVString {
-        self.inner.call("get", &[name.into()]).as_::<USVString>()
+    pub fn get(&self, name: &str) -> String {
+        self.inner.call("get", &[name.into()]).as_::<String>()
     }
 }
 impl URLSearchParams {
-    pub fn get_all(&self, name: USVString) -> Sequence<USVString> {
+    pub fn get_all(&self, name: &str) -> Sequence<String> {
         self.inner
             .call("getAll", &[name.into()])
-            .as_::<Sequence<USVString>>()
+            .as_::<Sequence<String>>()
     }
 }
 impl URLSearchParams {
-    pub fn has0(&self, name: USVString) -> bool {
+    pub fn has0(&self, name: &str) -> bool {
         self.inner.call("has", &[name.into()]).as_::<bool>()
     }
 
-    pub fn has1(&self, name: USVString, value: USVString) -> bool {
+    pub fn has1(&self, name: &str, value: &str) -> bool {
         self.inner
             .call("has", &[name.into(), value.into()])
             .as_::<bool>()
     }
 }
 impl URLSearchParams {
-    pub fn set(&self, name: USVString, value: USVString) -> Undefined {
+    pub fn set(&self, name: &str, value: &str) -> Undefined {
         self.inner
             .call("set", &[name.into(), value.into()])
             .as_::<Undefined>()

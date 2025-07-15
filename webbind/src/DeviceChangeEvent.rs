@@ -54,7 +54,7 @@ impl From<&DeviceChangeEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(DeviceChangeEvent);
 
 impl DeviceChangeEvent {
-    pub fn new0(type_: DOMString) -> DeviceChangeEvent {
+    pub fn new0(type_: &str) -> DeviceChangeEvent {
         Self {
             inner: emlite::Val::global("DeviceChangeEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl DeviceChangeEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> DeviceChangeEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> DeviceChangeEvent {
         Self {
             inner: emlite::Val::global("DeviceChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

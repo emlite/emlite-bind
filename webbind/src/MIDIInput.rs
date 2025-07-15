@@ -58,7 +58,7 @@ impl MIDIInput {
         self.inner.get("onmidimessage").as_::<Any>()
     }
 
-    pub fn set_onmidimessage(&mut self, value: Any) {
+    pub fn set_onmidimessage(&mut self, value: &Any) {
         self.inner.set("onmidimessage", value);
     }
 }

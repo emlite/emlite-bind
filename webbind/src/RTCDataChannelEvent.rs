@@ -54,7 +54,7 @@ impl From<&RTCDataChannelEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(RTCDataChannelEvent);
 
 impl RTCDataChannelEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> RTCDataChannelEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> RTCDataChannelEvent {
         Self {
             inner: emlite::Val::global("RTCDataChannelEvent")
                 .new(&[type_.into(), event_init_dict.into()])

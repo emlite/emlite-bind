@@ -64,7 +64,7 @@ impl HTMLCollection {
     }
 }
 impl HTMLCollection {
-    pub fn named_item(&self, name: DOMString) -> Element {
+    pub fn named_item(&self, name: &str) -> Element {
         self.inner
             .call("namedItem", &[name.into()])
             .as_::<Element>()

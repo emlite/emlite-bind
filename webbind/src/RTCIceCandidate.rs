@@ -62,7 +62,7 @@ impl RTCIceCandidate {
         }
     }
 
-    pub fn new1(candidate_init_dict: Any) -> RTCIceCandidate {
+    pub fn new1(candidate_init_dict: &Any) -> RTCIceCandidate {
         Self {
             inner: emlite::Val::global("RTCIceCandidate")
                 .new(&[candidate_init_dict.into()])
@@ -71,13 +71,13 @@ impl RTCIceCandidate {
     }
 }
 impl RTCIceCandidate {
-    pub fn candidate(&self) -> DOMString {
-        self.inner.get("candidate").as_::<DOMString>()
+    pub fn candidate(&self) -> String {
+        self.inner.get("candidate").as_::<String>()
     }
 }
 impl RTCIceCandidate {
-    pub fn sdp_mid(&self) -> DOMString {
-        self.inner.get("sdpMid").as_::<DOMString>()
+    pub fn sdp_mid(&self) -> String {
+        self.inner.get("sdpMid").as_::<String>()
     }
 }
 impl RTCIceCandidate {
@@ -86,8 +86,8 @@ impl RTCIceCandidate {
     }
 }
 impl RTCIceCandidate {
-    pub fn foundation(&self) -> DOMString {
-        self.inner.get("foundation").as_::<DOMString>()
+    pub fn foundation(&self) -> String {
+        self.inner.get("foundation").as_::<String>()
     }
 }
 impl RTCIceCandidate {
@@ -101,8 +101,8 @@ impl RTCIceCandidate {
     }
 }
 impl RTCIceCandidate {
-    pub fn address(&self) -> DOMString {
-        self.inner.get("address").as_::<DOMString>()
+    pub fn address(&self) -> String {
+        self.inner.get("address").as_::<String>()
     }
 }
 impl RTCIceCandidate {
@@ -126,8 +126,8 @@ impl RTCIceCandidate {
     }
 }
 impl RTCIceCandidate {
-    pub fn related_address(&self) -> DOMString {
-        self.inner.get("relatedAddress").as_::<DOMString>()
+    pub fn related_address(&self) -> String {
+        self.inner.get("relatedAddress").as_::<String>()
     }
 }
 impl RTCIceCandidate {
@@ -136,8 +136,8 @@ impl RTCIceCandidate {
     }
 }
 impl RTCIceCandidate {
-    pub fn username_fragment(&self) -> DOMString {
-        self.inner.get("usernameFragment").as_::<DOMString>()
+    pub fn username_fragment(&self) -> String {
+        self.inner.get("usernameFragment").as_::<String>()
     }
 }
 impl RTCIceCandidate {
@@ -148,8 +148,8 @@ impl RTCIceCandidate {
     }
 }
 impl RTCIceCandidate {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }
 impl RTCIceCandidate {

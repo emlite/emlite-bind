@@ -60,7 +60,7 @@ impl Path2D {
         }
     }
 
-    pub fn new1(path: Any) -> Path2D {
+    pub fn new1(path: &Any) -> Path2D {
         Self {
             inner: emlite::Val::global("Path2D")
                 .new(&[path.into()])
@@ -69,13 +69,13 @@ impl Path2D {
     }
 }
 impl Path2D {
-    pub fn add_path0(&self, path: Path2D) -> Undefined {
+    pub fn add_path0(&self, path: &Path2D) -> Undefined {
         self.inner
             .call("addPath", &[path.into()])
             .as_::<Undefined>()
     }
 
-    pub fn add_path1(&self, path: Path2D, transform: DOMMatrix2DInit) -> Undefined {
+    pub fn add_path1(&self, path: &Path2D, transform: &DOMMatrix2DInit) -> Undefined {
         self.inner
             .call("addPath", &[path.into(), transform.into()])
             .as_::<Undefined>()
@@ -159,7 +159,7 @@ impl Path2D {
             .as_::<Undefined>()
     }
 
-    pub fn round_rect1(&self, x: f64, y: f64, w: f64, h: f64, radii: Any) -> Undefined {
+    pub fn round_rect1(&self, x: f64, y: f64, w: f64, h: f64, radii: &Any) -> Undefined {
         self.inner
             .call(
                 "roundRect",

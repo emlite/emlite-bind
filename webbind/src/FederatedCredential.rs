@@ -54,7 +54,7 @@ impl From<&FederatedCredential> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(FederatedCredential);
 
 impl FederatedCredential {
-    pub fn new(data: Any) -> FederatedCredential {
+    pub fn new(data: &Any) -> FederatedCredential {
         Self {
             inner: emlite::Val::global("FederatedCredential")
                 .new(&[data.into()])
@@ -63,22 +63,22 @@ impl FederatedCredential {
     }
 }
 impl FederatedCredential {
-    pub fn provider(&self) -> USVString {
-        self.inner.get("provider").as_::<USVString>()
+    pub fn provider(&self) -> String {
+        self.inner.get("provider").as_::<String>()
     }
 }
 impl FederatedCredential {
-    pub fn protocol(&self) -> DOMString {
-        self.inner.get("protocol").as_::<DOMString>()
+    pub fn protocol(&self) -> String {
+        self.inner.get("protocol").as_::<String>()
     }
 }
 impl FederatedCredential {
-    pub fn name(&self) -> USVString {
-        self.inner.get("name").as_::<USVString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl FederatedCredential {
-    pub fn icon_url(&self) -> USVString {
-        self.inner.get("iconURL").as_::<USVString>()
+    pub fn icon_url(&self) -> String {
+        self.inner.get("iconURL").as_::<String>()
     }
 }

@@ -133,13 +133,13 @@ impl FileSystemDirectoryEntry {
         self.inner.call("getFile", &[]).as_::<Undefined>()
     }
 
-    pub fn get_file1(&self, path: USVString) -> Undefined {
+    pub fn get_file1(&self, path: &str) -> Undefined {
         self.inner
             .call("getFile", &[path.into()])
             .as_::<Undefined>()
     }
 
-    pub fn get_file2(&self, path: USVString, options: FileSystemFlags) -> Undefined {
+    pub fn get_file2(&self, path: &str, options: &FileSystemFlags) -> Undefined {
         self.inner
             .call("getFile", &[path.into(), options.into()])
             .as_::<Undefined>()
@@ -147,9 +147,9 @@ impl FileSystemDirectoryEntry {
 
     pub fn get_file3(
         &self,
-        path: USVString,
-        options: FileSystemFlags,
-        success_callback: Function,
+        path: &str,
+        options: &FileSystemFlags,
+        success_callback: &Function,
     ) -> Undefined {
         self.inner
             .call(
@@ -161,10 +161,10 @@ impl FileSystemDirectoryEntry {
 
     pub fn get_file4(
         &self,
-        path: USVString,
-        options: FileSystemFlags,
-        success_callback: Function,
-        error_callback: Function,
+        path: &str,
+        options: &FileSystemFlags,
+        success_callback: &Function,
+        error_callback: &Function,
     ) -> Undefined {
         self.inner
             .call(
@@ -184,13 +184,13 @@ impl FileSystemDirectoryEntry {
         self.inner.call("getDirectory", &[]).as_::<Undefined>()
     }
 
-    pub fn get_directory1(&self, path: USVString) -> Undefined {
+    pub fn get_directory1(&self, path: &str) -> Undefined {
         self.inner
             .call("getDirectory", &[path.into()])
             .as_::<Undefined>()
     }
 
-    pub fn get_directory2(&self, path: USVString, options: FileSystemFlags) -> Undefined {
+    pub fn get_directory2(&self, path: &str, options: &FileSystemFlags) -> Undefined {
         self.inner
             .call("getDirectory", &[path.into(), options.into()])
             .as_::<Undefined>()
@@ -198,9 +198,9 @@ impl FileSystemDirectoryEntry {
 
     pub fn get_directory3(
         &self,
-        path: USVString,
-        options: FileSystemFlags,
-        success_callback: Function,
+        path: &str,
+        options: &FileSystemFlags,
+        success_callback: &Function,
     ) -> Undefined {
         self.inner
             .call(
@@ -212,10 +212,10 @@ impl FileSystemDirectoryEntry {
 
     pub fn get_directory4(
         &self,
-        path: USVString,
-        options: FileSystemFlags,
-        success_callback: Function,
-        error_callback: Function,
+        path: &str,
+        options: &FileSystemFlags,
+        success_callback: &Function,
+        error_callback: &Function,
     ) -> Undefined {
         self.inner
             .call(

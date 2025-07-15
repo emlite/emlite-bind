@@ -65,7 +65,7 @@ impl History {
             .as_::<ScrollRestoration>()
     }
 
-    pub fn set_scroll_restoration(&mut self, value: ScrollRestoration) {
+    pub fn set_scroll_restoration(&mut self, value: &ScrollRestoration) {
         self.inner.set("scrollRestoration", value);
     }
 }
@@ -94,26 +94,26 @@ impl History {
     }
 }
 impl History {
-    pub fn push_state0(&self, data: Any, unused: DOMString) -> Undefined {
+    pub fn push_state0(&self, data: &Any, unused: &str) -> Undefined {
         self.inner
             .call("pushState", &[data.into(), unused.into()])
             .as_::<Undefined>()
     }
 
-    pub fn push_state1(&self, data: Any, unused: DOMString, url: USVString) -> Undefined {
+    pub fn push_state1(&self, data: &Any, unused: &str, url: &str) -> Undefined {
         self.inner
             .call("pushState", &[data.into(), unused.into(), url.into()])
             .as_::<Undefined>()
     }
 }
 impl History {
-    pub fn replace_state0(&self, data: Any, unused: DOMString) -> Undefined {
+    pub fn replace_state0(&self, data: &Any, unused: &str) -> Undefined {
         self.inner
             .call("replaceState", &[data.into(), unused.into()])
             .as_::<Undefined>()
     }
 
-    pub fn replace_state1(&self, data: Any, unused: DOMString, url: USVString) -> Undefined {
+    pub fn replace_state1(&self, data: &Any, unused: &str, url: &str) -> Undefined {
         self.inner
             .call("replaceState", &[data.into(), unused.into(), url.into()])
             .as_::<Undefined>()

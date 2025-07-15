@@ -62,7 +62,7 @@ impl WritableStream {
         }
     }
 
-    pub fn new1(underlying_sink: Object) -> WritableStream {
+    pub fn new1(underlying_sink: &Object) -> WritableStream {
         Self {
             inner: emlite::Val::global("WritableStream")
                 .new(&[underlying_sink.into()])
@@ -70,7 +70,7 @@ impl WritableStream {
         }
     }
 
-    pub fn new2(underlying_sink: Object, strategy: Any) -> WritableStream {
+    pub fn new2(underlying_sink: &Object, strategy: &Any) -> WritableStream {
         Self {
             inner: emlite::Val::global("WritableStream")
                 .new(&[underlying_sink.into(), strategy.into()])
@@ -88,7 +88,7 @@ impl WritableStream {
         self.inner.call("abort", &[]).as_::<Promise>()
     }
 
-    pub fn abort1(&self, reason: Any) -> Promise {
+    pub fn abort1(&self, reason: &Any) -> Promise {
         self.inner.call("abort", &[reason.into()]).as_::<Promise>()
     }
 }

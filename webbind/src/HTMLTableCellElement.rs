@@ -81,11 +81,11 @@ impl HTMLTableCellElement {
     }
 }
 impl HTMLTableCellElement {
-    pub fn headers(&self) -> DOMString {
-        self.inner.get("headers").as_::<DOMString>()
+    pub fn headers(&self) -> String {
+        self.inner.get("headers").as_::<String>()
     }
 
-    pub fn set_headers(&mut self, value: DOMString) {
+    pub fn set_headers(&mut self, value: &str) {
         self.inner.set("headers", value);
     }
 }
@@ -95,74 +95,74 @@ impl HTMLTableCellElement {
     }
 }
 impl HTMLTableCellElement {
-    pub fn scope(&self) -> DOMString {
-        self.inner.get("scope").as_::<DOMString>()
+    pub fn scope(&self) -> String {
+        self.inner.get("scope").as_::<String>()
     }
 
-    pub fn set_scope(&mut self, value: DOMString) {
+    pub fn set_scope(&mut self, value: &str) {
         self.inner.set("scope", value);
     }
 }
 impl HTMLTableCellElement {
-    pub fn abbr(&self) -> DOMString {
-        self.inner.get("abbr").as_::<DOMString>()
+    pub fn abbr(&self) -> String {
+        self.inner.get("abbr").as_::<String>()
     }
 
-    pub fn set_abbr(&mut self, value: DOMString) {
+    pub fn set_abbr(&mut self, value: &str) {
         self.inner.set("abbr", value);
     }
 }
 impl HTMLTableCellElement {
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> String {
+        self.inner.get("align").as_::<String>()
     }
 
-    pub fn set_align(&mut self, value: DOMString) {
+    pub fn set_align(&mut self, value: &str) {
         self.inner.set("align", value);
     }
 }
 impl HTMLTableCellElement {
-    pub fn axis(&self) -> DOMString {
-        self.inner.get("axis").as_::<DOMString>()
+    pub fn axis(&self) -> String {
+        self.inner.get("axis").as_::<String>()
     }
 
-    pub fn set_axis(&mut self, value: DOMString) {
+    pub fn set_axis(&mut self, value: &str) {
         self.inner.set("axis", value);
     }
 }
 impl HTMLTableCellElement {
-    pub fn height(&self) -> DOMString {
-        self.inner.get("height").as_::<DOMString>()
+    pub fn height(&self) -> String {
+        self.inner.get("height").as_::<String>()
     }
 
-    pub fn set_height(&mut self, value: DOMString) {
+    pub fn set_height(&mut self, value: &str) {
         self.inner.set("height", value);
     }
 }
 impl HTMLTableCellElement {
-    pub fn width(&self) -> DOMString {
-        self.inner.get("width").as_::<DOMString>()
+    pub fn width(&self) -> String {
+        self.inner.get("width").as_::<String>()
     }
 
-    pub fn set_width(&mut self, value: DOMString) {
+    pub fn set_width(&mut self, value: &str) {
         self.inner.set("width", value);
     }
 }
 impl HTMLTableCellElement {
-    pub fn ch(&self) -> DOMString {
-        self.inner.get("ch").as_::<DOMString>()
+    pub fn ch(&self) -> String {
+        self.inner.get("ch").as_::<String>()
     }
 
-    pub fn set_ch(&mut self, value: DOMString) {
+    pub fn set_ch(&mut self, value: &str) {
         self.inner.set("ch", value);
     }
 }
 impl HTMLTableCellElement {
-    pub fn ch_off(&self) -> DOMString {
-        self.inner.get("chOff").as_::<DOMString>()
+    pub fn ch_off(&self) -> String {
+        self.inner.get("chOff").as_::<String>()
     }
 
-    pub fn set_ch_off(&mut self, value: DOMString) {
+    pub fn set_ch_off(&mut self, value: &str) {
         self.inner.set("chOff", value);
     }
 }
@@ -176,20 +176,20 @@ impl HTMLTableCellElement {
     }
 }
 impl HTMLTableCellElement {
-    pub fn v_align(&self) -> DOMString {
-        self.inner.get("vAlign").as_::<DOMString>()
+    pub fn v_align(&self) -> String {
+        self.inner.get("vAlign").as_::<String>()
     }
 
-    pub fn set_v_align(&mut self, value: DOMString) {
+    pub fn set_v_align(&mut self, value: &str) {
         self.inner.set("vAlign", value);
     }
 }
 impl HTMLTableCellElement {
-    pub fn bg_color(&self) -> DOMString {
-        self.inner.get("bgColor").as_::<DOMString>()
+    pub fn bg_color(&self) -> String {
+        self.inner.get("bgColor").as_::<String>()
     }
 
-    pub fn set_bg_color(&mut self, value: DOMString) {
+    pub fn set_bg_color(&mut self, value: &str) {
         self.inner.set("bgColor", value);
     }
 }

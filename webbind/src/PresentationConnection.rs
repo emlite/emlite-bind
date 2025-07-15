@@ -54,13 +54,13 @@ impl From<&PresentationConnection> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PresentationConnection);
 
 impl PresentationConnection {
-    pub fn id(&self) -> USVString {
-        self.inner.get("id").as_::<USVString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl PresentationConnection {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }
 impl PresentationConnection {
@@ -83,7 +83,7 @@ impl PresentationConnection {
         self.inner.get("onconnect").as_::<Any>()
     }
 
-    pub fn set_onconnect(&mut self, value: Any) {
+    pub fn set_onconnect(&mut self, value: &Any) {
         self.inner.set("onconnect", value);
     }
 }
@@ -92,7 +92,7 @@ impl PresentationConnection {
         self.inner.get("onclose").as_::<Any>()
     }
 
-    pub fn set_onclose(&mut self, value: Any) {
+    pub fn set_onclose(&mut self, value: &Any) {
         self.inner.set("onclose", value);
     }
 }
@@ -101,7 +101,7 @@ impl PresentationConnection {
         self.inner.get("onterminate").as_::<Any>()
     }
 
-    pub fn set_onterminate(&mut self, value: Any) {
+    pub fn set_onterminate(&mut self, value: &Any) {
         self.inner.set("onterminate", value);
     }
 }
@@ -110,7 +110,7 @@ impl PresentationConnection {
         self.inner.get("binaryType").as_::<BinaryType>()
     }
 
-    pub fn set_binary_type(&mut self, value: BinaryType) {
+    pub fn set_binary_type(&mut self, value: &BinaryType) {
         self.inner.set("binaryType", value);
     }
 }
@@ -119,12 +119,12 @@ impl PresentationConnection {
         self.inner.get("onmessage").as_::<Any>()
     }
 
-    pub fn set_onmessage(&mut self, value: Any) {
+    pub fn set_onmessage(&mut self, value: &Any) {
         self.inner.set("onmessage", value);
     }
 }
 impl PresentationConnection {
-    pub fn send(&self, data: Any) -> Undefined {
+    pub fn send(&self, data: &Any) -> Undefined {
         self.inner.call("send", &[data.into()]).as_::<Undefined>()
     }
 }

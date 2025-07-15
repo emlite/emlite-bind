@@ -69,8 +69,8 @@ impl PerformanceElementTiming {
     }
 }
 impl PerformanceElementTiming {
-    pub fn identifier(&self) -> DOMString {
-        self.inner.get("identifier").as_::<DOMString>()
+    pub fn identifier(&self) -> String {
+        self.inner.get("identifier").as_::<String>()
     }
 }
 impl PerformanceElementTiming {
@@ -84,8 +84,8 @@ impl PerformanceElementTiming {
     }
 }
 impl PerformanceElementTiming {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl PerformanceElementTiming {
@@ -94,8 +94,8 @@ impl PerformanceElementTiming {
     }
 }
 impl PerformanceElementTiming {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }
 impl PerformanceElementTiming {

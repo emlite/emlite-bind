@@ -57,7 +57,7 @@ impl IDBTransactionOptions {
             .as_::<IDBTransactionDurability>()
     }
 
-    pub fn set_durability(&mut self, value: IDBTransactionDurability) {
+    pub fn set_durability(&mut self, value: &IDBTransactionDurability) {
         self.inner.set("durability", value);
     }
 }
@@ -116,7 +116,7 @@ impl IDBObjectStoreParameters {
         self.inner.get("keyPath").as_::<Any>()
     }
 
-    pub fn set_key_path(&mut self, value: Any) {
+    pub fn set_key_path(&mut self, value: &Any) {
         self.inner.set("keyPath", value);
     }
 }
@@ -183,8 +183,8 @@ impl From<&IDBDatabase> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(IDBDatabase);
 
 impl IDBDatabase {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl IDBDatabase {
@@ -198,13 +198,13 @@ impl IDBDatabase {
     }
 }
 impl IDBDatabase {
-    pub fn transaction0(&self, store_names: Any) -> IDBTransaction {
+    pub fn transaction0(&self, store_names: &Any) -> IDBTransaction {
         self.inner
             .call("transaction", &[store_names.into()])
             .as_::<IDBTransaction>()
     }
 
-    pub fn transaction1(&self, store_names: Any, mode: IDBTransactionMode) -> IDBTransaction {
+    pub fn transaction1(&self, store_names: &Any, mode: &IDBTransactionMode) -> IDBTransaction {
         self.inner
             .call("transaction", &[store_names.into(), mode.into()])
             .as_::<IDBTransaction>()
@@ -212,9 +212,9 @@ impl IDBDatabase {
 
     pub fn transaction2(
         &self,
-        store_names: Any,
-        mode: IDBTransactionMode,
-        options: IDBTransactionOptions,
+        store_names: &Any,
+        mode: &IDBTransactionMode,
+        options: &IDBTransactionOptions,
     ) -> IDBTransaction {
         self.inner
             .call(
@@ -230,7 +230,7 @@ impl IDBDatabase {
     }
 }
 impl IDBDatabase {
-    pub fn create_object_store0(&self, name: DOMString) -> IDBObjectStore {
+    pub fn create_object_store0(&self, name: &str) -> IDBObjectStore {
         self.inner
             .call("createObjectStore", &[name.into()])
             .as_::<IDBObjectStore>()
@@ -238,8 +238,8 @@ impl IDBDatabase {
 
     pub fn create_object_store1(
         &self,
-        name: DOMString,
-        options: IDBObjectStoreParameters,
+        name: &str,
+        options: &IDBObjectStoreParameters,
     ) -> IDBObjectStore {
         self.inner
             .call("createObjectStore", &[name.into(), options.into()])
@@ -247,7 +247,7 @@ impl IDBDatabase {
     }
 }
 impl IDBDatabase {
-    pub fn delete_object_store(&self, name: DOMString) -> Undefined {
+    pub fn delete_object_store(&self, name: &str) -> Undefined {
         self.inner
             .call("deleteObjectStore", &[name.into()])
             .as_::<Undefined>()
@@ -258,7 +258,7 @@ impl IDBDatabase {
         self.inner.get("onabort").as_::<Any>()
     }
 
-    pub fn set_onabort(&mut self, value: Any) {
+    pub fn set_onabort(&mut self, value: &Any) {
         self.inner.set("onabort", value);
     }
 }
@@ -267,7 +267,7 @@ impl IDBDatabase {
         self.inner.get("onclose").as_::<Any>()
     }
 
-    pub fn set_onclose(&mut self, value: Any) {
+    pub fn set_onclose(&mut self, value: &Any) {
         self.inner.set("onclose", value);
     }
 }
@@ -276,7 +276,7 @@ impl IDBDatabase {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }
@@ -285,7 +285,7 @@ impl IDBDatabase {
         self.inner.get("onversionchange").as_::<Any>()
     }
 
-    pub fn set_onversionchange(&mut self, value: Any) {
+    pub fn set_onversionchange(&mut self, value: &Any) {
         self.inner.set("onversionchange", value);
     }
 }

@@ -54,7 +54,7 @@ impl From<&PasswordCredential> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PasswordCredential);
 
 impl PasswordCredential {
-    pub fn new(data: Any) -> PasswordCredential {
+    pub fn new(data: &Any) -> PasswordCredential {
         Self {
             inner: emlite::Val::global("PasswordCredential")
                 .new(&[data.into()])
@@ -63,17 +63,17 @@ impl PasswordCredential {
     }
 }
 impl PasswordCredential {
-    pub fn password(&self) -> USVString {
-        self.inner.get("password").as_::<USVString>()
+    pub fn password(&self) -> String {
+        self.inner.get("password").as_::<String>()
     }
 }
 impl PasswordCredential {
-    pub fn name(&self) -> USVString {
-        self.inner.get("name").as_::<USVString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl PasswordCredential {
-    pub fn icon_url(&self) -> USVString {
-        self.inner.get("iconURL").as_::<USVString>()
+    pub fn icon_url(&self) -> String {
+        self.inner.get("iconURL").as_::<String>()
     }
 }

@@ -62,7 +62,7 @@ impl ViewTimeline {
         }
     }
 
-    pub fn new1(options: Any) -> ViewTimeline {
+    pub fn new1(options: &Any) -> ViewTimeline {
         Self {
             inner: emlite::Val::global("ViewTimeline")
                 .new(&[options.into()])

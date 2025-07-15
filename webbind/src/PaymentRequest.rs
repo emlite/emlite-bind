@@ -51,11 +51,11 @@ impl From<&PaymentDetailsUpdate> for emlite::Val {
 }
 
 impl PaymentDetailsUpdate {
-    pub fn error(&self) -> DOMString {
-        self.inner.get("error").as_::<DOMString>()
+    pub fn error(&self) -> String {
+        self.inner.get("error").as_::<String>()
     }
 
-    pub fn set_error(&mut self, value: DOMString) {
+    pub fn set_error(&mut self, value: &str) {
         self.inner.set("error", value);
     }
 }
@@ -64,7 +64,7 @@ impl PaymentDetailsUpdate {
         self.inner.get("total").as_::<Any>()
     }
 
-    pub fn set_total(&mut self, value: Any) {
+    pub fn set_total(&mut self, value: &Any) {
         self.inner.set("total", value);
     }
 }
@@ -73,7 +73,7 @@ impl PaymentDetailsUpdate {
         self.inner.get("shippingAddressErrors").as_::<Any>()
     }
 
-    pub fn set_shipping_address_errors(&mut self, value: Any) {
+    pub fn set_shipping_address_errors(&mut self, value: &Any) {
         self.inner.set("shippingAddressErrors", value);
     }
 }
@@ -82,7 +82,7 @@ impl PaymentDetailsUpdate {
         self.inner.get("payerErrors").as_::<Any>()
     }
 
-    pub fn set_payer_errors(&mut self, value: Any) {
+    pub fn set_payer_errors(&mut self, value: &Any) {
         self.inner.set("payerErrors", value);
     }
 }
@@ -91,7 +91,7 @@ impl PaymentDetailsUpdate {
         self.inner.get("paymentMethodErrors").as_::<Object>()
     }
 
-    pub fn set_payment_method_errors(&mut self, value: Object) {
+    pub fn set_payment_method_errors(&mut self, value: &Object) {
         self.inner.set("paymentMethodErrors", value);
     }
 }
@@ -149,7 +149,7 @@ impl From<&PaymentRequest> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(PaymentRequest);
 
 impl PaymentRequest {
-    pub fn new0(method_data: Sequence<PaymentMethodData>, details: Any) -> PaymentRequest {
+    pub fn new0(method_data: &Sequence<PaymentMethodData>, details: &Any) -> PaymentRequest {
         Self {
             inner: emlite::Val::global("PaymentRequest")
                 .new(&[method_data.into(), details.into()])
@@ -158,9 +158,9 @@ impl PaymentRequest {
     }
 
     pub fn new1(
-        method_data: Sequence<PaymentMethodData>,
-        details: Any,
-        options: Any,
+        method_data: &Sequence<PaymentMethodData>,
+        details: &Any,
+        options: &Any,
     ) -> PaymentRequest {
         Self {
             inner: emlite::Val::global("PaymentRequest")
@@ -174,7 +174,7 @@ impl PaymentRequest {
         self.inner.call("show", &[]).as_::<Promise>()
     }
 
-    pub fn show1(&self, details_promise: Promise) -> Promise {
+    pub fn show1(&self, details_promise: &Promise) -> Promise {
         self.inner
             .call("show", &[details_promise.into()])
             .as_::<Promise>()
@@ -191,8 +191,8 @@ impl PaymentRequest {
     }
 }
 impl PaymentRequest {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl PaymentRequest {
@@ -201,8 +201,8 @@ impl PaymentRequest {
     }
 }
 impl PaymentRequest {
-    pub fn shipping_option(&self) -> DOMString {
-        self.inner.get("shippingOption").as_::<DOMString>()
+    pub fn shipping_option(&self) -> String {
+        self.inner.get("shippingOption").as_::<String>()
     }
 }
 impl PaymentRequest {
@@ -215,7 +215,7 @@ impl PaymentRequest {
         self.inner.get("onshippingaddresschange").as_::<Any>()
     }
 
-    pub fn set_onshippingaddresschange(&mut self, value: Any) {
+    pub fn set_onshippingaddresschange(&mut self, value: &Any) {
         self.inner.set("onshippingaddresschange", value);
     }
 }
@@ -224,7 +224,7 @@ impl PaymentRequest {
         self.inner.get("onshippingoptionchange").as_::<Any>()
     }
 
-    pub fn set_onshippingoptionchange(&mut self, value: Any) {
+    pub fn set_onshippingoptionchange(&mut self, value: &Any) {
         self.inner.set("onshippingoptionchange", value);
     }
 }
@@ -233,7 +233,7 @@ impl PaymentRequest {
         self.inner.get("onpaymentmethodchange").as_::<Any>()
     }
 
-    pub fn set_onpaymentmethodchange(&mut self, value: Any) {
+    pub fn set_onpaymentmethodchange(&mut self, value: &Any) {
         self.inner.set("onpaymentmethodchange", value);
     }
 }

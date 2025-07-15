@@ -54,7 +54,7 @@ impl From<&CookieStoreManager> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CookieStoreManager);
 
 impl CookieStoreManager {
-    pub fn subscribe(&self, subscriptions: Sequence<CookieStoreGetOptions>) -> Promise {
+    pub fn subscribe(&self, subscriptions: &Sequence<CookieStoreGetOptions>) -> Promise {
         self.inner
             .call("subscribe", &[subscriptions.into()])
             .as_::<Promise>()
@@ -66,7 +66,7 @@ impl CookieStoreManager {
     }
 }
 impl CookieStoreManager {
-    pub fn unsubscribe(&self, subscriptions: Sequence<CookieStoreGetOptions>) -> Promise {
+    pub fn unsubscribe(&self, subscriptions: &Sequence<CookieStoreGetOptions>) -> Promise {
         self.inner
             .call("unsubscribe", &[subscriptions.into()])
             .as_::<Promise>()

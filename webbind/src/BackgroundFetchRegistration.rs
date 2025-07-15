@@ -131,8 +131,8 @@ impl From<&BackgroundFetchRegistration> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(BackgroundFetchRegistration);
 
 impl BackgroundFetchRegistration {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl BackgroundFetchRegistration {
@@ -177,7 +177,7 @@ impl BackgroundFetchRegistration {
         self.inner.get("onprogress").as_::<Any>()
     }
 
-    pub fn set_onprogress(&mut self, value: Any) {
+    pub fn set_onprogress(&mut self, value: &Any) {
         self.inner.set("onprogress", value);
     }
 }
@@ -187,11 +187,11 @@ impl BackgroundFetchRegistration {
     }
 }
 impl BackgroundFetchRegistration {
-    pub fn match_0(&self, request: Any) -> Promise {
+    pub fn match_0(&self, request: &Any) -> Promise {
         self.inner.call("match", &[request.into()]).as_::<Promise>()
     }
 
-    pub fn match_1(&self, request: Any, options: CacheQueryOptions) -> Promise {
+    pub fn match_1(&self, request: &Any, options: &CacheQueryOptions) -> Promise {
         self.inner
             .call("match", &[request.into(), options.into()])
             .as_::<Promise>()
@@ -202,13 +202,13 @@ impl BackgroundFetchRegistration {
         self.inner.call("matchAll", &[]).as_::<Promise>()
     }
 
-    pub fn match_all1(&self, request: Any) -> Promise {
+    pub fn match_all1(&self, request: &Any) -> Promise {
         self.inner
             .call("matchAll", &[request.into()])
             .as_::<Promise>()
     }
 
-    pub fn match_all2(&self, request: Any, options: CacheQueryOptions) -> Promise {
+    pub fn match_all2(&self, request: &Any, options: &CacheQueryOptions) -> Promise {
         self.inner
             .call("matchAll", &[request.into(), options.into()])
             .as_::<Promise>()

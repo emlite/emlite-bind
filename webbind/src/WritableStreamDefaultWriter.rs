@@ -54,7 +54,7 @@ impl From<&WritableStreamDefaultWriter> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(WritableStreamDefaultWriter);
 
 impl WritableStreamDefaultWriter {
-    pub fn new(stream: WritableStream) -> WritableStreamDefaultWriter {
+    pub fn new(stream: &WritableStream) -> WritableStreamDefaultWriter {
         Self {
             inner: emlite::Val::global("WritableStreamDefaultWriter")
                 .new(&[stream.into()])
@@ -82,7 +82,7 @@ impl WritableStreamDefaultWriter {
         self.inner.call("abort", &[]).as_::<Promise>()
     }
 
-    pub fn abort1(&self, reason: Any) -> Promise {
+    pub fn abort1(&self, reason: &Any) -> Promise {
         self.inner.call("abort", &[reason.into()]).as_::<Promise>()
     }
 }
@@ -101,7 +101,7 @@ impl WritableStreamDefaultWriter {
         self.inner.call("write", &[]).as_::<Promise>()
     }
 
-    pub fn write1(&self, chunk: Any) -> Promise {
+    pub fn write1(&self, chunk: &Any) -> Promise {
         self.inner.call("write", &[chunk.into()]).as_::<Promise>()
     }
 }

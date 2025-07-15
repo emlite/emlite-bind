@@ -87,7 +87,7 @@ impl XRProjectionLayer {
         self.inner.get("deltaPose").as_::<XRRigidTransform>()
     }
 
-    pub fn set_delta_pose(&mut self, value: XRRigidTransform) {
+    pub fn set_delta_pose(&mut self, value: &XRRigidTransform) {
         self.inner.set("deltaPose", value);
     }
 }

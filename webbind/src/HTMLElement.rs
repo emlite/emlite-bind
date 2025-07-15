@@ -55,7 +55,7 @@ impl ShowPopoverOptions {
         self.inner.get("source").as_::<HTMLElement>()
     }
 
-    pub fn set_source(&mut self, value: HTMLElement) {
+    pub fn set_source(&mut self, value: &HTMLElement) {
         self.inner.set("source", value);
     }
 }
@@ -120,20 +120,20 @@ impl HTMLElement {
     }
 }
 impl HTMLElement {
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> String {
+        self.inner.get("title").as_::<String>()
     }
 
-    pub fn set_title(&mut self, value: DOMString) {
+    pub fn set_title(&mut self, value: &str) {
         self.inner.set("title", value);
     }
 }
 impl HTMLElement {
-    pub fn lang(&self) -> DOMString {
-        self.inner.get("lang").as_::<DOMString>()
+    pub fn lang(&self) -> String {
+        self.inner.get("lang").as_::<String>()
     }
 
-    pub fn set_lang(&mut self, value: DOMString) {
+    pub fn set_lang(&mut self, value: &str) {
         self.inner.set("lang", value);
     }
 }
@@ -147,11 +147,11 @@ impl HTMLElement {
     }
 }
 impl HTMLElement {
-    pub fn dir(&self) -> DOMString {
-        self.inner.get("dir").as_::<DOMString>()
+    pub fn dir(&self) -> String {
+        self.inner.get("dir").as_::<String>()
     }
 
-    pub fn set_dir(&mut self, value: DOMString) {
+    pub fn set_dir(&mut self, value: &str) {
         self.inner.set("dir", value);
     }
 }
@@ -160,7 +160,7 @@ impl HTMLElement {
         self.inner.get("hidden").as_::<Any>()
     }
 
-    pub fn set_hidden(&mut self, value: Any) {
+    pub fn set_hidden(&mut self, value: &Any) {
         self.inner.set("hidden", value);
     }
 }
@@ -179,17 +179,17 @@ impl HTMLElement {
     }
 }
 impl HTMLElement {
-    pub fn access_key(&self) -> DOMString {
-        self.inner.get("accessKey").as_::<DOMString>()
+    pub fn access_key(&self) -> String {
+        self.inner.get("accessKey").as_::<String>()
     }
 
-    pub fn set_access_key(&mut self, value: DOMString) {
+    pub fn set_access_key(&mut self, value: &str) {
         self.inner.set("accessKey", value);
     }
 }
 impl HTMLElement {
-    pub fn access_key_label(&self) -> DOMString {
-        self.inner.get("accessKeyLabel").as_::<DOMString>()
+    pub fn access_key_label(&self) -> String {
+        self.inner.get("accessKeyLabel").as_::<String>()
     }
 }
 impl HTMLElement {
@@ -211,20 +211,20 @@ impl HTMLElement {
     }
 }
 impl HTMLElement {
-    pub fn writing_suggestions(&self) -> DOMString {
-        self.inner.get("writingSuggestions").as_::<DOMString>()
+    pub fn writing_suggestions(&self) -> String {
+        self.inner.get("writingSuggestions").as_::<String>()
     }
 
-    pub fn set_writing_suggestions(&mut self, value: DOMString) {
+    pub fn set_writing_suggestions(&mut self, value: &str) {
         self.inner.set("writingSuggestions", value);
     }
 }
 impl HTMLElement {
-    pub fn autocapitalize(&self) -> DOMString {
-        self.inner.get("autocapitalize").as_::<DOMString>()
+    pub fn autocapitalize(&self) -> String {
+        self.inner.get("autocapitalize").as_::<String>()
     }
 
-    pub fn set_autocapitalize(&mut self, value: DOMString) {
+    pub fn set_autocapitalize(&mut self, value: &str) {
         self.inner.set("autocapitalize", value);
     }
 }
@@ -238,20 +238,20 @@ impl HTMLElement {
     }
 }
 impl HTMLElement {
-    pub fn inner_text(&self) -> DOMString {
-        self.inner.get("innerText").as_::<DOMString>()
+    pub fn inner_text(&self) -> String {
+        self.inner.get("innerText").as_::<String>()
     }
 
-    pub fn set_inner_text(&mut self, value: DOMString) {
+    pub fn set_inner_text(&mut self, value: &str) {
         self.inner.set("innerText", value);
     }
 }
 impl HTMLElement {
-    pub fn outer_text(&self) -> DOMString {
-        self.inner.get("outerText").as_::<DOMString>()
+    pub fn outer_text(&self) -> String {
+        self.inner.get("outerText").as_::<String>()
     }
 
-    pub fn set_outer_text(&mut self, value: DOMString) {
+    pub fn set_outer_text(&mut self, value: &str) {
         self.inner.set("outerText", value);
     }
 }
@@ -267,7 +267,7 @@ impl HTMLElement {
         self.inner.call("showPopover", &[]).as_::<Undefined>()
     }
 
-    pub fn show_popover1(&self, options: ShowPopoverOptions) -> Undefined {
+    pub fn show_popover1(&self, options: &ShowPopoverOptions) -> Undefined {
         self.inner
             .call("showPopover", &[options.into()])
             .as_::<Undefined>()
@@ -283,18 +283,18 @@ impl HTMLElement {
         self.inner.call("togglePopover", &[]).as_::<bool>()
     }
 
-    pub fn toggle_popover1(&self, options: Any) -> bool {
+    pub fn toggle_popover1(&self, options: &Any) -> bool {
         self.inner
             .call("togglePopover", &[options.into()])
             .as_::<bool>()
     }
 }
 impl HTMLElement {
-    pub fn popover(&self) -> DOMString {
-        self.inner.get("popover").as_::<DOMString>()
+    pub fn popover(&self) -> String {
+        self.inner.get("popover").as_::<String>()
     }
 
-    pub fn set_popover(&mut self, value: DOMString) {
+    pub fn set_popover(&mut self, value: &str) {
         self.inner.set("popover", value);
     }
 }
@@ -333,7 +333,7 @@ impl HTMLElement {
         self.inner.get("editContext").as_::<EditContext>()
     }
 
-    pub fn set_edit_context(&mut self, value: EditContext) {
+    pub fn set_edit_context(&mut self, value: &EditContext) {
         self.inner.set("editContext", value);
     }
 }
@@ -347,16 +347,16 @@ impl HTMLElement {
         self.inner.get("onbeforexrselect").as_::<Any>()
     }
 
-    pub fn set_onbeforexrselect(&mut self, value: Any) {
+    pub fn set_onbeforexrselect(&mut self, value: &Any) {
         self.inner.set("onbeforexrselect", value);
     }
 }
 impl HTMLElement {
-    pub fn virtual_keyboard_policy(&self) -> DOMString {
-        self.inner.get("virtualKeyboardPolicy").as_::<DOMString>()
+    pub fn virtual_keyboard_policy(&self) -> String {
+        self.inner.get("virtualKeyboardPolicy").as_::<String>()
     }
 
-    pub fn set_virtual_keyboard_policy(&mut self, value: DOMString) {
+    pub fn set_virtual_keyboard_policy(&mut self, value: &str) {
         self.inner.set("virtualKeyboardPolicy", value);
     }
 }
@@ -366,11 +366,11 @@ impl HTMLElement {
     }
 }
 impl HTMLElement {
-    pub fn nonce(&self) -> DOMString {
-        self.inner.get("nonce").as_::<DOMString>()
+    pub fn nonce(&self) -> String {
+        self.inner.get("nonce").as_::<String>()
     }
 
-    pub fn set_nonce(&mut self, value: DOMString) {
+    pub fn set_nonce(&mut self, value: &str) {
         self.inner.set("nonce", value);
     }
 }
@@ -397,7 +397,7 @@ impl HTMLElement {
         self.inner.call("focus", &[]).as_::<Undefined>()
     }
 
-    pub fn focus1(&self, options: FocusOptions) -> Undefined {
+    pub fn focus1(&self, options: &FocusOptions) -> Undefined {
         self.inner
             .call("focus", &[options.into()])
             .as_::<Undefined>()

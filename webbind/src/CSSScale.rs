@@ -54,7 +54,7 @@ impl From<&CSSScale> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSScale);
 
 impl CSSScale {
-    pub fn new0(x: Any, y: Any) -> CSSScale {
+    pub fn new0(x: &Any, y: &Any) -> CSSScale {
         Self {
             inner: emlite::Val::global("CSSScale")
                 .new(&[x.into(), y.into()])
@@ -62,7 +62,7 @@ impl CSSScale {
         }
     }
 
-    pub fn new1(x: Any, y: Any, z: Any) -> CSSScale {
+    pub fn new1(x: &Any, y: &Any, z: &Any) -> CSSScale {
         Self {
             inner: emlite::Val::global("CSSScale")
                 .new(&[x.into(), y.into(), z.into()])
@@ -75,7 +75,7 @@ impl CSSScale {
         self.inner.get("x").as_::<Any>()
     }
 
-    pub fn set_x(&mut self, value: Any) {
+    pub fn set_x(&mut self, value: &Any) {
         self.inner.set("x", value);
     }
 }
@@ -84,7 +84,7 @@ impl CSSScale {
         self.inner.get("y").as_::<Any>()
     }
 
-    pub fn set_y(&mut self, value: Any) {
+    pub fn set_y(&mut self, value: &Any) {
         self.inner.set("y", value);
     }
 }
@@ -93,7 +93,7 @@ impl CSSScale {
         self.inner.get("z").as_::<Any>()
     }
 
-    pub fn set_z(&mut self, value: Any) {
+    pub fn set_z(&mut self, value: &Any) {
         self.inner.set("z", value);
     }
 }

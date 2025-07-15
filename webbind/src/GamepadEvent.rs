@@ -54,7 +54,7 @@ impl From<&GamepadEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(GamepadEvent);
 
 impl GamepadEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> GamepadEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> GamepadEvent {
         Self {
             inner: emlite::Val::global("GamepadEvent")
                 .new(&[type_.into(), event_init_dict.into()])

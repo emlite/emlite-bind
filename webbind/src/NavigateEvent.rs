@@ -55,7 +55,7 @@ impl NavigationInterceptOptions {
         self.inner.get("handler").as_::<Function>()
     }
 
-    pub fn set_handler(&mut self, value: Function) {
+    pub fn set_handler(&mut self, value: &Function) {
         self.inner.set("handler", value);
     }
 }
@@ -64,7 +64,7 @@ impl NavigationInterceptOptions {
         self.inner.get("focusReset").as_::<NavigationFocusReset>()
     }
 
-    pub fn set_focus_reset(&mut self, value: NavigationFocusReset) {
+    pub fn set_focus_reset(&mut self, value: &NavigationFocusReset) {
         self.inner.set("focusReset", value);
     }
 }
@@ -73,7 +73,7 @@ impl NavigationInterceptOptions {
         self.inner.get("scroll").as_::<NavigationScrollBehavior>()
     }
 
-    pub fn set_scroll(&mut self, value: NavigationScrollBehavior) {
+    pub fn set_scroll(&mut self, value: &NavigationScrollBehavior) {
         self.inner.set("scroll", value);
     }
 }
@@ -131,7 +131,7 @@ impl From<&NavigateEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(NavigateEvent);
 
 impl NavigateEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> NavigateEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> NavigateEvent {
         Self {
             inner: emlite::Val::global("NavigateEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -175,8 +175,8 @@ impl NavigateEvent {
     }
 }
 impl NavigateEvent {
-    pub fn download_request(&self) -> DOMString {
-        self.inner.get("downloadRequest").as_::<DOMString>()
+    pub fn download_request(&self) -> String {
+        self.inner.get("downloadRequest").as_::<String>()
     }
 }
 impl NavigateEvent {
@@ -199,7 +199,7 @@ impl NavigateEvent {
         self.inner.call("intercept", &[]).as_::<Undefined>()
     }
 
-    pub fn intercept1(&self, options: NavigationInterceptOptions) -> Undefined {
+    pub fn intercept1(&self, options: &NavigationInterceptOptions) -> Undefined {
         self.inner
             .call("intercept", &[options.into()])
             .as_::<Undefined>()

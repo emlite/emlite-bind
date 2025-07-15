@@ -63,47 +63,47 @@ impl HTMLFrameElement {
     }
 }
 impl HTMLFrameElement {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
 impl HTMLFrameElement {
-    pub fn scrolling(&self) -> DOMString {
-        self.inner.get("scrolling").as_::<DOMString>()
+    pub fn scrolling(&self) -> String {
+        self.inner.get("scrolling").as_::<String>()
     }
 
-    pub fn set_scrolling(&mut self, value: DOMString) {
+    pub fn set_scrolling(&mut self, value: &str) {
         self.inner.set("scrolling", value);
     }
 }
 impl HTMLFrameElement {
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> String {
+        self.inner.get("src").as_::<String>()
     }
 
-    pub fn set_src(&mut self, value: USVString) {
+    pub fn set_src(&mut self, value: &str) {
         self.inner.set("src", value);
     }
 }
 impl HTMLFrameElement {
-    pub fn frame_border(&self) -> DOMString {
-        self.inner.get("frameBorder").as_::<DOMString>()
+    pub fn frame_border(&self) -> String {
+        self.inner.get("frameBorder").as_::<String>()
     }
 
-    pub fn set_frame_border(&mut self, value: DOMString) {
+    pub fn set_frame_border(&mut self, value: &str) {
         self.inner.set("frameBorder", value);
     }
 }
 impl HTMLFrameElement {
-    pub fn long_desc(&self) -> USVString {
-        self.inner.get("longDesc").as_::<USVString>()
+    pub fn long_desc(&self) -> String {
+        self.inner.get("longDesc").as_::<String>()
     }
 
-    pub fn set_long_desc(&mut self, value: USVString) {
+    pub fn set_long_desc(&mut self, value: &str) {
         self.inner.set("longDesc", value);
     }
 }
@@ -127,20 +127,20 @@ impl HTMLFrameElement {
     }
 }
 impl HTMLFrameElement {
-    pub fn margin_height(&self) -> DOMString {
-        self.inner.get("marginHeight").as_::<DOMString>()
+    pub fn margin_height(&self) -> String {
+        self.inner.get("marginHeight").as_::<String>()
     }
 
-    pub fn set_margin_height(&mut self, value: DOMString) {
+    pub fn set_margin_height(&mut self, value: &str) {
         self.inner.set("marginHeight", value);
     }
 }
 impl HTMLFrameElement {
-    pub fn margin_width(&self) -> DOMString {
-        self.inner.get("marginWidth").as_::<DOMString>()
+    pub fn margin_width(&self) -> String {
+        self.inner.get("marginWidth").as_::<String>()
     }
 
-    pub fn set_margin_width(&mut self, value: DOMString) {
+    pub fn set_margin_width(&mut self, value: &str) {
         self.inner.set("marginWidth", value);
     }
 }

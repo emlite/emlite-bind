@@ -61,21 +61,21 @@ impl OES_vertex_array_object {
     }
 }
 impl OES_vertex_array_object {
-    pub fn delete_vertex_array_oes(&self, array_object: WebGLVertexArrayObjectOES) -> Undefined {
+    pub fn delete_vertex_array_oes(&self, array_object: &WebGLVertexArrayObjectOES) -> Undefined {
         self.inner
             .call("deleteVertexArrayOES", &[array_object.into()])
             .as_::<Undefined>()
     }
 }
 impl OES_vertex_array_object {
-    pub fn is_vertex_array_oes(&self, array_object: WebGLVertexArrayObjectOES) -> Any {
+    pub fn is_vertex_array_oes(&self, array_object: &WebGLVertexArrayObjectOES) -> Any {
         self.inner
             .call("isVertexArrayOES", &[array_object.into()])
             .as_::<Any>()
     }
 }
 impl OES_vertex_array_object {
-    pub fn bind_vertex_array_oes(&self, array_object: WebGLVertexArrayObjectOES) -> Undefined {
+    pub fn bind_vertex_array_oes(&self, array_object: &WebGLVertexArrayObjectOES) -> Undefined {
         self.inner
             .call("bindVertexArrayOES", &[array_object.into()])
             .as_::<Undefined>()

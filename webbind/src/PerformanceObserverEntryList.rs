@@ -59,20 +59,20 @@ impl PerformanceObserverEntryList {
     }
 }
 impl PerformanceObserverEntryList {
-    pub fn get_entries_by_type(&self, type_: DOMString) -> Any {
+    pub fn get_entries_by_type(&self, type_: &str) -> Any {
         self.inner
             .call("getEntriesByType", &[type_.into()])
             .as_::<Any>()
     }
 }
 impl PerformanceObserverEntryList {
-    pub fn get_entries_by_name0(&self, name: DOMString) -> Any {
+    pub fn get_entries_by_name0(&self, name: &str) -> Any {
         self.inner
             .call("getEntriesByName", &[name.into()])
             .as_::<Any>()
     }
 
-    pub fn get_entries_by_name1(&self, name: DOMString, type_: DOMString) -> Any {
+    pub fn get_entries_by_name1(&self, name: &str, type_: &str) -> Any {
         self.inner
             .call("getEntriesByName", &[name.into(), type_.into()])
             .as_::<Any>()

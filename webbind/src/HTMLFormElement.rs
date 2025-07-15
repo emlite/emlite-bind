@@ -63,65 +63,65 @@ impl HTMLFormElement {
     }
 }
 impl HTMLFormElement {
-    pub fn accept_charset(&self) -> DOMString {
-        self.inner.get("acceptCharset").as_::<DOMString>()
+    pub fn accept_charset(&self) -> String {
+        self.inner.get("acceptCharset").as_::<String>()
     }
 
-    pub fn set_accept_charset(&mut self, value: DOMString) {
+    pub fn set_accept_charset(&mut self, value: &str) {
         self.inner.set("acceptCharset", value);
     }
 }
 impl HTMLFormElement {
-    pub fn action(&self) -> USVString {
-        self.inner.get("action").as_::<USVString>()
+    pub fn action(&self) -> String {
+        self.inner.get("action").as_::<String>()
     }
 
-    pub fn set_action(&mut self, value: USVString) {
+    pub fn set_action(&mut self, value: &str) {
         self.inner.set("action", value);
     }
 }
 impl HTMLFormElement {
-    pub fn autocomplete(&self) -> DOMString {
-        self.inner.get("autocomplete").as_::<DOMString>()
+    pub fn autocomplete(&self) -> String {
+        self.inner.get("autocomplete").as_::<String>()
     }
 
-    pub fn set_autocomplete(&mut self, value: DOMString) {
+    pub fn set_autocomplete(&mut self, value: &str) {
         self.inner.set("autocomplete", value);
     }
 }
 impl HTMLFormElement {
-    pub fn enctype(&self) -> DOMString {
-        self.inner.get("enctype").as_::<DOMString>()
+    pub fn enctype(&self) -> String {
+        self.inner.get("enctype").as_::<String>()
     }
 
-    pub fn set_enctype(&mut self, value: DOMString) {
+    pub fn set_enctype(&mut self, value: &str) {
         self.inner.set("enctype", value);
     }
 }
 impl HTMLFormElement {
-    pub fn encoding(&self) -> DOMString {
-        self.inner.get("encoding").as_::<DOMString>()
+    pub fn encoding(&self) -> String {
+        self.inner.get("encoding").as_::<String>()
     }
 
-    pub fn set_encoding(&mut self, value: DOMString) {
+    pub fn set_encoding(&mut self, value: &str) {
         self.inner.set("encoding", value);
     }
 }
 impl HTMLFormElement {
-    pub fn method(&self) -> DOMString {
-        self.inner.get("method").as_::<DOMString>()
+    pub fn method(&self) -> String {
+        self.inner.get("method").as_::<String>()
     }
 
-    pub fn set_method(&mut self, value: DOMString) {
+    pub fn set_method(&mut self, value: &str) {
         self.inner.set("method", value);
     }
 }
 impl HTMLFormElement {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 
-    pub fn set_name(&mut self, value: DOMString) {
+    pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
@@ -135,20 +135,20 @@ impl HTMLFormElement {
     }
 }
 impl HTMLFormElement {
-    pub fn target(&self) -> DOMString {
-        self.inner.get("target").as_::<DOMString>()
+    pub fn target(&self) -> String {
+        self.inner.get("target").as_::<String>()
     }
 
-    pub fn set_target(&mut self, value: DOMString) {
+    pub fn set_target(&mut self, value: &str) {
         self.inner.set("target", value);
     }
 }
 impl HTMLFormElement {
-    pub fn rel(&self) -> DOMString {
-        self.inner.get("rel").as_::<DOMString>()
+    pub fn rel(&self) -> String {
+        self.inner.get("rel").as_::<String>()
     }
 
-    pub fn set_rel(&mut self, value: DOMString) {
+    pub fn set_rel(&mut self, value: &str) {
         self.inner.set("rel", value);
     }
 }
@@ -179,7 +179,7 @@ impl HTMLFormElement {
         self.inner.call("requestSubmit", &[]).as_::<Undefined>()
     }
 
-    pub fn request_submit1(&self, submitter: HTMLElement) -> Undefined {
+    pub fn request_submit1(&self, submitter: &HTMLElement) -> Undefined {
         self.inner
             .call("requestSubmit", &[submitter.into()])
             .as_::<Undefined>()

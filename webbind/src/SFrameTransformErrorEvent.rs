@@ -54,7 +54,7 @@ impl From<&SFrameTransformErrorEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(SFrameTransformErrorEvent);
 
 impl SFrameTransformErrorEvent {
-    pub fn new(type_: DOMString, event_init_dict: Any) -> SFrameTransformErrorEvent {
+    pub fn new(type_: &str, event_init_dict: &Any) -> SFrameTransformErrorEvent {
         Self {
             inner: emlite::Val::global("SFrameTransformErrorEvent")
                 .new(&[type_.into(), event_init_dict.into()])

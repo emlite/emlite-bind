@@ -54,12 +54,12 @@ impl From<&CSSScopeRule> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(CSSScopeRule);
 
 impl CSSScopeRule {
-    pub fn start(&self) -> CSSOMString {
-        self.inner.get("start").as_::<CSSOMString>()
+    pub fn start(&self) -> String {
+        self.inner.get("start").as_::<String>()
     }
 }
 impl CSSScopeRule {
-    pub fn end(&self) -> CSSOMString {
-        self.inner.get("end").as_::<CSSOMString>()
+    pub fn end(&self) -> String {
+        self.inner.get("end").as_::<String>()
     }
 }

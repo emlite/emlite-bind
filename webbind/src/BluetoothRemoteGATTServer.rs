@@ -74,7 +74,7 @@ impl BluetoothRemoteGATTServer {
     }
 }
 impl BluetoothRemoteGATTServer {
-    pub fn get_primary_service(&self, service: Any) -> Promise {
+    pub fn get_primary_service(&self, service: &Any) -> Promise {
         self.inner
             .call("getPrimaryService", &[service.into()])
             .as_::<Promise>()
@@ -85,7 +85,7 @@ impl BluetoothRemoteGATTServer {
         self.inner.call("getPrimaryServices", &[]).as_::<Promise>()
     }
 
-    pub fn get_primary_services1(&self, service: Any) -> Promise {
+    pub fn get_primary_services1(&self, service: &Any) -> Promise {
         self.inner
             .call("getPrimaryServices", &[service.into()])
             .as_::<Promise>()

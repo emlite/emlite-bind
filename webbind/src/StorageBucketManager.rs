@@ -73,7 +73,7 @@ impl StorageBucketOptions {
         self.inner.get("expires").as_::<Any>()
     }
 
-    pub fn set_expires(&mut self, value: Any) {
+    pub fn set_expires(&mut self, value: &Any) {
         self.inner.set("expires", value);
     }
 }
@@ -131,11 +131,11 @@ impl From<&StorageBucketManager> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(StorageBucketManager);
 
 impl StorageBucketManager {
-    pub fn open0(&self, name: DOMString) -> Promise {
+    pub fn open0(&self, name: &str) -> Promise {
         self.inner.call("open", &[name.into()]).as_::<Promise>()
     }
 
-    pub fn open1(&self, name: DOMString, options: StorageBucketOptions) -> Promise {
+    pub fn open1(&self, name: &str, options: &StorageBucketOptions) -> Promise {
         self.inner
             .call("open", &[name.into(), options.into()])
             .as_::<Promise>()
@@ -147,7 +147,7 @@ impl StorageBucketManager {
     }
 }
 impl StorageBucketManager {
-    pub fn delete(&self, name: DOMString) -> Promise {
+    pub fn delete(&self, name: &str) -> Promise {
         self.inner.call("delete", &[name.into()]).as_::<Promise>()
     }
 }

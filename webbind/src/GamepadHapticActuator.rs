@@ -165,7 +165,7 @@ impl GamepadHapticActuator {
     }
 }
 impl GamepadHapticActuator {
-    pub fn play_effect0(&self, type_: GamepadHapticEffectType) -> Promise {
+    pub fn play_effect0(&self, type_: &GamepadHapticEffectType) -> Promise {
         self.inner
             .call("playEffect", &[type_.into()])
             .as_::<Promise>()
@@ -173,8 +173,8 @@ impl GamepadHapticActuator {
 
     pub fn play_effect1(
         &self,
-        type_: GamepadHapticEffectType,
-        params: GamepadEffectParameters,
+        type_: &GamepadHapticEffectType,
+        params: &GamepadEffectParameters,
     ) -> Promise {
         self.inner
             .call("playEffect", &[type_.into(), params.into()])

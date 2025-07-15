@@ -54,7 +54,7 @@ impl From<&DelayNode> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(DelayNode);
 
 impl DelayNode {
-    pub fn new0(context: BaseAudioContext) -> DelayNode {
+    pub fn new0(context: &BaseAudioContext) -> DelayNode {
         Self {
             inner: emlite::Val::global("DelayNode")
                 .new(&[context.into()])
@@ -62,7 +62,7 @@ impl DelayNode {
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: Any) -> DelayNode {
+    pub fn new1(context: &BaseAudioContext, options: &Any) -> DelayNode {
         Self {
             inner: emlite::Val::global("DelayNode")
                 .new(&[context.into(), options.into()])

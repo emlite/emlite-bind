@@ -62,7 +62,7 @@ impl Comment {
         }
     }
 
-    pub fn new1(data: DOMString) -> Comment {
+    pub fn new1(data: &str) -> Comment {
         Self {
             inner: emlite::Val::global("Comment")
                 .new(&[data.into()])

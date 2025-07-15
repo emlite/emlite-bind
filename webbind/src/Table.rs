@@ -54,7 +54,7 @@ impl From<&Table> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Table);
 
 impl Table {
-    pub fn new0(descriptor: Any) -> Table {
+    pub fn new0(descriptor: &Any) -> Table {
         Self {
             inner: emlite::Val::global("Table")
                 .new(&[descriptor.into()])
@@ -62,7 +62,7 @@ impl Table {
         }
     }
 
-    pub fn new1(descriptor: Any, value: Any) -> Table {
+    pub fn new1(descriptor: &Any, value: &Any) -> Table {
         Self {
             inner: emlite::Val::global("Table")
                 .new(&[descriptor.into(), value.into()])
@@ -75,7 +75,7 @@ impl Table {
         self.inner.call("grow", &[delta.into()]).as_::<u32>()
     }
 
-    pub fn grow1(&self, delta: u32, value: Any) -> u32 {
+    pub fn grow1(&self, delta: u32, value: &Any) -> u32 {
         self.inner
             .call("grow", &[delta.into(), value.into()])
             .as_::<u32>()
@@ -91,7 +91,7 @@ impl Table {
         self.inner.call("set", &[index.into()]).as_::<Undefined>()
     }
 
-    pub fn set1(&self, index: u32, value: Any) -> Undefined {
+    pub fn set1(&self, index: u32, value: &Any) -> Undefined {
         self.inner
             .call("set", &[index.into(), value.into()])
             .as_::<Undefined>()

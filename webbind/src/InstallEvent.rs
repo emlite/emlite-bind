@@ -54,7 +54,7 @@ impl From<&InstallEvent> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(InstallEvent);
 
 impl InstallEvent {
-    pub fn new0(type_: DOMString) -> InstallEvent {
+    pub fn new0(type_: &str) -> InstallEvent {
         Self {
             inner: emlite::Val::global("InstallEvent")
                 .new(&[type_.into()])
@@ -62,7 +62,7 @@ impl InstallEvent {
         }
     }
 
-    pub fn new1(type_: DOMString, event_init_dict: Any) -> InstallEvent {
+    pub fn new1(type_: &str, event_init_dict: &Any) -> InstallEvent {
         Self {
             inner: emlite::Val::global("InstallEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -71,7 +71,7 @@ impl InstallEvent {
     }
 }
 impl InstallEvent {
-    pub fn add_routes(&self, rules: Any) -> Promise {
+    pub fn add_routes(&self, rules: &Any) -> Promise {
         self.inner
             .call("addRoutes", &[rules.into()])
             .as_::<Promise>()

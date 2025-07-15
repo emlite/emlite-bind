@@ -55,7 +55,7 @@ impl RequestDeviceOptions {
         self.inner.get("filters").as_::<Sequence<Any>>()
     }
 
-    pub fn set_filters(&mut self, value: Sequence<Any>) {
+    pub fn set_filters(&mut self, value: &Sequence<Any>) {
         self.inner.set("filters", value);
     }
 }
@@ -64,7 +64,7 @@ impl RequestDeviceOptions {
         self.inner.get("exclusionFilters").as_::<Sequence<Any>>()
     }
 
-    pub fn set_exclusion_filters(&mut self, value: Sequence<Any>) {
+    pub fn set_exclusion_filters(&mut self, value: &Sequence<Any>) {
         self.inner.set("exclusionFilters", value);
     }
 }
@@ -73,7 +73,7 @@ impl RequestDeviceOptions {
         self.inner.get("optionalServices").as_::<Sequence<Any>>()
     }
 
-    pub fn set_optional_services(&mut self, value: Sequence<Any>) {
+    pub fn set_optional_services(&mut self, value: &Sequence<Any>) {
         self.inner.set("optionalServices", value);
     }
 }
@@ -152,7 +152,7 @@ impl BluetoothLEScanOptions {
         self.inner.get("filters").as_::<Sequence<Any>>()
     }
 
-    pub fn set_filters(&mut self, value: Sequence<Any>) {
+    pub fn set_filters(&mut self, value: &Sequence<Any>) {
         self.inner.set("filters", value);
     }
 }
@@ -237,7 +237,7 @@ impl Bluetooth {
         self.inner.get("onavailabilitychanged").as_::<Any>()
     }
 
-    pub fn set_onavailabilitychanged(&mut self, value: Any) {
+    pub fn set_onavailabilitychanged(&mut self, value: &Any) {
         self.inner.set("onavailabilitychanged", value);
     }
 }
@@ -256,7 +256,7 @@ impl Bluetooth {
         self.inner.call("requestDevice", &[]).as_::<Promise>()
     }
 
-    pub fn request_device1(&self, options: RequestDeviceOptions) -> Promise {
+    pub fn request_device1(&self, options: &RequestDeviceOptions) -> Promise {
         self.inner
             .call("requestDevice", &[options.into()])
             .as_::<Promise>()
@@ -267,7 +267,7 @@ impl Bluetooth {
         self.inner.call("requestLEScan", &[]).as_::<Promise>()
     }
 
-    pub fn request_le_scan1(&self, options: BluetoothLEScanOptions) -> Promise {
+    pub fn request_le_scan1(&self, options: &BluetoothLEScanOptions) -> Promise {
         self.inner
             .call("requestLEScan", &[options.into()])
             .as_::<Promise>()
@@ -278,7 +278,7 @@ impl Bluetooth {
         self.inner.get("onadvertisementreceived").as_::<Any>()
     }
 
-    pub fn set_onadvertisementreceived(&mut self, value: Any) {
+    pub fn set_onadvertisementreceived(&mut self, value: &Any) {
         self.inner.set("onadvertisementreceived", value);
     }
 }
@@ -287,7 +287,7 @@ impl Bluetooth {
         self.inner.get("ongattserverdisconnected").as_::<Any>()
     }
 
-    pub fn set_ongattserverdisconnected(&mut self, value: Any) {
+    pub fn set_ongattserverdisconnected(&mut self, value: &Any) {
         self.inner.set("ongattserverdisconnected", value);
     }
 }
@@ -296,7 +296,7 @@ impl Bluetooth {
         self.inner.get("oncharacteristicvaluechanged").as_::<Any>()
     }
 
-    pub fn set_oncharacteristicvaluechanged(&mut self, value: Any) {
+    pub fn set_oncharacteristicvaluechanged(&mut self, value: &Any) {
         self.inner.set("oncharacteristicvaluechanged", value);
     }
 }
@@ -305,7 +305,7 @@ impl Bluetooth {
         self.inner.get("onserviceadded").as_::<Any>()
     }
 
-    pub fn set_onserviceadded(&mut self, value: Any) {
+    pub fn set_onserviceadded(&mut self, value: &Any) {
         self.inner.set("onserviceadded", value);
     }
 }
@@ -314,7 +314,7 @@ impl Bluetooth {
         self.inner.get("onservicechanged").as_::<Any>()
     }
 
-    pub fn set_onservicechanged(&mut self, value: Any) {
+    pub fn set_onservicechanged(&mut self, value: &Any) {
         self.inner.set("onservicechanged", value);
     }
 }
@@ -323,7 +323,7 @@ impl Bluetooth {
         self.inner.get("onserviceremoved").as_::<Any>()
     }
 
-    pub fn set_onserviceremoved(&mut self, value: Any) {
+    pub fn set_onserviceremoved(&mut self, value: &Any) {
         self.inner.set("onserviceremoved", value);
     }
 }

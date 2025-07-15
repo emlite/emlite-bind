@@ -55,7 +55,7 @@ impl WorkletOptions {
         self.inner.get("credentials").as_::<RequestCredentials>()
     }
 
-    pub fn set_credentials(&mut self, value: RequestCredentials) {
+    pub fn set_credentials(&mut self, value: &RequestCredentials) {
         self.inner.set("credentials", value);
     }
 }
@@ -113,13 +113,13 @@ impl From<&Worklet> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Worklet);
 
 impl Worklet {
-    pub fn add_module0(&self, module_url: USVString) -> Promise {
+    pub fn add_module0(&self, module_url: &str) -> Promise {
         self.inner
             .call("addModule", &[module_url.into()])
             .as_::<Promise>()
     }
 
-    pub fn add_module1(&self, module_url: USVString, options: WorkletOptions) -> Promise {
+    pub fn add_module1(&self, module_url: &str, options: &WorkletOptions) -> Promise {
         self.inner
             .call("addModule", &[module_url.into(), options.into()])
             .as_::<Promise>()

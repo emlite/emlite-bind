@@ -55,7 +55,7 @@ impl LanguageDetectorCreateOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -64,7 +64,7 @@ impl LanguageDetectorCreateOptions {
         self.inner.get("monitor").as_::<Function>()
     }
 
-    pub fn set_monitor(&mut self, value: Function) {
+    pub fn set_monitor(&mut self, value: &Function) {
         self.inner.set("monitor", value);
     }
 }
@@ -119,13 +119,13 @@ impl From<&LanguageDetectorCreateCoreOptions> for emlite::Val {
 }
 
 impl LanguageDetectorCreateCoreOptions {
-    pub fn expected_input_languages(&self) -> Sequence<DOMString> {
+    pub fn expected_input_languages(&self) -> Sequence<String> {
         self.inner
             .get("expectedInputLanguages")
-            .as_::<Sequence<DOMString>>()
+            .as_::<Sequence<String>>()
     }
 
-    pub fn set_expected_input_languages(&mut self, value: Sequence<DOMString>) {
+    pub fn set_expected_input_languages(&mut self, value: &Sequence<String>) {
         self.inner.set("expectedInputLanguages", value);
     }
 }
@@ -180,11 +180,11 @@ impl From<&LanguageDetectionResult> for emlite::Val {
 }
 
 impl LanguageDetectionResult {
-    pub fn detected_language(&self) -> DOMString {
-        self.inner.get("detectedLanguage").as_::<DOMString>()
+    pub fn detected_language(&self) -> String {
+        self.inner.get("detectedLanguage").as_::<String>()
     }
 
-    pub fn set_detected_language(&mut self, value: DOMString) {
+    pub fn set_detected_language(&mut self, value: &str) {
         self.inner.set("detectedLanguage", value);
     }
 }
@@ -252,7 +252,7 @@ impl LanguageDetectorDetectOptions {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 
-    pub fn set_signal(&mut self, value: AbortSignal) {
+    pub fn set_signal(&mut self, value: &AbortSignal) {
         self.inner.set("signal", value);
     }
 }
@@ -316,7 +316,7 @@ impl LanguageDetector {
             .as_::<Promise>()
     }
 
-    pub fn create1(options: LanguageDetectorCreateOptions) -> Promise {
+    pub fn create1(options: &LanguageDetectorCreateOptions) -> Promise {
         emlite::Val::global("LanguageDetector")
             .call("create", &[options.into()])
             .as_::<Promise>()
@@ -329,32 +329,32 @@ impl LanguageDetector {
             .as_::<Promise>()
     }
 
-    pub fn availability1(options: LanguageDetectorCreateCoreOptions) -> Promise {
+    pub fn availability1(options: &LanguageDetectorCreateCoreOptions) -> Promise {
         emlite::Val::global("LanguageDetector")
             .call("availability", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl LanguageDetector {
-    pub fn detect0(&self, input: DOMString) -> Promise {
+    pub fn detect0(&self, input: &str) -> Promise {
         self.inner.call("detect", &[input.into()]).as_::<Promise>()
     }
 
-    pub fn detect1(&self, input: DOMString, options: LanguageDetectorDetectOptions) -> Promise {
+    pub fn detect1(&self, input: &str, options: &LanguageDetectorDetectOptions) -> Promise {
         self.inner
             .call("detect", &[input.into(), options.into()])
             .as_::<Promise>()
     }
 }
 impl LanguageDetector {
-    pub fn expected_input_languages(&self) -> FrozenArray<DOMString> {
+    pub fn expected_input_languages(&self) -> FrozenArray<String> {
         self.inner
             .get("expectedInputLanguages")
-            .as_::<FrozenArray<DOMString>>()
+            .as_::<FrozenArray<String>>()
     }
 }
 impl LanguageDetector {
-    pub fn measure_input_usage0(&self, input: DOMString) -> Promise {
+    pub fn measure_input_usage0(&self, input: &str) -> Promise {
         self.inner
             .call("measureInputUsage", &[input.into()])
             .as_::<Promise>()
@@ -362,8 +362,8 @@ impl LanguageDetector {
 
     pub fn measure_input_usage1(
         &self,
-        input: DOMString,
-        options: LanguageDetectorDetectOptions,
+        input: &str,
+        options: &LanguageDetectorDetectOptions,
     ) -> Promise {
         self.inner
             .call("measureInputUsage", &[input.into(), options.into()])

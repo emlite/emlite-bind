@@ -91,11 +91,11 @@ impl HTMLVideoElement {
     }
 }
 impl HTMLVideoElement {
-    pub fn poster(&self) -> USVString {
-        self.inner.get("poster").as_::<USVString>()
+    pub fn poster(&self) -> String {
+        self.inner.get("poster").as_::<String>()
     }
 
-    pub fn set_poster(&mut self, value: USVString) {
+    pub fn set_poster(&mut self, value: &str) {
         self.inner.set("poster", value);
     }
 }
@@ -127,7 +127,7 @@ impl HTMLVideoElement {
         self.inner.get("onenterpictureinpicture").as_::<Any>()
     }
 
-    pub fn set_onenterpictureinpicture(&mut self, value: Any) {
+    pub fn set_onenterpictureinpicture(&mut self, value: &Any) {
         self.inner.set("onenterpictureinpicture", value);
     }
 }
@@ -136,7 +136,7 @@ impl HTMLVideoElement {
         self.inner.get("onleavepictureinpicture").as_::<Any>()
     }
 
-    pub fn set_onleavepictureinpicture(&mut self, value: Any) {
+    pub fn set_onleavepictureinpicture(&mut self, value: &Any) {
         self.inner.set("onleavepictureinpicture", value);
     }
 }
@@ -150,7 +150,7 @@ impl HTMLVideoElement {
     }
 }
 impl HTMLVideoElement {
-    pub fn request_video_frame_callback(&self, callback: Function) -> u32 {
+    pub fn request_video_frame_callback(&self, callback: &Function) -> u32 {
         self.inner
             .call("requestVideoFrameCallback", &[callback.into()])
             .as_::<u32>()

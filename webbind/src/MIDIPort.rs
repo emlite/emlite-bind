@@ -54,18 +54,18 @@ impl From<&MIDIPort> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(MIDIPort);
 
 impl MIDIPort {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl MIDIPort {
-    pub fn manufacturer(&self) -> DOMString {
-        self.inner.get("manufacturer").as_::<DOMString>()
+    pub fn manufacturer(&self) -> String {
+        self.inner.get("manufacturer").as_::<String>()
     }
 }
 impl MIDIPort {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> String {
+        self.inner.get("name").as_::<String>()
     }
 }
 impl MIDIPort {
@@ -74,8 +74,8 @@ impl MIDIPort {
     }
 }
 impl MIDIPort {
-    pub fn version(&self) -> DOMString {
-        self.inner.get("version").as_::<DOMString>()
+    pub fn version(&self) -> String {
+        self.inner.get("version").as_::<String>()
     }
 }
 impl MIDIPort {
@@ -95,7 +95,7 @@ impl MIDIPort {
         self.inner.get("onstatechange").as_::<Any>()
     }
 
-    pub fn set_onstatechange(&mut self, value: Any) {
+    pub fn set_onstatechange(&mut self, value: &Any) {
         self.inner.set("onstatechange", value);
     }
 }

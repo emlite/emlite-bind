@@ -80,7 +80,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("oninstall").as_::<Any>()
     }
 
-    pub fn set_oninstall(&mut self, value: Any) {
+    pub fn set_oninstall(&mut self, value: &Any) {
         self.inner.set("oninstall", value);
     }
 }
@@ -89,7 +89,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("onactivate").as_::<Any>()
     }
 
-    pub fn set_onactivate(&mut self, value: Any) {
+    pub fn set_onactivate(&mut self, value: &Any) {
         self.inner.set("onactivate", value);
     }
 }
@@ -98,7 +98,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("onfetch").as_::<Any>()
     }
 
-    pub fn set_onfetch(&mut self, value: Any) {
+    pub fn set_onfetch(&mut self, value: &Any) {
         self.inner.set("onfetch", value);
     }
 }
@@ -107,7 +107,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("onmessage").as_::<Any>()
     }
 
-    pub fn set_onmessage(&mut self, value: Any) {
+    pub fn set_onmessage(&mut self, value: &Any) {
         self.inner.set("onmessage", value);
     }
 }
@@ -116,7 +116,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("onmessageerror").as_::<Any>()
     }
 
-    pub fn set_onmessageerror(&mut self, value: Any) {
+    pub fn set_onmessageerror(&mut self, value: &Any) {
         self.inner.set("onmessageerror", value);
     }
 }
@@ -125,7 +125,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("onbackgroundfetchsuccess").as_::<Any>()
     }
 
-    pub fn set_onbackgroundfetchsuccess(&mut self, value: Any) {
+    pub fn set_onbackgroundfetchsuccess(&mut self, value: &Any) {
         self.inner.set("onbackgroundfetchsuccess", value);
     }
 }
@@ -134,7 +134,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("onbackgroundfetchfail").as_::<Any>()
     }
 
-    pub fn set_onbackgroundfetchfail(&mut self, value: Any) {
+    pub fn set_onbackgroundfetchfail(&mut self, value: &Any) {
         self.inner.set("onbackgroundfetchfail", value);
     }
 }
@@ -143,7 +143,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("onbackgroundfetchabort").as_::<Any>()
     }
 
-    pub fn set_onbackgroundfetchabort(&mut self, value: Any) {
+    pub fn set_onbackgroundfetchabort(&mut self, value: &Any) {
         self.inner.set("onbackgroundfetchabort", value);
     }
 }
@@ -152,7 +152,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("onbackgroundfetchclick").as_::<Any>()
     }
 
-    pub fn set_onbackgroundfetchclick(&mut self, value: Any) {
+    pub fn set_onbackgroundfetchclick(&mut self, value: &Any) {
         self.inner.set("onbackgroundfetchclick", value);
     }
 }
@@ -161,7 +161,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("onsync").as_::<Any>()
     }
 
-    pub fn set_onsync(&mut self, value: Any) {
+    pub fn set_onsync(&mut self, value: &Any) {
         self.inner.set("onsync", value);
     }
 }
@@ -170,7 +170,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("oncontentdelete").as_::<Any>()
     }
 
-    pub fn set_oncontentdelete(&mut self, value: Any) {
+    pub fn set_oncontentdelete(&mut self, value: &Any) {
         self.inner.set("oncontentdelete", value);
     }
 }
@@ -184,7 +184,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("oncookiechange").as_::<Any>()
     }
 
-    pub fn set_oncookiechange(&mut self, value: Any) {
+    pub fn set_oncookiechange(&mut self, value: &Any) {
         self.inner.set("oncookiechange", value);
     }
 }
@@ -193,7 +193,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("onnotificationclick").as_::<Any>()
     }
 
-    pub fn set_onnotificationclick(&mut self, value: Any) {
+    pub fn set_onnotificationclick(&mut self, value: &Any) {
         self.inner.set("onnotificationclick", value);
     }
 }
@@ -202,7 +202,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("onnotificationclose").as_::<Any>()
     }
 
-    pub fn set_onnotificationclose(&mut self, value: Any) {
+    pub fn set_onnotificationclose(&mut self, value: &Any) {
         self.inner.set("onnotificationclose", value);
     }
 }
@@ -211,7 +211,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("oncanmakepayment").as_::<Any>()
     }
 
-    pub fn set_oncanmakepayment(&mut self, value: Any) {
+    pub fn set_oncanmakepayment(&mut self, value: &Any) {
         self.inner.set("oncanmakepayment", value);
     }
 }
@@ -220,7 +220,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("onpaymentrequest").as_::<Any>()
     }
 
-    pub fn set_onpaymentrequest(&mut self, value: Any) {
+    pub fn set_onpaymentrequest(&mut self, value: &Any) {
         self.inner.set("onpaymentrequest", value);
     }
 }
@@ -229,7 +229,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("onperiodicsync").as_::<Any>()
     }
 
-    pub fn set_onperiodicsync(&mut self, value: Any) {
+    pub fn set_onperiodicsync(&mut self, value: &Any) {
         self.inner.set("onperiodicsync", value);
     }
 }
@@ -238,7 +238,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("onpush").as_::<Any>()
     }
 
-    pub fn set_onpush(&mut self, value: Any) {
+    pub fn set_onpush(&mut self, value: &Any) {
         self.inner.set("onpush", value);
     }
 }
@@ -247,7 +247,7 @@ impl ServiceWorkerGlobalScope {
         self.inner.get("onpushsubscriptionchange").as_::<Any>()
     }
 
-    pub fn set_onpushsubscriptionchange(&mut self, value: Any) {
+    pub fn set_onpushsubscriptionchange(&mut self, value: &Any) {
         self.inner.set("onpushsubscriptionchange", value);
     }
 }

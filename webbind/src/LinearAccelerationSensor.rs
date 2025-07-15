@@ -62,7 +62,7 @@ impl LinearAccelerationSensor {
         }
     }
 
-    pub fn new1(options: Any) -> LinearAccelerationSensor {
+    pub fn new1(options: &Any) -> LinearAccelerationSensor {
         Self {
             inner: emlite::Val::global("LinearAccelerationSensor")
                 .new(&[options.into()])

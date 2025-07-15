@@ -59,54 +59,52 @@ impl ContactAddress {
     }
 }
 impl ContactAddress {
-    pub fn city(&self) -> DOMString {
-        self.inner.get("city").as_::<DOMString>()
+    pub fn city(&self) -> String {
+        self.inner.get("city").as_::<String>()
     }
 }
 impl ContactAddress {
-    pub fn country(&self) -> DOMString {
-        self.inner.get("country").as_::<DOMString>()
+    pub fn country(&self) -> String {
+        self.inner.get("country").as_::<String>()
     }
 }
 impl ContactAddress {
-    pub fn dependent_locality(&self) -> DOMString {
-        self.inner.get("dependentLocality").as_::<DOMString>()
+    pub fn dependent_locality(&self) -> String {
+        self.inner.get("dependentLocality").as_::<String>()
     }
 }
 impl ContactAddress {
-    pub fn organization(&self) -> DOMString {
-        self.inner.get("organization").as_::<DOMString>()
+    pub fn organization(&self) -> String {
+        self.inner.get("organization").as_::<String>()
     }
 }
 impl ContactAddress {
-    pub fn phone(&self) -> DOMString {
-        self.inner.get("phone").as_::<DOMString>()
+    pub fn phone(&self) -> String {
+        self.inner.get("phone").as_::<String>()
     }
 }
 impl ContactAddress {
-    pub fn postal_code(&self) -> DOMString {
-        self.inner.get("postalCode").as_::<DOMString>()
+    pub fn postal_code(&self) -> String {
+        self.inner.get("postalCode").as_::<String>()
     }
 }
 impl ContactAddress {
-    pub fn recipient(&self) -> DOMString {
-        self.inner.get("recipient").as_::<DOMString>()
+    pub fn recipient(&self) -> String {
+        self.inner.get("recipient").as_::<String>()
     }
 }
 impl ContactAddress {
-    pub fn region(&self) -> DOMString {
-        self.inner.get("region").as_::<DOMString>()
+    pub fn region(&self) -> String {
+        self.inner.get("region").as_::<String>()
     }
 }
 impl ContactAddress {
-    pub fn sorting_code(&self) -> DOMString {
-        self.inner.get("sortingCode").as_::<DOMString>()
+    pub fn sorting_code(&self) -> String {
+        self.inner.get("sortingCode").as_::<String>()
     }
 }
 impl ContactAddress {
-    pub fn address_line(&self) -> FrozenArray<DOMString> {
-        self.inner
-            .get("addressLine")
-            .as_::<FrozenArray<DOMString>>()
+    pub fn address_line(&self) -> FrozenArray<String> {
+        self.inner.get("addressLine").as_::<FrozenArray<String>>()
     }
 }

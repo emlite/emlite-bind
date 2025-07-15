@@ -76,7 +76,7 @@ impl BluetoothRemoteGATTDescriptor {
     }
 }
 impl BluetoothRemoteGATTDescriptor {
-    pub fn write_value(&self, value: Any) -> Promise {
+    pub fn write_value(&self, value: &Any) -> Promise {
         self.inner
             .call("writeValue", &[value.into()])
             .as_::<Promise>()

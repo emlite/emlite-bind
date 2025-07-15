@@ -51,11 +51,11 @@ impl From<&ClipboardUnsanitizedFormats> for emlite::Val {
 }
 
 impl ClipboardUnsanitizedFormats {
-    pub fn unsanitized(&self) -> Sequence<DOMString> {
-        self.inner.get("unsanitized").as_::<Sequence<DOMString>>()
+    pub fn unsanitized(&self) -> Sequence<String> {
+        self.inner.get("unsanitized").as_::<Sequence<String>>()
     }
 
-    pub fn set_unsanitized(&mut self, value: Sequence<DOMString>) {
+    pub fn set_unsanitized(&mut self, value: &Sequence<String>) {
         self.inner.set("unsanitized", value);
     }
 }
@@ -117,7 +117,7 @@ impl Clipboard {
         self.inner.call("read", &[]).as_::<Promise>()
     }
 
-    pub fn read1(&self, formats: ClipboardUnsanitizedFormats) -> Promise {
+    pub fn read1(&self, formats: &ClipboardUnsanitizedFormats) -> Promise {
         self.inner.call("read", &[formats.into()]).as_::<Promise>()
     }
 }
@@ -127,12 +127,12 @@ impl Clipboard {
     }
 }
 impl Clipboard {
-    pub fn write(&self, data: Any) -> Promise {
+    pub fn write(&self, data: &Any) -> Promise {
         self.inner.call("write", &[data.into()]).as_::<Promise>()
     }
 }
 impl Clipboard {
-    pub fn write_text(&self, data: DOMString) -> Promise {
+    pub fn write_text(&self, data: &str) -> Promise {
         self.inner
             .call("writeText", &[data.into()])
             .as_::<Promise>()

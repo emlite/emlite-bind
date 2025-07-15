@@ -54,7 +54,7 @@ impl From<&EXT_disjoint_timer_query_webgl2> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(EXT_disjoint_timer_query_webgl2);
 
 impl EXT_disjoint_timer_query_webgl2 {
-    pub fn query_counter_ext(&self, query: WebGLQuery, target: Any) -> Undefined {
+    pub fn query_counter_ext(&self, query: &WebGLQuery, target: &Any) -> Undefined {
         self.inner
             .call("queryCounterEXT", &[query.into(), target.into()])
             .as_::<Undefined>()

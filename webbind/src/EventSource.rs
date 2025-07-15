@@ -54,7 +54,7 @@ impl From<&EventSource> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(EventSource);
 
 impl EventSource {
-    pub fn new0(url: USVString) -> EventSource {
+    pub fn new0(url: &str) -> EventSource {
         Self {
             inner: emlite::Val::global("EventSource")
                 .new(&[url.into()])
@@ -62,7 +62,7 @@ impl EventSource {
         }
     }
 
-    pub fn new1(url: USVString, event_source_init_dict: Any) -> EventSource {
+    pub fn new1(url: &str, event_source_init_dict: &Any) -> EventSource {
         Self {
             inner: emlite::Val::global("EventSource")
                 .new(&[url.into(), event_source_init_dict.into()])
@@ -71,8 +71,8 @@ impl EventSource {
     }
 }
 impl EventSource {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> String {
+        self.inner.get("url").as_::<String>()
     }
 }
 impl EventSource {
@@ -90,7 +90,7 @@ impl EventSource {
         self.inner.get("onopen").as_::<Any>()
     }
 
-    pub fn set_onopen(&mut self, value: Any) {
+    pub fn set_onopen(&mut self, value: &Any) {
         self.inner.set("onopen", value);
     }
 }
@@ -99,7 +99,7 @@ impl EventSource {
         self.inner.get("onmessage").as_::<Any>()
     }
 
-    pub fn set_onmessage(&mut self, value: Any) {
+    pub fn set_onmessage(&mut self, value: &Any) {
         self.inner.set("onmessage", value);
     }
 }
@@ -108,7 +108,7 @@ impl EventSource {
         self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: Any) {
+    pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }

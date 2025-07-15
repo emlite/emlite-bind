@@ -73,7 +73,7 @@ impl GamepadTouch {
         self.inner.get("position").as_::<DOMPointReadOnly>()
     }
 
-    pub fn set_position(&mut self, value: DOMPointReadOnly) {
+    pub fn set_position(&mut self, value: &DOMPointReadOnly) {
         self.inner.set("position", value);
     }
 }
@@ -82,7 +82,7 @@ impl GamepadTouch {
         self.inner.get("surfaceDimensions").as_::<DOMRectReadOnly>()
     }
 
-    pub fn set_surface_dimensions(&mut self, value: DOMRectReadOnly) {
+    pub fn set_surface_dimensions(&mut self, value: &DOMRectReadOnly) {
         self.inner.set("surfaceDimensions", value);
     }
 }
@@ -140,8 +140,8 @@ impl From<&Gamepad> for emlite::Val {
 jsbind::utils::impl_dyn_cast!(Gamepad);
 
 impl Gamepad {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> String {
+        self.inner.get("id").as_::<String>()
     }
 }
 impl Gamepad {
