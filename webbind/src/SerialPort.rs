@@ -44,6 +44,11 @@ impl From<SerialPortInfo> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SerialPortInfo> for emlite::Val {
+    fn from(s: &SerialPortInfo) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl SerialPortInfo {
     pub fn usb_vendor_id(&self) -> u16 {
@@ -114,6 +119,11 @@ impl From<SerialOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&SerialOptions> for emlite::Val {
+    fn from(s: &SerialOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -215,6 +225,11 @@ impl From<SerialOutputSignals> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SerialOutputSignals> for emlite::Val {
+    fn from(s: &SerialOutputSignals) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl SerialOutputSignals {
     pub fn data_terminal_ready(&self) -> bool {
@@ -285,6 +300,11 @@ impl From<SerialInputSignals> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&SerialInputSignals> for emlite::Val {
+    fn from(s: &SerialInputSignals) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -368,6 +388,11 @@ impl From<SerialPort> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&SerialPort> for emlite::Val {
+    fn from(s: &SerialPort) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SerialPort);

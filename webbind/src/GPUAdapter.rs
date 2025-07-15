@@ -44,6 +44,11 @@ impl From<GPUDeviceDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUDeviceDescriptor> for emlite::Val {
+    fn from(s: &GPUDeviceDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GPUDeviceDescriptor {
     pub fn required_features(&self) -> Sequence<GPUFeatureName> {
@@ -120,6 +125,11 @@ impl From<GPUAdapter> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GPUAdapter> for emlite::Val {
+    fn from(s: &GPUAdapter) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GPUAdapter);

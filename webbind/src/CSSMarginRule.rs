@@ -46,6 +46,11 @@ impl From<CSSMarginRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSMarginRule> for emlite::Val {
+    fn from(s: &CSSMarginRule) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSMarginRule);
 
 impl CSSMarginRule {

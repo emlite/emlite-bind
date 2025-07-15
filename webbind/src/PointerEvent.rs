@@ -46,6 +46,11 @@ impl From<PointerEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PointerEvent> for emlite::Val {
+    fn from(s: &PointerEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PointerEvent);
 
 impl PointerEvent {

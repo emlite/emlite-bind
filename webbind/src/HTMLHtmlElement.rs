@@ -46,6 +46,11 @@ impl From<HTMLHtmlElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLHtmlElement> for emlite::Val {
+    fn from(s: &HTMLHtmlElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLHtmlElement);
 
 impl HTMLHtmlElement {

@@ -44,6 +44,11 @@ impl From<PushSubscriptionJSON> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PushSubscriptionJSON> for emlite::Val {
+    fn from(s: &PushSubscriptionJSON) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PushSubscriptionJSON {
     pub fn endpoint(&self) -> USVString {
@@ -116,6 +121,11 @@ impl From<PushSubscription> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&PushSubscription> for emlite::Val {
+    fn from(s: &PushSubscription) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PushSubscription);

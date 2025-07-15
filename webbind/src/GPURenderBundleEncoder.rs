@@ -44,6 +44,11 @@ impl From<GPURenderBundleDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPURenderBundleDescriptor> for emlite::Val {
+    fn from(s: &GPURenderBundleDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -89,6 +94,11 @@ impl From<GPURenderBundleEncoder> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GPURenderBundleEncoder> for emlite::Val {
+    fn from(s: &GPURenderBundleEncoder) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GPURenderBundleEncoder);

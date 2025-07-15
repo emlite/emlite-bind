@@ -44,6 +44,11 @@ impl From<WriterCreateOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WriterCreateOptions> for emlite::Val {
+    fn from(s: &WriterCreateOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl WriterCreateOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -114,6 +119,11 @@ impl From<WriterCreateCoreOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&WriterCreateCoreOptions> for emlite::Val {
+    fn from(s: &WriterCreateCoreOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -219,6 +229,11 @@ impl From<WriterWriteOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WriterWriteOptions> for emlite::Val {
+    fn from(s: &WriterWriteOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl WriterWriteOptions {
     pub fn context(&self) -> DOMString {
@@ -282,6 +297,11 @@ impl From<Writer> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Writer> for emlite::Val {
+    fn from(s: &Writer) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Writer);

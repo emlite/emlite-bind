@@ -46,4 +46,9 @@ impl From<WebGLFramebuffer> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebGLFramebuffer> for emlite::Val {
+    fn from(s: &WebGLFramebuffer) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebGLFramebuffer);

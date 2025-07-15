@@ -44,6 +44,11 @@ impl From<ShadowRootInit> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ShadowRootInit> for emlite::Val {
+    fn from(s: &ShadowRootInit) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ShadowRootInit {
     pub fn mode(&self) -> ShadowRootMode {
@@ -145,6 +150,11 @@ impl From<FocusableAreasOption> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&FocusableAreasOption> for emlite::Val {
+    fn from(s: &FocusableAreasOption) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl FocusableAreasOption {
     pub fn mode(&self) -> FocusableAreaSearchMode {
@@ -197,6 +207,11 @@ impl From<SpatialNavigationSearchOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&SpatialNavigationSearchOptions> for emlite::Val {
+    fn from(s: &SpatialNavigationSearchOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -260,6 +275,11 @@ impl From<CheckVisibilityOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&CheckVisibilityOptions> for emlite::Val {
+    fn from(s: &CheckVisibilityOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -352,6 +372,11 @@ impl From<FullscreenOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&FullscreenOptions> for emlite::Val {
+    fn from(s: &FullscreenOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl FullscreenOptions {
     pub fn screen(&self) -> ScreenDetailed {
@@ -404,6 +429,11 @@ impl From<GetHTMLOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GetHTMLOptions> for emlite::Val {
+    fn from(s: &GetHTMLOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -469,6 +499,11 @@ impl From<PointerLockOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PointerLockOptions> for emlite::Val {
+    fn from(s: &PointerLockOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PointerLockOptions {
     pub fn unadjusted_movement(&self) -> bool {
@@ -521,6 +556,11 @@ impl From<GetAnimationsOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GetAnimationsOptions> for emlite::Val {
+    fn from(s: &GetAnimationsOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -586,6 +626,11 @@ impl From<Element> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Element> for emlite::Val {
+    fn from(s: &Element) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Element);

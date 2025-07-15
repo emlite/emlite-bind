@@ -46,6 +46,11 @@ impl From<SVGPreserveAspectRatio> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGPreserveAspectRatio> for emlite::Val {
+    fn from(s: &SVGPreserveAspectRatio) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGPreserveAspectRatio);
 
 impl SVGPreserveAspectRatio {

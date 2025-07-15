@@ -46,6 +46,11 @@ impl From<CSSSupportsRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSSupportsRule> for emlite::Val {
+    fn from(s: &CSSSupportsRule) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSSupportsRule);
 
 impl CSSSupportsRule {

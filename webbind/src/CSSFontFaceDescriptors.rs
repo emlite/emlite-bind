@@ -52,6 +52,12 @@ impl From<CSSFontFaceDescriptors> for emlite::Val {
     }
 }
 
+impl From<&CSSFontFaceDescriptors> for emlite::Val {
+    fn from(x: &CSSFontFaceDescriptors) -> emlite::Val {
+        x.inner.clone().into()
+    }
+}
+
 impl CSSFontFaceDescriptors {
     pub fn src(&self) -> CSSOMString {
         self.inner.get("src").as_::<CSSOMString>()

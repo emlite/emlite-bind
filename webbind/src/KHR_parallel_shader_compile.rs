@@ -46,4 +46,9 @@ impl From<KHR_parallel_shader_compile> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&KHR_parallel_shader_compile> for emlite::Val {
+    fn from(s: &KHR_parallel_shader_compile) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(KHR_parallel_shader_compile);

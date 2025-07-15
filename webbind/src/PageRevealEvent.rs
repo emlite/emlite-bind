@@ -46,6 +46,11 @@ impl From<PageRevealEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PageRevealEvent> for emlite::Val {
+    fn from(s: &PageRevealEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PageRevealEvent);
 
 impl PageRevealEvent {

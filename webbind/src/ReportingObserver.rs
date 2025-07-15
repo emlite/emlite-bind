@@ -46,6 +46,11 @@ impl From<ReportingObserver> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ReportingObserver> for emlite::Val {
+    fn from(s: &ReportingObserver) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ReportingObserver);
 
 impl ReportingObserver {

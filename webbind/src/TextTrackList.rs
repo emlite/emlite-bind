@@ -46,6 +46,11 @@ impl From<TextTrackList> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TextTrackList> for emlite::Val {
+    fn from(s: &TextTrackList) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(TextTrackList);
 
 impl TextTrackList {

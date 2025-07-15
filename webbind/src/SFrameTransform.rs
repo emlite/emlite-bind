@@ -46,6 +46,11 @@ impl From<SFrameTransform> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SFrameTransform> for emlite::Val {
+    fn from(s: &SFrameTransform) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SFrameTransform);
 
 impl SFrameTransform {

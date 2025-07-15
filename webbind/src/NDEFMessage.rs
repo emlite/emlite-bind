@@ -46,6 +46,11 @@ impl From<NDEFMessage> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NDEFMessage> for emlite::Val {
+    fn from(s: &NDEFMessage) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(NDEFMessage);
 
 impl NDEFMessage {

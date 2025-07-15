@@ -46,6 +46,11 @@ impl From<SVGFEDisplacementMapElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGFEDisplacementMapElement> for emlite::Val {
+    fn from(s: &SVGFEDisplacementMapElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGFEDisplacementMapElement);
 
 impl SVGFEDisplacementMapElement {

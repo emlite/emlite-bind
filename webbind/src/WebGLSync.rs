@@ -46,4 +46,9 @@ impl From<WebGLSync> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebGLSync> for emlite::Val {
+    fn from(s: &WebGLSync) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebGLSync);

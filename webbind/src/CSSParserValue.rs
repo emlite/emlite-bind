@@ -46,4 +46,9 @@ impl From<CSSParserValue> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSParserValue> for emlite::Val {
+    fn from(s: &CSSParserValue) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSParserValue);

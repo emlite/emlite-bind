@@ -44,6 +44,11 @@ impl From<CacheQueryOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CacheQueryOptions> for emlite::Val {
+    fn from(s: &CacheQueryOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl CacheQueryOptions {
     pub fn ignore_search(&self) -> bool {
@@ -116,6 +121,11 @@ impl From<BackgroundFetchRegistration> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&BackgroundFetchRegistration> for emlite::Val {
+    fn from(s: &BackgroundFetchRegistration) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BackgroundFetchRegistration);

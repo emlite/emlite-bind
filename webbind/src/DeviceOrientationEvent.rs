@@ -46,6 +46,11 @@ impl From<DeviceOrientationEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DeviceOrientationEvent> for emlite::Val {
+    fn from(s: &DeviceOrientationEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(DeviceOrientationEvent);
 
 impl DeviceOrientationEvent {

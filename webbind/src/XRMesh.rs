@@ -46,6 +46,11 @@ impl From<XRMesh> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRMesh> for emlite::Val {
+    fn from(s: &XRMesh) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRMesh);
 
 impl XRMesh {

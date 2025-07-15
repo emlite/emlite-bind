@@ -46,4 +46,9 @@ impl From<SVGTSpanElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGTSpanElement> for emlite::Val {
+    fn from(s: &SVGTSpanElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGTSpanElement);

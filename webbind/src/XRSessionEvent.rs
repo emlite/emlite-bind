@@ -46,6 +46,11 @@ impl From<XRSessionEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRSessionEvent> for emlite::Val {
+    fn from(s: &XRSessionEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRSessionEvent);
 
 impl XRSessionEvent {

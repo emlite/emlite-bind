@@ -44,6 +44,11 @@ impl From<RTCEncodedVideoFrameMetadata> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCEncodedVideoFrameMetadata> for emlite::Val {
+    fn from(s: &RTCEncodedVideoFrameMetadata) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl RTCEncodedVideoFrameMetadata {
     pub fn frame_id(&self) -> u64 {
@@ -152,6 +157,11 @@ impl From<RTCEncodedVideoFrame> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCEncodedVideoFrame> for emlite::Val {
+    fn from(s: &RTCEncodedVideoFrame) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCEncodedVideoFrame);

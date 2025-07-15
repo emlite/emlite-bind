@@ -46,6 +46,11 @@ impl From<WEBGL_draw_buffers> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WEBGL_draw_buffers> for emlite::Val {
+    fn from(s: &WEBGL_draw_buffers) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WEBGL_draw_buffers);
 
 impl WEBGL_draw_buffers {

@@ -46,6 +46,11 @@ impl From<CSSRGB> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSRGB> for emlite::Val {
+    fn from(s: &CSSRGB) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSRGB);
 
 impl CSSRGB {

@@ -46,6 +46,11 @@ impl From<SubtleCrypto> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SubtleCrypto> for emlite::Val {
+    fn from(s: &SubtleCrypto) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SubtleCrypto);
 
 impl SubtleCrypto {

@@ -46,6 +46,11 @@ impl From<ANGLE_instanced_arrays> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ANGLE_instanced_arrays> for emlite::Val {
+    fn from(s: &ANGLE_instanced_arrays) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ANGLE_instanced_arrays);
 
 impl ANGLE_instanced_arrays {

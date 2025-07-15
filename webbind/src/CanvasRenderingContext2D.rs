@@ -44,6 +44,11 @@ impl From<CanvasRenderingContext2DSettings> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CanvasRenderingContext2DSettings> for emlite::Val {
+    fn from(s: &CanvasRenderingContext2DSettings) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl CanvasRenderingContext2DSettings {
     pub fn alpha(&self) -> bool {
@@ -134,6 +139,11 @@ impl From<ImageDataSettings> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ImageDataSettings> for emlite::Val {
+    fn from(s: &ImageDataSettings) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ImageDataSettings {
     pub fn color_space(&self) -> PredefinedColorSpace {
@@ -197,6 +207,11 @@ impl From<CanvasRenderingContext2D> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&CanvasRenderingContext2D> for emlite::Val {
+    fn from(s: &CanvasRenderingContext2D) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CanvasRenderingContext2D);

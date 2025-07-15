@@ -44,6 +44,11 @@ impl From<MLArgMinMaxOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLArgMinMaxOptions> for emlite::Val {
+    fn from(s: &MLArgMinMaxOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLArgMinMaxOptions {
     pub fn keep_dimensions(&self) -> bool {
@@ -105,6 +110,11 @@ impl From<MLBatchNormalizationOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLBatchNormalizationOptions> for emlite::Val {
+    fn from(s: &MLBatchNormalizationOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -188,6 +198,11 @@ impl From<MLOperatorOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLOperatorOptions> for emlite::Val {
+    fn from(s: &MLOperatorOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLOperatorOptions {
     pub fn label(&self) -> USVString {
@@ -240,6 +255,11 @@ impl From<MLClampOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLClampOptions> for emlite::Val {
+    fn from(s: &MLClampOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -303,6 +323,11 @@ impl From<MLConv2dOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLConv2dOptions> for emlite::Val {
+    fn from(s: &MLConv2dOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -413,6 +438,11 @@ impl From<MLConvTranspose2dOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLConvTranspose2dOptions> for emlite::Val {
+    fn from(s: &MLConvTranspose2dOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -543,6 +573,11 @@ impl From<MLCumulativeSumOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLCumulativeSumOptions> for emlite::Val {
+    fn from(s: &MLCumulativeSumOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLCumulativeSumOptions {
     pub fn exclusive(&self) -> bool {
@@ -606,6 +641,11 @@ impl From<MLEluOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLEluOptions> for emlite::Val {
+    fn from(s: &MLEluOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLEluOptions {
     pub fn alpha(&self) -> f64 {
@@ -660,6 +700,11 @@ impl From<MLGatherOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLGatherOptions> for emlite::Val {
+    fn from(s: &MLGatherOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLGatherOptions {
     pub fn axis(&self) -> u32 {
@@ -712,6 +757,11 @@ impl From<MLGemmOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLGemmOptions> for emlite::Val {
+    fn from(s: &MLGemmOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -802,6 +852,11 @@ impl From<MLGruOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLGruOptions> for emlite::Val {
+    fn from(s: &MLGruOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -925,6 +980,11 @@ impl From<MLGruCellOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLGruCellOptions> for emlite::Val {
+    fn from(s: &MLGruCellOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLGruCellOptions {
     pub fn bias(&self) -> MLOperand {
@@ -1017,6 +1077,11 @@ impl From<MLHardSigmoidOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLHardSigmoidOptions> for emlite::Val {
+    fn from(s: &MLHardSigmoidOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLHardSigmoidOptions {
     pub fn alpha(&self) -> f64 {
@@ -1078,6 +1143,11 @@ impl From<MLInstanceNormalizationOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLInstanceNormalizationOptions> for emlite::Val {
+    fn from(s: &MLInstanceNormalizationOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -1161,6 +1231,11 @@ impl From<MLLayerNormalizationOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLLayerNormalizationOptions> for emlite::Val {
+    fn from(s: &MLLayerNormalizationOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLLayerNormalizationOptions {
     pub fn scale(&self) -> MLOperand {
@@ -1242,6 +1317,11 @@ impl From<MLLeakyReluOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLLeakyReluOptions> for emlite::Val {
+    fn from(s: &MLLeakyReluOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLLeakyReluOptions {
     pub fn alpha(&self) -> f64 {
@@ -1294,6 +1374,11 @@ impl From<MLLinearOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLLinearOptions> for emlite::Val {
+    fn from(s: &MLLinearOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -1357,6 +1442,11 @@ impl From<MLLstmOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLLstmOptions> for emlite::Val {
+    fn from(s: &MLLstmOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -1489,6 +1579,11 @@ impl From<MLLstmCellOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLLstmCellOptions> for emlite::Val {
+    fn from(s: &MLLstmCellOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLLstmCellOptions {
     pub fn bias(&self) -> MLOperand {
@@ -1581,6 +1676,11 @@ impl From<MLPadOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLPadOptions> for emlite::Val {
+    fn from(s: &MLPadOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLPadOptions {
     pub fn mode(&self) -> MLPaddingMode {
@@ -1642,6 +1742,11 @@ impl From<MLPool2dOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLPool2dOptions> for emlite::Val {
+    fn from(s: &MLPool2dOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -1752,6 +1857,11 @@ impl From<MLReduceOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLReduceOptions> for emlite::Val {
+    fn from(s: &MLReduceOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLReduceOptions {
     pub fn axes(&self) -> Sequence<u32> {
@@ -1813,6 +1923,11 @@ impl From<MLResample2dOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLResample2dOptions> for emlite::Val {
+    fn from(s: &MLResample2dOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -1896,6 +2011,11 @@ impl From<MLReverseOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLReverseOptions> for emlite::Val {
+    fn from(s: &MLReverseOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLReverseOptions {
     pub fn axes(&self) -> Sequence<u32> {
@@ -1948,6 +2068,11 @@ impl From<MLScatterOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLScatterOptions> for emlite::Val {
+    fn from(s: &MLScatterOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -2004,6 +2129,11 @@ impl From<MLSliceOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLSliceOptions> for emlite::Val {
+    fn from(s: &MLSliceOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLSliceOptions {
     pub fn strides(&self) -> Sequence<u32> {
@@ -2056,6 +2186,11 @@ impl From<MLSplitOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLSplitOptions> for emlite::Val {
+    fn from(s: &MLSplitOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -2112,6 +2247,11 @@ impl From<MLTransposeOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLTransposeOptions> for emlite::Val {
+    fn from(s: &MLTransposeOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLTransposeOptions {
     pub fn permutation(&self) -> Sequence<u32> {
@@ -2164,6 +2304,11 @@ impl From<MLTriangularOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLTriangularOptions> for emlite::Val {
+    fn from(s: &MLTriangularOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -2229,6 +2374,11 @@ impl From<MLGraphBuilder> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLGraphBuilder> for emlite::Val {
+    fn from(s: &MLGraphBuilder) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MLGraphBuilder);

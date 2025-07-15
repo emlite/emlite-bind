@@ -46,6 +46,11 @@ impl From<PaintRenderingContext2D> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PaintRenderingContext2D> for emlite::Val {
+    fn from(s: &PaintRenderingContext2D) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PaintRenderingContext2D);
 
 impl PaintRenderingContext2D {

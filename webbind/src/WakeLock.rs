@@ -46,6 +46,11 @@ impl From<WakeLock> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WakeLock> for emlite::Val {
+    fn from(s: &WakeLock) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WakeLock);
 
 impl WakeLock {

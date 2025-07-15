@@ -46,6 +46,11 @@ impl From<BreakToken> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&BreakToken> for emlite::Val {
+    fn from(s: &BreakToken) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(BreakToken);
 
 impl BreakToken {

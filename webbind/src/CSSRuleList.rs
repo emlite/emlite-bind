@@ -46,6 +46,11 @@ impl From<CSSRuleList> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSRuleList> for emlite::Val {
+    fn from(s: &CSSRuleList) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSRuleList);
 
 impl CSSRuleList {

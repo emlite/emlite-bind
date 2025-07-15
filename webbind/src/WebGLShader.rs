@@ -46,4 +46,9 @@ impl From<WebGLShader> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebGLShader> for emlite::Val {
+    fn from(s: &WebGLShader) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebGLShader);

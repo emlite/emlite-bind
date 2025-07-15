@@ -44,6 +44,11 @@ impl From<RTCEncodedAudioFrameMetadata> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCEncodedAudioFrameMetadata> for emlite::Val {
+    fn from(s: &RTCEncodedAudioFrameMetadata) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl RTCEncodedAudioFrameMetadata {
     pub fn sequence_number(&self) -> i16 {
@@ -107,6 +112,11 @@ impl From<RTCEncodedAudioFrame> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCEncodedAudioFrame> for emlite::Val {
+    fn from(s: &RTCEncodedAudioFrame) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCEncodedAudioFrame);

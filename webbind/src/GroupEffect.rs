@@ -46,6 +46,11 @@ impl From<GroupEffect> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GroupEffect> for emlite::Val {
+    fn from(s: &GroupEffect) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GroupEffect);
 
 impl GroupEffect {

@@ -46,4 +46,9 @@ impl From<SVGDiscardElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGDiscardElement> for emlite::Val {
+    fn from(s: &SVGDiscardElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGDiscardElement);

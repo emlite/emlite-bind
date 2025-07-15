@@ -46,6 +46,11 @@ impl From<GPUInternalError> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUInternalError> for emlite::Val {
+    fn from(s: &GPUInternalError) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GPUInternalError);
 
 impl GPUInternalError {

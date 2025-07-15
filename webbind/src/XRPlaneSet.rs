@@ -46,4 +46,9 @@ impl From<XRPlaneSet> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRPlaneSet> for emlite::Val {
+    fn from(s: &XRPlaneSet) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRPlaneSet);

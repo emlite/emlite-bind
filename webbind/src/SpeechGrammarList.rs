@@ -46,6 +46,11 @@ impl From<SpeechGrammarList> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SpeechGrammarList> for emlite::Val {
+    fn from(s: &SpeechGrammarList) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SpeechGrammarList);
 
 impl SpeechGrammarList {

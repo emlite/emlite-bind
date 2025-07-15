@@ -46,6 +46,11 @@ impl From<LayoutConstraints> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&LayoutConstraints> for emlite::Val {
+    fn from(s: &LayoutConstraints) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(LayoutConstraints);
 
 impl LayoutConstraints {

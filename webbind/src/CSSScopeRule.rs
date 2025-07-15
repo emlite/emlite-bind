@@ -46,6 +46,11 @@ impl From<CSSScopeRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSScopeRule> for emlite::Val {
+    fn from(s: &CSSScopeRule) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSScopeRule);
 
 impl CSSScopeRule {

@@ -44,6 +44,11 @@ impl From<OptionalEffectTiming> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&OptionalEffectTiming> for emlite::Val {
+    fn from(s: &OptionalEffectTiming) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl OptionalEffectTiming {
     pub fn delay(&self) -> f64 {
@@ -161,6 +166,11 @@ impl From<AnimationEffect> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&AnimationEffect> for emlite::Val {
+    fn from(s: &AnimationEffect) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(AnimationEffect);

@@ -44,6 +44,11 @@ impl From<DOMMatrix2DInit> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DOMMatrix2DInit> for emlite::Val {
+    fn from(s: &DOMMatrix2DInit) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl DOMMatrix2DInit {
     pub fn a(&self) -> f64 {
@@ -197,6 +202,11 @@ impl From<SVGSVGElement> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&SVGSVGElement> for emlite::Val {
+    fn from(s: &SVGSVGElement) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SVGSVGElement);

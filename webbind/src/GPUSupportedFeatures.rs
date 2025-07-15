@@ -46,4 +46,9 @@ impl From<GPUSupportedFeatures> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUSupportedFeatures> for emlite::Val {
+    fn from(s: &GPUSupportedFeatures) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GPUSupportedFeatures);

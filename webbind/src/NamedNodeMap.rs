@@ -46,6 +46,11 @@ impl From<NamedNodeMap> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NamedNodeMap> for emlite::Val {
+    fn from(s: &NamedNodeMap) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(NamedNodeMap);
 
 impl NamedNodeMap {

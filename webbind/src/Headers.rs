@@ -46,6 +46,11 @@ impl From<Headers> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&Headers> for emlite::Val {
+    fn from(s: &Headers) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(Headers);
 
 impl Headers {

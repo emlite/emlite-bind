@@ -46,6 +46,11 @@ impl From<CharacterData> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CharacterData> for emlite::Val {
+    fn from(s: &CharacterData) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CharacterData);
 
 impl CharacterData {

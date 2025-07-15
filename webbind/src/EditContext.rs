@@ -46,6 +46,11 @@ impl From<EditContext> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&EditContext> for emlite::Val {
+    fn from(s: &EditContext) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(EditContext);
 
 impl EditContext {

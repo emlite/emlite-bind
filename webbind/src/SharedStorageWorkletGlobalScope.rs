@@ -44,6 +44,11 @@ impl From<StorageInterestGroup> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&StorageInterestGroup> for emlite::Val {
+    fn from(s: &StorageInterestGroup) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl StorageInterestGroup {
     pub fn join_count(&self) -> u64 {
@@ -170,6 +175,11 @@ impl From<SharedStorageWorkletGlobalScope> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&SharedStorageWorkletGlobalScope> for emlite::Val {
+    fn from(s: &SharedStorageWorkletGlobalScope) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SharedStorageWorkletGlobalScope);

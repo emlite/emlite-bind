@@ -44,6 +44,11 @@ impl From<InkPresenterParam> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&InkPresenterParam> for emlite::Val {
+    fn from(s: &InkPresenterParam) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl InkPresenterParam {
     pub fn presentation_area(&self) -> Element {
@@ -98,6 +103,11 @@ impl From<Ink> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Ink> for emlite::Val {
+    fn from(s: &Ink) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Ink);

@@ -46,6 +46,11 @@ impl From<WEBGL_multi_draw> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WEBGL_multi_draw> for emlite::Val {
+    fn from(s: &WEBGL_multi_draw) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WEBGL_multi_draw);
 
 impl WEBGL_multi_draw {

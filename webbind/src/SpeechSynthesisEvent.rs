@@ -46,6 +46,11 @@ impl From<SpeechSynthesisEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SpeechSynthesisEvent> for emlite::Val {
+    fn from(s: &SpeechSynthesisEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SpeechSynthesisEvent);
 
 impl SpeechSynthesisEvent {

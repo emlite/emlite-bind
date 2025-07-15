@@ -44,6 +44,11 @@ impl From<TrustedTypePolicyOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TrustedTypePolicyOptions> for emlite::Val {
+    fn from(s: &TrustedTypePolicyOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl TrustedTypePolicyOptions {
     pub fn create_html(&self) -> Function {
@@ -116,6 +121,11 @@ impl From<TrustedTypePolicyFactory> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&TrustedTypePolicyFactory> for emlite::Val {
+    fn from(s: &TrustedTypePolicyFactory) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(TrustedTypePolicyFactory);

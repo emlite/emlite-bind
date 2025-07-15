@@ -44,6 +44,11 @@ impl From<PhotoSettings> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PhotoSettings> for emlite::Val {
+    fn from(s: &PhotoSettings) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PhotoSettings {
     pub fn fill_light_mode(&self) -> FillLightMode {
@@ -123,6 +128,11 @@ impl From<PhotoCapabilities> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&PhotoCapabilities> for emlite::Val {
+    fn from(s: &PhotoCapabilities) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -208,6 +218,11 @@ impl From<ImageCapture> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&ImageCapture> for emlite::Val {
+    fn from(s: &ImageCapture) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ImageCapture);

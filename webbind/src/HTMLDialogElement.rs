@@ -46,6 +46,11 @@ impl From<HTMLDialogElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLDialogElement> for emlite::Val {
+    fn from(s: &HTMLDialogElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLDialogElement);
 
 impl HTMLDialogElement {

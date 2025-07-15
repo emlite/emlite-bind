@@ -46,6 +46,11 @@ impl From<DelayNode> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DelayNode> for emlite::Val {
+    fn from(s: &DelayNode) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(DelayNode);
 
 impl DelayNode {

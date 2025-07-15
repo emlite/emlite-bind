@@ -44,6 +44,11 @@ impl From<NavigatorUABrandVersion> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NavigatorUABrandVersion> for emlite::Val {
+    fn from(s: &NavigatorUABrandVersion) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl NavigatorUABrandVersion {
     pub fn brand(&self) -> DOMString {
@@ -105,6 +110,11 @@ impl From<UADataValues> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&UADataValues> for emlite::Val {
+    fn from(s: &UADataValues) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -255,6 +265,11 @@ impl From<UALowEntropyJSON> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&UALowEntropyJSON> for emlite::Val {
+    fn from(s: &UALowEntropyJSON) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl UALowEntropyJSON {
     pub fn brands(&self) -> Sequence<NavigatorUABrandVersion> {
@@ -329,6 +344,11 @@ impl From<NavigatorUAData> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&NavigatorUAData> for emlite::Val {
+    fn from(s: &NavigatorUAData) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(NavigatorUAData);

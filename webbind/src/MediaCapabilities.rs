@@ -44,6 +44,11 @@ impl From<MediaCapabilitiesDecodingInfo> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaCapabilitiesDecodingInfo> for emlite::Val {
+    fn from(s: &MediaCapabilitiesDecodingInfo) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MediaCapabilitiesDecodingInfo {
     pub fn key_system_access(&self) -> MediaKeySystemAccess {
@@ -111,6 +116,11 @@ impl From<MediaDecodingConfiguration> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaDecodingConfiguration> for emlite::Val {
+    fn from(s: &MediaDecodingConfiguration) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MediaDecodingConfiguration {
     pub fn type_(&self) -> MediaDecodingType {
@@ -174,6 +184,11 @@ impl From<MediaCapabilitiesEncodingInfo> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaCapabilitiesEncodingInfo> for emlite::Val {
+    fn from(s: &MediaCapabilitiesEncodingInfo) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MediaCapabilitiesEncodingInfo {
     pub fn configuration(&self) -> MediaEncodingConfiguration {
@@ -230,6 +245,11 @@ impl From<MediaEncodingConfiguration> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaEncodingConfiguration> for emlite::Val {
+    fn from(s: &MediaEncodingConfiguration) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MediaEncodingConfiguration {
     pub fn type_(&self) -> MediaEncodingType {
@@ -284,6 +304,11 @@ impl From<MediaCapabilities> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MediaCapabilities> for emlite::Val {
+    fn from(s: &MediaCapabilities) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaCapabilities);

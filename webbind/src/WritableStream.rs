@@ -46,6 +46,11 @@ impl From<WritableStream> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WritableStream> for emlite::Val {
+    fn from(s: &WritableStream) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WritableStream);
 
 impl WritableStream {

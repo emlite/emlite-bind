@@ -44,6 +44,11 @@ impl From<URLPatternResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&URLPatternResult> for emlite::Val {
+    fn from(s: &URLPatternResult) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl URLPatternResult {
     pub fn inputs(&self) -> Sequence<Any> {
@@ -170,6 +175,11 @@ impl From<URLPattern> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&URLPattern> for emlite::Val {
+    fn from(s: &URLPattern) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(URLPattern);

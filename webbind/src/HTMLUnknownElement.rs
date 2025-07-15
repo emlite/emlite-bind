@@ -46,4 +46,9 @@ impl From<HTMLUnknownElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLUnknownElement> for emlite::Val {
+    fn from(s: &HTMLUnknownElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLUnknownElement);

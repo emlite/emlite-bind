@@ -44,6 +44,11 @@ impl From<ElementDefinitionOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ElementDefinitionOptions> for emlite::Val {
+    fn from(s: &ElementDefinitionOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ElementDefinitionOptions {
     pub fn extends(&self) -> DOMString {
@@ -98,6 +103,11 @@ impl From<CustomElementRegistry> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&CustomElementRegistry> for emlite::Val {
+    fn from(s: &CustomElementRegistry) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CustomElementRegistry);

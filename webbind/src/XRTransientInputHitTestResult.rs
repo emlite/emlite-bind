@@ -46,6 +46,11 @@ impl From<XRTransientInputHitTestResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRTransientInputHitTestResult> for emlite::Val {
+    fn from(s: &XRTransientInputHitTestResult) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRTransientInputHitTestResult);
 
 impl XRTransientInputHitTestResult {

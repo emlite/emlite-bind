@@ -46,6 +46,11 @@ impl From<BeforeUnloadEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&BeforeUnloadEvent> for emlite::Val {
+    fn from(s: &BeforeUnloadEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(BeforeUnloadEvent);
 
 impl BeforeUnloadEvent {

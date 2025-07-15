@@ -46,6 +46,11 @@ impl From<SyncManager> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SyncManager> for emlite::Val {
+    fn from(s: &SyncManager) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SyncManager);
 
 impl SyncManager {

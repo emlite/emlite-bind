@@ -46,6 +46,11 @@ impl From<OTPCredential> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&OTPCredential> for emlite::Val {
+    fn from(s: &OTPCredential) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(OTPCredential);
 
 impl OTPCredential {

@@ -46,6 +46,11 @@ impl From<PaintSize> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PaintSize> for emlite::Val {
+    fn from(s: &PaintSize) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PaintSize);
 
 impl PaintSize {

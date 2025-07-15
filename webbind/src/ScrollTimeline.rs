@@ -46,6 +46,11 @@ impl From<ScrollTimeline> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ScrollTimeline> for emlite::Val {
+    fn from(s: &ScrollTimeline) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ScrollTimeline);
 
 impl ScrollTimeline {

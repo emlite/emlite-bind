@@ -44,6 +44,11 @@ impl From<RTCIceParameters> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCIceParameters> for emlite::Val {
+    fn from(s: &RTCIceParameters) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl RTCIceParameters {
     pub fn username_fragment(&self) -> DOMString {
@@ -105,6 +110,11 @@ impl From<RTCIceGatherOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCIceGatherOptions> for emlite::Val {
+    fn from(s: &RTCIceGatherOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -170,6 +180,11 @@ impl From<RTCIceCandidateInit> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCIceCandidateInit> for emlite::Val {
+    fn from(s: &RTCIceCandidateInit) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -253,6 +268,11 @@ impl From<RTCIceTransport> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCIceTransport> for emlite::Val {
+    fn from(s: &RTCIceTransport) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCIceTransport);

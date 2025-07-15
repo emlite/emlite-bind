@@ -46,6 +46,11 @@ impl From<TouchEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TouchEvent> for emlite::Val {
+    fn from(s: &TouchEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(TouchEvent);
 
 impl TouchEvent {

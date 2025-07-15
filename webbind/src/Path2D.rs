@@ -46,6 +46,11 @@ impl From<Path2D> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&Path2D> for emlite::Val {
+    fn from(s: &Path2D) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(Path2D);
 
 impl Path2D {

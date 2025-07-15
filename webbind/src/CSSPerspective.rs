@@ -46,6 +46,11 @@ impl From<CSSPerspective> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSPerspective> for emlite::Val {
+    fn from(s: &CSSPerspective) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSPerspective);
 
 impl CSSPerspective {

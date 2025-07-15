@@ -46,6 +46,11 @@ impl From<GPUAdapterInfo> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUAdapterInfo> for emlite::Val {
+    fn from(s: &GPUAdapterInfo) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GPUAdapterInfo);
 
 impl GPUAdapterInfo {

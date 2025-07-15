@@ -46,6 +46,11 @@ impl From<MutationRecord> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MutationRecord> for emlite::Val {
+    fn from(s: &MutationRecord) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(MutationRecord);
 
 impl MutationRecord {

@@ -46,6 +46,11 @@ impl From<TextFormatUpdateEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TextFormatUpdateEvent> for emlite::Val {
+    fn from(s: &TextFormatUpdateEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(TextFormatUpdateEvent);
 
 impl TextFormatUpdateEvent {

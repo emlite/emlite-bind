@@ -44,6 +44,11 @@ impl From<MediaKeySystemConfiguration> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaKeySystemConfiguration> for emlite::Val {
+    fn from(s: &MediaKeySystemConfiguration) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MediaKeySystemConfiguration {
     pub fn label(&self) -> DOMString {
@@ -156,6 +161,11 @@ impl From<RelatedApplication> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RelatedApplication> for emlite::Val {
+    fn from(s: &RelatedApplication) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl RelatedApplication {
     pub fn platform(&self) -> USVString {
@@ -237,6 +247,11 @@ impl From<HandwritingRecognizerQueryResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HandwritingRecognizerQueryResult> for emlite::Val {
+    fn from(s: &HandwritingRecognizerQueryResult) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl HandwritingRecognizerQueryResult {
     pub fn text_alternatives(&self) -> bool {
@@ -309,6 +324,11 @@ impl From<HandwritingModelConstraint> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HandwritingModelConstraint> for emlite::Val {
+    fn from(s: &HandwritingModelConstraint) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl HandwritingModelConstraint {
     pub fn languages(&self) -> Sequence<DOMString> {
@@ -361,6 +381,11 @@ impl From<AuctionAdInterestGroup> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&AuctionAdInterestGroup> for emlite::Val {
+    fn from(s: &AuctionAdInterestGroup) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -455,6 +480,11 @@ impl From<AuctionAdInterestGroupKey> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AuctionAdInterestGroupKey> for emlite::Val {
+    fn from(s: &AuctionAdInterestGroupKey) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl AuctionAdInterestGroupKey {
     pub fn owner(&self) -> USVString {
@@ -516,6 +546,11 @@ impl From<AuctionAdConfig> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&AuctionAdConfig> for emlite::Val {
+    fn from(s: &AuctionAdConfig) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -955,6 +990,11 @@ impl From<AdAuctionData> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AdAuctionData> for emlite::Val {
+    fn from(s: &AdAuctionData) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl AdAuctionData {
     pub fn request_id(&self) -> USVString {
@@ -1025,6 +1065,11 @@ impl From<AdAuctionDataConfig> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&AdAuctionDataConfig> for emlite::Val {
+    fn from(s: &AdAuctionDataConfig) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -1119,6 +1164,11 @@ impl From<ShareData> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ShareData> for emlite::Val {
+    fn from(s: &ShareData) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ShareData {
     pub fn files(&self) -> Sequence<File> {
@@ -1200,6 +1250,11 @@ impl From<MIDIOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MIDIOptions> for emlite::Val {
+    fn from(s: &MIDIOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MIDIOptions {
     pub fn sysex(&self) -> bool {
@@ -1263,6 +1318,11 @@ impl From<Navigator> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Navigator> for emlite::Val {
+    fn from(s: &Navigator) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Navigator);

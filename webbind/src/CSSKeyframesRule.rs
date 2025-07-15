@@ -46,6 +46,11 @@ impl From<CSSKeyframesRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSKeyframesRule> for emlite::Val {
+    fn from(s: &CSSKeyframesRule) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSKeyframesRule);
 
 impl CSSKeyframesRule {

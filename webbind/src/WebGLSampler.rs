@@ -46,4 +46,9 @@ impl From<WebGLSampler> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebGLSampler> for emlite::Val {
+    fn from(s: &WebGLSampler) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebGLSampler);

@@ -46,6 +46,11 @@ impl From<CloseEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CloseEvent> for emlite::Val {
+    fn from(s: &CloseEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CloseEvent);
 
 impl CloseEvent {

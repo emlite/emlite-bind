@@ -44,6 +44,11 @@ impl From<XRProjectionLayerInit> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRProjectionLayerInit> for emlite::Val {
+    fn from(s: &XRProjectionLayerInit) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl XRProjectionLayerInit {
     pub fn texture_type(&self) -> XRTextureType {
@@ -134,6 +139,11 @@ impl From<XRQuadLayerInit> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRQuadLayerInit> for emlite::Val {
+    fn from(s: &XRQuadLayerInit) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl XRQuadLayerInit {
     pub fn texture_type(&self) -> XRTextureType {
@@ -213,6 +223,11 @@ impl From<XRCylinderLayerInit> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&XRCylinderLayerInit> for emlite::Val {
+    fn from(s: &XRCylinderLayerInit) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -303,6 +318,11 @@ impl From<XREquirectLayerInit> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&XREquirectLayerInit> for emlite::Val {
+    fn from(s: &XREquirectLayerInit) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -404,6 +424,11 @@ impl From<XRCubeLayerInit> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRCubeLayerInit> for emlite::Val {
+    fn from(s: &XRCubeLayerInit) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl XRCubeLayerInit {
     pub fn orientation(&self) -> DOMPointReadOnly {
@@ -458,6 +483,11 @@ impl From<XRWebGLBinding> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&XRWebGLBinding> for emlite::Val {
+    fn from(s: &XRWebGLBinding) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(XRWebGLBinding);

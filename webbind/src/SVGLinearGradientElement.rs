@@ -46,6 +46,11 @@ impl From<SVGLinearGradientElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGLinearGradientElement> for emlite::Val {
+    fn from(s: &SVGLinearGradientElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGLinearGradientElement);
 
 impl SVGLinearGradientElement {

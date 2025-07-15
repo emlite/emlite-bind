@@ -46,6 +46,11 @@ impl From<SVGPolygonElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGPolygonElement> for emlite::Val {
+    fn from(s: &SVGPolygonElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGPolygonElement);
 
 impl SVGPolygonElement {

@@ -46,6 +46,11 @@ impl From<IIRFilterNode> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IIRFilterNode> for emlite::Val {
+    fn from(s: &IIRFilterNode) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(IIRFilterNode);
 
 impl IIRFilterNode {

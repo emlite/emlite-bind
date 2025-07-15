@@ -44,6 +44,11 @@ impl From<ReadableStreamBYOBReaderReadOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ReadableStreamBYOBReaderReadOptions> for emlite::Val {
+    fn from(s: &ReadableStreamBYOBReaderReadOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ReadableStreamBYOBReaderReadOptions {
     pub fn min(&self) -> u64 {
@@ -98,6 +103,11 @@ impl From<ReadableStreamBYOBReader> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&ReadableStreamBYOBReader> for emlite::Val {
+    fn from(s: &ReadableStreamBYOBReader) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ReadableStreamBYOBReader);

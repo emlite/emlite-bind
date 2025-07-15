@@ -46,6 +46,11 @@ impl From<WebTransportSendGroup> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebTransportSendGroup> for emlite::Val {
+    fn from(s: &WebTransportSendGroup) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebTransportSendGroup);
 
 impl WebTransportSendGroup {

@@ -46,6 +46,11 @@ impl From<NDEFRecord> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NDEFRecord> for emlite::Val {
+    fn from(s: &NDEFRecord) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(NDEFRecord);
 
 impl NDEFRecord {

@@ -46,4 +46,9 @@ impl From<AudioParamMap> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AudioParamMap> for emlite::Val {
+    fn from(s: &AudioParamMap) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(AudioParamMap);

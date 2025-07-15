@@ -44,6 +44,11 @@ impl From<WebTransportSendOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebTransportSendOptions> for emlite::Val {
+    fn from(s: &WebTransportSendOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl WebTransportSendOptions {
     pub fn send_group(&self) -> WebTransportSendGroup {
@@ -107,6 +112,11 @@ impl From<WebTransportDatagramDuplexStream> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&WebTransportDatagramDuplexStream> for emlite::Val {
+    fn from(s: &WebTransportDatagramDuplexStream) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(WebTransportDatagramDuplexStream);

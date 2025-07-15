@@ -46,6 +46,11 @@ impl From<GPUValidationError> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUValidationError> for emlite::Val {
+    fn from(s: &GPUValidationError) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GPUValidationError);
 
 impl GPUValidationError {

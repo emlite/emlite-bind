@@ -46,6 +46,11 @@ impl From<MediaKeySystemAccess> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaKeySystemAccess> for emlite::Val {
+    fn from(s: &MediaKeySystemAccess) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(MediaKeySystemAccess);
 
 impl MediaKeySystemAccess {

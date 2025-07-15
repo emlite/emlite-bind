@@ -46,6 +46,11 @@ impl From<CSSMathMin> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSMathMin> for emlite::Val {
+    fn from(s: &CSSMathMin) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSMathMin);
 
 impl CSSMathMin {

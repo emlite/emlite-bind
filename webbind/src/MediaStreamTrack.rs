@@ -44,6 +44,11 @@ impl From<MediaTrackCapabilities> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaTrackCapabilities> for emlite::Val {
+    fn from(s: &MediaTrackCapabilities) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MediaTrackCapabilities {
     pub fn display_surface(&self) -> DOMString {
@@ -116,6 +121,11 @@ impl From<MediaTrackConstraints> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaTrackConstraints> for emlite::Val {
+    fn from(s: &MediaTrackConstraints) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MediaTrackConstraints {
     pub fn advanced(&self) -> Sequence<Any> {
@@ -168,6 +178,11 @@ impl From<MediaTrackSettings> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MediaTrackSettings> for emlite::Val {
+    fn from(s: &MediaTrackSettings) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -269,6 +284,11 @@ impl From<CaptureHandle> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CaptureHandle> for emlite::Val {
+    fn from(s: &CaptureHandle) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl CaptureHandle {
     pub fn origin(&self) -> DOMString {
@@ -332,6 +352,11 @@ impl From<MediaStreamTrack> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MediaStreamTrack> for emlite::Val {
+    fn from(s: &MediaStreamTrack) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaStreamTrack);

@@ -46,6 +46,11 @@ impl From<XRCamera> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRCamera> for emlite::Val {
+    fn from(s: &XRCamera) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRCamera);
 
 impl XRCamera {

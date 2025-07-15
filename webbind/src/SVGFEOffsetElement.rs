@@ -46,6 +46,11 @@ impl From<SVGFEOffsetElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGFEOffsetElement> for emlite::Val {
+    fn from(s: &SVGFEOffsetElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGFEOffsetElement);
 
 impl SVGFEOffsetElement {

@@ -46,6 +46,11 @@ impl From<CSSLayerStatementRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSLayerStatementRule> for emlite::Val {
+    fn from(s: &CSSLayerStatementRule) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSLayerStatementRule);
 
 impl CSSLayerStatementRule {

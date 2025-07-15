@@ -46,6 +46,11 @@ impl From<PerformanceResourceTiming> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PerformanceResourceTiming> for emlite::Val {
+    fn from(s: &PerformanceResourceTiming) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PerformanceResourceTiming);
 
 impl PerformanceResourceTiming {

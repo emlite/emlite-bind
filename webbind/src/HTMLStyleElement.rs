@@ -46,6 +46,11 @@ impl From<HTMLStyleElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLStyleElement> for emlite::Val {
+    fn from(s: &HTMLStyleElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLStyleElement);
 
 impl HTMLStyleElement {

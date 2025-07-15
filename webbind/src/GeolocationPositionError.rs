@@ -46,6 +46,11 @@ impl From<GeolocationPositionError> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GeolocationPositionError> for emlite::Val {
+    fn from(s: &GeolocationPositionError) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GeolocationPositionError);
 
 impl GeolocationPositionError {

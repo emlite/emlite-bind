@@ -46,6 +46,11 @@ impl From<CSSConditionRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSConditionRule> for emlite::Val {
+    fn from(s: &CSSConditionRule) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSConditionRule);
 
 impl CSSConditionRule {

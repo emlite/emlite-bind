@@ -46,6 +46,11 @@ impl From<PortalActivateEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PortalActivateEvent> for emlite::Val {
+    fn from(s: &PortalActivateEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PortalActivateEvent);
 
 impl PortalActivateEvent {

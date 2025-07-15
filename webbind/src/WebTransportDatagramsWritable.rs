@@ -46,6 +46,11 @@ impl From<WebTransportDatagramsWritable> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebTransportDatagramsWritable> for emlite::Val {
+    fn from(s: &WebTransportDatagramsWritable) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebTransportDatagramsWritable);
 
 impl WebTransportDatagramsWritable {

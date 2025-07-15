@@ -46,4 +46,9 @@ impl From<EXT_float_blend> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&EXT_float_blend> for emlite::Val {
+    fn from(s: &EXT_float_blend) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(EXT_float_blend);

@@ -44,6 +44,11 @@ impl From<DOMPointInit> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DOMPointInit> for emlite::Val {
+    fn from(s: &DOMPointInit) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl DOMPointInit {
     pub fn x(&self) -> f64 {
@@ -125,6 +130,11 @@ impl From<SVGGeometryElement> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&SVGGeometryElement> for emlite::Val {
+    fn from(s: &SVGGeometryElement) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SVGGeometryElement);

@@ -46,6 +46,11 @@ impl From<WEBGL_provoking_vertex> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WEBGL_provoking_vertex> for emlite::Val {
+    fn from(s: &WEBGL_provoking_vertex) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WEBGL_provoking_vertex);
 
 impl WEBGL_provoking_vertex {

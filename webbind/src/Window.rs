@@ -44,6 +44,11 @@ impl From<WindowPostMessageOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WindowPostMessageOptions> for emlite::Val {
+    fn from(s: &WindowPostMessageOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl WindowPostMessageOptions {
     pub fn target_origin(&self) -> USVString {
@@ -96,6 +101,11 @@ impl From<OpenFilePickerOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&OpenFilePickerOptions> for emlite::Val {
+    fn from(s: &OpenFilePickerOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -152,6 +162,11 @@ impl From<SaveFilePickerOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SaveFilePickerOptions> for emlite::Val {
+    fn from(s: &SaveFilePickerOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl SaveFilePickerOptions {
     pub fn suggested_name(&self) -> USVString {
@@ -204,6 +219,11 @@ impl From<DirectoryPickerOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&DirectoryPickerOptions> for emlite::Val {
+    fn from(s: &DirectoryPickerOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -278,6 +298,11 @@ impl From<QueryOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&QueryOptions> for emlite::Val {
+    fn from(s: &QueryOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl QueryOptions {
     pub fn postscript_names(&self) -> Sequence<DOMString> {
@@ -334,6 +359,11 @@ impl From<IdleRequestOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IdleRequestOptions> for emlite::Val {
+    fn from(s: &IdleRequestOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl IdleRequestOptions {
     pub fn timeout(&self) -> u32 {
@@ -388,6 +418,11 @@ impl From<Window> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Window> for emlite::Val {
+    fn from(s: &Window) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Window);

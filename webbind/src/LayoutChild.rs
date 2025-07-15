@@ -44,6 +44,11 @@ impl From<LayoutConstraintsOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&LayoutConstraintsOptions> for emlite::Val {
+    fn from(s: &LayoutConstraintsOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl LayoutConstraintsOptions {
     pub fn available_inline_size(&self) -> f64 {
@@ -172,6 +177,11 @@ impl From<LayoutChild> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&LayoutChild> for emlite::Val {
+    fn from(s: &LayoutChild) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(LayoutChild);

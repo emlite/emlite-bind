@@ -46,6 +46,11 @@ impl From<CSSPageRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSPageRule> for emlite::Val {
+    fn from(s: &CSSPageRule) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSPageRule);
 
 impl CSSPageRule {

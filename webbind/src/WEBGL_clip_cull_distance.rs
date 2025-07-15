@@ -46,4 +46,9 @@ impl From<WEBGL_clip_cull_distance> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WEBGL_clip_cull_distance> for emlite::Val {
+    fn from(s: &WEBGL_clip_cull_distance) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WEBGL_clip_cull_distance);

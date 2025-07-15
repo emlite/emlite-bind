@@ -44,6 +44,11 @@ impl From<SharedStorageUrlWithMetadata> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SharedStorageUrlWithMetadata> for emlite::Val {
+    fn from(s: &SharedStorageUrlWithMetadata) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl SharedStorageUrlWithMetadata {
     pub fn url(&self) -> USVString {
@@ -105,6 +110,11 @@ impl From<SharedStorageRunOperationMethodOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&SharedStorageRunOperationMethodOptions> for emlite::Val {
+    fn from(s: &SharedStorageRunOperationMethodOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -197,6 +207,11 @@ impl From<SharedStorageWorklet> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&SharedStorageWorklet> for emlite::Val {
+    fn from(s: &SharedStorageWorklet) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SharedStorageWorklet);

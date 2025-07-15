@@ -44,6 +44,11 @@ impl From<FileSystemCreateWritableOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&FileSystemCreateWritableOptions> for emlite::Val {
+    fn from(s: &FileSystemCreateWritableOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl FileSystemCreateWritableOptions {
     pub fn keep_existing_data(&self) -> bool {
@@ -98,6 +103,11 @@ impl From<FileSystemFileHandle> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&FileSystemFileHandle> for emlite::Val {
+    fn from(s: &FileSystemFileHandle) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(FileSystemFileHandle);

@@ -44,6 +44,11 @@ impl From<PaymentCompleteDetails> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PaymentCompleteDetails> for emlite::Val {
+    fn from(s: &PaymentCompleteDetails) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PaymentCompleteDetails {
     pub fn data(&self) -> Object {
@@ -96,6 +101,11 @@ impl From<PaymentValidationErrors> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&PaymentValidationErrors> for emlite::Val {
+    fn from(s: &PaymentValidationErrors) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -179,6 +189,11 @@ impl From<PaymentResponse> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&PaymentResponse> for emlite::Val {
+    fn from(s: &PaymentResponse) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PaymentResponse);

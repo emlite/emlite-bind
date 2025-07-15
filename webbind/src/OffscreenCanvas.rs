@@ -44,6 +44,11 @@ impl From<ImageEncodeOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ImageEncodeOptions> for emlite::Val {
+    fn from(s: &ImageEncodeOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ImageEncodeOptions {
     pub fn type_(&self) -> DOMString {
@@ -107,6 +112,11 @@ impl From<OffscreenCanvas> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&OffscreenCanvas> for emlite::Val {
+    fn from(s: &OffscreenCanvas) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(OffscreenCanvas);

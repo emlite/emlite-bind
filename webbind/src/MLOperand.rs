@@ -46,6 +46,11 @@ impl From<MLOperand> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLOperand> for emlite::Val {
+    fn from(s: &MLOperand) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(MLOperand);
 
 impl MLOperand {

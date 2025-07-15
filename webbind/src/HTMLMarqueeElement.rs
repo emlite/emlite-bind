@@ -46,6 +46,11 @@ impl From<HTMLMarqueeElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLMarqueeElement> for emlite::Val {
+    fn from(s: &HTMLMarqueeElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLMarqueeElement);
 
 impl HTMLMarqueeElement {

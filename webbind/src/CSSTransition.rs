@@ -46,6 +46,11 @@ impl From<CSSTransition> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSTransition> for emlite::Val {
+    fn from(s: &CSSTransition) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSTransition);
 
 impl CSSTransition {

@@ -46,6 +46,11 @@ impl From<RemotePlayback> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RemotePlayback> for emlite::Val {
+    fn from(s: &RemotePlayback) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(RemotePlayback);
 
 impl RemotePlayback {

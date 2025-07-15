@@ -46,6 +46,11 @@ impl From<BluetoothLEScanPermissionResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&BluetoothLEScanPermissionResult> for emlite::Val {
+    fn from(s: &BluetoothLEScanPermissionResult) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(BluetoothLEScanPermissionResult);
 
 impl BluetoothLEScanPermissionResult {

@@ -46,6 +46,11 @@ impl From<IDBIndex> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IDBIndex> for emlite::Val {
+    fn from(s: &IDBIndex) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(IDBIndex);
 
 impl IDBIndex {

@@ -46,6 +46,11 @@ impl From<ImageTrackList> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ImageTrackList> for emlite::Val {
+    fn from(s: &ImageTrackList) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ImageTrackList);
 
 impl ImageTrackList {

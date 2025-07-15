@@ -46,6 +46,11 @@ impl From<CSSNestedDeclarations> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSNestedDeclarations> for emlite::Val {
+    fn from(s: &CSSNestedDeclarations) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSNestedDeclarations);
 
 impl CSSNestedDeclarations {

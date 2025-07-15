@@ -28,6 +28,14 @@ impl From<SecurityPolicyViolationEventDisposition> for emlite::Val {
         }
     }
 }
+impl From<&SecurityPolicyViolationEventDisposition> for emlite::Val {
+    fn from(s: &SecurityPolicyViolationEventDisposition) -> emlite::Val {
+        match *s {
+            SecurityPolicyViolationEventDisposition::ENFORCE => emlite::Val::from("enforce"),
+            SecurityPolicyViolationEventDisposition::REPORT => emlite::Val::from("report"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum EndingType {
@@ -52,6 +60,14 @@ impl FromVal for EndingType {
 impl From<EndingType> for emlite::Val {
     fn from(s: EndingType) -> emlite::Val {
         match s {
+            EndingType::TRANSPARENT => emlite::Val::from("transparent"),
+            EndingType::NATIVE => emlite::Val::from("native"),
+        }
+    }
+}
+impl From<&EndingType> for emlite::Val {
+    fn from(s: &EndingType) -> emlite::Val {
+        match *s {
             EndingType::TRANSPARENT => emlite::Val::from("transparent"),
             EndingType::NATIVE => emlite::Val::from("native"),
         }
@@ -86,6 +102,14 @@ impl From<IDBRequestReadyState> for emlite::Val {
         }
     }
 }
+impl From<&IDBRequestReadyState> for emlite::Val {
+    fn from(s: &IDBRequestReadyState) -> emlite::Val {
+        match *s {
+            IDBRequestReadyState::PENDING => emlite::Val::from("pending"),
+            IDBRequestReadyState::DONE => emlite::Val::from("done"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum IDBTransactionDurability {
@@ -112,6 +136,15 @@ impl FromVal for IDBTransactionDurability {
 impl From<IDBTransactionDurability> for emlite::Val {
     fn from(s: IDBTransactionDurability) -> emlite::Val {
         match s {
+            IDBTransactionDurability::DEFAULT => emlite::Val::from("default"),
+            IDBTransactionDurability::STRICT => emlite::Val::from("strict"),
+            IDBTransactionDurability::RELAXED => emlite::Val::from("relaxed"),
+        }
+    }
+}
+impl From<&IDBTransactionDurability> for emlite::Val {
+    fn from(s: &IDBTransactionDurability) -> emlite::Val {
+        match *s {
             IDBTransactionDurability::DEFAULT => emlite::Val::from("default"),
             IDBTransactionDurability::STRICT => emlite::Val::from("strict"),
             IDBTransactionDurability::RELAXED => emlite::Val::from("relaxed"),
@@ -153,6 +186,16 @@ impl From<IDBCursorDirection> for emlite::Val {
         }
     }
 }
+impl From<&IDBCursorDirection> for emlite::Val {
+    fn from(s: &IDBCursorDirection) -> emlite::Val {
+        match *s {
+            IDBCursorDirection::NEXT => emlite::Val::from("next"),
+            IDBCursorDirection::NEXTUNIQUE => emlite::Val::from("nextunique"),
+            IDBCursorDirection::PREV => emlite::Val::from("prev"),
+            IDBCursorDirection::PREVUNIQUE => emlite::Val::from("prevunique"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum IDBTransactionMode {
@@ -185,6 +228,15 @@ impl From<IDBTransactionMode> for emlite::Val {
         }
     }
 }
+impl From<&IDBTransactionMode> for emlite::Val {
+    fn from(s: &IDBTransactionMode) -> emlite::Val {
+        match *s {
+            IDBTransactionMode::READONLY => emlite::Val::from("readonly"),
+            IDBTransactionMode::READWRITE => emlite::Val::from("readwrite"),
+            IDBTransactionMode::VERSIONCHANGE => emlite::Val::from("versionchange"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum AccelerometerLocalCoordinateSystem {
@@ -209,6 +261,14 @@ impl FromVal for AccelerometerLocalCoordinateSystem {
 impl From<AccelerometerLocalCoordinateSystem> for emlite::Val {
     fn from(s: AccelerometerLocalCoordinateSystem) -> emlite::Val {
         match s {
+            AccelerometerLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
+            AccelerometerLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+        }
+    }
+}
+impl From<&AccelerometerLocalCoordinateSystem> for emlite::Val {
+    fn from(s: &AccelerometerLocalCoordinateSystem) -> emlite::Val {
+        match *s {
             AccelerometerLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
             AccelerometerLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
         }
@@ -255,6 +315,18 @@ impl From<AudioSessionType> for emlite::Val {
         }
     }
 }
+impl From<&AudioSessionType> for emlite::Val {
+    fn from(s: &AudioSessionType) -> emlite::Val {
+        match *s {
+            AudioSessionType::AUTO => emlite::Val::from("auto"),
+            AudioSessionType::PLAYBACK => emlite::Val::from("playback"),
+            AudioSessionType::TRANSIENT => emlite::Val::from("transient"),
+            AudioSessionType::TRANSIENT_SOLO => emlite::Val::from("transient-solo"),
+            AudioSessionType::AMBIENT => emlite::Val::from("ambient"),
+            AudioSessionType::PLAY_AND_RECORD => emlite::Val::from("play-and-record"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum AudioSessionState {
@@ -281,6 +353,15 @@ impl FromVal for AudioSessionState {
 impl From<AudioSessionState> for emlite::Val {
     fn from(s: AudioSessionState) -> emlite::Val {
         match s {
+            AudioSessionState::INACTIVE => emlite::Val::from("inactive"),
+            AudioSessionState::ACTIVE => emlite::Val::from("active"),
+            AudioSessionState::INTERRUPTED => emlite::Val::from("interrupted"),
+        }
+    }
+}
+impl From<&AudioSessionState> for emlite::Val {
+    fn from(s: &AudioSessionState) -> emlite::Val {
+        match *s {
             AudioSessionState::INACTIVE => emlite::Val::from("inactive"),
             AudioSessionState::ACTIVE => emlite::Val::from("active"),
             AudioSessionState::INTERRUPTED => emlite::Val::from("interrupted"),
@@ -319,6 +400,15 @@ impl From<AutoplayPolicy> for emlite::Val {
         }
     }
 }
+impl From<&AutoplayPolicy> for emlite::Val {
+    fn from(s: &AutoplayPolicy) -> emlite::Val {
+        match *s {
+            AutoplayPolicy::ALLOWED => emlite::Val::from("allowed"),
+            AutoplayPolicy::ALLOWED_MUTED => emlite::Val::from("allowed-muted"),
+            AutoplayPolicy::DISALLOWED => emlite::Val::from("disallowed"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum AutoplayPolicyMediaType {
@@ -343,6 +433,14 @@ impl FromVal for AutoplayPolicyMediaType {
 impl From<AutoplayPolicyMediaType> for emlite::Val {
     fn from(s: AutoplayPolicyMediaType) -> emlite::Val {
         match s {
+            AutoplayPolicyMediaType::MEDIAELEMENT => emlite::Val::from("mediaelement"),
+            AutoplayPolicyMediaType::AUDIOCONTEXT => emlite::Val::from("audiocontext"),
+        }
+    }
+}
+impl From<&AutoplayPolicyMediaType> for emlite::Val {
+    fn from(s: &AutoplayPolicyMediaType) -> emlite::Val {
+        match *s {
             AutoplayPolicyMediaType::MEDIAELEMENT => emlite::Val::from("mediaelement"),
             AutoplayPolicyMediaType::AUDIOCONTEXT => emlite::Val::from("audiocontext"),
         }
@@ -374,6 +472,15 @@ impl FromVal for BackgroundFetchResult {
 impl From<BackgroundFetchResult> for emlite::Val {
     fn from(s: BackgroundFetchResult) -> emlite::Val {
         match s {
+            BackgroundFetchResult::NONE => emlite::Val::from(""),
+            BackgroundFetchResult::SUCCESS => emlite::Val::from("success"),
+            BackgroundFetchResult::FAILURE => emlite::Val::from("failure"),
+        }
+    }
+}
+impl From<&BackgroundFetchResult> for emlite::Val {
+    fn from(s: &BackgroundFetchResult) -> emlite::Val {
+        match *s {
             BackgroundFetchResult::NONE => emlite::Val::from(""),
             BackgroundFetchResult::SUCCESS => emlite::Val::from("success"),
             BackgroundFetchResult::FAILURE => emlite::Val::from("failure"),
@@ -423,6 +530,20 @@ impl From<BackgroundFetchFailureReason> for emlite::Val {
         }
     }
 }
+impl From<&BackgroundFetchFailureReason> for emlite::Val {
+    fn from(s: &BackgroundFetchFailureReason) -> emlite::Val {
+        match *s {
+            BackgroundFetchFailureReason::NONE => emlite::Val::from(""),
+            BackgroundFetchFailureReason::ABORTED => emlite::Val::from("aborted"),
+            BackgroundFetchFailureReason::BAD_STATUS => emlite::Val::from("bad-status"),
+            BackgroundFetchFailureReason::FETCH_ERROR => emlite::Val::from("fetch-error"),
+            BackgroundFetchFailureReason::QUOTA_EXCEEDED => emlite::Val::from("quota-exceeded"),
+            BackgroundFetchFailureReason::DOWNLOAD_TOTAL_EXCEEDED => {
+                emlite::Val::from("download-total-exceeded")
+            }
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum PresentationStyle {
@@ -449,6 +570,15 @@ impl FromVal for PresentationStyle {
 impl From<PresentationStyle> for emlite::Val {
     fn from(s: PresentationStyle) -> emlite::Val {
         match s {
+            PresentationStyle::UNSPECIFIED => emlite::Val::from("unspecified"),
+            PresentationStyle::INLINE => emlite::Val::from("inline"),
+            PresentationStyle::ATTACHMENT => emlite::Val::from("attachment"),
+        }
+    }
+}
+impl From<&PresentationStyle> for emlite::Val {
+    fn from(s: &PresentationStyle) -> emlite::Val {
+        match *s {
             PresentationStyle::UNSPECIFIED => emlite::Val::from("unspecified"),
             PresentationStyle::INLINE => emlite::Val::from("inline"),
             PresentationStyle::ATTACHMENT => emlite::Val::from("attachment"),
@@ -487,6 +617,15 @@ impl From<CompressionFormat> for emlite::Val {
         }
     }
 }
+impl From<&CompressionFormat> for emlite::Val {
+    fn from(s: &CompressionFormat) -> emlite::Val {
+        match *s {
+            CompressionFormat::DEFLATE => emlite::Val::from("deflate"),
+            CompressionFormat::DEFLATE_RAW => emlite::Val::from("deflate-raw"),
+            CompressionFormat::GZIP => emlite::Val::from("gzip"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum PressureSource {
@@ -509,6 +648,13 @@ impl FromVal for PressureSource {
 impl From<PressureSource> for emlite::Val {
     fn from(s: PressureSource) -> emlite::Val {
         match s {
+            PressureSource::CPU => emlite::Val::from("cpu"),
+        }
+    }
+}
+impl From<&PressureSource> for emlite::Val {
+    fn from(s: &PressureSource) -> emlite::Val {
+        match *s {
             PressureSource::CPU => emlite::Val::from("cpu"),
         }
     }
@@ -548,6 +694,16 @@ impl From<PressureState> for emlite::Val {
         }
     }
 }
+impl From<&PressureState> for emlite::Val {
+    fn from(s: &PressureState) -> emlite::Val {
+        match *s {
+            PressureState::NOMINAL => emlite::Val::from("nominal"),
+            PressureState::FAIR => emlite::Val::from("fair"),
+            PressureState::SERIOUS => emlite::Val::from("serious"),
+            PressureState::CRITICAL => emlite::Val::from("critical"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ContactProperty {
@@ -578,6 +734,17 @@ impl FromVal for ContactProperty {
 impl From<ContactProperty> for emlite::Val {
     fn from(s: ContactProperty) -> emlite::Val {
         match s {
+            ContactProperty::ADDRESS => emlite::Val::from("address"),
+            ContactProperty::EMAIL => emlite::Val::from("email"),
+            ContactProperty::ICON => emlite::Val::from("icon"),
+            ContactProperty::NAME => emlite::Val::from("name"),
+            ContactProperty::TEL => emlite::Val::from("tel"),
+        }
+    }
+}
+impl From<&ContactProperty> for emlite::Val {
+    fn from(s: &ContactProperty) -> emlite::Val {
+        match *s {
             ContactProperty::ADDRESS => emlite::Val::from("address"),
             ContactProperty::EMAIL => emlite::Val::from("email"),
             ContactProperty::ICON => emlite::Val::from("icon"),
@@ -624,6 +791,17 @@ impl From<ContentCategory> for emlite::Val {
         }
     }
 }
+impl From<&ContentCategory> for emlite::Val {
+    fn from(s: &ContentCategory) -> emlite::Val {
+        match *s {
+            ContentCategory::NONE => emlite::Val::from(""),
+            ContentCategory::HOMEPAGE => emlite::Val::from("homepage"),
+            ContentCategory::ARTICLE => emlite::Val::from("article"),
+            ContentCategory::VIDEO => emlite::Val::from("video"),
+            ContentCategory::AUDIO => emlite::Val::from("audio"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum CookieSameSite {
@@ -650,6 +828,15 @@ impl FromVal for CookieSameSite {
 impl From<CookieSameSite> for emlite::Val {
     fn from(s: CookieSameSite) -> emlite::Val {
         match s {
+            CookieSameSite::STRICT => emlite::Val::from("strict"),
+            CookieSameSite::LAX => emlite::Val::from("lax"),
+            CookieSameSite::NONE => emlite::Val::from("none"),
+        }
+    }
+}
+impl From<&CookieSameSite> for emlite::Val {
+    fn from(s: &CookieSameSite) -> emlite::Val {
+        match *s {
             CookieSameSite::STRICT => emlite::Val::from("strict"),
             CookieSameSite::LAX => emlite::Val::from("lax"),
             CookieSameSite::NONE => emlite::Val::from("none"),
@@ -684,6 +871,16 @@ impl FromVal for CredentialMediationRequirement {
 impl From<CredentialMediationRequirement> for emlite::Val {
     fn from(s: CredentialMediationRequirement) -> emlite::Val {
         match s {
+            CredentialMediationRequirement::SILENT => emlite::Val::from("silent"),
+            CredentialMediationRequirement::OPTIONAL => emlite::Val::from("optional"),
+            CredentialMediationRequirement::CONDITIONAL => emlite::Val::from("conditional"),
+            CredentialMediationRequirement::REQUIRED => emlite::Val::from("required"),
+        }
+    }
+}
+impl From<&CredentialMediationRequirement> for emlite::Val {
+    fn from(s: &CredentialMediationRequirement) -> emlite::Val {
+        match *s {
             CredentialMediationRequirement::SILENT => emlite::Val::from("silent"),
             CredentialMediationRequirement::OPTIONAL => emlite::Val::from("optional"),
             CredentialMediationRequirement::CONDITIONAL => emlite::Val::from("conditional"),
@@ -728,6 +925,18 @@ impl From<ScriptingPolicyViolationType> for emlite::Val {
         }
     }
 }
+impl From<&ScriptingPolicyViolationType> for emlite::Val {
+    fn from(s: &ScriptingPolicyViolationType) -> emlite::Val {
+        match *s {
+            ScriptingPolicyViolationType::EXTERNAL_SCRIPT => emlite::Val::from("externalScript"),
+            ScriptingPolicyViolationType::INLINE_SCRIPT => emlite::Val::from("inlineScript"),
+            ScriptingPolicyViolationType::INLINE_EVENT_HANDLER => {
+                emlite::Val::from("inlineEventHandler")
+            }
+            ScriptingPolicyViolationType::EVAL => emlite::Val::from("eval"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum FontFaceLoadStatus {
@@ -763,6 +972,16 @@ impl From<FontFaceLoadStatus> for emlite::Val {
         }
     }
 }
+impl From<&FontFaceLoadStatus> for emlite::Val {
+    fn from(s: &FontFaceLoadStatus) -> emlite::Val {
+        match *s {
+            FontFaceLoadStatus::UNLOADED => emlite::Val::from("unloaded"),
+            FontFaceLoadStatus::LOADING => emlite::Val::from("loading"),
+            FontFaceLoadStatus::LOADED => emlite::Val::from("loaded"),
+            FontFaceLoadStatus::ERROR => emlite::Val::from("error"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum FontFaceSetLoadStatus {
@@ -787,6 +1006,14 @@ impl FromVal for FontFaceSetLoadStatus {
 impl From<FontFaceSetLoadStatus> for emlite::Val {
     fn from(s: FontFaceSetLoadStatus) -> emlite::Val {
         match s {
+            FontFaceSetLoadStatus::LOADING => emlite::Val::from("loading"),
+            FontFaceSetLoadStatus::LOADED => emlite::Val::from("loaded"),
+        }
+    }
+}
+impl From<&FontFaceSetLoadStatus> for emlite::Val {
+    fn from(s: &FontFaceSetLoadStatus) -> emlite::Val {
+        match *s {
             FontFaceSetLoadStatus::LOADING => emlite::Val::from("loading"),
             FontFaceSetLoadStatus::LOADED => emlite::Val::from("loaded"),
         }
@@ -824,6 +1051,15 @@ impl From<HighlightType> for emlite::Val {
         }
     }
 }
+impl From<&HighlightType> for emlite::Val {
+    fn from(s: &HighlightType) -> emlite::Val {
+        match *s {
+            HighlightType::HIGHLIGHT => emlite::Val::from("highlight"),
+            HighlightType::SPELLING_ERROR => emlite::Val::from("spelling-error"),
+            HighlightType::GRAMMAR_ERROR => emlite::Val::from("grammar-error"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ChildDisplayType {
@@ -848,6 +1084,14 @@ impl FromVal for ChildDisplayType {
 impl From<ChildDisplayType> for emlite::Val {
     fn from(s: ChildDisplayType) -> emlite::Val {
         match s {
+            ChildDisplayType::BLOCK => emlite::Val::from("block"),
+            ChildDisplayType::NORMAL => emlite::Val::from("normal"),
+        }
+    }
+}
+impl From<&ChildDisplayType> for emlite::Val {
+    fn from(s: &ChildDisplayType) -> emlite::Val {
+        match *s {
             ChildDisplayType::BLOCK => emlite::Val::from("block"),
             ChildDisplayType::NORMAL => emlite::Val::from("normal"),
         }
@@ -882,6 +1126,14 @@ impl From<LayoutSizingMode> for emlite::Val {
         }
     }
 }
+impl From<&LayoutSizingMode> for emlite::Val {
+    fn from(s: &LayoutSizingMode) -> emlite::Val {
+        match *s {
+            LayoutSizingMode::BLOCK_LIKE => emlite::Val::from("block-like"),
+            LayoutSizingMode::MANUAL => emlite::Val::from("manual"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum BlockFragmentationType {
@@ -910,6 +1162,16 @@ impl FromVal for BlockFragmentationType {
 impl From<BlockFragmentationType> for emlite::Val {
     fn from(s: BlockFragmentationType) -> emlite::Val {
         match s {
+            BlockFragmentationType::NONE => emlite::Val::from("none"),
+            BlockFragmentationType::PAGE => emlite::Val::from("page"),
+            BlockFragmentationType::COLUMN => emlite::Val::from("column"),
+            BlockFragmentationType::REGION => emlite::Val::from("region"),
+        }
+    }
+}
+impl From<&BlockFragmentationType> for emlite::Val {
+    fn from(s: &BlockFragmentationType) -> emlite::Val {
+        match *s {
             BlockFragmentationType::NONE => emlite::Val::from("none"),
             BlockFragmentationType::PAGE => emlite::Val::from("page"),
             BlockFragmentationType::COLUMN => emlite::Val::from("column"),
@@ -955,6 +1217,17 @@ impl From<BreakType> for emlite::Val {
         }
     }
 }
+impl From<&BreakType> for emlite::Val {
+    fn from(s: &BreakType) -> emlite::Val {
+        match *s {
+            BreakType::NONE => emlite::Val::from("none"),
+            BreakType::LINE => emlite::Val::from("line"),
+            BreakType::COLUMN => emlite::Val::from("column"),
+            BreakType::PAGE => emlite::Val::from("page"),
+            BreakType::REGION => emlite::Val::from("region"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum SpatialNavigationDirection {
@@ -990,6 +1263,16 @@ impl From<SpatialNavigationDirection> for emlite::Val {
         }
     }
 }
+impl From<&SpatialNavigationDirection> for emlite::Val {
+    fn from(s: &SpatialNavigationDirection) -> emlite::Val {
+        match *s {
+            SpatialNavigationDirection::UP => emlite::Val::from("up"),
+            SpatialNavigationDirection::DOWN => emlite::Val::from("down"),
+            SpatialNavigationDirection::LEFT => emlite::Val::from("left"),
+            SpatialNavigationDirection::RIGHT => emlite::Val::from("right"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum FocusableAreaSearchMode {
@@ -1014,6 +1297,14 @@ impl FromVal for FocusableAreaSearchMode {
 impl From<FocusableAreaSearchMode> for emlite::Val {
     fn from(s: FocusableAreaSearchMode) -> emlite::Val {
         match s {
+            FocusableAreaSearchMode::VISIBLE => emlite::Val::from("visible"),
+            FocusableAreaSearchMode::ALL => emlite::Val::from("all"),
+        }
+    }
+}
+impl From<&FocusableAreaSearchMode> for emlite::Val {
+    fn from(s: &FocusableAreaSearchMode) -> emlite::Val {
+        match *s {
             FocusableAreaSearchMode::VISIBLE => emlite::Val::from("visible"),
             FocusableAreaSearchMode::ALL => emlite::Val::from("all"),
         }
@@ -1053,6 +1344,19 @@ impl FromVal for CSSNumericBaseType {
 impl From<CSSNumericBaseType> for emlite::Val {
     fn from(s: CSSNumericBaseType) -> emlite::Val {
         match s {
+            CSSNumericBaseType::LENGTH => emlite::Val::from("length"),
+            CSSNumericBaseType::ANGLE => emlite::Val::from("angle"),
+            CSSNumericBaseType::TIME => emlite::Val::from("time"),
+            CSSNumericBaseType::FREQUENCY => emlite::Val::from("frequency"),
+            CSSNumericBaseType::RESOLUTION => emlite::Val::from("resolution"),
+            CSSNumericBaseType::FLEX => emlite::Val::from("flex"),
+            CSSNumericBaseType::PERCENT => emlite::Val::from("percent"),
+        }
+    }
+}
+impl From<&CSSNumericBaseType> for emlite::Val {
+    fn from(s: &CSSNumericBaseType) -> emlite::Val {
+        match *s {
             CSSNumericBaseType::LENGTH => emlite::Val::from("length"),
             CSSNumericBaseType::ANGLE => emlite::Val::from("angle"),
             CSSNumericBaseType::TIME => emlite::Val::from("time"),
@@ -1107,6 +1411,19 @@ impl From<CSSMathOperator> for emlite::Val {
         }
     }
 }
+impl From<&CSSMathOperator> for emlite::Val {
+    fn from(s: &CSSMathOperator) -> emlite::Val {
+        match *s {
+            CSSMathOperator::SUM => emlite::Val::from("sum"),
+            CSSMathOperator::PRODUCT => emlite::Val::from("product"),
+            CSSMathOperator::NEGATE => emlite::Val::from("negate"),
+            CSSMathOperator::INVERT => emlite::Val::from("invert"),
+            CSSMathOperator::MIN => emlite::Val::from("min"),
+            CSSMathOperator::MAX => emlite::Val::from("max"),
+            CSSMathOperator::CLAMP => emlite::Val::from("clamp"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ScrollBehavior {
@@ -1133,6 +1450,15 @@ impl FromVal for ScrollBehavior {
 impl From<ScrollBehavior> for emlite::Val {
     fn from(s: ScrollBehavior) -> emlite::Val {
         match s {
+            ScrollBehavior::AUTO => emlite::Val::from("auto"),
+            ScrollBehavior::INSTANT => emlite::Val::from("instant"),
+            ScrollBehavior::SMOOTH => emlite::Val::from("smooth"),
+        }
+    }
+}
+impl From<&ScrollBehavior> for emlite::Val {
+    fn from(s: &ScrollBehavior) -> emlite::Val {
+        match *s {
             ScrollBehavior::AUTO => emlite::Val::from("auto"),
             ScrollBehavior::INSTANT => emlite::Val::from("instant"),
             ScrollBehavior::SMOOTH => emlite::Val::from("smooth"),
@@ -1174,6 +1500,16 @@ impl From<ScrollLogicalPosition> for emlite::Val {
         }
     }
 }
+impl From<&ScrollLogicalPosition> for emlite::Val {
+    fn from(s: &ScrollLogicalPosition) -> emlite::Val {
+        match *s {
+            ScrollLogicalPosition::START => emlite::Val::from("start"),
+            ScrollLogicalPosition::CENTER => emlite::Val::from("center"),
+            ScrollLogicalPosition::END => emlite::Val::from("end"),
+            ScrollLogicalPosition::NEAREST => emlite::Val::from("nearest"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ScrollIntoViewContainer {
@@ -1198,6 +1534,14 @@ impl FromVal for ScrollIntoViewContainer {
 impl From<ScrollIntoViewContainer> for emlite::Val {
     fn from(s: ScrollIntoViewContainer) -> emlite::Val {
         match s {
+            ScrollIntoViewContainer::ALL => emlite::Val::from("all"),
+            ScrollIntoViewContainer::NEAREST => emlite::Val::from("nearest"),
+        }
+    }
+}
+impl From<&ScrollIntoViewContainer> for emlite::Val {
+    fn from(s: &ScrollIntoViewContainer) -> emlite::Val {
+        match *s {
             ScrollIntoViewContainer::ALL => emlite::Val::from("all"),
             ScrollIntoViewContainer::NEAREST => emlite::Val::from("nearest"),
         }
@@ -1238,6 +1582,16 @@ impl From<CSSBoxType> for emlite::Val {
         }
     }
 }
+impl From<&CSSBoxType> for emlite::Val {
+    fn from(s: &CSSBoxType) -> emlite::Val {
+        match *s {
+            CSSBoxType::MARGIN => emlite::Val::from("margin"),
+            CSSBoxType::BORDER => emlite::Val::from("border"),
+            CSSBoxType::PADDING => emlite::Val::from("padding"),
+            CSSBoxType::CONTENT => emlite::Val::from("content"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum DevicePostureType {
@@ -1262,6 +1616,14 @@ impl FromVal for DevicePostureType {
 impl From<DevicePostureType> for emlite::Val {
     fn from(s: DevicePostureType) -> emlite::Val {
         match s {
+            DevicePostureType::CONTINUOUS => emlite::Val::from("continuous"),
+            DevicePostureType::FOLDED => emlite::Val::from("folded"),
+        }
+    }
+}
+impl From<&DevicePostureType> for emlite::Val {
+    fn from(s: &DevicePostureType) -> emlite::Val {
+        match *s {
             DevicePostureType::CONTINUOUS => emlite::Val::from("continuous"),
             DevicePostureType::FOLDED => emlite::Val::from("folded"),
         }
@@ -1296,6 +1658,14 @@ impl From<ItemType> for emlite::Val {
         }
     }
 }
+impl From<&ItemType> for emlite::Val {
+    fn from(s: &ItemType) -> emlite::Val {
+        match *s {
+            ItemType::PRODUCT => emlite::Val::from("product"),
+            ItemType::SUBSCRIPTION => emlite::Val::from("subscription"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ShadowRootMode {
@@ -1325,6 +1695,14 @@ impl From<ShadowRootMode> for emlite::Val {
         }
     }
 }
+impl From<&ShadowRootMode> for emlite::Val {
+    fn from(s: &ShadowRootMode) -> emlite::Val {
+        match *s {
+            ShadowRootMode::OPEN => emlite::Val::from("open"),
+            ShadowRootMode::CLOSED => emlite::Val::from("closed"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum SlotAssignmentMode {
@@ -1349,6 +1727,14 @@ impl FromVal for SlotAssignmentMode {
 impl From<SlotAssignmentMode> for emlite::Val {
     fn from(s: SlotAssignmentMode) -> emlite::Val {
         match s {
+            SlotAssignmentMode::MANUAL => emlite::Val::from("manual"),
+            SlotAssignmentMode::NAMED => emlite::Val::from("named"),
+        }
+    }
+}
+impl From<&SlotAssignmentMode> for emlite::Val {
+    fn from(s: &SlotAssignmentMode) -> emlite::Val {
+        match *s {
             SlotAssignmentMode::MANUAL => emlite::Val::from("manual"),
             SlotAssignmentMode::NAMED => emlite::Val::from("named"),
         }
@@ -1392,6 +1778,17 @@ impl From<UnderlineStyle> for emlite::Val {
         }
     }
 }
+impl From<&UnderlineStyle> for emlite::Val {
+    fn from(s: &UnderlineStyle) -> emlite::Val {
+        match *s {
+            UnderlineStyle::NONE => emlite::Val::from("none"),
+            UnderlineStyle::SOLID => emlite::Val::from("solid"),
+            UnderlineStyle::DOTTED => emlite::Val::from("dotted"),
+            UnderlineStyle::DASHED => emlite::Val::from("dashed"),
+            UnderlineStyle::WAVY => emlite::Val::from("wavy"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum UnderlineThickness {
@@ -1418,6 +1815,15 @@ impl FromVal for UnderlineThickness {
 impl From<UnderlineThickness> for emlite::Val {
     fn from(s: UnderlineThickness) -> emlite::Val {
         match s {
+            UnderlineThickness::NONE => emlite::Val::from("none"),
+            UnderlineThickness::THIN => emlite::Val::from("thin"),
+            UnderlineThickness::THICK => emlite::Val::from("thick"),
+        }
+    }
+}
+impl From<&UnderlineThickness> for emlite::Val {
+    fn from(s: &UnderlineThickness) -> emlite::Val {
+        match *s {
             UnderlineThickness::NONE => emlite::Val::from("none"),
             UnderlineThickness::THIN => emlite::Val::from("thin"),
             UnderlineThickness::THICK => emlite::Val::from("thick"),
@@ -1456,6 +1862,15 @@ impl From<MediaKeysRequirement> for emlite::Val {
         }
     }
 }
+impl From<&MediaKeysRequirement> for emlite::Val {
+    fn from(s: &MediaKeysRequirement) -> emlite::Val {
+        match *s {
+            MediaKeysRequirement::REQUIRED => emlite::Val::from("required"),
+            MediaKeysRequirement::OPTIONAL => emlite::Val::from("optional"),
+            MediaKeysRequirement::NOT_ALLOWED => emlite::Val::from("not-allowed"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum MediaKeySessionType {
@@ -1480,6 +1895,14 @@ impl FromVal for MediaKeySessionType {
 impl From<MediaKeySessionType> for emlite::Val {
     fn from(s: MediaKeySessionType) -> emlite::Val {
         match s {
+            MediaKeySessionType::TEMPORARY => emlite::Val::from("temporary"),
+            MediaKeySessionType::PERSISTENT_LICENSE => emlite::Val::from("persistent-license"),
+        }
+    }
+}
+impl From<&MediaKeySessionType> for emlite::Val {
+    fn from(s: &MediaKeySessionType) -> emlite::Val {
+        match *s {
             MediaKeySessionType::TEMPORARY => emlite::Val::from("temporary"),
             MediaKeySessionType::PERSISTENT_LICENSE => emlite::Val::from("persistent-license"),
         }
@@ -1515,6 +1938,23 @@ impl FromVal for MediaKeySessionClosedReason {
 impl From<MediaKeySessionClosedReason> for emlite::Val {
     fn from(s: MediaKeySessionClosedReason) -> emlite::Val {
         match s {
+            MediaKeySessionClosedReason::INTERNAL_ERROR => emlite::Val::from("internal-error"),
+            MediaKeySessionClosedReason::CLOSED_BY_APPLICATION => {
+                emlite::Val::from("closed-by-application")
+            }
+            MediaKeySessionClosedReason::RELEASE_ACKNOWLEDGED => {
+                emlite::Val::from("release-acknowledged")
+            }
+            MediaKeySessionClosedReason::HARDWARE_CONTEXT_RESET => {
+                emlite::Val::from("hardware-context-reset")
+            }
+            MediaKeySessionClosedReason::RESOURCE_EVICTED => emlite::Val::from("resource-evicted"),
+        }
+    }
+}
+impl From<&MediaKeySessionClosedReason> for emlite::Val {
+    fn from(s: &MediaKeySessionClosedReason) -> emlite::Val {
+        match *s {
             MediaKeySessionClosedReason::INTERNAL_ERROR => emlite::Val::from("internal-error"),
             MediaKeySessionClosedReason::CLOSED_BY_APPLICATION => {
                 emlite::Val::from("closed-by-application")
@@ -1576,6 +2016,20 @@ impl From<MediaKeyStatus> for emlite::Val {
         }
     }
 }
+impl From<&MediaKeyStatus> for emlite::Val {
+    fn from(s: &MediaKeyStatus) -> emlite::Val {
+        match *s {
+            MediaKeyStatus::USABLE => emlite::Val::from("usable"),
+            MediaKeyStatus::EXPIRED => emlite::Val::from("expired"),
+            MediaKeyStatus::RELEASED => emlite::Val::from("released"),
+            MediaKeyStatus::OUTPUT_RESTRICTED => emlite::Val::from("output-restricted"),
+            MediaKeyStatus::OUTPUT_DOWNSCALED => emlite::Val::from("output-downscaled"),
+            MediaKeyStatus::USABLE_IN_FUTURE => emlite::Val::from("usable-in-future"),
+            MediaKeyStatus::STATUS_PENDING => emlite::Val::from("status-pending"),
+            MediaKeyStatus::INTERNAL_ERROR => emlite::Val::from("internal-error"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum MediaKeyMessageType {
@@ -1604,6 +2058,18 @@ impl FromVal for MediaKeyMessageType {
 impl From<MediaKeyMessageType> for emlite::Val {
     fn from(s: MediaKeyMessageType) -> emlite::Val {
         match s {
+            MediaKeyMessageType::LICENSE_REQUEST => emlite::Val::from("license-request"),
+            MediaKeyMessageType::LICENSE_RENEWAL => emlite::Val::from("license-renewal"),
+            MediaKeyMessageType::LICENSE_RELEASE => emlite::Val::from("license-release"),
+            MediaKeyMessageType::INDIVIDUALIZATION_REQUEST => {
+                emlite::Val::from("individualization-request")
+            }
+        }
+    }
+}
+impl From<&MediaKeyMessageType> for emlite::Val {
+    fn from(s: &MediaKeyMessageType) -> emlite::Val {
+        match *s {
             MediaKeyMessageType::LICENSE_REQUEST => emlite::Val::from("license-request"),
             MediaKeyMessageType::LICENSE_RENEWAL => emlite::Val::from("license-renewal"),
             MediaKeyMessageType::LICENSE_RELEASE => emlite::Val::from("license-release"),
@@ -1648,6 +2114,16 @@ impl From<IdentityCredentialRequestOptionsContext> for emlite::Val {
         }
     }
 }
+impl From<&IdentityCredentialRequestOptionsContext> for emlite::Val {
+    fn from(s: &IdentityCredentialRequestOptionsContext) -> emlite::Val {
+        match *s {
+            IdentityCredentialRequestOptionsContext::SIGNIN => emlite::Val::from("signin"),
+            IdentityCredentialRequestOptionsContext::SIGNUP => emlite::Val::from("signup"),
+            IdentityCredentialRequestOptionsContext::USE_ => emlite::Val::from("use"),
+            IdentityCredentialRequestOptionsContext::CONTINUE_ => emlite::Val::from("continue"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum IdentityCredentialRequestOptionsMode {
@@ -1677,6 +2153,14 @@ impl From<IdentityCredentialRequestOptionsMode> for emlite::Val {
         }
     }
 }
+impl From<&IdentityCredentialRequestOptionsMode> for emlite::Val {
+    fn from(s: &IdentityCredentialRequestOptionsMode) -> emlite::Val {
+        match *s {
+            IdentityCredentialRequestOptionsMode::ACTIVE => emlite::Val::from("active"),
+            IdentityCredentialRequestOptionsMode::PASSIVE => emlite::Val::from("passive"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum OpaqueProperty {
@@ -1699,6 +2183,13 @@ impl FromVal for OpaqueProperty {
 impl From<OpaqueProperty> for emlite::Val {
     fn from(s: OpaqueProperty) -> emlite::Val {
         match s {
+            OpaqueProperty::OPAQUE => emlite::Val::from("opaque"),
+        }
+    }
+}
+impl From<&OpaqueProperty> for emlite::Val {
+    fn from(s: &OpaqueProperty) -> emlite::Val {
+        match *s {
             OpaqueProperty::OPAQUE => emlite::Val::from("opaque"),
         }
     }
@@ -1733,6 +2224,19 @@ impl FromVal for FenceReportingDestination {
 impl From<FenceReportingDestination> for emlite::Val {
     fn from(s: FenceReportingDestination) -> emlite::Val {
         match s {
+            FenceReportingDestination::BUYER => emlite::Val::from("buyer"),
+            FenceReportingDestination::SELLER => emlite::Val::from("seller"),
+            FenceReportingDestination::COMPONENT_SELLER => emlite::Val::from("component-seller"),
+            FenceReportingDestination::DIRECT_SELLER => emlite::Val::from("direct-seller"),
+            FenceReportingDestination::SHARED_STORAGE_SELECT_URL => {
+                emlite::Val::from("shared-storage-select-url")
+            }
+        }
+    }
+}
+impl From<&FenceReportingDestination> for emlite::Val {
+    fn from(s: &FenceReportingDestination) -> emlite::Val {
+        match *s {
             FenceReportingDestination::BUYER => emlite::Val::from("buyer"),
             FenceReportingDestination::SELLER => emlite::Val::from("seller"),
             FenceReportingDestination::COMPONENT_SELLER => emlite::Val::from("component-seller"),
@@ -1829,6 +2333,33 @@ impl From<RequestDestination> for emlite::Val {
         }
     }
 }
+impl From<&RequestDestination> for emlite::Val {
+    fn from(s: &RequestDestination) -> emlite::Val {
+        match *s {
+            RequestDestination::NONE => emlite::Val::from(""),
+            RequestDestination::AUDIO => emlite::Val::from("audio"),
+            RequestDestination::AUDIOWORKLET => emlite::Val::from("audioworklet"),
+            RequestDestination::DOCUMENT => emlite::Val::from("document"),
+            RequestDestination::EMBED => emlite::Val::from("embed"),
+            RequestDestination::FONT => emlite::Val::from("font"),
+            RequestDestination::FRAME => emlite::Val::from("frame"),
+            RequestDestination::IFRAME => emlite::Val::from("iframe"),
+            RequestDestination::IMAGE => emlite::Val::from("image"),
+            RequestDestination::JSON => emlite::Val::from("json"),
+            RequestDestination::MANIFEST => emlite::Val::from("manifest"),
+            RequestDestination::OBJECT => emlite::Val::from("object"),
+            RequestDestination::PAINTWORKLET => emlite::Val::from("paintworklet"),
+            RequestDestination::REPORT => emlite::Val::from("report"),
+            RequestDestination::SCRIPT => emlite::Val::from("script"),
+            RequestDestination::SHAREDWORKER => emlite::Val::from("sharedworker"),
+            RequestDestination::STYLE => emlite::Val::from("style"),
+            RequestDestination::TRACK => emlite::Val::from("track"),
+            RequestDestination::VIDEO => emlite::Val::from("video"),
+            RequestDestination::WORKER => emlite::Val::from("worker"),
+            RequestDestination::XSLT => emlite::Val::from("xslt"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RequestMode {
@@ -1864,6 +2395,16 @@ impl From<RequestMode> for emlite::Val {
         }
     }
 }
+impl From<&RequestMode> for emlite::Val {
+    fn from(s: &RequestMode) -> emlite::Val {
+        match *s {
+            RequestMode::NAVIGATE => emlite::Val::from("navigate"),
+            RequestMode::SAME_ORIGIN => emlite::Val::from("same-origin"),
+            RequestMode::NO_CORS => emlite::Val::from("no-cors"),
+            RequestMode::CORS => emlite::Val::from("cors"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RequestCredentials {
@@ -1890,6 +2431,15 @@ impl FromVal for RequestCredentials {
 impl From<RequestCredentials> for emlite::Val {
     fn from(s: RequestCredentials) -> emlite::Val {
         match s {
+            RequestCredentials::OMIT => emlite::Val::from("omit"),
+            RequestCredentials::SAME_ORIGIN => emlite::Val::from("same-origin"),
+            RequestCredentials::INCLUDE => emlite::Val::from("include"),
+        }
+    }
+}
+impl From<&RequestCredentials> for emlite::Val {
+    fn from(s: &RequestCredentials) -> emlite::Val {
+        match *s {
             RequestCredentials::OMIT => emlite::Val::from("omit"),
             RequestCredentials::SAME_ORIGIN => emlite::Val::from("same-origin"),
             RequestCredentials::INCLUDE => emlite::Val::from("include"),
@@ -1937,6 +2487,18 @@ impl From<RequestCache> for emlite::Val {
         }
     }
 }
+impl From<&RequestCache> for emlite::Val {
+    fn from(s: &RequestCache) -> emlite::Val {
+        match *s {
+            RequestCache::DEFAULT => emlite::Val::from("default"),
+            RequestCache::NO_STORE => emlite::Val::from("no-store"),
+            RequestCache::RELOAD => emlite::Val::from("reload"),
+            RequestCache::NO_CACHE => emlite::Val::from("no-cache"),
+            RequestCache::FORCE_CACHE => emlite::Val::from("force-cache"),
+            RequestCache::ONLY_IF_CACHED => emlite::Val::from("only-if-cached"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RequestRedirect {
@@ -1969,6 +2531,15 @@ impl From<RequestRedirect> for emlite::Val {
         }
     }
 }
+impl From<&RequestRedirect> for emlite::Val {
+    fn from(s: &RequestRedirect) -> emlite::Val {
+        match *s {
+            RequestRedirect::FOLLOW => emlite::Val::from("follow"),
+            RequestRedirect::ERROR => emlite::Val::from("error"),
+            RequestRedirect::MANUAL => emlite::Val::from("manual"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RequestDuplex {
@@ -1991,6 +2562,13 @@ impl FromVal for RequestDuplex {
 impl From<RequestDuplex> for emlite::Val {
     fn from(s: RequestDuplex) -> emlite::Val {
         match s {
+            RequestDuplex::HALF => emlite::Val::from("half"),
+        }
+    }
+}
+impl From<&RequestDuplex> for emlite::Val {
+    fn from(s: &RequestDuplex) -> emlite::Val {
+        match *s {
             RequestDuplex::HALF => emlite::Val::from("half"),
         }
     }
@@ -2021,6 +2599,15 @@ impl FromVal for RequestPriority {
 impl From<RequestPriority> for emlite::Val {
     fn from(s: RequestPriority) -> emlite::Val {
         match s {
+            RequestPriority::HIGH => emlite::Val::from("high"),
+            RequestPriority::LOW => emlite::Val::from("low"),
+            RequestPriority::AUTO => emlite::Val::from("auto"),
+        }
+    }
+}
+impl From<&RequestPriority> for emlite::Val {
+    fn from(s: &RequestPriority) -> emlite::Val {
+        match *s {
             RequestPriority::HIGH => emlite::Val::from("high"),
             RequestPriority::LOW => emlite::Val::from("low"),
             RequestPriority::AUTO => emlite::Val::from("auto"),
@@ -2068,6 +2655,18 @@ impl From<ResponseType> for emlite::Val {
         }
     }
 }
+impl From<&ResponseType> for emlite::Val {
+    fn from(s: &ResponseType) -> emlite::Val {
+        match *s {
+            ResponseType::BASIC => emlite::Val::from("basic"),
+            ResponseType::CORS => emlite::Val::from("cors"),
+            ResponseType::DEFAULT => emlite::Val::from("default"),
+            ResponseType::ERROR => emlite::Val::from("error"),
+            ResponseType::OPAQUE => emlite::Val::from("opaque"),
+            ResponseType::OPAQUEREDIRECT => emlite::Val::from("opaqueredirect"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum FileSystemPermissionMode {
@@ -2092,6 +2691,14 @@ impl FromVal for FileSystemPermissionMode {
 impl From<FileSystemPermissionMode> for emlite::Val {
     fn from(s: FileSystemPermissionMode) -> emlite::Val {
         match s {
+            FileSystemPermissionMode::READ => emlite::Val::from("read"),
+            FileSystemPermissionMode::READWRITE => emlite::Val::from("readwrite"),
+        }
+    }
+}
+impl From<&FileSystemPermissionMode> for emlite::Val {
+    fn from(s: &FileSystemPermissionMode) -> emlite::Val {
+        match *s {
             FileSystemPermissionMode::READ => emlite::Val::from("read"),
             FileSystemPermissionMode::READWRITE => emlite::Val::from("readwrite"),
         }
@@ -2138,6 +2745,18 @@ impl From<WellKnownDirectory> for emlite::Val {
         }
     }
 }
+impl From<&WellKnownDirectory> for emlite::Val {
+    fn from(s: &WellKnownDirectory) -> emlite::Val {
+        match *s {
+            WellKnownDirectory::DESKTOP => emlite::Val::from("desktop"),
+            WellKnownDirectory::DOCUMENTS => emlite::Val::from("documents"),
+            WellKnownDirectory::DOWNLOADS => emlite::Val::from("downloads"),
+            WellKnownDirectory::MUSIC => emlite::Val::from("music"),
+            WellKnownDirectory::PICTURES => emlite::Val::from("pictures"),
+            WellKnownDirectory::VIDEOS => emlite::Val::from("videos"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum FileSystemHandleKind {
@@ -2162,6 +2781,14 @@ impl FromVal for FileSystemHandleKind {
 impl From<FileSystemHandleKind> for emlite::Val {
     fn from(s: FileSystemHandleKind) -> emlite::Val {
         match s {
+            FileSystemHandleKind::FILE => emlite::Val::from("file"),
+            FileSystemHandleKind::DIRECTORY => emlite::Val::from("directory"),
+        }
+    }
+}
+impl From<&FileSystemHandleKind> for emlite::Val {
+    fn from(s: &FileSystemHandleKind) -> emlite::Val {
+        match *s {
             FileSystemHandleKind::FILE => emlite::Val::from("file"),
             FileSystemHandleKind::DIRECTORY => emlite::Val::from("directory"),
         }
@@ -2193,6 +2820,15 @@ impl FromVal for WriteCommandType {
 impl From<WriteCommandType> for emlite::Val {
     fn from(s: WriteCommandType) -> emlite::Val {
         match s {
+            WriteCommandType::WRITE => emlite::Val::from("write"),
+            WriteCommandType::SEEK => emlite::Val::from("seek"),
+            WriteCommandType::TRUNCATE => emlite::Val::from("truncate"),
+        }
+    }
+}
+impl From<&WriteCommandType> for emlite::Val {
+    fn from(s: &WriteCommandType) -> emlite::Val {
+        match *s {
             WriteCommandType::WRITE => emlite::Val::from("write"),
             WriteCommandType::SEEK => emlite::Val::from("seek"),
             WriteCommandType::TRUNCATE => emlite::Val::from("truncate"),
@@ -2231,6 +2867,15 @@ impl From<FullscreenNavigationUI> for emlite::Val {
         }
     }
 }
+impl From<&FullscreenNavigationUI> for emlite::Val {
+    fn from(s: &FullscreenNavigationUI) -> emlite::Val {
+        match *s {
+            FullscreenNavigationUI::AUTO => emlite::Val::from("auto"),
+            FullscreenNavigationUI::SHOW => emlite::Val::from("show"),
+            FullscreenNavigationUI::HIDE => emlite::Val::from("hide"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GamepadHand {
@@ -2257,6 +2902,15 @@ impl FromVal for GamepadHand {
 impl From<GamepadHand> for emlite::Val {
     fn from(s: GamepadHand) -> emlite::Val {
         match s {
+            GamepadHand::NONE => emlite::Val::from(""),
+            GamepadHand::LEFT => emlite::Val::from("left"),
+            GamepadHand::RIGHT => emlite::Val::from("right"),
+        }
+    }
+}
+impl From<&GamepadHand> for emlite::Val {
+    fn from(s: &GamepadHand) -> emlite::Val {
+        match *s {
             GamepadHand::NONE => emlite::Val::from(""),
             GamepadHand::LEFT => emlite::Val::from("left"),
             GamepadHand::RIGHT => emlite::Val::from("right"),
@@ -2295,6 +2949,15 @@ impl From<GamepadMappingType> for emlite::Val {
         }
     }
 }
+impl From<&GamepadMappingType> for emlite::Val {
+    fn from(s: &GamepadMappingType) -> emlite::Val {
+        match *s {
+            GamepadMappingType::NONE => emlite::Val::from(""),
+            GamepadMappingType::STANDARD => emlite::Val::from("standard"),
+            GamepadMappingType::XR_STANDARD => emlite::Val::from("xr-standard"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GamepadHapticsResult {
@@ -2319,6 +2982,14 @@ impl FromVal for GamepadHapticsResult {
 impl From<GamepadHapticsResult> for emlite::Val {
     fn from(s: GamepadHapticsResult) -> emlite::Val {
         match s {
+            GamepadHapticsResult::COMPLETE => emlite::Val::from("complete"),
+            GamepadHapticsResult::PREEMPTED => emlite::Val::from("preempted"),
+        }
+    }
+}
+impl From<&GamepadHapticsResult> for emlite::Val {
+    fn from(s: &GamepadHapticsResult) -> emlite::Val {
+        match *s {
             GamepadHapticsResult::COMPLETE => emlite::Val::from("complete"),
             GamepadHapticsResult::PREEMPTED => emlite::Val::from("preempted"),
         }
@@ -2353,6 +3024,14 @@ impl From<GamepadHapticEffectType> for emlite::Val {
         }
     }
 }
+impl From<&GamepadHapticEffectType> for emlite::Val {
+    fn from(s: &GamepadHapticEffectType) -> emlite::Val {
+        match *s {
+            GamepadHapticEffectType::DUAL_RUMBLE => emlite::Val::from("dual-rumble"),
+            GamepadHapticEffectType::TRIGGER_RUMBLE => emlite::Val::from("trigger-rumble"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GyroscopeLocalCoordinateSystem {
@@ -2377,6 +3056,14 @@ impl FromVal for GyroscopeLocalCoordinateSystem {
 impl From<GyroscopeLocalCoordinateSystem> for emlite::Val {
     fn from(s: GyroscopeLocalCoordinateSystem) -> emlite::Val {
         match s {
+            GyroscopeLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
+            GyroscopeLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+        }
+    }
+}
+impl From<&GyroscopeLocalCoordinateSystem> for emlite::Val {
+    fn from(s: &GyroscopeLocalCoordinateSystem) -> emlite::Val {
+        match *s {
             GyroscopeLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
             GyroscopeLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
         }
@@ -2411,6 +3098,14 @@ impl From<HandwritingRecognitionType> for emlite::Val {
         }
     }
 }
+impl From<&HandwritingRecognitionType> for emlite::Val {
+    fn from(s: &HandwritingRecognitionType) -> emlite::Val {
+        match *s {
+            HandwritingRecognitionType::TEXT => emlite::Val::from("text"),
+            HandwritingRecognitionType::PER_CHARACTER => emlite::Val::from("per-character"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum HandwritingInputType {
@@ -2437,6 +3132,15 @@ impl FromVal for HandwritingInputType {
 impl From<HandwritingInputType> for emlite::Val {
     fn from(s: HandwritingInputType) -> emlite::Val {
         match s {
+            HandwritingInputType::MOUSE => emlite::Val::from("mouse"),
+            HandwritingInputType::STYLUS => emlite::Val::from("stylus"),
+            HandwritingInputType::TOUCH => emlite::Val::from("touch"),
+        }
+    }
+}
+impl From<&HandwritingInputType> for emlite::Val {
+    fn from(s: &HandwritingInputType) -> emlite::Val {
+        match *s {
             HandwritingInputType::MOUSE => emlite::Val::from("mouse"),
             HandwritingInputType::STYLUS => emlite::Val::from("stylus"),
             HandwritingInputType::TOUCH => emlite::Val::from("touch"),
@@ -2475,6 +3179,15 @@ impl From<DocumentReadyState> for emlite::Val {
         }
     }
 }
+impl From<&DocumentReadyState> for emlite::Val {
+    fn from(s: &DocumentReadyState) -> emlite::Val {
+        match *s {
+            DocumentReadyState::LOADING => emlite::Val::from("loading"),
+            DocumentReadyState::INTERACTIVE => emlite::Val::from("interactive"),
+            DocumentReadyState::COMPLETE => emlite::Val::from("complete"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum DocumentVisibilityState {
@@ -2499,6 +3212,14 @@ impl FromVal for DocumentVisibilityState {
 impl From<DocumentVisibilityState> for emlite::Val {
     fn from(s: DocumentVisibilityState) -> emlite::Val {
         match s {
+            DocumentVisibilityState::VISIBLE => emlite::Val::from("visible"),
+            DocumentVisibilityState::HIDDEN => emlite::Val::from("hidden"),
+        }
+    }
+}
+impl From<&DocumentVisibilityState> for emlite::Val {
+    fn from(s: &DocumentVisibilityState) -> emlite::Val {
+        match *s {
             DocumentVisibilityState::VISIBLE => emlite::Val::from("visible"),
             DocumentVisibilityState::HIDDEN => emlite::Val::from("hidden"),
         }
@@ -2536,6 +3257,15 @@ impl From<CanPlayTypeResult> for emlite::Val {
         }
     }
 }
+impl From<&CanPlayTypeResult> for emlite::Val {
+    fn from(s: &CanPlayTypeResult) -> emlite::Val {
+        match *s {
+            CanPlayTypeResult::NONE => emlite::Val::from(""),
+            CanPlayTypeResult::MAYBE => emlite::Val::from("maybe"),
+            CanPlayTypeResult::PROBABLY => emlite::Val::from("probably"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum TextTrackMode {
@@ -2562,6 +3292,15 @@ impl FromVal for TextTrackMode {
 impl From<TextTrackMode> for emlite::Val {
     fn from(s: TextTrackMode) -> emlite::Val {
         match s {
+            TextTrackMode::DISABLED => emlite::Val::from("disabled"),
+            TextTrackMode::HIDDEN => emlite::Val::from("hidden"),
+            TextTrackMode::SHOWING => emlite::Val::from("showing"),
+        }
+    }
+}
+impl From<&TextTrackMode> for emlite::Val {
+    fn from(s: &TextTrackMode) -> emlite::Val {
+        match *s {
             TextTrackMode::DISABLED => emlite::Val::from("disabled"),
             TextTrackMode::HIDDEN => emlite::Val::from("hidden"),
             TextTrackMode::SHOWING => emlite::Val::from("showing"),
@@ -2606,6 +3345,17 @@ impl From<TextTrackKind> for emlite::Val {
         }
     }
 }
+impl From<&TextTrackKind> for emlite::Val {
+    fn from(s: &TextTrackKind) -> emlite::Val {
+        match *s {
+            TextTrackKind::SUBTITLES => emlite::Val::from("subtitles"),
+            TextTrackKind::CAPTIONS => emlite::Val::from("captions"),
+            TextTrackKind::DESCRIPTIONS => emlite::Val::from("descriptions"),
+            TextTrackKind::CHAPTERS => emlite::Val::from("chapters"),
+            TextTrackKind::METADATA => emlite::Val::from("metadata"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum SelectionMode {
@@ -2634,6 +3384,16 @@ impl FromVal for SelectionMode {
 impl From<SelectionMode> for emlite::Val {
     fn from(s: SelectionMode) -> emlite::Val {
         match s {
+            SelectionMode::SELECT => emlite::Val::from("select"),
+            SelectionMode::START => emlite::Val::from("start"),
+            SelectionMode::END => emlite::Val::from("end"),
+            SelectionMode::PRESERVE => emlite::Val::from("preserve"),
+        }
+    }
+}
+impl From<&SelectionMode> for emlite::Val {
+    fn from(s: &SelectionMode) -> emlite::Val {
+        match *s {
             SelectionMode::SELECT => emlite::Val::from("select"),
             SelectionMode::START => emlite::Val::from("start"),
             SelectionMode::END => emlite::Val::from("end"),
@@ -2670,6 +3430,14 @@ impl From<PredefinedColorSpace> for emlite::Val {
         }
     }
 }
+impl From<&PredefinedColorSpace> for emlite::Val {
+    fn from(s: &PredefinedColorSpace) -> emlite::Val {
+        match *s {
+            PredefinedColorSpace::SRGB => emlite::Val::from("srgb"),
+            PredefinedColorSpace::DISPLAY_P3 => emlite::Val::from("display-p3"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum CanvasColorType {
@@ -2694,6 +3462,14 @@ impl FromVal for CanvasColorType {
 impl From<CanvasColorType> for emlite::Val {
     fn from(s: CanvasColorType) -> emlite::Val {
         match s {
+            CanvasColorType::UNORM8 => emlite::Val::from("unorm8"),
+            CanvasColorType::FLOAT16 => emlite::Val::from("float16"),
+        }
+    }
+}
+impl From<&CanvasColorType> for emlite::Val {
+    fn from(s: &CanvasColorType) -> emlite::Val {
+        match *s {
             CanvasColorType::UNORM8 => emlite::Val::from("unorm8"),
             CanvasColorType::FLOAT16 => emlite::Val::from("float16"),
         }
@@ -2728,6 +3504,14 @@ impl From<CanvasFillRule> for emlite::Val {
         }
     }
 }
+impl From<&CanvasFillRule> for emlite::Val {
+    fn from(s: &CanvasFillRule) -> emlite::Val {
+        match *s {
+            CanvasFillRule::NONZERO => emlite::Val::from("nonzero"),
+            CanvasFillRule::EVENODD => emlite::Val::from("evenodd"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ImageSmoothingQuality {
@@ -2754,6 +3538,15 @@ impl FromVal for ImageSmoothingQuality {
 impl From<ImageSmoothingQuality> for emlite::Val {
     fn from(s: ImageSmoothingQuality) -> emlite::Val {
         match s {
+            ImageSmoothingQuality::LOW => emlite::Val::from("low"),
+            ImageSmoothingQuality::MEDIUM => emlite::Val::from("medium"),
+            ImageSmoothingQuality::HIGH => emlite::Val::from("high"),
+        }
+    }
+}
+impl From<&ImageSmoothingQuality> for emlite::Val {
+    fn from(s: &ImageSmoothingQuality) -> emlite::Val {
+        match *s {
             ImageSmoothingQuality::LOW => emlite::Val::from("low"),
             ImageSmoothingQuality::MEDIUM => emlite::Val::from("medium"),
             ImageSmoothingQuality::HIGH => emlite::Val::from("high"),
@@ -2792,6 +3585,15 @@ impl From<CanvasLineCap> for emlite::Val {
         }
     }
 }
+impl From<&CanvasLineCap> for emlite::Val {
+    fn from(s: &CanvasLineCap) -> emlite::Val {
+        match *s {
+            CanvasLineCap::BUTT => emlite::Val::from("butt"),
+            CanvasLineCap::ROUND => emlite::Val::from("round"),
+            CanvasLineCap::SQUARE => emlite::Val::from("square"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum CanvasLineJoin {
@@ -2818,6 +3620,15 @@ impl FromVal for CanvasLineJoin {
 impl From<CanvasLineJoin> for emlite::Val {
     fn from(s: CanvasLineJoin) -> emlite::Val {
         match s {
+            CanvasLineJoin::ROUND => emlite::Val::from("round"),
+            CanvasLineJoin::BEVEL => emlite::Val::from("bevel"),
+            CanvasLineJoin::MITER => emlite::Val::from("miter"),
+        }
+    }
+}
+impl From<&CanvasLineJoin> for emlite::Val {
+    fn from(s: &CanvasLineJoin) -> emlite::Val {
+        match *s {
             CanvasLineJoin::ROUND => emlite::Val::from("round"),
             CanvasLineJoin::BEVEL => emlite::Val::from("bevel"),
             CanvasLineJoin::MITER => emlite::Val::from("miter"),
@@ -2854,6 +3665,17 @@ impl FromVal for CanvasTextAlign {
 impl From<CanvasTextAlign> for emlite::Val {
     fn from(s: CanvasTextAlign) -> emlite::Val {
         match s {
+            CanvasTextAlign::START => emlite::Val::from("start"),
+            CanvasTextAlign::END => emlite::Val::from("end"),
+            CanvasTextAlign::LEFT => emlite::Val::from("left"),
+            CanvasTextAlign::RIGHT => emlite::Val::from("right"),
+            CanvasTextAlign::CENTER => emlite::Val::from("center"),
+        }
+    }
+}
+impl From<&CanvasTextAlign> for emlite::Val {
+    fn from(s: &CanvasTextAlign) -> emlite::Val {
+        match *s {
             CanvasTextAlign::START => emlite::Val::from("start"),
             CanvasTextAlign::END => emlite::Val::from("end"),
             CanvasTextAlign::LEFT => emlite::Val::from("left"),
@@ -2903,6 +3725,18 @@ impl From<CanvasTextBaseline> for emlite::Val {
         }
     }
 }
+impl From<&CanvasTextBaseline> for emlite::Val {
+    fn from(s: &CanvasTextBaseline) -> emlite::Val {
+        match *s {
+            CanvasTextBaseline::TOP => emlite::Val::from("top"),
+            CanvasTextBaseline::HANGING => emlite::Val::from("hanging"),
+            CanvasTextBaseline::MIDDLE => emlite::Val::from("middle"),
+            CanvasTextBaseline::ALPHABETIC => emlite::Val::from("alphabetic"),
+            CanvasTextBaseline::IDEOGRAPHIC => emlite::Val::from("ideographic"),
+            CanvasTextBaseline::BOTTOM => emlite::Val::from("bottom"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum CanvasDirection {
@@ -2935,6 +3769,15 @@ impl From<CanvasDirection> for emlite::Val {
         }
     }
 }
+impl From<&CanvasDirection> for emlite::Val {
+    fn from(s: &CanvasDirection) -> emlite::Val {
+        match *s {
+            CanvasDirection::LTR => emlite::Val::from("ltr"),
+            CanvasDirection::RTL => emlite::Val::from("rtl"),
+            CanvasDirection::INHERIT => emlite::Val::from("inherit"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum CanvasFontKerning {
@@ -2961,6 +3804,15 @@ impl FromVal for CanvasFontKerning {
 impl From<CanvasFontKerning> for emlite::Val {
     fn from(s: CanvasFontKerning) -> emlite::Val {
         match s {
+            CanvasFontKerning::AUTO => emlite::Val::from("auto"),
+            CanvasFontKerning::NORMAL => emlite::Val::from("normal"),
+            CanvasFontKerning::NONE => emlite::Val::from("none"),
+        }
+    }
+}
+impl From<&CanvasFontKerning> for emlite::Val {
+    fn from(s: &CanvasFontKerning) -> emlite::Val {
+        match *s {
             CanvasFontKerning::AUTO => emlite::Val::from("auto"),
             CanvasFontKerning::NORMAL => emlite::Val::from("normal"),
             CanvasFontKerning::NONE => emlite::Val::from("none"),
@@ -3017,6 +3869,21 @@ impl From<CanvasFontStretch> for emlite::Val {
         }
     }
 }
+impl From<&CanvasFontStretch> for emlite::Val {
+    fn from(s: &CanvasFontStretch) -> emlite::Val {
+        match *s {
+            CanvasFontStretch::ULTRA_CONDENSED => emlite::Val::from("ultra-condensed"),
+            CanvasFontStretch::EXTRA_CONDENSED => emlite::Val::from("extra-condensed"),
+            CanvasFontStretch::CONDENSED => emlite::Val::from("condensed"),
+            CanvasFontStretch::SEMI_CONDENSED => emlite::Val::from("semi-condensed"),
+            CanvasFontStretch::NORMAL => emlite::Val::from("normal"),
+            CanvasFontStretch::SEMI_EXPANDED => emlite::Val::from("semi-expanded"),
+            CanvasFontStretch::EXPANDED => emlite::Val::from("expanded"),
+            CanvasFontStretch::EXTRA_EXPANDED => emlite::Val::from("extra-expanded"),
+            CanvasFontStretch::ULTRA_EXPANDED => emlite::Val::from("ultra-expanded"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum CanvasFontVariantCaps {
@@ -3051,6 +3918,19 @@ impl FromVal for CanvasFontVariantCaps {
 impl From<CanvasFontVariantCaps> for emlite::Val {
     fn from(s: CanvasFontVariantCaps) -> emlite::Val {
         match s {
+            CanvasFontVariantCaps::NORMAL => emlite::Val::from("normal"),
+            CanvasFontVariantCaps::SMALL_CAPS => emlite::Val::from("small-caps"),
+            CanvasFontVariantCaps::ALL_SMALL_CAPS => emlite::Val::from("all-small-caps"),
+            CanvasFontVariantCaps::PETITE_CAPS => emlite::Val::from("petite-caps"),
+            CanvasFontVariantCaps::ALL_PETITE_CAPS => emlite::Val::from("all-petite-caps"),
+            CanvasFontVariantCaps::UNICASE => emlite::Val::from("unicase"),
+            CanvasFontVariantCaps::TITLING_CAPS => emlite::Val::from("titling-caps"),
+        }
+    }
+}
+impl From<&CanvasFontVariantCaps> for emlite::Val {
+    fn from(s: &CanvasFontVariantCaps) -> emlite::Val {
+        match *s {
             CanvasFontVariantCaps::NORMAL => emlite::Val::from("normal"),
             CanvasFontVariantCaps::SMALL_CAPS => emlite::Val::from("small-caps"),
             CanvasFontVariantCaps::ALL_SMALL_CAPS => emlite::Val::from("all-small-caps"),
@@ -3096,6 +3976,16 @@ impl From<CanvasTextRendering> for emlite::Val {
         }
     }
 }
+impl From<&CanvasTextRendering> for emlite::Val {
+    fn from(s: &CanvasTextRendering) -> emlite::Val {
+        match *s {
+            CanvasTextRendering::AUTO => emlite::Val::from("auto"),
+            CanvasTextRendering::OPTIMIZE_SPEED => emlite::Val::from("optimizeSpeed"),
+            CanvasTextRendering::OPTIMIZE_LEGIBILITY => emlite::Val::from("optimizeLegibility"),
+            CanvasTextRendering::GEOMETRIC_PRECISION => emlite::Val::from("geometricPrecision"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum OffscreenRenderingContextId {
@@ -3134,6 +4024,17 @@ impl From<OffscreenRenderingContextId> for emlite::Val {
         }
     }
 }
+impl From<&OffscreenRenderingContextId> for emlite::Val {
+    fn from(s: &OffscreenRenderingContextId) -> emlite::Val {
+        match *s {
+            OffscreenRenderingContextId::_2D => emlite::Val::from("2d"),
+            OffscreenRenderingContextId::BITMAPRENDERER => emlite::Val::from("bitmaprenderer"),
+            OffscreenRenderingContextId::WEBGL => emlite::Val::from("webgl"),
+            OffscreenRenderingContextId::WEBGL2 => emlite::Val::from("webgl2"),
+            OffscreenRenderingContextId::WEBGPU => emlite::Val::from("webgpu"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ScrollRestoration {
@@ -3158,6 +4059,14 @@ impl FromVal for ScrollRestoration {
 impl From<ScrollRestoration> for emlite::Val {
     fn from(s: ScrollRestoration) -> emlite::Val {
         match s {
+            ScrollRestoration::AUTO => emlite::Val::from("auto"),
+            ScrollRestoration::MANUAL => emlite::Val::from("manual"),
+        }
+    }
+}
+impl From<&ScrollRestoration> for emlite::Val {
+    fn from(s: &ScrollRestoration) -> emlite::Val {
+        match *s {
             ScrollRestoration::AUTO => emlite::Val::from("auto"),
             ScrollRestoration::MANUAL => emlite::Val::from("manual"),
         }
@@ -3189,6 +4098,15 @@ impl FromVal for NavigationHistoryBehavior {
 impl From<NavigationHistoryBehavior> for emlite::Val {
     fn from(s: NavigationHistoryBehavior) -> emlite::Val {
         match s {
+            NavigationHistoryBehavior::AUTO => emlite::Val::from("auto"),
+            NavigationHistoryBehavior::PUSH => emlite::Val::from("push"),
+            NavigationHistoryBehavior::REPLACE => emlite::Val::from("replace"),
+        }
+    }
+}
+impl From<&NavigationHistoryBehavior> for emlite::Val {
+    fn from(s: &NavigationHistoryBehavior) -> emlite::Val {
+        match *s {
             NavigationHistoryBehavior::AUTO => emlite::Val::from("auto"),
             NavigationHistoryBehavior::PUSH => emlite::Val::from("push"),
             NavigationHistoryBehavior::REPLACE => emlite::Val::from("replace"),
@@ -3230,6 +4148,16 @@ impl From<NavigationType> for emlite::Val {
         }
     }
 }
+impl From<&NavigationType> for emlite::Val {
+    fn from(s: &NavigationType) -> emlite::Val {
+        match *s {
+            NavigationType::PUSH => emlite::Val::from("push"),
+            NavigationType::REPLACE => emlite::Val::from("replace"),
+            NavigationType::RELOAD => emlite::Val::from("reload"),
+            NavigationType::TRAVERSE => emlite::Val::from("traverse"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum NavigationFocusReset {
@@ -3259,6 +4187,14 @@ impl From<NavigationFocusReset> for emlite::Val {
         }
     }
 }
+impl From<&NavigationFocusReset> for emlite::Val {
+    fn from(s: &NavigationFocusReset) -> emlite::Val {
+        match *s {
+            NavigationFocusReset::AFTER_TRANSITION => emlite::Val::from("after-transition"),
+            NavigationFocusReset::MANUAL => emlite::Val::from("manual"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum NavigationScrollBehavior {
@@ -3283,6 +4219,14 @@ impl FromVal for NavigationScrollBehavior {
 impl From<NavigationScrollBehavior> for emlite::Val {
     fn from(s: NavigationScrollBehavior) -> emlite::Val {
         match s {
+            NavigationScrollBehavior::AFTER_TRANSITION => emlite::Val::from("after-transition"),
+            NavigationScrollBehavior::MANUAL => emlite::Val::from("manual"),
+        }
+    }
+}
+impl From<&NavigationScrollBehavior> for emlite::Val {
+    fn from(s: &NavigationScrollBehavior) -> emlite::Val {
+        match *s {
             NavigationScrollBehavior::AFTER_TRANSITION => emlite::Val::from("after-transition"),
             NavigationScrollBehavior::MANUAL => emlite::Val::from("manual"),
         }
@@ -3328,6 +4272,19 @@ impl From<DOMParserSupportedType> for emlite::Val {
         }
     }
 }
+impl From<&DOMParserSupportedType> for emlite::Val {
+    fn from(s: &DOMParserSupportedType) -> emlite::Val {
+        match *s {
+            DOMParserSupportedType::TEXT_HTML => emlite::Val::from("text/html"),
+            DOMParserSupportedType::TEXT_XML => emlite::Val::from("text/xml"),
+            DOMParserSupportedType::APPLICATION_XML => emlite::Val::from("application/xml"),
+            DOMParserSupportedType::APPLICATION_XHTML_XML => {
+                emlite::Val::from("application/xhtml+xml")
+            }
+            DOMParserSupportedType::IMAGE_SVG_XML => emlite::Val::from("image/svg+xml"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ImageDataPixelFormat {
@@ -3357,6 +4314,14 @@ impl From<ImageDataPixelFormat> for emlite::Val {
         }
     }
 }
+impl From<&ImageDataPixelFormat> for emlite::Val {
+    fn from(s: &ImageDataPixelFormat) -> emlite::Val {
+        match *s {
+            ImageDataPixelFormat::RGBA_UNORM8 => emlite::Val::from("rgba-unorm8"),
+            ImageDataPixelFormat::RGBA_FLOAT16 => emlite::Val::from("rgba-float16"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ImageOrientation {
@@ -3381,6 +4346,14 @@ impl FromVal for ImageOrientation {
 impl From<ImageOrientation> for emlite::Val {
     fn from(s: ImageOrientation) -> emlite::Val {
         match s {
+            ImageOrientation::FROM_IMAGE => emlite::Val::from("from-image"),
+            ImageOrientation::FLIP_Y => emlite::Val::from("flipY"),
+        }
+    }
+}
+impl From<&ImageOrientation> for emlite::Val {
+    fn from(s: &ImageOrientation) -> emlite::Val {
+        match *s {
             ImageOrientation::FROM_IMAGE => emlite::Val::from("from-image"),
             ImageOrientation::FLIP_Y => emlite::Val::from("flipY"),
         }
@@ -3418,6 +4391,15 @@ impl From<PremultiplyAlpha> for emlite::Val {
         }
     }
 }
+impl From<&PremultiplyAlpha> for emlite::Val {
+    fn from(s: &PremultiplyAlpha) -> emlite::Val {
+        match *s {
+            PremultiplyAlpha::NONE => emlite::Val::from("none"),
+            PremultiplyAlpha::PREMULTIPLY => emlite::Val::from("premultiply"),
+            PremultiplyAlpha::DEFAULT => emlite::Val::from("default"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ColorSpaceConversion {
@@ -3442,6 +4424,14 @@ impl FromVal for ColorSpaceConversion {
 impl From<ColorSpaceConversion> for emlite::Val {
     fn from(s: ColorSpaceConversion) -> emlite::Val {
         match s {
+            ColorSpaceConversion::NONE => emlite::Val::from("none"),
+            ColorSpaceConversion::DEFAULT => emlite::Val::from("default"),
+        }
+    }
+}
+impl From<&ColorSpaceConversion> for emlite::Val {
+    fn from(s: &ColorSpaceConversion) -> emlite::Val {
+        match *s {
             ColorSpaceConversion::NONE => emlite::Val::from("none"),
             ColorSpaceConversion::DEFAULT => emlite::Val::from("default"),
         }
@@ -3482,6 +4472,16 @@ impl From<ResizeQuality> for emlite::Val {
         }
     }
 }
+impl From<&ResizeQuality> for emlite::Val {
+    fn from(s: &ResizeQuality) -> emlite::Val {
+        match *s {
+            ResizeQuality::PIXELATED => emlite::Val::from("pixelated"),
+            ResizeQuality::LOW => emlite::Val::from("low"),
+            ResizeQuality::MEDIUM => emlite::Val::from("medium"),
+            ResizeQuality::HIGH => emlite::Val::from("high"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum WorkerType {
@@ -3506,6 +4506,14 @@ impl FromVal for WorkerType {
 impl From<WorkerType> for emlite::Val {
     fn from(s: WorkerType) -> emlite::Val {
         match s {
+            WorkerType::CLASSIC => emlite::Val::from("classic"),
+            WorkerType::MODULE => emlite::Val::from("module"),
+        }
+    }
+}
+impl From<&WorkerType> for emlite::Val {
+    fn from(s: &WorkerType) -> emlite::Val {
+        match *s {
             WorkerType::CLASSIC => emlite::Val::from("classic"),
             WorkerType::MODULE => emlite::Val::from("module"),
         }
@@ -3540,6 +4548,14 @@ impl From<UserIdleState> for emlite::Val {
         }
     }
 }
+impl From<&UserIdleState> for emlite::Val {
+    fn from(s: &UserIdleState) -> emlite::Val {
+        match *s {
+            UserIdleState::ACTIVE => emlite::Val::from("active"),
+            UserIdleState::IDLE => emlite::Val::from("idle"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ScreenIdleState {
@@ -3564,6 +4580,14 @@ impl FromVal for ScreenIdleState {
 impl From<ScreenIdleState> for emlite::Val {
     fn from(s: ScreenIdleState) -> emlite::Val {
         match s {
+            ScreenIdleState::LOCKED => emlite::Val::from("locked"),
+            ScreenIdleState::UNLOCKED => emlite::Val::from("unlocked"),
+        }
+    }
+}
+impl From<&ScreenIdleState> for emlite::Val {
+    fn from(s: &ScreenIdleState) -> emlite::Val {
+        match *s {
             ScreenIdleState::LOCKED => emlite::Val::from("locked"),
             ScreenIdleState::UNLOCKED => emlite::Val::from("unlocked"),
         }
@@ -3601,6 +4625,15 @@ impl From<RedEyeReduction> for emlite::Val {
         }
     }
 }
+impl From<&RedEyeReduction> for emlite::Val {
+    fn from(s: &RedEyeReduction) -> emlite::Val {
+        match *s {
+            RedEyeReduction::NEVER => emlite::Val::from("never"),
+            RedEyeReduction::ALWAYS => emlite::Val::from("always"),
+            RedEyeReduction::CONTROLLABLE => emlite::Val::from("controllable"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum FillLightMode {
@@ -3627,6 +4660,15 @@ impl FromVal for FillLightMode {
 impl From<FillLightMode> for emlite::Val {
     fn from(s: FillLightMode) -> emlite::Val {
         match s {
+            FillLightMode::AUTO => emlite::Val::from("auto"),
+            FillLightMode::OFF => emlite::Val::from("off"),
+            FillLightMode::FLASH => emlite::Val::from("flash"),
+        }
+    }
+}
+impl From<&FillLightMode> for emlite::Val {
+    fn from(s: &FillLightMode) -> emlite::Val {
+        match *s {
             FillLightMode::AUTO => emlite::Val::from("auto"),
             FillLightMode::OFF => emlite::Val::from("off"),
             FillLightMode::FLASH => emlite::Val::from("flash"),
@@ -3668,6 +4710,16 @@ impl From<MeteringMode> for emlite::Val {
         }
     }
 }
+impl From<&MeteringMode> for emlite::Val {
+    fn from(s: &MeteringMode) -> emlite::Val {
+        match *s {
+            MeteringMode::NONE => emlite::Val::from("none"),
+            MeteringMode::MANUAL => emlite::Val::from("manual"),
+            MeteringMode::SINGLE_SHOT => emlite::Val::from("single-shot"),
+            MeteringMode::CONTINUOUS => emlite::Val::from("continuous"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum LoginStatus {
@@ -3692,6 +4744,14 @@ impl FromVal for LoginStatus {
 impl From<LoginStatus> for emlite::Val {
     fn from(s: LoginStatus) -> emlite::Val {
         match s {
+            LoginStatus::LOGGED_IN => emlite::Val::from("logged-in"),
+            LoginStatus::LOGGED_OUT => emlite::Val::from("logged-out"),
+        }
+    }
+}
+impl From<&LoginStatus> for emlite::Val {
+    fn from(s: &LoginStatus) -> emlite::Val {
+        match *s {
             LoginStatus::LOGGED_IN => emlite::Val::from("logged-in"),
             LoginStatus::LOGGED_OUT => emlite::Val::from("logged-out"),
         }
@@ -3729,6 +4789,18 @@ impl FromVal for ScriptInvokerType {
 impl From<ScriptInvokerType> for emlite::Val {
     fn from(s: ScriptInvokerType) -> emlite::Val {
         match s {
+            ScriptInvokerType::CLASSIC_SCRIPT => emlite::Val::from("classic-script"),
+            ScriptInvokerType::MODULE_SCRIPT => emlite::Val::from("module-script"),
+            ScriptInvokerType::EVENT_LISTENER => emlite::Val::from("event-listener"),
+            ScriptInvokerType::USER_CALLBACK => emlite::Val::from("user-callback"),
+            ScriptInvokerType::RESOLVE_PROMISE => emlite::Val::from("resolve-promise"),
+            ScriptInvokerType::REJECT_PROMISE => emlite::Val::from("reject-promise"),
+        }
+    }
+}
+impl From<&ScriptInvokerType> for emlite::Val {
+    fn from(s: &ScriptInvokerType) -> emlite::Val {
+        match *s {
             ScriptInvokerType::CLASSIC_SCRIPT => emlite::Val::from("classic-script"),
             ScriptInvokerType::MODULE_SCRIPT => emlite::Val::from("module-script"),
             ScriptInvokerType::EVENT_LISTENER => emlite::Val::from("event-listener"),
@@ -3776,6 +4848,17 @@ impl From<ScriptWindowAttribution> for emlite::Val {
         }
     }
 }
+impl From<&ScriptWindowAttribution> for emlite::Val {
+    fn from(s: &ScriptWindowAttribution) -> emlite::Val {
+        match *s {
+            ScriptWindowAttribution::SELF_ => emlite::Val::from("self"),
+            ScriptWindowAttribution::DESCENDANT => emlite::Val::from("descendant"),
+            ScriptWindowAttribution::ANCESTOR => emlite::Val::from("ancestor"),
+            ScriptWindowAttribution::SAME_PAGE => emlite::Val::from("same-page"),
+            ScriptWindowAttribution::OTHER => emlite::Val::from("other"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum MagnetometerLocalCoordinateSystem {
@@ -3805,6 +4888,14 @@ impl From<MagnetometerLocalCoordinateSystem> for emlite::Val {
         }
     }
 }
+impl From<&MagnetometerLocalCoordinateSystem> for emlite::Val {
+    fn from(s: &MagnetometerLocalCoordinateSystem) -> emlite::Val {
+        match *s {
+            MagnetometerLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
+            MagnetometerLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum AppBannerPromptOutcome {
@@ -3829,6 +4920,14 @@ impl FromVal for AppBannerPromptOutcome {
 impl From<AppBannerPromptOutcome> for emlite::Val {
     fn from(s: AppBannerPromptOutcome) -> emlite::Val {
         match s {
+            AppBannerPromptOutcome::ACCEPTED => emlite::Val::from("accepted"),
+            AppBannerPromptOutcome::DISMISSED => emlite::Val::from("dismissed"),
+        }
+    }
+}
+impl From<&AppBannerPromptOutcome> for emlite::Val {
+    fn from(s: &AppBannerPromptOutcome) -> emlite::Val {
+        match *s {
             AppBannerPromptOutcome::ACCEPTED => emlite::Val::from("accepted"),
             AppBannerPromptOutcome::DISMISSED => emlite::Val::from("dismissed"),
         }
@@ -3866,6 +4965,15 @@ impl From<MediaDecodingType> for emlite::Val {
         }
     }
 }
+impl From<&MediaDecodingType> for emlite::Val {
+    fn from(s: &MediaDecodingType) -> emlite::Val {
+        match *s {
+            MediaDecodingType::FILE => emlite::Val::from("file"),
+            MediaDecodingType::MEDIA_SOURCE => emlite::Val::from("media-source"),
+            MediaDecodingType::WEBRTC => emlite::Val::from("webrtc"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum MediaEncodingType {
@@ -3890,6 +4998,14 @@ impl FromVal for MediaEncodingType {
 impl From<MediaEncodingType> for emlite::Val {
     fn from(s: MediaEncodingType) -> emlite::Val {
         match s {
+            MediaEncodingType::RECORD => emlite::Val::from("record"),
+            MediaEncodingType::WEBRTC => emlite::Val::from("webrtc"),
+        }
+    }
+}
+impl From<&MediaEncodingType> for emlite::Val {
+    fn from(s: &MediaEncodingType) -> emlite::Val {
+        match *s {
             MediaEncodingType::RECORD => emlite::Val::from("record"),
             MediaEncodingType::WEBRTC => emlite::Val::from("webrtc"),
         }
@@ -3921,6 +5037,15 @@ impl FromVal for HdrMetadataType {
 impl From<HdrMetadataType> for emlite::Val {
     fn from(s: HdrMetadataType) -> emlite::Val {
         match s {
+            HdrMetadataType::SMPTE_ST2086 => emlite::Val::from("smpteSt2086"),
+            HdrMetadataType::SMPTE_ST2094_10 => emlite::Val::from("smpteSt2094-10"),
+            HdrMetadataType::SMPTE_ST2094_40 => emlite::Val::from("smpteSt2094-40"),
+        }
+    }
+}
+impl From<&HdrMetadataType> for emlite::Val {
+    fn from(s: &HdrMetadataType) -> emlite::Val {
+        match *s {
             HdrMetadataType::SMPTE_ST2086 => emlite::Val::from("smpteSt2086"),
             HdrMetadataType::SMPTE_ST2094_10 => emlite::Val::from("smpteSt2094-10"),
             HdrMetadataType::SMPTE_ST2094_40 => emlite::Val::from("smpteSt2094-40"),
@@ -3959,6 +5084,15 @@ impl From<ColorGamut> for emlite::Val {
         }
     }
 }
+impl From<&ColorGamut> for emlite::Val {
+    fn from(s: &ColorGamut) -> emlite::Val {
+        match *s {
+            ColorGamut::SRGB => emlite::Val::from("srgb"),
+            ColorGamut::P3 => emlite::Val::from("p3"),
+            ColorGamut::REC2020 => emlite::Val::from("rec2020"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum TransferFunction {
@@ -3985,6 +5119,15 @@ impl FromVal for TransferFunction {
 impl From<TransferFunction> for emlite::Val {
     fn from(s: TransferFunction) -> emlite::Val {
         match s {
+            TransferFunction::SRGB => emlite::Val::from("srgb"),
+            TransferFunction::PQ => emlite::Val::from("pq"),
+            TransferFunction::HLG => emlite::Val::from("hlg"),
+        }
+    }
+}
+impl From<&TransferFunction> for emlite::Val {
+    fn from(s: &TransferFunction) -> emlite::Val {
+        match *s {
             TransferFunction::SRGB => emlite::Val::from("srgb"),
             TransferFunction::PQ => emlite::Val::from("pq"),
             TransferFunction::HLG => emlite::Val::from("hlg"),
@@ -4023,6 +5166,15 @@ impl From<ReadyState> for emlite::Val {
         }
     }
 }
+impl From<&ReadyState> for emlite::Val {
+    fn from(s: &ReadyState) -> emlite::Val {
+        match *s {
+            ReadyState::CLOSED => emlite::Val::from("closed"),
+            ReadyState::OPEN => emlite::Val::from("open"),
+            ReadyState::ENDED => emlite::Val::from("ended"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum EndOfStreamError {
@@ -4047,6 +5199,14 @@ impl FromVal for EndOfStreamError {
 impl From<EndOfStreamError> for emlite::Val {
     fn from(s: EndOfStreamError) -> emlite::Val {
         match s {
+            EndOfStreamError::NETWORK => emlite::Val::from("network"),
+            EndOfStreamError::DECODE => emlite::Val::from("decode"),
+        }
+    }
+}
+impl From<&EndOfStreamError> for emlite::Val {
+    fn from(s: &EndOfStreamError) -> emlite::Val {
+        match *s {
             EndOfStreamError::NETWORK => emlite::Val::from("network"),
             EndOfStreamError::DECODE => emlite::Val::from("decode"),
         }
@@ -4081,6 +5241,14 @@ impl From<AppendMode> for emlite::Val {
         }
     }
 }
+impl From<&AppendMode> for emlite::Val {
+    fn from(s: &AppendMode) -> emlite::Val {
+        match *s {
+            AppendMode::SEGMENTS => emlite::Val::from("segments"),
+            AppendMode::SEQUENCE => emlite::Val::from("sequence"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum MockCapturePromptResult {
@@ -4105,6 +5273,14 @@ impl FromVal for MockCapturePromptResult {
 impl From<MockCapturePromptResult> for emlite::Val {
     fn from(s: MockCapturePromptResult) -> emlite::Val {
         match s {
+            MockCapturePromptResult::GRANTED => emlite::Val::from("granted"),
+            MockCapturePromptResult::DENIED => emlite::Val::from("denied"),
+        }
+    }
+}
+impl From<&MockCapturePromptResult> for emlite::Val {
+    fn from(s: &MockCapturePromptResult) -> emlite::Val {
+        match *s {
             MockCapturePromptResult::GRANTED => emlite::Val::from("granted"),
             MockCapturePromptResult::DENIED => emlite::Val::from("denied"),
         }
@@ -4145,6 +5321,16 @@ impl From<CaptureAction> for emlite::Val {
         }
     }
 }
+impl From<&CaptureAction> for emlite::Val {
+    fn from(s: &CaptureAction) -> emlite::Val {
+        match *s {
+            CaptureAction::NEXT => emlite::Val::from("next"),
+            CaptureAction::PREVIOUS => emlite::Val::from("previous"),
+            CaptureAction::FIRST => emlite::Val::from("first"),
+            CaptureAction::LAST => emlite::Val::from("last"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum MediaStreamTrackState {
@@ -4169,6 +5355,14 @@ impl FromVal for MediaStreamTrackState {
 impl From<MediaStreamTrackState> for emlite::Val {
     fn from(s: MediaStreamTrackState) -> emlite::Val {
         match s {
+            MediaStreamTrackState::LIVE => emlite::Val::from("live"),
+            MediaStreamTrackState::ENDED => emlite::Val::from("ended"),
+        }
+    }
+}
+impl From<&MediaStreamTrackState> for emlite::Val {
+    fn from(s: &MediaStreamTrackState) -> emlite::Val {
+        match *s {
             MediaStreamTrackState::LIVE => emlite::Val::from("live"),
             MediaStreamTrackState::ENDED => emlite::Val::from("ended"),
         }
@@ -4209,6 +5403,16 @@ impl From<VideoFacingModeEnum> for emlite::Val {
         }
     }
 }
+impl From<&VideoFacingModeEnum> for emlite::Val {
+    fn from(s: &VideoFacingModeEnum) -> emlite::Val {
+        match *s {
+            VideoFacingModeEnum::USER => emlite::Val::from("user"),
+            VideoFacingModeEnum::ENVIRONMENT => emlite::Val::from("environment"),
+            VideoFacingModeEnum::LEFT => emlite::Val::from("left"),
+            VideoFacingModeEnum::RIGHT => emlite::Val::from("right"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum VideoResizeModeEnum {
@@ -4238,6 +5442,14 @@ impl From<VideoResizeModeEnum> for emlite::Val {
         }
     }
 }
+impl From<&VideoResizeModeEnum> for emlite::Val {
+    fn from(s: &VideoResizeModeEnum) -> emlite::Val {
+        match *s {
+            VideoResizeModeEnum::NONE => emlite::Val::from("none"),
+            VideoResizeModeEnum::CROP_AND_SCALE => emlite::Val::from("crop-and-scale"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum EchoCancellationModeEnum {
@@ -4262,6 +5474,14 @@ impl FromVal for EchoCancellationModeEnum {
 impl From<EchoCancellationModeEnum> for emlite::Val {
     fn from(s: EchoCancellationModeEnum) -> emlite::Val {
         match s {
+            EchoCancellationModeEnum::ALL => emlite::Val::from("all"),
+            EchoCancellationModeEnum::REMOTE_ONLY => emlite::Val::from("remote-only"),
+        }
+    }
+}
+impl From<&EchoCancellationModeEnum> for emlite::Val {
+    fn from(s: &EchoCancellationModeEnum) -> emlite::Val {
+        match *s {
             EchoCancellationModeEnum::ALL => emlite::Val::from("all"),
             EchoCancellationModeEnum::REMOTE_ONLY => emlite::Val::from("remote-only"),
         }
@@ -4299,6 +5519,15 @@ impl From<MediaDeviceKind> for emlite::Val {
         }
     }
 }
+impl From<&MediaDeviceKind> for emlite::Val {
+    fn from(s: &MediaDeviceKind) -> emlite::Val {
+        match *s {
+            MediaDeviceKind::AUDIOINPUT => emlite::Val::from("audioinput"),
+            MediaDeviceKind::AUDIOOUTPUT => emlite::Val::from("audiooutput"),
+            MediaDeviceKind::VIDEOINPUT => emlite::Val::from("videoinput"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum MediaSessionPlaybackState {
@@ -4325,6 +5554,15 @@ impl FromVal for MediaSessionPlaybackState {
 impl From<MediaSessionPlaybackState> for emlite::Val {
     fn from(s: MediaSessionPlaybackState) -> emlite::Val {
         match s {
+            MediaSessionPlaybackState::NONE => emlite::Val::from("none"),
+            MediaSessionPlaybackState::PAUSED => emlite::Val::from("paused"),
+            MediaSessionPlaybackState::PLAYING => emlite::Val::from("playing"),
+        }
+    }
+}
+impl From<&MediaSessionPlaybackState> for emlite::Val {
+    fn from(s: &MediaSessionPlaybackState) -> emlite::Val {
+        match *s {
             MediaSessionPlaybackState::NONE => emlite::Val::from("none"),
             MediaSessionPlaybackState::PAUSED => emlite::Val::from("paused"),
             MediaSessionPlaybackState::PLAYING => emlite::Val::from("playing"),
@@ -4405,6 +5643,29 @@ impl From<MediaSessionAction> for emlite::Val {
         }
     }
 }
+impl From<&MediaSessionAction> for emlite::Val {
+    fn from(s: &MediaSessionAction) -> emlite::Val {
+        match *s {
+            MediaSessionAction::PLAY => emlite::Val::from("play"),
+            MediaSessionAction::PAUSE => emlite::Val::from("pause"),
+            MediaSessionAction::SEEKBACKWARD => emlite::Val::from("seekbackward"),
+            MediaSessionAction::SEEKFORWARD => emlite::Val::from("seekforward"),
+            MediaSessionAction::PREVIOUSTRACK => emlite::Val::from("previoustrack"),
+            MediaSessionAction::NEXTTRACK => emlite::Val::from("nexttrack"),
+            MediaSessionAction::SKIPAD => emlite::Val::from("skipad"),
+            MediaSessionAction::STOP => emlite::Val::from("stop"),
+            MediaSessionAction::SEEKTO => emlite::Val::from("seekto"),
+            MediaSessionAction::TOGGLEMICROPHONE => emlite::Val::from("togglemicrophone"),
+            MediaSessionAction::TOGGLECAMERA => emlite::Val::from("togglecamera"),
+            MediaSessionAction::TOGGLESCREENSHARE => emlite::Val::from("togglescreenshare"),
+            MediaSessionAction::HANGUP => emlite::Val::from("hangup"),
+            MediaSessionAction::PREVIOUSSLIDE => emlite::Val::from("previousslide"),
+            MediaSessionAction::NEXTSLIDE => emlite::Val::from("nextslide"),
+            MediaSessionAction::ENTERPICTUREINPICTURE => emlite::Val::from("enterpictureinpicture"),
+            MediaSessionAction::VOICEACTIVITY => emlite::Val::from("voiceactivity"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum BitrateMode {
@@ -4429,6 +5690,14 @@ impl FromVal for BitrateMode {
 impl From<BitrateMode> for emlite::Val {
     fn from(s: BitrateMode) -> emlite::Val {
         match s {
+            BitrateMode::CONSTANT => emlite::Val::from("constant"),
+            BitrateMode::VARIABLE => emlite::Val::from("variable"),
+        }
+    }
+}
+impl From<&BitrateMode> for emlite::Val {
+    fn from(s: &BitrateMode) -> emlite::Val {
+        match *s {
             BitrateMode::CONSTANT => emlite::Val::from("constant"),
             BitrateMode::VARIABLE => emlite::Val::from("variable"),
         }
@@ -4460,6 +5729,15 @@ impl FromVal for RecordingState {
 impl From<RecordingState> for emlite::Val {
     fn from(s: RecordingState) -> emlite::Val {
         match s {
+            RecordingState::INACTIVE => emlite::Val::from("inactive"),
+            RecordingState::RECORDING => emlite::Val::from("recording"),
+            RecordingState::PAUSED => emlite::Val::from("paused"),
+        }
+    }
+}
+impl From<&RecordingState> for emlite::Val {
+    fn from(s: &RecordingState) -> emlite::Val {
+        match *s {
             RecordingState::INACTIVE => emlite::Val::from("inactive"),
             RecordingState::RECORDING => emlite::Val::from("recording"),
             RecordingState::PAUSED => emlite::Val::from("paused"),
@@ -4500,6 +5778,17 @@ impl From<RTCDegradationPreference> for emlite::Val {
         }
     }
 }
+impl From<&RTCDegradationPreference> for emlite::Val {
+    fn from(s: &RTCDegradationPreference) -> emlite::Val {
+        match *s {
+            RTCDegradationPreference::MAINTAIN_FRAMERATE => emlite::Val::from("maintain-framerate"),
+            RTCDegradationPreference::MAINTAIN_RESOLUTION => {
+                emlite::Val::from("maintain-resolution")
+            }
+            RTCDegradationPreference::BALANCED => emlite::Val::from("balanced"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum NavigationTimingType {
@@ -4528,6 +5817,16 @@ impl FromVal for NavigationTimingType {
 impl From<NavigationTimingType> for emlite::Val {
     fn from(s: NavigationTimingType) -> emlite::Val {
         match s {
+            NavigationTimingType::NAVIGATE => emlite::Val::from("navigate"),
+            NavigationTimingType::RELOAD => emlite::Val::from("reload"),
+            NavigationTimingType::BACK_FORWARD => emlite::Val::from("back_forward"),
+            NavigationTimingType::PRERENDER => emlite::Val::from("prerender"),
+        }
+    }
+}
+impl From<&NavigationTimingType> for emlite::Val {
+    fn from(s: &NavigationTimingType) -> emlite::Val {
+        match *s {
             NavigationTimingType::NAVIGATE => emlite::Val::from("navigate"),
             NavigationTimingType::RELOAD => emlite::Val::from("reload"),
             NavigationTimingType::BACK_FORWARD => emlite::Val::from("back_forward"),
@@ -4585,6 +5884,21 @@ impl From<ConnectionType> for emlite::Val {
         }
     }
 }
+impl From<&ConnectionType> for emlite::Val {
+    fn from(s: &ConnectionType) -> emlite::Val {
+        match *s {
+            ConnectionType::BLUETOOTH => emlite::Val::from("bluetooth"),
+            ConnectionType::CELLULAR => emlite::Val::from("cellular"),
+            ConnectionType::ETHERNET => emlite::Val::from("ethernet"),
+            ConnectionType::MIXED => emlite::Val::from("mixed"),
+            ConnectionType::NONE => emlite::Val::from("none"),
+            ConnectionType::OTHER => emlite::Val::from("other"),
+            ConnectionType::UNKNOWN => emlite::Val::from("unknown"),
+            ConnectionType::WIFI => emlite::Val::from("wifi"),
+            ConnectionType::WIMAX => emlite::Val::from("wimax"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum EffectiveConnectionType {
@@ -4613,6 +5927,16 @@ impl FromVal for EffectiveConnectionType {
 impl From<EffectiveConnectionType> for emlite::Val {
     fn from(s: EffectiveConnectionType) -> emlite::Val {
         match s {
+            EffectiveConnectionType::_2G => emlite::Val::from("2g"),
+            EffectiveConnectionType::_3G => emlite::Val::from("3g"),
+            EffectiveConnectionType::_4G => emlite::Val::from("4g"),
+            EffectiveConnectionType::SLOW_2G => emlite::Val::from("slow-2g"),
+        }
+    }
+}
+impl From<&EffectiveConnectionType> for emlite::Val {
+    fn from(s: &EffectiveConnectionType) -> emlite::Val {
+        match *s {
             EffectiveConnectionType::_2G => emlite::Val::from("2g"),
             EffectiveConnectionType::_3G => emlite::Val::from("3g"),
             EffectiveConnectionType::_4G => emlite::Val::from("4g"),
@@ -4652,6 +5976,15 @@ impl From<NotificationPermission> for emlite::Val {
         }
     }
 }
+impl From<&NotificationPermission> for emlite::Val {
+    fn from(s: &NotificationPermission) -> emlite::Val {
+        match *s {
+            NotificationPermission::DEFAULT => emlite::Val::from("default"),
+            NotificationPermission::DENIED => emlite::Val::from("denied"),
+            NotificationPermission::GRANTED => emlite::Val::from("granted"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum NotificationDirection {
@@ -4678,6 +6011,15 @@ impl FromVal for NotificationDirection {
 impl From<NotificationDirection> for emlite::Val {
     fn from(s: NotificationDirection) -> emlite::Val {
         match s {
+            NotificationDirection::AUTO => emlite::Val::from("auto"),
+            NotificationDirection::LTR => emlite::Val::from("ltr"),
+            NotificationDirection::RTL => emlite::Val::from("rtl"),
+        }
+    }
+}
+impl From<&NotificationDirection> for emlite::Val {
+    fn from(s: &NotificationDirection) -> emlite::Val {
+        match *s {
             NotificationDirection::AUTO => emlite::Val::from("auto"),
             NotificationDirection::LTR => emlite::Val::from("ltr"),
             NotificationDirection::RTL => emlite::Val::from("rtl"),
@@ -4713,6 +6055,14 @@ impl From<OrientationSensorLocalCoordinateSystem> for emlite::Val {
         }
     }
 }
+impl From<&OrientationSensorLocalCoordinateSystem> for emlite::Val {
+    fn from(s: &OrientationSensorLocalCoordinateSystem) -> emlite::Val {
+        match *s {
+            OrientationSensorLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
+            OrientationSensorLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ClientLifecycleState {
@@ -4737,6 +6087,14 @@ impl FromVal for ClientLifecycleState {
 impl From<ClientLifecycleState> for emlite::Val {
     fn from(s: ClientLifecycleState) -> emlite::Val {
         match s {
+            ClientLifecycleState::ACTIVE => emlite::Val::from("active"),
+            ClientLifecycleState::FROZEN => emlite::Val::from("frozen"),
+        }
+    }
+}
+impl From<&ClientLifecycleState> for emlite::Val {
+    fn from(s: &ClientLifecycleState) -> emlite::Val {
+        match *s {
             ClientLifecycleState::ACTIVE => emlite::Val::from("active"),
             ClientLifecycleState::FROZEN => emlite::Val::from("frozen"),
         }
@@ -4777,6 +6135,16 @@ impl From<PaymentDelegation> for emlite::Val {
         }
     }
 }
+impl From<&PaymentDelegation> for emlite::Val {
+    fn from(s: &PaymentDelegation) -> emlite::Val {
+        match *s {
+            PaymentDelegation::SHIPPING_ADDRESS => emlite::Val::from("shippingAddress"),
+            PaymentDelegation::PAYER_NAME => emlite::Val::from("payerName"),
+            PaymentDelegation::PAYER_PHONE => emlite::Val::from("payerPhone"),
+            PaymentDelegation::PAYER_EMAIL => emlite::Val::from("payerEmail"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum PaymentShippingType {
@@ -4803,6 +6171,15 @@ impl FromVal for PaymentShippingType {
 impl From<PaymentShippingType> for emlite::Val {
     fn from(s: PaymentShippingType) -> emlite::Val {
         match s {
+            PaymentShippingType::SHIPPING => emlite::Val::from("shipping"),
+            PaymentShippingType::DELIVERY => emlite::Val::from("delivery"),
+            PaymentShippingType::PICKUP => emlite::Val::from("pickup"),
+        }
+    }
+}
+impl From<&PaymentShippingType> for emlite::Val {
+    fn from(s: &PaymentShippingType) -> emlite::Val {
+        match *s {
             PaymentShippingType::SHIPPING => emlite::Val::from("shipping"),
             PaymentShippingType::DELIVERY => emlite::Val::from("delivery"),
             PaymentShippingType::PICKUP => emlite::Val::from("pickup"),
@@ -4841,6 +6218,15 @@ impl From<PaymentComplete> for emlite::Val {
         }
     }
 }
+impl From<&PaymentComplete> for emlite::Val {
+    fn from(s: &PaymentComplete) -> emlite::Val {
+        match *s {
+            PaymentComplete::FAIL => emlite::Val::from("fail"),
+            PaymentComplete::SUCCESS => emlite::Val::from("success"),
+            PaymentComplete::UNKNOWN => emlite::Val::from("unknown"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum PermissionState {
@@ -4867,6 +6253,15 @@ impl FromVal for PermissionState {
 impl From<PermissionState> for emlite::Val {
     fn from(s: PermissionState) -> emlite::Val {
         match s {
+            PermissionState::GRANTED => emlite::Val::from("granted"),
+            PermissionState::DENIED => emlite::Val::from("denied"),
+            PermissionState::PROMPT => emlite::Val::from("prompt"),
+        }
+    }
+}
+impl From<&PermissionState> for emlite::Val {
+    fn from(s: &PermissionState) -> emlite::Val {
+        match *s {
             PermissionState::GRANTED => emlite::Val::from("granted"),
             PermissionState::DENIED => emlite::Val::from("denied"),
             PermissionState::PROMPT => emlite::Val::from("prompt"),
@@ -4901,6 +6296,16 @@ impl FromVal for PointerAxis {
 impl From<PointerAxis> for emlite::Val {
     fn from(s: PointerAxis) -> emlite::Val {
         match s {
+            PointerAxis::BLOCK => emlite::Val::from("block"),
+            PointerAxis::INLINE => emlite::Val::from("inline"),
+            PointerAxis::X => emlite::Val::from("x"),
+            PointerAxis::Y => emlite::Val::from("y"),
+        }
+    }
+}
+impl From<&PointerAxis> for emlite::Val {
+    fn from(s: &PointerAxis) -> emlite::Val {
+        match *s {
             PointerAxis::BLOCK => emlite::Val::from("block"),
             PointerAxis::INLINE => emlite::Val::from("inline"),
             PointerAxis::X => emlite::Val::from("x"),
@@ -4943,6 +6348,16 @@ impl From<PresentationConnectionState> for emlite::Val {
         }
     }
 }
+impl From<&PresentationConnectionState> for emlite::Val {
+    fn from(s: &PresentationConnectionState) -> emlite::Val {
+        match *s {
+            PresentationConnectionState::CONNECTING => emlite::Val::from("connecting"),
+            PresentationConnectionState::CONNECTED => emlite::Val::from("connected"),
+            PresentationConnectionState::CLOSED => emlite::Val::from("closed"),
+            PresentationConnectionState::TERMINATED => emlite::Val::from("terminated"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum PresentationConnectionCloseReason {
@@ -4969,6 +6384,15 @@ impl FromVal for PresentationConnectionCloseReason {
 impl From<PresentationConnectionCloseReason> for emlite::Val {
     fn from(s: PresentationConnectionCloseReason) -> emlite::Val {
         match s {
+            PresentationConnectionCloseReason::ERROR => emlite::Val::from("error"),
+            PresentationConnectionCloseReason::CLOSED => emlite::Val::from("closed"),
+            PresentationConnectionCloseReason::WENTAWAY => emlite::Val::from("wentaway"),
+        }
+    }
+}
+impl From<&PresentationConnectionCloseReason> for emlite::Val {
+    fn from(s: &PresentationConnectionCloseReason) -> emlite::Val {
+        match *s {
             PresentationConnectionCloseReason::ERROR => emlite::Val::from("error"),
             PresentationConnectionCloseReason::CLOSED => emlite::Val::from("closed"),
             PresentationConnectionCloseReason::WENTAWAY => emlite::Val::from("wentaway"),
@@ -5006,6 +6430,16 @@ impl From<PrivateAttributionAggregationProtocol> for emlite::Val {
         }
     }
 }
+impl From<&PrivateAttributionAggregationProtocol> for emlite::Val {
+    fn from(s: &PrivateAttributionAggregationProtocol) -> emlite::Val {
+        match *s {
+            PrivateAttributionAggregationProtocol::DAP_12_HISTOGRAM => {
+                emlite::Val::from("dap-12-histogram")
+            }
+            PrivateAttributionAggregationProtocol::TEE_00 => emlite::Val::from("tee-00"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum AttributionLogic {
@@ -5028,6 +6462,13 @@ impl FromVal for AttributionLogic {
 impl From<AttributionLogic> for emlite::Val {
     fn from(s: AttributionLogic) -> emlite::Val {
         match s {
+            AttributionLogic::LAST_TOUCH => emlite::Val::from("last-touch"),
+        }
+    }
+}
+impl From<&AttributionLogic> for emlite::Val {
+    fn from(s: &AttributionLogic) -> emlite::Val {
+        match *s {
             AttributionLogic::LAST_TOUCH => emlite::Val::from("last-touch"),
         }
     }
@@ -5064,6 +6505,15 @@ impl From<IPAddressSpace> for emlite::Val {
         }
     }
 }
+impl From<&IPAddressSpace> for emlite::Val {
+    fn from(s: &IPAddressSpace) -> emlite::Val {
+        match *s {
+            IPAddressSpace::PUBLIC => emlite::Val::from("public"),
+            IPAddressSpace::PRIVATE => emlite::Val::from("private"),
+            IPAddressSpace::LOCAL => emlite::Val::from("local"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum PushEncryptionKeyName {
@@ -5088,6 +6538,14 @@ impl FromVal for PushEncryptionKeyName {
 impl From<PushEncryptionKeyName> for emlite::Val {
     fn from(s: PushEncryptionKeyName) -> emlite::Val {
         match s {
+            PushEncryptionKeyName::P256DH => emlite::Val::from("p256dh"),
+            PushEncryptionKeyName::AUTH => emlite::Val::from("auth"),
+        }
+    }
+}
+impl From<&PushEncryptionKeyName> for emlite::Val {
+    fn from(s: &PushEncryptionKeyName) -> emlite::Val {
+        match *s {
             PushEncryptionKeyName::P256DH => emlite::Val::from("p256dh"),
             PushEncryptionKeyName::AUTH => emlite::Val::from("auth"),
         }
@@ -5149,6 +6607,27 @@ impl From<ReferrerPolicy> for emlite::Val {
         }
     }
 }
+impl From<&ReferrerPolicy> for emlite::Val {
+    fn from(s: &ReferrerPolicy) -> emlite::Val {
+        match *s {
+            ReferrerPolicy::NONE => emlite::Val::from(""),
+            ReferrerPolicy::NO_REFERRER => emlite::Val::from("no-referrer"),
+            ReferrerPolicy::NO_REFERRER_WHEN_DOWNGRADE => {
+                emlite::Val::from("no-referrer-when-downgrade")
+            }
+            ReferrerPolicy::SAME_ORIGIN => emlite::Val::from("same-origin"),
+            ReferrerPolicy::ORIGIN => emlite::Val::from("origin"),
+            ReferrerPolicy::STRICT_ORIGIN => emlite::Val::from("strict-origin"),
+            ReferrerPolicy::ORIGIN_WHEN_CROSS_ORIGIN => {
+                emlite::Val::from("origin-when-cross-origin")
+            }
+            ReferrerPolicy::STRICT_ORIGIN_WHEN_CROSS_ORIGIN => {
+                emlite::Val::from("strict-origin-when-cross-origin")
+            }
+            ReferrerPolicy::UNSAFE_URL => emlite::Val::from("unsafe-url"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RemotePlaybackState {
@@ -5175,6 +6654,15 @@ impl FromVal for RemotePlaybackState {
 impl From<RemotePlaybackState> for emlite::Val {
     fn from(s: RemotePlaybackState) -> emlite::Val {
         match s {
+            RemotePlaybackState::CONNECTING => emlite::Val::from("connecting"),
+            RemotePlaybackState::CONNECTED => emlite::Val::from("connected"),
+            RemotePlaybackState::DISCONNECTED => emlite::Val::from("disconnected"),
+        }
+    }
+}
+impl From<&RemotePlaybackState> for emlite::Val {
+    fn from(s: &RemotePlaybackState) -> emlite::Val {
+        match *s {
             RemotePlaybackState::CONNECTING => emlite::Val::from("connecting"),
             RemotePlaybackState::CONNECTED => emlite::Val::from("connected"),
             RemotePlaybackState::DISCONNECTED => emlite::Val::from("disconnected"),
@@ -5215,6 +6703,17 @@ impl From<ResizeObserverBoxOptions> for emlite::Val {
         }
     }
 }
+impl From<&ResizeObserverBoxOptions> for emlite::Val {
+    fn from(s: &ResizeObserverBoxOptions) -> emlite::Val {
+        match *s {
+            ResizeObserverBoxOptions::BORDER_BOX => emlite::Val::from("border-box"),
+            ResizeObserverBoxOptions::CONTENT_BOX => emlite::Val::from("content-box"),
+            ResizeObserverBoxOptions::DEVICE_PIXEL_CONTENT_BOX => {
+                emlite::Val::from("device-pixel-content-box")
+            }
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RenderBlockingStatusType {
@@ -5239,6 +6738,14 @@ impl FromVal for RenderBlockingStatusType {
 impl From<RenderBlockingStatusType> for emlite::Val {
     fn from(s: RenderBlockingStatusType) -> emlite::Val {
         match s {
+            RenderBlockingStatusType::BLOCKING => emlite::Val::from("blocking"),
+            RenderBlockingStatusType::NON_BLOCKING => emlite::Val::from("non-blocking"),
+        }
+    }
+}
+impl From<&RenderBlockingStatusType> for emlite::Val {
+    fn from(s: &RenderBlockingStatusType) -> emlite::Val {
+        match *s {
             RenderBlockingStatusType::BLOCKING => emlite::Val::from("blocking"),
             RenderBlockingStatusType::NON_BLOCKING => emlite::Val::from("non-blocking"),
         }
@@ -5273,6 +6780,14 @@ impl From<SameSiteCookiesType> for emlite::Val {
         }
     }
 }
+impl From<&SameSiteCookiesType> for emlite::Val {
+    fn from(s: &SameSiteCookiesType) -> emlite::Val {
+        match *s {
+            SameSiteCookiesType::ALL => emlite::Val::from("all"),
+            SameSiteCookiesType::NONE => emlite::Val::from("none"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum SanitizerPresets {
@@ -5295,6 +6810,13 @@ impl FromVal for SanitizerPresets {
 impl From<SanitizerPresets> for emlite::Val {
     fn from(s: SanitizerPresets) -> emlite::Val {
         match s {
+            SanitizerPresets::DEFAULT => emlite::Val::from("default"),
+        }
+    }
+}
+impl From<&SanitizerPresets> for emlite::Val {
+    fn from(s: &SanitizerPresets) -> emlite::Val {
+        match *s {
             SanitizerPresets::DEFAULT => emlite::Val::from("default"),
         }
     }
@@ -5325,6 +6847,15 @@ impl FromVal for TaskPriority {
 impl From<TaskPriority> for emlite::Val {
     fn from(s: TaskPriority) -> emlite::Val {
         match s {
+            TaskPriority::USER_BLOCKING => emlite::Val::from("user-blocking"),
+            TaskPriority::USER_VISIBLE => emlite::Val::from("user-visible"),
+            TaskPriority::BACKGROUND => emlite::Val::from("background"),
+        }
+    }
+}
+impl From<&TaskPriority> for emlite::Val {
+    fn from(s: &TaskPriority) -> emlite::Val {
+        match *s {
             TaskPriority::USER_BLOCKING => emlite::Val::from("user-blocking"),
             TaskPriority::USER_VISIBLE => emlite::Val::from("user-visible"),
             TaskPriority::BACKGROUND => emlite::Val::from("background"),
@@ -5367,6 +6898,19 @@ impl From<CaptureStartFocusBehavior> for emlite::Val {
         }
     }
 }
+impl From<&CaptureStartFocusBehavior> for emlite::Val {
+    fn from(s: &CaptureStartFocusBehavior) -> emlite::Val {
+        match *s {
+            CaptureStartFocusBehavior::FOCUS_CAPTURING_APPLICATION => {
+                emlite::Val::from("focus-capturing-application")
+            }
+            CaptureStartFocusBehavior::FOCUS_CAPTURED_SURFACE => {
+                emlite::Val::from("focus-captured-surface")
+            }
+            CaptureStartFocusBehavior::NO_FOCUS_CHANGE => emlite::Val::from("no-focus-change"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum SelfCapturePreferenceEnum {
@@ -5396,6 +6940,14 @@ impl From<SelfCapturePreferenceEnum> for emlite::Val {
         }
     }
 }
+impl From<&SelfCapturePreferenceEnum> for emlite::Val {
+    fn from(s: &SelfCapturePreferenceEnum) -> emlite::Val {
+        match *s {
+            SelfCapturePreferenceEnum::INCLUDE => emlite::Val::from("include"),
+            SelfCapturePreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum SystemAudioPreferenceEnum {
@@ -5420,6 +6972,14 @@ impl FromVal for SystemAudioPreferenceEnum {
 impl From<SystemAudioPreferenceEnum> for emlite::Val {
     fn from(s: SystemAudioPreferenceEnum) -> emlite::Val {
         match s {
+            SystemAudioPreferenceEnum::INCLUDE => emlite::Val::from("include"),
+            SystemAudioPreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+        }
+    }
+}
+impl From<&SystemAudioPreferenceEnum> for emlite::Val {
+    fn from(s: &SystemAudioPreferenceEnum) -> emlite::Val {
+        match *s {
             SystemAudioPreferenceEnum::INCLUDE => emlite::Val::from("include"),
             SystemAudioPreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
         }
@@ -5457,6 +7017,15 @@ impl From<WindowAudioPreferenceEnum> for emlite::Val {
         }
     }
 }
+impl From<&WindowAudioPreferenceEnum> for emlite::Val {
+    fn from(s: &WindowAudioPreferenceEnum) -> emlite::Val {
+        match *s {
+            WindowAudioPreferenceEnum::SYSTEM => emlite::Val::from("system"),
+            WindowAudioPreferenceEnum::WINDOW => emlite::Val::from("window"),
+            WindowAudioPreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum SurfaceSwitchingPreferenceEnum {
@@ -5486,6 +7055,14 @@ impl From<SurfaceSwitchingPreferenceEnum> for emlite::Val {
         }
     }
 }
+impl From<&SurfaceSwitchingPreferenceEnum> for emlite::Val {
+    fn from(s: &SurfaceSwitchingPreferenceEnum) -> emlite::Val {
+        match *s {
+            SurfaceSwitchingPreferenceEnum::INCLUDE => emlite::Val::from("include"),
+            SurfaceSwitchingPreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum MonitorTypeSurfacesEnum {
@@ -5510,6 +7087,14 @@ impl FromVal for MonitorTypeSurfacesEnum {
 impl From<MonitorTypeSurfacesEnum> for emlite::Val {
     fn from(s: MonitorTypeSurfacesEnum) -> emlite::Val {
         match s {
+            MonitorTypeSurfacesEnum::INCLUDE => emlite::Val::from("include"),
+            MonitorTypeSurfacesEnum::EXCLUDE => emlite::Val::from("exclude"),
+        }
+    }
+}
+impl From<&MonitorTypeSurfacesEnum> for emlite::Val {
+    fn from(s: &MonitorTypeSurfacesEnum) -> emlite::Val {
+        match *s {
             MonitorTypeSurfacesEnum::INCLUDE => emlite::Val::from("include"),
             MonitorTypeSurfacesEnum::EXCLUDE => emlite::Val::from("exclude"),
         }
@@ -5547,6 +7132,15 @@ impl From<DisplayCaptureSurfaceType> for emlite::Val {
         }
     }
 }
+impl From<&DisplayCaptureSurfaceType> for emlite::Val {
+    fn from(s: &DisplayCaptureSurfaceType) -> emlite::Val {
+        match *s {
+            DisplayCaptureSurfaceType::MONITOR => emlite::Val::from("monitor"),
+            DisplayCaptureSurfaceType::WINDOW => emlite::Val::from("window"),
+            DisplayCaptureSurfaceType::BROWSER => emlite::Val::from("browser"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum CursorCaptureConstraint {
@@ -5573,6 +7167,15 @@ impl FromVal for CursorCaptureConstraint {
 impl From<CursorCaptureConstraint> for emlite::Val {
     fn from(s: CursorCaptureConstraint) -> emlite::Val {
         match s {
+            CursorCaptureConstraint::NEVER => emlite::Val::from("never"),
+            CursorCaptureConstraint::ALWAYS => emlite::Val::from("always"),
+            CursorCaptureConstraint::MOTION => emlite::Val::from("motion"),
+        }
+    }
+}
+impl From<&CursorCaptureConstraint> for emlite::Val {
+    fn from(s: &CursorCaptureConstraint) -> emlite::Val {
+        match *s {
             CursorCaptureConstraint::NEVER => emlite::Val::from("never"),
             CursorCaptureConstraint::ALWAYS => emlite::Val::from("always"),
             CursorCaptureConstraint::MOTION => emlite::Val::from("motion"),
@@ -5626,6 +7229,20 @@ impl From<OrientationLockType> for emlite::Val {
         }
     }
 }
+impl From<&OrientationLockType> for emlite::Val {
+    fn from(s: &OrientationLockType) -> emlite::Val {
+        match *s {
+            OrientationLockType::ANY => emlite::Val::from("any"),
+            OrientationLockType::NATURAL => emlite::Val::from("natural"),
+            OrientationLockType::LANDSCAPE => emlite::Val::from("landscape"),
+            OrientationLockType::PORTRAIT => emlite::Val::from("portrait"),
+            OrientationLockType::PORTRAIT_PRIMARY => emlite::Val::from("portrait-primary"),
+            OrientationLockType::PORTRAIT_SECONDARY => emlite::Val::from("portrait-secondary"),
+            OrientationLockType::LANDSCAPE_PRIMARY => emlite::Val::from("landscape-primary"),
+            OrientationLockType::LANDSCAPE_SECONDARY => emlite::Val::from("landscape-secondary"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum OrientationType {
@@ -5661,6 +7278,16 @@ impl From<OrientationType> for emlite::Val {
         }
     }
 }
+impl From<&OrientationType> for emlite::Val {
+    fn from(s: &OrientationType) -> emlite::Val {
+        match *s {
+            OrientationType::PORTRAIT_PRIMARY => emlite::Val::from("portrait-primary"),
+            OrientationType::PORTRAIT_SECONDARY => emlite::Val::from("portrait-secondary"),
+            OrientationType::LANDSCAPE_PRIMARY => emlite::Val::from("landscape-primary"),
+            OrientationType::LANDSCAPE_SECONDARY => emlite::Val::from("landscape-secondary"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum WakeLockType {
@@ -5683,6 +7310,13 @@ impl FromVal for WakeLockType {
 impl From<WakeLockType> for emlite::Val {
     fn from(s: WakeLockType) -> emlite::Val {
         match s {
+            WakeLockType::SCREEN => emlite::Val::from("screen"),
+        }
+    }
+}
+impl From<&WakeLockType> for emlite::Val {
+    fn from(s: &WakeLockType) -> emlite::Val {
+        match *s {
             WakeLockType::SCREEN => emlite::Val::from("screen"),
         }
     }
@@ -5715,6 +7349,16 @@ impl FromVal for ScrollAxis {
 impl From<ScrollAxis> for emlite::Val {
     fn from(s: ScrollAxis) -> emlite::Val {
         match s {
+            ScrollAxis::BLOCK => emlite::Val::from("block"),
+            ScrollAxis::INLINE => emlite::Val::from("inline"),
+            ScrollAxis::X => emlite::Val::from("x"),
+            ScrollAxis::Y => emlite::Val::from("y"),
+        }
+    }
+}
+impl From<&ScrollAxis> for emlite::Val {
+    fn from(s: &ScrollAxis) -> emlite::Val {
+        match *s {
             ScrollAxis::BLOCK => emlite::Val::from("block"),
             ScrollAxis::INLINE => emlite::Val::from("inline"),
             ScrollAxis::X => emlite::Val::from("x"),
@@ -5762,6 +7406,17 @@ impl From<SecurePaymentConfirmationAvailability> for emlite::Val {
          }
     }
 }
+impl From<&SecurePaymentConfirmationAvailability> for emlite::Val {
+    fn from(s: &SecurePaymentConfirmationAvailability) -> emlite::Val {
+        match *s {
+            SecurePaymentConfirmationAvailability::AVAILABLE => emlite::Val::from("available"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_UNKNOWN_REASON => emlite::Val::from("unavailable-unknown-reason"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_FEATURE_NOT_ENABLED => emlite::Val::from("unavailable-feature-not-enabled"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_NO_PERMISSION_POLICY => emlite::Val::from("unavailable-no-permission-policy"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_NO_USER_VERIFYING_PLATFORM_AUTHENTICATOR => emlite::Val::from("unavailable-no-user-verifying-platform-authenticator"),
+         }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ParityType {
@@ -5794,6 +7449,15 @@ impl From<ParityType> for emlite::Val {
         }
     }
 }
+impl From<&ParityType> for emlite::Val {
+    fn from(s: &ParityType) -> emlite::Val {
+        match *s {
+            ParityType::NONE => emlite::Val::from("none"),
+            ParityType::EVEN => emlite::Val::from("even"),
+            ParityType::ODD => emlite::Val::from("odd"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum FlowControlType {
@@ -5818,6 +7482,14 @@ impl FromVal for FlowControlType {
 impl From<FlowControlType> for emlite::Val {
     fn from(s: FlowControlType) -> emlite::Val {
         match s {
+            FlowControlType::NONE => emlite::Val::from("none"),
+            FlowControlType::HARDWARE => emlite::Val::from("hardware"),
+        }
+    }
+}
+impl From<&FlowControlType> for emlite::Val {
+    fn from(s: &FlowControlType) -> emlite::Val {
+        match *s {
             FlowControlType::NONE => emlite::Val::from("none"),
             FlowControlType::HARDWARE => emlite::Val::from("hardware"),
         }
@@ -5864,6 +7536,18 @@ impl From<ServiceWorkerState> for emlite::Val {
         }
     }
 }
+impl From<&ServiceWorkerState> for emlite::Val {
+    fn from(s: &ServiceWorkerState) -> emlite::Val {
+        match *s {
+            ServiceWorkerState::PARSED => emlite::Val::from("parsed"),
+            ServiceWorkerState::INSTALLING => emlite::Val::from("installing"),
+            ServiceWorkerState::INSTALLED => emlite::Val::from("installed"),
+            ServiceWorkerState::ACTIVATING => emlite::Val::from("activating"),
+            ServiceWorkerState::ACTIVATED => emlite::Val::from("activated"),
+            ServiceWorkerState::REDUNDANT => emlite::Val::from("redundant"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ServiceWorkerUpdateViaCache {
@@ -5890,6 +7574,15 @@ impl FromVal for ServiceWorkerUpdateViaCache {
 impl From<ServiceWorkerUpdateViaCache> for emlite::Val {
     fn from(s: ServiceWorkerUpdateViaCache) -> emlite::Val {
         match s {
+            ServiceWorkerUpdateViaCache::IMPORTS => emlite::Val::from("imports"),
+            ServiceWorkerUpdateViaCache::ALL => emlite::Val::from("all"),
+            ServiceWorkerUpdateViaCache::NONE => emlite::Val::from("none"),
+        }
+    }
+}
+impl From<&ServiceWorkerUpdateViaCache> for emlite::Val {
+    fn from(s: &ServiceWorkerUpdateViaCache) -> emlite::Val {
+        match *s {
             ServiceWorkerUpdateViaCache::IMPORTS => emlite::Val::from("imports"),
             ServiceWorkerUpdateViaCache::ALL => emlite::Val::from("all"),
             ServiceWorkerUpdateViaCache::NONE => emlite::Val::from("none"),
@@ -5924,6 +7617,16 @@ impl FromVal for FrameType {
 impl From<FrameType> for emlite::Val {
     fn from(s: FrameType) -> emlite::Val {
         match s {
+            FrameType::AUXILIARY => emlite::Val::from("auxiliary"),
+            FrameType::TOP_LEVEL => emlite::Val::from("top-level"),
+            FrameType::NESTED => emlite::Val::from("nested"),
+            FrameType::NONE => emlite::Val::from("none"),
+        }
+    }
+}
+impl From<&FrameType> for emlite::Val {
+    fn from(s: &FrameType) -> emlite::Val {
+        match *s {
             FrameType::AUXILIARY => emlite::Val::from("auxiliary"),
             FrameType::TOP_LEVEL => emlite::Val::from("top-level"),
             FrameType::NESTED => emlite::Val::from("nested"),
@@ -5966,6 +7669,16 @@ impl From<ClientType> for emlite::Val {
         }
     }
 }
+impl From<&ClientType> for emlite::Val {
+    fn from(s: &ClientType) -> emlite::Val {
+        match *s {
+            ClientType::WINDOW => emlite::Val::from("window"),
+            ClientType::WORKER => emlite::Val::from("worker"),
+            ClientType::SHAREDWORKER => emlite::Val::from("sharedworker"),
+            ClientType::ALL => emlite::Val::from("all"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RunningStatus {
@@ -5990,6 +7703,14 @@ impl FromVal for RunningStatus {
 impl From<RunningStatus> for emlite::Val {
     fn from(s: RunningStatus) -> emlite::Val {
         match s {
+            RunningStatus::RUNNING => emlite::Val::from("running"),
+            RunningStatus::NOT_RUNNING => emlite::Val::from("not-running"),
+        }
+    }
+}
+impl From<&RunningStatus> for emlite::Val {
+    fn from(s: &RunningStatus) -> emlite::Val {
+        match *s {
             RunningStatus::RUNNING => emlite::Val::from("running"),
             RunningStatus::NOT_RUNNING => emlite::Val::from("not-running"),
         }
@@ -6032,6 +7753,18 @@ impl From<RouterSourceEnum> for emlite::Val {
         }
     }
 }
+impl From<&RouterSourceEnum> for emlite::Val {
+    fn from(s: &RouterSourceEnum) -> emlite::Val {
+        match *s {
+            RouterSourceEnum::CACHE => emlite::Val::from("cache"),
+            RouterSourceEnum::FETCH_EVENT => emlite::Val::from("fetch-event"),
+            RouterSourceEnum::NETWORK => emlite::Val::from("network"),
+            RouterSourceEnum::RACE_NETWORK_AND_FETCH_HANDLER => {
+                emlite::Val::from("race-network-and-fetch-handler")
+            }
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum LandmarkType {
@@ -6058,6 +7791,15 @@ impl FromVal for LandmarkType {
 impl From<LandmarkType> for emlite::Val {
     fn from(s: LandmarkType) -> emlite::Val {
         match s {
+            LandmarkType::MOUTH => emlite::Val::from("mouth"),
+            LandmarkType::EYE => emlite::Val::from("eye"),
+            LandmarkType::NOSE => emlite::Val::from("nose"),
+        }
+    }
+}
+impl From<&LandmarkType> for emlite::Val {
+    fn from(s: &LandmarkType) -> emlite::Val {
+        match *s {
             LandmarkType::MOUTH => emlite::Val::from("mouth"),
             LandmarkType::EYE => emlite::Val::from("eye"),
             LandmarkType::NOSE => emlite::Val::from("nose"),
@@ -6129,6 +7871,26 @@ impl From<BarcodeFormat> for emlite::Val {
         }
     }
 }
+impl From<&BarcodeFormat> for emlite::Val {
+    fn from(s: &BarcodeFormat) -> emlite::Val {
+        match *s {
+            BarcodeFormat::AZTEC => emlite::Val::from("aztec"),
+            BarcodeFormat::CODE_128 => emlite::Val::from("code_128"),
+            BarcodeFormat::CODE_39 => emlite::Val::from("code_39"),
+            BarcodeFormat::CODE_93 => emlite::Val::from("code_93"),
+            BarcodeFormat::CODABAR => emlite::Val::from("codabar"),
+            BarcodeFormat::DATA_MATRIX => emlite::Val::from("data_matrix"),
+            BarcodeFormat::EAN_13 => emlite::Val::from("ean_13"),
+            BarcodeFormat::EAN_8 => emlite::Val::from("ean_8"),
+            BarcodeFormat::ITF => emlite::Val::from("itf"),
+            BarcodeFormat::PDF417 => emlite::Val::from("pdf417"),
+            BarcodeFormat::QR_CODE => emlite::Val::from("qr_code"),
+            BarcodeFormat::UNKNOWN => emlite::Val::from("unknown"),
+            BarcodeFormat::UPC_A => emlite::Val::from("upc_a"),
+            BarcodeFormat::UPC_E => emlite::Val::from("upc_e"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum SpeechRecognitionErrorCode {
@@ -6182,6 +7944,26 @@ impl From<SpeechRecognitionErrorCode> for emlite::Val {
         }
     }
 }
+impl From<&SpeechRecognitionErrorCode> for emlite::Val {
+    fn from(s: &SpeechRecognitionErrorCode) -> emlite::Val {
+        match *s {
+            SpeechRecognitionErrorCode::NO_SPEECH => emlite::Val::from("no-speech"),
+            SpeechRecognitionErrorCode::ABORTED => emlite::Val::from("aborted"),
+            SpeechRecognitionErrorCode::AUDIO_CAPTURE => emlite::Val::from("audio-capture"),
+            SpeechRecognitionErrorCode::NETWORK => emlite::Val::from("network"),
+            SpeechRecognitionErrorCode::NOT_ALLOWED => emlite::Val::from("not-allowed"),
+            SpeechRecognitionErrorCode::SERVICE_NOT_ALLOWED => {
+                emlite::Val::from("service-not-allowed")
+            }
+            SpeechRecognitionErrorCode::LANGUAGE_NOT_SUPPORTED => {
+                emlite::Val::from("language-not-supported")
+            }
+            SpeechRecognitionErrorCode::PHRASES_NOT_SUPPORTED => {
+                emlite::Val::from("phrases-not-supported")
+            }
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum AvailabilityStatus {
@@ -6210,6 +7992,16 @@ impl FromVal for AvailabilityStatus {
 impl From<AvailabilityStatus> for emlite::Val {
     fn from(s: AvailabilityStatus) -> emlite::Val {
         match s {
+            AvailabilityStatus::UNAVAILABLE => emlite::Val::from("unavailable"),
+            AvailabilityStatus::DOWNLOADABLE => emlite::Val::from("downloadable"),
+            AvailabilityStatus::DOWNLOADING => emlite::Val::from("downloading"),
+            AvailabilityStatus::AVAILABLE => emlite::Val::from("available"),
+        }
+    }
+}
+impl From<&AvailabilityStatus> for emlite::Val {
+    fn from(s: &AvailabilityStatus) -> emlite::Val {
+        match *s {
             AvailabilityStatus::UNAVAILABLE => emlite::Val::from("unavailable"),
             AvailabilityStatus::DOWNLOADABLE => emlite::Val::from("downloadable"),
             AvailabilityStatus::DOWNLOADING => emlite::Val::from("downloading"),
@@ -6280,6 +8072,28 @@ impl From<SpeechSynthesisErrorCode> for emlite::Val {
         }
     }
 }
+impl From<&SpeechSynthesisErrorCode> for emlite::Val {
+    fn from(s: &SpeechSynthesisErrorCode) -> emlite::Val {
+        match *s {
+            SpeechSynthesisErrorCode::CANCELED => emlite::Val::from("canceled"),
+            SpeechSynthesisErrorCode::INTERRUPTED => emlite::Val::from("interrupted"),
+            SpeechSynthesisErrorCode::AUDIO_BUSY => emlite::Val::from("audio-busy"),
+            SpeechSynthesisErrorCode::AUDIO_HARDWARE => emlite::Val::from("audio-hardware"),
+            SpeechSynthesisErrorCode::NETWORK => emlite::Val::from("network"),
+            SpeechSynthesisErrorCode::SYNTHESIS_UNAVAILABLE => {
+                emlite::Val::from("synthesis-unavailable")
+            }
+            SpeechSynthesisErrorCode::SYNTHESIS_FAILED => emlite::Val::from("synthesis-failed"),
+            SpeechSynthesisErrorCode::LANGUAGE_UNAVAILABLE => {
+                emlite::Val::from("language-unavailable")
+            }
+            SpeechSynthesisErrorCode::VOICE_UNAVAILABLE => emlite::Val::from("voice-unavailable"),
+            SpeechSynthesisErrorCode::TEXT_TOO_LONG => emlite::Val::from("text-too-long"),
+            SpeechSynthesisErrorCode::INVALID_ARGUMENT => emlite::Val::from("invalid-argument"),
+            SpeechSynthesisErrorCode::NOT_ALLOWED => emlite::Val::from("not-allowed"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ReadableStreamReaderMode {
@@ -6302,6 +8116,13 @@ impl FromVal for ReadableStreamReaderMode {
 impl From<ReadableStreamReaderMode> for emlite::Val {
     fn from(s: ReadableStreamReaderMode) -> emlite::Val {
         match s {
+            ReadableStreamReaderMode::BYOB => emlite::Val::from("byob"),
+        }
+    }
+}
+impl From<&ReadableStreamReaderMode> for emlite::Val {
+    fn from(s: &ReadableStreamReaderMode) -> emlite::Val {
+        match *s {
             ReadableStreamReaderMode::BYOB => emlite::Val::from("byob"),
         }
     }
@@ -6332,6 +8153,13 @@ impl From<ReadableStreamType> for emlite::Val {
         }
     }
 }
+impl From<&ReadableStreamType> for emlite::Val {
+    fn from(s: &ReadableStreamType) -> emlite::Val {
+        match *s {
+            ReadableStreamType::BYTES => emlite::Val::from("bytes"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum TouchType {
@@ -6356,6 +8184,14 @@ impl FromVal for TouchType {
 impl From<TouchType> for emlite::Val {
     fn from(s: TouchType) -> emlite::Val {
         match s {
+            TouchType::DIRECT => emlite::Val::from("direct"),
+            TouchType::STYLUS => emlite::Val::from("stylus"),
+        }
+    }
+}
+impl From<&TouchType> for emlite::Val {
+    fn from(s: &TouchType) -> emlite::Val {
+        match *s {
             TouchType::DIRECT => emlite::Val::from("direct"),
             TouchType::STYLUS => emlite::Val::from("stylus"),
         }
@@ -6390,6 +8226,14 @@ impl From<RefreshPolicy> for emlite::Val {
         }
     }
 }
+impl From<&RefreshPolicy> for emlite::Val {
+    fn from(s: &RefreshPolicy) -> emlite::Val {
+        match *s {
+            RefreshPolicy::NONE => emlite::Val::from("none"),
+            RefreshPolicy::REFRESH => emlite::Val::from("refresh"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum TokenVersion {
@@ -6412,6 +8256,13 @@ impl FromVal for TokenVersion {
 impl From<TokenVersion> for emlite::Val {
     fn from(s: TokenVersion) -> emlite::Val {
         match s {
+            TokenVersion::_1 => emlite::Val::from("1"),
+        }
+    }
+}
+impl From<&TokenVersion> for emlite::Val {
+    fn from(s: &TokenVersion) -> emlite::Val {
+        match *s {
             TokenVersion::_1 => emlite::Val::from("1"),
         }
     }
@@ -6448,6 +8299,15 @@ impl From<OperationType> for emlite::Val {
         }
     }
 }
+impl From<&OperationType> for emlite::Val {
+    fn from(s: &OperationType) -> emlite::Val {
+        match *s {
+            OperationType::TOKEN_REQUEST => emlite::Val::from("token-request"),
+            OperationType::SEND_REDEMPTION_RECORD => emlite::Val::from("send-redemption-record"),
+            OperationType::TOKEN_REDEMPTION => emlite::Val::from("token-redemption"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum KAnonStatus {
@@ -6476,6 +8336,16 @@ impl FromVal for KAnonStatus {
 impl From<KAnonStatus> for emlite::Val {
     fn from(s: KAnonStatus) -> emlite::Val {
         match s {
+            KAnonStatus::PASSED_AND_ENFORCED => emlite::Val::from("passedAndEnforced"),
+            KAnonStatus::PASSED_NOT_ENFORCED => emlite::Val::from("passedNotEnforced"),
+            KAnonStatus::BELOW_THRESHOLD => emlite::Val::from("belowThreshold"),
+            KAnonStatus::NOT_CALCULATED => emlite::Val::from("notCalculated"),
+        }
+    }
+}
+impl From<&KAnonStatus> for emlite::Val {
+    fn from(s: &KAnonStatus) -> emlite::Val {
+        match *s {
             KAnonStatus::PASSED_AND_ENFORCED => emlite::Val::from("passedAndEnforced"),
             KAnonStatus::PASSED_NOT_ENFORCED => emlite::Val::from("passedNotEnforced"),
             KAnonStatus::BELOW_THRESHOLD => emlite::Val::from("belowThreshold"),
@@ -6518,6 +8388,16 @@ impl From<ImportExportKind> for emlite::Val {
         }
     }
 }
+impl From<&ImportExportKind> for emlite::Val {
+    fn from(s: &ImportExportKind) -> emlite::Val {
+        match *s {
+            ImportExportKind::FUNCTION => emlite::Val::from("function"),
+            ImportExportKind::TABLE => emlite::Val::from("table"),
+            ImportExportKind::MEMORY => emlite::Val::from("memory"),
+            ImportExportKind::GLOBAL => emlite::Val::from("global"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum TableKind {
@@ -6542,6 +8422,14 @@ impl FromVal for TableKind {
 impl From<TableKind> for emlite::Val {
     fn from(s: TableKind) -> emlite::Val {
         match s {
+            TableKind::EXTERNREF => emlite::Val::from("externref"),
+            TableKind::ANYFUNC => emlite::Val::from("anyfunc"),
+        }
+    }
+}
+impl From<&TableKind> for emlite::Val {
+    fn from(s: &TableKind) -> emlite::Val {
+        match *s {
             TableKind::EXTERNREF => emlite::Val::from("externref"),
             TableKind::ANYFUNC => emlite::Val::from("anyfunc"),
         }
@@ -6591,6 +8479,19 @@ impl From<ValueType> for emlite::Val {
         }
     }
 }
+impl From<&ValueType> for emlite::Val {
+    fn from(s: &ValueType) -> emlite::Val {
+        match *s {
+            ValueType::I32_ => emlite::Val::from("i32"),
+            ValueType::I64_ => emlite::Val::from("i64"),
+            ValueType::F32_ => emlite::Val::from("f32"),
+            ValueType::F64_ => emlite::Val::from("f64"),
+            ValueType::V128 => emlite::Val::from("v128"),
+            ValueType::EXTERNREF => emlite::Val::from("externref"),
+            ValueType::ANYFUNC => emlite::Val::from("anyfunc"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum IterationCompositeOperation {
@@ -6615,6 +8516,14 @@ impl FromVal for IterationCompositeOperation {
 impl From<IterationCompositeOperation> for emlite::Val {
     fn from(s: IterationCompositeOperation) -> emlite::Val {
         match s {
+            IterationCompositeOperation::REPLACE => emlite::Val::from("replace"),
+            IterationCompositeOperation::ACCUMULATE => emlite::Val::from("accumulate"),
+        }
+    }
+}
+impl From<&IterationCompositeOperation> for emlite::Val {
+    fn from(s: &IterationCompositeOperation) -> emlite::Val {
+        match *s {
             IterationCompositeOperation::REPLACE => emlite::Val::from("replace"),
             IterationCompositeOperation::ACCUMULATE => emlite::Val::from("accumulate"),
         }
@@ -6648,6 +8557,16 @@ impl FromVal for AnimationTriggerBehavior {
 impl From<AnimationTriggerBehavior> for emlite::Val {
     fn from(s: AnimationTriggerBehavior) -> emlite::Val {
         match s {
+            AnimationTriggerBehavior::ONCE => emlite::Val::from("once"),
+            AnimationTriggerBehavior::REPEAT => emlite::Val::from("repeat"),
+            AnimationTriggerBehavior::ALTERNATE => emlite::Val::from("alternate"),
+            AnimationTriggerBehavior::STATE => emlite::Val::from("state"),
+        }
+    }
+}
+impl From<&AnimationTriggerBehavior> for emlite::Val {
+    fn from(s: &AnimationTriggerBehavior) -> emlite::Val {
+        match *s {
             AnimationTriggerBehavior::ONCE => emlite::Val::from("once"),
             AnimationTriggerBehavior::REPEAT => emlite::Val::from("repeat"),
             AnimationTriggerBehavior::ALTERNATE => emlite::Val::from("alternate"),
@@ -6690,6 +8609,16 @@ impl From<AnimationPlayState> for emlite::Val {
         }
     }
 }
+impl From<&AnimationPlayState> for emlite::Val {
+    fn from(s: &AnimationPlayState) -> emlite::Val {
+        match *s {
+            AnimationPlayState::IDLE => emlite::Val::from("idle"),
+            AnimationPlayState::RUNNING => emlite::Val::from("running"),
+            AnimationPlayState::PAUSED => emlite::Val::from("paused"),
+            AnimationPlayState::FINISHED => emlite::Val::from("finished"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum AnimationReplaceState {
@@ -6716,6 +8645,15 @@ impl FromVal for AnimationReplaceState {
 impl From<AnimationReplaceState> for emlite::Val {
     fn from(s: AnimationReplaceState) -> emlite::Val {
         match s {
+            AnimationReplaceState::ACTIVE => emlite::Val::from("active"),
+            AnimationReplaceState::REMOVED => emlite::Val::from("removed"),
+            AnimationReplaceState::PERSISTED => emlite::Val::from("persisted"),
+        }
+    }
+}
+impl From<&AnimationReplaceState> for emlite::Val {
+    fn from(s: &AnimationReplaceState) -> emlite::Val {
+        match *s {
             AnimationReplaceState::ACTIVE => emlite::Val::from("active"),
             AnimationReplaceState::REMOVED => emlite::Val::from("removed"),
             AnimationReplaceState::PERSISTED => emlite::Val::from("persisted"),
@@ -6760,6 +8698,17 @@ impl From<FillMode> for emlite::Val {
         }
     }
 }
+impl From<&FillMode> for emlite::Val {
+    fn from(s: &FillMode) -> emlite::Val {
+        match *s {
+            FillMode::NONE => emlite::Val::from("none"),
+            FillMode::FORWARDS => emlite::Val::from("forwards"),
+            FillMode::BACKWARDS => emlite::Val::from("backwards"),
+            FillMode::BOTH => emlite::Val::from("both"),
+            FillMode::AUTO => emlite::Val::from("auto"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum PlaybackDirection {
@@ -6795,6 +8744,16 @@ impl From<PlaybackDirection> for emlite::Val {
         }
     }
 }
+impl From<&PlaybackDirection> for emlite::Val {
+    fn from(s: &PlaybackDirection) -> emlite::Val {
+        match *s {
+            PlaybackDirection::NORMAL => emlite::Val::from("normal"),
+            PlaybackDirection::REVERSE => emlite::Val::from("reverse"),
+            PlaybackDirection::ALTERNATE => emlite::Val::from("alternate"),
+            PlaybackDirection::ALTERNATE_REVERSE => emlite::Val::from("alternate-reverse"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum CompositeOperation {
@@ -6821,6 +8780,15 @@ impl FromVal for CompositeOperation {
 impl From<CompositeOperation> for emlite::Val {
     fn from(s: CompositeOperation) -> emlite::Val {
         match s {
+            CompositeOperation::REPLACE => emlite::Val::from("replace"),
+            CompositeOperation::ADD => emlite::Val::from("add"),
+            CompositeOperation::ACCUMULATE => emlite::Val::from("accumulate"),
+        }
+    }
+}
+impl From<&CompositeOperation> for emlite::Val {
+    fn from(s: &CompositeOperation) -> emlite::Val {
+        match *s {
             CompositeOperation::REPLACE => emlite::Val::from("replace"),
             CompositeOperation::ADD => emlite::Val::from("add"),
             CompositeOperation::ACCUMULATE => emlite::Val::from("accumulate"),
@@ -6862,6 +8830,16 @@ impl From<CompositeOperationOrAuto> for emlite::Val {
         }
     }
 }
+impl From<&CompositeOperationOrAuto> for emlite::Val {
+    fn from(s: &CompositeOperationOrAuto) -> emlite::Val {
+        match *s {
+            CompositeOperationOrAuto::REPLACE => emlite::Val::from("replace"),
+            CompositeOperationOrAuto::ADD => emlite::Val::from("add"),
+            CompositeOperationOrAuto::ACCUMULATE => emlite::Val::from("accumulate"),
+            CompositeOperationOrAuto::AUTO => emlite::Val::from("auto"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum LockMode {
@@ -6891,6 +8869,14 @@ impl From<LockMode> for emlite::Val {
         }
     }
 }
+impl From<&LockMode> for emlite::Val {
+    fn from(s: &LockMode) -> emlite::Val {
+        match *s {
+            LockMode::SHARED => emlite::Val::from("shared"),
+            LockMode::EXCLUSIVE => emlite::Val::from("exclusive"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum OTPCredentialTransportType {
@@ -6913,6 +8899,13 @@ impl FromVal for OTPCredentialTransportType {
 impl From<OTPCredentialTransportType> for emlite::Val {
     fn from(s: OTPCredentialTransportType) -> emlite::Val {
         match s {
+            OTPCredentialTransportType::SMS => emlite::Val::from("sms"),
+        }
+    }
+}
+impl From<&OTPCredentialTransportType> for emlite::Val {
+    fn from(s: &OTPCredentialTransportType) -> emlite::Val {
+        match *s {
             OTPCredentialTransportType::SMS => emlite::Val::from("sms"),
         }
     }
@@ -6952,6 +8945,16 @@ impl From<AudioContextState> for emlite::Val {
         }
     }
 }
+impl From<&AudioContextState> for emlite::Val {
+    fn from(s: &AudioContextState) -> emlite::Val {
+        match *s {
+            AudioContextState::SUSPENDED => emlite::Val::from("suspended"),
+            AudioContextState::RUNNING => emlite::Val::from("running"),
+            AudioContextState::CLOSED => emlite::Val::from("closed"),
+            AudioContextState::INTERRUPTED => emlite::Val::from("interrupted"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum AudioContextRenderSizeCategory {
@@ -6976,6 +8979,14 @@ impl FromVal for AudioContextRenderSizeCategory {
 impl From<AudioContextRenderSizeCategory> for emlite::Val {
     fn from(s: AudioContextRenderSizeCategory) -> emlite::Val {
         match s {
+            AudioContextRenderSizeCategory::DEFAULT => emlite::Val::from("default"),
+            AudioContextRenderSizeCategory::HARDWARE => emlite::Val::from("hardware"),
+        }
+    }
+}
+impl From<&AudioContextRenderSizeCategory> for emlite::Val {
+    fn from(s: &AudioContextRenderSizeCategory) -> emlite::Val {
+        match *s {
             AudioContextRenderSizeCategory::DEFAULT => emlite::Val::from("default"),
             AudioContextRenderSizeCategory::HARDWARE => emlite::Val::from("hardware"),
         }
@@ -7013,6 +9024,15 @@ impl From<AudioContextLatencyCategory> for emlite::Val {
         }
     }
 }
+impl From<&AudioContextLatencyCategory> for emlite::Val {
+    fn from(s: &AudioContextLatencyCategory) -> emlite::Val {
+        match *s {
+            AudioContextLatencyCategory::BALANCED => emlite::Val::from("balanced"),
+            AudioContextLatencyCategory::INTERACTIVE => emlite::Val::from("interactive"),
+            AudioContextLatencyCategory::PLAYBACK => emlite::Val::from("playback"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum AudioSinkType {
@@ -7035,6 +9055,13 @@ impl FromVal for AudioSinkType {
 impl From<AudioSinkType> for emlite::Val {
     fn from(s: AudioSinkType) -> emlite::Val {
         match s {
+            AudioSinkType::NONE => emlite::Val::from("none"),
+        }
+    }
+}
+impl From<&AudioSinkType> for emlite::Val {
+    fn from(s: &AudioSinkType) -> emlite::Val {
+        match *s {
             AudioSinkType::NONE => emlite::Val::from("none"),
         }
     }
@@ -7071,6 +9098,15 @@ impl From<ChannelCountMode> for emlite::Val {
         }
     }
 }
+impl From<&ChannelCountMode> for emlite::Val {
+    fn from(s: &ChannelCountMode) -> emlite::Val {
+        match *s {
+            ChannelCountMode::MAX => emlite::Val::from("max"),
+            ChannelCountMode::CLAMPED_MAX => emlite::Val::from("clamped-max"),
+            ChannelCountMode::EXPLICIT => emlite::Val::from("explicit"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ChannelInterpretation {
@@ -7100,6 +9136,14 @@ impl From<ChannelInterpretation> for emlite::Val {
         }
     }
 }
+impl From<&ChannelInterpretation> for emlite::Val {
+    fn from(s: &ChannelInterpretation) -> emlite::Val {
+        match *s {
+            ChannelInterpretation::SPEAKERS => emlite::Val::from("speakers"),
+            ChannelInterpretation::DISCRETE => emlite::Val::from("discrete"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum AutomationRate {
@@ -7124,6 +9168,14 @@ impl FromVal for AutomationRate {
 impl From<AutomationRate> for emlite::Val {
     fn from(s: AutomationRate) -> emlite::Val {
         match s {
+            AutomationRate::A_RATE => emlite::Val::from("a-rate"),
+            AutomationRate::K_RATE => emlite::Val::from("k-rate"),
+        }
+    }
+}
+impl From<&AutomationRate> for emlite::Val {
+    fn from(s: &AutomationRate) -> emlite::Val {
+        match *s {
             AutomationRate::A_RATE => emlite::Val::from("a-rate"),
             AutomationRate::K_RATE => emlite::Val::from("k-rate"),
         }
@@ -7176,6 +9228,20 @@ impl From<BiquadFilterType> for emlite::Val {
         }
     }
 }
+impl From<&BiquadFilterType> for emlite::Val {
+    fn from(s: &BiquadFilterType) -> emlite::Val {
+        match *s {
+            BiquadFilterType::LOWPASS => emlite::Val::from("lowpass"),
+            BiquadFilterType::HIGHPASS => emlite::Val::from("highpass"),
+            BiquadFilterType::BANDPASS => emlite::Val::from("bandpass"),
+            BiquadFilterType::LOWSHELF => emlite::Val::from("lowshelf"),
+            BiquadFilterType::HIGHSHELF => emlite::Val::from("highshelf"),
+            BiquadFilterType::PEAKING => emlite::Val::from("peaking"),
+            BiquadFilterType::NOTCH => emlite::Val::from("notch"),
+            BiquadFilterType::ALLPASS => emlite::Val::from("allpass"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum OscillatorType {
@@ -7214,6 +9280,17 @@ impl From<OscillatorType> for emlite::Val {
         }
     }
 }
+impl From<&OscillatorType> for emlite::Val {
+    fn from(s: &OscillatorType) -> emlite::Val {
+        match *s {
+            OscillatorType::SINE => emlite::Val::from("sine"),
+            OscillatorType::SQUARE => emlite::Val::from("square"),
+            OscillatorType::SAWTOOTH => emlite::Val::from("sawtooth"),
+            OscillatorType::TRIANGLE => emlite::Val::from("triangle"),
+            OscillatorType::CUSTOM => emlite::Val::from("custom"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum PanningModelType {
@@ -7238,6 +9315,14 @@ impl FromVal for PanningModelType {
 impl From<PanningModelType> for emlite::Val {
     fn from(s: PanningModelType) -> emlite::Val {
         match s {
+            PanningModelType::EQUALPOWER => emlite::Val::from("equalpower"),
+            PanningModelType::HRTF => emlite::Val::from("HRTF"),
+        }
+    }
+}
+impl From<&PanningModelType> for emlite::Val {
+    fn from(s: &PanningModelType) -> emlite::Val {
+        match *s {
             PanningModelType::EQUALPOWER => emlite::Val::from("equalpower"),
             PanningModelType::HRTF => emlite::Val::from("HRTF"),
         }
@@ -7269,6 +9354,15 @@ impl FromVal for DistanceModelType {
 impl From<DistanceModelType> for emlite::Val {
     fn from(s: DistanceModelType) -> emlite::Val {
         match s {
+            DistanceModelType::LINEAR => emlite::Val::from("linear"),
+            DistanceModelType::INVERSE => emlite::Val::from("inverse"),
+            DistanceModelType::EXPONENTIAL => emlite::Val::from("exponential"),
+        }
+    }
+}
+impl From<&DistanceModelType> for emlite::Val {
+    fn from(s: &DistanceModelType) -> emlite::Val {
+        match *s {
             DistanceModelType::LINEAR => emlite::Val::from("linear"),
             DistanceModelType::INVERSE => emlite::Val::from("inverse"),
             DistanceModelType::EXPONENTIAL => emlite::Val::from("exponential"),
@@ -7307,6 +9401,15 @@ impl From<OverSampleType> for emlite::Val {
         }
     }
 }
+impl From<&OverSampleType> for emlite::Val {
+    fn from(s: &OverSampleType) -> emlite::Val {
+        match *s {
+            OverSampleType::NONE => emlite::Val::from("none"),
+            OverSampleType::_2X => emlite::Val::from("2x"),
+            OverSampleType::_4X => emlite::Val::from("4x"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum AuthenticatorAttachment {
@@ -7331,6 +9434,14 @@ impl FromVal for AuthenticatorAttachment {
 impl From<AuthenticatorAttachment> for emlite::Val {
     fn from(s: AuthenticatorAttachment) -> emlite::Val {
         match s {
+            AuthenticatorAttachment::PLATFORM => emlite::Val::from("platform"),
+            AuthenticatorAttachment::CROSS_PLATFORM => emlite::Val::from("cross-platform"),
+        }
+    }
+}
+impl From<&AuthenticatorAttachment> for emlite::Val {
+    fn from(s: &AuthenticatorAttachment) -> emlite::Val {
+        match *s {
             AuthenticatorAttachment::PLATFORM => emlite::Val::from("platform"),
             AuthenticatorAttachment::CROSS_PLATFORM => emlite::Val::from("cross-platform"),
         }
@@ -7362,6 +9473,15 @@ impl FromVal for ResidentKeyRequirement {
 impl From<ResidentKeyRequirement> for emlite::Val {
     fn from(s: ResidentKeyRequirement) -> emlite::Val {
         match s {
+            ResidentKeyRequirement::DISCOURAGED => emlite::Val::from("discouraged"),
+            ResidentKeyRequirement::PREFERRED => emlite::Val::from("preferred"),
+            ResidentKeyRequirement::REQUIRED => emlite::Val::from("required"),
+        }
+    }
+}
+impl From<&ResidentKeyRequirement> for emlite::Val {
+    fn from(s: &ResidentKeyRequirement) -> emlite::Val {
+        match *s {
             ResidentKeyRequirement::DISCOURAGED => emlite::Val::from("discouraged"),
             ResidentKeyRequirement::PREFERRED => emlite::Val::from("preferred"),
             ResidentKeyRequirement::REQUIRED => emlite::Val::from("required"),
@@ -7403,6 +9523,16 @@ impl From<AttestationConveyancePreference> for emlite::Val {
         }
     }
 }
+impl From<&AttestationConveyancePreference> for emlite::Val {
+    fn from(s: &AttestationConveyancePreference) -> emlite::Val {
+        match *s {
+            AttestationConveyancePreference::NONE => emlite::Val::from("none"),
+            AttestationConveyancePreference::INDIRECT => emlite::Val::from("indirect"),
+            AttestationConveyancePreference::DIRECT => emlite::Val::from("direct"),
+            AttestationConveyancePreference::ENTERPRISE => emlite::Val::from("enterprise"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum TokenBindingStatus {
@@ -7432,6 +9562,14 @@ impl From<TokenBindingStatus> for emlite::Val {
         }
     }
 }
+impl From<&TokenBindingStatus> for emlite::Val {
+    fn from(s: &TokenBindingStatus) -> emlite::Val {
+        match *s {
+            TokenBindingStatus::PRESENT => emlite::Val::from("present"),
+            TokenBindingStatus::SUPPORTED => emlite::Val::from("supported"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum PublicKeyCredentialType {
@@ -7454,6 +9592,13 @@ impl FromVal for PublicKeyCredentialType {
 impl From<PublicKeyCredentialType> for emlite::Val {
     fn from(s: PublicKeyCredentialType) -> emlite::Val {
         match s {
+            PublicKeyCredentialType::PUBLIC_KEY => emlite::Val::from("public-key"),
+        }
+    }
+}
+impl From<&PublicKeyCredentialType> for emlite::Val {
+    fn from(s: &PublicKeyCredentialType) -> emlite::Val {
+        match *s {
             PublicKeyCredentialType::PUBLIC_KEY => emlite::Val::from("public-key"),
         }
     }
@@ -7499,6 +9644,18 @@ impl From<AuthenticatorTransport> for emlite::Val {
         }
     }
 }
+impl From<&AuthenticatorTransport> for emlite::Val {
+    fn from(s: &AuthenticatorTransport) -> emlite::Val {
+        match *s {
+            AuthenticatorTransport::USB => emlite::Val::from("usb"),
+            AuthenticatorTransport::NFC => emlite::Val::from("nfc"),
+            AuthenticatorTransport::BLE => emlite::Val::from("ble"),
+            AuthenticatorTransport::SMART_CARD => emlite::Val::from("smart-card"),
+            AuthenticatorTransport::HYBRID => emlite::Val::from("hybrid"),
+            AuthenticatorTransport::INTERNAL => emlite::Val::from("internal"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum UserVerificationRequirement {
@@ -7525,6 +9682,15 @@ impl FromVal for UserVerificationRequirement {
 impl From<UserVerificationRequirement> for emlite::Val {
     fn from(s: UserVerificationRequirement) -> emlite::Val {
         match s {
+            UserVerificationRequirement::REQUIRED => emlite::Val::from("required"),
+            UserVerificationRequirement::PREFERRED => emlite::Val::from("preferred"),
+            UserVerificationRequirement::DISCOURAGED => emlite::Val::from("discouraged"),
+        }
+    }
+}
+impl From<&UserVerificationRequirement> for emlite::Val {
+    fn from(s: &UserVerificationRequirement) -> emlite::Val {
+        match *s {
             UserVerificationRequirement::REQUIRED => emlite::Val::from("required"),
             UserVerificationRequirement::PREFERRED => emlite::Val::from("preferred"),
             UserVerificationRequirement::DISCOURAGED => emlite::Val::from("discouraged"),
@@ -7591,6 +9757,31 @@ impl From<ClientCapability> for emlite::Val {
         }
     }
 }
+impl From<&ClientCapability> for emlite::Val {
+    fn from(s: &ClientCapability) -> emlite::Val {
+        match *s {
+            ClientCapability::CONDITIONAL_CREATE => emlite::Val::from("conditionalCreate"),
+            ClientCapability::CONDITIONAL_GET => emlite::Val::from("conditionalGet"),
+            ClientCapability::HYBRID_TRANSPORT => emlite::Val::from("hybridTransport"),
+            ClientCapability::PASSKEY_PLATFORM_AUTHENTICATOR => {
+                emlite::Val::from("passkeyPlatformAuthenticator")
+            }
+            ClientCapability::USER_VERIFYING_PLATFORM_AUTHENTICATOR => {
+                emlite::Val::from("userVerifyingPlatformAuthenticator")
+            }
+            ClientCapability::RELATED_ORIGINS => emlite::Val::from("relatedOrigins"),
+            ClientCapability::SIGNAL_ALL_ACCEPTED_CREDENTIALS => {
+                emlite::Val::from("signalAllAcceptedCredentials")
+            }
+            ClientCapability::SIGNAL_CURRENT_USER_DETAILS => {
+                emlite::Val::from("signalCurrentUserDetails")
+            }
+            ClientCapability::SIGNAL_UNKNOWN_CREDENTIAL => {
+                emlite::Val::from("signalUnknownCredential")
+            }
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum PublicKeyCredentialHint {
@@ -7617,6 +9808,15 @@ impl FromVal for PublicKeyCredentialHint {
 impl From<PublicKeyCredentialHint> for emlite::Val {
     fn from(s: PublicKeyCredentialHint) -> emlite::Val {
         match s {
+            PublicKeyCredentialHint::SECURITY_KEY => emlite::Val::from("security-key"),
+            PublicKeyCredentialHint::CLIENT_DEVICE => emlite::Val::from("client-device"),
+            PublicKeyCredentialHint::HYBRID => emlite::Val::from("hybrid"),
+        }
+    }
+}
+impl From<&PublicKeyCredentialHint> for emlite::Val {
+    fn from(s: &PublicKeyCredentialHint) -> emlite::Val {
+        match *s {
             PublicKeyCredentialHint::SECURITY_KEY => emlite::Val::from("security-key"),
             PublicKeyCredentialHint::CLIENT_DEVICE => emlite::Val::from("client-device"),
             PublicKeyCredentialHint::HYBRID => emlite::Val::from("hybrid"),
@@ -7652,6 +9852,14 @@ impl From<LargeBlobSupport> for emlite::Val {
         }
     }
 }
+impl From<&LargeBlobSupport> for emlite::Val {
+    fn from(s: &LargeBlobSupport) -> emlite::Val {
+        match *s {
+            LargeBlobSupport::REQUIRED => emlite::Val::from("required"),
+            LargeBlobSupport::PREFERRED => emlite::Val::from("preferred"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum AacBitstreamFormat {
@@ -7676,6 +9884,14 @@ impl FromVal for AacBitstreamFormat {
 impl From<AacBitstreamFormat> for emlite::Val {
     fn from(s: AacBitstreamFormat) -> emlite::Val {
         match s {
+            AacBitstreamFormat::AAC => emlite::Val::from("aac"),
+            AacBitstreamFormat::ADTS => emlite::Val::from("adts"),
+        }
+    }
+}
+impl From<&AacBitstreamFormat> for emlite::Val {
+    fn from(s: &AacBitstreamFormat) -> emlite::Val {
+        match *s {
             AacBitstreamFormat::AAC => emlite::Val::from("aac"),
             AacBitstreamFormat::ADTS => emlite::Val::from("adts"),
         }
@@ -7710,6 +9926,14 @@ impl From<AvcBitstreamFormat> for emlite::Val {
         }
     }
 }
+impl From<&AvcBitstreamFormat> for emlite::Val {
+    fn from(s: &AvcBitstreamFormat) -> emlite::Val {
+        match *s {
+            AvcBitstreamFormat::ANNEXB => emlite::Val::from("annexb"),
+            AvcBitstreamFormat::AVC => emlite::Val::from("avc"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum HevcBitstreamFormat {
@@ -7734,6 +9958,14 @@ impl FromVal for HevcBitstreamFormat {
 impl From<HevcBitstreamFormat> for emlite::Val {
     fn from(s: HevcBitstreamFormat) -> emlite::Val {
         match s {
+            HevcBitstreamFormat::ANNEXB => emlite::Val::from("annexb"),
+            HevcBitstreamFormat::HEVC => emlite::Val::from("hevc"),
+        }
+    }
+}
+impl From<&HevcBitstreamFormat> for emlite::Val {
+    fn from(s: &HevcBitstreamFormat) -> emlite::Val {
+        match *s {
             HevcBitstreamFormat::ANNEXB => emlite::Val::from("annexb"),
             HevcBitstreamFormat::HEVC => emlite::Val::from("hevc"),
         }
@@ -7768,6 +10000,14 @@ impl From<OpusBitstreamFormat> for emlite::Val {
         }
     }
 }
+impl From<&OpusBitstreamFormat> for emlite::Val {
+    fn from(s: &OpusBitstreamFormat) -> emlite::Val {
+        match *s {
+            OpusBitstreamFormat::OPUS => emlite::Val::from("opus"),
+            OpusBitstreamFormat::OGG => emlite::Val::from("ogg"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum OpusSignal {
@@ -7794,6 +10034,15 @@ impl FromVal for OpusSignal {
 impl From<OpusSignal> for emlite::Val {
     fn from(s: OpusSignal) -> emlite::Val {
         match s {
+            OpusSignal::AUTO => emlite::Val::from("auto"),
+            OpusSignal::MUSIC => emlite::Val::from("music"),
+            OpusSignal::VOICE => emlite::Val::from("voice"),
+        }
+    }
+}
+impl From<&OpusSignal> for emlite::Val {
+    fn from(s: &OpusSignal) -> emlite::Val {
+        match *s {
             OpusSignal::AUTO => emlite::Val::from("auto"),
             OpusSignal::MUSIC => emlite::Val::from("music"),
             OpusSignal::VOICE => emlite::Val::from("voice"),
@@ -7832,6 +10081,15 @@ impl From<OpusApplication> for emlite::Val {
         }
     }
 }
+impl From<&OpusApplication> for emlite::Val {
+    fn from(s: &OpusApplication) -> emlite::Val {
+        match *s {
+            OpusApplication::VOIP => emlite::Val::from("voip"),
+            OpusApplication::AUDIO => emlite::Val::from("audio"),
+            OpusApplication::LOWDELAY => emlite::Val::from("lowdelay"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum HardwareAcceleration {
@@ -7858,6 +10116,15 @@ impl FromVal for HardwareAcceleration {
 impl From<HardwareAcceleration> for emlite::Val {
     fn from(s: HardwareAcceleration) -> emlite::Val {
         match s {
+            HardwareAcceleration::NO_PREFERENCE => emlite::Val::from("no-preference"),
+            HardwareAcceleration::PREFER_HARDWARE => emlite::Val::from("prefer-hardware"),
+            HardwareAcceleration::PREFER_SOFTWARE => emlite::Val::from("prefer-software"),
+        }
+    }
+}
+impl From<&HardwareAcceleration> for emlite::Val {
+    fn from(s: &HardwareAcceleration) -> emlite::Val {
+        match *s {
             HardwareAcceleration::NO_PREFERENCE => emlite::Val::from("no-preference"),
             HardwareAcceleration::PREFER_HARDWARE => emlite::Val::from("prefer-hardware"),
             HardwareAcceleration::PREFER_SOFTWARE => emlite::Val::from("prefer-software"),
@@ -7893,6 +10160,14 @@ impl From<AlphaOption> for emlite::Val {
         }
     }
 }
+impl From<&AlphaOption> for emlite::Val {
+    fn from(s: &AlphaOption) -> emlite::Val {
+        match *s {
+            AlphaOption::KEEP => emlite::Val::from("keep"),
+            AlphaOption::DISCARD => emlite::Val::from("discard"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum LatencyMode {
@@ -7917,6 +10192,14 @@ impl FromVal for LatencyMode {
 impl From<LatencyMode> for emlite::Val {
     fn from(s: LatencyMode) -> emlite::Val {
         match s {
+            LatencyMode::QUALITY => emlite::Val::from("quality"),
+            LatencyMode::REALTIME => emlite::Val::from("realtime"),
+        }
+    }
+}
+impl From<&LatencyMode> for emlite::Val {
+    fn from(s: &LatencyMode) -> emlite::Val {
+        match *s {
             LatencyMode::QUALITY => emlite::Val::from("quality"),
             LatencyMode::REALTIME => emlite::Val::from("realtime"),
         }
@@ -7948,6 +10231,15 @@ impl FromVal for VideoEncoderBitrateMode {
 impl From<VideoEncoderBitrateMode> for emlite::Val {
     fn from(s: VideoEncoderBitrateMode) -> emlite::Val {
         match s {
+            VideoEncoderBitrateMode::CONSTANT => emlite::Val::from("constant"),
+            VideoEncoderBitrateMode::VARIABLE => emlite::Val::from("variable"),
+            VideoEncoderBitrateMode::QUANTIZER => emlite::Val::from("quantizer"),
+        }
+    }
+}
+impl From<&VideoEncoderBitrateMode> for emlite::Val {
+    fn from(s: &VideoEncoderBitrateMode) -> emlite::Val {
+        match *s {
             VideoEncoderBitrateMode::CONSTANT => emlite::Val::from("constant"),
             VideoEncoderBitrateMode::VARIABLE => emlite::Val::from("variable"),
             VideoEncoderBitrateMode::QUANTIZER => emlite::Val::from("quantizer"),
@@ -7986,6 +10278,15 @@ impl From<CodecState> for emlite::Val {
         }
     }
 }
+impl From<&CodecState> for emlite::Val {
+    fn from(s: &CodecState) -> emlite::Val {
+        match *s {
+            CodecState::UNCONFIGURED => emlite::Val::from("unconfigured"),
+            CodecState::CONFIGURED => emlite::Val::from("configured"),
+            CodecState::CLOSED => emlite::Val::from("closed"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum EncodedAudioChunkType {
@@ -8015,6 +10316,14 @@ impl From<EncodedAudioChunkType> for emlite::Val {
         }
     }
 }
+impl From<&EncodedAudioChunkType> for emlite::Val {
+    fn from(s: &EncodedAudioChunkType) -> emlite::Val {
+        match *s {
+            EncodedAudioChunkType::KEY => emlite::Val::from("key"),
+            EncodedAudioChunkType::DELTA => emlite::Val::from("delta"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum EncodedVideoChunkType {
@@ -8039,6 +10348,14 @@ impl FromVal for EncodedVideoChunkType {
 impl From<EncodedVideoChunkType> for emlite::Val {
     fn from(s: EncodedVideoChunkType) -> emlite::Val {
         match s {
+            EncodedVideoChunkType::KEY => emlite::Val::from("key"),
+            EncodedVideoChunkType::DELTA => emlite::Val::from("delta"),
+        }
+    }
+}
+impl From<&EncodedVideoChunkType> for emlite::Val {
+    fn from(s: &EncodedVideoChunkType) -> emlite::Val {
+        match *s {
             EncodedVideoChunkType::KEY => emlite::Val::from("key"),
             EncodedVideoChunkType::DELTA => emlite::Val::from("delta"),
         }
@@ -8080,6 +10397,20 @@ impl FromVal for AudioSampleFormat {
 impl From<AudioSampleFormat> for emlite::Val {
     fn from(s: AudioSampleFormat) -> emlite::Val {
         match s {
+            AudioSampleFormat::U8_ => emlite::Val::from("u8"),
+            AudioSampleFormat::S16 => emlite::Val::from("s16"),
+            AudioSampleFormat::S32 => emlite::Val::from("s32"),
+            AudioSampleFormat::F32_ => emlite::Val::from("f32"),
+            AudioSampleFormat::U8_PLANAR => emlite::Val::from("u8-planar"),
+            AudioSampleFormat::S16_PLANAR => emlite::Val::from("s16-planar"),
+            AudioSampleFormat::S32_PLANAR => emlite::Val::from("s32-planar"),
+            AudioSampleFormat::F32_PLANAR => emlite::Val::from("f32-planar"),
+        }
+    }
+}
+impl From<&AudioSampleFormat> for emlite::Val {
+    fn from(s: &AudioSampleFormat) -> emlite::Val {
+        match *s {
             AudioSampleFormat::U8_ => emlite::Val::from("u8"),
             AudioSampleFormat::S16 => emlite::Val::from("s16"),
             AudioSampleFormat::S32 => emlite::Val::from("s32"),
@@ -8183,6 +10514,35 @@ impl From<VideoPixelFormat> for emlite::Val {
         }
     }
 }
+impl From<&VideoPixelFormat> for emlite::Val {
+    fn from(s: &VideoPixelFormat) -> emlite::Val {
+        match *s {
+            VideoPixelFormat::I420 => emlite::Val::from("I420"),
+            VideoPixelFormat::I420_P10 => emlite::Val::from("I420P10"),
+            VideoPixelFormat::I420_P12 => emlite::Val::from("I420P12"),
+            VideoPixelFormat::I420_A => emlite::Val::from("I420A"),
+            VideoPixelFormat::I420_AP10 => emlite::Val::from("I420AP10"),
+            VideoPixelFormat::I420_AP12 => emlite::Val::from("I420AP12"),
+            VideoPixelFormat::I422 => emlite::Val::from("I422"),
+            VideoPixelFormat::I422_P10 => emlite::Val::from("I422P10"),
+            VideoPixelFormat::I422_P12 => emlite::Val::from("I422P12"),
+            VideoPixelFormat::I422_A => emlite::Val::from("I422A"),
+            VideoPixelFormat::I422_AP10 => emlite::Val::from("I422AP10"),
+            VideoPixelFormat::I422_AP12 => emlite::Val::from("I422AP12"),
+            VideoPixelFormat::I444 => emlite::Val::from("I444"),
+            VideoPixelFormat::I444_P10 => emlite::Val::from("I444P10"),
+            VideoPixelFormat::I444_P12 => emlite::Val::from("I444P12"),
+            VideoPixelFormat::I444_A => emlite::Val::from("I444A"),
+            VideoPixelFormat::I444_AP10 => emlite::Val::from("I444AP10"),
+            VideoPixelFormat::I444_AP12 => emlite::Val::from("I444AP12"),
+            VideoPixelFormat::NV12 => emlite::Val::from("NV12"),
+            VideoPixelFormat::RGBA => emlite::Val::from("RGBA"),
+            VideoPixelFormat::RGBX => emlite::Val::from("RGBX"),
+            VideoPixelFormat::BGRA => emlite::Val::from("BGRA"),
+            VideoPixelFormat::BGRX => emlite::Val::from("BGRX"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum VideoColorPrimaries {
@@ -8213,6 +10573,17 @@ impl FromVal for VideoColorPrimaries {
 impl From<VideoColorPrimaries> for emlite::Val {
     fn from(s: VideoColorPrimaries) -> emlite::Val {
         match s {
+            VideoColorPrimaries::BT709 => emlite::Val::from("bt709"),
+            VideoColorPrimaries::BT470BG => emlite::Val::from("bt470bg"),
+            VideoColorPrimaries::SMPTE170M => emlite::Val::from("smpte170m"),
+            VideoColorPrimaries::BT2020 => emlite::Val::from("bt2020"),
+            VideoColorPrimaries::SMPTE432 => emlite::Val::from("smpte432"),
+        }
+    }
+}
+impl From<&VideoColorPrimaries> for emlite::Val {
+    fn from(s: &VideoColorPrimaries) -> emlite::Val {
+        match *s {
             VideoColorPrimaries::BT709 => emlite::Val::from("bt709"),
             VideoColorPrimaries::BT470BG => emlite::Val::from("bt470bg"),
             VideoColorPrimaries::SMPTE170M => emlite::Val::from("smpte170m"),
@@ -8262,6 +10633,18 @@ impl From<VideoTransferCharacteristics> for emlite::Val {
         }
     }
 }
+impl From<&VideoTransferCharacteristics> for emlite::Val {
+    fn from(s: &VideoTransferCharacteristics) -> emlite::Val {
+        match *s {
+            VideoTransferCharacteristics::BT709 => emlite::Val::from("bt709"),
+            VideoTransferCharacteristics::SMPTE170M => emlite::Val::from("smpte170m"),
+            VideoTransferCharacteristics::IEC61966_2_1 => emlite::Val::from("iec61966-2-1"),
+            VideoTransferCharacteristics::LINEAR => emlite::Val::from("linear"),
+            VideoTransferCharacteristics::PQ => emlite::Val::from("pq"),
+            VideoTransferCharacteristics::HLG => emlite::Val::from("hlg"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum VideoMatrixCoefficients {
@@ -8300,6 +10683,17 @@ impl From<VideoMatrixCoefficients> for emlite::Val {
         }
     }
 }
+impl From<&VideoMatrixCoefficients> for emlite::Val {
+    fn from(s: &VideoMatrixCoefficients) -> emlite::Val {
+        match *s {
+            VideoMatrixCoefficients::RGB => emlite::Val::from("rgb"),
+            VideoMatrixCoefficients::BT709 => emlite::Val::from("bt709"),
+            VideoMatrixCoefficients::BT470BG => emlite::Val::from("bt470bg"),
+            VideoMatrixCoefficients::SMPTE170M => emlite::Val::from("smpte170m"),
+            VideoMatrixCoefficients::BT2020_NCL => emlite::Val::from("bt2020-ncl"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum KeyType {
@@ -8326,6 +10720,15 @@ impl FromVal for KeyType {
 impl From<KeyType> for emlite::Val {
     fn from(s: KeyType) -> emlite::Val {
         match s {
+            KeyType::PUBLIC => emlite::Val::from("public"),
+            KeyType::PRIVATE => emlite::Val::from("private"),
+            KeyType::SECRET => emlite::Val::from("secret"),
+        }
+    }
+}
+impl From<&KeyType> for emlite::Val {
+    fn from(s: &KeyType) -> emlite::Val {
+        match *s {
             KeyType::PUBLIC => emlite::Val::from("public"),
             KeyType::PRIVATE => emlite::Val::from("private"),
             KeyType::SECRET => emlite::Val::from("secret"),
@@ -8379,6 +10782,20 @@ impl From<KeyUsage> for emlite::Val {
         }
     }
 }
+impl From<&KeyUsage> for emlite::Val {
+    fn from(s: &KeyUsage) -> emlite::Val {
+        match *s {
+            KeyUsage::ENCRYPT => emlite::Val::from("encrypt"),
+            KeyUsage::DECRYPT => emlite::Val::from("decrypt"),
+            KeyUsage::SIGN => emlite::Val::from("sign"),
+            KeyUsage::VERIFY => emlite::Val::from("verify"),
+            KeyUsage::DERIVE_KEY => emlite::Val::from("deriveKey"),
+            KeyUsage::DERIVE_BITS => emlite::Val::from("deriveBits"),
+            KeyUsage::WRAP_KEY => emlite::Val::from("wrapKey"),
+            KeyUsage::UNWRAP_KEY => emlite::Val::from("unwrapKey"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum KeyFormat {
@@ -8407,6 +10824,16 @@ impl FromVal for KeyFormat {
 impl From<KeyFormat> for emlite::Val {
     fn from(s: KeyFormat) -> emlite::Val {
         match s {
+            KeyFormat::RAW_ => emlite::Val::from("raw"),
+            KeyFormat::SPKI => emlite::Val::from("spki"),
+            KeyFormat::PKCS8 => emlite::Val::from("pkcs8"),
+            KeyFormat::JWK => emlite::Val::from("jwk"),
+        }
+    }
+}
+impl From<&KeyFormat> for emlite::Val {
+    fn from(s: &KeyFormat) -> emlite::Val {
+        match *s {
             KeyFormat::RAW_ => emlite::Val::from("raw"),
             KeyFormat::SPKI => emlite::Val::from("spki"),
             KeyFormat::PKCS8 => emlite::Val::from("pkcs8"),
@@ -8446,6 +10873,15 @@ impl From<WebGLPowerPreference> for emlite::Val {
         }
     }
 }
+impl From<&WebGLPowerPreference> for emlite::Val {
+    fn from(s: &WebGLPowerPreference) -> emlite::Val {
+        match *s {
+            WebGLPowerPreference::DEFAULT => emlite::Val::from("default"),
+            WebGLPowerPreference::LOW_POWER => emlite::Val::from("low-power"),
+            WebGLPowerPreference::HIGH_PERFORMANCE => emlite::Val::from("high-performance"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUPowerPreference {
@@ -8470,6 +10906,14 @@ impl FromVal for GPUPowerPreference {
 impl From<GPUPowerPreference> for emlite::Val {
     fn from(s: GPUPowerPreference) -> emlite::Val {
         match s {
+            GPUPowerPreference::LOW_POWER => emlite::Val::from("low-power"),
+            GPUPowerPreference::HIGH_PERFORMANCE => emlite::Val::from("high-performance"),
+        }
+    }
+}
+impl From<&GPUPowerPreference> for emlite::Val {
+    fn from(s: &GPUPowerPreference) -> emlite::Val {
+        match *s {
             GPUPowerPreference::LOW_POWER => emlite::Val::from("low-power"),
             GPUPowerPreference::HIGH_PERFORMANCE => emlite::Val::from("high-performance"),
         }
@@ -8570,6 +11014,44 @@ impl From<GPUFeatureName> for emlite::Val {
         }
     }
 }
+impl From<&GPUFeatureName> for emlite::Val {
+    fn from(s: &GPUFeatureName) -> emlite::Val {
+        match *s {
+            GPUFeatureName::CORE_FEATURES_AND_LIMITS => {
+                emlite::Val::from("core-features-and-limits")
+            }
+            GPUFeatureName::DEPTH_CLIP_CONTROL => emlite::Val::from("depth-clip-control"),
+            GPUFeatureName::DEPTH32FLOAT_STENCIL8 => emlite::Val::from("depth32float-stencil8"),
+            GPUFeatureName::TEXTURE_COMPRESSION_BC => emlite::Val::from("texture-compression-bc"),
+            GPUFeatureName::TEXTURE_COMPRESSION_BC_SLICED_3D => {
+                emlite::Val::from("texture-compression-bc-sliced-3d")
+            }
+            GPUFeatureName::TEXTURE_COMPRESSION_ETC2 => {
+                emlite::Val::from("texture-compression-etc2")
+            }
+            GPUFeatureName::TEXTURE_COMPRESSION_ASTC => {
+                emlite::Val::from("texture-compression-astc")
+            }
+            GPUFeatureName::TEXTURE_COMPRESSION_ASTC_SLICED_3D => {
+                emlite::Val::from("texture-compression-astc-sliced-3d")
+            }
+            GPUFeatureName::TIMESTAMP_QUERY => emlite::Val::from("timestamp-query"),
+            GPUFeatureName::INDIRECT_FIRST_INSTANCE => emlite::Val::from("indirect-first-instance"),
+            GPUFeatureName::SHADER_F16 => emlite::Val::from("shader-f16"),
+            GPUFeatureName::RG11B10UFLOAT_RENDERABLE => {
+                emlite::Val::from("rg11b10ufloat-renderable")
+            }
+            GPUFeatureName::BGRA8UNORM_STORAGE => emlite::Val::from("bgra8unorm-storage"),
+            GPUFeatureName::FLOAT32_FILTERABLE => emlite::Val::from("float32-filterable"),
+            GPUFeatureName::FLOAT32_BLENDABLE => emlite::Val::from("float32-blendable"),
+            GPUFeatureName::CLIP_DISTANCES => emlite::Val::from("clip-distances"),
+            GPUFeatureName::DUAL_SOURCE_BLENDING => emlite::Val::from("dual-source-blending"),
+            GPUFeatureName::SUBGROUPS => emlite::Val::from("subgroups"),
+            GPUFeatureName::TEXTURE_FORMATS_TIER1 => emlite::Val::from("texture-formats-tier1"),
+            GPUFeatureName::TEXTURE_FORMATS_TIER2 => emlite::Val::from("texture-formats-tier2"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUBufferMapState {
@@ -8602,6 +11084,15 @@ impl From<GPUBufferMapState> for emlite::Val {
         }
     }
 }
+impl From<&GPUBufferMapState> for emlite::Val {
+    fn from(s: &GPUBufferMapState) -> emlite::Val {
+        match *s {
+            GPUBufferMapState::UNMAPPED => emlite::Val::from("unmapped"),
+            GPUBufferMapState::PENDING => emlite::Val::from("pending"),
+            GPUBufferMapState::MAPPED => emlite::Val::from("mapped"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUTextureDimension {
@@ -8628,6 +11119,15 @@ impl FromVal for GPUTextureDimension {
 impl From<GPUTextureDimension> for emlite::Val {
     fn from(s: GPUTextureDimension) -> emlite::Val {
         match s {
+            GPUTextureDimension::_1D => emlite::Val::from("1d"),
+            GPUTextureDimension::_2D => emlite::Val::from("2d"),
+            GPUTextureDimension::_3D => emlite::Val::from("3d"),
+        }
+    }
+}
+impl From<&GPUTextureDimension> for emlite::Val {
+    fn from(s: &GPUTextureDimension) -> emlite::Val {
+        match *s {
             GPUTextureDimension::_1D => emlite::Val::from("1d"),
             GPUTextureDimension::_2D => emlite::Val::from("2d"),
             GPUTextureDimension::_3D => emlite::Val::from("3d"),
@@ -8675,6 +11175,18 @@ impl From<GPUTextureViewDimension> for emlite::Val {
         }
     }
 }
+impl From<&GPUTextureViewDimension> for emlite::Val {
+    fn from(s: &GPUTextureViewDimension) -> emlite::Val {
+        match *s {
+            GPUTextureViewDimension::_1D => emlite::Val::from("1d"),
+            GPUTextureViewDimension::_2D => emlite::Val::from("2d"),
+            GPUTextureViewDimension::_2D_ARRAY => emlite::Val::from("2d-array"),
+            GPUTextureViewDimension::CUBE => emlite::Val::from("cube"),
+            GPUTextureViewDimension::CUBE_ARRAY => emlite::Val::from("cube-array"),
+            GPUTextureViewDimension::_3D => emlite::Val::from("3d"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUTextureAspect {
@@ -8701,6 +11213,15 @@ impl FromVal for GPUTextureAspect {
 impl From<GPUTextureAspect> for emlite::Val {
     fn from(s: GPUTextureAspect) -> emlite::Val {
         match s {
+            GPUTextureAspect::ALL => emlite::Val::from("all"),
+            GPUTextureAspect::STENCIL_ONLY => emlite::Val::from("stencil-only"),
+            GPUTextureAspect::DEPTH_ONLY => emlite::Val::from("depth-only"),
+        }
+    }
+}
+impl From<&GPUTextureAspect> for emlite::Val {
+    fn from(s: &GPUTextureAspect) -> emlite::Val {
+        match *s {
             GPUTextureAspect::ALL => emlite::Val::from("all"),
             GPUTextureAspect::STENCIL_ONLY => emlite::Val::from("stencil-only"),
             GPUTextureAspect::DEPTH_ONLY => emlite::Val::from("depth-only"),
@@ -9033,6 +11554,113 @@ impl From<GPUTextureFormat> for emlite::Val {
         }
     }
 }
+impl From<&GPUTextureFormat> for emlite::Val {
+    fn from(s: &GPUTextureFormat) -> emlite::Val {
+        match *s {
+            GPUTextureFormat::R8UNORM => emlite::Val::from("r8unorm"),
+            GPUTextureFormat::R8SNORM => emlite::Val::from("r8snorm"),
+            GPUTextureFormat::R8UINT => emlite::Val::from("r8uint"),
+            GPUTextureFormat::R8SINT => emlite::Val::from("r8sint"),
+            GPUTextureFormat::R16UNORM => emlite::Val::from("r16unorm"),
+            GPUTextureFormat::R16SNORM => emlite::Val::from("r16snorm"),
+            GPUTextureFormat::R16UINT => emlite::Val::from("r16uint"),
+            GPUTextureFormat::R16SINT => emlite::Val::from("r16sint"),
+            GPUTextureFormat::R16FLOAT => emlite::Val::from("r16float"),
+            GPUTextureFormat::RG8UNORM => emlite::Val::from("rg8unorm"),
+            GPUTextureFormat::RG8SNORM => emlite::Val::from("rg8snorm"),
+            GPUTextureFormat::RG8UINT => emlite::Val::from("rg8uint"),
+            GPUTextureFormat::RG8SINT => emlite::Val::from("rg8sint"),
+            GPUTextureFormat::R32UINT => emlite::Val::from("r32uint"),
+            GPUTextureFormat::R32SINT => emlite::Val::from("r32sint"),
+            GPUTextureFormat::R32FLOAT => emlite::Val::from("r32float"),
+            GPUTextureFormat::RG16UNORM => emlite::Val::from("rg16unorm"),
+            GPUTextureFormat::RG16SNORM => emlite::Val::from("rg16snorm"),
+            GPUTextureFormat::RG16UINT => emlite::Val::from("rg16uint"),
+            GPUTextureFormat::RG16SINT => emlite::Val::from("rg16sint"),
+            GPUTextureFormat::RG16FLOAT => emlite::Val::from("rg16float"),
+            GPUTextureFormat::RGBA8UNORM => emlite::Val::from("rgba8unorm"),
+            GPUTextureFormat::RGBA8UNORM_SRGB => emlite::Val::from("rgba8unorm-srgb"),
+            GPUTextureFormat::RGBA8SNORM => emlite::Val::from("rgba8snorm"),
+            GPUTextureFormat::RGBA8UINT => emlite::Val::from("rgba8uint"),
+            GPUTextureFormat::RGBA8SINT => emlite::Val::from("rgba8sint"),
+            GPUTextureFormat::BGRA8UNORM => emlite::Val::from("bgra8unorm"),
+            GPUTextureFormat::BGRA8UNORM_SRGB => emlite::Val::from("bgra8unorm-srgb"),
+            GPUTextureFormat::RGB9E5UFLOAT => emlite::Val::from("rgb9e5ufloat"),
+            GPUTextureFormat::RGB10A2UINT => emlite::Val::from("rgb10a2uint"),
+            GPUTextureFormat::RGB10A2UNORM => emlite::Val::from("rgb10a2unorm"),
+            GPUTextureFormat::RG11B10UFLOAT => emlite::Val::from("rg11b10ufloat"),
+            GPUTextureFormat::RG32UINT => emlite::Val::from("rg32uint"),
+            GPUTextureFormat::RG32SINT => emlite::Val::from("rg32sint"),
+            GPUTextureFormat::RG32FLOAT => emlite::Val::from("rg32float"),
+            GPUTextureFormat::RGBA16UNORM => emlite::Val::from("rgba16unorm"),
+            GPUTextureFormat::RGBA16SNORM => emlite::Val::from("rgba16snorm"),
+            GPUTextureFormat::RGBA16UINT => emlite::Val::from("rgba16uint"),
+            GPUTextureFormat::RGBA16SINT => emlite::Val::from("rgba16sint"),
+            GPUTextureFormat::RGBA16FLOAT => emlite::Val::from("rgba16float"),
+            GPUTextureFormat::RGBA32UINT => emlite::Val::from("rgba32uint"),
+            GPUTextureFormat::RGBA32SINT => emlite::Val::from("rgba32sint"),
+            GPUTextureFormat::RGBA32FLOAT => emlite::Val::from("rgba32float"),
+            GPUTextureFormat::STENCIL8 => emlite::Val::from("stencil8"),
+            GPUTextureFormat::DEPTH16UNORM => emlite::Val::from("depth16unorm"),
+            GPUTextureFormat::DEPTH24PLUS => emlite::Val::from("depth24plus"),
+            GPUTextureFormat::DEPTH24PLUS_STENCIL8 => emlite::Val::from("depth24plus-stencil8"),
+            GPUTextureFormat::DEPTH32FLOAT => emlite::Val::from("depth32float"),
+            GPUTextureFormat::DEPTH32FLOAT_STENCIL8 => emlite::Val::from("depth32float-stencil8"),
+            GPUTextureFormat::BC1_RGBA_UNORM => emlite::Val::from("bc1-rgba-unorm"),
+            GPUTextureFormat::BC1_RGBA_UNORM_SRGB => emlite::Val::from("bc1-rgba-unorm-srgb"),
+            GPUTextureFormat::BC2_RGBA_UNORM => emlite::Val::from("bc2-rgba-unorm"),
+            GPUTextureFormat::BC2_RGBA_UNORM_SRGB => emlite::Val::from("bc2-rgba-unorm-srgb"),
+            GPUTextureFormat::BC3_RGBA_UNORM => emlite::Val::from("bc3-rgba-unorm"),
+            GPUTextureFormat::BC3_RGBA_UNORM_SRGB => emlite::Val::from("bc3-rgba-unorm-srgb"),
+            GPUTextureFormat::BC4_R_UNORM => emlite::Val::from("bc4-r-unorm"),
+            GPUTextureFormat::BC4_R_SNORM => emlite::Val::from("bc4-r-snorm"),
+            GPUTextureFormat::BC5_RG_UNORM => emlite::Val::from("bc5-rg-unorm"),
+            GPUTextureFormat::BC5_RG_SNORM => emlite::Val::from("bc5-rg-snorm"),
+            GPUTextureFormat::BC6H_RGB_UFLOAT => emlite::Val::from("bc6h-rgb-ufloat"),
+            GPUTextureFormat::BC6H_RGB_FLOAT => emlite::Val::from("bc6h-rgb-float"),
+            GPUTextureFormat::BC7_RGBA_UNORM => emlite::Val::from("bc7-rgba-unorm"),
+            GPUTextureFormat::BC7_RGBA_UNORM_SRGB => emlite::Val::from("bc7-rgba-unorm-srgb"),
+            GPUTextureFormat::ETC2_RGB8UNORM => emlite::Val::from("etc2-rgb8unorm"),
+            GPUTextureFormat::ETC2_RGB8UNORM_SRGB => emlite::Val::from("etc2-rgb8unorm-srgb"),
+            GPUTextureFormat::ETC2_RGB8A1UNORM => emlite::Val::from("etc2-rgb8a1unorm"),
+            GPUTextureFormat::ETC2_RGB8A1UNORM_SRGB => emlite::Val::from("etc2-rgb8a1unorm-srgb"),
+            GPUTextureFormat::ETC2_RGBA8UNORM => emlite::Val::from("etc2-rgba8unorm"),
+            GPUTextureFormat::ETC2_RGBA8UNORM_SRGB => emlite::Val::from("etc2-rgba8unorm-srgb"),
+            GPUTextureFormat::EAC_R11UNORM => emlite::Val::from("eac-r11unorm"),
+            GPUTextureFormat::EAC_R11SNORM => emlite::Val::from("eac-r11snorm"),
+            GPUTextureFormat::EAC_RG11UNORM => emlite::Val::from("eac-rg11unorm"),
+            GPUTextureFormat::EAC_RG11SNORM => emlite::Val::from("eac-rg11snorm"),
+            GPUTextureFormat::ASTC_4X4_UNORM => emlite::Val::from("astc-4x4-unorm"),
+            GPUTextureFormat::ASTC_4X4_UNORM_SRGB => emlite::Val::from("astc-4x4-unorm-srgb"),
+            GPUTextureFormat::ASTC_5X4_UNORM => emlite::Val::from("astc-5x4-unorm"),
+            GPUTextureFormat::ASTC_5X4_UNORM_SRGB => emlite::Val::from("astc-5x4-unorm-srgb"),
+            GPUTextureFormat::ASTC_5X5_UNORM => emlite::Val::from("astc-5x5-unorm"),
+            GPUTextureFormat::ASTC_5X5_UNORM_SRGB => emlite::Val::from("astc-5x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_6X5_UNORM => emlite::Val::from("astc-6x5-unorm"),
+            GPUTextureFormat::ASTC_6X5_UNORM_SRGB => emlite::Val::from("astc-6x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_6X6_UNORM => emlite::Val::from("astc-6x6-unorm"),
+            GPUTextureFormat::ASTC_6X6_UNORM_SRGB => emlite::Val::from("astc-6x6-unorm-srgb"),
+            GPUTextureFormat::ASTC_8X5_UNORM => emlite::Val::from("astc-8x5-unorm"),
+            GPUTextureFormat::ASTC_8X5_UNORM_SRGB => emlite::Val::from("astc-8x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_8X6_UNORM => emlite::Val::from("astc-8x6-unorm"),
+            GPUTextureFormat::ASTC_8X6_UNORM_SRGB => emlite::Val::from("astc-8x6-unorm-srgb"),
+            GPUTextureFormat::ASTC_8X8_UNORM => emlite::Val::from("astc-8x8-unorm"),
+            GPUTextureFormat::ASTC_8X8_UNORM_SRGB => emlite::Val::from("astc-8x8-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X5_UNORM => emlite::Val::from("astc-10x5-unorm"),
+            GPUTextureFormat::ASTC_10X5_UNORM_SRGB => emlite::Val::from("astc-10x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X6_UNORM => emlite::Val::from("astc-10x6-unorm"),
+            GPUTextureFormat::ASTC_10X6_UNORM_SRGB => emlite::Val::from("astc-10x6-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X8_UNORM => emlite::Val::from("astc-10x8-unorm"),
+            GPUTextureFormat::ASTC_10X8_UNORM_SRGB => emlite::Val::from("astc-10x8-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X10_UNORM => emlite::Val::from("astc-10x10-unorm"),
+            GPUTextureFormat::ASTC_10X10_UNORM_SRGB => emlite::Val::from("astc-10x10-unorm-srgb"),
+            GPUTextureFormat::ASTC_12X10_UNORM => emlite::Val::from("astc-12x10-unorm"),
+            GPUTextureFormat::ASTC_12X10_UNORM_SRGB => emlite::Val::from("astc-12x10-unorm-srgb"),
+            GPUTextureFormat::ASTC_12X12_UNORM => emlite::Val::from("astc-12x12-unorm"),
+            GPUTextureFormat::ASTC_12X12_UNORM_SRGB => emlite::Val::from("astc-12x12-unorm-srgb"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUAddressMode {
@@ -9059,6 +11687,15 @@ impl FromVal for GPUAddressMode {
 impl From<GPUAddressMode> for emlite::Val {
     fn from(s: GPUAddressMode) -> emlite::Val {
         match s {
+            GPUAddressMode::CLAMP_TO_EDGE => emlite::Val::from("clamp-to-edge"),
+            GPUAddressMode::REPEAT => emlite::Val::from("repeat"),
+            GPUAddressMode::MIRROR_REPEAT => emlite::Val::from("mirror-repeat"),
+        }
+    }
+}
+impl From<&GPUAddressMode> for emlite::Val {
+    fn from(s: &GPUAddressMode) -> emlite::Val {
+        match *s {
             GPUAddressMode::CLAMP_TO_EDGE => emlite::Val::from("clamp-to-edge"),
             GPUAddressMode::REPEAT => emlite::Val::from("repeat"),
             GPUAddressMode::MIRROR_REPEAT => emlite::Val::from("mirror-repeat"),
@@ -9094,6 +11731,14 @@ impl From<GPUFilterMode> for emlite::Val {
         }
     }
 }
+impl From<&GPUFilterMode> for emlite::Val {
+    fn from(s: &GPUFilterMode) -> emlite::Val {
+        match *s {
+            GPUFilterMode::NEAREST => emlite::Val::from("nearest"),
+            GPUFilterMode::LINEAR => emlite::Val::from("linear"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUMipmapFilterMode {
@@ -9118,6 +11763,14 @@ impl FromVal for GPUMipmapFilterMode {
 impl From<GPUMipmapFilterMode> for emlite::Val {
     fn from(s: GPUMipmapFilterMode) -> emlite::Val {
         match s {
+            GPUMipmapFilterMode::NEAREST => emlite::Val::from("nearest"),
+            GPUMipmapFilterMode::LINEAR => emlite::Val::from("linear"),
+        }
+    }
+}
+impl From<&GPUMipmapFilterMode> for emlite::Val {
+    fn from(s: &GPUMipmapFilterMode) -> emlite::Val {
+        match *s {
             GPUMipmapFilterMode::NEAREST => emlite::Val::from("nearest"),
             GPUMipmapFilterMode::LINEAR => emlite::Val::from("linear"),
         }
@@ -9170,6 +11823,20 @@ impl From<GPUCompareFunction> for emlite::Val {
         }
     }
 }
+impl From<&GPUCompareFunction> for emlite::Val {
+    fn from(s: &GPUCompareFunction) -> emlite::Val {
+        match *s {
+            GPUCompareFunction::NEVER => emlite::Val::from("never"),
+            GPUCompareFunction::LESS => emlite::Val::from("less"),
+            GPUCompareFunction::EQUAL => emlite::Val::from("equal"),
+            GPUCompareFunction::LESS_EQUAL => emlite::Val::from("less-equal"),
+            GPUCompareFunction::GREATER => emlite::Val::from("greater"),
+            GPUCompareFunction::NOT_EQUAL => emlite::Val::from("not-equal"),
+            GPUCompareFunction::GREATER_EQUAL => emlite::Val::from("greater-equal"),
+            GPUCompareFunction::ALWAYS => emlite::Val::from("always"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUBufferBindingType {
@@ -9202,6 +11869,15 @@ impl From<GPUBufferBindingType> for emlite::Val {
         }
     }
 }
+impl From<&GPUBufferBindingType> for emlite::Val {
+    fn from(s: &GPUBufferBindingType) -> emlite::Val {
+        match *s {
+            GPUBufferBindingType::UNIFORM => emlite::Val::from("uniform"),
+            GPUBufferBindingType::STORAGE => emlite::Val::from("storage"),
+            GPUBufferBindingType::READ_ONLY_STORAGE => emlite::Val::from("read-only-storage"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUSamplerBindingType {
@@ -9228,6 +11904,15 @@ impl FromVal for GPUSamplerBindingType {
 impl From<GPUSamplerBindingType> for emlite::Val {
     fn from(s: GPUSamplerBindingType) -> emlite::Val {
         match s {
+            GPUSamplerBindingType::FILTERING => emlite::Val::from("filtering"),
+            GPUSamplerBindingType::NON_FILTERING => emlite::Val::from("non-filtering"),
+            GPUSamplerBindingType::COMPARISON => emlite::Val::from("comparison"),
+        }
+    }
+}
+impl From<&GPUSamplerBindingType> for emlite::Val {
+    fn from(s: &GPUSamplerBindingType) -> emlite::Val {
+        match *s {
             GPUSamplerBindingType::FILTERING => emlite::Val::from("filtering"),
             GPUSamplerBindingType::NON_FILTERING => emlite::Val::from("non-filtering"),
             GPUSamplerBindingType::COMPARISON => emlite::Val::from("comparison"),
@@ -9272,6 +11957,17 @@ impl From<GPUTextureSampleType> for emlite::Val {
         }
     }
 }
+impl From<&GPUTextureSampleType> for emlite::Val {
+    fn from(s: &GPUTextureSampleType) -> emlite::Val {
+        match *s {
+            GPUTextureSampleType::FLOAT => emlite::Val::from("float"),
+            GPUTextureSampleType::UNFILTERABLE_FLOAT => emlite::Val::from("unfilterable-float"),
+            GPUTextureSampleType::DEPTH => emlite::Val::from("depth"),
+            GPUTextureSampleType::SINT => emlite::Val::from("sint"),
+            GPUTextureSampleType::UINT => emlite::Val::from("uint"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUStorageTextureAccess {
@@ -9298,6 +11994,15 @@ impl FromVal for GPUStorageTextureAccess {
 impl From<GPUStorageTextureAccess> for emlite::Val {
     fn from(s: GPUStorageTextureAccess) -> emlite::Val {
         match s {
+            GPUStorageTextureAccess::WRITE_ONLY => emlite::Val::from("write-only"),
+            GPUStorageTextureAccess::READ_ONLY => emlite::Val::from("read-only"),
+            GPUStorageTextureAccess::READ_WRITE => emlite::Val::from("read-write"),
+        }
+    }
+}
+impl From<&GPUStorageTextureAccess> for emlite::Val {
+    fn from(s: &GPUStorageTextureAccess) -> emlite::Val {
+        match *s {
             GPUStorageTextureAccess::WRITE_ONLY => emlite::Val::from("write-only"),
             GPUStorageTextureAccess::READ_ONLY => emlite::Val::from("read-only"),
             GPUStorageTextureAccess::READ_WRITE => emlite::Val::from("read-write"),
@@ -9336,6 +12041,15 @@ impl From<GPUCompilationMessageType> for emlite::Val {
         }
     }
 }
+impl From<&GPUCompilationMessageType> for emlite::Val {
+    fn from(s: &GPUCompilationMessageType) -> emlite::Val {
+        match *s {
+            GPUCompilationMessageType::ERROR => emlite::Val::from("error"),
+            GPUCompilationMessageType::WARNING => emlite::Val::from("warning"),
+            GPUCompilationMessageType::INFO => emlite::Val::from("info"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUPipelineErrorReason {
@@ -9365,6 +12079,14 @@ impl From<GPUPipelineErrorReason> for emlite::Val {
         }
     }
 }
+impl From<&GPUPipelineErrorReason> for emlite::Val {
+    fn from(s: &GPUPipelineErrorReason) -> emlite::Val {
+        match *s {
+            GPUPipelineErrorReason::VALIDATION => emlite::Val::from("validation"),
+            GPUPipelineErrorReason::INTERNAL => emlite::Val::from("internal"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUAutoLayoutMode {
@@ -9387,6 +12109,13 @@ impl FromVal for GPUAutoLayoutMode {
 impl From<GPUAutoLayoutMode> for emlite::Val {
     fn from(s: GPUAutoLayoutMode) -> emlite::Val {
         match s {
+            GPUAutoLayoutMode::AUTO => emlite::Val::from("auto"),
+        }
+    }
+}
+impl From<&GPUAutoLayoutMode> for emlite::Val {
+    fn from(s: &GPUAutoLayoutMode) -> emlite::Val {
+        match *s {
             GPUAutoLayoutMode::AUTO => emlite::Val::from("auto"),
         }
     }
@@ -9429,6 +12158,17 @@ impl From<GPUPrimitiveTopology> for emlite::Val {
         }
     }
 }
+impl From<&GPUPrimitiveTopology> for emlite::Val {
+    fn from(s: &GPUPrimitiveTopology) -> emlite::Val {
+        match *s {
+            GPUPrimitiveTopology::POINT_LIST => emlite::Val::from("point-list"),
+            GPUPrimitiveTopology::LINE_LIST => emlite::Val::from("line-list"),
+            GPUPrimitiveTopology::LINE_STRIP => emlite::Val::from("line-strip"),
+            GPUPrimitiveTopology::TRIANGLE_LIST => emlite::Val::from("triangle-list"),
+            GPUPrimitiveTopology::TRIANGLE_STRIP => emlite::Val::from("triangle-strip"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUFrontFace {
@@ -9453,6 +12193,14 @@ impl FromVal for GPUFrontFace {
 impl From<GPUFrontFace> for emlite::Val {
     fn from(s: GPUFrontFace) -> emlite::Val {
         match s {
+            GPUFrontFace::CCW => emlite::Val::from("ccw"),
+            GPUFrontFace::CW => emlite::Val::from("cw"),
+        }
+    }
+}
+impl From<&GPUFrontFace> for emlite::Val {
+    fn from(s: &GPUFrontFace) -> emlite::Val {
+        match *s {
             GPUFrontFace::CCW => emlite::Val::from("ccw"),
             GPUFrontFace::CW => emlite::Val::from("cw"),
         }
@@ -9484,6 +12232,15 @@ impl FromVal for GPUCullMode {
 impl From<GPUCullMode> for emlite::Val {
     fn from(s: GPUCullMode) -> emlite::Val {
         match s {
+            GPUCullMode::NONE => emlite::Val::from("none"),
+            GPUCullMode::FRONT => emlite::Val::from("front"),
+            GPUCullMode::BACK => emlite::Val::from("back"),
+        }
+    }
+}
+impl From<&GPUCullMode> for emlite::Val {
+    fn from(s: &GPUCullMode) -> emlite::Val {
+        match *s {
             GPUCullMode::NONE => emlite::Val::from("none"),
             GPUCullMode::FRONT => emlite::Val::from("front"),
             GPUCullMode::BACK => emlite::Val::from("back"),
@@ -9564,6 +12321,29 @@ impl From<GPUBlendFactor> for emlite::Val {
         }
     }
 }
+impl From<&GPUBlendFactor> for emlite::Val {
+    fn from(s: &GPUBlendFactor) -> emlite::Val {
+        match *s {
+            GPUBlendFactor::ZERO => emlite::Val::from("zero"),
+            GPUBlendFactor::ONE => emlite::Val::from("one"),
+            GPUBlendFactor::SRC => emlite::Val::from("src"),
+            GPUBlendFactor::ONE_MINUS_SRC => emlite::Val::from("one-minus-src"),
+            GPUBlendFactor::SRC_ALPHA => emlite::Val::from("src-alpha"),
+            GPUBlendFactor::ONE_MINUS_SRC_ALPHA => emlite::Val::from("one-minus-src-alpha"),
+            GPUBlendFactor::DST => emlite::Val::from("dst"),
+            GPUBlendFactor::ONE_MINUS_DST => emlite::Val::from("one-minus-dst"),
+            GPUBlendFactor::DST_ALPHA => emlite::Val::from("dst-alpha"),
+            GPUBlendFactor::ONE_MINUS_DST_ALPHA => emlite::Val::from("one-minus-dst-alpha"),
+            GPUBlendFactor::SRC_ALPHA_SATURATED => emlite::Val::from("src-alpha-saturated"),
+            GPUBlendFactor::CONSTANT => emlite::Val::from("constant"),
+            GPUBlendFactor::ONE_MINUS_CONSTANT => emlite::Val::from("one-minus-constant"),
+            GPUBlendFactor::SRC1 => emlite::Val::from("src1"),
+            GPUBlendFactor::ONE_MINUS_SRC1 => emlite::Val::from("one-minus-src1"),
+            GPUBlendFactor::SRC1_ALPHA => emlite::Val::from("src1-alpha"),
+            GPUBlendFactor::ONE_MINUS_SRC1_ALPHA => emlite::Val::from("one-minus-src1-alpha"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUBlendOperation {
@@ -9594,6 +12374,17 @@ impl FromVal for GPUBlendOperation {
 impl From<GPUBlendOperation> for emlite::Val {
     fn from(s: GPUBlendOperation) -> emlite::Val {
         match s {
+            GPUBlendOperation::ADD => emlite::Val::from("add"),
+            GPUBlendOperation::SUBTRACT => emlite::Val::from("subtract"),
+            GPUBlendOperation::REVERSE_SUBTRACT => emlite::Val::from("reverse-subtract"),
+            GPUBlendOperation::MIN => emlite::Val::from("min"),
+            GPUBlendOperation::MAX => emlite::Val::from("max"),
+        }
+    }
+}
+impl From<&GPUBlendOperation> for emlite::Val {
+    fn from(s: &GPUBlendOperation) -> emlite::Val {
+        match *s {
             GPUBlendOperation::ADD => emlite::Val::from("add"),
             GPUBlendOperation::SUBTRACT => emlite::Val::from("subtract"),
             GPUBlendOperation::REVERSE_SUBTRACT => emlite::Val::from("reverse-subtract"),
@@ -9649,6 +12440,20 @@ impl From<GPUStencilOperation> for emlite::Val {
         }
     }
 }
+impl From<&GPUStencilOperation> for emlite::Val {
+    fn from(s: &GPUStencilOperation) -> emlite::Val {
+        match *s {
+            GPUStencilOperation::KEEP => emlite::Val::from("keep"),
+            GPUStencilOperation::ZERO => emlite::Val::from("zero"),
+            GPUStencilOperation::REPLACE => emlite::Val::from("replace"),
+            GPUStencilOperation::INVERT => emlite::Val::from("invert"),
+            GPUStencilOperation::INCREMENT_CLAMP => emlite::Val::from("increment-clamp"),
+            GPUStencilOperation::DECREMENT_CLAMP => emlite::Val::from("decrement-clamp"),
+            GPUStencilOperation::INCREMENT_WRAP => emlite::Val::from("increment-wrap"),
+            GPUStencilOperation::DECREMENT_WRAP => emlite::Val::from("decrement-wrap"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUIndexFormat {
@@ -9673,6 +12478,14 @@ impl FromVal for GPUIndexFormat {
 impl From<GPUIndexFormat> for emlite::Val {
     fn from(s: GPUIndexFormat) -> emlite::Val {
         match s {
+            GPUIndexFormat::UINT16 => emlite::Val::from("uint16"),
+            GPUIndexFormat::UINT32 => emlite::Val::from("uint32"),
+        }
+    }
+}
+impl From<&GPUIndexFormat> for emlite::Val {
+    fn from(s: &GPUIndexFormat) -> emlite::Val {
+        match *s {
             GPUIndexFormat::UINT16 => emlite::Val::from("uint16"),
             GPUIndexFormat::UINT32 => emlite::Val::from("uint32"),
         }
@@ -9824,6 +12637,53 @@ impl From<GPUVertexFormat> for emlite::Val {
         }
     }
 }
+impl From<&GPUVertexFormat> for emlite::Val {
+    fn from(s: &GPUVertexFormat) -> emlite::Val {
+        match *s {
+            GPUVertexFormat::UINT8 => emlite::Val::from("uint8"),
+            GPUVertexFormat::UINT8X2 => emlite::Val::from("uint8x2"),
+            GPUVertexFormat::UINT8X4 => emlite::Val::from("uint8x4"),
+            GPUVertexFormat::SINT8 => emlite::Val::from("sint8"),
+            GPUVertexFormat::SINT8X2 => emlite::Val::from("sint8x2"),
+            GPUVertexFormat::SINT8X4 => emlite::Val::from("sint8x4"),
+            GPUVertexFormat::UNORM8 => emlite::Val::from("unorm8"),
+            GPUVertexFormat::UNORM8X2 => emlite::Val::from("unorm8x2"),
+            GPUVertexFormat::UNORM8X4 => emlite::Val::from("unorm8x4"),
+            GPUVertexFormat::SNORM8 => emlite::Val::from("snorm8"),
+            GPUVertexFormat::SNORM8X2 => emlite::Val::from("snorm8x2"),
+            GPUVertexFormat::SNORM8X4 => emlite::Val::from("snorm8x4"),
+            GPUVertexFormat::UINT16 => emlite::Val::from("uint16"),
+            GPUVertexFormat::UINT16X2 => emlite::Val::from("uint16x2"),
+            GPUVertexFormat::UINT16X4 => emlite::Val::from("uint16x4"),
+            GPUVertexFormat::SINT16 => emlite::Val::from("sint16"),
+            GPUVertexFormat::SINT16X2 => emlite::Val::from("sint16x2"),
+            GPUVertexFormat::SINT16X4 => emlite::Val::from("sint16x4"),
+            GPUVertexFormat::UNORM16 => emlite::Val::from("unorm16"),
+            GPUVertexFormat::UNORM16X2 => emlite::Val::from("unorm16x2"),
+            GPUVertexFormat::UNORM16X4 => emlite::Val::from("unorm16x4"),
+            GPUVertexFormat::SNORM16 => emlite::Val::from("snorm16"),
+            GPUVertexFormat::SNORM16X2 => emlite::Val::from("snorm16x2"),
+            GPUVertexFormat::SNORM16X4 => emlite::Val::from("snorm16x4"),
+            GPUVertexFormat::FLOAT16 => emlite::Val::from("float16"),
+            GPUVertexFormat::FLOAT16X2 => emlite::Val::from("float16x2"),
+            GPUVertexFormat::FLOAT16X4 => emlite::Val::from("float16x4"),
+            GPUVertexFormat::FLOAT32 => emlite::Val::from("float32"),
+            GPUVertexFormat::FLOAT32X2 => emlite::Val::from("float32x2"),
+            GPUVertexFormat::FLOAT32X3 => emlite::Val::from("float32x3"),
+            GPUVertexFormat::FLOAT32X4 => emlite::Val::from("float32x4"),
+            GPUVertexFormat::UINT32 => emlite::Val::from("uint32"),
+            GPUVertexFormat::UINT32X2 => emlite::Val::from("uint32x2"),
+            GPUVertexFormat::UINT32X3 => emlite::Val::from("uint32x3"),
+            GPUVertexFormat::UINT32X4 => emlite::Val::from("uint32x4"),
+            GPUVertexFormat::SINT32 => emlite::Val::from("sint32"),
+            GPUVertexFormat::SINT32X2 => emlite::Val::from("sint32x2"),
+            GPUVertexFormat::SINT32X3 => emlite::Val::from("sint32x3"),
+            GPUVertexFormat::SINT32X4 => emlite::Val::from("sint32x4"),
+            GPUVertexFormat::UNORM10_10_10_2 => emlite::Val::from("unorm10-10-10-2"),
+            GPUVertexFormat::UNORM8X4_BGRA => emlite::Val::from("unorm8x4-bgra"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUVertexStepMode {
@@ -9848,6 +12708,14 @@ impl FromVal for GPUVertexStepMode {
 impl From<GPUVertexStepMode> for emlite::Val {
     fn from(s: GPUVertexStepMode) -> emlite::Val {
         match s {
+            GPUVertexStepMode::VERTEX => emlite::Val::from("vertex"),
+            GPUVertexStepMode::INSTANCE => emlite::Val::from("instance"),
+        }
+    }
+}
+impl From<&GPUVertexStepMode> for emlite::Val {
+    fn from(s: &GPUVertexStepMode) -> emlite::Val {
+        match *s {
             GPUVertexStepMode::VERTEX => emlite::Val::from("vertex"),
             GPUVertexStepMode::INSTANCE => emlite::Val::from("instance"),
         }
@@ -9882,6 +12750,14 @@ impl From<GPULoadOp> for emlite::Val {
         }
     }
 }
+impl From<&GPULoadOp> for emlite::Val {
+    fn from(s: &GPULoadOp) -> emlite::Val {
+        match *s {
+            GPULoadOp::LOAD => emlite::Val::from("load"),
+            GPULoadOp::CLEAR => emlite::Val::from("clear"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUStoreOp {
@@ -9906,6 +12782,14 @@ impl FromVal for GPUStoreOp {
 impl From<GPUStoreOp> for emlite::Val {
     fn from(s: GPUStoreOp) -> emlite::Val {
         match s {
+            GPUStoreOp::STORE => emlite::Val::from("store"),
+            GPUStoreOp::DISCARD => emlite::Val::from("discard"),
+        }
+    }
+}
+impl From<&GPUStoreOp> for emlite::Val {
+    fn from(s: &GPUStoreOp) -> emlite::Val {
+        match *s {
             GPUStoreOp::STORE => emlite::Val::from("store"),
             GPUStoreOp::DISCARD => emlite::Val::from("discard"),
         }
@@ -9940,6 +12824,14 @@ impl From<GPUQueryType> for emlite::Val {
         }
     }
 }
+impl From<&GPUQueryType> for emlite::Val {
+    fn from(s: &GPUQueryType) -> emlite::Val {
+        match *s {
+            GPUQueryType::OCCLUSION => emlite::Val::from("occlusion"),
+            GPUQueryType::TIMESTAMP => emlite::Val::from("timestamp"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUCanvasAlphaMode {
@@ -9964,6 +12856,14 @@ impl FromVal for GPUCanvasAlphaMode {
 impl From<GPUCanvasAlphaMode> for emlite::Val {
     fn from(s: GPUCanvasAlphaMode) -> emlite::Val {
         match s {
+            GPUCanvasAlphaMode::OPAQUE => emlite::Val::from("opaque"),
+            GPUCanvasAlphaMode::PREMULTIPLIED => emlite::Val::from("premultiplied"),
+        }
+    }
+}
+impl From<&GPUCanvasAlphaMode> for emlite::Val {
+    fn from(s: &GPUCanvasAlphaMode) -> emlite::Val {
+        match *s {
             GPUCanvasAlphaMode::OPAQUE => emlite::Val::from("opaque"),
             GPUCanvasAlphaMode::PREMULTIPLIED => emlite::Val::from("premultiplied"),
         }
@@ -9998,6 +12898,14 @@ impl From<GPUCanvasToneMappingMode> for emlite::Val {
         }
     }
 }
+impl From<&GPUCanvasToneMappingMode> for emlite::Val {
+    fn from(s: &GPUCanvasToneMappingMode) -> emlite::Val {
+        match *s {
+            GPUCanvasToneMappingMode::STANDARD => emlite::Val::from("standard"),
+            GPUCanvasToneMappingMode::EXTENDED => emlite::Val::from("extended"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum GPUDeviceLostReason {
@@ -10022,6 +12930,14 @@ impl FromVal for GPUDeviceLostReason {
 impl From<GPUDeviceLostReason> for emlite::Val {
     fn from(s: GPUDeviceLostReason) -> emlite::Val {
         match s {
+            GPUDeviceLostReason::UNKNOWN => emlite::Val::from("unknown"),
+            GPUDeviceLostReason::DESTROYED => emlite::Val::from("destroyed"),
+        }
+    }
+}
+impl From<&GPUDeviceLostReason> for emlite::Val {
+    fn from(s: &GPUDeviceLostReason) -> emlite::Val {
+        match *s {
             GPUDeviceLostReason::UNKNOWN => emlite::Val::from("unknown"),
             GPUDeviceLostReason::DESTROYED => emlite::Val::from("destroyed"),
         }
@@ -10053,6 +12969,15 @@ impl FromVal for GPUErrorFilter {
 impl From<GPUErrorFilter> for emlite::Val {
     fn from(s: GPUErrorFilter) -> emlite::Val {
         match s {
+            GPUErrorFilter::VALIDATION => emlite::Val::from("validation"),
+            GPUErrorFilter::OUT_OF_MEMORY => emlite::Val::from("out-of-memory"),
+            GPUErrorFilter::INTERNAL => emlite::Val::from("internal"),
+        }
+    }
+}
+impl From<&GPUErrorFilter> for emlite::Val {
+    fn from(s: &GPUErrorFilter) -> emlite::Val {
+        match *s {
             GPUErrorFilter::VALIDATION => emlite::Val::from("validation"),
             GPUErrorFilter::OUT_OF_MEMORY => emlite::Val::from("out-of-memory"),
             GPUErrorFilter::INTERNAL => emlite::Val::from("internal"),
@@ -10103,6 +13028,19 @@ impl From<HIDUnitSystem> for emlite::Val {
         }
     }
 }
+impl From<&HIDUnitSystem> for emlite::Val {
+    fn from(s: &HIDUnitSystem) -> emlite::Val {
+        match *s {
+            HIDUnitSystem::NONE => emlite::Val::from("none"),
+            HIDUnitSystem::SI_LINEAR => emlite::Val::from("si-linear"),
+            HIDUnitSystem::SI_ROTATION => emlite::Val::from("si-rotation"),
+            HIDUnitSystem::ENGLISH_LINEAR => emlite::Val::from("english-linear"),
+            HIDUnitSystem::ENGLISH_ROTATION => emlite::Val::from("english-rotation"),
+            HIDUnitSystem::VENDOR_DEFINED => emlite::Val::from("vendor-defined"),
+            HIDUnitSystem::RESERVED => emlite::Val::from("reserved"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum MIDIPortType {
@@ -10127,6 +13065,14 @@ impl FromVal for MIDIPortType {
 impl From<MIDIPortType> for emlite::Val {
     fn from(s: MIDIPortType) -> emlite::Val {
         match s {
+            MIDIPortType::INPUT => emlite::Val::from("input"),
+            MIDIPortType::OUTPUT => emlite::Val::from("output"),
+        }
+    }
+}
+impl From<&MIDIPortType> for emlite::Val {
+    fn from(s: &MIDIPortType) -> emlite::Val {
+        match *s {
             MIDIPortType::INPUT => emlite::Val::from("input"),
             MIDIPortType::OUTPUT => emlite::Val::from("output"),
         }
@@ -10161,6 +13107,14 @@ impl From<MIDIPortDeviceState> for emlite::Val {
         }
     }
 }
+impl From<&MIDIPortDeviceState> for emlite::Val {
+    fn from(s: &MIDIPortDeviceState) -> emlite::Val {
+        match *s {
+            MIDIPortDeviceState::DISCONNECTED => emlite::Val::from("disconnected"),
+            MIDIPortDeviceState::CONNECTED => emlite::Val::from("connected"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum MIDIPortConnectionState {
@@ -10187,6 +13141,15 @@ impl FromVal for MIDIPortConnectionState {
 impl From<MIDIPortConnectionState> for emlite::Val {
     fn from(s: MIDIPortConnectionState) -> emlite::Val {
         match s {
+            MIDIPortConnectionState::OPEN => emlite::Val::from("open"),
+            MIDIPortConnectionState::CLOSED => emlite::Val::from("closed"),
+            MIDIPortConnectionState::PENDING => emlite::Val::from("pending"),
+        }
+    }
+}
+impl From<&MIDIPortConnectionState> for emlite::Val {
+    fn from(s: &MIDIPortConnectionState) -> emlite::Val {
+        match *s {
             MIDIPortConnectionState::OPEN => emlite::Val::from("open"),
             MIDIPortConnectionState::CLOSED => emlite::Val::from("closed"),
             MIDIPortConnectionState::PENDING => emlite::Val::from("pending"),
@@ -10225,6 +13188,15 @@ impl From<MLPowerPreference> for emlite::Val {
         }
     }
 }
+impl From<&MLPowerPreference> for emlite::Val {
+    fn from(s: &MLPowerPreference) -> emlite::Val {
+        match *s {
+            MLPowerPreference::DEFAULT => emlite::Val::from("default"),
+            MLPowerPreference::HIGH_PERFORMANCE => emlite::Val::from("high-performance"),
+            MLPowerPreference::LOW_POWER => emlite::Val::from("low-power"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum MLInputOperandLayout {
@@ -10249,6 +13221,14 @@ impl FromVal for MLInputOperandLayout {
 impl From<MLInputOperandLayout> for emlite::Val {
     fn from(s: MLInputOperandLayout) -> emlite::Val {
         match s {
+            MLInputOperandLayout::NCHW => emlite::Val::from("nchw"),
+            MLInputOperandLayout::NHWC => emlite::Val::from("nhwc"),
+        }
+    }
+}
+impl From<&MLInputOperandLayout> for emlite::Val {
+    fn from(s: &MLInputOperandLayout) -> emlite::Val {
+        match *s {
             MLInputOperandLayout::NCHW => emlite::Val::from("nchw"),
             MLInputOperandLayout::NHWC => emlite::Val::from("nhwc"),
         }
@@ -10301,6 +13281,20 @@ impl From<MLOperandDataType> for emlite::Val {
         }
     }
 }
+impl From<&MLOperandDataType> for emlite::Val {
+    fn from(s: &MLOperandDataType) -> emlite::Val {
+        match *s {
+            MLOperandDataType::FLOAT32 => emlite::Val::from("float32"),
+            MLOperandDataType::FLOAT16 => emlite::Val::from("float16"),
+            MLOperandDataType::INT32 => emlite::Val::from("int32"),
+            MLOperandDataType::UINT32 => emlite::Val::from("uint32"),
+            MLOperandDataType::INT64 => emlite::Val::from("int64"),
+            MLOperandDataType::UINT64 => emlite::Val::from("uint64"),
+            MLOperandDataType::INT8 => emlite::Val::from("int8"),
+            MLOperandDataType::UINT8 => emlite::Val::from("uint8"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum MLConv2dFilterOperandLayout {
@@ -10329,6 +13323,16 @@ impl FromVal for MLConv2dFilterOperandLayout {
 impl From<MLConv2dFilterOperandLayout> for emlite::Val {
     fn from(s: MLConv2dFilterOperandLayout) -> emlite::Val {
         match s {
+            MLConv2dFilterOperandLayout::OIHW => emlite::Val::from("oihw"),
+            MLConv2dFilterOperandLayout::HWIO => emlite::Val::from("hwio"),
+            MLConv2dFilterOperandLayout::OHWI => emlite::Val::from("ohwi"),
+            MLConv2dFilterOperandLayout::IHWO => emlite::Val::from("ihwo"),
+        }
+    }
+}
+impl From<&MLConv2dFilterOperandLayout> for emlite::Val {
+    fn from(s: &MLConv2dFilterOperandLayout) -> emlite::Val {
+        match *s {
             MLConv2dFilterOperandLayout::OIHW => emlite::Val::from("oihw"),
             MLConv2dFilterOperandLayout::HWIO => emlite::Val::from("hwio"),
             MLConv2dFilterOperandLayout::OHWI => emlite::Val::from("ohwi"),
@@ -10368,6 +13372,15 @@ impl From<MLConvTranspose2dFilterOperandLayout> for emlite::Val {
         }
     }
 }
+impl From<&MLConvTranspose2dFilterOperandLayout> for emlite::Val {
+    fn from(s: &MLConvTranspose2dFilterOperandLayout) -> emlite::Val {
+        match *s {
+            MLConvTranspose2dFilterOperandLayout::IOHW => emlite::Val::from("iohw"),
+            MLConvTranspose2dFilterOperandLayout::HWOI => emlite::Val::from("hwoi"),
+            MLConvTranspose2dFilterOperandLayout::OHWI => emlite::Val::from("ohwi"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum MLGruWeightLayout {
@@ -10392,6 +13405,14 @@ impl FromVal for MLGruWeightLayout {
 impl From<MLGruWeightLayout> for emlite::Val {
     fn from(s: MLGruWeightLayout) -> emlite::Val {
         match s {
+            MLGruWeightLayout::ZRN => emlite::Val::from("zrn"),
+            MLGruWeightLayout::RZN => emlite::Val::from("rzn"),
+        }
+    }
+}
+impl From<&MLGruWeightLayout> for emlite::Val {
+    fn from(s: &MLGruWeightLayout) -> emlite::Val {
+        match *s {
             MLGruWeightLayout::ZRN => emlite::Val::from("zrn"),
             MLGruWeightLayout::RZN => emlite::Val::from("rzn"),
         }
@@ -10423,6 +13444,15 @@ impl FromVal for MLRecurrentNetworkActivation {
 impl From<MLRecurrentNetworkActivation> for emlite::Val {
     fn from(s: MLRecurrentNetworkActivation) -> emlite::Val {
         match s {
+            MLRecurrentNetworkActivation::RELU => emlite::Val::from("relu"),
+            MLRecurrentNetworkActivation::SIGMOID => emlite::Val::from("sigmoid"),
+            MLRecurrentNetworkActivation::TANH => emlite::Val::from("tanh"),
+        }
+    }
+}
+impl From<&MLRecurrentNetworkActivation> for emlite::Val {
+    fn from(s: &MLRecurrentNetworkActivation) -> emlite::Val {
+        match *s {
             MLRecurrentNetworkActivation::RELU => emlite::Val::from("relu"),
             MLRecurrentNetworkActivation::SIGMOID => emlite::Val::from("sigmoid"),
             MLRecurrentNetworkActivation::TANH => emlite::Val::from("tanh"),
@@ -10461,6 +13491,15 @@ impl From<MLRecurrentNetworkDirection> for emlite::Val {
         }
     }
 }
+impl From<&MLRecurrentNetworkDirection> for emlite::Val {
+    fn from(s: &MLRecurrentNetworkDirection) -> emlite::Val {
+        match *s {
+            MLRecurrentNetworkDirection::FORWARD => emlite::Val::from("forward"),
+            MLRecurrentNetworkDirection::BACKWARD => emlite::Val::from("backward"),
+            MLRecurrentNetworkDirection::BOTH => emlite::Val::from("both"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum MLLstmWeightLayout {
@@ -10485,6 +13524,14 @@ impl FromVal for MLLstmWeightLayout {
 impl From<MLLstmWeightLayout> for emlite::Val {
     fn from(s: MLLstmWeightLayout) -> emlite::Val {
         match s {
+            MLLstmWeightLayout::IOFG => emlite::Val::from("iofg"),
+            MLLstmWeightLayout::IFGO => emlite::Val::from("ifgo"),
+        }
+    }
+}
+impl From<&MLLstmWeightLayout> for emlite::Val {
+    fn from(s: &MLLstmWeightLayout) -> emlite::Val {
+        match *s {
             MLLstmWeightLayout::IOFG => emlite::Val::from("iofg"),
             MLLstmWeightLayout::IFGO => emlite::Val::from("ifgo"),
         }
@@ -10522,6 +13569,15 @@ impl From<MLPaddingMode> for emlite::Val {
         }
     }
 }
+impl From<&MLPaddingMode> for emlite::Val {
+    fn from(s: &MLPaddingMode) -> emlite::Val {
+        match *s {
+            MLPaddingMode::CONSTANT => emlite::Val::from("constant"),
+            MLPaddingMode::EDGE => emlite::Val::from("edge"),
+            MLPaddingMode::REFLECTION => emlite::Val::from("reflection"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum MLRoundingType {
@@ -10546,6 +13602,14 @@ impl FromVal for MLRoundingType {
 impl From<MLRoundingType> for emlite::Val {
     fn from(s: MLRoundingType) -> emlite::Val {
         match s {
+            MLRoundingType::FLOOR => emlite::Val::from("floor"),
+            MLRoundingType::CEIL => emlite::Val::from("ceil"),
+        }
+    }
+}
+impl From<&MLRoundingType> for emlite::Val {
+    fn from(s: &MLRoundingType) -> emlite::Val {
+        match *s {
             MLRoundingType::FLOOR => emlite::Val::from("floor"),
             MLRoundingType::CEIL => emlite::Val::from("ceil"),
         }
@@ -10580,6 +13644,14 @@ impl From<MLInterpolationMode> for emlite::Val {
         }
     }
 }
+impl From<&MLInterpolationMode> for emlite::Val {
+    fn from(s: &MLInterpolationMode) -> emlite::Val {
+        match *s {
+            MLInterpolationMode::NEAREST_NEIGHBOR => emlite::Val::from("nearest-neighbor"),
+            MLInterpolationMode::LINEAR => emlite::Val::from("linear"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum SFrameTransformRole {
@@ -10604,6 +13676,14 @@ impl FromVal for SFrameTransformRole {
 impl From<SFrameTransformRole> for emlite::Val {
     fn from(s: SFrameTransformRole) -> emlite::Val {
         match s {
+            SFrameTransformRole::ENCRYPT => emlite::Val::from("encrypt"),
+            SFrameTransformRole::DECRYPT => emlite::Val::from("decrypt"),
+        }
+    }
+}
+impl From<&SFrameTransformRole> for emlite::Val {
+    fn from(s: &SFrameTransformRole) -> emlite::Val {
+        match *s {
             SFrameTransformRole::ENCRYPT => emlite::Val::from("encrypt"),
             SFrameTransformRole::DECRYPT => emlite::Val::from("decrypt"),
         }
@@ -10641,6 +13721,15 @@ impl From<SFrameTransformErrorEventType> for emlite::Val {
         }
     }
 }
+impl From<&SFrameTransformErrorEventType> for emlite::Val {
+    fn from(s: &SFrameTransformErrorEventType) -> emlite::Val {
+        match *s {
+            SFrameTransformErrorEventType::AUTHENTICATION => emlite::Val::from("authentication"),
+            SFrameTransformErrorEventType::KEY_ID => emlite::Val::from("keyID"),
+            SFrameTransformErrorEventType::SYNTAX => emlite::Val::from("syntax"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RTCEncodedVideoFrameType {
@@ -10667,6 +13756,15 @@ impl FromVal for RTCEncodedVideoFrameType {
 impl From<RTCEncodedVideoFrameType> for emlite::Val {
     fn from(s: RTCEncodedVideoFrameType) -> emlite::Val {
         match s {
+            RTCEncodedVideoFrameType::EMPTY => emlite::Val::from("empty"),
+            RTCEncodedVideoFrameType::KEY => emlite::Val::from("key"),
+            RTCEncodedVideoFrameType::DELTA => emlite::Val::from("delta"),
+        }
+    }
+}
+impl From<&RTCEncodedVideoFrameType> for emlite::Val {
+    fn from(s: &RTCEncodedVideoFrameType) -> emlite::Val {
+        match *s {
             RTCEncodedVideoFrameType::EMPTY => emlite::Val::from("empty"),
             RTCEncodedVideoFrameType::KEY => emlite::Val::from("key"),
             RTCEncodedVideoFrameType::DELTA => emlite::Val::from("delta"),
@@ -10724,6 +13822,24 @@ impl From<RTCErrorDetailTypeIdp> for emlite::Val {
         }
     }
 }
+impl From<&RTCErrorDetailTypeIdp> for emlite::Val {
+    fn from(s: &RTCErrorDetailTypeIdp) -> emlite::Val {
+        match *s {
+            RTCErrorDetailTypeIdp::IDP_BAD_SCRIPT_FAILURE => {
+                emlite::Val::from("idp-bad-script-failure")
+            }
+            RTCErrorDetailTypeIdp::IDP_EXECUTION_FAILURE => {
+                emlite::Val::from("idp-execution-failure")
+            }
+            RTCErrorDetailTypeIdp::IDP_LOAD_FAILURE => emlite::Val::from("idp-load-failure"),
+            RTCErrorDetailTypeIdp::IDP_NEED_LOGIN => emlite::Val::from("idp-need-login"),
+            RTCErrorDetailTypeIdp::IDP_TIMEOUT => emlite::Val::from("idp-timeout"),
+            RTCErrorDetailTypeIdp::IDP_TLS_FAILURE => emlite::Val::from("idp-tls-failure"),
+            RTCErrorDetailTypeIdp::IDP_TOKEN_EXPIRED => emlite::Val::from("idp-token-expired"),
+            RTCErrorDetailTypeIdp::IDP_TOKEN_INVALID => emlite::Val::from("idp-token-invalid"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RTCPriorityType {
@@ -10752,6 +13868,16 @@ impl FromVal for RTCPriorityType {
 impl From<RTCPriorityType> for emlite::Val {
     fn from(s: RTCPriorityType) -> emlite::Val {
         match s {
+            RTCPriorityType::VERY_LOW => emlite::Val::from("very-low"),
+            RTCPriorityType::LOW => emlite::Val::from("low"),
+            RTCPriorityType::MEDIUM => emlite::Val::from("medium"),
+            RTCPriorityType::HIGH => emlite::Val::from("high"),
+        }
+    }
+}
+impl From<&RTCPriorityType> for emlite::Val {
+    fn from(s: &RTCPriorityType) -> emlite::Val {
+        match *s {
             RTCPriorityType::VERY_LOW => emlite::Val::from("very-low"),
             RTCPriorityType::LOW => emlite::Val::from("low"),
             RTCPriorityType::MEDIUM => emlite::Val::from("medium"),
@@ -10824,6 +13950,26 @@ impl From<RTCStatsType> for emlite::Val {
         }
     }
 }
+impl From<&RTCStatsType> for emlite::Val {
+    fn from(s: &RTCStatsType) -> emlite::Val {
+        match *s {
+            RTCStatsType::CODEC => emlite::Val::from("codec"),
+            RTCStatsType::INBOUND_RTP => emlite::Val::from("inbound-rtp"),
+            RTCStatsType::OUTBOUND_RTP => emlite::Val::from("outbound-rtp"),
+            RTCStatsType::REMOTE_INBOUND_RTP => emlite::Val::from("remote-inbound-rtp"),
+            RTCStatsType::REMOTE_OUTBOUND_RTP => emlite::Val::from("remote-outbound-rtp"),
+            RTCStatsType::MEDIA_SOURCE => emlite::Val::from("media-source"),
+            RTCStatsType::MEDIA_PLAYOUT => emlite::Val::from("media-playout"),
+            RTCStatsType::PEER_CONNECTION => emlite::Val::from("peer-connection"),
+            RTCStatsType::DATA_CHANNEL => emlite::Val::from("data-channel"),
+            RTCStatsType::TRANSPORT => emlite::Val::from("transport"),
+            RTCStatsType::CANDIDATE_PAIR => emlite::Val::from("candidate-pair"),
+            RTCStatsType::LOCAL_CANDIDATE => emlite::Val::from("local-candidate"),
+            RTCStatsType::REMOTE_CANDIDATE => emlite::Val::from("remote-candidate"),
+            RTCStatsType::CERTIFICATE => emlite::Val::from("certificate"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RTCQualityLimitationReason {
@@ -10859,6 +14005,16 @@ impl From<RTCQualityLimitationReason> for emlite::Val {
         }
     }
 }
+impl From<&RTCQualityLimitationReason> for emlite::Val {
+    fn from(s: &RTCQualityLimitationReason) -> emlite::Val {
+        match *s {
+            RTCQualityLimitationReason::NONE => emlite::Val::from("none"),
+            RTCQualityLimitationReason::CPU => emlite::Val::from("cpu"),
+            RTCQualityLimitationReason::BANDWIDTH => emlite::Val::from("bandwidth"),
+            RTCQualityLimitationReason::OTHER => emlite::Val::from("other"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RTCDtlsRole {
@@ -10885,6 +14041,15 @@ impl FromVal for RTCDtlsRole {
 impl From<RTCDtlsRole> for emlite::Val {
     fn from(s: RTCDtlsRole) -> emlite::Val {
         match s {
+            RTCDtlsRole::CLIENT => emlite::Val::from("client"),
+            RTCDtlsRole::SERVER => emlite::Val::from("server"),
+            RTCDtlsRole::UNKNOWN => emlite::Val::from("unknown"),
+        }
+    }
+}
+impl From<&RTCDtlsRole> for emlite::Val {
+    fn from(s: &RTCDtlsRole) -> emlite::Val {
+        match *s {
             RTCDtlsRole::CLIENT => emlite::Val::from("client"),
             RTCDtlsRole::SERVER => emlite::Val::from("server"),
             RTCDtlsRole::UNKNOWN => emlite::Val::from("unknown"),
@@ -10929,6 +14094,17 @@ impl From<RTCStatsIceCandidatePairState> for emlite::Val {
         }
     }
 }
+impl From<&RTCStatsIceCandidatePairState> for emlite::Val {
+    fn from(s: &RTCStatsIceCandidatePairState) -> emlite::Val {
+        match *s {
+            RTCStatsIceCandidatePairState::FROZEN => emlite::Val::from("frozen"),
+            RTCStatsIceCandidatePairState::WAITING => emlite::Val::from("waiting"),
+            RTCStatsIceCandidatePairState::IN_PROGRESS => emlite::Val::from("in-progress"),
+            RTCStatsIceCandidatePairState::FAILED => emlite::Val::from("failed"),
+            RTCStatsIceCandidatePairState::SUCCEEDED => emlite::Val::from("succeeded"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RTCIceTransportPolicy {
@@ -10953,6 +14129,14 @@ impl FromVal for RTCIceTransportPolicy {
 impl From<RTCIceTransportPolicy> for emlite::Val {
     fn from(s: RTCIceTransportPolicy) -> emlite::Val {
         match s {
+            RTCIceTransportPolicy::RELAY => emlite::Val::from("relay"),
+            RTCIceTransportPolicy::ALL => emlite::Val::from("all"),
+        }
+    }
+}
+impl From<&RTCIceTransportPolicy> for emlite::Val {
+    fn from(s: &RTCIceTransportPolicy) -> emlite::Val {
+        match *s {
             RTCIceTransportPolicy::RELAY => emlite::Val::from("relay"),
             RTCIceTransportPolicy::ALL => emlite::Val::from("all"),
         }
@@ -10990,6 +14174,15 @@ impl From<RTCBundlePolicy> for emlite::Val {
         }
     }
 }
+impl From<&RTCBundlePolicy> for emlite::Val {
+    fn from(s: &RTCBundlePolicy) -> emlite::Val {
+        match *s {
+            RTCBundlePolicy::BALANCED => emlite::Val::from("balanced"),
+            RTCBundlePolicy::MAX_COMPAT => emlite::Val::from("max-compat"),
+            RTCBundlePolicy::MAX_BUNDLE => emlite::Val::from("max-bundle"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RTCRtcpMuxPolicy {
@@ -11012,6 +14205,13 @@ impl FromVal for RTCRtcpMuxPolicy {
 impl From<RTCRtcpMuxPolicy> for emlite::Val {
     fn from(s: RTCRtcpMuxPolicy) -> emlite::Val {
         match s {
+            RTCRtcpMuxPolicy::REQUIRE => emlite::Val::from("require"),
+        }
+    }
+}
+impl From<&RTCRtcpMuxPolicy> for emlite::Val {
+    fn from(s: &RTCRtcpMuxPolicy) -> emlite::Val {
+        match *s {
             RTCRtcpMuxPolicy::REQUIRE => emlite::Val::from("require"),
         }
     }
@@ -11057,6 +14257,18 @@ impl From<RTCSignalingState> for emlite::Val {
         }
     }
 }
+impl From<&RTCSignalingState> for emlite::Val {
+    fn from(s: &RTCSignalingState) -> emlite::Val {
+        match *s {
+            RTCSignalingState::STABLE => emlite::Val::from("stable"),
+            RTCSignalingState::HAVE_LOCAL_OFFER => emlite::Val::from("have-local-offer"),
+            RTCSignalingState::HAVE_REMOTE_OFFER => emlite::Val::from("have-remote-offer"),
+            RTCSignalingState::HAVE_LOCAL_PRANSWER => emlite::Val::from("have-local-pranswer"),
+            RTCSignalingState::HAVE_REMOTE_PRANSWER => emlite::Val::from("have-remote-pranswer"),
+            RTCSignalingState::CLOSED => emlite::Val::from("closed"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RTCIceGatheringState {
@@ -11083,6 +14295,15 @@ impl FromVal for RTCIceGatheringState {
 impl From<RTCIceGatheringState> for emlite::Val {
     fn from(s: RTCIceGatheringState) -> emlite::Val {
         match s {
+            RTCIceGatheringState::NEW => emlite::Val::from("new"),
+            RTCIceGatheringState::GATHERING => emlite::Val::from("gathering"),
+            RTCIceGatheringState::COMPLETE => emlite::Val::from("complete"),
+        }
+    }
+}
+impl From<&RTCIceGatheringState> for emlite::Val {
+    fn from(s: &RTCIceGatheringState) -> emlite::Val {
+        match *s {
             RTCIceGatheringState::NEW => emlite::Val::from("new"),
             RTCIceGatheringState::GATHERING => emlite::Val::from("gathering"),
             RTCIceGatheringState::COMPLETE => emlite::Val::from("complete"),
@@ -11121,6 +14342,18 @@ impl FromVal for RTCPeerConnectionState {
 impl From<RTCPeerConnectionState> for emlite::Val {
     fn from(s: RTCPeerConnectionState) -> emlite::Val {
         match s {
+            RTCPeerConnectionState::CLOSED => emlite::Val::from("closed"),
+            RTCPeerConnectionState::FAILED => emlite::Val::from("failed"),
+            RTCPeerConnectionState::DISCONNECTED => emlite::Val::from("disconnected"),
+            RTCPeerConnectionState::NEW => emlite::Val::from("new"),
+            RTCPeerConnectionState::CONNECTING => emlite::Val::from("connecting"),
+            RTCPeerConnectionState::CONNECTED => emlite::Val::from("connected"),
+        }
+    }
+}
+impl From<&RTCPeerConnectionState> for emlite::Val {
+    fn from(s: &RTCPeerConnectionState) -> emlite::Val {
+        match *s {
             RTCPeerConnectionState::CLOSED => emlite::Val::from("closed"),
             RTCPeerConnectionState::FAILED => emlite::Val::from("failed"),
             RTCPeerConnectionState::DISCONNECTED => emlite::Val::from("disconnected"),
@@ -11174,6 +14407,19 @@ impl From<RTCIceConnectionState> for emlite::Val {
         }
     }
 }
+impl From<&RTCIceConnectionState> for emlite::Val {
+    fn from(s: &RTCIceConnectionState) -> emlite::Val {
+        match *s {
+            RTCIceConnectionState::CLOSED => emlite::Val::from("closed"),
+            RTCIceConnectionState::FAILED => emlite::Val::from("failed"),
+            RTCIceConnectionState::DISCONNECTED => emlite::Val::from("disconnected"),
+            RTCIceConnectionState::NEW => emlite::Val::from("new"),
+            RTCIceConnectionState::CHECKING => emlite::Val::from("checking"),
+            RTCIceConnectionState::COMPLETED => emlite::Val::from("completed"),
+            RTCIceConnectionState::CONNECTED => emlite::Val::from("connected"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RTCSdpType {
@@ -11202,6 +14448,16 @@ impl FromVal for RTCSdpType {
 impl From<RTCSdpType> for emlite::Val {
     fn from(s: RTCSdpType) -> emlite::Val {
         match s {
+            RTCSdpType::OFFER => emlite::Val::from("offer"),
+            RTCSdpType::PRANSWER => emlite::Val::from("pranswer"),
+            RTCSdpType::ANSWER => emlite::Val::from("answer"),
+            RTCSdpType::ROLLBACK => emlite::Val::from("rollback"),
+        }
+    }
+}
+impl From<&RTCSdpType> for emlite::Val {
+    fn from(s: &RTCSdpType) -> emlite::Val {
+        match *s {
             RTCSdpType::OFFER => emlite::Val::from("offer"),
             RTCSdpType::PRANSWER => emlite::Val::from("pranswer"),
             RTCSdpType::ANSWER => emlite::Val::from("answer"),
@@ -11238,6 +14494,14 @@ impl From<RTCIceProtocol> for emlite::Val {
         }
     }
 }
+impl From<&RTCIceProtocol> for emlite::Val {
+    fn from(s: &RTCIceProtocol) -> emlite::Val {
+        match *s {
+            RTCIceProtocol::UDP => emlite::Val::from("udp"),
+            RTCIceProtocol::TCP => emlite::Val::from("tcp"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RTCIceTcpCandidateType {
@@ -11264,6 +14528,15 @@ impl FromVal for RTCIceTcpCandidateType {
 impl From<RTCIceTcpCandidateType> for emlite::Val {
     fn from(s: RTCIceTcpCandidateType) -> emlite::Val {
         match s {
+            RTCIceTcpCandidateType::ACTIVE => emlite::Val::from("active"),
+            RTCIceTcpCandidateType::PASSIVE => emlite::Val::from("passive"),
+            RTCIceTcpCandidateType::SO => emlite::Val::from("so"),
+        }
+    }
+}
+impl From<&RTCIceTcpCandidateType> for emlite::Val {
+    fn from(s: &RTCIceTcpCandidateType) -> emlite::Val {
+        match *s {
             RTCIceTcpCandidateType::ACTIVE => emlite::Val::from("active"),
             RTCIceTcpCandidateType::PASSIVE => emlite::Val::from("passive"),
             RTCIceTcpCandidateType::SO => emlite::Val::from("so"),
@@ -11305,6 +14578,16 @@ impl From<RTCIceCandidateType> for emlite::Val {
         }
     }
 }
+impl From<&RTCIceCandidateType> for emlite::Val {
+    fn from(s: &RTCIceCandidateType) -> emlite::Val {
+        match *s {
+            RTCIceCandidateType::HOST => emlite::Val::from("host"),
+            RTCIceCandidateType::SRFLX => emlite::Val::from("srflx"),
+            RTCIceCandidateType::PRFLX => emlite::Val::from("prflx"),
+            RTCIceCandidateType::RELAY => emlite::Val::from("relay"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RTCIceServerTransportProtocol {
@@ -11331,6 +14614,15 @@ impl FromVal for RTCIceServerTransportProtocol {
 impl From<RTCIceServerTransportProtocol> for emlite::Val {
     fn from(s: RTCIceServerTransportProtocol) -> emlite::Val {
         match s {
+            RTCIceServerTransportProtocol::UDP => emlite::Val::from("udp"),
+            RTCIceServerTransportProtocol::TCP => emlite::Val::from("tcp"),
+            RTCIceServerTransportProtocol::TLS => emlite::Val::from("tls"),
+        }
+    }
+}
+impl From<&RTCIceServerTransportProtocol> for emlite::Val {
+    fn from(s: &RTCIceServerTransportProtocol) -> emlite::Val {
+        match *s {
             RTCIceServerTransportProtocol::UDP => emlite::Val::from("udp"),
             RTCIceServerTransportProtocol::TCP => emlite::Val::from("tcp"),
             RTCIceServerTransportProtocol::TLS => emlite::Val::from("tls"),
@@ -11367,6 +14659,17 @@ impl FromVal for RTCRtpTransceiverDirection {
 impl From<RTCRtpTransceiverDirection> for emlite::Val {
     fn from(s: RTCRtpTransceiverDirection) -> emlite::Val {
         match s {
+            RTCRtpTransceiverDirection::SENDRECV => emlite::Val::from("sendrecv"),
+            RTCRtpTransceiverDirection::SENDONLY => emlite::Val::from("sendonly"),
+            RTCRtpTransceiverDirection::RECVONLY => emlite::Val::from("recvonly"),
+            RTCRtpTransceiverDirection::INACTIVE => emlite::Val::from("inactive"),
+            RTCRtpTransceiverDirection::STOPPED => emlite::Val::from("stopped"),
+        }
+    }
+}
+impl From<&RTCRtpTransceiverDirection> for emlite::Val {
+    fn from(s: &RTCRtpTransceiverDirection) -> emlite::Val {
+        match *s {
             RTCRtpTransceiverDirection::SENDRECV => emlite::Val::from("sendrecv"),
             RTCRtpTransceiverDirection::SENDONLY => emlite::Val::from("sendonly"),
             RTCRtpTransceiverDirection::RECVONLY => emlite::Val::from("recvonly"),
@@ -11413,6 +14716,17 @@ impl From<RTCDtlsTransportState> for emlite::Val {
         }
     }
 }
+impl From<&RTCDtlsTransportState> for emlite::Val {
+    fn from(s: &RTCDtlsTransportState) -> emlite::Val {
+        match *s {
+            RTCDtlsTransportState::NEW => emlite::Val::from("new"),
+            RTCDtlsTransportState::CONNECTING => emlite::Val::from("connecting"),
+            RTCDtlsTransportState::CONNECTED => emlite::Val::from("connected"),
+            RTCDtlsTransportState::CLOSED => emlite::Val::from("closed"),
+            RTCDtlsTransportState::FAILED => emlite::Val::from("failed"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RTCIceGathererState {
@@ -11439,6 +14753,15 @@ impl FromVal for RTCIceGathererState {
 impl From<RTCIceGathererState> for emlite::Val {
     fn from(s: RTCIceGathererState) -> emlite::Val {
         match s {
+            RTCIceGathererState::NEW => emlite::Val::from("new"),
+            RTCIceGathererState::GATHERING => emlite::Val::from("gathering"),
+            RTCIceGathererState::COMPLETE => emlite::Val::from("complete"),
+        }
+    }
+}
+impl From<&RTCIceGathererState> for emlite::Val {
+    fn from(s: &RTCIceGathererState) -> emlite::Val {
+        match *s {
             RTCIceGathererState::NEW => emlite::Val::from("new"),
             RTCIceGathererState::GATHERING => emlite::Val::from("gathering"),
             RTCIceGathererState::COMPLETE => emlite::Val::from("complete"),
@@ -11489,6 +14812,19 @@ impl From<RTCIceTransportState> for emlite::Val {
         }
     }
 }
+impl From<&RTCIceTransportState> for emlite::Val {
+    fn from(s: &RTCIceTransportState) -> emlite::Val {
+        match *s {
+            RTCIceTransportState::CLOSED => emlite::Val::from("closed"),
+            RTCIceTransportState::FAILED => emlite::Val::from("failed"),
+            RTCIceTransportState::DISCONNECTED => emlite::Val::from("disconnected"),
+            RTCIceTransportState::NEW => emlite::Val::from("new"),
+            RTCIceTransportState::CHECKING => emlite::Val::from("checking"),
+            RTCIceTransportState::COMPLETED => emlite::Val::from("completed"),
+            RTCIceTransportState::CONNECTED => emlite::Val::from("connected"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RTCIceRole {
@@ -11521,6 +14857,15 @@ impl From<RTCIceRole> for emlite::Val {
         }
     }
 }
+impl From<&RTCIceRole> for emlite::Val {
+    fn from(s: &RTCIceRole) -> emlite::Val {
+        match *s {
+            RTCIceRole::UNKNOWN => emlite::Val::from("unknown"),
+            RTCIceRole::CONTROLLING => emlite::Val::from("controlling"),
+            RTCIceRole::CONTROLLED => emlite::Val::from("controlled"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RTCIceComponent {
@@ -11545,6 +14890,14 @@ impl FromVal for RTCIceComponent {
 impl From<RTCIceComponent> for emlite::Val {
     fn from(s: RTCIceComponent) -> emlite::Val {
         match s {
+            RTCIceComponent::RTP => emlite::Val::from("rtp"),
+            RTCIceComponent::RTCP => emlite::Val::from("rtcp"),
+        }
+    }
+}
+impl From<&RTCIceComponent> for emlite::Val {
+    fn from(s: &RTCIceComponent) -> emlite::Val {
+        match *s {
             RTCIceComponent::RTP => emlite::Val::from("rtp"),
             RTCIceComponent::RTCP => emlite::Val::from("rtcp"),
         }
@@ -11582,6 +14935,15 @@ impl From<RTCSctpTransportState> for emlite::Val {
         }
     }
 }
+impl From<&RTCSctpTransportState> for emlite::Val {
+    fn from(s: &RTCSctpTransportState) -> emlite::Val {
+        match *s {
+            RTCSctpTransportState::CONNECTING => emlite::Val::from("connecting"),
+            RTCSctpTransportState::CONNECTED => emlite::Val::from("connected"),
+            RTCSctpTransportState::CLOSED => emlite::Val::from("closed"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RTCDataChannelState {
@@ -11610,6 +14972,16 @@ impl FromVal for RTCDataChannelState {
 impl From<RTCDataChannelState> for emlite::Val {
     fn from(s: RTCDataChannelState) -> emlite::Val {
         match s {
+            RTCDataChannelState::CONNECTING => emlite::Val::from("connecting"),
+            RTCDataChannelState::OPEN => emlite::Val::from("open"),
+            RTCDataChannelState::CLOSING => emlite::Val::from("closing"),
+            RTCDataChannelState::CLOSED => emlite::Val::from("closed"),
+        }
+    }
+}
+impl From<&RTCDataChannelState> for emlite::Val {
+    fn from(s: &RTCDataChannelState) -> emlite::Val {
+        match *s {
             RTCDataChannelState::CONNECTING => emlite::Val::from("connecting"),
             RTCDataChannelState::OPEN => emlite::Val::from("open"),
             RTCDataChannelState::CLOSING => emlite::Val::from("closing"),
@@ -11665,6 +15037,23 @@ impl From<RTCErrorDetailType> for emlite::Val {
         }
     }
 }
+impl From<&RTCErrorDetailType> for emlite::Val {
+    fn from(s: &RTCErrorDetailType) -> emlite::Val {
+        match *s {
+            RTCErrorDetailType::DATA_CHANNEL_FAILURE => emlite::Val::from("data-channel-failure"),
+            RTCErrorDetailType::DTLS_FAILURE => emlite::Val::from("dtls-failure"),
+            RTCErrorDetailType::FINGERPRINT_FAILURE => emlite::Val::from("fingerprint-failure"),
+            RTCErrorDetailType::SCTP_FAILURE => emlite::Val::from("sctp-failure"),
+            RTCErrorDetailType::SDP_SYNTAX_ERROR => emlite::Val::from("sdp-syntax-error"),
+            RTCErrorDetailType::HARDWARE_ENCODER_NOT_AVAILABLE => {
+                emlite::Val::from("hardware-encoder-not-available")
+            }
+            RTCErrorDetailType::HARDWARE_ENCODER_ERROR => {
+                emlite::Val::from("hardware-encoder-error")
+            }
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum BinaryType {
@@ -11689,6 +15078,14 @@ impl FromVal for BinaryType {
 impl From<BinaryType> for emlite::Val {
     fn from(s: BinaryType) -> emlite::Val {
         match s {
+            BinaryType::BLOB => emlite::Val::from("blob"),
+            BinaryType::ARRAYBUFFER => emlite::Val::from("arraybuffer"),
+        }
+    }
+}
+impl From<&BinaryType> for emlite::Val {
+    fn from(s: &BinaryType) -> emlite::Val {
+        match *s {
             BinaryType::BLOB => emlite::Val::from("blob"),
             BinaryType::ARRAYBUFFER => emlite::Val::from("arraybuffer"),
         }
@@ -11720,6 +15117,17 @@ impl FromVal for WebTransportReliabilityMode {
 impl From<WebTransportReliabilityMode> for emlite::Val {
     fn from(s: WebTransportReliabilityMode) -> emlite::Val {
         match s {
+            WebTransportReliabilityMode::PENDING => emlite::Val::from("pending"),
+            WebTransportReliabilityMode::RELIABLE_ONLY => emlite::Val::from("reliable-only"),
+            WebTransportReliabilityMode::SUPPORTS_UNRELIABLE => {
+                emlite::Val::from("supports-unreliable")
+            }
+        }
+    }
+}
+impl From<&WebTransportReliabilityMode> for emlite::Val {
+    fn from(s: &WebTransportReliabilityMode) -> emlite::Val {
+        match *s {
             WebTransportReliabilityMode::PENDING => emlite::Val::from("pending"),
             WebTransportReliabilityMode::RELIABLE_ONLY => emlite::Val::from("reliable-only"),
             WebTransportReliabilityMode::SUPPORTS_UNRELIABLE => {
@@ -11760,6 +15168,15 @@ impl From<WebTransportCongestionControl> for emlite::Val {
         }
     }
 }
+impl From<&WebTransportCongestionControl> for emlite::Val {
+    fn from(s: &WebTransportCongestionControl) -> emlite::Val {
+        match *s {
+            WebTransportCongestionControl::DEFAULT => emlite::Val::from("default"),
+            WebTransportCongestionControl::THROUGHPUT => emlite::Val::from("throughput"),
+            WebTransportCongestionControl::LOW_LATENCY => emlite::Val::from("low-latency"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum WebTransportErrorSource {
@@ -11784,6 +15201,14 @@ impl FromVal for WebTransportErrorSource {
 impl From<WebTransportErrorSource> for emlite::Val {
     fn from(s: WebTransportErrorSource) -> emlite::Val {
         match s {
+            WebTransportErrorSource::STREAM => emlite::Val::from("stream"),
+            WebTransportErrorSource::SESSION => emlite::Val::from("session"),
+        }
+    }
+}
+impl From<&WebTransportErrorSource> for emlite::Val {
+    fn from(s: &WebTransportErrorSource) -> emlite::Val {
+        match *s {
             WebTransportErrorSource::STREAM => emlite::Val::from("stream"),
             WebTransportErrorSource::SESSION => emlite::Val::from("session"),
         }
@@ -11821,6 +15246,15 @@ impl From<USBTransferStatus> for emlite::Val {
         }
     }
 }
+impl From<&USBTransferStatus> for emlite::Val {
+    fn from(s: &USBTransferStatus) -> emlite::Val {
+        match *s {
+            USBTransferStatus::OK => emlite::Val::from("ok"),
+            USBTransferStatus::STALL => emlite::Val::from("stall"),
+            USBTransferStatus::BABBLE => emlite::Val::from("babble"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum USBRequestType {
@@ -11847,6 +15281,15 @@ impl FromVal for USBRequestType {
 impl From<USBRequestType> for emlite::Val {
     fn from(s: USBRequestType) -> emlite::Val {
         match s {
+            USBRequestType::STANDARD => emlite::Val::from("standard"),
+            USBRequestType::CLASS => emlite::Val::from("class"),
+            USBRequestType::VENDOR => emlite::Val::from("vendor"),
+        }
+    }
+}
+impl From<&USBRequestType> for emlite::Val {
+    fn from(s: &USBRequestType) -> emlite::Val {
+        match *s {
             USBRequestType::STANDARD => emlite::Val::from("standard"),
             USBRequestType::CLASS => emlite::Val::from("class"),
             USBRequestType::VENDOR => emlite::Val::from("vendor"),
@@ -11888,6 +15331,16 @@ impl From<USBRecipient> for emlite::Val {
         }
     }
 }
+impl From<&USBRecipient> for emlite::Val {
+    fn from(s: &USBRecipient) -> emlite::Val {
+        match *s {
+            USBRecipient::DEVICE => emlite::Val::from("device"),
+            USBRecipient::INTERFACE => emlite::Val::from("interface"),
+            USBRecipient::ENDPOINT => emlite::Val::from("endpoint"),
+            USBRecipient::OTHER => emlite::Val::from("other"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum USBDirection {
@@ -11912,6 +15365,14 @@ impl FromVal for USBDirection {
 impl From<USBDirection> for emlite::Val {
     fn from(s: USBDirection) -> emlite::Val {
         match s {
+            USBDirection::IN_ => emlite::Val::from("in"),
+            USBDirection::OUT => emlite::Val::from("out"),
+        }
+    }
+}
+impl From<&USBDirection> for emlite::Val {
+    fn from(s: &USBDirection) -> emlite::Val {
+        match *s {
             USBDirection::IN_ => emlite::Val::from("in"),
             USBDirection::OUT => emlite::Val::from("out"),
         }
@@ -11949,6 +15410,15 @@ impl From<USBEndpointType> for emlite::Val {
         }
     }
 }
+impl From<&USBEndpointType> for emlite::Val {
+    fn from(s: &USBEndpointType) -> emlite::Val {
+        match *s {
+            USBEndpointType::BULK => emlite::Val::from("bulk"),
+            USBEndpointType::INTERRUPT => emlite::Val::from("interrupt"),
+            USBEndpointType::ISOCHRONOUS => emlite::Val::from("isochronous"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum AutoKeyword {
@@ -11971,6 +15441,13 @@ impl FromVal for AutoKeyword {
 impl From<AutoKeyword> for emlite::Val {
     fn from(s: AutoKeyword) -> emlite::Val {
         match s {
+            AutoKeyword::AUTO => emlite::Val::from("auto"),
+        }
+    }
+}
+impl From<&AutoKeyword> for emlite::Val {
+    fn from(s: &AutoKeyword) -> emlite::Val {
+        match *s {
             AutoKeyword::AUTO => emlite::Val::from("auto"),
         }
     }
@@ -12001,6 +15478,15 @@ impl FromVal for DirectionSetting {
 impl From<DirectionSetting> for emlite::Val {
     fn from(s: DirectionSetting) -> emlite::Val {
         match s {
+            DirectionSetting::NONE => emlite::Val::from(""),
+            DirectionSetting::RL => emlite::Val::from("rl"),
+            DirectionSetting::LR => emlite::Val::from("lr"),
+        }
+    }
+}
+impl From<&DirectionSetting> for emlite::Val {
+    fn from(s: &DirectionSetting) -> emlite::Val {
+        match *s {
             DirectionSetting::NONE => emlite::Val::from(""),
             DirectionSetting::RL => emlite::Val::from("rl"),
             DirectionSetting::LR => emlite::Val::from("lr"),
@@ -12039,6 +15525,15 @@ impl From<LineAlignSetting> for emlite::Val {
         }
     }
 }
+impl From<&LineAlignSetting> for emlite::Val {
+    fn from(s: &LineAlignSetting) -> emlite::Val {
+        match *s {
+            LineAlignSetting::START => emlite::Val::from("start"),
+            LineAlignSetting::CENTER => emlite::Val::from("center"),
+            LineAlignSetting::END => emlite::Val::from("end"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum PositionAlignSetting {
@@ -12067,6 +15562,16 @@ impl FromVal for PositionAlignSetting {
 impl From<PositionAlignSetting> for emlite::Val {
     fn from(s: PositionAlignSetting) -> emlite::Val {
         match s {
+            PositionAlignSetting::LINE_LEFT => emlite::Val::from("line-left"),
+            PositionAlignSetting::CENTER => emlite::Val::from("center"),
+            PositionAlignSetting::LINE_RIGHT => emlite::Val::from("line-right"),
+            PositionAlignSetting::AUTO => emlite::Val::from("auto"),
+        }
+    }
+}
+impl From<&PositionAlignSetting> for emlite::Val {
+    fn from(s: &PositionAlignSetting) -> emlite::Val {
+        match *s {
             PositionAlignSetting::LINE_LEFT => emlite::Val::from("line-left"),
             PositionAlignSetting::CENTER => emlite::Val::from("center"),
             PositionAlignSetting::LINE_RIGHT => emlite::Val::from("line-right"),
@@ -12112,6 +15617,17 @@ impl From<AlignSetting> for emlite::Val {
         }
     }
 }
+impl From<&AlignSetting> for emlite::Val {
+    fn from(s: &AlignSetting) -> emlite::Val {
+        match *s {
+            AlignSetting::START => emlite::Val::from("start"),
+            AlignSetting::CENTER => emlite::Val::from("center"),
+            AlignSetting::END => emlite::Val::from("end"),
+            AlignSetting::LEFT => emlite::Val::from("left"),
+            AlignSetting::RIGHT => emlite::Val::from("right"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum ScrollSetting {
@@ -12136,6 +15652,14 @@ impl FromVal for ScrollSetting {
 impl From<ScrollSetting> for emlite::Val {
     fn from(s: ScrollSetting) -> emlite::Val {
         match s {
+            ScrollSetting::NONE => emlite::Val::from(""),
+            ScrollSetting::UP => emlite::Val::from("up"),
+        }
+    }
+}
+impl From<&ScrollSetting> for emlite::Val {
+    fn from(s: &ScrollSetting) -> emlite::Val {
+        match *s {
             ScrollSetting::NONE => emlite::Val::from(""),
             ScrollSetting::UP => emlite::Val::from("up"),
         }
@@ -12173,6 +15697,15 @@ impl From<XREnvironmentBlendMode> for emlite::Val {
         }
     }
 }
+impl From<&XREnvironmentBlendMode> for emlite::Val {
+    fn from(s: &XREnvironmentBlendMode) -> emlite::Val {
+        match *s {
+            XREnvironmentBlendMode::OPAQUE => emlite::Val::from("opaque"),
+            XREnvironmentBlendMode::ALPHA_BLEND => emlite::Val::from("alpha-blend"),
+            XREnvironmentBlendMode::ADDITIVE => emlite::Val::from("additive"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum XRInteractionMode {
@@ -12197,6 +15730,14 @@ impl FromVal for XRInteractionMode {
 impl From<XRInteractionMode> for emlite::Val {
     fn from(s: XRInteractionMode) -> emlite::Val {
         match s {
+            XRInteractionMode::SCREEN_SPACE => emlite::Val::from("screen-space"),
+            XRInteractionMode::WORLD_SPACE => emlite::Val::from("world-space"),
+        }
+    }
+}
+impl From<&XRInteractionMode> for emlite::Val {
+    fn from(s: &XRInteractionMode) -> emlite::Val {
+        match *s {
             XRInteractionMode::SCREEN_SPACE => emlite::Val::from("screen-space"),
             XRInteractionMode::WORLD_SPACE => emlite::Val::from("world-space"),
         }
@@ -12231,6 +15772,14 @@ impl From<XRDepthType> for emlite::Val {
         }
     }
 }
+impl From<&XRDepthType> for emlite::Val {
+    fn from(s: &XRDepthType) -> emlite::Val {
+        match *s {
+            XRDepthType::RAW_ => emlite::Val::from("raw"),
+            XRDepthType::SMOOTH => emlite::Val::from("smooth"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum XRDepthUsage {
@@ -12255,6 +15804,14 @@ impl FromVal for XRDepthUsage {
 impl From<XRDepthUsage> for emlite::Val {
     fn from(s: XRDepthUsage) -> emlite::Val {
         match s {
+            XRDepthUsage::CPU_OPTIMIZED => emlite::Val::from("cpu-optimized"),
+            XRDepthUsage::GPU_OPTIMIZED => emlite::Val::from("gpu-optimized"),
+        }
+    }
+}
+impl From<&XRDepthUsage> for emlite::Val {
+    fn from(s: &XRDepthUsage) -> emlite::Val {
+        match *s {
             XRDepthUsage::CPU_OPTIMIZED => emlite::Val::from("cpu-optimized"),
             XRDepthUsage::GPU_OPTIMIZED => emlite::Val::from("gpu-optimized"),
         }
@@ -12292,6 +15849,15 @@ impl From<XRDepthDataFormat> for emlite::Val {
         }
     }
 }
+impl From<&XRDepthDataFormat> for emlite::Val {
+    fn from(s: &XRDepthDataFormat) -> emlite::Val {
+        match *s {
+            XRDepthDataFormat::LUMINANCE_ALPHA => emlite::Val::from("luminance-alpha"),
+            XRDepthDataFormat::FLOAT32 => emlite::Val::from("float32"),
+            XRDepthDataFormat::UNSIGNED_SHORT => emlite::Val::from("unsigned-short"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum XRDOMOverlayType {
@@ -12318,6 +15884,15 @@ impl FromVal for XRDOMOverlayType {
 impl From<XRDOMOverlayType> for emlite::Val {
     fn from(s: XRDOMOverlayType) -> emlite::Val {
         match s {
+            XRDOMOverlayType::SCREEN => emlite::Val::from("screen"),
+            XRDOMOverlayType::FLOATING => emlite::Val::from("floating"),
+            XRDOMOverlayType::HEAD_LOCKED => emlite::Val::from("head-locked"),
+        }
+    }
+}
+impl From<&XRDOMOverlayType> for emlite::Val {
+    fn from(s: &XRDOMOverlayType) -> emlite::Val {
+        match *s {
             XRDOMOverlayType::SCREEN => emlite::Val::from("screen"),
             XRDOMOverlayType::FLOATING => emlite::Val::from("floating"),
             XRDOMOverlayType::HEAD_LOCKED => emlite::Val::from("head-locked"),
@@ -12446,6 +16021,61 @@ impl From<XRHandJoint> for emlite::Val {
         }
     }
 }
+impl From<&XRHandJoint> for emlite::Val {
+    fn from(s: &XRHandJoint) -> emlite::Val {
+        match *s {
+            XRHandJoint::WRIST => emlite::Val::from("wrist"),
+            XRHandJoint::THUMB_METACARPAL => emlite::Val::from("thumb-metacarpal"),
+            XRHandJoint::THUMB_PHALANX_PROXIMAL => emlite::Val::from("thumb-phalanx-proximal"),
+            XRHandJoint::THUMB_PHALANX_DISTAL => emlite::Val::from("thumb-phalanx-distal"),
+            XRHandJoint::THUMB_TIP => emlite::Val::from("thumb-tip"),
+            XRHandJoint::INDEX_FINGER_METACARPAL => emlite::Val::from("index-finger-metacarpal"),
+            XRHandJoint::INDEX_FINGER_PHALANX_PROXIMAL => {
+                emlite::Val::from("index-finger-phalanx-proximal")
+            }
+            XRHandJoint::INDEX_FINGER_PHALANX_INTERMEDIATE => {
+                emlite::Val::from("index-finger-phalanx-intermediate")
+            }
+            XRHandJoint::INDEX_FINGER_PHALANX_DISTAL => {
+                emlite::Val::from("index-finger-phalanx-distal")
+            }
+            XRHandJoint::INDEX_FINGER_TIP => emlite::Val::from("index-finger-tip"),
+            XRHandJoint::MIDDLE_FINGER_METACARPAL => emlite::Val::from("middle-finger-metacarpal"),
+            XRHandJoint::MIDDLE_FINGER_PHALANX_PROXIMAL => {
+                emlite::Val::from("middle-finger-phalanx-proximal")
+            }
+            XRHandJoint::MIDDLE_FINGER_PHALANX_INTERMEDIATE => {
+                emlite::Val::from("middle-finger-phalanx-intermediate")
+            }
+            XRHandJoint::MIDDLE_FINGER_PHALANX_DISTAL => {
+                emlite::Val::from("middle-finger-phalanx-distal")
+            }
+            XRHandJoint::MIDDLE_FINGER_TIP => emlite::Val::from("middle-finger-tip"),
+            XRHandJoint::RING_FINGER_METACARPAL => emlite::Val::from("ring-finger-metacarpal"),
+            XRHandJoint::RING_FINGER_PHALANX_PROXIMAL => {
+                emlite::Val::from("ring-finger-phalanx-proximal")
+            }
+            XRHandJoint::RING_FINGER_PHALANX_INTERMEDIATE => {
+                emlite::Val::from("ring-finger-phalanx-intermediate")
+            }
+            XRHandJoint::RING_FINGER_PHALANX_DISTAL => {
+                emlite::Val::from("ring-finger-phalanx-distal")
+            }
+            XRHandJoint::RING_FINGER_TIP => emlite::Val::from("ring-finger-tip"),
+            XRHandJoint::PINKY_FINGER_METACARPAL => emlite::Val::from("pinky-finger-metacarpal"),
+            XRHandJoint::PINKY_FINGER_PHALANX_PROXIMAL => {
+                emlite::Val::from("pinky-finger-phalanx-proximal")
+            }
+            XRHandJoint::PINKY_FINGER_PHALANX_INTERMEDIATE => {
+                emlite::Val::from("pinky-finger-phalanx-intermediate")
+            }
+            XRHandJoint::PINKY_FINGER_PHALANX_DISTAL => {
+                emlite::Val::from("pinky-finger-phalanx-distal")
+            }
+            XRHandJoint::PINKY_FINGER_TIP => emlite::Val::from("pinky-finger-tip"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum XRHitTestTrackableType {
@@ -12472,6 +16102,15 @@ impl FromVal for XRHitTestTrackableType {
 impl From<XRHitTestTrackableType> for emlite::Val {
     fn from(s: XRHitTestTrackableType) -> emlite::Val {
         match s {
+            XRHitTestTrackableType::POINT => emlite::Val::from("point"),
+            XRHitTestTrackableType::PLANE => emlite::Val::from("plane"),
+            XRHitTestTrackableType::MESH => emlite::Val::from("mesh"),
+        }
+    }
+}
+impl From<&XRHitTestTrackableType> for emlite::Val {
+    fn from(s: &XRHitTestTrackableType) -> emlite::Val {
+        match *s {
             XRHitTestTrackableType::POINT => emlite::Val::from("point"),
             XRHitTestTrackableType::PLANE => emlite::Val::from("plane"),
             XRHitTestTrackableType::MESH => emlite::Val::from("mesh"),
@@ -12507,6 +16146,14 @@ impl From<XRReflectionFormat> for emlite::Val {
         }
     }
 }
+impl From<&XRReflectionFormat> for emlite::Val {
+    fn from(s: &XRReflectionFormat) -> emlite::Val {
+        match *s {
+            XRReflectionFormat::SRGBA8 => emlite::Val::from("srgba8"),
+            XRReflectionFormat::RGBA16F => emlite::Val::from("rgba16f"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum XRPlaneOrientation {
@@ -12531,6 +16178,14 @@ impl FromVal for XRPlaneOrientation {
 impl From<XRPlaneOrientation> for emlite::Val {
     fn from(s: XRPlaneOrientation) -> emlite::Val {
         match s {
+            XRPlaneOrientation::HORIZONTAL => emlite::Val::from("horizontal"),
+            XRPlaneOrientation::VERTICAL => emlite::Val::from("vertical"),
+        }
+    }
+}
+impl From<&XRPlaneOrientation> for emlite::Val {
+    fn from(s: &XRPlaneOrientation) -> emlite::Val {
+        match *s {
             XRPlaneOrientation::HORIZONTAL => emlite::Val::from("horizontal"),
             XRPlaneOrientation::VERTICAL => emlite::Val::from("vertical"),
         }
@@ -12568,6 +16223,15 @@ impl From<XRSessionMode> for emlite::Val {
         }
     }
 }
+impl From<&XRSessionMode> for emlite::Val {
+    fn from(s: &XRSessionMode) -> emlite::Val {
+        match *s {
+            XRSessionMode::INLINE => emlite::Val::from("inline"),
+            XRSessionMode::IMMERSIVE_VR => emlite::Val::from("immersive-vr"),
+            XRSessionMode::IMMERSIVE_AR => emlite::Val::from("immersive-ar"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum XRVisibilityState {
@@ -12594,6 +16258,15 @@ impl FromVal for XRVisibilityState {
 impl From<XRVisibilityState> for emlite::Val {
     fn from(s: XRVisibilityState) -> emlite::Val {
         match s {
+            XRVisibilityState::VISIBLE => emlite::Val::from("visible"),
+            XRVisibilityState::VISIBLE_BLURRED => emlite::Val::from("visible-blurred"),
+            XRVisibilityState::HIDDEN => emlite::Val::from("hidden"),
+        }
+    }
+}
+impl From<&XRVisibilityState> for emlite::Val {
+    fn from(s: &XRVisibilityState) -> emlite::Val {
+        match *s {
             XRVisibilityState::VISIBLE => emlite::Val::from("visible"),
             XRVisibilityState::VISIBLE_BLURRED => emlite::Val::from("visible-blurred"),
             XRVisibilityState::HIDDEN => emlite::Val::from("hidden"),
@@ -12638,6 +16311,17 @@ impl From<XRReferenceSpaceType> for emlite::Val {
         }
     }
 }
+impl From<&XRReferenceSpaceType> for emlite::Val {
+    fn from(s: &XRReferenceSpaceType) -> emlite::Val {
+        match *s {
+            XRReferenceSpaceType::VIEWER => emlite::Val::from("viewer"),
+            XRReferenceSpaceType::LOCAL => emlite::Val::from("local"),
+            XRReferenceSpaceType::LOCAL_FLOOR => emlite::Val::from("local-floor"),
+            XRReferenceSpaceType::BOUNDED_FLOOR => emlite::Val::from("bounded-floor"),
+            XRReferenceSpaceType::UNBOUNDED => emlite::Val::from("unbounded"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum XREye {
@@ -12664,6 +16348,15 @@ impl FromVal for XREye {
 impl From<XREye> for emlite::Val {
     fn from(s: XREye) -> emlite::Val {
         match s {
+            XREye::NONE => emlite::Val::from("none"),
+            XREye::LEFT => emlite::Val::from("left"),
+            XREye::RIGHT => emlite::Val::from("right"),
+        }
+    }
+}
+impl From<&XREye> for emlite::Val {
+    fn from(s: &XREye) -> emlite::Val {
+        match *s {
             XREye::NONE => emlite::Val::from("none"),
             XREye::LEFT => emlite::Val::from("left"),
             XREye::RIGHT => emlite::Val::from("right"),
@@ -12702,6 +16395,15 @@ impl From<XRHandedness> for emlite::Val {
         }
     }
 }
+impl From<&XRHandedness> for emlite::Val {
+    fn from(s: &XRHandedness) -> emlite::Val {
+        match *s {
+            XRHandedness::NONE => emlite::Val::from("none"),
+            XRHandedness::LEFT => emlite::Val::from("left"),
+            XRHandedness::RIGHT => emlite::Val::from("right"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum XRTargetRayMode {
@@ -12730,6 +16432,16 @@ impl FromVal for XRTargetRayMode {
 impl From<XRTargetRayMode> for emlite::Val {
     fn from(s: XRTargetRayMode) -> emlite::Val {
         match s {
+            XRTargetRayMode::GAZE => emlite::Val::from("gaze"),
+            XRTargetRayMode::TRACKED_POINTER => emlite::Val::from("tracked-pointer"),
+            XRTargetRayMode::SCREEN => emlite::Val::from("screen"),
+            XRTargetRayMode::TRANSIENT_POINTER => emlite::Val::from("transient-pointer"),
+        }
+    }
+}
+impl From<&XRTargetRayMode> for emlite::Val {
+    fn from(s: &XRTargetRayMode) -> emlite::Val {
+        match *s {
             XRTargetRayMode::GAZE => emlite::Val::from("gaze"),
             XRTargetRayMode::TRACKED_POINTER => emlite::Val::from("tracked-pointer"),
             XRTargetRayMode::SCREEN => emlite::Val::from("screen"),
@@ -12775,6 +16487,17 @@ impl From<XRLayerLayout> for emlite::Val {
         }
     }
 }
+impl From<&XRLayerLayout> for emlite::Val {
+    fn from(s: &XRLayerLayout) -> emlite::Val {
+        match *s {
+            XRLayerLayout::DEFAULT => emlite::Val::from("default"),
+            XRLayerLayout::MONO => emlite::Val::from("mono"),
+            XRLayerLayout::STEREO => emlite::Val::from("stereo"),
+            XRLayerLayout::STEREO_LEFT_RIGHT => emlite::Val::from("stereo-left-right"),
+            XRLayerLayout::STEREO_TOP_BOTTOM => emlite::Val::from("stereo-top-bottom"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum XRLayerQuality {
@@ -12807,6 +16530,15 @@ impl From<XRLayerQuality> for emlite::Val {
         }
     }
 }
+impl From<&XRLayerQuality> for emlite::Val {
+    fn from(s: &XRLayerQuality) -> emlite::Val {
+        match *s {
+            XRLayerQuality::DEFAULT => emlite::Val::from("default"),
+            XRLayerQuality::TEXT_OPTIMIZED => emlite::Val::from("text-optimized"),
+            XRLayerQuality::GRAPHICS_OPTIMIZED => emlite::Val::from("graphics-optimized"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum XRTextureType {
@@ -12831,6 +16563,14 @@ impl FromVal for XRTextureType {
 impl From<XRTextureType> for emlite::Val {
     fn from(s: XRTextureType) -> emlite::Val {
         match s {
+            XRTextureType::TEXTURE => emlite::Val::from("texture"),
+            XRTextureType::TEXTURE_ARRAY => emlite::Val::from("texture-array"),
+        }
+    }
+}
+impl From<&XRTextureType> for emlite::Val {
+    fn from(s: &XRTextureType) -> emlite::Val {
+        match *s {
             XRTextureType::TEXTURE => emlite::Val::from("texture"),
             XRTextureType::TEXTURE_ARRAY => emlite::Val::from("texture-array"),
         }
@@ -12871,6 +16611,16 @@ impl From<SummarizerType> for emlite::Val {
         }
     }
 }
+impl From<&SummarizerType> for emlite::Val {
+    fn from(s: &SummarizerType) -> emlite::Val {
+        match *s {
+            SummarizerType::TLDR => emlite::Val::from("tldr"),
+            SummarizerType::TEASER => emlite::Val::from("teaser"),
+            SummarizerType::KEY_POINTS => emlite::Val::from("key-points"),
+            SummarizerType::HEADLINE => emlite::Val::from("headline"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum SummarizerFormat {
@@ -12895,6 +16645,14 @@ impl FromVal for SummarizerFormat {
 impl From<SummarizerFormat> for emlite::Val {
     fn from(s: SummarizerFormat) -> emlite::Val {
         match s {
+            SummarizerFormat::PLAIN_TEXT => emlite::Val::from("plain-text"),
+            SummarizerFormat::MARKDOWN => emlite::Val::from("markdown"),
+        }
+    }
+}
+impl From<&SummarizerFormat> for emlite::Val {
+    fn from(s: &SummarizerFormat) -> emlite::Val {
+        match *s {
             SummarizerFormat::PLAIN_TEXT => emlite::Val::from("plain-text"),
             SummarizerFormat::MARKDOWN => emlite::Val::from("markdown"),
         }
@@ -12926,6 +16684,15 @@ impl FromVal for SummarizerLength {
 impl From<SummarizerLength> for emlite::Val {
     fn from(s: SummarizerLength) -> emlite::Val {
         match s {
+            SummarizerLength::SHORT => emlite::Val::from("short"),
+            SummarizerLength::MEDIUM => emlite::Val::from("medium"),
+            SummarizerLength::LONG => emlite::Val::from("long"),
+        }
+    }
+}
+impl From<&SummarizerLength> for emlite::Val {
+    fn from(s: &SummarizerLength) -> emlite::Val {
+        match *s {
             SummarizerLength::SHORT => emlite::Val::from("short"),
             SummarizerLength::MEDIUM => emlite::Val::from("medium"),
             SummarizerLength::LONG => emlite::Val::from("long"),
@@ -12964,6 +16731,15 @@ impl From<WriterTone> for emlite::Val {
         }
     }
 }
+impl From<&WriterTone> for emlite::Val {
+    fn from(s: &WriterTone) -> emlite::Val {
+        match *s {
+            WriterTone::FORMAL => emlite::Val::from("formal"),
+            WriterTone::NEUTRAL => emlite::Val::from("neutral"),
+            WriterTone::CASUAL => emlite::Val::from("casual"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum WriterFormat {
@@ -12988,6 +16764,14 @@ impl FromVal for WriterFormat {
 impl From<WriterFormat> for emlite::Val {
     fn from(s: WriterFormat) -> emlite::Val {
         match s {
+            WriterFormat::PLAIN_TEXT => emlite::Val::from("plain-text"),
+            WriterFormat::MARKDOWN => emlite::Val::from("markdown"),
+        }
+    }
+}
+impl From<&WriterFormat> for emlite::Val {
+    fn from(s: &WriterFormat) -> emlite::Val {
+        match *s {
             WriterFormat::PLAIN_TEXT => emlite::Val::from("plain-text"),
             WriterFormat::MARKDOWN => emlite::Val::from("markdown"),
         }
@@ -13019,6 +16803,15 @@ impl FromVal for WriterLength {
 impl From<WriterLength> for emlite::Val {
     fn from(s: WriterLength) -> emlite::Val {
         match s {
+            WriterLength::SHORT => emlite::Val::from("short"),
+            WriterLength::MEDIUM => emlite::Val::from("medium"),
+            WriterLength::LONG => emlite::Val::from("long"),
+        }
+    }
+}
+impl From<&WriterLength> for emlite::Val {
+    fn from(s: &WriterLength) -> emlite::Val {
+        match *s {
             WriterLength::SHORT => emlite::Val::from("short"),
             WriterLength::MEDIUM => emlite::Val::from("medium"),
             WriterLength::LONG => emlite::Val::from("long"),
@@ -13057,6 +16850,15 @@ impl From<RewriterTone> for emlite::Val {
         }
     }
 }
+impl From<&RewriterTone> for emlite::Val {
+    fn from(s: &RewriterTone) -> emlite::Val {
+        match *s {
+            RewriterTone::AS_IS => emlite::Val::from("as-is"),
+            RewriterTone::MORE_FORMAL => emlite::Val::from("more-formal"),
+            RewriterTone::MORE_CASUAL => emlite::Val::from("more-casual"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RewriterFormat {
@@ -13089,6 +16891,15 @@ impl From<RewriterFormat> for emlite::Val {
         }
     }
 }
+impl From<&RewriterFormat> for emlite::Val {
+    fn from(s: &RewriterFormat) -> emlite::Val {
+        match *s {
+            RewriterFormat::AS_IS => emlite::Val::from("as-is"),
+            RewriterFormat::PLAIN_TEXT => emlite::Val::from("plain-text"),
+            RewriterFormat::MARKDOWN => emlite::Val::from("markdown"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum RewriterLength {
@@ -13115,6 +16926,15 @@ impl FromVal for RewriterLength {
 impl From<RewriterLength> for emlite::Val {
     fn from(s: RewriterLength) -> emlite::Val {
         match s {
+            RewriterLength::AS_IS => emlite::Val::from("as-is"),
+            RewriterLength::SHORTER => emlite::Val::from("shorter"),
+            RewriterLength::LONGER => emlite::Val::from("longer"),
+        }
+    }
+}
+impl From<&RewriterLength> for emlite::Val {
+    fn from(s: &RewriterLength) -> emlite::Val {
+        match *s {
             RewriterLength::AS_IS => emlite::Val::from("as-is"),
             RewriterLength::SHORTER => emlite::Val::from("shorter"),
             RewriterLength::LONGER => emlite::Val::from("longer"),
@@ -13156,6 +16976,16 @@ impl From<Availability> for emlite::Val {
         }
     }
 }
+impl From<&Availability> for emlite::Val {
+    fn from(s: &Availability) -> emlite::Val {
+        match *s {
+            Availability::UNAVAILABLE => emlite::Val::from("unavailable"),
+            Availability::DOWNLOADABLE => emlite::Val::from("downloadable"),
+            Availability::DOWNLOADING => emlite::Val::from("downloading"),
+            Availability::AVAILABLE => emlite::Val::from("available"),
+        }
+    }
+}
 
 #[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]
 pub enum XMLHttpRequestResponseType {
@@ -13188,6 +17018,18 @@ impl FromVal for XMLHttpRequestResponseType {
 impl From<XMLHttpRequestResponseType> for emlite::Val {
     fn from(s: XMLHttpRequestResponseType) -> emlite::Val {
         match s {
+            XMLHttpRequestResponseType::NONE => emlite::Val::from(""),
+            XMLHttpRequestResponseType::ARRAYBUFFER => emlite::Val::from("arraybuffer"),
+            XMLHttpRequestResponseType::BLOB => emlite::Val::from("blob"),
+            XMLHttpRequestResponseType::DOCUMENT => emlite::Val::from("document"),
+            XMLHttpRequestResponseType::JSON => emlite::Val::from("json"),
+            XMLHttpRequestResponseType::TEXT => emlite::Val::from("text"),
+        }
+    }
+}
+impl From<&XMLHttpRequestResponseType> for emlite::Val {
+    fn from(s: &XMLHttpRequestResponseType) -> emlite::Val {
+        match *s {
             XMLHttpRequestResponseType::NONE => emlite::Val::from(""),
             XMLHttpRequestResponseType::ARRAYBUFFER => emlite::Val::from("arraybuffer"),
             XMLHttpRequestResponseType::BLOB => emlite::Val::from("blob"),

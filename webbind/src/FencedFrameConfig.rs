@@ -46,6 +46,11 @@ impl From<FencedFrameConfig> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&FencedFrameConfig> for emlite::Val {
+    fn from(s: &FencedFrameConfig) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(FencedFrameConfig);
 
 impl FencedFrameConfig {

@@ -46,6 +46,11 @@ impl From<BluetoothUUID> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&BluetoothUUID> for emlite::Val {
+    fn from(s: &BluetoothUUID) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(BluetoothUUID);
 
 impl BluetoothUUID {

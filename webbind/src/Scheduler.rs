@@ -44,6 +44,11 @@ impl From<SchedulerPostTaskOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SchedulerPostTaskOptions> for emlite::Val {
+    fn from(s: &SchedulerPostTaskOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl SchedulerPostTaskOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -116,6 +121,11 @@ impl From<Scheduler> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Scheduler> for emlite::Val {
+    fn from(s: &Scheduler) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Scheduler);

@@ -46,6 +46,11 @@ impl From<WebGLShaderPrecisionFormat> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebGLShaderPrecisionFormat> for emlite::Val {
+    fn from(s: &WebGLShaderPrecisionFormat) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebGLShaderPrecisionFormat);
 
 impl WebGLShaderPrecisionFormat {

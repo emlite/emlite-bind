@@ -46,4 +46,9 @@ impl From<EXT_texture_compression_rgtc> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&EXT_texture_compression_rgtc> for emlite::Val {
+    fn from(s: &EXT_texture_compression_rgtc) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(EXT_texture_compression_rgtc);

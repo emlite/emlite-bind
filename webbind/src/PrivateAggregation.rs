@@ -44,6 +44,11 @@ impl From<PAHistogramContribution> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PAHistogramContribution> for emlite::Val {
+    fn from(s: &PAHistogramContribution) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PAHistogramContribution {
     pub fn bucket(&self) -> i64 {
@@ -116,6 +121,11 @@ impl From<PADebugModeOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PADebugModeOptions> for emlite::Val {
+    fn from(s: &PADebugModeOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PADebugModeOptions {
     pub fn debug_key(&self) -> i64 {
@@ -170,6 +180,11 @@ impl From<PrivateAggregation> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&PrivateAggregation> for emlite::Val {
+    fn from(s: &PrivateAggregation) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PrivateAggregation);

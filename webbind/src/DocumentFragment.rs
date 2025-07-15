@@ -46,6 +46,11 @@ impl From<DocumentFragment> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DocumentFragment> for emlite::Val {
+    fn from(s: &DocumentFragment) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(DocumentFragment);
 
 impl DocumentFragment {

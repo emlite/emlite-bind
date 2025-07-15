@@ -44,6 +44,11 @@ impl From<TranslatorCreateOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TranslatorCreateOptions> for emlite::Val {
+    fn from(s: &TranslatorCreateOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl TranslatorCreateOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -105,6 +110,11 @@ impl From<TranslatorCreateCoreOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&TranslatorCreateCoreOptions> for emlite::Val {
+    fn from(s: &TranslatorCreateCoreOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -170,6 +180,11 @@ impl From<TranslatorTranslateOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TranslatorTranslateOptions> for emlite::Val {
+    fn from(s: &TranslatorTranslateOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl TranslatorTranslateOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -224,6 +239,11 @@ impl From<Translator> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Translator> for emlite::Val {
+    fn from(s: &Translator) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Translator);

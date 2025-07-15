@@ -44,6 +44,11 @@ impl From<FileSystemGetFileOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&FileSystemGetFileOptions> for emlite::Val {
+    fn from(s: &FileSystemGetFileOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl FileSystemGetFileOptions {
     pub fn create(&self) -> bool {
@@ -96,6 +101,11 @@ impl From<FileSystemGetDirectoryOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&FileSystemGetDirectoryOptions> for emlite::Val {
+    fn from(s: &FileSystemGetDirectoryOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -152,6 +162,11 @@ impl From<FileSystemRemoveOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&FileSystemRemoveOptions> for emlite::Val {
+    fn from(s: &FileSystemRemoveOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl FileSystemRemoveOptions {
     pub fn recursive(&self) -> bool {
@@ -206,6 +221,11 @@ impl From<FileSystemDirectoryHandle> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&FileSystemDirectoryHandle> for emlite::Val {
+    fn from(s: &FileSystemDirectoryHandle) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(FileSystemDirectoryHandle);

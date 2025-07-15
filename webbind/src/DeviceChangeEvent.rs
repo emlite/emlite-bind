@@ -46,6 +46,11 @@ impl From<DeviceChangeEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DeviceChangeEvent> for emlite::Val {
+    fn from(s: &DeviceChangeEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(DeviceChangeEvent);
 
 impl DeviceChangeEvent {

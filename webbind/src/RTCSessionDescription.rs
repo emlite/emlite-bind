@@ -46,6 +46,11 @@ impl From<RTCSessionDescription> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCSessionDescription> for emlite::Val {
+    fn from(s: &RTCSessionDescription) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(RTCSessionDescription);
 
 impl RTCSessionDescription {

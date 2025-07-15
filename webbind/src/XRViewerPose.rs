@@ -46,6 +46,11 @@ impl From<XRViewerPose> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRViewerPose> for emlite::Val {
+    fn from(s: &XRViewerPose) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRViewerPose);
 
 impl XRViewerPose {

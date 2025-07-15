@@ -46,6 +46,11 @@ impl From<CSSSkewX> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSSkewX> for emlite::Val {
+    fn from(s: &CSSSkewX) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSSkewX);
 
 impl CSSSkewX {

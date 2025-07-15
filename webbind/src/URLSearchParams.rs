@@ -46,6 +46,11 @@ impl From<URLSearchParams> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&URLSearchParams> for emlite::Val {
+    fn from(s: &URLSearchParams) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(URLSearchParams);
 
 impl URLSearchParams {

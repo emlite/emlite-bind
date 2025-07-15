@@ -46,4 +46,9 @@ impl From<WGSLLanguageFeatures> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WGSLLanguageFeatures> for emlite::Val {
+    fn from(s: &WGSLLanguageFeatures) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WGSLLanguageFeatures);

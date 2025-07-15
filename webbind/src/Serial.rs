@@ -44,6 +44,11 @@ impl From<SerialPortRequestOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SerialPortRequestOptions> for emlite::Val {
+    fn from(s: &SerialPortRequestOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl SerialPortRequestOptions {
     pub fn filters(&self) -> Sequence<Any> {
@@ -109,6 +114,11 @@ impl From<Serial> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Serial> for emlite::Val {
+    fn from(s: &Serial) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Serial);

@@ -46,6 +46,11 @@ impl From<AuthenticatorResponse> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AuthenticatorResponse> for emlite::Val {
+    fn from(s: &AuthenticatorResponse) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(AuthenticatorResponse);
 
 impl AuthenticatorResponse {

@@ -44,6 +44,11 @@ impl From<GamepadTouch> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GamepadTouch> for emlite::Val {
+    fn from(s: &GamepadTouch) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GamepadTouch {
     pub fn touch_id(&self) -> u32 {
@@ -125,6 +130,11 @@ impl From<Gamepad> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Gamepad> for emlite::Val {
+    fn from(s: &Gamepad) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Gamepad);

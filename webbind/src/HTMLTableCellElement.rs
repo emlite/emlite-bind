@@ -46,6 +46,11 @@ impl From<HTMLTableCellElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLTableCellElement> for emlite::Val {
+    fn from(s: &HTMLTableCellElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLTableCellElement);
 
 impl HTMLTableCellElement {

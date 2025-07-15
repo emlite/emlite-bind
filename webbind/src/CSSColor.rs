@@ -46,6 +46,11 @@ impl From<CSSColor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSColor> for emlite::Val {
+    fn from(s: &CSSColor) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSColor);
 
 impl CSSColor {

@@ -44,6 +44,11 @@ impl From<PositionOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PositionOptions> for emlite::Val {
+    fn from(s: &PositionOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PositionOptions {
     pub fn enable_high_accuracy(&self) -> bool {
@@ -116,6 +121,11 @@ impl From<Geolocation> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Geolocation> for emlite::Val {
+    fn from(s: &Geolocation) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Geolocation);

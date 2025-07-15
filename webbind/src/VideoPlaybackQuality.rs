@@ -46,6 +46,11 @@ impl From<VideoPlaybackQuality> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&VideoPlaybackQuality> for emlite::Val {
+    fn from(s: &VideoPlaybackQuality) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(VideoPlaybackQuality);
 
 impl VideoPlaybackQuality {

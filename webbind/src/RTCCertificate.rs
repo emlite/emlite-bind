@@ -44,6 +44,11 @@ impl From<RTCDtlsFingerprint> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCDtlsFingerprint> for emlite::Val {
+    fn from(s: &RTCDtlsFingerprint) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl RTCDtlsFingerprint {
     pub fn algorithm(&self) -> DOMString {
@@ -107,6 +112,11 @@ impl From<RTCCertificate> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCCertificate> for emlite::Val {
+    fn from(s: &RTCCertificate) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCCertificate);

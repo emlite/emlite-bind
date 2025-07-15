@@ -46,6 +46,11 @@ impl From<StorageEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&StorageEvent> for emlite::Val {
+    fn from(s: &StorageEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(StorageEvent);
 
 impl StorageEvent {

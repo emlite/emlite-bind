@@ -44,6 +44,11 @@ impl From<GPUTextureViewDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUTextureViewDescriptor> for emlite::Val {
+    fn from(s: &GPUTextureViewDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GPUTextureViewDescriptor {
     pub fn format(&self) -> GPUTextureFormat {
@@ -161,6 +166,11 @@ impl From<GPUTexture> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GPUTexture> for emlite::Val {
+    fn from(s: &GPUTexture) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GPUTexture);

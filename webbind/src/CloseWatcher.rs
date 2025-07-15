@@ -46,6 +46,11 @@ impl From<CloseWatcher> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CloseWatcher> for emlite::Val {
+    fn from(s: &CloseWatcher) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CloseWatcher);
 
 impl CloseWatcher {

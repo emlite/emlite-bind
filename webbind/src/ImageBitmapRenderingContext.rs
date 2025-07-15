@@ -46,6 +46,11 @@ impl From<ImageBitmapRenderingContext> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ImageBitmapRenderingContext> for emlite::Val {
+    fn from(s: &ImageBitmapRenderingContext) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ImageBitmapRenderingContext);
 
 impl ImageBitmapRenderingContext {

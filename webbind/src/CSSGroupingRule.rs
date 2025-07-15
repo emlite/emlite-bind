@@ -46,6 +46,11 @@ impl From<CSSGroupingRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSGroupingRule> for emlite::Val {
+    fn from(s: &CSSGroupingRule) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSGroupingRule);
 
 impl CSSGroupingRule {

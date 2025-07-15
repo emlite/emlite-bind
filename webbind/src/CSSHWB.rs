@@ -46,6 +46,11 @@ impl From<CSSHWB> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSHWB> for emlite::Val {
+    fn from(s: &CSSHWB) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSHWB);
 
 impl CSSHWB {

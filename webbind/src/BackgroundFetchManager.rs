@@ -44,6 +44,11 @@ impl From<BackgroundFetchOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&BackgroundFetchOptions> for emlite::Val {
+    fn from(s: &BackgroundFetchOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl BackgroundFetchOptions {
     pub fn download_total(&self) -> u64 {
@@ -98,6 +103,11 @@ impl From<BackgroundFetchManager> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&BackgroundFetchManager> for emlite::Val {
+    fn from(s: &BackgroundFetchManager) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BackgroundFetchManager);

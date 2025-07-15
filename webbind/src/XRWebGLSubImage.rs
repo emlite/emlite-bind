@@ -46,6 +46,11 @@ impl From<XRWebGLSubImage> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRWebGLSubImage> for emlite::Val {
+    fn from(s: &XRWebGLSubImage) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRWebGLSubImage);
 
 impl XRWebGLSubImage {

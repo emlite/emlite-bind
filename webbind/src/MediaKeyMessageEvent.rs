@@ -46,6 +46,11 @@ impl From<MediaKeyMessageEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaKeyMessageEvent> for emlite::Val {
+    fn from(s: &MediaKeyMessageEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(MediaKeyMessageEvent);
 
 impl MediaKeyMessageEvent {

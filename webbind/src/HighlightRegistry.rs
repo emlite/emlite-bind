@@ -44,6 +44,11 @@ impl From<HighlightHitResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HighlightHitResult> for emlite::Val {
+    fn from(s: &HighlightHitResult) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl HighlightHitResult {
     pub fn highlight(&self) -> Highlight {
@@ -107,6 +112,11 @@ impl From<HighlightsFromPointOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HighlightsFromPointOptions> for emlite::Val {
+    fn from(s: &HighlightsFromPointOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl HighlightsFromPointOptions {
     pub fn shadow_roots(&self) -> Sequence<ShadowRoot> {
@@ -161,6 +171,11 @@ impl From<HighlightRegistry> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&HighlightRegistry> for emlite::Val {
+    fn from(s: &HighlightRegistry) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HighlightRegistry);

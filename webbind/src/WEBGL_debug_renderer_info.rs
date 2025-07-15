@@ -46,4 +46,9 @@ impl From<WEBGL_debug_renderer_info> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WEBGL_debug_renderer_info> for emlite::Val {
+    fn from(s: &WEBGL_debug_renderer_info) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WEBGL_debug_renderer_info);

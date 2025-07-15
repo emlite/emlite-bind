@@ -46,6 +46,11 @@ impl From<XRFrame> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRFrame> for emlite::Val {
+    fn from(s: &XRFrame) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRFrame);
 
 impl XRFrame {

@@ -46,6 +46,11 @@ impl From<AnimationPlaybackEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AnimationPlaybackEvent> for emlite::Val {
+    fn from(s: &AnimationPlaybackEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(AnimationPlaybackEvent);
 
 impl AnimationPlaybackEvent {

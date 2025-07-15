@@ -46,6 +46,11 @@ impl From<AbortController> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AbortController> for emlite::Val {
+    fn from(s: &AbortController) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(AbortController);
 
 impl AbortController {

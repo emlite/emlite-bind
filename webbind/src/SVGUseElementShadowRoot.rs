@@ -46,4 +46,9 @@ impl From<SVGUseElementShadowRoot> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGUseElementShadowRoot> for emlite::Val {
+    fn from(s: &SVGUseElementShadowRoot) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGUseElementShadowRoot);

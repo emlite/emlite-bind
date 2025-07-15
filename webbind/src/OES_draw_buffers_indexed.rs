@@ -46,6 +46,11 @@ impl From<OES_draw_buffers_indexed> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&OES_draw_buffers_indexed> for emlite::Val {
+    fn from(s: &OES_draw_buffers_indexed) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(OES_draw_buffers_indexed);
 
 impl OES_draw_buffers_indexed {

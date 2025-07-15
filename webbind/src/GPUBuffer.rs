@@ -46,6 +46,11 @@ impl From<GPUBuffer> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUBuffer> for emlite::Val {
+    fn from(s: &GPUBuffer) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GPUBuffer);
 
 impl GPUBuffer {

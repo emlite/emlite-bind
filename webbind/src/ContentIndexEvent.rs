@@ -46,6 +46,11 @@ impl From<ContentIndexEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ContentIndexEvent> for emlite::Val {
+    fn from(s: &ContentIndexEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ContentIndexEvent);
 
 impl ContentIndexEvent {

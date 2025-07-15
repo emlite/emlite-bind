@@ -46,6 +46,11 @@ impl From<Instance> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&Instance> for emlite::Val {
+    fn from(s: &Instance) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(Instance);
 
 impl Instance {

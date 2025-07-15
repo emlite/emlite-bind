@@ -52,6 +52,12 @@ impl From<CSSPositionTryDescriptors> for emlite::Val {
     }
 }
 
+impl From<&CSSPositionTryDescriptors> for emlite::Val {
+    fn from(x: &CSSPositionTryDescriptors) -> emlite::Val {
+        x.inner.clone().into()
+    }
+}
+
 impl CSSPositionTryDescriptors {
     pub fn margin(&self) -> CSSOMString {
         self.inner.get("margin").as_::<CSSOMString>()

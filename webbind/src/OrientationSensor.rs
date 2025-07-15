@@ -46,6 +46,11 @@ impl From<OrientationSensor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&OrientationSensor> for emlite::Val {
+    fn from(s: &OrientationSensor) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(OrientationSensor);
 
 impl OrientationSensor {

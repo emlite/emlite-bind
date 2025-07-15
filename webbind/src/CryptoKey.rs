@@ -46,6 +46,11 @@ impl From<CryptoKey> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CryptoKey> for emlite::Val {
+    fn from(s: &CryptoKey) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CryptoKey);
 
 impl CryptoKey {

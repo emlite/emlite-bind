@@ -46,6 +46,11 @@ impl From<PresentationConnectionList> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PresentationConnectionList> for emlite::Val {
+    fn from(s: &PresentationConnectionList) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PresentationConnectionList);
 
 impl PresentationConnectionList {

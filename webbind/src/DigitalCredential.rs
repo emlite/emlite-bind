@@ -46,6 +46,11 @@ impl From<DigitalCredential> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DigitalCredential> for emlite::Val {
+    fn from(s: &DigitalCredential) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(DigitalCredential);
 
 impl DigitalCredential {

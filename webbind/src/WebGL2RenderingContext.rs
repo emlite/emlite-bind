@@ -46,6 +46,11 @@ impl From<WebGL2RenderingContext> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebGL2RenderingContext> for emlite::Val {
+    fn from(s: &WebGL2RenderingContext) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebGL2RenderingContext);
 
 impl WebGL2RenderingContext {

@@ -46,6 +46,11 @@ impl From<XRPermissionStatus> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRPermissionStatus> for emlite::Val {
+    fn from(s: &XRPermissionStatus) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRPermissionStatus);
 
 impl XRPermissionStatus {

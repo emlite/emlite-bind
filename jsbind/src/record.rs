@@ -33,6 +33,12 @@ impl<K, V> From<Record<K, V>> for emlite::Val {
     }
 }
 
+impl<K, V> From<&Record<K, V>> for emlite::Val {
+    fn from(x: &Record<K, V>) -> emlite::Val {
+        x.inner.clone()
+    }
+}
+
 impl<K, V> Deref for Record<K, V> {
     type Target = emlite::Val;
 

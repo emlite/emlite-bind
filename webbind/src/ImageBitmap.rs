@@ -46,6 +46,11 @@ impl From<ImageBitmap> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ImageBitmap> for emlite::Val {
+    fn from(s: &ImageBitmap) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ImageBitmap);
 
 impl ImageBitmap {

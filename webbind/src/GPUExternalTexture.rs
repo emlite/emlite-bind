@@ -46,6 +46,11 @@ impl From<GPUExternalTexture> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUExternalTexture> for emlite::Val {
+    fn from(s: &GPUExternalTexture) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GPUExternalTexture);
 
 impl GPUExternalTexture {

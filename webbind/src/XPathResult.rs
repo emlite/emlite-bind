@@ -46,6 +46,11 @@ impl From<XPathResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XPathResult> for emlite::Val {
+    fn from(s: &XPathResult) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XPathResult);
 
 impl XPathResult {

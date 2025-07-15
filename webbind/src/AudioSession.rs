@@ -46,6 +46,11 @@ impl From<AudioSession> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AudioSession> for emlite::Val {
+    fn from(s: &AudioSession) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(AudioSession);
 
 impl AudioSession {

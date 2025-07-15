@@ -46,6 +46,11 @@ impl From<USBIsochronousOutTransferResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&USBIsochronousOutTransferResult> for emlite::Val {
+    fn from(s: &USBIsochronousOutTransferResult) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(USBIsochronousOutTransferResult);
 
 impl USBIsochronousOutTransferResult {

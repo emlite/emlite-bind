@@ -46,6 +46,11 @@ impl From<HTMLTrackElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLTrackElement> for emlite::Val {
+    fn from(s: &HTMLTrackElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLTrackElement);
 
 impl HTMLTrackElement {

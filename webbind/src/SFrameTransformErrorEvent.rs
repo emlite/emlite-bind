@@ -46,6 +46,11 @@ impl From<SFrameTransformErrorEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SFrameTransformErrorEvent> for emlite::Val {
+    fn from(s: &SFrameTransformErrorEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SFrameTransformErrorEvent);
 
 impl SFrameTransformErrorEvent {

@@ -46,6 +46,11 @@ impl From<GPUComputePassEncoder> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUComputePassEncoder> for emlite::Val {
+    fn from(s: &GPUComputePassEncoder) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GPUComputePassEncoder);
 
 impl GPUComputePassEncoder {

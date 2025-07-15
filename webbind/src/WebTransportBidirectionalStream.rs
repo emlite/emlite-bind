@@ -46,6 +46,11 @@ impl From<WebTransportBidirectionalStream> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebTransportBidirectionalStream> for emlite::Val {
+    fn from(s: &WebTransportBidirectionalStream) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebTransportBidirectionalStream);
 
 impl WebTransportBidirectionalStream {

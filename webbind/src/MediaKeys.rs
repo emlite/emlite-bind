@@ -44,6 +44,11 @@ impl From<MediaKeysPolicy> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaKeysPolicy> for emlite::Val {
+    fn from(s: &MediaKeysPolicy) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MediaKeysPolicy {
     pub fn min_hdcp_version(&self) -> DOMString {
@@ -98,6 +103,11 @@ impl From<MediaKeys> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MediaKeys> for emlite::Val {
+    fn from(s: &MediaKeys) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaKeys);

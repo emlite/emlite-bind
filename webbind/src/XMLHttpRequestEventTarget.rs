@@ -46,6 +46,11 @@ impl From<XMLHttpRequestEventTarget> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XMLHttpRequestEventTarget> for emlite::Val {
+    fn from(s: &XMLHttpRequestEventTarget) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XMLHttpRequestEventTarget);
 
 impl XMLHttpRequestEventTarget {

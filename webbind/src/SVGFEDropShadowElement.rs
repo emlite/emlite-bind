@@ -46,6 +46,11 @@ impl From<SVGFEDropShadowElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGFEDropShadowElement> for emlite::Val {
+    fn from(s: &SVGFEDropShadowElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGFEDropShadowElement);
 
 impl SVGFEDropShadowElement {

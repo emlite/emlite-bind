@@ -46,6 +46,11 @@ impl From<DOMRect> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DOMRect> for emlite::Val {
+    fn from(s: &DOMRect) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(DOMRect);
 
 impl DOMRect {

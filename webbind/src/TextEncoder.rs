@@ -44,6 +44,11 @@ impl From<TextEncoderEncodeIntoResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TextEncoderEncodeIntoResult> for emlite::Val {
+    fn from(s: &TextEncoderEncodeIntoResult) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl TextEncoderEncodeIntoResult {
     pub fn read(&self) -> u64 {
@@ -107,6 +112,11 @@ impl From<TextEncoder> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&TextEncoder> for emlite::Val {
+    fn from(s: &TextEncoder) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(TextEncoder);

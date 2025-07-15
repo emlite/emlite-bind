@@ -44,6 +44,11 @@ impl From<FileSystemHandlePermissionDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&FileSystemHandlePermissionDescriptor> for emlite::Val {
+    fn from(s: &FileSystemHandlePermissionDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl FileSystemHandlePermissionDescriptor {
     pub fn mode(&self) -> FileSystemPermissionMode {
@@ -98,6 +103,11 @@ impl From<FileSystemHandle> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&FileSystemHandle> for emlite::Val {
+    fn from(s: &FileSystemHandle) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(FileSystemHandle);

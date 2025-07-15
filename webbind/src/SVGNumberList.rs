@@ -46,6 +46,11 @@ impl From<SVGNumberList> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGNumberList> for emlite::Val {
+    fn from(s: &SVGNumberList) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGNumberList);
 
 impl SVGNumberList {

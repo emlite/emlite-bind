@@ -46,6 +46,11 @@ impl From<ToggleEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ToggleEvent> for emlite::Val {
+    fn from(s: &ToggleEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ToggleEvent);
 
 impl ToggleEvent {

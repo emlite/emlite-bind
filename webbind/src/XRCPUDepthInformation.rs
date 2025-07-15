@@ -46,6 +46,11 @@ impl From<XRCPUDepthInformation> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRCPUDepthInformation> for emlite::Val {
+    fn from(s: &XRCPUDepthInformation) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRCPUDepthInformation);
 
 impl XRCPUDepthInformation {

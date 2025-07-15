@@ -44,6 +44,11 @@ impl From<GPUTexelCopyBufferLayout> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUTexelCopyBufferLayout> for emlite::Val {
+    fn from(s: &GPUTexelCopyBufferLayout) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GPUTexelCopyBufferLayout {
     pub fn offset(&self) -> Any {
@@ -114,6 +119,11 @@ impl From<GPUCopyExternalImageSourceInfo> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GPUCopyExternalImageSourceInfo> for emlite::Val {
+    fn from(s: &GPUCopyExternalImageSourceInfo) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -188,6 +198,11 @@ impl From<GPUCopyExternalImageDestInfo> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUCopyExternalImageDestInfo> for emlite::Val {
+    fn from(s: &GPUCopyExternalImageDestInfo) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GPUCopyExternalImageDestInfo {
     pub fn color_space(&self) -> PredefinedColorSpace {
@@ -251,6 +266,11 @@ impl From<GPUQueue> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GPUQueue> for emlite::Val {
+    fn from(s: &GPUQueue) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GPUQueue);

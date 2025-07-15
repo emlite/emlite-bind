@@ -46,6 +46,11 @@ impl From<SensorErrorEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SensorErrorEvent> for emlite::Val {
+    fn from(s: &SensorErrorEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SensorErrorEvent);
 
 impl SensorErrorEvent {

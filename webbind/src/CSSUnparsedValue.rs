@@ -46,6 +46,11 @@ impl From<CSSUnparsedValue> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSUnparsedValue> for emlite::Val {
+    fn from(s: &CSSUnparsedValue) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSUnparsedValue);
 
 impl CSSUnparsedValue {

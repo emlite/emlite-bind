@@ -46,6 +46,11 @@ impl From<EXT_disjoint_timer_query> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&EXT_disjoint_timer_query> for emlite::Val {
+    fn from(s: &EXT_disjoint_timer_query) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(EXT_disjoint_timer_query);
 
 impl EXT_disjoint_timer_query {

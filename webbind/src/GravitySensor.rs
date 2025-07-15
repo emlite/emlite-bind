@@ -46,6 +46,11 @@ impl From<GravitySensor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GravitySensor> for emlite::Val {
+    fn from(s: &GravitySensor) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GravitySensor);
 
 impl GravitySensor {

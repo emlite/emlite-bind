@@ -46,6 +46,11 @@ impl From<WEBGL_draw_instanced_base_vertex_base_instance> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WEBGL_draw_instanced_base_vertex_base_instance> for emlite::Val {
+    fn from(s: &WEBGL_draw_instanced_base_vertex_base_instance) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WEBGL_draw_instanced_base_vertex_base_instance);
 
 impl WEBGL_draw_instanced_base_vertex_base_instance {

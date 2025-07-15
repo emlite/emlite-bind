@@ -46,6 +46,11 @@ impl From<SVGTransform> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGTransform> for emlite::Val {
+    fn from(s: &SVGTransform) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGTransform);
 
 impl SVGTransform {

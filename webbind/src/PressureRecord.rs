@@ -46,6 +46,11 @@ impl From<PressureRecord> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PressureRecord> for emlite::Val {
+    fn from(s: &PressureRecord) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PressureRecord);
 
 impl PressureRecord {

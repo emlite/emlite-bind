@@ -46,4 +46,9 @@ impl From<EXT_shader_texture_lod> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&EXT_shader_texture_lod> for emlite::Val {
+    fn from(s: &EXT_shader_texture_lod) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(EXT_shader_texture_lod);

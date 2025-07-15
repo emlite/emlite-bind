@@ -44,6 +44,11 @@ impl From<ResizeObserverOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ResizeObserverOptions> for emlite::Val {
+    fn from(s: &ResizeObserverOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ResizeObserverOptions {
     pub fn box_(&self) -> ResizeObserverBoxOptions {
@@ -98,6 +103,11 @@ impl From<ResizeObserver> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&ResizeObserver> for emlite::Val {
+    fn from(s: &ResizeObserver) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ResizeObserver);

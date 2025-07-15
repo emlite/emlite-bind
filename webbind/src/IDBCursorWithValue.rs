@@ -46,6 +46,11 @@ impl From<IDBCursorWithValue> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IDBCursorWithValue> for emlite::Val {
+    fn from(s: &IDBCursorWithValue) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(IDBCursorWithValue);
 
 impl IDBCursorWithValue {

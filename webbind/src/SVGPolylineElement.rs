@@ -46,6 +46,11 @@ impl From<SVGPolylineElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGPolylineElement> for emlite::Val {
+    fn from(s: &SVGPolylineElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGPolylineElement);
 
 impl SVGPolylineElement {

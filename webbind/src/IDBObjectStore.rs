@@ -44,6 +44,11 @@ impl From<IDBIndexParameters> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IDBIndexParameters> for emlite::Val {
+    fn from(s: &IDBIndexParameters) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl IDBIndexParameters {
     pub fn unique(&self) -> bool {
@@ -107,6 +112,11 @@ impl From<IDBObjectStore> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&IDBObjectStore> for emlite::Val {
+    fn from(s: &IDBObjectStore) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(IDBObjectStore);

@@ -46,6 +46,11 @@ impl From<PromiseRejectionEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PromiseRejectionEvent> for emlite::Val {
+    fn from(s: &PromiseRejectionEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PromiseRejectionEvent);
 
 impl PromiseRejectionEvent {

@@ -46,6 +46,11 @@ impl From<DocumentTimeline> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DocumentTimeline> for emlite::Val {
+    fn from(s: &DocumentTimeline) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(DocumentTimeline);
 
 impl DocumentTimeline {

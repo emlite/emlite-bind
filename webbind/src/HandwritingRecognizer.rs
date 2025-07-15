@@ -44,6 +44,11 @@ impl From<HandwritingHints> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HandwritingHints> for emlite::Val {
+    fn from(s: &HandwritingHints) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl HandwritingHints {
     pub fn recognition_type(&self) -> DOMString {
@@ -125,6 +130,11 @@ impl From<HandwritingRecognizer> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&HandwritingRecognizer> for emlite::Val {
+    fn from(s: &HandwritingRecognizer) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HandwritingRecognizer);

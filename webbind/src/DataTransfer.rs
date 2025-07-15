@@ -46,6 +46,11 @@ impl From<DataTransfer> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DataTransfer> for emlite::Val {
+    fn from(s: &DataTransfer) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(DataTransfer);
 
 impl DataTransfer {

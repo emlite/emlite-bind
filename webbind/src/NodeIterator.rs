@@ -46,6 +46,11 @@ impl From<NodeIterator> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NodeIterator> for emlite::Val {
+    fn from(s: &NodeIterator) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(NodeIterator);
 
 impl NodeIterator {

@@ -46,6 +46,11 @@ impl From<IDBVersionChangeEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IDBVersionChangeEvent> for emlite::Val {
+    fn from(s: &IDBVersionChangeEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(IDBVersionChangeEvent);
 
 impl IDBVersionChangeEvent {

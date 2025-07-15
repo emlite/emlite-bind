@@ -46,6 +46,11 @@ impl From<CSSNamespaceRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSNamespaceRule> for emlite::Val {
+    fn from(s: &CSSNamespaceRule) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSNamespaceRule);
 
 impl CSSNamespaceRule {

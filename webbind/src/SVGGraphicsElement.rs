@@ -44,6 +44,11 @@ impl From<SVGBoundingBoxOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGBoundingBoxOptions> for emlite::Val {
+    fn from(s: &SVGBoundingBoxOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl SVGBoundingBoxOptions {
     pub fn fill(&self) -> bool {
@@ -125,6 +130,11 @@ impl From<SVGGraphicsElement> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&SVGGraphicsElement> for emlite::Val {
+    fn from(s: &SVGGraphicsElement) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SVGGraphicsElement);

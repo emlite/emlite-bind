@@ -46,6 +46,11 @@ impl From<HTMLFencedFrameElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLFencedFrameElement> for emlite::Val {
+    fn from(s: &HTMLFencedFrameElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLFencedFrameElement);
 
 impl HTMLFencedFrameElement {

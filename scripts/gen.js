@@ -159,6 +159,11 @@ function embedDict(dict, src, ownerName) {
     `        emlite::Val::take_ownership(handle)`,
     `    }`,
     `}`,
+    `impl From<&${dict.name}> for emlite::Val {`,
+    `    fn from(s: &${dict.name}) -> emlite::Val {`,
+    `        s.inner.clone()`,
+    `    }`,
+    `}`,
     ""
   );
   dict.members.forEach((m) => {
@@ -285,6 +290,19 @@ export function generate(specAst) {
         `impl From<${e.name}> for emlite::Val {`,
         `    fn from(s: ${e.name}) -> emlite::Val {`,
         `         match s {`);
+      for (const v of e.values) {
+        src.push(
+          `            ${e.name}::${fixIdent(v.value).toUpperCase()} => emlite::Val::from("${
+            v.value
+          }"),`
+        );
+      }
+      src.push("         }");
+      src.push(`    }`,
+        `}`,
+        `impl From<&${e.name}> for emlite::Val {`,
+        `    fn from(s: &${e.name}) -> emlite::Val {`,
+        `         match *s {`);
       for (const v of e.values) {
         src.push(
           `            ${e.name}::${fixIdent(v.value).toUpperCase()} => emlite::Val::from("${
@@ -427,6 +445,11 @@ export function generate(specAst) {
       `        let handle = s.inner.as_handle();`,
       `        core::mem::forget(s);`,
       `        emlite::Val::take_ownership(handle)`,
+      `    }`,
+      `}`,
+      `impl From<&${iname}> for emlite::Val {`,
+      `    fn from(s: &${iname}) -> emlite::Val {`,
+      `        s.inner.clone().into()`,
       `    }`,
       `}`,
       `jsbind::utils::impl_dyn_cast!(${iname});`,

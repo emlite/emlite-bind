@@ -46,6 +46,11 @@ impl From<EXT_disjoint_timer_query_webgl2> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&EXT_disjoint_timer_query_webgl2> for emlite::Val {
+    fn from(s: &EXT_disjoint_timer_query_webgl2) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(EXT_disjoint_timer_query_webgl2);
 
 impl EXT_disjoint_timer_query_webgl2 {

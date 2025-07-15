@@ -46,6 +46,11 @@ impl From<SVGFilterElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGFilterElement> for emlite::Val {
+    fn from(s: &SVGFilterElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGFilterElement);
 
 impl SVGFilterElement {

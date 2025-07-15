@@ -44,6 +44,11 @@ impl From<AudioTimestamp> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AudioTimestamp> for emlite::Val {
+    fn from(s: &AudioTimestamp) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl AudioTimestamp {
     pub fn context_time(&self) -> f64 {
@@ -107,6 +112,11 @@ impl From<AudioContext> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&AudioContext> for emlite::Val {
+    fn from(s: &AudioContext) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(AudioContext);

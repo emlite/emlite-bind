@@ -46,6 +46,11 @@ impl From<CSSTranslate> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSTranslate> for emlite::Val {
+    fn from(s: &CSSTranslate) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSTranslate);
 
 impl CSSTranslate {

@@ -46,6 +46,11 @@ impl From<HashChangeEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HashChangeEvent> for emlite::Val {
+    fn from(s: &HashChangeEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HashChangeEvent);
 
 impl HashChangeEvent {

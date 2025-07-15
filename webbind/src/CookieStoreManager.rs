@@ -46,6 +46,11 @@ impl From<CookieStoreManager> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CookieStoreManager> for emlite::Val {
+    fn from(s: &CookieStoreManager) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CookieStoreManager);
 
 impl CookieStoreManager {

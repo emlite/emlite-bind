@@ -46,6 +46,11 @@ impl From<AmbientLightSensor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AmbientLightSensor> for emlite::Val {
+    fn from(s: &AmbientLightSensor) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(AmbientLightSensor);
 
 impl AmbientLightSensor {

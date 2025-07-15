@@ -46,6 +46,11 @@ impl From<RestrictionTarget> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RestrictionTarget> for emlite::Val {
+    fn from(s: &RestrictionTarget) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(RestrictionTarget);
 
 impl RestrictionTarget {

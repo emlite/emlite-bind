@@ -46,6 +46,11 @@ impl From<GPURenderPipeline> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPURenderPipeline> for emlite::Val {
+    fn from(s: &GPURenderPipeline) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GPURenderPipeline);
 
 impl GPURenderPipeline {

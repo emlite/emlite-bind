@@ -46,6 +46,11 @@ impl From<AnimationTimeline> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AnimationTimeline> for emlite::Val {
+    fn from(s: &AnimationTimeline) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(AnimationTimeline);
 
 impl AnimationTimeline {

@@ -46,6 +46,11 @@ impl From<XRInputSource> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRInputSource> for emlite::Val {
+    fn from(s: &XRInputSource) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRInputSource);
 
 impl XRInputSource {

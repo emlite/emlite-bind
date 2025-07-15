@@ -46,6 +46,11 @@ impl From<CSSMediaRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSMediaRule> for emlite::Val {
+    fn from(s: &CSSMediaRule) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSMediaRule);
 
 impl CSSMediaRule {

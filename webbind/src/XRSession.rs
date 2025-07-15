@@ -44,6 +44,11 @@ impl From<XRRenderStateInit> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRRenderStateInit> for emlite::Val {
+    fn from(s: &XRRenderStateInit) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl XRRenderStateInit {
     pub fn depth_near(&self) -> f64 {
@@ -143,6 +148,11 @@ impl From<XRDOMOverlayState> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRDOMOverlayState> for emlite::Val {
+    fn from(s: &XRDOMOverlayState) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl XRDOMOverlayState {
     pub fn type_(&self) -> XRDOMOverlayType {
@@ -195,6 +205,11 @@ impl From<XRHitTestOptionsInit> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&XRHitTestOptionsInit> for emlite::Val {
+    fn from(s: &XRHitTestOptionsInit) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -271,6 +286,11 @@ impl From<XRTransientInputHitTestOptionsInit> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRTransientInputHitTestOptionsInit> for emlite::Val {
+    fn from(s: &XRTransientInputHitTestOptionsInit) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl XRTransientInputHitTestOptionsInit {
     pub fn profile(&self) -> DOMString {
@@ -345,6 +365,11 @@ impl From<XRLightProbeInit> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRLightProbeInit> for emlite::Val {
+    fn from(s: &XRLightProbeInit) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl XRLightProbeInit {
     pub fn reflection_format(&self) -> XRReflectionFormat {
@@ -401,6 +426,11 @@ impl From<XRSession> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&XRSession> for emlite::Val {
+    fn from(s: &XRSession) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(XRSession);

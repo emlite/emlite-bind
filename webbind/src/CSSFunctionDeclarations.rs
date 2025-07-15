@@ -46,6 +46,11 @@ impl From<CSSFunctionDeclarations> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSFunctionDeclarations> for emlite::Val {
+    fn from(s: &CSSFunctionDeclarations) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSFunctionDeclarations);
 
 impl CSSFunctionDeclarations {

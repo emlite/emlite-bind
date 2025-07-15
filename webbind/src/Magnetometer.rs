@@ -46,6 +46,11 @@ impl From<Magnetometer> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&Magnetometer> for emlite::Val {
+    fn from(s: &Magnetometer) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(Magnetometer);
 
 impl Magnetometer {

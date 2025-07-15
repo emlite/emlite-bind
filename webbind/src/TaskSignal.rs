@@ -44,6 +44,11 @@ impl From<TaskSignalAnyInit> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TaskSignalAnyInit> for emlite::Val {
+    fn from(s: &TaskSignalAnyInit) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl TaskSignalAnyInit {
     pub fn priority(&self) -> Any {
@@ -98,6 +103,11 @@ impl From<TaskSignal> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&TaskSignal> for emlite::Val {
+    fn from(s: &TaskSignal) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(TaskSignal);

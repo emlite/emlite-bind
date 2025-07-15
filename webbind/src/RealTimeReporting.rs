@@ -44,6 +44,11 @@ impl From<RealTimeContribution> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RealTimeContribution> for emlite::Val {
+    fn from(s: &RealTimeContribution) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl RealTimeContribution {
     pub fn bucket(&self) -> i32 {
@@ -116,6 +121,11 @@ impl From<RealTimeReporting> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RealTimeReporting> for emlite::Val {
+    fn from(s: &RealTimeReporting) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RealTimeReporting);

@@ -46,6 +46,11 @@ impl From<RTCIdentityProviderGlobalScope> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCIdentityProviderGlobalScope> for emlite::Val {
+    fn from(s: &RTCIdentityProviderGlobalScope) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(RTCIdentityProviderGlobalScope);
 
 impl RTCIdentityProviderGlobalScope {

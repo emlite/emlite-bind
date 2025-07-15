@@ -46,6 +46,11 @@ impl From<VisibilityStateEntry> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&VisibilityStateEntry> for emlite::Val {
+    fn from(s: &VisibilityStateEntry) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(VisibilityStateEntry);
 
 impl VisibilityStateEntry {

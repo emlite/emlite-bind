@@ -44,6 +44,11 @@ impl From<InkTrailStyle> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&InkTrailStyle> for emlite::Val {
+    fn from(s: &InkTrailStyle) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl InkTrailStyle {
     pub fn color(&self) -> DOMString {
@@ -107,6 +112,11 @@ impl From<DelegatedInkTrailPresenter> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&DelegatedInkTrailPresenter> for emlite::Val {
+    fn from(s: &DelegatedInkTrailPresenter) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(DelegatedInkTrailPresenter);

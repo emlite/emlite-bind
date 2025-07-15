@@ -46,6 +46,12 @@ macro_rules! bind {
                 emlite::Val::take_ownership(handle)
             }
         }
+
+        impl From<&$i> for emlite::Val {
+            fn from(x: &$i) -> emlite::Val {
+                x.inner.clone()
+            }
+        }
     };
 }
 

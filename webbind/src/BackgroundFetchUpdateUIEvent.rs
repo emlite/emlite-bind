@@ -44,6 +44,11 @@ impl From<BackgroundFetchUIOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&BackgroundFetchUIOptions> for emlite::Val {
+    fn from(s: &BackgroundFetchUIOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl BackgroundFetchUIOptions {
     pub fn icons(&self) -> Sequence<Any> {
@@ -107,6 +112,11 @@ impl From<BackgroundFetchUpdateUIEvent> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&BackgroundFetchUpdateUIEvent> for emlite::Val {
+    fn from(s: &BackgroundFetchUpdateUIEvent) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BackgroundFetchUpdateUIEvent);

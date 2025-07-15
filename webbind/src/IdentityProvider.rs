@@ -44,6 +44,11 @@ impl From<IdentityResolveOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IdentityResolveOptions> for emlite::Val {
+    fn from(s: &IdentityResolveOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl IdentityResolveOptions {
     pub fn account_id(&self) -> USVString {
@@ -96,6 +101,11 @@ impl From<IdentityUserInfo> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&IdentityUserInfo> for emlite::Val {
+    fn from(s: &IdentityUserInfo) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -179,6 +189,11 @@ impl From<IdentityProviderConfig> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IdentityProviderConfig> for emlite::Val {
+    fn from(s: &IdentityProviderConfig) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl IdentityProviderConfig {
     pub fn config_url(&self) -> USVString {
@@ -242,6 +257,11 @@ impl From<IdentityProvider> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&IdentityProvider> for emlite::Val {
+    fn from(s: &IdentityProvider) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(IdentityProvider);

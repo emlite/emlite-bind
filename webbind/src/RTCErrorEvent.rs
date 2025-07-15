@@ -46,6 +46,11 @@ impl From<RTCErrorEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCErrorEvent> for emlite::Val {
+    fn from(s: &RTCErrorEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(RTCErrorEvent);
 
 impl RTCErrorEvent {

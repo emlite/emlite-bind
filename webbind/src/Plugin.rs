@@ -46,6 +46,11 @@ impl From<Plugin> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&Plugin> for emlite::Val {
+    fn from(s: &Plugin) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(Plugin);
 
 impl Plugin {

@@ -46,6 +46,11 @@ impl From<XRRay> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRRay> for emlite::Val {
+    fn from(s: &XRRay) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRRay);
 
 impl XRRay {

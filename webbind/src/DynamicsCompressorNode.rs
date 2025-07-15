@@ -46,6 +46,11 @@ impl From<DynamicsCompressorNode> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DynamicsCompressorNode> for emlite::Val {
+    fn from(s: &DynamicsCompressorNode) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(DynamicsCompressorNode);
 
 impl DynamicsCompressorNode {

@@ -46,6 +46,11 @@ impl From<CSSCounterStyleRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSCounterStyleRule> for emlite::Val {
+    fn from(s: &CSSCounterStyleRule) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSCounterStyleRule);
 
 impl CSSCounterStyleRule {

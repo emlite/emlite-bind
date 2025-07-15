@@ -46,4 +46,9 @@ impl From<WEBGL_depth_texture> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WEBGL_depth_texture> for emlite::Val {
+    fn from(s: &WEBGL_depth_texture) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WEBGL_depth_texture);

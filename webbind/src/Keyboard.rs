@@ -46,6 +46,11 @@ impl From<Keyboard> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&Keyboard> for emlite::Val {
+    fn from(s: &Keyboard) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(Keyboard);
 
 impl Keyboard {

@@ -44,6 +44,11 @@ impl From<DetectedBarcode> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DetectedBarcode> for emlite::Val {
+    fn from(s: &DetectedBarcode) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl DetectedBarcode {
     pub fn bounding_box(&self) -> DOMRectReadOnly {
@@ -125,6 +130,11 @@ impl From<BarcodeDetector> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&BarcodeDetector> for emlite::Val {
+    fn from(s: &BarcodeDetector) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BarcodeDetector);

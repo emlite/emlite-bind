@@ -46,6 +46,11 @@ impl From<XRLightProbe> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRLightProbe> for emlite::Val {
+    fn from(s: &XRLightProbe) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRLightProbe);
 
 impl XRLightProbe {

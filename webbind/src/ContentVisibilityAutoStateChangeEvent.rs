@@ -46,6 +46,11 @@ impl From<ContentVisibilityAutoStateChangeEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ContentVisibilityAutoStateChangeEvent> for emlite::Val {
+    fn from(s: &ContentVisibilityAutoStateChangeEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ContentVisibilityAutoStateChangeEvent);
 
 impl ContentVisibilityAutoStateChangeEvent {

@@ -46,6 +46,11 @@ impl From<LaunchParams> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&LaunchParams> for emlite::Val {
+    fn from(s: &LaunchParams) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(LaunchParams);
 
 impl LaunchParams {

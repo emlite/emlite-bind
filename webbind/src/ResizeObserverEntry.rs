@@ -46,6 +46,11 @@ impl From<ResizeObserverEntry> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ResizeObserverEntry> for emlite::Val {
+    fn from(s: &ResizeObserverEntry) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ResizeObserverEntry);
 
 impl ResizeObserverEntry {

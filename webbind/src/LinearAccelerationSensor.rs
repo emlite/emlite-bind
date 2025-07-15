@@ -46,6 +46,11 @@ impl From<LinearAccelerationSensor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&LinearAccelerationSensor> for emlite::Val {
+    fn from(s: &LinearAccelerationSensor) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(LinearAccelerationSensor);
 
 impl LinearAccelerationSensor {

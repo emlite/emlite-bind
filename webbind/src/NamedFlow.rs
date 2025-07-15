@@ -46,6 +46,11 @@ impl From<NamedFlow> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NamedFlow> for emlite::Val {
+    fn from(s: &NamedFlow) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(NamedFlow);
 
 impl NamedFlow {

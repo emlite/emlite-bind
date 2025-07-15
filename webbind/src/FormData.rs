@@ -46,6 +46,11 @@ impl From<FormData> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&FormData> for emlite::Val {
+    fn from(s: &FormData) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(FormData);
 
 impl FormData {

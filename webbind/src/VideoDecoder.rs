@@ -44,6 +44,11 @@ impl From<VideoDecoderConfig> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&VideoDecoderConfig> for emlite::Val {
+    fn from(s: &VideoDecoderConfig) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl VideoDecoderConfig {
     pub fn codec(&self) -> DOMString {
@@ -190,6 +195,11 @@ impl From<VideoDecoderSupport> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&VideoDecoderSupport> for emlite::Val {
+    fn from(s: &VideoDecoderSupport) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl VideoDecoderSupport {
     pub fn supported(&self) -> bool {
@@ -253,6 +263,11 @@ impl From<VideoDecoder> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&VideoDecoder> for emlite::Val {
+    fn from(s: &VideoDecoder) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(VideoDecoder);

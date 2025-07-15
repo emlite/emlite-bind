@@ -46,6 +46,11 @@ impl From<WebTransportError> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebTransportError> for emlite::Val {
+    fn from(s: &WebTransportError) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebTransportError);
 
 impl WebTransportError {

@@ -46,6 +46,11 @@ impl From<Accelerometer> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&Accelerometer> for emlite::Val {
+    fn from(s: &Accelerometer) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(Accelerometer);
 
 impl Accelerometer {

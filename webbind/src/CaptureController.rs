@@ -46,6 +46,11 @@ impl From<CaptureController> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CaptureController> for emlite::Val {
+    fn from(s: &CaptureController) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CaptureController);
 
 impl CaptureController {

@@ -44,6 +44,11 @@ impl From<RTCRtpCapabilities> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCRtpCapabilities> for emlite::Val {
+    fn from(s: &RTCRtpCapabilities) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl RTCRtpCapabilities {
     pub fn codecs(&self) -> Sequence<RTCRtpCodec> {
@@ -105,6 +110,11 @@ impl From<RTCRtpSendParameters> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCRtpSendParameters> for emlite::Val {
+    fn from(s: &RTCRtpSendParameters) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -170,6 +180,11 @@ impl From<RTCSetParameterOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCSetParameterOptions> for emlite::Val {
+    fn from(s: &RTCSetParameterOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -215,6 +230,11 @@ impl From<RTCRtpSender> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCRtpSender> for emlite::Val {
+    fn from(s: &RTCRtpSender) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCRtpSender);

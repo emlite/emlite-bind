@@ -46,6 +46,11 @@ impl From<XRLayerEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRLayerEvent> for emlite::Val {
+    fn from(s: &XRLayerEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRLayerEvent);
 
 impl XRLayerEvent {

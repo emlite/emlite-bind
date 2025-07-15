@@ -46,6 +46,11 @@ impl From<DOMMatrix> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DOMMatrix> for emlite::Val {
+    fn from(s: &DOMMatrix) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(DOMMatrix);
 
 impl DOMMatrix {

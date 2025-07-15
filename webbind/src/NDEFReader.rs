@@ -44,6 +44,11 @@ impl From<NDEFScanOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NDEFScanOptions> for emlite::Val {
+    fn from(s: &NDEFScanOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl NDEFScanOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -96,6 +101,11 @@ impl From<NDEFWriteOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&NDEFWriteOptions> for emlite::Val {
+    fn from(s: &NDEFWriteOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -161,6 +171,11 @@ impl From<NDEFMakeReadOnlyOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NDEFMakeReadOnlyOptions> for emlite::Val {
+    fn from(s: &NDEFMakeReadOnlyOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl NDEFMakeReadOnlyOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -215,6 +230,11 @@ impl From<NDEFReader> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&NDEFReader> for emlite::Val {
+    fn from(s: &NDEFReader) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(NDEFReader);

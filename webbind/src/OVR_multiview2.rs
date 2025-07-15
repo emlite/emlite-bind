@@ -46,6 +46,11 @@ impl From<OVR_multiview2> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&OVR_multiview2> for emlite::Val {
+    fn from(s: &OVR_multiview2) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(OVR_multiview2);
 
 impl OVR_multiview2 {

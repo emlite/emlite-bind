@@ -44,6 +44,11 @@ impl From<XRMediaQuadLayerInit> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRMediaQuadLayerInit> for emlite::Val {
+    fn from(s: &XRMediaQuadLayerInit) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl XRMediaQuadLayerInit {
     pub fn transform(&self) -> XRRigidTransform {
@@ -114,6 +119,11 @@ impl From<XRMediaCylinderLayerInit> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&XRMediaCylinderLayerInit> for emlite::Val {
+    fn from(s: &XRMediaCylinderLayerInit) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -195,6 +205,11 @@ impl From<XRMediaEquirectLayerInit> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&XRMediaEquirectLayerInit> for emlite::Val {
+    fn from(s: &XRMediaEquirectLayerInit) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -287,6 +302,11 @@ impl From<XRMediaBinding> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&XRMediaBinding> for emlite::Val {
+    fn from(s: &XRMediaBinding) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(XRMediaBinding);

@@ -44,6 +44,11 @@ impl From<LockOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&LockOptions> for emlite::Val {
+    fn from(s: &LockOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl LockOptions {
     pub fn mode(&self) -> LockMode {
@@ -125,6 +130,11 @@ impl From<LockManagerSnapshot> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&LockManagerSnapshot> for emlite::Val {
+    fn from(s: &LockManagerSnapshot) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl LockManagerSnapshot {
     pub fn held(&self) -> Sequence<Any> {
@@ -188,6 +198,11 @@ impl From<LockManager> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&LockManager> for emlite::Val {
+    fn from(s: &LockManager) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(LockManager);

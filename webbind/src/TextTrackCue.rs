@@ -46,6 +46,11 @@ impl From<TextTrackCue> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TextTrackCue> for emlite::Val {
+    fn from(s: &TextTrackCue) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(TextTrackCue);
 
 impl TextTrackCue {

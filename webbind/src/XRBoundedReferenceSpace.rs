@@ -46,6 +46,11 @@ impl From<XRBoundedReferenceSpace> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRBoundedReferenceSpace> for emlite::Val {
+    fn from(s: &XRBoundedReferenceSpace) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRBoundedReferenceSpace);
 
 impl XRBoundedReferenceSpace {

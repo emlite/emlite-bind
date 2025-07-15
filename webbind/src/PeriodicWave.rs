@@ -46,6 +46,11 @@ impl From<PeriodicWave> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PeriodicWave> for emlite::Val {
+    fn from(s: &PeriodicWave) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PeriodicWave);
 
 impl PeriodicWave {

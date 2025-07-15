@@ -46,6 +46,11 @@ impl From<WorkerLocation> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WorkerLocation> for emlite::Val {
+    fn from(s: &WorkerLocation) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WorkerLocation);
 
 impl WorkerLocation {

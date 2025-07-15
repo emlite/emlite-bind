@@ -46,6 +46,11 @@ impl From<TaskAttributionTiming> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TaskAttributionTiming> for emlite::Val {
+    fn from(s: &TaskAttributionTiming) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(TaskAttributionTiming);
 
 impl TaskAttributionTiming {

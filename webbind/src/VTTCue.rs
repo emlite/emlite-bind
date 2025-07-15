@@ -46,6 +46,11 @@ impl From<VTTCue> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&VTTCue> for emlite::Val {
+    fn from(s: &VTTCue) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(VTTCue);
 
 impl VTTCue {

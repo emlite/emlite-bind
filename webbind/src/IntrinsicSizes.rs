@@ -46,6 +46,11 @@ impl From<IntrinsicSizes> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IntrinsicSizes> for emlite::Val {
+    fn from(s: &IntrinsicSizes) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(IntrinsicSizes);
 
 impl IntrinsicSizes {

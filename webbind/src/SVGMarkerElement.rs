@@ -46,6 +46,11 @@ impl From<SVGMarkerElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGMarkerElement> for emlite::Val {
+    fn from(s: &SVGMarkerElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGMarkerElement);
 
 impl SVGMarkerElement {

@@ -46,6 +46,11 @@ impl From<WEBGL_compressed_texture_astc> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WEBGL_compressed_texture_astc> for emlite::Val {
+    fn from(s: &WEBGL_compressed_texture_astc) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WEBGL_compressed_texture_astc);
 
 impl WEBGL_compressed_texture_astc {

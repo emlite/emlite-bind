@@ -46,6 +46,11 @@ impl From<RTCDTMFSender> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCDTMFSender> for emlite::Val {
+    fn from(s: &RTCDTMFSender) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(RTCDTMFSender);
 
 impl RTCDTMFSender {

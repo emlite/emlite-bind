@@ -44,6 +44,11 @@ impl From<IDBDatabaseInfo> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IDBDatabaseInfo> for emlite::Val {
+    fn from(s: &IDBDatabaseInfo) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl IDBDatabaseInfo {
     pub fn name(&self) -> DOMString {
@@ -107,6 +112,11 @@ impl From<IDBFactory> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&IDBFactory> for emlite::Val {
+    fn from(s: &IDBFactory) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(IDBFactory);

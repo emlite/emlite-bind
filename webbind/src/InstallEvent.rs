@@ -46,6 +46,11 @@ impl From<InstallEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&InstallEvent> for emlite::Val {
+    fn from(s: &InstallEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(InstallEvent);
 
 impl InstallEvent {

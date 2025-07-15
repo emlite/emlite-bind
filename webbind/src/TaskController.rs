@@ -46,6 +46,11 @@ impl From<TaskController> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TaskController> for emlite::Val {
+    fn from(s: &TaskController) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(TaskController);
 
 impl TaskController {

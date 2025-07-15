@@ -46,6 +46,11 @@ impl From<CanMakePaymentEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CanMakePaymentEvent> for emlite::Val {
+    fn from(s: &CanMakePaymentEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CanMakePaymentEvent);
 
 impl CanMakePaymentEvent {

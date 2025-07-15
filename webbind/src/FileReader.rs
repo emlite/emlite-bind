@@ -46,6 +46,11 @@ impl From<FileReader> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&FileReader> for emlite::Val {
+    fn from(s: &FileReader) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(FileReader);
 
 impl FileReader {

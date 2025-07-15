@@ -46,6 +46,11 @@ impl From<PerformanceServerTiming> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PerformanceServerTiming> for emlite::Val {
+    fn from(s: &PerformanceServerTiming) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PerformanceServerTiming);
 
 impl PerformanceServerTiming {

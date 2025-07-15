@@ -46,6 +46,11 @@ impl From<FileSystemEntry> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&FileSystemEntry> for emlite::Val {
+    fn from(s: &FileSystemEntry) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(FileSystemEntry);
 
 impl FileSystemEntry {

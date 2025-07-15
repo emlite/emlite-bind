@@ -46,6 +46,11 @@ impl From<StylePropertyMapReadOnly> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&StylePropertyMapReadOnly> for emlite::Val {
+    fn from(s: &StylePropertyMapReadOnly) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(StylePropertyMapReadOnly);
 
 impl StylePropertyMapReadOnly {

@@ -44,6 +44,11 @@ impl From<NotificationAction> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NotificationAction> for emlite::Val {
+    fn from(s: &NotificationAction) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl NotificationAction {
     pub fn action(&self) -> DOMString {
@@ -116,6 +121,11 @@ impl From<Notification> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Notification> for emlite::Val {
+    fn from(s: &Notification) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Notification);

@@ -46,6 +46,11 @@ impl From<PeriodicSyncEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PeriodicSyncEvent> for emlite::Val {
+    fn from(s: &PeriodicSyncEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PeriodicSyncEvent);
 
 impl PeriodicSyncEvent {

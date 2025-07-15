@@ -44,6 +44,11 @@ impl From<CookieListItem> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CookieListItem> for emlite::Val {
+    fn from(s: &CookieListItem) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl CookieListItem {
     pub fn name(&self) -> USVString {
@@ -161,6 +166,11 @@ impl From<CookieStoreGetOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CookieStoreGetOptions> for emlite::Val {
+    fn from(s: &CookieStoreGetOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl CookieStoreGetOptions {
     pub fn name(&self) -> USVString {
@@ -222,6 +232,11 @@ impl From<CookieInit> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&CookieInit> for emlite::Val {
+    fn from(s: &CookieInit) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -332,6 +347,11 @@ impl From<CookieStoreDeleteOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CookieStoreDeleteOptions> for emlite::Val {
+    fn from(s: &CookieStoreDeleteOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl CookieStoreDeleteOptions {
     pub fn name(&self) -> USVString {
@@ -413,6 +433,11 @@ impl From<CookieStore> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&CookieStore> for emlite::Val {
+    fn from(s: &CookieStore) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CookieStore);

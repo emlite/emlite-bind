@@ -46,6 +46,11 @@ impl From<ProcessingInstruction> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ProcessingInstruction> for emlite::Val {
+    fn from(s: &ProcessingInstruction) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ProcessingInstruction);
 
 impl ProcessingInstruction {

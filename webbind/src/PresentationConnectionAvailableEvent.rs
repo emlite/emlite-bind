@@ -46,6 +46,11 @@ impl From<PresentationConnectionAvailableEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PresentationConnectionAvailableEvent> for emlite::Val {
+    fn from(s: &PresentationConnectionAvailableEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PresentationConnectionAvailableEvent);
 
 impl PresentationConnectionAvailableEvent {

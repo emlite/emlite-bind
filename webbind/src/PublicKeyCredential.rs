@@ -44,6 +44,11 @@ impl From<AuthenticationExtensionsClientOutputs> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AuthenticationExtensionsClientOutputs> for emlite::Val {
+    fn from(s: &AuthenticationExtensionsClientOutputs) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl AuthenticationExtensionsClientOutputs {
     pub fn large_blob(&self) -> Any {
@@ -96,6 +101,11 @@ impl From<PublicKeyCredentialCreationOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&PublicKeyCredentialCreationOptions> for emlite::Val {
+    fn from(s: &PublicKeyCredentialCreationOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -244,6 +254,11 @@ impl From<PublicKeyCredentialCreationOptionsJSON> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PublicKeyCredentialCreationOptionsJSON> for emlite::Val {
+    fn from(s: &PublicKeyCredentialCreationOptionsJSON) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PublicKeyCredentialCreationOptionsJSON {
     pub fn rp(&self) -> Any {
@@ -390,6 +405,11 @@ impl From<PublicKeyCredentialRequestOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PublicKeyCredentialRequestOptions> for emlite::Val {
+    fn from(s: &PublicKeyCredentialRequestOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PublicKeyCredentialRequestOptions {
     pub fn challenge(&self) -> Any {
@@ -496,6 +516,11 @@ impl From<PublicKeyCredentialRequestOptionsJSON> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&PublicKeyCredentialRequestOptionsJSON> for emlite::Val {
+    fn from(s: &PublicKeyCredentialRequestOptionsJSON) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -606,6 +631,11 @@ impl From<UnknownCredentialOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&UnknownCredentialOptions> for emlite::Val {
+    fn from(s: &UnknownCredentialOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl UnknownCredentialOptions {
     pub fn rp_id(&self) -> DOMString {
@@ -667,6 +697,11 @@ impl From<AllAcceptedCredentialsOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&AllAcceptedCredentialsOptions> for emlite::Val {
+    fn from(s: &AllAcceptedCredentialsOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -741,6 +776,11 @@ impl From<CurrentUserDetailsOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&CurrentUserDetailsOptions> for emlite::Val {
+    fn from(s: &CurrentUserDetailsOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -824,6 +864,11 @@ impl From<PublicKeyCredential> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&PublicKeyCredential> for emlite::Val {
+    fn from(s: &PublicKeyCredential) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PublicKeyCredential);

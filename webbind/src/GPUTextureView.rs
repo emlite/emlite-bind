@@ -46,6 +46,11 @@ impl From<GPUTextureView> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUTextureView> for emlite::Val {
+    fn from(s: &GPUTextureView) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GPUTextureView);
 
 impl GPUTextureView {

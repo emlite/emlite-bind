@@ -46,6 +46,11 @@ impl From<SVGFEMergeElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGFEMergeElement> for emlite::Val {
+    fn from(s: &SVGFEMergeElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGFEMergeElement);
 
 impl SVGFEMergeElement {

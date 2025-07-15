@@ -46,6 +46,11 @@ impl From<ExtendableMessageEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ExtendableMessageEvent> for emlite::Val {
+    fn from(s: &ExtendableMessageEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ExtendableMessageEvent);
 
 impl ExtendableMessageEvent {

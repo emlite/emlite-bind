@@ -46,6 +46,11 @@ impl From<WebGLContextEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebGLContextEvent> for emlite::Val {
+    fn from(s: &WebGLContextEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebGLContextEvent);
 
 impl WebGLContextEvent {

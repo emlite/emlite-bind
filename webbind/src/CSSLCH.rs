@@ -46,6 +46,11 @@ impl From<CSSLCH> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSLCH> for emlite::Val {
+    fn from(s: &CSSLCH) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSLCH);
 
 impl CSSLCH {

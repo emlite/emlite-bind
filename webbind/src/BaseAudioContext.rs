@@ -44,6 +44,11 @@ impl From<PeriodicWaveConstraints> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PeriodicWaveConstraints> for emlite::Val {
+    fn from(s: &PeriodicWaveConstraints) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PeriodicWaveConstraints {
     pub fn disable_normalization(&self) -> bool {
@@ -98,6 +103,11 @@ impl From<BaseAudioContext> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&BaseAudioContext> for emlite::Val {
+    fn from(s: &BaseAudioContext) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BaseAudioContext);

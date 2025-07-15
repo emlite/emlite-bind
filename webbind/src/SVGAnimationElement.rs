@@ -46,6 +46,11 @@ impl From<SVGAnimationElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGAnimationElement> for emlite::Val {
+    fn from(s: &SVGAnimationElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGAnimationElement);
 
 impl SVGAnimationElement {

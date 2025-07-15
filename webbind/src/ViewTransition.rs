@@ -46,6 +46,11 @@ impl From<ViewTransition> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ViewTransition> for emlite::Val {
+    fn from(s: &ViewTransition) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ViewTransition);
 
 impl ViewTransition {

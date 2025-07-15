@@ -46,4 +46,9 @@ impl From<OES_fbo_render_mipmap> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&OES_fbo_render_mipmap> for emlite::Val {
+    fn from(s: &OES_fbo_render_mipmap) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(OES_fbo_render_mipmap);

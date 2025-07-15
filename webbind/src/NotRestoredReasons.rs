@@ -46,6 +46,11 @@ impl From<NotRestoredReasons> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NotRestoredReasons> for emlite::Val {
+    fn from(s: &NotRestoredReasons) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(NotRestoredReasons);
 
 impl NotRestoredReasons {

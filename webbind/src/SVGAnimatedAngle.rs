@@ -46,6 +46,11 @@ impl From<SVGAnimatedAngle> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGAnimatedAngle> for emlite::Val {
+    fn from(s: &SVGAnimatedAngle) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGAnimatedAngle);
 
 impl SVGAnimatedAngle {

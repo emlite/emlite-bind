@@ -46,6 +46,11 @@ impl From<HTMLOptGroupElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLOptGroupElement> for emlite::Val {
+    fn from(s: &HTMLOptGroupElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLOptGroupElement);
 
 impl HTMLOptGroupElement {

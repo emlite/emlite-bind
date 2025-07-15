@@ -46,6 +46,11 @@ impl From<HTMLMenuElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLMenuElement> for emlite::Val {
+    fn from(s: &HTMLMenuElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLMenuElement);
 
 impl HTMLMenuElement {

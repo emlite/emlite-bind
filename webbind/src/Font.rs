@@ -46,6 +46,11 @@ impl From<Font> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&Font> for emlite::Val {
+    fn from(s: &Font) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(Font);
 
 impl Font {

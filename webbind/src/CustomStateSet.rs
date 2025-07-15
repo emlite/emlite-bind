@@ -46,4 +46,9 @@ impl From<CustomStateSet> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CustomStateSet> for emlite::Val {
+    fn from(s: &CustomStateSet) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CustomStateSet);

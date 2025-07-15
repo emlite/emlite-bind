@@ -46,4 +46,9 @@ impl From<OES_texture_float> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&OES_texture_float> for emlite::Val {
+    fn from(s: &OES_texture_float) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(OES_texture_float);

@@ -46,6 +46,11 @@ impl From<CountQueuingStrategy> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CountQueuingStrategy> for emlite::Val {
+    fn from(s: &CountQueuingStrategy) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CountQueuingStrategy);
 
 impl CountQueuingStrategy {

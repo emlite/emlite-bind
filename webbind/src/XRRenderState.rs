@@ -46,6 +46,11 @@ impl From<XRRenderState> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRRenderState> for emlite::Val {
+    fn from(s: &XRRenderState) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRRenderState);
 
 impl XRRenderState {

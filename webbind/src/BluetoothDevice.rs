@@ -44,6 +44,11 @@ impl From<WatchAdvertisementsOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WatchAdvertisementsOptions> for emlite::Val {
+    fn from(s: &WatchAdvertisementsOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl WatchAdvertisementsOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -98,6 +103,11 @@ impl From<BluetoothDevice> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&BluetoothDevice> for emlite::Val {
+    fn from(s: &BluetoothDevice) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BluetoothDevice);

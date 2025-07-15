@@ -46,6 +46,11 @@ impl From<TimeRanges> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TimeRanges> for emlite::Val {
+    fn from(s: &TimeRanges) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(TimeRanges);
 
 impl TimeRanges {

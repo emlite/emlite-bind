@@ -44,6 +44,11 @@ impl From<StructuredSerializeOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&StructuredSerializeOptions> for emlite::Val {
+    fn from(s: &StructuredSerializeOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl StructuredSerializeOptions {
     pub fn transfer(&self) -> Sequence<Object> {
@@ -98,6 +103,11 @@ impl From<MessagePort> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MessagePort> for emlite::Val {
+    fn from(s: &MessagePort) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MessagePort);

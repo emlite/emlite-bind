@@ -46,6 +46,11 @@ impl From<ExtendableCookieChangeEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ExtendableCookieChangeEvent> for emlite::Val {
+    fn from(s: &ExtendableCookieChangeEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ExtendableCookieChangeEvent);
 
 impl ExtendableCookieChangeEvent {

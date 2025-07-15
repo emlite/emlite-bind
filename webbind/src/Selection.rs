@@ -44,6 +44,11 @@ impl From<GetComposedRangesOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GetComposedRangesOptions> for emlite::Val {
+    fn from(s: &GetComposedRangesOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GetComposedRangesOptions {
     pub fn shadow_roots(&self) -> Sequence<ShadowRoot> {
@@ -98,6 +103,11 @@ impl From<Selection> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Selection> for emlite::Val {
+    fn from(s: &Selection) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Selection);

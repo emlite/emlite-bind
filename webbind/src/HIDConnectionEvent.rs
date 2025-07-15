@@ -46,6 +46,11 @@ impl From<HIDConnectionEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HIDConnectionEvent> for emlite::Val {
+    fn from(s: &HIDConnectionEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HIDConnectionEvent);
 
 impl HIDConnectionEvent {

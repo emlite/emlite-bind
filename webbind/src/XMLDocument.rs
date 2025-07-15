@@ -46,4 +46,9 @@ impl From<XMLDocument> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XMLDocument> for emlite::Val {
+    fn from(s: &XMLDocument) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XMLDocument);

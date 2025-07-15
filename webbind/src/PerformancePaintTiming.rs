@@ -46,6 +46,11 @@ impl From<PerformancePaintTiming> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PerformancePaintTiming> for emlite::Val {
+    fn from(s: &PerformancePaintTiming) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PerformancePaintTiming);
 
 impl PerformancePaintTiming {

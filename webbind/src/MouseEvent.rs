@@ -46,6 +46,11 @@ impl From<MouseEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MouseEvent> for emlite::Val {
+    fn from(s: &MouseEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(MouseEvent);
 
 impl MouseEvent {

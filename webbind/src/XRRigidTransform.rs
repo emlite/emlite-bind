@@ -46,6 +46,11 @@ impl From<XRRigidTransform> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRRigidTransform> for emlite::Val {
+    fn from(s: &XRRigidTransform) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRRigidTransform);
 
 impl XRRigidTransform {

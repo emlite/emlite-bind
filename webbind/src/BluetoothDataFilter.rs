@@ -46,6 +46,11 @@ impl From<BluetoothDataFilter> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&BluetoothDataFilter> for emlite::Val {
+    fn from(s: &BluetoothDataFilter) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(BluetoothDataFilter);
 
 impl BluetoothDataFilter {

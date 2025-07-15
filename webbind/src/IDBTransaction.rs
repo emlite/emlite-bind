@@ -46,6 +46,11 @@ impl From<IDBTransaction> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IDBTransaction> for emlite::Val {
+    fn from(s: &IDBTransaction) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(IDBTransaction);
 
 impl IDBTransaction {

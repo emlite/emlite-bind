@@ -46,6 +46,11 @@ impl From<XRWebGLDepthInformation> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRWebGLDepthInformation> for emlite::Val {
+    fn from(s: &XRWebGLDepthInformation) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRWebGLDepthInformation);
 
 impl XRWebGLDepthInformation {

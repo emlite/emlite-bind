@@ -44,6 +44,11 @@ impl From<NavigationPreloadState> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NavigationPreloadState> for emlite::Val {
+    fn from(s: &NavigationPreloadState) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl NavigationPreloadState {
     pub fn enabled(&self) -> bool {
@@ -107,6 +112,11 @@ impl From<NavigationPreloadManager> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&NavigationPreloadManager> for emlite::Val {
+    fn from(s: &NavigationPreloadManager) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(NavigationPreloadManager);

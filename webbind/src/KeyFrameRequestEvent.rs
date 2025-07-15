@@ -46,6 +46,11 @@ impl From<KeyFrameRequestEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&KeyFrameRequestEvent> for emlite::Val {
+    fn from(s: &KeyFrameRequestEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(KeyFrameRequestEvent);
 
 impl KeyFrameRequestEvent {

@@ -44,6 +44,11 @@ impl From<TextDecodeOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TextDecodeOptions> for emlite::Val {
+    fn from(s: &TextDecodeOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl TextDecodeOptions {
     pub fn stream(&self) -> bool {
@@ -98,6 +103,11 @@ impl From<TextDecoder> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&TextDecoder> for emlite::Val {
+    fn from(s: &TextDecoder) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(TextDecoder);

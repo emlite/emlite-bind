@@ -46,4 +46,9 @@ impl From<KeyboardLayoutMap> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&KeyboardLayoutMap> for emlite::Val {
+    fn from(s: &KeyboardLayoutMap) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(KeyboardLayoutMap);

@@ -46,6 +46,11 @@ impl From<CustomEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CustomEvent> for emlite::Val {
+    fn from(s: &CustomEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CustomEvent);
 
 impl CustomEvent {

@@ -46,6 +46,11 @@ impl From<Permissions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&Permissions> for emlite::Val {
+    fn from(s: &Permissions) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(Permissions);
 
 impl Permissions {

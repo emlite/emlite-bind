@@ -46,6 +46,11 @@ impl From<LayoutEdges> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&LayoutEdges> for emlite::Val {
+    fn from(s: &LayoutEdges) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(LayoutEdges);
 
 impl LayoutEdges {

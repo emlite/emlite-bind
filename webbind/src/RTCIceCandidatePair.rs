@@ -46,6 +46,11 @@ impl From<RTCIceCandidatePair> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCIceCandidatePair> for emlite::Val {
+    fn from(s: &RTCIceCandidatePair) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(RTCIceCandidatePair);
 
 impl RTCIceCandidatePair {

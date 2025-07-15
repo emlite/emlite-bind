@@ -44,6 +44,11 @@ impl From<WorkletOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WorkletOptions> for emlite::Val {
+    fn from(s: &WorkletOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl WorkletOptions {
     pub fn credentials(&self) -> RequestCredentials {
@@ -98,6 +103,11 @@ impl From<Worklet> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Worklet> for emlite::Val {
+    fn from(s: &Worklet) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Worklet);

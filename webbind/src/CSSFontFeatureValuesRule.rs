@@ -46,6 +46,11 @@ impl From<CSSFontFeatureValuesRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSFontFeatureValuesRule> for emlite::Val {
+    fn from(s: &CSSFontFeatureValuesRule) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSFontFeatureValuesRule);
 
 impl CSSFontFeatureValuesRule {

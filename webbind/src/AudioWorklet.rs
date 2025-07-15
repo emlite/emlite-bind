@@ -46,6 +46,11 @@ impl From<AudioWorklet> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AudioWorklet> for emlite::Val {
+    fn from(s: &AudioWorklet) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(AudioWorklet);
 
 impl AudioWorklet {

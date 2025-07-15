@@ -46,6 +46,11 @@ impl From<HTMLLegendElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLLegendElement> for emlite::Val {
+    fn from(s: &HTMLLegendElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLLegendElement);
 
 impl HTMLLegendElement {

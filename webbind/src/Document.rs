@@ -44,6 +44,11 @@ impl From<CaretPositionFromPointOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CaretPositionFromPointOptions> for emlite::Val {
+    fn from(s: &CaretPositionFromPointOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl CaretPositionFromPointOptions {
     pub fn shadow_roots(&self) -> Sequence<ShadowRoot> {
@@ -96,6 +101,11 @@ impl From<BoxQuadOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&BoxQuadOptions> for emlite::Val {
+    fn from(s: &BoxQuadOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -159,6 +169,11 @@ impl From<DOMQuadInit> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&DOMQuadInit> for emlite::Val {
+    fn from(s: &DOMQuadInit) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -242,6 +257,11 @@ impl From<ConvertCoordinateOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ConvertCoordinateOptions> for emlite::Val {
+    fn from(s: &ConvertCoordinateOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ConvertCoordinateOptions {
     pub fn from_box(&self) -> CSSBoxType {
@@ -305,6 +325,11 @@ impl From<Document> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Document> for emlite::Val {
+    fn from(s: &Document) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Document);

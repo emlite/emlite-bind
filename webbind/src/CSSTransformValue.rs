@@ -46,6 +46,11 @@ impl From<CSSTransformValue> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSTransformValue> for emlite::Val {
+    fn from(s: &CSSTransformValue) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSTransformValue);
 
 impl CSSTransformValue {

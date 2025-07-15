@@ -46,6 +46,11 @@ impl From<SVGFETurbulenceElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGFETurbulenceElement> for emlite::Val {
+    fn from(s: &SVGFETurbulenceElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGFETurbulenceElement);
 
 impl SVGFETurbulenceElement {

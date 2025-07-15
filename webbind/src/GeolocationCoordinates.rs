@@ -46,6 +46,11 @@ impl From<GeolocationCoordinates> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GeolocationCoordinates> for emlite::Val {
+    fn from(s: &GeolocationCoordinates) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GeolocationCoordinates);
 
 impl GeolocationCoordinates {

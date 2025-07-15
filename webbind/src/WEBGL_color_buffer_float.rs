@@ -46,4 +46,9 @@ impl From<WEBGL_color_buffer_float> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WEBGL_color_buffer_float> for emlite::Val {
+    fn from(s: &WEBGL_color_buffer_float) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WEBGL_color_buffer_float);

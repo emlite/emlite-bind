@@ -44,6 +44,11 @@ impl From<SubscribeOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SubscribeOptions> for emlite::Val {
+    fn from(s: &SubscribeOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl SubscribeOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -98,6 +103,11 @@ impl From<Observable> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Observable> for emlite::Val {
+    fn from(s: &Observable) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Observable);

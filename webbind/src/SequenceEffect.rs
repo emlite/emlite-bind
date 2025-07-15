@@ -46,6 +46,11 @@ impl From<SequenceEffect> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SequenceEffect> for emlite::Val {
+    fn from(s: &SequenceEffect) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SequenceEffect);
 
 impl SequenceEffect {

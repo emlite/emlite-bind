@@ -46,6 +46,11 @@ impl From<CSSKeywordValue> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSKeywordValue> for emlite::Val {
+    fn from(s: &CSSKeywordValue) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSKeywordValue);
 
 impl CSSKeywordValue {

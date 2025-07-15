@@ -46,6 +46,11 @@ impl From<External> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&External> for emlite::Val {
+    fn from(s: &External) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(External);
 
 impl External {

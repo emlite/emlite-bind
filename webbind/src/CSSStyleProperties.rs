@@ -46,6 +46,11 @@ impl From<CSSStyleProperties> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSStyleProperties> for emlite::Val {
+    fn from(s: &CSSStyleProperties) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSStyleProperties);
 
 impl CSSStyleProperties {

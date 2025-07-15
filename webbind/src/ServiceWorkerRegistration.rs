@@ -44,6 +44,11 @@ impl From<NotificationOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NotificationOptions> for emlite::Val {
+    fn from(s: &NotificationOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl NotificationOptions {
     pub fn dir(&self) -> NotificationDirection {
@@ -217,6 +222,11 @@ impl From<GetNotificationOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GetNotificationOptions> for emlite::Val {
+    fn from(s: &GetNotificationOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GetNotificationOptions {
     pub fn tag(&self) -> DOMString {
@@ -271,6 +281,11 @@ impl From<ServiceWorkerRegistration> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&ServiceWorkerRegistration> for emlite::Val {
+    fn from(s: &ServiceWorkerRegistration) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ServiceWorkerRegistration);

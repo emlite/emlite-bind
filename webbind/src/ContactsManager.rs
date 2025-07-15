@@ -44,6 +44,11 @@ impl From<ContactInfo> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ContactInfo> for emlite::Val {
+    fn from(s: &ContactInfo) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ContactInfo {
     pub fn address(&self) -> Sequence<ContactAddress> {
@@ -134,6 +139,11 @@ impl From<ContactsSelectOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ContactsSelectOptions> for emlite::Val {
+    fn from(s: &ContactsSelectOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ContactsSelectOptions {
     pub fn multiple(&self) -> bool {
@@ -188,6 +198,11 @@ impl From<ContactsManager> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&ContactsManager> for emlite::Val {
+    fn from(s: &ContactsManager) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ContactsManager);

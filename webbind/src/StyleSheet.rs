@@ -46,6 +46,11 @@ impl From<StyleSheet> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&StyleSheet> for emlite::Val {
+    fn from(s: &StyleSheet) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(StyleSheet);
 
 impl StyleSheet {

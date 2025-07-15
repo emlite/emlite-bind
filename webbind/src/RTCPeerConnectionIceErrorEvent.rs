@@ -46,6 +46,11 @@ impl From<RTCPeerConnectionIceErrorEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCPeerConnectionIceErrorEvent> for emlite::Val {
+    fn from(s: &RTCPeerConnectionIceErrorEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(RTCPeerConnectionIceErrorEvent);
 
 impl RTCPeerConnectionIceErrorEvent {

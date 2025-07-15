@@ -46,6 +46,11 @@ impl From<WebGLActiveInfo> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebGLActiveInfo> for emlite::Val {
+    fn from(s: &WebGLActiveInfo) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebGLActiveInfo);
 
 impl WebGLActiveInfo {

@@ -44,6 +44,11 @@ impl From<WebTransportConnectionStats> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebTransportConnectionStats> for emlite::Val {
+    fn from(s: &WebTransportConnectionStats) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl WebTransportConnectionStats {
     pub fn bytes_sent(&self) -> u64 {
@@ -197,6 +202,11 @@ impl From<WebTransportCloseInfo> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebTransportCloseInfo> for emlite::Val {
+    fn from(s: &WebTransportCloseInfo) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl WebTransportCloseInfo {
     pub fn close_code(&self) -> u32 {
@@ -260,6 +270,11 @@ impl From<WebTransportSendStreamOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebTransportSendStreamOptions> for emlite::Val {
+    fn from(s: &WebTransportSendStreamOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl WebTransportSendStreamOptions {
     pub fn wait_until_available(&self) -> bool {
@@ -314,6 +329,11 @@ impl From<WebTransport> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&WebTransport> for emlite::Val {
+    fn from(s: &WebTransport) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(WebTransport);

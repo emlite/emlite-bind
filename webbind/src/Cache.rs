@@ -46,6 +46,11 @@ impl From<Cache> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&Cache> for emlite::Val {
+    fn from(s: &Cache) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(Cache);
 
 impl Cache {

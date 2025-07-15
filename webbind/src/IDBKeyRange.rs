@@ -46,6 +46,11 @@ impl From<IDBKeyRange> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IDBKeyRange> for emlite::Val {
+    fn from(s: &IDBKeyRange) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(IDBKeyRange);
 
 impl IDBKeyRange {

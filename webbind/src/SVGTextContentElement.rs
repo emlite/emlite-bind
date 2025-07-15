@@ -46,6 +46,11 @@ impl From<SVGTextContentElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGTextContentElement> for emlite::Val {
+    fn from(s: &SVGTextContentElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGTextContentElement);
 
 impl SVGTextContentElement {

@@ -46,6 +46,11 @@ impl From<SVGFEPointLightElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGFEPointLightElement> for emlite::Val {
+    fn from(s: &SVGFEPointLightElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGFEPointLightElement);
 
 impl SVGFEPointLightElement {

@@ -46,6 +46,11 @@ impl From<PerformanceMark> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PerformanceMark> for emlite::Val {
+    fn from(s: &PerformanceMark) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PerformanceMark);
 
 impl PerformanceMark {

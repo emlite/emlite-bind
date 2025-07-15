@@ -46,4 +46,9 @@ impl From<WebGLVertexArrayObject> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebGLVertexArrayObject> for emlite::Val {
+    fn from(s: &WebGLVertexArrayObject) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebGLVertexArrayObject);

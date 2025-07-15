@@ -46,6 +46,11 @@ impl From<RTCIdentityAssertion> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCIdentityAssertion> for emlite::Val {
+    fn from(s: &RTCIdentityAssertion) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(RTCIdentityAssertion);
 
 impl RTCIdentityAssertion {

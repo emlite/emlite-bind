@@ -46,4 +46,9 @@ impl From<OES_element_index_uint> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&OES_element_index_uint> for emlite::Val {
+    fn from(s: &OES_element_index_uint) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(OES_element_index_uint);

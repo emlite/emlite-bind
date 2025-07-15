@@ -46,6 +46,11 @@ impl From<GPUPipelineLayout> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUPipelineLayout> for emlite::Val {
+    fn from(s: &GPUPipelineLayout) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GPUPipelineLayout);
 
 impl GPUPipelineLayout {

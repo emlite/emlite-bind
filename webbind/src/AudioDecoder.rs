@@ -44,6 +44,11 @@ impl From<AudioDecoderConfig> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AudioDecoderConfig> for emlite::Val {
+    fn from(s: &AudioDecoderConfig) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl AudioDecoderConfig {
     pub fn codec(&self) -> DOMString {
@@ -125,6 +130,11 @@ impl From<AudioDecoderSupport> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AudioDecoderSupport> for emlite::Val {
+    fn from(s: &AudioDecoderSupport) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl AudioDecoderSupport {
     pub fn supported(&self) -> bool {
@@ -188,6 +198,11 @@ impl From<AudioDecoder> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&AudioDecoder> for emlite::Val {
+    fn from(s: &AudioDecoder) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(AudioDecoder);

@@ -46,4 +46,9 @@ impl From<OES_standard_derivatives> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&OES_standard_derivatives> for emlite::Val {
+    fn from(s: &OES_standard_derivatives) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(OES_standard_derivatives);

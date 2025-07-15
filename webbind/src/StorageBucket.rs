@@ -46,6 +46,11 @@ impl From<StorageBucket> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&StorageBucket> for emlite::Val {
+    fn from(s: &StorageBucket) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(StorageBucket);
 
 impl StorageBucket {

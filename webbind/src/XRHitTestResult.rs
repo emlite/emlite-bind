@@ -46,6 +46,11 @@ impl From<XRHitTestResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRHitTestResult> for emlite::Val {
+    fn from(s: &XRHitTestResult) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRHitTestResult);
 
 impl XRHitTestResult {

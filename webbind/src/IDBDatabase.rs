@@ -44,6 +44,11 @@ impl From<IDBTransactionOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IDBTransactionOptions> for emlite::Val {
+    fn from(s: &IDBTransactionOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl IDBTransactionOptions {
     pub fn durability(&self) -> IDBTransactionDurability {
@@ -98,6 +103,11 @@ impl From<IDBObjectStoreParameters> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&IDBObjectStoreParameters> for emlite::Val {
+    fn from(s: &IDBObjectStoreParameters) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -163,6 +173,11 @@ impl From<IDBDatabase> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&IDBDatabase> for emlite::Val {
+    fn from(s: &IDBDatabase) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(IDBDatabase);

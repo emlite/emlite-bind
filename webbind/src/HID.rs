@@ -44,6 +44,11 @@ impl From<HIDDeviceRequestOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HIDDeviceRequestOptions> for emlite::Val {
+    fn from(s: &HIDDeviceRequestOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl HIDDeviceRequestOptions {
     pub fn filters(&self) -> Sequence<Any> {
@@ -107,6 +112,11 @@ impl From<HID> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&HID> for emlite::Val {
+    fn from(s: &HID) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HID);

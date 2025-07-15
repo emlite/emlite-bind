@@ -44,6 +44,11 @@ impl From<GPUBufferDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUBufferDescriptor> for emlite::Val {
+    fn from(s: &GPUBufferDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GPUBufferDescriptor {
     pub fn size(&self) -> Any {
@@ -114,6 +119,11 @@ impl From<GPUTextureDescriptor> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GPUTextureDescriptor> for emlite::Val {
+    fn from(s: &GPUTextureDescriptor) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -224,6 +234,11 @@ impl From<GPUSamplerDescriptor> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GPUSamplerDescriptor> for emlite::Val {
+    fn from(s: &GPUSamplerDescriptor) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -361,6 +376,11 @@ impl From<GPUExternalTextureDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUExternalTextureDescriptor> for emlite::Val {
+    fn from(s: &GPUExternalTextureDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GPUExternalTextureDescriptor {
     pub fn source(&self) -> Any {
@@ -424,6 +444,11 @@ impl From<GPUBindGroupLayoutDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUBindGroupLayoutDescriptor> for emlite::Val {
+    fn from(s: &GPUBindGroupLayoutDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GPUBindGroupLayoutDescriptor {
     pub fn entries(&self) -> Sequence<Any> {
@@ -476,6 +501,11 @@ impl From<GPUPipelineLayoutDescriptor> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GPUPipelineLayoutDescriptor> for emlite::Val {
+    fn from(s: &GPUPipelineLayoutDescriptor) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -532,6 +562,11 @@ impl From<GPUBindGroupDescriptor> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GPUBindGroupDescriptor> for emlite::Val {
+    fn from(s: &GPUBindGroupDescriptor) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -597,6 +632,11 @@ impl From<GPUShaderModuleDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUShaderModuleDescriptor> for emlite::Val {
+    fn from(s: &GPUShaderModuleDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GPUShaderModuleDescriptor {
     pub fn code(&self) -> USVString {
@@ -660,6 +700,11 @@ impl From<GPUComputePipelineDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUComputePipelineDescriptor> for emlite::Val {
+    fn from(s: &GPUComputePipelineDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GPUComputePipelineDescriptor {
     pub fn compute(&self) -> Any {
@@ -712,6 +757,11 @@ impl From<GPURenderPipelineDescriptor> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GPURenderPipelineDescriptor> for emlite::Val {
+    fn from(s: &GPURenderPipelineDescriptor) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -804,6 +854,11 @@ impl From<GPUCommandEncoderDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUCommandEncoderDescriptor> for emlite::Val {
+    fn from(s: &GPUCommandEncoderDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -847,6 +902,11 @@ impl From<GPURenderBundleEncoderDescriptor> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GPURenderBundleEncoderDescriptor> for emlite::Val {
+    fn from(s: &GPURenderBundleEncoderDescriptor) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -912,6 +972,11 @@ impl From<GPUQuerySetDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUQuerySetDescriptor> for emlite::Val {
+    fn from(s: &GPUQuerySetDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GPUQuerySetDescriptor {
     pub fn type_(&self) -> GPUQueryType {
@@ -975,6 +1040,11 @@ impl From<GPUDevice> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GPUDevice> for emlite::Val {
+    fn from(s: &GPUDevice) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GPUDevice);

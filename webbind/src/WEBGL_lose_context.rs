@@ -46,6 +46,11 @@ impl From<WEBGL_lose_context> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WEBGL_lose_context> for emlite::Val {
+    fn from(s: &WEBGL_lose_context) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WEBGL_lose_context);
 
 impl WEBGL_lose_context {

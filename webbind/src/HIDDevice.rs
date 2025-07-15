@@ -44,6 +44,11 @@ impl From<HIDCollectionInfo> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HIDCollectionInfo> for emlite::Val {
+    fn from(s: &HIDCollectionInfo) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl HIDCollectionInfo {
     pub fn usage_page(&self) -> u16 {
@@ -154,6 +159,11 @@ impl From<HIDDevice> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&HIDDevice> for emlite::Val {
+    fn from(s: &HIDDevice) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HIDDevice);

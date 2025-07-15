@@ -46,6 +46,11 @@ impl From<ConvolverNode> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ConvolverNode> for emlite::Val {
+    fn from(s: &ConvolverNode) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ConvolverNode);
 
 impl ConvolverNode {

@@ -44,6 +44,11 @@ impl From<RTCIdentityProvider> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCIdentityProvider> for emlite::Val {
+    fn from(s: &RTCIdentityProvider) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl RTCIdentityProvider {
     pub fn generate_assertion(&self) -> Function {
@@ -107,6 +112,11 @@ impl From<RTCIdentityProviderRegistrar> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCIdentityProviderRegistrar> for emlite::Val {
+    fn from(s: &RTCIdentityProviderRegistrar) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCIdentityProviderRegistrar);

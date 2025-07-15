@@ -46,6 +46,11 @@ impl From<XPathEvaluator> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XPathEvaluator> for emlite::Val {
+    fn from(s: &XPathEvaluator) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XPathEvaluator);
 
 impl XPathEvaluator {

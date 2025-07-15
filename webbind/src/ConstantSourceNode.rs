@@ -46,6 +46,11 @@ impl From<ConstantSourceNode> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ConstantSourceNode> for emlite::Val {
+    fn from(s: &ConstantSourceNode) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ConstantSourceNode);
 
 impl ConstantSourceNode {

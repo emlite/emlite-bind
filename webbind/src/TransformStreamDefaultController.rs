@@ -46,6 +46,11 @@ impl From<TransformStreamDefaultController> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TransformStreamDefaultController> for emlite::Val {
+    fn from(s: &TransformStreamDefaultController) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(TransformStreamDefaultController);
 
 impl TransformStreamDefaultController {

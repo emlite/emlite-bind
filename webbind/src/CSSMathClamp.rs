@@ -46,6 +46,11 @@ impl From<CSSMathClamp> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSMathClamp> for emlite::Val {
+    fn from(s: &CSSMathClamp) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSMathClamp);
 
 impl CSSMathClamp {

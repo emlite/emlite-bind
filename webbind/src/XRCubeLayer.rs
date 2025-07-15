@@ -46,6 +46,11 @@ impl From<XRCubeLayer> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRCubeLayer> for emlite::Val {
+    fn from(s: &XRCubeLayer) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRCubeLayer);
 
 impl XRCubeLayer {

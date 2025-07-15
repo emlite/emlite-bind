@@ -46,6 +46,11 @@ impl From<InterestGroupBiddingScriptRunnerGlobalScope> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&InterestGroupBiddingScriptRunnerGlobalScope> for emlite::Val {
+    fn from(s: &InterestGroupBiddingScriptRunnerGlobalScope) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(InterestGroupBiddingScriptRunnerGlobalScope);
 
 impl InterestGroupBiddingScriptRunnerGlobalScope {

@@ -46,6 +46,11 @@ impl From<TrustedTypePolicy> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TrustedTypePolicy> for emlite::Val {
+    fn from(s: &TrustedTypePolicy) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(TrustedTypePolicy);
 
 impl TrustedTypePolicy {

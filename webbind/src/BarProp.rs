@@ -46,6 +46,11 @@ impl From<BarProp> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&BarProp> for emlite::Val {
+    fn from(s: &BarProp) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(BarProp);
 
 impl BarProp {

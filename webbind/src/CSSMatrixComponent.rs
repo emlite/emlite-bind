@@ -46,6 +46,11 @@ impl From<CSSMatrixComponent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSMatrixComponent> for emlite::Val {
+    fn from(s: &CSSMatrixComponent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSMatrixComponent);
 
 impl CSSMatrixComponent {

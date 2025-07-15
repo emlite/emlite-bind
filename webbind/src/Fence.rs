@@ -44,6 +44,11 @@ impl From<FenceEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&FenceEvent> for emlite::Val {
+    fn from(s: &FenceEvent) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl FenceEvent {
     pub fn event_type(&self) -> DOMString {
@@ -145,6 +150,11 @@ impl From<Fence> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Fence> for emlite::Val {
+    fn from(s: &Fence) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Fence);

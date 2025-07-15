@@ -44,6 +44,11 @@ impl From<HandwritingPoint> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HandwritingPoint> for emlite::Val {
+    fn from(s: &HandwritingPoint) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl HandwritingPoint {
     pub fn x(&self) -> f64 {
@@ -116,6 +121,11 @@ impl From<HandwritingStroke> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&HandwritingStroke> for emlite::Val {
+    fn from(s: &HandwritingStroke) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HandwritingStroke);

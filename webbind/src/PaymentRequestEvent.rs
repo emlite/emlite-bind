@@ -44,6 +44,11 @@ impl From<PaymentMethodData> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PaymentMethodData> for emlite::Val {
+    fn from(s: &PaymentMethodData) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PaymentMethodData {
     pub fn supported_methods(&self) -> DOMString {
@@ -105,6 +110,11 @@ impl From<PaymentDetailsModifier> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&PaymentDetailsModifier> for emlite::Val {
+    fn from(s: &PaymentDetailsModifier) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -190,6 +200,11 @@ impl From<PaymentShippingOption> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PaymentShippingOption> for emlite::Val {
+    fn from(s: &PaymentShippingOption) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PaymentShippingOption {
     pub fn id(&self) -> DOMString {
@@ -269,6 +284,11 @@ impl From<PaymentRequestDetailsUpdate> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&PaymentRequestDetailsUpdate> for emlite::Val {
+    fn from(s: &PaymentRequestDetailsUpdate) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -372,6 +392,11 @@ impl From<AddressInit> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&AddressInit> for emlite::Val {
+    fn from(s: &AddressInit) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -509,6 +534,11 @@ impl From<PaymentHandlerResponse> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PaymentHandlerResponse> for emlite::Val {
+    fn from(s: &PaymentHandlerResponse) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PaymentHandlerResponse {
     pub fn method_name(&self) -> DOMString {
@@ -617,6 +647,11 @@ impl From<PaymentRequestEvent> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&PaymentRequestEvent> for emlite::Val {
+    fn from(s: &PaymentRequestEvent) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PaymentRequestEvent);

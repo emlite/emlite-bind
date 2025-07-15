@@ -44,6 +44,11 @@ impl From<ClientQueryOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ClientQueryOptions> for emlite::Val {
+    fn from(s: &ClientQueryOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ClientQueryOptions {
     pub fn include_uncontrolled(&self) -> bool {
@@ -107,6 +112,11 @@ impl From<Clients> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Clients> for emlite::Val {
+    fn from(s: &Clients) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Clients);

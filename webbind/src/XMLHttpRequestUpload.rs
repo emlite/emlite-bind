@@ -46,4 +46,9 @@ impl From<XMLHttpRequestUpload> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XMLHttpRequestUpload> for emlite::Val {
+    fn from(s: &XMLHttpRequestUpload) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XMLHttpRequestUpload);

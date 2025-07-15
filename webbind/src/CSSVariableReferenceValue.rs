@@ -46,6 +46,11 @@ impl From<CSSVariableReferenceValue> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSVariableReferenceValue> for emlite::Val {
+    fn from(s: &CSSVariableReferenceValue) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSVariableReferenceValue);
 
 impl CSSVariableReferenceValue {

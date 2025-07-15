@@ -46,6 +46,11 @@ impl From<SVGPathSegment> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGPathSegment> for emlite::Val {
+    fn from(s: &SVGPathSegment) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGPathSegment);
 
 impl SVGPathSegment {

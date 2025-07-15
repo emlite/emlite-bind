@@ -46,6 +46,11 @@ impl From<BackgroundFetchEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&BackgroundFetchEvent> for emlite::Val {
+    fn from(s: &BackgroundFetchEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(BackgroundFetchEvent);
 
 impl BackgroundFetchEvent {

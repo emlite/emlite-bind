@@ -46,6 +46,11 @@ impl From<Highlight> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&Highlight> for emlite::Val {
+    fn from(s: &Highlight) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(Highlight);
 
 impl Highlight {

@@ -44,6 +44,11 @@ impl From<VideoEncoderConfig> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&VideoEncoderConfig> for emlite::Val {
+    fn from(s: &VideoEncoderConfig) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl VideoEncoderConfig {
     pub fn codec(&self) -> DOMString {
@@ -210,6 +215,11 @@ impl From<VideoEncoderEncodeOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&VideoEncoderEncodeOptions> for emlite::Val {
+    fn from(s: &VideoEncoderEncodeOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl VideoEncoderEncodeOptions {
     pub fn key_frame(&self) -> bool {
@@ -262,6 +272,11 @@ impl From<VideoEncoderSupport> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&VideoEncoderSupport> for emlite::Val {
+    fn from(s: &VideoEncoderSupport) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -327,6 +342,11 @@ impl From<VideoEncoder> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&VideoEncoder> for emlite::Val {
+    fn from(s: &VideoEncoder) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(VideoEncoder);

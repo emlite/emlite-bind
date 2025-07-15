@@ -44,6 +44,11 @@ impl From<DOMRectInit> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DOMRectInit> for emlite::Val {
+    fn from(s: &DOMRectInit) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl DOMRectInit {
     pub fn x(&self) -> f64 {
@@ -125,6 +130,11 @@ impl From<DOMRectReadOnly> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&DOMRectReadOnly> for emlite::Val {
+    fn from(s: &DOMRectReadOnly) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(DOMRectReadOnly);

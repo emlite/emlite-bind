@@ -46,6 +46,11 @@ impl From<VTTRegion> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&VTTRegion> for emlite::Val {
+    fn from(s: &VTTRegion) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(VTTRegion);
 
 impl VTTRegion {

@@ -46,6 +46,11 @@ impl From<SVGCircleElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGCircleElement> for emlite::Val {
+    fn from(s: &SVGCircleElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGCircleElement);
 
 impl SVGCircleElement {

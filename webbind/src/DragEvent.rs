@@ -46,6 +46,11 @@ impl From<DragEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DragEvent> for emlite::Val {
+    fn from(s: &DragEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(DragEvent);
 
 impl DragEvent {

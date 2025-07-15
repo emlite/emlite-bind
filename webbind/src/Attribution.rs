@@ -44,6 +44,11 @@ impl From<AttributionImpressionResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AttributionImpressionResult> for emlite::Val {
+    fn from(s: &AttributionImpressionResult) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -87,6 +92,11 @@ impl From<AttributionImpressionOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&AttributionImpressionOptions> for emlite::Val {
+    fn from(s: &AttributionImpressionOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -183,6 +193,11 @@ impl From<AttributionConversionResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AttributionConversionResult> for emlite::Val {
+    fn from(s: &AttributionConversionResult) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl AttributionConversionResult {
     pub fn report(&self) -> Uint8Array {
@@ -235,6 +250,11 @@ impl From<AttributionConversionOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&AttributionConversionOptions> for emlite::Val {
+    fn from(s: &AttributionConversionOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -376,6 +396,11 @@ impl From<Attribution> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Attribution> for emlite::Val {
+    fn from(s: &Attribution) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Attribution);

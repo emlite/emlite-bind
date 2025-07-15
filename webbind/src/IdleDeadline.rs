@@ -46,6 +46,11 @@ impl From<IdleDeadline> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IdleDeadline> for emlite::Val {
+    fn from(s: &IdleDeadline) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(IdleDeadline);
 
 impl IdleDeadline {

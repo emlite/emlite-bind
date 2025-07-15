@@ -46,6 +46,11 @@ impl From<MediaQueryListEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaQueryListEvent> for emlite::Val {
+    fn from(s: &MediaQueryListEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(MediaQueryListEvent);
 
 impl MediaQueryListEvent {

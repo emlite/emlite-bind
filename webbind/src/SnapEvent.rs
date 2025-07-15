@@ -46,6 +46,11 @@ impl From<SnapEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SnapEvent> for emlite::Val {
+    fn from(s: &SnapEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SnapEvent);
 
 impl SnapEvent {

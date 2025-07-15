@@ -44,6 +44,11 @@ impl From<RTCOfferOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCOfferOptions> for emlite::Val {
+    fn from(s: &RTCOfferOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl RTCOfferOptions {
     pub fn offer_to_receive_audio(&self) -> bool {
@@ -105,6 +110,11 @@ impl From<RTCLocalSessionDescriptionInit> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCLocalSessionDescriptionInit> for emlite::Val {
+    fn from(s: &RTCLocalSessionDescriptionInit) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -170,6 +180,11 @@ impl From<RTCSessionDescriptionInit> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCSessionDescriptionInit> for emlite::Val {
+    fn from(s: &RTCSessionDescriptionInit) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl RTCSessionDescriptionInit {
     pub fn type_(&self) -> RTCSdpType {
@@ -231,6 +246,11 @@ impl From<RTCConfiguration> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCConfiguration> for emlite::Val {
+    fn from(s: &RTCConfiguration) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -336,6 +356,11 @@ impl From<RTCIdentityProviderOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCIdentityProviderOptions> for emlite::Val {
+    fn from(s: &RTCIdentityProviderOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl RTCIdentityProviderOptions {
     pub fn protocol(&self) -> DOMString {
@@ -406,6 +431,11 @@ impl From<RTCRtpTransceiverInit> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCRtpTransceiverInit> for emlite::Val {
+    fn from(s: &RTCRtpTransceiverInit) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -480,6 +510,11 @@ impl From<RTCDataChannelInit> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCDataChannelInit> for emlite::Val {
+    fn from(s: &RTCDataChannelInit) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -581,6 +616,11 @@ impl From<RTCPeerConnection> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCPeerConnection> for emlite::Val {
+    fn from(s: &RTCPeerConnection) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCPeerConnection);

@@ -46,6 +46,11 @@ impl From<CharacterBoundsUpdateEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CharacterBoundsUpdateEvent> for emlite::Val {
+    fn from(s: &CharacterBoundsUpdateEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CharacterBoundsUpdateEvent);
 
 impl CharacterBoundsUpdateEvent {

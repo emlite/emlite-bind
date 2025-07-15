@@ -46,4 +46,9 @@ impl From<CSSImageValue> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSImageValue> for emlite::Val {
+    fn from(s: &CSSImageValue) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSImageValue);

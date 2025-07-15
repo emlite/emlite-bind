@@ -46,6 +46,11 @@ impl From<EncodedAudioChunk> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&EncodedAudioChunk> for emlite::Val {
+    fn from(s: &EncodedAudioChunk) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(EncodedAudioChunk);
 
 impl EncodedAudioChunk {

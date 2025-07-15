@@ -46,6 +46,11 @@ impl From<NavigationActivation> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NavigationActivation> for emlite::Val {
+    fn from(s: &NavigationActivation) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(NavigationActivation);
 
 impl NavigationActivation {

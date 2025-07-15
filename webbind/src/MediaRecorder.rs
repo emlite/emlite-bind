@@ -46,6 +46,11 @@ impl From<MediaRecorder> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaRecorder> for emlite::Val {
+    fn from(s: &MediaRecorder) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(MediaRecorder);
 
 impl MediaRecorder {

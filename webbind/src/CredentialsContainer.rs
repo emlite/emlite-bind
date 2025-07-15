@@ -44,6 +44,11 @@ impl From<CredentialRequestOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CredentialRequestOptions> for emlite::Val {
+    fn from(s: &CredentialRequestOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl CredentialRequestOptions {
     pub fn public_key(&self) -> PublicKeyCredentialRequestOptions {
@@ -98,6 +103,11 @@ impl From<CredentialCreationOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&CredentialCreationOptions> for emlite::Val {
+    fn from(s: &CredentialCreationOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -156,6 +166,11 @@ impl From<CredentialsContainer> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&CredentialsContainer> for emlite::Val {
+    fn from(s: &CredentialsContainer) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CredentialsContainer);

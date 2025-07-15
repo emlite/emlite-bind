@@ -46,6 +46,11 @@ impl From<HTMLAnchorElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLAnchorElement> for emlite::Val {
+    fn from(s: &HTMLAnchorElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLAnchorElement);
 
 impl HTMLAnchorElement {

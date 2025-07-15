@@ -46,6 +46,11 @@ impl From<ReadableStreamDefaultController> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ReadableStreamDefaultController> for emlite::Val {
+    fn from(s: &ReadableStreamDefaultController) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ReadableStreamDefaultController);
 
 impl ReadableStreamDefaultController {

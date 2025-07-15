@@ -46,6 +46,11 @@ impl From<CaretPosition> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CaretPosition> for emlite::Val {
+    fn from(s: &CaretPosition) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CaretPosition);
 
 impl CaretPosition {

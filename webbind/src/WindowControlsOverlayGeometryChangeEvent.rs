@@ -46,6 +46,11 @@ impl From<WindowControlsOverlayGeometryChangeEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WindowControlsOverlayGeometryChangeEvent> for emlite::Val {
+    fn from(s: &WindowControlsOverlayGeometryChangeEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WindowControlsOverlayGeometryChangeEvent);
 
 impl WindowControlsOverlayGeometryChangeEvent {

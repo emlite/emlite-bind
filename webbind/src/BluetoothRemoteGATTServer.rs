@@ -46,6 +46,11 @@ impl From<BluetoothRemoteGATTServer> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&BluetoothRemoteGATTServer> for emlite::Val {
+    fn from(s: &BluetoothRemoteGATTServer) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(BluetoothRemoteGATTServer);
 
 impl BluetoothRemoteGATTServer {

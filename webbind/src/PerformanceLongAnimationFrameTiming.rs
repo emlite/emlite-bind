@@ -46,6 +46,11 @@ impl From<PerformanceLongAnimationFrameTiming> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PerformanceLongAnimationFrameTiming> for emlite::Val {
+    fn from(s: &PerformanceLongAnimationFrameTiming) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PerformanceLongAnimationFrameTiming);
 
 impl PerformanceLongAnimationFrameTiming {

@@ -44,6 +44,11 @@ impl From<GeolocationSensorReading> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GeolocationSensorReading> for emlite::Val {
+    fn from(s: &GeolocationSensorReading) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GeolocationSensorReading {
     pub fn timestamp(&self) -> Any {
@@ -161,6 +166,11 @@ impl From<ReadOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ReadOptions> for emlite::Val {
+    fn from(s: &ReadOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ReadOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -215,6 +225,11 @@ impl From<GeolocationSensor> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GeolocationSensor> for emlite::Val {
+    fn from(s: &GeolocationSensor) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GeolocationSensor);

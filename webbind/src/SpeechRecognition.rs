@@ -44,6 +44,11 @@ impl From<SpeechRecognitionOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SpeechRecognitionOptions> for emlite::Val {
+    fn from(s: &SpeechRecognitionOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl SpeechRecognitionOptions {
     pub fn langs(&self) -> Sequence<DOMString> {
@@ -107,6 +112,11 @@ impl From<SpeechRecognition> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&SpeechRecognition> for emlite::Val {
+    fn from(s: &SpeechRecognition) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SpeechRecognition);

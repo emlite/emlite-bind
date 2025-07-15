@@ -46,4 +46,9 @@ impl From<BluetoothManufacturerDataMap> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&BluetoothManufacturerDataMap> for emlite::Val {
+    fn from(s: &BluetoothManufacturerDataMap) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(BluetoothManufacturerDataMap);

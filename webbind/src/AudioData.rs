@@ -44,6 +44,11 @@ impl From<AudioDataCopyToOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AudioDataCopyToOptions> for emlite::Val {
+    fn from(s: &AudioDataCopyToOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl AudioDataCopyToOptions {
     pub fn plane_index(&self) -> u32 {
@@ -125,6 +130,11 @@ impl From<AudioData> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&AudioData> for emlite::Val {
+    fn from(s: &AudioData) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(AudioData);

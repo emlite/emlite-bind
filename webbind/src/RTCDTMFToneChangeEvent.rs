@@ -46,6 +46,11 @@ impl From<RTCDTMFToneChangeEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCDTMFToneChangeEvent> for emlite::Val {
+    fn from(s: &RTCDTMFToneChangeEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(RTCDTMFToneChangeEvent);
 
 impl RTCDTMFToneChangeEvent {

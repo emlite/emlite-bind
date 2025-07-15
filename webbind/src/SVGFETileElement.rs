@@ -46,6 +46,11 @@ impl From<SVGFETileElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGFETileElement> for emlite::Val {
+    fn from(s: &SVGFETileElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGFETileElement);
 
 impl SVGFETileElement {

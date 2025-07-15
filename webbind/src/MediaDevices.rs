@@ -44,6 +44,11 @@ impl From<AudioOutputOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AudioOutputOptions> for emlite::Val {
+    fn from(s: &AudioOutputOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl AudioOutputOptions {
     pub fn device_id(&self) -> DOMString {
@@ -96,6 +101,11 @@ impl From<CaptureHandleConfig> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&CaptureHandleConfig> for emlite::Val {
+    fn from(s: &CaptureHandleConfig) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -170,6 +180,11 @@ impl From<MediaTrackSupportedConstraints> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MediaTrackSupportedConstraints> for emlite::Val {
+    fn from(s: &MediaTrackSupportedConstraints) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -262,6 +277,11 @@ impl From<MediaStreamConstraints> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaStreamConstraints> for emlite::Val {
+    fn from(s: &MediaStreamConstraints) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MediaStreamConstraints {
     pub fn peer_identity(&self) -> DOMString {
@@ -314,6 +334,11 @@ impl From<DisplayMediaStreamOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&DisplayMediaStreamOptions> for emlite::Val {
+    fn from(s: &DisplayMediaStreamOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -443,6 +468,11 @@ impl From<MediaDevices> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MediaDevices> for emlite::Val {
+    fn from(s: &MediaDevices) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaDevices);

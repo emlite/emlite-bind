@@ -44,6 +44,11 @@ impl From<WebTransportReceiveStreamStats> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebTransportReceiveStreamStats> for emlite::Val {
+    fn from(s: &WebTransportReceiveStreamStats) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl WebTransportReceiveStreamStats {
     pub fn bytes_received(&self) -> u64 {
@@ -107,6 +112,11 @@ impl From<WebTransportReceiveStream> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&WebTransportReceiveStream> for emlite::Val {
+    fn from(s: &WebTransportReceiveStream) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(WebTransportReceiveStream);

@@ -46,6 +46,11 @@ impl From<TreeWalker> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TreeWalker> for emlite::Val {
+    fn from(s: &TreeWalker) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(TreeWalker);
 
 impl TreeWalker {

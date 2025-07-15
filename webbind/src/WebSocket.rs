@@ -46,6 +46,11 @@ impl From<WebSocket> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebSocket> for emlite::Val {
+    fn from(s: &WebSocket) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebSocket);
 
 impl WebSocket {

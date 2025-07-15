@@ -46,6 +46,11 @@ impl From<SVGAnimatedLengthList> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGAnimatedLengthList> for emlite::Val {
+    fn from(s: &SVGAnimatedLengthList) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGAnimatedLengthList);
 
 impl SVGAnimatedLengthList {

@@ -46,6 +46,11 @@ impl From<CSSColorProfileRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSColorProfileRule> for emlite::Val {
+    fn from(s: &CSSColorProfileRule) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSColorProfileRule);
 
 impl CSSColorProfileRule {

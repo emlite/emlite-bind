@@ -46,6 +46,11 @@ impl From<PushSubscriptionOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PushSubscriptionOptions> for emlite::Val {
+    fn from(s: &PushSubscriptionOptions) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PushSubscriptionOptions);
 
 impl PushSubscriptionOptions {

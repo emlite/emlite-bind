@@ -34,6 +34,12 @@ impl<T> From<Sequence<T>> for emlite::Val {
     }
 }
 
+impl<T> From<&Sequence<T>> for emlite::Val {
+    fn from(x: &Sequence<T>) -> emlite::Val {
+        x.inner.clone()
+    }
+}
+
 impl<T> Deref for Sequence<T> {
     type Target = emlite::Val;
 

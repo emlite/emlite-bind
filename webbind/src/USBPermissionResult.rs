@@ -46,6 +46,11 @@ impl From<USBPermissionResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&USBPermissionResult> for emlite::Val {
+    fn from(s: &USBPermissionResult) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(USBPermissionResult);
 
 impl USBPermissionResult {

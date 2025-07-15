@@ -46,6 +46,11 @@ impl From<PopStateEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PopStateEvent> for emlite::Val {
+    fn from(s: &PopStateEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PopStateEvent);
 
 impl PopStateEvent {

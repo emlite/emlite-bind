@@ -46,6 +46,11 @@ impl From<HTMLFieldSetElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLFieldSetElement> for emlite::Val {
+    fn from(s: &HTMLFieldSetElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLFieldSetElement);
 
 impl HTMLFieldSetElement {

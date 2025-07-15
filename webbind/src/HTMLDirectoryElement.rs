@@ -46,6 +46,11 @@ impl From<HTMLDirectoryElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLDirectoryElement> for emlite::Val {
+    fn from(s: &HTMLDirectoryElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLDirectoryElement);
 
 impl HTMLDirectoryElement {

@@ -46,6 +46,11 @@ impl From<VideoTrackList> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&VideoTrackList> for emlite::Val {
+    fn from(s: &VideoTrackList) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(VideoTrackList);
 
 impl VideoTrackList {

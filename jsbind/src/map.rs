@@ -35,6 +35,12 @@ impl<K, V> From<TypedMap<K, V>> for emlite::Val {
     }
 }
 
+impl<K, V> From<&TypedMap<K, V>> for emlite::Val {
+    fn from(x: &TypedMap<K, V>) -> emlite::Val {
+        x.inner.clone()
+    }
+}
+
 impl<K, V> Deref for TypedMap<K, V> {
     type Target = emlite::Val;
 
@@ -210,6 +216,12 @@ impl<K, V> From<TypedWeakMap<K, V>> for emlite::Val {
         let handle = x.inner.as_handle();
         core::mem::forget(x);
         emlite::Val::take_ownership(handle)
+    }
+}
+
+impl<K, V> From<&TypedWeakMap<K, V>> for emlite::Val {
+    fn from(x: &TypedWeakMap<K, V>) -> emlite::Val {
+        x.inner.clone()
     }
 }
 

@@ -46,6 +46,11 @@ impl From<WorkletAnimation> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WorkletAnimation> for emlite::Val {
+    fn from(s: &WorkletAnimation) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WorkletAnimation);
 
 impl WorkletAnimation {

@@ -46,6 +46,11 @@ impl From<DOMStringList> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DOMStringList> for emlite::Val {
+    fn from(s: &DOMStringList) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(DOMStringList);
 
 impl DOMStringList {

@@ -46,6 +46,11 @@ impl From<HTMLFontElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLFontElement> for emlite::Val {
+    fn from(s: &HTMLFontElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLFontElement);
 
 impl HTMLFontElement {

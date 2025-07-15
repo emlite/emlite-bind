@@ -46,6 +46,11 @@ impl From<CSSPseudoElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSPseudoElement> for emlite::Val {
+    fn from(s: &CSSPseudoElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSPseudoElement);
 
 impl CSSPseudoElement {

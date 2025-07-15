@@ -46,6 +46,11 @@ impl From<KeyframeEffect> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&KeyframeEffect> for emlite::Val {
+    fn from(s: &KeyframeEffect) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(KeyframeEffect);
 
 impl KeyframeEffect {

@@ -46,6 +46,11 @@ impl From<LaunchQueue> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&LaunchQueue> for emlite::Val {
+    fn from(s: &LaunchQueue) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(LaunchQueue);
 
 impl LaunchQueue {

@@ -46,6 +46,11 @@ impl From<XRAnchor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRAnchor> for emlite::Val {
+    fn from(s: &XRAnchor) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRAnchor);
 
 impl XRAnchor {

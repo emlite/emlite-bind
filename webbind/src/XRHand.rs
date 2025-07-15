@@ -46,6 +46,11 @@ impl From<XRHand> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRHand> for emlite::Val {
+    fn from(s: &XRHand) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRHand);
 
 impl XRHand {

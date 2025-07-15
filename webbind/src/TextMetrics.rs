@@ -46,6 +46,11 @@ impl From<TextMetrics> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TextMetrics> for emlite::Val {
+    fn from(s: &TextMetrics) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(TextMetrics);
 
 impl TextMetrics {

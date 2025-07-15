@@ -44,6 +44,11 @@ impl From<NavigationInterceptOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NavigationInterceptOptions> for emlite::Val {
+    fn from(s: &NavigationInterceptOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl NavigationInterceptOptions {
     pub fn handler(&self) -> Function {
@@ -116,6 +121,11 @@ impl From<NavigateEvent> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&NavigateEvent> for emlite::Val {
+    fn from(s: &NavigateEvent) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(NavigateEvent);

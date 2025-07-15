@@ -46,6 +46,11 @@ impl From<XRPose> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRPose> for emlite::Val {
+    fn from(s: &XRPose) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRPose);
 
 impl XRPose {

@@ -46,6 +46,11 @@ impl From<DocumentType> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DocumentType> for emlite::Val {
+    fn from(s: &DocumentType) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(DocumentType);
 
 impl DocumentType {

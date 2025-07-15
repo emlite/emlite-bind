@@ -46,6 +46,11 @@ impl From<GPUOutOfMemoryError> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUOutOfMemoryError> for emlite::Val {
+    fn from(s: &GPUOutOfMemoryError) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GPUOutOfMemoryError);
 
 impl GPUOutOfMemoryError {

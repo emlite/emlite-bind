@@ -46,6 +46,11 @@ impl From<RTCTrackEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCTrackEvent> for emlite::Val {
+    fn from(s: &RTCTrackEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(RTCTrackEvent);
 
 impl RTCTrackEvent {

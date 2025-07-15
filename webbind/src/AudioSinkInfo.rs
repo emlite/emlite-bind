@@ -46,6 +46,11 @@ impl From<AudioSinkInfo> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AudioSinkInfo> for emlite::Val {
+    fn from(s: &AudioSinkInfo) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(AudioSinkInfo);
 
 impl AudioSinkInfo {

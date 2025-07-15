@@ -46,6 +46,11 @@ impl From<BroadcastChannel> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&BroadcastChannel> for emlite::Val {
+    fn from(s: &BroadcastChannel) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(BroadcastChannel);
 
 impl BroadcastChannel {

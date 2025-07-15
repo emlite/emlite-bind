@@ -44,6 +44,11 @@ impl From<ModuleExportDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ModuleExportDescriptor> for emlite::Val {
+    fn from(s: &ModuleExportDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ModuleExportDescriptor {
     pub fn name(&self) -> USVString {
@@ -105,6 +110,11 @@ impl From<ModuleImportDescriptor> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&ModuleImportDescriptor> for emlite::Val {
+    fn from(s: &ModuleImportDescriptor) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -179,6 +189,11 @@ impl From<Module> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Module> for emlite::Val {
+    fn from(s: &Module) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Module);

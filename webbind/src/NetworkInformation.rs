@@ -46,6 +46,11 @@ impl From<NetworkInformation> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NetworkInformation> for emlite::Val {
+    fn from(s: &NetworkInformation) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(NetworkInformation);
 
 impl NetworkInformation {

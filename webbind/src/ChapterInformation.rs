@@ -44,6 +44,11 @@ impl From<MediaImage> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaImage> for emlite::Val {
+    fn from(s: &MediaImage) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MediaImage {
     pub fn src(&self) -> USVString {
@@ -116,6 +121,11 @@ impl From<ChapterInformation> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&ChapterInformation> for emlite::Val {
+    fn from(s: &ChapterInformation) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ChapterInformation);

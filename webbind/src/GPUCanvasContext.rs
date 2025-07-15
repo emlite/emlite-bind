@@ -44,6 +44,11 @@ impl From<GPUCanvasConfiguration> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUCanvasConfiguration> for emlite::Val {
+    fn from(s: &GPUCanvasConfiguration) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GPUCanvasConfiguration {
     pub fn device(&self) -> GPUDevice {
@@ -154,6 +159,11 @@ impl From<GPUCanvasContext> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GPUCanvasContext> for emlite::Val {
+    fn from(s: &GPUCanvasContext) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GPUCanvasContext);

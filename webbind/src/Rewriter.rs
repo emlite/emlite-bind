@@ -44,6 +44,11 @@ impl From<RewriterCreateOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RewriterCreateOptions> for emlite::Val {
+    fn from(s: &RewriterCreateOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl RewriterCreateOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -114,6 +119,11 @@ impl From<RewriterCreateCoreOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RewriterCreateCoreOptions> for emlite::Val {
+    fn from(s: &RewriterCreateCoreOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -219,6 +229,11 @@ impl From<RewriterRewriteOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RewriterRewriteOptions> for emlite::Val {
+    fn from(s: &RewriterRewriteOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl RewriterRewriteOptions {
     pub fn context(&self) -> DOMString {
@@ -282,6 +297,11 @@ impl From<Rewriter> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Rewriter> for emlite::Val {
+    fn from(s: &Rewriter) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Rewriter);

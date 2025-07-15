@@ -46,4 +46,9 @@ impl From<WebGLQuery> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebGLQuery> for emlite::Val {
+    fn from(s: &WebGLQuery) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebGLQuery);

@@ -46,6 +46,11 @@ impl From<MLGraph> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLGraph> for emlite::Val {
+    fn from(s: &MLGraph) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(MLGraph);
 
 impl MLGraph {

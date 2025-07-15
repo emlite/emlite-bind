@@ -46,4 +46,9 @@ impl From<SharedStorageModifierMethod> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SharedStorageModifierMethod> for emlite::Val {
+    fn from(s: &SharedStorageModifierMethod) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SharedStorageModifierMethod);

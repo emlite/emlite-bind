@@ -46,6 +46,11 @@ impl From<OES_vertex_array_object> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&OES_vertex_array_object> for emlite::Val {
+    fn from(s: &OES_vertex_array_object) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(OES_vertex_array_object);
 
 impl OES_vertex_array_object {

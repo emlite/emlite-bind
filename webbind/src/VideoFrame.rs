@@ -44,6 +44,11 @@ impl From<VideoFrameMetadata> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&VideoFrameMetadata> for emlite::Val {
+    fn from(s: &VideoFrameMetadata) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -87,6 +92,11 @@ impl From<VideoFrameCopyToOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&VideoFrameCopyToOptions> for emlite::Val {
+    fn from(s: &VideoFrameCopyToOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -170,6 +180,11 @@ impl From<PlaneLayout> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PlaneLayout> for emlite::Val {
+    fn from(s: &PlaneLayout) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PlaneLayout {
     pub fn offset(&self) -> u32 {
@@ -233,6 +248,11 @@ impl From<VideoFrame> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&VideoFrame> for emlite::Val {
+    fn from(s: &VideoFrame) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(VideoFrame);

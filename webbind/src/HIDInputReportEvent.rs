@@ -46,6 +46,11 @@ impl From<HIDInputReportEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HIDInputReportEvent> for emlite::Val {
+    fn from(s: &HIDInputReportEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HIDInputReportEvent);
 
 impl HIDInputReportEvent {

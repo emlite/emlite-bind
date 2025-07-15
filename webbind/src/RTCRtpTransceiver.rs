@@ -44,6 +44,11 @@ impl From<RTCRtpCodec> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCRtpCodec> for emlite::Val {
+    fn from(s: &RTCRtpCodec) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl RTCRtpCodec {
     pub fn mime_type(&self) -> DOMString {
@@ -125,6 +130,11 @@ impl From<RTCRtpTransceiver> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCRtpTransceiver> for emlite::Val {
+    fn from(s: &RTCRtpTransceiver) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCRtpTransceiver);

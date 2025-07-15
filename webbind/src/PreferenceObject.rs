@@ -46,6 +46,11 @@ impl From<PreferenceObject> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PreferenceObject> for emlite::Val {
+    fn from(s: &PreferenceObject) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PreferenceObject);
 
 impl PreferenceObject {

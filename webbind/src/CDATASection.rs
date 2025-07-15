@@ -46,4 +46,9 @@ impl From<CDATASection> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CDATASection> for emlite::Val {
+    fn from(s: &CDATASection) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CDATASection);

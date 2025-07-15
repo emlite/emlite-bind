@@ -46,6 +46,11 @@ impl From<DocumentPictureInPictureEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DocumentPictureInPictureEvent> for emlite::Val {
+    fn from(s: &DocumentPictureInPictureEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(DocumentPictureInPictureEvent);
 
 impl DocumentPictureInPictureEvent {

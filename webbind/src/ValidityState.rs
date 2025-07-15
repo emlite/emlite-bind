@@ -46,6 +46,11 @@ impl From<ValidityState> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ValidityState> for emlite::Val {
+    fn from(s: &ValidityState) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ValidityState);
 
 impl ValidityState {

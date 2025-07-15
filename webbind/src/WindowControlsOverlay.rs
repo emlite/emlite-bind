@@ -46,6 +46,11 @@ impl From<WindowControlsOverlay> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WindowControlsOverlay> for emlite::Val {
+    fn from(s: &WindowControlsOverlay) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WindowControlsOverlay);
 
 impl WindowControlsOverlay {

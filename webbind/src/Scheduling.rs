@@ -44,6 +44,11 @@ impl From<IsInputPendingOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IsInputPendingOptions> for emlite::Val {
+    fn from(s: &IsInputPendingOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl IsInputPendingOptions {
     pub fn include_continuous(&self) -> bool {
@@ -98,6 +103,11 @@ impl From<Scheduling> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Scheduling> for emlite::Val {
+    fn from(s: &Scheduling) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Scheduling);

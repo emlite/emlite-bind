@@ -46,6 +46,11 @@ impl From<NodeList> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NodeList> for emlite::Val {
+    fn from(s: &NodeList) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(NodeList);
 
 impl NodeList {

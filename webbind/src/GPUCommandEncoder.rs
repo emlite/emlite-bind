@@ -44,6 +44,11 @@ impl From<GPURenderPassDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPURenderPassDescriptor> for emlite::Val {
+    fn from(s: &GPURenderPassDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GPURenderPassDescriptor {
     pub fn color_attachments(&self) -> Sequence<Any> {
@@ -134,6 +139,11 @@ impl From<GPUComputePassDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUComputePassDescriptor> for emlite::Val {
+    fn from(s: &GPUComputePassDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GPUComputePassDescriptor {
     pub fn timestamp_writes(&self) -> Any {
@@ -188,6 +198,11 @@ impl From<GPUTexelCopyBufferInfo> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUTexelCopyBufferInfo> for emlite::Val {
+    fn from(s: &GPUTexelCopyBufferInfo) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl GPUTexelCopyBufferInfo {
     pub fn buffer(&self) -> GPUBuffer {
@@ -240,6 +255,11 @@ impl From<GPUTexelCopyTextureInfo> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GPUTexelCopyTextureInfo> for emlite::Val {
+    fn from(s: &GPUTexelCopyTextureInfo) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -323,6 +343,11 @@ impl From<GPUCommandBufferDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPUCommandBufferDescriptor> for emlite::Val {
+    fn from(s: &GPUCommandBufferDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -368,6 +393,11 @@ impl From<GPUCommandEncoder> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&GPUCommandEncoder> for emlite::Val {
+    fn from(s: &GPUCommandEncoder) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GPUCommandEncoder);

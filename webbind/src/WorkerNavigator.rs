@@ -46,6 +46,11 @@ impl From<WorkerNavigator> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WorkerNavigator> for emlite::Val {
+    fn from(s: &WorkerNavigator) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WorkerNavigator);
 
 impl WorkerNavigator {

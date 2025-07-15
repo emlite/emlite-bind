@@ -44,6 +44,11 @@ impl From<MLTensorDescriptor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLTensorDescriptor> for emlite::Val {
+    fn from(s: &MLTensorDescriptor) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLTensorDescriptor {
     pub fn readable(&self) -> bool {
@@ -105,6 +110,11 @@ impl From<MLOperandDescriptor> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLOperandDescriptor> for emlite::Val {
+    fn from(s: &MLOperandDescriptor) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -170,6 +180,11 @@ impl From<MLOpSupportLimits> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MLOpSupportLimits> for emlite::Val {
+    fn from(s: &MLOpSupportLimits) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl MLOpSupportLimits {
     pub fn where_(&self) -> Any {
@@ -222,6 +237,11 @@ impl From<MLContextLostInfo> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLContextLostInfo> for emlite::Val {
+    fn from(s: &MLContextLostInfo) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -278,6 +298,11 @@ impl From<MLContext> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&MLContext> for emlite::Val {
+    fn from(s: &MLContext) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MLContext);

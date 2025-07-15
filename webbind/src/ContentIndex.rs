@@ -44,6 +44,11 @@ impl From<ContentDescription> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ContentDescription> for emlite::Val {
+    fn from(s: &ContentDescription) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ContentDescription {
     pub fn id(&self) -> DOMString {
@@ -143,6 +148,11 @@ impl From<ContentIndex> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&ContentIndex> for emlite::Val {
+    fn from(s: &ContentIndex) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ContentIndex);

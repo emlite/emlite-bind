@@ -46,6 +46,11 @@ impl From<SVGFEDiffuseLightingElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGFEDiffuseLightingElement> for emlite::Val {
+    fn from(s: &SVGFEDiffuseLightingElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGFEDiffuseLightingElement);
 
 impl SVGFEDiffuseLightingElement {

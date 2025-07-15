@@ -46,6 +46,11 @@ impl From<DeviceMotionEventRotationRate> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DeviceMotionEventRotationRate> for emlite::Val {
+    fn from(s: &DeviceMotionEventRotationRate) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(DeviceMotionEventRotationRate);
 
 impl DeviceMotionEventRotationRate {

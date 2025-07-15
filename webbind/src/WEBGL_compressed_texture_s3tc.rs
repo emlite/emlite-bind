@@ -46,4 +46,9 @@ impl From<WEBGL_compressed_texture_s3tc> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WEBGL_compressed_texture_s3tc> for emlite::Val {
+    fn from(s: &WEBGL_compressed_texture_s3tc) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WEBGL_compressed_texture_s3tc);

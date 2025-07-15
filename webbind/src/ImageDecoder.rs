@@ -44,6 +44,11 @@ impl From<ImageDecodeResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ImageDecodeResult> for emlite::Val {
+    fn from(s: &ImageDecodeResult) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ImageDecodeResult {
     pub fn image(&self) -> VideoFrame {
@@ -105,6 +110,11 @@ impl From<ImageDecodeOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&ImageDecodeOptions> for emlite::Val {
+    fn from(s: &ImageDecodeOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -170,6 +180,11 @@ impl From<ImageDecoder> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&ImageDecoder> for emlite::Val {
+    fn from(s: &ImageDecoder) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ImageDecoder);

@@ -46,4 +46,9 @@ impl From<XRSpace> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRSpace> for emlite::Val {
+    fn from(s: &XRSpace) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRSpace);

@@ -46,6 +46,11 @@ impl From<TrustedHTML> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TrustedHTML> for emlite::Val {
+    fn from(s: &TrustedHTML) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(TrustedHTML);
 
 impl TrustedHTML {

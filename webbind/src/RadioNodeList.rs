@@ -46,6 +46,11 @@ impl From<RadioNodeList> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RadioNodeList> for emlite::Val {
+    fn from(s: &RadioNodeList) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(RadioNodeList);
 
 impl RadioNodeList {

@@ -46,6 +46,11 @@ impl From<CSSImportRule> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSImportRule> for emlite::Val {
+    fn from(s: &CSSImportRule) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSImportRule);
 
 impl CSSImportRule {

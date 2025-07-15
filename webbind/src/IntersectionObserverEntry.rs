@@ -46,6 +46,11 @@ impl From<IntersectionObserverEntry> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&IntersectionObserverEntry> for emlite::Val {
+    fn from(s: &IntersectionObserverEntry) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(IntersectionObserverEntry);
 
 impl IntersectionObserverEntry {

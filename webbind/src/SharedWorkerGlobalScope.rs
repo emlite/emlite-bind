@@ -46,6 +46,11 @@ impl From<SharedWorkerGlobalScope> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SharedWorkerGlobalScope> for emlite::Val {
+    fn from(s: &SharedWorkerGlobalScope) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SharedWorkerGlobalScope);
 
 impl SharedWorkerGlobalScope {

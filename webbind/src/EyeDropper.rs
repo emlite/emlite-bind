@@ -44,6 +44,11 @@ impl From<ColorSelectionResult> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ColorSelectionResult> for emlite::Val {
+    fn from(s: &ColorSelectionResult) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ColorSelectionResult {
     pub fn s_rgb_hex(&self) -> DOMString {
@@ -96,6 +101,11 @@ impl From<ColorSelectionOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&ColorSelectionOptions> for emlite::Val {
+    fn from(s: &ColorSelectionOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -152,6 +162,11 @@ impl From<EyeDropper> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&EyeDropper> for emlite::Val {
+    fn from(s: &EyeDropper) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(EyeDropper);

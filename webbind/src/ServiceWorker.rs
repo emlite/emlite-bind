@@ -46,6 +46,11 @@ impl From<ServiceWorker> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ServiceWorker> for emlite::Val {
+    fn from(s: &ServiceWorker) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ServiceWorker);
 
 impl ServiceWorker {

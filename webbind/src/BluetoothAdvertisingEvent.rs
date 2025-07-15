@@ -46,6 +46,11 @@ impl From<BluetoothAdvertisingEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&BluetoothAdvertisingEvent> for emlite::Val {
+    fn from(s: &BluetoothAdvertisingEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(BluetoothAdvertisingEvent);
 
 impl BluetoothAdvertisingEvent {

@@ -46,6 +46,11 @@ impl From<NDEFReadingEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NDEFReadingEvent> for emlite::Val {
+    fn from(s: &NDEFReadingEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(NDEFReadingEvent);
 
 impl NDEFReadingEvent {

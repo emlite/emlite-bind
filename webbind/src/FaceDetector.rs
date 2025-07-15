@@ -44,6 +44,11 @@ impl From<DetectedFace> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&DetectedFace> for emlite::Val {
+    fn from(s: &DetectedFace) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl DetectedFace {
     pub fn bounding_box(&self) -> DOMRectReadOnly {
@@ -107,6 +112,11 @@ impl From<FaceDetector> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&FaceDetector> for emlite::Val {
+    fn from(s: &FaceDetector) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(FaceDetector);

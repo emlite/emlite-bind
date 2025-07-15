@@ -44,6 +44,11 @@ impl From<AssignedNodesOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&AssignedNodesOptions> for emlite::Val {
+    fn from(s: &AssignedNodesOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl AssignedNodesOptions {
     pub fn flatten(&self) -> bool {
@@ -98,6 +103,11 @@ impl From<HTMLSlotElement> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&HTMLSlotElement> for emlite::Val {
+    fn from(s: &HTMLSlotElement) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLSlotElement);

@@ -44,6 +44,11 @@ impl From<ProfilerTrace> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ProfilerTrace> for emlite::Val {
+    fn from(s: &ProfilerTrace) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ProfilerTrace {
     pub fn resources(&self) -> Sequence<Any> {
@@ -125,6 +130,11 @@ impl From<Profiler> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Profiler> for emlite::Val {
+    fn from(s: &Profiler) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Profiler);

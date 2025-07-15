@@ -46,6 +46,11 @@ impl From<MediaStreamAudioSourceNode> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaStreamAudioSourceNode> for emlite::Val {
+    fn from(s: &MediaStreamAudioSourceNode) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(MediaStreamAudioSourceNode);
 
 impl MediaStreamAudioSourceNode {

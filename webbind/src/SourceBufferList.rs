@@ -46,6 +46,11 @@ impl From<SourceBufferList> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SourceBufferList> for emlite::Val {
+    fn from(s: &SourceBufferList) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SourceBufferList);
 
 impl SourceBufferList {

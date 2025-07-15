@@ -46,6 +46,11 @@ impl From<HTMLMediaElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLMediaElement> for emlite::Val {
+    fn from(s: &HTMLMediaElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLMediaElement);
 
 impl HTMLMediaElement {

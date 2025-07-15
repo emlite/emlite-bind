@@ -46,6 +46,11 @@ impl From<EncodedVideoChunk> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&EncodedVideoChunk> for emlite::Val {
+    fn from(s: &EncodedVideoChunk) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(EncodedVideoChunk);
 
 impl EncodedVideoChunk {

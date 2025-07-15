@@ -46,6 +46,11 @@ impl From<TextDecoderStream> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&TextDecoderStream> for emlite::Val {
+    fn from(s: &TextDecoderStream) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(TextDecoderStream);
 
 impl TextDecoderStream {

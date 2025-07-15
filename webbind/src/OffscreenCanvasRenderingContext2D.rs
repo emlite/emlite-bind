@@ -46,6 +46,11 @@ impl From<OffscreenCanvasRenderingContext2D> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&OffscreenCanvasRenderingContext2D> for emlite::Val {
+    fn from(s: &OffscreenCanvasRenderingContext2D) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(OffscreenCanvasRenderingContext2D);
 
 impl OffscreenCanvasRenderingContext2D {

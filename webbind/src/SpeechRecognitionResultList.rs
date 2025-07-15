@@ -46,6 +46,11 @@ impl From<SpeechRecognitionResultList> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SpeechRecognitionResultList> for emlite::Val {
+    fn from(s: &SpeechRecognitionResultList) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionResultList);
 
 impl SpeechRecognitionResultList {

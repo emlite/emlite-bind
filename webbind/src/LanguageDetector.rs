@@ -44,6 +44,11 @@ impl From<LanguageDetectorCreateOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&LanguageDetectorCreateOptions> for emlite::Val {
+    fn from(s: &LanguageDetectorCreateOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl LanguageDetectorCreateOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -107,6 +112,11 @@ impl From<LanguageDetectorCreateCoreOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&LanguageDetectorCreateCoreOptions> for emlite::Val {
+    fn from(s: &LanguageDetectorCreateCoreOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl LanguageDetectorCreateCoreOptions {
     pub fn expected_input_languages(&self) -> Sequence<DOMString> {
@@ -161,6 +171,11 @@ impl From<LanguageDetectionResult> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&LanguageDetectionResult> for emlite::Val {
+    fn from(s: &LanguageDetectionResult) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -226,6 +241,11 @@ impl From<LanguageDetectorDetectOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&LanguageDetectorDetectOptions> for emlite::Val {
+    fn from(s: &LanguageDetectorDetectOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl LanguageDetectorDetectOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -280,6 +300,11 @@ impl From<LanguageDetector> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&LanguageDetector> for emlite::Val {
+    fn from(s: &LanguageDetector) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(LanguageDetector);

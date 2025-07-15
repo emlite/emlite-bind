@@ -46,6 +46,11 @@ impl From<MIDIInput> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MIDIInput> for emlite::Val {
+    fn from(s: &MIDIInput) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(MIDIInput);
 
 impl MIDIInput {

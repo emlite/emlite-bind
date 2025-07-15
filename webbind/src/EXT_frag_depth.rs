@@ -46,4 +46,9 @@ impl From<EXT_frag_depth> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&EXT_frag_depth> for emlite::Val {
+    fn from(s: &EXT_frag_depth) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(EXT_frag_depth);

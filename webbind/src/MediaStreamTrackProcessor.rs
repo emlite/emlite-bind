@@ -46,6 +46,11 @@ impl From<MediaStreamTrackProcessor> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaStreamTrackProcessor> for emlite::Val {
+    fn from(s: &MediaStreamTrackProcessor) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(MediaStreamTrackProcessor);
 
 impl MediaStreamTrackProcessor {

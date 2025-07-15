@@ -44,6 +44,11 @@ impl From<ReadableStreamGetReaderOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ReadableStreamGetReaderOptions> for emlite::Val {
+    fn from(s: &ReadableStreamGetReaderOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ReadableStreamGetReaderOptions {
     pub fn mode(&self) -> ReadableStreamReaderMode {
@@ -96,6 +101,11 @@ impl From<ReadableWritablePair> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&ReadableWritablePair> for emlite::Val {
+    fn from(s: &ReadableWritablePair) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -159,6 +169,11 @@ impl From<StreamPipeOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&StreamPipeOptions> for emlite::Val {
+    fn from(s: &StreamPipeOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -242,6 +257,11 @@ impl From<ReadableStream> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&ReadableStream> for emlite::Val {
+    fn from(s: &ReadableStream) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ReadableStream);

@@ -46,6 +46,11 @@ impl From<CSSMathMax> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSMathMax> for emlite::Val {
+    fn from(s: &CSSMathMax) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSMathMax);
 
 impl CSSMathMax {

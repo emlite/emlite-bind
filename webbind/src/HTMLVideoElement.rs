@@ -46,6 +46,11 @@ impl From<HTMLVideoElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLVideoElement> for emlite::Val {
+    fn from(s: &HTMLVideoElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLVideoElement);
 
 impl HTMLVideoElement {

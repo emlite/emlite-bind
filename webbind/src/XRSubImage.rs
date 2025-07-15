@@ -46,6 +46,11 @@ impl From<XRSubImage> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XRSubImage> for emlite::Val {
+    fn from(s: &XRSubImage) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XRSubImage);
 
 impl XRSubImage {

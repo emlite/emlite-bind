@@ -46,6 +46,11 @@ impl From<PerformanceLongTaskTiming> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PerformanceLongTaskTiming> for emlite::Val {
+    fn from(s: &PerformanceLongTaskTiming) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(PerformanceLongTaskTiming);
 
 impl PerformanceLongTaskTiming {

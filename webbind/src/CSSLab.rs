@@ -46,6 +46,11 @@ impl From<CSSLab> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&CSSLab> for emlite::Val {
+    fn from(s: &CSSLab) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(CSSLab);
 
 impl CSSLab {

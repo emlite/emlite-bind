@@ -44,6 +44,11 @@ impl From<ItemDetails> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ItemDetails> for emlite::Val {
+    fn from(s: &ItemDetails) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ItemDetails {
     pub fn item_id(&self) -> DOMString {
@@ -188,6 +193,11 @@ impl From<PurchaseDetails> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PurchaseDetails> for emlite::Val {
+    fn from(s: &PurchaseDetails) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PurchaseDetails {
     pub fn item_id(&self) -> DOMString {
@@ -251,6 +261,11 @@ impl From<DigitalGoodsService> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&DigitalGoodsService> for emlite::Val {
+    fn from(s: &DigitalGoodsService) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(DigitalGoodsService);

@@ -44,6 +44,11 @@ impl From<FocusOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&FocusOptions> for emlite::Val {
+    fn from(s: &FocusOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl FocusOptions {
     pub fn prevent_scroll(&self) -> bool {
@@ -107,6 +112,11 @@ impl From<SVGElement> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&SVGElement> for emlite::Val {
+    fn from(s: &SVGElement) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SVGElement);

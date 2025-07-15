@@ -44,6 +44,11 @@ impl From<PerformanceObserverInit> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PerformanceObserverInit> for emlite::Val {
+    fn from(s: &PerformanceObserverInit) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PerformanceObserverInit {
     pub fn entry_types(&self) -> Sequence<DOMString> {
@@ -116,6 +121,11 @@ impl From<PerformanceObserver> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&PerformanceObserver> for emlite::Val {
+    fn from(s: &PerformanceObserver) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PerformanceObserver);

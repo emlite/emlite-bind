@@ -46,6 +46,11 @@ impl From<ProtectedAudienceUtilities> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ProtectedAudienceUtilities> for emlite::Val {
+    fn from(s: &ProtectedAudienceUtilities) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ProtectedAudienceUtilities);
 
 impl ProtectedAudienceUtilities {

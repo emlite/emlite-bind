@@ -44,6 +44,11 @@ impl From<PortalActivateOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&PortalActivateOptions> for emlite::Val {
+    fn from(s: &PortalActivateOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl PortalActivateOptions {
     pub fn data(&self) -> Any {
@@ -98,6 +103,11 @@ impl From<HTMLPortalElement> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&HTMLPortalElement> for emlite::Val {
+    fn from(s: &HTMLPortalElement) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLPortalElement);

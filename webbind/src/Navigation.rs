@@ -44,6 +44,11 @@ impl From<NavigationUpdateCurrentEntryOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NavigationUpdateCurrentEntryOptions> for emlite::Val {
+    fn from(s: &NavigationUpdateCurrentEntryOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl NavigationUpdateCurrentEntryOptions {
     pub fn state(&self) -> Any {
@@ -96,6 +101,11 @@ impl From<NavigationResult> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&NavigationResult> for emlite::Val {
+    fn from(s: &NavigationResult) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -161,6 +171,11 @@ impl From<NavigationNavigateOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NavigationNavigateOptions> for emlite::Val {
+    fn from(s: &NavigationNavigateOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl NavigationNavigateOptions {
     pub fn state(&self) -> Any {
@@ -224,6 +239,11 @@ impl From<NavigationReloadOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&NavigationReloadOptions> for emlite::Val {
+    fn from(s: &NavigationReloadOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl NavigationReloadOptions {
     pub fn state(&self) -> Any {
@@ -276,6 +296,11 @@ impl From<NavigationOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&NavigationOptions> for emlite::Val {
+    fn from(s: &NavigationOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -332,6 +357,11 @@ impl From<Navigation> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Navigation> for emlite::Val {
+    fn from(s: &Navigation) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Navigation);

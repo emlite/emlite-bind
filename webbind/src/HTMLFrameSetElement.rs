@@ -46,6 +46,11 @@ impl From<HTMLFrameSetElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&HTMLFrameSetElement> for emlite::Val {
+    fn from(s: &HTMLFrameSetElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(HTMLFrameSetElement);
 
 impl HTMLFrameSetElement {

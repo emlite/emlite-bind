@@ -35,6 +35,12 @@ impl<T> From<TypedSet<T>> for emlite::Val {
     }
 }
 
+impl<T> From<&TypedSet<T>> for emlite::Val {
+    fn from(x: &TypedSet<T>) -> emlite::Val {
+        x.inner.clone()
+    }
+}
+
 impl<T> Deref for TypedSet<T> {
     type Target = emlite::Val;
 
@@ -226,6 +232,12 @@ impl<T> From<TypedWeakSet<T>> for emlite::Val {
         let handle = x.inner.as_handle();
         core::mem::forget(x);
         emlite::Val::take_ownership(handle)
+    }
+}
+
+impl<T> From<&TypedWeakSet<T>> for emlite::Val {
+    fn from(x: &TypedWeakSet<T>) -> emlite::Val {
+        x.inner.clone()
     }
 }
 

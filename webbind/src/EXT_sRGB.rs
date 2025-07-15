@@ -46,4 +46,9 @@ impl From<EXT_sRGB> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&EXT_sRGB> for emlite::Val {
+    fn from(s: &EXT_sRGB) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(EXT_sRGB);

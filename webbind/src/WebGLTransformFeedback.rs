@@ -46,4 +46,9 @@ impl From<WebGLTransformFeedback> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&WebGLTransformFeedback> for emlite::Val {
+    fn from(s: &WebGLTransformFeedback) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(WebGLTransformFeedback);

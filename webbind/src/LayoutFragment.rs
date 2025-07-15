@@ -46,6 +46,11 @@ impl From<LayoutFragment> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&LayoutFragment> for emlite::Val {
+    fn from(s: &LayoutFragment) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(LayoutFragment);
 
 impl LayoutFragment {

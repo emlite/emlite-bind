@@ -46,6 +46,11 @@ impl From<BufferedChangeEvent> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&BufferedChangeEvent> for emlite::Val {
+    fn from(s: &BufferedChangeEvent) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(BufferedChangeEvent);
 
 impl BufferedChangeEvent {

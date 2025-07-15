@@ -46,4 +46,9 @@ impl From<SVGFEFuncAElement> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SVGFEFuncAElement> for emlite::Val {
+    fn from(s: &SVGFEFuncAElement) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(SVGFEFuncAElement);

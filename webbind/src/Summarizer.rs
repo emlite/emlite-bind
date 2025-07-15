@@ -44,6 +44,11 @@ impl From<SummarizerCreateOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SummarizerCreateOptions> for emlite::Val {
+    fn from(s: &SummarizerCreateOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl SummarizerCreateOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -114,6 +119,11 @@ impl From<SummarizerCreateCoreOptions> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&SummarizerCreateCoreOptions> for emlite::Val {
+    fn from(s: &SummarizerCreateCoreOptions) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -219,6 +229,11 @@ impl From<SummarizerSummarizeOptions> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&SummarizerSummarizeOptions> for emlite::Val {
+    fn from(s: &SummarizerSummarizeOptions) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl SummarizerSummarizeOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -282,6 +297,11 @@ impl From<Summarizer> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&Summarizer> for emlite::Val {
+    fn from(s: &Summarizer) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Summarizer);

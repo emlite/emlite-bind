@@ -44,6 +44,11 @@ impl From<RTCRtpReceiveParameters> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCRtpReceiveParameters> for emlite::Val {
+    fn from(s: &RTCRtpReceiveParameters) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -87,6 +92,11 @@ impl From<RTCRtpContributingSource> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCRtpContributingSource> for emlite::Val {
+    fn from(s: &RTCRtpContributingSource) -> emlite::Val {
+        s.inner.clone()
     }
 }
 
@@ -170,6 +180,11 @@ impl From<RTCRtpSynchronizationSource> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&RTCRtpSynchronizationSource> for emlite::Val {
+    fn from(s: &RTCRtpSynchronizationSource) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -215,6 +230,11 @@ impl From<RTCRtpReceiver> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&RTCRtpReceiver> for emlite::Val {
+    fn from(s: &RTCRtpReceiver) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCRtpReceiver);

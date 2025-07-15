@@ -44,6 +44,11 @@ impl From<EffectTiming> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&EffectTiming> for emlite::Val {
+    fn from(s: &EffectTiming) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl EffectTiming {
     pub fn fill(&self) -> FillMode {
@@ -134,6 +139,11 @@ impl From<ComputedEffectTiming> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ComputedEffectTiming> for emlite::Val {
+    fn from(s: &ComputedEffectTiming) -> emlite::Val {
+        s.inner.clone()
+    }
+}
 
 impl ComputedEffectTiming {
     pub fn progress(&self) -> f64 {
@@ -197,6 +207,11 @@ impl From<WorkletAnimationEffect> for emlite::Val {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
         emlite::Val::take_ownership(handle)
+    }
+}
+impl From<&WorkletAnimationEffect> for emlite::Val {
+    fn from(s: &WorkletAnimationEffect) -> emlite::Val {
+        s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(WorkletAnimationEffect);

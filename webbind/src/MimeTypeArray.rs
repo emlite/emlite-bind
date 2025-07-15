@@ -46,6 +46,11 @@ impl From<MimeTypeArray> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MimeTypeArray> for emlite::Val {
+    fn from(s: &MimeTypeArray) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(MimeTypeArray);
 
 impl MimeTypeArray {

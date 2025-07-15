@@ -46,6 +46,11 @@ impl From<ShadowAnimation> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&ShadowAnimation> for emlite::Val {
+    fn from(s: &ShadowAnimation) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(ShadowAnimation);
 
 impl ShadowAnimation {

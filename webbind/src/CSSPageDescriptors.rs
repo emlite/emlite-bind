@@ -52,6 +52,12 @@ impl From<CSSPageDescriptors> for emlite::Val {
     }
 }
 
+impl From<&CSSPageDescriptors> for emlite::Val {
+    fn from(x: &CSSPageDescriptors) -> emlite::Val {
+        x.inner.clone().into()
+    }
+}
+
 impl CSSPageDescriptors {
     pub fn margin(&self) -> CSSOMString {
         self.inner.get("margin").as_::<CSSOMString>()

@@ -46,6 +46,11 @@ impl From<XREquirectLayer> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&XREquirectLayer> for emlite::Val {
+    fn from(s: &XREquirectLayer) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(XREquirectLayer);
 
 impl XREquirectLayer {

@@ -46,6 +46,11 @@ impl From<USBInterface> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&USBInterface> for emlite::Val {
+    fn from(s: &USBInterface) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(USBInterface);
 
 impl USBInterface {

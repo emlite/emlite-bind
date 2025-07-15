@@ -46,6 +46,11 @@ impl From<FederatedCredential> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&FederatedCredential> for emlite::Val {
+    fn from(s: &FederatedCredential) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(FederatedCredential);
 
 impl FederatedCredential {

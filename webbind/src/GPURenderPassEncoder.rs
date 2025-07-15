@@ -46,6 +46,11 @@ impl From<GPURenderPassEncoder> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&GPURenderPassEncoder> for emlite::Val {
+    fn from(s: &GPURenderPassEncoder) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(GPURenderPassEncoder);
 
 impl GPURenderPassEncoder {

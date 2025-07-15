@@ -46,6 +46,11 @@ impl From<MediaSource> for emlite::Val {
         emlite::Val::take_ownership(handle)
     }
 }
+impl From<&MediaSource> for emlite::Val {
+    fn from(s: &MediaSource) -> emlite::Val {
+        s.inner.clone().into()
+    }
+}
 jsbind::utils::impl_dyn_cast!(MediaSource);
 
 impl MediaSource {
