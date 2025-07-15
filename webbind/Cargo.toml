@@ -1,12 +1,12 @@
 [package]
 name = "webbind"
-version = "0.1.6"
+version = "0.1.7"
 edition = "2024"
 description = "Rust bindings for the web api, auto-generated from WebIDL"
 documentation = "https://docs.rs/webbind"
 license = "MIT"
 readme = "../README.md"
-repository = "https://github.com/MoAlyousef/emlite-bind"
+repository = "https://github.com/emlite/emlite-bind"
 keywords = ["wasm", "wasi", "polyfill", "shim", "bindings"]
 categories = ["api-bindings", "wasm"]
 

@@ -1,6 +1,6 @@
 # emlite-bind
 
-emlite-bind is a Rust project that offers bindngs to Web APIs for use with wasm. It's backend agnostic, and should work with wasm32-unknown-unknown, wasm32-wasi, wasm32-wasip1 and wasm32-unknown-emscripten. It depends on the [emlite](https://github.com/MoAlyousef/emlite) library to make this happen.
+emlite-bind is a Rust project that offers bindngs to Web APIs for use with wasm. It's backend agnostic, and should work with wasm32-unknown-unknown, wasm32-wasi, wasm32-wasip1 and wasm32-unknown-emscripten. It depends on the [emlite](https://github.com/emlite/emlite-js) library to make this happen.
 emlite-bind consists of 2 crates:
 - jsbind
 - webbind
