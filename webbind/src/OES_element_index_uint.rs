@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct OES_element_index_uint {
@@ -10,7 +7,9 @@ pub struct OES_element_index_uint {
 }
 impl FromVal for OES_element_index_uint {
     fn from_val(v: &emlite::Val) -> Self {
-        OES_element_index_uint { inner: emlite::Val::from_val(v) }
+        OES_element_index_uint {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for OES_element_index_uint {
 }
 impl AsMut<emlite::Val> for OES_element_index_uint {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<OES_element_index_uint> for emlite::Val {
     fn from(s: OES_element_index_uint) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<OES_element_index_uint> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(OES_element_index_uint);
-
-

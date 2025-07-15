@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GeolocationPositionError {
@@ -10,7 +7,9 @@ pub struct GeolocationPositionError {
 }
 impl FromVal for GeolocationPositionError {
     fn from_val(v: &emlite::Val) -> Self {
-        GeolocationPositionError { inner: emlite::Val::from_val(v) }
+        GeolocationPositionError {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for GeolocationPositionError {
 }
 impl AsMut<emlite::Val> for GeolocationPositionError {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<GeolocationPositionError> for emlite::Val {
     fn from(s: GeolocationPositionError) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<GeolocationPositionError> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GeolocationPositionError);
 
-
 impl GeolocationPositionError {
     pub fn code(&self) -> u16 {
         self.inner.get("code").as_::<u16>()
     }
-
 }
 impl GeolocationPositionError {
     pub fn message(&self) -> DOMString {
         self.inner.get("message").as_::<DOMString>()
     }
-
 }

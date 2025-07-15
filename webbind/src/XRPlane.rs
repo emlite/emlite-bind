@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRPlane {
@@ -10,7 +7,9 @@ pub struct XRPlane {
 }
 impl FromVal for XRPlane {
     fn from_val(v: &emlite::Val) -> Self {
-        XRPlane { inner: emlite::Val::from_val(v) }
+        XRPlane {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XRPlane {
 }
 impl AsMut<emlite::Val> for XRPlane {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRPlane> for emlite::Val {
     fn from(s: XRPlane) -> emlite::Val {
@@ -49,34 +48,30 @@ impl From<XRPlane> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRPlane);
 
-
 impl XRPlane {
     pub fn plane_space(&self) -> XRSpace {
         self.inner.get("planeSpace").as_::<XRSpace>()
     }
-
 }
 impl XRPlane {
     pub fn polygon(&self) -> FrozenArray<DOMPointReadOnly> {
-        self.inner.get("polygon").as_::<FrozenArray<DOMPointReadOnly>>()
+        self.inner
+            .get("polygon")
+            .as_::<FrozenArray<DOMPointReadOnly>>()
     }
-
 }
 impl XRPlane {
     pub fn orientation(&self) -> XRPlaneOrientation {
         self.inner.get("orientation").as_::<XRPlaneOrientation>()
     }
-
 }
 impl XRPlane {
     pub fn last_changed_time(&self) -> Any {
         self.inner.get("lastChangedTime").as_::<Any>()
     }
-
 }
 impl XRPlane {
     pub fn semantic_label(&self) -> DOMString {
         self.inner.get("semanticLabel").as_::<DOMString>()
     }
-
 }

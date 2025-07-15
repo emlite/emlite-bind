@@ -1,7 +1,6 @@
 use crate::utils::*;
 use alloc::string::String;
 
-/// Macro to generate `struct RangeError { inner: Val }` plus boilerplate.
 macro_rules! declare_error {
     ($base:ident $(, $name:ident)*) => {
         #[derive(Clone, Debug, PartialEq, PartialOrd)]

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PushMessageData {
@@ -10,7 +7,9 @@ pub struct PushMessageData {
 }
 impl FromVal for PushMessageData {
     fn from_val(v: &emlite::Val) -> Self {
-        PushMessageData { inner: emlite::Val::from_val(v) }
+        PushMessageData {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PushMessageData {
 }
 impl AsMut<emlite::Val> for PushMessageData {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PushMessageData> for emlite::Val {
     fn from(s: PushMessageData) -> emlite::Val {
@@ -49,34 +48,28 @@ impl From<PushMessageData> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PushMessageData);
 
-
 impl PushMessageData {
-    pub fn array_buffer(&self, ) -> ArrayBuffer {
+    pub fn array_buffer(&self) -> ArrayBuffer {
         self.inner.call("arrayBuffer", &[]).as_::<ArrayBuffer>()
     }
-
 }
 impl PushMessageData {
-    pub fn blob(&self, ) -> Blob {
+    pub fn blob(&self) -> Blob {
         self.inner.call("blob", &[]).as_::<Blob>()
     }
-
 }
 impl PushMessageData {
-    pub fn bytes(&self, ) -> Uint8Array {
+    pub fn bytes(&self) -> Uint8Array {
         self.inner.call("bytes", &[]).as_::<Uint8Array>()
     }
-
 }
 impl PushMessageData {
-    pub fn json(&self, ) -> Any {
+    pub fn json(&self) -> Any {
         self.inner.call("json", &[]).as_::<Any>()
     }
-
 }
 impl PushMessageData {
-    pub fn text(&self, ) -> USVString {
+    pub fn text(&self) -> USVString {
         self.inner.call("text", &[]).as_::<USVString>()
     }
-
 }

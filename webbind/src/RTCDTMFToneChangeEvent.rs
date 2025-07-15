@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCDTMFToneChangeEvent {
@@ -10,7 +7,9 @@ pub struct RTCDTMFToneChangeEvent {
 }
 impl FromVal for RTCDTMFToneChangeEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCDTMFToneChangeEvent { inner: Event::from_val(v) }
+        RTCDTMFToneChangeEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for RTCDTMFToneChangeEvent {
 }
 impl AsMut<emlite::Val> for RTCDTMFToneChangeEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<RTCDTMFToneChangeEvent> for emlite::Val {
     fn from(s: RTCDTMFToneChangeEvent) -> emlite::Val {
@@ -49,25 +48,25 @@ impl From<RTCDTMFToneChangeEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCDTMFToneChangeEvent);
 
-
-
 impl RTCDTMFToneChangeEvent {
     pub fn new0(type_: DOMString) -> RTCDTMFToneChangeEvent {
         Self {
-            inner: emlite::Val::global("RTCDTMFToneChangeEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: emlite::Val::global("RTCDTMFToneChangeEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     pub fn new1(type_: DOMString, event_init_dict: Any) -> RTCDTMFToneChangeEvent {
         Self {
-            inner: emlite::Val::global("RTCDTMFToneChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("RTCDTMFToneChangeEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl RTCDTMFToneChangeEvent {
     pub fn tone(&self) -> DOMString {
         self.inner.get("tone").as_::<DOMString>()
     }
-
 }

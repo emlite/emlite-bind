@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PeriodicSyncEvent {
@@ -10,7 +7,9 @@ pub struct PeriodicSyncEvent {
 }
 impl FromVal for PeriodicSyncEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        PeriodicSyncEvent { inner: ExtendableEvent::from_val(v) }
+        PeriodicSyncEvent {
+            inner: ExtendableEvent::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PeriodicSyncEvent {
 }
 impl AsMut<emlite::Val> for PeriodicSyncEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PeriodicSyncEvent> for emlite::Val {
     fn from(s: PeriodicSyncEvent) -> emlite::Val {
@@ -49,19 +48,17 @@ impl From<PeriodicSyncEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PeriodicSyncEvent);
 
-
-
 impl PeriodicSyncEvent {
     pub fn new(type_: DOMString, init: Any) -> PeriodicSyncEvent {
         Self {
-            inner: emlite::Val::global("PeriodicSyncEvent").new(&[type_.into(), init.into()]).as_::<ExtendableEvent>(),
+            inner: emlite::Val::global("PeriodicSyncEvent")
+                .new(&[type_.into(), init.into()])
+                .as_::<ExtendableEvent>(),
         }
     }
-
 }
 impl PeriodicSyncEvent {
     pub fn tag(&self) -> DOMString {
         self.inner.get("tag").as_::<DOMString>()
     }
-
 }

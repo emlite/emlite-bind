@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCDataChannelEvent {
@@ -10,7 +7,9 @@ pub struct RTCDataChannelEvent {
 }
 impl FromVal for RTCDataChannelEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCDataChannelEvent { inner: Event::from_val(v) }
+        RTCDataChannelEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for RTCDataChannelEvent {
 }
 impl AsMut<emlite::Val> for RTCDataChannelEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<RTCDataChannelEvent> for emlite::Val {
     fn from(s: RTCDataChannelEvent) -> emlite::Val {
@@ -49,19 +48,17 @@ impl From<RTCDataChannelEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCDataChannelEvent);
 
-
-
 impl RTCDataChannelEvent {
     pub fn new(type_: DOMString, event_init_dict: Any) -> RTCDataChannelEvent {
         Self {
-            inner: emlite::Val::global("RTCDataChannelEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("RTCDataChannelEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl RTCDataChannelEvent {
     pub fn channel(&self) -> RTCDataChannel {
         self.inner.get("channel").as_::<RTCDataChannel>()
     }
-
 }

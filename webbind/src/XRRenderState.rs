@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRRenderState {
@@ -10,7 +7,9 @@ pub struct XRRenderState {
 }
 impl FromVal for XRRenderState {
     fn from_val(v: &emlite::Val) -> Self {
-        XRRenderState { inner: emlite::Val::from_val(v) }
+        XRRenderState {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XRRenderState {
 }
 impl AsMut<emlite::Val> for XRRenderState {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRRenderState> for emlite::Val {
     fn from(s: XRRenderState) -> emlite::Val {
@@ -49,40 +48,33 @@ impl From<XRRenderState> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRRenderState);
 
-
 impl XRRenderState {
     pub fn depth_near(&self) -> f64 {
         self.inner.get("depthNear").as_::<f64>()
     }
-
 }
 impl XRRenderState {
     pub fn depth_far(&self) -> f64 {
         self.inner.get("depthFar").as_::<f64>()
     }
-
 }
 impl XRRenderState {
     pub fn passthrough_fully_obscured(&self) -> bool {
         self.inner.get("passthroughFullyObscured").as_::<bool>()
     }
-
 }
 impl XRRenderState {
     pub fn inline_vertical_field_of_view(&self) -> f64 {
         self.inner.get("inlineVerticalFieldOfView").as_::<f64>()
     }
-
 }
 impl XRRenderState {
     pub fn base_layer(&self) -> XRWebGLLayer {
         self.inner.get("baseLayer").as_::<XRWebGLLayer>()
     }
-
 }
 impl XRRenderState {
     pub fn layers(&self) -> FrozenArray<XRLayer> {
         self.inner.get("layers").as_::<FrozenArray<XRLayer>>()
     }
-
 }

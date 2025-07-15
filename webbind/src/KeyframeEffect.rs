@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct KeyframeEffect {
@@ -10,7 +7,9 @@ pub struct KeyframeEffect {
 }
 impl FromVal for KeyframeEffect {
     fn from_val(v: &emlite::Val) -> Self {
-        KeyframeEffect { inner: AnimationEffect::from_val(v) }
+        KeyframeEffect {
+            inner: AnimationEffect::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for KeyframeEffect {
 }
 impl AsMut<emlite::Val> for KeyframeEffect {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<KeyframeEffect> for emlite::Val {
     fn from(s: KeyframeEffect) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<KeyframeEffect> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(KeyframeEffect);
 
-
-
 impl KeyframeEffect {
     pub fn new(source: KeyframeEffect) -> KeyframeEffect {
         Self {
-            inner: emlite::Val::global("KeyframeEffect").new(&[source.into()]).as_::<AnimationEffect>(),
+            inner: emlite::Val::global("KeyframeEffect")
+                .new(&[source.into()])
+                .as_::<AnimationEffect>(),
         }
     }
-
 }
 impl KeyframeEffect {
     pub fn target(&self) -> Element {
@@ -67,7 +65,6 @@ impl KeyframeEffect {
     pub fn set_target(&mut self, value: Element) {
         self.inner.set("target", value);
     }
-
 }
 impl KeyframeEffect {
     pub fn pseudo_element(&self) -> CSSOMString {
@@ -77,7 +74,6 @@ impl KeyframeEffect {
     pub fn set_pseudo_element(&mut self, value: CSSOMString) {
         self.inner.set("pseudoElement", value);
     }
-
 }
 impl KeyframeEffect {
     pub fn composite(&self) -> CompositeOperation {
@@ -87,27 +83,29 @@ impl KeyframeEffect {
     pub fn set_composite(&mut self, value: CompositeOperation) {
         self.inner.set("composite", value);
     }
-
 }
 impl KeyframeEffect {
-    pub fn get_keyframes(&self, ) -> Sequence<Object> {
-        self.inner.call("getKeyframes", &[]).as_::<Sequence<Object>>()
+    pub fn get_keyframes(&self) -> Sequence<Object> {
+        self.inner
+            .call("getKeyframes", &[])
+            .as_::<Sequence<Object>>()
     }
-
 }
 impl KeyframeEffect {
     pub fn set_keyframes(&self, keyframes: Object) -> Undefined {
-        self.inner.call("setKeyframes", &[keyframes.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setKeyframes", &[keyframes.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl KeyframeEffect {
     pub fn iteration_composite(&self) -> IterationCompositeOperation {
-        self.inner.get("iterationComposite").as_::<IterationCompositeOperation>()
+        self.inner
+            .get("iterationComposite")
+            .as_::<IterationCompositeOperation>()
     }
 
     pub fn set_iteration_composite(&mut self, value: IterationCompositeOperation) {
         self.inner.set("iterationComposite", value);
     }
-
 }

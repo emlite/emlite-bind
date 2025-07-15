@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AnimationTrigger {
@@ -10,7 +7,9 @@ pub struct AnimationTrigger {
 }
 impl FromVal for AnimationTrigger {
     fn from_val(v: &emlite::Val) -> Self {
-        AnimationTrigger { inner: emlite::Val::from_val(v) }
+        AnimationTrigger {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for AnimationTrigger {
 }
 impl AsMut<emlite::Val> for AnimationTrigger {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AnimationTrigger> for emlite::Val {
     fn from(s: AnimationTrigger) -> emlite::Val {
@@ -49,21 +48,22 @@ impl From<AnimationTrigger> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AnimationTrigger);
 
-
-
 impl AnimationTrigger {
     pub fn new0() -> AnimationTrigger {
         Self {
-            inner: emlite::Val::global("AnimationTrigger").new(&[]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("AnimationTrigger")
+                .new(&[])
+                .as_::<emlite::Val>(),
         }
     }
 
     pub fn new1(options: Any) -> AnimationTrigger {
         Self {
-            inner: emlite::Val::global("AnimationTrigger").new(&[options.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("AnimationTrigger")
+                .new(&[options.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl AnimationTrigger {
     pub fn timeline(&self) -> AnimationTimeline {
@@ -73,7 +73,6 @@ impl AnimationTrigger {
     pub fn set_timeline(&mut self, value: AnimationTimeline) {
         self.inner.set("timeline", value);
     }
-
 }
 impl AnimationTrigger {
     pub fn behavior(&self) -> AnimationTriggerBehavior {
@@ -83,7 +82,6 @@ impl AnimationTrigger {
     pub fn set_behavior(&mut self, value: AnimationTriggerBehavior) {
         self.inner.set("behavior", value);
     }
-
 }
 impl AnimationTrigger {
     pub fn range_start(&self) -> Any {
@@ -93,7 +91,6 @@ impl AnimationTrigger {
     pub fn set_range_start(&mut self, value: Any) {
         self.inner.set("rangeStart", value);
     }
-
 }
 impl AnimationTrigger {
     pub fn range_end(&self) -> Any {
@@ -103,7 +100,6 @@ impl AnimationTrigger {
     pub fn set_range_end(&mut self, value: Any) {
         self.inner.set("rangeEnd", value);
     }
-
 }
 impl AnimationTrigger {
     pub fn exit_range_start(&self) -> Any {
@@ -113,7 +109,6 @@ impl AnimationTrigger {
     pub fn set_exit_range_start(&mut self, value: Any) {
         self.inner.set("exitRangeStart", value);
     }
-
 }
 impl AnimationTrigger {
     pub fn exit_range_end(&self) -> Any {
@@ -123,5 +118,4 @@ impl AnimationTrigger {
     pub fn set_exit_range_end(&mut self, value: Any) {
         self.inner.set("exitRangeEnd", value);
     }
-
 }

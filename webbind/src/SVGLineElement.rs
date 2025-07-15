@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGLineElement {
@@ -10,7 +7,9 @@ pub struct SVGLineElement {
 }
 impl FromVal for SVGLineElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGLineElement { inner: SVGGeometryElement::from_val(v) }
+        SVGLineElement {
+            inner: SVGGeometryElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SVGLineElement {
 }
 impl AsMut<emlite::Val> for SVGLineElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGLineElement> for emlite::Val {
     fn from(s: SVGLineElement) -> emlite::Val {
@@ -49,28 +48,23 @@ impl From<SVGLineElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGLineElement);
 
-
 impl SVGLineElement {
     pub fn x1(&self) -> SVGAnimatedLength {
         self.inner.get("x1").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGLineElement {
     pub fn y1(&self) -> SVGAnimatedLength {
         self.inner.get("y1").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGLineElement {
     pub fn x2(&self) -> SVGAnimatedLength {
         self.inner.get("x2").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGLineElement {
     pub fn y2(&self) -> SVGAnimatedLength {
         self.inner.get("y2").as_::<SVGAnimatedLength>()
     }
-
 }

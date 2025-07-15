@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SourceBufferList {
@@ -10,7 +7,9 @@ pub struct SourceBufferList {
 }
 impl FromVal for SourceBufferList {
     fn from_val(v: &emlite::Val) -> Self {
-        SourceBufferList { inner: EventTarget::from_val(v) }
+        SourceBufferList {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SourceBufferList {
 }
 impl AsMut<emlite::Val> for SourceBufferList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SourceBufferList> for emlite::Val {
     fn from(s: SourceBufferList) -> emlite::Val {
@@ -49,12 +48,10 @@ impl From<SourceBufferList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SourceBufferList);
 
-
 impl SourceBufferList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl SourceBufferList {
     pub fn onaddsourcebuffer(&self) -> Any {
@@ -64,7 +61,6 @@ impl SourceBufferList {
     pub fn set_onaddsourcebuffer(&mut self, value: Any) {
         self.inner.set("onaddsourcebuffer", value);
     }
-
 }
 impl SourceBufferList {
     pub fn onremovesourcebuffer(&self) -> Any {
@@ -74,5 +70,4 @@ impl SourceBufferList {
     pub fn set_onremovesourcebuffer(&mut self, value: Any) {
         self.inner.set("onremovesourcebuffer", value);
     }
-
 }

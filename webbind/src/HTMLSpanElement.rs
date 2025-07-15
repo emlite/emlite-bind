@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLSpanElement {
@@ -10,7 +7,9 @@ pub struct HTMLSpanElement {
 }
 impl FromVal for HTMLSpanElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLSpanElement { inner: HTMLElement::from_val(v) }
+        HTMLSpanElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLSpanElement {
 }
 impl AsMut<emlite::Val> for HTMLSpanElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLSpanElement> for emlite::Val {
     fn from(s: HTMLSpanElement) -> emlite::Val {
@@ -49,13 +48,12 @@ impl From<HTMLSpanElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLSpanElement);
 
-
-
 impl HTMLSpanElement {
     pub fn new() -> HTMLSpanElement {
         Self {
-            inner: emlite::Val::global("HTMLSpanElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLSpanElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }

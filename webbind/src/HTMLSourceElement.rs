@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLSourceElement {
@@ -10,7 +7,9 @@ pub struct HTMLSourceElement {
 }
 impl FromVal for HTMLSourceElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLSourceElement { inner: HTMLElement::from_val(v) }
+        HTMLSourceElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLSourceElement {
 }
 impl AsMut<emlite::Val> for HTMLSourceElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLSourceElement> for emlite::Val {
     fn from(s: HTMLSourceElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLSourceElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLSourceElement);
 
-
-
 impl HTMLSourceElement {
     pub fn new() -> HTMLSourceElement {
         Self {
-            inner: emlite::Val::global("HTMLSourceElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLSourceElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLSourceElement {
     pub fn src(&self) -> USVString {
@@ -67,7 +65,6 @@ impl HTMLSourceElement {
     pub fn set_src(&mut self, value: USVString) {
         self.inner.set("src", value);
     }
-
 }
 impl HTMLSourceElement {
     pub fn type_(&self) -> DOMString {
@@ -77,7 +74,6 @@ impl HTMLSourceElement {
     pub fn set_type_(&mut self, value: DOMString) {
         self.inner.set("type", value);
     }
-
 }
 impl HTMLSourceElement {
     pub fn srcset(&self) -> USVString {
@@ -87,7 +83,6 @@ impl HTMLSourceElement {
     pub fn set_srcset(&mut self, value: USVString) {
         self.inner.set("srcset", value);
     }
-
 }
 impl HTMLSourceElement {
     pub fn sizes(&self) -> DOMString {
@@ -97,7 +92,6 @@ impl HTMLSourceElement {
     pub fn set_sizes(&mut self, value: DOMString) {
         self.inner.set("sizes", value);
     }
-
 }
 impl HTMLSourceElement {
     pub fn media(&self) -> DOMString {
@@ -107,7 +101,6 @@ impl HTMLSourceElement {
     pub fn set_media(&mut self, value: DOMString) {
         self.inner.set("media", value);
     }
-
 }
 impl HTMLSourceElement {
     pub fn width(&self) -> u32 {
@@ -117,7 +110,6 @@ impl HTMLSourceElement {
     pub fn set_width(&mut self, value: u32) {
         self.inner.set("width", value);
     }
-
 }
 impl HTMLSourceElement {
     pub fn height(&self) -> u32 {
@@ -127,5 +119,4 @@ impl HTMLSourceElement {
     pub fn set_height(&mut self, value: u32) {
         self.inner.set("height", value);
     }
-
 }

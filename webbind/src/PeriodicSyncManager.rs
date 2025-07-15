@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BackgroundSyncOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for BackgroundSyncOptions {
 }
 impl AsMut<emlite::Val> for BackgroundSyncOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<BackgroundSyncOptions> for emlite::Val {
     fn from(s: BackgroundSyncOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl BackgroundSyncOptions {
     pub fn set_min_interval(&mut self, value: u64) {
         self.inner.set("minInterval", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -65,7 +61,9 @@ pub struct PeriodicSyncManager {
 }
 impl FromVal for PeriodicSyncManager {
     fn from_val(v: &emlite::Val) -> Self {
-        PeriodicSyncManager { inner: emlite::Val::from_val(v) }
+        PeriodicSyncManager {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -92,8 +90,8 @@ impl AsRef<emlite::Val> for PeriodicSyncManager {
 }
 impl AsMut<emlite::Val> for PeriodicSyncManager {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PeriodicSyncManager> for emlite::Val {
     fn from(s: PeriodicSyncManager) -> emlite::Val {
@@ -104,26 +102,26 @@ impl From<PeriodicSyncManager> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PeriodicSyncManager);
 
-
 impl PeriodicSyncManager {
     pub fn register0(&self, tag: DOMString) -> Promise {
-        self.inner.call("register", &[tag.into(), ]).as_::<Promise>()
+        self.inner.call("register", &[tag.into()]).as_::<Promise>()
     }
 
     pub fn register1(&self, tag: DOMString, options: BackgroundSyncOptions) -> Promise {
-        self.inner.call("register", &[tag.into(), options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("register", &[tag.into(), options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl PeriodicSyncManager {
-    pub fn get_tags(&self, ) -> Promise {
+    pub fn get_tags(&self) -> Promise {
         self.inner.call("getTags", &[]).as_::<Promise>()
     }
-
 }
 impl PeriodicSyncManager {
     pub fn unregister(&self, tag: DOMString) -> Promise {
-        self.inner.call("unregister", &[tag.into(), ]).as_::<Promise>()
+        self.inner
+            .call("unregister", &[tag.into()])
+            .as_::<Promise>()
     }
-
 }

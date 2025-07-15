@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SequenceEffect {
@@ -10,7 +7,9 @@ pub struct SequenceEffect {
 }
 impl FromVal for SequenceEffect {
     fn from_val(v: &emlite::Val) -> Self {
-        SequenceEffect { inner: GroupEffect::from_val(v) }
+        SequenceEffect {
+            inner: GroupEffect::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SequenceEffect {
 }
 impl AsMut<emlite::Val> for SequenceEffect {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SequenceEffect> for emlite::Val {
     fn from(s: SequenceEffect) -> emlite::Val {
@@ -49,25 +48,25 @@ impl From<SequenceEffect> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SequenceEffect);
 
-
-
 impl SequenceEffect {
     pub fn new0(children: Sequence<AnimationEffect>) -> SequenceEffect {
         Self {
-            inner: emlite::Val::global("SequenceEffect").new(&[children.into()]).as_::<GroupEffect>(),
+            inner: emlite::Val::global("SequenceEffect")
+                .new(&[children.into()])
+                .as_::<GroupEffect>(),
         }
     }
 
     pub fn new1(children: Sequence<AnimationEffect>, timing: Any) -> SequenceEffect {
         Self {
-            inner: emlite::Val::global("SequenceEffect").new(&[children.into(), timing.into()]).as_::<GroupEffect>(),
+            inner: emlite::Val::global("SequenceEffect")
+                .new(&[children.into(), timing.into()])
+                .as_::<GroupEffect>(),
         }
     }
-
 }
 impl SequenceEffect {
-    pub fn clone_(&self, ) -> SequenceEffect {
+    pub fn clone_(&self) -> SequenceEffect {
         self.inner.call("clone", &[]).as_::<SequenceEffect>()
     }
-
 }

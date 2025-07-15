@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PerformanceEntry {
@@ -10,7 +7,9 @@ pub struct PerformanceEntry {
 }
 impl FromVal for PerformanceEntry {
     fn from_val(v: &emlite::Val) -> Self {
-        PerformanceEntry { inner: emlite::Val::from_val(v) }
+        PerformanceEntry {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PerformanceEntry {
 }
 impl AsMut<emlite::Val> for PerformanceEntry {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PerformanceEntry> for emlite::Val {
     fn from(s: PerformanceEntry) -> emlite::Val {
@@ -49,46 +48,38 @@ impl From<PerformanceEntry> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PerformanceEntry);
 
-
 impl PerformanceEntry {
     pub fn id(&self) -> u64 {
         self.inner.get("id").as_::<u64>()
     }
-
 }
 impl PerformanceEntry {
     pub fn name(&self) -> DOMString {
         self.inner.get("name").as_::<DOMString>()
     }
-
 }
 impl PerformanceEntry {
     pub fn entry_type(&self) -> DOMString {
         self.inner.get("entryType").as_::<DOMString>()
     }
-
 }
 impl PerformanceEntry {
     pub fn start_time(&self) -> Any {
         self.inner.get("startTime").as_::<Any>()
     }
-
 }
 impl PerformanceEntry {
     pub fn duration(&self) -> Any {
         self.inner.get("duration").as_::<Any>()
     }
-
 }
 impl PerformanceEntry {
     pub fn navigation_id(&self) -> u64 {
         self.inner.get("navigationId").as_::<u64>()
     }
-
 }
 impl PerformanceEntry {
-    pub fn to_json(&self, ) -> Object {
+    pub fn to_json(&self) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
-
 }

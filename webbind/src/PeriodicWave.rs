@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PeriodicWave {
@@ -10,7 +7,9 @@ pub struct PeriodicWave {
 }
 impl FromVal for PeriodicWave {
     fn from_val(v: &emlite::Val) -> Self {
-        PeriodicWave { inner: emlite::Val::from_val(v) }
+        PeriodicWave {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PeriodicWave {
 }
 impl AsMut<emlite::Val> for PeriodicWave {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PeriodicWave> for emlite::Val {
     fn from(s: PeriodicWave) -> emlite::Val {
@@ -49,19 +48,20 @@ impl From<PeriodicWave> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PeriodicWave);
 
-
-
 impl PeriodicWave {
     pub fn new0(context: BaseAudioContext) -> PeriodicWave {
         Self {
-            inner: emlite::Val::global("PeriodicWave").new(&[context.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("PeriodicWave")
+                .new(&[context.into()])
+                .as_::<emlite::Val>(),
         }
     }
 
     pub fn new1(context: BaseAudioContext, options: Any) -> PeriodicWave {
         Self {
-            inner: emlite::Val::global("PeriodicWave").new(&[context.into(), options.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("PeriodicWave")
+                .new(&[context.into(), options.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }

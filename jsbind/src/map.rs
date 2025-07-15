@@ -1,11 +1,9 @@
-//! jsbind :: TypedMap<K, V>  (JavaScript dMap)
-//! Thin wrapper around `new Map()` that retains generic key/value types.
-use core::marker::PhantomData;
-use core::ops::{Deref, DerefMut};
-use emlite::FromVal;
 use crate::any::Any;
 use crate::record::Record;
 use crate::sequence::Sequence;
+use core::marker::PhantomData;
+use core::ops::{Deref, DerefMut};
+use emlite::FromVal;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -67,9 +65,9 @@ pub type Map = TypedMap<Any, Any>;
 crate::utils::impl_dyn_cast!(Map, "Map");
 
 impl<K, V> TypedMap<K, V> {
-    /// `new TypedMap(iterable?)`
+    /// `new Map(iterable?)`
     pub fn new() -> Self {
-        emlite::Val::global("TypedMap").new(&[]).as_::<Self>()
+        emlite::Val::global("Map").new(&[]).as_::<Self>()
     }
 
     /// JavaScript `map.size`
@@ -242,9 +240,9 @@ impl<K, V> AsMut<emlite::Val> for TypedWeakMap<K, V> {
 }
 
 impl<K, V> TypedWeakMap<K, V> {
-    /// `new TypedWeakMap(iterable?)`
+    /// `new Map(iterable?)`
     pub fn new() -> Self {
-        emlite::Val::global("TypedWeakMap").new(&[]).as_::<Self>()
+        emlite::Val::global("WeakMap").new(&[]).as_::<Self>()
     }
 
     /// JavaScript `map.size`

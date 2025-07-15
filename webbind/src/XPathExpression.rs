@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XPathExpression {
@@ -10,7 +7,9 @@ pub struct XPathExpression {
 }
 impl FromVal for XPathExpression {
     fn from_val(v: &emlite::Val) -> Self {
-        XPathExpression { inner: emlite::Val::from_val(v) }
+        XPathExpression {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XPathExpression {
 }
 impl AsMut<emlite::Val> for XPathExpression {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XPathExpression> for emlite::Val {
     fn from(s: XPathExpression) -> emlite::Val {
@@ -49,18 +48,25 @@ impl From<XPathExpression> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XPathExpression);
 
-
 impl XPathExpression {
     pub fn evaluate0(&self, context_node: Node) -> XPathResult {
-        self.inner.call("evaluate", &[context_node.into(), ]).as_::<XPathResult>()
+        self.inner
+            .call("evaluate", &[context_node.into()])
+            .as_::<XPathResult>()
     }
 
     pub fn evaluate1(&self, context_node: Node, type_: u16) -> XPathResult {
-        self.inner.call("evaluate", &[context_node.into(), type_.into(), ]).as_::<XPathResult>()
+        self.inner
+            .call("evaluate", &[context_node.into(), type_.into()])
+            .as_::<XPathResult>()
     }
 
     pub fn evaluate2(&self, context_node: Node, type_: u16, result: XPathResult) -> XPathResult {
-        self.inner.call("evaluate", &[context_node.into(), type_.into(), result.into(), ]).as_::<XPathResult>()
+        self.inner
+            .call(
+                "evaluate",
+                &[context_node.into(), type_.into(), result.into()],
+            )
+            .as_::<XPathResult>()
     }
-
 }

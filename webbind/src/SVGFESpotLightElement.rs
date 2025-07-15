@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGFESpotLightElement {
@@ -10,7 +7,9 @@ pub struct SVGFESpotLightElement {
 }
 impl FromVal for SVGFESpotLightElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGFESpotLightElement { inner: SVGElement::from_val(v) }
+        SVGFESpotLightElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SVGFESpotLightElement {
 }
 impl AsMut<emlite::Val> for SVGFESpotLightElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGFESpotLightElement> for emlite::Val {
     fn from(s: SVGFESpotLightElement) -> emlite::Val {
@@ -49,52 +48,47 @@ impl From<SVGFESpotLightElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGFESpotLightElement);
 
-
 impl SVGFESpotLightElement {
     pub fn x(&self) -> SVGAnimatedNumber {
         self.inner.get("x").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFESpotLightElement {
     pub fn y(&self) -> SVGAnimatedNumber {
         self.inner.get("y").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFESpotLightElement {
     pub fn z(&self) -> SVGAnimatedNumber {
         self.inner.get("z").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFESpotLightElement {
     pub fn points_at_x(&self) -> SVGAnimatedNumber {
         self.inner.get("pointsAtX").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFESpotLightElement {
     pub fn points_at_y(&self) -> SVGAnimatedNumber {
         self.inner.get("pointsAtY").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFESpotLightElement {
     pub fn points_at_z(&self) -> SVGAnimatedNumber {
         self.inner.get("pointsAtZ").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFESpotLightElement {
     pub fn specular_exponent(&self) -> SVGAnimatedNumber {
-        self.inner.get("specularExponent").as_::<SVGAnimatedNumber>()
+        self.inner
+            .get("specularExponent")
+            .as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFESpotLightElement {
     pub fn limiting_cone_angle(&self) -> SVGAnimatedNumber {
-        self.inner.get("limitingConeAngle").as_::<SVGAnimatedNumber>()
+        self.inner
+            .get("limitingConeAngle")
+            .as_::<SVGAnimatedNumber>()
     }
-
 }

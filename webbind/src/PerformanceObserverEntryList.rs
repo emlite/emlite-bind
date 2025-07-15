@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PerformanceObserverEntryList {
@@ -10,7 +7,9 @@ pub struct PerformanceObserverEntryList {
 }
 impl FromVal for PerformanceObserverEntryList {
     fn from_val(v: &emlite::Val) -> Self {
-        PerformanceObserverEntryList { inner: emlite::Val::from_val(v) }
+        PerformanceObserverEntryList {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PerformanceObserverEntryList {
 }
 impl AsMut<emlite::Val> for PerformanceObserverEntryList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PerformanceObserverEntryList> for emlite::Val {
     fn from(s: PerformanceObserverEntryList) -> emlite::Val {
@@ -49,26 +48,28 @@ impl From<PerformanceObserverEntryList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PerformanceObserverEntryList);
 
-
 impl PerformanceObserverEntryList {
-    pub fn get_entries(&self, ) -> Any {
+    pub fn get_entries(&self) -> Any {
         self.inner.call("getEntries", &[]).as_::<Any>()
     }
-
 }
 impl PerformanceObserverEntryList {
     pub fn get_entries_by_type(&self, type_: DOMString) -> Any {
-        self.inner.call("getEntriesByType", &[type_.into(), ]).as_::<Any>()
+        self.inner
+            .call("getEntriesByType", &[type_.into()])
+            .as_::<Any>()
     }
-
 }
 impl PerformanceObserverEntryList {
     pub fn get_entries_by_name0(&self, name: DOMString) -> Any {
-        self.inner.call("getEntriesByName", &[name.into(), ]).as_::<Any>()
+        self.inner
+            .call("getEntriesByName", &[name.into()])
+            .as_::<Any>()
     }
 
     pub fn get_entries_by_name1(&self, name: DOMString, type_: DOMString) -> Any {
-        self.inner.call("getEntriesByName", &[name.into(), type_.into(), ]).as_::<Any>()
+        self.inner
+            .call("getEntriesByName", &[name.into(), type_.into()])
+            .as_::<Any>()
     }
-
 }

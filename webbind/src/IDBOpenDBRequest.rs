@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IDBOpenDBRequest {
@@ -10,7 +7,9 @@ pub struct IDBOpenDBRequest {
 }
 impl FromVal for IDBOpenDBRequest {
     fn from_val(v: &emlite::Val) -> Self {
-        IDBOpenDBRequest { inner: IDBRequest::from_val(v) }
+        IDBOpenDBRequest {
+            inner: IDBRequest::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for IDBOpenDBRequest {
 }
 impl AsMut<emlite::Val> for IDBOpenDBRequest {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<IDBOpenDBRequest> for emlite::Val {
     fn from(s: IDBOpenDBRequest) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<IDBOpenDBRequest> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(IDBOpenDBRequest);
 
-
 impl IDBOpenDBRequest {
     pub fn onblocked(&self) -> Any {
         self.inner.get("onblocked").as_::<Any>()
@@ -58,7 +56,6 @@ impl IDBOpenDBRequest {
     pub fn set_onblocked(&mut self, value: Any) {
         self.inner.set("onblocked", value);
     }
-
 }
 impl IDBOpenDBRequest {
     pub fn onupgradeneeded(&self) -> Any {
@@ -68,5 +65,4 @@ impl IDBOpenDBRequest {
     pub fn set_onupgradeneeded(&mut self, value: Any) {
         self.inner.set("onupgradeneeded", value);
     }
-
 }

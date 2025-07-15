@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileSystem {
@@ -10,7 +7,9 @@ pub struct FileSystem {
 }
 impl FromVal for FileSystem {
     fn from_val(v: &emlite::Val) -> Self {
-        FileSystem { inner: emlite::Val::from_val(v) }
+        FileSystem {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for FileSystem {
 }
 impl AsMut<emlite::Val> for FileSystem {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<FileSystem> for emlite::Val {
     fn from(s: FileSystem) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<FileSystem> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FileSystem);
 
-
 impl FileSystem {
     pub fn name(&self) -> USVString {
         self.inner.get("name").as_::<USVString>()
     }
-
 }
 impl FileSystem {
     pub fn root(&self) -> FileSystemDirectoryEntry {
         self.inner.get("root").as_::<FileSystemDirectoryEntry>()
     }
-
 }

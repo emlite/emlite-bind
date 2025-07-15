@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGLQuery {
@@ -10,7 +7,9 @@ pub struct WebGLQuery {
 }
 impl FromVal for WebGLQuery {
     fn from_val(v: &emlite::Val) -> Self {
-        WebGLQuery { inner: WebGLObject::from_val(v) }
+        WebGLQuery {
+            inner: WebGLObject::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for WebGLQuery {
 }
 impl AsMut<emlite::Val> for WebGLQuery {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WebGLQuery> for emlite::Val {
     fn from(s: WebGLQuery) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<WebGLQuery> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(WebGLQuery);
-
-

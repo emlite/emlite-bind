@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SensorErrorEvent {
@@ -10,7 +7,9 @@ pub struct SensorErrorEvent {
 }
 impl FromVal for SensorErrorEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        SensorErrorEvent { inner: Event::from_val(v) }
+        SensorErrorEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SensorErrorEvent {
 }
 impl AsMut<emlite::Val> for SensorErrorEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SensorErrorEvent> for emlite::Val {
     fn from(s: SensorErrorEvent) -> emlite::Val {
@@ -49,19 +48,17 @@ impl From<SensorErrorEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SensorErrorEvent);
 
-
-
 impl SensorErrorEvent {
     pub fn new(type_: DOMString, error_event_init_dict: Any) -> SensorErrorEvent {
         Self {
-            inner: emlite::Val::global("SensorErrorEvent").new(&[type_.into(), error_event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("SensorErrorEvent")
+                .new(&[type_.into(), error_event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl SensorErrorEvent {
     pub fn error(&self) -> DOMException {
         self.inner.get("error").as_::<DOMException>()
     }
-
 }

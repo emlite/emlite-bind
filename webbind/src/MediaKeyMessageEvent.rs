@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaKeyMessageEvent {
@@ -10,7 +7,9 @@ pub struct MediaKeyMessageEvent {
 }
 impl FromVal for MediaKeyMessageEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaKeyMessageEvent { inner: Event::from_val(v) }
+        MediaKeyMessageEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for MediaKeyMessageEvent {
 }
 impl AsMut<emlite::Val> for MediaKeyMessageEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MediaKeyMessageEvent> for emlite::Val {
     fn from(s: MediaKeyMessageEvent) -> emlite::Val {
@@ -49,25 +48,22 @@ impl From<MediaKeyMessageEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MediaKeyMessageEvent);
 
-
-
 impl MediaKeyMessageEvent {
     pub fn new(type_: DOMString, event_init_dict: Any) -> MediaKeyMessageEvent {
         Self {
-            inner: emlite::Val::global("MediaKeyMessageEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("MediaKeyMessageEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl MediaKeyMessageEvent {
     pub fn message_type(&self) -> MediaKeyMessageType {
         self.inner.get("messageType").as_::<MediaKeyMessageType>()
     }
-
 }
 impl MediaKeyMessageEvent {
     pub fn message(&self) -> ArrayBuffer {
         self.inner.get("message").as_::<ArrayBuffer>()
     }
-
 }

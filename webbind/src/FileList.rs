@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileList {
@@ -10,7 +7,9 @@ pub struct FileList {
 }
 impl FromVal for FileList {
     fn from_val(v: &emlite::Val) -> Self {
-        FileList { inner: emlite::Val::from_val(v) }
+        FileList {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for FileList {
 }
 impl AsMut<emlite::Val> for FileList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<FileList> for emlite::Val {
     fn from(s: FileList) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<FileList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FileList);
 
-
 impl FileList {
     pub fn item(&self, index: u32) -> File {
-        self.inner.call("item", &[index.into(), ]).as_::<File>()
+        self.inner.call("item", &[index.into()]).as_::<File>()
     }
-
 }
 impl FileList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }

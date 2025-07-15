@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebTransportWriter {
@@ -10,7 +7,9 @@ pub struct WebTransportWriter {
 }
 impl FromVal for WebTransportWriter {
     fn from_val(v: &emlite::Val) -> Self {
-        WebTransportWriter { inner: WritableStreamDefaultWriter::from_val(v) }
+        WebTransportWriter {
+            inner: WritableStreamDefaultWriter::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for WebTransportWriter {
 }
 impl AsMut<emlite::Val> for WebTransportWriter {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WebTransportWriter> for emlite::Val {
     fn from(s: WebTransportWriter) -> emlite::Val {
@@ -49,20 +48,19 @@ impl From<WebTransportWriter> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WebTransportWriter);
 
-
 impl WebTransportWriter {
-    pub fn atomic_write0(&self, ) -> Promise {
+    pub fn atomic_write0(&self) -> Promise {
         self.inner.call("atomicWrite", &[]).as_::<Promise>()
     }
 
     pub fn atomic_write1(&self, chunk: Any) -> Promise {
-        self.inner.call("atomicWrite", &[chunk.into(), ]).as_::<Promise>()
+        self.inner
+            .call("atomicWrite", &[chunk.into()])
+            .as_::<Promise>()
     }
-
 }
 impl WebTransportWriter {
-    pub fn commit(&self, ) -> Undefined {
+    pub fn commit(&self) -> Undefined {
         self.inner.call("commit", &[]).as_::<Undefined>()
     }
-
 }

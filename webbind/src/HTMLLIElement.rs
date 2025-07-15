@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLLIElement {
@@ -10,7 +7,9 @@ pub struct HTMLLIElement {
 }
 impl FromVal for HTMLLIElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLLIElement { inner: HTMLElement::from_val(v) }
+        HTMLLIElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLLIElement {
 }
 impl AsMut<emlite::Val> for HTMLLIElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLLIElement> for emlite::Val {
     fn from(s: HTMLLIElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLLIElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLLIElement);
 
-
-
 impl HTMLLIElement {
     pub fn new() -> HTMLLIElement {
         Self {
-            inner: emlite::Val::global("HTMLLIElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLLIElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLLIElement {
     pub fn value(&self) -> i32 {
@@ -67,7 +65,6 @@ impl HTMLLIElement {
     pub fn set_value(&mut self, value: i32) {
         self.inner.set("value", value);
     }
-
 }
 impl HTMLLIElement {
     pub fn type_(&self) -> DOMString {
@@ -77,5 +74,4 @@ impl HTMLLIElement {
     pub fn set_type_(&mut self, value: DOMString) {
         self.inner.set("type", value);
     }
-
 }

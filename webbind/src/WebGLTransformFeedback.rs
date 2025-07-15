@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGLTransformFeedback {
@@ -10,7 +7,9 @@ pub struct WebGLTransformFeedback {
 }
 impl FromVal for WebGLTransformFeedback {
     fn from_val(v: &emlite::Val) -> Self {
-        WebGLTransformFeedback { inner: WebGLObject::from_val(v) }
+        WebGLTransformFeedback {
+            inner: WebGLObject::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for WebGLTransformFeedback {
 }
 impl AsMut<emlite::Val> for WebGLTransformFeedback {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WebGLTransformFeedback> for emlite::Val {
     fn from(s: WebGLTransformFeedback) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<WebGLTransformFeedback> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(WebGLTransformFeedback);
-
-

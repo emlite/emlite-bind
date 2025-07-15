@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRProjectionLayerInit {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for XRProjectionLayerInit {
 }
 impl AsMut<emlite::Val> for XRProjectionLayerInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRProjectionLayerInit> for emlite::Val {
     fn from(s: XRProjectionLayerInit) -> emlite::Val {
@@ -56,7 +53,6 @@ impl XRProjectionLayerInit {
     pub fn set_texture_type(&mut self, value: XRTextureType) {
         self.inner.set("textureType", value);
     }
-
 }
 impl XRProjectionLayerInit {
     pub fn color_format(&self) -> Any {
@@ -66,7 +62,6 @@ impl XRProjectionLayerInit {
     pub fn set_color_format(&mut self, value: Any) {
         self.inner.set("colorFormat", value);
     }
-
 }
 impl XRProjectionLayerInit {
     pub fn depth_format(&self) -> Any {
@@ -76,7 +71,6 @@ impl XRProjectionLayerInit {
     pub fn set_depth_format(&mut self, value: Any) {
         self.inner.set("depthFormat", value);
     }
-
 }
 impl XRProjectionLayerInit {
     pub fn scale_factor(&self) -> f64 {
@@ -86,7 +80,6 @@ impl XRProjectionLayerInit {
     pub fn set_scale_factor(&mut self, value: f64) {
         self.inner.set("scaleFactor", value);
     }
-
 }
 impl XRProjectionLayerInit {
     pub fn clear_on_access(&self) -> bool {
@@ -96,7 +89,6 @@ impl XRProjectionLayerInit {
     pub fn set_clear_on_access(&mut self, value: bool) {
         self.inner.set("clearOnAccess", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -132,8 +124,8 @@ impl AsRef<emlite::Val> for XRQuadLayerInit {
 }
 impl AsMut<emlite::Val> for XRQuadLayerInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRQuadLayerInit> for emlite::Val {
     fn from(s: XRQuadLayerInit) -> emlite::Val {
@@ -151,7 +143,6 @@ impl XRQuadLayerInit {
     pub fn set_texture_type(&mut self, value: XRTextureType) {
         self.inner.set("textureType", value);
     }
-
 }
 impl XRQuadLayerInit {
     pub fn transform(&self) -> XRRigidTransform {
@@ -161,7 +152,6 @@ impl XRQuadLayerInit {
     pub fn set_transform(&mut self, value: XRRigidTransform) {
         self.inner.set("transform", value);
     }
-
 }
 impl XRQuadLayerInit {
     pub fn width(&self) -> f32 {
@@ -171,7 +161,6 @@ impl XRQuadLayerInit {
     pub fn set_width(&mut self, value: f32) {
         self.inner.set("width", value);
     }
-
 }
 impl XRQuadLayerInit {
     pub fn height(&self) -> f32 {
@@ -181,7 +170,6 @@ impl XRQuadLayerInit {
     pub fn set_height(&mut self, value: f32) {
         self.inner.set("height", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -217,8 +205,8 @@ impl AsRef<emlite::Val> for XRCylinderLayerInit {
 }
 impl AsMut<emlite::Val> for XRCylinderLayerInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRCylinderLayerInit> for emlite::Val {
     fn from(s: XRCylinderLayerInit) -> emlite::Val {
@@ -236,7 +224,6 @@ impl XRCylinderLayerInit {
     pub fn set_texture_type(&mut self, value: XRTextureType) {
         self.inner.set("textureType", value);
     }
-
 }
 impl XRCylinderLayerInit {
     pub fn transform(&self) -> XRRigidTransform {
@@ -246,7 +233,6 @@ impl XRCylinderLayerInit {
     pub fn set_transform(&mut self, value: XRRigidTransform) {
         self.inner.set("transform", value);
     }
-
 }
 impl XRCylinderLayerInit {
     pub fn radius(&self) -> f32 {
@@ -256,7 +242,6 @@ impl XRCylinderLayerInit {
     pub fn set_radius(&mut self, value: f32) {
         self.inner.set("radius", value);
     }
-
 }
 impl XRCylinderLayerInit {
     pub fn central_angle(&self) -> f32 {
@@ -266,7 +251,6 @@ impl XRCylinderLayerInit {
     pub fn set_central_angle(&mut self, value: f32) {
         self.inner.set("centralAngle", value);
     }
-
 }
 impl XRCylinderLayerInit {
     pub fn aspect_ratio(&self) -> f32 {
@@ -276,7 +260,6 @@ impl XRCylinderLayerInit {
     pub fn set_aspect_ratio(&mut self, value: f32) {
         self.inner.set("aspectRatio", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -312,8 +295,8 @@ impl AsRef<emlite::Val> for XREquirectLayerInit {
 }
 impl AsMut<emlite::Val> for XREquirectLayerInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XREquirectLayerInit> for emlite::Val {
     fn from(s: XREquirectLayerInit) -> emlite::Val {
@@ -331,7 +314,6 @@ impl XREquirectLayerInit {
     pub fn set_texture_type(&mut self, value: XRTextureType) {
         self.inner.set("textureType", value);
     }
-
 }
 impl XREquirectLayerInit {
     pub fn transform(&self) -> XRRigidTransform {
@@ -341,7 +323,6 @@ impl XREquirectLayerInit {
     pub fn set_transform(&mut self, value: XRRigidTransform) {
         self.inner.set("transform", value);
     }
-
 }
 impl XREquirectLayerInit {
     pub fn radius(&self) -> f32 {
@@ -351,7 +332,6 @@ impl XREquirectLayerInit {
     pub fn set_radius(&mut self, value: f32) {
         self.inner.set("radius", value);
     }
-
 }
 impl XREquirectLayerInit {
     pub fn central_horizontal_angle(&self) -> f32 {
@@ -361,7 +341,6 @@ impl XREquirectLayerInit {
     pub fn set_central_horizontal_angle(&mut self, value: f32) {
         self.inner.set("centralHorizontalAngle", value);
     }
-
 }
 impl XREquirectLayerInit {
     pub fn upper_vertical_angle(&self) -> f32 {
@@ -371,7 +350,6 @@ impl XREquirectLayerInit {
     pub fn set_upper_vertical_angle(&mut self, value: f32) {
         self.inner.set("upperVerticalAngle", value);
     }
-
 }
 impl XREquirectLayerInit {
     pub fn lower_vertical_angle(&self) -> f32 {
@@ -381,7 +359,6 @@ impl XREquirectLayerInit {
     pub fn set_lower_vertical_angle(&mut self, value: f32) {
         self.inner.set("lowerVerticalAngle", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -417,8 +394,8 @@ impl AsRef<emlite::Val> for XRCubeLayerInit {
 }
 impl AsMut<emlite::Val> for XRCubeLayerInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRCubeLayerInit> for emlite::Val {
     fn from(s: XRCubeLayerInit) -> emlite::Val {
@@ -436,7 +413,6 @@ impl XRCubeLayerInit {
     pub fn set_orientation(&mut self, value: DOMPointReadOnly) {
         self.inner.set("orientation", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -445,7 +421,9 @@ pub struct XRWebGLBinding {
 }
 impl FromVal for XRWebGLBinding {
     fn from_val(v: &emlite::Val) -> Self {
-        XRWebGLBinding { inner: emlite::Val::from_val(v) }
+        XRWebGLBinding {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -472,8 +450,8 @@ impl AsRef<emlite::Val> for XRWebGLBinding {
 }
 impl AsMut<emlite::Val> for XRWebGLBinding {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRWebGLBinding> for emlite::Val {
     fn from(s: XRWebGLBinding) -> emlite::Val {
@@ -484,115 +462,139 @@ impl From<XRWebGLBinding> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRWebGLBinding);
 
-
-
 impl XRWebGLBinding {
     pub fn new(session: XRSession, context: Any) -> XRWebGLBinding {
         Self {
-            inner: emlite::Val::global("XRWebGLBinding").new(&[session.into(), context.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("XRWebGLBinding")
+                .new(&[session.into(), context.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl XRWebGLBinding {
     pub fn native_projection_scale_factor(&self) -> f64 {
         self.inner.get("nativeProjectionScaleFactor").as_::<f64>()
     }
-
 }
 impl XRWebGLBinding {
     pub fn uses_depth_values(&self) -> bool {
         self.inner.get("usesDepthValues").as_::<bool>()
     }
-
 }
 impl XRWebGLBinding {
-    pub fn create_projection_layer0(&self, ) -> XRProjectionLayer {
-        self.inner.call("createProjectionLayer", &[]).as_::<XRProjectionLayer>()
+    pub fn create_projection_layer0(&self) -> XRProjectionLayer {
+        self.inner
+            .call("createProjectionLayer", &[])
+            .as_::<XRProjectionLayer>()
     }
 
     pub fn create_projection_layer1(&self, init: XRProjectionLayerInit) -> XRProjectionLayer {
-        self.inner.call("createProjectionLayer", &[init.into(), ]).as_::<XRProjectionLayer>()
+        self.inner
+            .call("createProjectionLayer", &[init.into()])
+            .as_::<XRProjectionLayer>()
     }
-
 }
 impl XRWebGLBinding {
-    pub fn create_quad_layer0(&self, ) -> XRQuadLayer {
+    pub fn create_quad_layer0(&self) -> XRQuadLayer {
         self.inner.call("createQuadLayer", &[]).as_::<XRQuadLayer>()
     }
 
     pub fn create_quad_layer1(&self, init: XRQuadLayerInit) -> XRQuadLayer {
-        self.inner.call("createQuadLayer", &[init.into(), ]).as_::<XRQuadLayer>()
+        self.inner
+            .call("createQuadLayer", &[init.into()])
+            .as_::<XRQuadLayer>()
     }
-
 }
 impl XRWebGLBinding {
-    pub fn create_cylinder_layer0(&self, ) -> XRCylinderLayer {
-        self.inner.call("createCylinderLayer", &[]).as_::<XRCylinderLayer>()
+    pub fn create_cylinder_layer0(&self) -> XRCylinderLayer {
+        self.inner
+            .call("createCylinderLayer", &[])
+            .as_::<XRCylinderLayer>()
     }
 
     pub fn create_cylinder_layer1(&self, init: XRCylinderLayerInit) -> XRCylinderLayer {
-        self.inner.call("createCylinderLayer", &[init.into(), ]).as_::<XRCylinderLayer>()
+        self.inner
+            .call("createCylinderLayer", &[init.into()])
+            .as_::<XRCylinderLayer>()
     }
-
 }
 impl XRWebGLBinding {
-    pub fn create_equirect_layer0(&self, ) -> XREquirectLayer {
-        self.inner.call("createEquirectLayer", &[]).as_::<XREquirectLayer>()
+    pub fn create_equirect_layer0(&self) -> XREquirectLayer {
+        self.inner
+            .call("createEquirectLayer", &[])
+            .as_::<XREquirectLayer>()
     }
 
     pub fn create_equirect_layer1(&self, init: XREquirectLayerInit) -> XREquirectLayer {
-        self.inner.call("createEquirectLayer", &[init.into(), ]).as_::<XREquirectLayer>()
+        self.inner
+            .call("createEquirectLayer", &[init.into()])
+            .as_::<XREquirectLayer>()
     }
-
 }
 impl XRWebGLBinding {
-    pub fn create_cube_layer0(&self, ) -> XRCubeLayer {
+    pub fn create_cube_layer0(&self) -> XRCubeLayer {
         self.inner.call("createCubeLayer", &[]).as_::<XRCubeLayer>()
     }
 
     pub fn create_cube_layer1(&self, init: XRCubeLayerInit) -> XRCubeLayer {
-        self.inner.call("createCubeLayer", &[init.into(), ]).as_::<XRCubeLayer>()
+        self.inner
+            .call("createCubeLayer", &[init.into()])
+            .as_::<XRCubeLayer>()
     }
-
 }
 impl XRWebGLBinding {
     pub fn get_sub_image0(&self, layer: XRCompositionLayer, frame: XRFrame) -> XRWebGLSubImage {
-        self.inner.call("getSubImage", &[layer.into(), frame.into(), ]).as_::<XRWebGLSubImage>()
+        self.inner
+            .call("getSubImage", &[layer.into(), frame.into()])
+            .as_::<XRWebGLSubImage>()
     }
 
-    pub fn get_sub_image1(&self, layer: XRCompositionLayer, frame: XRFrame, eye: XREye) -> XRWebGLSubImage {
-        self.inner.call("getSubImage", &[layer.into(), frame.into(), eye.into(), ]).as_::<XRWebGLSubImage>()
+    pub fn get_sub_image1(
+        &self,
+        layer: XRCompositionLayer,
+        frame: XRFrame,
+        eye: XREye,
+    ) -> XRWebGLSubImage {
+        self.inner
+            .call("getSubImage", &[layer.into(), frame.into(), eye.into()])
+            .as_::<XRWebGLSubImage>()
     }
-
 }
 impl XRWebGLBinding {
     pub fn get_view_sub_image(&self, layer: XRProjectionLayer, view: XRView) -> XRWebGLSubImage {
-        self.inner.call("getViewSubImage", &[layer.into(), view.into(), ]).as_::<XRWebGLSubImage>()
+        self.inner
+            .call("getViewSubImage", &[layer.into(), view.into()])
+            .as_::<XRWebGLSubImage>()
     }
-
 }
 impl XRWebGLBinding {
     pub fn foveate_bound_texture(&self, target: Any, fixed_foveation: f32) -> Undefined {
-        self.inner.call("foveateBoundTexture", &[target.into(), fixed_foveation.into(), ]).as_::<Undefined>()
+        self.inner
+            .call(
+                "foveateBoundTexture",
+                &[target.into(), fixed_foveation.into()],
+            )
+            .as_::<Undefined>()
     }
-
 }
 impl XRWebGLBinding {
     pub fn get_camera_image(&self, camera: XRCamera) -> WebGLTexture {
-        self.inner.call("getCameraImage", &[camera.into(), ]).as_::<WebGLTexture>()
+        self.inner
+            .call("getCameraImage", &[camera.into()])
+            .as_::<WebGLTexture>()
     }
-
 }
 impl XRWebGLBinding {
     pub fn get_depth_information(&self, view: XRView) -> XRWebGLDepthInformation {
-        self.inner.call("getDepthInformation", &[view.into(), ]).as_::<XRWebGLDepthInformation>()
+        self.inner
+            .call("getDepthInformation", &[view.into()])
+            .as_::<XRWebGLDepthInformation>()
     }
-
 }
 impl XRWebGLBinding {
     pub fn get_reflection_cube_map(&self, light_probe: XRLightProbe) -> WebGLTexture {
-        self.inner.call("getReflectionCubeMap", &[light_probe.into(), ]).as_::<WebGLTexture>()
+        self.inner
+            .call("getReflectionCubeMap", &[light_probe.into()])
+            .as_::<WebGLTexture>()
     }
-
 }

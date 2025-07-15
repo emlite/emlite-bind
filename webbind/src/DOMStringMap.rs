@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DOMStringMap {
@@ -10,7 +7,9 @@ pub struct DOMStringMap {
 }
 impl FromVal for DOMStringMap {
     fn from_val(v: &emlite::Val) -> Self {
-        DOMStringMap { inner: emlite::Val::from_val(v) }
+        DOMStringMap {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for DOMStringMap {
 }
 impl AsMut<emlite::Val> for DOMStringMap {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<DOMStringMap> for emlite::Val {
     fn from(s: DOMStringMap) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<DOMStringMap> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(DOMStringMap);
-
-

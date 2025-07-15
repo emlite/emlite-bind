@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct InterestGroupScoringScriptRunnerGlobalScope {
@@ -10,7 +7,9 @@ pub struct InterestGroupScoringScriptRunnerGlobalScope {
 }
 impl FromVal for InterestGroupScoringScriptRunnerGlobalScope {
     fn from_val(v: &emlite::Val) -> Self {
-        InterestGroupScoringScriptRunnerGlobalScope { inner: InterestGroupBiddingAndScoringScriptRunnerGlobalScope::from_val(v) }
+        InterestGroupScoringScriptRunnerGlobalScope {
+            inner: InterestGroupBiddingAndScoringScriptRunnerGlobalScope::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for InterestGroupScoringScriptRunnerGlobalScope {
 }
 impl AsMut<emlite::Val> for InterestGroupScoringScriptRunnerGlobalScope {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<InterestGroupScoringScriptRunnerGlobalScope> for emlite::Val {
     fn from(s: InterestGroupScoringScriptRunnerGlobalScope) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<InterestGroupScoringScriptRunnerGlobalScope> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(InterestGroupScoringScriptRunnerGlobalScope);
-
-

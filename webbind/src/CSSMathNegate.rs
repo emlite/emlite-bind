@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSMathNegate {
@@ -10,7 +7,9 @@ pub struct CSSMathNegate {
 }
 impl FromVal for CSSMathNegate {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSMathNegate { inner: CSSMathValue::from_val(v) }
+        CSSMathNegate {
+            inner: CSSMathValue::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSMathNegate {
 }
 impl AsMut<emlite::Val> for CSSMathNegate {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSMathNegate> for emlite::Val {
     fn from(s: CSSMathNegate) -> emlite::Val {
@@ -49,19 +48,17 @@ impl From<CSSMathNegate> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSMathNegate);
 
-
-
 impl CSSMathNegate {
     pub fn new(arg: Any) -> CSSMathNegate {
         Self {
-            inner: emlite::Val::global("CSSMathNegate").new(&[arg.into()]).as_::<CSSMathValue>(),
+            inner: emlite::Val::global("CSSMathNegate")
+                .new(&[arg.into()])
+                .as_::<CSSMathValue>(),
         }
     }
-
 }
 impl CSSMathNegate {
     pub fn value(&self) -> CSSNumericValue {
         self.inner.get("value").as_::<CSSNumericValue>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TextEncoderStream {
@@ -10,7 +7,9 @@ pub struct TextEncoderStream {
 }
 impl FromVal for TextEncoderStream {
     fn from_val(v: &emlite::Val) -> Self {
-        TextEncoderStream { inner: emlite::Val::from_val(v) }
+        TextEncoderStream {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for TextEncoderStream {
 }
 impl AsMut<emlite::Val> for TextEncoderStream {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<TextEncoderStream> for emlite::Val {
     fn from(s: TextEncoderStream) -> emlite::Val {
@@ -49,31 +48,27 @@ impl From<TextEncoderStream> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(TextEncoderStream);
 
-
-
 impl TextEncoderStream {
     pub fn new() -> TextEncoderStream {
         Self {
-            inner: emlite::Val::global("TextEncoderStream").new(&[]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("TextEncoderStream")
+                .new(&[])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl TextEncoderStream {
     pub fn encoding(&self) -> DOMString {
         self.inner.get("encoding").as_::<DOMString>()
     }
-
 }
 impl TextEncoderStream {
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
-
 }
 impl TextEncoderStream {
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
     }
-
 }

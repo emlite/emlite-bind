@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EXT_frag_depth {
@@ -10,7 +7,9 @@ pub struct EXT_frag_depth {
 }
 impl FromVal for EXT_frag_depth {
     fn from_val(v: &emlite::Val) -> Self {
-        EXT_frag_depth { inner: emlite::Val::from_val(v) }
+        EXT_frag_depth {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for EXT_frag_depth {
 }
 impl AsMut<emlite::Val> for EXT_frag_depth {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<EXT_frag_depth> for emlite::Val {
     fn from(s: EXT_frag_depth) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<EXT_frag_depth> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(EXT_frag_depth);
-
-

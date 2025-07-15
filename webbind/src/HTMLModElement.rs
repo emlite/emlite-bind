@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLModElement {
@@ -10,7 +7,9 @@ pub struct HTMLModElement {
 }
 impl FromVal for HTMLModElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLModElement { inner: HTMLElement::from_val(v) }
+        HTMLModElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLModElement {
 }
 impl AsMut<emlite::Val> for HTMLModElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLModElement> for emlite::Val {
     fn from(s: HTMLModElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLModElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLModElement);
 
-
-
 impl HTMLModElement {
     pub fn new() -> HTMLModElement {
         Self {
-            inner: emlite::Val::global("HTMLModElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLModElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLModElement {
     pub fn cite(&self) -> USVString {
@@ -67,7 +65,6 @@ impl HTMLModElement {
     pub fn set_cite(&mut self, value: USVString) {
         self.inner.set("cite", value);
     }
-
 }
 impl HTMLModElement {
     pub fn date_time(&self) -> DOMString {
@@ -77,5 +74,4 @@ impl HTMLModElement {
     pub fn set_date_time(&mut self, value: DOMString) {
         self.inner.set("dateTime", value);
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGAnimatedBoolean {
@@ -10,7 +7,9 @@ pub struct SVGAnimatedBoolean {
 }
 impl FromVal for SVGAnimatedBoolean {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGAnimatedBoolean { inner: emlite::Val::from_val(v) }
+        SVGAnimatedBoolean {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SVGAnimatedBoolean {
 }
 impl AsMut<emlite::Val> for SVGAnimatedBoolean {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGAnimatedBoolean> for emlite::Val {
     fn from(s: SVGAnimatedBoolean) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<SVGAnimatedBoolean> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGAnimatedBoolean);
 
-
 impl SVGAnimatedBoolean {
     pub fn base_val(&self) -> bool {
         self.inner.get("baseVal").as_::<bool>()
@@ -58,11 +56,9 @@ impl SVGAnimatedBoolean {
     pub fn set_base_val(&mut self, value: bool) {
         self.inner.set("baseVal", value);
     }
-
 }
 impl SVGAnimatedBoolean {
     pub fn anim_val(&self) -> bool {
         self.inner.get("animVal").as_::<bool>()
     }
-
 }

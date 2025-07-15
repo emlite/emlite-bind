@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaStreamTrackProcessor {
@@ -10,7 +7,9 @@ pub struct MediaStreamTrackProcessor {
 }
 impl FromVal for MediaStreamTrackProcessor {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaStreamTrackProcessor { inner: emlite::Val::from_val(v) }
+        MediaStreamTrackProcessor {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for MediaStreamTrackProcessor {
 }
 impl AsMut<emlite::Val> for MediaStreamTrackProcessor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MediaStreamTrackProcessor> for emlite::Val {
     fn from(s: MediaStreamTrackProcessor) -> emlite::Val {
@@ -49,19 +48,17 @@ impl From<MediaStreamTrackProcessor> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MediaStreamTrackProcessor);
 
-
-
 impl MediaStreamTrackProcessor {
     pub fn new(init: Any) -> MediaStreamTrackProcessor {
         Self {
-            inner: emlite::Val::global("MediaStreamTrackProcessor").new(&[init.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("MediaStreamTrackProcessor")
+                .new(&[init.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl MediaStreamTrackProcessor {
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
-
 }

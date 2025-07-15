@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DocumentPictureInPictureOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for DocumentPictureInPictureOptions {
 }
 impl AsMut<emlite::Val> for DocumentPictureInPictureOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<DocumentPictureInPictureOptions> for emlite::Val {
     fn from(s: DocumentPictureInPictureOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl DocumentPictureInPictureOptions {
     pub fn set_width(&mut self, value: u64) {
         self.inner.set("width", value);
     }
-
 }
 impl DocumentPictureInPictureOptions {
     pub fn height(&self) -> u64 {
@@ -66,7 +62,6 @@ impl DocumentPictureInPictureOptions {
     pub fn set_height(&mut self, value: u64) {
         self.inner.set("height", value);
     }
-
 }
 impl DocumentPictureInPictureOptions {
     pub fn disallow_return_to_opener(&self) -> bool {
@@ -76,7 +71,6 @@ impl DocumentPictureInPictureOptions {
     pub fn set_disallow_return_to_opener(&mut self, value: bool) {
         self.inner.set("disallowReturnToOpener", value);
     }
-
 }
 impl DocumentPictureInPictureOptions {
     pub fn prefer_initial_window_placement(&self) -> bool {
@@ -86,7 +80,6 @@ impl DocumentPictureInPictureOptions {
     pub fn set_prefer_initial_window_placement(&mut self, value: bool) {
         self.inner.set("preferInitialWindowPlacement", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -95,7 +88,9 @@ pub struct DocumentPictureInPicture {
 }
 impl FromVal for DocumentPictureInPicture {
     fn from_val(v: &emlite::Val) -> Self {
-        DocumentPictureInPicture { inner: EventTarget::from_val(v) }
+        DocumentPictureInPicture {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -122,8 +117,8 @@ impl AsRef<emlite::Val> for DocumentPictureInPicture {
 }
 impl AsMut<emlite::Val> for DocumentPictureInPicture {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<DocumentPictureInPicture> for emlite::Val {
     fn from(s: DocumentPictureInPicture) -> emlite::Val {
@@ -134,22 +129,21 @@ impl From<DocumentPictureInPicture> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(DocumentPictureInPicture);
 
-
 impl DocumentPictureInPicture {
-    pub fn request_window0(&self, ) -> Promise {
+    pub fn request_window0(&self) -> Promise {
         self.inner.call("requestWindow", &[]).as_::<Promise>()
     }
 
     pub fn request_window1(&self, options: DocumentPictureInPictureOptions) -> Promise {
-        self.inner.call("requestWindow", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("requestWindow", &[options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl DocumentPictureInPicture {
     pub fn window(&self) -> Window {
         self.inner.get("window").as_::<Window>()
     }
-
 }
 impl DocumentPictureInPicture {
     pub fn onenter(&self) -> Any {
@@ -159,5 +153,4 @@ impl DocumentPictureInPicture {
     pub fn set_onenter(&mut self, value: Any) {
         self.inner.set("onenter", value);
     }
-
 }

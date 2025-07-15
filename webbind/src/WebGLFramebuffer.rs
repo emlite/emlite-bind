@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGLFramebuffer {
@@ -10,7 +7,9 @@ pub struct WebGLFramebuffer {
 }
 impl FromVal for WebGLFramebuffer {
     fn from_val(v: &emlite::Val) -> Self {
-        WebGLFramebuffer { inner: WebGLObject::from_val(v) }
+        WebGLFramebuffer {
+            inner: WebGLObject::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for WebGLFramebuffer {
 }
 impl AsMut<emlite::Val> for WebGLFramebuffer {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WebGLFramebuffer> for emlite::Val {
     fn from(s: WebGLFramebuffer) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<WebGLFramebuffer> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(WebGLFramebuffer);
-
-

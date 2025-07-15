@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct LayoutWorkletGlobalScope {
@@ -10,7 +7,9 @@ pub struct LayoutWorkletGlobalScope {
 }
 impl FromVal for LayoutWorkletGlobalScope {
     fn from_val(v: &emlite::Val) -> Self {
-        LayoutWorkletGlobalScope { inner: WorkletGlobalScope::from_val(v) }
+        LayoutWorkletGlobalScope {
+            inner: WorkletGlobalScope::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for LayoutWorkletGlobalScope {
 }
 impl AsMut<emlite::Val> for LayoutWorkletGlobalScope {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<LayoutWorkletGlobalScope> for emlite::Val {
     fn from(s: LayoutWorkletGlobalScope) -> emlite::Val {
@@ -49,10 +48,10 @@ impl From<LayoutWorkletGlobalScope> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(LayoutWorkletGlobalScope);
 
-
 impl LayoutWorkletGlobalScope {
     pub fn register_layout(&self, name: DOMString, layout_ctor: Any) -> Undefined {
-        self.inner.call("registerLayout", &[name.into(), layout_ctor.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("registerLayout", &[name.into(), layout_ctor.into()])
+            .as_::<Undefined>()
     }
-
 }

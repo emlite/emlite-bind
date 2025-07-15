@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ResizeObserverEntry {
@@ -10,7 +7,9 @@ pub struct ResizeObserverEntry {
 }
 impl FromVal for ResizeObserverEntry {
     fn from_val(v: &emlite::Val) -> Self {
-        ResizeObserverEntry { inner: emlite::Val::from_val(v) }
+        ResizeObserverEntry {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for ResizeObserverEntry {
 }
 impl AsMut<emlite::Val> for ResizeObserverEntry {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ResizeObserverEntry> for emlite::Val {
     fn from(s: ResizeObserverEntry) -> emlite::Val {
@@ -49,34 +48,34 @@ impl From<ResizeObserverEntry> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ResizeObserverEntry);
 
-
 impl ResizeObserverEntry {
     pub fn target(&self) -> Element {
         self.inner.get("target").as_::<Element>()
     }
-
 }
 impl ResizeObserverEntry {
     pub fn content_rect(&self) -> DOMRectReadOnly {
         self.inner.get("contentRect").as_::<DOMRectReadOnly>()
     }
-
 }
 impl ResizeObserverEntry {
     pub fn border_box_size(&self) -> FrozenArray<ResizeObserverSize> {
-        self.inner.get("borderBoxSize").as_::<FrozenArray<ResizeObserverSize>>()
+        self.inner
+            .get("borderBoxSize")
+            .as_::<FrozenArray<ResizeObserverSize>>()
     }
-
 }
 impl ResizeObserverEntry {
     pub fn content_box_size(&self) -> FrozenArray<ResizeObserverSize> {
-        self.inner.get("contentBoxSize").as_::<FrozenArray<ResizeObserverSize>>()
+        self.inner
+            .get("contentBoxSize")
+            .as_::<FrozenArray<ResizeObserverSize>>()
     }
-
 }
 impl ResizeObserverEntry {
     pub fn device_pixel_content_box_size(&self) -> FrozenArray<ResizeObserverSize> {
-        self.inner.get("devicePixelContentBoxSize").as_::<FrozenArray<ResizeObserverSize>>()
+        self.inner
+            .get("devicePixelContentBoxSize")
+            .as_::<FrozenArray<ResizeObserverSize>>()
     }
-
 }

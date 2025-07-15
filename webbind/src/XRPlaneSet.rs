@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRPlaneSet {
@@ -10,7 +7,9 @@ pub struct XRPlaneSet {
 }
 impl FromVal for XRPlaneSet {
     fn from_val(v: &emlite::Val) -> Self {
-        XRPlaneSet { inner: emlite::Val::from_val(v) }
+        XRPlaneSet {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XRPlaneSet {
 }
 impl AsMut<emlite::Val> for XRPlaneSet {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRPlaneSet> for emlite::Val {
     fn from(s: XRPlaneSet) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<XRPlaneSet> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(XRPlaneSet);
-
-

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FenceEvent {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for FenceEvent {
 }
 impl AsMut<emlite::Val> for FenceEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<FenceEvent> for emlite::Val {
     fn from(s: FenceEvent) -> emlite::Val {
@@ -56,7 +53,6 @@ impl FenceEvent {
     pub fn set_event_type(&mut self, value: DOMString) {
         self.inner.set("eventType", value);
     }
-
 }
 impl FenceEvent {
     pub fn event_data(&self) -> DOMString {
@@ -66,17 +62,17 @@ impl FenceEvent {
     pub fn set_event_data(&mut self, value: DOMString) {
         self.inner.set("eventData", value);
     }
-
 }
 impl FenceEvent {
     pub fn destination(&self) -> Sequence<FenceReportingDestination> {
-        self.inner.get("destination").as_::<Sequence<FenceReportingDestination>>()
+        self.inner
+            .get("destination")
+            .as_::<Sequence<FenceReportingDestination>>()
     }
 
     pub fn set_destination(&mut self, value: Sequence<FenceReportingDestination>) {
         self.inner.set("destination", value);
     }
-
 }
 impl FenceEvent {
     pub fn cross_origin_exposed(&self) -> bool {
@@ -86,7 +82,6 @@ impl FenceEvent {
     pub fn set_cross_origin_exposed(&mut self, value: bool) {
         self.inner.set("crossOriginExposed", value);
     }
-
 }
 impl FenceEvent {
     pub fn once(&self) -> bool {
@@ -96,7 +91,6 @@ impl FenceEvent {
     pub fn set_once(&mut self, value: bool) {
         self.inner.set("once", value);
     }
-
 }
 impl FenceEvent {
     pub fn destination_url(&self) -> USVString {
@@ -106,7 +100,6 @@ impl FenceEvent {
     pub fn set_destination_url(&mut self, value: USVString) {
         self.inner.set("destinationURL", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -115,7 +108,9 @@ pub struct Fence {
 }
 impl FromVal for Fence {
     fn from_val(v: &emlite::Val) -> Self {
-        Fence { inner: emlite::Val::from_val(v) }
+        Fence {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -142,8 +137,8 @@ impl AsRef<emlite::Val> for Fence {
 }
 impl AsMut<emlite::Val> for Fence {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Fence> for emlite::Val {
     fn from(s: Fence) -> emlite::Val {
@@ -154,42 +149,48 @@ impl From<Fence> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Fence);
 
-
 impl Fence {
-    pub fn report_event0(&self, ) -> Undefined {
+    pub fn report_event0(&self) -> Undefined {
         self.inner.call("reportEvent", &[]).as_::<Undefined>()
     }
 
     pub fn report_event1(&self, event: Any) -> Undefined {
-        self.inner.call("reportEvent", &[event.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("reportEvent", &[event.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Fence {
-    pub fn set_report_event_data_for_automatic_beacons0(&self, ) -> Undefined {
-        self.inner.call("setReportEventDataForAutomaticBeacons", &[]).as_::<Undefined>()
+    pub fn set_report_event_data_for_automatic_beacons0(&self) -> Undefined {
+        self.inner
+            .call("setReportEventDataForAutomaticBeacons", &[])
+            .as_::<Undefined>()
     }
 
     pub fn set_report_event_data_for_automatic_beacons1(&self, event: FenceEvent) -> Undefined {
-        self.inner.call("setReportEventDataForAutomaticBeacons", &[event.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setReportEventDataForAutomaticBeacons", &[event.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Fence {
-    pub fn get_nested_configs(&self, ) -> Sequence<FencedFrameConfig> {
-        self.inner.call("getNestedConfigs", &[]).as_::<Sequence<FencedFrameConfig>>()
+    pub fn get_nested_configs(&self) -> Sequence<FencedFrameConfig> {
+        self.inner
+            .call("getNestedConfigs", &[])
+            .as_::<Sequence<FencedFrameConfig>>()
     }
-
 }
 impl Fence {
-    pub fn disable_untrusted_network(&self, ) -> Promise {
-        self.inner.call("disableUntrustedNetwork", &[]).as_::<Promise>()
+    pub fn disable_untrusted_network(&self) -> Promise {
+        self.inner
+            .call("disableUntrustedNetwork", &[])
+            .as_::<Promise>()
     }
-
 }
 impl Fence {
     pub fn notify_event(&self, event: Event) -> Undefined {
-        self.inner.call("notifyEvent", &[event.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("notifyEvent", &[event.into()])
+            .as_::<Undefined>()
     }
-
 }

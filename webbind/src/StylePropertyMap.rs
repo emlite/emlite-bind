@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct StylePropertyMap {
@@ -10,7 +7,9 @@ pub struct StylePropertyMap {
 }
 impl FromVal for StylePropertyMap {
     fn from_val(v: &emlite::Val) -> Self {
-        StylePropertyMap { inner: StylePropertyMapReadOnly::from_val(v) }
+        StylePropertyMap {
+            inner: StylePropertyMapReadOnly::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for StylePropertyMap {
 }
 impl AsMut<emlite::Val> for StylePropertyMap {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<StylePropertyMap> for emlite::Val {
     fn from(s: StylePropertyMap) -> emlite::Val {
@@ -49,28 +48,29 @@ impl From<StylePropertyMap> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(StylePropertyMap);
 
-
 impl StylePropertyMap {
     pub fn set(&self, property: USVString, values: Any) -> Undefined {
-        self.inner.call("set", &[property.into(), values.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("set", &[property.into(), values.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl StylePropertyMap {
     pub fn append(&self, property: USVString, values: Any) -> Undefined {
-        self.inner.call("append", &[property.into(), values.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("append", &[property.into(), values.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl StylePropertyMap {
     pub fn delete(&self, property: USVString) -> Undefined {
-        self.inner.call("delete", &[property.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("delete", &[property.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl StylePropertyMap {
-    pub fn clear(&self, ) -> Undefined {
+    pub fn clear(&self) -> Undefined {
         self.inner.call("clear", &[]).as_::<Undefined>()
     }
-
 }

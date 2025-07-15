@@ -12,9 +12,8 @@ bind!(Promise);
 impl_dyn_cast!(Promise);
 
 impl Default for Promise {
-    /// A default promise is simply JavaScript `undefined`
     fn default() -> Self {
-        emlite::Val::undefined().as_::<Self>()
+        emlite::Val::global("Promise").new(&[]).as_::<Self>()
     }
 }
 

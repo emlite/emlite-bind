@@ -5,7 +5,6 @@ use crate::utils::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Object {
-    /// Underlying handle (guaranteed to be an object at runtime).
     inner: emlite::Val,
 }
 

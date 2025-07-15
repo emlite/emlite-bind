@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MIDIOutput {
@@ -10,7 +7,9 @@ pub struct MIDIOutput {
 }
 impl FromVal for MIDIOutput {
     fn from_val(v: &emlite::Val) -> Self {
-        MIDIOutput { inner: MIDIPort::from_val(v) }
+        MIDIOutput {
+            inner: MIDIPort::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for MIDIOutput {
 }
 impl AsMut<emlite::Val> for MIDIOutput {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MIDIOutput> for emlite::Val {
     fn from(s: MIDIOutput) -> emlite::Val {
@@ -49,20 +48,19 @@ impl From<MIDIOutput> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MIDIOutput);
 
-
 impl MIDIOutput {
     pub fn send0(&self, data: Sequence<u8>) -> Undefined {
-        self.inner.call("send", &[data.into(), ]).as_::<Undefined>()
+        self.inner.call("send", &[data.into()]).as_::<Undefined>()
     }
 
     pub fn send1(&self, data: Sequence<u8>, timestamp: Any) -> Undefined {
-        self.inner.call("send", &[data.into(), timestamp.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("send", &[data.into(), timestamp.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl MIDIOutput {
-    pub fn clear(&self, ) -> Undefined {
+    pub fn clear(&self) -> Undefined {
         self.inner.call("clear", &[]).as_::<Undefined>()
     }
-
 }

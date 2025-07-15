@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SharedWorker {
@@ -10,7 +7,9 @@ pub struct SharedWorker {
 }
 impl FromVal for SharedWorker {
     fn from_val(v: &emlite::Val) -> Self {
-        SharedWorker { inner: EventTarget::from_val(v) }
+        SharedWorker {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SharedWorker {
 }
 impl AsMut<emlite::Val> for SharedWorker {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SharedWorker> for emlite::Val {
     fn from(s: SharedWorker) -> emlite::Val {
@@ -49,27 +48,27 @@ impl From<SharedWorker> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SharedWorker);
 
-
-
 impl SharedWorker {
     pub fn new0(script_url: Any) -> SharedWorker {
         Self {
-            inner: emlite::Val::global("SharedWorker").new(&[script_url.into()]).as_::<EventTarget>(),
+            inner: emlite::Val::global("SharedWorker")
+                .new(&[script_url.into()])
+                .as_::<EventTarget>(),
         }
     }
 
     pub fn new1(script_url: Any, options: Any) -> SharedWorker {
         Self {
-            inner: emlite::Val::global("SharedWorker").new(&[script_url.into(), options.into()]).as_::<EventTarget>(),
+            inner: emlite::Val::global("SharedWorker")
+                .new(&[script_url.into(), options.into()])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl SharedWorker {
     pub fn port(&self) -> Any {
         self.inner.get("port").as_::<Any>()
     }
-
 }
 impl SharedWorker {
     pub fn onerror(&self) -> Any {
@@ -79,5 +78,4 @@ impl SharedWorker {
     pub fn set_onerror(&mut self, value: Any) {
         self.inner.set("onerror", value);
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct LanguageDetectorCreateOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for LanguageDetectorCreateOptions {
 }
 impl AsMut<emlite::Val> for LanguageDetectorCreateOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<LanguageDetectorCreateOptions> for emlite::Val {
     fn from(s: LanguageDetectorCreateOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl LanguageDetectorCreateOptions {
     pub fn set_signal(&mut self, value: AbortSignal) {
         self.inner.set("signal", value);
     }
-
 }
 impl LanguageDetectorCreateOptions {
     pub fn monitor(&self) -> Function {
@@ -66,7 +62,6 @@ impl LanguageDetectorCreateOptions {
     pub fn set_monitor(&mut self, value: Function) {
         self.inner.set("monitor", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -102,8 +97,8 @@ impl AsRef<emlite::Val> for LanguageDetectorCreateCoreOptions {
 }
 impl AsMut<emlite::Val> for LanguageDetectorCreateCoreOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<LanguageDetectorCreateCoreOptions> for emlite::Val {
     fn from(s: LanguageDetectorCreateCoreOptions) -> emlite::Val {
@@ -115,13 +110,14 @@ impl From<LanguageDetectorCreateCoreOptions> for emlite::Val {
 
 impl LanguageDetectorCreateCoreOptions {
     pub fn expected_input_languages(&self) -> Sequence<DOMString> {
-        self.inner.get("expectedInputLanguages").as_::<Sequence<DOMString>>()
+        self.inner
+            .get("expectedInputLanguages")
+            .as_::<Sequence<DOMString>>()
     }
 
     pub fn set_expected_input_languages(&mut self, value: Sequence<DOMString>) {
         self.inner.set("expectedInputLanguages", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -157,8 +153,8 @@ impl AsRef<emlite::Val> for LanguageDetectionResult {
 }
 impl AsMut<emlite::Val> for LanguageDetectionResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<LanguageDetectionResult> for emlite::Val {
     fn from(s: LanguageDetectionResult) -> emlite::Val {
@@ -176,7 +172,6 @@ impl LanguageDetectionResult {
     pub fn set_detected_language(&mut self, value: DOMString) {
         self.inner.set("detectedLanguage", value);
     }
-
 }
 impl LanguageDetectionResult {
     pub fn confidence(&self) -> f64 {
@@ -186,7 +181,6 @@ impl LanguageDetectionResult {
     pub fn set_confidence(&mut self, value: f64) {
         self.inner.set("confidence", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -222,8 +216,8 @@ impl AsRef<emlite::Val> for LanguageDetectorDetectOptions {
 }
 impl AsMut<emlite::Val> for LanguageDetectorDetectOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<LanguageDetectorDetectOptions> for emlite::Val {
     fn from(s: LanguageDetectorDetectOptions) -> emlite::Val {
@@ -241,7 +235,6 @@ impl LanguageDetectorDetectOptions {
     pub fn set_signal(&mut self, value: AbortSignal) {
         self.inner.set("signal", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -250,7 +243,9 @@ pub struct LanguageDetector {
 }
 impl FromVal for LanguageDetector {
     fn from_val(v: &emlite::Val) -> Self {
-        LanguageDetector { inner: emlite::Val::from_val(v) }
+        LanguageDetector {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -277,8 +272,8 @@ impl AsRef<emlite::Val> for LanguageDetector {
 }
 impl AsMut<emlite::Val> for LanguageDetector {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<LanguageDetector> for emlite::Val {
     fn from(s: LanguageDetector) -> emlite::Val {
@@ -289,62 +284,74 @@ impl From<LanguageDetector> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(LanguageDetector);
 
-
 impl LanguageDetector {
     pub fn create0() -> Promise {
-        emlite::Val::global("languagedetector").call("create", &[]).as_::<Promise>()
+        emlite::Val::global("LanguageDetector")
+            .call("create", &[])
+            .as_::<Promise>()
     }
 
     pub fn create1(options: LanguageDetectorCreateOptions) -> Promise {
-        emlite::Val::global("languagedetector").call("create", &[options.into(), ]).as_::<Promise>()
+        emlite::Val::global("LanguageDetector")
+            .call("create", &[options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl LanguageDetector {
     pub fn availability0() -> Promise {
-        emlite::Val::global("languagedetector").call("availability", &[]).as_::<Promise>()
+        emlite::Val::global("LanguageDetector")
+            .call("availability", &[])
+            .as_::<Promise>()
     }
 
     pub fn availability1(options: LanguageDetectorCreateCoreOptions) -> Promise {
-        emlite::Val::global("languagedetector").call("availability", &[options.into(), ]).as_::<Promise>()
+        emlite::Val::global("LanguageDetector")
+            .call("availability", &[options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl LanguageDetector {
     pub fn detect0(&self, input: DOMString) -> Promise {
-        self.inner.call("detect", &[input.into(), ]).as_::<Promise>()
+        self.inner.call("detect", &[input.into()]).as_::<Promise>()
     }
 
     pub fn detect1(&self, input: DOMString, options: LanguageDetectorDetectOptions) -> Promise {
-        self.inner.call("detect", &[input.into(), options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("detect", &[input.into(), options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl LanguageDetector {
     pub fn expected_input_languages(&self) -> FrozenArray<DOMString> {
-        self.inner.get("expectedInputLanguages").as_::<FrozenArray<DOMString>>()
+        self.inner
+            .get("expectedInputLanguages")
+            .as_::<FrozenArray<DOMString>>()
     }
-
 }
 impl LanguageDetector {
     pub fn measure_input_usage0(&self, input: DOMString) -> Promise {
-        self.inner.call("measureInputUsage", &[input.into(), ]).as_::<Promise>()
+        self.inner
+            .call("measureInputUsage", &[input.into()])
+            .as_::<Promise>()
     }
 
-    pub fn measure_input_usage1(&self, input: DOMString, options: LanguageDetectorDetectOptions) -> Promise {
-        self.inner.call("measureInputUsage", &[input.into(), options.into(), ]).as_::<Promise>()
+    pub fn measure_input_usage1(
+        &self,
+        input: DOMString,
+        options: LanguageDetectorDetectOptions,
+    ) -> Promise {
+        self.inner
+            .call("measureInputUsage", &[input.into(), options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl LanguageDetector {
     pub fn input_quota(&self) -> f64 {
         self.inner.get("inputQuota").as_::<f64>()
     }
-
 }
 impl LanguageDetector {
-    pub fn destroy(&self, ) -> Undefined {
+    pub fn destroy(&self) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
     }
-
 }

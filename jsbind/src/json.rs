@@ -7,7 +7,6 @@ use emlite::FromVal;
 pub struct JSON;
 
 impl JSON {
-    /// Internal helper to grab `globalThis.JSON`.
     #[inline]
     fn obj() -> emlite::Val {
         emlite::Val::global("JSON")

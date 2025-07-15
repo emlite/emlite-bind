@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLFrameSetElement {
@@ -10,7 +7,9 @@ pub struct HTMLFrameSetElement {
 }
 impl FromVal for HTMLFrameSetElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLFrameSetElement { inner: HTMLElement::from_val(v) }
+        HTMLFrameSetElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLFrameSetElement {
 }
 impl AsMut<emlite::Val> for HTMLFrameSetElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLFrameSetElement> for emlite::Val {
     fn from(s: HTMLFrameSetElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLFrameSetElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLFrameSetElement);
 
-
-
 impl HTMLFrameSetElement {
     pub fn new() -> HTMLFrameSetElement {
         Self {
-            inner: emlite::Val::global("HTMLFrameSetElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLFrameSetElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLFrameSetElement {
     pub fn cols(&self) -> DOMString {
@@ -67,7 +65,6 @@ impl HTMLFrameSetElement {
     pub fn set_cols(&mut self, value: DOMString) {
         self.inner.set("cols", value);
     }
-
 }
 impl HTMLFrameSetElement {
     pub fn rows(&self) -> DOMString {
@@ -77,7 +74,6 @@ impl HTMLFrameSetElement {
     pub fn set_rows(&mut self, value: DOMString) {
         self.inner.set("rows", value);
     }
-
 }
 impl HTMLFrameSetElement {
     pub fn onportalactivate(&self) -> Any {
@@ -87,5 +83,4 @@ impl HTMLFrameSetElement {
     pub fn set_onportalactivate(&mut self, value: Any) {
         self.inner.set("onportalactivate", value);
     }
-
 }

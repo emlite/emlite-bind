@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FocusOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for FocusOptions {
 }
 impl AsMut<emlite::Val> for FocusOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<FocusOptions> for emlite::Val {
     fn from(s: FocusOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl FocusOptions {
     pub fn set_prevent_scroll(&mut self, value: bool) {
         self.inner.set("preventScroll", value);
     }
-
 }
 impl FocusOptions {
     pub fn focus_visible(&self) -> bool {
@@ -66,7 +62,6 @@ impl FocusOptions {
     pub fn set_focus_visible(&mut self, value: bool) {
         self.inner.set("focusVisible", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -75,7 +70,9 @@ pub struct SVGElement {
 }
 impl FromVal for SVGElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGElement { inner: Element::from_val(v) }
+        SVGElement {
+            inner: Element::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -102,8 +99,8 @@ impl AsRef<emlite::Val> for SVGElement {
 }
 impl AsMut<emlite::Val> for SVGElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGElement> for emlite::Val {
     fn from(s: SVGElement) -> emlite::Val {
@@ -114,24 +111,20 @@ impl From<SVGElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGElement);
 
-
 impl SVGElement {
     pub fn class_name(&self) -> SVGAnimatedString {
         self.inner.get("className").as_::<SVGAnimatedString>()
     }
-
 }
 impl SVGElement {
     pub fn owner_svg_element(&self) -> SVGSVGElement {
         self.inner.get("ownerSVGElement").as_::<SVGSVGElement>()
     }
-
 }
 impl SVGElement {
     pub fn viewport_element(&self) -> SVGElement {
         self.inner.get("viewportElement").as_::<SVGElement>()
     }
-
 }
 impl SVGElement {
     pub fn onbeforexrselect(&self) -> Any {
@@ -141,25 +134,23 @@ impl SVGElement {
     pub fn set_onbeforexrselect(&mut self, value: Any) {
         self.inner.set("onbeforexrselect", value);
     }
-
 }
 impl SVGElement {
     pub fn corresponding_element(&self) -> SVGElement {
         self.inner.get("correspondingElement").as_::<SVGElement>()
     }
-
 }
 impl SVGElement {
     pub fn corresponding_use_element(&self) -> SVGUseElement {
-        self.inner.get("correspondingUseElement").as_::<SVGUseElement>()
+        self.inner
+            .get("correspondingUseElement")
+            .as_::<SVGUseElement>()
     }
-
 }
 impl SVGElement {
     pub fn dataset(&self) -> DOMStringMap {
         self.inner.get("dataset").as_::<DOMStringMap>()
     }
-
 }
 impl SVGElement {
     pub fn nonce(&self) -> DOMString {
@@ -169,7 +160,6 @@ impl SVGElement {
     pub fn set_nonce(&mut self, value: DOMString) {
         self.inner.set("nonce", value);
     }
-
 }
 impl SVGElement {
     pub fn autofocus(&self) -> bool {
@@ -179,7 +169,6 @@ impl SVGElement {
     pub fn set_autofocus(&mut self, value: bool) {
         self.inner.set("autofocus", value);
     }
-
 }
 impl SVGElement {
     pub fn tab_index(&self) -> i32 {
@@ -189,27 +178,25 @@ impl SVGElement {
     pub fn set_tab_index(&mut self, value: i32) {
         self.inner.set("tabIndex", value);
     }
-
 }
 impl SVGElement {
-    pub fn focus0(&self, ) -> Undefined {
+    pub fn focus0(&self) -> Undefined {
         self.inner.call("focus", &[]).as_::<Undefined>()
     }
 
     pub fn focus1(&self, options: FocusOptions) -> Undefined {
-        self.inner.call("focus", &[options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("focus", &[options.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl SVGElement {
-    pub fn blur(&self, ) -> Undefined {
+    pub fn blur(&self) -> Undefined {
         self.inner.call("blur", &[]).as_::<Undefined>()
     }
-
 }
 impl SVGElement {
     pub fn style(&self) -> CSSStyleDeclaration {
         self.inner.get("style").as_::<CSSStyleDeclaration>()
     }
-
 }

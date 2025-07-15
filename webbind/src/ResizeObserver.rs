@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ResizeObserverOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for ResizeObserverOptions {
 }
 impl AsMut<emlite::Val> for ResizeObserverOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ResizeObserverOptions> for emlite::Val {
     fn from(s: ResizeObserverOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl ResizeObserverOptions {
     pub fn set_box_(&mut self, value: ResizeObserverBoxOptions) {
         self.inner.set("box", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -65,7 +61,9 @@ pub struct ResizeObserver {
 }
 impl FromVal for ResizeObserver {
     fn from_val(v: &emlite::Val) -> Self {
-        ResizeObserver { inner: emlite::Val::from_val(v) }
+        ResizeObserver {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -92,8 +90,8 @@ impl AsRef<emlite::Val> for ResizeObserver {
 }
 impl AsMut<emlite::Val> for ResizeObserver {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ResizeObserver> for emlite::Val {
     fn from(s: ResizeObserver) -> emlite::Val {
@@ -104,35 +102,37 @@ impl From<ResizeObserver> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ResizeObserver);
 
-
-
 impl ResizeObserver {
     pub fn new(callback: Function) -> ResizeObserver {
         Self {
-            inner: emlite::Val::global("ResizeObserver").new(&[callback.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("ResizeObserver")
+                .new(&[callback.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl ResizeObserver {
     pub fn observe0(&self, target: Element) -> Undefined {
-        self.inner.call("observe", &[target.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("observe", &[target.into()])
+            .as_::<Undefined>()
     }
 
     pub fn observe1(&self, target: Element, options: ResizeObserverOptions) -> Undefined {
-        self.inner.call("observe", &[target.into(), options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("observe", &[target.into(), options.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl ResizeObserver {
     pub fn unobserve(&self, target: Element) -> Undefined {
-        self.inner.call("unobserve", &[target.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("unobserve", &[target.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl ResizeObserver {
-    pub fn disconnect(&self, ) -> Undefined {
+    pub fn disconnect(&self) -> Undefined {
         self.inner.call("disconnect", &[]).as_::<Undefined>()
     }
-
 }

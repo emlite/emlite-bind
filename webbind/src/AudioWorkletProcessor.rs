@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioWorkletProcessor {
@@ -10,7 +7,9 @@ pub struct AudioWorkletProcessor {
 }
 impl FromVal for AudioWorkletProcessor {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioWorkletProcessor { inner: emlite::Val::from_val(v) }
+        AudioWorkletProcessor {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for AudioWorkletProcessor {
 }
 impl AsMut<emlite::Val> for AudioWorkletProcessor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AudioWorkletProcessor> for emlite::Val {
     fn from(s: AudioWorkletProcessor) -> emlite::Val {
@@ -49,19 +48,17 @@ impl From<AudioWorkletProcessor> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AudioWorkletProcessor);
 
-
-
 impl AudioWorkletProcessor {
     pub fn new() -> AudioWorkletProcessor {
         Self {
-            inner: emlite::Val::global("AudioWorkletProcessor").new(&[]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("AudioWorkletProcessor")
+                .new(&[])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl AudioWorkletProcessor {
     pub fn port(&self) -> Any {
         self.inner.get("port").as_::<Any>()
     }
-
 }

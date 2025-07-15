@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRMediaQuadLayerInit {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for XRMediaQuadLayerInit {
 }
 impl AsMut<emlite::Val> for XRMediaQuadLayerInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRMediaQuadLayerInit> for emlite::Val {
     fn from(s: XRMediaQuadLayerInit) -> emlite::Val {
@@ -56,7 +53,6 @@ impl XRMediaQuadLayerInit {
     pub fn set_transform(&mut self, value: XRRigidTransform) {
         self.inner.set("transform", value);
     }
-
 }
 impl XRMediaQuadLayerInit {
     pub fn width(&self) -> f32 {
@@ -66,7 +62,6 @@ impl XRMediaQuadLayerInit {
     pub fn set_width(&mut self, value: f32) {
         self.inner.set("width", value);
     }
-
 }
 impl XRMediaQuadLayerInit {
     pub fn height(&self) -> f32 {
@@ -76,7 +71,6 @@ impl XRMediaQuadLayerInit {
     pub fn set_height(&mut self, value: f32) {
         self.inner.set("height", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -112,8 +106,8 @@ impl AsRef<emlite::Val> for XRMediaCylinderLayerInit {
 }
 impl AsMut<emlite::Val> for XRMediaCylinderLayerInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRMediaCylinderLayerInit> for emlite::Val {
     fn from(s: XRMediaCylinderLayerInit) -> emlite::Val {
@@ -131,7 +125,6 @@ impl XRMediaCylinderLayerInit {
     pub fn set_transform(&mut self, value: XRRigidTransform) {
         self.inner.set("transform", value);
     }
-
 }
 impl XRMediaCylinderLayerInit {
     pub fn radius(&self) -> f32 {
@@ -141,7 +134,6 @@ impl XRMediaCylinderLayerInit {
     pub fn set_radius(&mut self, value: f32) {
         self.inner.set("radius", value);
     }
-
 }
 impl XRMediaCylinderLayerInit {
     pub fn central_angle(&self) -> f32 {
@@ -151,7 +143,6 @@ impl XRMediaCylinderLayerInit {
     pub fn set_central_angle(&mut self, value: f32) {
         self.inner.set("centralAngle", value);
     }
-
 }
 impl XRMediaCylinderLayerInit {
     pub fn aspect_ratio(&self) -> f32 {
@@ -161,7 +152,6 @@ impl XRMediaCylinderLayerInit {
     pub fn set_aspect_ratio(&mut self, value: f32) {
         self.inner.set("aspectRatio", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -197,8 +187,8 @@ impl AsRef<emlite::Val> for XRMediaEquirectLayerInit {
 }
 impl AsMut<emlite::Val> for XRMediaEquirectLayerInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRMediaEquirectLayerInit> for emlite::Val {
     fn from(s: XRMediaEquirectLayerInit) -> emlite::Val {
@@ -216,7 +206,6 @@ impl XRMediaEquirectLayerInit {
     pub fn set_transform(&mut self, value: XRRigidTransform) {
         self.inner.set("transform", value);
     }
-
 }
 impl XRMediaEquirectLayerInit {
     pub fn radius(&self) -> f32 {
@@ -226,7 +215,6 @@ impl XRMediaEquirectLayerInit {
     pub fn set_radius(&mut self, value: f32) {
         self.inner.set("radius", value);
     }
-
 }
 impl XRMediaEquirectLayerInit {
     pub fn central_horizontal_angle(&self) -> f32 {
@@ -236,7 +224,6 @@ impl XRMediaEquirectLayerInit {
     pub fn set_central_horizontal_angle(&mut self, value: f32) {
         self.inner.set("centralHorizontalAngle", value);
     }
-
 }
 impl XRMediaEquirectLayerInit {
     pub fn upper_vertical_angle(&self) -> f32 {
@@ -246,7 +233,6 @@ impl XRMediaEquirectLayerInit {
     pub fn set_upper_vertical_angle(&mut self, value: f32) {
         self.inner.set("upperVerticalAngle", value);
     }
-
 }
 impl XRMediaEquirectLayerInit {
     pub fn lower_vertical_angle(&self) -> f32 {
@@ -256,7 +242,6 @@ impl XRMediaEquirectLayerInit {
     pub fn set_lower_vertical_angle(&mut self, value: f32) {
         self.inner.set("lowerVerticalAngle", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -265,7 +250,9 @@ pub struct XRMediaBinding {
 }
 impl FromVal for XRMediaBinding {
     fn from_val(v: &emlite::Val) -> Self {
-        XRMediaBinding { inner: emlite::Val::from_val(v) }
+        XRMediaBinding {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -292,8 +279,8 @@ impl AsRef<emlite::Val> for XRMediaBinding {
 }
 impl AsMut<emlite::Val> for XRMediaBinding {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRMediaBinding> for emlite::Val {
     fn from(s: XRMediaBinding) -> emlite::Val {
@@ -304,43 +291,63 @@ impl From<XRMediaBinding> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRMediaBinding);
 
-
-
 impl XRMediaBinding {
     pub fn new(session: XRSession) -> XRMediaBinding {
         Self {
-            inner: emlite::Val::global("XRMediaBinding").new(&[session.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("XRMediaBinding")
+                .new(&[session.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl XRMediaBinding {
     pub fn create_quad_layer0(&self, video: HTMLVideoElement) -> XRQuadLayer {
-        self.inner.call("createQuadLayer", &[video.into(), ]).as_::<XRQuadLayer>()
+        self.inner
+            .call("createQuadLayer", &[video.into()])
+            .as_::<XRQuadLayer>()
     }
 
-    pub fn create_quad_layer1(&self, video: HTMLVideoElement, init: XRMediaQuadLayerInit) -> XRQuadLayer {
-        self.inner.call("createQuadLayer", &[video.into(), init.into(), ]).as_::<XRQuadLayer>()
+    pub fn create_quad_layer1(
+        &self,
+        video: HTMLVideoElement,
+        init: XRMediaQuadLayerInit,
+    ) -> XRQuadLayer {
+        self.inner
+            .call("createQuadLayer", &[video.into(), init.into()])
+            .as_::<XRQuadLayer>()
     }
-
 }
 impl XRMediaBinding {
     pub fn create_cylinder_layer0(&self, video: HTMLVideoElement) -> XRCylinderLayer {
-        self.inner.call("createCylinderLayer", &[video.into(), ]).as_::<XRCylinderLayer>()
+        self.inner
+            .call("createCylinderLayer", &[video.into()])
+            .as_::<XRCylinderLayer>()
     }
 
-    pub fn create_cylinder_layer1(&self, video: HTMLVideoElement, init: XRMediaCylinderLayerInit) -> XRCylinderLayer {
-        self.inner.call("createCylinderLayer", &[video.into(), init.into(), ]).as_::<XRCylinderLayer>()
+    pub fn create_cylinder_layer1(
+        &self,
+        video: HTMLVideoElement,
+        init: XRMediaCylinderLayerInit,
+    ) -> XRCylinderLayer {
+        self.inner
+            .call("createCylinderLayer", &[video.into(), init.into()])
+            .as_::<XRCylinderLayer>()
     }
-
 }
 impl XRMediaBinding {
     pub fn create_equirect_layer0(&self, video: HTMLVideoElement) -> XREquirectLayer {
-        self.inner.call("createEquirectLayer", &[video.into(), ]).as_::<XREquirectLayer>()
+        self.inner
+            .call("createEquirectLayer", &[video.into()])
+            .as_::<XREquirectLayer>()
     }
 
-    pub fn create_equirect_layer1(&self, video: HTMLVideoElement, init: XRMediaEquirectLayerInit) -> XREquirectLayer {
-        self.inner.call("createEquirectLayer", &[video.into(), init.into(), ]).as_::<XREquirectLayer>()
+    pub fn create_equirect_layer1(
+        &self,
+        video: HTMLVideoElement,
+        init: XRMediaEquirectLayerInit,
+    ) -> XREquirectLayer {
+        self.inner
+            .call("createEquirectLayer", &[video.into(), init.into()])
+            .as_::<XREquirectLayer>()
     }
-
 }

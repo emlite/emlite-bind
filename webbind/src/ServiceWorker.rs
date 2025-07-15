@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ServiceWorker {
@@ -10,7 +7,9 @@ pub struct ServiceWorker {
 }
 impl FromVal for ServiceWorker {
     fn from_val(v: &emlite::Val) -> Self {
-        ServiceWorker { inner: EventTarget::from_val(v) }
+        ServiceWorker {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for ServiceWorker {
 }
 impl AsMut<emlite::Val> for ServiceWorker {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ServiceWorker> for emlite::Val {
     fn from(s: ServiceWorker) -> emlite::Val {
@@ -49,28 +48,28 @@ impl From<ServiceWorker> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ServiceWorker);
 
-
 impl ServiceWorker {
     pub fn script_url(&self) -> USVString {
         self.inner.get("scriptURL").as_::<USVString>()
     }
-
 }
 impl ServiceWorker {
     pub fn state(&self) -> ServiceWorkerState {
         self.inner.get("state").as_::<ServiceWorkerState>()
     }
-
 }
 impl ServiceWorker {
     pub fn post_message0(&self, message: Any) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
     }
 
     pub fn post_message1(&self, message: Any, options: StructuredSerializeOptions) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl ServiceWorker {
     pub fn onstatechange(&self) -> Any {
@@ -80,7 +79,6 @@ impl ServiceWorker {
     pub fn set_onstatechange(&mut self, value: Any) {
         self.inner.set("onstatechange", value);
     }
-
 }
 impl ServiceWorker {
     pub fn onerror(&self) -> Any {
@@ -90,5 +88,4 @@ impl ServiceWorker {
     pub fn set_onerror(&mut self, value: Any) {
         self.inner.set("onerror", value);
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct InterestGroupReportingScriptRunnerGlobalScope {
@@ -10,7 +7,9 @@ pub struct InterestGroupReportingScriptRunnerGlobalScope {
 }
 impl FromVal for InterestGroupReportingScriptRunnerGlobalScope {
     fn from_val(v: &emlite::Val) -> Self {
-        InterestGroupReportingScriptRunnerGlobalScope { inner: InterestGroupScriptRunnerGlobalScope::from_val(v) }
+        InterestGroupReportingScriptRunnerGlobalScope {
+            inner: InterestGroupScriptRunnerGlobalScope::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for InterestGroupReportingScriptRunnerGlobalScope {
 }
 impl AsMut<emlite::Val> for InterestGroupReportingScriptRunnerGlobalScope {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<InterestGroupReportingScriptRunnerGlobalScope> for emlite::Val {
     fn from(s: InterestGroupReportingScriptRunnerGlobalScope) -> emlite::Val {
@@ -49,22 +48,24 @@ impl From<InterestGroupReportingScriptRunnerGlobalScope> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(InterestGroupReportingScriptRunnerGlobalScope);
 
-
 impl InterestGroupReportingScriptRunnerGlobalScope {
     pub fn send_report_to(&self, url: DOMString) -> Undefined {
-        self.inner.call("sendReportTo", &[url.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("sendReportTo", &[url.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl InterestGroupReportingScriptRunnerGlobalScope {
     pub fn register_ad_beacon(&self, map: Record<DOMString, USVString>) -> Undefined {
-        self.inner.call("registerAdBeacon", &[map.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("registerAdBeacon", &[map.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl InterestGroupReportingScriptRunnerGlobalScope {
     pub fn register_ad_macro(&self, name: DOMString, value: USVString) -> Undefined {
-        self.inner.call("registerAdMacro", &[name.into(), value.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("registerAdMacro", &[name.into(), value.into()])
+            .as_::<Undefined>()
     }
-
 }

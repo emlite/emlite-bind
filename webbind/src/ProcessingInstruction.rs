@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ProcessingInstruction {
@@ -10,7 +7,9 @@ pub struct ProcessingInstruction {
 }
 impl FromVal for ProcessingInstruction {
     fn from_val(v: &emlite::Val) -> Self {
-        ProcessingInstruction { inner: CharacterData::from_val(v) }
+        ProcessingInstruction {
+            inner: CharacterData::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for ProcessingInstruction {
 }
 impl AsMut<emlite::Val> for ProcessingInstruction {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ProcessingInstruction> for emlite::Val {
     fn from(s: ProcessingInstruction) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<ProcessingInstruction> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ProcessingInstruction);
 
-
 impl ProcessingInstruction {
     pub fn target(&self) -> DOMString {
         self.inner.get("target").as_::<DOMString>()
     }
-
 }
 impl ProcessingInstruction {
     pub fn sheet(&self) -> CSSStyleSheet {
         self.inner.get("sheet").as_::<CSSStyleSheet>()
     }
-
 }

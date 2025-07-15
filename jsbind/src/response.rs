@@ -1,12 +1,14 @@
 use crate::utils::*;
 use crate::{any::Any, promise::Promise};
 
-/// JavaScript `Response` object returned by `fetch`.
+/// JavaScript `Response` object returned by `fetch`. There is also a Response object in webbind.
+/// This requires a javascript runtime which supports Response and fetch!
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Response {
     inner: emlite::Val,
 }
+
 bind!(Response);
 impl_dyn_cast!(Response);
 

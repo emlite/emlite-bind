@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLPreElement {
@@ -10,7 +7,9 @@ pub struct HTMLPreElement {
 }
 impl FromVal for HTMLPreElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLPreElement { inner: HTMLElement::from_val(v) }
+        HTMLPreElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLPreElement {
 }
 impl AsMut<emlite::Val> for HTMLPreElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLPreElement> for emlite::Val {
     fn from(s: HTMLPreElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLPreElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLPreElement);
 
-
-
 impl HTMLPreElement {
     pub fn new() -> HTMLPreElement {
         Self {
-            inner: emlite::Val::global("HTMLPreElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLPreElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLPreElement {
     pub fn width(&self) -> i32 {
@@ -67,5 +65,4 @@ impl HTMLPreElement {
     pub fn set_width(&mut self, value: i32) {
         self.inner.set("width", value);
     }
-
 }

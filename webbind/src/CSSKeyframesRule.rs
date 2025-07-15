@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSKeyframesRule {
@@ -10,7 +7,9 @@ pub struct CSSKeyframesRule {
 }
 impl FromVal for CSSKeyframesRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSKeyframesRule { inner: CSSRule::from_val(v) }
+        CSSKeyframesRule {
+            inner: CSSRule::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSKeyframesRule {
 }
 impl AsMut<emlite::Val> for CSSKeyframesRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSKeyframesRule> for emlite::Val {
     fn from(s: CSSKeyframesRule) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<CSSKeyframesRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSKeyframesRule);
 
-
 impl CSSKeyframesRule {
     pub fn name(&self) -> CSSOMString {
         self.inner.get("name").as_::<CSSOMString>()
@@ -58,35 +56,35 @@ impl CSSKeyframesRule {
     pub fn set_name(&mut self, value: CSSOMString) {
         self.inner.set("name", value);
     }
-
 }
 impl CSSKeyframesRule {
     pub fn css_rules(&self) -> CSSRuleList {
         self.inner.get("cssRules").as_::<CSSRuleList>()
     }
-
 }
 impl CSSKeyframesRule {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl CSSKeyframesRule {
     pub fn append_rule(&self, rule: CSSOMString) -> Undefined {
-        self.inner.call("appendRule", &[rule.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("appendRule", &[rule.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl CSSKeyframesRule {
     pub fn delete_rule(&self, select: CSSOMString) -> Undefined {
-        self.inner.call("deleteRule", &[select.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("deleteRule", &[select.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl CSSKeyframesRule {
     pub fn find_rule(&self, select: CSSOMString) -> CSSKeyframeRule {
-        self.inner.call("findRule", &[select.into(), ]).as_::<CSSKeyframeRule>()
+        self.inner
+            .call("findRule", &[select.into()])
+            .as_::<CSSKeyframeRule>()
     }
-
 }

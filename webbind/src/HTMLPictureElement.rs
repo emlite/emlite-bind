@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLPictureElement {
@@ -10,7 +7,9 @@ pub struct HTMLPictureElement {
 }
 impl FromVal for HTMLPictureElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLPictureElement { inner: HTMLElement::from_val(v) }
+        HTMLPictureElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLPictureElement {
 }
 impl AsMut<emlite::Val> for HTMLPictureElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLPictureElement> for emlite::Val {
     fn from(s: HTMLPictureElement) -> emlite::Val {
@@ -49,13 +48,12 @@ impl From<HTMLPictureElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLPictureElement);
 
-
-
 impl HTMLPictureElement {
     pub fn new() -> HTMLPictureElement {
         Self {
-            inner: emlite::Val::global("HTMLPictureElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLPictureElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }

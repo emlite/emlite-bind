@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ViewTimeline {
@@ -10,7 +7,9 @@ pub struct ViewTimeline {
 }
 impl FromVal for ViewTimeline {
     fn from_val(v: &emlite::Val) -> Self {
-        ViewTimeline { inner: ScrollTimeline::from_val(v) }
+        ViewTimeline {
+            inner: ScrollTimeline::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for ViewTimeline {
 }
 impl AsMut<emlite::Val> for ViewTimeline {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ViewTimeline> for emlite::Val {
     fn from(s: ViewTimeline) -> emlite::Val {
@@ -49,37 +48,35 @@ impl From<ViewTimeline> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ViewTimeline);
 
-
-
 impl ViewTimeline {
     pub fn new0() -> ViewTimeline {
         Self {
-            inner: emlite::Val::global("ViewTimeline").new(&[]).as_::<ScrollTimeline>(),
+            inner: emlite::Val::global("ViewTimeline")
+                .new(&[])
+                .as_::<ScrollTimeline>(),
         }
     }
 
     pub fn new1(options: Any) -> ViewTimeline {
         Self {
-            inner: emlite::Val::global("ViewTimeline").new(&[options.into()]).as_::<ScrollTimeline>(),
+            inner: emlite::Val::global("ViewTimeline")
+                .new(&[options.into()])
+                .as_::<ScrollTimeline>(),
         }
     }
-
 }
 impl ViewTimeline {
     pub fn subject(&self) -> Element {
         self.inner.get("subject").as_::<Element>()
     }
-
 }
 impl ViewTimeline {
     pub fn start_offset(&self) -> CSSNumericValue {
         self.inner.get("startOffset").as_::<CSSNumericValue>()
     }
-
 }
 impl ViewTimeline {
     pub fn end_offset(&self) -> CSSNumericValue {
         self.inner.get("endOffset").as_::<CSSNumericValue>()
     }
-
 }

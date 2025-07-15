@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PresentationConnectionCloseEvent {
@@ -10,7 +7,9 @@ pub struct PresentationConnectionCloseEvent {
 }
 impl FromVal for PresentationConnectionCloseEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        PresentationConnectionCloseEvent { inner: Event::from_val(v) }
+        PresentationConnectionCloseEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PresentationConnectionCloseEvent {
 }
 impl AsMut<emlite::Val> for PresentationConnectionCloseEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PresentationConnectionCloseEvent> for emlite::Val {
     fn from(s: PresentationConnectionCloseEvent) -> emlite::Val {
@@ -49,25 +48,24 @@ impl From<PresentationConnectionCloseEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PresentationConnectionCloseEvent);
 
-
-
 impl PresentationConnectionCloseEvent {
     pub fn new(type_: DOMString, event_init_dict: Any) -> PresentationConnectionCloseEvent {
         Self {
-            inner: emlite::Val::global("PresentationConnectionCloseEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("PresentationConnectionCloseEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl PresentationConnectionCloseEvent {
     pub fn reason(&self) -> PresentationConnectionCloseReason {
-        self.inner.get("reason").as_::<PresentationConnectionCloseReason>()
+        self.inner
+            .get("reason")
+            .as_::<PresentationConnectionCloseReason>()
     }
-
 }
 impl PresentationConnectionCloseEvent {
     pub fn message(&self) -> DOMString {
         self.inner.get("message").as_::<DOMString>()
     }
-
 }

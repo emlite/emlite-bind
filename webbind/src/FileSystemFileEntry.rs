@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileSystemFileEntry {
@@ -10,7 +7,9 @@ pub struct FileSystemFileEntry {
 }
 impl FromVal for FileSystemFileEntry {
     fn from_val(v: &emlite::Val) -> Self {
-        FileSystemFileEntry { inner: FileSystemEntry::from_val(v) }
+        FileSystemFileEntry {
+            inner: FileSystemEntry::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for FileSystemFileEntry {
 }
 impl AsMut<emlite::Val> for FileSystemFileEntry {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<FileSystemFileEntry> for emlite::Val {
     fn from(s: FileSystemFileEntry) -> emlite::Val {
@@ -49,14 +48,16 @@ impl From<FileSystemFileEntry> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FileSystemFileEntry);
 
-
 impl FileSystemFileEntry {
     pub fn file0(&self, success_callback: Function) -> Undefined {
-        self.inner.call("file", &[success_callback.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("file", &[success_callback.into()])
+            .as_::<Undefined>()
     }
 
     pub fn file1(&self, success_callback: Function, error_callback: Function) -> Undefined {
-        self.inner.call("file", &[success_callback.into(), error_callback.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("file", &[success_callback.into(), error_callback.into()])
+            .as_::<Undefined>()
     }
-
 }

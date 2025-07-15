@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct UIEvent {
@@ -10,7 +7,9 @@ pub struct UIEvent {
 }
 impl FromVal for UIEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        UIEvent { inner: Event::from_val(v) }
+        UIEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for UIEvent {
 }
 impl AsMut<emlite::Val> for UIEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<UIEvent> for emlite::Val {
     fn from(s: UIEvent) -> emlite::Val {
@@ -49,65 +48,111 @@ impl From<UIEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(UIEvent);
 
-
-
 impl UIEvent {
     pub fn new0(type_: DOMString) -> UIEvent {
         Self {
-            inner: emlite::Val::global("UIEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: emlite::Val::global("UIEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     pub fn new1(type_: DOMString, event_init_dict: Any) -> UIEvent {
         Self {
-            inner: emlite::Val::global("UIEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("UIEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl UIEvent {
     pub fn view(&self) -> Window {
         self.inner.get("view").as_::<Window>()
     }
-
 }
 impl UIEvent {
     pub fn detail(&self) -> i32 {
         self.inner.get("detail").as_::<i32>()
     }
-
 }
 impl UIEvent {
     pub fn source_capabilities(&self) -> InputDeviceCapabilities {
-        self.inner.get("sourceCapabilities").as_::<InputDeviceCapabilities>()
+        self.inner
+            .get("sourceCapabilities")
+            .as_::<InputDeviceCapabilities>()
     }
-
 }
 impl UIEvent {
     pub fn init_ui_event0(&self, type_arg: DOMString) -> Undefined {
-        self.inner.call("initUIEvent", &[type_arg.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("initUIEvent", &[type_arg.into()])
+            .as_::<Undefined>()
     }
 
     pub fn init_ui_event1(&self, type_arg: DOMString, bubbles_arg: bool) -> Undefined {
-        self.inner.call("initUIEvent", &[type_arg.into(), bubbles_arg.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("initUIEvent", &[type_arg.into(), bubbles_arg.into()])
+            .as_::<Undefined>()
     }
 
-    pub fn init_ui_event2(&self, type_arg: DOMString, bubbles_arg: bool, cancelable_arg: bool) -> Undefined {
-        self.inner.call("initUIEvent", &[type_arg.into(), bubbles_arg.into(), cancelable_arg.into(), ]).as_::<Undefined>()
+    pub fn init_ui_event2(
+        &self,
+        type_arg: DOMString,
+        bubbles_arg: bool,
+        cancelable_arg: bool,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "initUIEvent",
+                &[type_arg.into(), bubbles_arg.into(), cancelable_arg.into()],
+            )
+            .as_::<Undefined>()
     }
 
-    pub fn init_ui_event3(&self, type_arg: DOMString, bubbles_arg: bool, cancelable_arg: bool, view_arg: Window) -> Undefined {
-        self.inner.call("initUIEvent", &[type_arg.into(), bubbles_arg.into(), cancelable_arg.into(), view_arg.into(), ]).as_::<Undefined>()
+    pub fn init_ui_event3(
+        &self,
+        type_arg: DOMString,
+        bubbles_arg: bool,
+        cancelable_arg: bool,
+        view_arg: Window,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "initUIEvent",
+                &[
+                    type_arg.into(),
+                    bubbles_arg.into(),
+                    cancelable_arg.into(),
+                    view_arg.into(),
+                ],
+            )
+            .as_::<Undefined>()
     }
 
-    pub fn init_ui_event4(&self, type_arg: DOMString, bubbles_arg: bool, cancelable_arg: bool, view_arg: Window, detail_arg: i32) -> Undefined {
-        self.inner.call("initUIEvent", &[type_arg.into(), bubbles_arg.into(), cancelable_arg.into(), view_arg.into(), detail_arg.into(), ]).as_::<Undefined>()
+    pub fn init_ui_event4(
+        &self,
+        type_arg: DOMString,
+        bubbles_arg: bool,
+        cancelable_arg: bool,
+        view_arg: Window,
+        detail_arg: i32,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "initUIEvent",
+                &[
+                    type_arg.into(),
+                    bubbles_arg.into(),
+                    cancelable_arg.into(),
+                    view_arg.into(),
+                    detail_arg.into(),
+                ],
+            )
+            .as_::<Undefined>()
     }
-
 }
 impl UIEvent {
     pub fn which(&self) -> u32 {
         self.inner.get("which").as_::<u32>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Gyroscope {
@@ -10,7 +7,9 @@ pub struct Gyroscope {
 }
 impl FromVal for Gyroscope {
     fn from_val(v: &emlite::Val) -> Self {
-        Gyroscope { inner: Sensor::from_val(v) }
+        Gyroscope {
+            inner: Sensor::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for Gyroscope {
 }
 impl AsMut<emlite::Val> for Gyroscope {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Gyroscope> for emlite::Val {
     fn from(s: Gyroscope) -> emlite::Val {
@@ -49,8 +48,6 @@ impl From<Gyroscope> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Gyroscope);
 
-
-
 impl Gyroscope {
     pub fn new0() -> Gyroscope {
         Self {
@@ -60,26 +57,24 @@ impl Gyroscope {
 
     pub fn new1(sensor_options: Any) -> Gyroscope {
         Self {
-            inner: emlite::Val::global("Gyroscope").new(&[sensor_options.into()]).as_::<Sensor>(),
+            inner: emlite::Val::global("Gyroscope")
+                .new(&[sensor_options.into()])
+                .as_::<Sensor>(),
         }
     }
-
 }
 impl Gyroscope {
     pub fn x(&self) -> f64 {
         self.inner.get("x").as_::<f64>()
     }
-
 }
 impl Gyroscope {
     pub fn y(&self) -> f64 {
         self.inner.get("y").as_::<f64>()
     }
-
 }
 impl Gyroscope {
     pub fn z(&self) -> f64 {
         self.inner.get("z").as_::<f64>()
     }
-
 }

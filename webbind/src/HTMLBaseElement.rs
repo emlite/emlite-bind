@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLBaseElement {
@@ -10,7 +7,9 @@ pub struct HTMLBaseElement {
 }
 impl FromVal for HTMLBaseElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLBaseElement { inner: HTMLElement::from_val(v) }
+        HTMLBaseElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLBaseElement {
 }
 impl AsMut<emlite::Val> for HTMLBaseElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLBaseElement> for emlite::Val {
     fn from(s: HTMLBaseElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLBaseElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLBaseElement);
 
-
-
 impl HTMLBaseElement {
     pub fn new() -> HTMLBaseElement {
         Self {
-            inner: emlite::Val::global("HTMLBaseElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLBaseElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLBaseElement {
     pub fn href(&self) -> USVString {
@@ -67,7 +65,6 @@ impl HTMLBaseElement {
     pub fn set_href(&mut self, value: USVString) {
         self.inner.set("href", value);
     }
-
 }
 impl HTMLBaseElement {
     pub fn target(&self) -> DOMString {
@@ -77,5 +74,4 @@ impl HTMLBaseElement {
     pub fn set_target(&mut self, value: DOMString) {
         self.inner.set("target", value);
     }
-
 }

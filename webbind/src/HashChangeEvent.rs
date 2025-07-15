@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HashChangeEvent {
@@ -10,7 +7,9 @@ pub struct HashChangeEvent {
 }
 impl FromVal for HashChangeEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        HashChangeEvent { inner: Event::from_val(v) }
+        HashChangeEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HashChangeEvent {
 }
 impl AsMut<emlite::Val> for HashChangeEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HashChangeEvent> for emlite::Val {
     fn from(s: HashChangeEvent) -> emlite::Val {
@@ -49,31 +48,30 @@ impl From<HashChangeEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HashChangeEvent);
 
-
-
 impl HashChangeEvent {
     pub fn new0(type_: DOMString) -> HashChangeEvent {
         Self {
-            inner: emlite::Val::global("HashChangeEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: emlite::Val::global("HashChangeEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     pub fn new1(type_: DOMString, event_init_dict: Any) -> HashChangeEvent {
         Self {
-            inner: emlite::Val::global("HashChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("HashChangeEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl HashChangeEvent {
     pub fn old_url(&self) -> USVString {
         self.inner.get("oldURL").as_::<USVString>()
     }
-
 }
 impl HashChangeEvent {
     pub fn new_url(&self) -> USVString {
         self.inner.get("newURL").as_::<USVString>()
     }
-
 }

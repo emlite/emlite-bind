@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGLActiveInfo {
@@ -10,7 +7,9 @@ pub struct WebGLActiveInfo {
 }
 impl FromVal for WebGLActiveInfo {
     fn from_val(v: &emlite::Val) -> Self {
-        WebGLActiveInfo { inner: emlite::Val::from_val(v) }
+        WebGLActiveInfo {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for WebGLActiveInfo {
 }
 impl AsMut<emlite::Val> for WebGLActiveInfo {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WebGLActiveInfo> for emlite::Val {
     fn from(s: WebGLActiveInfo) -> emlite::Val {
@@ -49,22 +48,18 @@ impl From<WebGLActiveInfo> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WebGLActiveInfo);
 
-
 impl WebGLActiveInfo {
     pub fn size(&self) -> Any {
         self.inner.get("size").as_::<Any>()
     }
-
 }
 impl WebGLActiveInfo {
     pub fn type_(&self) -> Any {
         self.inner.get("type").as_::<Any>()
     }
-
 }
 impl WebGLActiveInfo {
     pub fn name(&self) -> DOMString {
         self.inner.get("name").as_::<DOMString>()
     }
-
 }

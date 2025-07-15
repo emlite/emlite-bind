@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IDBDatabaseInfo {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for IDBDatabaseInfo {
 }
 impl AsMut<emlite::Val> for IDBDatabaseInfo {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<IDBDatabaseInfo> for emlite::Val {
     fn from(s: IDBDatabaseInfo) -> emlite::Val {
@@ -56,7 +53,6 @@ impl IDBDatabaseInfo {
     pub fn set_name(&mut self, value: DOMString) {
         self.inner.set("name", value);
     }
-
 }
 impl IDBDatabaseInfo {
     pub fn version(&self) -> u64 {
@@ -66,7 +62,6 @@ impl IDBDatabaseInfo {
     pub fn set_version(&mut self, value: u64) {
         self.inner.set("version", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -75,7 +70,9 @@ pub struct IDBFactory {
 }
 impl FromVal for IDBFactory {
     fn from_val(v: &emlite::Val) -> Self {
-        IDBFactory { inner: emlite::Val::from_val(v) }
+        IDBFactory {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -102,8 +99,8 @@ impl AsRef<emlite::Val> for IDBFactory {
 }
 impl AsMut<emlite::Val> for IDBFactory {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<IDBFactory> for emlite::Val {
     fn from(s: IDBFactory) -> emlite::Val {
@@ -114,32 +111,35 @@ impl From<IDBFactory> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(IDBFactory);
 
-
 impl IDBFactory {
     pub fn open0(&self, name: DOMString) -> IDBOpenDBRequest {
-        self.inner.call("open", &[name.into(), ]).as_::<IDBOpenDBRequest>()
+        self.inner
+            .call("open", &[name.into()])
+            .as_::<IDBOpenDBRequest>()
     }
 
     pub fn open1(&self, name: DOMString, version: u64) -> IDBOpenDBRequest {
-        self.inner.call("open", &[name.into(), version.into(), ]).as_::<IDBOpenDBRequest>()
+        self.inner
+            .call("open", &[name.into(), version.into()])
+            .as_::<IDBOpenDBRequest>()
     }
-
 }
 impl IDBFactory {
     pub fn delete_database(&self, name: DOMString) -> IDBOpenDBRequest {
-        self.inner.call("deleteDatabase", &[name.into(), ]).as_::<IDBOpenDBRequest>()
+        self.inner
+            .call("deleteDatabase", &[name.into()])
+            .as_::<IDBOpenDBRequest>()
     }
-
 }
 impl IDBFactory {
-    pub fn databases(&self, ) -> Promise {
+    pub fn databases(&self) -> Promise {
         self.inner.call("databases", &[]).as_::<Promise>()
     }
-
 }
 impl IDBFactory {
     pub fn cmp(&self, first: Any, second: Any) -> i16 {
-        self.inner.call("cmp", &[first.into(), second.into(), ]).as_::<i16>()
+        self.inner
+            .call("cmp", &[first.into(), second.into()])
+            .as_::<i16>()
     }
-
 }

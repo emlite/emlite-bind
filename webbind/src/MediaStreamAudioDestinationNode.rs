@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaStreamAudioDestinationNode {
@@ -10,7 +7,9 @@ pub struct MediaStreamAudioDestinationNode {
 }
 impl FromVal for MediaStreamAudioDestinationNode {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaStreamAudioDestinationNode { inner: AudioNode::from_val(v) }
+        MediaStreamAudioDestinationNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for MediaStreamAudioDestinationNode {
 }
 impl AsMut<emlite::Val> for MediaStreamAudioDestinationNode {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MediaStreamAudioDestinationNode> for emlite::Val {
     fn from(s: MediaStreamAudioDestinationNode) -> emlite::Val {
@@ -49,25 +48,25 @@ impl From<MediaStreamAudioDestinationNode> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MediaStreamAudioDestinationNode);
 
-
-
 impl MediaStreamAudioDestinationNode {
     pub fn new0(context: AudioContext) -> MediaStreamAudioDestinationNode {
         Self {
-            inner: emlite::Val::global("MediaStreamAudioDestinationNode").new(&[context.into()]).as_::<AudioNode>(),
+            inner: emlite::Val::global("MediaStreamAudioDestinationNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
         }
     }
 
     pub fn new1(context: AudioContext, options: Any) -> MediaStreamAudioDestinationNode {
         Self {
-            inner: emlite::Val::global("MediaStreamAudioDestinationNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
+            inner: emlite::Val::global("MediaStreamAudioDestinationNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
         }
     }
-
 }
 impl MediaStreamAudioDestinationNode {
     pub fn stream(&self) -> MediaStream {
         self.inner.get("stream").as_::<MediaStream>()
     }
-
 }

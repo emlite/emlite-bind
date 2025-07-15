@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSTranslate {
@@ -10,7 +7,9 @@ pub struct CSSTranslate {
 }
 impl FromVal for CSSTranslate {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSTranslate { inner: CSSTransformComponent::from_val(v) }
+        CSSTranslate {
+            inner: CSSTransformComponent::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSTranslate {
 }
 impl AsMut<emlite::Val> for CSSTranslate {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSTranslate> for emlite::Val {
     fn from(s: CSSTranslate) -> emlite::Val {
@@ -49,21 +48,22 @@ impl From<CSSTranslate> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSTranslate);
 
-
-
 impl CSSTranslate {
     pub fn new0(x: CSSNumericValue, y: CSSNumericValue) -> CSSTranslate {
         Self {
-            inner: emlite::Val::global("CSSTranslate").new(&[x.into(), y.into()]).as_::<CSSTransformComponent>(),
+            inner: emlite::Val::global("CSSTranslate")
+                .new(&[x.into(), y.into()])
+                .as_::<CSSTransformComponent>(),
         }
     }
 
     pub fn new1(x: CSSNumericValue, y: CSSNumericValue, z: CSSNumericValue) -> CSSTranslate {
         Self {
-            inner: emlite::Val::global("CSSTranslate").new(&[x.into(), y.into(), z.into()]).as_::<CSSTransformComponent>(),
+            inner: emlite::Val::global("CSSTranslate")
+                .new(&[x.into(), y.into(), z.into()])
+                .as_::<CSSTransformComponent>(),
         }
     }
-
 }
 impl CSSTranslate {
     pub fn x(&self) -> CSSNumericValue {
@@ -73,7 +73,6 @@ impl CSSTranslate {
     pub fn set_x(&mut self, value: CSSNumericValue) {
         self.inner.set("x", value);
     }
-
 }
 impl CSSTranslate {
     pub fn y(&self) -> CSSNumericValue {
@@ -83,7 +82,6 @@ impl CSSTranslate {
     pub fn set_y(&mut self, value: CSSNumericValue) {
         self.inner.set("y", value);
     }
-
 }
 impl CSSTranslate {
     pub fn z(&self) -> CSSNumericValue {
@@ -93,5 +91,4 @@ impl CSSTranslate {
     pub fn set_z(&mut self, value: CSSNumericValue) {
         self.inner.set("z", value);
     }
-
 }

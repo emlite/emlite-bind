@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PushSubscriptionOptionsInit {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for PushSubscriptionOptionsInit {
 }
 impl AsMut<emlite::Val> for PushSubscriptionOptionsInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PushSubscriptionOptionsInit> for emlite::Val {
     fn from(s: PushSubscriptionOptionsInit) -> emlite::Val {
@@ -56,7 +53,6 @@ impl PushSubscriptionOptionsInit {
     pub fn set_user_visible_only(&mut self, value: bool) {
         self.inner.set("userVisibleOnly", value);
     }
-
 }
 impl PushSubscriptionOptionsInit {
     pub fn application_server_key(&self) -> Any {
@@ -66,7 +62,6 @@ impl PushSubscriptionOptionsInit {
     pub fn set_application_server_key(&mut self, value: Any) {
         self.inner.set("applicationServerKey", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -75,7 +70,9 @@ pub struct PushManager {
 }
 impl FromVal for PushManager {
     fn from_val(v: &emlite::Val) -> Self {
-        PushManager { inner: emlite::Val::from_val(v) }
+        PushManager {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -102,8 +99,8 @@ impl AsRef<emlite::Val> for PushManager {
 }
 impl AsMut<emlite::Val> for PushManager {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PushManager> for emlite::Val {
     fn from(s: PushManager) -> emlite::Val {
@@ -114,36 +111,37 @@ impl From<PushManager> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PushManager);
 
-
 impl PushManager {
     pub fn supported_content_encodings() -> FrozenArray<DOMString> {
-        emlite::Val::global("pushmanager").get("supportedContentEncodings").as_::<FrozenArray<DOMString>>()
+        emlite::Val::global("PushManager")
+            .get("supportedContentEncodings")
+            .as_::<FrozenArray<DOMString>>()
     }
-
 }
 impl PushManager {
-    pub fn subscribe0(&self, ) -> Promise {
+    pub fn subscribe0(&self) -> Promise {
         self.inner.call("subscribe", &[]).as_::<Promise>()
     }
 
     pub fn subscribe1(&self, options: PushSubscriptionOptionsInit) -> Promise {
-        self.inner.call("subscribe", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("subscribe", &[options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl PushManager {
-    pub fn get_subscription(&self, ) -> Promise {
+    pub fn get_subscription(&self) -> Promise {
         self.inner.call("getSubscription", &[]).as_::<Promise>()
     }
-
 }
 impl PushManager {
-    pub fn permission_state0(&self, ) -> Promise {
+    pub fn permission_state0(&self) -> Promise {
         self.inner.call("permissionState", &[]).as_::<Promise>()
     }
 
     pub fn permission_state1(&self, options: PushSubscriptionOptionsInit) -> Promise {
-        self.inner.call("permissionState", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("permissionState", &[options.into()])
+            .as_::<Promise>()
     }
-
 }

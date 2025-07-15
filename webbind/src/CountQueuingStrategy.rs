@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CountQueuingStrategy {
@@ -10,7 +7,9 @@ pub struct CountQueuingStrategy {
 }
 impl FromVal for CountQueuingStrategy {
     fn from_val(v: &emlite::Val) -> Self {
-        CountQueuingStrategy { inner: emlite::Val::from_val(v) }
+        CountQueuingStrategy {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CountQueuingStrategy {
 }
 impl AsMut<emlite::Val> for CountQueuingStrategy {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CountQueuingStrategy> for emlite::Val {
     fn from(s: CountQueuingStrategy) -> emlite::Val {
@@ -49,25 +48,22 @@ impl From<CountQueuingStrategy> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CountQueuingStrategy);
 
-
-
 impl CountQueuingStrategy {
     pub fn new(init: Any) -> CountQueuingStrategy {
         Self {
-            inner: emlite::Val::global("CountQueuingStrategy").new(&[init.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("CountQueuingStrategy")
+                .new(&[init.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl CountQueuingStrategy {
     pub fn high_water_mark(&self) -> f64 {
         self.inner.get("highWaterMark").as_::<f64>()
     }
-
 }
 impl CountQueuingStrategy {
     pub fn size(&self) -> Function {
         self.inner.get("size").as_::<Function>()
     }
-
 }

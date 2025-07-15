@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CryptoKey {
@@ -10,7 +7,9 @@ pub struct CryptoKey {
 }
 impl FromVal for CryptoKey {
     fn from_val(v: &emlite::Val) -> Self {
-        CryptoKey { inner: emlite::Val::from_val(v) }
+        CryptoKey {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CryptoKey {
 }
 impl AsMut<emlite::Val> for CryptoKey {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CryptoKey> for emlite::Val {
     fn from(s: CryptoKey) -> emlite::Val {
@@ -49,28 +48,23 @@ impl From<CryptoKey> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CryptoKey);
 
-
 impl CryptoKey {
     pub fn type_(&self) -> KeyType {
         self.inner.get("type").as_::<KeyType>()
     }
-
 }
 impl CryptoKey {
     pub fn extractable(&self) -> bool {
         self.inner.get("extractable").as_::<bool>()
     }
-
 }
 impl CryptoKey {
     pub fn algorithm(&self) -> Object {
         self.inner.get("algorithm").as_::<Object>()
     }
-
 }
 impl CryptoKey {
     pub fn usages(&self) -> Object {
         self.inner.get("usages").as_::<Object>()
     }
-
 }

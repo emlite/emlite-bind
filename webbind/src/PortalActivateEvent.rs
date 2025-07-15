@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PortalActivateEvent {
@@ -10,7 +7,9 @@ pub struct PortalActivateEvent {
 }
 impl FromVal for PortalActivateEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        PortalActivateEvent { inner: Event::from_val(v) }
+        PortalActivateEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PortalActivateEvent {
 }
 impl AsMut<emlite::Val> for PortalActivateEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PortalActivateEvent> for emlite::Val {
     fn from(s: PortalActivateEvent) -> emlite::Val {
@@ -49,31 +48,32 @@ impl From<PortalActivateEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PortalActivateEvent);
 
-
-
 impl PortalActivateEvent {
     pub fn new0(type_: DOMString) -> PortalActivateEvent {
         Self {
-            inner: emlite::Val::global("PortalActivateEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: emlite::Val::global("PortalActivateEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     pub fn new1(type_: DOMString, event_init_dict: Any) -> PortalActivateEvent {
         Self {
-            inner: emlite::Val::global("PortalActivateEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("PortalActivateEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl PortalActivateEvent {
     pub fn data(&self) -> Any {
         self.inner.get("data").as_::<Any>()
     }
-
 }
 impl PortalActivateEvent {
-    pub fn adopt_predecessor(&self, ) -> HTMLPortalElement {
-        self.inner.call("adoptPredecessor", &[]).as_::<HTMLPortalElement>()
+    pub fn adopt_predecessor(&self) -> HTMLPortalElement {
+        self.inner
+            .call("adoptPredecessor", &[])
+            .as_::<HTMLPortalElement>()
     }
-
 }

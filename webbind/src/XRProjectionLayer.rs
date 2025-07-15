@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRProjectionLayer {
@@ -10,7 +7,9 @@ pub struct XRProjectionLayer {
 }
 impl FromVal for XRProjectionLayer {
     fn from_val(v: &emlite::Val) -> Self {
-        XRProjectionLayer { inner: XRCompositionLayer::from_val(v) }
+        XRProjectionLayer {
+            inner: XRCompositionLayer::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XRProjectionLayer {
 }
 impl AsMut<emlite::Val> for XRProjectionLayer {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRProjectionLayer> for emlite::Val {
     fn from(s: XRProjectionLayer) -> emlite::Val {
@@ -49,30 +48,25 @@ impl From<XRProjectionLayer> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRProjectionLayer);
 
-
 impl XRProjectionLayer {
     pub fn texture_width(&self) -> u32 {
         self.inner.get("textureWidth").as_::<u32>()
     }
-
 }
 impl XRProjectionLayer {
     pub fn texture_height(&self) -> u32 {
         self.inner.get("textureHeight").as_::<u32>()
     }
-
 }
 impl XRProjectionLayer {
     pub fn texture_array_length(&self) -> u32 {
         self.inner.get("textureArrayLength").as_::<u32>()
     }
-
 }
 impl XRProjectionLayer {
     pub fn ignore_depth_values(&self) -> bool {
         self.inner.get("ignoreDepthValues").as_::<bool>()
     }
-
 }
 impl XRProjectionLayer {
     pub fn fixed_foveation(&self) -> f32 {
@@ -82,7 +76,6 @@ impl XRProjectionLayer {
     pub fn set_fixed_foveation(&mut self, value: f32) {
         self.inner.set("fixedFoveation", value);
     }
-
 }
 impl XRProjectionLayer {
     pub fn delta_pose(&self) -> XRRigidTransform {
@@ -92,5 +85,4 @@ impl XRProjectionLayer {
     pub fn set_delta_pose(&mut self, value: XRRigidTransform) {
         self.inner.set("deltaPose", value);
     }
-
 }

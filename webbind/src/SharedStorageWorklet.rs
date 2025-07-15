@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SharedStorageUrlWithMetadata {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for SharedStorageUrlWithMetadata {
 }
 impl AsMut<emlite::Val> for SharedStorageUrlWithMetadata {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SharedStorageUrlWithMetadata> for emlite::Val {
     fn from(s: SharedStorageUrlWithMetadata) -> emlite::Val {
@@ -56,7 +53,6 @@ impl SharedStorageUrlWithMetadata {
     pub fn set_url(&mut self, value: USVString) {
         self.inner.set("url", value);
     }
-
 }
 impl SharedStorageUrlWithMetadata {
     pub fn reporting_metadata(&self) -> Object {
@@ -66,7 +62,6 @@ impl SharedStorageUrlWithMetadata {
     pub fn set_reporting_metadata(&mut self, value: Object) {
         self.inner.set("reportingMetadata", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -102,8 +97,8 @@ impl AsRef<emlite::Val> for SharedStorageRunOperationMethodOptions {
 }
 impl AsMut<emlite::Val> for SharedStorageRunOperationMethodOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SharedStorageRunOperationMethodOptions> for emlite::Val {
     fn from(s: SharedStorageRunOperationMethodOptions) -> emlite::Val {
@@ -121,7 +116,6 @@ impl SharedStorageRunOperationMethodOptions {
     pub fn set_data(&mut self, value: Object) {
         self.inner.set("data", value);
     }
-
 }
 impl SharedStorageRunOperationMethodOptions {
     pub fn resolve_to_config(&self) -> bool {
@@ -131,7 +125,6 @@ impl SharedStorageRunOperationMethodOptions {
     pub fn set_resolve_to_config(&mut self, value: bool) {
         self.inner.set("resolveToConfig", value);
     }
-
 }
 impl SharedStorageRunOperationMethodOptions {
     pub fn keep_alive(&self) -> bool {
@@ -141,7 +134,6 @@ impl SharedStorageRunOperationMethodOptions {
     pub fn set_keep_alive(&mut self, value: bool) {
         self.inner.set("keepAlive", value);
     }
-
 }
 impl SharedStorageRunOperationMethodOptions {
     pub fn private_aggregation_config(&self) -> Any {
@@ -151,7 +143,6 @@ impl SharedStorageRunOperationMethodOptions {
     pub fn set_private_aggregation_config(&mut self, value: Any) {
         self.inner.set("privateAggregationConfig", value);
     }
-
 }
 impl SharedStorageRunOperationMethodOptions {
     pub fn saved_query(&self) -> DOMString {
@@ -161,7 +152,6 @@ impl SharedStorageRunOperationMethodOptions {
     pub fn set_saved_query(&mut self, value: DOMString) {
         self.inner.set("savedQuery", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -170,7 +160,9 @@ pub struct SharedStorageWorklet {
 }
 impl FromVal for SharedStorageWorklet {
     fn from_val(v: &emlite::Val) -> Self {
-        SharedStorageWorklet { inner: Worklet::from_val(v) }
+        SharedStorageWorklet {
+            inner: Worklet::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -197,8 +189,8 @@ impl AsRef<emlite::Val> for SharedStorageWorklet {
 }
 impl AsMut<emlite::Val> for SharedStorageWorklet {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SharedStorageWorklet> for emlite::Val {
     fn from(s: SharedStorageWorklet) -> emlite::Val {
@@ -209,24 +201,40 @@ impl From<SharedStorageWorklet> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SharedStorageWorklet);
 
-
 impl SharedStorageWorklet {
-    pub fn select_url0(&self, name: DOMString, urls: Sequence<SharedStorageUrlWithMetadata>) -> Promise {
-        self.inner.call("selectURL", &[name.into(), urls.into(), ]).as_::<Promise>()
+    pub fn select_url0(
+        &self,
+        name: DOMString,
+        urls: Sequence<SharedStorageUrlWithMetadata>,
+    ) -> Promise {
+        self.inner
+            .call("selectURL", &[name.into(), urls.into()])
+            .as_::<Promise>()
     }
 
-    pub fn select_url1(&self, name: DOMString, urls: Sequence<SharedStorageUrlWithMetadata>, options: SharedStorageRunOperationMethodOptions) -> Promise {
-        self.inner.call("selectURL", &[name.into(), urls.into(), options.into(), ]).as_::<Promise>()
+    pub fn select_url1(
+        &self,
+        name: DOMString,
+        urls: Sequence<SharedStorageUrlWithMetadata>,
+        options: SharedStorageRunOperationMethodOptions,
+    ) -> Promise {
+        self.inner
+            .call("selectURL", &[name.into(), urls.into(), options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl SharedStorageWorklet {
     pub fn run0(&self, name: DOMString) -> Promise {
-        self.inner.call("run", &[name.into(), ]).as_::<Promise>()
+        self.inner.call("run", &[name.into()]).as_::<Promise>()
     }
 
-    pub fn run1(&self, name: DOMString, options: SharedStorageRunOperationMethodOptions) -> Promise {
-        self.inner.call("run", &[name.into(), options.into(), ]).as_::<Promise>()
+    pub fn run1(
+        &self,
+        name: DOMString,
+        options: SharedStorageRunOperationMethodOptions,
+    ) -> Promise {
+        self.inner
+            .call("run", &[name.into(), options.into()])
+            .as_::<Promise>()
     }
-
 }

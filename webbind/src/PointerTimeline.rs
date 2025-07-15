@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PointerTimeline {
@@ -10,7 +7,9 @@ pub struct PointerTimeline {
 }
 impl FromVal for PointerTimeline {
     fn from_val(v: &emlite::Val) -> Self {
-        PointerTimeline { inner: AnimationTimeline::from_val(v) }
+        PointerTimeline {
+            inner: AnimationTimeline::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PointerTimeline {
 }
 impl AsMut<emlite::Val> for PointerTimeline {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PointerTimeline> for emlite::Val {
     fn from(s: PointerTimeline) -> emlite::Val {
@@ -49,31 +48,30 @@ impl From<PointerTimeline> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PointerTimeline);
 
-
-
 impl PointerTimeline {
     pub fn new0() -> PointerTimeline {
         Self {
-            inner: emlite::Val::global("PointerTimeline").new(&[]).as_::<AnimationTimeline>(),
+            inner: emlite::Val::global("PointerTimeline")
+                .new(&[])
+                .as_::<AnimationTimeline>(),
         }
     }
 
     pub fn new1(options: Any) -> PointerTimeline {
         Self {
-            inner: emlite::Val::global("PointerTimeline").new(&[options.into()]).as_::<AnimationTimeline>(),
+            inner: emlite::Val::global("PointerTimeline")
+                .new(&[options.into()])
+                .as_::<AnimationTimeline>(),
         }
     }
-
 }
 impl PointerTimeline {
     pub fn source(&self) -> Element {
         self.inner.get("source").as_::<Element>()
     }
-
 }
 impl PointerTimeline {
     pub fn axis(&self) -> PointerAxis {
         self.inner.get("axis").as_::<PointerAxis>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGImageElement {
@@ -10,7 +7,9 @@ pub struct SVGImageElement {
 }
 impl FromVal for SVGImageElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGImageElement { inner: SVGGraphicsElement::from_val(v) }
+        SVGImageElement {
+            inner: SVGGraphicsElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SVGImageElement {
 }
 impl AsMut<emlite::Val> for SVGImageElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGImageElement> for emlite::Val {
     fn from(s: SVGImageElement) -> emlite::Val {
@@ -49,36 +48,32 @@ impl From<SVGImageElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGImageElement);
 
-
 impl SVGImageElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGImageElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGImageElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGImageElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGImageElement {
     pub fn preserve_aspect_ratio(&self) -> SVGAnimatedPreserveAspectRatio {
-        self.inner.get("preserveAspectRatio").as_::<SVGAnimatedPreserveAspectRatio>()
+        self.inner
+            .get("preserveAspectRatio")
+            .as_::<SVGAnimatedPreserveAspectRatio>()
     }
-
 }
 impl SVGImageElement {
     pub fn cross_origin(&self) -> DOMString {
@@ -88,11 +83,9 @@ impl SVGImageElement {
     pub fn set_cross_origin(&mut self, value: DOMString) {
         self.inner.set("crossOrigin", value);
     }
-
 }
 impl SVGImageElement {
     pub fn href(&self) -> SVGAnimatedString {
         self.inner.get("href").as_::<SVGAnimatedString>()
     }
-
 }

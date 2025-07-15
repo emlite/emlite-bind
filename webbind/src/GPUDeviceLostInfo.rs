@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUDeviceLostInfo {
@@ -10,7 +7,9 @@ pub struct GPUDeviceLostInfo {
 }
 impl FromVal for GPUDeviceLostInfo {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUDeviceLostInfo { inner: emlite::Val::from_val(v) }
+        GPUDeviceLostInfo {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for GPUDeviceLostInfo {
 }
 impl AsMut<emlite::Val> for GPUDeviceLostInfo {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<GPUDeviceLostInfo> for emlite::Val {
     fn from(s: GPUDeviceLostInfo) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<GPUDeviceLostInfo> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GPUDeviceLostInfo);
 
-
 impl GPUDeviceLostInfo {
     pub fn reason(&self) -> GPUDeviceLostReason {
         self.inner.get("reason").as_::<GPUDeviceLostReason>()
     }
-
 }
 impl GPUDeviceLostInfo {
     pub fn message(&self) -> DOMString {
         self.inner.get("message").as_::<DOMString>()
     }
-
 }

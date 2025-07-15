@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct USBPermissionResult {
@@ -10,7 +7,9 @@ pub struct USBPermissionResult {
 }
 impl FromVal for USBPermissionResult {
     fn from_val(v: &emlite::Val) -> Self {
-        USBPermissionResult { inner: PermissionStatus::from_val(v) }
+        USBPermissionResult {
+            inner: PermissionStatus::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for USBPermissionResult {
 }
 impl AsMut<emlite::Val> for USBPermissionResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<USBPermissionResult> for emlite::Val {
     fn from(s: USBPermissionResult) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<USBPermissionResult> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(USBPermissionResult);
 
-
 impl USBPermissionResult {
     pub fn devices(&self) -> FrozenArray<USBDevice> {
         self.inner.get("devices").as_::<FrozenArray<USBDevice>>()
@@ -58,5 +56,4 @@ impl USBPermissionResult {
     pub fn set_devices(&mut self, value: FrozenArray<USBDevice>) {
         self.inner.set("devices", value);
     }
-
 }

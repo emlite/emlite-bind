@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FontFace {
@@ -10,7 +7,9 @@ pub struct FontFace {
 }
 impl FromVal for FontFace {
     fn from_val(v: &emlite::Val) -> Self {
-        FontFace { inner: emlite::Val::from_val(v) }
+        FontFace {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for FontFace {
 }
 impl AsMut<emlite::Val> for FontFace {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<FontFace> for emlite::Val {
     fn from(s: FontFace) -> emlite::Val {
@@ -49,21 +48,22 @@ impl From<FontFace> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FontFace);
 
-
-
 impl FontFace {
     pub fn new0(family: CSSOMString, source: Any) -> FontFace {
         Self {
-            inner: emlite::Val::global("FontFace").new(&[family.into(), source.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("FontFace")
+                .new(&[family.into(), source.into()])
+                .as_::<emlite::Val>(),
         }
     }
 
     pub fn new1(family: CSSOMString, source: Any, descriptors: Any) -> FontFace {
         Self {
-            inner: emlite::Val::global("FontFace").new(&[family.into(), source.into(), descriptors.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("FontFace")
+                .new(&[family.into(), source.into(), descriptors.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl FontFace {
     pub fn family(&self) -> CSSOMString {
@@ -73,7 +73,6 @@ impl FontFace {
     pub fn set_family(&mut self, value: CSSOMString) {
         self.inner.set("family", value);
     }
-
 }
 impl FontFace {
     pub fn style(&self) -> CSSOMString {
@@ -83,7 +82,6 @@ impl FontFace {
     pub fn set_style(&mut self, value: CSSOMString) {
         self.inner.set("style", value);
     }
-
 }
 impl FontFace {
     pub fn weight(&self) -> CSSOMString {
@@ -93,7 +91,6 @@ impl FontFace {
     pub fn set_weight(&mut self, value: CSSOMString) {
         self.inner.set("weight", value);
     }
-
 }
 impl FontFace {
     pub fn stretch(&self) -> CSSOMString {
@@ -103,7 +100,6 @@ impl FontFace {
     pub fn set_stretch(&mut self, value: CSSOMString) {
         self.inner.set("stretch", value);
     }
-
 }
 impl FontFace {
     pub fn unicode_range(&self) -> CSSOMString {
@@ -113,7 +109,6 @@ impl FontFace {
     pub fn set_unicode_range(&mut self, value: CSSOMString) {
         self.inner.set("unicodeRange", value);
     }
-
 }
 impl FontFace {
     pub fn feature_settings(&self) -> CSSOMString {
@@ -123,7 +118,6 @@ impl FontFace {
     pub fn set_feature_settings(&mut self, value: CSSOMString) {
         self.inner.set("featureSettings", value);
     }
-
 }
 impl FontFace {
     pub fn variation_settings(&self) -> CSSOMString {
@@ -133,7 +127,6 @@ impl FontFace {
     pub fn set_variation_settings(&mut self, value: CSSOMString) {
         self.inner.set("variationSettings", value);
     }
-
 }
 impl FontFace {
     pub fn display(&self) -> CSSOMString {
@@ -143,7 +136,6 @@ impl FontFace {
     pub fn set_display(&mut self, value: CSSOMString) {
         self.inner.set("display", value);
     }
-
 }
 impl FontFace {
     pub fn ascent_override(&self) -> CSSOMString {
@@ -153,7 +145,6 @@ impl FontFace {
     pub fn set_ascent_override(&mut self, value: CSSOMString) {
         self.inner.set("ascentOverride", value);
     }
-
 }
 impl FontFace {
     pub fn descent_override(&self) -> CSSOMString {
@@ -163,7 +154,6 @@ impl FontFace {
     pub fn set_descent_override(&mut self, value: CSSOMString) {
         self.inner.set("descentOverride", value);
     }
-
 }
 impl FontFace {
     pub fn line_gap_override(&self) -> CSSOMString {
@@ -173,41 +163,34 @@ impl FontFace {
     pub fn set_line_gap_override(&mut self, value: CSSOMString) {
         self.inner.set("lineGapOverride", value);
     }
-
 }
 impl FontFace {
     pub fn status(&self) -> FontFaceLoadStatus {
         self.inner.get("status").as_::<FontFaceLoadStatus>()
     }
-
 }
 impl FontFace {
-    pub fn load(&self, ) -> Promise {
+    pub fn load(&self) -> Promise {
         self.inner.call("load", &[]).as_::<Promise>()
     }
-
 }
 impl FontFace {
     pub fn loaded(&self) -> Promise {
         self.inner.get("loaded").as_::<Promise>()
     }
-
 }
 impl FontFace {
     pub fn features(&self) -> FontFaceFeatures {
         self.inner.get("features").as_::<FontFaceFeatures>()
     }
-
 }
 impl FontFace {
     pub fn variations(&self) -> FontFaceVariations {
         self.inner.get("variations").as_::<FontFaceVariations>()
     }
-
 }
 impl FontFace {
     pub fn palettes(&self) -> FontFacePalettes {
         self.inner.get("palettes").as_::<FontFacePalettes>()
     }
-
 }

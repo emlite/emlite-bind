@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLMapElement {
@@ -10,7 +7,9 @@ pub struct HTMLMapElement {
 }
 impl FromVal for HTMLMapElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLMapElement { inner: HTMLElement::from_val(v) }
+        HTMLMapElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLMapElement {
 }
 impl AsMut<emlite::Val> for HTMLMapElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLMapElement> for emlite::Val {
     fn from(s: HTMLMapElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLMapElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLMapElement);
 
-
-
 impl HTMLMapElement {
     pub fn new() -> HTMLMapElement {
         Self {
-            inner: emlite::Val::global("HTMLMapElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLMapElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLMapElement {
     pub fn name(&self) -> DOMString {
@@ -67,11 +65,9 @@ impl HTMLMapElement {
     pub fn set_name(&mut self, value: DOMString) {
         self.inner.set("name", value);
     }
-
 }
 impl HTMLMapElement {
     pub fn areas(&self) -> HTMLCollection {
         self.inner.get("areas").as_::<HTMLCollection>()
     }
-
 }

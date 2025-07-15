@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HandwritingHints {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for HandwritingHints {
 }
 impl AsMut<emlite::Val> for HandwritingHints {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HandwritingHints> for emlite::Val {
     fn from(s: HandwritingHints) -> emlite::Val {
@@ -56,7 +53,6 @@ impl HandwritingHints {
     pub fn set_recognition_type(&mut self, value: DOMString) {
         self.inner.set("recognitionType", value);
     }
-
 }
 impl HandwritingHints {
     pub fn input_type(&self) -> DOMString {
@@ -66,7 +62,6 @@ impl HandwritingHints {
     pub fn set_input_type(&mut self, value: DOMString) {
         self.inner.set("inputType", value);
     }
-
 }
 impl HandwritingHints {
     pub fn text_context(&self) -> DOMString {
@@ -76,7 +71,6 @@ impl HandwritingHints {
     pub fn set_text_context(&mut self, value: DOMString) {
         self.inner.set("textContext", value);
     }
-
 }
 impl HandwritingHints {
     pub fn alternatives(&self) -> u32 {
@@ -86,7 +80,6 @@ impl HandwritingHints {
     pub fn set_alternatives(&mut self, value: u32) {
         self.inner.set("alternatives", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -95,7 +88,9 @@ pub struct HandwritingRecognizer {
 }
 impl FromVal for HandwritingRecognizer {
     fn from_val(v: &emlite::Val) -> Self {
-        HandwritingRecognizer { inner: emlite::Val::from_val(v) }
+        HandwritingRecognizer {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -122,8 +117,8 @@ impl AsRef<emlite::Val> for HandwritingRecognizer {
 }
 impl AsMut<emlite::Val> for HandwritingRecognizer {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HandwritingRecognizer> for emlite::Val {
     fn from(s: HandwritingRecognizer) -> emlite::Val {
@@ -134,20 +129,21 @@ impl From<HandwritingRecognizer> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HandwritingRecognizer);
 
-
 impl HandwritingRecognizer {
-    pub fn start_drawing0(&self, ) -> HandwritingDrawing {
-        self.inner.call("startDrawing", &[]).as_::<HandwritingDrawing>()
+    pub fn start_drawing0(&self) -> HandwritingDrawing {
+        self.inner
+            .call("startDrawing", &[])
+            .as_::<HandwritingDrawing>()
     }
 
     pub fn start_drawing1(&self, hints: HandwritingHints) -> HandwritingDrawing {
-        self.inner.call("startDrawing", &[hints.into(), ]).as_::<HandwritingDrawing>()
+        self.inner
+            .call("startDrawing", &[hints.into()])
+            .as_::<HandwritingDrawing>()
     }
-
 }
 impl HandwritingRecognizer {
-    pub fn finish(&self, ) -> Undefined {
+    pub fn finish(&self) -> Undefined {
         self.inner.call("finish", &[]).as_::<Undefined>()
     }
-
 }

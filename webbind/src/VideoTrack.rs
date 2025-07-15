@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VideoTrack {
@@ -10,7 +7,9 @@ pub struct VideoTrack {
 }
 impl FromVal for VideoTrack {
     fn from_val(v: &emlite::Val) -> Self {
-        VideoTrack { inner: emlite::Val::from_val(v) }
+        VideoTrack {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for VideoTrack {
 }
 impl AsMut<emlite::Val> for VideoTrack {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<VideoTrack> for emlite::Val {
     fn from(s: VideoTrack) -> emlite::Val {
@@ -49,30 +48,25 @@ impl From<VideoTrack> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(VideoTrack);
 
-
 impl VideoTrack {
     pub fn id(&self) -> DOMString {
         self.inner.get("id").as_::<DOMString>()
     }
-
 }
 impl VideoTrack {
     pub fn kind(&self) -> DOMString {
         self.inner.get("kind").as_::<DOMString>()
     }
-
 }
 impl VideoTrack {
     pub fn label(&self) -> DOMString {
         self.inner.get("label").as_::<DOMString>()
     }
-
 }
 impl VideoTrack {
     pub fn language(&self) -> DOMString {
         self.inner.get("language").as_::<DOMString>()
     }
-
 }
 impl VideoTrack {
     pub fn selected(&self) -> bool {
@@ -82,11 +76,9 @@ impl VideoTrack {
     pub fn set_selected(&mut self, value: bool) {
         self.inner.set("selected", value);
     }
-
 }
 impl VideoTrack {
     pub fn source_buffer(&self) -> SourceBuffer {
         self.inner.get("sourceBuffer").as_::<SourceBuffer>()
     }
-
 }

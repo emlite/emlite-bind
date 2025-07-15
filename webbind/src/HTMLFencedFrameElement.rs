@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLFencedFrameElement {
@@ -10,7 +7,9 @@ pub struct HTMLFencedFrameElement {
 }
 impl FromVal for HTMLFencedFrameElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLFencedFrameElement { inner: HTMLElement::from_val(v) }
+        HTMLFencedFrameElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLFencedFrameElement {
 }
 impl AsMut<emlite::Val> for HTMLFencedFrameElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLFencedFrameElement> for emlite::Val {
     fn from(s: HTMLFencedFrameElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLFencedFrameElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLFencedFrameElement);
 
-
-
 impl HTMLFencedFrameElement {
     pub fn new() -> HTMLFencedFrameElement {
         Self {
-            inner: emlite::Val::global("HTMLFencedFrameElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLFencedFrameElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLFencedFrameElement {
     pub fn config(&self) -> FencedFrameConfig {
@@ -67,7 +65,6 @@ impl HTMLFencedFrameElement {
     pub fn set_config(&mut self, value: FencedFrameConfig) {
         self.inner.set("config", value);
     }
-
 }
 impl HTMLFencedFrameElement {
     pub fn width(&self) -> DOMString {
@@ -77,7 +74,6 @@ impl HTMLFencedFrameElement {
     pub fn set_width(&mut self, value: DOMString) {
         self.inner.set("width", value);
     }
-
 }
 impl HTMLFencedFrameElement {
     pub fn height(&self) -> DOMString {
@@ -87,13 +83,11 @@ impl HTMLFencedFrameElement {
     pub fn set_height(&mut self, value: DOMString) {
         self.inner.set("height", value);
     }
-
 }
 impl HTMLFencedFrameElement {
     pub fn sandbox(&self) -> DOMTokenList {
         self.inner.get("sandbox").as_::<DOMTokenList>()
     }
-
 }
 impl HTMLFencedFrameElement {
     pub fn allow(&self) -> DOMString {
@@ -103,5 +97,4 @@ impl HTMLFencedFrameElement {
     pub fn set_allow(&mut self, value: DOMString) {
         self.inner.set("allow", value);
     }
-
 }

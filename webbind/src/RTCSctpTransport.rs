@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCSctpTransport {
@@ -10,7 +7,9 @@ pub struct RTCSctpTransport {
 }
 impl FromVal for RTCSctpTransport {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCSctpTransport { inner: EventTarget::from_val(v) }
+        RTCSctpTransport {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for RTCSctpTransport {
 }
 impl AsMut<emlite::Val> for RTCSctpTransport {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<RTCSctpTransport> for emlite::Val {
     fn from(s: RTCSctpTransport) -> emlite::Val {
@@ -49,30 +48,25 @@ impl From<RTCSctpTransport> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCSctpTransport);
 
-
 impl RTCSctpTransport {
     pub fn transport(&self) -> RTCDtlsTransport {
         self.inner.get("transport").as_::<RTCDtlsTransport>()
     }
-
 }
 impl RTCSctpTransport {
     pub fn state(&self) -> RTCSctpTransportState {
         self.inner.get("state").as_::<RTCSctpTransportState>()
     }
-
 }
 impl RTCSctpTransport {
     pub fn max_message_size(&self) -> f64 {
         self.inner.get("maxMessageSize").as_::<f64>()
     }
-
 }
 impl RTCSctpTransport {
     pub fn max_channels(&self) -> u16 {
         self.inner.get("maxChannels").as_::<u16>()
     }
-
 }
 impl RTCSctpTransport {
     pub fn onstatechange(&self) -> Any {
@@ -82,5 +76,4 @@ impl RTCSctpTransport {
     pub fn set_onstatechange(&mut self, value: Any) {
         self.inner.set("onstatechange", value);
     }
-
 }

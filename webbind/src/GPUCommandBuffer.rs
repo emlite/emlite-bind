@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUCommandBuffer {
@@ -10,7 +7,9 @@ pub struct GPUCommandBuffer {
 }
 impl FromVal for GPUCommandBuffer {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUCommandBuffer { inner: emlite::Val::from_val(v) }
+        GPUCommandBuffer {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for GPUCommandBuffer {
 }
 impl AsMut<emlite::Val> for GPUCommandBuffer {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<GPUCommandBuffer> for emlite::Val {
     fn from(s: GPUCommandBuffer) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<GPUCommandBuffer> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GPUCommandBuffer);
 
-
 impl GPUCommandBuffer {
     pub fn label(&self) -> USVString {
         self.inner.get("label").as_::<USVString>()
@@ -58,5 +56,4 @@ impl GPUCommandBuffer {
     pub fn set_label(&mut self, value: USVString) {
         self.inner.set("label", value);
     }
-
 }

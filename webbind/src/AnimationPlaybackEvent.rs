@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AnimationPlaybackEvent {
@@ -10,7 +7,9 @@ pub struct AnimationPlaybackEvent {
 }
 impl FromVal for AnimationPlaybackEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        AnimationPlaybackEvent { inner: Event::from_val(v) }
+        AnimationPlaybackEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for AnimationPlaybackEvent {
 }
 impl AsMut<emlite::Val> for AnimationPlaybackEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AnimationPlaybackEvent> for emlite::Val {
     fn from(s: AnimationPlaybackEvent) -> emlite::Val {
@@ -49,31 +48,30 @@ impl From<AnimationPlaybackEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AnimationPlaybackEvent);
 
-
-
 impl AnimationPlaybackEvent {
     pub fn new0(type_: DOMString) -> AnimationPlaybackEvent {
         Self {
-            inner: emlite::Val::global("AnimationPlaybackEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: emlite::Val::global("AnimationPlaybackEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     pub fn new1(type_: DOMString, event_init_dict: Any) -> AnimationPlaybackEvent {
         Self {
-            inner: emlite::Val::global("AnimationPlaybackEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("AnimationPlaybackEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl AnimationPlaybackEvent {
     pub fn current_time(&self) -> Any {
         self.inner.get("currentTime").as_::<Any>()
     }
-
 }
 impl AnimationPlaybackEvent {
     pub fn timeline_time(&self) -> Any {
         self.inner.get("timelineTime").as_::<Any>()
     }
-
 }

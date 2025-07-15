@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaCapabilitiesDecodingInfo {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for MediaCapabilitiesDecodingInfo {
 }
 impl AsMut<emlite::Val> for MediaCapabilitiesDecodingInfo {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MediaCapabilitiesDecodingInfo> for emlite::Val {
     fn from(s: MediaCapabilitiesDecodingInfo) -> emlite::Val {
@@ -50,23 +47,25 @@ impl From<MediaCapabilitiesDecodingInfo> for emlite::Val {
 
 impl MediaCapabilitiesDecodingInfo {
     pub fn key_system_access(&self) -> MediaKeySystemAccess {
-        self.inner.get("keySystemAccess").as_::<MediaKeySystemAccess>()
+        self.inner
+            .get("keySystemAccess")
+            .as_::<MediaKeySystemAccess>()
     }
 
     pub fn set_key_system_access(&mut self, value: MediaKeySystemAccess) {
         self.inner.set("keySystemAccess", value);
     }
-
 }
 impl MediaCapabilitiesDecodingInfo {
     pub fn configuration(&self) -> MediaDecodingConfiguration {
-        self.inner.get("configuration").as_::<MediaDecodingConfiguration>()
+        self.inner
+            .get("configuration")
+            .as_::<MediaDecodingConfiguration>()
     }
 
     pub fn set_configuration(&mut self, value: MediaDecodingConfiguration) {
         self.inner.set("configuration", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -102,8 +101,8 @@ impl AsRef<emlite::Val> for MediaDecodingConfiguration {
 }
 impl AsMut<emlite::Val> for MediaDecodingConfiguration {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MediaDecodingConfiguration> for emlite::Val {
     fn from(s: MediaDecodingConfiguration) -> emlite::Val {
@@ -121,7 +120,6 @@ impl MediaDecodingConfiguration {
     pub fn set_type_(&mut self, value: MediaDecodingType) {
         self.inner.set("type", value);
     }
-
 }
 impl MediaDecodingConfiguration {
     pub fn key_system_configuration(&self) -> Any {
@@ -131,7 +129,6 @@ impl MediaDecodingConfiguration {
     pub fn set_key_system_configuration(&mut self, value: Any) {
         self.inner.set("keySystemConfiguration", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -167,8 +164,8 @@ impl AsRef<emlite::Val> for MediaCapabilitiesEncodingInfo {
 }
 impl AsMut<emlite::Val> for MediaCapabilitiesEncodingInfo {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MediaCapabilitiesEncodingInfo> for emlite::Val {
     fn from(s: MediaCapabilitiesEncodingInfo) -> emlite::Val {
@@ -180,13 +177,14 @@ impl From<MediaCapabilitiesEncodingInfo> for emlite::Val {
 
 impl MediaCapabilitiesEncodingInfo {
     pub fn configuration(&self) -> MediaEncodingConfiguration {
-        self.inner.get("configuration").as_::<MediaEncodingConfiguration>()
+        self.inner
+            .get("configuration")
+            .as_::<MediaEncodingConfiguration>()
     }
 
     pub fn set_configuration(&mut self, value: MediaEncodingConfiguration) {
         self.inner.set("configuration", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -222,8 +220,8 @@ impl AsRef<emlite::Val> for MediaEncodingConfiguration {
 }
 impl AsMut<emlite::Val> for MediaEncodingConfiguration {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MediaEncodingConfiguration> for emlite::Val {
     fn from(s: MediaEncodingConfiguration) -> emlite::Val {
@@ -241,7 +239,6 @@ impl MediaEncodingConfiguration {
     pub fn set_type_(&mut self, value: MediaEncodingType) {
         self.inner.set("type", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -250,7 +247,9 @@ pub struct MediaCapabilities {
 }
 impl FromVal for MediaCapabilities {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaCapabilities { inner: emlite::Val::from_val(v) }
+        MediaCapabilities {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -277,8 +276,8 @@ impl AsRef<emlite::Val> for MediaCapabilities {
 }
 impl AsMut<emlite::Val> for MediaCapabilities {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MediaCapabilities> for emlite::Val {
     fn from(s: MediaCapabilities) -> emlite::Val {
@@ -289,16 +288,17 @@ impl From<MediaCapabilities> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MediaCapabilities);
 
-
 impl MediaCapabilities {
     pub fn decoding_info(&self, configuration: MediaDecodingConfiguration) -> Promise {
-        self.inner.call("decodingInfo", &[configuration.into(), ]).as_::<Promise>()
+        self.inner
+            .call("decodingInfo", &[configuration.into()])
+            .as_::<Promise>()
     }
-
 }
 impl MediaCapabilities {
     pub fn encoding_info(&self, configuration: MediaEncodingConfiguration) -> Promise {
-        self.inner.call("encodingInfo", &[configuration.into(), ]).as_::<Promise>()
+        self.inner
+            .call("encodingInfo", &[configuration.into()])
+            .as_::<Promise>()
     }
-
 }

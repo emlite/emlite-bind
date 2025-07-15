@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCIdentityProviderGlobalScope {
@@ -10,7 +7,9 @@ pub struct RTCIdentityProviderGlobalScope {
 }
 impl FromVal for RTCIdentityProviderGlobalScope {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCIdentityProviderGlobalScope { inner: WorkerGlobalScope::from_val(v) }
+        RTCIdentityProviderGlobalScope {
+            inner: WorkerGlobalScope::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for RTCIdentityProviderGlobalScope {
 }
 impl AsMut<emlite::Val> for RTCIdentityProviderGlobalScope {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<RTCIdentityProviderGlobalScope> for emlite::Val {
     fn from(s: RTCIdentityProviderGlobalScope) -> emlite::Val {
@@ -49,10 +48,10 @@ impl From<RTCIdentityProviderGlobalScope> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCIdentityProviderGlobalScope);
 
-
 impl RTCIdentityProviderGlobalScope {
     pub fn rtc_identity_provider(&self) -> RTCIdentityProviderRegistrar {
-        self.inner.get("rtcIdentityProvider").as_::<RTCIdentityProviderRegistrar>()
+        self.inner
+            .get("rtcIdentityProvider")
+            .as_::<RTCIdentityProviderRegistrar>()
     }
-
 }

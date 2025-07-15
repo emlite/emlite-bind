@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct LayoutFragment {
@@ -10,7 +7,9 @@ pub struct LayoutFragment {
 }
 impl FromVal for LayoutFragment {
     fn from_val(v: &emlite::Val) -> Self {
-        LayoutFragment { inner: emlite::Val::from_val(v) }
+        LayoutFragment {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for LayoutFragment {
 }
 impl AsMut<emlite::Val> for LayoutFragment {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<LayoutFragment> for emlite::Val {
     fn from(s: LayoutFragment) -> emlite::Val {
@@ -49,18 +48,15 @@ impl From<LayoutFragment> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(LayoutFragment);
 
-
 impl LayoutFragment {
     pub fn inline_size(&self) -> f64 {
         self.inner.get("inlineSize").as_::<f64>()
     }
-
 }
 impl LayoutFragment {
     pub fn block_size(&self) -> f64 {
         self.inner.get("blockSize").as_::<f64>()
     }
-
 }
 impl LayoutFragment {
     pub fn inline_offset(&self) -> f64 {
@@ -70,7 +66,6 @@ impl LayoutFragment {
     pub fn set_inline_offset(&mut self, value: f64) {
         self.inner.set("inlineOffset", value);
     }
-
 }
 impl LayoutFragment {
     pub fn block_offset(&self) -> f64 {
@@ -80,17 +75,14 @@ impl LayoutFragment {
     pub fn set_block_offset(&mut self, value: f64) {
         self.inner.set("blockOffset", value);
     }
-
 }
 impl LayoutFragment {
     pub fn data(&self) -> Any {
         self.inner.get("data").as_::<Any>()
     }
-
 }
 impl LayoutFragment {
     pub fn break_token(&self) -> ChildBreakToken {
         self.inner.get("breakToken").as_::<ChildBreakToken>()
     }
-
 }

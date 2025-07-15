@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TrackEvent {
@@ -10,7 +7,9 @@ pub struct TrackEvent {
 }
 impl FromVal for TrackEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        TrackEvent { inner: Event::from_val(v) }
+        TrackEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for TrackEvent {
 }
 impl AsMut<emlite::Val> for TrackEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<TrackEvent> for emlite::Val {
     fn from(s: TrackEvent) -> emlite::Val {
@@ -49,25 +48,25 @@ impl From<TrackEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(TrackEvent);
 
-
-
 impl TrackEvent {
     pub fn new0(type_: DOMString) -> TrackEvent {
         Self {
-            inner: emlite::Val::global("TrackEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: emlite::Val::global("TrackEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     pub fn new1(type_: DOMString, event_init_dict: Any) -> TrackEvent {
         Self {
-            inner: emlite::Val::global("TrackEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("TrackEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl TrackEvent {
     pub fn track(&self) -> Any {
         self.inner.get("track").as_::<Any>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AttributionImpressionResult {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for AttributionImpressionResult {
 }
 impl AsMut<emlite::Val> for AttributionImpressionResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AttributionImpressionResult> for emlite::Val {
     fn from(s: AttributionImpressionResult) -> emlite::Val {
@@ -82,8 +79,8 @@ impl AsRef<emlite::Val> for AttributionImpressionOptions {
 }
 impl AsMut<emlite::Val> for AttributionImpressionOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AttributionImpressionOptions> for emlite::Val {
     fn from(s: AttributionImpressionOptions) -> emlite::Val {
@@ -101,7 +98,6 @@ impl AttributionImpressionOptions {
     pub fn set_histogram_index(&mut self, value: u32) {
         self.inner.set("histogramIndex", value);
     }
-
 }
 impl AttributionImpressionOptions {
     pub fn match_value(&self) -> u32 {
@@ -111,27 +107,28 @@ impl AttributionImpressionOptions {
     pub fn set_match_value(&mut self, value: u32) {
         self.inner.set("matchValue", value);
     }
-
 }
 impl AttributionImpressionOptions {
     pub fn conversion_sites(&self) -> Sequence<USVString> {
-        self.inner.get("conversionSites").as_::<Sequence<USVString>>()
+        self.inner
+            .get("conversionSites")
+            .as_::<Sequence<USVString>>()
     }
 
     pub fn set_conversion_sites(&mut self, value: Sequence<USVString>) {
         self.inner.set("conversionSites", value);
     }
-
 }
 impl AttributionImpressionOptions {
     pub fn conversion_callers(&self) -> Sequence<USVString> {
-        self.inner.get("conversionCallers").as_::<Sequence<USVString>>()
+        self.inner
+            .get("conversionCallers")
+            .as_::<Sequence<USVString>>()
     }
 
     pub fn set_conversion_callers(&mut self, value: Sequence<USVString>) {
         self.inner.set("conversionCallers", value);
     }
-
 }
 impl AttributionImpressionOptions {
     pub fn lifetime_days(&self) -> u32 {
@@ -141,7 +138,6 @@ impl AttributionImpressionOptions {
     pub fn set_lifetime_days(&mut self, value: u32) {
         self.inner.set("lifetimeDays", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -177,8 +173,8 @@ impl AsRef<emlite::Val> for AttributionConversionResult {
 }
 impl AsMut<emlite::Val> for AttributionConversionResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AttributionConversionResult> for emlite::Val {
     fn from(s: AttributionConversionResult) -> emlite::Val {
@@ -196,7 +192,6 @@ impl AttributionConversionResult {
     pub fn set_report(&mut self, value: Uint8Array) {
         self.inner.set("report", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -232,8 +227,8 @@ impl AsRef<emlite::Val> for AttributionConversionOptions {
 }
 impl AsMut<emlite::Val> for AttributionConversionOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AttributionConversionOptions> for emlite::Val {
     fn from(s: AttributionConversionOptions) -> emlite::Val {
@@ -251,7 +246,6 @@ impl AttributionConversionOptions {
     pub fn set_aggregation_service(&mut self, value: USVString) {
         self.inner.set("aggregationService", value);
     }
-
 }
 impl AttributionConversionOptions {
     pub fn epsilon(&self) -> f64 {
@@ -261,7 +255,6 @@ impl AttributionConversionOptions {
     pub fn set_epsilon(&mut self, value: f64) {
         self.inner.set("epsilon", value);
     }
-
 }
 impl AttributionConversionOptions {
     pub fn histogram_size(&self) -> u32 {
@@ -271,7 +264,6 @@ impl AttributionConversionOptions {
     pub fn set_histogram_size(&mut self, value: u32) {
         self.inner.set("histogramSize", value);
     }
-
 }
 impl AttributionConversionOptions {
     pub fn lookback_days(&self) -> u32 {
@@ -281,7 +273,6 @@ impl AttributionConversionOptions {
     pub fn set_lookback_days(&mut self, value: u32) {
         self.inner.set("lookbackDays", value);
     }
-
 }
 impl AttributionConversionOptions {
     pub fn match_values(&self) -> Sequence<u32> {
@@ -291,27 +282,28 @@ impl AttributionConversionOptions {
     pub fn set_match_values(&mut self, value: Sequence<u32>) {
         self.inner.set("matchValues", value);
     }
-
 }
 impl AttributionConversionOptions {
     pub fn impression_sites(&self) -> Sequence<USVString> {
-        self.inner.get("impressionSites").as_::<Sequence<USVString>>()
+        self.inner
+            .get("impressionSites")
+            .as_::<Sequence<USVString>>()
     }
 
     pub fn set_impression_sites(&mut self, value: Sequence<USVString>) {
         self.inner.set("impressionSites", value);
     }
-
 }
 impl AttributionConversionOptions {
     pub fn impression_callers(&self) -> Sequence<USVString> {
-        self.inner.get("impressionCallers").as_::<Sequence<USVString>>()
+        self.inner
+            .get("impressionCallers")
+            .as_::<Sequence<USVString>>()
     }
 
     pub fn set_impression_callers(&mut self, value: Sequence<USVString>) {
         self.inner.set("impressionCallers", value);
     }
-
 }
 impl AttributionConversionOptions {
     pub fn logic(&self) -> AttributionLogic {
@@ -321,7 +313,6 @@ impl AttributionConversionOptions {
     pub fn set_logic(&mut self, value: AttributionLogic) {
         self.inner.set("logic", value);
     }
-
 }
 impl AttributionConversionOptions {
     pub fn value(&self) -> u32 {
@@ -331,7 +322,6 @@ impl AttributionConversionOptions {
     pub fn set_value(&mut self, value: u32) {
         self.inner.set("value", value);
     }
-
 }
 impl AttributionConversionOptions {
     pub fn max_value(&self) -> u32 {
@@ -341,7 +331,6 @@ impl AttributionConversionOptions {
     pub fn set_max_value(&mut self, value: u32) {
         self.inner.set("maxValue", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -350,7 +339,9 @@ pub struct Attribution {
 }
 impl FromVal for Attribution {
     fn from_val(v: &emlite::Val) -> Self {
-        Attribution { inner: emlite::Val::from_val(v) }
+        Attribution {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -377,8 +368,8 @@ impl AsRef<emlite::Val> for Attribution {
 }
 impl AsMut<emlite::Val> for Attribution {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Attribution> for emlite::Val {
     fn from(s: Attribution) -> emlite::Val {
@@ -389,22 +380,24 @@ impl From<Attribution> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Attribution);
 
-
 impl Attribution {
     pub fn aggregation_services(&self) -> AttributionAggregationServices {
-        self.inner.get("aggregationServices").as_::<AttributionAggregationServices>()
+        self.inner
+            .get("aggregationServices")
+            .as_::<AttributionAggregationServices>()
     }
-
 }
 impl Attribution {
     pub fn save_impression(&self, options: AttributionImpressionOptions) -> Promise {
-        self.inner.call("saveImpression", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("saveImpression", &[options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl Attribution {
     pub fn measure_conversion(&self, options: AttributionConversionOptions) -> Promise {
-        self.inner.call("measureConversion", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("measureConversion", &[options.into()])
+            .as_::<Promise>()
     }
-
 }

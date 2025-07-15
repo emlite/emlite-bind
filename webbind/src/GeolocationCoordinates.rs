@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GeolocationCoordinates {
@@ -10,7 +7,9 @@ pub struct GeolocationCoordinates {
 }
 impl FromVal for GeolocationCoordinates {
     fn from_val(v: &emlite::Val) -> Self {
-        GeolocationCoordinates { inner: emlite::Val::from_val(v) }
+        GeolocationCoordinates {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for GeolocationCoordinates {
 }
 impl AsMut<emlite::Val> for GeolocationCoordinates {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<GeolocationCoordinates> for emlite::Val {
     fn from(s: GeolocationCoordinates) -> emlite::Val {
@@ -49,52 +48,43 @@ impl From<GeolocationCoordinates> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GeolocationCoordinates);
 
-
 impl GeolocationCoordinates {
     pub fn accuracy(&self) -> f64 {
         self.inner.get("accuracy").as_::<f64>()
     }
-
 }
 impl GeolocationCoordinates {
     pub fn latitude(&self) -> f64 {
         self.inner.get("latitude").as_::<f64>()
     }
-
 }
 impl GeolocationCoordinates {
     pub fn longitude(&self) -> f64 {
         self.inner.get("longitude").as_::<f64>()
     }
-
 }
 impl GeolocationCoordinates {
     pub fn altitude(&self) -> f64 {
         self.inner.get("altitude").as_::<f64>()
     }
-
 }
 impl GeolocationCoordinates {
     pub fn altitude_accuracy(&self) -> f64 {
         self.inner.get("altitudeAccuracy").as_::<f64>()
     }
-
 }
 impl GeolocationCoordinates {
     pub fn heading(&self) -> f64 {
         self.inner.get("heading").as_::<f64>()
     }
-
 }
 impl GeolocationCoordinates {
     pub fn speed(&self) -> f64 {
         self.inner.get("speed").as_::<f64>()
     }
-
 }
 impl GeolocationCoordinates {
-    pub fn to_json(&self, ) -> Object {
+    pub fn to_json(&self) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
-
 }

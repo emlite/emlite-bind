@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct OrientationSensor {
@@ -10,7 +7,9 @@ pub struct OrientationSensor {
 }
 impl FromVal for OrientationSensor {
     fn from_val(v: &emlite::Val) -> Self {
-        OrientationSensor { inner: Sensor::from_val(v) }
+        OrientationSensor {
+            inner: Sensor::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for OrientationSensor {
 }
 impl AsMut<emlite::Val> for OrientationSensor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<OrientationSensor> for emlite::Val {
     fn from(s: OrientationSensor) -> emlite::Val {
@@ -49,16 +48,15 @@ impl From<OrientationSensor> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(OrientationSensor);
 
-
 impl OrientationSensor {
     pub fn quaternion(&self) -> FrozenArray<f64> {
         self.inner.get("quaternion").as_::<FrozenArray<f64>>()
     }
-
 }
 impl OrientationSensor {
     pub fn populate_matrix(&self, target_matrix: Any) -> Undefined {
-        self.inner.call("populateMatrix", &[target_matrix.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("populateMatrix", &[target_matrix.into()])
+            .as_::<Undefined>()
     }
-
 }

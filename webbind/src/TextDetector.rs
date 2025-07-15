@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DetectedText {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for DetectedText {
 }
 impl AsMut<emlite::Val> for DetectedText {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<DetectedText> for emlite::Val {
     fn from(s: DetectedText) -> emlite::Val {
@@ -56,7 +53,6 @@ impl DetectedText {
     pub fn set_bounding_box(&mut self, value: DOMRectReadOnly) {
         self.inner.set("boundingBox", value);
     }
-
 }
 impl DetectedText {
     pub fn raw_value(&self) -> DOMString {
@@ -66,7 +62,6 @@ impl DetectedText {
     pub fn set_raw_value(&mut self, value: DOMString) {
         self.inner.set("rawValue", value);
     }
-
 }
 impl DetectedText {
     pub fn corner_points(&self) -> Sequence<Any> {
@@ -76,7 +71,6 @@ impl DetectedText {
     pub fn set_corner_points(&mut self, value: Sequence<Any>) {
         self.inner.set("cornerPoints", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -85,7 +79,9 @@ pub struct TextDetector {
 }
 impl FromVal for TextDetector {
     fn from_val(v: &emlite::Val) -> Self {
-        TextDetector { inner: emlite::Val::from_val(v) }
+        TextDetector {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -112,8 +108,8 @@ impl AsRef<emlite::Val> for TextDetector {
 }
 impl AsMut<emlite::Val> for TextDetector {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<TextDetector> for emlite::Val {
     fn from(s: TextDetector) -> emlite::Val {
@@ -124,19 +120,17 @@ impl From<TextDetector> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(TextDetector);
 
-
-
 impl TextDetector {
     pub fn new() -> TextDetector {
         Self {
-            inner: emlite::Val::global("TextDetector").new(&[]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("TextDetector")
+                .new(&[])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl TextDetector {
     pub fn detect(&self, image: Any) -> Promise {
-        self.inner.call("detect", &[image.into(), ]).as_::<Promise>()
+        self.inner.call("detect", &[image.into()]).as_::<Promise>()
     }
-
 }

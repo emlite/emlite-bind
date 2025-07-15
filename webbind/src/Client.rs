@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Client {
@@ -10,7 +7,9 @@ pub struct Client {
 }
 impl FromVal for Client {
     fn from_val(v: &emlite::Val) -> Self {
-        Client { inner: emlite::Val::from_val(v) }
+        Client {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for Client {
 }
 impl AsMut<emlite::Val> for Client {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Client> for emlite::Val {
     fn from(s: Client) -> emlite::Val {
@@ -49,44 +48,43 @@ impl From<Client> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Client);
 
-
 impl Client {
     pub fn url(&self) -> USVString {
         self.inner.get("url").as_::<USVString>()
     }
-
 }
 impl Client {
     pub fn frame_type(&self) -> FrameType {
         self.inner.get("frameType").as_::<FrameType>()
     }
-
 }
 impl Client {
     pub fn id(&self) -> DOMString {
         self.inner.get("id").as_::<DOMString>()
     }
-
 }
 impl Client {
     pub fn type_(&self) -> ClientType {
         self.inner.get("type").as_::<ClientType>()
     }
-
 }
 impl Client {
     pub fn post_message0(&self, message: Any) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
     }
 
     pub fn post_message1(&self, message: Any, options: StructuredSerializeOptions) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Client {
     pub fn lifecycle_state(&self) -> ClientLifecycleState {
-        self.inner.get("lifecycleState").as_::<ClientLifecycleState>()
+        self.inner
+            .get("lifecycleState")
+            .as_::<ClientLifecycleState>()
     }
-
 }

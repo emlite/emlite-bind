@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GeolocationSensorReading {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for GeolocationSensorReading {
 }
 impl AsMut<emlite::Val> for GeolocationSensorReading {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<GeolocationSensorReading> for emlite::Val {
     fn from(s: GeolocationSensorReading) -> emlite::Val {
@@ -56,7 +53,6 @@ impl GeolocationSensorReading {
     pub fn set_timestamp(&mut self, value: Any) {
         self.inner.set("timestamp", value);
     }
-
 }
 impl GeolocationSensorReading {
     pub fn latitude(&self) -> f64 {
@@ -66,7 +62,6 @@ impl GeolocationSensorReading {
     pub fn set_latitude(&mut self, value: f64) {
         self.inner.set("latitude", value);
     }
-
 }
 impl GeolocationSensorReading {
     pub fn longitude(&self) -> f64 {
@@ -76,7 +71,6 @@ impl GeolocationSensorReading {
     pub fn set_longitude(&mut self, value: f64) {
         self.inner.set("longitude", value);
     }
-
 }
 impl GeolocationSensorReading {
     pub fn altitude(&self) -> f64 {
@@ -86,7 +80,6 @@ impl GeolocationSensorReading {
     pub fn set_altitude(&mut self, value: f64) {
         self.inner.set("altitude", value);
     }
-
 }
 impl GeolocationSensorReading {
     pub fn accuracy(&self) -> f64 {
@@ -96,7 +89,6 @@ impl GeolocationSensorReading {
     pub fn set_accuracy(&mut self, value: f64) {
         self.inner.set("accuracy", value);
     }
-
 }
 impl GeolocationSensorReading {
     pub fn altitude_accuracy(&self) -> f64 {
@@ -106,7 +98,6 @@ impl GeolocationSensorReading {
     pub fn set_altitude_accuracy(&mut self, value: f64) {
         self.inner.set("altitudeAccuracy", value);
     }
-
 }
 impl GeolocationSensorReading {
     pub fn heading(&self) -> f64 {
@@ -116,7 +107,6 @@ impl GeolocationSensorReading {
     pub fn set_heading(&mut self, value: f64) {
         self.inner.set("heading", value);
     }
-
 }
 impl GeolocationSensorReading {
     pub fn speed(&self) -> f64 {
@@ -126,7 +116,6 @@ impl GeolocationSensorReading {
     pub fn set_speed(&mut self, value: f64) {
         self.inner.set("speed", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -162,8 +151,8 @@ impl AsRef<emlite::Val> for ReadOptions {
 }
 impl AsMut<emlite::Val> for ReadOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ReadOptions> for emlite::Val {
     fn from(s: ReadOptions) -> emlite::Val {
@@ -181,7 +170,6 @@ impl ReadOptions {
     pub fn set_signal(&mut self, value: AbortSignal) {
         self.inner.set("signal", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -190,7 +178,9 @@ pub struct GeolocationSensor {
 }
 impl FromVal for GeolocationSensor {
     fn from_val(v: &emlite::Val) -> Self {
-        GeolocationSensor { inner: Sensor::from_val(v) }
+        GeolocationSensor {
+            inner: Sensor::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -217,8 +207,8 @@ impl AsRef<emlite::Val> for GeolocationSensor {
 }
 impl AsMut<emlite::Val> for GeolocationSensor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<GeolocationSensor> for emlite::Val {
     fn from(s: GeolocationSensor) -> emlite::Val {
@@ -229,71 +219,68 @@ impl From<GeolocationSensor> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GeolocationSensor);
 
-
-
 impl GeolocationSensor {
     pub fn new0() -> GeolocationSensor {
         Self {
-            inner: emlite::Val::global("GeolocationSensor").new(&[]).as_::<Sensor>(),
+            inner: emlite::Val::global("GeolocationSensor")
+                .new(&[])
+                .as_::<Sensor>(),
         }
     }
 
     pub fn new1(options: Any) -> GeolocationSensor {
         Self {
-            inner: emlite::Val::global("GeolocationSensor").new(&[options.into()]).as_::<Sensor>(),
+            inner: emlite::Val::global("GeolocationSensor")
+                .new(&[options.into()])
+                .as_::<Sensor>(),
         }
     }
-
 }
 impl GeolocationSensor {
     pub fn read0() -> Promise {
-        emlite::Val::global("geolocationsensor").call("read", &[]).as_::<Promise>()
+        emlite::Val::global("GeolocationSensor")
+            .call("read", &[])
+            .as_::<Promise>()
     }
 
     pub fn read1(read_options: ReadOptions) -> Promise {
-        emlite::Val::global("geolocationsensor").call("read", &[read_options.into(), ]).as_::<Promise>()
+        emlite::Val::global("GeolocationSensor")
+            .call("read", &[read_options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl GeolocationSensor {
     pub fn latitude(&self) -> f64 {
         self.inner.get("latitude").as_::<f64>()
     }
-
 }
 impl GeolocationSensor {
     pub fn longitude(&self) -> f64 {
         self.inner.get("longitude").as_::<f64>()
     }
-
 }
 impl GeolocationSensor {
     pub fn altitude(&self) -> f64 {
         self.inner.get("altitude").as_::<f64>()
     }
-
 }
 impl GeolocationSensor {
     pub fn accuracy(&self) -> f64 {
         self.inner.get("accuracy").as_::<f64>()
     }
-
 }
 impl GeolocationSensor {
     pub fn altitude_accuracy(&self) -> f64 {
         self.inner.get("altitudeAccuracy").as_::<f64>()
     }
-
 }
 impl GeolocationSensor {
     pub fn heading(&self) -> f64 {
         self.inner.get("heading").as_::<f64>()
     }
-
 }
 impl GeolocationSensor {
     pub fn speed(&self) -> f64 {
         self.inner.get("speed").as_::<f64>()
     }
-
 }

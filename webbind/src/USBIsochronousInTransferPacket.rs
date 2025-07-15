@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct USBIsochronousInTransferPacket {
@@ -10,7 +7,9 @@ pub struct USBIsochronousInTransferPacket {
 }
 impl FromVal for USBIsochronousInTransferPacket {
     fn from_val(v: &emlite::Val) -> Self {
-        USBIsochronousInTransferPacket { inner: emlite::Val::from_val(v) }
+        USBIsochronousInTransferPacket {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for USBIsochronousInTransferPacket {
 }
 impl AsMut<emlite::Val> for USBIsochronousInTransferPacket {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<USBIsochronousInTransferPacket> for emlite::Val {
     fn from(s: USBIsochronousInTransferPacket) -> emlite::Val {
@@ -49,31 +48,30 @@ impl From<USBIsochronousInTransferPacket> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(USBIsochronousInTransferPacket);
 
-
-
 impl USBIsochronousInTransferPacket {
     pub fn new0(status: USBTransferStatus) -> USBIsochronousInTransferPacket {
         Self {
-            inner: emlite::Val::global("USBIsochronousInTransferPacket").new(&[status.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("USBIsochronousInTransferPacket")
+                .new(&[status.into()])
+                .as_::<emlite::Val>(),
         }
     }
 
     pub fn new1(status: USBTransferStatus, data: DataView) -> USBIsochronousInTransferPacket {
         Self {
-            inner: emlite::Val::global("USBIsochronousInTransferPacket").new(&[status.into(), data.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("USBIsochronousInTransferPacket")
+                .new(&[status.into(), data.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl USBIsochronousInTransferPacket {
     pub fn data(&self) -> DataView {
         self.inner.get("data").as_::<DataView>()
     }
-
 }
 impl USBIsochronousInTransferPacket {
     pub fn status(&self) -> USBTransferStatus {
         self.inner.get("status").as_::<USBTransferStatus>()
     }
-
 }

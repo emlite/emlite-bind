@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VideoDecoderConfig {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for VideoDecoderConfig {
 }
 impl AsMut<emlite::Val> for VideoDecoderConfig {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<VideoDecoderConfig> for emlite::Val {
     fn from(s: VideoDecoderConfig) -> emlite::Val {
@@ -56,7 +53,6 @@ impl VideoDecoderConfig {
     pub fn set_codec(&mut self, value: DOMString) {
         self.inner.set("codec", value);
     }
-
 }
 impl VideoDecoderConfig {
     pub fn description(&self) -> Any {
@@ -66,7 +62,6 @@ impl VideoDecoderConfig {
     pub fn set_description(&mut self, value: Any) {
         self.inner.set("description", value);
     }
-
 }
 impl VideoDecoderConfig {
     pub fn coded_width(&self) -> u32 {
@@ -76,7 +71,6 @@ impl VideoDecoderConfig {
     pub fn set_coded_width(&mut self, value: u32) {
         self.inner.set("codedWidth", value);
     }
-
 }
 impl VideoDecoderConfig {
     pub fn coded_height(&self) -> u32 {
@@ -86,7 +80,6 @@ impl VideoDecoderConfig {
     pub fn set_coded_height(&mut self, value: u32) {
         self.inner.set("codedHeight", value);
     }
-
 }
 impl VideoDecoderConfig {
     pub fn display_aspect_width(&self) -> u32 {
@@ -96,7 +89,6 @@ impl VideoDecoderConfig {
     pub fn set_display_aspect_width(&mut self, value: u32) {
         self.inner.set("displayAspectWidth", value);
     }
-
 }
 impl VideoDecoderConfig {
     pub fn display_aspect_height(&self) -> u32 {
@@ -106,7 +98,6 @@ impl VideoDecoderConfig {
     pub fn set_display_aspect_height(&mut self, value: u32) {
         self.inner.set("displayAspectHeight", value);
     }
-
 }
 impl VideoDecoderConfig {
     pub fn color_space(&self) -> VideoColorSpaceInit {
@@ -116,17 +107,17 @@ impl VideoDecoderConfig {
     pub fn set_color_space(&mut self, value: VideoColorSpaceInit) {
         self.inner.set("colorSpace", value);
     }
-
 }
 impl VideoDecoderConfig {
     pub fn hardware_acceleration(&self) -> HardwareAcceleration {
-        self.inner.get("hardwareAcceleration").as_::<HardwareAcceleration>()
+        self.inner
+            .get("hardwareAcceleration")
+            .as_::<HardwareAcceleration>()
     }
 
     pub fn set_hardware_acceleration(&mut self, value: HardwareAcceleration) {
         self.inner.set("hardwareAcceleration", value);
     }
-
 }
 impl VideoDecoderConfig {
     pub fn optimize_for_latency(&self) -> bool {
@@ -136,7 +127,6 @@ impl VideoDecoderConfig {
     pub fn set_optimize_for_latency(&mut self, value: bool) {
         self.inner.set("optimizeForLatency", value);
     }
-
 }
 impl VideoDecoderConfig {
     pub fn rotation(&self) -> f64 {
@@ -146,7 +136,6 @@ impl VideoDecoderConfig {
     pub fn set_rotation(&mut self, value: f64) {
         self.inner.set("rotation", value);
     }
-
 }
 impl VideoDecoderConfig {
     pub fn flip(&self) -> bool {
@@ -156,7 +145,6 @@ impl VideoDecoderConfig {
     pub fn set_flip(&mut self, value: bool) {
         self.inner.set("flip", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -192,8 +180,8 @@ impl AsRef<emlite::Val> for VideoDecoderSupport {
 }
 impl AsMut<emlite::Val> for VideoDecoderSupport {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<VideoDecoderSupport> for emlite::Val {
     fn from(s: VideoDecoderSupport) -> emlite::Val {
@@ -211,7 +199,6 @@ impl VideoDecoderSupport {
     pub fn set_supported(&mut self, value: bool) {
         self.inner.set("supported", value);
     }
-
 }
 impl VideoDecoderSupport {
     pub fn config(&self) -> VideoDecoderConfig {
@@ -221,7 +208,6 @@ impl VideoDecoderSupport {
     pub fn set_config(&mut self, value: VideoDecoderConfig) {
         self.inner.set("config", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -230,7 +216,9 @@ pub struct VideoDecoder {
 }
 impl FromVal for VideoDecoder {
     fn from_val(v: &emlite::Val) -> Self {
-        VideoDecoder { inner: EventTarget::from_val(v) }
+        VideoDecoder {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -257,8 +245,8 @@ impl AsRef<emlite::Val> for VideoDecoder {
 }
 impl AsMut<emlite::Val> for VideoDecoder {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<VideoDecoder> for emlite::Val {
     fn from(s: VideoDecoder) -> emlite::Val {
@@ -269,27 +257,24 @@ impl From<VideoDecoder> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(VideoDecoder);
 
-
-
 impl VideoDecoder {
     pub fn new(init: Any) -> VideoDecoder {
         Self {
-            inner: emlite::Val::global("VideoDecoder").new(&[init.into()]).as_::<EventTarget>(),
+            inner: emlite::Val::global("VideoDecoder")
+                .new(&[init.into()])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl VideoDecoder {
     pub fn state(&self) -> CodecState {
         self.inner.get("state").as_::<CodecState>()
     }
-
 }
 impl VideoDecoder {
     pub fn decode_queue_size(&self) -> u32 {
         self.inner.get("decodeQueueSize").as_::<u32>()
     }
-
 }
 impl VideoDecoder {
     pub fn ondequeue(&self) -> Any {
@@ -299,41 +284,40 @@ impl VideoDecoder {
     pub fn set_ondequeue(&mut self, value: Any) {
         self.inner.set("ondequeue", value);
     }
-
 }
 impl VideoDecoder {
     pub fn configure(&self, config: VideoDecoderConfig) -> Undefined {
-        self.inner.call("configure", &[config.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("configure", &[config.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl VideoDecoder {
     pub fn decode(&self, chunk: EncodedVideoChunk) -> Undefined {
-        self.inner.call("decode", &[chunk.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("decode", &[chunk.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl VideoDecoder {
-    pub fn flush(&self, ) -> Promise {
+    pub fn flush(&self) -> Promise {
         self.inner.call("flush", &[]).as_::<Promise>()
     }
-
 }
 impl VideoDecoder {
-    pub fn reset(&self, ) -> Undefined {
+    pub fn reset(&self) -> Undefined {
         self.inner.call("reset", &[]).as_::<Undefined>()
     }
-
 }
 impl VideoDecoder {
-    pub fn close(&self, ) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
-
 }
 impl VideoDecoder {
     pub fn is_config_supported(config: VideoDecoderConfig) -> Promise {
-        emlite::Val::global("videodecoder").call("isConfigSupported", &[config.into(), ]).as_::<Promise>()
+        emlite::Val::global("VideoDecoder")
+            .call("isConfigSupported", &[config.into()])
+            .as_::<Promise>()
     }
-
 }

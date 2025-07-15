@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FragmentResult {
@@ -10,7 +7,9 @@ pub struct FragmentResult {
 }
 impl FromVal for FragmentResult {
     fn from_val(v: &emlite::Val) -> Self {
-        FragmentResult { inner: emlite::Val::from_val(v) }
+        FragmentResult {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for FragmentResult {
 }
 impl AsMut<emlite::Val> for FragmentResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<FragmentResult> for emlite::Val {
     fn from(s: FragmentResult) -> emlite::Val {
@@ -49,31 +48,30 @@ impl From<FragmentResult> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FragmentResult);
 
-
-
 impl FragmentResult {
     pub fn new0() -> FragmentResult {
         Self {
-            inner: emlite::Val::global("FragmentResult").new(&[]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("FragmentResult")
+                .new(&[])
+                .as_::<emlite::Val>(),
         }
     }
 
     pub fn new1(options: Any) -> FragmentResult {
         Self {
-            inner: emlite::Val::global("FragmentResult").new(&[options.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("FragmentResult")
+                .new(&[options.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl FragmentResult {
     pub fn inline_size(&self) -> f64 {
         self.inner.get("inlineSize").as_::<f64>()
     }
-
 }
 impl FragmentResult {
     pub fn block_size(&self) -> f64 {
         self.inner.get("blockSize").as_::<f64>()
     }
-
 }

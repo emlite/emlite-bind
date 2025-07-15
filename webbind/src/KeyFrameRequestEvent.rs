@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct KeyFrameRequestEvent {
@@ -10,7 +7,9 @@ pub struct KeyFrameRequestEvent {
 }
 impl FromVal for KeyFrameRequestEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        KeyFrameRequestEvent { inner: Event::from_val(v) }
+        KeyFrameRequestEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for KeyFrameRequestEvent {
 }
 impl AsMut<emlite::Val> for KeyFrameRequestEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<KeyFrameRequestEvent> for emlite::Val {
     fn from(s: KeyFrameRequestEvent) -> emlite::Val {
@@ -49,25 +48,25 @@ impl From<KeyFrameRequestEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(KeyFrameRequestEvent);
 
-
-
 impl KeyFrameRequestEvent {
     pub fn new0(type_: DOMString) -> KeyFrameRequestEvent {
         Self {
-            inner: emlite::Val::global("KeyFrameRequestEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: emlite::Val::global("KeyFrameRequestEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     pub fn new1(type_: DOMString, rid: DOMString) -> KeyFrameRequestEvent {
         Self {
-            inner: emlite::Val::global("KeyFrameRequestEvent").new(&[type_.into(), rid.into()]).as_::<Event>(),
+            inner: emlite::Val::global("KeyFrameRequestEvent")
+                .new(&[type_.into(), rid.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl KeyFrameRequestEvent {
     pub fn rid(&self) -> DOMString {
         self.inner.get("rid").as_::<DOMString>()
     }
-
 }

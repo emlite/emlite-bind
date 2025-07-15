@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ContentDescription {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for ContentDescription {
 }
 impl AsMut<emlite::Val> for ContentDescription {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ContentDescription> for emlite::Val {
     fn from(s: ContentDescription) -> emlite::Val {
@@ -56,7 +53,6 @@ impl ContentDescription {
     pub fn set_id(&mut self, value: DOMString) {
         self.inner.set("id", value);
     }
-
 }
 impl ContentDescription {
     pub fn title(&self) -> DOMString {
@@ -66,7 +62,6 @@ impl ContentDescription {
     pub fn set_title(&mut self, value: DOMString) {
         self.inner.set("title", value);
     }
-
 }
 impl ContentDescription {
     pub fn description(&self) -> DOMString {
@@ -76,7 +71,6 @@ impl ContentDescription {
     pub fn set_description(&mut self, value: DOMString) {
         self.inner.set("description", value);
     }
-
 }
 impl ContentDescription {
     pub fn category(&self) -> ContentCategory {
@@ -86,7 +80,6 @@ impl ContentDescription {
     pub fn set_category(&mut self, value: ContentCategory) {
         self.inner.set("category", value);
     }
-
 }
 impl ContentDescription {
     pub fn icons(&self) -> Sequence<Any> {
@@ -96,7 +89,6 @@ impl ContentDescription {
     pub fn set_icons(&mut self, value: Sequence<Any>) {
         self.inner.set("icons", value);
     }
-
 }
 impl ContentDescription {
     pub fn url(&self) -> USVString {
@@ -106,7 +98,6 @@ impl ContentDescription {
     pub fn set_url(&mut self, value: USVString) {
         self.inner.set("url", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -115,7 +106,9 @@ pub struct ContentIndex {
 }
 impl FromVal for ContentIndex {
     fn from_val(v: &emlite::Val) -> Self {
-        ContentIndex { inner: emlite::Val::from_val(v) }
+        ContentIndex {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -142,8 +135,8 @@ impl AsRef<emlite::Val> for ContentIndex {
 }
 impl AsMut<emlite::Val> for ContentIndex {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ContentIndex> for emlite::Val {
     fn from(s: ContentIndex) -> emlite::Val {
@@ -154,22 +147,20 @@ impl From<ContentIndex> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ContentIndex);
 
-
 impl ContentIndex {
     pub fn add(&self, description: ContentDescription) -> Promise {
-        self.inner.call("add", &[description.into(), ]).as_::<Promise>()
+        self.inner
+            .call("add", &[description.into()])
+            .as_::<Promise>()
     }
-
 }
 impl ContentIndex {
     pub fn delete(&self, id: DOMString) -> Promise {
-        self.inner.call("delete", &[id.into(), ]).as_::<Promise>()
+        self.inner.call("delete", &[id.into()]).as_::<Promise>()
     }
-
 }
 impl ContentIndex {
-    pub fn get_all(&self, ) -> Promise {
+    pub fn get_all(&self) -> Promise {
         self.inner.call("getAll", &[]).as_::<Promise>()
     }
-
 }

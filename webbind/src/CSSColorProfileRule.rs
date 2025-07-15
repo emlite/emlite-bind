@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSColorProfileRule {
@@ -10,7 +7,9 @@ pub struct CSSColorProfileRule {
 }
 impl FromVal for CSSColorProfileRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSColorProfileRule { inner: CSSRule::from_val(v) }
+        CSSColorProfileRule {
+            inner: CSSRule::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSColorProfileRule {
 }
 impl AsMut<emlite::Val> for CSSColorProfileRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSColorProfileRule> for emlite::Val {
     fn from(s: CSSColorProfileRule) -> emlite::Val {
@@ -49,28 +48,23 @@ impl From<CSSColorProfileRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSColorProfileRule);
 
-
 impl CSSColorProfileRule {
     pub fn name(&self) -> CSSOMString {
         self.inner.get("name").as_::<CSSOMString>()
     }
-
 }
 impl CSSColorProfileRule {
     pub fn src(&self) -> CSSOMString {
         self.inner.get("src").as_::<CSSOMString>()
     }
-
 }
 impl CSSColorProfileRule {
     pub fn rendering_intent(&self) -> CSSOMString {
         self.inner.get("renderingIntent").as_::<CSSOMString>()
     }
-
 }
 impl CSSColorProfileRule {
     pub fn components(&self) -> CSSOMString {
         self.inner.get("components").as_::<CSSOMString>()
     }
-
 }

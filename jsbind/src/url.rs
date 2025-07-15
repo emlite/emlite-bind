@@ -45,7 +45,7 @@ impl URL {
     }
 }
 
-/// `URLSearchParams` – minimal wrapper.
+/// `URLSearchParams` – minimal wrapper. There is a URLSearchParams in webbind as well
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct URLSearchParams {

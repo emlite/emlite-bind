@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SpeechRecognitionAlternative {
@@ -10,7 +7,9 @@ pub struct SpeechRecognitionAlternative {
 }
 impl FromVal for SpeechRecognitionAlternative {
     fn from_val(v: &emlite::Val) -> Self {
-        SpeechRecognitionAlternative { inner: emlite::Val::from_val(v) }
+        SpeechRecognitionAlternative {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SpeechRecognitionAlternative {
 }
 impl AsMut<emlite::Val> for SpeechRecognitionAlternative {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SpeechRecognitionAlternative> for emlite::Val {
     fn from(s: SpeechRecognitionAlternative) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<SpeechRecognitionAlternative> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionAlternative);
 
-
 impl SpeechRecognitionAlternative {
     pub fn transcript(&self) -> DOMString {
         self.inner.get("transcript").as_::<DOMString>()
     }
-
 }
 impl SpeechRecognitionAlternative {
     pub fn confidence(&self) -> f32 {
         self.inner.get("confidence").as_::<f32>()
     }
-
 }

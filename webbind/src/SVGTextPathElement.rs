@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGTextPathElement {
@@ -10,7 +7,9 @@ pub struct SVGTextPathElement {
 }
 impl FromVal for SVGTextPathElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGTextPathElement { inner: SVGTextContentElement::from_val(v) }
+        SVGTextPathElement {
+            inner: SVGTextContentElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SVGTextPathElement {
 }
 impl AsMut<emlite::Val> for SVGTextPathElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGTextPathElement> for emlite::Val {
     fn from(s: SVGTextPathElement) -> emlite::Val {
@@ -49,28 +48,23 @@ impl From<SVGTextPathElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGTextPathElement);
 
-
 impl SVGTextPathElement {
     pub fn start_offset(&self) -> SVGAnimatedLength {
         self.inner.get("startOffset").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGTextPathElement {
     pub fn method(&self) -> SVGAnimatedEnumeration {
         self.inner.get("method").as_::<SVGAnimatedEnumeration>()
     }
-
 }
 impl SVGTextPathElement {
     pub fn spacing(&self) -> SVGAnimatedEnumeration {
         self.inner.get("spacing").as_::<SVGAnimatedEnumeration>()
     }
-
 }
 impl SVGTextPathElement {
     pub fn href(&self) -> SVGAnimatedString {
         self.inner.get("href").as_::<SVGAnimatedString>()
     }
-
 }

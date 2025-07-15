@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGGradientElement {
@@ -10,7 +7,9 @@ pub struct SVGGradientElement {
 }
 impl FromVal for SVGGradientElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGGradientElement { inner: SVGElement::from_val(v) }
+        SVGGradientElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SVGGradientElement {
 }
 impl AsMut<emlite::Val> for SVGGradientElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGGradientElement> for emlite::Val {
     fn from(s: SVGGradientElement) -> emlite::Val {
@@ -49,28 +48,29 @@ impl From<SVGGradientElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGGradientElement);
 
-
 impl SVGGradientElement {
     pub fn gradient_units(&self) -> SVGAnimatedEnumeration {
-        self.inner.get("gradientUnits").as_::<SVGAnimatedEnumeration>()
+        self.inner
+            .get("gradientUnits")
+            .as_::<SVGAnimatedEnumeration>()
     }
-
 }
 impl SVGGradientElement {
     pub fn gradient_transform(&self) -> SVGAnimatedTransformList {
-        self.inner.get("gradientTransform").as_::<SVGAnimatedTransformList>()
+        self.inner
+            .get("gradientTransform")
+            .as_::<SVGAnimatedTransformList>()
     }
-
 }
 impl SVGGradientElement {
     pub fn spread_method(&self) -> SVGAnimatedEnumeration {
-        self.inner.get("spreadMethod").as_::<SVGAnimatedEnumeration>()
+        self.inner
+            .get("spreadMethod")
+            .as_::<SVGAnimatedEnumeration>()
     }
-
 }
 impl SVGGradientElement {
     pub fn href(&self) -> SVGAnimatedString {
         self.inner.get("href").as_::<SVGAnimatedString>()
     }
-
 }

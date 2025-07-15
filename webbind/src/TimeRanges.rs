@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TimeRanges {
@@ -10,7 +7,9 @@ pub struct TimeRanges {
 }
 impl FromVal for TimeRanges {
     fn from_val(v: &emlite::Val) -> Self {
-        TimeRanges { inner: emlite::Val::from_val(v) }
+        TimeRanges {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for TimeRanges {
 }
 impl AsMut<emlite::Val> for TimeRanges {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<TimeRanges> for emlite::Val {
     fn from(s: TimeRanges) -> emlite::Val {
@@ -49,22 +48,18 @@ impl From<TimeRanges> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(TimeRanges);
 
-
 impl TimeRanges {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl TimeRanges {
     pub fn start(&self, index: u32) -> f64 {
-        self.inner.call("start", &[index.into(), ]).as_::<f64>()
+        self.inner.call("start", &[index.into()]).as_::<f64>()
     }
-
 }
 impl TimeRanges {
     pub fn end(&self, index: u32) -> f64 {
-        self.inner.call("end", &[index.into(), ]).as_::<f64>()
+        self.inner.call("end", &[index.into()]).as_::<f64>()
     }
-
 }

@@ -109,9 +109,7 @@ impl CSSPageDescriptors {
 }
 impl CSSPageDescriptors {
     pub fn page_orientation(&self) -> CSSOMString {
-        self.inner
-            .get("pageOrientation")
-            .as_::<CSSOMString>()
+        self.inner.get("pageOrientation").as_::<CSSOMString>()
     }
 
     pub fn set_page_orientation(&mut self, value: CSSOMString) {

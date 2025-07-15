@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NDEFScanOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for NDEFScanOptions {
 }
 impl AsMut<emlite::Val> for NDEFScanOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<NDEFScanOptions> for emlite::Val {
     fn from(s: NDEFScanOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl NDEFScanOptions {
     pub fn set_signal(&mut self, value: AbortSignal) {
         self.inner.set("signal", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -92,8 +88,8 @@ impl AsRef<emlite::Val> for NDEFWriteOptions {
 }
 impl AsMut<emlite::Val> for NDEFWriteOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<NDEFWriteOptions> for emlite::Val {
     fn from(s: NDEFWriteOptions) -> emlite::Val {
@@ -111,7 +107,6 @@ impl NDEFWriteOptions {
     pub fn set_overwrite(&mut self, value: bool) {
         self.inner.set("overwrite", value);
     }
-
 }
 impl NDEFWriteOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -121,7 +116,6 @@ impl NDEFWriteOptions {
     pub fn set_signal(&mut self, value: AbortSignal) {
         self.inner.set("signal", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -157,8 +151,8 @@ impl AsRef<emlite::Val> for NDEFMakeReadOnlyOptions {
 }
 impl AsMut<emlite::Val> for NDEFMakeReadOnlyOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<NDEFMakeReadOnlyOptions> for emlite::Val {
     fn from(s: NDEFMakeReadOnlyOptions) -> emlite::Val {
@@ -176,7 +170,6 @@ impl NDEFMakeReadOnlyOptions {
     pub fn set_signal(&mut self, value: AbortSignal) {
         self.inner.set("signal", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -185,7 +178,9 @@ pub struct NDEFReader {
 }
 impl FromVal for NDEFReader {
     fn from_val(v: &emlite::Val) -> Self {
-        NDEFReader { inner: EventTarget::from_val(v) }
+        NDEFReader {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -212,8 +207,8 @@ impl AsRef<emlite::Val> for NDEFReader {
 }
 impl AsMut<emlite::Val> for NDEFReader {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<NDEFReader> for emlite::Val {
     fn from(s: NDEFReader) -> emlite::Val {
@@ -224,15 +219,14 @@ impl From<NDEFReader> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(NDEFReader);
 
-
-
 impl NDEFReader {
     pub fn new() -> NDEFReader {
         Self {
-            inner: emlite::Val::global("NDEFReader").new(&[]).as_::<EventTarget>(),
+            inner: emlite::Val::global("NDEFReader")
+                .new(&[])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl NDEFReader {
     pub fn onreading(&self) -> Any {
@@ -242,7 +236,6 @@ impl NDEFReader {
     pub fn set_onreading(&mut self, value: Any) {
         self.inner.set("onreading", value);
     }
-
 }
 impl NDEFReader {
     pub fn onreadingerror(&self) -> Any {
@@ -252,35 +245,35 @@ impl NDEFReader {
     pub fn set_onreadingerror(&mut self, value: Any) {
         self.inner.set("onreadingerror", value);
     }
-
 }
 impl NDEFReader {
-    pub fn scan0(&self, ) -> Promise {
+    pub fn scan0(&self) -> Promise {
         self.inner.call("scan", &[]).as_::<Promise>()
     }
 
     pub fn scan1(&self, options: NDEFScanOptions) -> Promise {
-        self.inner.call("scan", &[options.into(), ]).as_::<Promise>()
+        self.inner.call("scan", &[options.into()]).as_::<Promise>()
     }
-
 }
 impl NDEFReader {
     pub fn write0(&self, message: Any) -> Promise {
-        self.inner.call("write", &[message.into(), ]).as_::<Promise>()
+        self.inner.call("write", &[message.into()]).as_::<Promise>()
     }
 
     pub fn write1(&self, message: Any, options: NDEFWriteOptions) -> Promise {
-        self.inner.call("write", &[message.into(), options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("write", &[message.into(), options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl NDEFReader {
-    pub fn make_read_only0(&self, ) -> Promise {
+    pub fn make_read_only0(&self) -> Promise {
         self.inner.call("makeReadOnly", &[]).as_::<Promise>()
     }
 
     pub fn make_read_only1(&self, options: NDEFMakeReadOnlyOptions) -> Promise {
-        self.inner.call("makeReadOnly", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("makeReadOnly", &[options.into()])
+            .as_::<Promise>()
     }
-
 }

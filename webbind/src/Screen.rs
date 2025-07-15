@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Screen {
@@ -10,7 +7,9 @@ pub struct Screen {
 }
 impl FromVal for Screen {
     fn from_val(v: &emlite::Val) -> Self {
-        Screen { inner: emlite::Val::from_val(v) }
+        Screen {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for Screen {
 }
 impl AsMut<emlite::Val> for Screen {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Screen> for emlite::Val {
     fn from(s: Screen) -> emlite::Val {
@@ -49,54 +48,45 @@ impl From<Screen> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Screen);
 
-
 impl Screen {
     pub fn avail_width(&self) -> i32 {
         self.inner.get("availWidth").as_::<i32>()
     }
-
 }
 impl Screen {
     pub fn avail_height(&self) -> i32 {
         self.inner.get("availHeight").as_::<i32>()
     }
-
 }
 impl Screen {
     pub fn width(&self) -> i32 {
         self.inner.get("width").as_::<i32>()
     }
-
 }
 impl Screen {
     pub fn height(&self) -> i32 {
         self.inner.get("height").as_::<i32>()
     }
-
 }
 impl Screen {
     pub fn color_depth(&self) -> u32 {
         self.inner.get("colorDepth").as_::<u32>()
     }
-
 }
 impl Screen {
     pub fn pixel_depth(&self) -> u32 {
         self.inner.get("pixelDepth").as_::<u32>()
     }
-
 }
 impl Screen {
     pub fn orientation(&self) -> ScreenOrientation {
         self.inner.get("orientation").as_::<ScreenOrientation>()
     }
-
 }
 impl Screen {
     pub fn is_extended(&self) -> bool {
         self.inner.get("isExtended").as_::<bool>()
     }
-
 }
 impl Screen {
     pub fn onchange(&self) -> Any {
@@ -106,5 +96,4 @@ impl Screen {
     pub fn set_onchange(&mut self, value: Any) {
         self.inner.set("onchange", value);
     }
-
 }

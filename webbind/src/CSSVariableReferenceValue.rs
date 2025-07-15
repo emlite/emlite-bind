@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSVariableReferenceValue {
@@ -10,7 +7,9 @@ pub struct CSSVariableReferenceValue {
 }
 impl FromVal for CSSVariableReferenceValue {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSVariableReferenceValue { inner: emlite::Val::from_val(v) }
+        CSSVariableReferenceValue {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSVariableReferenceValue {
 }
 impl AsMut<emlite::Val> for CSSVariableReferenceValue {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSVariableReferenceValue> for emlite::Val {
     fn from(s: CSSVariableReferenceValue) -> emlite::Val {
@@ -49,21 +48,22 @@ impl From<CSSVariableReferenceValue> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSVariableReferenceValue);
 
-
-
 impl CSSVariableReferenceValue {
     pub fn new0(variable: USVString) -> CSSVariableReferenceValue {
         Self {
-            inner: emlite::Val::global("CSSVariableReferenceValue").new(&[variable.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("CSSVariableReferenceValue")
+                .new(&[variable.into()])
+                .as_::<emlite::Val>(),
         }
     }
 
     pub fn new1(variable: USVString, fallback: CSSUnparsedValue) -> CSSVariableReferenceValue {
         Self {
-            inner: emlite::Val::global("CSSVariableReferenceValue").new(&[variable.into(), fallback.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("CSSVariableReferenceValue")
+                .new(&[variable.into(), fallback.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl CSSVariableReferenceValue {
     pub fn variable(&self) -> USVString {
@@ -73,11 +73,9 @@ impl CSSVariableReferenceValue {
     pub fn set_variable(&mut self, value: USVString) {
         self.inner.set("variable", value);
     }
-
 }
 impl CSSVariableReferenceValue {
     pub fn fallback(&self) -> CSSUnparsedValue {
         self.inner.get("fallback").as_::<CSSUnparsedValue>()
     }
-
 }

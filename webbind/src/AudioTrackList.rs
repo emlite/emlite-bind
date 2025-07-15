@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioTrackList {
@@ -10,7 +7,9 @@ pub struct AudioTrackList {
 }
 impl FromVal for AudioTrackList {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioTrackList { inner: EventTarget::from_val(v) }
+        AudioTrackList {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for AudioTrackList {
 }
 impl AsMut<emlite::Val> for AudioTrackList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AudioTrackList> for emlite::Val {
     fn from(s: AudioTrackList) -> emlite::Val {
@@ -49,18 +48,17 @@ impl From<AudioTrackList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AudioTrackList);
 
-
 impl AudioTrackList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl AudioTrackList {
     pub fn get_track_by_id(&self, id: DOMString) -> AudioTrack {
-        self.inner.call("getTrackById", &[id.into(), ]).as_::<AudioTrack>()
+        self.inner
+            .call("getTrackById", &[id.into()])
+            .as_::<AudioTrack>()
     }
-
 }
 impl AudioTrackList {
     pub fn onchange(&self) -> Any {
@@ -70,7 +68,6 @@ impl AudioTrackList {
     pub fn set_onchange(&mut self, value: Any) {
         self.inner.set("onchange", value);
     }
-
 }
 impl AudioTrackList {
     pub fn onaddtrack(&self) -> Any {
@@ -80,7 +77,6 @@ impl AudioTrackList {
     pub fn set_onaddtrack(&mut self, value: Any) {
         self.inner.set("onaddtrack", value);
     }
-
 }
 impl AudioTrackList {
     pub fn onremovetrack(&self) -> Any {
@@ -90,5 +86,4 @@ impl AudioTrackList {
     pub fn set_onremovetrack(&mut self, value: Any) {
         self.inner.set("onremovetrack", value);
     }
-
 }

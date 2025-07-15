@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct USBIsochronousInTransferResult {
@@ -10,7 +7,9 @@ pub struct USBIsochronousInTransferResult {
 }
 impl FromVal for USBIsochronousInTransferResult {
     fn from_val(v: &emlite::Val) -> Self {
-        USBIsochronousInTransferResult { inner: emlite::Val::from_val(v) }
+        USBIsochronousInTransferResult {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for USBIsochronousInTransferResult {
 }
 impl AsMut<emlite::Val> for USBIsochronousInTransferResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<USBIsochronousInTransferResult> for emlite::Val {
     fn from(s: USBIsochronousInTransferResult) -> emlite::Val {
@@ -49,31 +48,37 @@ impl From<USBIsochronousInTransferResult> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(USBIsochronousInTransferResult);
 
-
-
 impl USBIsochronousInTransferResult {
-    pub fn new0(packets: Sequence<USBIsochronousInTransferPacket>) -> USBIsochronousInTransferResult {
+    pub fn new0(
+        packets: Sequence<USBIsochronousInTransferPacket>,
+    ) -> USBIsochronousInTransferResult {
         Self {
-            inner: emlite::Val::global("USBIsochronousInTransferResult").new(&[packets.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("USBIsochronousInTransferResult")
+                .new(&[packets.into()])
+                .as_::<emlite::Val>(),
         }
     }
 
-    pub fn new1(packets: Sequence<USBIsochronousInTransferPacket>, data: DataView) -> USBIsochronousInTransferResult {
+    pub fn new1(
+        packets: Sequence<USBIsochronousInTransferPacket>,
+        data: DataView,
+    ) -> USBIsochronousInTransferResult {
         Self {
-            inner: emlite::Val::global("USBIsochronousInTransferResult").new(&[packets.into(), data.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("USBIsochronousInTransferResult")
+                .new(&[packets.into(), data.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl USBIsochronousInTransferResult {
     pub fn data(&self) -> DataView {
         self.inner.get("data").as_::<DataView>()
     }
-
 }
 impl USBIsochronousInTransferResult {
     pub fn packets(&self) -> FrozenArray<USBIsochronousInTransferPacket> {
-        self.inner.get("packets").as_::<FrozenArray<USBIsochronousInTransferPacket>>()
+        self.inner
+            .get("packets")
+            .as_::<FrozenArray<USBIsochronousInTransferPacket>>()
     }
-
 }

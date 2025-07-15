@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SpeechSynthesisVoice {
@@ -10,7 +7,9 @@ pub struct SpeechSynthesisVoice {
 }
 impl FromVal for SpeechSynthesisVoice {
     fn from_val(v: &emlite::Val) -> Self {
-        SpeechSynthesisVoice { inner: emlite::Val::from_val(v) }
+        SpeechSynthesisVoice {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SpeechSynthesisVoice {
 }
 impl AsMut<emlite::Val> for SpeechSynthesisVoice {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SpeechSynthesisVoice> for emlite::Val {
     fn from(s: SpeechSynthesisVoice) -> emlite::Val {
@@ -49,34 +48,28 @@ impl From<SpeechSynthesisVoice> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SpeechSynthesisVoice);
 
-
 impl SpeechSynthesisVoice {
     pub fn voice_uri(&self) -> DOMString {
         self.inner.get("voiceURI").as_::<DOMString>()
     }
-
 }
 impl SpeechSynthesisVoice {
     pub fn name(&self) -> DOMString {
         self.inner.get("name").as_::<DOMString>()
     }
-
 }
 impl SpeechSynthesisVoice {
     pub fn lang(&self) -> DOMString {
         self.inner.get("lang").as_::<DOMString>()
     }
-
 }
 impl SpeechSynthesisVoice {
     pub fn local_service(&self) -> bool {
         self.inner.get("localService").as_::<bool>()
     }
-
 }
 impl SpeechSynthesisVoice {
     pub fn default(&self) -> bool {
         self.inner.get("default").as_::<bool>()
     }
-
 }

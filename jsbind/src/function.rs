@@ -99,11 +99,10 @@ impl<'a> From<&'a Function> for Closure {
 }
 
 /// The inner value is guaranteed at runtime to be callable (`typeof v ===
-/// "function"`).  All methods are zero‑cost delegates to `emlite::Val` helpers.
+/// "function"`)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Closure {
-    /// Underlying JavaScript function object.
     inner: emlite::Val,
 }
 
@@ -266,6 +265,35 @@ impl Closure {
                     args[3].as_::<Arg4>(),
                     args[4].as_::<Arg5>(),
                     args[5].as_::<Arg6>(),
+                );
+                r.into()
+            }),
+        }
+    }
+
+    /// Seven‑argument typed JS function.
+    pub fn bind7<Ret, Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7, F>(mut cb: F) -> Closure
+    where
+        Ret: Into<emlite::Val>,
+        Arg1: FromVal,
+        Arg2: FromVal,
+        Arg3: FromVal,
+        Arg4: FromVal,
+        Arg5: FromVal,
+        Arg6: FromVal,
+        Arg7: FromVal,
+        F: FnMut(Arg1, Arg2, Arg3, Arg4, Arg5, Arg6, Arg7) -> Ret,
+    {
+        Closure {
+            inner: emlite::Val::make_fn(move |args| {
+                let r: Ret = cb(
+                    args[0].as_::<Arg1>(),
+                    args[1].as_::<Arg2>(),
+                    args[2].as_::<Arg3>(),
+                    args[3].as_::<Arg4>(),
+                    args[4].as_::<Arg5>(),
+                    args[5].as_::<Arg6>(),
+                    args[6].as_::<Arg7>(),
                 );
                 r.into()
             }),

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSOKLCH {
@@ -10,7 +7,9 @@ pub struct CSSOKLCH {
 }
 impl FromVal for CSSOKLCH {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSOKLCH { inner: CSSColorValue::from_val(v) }
+        CSSOKLCH {
+            inner: CSSColorValue::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSOKLCH {
 }
 impl AsMut<emlite::Val> for CSSOKLCH {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSOKLCH> for emlite::Val {
     fn from(s: CSSOKLCH) -> emlite::Val {
@@ -49,21 +48,22 @@ impl From<CSSOKLCH> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSOKLCH);
 
-
-
 impl CSSOKLCH {
     pub fn new0(l: Any, c: Any, h: Any) -> CSSOKLCH {
         Self {
-            inner: emlite::Val::global("CSSOKLCH").new(&[l.into(), c.into(), h.into()]).as_::<CSSColorValue>(),
+            inner: emlite::Val::global("CSSOKLCH")
+                .new(&[l.into(), c.into(), h.into()])
+                .as_::<CSSColorValue>(),
         }
     }
 
     pub fn new1(l: Any, c: Any, h: Any, alpha: Any) -> CSSOKLCH {
         Self {
-            inner: emlite::Val::global("CSSOKLCH").new(&[l.into(), c.into(), h.into(), alpha.into()]).as_::<CSSColorValue>(),
+            inner: emlite::Val::global("CSSOKLCH")
+                .new(&[l.into(), c.into(), h.into(), alpha.into()])
+                .as_::<CSSColorValue>(),
         }
     }
-
 }
 impl CSSOKLCH {
     pub fn l(&self) -> Any {
@@ -73,7 +73,6 @@ impl CSSOKLCH {
     pub fn set_l(&mut self, value: Any) {
         self.inner.set("l", value);
     }
-
 }
 impl CSSOKLCH {
     pub fn c(&self) -> Any {
@@ -83,7 +82,6 @@ impl CSSOKLCH {
     pub fn set_c(&mut self, value: Any) {
         self.inner.set("c", value);
     }
-
 }
 impl CSSOKLCH {
     pub fn h(&self) -> Any {
@@ -93,7 +91,6 @@ impl CSSOKLCH {
     pub fn set_h(&mut self, value: Any) {
         self.inner.set("h", value);
     }
-
 }
 impl CSSOKLCH {
     pub fn alpha(&self) -> Any {
@@ -103,5 +100,4 @@ impl CSSOKLCH {
     pub fn set_alpha(&mut self, value: Any) {
         self.inner.set("alpha", value);
     }
-
 }

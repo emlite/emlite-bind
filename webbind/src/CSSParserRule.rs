@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSParserRule {
@@ -10,7 +7,9 @@ pub struct CSSParserRule {
 }
 impl FromVal for CSSParserRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSParserRule { inner: emlite::Val::from_val(v) }
+        CSSParserRule {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSParserRule {
 }
 impl AsMut<emlite::Val> for CSSParserRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSParserRule> for emlite::Val {
     fn from(s: CSSParserRule) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<CSSParserRule> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSParserRule);
-
-

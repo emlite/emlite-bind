@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ImageEncodeOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for ImageEncodeOptions {
 }
 impl AsMut<emlite::Val> for ImageEncodeOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ImageEncodeOptions> for emlite::Val {
     fn from(s: ImageEncodeOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl ImageEncodeOptions {
     pub fn set_type_(&mut self, value: DOMString) {
         self.inner.set("type", value);
     }
-
 }
 impl ImageEncodeOptions {
     pub fn quality(&self) -> f64 {
@@ -66,7 +62,6 @@ impl ImageEncodeOptions {
     pub fn set_quality(&mut self, value: f64) {
         self.inner.set("quality", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -75,7 +70,9 @@ pub struct OffscreenCanvas {
 }
 impl FromVal for OffscreenCanvas {
     fn from_val(v: &emlite::Val) -> Self {
-        OffscreenCanvas { inner: EventTarget::from_val(v) }
+        OffscreenCanvas {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -102,8 +99,8 @@ impl AsRef<emlite::Val> for OffscreenCanvas {
 }
 impl AsMut<emlite::Val> for OffscreenCanvas {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<OffscreenCanvas> for emlite::Val {
     fn from(s: OffscreenCanvas) -> emlite::Val {
@@ -114,15 +111,14 @@ impl From<OffscreenCanvas> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(OffscreenCanvas);
 
-
-
 impl OffscreenCanvas {
     pub fn new(width: u64, height: u64) -> OffscreenCanvas {
         Self {
-            inner: emlite::Val::global("OffscreenCanvas").new(&[width.into(), height.into()]).as_::<EventTarget>(),
+            inner: emlite::Val::global("OffscreenCanvas")
+                .new(&[width.into(), height.into()])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl OffscreenCanvas {
     pub fn width(&self) -> u64 {
@@ -132,7 +128,6 @@ impl OffscreenCanvas {
     pub fn set_width(&mut self, value: u64) {
         self.inner.set("width", value);
     }
-
 }
 impl OffscreenCanvas {
     pub fn height(&self) -> u64 {
@@ -142,33 +137,37 @@ impl OffscreenCanvas {
     pub fn set_height(&mut self, value: u64) {
         self.inner.set("height", value);
     }
-
 }
 impl OffscreenCanvas {
     pub fn get_context0(&self, context_id: OffscreenRenderingContextId) -> Any {
-        self.inner.call("getContext", &[context_id.into(), ]).as_::<Any>()
+        self.inner
+            .call("getContext", &[context_id.into()])
+            .as_::<Any>()
     }
 
     pub fn get_context1(&self, context_id: OffscreenRenderingContextId, options: Any) -> Any {
-        self.inner.call("getContext", &[context_id.into(), options.into(), ]).as_::<Any>()
+        self.inner
+            .call("getContext", &[context_id.into(), options.into()])
+            .as_::<Any>()
     }
-
 }
 impl OffscreenCanvas {
-    pub fn transfer_to_image_bitmap(&self, ) -> ImageBitmap {
-        self.inner.call("transferToImageBitmap", &[]).as_::<ImageBitmap>()
+    pub fn transfer_to_image_bitmap(&self) -> ImageBitmap {
+        self.inner
+            .call("transferToImageBitmap", &[])
+            .as_::<ImageBitmap>()
     }
-
 }
 impl OffscreenCanvas {
-    pub fn convert_to_blob0(&self, ) -> Promise {
+    pub fn convert_to_blob0(&self) -> Promise {
         self.inner.call("convertToBlob", &[]).as_::<Promise>()
     }
 
     pub fn convert_to_blob1(&self, options: ImageEncodeOptions) -> Promise {
-        self.inner.call("convertToBlob", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("convertToBlob", &[options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl OffscreenCanvas {
     pub fn oncontextlost(&self) -> Any {
@@ -178,7 +177,6 @@ impl OffscreenCanvas {
     pub fn set_oncontextlost(&mut self, value: Any) {
         self.inner.set("oncontextlost", value);
     }
-
 }
 impl OffscreenCanvas {
     pub fn oncontextrestored(&self) -> Any {
@@ -188,5 +186,4 @@ impl OffscreenCanvas {
     pub fn set_oncontextrestored(&mut self, value: Any) {
         self.inner.set("oncontextrestored", value);
     }
-
 }

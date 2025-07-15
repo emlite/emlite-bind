@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Accelerometer {
@@ -10,7 +7,9 @@ pub struct Accelerometer {
 }
 impl FromVal for Accelerometer {
     fn from_val(v: &emlite::Val) -> Self {
-        Accelerometer { inner: Sensor::from_val(v) }
+        Accelerometer {
+            inner: Sensor::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for Accelerometer {
 }
 impl AsMut<emlite::Val> for Accelerometer {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Accelerometer> for emlite::Val {
     fn from(s: Accelerometer) -> emlite::Val {
@@ -49,37 +48,35 @@ impl From<Accelerometer> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Accelerometer);
 
-
-
 impl Accelerometer {
     pub fn new0() -> Accelerometer {
         Self {
-            inner: emlite::Val::global("Accelerometer").new(&[]).as_::<Sensor>(),
+            inner: emlite::Val::global("Accelerometer")
+                .new(&[])
+                .as_::<Sensor>(),
         }
     }
 
     pub fn new1(options: Any) -> Accelerometer {
         Self {
-            inner: emlite::Val::global("Accelerometer").new(&[options.into()]).as_::<Sensor>(),
+            inner: emlite::Val::global("Accelerometer")
+                .new(&[options.into()])
+                .as_::<Sensor>(),
         }
     }
-
 }
 impl Accelerometer {
     pub fn x(&self) -> f64 {
         self.inner.get("x").as_::<f64>()
     }
-
 }
 impl Accelerometer {
     pub fn y(&self) -> f64 {
         self.inner.get("y").as_::<f64>()
     }
-
 }
 impl Accelerometer {
     pub fn z(&self) -> f64 {
         self.inner.get("z").as_::<f64>()
     }
-
 }

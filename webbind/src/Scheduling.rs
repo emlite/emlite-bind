@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IsInputPendingOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for IsInputPendingOptions {
 }
 impl AsMut<emlite::Val> for IsInputPendingOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<IsInputPendingOptions> for emlite::Val {
     fn from(s: IsInputPendingOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl IsInputPendingOptions {
     pub fn set_include_continuous(&mut self, value: bool) {
         self.inner.set("includeContinuous", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -65,7 +61,9 @@ pub struct Scheduling {
 }
 impl FromVal for Scheduling {
     fn from_val(v: &emlite::Val) -> Self {
-        Scheduling { inner: emlite::Val::from_val(v) }
+        Scheduling {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -92,8 +90,8 @@ impl AsRef<emlite::Val> for Scheduling {
 }
 impl AsMut<emlite::Val> for Scheduling {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Scheduling> for emlite::Val {
     fn from(s: Scheduling) -> emlite::Val {
@@ -104,14 +102,14 @@ impl From<Scheduling> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Scheduling);
 
-
 impl Scheduling {
-    pub fn is_input_pending0(&self, ) -> bool {
+    pub fn is_input_pending0(&self) -> bool {
         self.inner.call("isInputPending", &[]).as_::<bool>()
     }
 
     pub fn is_input_pending1(&self, is_input_pending_options: IsInputPendingOptions) -> bool {
-        self.inner.call("isInputPending", &[is_input_pending_options.into(), ]).as_::<bool>()
+        self.inner
+            .call("isInputPending", &[is_input_pending_options.into()])
+            .as_::<bool>()
     }
-
 }

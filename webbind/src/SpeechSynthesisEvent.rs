@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SpeechSynthesisEvent {
@@ -10,7 +7,9 @@ pub struct SpeechSynthesisEvent {
 }
 impl FromVal for SpeechSynthesisEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        SpeechSynthesisEvent { inner: Event::from_val(v) }
+        SpeechSynthesisEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SpeechSynthesisEvent {
 }
 impl AsMut<emlite::Val> for SpeechSynthesisEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SpeechSynthesisEvent> for emlite::Val {
     fn from(s: SpeechSynthesisEvent) -> emlite::Val {
@@ -49,43 +48,39 @@ impl From<SpeechSynthesisEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SpeechSynthesisEvent);
 
-
-
 impl SpeechSynthesisEvent {
     pub fn new(type_: DOMString, event_init_dict: Any) -> SpeechSynthesisEvent {
         Self {
-            inner: emlite::Val::global("SpeechSynthesisEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("SpeechSynthesisEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl SpeechSynthesisEvent {
     pub fn utterance(&self) -> SpeechSynthesisUtterance {
-        self.inner.get("utterance").as_::<SpeechSynthesisUtterance>()
+        self.inner
+            .get("utterance")
+            .as_::<SpeechSynthesisUtterance>()
     }
-
 }
 impl SpeechSynthesisEvent {
     pub fn char_index(&self) -> u32 {
         self.inner.get("charIndex").as_::<u32>()
     }
-
 }
 impl SpeechSynthesisEvent {
     pub fn char_length(&self) -> u32 {
         self.inner.get("charLength").as_::<u32>()
     }
-
 }
 impl SpeechSynthesisEvent {
     pub fn elapsed_time(&self) -> f32 {
         self.inner.get("elapsedTime").as_::<f32>()
     }
-
 }
 impl SpeechSynthesisEvent {
     pub fn name(&self) -> DOMString {
         self.inner.get("name").as_::<DOMString>()
     }
-
 }

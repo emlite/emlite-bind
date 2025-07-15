@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PerformanceObserverInit {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for PerformanceObserverInit {
 }
 impl AsMut<emlite::Val> for PerformanceObserverInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PerformanceObserverInit> for emlite::Val {
     fn from(s: PerformanceObserverInit) -> emlite::Val {
@@ -56,7 +53,6 @@ impl PerformanceObserverInit {
     pub fn set_entry_types(&mut self, value: Sequence<DOMString>) {
         self.inner.set("entryTypes", value);
     }
-
 }
 impl PerformanceObserverInit {
     pub fn type_(&self) -> DOMString {
@@ -66,7 +62,6 @@ impl PerformanceObserverInit {
     pub fn set_type_(&mut self, value: DOMString) {
         self.inner.set("type", value);
     }
-
 }
 impl PerformanceObserverInit {
     pub fn buffered(&self) -> bool {
@@ -76,7 +71,6 @@ impl PerformanceObserverInit {
     pub fn set_buffered(&mut self, value: bool) {
         self.inner.set("buffered", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -85,7 +79,9 @@ pub struct PerformanceObserver {
 }
 impl FromVal for PerformanceObserver {
     fn from_val(v: &emlite::Val) -> Self {
-        PerformanceObserver { inner: emlite::Val::from_val(v) }
+        PerformanceObserver {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -112,8 +108,8 @@ impl AsRef<emlite::Val> for PerformanceObserver {
 }
 impl AsMut<emlite::Val> for PerformanceObserver {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PerformanceObserver> for emlite::Val {
     fn from(s: PerformanceObserver) -> emlite::Val {
@@ -124,41 +120,40 @@ impl From<PerformanceObserver> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PerformanceObserver);
 
-
-
 impl PerformanceObserver {
     pub fn new(callback: Function) -> PerformanceObserver {
         Self {
-            inner: emlite::Val::global("PerformanceObserver").new(&[callback.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("PerformanceObserver")
+                .new(&[callback.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl PerformanceObserver {
-    pub fn observe0(&self, ) -> Undefined {
+    pub fn observe0(&self) -> Undefined {
         self.inner.call("observe", &[]).as_::<Undefined>()
     }
 
     pub fn observe1(&self, options: PerformanceObserverInit) -> Undefined {
-        self.inner.call("observe", &[options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("observe", &[options.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl PerformanceObserver {
-    pub fn disconnect(&self, ) -> Undefined {
+    pub fn disconnect(&self) -> Undefined {
         self.inner.call("disconnect", &[]).as_::<Undefined>()
     }
-
 }
 impl PerformanceObserver {
-    pub fn take_records(&self, ) -> Any {
+    pub fn take_records(&self) -> Any {
         self.inner.call("takeRecords", &[]).as_::<Any>()
     }
-
 }
 impl PerformanceObserver {
     pub fn supported_entry_types() -> FrozenArray<DOMString> {
-        emlite::Val::global("performanceobserver").get("supportedEntryTypes").as_::<FrozenArray<DOMString>>()
+        emlite::Val::global("PerformanceObserver")
+            .get("supportedEntryTypes")
+            .as_::<FrozenArray<DOMString>>()
     }
-
 }

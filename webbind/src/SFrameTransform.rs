@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SFrameTransform {
@@ -10,7 +7,9 @@ pub struct SFrameTransform {
 }
 impl FromVal for SFrameTransform {
     fn from_val(v: &emlite::Val) -> Self {
-        SFrameTransform { inner: EventTarget::from_val(v) }
+        SFrameTransform {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SFrameTransform {
 }
 impl AsMut<emlite::Val> for SFrameTransform {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SFrameTransform> for emlite::Val {
     fn from(s: SFrameTransform) -> emlite::Val {
@@ -49,31 +48,35 @@ impl From<SFrameTransform> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SFrameTransform);
 
-
-
 impl SFrameTransform {
     pub fn new0() -> SFrameTransform {
         Self {
-            inner: emlite::Val::global("SFrameTransform").new(&[]).as_::<EventTarget>(),
+            inner: emlite::Val::global("SFrameTransform")
+                .new(&[])
+                .as_::<EventTarget>(),
         }
     }
 
     pub fn new1(options: Any) -> SFrameTransform {
         Self {
-            inner: emlite::Val::global("SFrameTransform").new(&[options.into()]).as_::<EventTarget>(),
+            inner: emlite::Val::global("SFrameTransform")
+                .new(&[options.into()])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl SFrameTransform {
     pub fn set_encryption_key0(&self, key: CryptoKey) -> Promise {
-        self.inner.call("setEncryptionKey", &[key.into(), ]).as_::<Promise>()
+        self.inner
+            .call("setEncryptionKey", &[key.into()])
+            .as_::<Promise>()
     }
 
     pub fn set_encryption_key1(&self, key: CryptoKey, key_id: Any) -> Promise {
-        self.inner.call("setEncryptionKey", &[key.into(), key_id.into(), ]).as_::<Promise>()
+        self.inner
+            .call("setEncryptionKey", &[key.into(), key_id.into()])
+            .as_::<Promise>()
     }
-
 }
 impl SFrameTransform {
     pub fn onerror(&self) -> Any {
@@ -83,17 +86,14 @@ impl SFrameTransform {
     pub fn set_onerror(&mut self, value: Any) {
         self.inner.set("onerror", value);
     }
-
 }
 impl SFrameTransform {
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
-
 }
 impl SFrameTransform {
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
     }
-
 }

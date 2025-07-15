@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGAElement {
@@ -10,7 +7,9 @@ pub struct SVGAElement {
 }
 impl FromVal for SVGAElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGAElement { inner: SVGGraphicsElement::from_val(v) }
+        SVGAElement {
+            inner: SVGGraphicsElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SVGAElement {
 }
 impl AsMut<emlite::Val> for SVGAElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGAElement> for emlite::Val {
     fn from(s: SVGAElement) -> emlite::Val {
@@ -49,12 +48,10 @@ impl From<SVGAElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGAElement);
 
-
 impl SVGAElement {
     pub fn target(&self) -> SVGAnimatedString {
         self.inner.get("target").as_::<SVGAnimatedString>()
     }
-
 }
 impl SVGAElement {
     pub fn download(&self) -> DOMString {
@@ -64,7 +61,6 @@ impl SVGAElement {
     pub fn set_download(&mut self, value: DOMString) {
         self.inner.set("download", value);
     }
-
 }
 impl SVGAElement {
     pub fn ping(&self) -> USVString {
@@ -74,7 +70,6 @@ impl SVGAElement {
     pub fn set_ping(&mut self, value: USVString) {
         self.inner.set("ping", value);
     }
-
 }
 impl SVGAElement {
     pub fn rel(&self) -> DOMString {
@@ -84,13 +79,11 @@ impl SVGAElement {
     pub fn set_rel(&mut self, value: DOMString) {
         self.inner.set("rel", value);
     }
-
 }
 impl SVGAElement {
     pub fn rel_list(&self) -> DOMTokenList {
         self.inner.get("relList").as_::<DOMTokenList>()
     }
-
 }
 impl SVGAElement {
     pub fn hreflang(&self) -> DOMString {
@@ -100,7 +93,6 @@ impl SVGAElement {
     pub fn set_hreflang(&mut self, value: DOMString) {
         self.inner.set("hreflang", value);
     }
-
 }
 impl SVGAElement {
     pub fn type_(&self) -> DOMString {
@@ -110,7 +102,6 @@ impl SVGAElement {
     pub fn set_type_(&mut self, value: DOMString) {
         self.inner.set("type", value);
     }
-
 }
 impl SVGAElement {
     pub fn text(&self) -> DOMString {
@@ -120,7 +111,6 @@ impl SVGAElement {
     pub fn set_text(&mut self, value: DOMString) {
         self.inner.set("text", value);
     }
-
 }
 impl SVGAElement {
     pub fn referrer_policy(&self) -> DOMString {
@@ -130,13 +120,11 @@ impl SVGAElement {
     pub fn set_referrer_policy(&mut self, value: DOMString) {
         self.inner.set("referrerPolicy", value);
     }
-
 }
 impl SVGAElement {
     pub fn origin(&self) -> USVString {
         self.inner.get("origin").as_::<USVString>()
     }
-
 }
 impl SVGAElement {
     pub fn protocol(&self) -> USVString {
@@ -146,7 +134,6 @@ impl SVGAElement {
     pub fn set_protocol(&mut self, value: USVString) {
         self.inner.set("protocol", value);
     }
-
 }
 impl SVGAElement {
     pub fn username(&self) -> USVString {
@@ -156,7 +143,6 @@ impl SVGAElement {
     pub fn set_username(&mut self, value: USVString) {
         self.inner.set("username", value);
     }
-
 }
 impl SVGAElement {
     pub fn password(&self) -> USVString {
@@ -166,7 +152,6 @@ impl SVGAElement {
     pub fn set_password(&mut self, value: USVString) {
         self.inner.set("password", value);
     }
-
 }
 impl SVGAElement {
     pub fn host(&self) -> USVString {
@@ -176,7 +161,6 @@ impl SVGAElement {
     pub fn set_host(&mut self, value: USVString) {
         self.inner.set("host", value);
     }
-
 }
 impl SVGAElement {
     pub fn hostname(&self) -> USVString {
@@ -186,7 +170,6 @@ impl SVGAElement {
     pub fn set_hostname(&mut self, value: USVString) {
         self.inner.set("hostname", value);
     }
-
 }
 impl SVGAElement {
     pub fn port(&self) -> USVString {
@@ -196,7 +179,6 @@ impl SVGAElement {
     pub fn set_port(&mut self, value: USVString) {
         self.inner.set("port", value);
     }
-
 }
 impl SVGAElement {
     pub fn pathname(&self) -> USVString {
@@ -206,7 +188,6 @@ impl SVGAElement {
     pub fn set_pathname(&mut self, value: USVString) {
         self.inner.set("pathname", value);
     }
-
 }
 impl SVGAElement {
     pub fn search(&self) -> USVString {
@@ -216,7 +197,6 @@ impl SVGAElement {
     pub fn set_search(&mut self, value: USVString) {
         self.inner.set("search", value);
     }
-
 }
 impl SVGAElement {
     pub fn hash(&self) -> USVString {
@@ -226,11 +206,9 @@ impl SVGAElement {
     pub fn set_hash(&mut self, value: USVString) {
         self.inner.set("hash", value);
     }
-
 }
 impl SVGAElement {
     pub fn href(&self) -> SVGAnimatedString {
         self.inner.get("href").as_::<SVGAnimatedString>()
     }
-
 }

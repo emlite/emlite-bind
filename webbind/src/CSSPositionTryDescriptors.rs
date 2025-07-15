@@ -108,9 +108,7 @@ impl CSSPositionTryDescriptors {
 }
 impl CSSPositionTryDescriptors {
     pub fn margin_block_start(&self) -> CSSOMString {
-        self.inner
-            .get("marginBlockStart")
-            .as_::<CSSOMString>()
+        self.inner.get("marginBlockStart").as_::<CSSOMString>()
     }
 
     pub fn set_margin_block_start(&mut self, value: CSSOMString) {
@@ -119,9 +117,7 @@ impl CSSPositionTryDescriptors {
 }
 impl CSSPositionTryDescriptors {
     pub fn margin_block_end(&self) -> CSSOMString {
-        self.inner
-            .get("marginBlockEnd")
-            .as_::<CSSOMString>()
+        self.inner.get("marginBlockEnd").as_::<CSSOMString>()
     }
 
     pub fn set_margin_block_end(&mut self, value: CSSOMString) {
@@ -139,9 +135,7 @@ impl CSSPositionTryDescriptors {
 }
 impl CSSPositionTryDescriptors {
     pub fn margin_inline_start(&self) -> CSSOMString {
-        self.inner
-            .get("marginInlineStart")
-            .as_::<CSSOMString>()
+        self.inner.get("marginInlineStart").as_::<CSSOMString>()
     }
 
     pub fn set_margin_inline_start(&mut self, value: CSSOMString) {
@@ -150,9 +144,7 @@ impl CSSPositionTryDescriptors {
 }
 impl CSSPositionTryDescriptors {
     pub fn margin_inline_end(&self) -> CSSOMString {
-        self.inner
-            .get("marginInlineEnd")
-            .as_::<CSSOMString>()
+        self.inner.get("marginInlineEnd").as_::<CSSOMString>()
     }
 
     pub fn set_margin_inline_end(&mut self, value: CSSOMString) {
@@ -180,9 +172,7 @@ impl CSSPositionTryDescriptors {
 }
 impl CSSPositionTryDescriptors {
     pub fn inset_block_start(&self) -> CSSOMString {
-        self.inner
-            .get("insetBlockStart")
-            .as_::<CSSOMString>()
+        self.inner.get("insetBlockStart").as_::<CSSOMString>()
     }
 
     pub fn set_inset_block_start(&mut self, value: CSSOMString) {
@@ -209,9 +199,7 @@ impl CSSPositionTryDescriptors {
 }
 impl CSSPositionTryDescriptors {
     pub fn inset_inline_start(&self) -> CSSOMString {
-        self.inner
-            .get("insetInlineStart")
-            .as_::<CSSOMString>()
+        self.inner.get("insetInlineStart").as_::<CSSOMString>()
     }
 
     pub fn set_inset_inline_start(&mut self, value: CSSOMString) {
@@ -220,9 +208,7 @@ impl CSSPositionTryDescriptors {
 }
 impl CSSPositionTryDescriptors {
     pub fn inset_inline_end(&self) -> CSSOMString {
-        self.inner
-            .get("insetInlineEnd")
-            .as_::<CSSOMString>()
+        self.inner.get("insetInlineEnd").as_::<CSSOMString>()
     }
 
     pub fn set_inset_inline_end(&mut self, value: CSSOMString) {
@@ -399,9 +385,7 @@ impl CSSPositionTryDescriptors {
 
 impl CSSPositionTryDescriptors {
     pub fn position_anchor(&self) -> CSSOMString {
-        self.inner
-            .get("positionAnchor")
-            .as_::<CSSOMString>()
+        self.inner.get("positionAnchor").as_::<CSSOMString>()
     }
 
     pub fn set_position_anchor(&mut self, value: CSSOMString) {

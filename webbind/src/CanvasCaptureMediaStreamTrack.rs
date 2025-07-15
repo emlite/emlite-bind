@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CanvasCaptureMediaStreamTrack {
@@ -10,7 +7,9 @@ pub struct CanvasCaptureMediaStreamTrack {
 }
 impl FromVal for CanvasCaptureMediaStreamTrack {
     fn from_val(v: &emlite::Val) -> Self {
-        CanvasCaptureMediaStreamTrack { inner: MediaStreamTrack::from_val(v) }
+        CanvasCaptureMediaStreamTrack {
+            inner: MediaStreamTrack::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CanvasCaptureMediaStreamTrack {
 }
 impl AsMut<emlite::Val> for CanvasCaptureMediaStreamTrack {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CanvasCaptureMediaStreamTrack> for emlite::Val {
     fn from(s: CanvasCaptureMediaStreamTrack) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<CanvasCaptureMediaStreamTrack> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CanvasCaptureMediaStreamTrack);
 
-
 impl CanvasCaptureMediaStreamTrack {
     pub fn canvas(&self) -> HTMLCanvasElement {
         self.inner.get("canvas").as_::<HTMLCanvasElement>()
     }
-
 }
 impl CanvasCaptureMediaStreamTrack {
-    pub fn request_frame(&self, ) -> Undefined {
+    pub fn request_frame(&self) -> Undefined {
         self.inner.call("requestFrame", &[]).as_::<Undefined>()
     }
-
 }

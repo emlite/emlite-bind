@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AuthenticatorAssertionResponse {
@@ -10,7 +7,9 @@ pub struct AuthenticatorAssertionResponse {
 }
 impl FromVal for AuthenticatorAssertionResponse {
     fn from_val(v: &emlite::Val) -> Self {
-        AuthenticatorAssertionResponse { inner: AuthenticatorResponse::from_val(v) }
+        AuthenticatorAssertionResponse {
+            inner: AuthenticatorResponse::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for AuthenticatorAssertionResponse {
 }
 impl AsMut<emlite::Val> for AuthenticatorAssertionResponse {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AuthenticatorAssertionResponse> for emlite::Val {
     fn from(s: AuthenticatorAssertionResponse) -> emlite::Val {
@@ -49,22 +48,18 @@ impl From<AuthenticatorAssertionResponse> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AuthenticatorAssertionResponse);
 
-
 impl AuthenticatorAssertionResponse {
     pub fn authenticator_data(&self) -> ArrayBuffer {
         self.inner.get("authenticatorData").as_::<ArrayBuffer>()
     }
-
 }
 impl AuthenticatorAssertionResponse {
     pub fn signature(&self) -> ArrayBuffer {
         self.inner.get("signature").as_::<ArrayBuffer>()
     }
-
 }
 impl AuthenticatorAssertionResponse {
     pub fn user_handle(&self) -> ArrayBuffer {
         self.inner.get("userHandle").as_::<ArrayBuffer>()
     }
-
 }

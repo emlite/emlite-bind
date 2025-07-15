@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NavigationCurrentEntryChangeEvent {
@@ -10,7 +7,9 @@ pub struct NavigationCurrentEntryChangeEvent {
 }
 impl FromVal for NavigationCurrentEntryChangeEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        NavigationCurrentEntryChangeEvent { inner: Event::from_val(v) }
+        NavigationCurrentEntryChangeEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for NavigationCurrentEntryChangeEvent {
 }
 impl AsMut<emlite::Val> for NavigationCurrentEntryChangeEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<NavigationCurrentEntryChangeEvent> for emlite::Val {
     fn from(s: NavigationCurrentEntryChangeEvent) -> emlite::Val {
@@ -49,25 +48,22 @@ impl From<NavigationCurrentEntryChangeEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(NavigationCurrentEntryChangeEvent);
 
-
-
 impl NavigationCurrentEntryChangeEvent {
     pub fn new(type_: DOMString, event_init_dict: Any) -> NavigationCurrentEntryChangeEvent {
         Self {
-            inner: emlite::Val::global("NavigationCurrentEntryChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("NavigationCurrentEntryChangeEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl NavigationCurrentEntryChangeEvent {
     pub fn navigation_type(&self) -> NavigationType {
         self.inner.get("navigationType").as_::<NavigationType>()
     }
-
 }
 impl NavigationCurrentEntryChangeEvent {
     pub fn from(&self) -> NavigationHistoryEntry {
         self.inner.get("from").as_::<NavigationHistoryEntry>()
     }
-
 }

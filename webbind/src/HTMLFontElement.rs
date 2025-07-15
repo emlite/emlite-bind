@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLFontElement {
@@ -10,7 +7,9 @@ pub struct HTMLFontElement {
 }
 impl FromVal for HTMLFontElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLFontElement { inner: HTMLElement::from_val(v) }
+        HTMLFontElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLFontElement {
 }
 impl AsMut<emlite::Val> for HTMLFontElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLFontElement> for emlite::Val {
     fn from(s: HTMLFontElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLFontElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLFontElement);
 
-
-
 impl HTMLFontElement {
     pub fn new() -> HTMLFontElement {
         Self {
-            inner: emlite::Val::global("HTMLFontElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLFontElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLFontElement {
     pub fn color(&self) -> DOMString {
@@ -67,7 +65,6 @@ impl HTMLFontElement {
     pub fn set_color(&mut self, value: DOMString) {
         self.inner.set("color", value);
     }
-
 }
 impl HTMLFontElement {
     pub fn face(&self) -> DOMString {
@@ -77,7 +74,6 @@ impl HTMLFontElement {
     pub fn set_face(&mut self, value: DOMString) {
         self.inner.set("face", value);
     }
-
 }
 impl HTMLFontElement {
     pub fn size(&self) -> DOMString {
@@ -87,5 +83,4 @@ impl HTMLFontElement {
     pub fn set_size(&mut self, value: DOMString) {
         self.inner.set("size", value);
     }
-
 }

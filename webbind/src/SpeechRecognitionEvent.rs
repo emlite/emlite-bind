@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SpeechRecognitionEvent {
@@ -10,7 +7,9 @@ pub struct SpeechRecognitionEvent {
 }
 impl FromVal for SpeechRecognitionEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        SpeechRecognitionEvent { inner: Event::from_val(v) }
+        SpeechRecognitionEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SpeechRecognitionEvent {
 }
 impl AsMut<emlite::Val> for SpeechRecognitionEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SpeechRecognitionEvent> for emlite::Val {
     fn from(s: SpeechRecognitionEvent) -> emlite::Val {
@@ -49,25 +48,24 @@ impl From<SpeechRecognitionEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionEvent);
 
-
-
 impl SpeechRecognitionEvent {
     pub fn new(type_: DOMString, event_init_dict: Any) -> SpeechRecognitionEvent {
         Self {
-            inner: emlite::Val::global("SpeechRecognitionEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("SpeechRecognitionEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl SpeechRecognitionEvent {
     pub fn result_index(&self) -> u32 {
         self.inner.get("resultIndex").as_::<u32>()
     }
-
 }
 impl SpeechRecognitionEvent {
     pub fn results(&self) -> SpeechRecognitionResultList {
-        self.inner.get("results").as_::<SpeechRecognitionResultList>()
+        self.inner
+            .get("results")
+            .as_::<SpeechRecognitionResultList>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUOutOfMemoryError {
@@ -10,7 +7,9 @@ pub struct GPUOutOfMemoryError {
 }
 impl FromVal for GPUOutOfMemoryError {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUOutOfMemoryError { inner: GPUError::from_val(v) }
+        GPUOutOfMemoryError {
+            inner: GPUError::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for GPUOutOfMemoryError {
 }
 impl AsMut<emlite::Val> for GPUOutOfMemoryError {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<GPUOutOfMemoryError> for emlite::Val {
     fn from(s: GPUOutOfMemoryError) -> emlite::Val {
@@ -49,13 +48,12 @@ impl From<GPUOutOfMemoryError> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GPUOutOfMemoryError);
 
-
-
 impl GPUOutOfMemoryError {
     pub fn new(message: DOMString) -> GPUOutOfMemoryError {
         Self {
-            inner: emlite::Val::global("GPUOutOfMemoryError").new(&[message.into()]).as_::<GPUError>(),
+            inner: emlite::Val::global("GPUOutOfMemoryError")
+                .new(&[message.into()])
+                .as_::<GPUError>(),
         }
     }
-
 }

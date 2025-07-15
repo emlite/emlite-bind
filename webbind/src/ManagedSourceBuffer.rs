@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ManagedSourceBuffer {
@@ -10,7 +7,9 @@ pub struct ManagedSourceBuffer {
 }
 impl FromVal for ManagedSourceBuffer {
     fn from_val(v: &emlite::Val) -> Self {
-        ManagedSourceBuffer { inner: SourceBuffer::from_val(v) }
+        ManagedSourceBuffer {
+            inner: SourceBuffer::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for ManagedSourceBuffer {
 }
 impl AsMut<emlite::Val> for ManagedSourceBuffer {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ManagedSourceBuffer> for emlite::Val {
     fn from(s: ManagedSourceBuffer) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<ManagedSourceBuffer> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ManagedSourceBuffer);
 
-
 impl ManagedSourceBuffer {
     pub fn onbufferedchange(&self) -> Any {
         self.inner.get("onbufferedchange").as_::<Any>()
@@ -58,5 +56,4 @@ impl ManagedSourceBuffer {
     pub fn set_onbufferedchange(&mut self, value: Any) {
         self.inner.set("onbufferedchange", value);
     }
-
 }

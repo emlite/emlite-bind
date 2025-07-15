@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GravitySensor {
@@ -10,7 +7,9 @@ pub struct GravitySensor {
 }
 impl FromVal for GravitySensor {
     fn from_val(v: &emlite::Val) -> Self {
-        GravitySensor { inner: Accelerometer::from_val(v) }
+        GravitySensor {
+            inner: Accelerometer::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for GravitySensor {
 }
 impl AsMut<emlite::Val> for GravitySensor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<GravitySensor> for emlite::Val {
     fn from(s: GravitySensor) -> emlite::Val {
@@ -49,19 +48,20 @@ impl From<GravitySensor> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GravitySensor);
 
-
-
 impl GravitySensor {
     pub fn new0() -> GravitySensor {
         Self {
-            inner: emlite::Val::global("GravitySensor").new(&[]).as_::<Accelerometer>(),
+            inner: emlite::Val::global("GravitySensor")
+                .new(&[])
+                .as_::<Accelerometer>(),
         }
     }
 
     pub fn new1(options: Any) -> GravitySensor {
         Self {
-            inner: emlite::Val::global("GravitySensor").new(&[options.into()]).as_::<Accelerometer>(),
+            inner: emlite::Val::global("GravitySensor")
+                .new(&[options.into()])
+                .as_::<Accelerometer>(),
         }
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CaretPosition {
@@ -10,7 +7,9 @@ pub struct CaretPosition {
 }
 impl FromVal for CaretPosition {
     fn from_val(v: &emlite::Val) -> Self {
-        CaretPosition { inner: emlite::Val::from_val(v) }
+        CaretPosition {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CaretPosition {
 }
 impl AsMut<emlite::Val> for CaretPosition {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CaretPosition> for emlite::Val {
     fn from(s: CaretPosition) -> emlite::Val {
@@ -49,22 +48,18 @@ impl From<CaretPosition> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CaretPosition);
 
-
 impl CaretPosition {
     pub fn offset_node(&self) -> Node {
         self.inner.get("offsetNode").as_::<Node>()
     }
-
 }
 impl CaretPosition {
     pub fn offset(&self) -> u32 {
         self.inner.get("offset").as_::<u32>()
     }
-
 }
 impl CaretPosition {
-    pub fn get_client_rect(&self, ) -> DOMRect {
+    pub fn get_client_rect(&self) -> DOMRect {
         self.inner.call("getClientRect", &[]).as_::<DOMRect>()
     }
-
 }

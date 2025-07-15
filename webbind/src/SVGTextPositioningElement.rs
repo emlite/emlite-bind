@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGTextPositioningElement {
@@ -10,7 +7,9 @@ pub struct SVGTextPositioningElement {
 }
 impl FromVal for SVGTextPositioningElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGTextPositioningElement { inner: SVGTextContentElement::from_val(v) }
+        SVGTextPositioningElement {
+            inner: SVGTextContentElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SVGTextPositioningElement {
 }
 impl AsMut<emlite::Val> for SVGTextPositioningElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGTextPositioningElement> for emlite::Val {
     fn from(s: SVGTextPositioningElement) -> emlite::Val {
@@ -49,34 +48,28 @@ impl From<SVGTextPositioningElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGTextPositioningElement);
 
-
 impl SVGTextPositioningElement {
     pub fn x(&self) -> SVGAnimatedLengthList {
         self.inner.get("x").as_::<SVGAnimatedLengthList>()
     }
-
 }
 impl SVGTextPositioningElement {
     pub fn y(&self) -> SVGAnimatedLengthList {
         self.inner.get("y").as_::<SVGAnimatedLengthList>()
     }
-
 }
 impl SVGTextPositioningElement {
     pub fn dx(&self) -> SVGAnimatedLengthList {
         self.inner.get("dx").as_::<SVGAnimatedLengthList>()
     }
-
 }
 impl SVGTextPositioningElement {
     pub fn dy(&self) -> SVGAnimatedLengthList {
         self.inner.get("dy").as_::<SVGAnimatedLengthList>()
     }
-
 }
 impl SVGTextPositioningElement {
     pub fn rotate(&self) -> SVGAnimatedNumberList {
         self.inner.get("rotate").as_::<SVGAnimatedNumberList>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FontMetrics {
@@ -10,7 +7,9 @@ pub struct FontMetrics {
 }
 impl FromVal for FontMetrics {
     fn from_val(v: &emlite::Val) -> Self {
-        FontMetrics { inner: emlite::Val::from_val(v) }
+        FontMetrics {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for FontMetrics {
 }
 impl AsMut<emlite::Val> for FontMetrics {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<FontMetrics> for emlite::Val {
     fn from(s: FontMetrics) -> emlite::Val {
@@ -49,88 +48,73 @@ impl From<FontMetrics> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FontMetrics);
 
-
 impl FontMetrics {
     pub fn width(&self) -> f64 {
         self.inner.get("width").as_::<f64>()
     }
-
 }
 impl FontMetrics {
     pub fn advances(&self) -> FrozenArray<f64> {
         self.inner.get("advances").as_::<FrozenArray<f64>>()
     }
-
 }
 impl FontMetrics {
     pub fn bounding_box_left(&self) -> f64 {
         self.inner.get("boundingBoxLeft").as_::<f64>()
     }
-
 }
 impl FontMetrics {
     pub fn bounding_box_right(&self) -> f64 {
         self.inner.get("boundingBoxRight").as_::<f64>()
     }
-
 }
 impl FontMetrics {
     pub fn height(&self) -> f64 {
         self.inner.get("height").as_::<f64>()
     }
-
 }
 impl FontMetrics {
     pub fn em_height_ascent(&self) -> f64 {
         self.inner.get("emHeightAscent").as_::<f64>()
     }
-
 }
 impl FontMetrics {
     pub fn em_height_descent(&self) -> f64 {
         self.inner.get("emHeightDescent").as_::<f64>()
     }
-
 }
 impl FontMetrics {
     pub fn bounding_box_ascent(&self) -> f64 {
         self.inner.get("boundingBoxAscent").as_::<f64>()
     }
-
 }
 impl FontMetrics {
     pub fn bounding_box_descent(&self) -> f64 {
         self.inner.get("boundingBoxDescent").as_::<f64>()
     }
-
 }
 impl FontMetrics {
     pub fn font_bounding_box_ascent(&self) -> f64 {
         self.inner.get("fontBoundingBoxAscent").as_::<f64>()
     }
-
 }
 impl FontMetrics {
     pub fn font_bounding_box_descent(&self) -> f64 {
         self.inner.get("fontBoundingBoxDescent").as_::<f64>()
     }
-
 }
 impl FontMetrics {
     pub fn dominant_baseline(&self) -> Baseline {
         self.inner.get("dominantBaseline").as_::<Baseline>()
     }
-
 }
 impl FontMetrics {
     pub fn baselines(&self) -> FrozenArray<Baseline> {
         self.inner.get("baselines").as_::<FrozenArray<Baseline>>()
     }
-
 }
 impl FontMetrics {
     pub fn fonts(&self) -> FrozenArray<Font> {
         self.inner.get("fonts").as_::<FrozenArray<Font>>()
     }
-
 }

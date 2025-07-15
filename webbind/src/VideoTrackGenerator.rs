@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VideoTrackGenerator {
@@ -10,7 +7,9 @@ pub struct VideoTrackGenerator {
 }
 impl FromVal for VideoTrackGenerator {
     fn from_val(v: &emlite::Val) -> Self {
-        VideoTrackGenerator { inner: emlite::Val::from_val(v) }
+        VideoTrackGenerator {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for VideoTrackGenerator {
 }
 impl AsMut<emlite::Val> for VideoTrackGenerator {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<VideoTrackGenerator> for emlite::Val {
     fn from(s: VideoTrackGenerator) -> emlite::Val {
@@ -49,21 +48,19 @@ impl From<VideoTrackGenerator> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(VideoTrackGenerator);
 
-
-
 impl VideoTrackGenerator {
     pub fn new() -> VideoTrackGenerator {
         Self {
-            inner: emlite::Val::global("VideoTrackGenerator").new(&[]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("VideoTrackGenerator")
+                .new(&[])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl VideoTrackGenerator {
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
     }
-
 }
 impl VideoTrackGenerator {
     pub fn muted(&self) -> bool {
@@ -73,11 +70,9 @@ impl VideoTrackGenerator {
     pub fn set_muted(&mut self, value: bool) {
         self.inner.set("muted", value);
     }
-
 }
 impl VideoTrackGenerator {
     pub fn track(&self) -> MediaStreamTrack {
         self.inner.get("track").as_::<MediaStreamTrack>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioTimestamp {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for AudioTimestamp {
 }
 impl AsMut<emlite::Val> for AudioTimestamp {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AudioTimestamp> for emlite::Val {
     fn from(s: AudioTimestamp) -> emlite::Val {
@@ -56,7 +53,6 @@ impl AudioTimestamp {
     pub fn set_context_time(&mut self, value: f64) {
         self.inner.set("contextTime", value);
     }
-
 }
 impl AudioTimestamp {
     pub fn performance_time(&self) -> Any {
@@ -66,7 +62,6 @@ impl AudioTimestamp {
     pub fn set_performance_time(&mut self, value: Any) {
         self.inner.set("performanceTime", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -75,7 +70,9 @@ pub struct AudioContext {
 }
 impl FromVal for AudioContext {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioContext { inner: BaseAudioContext::from_val(v) }
+        AudioContext {
+            inner: BaseAudioContext::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -102,8 +99,8 @@ impl AsRef<emlite::Val> for AudioContext {
 }
 impl AsMut<emlite::Val> for AudioContext {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AudioContext> for emlite::Val {
     fn from(s: AudioContext) -> emlite::Val {
@@ -114,39 +111,37 @@ impl From<AudioContext> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AudioContext);
 
-
-
 impl AudioContext {
     pub fn new0() -> AudioContext {
         Self {
-            inner: emlite::Val::global("AudioContext").new(&[]).as_::<BaseAudioContext>(),
+            inner: emlite::Val::global("AudioContext")
+                .new(&[])
+                .as_::<BaseAudioContext>(),
         }
     }
 
     pub fn new1(context_options: Any) -> AudioContext {
         Self {
-            inner: emlite::Val::global("AudioContext").new(&[context_options.into()]).as_::<BaseAudioContext>(),
+            inner: emlite::Val::global("AudioContext")
+                .new(&[context_options.into()])
+                .as_::<BaseAudioContext>(),
         }
     }
-
 }
 impl AudioContext {
     pub fn base_latency(&self) -> f64 {
         self.inner.get("baseLatency").as_::<f64>()
     }
-
 }
 impl AudioContext {
     pub fn output_latency(&self) -> f64 {
         self.inner.get("outputLatency").as_::<f64>()
     }
-
 }
 impl AudioContext {
     pub fn sink_id(&self) -> Any {
         self.inner.get("sinkId").as_::<Any>()
     }
-
 }
 impl AudioContext {
     pub fn onsinkchange(&self) -> Any {
@@ -156,7 +151,6 @@ impl AudioContext {
     pub fn set_onsinkchange(&mut self, value: Any) {
         self.inner.set("onsinkchange", value);
     }
-
 }
 impl AudioContext {
     pub fn onerror(&self) -> Any {
@@ -166,59 +160,70 @@ impl AudioContext {
     pub fn set_onerror(&mut self, value: Any) {
         self.inner.set("onerror", value);
     }
-
 }
 impl AudioContext {
-    pub fn get_output_timestamp(&self, ) -> AudioTimestamp {
-        self.inner.call("getOutputTimestamp", &[]).as_::<AudioTimestamp>()
+    pub fn get_output_timestamp(&self) -> AudioTimestamp {
+        self.inner
+            .call("getOutputTimestamp", &[])
+            .as_::<AudioTimestamp>()
     }
-
 }
 impl AudioContext {
-    pub fn resume(&self, ) -> Promise {
+    pub fn resume(&self) -> Promise {
         self.inner.call("resume", &[]).as_::<Promise>()
     }
-
 }
 impl AudioContext {
-    pub fn suspend(&self, ) -> Promise {
+    pub fn suspend(&self) -> Promise {
         self.inner.call("suspend", &[]).as_::<Promise>()
     }
-
 }
 impl AudioContext {
-    pub fn close(&self, ) -> Promise {
+    pub fn close(&self) -> Promise {
         self.inner.call("close", &[]).as_::<Promise>()
     }
-
 }
 impl AudioContext {
     pub fn set_sink_id(&self, sink_id: Any) -> Promise {
-        self.inner.call("setSinkId", &[sink_id.into(), ]).as_::<Promise>()
+        self.inner
+            .call("setSinkId", &[sink_id.into()])
+            .as_::<Promise>()
     }
-
 }
 impl AudioContext {
-    pub fn create_media_element_source(&self, media_element: HTMLMediaElement) -> MediaElementAudioSourceNode {
-        self.inner.call("createMediaElementSource", &[media_element.into(), ]).as_::<MediaElementAudioSourceNode>()
+    pub fn create_media_element_source(
+        &self,
+        media_element: HTMLMediaElement,
+    ) -> MediaElementAudioSourceNode {
+        self.inner
+            .call("createMediaElementSource", &[media_element.into()])
+            .as_::<MediaElementAudioSourceNode>()
     }
-
 }
 impl AudioContext {
-    pub fn create_media_stream_source(&self, media_stream: MediaStream) -> MediaStreamAudioSourceNode {
-        self.inner.call("createMediaStreamSource", &[media_stream.into(), ]).as_::<MediaStreamAudioSourceNode>()
+    pub fn create_media_stream_source(
+        &self,
+        media_stream: MediaStream,
+    ) -> MediaStreamAudioSourceNode {
+        self.inner
+            .call("createMediaStreamSource", &[media_stream.into()])
+            .as_::<MediaStreamAudioSourceNode>()
     }
-
 }
 impl AudioContext {
-    pub fn create_media_stream_track_source(&self, media_stream_track: MediaStreamTrack) -> MediaStreamTrackAudioSourceNode {
-        self.inner.call("createMediaStreamTrackSource", &[media_stream_track.into(), ]).as_::<MediaStreamTrackAudioSourceNode>()
+    pub fn create_media_stream_track_source(
+        &self,
+        media_stream_track: MediaStreamTrack,
+    ) -> MediaStreamTrackAudioSourceNode {
+        self.inner
+            .call("createMediaStreamTrackSource", &[media_stream_track.into()])
+            .as_::<MediaStreamTrackAudioSourceNode>()
     }
-
 }
 impl AudioContext {
-    pub fn create_media_stream_destination(&self, ) -> MediaStreamAudioDestinationNode {
-        self.inner.call("createMediaStreamDestination", &[]).as_::<MediaStreamAudioDestinationNode>()
+    pub fn create_media_stream_destination(&self) -> MediaStreamAudioDestinationNode {
+        self.inner
+            .call("createMediaStreamDestination", &[])
+            .as_::<MediaStreamAudioDestinationNode>()
     }
-
 }

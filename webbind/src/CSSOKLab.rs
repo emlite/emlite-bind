@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSOKLab {
@@ -10,7 +7,9 @@ pub struct CSSOKLab {
 }
 impl FromVal for CSSOKLab {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSOKLab { inner: CSSColorValue::from_val(v) }
+        CSSOKLab {
+            inner: CSSColorValue::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSOKLab {
 }
 impl AsMut<emlite::Val> for CSSOKLab {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSOKLab> for emlite::Val {
     fn from(s: CSSOKLab) -> emlite::Val {
@@ -49,21 +48,22 @@ impl From<CSSOKLab> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSOKLab);
 
-
-
 impl CSSOKLab {
     pub fn new0(l: Any, a: Any, b: Any) -> CSSOKLab {
         Self {
-            inner: emlite::Val::global("CSSOKLab").new(&[l.into(), a.into(), b.into()]).as_::<CSSColorValue>(),
+            inner: emlite::Val::global("CSSOKLab")
+                .new(&[l.into(), a.into(), b.into()])
+                .as_::<CSSColorValue>(),
         }
     }
 
     pub fn new1(l: Any, a: Any, b: Any, alpha: Any) -> CSSOKLab {
         Self {
-            inner: emlite::Val::global("CSSOKLab").new(&[l.into(), a.into(), b.into(), alpha.into()]).as_::<CSSColorValue>(),
+            inner: emlite::Val::global("CSSOKLab")
+                .new(&[l.into(), a.into(), b.into(), alpha.into()])
+                .as_::<CSSColorValue>(),
         }
     }
-
 }
 impl CSSOKLab {
     pub fn l(&self) -> Any {
@@ -73,7 +73,6 @@ impl CSSOKLab {
     pub fn set_l(&mut self, value: Any) {
         self.inner.set("l", value);
     }
-
 }
 impl CSSOKLab {
     pub fn a(&self) -> Any {
@@ -83,7 +82,6 @@ impl CSSOKLab {
     pub fn set_a(&mut self, value: Any) {
         self.inner.set("a", value);
     }
-
 }
 impl CSSOKLab {
     pub fn b(&self) -> Any {
@@ -93,7 +91,6 @@ impl CSSOKLab {
     pub fn set_b(&mut self, value: Any) {
         self.inner.set("b", value);
     }
-
 }
 impl CSSOKLab {
     pub fn alpha(&self) -> Any {
@@ -103,5 +100,4 @@ impl CSSOKLab {
     pub fn set_alpha(&mut self, value: Any) {
         self.inner.set("alpha", value);
     }
-
 }

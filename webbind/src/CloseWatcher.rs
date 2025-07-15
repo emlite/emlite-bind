@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CloseWatcher {
@@ -10,7 +7,9 @@ pub struct CloseWatcher {
 }
 impl FromVal for CloseWatcher {
     fn from_val(v: &emlite::Val) -> Self {
-        CloseWatcher { inner: EventTarget::from_val(v) }
+        CloseWatcher {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CloseWatcher {
 }
 impl AsMut<emlite::Val> for CloseWatcher {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CloseWatcher> for emlite::Val {
     fn from(s: CloseWatcher) -> emlite::Val {
@@ -49,39 +48,37 @@ impl From<CloseWatcher> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CloseWatcher);
 
-
-
 impl CloseWatcher {
     pub fn new0() -> CloseWatcher {
         Self {
-            inner: emlite::Val::global("CloseWatcher").new(&[]).as_::<EventTarget>(),
+            inner: emlite::Val::global("CloseWatcher")
+                .new(&[])
+                .as_::<EventTarget>(),
         }
     }
 
     pub fn new1(options: Any) -> CloseWatcher {
         Self {
-            inner: emlite::Val::global("CloseWatcher").new(&[options.into()]).as_::<EventTarget>(),
+            inner: emlite::Val::global("CloseWatcher")
+                .new(&[options.into()])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl CloseWatcher {
-    pub fn request_close(&self, ) -> Undefined {
+    pub fn request_close(&self) -> Undefined {
         self.inner.call("requestClose", &[]).as_::<Undefined>()
     }
-
 }
 impl CloseWatcher {
-    pub fn close(&self, ) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
-
 }
 impl CloseWatcher {
-    pub fn destroy(&self, ) -> Undefined {
+    pub fn destroy(&self) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
     }
-
 }
 impl CloseWatcher {
     pub fn oncancel(&self) -> Any {
@@ -91,7 +88,6 @@ impl CloseWatcher {
     pub fn set_oncancel(&mut self, value: Any) {
         self.inner.set("oncancel", value);
     }
-
 }
 impl CloseWatcher {
     pub fn onclose(&self) -> Any {
@@ -101,5 +97,4 @@ impl CloseWatcher {
     pub fn set_onclose(&mut self, value: Any) {
         self.inner.set("onclose", value);
     }
-
 }

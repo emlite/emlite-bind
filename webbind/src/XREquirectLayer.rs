@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XREquirectLayer {
@@ -10,7 +7,9 @@ pub struct XREquirectLayer {
 }
 impl FromVal for XREquirectLayer {
     fn from_val(v: &emlite::Val) -> Self {
-        XREquirectLayer { inner: XRCompositionLayer::from_val(v) }
+        XREquirectLayer {
+            inner: XRCompositionLayer::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XREquirectLayer {
 }
 impl AsMut<emlite::Val> for XREquirectLayer {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XREquirectLayer> for emlite::Val {
     fn from(s: XREquirectLayer) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<XREquirectLayer> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XREquirectLayer);
 
-
 impl XREquirectLayer {
     pub fn space(&self) -> XRSpace {
         self.inner.get("space").as_::<XRSpace>()
@@ -58,7 +56,6 @@ impl XREquirectLayer {
     pub fn set_space(&mut self, value: XRSpace) {
         self.inner.set("space", value);
     }
-
 }
 impl XREquirectLayer {
     pub fn transform(&self) -> XRRigidTransform {
@@ -68,7 +65,6 @@ impl XREquirectLayer {
     pub fn set_transform(&mut self, value: XRRigidTransform) {
         self.inner.set("transform", value);
     }
-
 }
 impl XREquirectLayer {
     pub fn radius(&self) -> f32 {
@@ -78,7 +74,6 @@ impl XREquirectLayer {
     pub fn set_radius(&mut self, value: f32) {
         self.inner.set("radius", value);
     }
-
 }
 impl XREquirectLayer {
     pub fn central_horizontal_angle(&self) -> f32 {
@@ -88,7 +83,6 @@ impl XREquirectLayer {
     pub fn set_central_horizontal_angle(&mut self, value: f32) {
         self.inner.set("centralHorizontalAngle", value);
     }
-
 }
 impl XREquirectLayer {
     pub fn upper_vertical_angle(&self) -> f32 {
@@ -98,7 +92,6 @@ impl XREquirectLayer {
     pub fn set_upper_vertical_angle(&mut self, value: f32) {
         self.inner.set("upperVerticalAngle", value);
     }
-
 }
 impl XREquirectLayer {
     pub fn lower_vertical_angle(&self) -> f32 {
@@ -108,7 +101,6 @@ impl XREquirectLayer {
     pub fn set_lower_vertical_angle(&mut self, value: f32) {
         self.inner.set("lowerVerticalAngle", value);
     }
-
 }
 impl XREquirectLayer {
     pub fn onredraw(&self) -> Any {
@@ -118,5 +110,4 @@ impl XREquirectLayer {
     pub fn set_onredraw(&mut self, value: Any) {
         self.inner.set("onredraw", value);
     }
-
 }

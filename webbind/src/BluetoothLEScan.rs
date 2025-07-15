@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BluetoothLEScan {
@@ -10,7 +7,9 @@ pub struct BluetoothLEScan {
 }
 impl FromVal for BluetoothLEScan {
     fn from_val(v: &emlite::Val) -> Self {
-        BluetoothLEScan { inner: emlite::Val::from_val(v) }
+        BluetoothLEScan {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for BluetoothLEScan {
 }
 impl AsMut<emlite::Val> for BluetoothLEScan {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<BluetoothLEScan> for emlite::Val {
     fn from(s: BluetoothLEScan) -> emlite::Val {
@@ -49,34 +48,30 @@ impl From<BluetoothLEScan> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BluetoothLEScan);
 
-
 impl BluetoothLEScan {
     pub fn filters(&self) -> FrozenArray<BluetoothLEScanFilter> {
-        self.inner.get("filters").as_::<FrozenArray<BluetoothLEScanFilter>>()
+        self.inner
+            .get("filters")
+            .as_::<FrozenArray<BluetoothLEScanFilter>>()
     }
-
 }
 impl BluetoothLEScan {
     pub fn keep_repeated_devices(&self) -> bool {
         self.inner.get("keepRepeatedDevices").as_::<bool>()
     }
-
 }
 impl BluetoothLEScan {
     pub fn accept_all_advertisements(&self) -> bool {
         self.inner.get("acceptAllAdvertisements").as_::<bool>()
     }
-
 }
 impl BluetoothLEScan {
     pub fn active(&self) -> bool {
         self.inner.get("active").as_::<bool>()
     }
-
 }
 impl BluetoothLEScan {
-    pub fn stop(&self, ) -> Undefined {
+    pub fn stop(&self) -> Undefined {
         self.inner.call("stop", &[]).as_::<Undefined>()
     }
-
 }

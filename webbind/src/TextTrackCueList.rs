@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TextTrackCueList {
@@ -10,7 +7,9 @@ pub struct TextTrackCueList {
 }
 impl FromVal for TextTrackCueList {
     fn from_val(v: &emlite::Val) -> Self {
-        TextTrackCueList { inner: emlite::Val::from_val(v) }
+        TextTrackCueList {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for TextTrackCueList {
 }
 impl AsMut<emlite::Val> for TextTrackCueList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<TextTrackCueList> for emlite::Val {
     fn from(s: TextTrackCueList) -> emlite::Val {
@@ -49,16 +48,15 @@ impl From<TextTrackCueList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(TextTrackCueList);
 
-
 impl TextTrackCueList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl TextTrackCueList {
     pub fn get_cue_by_id(&self, id: DOMString) -> TextTrackCue {
-        self.inner.call("getCueById", &[id.into(), ]).as_::<TextTrackCue>()
+        self.inner
+            .call("getCueById", &[id.into()])
+            .as_::<TextTrackCue>()
     }
-
 }

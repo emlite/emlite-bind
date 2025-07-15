@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileSystemCreateWritableOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for FileSystemCreateWritableOptions {
 }
 impl AsMut<emlite::Val> for FileSystemCreateWritableOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<FileSystemCreateWritableOptions> for emlite::Val {
     fn from(s: FileSystemCreateWritableOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl FileSystemCreateWritableOptions {
     pub fn set_keep_existing_data(&mut self, value: bool) {
         self.inner.set("keepExistingData", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -65,7 +61,9 @@ pub struct FileSystemFileHandle {
 }
 impl FromVal for FileSystemFileHandle {
     fn from_val(v: &emlite::Val) -> Self {
-        FileSystemFileHandle { inner: FileSystemHandle::from_val(v) }
+        FileSystemFileHandle {
+            inner: FileSystemHandle::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -92,8 +90,8 @@ impl AsRef<emlite::Val> for FileSystemFileHandle {
 }
 impl AsMut<emlite::Val> for FileSystemFileHandle {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<FileSystemFileHandle> for emlite::Val {
     fn from(s: FileSystemFileHandle) -> emlite::Val {
@@ -104,26 +102,26 @@ impl From<FileSystemFileHandle> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FileSystemFileHandle);
 
-
 impl FileSystemFileHandle {
-    pub fn get_file(&self, ) -> Promise {
+    pub fn get_file(&self) -> Promise {
         self.inner.call("getFile", &[]).as_::<Promise>()
     }
-
 }
 impl FileSystemFileHandle {
-    pub fn create_writable0(&self, ) -> Promise {
+    pub fn create_writable0(&self) -> Promise {
         self.inner.call("createWritable", &[]).as_::<Promise>()
     }
 
     pub fn create_writable1(&self, options: FileSystemCreateWritableOptions) -> Promise {
-        self.inner.call("createWritable", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("createWritable", &[options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl FileSystemFileHandle {
-    pub fn create_sync_access_handle(&self, ) -> Promise {
-        self.inner.call("createSyncAccessHandle", &[]).as_::<Promise>()
+    pub fn create_sync_access_handle(&self) -> Promise {
+        self.inner
+            .call("createSyncAccessHandle", &[])
+            .as_::<Promise>()
     }
-
 }

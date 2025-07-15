@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PushSubscriptionChangeEvent {
@@ -10,7 +7,9 @@ pub struct PushSubscriptionChangeEvent {
 }
 impl FromVal for PushSubscriptionChangeEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        PushSubscriptionChangeEvent { inner: ExtendableEvent::from_val(v) }
+        PushSubscriptionChangeEvent {
+            inner: ExtendableEvent::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PushSubscriptionChangeEvent {
 }
 impl AsMut<emlite::Val> for PushSubscriptionChangeEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PushSubscriptionChangeEvent> for emlite::Val {
     fn from(s: PushSubscriptionChangeEvent) -> emlite::Val {
@@ -49,31 +48,30 @@ impl From<PushSubscriptionChangeEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PushSubscriptionChangeEvent);
 
-
-
 impl PushSubscriptionChangeEvent {
     pub fn new0(type_: DOMString) -> PushSubscriptionChangeEvent {
         Self {
-            inner: emlite::Val::global("PushSubscriptionChangeEvent").new(&[type_.into()]).as_::<ExtendableEvent>(),
+            inner: emlite::Val::global("PushSubscriptionChangeEvent")
+                .new(&[type_.into()])
+                .as_::<ExtendableEvent>(),
         }
     }
 
     pub fn new1(type_: DOMString, event_init_dict: Any) -> PushSubscriptionChangeEvent {
         Self {
-            inner: emlite::Val::global("PushSubscriptionChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<ExtendableEvent>(),
+            inner: emlite::Val::global("PushSubscriptionChangeEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<ExtendableEvent>(),
         }
     }
-
 }
 impl PushSubscriptionChangeEvent {
     pub fn new_subscription(&self) -> PushSubscription {
         self.inner.get("newSubscription").as_::<PushSubscription>()
     }
-
 }
 impl PushSubscriptionChangeEvent {
     pub fn old_subscription(&self) -> PushSubscription {
         self.inner.get("oldSubscription").as_::<PushSubscription>()
     }
-
 }

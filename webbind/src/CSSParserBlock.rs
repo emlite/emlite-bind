@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSParserBlock {
@@ -10,7 +7,9 @@ pub struct CSSParserBlock {
 }
 impl FromVal for CSSParserBlock {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSParserBlock { inner: CSSParserValue::from_val(v) }
+        CSSParserBlock {
+            inner: CSSParserValue::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSParserBlock {
 }
 impl AsMut<emlite::Val> for CSSParserBlock {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSParserBlock> for emlite::Val {
     fn from(s: CSSParserBlock) -> emlite::Val {
@@ -49,25 +48,22 @@ impl From<CSSParserBlock> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSParserBlock);
 
-
-
 impl CSSParserBlock {
     pub fn new(name: DOMString, body: Sequence<CSSParserValue>) -> CSSParserBlock {
         Self {
-            inner: emlite::Val::global("CSSParserBlock").new(&[name.into(), body.into()]).as_::<CSSParserValue>(),
+            inner: emlite::Val::global("CSSParserBlock")
+                .new(&[name.into(), body.into()])
+                .as_::<CSSParserValue>(),
         }
     }
-
 }
 impl CSSParserBlock {
     pub fn name(&self) -> DOMString {
         self.inner.get("name").as_::<DOMString>()
     }
-
 }
 impl CSSParserBlock {
     pub fn body(&self) -> FrozenArray<CSSParserValue> {
         self.inner.get("body").as_::<FrozenArray<CSSParserValue>>()
     }
-
 }

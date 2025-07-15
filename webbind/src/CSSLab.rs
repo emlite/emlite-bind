@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSLab {
@@ -10,7 +7,9 @@ pub struct CSSLab {
 }
 impl FromVal for CSSLab {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSLab { inner: CSSColorValue::from_val(v) }
+        CSSLab {
+            inner: CSSColorValue::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSLab {
 }
 impl AsMut<emlite::Val> for CSSLab {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSLab> for emlite::Val {
     fn from(s: CSSLab) -> emlite::Val {
@@ -49,21 +48,22 @@ impl From<CSSLab> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSLab);
 
-
-
 impl CSSLab {
     pub fn new0(l: Any, a: Any, b: Any) -> CSSLab {
         Self {
-            inner: emlite::Val::global("CSSLab").new(&[l.into(), a.into(), b.into()]).as_::<CSSColorValue>(),
+            inner: emlite::Val::global("CSSLab")
+                .new(&[l.into(), a.into(), b.into()])
+                .as_::<CSSColorValue>(),
         }
     }
 
     pub fn new1(l: Any, a: Any, b: Any, alpha: Any) -> CSSLab {
         Self {
-            inner: emlite::Val::global("CSSLab").new(&[l.into(), a.into(), b.into(), alpha.into()]).as_::<CSSColorValue>(),
+            inner: emlite::Val::global("CSSLab")
+                .new(&[l.into(), a.into(), b.into(), alpha.into()])
+                .as_::<CSSColorValue>(),
         }
     }
-
 }
 impl CSSLab {
     pub fn l(&self) -> Any {
@@ -73,7 +73,6 @@ impl CSSLab {
     pub fn set_l(&mut self, value: Any) {
         self.inner.set("l", value);
     }
-
 }
 impl CSSLab {
     pub fn a(&self) -> Any {
@@ -83,7 +82,6 @@ impl CSSLab {
     pub fn set_a(&mut self, value: Any) {
         self.inner.set("a", value);
     }
-
 }
 impl CSSLab {
     pub fn b(&self) -> Any {
@@ -93,7 +91,6 @@ impl CSSLab {
     pub fn set_b(&mut self, value: Any) {
         self.inner.set("b", value);
     }
-
 }
 impl CSSLab {
     pub fn alpha(&self) -> Any {
@@ -103,5 +100,4 @@ impl CSSLab {
     pub fn set_alpha(&mut self, value: Any) {
         self.inner.set("alpha", value);
     }
-
 }

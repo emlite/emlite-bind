@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ChannelMergerNode {
@@ -10,7 +7,9 @@ pub struct ChannelMergerNode {
 }
 impl FromVal for ChannelMergerNode {
     fn from_val(v: &emlite::Val) -> Self {
-        ChannelMergerNode { inner: AudioNode::from_val(v) }
+        ChannelMergerNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for ChannelMergerNode {
 }
 impl AsMut<emlite::Val> for ChannelMergerNode {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ChannelMergerNode> for emlite::Val {
     fn from(s: ChannelMergerNode) -> emlite::Val {
@@ -49,19 +48,20 @@ impl From<ChannelMergerNode> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ChannelMergerNode);
 
-
-
 impl ChannelMergerNode {
     pub fn new0(context: BaseAudioContext) -> ChannelMergerNode {
         Self {
-            inner: emlite::Val::global("ChannelMergerNode").new(&[context.into()]).as_::<AudioNode>(),
+            inner: emlite::Val::global("ChannelMergerNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
         }
     }
 
     pub fn new1(context: BaseAudioContext, options: Any) -> ChannelMergerNode {
         Self {
-            inner: emlite::Val::global("ChannelMergerNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
+            inner: emlite::Val::global("ChannelMergerNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
         }
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRCubeLayer {
@@ -10,7 +7,9 @@ pub struct XRCubeLayer {
 }
 impl FromVal for XRCubeLayer {
     fn from_val(v: &emlite::Val) -> Self {
-        XRCubeLayer { inner: XRCompositionLayer::from_val(v) }
+        XRCubeLayer {
+            inner: XRCompositionLayer::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XRCubeLayer {
 }
 impl AsMut<emlite::Val> for XRCubeLayer {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRCubeLayer> for emlite::Val {
     fn from(s: XRCubeLayer) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<XRCubeLayer> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRCubeLayer);
 
-
 impl XRCubeLayer {
     pub fn space(&self) -> XRSpace {
         self.inner.get("space").as_::<XRSpace>()
@@ -58,7 +56,6 @@ impl XRCubeLayer {
     pub fn set_space(&mut self, value: XRSpace) {
         self.inner.set("space", value);
     }
-
 }
 impl XRCubeLayer {
     pub fn orientation(&self) -> DOMPointReadOnly {
@@ -68,7 +65,6 @@ impl XRCubeLayer {
     pub fn set_orientation(&mut self, value: DOMPointReadOnly) {
         self.inner.set("orientation", value);
     }
-
 }
 impl XRCubeLayer {
     pub fn onredraw(&self) -> Any {
@@ -78,5 +74,4 @@ impl XRCubeLayer {
     pub fn set_onredraw(&mut self, value: Any) {
         self.inner.set("onredraw", value);
     }
-
 }

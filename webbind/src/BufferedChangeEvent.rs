@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BufferedChangeEvent {
@@ -10,7 +7,9 @@ pub struct BufferedChangeEvent {
 }
 impl FromVal for BufferedChangeEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        BufferedChangeEvent { inner: Event::from_val(v) }
+        BufferedChangeEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for BufferedChangeEvent {
 }
 impl AsMut<emlite::Val> for BufferedChangeEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<BufferedChangeEvent> for emlite::Val {
     fn from(s: BufferedChangeEvent) -> emlite::Val {
@@ -49,31 +48,30 @@ impl From<BufferedChangeEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BufferedChangeEvent);
 
-
-
 impl BufferedChangeEvent {
     pub fn new0(type_: DOMString) -> BufferedChangeEvent {
         Self {
-            inner: emlite::Val::global("BufferedChangeEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: emlite::Val::global("BufferedChangeEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     pub fn new1(type_: DOMString, event_init_dict: Any) -> BufferedChangeEvent {
         Self {
-            inner: emlite::Val::global("BufferedChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("BufferedChangeEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl BufferedChangeEvent {
     pub fn added_ranges(&self) -> TimeRanges {
         self.inner.get("addedRanges").as_::<TimeRanges>()
     }
-
 }
 impl BufferedChangeEvent {
     pub fn removed_ranges(&self) -> TimeRanges {
         self.inner.get("removedRanges").as_::<TimeRanges>()
     }
-
 }

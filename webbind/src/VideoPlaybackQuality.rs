@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VideoPlaybackQuality {
@@ -10,7 +7,9 @@ pub struct VideoPlaybackQuality {
 }
 impl FromVal for VideoPlaybackQuality {
     fn from_val(v: &emlite::Val) -> Self {
-        VideoPlaybackQuality { inner: emlite::Val::from_val(v) }
+        VideoPlaybackQuality {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for VideoPlaybackQuality {
 }
 impl AsMut<emlite::Val> for VideoPlaybackQuality {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<VideoPlaybackQuality> for emlite::Val {
     fn from(s: VideoPlaybackQuality) -> emlite::Val {
@@ -49,28 +48,23 @@ impl From<VideoPlaybackQuality> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(VideoPlaybackQuality);
 
-
 impl VideoPlaybackQuality {
     pub fn creation_time(&self) -> Any {
         self.inner.get("creationTime").as_::<Any>()
     }
-
 }
 impl VideoPlaybackQuality {
     pub fn dropped_video_frames(&self) -> u32 {
         self.inner.get("droppedVideoFrames").as_::<u32>()
     }
-
 }
 impl VideoPlaybackQuality {
     pub fn total_video_frames(&self) -> u32 {
         self.inner.get("totalVideoFrames").as_::<u32>()
     }
-
 }
 impl VideoPlaybackQuality {
     pub fn corrupted_video_frames(&self) -> u32 {
         self.inner.get("corruptedVideoFrames").as_::<u32>()
     }
-
 }

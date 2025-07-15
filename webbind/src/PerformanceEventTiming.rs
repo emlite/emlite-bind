@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PerformanceEventTiming {
@@ -10,7 +7,9 @@ pub struct PerformanceEventTiming {
 }
 impl FromVal for PerformanceEventTiming {
     fn from_val(v: &emlite::Val) -> Self {
-        PerformanceEventTiming { inner: PerformanceEntry::from_val(v) }
+        PerformanceEventTiming {
+            inner: PerformanceEntry::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PerformanceEventTiming {
 }
 impl AsMut<emlite::Val> for PerformanceEventTiming {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PerformanceEventTiming> for emlite::Val {
     fn from(s: PerformanceEventTiming) -> emlite::Val {
@@ -49,40 +48,33 @@ impl From<PerformanceEventTiming> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PerformanceEventTiming);
 
-
 impl PerformanceEventTiming {
     pub fn processing_start(&self) -> Any {
         self.inner.get("processingStart").as_::<Any>()
     }
-
 }
 impl PerformanceEventTiming {
     pub fn processing_end(&self) -> Any {
         self.inner.get("processingEnd").as_::<Any>()
     }
-
 }
 impl PerformanceEventTiming {
     pub fn cancelable(&self) -> bool {
         self.inner.get("cancelable").as_::<bool>()
     }
-
 }
 impl PerformanceEventTiming {
     pub fn target(&self) -> Node {
         self.inner.get("target").as_::<Node>()
     }
-
 }
 impl PerformanceEventTiming {
     pub fn interaction_id(&self) -> u64 {
         self.inner.get("interactionId").as_::<u64>()
     }
-
 }
 impl PerformanceEventTiming {
-    pub fn to_json(&self, ) -> Object {
+    pub fn to_json(&self) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
-
 }

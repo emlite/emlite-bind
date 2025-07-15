@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FederatedCredential {
@@ -10,7 +7,9 @@ pub struct FederatedCredential {
 }
 impl FromVal for FederatedCredential {
     fn from_val(v: &emlite::Val) -> Self {
-        FederatedCredential { inner: Credential::from_val(v) }
+        FederatedCredential {
+            inner: Credential::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for FederatedCredential {
 }
 impl AsMut<emlite::Val> for FederatedCredential {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<FederatedCredential> for emlite::Val {
     fn from(s: FederatedCredential) -> emlite::Val {
@@ -49,37 +48,32 @@ impl From<FederatedCredential> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FederatedCredential);
 
-
-
 impl FederatedCredential {
     pub fn new(data: Any) -> FederatedCredential {
         Self {
-            inner: emlite::Val::global("FederatedCredential").new(&[data.into()]).as_::<Credential>(),
+            inner: emlite::Val::global("FederatedCredential")
+                .new(&[data.into()])
+                .as_::<Credential>(),
         }
     }
-
 }
 impl FederatedCredential {
     pub fn provider(&self) -> USVString {
         self.inner.get("provider").as_::<USVString>()
     }
-
 }
 impl FederatedCredential {
     pub fn protocol(&self) -> DOMString {
         self.inner.get("protocol").as_::<DOMString>()
     }
-
 }
 impl FederatedCredential {
     pub fn name(&self) -> USVString {
         self.inner.get("name").as_::<USVString>()
     }
-
 }
 impl FederatedCredential {
     pub fn icon_url(&self) -> USVString {
         self.inner.get("iconURL").as_::<USVString>()
     }
-
 }

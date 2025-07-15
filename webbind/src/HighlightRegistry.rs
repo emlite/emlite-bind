@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HighlightHitResult {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for HighlightHitResult {
 }
 impl AsMut<emlite::Val> for HighlightHitResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HighlightHitResult> for emlite::Val {
     fn from(s: HighlightHitResult) -> emlite::Val {
@@ -56,7 +53,6 @@ impl HighlightHitResult {
     pub fn set_highlight(&mut self, value: Highlight) {
         self.inner.set("highlight", value);
     }
-
 }
 impl HighlightHitResult {
     pub fn ranges(&self) -> Sequence<AbstractRange> {
@@ -66,7 +62,6 @@ impl HighlightHitResult {
     pub fn set_ranges(&mut self, value: Sequence<AbstractRange>) {
         self.inner.set("ranges", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -102,8 +97,8 @@ impl AsRef<emlite::Val> for HighlightsFromPointOptions {
 }
 impl AsMut<emlite::Val> for HighlightsFromPointOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HighlightsFromPointOptions> for emlite::Val {
     fn from(s: HighlightsFromPointOptions) -> emlite::Val {
@@ -121,7 +116,6 @@ impl HighlightsFromPointOptions {
     pub fn set_shadow_roots(&mut self, value: Sequence<ShadowRoot>) {
         self.inner.set("shadowRoots", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -130,7 +124,9 @@ pub struct HighlightRegistry {
 }
 impl FromVal for HighlightRegistry {
     fn from_val(v: &emlite::Val) -> Self {
-        HighlightRegistry { inner: emlite::Val::from_val(v) }
+        HighlightRegistry {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -157,8 +153,8 @@ impl AsRef<emlite::Val> for HighlightRegistry {
 }
 impl AsMut<emlite::Val> for HighlightRegistry {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HighlightRegistry> for emlite::Val {
     fn from(s: HighlightRegistry) -> emlite::Val {
@@ -169,14 +165,21 @@ impl From<HighlightRegistry> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HighlightRegistry);
 
-
 impl HighlightRegistry {
     pub fn highlights_from_point0(&self, x: f32, y: f32) -> Sequence<HighlightHitResult> {
-        self.inner.call("highlightsFromPoint", &[x.into(), y.into(), ]).as_::<Sequence<HighlightHitResult>>()
+        self.inner
+            .call("highlightsFromPoint", &[x.into(), y.into()])
+            .as_::<Sequence<HighlightHitResult>>()
     }
 
-    pub fn highlights_from_point1(&self, x: f32, y: f32, options: HighlightsFromPointOptions) -> Sequence<HighlightHitResult> {
-        self.inner.call("highlightsFromPoint", &[x.into(), y.into(), options.into(), ]).as_::<Sequence<HighlightHitResult>>()
+    pub fn highlights_from_point1(
+        &self,
+        x: f32,
+        y: f32,
+        options: HighlightsFromPointOptions,
+    ) -> Sequence<HighlightHitResult> {
+        self.inner
+            .call("highlightsFromPoint", &[x.into(), y.into(), options.into()])
+            .as_::<Sequence<HighlightHitResult>>()
     }
-
 }

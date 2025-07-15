@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGLProgram {
@@ -10,7 +7,9 @@ pub struct WebGLProgram {
 }
 impl FromVal for WebGLProgram {
     fn from_val(v: &emlite::Val) -> Self {
-        WebGLProgram { inner: WebGLObject::from_val(v) }
+        WebGLProgram {
+            inner: WebGLObject::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for WebGLProgram {
 }
 impl AsMut<emlite::Val> for WebGLProgram {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WebGLProgram> for emlite::Val {
     fn from(s: WebGLProgram) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<WebGLProgram> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(WebGLProgram);
-
-

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PageRevealEvent {
@@ -10,7 +7,9 @@ pub struct PageRevealEvent {
 }
 impl FromVal for PageRevealEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        PageRevealEvent { inner: Event::from_val(v) }
+        PageRevealEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PageRevealEvent {
 }
 impl AsMut<emlite::Val> for PageRevealEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PageRevealEvent> for emlite::Val {
     fn from(s: PageRevealEvent) -> emlite::Val {
@@ -49,25 +48,25 @@ impl From<PageRevealEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PageRevealEvent);
 
-
-
 impl PageRevealEvent {
     pub fn new0(type_: DOMString) -> PageRevealEvent {
         Self {
-            inner: emlite::Val::global("PageRevealEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: emlite::Val::global("PageRevealEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     pub fn new1(type_: DOMString, event_init_dict: Any) -> PageRevealEvent {
         Self {
-            inner: emlite::Val::global("PageRevealEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("PageRevealEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl PageRevealEvent {
     pub fn view_transition(&self) -> ViewTransition {
         self.inner.get("viewTransition").as_::<ViewTransition>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCDtlsFingerprint {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for RTCDtlsFingerprint {
 }
 impl AsMut<emlite::Val> for RTCDtlsFingerprint {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<RTCDtlsFingerprint> for emlite::Val {
     fn from(s: RTCDtlsFingerprint) -> emlite::Val {
@@ -56,7 +53,6 @@ impl RTCDtlsFingerprint {
     pub fn set_algorithm(&mut self, value: DOMString) {
         self.inner.set("algorithm", value);
     }
-
 }
 impl RTCDtlsFingerprint {
     pub fn value(&self) -> DOMString {
@@ -66,7 +62,6 @@ impl RTCDtlsFingerprint {
     pub fn set_value(&mut self, value: DOMString) {
         self.inner.set("value", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -75,7 +70,9 @@ pub struct RTCCertificate {
 }
 impl FromVal for RTCCertificate {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCCertificate { inner: emlite::Val::from_val(v) }
+        RTCCertificate {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -102,8 +99,8 @@ impl AsRef<emlite::Val> for RTCCertificate {
 }
 impl AsMut<emlite::Val> for RTCCertificate {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<RTCCertificate> for emlite::Val {
     fn from(s: RTCCertificate) -> emlite::Val {
@@ -114,16 +111,15 @@ impl From<RTCCertificate> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCCertificate);
 
-
 impl RTCCertificate {
     pub fn expires(&self) -> Any {
         self.inner.get("expires").as_::<Any>()
     }
-
 }
 impl RTCCertificate {
-    pub fn get_fingerprints(&self, ) -> Sequence<RTCDtlsFingerprint> {
-        self.inner.call("getFingerprints", &[]).as_::<Sequence<RTCDtlsFingerprint>>()
+    pub fn get_fingerprints(&self) -> Sequence<RTCDtlsFingerprint> {
+        self.inner
+            .call("getFingerprints", &[])
+            .as_::<Sequence<RTCDtlsFingerprint>>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ResizeObserverSize {
@@ -10,7 +7,9 @@ pub struct ResizeObserverSize {
 }
 impl FromVal for ResizeObserverSize {
     fn from_val(v: &emlite::Val) -> Self {
-        ResizeObserverSize { inner: emlite::Val::from_val(v) }
+        ResizeObserverSize {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for ResizeObserverSize {
 }
 impl AsMut<emlite::Val> for ResizeObserverSize {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ResizeObserverSize> for emlite::Val {
     fn from(s: ResizeObserverSize) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<ResizeObserverSize> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ResizeObserverSize);
 
-
 impl ResizeObserverSize {
     pub fn inline_size(&self) -> f64 {
         self.inner.get("inlineSize").as_::<f64>()
     }
-
 }
 impl ResizeObserverSize {
     pub fn block_size(&self) -> f64 {
         self.inner.get("blockSize").as_::<f64>()
     }
-
 }

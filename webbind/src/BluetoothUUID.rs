@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BluetoothUUID {
@@ -10,7 +7,9 @@ pub struct BluetoothUUID {
 }
 impl FromVal for BluetoothUUID {
     fn from_val(v: &emlite::Val) -> Self {
-        BluetoothUUID { inner: emlite::Val::from_val(v) }
+        BluetoothUUID {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for BluetoothUUID {
 }
 impl AsMut<emlite::Val> for BluetoothUUID {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<BluetoothUUID> for emlite::Val {
     fn from(s: BluetoothUUID) -> emlite::Val {
@@ -49,28 +48,31 @@ impl From<BluetoothUUID> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BluetoothUUID);
 
-
 impl BluetoothUUID {
     pub fn get_service(name: Any) -> Any {
-        emlite::Val::global("bluetoothuuid").call("getService", &[name.into(), ]).as_::<Any>()
+        emlite::Val::global("BluetoothUUID")
+            .call("getService", &[name.into()])
+            .as_::<Any>()
     }
-
 }
 impl BluetoothUUID {
     pub fn get_characteristic(name: Any) -> Any {
-        emlite::Val::global("bluetoothuuid").call("getCharacteristic", &[name.into(), ]).as_::<Any>()
+        emlite::Val::global("BluetoothUUID")
+            .call("getCharacteristic", &[name.into()])
+            .as_::<Any>()
     }
-
 }
 impl BluetoothUUID {
     pub fn get_descriptor(name: Any) -> Any {
-        emlite::Val::global("bluetoothuuid").call("getDescriptor", &[name.into(), ]).as_::<Any>()
+        emlite::Val::global("BluetoothUUID")
+            .call("getDescriptor", &[name.into()])
+            .as_::<Any>()
     }
-
 }
 impl BluetoothUUID {
     pub fn canonical_uuid(alias: u32) -> Any {
-        emlite::Val::global("bluetoothuuid").call("canonicalUUID", &[alias.into(), ]).as_::<Any>()
+        emlite::Val::global("BluetoothUUID")
+            .call("canonicalUUID", &[alias.into()])
+            .as_::<Any>()
     }
-
 }

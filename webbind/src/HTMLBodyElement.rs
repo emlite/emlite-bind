@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLBodyElement {
@@ -10,7 +7,9 @@ pub struct HTMLBodyElement {
 }
 impl FromVal for HTMLBodyElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLBodyElement { inner: HTMLElement::from_val(v) }
+        HTMLBodyElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLBodyElement {
 }
 impl AsMut<emlite::Val> for HTMLBodyElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLBodyElement> for emlite::Val {
     fn from(s: HTMLBodyElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLBodyElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLBodyElement);
 
-
-
 impl HTMLBodyElement {
     pub fn new() -> HTMLBodyElement {
         Self {
-            inner: emlite::Val::global("HTMLBodyElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLBodyElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLBodyElement {
     pub fn onorientationchange(&self) -> Any {
@@ -67,7 +65,6 @@ impl HTMLBodyElement {
     pub fn set_onorientationchange(&mut self, value: Any) {
         self.inner.set("onorientationchange", value);
     }
-
 }
 impl HTMLBodyElement {
     pub fn text(&self) -> DOMString {
@@ -77,7 +74,6 @@ impl HTMLBodyElement {
     pub fn set_text(&mut self, value: DOMString) {
         self.inner.set("text", value);
     }
-
 }
 impl HTMLBodyElement {
     pub fn link(&self) -> DOMString {
@@ -87,7 +83,6 @@ impl HTMLBodyElement {
     pub fn set_link(&mut self, value: DOMString) {
         self.inner.set("link", value);
     }
-
 }
 impl HTMLBodyElement {
     pub fn v_link(&self) -> DOMString {
@@ -97,7 +92,6 @@ impl HTMLBodyElement {
     pub fn set_v_link(&mut self, value: DOMString) {
         self.inner.set("vLink", value);
     }
-
 }
 impl HTMLBodyElement {
     pub fn a_link(&self) -> DOMString {
@@ -107,7 +101,6 @@ impl HTMLBodyElement {
     pub fn set_a_link(&mut self, value: DOMString) {
         self.inner.set("aLink", value);
     }
-
 }
 impl HTMLBodyElement {
     pub fn bg_color(&self) -> DOMString {
@@ -117,7 +110,6 @@ impl HTMLBodyElement {
     pub fn set_bg_color(&mut self, value: DOMString) {
         self.inner.set("bgColor", value);
     }
-
 }
 impl HTMLBodyElement {
     pub fn background(&self) -> DOMString {
@@ -127,7 +119,6 @@ impl HTMLBodyElement {
     pub fn set_background(&mut self, value: DOMString) {
         self.inner.set("background", value);
     }
-
 }
 impl HTMLBodyElement {
     pub fn onportalactivate(&self) -> Any {
@@ -137,5 +128,4 @@ impl HTMLBodyElement {
     pub fn set_onportalactivate(&mut self, value: Any) {
         self.inner.set("onportalactivate", value);
     }
-
 }

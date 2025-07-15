@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGAnimatedLength {
@@ -10,7 +7,9 @@ pub struct SVGAnimatedLength {
 }
 impl FromVal for SVGAnimatedLength {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGAnimatedLength { inner: emlite::Val::from_val(v) }
+        SVGAnimatedLength {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SVGAnimatedLength {
 }
 impl AsMut<emlite::Val> for SVGAnimatedLength {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGAnimatedLength> for emlite::Val {
     fn from(s: SVGAnimatedLength) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<SVGAnimatedLength> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGAnimatedLength);
 
-
 impl SVGAnimatedLength {
     pub fn base_val(&self) -> SVGLength {
         self.inner.get("baseVal").as_::<SVGLength>()
     }
-
 }
 impl SVGAnimatedLength {
     pub fn anim_val(&self) -> SVGLength {
         self.inner.get("animVal").as_::<SVGLength>()
     }
-
 }

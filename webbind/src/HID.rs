@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HIDDeviceRequestOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for HIDDeviceRequestOptions {
 }
 impl AsMut<emlite::Val> for HIDDeviceRequestOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HIDDeviceRequestOptions> for emlite::Val {
     fn from(s: HIDDeviceRequestOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl HIDDeviceRequestOptions {
     pub fn set_filters(&mut self, value: Sequence<Any>) {
         self.inner.set("filters", value);
     }
-
 }
 impl HIDDeviceRequestOptions {
     pub fn exclusion_filters(&self) -> Sequence<Any> {
@@ -66,7 +62,6 @@ impl HIDDeviceRequestOptions {
     pub fn set_exclusion_filters(&mut self, value: Sequence<Any>) {
         self.inner.set("exclusionFilters", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -75,7 +70,9 @@ pub struct HID {
 }
 impl FromVal for HID {
     fn from_val(v: &emlite::Val) -> Self {
-        HID { inner: EventTarget::from_val(v) }
+        HID {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -102,8 +99,8 @@ impl AsRef<emlite::Val> for HID {
 }
 impl AsMut<emlite::Val> for HID {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HID> for emlite::Val {
     fn from(s: HID) -> emlite::Val {
@@ -114,7 +111,6 @@ impl From<HID> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HID);
 
-
 impl HID {
     pub fn onconnect(&self) -> Any {
         self.inner.get("onconnect").as_::<Any>()
@@ -123,7 +119,6 @@ impl HID {
     pub fn set_onconnect(&mut self, value: Any) {
         self.inner.set("onconnect", value);
     }
-
 }
 impl HID {
     pub fn ondisconnect(&self) -> Any {
@@ -133,17 +128,16 @@ impl HID {
     pub fn set_ondisconnect(&mut self, value: Any) {
         self.inner.set("ondisconnect", value);
     }
-
 }
 impl HID {
-    pub fn get_devices(&self, ) -> Promise {
+    pub fn get_devices(&self) -> Promise {
         self.inner.call("getDevices", &[]).as_::<Promise>()
     }
-
 }
 impl HID {
     pub fn request_device(&self, options: HIDDeviceRequestOptions) -> Promise {
-        self.inner.call("requestDevice", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("requestDevice", &[options.into()])
+            .as_::<Promise>()
     }
-
 }

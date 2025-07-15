@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioScheduledSourceNode {
@@ -10,7 +7,9 @@ pub struct AudioScheduledSourceNode {
 }
 impl FromVal for AudioScheduledSourceNode {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioScheduledSourceNode { inner: AudioNode::from_val(v) }
+        AudioScheduledSourceNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for AudioScheduledSourceNode {
 }
 impl AsMut<emlite::Val> for AudioScheduledSourceNode {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AudioScheduledSourceNode> for emlite::Val {
     fn from(s: AudioScheduledSourceNode) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<AudioScheduledSourceNode> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AudioScheduledSourceNode);
 
-
 impl AudioScheduledSourceNode {
     pub fn onended(&self) -> Any {
         self.inner.get("onended").as_::<Any>()
@@ -58,25 +56,22 @@ impl AudioScheduledSourceNode {
     pub fn set_onended(&mut self, value: Any) {
         self.inner.set("onended", value);
     }
-
 }
 impl AudioScheduledSourceNode {
-    pub fn start0(&self, ) -> Undefined {
+    pub fn start0(&self) -> Undefined {
         self.inner.call("start", &[]).as_::<Undefined>()
     }
 
     pub fn start1(&self, when: f64) -> Undefined {
-        self.inner.call("start", &[when.into(), ]).as_::<Undefined>()
+        self.inner.call("start", &[when.into()]).as_::<Undefined>()
     }
-
 }
 impl AudioScheduledSourceNode {
-    pub fn stop0(&self, ) -> Undefined {
+    pub fn stop0(&self) -> Undefined {
         self.inner.call("stop", &[]).as_::<Undefined>()
     }
 
     pub fn stop1(&self, when: f64) -> Undefined {
-        self.inner.call("stop", &[when.into(), ]).as_::<Undefined>()
+        self.inner.call("stop", &[when.into()]).as_::<Undefined>()
     }
-
 }

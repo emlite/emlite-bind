@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ConvolverNode {
@@ -10,7 +7,9 @@ pub struct ConvolverNode {
 }
 impl FromVal for ConvolverNode {
     fn from_val(v: &emlite::Val) -> Self {
-        ConvolverNode { inner: AudioNode::from_val(v) }
+        ConvolverNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for ConvolverNode {
 }
 impl AsMut<emlite::Val> for ConvolverNode {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ConvolverNode> for emlite::Val {
     fn from(s: ConvolverNode) -> emlite::Val {
@@ -49,21 +48,22 @@ impl From<ConvolverNode> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ConvolverNode);
 
-
-
 impl ConvolverNode {
     pub fn new0(context: BaseAudioContext) -> ConvolverNode {
         Self {
-            inner: emlite::Val::global("ConvolverNode").new(&[context.into()]).as_::<AudioNode>(),
+            inner: emlite::Val::global("ConvolverNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
         }
     }
 
     pub fn new1(context: BaseAudioContext, options: Any) -> ConvolverNode {
         Self {
-            inner: emlite::Val::global("ConvolverNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
+            inner: emlite::Val::global("ConvolverNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
         }
     }
-
 }
 impl ConvolverNode {
     pub fn buffer(&self) -> AudioBuffer {
@@ -73,7 +73,6 @@ impl ConvolverNode {
     pub fn set_buffer(&mut self, value: AudioBuffer) {
         self.inner.set("buffer", value);
     }
-
 }
 impl ConvolverNode {
     pub fn normalize(&self) -> bool {
@@ -83,5 +82,4 @@ impl ConvolverNode {
     pub fn set_normalize(&mut self, value: bool) {
         self.inner.set("normalize", value);
     }
-
 }

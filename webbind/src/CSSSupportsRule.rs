@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSSupportsRule {
@@ -10,7 +7,9 @@ pub struct CSSSupportsRule {
 }
 impl FromVal for CSSSupportsRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSSupportsRule { inner: CSSConditionRule::from_val(v) }
+        CSSSupportsRule {
+            inner: CSSConditionRule::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSSupportsRule {
 }
 impl AsMut<emlite::Val> for CSSSupportsRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSSupportsRule> for emlite::Val {
     fn from(s: CSSSupportsRule) -> emlite::Val {
@@ -49,10 +48,8 @@ impl From<CSSSupportsRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSSupportsRule);
 
-
 impl CSSSupportsRule {
     pub fn matches(&self) -> bool {
         self.inner.get("matches").as_::<bool>()
     }
-
 }

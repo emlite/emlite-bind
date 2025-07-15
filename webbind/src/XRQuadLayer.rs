@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRQuadLayer {
@@ -10,7 +7,9 @@ pub struct XRQuadLayer {
 }
 impl FromVal for XRQuadLayer {
     fn from_val(v: &emlite::Val) -> Self {
-        XRQuadLayer { inner: XRCompositionLayer::from_val(v) }
+        XRQuadLayer {
+            inner: XRCompositionLayer::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XRQuadLayer {
 }
 impl AsMut<emlite::Val> for XRQuadLayer {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRQuadLayer> for emlite::Val {
     fn from(s: XRQuadLayer) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<XRQuadLayer> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRQuadLayer);
 
-
 impl XRQuadLayer {
     pub fn space(&self) -> XRSpace {
         self.inner.get("space").as_::<XRSpace>()
@@ -58,7 +56,6 @@ impl XRQuadLayer {
     pub fn set_space(&mut self, value: XRSpace) {
         self.inner.set("space", value);
     }
-
 }
 impl XRQuadLayer {
     pub fn transform(&self) -> XRRigidTransform {
@@ -68,7 +65,6 @@ impl XRQuadLayer {
     pub fn set_transform(&mut self, value: XRRigidTransform) {
         self.inner.set("transform", value);
     }
-
 }
 impl XRQuadLayer {
     pub fn width(&self) -> f32 {
@@ -78,7 +74,6 @@ impl XRQuadLayer {
     pub fn set_width(&mut self, value: f32) {
         self.inner.set("width", value);
     }
-
 }
 impl XRQuadLayer {
     pub fn height(&self) -> f32 {
@@ -88,7 +83,6 @@ impl XRQuadLayer {
     pub fn set_height(&mut self, value: f32) {
         self.inner.set("height", value);
     }
-
 }
 impl XRQuadLayer {
     pub fn onredraw(&self) -> Any {
@@ -98,5 +92,4 @@ impl XRQuadLayer {
     pub fn set_onredraw(&mut self, value: Any) {
         self.inner.set("onredraw", value);
     }
-
 }

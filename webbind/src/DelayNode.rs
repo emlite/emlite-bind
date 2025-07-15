@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DelayNode {
@@ -10,7 +7,9 @@ pub struct DelayNode {
 }
 impl FromVal for DelayNode {
     fn from_val(v: &emlite::Val) -> Self {
-        DelayNode { inner: AudioNode::from_val(v) }
+        DelayNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for DelayNode {
 }
 impl AsMut<emlite::Val> for DelayNode {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<DelayNode> for emlite::Val {
     fn from(s: DelayNode) -> emlite::Val {
@@ -49,25 +48,25 @@ impl From<DelayNode> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(DelayNode);
 
-
-
 impl DelayNode {
     pub fn new0(context: BaseAudioContext) -> DelayNode {
         Self {
-            inner: emlite::Val::global("DelayNode").new(&[context.into()]).as_::<AudioNode>(),
+            inner: emlite::Val::global("DelayNode")
+                .new(&[context.into()])
+                .as_::<AudioNode>(),
         }
     }
 
     pub fn new1(context: BaseAudioContext, options: Any) -> DelayNode {
         Self {
-            inner: emlite::Val::global("DelayNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
+            inner: emlite::Val::global("DelayNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioNode>(),
         }
     }
-
 }
 impl DelayNode {
     pub fn delay_time(&self) -> AudioParam {
         self.inner.get("delayTime").as_::<AudioParam>()
     }
-
 }

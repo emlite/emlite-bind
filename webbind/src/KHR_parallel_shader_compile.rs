@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct KHR_parallel_shader_compile {
@@ -10,7 +7,9 @@ pub struct KHR_parallel_shader_compile {
 }
 impl FromVal for KHR_parallel_shader_compile {
     fn from_val(v: &emlite::Val) -> Self {
-        KHR_parallel_shader_compile { inner: emlite::Val::from_val(v) }
+        KHR_parallel_shader_compile {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for KHR_parallel_shader_compile {
 }
 impl AsMut<emlite::Val> for KHR_parallel_shader_compile {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<KHR_parallel_shader_compile> for emlite::Val {
     fn from(s: KHR_parallel_shader_compile) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<KHR_parallel_shader_compile> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(KHR_parallel_shader_compile);
-
-

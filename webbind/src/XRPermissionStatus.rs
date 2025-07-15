@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRPermissionStatus {
@@ -10,7 +7,9 @@ pub struct XRPermissionStatus {
 }
 impl FromVal for XRPermissionStatus {
     fn from_val(v: &emlite::Val) -> Self {
-        XRPermissionStatus { inner: PermissionStatus::from_val(v) }
+        XRPermissionStatus {
+            inner: PermissionStatus::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XRPermissionStatus {
 }
 impl AsMut<emlite::Val> for XRPermissionStatus {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRPermissionStatus> for emlite::Val {
     fn from(s: XRPermissionStatus) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<XRPermissionStatus> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRPermissionStatus);
 
-
 impl XRPermissionStatus {
     pub fn granted(&self) -> FrozenArray<DOMString> {
         self.inner.get("granted").as_::<FrozenArray<DOMString>>()
@@ -58,5 +56,4 @@ impl XRPermissionStatus {
     pub fn set_granted(&mut self, value: FrozenArray<DOMString>) {
         self.inner.set("granted", value);
     }
-
 }

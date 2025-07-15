@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WorkletOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for WorkletOptions {
 }
 impl AsMut<emlite::Val> for WorkletOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WorkletOptions> for emlite::Val {
     fn from(s: WorkletOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl WorkletOptions {
     pub fn set_credentials(&mut self, value: RequestCredentials) {
         self.inner.set("credentials", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -65,7 +61,9 @@ pub struct Worklet {
 }
 impl FromVal for Worklet {
     fn from_val(v: &emlite::Val) -> Self {
-        Worklet { inner: emlite::Val::from_val(v) }
+        Worklet {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -92,8 +90,8 @@ impl AsRef<emlite::Val> for Worklet {
 }
 impl AsMut<emlite::Val> for Worklet {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Worklet> for emlite::Val {
     fn from(s: Worklet) -> emlite::Val {
@@ -104,14 +102,16 @@ impl From<Worklet> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Worklet);
 
-
 impl Worklet {
     pub fn add_module0(&self, module_url: USVString) -> Promise {
-        self.inner.call("addModule", &[module_url.into(), ]).as_::<Promise>()
+        self.inner
+            .call("addModule", &[module_url.into()])
+            .as_::<Promise>()
     }
 
     pub fn add_module1(&self, module_url: USVString, options: WorkletOptions) -> Promise {
-        self.inner.call("addModule", &[module_url.into(), options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("addModule", &[module_url.into(), options.into()])
+            .as_::<Promise>()
     }
-
 }

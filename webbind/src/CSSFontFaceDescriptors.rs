@@ -143,9 +143,7 @@ impl CSSFontFaceDescriptors {
 
 impl CSSFontFaceDescriptors {
     pub fn font_feature_settings(&self) -> CSSOMString {
-        self.inner
-            .get("fontFeatureSettings")
-            .as_::<CSSOMString>()
+        self.inner.get("fontFeatureSettings").as_::<CSSOMString>()
     }
 
     pub fn set_font_feature_settings(&mut self, value: CSSOMString) {
@@ -155,9 +153,7 @@ impl CSSFontFaceDescriptors {
 
 impl CSSFontFaceDescriptors {
     pub fn font_variation_settings(&self) -> CSSOMString {
-        self.inner
-            .get("fontVariationSettings")
-            .as_::<CSSOMString>()
+        self.inner.get("fontVariationSettings").as_::<CSSOMString>()
     }
 
     pub fn set_font_variation_settings(&mut self, value: CSSOMString) {
@@ -167,9 +163,7 @@ impl CSSFontFaceDescriptors {
 
 impl CSSFontFaceDescriptors {
     pub fn font_named_instance(&self) -> CSSOMString {
-        self.inner
-            .get("fontNamedInstance")
-            .as_::<CSSOMString>()
+        self.inner.get("fontNamedInstance").as_::<CSSOMString>()
     }
 
     pub fn set_font_named_instance(&mut self, value: CSSOMString) {
@@ -189,9 +183,7 @@ impl CSSFontFaceDescriptors {
 
 impl CSSFontFaceDescriptors {
     pub fn font_language_override(&self) -> CSSOMString {
-        self.inner
-            .get("fontLanguageOverride")
-            .as_::<CSSOMString>()
+        self.inner.get("fontLanguageOverride").as_::<CSSOMString>()
     }
 
     pub fn set_font_language_override(&mut self, value: CSSOMString) {
@@ -201,9 +193,7 @@ impl CSSFontFaceDescriptors {
 
 impl CSSFontFaceDescriptors {
     pub fn ascent_override(&self) -> CSSOMString {
-        self.inner
-            .get("ascentOverride")
-            .as_::<CSSOMString>()
+        self.inner.get("ascentOverride").as_::<CSSOMString>()
     }
 
     pub fn set_ascent_override(&mut self, value: CSSOMString) {
@@ -213,9 +203,7 @@ impl CSSFontFaceDescriptors {
 
 impl CSSFontFaceDescriptors {
     pub fn descent_override(&self) -> CSSOMString {
-        self.inner
-            .get("descentOverride")
-            .as_::<CSSOMString>()
+        self.inner.get("descentOverride").as_::<CSSOMString>()
     }
 
     pub fn set_descent_override(&mut self, value: CSSOMString) {
@@ -225,9 +213,7 @@ impl CSSFontFaceDescriptors {
 
 impl CSSFontFaceDescriptors {
     pub fn line_gap_override(&self) -> CSSOMString {
-        self.inner
-            .get("lineGapOverride")
-            .as_::<CSSOMString>()
+        self.inner.get("lineGapOverride").as_::<CSSOMString>()
     }
 
     pub fn set_line_gap_override(&mut self, value: CSSOMString) {
@@ -273,9 +259,7 @@ impl CSSFontFaceDescriptors {
 
 impl CSSFontFaceDescriptors {
     pub fn subscript_size_override(&self) -> CSSOMString {
-        self.inner
-            .get("subscriptSizeOverride")
-            .as_::<CSSOMString>()
+        self.inner.get("subscriptSizeOverride").as_::<CSSOMString>()
     }
 
     pub fn set_subscript_size_override(&mut self, value: CSSOMString) {

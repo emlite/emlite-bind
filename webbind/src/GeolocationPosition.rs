@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GeolocationPosition {
@@ -10,7 +7,9 @@ pub struct GeolocationPosition {
 }
 impl FromVal for GeolocationPosition {
     fn from_val(v: &emlite::Val) -> Self {
-        GeolocationPosition { inner: emlite::Val::from_val(v) }
+        GeolocationPosition {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for GeolocationPosition {
 }
 impl AsMut<emlite::Val> for GeolocationPosition {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<GeolocationPosition> for emlite::Val {
     fn from(s: GeolocationPosition) -> emlite::Val {
@@ -49,22 +48,18 @@ impl From<GeolocationPosition> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GeolocationPosition);
 
-
 impl GeolocationPosition {
     pub fn coords(&self) -> GeolocationCoordinates {
         self.inner.get("coords").as_::<GeolocationCoordinates>()
     }
-
 }
 impl GeolocationPosition {
     pub fn timestamp(&self) -> Any {
         self.inner.get("timestamp").as_::<Any>()
     }
-
 }
 impl GeolocationPosition {
-    pub fn to_json(&self, ) -> Object {
+    pub fn to_json(&self) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
-
 }

@@ -1,10 +1,10 @@
-use alloc::string::String;
 use crate::any::Any;
+use alloc::string::String;
 use core::marker::PhantomData;
 use core::ops::{Deref, DerefMut};
 use emlite::FromVal;
 
-/// `TypedSet<T>` – ECMAScript “TypedSet” wrapper  (`new TypedSet()`).
+/// `TypedSet<T>` – Typed wrapper around ECMAScript “Set”  (`new Set()`).
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TypedSet<T> {
@@ -62,9 +62,9 @@ impl<T> AsMut<emlite::Val> for TypedSet<T> {
 }
 
 impl<T> TypedSet<T> {
-    /// `new TypedSet()` — empty set.
+    /// `new Set()` — empty set.
     pub fn new() -> Self {
-        emlite::Val::global("TypedSet").new(&[]).as_::<Self>()
+        emlite::Val::global("Set").new(&[]).as_::<Self>()
     }
 
     /// `set.size`
@@ -198,7 +198,7 @@ impl<T> core::fmt::Display for TypedSet<T> {
 pub type Set = TypedSet<Any>;
 crate::utils::impl_dyn_cast!(Set, "Set");
 
-/// `TypedWeakSet<T>` – ECMAScript “TypedWeakSet” wrapper  (`new TypedWeakSet()`).
+/// `TypedWeakSet<T>` – Typed wrapper around ECMAScript “WeakSet”  (`new WeakSet()`).
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TypedWeakSet<T> {
@@ -244,9 +244,9 @@ impl<T> DerefMut for TypedWeakSet<T> {
 }
 
 impl<T> TypedWeakSet<T> {
-    /// `new TypedWeakSet()` — empty set.
+    /// `new WeakSet()` — empty set.
     pub fn new() -> Self {
-        emlite::Val::global("TypedWeakSet").new(&[]).as_::<Self>()
+        emlite::Val::global("WeakSet").new(&[]).as_::<Self>()
     }
 
     /// `set.size`

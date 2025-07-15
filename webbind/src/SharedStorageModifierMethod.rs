@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SharedStorageModifierMethod {
@@ -10,7 +7,9 @@ pub struct SharedStorageModifierMethod {
 }
 impl FromVal for SharedStorageModifierMethod {
     fn from_val(v: &emlite::Val) -> Self {
-        SharedStorageModifierMethod { inner: emlite::Val::from_val(v) }
+        SharedStorageModifierMethod {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SharedStorageModifierMethod {
 }
 impl AsMut<emlite::Val> for SharedStorageModifierMethod {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SharedStorageModifierMethod> for emlite::Val {
     fn from(s: SharedStorageModifierMethod) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<SharedStorageModifierMethod> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(SharedStorageModifierMethod);
-
-

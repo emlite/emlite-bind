@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGUseElementShadowRoot {
@@ -10,7 +7,9 @@ pub struct SVGUseElementShadowRoot {
 }
 impl FromVal for SVGUseElementShadowRoot {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGUseElementShadowRoot { inner: ShadowRoot::from_val(v) }
+        SVGUseElementShadowRoot {
+            inner: ShadowRoot::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SVGUseElementShadowRoot {
 }
 impl AsMut<emlite::Val> for SVGUseElementShadowRoot {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGUseElementShadowRoot> for emlite::Val {
     fn from(s: SVGUseElementShadowRoot) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<SVGUseElementShadowRoot> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(SVGUseElementShadowRoot);
-
-

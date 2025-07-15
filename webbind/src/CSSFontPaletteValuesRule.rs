@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSFontPaletteValuesRule {
@@ -10,7 +7,9 @@ pub struct CSSFontPaletteValuesRule {
 }
 impl FromVal for CSSFontPaletteValuesRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSFontPaletteValuesRule { inner: CSSRule::from_val(v) }
+        CSSFontPaletteValuesRule {
+            inner: CSSRule::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSFontPaletteValuesRule {
 }
 impl AsMut<emlite::Val> for CSSFontPaletteValuesRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSFontPaletteValuesRule> for emlite::Val {
     fn from(s: CSSFontPaletteValuesRule) -> emlite::Val {
@@ -49,28 +48,23 @@ impl From<CSSFontPaletteValuesRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSFontPaletteValuesRule);
 
-
 impl CSSFontPaletteValuesRule {
     pub fn name(&self) -> CSSOMString {
         self.inner.get("name").as_::<CSSOMString>()
     }
-
 }
 impl CSSFontPaletteValuesRule {
     pub fn font_family(&self) -> CSSOMString {
         self.inner.get("fontFamily").as_::<CSSOMString>()
     }
-
 }
 impl CSSFontPaletteValuesRule {
     pub fn base_palette(&self) -> CSSOMString {
         self.inner.get("basePalette").as_::<CSSOMString>()
     }
-
 }
 impl CSSFontPaletteValuesRule {
     pub fn override_colors(&self) -> CSSOMString {
         self.inner.get("overrideColors").as_::<CSSOMString>()
     }
-
 }

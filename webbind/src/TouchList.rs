@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TouchList {
@@ -10,7 +7,9 @@ pub struct TouchList {
 }
 impl FromVal for TouchList {
     fn from_val(v: &emlite::Val) -> Self {
-        TouchList { inner: emlite::Val::from_val(v) }
+        TouchList {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for TouchList {
 }
 impl AsMut<emlite::Val> for TouchList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<TouchList> for emlite::Val {
     fn from(s: TouchList) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<TouchList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(TouchList);
 
-
 impl TouchList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl TouchList {
     pub fn item(&self, index: u32) -> Touch {
-        self.inner.call("item", &[index.into(), ]).as_::<Touch>()
+        self.inner.call("item", &[index.into()]).as_::<Touch>()
     }
-
 }

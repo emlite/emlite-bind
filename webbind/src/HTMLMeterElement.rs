@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLMeterElement {
@@ -10,7 +7,9 @@ pub struct HTMLMeterElement {
 }
 impl FromVal for HTMLMeterElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLMeterElement { inner: HTMLElement::from_val(v) }
+        HTMLMeterElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLMeterElement {
 }
 impl AsMut<emlite::Val> for HTMLMeterElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLMeterElement> for emlite::Val {
     fn from(s: HTMLMeterElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLMeterElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLMeterElement);
 
-
-
 impl HTMLMeterElement {
     pub fn new() -> HTMLMeterElement {
         Self {
-            inner: emlite::Val::global("HTMLMeterElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLMeterElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLMeterElement {
     pub fn value(&self) -> f64 {
@@ -67,7 +65,6 @@ impl HTMLMeterElement {
     pub fn set_value(&mut self, value: f64) {
         self.inner.set("value", value);
     }
-
 }
 impl HTMLMeterElement {
     pub fn min(&self) -> f64 {
@@ -77,7 +74,6 @@ impl HTMLMeterElement {
     pub fn set_min(&mut self, value: f64) {
         self.inner.set("min", value);
     }
-
 }
 impl HTMLMeterElement {
     pub fn max(&self) -> f64 {
@@ -87,7 +83,6 @@ impl HTMLMeterElement {
     pub fn set_max(&mut self, value: f64) {
         self.inner.set("max", value);
     }
-
 }
 impl HTMLMeterElement {
     pub fn low(&self) -> f64 {
@@ -97,7 +92,6 @@ impl HTMLMeterElement {
     pub fn set_low(&mut self, value: f64) {
         self.inner.set("low", value);
     }
-
 }
 impl HTMLMeterElement {
     pub fn high(&self) -> f64 {
@@ -107,7 +101,6 @@ impl HTMLMeterElement {
     pub fn set_high(&mut self, value: f64) {
         self.inner.set("high", value);
     }
-
 }
 impl HTMLMeterElement {
     pub fn optimum(&self) -> f64 {
@@ -117,11 +110,9 @@ impl HTMLMeterElement {
     pub fn set_optimum(&mut self, value: f64) {
         self.inner.set("optimum", value);
     }
-
 }
 impl HTMLMeterElement {
     pub fn labels(&self) -> NodeList {
         self.inner.get("labels").as_::<NodeList>()
     }
-
 }

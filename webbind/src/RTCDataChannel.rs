@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCDataChannel {
@@ -10,7 +7,9 @@ pub struct RTCDataChannel {
 }
 impl FromVal for RTCDataChannel {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCDataChannel { inner: EventTarget::from_val(v) }
+        RTCDataChannel {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for RTCDataChannel {
 }
 impl AsMut<emlite::Val> for RTCDataChannel {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<RTCDataChannel> for emlite::Val {
     fn from(s: RTCDataChannel) -> emlite::Val {
@@ -49,60 +48,50 @@ impl From<RTCDataChannel> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCDataChannel);
 
-
 impl RTCDataChannel {
     pub fn label(&self) -> USVString {
         self.inner.get("label").as_::<USVString>()
     }
-
 }
 impl RTCDataChannel {
     pub fn ordered(&self) -> bool {
         self.inner.get("ordered").as_::<bool>()
     }
-
 }
 impl RTCDataChannel {
     pub fn max_packet_life_time(&self) -> u16 {
         self.inner.get("maxPacketLifeTime").as_::<u16>()
     }
-
 }
 impl RTCDataChannel {
     pub fn max_retransmits(&self) -> u16 {
         self.inner.get("maxRetransmits").as_::<u16>()
     }
-
 }
 impl RTCDataChannel {
     pub fn protocol(&self) -> USVString {
         self.inner.get("protocol").as_::<USVString>()
     }
-
 }
 impl RTCDataChannel {
     pub fn negotiated(&self) -> bool {
         self.inner.get("negotiated").as_::<bool>()
     }
-
 }
 impl RTCDataChannel {
     pub fn id(&self) -> u16 {
         self.inner.get("id").as_::<u16>()
     }
-
 }
 impl RTCDataChannel {
     pub fn ready_state(&self) -> RTCDataChannelState {
         self.inner.get("readyState").as_::<RTCDataChannelState>()
     }
-
 }
 impl RTCDataChannel {
     pub fn buffered_amount(&self) -> u32 {
         self.inner.get("bufferedAmount").as_::<u32>()
     }
-
 }
 impl RTCDataChannel {
     pub fn buffered_amount_low_threshold(&self) -> u32 {
@@ -112,7 +101,6 @@ impl RTCDataChannel {
     pub fn set_buffered_amount_low_threshold(&mut self, value: u32) {
         self.inner.set("bufferedAmountLowThreshold", value);
     }
-
 }
 impl RTCDataChannel {
     pub fn onopen(&self) -> Any {
@@ -122,7 +110,6 @@ impl RTCDataChannel {
     pub fn set_onopen(&mut self, value: Any) {
         self.inner.set("onopen", value);
     }
-
 }
 impl RTCDataChannel {
     pub fn onbufferedamountlow(&self) -> Any {
@@ -132,7 +119,6 @@ impl RTCDataChannel {
     pub fn set_onbufferedamountlow(&mut self, value: Any) {
         self.inner.set("onbufferedamountlow", value);
     }
-
 }
 impl RTCDataChannel {
     pub fn onerror(&self) -> Any {
@@ -142,7 +128,6 @@ impl RTCDataChannel {
     pub fn set_onerror(&mut self, value: Any) {
         self.inner.set("onerror", value);
     }
-
 }
 impl RTCDataChannel {
     pub fn onclosing(&self) -> Any {
@@ -152,7 +137,6 @@ impl RTCDataChannel {
     pub fn set_onclosing(&mut self, value: Any) {
         self.inner.set("onclosing", value);
     }
-
 }
 impl RTCDataChannel {
     pub fn onclose(&self) -> Any {
@@ -162,13 +146,11 @@ impl RTCDataChannel {
     pub fn set_onclose(&mut self, value: Any) {
         self.inner.set("onclose", value);
     }
-
 }
 impl RTCDataChannel {
-    pub fn close(&self, ) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
-
 }
 impl RTCDataChannel {
     pub fn onmessage(&self) -> Any {
@@ -178,7 +160,6 @@ impl RTCDataChannel {
     pub fn set_onmessage(&mut self, value: Any) {
         self.inner.set("onmessage", value);
     }
-
 }
 impl RTCDataChannel {
     pub fn binary_type(&self) -> BinaryType {
@@ -188,17 +169,14 @@ impl RTCDataChannel {
     pub fn set_binary_type(&mut self, value: BinaryType) {
         self.inner.set("binaryType", value);
     }
-
 }
 impl RTCDataChannel {
     pub fn send(&self, data: Any) -> Undefined {
-        self.inner.call("send", &[data.into(), ]).as_::<Undefined>()
+        self.inner.call("send", &[data.into()]).as_::<Undefined>()
     }
-
 }
 impl RTCDataChannel {
     pub fn priority(&self) -> RTCPriorityType {
         self.inner.get("priority").as_::<RTCPriorityType>()
     }
-
 }

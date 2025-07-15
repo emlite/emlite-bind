@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGScriptElement {
@@ -10,7 +7,9 @@ pub struct SVGScriptElement {
 }
 impl FromVal for SVGScriptElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGScriptElement { inner: SVGElement::from_val(v) }
+        SVGScriptElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SVGScriptElement {
 }
 impl AsMut<emlite::Val> for SVGScriptElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGScriptElement> for emlite::Val {
     fn from(s: SVGScriptElement) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<SVGScriptElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGScriptElement);
 
-
 impl SVGScriptElement {
     pub fn type_(&self) -> DOMString {
         self.inner.get("type").as_::<DOMString>()
@@ -58,7 +56,6 @@ impl SVGScriptElement {
     pub fn set_type_(&mut self, value: DOMString) {
         self.inner.set("type", value);
     }
-
 }
 impl SVGScriptElement {
     pub fn cross_origin(&self) -> DOMString {
@@ -68,11 +65,9 @@ impl SVGScriptElement {
     pub fn set_cross_origin(&mut self, value: DOMString) {
         self.inner.set("crossOrigin", value);
     }
-
 }
 impl SVGScriptElement {
     pub fn href(&self) -> SVGAnimatedString {
         self.inner.get("href").as_::<SVGAnimatedString>()
     }
-
 }

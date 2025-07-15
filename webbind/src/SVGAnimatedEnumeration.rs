@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGAnimatedEnumeration {
@@ -10,7 +7,9 @@ pub struct SVGAnimatedEnumeration {
 }
 impl FromVal for SVGAnimatedEnumeration {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGAnimatedEnumeration { inner: emlite::Val::from_val(v) }
+        SVGAnimatedEnumeration {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SVGAnimatedEnumeration {
 }
 impl AsMut<emlite::Val> for SVGAnimatedEnumeration {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGAnimatedEnumeration> for emlite::Val {
     fn from(s: SVGAnimatedEnumeration) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<SVGAnimatedEnumeration> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGAnimatedEnumeration);
 
-
 impl SVGAnimatedEnumeration {
     pub fn base_val(&self) -> u16 {
         self.inner.get("baseVal").as_::<u16>()
@@ -58,11 +56,9 @@ impl SVGAnimatedEnumeration {
     pub fn set_base_val(&mut self, value: u16) {
         self.inner.set("baseVal", value);
     }
-
 }
 impl SVGAnimatedEnumeration {
     pub fn anim_val(&self) -> u16 {
         self.inner.get("animVal").as_::<u16>()
     }
-
 }

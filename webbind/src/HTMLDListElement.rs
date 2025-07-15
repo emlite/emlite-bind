@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLDListElement {
@@ -10,7 +7,9 @@ pub struct HTMLDListElement {
 }
 impl FromVal for HTMLDListElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLDListElement { inner: HTMLElement::from_val(v) }
+        HTMLDListElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLDListElement {
 }
 impl AsMut<emlite::Val> for HTMLDListElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLDListElement> for emlite::Val {
     fn from(s: HTMLDListElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLDListElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLDListElement);
 
-
-
 impl HTMLDListElement {
     pub fn new() -> HTMLDListElement {
         Self {
-            inner: emlite::Val::global("HTMLDListElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLDListElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLDListElement {
     pub fn compact(&self) -> bool {
@@ -67,5 +65,4 @@ impl HTMLDListElement {
     pub fn set_compact(&mut self, value: bool) {
         self.inner.set("compact", value);
     }
-
 }

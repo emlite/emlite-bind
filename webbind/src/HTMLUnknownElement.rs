@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLUnknownElement {
@@ -10,7 +7,9 @@ pub struct HTMLUnknownElement {
 }
 impl FromVal for HTMLUnknownElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLUnknownElement { inner: HTMLElement::from_val(v) }
+        HTMLUnknownElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLUnknownElement {
 }
 impl AsMut<emlite::Val> for HTMLUnknownElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLUnknownElement> for emlite::Val {
     fn from(s: HTMLUnknownElement) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<HTMLUnknownElement> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLUnknownElement);
-
-

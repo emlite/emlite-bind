@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DataTransferItemList {
@@ -10,7 +7,9 @@ pub struct DataTransferItemList {
 }
 impl FromVal for DataTransferItemList {
     fn from_val(v: &emlite::Val) -> Self {
-        DataTransferItemList { inner: emlite::Val::from_val(v) }
+        DataTransferItemList {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for DataTransferItemList {
 }
 impl AsMut<emlite::Val> for DataTransferItemList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<DataTransferItemList> for emlite::Val {
     fn from(s: DataTransferItemList) -> emlite::Val {
@@ -49,28 +48,27 @@ impl From<DataTransferItemList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(DataTransferItemList);
 
-
 impl DataTransferItemList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl DataTransferItemList {
     pub fn add(&self, data: File) -> DataTransferItem {
-        self.inner.call("add", &[data.into(), ]).as_::<DataTransferItem>()
+        self.inner
+            .call("add", &[data.into()])
+            .as_::<DataTransferItem>()
     }
-
 }
 impl DataTransferItemList {
     pub fn remove(&self, index: u32) -> Undefined {
-        self.inner.call("remove", &[index.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("remove", &[index.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl DataTransferItemList {
-    pub fn clear(&self, ) -> Undefined {
+    pub fn clear(&self) -> Undefined {
         self.inner.call("clear", &[]).as_::<Undefined>()
     }
-
 }

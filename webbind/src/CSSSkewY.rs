@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSSkewY {
@@ -10,7 +7,9 @@ pub struct CSSSkewY {
 }
 impl FromVal for CSSSkewY {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSSkewY { inner: CSSTransformComponent::from_val(v) }
+        CSSSkewY {
+            inner: CSSTransformComponent::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSSkewY {
 }
 impl AsMut<emlite::Val> for CSSSkewY {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSSkewY> for emlite::Val {
     fn from(s: CSSSkewY) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<CSSSkewY> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSSkewY);
 
-
-
 impl CSSSkewY {
     pub fn new(ay: CSSNumericValue) -> CSSSkewY {
         Self {
-            inner: emlite::Val::global("CSSSkewY").new(&[ay.into()]).as_::<CSSTransformComponent>(),
+            inner: emlite::Val::global("CSSSkewY")
+                .new(&[ay.into()])
+                .as_::<CSSTransformComponent>(),
         }
     }
-
 }
 impl CSSSkewY {
     pub fn ay(&self) -> CSSNumericValue {
@@ -67,5 +65,4 @@ impl CSSSkewY {
     pub fn set_ay(&mut self, value: CSSNumericValue) {
         self.inner.set("ay", value);
     }
-
 }

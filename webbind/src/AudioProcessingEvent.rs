@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioProcessingEvent {
@@ -10,7 +7,9 @@ pub struct AudioProcessingEvent {
 }
 impl FromVal for AudioProcessingEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioProcessingEvent { inner: Event::from_val(v) }
+        AudioProcessingEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for AudioProcessingEvent {
 }
 impl AsMut<emlite::Val> for AudioProcessingEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AudioProcessingEvent> for emlite::Val {
     fn from(s: AudioProcessingEvent) -> emlite::Val {
@@ -49,31 +48,27 @@ impl From<AudioProcessingEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AudioProcessingEvent);
 
-
-
 impl AudioProcessingEvent {
     pub fn new(type_: DOMString, event_init_dict: Any) -> AudioProcessingEvent {
         Self {
-            inner: emlite::Val::global("AudioProcessingEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("AudioProcessingEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl AudioProcessingEvent {
     pub fn playback_time(&self) -> f64 {
         self.inner.get("playbackTime").as_::<f64>()
     }
-
 }
 impl AudioProcessingEvent {
     pub fn input_buffer(&self) -> AudioBuffer {
         self.inner.get("inputBuffer").as_::<AudioBuffer>()
     }
-
 }
 impl AudioProcessingEvent {
     pub fn output_buffer(&self) -> AudioBuffer {
         self.inner.get("outputBuffer").as_::<AudioBuffer>()
     }
-
 }

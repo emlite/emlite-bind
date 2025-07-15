@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLProgressElement {
@@ -10,7 +7,9 @@ pub struct HTMLProgressElement {
 }
 impl FromVal for HTMLProgressElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLProgressElement { inner: HTMLElement::from_val(v) }
+        HTMLProgressElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLProgressElement {
 }
 impl AsMut<emlite::Val> for HTMLProgressElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLProgressElement> for emlite::Val {
     fn from(s: HTMLProgressElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLProgressElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLProgressElement);
 
-
-
 impl HTMLProgressElement {
     pub fn new() -> HTMLProgressElement {
         Self {
-            inner: emlite::Val::global("HTMLProgressElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLProgressElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLProgressElement {
     pub fn value(&self) -> f64 {
@@ -67,7 +65,6 @@ impl HTMLProgressElement {
     pub fn set_value(&mut self, value: f64) {
         self.inner.set("value", value);
     }
-
 }
 impl HTMLProgressElement {
     pub fn max(&self) -> f64 {
@@ -77,17 +74,14 @@ impl HTMLProgressElement {
     pub fn set_max(&mut self, value: f64) {
         self.inner.set("max", value);
     }
-
 }
 impl HTMLProgressElement {
     pub fn position(&self) -> f64 {
         self.inner.get("position").as_::<f64>()
     }
-
 }
 impl HTMLProgressElement {
     pub fn labels(&self) -> NodeList {
         self.inner.get("labels").as_::<NodeList>()
     }
-
 }

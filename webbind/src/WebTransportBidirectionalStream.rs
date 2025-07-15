@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebTransportBidirectionalStream {
@@ -10,7 +7,9 @@ pub struct WebTransportBidirectionalStream {
 }
 impl FromVal for WebTransportBidirectionalStream {
     fn from_val(v: &emlite::Val) -> Self {
-        WebTransportBidirectionalStream { inner: emlite::Val::from_val(v) }
+        WebTransportBidirectionalStream {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for WebTransportBidirectionalStream {
 }
 impl AsMut<emlite::Val> for WebTransportBidirectionalStream {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WebTransportBidirectionalStream> for emlite::Val {
     fn from(s: WebTransportBidirectionalStream) -> emlite::Val {
@@ -49,16 +48,15 @@ impl From<WebTransportBidirectionalStream> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WebTransportBidirectionalStream);
 
-
 impl WebTransportBidirectionalStream {
     pub fn readable(&self) -> WebTransportReceiveStream {
-        self.inner.get("readable").as_::<WebTransportReceiveStream>()
+        self.inner
+            .get("readable")
+            .as_::<WebTransportReceiveStream>()
     }
-
 }
 impl WebTransportBidirectionalStream {
     pub fn writable(&self) -> WebTransportSendStream {
         self.inner.get("writable").as_::<WebTransportSendStream>()
     }
-
 }

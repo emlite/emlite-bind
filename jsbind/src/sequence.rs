@@ -3,7 +3,7 @@ use core::marker::PhantomData;
 use core::ops::{Deref, DerefMut};
 use emlite::FromVal;
 
-/// Parameterised wrapper around a JavaScript array object.
+/// Parameterised wrapper around a JavaScript array object. No concrete JS type, but needed for WebIDL
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Sequence<T> {
@@ -205,7 +205,6 @@ where
 {
     #[inline]
     fn from(slice: &[T]) -> Self {
-        // Same single copy path.
         Self::new_from_slice(slice)
     }
 }

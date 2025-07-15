@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MLGraph {
@@ -10,7 +7,9 @@ pub struct MLGraph {
 }
 impl FromVal for MLGraph {
     fn from_val(v: &emlite::Val) -> Self {
-        MLGraph { inner: emlite::Val::from_val(v) }
+        MLGraph {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for MLGraph {
 }
 impl AsMut<emlite::Val> for MLGraph {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MLGraph> for emlite::Val {
     fn from(s: MLGraph) -> emlite::Val {
@@ -49,10 +48,8 @@ impl From<MLGraph> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MLGraph);
 
-
 impl MLGraph {
-    pub fn destroy(&self, ) -> Undefined {
+    pub fn destroy(&self) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
     }
-
 }

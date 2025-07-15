@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileReader {
@@ -10,7 +7,9 @@ pub struct FileReader {
 }
 impl FromVal for FileReader {
     fn from_val(v: &emlite::Val) -> Self {
-        FileReader { inner: EventTarget::from_val(v) }
+        FileReader {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for FileReader {
 }
 impl AsMut<emlite::Val> for FileReader {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<FileReader> for emlite::Val {
     fn from(s: FileReader) -> emlite::Val {
@@ -49,67 +48,68 @@ impl From<FileReader> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FileReader);
 
-
-
 impl FileReader {
     pub fn new() -> FileReader {
         Self {
-            inner: emlite::Val::global("FileReader").new(&[]).as_::<EventTarget>(),
+            inner: emlite::Val::global("FileReader")
+                .new(&[])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl FileReader {
     pub fn read_as_array_buffer(&self, blob: Blob) -> Undefined {
-        self.inner.call("readAsArrayBuffer", &[blob.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("readAsArrayBuffer", &[blob.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl FileReader {
     pub fn read_as_binary_string(&self, blob: Blob) -> Undefined {
-        self.inner.call("readAsBinaryString", &[blob.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("readAsBinaryString", &[blob.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl FileReader {
     pub fn read_as_text0(&self, blob: Blob) -> Undefined {
-        self.inner.call("readAsText", &[blob.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("readAsText", &[blob.into()])
+            .as_::<Undefined>()
     }
 
     pub fn read_as_text1(&self, blob: Blob, encoding: DOMString) -> Undefined {
-        self.inner.call("readAsText", &[blob.into(), encoding.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("readAsText", &[blob.into(), encoding.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl FileReader {
     pub fn read_as_data_url(&self, blob: Blob) -> Undefined {
-        self.inner.call("readAsDataURL", &[blob.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("readAsDataURL", &[blob.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl FileReader {
-    pub fn abort(&self, ) -> Undefined {
+    pub fn abort(&self) -> Undefined {
         self.inner.call("abort", &[]).as_::<Undefined>()
     }
-
 }
 impl FileReader {
     pub fn ready_state(&self) -> u16 {
         self.inner.get("readyState").as_::<u16>()
     }
-
 }
 impl FileReader {
     pub fn result(&self) -> Any {
         self.inner.get("result").as_::<Any>()
     }
-
 }
 impl FileReader {
     pub fn error(&self) -> DOMException {
         self.inner.get("error").as_::<DOMException>()
     }
-
 }
 impl FileReader {
     pub fn onloadstart(&self) -> Any {
@@ -119,7 +119,6 @@ impl FileReader {
     pub fn set_onloadstart(&mut self, value: Any) {
         self.inner.set("onloadstart", value);
     }
-
 }
 impl FileReader {
     pub fn onprogress(&self) -> Any {
@@ -129,7 +128,6 @@ impl FileReader {
     pub fn set_onprogress(&mut self, value: Any) {
         self.inner.set("onprogress", value);
     }
-
 }
 impl FileReader {
     pub fn onload(&self) -> Any {
@@ -139,7 +137,6 @@ impl FileReader {
     pub fn set_onload(&mut self, value: Any) {
         self.inner.set("onload", value);
     }
-
 }
 impl FileReader {
     pub fn onabort(&self) -> Any {
@@ -149,7 +146,6 @@ impl FileReader {
     pub fn set_onabort(&mut self, value: Any) {
         self.inner.set("onabort", value);
     }
-
 }
 impl FileReader {
     pub fn onerror(&self) -> Any {
@@ -159,7 +155,6 @@ impl FileReader {
     pub fn set_onerror(&mut self, value: Any) {
         self.inner.set("onerror", value);
     }
-
 }
 impl FileReader {
     pub fn onloadend(&self) -> Any {
@@ -169,5 +164,4 @@ impl FileReader {
     pub fn set_onloadend(&mut self, value: Any) {
         self.inner.set("onloadend", value);
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Credential {
@@ -10,7 +7,9 @@ pub struct Credential {
 }
 impl FromVal for Credential {
     fn from_val(v: &emlite::Val) -> Self {
-        Credential { inner: emlite::Val::from_val(v) }
+        Credential {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for Credential {
 }
 impl AsMut<emlite::Val> for Credential {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Credential> for emlite::Val {
     fn from(s: Credential) -> emlite::Val {
@@ -49,28 +48,27 @@ impl From<Credential> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Credential);
 
-
 impl Credential {
     pub fn id(&self) -> USVString {
         self.inner.get("id").as_::<USVString>()
     }
-
 }
 impl Credential {
     pub fn type_(&self) -> DOMString {
         self.inner.get("type").as_::<DOMString>()
     }
-
 }
 impl Credential {
     pub fn is_conditional_mediation_available() -> Promise {
-        emlite::Val::global("credential").call("isConditionalMediationAvailable", &[]).as_::<Promise>()
+        emlite::Val::global("Credential")
+            .call("isConditionalMediationAvailable", &[])
+            .as_::<Promise>()
     }
-
 }
 impl Credential {
     pub fn will_request_conditional_creation() -> Promise {
-        emlite::Val::global("credential").call("willRequestConditionalCreation", &[]).as_::<Promise>()
+        emlite::Val::global("Credential")
+            .call("willRequestConditionalCreation", &[])
+            .as_::<Promise>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRCPUDepthInformation {
@@ -10,7 +7,9 @@ pub struct XRCPUDepthInformation {
 }
 impl FromVal for XRCPUDepthInformation {
     fn from_val(v: &emlite::Val) -> Self {
-        XRCPUDepthInformation { inner: XRDepthInformation::from_val(v) }
+        XRCPUDepthInformation {
+            inner: XRDepthInformation::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XRCPUDepthInformation {
 }
 impl AsMut<emlite::Val> for XRCPUDepthInformation {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRCPUDepthInformation> for emlite::Val {
     fn from(s: XRCPUDepthInformation) -> emlite::Val {
@@ -49,16 +48,15 @@ impl From<XRCPUDepthInformation> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRCPUDepthInformation);
 
-
 impl XRCPUDepthInformation {
     pub fn data(&self) -> ArrayBuffer {
         self.inner.get("data").as_::<ArrayBuffer>()
     }
-
 }
 impl XRCPUDepthInformation {
     pub fn get_depth_in_meters(&self, x: f32, y: f32) -> f32 {
-        self.inner.call("getDepthInMeters", &[x.into(), y.into(), ]).as_::<f32>()
+        self.inner
+            .call("getDepthInMeters", &[x.into(), y.into()])
+            .as_::<f32>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FontFaceSetLoadEvent {
@@ -10,7 +7,9 @@ pub struct FontFaceSetLoadEvent {
 }
 impl FromVal for FontFaceSetLoadEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        FontFaceSetLoadEvent { inner: Event::from_val(v) }
+        FontFaceSetLoadEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for FontFaceSetLoadEvent {
 }
 impl AsMut<emlite::Val> for FontFaceSetLoadEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<FontFaceSetLoadEvent> for emlite::Val {
     fn from(s: FontFaceSetLoadEvent) -> emlite::Val {
@@ -49,25 +48,25 @@ impl From<FontFaceSetLoadEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FontFaceSetLoadEvent);
 
-
-
 impl FontFaceSetLoadEvent {
     pub fn new0(type_: CSSOMString) -> FontFaceSetLoadEvent {
         Self {
-            inner: emlite::Val::global("FontFaceSetLoadEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: emlite::Val::global("FontFaceSetLoadEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     pub fn new1(type_: CSSOMString, event_init_dict: Any) -> FontFaceSetLoadEvent {
         Self {
-            inner: emlite::Val::global("FontFaceSetLoadEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("FontFaceSetLoadEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl FontFaceSetLoadEvent {
     pub fn fontfaces(&self) -> FrozenArray<FontFace> {
         self.inner.get("fontfaces").as_::<FrozenArray<FontFace>>()
     }
-
 }

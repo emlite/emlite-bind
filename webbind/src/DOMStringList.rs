@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DOMStringList {
@@ -10,7 +7,9 @@ pub struct DOMStringList {
 }
 impl FromVal for DOMStringList {
     fn from_val(v: &emlite::Val) -> Self {
-        DOMStringList { inner: emlite::Val::from_val(v) }
+        DOMStringList {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for DOMStringList {
 }
 impl AsMut<emlite::Val> for DOMStringList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<DOMStringList> for emlite::Val {
     fn from(s: DOMStringList) -> emlite::Val {
@@ -49,22 +48,18 @@ impl From<DOMStringList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(DOMStringList);
 
-
 impl DOMStringList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl DOMStringList {
     pub fn item(&self, index: u32) -> DOMString {
-        self.inner.call("item", &[index.into(), ]).as_::<DOMString>()
+        self.inner.call("item", &[index.into()]).as_::<DOMString>()
     }
-
 }
 impl DOMStringList {
     pub fn contains(&self, string: DOMString) -> bool {
-        self.inner.call("contains", &[string.into(), ]).as_::<bool>()
+        self.inner.call("contains", &[string.into()]).as_::<bool>()
     }
-
 }

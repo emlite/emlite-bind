@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ImageDecodeResult {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for ImageDecodeResult {
 }
 impl AsMut<emlite::Val> for ImageDecodeResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ImageDecodeResult> for emlite::Val {
     fn from(s: ImageDecodeResult) -> emlite::Val {
@@ -56,7 +53,6 @@ impl ImageDecodeResult {
     pub fn set_image(&mut self, value: VideoFrame) {
         self.inner.set("image", value);
     }
-
 }
 impl ImageDecodeResult {
     pub fn complete(&self) -> bool {
@@ -66,7 +62,6 @@ impl ImageDecodeResult {
     pub fn set_complete(&mut self, value: bool) {
         self.inner.set("complete", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -102,8 +97,8 @@ impl AsRef<emlite::Val> for ImageDecodeOptions {
 }
 impl AsMut<emlite::Val> for ImageDecodeOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ImageDecodeOptions> for emlite::Val {
     fn from(s: ImageDecodeOptions) -> emlite::Val {
@@ -121,7 +116,6 @@ impl ImageDecodeOptions {
     pub fn set_frame_index(&mut self, value: u32) {
         self.inner.set("frameIndex", value);
     }
-
 }
 impl ImageDecodeOptions {
     pub fn complete_frames_only(&self) -> bool {
@@ -131,7 +125,6 @@ impl ImageDecodeOptions {
     pub fn set_complete_frames_only(&mut self, value: bool) {
         self.inner.set("completeFramesOnly", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -140,7 +133,9 @@ pub struct ImageDecoder {
 }
 impl FromVal for ImageDecoder {
     fn from_val(v: &emlite::Val) -> Self {
-        ImageDecoder { inner: emlite::Val::from_val(v) }
+        ImageDecoder {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -167,8 +162,8 @@ impl AsRef<emlite::Val> for ImageDecoder {
 }
 impl AsMut<emlite::Val> for ImageDecoder {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ImageDecoder> for emlite::Val {
     fn from(s: ImageDecoder) -> emlite::Val {
@@ -179,65 +174,60 @@ impl From<ImageDecoder> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ImageDecoder);
 
-
-
 impl ImageDecoder {
     pub fn new(init: Any) -> ImageDecoder {
         Self {
-            inner: emlite::Val::global("ImageDecoder").new(&[init.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("ImageDecoder")
+                .new(&[init.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl ImageDecoder {
     pub fn type_(&self) -> DOMString {
         self.inner.get("type").as_::<DOMString>()
     }
-
 }
 impl ImageDecoder {
     pub fn complete(&self) -> bool {
         self.inner.get("complete").as_::<bool>()
     }
-
 }
 impl ImageDecoder {
     pub fn completed(&self) -> Promise {
         self.inner.get("completed").as_::<Promise>()
     }
-
 }
 impl ImageDecoder {
     pub fn tracks(&self) -> ImageTrackList {
         self.inner.get("tracks").as_::<ImageTrackList>()
     }
-
 }
 impl ImageDecoder {
-    pub fn decode0(&self, ) -> Promise {
+    pub fn decode0(&self) -> Promise {
         self.inner.call("decode", &[]).as_::<Promise>()
     }
 
     pub fn decode1(&self, options: ImageDecodeOptions) -> Promise {
-        self.inner.call("decode", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("decode", &[options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl ImageDecoder {
-    pub fn reset(&self, ) -> Undefined {
+    pub fn reset(&self) -> Undefined {
         self.inner.call("reset", &[]).as_::<Undefined>()
     }
-
 }
 impl ImageDecoder {
-    pub fn close(&self, ) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
-
 }
 impl ImageDecoder {
     pub fn is_type_supported(type_: DOMString) -> Promise {
-        emlite::Val::global("imagedecoder").call("isTypeSupported", &[type_.into(), ]).as_::<Promise>()
+        emlite::Val::global("ImageDecoder")
+            .call("isTypeSupported", &[type_.into()])
+            .as_::<Promise>()
     }
-
 }

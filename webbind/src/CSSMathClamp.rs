@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSMathClamp {
@@ -10,7 +7,9 @@ pub struct CSSMathClamp {
 }
 impl FromVal for CSSMathClamp {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSMathClamp { inner: CSSMathValue::from_val(v) }
+        CSSMathClamp {
+            inner: CSSMathValue::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSMathClamp {
 }
 impl AsMut<emlite::Val> for CSSMathClamp {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSMathClamp> for emlite::Val {
     fn from(s: CSSMathClamp) -> emlite::Val {
@@ -49,31 +48,27 @@ impl From<CSSMathClamp> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSMathClamp);
 
-
-
 impl CSSMathClamp {
     pub fn new(lower: Any, value: Any, upper: Any) -> CSSMathClamp {
         Self {
-            inner: emlite::Val::global("CSSMathClamp").new(&[lower.into(), value.into(), upper.into()]).as_::<CSSMathValue>(),
+            inner: emlite::Val::global("CSSMathClamp")
+                .new(&[lower.into(), value.into(), upper.into()])
+                .as_::<CSSMathValue>(),
         }
     }
-
 }
 impl CSSMathClamp {
     pub fn lower(&self) -> CSSNumericValue {
         self.inner.get("lower").as_::<CSSNumericValue>()
     }
-
 }
 impl CSSMathClamp {
     pub fn value(&self) -> CSSNumericValue {
         self.inner.get("value").as_::<CSSNumericValue>()
     }
-
 }
 impl CSSMathClamp {
     pub fn upper(&self) -> CSSNumericValue {
         self.inner.get("upper").as_::<CSSNumericValue>()
     }
-
 }

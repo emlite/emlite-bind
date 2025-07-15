@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TrustedScript {
@@ -10,7 +7,9 @@ pub struct TrustedScript {
 }
 impl FromVal for TrustedScript {
     fn from_val(v: &emlite::Val) -> Self {
-        TrustedScript { inner: emlite::Val::from_val(v) }
+        TrustedScript {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for TrustedScript {
 }
 impl AsMut<emlite::Val> for TrustedScript {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<TrustedScript> for emlite::Val {
     fn from(s: TrustedScript) -> emlite::Val {
@@ -49,10 +48,8 @@ impl From<TrustedScript> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(TrustedScript);
 
-
 impl TrustedScript {
-    pub fn to_json(&self, ) -> DOMString {
+    pub fn to_json(&self) -> DOMString {
         self.inner.call("toJSON", &[]).as_::<DOMString>()
     }
-
 }

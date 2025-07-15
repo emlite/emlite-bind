@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLMarqueeElement {
@@ -10,7 +7,9 @@ pub struct HTMLMarqueeElement {
 }
 impl FromVal for HTMLMarqueeElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLMarqueeElement { inner: HTMLElement::from_val(v) }
+        HTMLMarqueeElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLMarqueeElement {
 }
 impl AsMut<emlite::Val> for HTMLMarqueeElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLMarqueeElement> for emlite::Val {
     fn from(s: HTMLMarqueeElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLMarqueeElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLMarqueeElement);
 
-
-
 impl HTMLMarqueeElement {
     pub fn new() -> HTMLMarqueeElement {
         Self {
-            inner: emlite::Val::global("HTMLMarqueeElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLMarqueeElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLMarqueeElement {
     pub fn behavior(&self) -> DOMString {
@@ -67,7 +65,6 @@ impl HTMLMarqueeElement {
     pub fn set_behavior(&mut self, value: DOMString) {
         self.inner.set("behavior", value);
     }
-
 }
 impl HTMLMarqueeElement {
     pub fn bg_color(&self) -> DOMString {
@@ -77,7 +74,6 @@ impl HTMLMarqueeElement {
     pub fn set_bg_color(&mut self, value: DOMString) {
         self.inner.set("bgColor", value);
     }
-
 }
 impl HTMLMarqueeElement {
     pub fn direction(&self) -> DOMString {
@@ -87,7 +83,6 @@ impl HTMLMarqueeElement {
     pub fn set_direction(&mut self, value: DOMString) {
         self.inner.set("direction", value);
     }
-
 }
 impl HTMLMarqueeElement {
     pub fn height(&self) -> DOMString {
@@ -97,7 +92,6 @@ impl HTMLMarqueeElement {
     pub fn set_height(&mut self, value: DOMString) {
         self.inner.set("height", value);
     }
-
 }
 impl HTMLMarqueeElement {
     pub fn hspace(&self) -> u32 {
@@ -107,7 +101,6 @@ impl HTMLMarqueeElement {
     pub fn set_hspace(&mut self, value: u32) {
         self.inner.set("hspace", value);
     }
-
 }
 impl HTMLMarqueeElement {
     pub fn loop_(&self) -> i32 {
@@ -117,7 +110,6 @@ impl HTMLMarqueeElement {
     pub fn set_loop_(&mut self, value: i32) {
         self.inner.set("loop", value);
     }
-
 }
 impl HTMLMarqueeElement {
     pub fn scroll_amount(&self) -> u32 {
@@ -127,7 +119,6 @@ impl HTMLMarqueeElement {
     pub fn set_scroll_amount(&mut self, value: u32) {
         self.inner.set("scrollAmount", value);
     }
-
 }
 impl HTMLMarqueeElement {
     pub fn scroll_delay(&self) -> u32 {
@@ -137,7 +128,6 @@ impl HTMLMarqueeElement {
     pub fn set_scroll_delay(&mut self, value: u32) {
         self.inner.set("scrollDelay", value);
     }
-
 }
 impl HTMLMarqueeElement {
     pub fn true_speed(&self) -> bool {
@@ -147,7 +137,6 @@ impl HTMLMarqueeElement {
     pub fn set_true_speed(&mut self, value: bool) {
         self.inner.set("trueSpeed", value);
     }
-
 }
 impl HTMLMarqueeElement {
     pub fn vspace(&self) -> u32 {
@@ -157,7 +146,6 @@ impl HTMLMarqueeElement {
     pub fn set_vspace(&mut self, value: u32) {
         self.inner.set("vspace", value);
     }
-
 }
 impl HTMLMarqueeElement {
     pub fn width(&self) -> DOMString {
@@ -167,17 +155,14 @@ impl HTMLMarqueeElement {
     pub fn set_width(&mut self, value: DOMString) {
         self.inner.set("width", value);
     }
-
 }
 impl HTMLMarqueeElement {
-    pub fn start(&self, ) -> Undefined {
+    pub fn start(&self) -> Undefined {
         self.inner.call("start", &[]).as_::<Undefined>()
     }
-
 }
 impl HTMLMarqueeElement {
-    pub fn stop(&self, ) -> Undefined {
+    pub fn stop(&self) -> Undefined {
         self.inner.call("stop", &[]).as_::<Undefined>()
     }
-
 }

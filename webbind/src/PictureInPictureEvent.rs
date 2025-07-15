@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PictureInPictureEvent {
@@ -10,7 +7,9 @@ pub struct PictureInPictureEvent {
 }
 impl FromVal for PictureInPictureEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        PictureInPictureEvent { inner: Event::from_val(v) }
+        PictureInPictureEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PictureInPictureEvent {
 }
 impl AsMut<emlite::Val> for PictureInPictureEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PictureInPictureEvent> for emlite::Val {
     fn from(s: PictureInPictureEvent) -> emlite::Val {
@@ -49,19 +48,19 @@ impl From<PictureInPictureEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PictureInPictureEvent);
 
-
-
 impl PictureInPictureEvent {
     pub fn new(type_: DOMString, event_init_dict: Any) -> PictureInPictureEvent {
         Self {
-            inner: emlite::Val::global("PictureInPictureEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("PictureInPictureEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl PictureInPictureEvent {
     pub fn picture_in_picture_window(&self) -> PictureInPictureWindow {
-        self.inner.get("pictureInPictureWindow").as_::<PictureInPictureWindow>()
+        self.inner
+            .get("pictureInPictureWindow")
+            .as_::<PictureInPictureWindow>()
     }
-
 }

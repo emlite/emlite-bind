@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SerialPortRequestOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for SerialPortRequestOptions {
 }
 impl AsMut<emlite::Val> for SerialPortRequestOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SerialPortRequestOptions> for emlite::Val {
     fn from(s: SerialPortRequestOptions) -> emlite::Val {
@@ -56,17 +53,17 @@ impl SerialPortRequestOptions {
     pub fn set_filters(&mut self, value: Sequence<Any>) {
         self.inner.set("filters", value);
     }
-
 }
 impl SerialPortRequestOptions {
     pub fn allowed_bluetooth_service_class_ids(&self) -> Sequence<Any> {
-        self.inner.get("allowedBluetoothServiceClassIds").as_::<Sequence<Any>>()
+        self.inner
+            .get("allowedBluetoothServiceClassIds")
+            .as_::<Sequence<Any>>()
     }
 
     pub fn set_allowed_bluetooth_service_class_ids(&mut self, value: Sequence<Any>) {
         self.inner.set("allowedBluetoothServiceClassIds", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -75,7 +72,9 @@ pub struct Serial {
 }
 impl FromVal for Serial {
     fn from_val(v: &emlite::Val) -> Self {
-        Serial { inner: EventTarget::from_val(v) }
+        Serial {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -102,8 +101,8 @@ impl AsRef<emlite::Val> for Serial {
 }
 impl AsMut<emlite::Val> for Serial {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Serial> for emlite::Val {
     fn from(s: Serial) -> emlite::Val {
@@ -114,7 +113,6 @@ impl From<Serial> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Serial);
 
-
 impl Serial {
     pub fn onconnect(&self) -> Any {
         self.inner.get("onconnect").as_::<Any>()
@@ -123,7 +121,6 @@ impl Serial {
     pub fn set_onconnect(&mut self, value: Any) {
         self.inner.set("onconnect", value);
     }
-
 }
 impl Serial {
     pub fn ondisconnect(&self) -> Any {
@@ -133,21 +130,20 @@ impl Serial {
     pub fn set_ondisconnect(&mut self, value: Any) {
         self.inner.set("ondisconnect", value);
     }
-
 }
 impl Serial {
-    pub fn get_ports(&self, ) -> Promise {
+    pub fn get_ports(&self) -> Promise {
         self.inner.call("getPorts", &[]).as_::<Promise>()
     }
-
 }
 impl Serial {
-    pub fn request_port0(&self, ) -> Promise {
+    pub fn request_port0(&self) -> Promise {
         self.inner.call("requestPort", &[]).as_::<Promise>()
     }
 
     pub fn request_port1(&self, options: SerialPortRequestOptions) -> Promise {
-        self.inner.call("requestPort", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("requestPort", &[options.into()])
+            .as_::<Promise>()
     }
-
 }

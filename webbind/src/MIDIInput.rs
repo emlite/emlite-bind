@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MIDIInput {
@@ -10,7 +7,9 @@ pub struct MIDIInput {
 }
 impl FromVal for MIDIInput {
     fn from_val(v: &emlite::Val) -> Self {
-        MIDIInput { inner: MIDIPort::from_val(v) }
+        MIDIInput {
+            inner: MIDIPort::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for MIDIInput {
 }
 impl AsMut<emlite::Val> for MIDIInput {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MIDIInput> for emlite::Val {
     fn from(s: MIDIInput) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<MIDIInput> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MIDIInput);
 
-
 impl MIDIInput {
     pub fn onmidimessage(&self) -> Any {
         self.inner.get("onmidimessage").as_::<Any>()
@@ -58,5 +56,4 @@ impl MIDIInput {
     pub fn set_onmidimessage(&mut self, value: Any) {
         self.inner.set("onmidimessage", value);
     }
-
 }

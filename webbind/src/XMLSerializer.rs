@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XMLSerializer {
@@ -10,7 +7,9 @@ pub struct XMLSerializer {
 }
 impl FromVal for XMLSerializer {
     fn from_val(v: &emlite::Val) -> Self {
-        XMLSerializer { inner: emlite::Val::from_val(v) }
+        XMLSerializer {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XMLSerializer {
 }
 impl AsMut<emlite::Val> for XMLSerializer {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XMLSerializer> for emlite::Val {
     fn from(s: XMLSerializer) -> emlite::Val {
@@ -49,19 +48,19 @@ impl From<XMLSerializer> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XMLSerializer);
 
-
-
 impl XMLSerializer {
     pub fn new() -> XMLSerializer {
         Self {
-            inner: emlite::Val::global("XMLSerializer").new(&[]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("XMLSerializer")
+                .new(&[])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl XMLSerializer {
     pub fn serialize_to_string(&self, root: Node) -> DOMString {
-        self.inner.call("serializeToString", &[root.into(), ]).as_::<DOMString>()
+        self.inner
+            .call("serializeToString", &[root.into()])
+            .as_::<DOMString>()
     }
-
 }

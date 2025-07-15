@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCIceCandidatePair {
@@ -10,7 +7,9 @@ pub struct RTCIceCandidatePair {
 }
 impl FromVal for RTCIceCandidatePair {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCIceCandidatePair { inner: emlite::Val::from_val(v) }
+        RTCIceCandidatePair {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for RTCIceCandidatePair {
 }
 impl AsMut<emlite::Val> for RTCIceCandidatePair {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<RTCIceCandidatePair> for emlite::Val {
     fn from(s: RTCIceCandidatePair) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<RTCIceCandidatePair> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCIceCandidatePair);
 
-
 impl RTCIceCandidatePair {
     pub fn local(&self) -> RTCIceCandidate {
         self.inner.get("local").as_::<RTCIceCandidate>()
     }
-
 }
 impl RTCIceCandidatePair {
     pub fn remote(&self) -> RTCIceCandidate {
         self.inner.get("remote").as_::<RTCIceCandidate>()
     }
-
 }

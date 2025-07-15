@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ScriptProcessorNode {
@@ -10,7 +7,9 @@ pub struct ScriptProcessorNode {
 }
 impl FromVal for ScriptProcessorNode {
     fn from_val(v: &emlite::Val) -> Self {
-        ScriptProcessorNode { inner: AudioNode::from_val(v) }
+        ScriptProcessorNode {
+            inner: AudioNode::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for ScriptProcessorNode {
 }
 impl AsMut<emlite::Val> for ScriptProcessorNode {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ScriptProcessorNode> for emlite::Val {
     fn from(s: ScriptProcessorNode) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<ScriptProcessorNode> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ScriptProcessorNode);
 
-
 impl ScriptProcessorNode {
     pub fn onaudioprocess(&self) -> Any {
         self.inner.get("onaudioprocess").as_::<Any>()
@@ -58,11 +56,9 @@ impl ScriptProcessorNode {
     pub fn set_onaudioprocess(&mut self, value: Any) {
         self.inner.set("onaudioprocess", value);
     }
-
 }
 impl ScriptProcessorNode {
     pub fn buffer_size(&self) -> i32 {
         self.inner.get("bufferSize").as_::<i32>()
     }
-
 }

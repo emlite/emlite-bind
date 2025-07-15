@@ -2,7 +2,7 @@ use core::marker::PhantomData;
 use core::ops::{Deref, DerefMut};
 use emlite::FromVal;
 
-/// Web‑IDL `record<K, V>` wrapper.
+/// WebIDL `record<K, V>` wrapper. No concrete JS type, but needed for WebIDL
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Record<K, V> {
@@ -60,6 +60,7 @@ impl<K, V> AsMut<emlite::Val> for Record<K, V> {
 }
 
 impl<K, V> Record<K, V> {
+    /// Set keyed `item` to `val`
     pub fn set(&self, item: K, val: V)
     where
         emlite::Val: From<K>,
@@ -68,6 +69,7 @@ impl<K, V> Record<K, V> {
         self.inner.set(item, val);
     }
 
+    /// Get the value of the key `item`
     pub fn get(&self, item: K) -> Option<V>
     where
         emlite::Val: From<K>,
@@ -82,7 +84,7 @@ impl<K, V> Record<K, V> {
         }
     }
 
-    /// Returns whether a value exists in the sequence.
+    /// Returns whether a value exists in the Record.
     pub fn has(&self, item: K) -> bool
     where
         emlite::Val: From<K>,

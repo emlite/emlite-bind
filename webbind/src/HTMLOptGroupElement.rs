@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLOptGroupElement {
@@ -10,7 +7,9 @@ pub struct HTMLOptGroupElement {
 }
 impl FromVal for HTMLOptGroupElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLOptGroupElement { inner: HTMLElement::from_val(v) }
+        HTMLOptGroupElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLOptGroupElement {
 }
 impl AsMut<emlite::Val> for HTMLOptGroupElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLOptGroupElement> for emlite::Val {
     fn from(s: HTMLOptGroupElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLOptGroupElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLOptGroupElement);
 
-
-
 impl HTMLOptGroupElement {
     pub fn new() -> HTMLOptGroupElement {
         Self {
-            inner: emlite::Val::global("HTMLOptGroupElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLOptGroupElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLOptGroupElement {
     pub fn disabled(&self) -> bool {
@@ -67,7 +65,6 @@ impl HTMLOptGroupElement {
     pub fn set_disabled(&mut self, value: bool) {
         self.inner.set("disabled", value);
     }
-
 }
 impl HTMLOptGroupElement {
     pub fn label(&self) -> DOMString {
@@ -77,5 +74,4 @@ impl HTMLOptGroupElement {
     pub fn set_label(&mut self, value: DOMString) {
         self.inner.set("label", value);
     }
-
 }

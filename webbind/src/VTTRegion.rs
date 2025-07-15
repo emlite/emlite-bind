@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VTTRegion {
@@ -10,7 +7,9 @@ pub struct VTTRegion {
 }
 impl FromVal for VTTRegion {
     fn from_val(v: &emlite::Val) -> Self {
-        VTTRegion { inner: emlite::Val::from_val(v) }
+        VTTRegion {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for VTTRegion {
 }
 impl AsMut<emlite::Val> for VTTRegion {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<VTTRegion> for emlite::Val {
     fn from(s: VTTRegion) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<VTTRegion> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(VTTRegion);
 
-
-
 impl VTTRegion {
     pub fn new() -> VTTRegion {
         Self {
-            inner: emlite::Val::global("VTTRegion").new(&[]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("VTTRegion")
+                .new(&[])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl VTTRegion {
     pub fn id(&self) -> DOMString {
@@ -67,7 +65,6 @@ impl VTTRegion {
     pub fn set_id(&mut self, value: DOMString) {
         self.inner.set("id", value);
     }
-
 }
 impl VTTRegion {
     pub fn width(&self) -> f64 {
@@ -77,7 +74,6 @@ impl VTTRegion {
     pub fn set_width(&mut self, value: f64) {
         self.inner.set("width", value);
     }
-
 }
 impl VTTRegion {
     pub fn lines(&self) -> u32 {
@@ -87,7 +83,6 @@ impl VTTRegion {
     pub fn set_lines(&mut self, value: u32) {
         self.inner.set("lines", value);
     }
-
 }
 impl VTTRegion {
     pub fn region_anchor_x(&self) -> f64 {
@@ -97,7 +92,6 @@ impl VTTRegion {
     pub fn set_region_anchor_x(&mut self, value: f64) {
         self.inner.set("regionAnchorX", value);
     }
-
 }
 impl VTTRegion {
     pub fn region_anchor_y(&self) -> f64 {
@@ -107,7 +101,6 @@ impl VTTRegion {
     pub fn set_region_anchor_y(&mut self, value: f64) {
         self.inner.set("regionAnchorY", value);
     }
-
 }
 impl VTTRegion {
     pub fn viewport_anchor_x(&self) -> f64 {
@@ -117,7 +110,6 @@ impl VTTRegion {
     pub fn set_viewport_anchor_x(&mut self, value: f64) {
         self.inner.set("viewportAnchorX", value);
     }
-
 }
 impl VTTRegion {
     pub fn viewport_anchor_y(&self) -> f64 {
@@ -127,7 +119,6 @@ impl VTTRegion {
     pub fn set_viewport_anchor_y(&mut self, value: f64) {
         self.inner.set("viewportAnchorY", value);
     }
-
 }
 impl VTTRegion {
     pub fn scroll(&self) -> ScrollSetting {
@@ -137,5 +128,4 @@ impl VTTRegion {
     pub fn set_scroll(&mut self, value: ScrollSetting) {
         self.inner.set("scroll", value);
     }
-
 }

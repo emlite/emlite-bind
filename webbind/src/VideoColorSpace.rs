@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VideoColorSpaceInit {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for VideoColorSpaceInit {
 }
 impl AsMut<emlite::Val> for VideoColorSpaceInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<VideoColorSpaceInit> for emlite::Val {
     fn from(s: VideoColorSpaceInit) -> emlite::Val {
@@ -56,17 +53,17 @@ impl VideoColorSpaceInit {
     pub fn set_primaries(&mut self, value: VideoColorPrimaries) {
         self.inner.set("primaries", value);
     }
-
 }
 impl VideoColorSpaceInit {
     pub fn transfer(&self) -> VideoTransferCharacteristics {
-        self.inner.get("transfer").as_::<VideoTransferCharacteristics>()
+        self.inner
+            .get("transfer")
+            .as_::<VideoTransferCharacteristics>()
     }
 
     pub fn set_transfer(&mut self, value: VideoTransferCharacteristics) {
         self.inner.set("transfer", value);
     }
-
 }
 impl VideoColorSpaceInit {
     pub fn matrix(&self) -> VideoMatrixCoefficients {
@@ -76,7 +73,6 @@ impl VideoColorSpaceInit {
     pub fn set_matrix(&mut self, value: VideoMatrixCoefficients) {
         self.inner.set("matrix", value);
     }
-
 }
 impl VideoColorSpaceInit {
     pub fn full_range(&self) -> bool {
@@ -86,7 +82,6 @@ impl VideoColorSpaceInit {
     pub fn set_full_range(&mut self, value: bool) {
         self.inner.set("fullRange", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -95,7 +90,9 @@ pub struct VideoColorSpace {
 }
 impl FromVal for VideoColorSpace {
     fn from_val(v: &emlite::Val) -> Self {
-        VideoColorSpace { inner: emlite::Val::from_val(v) }
+        VideoColorSpace {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -122,8 +119,8 @@ impl AsRef<emlite::Val> for VideoColorSpace {
 }
 impl AsMut<emlite::Val> for VideoColorSpace {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<VideoColorSpace> for emlite::Val {
     fn from(s: VideoColorSpace) -> emlite::Val {
@@ -134,49 +131,47 @@ impl From<VideoColorSpace> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(VideoColorSpace);
 
-
-
 impl VideoColorSpace {
     pub fn new0() -> VideoColorSpace {
         Self {
-            inner: emlite::Val::global("VideoColorSpace").new(&[]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("VideoColorSpace")
+                .new(&[])
+                .as_::<emlite::Val>(),
         }
     }
 
     pub fn new1(init: VideoColorSpaceInit) -> VideoColorSpace {
         Self {
-            inner: emlite::Val::global("VideoColorSpace").new(&[init.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("VideoColorSpace")
+                .new(&[init.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl VideoColorSpace {
     pub fn primaries(&self) -> VideoColorPrimaries {
         self.inner.get("primaries").as_::<VideoColorPrimaries>()
     }
-
 }
 impl VideoColorSpace {
     pub fn transfer(&self) -> VideoTransferCharacteristics {
-        self.inner.get("transfer").as_::<VideoTransferCharacteristics>()
+        self.inner
+            .get("transfer")
+            .as_::<VideoTransferCharacteristics>()
     }
-
 }
 impl VideoColorSpace {
     pub fn matrix(&self) -> VideoMatrixCoefficients {
         self.inner.get("matrix").as_::<VideoMatrixCoefficients>()
     }
-
 }
 impl VideoColorSpace {
     pub fn full_range(&self) -> bool {
         self.inner.get("fullRange").as_::<bool>()
     }
-
 }
 impl VideoColorSpace {
-    pub fn to_json(&self, ) -> VideoColorSpaceInit {
+    pub fn to_json(&self) -> VideoColorSpaceInit {
         self.inner.call("toJSON", &[]).as_::<VideoColorSpaceInit>()
     }
-
 }

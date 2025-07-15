@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ConstantSourceNode {
@@ -10,7 +7,9 @@ pub struct ConstantSourceNode {
 }
 impl FromVal for ConstantSourceNode {
     fn from_val(v: &emlite::Val) -> Self {
-        ConstantSourceNode { inner: AudioScheduledSourceNode::from_val(v) }
+        ConstantSourceNode {
+            inner: AudioScheduledSourceNode::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for ConstantSourceNode {
 }
 impl AsMut<emlite::Val> for ConstantSourceNode {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ConstantSourceNode> for emlite::Val {
     fn from(s: ConstantSourceNode) -> emlite::Val {
@@ -49,25 +48,25 @@ impl From<ConstantSourceNode> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ConstantSourceNode);
 
-
-
 impl ConstantSourceNode {
     pub fn new0(context: BaseAudioContext) -> ConstantSourceNode {
         Self {
-            inner: emlite::Val::global("ConstantSourceNode").new(&[context.into()]).as_::<AudioScheduledSourceNode>(),
+            inner: emlite::Val::global("ConstantSourceNode")
+                .new(&[context.into()])
+                .as_::<AudioScheduledSourceNode>(),
         }
     }
 
     pub fn new1(context: BaseAudioContext, options: Any) -> ConstantSourceNode {
         Self {
-            inner: emlite::Val::global("ConstantSourceNode").new(&[context.into(), options.into()]).as_::<AudioScheduledSourceNode>(),
+            inner: emlite::Val::global("ConstantSourceNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioScheduledSourceNode>(),
         }
     }
-
 }
 impl ConstantSourceNode {
     pub fn offset(&self) -> AudioParam {
         self.inner.get("offset").as_::<AudioParam>()
     }
-
 }

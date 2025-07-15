@@ -14,7 +14,6 @@ import {
   typedefs,
   callbacks,
 } from "./globals.js";
-import * as changeCase from "change-case";
 
 function emitAttr(attr, owner, isStatic = false) {
   const S = [`impl ${owner} {`];
@@ -23,7 +22,7 @@ function emitAttr(attr, owner, isStatic = false) {
   if (isStatic) {
     S.push(
       `    pub fn ${fixIdent(attr.name)}() -> ${type} {`,
-      `        emlite::Val::global("${owner.toLowerCase()}").get("${
+      `        emlite::Val::global("${owner}").get("${
         attr.name
       }").as_::<${type}>()`,
       `    }`,
@@ -66,7 +65,7 @@ function emitOp(op, owner, isStatic = false) {
     const declSrc = argDecl(v);
     const callArgs = v.map((a) => `${fixIdent(a.name)}.into()`).join(", ");
     const callExpr = isStatic
-      ? `emlite::Val::global("${owner.toLowerCase()}").call("${op.name}", &[${
+      ? `emlite::Val::global("${owner}").call("${op.name}", &[${
           callArgs ? callArgs + ", " : ""
         }])`
       : `self.inner.call("${op.name}", &[${callArgs ? callArgs + ", " : ""}])`;

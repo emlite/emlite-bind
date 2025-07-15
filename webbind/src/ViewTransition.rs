@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ViewTransition {
@@ -10,7 +7,9 @@ pub struct ViewTransition {
 }
 impl FromVal for ViewTransition {
     fn from_val(v: &emlite::Val) -> Self {
-        ViewTransition { inner: emlite::Val::from_val(v) }
+        ViewTransition {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for ViewTransition {
 }
 impl AsMut<emlite::Val> for ViewTransition {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ViewTransition> for emlite::Val {
     fn from(s: ViewTransition) -> emlite::Val {
@@ -49,30 +48,25 @@ impl From<ViewTransition> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ViewTransition);
 
-
 impl ViewTransition {
     pub fn update_callback_done(&self) -> Promise {
         self.inner.get("updateCallbackDone").as_::<Promise>()
     }
-
 }
 impl ViewTransition {
     pub fn ready(&self) -> Promise {
         self.inner.get("ready").as_::<Promise>()
     }
-
 }
 impl ViewTransition {
     pub fn finished(&self) -> Promise {
         self.inner.get("finished").as_::<Promise>()
     }
-
 }
 impl ViewTransition {
-    pub fn skip_transition(&self, ) -> Undefined {
+    pub fn skip_transition(&self) -> Undefined {
         self.inner.call("skipTransition", &[]).as_::<Undefined>()
     }
-
 }
 impl ViewTransition {
     pub fn types(&self) -> ViewTransitionTypeSet {
@@ -82,5 +76,4 @@ impl ViewTransition {
     pub fn set_types(&mut self, value: ViewTransitionTypeSet) {
         self.inner.set("types", value);
     }
-
 }

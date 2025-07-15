@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct LinearAccelerationSensor {
@@ -10,7 +7,9 @@ pub struct LinearAccelerationSensor {
 }
 impl FromVal for LinearAccelerationSensor {
     fn from_val(v: &emlite::Val) -> Self {
-        LinearAccelerationSensor { inner: Accelerometer::from_val(v) }
+        LinearAccelerationSensor {
+            inner: Accelerometer::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for LinearAccelerationSensor {
 }
 impl AsMut<emlite::Val> for LinearAccelerationSensor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<LinearAccelerationSensor> for emlite::Val {
     fn from(s: LinearAccelerationSensor) -> emlite::Val {
@@ -49,19 +48,20 @@ impl From<LinearAccelerationSensor> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(LinearAccelerationSensor);
 
-
-
 impl LinearAccelerationSensor {
     pub fn new0() -> LinearAccelerationSensor {
         Self {
-            inner: emlite::Val::global("LinearAccelerationSensor").new(&[]).as_::<Accelerometer>(),
+            inner: emlite::Val::global("LinearAccelerationSensor")
+                .new(&[])
+                .as_::<Accelerometer>(),
         }
     }
 
     pub fn new1(options: Any) -> LinearAccelerationSensor {
         Self {
-            inner: emlite::Val::global("LinearAccelerationSensor").new(&[options.into()]).as_::<Accelerometer>(),
+            inner: emlite::Val::global("LinearAccelerationSensor")
+                .new(&[options.into()])
+                .as_::<Accelerometer>(),
         }
     }
-
 }

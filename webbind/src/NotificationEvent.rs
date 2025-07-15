@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NotificationEvent {
@@ -10,7 +7,9 @@ pub struct NotificationEvent {
 }
 impl FromVal for NotificationEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        NotificationEvent { inner: ExtendableEvent::from_val(v) }
+        NotificationEvent {
+            inner: ExtendableEvent::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for NotificationEvent {
 }
 impl AsMut<emlite::Val> for NotificationEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<NotificationEvent> for emlite::Val {
     fn from(s: NotificationEvent) -> emlite::Val {
@@ -49,25 +48,22 @@ impl From<NotificationEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(NotificationEvent);
 
-
-
 impl NotificationEvent {
     pub fn new(type_: DOMString, event_init_dict: Any) -> NotificationEvent {
         Self {
-            inner: emlite::Val::global("NotificationEvent").new(&[type_.into(), event_init_dict.into()]).as_::<ExtendableEvent>(),
+            inner: emlite::Val::global("NotificationEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<ExtendableEvent>(),
         }
     }
-
 }
 impl NotificationEvent {
     pub fn notification(&self) -> Notification {
         self.inner.get("notification").as_::<Notification>()
     }
-
 }
 impl NotificationEvent {
     pub fn action(&self) -> DOMString {
         self.inner.get("action").as_::<DOMString>()
     }
-
 }

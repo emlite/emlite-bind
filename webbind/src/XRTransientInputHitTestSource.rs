@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRTransientInputHitTestSource {
@@ -10,7 +7,9 @@ pub struct XRTransientInputHitTestSource {
 }
 impl FromVal for XRTransientInputHitTestSource {
     fn from_val(v: &emlite::Val) -> Self {
-        XRTransientInputHitTestSource { inner: emlite::Val::from_val(v) }
+        XRTransientInputHitTestSource {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XRTransientInputHitTestSource {
 }
 impl AsMut<emlite::Val> for XRTransientInputHitTestSource {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRTransientInputHitTestSource> for emlite::Val {
     fn from(s: XRTransientInputHitTestSource) -> emlite::Val {
@@ -49,10 +48,8 @@ impl From<XRTransientInputHitTestSource> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRTransientInputHitTestSource);
 
-
 impl XRTransientInputHitTestSource {
-    pub fn cancel(&self, ) -> Undefined {
+    pub fn cancel(&self) -> Undefined {
         self.inner.call("cancel", &[]).as_::<Undefined>()
     }
-
 }

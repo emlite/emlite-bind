@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Viewport {
@@ -10,7 +7,9 @@ pub struct Viewport {
 }
 impl FromVal for Viewport {
     fn from_val(v: &emlite::Val) -> Self {
-        Viewport { inner: emlite::Val::from_val(v) }
+        Viewport {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for Viewport {
 }
 impl AsMut<emlite::Val> for Viewport {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Viewport> for emlite::Val {
     fn from(s: Viewport) -> emlite::Val {
@@ -49,10 +48,8 @@ impl From<Viewport> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Viewport);
 
-
 impl Viewport {
     pub fn segments(&self) -> FrozenArray<DOMRect> {
         self.inner.get("segments").as_::<FrozenArray<DOMRect>>()
     }
-
 }

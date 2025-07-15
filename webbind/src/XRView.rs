@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRView {
@@ -10,7 +7,9 @@ pub struct XRView {
 }
 impl FromVal for XRView {
     fn from_val(v: &emlite::Val) -> Self {
-        XRView { inner: emlite::Val::from_val(v) }
+        XRView {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XRView {
 }
 impl AsMut<emlite::Val> for XRView {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRView> for emlite::Val {
     fn from(s: XRView) -> emlite::Val {
@@ -49,46 +48,40 @@ impl From<XRView> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRView);
 
-
 impl XRView {
     pub fn eye(&self) -> XREye {
         self.inner.get("eye").as_::<XREye>()
     }
-
 }
 impl XRView {
     pub fn recommended_viewport_scale(&self) -> f64 {
         self.inner.get("recommendedViewportScale").as_::<f64>()
     }
-
 }
 impl XRView {
     pub fn request_viewport_scale(&self, scale: f64) -> Undefined {
-        self.inner.call("requestViewportScale", &[scale.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("requestViewportScale", &[scale.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl XRView {
     pub fn camera(&self) -> XRCamera {
         self.inner.get("camera").as_::<XRCamera>()
     }
-
 }
 impl XRView {
     pub fn is_first_person_observer(&self) -> bool {
         self.inner.get("isFirstPersonObserver").as_::<bool>()
     }
-
 }
 impl XRView {
     pub fn projection_matrix(&self) -> Float32Array {
         self.inner.get("projectionMatrix").as_::<Float32Array>()
     }
-
 }
 impl XRView {
     pub fn transform(&self) -> XRRigidTransform {
         self.inner.get("transform").as_::<XRRigidTransform>()
     }
-
 }

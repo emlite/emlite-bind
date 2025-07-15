@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AttributionAggregationServices {
@@ -10,7 +7,9 @@ pub struct AttributionAggregationServices {
 }
 impl FromVal for AttributionAggregationServices {
     fn from_val(v: &emlite::Val) -> Self {
-        AttributionAggregationServices { inner: emlite::Val::from_val(v) }
+        AttributionAggregationServices {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for AttributionAggregationServices {
 }
 impl AsMut<emlite::Val> for AttributionAggregationServices {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AttributionAggregationServices> for emlite::Val {
     fn from(s: AttributionAggregationServices) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<AttributionAggregationServices> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(AttributionAggregationServices);
-
-

@@ -6,7 +6,7 @@ use emlite::FromVal;
 
 /// Generic WebIDL typed array ([spec § 2.7]).
 ///
-/// This is nothing more than a [`Sequence<T>`] with a canonical name that
+/// This is nothing more than a `Sequence<T>` with a canonical name that
 /// matches the WebIDL grammar.  All sequence helpers (`len`, `push`, `get`,
 /// `iter`, …) are therefore immediately available.
 ///
@@ -53,7 +53,6 @@ crate::utils::impl_dyn_cast!(Array, "Array");
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ArrayBuffer {
-    /// Underlying JavaScript value (always a `Promise` object in JS land).
     inner: emlite::Val,
 }
 
@@ -83,12 +82,14 @@ impl ArrayBuffer {
         .as_::<Self>()
     }
 
+    /// Static `ArrayBuffer.isView`
     pub fn is_view(buf: &Any) -> bool {
         emlite::Val::global("ArrayBuffer")
             .call("isView", &[buf.clone()])
             .as_::<bool>()
     }
 
+    /// Returns whether the ArrayBuffer is resizable
     pub fn resizable(&self) -> bool {
         self.inner.get("resizable").as_::<bool>()
     }
@@ -120,10 +121,10 @@ impl Endian {
     }
 }
 
-/// Provides a configurable view on top of an [`ArrayBuffer`].
+/// Provides a configurable view on top of an `ArrayBuffer`.
 ///
 /// All accessor methods follow the spec signature `(byteOffset, [value],
-/// littleEndian)` so host code must always pass an [`Endian`] flag to remove
+/// littleEndian)` so host code must always pass an `Endian` flag to remove
 /// any ambiguity about byte order.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -131,11 +132,6 @@ pub struct DataView {
     inner: emlite::Val,
 }
 
-/// Internal helper to expand repetitive getter / setter boilerplate for every
-/// numeric width.
-///
-/// The macro is deliberately not exported; end users interact only with
-/// the generated methods on [`DataView`].
 macro_rules! rw {
     ($get:ident, $set:ident, $ty:ty) => {
         #[doc = concat!("Reads a `", stringify!($ty), "` at byteOffset with the specified endianness.")]

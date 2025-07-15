@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VideoTrackList {
@@ -10,7 +7,9 @@ pub struct VideoTrackList {
 }
 impl FromVal for VideoTrackList {
     fn from_val(v: &emlite::Val) -> Self {
-        VideoTrackList { inner: EventTarget::from_val(v) }
+        VideoTrackList {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for VideoTrackList {
 }
 impl AsMut<emlite::Val> for VideoTrackList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<VideoTrackList> for emlite::Val {
     fn from(s: VideoTrackList) -> emlite::Val {
@@ -49,24 +48,22 @@ impl From<VideoTrackList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(VideoTrackList);
 
-
 impl VideoTrackList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl VideoTrackList {
     pub fn get_track_by_id(&self, id: DOMString) -> VideoTrack {
-        self.inner.call("getTrackById", &[id.into(), ]).as_::<VideoTrack>()
+        self.inner
+            .call("getTrackById", &[id.into()])
+            .as_::<VideoTrack>()
     }
-
 }
 impl VideoTrackList {
     pub fn selected_index(&self) -> i32 {
         self.inner.get("selectedIndex").as_::<i32>()
     }
-
 }
 impl VideoTrackList {
     pub fn onchange(&self) -> Any {
@@ -76,7 +73,6 @@ impl VideoTrackList {
     pub fn set_onchange(&mut self, value: Any) {
         self.inner.set("onchange", value);
     }
-
 }
 impl VideoTrackList {
     pub fn onaddtrack(&self) -> Any {
@@ -86,7 +82,6 @@ impl VideoTrackList {
     pub fn set_onaddtrack(&mut self, value: Any) {
         self.inner.set("onaddtrack", value);
     }
-
 }
 impl VideoTrackList {
     pub fn onremovetrack(&self) -> Any {
@@ -96,5 +91,4 @@ impl VideoTrackList {
     pub fn set_onremovetrack(&mut self, value: Any) {
         self.inner.set("onremovetrack", value);
     }
-
 }

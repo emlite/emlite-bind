@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebTransportReceiveStreamStats {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for WebTransportReceiveStreamStats {
 }
 impl AsMut<emlite::Val> for WebTransportReceiveStreamStats {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WebTransportReceiveStreamStats> for emlite::Val {
     fn from(s: WebTransportReceiveStreamStats) -> emlite::Val {
@@ -56,7 +53,6 @@ impl WebTransportReceiveStreamStats {
     pub fn set_bytes_received(&mut self, value: u64) {
         self.inner.set("bytesReceived", value);
     }
-
 }
 impl WebTransportReceiveStreamStats {
     pub fn bytes_read(&self) -> u64 {
@@ -66,7 +62,6 @@ impl WebTransportReceiveStreamStats {
     pub fn set_bytes_read(&mut self, value: u64) {
         self.inner.set("bytesRead", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -75,7 +70,9 @@ pub struct WebTransportReceiveStream {
 }
 impl FromVal for WebTransportReceiveStream {
     fn from_val(v: &emlite::Val) -> Self {
-        WebTransportReceiveStream { inner: ReadableStream::from_val(v) }
+        WebTransportReceiveStream {
+            inner: ReadableStream::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -102,8 +99,8 @@ impl AsRef<emlite::Val> for WebTransportReceiveStream {
 }
 impl AsMut<emlite::Val> for WebTransportReceiveStream {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WebTransportReceiveStream> for emlite::Val {
     fn from(s: WebTransportReceiveStream) -> emlite::Val {
@@ -114,10 +111,8 @@ impl From<WebTransportReceiveStream> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WebTransportReceiveStream);
 
-
 impl WebTransportReceiveStream {
-    pub fn get_stats(&self, ) -> Promise {
+    pub fn get_stats(&self) -> Promise {
         self.inner.call("getStats", &[]).as_::<Promise>()
     }
-
 }

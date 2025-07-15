@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUAdapterInfo {
@@ -10,7 +7,9 @@ pub struct GPUAdapterInfo {
 }
 impl FromVal for GPUAdapterInfo {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUAdapterInfo { inner: emlite::Val::from_val(v) }
+        GPUAdapterInfo {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for GPUAdapterInfo {
 }
 impl AsMut<emlite::Val> for GPUAdapterInfo {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<GPUAdapterInfo> for emlite::Val {
     fn from(s: GPUAdapterInfo) -> emlite::Val {
@@ -49,46 +48,38 @@ impl From<GPUAdapterInfo> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GPUAdapterInfo);
 
-
 impl GPUAdapterInfo {
     pub fn vendor(&self) -> DOMString {
         self.inner.get("vendor").as_::<DOMString>()
     }
-
 }
 impl GPUAdapterInfo {
     pub fn architecture(&self) -> DOMString {
         self.inner.get("architecture").as_::<DOMString>()
     }
-
 }
 impl GPUAdapterInfo {
     pub fn device(&self) -> DOMString {
         self.inner.get("device").as_::<DOMString>()
     }
-
 }
 impl GPUAdapterInfo {
     pub fn description(&self) -> DOMString {
         self.inner.get("description").as_::<DOMString>()
     }
-
 }
 impl GPUAdapterInfo {
     pub fn subgroup_min_size(&self) -> u32 {
         self.inner.get("subgroupMinSize").as_::<u32>()
     }
-
 }
 impl GPUAdapterInfo {
     pub fn subgroup_max_size(&self) -> u32 {
         self.inner.get("subgroupMaxSize").as_::<u32>()
     }
-
 }
 impl GPUAdapterInfo {
     pub fn is_fallback_adapter(&self) -> bool {
         self.inner.get("isFallbackAdapter").as_::<bool>()
     }
-
 }

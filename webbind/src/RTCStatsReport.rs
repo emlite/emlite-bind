@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCStatsReport {
@@ -10,7 +7,9 @@ pub struct RTCStatsReport {
 }
 impl FromVal for RTCStatsReport {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCStatsReport { inner: emlite::Val::from_val(v) }
+        RTCStatsReport {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for RTCStatsReport {
 }
 impl AsMut<emlite::Val> for RTCStatsReport {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<RTCStatsReport> for emlite::Val {
     fn from(s: RTCStatsReport) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<RTCStatsReport> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCStatsReport);
-
-

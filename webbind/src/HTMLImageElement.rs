@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLImageElement {
@@ -10,7 +7,9 @@ pub struct HTMLImageElement {
 }
 impl FromVal for HTMLImageElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLImageElement { inner: HTMLElement::from_val(v) }
+        HTMLImageElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLImageElement {
 }
 impl AsMut<emlite::Val> for HTMLImageElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLImageElement> for emlite::Val {
     fn from(s: HTMLImageElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLImageElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLImageElement);
 
-
-
 impl HTMLImageElement {
     pub fn new() -> HTMLImageElement {
         Self {
-            inner: emlite::Val::global("HTMLImageElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLImageElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLImageElement {
     pub fn alt(&self) -> DOMString {
@@ -67,7 +65,6 @@ impl HTMLImageElement {
     pub fn set_alt(&mut self, value: DOMString) {
         self.inner.set("alt", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn src(&self) -> USVString {
@@ -77,7 +74,6 @@ impl HTMLImageElement {
     pub fn set_src(&mut self, value: USVString) {
         self.inner.set("src", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn srcset(&self) -> USVString {
@@ -87,7 +83,6 @@ impl HTMLImageElement {
     pub fn set_srcset(&mut self, value: USVString) {
         self.inner.set("srcset", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn sizes(&self) -> DOMString {
@@ -97,7 +92,6 @@ impl HTMLImageElement {
     pub fn set_sizes(&mut self, value: DOMString) {
         self.inner.set("sizes", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn cross_origin(&self) -> DOMString {
@@ -107,7 +101,6 @@ impl HTMLImageElement {
     pub fn set_cross_origin(&mut self, value: DOMString) {
         self.inner.set("crossOrigin", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn use_map(&self) -> DOMString {
@@ -117,7 +110,6 @@ impl HTMLImageElement {
     pub fn set_use_map(&mut self, value: DOMString) {
         self.inner.set("useMap", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn is_map(&self) -> bool {
@@ -127,7 +119,6 @@ impl HTMLImageElement {
     pub fn set_is_map(&mut self, value: bool) {
         self.inner.set("isMap", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn width(&self) -> u32 {
@@ -137,7 +128,6 @@ impl HTMLImageElement {
     pub fn set_width(&mut self, value: u32) {
         self.inner.set("width", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn height(&self) -> u32 {
@@ -147,31 +137,26 @@ impl HTMLImageElement {
     pub fn set_height(&mut self, value: u32) {
         self.inner.set("height", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn natural_width(&self) -> u32 {
         self.inner.get("naturalWidth").as_::<u32>()
     }
-
 }
 impl HTMLImageElement {
     pub fn natural_height(&self) -> u32 {
         self.inner.get("naturalHeight").as_::<u32>()
     }
-
 }
 impl HTMLImageElement {
     pub fn complete(&self) -> bool {
         self.inner.get("complete").as_::<bool>()
     }
-
 }
 impl HTMLImageElement {
     pub fn current_src(&self) -> USVString {
         self.inner.get("currentSrc").as_::<USVString>()
     }
-
 }
 impl HTMLImageElement {
     pub fn referrer_policy(&self) -> DOMString {
@@ -181,7 +166,6 @@ impl HTMLImageElement {
     pub fn set_referrer_policy(&mut self, value: DOMString) {
         self.inner.set("referrerPolicy", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn decoding(&self) -> DOMString {
@@ -191,7 +175,6 @@ impl HTMLImageElement {
     pub fn set_decoding(&mut self, value: DOMString) {
         self.inner.set("decoding", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn loading(&self) -> DOMString {
@@ -201,7 +184,6 @@ impl HTMLImageElement {
     pub fn set_loading(&mut self, value: DOMString) {
         self.inner.set("loading", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn fetch_priority(&self) -> DOMString {
@@ -211,25 +193,21 @@ impl HTMLImageElement {
     pub fn set_fetch_priority(&mut self, value: DOMString) {
         self.inner.set("fetchPriority", value);
     }
-
 }
 impl HTMLImageElement {
-    pub fn decode(&self, ) -> Promise {
+    pub fn decode(&self) -> Promise {
         self.inner.call("decode", &[]).as_::<Promise>()
     }
-
 }
 impl HTMLImageElement {
     pub fn x(&self) -> i32 {
         self.inner.get("x").as_::<i32>()
     }
-
 }
 impl HTMLImageElement {
     pub fn y(&self) -> i32 {
         self.inner.get("y").as_::<i32>()
     }
-
 }
 impl HTMLImageElement {
     pub fn name(&self) -> DOMString {
@@ -239,7 +217,6 @@ impl HTMLImageElement {
     pub fn set_name(&mut self, value: DOMString) {
         self.inner.set("name", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn lowsrc(&self) -> USVString {
@@ -249,7 +226,6 @@ impl HTMLImageElement {
     pub fn set_lowsrc(&mut self, value: USVString) {
         self.inner.set("lowsrc", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn align(&self) -> DOMString {
@@ -259,7 +235,6 @@ impl HTMLImageElement {
     pub fn set_align(&mut self, value: DOMString) {
         self.inner.set("align", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn hspace(&self) -> u32 {
@@ -269,7 +244,6 @@ impl HTMLImageElement {
     pub fn set_hspace(&mut self, value: u32) {
         self.inner.set("hspace", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn vspace(&self) -> u32 {
@@ -279,7 +253,6 @@ impl HTMLImageElement {
     pub fn set_vspace(&mut self, value: u32) {
         self.inner.set("vspace", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn long_desc(&self) -> USVString {
@@ -289,7 +262,6 @@ impl HTMLImageElement {
     pub fn set_long_desc(&mut self, value: USVString) {
         self.inner.set("longDesc", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn border(&self) -> DOMString {
@@ -299,7 +271,6 @@ impl HTMLImageElement {
     pub fn set_border(&mut self, value: DOMString) {
         self.inner.set("border", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn attribution_src(&self) -> USVString {
@@ -309,7 +280,6 @@ impl HTMLImageElement {
     pub fn set_attribution_src(&mut self, value: USVString) {
         self.inner.set("attributionSrc", value);
     }
-
 }
 impl HTMLImageElement {
     pub fn shared_storage_writable(&self) -> bool {
@@ -319,5 +289,4 @@ impl HTMLImageElement {
     pub fn set_shared_storage_writable(&mut self, value: bool) {
         self.inner.set("sharedStorageWritable", value);
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct StaticRange {
@@ -10,7 +7,9 @@ pub struct StaticRange {
 }
 impl FromVal for StaticRange {
     fn from_val(v: &emlite::Val) -> Self {
-        StaticRange { inner: AbstractRange::from_val(v) }
+        StaticRange {
+            inner: AbstractRange::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for StaticRange {
 }
 impl AsMut<emlite::Val> for StaticRange {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<StaticRange> for emlite::Val {
     fn from(s: StaticRange) -> emlite::Val {
@@ -49,13 +48,12 @@ impl From<StaticRange> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(StaticRange);
 
-
-
 impl StaticRange {
     pub fn new(init: Any) -> StaticRange {
         Self {
-            inner: emlite::Val::global("StaticRange").new(&[init.into()]).as_::<AbstractRange>(),
+            inner: emlite::Val::global("StaticRange")
+                .new(&[init.into()])
+                .as_::<AbstractRange>(),
         }
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NotRestoredReasonDetails {
@@ -10,7 +7,9 @@ pub struct NotRestoredReasonDetails {
 }
 impl FromVal for NotRestoredReasonDetails {
     fn from_val(v: &emlite::Val) -> Self {
-        NotRestoredReasonDetails { inner: emlite::Val::from_val(v) }
+        NotRestoredReasonDetails {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for NotRestoredReasonDetails {
 }
 impl AsMut<emlite::Val> for NotRestoredReasonDetails {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<NotRestoredReasonDetails> for emlite::Val {
     fn from(s: NotRestoredReasonDetails) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<NotRestoredReasonDetails> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(NotRestoredReasonDetails);
 
-
 impl NotRestoredReasonDetails {
     pub fn reason(&self) -> DOMString {
         self.inner.get("reason").as_::<DOMString>()
     }
-
 }
 impl NotRestoredReasonDetails {
-    pub fn to_json(&self, ) -> Object {
+    pub fn to_json(&self) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
-
 }

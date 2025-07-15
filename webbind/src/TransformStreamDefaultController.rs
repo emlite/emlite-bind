@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TransformStreamDefaultController {
@@ -10,7 +7,9 @@ pub struct TransformStreamDefaultController {
 }
 impl FromVal for TransformStreamDefaultController {
     fn from_val(v: &emlite::Val) -> Self {
-        TransformStreamDefaultController { inner: emlite::Val::from_val(v) }
+        TransformStreamDefaultController {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for TransformStreamDefaultController {
 }
 impl AsMut<emlite::Val> for TransformStreamDefaultController {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<TransformStreamDefaultController> for emlite::Val {
     fn from(s: TransformStreamDefaultController) -> emlite::Val {
@@ -49,36 +48,35 @@ impl From<TransformStreamDefaultController> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(TransformStreamDefaultController);
 
-
 impl TransformStreamDefaultController {
     pub fn desired_size(&self) -> f64 {
         self.inner.get("desiredSize").as_::<f64>()
     }
-
 }
 impl TransformStreamDefaultController {
-    pub fn enqueue0(&self, ) -> Undefined {
+    pub fn enqueue0(&self) -> Undefined {
         self.inner.call("enqueue", &[]).as_::<Undefined>()
     }
 
     pub fn enqueue1(&self, chunk: Any) -> Undefined {
-        self.inner.call("enqueue", &[chunk.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("enqueue", &[chunk.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl TransformStreamDefaultController {
-    pub fn error0(&self, ) -> Undefined {
+    pub fn error0(&self) -> Undefined {
         self.inner.call("error", &[]).as_::<Undefined>()
     }
 
     pub fn error1(&self, reason: Any) -> Undefined {
-        self.inner.call("error", &[reason.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("error", &[reason.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl TransformStreamDefaultController {
-    pub fn terminate(&self, ) -> Undefined {
+    pub fn terminate(&self) -> Undefined {
         self.inner.call("terminate", &[]).as_::<Undefined>()
     }
-
 }

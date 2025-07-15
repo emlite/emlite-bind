@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BarProp {
@@ -10,7 +7,9 @@ pub struct BarProp {
 }
 impl FromVal for BarProp {
     fn from_val(v: &emlite::Val) -> Self {
-        BarProp { inner: emlite::Val::from_val(v) }
+        BarProp {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for BarProp {
 }
 impl AsMut<emlite::Val> for BarProp {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<BarProp> for emlite::Val {
     fn from(s: BarProp) -> emlite::Val {
@@ -49,10 +48,8 @@ impl From<BarProp> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BarProp);
 
-
 impl BarProp {
     pub fn visible(&self) -> bool {
         self.inner.get("visible").as_::<bool>()
     }
-
 }

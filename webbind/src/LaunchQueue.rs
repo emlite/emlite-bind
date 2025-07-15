@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct LaunchQueue {
@@ -10,7 +7,9 @@ pub struct LaunchQueue {
 }
 impl FromVal for LaunchQueue {
     fn from_val(v: &emlite::Val) -> Self {
-        LaunchQueue { inner: emlite::Val::from_val(v) }
+        LaunchQueue {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for LaunchQueue {
 }
 impl AsMut<emlite::Val> for LaunchQueue {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<LaunchQueue> for emlite::Val {
     fn from(s: LaunchQueue) -> emlite::Val {
@@ -49,10 +48,10 @@ impl From<LaunchQueue> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(LaunchQueue);
 
-
 impl LaunchQueue {
     pub fn set_consumer(&self, consumer: Function) -> Undefined {
-        self.inner.call("setConsumer", &[consumer.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("setConsumer", &[consumer.into()])
+            .as_::<Undefined>()
     }
-
 }

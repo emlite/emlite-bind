@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaQueryListEvent {
@@ -10,7 +7,9 @@ pub struct MediaQueryListEvent {
 }
 impl FromVal for MediaQueryListEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaQueryListEvent { inner: Event::from_val(v) }
+        MediaQueryListEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for MediaQueryListEvent {
 }
 impl AsMut<emlite::Val> for MediaQueryListEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MediaQueryListEvent> for emlite::Val {
     fn from(s: MediaQueryListEvent) -> emlite::Val {
@@ -49,31 +48,30 @@ impl From<MediaQueryListEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MediaQueryListEvent);
 
-
-
 impl MediaQueryListEvent {
     pub fn new0(type_: CSSOMString) -> MediaQueryListEvent {
         Self {
-            inner: emlite::Val::global("MediaQueryListEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: emlite::Val::global("MediaQueryListEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     pub fn new1(type_: CSSOMString, event_init_dict: Any) -> MediaQueryListEvent {
         Self {
-            inner: emlite::Val::global("MediaQueryListEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("MediaQueryListEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl MediaQueryListEvent {
     pub fn media(&self) -> CSSOMString {
         self.inner.get("media").as_::<CSSOMString>()
     }
-
 }
 impl MediaQueryListEvent {
     pub fn matches(&self) -> bool {
         self.inner.get("matches").as_::<bool>()
     }
-
 }

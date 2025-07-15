@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaKeySystemAccess {
@@ -10,7 +7,9 @@ pub struct MediaKeySystemAccess {
 }
 impl FromVal for MediaKeySystemAccess {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaKeySystemAccess { inner: emlite::Val::from_val(v) }
+        MediaKeySystemAccess {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for MediaKeySystemAccess {
 }
 impl AsMut<emlite::Val> for MediaKeySystemAccess {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MediaKeySystemAccess> for emlite::Val {
     fn from(s: MediaKeySystemAccess) -> emlite::Val {
@@ -49,22 +48,20 @@ impl From<MediaKeySystemAccess> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MediaKeySystemAccess);
 
-
 impl MediaKeySystemAccess {
     pub fn key_system(&self) -> DOMString {
         self.inner.get("keySystem").as_::<DOMString>()
     }
-
 }
 impl MediaKeySystemAccess {
-    pub fn get_configuration(&self, ) -> MediaKeySystemConfiguration {
-        self.inner.call("getConfiguration", &[]).as_::<MediaKeySystemConfiguration>()
+    pub fn get_configuration(&self) -> MediaKeySystemConfiguration {
+        self.inner
+            .call("getConfiguration", &[])
+            .as_::<MediaKeySystemConfiguration>()
     }
-
 }
 impl MediaKeySystemAccess {
-    pub fn create_media_keys(&self, ) -> Promise {
+    pub fn create_media_keys(&self) -> Promise {
         self.inner.call("createMediaKeys", &[]).as_::<Promise>()
     }
-
 }

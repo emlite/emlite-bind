@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ClientQueryOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for ClientQueryOptions {
 }
 impl AsMut<emlite::Val> for ClientQueryOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ClientQueryOptions> for emlite::Val {
     fn from(s: ClientQueryOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl ClientQueryOptions {
     pub fn set_include_uncontrolled(&mut self, value: bool) {
         self.inner.set("includeUncontrolled", value);
     }
-
 }
 impl ClientQueryOptions {
     pub fn type_(&self) -> ClientType {
@@ -66,7 +62,6 @@ impl ClientQueryOptions {
     pub fn set_type_(&mut self, value: ClientType) {
         self.inner.set("type", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -75,7 +70,9 @@ pub struct Clients {
 }
 impl FromVal for Clients {
     fn from_val(v: &emlite::Val) -> Self {
-        Clients { inner: emlite::Val::from_val(v) }
+        Clients {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -102,8 +99,8 @@ impl AsRef<emlite::Val> for Clients {
 }
 impl AsMut<emlite::Val> for Clients {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Clients> for emlite::Val {
     fn from(s: Clients) -> emlite::Val {
@@ -114,32 +111,31 @@ impl From<Clients> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Clients);
 
-
 impl Clients {
     pub fn get(&self, id: DOMString) -> Promise {
-        self.inner.call("get", &[id.into(), ]).as_::<Promise>()
+        self.inner.call("get", &[id.into()]).as_::<Promise>()
     }
-
 }
 impl Clients {
-    pub fn match_all0(&self, ) -> Promise {
+    pub fn match_all0(&self) -> Promise {
         self.inner.call("matchAll", &[]).as_::<Promise>()
     }
 
     pub fn match_all1(&self, options: ClientQueryOptions) -> Promise {
-        self.inner.call("matchAll", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("matchAll", &[options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl Clients {
     pub fn open_window(&self, url: USVString) -> Promise {
-        self.inner.call("openWindow", &[url.into(), ]).as_::<Promise>()
+        self.inner
+            .call("openWindow", &[url.into()])
+            .as_::<Promise>()
     }
-
 }
 impl Clients {
-    pub fn claim(&self, ) -> Promise {
+    pub fn claim(&self) -> Promise {
         self.inner.call("claim", &[]).as_::<Promise>()
     }
-
 }

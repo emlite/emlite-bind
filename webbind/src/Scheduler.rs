@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SchedulerPostTaskOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for SchedulerPostTaskOptions {
 }
 impl AsMut<emlite::Val> for SchedulerPostTaskOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SchedulerPostTaskOptions> for emlite::Val {
     fn from(s: SchedulerPostTaskOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl SchedulerPostTaskOptions {
     pub fn set_signal(&mut self, value: AbortSignal) {
         self.inner.set("signal", value);
     }
-
 }
 impl SchedulerPostTaskOptions {
     pub fn priority(&self) -> TaskPriority {
@@ -66,7 +62,6 @@ impl SchedulerPostTaskOptions {
     pub fn set_priority(&mut self, value: TaskPriority) {
         self.inner.set("priority", value);
     }
-
 }
 impl SchedulerPostTaskOptions {
     pub fn delay(&self) -> u64 {
@@ -76,7 +71,6 @@ impl SchedulerPostTaskOptions {
     pub fn set_delay(&mut self, value: u64) {
         self.inner.set("delay", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -85,7 +79,9 @@ pub struct Scheduler {
 }
 impl FromVal for Scheduler {
     fn from_val(v: &emlite::Val) -> Self {
-        Scheduler { inner: emlite::Val::from_val(v) }
+        Scheduler {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -112,8 +108,8 @@ impl AsRef<emlite::Val> for Scheduler {
 }
 impl AsMut<emlite::Val> for Scheduler {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Scheduler> for emlite::Val {
     fn from(s: Scheduler) -> emlite::Val {
@@ -124,20 +120,21 @@ impl From<Scheduler> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Scheduler);
 
-
 impl Scheduler {
     pub fn post_task0(&self, callback: Function) -> Promise {
-        self.inner.call("postTask", &[callback.into(), ]).as_::<Promise>()
+        self.inner
+            .call("postTask", &[callback.into()])
+            .as_::<Promise>()
     }
 
     pub fn post_task1(&self, callback: Function, options: SchedulerPostTaskOptions) -> Promise {
-        self.inner.call("postTask", &[callback.into(), options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("postTask", &[callback.into(), options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl Scheduler {
-    pub fn yield_(&self, ) -> Promise {
+    pub fn yield_(&self) -> Promise {
         self.inner.call("yield", &[]).as_::<Promise>()
     }
-
 }

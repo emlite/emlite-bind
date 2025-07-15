@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioDecoderConfig {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for AudioDecoderConfig {
 }
 impl AsMut<emlite::Val> for AudioDecoderConfig {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AudioDecoderConfig> for emlite::Val {
     fn from(s: AudioDecoderConfig) -> emlite::Val {
@@ -56,7 +53,6 @@ impl AudioDecoderConfig {
     pub fn set_codec(&mut self, value: DOMString) {
         self.inner.set("codec", value);
     }
-
 }
 impl AudioDecoderConfig {
     pub fn sample_rate(&self) -> u32 {
@@ -66,7 +62,6 @@ impl AudioDecoderConfig {
     pub fn set_sample_rate(&mut self, value: u32) {
         self.inner.set("sampleRate", value);
     }
-
 }
 impl AudioDecoderConfig {
     pub fn number_of_channels(&self) -> u32 {
@@ -76,7 +71,6 @@ impl AudioDecoderConfig {
     pub fn set_number_of_channels(&mut self, value: u32) {
         self.inner.set("numberOfChannels", value);
     }
-
 }
 impl AudioDecoderConfig {
     pub fn description(&self) -> Any {
@@ -86,7 +80,6 @@ impl AudioDecoderConfig {
     pub fn set_description(&mut self, value: Any) {
         self.inner.set("description", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -122,8 +115,8 @@ impl AsRef<emlite::Val> for AudioDecoderSupport {
 }
 impl AsMut<emlite::Val> for AudioDecoderSupport {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AudioDecoderSupport> for emlite::Val {
     fn from(s: AudioDecoderSupport) -> emlite::Val {
@@ -141,7 +134,6 @@ impl AudioDecoderSupport {
     pub fn set_supported(&mut self, value: bool) {
         self.inner.set("supported", value);
     }
-
 }
 impl AudioDecoderSupport {
     pub fn config(&self) -> AudioDecoderConfig {
@@ -151,7 +143,6 @@ impl AudioDecoderSupport {
     pub fn set_config(&mut self, value: AudioDecoderConfig) {
         self.inner.set("config", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -160,7 +151,9 @@ pub struct AudioDecoder {
 }
 impl FromVal for AudioDecoder {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioDecoder { inner: EventTarget::from_val(v) }
+        AudioDecoder {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -187,8 +180,8 @@ impl AsRef<emlite::Val> for AudioDecoder {
 }
 impl AsMut<emlite::Val> for AudioDecoder {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AudioDecoder> for emlite::Val {
     fn from(s: AudioDecoder) -> emlite::Val {
@@ -199,27 +192,24 @@ impl From<AudioDecoder> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AudioDecoder);
 
-
-
 impl AudioDecoder {
     pub fn new(init: Any) -> AudioDecoder {
         Self {
-            inner: emlite::Val::global("AudioDecoder").new(&[init.into()]).as_::<EventTarget>(),
+            inner: emlite::Val::global("AudioDecoder")
+                .new(&[init.into()])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl AudioDecoder {
     pub fn state(&self) -> CodecState {
         self.inner.get("state").as_::<CodecState>()
     }
-
 }
 impl AudioDecoder {
     pub fn decode_queue_size(&self) -> u32 {
         self.inner.get("decodeQueueSize").as_::<u32>()
     }
-
 }
 impl AudioDecoder {
     pub fn ondequeue(&self) -> Any {
@@ -229,41 +219,40 @@ impl AudioDecoder {
     pub fn set_ondequeue(&mut self, value: Any) {
         self.inner.set("ondequeue", value);
     }
-
 }
 impl AudioDecoder {
     pub fn configure(&self, config: AudioDecoderConfig) -> Undefined {
-        self.inner.call("configure", &[config.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("configure", &[config.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl AudioDecoder {
     pub fn decode(&self, chunk: EncodedAudioChunk) -> Undefined {
-        self.inner.call("decode", &[chunk.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("decode", &[chunk.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl AudioDecoder {
-    pub fn flush(&self, ) -> Promise {
+    pub fn flush(&self) -> Promise {
         self.inner.call("flush", &[]).as_::<Promise>()
     }
-
 }
 impl AudioDecoder {
-    pub fn reset(&self, ) -> Undefined {
+    pub fn reset(&self) -> Undefined {
         self.inner.call("reset", &[]).as_::<Undefined>()
     }
-
 }
 impl AudioDecoder {
-    pub fn close(&self, ) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
-
 }
 impl AudioDecoder {
     pub fn is_config_supported(config: AudioDecoderConfig) -> Promise {
-        emlite::Val::global("audiodecoder").call("isConfigSupported", &[config.into(), ]).as_::<Promise>()
+        emlite::Val::global("AudioDecoder")
+            .call("isConfigSupported", &[config.into()])
+            .as_::<Promise>()
     }
-
 }

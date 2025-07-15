@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CaretPositionFromPointOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for CaretPositionFromPointOptions {
 }
 impl AsMut<emlite::Val> for CaretPositionFromPointOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CaretPositionFromPointOptions> for emlite::Val {
     fn from(s: CaretPositionFromPointOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl CaretPositionFromPointOptions {
     pub fn set_shadow_roots(&mut self, value: Sequence<ShadowRoot>) {
         self.inner.set("shadowRoots", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -92,8 +88,8 @@ impl AsRef<emlite::Val> for BoxQuadOptions {
 }
 impl AsMut<emlite::Val> for BoxQuadOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<BoxQuadOptions> for emlite::Val {
     fn from(s: BoxQuadOptions) -> emlite::Val {
@@ -111,7 +107,6 @@ impl BoxQuadOptions {
     pub fn set_box_(&mut self, value: CSSBoxType) {
         self.inner.set("box", value);
     }
-
 }
 impl BoxQuadOptions {
     pub fn relative_to(&self) -> Any {
@@ -121,7 +116,6 @@ impl BoxQuadOptions {
     pub fn set_relative_to(&mut self, value: Any) {
         self.inner.set("relativeTo", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -157,8 +151,8 @@ impl AsRef<emlite::Val> for DOMQuadInit {
 }
 impl AsMut<emlite::Val> for DOMQuadInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<DOMQuadInit> for emlite::Val {
     fn from(s: DOMQuadInit) -> emlite::Val {
@@ -176,7 +170,6 @@ impl DOMQuadInit {
     pub fn set_p1(&mut self, value: DOMPointInit) {
         self.inner.set("p1", value);
     }
-
 }
 impl DOMQuadInit {
     pub fn p2(&self) -> DOMPointInit {
@@ -186,7 +179,6 @@ impl DOMQuadInit {
     pub fn set_p2(&mut self, value: DOMPointInit) {
         self.inner.set("p2", value);
     }
-
 }
 impl DOMQuadInit {
     pub fn p3(&self) -> DOMPointInit {
@@ -196,7 +188,6 @@ impl DOMQuadInit {
     pub fn set_p3(&mut self, value: DOMPointInit) {
         self.inner.set("p3", value);
     }
-
 }
 impl DOMQuadInit {
     pub fn p4(&self) -> DOMPointInit {
@@ -206,7 +197,6 @@ impl DOMQuadInit {
     pub fn set_p4(&mut self, value: DOMPointInit) {
         self.inner.set("p4", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -242,8 +232,8 @@ impl AsRef<emlite::Val> for ConvertCoordinateOptions {
 }
 impl AsMut<emlite::Val> for ConvertCoordinateOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ConvertCoordinateOptions> for emlite::Val {
     fn from(s: ConvertCoordinateOptions) -> emlite::Val {
@@ -261,7 +251,6 @@ impl ConvertCoordinateOptions {
     pub fn set_from_box(&mut self, value: CSSBoxType) {
         self.inner.set("fromBox", value);
     }
-
 }
 impl ConvertCoordinateOptions {
     pub fn to_box(&self) -> CSSBoxType {
@@ -271,7 +260,6 @@ impl ConvertCoordinateOptions {
     pub fn set_to_box(&mut self, value: CSSBoxType) {
         self.inner.set("toBox", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -280,7 +268,9 @@ pub struct Document {
 }
 impl FromVal for Document {
     fn from_val(v: &emlite::Val) -> Self {
-        Document { inner: Node::from_val(v) }
+        Document {
+            inner: Node::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -307,8 +297,8 @@ impl AsRef<emlite::Val> for Document {
 }
 impl AsMut<emlite::Val> for Document {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Document> for emlite::Val {
     fn from(s: Document) -> emlite::Val {
@@ -319,291 +309,361 @@ impl From<Document> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Document);
 
-
-
 impl Document {
     pub fn new() -> Document {
         Self {
             inner: emlite::Val::global("Document").new(&[]).as_::<Node>(),
         }
     }
-
 }
 impl Document {
     pub fn implementation(&self) -> DOMImplementation {
         self.inner.get("implementation").as_::<DOMImplementation>()
     }
-
 }
 impl Document {
     pub fn url(&self) -> USVString {
         self.inner.get("URL").as_::<USVString>()
     }
-
 }
 impl Document {
     pub fn document_uri(&self) -> USVString {
         self.inner.get("documentURI").as_::<USVString>()
     }
-
 }
 impl Document {
     pub fn compat_mode(&self) -> DOMString {
         self.inner.get("compatMode").as_::<DOMString>()
     }
-
 }
 impl Document {
     pub fn character_set(&self) -> DOMString {
         self.inner.get("characterSet").as_::<DOMString>()
     }
-
 }
 impl Document {
     pub fn charset(&self) -> DOMString {
         self.inner.get("charset").as_::<DOMString>()
     }
-
 }
 impl Document {
     pub fn input_encoding(&self) -> DOMString {
         self.inner.get("inputEncoding").as_::<DOMString>()
     }
-
 }
 impl Document {
     pub fn content_type(&self) -> DOMString {
         self.inner.get("contentType").as_::<DOMString>()
     }
-
 }
 impl Document {
     pub fn doctype(&self) -> DocumentType {
         self.inner.get("doctype").as_::<DocumentType>()
     }
-
 }
 impl Document {
     pub fn document_element(&self) -> Element {
         self.inner.get("documentElement").as_::<Element>()
     }
-
 }
 impl Document {
     pub fn get_elements_by_tag_name(&self, qualified_name: DOMString) -> HTMLCollection {
-        self.inner.call("getElementsByTagName", &[qualified_name.into(), ]).as_::<HTMLCollection>()
+        self.inner
+            .call("getElementsByTagName", &[qualified_name.into()])
+            .as_::<HTMLCollection>()
     }
-
 }
 impl Document {
-    pub fn get_elements_by_tag_name_ns(&self, namespace: DOMString, local_name: DOMString) -> HTMLCollection {
-        self.inner.call("getElementsByTagNameNS", &[namespace.into(), local_name.into(), ]).as_::<HTMLCollection>()
+    pub fn get_elements_by_tag_name_ns(
+        &self,
+        namespace: DOMString,
+        local_name: DOMString,
+    ) -> HTMLCollection {
+        self.inner
+            .call(
+                "getElementsByTagNameNS",
+                &[namespace.into(), local_name.into()],
+            )
+            .as_::<HTMLCollection>()
     }
-
 }
 impl Document {
     pub fn get_elements_by_class_name(&self, class_names: DOMString) -> HTMLCollection {
-        self.inner.call("getElementsByClassName", &[class_names.into(), ]).as_::<HTMLCollection>()
+        self.inner
+            .call("getElementsByClassName", &[class_names.into()])
+            .as_::<HTMLCollection>()
     }
-
 }
 impl Document {
     pub fn create_element0(&self, local_name: DOMString) -> Element {
-        self.inner.call("createElement", &[local_name.into(), ]).as_::<Element>()
+        self.inner
+            .call("createElement", &[local_name.into()])
+            .as_::<Element>()
     }
 
     pub fn create_element1(&self, local_name: DOMString, options: Any) -> Element {
-        self.inner.call("createElement", &[local_name.into(), options.into(), ]).as_::<Element>()
+        self.inner
+            .call("createElement", &[local_name.into(), options.into()])
+            .as_::<Element>()
     }
-
 }
 impl Document {
     pub fn create_element_ns0(&self, namespace: DOMString, qualified_name: DOMString) -> Element {
-        self.inner.call("createElementNS", &[namespace.into(), qualified_name.into(), ]).as_::<Element>()
+        self.inner
+            .call(
+                "createElementNS",
+                &[namespace.into(), qualified_name.into()],
+            )
+            .as_::<Element>()
     }
 
-    pub fn create_element_ns1(&self, namespace: DOMString, qualified_name: DOMString, options: Any) -> Element {
-        self.inner.call("createElementNS", &[namespace.into(), qualified_name.into(), options.into(), ]).as_::<Element>()
+    pub fn create_element_ns1(
+        &self,
+        namespace: DOMString,
+        qualified_name: DOMString,
+        options: Any,
+    ) -> Element {
+        self.inner
+            .call(
+                "createElementNS",
+                &[namespace.into(), qualified_name.into(), options.into()],
+            )
+            .as_::<Element>()
     }
-
 }
 impl Document {
-    pub fn create_document_fragment(&self, ) -> DocumentFragment {
-        self.inner.call("createDocumentFragment", &[]).as_::<DocumentFragment>()
+    pub fn create_document_fragment(&self) -> DocumentFragment {
+        self.inner
+            .call("createDocumentFragment", &[])
+            .as_::<DocumentFragment>()
     }
-
 }
 impl Document {
     pub fn create_text_node(&self, data: DOMString) -> Text {
-        self.inner.call("createTextNode", &[data.into(), ]).as_::<Text>()
+        self.inner
+            .call("createTextNode", &[data.into()])
+            .as_::<Text>()
     }
-
 }
 impl Document {
     pub fn create_cdata_section(&self, data: DOMString) -> CDATASection {
-        self.inner.call("createCDATASection", &[data.into(), ]).as_::<CDATASection>()
+        self.inner
+            .call("createCDATASection", &[data.into()])
+            .as_::<CDATASection>()
     }
-
 }
 impl Document {
     pub fn create_comment(&self, data: DOMString) -> Comment {
-        self.inner.call("createComment", &[data.into(), ]).as_::<Comment>()
+        self.inner
+            .call("createComment", &[data.into()])
+            .as_::<Comment>()
     }
-
 }
 impl Document {
-    pub fn create_processing_instruction(&self, target: DOMString, data: DOMString) -> ProcessingInstruction {
-        self.inner.call("createProcessingInstruction", &[target.into(), data.into(), ]).as_::<ProcessingInstruction>()
+    pub fn create_processing_instruction(
+        &self,
+        target: DOMString,
+        data: DOMString,
+    ) -> ProcessingInstruction {
+        self.inner
+            .call("createProcessingInstruction", &[target.into(), data.into()])
+            .as_::<ProcessingInstruction>()
     }
-
 }
 impl Document {
     pub fn import_node0(&self, node: Node) -> Node {
-        self.inner.call("importNode", &[node.into(), ]).as_::<Node>()
+        self.inner.call("importNode", &[node.into()]).as_::<Node>()
     }
 
     pub fn import_node1(&self, node: Node, options: Any) -> Node {
-        self.inner.call("importNode", &[node.into(), options.into(), ]).as_::<Node>()
+        self.inner
+            .call("importNode", &[node.into(), options.into()])
+            .as_::<Node>()
     }
-
 }
 impl Document {
     pub fn adopt_node(&self, node: Node) -> Node {
-        self.inner.call("adoptNode", &[node.into(), ]).as_::<Node>()
+        self.inner.call("adoptNode", &[node.into()]).as_::<Node>()
     }
-
 }
 impl Document {
     pub fn create_attribute(&self, local_name: DOMString) -> Attr {
-        self.inner.call("createAttribute", &[local_name.into(), ]).as_::<Attr>()
+        self.inner
+            .call("createAttribute", &[local_name.into()])
+            .as_::<Attr>()
     }
-
 }
 impl Document {
     pub fn create_attribute_ns(&self, namespace: DOMString, qualified_name: DOMString) -> Attr {
-        self.inner.call("createAttributeNS", &[namespace.into(), qualified_name.into(), ]).as_::<Attr>()
+        self.inner
+            .call(
+                "createAttributeNS",
+                &[namespace.into(), qualified_name.into()],
+            )
+            .as_::<Attr>()
     }
-
 }
 impl Document {
     pub fn create_event(&self, interface: DOMString) -> Event {
-        self.inner.call("createEvent", &[interface.into(), ]).as_::<Event>()
+        self.inner
+            .call("createEvent", &[interface.into()])
+            .as_::<Event>()
     }
-
 }
 impl Document {
-    pub fn create_range(&self, ) -> Range {
+    pub fn create_range(&self) -> Range {
         self.inner.call("createRange", &[]).as_::<Range>()
     }
-
 }
 impl Document {
     pub fn create_node_iterator0(&self, root: Node) -> NodeIterator {
-        self.inner.call("createNodeIterator", &[root.into(), ]).as_::<NodeIterator>()
+        self.inner
+            .call("createNodeIterator", &[root.into()])
+            .as_::<NodeIterator>()
     }
 
     pub fn create_node_iterator1(&self, root: Node, what_to_show: u32) -> NodeIterator {
-        self.inner.call("createNodeIterator", &[root.into(), what_to_show.into(), ]).as_::<NodeIterator>()
+        self.inner
+            .call("createNodeIterator", &[root.into(), what_to_show.into()])
+            .as_::<NodeIterator>()
     }
 
-    pub fn create_node_iterator2(&self, root: Node, what_to_show: u32, filter: Function) -> NodeIterator {
-        self.inner.call("createNodeIterator", &[root.into(), what_to_show.into(), filter.into(), ]).as_::<NodeIterator>()
+    pub fn create_node_iterator2(
+        &self,
+        root: Node,
+        what_to_show: u32,
+        filter: Function,
+    ) -> NodeIterator {
+        self.inner
+            .call(
+                "createNodeIterator",
+                &[root.into(), what_to_show.into(), filter.into()],
+            )
+            .as_::<NodeIterator>()
     }
-
 }
 impl Document {
     pub fn create_tree_walker0(&self, root: Node) -> TreeWalker {
-        self.inner.call("createTreeWalker", &[root.into(), ]).as_::<TreeWalker>()
+        self.inner
+            .call("createTreeWalker", &[root.into()])
+            .as_::<TreeWalker>()
     }
 
     pub fn create_tree_walker1(&self, root: Node, what_to_show: u32) -> TreeWalker {
-        self.inner.call("createTreeWalker", &[root.into(), what_to_show.into(), ]).as_::<TreeWalker>()
+        self.inner
+            .call("createTreeWalker", &[root.into(), what_to_show.into()])
+            .as_::<TreeWalker>()
     }
 
-    pub fn create_tree_walker2(&self, root: Node, what_to_show: u32, filter: Function) -> TreeWalker {
-        self.inner.call("createTreeWalker", &[root.into(), what_to_show.into(), filter.into(), ]).as_::<TreeWalker>()
+    pub fn create_tree_walker2(
+        &self,
+        root: Node,
+        what_to_show: u32,
+        filter: Function,
+    ) -> TreeWalker {
+        self.inner
+            .call(
+                "createTreeWalker",
+                &[root.into(), what_to_show.into(), filter.into()],
+            )
+            .as_::<TreeWalker>()
     }
-
 }
 impl Document {
     pub fn root_element(&self) -> SVGSVGElement {
         self.inner.get("rootElement").as_::<SVGSVGElement>()
     }
-
 }
 impl Document {
     pub fn named_flows(&self) -> NamedFlowMap {
         self.inner.get("namedFlows").as_::<NamedFlowMap>()
     }
-
 }
 impl Document {
-    pub fn start_view_transition0(&self, ) -> ViewTransition {
-        self.inner.call("startViewTransition", &[]).as_::<ViewTransition>()
+    pub fn start_view_transition0(&self) -> ViewTransition {
+        self.inner
+            .call("startViewTransition", &[])
+            .as_::<ViewTransition>()
     }
 
     pub fn start_view_transition1(&self, callback_options: Any) -> ViewTransition {
-        self.inner.call("startViewTransition", &[callback_options.into(), ]).as_::<ViewTransition>()
+        self.inner
+            .call("startViewTransition", &[callback_options.into()])
+            .as_::<ViewTransition>()
     }
-
 }
 impl Document {
     pub fn element_from_point(&self, x: f64, y: f64) -> Element {
-        self.inner.call("elementFromPoint", &[x.into(), y.into(), ]).as_::<Element>()
+        self.inner
+            .call("elementFromPoint", &[x.into(), y.into()])
+            .as_::<Element>()
     }
-
 }
 impl Document {
     pub fn elements_from_point(&self, x: f64, y: f64) -> Sequence<Element> {
-        self.inner.call("elementsFromPoint", &[x.into(), y.into(), ]).as_::<Sequence<Element>>()
+        self.inner
+            .call("elementsFromPoint", &[x.into(), y.into()])
+            .as_::<Sequence<Element>>()
     }
-
 }
 impl Document {
     pub fn caret_position_from_point0(&self, x: f64, y: f64) -> CaretPosition {
-        self.inner.call("caretPositionFromPoint", &[x.into(), y.into(), ]).as_::<CaretPosition>()
+        self.inner
+            .call("caretPositionFromPoint", &[x.into(), y.into()])
+            .as_::<CaretPosition>()
     }
 
-    pub fn caret_position_from_point1(&self, x: f64, y: f64, options: CaretPositionFromPointOptions) -> CaretPosition {
-        self.inner.call("caretPositionFromPoint", &[x.into(), y.into(), options.into(), ]).as_::<CaretPosition>()
+    pub fn caret_position_from_point1(
+        &self,
+        x: f64,
+        y: f64,
+        options: CaretPositionFromPointOptions,
+    ) -> CaretPosition {
+        self.inner
+            .call(
+                "caretPositionFromPoint",
+                &[x.into(), y.into(), options.into()],
+            )
+            .as_::<CaretPosition>()
     }
-
 }
 impl Document {
     pub fn scrolling_element(&self) -> Element {
         self.inner.get("scrollingElement").as_::<Element>()
     }
-
 }
 impl Document {
     pub fn measure_element(&self, element: Element) -> FontMetrics {
-        self.inner.call("measureElement", &[element.into(), ]).as_::<FontMetrics>()
+        self.inner
+            .call("measureElement", &[element.into()])
+            .as_::<FontMetrics>()
     }
-
 }
 impl Document {
-    pub fn measure_text(&self, text: DOMString, style_map: StylePropertyMapReadOnly) -> FontMetrics {
-        self.inner.call("measureText", &[text.into(), style_map.into(), ]).as_::<FontMetrics>()
+    pub fn measure_text(
+        &self,
+        text: DOMString,
+        style_map: StylePropertyMapReadOnly,
+    ) -> FontMetrics {
+        self.inner
+            .call("measureText", &[text.into(), style_map.into()])
+            .as_::<FontMetrics>()
     }
-
 }
 impl Document {
     pub fn fullscreen_enabled(&self) -> bool {
         self.inner.get("fullscreenEnabled").as_::<bool>()
     }
-
 }
 impl Document {
     pub fn fullscreen(&self) -> bool {
         self.inner.get("fullscreen").as_::<bool>()
     }
-
 }
 impl Document {
-    pub fn exit_fullscreen(&self, ) -> Promise {
+    pub fn exit_fullscreen(&self) -> Promise {
         self.inner.call("exitFullscreen", &[]).as_::<Promise>()
     }
-
 }
 impl Document {
     pub fn onfullscreenchange(&self) -> Any {
@@ -613,7 +673,6 @@ impl Document {
     pub fn set_onfullscreenchange(&mut self, value: Any) {
         self.inner.set("onfullscreenchange", value);
     }
-
 }
 impl Document {
     pub fn onfullscreenerror(&self) -> Any {
@@ -623,19 +682,18 @@ impl Document {
     pub fn set_onfullscreenerror(&mut self, value: Any) {
         self.inner.set("onfullscreenerror", value);
     }
-
 }
 impl Document {
     pub fn parse_html_unsafe(html: Any) -> Document {
-        emlite::Val::global("document").call("parseHTMLUnsafe", &[html.into(), ]).as_::<Document>()
+        emlite::Val::global("Document")
+            .call("parseHTMLUnsafe", &[html.into()])
+            .as_::<Document>()
     }
-
 }
 impl Document {
     pub fn location(&self) -> Any {
         self.inner.get("location").as_::<Any>()
     }
-
 }
 impl Document {
     pub fn domain(&self) -> USVString {
@@ -645,13 +703,11 @@ impl Document {
     pub fn set_domain(&mut self, value: USVString) {
         self.inner.set("domain", value);
     }
-
 }
 impl Document {
     pub fn referrer(&self) -> USVString {
         self.inner.get("referrer").as_::<USVString>()
     }
-
 }
 impl Document {
     pub fn cookie(&self) -> USVString {
@@ -661,19 +717,16 @@ impl Document {
     pub fn set_cookie(&mut self, value: USVString) {
         self.inner.set("cookie", value);
     }
-
 }
 impl Document {
     pub fn last_modified(&self) -> DOMString {
         self.inner.get("lastModified").as_::<DOMString>()
     }
-
 }
 impl Document {
     pub fn ready_state(&self) -> DocumentReadyState {
         self.inner.get("readyState").as_::<DocumentReadyState>()
     }
-
 }
 impl Document {
     pub fn title(&self) -> DOMString {
@@ -683,7 +736,6 @@ impl Document {
     pub fn set_title(&mut self, value: DOMString) {
         self.inner.set("title", value);
     }
-
 }
 impl Document {
     pub fn dir(&self) -> DOMString {
@@ -693,7 +745,6 @@ impl Document {
     pub fn set_dir(&mut self, value: DOMString) {
         self.inner.set("dir", value);
     }
-
 }
 impl Document {
     pub fn body(&self) -> HTMLElement {
@@ -703,97 +754,87 @@ impl Document {
     pub fn set_body(&mut self, value: HTMLElement) {
         self.inner.set("body", value);
     }
-
 }
 impl Document {
     pub fn head(&self) -> HTMLHeadElement {
         self.inner.get("head").as_::<HTMLHeadElement>()
     }
-
 }
 impl Document {
     pub fn images(&self) -> HTMLCollection {
         self.inner.get("images").as_::<HTMLCollection>()
     }
-
 }
 impl Document {
     pub fn embeds(&self) -> HTMLCollection {
         self.inner.get("embeds").as_::<HTMLCollection>()
     }
-
 }
 impl Document {
     pub fn plugins(&self) -> HTMLCollection {
         self.inner.get("plugins").as_::<HTMLCollection>()
     }
-
 }
 impl Document {
     pub fn links(&self) -> HTMLCollection {
         self.inner.get("links").as_::<HTMLCollection>()
     }
-
 }
 impl Document {
     pub fn forms(&self) -> HTMLCollection {
         self.inner.get("forms").as_::<HTMLCollection>()
     }
-
 }
 impl Document {
     pub fn scripts(&self) -> HTMLCollection {
         self.inner.get("scripts").as_::<HTMLCollection>()
     }
-
 }
 impl Document {
     pub fn get_elements_by_name(&self, element_name: DOMString) -> NodeList {
-        self.inner.call("getElementsByName", &[element_name.into(), ]).as_::<NodeList>()
+        self.inner
+            .call("getElementsByName", &[element_name.into()])
+            .as_::<NodeList>()
     }
-
 }
 impl Document {
     pub fn current_script(&self) -> Any {
         self.inner.get("currentScript").as_::<Any>()
     }
-
 }
 impl Document {
     pub fn open(&self, url: USVString, name: DOMString, features: DOMString) -> Any {
-        self.inner.call("open", &[url.into(), name.into(), features.into(), ]).as_::<Any>()
+        self.inner
+            .call("open", &[url.into(), name.into(), features.into()])
+            .as_::<Any>()
     }
-
 }
 impl Document {
-    pub fn close(&self, ) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
-
 }
 impl Document {
     pub fn write(&self, text: Any) -> Undefined {
-        self.inner.call("write", &[text.into(), ]).as_::<Undefined>()
+        self.inner.call("write", &[text.into()]).as_::<Undefined>()
     }
-
 }
 impl Document {
     pub fn writeln(&self, text: Any) -> Undefined {
-        self.inner.call("writeln", &[text.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("writeln", &[text.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Document {
     pub fn default_view(&self) -> Any {
         self.inner.get("defaultView").as_::<Any>()
     }
-
 }
 impl Document {
-    pub fn has_focus(&self, ) -> bool {
+    pub fn has_focus(&self) -> bool {
         self.inner.call("hasFocus", &[]).as_::<bool>()
     }
-
 }
 impl Document {
     pub fn design_mode(&self) -> DOMString {
@@ -803,63 +844,75 @@ impl Document {
     pub fn set_design_mode(&mut self, value: DOMString) {
         self.inner.set("designMode", value);
     }
-
 }
 impl Document {
     pub fn exec_command0(&self, command_id: DOMString) -> bool {
-        self.inner.call("execCommand", &[command_id.into(), ]).as_::<bool>()
+        self.inner
+            .call("execCommand", &[command_id.into()])
+            .as_::<bool>()
     }
 
     pub fn exec_command1(&self, command_id: DOMString, show_ui: bool) -> bool {
-        self.inner.call("execCommand", &[command_id.into(), show_ui.into(), ]).as_::<bool>()
+        self.inner
+            .call("execCommand", &[command_id.into(), show_ui.into()])
+            .as_::<bool>()
     }
 
     pub fn exec_command2(&self, command_id: DOMString, show_ui: bool, value: DOMString) -> bool {
-        self.inner.call("execCommand", &[command_id.into(), show_ui.into(), value.into(), ]).as_::<bool>()
+        self.inner
+            .call(
+                "execCommand",
+                &[command_id.into(), show_ui.into(), value.into()],
+            )
+            .as_::<bool>()
     }
-
 }
 impl Document {
     pub fn query_command_enabled(&self, command_id: DOMString) -> bool {
-        self.inner.call("queryCommandEnabled", &[command_id.into(), ]).as_::<bool>()
+        self.inner
+            .call("queryCommandEnabled", &[command_id.into()])
+            .as_::<bool>()
     }
-
 }
 impl Document {
     pub fn query_command_indeterm(&self, command_id: DOMString) -> bool {
-        self.inner.call("queryCommandIndeterm", &[command_id.into(), ]).as_::<bool>()
+        self.inner
+            .call("queryCommandIndeterm", &[command_id.into()])
+            .as_::<bool>()
     }
-
 }
 impl Document {
     pub fn query_command_state(&self, command_id: DOMString) -> bool {
-        self.inner.call("queryCommandState", &[command_id.into(), ]).as_::<bool>()
+        self.inner
+            .call("queryCommandState", &[command_id.into()])
+            .as_::<bool>()
     }
-
 }
 impl Document {
     pub fn query_command_supported(&self, command_id: DOMString) -> bool {
-        self.inner.call("queryCommandSupported", &[command_id.into(), ]).as_::<bool>()
+        self.inner
+            .call("queryCommandSupported", &[command_id.into()])
+            .as_::<bool>()
     }
-
 }
 impl Document {
     pub fn query_command_value(&self, command_id: DOMString) -> DOMString {
-        self.inner.call("queryCommandValue", &[command_id.into(), ]).as_::<DOMString>()
+        self.inner
+            .call("queryCommandValue", &[command_id.into()])
+            .as_::<DOMString>()
     }
-
 }
 impl Document {
     pub fn hidden(&self) -> bool {
         self.inner.get("hidden").as_::<bool>()
     }
-
 }
 impl Document {
     pub fn visibility_state(&self) -> DocumentVisibilityState {
-        self.inner.get("visibilityState").as_::<DocumentVisibilityState>()
+        self.inner
+            .get("visibilityState")
+            .as_::<DocumentVisibilityState>()
     }
-
 }
 impl Document {
     pub fn onreadystatechange(&self) -> Any {
@@ -869,7 +922,6 @@ impl Document {
     pub fn set_onreadystatechange(&mut self, value: Any) {
         self.inner.set("onreadystatechange", value);
     }
-
 }
 impl Document {
     pub fn onvisibilitychange(&self) -> Any {
@@ -879,7 +931,6 @@ impl Document {
     pub fn set_onvisibilitychange(&mut self, value: Any) {
         self.inner.set("onvisibilitychange", value);
     }
-
 }
 impl Document {
     pub fn fg_color(&self) -> DOMString {
@@ -889,7 +940,6 @@ impl Document {
     pub fn set_fg_color(&mut self, value: DOMString) {
         self.inner.set("fgColor", value);
     }
-
 }
 impl Document {
     pub fn link_color(&self) -> DOMString {
@@ -899,7 +949,6 @@ impl Document {
     pub fn set_link_color(&mut self, value: DOMString) {
         self.inner.set("linkColor", value);
     }
-
 }
 impl Document {
     pub fn vlink_color(&self) -> DOMString {
@@ -909,7 +958,6 @@ impl Document {
     pub fn set_vlink_color(&mut self, value: DOMString) {
         self.inner.set("vlinkColor", value);
     }
-
 }
 impl Document {
     pub fn alink_color(&self) -> DOMString {
@@ -919,7 +967,6 @@ impl Document {
     pub fn set_alink_color(&mut self, value: DOMString) {
         self.inner.set("alinkColor", value);
     }
-
 }
 impl Document {
     pub fn bg_color(&self) -> DOMString {
@@ -929,43 +976,36 @@ impl Document {
     pub fn set_bg_color(&mut self, value: DOMString) {
         self.inner.set("bgColor", value);
     }
-
 }
 impl Document {
     pub fn anchors(&self) -> HTMLCollection {
         self.inner.get("anchors").as_::<HTMLCollection>()
     }
-
 }
 impl Document {
     pub fn applets(&self) -> HTMLCollection {
         self.inner.get("applets").as_::<HTMLCollection>()
     }
-
 }
 impl Document {
-    pub fn clear(&self, ) -> Undefined {
+    pub fn clear(&self) -> Undefined {
         self.inner.call("clear", &[]).as_::<Undefined>()
     }
-
 }
 impl Document {
-    pub fn capture_events(&self, ) -> Undefined {
+    pub fn capture_events(&self) -> Undefined {
         self.inner.call("captureEvents", &[]).as_::<Undefined>()
     }
-
 }
 impl Document {
-    pub fn release_events(&self, ) -> Undefined {
+    pub fn release_events(&self) -> Undefined {
         self.inner.call("releaseEvents", &[]).as_::<Undefined>()
     }
-
 }
 impl Document {
     pub fn all(&self) -> HTMLAllCollection {
         self.inner.get("all").as_::<HTMLAllCollection>()
     }
-
 }
 impl Document {
     pub fn onfreeze(&self) -> Any {
@@ -975,7 +1015,6 @@ impl Document {
     pub fn set_onfreeze(&mut self, value: Any) {
         self.inner.set("onfreeze", value);
     }
-
 }
 impl Document {
     pub fn onresume(&self) -> Any {
@@ -985,31 +1024,30 @@ impl Document {
     pub fn set_onresume(&mut self, value: Any) {
         self.inner.set("onresume", value);
     }
-
 }
 impl Document {
     pub fn was_discarded(&self) -> bool {
         self.inner.get("wasDiscarded").as_::<bool>()
     }
-
 }
 impl Document {
     pub fn permissions_policy(&self) -> PermissionsPolicy {
-        self.inner.get("permissionsPolicy").as_::<PermissionsPolicy>()
+        self.inner
+            .get("permissionsPolicy")
+            .as_::<PermissionsPolicy>()
     }
-
 }
 impl Document {
     pub fn picture_in_picture_enabled(&self) -> bool {
         self.inner.get("pictureInPictureEnabled").as_::<bool>()
     }
-
 }
 impl Document {
-    pub fn exit_picture_in_picture(&self, ) -> Promise {
-        self.inner.call("exitPictureInPicture", &[]).as_::<Promise>()
+    pub fn exit_picture_in_picture(&self) -> Promise {
+        self.inner
+            .call("exitPictureInPicture", &[])
+            .as_::<Promise>()
     }
-
 }
 impl Document {
     pub fn onpointerlockchange(&self) -> Any {
@@ -1019,7 +1057,6 @@ impl Document {
     pub fn set_onpointerlockchange(&mut self, value: Any) {
         self.inner.set("onpointerlockchange", value);
     }
-
 }
 impl Document {
     pub fn onpointerlockerror(&self) -> Any {
@@ -1029,19 +1066,16 @@ impl Document {
     pub fn set_onpointerlockerror(&mut self, value: Any) {
         self.inner.set("onpointerlockerror", value);
     }
-
 }
 impl Document {
-    pub fn exit_pointer_lock(&self, ) -> Undefined {
+    pub fn exit_pointer_lock(&self) -> Undefined {
         self.inner.call("exitPointerLock", &[]).as_::<Undefined>()
     }
-
 }
 impl Document {
     pub fn prerendering(&self) -> bool {
         self.inner.get("prerendering").as_::<bool>()
     }
-
 }
 impl Document {
     pub fn onprerenderingchange(&self) -> Any {
@@ -1051,213 +1085,303 @@ impl Document {
     pub fn set_onprerenderingchange(&mut self, value: Any) {
         self.inner.set("onprerenderingchange", value);
     }
-
 }
 impl Document {
     pub fn request_storage_access_for(&self, requested_origin: USVString) -> Promise {
-        self.inner.call("requestStorageAccessFor", &[requested_origin.into(), ]).as_::<Promise>()
+        self.inner
+            .call("requestStorageAccessFor", &[requested_origin.into()])
+            .as_::<Promise>()
     }
-
 }
 impl Document {
-    pub fn has_unpartitioned_cookie_access(&self, ) -> Promise {
-        self.inner.call("hasUnpartitionedCookieAccess", &[]).as_::<Promise>()
+    pub fn has_unpartitioned_cookie_access(&self) -> Promise {
+        self.inner
+            .call("hasUnpartitionedCookieAccess", &[])
+            .as_::<Promise>()
     }
-
 }
 impl Document {
     pub fn fragment_directive(&self) -> FragmentDirective {
-        self.inner.get("fragmentDirective").as_::<FragmentDirective>()
+        self.inner
+            .get("fragmentDirective")
+            .as_::<FragmentDirective>()
     }
-
 }
 impl Document {
-    pub fn get_selection(&self, ) -> Selection {
+    pub fn get_selection(&self) -> Selection {
         self.inner.call("getSelection", &[]).as_::<Selection>()
     }
-
 }
 impl Document {
-    pub fn has_storage_access(&self, ) -> Promise {
+    pub fn has_storage_access(&self) -> Promise {
         self.inner.call("hasStorageAccess", &[]).as_::<Promise>()
     }
-
 }
 impl Document {
-    pub fn request_storage_access(&self, ) -> Promise {
-        self.inner.call("requestStorageAccess", &[]).as_::<Promise>()
+    pub fn request_storage_access(&self) -> Promise {
+        self.inner
+            .call("requestStorageAccess", &[])
+            .as_::<Promise>()
     }
-
 }
 impl Document {
     pub fn has_private_token(&self, issuer: USVString) -> Promise {
-        self.inner.call("hasPrivateToken", &[issuer.into(), ]).as_::<Promise>()
+        self.inner
+            .call("hasPrivateToken", &[issuer.into()])
+            .as_::<Promise>()
     }
-
 }
 impl Document {
     pub fn has_redemption_record(&self, issuer: USVString) -> Promise {
-        self.inner.call("hasRedemptionRecord", &[issuer.into(), ]).as_::<Promise>()
+        self.inner
+            .call("hasRedemptionRecord", &[issuer.into()])
+            .as_::<Promise>()
     }
-
 }
 impl Document {
     pub fn timeline(&self) -> DocumentTimeline {
         self.inner.get("timeline").as_::<DocumentTimeline>()
     }
-
 }
 impl Document {
     pub fn fonts(&self) -> FontFaceSet {
         self.inner.get("fonts").as_::<FontFaceSet>()
     }
-
 }
 impl Document {
-    pub fn get_box_quads0(&self, ) -> Sequence<DOMQuad> {
-        self.inner.call("getBoxQuads", &[]).as_::<Sequence<DOMQuad>>()
+    pub fn get_box_quads0(&self) -> Sequence<DOMQuad> {
+        self.inner
+            .call("getBoxQuads", &[])
+            .as_::<Sequence<DOMQuad>>()
     }
 
     pub fn get_box_quads1(&self, options: BoxQuadOptions) -> Sequence<DOMQuad> {
-        self.inner.call("getBoxQuads", &[options.into(), ]).as_::<Sequence<DOMQuad>>()
+        self.inner
+            .call("getBoxQuads", &[options.into()])
+            .as_::<Sequence<DOMQuad>>()
     }
-
 }
 impl Document {
     pub fn convert_quad_from_node0(&self, quad: DOMQuadInit, from: Any) -> DOMQuad {
-        self.inner.call("convertQuadFromNode", &[quad.into(), from.into(), ]).as_::<DOMQuad>()
+        self.inner
+            .call("convertQuadFromNode", &[quad.into(), from.into()])
+            .as_::<DOMQuad>()
     }
 
-    pub fn convert_quad_from_node1(&self, quad: DOMQuadInit, from: Any, options: ConvertCoordinateOptions) -> DOMQuad {
-        self.inner.call("convertQuadFromNode", &[quad.into(), from.into(), options.into(), ]).as_::<DOMQuad>()
+    pub fn convert_quad_from_node1(
+        &self,
+        quad: DOMQuadInit,
+        from: Any,
+        options: ConvertCoordinateOptions,
+    ) -> DOMQuad {
+        self.inner
+            .call(
+                "convertQuadFromNode",
+                &[quad.into(), from.into(), options.into()],
+            )
+            .as_::<DOMQuad>()
     }
-
 }
 impl Document {
     pub fn convert_rect_from_node0(&self, rect: DOMRectReadOnly, from: Any) -> DOMQuad {
-        self.inner.call("convertRectFromNode", &[rect.into(), from.into(), ]).as_::<DOMQuad>()
+        self.inner
+            .call("convertRectFromNode", &[rect.into(), from.into()])
+            .as_::<DOMQuad>()
     }
 
-    pub fn convert_rect_from_node1(&self, rect: DOMRectReadOnly, from: Any, options: ConvertCoordinateOptions) -> DOMQuad {
-        self.inner.call("convertRectFromNode", &[rect.into(), from.into(), options.into(), ]).as_::<DOMQuad>()
+    pub fn convert_rect_from_node1(
+        &self,
+        rect: DOMRectReadOnly,
+        from: Any,
+        options: ConvertCoordinateOptions,
+    ) -> DOMQuad {
+        self.inner
+            .call(
+                "convertRectFromNode",
+                &[rect.into(), from.into(), options.into()],
+            )
+            .as_::<DOMQuad>()
     }
-
 }
 impl Document {
     pub fn convert_point_from_node0(&self, point: DOMPointInit, from: Any) -> DOMPoint {
-        self.inner.call("convertPointFromNode", &[point.into(), from.into(), ]).as_::<DOMPoint>()
+        self.inner
+            .call("convertPointFromNode", &[point.into(), from.into()])
+            .as_::<DOMPoint>()
     }
 
-    pub fn convert_point_from_node1(&self, point: DOMPointInit, from: Any, options: ConvertCoordinateOptions) -> DOMPoint {
-        self.inner.call("convertPointFromNode", &[point.into(), from.into(), options.into(), ]).as_::<DOMPoint>()
+    pub fn convert_point_from_node1(
+        &self,
+        point: DOMPointInit,
+        from: Any,
+        options: ConvertCoordinateOptions,
+    ) -> DOMPoint {
+        self.inner
+            .call(
+                "convertPointFromNode",
+                &[point.into(), from.into(), options.into()],
+            )
+            .as_::<DOMPoint>()
     }
-
 }
 impl Document {
     pub fn get_element_by_id(&self, element_id: DOMString) -> Element {
-        self.inner.call("getElementById", &[element_id.into(), ]).as_::<Element>()
+        self.inner
+            .call("getElementById", &[element_id.into()])
+            .as_::<Element>()
     }
-
 }
 impl Document {
-    pub fn get_animations(&self, ) -> Sequence<Animation> {
-        self.inner.call("getAnimations", &[]).as_::<Sequence<Animation>>()
+    pub fn get_animations(&self) -> Sequence<Animation> {
+        self.inner
+            .call("getAnimations", &[])
+            .as_::<Sequence<Animation>>()
     }
-
 }
 impl Document {
     pub fn children(&self) -> HTMLCollection {
         self.inner.get("children").as_::<HTMLCollection>()
     }
-
 }
 impl Document {
     pub fn first_element_child(&self) -> Element {
         self.inner.get("firstElementChild").as_::<Element>()
     }
-
 }
 impl Document {
     pub fn last_element_child(&self) -> Element {
         self.inner.get("lastElementChild").as_::<Element>()
     }
-
 }
 impl Document {
     pub fn child_element_count(&self) -> u32 {
         self.inner.get("childElementCount").as_::<u32>()
     }
-
 }
 impl Document {
     pub fn prepend(&self, nodes: Any) -> Undefined {
-        self.inner.call("prepend", &[nodes.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("prepend", &[nodes.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Document {
     pub fn append(&self, nodes: Any) -> Undefined {
-        self.inner.call("append", &[nodes.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("append", &[nodes.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Document {
     pub fn replace_children(&self, nodes: Any) -> Undefined {
-        self.inner.call("replaceChildren", &[nodes.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("replaceChildren", &[nodes.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Document {
     pub fn move_before(&self, node: Node, child: Node) -> Undefined {
-        self.inner.call("moveBefore", &[node.into(), child.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("moveBefore", &[node.into(), child.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Document {
     pub fn query_selector(&self, selectors: DOMString) -> Element {
-        self.inner.call("querySelector", &[selectors.into(), ]).as_::<Element>()
+        self.inner
+            .call("querySelector", &[selectors.into()])
+            .as_::<Element>()
     }
-
 }
 impl Document {
     pub fn query_selector_all(&self, selectors: DOMString) -> NodeList {
-        self.inner.call("querySelectorAll", &[selectors.into(), ]).as_::<NodeList>()
+        self.inner
+            .call("querySelectorAll", &[selectors.into()])
+            .as_::<NodeList>()
     }
-
 }
 impl Document {
     pub fn create_expression0(&self, expression: DOMString) -> XPathExpression {
-        self.inner.call("createExpression", &[expression.into(), ]).as_::<XPathExpression>()
+        self.inner
+            .call("createExpression", &[expression.into()])
+            .as_::<XPathExpression>()
     }
 
     pub fn create_expression1(&self, expression: DOMString, resolver: Function) -> XPathExpression {
-        self.inner.call("createExpression", &[expression.into(), resolver.into(), ]).as_::<XPathExpression>()
+        self.inner
+            .call("createExpression", &[expression.into(), resolver.into()])
+            .as_::<XPathExpression>()
     }
-
 }
 impl Document {
     pub fn create_ns_resolver(&self, node_resolver: Node) -> Node {
-        self.inner.call("createNSResolver", &[node_resolver.into(), ]).as_::<Node>()
+        self.inner
+            .call("createNSResolver", &[node_resolver.into()])
+            .as_::<Node>()
     }
-
 }
 impl Document {
     pub fn evaluate0(&self, expression: DOMString, context_node: Node) -> XPathResult {
-        self.inner.call("evaluate", &[expression.into(), context_node.into(), ]).as_::<XPathResult>()
+        self.inner
+            .call("evaluate", &[expression.into(), context_node.into()])
+            .as_::<XPathResult>()
     }
 
-    pub fn evaluate1(&self, expression: DOMString, context_node: Node, resolver: Function) -> XPathResult {
-        self.inner.call("evaluate", &[expression.into(), context_node.into(), resolver.into(), ]).as_::<XPathResult>()
+    pub fn evaluate1(
+        &self,
+        expression: DOMString,
+        context_node: Node,
+        resolver: Function,
+    ) -> XPathResult {
+        self.inner
+            .call(
+                "evaluate",
+                &[expression.into(), context_node.into(), resolver.into()],
+            )
+            .as_::<XPathResult>()
     }
 
-    pub fn evaluate2(&self, expression: DOMString, context_node: Node, resolver: Function, type_: u16) -> XPathResult {
-        self.inner.call("evaluate", &[expression.into(), context_node.into(), resolver.into(), type_.into(), ]).as_::<XPathResult>()
+    pub fn evaluate2(
+        &self,
+        expression: DOMString,
+        context_node: Node,
+        resolver: Function,
+        type_: u16,
+    ) -> XPathResult {
+        self.inner
+            .call(
+                "evaluate",
+                &[
+                    expression.into(),
+                    context_node.into(),
+                    resolver.into(),
+                    type_.into(),
+                ],
+            )
+            .as_::<XPathResult>()
     }
 
-    pub fn evaluate3(&self, expression: DOMString, context_node: Node, resolver: Function, type_: u16, result: XPathResult) -> XPathResult {
-        self.inner.call("evaluate", &[expression.into(), context_node.into(), resolver.into(), type_.into(), result.into(), ]).as_::<XPathResult>()
+    pub fn evaluate3(
+        &self,
+        expression: DOMString,
+        context_node: Node,
+        resolver: Function,
+        type_: u16,
+        result: XPathResult,
+    ) -> XPathResult {
+        self.inner
+            .call(
+                "evaluate",
+                &[
+                    expression.into(),
+                    context_node.into(),
+                    resolver.into(),
+                    type_.into(),
+                    result.into(),
+                ],
+            )
+            .as_::<XPathResult>()
     }
-
 }
 impl Document {
     pub fn onbeforexrselect(&self) -> Any {
@@ -1267,5 +1391,4 @@ impl Document {
     pub fn set_onbeforexrselect(&mut self, value: Any) {
         self.inner.set("onbeforexrselect", value);
     }
-
 }

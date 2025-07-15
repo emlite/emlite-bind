@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RegistrationOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for RegistrationOptions {
 }
 impl AsMut<emlite::Val> for RegistrationOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<RegistrationOptions> for emlite::Val {
     fn from(s: RegistrationOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl RegistrationOptions {
     pub fn set_scope(&mut self, value: USVString) {
         self.inner.set("scope", value);
     }
-
 }
 impl RegistrationOptions {
     pub fn type_(&self) -> WorkerType {
@@ -66,17 +62,17 @@ impl RegistrationOptions {
     pub fn set_type_(&mut self, value: WorkerType) {
         self.inner.set("type", value);
     }
-
 }
 impl RegistrationOptions {
     pub fn update_via_cache(&self) -> ServiceWorkerUpdateViaCache {
-        self.inner.get("updateViaCache").as_::<ServiceWorkerUpdateViaCache>()
+        self.inner
+            .get("updateViaCache")
+            .as_::<ServiceWorkerUpdateViaCache>()
     }
 
     pub fn set_update_via_cache(&mut self, value: ServiceWorkerUpdateViaCache) {
         self.inner.set("updateViaCache", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -85,7 +81,9 @@ pub struct ServiceWorkerContainer {
 }
 impl FromVal for ServiceWorkerContainer {
     fn from_val(v: &emlite::Val) -> Self {
-        ServiceWorkerContainer { inner: EventTarget::from_val(v) }
+        ServiceWorkerContainer {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -112,8 +110,8 @@ impl AsRef<emlite::Val> for ServiceWorkerContainer {
 }
 impl AsMut<emlite::Val> for ServiceWorkerContainer {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ServiceWorkerContainer> for emlite::Val {
     fn from(s: ServiceWorkerContainer) -> emlite::Val {
@@ -124,50 +122,49 @@ impl From<ServiceWorkerContainer> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ServiceWorkerContainer);
 
-
 impl ServiceWorkerContainer {
     pub fn controller(&self) -> ServiceWorker {
         self.inner.get("controller").as_::<ServiceWorker>()
     }
-
 }
 impl ServiceWorkerContainer {
     pub fn ready(&self) -> Promise {
         self.inner.get("ready").as_::<Promise>()
     }
-
 }
 impl ServiceWorkerContainer {
     pub fn register0(&self, script_url: Any) -> Promise {
-        self.inner.call("register", &[script_url.into(), ]).as_::<Promise>()
+        self.inner
+            .call("register", &[script_url.into()])
+            .as_::<Promise>()
     }
 
     pub fn register1(&self, script_url: Any, options: RegistrationOptions) -> Promise {
-        self.inner.call("register", &[script_url.into(), options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("register", &[script_url.into(), options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl ServiceWorkerContainer {
-    pub fn get_registration0(&self, ) -> Promise {
+    pub fn get_registration0(&self) -> Promise {
         self.inner.call("getRegistration", &[]).as_::<Promise>()
     }
 
     pub fn get_registration1(&self, client_url: USVString) -> Promise {
-        self.inner.call("getRegistration", &[client_url.into(), ]).as_::<Promise>()
+        self.inner
+            .call("getRegistration", &[client_url.into()])
+            .as_::<Promise>()
     }
-
 }
 impl ServiceWorkerContainer {
-    pub fn get_registrations(&self, ) -> Promise {
+    pub fn get_registrations(&self) -> Promise {
         self.inner.call("getRegistrations", &[]).as_::<Promise>()
     }
-
 }
 impl ServiceWorkerContainer {
-    pub fn start_messages(&self, ) -> Undefined {
+    pub fn start_messages(&self) -> Undefined {
         self.inner.call("startMessages", &[]).as_::<Undefined>()
     }
-
 }
 impl ServiceWorkerContainer {
     pub fn oncontrollerchange(&self) -> Any {
@@ -177,7 +174,6 @@ impl ServiceWorkerContainer {
     pub fn set_oncontrollerchange(&mut self, value: Any) {
         self.inner.set("oncontrollerchange", value);
     }
-
 }
 impl ServiceWorkerContainer {
     pub fn onmessage(&self) -> Any {
@@ -187,7 +183,6 @@ impl ServiceWorkerContainer {
     pub fn set_onmessage(&mut self, value: Any) {
         self.inner.set("onmessage", value);
     }
-
 }
 impl ServiceWorkerContainer {
     pub fn onmessageerror(&self) -> Any {
@@ -197,5 +192,4 @@ impl ServiceWorkerContainer {
     pub fn set_onmessageerror(&mut self, value: Any) {
         self.inner.set("onmessageerror", value);
     }
-
 }

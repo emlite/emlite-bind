@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct InkTrailStyle {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for InkTrailStyle {
 }
 impl AsMut<emlite::Val> for InkTrailStyle {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<InkTrailStyle> for emlite::Val {
     fn from(s: InkTrailStyle) -> emlite::Val {
@@ -56,7 +53,6 @@ impl InkTrailStyle {
     pub fn set_color(&mut self, value: DOMString) {
         self.inner.set("color", value);
     }
-
 }
 impl InkTrailStyle {
     pub fn diameter(&self) -> f64 {
@@ -66,7 +62,6 @@ impl InkTrailStyle {
     pub fn set_diameter(&mut self, value: f64) {
         self.inner.set("diameter", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -75,7 +70,9 @@ pub struct DelegatedInkTrailPresenter {
 }
 impl FromVal for DelegatedInkTrailPresenter {
     fn from_val(v: &emlite::Val) -> Self {
-        DelegatedInkTrailPresenter { inner: emlite::Val::from_val(v) }
+        DelegatedInkTrailPresenter {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -102,8 +99,8 @@ impl AsRef<emlite::Val> for DelegatedInkTrailPresenter {
 }
 impl AsMut<emlite::Val> for DelegatedInkTrailPresenter {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<DelegatedInkTrailPresenter> for emlite::Val {
     fn from(s: DelegatedInkTrailPresenter) -> emlite::Val {
@@ -114,16 +111,19 @@ impl From<DelegatedInkTrailPresenter> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(DelegatedInkTrailPresenter);
 
-
 impl DelegatedInkTrailPresenter {
     pub fn presentation_area(&self) -> Element {
         self.inner.get("presentationArea").as_::<Element>()
     }
-
 }
 impl DelegatedInkTrailPresenter {
-    pub fn update_ink_trail_start_point(&self, event: PointerEvent, style: InkTrailStyle) -> Undefined {
-        self.inner.call("updateInkTrailStartPoint", &[event.into(), style.into(), ]).as_::<Undefined>()
+    pub fn update_ink_trail_start_point(
+        &self,
+        event: PointerEvent,
+        style: InkTrailStyle,
+    ) -> Undefined {
+        self.inner
+            .call("updateInkTrailStartPoint", &[event.into(), style.into()])
+            .as_::<Undefined>()
     }
-
 }

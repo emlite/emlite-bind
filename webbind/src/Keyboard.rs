@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Keyboard {
@@ -10,7 +7,9 @@ pub struct Keyboard {
 }
 impl FromVal for Keyboard {
     fn from_val(v: &emlite::Val) -> Self {
-        Keyboard { inner: EventTarget::from_val(v) }
+        Keyboard {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for Keyboard {
 }
 impl AsMut<emlite::Val> for Keyboard {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Keyboard> for emlite::Val {
     fn from(s: Keyboard) -> emlite::Val {
@@ -49,28 +48,26 @@ impl From<Keyboard> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Keyboard);
 
-
 impl Keyboard {
-    pub fn lock0(&self, ) -> Promise {
+    pub fn lock0(&self) -> Promise {
         self.inner.call("lock", &[]).as_::<Promise>()
     }
 
     pub fn lock1(&self, key_codes: Sequence<DOMString>) -> Promise {
-        self.inner.call("lock", &[key_codes.into(), ]).as_::<Promise>()
+        self.inner
+            .call("lock", &[key_codes.into()])
+            .as_::<Promise>()
     }
-
 }
 impl Keyboard {
-    pub fn unlock(&self, ) -> Undefined {
+    pub fn unlock(&self) -> Undefined {
         self.inner.call("unlock", &[]).as_::<Undefined>()
     }
-
 }
 impl Keyboard {
-    pub fn get_layout_map(&self, ) -> Promise {
+    pub fn get_layout_map(&self) -> Promise {
         self.inner.call("getLayoutMap", &[]).as_::<Promise>()
     }
-
 }
 impl Keyboard {
     pub fn onlayoutchange(&self) -> Any {
@@ -80,5 +77,4 @@ impl Keyboard {
     pub fn set_onlayoutchange(&mut self, value: Any) {
         self.inner.set("onlayoutchange", value);
     }
-
 }

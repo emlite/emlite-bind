@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WEBGL_multi_draw {
@@ -10,7 +7,9 @@ pub struct WEBGL_multi_draw {
 }
 impl FromVal for WEBGL_multi_draw {
     fn from_val(v: &emlite::Val) -> Self {
-        WEBGL_multi_draw { inner: emlite::Val::from_val(v) }
+        WEBGL_multi_draw {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for WEBGL_multi_draw {
 }
 impl AsMut<emlite::Val> for WEBGL_multi_draw {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WEBGL_multi_draw> for emlite::Val {
     fn from(s: WEBGL_multi_draw) -> emlite::Val {
@@ -49,28 +48,115 @@ impl From<WEBGL_multi_draw> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WEBGL_multi_draw);
 
-
 impl WEBGL_multi_draw {
-    pub fn multi_draw_arrays_webgl(&self, mode: Any, firsts_list: Any, firsts_offset: u64, counts_list: Any, counts_offset: u64, drawcount: Any) -> Undefined {
-        self.inner.call("multiDrawArraysWEBGL", &[mode.into(), firsts_list.into(), firsts_offset.into(), counts_list.into(), counts_offset.into(), drawcount.into(), ]).as_::<Undefined>()
+    pub fn multi_draw_arrays_webgl(
+        &self,
+        mode: Any,
+        firsts_list: Any,
+        firsts_offset: u64,
+        counts_list: Any,
+        counts_offset: u64,
+        drawcount: Any,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "multiDrawArraysWEBGL",
+                &[
+                    mode.into(),
+                    firsts_list.into(),
+                    firsts_offset.into(),
+                    counts_list.into(),
+                    counts_offset.into(),
+                    drawcount.into(),
+                ],
+            )
+            .as_::<Undefined>()
     }
-
 }
 impl WEBGL_multi_draw {
-    pub fn multi_draw_elements_webgl(&self, mode: Any, counts_list: Any, counts_offset: u64, type_: Any, offsets_list: Any, offsets_offset: u64, drawcount: Any) -> Undefined {
-        self.inner.call("multiDrawElementsWEBGL", &[mode.into(), counts_list.into(), counts_offset.into(), type_.into(), offsets_list.into(), offsets_offset.into(), drawcount.into(), ]).as_::<Undefined>()
+    pub fn multi_draw_elements_webgl(
+        &self,
+        mode: Any,
+        counts_list: Any,
+        counts_offset: u64,
+        type_: Any,
+        offsets_list: Any,
+        offsets_offset: u64,
+        drawcount: Any,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "multiDrawElementsWEBGL",
+                &[
+                    mode.into(),
+                    counts_list.into(),
+                    counts_offset.into(),
+                    type_.into(),
+                    offsets_list.into(),
+                    offsets_offset.into(),
+                    drawcount.into(),
+                ],
+            )
+            .as_::<Undefined>()
     }
-
 }
 impl WEBGL_multi_draw {
-    pub fn multi_draw_arrays_instanced_webgl(&self, mode: Any, firsts_list: Any, firsts_offset: u64, counts_list: Any, counts_offset: u64, instance_counts_list: Any, instance_counts_offset: u64, drawcount: Any) -> Undefined {
-        self.inner.call("multiDrawArraysInstancedWEBGL", &[mode.into(), firsts_list.into(), firsts_offset.into(), counts_list.into(), counts_offset.into(), instance_counts_list.into(), instance_counts_offset.into(), drawcount.into(), ]).as_::<Undefined>()
+    pub fn multi_draw_arrays_instanced_webgl(
+        &self,
+        mode: Any,
+        firsts_list: Any,
+        firsts_offset: u64,
+        counts_list: Any,
+        counts_offset: u64,
+        instance_counts_list: Any,
+        instance_counts_offset: u64,
+        drawcount: Any,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "multiDrawArraysInstancedWEBGL",
+                &[
+                    mode.into(),
+                    firsts_list.into(),
+                    firsts_offset.into(),
+                    counts_list.into(),
+                    counts_offset.into(),
+                    instance_counts_list.into(),
+                    instance_counts_offset.into(),
+                    drawcount.into(),
+                ],
+            )
+            .as_::<Undefined>()
     }
-
 }
 impl WEBGL_multi_draw {
-    pub fn multi_draw_elements_instanced_webgl(&self, mode: Any, counts_list: Any, counts_offset: u64, type_: Any, offsets_list: Any, offsets_offset: u64, instance_counts_list: Any, instance_counts_offset: u64, drawcount: Any) -> Undefined {
-        self.inner.call("multiDrawElementsInstancedWEBGL", &[mode.into(), counts_list.into(), counts_offset.into(), type_.into(), offsets_list.into(), offsets_offset.into(), instance_counts_list.into(), instance_counts_offset.into(), drawcount.into(), ]).as_::<Undefined>()
+    pub fn multi_draw_elements_instanced_webgl(
+        &self,
+        mode: Any,
+        counts_list: Any,
+        counts_offset: u64,
+        type_: Any,
+        offsets_list: Any,
+        offsets_offset: u64,
+        instance_counts_list: Any,
+        instance_counts_offset: u64,
+        drawcount: Any,
+    ) -> Undefined {
+        self.inner
+            .call(
+                "multiDrawElementsInstancedWEBGL",
+                &[
+                    mode.into(),
+                    counts_list.into(),
+                    counts_offset.into(),
+                    type_.into(),
+                    offsets_list.into(),
+                    offsets_offset.into(),
+                    instance_counts_list.into(),
+                    instance_counts_offset.into(),
+                    drawcount.into(),
+                ],
+            )
+            .as_::<Undefined>()
     }
-
 }

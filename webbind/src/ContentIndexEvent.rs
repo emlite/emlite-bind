@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ContentIndexEvent {
@@ -10,7 +7,9 @@ pub struct ContentIndexEvent {
 }
 impl FromVal for ContentIndexEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        ContentIndexEvent { inner: ExtendableEvent::from_val(v) }
+        ContentIndexEvent {
+            inner: ExtendableEvent::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for ContentIndexEvent {
 }
 impl AsMut<emlite::Val> for ContentIndexEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ContentIndexEvent> for emlite::Val {
     fn from(s: ContentIndexEvent) -> emlite::Val {
@@ -49,19 +48,17 @@ impl From<ContentIndexEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ContentIndexEvent);
 
-
-
 impl ContentIndexEvent {
     pub fn new(type_: DOMString, init: Any) -> ContentIndexEvent {
         Self {
-            inner: emlite::Val::global("ContentIndexEvent").new(&[type_.into(), init.into()]).as_::<ExtendableEvent>(),
+            inner: emlite::Val::global("ContentIndexEvent")
+                .new(&[type_.into(), init.into()])
+                .as_::<ExtendableEvent>(),
         }
     }
-
 }
 impl ContentIndexEvent {
     pub fn id(&self) -> DOMString {
         self.inner.get("id").as_::<DOMString>()
     }
-
 }

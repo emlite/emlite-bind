@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSParserDeclaration {
@@ -10,7 +7,9 @@ pub struct CSSParserDeclaration {
 }
 impl FromVal for CSSParserDeclaration {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSParserDeclaration { inner: CSSParserRule::from_val(v) }
+        CSSParserDeclaration {
+            inner: CSSParserRule::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSParserDeclaration {
 }
 impl AsMut<emlite::Val> for CSSParserDeclaration {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSParserDeclaration> for emlite::Val {
     fn from(s: CSSParserDeclaration) -> emlite::Val {
@@ -49,31 +48,30 @@ impl From<CSSParserDeclaration> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSParserDeclaration);
 
-
-
 impl CSSParserDeclaration {
     pub fn new0(name: DOMString) -> CSSParserDeclaration {
         Self {
-            inner: emlite::Val::global("CSSParserDeclaration").new(&[name.into()]).as_::<CSSParserRule>(),
+            inner: emlite::Val::global("CSSParserDeclaration")
+                .new(&[name.into()])
+                .as_::<CSSParserRule>(),
         }
     }
 
     pub fn new1(name: DOMString, body: Sequence<CSSParserRule>) -> CSSParserDeclaration {
         Self {
-            inner: emlite::Val::global("CSSParserDeclaration").new(&[name.into(), body.into()]).as_::<CSSParserRule>(),
+            inner: emlite::Val::global("CSSParserDeclaration")
+                .new(&[name.into(), body.into()])
+                .as_::<CSSParserRule>(),
         }
     }
-
 }
 impl CSSParserDeclaration {
     pub fn name(&self) -> DOMString {
         self.inner.get("name").as_::<DOMString>()
     }
-
 }
 impl CSSParserDeclaration {
     pub fn body(&self) -> FrozenArray<CSSParserValue> {
         self.inner.get("body").as_::<FrozenArray<CSSParserValue>>()
     }
-
 }

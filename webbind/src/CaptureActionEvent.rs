@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CaptureActionEvent {
@@ -10,7 +7,9 @@ pub struct CaptureActionEvent {
 }
 impl FromVal for CaptureActionEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        CaptureActionEvent { inner: Event::from_val(v) }
+        CaptureActionEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CaptureActionEvent {
 }
 impl AsMut<emlite::Val> for CaptureActionEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CaptureActionEvent> for emlite::Val {
     fn from(s: CaptureActionEvent) -> emlite::Val {
@@ -49,25 +48,25 @@ impl From<CaptureActionEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CaptureActionEvent);
 
-
-
 impl CaptureActionEvent {
     pub fn new0() -> CaptureActionEvent {
         Self {
-            inner: emlite::Val::global("CaptureActionEvent").new(&[]).as_::<Event>(),
+            inner: emlite::Val::global("CaptureActionEvent")
+                .new(&[])
+                .as_::<Event>(),
         }
     }
 
     pub fn new1(init: Any) -> CaptureActionEvent {
         Self {
-            inner: emlite::Val::global("CaptureActionEvent").new(&[init.into()]).as_::<Event>(),
+            inner: emlite::Val::global("CaptureActionEvent")
+                .new(&[init.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl CaptureActionEvent {
     pub fn action(&self) -> CaptureAction {
         self.inner.get("action").as_::<CaptureAction>()
     }
-
 }

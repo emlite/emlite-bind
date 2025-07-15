@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUBindGroup {
@@ -10,7 +7,9 @@ pub struct GPUBindGroup {
 }
 impl FromVal for GPUBindGroup {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUBindGroup { inner: emlite::Val::from_val(v) }
+        GPUBindGroup {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for GPUBindGroup {
 }
 impl AsMut<emlite::Val> for GPUBindGroup {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<GPUBindGroup> for emlite::Val {
     fn from(s: GPUBindGroup) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<GPUBindGroup> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GPUBindGroup);
 
-
 impl GPUBindGroup {
     pub fn label(&self) -> USVString {
         self.inner.get("label").as_::<USVString>()
@@ -58,5 +56,4 @@ impl GPUBindGroup {
     pub fn set_label(&mut self, value: USVString) {
         self.inner.set("label", value);
     }
-
 }

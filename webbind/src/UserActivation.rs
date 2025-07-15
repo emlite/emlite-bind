@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct UserActivation {
@@ -10,7 +7,9 @@ pub struct UserActivation {
 }
 impl FromVal for UserActivation {
     fn from_val(v: &emlite::Val) -> Self {
-        UserActivation { inner: emlite::Val::from_val(v) }
+        UserActivation {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for UserActivation {
 }
 impl AsMut<emlite::Val> for UserActivation {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<UserActivation> for emlite::Val {
     fn from(s: UserActivation) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<UserActivation> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(UserActivation);
 
-
 impl UserActivation {
     pub fn has_been_active(&self) -> bool {
         self.inner.get("hasBeenActive").as_::<bool>()
     }
-
 }
 impl UserActivation {
     pub fn is_active(&self) -> bool {
         self.inner.get("isActive").as_::<bool>()
     }
-
 }

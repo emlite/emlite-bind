@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PaintWorkletGlobalScope {
@@ -10,7 +7,9 @@ pub struct PaintWorkletGlobalScope {
 }
 impl FromVal for PaintWorkletGlobalScope {
     fn from_val(v: &emlite::Val) -> Self {
-        PaintWorkletGlobalScope { inner: WorkletGlobalScope::from_val(v) }
+        PaintWorkletGlobalScope {
+            inner: WorkletGlobalScope::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PaintWorkletGlobalScope {
 }
 impl AsMut<emlite::Val> for PaintWorkletGlobalScope {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PaintWorkletGlobalScope> for emlite::Val {
     fn from(s: PaintWorkletGlobalScope) -> emlite::Val {
@@ -49,16 +48,15 @@ impl From<PaintWorkletGlobalScope> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PaintWorkletGlobalScope);
 
-
 impl PaintWorkletGlobalScope {
     pub fn register_paint(&self, name: DOMString, paint_ctor: Any) -> Undefined {
-        self.inner.call("registerPaint", &[name.into(), paint_ctor.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("registerPaint", &[name.into(), paint_ctor.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl PaintWorkletGlobalScope {
     pub fn device_pixel_ratio(&self) -> f64 {
         self.inner.get("devicePixelRatio").as_::<f64>()
     }
-
 }

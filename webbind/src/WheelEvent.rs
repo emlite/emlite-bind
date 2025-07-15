@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WheelEvent {
@@ -10,7 +7,9 @@ pub struct WheelEvent {
 }
 impl FromVal for WheelEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        WheelEvent { inner: MouseEvent::from_val(v) }
+        WheelEvent {
+            inner: MouseEvent::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for WheelEvent {
 }
 impl AsMut<emlite::Val> for WheelEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WheelEvent> for emlite::Val {
     fn from(s: WheelEvent) -> emlite::Val {
@@ -49,43 +48,40 @@ impl From<WheelEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WheelEvent);
 
-
-
 impl WheelEvent {
     pub fn new0(type_: DOMString) -> WheelEvent {
         Self {
-            inner: emlite::Val::global("WheelEvent").new(&[type_.into()]).as_::<MouseEvent>(),
+            inner: emlite::Val::global("WheelEvent")
+                .new(&[type_.into()])
+                .as_::<MouseEvent>(),
         }
     }
 
     pub fn new1(type_: DOMString, event_init_dict: Any) -> WheelEvent {
         Self {
-            inner: emlite::Val::global("WheelEvent").new(&[type_.into(), event_init_dict.into()]).as_::<MouseEvent>(),
+            inner: emlite::Val::global("WheelEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<MouseEvent>(),
         }
     }
-
 }
 impl WheelEvent {
     pub fn delta_x(&self) -> f64 {
         self.inner.get("deltaX").as_::<f64>()
     }
-
 }
 impl WheelEvent {
     pub fn delta_y(&self) -> f64 {
         self.inner.get("deltaY").as_::<f64>()
     }
-
 }
 impl WheelEvent {
     pub fn delta_z(&self) -> f64 {
         self.inner.get("deltaZ").as_::<f64>()
     }
-
 }
 impl WheelEvent {
     pub fn delta_mode(&self) -> u32 {
         self.inner.get("deltaMode").as_::<u32>()
     }
-
 }

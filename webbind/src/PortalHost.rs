@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PortalHost {
@@ -10,7 +7,9 @@ pub struct PortalHost {
 }
 impl FromVal for PortalHost {
     fn from_val(v: &emlite::Val) -> Self {
-        PortalHost { inner: EventTarget::from_val(v) }
+        PortalHost {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PortalHost {
 }
 impl AsMut<emlite::Val> for PortalHost {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PortalHost> for emlite::Val {
     fn from(s: PortalHost) -> emlite::Val {
@@ -49,16 +48,18 @@ impl From<PortalHost> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PortalHost);
 
-
 impl PortalHost {
     pub fn post_message0(&self, message: Any) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
     }
 
     pub fn post_message1(&self, message: Any, options: StructuredSerializeOptions) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl PortalHost {
     pub fn onmessage(&self) -> Any {
@@ -68,7 +69,6 @@ impl PortalHost {
     pub fn set_onmessage(&mut self, value: Any) {
         self.inner.set("onmessage", value);
     }
-
 }
 impl PortalHost {
     pub fn onmessageerror(&self) -> Any {
@@ -78,5 +78,4 @@ impl PortalHost {
     pub fn set_onmessageerror(&mut self, value: Any) {
         self.inner.set("onmessageerror", value);
     }
-
 }

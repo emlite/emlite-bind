@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MIDIMessageEvent {
@@ -10,7 +7,9 @@ pub struct MIDIMessageEvent {
 }
 impl FromVal for MIDIMessageEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        MIDIMessageEvent { inner: Event::from_val(v) }
+        MIDIMessageEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for MIDIMessageEvent {
 }
 impl AsMut<emlite::Val> for MIDIMessageEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MIDIMessageEvent> for emlite::Val {
     fn from(s: MIDIMessageEvent) -> emlite::Val {
@@ -49,25 +48,25 @@ impl From<MIDIMessageEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MIDIMessageEvent);
 
-
-
 impl MIDIMessageEvent {
     pub fn new0(type_: DOMString) -> MIDIMessageEvent {
         Self {
-            inner: emlite::Val::global("MIDIMessageEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: emlite::Val::global("MIDIMessageEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     pub fn new1(type_: DOMString, event_init_dict: Any) -> MIDIMessageEvent {
         Self {
-            inner: emlite::Val::global("MIDIMessageEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("MIDIMessageEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl MIDIMessageEvent {
     pub fn data(&self) -> Uint8Array {
         self.inner.get("data").as_::<Uint8Array>()
     }
-
 }

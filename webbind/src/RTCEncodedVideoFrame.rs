@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCEncodedVideoFrameMetadata {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for RTCEncodedVideoFrameMetadata {
 }
 impl AsMut<emlite::Val> for RTCEncodedVideoFrameMetadata {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<RTCEncodedVideoFrameMetadata> for emlite::Val {
     fn from(s: RTCEncodedVideoFrameMetadata) -> emlite::Val {
@@ -56,7 +53,6 @@ impl RTCEncodedVideoFrameMetadata {
     pub fn set_frame_id(&mut self, value: u64) {
         self.inner.set("frameId", value);
     }
-
 }
 impl RTCEncodedVideoFrameMetadata {
     pub fn dependencies(&self) -> Sequence<u64> {
@@ -66,7 +62,6 @@ impl RTCEncodedVideoFrameMetadata {
     pub fn set_dependencies(&mut self, value: Sequence<u64>) {
         self.inner.set("dependencies", value);
     }
-
 }
 impl RTCEncodedVideoFrameMetadata {
     pub fn width(&self) -> u16 {
@@ -76,7 +71,6 @@ impl RTCEncodedVideoFrameMetadata {
     pub fn set_width(&mut self, value: u16) {
         self.inner.set("width", value);
     }
-
 }
 impl RTCEncodedVideoFrameMetadata {
     pub fn height(&self) -> u16 {
@@ -86,7 +80,6 @@ impl RTCEncodedVideoFrameMetadata {
     pub fn set_height(&mut self, value: u16) {
         self.inner.set("height", value);
     }
-
 }
 impl RTCEncodedVideoFrameMetadata {
     pub fn spatial_index(&self) -> u32 {
@@ -96,7 +89,6 @@ impl RTCEncodedVideoFrameMetadata {
     pub fn set_spatial_index(&mut self, value: u32) {
         self.inner.set("spatialIndex", value);
     }
-
 }
 impl RTCEncodedVideoFrameMetadata {
     pub fn temporal_index(&self) -> u32 {
@@ -106,7 +98,6 @@ impl RTCEncodedVideoFrameMetadata {
     pub fn set_temporal_index(&mut self, value: u32) {
         self.inner.set("temporalIndex", value);
     }
-
 }
 impl RTCEncodedVideoFrameMetadata {
     pub fn timestamp(&self) -> i64 {
@@ -116,7 +107,6 @@ impl RTCEncodedVideoFrameMetadata {
     pub fn set_timestamp(&mut self, value: i64) {
         self.inner.set("timestamp", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -125,7 +115,9 @@ pub struct RTCEncodedVideoFrame {
 }
 impl FromVal for RTCEncodedVideoFrame {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCEncodedVideoFrame { inner: emlite::Val::from_val(v) }
+        RTCEncodedVideoFrame {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -152,8 +144,8 @@ impl AsRef<emlite::Val> for RTCEncodedVideoFrame {
 }
 impl AsMut<emlite::Val> for RTCEncodedVideoFrame {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<RTCEncodedVideoFrame> for emlite::Val {
     fn from(s: RTCEncodedVideoFrame) -> emlite::Val {
@@ -164,27 +156,27 @@ impl From<RTCEncodedVideoFrame> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCEncodedVideoFrame);
 
-
-
 impl RTCEncodedVideoFrame {
     pub fn new0(original_frame: RTCEncodedVideoFrame) -> RTCEncodedVideoFrame {
         Self {
-            inner: emlite::Val::global("RTCEncodedVideoFrame").new(&[original_frame.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("RTCEncodedVideoFrame")
+                .new(&[original_frame.into()])
+                .as_::<emlite::Val>(),
         }
     }
 
     pub fn new1(original_frame: RTCEncodedVideoFrame, options: Any) -> RTCEncodedVideoFrame {
         Self {
-            inner: emlite::Val::global("RTCEncodedVideoFrame").new(&[original_frame.into(), options.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("RTCEncodedVideoFrame")
+                .new(&[original_frame.into(), options.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl RTCEncodedVideoFrame {
     pub fn type_(&self) -> RTCEncodedVideoFrameType {
         self.inner.get("type").as_::<RTCEncodedVideoFrameType>()
     }
-
 }
 impl RTCEncodedVideoFrame {
     pub fn data(&self) -> ArrayBuffer {
@@ -194,11 +186,11 @@ impl RTCEncodedVideoFrame {
     pub fn set_data(&mut self, value: ArrayBuffer) {
         self.inner.set("data", value);
     }
-
 }
 impl RTCEncodedVideoFrame {
-    pub fn get_metadata(&self, ) -> RTCEncodedVideoFrameMetadata {
-        self.inner.call("getMetadata", &[]).as_::<RTCEncodedVideoFrameMetadata>()
+    pub fn get_metadata(&self) -> RTCEncodedVideoFrameMetadata {
+        self.inner
+            .call("getMetadata", &[])
+            .as_::<RTCEncodedVideoFrameMetadata>()
     }
-
 }

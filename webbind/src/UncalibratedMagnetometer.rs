@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct UncalibratedMagnetometer {
@@ -10,7 +7,9 @@ pub struct UncalibratedMagnetometer {
 }
 impl FromVal for UncalibratedMagnetometer {
     fn from_val(v: &emlite::Val) -> Self {
-        UncalibratedMagnetometer { inner: Sensor::from_val(v) }
+        UncalibratedMagnetometer {
+            inner: Sensor::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for UncalibratedMagnetometer {
 }
 impl AsMut<emlite::Val> for UncalibratedMagnetometer {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<UncalibratedMagnetometer> for emlite::Val {
     fn from(s: UncalibratedMagnetometer) -> emlite::Val {
@@ -49,55 +48,50 @@ impl From<UncalibratedMagnetometer> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(UncalibratedMagnetometer);
 
-
-
 impl UncalibratedMagnetometer {
     pub fn new0() -> UncalibratedMagnetometer {
         Self {
-            inner: emlite::Val::global("UncalibratedMagnetometer").new(&[]).as_::<Sensor>(),
+            inner: emlite::Val::global("UncalibratedMagnetometer")
+                .new(&[])
+                .as_::<Sensor>(),
         }
     }
 
     pub fn new1(sensor_options: Any) -> UncalibratedMagnetometer {
         Self {
-            inner: emlite::Val::global("UncalibratedMagnetometer").new(&[sensor_options.into()]).as_::<Sensor>(),
+            inner: emlite::Val::global("UncalibratedMagnetometer")
+                .new(&[sensor_options.into()])
+                .as_::<Sensor>(),
         }
     }
-
 }
 impl UncalibratedMagnetometer {
     pub fn x(&self) -> f64 {
         self.inner.get("x").as_::<f64>()
     }
-
 }
 impl UncalibratedMagnetometer {
     pub fn y(&self) -> f64 {
         self.inner.get("y").as_::<f64>()
     }
-
 }
 impl UncalibratedMagnetometer {
     pub fn z(&self) -> f64 {
         self.inner.get("z").as_::<f64>()
     }
-
 }
 impl UncalibratedMagnetometer {
     pub fn x_bias(&self) -> f64 {
         self.inner.get("xBias").as_::<f64>()
     }
-
 }
 impl UncalibratedMagnetometer {
     pub fn y_bias(&self) -> f64 {
         self.inner.get("yBias").as_::<f64>()
     }
-
 }
 impl UncalibratedMagnetometer {
     pub fn z_bias(&self) -> f64 {
         self.inner.get("zBias").as_::<f64>()
     }
-
 }

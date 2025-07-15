@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PortalActivateOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for PortalActivateOptions {
 }
 impl AsMut<emlite::Val> for PortalActivateOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PortalActivateOptions> for emlite::Val {
     fn from(s: PortalActivateOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl PortalActivateOptions {
     pub fn set_data(&mut self, value: Any) {
         self.inner.set("data", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -65,7 +61,9 @@ pub struct HTMLPortalElement {
 }
 impl FromVal for HTMLPortalElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLPortalElement { inner: HTMLElement::from_val(v) }
+        HTMLPortalElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -92,8 +90,8 @@ impl AsRef<emlite::Val> for HTMLPortalElement {
 }
 impl AsMut<emlite::Val> for HTMLPortalElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLPortalElement> for emlite::Val {
     fn from(s: HTMLPortalElement) -> emlite::Val {
@@ -104,15 +102,14 @@ impl From<HTMLPortalElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLPortalElement);
 
-
-
 impl HTMLPortalElement {
     pub fn new() -> HTMLPortalElement {
         Self {
-            inner: emlite::Val::global("HTMLPortalElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLPortalElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLPortalElement {
     pub fn src(&self) -> USVString {
@@ -122,7 +119,6 @@ impl HTMLPortalElement {
     pub fn set_src(&mut self, value: USVString) {
         self.inner.set("src", value);
     }
-
 }
 impl HTMLPortalElement {
     pub fn referrer_policy(&self) -> DOMString {
@@ -132,27 +128,30 @@ impl HTMLPortalElement {
     pub fn set_referrer_policy(&mut self, value: DOMString) {
         self.inner.set("referrerPolicy", value);
     }
-
 }
 impl HTMLPortalElement {
-    pub fn activate0(&self, ) -> Promise {
+    pub fn activate0(&self) -> Promise {
         self.inner.call("activate", &[]).as_::<Promise>()
     }
 
     pub fn activate1(&self, options: PortalActivateOptions) -> Promise {
-        self.inner.call("activate", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("activate", &[options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl HTMLPortalElement {
     pub fn post_message0(&self, message: Any) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
     }
 
     pub fn post_message1(&self, message: Any, options: StructuredSerializeOptions) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl HTMLPortalElement {
     pub fn onmessage(&self) -> Any {
@@ -162,7 +161,6 @@ impl HTMLPortalElement {
     pub fn set_onmessage(&mut self, value: Any) {
         self.inner.set("onmessage", value);
     }
-
 }
 impl HTMLPortalElement {
     pub fn onmessageerror(&self) -> Any {
@@ -172,5 +170,4 @@ impl HTMLPortalElement {
     pub fn set_onmessageerror(&mut self, value: Any) {
         self.inner.set("onmessageerror", value);
     }
-
 }

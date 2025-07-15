@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGFEDisplacementMapElement {
@@ -10,7 +7,9 @@ pub struct SVGFEDisplacementMapElement {
 }
 impl FromVal for SVGFEDisplacementMapElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGFEDisplacementMapElement { inner: SVGElement::from_val(v) }
+        SVGFEDisplacementMapElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SVGFEDisplacementMapElement {
 }
 impl AsMut<emlite::Val> for SVGFEDisplacementMapElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGFEDisplacementMapElement> for emlite::Val {
     fn from(s: SVGFEDisplacementMapElement) -> emlite::Val {
@@ -49,64 +48,57 @@ impl From<SVGFEDisplacementMapElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGFEDisplacementMapElement);
 
-
 impl SVGFEDisplacementMapElement {
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
-
 }
 impl SVGFEDisplacementMapElement {
     pub fn in2(&self) -> SVGAnimatedString {
         self.inner.get("in2").as_::<SVGAnimatedString>()
     }
-
 }
 impl SVGFEDisplacementMapElement {
     pub fn scale(&self) -> SVGAnimatedNumber {
         self.inner.get("scale").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGFEDisplacementMapElement {
     pub fn x_channel_selector(&self) -> SVGAnimatedEnumeration {
-        self.inner.get("xChannelSelector").as_::<SVGAnimatedEnumeration>()
+        self.inner
+            .get("xChannelSelector")
+            .as_::<SVGAnimatedEnumeration>()
     }
-
 }
 impl SVGFEDisplacementMapElement {
     pub fn y_channel_selector(&self) -> SVGAnimatedEnumeration {
-        self.inner.get("yChannelSelector").as_::<SVGAnimatedEnumeration>()
+        self.inner
+            .get("yChannelSelector")
+            .as_::<SVGAnimatedEnumeration>()
     }
-
 }
 impl SVGFEDisplacementMapElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEDisplacementMapElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEDisplacementMapElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEDisplacementMapElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGFEDisplacementMapElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
-
 }

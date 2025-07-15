@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSTransformComponent {
@@ -10,7 +7,9 @@ pub struct CSSTransformComponent {
 }
 impl FromVal for CSSTransformComponent {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSTransformComponent { inner: emlite::Val::from_val(v) }
+        CSSTransformComponent {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSTransformComponent {
 }
 impl AsMut<emlite::Val> for CSSTransformComponent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSTransformComponent> for emlite::Val {
     fn from(s: CSSTransformComponent) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<CSSTransformComponent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSTransformComponent);
 
-
 impl CSSTransformComponent {
     pub fn is2_d(&self) -> bool {
         self.inner.get("is2D").as_::<bool>()
@@ -58,11 +56,9 @@ impl CSSTransformComponent {
     pub fn set_is2_d(&mut self, value: bool) {
         self.inner.set("is2D", value);
     }
-
 }
 impl CSSTransformComponent {
-    pub fn to_matrix(&self, ) -> DOMMatrix {
+    pub fn to_matrix(&self) -> DOMMatrix {
         self.inner.call("toMatrix", &[]).as_::<DOMMatrix>()
     }
-
 }

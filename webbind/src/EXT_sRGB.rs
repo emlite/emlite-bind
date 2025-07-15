@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EXT_sRGB {
@@ -10,7 +7,9 @@ pub struct EXT_sRGB {
 }
 impl FromVal for EXT_sRGB {
     fn from_val(v: &emlite::Val) -> Self {
-        EXT_sRGB { inner: emlite::Val::from_val(v) }
+        EXT_sRGB {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for EXT_sRGB {
 }
 impl AsMut<emlite::Val> for EXT_sRGB {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<EXT_sRGB> for emlite::Val {
     fn from(s: EXT_sRGB) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<EXT_sRGB> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(EXT_sRGB);
-
-

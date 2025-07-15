@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGMPathElement {
@@ -10,7 +7,9 @@ pub struct SVGMPathElement {
 }
 impl FromVal for SVGMPathElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGMPathElement { inner: SVGElement::from_val(v) }
+        SVGMPathElement {
+            inner: SVGElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SVGMPathElement {
 }
 impl AsMut<emlite::Val> for SVGMPathElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGMPathElement> for emlite::Val {
     fn from(s: SVGMPathElement) -> emlite::Val {
@@ -49,10 +48,8 @@ impl From<SVGMPathElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGMPathElement);
 
-
 impl SVGMPathElement {
     pub fn href(&self) -> SVGAnimatedString {
         self.inner.get("href").as_::<SVGAnimatedString>()
     }
-
 }

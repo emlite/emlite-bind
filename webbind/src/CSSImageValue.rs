@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSImageValue {
@@ -10,7 +7,9 @@ pub struct CSSImageValue {
 }
 impl FromVal for CSSImageValue {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSImageValue { inner: CSSStyleValue::from_val(v) }
+        CSSImageValue {
+            inner: CSSStyleValue::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSImageValue {
 }
 impl AsMut<emlite::Val> for CSSImageValue {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSImageValue> for emlite::Val {
     fn from(s: CSSImageValue) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<CSSImageValue> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSImageValue);
-
-

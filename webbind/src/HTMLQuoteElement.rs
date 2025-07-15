@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLQuoteElement {
@@ -10,7 +7,9 @@ pub struct HTMLQuoteElement {
 }
 impl FromVal for HTMLQuoteElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLQuoteElement { inner: HTMLElement::from_val(v) }
+        HTMLQuoteElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLQuoteElement {
 }
 impl AsMut<emlite::Val> for HTMLQuoteElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLQuoteElement> for emlite::Val {
     fn from(s: HTMLQuoteElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLQuoteElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLQuoteElement);
 
-
-
 impl HTMLQuoteElement {
     pub fn new() -> HTMLQuoteElement {
         Self {
-            inner: emlite::Val::global("HTMLQuoteElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLQuoteElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLQuoteElement {
     pub fn cite(&self) -> USVString {
@@ -67,5 +65,4 @@ impl HTMLQuoteElement {
     pub fn set_cite(&mut self, value: USVString) {
         self.inner.set("cite", value);
     }
-
 }

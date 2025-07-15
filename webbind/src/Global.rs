@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Global {
@@ -10,7 +7,9 @@ pub struct Global {
 }
 impl FromVal for Global {
     fn from_val(v: &emlite::Val) -> Self {
-        Global { inner: emlite::Val::from_val(v) }
+        Global {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for Global {
 }
 impl AsMut<emlite::Val> for Global {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Global> for emlite::Val {
     fn from(s: Global) -> emlite::Val {
@@ -49,27 +48,27 @@ impl From<Global> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Global);
 
-
-
 impl Global {
     pub fn new0(descriptor: Any) -> Global {
         Self {
-            inner: emlite::Val::global("Global").new(&[descriptor.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("Global")
+                .new(&[descriptor.into()])
+                .as_::<emlite::Val>(),
         }
     }
 
     pub fn new1(descriptor: Any, v: Any) -> Global {
         Self {
-            inner: emlite::Val::global("Global").new(&[descriptor.into(), v.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("Global")
+                .new(&[descriptor.into(), v.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl Global {
-    pub fn value_of(&self, ) -> Any {
+    pub fn value_of(&self) -> Any {
         self.inner.call("valueOf", &[]).as_::<Any>()
     }
-
 }
 impl Global {
     pub fn value(&self) -> Any {
@@ -79,5 +78,4 @@ impl Global {
     pub fn set_value(&mut self, value: Any) {
         self.inner.set("value", value);
     }
-
 }

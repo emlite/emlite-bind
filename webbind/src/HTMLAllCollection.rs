@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLAllCollection {
@@ -10,7 +7,9 @@ pub struct HTMLAllCollection {
 }
 impl FromVal for HTMLAllCollection {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLAllCollection { inner: emlite::Val::from_val(v) }
+        HTMLAllCollection {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLAllCollection {
 }
 impl AsMut<emlite::Val> for HTMLAllCollection {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLAllCollection> for emlite::Val {
     fn from(s: HTMLAllCollection) -> emlite::Val {
@@ -49,26 +48,24 @@ impl From<HTMLAllCollection> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLAllCollection);
 
-
 impl HTMLAllCollection {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl HTMLAllCollection {
     pub fn named_item(&self, name: DOMString) -> Any {
-        self.inner.call("namedItem", &[name.into(), ]).as_::<Any>()
+        self.inner.call("namedItem", &[name.into()]).as_::<Any>()
     }
-
 }
 impl HTMLAllCollection {
-    pub fn item0(&self, ) -> Any {
+    pub fn item0(&self) -> Any {
         self.inner.call("item", &[]).as_::<Any>()
     }
 
     pub fn item1(&self, name_or_index: DOMString) -> Any {
-        self.inner.call("item", &[name_or_index.into(), ]).as_::<Any>()
+        self.inner
+            .call("item", &[name_or_index.into()])
+            .as_::<Any>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CreateMonitor {
@@ -10,7 +7,9 @@ pub struct CreateMonitor {
 }
 impl FromVal for CreateMonitor {
     fn from_val(v: &emlite::Val) -> Self {
-        CreateMonitor { inner: EventTarget::from_val(v) }
+        CreateMonitor {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CreateMonitor {
 }
 impl AsMut<emlite::Val> for CreateMonitor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CreateMonitor> for emlite::Val {
     fn from(s: CreateMonitor) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<CreateMonitor> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CreateMonitor);
 
-
 impl CreateMonitor {
     pub fn ondownloadprogress(&self) -> Any {
         self.inner.get("ondownloadprogress").as_::<Any>()
@@ -58,5 +56,4 @@ impl CreateMonitor {
     pub fn set_ondownloadprogress(&mut self, value: Any) {
         self.inner.set("ondownloadprogress", value);
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLAudioElement {
@@ -10,7 +7,9 @@ pub struct HTMLAudioElement {
 }
 impl FromVal for HTMLAudioElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLAudioElement { inner: HTMLMediaElement::from_val(v) }
+        HTMLAudioElement {
+            inner: HTMLMediaElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLAudioElement {
 }
 impl AsMut<emlite::Val> for HTMLAudioElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLAudioElement> for emlite::Val {
     fn from(s: HTMLAudioElement) -> emlite::Val {
@@ -49,13 +48,12 @@ impl From<HTMLAudioElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLAudioElement);
 
-
-
 impl HTMLAudioElement {
     pub fn new() -> HTMLAudioElement {
         Self {
-            inner: emlite::Val::global("HTMLAudioElement").new(&[]).as_::<HTMLMediaElement>(),
+            inner: emlite::Val::global("HTMLAudioElement")
+                .new(&[])
+                .as_::<HTMLMediaElement>(),
         }
     }
-
 }

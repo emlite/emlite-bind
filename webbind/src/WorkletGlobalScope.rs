@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WorkletGlobalScope {
@@ -10,7 +7,9 @@ pub struct WorkletGlobalScope {
 }
 impl FromVal for WorkletGlobalScope {
     fn from_val(v: &emlite::Val) -> Self {
-        WorkletGlobalScope { inner: emlite::Val::from_val(v) }
+        WorkletGlobalScope {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for WorkletGlobalScope {
 }
 impl AsMut<emlite::Val> for WorkletGlobalScope {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WorkletGlobalScope> for emlite::Val {
     fn from(s: WorkletGlobalScope) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<WorkletGlobalScope> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(WorkletGlobalScope);
-
-

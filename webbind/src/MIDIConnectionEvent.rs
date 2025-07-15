@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MIDIConnectionEvent {
@@ -10,7 +7,9 @@ pub struct MIDIConnectionEvent {
 }
 impl FromVal for MIDIConnectionEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        MIDIConnectionEvent { inner: Event::from_val(v) }
+        MIDIConnectionEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for MIDIConnectionEvent {
 }
 impl AsMut<emlite::Val> for MIDIConnectionEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MIDIConnectionEvent> for emlite::Val {
     fn from(s: MIDIConnectionEvent) -> emlite::Val {
@@ -49,25 +48,25 @@ impl From<MIDIConnectionEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MIDIConnectionEvent);
 
-
-
 impl MIDIConnectionEvent {
     pub fn new0(type_: DOMString) -> MIDIConnectionEvent {
         Self {
-            inner: emlite::Val::global("MIDIConnectionEvent").new(&[type_.into()]).as_::<Event>(),
+            inner: emlite::Val::global("MIDIConnectionEvent")
+                .new(&[type_.into()])
+                .as_::<Event>(),
         }
     }
 
     pub fn new1(type_: DOMString, event_init_dict: Any) -> MIDIConnectionEvent {
         Self {
-            inner: emlite::Val::global("MIDIConnectionEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("MIDIConnectionEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl MIDIConnectionEvent {
     pub fn port(&self) -> MIDIPort {
         self.inner.get("port").as_::<MIDIPort>()
     }
-
 }

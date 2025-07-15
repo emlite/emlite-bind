@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct StylePropertyMapReadOnly {
@@ -10,7 +7,9 @@ pub struct StylePropertyMapReadOnly {
 }
 impl FromVal for StylePropertyMapReadOnly {
     fn from_val(v: &emlite::Val) -> Self {
-        StylePropertyMapReadOnly { inner: emlite::Val::from_val(v) }
+        StylePropertyMapReadOnly {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for StylePropertyMapReadOnly {
 }
 impl AsMut<emlite::Val> for StylePropertyMapReadOnly {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<StylePropertyMapReadOnly> for emlite::Val {
     fn from(s: StylePropertyMapReadOnly) -> emlite::Val {
@@ -49,28 +48,25 @@ impl From<StylePropertyMapReadOnly> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(StylePropertyMapReadOnly);
 
-
 impl StylePropertyMapReadOnly {
     pub fn get(&self, property: USVString) -> Any {
-        self.inner.call("get", &[property.into(), ]).as_::<Any>()
+        self.inner.call("get", &[property.into()]).as_::<Any>()
     }
-
 }
 impl StylePropertyMapReadOnly {
     pub fn get_all(&self, property: USVString) -> Sequence<CSSStyleValue> {
-        self.inner.call("getAll", &[property.into(), ]).as_::<Sequence<CSSStyleValue>>()
+        self.inner
+            .call("getAll", &[property.into()])
+            .as_::<Sequence<CSSStyleValue>>()
     }
-
 }
 impl StylePropertyMapReadOnly {
     pub fn has(&self, property: USVString) -> bool {
-        self.inner.call("has", &[property.into(), ]).as_::<bool>()
+        self.inner.call("has", &[property.into()]).as_::<bool>()
     }
-
 }
 impl StylePropertyMapReadOnly {
     pub fn size(&self) -> u32 {
         self.inner.get("size").as_::<u32>()
     }
-
 }

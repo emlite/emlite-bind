@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EXT_color_buffer_float {
@@ -10,7 +7,9 @@ pub struct EXT_color_buffer_float {
 }
 impl FromVal for EXT_color_buffer_float {
     fn from_val(v: &emlite::Val) -> Self {
-        EXT_color_buffer_float { inner: emlite::Val::from_val(v) }
+        EXT_color_buffer_float {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for EXT_color_buffer_float {
 }
 impl AsMut<emlite::Val> for EXT_color_buffer_float {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<EXT_color_buffer_float> for emlite::Val {
     fn from(s: EXT_color_buffer_float) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<EXT_color_buffer_float> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(EXT_color_buffer_float);
-
-

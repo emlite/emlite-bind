@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SpeechSynthesisUtterance {
@@ -10,7 +7,9 @@ pub struct SpeechSynthesisUtterance {
 }
 impl FromVal for SpeechSynthesisUtterance {
     fn from_val(v: &emlite::Val) -> Self {
-        SpeechSynthesisUtterance { inner: EventTarget::from_val(v) }
+        SpeechSynthesisUtterance {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SpeechSynthesisUtterance {
 }
 impl AsMut<emlite::Val> for SpeechSynthesisUtterance {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SpeechSynthesisUtterance> for emlite::Val {
     fn from(s: SpeechSynthesisUtterance) -> emlite::Val {
@@ -49,21 +48,22 @@ impl From<SpeechSynthesisUtterance> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SpeechSynthesisUtterance);
 
-
-
 impl SpeechSynthesisUtterance {
     pub fn new0() -> SpeechSynthesisUtterance {
         Self {
-            inner: emlite::Val::global("SpeechSynthesisUtterance").new(&[]).as_::<EventTarget>(),
+            inner: emlite::Val::global("SpeechSynthesisUtterance")
+                .new(&[])
+                .as_::<EventTarget>(),
         }
     }
 
     pub fn new1(text: DOMString) -> SpeechSynthesisUtterance {
         Self {
-            inner: emlite::Val::global("SpeechSynthesisUtterance").new(&[text.into()]).as_::<EventTarget>(),
+            inner: emlite::Val::global("SpeechSynthesisUtterance")
+                .new(&[text.into()])
+                .as_::<EventTarget>(),
         }
     }
-
 }
 impl SpeechSynthesisUtterance {
     pub fn text(&self) -> DOMString {
@@ -73,7 +73,6 @@ impl SpeechSynthesisUtterance {
     pub fn set_text(&mut self, value: DOMString) {
         self.inner.set("text", value);
     }
-
 }
 impl SpeechSynthesisUtterance {
     pub fn lang(&self) -> DOMString {
@@ -83,7 +82,6 @@ impl SpeechSynthesisUtterance {
     pub fn set_lang(&mut self, value: DOMString) {
         self.inner.set("lang", value);
     }
-
 }
 impl SpeechSynthesisUtterance {
     pub fn voice(&self) -> SpeechSynthesisVoice {
@@ -93,7 +91,6 @@ impl SpeechSynthesisUtterance {
     pub fn set_voice(&mut self, value: SpeechSynthesisVoice) {
         self.inner.set("voice", value);
     }
-
 }
 impl SpeechSynthesisUtterance {
     pub fn volume(&self) -> f32 {
@@ -103,7 +100,6 @@ impl SpeechSynthesisUtterance {
     pub fn set_volume(&mut self, value: f32) {
         self.inner.set("volume", value);
     }
-
 }
 impl SpeechSynthesisUtterance {
     pub fn rate(&self) -> f32 {
@@ -113,7 +109,6 @@ impl SpeechSynthesisUtterance {
     pub fn set_rate(&mut self, value: f32) {
         self.inner.set("rate", value);
     }
-
 }
 impl SpeechSynthesisUtterance {
     pub fn pitch(&self) -> f32 {
@@ -123,7 +118,6 @@ impl SpeechSynthesisUtterance {
     pub fn set_pitch(&mut self, value: f32) {
         self.inner.set("pitch", value);
     }
-
 }
 impl SpeechSynthesisUtterance {
     pub fn onstart(&self) -> Any {
@@ -133,7 +127,6 @@ impl SpeechSynthesisUtterance {
     pub fn set_onstart(&mut self, value: Any) {
         self.inner.set("onstart", value);
     }
-
 }
 impl SpeechSynthesisUtterance {
     pub fn onend(&self) -> Any {
@@ -143,7 +136,6 @@ impl SpeechSynthesisUtterance {
     pub fn set_onend(&mut self, value: Any) {
         self.inner.set("onend", value);
     }
-
 }
 impl SpeechSynthesisUtterance {
     pub fn onerror(&self) -> Any {
@@ -153,7 +145,6 @@ impl SpeechSynthesisUtterance {
     pub fn set_onerror(&mut self, value: Any) {
         self.inner.set("onerror", value);
     }
-
 }
 impl SpeechSynthesisUtterance {
     pub fn onpause(&self) -> Any {
@@ -163,7 +154,6 @@ impl SpeechSynthesisUtterance {
     pub fn set_onpause(&mut self, value: Any) {
         self.inner.set("onpause", value);
     }
-
 }
 impl SpeechSynthesisUtterance {
     pub fn onresume(&self) -> Any {
@@ -173,7 +163,6 @@ impl SpeechSynthesisUtterance {
     pub fn set_onresume(&mut self, value: Any) {
         self.inner.set("onresume", value);
     }
-
 }
 impl SpeechSynthesisUtterance {
     pub fn onmark(&self) -> Any {
@@ -183,7 +172,6 @@ impl SpeechSynthesisUtterance {
     pub fn set_onmark(&mut self, value: Any) {
         self.inner.set("onmark", value);
     }
-
 }
 impl SpeechSynthesisUtterance {
     pub fn onboundary(&self) -> Any {
@@ -193,5 +181,4 @@ impl SpeechSynthesisUtterance {
     pub fn set_onboundary(&mut self, value: Any) {
         self.inner.set("onboundary", value);
     }
-
 }

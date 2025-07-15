@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRMeshSet {
@@ -10,7 +7,9 @@ pub struct XRMeshSet {
 }
 impl FromVal for XRMeshSet {
     fn from_val(v: &emlite::Val) -> Self {
-        XRMeshSet { inner: emlite::Val::from_val(v) }
+        XRMeshSet {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XRMeshSet {
 }
 impl AsMut<emlite::Val> for XRMeshSet {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRMeshSet> for emlite::Val {
     fn from(s: XRMeshSet) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<XRMeshSet> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(XRMeshSet);
-
-

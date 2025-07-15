@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BluetoothManufacturerDataMap {
@@ -10,7 +7,9 @@ pub struct BluetoothManufacturerDataMap {
 }
 impl FromVal for BluetoothManufacturerDataMap {
     fn from_val(v: &emlite::Val) -> Self {
-        BluetoothManufacturerDataMap { inner: emlite::Val::from_val(v) }
+        BluetoothManufacturerDataMap {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for BluetoothManufacturerDataMap {
 }
 impl AsMut<emlite::Val> for BluetoothManufacturerDataMap {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<BluetoothManufacturerDataMap> for emlite::Val {
     fn from(s: BluetoothManufacturerDataMap) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<BluetoothManufacturerDataMap> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(BluetoothManufacturerDataMap);
-
-

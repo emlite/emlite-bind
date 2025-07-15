@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRWebGLDepthInformation {
@@ -10,7 +7,9 @@ pub struct XRWebGLDepthInformation {
 }
 impl FromVal for XRWebGLDepthInformation {
     fn from_val(v: &emlite::Val) -> Self {
-        XRWebGLDepthInformation { inner: XRDepthInformation::from_val(v) }
+        XRWebGLDepthInformation {
+            inner: XRDepthInformation::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XRWebGLDepthInformation {
 }
 impl AsMut<emlite::Val> for XRWebGLDepthInformation {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRWebGLDepthInformation> for emlite::Val {
     fn from(s: XRWebGLDepthInformation) -> emlite::Val {
@@ -49,22 +48,18 @@ impl From<XRWebGLDepthInformation> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRWebGLDepthInformation);
 
-
 impl XRWebGLDepthInformation {
     pub fn texture(&self) -> WebGLTexture {
         self.inner.get("texture").as_::<WebGLTexture>()
     }
-
 }
 impl XRWebGLDepthInformation {
     pub fn texture_type(&self) -> XRTextureType {
         self.inner.get("textureType").as_::<XRTextureType>()
     }
-
 }
 impl XRWebGLDepthInformation {
     pub fn image_index(&self) -> u32 {
         self.inner.get("imageIndex").as_::<u32>()
     }
-
 }

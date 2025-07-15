@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ScreenDetails {
@@ -10,7 +7,9 @@ pub struct ScreenDetails {
 }
 impl FromVal for ScreenDetails {
     fn from_val(v: &emlite::Val) -> Self {
-        ScreenDetails { inner: EventTarget::from_val(v) }
+        ScreenDetails {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for ScreenDetails {
 }
 impl AsMut<emlite::Val> for ScreenDetails {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ScreenDetails> for emlite::Val {
     fn from(s: ScreenDetails) -> emlite::Val {
@@ -49,18 +48,17 @@ impl From<ScreenDetails> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ScreenDetails);
 
-
 impl ScreenDetails {
     pub fn screens(&self) -> FrozenArray<ScreenDetailed> {
-        self.inner.get("screens").as_::<FrozenArray<ScreenDetailed>>()
+        self.inner
+            .get("screens")
+            .as_::<FrozenArray<ScreenDetailed>>()
     }
-
 }
 impl ScreenDetails {
     pub fn current_screen(&self) -> ScreenDetailed {
         self.inner.get("currentScreen").as_::<ScreenDetailed>()
     }
-
 }
 impl ScreenDetails {
     pub fn onscreenschange(&self) -> Any {
@@ -70,7 +68,6 @@ impl ScreenDetails {
     pub fn set_onscreenschange(&mut self, value: Any) {
         self.inner.set("onscreenschange", value);
     }
-
 }
 impl ScreenDetails {
     pub fn oncurrentscreenchange(&self) -> Any {
@@ -80,5 +77,4 @@ impl ScreenDetails {
     pub fn set_oncurrentscreenchange(&mut self, value: Any) {
         self.inner.set("oncurrentscreenchange", value);
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PushSubscriptionOptions {
@@ -10,7 +7,9 @@ pub struct PushSubscriptionOptions {
 }
 impl FromVal for PushSubscriptionOptions {
     fn from_val(v: &emlite::Val) -> Self {
-        PushSubscriptionOptions { inner: emlite::Val::from_val(v) }
+        PushSubscriptionOptions {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PushSubscriptionOptions {
 }
 impl AsMut<emlite::Val> for PushSubscriptionOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PushSubscriptionOptions> for emlite::Val {
     fn from(s: PushSubscriptionOptions) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<PushSubscriptionOptions> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PushSubscriptionOptions);
 
-
 impl PushSubscriptionOptions {
     pub fn user_visible_only(&self) -> bool {
         self.inner.get("userVisibleOnly").as_::<bool>()
     }
-
 }
 impl PushSubscriptionOptions {
     pub fn application_server_key(&self) -> ArrayBuffer {
         self.inner.get("applicationServerKey").as_::<ArrayBuffer>()
     }
-
 }

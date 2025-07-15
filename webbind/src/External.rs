@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct External {
@@ -10,7 +7,9 @@ pub struct External {
 }
 impl FromVal for External {
     fn from_val(v: &emlite::Val) -> Self {
-        External { inner: emlite::Val::from_val(v) }
+        External {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for External {
 }
 impl AsMut<emlite::Val> for External {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<External> for emlite::Val {
     fn from(s: External) -> emlite::Val {
@@ -49,16 +48,15 @@ impl From<External> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(External);
 
-
 impl External {
-    pub fn add_search_provider(&self, ) -> Undefined {
+    pub fn add_search_provider(&self) -> Undefined {
         self.inner.call("AddSearchProvider", &[]).as_::<Undefined>()
     }
-
 }
 impl External {
-    pub fn is_search_provider_installed(&self, ) -> Undefined {
-        self.inner.call("IsSearchProviderInstalled", &[]).as_::<Undefined>()
+    pub fn is_search_provider_installed(&self) -> Undefined {
+        self.inner
+            .call("IsSearchProviderInstalled", &[])
+            .as_::<Undefined>()
     }
-
 }

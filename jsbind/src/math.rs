@@ -29,39 +29,66 @@ impl Math {
     pub const SQRT2: f64 = core::f64::consts::SQRT_2;
 
     unary! {
-        /// [`Math.abs`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math/abs)
+        /// `Math.abs`
         abs => "abs",
-        /// [`Math.acos`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math/acos)
+        /// `Math.acos`
+        /// `Math.acos`
         acos => "acos",
+        /// `Math.acosh`
         acosh => "acosh",
+        /// `Math.asin`
         asin  => "asin",
+        /// `Math.asinh`
         asinh => "asinh",
+        /// `Math.atan`
         atan  => "atan",
+        /// `Math.atanh`
         atanh => "atanh",
+        /// `Math.cbrt`
         cbrt  => "cbrt",
+        /// `Math.ceil`
         ceil  => "ceil",
+        /// `Math.clz32`
         clz32 => "clz32",
+        /// `Math.cos`
         cos   => "cos",
+        /// `Math.cosh`
         cosh  => "cosh",
+        /// `Math.exp`
         exp   => "exp",
+        /// `Math.expm1`
         expm1 => "expm1",
+        /// `Math.floor`
         floor => "floor",
+        /// `Math.fround`
         fround => "fround",
+        /// `Math.log`
         log    => "log",
+        /// `Math.log1p`
         log1p  => "log1p",
+        /// `Math.log2`
         log2   => "log2",
+        /// `Math.log10`
         log10  => "log10",
+        /// `Math.round`
         round  => "round",
+        /// `Math.sign`
         sign   => "sign",
+        /// `Math.sin`
         sin    => "sin",
+        /// `Math.sinh`
         sinh   => "sinh",
+        /// `Math.sqrt`
         sqrt   => "sqrt",
+        /// `Math.tan`
         tan    => "tan",
+        /// `Math.tanh`
         tanh   => "tanh",
+        /// `Math.trunc`
         trunc  => "trunc",
     }
 
-    /// [`Math.atan2`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math/atan2)
+    /// `Math.atan2`
     #[inline]
     pub fn atan2(y: f64, x: f64) -> f64 {
         Self::obj()
@@ -69,19 +96,19 @@ impl Math {
             .as_::<f64>()
     }
 
-    /// [`Math.pow`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math/pow)
+    /// `Math.pow`
     #[inline]
     pub fn pow(x: f64, y: f64) -> f64 {
         Self::obj().call("pow", &[x.into(), y.into()]).as_::<f64>()
     }
 
-    /// [`Math.imul`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math/imul)
+    /// `Math.imul`
     #[inline]
     pub fn imul(a: i32, b: i32) -> i32 {
         Self::obj().call("imul", &[a.into(), b.into()]).as_::<i32>()
     }
 
-    /// [`Math.max`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math/max)
+    /// `Math.max`
     #[inline]
     pub fn max(nums: &[f64]) -> f64 {
         Self::obj()
@@ -92,7 +119,7 @@ impl Math {
             .as_::<f64>()
     }
 
-    /// [`Math.min`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math/min)
+    /// `Math.min`
     #[inline]
     pub fn min(nums: &[f64]) -> f64 {
         Self::obj()
@@ -103,7 +130,7 @@ impl Math {
             .as_::<f64>()
     }
 
-    /// [`Math.hypot`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math/hypot)
+    /// `Math.hypot`
     #[inline]
     pub fn hypot(nums: &[f64]) -> f64 {
         Self::obj()
@@ -114,7 +141,7 @@ impl Math {
             .as_::<f64>()
     }
 
-    /// [`Math.random`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Math/random)
+    /// `Math.random`
     #[inline]
     pub fn random() -> f64 {
         Self::obj().call("random", &[]).as_::<f64>()

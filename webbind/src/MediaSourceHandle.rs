@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaSourceHandle {
@@ -10,7 +7,9 @@ pub struct MediaSourceHandle {
 }
 impl FromVal for MediaSourceHandle {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaSourceHandle { inner: emlite::Val::from_val(v) }
+        MediaSourceHandle {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for MediaSourceHandle {
 }
 impl AsMut<emlite::Val> for MediaSourceHandle {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MediaSourceHandle> for emlite::Val {
     fn from(s: MediaSourceHandle) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<MediaSourceHandle> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaSourceHandle);
-
-

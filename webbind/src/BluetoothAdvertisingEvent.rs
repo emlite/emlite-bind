@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BluetoothAdvertisingEvent {
@@ -10,7 +7,9 @@ pub struct BluetoothAdvertisingEvent {
 }
 impl FromVal for BluetoothAdvertisingEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        BluetoothAdvertisingEvent { inner: Event::from_val(v) }
+        BluetoothAdvertisingEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for BluetoothAdvertisingEvent {
 }
 impl AsMut<emlite::Val> for BluetoothAdvertisingEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<BluetoothAdvertisingEvent> for emlite::Val {
     fn from(s: BluetoothAdvertisingEvent) -> emlite::Val {
@@ -49,61 +48,56 @@ impl From<BluetoothAdvertisingEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BluetoothAdvertisingEvent);
 
-
-
 impl BluetoothAdvertisingEvent {
     pub fn new(type_: DOMString, init: Any) -> BluetoothAdvertisingEvent {
         Self {
-            inner: emlite::Val::global("BluetoothAdvertisingEvent").new(&[type_.into(), init.into()]).as_::<Event>(),
+            inner: emlite::Val::global("BluetoothAdvertisingEvent")
+                .new(&[type_.into(), init.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl BluetoothAdvertisingEvent {
     pub fn device(&self) -> BluetoothDevice {
         self.inner.get("device").as_::<BluetoothDevice>()
     }
-
 }
 impl BluetoothAdvertisingEvent {
     pub fn uuids(&self) -> FrozenArray<Any> {
         self.inner.get("uuids").as_::<FrozenArray<Any>>()
     }
-
 }
 impl BluetoothAdvertisingEvent {
     pub fn name(&self) -> DOMString {
         self.inner.get("name").as_::<DOMString>()
     }
-
 }
 impl BluetoothAdvertisingEvent {
     pub fn appearance(&self) -> u16 {
         self.inner.get("appearance").as_::<u16>()
     }
-
 }
 impl BluetoothAdvertisingEvent {
     pub fn tx_power(&self) -> i8 {
         self.inner.get("txPower").as_::<i8>()
     }
-
 }
 impl BluetoothAdvertisingEvent {
     pub fn rssi(&self) -> i8 {
         self.inner.get("rssi").as_::<i8>()
     }
-
 }
 impl BluetoothAdvertisingEvent {
     pub fn manufacturer_data(&self) -> BluetoothManufacturerDataMap {
-        self.inner.get("manufacturerData").as_::<BluetoothManufacturerDataMap>()
+        self.inner
+            .get("manufacturerData")
+            .as_::<BluetoothManufacturerDataMap>()
     }
-
 }
 impl BluetoothAdvertisingEvent {
     pub fn service_data(&self) -> BluetoothServiceDataMap {
-        self.inner.get("serviceData").as_::<BluetoothServiceDataMap>()
+        self.inner
+            .get("serviceData")
+            .as_::<BluetoothServiceDataMap>()
     }
-
 }

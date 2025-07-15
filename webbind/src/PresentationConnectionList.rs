@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PresentationConnectionList {
@@ -10,7 +7,9 @@ pub struct PresentationConnectionList {
 }
 impl FromVal for PresentationConnectionList {
     fn from_val(v: &emlite::Val) -> Self {
-        PresentationConnectionList { inner: EventTarget::from_val(v) }
+        PresentationConnectionList {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PresentationConnectionList {
 }
 impl AsMut<emlite::Val> for PresentationConnectionList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PresentationConnectionList> for emlite::Val {
     fn from(s: PresentationConnectionList) -> emlite::Val {
@@ -49,12 +48,12 @@ impl From<PresentationConnectionList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PresentationConnectionList);
 
-
 impl PresentationConnectionList {
     pub fn connections(&self) -> FrozenArray<PresentationConnection> {
-        self.inner.get("connections").as_::<FrozenArray<PresentationConnection>>()
+        self.inner
+            .get("connections")
+            .as_::<FrozenArray<PresentationConnection>>()
     }
-
 }
 impl PresentationConnectionList {
     pub fn onconnectionavailable(&self) -> Any {
@@ -64,5 +63,4 @@ impl PresentationConnectionList {
     pub fn set_onconnectionavailable(&mut self, value: Any) {
         self.inner.set("onconnectionavailable", value);
     }
-
 }

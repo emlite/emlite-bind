@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLHeadElement {
@@ -10,7 +7,9 @@ pub struct HTMLHeadElement {
 }
 impl FromVal for HTMLHeadElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLHeadElement { inner: HTMLElement::from_val(v) }
+        HTMLHeadElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLHeadElement {
 }
 impl AsMut<emlite::Val> for HTMLHeadElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLHeadElement> for emlite::Val {
     fn from(s: HTMLHeadElement) -> emlite::Val {
@@ -49,13 +48,12 @@ impl From<HTMLHeadElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLHeadElement);
 
-
-
 impl HTMLHeadElement {
     pub fn new() -> HTMLHeadElement {
         Self {
-            inner: emlite::Val::global("HTMLHeadElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLHeadElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }

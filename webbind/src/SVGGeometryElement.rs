@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DOMPointInit {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for DOMPointInit {
 }
 impl AsMut<emlite::Val> for DOMPointInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<DOMPointInit> for emlite::Val {
     fn from(s: DOMPointInit) -> emlite::Val {
@@ -56,7 +53,6 @@ impl DOMPointInit {
     pub fn set_x(&mut self, value: f64) {
         self.inner.set("x", value);
     }
-
 }
 impl DOMPointInit {
     pub fn y(&self) -> f64 {
@@ -66,7 +62,6 @@ impl DOMPointInit {
     pub fn set_y(&mut self, value: f64) {
         self.inner.set("y", value);
     }
-
 }
 impl DOMPointInit {
     pub fn z(&self) -> f64 {
@@ -76,7 +71,6 @@ impl DOMPointInit {
     pub fn set_z(&mut self, value: f64) {
         self.inner.set("z", value);
     }
-
 }
 impl DOMPointInit {
     pub fn w(&self) -> f64 {
@@ -86,7 +80,6 @@ impl DOMPointInit {
     pub fn set_w(&mut self, value: f64) {
         self.inner.set("w", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -95,7 +88,9 @@ pub struct SVGGeometryElement {
 }
 impl FromVal for SVGGeometryElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGGeometryElement { inner: SVGGraphicsElement::from_val(v) }
+        SVGGeometryElement {
+            inner: SVGGraphicsElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -122,8 +117,8 @@ impl AsRef<emlite::Val> for SVGGeometryElement {
 }
 impl AsMut<emlite::Val> for SVGGeometryElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGGeometryElement> for emlite::Val {
     fn from(s: SVGGeometryElement) -> emlite::Val {
@@ -134,42 +129,42 @@ impl From<SVGGeometryElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGGeometryElement);
 
-
 impl SVGGeometryElement {
     pub fn path_length(&self) -> SVGAnimatedNumber {
         self.inner.get("pathLength").as_::<SVGAnimatedNumber>()
     }
-
 }
 impl SVGGeometryElement {
-    pub fn is_point_in_fill0(&self, ) -> bool {
+    pub fn is_point_in_fill0(&self) -> bool {
         self.inner.call("isPointInFill", &[]).as_::<bool>()
     }
 
     pub fn is_point_in_fill1(&self, point: DOMPointInit) -> bool {
-        self.inner.call("isPointInFill", &[point.into(), ]).as_::<bool>()
+        self.inner
+            .call("isPointInFill", &[point.into()])
+            .as_::<bool>()
     }
-
 }
 impl SVGGeometryElement {
-    pub fn is_point_in_stroke0(&self, ) -> bool {
+    pub fn is_point_in_stroke0(&self) -> bool {
         self.inner.call("isPointInStroke", &[]).as_::<bool>()
     }
 
     pub fn is_point_in_stroke1(&self, point: DOMPointInit) -> bool {
-        self.inner.call("isPointInStroke", &[point.into(), ]).as_::<bool>()
+        self.inner
+            .call("isPointInStroke", &[point.into()])
+            .as_::<bool>()
     }
-
 }
 impl SVGGeometryElement {
-    pub fn get_total_length(&self, ) -> f32 {
+    pub fn get_total_length(&self) -> f32 {
         self.inner.call("getTotalLength", &[]).as_::<f32>()
     }
-
 }
 impl SVGGeometryElement {
     pub fn get_point_at_length(&self, distance: f32) -> DOMPoint {
-        self.inner.call("getPointAtLength", &[distance.into(), ]).as_::<DOMPoint>()
+        self.inner
+            .call("getPointAtLength", &[distance.into()])
+            .as_::<DOMPoint>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRViewerPose {
@@ -10,7 +7,9 @@ pub struct XRViewerPose {
 }
 impl FromVal for XRViewerPose {
     fn from_val(v: &emlite::Val) -> Self {
-        XRViewerPose { inner: XRPose::from_val(v) }
+        XRViewerPose {
+            inner: XRPose::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XRViewerPose {
 }
 impl AsMut<emlite::Val> for XRViewerPose {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XRViewerPose> for emlite::Val {
     fn from(s: XRViewerPose) -> emlite::Val {
@@ -49,10 +48,8 @@ impl From<XRViewerPose> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRViewerPose);
 
-
 impl XRViewerPose {
     pub fn views(&self) -> FrozenArray<XRView> {
         self.inner.get("views").as_::<FrozenArray<XRView>>()
     }
-
 }

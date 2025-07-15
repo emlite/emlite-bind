@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XMLDocument {
@@ -10,7 +7,9 @@ pub struct XMLDocument {
 }
 impl FromVal for XMLDocument {
     fn from_val(v: &emlite::Val) -> Self {
-        XMLDocument { inner: Document::from_val(v) }
+        XMLDocument {
+            inner: Document::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XMLDocument {
 }
 impl AsMut<emlite::Val> for XMLDocument {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XMLDocument> for emlite::Val {
     fn from(s: XMLDocument) -> emlite::Val {
@@ -48,5 +47,3 @@ impl From<XMLDocument> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(XMLDocument);
-
-

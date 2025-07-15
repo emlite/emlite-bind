@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLFrameElement {
@@ -10,7 +7,9 @@ pub struct HTMLFrameElement {
 }
 impl FromVal for HTMLFrameElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLFrameElement { inner: HTMLElement::from_val(v) }
+        HTMLFrameElement {
+            inner: HTMLElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for HTMLFrameElement {
 }
 impl AsMut<emlite::Val> for HTMLFrameElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<HTMLFrameElement> for emlite::Val {
     fn from(s: HTMLFrameElement) -> emlite::Val {
@@ -49,15 +48,14 @@ impl From<HTMLFrameElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLFrameElement);
 
-
-
 impl HTMLFrameElement {
     pub fn new() -> HTMLFrameElement {
         Self {
-            inner: emlite::Val::global("HTMLFrameElement").new(&[]).as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLFrameElement")
+                .new(&[])
+                .as_::<HTMLElement>(),
         }
     }
-
 }
 impl HTMLFrameElement {
     pub fn name(&self) -> DOMString {
@@ -67,7 +65,6 @@ impl HTMLFrameElement {
     pub fn set_name(&mut self, value: DOMString) {
         self.inner.set("name", value);
     }
-
 }
 impl HTMLFrameElement {
     pub fn scrolling(&self) -> DOMString {
@@ -77,7 +74,6 @@ impl HTMLFrameElement {
     pub fn set_scrolling(&mut self, value: DOMString) {
         self.inner.set("scrolling", value);
     }
-
 }
 impl HTMLFrameElement {
     pub fn src(&self) -> USVString {
@@ -87,7 +83,6 @@ impl HTMLFrameElement {
     pub fn set_src(&mut self, value: USVString) {
         self.inner.set("src", value);
     }
-
 }
 impl HTMLFrameElement {
     pub fn frame_border(&self) -> DOMString {
@@ -97,7 +92,6 @@ impl HTMLFrameElement {
     pub fn set_frame_border(&mut self, value: DOMString) {
         self.inner.set("frameBorder", value);
     }
-
 }
 impl HTMLFrameElement {
     pub fn long_desc(&self) -> USVString {
@@ -107,7 +101,6 @@ impl HTMLFrameElement {
     pub fn set_long_desc(&mut self, value: USVString) {
         self.inner.set("longDesc", value);
     }
-
 }
 impl HTMLFrameElement {
     pub fn no_resize(&self) -> bool {
@@ -117,19 +110,16 @@ impl HTMLFrameElement {
     pub fn set_no_resize(&mut self, value: bool) {
         self.inner.set("noResize", value);
     }
-
 }
 impl HTMLFrameElement {
     pub fn content_document(&self) -> Document {
         self.inner.get("contentDocument").as_::<Document>()
     }
-
 }
 impl HTMLFrameElement {
     pub fn content_window(&self) -> Any {
         self.inner.get("contentWindow").as_::<Any>()
     }
-
 }
 impl HTMLFrameElement {
     pub fn margin_height(&self) -> DOMString {
@@ -139,7 +129,6 @@ impl HTMLFrameElement {
     pub fn set_margin_height(&mut self, value: DOMString) {
         self.inner.set("marginHeight", value);
     }
-
 }
 impl HTMLFrameElement {
     pub fn margin_width(&self) -> DOMString {
@@ -149,5 +138,4 @@ impl HTMLFrameElement {
     pub fn set_margin_width(&mut self, value: DOMString) {
         self.inner.set("marginWidth", value);
     }
-
 }

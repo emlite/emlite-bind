@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioBufferSourceNode {
@@ -10,7 +7,9 @@ pub struct AudioBufferSourceNode {
 }
 impl FromVal for AudioBufferSourceNode {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioBufferSourceNode { inner: AudioScheduledSourceNode::from_val(v) }
+        AudioBufferSourceNode {
+            inner: AudioScheduledSourceNode::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for AudioBufferSourceNode {
 }
 impl AsMut<emlite::Val> for AudioBufferSourceNode {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<AudioBufferSourceNode> for emlite::Val {
     fn from(s: AudioBufferSourceNode) -> emlite::Val {
@@ -49,21 +48,22 @@ impl From<AudioBufferSourceNode> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AudioBufferSourceNode);
 
-
-
 impl AudioBufferSourceNode {
     pub fn new0(context: BaseAudioContext) -> AudioBufferSourceNode {
         Self {
-            inner: emlite::Val::global("AudioBufferSourceNode").new(&[context.into()]).as_::<AudioScheduledSourceNode>(),
+            inner: emlite::Val::global("AudioBufferSourceNode")
+                .new(&[context.into()])
+                .as_::<AudioScheduledSourceNode>(),
         }
     }
 
     pub fn new1(context: BaseAudioContext, options: Any) -> AudioBufferSourceNode {
         Self {
-            inner: emlite::Val::global("AudioBufferSourceNode").new(&[context.into(), options.into()]).as_::<AudioScheduledSourceNode>(),
+            inner: emlite::Val::global("AudioBufferSourceNode")
+                .new(&[context.into(), options.into()])
+                .as_::<AudioScheduledSourceNode>(),
         }
     }
-
 }
 impl AudioBufferSourceNode {
     pub fn buffer(&self) -> AudioBuffer {
@@ -73,19 +73,16 @@ impl AudioBufferSourceNode {
     pub fn set_buffer(&mut self, value: AudioBuffer) {
         self.inner.set("buffer", value);
     }
-
 }
 impl AudioBufferSourceNode {
     pub fn playback_rate(&self) -> AudioParam {
         self.inner.get("playbackRate").as_::<AudioParam>()
     }
-
 }
 impl AudioBufferSourceNode {
     pub fn detune(&self) -> AudioParam {
         self.inner.get("detune").as_::<AudioParam>()
     }
-
 }
 impl AudioBufferSourceNode {
     pub fn loop_(&self) -> bool {
@@ -95,7 +92,6 @@ impl AudioBufferSourceNode {
     pub fn set_loop_(&mut self, value: bool) {
         self.inner.set("loop", value);
     }
-
 }
 impl AudioBufferSourceNode {
     pub fn loop_start(&self) -> f64 {
@@ -105,7 +101,6 @@ impl AudioBufferSourceNode {
     pub fn set_loop_start(&mut self, value: f64) {
         self.inner.set("loopStart", value);
     }
-
 }
 impl AudioBufferSourceNode {
     pub fn loop_end(&self) -> f64 {
@@ -115,23 +110,25 @@ impl AudioBufferSourceNode {
     pub fn set_loop_end(&mut self, value: f64) {
         self.inner.set("loopEnd", value);
     }
-
 }
 impl AudioBufferSourceNode {
-    pub fn start0(&self, ) -> Undefined {
+    pub fn start0(&self) -> Undefined {
         self.inner.call("start", &[]).as_::<Undefined>()
     }
 
     pub fn start1(&self, when: f64) -> Undefined {
-        self.inner.call("start", &[when.into(), ]).as_::<Undefined>()
+        self.inner.call("start", &[when.into()]).as_::<Undefined>()
     }
 
     pub fn start2(&self, when: f64, offset: f64) -> Undefined {
-        self.inner.call("start", &[when.into(), offset.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("start", &[when.into(), offset.into()])
+            .as_::<Undefined>()
     }
 
     pub fn start3(&self, when: f64, offset: f64, duration: f64) -> Undefined {
-        self.inner.call("start", &[when.into(), offset.into(), duration.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("start", &[when.into(), offset.into(), duration.into()])
+            .as_::<Undefined>()
     }
-
 }

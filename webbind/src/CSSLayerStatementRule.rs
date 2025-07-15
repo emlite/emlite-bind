@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSLayerStatementRule {
@@ -10,7 +7,9 @@ pub struct CSSLayerStatementRule {
 }
 impl FromVal for CSSLayerStatementRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSLayerStatementRule { inner: CSSRule::from_val(v) }
+        CSSLayerStatementRule {
+            inner: CSSRule::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSLayerStatementRule {
 }
 impl AsMut<emlite::Val> for CSSLayerStatementRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSLayerStatementRule> for emlite::Val {
     fn from(s: CSSLayerStatementRule) -> emlite::Val {
@@ -49,10 +48,8 @@ impl From<CSSLayerStatementRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSLayerStatementRule);
 
-
 impl CSSLayerStatementRule {
     pub fn name_list(&self) -> FrozenArray<CSSOMString> {
         self.inner.get("nameList").as_::<FrozenArray<CSSOMString>>()
     }
-
 }

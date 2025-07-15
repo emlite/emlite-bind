@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSFunctionDescriptors {
@@ -10,7 +7,9 @@ pub struct CSSFunctionDescriptors {
 }
 impl FromVal for CSSFunctionDescriptors {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSFunctionDescriptors { inner: CSSStyleDeclaration::from_val(v) }
+        CSSFunctionDescriptors {
+            inner: CSSStyleDeclaration::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSFunctionDescriptors {
 }
 impl AsMut<emlite::Val> for CSSFunctionDescriptors {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSFunctionDescriptors> for emlite::Val {
     fn from(s: CSSFunctionDescriptors) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<CSSFunctionDescriptors> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSFunctionDescriptors);
 
-
 impl CSSFunctionDescriptors {
     pub fn result(&self) -> CSSOMString {
         self.inner.get("result").as_::<CSSOMString>()
@@ -58,5 +56,4 @@ impl CSSFunctionDescriptors {
     pub fn set_result(&mut self, value: CSSOMString) {
         self.inner.set("result", value);
     }
-
 }

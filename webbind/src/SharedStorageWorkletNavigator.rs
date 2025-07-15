@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SharedStorageWorkletNavigator {
@@ -10,7 +7,9 @@ pub struct SharedStorageWorkletNavigator {
 }
 impl FromVal for SharedStorageWorkletNavigator {
     fn from_val(v: &emlite::Val) -> Self {
-        SharedStorageWorkletNavigator { inner: emlite::Val::from_val(v) }
+        SharedStorageWorkletNavigator {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SharedStorageWorkletNavigator {
 }
 impl AsMut<emlite::Val> for SharedStorageWorkletNavigator {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SharedStorageWorkletNavigator> for emlite::Val {
     fn from(s: SharedStorageWorkletNavigator) -> emlite::Val {
@@ -49,10 +48,8 @@ impl From<SharedStorageWorkletNavigator> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SharedStorageWorkletNavigator);
 
-
 impl SharedStorageWorkletNavigator {
     pub fn locks(&self) -> LockManager {
         self.inner.get("locks").as_::<LockManager>()
     }
-
 }

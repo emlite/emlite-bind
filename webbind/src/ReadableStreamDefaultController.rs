@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ReadableStreamDefaultController {
@@ -10,7 +7,9 @@ pub struct ReadableStreamDefaultController {
 }
 impl FromVal for ReadableStreamDefaultController {
     fn from_val(v: &emlite::Val) -> Self {
-        ReadableStreamDefaultController { inner: emlite::Val::from_val(v) }
+        ReadableStreamDefaultController {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for ReadableStreamDefaultController {
 }
 impl AsMut<emlite::Val> for ReadableStreamDefaultController {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<ReadableStreamDefaultController> for emlite::Val {
     fn from(s: ReadableStreamDefaultController) -> emlite::Val {
@@ -49,36 +48,33 @@ impl From<ReadableStreamDefaultController> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ReadableStreamDefaultController);
 
-
 impl ReadableStreamDefaultController {
     pub fn desired_size(&self) -> f64 {
         self.inner.get("desiredSize").as_::<f64>()
     }
-
 }
 impl ReadableStreamDefaultController {
-    pub fn close(&self, ) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
-
 }
 impl ReadableStreamDefaultController {
-    pub fn enqueue0(&self, ) -> Undefined {
+    pub fn enqueue0(&self) -> Undefined {
         self.inner.call("enqueue", &[]).as_::<Undefined>()
     }
 
     pub fn enqueue1(&self, chunk: Any) -> Undefined {
-        self.inner.call("enqueue", &[chunk.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("enqueue", &[chunk.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl ReadableStreamDefaultController {
-    pub fn error0(&self, ) -> Undefined {
+    pub fn error0(&self) -> Undefined {
         self.inner.call("error", &[]).as_::<Undefined>()
     }
 
     pub fn error1(&self, e: Any) -> Undefined {
-        self.inner.call("error", &[e.into(), ]).as_::<Undefined>()
+        self.inner.call("error", &[e.into()]).as_::<Undefined>()
     }
-
 }

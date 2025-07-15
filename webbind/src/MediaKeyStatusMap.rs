@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaKeyStatusMap {
@@ -10,7 +7,9 @@ pub struct MediaKeyStatusMap {
 }
 impl FromVal for MediaKeyStatusMap {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaKeyStatusMap { inner: emlite::Val::from_val(v) }
+        MediaKeyStatusMap {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for MediaKeyStatusMap {
 }
 impl AsMut<emlite::Val> for MediaKeyStatusMap {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<MediaKeyStatusMap> for emlite::Val {
     fn from(s: MediaKeyStatusMap) -> emlite::Val {
@@ -49,22 +48,18 @@ impl From<MediaKeyStatusMap> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MediaKeyStatusMap);
 
-
 impl MediaKeyStatusMap {
     pub fn size(&self) -> u32 {
         self.inner.get("size").as_::<u32>()
     }
-
 }
 impl MediaKeyStatusMap {
     pub fn has(&self, key_id: Any) -> bool {
-        self.inner.call("has", &[key_id.into(), ]).as_::<bool>()
+        self.inner.call("has", &[key_id.into()]).as_::<bool>()
     }
-
 }
 impl MediaKeyStatusMap {
     pub fn get(&self, key_id: Any) -> Any {
-        self.inner.call("get", &[key_id.into(), ]).as_::<Any>()
+        self.inner.call("get", &[key_id.into()]).as_::<Any>()
     }
-
 }

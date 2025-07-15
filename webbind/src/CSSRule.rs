@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSRule {
@@ -10,7 +7,9 @@ pub struct CSSRule {
 }
 impl FromVal for CSSRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSRule { inner: emlite::Val::from_val(v) }
+        CSSRule {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSRule {
 }
 impl AsMut<emlite::Val> for CSSRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSRule> for emlite::Val {
     fn from(s: CSSRule) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<CSSRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSRule);
 
-
 impl CSSRule {
     pub fn css_text(&self) -> CSSOMString {
         self.inner.get("cssText").as_::<CSSOMString>()
@@ -58,23 +56,19 @@ impl CSSRule {
     pub fn set_css_text(&mut self, value: CSSOMString) {
         self.inner.set("cssText", value);
     }
-
 }
 impl CSSRule {
     pub fn parent_rule(&self) -> CSSRule {
         self.inner.get("parentRule").as_::<CSSRule>()
     }
-
 }
 impl CSSRule {
     pub fn parent_style_sheet(&self) -> CSSStyleSheet {
         self.inner.get("parentStyleSheet").as_::<CSSStyleSheet>()
     }
-
 }
 impl CSSRule {
     pub fn type_(&self) -> u16 {
         self.inner.get("type").as_::<u16>()
     }
-
 }

@@ -4,8 +4,6 @@ use alloc::string::String;
 use alloc::vec::Vec;
 
 /// One-to-one wrapper around a JS `Date` instance.
-///
-/// Construction is lazy: no extra fields, just a shared `emlite::Val`.
 #[derive(Clone, Debug, PartialOrd)]
 #[repr(transparent)]
 pub struct Date {
@@ -35,30 +33,30 @@ impl Date {
 }
 
 impl Date {
-    /// [`Date.prototype.valueOf`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date/valueOf)  
+    /// `Date.prototype.valueOf`
     /// (epoch milliseconds).
     #[inline]
     pub fn value_of(&self) -> i64 {
         self.inner.call("valueOf", &[]).as_::<i64>()
     }
 
-    /// [`Date.prototype.getTime`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime)
+    /// `Date.prototype.getTime`
     #[inline]
     pub fn get_time(&self) -> i64 {
         self.value_of()
     }
 
-    /// [`Date.prototype.toISOString`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString)
+    /// `Date.prototype.toISOString`
     pub fn to_iso_string(&self) -> String {
         self.inner.call("toISOString", &[]).as_::<String>()
     }
 
-    /// [`Date.prototype.toUTCString`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString)
+    /// `Date.prototype.toUTCString`
     pub fn to_utc_string(&self) -> String {
         self.inner.call("toUTCString", &[]).as_::<String>()
     }
 
-    /// [`Date.prototype.toLocaleString`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString)
+    /// `Date.prototype.toLocaleString`
     pub fn to_locale_string(&self, locales: Option<&Any>, opts: Option<&Any>) -> String {
         let mut a = Vec::new();
         if let Some(l) = locales {

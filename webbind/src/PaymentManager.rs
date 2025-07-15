@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PaymentManager {
@@ -10,7 +7,9 @@ pub struct PaymentManager {
 }
 impl FromVal for PaymentManager {
     fn from_val(v: &emlite::Val) -> Self {
-        PaymentManager { inner: emlite::Val::from_val(v) }
+        PaymentManager {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for PaymentManager {
 }
 impl AsMut<emlite::Val> for PaymentManager {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<PaymentManager> for emlite::Val {
     fn from(s: PaymentManager) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<PaymentManager> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PaymentManager);
 
-
 impl PaymentManager {
     pub fn user_hint(&self) -> DOMString {
         self.inner.get("userHint").as_::<DOMString>()
@@ -58,11 +56,11 @@ impl PaymentManager {
     pub fn set_user_hint(&mut self, value: DOMString) {
         self.inner.set("userHint", value);
     }
-
 }
 impl PaymentManager {
     pub fn enable_delegations(&self, delegations: Sequence<PaymentDelegation>) -> Promise {
-        self.inner.call("enableDelegations", &[delegations.into(), ]).as_::<Promise>()
+        self.inner
+            .call("enableDelegations", &[delegations.into()])
+            .as_::<Promise>()
     }
-
 }

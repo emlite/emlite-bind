@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGUseElement {
@@ -10,7 +7,9 @@ pub struct SVGUseElement {
 }
 impl FromVal for SVGUseElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGUseElement { inner: SVGGraphicsElement::from_val(v) }
+        SVGUseElement {
+            inner: SVGGraphicsElement::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for SVGUseElement {
 }
 impl AsMut<emlite::Val> for SVGUseElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SVGUseElement> for emlite::Val {
     fn from(s: SVGUseElement) -> emlite::Val {
@@ -49,46 +48,38 @@ impl From<SVGUseElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGUseElement);
 
-
 impl SVGUseElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGUseElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGUseElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGUseElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
-
 }
 impl SVGUseElement {
     pub fn instance_root(&self) -> SVGElement {
         self.inner.get("instanceRoot").as_::<SVGElement>()
     }
-
 }
 impl SVGUseElement {
     pub fn animated_instance_root(&self) -> SVGElement {
         self.inner.get("animatedInstanceRoot").as_::<SVGElement>()
     }
-
 }
 impl SVGUseElement {
     pub fn href(&self) -> SVGAnimatedString {
         self.inner.get("href").as_::<SVGAnimatedString>()
     }
-
 }

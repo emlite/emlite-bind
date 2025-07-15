@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IdentityCredentialDisconnectOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for IdentityCredentialDisconnectOptions {
 }
 impl AsMut<emlite::Val> for IdentityCredentialDisconnectOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<IdentityCredentialDisconnectOptions> for emlite::Val {
     fn from(s: IdentityCredentialDisconnectOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl IdentityCredentialDisconnectOptions {
     pub fn set_account_hint(&mut self, value: USVString) {
         self.inner.set("accountHint", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -65,7 +61,9 @@ pub struct IdentityCredential {
 }
 impl FromVal for IdentityCredential {
     fn from_val(v: &emlite::Val) -> Self {
-        IdentityCredential { inner: Credential::from_val(v) }
+        IdentityCredential {
+            inner: Credential::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -92,8 +90,8 @@ impl AsRef<emlite::Val> for IdentityCredential {
 }
 impl AsMut<emlite::Val> for IdentityCredential {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<IdentityCredential> for emlite::Val {
     fn from(s: IdentityCredential) -> emlite::Val {
@@ -104,28 +102,25 @@ impl From<IdentityCredential> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(IdentityCredential);
 
-
 impl IdentityCredential {
     pub fn disconnect(options: IdentityCredentialDisconnectOptions) -> Promise {
-        emlite::Val::global("identitycredential").call("disconnect", &[options.into(), ]).as_::<Promise>()
+        emlite::Val::global("IdentityCredential")
+            .call("disconnect", &[options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl IdentityCredential {
     pub fn token(&self) -> USVString {
         self.inner.get("token").as_::<USVString>()
     }
-
 }
 impl IdentityCredential {
     pub fn is_auto_selected(&self) -> bool {
         self.inner.get("isAutoSelected").as_::<bool>()
     }
-
 }
 impl IdentityCredential {
     pub fn config_url(&self) -> USVString {
         self.inner.get("configURL").as_::<USVString>()
     }
-
 }

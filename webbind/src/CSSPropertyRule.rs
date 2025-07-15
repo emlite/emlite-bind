@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSPropertyRule {
@@ -10,7 +7,9 @@ pub struct CSSPropertyRule {
 }
 impl FromVal for CSSPropertyRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSPropertyRule { inner: CSSRule::from_val(v) }
+        CSSPropertyRule {
+            inner: CSSRule::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSPropertyRule {
 }
 impl AsMut<emlite::Val> for CSSPropertyRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSPropertyRule> for emlite::Val {
     fn from(s: CSSPropertyRule) -> emlite::Val {
@@ -49,28 +48,23 @@ impl From<CSSPropertyRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSPropertyRule);
 
-
 impl CSSPropertyRule {
     pub fn name(&self) -> CSSOMString {
         self.inner.get("name").as_::<CSSOMString>()
     }
-
 }
 impl CSSPropertyRule {
     pub fn syntax(&self) -> CSSOMString {
         self.inner.get("syntax").as_::<CSSOMString>()
     }
-
 }
 impl CSSPropertyRule {
     pub fn inherits(&self) -> bool {
         self.inner.get("inherits").as_::<bool>()
     }
-
 }
 impl CSSPropertyRule {
     pub fn initial_value(&self) -> CSSOMString {
         self.inner.get("initialValue").as_::<CSSOMString>()
     }
-
 }

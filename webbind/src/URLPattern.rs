@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct URLPatternResult {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for URLPatternResult {
 }
 impl AsMut<emlite::Val> for URLPatternResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<URLPatternResult> for emlite::Val {
     fn from(s: URLPatternResult) -> emlite::Val {
@@ -56,7 +53,6 @@ impl URLPatternResult {
     pub fn set_inputs(&mut self, value: Sequence<Any>) {
         self.inner.set("inputs", value);
     }
-
 }
 impl URLPatternResult {
     pub fn protocol(&self) -> Any {
@@ -66,7 +62,6 @@ impl URLPatternResult {
     pub fn set_protocol(&mut self, value: Any) {
         self.inner.set("protocol", value);
     }
-
 }
 impl URLPatternResult {
     pub fn username(&self) -> Any {
@@ -76,7 +71,6 @@ impl URLPatternResult {
     pub fn set_username(&mut self, value: Any) {
         self.inner.set("username", value);
     }
-
 }
 impl URLPatternResult {
     pub fn password(&self) -> Any {
@@ -86,7 +80,6 @@ impl URLPatternResult {
     pub fn set_password(&mut self, value: Any) {
         self.inner.set("password", value);
     }
-
 }
 impl URLPatternResult {
     pub fn hostname(&self) -> Any {
@@ -96,7 +89,6 @@ impl URLPatternResult {
     pub fn set_hostname(&mut self, value: Any) {
         self.inner.set("hostname", value);
     }
-
 }
 impl URLPatternResult {
     pub fn port(&self) -> Any {
@@ -106,7 +98,6 @@ impl URLPatternResult {
     pub fn set_port(&mut self, value: Any) {
         self.inner.set("port", value);
     }
-
 }
 impl URLPatternResult {
     pub fn pathname(&self) -> Any {
@@ -116,7 +107,6 @@ impl URLPatternResult {
     pub fn set_pathname(&mut self, value: Any) {
         self.inner.set("pathname", value);
     }
-
 }
 impl URLPatternResult {
     pub fn search(&self) -> Any {
@@ -126,7 +116,6 @@ impl URLPatternResult {
     pub fn set_search(&mut self, value: Any) {
         self.inner.set("search", value);
     }
-
 }
 impl URLPatternResult {
     pub fn hash(&self) -> Any {
@@ -136,7 +125,6 @@ impl URLPatternResult {
     pub fn set_hash(&mut self, value: Any) {
         self.inner.set("hash", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -145,7 +133,9 @@ pub struct URLPattern {
 }
 impl FromVal for URLPattern {
     fn from_val(v: &emlite::Val) -> Self {
-        URLPattern { inner: emlite::Val::from_val(v) }
+        URLPattern {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -172,8 +162,8 @@ impl AsRef<emlite::Val> for URLPattern {
 }
 impl AsMut<emlite::Val> for URLPattern {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<URLPattern> for emlite::Val {
     fn from(s: URLPattern) -> emlite::Val {
@@ -184,107 +174,105 @@ impl From<URLPattern> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(URLPattern);
 
-
-
 impl URLPattern {
     pub fn new0() -> URLPattern {
         Self {
-            inner: emlite::Val::global("URLPattern").new(&[]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("URLPattern")
+                .new(&[])
+                .as_::<emlite::Val>(),
         }
     }
 
     pub fn new1(input: Any) -> URLPattern {
         Self {
-            inner: emlite::Val::global("URLPattern").new(&[input.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("URLPattern")
+                .new(&[input.into()])
+                .as_::<emlite::Val>(),
         }
     }
 
     pub fn new2(input: Any, options: Any) -> URLPattern {
         Self {
-            inner: emlite::Val::global("URLPattern").new(&[input.into(), options.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("URLPattern")
+                .new(&[input.into(), options.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl URLPattern {
-    pub fn test0(&self, ) -> bool {
+    pub fn test0(&self) -> bool {
         self.inner.call("test", &[]).as_::<bool>()
     }
 
     pub fn test1(&self, input: Any) -> bool {
-        self.inner.call("test", &[input.into(), ]).as_::<bool>()
+        self.inner.call("test", &[input.into()]).as_::<bool>()
     }
 
     pub fn test2(&self, input: Any, base_url: USVString) -> bool {
-        self.inner.call("test", &[input.into(), base_url.into(), ]).as_::<bool>()
+        self.inner
+            .call("test", &[input.into(), base_url.into()])
+            .as_::<bool>()
     }
-
 }
 impl URLPattern {
-    pub fn exec0(&self, ) -> URLPatternResult {
+    pub fn exec0(&self) -> URLPatternResult {
         self.inner.call("exec", &[]).as_::<URLPatternResult>()
     }
 
     pub fn exec1(&self, input: Any) -> URLPatternResult {
-        self.inner.call("exec", &[input.into(), ]).as_::<URLPatternResult>()
+        self.inner
+            .call("exec", &[input.into()])
+            .as_::<URLPatternResult>()
     }
 
     pub fn exec2(&self, input: Any, base_url: USVString) -> URLPatternResult {
-        self.inner.call("exec", &[input.into(), base_url.into(), ]).as_::<URLPatternResult>()
+        self.inner
+            .call("exec", &[input.into(), base_url.into()])
+            .as_::<URLPatternResult>()
     }
-
 }
 impl URLPattern {
     pub fn protocol(&self) -> USVString {
         self.inner.get("protocol").as_::<USVString>()
     }
-
 }
 impl URLPattern {
     pub fn username(&self) -> USVString {
         self.inner.get("username").as_::<USVString>()
     }
-
 }
 impl URLPattern {
     pub fn password(&self) -> USVString {
         self.inner.get("password").as_::<USVString>()
     }
-
 }
 impl URLPattern {
     pub fn hostname(&self) -> USVString {
         self.inner.get("hostname").as_::<USVString>()
     }
-
 }
 impl URLPattern {
     pub fn port(&self) -> USVString {
         self.inner.get("port").as_::<USVString>()
     }
-
 }
 impl URLPattern {
     pub fn pathname(&self) -> USVString {
         self.inner.get("pathname").as_::<USVString>()
     }
-
 }
 impl URLPattern {
     pub fn search(&self) -> USVString {
         self.inner.get("search").as_::<USVString>()
     }
-
 }
 impl URLPattern {
     pub fn hash(&self) -> USVString {
         self.inner.get("hash").as_::<USVString>()
     }
-
 }
 impl URLPattern {
     pub fn has_reg_exp_groups(&self) -> bool {
         self.inner.get("hasRegExpGroups").as_::<bool>()
     }
-
 }

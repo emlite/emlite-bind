@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct USBIsochronousOutTransferResult {
@@ -10,7 +7,9 @@ pub struct USBIsochronousOutTransferResult {
 }
 impl FromVal for USBIsochronousOutTransferResult {
     fn from_val(v: &emlite::Val) -> Self {
-        USBIsochronousOutTransferResult { inner: emlite::Val::from_val(v) }
+        USBIsochronousOutTransferResult {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for USBIsochronousOutTransferResult {
 }
 impl AsMut<emlite::Val> for USBIsochronousOutTransferResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<USBIsochronousOutTransferResult> for emlite::Val {
     fn from(s: USBIsochronousOutTransferResult) -> emlite::Val {
@@ -49,19 +48,21 @@ impl From<USBIsochronousOutTransferResult> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(USBIsochronousOutTransferResult);
 
-
-
 impl USBIsochronousOutTransferResult {
-    pub fn new(packets: Sequence<USBIsochronousOutTransferPacket>) -> USBIsochronousOutTransferResult {
+    pub fn new(
+        packets: Sequence<USBIsochronousOutTransferPacket>,
+    ) -> USBIsochronousOutTransferResult {
         Self {
-            inner: emlite::Val::global("USBIsochronousOutTransferResult").new(&[packets.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("USBIsochronousOutTransferResult")
+                .new(&[packets.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl USBIsochronousOutTransferResult {
     pub fn packets(&self) -> FrozenArray<USBIsochronousOutTransferPacket> {
-        self.inner.get("packets").as_::<FrozenArray<USBIsochronousOutTransferPacket>>()
+        self.inner
+            .get("packets")
+            .as_::<FrozenArray<USBIsochronousOutTransferPacket>>()
     }
-
 }

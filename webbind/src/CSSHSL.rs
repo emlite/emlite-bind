@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSHSL {
@@ -10,7 +7,9 @@ pub struct CSSHSL {
 }
 impl FromVal for CSSHSL {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSHSL { inner: CSSColorValue::from_val(v) }
+        CSSHSL {
+            inner: CSSColorValue::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSHSL {
 }
 impl AsMut<emlite::Val> for CSSHSL {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSHSL> for emlite::Val {
     fn from(s: CSSHSL) -> emlite::Val {
@@ -49,21 +48,22 @@ impl From<CSSHSL> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSHSL);
 
-
-
 impl CSSHSL {
     pub fn new0(h: Any, s: Any, l: Any) -> CSSHSL {
         Self {
-            inner: emlite::Val::global("CSSHSL").new(&[h.into(), s.into(), l.into()]).as_::<CSSColorValue>(),
+            inner: emlite::Val::global("CSSHSL")
+                .new(&[h.into(), s.into(), l.into()])
+                .as_::<CSSColorValue>(),
         }
     }
 
     pub fn new1(h: Any, s: Any, l: Any, alpha: Any) -> CSSHSL {
         Self {
-            inner: emlite::Val::global("CSSHSL").new(&[h.into(), s.into(), l.into(), alpha.into()]).as_::<CSSColorValue>(),
+            inner: emlite::Val::global("CSSHSL")
+                .new(&[h.into(), s.into(), l.into(), alpha.into()])
+                .as_::<CSSColorValue>(),
         }
     }
-
 }
 impl CSSHSL {
     pub fn h(&self) -> Any {
@@ -73,7 +73,6 @@ impl CSSHSL {
     pub fn set_h(&mut self, value: Any) {
         self.inner.set("h", value);
     }
-
 }
 impl CSSHSL {
     pub fn s(&self) -> Any {
@@ -83,7 +82,6 @@ impl CSSHSL {
     pub fn set_s(&mut self, value: Any) {
         self.inner.set("s", value);
     }
-
 }
 impl CSSHSL {
     pub fn l(&self) -> Any {
@@ -93,7 +91,6 @@ impl CSSHSL {
     pub fn set_l(&mut self, value: Any) {
         self.inner.set("l", value);
     }
-
 }
 impl CSSHSL {
     pub fn alpha(&self) -> Any {
@@ -103,5 +100,4 @@ impl CSSHSL {
     pub fn set_alpha(&mut self, value: Any) {
         self.inner.set("alpha", value);
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPURenderPipeline {
@@ -10,7 +7,9 @@ pub struct GPURenderPipeline {
 }
 impl FromVal for GPURenderPipeline {
     fn from_val(v: &emlite::Val) -> Self {
-        GPURenderPipeline { inner: emlite::Val::from_val(v) }
+        GPURenderPipeline {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for GPURenderPipeline {
 }
 impl AsMut<emlite::Val> for GPURenderPipeline {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<GPURenderPipeline> for emlite::Val {
     fn from(s: GPURenderPipeline) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<GPURenderPipeline> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GPURenderPipeline);
 
-
 impl GPURenderPipeline {
     pub fn label(&self) -> USVString {
         self.inner.get("label").as_::<USVString>()
@@ -58,11 +56,11 @@ impl GPURenderPipeline {
     pub fn set_label(&mut self, value: USVString) {
         self.inner.set("label", value);
     }
-
 }
 impl GPURenderPipeline {
     pub fn get_bind_group_layout(&self, index: u32) -> GPUBindGroupLayout {
-        self.inner.call("getBindGroupLayout", &[index.into(), ]).as_::<GPUBindGroupLayout>()
+        self.inner
+            .call("getBindGroupLayout", &[index.into()])
+            .as_::<GPUBindGroupLayout>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DOMRectList {
@@ -10,7 +7,9 @@ pub struct DOMRectList {
 }
 impl FromVal for DOMRectList {
     fn from_val(v: &emlite::Val) -> Self {
-        DOMRectList { inner: emlite::Val::from_val(v) }
+        DOMRectList {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for DOMRectList {
 }
 impl AsMut<emlite::Val> for DOMRectList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<DOMRectList> for emlite::Val {
     fn from(s: DOMRectList) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<DOMRectList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(DOMRectList);
 
-
 impl DOMRectList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl DOMRectList {
     pub fn item(&self, index: u32) -> DOMRect {
-        self.inner.call("item", &[index.into(), ]).as_::<DOMRect>()
+        self.inner.call("item", &[index.into()]).as_::<DOMRect>()
     }
-
 }

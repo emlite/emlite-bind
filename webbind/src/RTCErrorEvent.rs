@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCErrorEvent {
@@ -10,7 +7,9 @@ pub struct RTCErrorEvent {
 }
 impl FromVal for RTCErrorEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCErrorEvent { inner: Event::from_val(v) }
+        RTCErrorEvent {
+            inner: Event::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for RTCErrorEvent {
 }
 impl AsMut<emlite::Val> for RTCErrorEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<RTCErrorEvent> for emlite::Val {
     fn from(s: RTCErrorEvent) -> emlite::Val {
@@ -49,19 +48,17 @@ impl From<RTCErrorEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCErrorEvent);
 
-
-
 impl RTCErrorEvent {
     pub fn new(type_: DOMString, event_init_dict: Any) -> RTCErrorEvent {
         Self {
-            inner: emlite::Val::global("RTCErrorEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
+            inner: emlite::Val::global("RTCErrorEvent")
+                .new(&[type_.into(), event_init_dict.into()])
+                .as_::<Event>(),
         }
     }
-
 }
 impl RTCErrorEvent {
     pub fn error(&self) -> RTCError {
         self.inner.get("error").as_::<RTCError>()
     }
-
 }

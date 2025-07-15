@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FontFaceSet {
@@ -10,7 +7,9 @@ pub struct FontFaceSet {
 }
 impl FromVal for FontFaceSet {
     fn from_val(v: &emlite::Val) -> Self {
-        FontFaceSet { inner: EventTarget::from_val(v) }
+        FontFaceSet {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for FontFaceSet {
 }
 impl AsMut<emlite::Val> for FontFaceSet {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<FontFaceSet> for emlite::Val {
     fn from(s: FontFaceSet) -> emlite::Val {
@@ -49,24 +48,20 @@ impl From<FontFaceSet> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FontFaceSet);
 
-
 impl FontFaceSet {
     pub fn add(&self, font: FontFace) -> FontFaceSet {
-        self.inner.call("add", &[font.into(), ]).as_::<FontFaceSet>()
+        self.inner.call("add", &[font.into()]).as_::<FontFaceSet>()
     }
-
 }
 impl FontFaceSet {
     pub fn delete(&self, font: FontFace) -> bool {
-        self.inner.call("delete", &[font.into(), ]).as_::<bool>()
+        self.inner.call("delete", &[font.into()]).as_::<bool>()
     }
-
 }
 impl FontFaceSet {
-    pub fn clear(&self, ) -> Undefined {
+    pub fn clear(&self) -> Undefined {
         self.inner.call("clear", &[]).as_::<Undefined>()
     }
-
 }
 impl FontFaceSet {
     pub fn onloading(&self) -> Any {
@@ -76,7 +71,6 @@ impl FontFaceSet {
     pub fn set_onloading(&mut self, value: Any) {
         self.inner.set("onloading", value);
     }
-
 }
 impl FontFaceSet {
     pub fn onloadingdone(&self) -> Any {
@@ -86,7 +80,6 @@ impl FontFaceSet {
     pub fn set_onloadingdone(&mut self, value: Any) {
         self.inner.set("onloadingdone", value);
     }
-
 }
 impl FontFaceSet {
     pub fn onloadingerror(&self) -> Any {
@@ -96,37 +89,36 @@ impl FontFaceSet {
     pub fn set_onloadingerror(&mut self, value: Any) {
         self.inner.set("onloadingerror", value);
     }
-
 }
 impl FontFaceSet {
     pub fn load0(&self, font: CSSOMString) -> Promise {
-        self.inner.call("load", &[font.into(), ]).as_::<Promise>()
+        self.inner.call("load", &[font.into()]).as_::<Promise>()
     }
 
     pub fn load1(&self, font: CSSOMString, text: CSSOMString) -> Promise {
-        self.inner.call("load", &[font.into(), text.into(), ]).as_::<Promise>()
+        self.inner
+            .call("load", &[font.into(), text.into()])
+            .as_::<Promise>()
     }
-
 }
 impl FontFaceSet {
     pub fn check0(&self, font: CSSOMString) -> bool {
-        self.inner.call("check", &[font.into(), ]).as_::<bool>()
+        self.inner.call("check", &[font.into()]).as_::<bool>()
     }
 
     pub fn check1(&self, font: CSSOMString, text: CSSOMString) -> bool {
-        self.inner.call("check", &[font.into(), text.into(), ]).as_::<bool>()
+        self.inner
+            .call("check", &[font.into(), text.into()])
+            .as_::<bool>()
     }
-
 }
 impl FontFaceSet {
     pub fn ready(&self) -> Promise {
         self.inner.get("ready").as_::<Promise>()
     }
-
 }
 impl FontFaceSet {
     pub fn status(&self) -> FontFaceSetLoadStatus {
         self.inner.get("status").as_::<FontFaceSetLoadStatus>()
     }
-
 }

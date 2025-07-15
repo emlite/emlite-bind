@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUExternalTexture {
@@ -10,7 +7,9 @@ pub struct GPUExternalTexture {
 }
 impl FromVal for GPUExternalTexture {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUExternalTexture { inner: emlite::Val::from_val(v) }
+        GPUExternalTexture {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for GPUExternalTexture {
 }
 impl AsMut<emlite::Val> for GPUExternalTexture {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<GPUExternalTexture> for emlite::Val {
     fn from(s: GPUExternalTexture) -> emlite::Val {
@@ -49,7 +48,6 @@ impl From<GPUExternalTexture> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GPUExternalTexture);
 
-
 impl GPUExternalTexture {
     pub fn label(&self) -> USVString {
         self.inner.get("label").as_::<USVString>()
@@ -58,5 +56,4 @@ impl GPUExternalTexture {
     pub fn set_label(&mut self, value: USVString) {
         self.inner.set("label", value);
     }
-
 }

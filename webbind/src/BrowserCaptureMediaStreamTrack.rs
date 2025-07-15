@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BrowserCaptureMediaStreamTrack {
@@ -10,7 +7,9 @@ pub struct BrowserCaptureMediaStreamTrack {
 }
 impl FromVal for BrowserCaptureMediaStreamTrack {
     fn from_val(v: &emlite::Val) -> Self {
-        BrowserCaptureMediaStreamTrack { inner: MediaStreamTrack::from_val(v) }
+        BrowserCaptureMediaStreamTrack {
+            inner: MediaStreamTrack::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for BrowserCaptureMediaStreamTrack {
 }
 impl AsMut<emlite::Val> for BrowserCaptureMediaStreamTrack {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<BrowserCaptureMediaStreamTrack> for emlite::Val {
     fn from(s: BrowserCaptureMediaStreamTrack) -> emlite::Val {
@@ -49,22 +48,24 @@ impl From<BrowserCaptureMediaStreamTrack> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BrowserCaptureMediaStreamTrack);
 
-
 impl BrowserCaptureMediaStreamTrack {
     pub fn crop_to(&self, crop_target: CropTarget) -> Promise {
-        self.inner.call("cropTo", &[crop_target.into(), ]).as_::<Promise>()
+        self.inner
+            .call("cropTo", &[crop_target.into()])
+            .as_::<Promise>()
     }
-
 }
 impl BrowserCaptureMediaStreamTrack {
-    pub fn clone_(&self, ) -> BrowserCaptureMediaStreamTrack {
-        self.inner.call("clone", &[]).as_::<BrowserCaptureMediaStreamTrack>()
+    pub fn clone_(&self) -> BrowserCaptureMediaStreamTrack {
+        self.inner
+            .call("clone", &[])
+            .as_::<BrowserCaptureMediaStreamTrack>()
     }
-
 }
 impl BrowserCaptureMediaStreamTrack {
     pub fn restrict_to(&self, restriction_target: RestrictionTarget) -> Promise {
-        self.inner.call("restrictTo", &[restriction_target.into(), ]).as_::<Promise>()
+        self.inner
+            .call("restrictTo", &[restriction_target.into()])
+            .as_::<Promise>()
     }
-
 }

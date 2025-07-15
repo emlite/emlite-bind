@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WindowPostMessageOptions {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for WindowPostMessageOptions {
 }
 impl AsMut<emlite::Val> for WindowPostMessageOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WindowPostMessageOptions> for emlite::Val {
     fn from(s: WindowPostMessageOptions) -> emlite::Val {
@@ -56,7 +53,6 @@ impl WindowPostMessageOptions {
     pub fn set_target_origin(&mut self, value: USVString) {
         self.inner.set("targetOrigin", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -92,8 +88,8 @@ impl AsRef<emlite::Val> for OpenFilePickerOptions {
 }
 impl AsMut<emlite::Val> for OpenFilePickerOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<OpenFilePickerOptions> for emlite::Val {
     fn from(s: OpenFilePickerOptions) -> emlite::Val {
@@ -111,7 +107,6 @@ impl OpenFilePickerOptions {
     pub fn set_multiple(&mut self, value: bool) {
         self.inner.set("multiple", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -147,8 +142,8 @@ impl AsRef<emlite::Val> for SaveFilePickerOptions {
 }
 impl AsMut<emlite::Val> for SaveFilePickerOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<SaveFilePickerOptions> for emlite::Val {
     fn from(s: SaveFilePickerOptions) -> emlite::Val {
@@ -166,7 +161,6 @@ impl SaveFilePickerOptions {
     pub fn set_suggested_name(&mut self, value: USVString) {
         self.inner.set("suggestedName", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -202,8 +196,8 @@ impl AsRef<emlite::Val> for DirectoryPickerOptions {
 }
 impl AsMut<emlite::Val> for DirectoryPickerOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<DirectoryPickerOptions> for emlite::Val {
     fn from(s: DirectoryPickerOptions) -> emlite::Val {
@@ -221,7 +215,6 @@ impl DirectoryPickerOptions {
     pub fn set_id(&mut self, value: DOMString) {
         self.inner.set("id", value);
     }
-
 }
 impl DirectoryPickerOptions {
     pub fn start_in(&self) -> Any {
@@ -231,7 +224,6 @@ impl DirectoryPickerOptions {
     pub fn set_start_in(&mut self, value: Any) {
         self.inner.set("startIn", value);
     }
-
 }
 impl DirectoryPickerOptions {
     pub fn mode(&self) -> FileSystemPermissionMode {
@@ -241,7 +233,6 @@ impl DirectoryPickerOptions {
     pub fn set_mode(&mut self, value: FileSystemPermissionMode) {
         self.inner.set("mode", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -277,8 +268,8 @@ impl AsRef<emlite::Val> for QueryOptions {
 }
 impl AsMut<emlite::Val> for QueryOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<QueryOptions> for emlite::Val {
     fn from(s: QueryOptions) -> emlite::Val {
@@ -290,13 +281,14 @@ impl From<QueryOptions> for emlite::Val {
 
 impl QueryOptions {
     pub fn postscript_names(&self) -> Sequence<DOMString> {
-        self.inner.get("postscriptNames").as_::<Sequence<DOMString>>()
+        self.inner
+            .get("postscriptNames")
+            .as_::<Sequence<DOMString>>()
     }
 
     pub fn set_postscript_names(&mut self, value: Sequence<DOMString>) {
         self.inner.set("postscriptNames", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -332,8 +324,8 @@ impl AsRef<emlite::Val> for IdleRequestOptions {
 }
 impl AsMut<emlite::Val> for IdleRequestOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<IdleRequestOptions> for emlite::Val {
     fn from(s: IdleRequestOptions) -> emlite::Val {
@@ -351,7 +343,6 @@ impl IdleRequestOptions {
     pub fn set_timeout(&mut self, value: u32) {
         self.inner.set("timeout", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -360,7 +351,9 @@ pub struct Window {
 }
 impl FromVal for Window {
     fn from_val(v: &emlite::Val) -> Self {
-        Window { inner: EventTarget::from_val(v) }
+        Window {
+            inner: EventTarget::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -387,8 +380,8 @@ impl AsRef<emlite::Val> for Window {
 }
 impl AsMut<emlite::Val> for Window {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<Window> for emlite::Val {
     fn from(s: Window) -> emlite::Val {
@@ -399,24 +392,20 @@ impl From<Window> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Window);
 
-
 impl Window {
     pub fn window(&self) -> Any {
         self.inner.get("window").as_::<Any>()
     }
-
 }
 impl Window {
     pub fn self_(&self) -> Any {
         self.inner.get("self").as_::<Any>()
     }
-
 }
 impl Window {
     pub fn document(&self) -> Document {
         self.inner.get("document").as_::<Document>()
     }
-
 }
 impl Window {
     pub fn name(&self) -> DOMString {
@@ -426,67 +415,58 @@ impl Window {
     pub fn set_name(&mut self, value: DOMString) {
         self.inner.set("name", value);
     }
-
 }
 impl Window {
     pub fn location(&self) -> Any {
         self.inner.get("location").as_::<Any>()
     }
-
 }
 impl Window {
     pub fn history(&self) -> History {
         self.inner.get("history").as_::<History>()
     }
-
 }
 impl Window {
     pub fn navigation(&self) -> Navigation {
         self.inner.get("navigation").as_::<Navigation>()
     }
-
 }
 impl Window {
     pub fn custom_elements(&self) -> CustomElementRegistry {
-        self.inner.get("customElements").as_::<CustomElementRegistry>()
+        self.inner
+            .get("customElements")
+            .as_::<CustomElementRegistry>()
     }
-
 }
 impl Window {
     pub fn locationbar(&self) -> BarProp {
         self.inner.get("locationbar").as_::<BarProp>()
     }
-
 }
 impl Window {
     pub fn menubar(&self) -> BarProp {
         self.inner.get("menubar").as_::<BarProp>()
     }
-
 }
 impl Window {
     pub fn personalbar(&self) -> BarProp {
         self.inner.get("personalbar").as_::<BarProp>()
     }
-
 }
 impl Window {
     pub fn scrollbars(&self) -> BarProp {
         self.inner.get("scrollbars").as_::<BarProp>()
     }
-
 }
 impl Window {
     pub fn statusbar(&self) -> BarProp {
         self.inner.get("statusbar").as_::<BarProp>()
     }
-
 }
 impl Window {
     pub fn toolbar(&self) -> BarProp {
         self.inner.get("toolbar").as_::<BarProp>()
     }
-
 }
 impl Window {
     pub fn status(&self) -> DOMString {
@@ -496,55 +476,46 @@ impl Window {
     pub fn set_status(&mut self, value: DOMString) {
         self.inner.set("status", value);
     }
-
 }
 impl Window {
-    pub fn close(&self, ) -> Undefined {
+    pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
-
 }
 impl Window {
     pub fn closed(&self) -> bool {
         self.inner.get("closed").as_::<bool>()
     }
-
 }
 impl Window {
-    pub fn stop(&self, ) -> Undefined {
+    pub fn stop(&self) -> Undefined {
         self.inner.call("stop", &[]).as_::<Undefined>()
     }
-
 }
 impl Window {
-    pub fn focus(&self, ) -> Undefined {
+    pub fn focus(&self) -> Undefined {
         self.inner.call("focus", &[]).as_::<Undefined>()
     }
-
 }
 impl Window {
-    pub fn blur(&self, ) -> Undefined {
+    pub fn blur(&self) -> Undefined {
         self.inner.call("blur", &[]).as_::<Undefined>()
     }
-
 }
 impl Window {
     pub fn frames(&self) -> Any {
         self.inner.get("frames").as_::<Any>()
     }
-
 }
 impl Window {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
-
 }
 impl Window {
     pub fn top(&self) -> Any {
         self.inner.get("top").as_::<Any>()
     }
-
 }
 impl Window {
     pub fn opener(&self) -> Any {
@@ -554,113 +525,113 @@ impl Window {
     pub fn set_opener(&mut self, value: Any) {
         self.inner.set("opener", value);
     }
-
 }
 impl Window {
     pub fn parent(&self) -> Any {
         self.inner.get("parent").as_::<Any>()
     }
-
 }
 impl Window {
     pub fn frame_element(&self) -> Element {
         self.inner.get("frameElement").as_::<Element>()
     }
-
 }
 impl Window {
-    pub fn open0(&self, ) -> Any {
+    pub fn open0(&self) -> Any {
         self.inner.call("open", &[]).as_::<Any>()
     }
 
     pub fn open1(&self, url: USVString) -> Any {
-        self.inner.call("open", &[url.into(), ]).as_::<Any>()
+        self.inner.call("open", &[url.into()]).as_::<Any>()
     }
 
     pub fn open2(&self, url: USVString, target: DOMString) -> Any {
-        self.inner.call("open", &[url.into(), target.into(), ]).as_::<Any>()
+        self.inner
+            .call("open", &[url.into(), target.into()])
+            .as_::<Any>()
     }
 
     pub fn open3(&self, url: USVString, target: DOMString, features: DOMString) -> Any {
-        self.inner.call("open", &[url.into(), target.into(), features.into(), ]).as_::<Any>()
+        self.inner
+            .call("open", &[url.into(), target.into(), features.into()])
+            .as_::<Any>()
     }
-
 }
 impl Window {
     pub fn navigator(&self) -> Navigator {
         self.inner.get("navigator").as_::<Navigator>()
     }
-
 }
 impl Window {
     pub fn client_information(&self) -> Navigator {
         self.inner.get("clientInformation").as_::<Navigator>()
     }
-
 }
 impl Window {
     pub fn origin_agent_cluster(&self) -> bool {
         self.inner.get("originAgentCluster").as_::<bool>()
     }
-
 }
 impl Window {
     pub fn alert(&self, message: DOMString) -> Undefined {
-        self.inner.call("alert", &[message.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("alert", &[message.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Window {
-    pub fn confirm0(&self, ) -> bool {
+    pub fn confirm0(&self) -> bool {
         self.inner.call("confirm", &[]).as_::<bool>()
     }
 
     pub fn confirm1(&self, message: DOMString) -> bool {
-        self.inner.call("confirm", &[message.into(), ]).as_::<bool>()
+        self.inner.call("confirm", &[message.into()]).as_::<bool>()
     }
-
 }
 impl Window {
-    pub fn prompt0(&self, ) -> DOMString {
+    pub fn prompt0(&self) -> DOMString {
         self.inner.call("prompt", &[]).as_::<DOMString>()
     }
 
     pub fn prompt1(&self, message: DOMString) -> DOMString {
-        self.inner.call("prompt", &[message.into(), ]).as_::<DOMString>()
+        self.inner
+            .call("prompt", &[message.into()])
+            .as_::<DOMString>()
     }
 
     pub fn prompt2(&self, message: DOMString, default: DOMString) -> DOMString {
-        self.inner.call("prompt", &[message.into(), default.into(), ]).as_::<DOMString>()
+        self.inner
+            .call("prompt", &[message.into(), default.into()])
+            .as_::<DOMString>()
     }
-
 }
 impl Window {
-    pub fn print(&self, ) -> Undefined {
+    pub fn print(&self) -> Undefined {
         self.inner.call("print", &[]).as_::<Undefined>()
     }
-
 }
 impl Window {
     pub fn post_message0(&self, message: Any) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into()])
+            .as_::<Undefined>()
     }
 
     pub fn post_message1(&self, message: Any, options: WindowPostMessageOptions) -> Undefined {
-        self.inner.call("postMessage", &[message.into(), options.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("postMessage", &[message.into(), options.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Window {
     pub fn credentialless(&self) -> bool {
         self.inner.get("credentialless").as_::<bool>()
     }
-
 }
 impl Window {
     pub fn orientation(&self) -> i16 {
         self.inner.get("orientation").as_::<i16>()
     }
-
 }
 impl Window {
     pub fn onorientationchange(&self) -> Any {
@@ -670,255 +641,254 @@ impl Window {
     pub fn set_onorientationchange(&mut self, value: Any) {
         self.inner.set("onorientationchange", value);
     }
-
 }
 impl Window {
     pub fn cookie_store(&self) -> CookieStore {
         self.inner.get("cookieStore").as_::<CookieStore>()
     }
-
 }
 impl Window {
     pub fn navigate(&self, dir: SpatialNavigationDirection) -> Undefined {
-        self.inner.call("navigate", &[dir.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("navigate", &[dir.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Window {
     pub fn viewport(&self) -> Viewport {
         self.inner.get("viewport").as_::<Viewport>()
     }
-
 }
 impl Window {
     pub fn match_media(&self, query: CSSOMString) -> MediaQueryList {
-        self.inner.call("matchMedia", &[query.into(), ]).as_::<MediaQueryList>()
+        self.inner
+            .call("matchMedia", &[query.into()])
+            .as_::<MediaQueryList>()
     }
-
 }
 impl Window {
     pub fn screen(&self) -> Screen {
         self.inner.get("screen").as_::<Screen>()
     }
-
 }
 impl Window {
     pub fn visual_viewport(&self) -> VisualViewport {
         self.inner.get("visualViewport").as_::<VisualViewport>()
     }
-
 }
 impl Window {
     pub fn move_to(&self, x: i32, y: i32) -> Undefined {
-        self.inner.call("moveTo", &[x.into(), y.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("moveTo", &[x.into(), y.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Window {
     pub fn move_by(&self, x: i32, y: i32) -> Undefined {
-        self.inner.call("moveBy", &[x.into(), y.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("moveBy", &[x.into(), y.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Window {
     pub fn resize_to(&self, width: i32, height: i32) -> Undefined {
-        self.inner.call("resizeTo", &[width.into(), height.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("resizeTo", &[width.into(), height.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Window {
     pub fn resize_by(&self, x: i32, y: i32) -> Undefined {
-        self.inner.call("resizeBy", &[x.into(), y.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("resizeBy", &[x.into(), y.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Window {
     pub fn inner_width(&self) -> i32 {
         self.inner.get("innerWidth").as_::<i32>()
     }
-
 }
 impl Window {
     pub fn inner_height(&self) -> i32 {
         self.inner.get("innerHeight").as_::<i32>()
     }
-
 }
 impl Window {
     pub fn scroll_x(&self) -> f64 {
         self.inner.get("scrollX").as_::<f64>()
     }
-
 }
 impl Window {
     pub fn page_x_offset(&self) -> f64 {
         self.inner.get("pageXOffset").as_::<f64>()
     }
-
 }
 impl Window {
     pub fn scroll_y(&self) -> f64 {
         self.inner.get("scrollY").as_::<f64>()
     }
-
 }
 impl Window {
     pub fn page_y_offset(&self) -> f64 {
         self.inner.get("pageYOffset").as_::<f64>()
     }
-
 }
 impl Window {
     pub fn scroll(&self, x: f64, y: f64) -> Undefined {
-        self.inner.call("scroll", &[x.into(), y.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("scroll", &[x.into(), y.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Window {
     pub fn scroll_to(&self, x: f64, y: f64) -> Undefined {
-        self.inner.call("scrollTo", &[x.into(), y.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("scrollTo", &[x.into(), y.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Window {
     pub fn scroll_by(&self, x: f64, y: f64) -> Undefined {
-        self.inner.call("scrollBy", &[x.into(), y.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("scrollBy", &[x.into(), y.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Window {
     pub fn screen_x(&self) -> i32 {
         self.inner.get("screenX").as_::<i32>()
     }
-
 }
 impl Window {
     pub fn screen_left(&self) -> i32 {
         self.inner.get("screenLeft").as_::<i32>()
     }
-
 }
 impl Window {
     pub fn screen_y(&self) -> i32 {
         self.inner.get("screenY").as_::<i32>()
     }
-
 }
 impl Window {
     pub fn screen_top(&self) -> i32 {
         self.inner.get("screenTop").as_::<i32>()
     }
-
 }
 impl Window {
     pub fn outer_width(&self) -> i32 {
         self.inner.get("outerWidth").as_::<i32>()
     }
-
 }
 impl Window {
     pub fn outer_height(&self) -> i32 {
         self.inner.get("outerHeight").as_::<i32>()
     }
-
 }
 impl Window {
     pub fn device_pixel_ratio(&self) -> f64 {
         self.inner.get("devicePixelRatio").as_::<f64>()
     }
-
 }
 impl Window {
     pub fn get_computed_style0(&self, elt: Element) -> CSSStyleDeclaration {
-        self.inner.call("getComputedStyle", &[elt.into(), ]).as_::<CSSStyleDeclaration>()
+        self.inner
+            .call("getComputedStyle", &[elt.into()])
+            .as_::<CSSStyleDeclaration>()
     }
 
-    pub fn get_computed_style1(&self, elt: Element, pseudo_elt: CSSOMString) -> CSSStyleDeclaration {
-        self.inner.call("getComputedStyle", &[elt.into(), pseudo_elt.into(), ]).as_::<CSSStyleDeclaration>()
+    pub fn get_computed_style1(
+        &self,
+        elt: Element,
+        pseudo_elt: CSSOMString,
+    ) -> CSSStyleDeclaration {
+        self.inner
+            .call("getComputedStyle", &[elt.into(), pseudo_elt.into()])
+            .as_::<CSSStyleDeclaration>()
     }
-
 }
 impl Window {
     pub fn get_digital_goods_service(&self, service_provider: DOMString) -> Promise {
-        self.inner.call("getDigitalGoodsService", &[service_provider.into(), ]).as_::<Promise>()
+        self.inner
+            .call("getDigitalGoodsService", &[service_provider.into()])
+            .as_::<Promise>()
     }
-
 }
 impl Window {
     pub fn document_picture_in_picture(&self) -> DocumentPictureInPicture {
-        self.inner.get("documentPictureInPicture").as_::<DocumentPictureInPicture>()
+        self.inner
+            .get("documentPictureInPicture")
+            .as_::<DocumentPictureInPicture>()
     }
-
 }
 impl Window {
     pub fn event(&self) -> Any {
         self.inner.get("event").as_::<Any>()
     }
-
 }
 impl Window {
     pub fn fence(&self) -> Fence {
         self.inner.get("fence").as_::<Fence>()
     }
-
 }
 impl Window {
-    pub fn show_open_file_picker0(&self, ) -> Promise {
+    pub fn show_open_file_picker0(&self) -> Promise {
         self.inner.call("showOpenFilePicker", &[]).as_::<Promise>()
     }
 
     pub fn show_open_file_picker1(&self, options: OpenFilePickerOptions) -> Promise {
-        self.inner.call("showOpenFilePicker", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("showOpenFilePicker", &[options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl Window {
-    pub fn show_save_file_picker0(&self, ) -> Promise {
+    pub fn show_save_file_picker0(&self) -> Promise {
         self.inner.call("showSaveFilePicker", &[]).as_::<Promise>()
     }
 
     pub fn show_save_file_picker1(&self, options: SaveFilePickerOptions) -> Promise {
-        self.inner.call("showSaveFilePicker", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("showSaveFilePicker", &[options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl Window {
-    pub fn show_directory_picker0(&self, ) -> Promise {
+    pub fn show_directory_picker0(&self) -> Promise {
         self.inner.call("showDirectoryPicker", &[]).as_::<Promise>()
     }
 
     pub fn show_directory_picker1(&self, options: DirectoryPickerOptions) -> Promise {
-        self.inner.call("showDirectoryPicker", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("showDirectoryPicker", &[options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl Window {
-    pub fn capture_events(&self, ) -> Undefined {
+    pub fn capture_events(&self) -> Undefined {
         self.inner.call("captureEvents", &[]).as_::<Undefined>()
     }
-
 }
 impl Window {
-    pub fn release_events(&self, ) -> Undefined {
+    pub fn release_events(&self) -> Undefined {
         self.inner.call("releaseEvents", &[]).as_::<Undefined>()
     }
-
 }
 impl Window {
     pub fn external(&self) -> External {
         self.inner.get("external").as_::<External>()
     }
-
 }
 impl Window {
-    pub fn query_local_fonts0(&self, ) -> Promise {
+    pub fn query_local_fonts0(&self) -> Promise {
         self.inner.call("queryLocalFonts", &[]).as_::<Promise>()
     }
 
     pub fn query_local_fonts1(&self, options: QueryOptions) -> Promise {
-        self.inner.call("queryLocalFonts", &[options.into(), ]).as_::<Promise>()
+        self.inner
+            .call("queryLocalFonts", &[options.into()])
+            .as_::<Promise>()
     }
-
 }
 impl Window {
     pub fn onappinstalled(&self) -> Any {
@@ -928,7 +898,6 @@ impl Window {
     pub fn set_onappinstalled(&mut self, value: Any) {
         self.inner.set("onappinstalled", value);
     }
-
 }
 impl Window {
     pub fn onbeforeinstallprompt(&self) -> Any {
@@ -938,7 +907,6 @@ impl Window {
     pub fn set_onbeforeinstallprompt(&mut self, value: Any) {
         self.inner.set("onbeforeinstallprompt", value);
     }
-
 }
 impl Window {
     pub fn ondeviceorientation(&self) -> Any {
@@ -948,7 +916,6 @@ impl Window {
     pub fn set_ondeviceorientation(&mut self, value: Any) {
         self.inner.set("ondeviceorientation", value);
     }
-
 }
 impl Window {
     pub fn ondeviceorientationabsolute(&self) -> Any {
@@ -958,7 +925,6 @@ impl Window {
     pub fn set_ondeviceorientationabsolute(&mut self, value: Any) {
         self.inner.set("ondeviceorientationabsolute", value);
     }
-
 }
 impl Window {
     pub fn ondevicemotion(&self) -> Any {
@@ -968,59 +934,56 @@ impl Window {
     pub fn set_ondevicemotion(&mut self, value: Any) {
         self.inner.set("ondevicemotion", value);
     }
-
 }
 impl Window {
     pub fn portal_host(&self) -> PortalHost {
         self.inner.get("portalHost").as_::<PortalHost>()
     }
-
 }
 impl Window {
     pub fn request_idle_callback0(&self, callback: Function) -> u32 {
-        self.inner.call("requestIdleCallback", &[callback.into(), ]).as_::<u32>()
+        self.inner
+            .call("requestIdleCallback", &[callback.into()])
+            .as_::<u32>()
     }
 
     pub fn request_idle_callback1(&self, callback: Function, options: IdleRequestOptions) -> u32 {
-        self.inner.call("requestIdleCallback", &[callback.into(), options.into(), ]).as_::<u32>()
+        self.inner
+            .call("requestIdleCallback", &[callback.into(), options.into()])
+            .as_::<u32>()
     }
-
 }
 impl Window {
     pub fn cancel_idle_callback(&self, handle: u32) -> Undefined {
-        self.inner.call("cancelIdleCallback", &[handle.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("cancelIdleCallback", &[handle.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Window {
-    pub fn get_selection(&self, ) -> Selection {
+    pub fn get_selection(&self) -> Selection {
         self.inner.call("getSelection", &[]).as_::<Selection>()
     }
-
 }
 impl Window {
     pub fn shared_storage(&self) -> SharedStorage {
         self.inner.get("sharedStorage").as_::<SharedStorage>()
     }
-
 }
 impl Window {
     pub fn speech_synthesis(&self) -> SpeechSynthesis {
         self.inner.get("speechSynthesis").as_::<SpeechSynthesis>()
     }
-
 }
 impl Window {
     pub fn launch_queue(&self) -> LaunchQueue {
         self.inner.get("launchQueue").as_::<LaunchQueue>()
     }
-
 }
 impl Window {
-    pub fn get_screen_details(&self, ) -> Promise {
+    pub fn get_screen_details(&self) -> Promise {
         self.inner.call("getScreenDetails", &[]).as_::<Promise>()
     }
-
 }
 impl Window {
     pub fn onbeforexrselect(&self) -> Any {
@@ -1030,7 +993,6 @@ impl Window {
     pub fn set_onbeforexrselect(&mut self, value: Any) {
         self.inner.set("onbeforexrselect", value);
     }
-
 }
 impl Window {
     pub fn onportalactivate(&self) -> Any {
@@ -1040,35 +1002,33 @@ impl Window {
     pub fn set_onportalactivate(&mut self, value: Any) {
         self.inner.set("onportalactivate", value);
     }
-
 }
 impl Window {
     pub fn crypto(&self) -> Crypto {
         self.inner.get("crypto").as_::<Crypto>()
     }
-
 }
 impl Window {
     pub fn request_animation_frame(&self, callback: Function) -> u32 {
-        self.inner.call("requestAnimationFrame", &[callback.into(), ]).as_::<u32>()
+        self.inner
+            .call("requestAnimationFrame", &[callback.into()])
+            .as_::<u32>()
     }
-
 }
 impl Window {
     pub fn cancel_animation_frame(&self, handle: u32) -> Undefined {
-        self.inner.call("cancelAnimationFrame", &[handle.into(), ]).as_::<Undefined>()
+        self.inner
+            .call("cancelAnimationFrame", &[handle.into()])
+            .as_::<Undefined>()
     }
-
 }
 impl Window {
     pub fn session_storage(&self) -> Storage {
         self.inner.get("sessionStorage").as_::<Storage>()
     }
-
 }
 impl Window {
     pub fn local_storage(&self) -> Storage {
         self.inner.get("localStorage").as_::<Storage>()
     }
-
 }

@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IdleDeadline {
@@ -10,7 +7,9 @@ pub struct IdleDeadline {
 }
 impl FromVal for IdleDeadline {
     fn from_val(v: &emlite::Val) -> Self {
-        IdleDeadline { inner: emlite::Val::from_val(v) }
+        IdleDeadline {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for IdleDeadline {
 }
 impl AsMut<emlite::Val> for IdleDeadline {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<IdleDeadline> for emlite::Val {
     fn from(s: IdleDeadline) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<IdleDeadline> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(IdleDeadline);
 
-
 impl IdleDeadline {
-    pub fn time_remaining(&self, ) -> Any {
+    pub fn time_remaining(&self) -> Any {
         self.inner.call("timeRemaining", &[]).as_::<Any>()
     }
-
 }
 impl IdleDeadline {
     pub fn did_timeout(&self) -> bool {
         self.inner.get("didTimeout").as_::<bool>()
     }
-
 }

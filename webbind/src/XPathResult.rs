@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XPathResult {
@@ -10,7 +7,9 @@ pub struct XPathResult {
 }
 impl FromVal for XPathResult {
     fn from_val(v: &emlite::Val) -> Self {
-        XPathResult { inner: emlite::Val::from_val(v) }
+        XPathResult {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for XPathResult {
 }
 impl AsMut<emlite::Val> for XPathResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<XPathResult> for emlite::Val {
     fn from(s: XPathResult) -> emlite::Val {
@@ -49,58 +48,50 @@ impl From<XPathResult> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XPathResult);
 
-
 impl XPathResult {
     pub fn result_type(&self) -> u16 {
         self.inner.get("resultType").as_::<u16>()
     }
-
 }
 impl XPathResult {
     pub fn number_value(&self) -> f64 {
         self.inner.get("numberValue").as_::<f64>()
     }
-
 }
 impl XPathResult {
     pub fn string_value(&self) -> DOMString {
         self.inner.get("stringValue").as_::<DOMString>()
     }
-
 }
 impl XPathResult {
     pub fn boolean_value(&self) -> bool {
         self.inner.get("booleanValue").as_::<bool>()
     }
-
 }
 impl XPathResult {
     pub fn single_node_value(&self) -> Node {
         self.inner.get("singleNodeValue").as_::<Node>()
     }
-
 }
 impl XPathResult {
     pub fn invalid_iterator_state(&self) -> bool {
         self.inner.get("invalidIteratorState").as_::<bool>()
     }
-
 }
 impl XPathResult {
     pub fn snapshot_length(&self) -> u32 {
         self.inner.get("snapshotLength").as_::<u32>()
     }
-
 }
 impl XPathResult {
-    pub fn iterate_next(&self, ) -> Node {
+    pub fn iterate_next(&self) -> Node {
         self.inner.call("iterateNext", &[]).as_::<Node>()
     }
-
 }
 impl XPathResult {
     pub fn snapshot_item(&self, index: u32) -> Node {
-        self.inner.call("snapshotItem", &[index.into(), ]).as_::<Node>()
+        self.inner
+            .call("snapshotItem", &[index.into()])
+            .as_::<Node>()
     }
-
 }

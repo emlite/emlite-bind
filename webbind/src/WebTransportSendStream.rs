@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebTransportSendStreamStats {
@@ -37,8 +34,8 @@ impl AsRef<emlite::Val> for WebTransportSendStreamStats {
 }
 impl AsMut<emlite::Val> for WebTransportSendStreamStats {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WebTransportSendStreamStats> for emlite::Val {
     fn from(s: WebTransportSendStreamStats) -> emlite::Val {
@@ -56,7 +53,6 @@ impl WebTransportSendStreamStats {
     pub fn set_bytes_written(&mut self, value: u64) {
         self.inner.set("bytesWritten", value);
     }
-
 }
 impl WebTransportSendStreamStats {
     pub fn bytes_sent(&self) -> u64 {
@@ -66,7 +62,6 @@ impl WebTransportSendStreamStats {
     pub fn set_bytes_sent(&mut self, value: u64) {
         self.inner.set("bytesSent", value);
     }
-
 }
 impl WebTransportSendStreamStats {
     pub fn bytes_acknowledged(&self) -> u64 {
@@ -76,7 +71,6 @@ impl WebTransportSendStreamStats {
     pub fn set_bytes_acknowledged(&mut self, value: u64) {
         self.inner.set("bytesAcknowledged", value);
     }
-
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -85,7 +79,9 @@ pub struct WebTransportSendStream {
 }
 impl FromVal for WebTransportSendStream {
     fn from_val(v: &emlite::Val) -> Self {
-        WebTransportSendStream { inner: WritableStream::from_val(v) }
+        WebTransportSendStream {
+            inner: WritableStream::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -112,8 +108,8 @@ impl AsRef<emlite::Val> for WebTransportSendStream {
 }
 impl AsMut<emlite::Val> for WebTransportSendStream {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<WebTransportSendStream> for emlite::Val {
     fn from(s: WebTransportSendStream) -> emlite::Val {
@@ -124,7 +120,6 @@ impl From<WebTransportSendStream> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WebTransportSendStream);
 
-
 impl WebTransportSendStream {
     pub fn send_group(&self) -> WebTransportSendGroup {
         self.inner.get("sendGroup").as_::<WebTransportSendGroup>()
@@ -133,7 +128,6 @@ impl WebTransportSendStream {
     pub fn set_send_group(&mut self, value: WebTransportSendGroup) {
         self.inner.set("sendGroup", value);
     }
-
 }
 impl WebTransportSendStream {
     pub fn send_order(&self) -> i64 {
@@ -143,17 +137,16 @@ impl WebTransportSendStream {
     pub fn set_send_order(&mut self, value: i64) {
         self.inner.set("sendOrder", value);
     }
-
 }
 impl WebTransportSendStream {
-    pub fn get_stats(&self, ) -> Promise {
+    pub fn get_stats(&self) -> Promise {
         self.inner.call("getStats", &[]).as_::<Promise>()
     }
-
 }
 impl WebTransportSendStream {
-    pub fn get_writer(&self, ) -> WebTransportWriter {
-        self.inner.call("getWriter", &[]).as_::<WebTransportWriter>()
+    pub fn get_writer(&self) -> WebTransportWriter {
+        self.inner
+            .call("getWriter", &[])
+            .as_::<WebTransportWriter>()
     }
-
 }

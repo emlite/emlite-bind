@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NDEFMessage {
@@ -10,7 +7,9 @@ pub struct NDEFMessage {
 }
 impl FromVal for NDEFMessage {
     fn from_val(v: &emlite::Val) -> Self {
-        NDEFMessage { inner: emlite::Val::from_val(v) }
+        NDEFMessage {
+            inner: emlite::Val::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for NDEFMessage {
 }
 impl AsMut<emlite::Val> for NDEFMessage {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<NDEFMessage> for emlite::Val {
     fn from(s: NDEFMessage) -> emlite::Val {
@@ -49,19 +48,17 @@ impl From<NDEFMessage> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(NDEFMessage);
 
-
-
 impl NDEFMessage {
     pub fn new(message_init: Any) -> NDEFMessage {
         Self {
-            inner: emlite::Val::global("NDEFMessage").new(&[message_init.into()]).as_::<emlite::Val>(),
+            inner: emlite::Val::global("NDEFMessage")
+                .new(&[message_init.into()])
+                .as_::<emlite::Val>(),
         }
     }
-
 }
 impl NDEFMessage {
     pub fn records(&self) -> FrozenArray<NDEFRecord> {
         self.inner.get("records").as_::<FrozenArray<NDEFRecord>>()
     }
-
 }

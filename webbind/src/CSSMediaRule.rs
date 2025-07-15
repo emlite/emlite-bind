@@ -1,8 +1,5 @@
 use super::*;
 
-
-
-
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSMediaRule {
@@ -10,7 +7,9 @@ pub struct CSSMediaRule {
 }
 impl FromVal for CSSMediaRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSMediaRule { inner: CSSConditionRule::from_val(v) }
+        CSSMediaRule {
+            inner: CSSConditionRule::from_val(v),
+        }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -37,8 +36,8 @@ impl AsRef<emlite::Val> for CSSMediaRule {
 }
 impl AsMut<emlite::Val> for CSSMediaRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-      &mut self.inner
-  }
+        &mut self.inner
+    }
 }
 impl From<CSSMediaRule> for emlite::Val {
     fn from(s: CSSMediaRule) -> emlite::Val {
@@ -49,16 +48,13 @@ impl From<CSSMediaRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSMediaRule);
 
-
 impl CSSMediaRule {
     pub fn media(&self) -> MediaList {
         self.inner.get("media").as_::<MediaList>()
     }
-
 }
 impl CSSMediaRule {
     pub fn matches(&self) -> bool {
         self.inner.get("matches").as_::<bool>()
     }
-
 }
