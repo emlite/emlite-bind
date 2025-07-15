@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct LaunchParams {
@@ -7,9 +10,7 @@ pub struct LaunchParams {
 }
 impl FromVal for LaunchParams {
     fn from_val(v: &emlite::Val) -> Self {
-        LaunchParams {
-            inner: emlite::Val::from_val(v),
-        }
+        LaunchParams { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for LaunchParams {
 }
 impl AsMut<emlite::Val> for LaunchParams {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<LaunchParams> for emlite::Val {
     fn from(s: LaunchParams) -> emlite::Val {
@@ -48,15 +49,16 @@ impl From<LaunchParams> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(LaunchParams);
 
+
 impl LaunchParams {
-    pub fn target_url(&self) -> jsbind::DOMString {
-        self.inner.get("targetURL").as_::<jsbind::DOMString>()
+    pub fn target_url(&self) -> DOMString {
+        self.inner.get("targetURL").as_::<DOMString>()
     }
+
 }
 impl LaunchParams {
-    pub fn files(&self) -> jsbind::FrozenArray<FileSystemHandle> {
-        self.inner
-            .get("files")
-            .as_::<jsbind::FrozenArray<FileSystemHandle>>()
+    pub fn files(&self) -> FrozenArray<FileSystemHandle> {
+        self.inner.get("files").as_::<FrozenArray<FileSystemHandle>>()
     }
+
 }

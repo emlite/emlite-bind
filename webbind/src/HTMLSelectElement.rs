@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLSelectElement {
@@ -7,9 +10,7 @@ pub struct HTMLSelectElement {
 }
 impl FromVal for HTMLSelectElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLSelectElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLSelectElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLSelectElement {
 }
 impl AsMut<emlite::Val> for HTMLSelectElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLSelectElement> for emlite::Val {
     fn from(s: HTMLSelectElement) -> emlite::Val {
@@ -48,23 +49,25 @@ impl From<HTMLSelectElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLSelectElement);
 
+
+
 impl HTMLSelectElement {
     pub fn new() -> HTMLSelectElement {
         Self {
-            inner: emlite::Val::global("HTMLSelectElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLSelectElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLSelectElement {
-    pub fn autocomplete(&self) -> jsbind::DOMString {
-        self.inner.get("autocomplete").as_::<jsbind::DOMString>()
+    pub fn autocomplete(&self) -> DOMString {
+        self.inner.get("autocomplete").as_::<DOMString>()
     }
 
-    pub fn set_autocomplete(&mut self, value: jsbind::DOMString) {
+    pub fn set_autocomplete(&mut self, value: DOMString) {
         self.inner.set("autocomplete", value);
     }
+
 }
 impl HTMLSelectElement {
     pub fn disabled(&self) -> bool {
@@ -74,11 +77,13 @@ impl HTMLSelectElement {
     pub fn set_disabled(&mut self, value: bool) {
         self.inner.set("disabled", value);
     }
+
 }
 impl HTMLSelectElement {
     pub fn form(&self) -> HTMLFormElement {
         self.inner.get("form").as_::<HTMLFormElement>()
     }
+
 }
 impl HTMLSelectElement {
     pub fn multiple(&self) -> bool {
@@ -88,15 +93,17 @@ impl HTMLSelectElement {
     pub fn set_multiple(&mut self, value: bool) {
         self.inner.set("multiple", value);
     }
+
 }
 impl HTMLSelectElement {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
-    pub fn set_name(&mut self, value: jsbind::DOMString) {
+    pub fn set_name(&mut self, value: DOMString) {
         self.inner.set("name", value);
     }
+
 }
 impl HTMLSelectElement {
     pub fn required(&self) -> bool {
@@ -106,6 +113,7 @@ impl HTMLSelectElement {
     pub fn set_required(&mut self, value: bool) {
         self.inner.set("required", value);
     }
+
 }
 impl HTMLSelectElement {
     pub fn size(&self) -> u32 {
@@ -115,16 +123,19 @@ impl HTMLSelectElement {
     pub fn set_size(&mut self, value: u32) {
         self.inner.set("size", value);
     }
+
 }
 impl HTMLSelectElement {
-    pub fn type_(&self) -> jsbind::DOMString {
-        self.inner.get("type").as_::<jsbind::DOMString>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
+
 }
 impl HTMLSelectElement {
     pub fn options(&self) -> HTMLOptionsCollection {
         self.inner.get("options").as_::<HTMLOptionsCollection>()
     }
+
 }
 impl HTMLSelectElement {
     pub fn length(&self) -> u32 {
@@ -134,45 +145,41 @@ impl HTMLSelectElement {
     pub fn set_length(&mut self, value: u32) {
         self.inner.set("length", value);
     }
+
 }
 impl HTMLSelectElement {
     pub fn item(&self, index: u32) -> HTMLOptionElement {
-        self.inner
-            .call("item", &[index.into()])
-            .as_::<HTMLOptionElement>()
-    }
-}
-impl HTMLSelectElement {
-    pub fn named_item(&self, name: jsbind::DOMString) -> HTMLOptionElement {
-        self.inner
-            .call("namedItem", &[name.into()])
-            .as_::<HTMLOptionElement>()
-    }
-}
-impl HTMLSelectElement {
-    pub fn add0(&self, element: jsbind::Any) -> jsbind::Undefined {
-        self.inner
-            .call("add", &[element.into()])
-            .as_::<jsbind::Undefined>()
+        self.inner.call("item", &[index.into(), ]).as_::<HTMLOptionElement>()
     }
 
-    pub fn add1(&self, element: jsbind::Any, before: jsbind::Any) -> jsbind::Undefined {
-        self.inner
-            .call("add", &[element.into(), before.into()])
-            .as_::<jsbind::Undefined>()
-    }
 }
 impl HTMLSelectElement {
-    pub fn remove(&self, index: i32) -> jsbind::Undefined {
-        self.inner
-            .call("remove", &[index.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn named_item(&self, name: DOMString) -> HTMLOptionElement {
+        self.inner.call("namedItem", &[name.into(), ]).as_::<HTMLOptionElement>()
     }
+
+}
+impl HTMLSelectElement {
+    pub fn add0(&self, element: Any) -> Undefined {
+        self.inner.call("add", &[element.into(), ]).as_::<Undefined>()
+    }
+
+    pub fn add1(&self, element: Any, before: Any) -> Undefined {
+        self.inner.call("add", &[element.into(), before.into(), ]).as_::<Undefined>()
+    }
+
+}
+impl HTMLSelectElement {
+    pub fn remove(&self, index: i32) -> Undefined {
+        self.inner.call("remove", &[index.into(), ]).as_::<Undefined>()
+    }
+
 }
 impl HTMLSelectElement {
     pub fn selected_options(&self) -> HTMLCollection {
         self.inner.get("selectedOptions").as_::<HTMLCollection>()
     }
+
 }
 impl HTMLSelectElement {
     pub fn selected_index(&self) -> i32 {
@@ -182,59 +189,63 @@ impl HTMLSelectElement {
     pub fn set_selected_index(&mut self, value: i32) {
         self.inner.set("selectedIndex", value);
     }
+
 }
 impl HTMLSelectElement {
-    pub fn value(&self) -> jsbind::DOMString {
-        self.inner.get("value").as_::<jsbind::DOMString>()
+    pub fn value(&self) -> DOMString {
+        self.inner.get("value").as_::<DOMString>()
     }
 
-    pub fn set_value(&mut self, value: jsbind::DOMString) {
+    pub fn set_value(&mut self, value: DOMString) {
         self.inner.set("value", value);
     }
+
 }
 impl HTMLSelectElement {
     pub fn will_validate(&self) -> bool {
         self.inner.get("willValidate").as_::<bool>()
     }
+
 }
 impl HTMLSelectElement {
     pub fn validity(&self) -> ValidityState {
         self.inner.get("validity").as_::<ValidityState>()
     }
+
 }
 impl HTMLSelectElement {
-    pub fn validation_message(&self) -> jsbind::DOMString {
-        self.inner
-            .get("validationMessage")
-            .as_::<jsbind::DOMString>()
+    pub fn validation_message(&self) -> DOMString {
+        self.inner.get("validationMessage").as_::<DOMString>()
     }
+
 }
 impl HTMLSelectElement {
-    pub fn check_validity(&self) -> bool {
+    pub fn check_validity(&self, ) -> bool {
         self.inner.call("checkValidity", &[]).as_::<bool>()
     }
+
 }
 impl HTMLSelectElement {
-    pub fn report_validity(&self) -> bool {
+    pub fn report_validity(&self, ) -> bool {
         self.inner.call("reportValidity", &[]).as_::<bool>()
     }
+
 }
 impl HTMLSelectElement {
-    pub fn set_custom_validity(&self, error: jsbind::DOMString) -> jsbind::Undefined {
-        self.inner
-            .call("setCustomValidity", &[error.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn set_custom_validity(&self, error: DOMString) -> Undefined {
+        self.inner.call("setCustomValidity", &[error.into(), ]).as_::<Undefined>()
     }
+
 }
 impl HTMLSelectElement {
-    pub fn show_picker(&self) -> jsbind::Undefined {
-        self.inner
-            .call("showPicker", &[])
-            .as_::<jsbind::Undefined>()
+    pub fn show_picker(&self, ) -> Undefined {
+        self.inner.call("showPicker", &[]).as_::<Undefined>()
     }
+
 }
 impl HTMLSelectElement {
     pub fn labels(&self) -> NodeList {
         self.inner.get("labels").as_::<NodeList>()
     }
+
 }

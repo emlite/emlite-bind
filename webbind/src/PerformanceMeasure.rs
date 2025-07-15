@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PerformanceMeasure {
@@ -7,9 +10,7 @@ pub struct PerformanceMeasure {
 }
 impl FromVal for PerformanceMeasure {
     fn from_val(v: &emlite::Val) -> Self {
-        PerformanceMeasure {
-            inner: PerformanceEntry::from_val(v),
-        }
+        PerformanceMeasure { inner: PerformanceEntry::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PerformanceMeasure {
 }
 impl AsMut<emlite::Val> for PerformanceMeasure {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PerformanceMeasure> for emlite::Val {
     fn from(s: PerformanceMeasure) -> emlite::Val {
@@ -48,8 +49,10 @@ impl From<PerformanceMeasure> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PerformanceMeasure);
 
+
 impl PerformanceMeasure {
-    pub fn detail(&self) -> jsbind::Any {
-        self.inner.get("detail").as_::<jsbind::Any>()
+    pub fn detail(&self) -> Any {
+        self.inner.get("detail").as_::<Any>()
     }
+
 }

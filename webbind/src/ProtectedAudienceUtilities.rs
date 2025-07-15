@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ProtectedAudienceUtilities {
@@ -7,9 +10,7 @@ pub struct ProtectedAudienceUtilities {
 }
 impl FromVal for ProtectedAudienceUtilities {
     fn from_val(v: &emlite::Val) -> Self {
-        ProtectedAudienceUtilities {
-            inner: emlite::Val::from_val(v),
-        }
+        ProtectedAudienceUtilities { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ProtectedAudienceUtilities {
 }
 impl AsMut<emlite::Val> for ProtectedAudienceUtilities {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ProtectedAudienceUtilities> for emlite::Val {
     fn from(s: ProtectedAudienceUtilities) -> emlite::Val {
@@ -48,17 +49,16 @@ impl From<ProtectedAudienceUtilities> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ProtectedAudienceUtilities);
 
+
 impl ProtectedAudienceUtilities {
-    pub fn encode_utf8(&self, input: jsbind::USVString) -> jsbind::Uint8Array {
-        self.inner
-            .call("encodeUtf8", &[input.into()])
-            .as_::<jsbind::Uint8Array>()
+    pub fn encode_utf8(&self, input: USVString) -> Uint8Array {
+        self.inner.call("encodeUtf8", &[input.into(), ]).as_::<Uint8Array>()
     }
+
 }
 impl ProtectedAudienceUtilities {
-    pub fn decode_utf8(&self, bytes: jsbind::Uint8Array) -> jsbind::USVString {
-        self.inner
-            .call("decodeUtf8", &[bytes.into()])
-            .as_::<jsbind::USVString>()
+    pub fn decode_utf8(&self, bytes: Uint8Array) -> USVString {
+        self.inner.call("decodeUtf8", &[bytes.into(), ]).as_::<USVString>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUCompilationInfo {
@@ -7,9 +10,7 @@ pub struct GPUCompilationInfo {
 }
 impl FromVal for GPUCompilationInfo {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUCompilationInfo {
-            inner: emlite::Val::from_val(v),
-        }
+        GPUCompilationInfo { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for GPUCompilationInfo {
 }
 impl AsMut<emlite::Val> for GPUCompilationInfo {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<GPUCompilationInfo> for emlite::Val {
     fn from(s: GPUCompilationInfo) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<GPUCompilationInfo> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GPUCompilationInfo);
 
+
 impl GPUCompilationInfo {
-    pub fn messages(&self) -> jsbind::FrozenArray<GPUCompilationMessage> {
-        self.inner
-            .get("messages")
-            .as_::<jsbind::FrozenArray<GPUCompilationMessage>>()
+    pub fn messages(&self) -> FrozenArray<GPUCompilationMessage> {
+        self.inner.get("messages").as_::<FrozenArray<GPUCompilationMessage>>()
     }
+
 }

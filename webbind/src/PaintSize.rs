@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PaintSize {
@@ -7,9 +10,7 @@ pub struct PaintSize {
 }
 impl FromVal for PaintSize {
     fn from_val(v: &emlite::Val) -> Self {
-        PaintSize {
-            inner: emlite::Val::from_val(v),
-        }
+        PaintSize { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PaintSize {
 }
 impl AsMut<emlite::Val> for PaintSize {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PaintSize> for emlite::Val {
     fn from(s: PaintSize) -> emlite::Val {
@@ -48,13 +49,16 @@ impl From<PaintSize> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PaintSize);
 
+
 impl PaintSize {
     pub fn width(&self) -> f64 {
         self.inner.get("width").as_::<f64>()
     }
+
 }
 impl PaintSize {
     pub fn height(&self) -> f64 {
         self.inner.get("height").as_::<f64>()
     }
+
 }

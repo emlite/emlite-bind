@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WEBGL_compressed_texture_astc {
@@ -7,9 +10,7 @@ pub struct WEBGL_compressed_texture_astc {
 }
 impl FromVal for WEBGL_compressed_texture_astc {
     fn from_val(v: &emlite::Val) -> Self {
-        WEBGL_compressed_texture_astc {
-            inner: emlite::Val::from_val(v),
-        }
+        WEBGL_compressed_texture_astc { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WEBGL_compressed_texture_astc {
 }
 impl AsMut<emlite::Val> for WEBGL_compressed_texture_astc {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WEBGL_compressed_texture_astc> for emlite::Val {
     fn from(s: WEBGL_compressed_texture_astc) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<WEBGL_compressed_texture_astc> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WEBGL_compressed_texture_astc);
 
+
 impl WEBGL_compressed_texture_astc {
-    pub fn get_supported_profiles(&self) -> jsbind::Sequence<jsbind::DOMString> {
-        self.inner
-            .call("getSupportedProfiles", &[])
-            .as_::<jsbind::Sequence<jsbind::DOMString>>()
+    pub fn get_supported_profiles(&self, ) -> Sequence<DOMString> {
+        self.inner.call("getSupportedProfiles", &[]).as_::<Sequence<DOMString>>()
     }
+
 }

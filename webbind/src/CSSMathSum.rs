@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSMathSum {
@@ -7,9 +10,7 @@ pub struct CSSMathSum {
 }
 impl FromVal for CSSMathSum {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSMathSum {
-            inner: CSSMathValue::from_val(v),
-        }
+        CSSMathSum { inner: CSSMathValue::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSMathSum {
 }
 impl AsMut<emlite::Val> for CSSMathSum {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSMathSum> for emlite::Val {
     fn from(s: CSSMathSum) -> emlite::Val {
@@ -48,17 +49,19 @@ impl From<CSSMathSum> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSMathSum);
 
+
+
 impl CSSMathSum {
-    pub fn new(args: jsbind::Any) -> CSSMathSum {
+    pub fn new(args: Any) -> CSSMathSum {
         Self {
-            inner: emlite::Val::global("CSSMathSum")
-                .new(&[args.into()])
-                .as_::<CSSMathValue>(),
+            inner: emlite::Val::global("CSSMathSum").new(&[args.into()]).as_::<CSSMathValue>(),
         }
     }
+
 }
 impl CSSMathSum {
     pub fn values(&self) -> CSSNumericArray {
         self.inner.get("values").as_::<CSSNumericArray>()
     }
+
 }

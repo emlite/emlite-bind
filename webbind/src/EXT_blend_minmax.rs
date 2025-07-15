@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EXT_blend_minmax {
@@ -7,9 +10,7 @@ pub struct EXT_blend_minmax {
 }
 impl FromVal for EXT_blend_minmax {
     fn from_val(v: &emlite::Val) -> Self {
-        EXT_blend_minmax {
-            inner: emlite::Val::from_val(v),
-        }
+        EXT_blend_minmax { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for EXT_blend_minmax {
 }
 impl AsMut<emlite::Val> for EXT_blend_minmax {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<EXT_blend_minmax> for emlite::Val {
     fn from(s: EXT_blend_minmax) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<EXT_blend_minmax> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(EXT_blend_minmax);
+
+

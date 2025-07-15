@@ -1,20 +1,44 @@
-use crate::any::Any;
 use emlite::FromVal;
+
 pub use emlite::Console;
+pub use crate::any::Any;
+pub use crate::array::{
+    Array, ArrayBuffer, DataView, Float32Array, Float64Array, FrozenArray, Int8Array, Int32Array,
+    ObservableArray, TypedArray, Uint8Array, Uint32Array,
+};
+pub use crate::date::Date;
+pub use crate::error::*;
+pub use crate::function::{Closure, Function};
+pub use crate::json::JSON;
+pub use crate::map::*;
+pub use crate::math::Math;
+pub use crate::null::Null;
+pub use crate::object::Object;
+pub use crate::promise::Promise;
+pub use crate::record::Record;
+pub use crate::reflect::Reflect;
+pub use crate::response::{fetch, fetch_val};
+pub use crate::sequence::Sequence;
+pub use crate::set::*;
+pub use crate::string::{ByteString, CSSOMString, DOMString, USVString};
+pub use crate::text::{TextDecoder, TextEncoder};
+pub use crate::time::*;
+pub use crate::undefined::Undefined;
+pub use crate::url::URL;
 
 /// Parse `src` with an optional `radix`.  Mirrors `parseInt(str, radix)`.
 pub fn parse_int(src: &str, radix: Option<i32>) -> i32 {
     let g = emlite::Val::global("parseInt");
     match radix {
-        Some(r) => g.call("", &[src.into(), r.into()]).as_::<i32>(),
-        None => g.call("", &[src.into()]).as_::<i32>(),
+        Some(r) => g.invoke(&[src.into(), r.into()]).as_::<i32>(),
+        None => g.invoke(&[src.into()]).as_::<i32>(),
     }
 }
 
 /// Parse a floating-point value – identical to JS `parseFloat(str)`.
 pub fn parse_float(src: &str) -> f64 {
     emlite::Val::global("parseFloat")
-        .call("", &[src.into()])
+        .invoke(&[src.into()])
         .as_::<f64>()
 }
 

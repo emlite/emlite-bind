@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SpeechSynthesisErrorEvent {
@@ -7,9 +10,7 @@ pub struct SpeechSynthesisErrorEvent {
 }
 impl FromVal for SpeechSynthesisErrorEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        SpeechSynthesisErrorEvent {
-            inner: SpeechSynthesisEvent::from_val(v),
-        }
+        SpeechSynthesisErrorEvent { inner: SpeechSynthesisEvent::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SpeechSynthesisErrorEvent {
 }
 impl AsMut<emlite::Val> for SpeechSynthesisErrorEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SpeechSynthesisErrorEvent> for emlite::Val {
     fn from(s: SpeechSynthesisErrorEvent) -> emlite::Val {
@@ -48,20 +49,19 @@ impl From<SpeechSynthesisErrorEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SpeechSynthesisErrorEvent);
 
+
+
 impl SpeechSynthesisErrorEvent {
-    pub fn new(
-        type_: jsbind::DOMString,
-        event_init_dict: jsbind::Any,
-    ) -> SpeechSynthesisErrorEvent {
+    pub fn new(type_: DOMString, event_init_dict: Any) -> SpeechSynthesisErrorEvent {
         Self {
-            inner: emlite::Val::global("SpeechSynthesisErrorEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<SpeechSynthesisEvent>(),
+            inner: emlite::Val::global("SpeechSynthesisErrorEvent").new(&[type_.into(), event_init_dict.into()]).as_::<SpeechSynthesisEvent>(),
         }
     }
+
 }
 impl SpeechSynthesisErrorEvent {
     pub fn error(&self) -> SpeechSynthesisErrorCode {
         self.inner.get("error").as_::<SpeechSynthesisErrorCode>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SyncManager {
@@ -7,9 +10,7 @@ pub struct SyncManager {
 }
 impl FromVal for SyncManager {
     fn from_val(v: &emlite::Val) -> Self {
-        SyncManager {
-            inner: emlite::Val::from_val(v),
-        }
+        SyncManager { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SyncManager {
 }
 impl AsMut<emlite::Val> for SyncManager {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SyncManager> for emlite::Val {
     fn from(s: SyncManager) -> emlite::Val {
@@ -48,15 +49,16 @@ impl From<SyncManager> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SyncManager);
 
+
 impl SyncManager {
-    pub fn register(&self, tag: jsbind::DOMString) -> jsbind::Promise {
-        self.inner
-            .call("register", &[tag.into()])
-            .as_::<jsbind::Promise>()
+    pub fn register(&self, tag: DOMString) -> Promise {
+        self.inner.call("register", &[tag.into(), ]).as_::<Promise>()
     }
+
 }
 impl SyncManager {
-    pub fn get_tags(&self) -> jsbind::Promise {
-        self.inner.call("getTags", &[]).as_::<jsbind::Promise>()
+    pub fn get_tags(&self, ) -> Promise {
+        self.inner.call("getTags", &[]).as_::<Promise>()
     }
+
 }

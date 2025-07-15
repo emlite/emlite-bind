@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EncodedAudioChunk {
@@ -7,9 +10,7 @@ pub struct EncodedAudioChunk {
 }
 impl FromVal for EncodedAudioChunk {
     fn from_val(v: &emlite::Val) -> Self {
-        EncodedAudioChunk {
-            inner: emlite::Val::from_val(v),
-        }
+        EncodedAudioChunk { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for EncodedAudioChunk {
 }
 impl AsMut<emlite::Val> for EncodedAudioChunk {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<EncodedAudioChunk> for emlite::Val {
     fn from(s: EncodedAudioChunk) -> emlite::Val {
@@ -48,39 +49,43 @@ impl From<EncodedAudioChunk> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(EncodedAudioChunk);
 
+
+
 impl EncodedAudioChunk {
-    pub fn new(init: jsbind::Any) -> EncodedAudioChunk {
+    pub fn new(init: Any) -> EncodedAudioChunk {
         Self {
-            inner: emlite::Val::global("EncodedAudioChunk")
-                .new(&[init.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("EncodedAudioChunk").new(&[init.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl EncodedAudioChunk {
     pub fn type_(&self) -> EncodedAudioChunkType {
         self.inner.get("type").as_::<EncodedAudioChunkType>()
     }
+
 }
 impl EncodedAudioChunk {
     pub fn timestamp(&self) -> i64 {
         self.inner.get("timestamp").as_::<i64>()
     }
+
 }
 impl EncodedAudioChunk {
     pub fn duration(&self) -> u64 {
         self.inner.get("duration").as_::<u64>()
     }
+
 }
 impl EncodedAudioChunk {
     pub fn byte_length(&self) -> u32 {
         self.inner.get("byteLength").as_::<u32>()
     }
+
 }
 impl EncodedAudioChunk {
-    pub fn copy_to(&self, destination: jsbind::Any) -> jsbind::Undefined {
-        self.inner
-            .call("copyTo", &[destination.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn copy_to(&self, destination: Any) -> Undefined {
+        self.inner.call("copyTo", &[destination.into(), ]).as_::<Undefined>()
     }
+
 }

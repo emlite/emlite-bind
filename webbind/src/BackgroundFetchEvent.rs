@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BackgroundFetchEvent {
@@ -7,9 +10,7 @@ pub struct BackgroundFetchEvent {
 }
 impl FromVal for BackgroundFetchEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        BackgroundFetchEvent {
-            inner: ExtendableEvent::from_val(v),
-        }
+        BackgroundFetchEvent { inner: ExtendableEvent::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for BackgroundFetchEvent {
 }
 impl AsMut<emlite::Val> for BackgroundFetchEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<BackgroundFetchEvent> for emlite::Val {
     fn from(s: BackgroundFetchEvent) -> emlite::Val {
@@ -48,19 +49,19 @@ impl From<BackgroundFetchEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BackgroundFetchEvent);
 
+
+
 impl BackgroundFetchEvent {
-    pub fn new(type_: jsbind::DOMString, init: jsbind::Any) -> BackgroundFetchEvent {
+    pub fn new(type_: DOMString, init: Any) -> BackgroundFetchEvent {
         Self {
-            inner: emlite::Val::global("BackgroundFetchEvent")
-                .new(&[type_.into(), init.into()])
-                .as_::<ExtendableEvent>(),
+            inner: emlite::Val::global("BackgroundFetchEvent").new(&[type_.into(), init.into()]).as_::<ExtendableEvent>(),
         }
     }
+
 }
 impl BackgroundFetchEvent {
     pub fn registration(&self) -> BackgroundFetchRegistration {
-        self.inner
-            .get("registration")
-            .as_::<BackgroundFetchRegistration>()
+        self.inner.get("registration").as_::<BackgroundFetchRegistration>()
     }
+
 }

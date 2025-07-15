@@ -1,5 +1,6 @@
-use crate::Any;
+use crate::any::Any;
 use alloc::vec::Vec;
+use crate::function::Function;
 
 pub struct Performance;
 impl Performance {
@@ -14,7 +15,7 @@ impl Performance {
 }
 
 /// `setTimeout(cb, ms, ...args)` → returns timer id (`i32` in browsers).
-pub fn set_timeout(cb: &crate::Function, millis: i32, extra_args: &[Any]) -> i32 {
+pub fn set_timeout(cb: &Function, millis: i32, extra_args: &[Any]) -> i32 {
     let mut args: Vec<emlite::Val> = Vec::with_capacity(extra_args.len() + 2);
     args.push(cb.clone().into());
     args.push(millis.into());
@@ -29,7 +30,7 @@ pub fn clear_timeout(id: i32) {
 }
 
 /// `setInterval(cb, ms, ...args)` → returns id
-pub fn set_interval(cb: &crate::Function, millis: i32, extra_args: &[Any]) -> i32 {
+pub fn set_interval(cb: &Function, millis: i32, extra_args: &[Any]) -> i32 {
     let mut args: Vec<emlite::Val> = Vec::with_capacity(extra_args.len() + 2);
     args.push(cb.clone().into());
     args.push(millis.into());

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSUnitValue {
@@ -7,9 +10,7 @@ pub struct CSSUnitValue {
 }
 impl FromVal for CSSUnitValue {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSUnitValue {
-            inner: CSSNumericValue::from_val(v),
-        }
+        CSSUnitValue { inner: CSSNumericValue::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSUnitValue {
 }
 impl AsMut<emlite::Val> for CSSUnitValue {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSUnitValue> for emlite::Val {
     fn from(s: CSSUnitValue) -> emlite::Val {
@@ -48,14 +49,15 @@ impl From<CSSUnitValue> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSUnitValue);
 
+
+
 impl CSSUnitValue {
-    pub fn new(value: f64, unit: jsbind::USVString) -> CSSUnitValue {
+    pub fn new(value: f64, unit: USVString) -> CSSUnitValue {
         Self {
-            inner: emlite::Val::global("CSSUnitValue")
-                .new(&[value.into(), unit.into()])
-                .as_::<CSSNumericValue>(),
+            inner: emlite::Val::global("CSSUnitValue").new(&[value.into(), unit.into()]).as_::<CSSNumericValue>(),
         }
     }
+
 }
 impl CSSUnitValue {
     pub fn value(&self) -> f64 {
@@ -65,9 +67,11 @@ impl CSSUnitValue {
     pub fn set_value(&mut self, value: f64) {
         self.inner.set("value", value);
     }
+
 }
 impl CSSUnitValue {
-    pub fn unit(&self) -> jsbind::USVString {
-        self.inner.get("unit").as_::<jsbind::USVString>()
+    pub fn unit(&self) -> USVString {
+        self.inner.get("unit").as_::<USVString>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct StorageBucketOptions {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for StorageBucketOptions {
 }
 impl AsMut<emlite::Val> for StorageBucketOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<StorageBucketOptions> for emlite::Val {
     fn from(s: StorageBucketOptions) -> emlite::Val {
@@ -53,6 +56,7 @@ impl StorageBucketOptions {
     pub fn set_persisted(&mut self, value: bool) {
         self.inner.set("persisted", value);
     }
+
 }
 impl StorageBucketOptions {
     pub fn quota(&self) -> u64 {
@@ -62,15 +66,17 @@ impl StorageBucketOptions {
     pub fn set_quota(&mut self, value: u64) {
         self.inner.set("quota", value);
     }
+
 }
 impl StorageBucketOptions {
-    pub fn expires(&self) -> jsbind::Any {
-        self.inner.get("expires").as_::<jsbind::Any>()
+    pub fn expires(&self) -> Any {
+        self.inner.get("expires").as_::<Any>()
     }
 
-    pub fn set_expires(&mut self, value: jsbind::Any) {
+    pub fn set_expires(&mut self, value: Any) {
         self.inner.set("expires", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -79,9 +85,7 @@ pub struct StorageBucketManager {
 }
 impl FromVal for StorageBucketManager {
     fn from_val(v: &emlite::Val) -> Self {
-        StorageBucketManager {
-            inner: emlite::Val::from_val(v),
-        }
+        StorageBucketManager { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -108,8 +112,8 @@ impl AsRef<emlite::Val> for StorageBucketManager {
 }
 impl AsMut<emlite::Val> for StorageBucketManager {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<StorageBucketManager> for emlite::Val {
     fn from(s: StorageBucketManager) -> emlite::Val {
@@ -120,28 +124,26 @@ impl From<StorageBucketManager> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(StorageBucketManager);
 
+
 impl StorageBucketManager {
-    pub fn open0(&self, name: jsbind::DOMString) -> jsbind::Promise {
-        self.inner
-            .call("open", &[name.into()])
-            .as_::<jsbind::Promise>()
+    pub fn open0(&self, name: DOMString) -> Promise {
+        self.inner.call("open", &[name.into(), ]).as_::<Promise>()
     }
 
-    pub fn open1(&self, name: jsbind::DOMString, options: StorageBucketOptions) -> jsbind::Promise {
-        self.inner
-            .call("open", &[name.into(), options.into()])
-            .as_::<jsbind::Promise>()
+    pub fn open1(&self, name: DOMString, options: StorageBucketOptions) -> Promise {
+        self.inner.call("open", &[name.into(), options.into(), ]).as_::<Promise>()
     }
+
 }
 impl StorageBucketManager {
-    pub fn keys(&self) -> jsbind::Promise {
-        self.inner.call("keys", &[]).as_::<jsbind::Promise>()
+    pub fn keys(&self, ) -> Promise {
+        self.inner.call("keys", &[]).as_::<Promise>()
     }
+
 }
 impl StorageBucketManager {
-    pub fn delete(&self, name: jsbind::DOMString) -> jsbind::Promise {
-        self.inner
-            .call("delete", &[name.into()])
-            .as_::<jsbind::Promise>()
+    pub fn delete(&self, name: DOMString) -> Promise {
+        self.inner.call("delete", &[name.into(), ]).as_::<Promise>()
     }
+
 }

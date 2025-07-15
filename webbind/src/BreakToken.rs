@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BreakToken {
@@ -7,9 +10,7 @@ pub struct BreakToken {
 }
 impl FromVal for BreakToken {
     fn from_val(v: &emlite::Val) -> Self {
-        BreakToken {
-            inner: emlite::Val::from_val(v),
-        }
+        BreakToken { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for BreakToken {
 }
 impl AsMut<emlite::Val> for BreakToken {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<BreakToken> for emlite::Val {
     fn from(s: BreakToken) -> emlite::Val {
@@ -48,15 +49,16 @@ impl From<BreakToken> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BreakToken);
 
+
 impl BreakToken {
-    pub fn child_break_tokens(&self) -> jsbind::FrozenArray<ChildBreakToken> {
-        self.inner
-            .get("childBreakTokens")
-            .as_::<jsbind::FrozenArray<ChildBreakToken>>()
+    pub fn child_break_tokens(&self) -> FrozenArray<ChildBreakToken> {
+        self.inner.get("childBreakTokens").as_::<FrozenArray<ChildBreakToken>>()
     }
+
 }
 impl BreakToken {
-    pub fn data(&self) -> jsbind::Any {
-        self.inner.get("data").as_::<jsbind::Any>()
+    pub fn data(&self) -> Any {
+        self.inner.get("data").as_::<Any>()
     }
+
 }

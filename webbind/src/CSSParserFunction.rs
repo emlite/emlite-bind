@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSParserFunction {
@@ -7,9 +10,7 @@ pub struct CSSParserFunction {
 }
 impl FromVal for CSSParserFunction {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSParserFunction {
-            inner: CSSParserValue::from_val(v),
-        }
+        CSSParserFunction { inner: CSSParserValue::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSParserFunction {
 }
 impl AsMut<emlite::Val> for CSSParserFunction {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSParserFunction> for emlite::Val {
     fn from(s: CSSParserFunction) -> emlite::Val {
@@ -48,27 +49,25 @@ impl From<CSSParserFunction> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSParserFunction);
 
+
+
 impl CSSParserFunction {
-    pub fn new(
-        name: jsbind::DOMString,
-        args: jsbind::Sequence<jsbind::Sequence<CSSParserValue>>,
-    ) -> CSSParserFunction {
+    pub fn new(name: DOMString, args: Sequence<Sequence<CSSParserValue>>) -> CSSParserFunction {
         Self {
-            inner: emlite::Val::global("CSSParserFunction")
-                .new(&[name.into(), args.into()])
-                .as_::<CSSParserValue>(),
+            inner: emlite::Val::global("CSSParserFunction").new(&[name.into(), args.into()]).as_::<CSSParserValue>(),
         }
     }
+
 }
 impl CSSParserFunction {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
+
 }
 impl CSSParserFunction {
-    pub fn args(&self) -> jsbind::FrozenArray<jsbind::FrozenArray<CSSParserValue>> {
-        self.inner
-            .get("args")
-            .as_::<jsbind::FrozenArray<jsbind::FrozenArray<CSSParserValue>>>()
+    pub fn args(&self) -> FrozenArray<FrozenArray<CSSParserValue>> {
+        self.inner.get("args").as_::<FrozenArray<FrozenArray<CSSParserValue>>>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PageTransitionEvent {
@@ -7,9 +10,7 @@ pub struct PageTransitionEvent {
 }
 impl FromVal for PageTransitionEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        PageTransitionEvent {
-            inner: Event::from_val(v),
-        }
+        PageTransitionEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PageTransitionEvent {
 }
 impl AsMut<emlite::Val> for PageTransitionEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PageTransitionEvent> for emlite::Val {
     fn from(s: PageTransitionEvent) -> emlite::Val {
@@ -48,25 +49,25 @@ impl From<PageTransitionEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PageTransitionEvent);
 
+
+
 impl PageTransitionEvent {
-    pub fn new0(type_: jsbind::DOMString) -> PageTransitionEvent {
+    pub fn new0(type_: DOMString) -> PageTransitionEvent {
         Self {
-            inner: emlite::Val::global("PageTransitionEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("PageTransitionEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
-    pub fn new1(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> PageTransitionEvent {
+    pub fn new1(type_: DOMString, event_init_dict: Any) -> PageTransitionEvent {
         Self {
-            inner: emlite::Val::global("PageTransitionEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("PageTransitionEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl PageTransitionEvent {
     pub fn persisted(&self) -> bool {
         self.inner.get("persisted").as_::<bool>()
     }
+
 }

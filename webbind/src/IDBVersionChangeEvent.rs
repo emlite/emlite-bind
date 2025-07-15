@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IDBVersionChangeEvent {
@@ -7,9 +10,7 @@ pub struct IDBVersionChangeEvent {
 }
 impl FromVal for IDBVersionChangeEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        IDBVersionChangeEvent {
-            inner: Event::from_val(v),
-        }
+        IDBVersionChangeEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for IDBVersionChangeEvent {
 }
 impl AsMut<emlite::Val> for IDBVersionChangeEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<IDBVersionChangeEvent> for emlite::Val {
     fn from(s: IDBVersionChangeEvent) -> emlite::Val {
@@ -48,30 +49,31 @@ impl From<IDBVersionChangeEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(IDBVersionChangeEvent);
 
+
+
 impl IDBVersionChangeEvent {
-    pub fn new0(type_: jsbind::DOMString) -> IDBVersionChangeEvent {
+    pub fn new0(type_: DOMString) -> IDBVersionChangeEvent {
         Self {
-            inner: emlite::Val::global("IDBVersionChangeEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("IDBVersionChangeEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
-    pub fn new1(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> IDBVersionChangeEvent {
+    pub fn new1(type_: DOMString, event_init_dict: Any) -> IDBVersionChangeEvent {
         Self {
-            inner: emlite::Val::global("IDBVersionChangeEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("IDBVersionChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl IDBVersionChangeEvent {
     pub fn old_version(&self) -> u64 {
         self.inner.get("oldVersion").as_::<u64>()
     }
+
 }
 impl IDBVersionChangeEvent {
     pub fn new_version(&self) -> u64 {
         self.inner.get("newVersion").as_::<u64>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WakeLock {
@@ -7,9 +10,7 @@ pub struct WakeLock {
 }
 impl FromVal for WakeLock {
     fn from_val(v: &emlite::Val) -> Self {
-        WakeLock {
-            inner: emlite::Val::from_val(v),
-        }
+        WakeLock { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WakeLock {
 }
 impl AsMut<emlite::Val> for WakeLock {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WakeLock> for emlite::Val {
     fn from(s: WakeLock) -> emlite::Val {
@@ -48,14 +49,14 @@ impl From<WakeLock> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WakeLock);
 
+
 impl WakeLock {
-    pub fn request0(&self) -> jsbind::Promise {
-        self.inner.call("request", &[]).as_::<jsbind::Promise>()
+    pub fn request0(&self, ) -> Promise {
+        self.inner.call("request", &[]).as_::<Promise>()
     }
 
-    pub fn request1(&self, type_: WakeLockType) -> jsbind::Promise {
-        self.inner
-            .call("request", &[type_.into()])
-            .as_::<jsbind::Promise>()
+    pub fn request1(&self, type_: WakeLockType) -> Promise {
+        self.inner.call("request", &[type_.into(), ]).as_::<Promise>()
     }
+
 }

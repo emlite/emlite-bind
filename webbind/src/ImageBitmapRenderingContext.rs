@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ImageBitmapRenderingContext {
@@ -7,9 +10,7 @@ pub struct ImageBitmapRenderingContext {
 }
 impl FromVal for ImageBitmapRenderingContext {
     fn from_val(v: &emlite::Val) -> Self {
-        ImageBitmapRenderingContext {
-            inner: emlite::Val::from_val(v),
-        }
+        ImageBitmapRenderingContext { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ImageBitmapRenderingContext {
 }
 impl AsMut<emlite::Val> for ImageBitmapRenderingContext {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ImageBitmapRenderingContext> for emlite::Val {
     fn from(s: ImageBitmapRenderingContext) -> emlite::Val {
@@ -48,15 +49,16 @@ impl From<ImageBitmapRenderingContext> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ImageBitmapRenderingContext);
 
+
 impl ImageBitmapRenderingContext {
-    pub fn canvas(&self) -> jsbind::Any {
-        self.inner.get("canvas").as_::<jsbind::Any>()
+    pub fn canvas(&self) -> Any {
+        self.inner.get("canvas").as_::<Any>()
     }
+
 }
 impl ImageBitmapRenderingContext {
-    pub fn transfer_from_image_bitmap(&self, bitmap: ImageBitmap) -> jsbind::Undefined {
-        self.inner
-            .call("transferFromImageBitmap", &[bitmap.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn transfer_from_image_bitmap(&self, bitmap: ImageBitmap) -> Undefined {
+        self.inner.call("transferFromImageBitmap", &[bitmap.into(), ]).as_::<Undefined>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TransitionEvent {
@@ -7,9 +10,7 @@ pub struct TransitionEvent {
 }
 impl FromVal for TransitionEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        TransitionEvent {
-            inner: Event::from_val(v),
-        }
+        TransitionEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for TransitionEvent {
 }
 impl AsMut<emlite::Val> for TransitionEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<TransitionEvent> for emlite::Val {
     fn from(s: TransitionEvent) -> emlite::Val {
@@ -48,38 +49,37 @@ impl From<TransitionEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(TransitionEvent);
 
+
+
 impl TransitionEvent {
-    pub fn new0(type_: jsbind::CSSOMString) -> TransitionEvent {
+    pub fn new0(type_: CSSOMString) -> TransitionEvent {
         Self {
-            inner: emlite::Val::global("TransitionEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("TransitionEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
-    pub fn new1(
-        type_: jsbind::CSSOMString,
-        transition_event_init_dict: jsbind::Any,
-    ) -> TransitionEvent {
+    pub fn new1(type_: CSSOMString, transition_event_init_dict: Any) -> TransitionEvent {
         Self {
-            inner: emlite::Val::global("TransitionEvent")
-                .new(&[type_.into(), transition_event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("TransitionEvent").new(&[type_.into(), transition_event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl TransitionEvent {
-    pub fn property_name(&self) -> jsbind::CSSOMString {
-        self.inner.get("propertyName").as_::<jsbind::CSSOMString>()
+    pub fn property_name(&self) -> CSSOMString {
+        self.inner.get("propertyName").as_::<CSSOMString>()
     }
+
 }
 impl TransitionEvent {
     pub fn elapsed_time(&self) -> f64 {
         self.inner.get("elapsedTime").as_::<f64>()
     }
+
 }
 impl TransitionEvent {
-    pub fn pseudo_element(&self) -> jsbind::CSSOMString {
-        self.inner.get("pseudoElement").as_::<jsbind::CSSOMString>()
+    pub fn pseudo_element(&self) -> CSSOMString {
+        self.inner.get("pseudoElement").as_::<CSSOMString>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRReferenceSpaceEvent {
@@ -7,9 +10,7 @@ pub struct XRReferenceSpaceEvent {
 }
 impl FromVal for XRReferenceSpaceEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        XRReferenceSpaceEvent {
-            inner: Event::from_val(v),
-        }
+        XRReferenceSpaceEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRReferenceSpaceEvent {
 }
 impl AsMut<emlite::Val> for XRReferenceSpaceEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRReferenceSpaceEvent> for emlite::Val {
     fn from(s: XRReferenceSpaceEvent) -> emlite::Val {
@@ -48,22 +49,25 @@ impl From<XRReferenceSpaceEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRReferenceSpaceEvent);
 
+
+
 impl XRReferenceSpaceEvent {
-    pub fn new(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> XRReferenceSpaceEvent {
+    pub fn new(type_: DOMString, event_init_dict: Any) -> XRReferenceSpaceEvent {
         Self {
-            inner: emlite::Val::global("XRReferenceSpaceEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("XRReferenceSpaceEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl XRReferenceSpaceEvent {
     pub fn reference_space(&self) -> XRReferenceSpace {
         self.inner.get("referenceSpace").as_::<XRReferenceSpace>()
     }
+
 }
 impl XRReferenceSpaceEvent {
     pub fn transform(&self) -> XRRigidTransform {
         self.inner.get("transform").as_::<XRRigidTransform>()
     }
+
 }

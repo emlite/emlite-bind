@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AuthenticatorAttestationResponse {
@@ -7,9 +10,7 @@ pub struct AuthenticatorAttestationResponse {
 }
 impl FromVal for AuthenticatorAttestationResponse {
     fn from_val(v: &emlite::Val) -> Self {
-        AuthenticatorAttestationResponse {
-            inner: AuthenticatorResponse::from_val(v),
-        }
+        AuthenticatorAttestationResponse { inner: AuthenticatorResponse::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for AuthenticatorAttestationResponse {
 }
 impl AsMut<emlite::Val> for AuthenticatorAttestationResponse {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AuthenticatorAttestationResponse> for emlite::Val {
     fn from(s: AuthenticatorAttestationResponse) -> emlite::Val {
@@ -48,38 +49,34 @@ impl From<AuthenticatorAttestationResponse> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AuthenticatorAttestationResponse);
 
+
 impl AuthenticatorAttestationResponse {
-    pub fn attestation_object(&self) -> jsbind::ArrayBuffer {
-        self.inner
-            .get("attestationObject")
-            .as_::<jsbind::ArrayBuffer>()
+    pub fn attestation_object(&self) -> ArrayBuffer {
+        self.inner.get("attestationObject").as_::<ArrayBuffer>()
     }
+
 }
 impl AuthenticatorAttestationResponse {
-    pub fn get_transports(&self) -> jsbind::Sequence<jsbind::DOMString> {
-        self.inner
-            .call("getTransports", &[])
-            .as_::<jsbind::Sequence<jsbind::DOMString>>()
+    pub fn get_transports(&self, ) -> Sequence<DOMString> {
+        self.inner.call("getTransports", &[]).as_::<Sequence<DOMString>>()
     }
+
 }
 impl AuthenticatorAttestationResponse {
-    pub fn get_authenticator_data(&self) -> jsbind::ArrayBuffer {
-        self.inner
-            .call("getAuthenticatorData", &[])
-            .as_::<jsbind::ArrayBuffer>()
+    pub fn get_authenticator_data(&self, ) -> ArrayBuffer {
+        self.inner.call("getAuthenticatorData", &[]).as_::<ArrayBuffer>()
     }
+
 }
 impl AuthenticatorAttestationResponse {
-    pub fn get_public_key(&self) -> jsbind::ArrayBuffer {
-        self.inner
-            .call("getPublicKey", &[])
-            .as_::<jsbind::ArrayBuffer>()
+    pub fn get_public_key(&self, ) -> ArrayBuffer {
+        self.inner.call("getPublicKey", &[]).as_::<ArrayBuffer>()
     }
+
 }
 impl AuthenticatorAttestationResponse {
-    pub fn get_public_key_algorithm(&self) -> jsbind::Any {
-        self.inner
-            .call("getPublicKeyAlgorithm", &[])
-            .as_::<jsbind::Any>()
+    pub fn get_public_key_algorithm(&self, ) -> Any {
+        self.inner.call("getPublicKeyAlgorithm", &[]).as_::<Any>()
     }
+
 }

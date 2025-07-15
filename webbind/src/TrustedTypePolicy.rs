@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TrustedTypePolicy {
@@ -7,9 +10,7 @@ pub struct TrustedTypePolicy {
 }
 impl FromVal for TrustedTypePolicy {
     fn from_val(v: &emlite::Val) -> Self {
-        TrustedTypePolicy {
-            inner: emlite::Val::from_val(v),
-        }
+        TrustedTypePolicy { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for TrustedTypePolicy {
 }
 impl AsMut<emlite::Val> for TrustedTypePolicy {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<TrustedTypePolicy> for emlite::Val {
     fn from(s: TrustedTypePolicy) -> emlite::Val {
@@ -48,33 +49,28 @@ impl From<TrustedTypePolicy> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(TrustedTypePolicy);
 
+
 impl TrustedTypePolicy {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
+
 }
 impl TrustedTypePolicy {
-    pub fn create_html(&self, input: jsbind::DOMString, arguments: jsbind::Any) -> TrustedHTML {
-        self.inner
-            .call("createHTML", &[input.into(), arguments.into()])
-            .as_::<TrustedHTML>()
+    pub fn create_html(&self, input: DOMString, arguments: Any) -> TrustedHTML {
+        self.inner.call("createHTML", &[input.into(), arguments.into(), ]).as_::<TrustedHTML>()
     }
+
 }
 impl TrustedTypePolicy {
-    pub fn create_script(&self, input: jsbind::DOMString, arguments: jsbind::Any) -> TrustedScript {
-        self.inner
-            .call("createScript", &[input.into(), arguments.into()])
-            .as_::<TrustedScript>()
+    pub fn create_script(&self, input: DOMString, arguments: Any) -> TrustedScript {
+        self.inner.call("createScript", &[input.into(), arguments.into(), ]).as_::<TrustedScript>()
     }
+
 }
 impl TrustedTypePolicy {
-    pub fn create_script_url(
-        &self,
-        input: jsbind::DOMString,
-        arguments: jsbind::Any,
-    ) -> TrustedScriptURL {
-        self.inner
-            .call("createScriptURL", &[input.into(), arguments.into()])
-            .as_::<TrustedScriptURL>()
+    pub fn create_script_url(&self, input: DOMString, arguments: Any) -> TrustedScriptURL {
+        self.inner.call("createScriptURL", &[input.into(), arguments.into(), ]).as_::<TrustedScriptURL>()
     }
+
 }

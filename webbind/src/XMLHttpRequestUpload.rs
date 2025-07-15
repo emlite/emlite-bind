@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XMLHttpRequestUpload {
@@ -7,9 +10,7 @@ pub struct XMLHttpRequestUpload {
 }
 impl FromVal for XMLHttpRequestUpload {
     fn from_val(v: &emlite::Val) -> Self {
-        XMLHttpRequestUpload {
-            inner: XMLHttpRequestEventTarget::from_val(v),
-        }
+        XMLHttpRequestUpload { inner: XMLHttpRequestEventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XMLHttpRequestUpload {
 }
 impl AsMut<emlite::Val> for XMLHttpRequestUpload {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XMLHttpRequestUpload> for emlite::Val {
     fn from(s: XMLHttpRequestUpload) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<XMLHttpRequestUpload> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(XMLHttpRequestUpload);
+
+

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGCircleElement {
@@ -7,9 +10,7 @@ pub struct SVGCircleElement {
 }
 impl FromVal for SVGCircleElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGCircleElement {
-            inner: SVGGeometryElement::from_val(v),
-        }
+        SVGCircleElement { inner: SVGGeometryElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGCircleElement {
 }
 impl AsMut<emlite::Val> for SVGCircleElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGCircleElement> for emlite::Val {
     fn from(s: SVGCircleElement) -> emlite::Val {
@@ -48,18 +49,22 @@ impl From<SVGCircleElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGCircleElement);
 
+
 impl SVGCircleElement {
     pub fn cx(&self) -> SVGAnimatedLength {
         self.inner.get("cx").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGCircleElement {
     pub fn cy(&self) -> SVGAnimatedLength {
         self.inner.get("cy").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGCircleElement {
     pub fn r(&self) -> SVGAnimatedLength {
         self.inner.get("r").as_::<SVGAnimatedLength>()
     }
+
 }

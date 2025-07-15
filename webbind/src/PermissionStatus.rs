@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PermissionStatus {
@@ -7,9 +10,7 @@ pub struct PermissionStatus {
 }
 impl FromVal for PermissionStatus {
     fn from_val(v: &emlite::Val) -> Self {
-        PermissionStatus {
-            inner: EventTarget::from_val(v),
-        }
+        PermissionStatus { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PermissionStatus {
 }
 impl AsMut<emlite::Val> for PermissionStatus {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PermissionStatus> for emlite::Val {
     fn from(s: PermissionStatus) -> emlite::Val {
@@ -48,22 +49,26 @@ impl From<PermissionStatus> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PermissionStatus);
 
+
 impl PermissionStatus {
     pub fn state(&self) -> PermissionState {
         self.inner.get("state").as_::<PermissionState>()
     }
+
 }
 impl PermissionStatus {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
-    }
-}
-impl PermissionStatus {
-    pub fn onchange(&self) -> jsbind::Any {
-        self.inner.get("onchange").as_::<jsbind::Any>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
-    pub fn set_onchange(&mut self, value: jsbind::Any) {
+}
+impl PermissionStatus {
+    pub fn onchange(&self) -> Any {
+        self.inner.get("onchange").as_::<Any>()
+    }
+
+    pub fn set_onchange(&mut self, value: Any) {
         self.inner.set("onchange", value);
     }
+
 }

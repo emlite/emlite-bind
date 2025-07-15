@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLTrackElement {
@@ -7,9 +10,7 @@ pub struct HTMLTrackElement {
 }
 impl FromVal for HTMLTrackElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLTrackElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLTrackElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLTrackElement {
 }
 impl AsMut<emlite::Val> for HTMLTrackElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLTrackElement> for emlite::Val {
     fn from(s: HTMLTrackElement) -> emlite::Val {
@@ -48,50 +49,55 @@ impl From<HTMLTrackElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLTrackElement);
 
+
+
 impl HTMLTrackElement {
     pub fn new() -> HTMLTrackElement {
         Self {
-            inner: emlite::Val::global("HTMLTrackElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLTrackElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLTrackElement {
-    pub fn kind(&self) -> jsbind::DOMString {
-        self.inner.get("kind").as_::<jsbind::DOMString>()
+    pub fn kind(&self) -> DOMString {
+        self.inner.get("kind").as_::<DOMString>()
     }
 
-    pub fn set_kind(&mut self, value: jsbind::DOMString) {
+    pub fn set_kind(&mut self, value: DOMString) {
         self.inner.set("kind", value);
     }
+
 }
 impl HTMLTrackElement {
-    pub fn src(&self) -> jsbind::USVString {
-        self.inner.get("src").as_::<jsbind::USVString>()
+    pub fn src(&self) -> USVString {
+        self.inner.get("src").as_::<USVString>()
     }
 
-    pub fn set_src(&mut self, value: jsbind::USVString) {
+    pub fn set_src(&mut self, value: USVString) {
         self.inner.set("src", value);
     }
+
 }
 impl HTMLTrackElement {
-    pub fn srclang(&self) -> jsbind::DOMString {
-        self.inner.get("srclang").as_::<jsbind::DOMString>()
+    pub fn srclang(&self) -> DOMString {
+        self.inner.get("srclang").as_::<DOMString>()
     }
 
-    pub fn set_srclang(&mut self, value: jsbind::DOMString) {
+    pub fn set_srclang(&mut self, value: DOMString) {
         self.inner.set("srclang", value);
     }
+
 }
 impl HTMLTrackElement {
-    pub fn label(&self) -> jsbind::DOMString {
-        self.inner.get("label").as_::<jsbind::DOMString>()
+    pub fn label(&self) -> DOMString {
+        self.inner.get("label").as_::<DOMString>()
     }
 
-    pub fn set_label(&mut self, value: jsbind::DOMString) {
+    pub fn set_label(&mut self, value: DOMString) {
         self.inner.set("label", value);
     }
+
 }
 impl HTMLTrackElement {
     pub fn default(&self) -> bool {
@@ -101,14 +107,17 @@ impl HTMLTrackElement {
     pub fn set_default(&mut self, value: bool) {
         self.inner.set("default", value);
     }
+
 }
 impl HTMLTrackElement {
     pub fn ready_state(&self) -> u16 {
         self.inner.get("readyState").as_::<u16>()
     }
+
 }
 impl HTMLTrackElement {
     pub fn track(&self) -> TextTrack {
         self.inner.get("track").as_::<TextTrack>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CropTarget {
@@ -7,9 +10,7 @@ pub struct CropTarget {
 }
 impl FromVal for CropTarget {
     fn from_val(v: &emlite::Val) -> Self {
-        CropTarget {
-            inner: emlite::Val::from_val(v),
-        }
+        CropTarget { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CropTarget {
 }
 impl AsMut<emlite::Val> for CropTarget {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CropTarget> for emlite::Val {
     fn from(s: CropTarget) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<CropTarget> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CropTarget);
 
+
 impl CropTarget {
-    pub fn from_element(element: Element) -> jsbind::Promise {
-        emlite::Val::global("croptarget")
-            .call("fromElement", &[element.into()])
-            .as_::<jsbind::Promise>()
+    pub fn from_element(element: Element) -> Promise {
+        emlite::Val::global("croptarget").call("fromElement", &[element.into(), ]).as_::<Promise>()
     }
+
 }

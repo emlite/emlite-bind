@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUQuerySet {
@@ -7,9 +10,7 @@ pub struct GPUQuerySet {
 }
 impl FromVal for GPUQuerySet {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUQuerySet {
-            inner: emlite::Val::from_val(v),
-        }
+        GPUQuerySet { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for GPUQuerySet {
 }
 impl AsMut<emlite::Val> for GPUQuerySet {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<GPUQuerySet> for emlite::Val {
     fn from(s: GPUQuerySet) -> emlite::Val {
@@ -48,27 +49,32 @@ impl From<GPUQuerySet> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GPUQuerySet);
 
+
 impl GPUQuerySet {
-    pub fn destroy(&self) -> jsbind::Undefined {
-        self.inner.call("destroy", &[]).as_::<jsbind::Undefined>()
+    pub fn destroy(&self, ) -> Undefined {
+        self.inner.call("destroy", &[]).as_::<Undefined>()
     }
+
 }
 impl GPUQuerySet {
     pub fn type_(&self) -> GPUQueryType {
         self.inner.get("type").as_::<GPUQueryType>()
     }
+
 }
 impl GPUQuerySet {
-    pub fn count(&self) -> jsbind::Any {
-        self.inner.get("count").as_::<jsbind::Any>()
-    }
-}
-impl GPUQuerySet {
-    pub fn label(&self) -> jsbind::USVString {
-        self.inner.get("label").as_::<jsbind::USVString>()
+    pub fn count(&self) -> Any {
+        self.inner.get("count").as_::<Any>()
     }
 
-    pub fn set_label(&mut self, value: jsbind::USVString) {
+}
+impl GPUQuerySet {
+    pub fn label(&self) -> USVString {
+        self.inner.get("label").as_::<USVString>()
+    }
+
+    pub fn set_label(&mut self, value: USVString) {
         self.inner.set("label", value);
     }
+
 }

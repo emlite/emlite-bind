@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioOutputOptions {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for AudioOutputOptions {
 }
 impl AsMut<emlite::Val> for AudioOutputOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AudioOutputOptions> for emlite::Val {
     fn from(s: AudioOutputOptions) -> emlite::Val {
@@ -46,13 +49,14 @@ impl From<AudioOutputOptions> for emlite::Val {
 }
 
 impl AudioOutputOptions {
-    pub fn device_id(&self) -> jsbind::DOMString {
-        self.inner.get("deviceId").as_::<jsbind::DOMString>()
+    pub fn device_id(&self) -> DOMString {
+        self.inner.get("deviceId").as_::<DOMString>()
     }
 
-    pub fn set_device_id(&mut self, value: jsbind::DOMString) {
+    pub fn set_device_id(&mut self, value: DOMString) {
         self.inner.set("deviceId", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -88,8 +92,8 @@ impl AsRef<emlite::Val> for CaptureHandleConfig {
 }
 impl AsMut<emlite::Val> for CaptureHandleConfig {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CaptureHandleConfig> for emlite::Val {
     fn from(s: CaptureHandleConfig) -> emlite::Val {
@@ -107,26 +111,27 @@ impl CaptureHandleConfig {
     pub fn set_expose_origin(&mut self, value: bool) {
         self.inner.set("exposeOrigin", value);
     }
+
 }
 impl CaptureHandleConfig {
-    pub fn handle(&self) -> jsbind::DOMString {
-        self.inner.get("handle").as_::<jsbind::DOMString>()
+    pub fn handle(&self) -> DOMString {
+        self.inner.get("handle").as_::<DOMString>()
     }
 
-    pub fn set_handle(&mut self, value: jsbind::DOMString) {
+    pub fn set_handle(&mut self, value: DOMString) {
         self.inner.set("handle", value);
     }
+
 }
 impl CaptureHandleConfig {
-    pub fn permitted_origins(&self) -> jsbind::Sequence<jsbind::DOMString> {
-        self.inner
-            .get("permittedOrigins")
-            .as_::<jsbind::Sequence<jsbind::DOMString>>()
+    pub fn permitted_origins(&self) -> Sequence<DOMString> {
+        self.inner.get("permittedOrigins").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_permitted_origins(&mut self, value: jsbind::Sequence<jsbind::DOMString>) {
+    pub fn set_permitted_origins(&mut self, value: Sequence<DOMString>) {
         self.inner.set("permittedOrigins", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -162,8 +167,8 @@ impl AsRef<emlite::Val> for MediaTrackSupportedConstraints {
 }
 impl AsMut<emlite::Val> for MediaTrackSupportedConstraints {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MediaTrackSupportedConstraints> for emlite::Val {
     fn from(s: MediaTrackSupportedConstraints) -> emlite::Val {
@@ -181,6 +186,7 @@ impl MediaTrackSupportedConstraints {
     pub fn set_display_surface(&mut self, value: bool) {
         self.inner.set("displaySurface", value);
     }
+
 }
 impl MediaTrackSupportedConstraints {
     pub fn logical_surface(&self) -> bool {
@@ -190,6 +196,7 @@ impl MediaTrackSupportedConstraints {
     pub fn set_logical_surface(&mut self, value: bool) {
         self.inner.set("logicalSurface", value);
     }
+
 }
 impl MediaTrackSupportedConstraints {
     pub fn cursor(&self) -> bool {
@@ -199,6 +206,7 @@ impl MediaTrackSupportedConstraints {
     pub fn set_cursor(&mut self, value: bool) {
         self.inner.set("cursor", value);
     }
+
 }
 impl MediaTrackSupportedConstraints {
     pub fn restrict_own_audio(&self) -> bool {
@@ -208,6 +216,7 @@ impl MediaTrackSupportedConstraints {
     pub fn set_restrict_own_audio(&mut self, value: bool) {
         self.inner.set("restrictOwnAudio", value);
     }
+
 }
 impl MediaTrackSupportedConstraints {
     pub fn suppress_local_audio_playback(&self) -> bool {
@@ -217,6 +226,7 @@ impl MediaTrackSupportedConstraints {
     pub fn set_suppress_local_audio_playback(&mut self, value: bool) {
         self.inner.set("suppressLocalAudioPlayback", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -252,8 +262,8 @@ impl AsRef<emlite::Val> for MediaStreamConstraints {
 }
 impl AsMut<emlite::Val> for MediaStreamConstraints {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MediaStreamConstraints> for emlite::Val {
     fn from(s: MediaStreamConstraints) -> emlite::Val {
@@ -264,13 +274,14 @@ impl From<MediaStreamConstraints> for emlite::Val {
 }
 
 impl MediaStreamConstraints {
-    pub fn peer_identity(&self) -> jsbind::DOMString {
-        self.inner.get("peerIdentity").as_::<jsbind::DOMString>()
+    pub fn peer_identity(&self) -> DOMString {
+        self.inner.get("peerIdentity").as_::<DOMString>()
     }
 
-    pub fn set_peer_identity(&mut self, value: jsbind::DOMString) {
+    pub fn set_peer_identity(&mut self, value: DOMString) {
         self.inner.set("peerIdentity", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -306,8 +317,8 @@ impl AsRef<emlite::Val> for DisplayMediaStreamOptions {
 }
 impl AsMut<emlite::Val> for DisplayMediaStreamOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<DisplayMediaStreamOptions> for emlite::Val {
     fn from(s: DisplayMediaStreamOptions) -> emlite::Val {
@@ -318,22 +329,24 @@ impl From<DisplayMediaStreamOptions> for emlite::Val {
 }
 
 impl DisplayMediaStreamOptions {
-    pub fn video(&self) -> jsbind::Any {
-        self.inner.get("video").as_::<jsbind::Any>()
+    pub fn video(&self) -> Any {
+        self.inner.get("video").as_::<Any>()
     }
 
-    pub fn set_video(&mut self, value: jsbind::Any) {
+    pub fn set_video(&mut self, value: Any) {
         self.inner.set("video", value);
     }
+
 }
 impl DisplayMediaStreamOptions {
-    pub fn audio(&self) -> jsbind::Any {
-        self.inner.get("audio").as_::<jsbind::Any>()
+    pub fn audio(&self) -> Any {
+        self.inner.get("audio").as_::<Any>()
     }
 
-    pub fn set_audio(&mut self, value: jsbind::Any) {
+    pub fn set_audio(&mut self, value: Any) {
         self.inner.set("audio", value);
     }
+
 }
 impl DisplayMediaStreamOptions {
     pub fn controller(&self) -> CaptureController {
@@ -343,61 +356,57 @@ impl DisplayMediaStreamOptions {
     pub fn set_controller(&mut self, value: CaptureController) {
         self.inner.set("controller", value);
     }
+
 }
 impl DisplayMediaStreamOptions {
     pub fn self_browser_surface(&self) -> SelfCapturePreferenceEnum {
-        self.inner
-            .get("selfBrowserSurface")
-            .as_::<SelfCapturePreferenceEnum>()
+        self.inner.get("selfBrowserSurface").as_::<SelfCapturePreferenceEnum>()
     }
 
     pub fn set_self_browser_surface(&mut self, value: SelfCapturePreferenceEnum) {
         self.inner.set("selfBrowserSurface", value);
     }
+
 }
 impl DisplayMediaStreamOptions {
     pub fn system_audio(&self) -> SystemAudioPreferenceEnum {
-        self.inner
-            .get("systemAudio")
-            .as_::<SystemAudioPreferenceEnum>()
+        self.inner.get("systemAudio").as_::<SystemAudioPreferenceEnum>()
     }
 
     pub fn set_system_audio(&mut self, value: SystemAudioPreferenceEnum) {
         self.inner.set("systemAudio", value);
     }
+
 }
 impl DisplayMediaStreamOptions {
     pub fn window_audio(&self) -> WindowAudioPreferenceEnum {
-        self.inner
-            .get("windowAudio")
-            .as_::<WindowAudioPreferenceEnum>()
+        self.inner.get("windowAudio").as_::<WindowAudioPreferenceEnum>()
     }
 
     pub fn set_window_audio(&mut self, value: WindowAudioPreferenceEnum) {
         self.inner.set("windowAudio", value);
     }
+
 }
 impl DisplayMediaStreamOptions {
     pub fn surface_switching(&self) -> SurfaceSwitchingPreferenceEnum {
-        self.inner
-            .get("surfaceSwitching")
-            .as_::<SurfaceSwitchingPreferenceEnum>()
+        self.inner.get("surfaceSwitching").as_::<SurfaceSwitchingPreferenceEnum>()
     }
 
     pub fn set_surface_switching(&mut self, value: SurfaceSwitchingPreferenceEnum) {
         self.inner.set("surfaceSwitching", value);
     }
+
 }
 impl DisplayMediaStreamOptions {
     pub fn monitor_type_surfaces(&self) -> MonitorTypeSurfacesEnum {
-        self.inner
-            .get("monitorTypeSurfaces")
-            .as_::<MonitorTypeSurfacesEnum>()
+        self.inner.get("monitorTypeSurfaces").as_::<MonitorTypeSurfacesEnum>()
     }
 
     pub fn set_monitor_type_surfaces(&mut self, value: MonitorTypeSurfacesEnum) {
         self.inner.set("monitorTypeSurfaces", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -406,9 +415,7 @@ pub struct MediaDevices {
 }
 impl FromVal for MediaDevices {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaDevices {
-            inner: EventTarget::from_val(v),
-        }
+        MediaDevices { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -435,8 +442,8 @@ impl AsRef<emlite::Val> for MediaDevices {
 }
 impl AsMut<emlite::Val> for MediaDevices {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MediaDevices> for emlite::Val {
     fn from(s: MediaDevices) -> emlite::Val {
@@ -447,110 +454,92 @@ impl From<MediaDevices> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MediaDevices);
 
+
 impl MediaDevices {
-    pub fn ondevicechange(&self) -> jsbind::Any {
-        self.inner.get("ondevicechange").as_::<jsbind::Any>()
+    pub fn ondevicechange(&self) -> Any {
+        self.inner.get("ondevicechange").as_::<Any>()
     }
 
-    pub fn set_ondevicechange(&mut self, value: jsbind::Any) {
+    pub fn set_ondevicechange(&mut self, value: Any) {
         self.inner.set("ondevicechange", value);
     }
+
 }
 impl MediaDevices {
-    pub fn enumerate_devices(&self) -> jsbind::Promise {
-        self.inner
-            .call("enumerateDevices", &[])
-            .as_::<jsbind::Promise>()
-    }
-}
-impl MediaDevices {
-    pub fn select_audio_output0(&self) -> jsbind::Promise {
-        self.inner
-            .call("selectAudioOutput", &[])
-            .as_::<jsbind::Promise>()
+    pub fn enumerate_devices(&self, ) -> Promise {
+        self.inner.call("enumerateDevices", &[]).as_::<Promise>()
     }
 
-    pub fn select_audio_output1(&self, options: AudioOutputOptions) -> jsbind::Promise {
-        self.inner
-            .call("selectAudioOutput", &[options.into()])
-            .as_::<jsbind::Promise>()
-    }
 }
 impl MediaDevices {
-    pub fn set_capture_handle_config0(&self) -> jsbind::Undefined {
-        self.inner
-            .call("setCaptureHandleConfig", &[])
-            .as_::<jsbind::Undefined>()
+    pub fn select_audio_output0(&self, ) -> Promise {
+        self.inner.call("selectAudioOutput", &[]).as_::<Promise>()
     }
 
-    pub fn set_capture_handle_config1(&self, config: CaptureHandleConfig) -> jsbind::Undefined {
-        self.inner
-            .call("setCaptureHandleConfig", &[config.into()])
-            .as_::<jsbind::Undefined>()
-    }
-}
-impl MediaDevices {
-    pub fn set_supported_capture_actions(
-        &self,
-        actions: jsbind::Sequence<jsbind::DOMString>,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("setSupportedCaptureActions", &[actions.into()])
-            .as_::<jsbind::Undefined>()
-    }
-}
-impl MediaDevices {
-    pub fn oncaptureaction(&self) -> jsbind::Any {
-        self.inner.get("oncaptureaction").as_::<jsbind::Any>()
+    pub fn select_audio_output1(&self, options: AudioOutputOptions) -> Promise {
+        self.inner.call("selectAudioOutput", &[options.into(), ]).as_::<Promise>()
     }
 
-    pub fn set_oncaptureaction(&mut self, value: jsbind::Any) {
+}
+impl MediaDevices {
+    pub fn set_capture_handle_config0(&self, ) -> Undefined {
+        self.inner.call("setCaptureHandleConfig", &[]).as_::<Undefined>()
+    }
+
+    pub fn set_capture_handle_config1(&self, config: CaptureHandleConfig) -> Undefined {
+        self.inner.call("setCaptureHandleConfig", &[config.into(), ]).as_::<Undefined>()
+    }
+
+}
+impl MediaDevices {
+    pub fn set_supported_capture_actions(&self, actions: Sequence<DOMString>) -> Undefined {
+        self.inner.call("setSupportedCaptureActions", &[actions.into(), ]).as_::<Undefined>()
+    }
+
+}
+impl MediaDevices {
+    pub fn oncaptureaction(&self) -> Any {
+        self.inner.get("oncaptureaction").as_::<Any>()
+    }
+
+    pub fn set_oncaptureaction(&mut self, value: Any) {
         self.inner.set("oncaptureaction", value);
     }
+
 }
 impl MediaDevices {
-    pub fn get_supported_constraints(&self) -> MediaTrackSupportedConstraints {
-        self.inner
-            .call("getSupportedConstraints", &[])
-            .as_::<MediaTrackSupportedConstraints>()
-    }
-}
-impl MediaDevices {
-    pub fn get_user_media0(&self) -> jsbind::Promise {
-        self.inner
-            .call("getUserMedia", &[])
-            .as_::<jsbind::Promise>()
+    pub fn get_supported_constraints(&self, ) -> MediaTrackSupportedConstraints {
+        self.inner.call("getSupportedConstraints", &[]).as_::<MediaTrackSupportedConstraints>()
     }
 
-    pub fn get_user_media1(&self, constraints: MediaStreamConstraints) -> jsbind::Promise {
-        self.inner
-            .call("getUserMedia", &[constraints.into()])
-            .as_::<jsbind::Promise>()
-    }
 }
 impl MediaDevices {
-    pub fn get_viewport_media0(&self) -> jsbind::Promise {
-        self.inner
-            .call("getViewportMedia", &[])
-            .as_::<jsbind::Promise>()
+    pub fn get_user_media0(&self, ) -> Promise {
+        self.inner.call("getUserMedia", &[]).as_::<Promise>()
     }
 
-    pub fn get_viewport_media1(&self, options: DisplayMediaStreamOptions) -> jsbind::Promise {
-        self.inner
-            .call("getViewportMedia", &[options.into()])
-            .as_::<jsbind::Promise>()
+    pub fn get_user_media1(&self, constraints: MediaStreamConstraints) -> Promise {
+        self.inner.call("getUserMedia", &[constraints.into(), ]).as_::<Promise>()
     }
+
 }
 impl MediaDevices {
-    pub fn get_display_media0(&self) -> jsbind::Promise {
-        self.inner
-            .call("getDisplayMedia", &[])
-            .as_::<jsbind::Promise>()
+    pub fn get_viewport_media0(&self, ) -> Promise {
+        self.inner.call("getViewportMedia", &[]).as_::<Promise>()
     }
 
-    pub fn get_display_media1(&self, options: DisplayMediaStreamOptions) -> jsbind::Promise {
-        self.inner
-            .call("getDisplayMedia", &[options.into()])
-            .as_::<jsbind::Promise>()
+    pub fn get_viewport_media1(&self, options: DisplayMediaStreamOptions) -> Promise {
+        self.inner.call("getViewportMedia", &[options.into(), ]).as_::<Promise>()
     }
+
+}
+impl MediaDevices {
+    pub fn get_display_media0(&self, ) -> Promise {
+        self.inner.call("getDisplayMedia", &[]).as_::<Promise>()
+    }
+
+    pub fn get_display_media1(&self, options: DisplayMediaStreamOptions) -> Promise {
+        self.inner.call("getDisplayMedia", &[options.into(), ]).as_::<Promise>()
+    }
+
 }

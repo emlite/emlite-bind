@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BroadcastChannel {
@@ -7,9 +10,7 @@ pub struct BroadcastChannel {
 }
 impl FromVal for BroadcastChannel {
     fn from_val(v: &emlite::Val) -> Self {
-        BroadcastChannel {
-            inner: EventTarget::from_val(v),
-        }
+        BroadcastChannel { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for BroadcastChannel {
 }
 impl AsMut<emlite::Val> for BroadcastChannel {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<BroadcastChannel> for emlite::Val {
     fn from(s: BroadcastChannel) -> emlite::Val {
@@ -48,47 +49,51 @@ impl From<BroadcastChannel> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BroadcastChannel);
 
+
+
 impl BroadcastChannel {
-    pub fn new(name: jsbind::DOMString) -> BroadcastChannel {
+    pub fn new(name: DOMString) -> BroadcastChannel {
         Self {
-            inner: emlite::Val::global("BroadcastChannel")
-                .new(&[name.into()])
-                .as_::<EventTarget>(),
+            inner: emlite::Val::global("BroadcastChannel").new(&[name.into()]).as_::<EventTarget>(),
         }
     }
+
 }
 impl BroadcastChannel {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
-    }
-}
-impl BroadcastChannel {
-    pub fn post_message(&self, message: jsbind::Any) -> jsbind::Undefined {
-        self.inner
-            .call("postMessage", &[message.into()])
-            .as_::<jsbind::Undefined>()
-    }
-}
-impl BroadcastChannel {
-    pub fn close(&self) -> jsbind::Undefined {
-        self.inner.call("close", &[]).as_::<jsbind::Undefined>()
-    }
-}
-impl BroadcastChannel {
-    pub fn onmessage(&self) -> jsbind::Any {
-        self.inner.get("onmessage").as_::<jsbind::Any>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
-    pub fn set_onmessage(&mut self, value: jsbind::Any) {
+}
+impl BroadcastChannel {
+    pub fn post_message(&self, message: Any) -> Undefined {
+        self.inner.call("postMessage", &[message.into(), ]).as_::<Undefined>()
+    }
+
+}
+impl BroadcastChannel {
+    pub fn close(&self, ) -> Undefined {
+        self.inner.call("close", &[]).as_::<Undefined>()
+    }
+
+}
+impl BroadcastChannel {
+    pub fn onmessage(&self) -> Any {
+        self.inner.get("onmessage").as_::<Any>()
+    }
+
+    pub fn set_onmessage(&mut self, value: Any) {
         self.inner.set("onmessage", value);
     }
+
 }
 impl BroadcastChannel {
-    pub fn onmessageerror(&self) -> jsbind::Any {
-        self.inner.get("onmessageerror").as_::<jsbind::Any>()
+    pub fn onmessageerror(&self) -> Any {
+        self.inner.get("onmessageerror").as_::<Any>()
     }
 
-    pub fn set_onmessageerror(&mut self, value: jsbind::Any) {
+    pub fn set_onmessageerror(&mut self, value: Any) {
         self.inner.set("onmessageerror", value);
     }
+
 }

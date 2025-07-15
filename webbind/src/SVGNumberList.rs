@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGNumberList {
@@ -7,9 +10,7 @@ pub struct SVGNumberList {
 }
 impl FromVal for SVGNumberList {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGNumberList {
-            inner: emlite::Val::from_val(v),
-        }
+        SVGNumberList { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGNumberList {
 }
 impl AsMut<emlite::Val> for SVGNumberList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGNumberList> for emlite::Val {
     fn from(s: SVGNumberList) -> emlite::Val {
@@ -48,60 +49,58 @@ impl From<SVGNumberList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGNumberList);
 
+
 impl SVGNumberList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl SVGNumberList {
     pub fn number_of_items(&self) -> u32 {
         self.inner.get("numberOfItems").as_::<u32>()
     }
+
 }
 impl SVGNumberList {
-    pub fn clear(&self) -> jsbind::Undefined {
-        self.inner.call("clear", &[]).as_::<jsbind::Undefined>()
+    pub fn clear(&self, ) -> Undefined {
+        self.inner.call("clear", &[]).as_::<Undefined>()
     }
+
 }
 impl SVGNumberList {
     pub fn initialize(&self, new_item: SVGNumber) -> SVGNumber {
-        self.inner
-            .call("initialize", &[new_item.into()])
-            .as_::<SVGNumber>()
+        self.inner.call("initialize", &[new_item.into(), ]).as_::<SVGNumber>()
     }
+
 }
 impl SVGNumberList {
     pub fn get_item(&self, index: u32) -> SVGNumber {
-        self.inner
-            .call("getItem", &[index.into()])
-            .as_::<SVGNumber>()
+        self.inner.call("getItem", &[index.into(), ]).as_::<SVGNumber>()
     }
+
 }
 impl SVGNumberList {
     pub fn insert_item_before(&self, new_item: SVGNumber, index: u32) -> SVGNumber {
-        self.inner
-            .call("insertItemBefore", &[new_item.into(), index.into()])
-            .as_::<SVGNumber>()
+        self.inner.call("insertItemBefore", &[new_item.into(), index.into(), ]).as_::<SVGNumber>()
     }
+
 }
 impl SVGNumberList {
     pub fn replace_item(&self, new_item: SVGNumber, index: u32) -> SVGNumber {
-        self.inner
-            .call("replaceItem", &[new_item.into(), index.into()])
-            .as_::<SVGNumber>()
+        self.inner.call("replaceItem", &[new_item.into(), index.into(), ]).as_::<SVGNumber>()
     }
+
 }
 impl SVGNumberList {
     pub fn remove_item(&self, index: u32) -> SVGNumber {
-        self.inner
-            .call("removeItem", &[index.into()])
-            .as_::<SVGNumber>()
+        self.inner.call("removeItem", &[index.into(), ]).as_::<SVGNumber>()
     }
+
 }
 impl SVGNumberList {
     pub fn append_item(&self, new_item: SVGNumber) -> SVGNumber {
-        self.inner
-            .call("appendItem", &[new_item.into()])
-            .as_::<SVGNumber>()
+        self.inner.call("appendItem", &[new_item.into(), ]).as_::<SVGNumber>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ChildBreakToken {
@@ -7,9 +10,7 @@ pub struct ChildBreakToken {
 }
 impl FromVal for ChildBreakToken {
     fn from_val(v: &emlite::Val) -> Self {
-        ChildBreakToken {
-            inner: emlite::Val::from_val(v),
-        }
+        ChildBreakToken { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ChildBreakToken {
 }
 impl AsMut<emlite::Val> for ChildBreakToken {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ChildBreakToken> for emlite::Val {
     fn from(s: ChildBreakToken) -> emlite::Val {
@@ -48,13 +49,16 @@ impl From<ChildBreakToken> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ChildBreakToken);
 
+
 impl ChildBreakToken {
     pub fn break_type(&self) -> BreakType {
         self.inner.get("breakType").as_::<BreakType>()
     }
+
 }
 impl ChildBreakToken {
     pub fn child(&self) -> LayoutChild {
         self.inner.get("child").as_::<LayoutChild>()
     }
+
 }

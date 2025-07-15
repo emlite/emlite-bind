@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MLOperand {
@@ -7,9 +10,7 @@ pub struct MLOperand {
 }
 impl FromVal for MLOperand {
     fn from_val(v: &emlite::Val) -> Self {
-        MLOperand {
-            inner: emlite::Val::from_val(v),
-        }
+        MLOperand { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for MLOperand {
 }
 impl AsMut<emlite::Val> for MLOperand {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MLOperand> for emlite::Val {
     fn from(s: MLOperand) -> emlite::Val {
@@ -48,13 +49,16 @@ impl From<MLOperand> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MLOperand);
 
+
 impl MLOperand {
     pub fn data_type(&self) -> MLOperandDataType {
         self.inner.get("dataType").as_::<MLOperandDataType>()
     }
+
 }
 impl MLOperand {
-    pub fn shape(&self) -> jsbind::FrozenArray<u32> {
-        self.inner.get("shape").as_::<jsbind::FrozenArray<u32>>()
+    pub fn shape(&self) -> FrozenArray<u32> {
+        self.inner.get("shape").as_::<FrozenArray<u32>>()
     }
+
 }

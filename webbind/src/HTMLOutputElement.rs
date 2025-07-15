@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLOutputElement {
@@ -7,9 +10,7 @@ pub struct HTMLOutputElement {
 }
 impl FromVal for HTMLOutputElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLOutputElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLOutputElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLOutputElement {
 }
 impl AsMut<emlite::Val> for HTMLOutputElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLOutputElement> for emlite::Val {
     fn from(s: HTMLOutputElement) -> emlite::Val {
@@ -48,93 +49,103 @@ impl From<HTMLOutputElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLOutputElement);
 
+
+
 impl HTMLOutputElement {
     pub fn new() -> HTMLOutputElement {
         Self {
-            inner: emlite::Val::global("HTMLOutputElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLOutputElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLOutputElement {
     pub fn html_for(&self) -> DOMTokenList {
         self.inner.get("htmlFor").as_::<DOMTokenList>()
     }
+
 }
 impl HTMLOutputElement {
     pub fn form(&self) -> HTMLFormElement {
         self.inner.get("form").as_::<HTMLFormElement>()
     }
+
 }
 impl HTMLOutputElement {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
-    pub fn set_name(&mut self, value: jsbind::DOMString) {
+    pub fn set_name(&mut self, value: DOMString) {
         self.inner.set("name", value);
     }
+
 }
 impl HTMLOutputElement {
-    pub fn type_(&self) -> jsbind::DOMString {
-        self.inner.get("type").as_::<jsbind::DOMString>()
-    }
-}
-impl HTMLOutputElement {
-    pub fn default_value(&self) -> jsbind::DOMString {
-        self.inner.get("defaultValue").as_::<jsbind::DOMString>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 
-    pub fn set_default_value(&mut self, value: jsbind::DOMString) {
+}
+impl HTMLOutputElement {
+    pub fn default_value(&self) -> DOMString {
+        self.inner.get("defaultValue").as_::<DOMString>()
+    }
+
+    pub fn set_default_value(&mut self, value: DOMString) {
         self.inner.set("defaultValue", value);
     }
+
 }
 impl HTMLOutputElement {
-    pub fn value(&self) -> jsbind::DOMString {
-        self.inner.get("value").as_::<jsbind::DOMString>()
+    pub fn value(&self) -> DOMString {
+        self.inner.get("value").as_::<DOMString>()
     }
 
-    pub fn set_value(&mut self, value: jsbind::DOMString) {
+    pub fn set_value(&mut self, value: DOMString) {
         self.inner.set("value", value);
     }
+
 }
 impl HTMLOutputElement {
     pub fn will_validate(&self) -> bool {
         self.inner.get("willValidate").as_::<bool>()
     }
+
 }
 impl HTMLOutputElement {
     pub fn validity(&self) -> ValidityState {
         self.inner.get("validity").as_::<ValidityState>()
     }
+
 }
 impl HTMLOutputElement {
-    pub fn validation_message(&self) -> jsbind::DOMString {
-        self.inner
-            .get("validationMessage")
-            .as_::<jsbind::DOMString>()
+    pub fn validation_message(&self) -> DOMString {
+        self.inner.get("validationMessage").as_::<DOMString>()
     }
+
 }
 impl HTMLOutputElement {
-    pub fn check_validity(&self) -> bool {
+    pub fn check_validity(&self, ) -> bool {
         self.inner.call("checkValidity", &[]).as_::<bool>()
     }
+
 }
 impl HTMLOutputElement {
-    pub fn report_validity(&self) -> bool {
+    pub fn report_validity(&self, ) -> bool {
         self.inner.call("reportValidity", &[]).as_::<bool>()
     }
+
 }
 impl HTMLOutputElement {
-    pub fn set_custom_validity(&self, error: jsbind::DOMString) -> jsbind::Undefined {
-        self.inner
-            .call("setCustomValidity", &[error.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn set_custom_validity(&self, error: DOMString) -> Undefined {
+        self.inner.call("setCustomValidity", &[error.into(), ]).as_::<Undefined>()
     }
+
 }
 impl HTMLOutputElement {
     pub fn labels(&self) -> NodeList {
         self.inner.get("labels").as_::<NodeList>()
     }
+
 }

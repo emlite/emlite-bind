@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaError {
@@ -7,9 +10,7 @@ pub struct MediaError {
 }
 impl FromVal for MediaError {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaError {
-            inner: emlite::Val::from_val(v),
-        }
+        MediaError { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for MediaError {
 }
 impl AsMut<emlite::Val> for MediaError {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MediaError> for emlite::Val {
     fn from(s: MediaError) -> emlite::Val {
@@ -48,13 +49,16 @@ impl From<MediaError> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MediaError);
 
+
 impl MediaError {
     pub fn code(&self) -> u16 {
         self.inner.get("code").as_::<u16>()
     }
+
 }
 impl MediaError {
-    pub fn message(&self) -> jsbind::DOMString {
-        self.inner.get("message").as_::<jsbind::DOMString>()
+    pub fn message(&self) -> DOMString {
+        self.inner.get("message").as_::<DOMString>()
     }
+
 }

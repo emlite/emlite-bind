@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUDeviceDescriptor {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for GPUDeviceDescriptor {
 }
 impl AsMut<emlite::Val> for GPUDeviceDescriptor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<GPUDeviceDescriptor> for emlite::Val {
     fn from(s: GPUDeviceDescriptor) -> emlite::Val {
@@ -46,35 +49,34 @@ impl From<GPUDeviceDescriptor> for emlite::Val {
 }
 
 impl GPUDeviceDescriptor {
-    pub fn required_features(&self) -> jsbind::Sequence<GPUFeatureName> {
-        self.inner
-            .get("requiredFeatures")
-            .as_::<jsbind::Sequence<GPUFeatureName>>()
+    pub fn required_features(&self) -> Sequence<GPUFeatureName> {
+        self.inner.get("requiredFeatures").as_::<Sequence<GPUFeatureName>>()
     }
 
-    pub fn set_required_features(&mut self, value: jsbind::Sequence<GPUFeatureName>) {
+    pub fn set_required_features(&mut self, value: Sequence<GPUFeatureName>) {
         self.inner.set("requiredFeatures", value);
     }
+
 }
 impl GPUDeviceDescriptor {
-    pub fn required_limits(&self) -> jsbind::Record<jsbind::DOMString, jsbind::Any> {
-        self.inner
-            .get("requiredLimits")
-            .as_::<jsbind::Record<jsbind::DOMString, jsbind::Any>>()
+    pub fn required_limits(&self) -> Record<DOMString, Any> {
+        self.inner.get("requiredLimits").as_::<Record<DOMString, Any>>()
     }
 
-    pub fn set_required_limits(&mut self, value: jsbind::Record<jsbind::DOMString, jsbind::Any>) {
+    pub fn set_required_limits(&mut self, value: Record<DOMString, Any>) {
         self.inner.set("requiredLimits", value);
     }
+
 }
 impl GPUDeviceDescriptor {
-    pub fn default_queue(&self) -> jsbind::Any {
-        self.inner.get("defaultQueue").as_::<jsbind::Any>()
+    pub fn default_queue(&self) -> Any {
+        self.inner.get("defaultQueue").as_::<Any>()
     }
 
-    pub fn set_default_queue(&mut self, value: jsbind::Any) {
+    pub fn set_default_queue(&mut self, value: Any) {
         self.inner.set("defaultQueue", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -83,9 +85,7 @@ pub struct GPUAdapter {
 }
 impl FromVal for GPUAdapter {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUAdapter {
-            inner: emlite::Val::from_val(v),
-        }
+        GPUAdapter { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -112,8 +112,8 @@ impl AsRef<emlite::Val> for GPUAdapter {
 }
 impl AsMut<emlite::Val> for GPUAdapter {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<GPUAdapter> for emlite::Val {
     fn from(s: GPUAdapter) -> emlite::Val {
@@ -124,31 +124,32 @@ impl From<GPUAdapter> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GPUAdapter);
 
+
 impl GPUAdapter {
     pub fn features(&self) -> GPUSupportedFeatures {
         self.inner.get("features").as_::<GPUSupportedFeatures>()
     }
+
 }
 impl GPUAdapter {
     pub fn limits(&self) -> GPUSupportedLimits {
         self.inner.get("limits").as_::<GPUSupportedLimits>()
     }
+
 }
 impl GPUAdapter {
     pub fn info(&self) -> GPUAdapterInfo {
         self.inner.get("info").as_::<GPUAdapterInfo>()
     }
+
 }
 impl GPUAdapter {
-    pub fn request_device0(&self) -> jsbind::Promise {
-        self.inner
-            .call("requestDevice", &[])
-            .as_::<jsbind::Promise>()
+    pub fn request_device0(&self, ) -> Promise {
+        self.inner.call("requestDevice", &[]).as_::<Promise>()
     }
 
-    pub fn request_device1(&self, descriptor: GPUDeviceDescriptor) -> jsbind::Promise {
-        self.inner
-            .call("requestDevice", &[descriptor.into()])
-            .as_::<jsbind::Promise>()
+    pub fn request_device1(&self, descriptor: GPUDeviceDescriptor) -> Promise {
+        self.inner.call("requestDevice", &[descriptor.into(), ]).as_::<Promise>()
     }
+
 }

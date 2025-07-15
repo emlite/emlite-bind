@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSStyleProperties {
@@ -7,9 +10,7 @@ pub struct CSSStyleProperties {
 }
 impl FromVal for CSSStyleProperties {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSStyleProperties {
-            inner: CSSStyleDeclaration::from_val(v),
-        }
+        CSSStyleProperties { inner: CSSStyleDeclaration::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSStyleProperties {
 }
 impl AsMut<emlite::Val> for CSSStyleProperties {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSStyleProperties> for emlite::Val {
     fn from(s: CSSStyleProperties) -> emlite::Val {
@@ -48,12 +49,14 @@ impl From<CSSStyleProperties> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSStyleProperties);
 
+
 impl CSSStyleProperties {
-    pub fn css_float(&self) -> jsbind::CSSOMString {
-        self.inner.get("cssFloat").as_::<jsbind::CSSOMString>()
+    pub fn css_float(&self) -> CSSOMString {
+        self.inner.get("cssFloat").as_::<CSSOMString>()
     }
 
-    pub fn set_css_float(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_css_float(&mut self, value: CSSOMString) {
         self.inner.set("cssFloat", value);
     }
+
 }

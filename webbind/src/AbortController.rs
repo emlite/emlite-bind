@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AbortController {
@@ -7,9 +10,7 @@ pub struct AbortController {
 }
 impl FromVal for AbortController {
     fn from_val(v: &emlite::Val) -> Self {
-        AbortController {
-            inner: emlite::Val::from_val(v),
-        }
+        AbortController { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for AbortController {
 }
 impl AsMut<emlite::Val> for AbortController {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AbortController> for emlite::Val {
     fn from(s: AbortController) -> emlite::Val {
@@ -48,28 +49,29 @@ impl From<AbortController> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AbortController);
 
+
+
 impl AbortController {
     pub fn new() -> AbortController {
         Self {
-            inner: emlite::Val::global("AbortController")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("AbortController").new(&[]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl AbortController {
     pub fn signal(&self) -> AbortSignal {
         self.inner.get("signal").as_::<AbortSignal>()
     }
+
 }
 impl AbortController {
-    pub fn abort0(&self) -> jsbind::Undefined {
-        self.inner.call("abort", &[]).as_::<jsbind::Undefined>()
+    pub fn abort0(&self, ) -> Undefined {
+        self.inner.call("abort", &[]).as_::<Undefined>()
     }
 
-    pub fn abort1(&self, reason: jsbind::Any) -> jsbind::Undefined {
-        self.inner
-            .call("abort", &[reason.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn abort1(&self, reason: Any) -> Undefined {
+        self.inner.call("abort", &[reason.into(), ]).as_::<Undefined>()
     }
+
 }

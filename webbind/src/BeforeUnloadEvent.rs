@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BeforeUnloadEvent {
@@ -7,9 +10,7 @@ pub struct BeforeUnloadEvent {
 }
 impl FromVal for BeforeUnloadEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        BeforeUnloadEvent {
-            inner: Event::from_val(v),
-        }
+        BeforeUnloadEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for BeforeUnloadEvent {
 }
 impl AsMut<emlite::Val> for BeforeUnloadEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<BeforeUnloadEvent> for emlite::Val {
     fn from(s: BeforeUnloadEvent) -> emlite::Val {
@@ -48,12 +49,14 @@ impl From<BeforeUnloadEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BeforeUnloadEvent);
 
+
 impl BeforeUnloadEvent {
-    pub fn return_value(&self) -> jsbind::DOMString {
-        self.inner.get("returnValue").as_::<jsbind::DOMString>()
+    pub fn return_value(&self) -> DOMString {
+        self.inner.get("returnValue").as_::<DOMString>()
     }
 
-    pub fn set_return_value(&mut self, value: jsbind::DOMString) {
+    pub fn set_return_value(&mut self, value: DOMString) {
         self.inner.set("returnValue", value);
     }
+
 }

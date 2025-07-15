@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUUncapturedErrorEvent {
@@ -7,9 +10,7 @@ pub struct GPUUncapturedErrorEvent {
 }
 impl FromVal for GPUUncapturedErrorEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUUncapturedErrorEvent {
-            inner: Event::from_val(v),
-        }
+        GPUUncapturedErrorEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for GPUUncapturedErrorEvent {
 }
 impl AsMut<emlite::Val> for GPUUncapturedErrorEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<GPUUncapturedErrorEvent> for emlite::Val {
     fn from(s: GPUUncapturedErrorEvent) -> emlite::Val {
@@ -48,20 +49,19 @@ impl From<GPUUncapturedErrorEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GPUUncapturedErrorEvent);
 
+
+
 impl GPUUncapturedErrorEvent {
-    pub fn new(
-        type_: jsbind::DOMString,
-        gpu_uncaptured_error_event_init_dict: jsbind::Any,
-    ) -> GPUUncapturedErrorEvent {
+    pub fn new(type_: DOMString, gpu_uncaptured_error_event_init_dict: Any) -> GPUUncapturedErrorEvent {
         Self {
-            inner: emlite::Val::global("GPUUncapturedErrorEvent")
-                .new(&[type_.into(), gpu_uncaptured_error_event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("GPUUncapturedErrorEvent").new(&[type_.into(), gpu_uncaptured_error_event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl GPUUncapturedErrorEvent {
     pub fn error(&self) -> GPUError {
         self.inner.get("error").as_::<GPUError>()
     }
+
 }

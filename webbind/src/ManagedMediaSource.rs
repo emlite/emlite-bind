@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ManagedMediaSource {
@@ -7,9 +10,7 @@ pub struct ManagedMediaSource {
 }
 impl FromVal for ManagedMediaSource {
     fn from_val(v: &emlite::Val) -> Self {
-        ManagedMediaSource {
-            inner: MediaSource::from_val(v),
-        }
+        ManagedMediaSource { inner: MediaSource::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ManagedMediaSource {
 }
 impl AsMut<emlite::Val> for ManagedMediaSource {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ManagedMediaSource> for emlite::Val {
     fn from(s: ManagedMediaSource) -> emlite::Val {
@@ -48,35 +49,39 @@ impl From<ManagedMediaSource> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ManagedMediaSource);
 
+
+
 impl ManagedMediaSource {
     pub fn new() -> ManagedMediaSource {
         Self {
-            inner: emlite::Val::global("ManagedMediaSource")
-                .new(&[])
-                .as_::<MediaSource>(),
+            inner: emlite::Val::global("ManagedMediaSource").new(&[]).as_::<MediaSource>(),
         }
     }
+
 }
 impl ManagedMediaSource {
     pub fn streaming(&self) -> bool {
         self.inner.get("streaming").as_::<bool>()
     }
+
 }
 impl ManagedMediaSource {
-    pub fn onstartstreaming(&self) -> jsbind::Any {
-        self.inner.get("onstartstreaming").as_::<jsbind::Any>()
+    pub fn onstartstreaming(&self) -> Any {
+        self.inner.get("onstartstreaming").as_::<Any>()
     }
 
-    pub fn set_onstartstreaming(&mut self, value: jsbind::Any) {
+    pub fn set_onstartstreaming(&mut self, value: Any) {
         self.inner.set("onstartstreaming", value);
     }
+
 }
 impl ManagedMediaSource {
-    pub fn onendstreaming(&self) -> jsbind::Any {
-        self.inner.get("onendstreaming").as_::<jsbind::Any>()
+    pub fn onendstreaming(&self) -> Any {
+        self.inner.get("onendstreaming").as_::<Any>()
     }
 
-    pub fn set_onendstreaming(&mut self, value: jsbind::Any) {
+    pub fn set_onendstreaming(&mut self, value: Any) {
         self.inner.set("onendstreaming", value);
     }
+
 }

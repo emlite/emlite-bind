@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WEBGL_provoking_vertex {
@@ -7,9 +10,7 @@ pub struct WEBGL_provoking_vertex {
 }
 impl FromVal for WEBGL_provoking_vertex {
     fn from_val(v: &emlite::Val) -> Self {
-        WEBGL_provoking_vertex {
-            inner: emlite::Val::from_val(v),
-        }
+        WEBGL_provoking_vertex { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WEBGL_provoking_vertex {
 }
 impl AsMut<emlite::Val> for WEBGL_provoking_vertex {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WEBGL_provoking_vertex> for emlite::Val {
     fn from(s: WEBGL_provoking_vertex) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<WEBGL_provoking_vertex> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WEBGL_provoking_vertex);
 
+
 impl WEBGL_provoking_vertex {
-    pub fn provoking_vertex_webgl(&self, provoke_mode: jsbind::Any) -> jsbind::Undefined {
-        self.inner
-            .call("provokingVertexWEBGL", &[provoke_mode.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn provoking_vertex_webgl(&self, provoke_mode: Any) -> Undefined {
+        self.inner.call("provokingVertexWEBGL", &[provoke_mode.into(), ]).as_::<Undefined>()
     }
+
 }

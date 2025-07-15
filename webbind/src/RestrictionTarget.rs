@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RestrictionTarget {
@@ -7,9 +10,7 @@ pub struct RestrictionTarget {
 }
 impl FromVal for RestrictionTarget {
     fn from_val(v: &emlite::Val) -> Self {
-        RestrictionTarget {
-            inner: emlite::Val::from_val(v),
-        }
+        RestrictionTarget { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for RestrictionTarget {
 }
 impl AsMut<emlite::Val> for RestrictionTarget {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RestrictionTarget> for emlite::Val {
     fn from(s: RestrictionTarget) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<RestrictionTarget> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RestrictionTarget);
 
+
 impl RestrictionTarget {
-    pub fn from_element(element: Element) -> jsbind::Promise {
-        emlite::Val::global("restrictiontarget")
-            .call("fromElement", &[element.into()])
-            .as_::<jsbind::Promise>()
+    pub fn from_element(element: Element) -> Promise {
+        emlite::Val::global("restrictiontarget").call("fromElement", &[element.into(), ]).as_::<Promise>()
     }
+
 }

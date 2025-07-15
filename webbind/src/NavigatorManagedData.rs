@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NavigatorManagedData {
@@ -7,9 +10,7 @@ pub struct NavigatorManagedData {
 }
 impl FromVal for NavigatorManagedData {
     fn from_val(v: &emlite::Val) -> Self {
-        NavigatorManagedData {
-            inner: EventTarget::from_val(v),
-        }
+        NavigatorManagedData { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for NavigatorManagedData {
 }
 impl AsMut<emlite::Val> for NavigatorManagedData {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NavigatorManagedData> for emlite::Val {
     fn from(s: NavigatorManagedData) -> emlite::Val {
@@ -48,57 +49,50 @@ impl From<NavigatorManagedData> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(NavigatorManagedData);
 
+
 impl NavigatorManagedData {
-    pub fn get_managed_configuration(
-        &self,
-        keys: jsbind::Sequence<jsbind::DOMString>,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("getManagedConfiguration", &[keys.into()])
-            .as_::<jsbind::Promise>()
-    }
-}
-impl NavigatorManagedData {
-    pub fn onmanagedconfigurationchange(&self) -> jsbind::Any {
-        self.inner
-            .get("onmanagedconfigurationchange")
-            .as_::<jsbind::Any>()
+    pub fn get_managed_configuration(&self, keys: Sequence<DOMString>) -> Promise {
+        self.inner.call("getManagedConfiguration", &[keys.into(), ]).as_::<Promise>()
     }
 
-    pub fn set_onmanagedconfigurationchange(&mut self, value: jsbind::Any) {
+}
+impl NavigatorManagedData {
+    pub fn onmanagedconfigurationchange(&self) -> Any {
+        self.inner.get("onmanagedconfigurationchange").as_::<Any>()
+    }
+
+    pub fn set_onmanagedconfigurationchange(&mut self, value: Any) {
         self.inner.set("onmanagedconfigurationchange", value);
     }
+
 }
 impl NavigatorManagedData {
-    pub fn get_annotated_asset_id(&self) -> jsbind::Promise {
-        self.inner
-            .call("getAnnotatedAssetId", &[])
-            .as_::<jsbind::Promise>()
+    pub fn get_annotated_asset_id(&self, ) -> Promise {
+        self.inner.call("getAnnotatedAssetId", &[]).as_::<Promise>()
     }
+
 }
 impl NavigatorManagedData {
-    pub fn get_annotated_location(&self) -> jsbind::Promise {
-        self.inner
-            .call("getAnnotatedLocation", &[])
-            .as_::<jsbind::Promise>()
+    pub fn get_annotated_location(&self, ) -> Promise {
+        self.inner.call("getAnnotatedLocation", &[]).as_::<Promise>()
     }
+
 }
 impl NavigatorManagedData {
-    pub fn get_directory_id(&self) -> jsbind::Promise {
-        self.inner
-            .call("getDirectoryId", &[])
-            .as_::<jsbind::Promise>()
+    pub fn get_directory_id(&self, ) -> Promise {
+        self.inner.call("getDirectoryId", &[]).as_::<Promise>()
     }
+
 }
 impl NavigatorManagedData {
-    pub fn get_hostname(&self) -> jsbind::Promise {
-        self.inner.call("getHostname", &[]).as_::<jsbind::Promise>()
+    pub fn get_hostname(&self, ) -> Promise {
+        self.inner.call("getHostname", &[]).as_::<Promise>()
     }
+
 }
 impl NavigatorManagedData {
-    pub fn get_serial_number(&self) -> jsbind::Promise {
-        self.inner
-            .call("getSerialNumber", &[])
-            .as_::<jsbind::Promise>()
+    pub fn get_serial_number(&self, ) -> Promise {
+        self.inner.call("getSerialNumber", &[]).as_::<Promise>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SpeechRecognitionPhrase {
@@ -7,9 +10,7 @@ pub struct SpeechRecognitionPhrase {
 }
 impl FromVal for SpeechRecognitionPhrase {
     fn from_val(v: &emlite::Val) -> Self {
-        SpeechRecognitionPhrase {
-            inner: emlite::Val::from_val(v),
-        }
+        SpeechRecognitionPhrase { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SpeechRecognitionPhrase {
 }
 impl AsMut<emlite::Val> for SpeechRecognitionPhrase {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SpeechRecognitionPhrase> for emlite::Val {
     fn from(s: SpeechRecognitionPhrase) -> emlite::Val {
@@ -48,30 +49,31 @@ impl From<SpeechRecognitionPhrase> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionPhrase);
 
+
+
 impl SpeechRecognitionPhrase {
-    pub fn new0(phrase: jsbind::DOMString) -> SpeechRecognitionPhrase {
+    pub fn new0(phrase: DOMString) -> SpeechRecognitionPhrase {
         Self {
-            inner: emlite::Val::global("SpeechRecognitionPhrase")
-                .new(&[phrase.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("SpeechRecognitionPhrase").new(&[phrase.into()]).as_::<emlite::Val>(),
         }
     }
 
-    pub fn new1(phrase: jsbind::DOMString, boost: f32) -> SpeechRecognitionPhrase {
+    pub fn new1(phrase: DOMString, boost: f32) -> SpeechRecognitionPhrase {
         Self {
-            inner: emlite::Val::global("SpeechRecognitionPhrase")
-                .new(&[phrase.into(), boost.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("SpeechRecognitionPhrase").new(&[phrase.into(), boost.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl SpeechRecognitionPhrase {
-    pub fn phrase(&self) -> jsbind::DOMString {
-        self.inner.get("phrase").as_::<jsbind::DOMString>()
+    pub fn phrase(&self) -> DOMString {
+        self.inner.get("phrase").as_::<DOMString>()
     }
+
 }
 impl SpeechRecognitionPhrase {
     pub fn boost(&self) -> f32 {
         self.inner.get("boost").as_::<f32>()
     }
+
 }

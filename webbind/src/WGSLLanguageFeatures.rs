@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WGSLLanguageFeatures {
@@ -7,9 +10,7 @@ pub struct WGSLLanguageFeatures {
 }
 impl FromVal for WGSLLanguageFeatures {
     fn from_val(v: &emlite::Val) -> Self {
-        WGSLLanguageFeatures {
-            inner: emlite::Val::from_val(v),
-        }
+        WGSLLanguageFeatures { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WGSLLanguageFeatures {
 }
 impl AsMut<emlite::Val> for WGSLLanguageFeatures {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WGSLLanguageFeatures> for emlite::Val {
     fn from(s: WGSLLanguageFeatures) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<WGSLLanguageFeatures> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(WGSLLanguageFeatures);
+
+

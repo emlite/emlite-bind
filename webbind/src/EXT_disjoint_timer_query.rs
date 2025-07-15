@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EXT_disjoint_timer_query {
@@ -7,9 +10,7 @@ pub struct EXT_disjoint_timer_query {
 }
 impl FromVal for EXT_disjoint_timer_query {
     fn from_val(v: &emlite::Val) -> Self {
-        EXT_disjoint_timer_query {
-            inner: emlite::Val::from_val(v),
-        }
+        EXT_disjoint_timer_query { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for EXT_disjoint_timer_query {
 }
 impl AsMut<emlite::Val> for EXT_disjoint_timer_query {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<EXT_disjoint_timer_query> for emlite::Val {
     fn from(s: EXT_disjoint_timer_query) -> emlite::Val {
@@ -48,69 +49,52 @@ impl From<EXT_disjoint_timer_query> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(EXT_disjoint_timer_query);
 
+
 impl EXT_disjoint_timer_query {
-    pub fn create_query_ext(&self) -> WebGLTimerQueryEXT {
-        self.inner
-            .call("createQueryEXT", &[])
-            .as_::<WebGLTimerQueryEXT>()
+    pub fn create_query_ext(&self, ) -> WebGLTimerQueryEXT {
+        self.inner.call("createQueryEXT", &[]).as_::<WebGLTimerQueryEXT>()
     }
+
 }
 impl EXT_disjoint_timer_query {
-    pub fn delete_query_ext(&self, query: WebGLTimerQueryEXT) -> jsbind::Undefined {
-        self.inner
-            .call("deleteQueryEXT", &[query.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn delete_query_ext(&self, query: WebGLTimerQueryEXT) -> Undefined {
+        self.inner.call("deleteQueryEXT", &[query.into(), ]).as_::<Undefined>()
     }
+
 }
 impl EXT_disjoint_timer_query {
     pub fn is_query_ext(&self, query: WebGLTimerQueryEXT) -> bool {
-        self.inner.call("isQueryEXT", &[query.into()]).as_::<bool>()
+        self.inner.call("isQueryEXT", &[query.into(), ]).as_::<bool>()
     }
+
 }
 impl EXT_disjoint_timer_query {
-    pub fn begin_query_ext(
-        &self,
-        target: jsbind::Any,
-        query: WebGLTimerQueryEXT,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("beginQueryEXT", &[target.into(), query.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn begin_query_ext(&self, target: Any, query: WebGLTimerQueryEXT) -> Undefined {
+        self.inner.call("beginQueryEXT", &[target.into(), query.into(), ]).as_::<Undefined>()
     }
+
 }
 impl EXT_disjoint_timer_query {
-    pub fn end_query_ext(&self, target: jsbind::Any) -> jsbind::Undefined {
-        self.inner
-            .call("endQueryEXT", &[target.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn end_query_ext(&self, target: Any) -> Undefined {
+        self.inner.call("endQueryEXT", &[target.into(), ]).as_::<Undefined>()
     }
+
 }
 impl EXT_disjoint_timer_query {
-    pub fn query_counter_ext(
-        &self,
-        query: WebGLTimerQueryEXT,
-        target: jsbind::Any,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("queryCounterEXT", &[query.into(), target.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn query_counter_ext(&self, query: WebGLTimerQueryEXT, target: Any) -> Undefined {
+        self.inner.call("queryCounterEXT", &[query.into(), target.into(), ]).as_::<Undefined>()
     }
+
 }
 impl EXT_disjoint_timer_query {
-    pub fn get_query_ext(&self, target: jsbind::Any, pname: jsbind::Any) -> jsbind::Any {
-        self.inner
-            .call("getQueryEXT", &[target.into(), pname.into()])
-            .as_::<jsbind::Any>()
+    pub fn get_query_ext(&self, target: Any, pname: Any) -> Any {
+        self.inner.call("getQueryEXT", &[target.into(), pname.into(), ]).as_::<Any>()
     }
+
 }
 impl EXT_disjoint_timer_query {
-    pub fn get_query_object_ext(
-        &self,
-        query: WebGLTimerQueryEXT,
-        pname: jsbind::Any,
-    ) -> jsbind::Any {
-        self.inner
-            .call("getQueryObjectEXT", &[query.into(), pname.into()])
-            .as_::<jsbind::Any>()
+    pub fn get_query_object_ext(&self, query: WebGLTimerQueryEXT, pname: Any) -> Any {
+        self.inner.call("getQueryObjectEXT", &[query.into(), pname.into(), ]).as_::<Any>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ReportingObserver {
@@ -7,9 +10,7 @@ pub struct ReportingObserver {
 }
 impl FromVal for ReportingObserver {
     fn from_val(v: &emlite::Val) -> Self {
-        ReportingObserver {
-            inner: emlite::Val::from_val(v),
-        }
+        ReportingObserver { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ReportingObserver {
 }
 impl AsMut<emlite::Val> for ReportingObserver {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ReportingObserver> for emlite::Val {
     fn from(s: ReportingObserver) -> emlite::Val {
@@ -48,37 +49,37 @@ impl From<ReportingObserver> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ReportingObserver);
 
+
+
 impl ReportingObserver {
-    pub fn new0(callback: jsbind::Function) -> ReportingObserver {
+    pub fn new0(callback: Function) -> ReportingObserver {
         Self {
-            inner: emlite::Val::global("ReportingObserver")
-                .new(&[callback.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("ReportingObserver").new(&[callback.into()]).as_::<emlite::Val>(),
         }
     }
 
-    pub fn new1(callback: jsbind::Function, options: jsbind::Any) -> ReportingObserver {
+    pub fn new1(callback: Function, options: Any) -> ReportingObserver {
         Self {
-            inner: emlite::Val::global("ReportingObserver")
-                .new(&[callback.into(), options.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("ReportingObserver").new(&[callback.into(), options.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl ReportingObserver {
-    pub fn observe(&self) -> jsbind::Undefined {
-        self.inner.call("observe", &[]).as_::<jsbind::Undefined>()
+    pub fn observe(&self, ) -> Undefined {
+        self.inner.call("observe", &[]).as_::<Undefined>()
     }
+
 }
 impl ReportingObserver {
-    pub fn disconnect(&self) -> jsbind::Undefined {
-        self.inner
-            .call("disconnect", &[])
-            .as_::<jsbind::Undefined>()
+    pub fn disconnect(&self, ) -> Undefined {
+        self.inner.call("disconnect", &[]).as_::<Undefined>()
     }
+
 }
 impl ReportingObserver {
-    pub fn take_records(&self) -> jsbind::Any {
-        self.inner.call("takeRecords", &[]).as_::<jsbind::Any>()
+    pub fn take_records(&self, ) -> Any {
+        self.inner.call("takeRecords", &[]).as_::<Any>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ClipboardUnsanitizedFormats {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for ClipboardUnsanitizedFormats {
 }
 impl AsMut<emlite::Val> for ClipboardUnsanitizedFormats {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ClipboardUnsanitizedFormats> for emlite::Val {
     fn from(s: ClipboardUnsanitizedFormats) -> emlite::Val {
@@ -46,15 +49,14 @@ impl From<ClipboardUnsanitizedFormats> for emlite::Val {
 }
 
 impl ClipboardUnsanitizedFormats {
-    pub fn unsanitized(&self) -> jsbind::Sequence<jsbind::DOMString> {
-        self.inner
-            .get("unsanitized")
-            .as_::<jsbind::Sequence<jsbind::DOMString>>()
+    pub fn unsanitized(&self) -> Sequence<DOMString> {
+        self.inner.get("unsanitized").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_unsanitized(&mut self, value: jsbind::Sequence<jsbind::DOMString>) {
+    pub fn set_unsanitized(&mut self, value: Sequence<DOMString>) {
         self.inner.set("unsanitized", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -63,9 +65,7 @@ pub struct Clipboard {
 }
 impl FromVal for Clipboard {
     fn from_val(v: &emlite::Val) -> Self {
-        Clipboard {
-            inner: EventTarget::from_val(v),
-        }
+        Clipboard { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -92,8 +92,8 @@ impl AsRef<emlite::Val> for Clipboard {
 }
 impl AsMut<emlite::Val> for Clipboard {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<Clipboard> for emlite::Val {
     fn from(s: Clipboard) -> emlite::Val {
@@ -104,33 +104,32 @@ impl From<Clipboard> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Clipboard);
 
+
 impl Clipboard {
-    pub fn read0(&self) -> jsbind::Promise {
-        self.inner.call("read", &[]).as_::<jsbind::Promise>()
+    pub fn read0(&self, ) -> Promise {
+        self.inner.call("read", &[]).as_::<Promise>()
     }
 
-    pub fn read1(&self, formats: ClipboardUnsanitizedFormats) -> jsbind::Promise {
-        self.inner
-            .call("read", &[formats.into()])
-            .as_::<jsbind::Promise>()
+    pub fn read1(&self, formats: ClipboardUnsanitizedFormats) -> Promise {
+        self.inner.call("read", &[formats.into(), ]).as_::<Promise>()
     }
+
 }
 impl Clipboard {
-    pub fn read_text(&self) -> jsbind::Promise {
-        self.inner.call("readText", &[]).as_::<jsbind::Promise>()
+    pub fn read_text(&self, ) -> Promise {
+        self.inner.call("readText", &[]).as_::<Promise>()
     }
+
 }
 impl Clipboard {
-    pub fn write(&self, data: jsbind::Any) -> jsbind::Promise {
-        self.inner
-            .call("write", &[data.into()])
-            .as_::<jsbind::Promise>()
+    pub fn write(&self, data: Any) -> Promise {
+        self.inner.call("write", &[data.into(), ]).as_::<Promise>()
     }
+
 }
 impl Clipboard {
-    pub fn write_text(&self, data: jsbind::DOMString) -> jsbind::Promise {
-        self.inner
-            .call("writeText", &[data.into()])
-            .as_::<jsbind::Promise>()
+    pub fn write_text(&self, data: DOMString) -> Promise {
+        self.inner.call("writeText", &[data.into(), ]).as_::<Promise>()
     }
+
 }

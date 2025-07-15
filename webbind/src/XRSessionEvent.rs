@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRSessionEvent {
@@ -7,9 +10,7 @@ pub struct XRSessionEvent {
 }
 impl FromVal for XRSessionEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        XRSessionEvent {
-            inner: Event::from_val(v),
-        }
+        XRSessionEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRSessionEvent {
 }
 impl AsMut<emlite::Val> for XRSessionEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRSessionEvent> for emlite::Val {
     fn from(s: XRSessionEvent) -> emlite::Val {
@@ -48,17 +49,19 @@ impl From<XRSessionEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRSessionEvent);
 
+
+
 impl XRSessionEvent {
-    pub fn new(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> XRSessionEvent {
+    pub fn new(type_: DOMString, event_init_dict: Any) -> XRSessionEvent {
         Self {
-            inner: emlite::Val::global("XRSessionEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("XRSessionEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl XRSessionEvent {
     pub fn session(&self) -> XRSession {
         self.inner.get("session").as_::<XRSession>()
     }
+
 }

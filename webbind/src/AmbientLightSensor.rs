@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AmbientLightSensor {
@@ -7,9 +10,7 @@ pub struct AmbientLightSensor {
 }
 impl FromVal for AmbientLightSensor {
     fn from_val(v: &emlite::Val) -> Self {
-        AmbientLightSensor {
-            inner: Sensor::from_val(v),
-        }
+        AmbientLightSensor { inner: Sensor::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for AmbientLightSensor {
 }
 impl AsMut<emlite::Val> for AmbientLightSensor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AmbientLightSensor> for emlite::Val {
     fn from(s: AmbientLightSensor) -> emlite::Val {
@@ -48,25 +49,25 @@ impl From<AmbientLightSensor> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AmbientLightSensor);
 
+
+
 impl AmbientLightSensor {
     pub fn new0() -> AmbientLightSensor {
         Self {
-            inner: emlite::Val::global("AmbientLightSensor")
-                .new(&[])
-                .as_::<Sensor>(),
+            inner: emlite::Val::global("AmbientLightSensor").new(&[]).as_::<Sensor>(),
         }
     }
 
-    pub fn new1(sensor_options: jsbind::Any) -> AmbientLightSensor {
+    pub fn new1(sensor_options: Any) -> AmbientLightSensor {
         Self {
-            inner: emlite::Val::global("AmbientLightSensor")
-                .new(&[sensor_options.into()])
-                .as_::<Sensor>(),
+            inner: emlite::Val::global("AmbientLightSensor").new(&[sensor_options.into()]).as_::<Sensor>(),
         }
     }
+
 }
 impl AmbientLightSensor {
     pub fn illuminance(&self) -> f64 {
         self.inner.get("illuminance").as_::<f64>()
     }
+
 }

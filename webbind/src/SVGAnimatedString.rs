@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGAnimatedString {
@@ -7,9 +10,7 @@ pub struct SVGAnimatedString {
 }
 impl FromVal for SVGAnimatedString {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGAnimatedString {
-            inner: emlite::Val::from_val(v),
-        }
+        SVGAnimatedString { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGAnimatedString {
 }
 impl AsMut<emlite::Val> for SVGAnimatedString {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGAnimatedString> for emlite::Val {
     fn from(s: SVGAnimatedString) -> emlite::Val {
@@ -48,17 +49,20 @@ impl From<SVGAnimatedString> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGAnimatedString);
 
+
 impl SVGAnimatedString {
-    pub fn base_val(&self) -> jsbind::DOMString {
-        self.inner.get("baseVal").as_::<jsbind::DOMString>()
+    pub fn base_val(&self) -> DOMString {
+        self.inner.get("baseVal").as_::<DOMString>()
     }
 
-    pub fn set_base_val(&mut self, value: jsbind::DOMString) {
+    pub fn set_base_val(&mut self, value: DOMString) {
         self.inner.set("baseVal", value);
     }
+
 }
 impl SVGAnimatedString {
-    pub fn anim_val(&self) -> jsbind::DOMString {
-        self.inner.get("animVal").as_::<jsbind::DOMString>()
+    pub fn anim_val(&self) -> DOMString {
+        self.inner.get("animVal").as_::<DOMString>()
     }
+
 }

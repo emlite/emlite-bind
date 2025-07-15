@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IntrinsicSizes {
@@ -7,9 +10,7 @@ pub struct IntrinsicSizes {
 }
 impl FromVal for IntrinsicSizes {
     fn from_val(v: &emlite::Val) -> Self {
-        IntrinsicSizes {
-            inner: emlite::Val::from_val(v),
-        }
+        IntrinsicSizes { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for IntrinsicSizes {
 }
 impl AsMut<emlite::Val> for IntrinsicSizes {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<IntrinsicSizes> for emlite::Val {
     fn from(s: IntrinsicSizes) -> emlite::Val {
@@ -48,13 +49,16 @@ impl From<IntrinsicSizes> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(IntrinsicSizes);
 
+
 impl IntrinsicSizes {
     pub fn min_content_size(&self) -> f64 {
         self.inner.get("minContentSize").as_::<f64>()
     }
+
 }
 impl IntrinsicSizes {
     pub fn max_content_size(&self) -> f64 {
         self.inner.get("maxContentSize").as_::<f64>()
     }
+
 }

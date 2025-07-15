@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSMarginRule {
@@ -7,9 +10,7 @@ pub struct CSSMarginRule {
 }
 impl FromVal for CSSMarginRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSMarginRule {
-            inner: CSSRule::from_val(v),
-        }
+        CSSMarginRule { inner: CSSRule::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSMarginRule {
 }
 impl AsMut<emlite::Val> for CSSMarginRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSMarginRule> for emlite::Val {
     fn from(s: CSSMarginRule) -> emlite::Val {
@@ -48,13 +49,16 @@ impl From<CSSMarginRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSMarginRule);
 
+
 impl CSSMarginRule {
-    pub fn name(&self) -> jsbind::CSSOMString {
-        self.inner.get("name").as_::<jsbind::CSSOMString>()
+    pub fn name(&self) -> CSSOMString {
+        self.inner.get("name").as_::<CSSOMString>()
     }
+
 }
 impl CSSMarginRule {
     pub fn style(&self) -> CSSStyleDeclaration {
         self.inner.get("style").as_::<CSSStyleDeclaration>()
     }
+
 }

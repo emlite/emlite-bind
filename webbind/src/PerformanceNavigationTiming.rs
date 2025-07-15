@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PerformanceNavigationTiming {
@@ -7,9 +10,7 @@ pub struct PerformanceNavigationTiming {
 }
 impl FromVal for PerformanceNavigationTiming {
     fn from_val(v: &emlite::Val) -> Self {
-        PerformanceNavigationTiming {
-            inner: PerformanceResourceTiming::from_val(v),
-        }
+        PerformanceNavigationTiming { inner: PerformanceResourceTiming::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PerformanceNavigationTiming {
 }
 impl AsMut<emlite::Val> for PerformanceNavigationTiming {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PerformanceNavigationTiming> for emlite::Val {
     fn from(s: PerformanceNavigationTiming) -> emlite::Val {
@@ -48,79 +49,88 @@ impl From<PerformanceNavigationTiming> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PerformanceNavigationTiming);
 
+
 impl PerformanceNavigationTiming {
-    pub fn unload_event_start(&self) -> jsbind::Any {
-        self.inner.get("unloadEventStart").as_::<jsbind::Any>()
+    pub fn unload_event_start(&self) -> Any {
+        self.inner.get("unloadEventStart").as_::<Any>()
     }
+
 }
 impl PerformanceNavigationTiming {
-    pub fn unload_event_end(&self) -> jsbind::Any {
-        self.inner.get("unloadEventEnd").as_::<jsbind::Any>()
+    pub fn unload_event_end(&self) -> Any {
+        self.inner.get("unloadEventEnd").as_::<Any>()
     }
+
 }
 impl PerformanceNavigationTiming {
-    pub fn dom_interactive(&self) -> jsbind::Any {
-        self.inner.get("domInteractive").as_::<jsbind::Any>()
+    pub fn dom_interactive(&self) -> Any {
+        self.inner.get("domInteractive").as_::<Any>()
     }
+
 }
 impl PerformanceNavigationTiming {
-    pub fn dom_content_loaded_event_start(&self) -> jsbind::Any {
-        self.inner
-            .get("domContentLoadedEventStart")
-            .as_::<jsbind::Any>()
+    pub fn dom_content_loaded_event_start(&self) -> Any {
+        self.inner.get("domContentLoadedEventStart").as_::<Any>()
     }
+
 }
 impl PerformanceNavigationTiming {
-    pub fn dom_content_loaded_event_end(&self) -> jsbind::Any {
-        self.inner
-            .get("domContentLoadedEventEnd")
-            .as_::<jsbind::Any>()
+    pub fn dom_content_loaded_event_end(&self) -> Any {
+        self.inner.get("domContentLoadedEventEnd").as_::<Any>()
     }
+
 }
 impl PerformanceNavigationTiming {
-    pub fn dom_complete(&self) -> jsbind::Any {
-        self.inner.get("domComplete").as_::<jsbind::Any>()
+    pub fn dom_complete(&self) -> Any {
+        self.inner.get("domComplete").as_::<Any>()
     }
+
 }
 impl PerformanceNavigationTiming {
-    pub fn load_event_start(&self) -> jsbind::Any {
-        self.inner.get("loadEventStart").as_::<jsbind::Any>()
+    pub fn load_event_start(&self) -> Any {
+        self.inner.get("loadEventStart").as_::<Any>()
     }
+
 }
 impl PerformanceNavigationTiming {
-    pub fn load_event_end(&self) -> jsbind::Any {
-        self.inner.get("loadEventEnd").as_::<jsbind::Any>()
+    pub fn load_event_end(&self) -> Any {
+        self.inner.get("loadEventEnd").as_::<Any>()
     }
+
 }
 impl PerformanceNavigationTiming {
     pub fn type_(&self) -> NavigationTimingType {
         self.inner.get("type").as_::<NavigationTimingType>()
     }
+
 }
 impl PerformanceNavigationTiming {
     pub fn redirect_count(&self) -> u16 {
         self.inner.get("redirectCount").as_::<u16>()
     }
+
 }
 impl PerformanceNavigationTiming {
-    pub fn critical_ch_restart(&self) -> jsbind::Any {
-        self.inner.get("criticalCHRestart").as_::<jsbind::Any>()
+    pub fn critical_ch_restart(&self) -> Any {
+        self.inner.get("criticalCHRestart").as_::<Any>()
     }
+
 }
 impl PerformanceNavigationTiming {
     pub fn not_restored_reasons(&self) -> NotRestoredReasons {
-        self.inner
-            .get("notRestoredReasons")
-            .as_::<NotRestoredReasons>()
+        self.inner.get("notRestoredReasons").as_::<NotRestoredReasons>()
     }
+
 }
 impl PerformanceNavigationTiming {
-    pub fn to_json(&self) -> jsbind::Object {
-        self.inner.call("toJSON", &[]).as_::<jsbind::Object>()
+    pub fn to_json(&self, ) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
+
 }
 impl PerformanceNavigationTiming {
-    pub fn activation_start(&self) -> jsbind::Any {
-        self.inner.get("activationStart").as_::<jsbind::Any>()
+    pub fn activation_start(&self) -> Any {
+        self.inner.get("activationStart").as_::<Any>()
     }
+
 }

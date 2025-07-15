@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct LayoutShiftAttribution {
@@ -7,9 +10,7 @@ pub struct LayoutShiftAttribution {
 }
 impl FromVal for LayoutShiftAttribution {
     fn from_val(v: &emlite::Val) -> Self {
-        LayoutShiftAttribution {
-            inner: emlite::Val::from_val(v),
-        }
+        LayoutShiftAttribution { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for LayoutShiftAttribution {
 }
 impl AsMut<emlite::Val> for LayoutShiftAttribution {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<LayoutShiftAttribution> for emlite::Val {
     fn from(s: LayoutShiftAttribution) -> emlite::Val {
@@ -48,18 +49,22 @@ impl From<LayoutShiftAttribution> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(LayoutShiftAttribution);
 
+
 impl LayoutShiftAttribution {
     pub fn node(&self) -> Node {
         self.inner.get("node").as_::<Node>()
     }
+
 }
 impl LayoutShiftAttribution {
     pub fn previous_rect(&self) -> DOMRectReadOnly {
         self.inner.get("previousRect").as_::<DOMRectReadOnly>()
     }
+
 }
 impl LayoutShiftAttribution {
     pub fn current_rect(&self) -> DOMRectReadOnly {
         self.inner.get("currentRect").as_::<DOMRectReadOnly>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DataCue {
@@ -7,9 +10,7 @@ pub struct DataCue {
 }
 impl FromVal for DataCue {
     fn from_val(v: &emlite::Val) -> Self {
-        DataCue {
-            inner: TextTrackCue::from_val(v),
-        }
+        DataCue { inner: TextTrackCue::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for DataCue {
 }
 impl AsMut<emlite::Val> for DataCue {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<DataCue> for emlite::Val {
     fn from(s: DataCue) -> emlite::Val {
@@ -48,44 +49,35 @@ impl From<DataCue> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(DataCue);
 
+
+
 impl DataCue {
-    pub fn new0(start_time: f64, end_time: f64, value: jsbind::Any) -> DataCue {
+    pub fn new0(start_time: f64, end_time: f64, value: Any) -> DataCue {
         Self {
-            inner: emlite::Val::global("DataCue")
-                .new(&[start_time.into(), end_time.into(), value.into()])
-                .as_::<TextTrackCue>(),
+            inner: emlite::Val::global("DataCue").new(&[start_time.into(), end_time.into(), value.into()]).as_::<TextTrackCue>(),
         }
     }
 
-    pub fn new1(
-        start_time: f64,
-        end_time: f64,
-        value: jsbind::Any,
-        type_: jsbind::DOMString,
-    ) -> DataCue {
+    pub fn new1(start_time: f64, end_time: f64, value: Any, type_: DOMString) -> DataCue {
         Self {
-            inner: emlite::Val::global("DataCue")
-                .new(&[
-                    start_time.into(),
-                    end_time.into(),
-                    value.into(),
-                    type_.into(),
-                ])
-                .as_::<TextTrackCue>(),
+            inner: emlite::Val::global("DataCue").new(&[start_time.into(), end_time.into(), value.into(), type_.into()]).as_::<TextTrackCue>(),
         }
     }
+
 }
 impl DataCue {
-    pub fn value(&self) -> jsbind::Any {
-        self.inner.get("value").as_::<jsbind::Any>()
+    pub fn value(&self) -> Any {
+        self.inner.get("value").as_::<Any>()
     }
 
-    pub fn set_value(&mut self, value: jsbind::Any) {
+    pub fn set_value(&mut self, value: Any) {
         self.inner.set("value", value);
     }
+
 }
 impl DataCue {
-    pub fn type_(&self) -> jsbind::DOMString {
-        self.inner.get("type").as_::<jsbind::DOMString>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ClipboardEvent {
@@ -7,9 +10,7 @@ pub struct ClipboardEvent {
 }
 impl FromVal for ClipboardEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        ClipboardEvent {
-            inner: Event::from_val(v),
-        }
+        ClipboardEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ClipboardEvent {
 }
 impl AsMut<emlite::Val> for ClipboardEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ClipboardEvent> for emlite::Val {
     fn from(s: ClipboardEvent) -> emlite::Val {
@@ -48,25 +49,25 @@ impl From<ClipboardEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ClipboardEvent);
 
+
+
 impl ClipboardEvent {
-    pub fn new0(type_: jsbind::DOMString) -> ClipboardEvent {
+    pub fn new0(type_: DOMString) -> ClipboardEvent {
         Self {
-            inner: emlite::Val::global("ClipboardEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("ClipboardEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
-    pub fn new1(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> ClipboardEvent {
+    pub fn new1(type_: DOMString, event_init_dict: Any) -> ClipboardEvent {
         Self {
-            inner: emlite::Val::global("ClipboardEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("ClipboardEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl ClipboardEvent {
     pub fn clipboard_data(&self) -> DataTransfer {
         self.inner.get("clipboardData").as_::<DataTransfer>()
     }
+
 }

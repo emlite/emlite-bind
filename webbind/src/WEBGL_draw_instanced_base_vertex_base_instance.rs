@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WEBGL_draw_instanced_base_vertex_base_instance {
@@ -7,9 +10,7 @@ pub struct WEBGL_draw_instanced_base_vertex_base_instance {
 }
 impl FromVal for WEBGL_draw_instanced_base_vertex_base_instance {
     fn from_val(v: &emlite::Val) -> Self {
-        WEBGL_draw_instanced_base_vertex_base_instance {
-            inner: emlite::Val::from_val(v),
-        }
+        WEBGL_draw_instanced_base_vertex_base_instance { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WEBGL_draw_instanced_base_vertex_base_instance {
 }
 impl AsMut<emlite::Val> for WEBGL_draw_instanced_base_vertex_base_instance {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WEBGL_draw_instanced_base_vertex_base_instance> for emlite::Val {
     fn from(s: WEBGL_draw_instanced_base_vertex_base_instance) -> emlite::Val {
@@ -48,53 +49,16 @@ impl From<WEBGL_draw_instanced_base_vertex_base_instance> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WEBGL_draw_instanced_base_vertex_base_instance);
 
+
 impl WEBGL_draw_instanced_base_vertex_base_instance {
-    pub fn draw_arrays_instanced_base_instance_webgl(
-        &self,
-        mode: jsbind::Any,
-        first: jsbind::Any,
-        count: jsbind::Any,
-        instance_count: jsbind::Any,
-        base_instance: jsbind::Any,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call(
-                "drawArraysInstancedBaseInstanceWEBGL",
-                &[
-                    mode.into(),
-                    first.into(),
-                    count.into(),
-                    instance_count.into(),
-                    base_instance.into(),
-                ],
-            )
-            .as_::<jsbind::Undefined>()
+    pub fn draw_arrays_instanced_base_instance_webgl(&self, mode: Any, first: Any, count: Any, instance_count: Any, base_instance: Any) -> Undefined {
+        self.inner.call("drawArraysInstancedBaseInstanceWEBGL", &[mode.into(), first.into(), count.into(), instance_count.into(), base_instance.into(), ]).as_::<Undefined>()
     }
+
 }
 impl WEBGL_draw_instanced_base_vertex_base_instance {
-    pub fn draw_elements_instanced_base_vertex_base_instance_webgl(
-        &self,
-        mode: jsbind::Any,
-        count: jsbind::Any,
-        type_: jsbind::Any,
-        offset: jsbind::Any,
-        instance_count: jsbind::Any,
-        base_vertex: jsbind::Any,
-        base_instance: jsbind::Any,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call(
-                "drawElementsInstancedBaseVertexBaseInstanceWEBGL",
-                &[
-                    mode.into(),
-                    count.into(),
-                    type_.into(),
-                    offset.into(),
-                    instance_count.into(),
-                    base_vertex.into(),
-                    base_instance.into(),
-                ],
-            )
-            .as_::<jsbind::Undefined>()
+    pub fn draw_elements_instanced_base_vertex_base_instance_webgl(&self, mode: Any, count: Any, type_: Any, offset: Any, instance_count: Any, base_vertex: Any, base_instance: Any) -> Undefined {
+        self.inner.call("drawElementsInstancedBaseVertexBaseInstanceWEBGL", &[mode.into(), count.into(), type_.into(), offset.into(), instance_count.into(), base_vertex.into(), base_instance.into(), ]).as_::<Undefined>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ObservableEventListenerOptions {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for ObservableEventListenerOptions {
 }
 impl AsMut<emlite::Val> for ObservableEventListenerOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ObservableEventListenerOptions> for emlite::Val {
     fn from(s: ObservableEventListenerOptions) -> emlite::Val {
@@ -53,6 +56,7 @@ impl ObservableEventListenerOptions {
     pub fn set_capture(&mut self, value: bool) {
         self.inner.set("capture", value);
     }
+
 }
 impl ObservableEventListenerOptions {
     pub fn passive(&self) -> bool {
@@ -62,6 +66,7 @@ impl ObservableEventListenerOptions {
     pub fn set_passive(&mut self, value: bool) {
         self.inner.set("passive", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -70,9 +75,7 @@ pub struct EventTarget {
 }
 impl FromVal for EventTarget {
     fn from_val(v: &emlite::Val) -> Self {
-        EventTarget {
-            inner: emlite::Val::from_val(v),
-        }
+        EventTarget { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -99,8 +102,8 @@ impl AsRef<emlite::Val> for EventTarget {
 }
 impl AsMut<emlite::Val> for EventTarget {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<EventTarget> for emlite::Val {
     fn from(s: EventTarget) -> emlite::Val {
@@ -111,84 +114,49 @@ impl From<EventTarget> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(EventTarget);
 
+
+
 impl EventTarget {
     pub fn new() -> EventTarget {
         Self {
-            inner: emlite::Val::global("EventTarget")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("EventTarget").new(&[]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl EventTarget {
-    pub fn add_event_listener0(
-        &self,
-        type_: jsbind::DOMString,
-        callback: jsbind::Function,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("addEventListener", &[type_.into(), callback.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn add_event_listener0(&self, type_: DOMString, callback: Function) -> Undefined {
+        self.inner.call("addEventListener", &[type_.into(), callback.into(), ]).as_::<Undefined>()
     }
 
-    pub fn add_event_listener1(
-        &self,
-        type_: jsbind::DOMString,
-        callback: jsbind::Function,
-        options: jsbind::Any,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call(
-                "addEventListener",
-                &[type_.into(), callback.into(), options.into()],
-            )
-            .as_::<jsbind::Undefined>()
+    pub fn add_event_listener1(&self, type_: DOMString, callback: Function, options: Any) -> Undefined {
+        self.inner.call("addEventListener", &[type_.into(), callback.into(), options.into(), ]).as_::<Undefined>()
     }
+
 }
 impl EventTarget {
-    pub fn remove_event_listener0(
-        &self,
-        type_: jsbind::DOMString,
-        callback: jsbind::Function,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("removeEventListener", &[type_.into(), callback.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn remove_event_listener0(&self, type_: DOMString, callback: Function) -> Undefined {
+        self.inner.call("removeEventListener", &[type_.into(), callback.into(), ]).as_::<Undefined>()
     }
 
-    pub fn remove_event_listener1(
-        &self,
-        type_: jsbind::DOMString,
-        callback: jsbind::Function,
-        options: jsbind::Any,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call(
-                "removeEventListener",
-                &[type_.into(), callback.into(), options.into()],
-            )
-            .as_::<jsbind::Undefined>()
+    pub fn remove_event_listener1(&self, type_: DOMString, callback: Function, options: Any) -> Undefined {
+        self.inner.call("removeEventListener", &[type_.into(), callback.into(), options.into(), ]).as_::<Undefined>()
     }
+
 }
 impl EventTarget {
     pub fn dispatch_event(&self, event: Event) -> bool {
-        self.inner
-            .call("dispatchEvent", &[event.into()])
-            .as_::<bool>()
-    }
-}
-impl EventTarget {
-    pub fn when0(&self, type_: jsbind::DOMString) -> Observable {
-        self.inner.call("when", &[type_.into()]).as_::<Observable>()
+        self.inner.call("dispatchEvent", &[event.into(), ]).as_::<bool>()
     }
 
-    pub fn when1(
-        &self,
-        type_: jsbind::DOMString,
-        options: ObservableEventListenerOptions,
-    ) -> Observable {
-        self.inner
-            .call("when", &[type_.into(), options.into()])
-            .as_::<Observable>()
+}
+impl EventTarget {
+    pub fn when0(&self, type_: DOMString) -> Observable {
+        self.inner.call("when", &[type_.into(), ]).as_::<Observable>()
     }
+
+    pub fn when1(&self, type_: DOMString, options: ObservableEventListenerOptions) -> Observable {
+        self.inner.call("when", &[type_.into(), options.into(), ]).as_::<Observable>()
+    }
+
 }

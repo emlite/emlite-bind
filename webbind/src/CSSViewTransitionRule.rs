@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSViewTransitionRule {
@@ -7,9 +10,7 @@ pub struct CSSViewTransitionRule {
 }
 impl FromVal for CSSViewTransitionRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSViewTransitionRule {
-            inner: CSSRule::from_val(v),
-        }
+        CSSViewTransitionRule { inner: CSSRule::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSViewTransitionRule {
 }
 impl AsMut<emlite::Val> for CSSViewTransitionRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSViewTransitionRule> for emlite::Val {
     fn from(s: CSSViewTransitionRule) -> emlite::Val {
@@ -48,15 +49,16 @@ impl From<CSSViewTransitionRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSViewTransitionRule);
 
+
 impl CSSViewTransitionRule {
-    pub fn navigation(&self) -> jsbind::CSSOMString {
-        self.inner.get("navigation").as_::<jsbind::CSSOMString>()
+    pub fn navigation(&self) -> CSSOMString {
+        self.inner.get("navigation").as_::<CSSOMString>()
     }
+
 }
 impl CSSViewTransitionRule {
-    pub fn types(&self) -> jsbind::FrozenArray<jsbind::CSSOMString> {
-        self.inner
-            .get("types")
-            .as_::<jsbind::FrozenArray<jsbind::CSSOMString>>()
+    pub fn types(&self) -> FrozenArray<CSSOMString> {
+        self.inner.get("types").as_::<FrozenArray<CSSOMString>>()
     }
+
 }

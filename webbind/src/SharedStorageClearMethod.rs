@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SharedStorageClearMethod {
@@ -7,9 +10,7 @@ pub struct SharedStorageClearMethod {
 }
 impl FromVal for SharedStorageClearMethod {
     fn from_val(v: &emlite::Val) -> Self {
-        SharedStorageClearMethod {
-            inner: SharedStorageModifierMethod::from_val(v),
-        }
+        SharedStorageClearMethod { inner: SharedStorageModifierMethod::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SharedStorageClearMethod {
 }
 impl AsMut<emlite::Val> for SharedStorageClearMethod {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SharedStorageClearMethod> for emlite::Val {
     fn from(s: SharedStorageClearMethod) -> emlite::Val {
@@ -48,20 +49,19 @@ impl From<SharedStorageClearMethod> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SharedStorageClearMethod);
 
+
+
 impl SharedStorageClearMethod {
     pub fn new0() -> SharedStorageClearMethod {
         Self {
-            inner: emlite::Val::global("SharedStorageClearMethod")
-                .new(&[])
-                .as_::<SharedStorageModifierMethod>(),
+            inner: emlite::Val::global("SharedStorageClearMethod").new(&[]).as_::<SharedStorageModifierMethod>(),
         }
     }
 
     pub fn new1(options: SharedStorageModifierMethodOptions) -> SharedStorageClearMethod {
         Self {
-            inner: emlite::Val::global("SharedStorageClearMethod")
-                .new(&[options.into()])
-                .as_::<SharedStorageModifierMethod>(),
+            inner: emlite::Val::global("SharedStorageClearMethod").new(&[options.into()]).as_::<SharedStorageModifierMethod>(),
         }
     }
+
 }

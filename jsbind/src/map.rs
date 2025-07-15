@@ -3,6 +3,9 @@
 use core::marker::PhantomData;
 use core::ops::{Deref, DerefMut};
 use emlite::FromVal;
+use crate::any::Any;
+use crate::record::Record;
+use crate::sequence::Sequence;
 
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -60,7 +63,7 @@ impl<K, V> AsMut<emlite::Val> for TypedMap<K, V> {
     }
 }
 
-pub type Map = TypedMap<crate::Any, crate::Any>;
+pub type Map = TypedMap<Any, Any>;
 crate::utils::impl_dyn_cast!(Map, "Map");
 
 impl<K, V> TypedMap<K, V> {
@@ -82,13 +85,18 @@ impl<K, V> TypedMap<K, V> {
         self.inner.set(item, val);
     }
 
-    pub fn get(&self, item: K) -> V
+    pub fn get(&self, item: K) -> Option<V>
     where
         emlite::Val: From<K>,
         emlite::Val: From<V>,
         V: FromVal,
     {
-        self.inner.get(item).as_::<V>()
+        let v = self.inner.get(item);
+        if v.is_undefined() {
+            None
+        } else {
+            Some(v.as_::<V>())
+        }
     }
 
     /// Returns whether a value exists in the sequence.
@@ -114,7 +122,7 @@ impl<K, V> TypedMap<K, V> {
 }
 
 pub struct TypedMapIter<'a, K, V> {
-    it: crate::Sequence<crate::Any>,
+    it: Sequence<Any>,
     idx: usize,
     _phantom: PhantomData<(&'a K, &'a V)>,
 }
@@ -128,12 +136,12 @@ where
     type IntoIter = TypedMapIter<'a, K, V>;
 
     fn into_iter(self) -> Self::IntoIter {
-        let iter = self.inner.call("entries", &[]).as_::<crate::Any>(); // JS iterator
+        let iter = self.inner.call("entries", &[]).as_::<Any>(); // JS iterator
         // Turn into array via spread [...iter]; easiest cross-env.
         let vec = emlite::Val::global("Array")
             .new(&[])
             .call("from", &[iter])
-            .as_::<crate::Sequence<crate::Any>>();
+            .as_::<Sequence<Any>>();
         TypedMapIter {
             it: vec,
             idx: 0,
@@ -153,19 +161,23 @@ where
         if self.idx < self.it.len() {
             let pair = self.it.get(self.idx); // [key,val]
             self.idx += 1;
-            Some((pair.get(0).as_::<K>(), pair.get(1).as_::<V>()))
+            if let Some(p) = pair {
+                Some((p.get(0).as_::<K>(), p.get(1).as_::<V>()))
+            } else {
+                None
+            }
         } else {
             None
         }
     }
 }
 
-impl<K, V> From<crate::Record<K, V>> for TypedMap<K, V>
+impl<K, V> From<Record<K, V>> for TypedMap<K, V>
 where
     K: FromVal + Into<emlite::Val>,
     V: FromVal + Into<emlite::Val>,
 {
-    fn from(rec: crate::Record<K, V>) -> Self {
+    fn from(rec: Record<K, V>) -> Self {
         let map_ctor = emlite::Val::global("Map");
         // TypedMap entries: Object.entries(obj)
         let entries = emlite::Val::global("Object").call("entries", &[rec.clone().into()]);
@@ -248,13 +260,18 @@ impl<K, V> TypedWeakMap<K, V> {
         self.inner.set(item, val);
     }
 
-    pub fn get(&self, item: K) -> V
+    pub fn get(&self, item: K) -> Option<V>
     where
         emlite::Val: From<K>,
         emlite::Val: From<V>,
         V: FromVal,
     {
-        self.inner.get(item).as_::<V>()
+        let v = self.inner.get(item);
+        if v.is_undefined() {
+            None
+        } else {
+            Some(v.as_::<V>())
+        }
     }
 
     /// Returns whether a value exists in the sequence.
@@ -280,7 +297,7 @@ impl<K, V> TypedWeakMap<K, V> {
 }
 
 pub struct TypedWeakMapIter<'a, K, V> {
-    it: crate::Sequence<crate::Any>,
+    it: Sequence<Any>,
     idx: usize,
     _phantom: PhantomData<(&'a K, &'a V)>,
 }
@@ -294,12 +311,12 @@ where
     type IntoIter = TypedWeakMapIter<'a, K, V>;
 
     fn into_iter(self) -> Self::IntoIter {
-        let iter = self.inner.call("entries", &[]).as_::<crate::Any>(); // JS iterator
+        let iter = self.inner.call("entries", &[]).as_::<Any>(); // JS iterator
         // Turn into array via spread [...iter]; easiest cross-env.
         let vec = emlite::Val::global("Array")
             .new(&[])
             .call("from", &[iter])
-            .as_::<crate::Sequence<crate::Any>>();
+            .as_::<Sequence<Any>>();
         TypedWeakMapIter {
             it: vec,
             idx: 0,
@@ -319,19 +336,23 @@ where
         if self.idx < self.it.len() {
             let pair = self.it.get(self.idx); // [key,val]
             self.idx += 1;
-            Some((pair.get(0).as_::<K>(), pair.get(1).as_::<V>()))
+            if let Some(p) = pair {
+                Some((p.get(0).as_::<K>(), p.get(1).as_::<V>()))
+            } else {
+                None
+            }
         } else {
             None
         }
     }
 }
 
-impl<K, V> From<crate::Record<K, V>> for TypedWeakMap<K, V>
+impl<K, V> From<Record<K, V>> for TypedWeakMap<K, V>
 where
     K: FromVal + Into<emlite::Val>,
     V: FromVal + Into<emlite::Val>,
 {
-    fn from(rec: crate::Record<K, V>) -> Self {
+    fn from(rec: Record<K, V>) -> Self {
         let map_ctor = emlite::Val::global("WeakMap");
         // TypedWeakMap entries: Object.entries(obj)
         let entries = emlite::Val::global("Object").call("entries", &[rec.clone().into()]);
@@ -339,5 +360,5 @@ where
     }
 }
 
-pub type WeakMap = TypedWeakMap<crate::Any, crate::Any>;
+pub type WeakMap = TypedWeakMap<Any, Any>;
 crate::utils::impl_dyn_cast!(WeakMap, "WeakMap");

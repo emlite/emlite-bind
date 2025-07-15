@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NetworkInformation {
@@ -7,9 +10,7 @@ pub struct NetworkInformation {
 }
 impl FromVal for NetworkInformation {
     fn from_val(v: &emlite::Val) -> Self {
-        NetworkInformation {
-            inner: EventTarget::from_val(v),
-        }
+        NetworkInformation { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for NetworkInformation {
 }
 impl AsMut<emlite::Val> for NetworkInformation {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NetworkInformation> for emlite::Val {
     fn from(s: NetworkInformation) -> emlite::Val {
@@ -48,44 +49,50 @@ impl From<NetworkInformation> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(NetworkInformation);
 
+
 impl NetworkInformation {
     pub fn type_(&self) -> ConnectionType {
         self.inner.get("type").as_::<ConnectionType>()
     }
+
 }
 impl NetworkInformation {
     pub fn effective_type(&self) -> EffectiveConnectionType {
-        self.inner
-            .get("effectiveType")
-            .as_::<EffectiveConnectionType>()
-    }
-}
-impl NetworkInformation {
-    pub fn downlink_max(&self) -> jsbind::Any {
-        self.inner.get("downlinkMax").as_::<jsbind::Any>()
-    }
-}
-impl NetworkInformation {
-    pub fn downlink(&self) -> jsbind::Any {
-        self.inner.get("downlink").as_::<jsbind::Any>()
-    }
-}
-impl NetworkInformation {
-    pub fn rtt(&self) -> jsbind::Any {
-        self.inner.get("rtt").as_::<jsbind::Any>()
-    }
-}
-impl NetworkInformation {
-    pub fn onchange(&self) -> jsbind::Any {
-        self.inner.get("onchange").as_::<jsbind::Any>()
+        self.inner.get("effectiveType").as_::<EffectiveConnectionType>()
     }
 
-    pub fn set_onchange(&mut self, value: jsbind::Any) {
+}
+impl NetworkInformation {
+    pub fn downlink_max(&self) -> Any {
+        self.inner.get("downlinkMax").as_::<Any>()
+    }
+
+}
+impl NetworkInformation {
+    pub fn downlink(&self) -> Any {
+        self.inner.get("downlink").as_::<Any>()
+    }
+
+}
+impl NetworkInformation {
+    pub fn rtt(&self) -> Any {
+        self.inner.get("rtt").as_::<Any>()
+    }
+
+}
+impl NetworkInformation {
+    pub fn onchange(&self) -> Any {
+        self.inner.get("onchange").as_::<Any>()
+    }
+
+    pub fn set_onchange(&mut self, value: Any) {
         self.inner.set("onchange", value);
     }
+
 }
 impl NetworkInformation {
     pub fn save_data(&self) -> bool {
         self.inner.get("saveData").as_::<bool>()
     }
+
 }

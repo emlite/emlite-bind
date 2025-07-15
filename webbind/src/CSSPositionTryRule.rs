@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSPositionTryRule {
@@ -7,9 +10,7 @@ pub struct CSSPositionTryRule {
 }
 impl FromVal for CSSPositionTryRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSPositionTryRule {
-            inner: CSSRule::from_val(v),
-        }
+        CSSPositionTryRule { inner: CSSRule::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSPositionTryRule {
 }
 impl AsMut<emlite::Val> for CSSPositionTryRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSPositionTryRule> for emlite::Val {
     fn from(s: CSSPositionTryRule) -> emlite::Val {
@@ -48,13 +49,16 @@ impl From<CSSPositionTryRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSPositionTryRule);
 
+
 impl CSSPositionTryRule {
-    pub fn name(&self) -> jsbind::CSSOMString {
-        self.inner.get("name").as_::<jsbind::CSSOMString>()
+    pub fn name(&self) -> CSSOMString {
+        self.inner.get("name").as_::<CSSOMString>()
     }
+
 }
 impl CSSPositionTryRule {
     pub fn style(&self) -> CSSPositionTryDescriptors {
         self.inner.get("style").as_::<CSSPositionTryDescriptors>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MimeType {
@@ -7,9 +10,7 @@ pub struct MimeType {
 }
 impl FromVal for MimeType {
     fn from_val(v: &emlite::Val) -> Self {
-        MimeType {
-            inner: emlite::Val::from_val(v),
-        }
+        MimeType { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for MimeType {
 }
 impl AsMut<emlite::Val> for MimeType {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MimeType> for emlite::Val {
     fn from(s: MimeType) -> emlite::Val {
@@ -48,23 +49,28 @@ impl From<MimeType> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MimeType);
 
+
 impl MimeType {
-    pub fn type_(&self) -> jsbind::DOMString {
-        self.inner.get("type").as_::<jsbind::DOMString>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
+
 }
 impl MimeType {
-    pub fn description(&self) -> jsbind::DOMString {
-        self.inner.get("description").as_::<jsbind::DOMString>()
+    pub fn description(&self) -> DOMString {
+        self.inner.get("description").as_::<DOMString>()
     }
+
 }
 impl MimeType {
-    pub fn suffixes(&self) -> jsbind::DOMString {
-        self.inner.get("suffixes").as_::<jsbind::DOMString>()
+    pub fn suffixes(&self) -> DOMString {
+        self.inner.get("suffixes").as_::<DOMString>()
     }
+
 }
 impl MimeType {
     pub fn enabled_plugin(&self) -> Plugin {
         self.inner.get("enabledPlugin").as_::<Plugin>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSParserAtRule {
@@ -7,9 +10,7 @@ pub struct CSSParserAtRule {
 }
 impl FromVal for CSSParserAtRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSParserAtRule {
-            inner: CSSParserRule::from_val(v),
-        }
+        CSSParserAtRule { inner: CSSParserRule::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSParserAtRule {
 }
 impl AsMut<emlite::Val> for CSSParserAtRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSParserAtRule> for emlite::Val {
     fn from(s: CSSParserAtRule) -> emlite::Val {
@@ -48,46 +49,37 @@ impl From<CSSParserAtRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSParserAtRule);
 
+
+
 impl CSSParserAtRule {
-    pub fn new0(
-        name: jsbind::DOMString,
-        prelude: jsbind::Sequence<jsbind::Any>,
-    ) -> CSSParserAtRule {
+    pub fn new0(name: DOMString, prelude: Sequence<Any>) -> CSSParserAtRule {
         Self {
-            inner: emlite::Val::global("CSSParserAtRule")
-                .new(&[name.into(), prelude.into()])
-                .as_::<CSSParserRule>(),
+            inner: emlite::Val::global("CSSParserAtRule").new(&[name.into(), prelude.into()]).as_::<CSSParserRule>(),
         }
     }
 
-    pub fn new1(
-        name: jsbind::DOMString,
-        prelude: jsbind::Sequence<jsbind::Any>,
-        body: jsbind::Sequence<CSSParserRule>,
-    ) -> CSSParserAtRule {
+    pub fn new1(name: DOMString, prelude: Sequence<Any>, body: Sequence<CSSParserRule>) -> CSSParserAtRule {
         Self {
-            inner: emlite::Val::global("CSSParserAtRule")
-                .new(&[name.into(), prelude.into(), body.into()])
-                .as_::<CSSParserRule>(),
+            inner: emlite::Val::global("CSSParserAtRule").new(&[name.into(), prelude.into(), body.into()]).as_::<CSSParserRule>(),
         }
     }
+
 }
 impl CSSParserAtRule {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
+
 }
 impl CSSParserAtRule {
-    pub fn prelude(&self) -> jsbind::FrozenArray<CSSParserValue> {
-        self.inner
-            .get("prelude")
-            .as_::<jsbind::FrozenArray<CSSParserValue>>()
+    pub fn prelude(&self) -> FrozenArray<CSSParserValue> {
+        self.inner.get("prelude").as_::<FrozenArray<CSSParserValue>>()
     }
+
 }
 impl CSSParserAtRule {
-    pub fn body(&self) -> jsbind::FrozenArray<CSSParserRule> {
-        self.inner
-            .get("body")
-            .as_::<jsbind::FrozenArray<CSSParserRule>>()
+    pub fn body(&self) -> FrozenArray<CSSParserRule> {
+        self.inner.get("body").as_::<FrozenArray<CSSParserRule>>()
     }
+
 }

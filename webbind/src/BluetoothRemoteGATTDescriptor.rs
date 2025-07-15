@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BluetoothRemoteGATTDescriptor {
@@ -7,9 +10,7 @@ pub struct BluetoothRemoteGATTDescriptor {
 }
 impl FromVal for BluetoothRemoteGATTDescriptor {
     fn from_val(v: &emlite::Val) -> Self {
-        BluetoothRemoteGATTDescriptor {
-            inner: emlite::Val::from_val(v),
-        }
+        BluetoothRemoteGATTDescriptor { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for BluetoothRemoteGATTDescriptor {
 }
 impl AsMut<emlite::Val> for BluetoothRemoteGATTDescriptor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<BluetoothRemoteGATTDescriptor> for emlite::Val {
     fn from(s: BluetoothRemoteGATTDescriptor) -> emlite::Val {
@@ -48,32 +49,34 @@ impl From<BluetoothRemoteGATTDescriptor> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BluetoothRemoteGATTDescriptor);
 
+
 impl BluetoothRemoteGATTDescriptor {
     pub fn characteristic(&self) -> BluetoothRemoteGATTCharacteristic {
-        self.inner
-            .get("characteristic")
-            .as_::<BluetoothRemoteGATTCharacteristic>()
+        self.inner.get("characteristic").as_::<BluetoothRemoteGATTCharacteristic>()
     }
+
 }
 impl BluetoothRemoteGATTDescriptor {
-    pub fn uuid(&self) -> jsbind::Any {
-        self.inner.get("uuid").as_::<jsbind::Any>()
+    pub fn uuid(&self) -> Any {
+        self.inner.get("uuid").as_::<Any>()
     }
+
 }
 impl BluetoothRemoteGATTDescriptor {
-    pub fn value(&self) -> jsbind::DataView {
-        self.inner.get("value").as_::<jsbind::DataView>()
+    pub fn value(&self) -> DataView {
+        self.inner.get("value").as_::<DataView>()
     }
+
 }
 impl BluetoothRemoteGATTDescriptor {
-    pub fn read_value(&self) -> jsbind::Promise {
-        self.inner.call("readValue", &[]).as_::<jsbind::Promise>()
+    pub fn read_value(&self, ) -> Promise {
+        self.inner.call("readValue", &[]).as_::<Promise>()
     }
+
 }
 impl BluetoothRemoteGATTDescriptor {
-    pub fn write_value(&self, value: jsbind::Any) -> jsbind::Promise {
-        self.inner
-            .call("writeValue", &[value.into()])
-            .as_::<jsbind::Promise>()
+    pub fn write_value(&self, value: Any) -> Promise {
+        self.inner.call("writeValue", &[value.into(), ]).as_::<Promise>()
     }
+
 }

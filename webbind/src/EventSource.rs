@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EventSource {
@@ -7,9 +10,7 @@ pub struct EventSource {
 }
 impl FromVal for EventSource {
     fn from_val(v: &emlite::Val) -> Self {
-        EventSource {
-            inner: EventTarget::from_val(v),
-        }
+        EventSource { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for EventSource {
 }
 impl AsMut<emlite::Val> for EventSource {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<EventSource> for emlite::Val {
     fn from(s: EventSource) -> emlite::Val {
@@ -48,67 +49,73 @@ impl From<EventSource> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(EventSource);
 
+
+
 impl EventSource {
-    pub fn new0(url: jsbind::USVString) -> EventSource {
+    pub fn new0(url: USVString) -> EventSource {
         Self {
-            inner: emlite::Val::global("EventSource")
-                .new(&[url.into()])
-                .as_::<EventTarget>(),
+            inner: emlite::Val::global("EventSource").new(&[url.into()]).as_::<EventTarget>(),
         }
     }
 
-    pub fn new1(url: jsbind::USVString, event_source_init_dict: jsbind::Any) -> EventSource {
+    pub fn new1(url: USVString, event_source_init_dict: Any) -> EventSource {
         Self {
-            inner: emlite::Val::global("EventSource")
-                .new(&[url.into(), event_source_init_dict.into()])
-                .as_::<EventTarget>(),
+            inner: emlite::Val::global("EventSource").new(&[url.into(), event_source_init_dict.into()]).as_::<EventTarget>(),
         }
     }
+
 }
 impl EventSource {
-    pub fn url(&self) -> jsbind::USVString {
-        self.inner.get("url").as_::<jsbind::USVString>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
+
 }
 impl EventSource {
     pub fn with_credentials(&self) -> bool {
         self.inner.get("withCredentials").as_::<bool>()
     }
+
 }
 impl EventSource {
     pub fn ready_state(&self) -> u16 {
         self.inner.get("readyState").as_::<u16>()
     }
+
 }
 impl EventSource {
-    pub fn onopen(&self) -> jsbind::Any {
-        self.inner.get("onopen").as_::<jsbind::Any>()
+    pub fn onopen(&self) -> Any {
+        self.inner.get("onopen").as_::<Any>()
     }
 
-    pub fn set_onopen(&mut self, value: jsbind::Any) {
+    pub fn set_onopen(&mut self, value: Any) {
         self.inner.set("onopen", value);
     }
+
 }
 impl EventSource {
-    pub fn onmessage(&self) -> jsbind::Any {
-        self.inner.get("onmessage").as_::<jsbind::Any>()
+    pub fn onmessage(&self) -> Any {
+        self.inner.get("onmessage").as_::<Any>()
     }
 
-    pub fn set_onmessage(&mut self, value: jsbind::Any) {
+    pub fn set_onmessage(&mut self, value: Any) {
         self.inner.set("onmessage", value);
     }
+
 }
 impl EventSource {
-    pub fn onerror(&self) -> jsbind::Any {
-        self.inner.get("onerror").as_::<jsbind::Any>()
+    pub fn onerror(&self) -> Any {
+        self.inner.get("onerror").as_::<Any>()
     }
 
-    pub fn set_onerror(&mut self, value: jsbind::Any) {
+    pub fn set_onerror(&mut self, value: Any) {
         self.inner.set("onerror", value);
     }
+
 }
 impl EventSource {
-    pub fn close(&self) -> jsbind::Undefined {
-        self.inner.call("close", &[]).as_::<jsbind::Undefined>()
+    pub fn close(&self, ) -> Undefined {
+        self.inner.call("close", &[]).as_::<Undefined>()
     }
+
 }

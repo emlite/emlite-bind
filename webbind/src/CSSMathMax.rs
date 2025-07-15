@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSMathMax {
@@ -7,9 +10,7 @@ pub struct CSSMathMax {
 }
 impl FromVal for CSSMathMax {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSMathMax {
-            inner: CSSMathValue::from_val(v),
-        }
+        CSSMathMax { inner: CSSMathValue::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSMathMax {
 }
 impl AsMut<emlite::Val> for CSSMathMax {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSMathMax> for emlite::Val {
     fn from(s: CSSMathMax) -> emlite::Val {
@@ -48,17 +49,19 @@ impl From<CSSMathMax> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSMathMax);
 
+
+
 impl CSSMathMax {
-    pub fn new(args: jsbind::Any) -> CSSMathMax {
+    pub fn new(args: Any) -> CSSMathMax {
         Self {
-            inner: emlite::Val::global("CSSMathMax")
-                .new(&[args.into()])
-                .as_::<CSSMathValue>(),
+            inner: emlite::Val::global("CSSMathMax").new(&[args.into()]).as_::<CSSMathValue>(),
         }
     }
+
 }
 impl CSSMathMax {
     pub fn values(&self) -> CSSNumericArray {
         self.inner.get("values").as_::<CSSNumericArray>()
     }
+
 }

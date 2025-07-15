@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ContactAddress {
@@ -7,9 +10,7 @@ pub struct ContactAddress {
 }
 impl FromVal for ContactAddress {
     fn from_val(v: &emlite::Val) -> Self {
-        ContactAddress {
-            inner: emlite::Val::from_val(v),
-        }
+        ContactAddress { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ContactAddress {
 }
 impl AsMut<emlite::Val> for ContactAddress {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ContactAddress> for emlite::Val {
     fn from(s: ContactAddress) -> emlite::Val {
@@ -48,62 +49,70 @@ impl From<ContactAddress> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ContactAddress);
 
+
 impl ContactAddress {
-    pub fn to_json(&self) -> jsbind::Object {
-        self.inner.call("toJSON", &[]).as_::<jsbind::Object>()
+    pub fn to_json(&self, ) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
+
 }
 impl ContactAddress {
-    pub fn city(&self) -> jsbind::DOMString {
-        self.inner.get("city").as_::<jsbind::DOMString>()
+    pub fn city(&self) -> DOMString {
+        self.inner.get("city").as_::<DOMString>()
     }
+
 }
 impl ContactAddress {
-    pub fn country(&self) -> jsbind::DOMString {
-        self.inner.get("country").as_::<jsbind::DOMString>()
+    pub fn country(&self) -> DOMString {
+        self.inner.get("country").as_::<DOMString>()
     }
+
 }
 impl ContactAddress {
-    pub fn dependent_locality(&self) -> jsbind::DOMString {
-        self.inner
-            .get("dependentLocality")
-            .as_::<jsbind::DOMString>()
+    pub fn dependent_locality(&self) -> DOMString {
+        self.inner.get("dependentLocality").as_::<DOMString>()
     }
+
 }
 impl ContactAddress {
-    pub fn organization(&self) -> jsbind::DOMString {
-        self.inner.get("organization").as_::<jsbind::DOMString>()
+    pub fn organization(&self) -> DOMString {
+        self.inner.get("organization").as_::<DOMString>()
     }
+
 }
 impl ContactAddress {
-    pub fn phone(&self) -> jsbind::DOMString {
-        self.inner.get("phone").as_::<jsbind::DOMString>()
+    pub fn phone(&self) -> DOMString {
+        self.inner.get("phone").as_::<DOMString>()
     }
+
 }
 impl ContactAddress {
-    pub fn postal_code(&self) -> jsbind::DOMString {
-        self.inner.get("postalCode").as_::<jsbind::DOMString>()
+    pub fn postal_code(&self) -> DOMString {
+        self.inner.get("postalCode").as_::<DOMString>()
     }
+
 }
 impl ContactAddress {
-    pub fn recipient(&self) -> jsbind::DOMString {
-        self.inner.get("recipient").as_::<jsbind::DOMString>()
+    pub fn recipient(&self) -> DOMString {
+        self.inner.get("recipient").as_::<DOMString>()
     }
+
 }
 impl ContactAddress {
-    pub fn region(&self) -> jsbind::DOMString {
-        self.inner.get("region").as_::<jsbind::DOMString>()
+    pub fn region(&self) -> DOMString {
+        self.inner.get("region").as_::<DOMString>()
     }
+
 }
 impl ContactAddress {
-    pub fn sorting_code(&self) -> jsbind::DOMString {
-        self.inner.get("sortingCode").as_::<jsbind::DOMString>()
+    pub fn sorting_code(&self) -> DOMString {
+        self.inner.get("sortingCode").as_::<DOMString>()
     }
+
 }
 impl ContactAddress {
-    pub fn address_line(&self) -> jsbind::FrozenArray<jsbind::DOMString> {
-        self.inner
-            .get("addressLine")
-            .as_::<jsbind::FrozenArray<jsbind::DOMString>>()
+    pub fn address_line(&self) -> FrozenArray<DOMString> {
+        self.inner.get("addressLine").as_::<FrozenArray<DOMString>>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RadioNodeList {
@@ -7,9 +10,7 @@ pub struct RadioNodeList {
 }
 impl FromVal for RadioNodeList {
     fn from_val(v: &emlite::Val) -> Self {
-        RadioNodeList {
-            inner: NodeList::from_val(v),
-        }
+        RadioNodeList { inner: NodeList::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for RadioNodeList {
 }
 impl AsMut<emlite::Val> for RadioNodeList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RadioNodeList> for emlite::Val {
     fn from(s: RadioNodeList) -> emlite::Val {
@@ -48,12 +49,14 @@ impl From<RadioNodeList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RadioNodeList);
 
+
 impl RadioNodeList {
-    pub fn value(&self) -> jsbind::DOMString {
-        self.inner.get("value").as_::<jsbind::DOMString>()
+    pub fn value(&self) -> DOMString {
+        self.inner.get("value").as_::<DOMString>()
     }
 
-    pub fn set_value(&mut self, value: jsbind::DOMString) {
+    pub fn set_value(&mut self, value: DOMString) {
         self.inner.set("value", value);
     }
+
 }

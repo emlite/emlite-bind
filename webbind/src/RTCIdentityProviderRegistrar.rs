@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCIdentityProvider {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for RTCIdentityProvider {
 }
 impl AsMut<emlite::Val> for RTCIdentityProvider {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RTCIdentityProvider> for emlite::Val {
     fn from(s: RTCIdentityProvider) -> emlite::Val {
@@ -46,26 +49,24 @@ impl From<RTCIdentityProvider> for emlite::Val {
 }
 
 impl RTCIdentityProvider {
-    pub fn generate_assertion(&self) -> jsbind::Function {
-        self.inner
-            .get("generateAssertion")
-            .as_::<jsbind::Function>()
+    pub fn generate_assertion(&self) -> Function {
+        self.inner.get("generateAssertion").as_::<Function>()
     }
 
-    pub fn set_generate_assertion(&mut self, value: jsbind::Function) {
+    pub fn set_generate_assertion(&mut self, value: Function) {
         self.inner.set("generateAssertion", value);
     }
+
 }
 impl RTCIdentityProvider {
-    pub fn validate_assertion(&self) -> jsbind::Function {
-        self.inner
-            .get("validateAssertion")
-            .as_::<jsbind::Function>()
+    pub fn validate_assertion(&self) -> Function {
+        self.inner.get("validateAssertion").as_::<Function>()
     }
 
-    pub fn set_validate_assertion(&mut self, value: jsbind::Function) {
+    pub fn set_validate_assertion(&mut self, value: Function) {
         self.inner.set("validateAssertion", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -74,9 +75,7 @@ pub struct RTCIdentityProviderRegistrar {
 }
 impl FromVal for RTCIdentityProviderRegistrar {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCIdentityProviderRegistrar {
-            inner: emlite::Val::from_val(v),
-        }
+        RTCIdentityProviderRegistrar { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -103,8 +102,8 @@ impl AsRef<emlite::Val> for RTCIdentityProviderRegistrar {
 }
 impl AsMut<emlite::Val> for RTCIdentityProviderRegistrar {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RTCIdentityProviderRegistrar> for emlite::Val {
     fn from(s: RTCIdentityProviderRegistrar) -> emlite::Val {
@@ -115,10 +114,10 @@ impl From<RTCIdentityProviderRegistrar> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCIdentityProviderRegistrar);
 
+
 impl RTCIdentityProviderRegistrar {
-    pub fn register(&self, idp: RTCIdentityProvider) -> jsbind::Undefined {
-        self.inner
-            .call("register", &[idp.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn register(&self, idp: RTCIdentityProvider) -> Undefined {
+        self.inner.call("register", &[idp.into(), ]).as_::<Undefined>()
     }
+
 }

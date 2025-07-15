@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ProtectedAudience {
@@ -7,9 +10,7 @@ pub struct ProtectedAudience {
 }
 impl FromVal for ProtectedAudience {
     fn from_val(v: &emlite::Val) -> Self {
-        ProtectedAudience {
-            inner: emlite::Val::from_val(v),
-        }
+        ProtectedAudience { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ProtectedAudience {
 }
 impl AsMut<emlite::Val> for ProtectedAudience {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ProtectedAudience> for emlite::Val {
     fn from(s: ProtectedAudience) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<ProtectedAudience> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ProtectedAudience);
 
+
 impl ProtectedAudience {
-    pub fn query_feature_support(&self, feature: jsbind::DOMString) -> jsbind::Any {
-        self.inner
-            .call("queryFeatureSupport", &[feature.into()])
-            .as_::<jsbind::Any>()
+    pub fn query_feature_support(&self, feature: DOMString) -> Any {
+        self.inner.call("queryFeatureSupport", &[feature.into(), ]).as_::<Any>()
     }
+
 }

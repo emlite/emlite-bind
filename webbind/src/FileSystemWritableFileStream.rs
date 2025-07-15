@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileSystemWritableFileStream {
@@ -7,9 +10,7 @@ pub struct FileSystemWritableFileStream {
 }
 impl FromVal for FileSystemWritableFileStream {
     fn from_val(v: &emlite::Val) -> Self {
-        FileSystemWritableFileStream {
-            inner: WritableStream::from_val(v),
-        }
+        FileSystemWritableFileStream { inner: WritableStream::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for FileSystemWritableFileStream {
 }
 impl AsMut<emlite::Val> for FileSystemWritableFileStream {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<FileSystemWritableFileStream> for emlite::Val {
     fn from(s: FileSystemWritableFileStream) -> emlite::Val {
@@ -48,24 +49,22 @@ impl From<FileSystemWritableFileStream> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FileSystemWritableFileStream);
 
+
 impl FileSystemWritableFileStream {
-    pub fn write(&self, data: jsbind::Any) -> jsbind::Promise {
-        self.inner
-            .call("write", &[data.into()])
-            .as_::<jsbind::Promise>()
+    pub fn write(&self, data: Any) -> Promise {
+        self.inner.call("write", &[data.into(), ]).as_::<Promise>()
     }
+
 }
 impl FileSystemWritableFileStream {
-    pub fn seek(&self, position: u64) -> jsbind::Promise {
-        self.inner
-            .call("seek", &[position.into()])
-            .as_::<jsbind::Promise>()
+    pub fn seek(&self, position: u64) -> Promise {
+        self.inner.call("seek", &[position.into(), ]).as_::<Promise>()
     }
+
 }
 impl FileSystemWritableFileStream {
-    pub fn truncate(&self, size: u64) -> jsbind::Promise {
-        self.inner
-            .call("truncate", &[size.into()])
-            .as_::<jsbind::Promise>()
+    pub fn truncate(&self, size: u64) -> Promise {
+        self.inner.call("truncate", &[size.into(), ]).as_::<Promise>()
     }
+
 }

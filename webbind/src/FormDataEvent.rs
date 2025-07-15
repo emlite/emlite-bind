@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FormDataEvent {
@@ -7,9 +10,7 @@ pub struct FormDataEvent {
 }
 impl FromVal for FormDataEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        FormDataEvent {
-            inner: Event::from_val(v),
-        }
+        FormDataEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for FormDataEvent {
 }
 impl AsMut<emlite::Val> for FormDataEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<FormDataEvent> for emlite::Val {
     fn from(s: FormDataEvent) -> emlite::Val {
@@ -48,17 +49,19 @@ impl From<FormDataEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FormDataEvent);
 
+
+
 impl FormDataEvent {
-    pub fn new(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> FormDataEvent {
+    pub fn new(type_: DOMString, event_init_dict: Any) -> FormDataEvent {
         Self {
-            inner: emlite::Val::global("FormDataEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("FormDataEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl FormDataEvent {
     pub fn form_data(&self) -> FormData {
         self.inner.get("formData").as_::<FormData>()
     }
+
 }

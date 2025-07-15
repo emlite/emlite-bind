@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PerformanceMark {
@@ -7,9 +10,7 @@ pub struct PerformanceMark {
 }
 impl FromVal for PerformanceMark {
     fn from_val(v: &emlite::Val) -> Self {
-        PerformanceMark {
-            inner: PerformanceEntry::from_val(v),
-        }
+        PerformanceMark { inner: PerformanceEntry::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PerformanceMark {
 }
 impl AsMut<emlite::Val> for PerformanceMark {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PerformanceMark> for emlite::Val {
     fn from(s: PerformanceMark) -> emlite::Val {
@@ -48,28 +49,25 @@ impl From<PerformanceMark> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PerformanceMark);
 
+
+
 impl PerformanceMark {
-    pub fn new0(mark_name: jsbind::DOMString) -> PerformanceMark {
+    pub fn new0(mark_name: DOMString) -> PerformanceMark {
         Self {
-            inner: emlite::Val::global("PerformanceMark")
-                .new(&[mark_name.into()])
-                .as_::<PerformanceEntry>(),
+            inner: emlite::Val::global("PerformanceMark").new(&[mark_name.into()]).as_::<PerformanceEntry>(),
         }
     }
 
-    pub fn new1(
-        mark_name: jsbind::DOMString,
-        mark_options: PerformanceMarkOptions,
-    ) -> PerformanceMark {
+    pub fn new1(mark_name: DOMString, mark_options: PerformanceMarkOptions) -> PerformanceMark {
         Self {
-            inner: emlite::Val::global("PerformanceMark")
-                .new(&[mark_name.into(), mark_options.into()])
-                .as_::<PerformanceEntry>(),
+            inner: emlite::Val::global("PerformanceMark").new(&[mark_name.into(), mark_options.into()]).as_::<PerformanceEntry>(),
         }
     }
+
 }
 impl PerformanceMark {
-    pub fn detail(&self) -> jsbind::Any {
-        self.inner.get("detail").as_::<jsbind::Any>()
+    pub fn detail(&self) -> Any {
+        self.inner.get("detail").as_::<Any>()
     }
+
 }

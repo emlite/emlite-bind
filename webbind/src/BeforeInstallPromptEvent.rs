@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PromptResponseObject {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for PromptResponseObject {
 }
 impl AsMut<emlite::Val> for PromptResponseObject {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PromptResponseObject> for emlite::Val {
     fn from(s: PromptResponseObject) -> emlite::Val {
@@ -53,6 +56,7 @@ impl PromptResponseObject {
     pub fn set_user_choice(&mut self, value: AppBannerPromptOutcome) {
         self.inner.set("userChoice", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -61,9 +65,7 @@ pub struct BeforeInstallPromptEvent {
 }
 impl FromVal for BeforeInstallPromptEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        BeforeInstallPromptEvent {
-            inner: Event::from_val(v),
-        }
+        BeforeInstallPromptEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -90,8 +92,8 @@ impl AsRef<emlite::Val> for BeforeInstallPromptEvent {
 }
 impl AsMut<emlite::Val> for BeforeInstallPromptEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<BeforeInstallPromptEvent> for emlite::Val {
     fn from(s: BeforeInstallPromptEvent) -> emlite::Val {
@@ -102,28 +104,25 @@ impl From<BeforeInstallPromptEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BeforeInstallPromptEvent);
 
+
+
 impl BeforeInstallPromptEvent {
-    pub fn new0(type_: jsbind::DOMString) -> BeforeInstallPromptEvent {
+    pub fn new0(type_: DOMString) -> BeforeInstallPromptEvent {
         Self {
-            inner: emlite::Val::global("BeforeInstallPromptEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("BeforeInstallPromptEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
-    pub fn new1(
-        type_: jsbind::DOMString,
-        event_init_dict: jsbind::Any,
-    ) -> BeforeInstallPromptEvent {
+    pub fn new1(type_: DOMString, event_init_dict: Any) -> BeforeInstallPromptEvent {
         Self {
-            inner: emlite::Val::global("BeforeInstallPromptEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("BeforeInstallPromptEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl BeforeInstallPromptEvent {
-    pub fn prompt(&self) -> jsbind::Promise {
-        self.inner.call("prompt", &[]).as_::<jsbind::Promise>()
+    pub fn prompt(&self, ) -> Promise {
+        self.inner.call("prompt", &[]).as_::<Promise>()
     }
+
 }

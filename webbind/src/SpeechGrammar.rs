@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SpeechGrammar {
@@ -7,9 +10,7 @@ pub struct SpeechGrammar {
 }
 impl FromVal for SpeechGrammar {
     fn from_val(v: &emlite::Val) -> Self {
-        SpeechGrammar {
-            inner: emlite::Val::from_val(v),
-        }
+        SpeechGrammar { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SpeechGrammar {
 }
 impl AsMut<emlite::Val> for SpeechGrammar {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SpeechGrammar> for emlite::Val {
     fn from(s: SpeechGrammar) -> emlite::Val {
@@ -48,14 +49,16 @@ impl From<SpeechGrammar> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SpeechGrammar);
 
+
 impl SpeechGrammar {
-    pub fn src(&self) -> jsbind::DOMString {
-        self.inner.get("src").as_::<jsbind::DOMString>()
+    pub fn src(&self) -> DOMString {
+        self.inner.get("src").as_::<DOMString>()
     }
 
-    pub fn set_src(&mut self, value: jsbind::DOMString) {
+    pub fn set_src(&mut self, value: DOMString) {
         self.inner.set("src", value);
     }
+
 }
 impl SpeechGrammar {
     pub fn weight(&self) -> f32 {
@@ -65,4 +68,5 @@ impl SpeechGrammar {
     pub fn set_weight(&mut self, value: f32) {
         self.inner.set("weight", value);
     }
+
 }

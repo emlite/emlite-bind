@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ValueEvent {
@@ -7,9 +10,7 @@ pub struct ValueEvent {
 }
 impl FromVal for ValueEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        ValueEvent {
-            inner: Event::from_val(v),
-        }
+        ValueEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ValueEvent {
 }
 impl AsMut<emlite::Val> for ValueEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ValueEvent> for emlite::Val {
     fn from(s: ValueEvent) -> emlite::Val {
@@ -48,25 +49,25 @@ impl From<ValueEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ValueEvent);
 
+
+
 impl ValueEvent {
-    pub fn new0(type_: jsbind::DOMString) -> ValueEvent {
+    pub fn new0(type_: DOMString) -> ValueEvent {
         Self {
-            inner: emlite::Val::global("ValueEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("ValueEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
-    pub fn new1(type_: jsbind::DOMString, init_dict: jsbind::Any) -> ValueEvent {
+    pub fn new1(type_: DOMString, init_dict: Any) -> ValueEvent {
         Self {
-            inner: emlite::Val::global("ValueEvent")
-                .new(&[type_.into(), init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("ValueEvent").new(&[type_.into(), init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl ValueEvent {
-    pub fn value(&self) -> jsbind::Any {
-        self.inner.get("value").as_::<jsbind::Any>()
+    pub fn value(&self) -> Any {
+        self.inner.get("value").as_::<Any>()
     }
+
 }

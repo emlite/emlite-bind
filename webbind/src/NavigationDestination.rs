@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NavigationDestination {
@@ -7,9 +10,7 @@ pub struct NavigationDestination {
 }
 impl FromVal for NavigationDestination {
     fn from_val(v: &emlite::Val) -> Self {
-        NavigationDestination {
-            inner: emlite::Val::from_val(v),
-        }
+        NavigationDestination { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for NavigationDestination {
 }
 impl AsMut<emlite::Val> for NavigationDestination {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NavigationDestination> for emlite::Val {
     fn from(s: NavigationDestination) -> emlite::Val {
@@ -48,33 +49,40 @@ impl From<NavigationDestination> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(NavigationDestination);
 
+
 impl NavigationDestination {
-    pub fn url(&self) -> jsbind::USVString {
-        self.inner.get("url").as_::<jsbind::USVString>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
+
 }
 impl NavigationDestination {
-    pub fn key(&self) -> jsbind::DOMString {
-        self.inner.get("key").as_::<jsbind::DOMString>()
+    pub fn key(&self) -> DOMString {
+        self.inner.get("key").as_::<DOMString>()
     }
+
 }
 impl NavigationDestination {
-    pub fn id(&self) -> jsbind::DOMString {
-        self.inner.get("id").as_::<jsbind::DOMString>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
+
 }
 impl NavigationDestination {
     pub fn index(&self) -> i64 {
         self.inner.get("index").as_::<i64>()
     }
+
 }
 impl NavigationDestination {
     pub fn same_document(&self) -> bool {
         self.inner.get("sameDocument").as_::<bool>()
     }
+
 }
 impl NavigationDestination {
-    pub fn get_state(&self) -> jsbind::Any {
-        self.inner.call("getState", &[]).as_::<jsbind::Any>()
+    pub fn get_state(&self, ) -> Any {
+        self.inner.call("getState", &[]).as_::<Any>()
     }
+
 }

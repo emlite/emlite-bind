@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGLSync {
@@ -7,9 +10,7 @@ pub struct WebGLSync {
 }
 impl FromVal for WebGLSync {
     fn from_val(v: &emlite::Val) -> Self {
-        WebGLSync {
-            inner: WebGLObject::from_val(v),
-        }
+        WebGLSync { inner: WebGLObject::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WebGLSync {
 }
 impl AsMut<emlite::Val> for WebGLSync {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WebGLSync> for emlite::Val {
     fn from(s: WebGLSync) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<WebGLSync> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(WebGLSync);
+
+

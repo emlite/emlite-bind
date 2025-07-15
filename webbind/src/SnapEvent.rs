@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SnapEvent {
@@ -7,9 +10,7 @@ pub struct SnapEvent {
 }
 impl FromVal for SnapEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        SnapEvent {
-            inner: Event::from_val(v),
-        }
+        SnapEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SnapEvent {
 }
 impl AsMut<emlite::Val> for SnapEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SnapEvent> for emlite::Val {
     fn from(s: SnapEvent) -> emlite::Val {
@@ -48,30 +49,31 @@ impl From<SnapEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SnapEvent);
 
+
+
 impl SnapEvent {
-    pub fn new0(type_: jsbind::DOMString) -> SnapEvent {
+    pub fn new0(type_: DOMString) -> SnapEvent {
         Self {
-            inner: emlite::Val::global("SnapEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("SnapEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
-    pub fn new1(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> SnapEvent {
+    pub fn new1(type_: DOMString, event_init_dict: Any) -> SnapEvent {
         Self {
-            inner: emlite::Val::global("SnapEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("SnapEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl SnapEvent {
     pub fn snap_target_block(&self) -> Node {
         self.inner.get("snapTargetBlock").as_::<Node>()
     }
+
 }
 impl SnapEvent {
     pub fn snap_target_inline(&self) -> Node {
         self.inner.get("snapTargetInline").as_::<Node>()
     }
+
 }

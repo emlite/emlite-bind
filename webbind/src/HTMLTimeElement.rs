@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLTimeElement {
@@ -7,9 +10,7 @@ pub struct HTMLTimeElement {
 }
 impl FromVal for HTMLTimeElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLTimeElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLTimeElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLTimeElement {
 }
 impl AsMut<emlite::Val> for HTMLTimeElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLTimeElement> for emlite::Val {
     fn from(s: HTMLTimeElement) -> emlite::Val {
@@ -48,21 +49,23 @@ impl From<HTMLTimeElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLTimeElement);
 
+
+
 impl HTMLTimeElement {
     pub fn new() -> HTMLTimeElement {
         Self {
-            inner: emlite::Val::global("HTMLTimeElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLTimeElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLTimeElement {
-    pub fn date_time(&self) -> jsbind::DOMString {
-        self.inner.get("dateTime").as_::<jsbind::DOMString>()
+    pub fn date_time(&self) -> DOMString {
+        self.inner.get("dateTime").as_::<DOMString>()
     }
 
-    pub fn set_date_time(&mut self, value: jsbind::DOMString) {
+    pub fn set_date_time(&mut self, value: DOMString) {
         self.inner.set("dateTime", value);
     }
+
 }

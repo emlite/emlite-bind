@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRJointSpace {
@@ -7,9 +10,7 @@ pub struct XRJointSpace {
 }
 impl FromVal for XRJointSpace {
     fn from_val(v: &emlite::Val) -> Self {
-        XRJointSpace {
-            inner: XRSpace::from_val(v),
-        }
+        XRJointSpace { inner: XRSpace::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRJointSpace {
 }
 impl AsMut<emlite::Val> for XRJointSpace {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRJointSpace> for emlite::Val {
     fn from(s: XRJointSpace) -> emlite::Val {
@@ -48,8 +49,10 @@ impl From<XRJointSpace> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRJointSpace);
 
+
 impl XRJointSpace {
     pub fn joint_name(&self) -> XRHandJoint {
         self.inner.get("jointName").as_::<XRHandJoint>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSKeyframeRule {
@@ -7,9 +10,7 @@ pub struct CSSKeyframeRule {
 }
 impl FromVal for CSSKeyframeRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSKeyframeRule {
-            inner: CSSRule::from_val(v),
-        }
+        CSSKeyframeRule { inner: CSSRule::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSKeyframeRule {
 }
 impl AsMut<emlite::Val> for CSSKeyframeRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSKeyframeRule> for emlite::Val {
     fn from(s: CSSKeyframeRule) -> emlite::Val {
@@ -48,17 +49,20 @@ impl From<CSSKeyframeRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSKeyframeRule);
 
+
 impl CSSKeyframeRule {
-    pub fn key_text(&self) -> jsbind::CSSOMString {
-        self.inner.get("keyText").as_::<jsbind::CSSOMString>()
+    pub fn key_text(&self) -> CSSOMString {
+        self.inner.get("keyText").as_::<CSSOMString>()
     }
 
-    pub fn set_key_text(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_key_text(&mut self, value: CSSOMString) {
         self.inner.set("keyText", value);
     }
+
 }
 impl CSSKeyframeRule {
     pub fn style(&self) -> CSSStyleProperties {
         self.inner.get("style").as_::<CSSStyleProperties>()
     }
+
 }

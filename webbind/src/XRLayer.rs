@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRLayer {
@@ -7,9 +10,7 @@ pub struct XRLayer {
 }
 impl FromVal for XRLayer {
     fn from_val(v: &emlite::Val) -> Self {
-        XRLayer {
-            inner: EventTarget::from_val(v),
-        }
+        XRLayer { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRLayer {
 }
 impl AsMut<emlite::Val> for XRLayer {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRLayer> for emlite::Val {
     fn from(s: XRLayer) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<XRLayer> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(XRLayer);
+
+

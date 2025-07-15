@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TaskSignalAnyInit {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for TaskSignalAnyInit {
 }
 impl AsMut<emlite::Val> for TaskSignalAnyInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<TaskSignalAnyInit> for emlite::Val {
     fn from(s: TaskSignalAnyInit) -> emlite::Val {
@@ -46,13 +49,14 @@ impl From<TaskSignalAnyInit> for emlite::Val {
 }
 
 impl TaskSignalAnyInit {
-    pub fn priority(&self) -> jsbind::Any {
-        self.inner.get("priority").as_::<jsbind::Any>()
+    pub fn priority(&self) -> Any {
+        self.inner.get("priority").as_::<Any>()
     }
 
-    pub fn set_priority(&mut self, value: jsbind::Any) {
+    pub fn set_priority(&mut self, value: Any) {
         self.inner.set("priority", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -61,9 +65,7 @@ pub struct TaskSignal {
 }
 impl FromVal for TaskSignal {
     fn from_val(v: &emlite::Val) -> Self {
-        TaskSignal {
-            inner: AbortSignal::from_val(v),
-        }
+        TaskSignal { inner: AbortSignal::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -90,8 +92,8 @@ impl AsRef<emlite::Val> for TaskSignal {
 }
 impl AsMut<emlite::Val> for TaskSignal {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<TaskSignal> for emlite::Val {
     fn from(s: TaskSignal) -> emlite::Val {
@@ -102,30 +104,30 @@ impl From<TaskSignal> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(TaskSignal);
 
+
 impl TaskSignal {
-    pub fn any0(signals: jsbind::Sequence<AbortSignal>) -> TaskSignal {
-        emlite::Val::global("tasksignal")
-            .call("any", &[signals.into()])
-            .as_::<TaskSignal>()
+    pub fn any0(signals: Sequence<AbortSignal>) -> TaskSignal {
+        emlite::Val::global("tasksignal").call("any", &[signals.into(), ]).as_::<TaskSignal>()
     }
 
-    pub fn any1(signals: jsbind::Sequence<AbortSignal>, init: TaskSignalAnyInit) -> TaskSignal {
-        emlite::Val::global("tasksignal")
-            .call("any", &[signals.into(), init.into()])
-            .as_::<TaskSignal>()
+    pub fn any1(signals: Sequence<AbortSignal>, init: TaskSignalAnyInit) -> TaskSignal {
+        emlite::Val::global("tasksignal").call("any", &[signals.into(), init.into(), ]).as_::<TaskSignal>()
     }
+
 }
 impl TaskSignal {
     pub fn priority(&self) -> TaskPriority {
         self.inner.get("priority").as_::<TaskPriority>()
     }
+
 }
 impl TaskSignal {
-    pub fn onprioritychange(&self) -> jsbind::Any {
-        self.inner.get("onprioritychange").as_::<jsbind::Any>()
+    pub fn onprioritychange(&self) -> Any {
+        self.inner.get("onprioritychange").as_::<Any>()
     }
 
-    pub fn set_onprioritychange(&mut self, value: jsbind::Any) {
+    pub fn set_onprioritychange(&mut self, value: Any) {
         self.inner.set("onprioritychange", value);
     }
+
 }

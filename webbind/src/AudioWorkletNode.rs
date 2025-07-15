@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioWorkletNode {
@@ -7,9 +10,7 @@ pub struct AudioWorkletNode {
 }
 impl FromVal for AudioWorkletNode {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioWorkletNode {
-            inner: AudioNode::from_val(v),
-        }
+        AudioWorkletNode { inner: AudioNode::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for AudioWorkletNode {
 }
 impl AsMut<emlite::Val> for AudioWorkletNode {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AudioWorkletNode> for emlite::Val {
     fn from(s: AudioWorkletNode) -> emlite::Val {
@@ -48,43 +49,41 @@ impl From<AudioWorkletNode> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AudioWorkletNode);
 
+
+
 impl AudioWorkletNode {
-    pub fn new0(context: BaseAudioContext, name: jsbind::DOMString) -> AudioWorkletNode {
+    pub fn new0(context: BaseAudioContext, name: DOMString) -> AudioWorkletNode {
         Self {
-            inner: emlite::Val::global("AudioWorkletNode")
-                .new(&[context.into(), name.into()])
-                .as_::<AudioNode>(),
+            inner: emlite::Val::global("AudioWorkletNode").new(&[context.into(), name.into()]).as_::<AudioNode>(),
         }
     }
 
-    pub fn new1(
-        context: BaseAudioContext,
-        name: jsbind::DOMString,
-        options: jsbind::Any,
-    ) -> AudioWorkletNode {
+    pub fn new1(context: BaseAudioContext, name: DOMString, options: Any) -> AudioWorkletNode {
         Self {
-            inner: emlite::Val::global("AudioWorkletNode")
-                .new(&[context.into(), name.into(), options.into()])
-                .as_::<AudioNode>(),
+            inner: emlite::Val::global("AudioWorkletNode").new(&[context.into(), name.into(), options.into()]).as_::<AudioNode>(),
         }
     }
+
 }
 impl AudioWorkletNode {
     pub fn parameters(&self) -> AudioParamMap {
         self.inner.get("parameters").as_::<AudioParamMap>()
     }
+
 }
 impl AudioWorkletNode {
-    pub fn port(&self) -> jsbind::Any {
-        self.inner.get("port").as_::<jsbind::Any>()
-    }
-}
-impl AudioWorkletNode {
-    pub fn onprocessorerror(&self) -> jsbind::Any {
-        self.inner.get("onprocessorerror").as_::<jsbind::Any>()
+    pub fn port(&self) -> Any {
+        self.inner.get("port").as_::<Any>()
     }
 
-    pub fn set_onprocessorerror(&mut self, value: jsbind::Any) {
+}
+impl AudioWorkletNode {
+    pub fn onprocessorerror(&self) -> Any {
+        self.inner.get("onprocessorerror").as_::<Any>()
+    }
+
+    pub fn set_onprocessorerror(&mut self, value: Any) {
         self.inner.set("onprocessorerror", value);
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGLObject {
@@ -7,9 +10,7 @@ pub struct WebGLObject {
 }
 impl FromVal for WebGLObject {
     fn from_val(v: &emlite::Val) -> Self {
-        WebGLObject {
-            inner: emlite::Val::from_val(v),
-        }
+        WebGLObject { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WebGLObject {
 }
 impl AsMut<emlite::Val> for WebGLObject {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WebGLObject> for emlite::Val {
     fn from(s: WebGLObject) -> emlite::Val {
@@ -48,12 +49,14 @@ impl From<WebGLObject> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WebGLObject);
 
+
 impl WebGLObject {
-    pub fn label(&self) -> jsbind::USVString {
-        self.inner.get("label").as_::<jsbind::USVString>()
+    pub fn label(&self) -> USVString {
+        self.inner.get("label").as_::<USVString>()
     }
 
-    pub fn set_label(&mut self, value: jsbind::USVString) {
+    pub fn set_label(&mut self, value: USVString) {
         self.inner.set("label", value);
     }
+
 }

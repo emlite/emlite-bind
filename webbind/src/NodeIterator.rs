@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NodeIterator {
@@ -7,9 +10,7 @@ pub struct NodeIterator {
 }
 impl FromVal for NodeIterator {
     fn from_val(v: &emlite::Val) -> Self {
-        NodeIterator {
-            inner: emlite::Val::from_val(v),
-        }
+        NodeIterator { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for NodeIterator {
 }
 impl AsMut<emlite::Val> for NodeIterator {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NodeIterator> for emlite::Val {
     fn from(s: NodeIterator) -> emlite::Val {
@@ -48,43 +49,52 @@ impl From<NodeIterator> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(NodeIterator);
 
+
 impl NodeIterator {
     pub fn root(&self) -> Node {
         self.inner.get("root").as_::<Node>()
     }
+
 }
 impl NodeIterator {
     pub fn reference_node(&self) -> Node {
         self.inner.get("referenceNode").as_::<Node>()
     }
+
 }
 impl NodeIterator {
     pub fn pointer_before_reference_node(&self) -> bool {
         self.inner.get("pointerBeforeReferenceNode").as_::<bool>()
     }
+
 }
 impl NodeIterator {
     pub fn what_to_show(&self) -> u32 {
         self.inner.get("whatToShow").as_::<u32>()
     }
+
 }
 impl NodeIterator {
-    pub fn filter(&self) -> jsbind::Function {
-        self.inner.get("filter").as_::<jsbind::Function>()
+    pub fn filter(&self) -> Function {
+        self.inner.get("filter").as_::<Function>()
     }
+
 }
 impl NodeIterator {
-    pub fn next_node(&self) -> Node {
+    pub fn next_node(&self, ) -> Node {
         self.inner.call("nextNode", &[]).as_::<Node>()
     }
+
 }
 impl NodeIterator {
-    pub fn previous_node(&self) -> Node {
+    pub fn previous_node(&self, ) -> Node {
         self.inner.call("previousNode", &[]).as_::<Node>()
     }
+
 }
 impl NodeIterator {
-    pub fn detach(&self) -> jsbind::Undefined {
-        self.inner.call("detach", &[]).as_::<jsbind::Undefined>()
+    pub fn detach(&self, ) -> Undefined {
+        self.inner.call("detach", &[]).as_::<Undefined>()
     }
+
 }

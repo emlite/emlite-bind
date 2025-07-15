@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ElementDefinitionOptions {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for ElementDefinitionOptions {
 }
 impl AsMut<emlite::Val> for ElementDefinitionOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ElementDefinitionOptions> for emlite::Val {
     fn from(s: ElementDefinitionOptions) -> emlite::Val {
@@ -46,13 +49,14 @@ impl From<ElementDefinitionOptions> for emlite::Val {
 }
 
 impl ElementDefinitionOptions {
-    pub fn extends(&self) -> jsbind::DOMString {
-        self.inner.get("extends").as_::<jsbind::DOMString>()
+    pub fn extends(&self) -> DOMString {
+        self.inner.get("extends").as_::<DOMString>()
     }
 
-    pub fn set_extends(&mut self, value: jsbind::DOMString) {
+    pub fn set_extends(&mut self, value: DOMString) {
         self.inner.set("extends", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -61,9 +65,7 @@ pub struct CustomElementRegistry {
 }
 impl FromVal for CustomElementRegistry {
     fn from_val(v: &emlite::Val) -> Self {
-        CustomElementRegistry {
-            inner: emlite::Val::from_val(v),
-        }
+        CustomElementRegistry { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -90,8 +92,8 @@ impl AsRef<emlite::Val> for CustomElementRegistry {
 }
 impl AsMut<emlite::Val> for CustomElementRegistry {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CustomElementRegistry> for emlite::Val {
     fn from(s: CustomElementRegistry) -> emlite::Val {
@@ -102,67 +104,53 @@ impl From<CustomElementRegistry> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CustomElementRegistry);
 
+
+
 impl CustomElementRegistry {
     pub fn new() -> CustomElementRegistry {
         Self {
-            inner: emlite::Val::global("CustomElementRegistry")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("CustomElementRegistry").new(&[]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl CustomElementRegistry {
-    pub fn define0(
-        &self,
-        name: jsbind::DOMString,
-        constructor: jsbind::Function,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("define", &[name.into(), constructor.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn define0(&self, name: DOMString, constructor: Function) -> Undefined {
+        self.inner.call("define", &[name.into(), constructor.into(), ]).as_::<Undefined>()
     }
 
-    pub fn define1(
-        &self,
-        name: jsbind::DOMString,
-        constructor: jsbind::Function,
-        options: ElementDefinitionOptions,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("define", &[name.into(), constructor.into(), options.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn define1(&self, name: DOMString, constructor: Function, options: ElementDefinitionOptions) -> Undefined {
+        self.inner.call("define", &[name.into(), constructor.into(), options.into(), ]).as_::<Undefined>()
     }
+
 }
 impl CustomElementRegistry {
-    pub fn get(&self, name: jsbind::DOMString) -> jsbind::Any {
-        self.inner.call("get", &[name.into()]).as_::<jsbind::Any>()
+    pub fn get(&self, name: DOMString) -> Any {
+        self.inner.call("get", &[name.into(), ]).as_::<Any>()
     }
+
 }
 impl CustomElementRegistry {
-    pub fn get_name(&self, constructor: jsbind::Function) -> jsbind::DOMString {
-        self.inner
-            .call("getName", &[constructor.into()])
-            .as_::<jsbind::DOMString>()
+    pub fn get_name(&self, constructor: Function) -> DOMString {
+        self.inner.call("getName", &[constructor.into(), ]).as_::<DOMString>()
     }
+
 }
 impl CustomElementRegistry {
-    pub fn when_defined(&self, name: jsbind::DOMString) -> jsbind::Promise {
-        self.inner
-            .call("whenDefined", &[name.into()])
-            .as_::<jsbind::Promise>()
+    pub fn when_defined(&self, name: DOMString) -> Promise {
+        self.inner.call("whenDefined", &[name.into(), ]).as_::<Promise>()
     }
+
 }
 impl CustomElementRegistry {
-    pub fn upgrade(&self, root: Node) -> jsbind::Undefined {
-        self.inner
-            .call("upgrade", &[root.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn upgrade(&self, root: Node) -> Undefined {
+        self.inner.call("upgrade", &[root.into(), ]).as_::<Undefined>()
     }
+
 }
 impl CustomElementRegistry {
-    pub fn initialize(&self, root: Node) -> jsbind::Undefined {
-        self.inner
-            .call("initialize", &[root.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn initialize(&self, root: Node) -> Undefined {
+        self.inner.call("initialize", &[root.into(), ]).as_::<Undefined>()
     }
+
 }

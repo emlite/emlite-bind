@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PerformanceNavigation {
@@ -7,9 +10,7 @@ pub struct PerformanceNavigation {
 }
 impl FromVal for PerformanceNavigation {
     fn from_val(v: &emlite::Val) -> Self {
-        PerformanceNavigation {
-            inner: emlite::Val::from_val(v),
-        }
+        PerformanceNavigation { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PerformanceNavigation {
 }
 impl AsMut<emlite::Val> for PerformanceNavigation {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PerformanceNavigation> for emlite::Val {
     fn from(s: PerformanceNavigation) -> emlite::Val {
@@ -48,18 +49,22 @@ impl From<PerformanceNavigation> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PerformanceNavigation);
 
+
 impl PerformanceNavigation {
     pub fn type_(&self) -> u16 {
         self.inner.get("type").as_::<u16>()
     }
+
 }
 impl PerformanceNavigation {
     pub fn redirect_count(&self) -> u16 {
         self.inner.get("redirectCount").as_::<u16>()
     }
+
 }
 impl PerformanceNavigation {
-    pub fn to_json(&self) -> jsbind::Object {
-        self.inner.call("toJSON", &[]).as_::<jsbind::Object>()
+    pub fn to_json(&self, ) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NamedFlowMap {
@@ -7,9 +10,7 @@ pub struct NamedFlowMap {
 }
 impl FromVal for NamedFlowMap {
     fn from_val(v: &emlite::Val) -> Self {
-        NamedFlowMap {
-            inner: emlite::Val::from_val(v),
-        }
+        NamedFlowMap { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for NamedFlowMap {
 }
 impl AsMut<emlite::Val> for NamedFlowMap {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NamedFlowMap> for emlite::Val {
     fn from(s: NamedFlowMap) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<NamedFlowMap> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(NamedFlowMap);
+
+

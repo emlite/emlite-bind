@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileSystemFlags {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for FileSystemFlags {
 }
 impl AsMut<emlite::Val> for FileSystemFlags {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<FileSystemFlags> for emlite::Val {
     fn from(s: FileSystemFlags) -> emlite::Val {
@@ -53,6 +56,7 @@ impl FileSystemFlags {
     pub fn set_create(&mut self, value: bool) {
         self.inner.set("create", value);
     }
+
 }
 impl FileSystemFlags {
     pub fn exclusive(&self) -> bool {
@@ -62,6 +66,7 @@ impl FileSystemFlags {
     pub fn set_exclusive(&mut self, value: bool) {
         self.inner.set("exclusive", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -70,9 +75,7 @@ pub struct FileSystemDirectoryEntry {
 }
 impl FromVal for FileSystemDirectoryEntry {
     fn from_val(v: &emlite::Val) -> Self {
-        FileSystemDirectoryEntry {
-            inner: FileSystemEntry::from_val(v),
-        }
+        FileSystemDirectoryEntry { inner: FileSystemEntry::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -99,8 +102,8 @@ impl AsRef<emlite::Val> for FileSystemDirectoryEntry {
 }
 impl AsMut<emlite::Val> for FileSystemDirectoryEntry {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<FileSystemDirectoryEntry> for emlite::Val {
     fn from(s: FileSystemDirectoryEntry) -> emlite::Val {
@@ -111,122 +114,54 @@ impl From<FileSystemDirectoryEntry> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FileSystemDirectoryEntry);
 
+
 impl FileSystemDirectoryEntry {
-    pub fn create_reader(&self) -> FileSystemDirectoryReader {
-        self.inner
-            .call("createReader", &[])
-            .as_::<FileSystemDirectoryReader>()
+    pub fn create_reader(&self, ) -> FileSystemDirectoryReader {
+        self.inner.call("createReader", &[]).as_::<FileSystemDirectoryReader>()
     }
+
 }
 impl FileSystemDirectoryEntry {
-    pub fn get_file0(&self) -> jsbind::Undefined {
-        self.inner.call("getFile", &[]).as_::<jsbind::Undefined>()
+    pub fn get_file0(&self, ) -> Undefined {
+        self.inner.call("getFile", &[]).as_::<Undefined>()
     }
 
-    pub fn get_file1(&self, path: jsbind::USVString) -> jsbind::Undefined {
-        self.inner
-            .call("getFile", &[path.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn get_file1(&self, path: USVString) -> Undefined {
+        self.inner.call("getFile", &[path.into(), ]).as_::<Undefined>()
     }
 
-    pub fn get_file2(
-        &self,
-        path: jsbind::USVString,
-        options: FileSystemFlags,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("getFile", &[path.into(), options.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn get_file2(&self, path: USVString, options: FileSystemFlags) -> Undefined {
+        self.inner.call("getFile", &[path.into(), options.into(), ]).as_::<Undefined>()
     }
 
-    pub fn get_file3(
-        &self,
-        path: jsbind::USVString,
-        options: FileSystemFlags,
-        success_callback: jsbind::Function,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call(
-                "getFile",
-                &[path.into(), options.into(), success_callback.into()],
-            )
-            .as_::<jsbind::Undefined>()
+    pub fn get_file3(&self, path: USVString, options: FileSystemFlags, success_callback: Function) -> Undefined {
+        self.inner.call("getFile", &[path.into(), options.into(), success_callback.into(), ]).as_::<Undefined>()
     }
 
-    pub fn get_file4(
-        &self,
-        path: jsbind::USVString,
-        options: FileSystemFlags,
-        success_callback: jsbind::Function,
-        error_callback: jsbind::Function,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call(
-                "getFile",
-                &[
-                    path.into(),
-                    options.into(),
-                    success_callback.into(),
-                    error_callback.into(),
-                ],
-            )
-            .as_::<jsbind::Undefined>()
+    pub fn get_file4(&self, path: USVString, options: FileSystemFlags, success_callback: Function, error_callback: Function) -> Undefined {
+        self.inner.call("getFile", &[path.into(), options.into(), success_callback.into(), error_callback.into(), ]).as_::<Undefined>()
     }
+
 }
 impl FileSystemDirectoryEntry {
-    pub fn get_directory0(&self) -> jsbind::Undefined {
-        self.inner
-            .call("getDirectory", &[])
-            .as_::<jsbind::Undefined>()
+    pub fn get_directory0(&self, ) -> Undefined {
+        self.inner.call("getDirectory", &[]).as_::<Undefined>()
     }
 
-    pub fn get_directory1(&self, path: jsbind::USVString) -> jsbind::Undefined {
-        self.inner
-            .call("getDirectory", &[path.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn get_directory1(&self, path: USVString) -> Undefined {
+        self.inner.call("getDirectory", &[path.into(), ]).as_::<Undefined>()
     }
 
-    pub fn get_directory2(
-        &self,
-        path: jsbind::USVString,
-        options: FileSystemFlags,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("getDirectory", &[path.into(), options.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn get_directory2(&self, path: USVString, options: FileSystemFlags) -> Undefined {
+        self.inner.call("getDirectory", &[path.into(), options.into(), ]).as_::<Undefined>()
     }
 
-    pub fn get_directory3(
-        &self,
-        path: jsbind::USVString,
-        options: FileSystemFlags,
-        success_callback: jsbind::Function,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call(
-                "getDirectory",
-                &[path.into(), options.into(), success_callback.into()],
-            )
-            .as_::<jsbind::Undefined>()
+    pub fn get_directory3(&self, path: USVString, options: FileSystemFlags, success_callback: Function) -> Undefined {
+        self.inner.call("getDirectory", &[path.into(), options.into(), success_callback.into(), ]).as_::<Undefined>()
     }
 
-    pub fn get_directory4(
-        &self,
-        path: jsbind::USVString,
-        options: FileSystemFlags,
-        success_callback: jsbind::Function,
-        error_callback: jsbind::Function,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call(
-                "getDirectory",
-                &[
-                    path.into(),
-                    options.into(),
-                    success_callback.into(),
-                    error_callback.into(),
-                ],
-            )
-            .as_::<jsbind::Undefined>()
+    pub fn get_directory4(&self, path: USVString, options: FileSystemFlags, success_callback: Function, error_callback: Function) -> Undefined {
+        self.inner.call("getDirectory", &[path.into(), options.into(), success_callback.into(), error_callback.into(), ]).as_::<Undefined>()
     }
+
 }

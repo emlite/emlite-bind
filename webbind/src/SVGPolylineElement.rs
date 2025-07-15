@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGPolylineElement {
@@ -7,9 +10,7 @@ pub struct SVGPolylineElement {
 }
 impl FromVal for SVGPolylineElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGPolylineElement {
-            inner: SVGGeometryElement::from_val(v),
-        }
+        SVGPolylineElement { inner: SVGGeometryElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGPolylineElement {
 }
 impl AsMut<emlite::Val> for SVGPolylineElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGPolylineElement> for emlite::Val {
     fn from(s: SVGPolylineElement) -> emlite::Val {
@@ -48,13 +49,16 @@ impl From<SVGPolylineElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGPolylineElement);
 
+
 impl SVGPolylineElement {
     pub fn points(&self) -> SVGPointList {
         self.inner.get("points").as_::<SVGPointList>()
     }
+
 }
 impl SVGPolylineElement {
     pub fn animated_points(&self) -> SVGPointList {
         self.inner.get("animatedPoints").as_::<SVGPointList>()
     }
+
 }

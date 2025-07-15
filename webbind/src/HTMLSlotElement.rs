@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AssignedNodesOptions {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for AssignedNodesOptions {
 }
 impl AsMut<emlite::Val> for AssignedNodesOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AssignedNodesOptions> for emlite::Val {
     fn from(s: AssignedNodesOptions) -> emlite::Val {
@@ -53,6 +56,7 @@ impl AssignedNodesOptions {
     pub fn set_flatten(&mut self, value: bool) {
         self.inner.set("flatten", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -61,9 +65,7 @@ pub struct HTMLSlotElement {
 }
 impl FromVal for HTMLSlotElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLSlotElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLSlotElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -90,8 +92,8 @@ impl AsRef<emlite::Val> for HTMLSlotElement {
 }
 impl AsMut<emlite::Val> for HTMLSlotElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLSlotElement> for emlite::Val {
     fn from(s: HTMLSlotElement) -> emlite::Val {
@@ -102,54 +104,49 @@ impl From<HTMLSlotElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLSlotElement);
 
+
+
 impl HTMLSlotElement {
     pub fn new() -> HTMLSlotElement {
         Self {
-            inner: emlite::Val::global("HTMLSlotElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLSlotElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLSlotElement {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
-    pub fn set_name(&mut self, value: jsbind::DOMString) {
+    pub fn set_name(&mut self, value: DOMString) {
         self.inner.set("name", value);
     }
+
 }
 impl HTMLSlotElement {
-    pub fn assigned_nodes0(&self) -> jsbind::Sequence<Node> {
-        self.inner
-            .call("assignedNodes", &[])
-            .as_::<jsbind::Sequence<Node>>()
+    pub fn assigned_nodes0(&self, ) -> Sequence<Node> {
+        self.inner.call("assignedNodes", &[]).as_::<Sequence<Node>>()
     }
 
-    pub fn assigned_nodes1(&self, options: AssignedNodesOptions) -> jsbind::Sequence<Node> {
-        self.inner
-            .call("assignedNodes", &[options.into()])
-            .as_::<jsbind::Sequence<Node>>()
-    }
-}
-impl HTMLSlotElement {
-    pub fn assigned_elements0(&self) -> jsbind::Sequence<Element> {
-        self.inner
-            .call("assignedElements", &[])
-            .as_::<jsbind::Sequence<Element>>()
+    pub fn assigned_nodes1(&self, options: AssignedNodesOptions) -> Sequence<Node> {
+        self.inner.call("assignedNodes", &[options.into(), ]).as_::<Sequence<Node>>()
     }
 
-    pub fn assigned_elements1(&self, options: AssignedNodesOptions) -> jsbind::Sequence<Element> {
-        self.inner
-            .call("assignedElements", &[options.into()])
-            .as_::<jsbind::Sequence<Element>>()
-    }
 }
 impl HTMLSlotElement {
-    pub fn assign(&self, nodes: jsbind::Any) -> jsbind::Undefined {
-        self.inner
-            .call("assign", &[nodes.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn assigned_elements0(&self, ) -> Sequence<Element> {
+        self.inner.call("assignedElements", &[]).as_::<Sequence<Element>>()
     }
+
+    pub fn assigned_elements1(&self, options: AssignedNodesOptions) -> Sequence<Element> {
+        self.inner.call("assignedElements", &[options.into(), ]).as_::<Sequence<Element>>()
+    }
+
+}
+impl HTMLSlotElement {
+    pub fn assign(&self, nodes: Any) -> Undefined {
+        self.inner.call("assign", &[nodes.into(), ]).as_::<Undefined>()
+    }
+
 }

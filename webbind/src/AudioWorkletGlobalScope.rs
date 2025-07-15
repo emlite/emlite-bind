@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioWorkletGlobalScope {
@@ -7,9 +10,7 @@ pub struct AudioWorkletGlobalScope {
 }
 impl FromVal for AudioWorkletGlobalScope {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioWorkletGlobalScope {
-            inner: WorkletGlobalScope::from_val(v),
-        }
+        AudioWorkletGlobalScope { inner: WorkletGlobalScope::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for AudioWorkletGlobalScope {
 }
 impl AsMut<emlite::Val> for AudioWorkletGlobalScope {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AudioWorkletGlobalScope> for emlite::Val {
     fn from(s: AudioWorkletGlobalScope) -> emlite::Val {
@@ -48,39 +49,40 @@ impl From<AudioWorkletGlobalScope> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AudioWorkletGlobalScope);
 
+
 impl AudioWorkletGlobalScope {
-    pub fn register_processor(
-        &self,
-        name: jsbind::DOMString,
-        processor_ctor: jsbind::Function,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("registerProcessor", &[name.into(), processor_ctor.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn register_processor(&self, name: DOMString, processor_ctor: Function) -> Undefined {
+        self.inner.call("registerProcessor", &[name.into(), processor_ctor.into(), ]).as_::<Undefined>()
     }
+
 }
 impl AudioWorkletGlobalScope {
     pub fn current_frame(&self) -> u64 {
         self.inner.get("currentFrame").as_::<u64>()
     }
+
 }
 impl AudioWorkletGlobalScope {
     pub fn current_time(&self) -> f64 {
         self.inner.get("currentTime").as_::<f64>()
     }
+
 }
 impl AudioWorkletGlobalScope {
     pub fn sample_rate(&self) -> f32 {
         self.inner.get("sampleRate").as_::<f32>()
     }
+
 }
 impl AudioWorkletGlobalScope {
     pub fn render_quantum_size(&self) -> u32 {
         self.inner.get("renderQuantumSize").as_::<u32>()
     }
+
 }
 impl AudioWorkletGlobalScope {
-    pub fn port(&self) -> jsbind::Any {
-        self.inner.get("port").as_::<jsbind::Any>()
+    pub fn port(&self) -> Any {
+        self.inner.get("port").as_::<Any>()
     }
+
 }

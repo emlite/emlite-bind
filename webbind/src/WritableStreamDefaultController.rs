@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WritableStreamDefaultController {
@@ -7,9 +10,7 @@ pub struct WritableStreamDefaultController {
 }
 impl FromVal for WritableStreamDefaultController {
     fn from_val(v: &emlite::Val) -> Self {
-        WritableStreamDefaultController {
-            inner: emlite::Val::from_val(v),
-        }
+        WritableStreamDefaultController { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WritableStreamDefaultController {
 }
 impl AsMut<emlite::Val> for WritableStreamDefaultController {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WritableStreamDefaultController> for emlite::Val {
     fn from(s: WritableStreamDefaultController) -> emlite::Val {
@@ -48,19 +49,20 @@ impl From<WritableStreamDefaultController> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WritableStreamDefaultController);
 
+
 impl WritableStreamDefaultController {
     pub fn signal(&self) -> AbortSignal {
         self.inner.get("signal").as_::<AbortSignal>()
     }
+
 }
 impl WritableStreamDefaultController {
-    pub fn error0(&self) -> jsbind::Undefined {
-        self.inner.call("error", &[]).as_::<jsbind::Undefined>()
+    pub fn error0(&self, ) -> Undefined {
+        self.inner.call("error", &[]).as_::<Undefined>()
     }
 
-    pub fn error1(&self, e: jsbind::Any) -> jsbind::Undefined {
-        self.inner
-            .call("error", &[e.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn error1(&self, e: Any) -> Undefined {
+        self.inner.call("error", &[e.into(), ]).as_::<Undefined>()
     }
+
 }

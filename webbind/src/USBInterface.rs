@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct USBInterface {
@@ -7,9 +10,7 @@ pub struct USBInterface {
 }
 impl FromVal for USBInterface {
     fn from_val(v: &emlite::Val) -> Self {
-        USBInterface {
-            inner: emlite::Val::from_val(v),
-        }
+        USBInterface { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for USBInterface {
 }
 impl AsMut<emlite::Val> for USBInterface {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<USBInterface> for emlite::Val {
     fn from(s: USBInterface) -> emlite::Val {
@@ -48,34 +49,37 @@ impl From<USBInterface> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(USBInterface);
 
+
+
 impl USBInterface {
     pub fn new(configuration: USBConfiguration, interface_number: u8) -> USBInterface {
         Self {
-            inner: emlite::Val::global("USBInterface")
-                .new(&[configuration.into(), interface_number.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("USBInterface").new(&[configuration.into(), interface_number.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl USBInterface {
     pub fn interface_number(&self) -> u8 {
         self.inner.get("interfaceNumber").as_::<u8>()
     }
+
 }
 impl USBInterface {
     pub fn alternate(&self) -> USBAlternateInterface {
         self.inner.get("alternate").as_::<USBAlternateInterface>()
     }
+
 }
 impl USBInterface {
-    pub fn alternates(&self) -> jsbind::FrozenArray<USBAlternateInterface> {
-        self.inner
-            .get("alternates")
-            .as_::<jsbind::FrozenArray<USBAlternateInterface>>()
+    pub fn alternates(&self) -> FrozenArray<USBAlternateInterface> {
+        self.inner.get("alternates").as_::<FrozenArray<USBAlternateInterface>>()
     }
+
 }
 impl USBInterface {
     pub fn claimed(&self) -> bool {
         self.inner.get("claimed").as_::<bool>()
     }
+
 }

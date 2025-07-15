@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HandwritingPrediction {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for HandwritingPrediction {
 }
 impl AsMut<emlite::Val> for HandwritingPrediction {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HandwritingPrediction> for emlite::Val {
     fn from(s: HandwritingPrediction) -> emlite::Val {
@@ -46,24 +49,24 @@ impl From<HandwritingPrediction> for emlite::Val {
 }
 
 impl HandwritingPrediction {
-    pub fn text(&self) -> jsbind::DOMString {
-        self.inner.get("text").as_::<jsbind::DOMString>()
+    pub fn text(&self) -> DOMString {
+        self.inner.get("text").as_::<DOMString>()
     }
 
-    pub fn set_text(&mut self, value: jsbind::DOMString) {
+    pub fn set_text(&mut self, value: DOMString) {
         self.inner.set("text", value);
     }
+
 }
 impl HandwritingPrediction {
-    pub fn segmentation_result(&self) -> jsbind::Sequence<jsbind::Any> {
-        self.inner
-            .get("segmentationResult")
-            .as_::<jsbind::Sequence<jsbind::Any>>()
+    pub fn segmentation_result(&self) -> Sequence<Any> {
+        self.inner.get("segmentationResult").as_::<Sequence<Any>>()
     }
 
-    pub fn set_segmentation_result(&mut self, value: jsbind::Sequence<jsbind::Any>) {
+    pub fn set_segmentation_result(&mut self, value: Sequence<Any>) {
         self.inner.set("segmentationResult", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -72,9 +75,7 @@ pub struct HandwritingDrawing {
 }
 impl FromVal for HandwritingDrawing {
     fn from_val(v: &emlite::Val) -> Self {
-        HandwritingDrawing {
-            inner: emlite::Val::from_val(v),
-        }
+        HandwritingDrawing { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -101,8 +102,8 @@ impl AsRef<emlite::Val> for HandwritingDrawing {
 }
 impl AsMut<emlite::Val> for HandwritingDrawing {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HandwritingDrawing> for emlite::Val {
     fn from(s: HandwritingDrawing) -> emlite::Val {
@@ -113,36 +114,34 @@ impl From<HandwritingDrawing> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HandwritingDrawing);
 
+
 impl HandwritingDrawing {
-    pub fn add_stroke(&self, stroke: HandwritingStroke) -> jsbind::Undefined {
-        self.inner
-            .call("addStroke", &[stroke.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn add_stroke(&self, stroke: HandwritingStroke) -> Undefined {
+        self.inner.call("addStroke", &[stroke.into(), ]).as_::<Undefined>()
     }
+
 }
 impl HandwritingDrawing {
-    pub fn remove_stroke(&self, stroke: HandwritingStroke) -> jsbind::Undefined {
-        self.inner
-            .call("removeStroke", &[stroke.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn remove_stroke(&self, stroke: HandwritingStroke) -> Undefined {
+        self.inner.call("removeStroke", &[stroke.into(), ]).as_::<Undefined>()
     }
+
 }
 impl HandwritingDrawing {
-    pub fn clear(&self) -> jsbind::Undefined {
-        self.inner.call("clear", &[]).as_::<jsbind::Undefined>()
+    pub fn clear(&self, ) -> Undefined {
+        self.inner.call("clear", &[]).as_::<Undefined>()
     }
+
 }
 impl HandwritingDrawing {
-    pub fn get_strokes(&self) -> jsbind::Sequence<HandwritingStroke> {
-        self.inner
-            .call("getStrokes", &[])
-            .as_::<jsbind::Sequence<HandwritingStroke>>()
+    pub fn get_strokes(&self, ) -> Sequence<HandwritingStroke> {
+        self.inner.call("getStrokes", &[]).as_::<Sequence<HandwritingStroke>>()
     }
+
 }
 impl HandwritingDrawing {
-    pub fn get_prediction(&self) -> jsbind::Promise {
-        self.inner
-            .call("getPrediction", &[])
-            .as_::<jsbind::Promise>()
+    pub fn get_prediction(&self, ) -> Promise {
+        self.inner.call("getPrediction", &[]).as_::<Promise>()
     }
+
 }

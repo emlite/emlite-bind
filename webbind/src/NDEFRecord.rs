@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NDEFRecord {
@@ -7,9 +10,7 @@ pub struct NDEFRecord {
 }
 impl FromVal for NDEFRecord {
     fn from_val(v: &emlite::Val) -> Self {
-        NDEFRecord {
-            inner: emlite::Val::from_val(v),
-        }
+        NDEFRecord { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for NDEFRecord {
 }
 impl AsMut<emlite::Val> for NDEFRecord {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NDEFRecord> for emlite::Val {
     fn from(s: NDEFRecord) -> emlite::Val {
@@ -48,49 +49,55 @@ impl From<NDEFRecord> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(NDEFRecord);
 
+
+
 impl NDEFRecord {
-    pub fn new(record_init: jsbind::Any) -> NDEFRecord {
+    pub fn new(record_init: Any) -> NDEFRecord {
         Self {
-            inner: emlite::Val::global("NDEFRecord")
-                .new(&[record_init.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("NDEFRecord").new(&[record_init.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl NDEFRecord {
-    pub fn record_type(&self) -> jsbind::USVString {
-        self.inner.get("recordType").as_::<jsbind::USVString>()
+    pub fn record_type(&self) -> USVString {
+        self.inner.get("recordType").as_::<USVString>()
     }
+
 }
 impl NDEFRecord {
-    pub fn media_type(&self) -> jsbind::USVString {
-        self.inner.get("mediaType").as_::<jsbind::USVString>()
+    pub fn media_type(&self) -> USVString {
+        self.inner.get("mediaType").as_::<USVString>()
     }
+
 }
 impl NDEFRecord {
-    pub fn id(&self) -> jsbind::USVString {
-        self.inner.get("id").as_::<jsbind::USVString>()
+    pub fn id(&self) -> USVString {
+        self.inner.get("id").as_::<USVString>()
     }
+
 }
 impl NDEFRecord {
-    pub fn data(&self) -> jsbind::DataView {
-        self.inner.get("data").as_::<jsbind::DataView>()
+    pub fn data(&self) -> DataView {
+        self.inner.get("data").as_::<DataView>()
     }
+
 }
 impl NDEFRecord {
-    pub fn encoding(&self) -> jsbind::USVString {
-        self.inner.get("encoding").as_::<jsbind::USVString>()
+    pub fn encoding(&self) -> USVString {
+        self.inner.get("encoding").as_::<USVString>()
     }
+
 }
 impl NDEFRecord {
-    pub fn lang(&self) -> jsbind::USVString {
-        self.inner.get("lang").as_::<jsbind::USVString>()
+    pub fn lang(&self) -> USVString {
+        self.inner.get("lang").as_::<USVString>()
     }
+
 }
 impl NDEFRecord {
-    pub fn to_records(&self) -> jsbind::Sequence<NDEFRecord> {
-        self.inner
-            .call("toRecords", &[])
-            .as_::<jsbind::Sequence<NDEFRecord>>()
+    pub fn to_records(&self, ) -> Sequence<NDEFRecord> {
+        self.inner.call("toRecords", &[]).as_::<Sequence<NDEFRecord>>()
     }
+
 }

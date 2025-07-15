@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGLContextEvent {
@@ -7,9 +10,7 @@ pub struct WebGLContextEvent {
 }
 impl FromVal for WebGLContextEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        WebGLContextEvent {
-            inner: Event::from_val(v),
-        }
+        WebGLContextEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WebGLContextEvent {
 }
 impl AsMut<emlite::Val> for WebGLContextEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WebGLContextEvent> for emlite::Val {
     fn from(s: WebGLContextEvent) -> emlite::Val {
@@ -48,25 +49,25 @@ impl From<WebGLContextEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WebGLContextEvent);
 
+
+
 impl WebGLContextEvent {
-    pub fn new0(type_: jsbind::DOMString) -> WebGLContextEvent {
+    pub fn new0(type_: DOMString) -> WebGLContextEvent {
         Self {
-            inner: emlite::Val::global("WebGLContextEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("WebGLContextEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
-    pub fn new1(type_: jsbind::DOMString, event_init: jsbind::Any) -> WebGLContextEvent {
+    pub fn new1(type_: DOMString, event_init: Any) -> WebGLContextEvent {
         Self {
-            inner: emlite::Val::global("WebGLContextEvent")
-                .new(&[type_.into(), event_init.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("WebGLContextEvent").new(&[type_.into(), event_init.into()]).as_::<Event>(),
         }
     }
+
 }
 impl WebGLContextEvent {
-    pub fn status_message(&self) -> jsbind::DOMString {
-        self.inner.get("statusMessage").as_::<jsbind::DOMString>()
+    pub fn status_message(&self) -> DOMString {
+        self.inner.get("statusMessage").as_::<DOMString>()
     }
+
 }

@@ -56,7 +56,7 @@ impl_dyn_cast!(URLSearchParams);
 
 impl URLSearchParams {
     pub fn get(&self, key: &str) -> Option<String> {
-        let v = self.inner.call("get", &[key.into()]);
+        let v = self.inner.get(key);
         if v.is_null() {
             None
         } else {

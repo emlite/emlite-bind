@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GainNode {
@@ -7,9 +10,7 @@ pub struct GainNode {
 }
 impl FromVal for GainNode {
     fn from_val(v: &emlite::Val) -> Self {
-        GainNode {
-            inner: AudioNode::from_val(v),
-        }
+        GainNode { inner: AudioNode::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for GainNode {
 }
 impl AsMut<emlite::Val> for GainNode {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<GainNode> for emlite::Val {
     fn from(s: GainNode) -> emlite::Val {
@@ -48,25 +49,25 @@ impl From<GainNode> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GainNode);
 
+
+
 impl GainNode {
     pub fn new0(context: BaseAudioContext) -> GainNode {
         Self {
-            inner: emlite::Val::global("GainNode")
-                .new(&[context.into()])
-                .as_::<AudioNode>(),
+            inner: emlite::Val::global("GainNode").new(&[context.into()]).as_::<AudioNode>(),
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: jsbind::Any) -> GainNode {
+    pub fn new1(context: BaseAudioContext, options: Any) -> GainNode {
         Self {
-            inner: emlite::Val::global("GainNode")
-                .new(&[context.into(), options.into()])
-                .as_::<AudioNode>(),
+            inner: emlite::Val::global("GainNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
         }
     }
+
 }
 impl GainNode {
     pub fn gain(&self) -> AudioParam {
         self.inner.get("gain").as_::<AudioParam>()
     }
+
 }

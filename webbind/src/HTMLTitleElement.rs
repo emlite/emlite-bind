@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLTitleElement {
@@ -7,9 +10,7 @@ pub struct HTMLTitleElement {
 }
 impl FromVal for HTMLTitleElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLTitleElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLTitleElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLTitleElement {
 }
 impl AsMut<emlite::Val> for HTMLTitleElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLTitleElement> for emlite::Val {
     fn from(s: HTMLTitleElement) -> emlite::Val {
@@ -48,21 +49,23 @@ impl From<HTMLTitleElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLTitleElement);
 
+
+
 impl HTMLTitleElement {
     pub fn new() -> HTMLTitleElement {
         Self {
-            inner: emlite::Val::global("HTMLTitleElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLTitleElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLTitleElement {
-    pub fn text(&self) -> jsbind::DOMString {
-        self.inner.get("text").as_::<jsbind::DOMString>()
+    pub fn text(&self) -> DOMString {
+        self.inner.get("text").as_::<DOMString>()
     }
 
-    pub fn set_text(&mut self, value: jsbind::DOMString) {
+    pub fn set_text(&mut self, value: DOMString) {
         self.inner.set("text", value);
     }
+
 }

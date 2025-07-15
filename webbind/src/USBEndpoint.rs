@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct USBEndpoint {
@@ -7,9 +10,7 @@ pub struct USBEndpoint {
 }
 impl FromVal for USBEndpoint {
     fn from_val(v: &emlite::Val) -> Self {
-        USBEndpoint {
-            inner: emlite::Val::from_val(v),
-        }
+        USBEndpoint { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for USBEndpoint {
 }
 impl AsMut<emlite::Val> for USBEndpoint {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<USBEndpoint> for emlite::Val {
     fn from(s: USBEndpoint) -> emlite::Val {
@@ -48,36 +49,37 @@ impl From<USBEndpoint> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(USBEndpoint);
 
+
+
 impl USBEndpoint {
-    pub fn new(
-        alternate: USBAlternateInterface,
-        endpoint_number: u8,
-        direction: USBDirection,
-    ) -> USBEndpoint {
+    pub fn new(alternate: USBAlternateInterface, endpoint_number: u8, direction: USBDirection) -> USBEndpoint {
         Self {
-            inner: emlite::Val::global("USBEndpoint")
-                .new(&[alternate.into(), endpoint_number.into(), direction.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("USBEndpoint").new(&[alternate.into(), endpoint_number.into(), direction.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl USBEndpoint {
     pub fn endpoint_number(&self) -> u8 {
         self.inner.get("endpointNumber").as_::<u8>()
     }
+
 }
 impl USBEndpoint {
     pub fn direction(&self) -> USBDirection {
         self.inner.get("direction").as_::<USBDirection>()
     }
+
 }
 impl USBEndpoint {
     pub fn type_(&self) -> USBEndpointType {
         self.inner.get("type").as_::<USBEndpointType>()
     }
+
 }
 impl USBEndpoint {
     pub fn packet_size(&self) -> u32 {
         self.inner.get("packetSize").as_::<u32>()
     }
+
 }

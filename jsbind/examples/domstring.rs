@@ -1,5 +1,4 @@
-use jsbind::prelude::Console;
-use jsbind::DOMString;
+use jsbind::prelude::*;
 
 fn main() {
     let s: DOMString = "Hello".into();

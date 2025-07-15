@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUError {
@@ -7,9 +10,7 @@ pub struct GPUError {
 }
 impl FromVal for GPUError {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUError {
-            inner: emlite::Val::from_val(v),
-        }
+        GPUError { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for GPUError {
 }
 impl AsMut<emlite::Val> for GPUError {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<GPUError> for emlite::Val {
     fn from(s: GPUError) -> emlite::Val {
@@ -48,8 +49,10 @@ impl From<GPUError> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GPUError);
 
+
 impl GPUError {
-    pub fn message(&self) -> jsbind::DOMString {
-        self.inner.get("message").as_::<jsbind::DOMString>()
+    pub fn message(&self) -> DOMString {
+        self.inner.get("message").as_::<DOMString>()
     }
+
 }

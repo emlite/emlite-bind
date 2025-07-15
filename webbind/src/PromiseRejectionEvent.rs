@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PromiseRejectionEvent {
@@ -7,9 +10,7 @@ pub struct PromiseRejectionEvent {
 }
 impl FromVal for PromiseRejectionEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        PromiseRejectionEvent {
-            inner: Event::from_val(v),
-        }
+        PromiseRejectionEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PromiseRejectionEvent {
 }
 impl AsMut<emlite::Val> for PromiseRejectionEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PromiseRejectionEvent> for emlite::Val {
     fn from(s: PromiseRejectionEvent) -> emlite::Val {
@@ -48,22 +49,25 @@ impl From<PromiseRejectionEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PromiseRejectionEvent);
 
+
+
 impl PromiseRejectionEvent {
-    pub fn new(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> PromiseRejectionEvent {
+    pub fn new(type_: DOMString, event_init_dict: Any) -> PromiseRejectionEvent {
         Self {
-            inner: emlite::Val::global("PromiseRejectionEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("PromiseRejectionEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl PromiseRejectionEvent {
-    pub fn promise(&self) -> jsbind::Object {
-        self.inner.get("promise").as_::<jsbind::Object>()
+    pub fn promise(&self) -> Object {
+        self.inner.get("promise").as_::<Object>()
     }
+
 }
 impl PromiseRejectionEvent {
-    pub fn reason(&self) -> jsbind::Any {
-        self.inner.get("reason").as_::<jsbind::Any>()
+    pub fn reason(&self) -> Any {
+        self.inner.get("reason").as_::<Any>()
     }
+
 }

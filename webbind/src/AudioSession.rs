@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioSession {
@@ -7,9 +10,7 @@ pub struct AudioSession {
 }
 impl FromVal for AudioSession {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioSession {
-            inner: EventTarget::from_val(v),
-        }
+        AudioSession { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for AudioSession {
 }
 impl AsMut<emlite::Val> for AudioSession {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AudioSession> for emlite::Val {
     fn from(s: AudioSession) -> emlite::Val {
@@ -48,6 +49,7 @@ impl From<AudioSession> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AudioSession);
 
+
 impl AudioSession {
     pub fn type_(&self) -> AudioSessionType {
         self.inner.get("type").as_::<AudioSessionType>()
@@ -56,18 +58,21 @@ impl AudioSession {
     pub fn set_type_(&mut self, value: AudioSessionType) {
         self.inner.set("type", value);
     }
+
 }
 impl AudioSession {
     pub fn state(&self) -> AudioSessionState {
         self.inner.get("state").as_::<AudioSessionState>()
     }
+
 }
 impl AudioSession {
-    pub fn onstatechange(&self) -> jsbind::Any {
-        self.inner.get("onstatechange").as_::<jsbind::Any>()
+    pub fn onstatechange(&self) -> Any {
+        self.inner.get("onstatechange").as_::<Any>()
     }
 
-    pub fn set_onstatechange(&mut self, value: jsbind::Any) {
+    pub fn set_onstatechange(&mut self, value: Any) {
         self.inner.set("onstatechange", value);
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MutationObserverInit {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for MutationObserverInit {
 }
 impl AsMut<emlite::Val> for MutationObserverInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MutationObserverInit> for emlite::Val {
     fn from(s: MutationObserverInit) -> emlite::Val {
@@ -53,6 +56,7 @@ impl MutationObserverInit {
     pub fn set_child_list(&mut self, value: bool) {
         self.inner.set("childList", value);
     }
+
 }
 impl MutationObserverInit {
     pub fn attributes(&self) -> bool {
@@ -62,6 +66,7 @@ impl MutationObserverInit {
     pub fn set_attributes(&mut self, value: bool) {
         self.inner.set("attributes", value);
     }
+
 }
 impl MutationObserverInit {
     pub fn character_data(&self) -> bool {
@@ -71,6 +76,7 @@ impl MutationObserverInit {
     pub fn set_character_data(&mut self, value: bool) {
         self.inner.set("characterData", value);
     }
+
 }
 impl MutationObserverInit {
     pub fn subtree(&self) -> bool {
@@ -80,6 +86,7 @@ impl MutationObserverInit {
     pub fn set_subtree(&mut self, value: bool) {
         self.inner.set("subtree", value);
     }
+
 }
 impl MutationObserverInit {
     pub fn attribute_old_value(&self) -> bool {
@@ -89,6 +96,7 @@ impl MutationObserverInit {
     pub fn set_attribute_old_value(&mut self, value: bool) {
         self.inner.set("attributeOldValue", value);
     }
+
 }
 impl MutationObserverInit {
     pub fn character_data_old_value(&self) -> bool {
@@ -98,17 +106,17 @@ impl MutationObserverInit {
     pub fn set_character_data_old_value(&mut self, value: bool) {
         self.inner.set("characterDataOldValue", value);
     }
+
 }
 impl MutationObserverInit {
-    pub fn attribute_filter(&self) -> jsbind::Sequence<jsbind::DOMString> {
-        self.inner
-            .get("attributeFilter")
-            .as_::<jsbind::Sequence<jsbind::DOMString>>()
+    pub fn attribute_filter(&self) -> Sequence<DOMString> {
+        self.inner.get("attributeFilter").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_attribute_filter(&mut self, value: jsbind::Sequence<jsbind::DOMString>) {
+    pub fn set_attribute_filter(&mut self, value: Sequence<DOMString>) {
         self.inner.set("attributeFilter", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -117,9 +125,7 @@ pub struct MutationObserver {
 }
 impl FromVal for MutationObserver {
     fn from_val(v: &emlite::Val) -> Self {
-        MutationObserver {
-            inner: emlite::Val::from_val(v),
-        }
+        MutationObserver { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -146,8 +152,8 @@ impl AsRef<emlite::Val> for MutationObserver {
 }
 impl AsMut<emlite::Val> for MutationObserver {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MutationObserver> for emlite::Val {
     fn from(s: MutationObserver) -> emlite::Val {
@@ -158,39 +164,35 @@ impl From<MutationObserver> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MutationObserver);
 
+
+
 impl MutationObserver {
-    pub fn new(callback: jsbind::Function) -> MutationObserver {
+    pub fn new(callback: Function) -> MutationObserver {
         Self {
-            inner: emlite::Val::global("MutationObserver")
-                .new(&[callback.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("MutationObserver").new(&[callback.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl MutationObserver {
-    pub fn observe0(&self, target: Node) -> jsbind::Undefined {
-        self.inner
-            .call("observe", &[target.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn observe0(&self, target: Node) -> Undefined {
+        self.inner.call("observe", &[target.into(), ]).as_::<Undefined>()
     }
 
-    pub fn observe1(&self, target: Node, options: MutationObserverInit) -> jsbind::Undefined {
-        self.inner
-            .call("observe", &[target.into(), options.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn observe1(&self, target: Node, options: MutationObserverInit) -> Undefined {
+        self.inner.call("observe", &[target.into(), options.into(), ]).as_::<Undefined>()
     }
+
 }
 impl MutationObserver {
-    pub fn disconnect(&self) -> jsbind::Undefined {
-        self.inner
-            .call("disconnect", &[])
-            .as_::<jsbind::Undefined>()
+    pub fn disconnect(&self, ) -> Undefined {
+        self.inner.call("disconnect", &[]).as_::<Undefined>()
     }
+
 }
 impl MutationObserver {
-    pub fn take_records(&self) -> jsbind::Sequence<MutationRecord> {
-        self.inner
-            .call("takeRecords", &[])
-            .as_::<jsbind::Sequence<MutationRecord>>()
+    pub fn take_records(&self, ) -> Sequence<MutationRecord> {
+        self.inner.call("takeRecords", &[]).as_::<Sequence<MutationRecord>>()
     }
+
 }

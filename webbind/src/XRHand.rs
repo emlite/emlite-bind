@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRHand {
@@ -7,9 +10,7 @@ pub struct XRHand {
 }
 impl FromVal for XRHand {
     fn from_val(v: &emlite::Val) -> Self {
-        XRHand {
-            inner: emlite::Val::from_val(v),
-        }
+        XRHand { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRHand {
 }
 impl AsMut<emlite::Val> for XRHand {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRHand> for emlite::Val {
     fn from(s: XRHand) -> emlite::Val {
@@ -48,13 +49,16 @@ impl From<XRHand> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRHand);
 
+
 impl XRHand {
     pub fn size(&self) -> u32 {
         self.inner.get("size").as_::<u32>()
     }
+
 }
 impl XRHand {
     pub fn get(&self, key: XRHandJoint) -> XRJointSpace {
-        self.inner.call("get", &[key.into()]).as_::<XRJointSpace>()
+        self.inner.call("get", &[key.into(), ]).as_::<XRJointSpace>()
     }
+
 }

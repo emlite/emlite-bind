@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRAnchor {
@@ -7,9 +10,7 @@ pub struct XRAnchor {
 }
 impl FromVal for XRAnchor {
     fn from_val(v: &emlite::Val) -> Self {
-        XRAnchor {
-            inner: emlite::Val::from_val(v),
-        }
+        XRAnchor { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRAnchor {
 }
 impl AsMut<emlite::Val> for XRAnchor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRAnchor> for emlite::Val {
     fn from(s: XRAnchor) -> emlite::Val {
@@ -48,20 +49,22 @@ impl From<XRAnchor> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRAnchor);
 
+
 impl XRAnchor {
     pub fn anchor_space(&self) -> XRSpace {
         self.inner.get("anchorSpace").as_::<XRSpace>()
     }
+
 }
 impl XRAnchor {
-    pub fn request_persistent_handle(&self) -> jsbind::Promise {
-        self.inner
-            .call("requestPersistentHandle", &[])
-            .as_::<jsbind::Promise>()
+    pub fn request_persistent_handle(&self, ) -> Promise {
+        self.inner.call("requestPersistentHandle", &[]).as_::<Promise>()
     }
+
 }
 impl XRAnchor {
-    pub fn delete(&self) -> jsbind::Undefined {
-        self.inner.call("delete", &[]).as_::<jsbind::Undefined>()
+    pub fn delete(&self, ) -> Undefined {
+        self.inner.call("delete", &[]).as_::<Undefined>()
     }
+
 }

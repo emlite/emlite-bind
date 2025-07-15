@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ShadowAnimation {
@@ -7,9 +10,7 @@ pub struct ShadowAnimation {
 }
 impl FromVal for ShadowAnimation {
     fn from_val(v: &emlite::Val) -> Self {
-        ShadowAnimation {
-            inner: Animation::from_val(v),
-        }
+        ShadowAnimation { inner: Animation::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ShadowAnimation {
 }
 impl AsMut<emlite::Val> for ShadowAnimation {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ShadowAnimation> for emlite::Val {
     fn from(s: ShadowAnimation) -> emlite::Val {
@@ -48,17 +49,19 @@ impl From<ShadowAnimation> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ShadowAnimation);
 
+
+
 impl ShadowAnimation {
-    pub fn new(source: Animation, new_target: jsbind::Any) -> ShadowAnimation {
+    pub fn new(source: Animation, new_target: Any) -> ShadowAnimation {
         Self {
-            inner: emlite::Val::global("ShadowAnimation")
-                .new(&[source.into(), new_target.into()])
-                .as_::<Animation>(),
+            inner: emlite::Val::global("ShadowAnimation").new(&[source.into(), new_target.into()]).as_::<Animation>(),
         }
     }
+
 }
 impl ShadowAnimation {
     pub fn source_animation(&self) -> Animation {
         self.inner.get("sourceAnimation").as_::<Animation>()
     }
+
 }

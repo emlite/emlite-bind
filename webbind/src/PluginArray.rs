@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PluginArray {
@@ -7,9 +10,7 @@ pub struct PluginArray {
 }
 impl FromVal for PluginArray {
     fn from_val(v: &emlite::Val) -> Self {
-        PluginArray {
-            inner: emlite::Val::from_val(v),
-        }
+        PluginArray { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PluginArray {
 }
 impl AsMut<emlite::Val> for PluginArray {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PluginArray> for emlite::Val {
     fn from(s: PluginArray) -> emlite::Val {
@@ -48,23 +49,28 @@ impl From<PluginArray> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PluginArray);
 
+
 impl PluginArray {
-    pub fn refresh(&self) -> jsbind::Undefined {
-        self.inner.call("refresh", &[]).as_::<jsbind::Undefined>()
+    pub fn refresh(&self, ) -> Undefined {
+        self.inner.call("refresh", &[]).as_::<Undefined>()
     }
+
 }
 impl PluginArray {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl PluginArray {
     pub fn item(&self, index: u32) -> Plugin {
-        self.inner.call("item", &[index.into()]).as_::<Plugin>()
+        self.inner.call("item", &[index.into(), ]).as_::<Plugin>()
     }
+
 }
 impl PluginArray {
-    pub fn named_item(&self, name: jsbind::DOMString) -> Plugin {
-        self.inner.call("namedItem", &[name.into()]).as_::<Plugin>()
+    pub fn named_item(&self, name: DOMString) -> Plugin {
+        self.inner.call("namedItem", &[name.into(), ]).as_::<Plugin>()
     }
+
 }

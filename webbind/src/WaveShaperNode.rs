@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WaveShaperNode {
@@ -7,9 +10,7 @@ pub struct WaveShaperNode {
 }
 impl FromVal for WaveShaperNode {
     fn from_val(v: &emlite::Val) -> Self {
-        WaveShaperNode {
-            inner: AudioNode::from_val(v),
-        }
+        WaveShaperNode { inner: AudioNode::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WaveShaperNode {
 }
 impl AsMut<emlite::Val> for WaveShaperNode {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WaveShaperNode> for emlite::Val {
     fn from(s: WaveShaperNode) -> emlite::Val {
@@ -48,31 +49,31 @@ impl From<WaveShaperNode> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WaveShaperNode);
 
+
+
 impl WaveShaperNode {
     pub fn new0(context: BaseAudioContext) -> WaveShaperNode {
         Self {
-            inner: emlite::Val::global("WaveShaperNode")
-                .new(&[context.into()])
-                .as_::<AudioNode>(),
+            inner: emlite::Val::global("WaveShaperNode").new(&[context.into()]).as_::<AudioNode>(),
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: jsbind::Any) -> WaveShaperNode {
+    pub fn new1(context: BaseAudioContext, options: Any) -> WaveShaperNode {
         Self {
-            inner: emlite::Val::global("WaveShaperNode")
-                .new(&[context.into(), options.into()])
-                .as_::<AudioNode>(),
+            inner: emlite::Val::global("WaveShaperNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
         }
     }
+
 }
 impl WaveShaperNode {
-    pub fn curve(&self) -> jsbind::Float32Array {
-        self.inner.get("curve").as_::<jsbind::Float32Array>()
+    pub fn curve(&self) -> Float32Array {
+        self.inner.get("curve").as_::<Float32Array>()
     }
 
-    pub fn set_curve(&mut self, value: jsbind::Float32Array) {
+    pub fn set_curve(&mut self, value: Float32Array) {
         self.inner.set("curve", value);
     }
+
 }
 impl WaveShaperNode {
     pub fn oversample(&self) -> OverSampleType {
@@ -82,4 +83,5 @@ impl WaveShaperNode {
     pub fn set_oversample(&mut self, value: OverSampleType) {
         self.inner.set("oversample", value);
     }
+
 }

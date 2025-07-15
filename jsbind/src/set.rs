@@ -1,4 +1,5 @@
 use alloc::string::String;
+use crate::any::Any;
 use core::marker::PhantomData;
 use core::ops::{Deref, DerefMut};
 use emlite::FromVal;
@@ -93,11 +94,16 @@ impl<T> TypedSet<T> {
     }
 
     /// Return a copy of the element at `idx` converted to `T`.
-    pub fn get(&self, idx: usize) -> T
+    pub fn get(&self, idx: usize) -> Option<T>
     where
         T: FromVal,
     {
-        self.inner.get(idx).as_::<T>()
+        let v = self.inner.get(idx);
+        if v.is_undefined() {
+            None
+        } else {
+            Some(v.as_::<T>())
+        }
     }
 
     /// Returns whether a value exists in the sequence.
@@ -123,7 +129,7 @@ impl<T> TypedSet<T> {
 }
 
 pub struct TypedSetIter<'a, T> {
-    it: crate::TypedSet<emlite::Val>,
+    it: TypedSet<T>,
     idx: usize,
     _phantom: PhantomData<&'a T>,
 }
@@ -139,7 +145,7 @@ where
         let iter = self.inner.call("values", &[]);
         let vec = emlite::Val::global("Array")
             .call("from", &[iter])
-            .as_::<crate::TypedSet<emlite::Val>>();
+            .as_::<TypedSet<T>>();
         TypedSetIter {
             it: vec,
             idx: 0,
@@ -155,9 +161,9 @@ where
     type Item = T;
     fn next(&mut self) -> Option<Self::Item> {
         if self.idx < self.it.len() {
-            let v = self.it.get(self.idx).as_::<T>();
+            let v = self.it.get(self.idx);
             self.idx += 1;
-            Some(v)
+            v
         } else {
             None
         }
@@ -189,7 +195,7 @@ impl<T> core::fmt::Display for TypedSet<T> {
     }
 }
 
-pub type Set = TypedSet<crate::Any>;
+pub type Set = TypedSet<Any>;
 crate::utils::impl_dyn_cast!(Set, "Set");
 
 /// `TypedWeakSet<T>` – ECMAScript “TypedWeakSet” wrapper  (`new TypedWeakSet()`).
@@ -270,11 +276,16 @@ impl<T> TypedWeakSet<T> {
     }
 
     /// Return a copy of the element at `idx` converted to `T`.
-    pub fn get(&self, idx: usize) -> T
+    pub fn get(&self, idx: usize) -> Option<T>
     where
         T: FromVal,
     {
-        self.inner.get(idx).as_::<T>()
+        let v = self.inner.get(idx);
+        if v.is_undefined() {
+            None
+        } else {
+            Some(v.as_::<T>())
+        }
     }
 
     /// Returns whether a value exists in the sequence.
@@ -300,7 +311,7 @@ impl<T> TypedWeakSet<T> {
 }
 
 pub struct TypedWeakSetIter<'a, T> {
-    it: crate::TypedWeakSet<emlite::Val>,
+    it: TypedWeakSet<T>,
     idx: usize,
     _phantom: PhantomData<&'a T>,
 }
@@ -316,7 +327,7 @@ where
         let iter = self.inner.call("values", &[]);
         let vec = emlite::Val::global("Array")
             .call("from", &[iter])
-            .as_::<crate::TypedWeakSet<emlite::Val>>();
+            .as_::<TypedWeakSet<T>>();
         TypedWeakSetIter {
             it: vec,
             idx: 0,
@@ -332,9 +343,9 @@ where
     type Item = T;
     fn next(&mut self) -> Option<Self::Item> {
         if self.idx < self.it.len() {
-            let v = self.it.get(self.idx).as_::<T>();
+            let v = self.it.get(self.idx);
             self.idx += 1;
-            Some(v)
+            v
         } else {
             None
         }
@@ -378,5 +389,5 @@ impl<T> AsMut<emlite::Val> for TypedWeakSet<T> {
     }
 }
 
-pub type WeakSet = TypedWeakSet<crate::Any>;
+pub type WeakSet = TypedWeakSet<Any>;
 crate::utils::impl_dyn_cast!(WeakSet, "WeakSet");

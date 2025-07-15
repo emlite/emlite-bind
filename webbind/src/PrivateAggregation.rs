@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PAHistogramContribution {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for PAHistogramContribution {
 }
 impl AsMut<emlite::Val> for PAHistogramContribution {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PAHistogramContribution> for emlite::Val {
     fn from(s: PAHistogramContribution) -> emlite::Val {
@@ -53,6 +56,7 @@ impl PAHistogramContribution {
     pub fn set_bucket(&mut self, value: i64) {
         self.inner.set("bucket", value);
     }
+
 }
 impl PAHistogramContribution {
     pub fn value(&self) -> i32 {
@@ -62,6 +66,7 @@ impl PAHistogramContribution {
     pub fn set_value(&mut self, value: i32) {
         self.inner.set("value", value);
     }
+
 }
 impl PAHistogramContribution {
     pub fn filtering_id(&self) -> i64 {
@@ -71,6 +76,7 @@ impl PAHistogramContribution {
     pub fn set_filtering_id(&mut self, value: i64) {
         self.inner.set("filteringId", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -106,8 +112,8 @@ impl AsRef<emlite::Val> for PADebugModeOptions {
 }
 impl AsMut<emlite::Val> for PADebugModeOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PADebugModeOptions> for emlite::Val {
     fn from(s: PADebugModeOptions) -> emlite::Val {
@@ -125,6 +131,7 @@ impl PADebugModeOptions {
     pub fn set_debug_key(&mut self, value: i64) {
         self.inner.set("debugKey", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -133,9 +140,7 @@ pub struct PrivateAggregation {
 }
 impl FromVal for PrivateAggregation {
     fn from_val(v: &emlite::Val) -> Self {
-        PrivateAggregation {
-            inner: emlite::Val::from_val(v),
-        }
+        PrivateAggregation { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -162,8 +167,8 @@ impl AsRef<emlite::Val> for PrivateAggregation {
 }
 impl AsMut<emlite::Val> for PrivateAggregation {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PrivateAggregation> for emlite::Val {
     fn from(s: PrivateAggregation) -> emlite::Val {
@@ -174,40 +179,26 @@ impl From<PrivateAggregation> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PrivateAggregation);
 
+
 impl PrivateAggregation {
-    pub fn contribute_to_histogram(
-        &self,
-        contribution: PAHistogramContribution,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("contributeToHistogram", &[contribution.into()])
-            .as_::<jsbind::Undefined>()
-    }
-}
-impl PrivateAggregation {
-    pub fn contribute_to_histogram_on_event(
-        &self,
-        event: jsbind::DOMString,
-        contribution: jsbind::Record<jsbind::DOMString, jsbind::Any>,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call(
-                "contributeToHistogramOnEvent",
-                &[event.into(), contribution.into()],
-            )
-            .as_::<jsbind::Undefined>()
-    }
-}
-impl PrivateAggregation {
-    pub fn enable_debug_mode0(&self) -> jsbind::Undefined {
-        self.inner
-            .call("enableDebugMode", &[])
-            .as_::<jsbind::Undefined>()
+    pub fn contribute_to_histogram(&self, contribution: PAHistogramContribution) -> Undefined {
+        self.inner.call("contributeToHistogram", &[contribution.into(), ]).as_::<Undefined>()
     }
 
-    pub fn enable_debug_mode1(&self, options: PADebugModeOptions) -> jsbind::Undefined {
-        self.inner
-            .call("enableDebugMode", &[options.into()])
-            .as_::<jsbind::Undefined>()
+}
+impl PrivateAggregation {
+    pub fn contribute_to_histogram_on_event(&self, event: DOMString, contribution: Record<DOMString, Any>) -> Undefined {
+        self.inner.call("contributeToHistogramOnEvent", &[event.into(), contribution.into(), ]).as_::<Undefined>()
     }
+
+}
+impl PrivateAggregation {
+    pub fn enable_debug_mode0(&self, ) -> Undefined {
+        self.inner.call("enableDebugMode", &[]).as_::<Undefined>()
+    }
+
+    pub fn enable_debug_mode1(&self, options: PADebugModeOptions) -> Undefined {
+        self.inner.call("enableDebugMode", &[options.into(), ]).as_::<Undefined>()
+    }
+
 }

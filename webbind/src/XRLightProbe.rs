@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRLightProbe {
@@ -7,9 +10,7 @@ pub struct XRLightProbe {
 }
 impl FromVal for XRLightProbe {
     fn from_val(v: &emlite::Val) -> Self {
-        XRLightProbe {
-            inner: EventTarget::from_val(v),
-        }
+        XRLightProbe { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRLightProbe {
 }
 impl AsMut<emlite::Val> for XRLightProbe {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRLightProbe> for emlite::Val {
     fn from(s: XRLightProbe) -> emlite::Val {
@@ -48,17 +49,20 @@ impl From<XRLightProbe> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRLightProbe);
 
+
 impl XRLightProbe {
     pub fn probe_space(&self) -> XRSpace {
         self.inner.get("probeSpace").as_::<XRSpace>()
     }
+
 }
 impl XRLightProbe {
-    pub fn onreflectionchange(&self) -> jsbind::Any {
-        self.inner.get("onreflectionchange").as_::<jsbind::Any>()
+    pub fn onreflectionchange(&self) -> Any {
+        self.inner.get("onreflectionchange").as_::<Any>()
     }
 
-    pub fn set_onreflectionchange(&mut self, value: jsbind::Any) {
+    pub fn set_onreflectionchange(&mut self, value: Any) {
         self.inner.set("onreflectionchange", value);
     }
+
 }

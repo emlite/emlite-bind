@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VideoFrameMetadata {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for VideoFrameMetadata {
 }
 impl AsMut<emlite::Val> for VideoFrameMetadata {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<VideoFrameMetadata> for emlite::Val {
     fn from(s: VideoFrameMetadata) -> emlite::Val {
@@ -79,8 +82,8 @@ impl AsRef<emlite::Val> for VideoFrameCopyToOptions {
 }
 impl AsMut<emlite::Val> for VideoFrameCopyToOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<VideoFrameCopyToOptions> for emlite::Val {
     fn from(s: VideoFrameCopyToOptions) -> emlite::Val {
@@ -98,17 +101,17 @@ impl VideoFrameCopyToOptions {
     pub fn set_rect(&mut self, value: DOMRectInit) {
         self.inner.set("rect", value);
     }
+
 }
 impl VideoFrameCopyToOptions {
-    pub fn layout(&self) -> jsbind::Sequence<PlaneLayout> {
-        self.inner
-            .get("layout")
-            .as_::<jsbind::Sequence<PlaneLayout>>()
+    pub fn layout(&self) -> Sequence<PlaneLayout> {
+        self.inner.get("layout").as_::<Sequence<PlaneLayout>>()
     }
 
-    pub fn set_layout(&mut self, value: jsbind::Sequence<PlaneLayout>) {
+    pub fn set_layout(&mut self, value: Sequence<PlaneLayout>) {
         self.inner.set("layout", value);
     }
+
 }
 impl VideoFrameCopyToOptions {
     pub fn format(&self) -> VideoPixelFormat {
@@ -118,6 +121,7 @@ impl VideoFrameCopyToOptions {
     pub fn set_format(&mut self, value: VideoPixelFormat) {
         self.inner.set("format", value);
     }
+
 }
 impl VideoFrameCopyToOptions {
     pub fn color_space(&self) -> PredefinedColorSpace {
@@ -127,6 +131,7 @@ impl VideoFrameCopyToOptions {
     pub fn set_color_space(&mut self, value: PredefinedColorSpace) {
         self.inner.set("colorSpace", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -162,8 +167,8 @@ impl AsRef<emlite::Val> for PlaneLayout {
 }
 impl AsMut<emlite::Val> for PlaneLayout {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PlaneLayout> for emlite::Val {
     fn from(s: PlaneLayout) -> emlite::Val {
@@ -181,6 +186,7 @@ impl PlaneLayout {
     pub fn set_offset(&mut self, value: u32) {
         self.inner.set("offset", value);
     }
+
 }
 impl PlaneLayout {
     pub fn stride(&self) -> u32 {
@@ -190,6 +196,7 @@ impl PlaneLayout {
     pub fn set_stride(&mut self, value: u32) {
         self.inner.set("stride", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -198,9 +205,7 @@ pub struct VideoFrame {
 }
 impl FromVal for VideoFrame {
     fn from_val(v: &emlite::Val) -> Self {
-        VideoFrame {
-            inner: emlite::Val::from_val(v),
-        }
+        VideoFrame { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -227,8 +232,8 @@ impl AsRef<emlite::Val> for VideoFrame {
 }
 impl AsMut<emlite::Val> for VideoFrame {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<VideoFrame> for emlite::Val {
     fn from(s: VideoFrame) -> emlite::Val {
@@ -239,115 +244,123 @@ impl From<VideoFrame> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(VideoFrame);
 
+
+
 impl VideoFrame {
-    pub fn new(data: jsbind::Any, init: jsbind::Any) -> VideoFrame {
+    pub fn new(data: Any, init: Any) -> VideoFrame {
         Self {
-            inner: emlite::Val::global("VideoFrame")
-                .new(&[data.into(), init.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("VideoFrame").new(&[data.into(), init.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl VideoFrame {
     pub fn format(&self) -> VideoPixelFormat {
         self.inner.get("format").as_::<VideoPixelFormat>()
     }
+
 }
 impl VideoFrame {
     pub fn coded_width(&self) -> u32 {
         self.inner.get("codedWidth").as_::<u32>()
     }
+
 }
 impl VideoFrame {
     pub fn coded_height(&self) -> u32 {
         self.inner.get("codedHeight").as_::<u32>()
     }
+
 }
 impl VideoFrame {
     pub fn coded_rect(&self) -> DOMRectReadOnly {
         self.inner.get("codedRect").as_::<DOMRectReadOnly>()
     }
+
 }
 impl VideoFrame {
     pub fn visible_rect(&self) -> DOMRectReadOnly {
         self.inner.get("visibleRect").as_::<DOMRectReadOnly>()
     }
+
 }
 impl VideoFrame {
     pub fn rotation(&self) -> f64 {
         self.inner.get("rotation").as_::<f64>()
     }
+
 }
 impl VideoFrame {
     pub fn flip(&self) -> bool {
         self.inner.get("flip").as_::<bool>()
     }
+
 }
 impl VideoFrame {
     pub fn display_width(&self) -> u32 {
         self.inner.get("displayWidth").as_::<u32>()
     }
+
 }
 impl VideoFrame {
     pub fn display_height(&self) -> u32 {
         self.inner.get("displayHeight").as_::<u32>()
     }
+
 }
 impl VideoFrame {
     pub fn duration(&self) -> u64 {
         self.inner.get("duration").as_::<u64>()
     }
+
 }
 impl VideoFrame {
     pub fn timestamp(&self) -> i64 {
         self.inner.get("timestamp").as_::<i64>()
     }
+
 }
 impl VideoFrame {
     pub fn color_space(&self) -> VideoColorSpace {
         self.inner.get("colorSpace").as_::<VideoColorSpace>()
     }
+
 }
 impl VideoFrame {
-    pub fn metadata(&self) -> VideoFrameMetadata {
+    pub fn metadata(&self, ) -> VideoFrameMetadata {
         self.inner.call("metadata", &[]).as_::<VideoFrameMetadata>()
     }
+
 }
 impl VideoFrame {
-    pub fn allocation_size0(&self) -> u32 {
+    pub fn allocation_size0(&self, ) -> u32 {
         self.inner.call("allocationSize", &[]).as_::<u32>()
     }
 
     pub fn allocation_size1(&self, options: VideoFrameCopyToOptions) -> u32 {
-        self.inner
-            .call("allocationSize", &[options.into()])
-            .as_::<u32>()
-    }
-}
-impl VideoFrame {
-    pub fn copy_to0(&self, destination: jsbind::Any) -> jsbind::Promise {
-        self.inner
-            .call("copyTo", &[destination.into()])
-            .as_::<jsbind::Promise>()
+        self.inner.call("allocationSize", &[options.into(), ]).as_::<u32>()
     }
 
-    pub fn copy_to1(
-        &self,
-        destination: jsbind::Any,
-        options: VideoFrameCopyToOptions,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("copyTo", &[destination.into(), options.into()])
-            .as_::<jsbind::Promise>()
-    }
 }
 impl VideoFrame {
-    pub fn clone_(&self) -> VideoFrame {
+    pub fn copy_to0(&self, destination: Any) -> Promise {
+        self.inner.call("copyTo", &[destination.into(), ]).as_::<Promise>()
+    }
+
+    pub fn copy_to1(&self, destination: Any, options: VideoFrameCopyToOptions) -> Promise {
+        self.inner.call("copyTo", &[destination.into(), options.into(), ]).as_::<Promise>()
+    }
+
+}
+impl VideoFrame {
+    pub fn clone_(&self, ) -> VideoFrame {
         self.inner.call("clone", &[]).as_::<VideoFrame>()
     }
+
 }
 impl VideoFrame {
-    pub fn close(&self) -> jsbind::Undefined {
-        self.inner.call("close", &[]).as_::<jsbind::Undefined>()
+    pub fn close(&self, ) -> Undefined {
+        self.inner.call("close", &[]).as_::<Undefined>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSScale {
@@ -7,9 +10,7 @@ pub struct CSSScale {
 }
 impl FromVal for CSSScale {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSScale {
-            inner: CSSTransformComponent::from_val(v),
-        }
+        CSSScale { inner: CSSTransformComponent::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSScale {
 }
 impl AsMut<emlite::Val> for CSSScale {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSScale> for emlite::Val {
     fn from(s: CSSScale) -> emlite::Val {
@@ -48,47 +49,49 @@ impl From<CSSScale> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSScale);
 
+
+
 impl CSSScale {
-    pub fn new0(x: jsbind::Any, y: jsbind::Any) -> CSSScale {
+    pub fn new0(x: Any, y: Any) -> CSSScale {
         Self {
-            inner: emlite::Val::global("CSSScale")
-                .new(&[x.into(), y.into()])
-                .as_::<CSSTransformComponent>(),
+            inner: emlite::Val::global("CSSScale").new(&[x.into(), y.into()]).as_::<CSSTransformComponent>(),
         }
     }
 
-    pub fn new1(x: jsbind::Any, y: jsbind::Any, z: jsbind::Any) -> CSSScale {
+    pub fn new1(x: Any, y: Any, z: Any) -> CSSScale {
         Self {
-            inner: emlite::Val::global("CSSScale")
-                .new(&[x.into(), y.into(), z.into()])
-                .as_::<CSSTransformComponent>(),
+            inner: emlite::Val::global("CSSScale").new(&[x.into(), y.into(), z.into()]).as_::<CSSTransformComponent>(),
         }
     }
+
 }
 impl CSSScale {
-    pub fn x(&self) -> jsbind::Any {
-        self.inner.get("x").as_::<jsbind::Any>()
+    pub fn x(&self) -> Any {
+        self.inner.get("x").as_::<Any>()
     }
 
-    pub fn set_x(&mut self, value: jsbind::Any) {
+    pub fn set_x(&mut self, value: Any) {
         self.inner.set("x", value);
     }
+
 }
 impl CSSScale {
-    pub fn y(&self) -> jsbind::Any {
-        self.inner.get("y").as_::<jsbind::Any>()
+    pub fn y(&self) -> Any {
+        self.inner.get("y").as_::<Any>()
     }
 
-    pub fn set_y(&mut self, value: jsbind::Any) {
+    pub fn set_y(&mut self, value: Any) {
         self.inner.set("y", value);
     }
+
 }
 impl CSSScale {
-    pub fn z(&self) -> jsbind::Any {
-        self.inner.get("z").as_::<jsbind::Any>()
+    pub fn z(&self) -> Any {
+        self.inner.get("z").as_::<Any>()
     }
 
-    pub fn set_z(&mut self, value: jsbind::Any) {
+    pub fn set_z(&mut self, value: Any) {
         self.inner.set("z", value);
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WEBGL_debug_shaders {
@@ -7,9 +10,7 @@ pub struct WEBGL_debug_shaders {
 }
 impl FromVal for WEBGL_debug_shaders {
     fn from_val(v: &emlite::Val) -> Self {
-        WEBGL_debug_shaders {
-            inner: emlite::Val::from_val(v),
-        }
+        WEBGL_debug_shaders { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WEBGL_debug_shaders {
 }
 impl AsMut<emlite::Val> for WEBGL_debug_shaders {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WEBGL_debug_shaders> for emlite::Val {
     fn from(s: WEBGL_debug_shaders) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<WEBGL_debug_shaders> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WEBGL_debug_shaders);
 
+
 impl WEBGL_debug_shaders {
-    pub fn get_translated_shader_source(&self, shader: WebGLShader) -> jsbind::DOMString {
-        self.inner
-            .call("getTranslatedShaderSource", &[shader.into()])
-            .as_::<jsbind::DOMString>()
+    pub fn get_translated_shader_source(&self, shader: WebGLShader) -> DOMString {
+        self.inner.call("getTranslatedShaderSource", &[shader.into(), ]).as_::<DOMString>()
     }
+
 }

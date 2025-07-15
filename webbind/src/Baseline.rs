@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Baseline {
@@ -7,9 +10,7 @@ pub struct Baseline {
 }
 impl FromVal for Baseline {
     fn from_val(v: &emlite::Val) -> Self {
-        Baseline {
-            inner: emlite::Val::from_val(v),
-        }
+        Baseline { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for Baseline {
 }
 impl AsMut<emlite::Val> for Baseline {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<Baseline> for emlite::Val {
     fn from(s: Baseline) -> emlite::Val {
@@ -48,13 +49,16 @@ impl From<Baseline> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Baseline);
 
+
 impl Baseline {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
+
 }
 impl Baseline {
     pub fn value(&self) -> f64 {
         self.inner.get("value").as_::<f64>()
     }
+
 }

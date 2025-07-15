@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Font {
@@ -7,9 +10,7 @@ pub struct Font {
 }
 impl FromVal for Font {
     fn from_val(v: &emlite::Val) -> Self {
-        Font {
-            inner: emlite::Val::from_val(v),
-        }
+        Font { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for Font {
 }
 impl AsMut<emlite::Val> for Font {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<Font> for emlite::Val {
     fn from(s: Font) -> emlite::Val {
@@ -48,13 +49,16 @@ impl From<Font> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Font);
 
+
 impl Font {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
+
 }
 impl Font {
     pub fn glyphs_rendered(&self) -> u32 {
         self.inner.get("glyphsRendered").as_::<u32>()
     }
+
 }

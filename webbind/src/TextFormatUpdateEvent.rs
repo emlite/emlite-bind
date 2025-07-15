@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TextFormatUpdateEvent {
@@ -7,9 +10,7 @@ pub struct TextFormatUpdateEvent {
 }
 impl FromVal for TextFormatUpdateEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        TextFormatUpdateEvent {
-            inner: Event::from_val(v),
-        }
+        TextFormatUpdateEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for TextFormatUpdateEvent {
 }
 impl AsMut<emlite::Val> for TextFormatUpdateEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<TextFormatUpdateEvent> for emlite::Val {
     fn from(s: TextFormatUpdateEvent) -> emlite::Val {
@@ -48,27 +49,25 @@ impl From<TextFormatUpdateEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(TextFormatUpdateEvent);
 
+
+
 impl TextFormatUpdateEvent {
-    pub fn new0(type_: jsbind::DOMString) -> TextFormatUpdateEvent {
+    pub fn new0(type_: DOMString) -> TextFormatUpdateEvent {
         Self {
-            inner: emlite::Val::global("TextFormatUpdateEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("TextFormatUpdateEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
-    pub fn new1(type_: jsbind::DOMString, options: jsbind::Any) -> TextFormatUpdateEvent {
+    pub fn new1(type_: DOMString, options: Any) -> TextFormatUpdateEvent {
         Self {
-            inner: emlite::Val::global("TextFormatUpdateEvent")
-                .new(&[type_.into(), options.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("TextFormatUpdateEvent").new(&[type_.into(), options.into()]).as_::<Event>(),
         }
     }
+
 }
 impl TextFormatUpdateEvent {
-    pub fn get_text_formats(&self) -> jsbind::Sequence<TextFormat> {
-        self.inner
-            .call("getTextFormats", &[])
-            .as_::<jsbind::Sequence<TextFormat>>()
+    pub fn get_text_formats(&self, ) -> Sequence<TextFormat> {
+        self.inner.call("getTextFormats", &[]).as_::<Sequence<TextFormat>>()
     }
+
 }

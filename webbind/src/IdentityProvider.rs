@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IdentityResolveOptions {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for IdentityResolveOptions {
 }
 impl AsMut<emlite::Val> for IdentityResolveOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<IdentityResolveOptions> for emlite::Val {
     fn from(s: IdentityResolveOptions) -> emlite::Val {
@@ -46,13 +49,14 @@ impl From<IdentityResolveOptions> for emlite::Val {
 }
 
 impl IdentityResolveOptions {
-    pub fn account_id(&self) -> jsbind::USVString {
-        self.inner.get("accountId").as_::<jsbind::USVString>()
+    pub fn account_id(&self) -> USVString {
+        self.inner.get("accountId").as_::<USVString>()
     }
 
-    pub fn set_account_id(&mut self, value: jsbind::USVString) {
+    pub fn set_account_id(&mut self, value: USVString) {
         self.inner.set("accountId", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -88,8 +92,8 @@ impl AsRef<emlite::Val> for IdentityUserInfo {
 }
 impl AsMut<emlite::Val> for IdentityUserInfo {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<IdentityUserInfo> for emlite::Val {
     fn from(s: IdentityUserInfo) -> emlite::Val {
@@ -100,40 +104,44 @@ impl From<IdentityUserInfo> for emlite::Val {
 }
 
 impl IdentityUserInfo {
-    pub fn email(&self) -> jsbind::USVString {
-        self.inner.get("email").as_::<jsbind::USVString>()
+    pub fn email(&self) -> USVString {
+        self.inner.get("email").as_::<USVString>()
     }
 
-    pub fn set_email(&mut self, value: jsbind::USVString) {
+    pub fn set_email(&mut self, value: USVString) {
         self.inner.set("email", value);
     }
+
 }
 impl IdentityUserInfo {
-    pub fn name(&self) -> jsbind::USVString {
-        self.inner.get("name").as_::<jsbind::USVString>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn set_name(&mut self, value: jsbind::USVString) {
+    pub fn set_name(&mut self, value: USVString) {
         self.inner.set("name", value);
     }
+
 }
 impl IdentityUserInfo {
-    pub fn given_name(&self) -> jsbind::USVString {
-        self.inner.get("givenName").as_::<jsbind::USVString>()
+    pub fn given_name(&self) -> USVString {
+        self.inner.get("givenName").as_::<USVString>()
     }
 
-    pub fn set_given_name(&mut self, value: jsbind::USVString) {
+    pub fn set_given_name(&mut self, value: USVString) {
         self.inner.set("givenName", value);
     }
+
 }
 impl IdentityUserInfo {
-    pub fn picture(&self) -> jsbind::USVString {
-        self.inner.get("picture").as_::<jsbind::USVString>()
+    pub fn picture(&self) -> USVString {
+        self.inner.get("picture").as_::<USVString>()
     }
 
-    pub fn set_picture(&mut self, value: jsbind::USVString) {
+    pub fn set_picture(&mut self, value: USVString) {
         self.inner.set("picture", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -169,8 +177,8 @@ impl AsRef<emlite::Val> for IdentityProviderConfig {
 }
 impl AsMut<emlite::Val> for IdentityProviderConfig {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<IdentityProviderConfig> for emlite::Val {
     fn from(s: IdentityProviderConfig) -> emlite::Val {
@@ -181,22 +189,24 @@ impl From<IdentityProviderConfig> for emlite::Val {
 }
 
 impl IdentityProviderConfig {
-    pub fn config_url(&self) -> jsbind::USVString {
-        self.inner.get("configURL").as_::<jsbind::USVString>()
+    pub fn config_url(&self) -> USVString {
+        self.inner.get("configURL").as_::<USVString>()
     }
 
-    pub fn set_config_url(&mut self, value: jsbind::USVString) {
+    pub fn set_config_url(&mut self, value: USVString) {
         self.inner.set("configURL", value);
     }
+
 }
 impl IdentityProviderConfig {
-    pub fn client_id(&self) -> jsbind::USVString {
-        self.inner.get("clientId").as_::<jsbind::USVString>()
+    pub fn client_id(&self) -> USVString {
+        self.inner.get("clientId").as_::<USVString>()
     }
 
-    pub fn set_client_id(&mut self, value: jsbind::USVString) {
+    pub fn set_client_id(&mut self, value: USVString) {
         self.inner.set("clientId", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -205,9 +215,7 @@ pub struct IdentityProvider {
 }
 impl FromVal for IdentityProvider {
     fn from_val(v: &emlite::Val) -> Self {
-        IdentityProvider {
-            inner: emlite::Val::from_val(v),
-        }
+        IdentityProvider { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -234,8 +242,8 @@ impl AsRef<emlite::Val> for IdentityProvider {
 }
 impl AsMut<emlite::Val> for IdentityProvider {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<IdentityProvider> for emlite::Val {
     fn from(s: IdentityProvider) -> emlite::Val {
@@ -246,30 +254,26 @@ impl From<IdentityProvider> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(IdentityProvider);
 
+
 impl IdentityProvider {
-    pub fn close() -> jsbind::Undefined {
-        emlite::Val::global("identityprovider")
-            .call("close", &[])
-            .as_::<jsbind::Undefined>()
-    }
-}
-impl IdentityProvider {
-    pub fn resolve0(token: jsbind::DOMString) -> jsbind::Promise {
-        emlite::Val::global("identityprovider")
-            .call("resolve", &[token.into()])
-            .as_::<jsbind::Promise>()
+    pub fn close() -> Undefined {
+        emlite::Val::global("identityprovider").call("close", &[]).as_::<Undefined>()
     }
 
-    pub fn resolve1(token: jsbind::DOMString, options: IdentityResolveOptions) -> jsbind::Promise {
-        emlite::Val::global("identityprovider")
-            .call("resolve", &[token.into(), options.into()])
-            .as_::<jsbind::Promise>()
-    }
 }
 impl IdentityProvider {
-    pub fn get_user_info(config: IdentityProviderConfig) -> jsbind::Promise {
-        emlite::Val::global("identityprovider")
-            .call("getUserInfo", &[config.into()])
-            .as_::<jsbind::Promise>()
+    pub fn resolve0(token: DOMString) -> Promise {
+        emlite::Val::global("identityprovider").call("resolve", &[token.into(), ]).as_::<Promise>()
     }
+
+    pub fn resolve1(token: DOMString, options: IdentityResolveOptions) -> Promise {
+        emlite::Val::global("identityprovider").call("resolve", &[token.into(), options.into(), ]).as_::<Promise>()
+    }
+
+}
+impl IdentityProvider {
+    pub fn get_user_info(config: IdentityProviderConfig) -> Promise {
+        emlite::Val::global("identityprovider").call("getUserInfo", &[config.into(), ]).as_::<Promise>()
+    }
+
 }

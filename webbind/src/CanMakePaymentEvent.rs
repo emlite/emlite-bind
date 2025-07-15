@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CanMakePaymentEvent {
@@ -7,9 +10,7 @@ pub struct CanMakePaymentEvent {
 }
 impl FromVal for CanMakePaymentEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        CanMakePaymentEvent {
-            inner: ExtendableEvent::from_val(v),
-        }
+        CanMakePaymentEvent { inner: ExtendableEvent::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CanMakePaymentEvent {
 }
 impl AsMut<emlite::Val> for CanMakePaymentEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CanMakePaymentEvent> for emlite::Val {
     fn from(s: CanMakePaymentEvent) -> emlite::Val {
@@ -48,19 +49,19 @@ impl From<CanMakePaymentEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CanMakePaymentEvent);
 
+
+
 impl CanMakePaymentEvent {
-    pub fn new(type_: jsbind::DOMString) -> CanMakePaymentEvent {
+    pub fn new(type_: DOMString) -> CanMakePaymentEvent {
         Self {
-            inner: emlite::Val::global("CanMakePaymentEvent")
-                .new(&[type_.into()])
-                .as_::<ExtendableEvent>(),
+            inner: emlite::Val::global("CanMakePaymentEvent").new(&[type_.into()]).as_::<ExtendableEvent>(),
         }
     }
+
 }
 impl CanMakePaymentEvent {
-    pub fn respond_with(&self, can_make_payment_response: jsbind::Promise) -> jsbind::Undefined {
-        self.inner
-            .call("respondWith", &[can_make_payment_response.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn respond_with(&self, can_make_payment_response: Promise) -> Undefined {
+        self.inner.call("respondWith", &[can_make_payment_response.into(), ]).as_::<Undefined>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGClipPathElement {
@@ -7,9 +10,7 @@ pub struct SVGClipPathElement {
 }
 impl FromVal for SVGClipPathElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGClipPathElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGClipPathElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGClipPathElement {
 }
 impl AsMut<emlite::Val> for SVGClipPathElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGClipPathElement> for emlite::Val {
     fn from(s: SVGClipPathElement) -> emlite::Val {
@@ -48,17 +49,16 @@ impl From<SVGClipPathElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGClipPathElement);
 
+
 impl SVGClipPathElement {
     pub fn clip_path_units(&self) -> SVGAnimatedEnumeration {
-        self.inner
-            .get("clipPathUnits")
-            .as_::<SVGAnimatedEnumeration>()
+        self.inner.get("clipPathUnits").as_::<SVGAnimatedEnumeration>()
     }
+
 }
 impl SVGClipPathElement {
     pub fn transform(&self) -> SVGAnimatedTransformList {
-        self.inner
-            .get("transform")
-            .as_::<SVGAnimatedTransformList>()
+        self.inner.get("transform").as_::<SVGAnimatedTransformList>()
     }
+
 }

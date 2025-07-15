@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebTransportSendOptions {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for WebTransportSendOptions {
 }
 impl AsMut<emlite::Val> for WebTransportSendOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WebTransportSendOptions> for emlite::Val {
     fn from(s: WebTransportSendOptions) -> emlite::Val {
@@ -53,6 +56,7 @@ impl WebTransportSendOptions {
     pub fn set_send_group(&mut self, value: WebTransportSendGroup) {
         self.inner.set("sendGroup", value);
     }
+
 }
 impl WebTransportSendOptions {
     pub fn send_order(&self) -> i64 {
@@ -62,6 +66,7 @@ impl WebTransportSendOptions {
     pub fn set_send_order(&mut self, value: i64) {
         self.inner.set("sendOrder", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -70,9 +75,7 @@ pub struct WebTransportDatagramDuplexStream {
 }
 impl FromVal for WebTransportDatagramDuplexStream {
     fn from_val(v: &emlite::Val) -> Self {
-        WebTransportDatagramDuplexStream {
-            inner: emlite::Val::from_val(v),
-        }
+        WebTransportDatagramDuplexStream { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -99,8 +102,8 @@ impl AsRef<emlite::Val> for WebTransportDatagramDuplexStream {
 }
 impl AsMut<emlite::Val> for WebTransportDatagramDuplexStream {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WebTransportDatagramDuplexStream> for emlite::Val {
     fn from(s: WebTransportDatagramDuplexStream) -> emlite::Val {
@@ -111,31 +114,28 @@ impl From<WebTransportDatagramDuplexStream> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WebTransportDatagramDuplexStream);
 
+
 impl WebTransportDatagramDuplexStream {
-    pub fn create_writable0(&self) -> WebTransportDatagramsWritable {
-        self.inner
-            .call("createWritable", &[])
-            .as_::<WebTransportDatagramsWritable>()
+    pub fn create_writable0(&self, ) -> WebTransportDatagramsWritable {
+        self.inner.call("createWritable", &[]).as_::<WebTransportDatagramsWritable>()
     }
 
-    pub fn create_writable1(
-        &self,
-        options: WebTransportSendOptions,
-    ) -> WebTransportDatagramsWritable {
-        self.inner
-            .call("createWritable", &[options.into()])
-            .as_::<WebTransportDatagramsWritable>()
+    pub fn create_writable1(&self, options: WebTransportSendOptions) -> WebTransportDatagramsWritable {
+        self.inner.call("createWritable", &[options.into(), ]).as_::<WebTransportDatagramsWritable>()
     }
+
 }
 impl WebTransportDatagramDuplexStream {
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
+
 }
 impl WebTransportDatagramDuplexStream {
     pub fn max_datagram_size(&self) -> u32 {
         self.inner.get("maxDatagramSize").as_::<u32>()
     }
+
 }
 impl WebTransportDatagramDuplexStream {
     pub fn incoming_max_age(&self) -> f64 {
@@ -145,6 +145,7 @@ impl WebTransportDatagramDuplexStream {
     pub fn set_incoming_max_age(&mut self, value: f64) {
         self.inner.set("incomingMaxAge", value);
     }
+
 }
 impl WebTransportDatagramDuplexStream {
     pub fn outgoing_max_age(&self) -> f64 {
@@ -154,6 +155,7 @@ impl WebTransportDatagramDuplexStream {
     pub fn set_outgoing_max_age(&mut self, value: f64) {
         self.inner.set("outgoingMaxAge", value);
     }
+
 }
 impl WebTransportDatagramDuplexStream {
     pub fn incoming_high_water_mark(&self) -> f64 {
@@ -163,6 +165,7 @@ impl WebTransportDatagramDuplexStream {
     pub fn set_incoming_high_water_mark(&mut self, value: f64) {
         self.inner.set("incomingHighWaterMark", value);
     }
+
 }
 impl WebTransportDatagramDuplexStream {
     pub fn outgoing_high_water_mark(&self) -> f64 {
@@ -172,4 +175,5 @@ impl WebTransportDatagramDuplexStream {
     pub fn set_outgoing_high_water_mark(&mut self, value: f64) {
         self.inner.set("outgoingHighWaterMark", value);
     }
+
 }

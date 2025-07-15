@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NDEFReadingEvent {
@@ -7,9 +10,7 @@ pub struct NDEFReadingEvent {
 }
 impl FromVal for NDEFReadingEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        NDEFReadingEvent {
-            inner: Event::from_val(v),
-        }
+        NDEFReadingEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for NDEFReadingEvent {
 }
 impl AsMut<emlite::Val> for NDEFReadingEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NDEFReadingEvent> for emlite::Val {
     fn from(s: NDEFReadingEvent) -> emlite::Val {
@@ -48,22 +49,25 @@ impl From<NDEFReadingEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(NDEFReadingEvent);
 
+
+
 impl NDEFReadingEvent {
-    pub fn new(type_: jsbind::DOMString, reading_event_init_dict: jsbind::Any) -> NDEFReadingEvent {
+    pub fn new(type_: DOMString, reading_event_init_dict: Any) -> NDEFReadingEvent {
         Self {
-            inner: emlite::Val::global("NDEFReadingEvent")
-                .new(&[type_.into(), reading_event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("NDEFReadingEvent").new(&[type_.into(), reading_event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl NDEFReadingEvent {
-    pub fn serial_number(&self) -> jsbind::DOMString {
-        self.inner.get("serialNumber").as_::<jsbind::DOMString>()
+    pub fn serial_number(&self) -> DOMString {
+        self.inner.get("serialNumber").as_::<DOMString>()
     }
+
 }
 impl NDEFReadingEvent {
     pub fn message(&self) -> NDEFMessage {
         self.inner.get("message").as_::<NDEFMessage>()
     }
+
 }

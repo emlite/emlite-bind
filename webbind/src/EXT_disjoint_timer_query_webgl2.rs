@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EXT_disjoint_timer_query_webgl2 {
@@ -7,9 +10,7 @@ pub struct EXT_disjoint_timer_query_webgl2 {
 }
 impl FromVal for EXT_disjoint_timer_query_webgl2 {
     fn from_val(v: &emlite::Val) -> Self {
-        EXT_disjoint_timer_query_webgl2 {
-            inner: emlite::Val::from_val(v),
-        }
+        EXT_disjoint_timer_query_webgl2 { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for EXT_disjoint_timer_query_webgl2 {
 }
 impl AsMut<emlite::Val> for EXT_disjoint_timer_query_webgl2 {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<EXT_disjoint_timer_query_webgl2> for emlite::Val {
     fn from(s: EXT_disjoint_timer_query_webgl2) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<EXT_disjoint_timer_query_webgl2> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(EXT_disjoint_timer_query_webgl2);
 
+
 impl EXT_disjoint_timer_query_webgl2 {
-    pub fn query_counter_ext(&self, query: WebGLQuery, target: jsbind::Any) -> jsbind::Undefined {
-        self.inner
-            .call("queryCounterEXT", &[query.into(), target.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn query_counter_ext(&self, query: WebGLQuery, target: Any) -> Undefined {
+        self.inner.call("queryCounterEXT", &[query.into(), target.into(), ]).as_::<Undefined>()
     }
+
 }

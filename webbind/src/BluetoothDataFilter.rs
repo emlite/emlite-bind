@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BluetoothDataFilter {
@@ -7,9 +10,7 @@ pub struct BluetoothDataFilter {
 }
 impl FromVal for BluetoothDataFilter {
     fn from_val(v: &emlite::Val) -> Self {
-        BluetoothDataFilter {
-            inner: emlite::Val::from_val(v),
-        }
+        BluetoothDataFilter { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for BluetoothDataFilter {
 }
 impl AsMut<emlite::Val> for BluetoothDataFilter {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<BluetoothDataFilter> for emlite::Val {
     fn from(s: BluetoothDataFilter) -> emlite::Val {
@@ -48,30 +49,31 @@ impl From<BluetoothDataFilter> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BluetoothDataFilter);
 
+
+
 impl BluetoothDataFilter {
     pub fn new0() -> BluetoothDataFilter {
         Self {
-            inner: emlite::Val::global("BluetoothDataFilter")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("BluetoothDataFilter").new(&[]).as_::<emlite::Val>(),
         }
     }
 
-    pub fn new1(init: jsbind::Any) -> BluetoothDataFilter {
+    pub fn new1(init: Any) -> BluetoothDataFilter {
         Self {
-            inner: emlite::Val::global("BluetoothDataFilter")
-                .new(&[init.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("BluetoothDataFilter").new(&[init.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl BluetoothDataFilter {
-    pub fn data_prefix(&self) -> jsbind::ArrayBuffer {
-        self.inner.get("dataPrefix").as_::<jsbind::ArrayBuffer>()
+    pub fn data_prefix(&self) -> ArrayBuffer {
+        self.inner.get("dataPrefix").as_::<ArrayBuffer>()
     }
+
 }
 impl BluetoothDataFilter {
-    pub fn mask(&self) -> jsbind::ArrayBuffer {
-        self.inner.get("mask").as_::<jsbind::ArrayBuffer>()
+    pub fn mask(&self) -> ArrayBuffer {
+        self.inner.get("mask").as_::<ArrayBuffer>()
     }
+
 }

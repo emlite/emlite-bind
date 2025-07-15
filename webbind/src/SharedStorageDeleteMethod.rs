@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SharedStorageDeleteMethod {
@@ -7,9 +10,7 @@ pub struct SharedStorageDeleteMethod {
 }
 impl FromVal for SharedStorageDeleteMethod {
     fn from_val(v: &emlite::Val) -> Self {
-        SharedStorageDeleteMethod {
-            inner: SharedStorageModifierMethod::from_val(v),
-        }
+        SharedStorageDeleteMethod { inner: SharedStorageModifierMethod::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SharedStorageDeleteMethod {
 }
 impl AsMut<emlite::Val> for SharedStorageDeleteMethod {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SharedStorageDeleteMethod> for emlite::Val {
     fn from(s: SharedStorageDeleteMethod) -> emlite::Val {
@@ -48,23 +49,19 @@ impl From<SharedStorageDeleteMethod> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SharedStorageDeleteMethod);
 
+
+
 impl SharedStorageDeleteMethod {
-    pub fn new0(key: jsbind::DOMString) -> SharedStorageDeleteMethod {
+    pub fn new0(key: DOMString) -> SharedStorageDeleteMethod {
         Self {
-            inner: emlite::Val::global("SharedStorageDeleteMethod")
-                .new(&[key.into()])
-                .as_::<SharedStorageModifierMethod>(),
+            inner: emlite::Val::global("SharedStorageDeleteMethod").new(&[key.into()]).as_::<SharedStorageModifierMethod>(),
         }
     }
 
-    pub fn new1(
-        key: jsbind::DOMString,
-        options: SharedStorageModifierMethodOptions,
-    ) -> SharedStorageDeleteMethod {
+    pub fn new1(key: DOMString, options: SharedStorageModifierMethodOptions) -> SharedStorageDeleteMethod {
         Self {
-            inner: emlite::Val::global("SharedStorageDeleteMethod")
-                .new(&[key.into(), options.into()])
-                .as_::<SharedStorageModifierMethod>(),
+            inner: emlite::Val::global("SharedStorageDeleteMethod").new(&[key.into(), options.into()]).as_::<SharedStorageModifierMethod>(),
         }
     }
+
 }

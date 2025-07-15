@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSMathMin {
@@ -7,9 +10,7 @@ pub struct CSSMathMin {
 }
 impl FromVal for CSSMathMin {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSMathMin {
-            inner: CSSMathValue::from_val(v),
-        }
+        CSSMathMin { inner: CSSMathValue::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSMathMin {
 }
 impl AsMut<emlite::Val> for CSSMathMin {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSMathMin> for emlite::Val {
     fn from(s: CSSMathMin) -> emlite::Val {
@@ -48,17 +49,19 @@ impl From<CSSMathMin> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSMathMin);
 
+
+
 impl CSSMathMin {
-    pub fn new(args: jsbind::Any) -> CSSMathMin {
+    pub fn new(args: Any) -> CSSMathMin {
         Self {
-            inner: emlite::Val::global("CSSMathMin")
-                .new(&[args.into()])
-                .as_::<CSSMathValue>(),
+            inner: emlite::Val::global("CSSMathMin").new(&[args.into()]).as_::<CSSMathValue>(),
         }
     }
+
 }
 impl CSSMathMin {
     pub fn values(&self) -> CSSNumericArray {
         self.inner.get("values").as_::<CSSNumericArray>()
     }
+
 }

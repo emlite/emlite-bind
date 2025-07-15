@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRReferenceSpace {
@@ -7,9 +10,7 @@ pub struct XRReferenceSpace {
 }
 impl FromVal for XRReferenceSpace {
     fn from_val(v: &emlite::Val) -> Self {
-        XRReferenceSpace {
-            inner: XRSpace::from_val(v),
-        }
+        XRReferenceSpace { inner: XRSpace::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRReferenceSpace {
 }
 impl AsMut<emlite::Val> for XRReferenceSpace {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRReferenceSpace> for emlite::Val {
     fn from(s: XRReferenceSpace) -> emlite::Val {
@@ -48,19 +49,20 @@ impl From<XRReferenceSpace> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRReferenceSpace);
 
+
 impl XRReferenceSpace {
     pub fn get_offset_reference_space(&self, origin_offset: XRRigidTransform) -> XRReferenceSpace {
-        self.inner
-            .call("getOffsetReferenceSpace", &[origin_offset.into()])
-            .as_::<XRReferenceSpace>()
-    }
-}
-impl XRReferenceSpace {
-    pub fn onreset(&self) -> jsbind::Any {
-        self.inner.get("onreset").as_::<jsbind::Any>()
+        self.inner.call("getOffsetReferenceSpace", &[origin_offset.into(), ]).as_::<XRReferenceSpace>()
     }
 
-    pub fn set_onreset(&mut self, value: jsbind::Any) {
+}
+impl XRReferenceSpace {
+    pub fn onreset(&self) -> Any {
+        self.inner.get("onreset").as_::<Any>()
+    }
+
+    pub fn set_onreset(&mut self, value: Any) {
         self.inner.set("onreset", value);
     }
+
 }

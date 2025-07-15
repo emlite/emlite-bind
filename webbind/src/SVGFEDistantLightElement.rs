@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGFEDistantLightElement {
@@ -7,9 +10,7 @@ pub struct SVGFEDistantLightElement {
 }
 impl FromVal for SVGFEDistantLightElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGFEDistantLightElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFEDistantLightElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGFEDistantLightElement {
 }
 impl AsMut<emlite::Val> for SVGFEDistantLightElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGFEDistantLightElement> for emlite::Val {
     fn from(s: SVGFEDistantLightElement) -> emlite::Val {
@@ -48,13 +49,16 @@ impl From<SVGFEDistantLightElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGFEDistantLightElement);
 
+
 impl SVGFEDistantLightElement {
     pub fn azimuth(&self) -> SVGAnimatedNumber {
         self.inner.get("azimuth").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEDistantLightElement {
     pub fn elevation(&self) -> SVGAnimatedNumber {
         self.inner.get("elevation").as_::<SVGAnimatedNumber>()
     }
+
 }

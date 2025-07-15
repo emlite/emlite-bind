@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct OfflineAudioCompletionEvent {
@@ -7,9 +10,7 @@ pub struct OfflineAudioCompletionEvent {
 }
 impl FromVal for OfflineAudioCompletionEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        OfflineAudioCompletionEvent {
-            inner: Event::from_val(v),
-        }
+        OfflineAudioCompletionEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for OfflineAudioCompletionEvent {
 }
 impl AsMut<emlite::Val> for OfflineAudioCompletionEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<OfflineAudioCompletionEvent> for emlite::Val {
     fn from(s: OfflineAudioCompletionEvent) -> emlite::Val {
@@ -48,20 +49,19 @@ impl From<OfflineAudioCompletionEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(OfflineAudioCompletionEvent);
 
+
+
 impl OfflineAudioCompletionEvent {
-    pub fn new(
-        type_: jsbind::DOMString,
-        event_init_dict: jsbind::Any,
-    ) -> OfflineAudioCompletionEvent {
+    pub fn new(type_: DOMString, event_init_dict: Any) -> OfflineAudioCompletionEvent {
         Self {
-            inner: emlite::Val::global("OfflineAudioCompletionEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("OfflineAudioCompletionEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl OfflineAudioCompletionEvent {
     pub fn rendered_buffer(&self) -> AudioBuffer {
         self.inner.get("renderedBuffer").as_::<AudioBuffer>()
     }
+
 }

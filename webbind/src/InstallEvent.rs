@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct InstallEvent {
@@ -7,9 +10,7 @@ pub struct InstallEvent {
 }
 impl FromVal for InstallEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        InstallEvent {
-            inner: ExtendableEvent::from_val(v),
-        }
+        InstallEvent { inner: ExtendableEvent::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for InstallEvent {
 }
 impl AsMut<emlite::Val> for InstallEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<InstallEvent> for emlite::Val {
     fn from(s: InstallEvent) -> emlite::Val {
@@ -48,27 +49,25 @@ impl From<InstallEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(InstallEvent);
 
+
+
 impl InstallEvent {
-    pub fn new0(type_: jsbind::DOMString) -> InstallEvent {
+    pub fn new0(type_: DOMString) -> InstallEvent {
         Self {
-            inner: emlite::Val::global("InstallEvent")
-                .new(&[type_.into()])
-                .as_::<ExtendableEvent>(),
+            inner: emlite::Val::global("InstallEvent").new(&[type_.into()]).as_::<ExtendableEvent>(),
         }
     }
 
-    pub fn new1(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> InstallEvent {
+    pub fn new1(type_: DOMString, event_init_dict: Any) -> InstallEvent {
         Self {
-            inner: emlite::Val::global("InstallEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<ExtendableEvent>(),
+            inner: emlite::Val::global("InstallEvent").new(&[type_.into(), event_init_dict.into()]).as_::<ExtendableEvent>(),
         }
     }
+
 }
 impl InstallEvent {
-    pub fn add_routes(&self, rules: jsbind::Any) -> jsbind::Promise {
-        self.inner
-            .call("addRoutes", &[rules.into()])
-            .as_::<jsbind::Promise>()
+    pub fn add_routes(&self, rules: Any) -> Promise {
+        self.inner.call("addRoutes", &[rules.into(), ]).as_::<Promise>()
     }
+
 }

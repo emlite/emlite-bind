@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGLengthList {
@@ -7,9 +10,7 @@ pub struct SVGLengthList {
 }
 impl FromVal for SVGLengthList {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGLengthList {
-            inner: emlite::Val::from_val(v),
-        }
+        SVGLengthList { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGLengthList {
 }
 impl AsMut<emlite::Val> for SVGLengthList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGLengthList> for emlite::Val {
     fn from(s: SVGLengthList) -> emlite::Val {
@@ -48,60 +49,58 @@ impl From<SVGLengthList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGLengthList);
 
+
 impl SVGLengthList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl SVGLengthList {
     pub fn number_of_items(&self) -> u32 {
         self.inner.get("numberOfItems").as_::<u32>()
     }
+
 }
 impl SVGLengthList {
-    pub fn clear(&self) -> jsbind::Undefined {
-        self.inner.call("clear", &[]).as_::<jsbind::Undefined>()
+    pub fn clear(&self, ) -> Undefined {
+        self.inner.call("clear", &[]).as_::<Undefined>()
     }
+
 }
 impl SVGLengthList {
     pub fn initialize(&self, new_item: SVGLength) -> SVGLength {
-        self.inner
-            .call("initialize", &[new_item.into()])
-            .as_::<SVGLength>()
+        self.inner.call("initialize", &[new_item.into(), ]).as_::<SVGLength>()
     }
+
 }
 impl SVGLengthList {
     pub fn get_item(&self, index: u32) -> SVGLength {
-        self.inner
-            .call("getItem", &[index.into()])
-            .as_::<SVGLength>()
+        self.inner.call("getItem", &[index.into(), ]).as_::<SVGLength>()
     }
+
 }
 impl SVGLengthList {
     pub fn insert_item_before(&self, new_item: SVGLength, index: u32) -> SVGLength {
-        self.inner
-            .call("insertItemBefore", &[new_item.into(), index.into()])
-            .as_::<SVGLength>()
+        self.inner.call("insertItemBefore", &[new_item.into(), index.into(), ]).as_::<SVGLength>()
     }
+
 }
 impl SVGLengthList {
     pub fn replace_item(&self, new_item: SVGLength, index: u32) -> SVGLength {
-        self.inner
-            .call("replaceItem", &[new_item.into(), index.into()])
-            .as_::<SVGLength>()
+        self.inner.call("replaceItem", &[new_item.into(), index.into(), ]).as_::<SVGLength>()
     }
+
 }
 impl SVGLengthList {
     pub fn remove_item(&self, index: u32) -> SVGLength {
-        self.inner
-            .call("removeItem", &[index.into()])
-            .as_::<SVGLength>()
+        self.inner.call("removeItem", &[index.into(), ]).as_::<SVGLength>()
     }
+
 }
 impl SVGLengthList {
     pub fn append_item(&self, new_item: SVGLength) -> SVGLength {
-        self.inner
-            .call("appendItem", &[new_item.into()])
-            .as_::<SVGLength>()
+        self.inner.call("appendItem", &[new_item.into(), ]).as_::<SVGLength>()
     }
+
 }

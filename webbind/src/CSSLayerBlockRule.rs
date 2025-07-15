@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSLayerBlockRule {
@@ -7,9 +10,7 @@ pub struct CSSLayerBlockRule {
 }
 impl FromVal for CSSLayerBlockRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSLayerBlockRule {
-            inner: CSSGroupingRule::from_val(v),
-        }
+        CSSLayerBlockRule { inner: CSSGroupingRule::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSLayerBlockRule {
 }
 impl AsMut<emlite::Val> for CSSLayerBlockRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSLayerBlockRule> for emlite::Val {
     fn from(s: CSSLayerBlockRule) -> emlite::Val {
@@ -48,8 +49,10 @@ impl From<CSSLayerBlockRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSLayerBlockRule);
 
+
 impl CSSLayerBlockRule {
-    pub fn name(&self) -> jsbind::CSSOMString {
-        self.inner.get("name").as_::<jsbind::CSSOMString>()
+    pub fn name(&self) -> CSSOMString {
+        self.inner.get("name").as_::<CSSOMString>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLDataElement {
@@ -7,9 +10,7 @@ pub struct HTMLDataElement {
 }
 impl FromVal for HTMLDataElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLDataElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLDataElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLDataElement {
 }
 impl AsMut<emlite::Val> for HTMLDataElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLDataElement> for emlite::Val {
     fn from(s: HTMLDataElement) -> emlite::Val {
@@ -48,21 +49,23 @@ impl From<HTMLDataElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLDataElement);
 
+
+
 impl HTMLDataElement {
     pub fn new() -> HTMLDataElement {
         Self {
-            inner: emlite::Val::global("HTMLDataElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLDataElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLDataElement {
-    pub fn value(&self) -> jsbind::DOMString {
-        self.inner.get("value").as_::<jsbind::DOMString>()
+    pub fn value(&self) -> DOMString {
+        self.inner.get("value").as_::<DOMString>()
     }
 
-    pub fn set_value(&mut self, value: jsbind::DOMString) {
+    pub fn set_value(&mut self, value: DOMString) {
         self.inner.set("value", value);
     }
+
 }

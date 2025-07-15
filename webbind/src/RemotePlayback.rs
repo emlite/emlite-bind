@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RemotePlayback {
@@ -7,9 +10,7 @@ pub struct RemotePlayback {
 }
 impl FromVal for RemotePlayback {
     fn from_val(v: &emlite::Val) -> Self {
-        RemotePlayback {
-            inner: EventTarget::from_val(v),
-        }
+        RemotePlayback { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for RemotePlayback {
 }
 impl AsMut<emlite::Val> for RemotePlayback {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RemotePlayback> for emlite::Val {
     fn from(s: RemotePlayback) -> emlite::Val {
@@ -48,60 +49,62 @@ impl From<RemotePlayback> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RemotePlayback);
 
+
 impl RemotePlayback {
-    pub fn watch_availability(&self, callback: jsbind::Function) -> jsbind::Promise {
-        self.inner
-            .call("watchAvailability", &[callback.into()])
-            .as_::<jsbind::Promise>()
-    }
-}
-impl RemotePlayback {
-    pub fn cancel_watch_availability0(&self) -> jsbind::Promise {
-        self.inner
-            .call("cancelWatchAvailability", &[])
-            .as_::<jsbind::Promise>()
+    pub fn watch_availability(&self, callback: Function) -> Promise {
+        self.inner.call("watchAvailability", &[callback.into(), ]).as_::<Promise>()
     }
 
-    pub fn cancel_watch_availability1(&self, id: i32) -> jsbind::Promise {
-        self.inner
-            .call("cancelWatchAvailability", &[id.into()])
-            .as_::<jsbind::Promise>()
+}
+impl RemotePlayback {
+    pub fn cancel_watch_availability0(&self, ) -> Promise {
+        self.inner.call("cancelWatchAvailability", &[]).as_::<Promise>()
     }
+
+    pub fn cancel_watch_availability1(&self, id: i32) -> Promise {
+        self.inner.call("cancelWatchAvailability", &[id.into(), ]).as_::<Promise>()
+    }
+
 }
 impl RemotePlayback {
     pub fn state(&self) -> RemotePlaybackState {
         self.inner.get("state").as_::<RemotePlaybackState>()
     }
+
 }
 impl RemotePlayback {
-    pub fn onconnecting(&self) -> jsbind::Any {
-        self.inner.get("onconnecting").as_::<jsbind::Any>()
+    pub fn onconnecting(&self) -> Any {
+        self.inner.get("onconnecting").as_::<Any>()
     }
 
-    pub fn set_onconnecting(&mut self, value: jsbind::Any) {
+    pub fn set_onconnecting(&mut self, value: Any) {
         self.inner.set("onconnecting", value);
     }
+
 }
 impl RemotePlayback {
-    pub fn onconnect(&self) -> jsbind::Any {
-        self.inner.get("onconnect").as_::<jsbind::Any>()
+    pub fn onconnect(&self) -> Any {
+        self.inner.get("onconnect").as_::<Any>()
     }
 
-    pub fn set_onconnect(&mut self, value: jsbind::Any) {
+    pub fn set_onconnect(&mut self, value: Any) {
         self.inner.set("onconnect", value);
     }
+
 }
 impl RemotePlayback {
-    pub fn ondisconnect(&self) -> jsbind::Any {
-        self.inner.get("ondisconnect").as_::<jsbind::Any>()
+    pub fn ondisconnect(&self) -> Any {
+        self.inner.get("ondisconnect").as_::<Any>()
     }
 
-    pub fn set_ondisconnect(&mut self, value: jsbind::Any) {
+    pub fn set_ondisconnect(&mut self, value: Any) {
         self.inner.set("ondisconnect", value);
     }
+
 }
 impl RemotePlayback {
-    pub fn prompt(&self) -> jsbind::Promise {
-        self.inner.call("prompt", &[]).as_::<jsbind::Promise>()
+    pub fn prompt(&self, ) -> Promise {
+        self.inner.call("prompt", &[]).as_::<Promise>()
     }
+
 }

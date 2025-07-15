@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MessageChannel {
@@ -7,9 +10,7 @@ pub struct MessageChannel {
 }
 impl FromVal for MessageChannel {
     fn from_val(v: &emlite::Val) -> Self {
-        MessageChannel {
-            inner: emlite::Val::from_val(v),
-        }
+        MessageChannel { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for MessageChannel {
 }
 impl AsMut<emlite::Val> for MessageChannel {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MessageChannel> for emlite::Val {
     fn from(s: MessageChannel) -> emlite::Val {
@@ -48,22 +49,25 @@ impl From<MessageChannel> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MessageChannel);
 
+
+
 impl MessageChannel {
     pub fn new() -> MessageChannel {
         Self {
-            inner: emlite::Val::global("MessageChannel")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("MessageChannel").new(&[]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl MessageChannel {
-    pub fn port1(&self) -> jsbind::Any {
-        self.inner.get("port1").as_::<jsbind::Any>()
+    pub fn port1(&self) -> Any {
+        self.inner.get("port1").as_::<Any>()
     }
+
 }
 impl MessageChannel {
-    pub fn port2(&self) -> jsbind::Any {
-        self.inner.get("port2").as_::<jsbind::Any>()
+    pub fn port2(&self) -> Any {
+        self.inner.get("port2").as_::<Any>()
     }
+
 }

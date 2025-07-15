@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BluetoothPermissionResult {
@@ -7,9 +10,7 @@ pub struct BluetoothPermissionResult {
 }
 impl FromVal for BluetoothPermissionResult {
     fn from_val(v: &emlite::Val) -> Self {
-        BluetoothPermissionResult {
-            inner: PermissionStatus::from_val(v),
-        }
+        BluetoothPermissionResult { inner: PermissionStatus::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for BluetoothPermissionResult {
 }
 impl AsMut<emlite::Val> for BluetoothPermissionResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<BluetoothPermissionResult> for emlite::Val {
     fn from(s: BluetoothPermissionResult) -> emlite::Val {
@@ -48,14 +49,14 @@ impl From<BluetoothPermissionResult> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BluetoothPermissionResult);
 
+
 impl BluetoothPermissionResult {
-    pub fn devices(&self) -> jsbind::FrozenArray<BluetoothDevice> {
-        self.inner
-            .get("devices")
-            .as_::<jsbind::FrozenArray<BluetoothDevice>>()
+    pub fn devices(&self) -> FrozenArray<BluetoothDevice> {
+        self.inner.get("devices").as_::<FrozenArray<BluetoothDevice>>()
     }
 
-    pub fn set_devices(&mut self, value: jsbind::FrozenArray<BluetoothDevice>) {
+    pub fn set_devices(&mut self, value: FrozenArray<BluetoothDevice>) {
         self.inner.set("devices", value);
     }
+
 }

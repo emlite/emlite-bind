@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DataTransferItem {
@@ -7,9 +10,7 @@ pub struct DataTransferItem {
 }
 impl FromVal for DataTransferItem {
     fn from_val(v: &emlite::Val) -> Self {
-        DataTransferItem {
-            inner: emlite::Val::from_val(v),
-        }
+        DataTransferItem { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for DataTransferItem {
 }
 impl AsMut<emlite::Val> for DataTransferItem {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<DataTransferItem> for emlite::Val {
     fn from(s: DataTransferItem) -> emlite::Val {
@@ -48,39 +49,40 @@ impl From<DataTransferItem> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(DataTransferItem);
 
+
 impl DataTransferItem {
-    pub fn kind(&self) -> jsbind::DOMString {
-        self.inner.get("kind").as_::<jsbind::DOMString>()
+    pub fn kind(&self) -> DOMString {
+        self.inner.get("kind").as_::<DOMString>()
     }
+
 }
 impl DataTransferItem {
-    pub fn type_(&self) -> jsbind::DOMString {
-        self.inner.get("type").as_::<jsbind::DOMString>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
+
 }
 impl DataTransferItem {
-    pub fn get_as_string(&self, callback: jsbind::Any) -> jsbind::Undefined {
-        self.inner
-            .call("getAsString", &[callback.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn get_as_string(&self, callback: Any) -> Undefined {
+        self.inner.call("getAsString", &[callback.into(), ]).as_::<Undefined>()
     }
+
 }
 impl DataTransferItem {
-    pub fn get_as_file(&self) -> File {
+    pub fn get_as_file(&self, ) -> File {
         self.inner.call("getAsFile", &[]).as_::<File>()
     }
+
 }
 impl DataTransferItem {
-    pub fn webkit_get_as_entry(&self) -> FileSystemEntry {
-        self.inner
-            .call("webkitGetAsEntry", &[])
-            .as_::<FileSystemEntry>()
+    pub fn webkit_get_as_entry(&self, ) -> FileSystemEntry {
+        self.inner.call("webkitGetAsEntry", &[]).as_::<FileSystemEntry>()
     }
+
 }
 impl DataTransferItem {
-    pub fn get_as_file_system_handle(&self) -> jsbind::Promise {
-        self.inner
-            .call("getAsFileSystemHandle", &[])
-            .as_::<jsbind::Promise>()
+    pub fn get_as_file_system_handle(&self, ) -> Promise {
+        self.inner.call("getAsFileSystemHandle", &[]).as_::<Promise>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSParserQualifiedRule {
@@ -7,9 +10,7 @@ pub struct CSSParserQualifiedRule {
 }
 impl FromVal for CSSParserQualifiedRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSParserQualifiedRule {
-            inner: CSSParserRule::from_val(v),
-        }
+        CSSParserQualifiedRule { inner: CSSParserRule::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSParserQualifiedRule {
 }
 impl AsMut<emlite::Val> for CSSParserQualifiedRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSParserQualifiedRule> for emlite::Val {
     fn from(s: CSSParserQualifiedRule) -> emlite::Val {
@@ -48,37 +49,31 @@ impl From<CSSParserQualifiedRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSParserQualifiedRule);
 
+
+
 impl CSSParserQualifiedRule {
-    pub fn new0(prelude: jsbind::Sequence<jsbind::Any>) -> CSSParserQualifiedRule {
+    pub fn new0(prelude: Sequence<Any>) -> CSSParserQualifiedRule {
         Self {
-            inner: emlite::Val::global("CSSParserQualifiedRule")
-                .new(&[prelude.into()])
-                .as_::<CSSParserRule>(),
+            inner: emlite::Val::global("CSSParserQualifiedRule").new(&[prelude.into()]).as_::<CSSParserRule>(),
         }
     }
 
-    pub fn new1(
-        prelude: jsbind::Sequence<jsbind::Any>,
-        body: jsbind::Sequence<CSSParserRule>,
-    ) -> CSSParserQualifiedRule {
+    pub fn new1(prelude: Sequence<Any>, body: Sequence<CSSParserRule>) -> CSSParserQualifiedRule {
         Self {
-            inner: emlite::Val::global("CSSParserQualifiedRule")
-                .new(&[prelude.into(), body.into()])
-                .as_::<CSSParserRule>(),
+            inner: emlite::Val::global("CSSParserQualifiedRule").new(&[prelude.into(), body.into()]).as_::<CSSParserRule>(),
         }
     }
+
 }
 impl CSSParserQualifiedRule {
-    pub fn prelude(&self) -> jsbind::FrozenArray<CSSParserValue> {
-        self.inner
-            .get("prelude")
-            .as_::<jsbind::FrozenArray<CSSParserValue>>()
+    pub fn prelude(&self) -> FrozenArray<CSSParserValue> {
+        self.inner.get("prelude").as_::<FrozenArray<CSSParserValue>>()
     }
+
 }
 impl CSSParserQualifiedRule {
-    pub fn body(&self) -> jsbind::FrozenArray<CSSParserRule> {
-        self.inner
-            .get("body")
-            .as_::<jsbind::FrozenArray<CSSParserRule>>()
+    pub fn body(&self) -> FrozenArray<CSSParserRule> {
+        self.inner.get("body").as_::<FrozenArray<CSSParserRule>>()
     }
+
 }

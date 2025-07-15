@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGStyleElement {
@@ -7,9 +10,7 @@ pub struct SVGStyleElement {
 }
 impl FromVal for SVGStyleElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGStyleElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGStyleElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGStyleElement {
 }
 impl AsMut<emlite::Val> for SVGStyleElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGStyleElement> for emlite::Val {
     fn from(s: SVGStyleElement) -> emlite::Val {
@@ -48,35 +49,40 @@ impl From<SVGStyleElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGStyleElement);
 
+
 impl SVGStyleElement {
-    pub fn type_(&self) -> jsbind::DOMString {
-        self.inner.get("type").as_::<jsbind::DOMString>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 
-    pub fn set_type_(&mut self, value: jsbind::DOMString) {
+    pub fn set_type_(&mut self, value: DOMString) {
         self.inner.set("type", value);
     }
+
 }
 impl SVGStyleElement {
-    pub fn media(&self) -> jsbind::DOMString {
-        self.inner.get("media").as_::<jsbind::DOMString>()
+    pub fn media(&self) -> DOMString {
+        self.inner.get("media").as_::<DOMString>()
     }
 
-    pub fn set_media(&mut self, value: jsbind::DOMString) {
+    pub fn set_media(&mut self, value: DOMString) {
         self.inner.set("media", value);
     }
+
 }
 impl SVGStyleElement {
-    pub fn title(&self) -> jsbind::DOMString {
-        self.inner.get("title").as_::<jsbind::DOMString>()
+    pub fn title(&self) -> DOMString {
+        self.inner.get("title").as_::<DOMString>()
     }
 
-    pub fn set_title(&mut self, value: jsbind::DOMString) {
+    pub fn set_title(&mut self, value: DOMString) {
         self.inner.set("title", value);
     }
+
 }
 impl SVGStyleElement {
     pub fn sheet(&self) -> CSSStyleSheet {
         self.inner.get("sheet").as_::<CSSStyleSheet>()
     }
+
 }

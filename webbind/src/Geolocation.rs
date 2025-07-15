@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PositionOptions {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for PositionOptions {
 }
 impl AsMut<emlite::Val> for PositionOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PositionOptions> for emlite::Val {
     fn from(s: PositionOptions) -> emlite::Val {
@@ -53,6 +56,7 @@ impl PositionOptions {
     pub fn set_enable_high_accuracy(&mut self, value: bool) {
         self.inner.set("enableHighAccuracy", value);
     }
+
 }
 impl PositionOptions {
     pub fn timeout(&self) -> u32 {
@@ -62,6 +66,7 @@ impl PositionOptions {
     pub fn set_timeout(&mut self, value: u32) {
         self.inner.set("timeout", value);
     }
+
 }
 impl PositionOptions {
     pub fn maximum_age(&self) -> u32 {
@@ -71,6 +76,7 @@ impl PositionOptions {
     pub fn set_maximum_age(&mut self, value: u32) {
         self.inner.set("maximumAge", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -79,9 +85,7 @@ pub struct Geolocation {
 }
 impl FromVal for Geolocation {
     fn from_val(v: &emlite::Val) -> Self {
-        Geolocation {
-            inner: emlite::Val::from_val(v),
-        }
+        Geolocation { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -108,8 +112,8 @@ impl AsRef<emlite::Val> for Geolocation {
 }
 impl AsMut<emlite::Val> for Geolocation {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<Geolocation> for emlite::Val {
     fn from(s: Geolocation) -> emlite::Val {
@@ -120,86 +124,38 @@ impl From<Geolocation> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Geolocation);
 
+
 impl Geolocation {
-    pub fn get_current_position0(&self, success_callback: jsbind::Function) -> jsbind::Undefined {
-        self.inner
-            .call("getCurrentPosition", &[success_callback.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn get_current_position0(&self, success_callback: Function) -> Undefined {
+        self.inner.call("getCurrentPosition", &[success_callback.into(), ]).as_::<Undefined>()
     }
 
-    pub fn get_current_position1(
-        &self,
-        success_callback: jsbind::Function,
-        error_callback: jsbind::Function,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call(
-                "getCurrentPosition",
-                &[success_callback.into(), error_callback.into()],
-            )
-            .as_::<jsbind::Undefined>()
+    pub fn get_current_position1(&self, success_callback: Function, error_callback: Function) -> Undefined {
+        self.inner.call("getCurrentPosition", &[success_callback.into(), error_callback.into(), ]).as_::<Undefined>()
     }
 
-    pub fn get_current_position2(
-        &self,
-        success_callback: jsbind::Function,
-        error_callback: jsbind::Function,
-        options: PositionOptions,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call(
-                "getCurrentPosition",
-                &[
-                    success_callback.into(),
-                    error_callback.into(),
-                    options.into(),
-                ],
-            )
-            .as_::<jsbind::Undefined>()
+    pub fn get_current_position2(&self, success_callback: Function, error_callback: Function, options: PositionOptions) -> Undefined {
+        self.inner.call("getCurrentPosition", &[success_callback.into(), error_callback.into(), options.into(), ]).as_::<Undefined>()
     }
+
 }
 impl Geolocation {
-    pub fn watch_position0(&self, success_callback: jsbind::Function) -> i32 {
-        self.inner
-            .call("watchPosition", &[success_callback.into()])
-            .as_::<i32>()
+    pub fn watch_position0(&self, success_callback: Function) -> i32 {
+        self.inner.call("watchPosition", &[success_callback.into(), ]).as_::<i32>()
     }
 
-    pub fn watch_position1(
-        &self,
-        success_callback: jsbind::Function,
-        error_callback: jsbind::Function,
-    ) -> i32 {
-        self.inner
-            .call(
-                "watchPosition",
-                &[success_callback.into(), error_callback.into()],
-            )
-            .as_::<i32>()
+    pub fn watch_position1(&self, success_callback: Function, error_callback: Function) -> i32 {
+        self.inner.call("watchPosition", &[success_callback.into(), error_callback.into(), ]).as_::<i32>()
     }
 
-    pub fn watch_position2(
-        &self,
-        success_callback: jsbind::Function,
-        error_callback: jsbind::Function,
-        options: PositionOptions,
-    ) -> i32 {
-        self.inner
-            .call(
-                "watchPosition",
-                &[
-                    success_callback.into(),
-                    error_callback.into(),
-                    options.into(),
-                ],
-            )
-            .as_::<i32>()
+    pub fn watch_position2(&self, success_callback: Function, error_callback: Function, options: PositionOptions) -> i32 {
+        self.inner.call("watchPosition", &[success_callback.into(), error_callback.into(), options.into(), ]).as_::<i32>()
     }
+
 }
 impl Geolocation {
-    pub fn clear_watch(&self, watch_id: i32) -> jsbind::Undefined {
-        self.inner
-            .call("clearWatch", &[watch_id.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn clear_watch(&self, watch_id: i32) -> Undefined {
+        self.inner.call("clearWatch", &[watch_id.into(), ]).as_::<Undefined>()
     }
+
 }

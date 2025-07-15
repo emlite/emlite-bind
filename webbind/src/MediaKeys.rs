@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaKeysPolicy {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for MediaKeysPolicy {
 }
 impl AsMut<emlite::Val> for MediaKeysPolicy {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MediaKeysPolicy> for emlite::Val {
     fn from(s: MediaKeysPolicy) -> emlite::Val {
@@ -46,13 +49,14 @@ impl From<MediaKeysPolicy> for emlite::Val {
 }
 
 impl MediaKeysPolicy {
-    pub fn min_hdcp_version(&self) -> jsbind::DOMString {
-        self.inner.get("minHdcpVersion").as_::<jsbind::DOMString>()
+    pub fn min_hdcp_version(&self) -> DOMString {
+        self.inner.get("minHdcpVersion").as_::<DOMString>()
     }
 
-    pub fn set_min_hdcp_version(&mut self, value: jsbind::DOMString) {
+    pub fn set_min_hdcp_version(&mut self, value: DOMString) {
         self.inner.set("minHdcpVersion", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -61,9 +65,7 @@ pub struct MediaKeys {
 }
 impl FromVal for MediaKeys {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaKeys {
-            inner: emlite::Val::from_val(v),
-        }
+        MediaKeys { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -90,8 +92,8 @@ impl AsRef<emlite::Val> for MediaKeys {
 }
 impl AsMut<emlite::Val> for MediaKeys {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MediaKeys> for emlite::Val {
     fn from(s: MediaKeys) -> emlite::Val {
@@ -102,36 +104,30 @@ impl From<MediaKeys> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MediaKeys);
 
+
 impl MediaKeys {
-    pub fn create_session0(&self) -> MediaKeySession {
-        self.inner
-            .call("createSession", &[])
-            .as_::<MediaKeySession>()
+    pub fn create_session0(&self, ) -> MediaKeySession {
+        self.inner.call("createSession", &[]).as_::<MediaKeySession>()
     }
 
     pub fn create_session1(&self, session_type: MediaKeySessionType) -> MediaKeySession {
-        self.inner
-            .call("createSession", &[session_type.into()])
-            .as_::<MediaKeySession>()
-    }
-}
-impl MediaKeys {
-    pub fn get_status_for_policy0(&self) -> jsbind::Promise {
-        self.inner
-            .call("getStatusForPolicy", &[])
-            .as_::<jsbind::Promise>()
+        self.inner.call("createSession", &[session_type.into(), ]).as_::<MediaKeySession>()
     }
 
-    pub fn get_status_for_policy1(&self, policy: MediaKeysPolicy) -> jsbind::Promise {
-        self.inner
-            .call("getStatusForPolicy", &[policy.into()])
-            .as_::<jsbind::Promise>()
-    }
 }
 impl MediaKeys {
-    pub fn set_server_certificate(&self, server_certificate: jsbind::Any) -> jsbind::Promise {
-        self.inner
-            .call("setServerCertificate", &[server_certificate.into()])
-            .as_::<jsbind::Promise>()
+    pub fn get_status_for_policy0(&self, ) -> Promise {
+        self.inner.call("getStatusForPolicy", &[]).as_::<Promise>()
     }
+
+    pub fn get_status_for_policy1(&self, policy: MediaKeysPolicy) -> Promise {
+        self.inner.call("getStatusForPolicy", &[policy.into(), ]).as_::<Promise>()
+    }
+
+}
+impl MediaKeys {
+    pub fn set_server_certificate(&self, server_certificate: Any) -> Promise {
+        self.inner.call("setServerCertificate", &[server_certificate.into(), ]).as_::<Promise>()
+    }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TextEncoderEncodeIntoResult {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for TextEncoderEncodeIntoResult {
 }
 impl AsMut<emlite::Val> for TextEncoderEncodeIntoResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<TextEncoderEncodeIntoResult> for emlite::Val {
     fn from(s: TextEncoderEncodeIntoResult) -> emlite::Val {
@@ -53,6 +56,7 @@ impl TextEncoderEncodeIntoResult {
     pub fn set_read(&mut self, value: u64) {
         self.inner.set("read", value);
     }
+
 }
 impl TextEncoderEncodeIntoResult {
     pub fn written(&self) -> u64 {
@@ -62,6 +66,7 @@ impl TextEncoderEncodeIntoResult {
     pub fn set_written(&mut self, value: u64) {
         self.inner.set("written", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -70,9 +75,7 @@ pub struct TextEncoder {
 }
 impl FromVal for TextEncoder {
     fn from_val(v: &emlite::Val) -> Self {
-        TextEncoder {
-            inner: emlite::Val::from_val(v),
-        }
+        TextEncoder { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -99,8 +102,8 @@ impl AsRef<emlite::Val> for TextEncoder {
 }
 impl AsMut<emlite::Val> for TextEncoder {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<TextEncoder> for emlite::Val {
     fn from(s: TextEncoder) -> emlite::Val {
@@ -111,39 +114,35 @@ impl From<TextEncoder> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(TextEncoder);
 
+
+
 impl TextEncoder {
     pub fn new() -> TextEncoder {
         Self {
-            inner: emlite::Val::global("TextEncoder")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("TextEncoder").new(&[]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl TextEncoder {
-    pub fn encode0(&self) -> jsbind::Uint8Array {
-        self.inner.call("encode", &[]).as_::<jsbind::Uint8Array>()
+    pub fn encode0(&self, ) -> Uint8Array {
+        self.inner.call("encode", &[]).as_::<Uint8Array>()
     }
 
-    pub fn encode1(&self, input: jsbind::USVString) -> jsbind::Uint8Array {
-        self.inner
-            .call("encode", &[input.into()])
-            .as_::<jsbind::Uint8Array>()
+    pub fn encode1(&self, input: USVString) -> Uint8Array {
+        self.inner.call("encode", &[input.into(), ]).as_::<Uint8Array>()
     }
+
 }
 impl TextEncoder {
-    pub fn encode_into(
-        &self,
-        source: jsbind::USVString,
-        destination: jsbind::Uint8Array,
-    ) -> TextEncoderEncodeIntoResult {
-        self.inner
-            .call("encodeInto", &[source.into(), destination.into()])
-            .as_::<TextEncoderEncodeIntoResult>()
+    pub fn encode_into(&self, source: USVString, destination: Uint8Array) -> TextEncoderEncodeIntoResult {
+        self.inner.call("encodeInto", &[source.into(), destination.into(), ]).as_::<TextEncoderEncodeIntoResult>()
     }
+
 }
 impl TextEncoder {
-    pub fn encoding(&self) -> jsbind::DOMString {
-        self.inner.get("encoding").as_::<jsbind::DOMString>()
+    pub fn encoding(&self) -> DOMString {
+        self.inner.get("encoding").as_::<DOMString>()
     }
+
 }

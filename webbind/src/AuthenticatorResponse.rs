@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AuthenticatorResponse {
@@ -7,9 +10,7 @@ pub struct AuthenticatorResponse {
 }
 impl FromVal for AuthenticatorResponse {
     fn from_val(v: &emlite::Val) -> Self {
-        AuthenticatorResponse {
-            inner: emlite::Val::from_val(v),
-        }
+        AuthenticatorResponse { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for AuthenticatorResponse {
 }
 impl AsMut<emlite::Val> for AuthenticatorResponse {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AuthenticatorResponse> for emlite::Val {
     fn from(s: AuthenticatorResponse) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<AuthenticatorResponse> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AuthenticatorResponse);
 
+
 impl AuthenticatorResponse {
-    pub fn client_data_json(&self) -> jsbind::ArrayBuffer {
-        self.inner
-            .get("clientDataJSON")
-            .as_::<jsbind::ArrayBuffer>()
+    pub fn client_data_json(&self) -> ArrayBuffer {
+        self.inner.get("clientDataJSON").as_::<ArrayBuffer>()
     }
+
 }

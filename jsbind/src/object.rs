@@ -1,4 +1,4 @@
-use crate::Any;
+use crate::any::Any;
 use crate::utils::*;
 
 /// ECMAScript ordinary object backed by an `emlite::Val`.

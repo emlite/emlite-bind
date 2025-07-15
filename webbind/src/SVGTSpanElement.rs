@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGTSpanElement {
@@ -7,9 +10,7 @@ pub struct SVGTSpanElement {
 }
 impl FromVal for SVGTSpanElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGTSpanElement {
-            inner: SVGTextPositioningElement::from_val(v),
-        }
+        SVGTSpanElement { inner: SVGTextPositioningElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGTSpanElement {
 }
 impl AsMut<emlite::Val> for SVGTSpanElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGTSpanElement> for emlite::Val {
     fn from(s: SVGTSpanElement) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<SVGTSpanElement> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(SVGTSpanElement);
+
+

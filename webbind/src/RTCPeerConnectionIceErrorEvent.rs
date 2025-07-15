@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCPeerConnectionIceErrorEvent {
@@ -7,9 +10,7 @@ pub struct RTCPeerConnectionIceErrorEvent {
 }
 impl FromVal for RTCPeerConnectionIceErrorEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCPeerConnectionIceErrorEvent {
-            inner: Event::from_val(v),
-        }
+        RTCPeerConnectionIceErrorEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for RTCPeerConnectionIceErrorEvent {
 }
 impl AsMut<emlite::Val> for RTCPeerConnectionIceErrorEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RTCPeerConnectionIceErrorEvent> for emlite::Val {
     fn from(s: RTCPeerConnectionIceErrorEvent) -> emlite::Val {
@@ -48,40 +49,43 @@ impl From<RTCPeerConnectionIceErrorEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCPeerConnectionIceErrorEvent);
 
+
+
 impl RTCPeerConnectionIceErrorEvent {
-    pub fn new(
-        type_: jsbind::DOMString,
-        event_init_dict: jsbind::Any,
-    ) -> RTCPeerConnectionIceErrorEvent {
+    pub fn new(type_: DOMString, event_init_dict: Any) -> RTCPeerConnectionIceErrorEvent {
         Self {
-            inner: emlite::Val::global("RTCPeerConnectionIceErrorEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("RTCPeerConnectionIceErrorEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl RTCPeerConnectionIceErrorEvent {
-    pub fn address(&self) -> jsbind::DOMString {
-        self.inner.get("address").as_::<jsbind::DOMString>()
+    pub fn address(&self) -> DOMString {
+        self.inner.get("address").as_::<DOMString>()
     }
+
 }
 impl RTCPeerConnectionIceErrorEvent {
     pub fn port(&self) -> u16 {
         self.inner.get("port").as_::<u16>()
     }
+
 }
 impl RTCPeerConnectionIceErrorEvent {
-    pub fn url(&self) -> jsbind::USVString {
-        self.inner.get("url").as_::<jsbind::USVString>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
+
 }
 impl RTCPeerConnectionIceErrorEvent {
     pub fn error_code(&self) -> u16 {
         self.inner.get("errorCode").as_::<u16>()
     }
+
 }
 impl RTCPeerConnectionIceErrorEvent {
-    pub fn error_text(&self) -> jsbind::USVString {
-        self.inner.get("errorText").as_::<jsbind::USVString>()
+    pub fn error_text(&self) -> USVString {
+        self.inner.get("errorText").as_::<USVString>()
     }
+
 }

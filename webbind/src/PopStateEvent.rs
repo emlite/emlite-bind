@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PopStateEvent {
@@ -7,9 +10,7 @@ pub struct PopStateEvent {
 }
 impl FromVal for PopStateEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        PopStateEvent {
-            inner: Event::from_val(v),
-        }
+        PopStateEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PopStateEvent {
 }
 impl AsMut<emlite::Val> for PopStateEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PopStateEvent> for emlite::Val {
     fn from(s: PopStateEvent) -> emlite::Val {
@@ -48,30 +49,31 @@ impl From<PopStateEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PopStateEvent);
 
+
+
 impl PopStateEvent {
-    pub fn new0(type_: jsbind::DOMString) -> PopStateEvent {
+    pub fn new0(type_: DOMString) -> PopStateEvent {
         Self {
-            inner: emlite::Val::global("PopStateEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("PopStateEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
-    pub fn new1(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> PopStateEvent {
+    pub fn new1(type_: DOMString, event_init_dict: Any) -> PopStateEvent {
         Self {
-            inner: emlite::Val::global("PopStateEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("PopStateEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl PopStateEvent {
-    pub fn state(&self) -> jsbind::Any {
-        self.inner.get("state").as_::<jsbind::Any>()
+    pub fn state(&self) -> Any {
+        self.inner.get("state").as_::<Any>()
     }
+
 }
 impl PopStateEvent {
     pub fn has_ua_visual_transition(&self) -> bool {
         self.inner.get("hasUAVisualTransition").as_::<bool>()
     }
+
 }

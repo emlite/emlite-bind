@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaStreamTrackEvent {
@@ -7,9 +10,7 @@ pub struct MediaStreamTrackEvent {
 }
 impl FromVal for MediaStreamTrackEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaStreamTrackEvent {
-            inner: Event::from_val(v),
-        }
+        MediaStreamTrackEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for MediaStreamTrackEvent {
 }
 impl AsMut<emlite::Val> for MediaStreamTrackEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MediaStreamTrackEvent> for emlite::Val {
     fn from(s: MediaStreamTrackEvent) -> emlite::Val {
@@ -48,17 +49,19 @@ impl From<MediaStreamTrackEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MediaStreamTrackEvent);
 
+
+
 impl MediaStreamTrackEvent {
-    pub fn new(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> MediaStreamTrackEvent {
+    pub fn new(type_: DOMString, event_init_dict: Any) -> MediaStreamTrackEvent {
         Self {
-            inner: emlite::Val::global("MediaStreamTrackEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("MediaStreamTrackEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl MediaStreamTrackEvent {
     pub fn track(&self) -> MediaStreamTrack {
         self.inner.get("track").as_::<MediaStreamTrack>()
     }
+
 }

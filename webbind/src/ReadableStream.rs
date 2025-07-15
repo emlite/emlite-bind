@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ReadableStreamGetReaderOptions {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for ReadableStreamGetReaderOptions {
 }
 impl AsMut<emlite::Val> for ReadableStreamGetReaderOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ReadableStreamGetReaderOptions> for emlite::Val {
     fn from(s: ReadableStreamGetReaderOptions) -> emlite::Val {
@@ -53,6 +56,7 @@ impl ReadableStreamGetReaderOptions {
     pub fn set_mode(&mut self, value: ReadableStreamReaderMode) {
         self.inner.set("mode", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -88,8 +92,8 @@ impl AsRef<emlite::Val> for ReadableWritablePair {
 }
 impl AsMut<emlite::Val> for ReadableWritablePair {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ReadableWritablePair> for emlite::Val {
     fn from(s: ReadableWritablePair) -> emlite::Val {
@@ -107,6 +111,7 @@ impl ReadableWritablePair {
     pub fn set_readable(&mut self, value: ReadableStream) {
         self.inner.set("readable", value);
     }
+
 }
 impl ReadableWritablePair {
     pub fn writable(&self) -> WritableStream {
@@ -116,6 +121,7 @@ impl ReadableWritablePair {
     pub fn set_writable(&mut self, value: WritableStream) {
         self.inner.set("writable", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -151,8 +157,8 @@ impl AsRef<emlite::Val> for StreamPipeOptions {
 }
 impl AsMut<emlite::Val> for StreamPipeOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<StreamPipeOptions> for emlite::Val {
     fn from(s: StreamPipeOptions) -> emlite::Val {
@@ -170,6 +176,7 @@ impl StreamPipeOptions {
     pub fn set_prevent_close(&mut self, value: bool) {
         self.inner.set("preventClose", value);
     }
+
 }
 impl StreamPipeOptions {
     pub fn prevent_abort(&self) -> bool {
@@ -179,6 +186,7 @@ impl StreamPipeOptions {
     pub fn set_prevent_abort(&mut self, value: bool) {
         self.inner.set("preventAbort", value);
     }
+
 }
 impl StreamPipeOptions {
     pub fn prevent_cancel(&self) -> bool {
@@ -188,6 +196,7 @@ impl StreamPipeOptions {
     pub fn set_prevent_cancel(&mut self, value: bool) {
         self.inner.set("preventCancel", value);
     }
+
 }
 impl StreamPipeOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -197,6 +206,7 @@ impl StreamPipeOptions {
     pub fn set_signal(&mut self, value: AbortSignal) {
         self.inner.set("signal", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -205,9 +215,7 @@ pub struct ReadableStream {
 }
 impl FromVal for ReadableStream {
     fn from_val(v: &emlite::Val) -> Self {
-        ReadableStream {
-            inner: emlite::Val::from_val(v),
-        }
+        ReadableStream { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -234,8 +242,8 @@ impl AsRef<emlite::Val> for ReadableStream {
 }
 impl AsMut<emlite::Val> for ReadableStream {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ReadableStream> for emlite::Val {
     fn from(s: ReadableStream) -> emlite::Val {
@@ -246,103 +254,83 @@ impl From<ReadableStream> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ReadableStream);
 
+
+
 impl ReadableStream {
     pub fn new0() -> ReadableStream {
         Self {
-            inner: emlite::Val::global("ReadableStream")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("ReadableStream").new(&[]).as_::<emlite::Val>(),
         }
     }
 
-    pub fn new1(underlying_source: jsbind::Object) -> ReadableStream {
+    pub fn new1(underlying_source: Object) -> ReadableStream {
         Self {
-            inner: emlite::Val::global("ReadableStream")
-                .new(&[underlying_source.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("ReadableStream").new(&[underlying_source.into()]).as_::<emlite::Val>(),
         }
     }
 
-    pub fn new2(underlying_source: jsbind::Object, strategy: jsbind::Any) -> ReadableStream {
+    pub fn new2(underlying_source: Object, strategy: Any) -> ReadableStream {
         Self {
-            inner: emlite::Val::global("ReadableStream")
-                .new(&[underlying_source.into(), strategy.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("ReadableStream").new(&[underlying_source.into(), strategy.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl ReadableStream {
-    pub fn from(async_iterable: jsbind::Any) -> ReadableStream {
-        emlite::Val::global("readablestream")
-            .call("from", &[async_iterable.into()])
-            .as_::<ReadableStream>()
+    pub fn from(async_iterable: Any) -> ReadableStream {
+        emlite::Val::global("readablestream").call("from", &[async_iterable.into(), ]).as_::<ReadableStream>()
     }
+
 }
 impl ReadableStream {
     pub fn locked(&self) -> bool {
         self.inner.get("locked").as_::<bool>()
     }
+
 }
 impl ReadableStream {
-    pub fn cancel0(&self) -> jsbind::Promise {
-        self.inner.call("cancel", &[]).as_::<jsbind::Promise>()
+    pub fn cancel0(&self, ) -> Promise {
+        self.inner.call("cancel", &[]).as_::<Promise>()
     }
 
-    pub fn cancel1(&self, reason: jsbind::Any) -> jsbind::Promise {
-        self.inner
-            .call("cancel", &[reason.into()])
-            .as_::<jsbind::Promise>()
+    pub fn cancel1(&self, reason: Any) -> Promise {
+        self.inner.call("cancel", &[reason.into(), ]).as_::<Promise>()
     }
+
 }
 impl ReadableStream {
-    pub fn get_reader0(&self) -> jsbind::Any {
-        self.inner.call("getReader", &[]).as_::<jsbind::Any>()
+    pub fn get_reader0(&self, ) -> Any {
+        self.inner.call("getReader", &[]).as_::<Any>()
     }
 
-    pub fn get_reader1(&self, options: ReadableStreamGetReaderOptions) -> jsbind::Any {
-        self.inner
-            .call("getReader", &[options.into()])
-            .as_::<jsbind::Any>()
+    pub fn get_reader1(&self, options: ReadableStreamGetReaderOptions) -> Any {
+        self.inner.call("getReader", &[options.into(), ]).as_::<Any>()
     }
+
 }
 impl ReadableStream {
     pub fn pipe_through0(&self, transform: ReadableWritablePair) -> ReadableStream {
-        self.inner
-            .call("pipeThrough", &[transform.into()])
-            .as_::<ReadableStream>()
+        self.inner.call("pipeThrough", &[transform.into(), ]).as_::<ReadableStream>()
     }
 
-    pub fn pipe_through1(
-        &self,
-        transform: ReadableWritablePair,
-        options: StreamPipeOptions,
-    ) -> ReadableStream {
-        self.inner
-            .call("pipeThrough", &[transform.into(), options.into()])
-            .as_::<ReadableStream>()
-    }
-}
-impl ReadableStream {
-    pub fn pipe_to0(&self, destination: WritableStream) -> jsbind::Promise {
-        self.inner
-            .call("pipeTo", &[destination.into()])
-            .as_::<jsbind::Promise>()
+    pub fn pipe_through1(&self, transform: ReadableWritablePair, options: StreamPipeOptions) -> ReadableStream {
+        self.inner.call("pipeThrough", &[transform.into(), options.into(), ]).as_::<ReadableStream>()
     }
 
-    pub fn pipe_to1(
-        &self,
-        destination: WritableStream,
-        options: StreamPipeOptions,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("pipeTo", &[destination.into(), options.into()])
-            .as_::<jsbind::Promise>()
-    }
 }
 impl ReadableStream {
-    pub fn tee(&self) -> jsbind::Sequence<ReadableStream> {
-        self.inner
-            .call("tee", &[])
-            .as_::<jsbind::Sequence<ReadableStream>>()
+    pub fn pipe_to0(&self, destination: WritableStream) -> Promise {
+        self.inner.call("pipeTo", &[destination.into(), ]).as_::<Promise>()
     }
+
+    pub fn pipe_to1(&self, destination: WritableStream, options: StreamPipeOptions) -> Promise {
+        self.inner.call("pipeTo", &[destination.into(), options.into(), ]).as_::<Promise>()
+    }
+
+}
+impl ReadableStream {
+    pub fn tee(&self, ) -> Sequence<ReadableStream> {
+        self.inner.call("tee", &[]).as_::<Sequence<ReadableStream>>()
+    }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGFEMorphologyElement {
@@ -7,9 +10,7 @@ pub struct SVGFEMorphologyElement {
 }
 impl FromVal for SVGFEMorphologyElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGFEMorphologyElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFEMorphologyElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGFEMorphologyElement {
 }
 impl AsMut<emlite::Val> for SVGFEMorphologyElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGFEMorphologyElement> for emlite::Val {
     fn from(s: SVGFEMorphologyElement) -> emlite::Val {
@@ -48,48 +49,58 @@ impl From<SVGFEMorphologyElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGFEMorphologyElement);
 
+
 impl SVGFEMorphologyElement {
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGFEMorphologyElement {
     pub fn operator(&self) -> SVGAnimatedEnumeration {
         self.inner.get("operator").as_::<SVGAnimatedEnumeration>()
     }
+
 }
 impl SVGFEMorphologyElement {
     pub fn radius_x(&self) -> SVGAnimatedNumber {
         self.inner.get("radiusX").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEMorphologyElement {
     pub fn radius_y(&self) -> SVGAnimatedNumber {
         self.inner.get("radiusY").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEMorphologyElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEMorphologyElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEMorphologyElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEMorphologyElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEMorphologyElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
+
 }

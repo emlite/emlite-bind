@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioWorklet {
@@ -7,9 +10,7 @@ pub struct AudioWorklet {
 }
 impl FromVal for AudioWorklet {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioWorklet {
-            inner: Worklet::from_val(v),
-        }
+        AudioWorklet { inner: Worklet::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for AudioWorklet {
 }
 impl AsMut<emlite::Val> for AudioWorklet {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AudioWorklet> for emlite::Val {
     fn from(s: AudioWorklet) -> emlite::Val {
@@ -48,8 +49,10 @@ impl From<AudioWorklet> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AudioWorklet);
 
+
 impl AudioWorklet {
-    pub fn port(&self) -> jsbind::Any {
-        self.inner.get("port").as_::<jsbind::Any>()
+    pub fn port(&self) -> Any {
+        self.inner.get("port").as_::<Any>()
     }
+
 }

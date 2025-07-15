@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct OES_vertex_array_object {
@@ -7,9 +10,7 @@ pub struct OES_vertex_array_object {
 }
 impl FromVal for OES_vertex_array_object {
     fn from_val(v: &emlite::Val) -> Self {
-        OES_vertex_array_object {
-            inner: emlite::Val::from_val(v),
-        }
+        OES_vertex_array_object { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for OES_vertex_array_object {
 }
 impl AsMut<emlite::Val> for OES_vertex_array_object {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<OES_vertex_array_object> for emlite::Val {
     fn from(s: OES_vertex_array_object) -> emlite::Val {
@@ -48,37 +49,28 @@ impl From<OES_vertex_array_object> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(OES_vertex_array_object);
 
+
 impl OES_vertex_array_object {
-    pub fn create_vertex_array_oes(&self) -> WebGLVertexArrayObjectOES {
-        self.inner
-            .call("createVertexArrayOES", &[])
-            .as_::<WebGLVertexArrayObjectOES>()
+    pub fn create_vertex_array_oes(&self, ) -> WebGLVertexArrayObjectOES {
+        self.inner.call("createVertexArrayOES", &[]).as_::<WebGLVertexArrayObjectOES>()
     }
+
 }
 impl OES_vertex_array_object {
-    pub fn delete_vertex_array_oes(
-        &self,
-        array_object: WebGLVertexArrayObjectOES,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("deleteVertexArrayOES", &[array_object.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn delete_vertex_array_oes(&self, array_object: WebGLVertexArrayObjectOES) -> Undefined {
+        self.inner.call("deleteVertexArrayOES", &[array_object.into(), ]).as_::<Undefined>()
     }
+
 }
 impl OES_vertex_array_object {
-    pub fn is_vertex_array_oes(&self, array_object: WebGLVertexArrayObjectOES) -> jsbind::Any {
-        self.inner
-            .call("isVertexArrayOES", &[array_object.into()])
-            .as_::<jsbind::Any>()
+    pub fn is_vertex_array_oes(&self, array_object: WebGLVertexArrayObjectOES) -> Any {
+        self.inner.call("isVertexArrayOES", &[array_object.into(), ]).as_::<Any>()
     }
+
 }
 impl OES_vertex_array_object {
-    pub fn bind_vertex_array_oes(
-        &self,
-        array_object: WebGLVertexArrayObjectOES,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("bindVertexArrayOES", &[array_object.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn bind_vertex_array_oes(&self, array_object: WebGLVertexArrayObjectOES) -> Undefined {
+        self.inner.call("bindVertexArrayOES", &[array_object.into(), ]).as_::<Undefined>()
     }
+
 }

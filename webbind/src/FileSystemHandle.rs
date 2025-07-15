@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileSystemHandlePermissionDescriptor {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for FileSystemHandlePermissionDescriptor {
 }
 impl AsMut<emlite::Val> for FileSystemHandlePermissionDescriptor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<FileSystemHandlePermissionDescriptor> for emlite::Val {
     fn from(s: FileSystemHandlePermissionDescriptor) -> emlite::Val {
@@ -53,6 +56,7 @@ impl FileSystemHandlePermissionDescriptor {
     pub fn set_mode(&mut self, value: FileSystemPermissionMode) {
         self.inner.set("mode", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -61,9 +65,7 @@ pub struct FileSystemHandle {
 }
 impl FromVal for FileSystemHandle {
     fn from_val(v: &emlite::Val) -> Self {
-        FileSystemHandle {
-            inner: emlite::Val::from_val(v),
-        }
+        FileSystemHandle { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -90,8 +92,8 @@ impl AsRef<emlite::Val> for FileSystemHandle {
 }
 impl AsMut<emlite::Val> for FileSystemHandle {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<FileSystemHandle> for emlite::Val {
     fn from(s: FileSystemHandle) -> emlite::Val {
@@ -102,52 +104,42 @@ impl From<FileSystemHandle> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FileSystemHandle);
 
+
 impl FileSystemHandle {
     pub fn kind(&self) -> FileSystemHandleKind {
         self.inner.get("kind").as_::<FileSystemHandleKind>()
     }
+
 }
 impl FileSystemHandle {
-    pub fn name(&self) -> jsbind::USVString {
-        self.inner.get("name").as_::<jsbind::USVString>()
-    }
-}
-impl FileSystemHandle {
-    pub fn is_same_entry(&self, other: FileSystemHandle) -> jsbind::Promise {
-        self.inner
-            .call("isSameEntry", &[other.into()])
-            .as_::<jsbind::Promise>()
-    }
-}
-impl FileSystemHandle {
-    pub fn query_permission0(&self) -> jsbind::Promise {
-        self.inner
-            .call("queryPermission", &[])
-            .as_::<jsbind::Promise>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn query_permission1(
-        &self,
-        descriptor: FileSystemHandlePermissionDescriptor,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("queryPermission", &[descriptor.into()])
-            .as_::<jsbind::Promise>()
-    }
 }
 impl FileSystemHandle {
-    pub fn request_permission0(&self) -> jsbind::Promise {
-        self.inner
-            .call("requestPermission", &[])
-            .as_::<jsbind::Promise>()
+    pub fn is_same_entry(&self, other: FileSystemHandle) -> Promise {
+        self.inner.call("isSameEntry", &[other.into(), ]).as_::<Promise>()
     }
 
-    pub fn request_permission1(
-        &self,
-        descriptor: FileSystemHandlePermissionDescriptor,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("requestPermission", &[descriptor.into()])
-            .as_::<jsbind::Promise>()
+}
+impl FileSystemHandle {
+    pub fn query_permission0(&self, ) -> Promise {
+        self.inner.call("queryPermission", &[]).as_::<Promise>()
     }
+
+    pub fn query_permission1(&self, descriptor: FileSystemHandlePermissionDescriptor) -> Promise {
+        self.inner.call("queryPermission", &[descriptor.into(), ]).as_::<Promise>()
+    }
+
+}
+impl FileSystemHandle {
+    pub fn request_permission0(&self, ) -> Promise {
+        self.inner.call("requestPermission", &[]).as_::<Promise>()
+    }
+
+    pub fn request_permission1(&self, descriptor: FileSystemHandlePermissionDescriptor) -> Promise {
+        self.inner.call("requestPermission", &[descriptor.into(), ]).as_::<Promise>()
+    }
+
 }

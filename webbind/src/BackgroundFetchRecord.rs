@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BackgroundFetchRecord {
@@ -7,9 +10,7 @@ pub struct BackgroundFetchRecord {
 }
 impl FromVal for BackgroundFetchRecord {
     fn from_val(v: &emlite::Val) -> Self {
-        BackgroundFetchRecord {
-            inner: emlite::Val::from_val(v),
-        }
+        BackgroundFetchRecord { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for BackgroundFetchRecord {
 }
 impl AsMut<emlite::Val> for BackgroundFetchRecord {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<BackgroundFetchRecord> for emlite::Val {
     fn from(s: BackgroundFetchRecord) -> emlite::Val {
@@ -48,13 +49,16 @@ impl From<BackgroundFetchRecord> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BackgroundFetchRecord);
 
+
 impl BackgroundFetchRecord {
     pub fn request(&self) -> Request {
         self.inner.get("request").as_::<Request>()
     }
+
 }
 impl BackgroundFetchRecord {
-    pub fn response_ready(&self) -> jsbind::Promise {
-        self.inner.get("responseReady").as_::<jsbind::Promise>()
+    pub fn response_ready(&self) -> Promise {
+        self.inner.get("responseReady").as_::<Promise>()
     }
+
 }

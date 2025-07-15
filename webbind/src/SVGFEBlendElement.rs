@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGFEBlendElement {
@@ -7,9 +10,7 @@ pub struct SVGFEBlendElement {
 }
 impl FromVal for SVGFEBlendElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGFEBlendElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFEBlendElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGFEBlendElement {
 }
 impl AsMut<emlite::Val> for SVGFEBlendElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGFEBlendElement> for emlite::Val {
     fn from(s: SVGFEBlendElement) -> emlite::Val {
@@ -48,43 +49,52 @@ impl From<SVGFEBlendElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGFEBlendElement);
 
+
 impl SVGFEBlendElement {
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGFEBlendElement {
     pub fn in2(&self) -> SVGAnimatedString {
         self.inner.get("in2").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGFEBlendElement {
     pub fn mode(&self) -> SVGAnimatedEnumeration {
         self.inner.get("mode").as_::<SVGAnimatedEnumeration>()
     }
+
 }
 impl SVGFEBlendElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEBlendElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEBlendElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEBlendElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEBlendElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
+
 }

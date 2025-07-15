@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRPose {
@@ -7,9 +10,7 @@ pub struct XRPose {
 }
 impl FromVal for XRPose {
     fn from_val(v: &emlite::Val) -> Self {
-        XRPose {
-            inner: emlite::Val::from_val(v),
-        }
+        XRPose { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRPose {
 }
 impl AsMut<emlite::Val> for XRPose {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRPose> for emlite::Val {
     fn from(s: XRPose) -> emlite::Val {
@@ -48,23 +49,28 @@ impl From<XRPose> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRPose);
 
+
 impl XRPose {
     pub fn transform(&self) -> XRRigidTransform {
         self.inner.get("transform").as_::<XRRigidTransform>()
     }
+
 }
 impl XRPose {
     pub fn linear_velocity(&self) -> DOMPointReadOnly {
         self.inner.get("linearVelocity").as_::<DOMPointReadOnly>()
     }
+
 }
 impl XRPose {
     pub fn angular_velocity(&self) -> DOMPointReadOnly {
         self.inner.get("angularVelocity").as_::<DOMPointReadOnly>()
     }
+
 }
 impl XRPose {
     pub fn emulated_position(&self) -> bool {
         self.inner.get("emulatedPosition").as_::<bool>()
     }
+
 }

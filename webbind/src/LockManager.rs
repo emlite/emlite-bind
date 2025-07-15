@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct LockOptions {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for LockOptions {
 }
 impl AsMut<emlite::Val> for LockOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<LockOptions> for emlite::Val {
     fn from(s: LockOptions) -> emlite::Val {
@@ -53,6 +56,7 @@ impl LockOptions {
     pub fn set_mode(&mut self, value: LockMode) {
         self.inner.set("mode", value);
     }
+
 }
 impl LockOptions {
     pub fn if_available(&self) -> bool {
@@ -62,6 +66,7 @@ impl LockOptions {
     pub fn set_if_available(&mut self, value: bool) {
         self.inner.set("ifAvailable", value);
     }
+
 }
 impl LockOptions {
     pub fn steal(&self) -> bool {
@@ -71,6 +76,7 @@ impl LockOptions {
     pub fn set_steal(&mut self, value: bool) {
         self.inner.set("steal", value);
     }
+
 }
 impl LockOptions {
     pub fn signal(&self) -> AbortSignal {
@@ -80,6 +86,7 @@ impl LockOptions {
     pub fn set_signal(&mut self, value: AbortSignal) {
         self.inner.set("signal", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -115,8 +122,8 @@ impl AsRef<emlite::Val> for LockManagerSnapshot {
 }
 impl AsMut<emlite::Val> for LockManagerSnapshot {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<LockManagerSnapshot> for emlite::Val {
     fn from(s: LockManagerSnapshot) -> emlite::Val {
@@ -127,26 +134,24 @@ impl From<LockManagerSnapshot> for emlite::Val {
 }
 
 impl LockManagerSnapshot {
-    pub fn held(&self) -> jsbind::Sequence<jsbind::Any> {
-        self.inner
-            .get("held")
-            .as_::<jsbind::Sequence<jsbind::Any>>()
+    pub fn held(&self) -> Sequence<Any> {
+        self.inner.get("held").as_::<Sequence<Any>>()
     }
 
-    pub fn set_held(&mut self, value: jsbind::Sequence<jsbind::Any>) {
+    pub fn set_held(&mut self, value: Sequence<Any>) {
         self.inner.set("held", value);
     }
+
 }
 impl LockManagerSnapshot {
-    pub fn pending(&self) -> jsbind::Sequence<jsbind::Any> {
-        self.inner
-            .get("pending")
-            .as_::<jsbind::Sequence<jsbind::Any>>()
+    pub fn pending(&self) -> Sequence<Any> {
+        self.inner.get("pending").as_::<Sequence<Any>>()
     }
 
-    pub fn set_pending(&mut self, value: jsbind::Sequence<jsbind::Any>) {
+    pub fn set_pending(&mut self, value: Sequence<Any>) {
         self.inner.set("pending", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -155,9 +160,7 @@ pub struct LockManager {
 }
 impl FromVal for LockManager {
     fn from_val(v: &emlite::Val) -> Self {
-        LockManager {
-            inner: emlite::Val::from_val(v),
-        }
+        LockManager { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -184,8 +187,8 @@ impl AsRef<emlite::Val> for LockManager {
 }
 impl AsMut<emlite::Val> for LockManager {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<LockManager> for emlite::Val {
     fn from(s: LockManager) -> emlite::Val {
@@ -196,20 +199,16 @@ impl From<LockManager> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(LockManager);
 
+
 impl LockManager {
-    pub fn request(
-        &self,
-        name: jsbind::DOMString,
-        options: LockOptions,
-        callback: jsbind::Function,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("request", &[name.into(), options.into(), callback.into()])
-            .as_::<jsbind::Promise>()
+    pub fn request(&self, name: DOMString, options: LockOptions, callback: Function) -> Promise {
+        self.inner.call("request", &[name.into(), options.into(), callback.into(), ]).as_::<Promise>()
     }
+
 }
 impl LockManager {
-    pub fn query(&self) -> jsbind::Promise {
-        self.inner.call("query", &[]).as_::<jsbind::Promise>()
+    pub fn query(&self, ) -> Promise {
+        self.inner.call("query", &[]).as_::<Promise>()
     }
+
 }

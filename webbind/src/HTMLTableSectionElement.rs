@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLTableSectionElement {
@@ -7,9 +10,7 @@ pub struct HTMLTableSectionElement {
 }
 impl FromVal for HTMLTableSectionElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLTableSectionElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLTableSectionElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLTableSectionElement {
 }
 impl AsMut<emlite::Val> for HTMLTableSectionElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLTableSectionElement> for emlite::Val {
     fn from(s: HTMLTableSectionElement) -> emlite::Val {
@@ -48,73 +49,75 @@ impl From<HTMLTableSectionElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLTableSectionElement);
 
+
+
 impl HTMLTableSectionElement {
     pub fn new() -> HTMLTableSectionElement {
         Self {
-            inner: emlite::Val::global("HTMLTableSectionElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLTableSectionElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLTableSectionElement {
     pub fn rows(&self) -> HTMLCollection {
         self.inner.get("rows").as_::<HTMLCollection>()
     }
+
 }
 impl HTMLTableSectionElement {
-    pub fn insert_row0(&self) -> HTMLTableRowElement {
-        self.inner
-            .call("insertRow", &[])
-            .as_::<HTMLTableRowElement>()
+    pub fn insert_row0(&self, ) -> HTMLTableRowElement {
+        self.inner.call("insertRow", &[]).as_::<HTMLTableRowElement>()
     }
 
     pub fn insert_row1(&self, index: i32) -> HTMLTableRowElement {
-        self.inner
-            .call("insertRow", &[index.into()])
-            .as_::<HTMLTableRowElement>()
-    }
-}
-impl HTMLTableSectionElement {
-    pub fn delete_row(&self, index: i32) -> jsbind::Undefined {
-        self.inner
-            .call("deleteRow", &[index.into()])
-            .as_::<jsbind::Undefined>()
-    }
-}
-impl HTMLTableSectionElement {
-    pub fn align(&self) -> jsbind::DOMString {
-        self.inner.get("align").as_::<jsbind::DOMString>()
+        self.inner.call("insertRow", &[index.into(), ]).as_::<HTMLTableRowElement>()
     }
 
-    pub fn set_align(&mut self, value: jsbind::DOMString) {
+}
+impl HTMLTableSectionElement {
+    pub fn delete_row(&self, index: i32) -> Undefined {
+        self.inner.call("deleteRow", &[index.into(), ]).as_::<Undefined>()
+    }
+
+}
+impl HTMLTableSectionElement {
+    pub fn align(&self) -> DOMString {
+        self.inner.get("align").as_::<DOMString>()
+    }
+
+    pub fn set_align(&mut self, value: DOMString) {
         self.inner.set("align", value);
     }
+
 }
 impl HTMLTableSectionElement {
-    pub fn ch(&self) -> jsbind::DOMString {
-        self.inner.get("ch").as_::<jsbind::DOMString>()
+    pub fn ch(&self) -> DOMString {
+        self.inner.get("ch").as_::<DOMString>()
     }
 
-    pub fn set_ch(&mut self, value: jsbind::DOMString) {
+    pub fn set_ch(&mut self, value: DOMString) {
         self.inner.set("ch", value);
     }
+
 }
 impl HTMLTableSectionElement {
-    pub fn ch_off(&self) -> jsbind::DOMString {
-        self.inner.get("chOff").as_::<jsbind::DOMString>()
+    pub fn ch_off(&self) -> DOMString {
+        self.inner.get("chOff").as_::<DOMString>()
     }
 
-    pub fn set_ch_off(&mut self, value: jsbind::DOMString) {
+    pub fn set_ch_off(&mut self, value: DOMString) {
         self.inner.set("chOff", value);
     }
+
 }
 impl HTMLTableSectionElement {
-    pub fn v_align(&self) -> jsbind::DOMString {
-        self.inner.get("vAlign").as_::<jsbind::DOMString>()
+    pub fn v_align(&self) -> DOMString {
+        self.inner.get("vAlign").as_::<DOMString>()
     }
 
-    pub fn set_v_align(&mut self, value: jsbind::DOMString) {
+    pub fn set_v_align(&mut self, value: DOMString) {
         self.inner.set("vAlign", value);
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ByteLengthQueuingStrategy {
@@ -7,9 +10,7 @@ pub struct ByteLengthQueuingStrategy {
 }
 impl FromVal for ByteLengthQueuingStrategy {
     fn from_val(v: &emlite::Val) -> Self {
-        ByteLengthQueuingStrategy {
-            inner: emlite::Val::from_val(v),
-        }
+        ByteLengthQueuingStrategy { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ByteLengthQueuingStrategy {
 }
 impl AsMut<emlite::Val> for ByteLengthQueuingStrategy {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ByteLengthQueuingStrategy> for emlite::Val {
     fn from(s: ByteLengthQueuingStrategy) -> emlite::Val {
@@ -48,22 +49,25 @@ impl From<ByteLengthQueuingStrategy> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ByteLengthQueuingStrategy);
 
+
+
 impl ByteLengthQueuingStrategy {
-    pub fn new(init: jsbind::Any) -> ByteLengthQueuingStrategy {
+    pub fn new(init: Any) -> ByteLengthQueuingStrategy {
         Self {
-            inner: emlite::Val::global("ByteLengthQueuingStrategy")
-                .new(&[init.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("ByteLengthQueuingStrategy").new(&[init.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl ByteLengthQueuingStrategy {
     pub fn high_water_mark(&self) -> f64 {
         self.inner.get("highWaterMark").as_::<f64>()
     }
+
 }
 impl ByteLengthQueuingStrategy {
-    pub fn size(&self) -> jsbind::Function {
-        self.inner.get("size").as_::<jsbind::Function>()
+    pub fn size(&self) -> Function {
+        self.inner.get("size").as_::<Function>()
     }
+
 }

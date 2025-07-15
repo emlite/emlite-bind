@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLTableCaptionElement {
@@ -7,9 +10,7 @@ pub struct HTMLTableCaptionElement {
 }
 impl FromVal for HTMLTableCaptionElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLTableCaptionElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLTableCaptionElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLTableCaptionElement {
 }
 impl AsMut<emlite::Val> for HTMLTableCaptionElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLTableCaptionElement> for emlite::Val {
     fn from(s: HTMLTableCaptionElement) -> emlite::Val {
@@ -48,21 +49,23 @@ impl From<HTMLTableCaptionElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLTableCaptionElement);
 
+
+
 impl HTMLTableCaptionElement {
     pub fn new() -> HTMLTableCaptionElement {
         Self {
-            inner: emlite::Val::global("HTMLTableCaptionElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLTableCaptionElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLTableCaptionElement {
-    pub fn align(&self) -> jsbind::DOMString {
-        self.inner.get("align").as_::<jsbind::DOMString>()
+    pub fn align(&self) -> DOMString {
+        self.inner.get("align").as_::<DOMString>()
     }
 
-    pub fn set_align(&mut self, value: jsbind::DOMString) {
+    pub fn set_align(&mut self, value: DOMString) {
         self.inner.set("align", value);
     }
+
 }

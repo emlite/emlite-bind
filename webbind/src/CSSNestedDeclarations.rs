@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSNestedDeclarations {
@@ -7,9 +10,7 @@ pub struct CSSNestedDeclarations {
 }
 impl FromVal for CSSNestedDeclarations {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSNestedDeclarations {
-            inner: CSSRule::from_val(v),
-        }
+        CSSNestedDeclarations { inner: CSSRule::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSNestedDeclarations {
 }
 impl AsMut<emlite::Val> for CSSNestedDeclarations {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSNestedDeclarations> for emlite::Val {
     fn from(s: CSSNestedDeclarations) -> emlite::Val {
@@ -48,8 +49,10 @@ impl From<CSSNestedDeclarations> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSNestedDeclarations);
 
+
 impl CSSNestedDeclarations {
     pub fn style(&self) -> CSSStyleProperties {
         self.inner.get("style").as_::<CSSStyleProperties>()
     }
+
 }

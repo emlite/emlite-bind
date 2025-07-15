@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct OverconstrainedError {
@@ -7,9 +10,7 @@ pub struct OverconstrainedError {
 }
 impl FromVal for OverconstrainedError {
     fn from_val(v: &emlite::Val) -> Self {
-        OverconstrainedError {
-            inner: DOMException::from_val(v),
-        }
+        OverconstrainedError { inner: DOMException::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for OverconstrainedError {
 }
 impl AsMut<emlite::Val> for OverconstrainedError {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<OverconstrainedError> for emlite::Val {
     fn from(s: OverconstrainedError) -> emlite::Val {
@@ -48,25 +49,25 @@ impl From<OverconstrainedError> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(OverconstrainedError);
 
+
+
 impl OverconstrainedError {
-    pub fn new0(constraint: jsbind::DOMString) -> OverconstrainedError {
+    pub fn new0(constraint: DOMString) -> OverconstrainedError {
         Self {
-            inner: emlite::Val::global("OverconstrainedError")
-                .new(&[constraint.into()])
-                .as_::<DOMException>(),
+            inner: emlite::Val::global("OverconstrainedError").new(&[constraint.into()]).as_::<DOMException>(),
         }
     }
 
-    pub fn new1(constraint: jsbind::DOMString, message: jsbind::DOMString) -> OverconstrainedError {
+    pub fn new1(constraint: DOMString, message: DOMString) -> OverconstrainedError {
         Self {
-            inner: emlite::Val::global("OverconstrainedError")
-                .new(&[constraint.into(), message.into()])
-                .as_::<DOMException>(),
+            inner: emlite::Val::global("OverconstrainedError").new(&[constraint.into(), message.into()]).as_::<DOMException>(),
         }
     }
+
 }
 impl OverconstrainedError {
-    pub fn constraint(&self) -> jsbind::DOMString {
-        self.inner.get("constraint").as_::<jsbind::DOMString>()
+    pub fn constraint(&self) -> DOMString {
+        self.inner.get("constraint").as_::<DOMString>()
     }
+
 }

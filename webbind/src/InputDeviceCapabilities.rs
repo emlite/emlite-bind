@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct InputDeviceCapabilities {
@@ -7,9 +10,7 @@ pub struct InputDeviceCapabilities {
 }
 impl FromVal for InputDeviceCapabilities {
     fn from_val(v: &emlite::Val) -> Self {
-        InputDeviceCapabilities {
-            inner: emlite::Val::from_val(v),
-        }
+        InputDeviceCapabilities { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for InputDeviceCapabilities {
 }
 impl AsMut<emlite::Val> for InputDeviceCapabilities {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<InputDeviceCapabilities> for emlite::Val {
     fn from(s: InputDeviceCapabilities) -> emlite::Val {
@@ -48,30 +49,31 @@ impl From<InputDeviceCapabilities> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(InputDeviceCapabilities);
 
+
+
 impl InputDeviceCapabilities {
     pub fn new0() -> InputDeviceCapabilities {
         Self {
-            inner: emlite::Val::global("InputDeviceCapabilities")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("InputDeviceCapabilities").new(&[]).as_::<emlite::Val>(),
         }
     }
 
-    pub fn new1(device_init_dict: jsbind::Any) -> InputDeviceCapabilities {
+    pub fn new1(device_init_dict: Any) -> InputDeviceCapabilities {
         Self {
-            inner: emlite::Val::global("InputDeviceCapabilities")
-                .new(&[device_init_dict.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("InputDeviceCapabilities").new(&[device_init_dict.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl InputDeviceCapabilities {
     pub fn fires_touch_events(&self) -> bool {
         self.inner.get("firesTouchEvents").as_::<bool>()
     }
+
 }
 impl InputDeviceCapabilities {
     pub fn pointer_movement_scrolls(&self) -> bool {
         self.inner.get("pointerMovementScrolls").as_::<bool>()
     }
+
 }

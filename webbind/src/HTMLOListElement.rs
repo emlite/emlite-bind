@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLOListElement {
@@ -7,9 +10,7 @@ pub struct HTMLOListElement {
 }
 impl FromVal for HTMLOListElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLOListElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLOListElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLOListElement {
 }
 impl AsMut<emlite::Val> for HTMLOListElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLOListElement> for emlite::Val {
     fn from(s: HTMLOListElement) -> emlite::Val {
@@ -48,14 +49,15 @@ impl From<HTMLOListElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLOListElement);
 
+
+
 impl HTMLOListElement {
     pub fn new() -> HTMLOListElement {
         Self {
-            inner: emlite::Val::global("HTMLOListElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLOListElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLOListElement {
     pub fn reversed(&self) -> bool {
@@ -65,6 +67,7 @@ impl HTMLOListElement {
     pub fn set_reversed(&mut self, value: bool) {
         self.inner.set("reversed", value);
     }
+
 }
 impl HTMLOListElement {
     pub fn start(&self) -> i32 {
@@ -74,15 +77,17 @@ impl HTMLOListElement {
     pub fn set_start(&mut self, value: i32) {
         self.inner.set("start", value);
     }
+
 }
 impl HTMLOListElement {
-    pub fn type_(&self) -> jsbind::DOMString {
-        self.inner.get("type").as_::<jsbind::DOMString>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 
-    pub fn set_type_(&mut self, value: jsbind::DOMString) {
+    pub fn set_type_(&mut self, value: DOMString) {
         self.inner.set("type", value);
     }
+
 }
 impl HTMLOListElement {
     pub fn compact(&self) -> bool {
@@ -92,4 +97,5 @@ impl HTMLOListElement {
     pub fn set_compact(&mut self, value: bool) {
         self.inner.set("compact", value);
     }
+
 }

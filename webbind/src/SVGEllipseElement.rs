@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGEllipseElement {
@@ -7,9 +10,7 @@ pub struct SVGEllipseElement {
 }
 impl FromVal for SVGEllipseElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGEllipseElement {
-            inner: SVGGeometryElement::from_val(v),
-        }
+        SVGEllipseElement { inner: SVGGeometryElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGEllipseElement {
 }
 impl AsMut<emlite::Val> for SVGEllipseElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGEllipseElement> for emlite::Val {
     fn from(s: SVGEllipseElement) -> emlite::Val {
@@ -48,23 +49,28 @@ impl From<SVGEllipseElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGEllipseElement);
 
+
 impl SVGEllipseElement {
     pub fn cx(&self) -> SVGAnimatedLength {
         self.inner.get("cx").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGEllipseElement {
     pub fn cy(&self) -> SVGAnimatedLength {
         self.inner.get("cy").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGEllipseElement {
     pub fn rx(&self) -> SVGAnimatedLength {
         self.inner.get("rx").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGEllipseElement {
     pub fn ry(&self) -> SVGAnimatedLength {
         self.inner.get("ry").as_::<SVGAnimatedLength>()
     }
+
 }

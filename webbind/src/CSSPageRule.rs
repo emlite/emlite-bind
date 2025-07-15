@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSPageRule {
@@ -7,9 +10,7 @@ pub struct CSSPageRule {
 }
 impl FromVal for CSSPageRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSPageRule {
-            inner: CSSGroupingRule::from_val(v),
-        }
+        CSSPageRule { inner: CSSGroupingRule::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSPageRule {
 }
 impl AsMut<emlite::Val> for CSSPageRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSPageRule> for emlite::Val {
     fn from(s: CSSPageRule) -> emlite::Val {
@@ -48,17 +49,20 @@ impl From<CSSPageRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSPageRule);
 
+
 impl CSSPageRule {
-    pub fn selector_text(&self) -> jsbind::CSSOMString {
-        self.inner.get("selectorText").as_::<jsbind::CSSOMString>()
+    pub fn selector_text(&self) -> CSSOMString {
+        self.inner.get("selectorText").as_::<CSSOMString>()
     }
 
-    pub fn set_selector_text(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_selector_text(&mut self, value: CSSOMString) {
         self.inner.set("selectorText", value);
     }
+
 }
 impl CSSPageRule {
     pub fn style(&self) -> CSSPageDescriptors {
         self.inner.get("style").as_::<CSSPageDescriptors>()
     }
+
 }

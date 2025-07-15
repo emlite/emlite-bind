@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSImportRule {
@@ -7,9 +10,7 @@ pub struct CSSImportRule {
 }
 impl FromVal for CSSImportRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSImportRule {
-            inner: CSSRule::from_val(v),
-        }
+        CSSImportRule { inner: CSSRule::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSImportRule {
 }
 impl AsMut<emlite::Val> for CSSImportRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSImportRule> for emlite::Val {
     fn from(s: CSSImportRule) -> emlite::Val {
@@ -48,28 +49,34 @@ impl From<CSSImportRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSImportRule);
 
+
 impl CSSImportRule {
-    pub fn href(&self) -> jsbind::USVString {
-        self.inner.get("href").as_::<jsbind::USVString>()
+    pub fn href(&self) -> USVString {
+        self.inner.get("href").as_::<USVString>()
     }
+
 }
 impl CSSImportRule {
     pub fn media(&self) -> MediaList {
         self.inner.get("media").as_::<MediaList>()
     }
+
 }
 impl CSSImportRule {
     pub fn style_sheet(&self) -> CSSStyleSheet {
         self.inner.get("styleSheet").as_::<CSSStyleSheet>()
     }
+
 }
 impl CSSImportRule {
-    pub fn layer_name(&self) -> jsbind::CSSOMString {
-        self.inner.get("layerName").as_::<jsbind::CSSOMString>()
+    pub fn layer_name(&self) -> CSSOMString {
+        self.inner.get("layerName").as_::<CSSOMString>()
     }
+
 }
 impl CSSImportRule {
-    pub fn supports_text(&self) -> jsbind::CSSOMString {
-        self.inner.get("supportsText").as_::<jsbind::CSSOMString>()
+    pub fn supports_text(&self) -> CSSOMString {
+        self.inner.get("supportsText").as_::<CSSOMString>()
     }
+
 }

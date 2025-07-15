@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileSystemGetFileOptions {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for FileSystemGetFileOptions {
 }
 impl AsMut<emlite::Val> for FileSystemGetFileOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<FileSystemGetFileOptions> for emlite::Val {
     fn from(s: FileSystemGetFileOptions) -> emlite::Val {
@@ -53,6 +56,7 @@ impl FileSystemGetFileOptions {
     pub fn set_create(&mut self, value: bool) {
         self.inner.set("create", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -88,8 +92,8 @@ impl AsRef<emlite::Val> for FileSystemGetDirectoryOptions {
 }
 impl AsMut<emlite::Val> for FileSystemGetDirectoryOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<FileSystemGetDirectoryOptions> for emlite::Val {
     fn from(s: FileSystemGetDirectoryOptions) -> emlite::Val {
@@ -107,6 +111,7 @@ impl FileSystemGetDirectoryOptions {
     pub fn set_create(&mut self, value: bool) {
         self.inner.set("create", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -142,8 +147,8 @@ impl AsRef<emlite::Val> for FileSystemRemoveOptions {
 }
 impl AsMut<emlite::Val> for FileSystemRemoveOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<FileSystemRemoveOptions> for emlite::Val {
     fn from(s: FileSystemRemoveOptions) -> emlite::Val {
@@ -161,6 +166,7 @@ impl FileSystemRemoveOptions {
     pub fn set_recursive(&mut self, value: bool) {
         self.inner.set("recursive", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -169,9 +175,7 @@ pub struct FileSystemDirectoryHandle {
 }
 impl FromVal for FileSystemDirectoryHandle {
     fn from_val(v: &emlite::Val) -> Self {
-        FileSystemDirectoryHandle {
-            inner: FileSystemHandle::from_val(v),
-        }
+        FileSystemDirectoryHandle { inner: FileSystemHandle::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -198,8 +202,8 @@ impl AsRef<emlite::Val> for FileSystemDirectoryHandle {
 }
 impl AsMut<emlite::Val> for FileSystemDirectoryHandle {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<FileSystemDirectoryHandle> for emlite::Val {
     fn from(s: FileSystemDirectoryHandle) -> emlite::Val {
@@ -210,61 +214,40 @@ impl From<FileSystemDirectoryHandle> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FileSystemDirectoryHandle);
 
+
 impl FileSystemDirectoryHandle {
-    pub fn get_file_handle0(&self, name: jsbind::USVString) -> jsbind::Promise {
-        self.inner
-            .call("getFileHandle", &[name.into()])
-            .as_::<jsbind::Promise>()
+    pub fn get_file_handle0(&self, name: USVString) -> Promise {
+        self.inner.call("getFileHandle", &[name.into(), ]).as_::<Promise>()
     }
 
-    pub fn get_file_handle1(
-        &self,
-        name: jsbind::USVString,
-        options: FileSystemGetFileOptions,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("getFileHandle", &[name.into(), options.into()])
-            .as_::<jsbind::Promise>()
-    }
-}
-impl FileSystemDirectoryHandle {
-    pub fn get_directory_handle0(&self, name: jsbind::USVString) -> jsbind::Promise {
-        self.inner
-            .call("getDirectoryHandle", &[name.into()])
-            .as_::<jsbind::Promise>()
+    pub fn get_file_handle1(&self, name: USVString, options: FileSystemGetFileOptions) -> Promise {
+        self.inner.call("getFileHandle", &[name.into(), options.into(), ]).as_::<Promise>()
     }
 
-    pub fn get_directory_handle1(
-        &self,
-        name: jsbind::USVString,
-        options: FileSystemGetDirectoryOptions,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("getDirectoryHandle", &[name.into(), options.into()])
-            .as_::<jsbind::Promise>()
-    }
 }
 impl FileSystemDirectoryHandle {
-    pub fn remove_entry0(&self, name: jsbind::USVString) -> jsbind::Promise {
-        self.inner
-            .call("removeEntry", &[name.into()])
-            .as_::<jsbind::Promise>()
+    pub fn get_directory_handle0(&self, name: USVString) -> Promise {
+        self.inner.call("getDirectoryHandle", &[name.into(), ]).as_::<Promise>()
     }
 
-    pub fn remove_entry1(
-        &self,
-        name: jsbind::USVString,
-        options: FileSystemRemoveOptions,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("removeEntry", &[name.into(), options.into()])
-            .as_::<jsbind::Promise>()
+    pub fn get_directory_handle1(&self, name: USVString, options: FileSystemGetDirectoryOptions) -> Promise {
+        self.inner.call("getDirectoryHandle", &[name.into(), options.into(), ]).as_::<Promise>()
     }
+
 }
 impl FileSystemDirectoryHandle {
-    pub fn resolve(&self, possible_descendant: FileSystemHandle) -> jsbind::Promise {
-        self.inner
-            .call("resolve", &[possible_descendant.into()])
-            .as_::<jsbind::Promise>()
+    pub fn remove_entry0(&self, name: USVString) -> Promise {
+        self.inner.call("removeEntry", &[name.into(), ]).as_::<Promise>()
     }
+
+    pub fn remove_entry1(&self, name: USVString, options: FileSystemRemoveOptions) -> Promise {
+        self.inner.call("removeEntry", &[name.into(), options.into(), ]).as_::<Promise>()
+    }
+
+}
+impl FileSystemDirectoryHandle {
+    pub fn resolve(&self, possible_descendant: FileSystemHandle) -> Promise {
+        self.inner.call("resolve", &[possible_descendant.into(), ]).as_::<Promise>()
+    }
+
 }

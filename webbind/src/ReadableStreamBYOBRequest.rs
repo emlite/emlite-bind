@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ReadableStreamBYOBRequest {
@@ -7,9 +10,7 @@ pub struct ReadableStreamBYOBRequest {
 }
 impl FromVal for ReadableStreamBYOBRequest {
     fn from_val(v: &emlite::Val) -> Self {
-        ReadableStreamBYOBRequest {
-            inner: emlite::Val::from_val(v),
-        }
+        ReadableStreamBYOBRequest { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ReadableStreamBYOBRequest {
 }
 impl AsMut<emlite::Val> for ReadableStreamBYOBRequest {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ReadableStreamBYOBRequest> for emlite::Val {
     fn from(s: ReadableStreamBYOBRequest) -> emlite::Val {
@@ -48,22 +49,22 @@ impl From<ReadableStreamBYOBRequest> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ReadableStreamBYOBRequest);
 
+
 impl ReadableStreamBYOBRequest {
-    pub fn view(&self) -> jsbind::Any {
-        self.inner.get("view").as_::<jsbind::Any>()
+    pub fn view(&self) -> Any {
+        self.inner.get("view").as_::<Any>()
     }
+
 }
 impl ReadableStreamBYOBRequest {
-    pub fn respond(&self, bytes_written: u64) -> jsbind::Undefined {
-        self.inner
-            .call("respond", &[bytes_written.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn respond(&self, bytes_written: u64) -> Undefined {
+        self.inner.call("respond", &[bytes_written.into(), ]).as_::<Undefined>()
     }
+
 }
 impl ReadableStreamBYOBRequest {
-    pub fn respond_with_new_view(&self, view: jsbind::Any) -> jsbind::Undefined {
-        self.inner
-            .call("respondWithNewView", &[view.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn respond_with_new_view(&self, view: Any) -> Undefined {
+        self.inner.call("respondWithNewView", &[view.into(), ]).as_::<Undefined>()
     }
+
 }

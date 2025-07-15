@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PushSubscriptionJSON {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for PushSubscriptionJSON {
 }
 impl AsMut<emlite::Val> for PushSubscriptionJSON {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PushSubscriptionJSON> for emlite::Val {
     fn from(s: PushSubscriptionJSON) -> emlite::Val {
@@ -46,33 +49,34 @@ impl From<PushSubscriptionJSON> for emlite::Val {
 }
 
 impl PushSubscriptionJSON {
-    pub fn endpoint(&self) -> jsbind::USVString {
-        self.inner.get("endpoint").as_::<jsbind::USVString>()
+    pub fn endpoint(&self) -> USVString {
+        self.inner.get("endpoint").as_::<USVString>()
     }
 
-    pub fn set_endpoint(&mut self, value: jsbind::USVString) {
+    pub fn set_endpoint(&mut self, value: USVString) {
         self.inner.set("endpoint", value);
     }
+
 }
 impl PushSubscriptionJSON {
-    pub fn expiration_time(&self) -> jsbind::Any {
-        self.inner.get("expirationTime").as_::<jsbind::Any>()
+    pub fn expiration_time(&self) -> Any {
+        self.inner.get("expirationTime").as_::<Any>()
     }
 
-    pub fn set_expiration_time(&mut self, value: jsbind::Any) {
+    pub fn set_expiration_time(&mut self, value: Any) {
         self.inner.set("expirationTime", value);
     }
+
 }
 impl PushSubscriptionJSON {
-    pub fn keys(&self) -> jsbind::Record<jsbind::DOMString, jsbind::USVString> {
-        self.inner
-            .get("keys")
-            .as_::<jsbind::Record<jsbind::DOMString, jsbind::USVString>>()
+    pub fn keys(&self) -> Record<DOMString, USVString> {
+        self.inner.get("keys").as_::<Record<DOMString, USVString>>()
     }
 
-    pub fn set_keys(&mut self, value: jsbind::Record<jsbind::DOMString, jsbind::USVString>) {
+    pub fn set_keys(&mut self, value: Record<DOMString, USVString>) {
         self.inner.set("keys", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -81,9 +85,7 @@ pub struct PushSubscription {
 }
 impl FromVal for PushSubscription {
     fn from_val(v: &emlite::Val) -> Self {
-        PushSubscription {
-            inner: emlite::Val::from_val(v),
-        }
+        PushSubscription { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -110,8 +112,8 @@ impl AsRef<emlite::Val> for PushSubscription {
 }
 impl AsMut<emlite::Val> for PushSubscription {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PushSubscription> for emlite::Val {
     fn from(s: PushSubscription) -> emlite::Val {
@@ -122,35 +124,40 @@ impl From<PushSubscription> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PushSubscription);
 
+
 impl PushSubscription {
-    pub fn endpoint(&self) -> jsbind::USVString {
-        self.inner.get("endpoint").as_::<jsbind::USVString>()
+    pub fn endpoint(&self) -> USVString {
+        self.inner.get("endpoint").as_::<USVString>()
     }
+
 }
 impl PushSubscription {
-    pub fn expiration_time(&self) -> jsbind::Any {
-        self.inner.get("expirationTime").as_::<jsbind::Any>()
+    pub fn expiration_time(&self) -> Any {
+        self.inner.get("expirationTime").as_::<Any>()
     }
+
 }
 impl PushSubscription {
     pub fn options(&self) -> PushSubscriptionOptions {
         self.inner.get("options").as_::<PushSubscriptionOptions>()
     }
+
 }
 impl PushSubscription {
-    pub fn get_key(&self, name: PushEncryptionKeyName) -> jsbind::ArrayBuffer {
-        self.inner
-            .call("getKey", &[name.into()])
-            .as_::<jsbind::ArrayBuffer>()
+    pub fn get_key(&self, name: PushEncryptionKeyName) -> ArrayBuffer {
+        self.inner.call("getKey", &[name.into(), ]).as_::<ArrayBuffer>()
     }
+
 }
 impl PushSubscription {
-    pub fn unsubscribe(&self) -> jsbind::Promise {
-        self.inner.call("unsubscribe", &[]).as_::<jsbind::Promise>()
+    pub fn unsubscribe(&self, ) -> Promise {
+        self.inner.call("unsubscribe", &[]).as_::<Promise>()
     }
+
 }
 impl PushSubscription {
-    pub fn to_json(&self) -> PushSubscriptionJSON {
+    pub fn to_json(&self, ) -> PushSubscriptionJSON {
         self.inner.call("toJSON", &[]).as_::<PushSubscriptionJSON>()
     }
+
 }

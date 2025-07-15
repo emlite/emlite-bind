@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ContactInfo {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for ContactInfo {
 }
 impl AsMut<emlite::Val> for ContactInfo {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ContactInfo> for emlite::Val {
     fn from(s: ContactInfo) -> emlite::Val {
@@ -46,57 +49,54 @@ impl From<ContactInfo> for emlite::Val {
 }
 
 impl ContactInfo {
-    pub fn address(&self) -> jsbind::Sequence<ContactAddress> {
-        self.inner
-            .get("address")
-            .as_::<jsbind::Sequence<ContactAddress>>()
+    pub fn address(&self) -> Sequence<ContactAddress> {
+        self.inner.get("address").as_::<Sequence<ContactAddress>>()
     }
 
-    pub fn set_address(&mut self, value: jsbind::Sequence<ContactAddress>) {
+    pub fn set_address(&mut self, value: Sequence<ContactAddress>) {
         self.inner.set("address", value);
     }
+
 }
 impl ContactInfo {
-    pub fn email(&self) -> jsbind::Sequence<jsbind::DOMString> {
-        self.inner
-            .get("email")
-            .as_::<jsbind::Sequence<jsbind::DOMString>>()
+    pub fn email(&self) -> Sequence<DOMString> {
+        self.inner.get("email").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_email(&mut self, value: jsbind::Sequence<jsbind::DOMString>) {
+    pub fn set_email(&mut self, value: Sequence<DOMString>) {
         self.inner.set("email", value);
     }
+
 }
 impl ContactInfo {
-    pub fn icon(&self) -> jsbind::Sequence<Blob> {
-        self.inner.get("icon").as_::<jsbind::Sequence<Blob>>()
+    pub fn icon(&self) -> Sequence<Blob> {
+        self.inner.get("icon").as_::<Sequence<Blob>>()
     }
 
-    pub fn set_icon(&mut self, value: jsbind::Sequence<Blob>) {
+    pub fn set_icon(&mut self, value: Sequence<Blob>) {
         self.inner.set("icon", value);
     }
+
 }
 impl ContactInfo {
-    pub fn name(&self) -> jsbind::Sequence<jsbind::DOMString> {
-        self.inner
-            .get("name")
-            .as_::<jsbind::Sequence<jsbind::DOMString>>()
+    pub fn name(&self) -> Sequence<DOMString> {
+        self.inner.get("name").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_name(&mut self, value: jsbind::Sequence<jsbind::DOMString>) {
+    pub fn set_name(&mut self, value: Sequence<DOMString>) {
         self.inner.set("name", value);
     }
+
 }
 impl ContactInfo {
-    pub fn tel(&self) -> jsbind::Sequence<jsbind::DOMString> {
-        self.inner
-            .get("tel")
-            .as_::<jsbind::Sequence<jsbind::DOMString>>()
+    pub fn tel(&self) -> Sequence<DOMString> {
+        self.inner.get("tel").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_tel(&mut self, value: jsbind::Sequence<jsbind::DOMString>) {
+    pub fn set_tel(&mut self, value: Sequence<DOMString>) {
         self.inner.set("tel", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -132,8 +132,8 @@ impl AsRef<emlite::Val> for ContactsSelectOptions {
 }
 impl AsMut<emlite::Val> for ContactsSelectOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ContactsSelectOptions> for emlite::Val {
     fn from(s: ContactsSelectOptions) -> emlite::Val {
@@ -151,6 +151,7 @@ impl ContactsSelectOptions {
     pub fn set_multiple(&mut self, value: bool) {
         self.inner.set("multiple", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -159,9 +160,7 @@ pub struct ContactsManager {
 }
 impl FromVal for ContactsManager {
     fn from_val(v: &emlite::Val) -> Self {
-        ContactsManager {
-            inner: emlite::Val::from_val(v),
-        }
+        ContactsManager { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -188,8 +187,8 @@ impl AsRef<emlite::Val> for ContactsManager {
 }
 impl AsMut<emlite::Val> for ContactsManager {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ContactsManager> for emlite::Val {
     fn from(s: ContactsManager) -> emlite::Val {
@@ -200,27 +199,20 @@ impl From<ContactsManager> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ContactsManager);
 
+
 impl ContactsManager {
-    pub fn get_properties(&self) -> jsbind::Promise {
-        self.inner
-            .call("getProperties", &[])
-            .as_::<jsbind::Promise>()
-    }
-}
-impl ContactsManager {
-    pub fn select0(&self, properties: jsbind::Sequence<ContactProperty>) -> jsbind::Promise {
-        self.inner
-            .call("select", &[properties.into()])
-            .as_::<jsbind::Promise>()
+    pub fn get_properties(&self, ) -> Promise {
+        self.inner.call("getProperties", &[]).as_::<Promise>()
     }
 
-    pub fn select1(
-        &self,
-        properties: jsbind::Sequence<ContactProperty>,
-        options: ContactsSelectOptions,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("select", &[properties.into(), options.into()])
-            .as_::<jsbind::Promise>()
+}
+impl ContactsManager {
+    pub fn select0(&self, properties: Sequence<ContactProperty>) -> Promise {
+        self.inner.call("select", &[properties.into(), ]).as_::<Promise>()
     }
+
+    pub fn select1(&self, properties: Sequence<ContactProperty>, options: ContactsSelectOptions) -> Promise {
+        self.inner.call("select", &[properties.into(), options.into(), ]).as_::<Promise>()
+    }
+
 }

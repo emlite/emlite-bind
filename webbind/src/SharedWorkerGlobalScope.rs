@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SharedWorkerGlobalScope {
@@ -7,9 +10,7 @@ pub struct SharedWorkerGlobalScope {
 }
 impl FromVal for SharedWorkerGlobalScope {
     fn from_val(v: &emlite::Val) -> Self {
-        SharedWorkerGlobalScope {
-            inner: WorkerGlobalScope::from_val(v),
-        }
+        SharedWorkerGlobalScope { inner: WorkerGlobalScope::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SharedWorkerGlobalScope {
 }
 impl AsMut<emlite::Val> for SharedWorkerGlobalScope {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SharedWorkerGlobalScope> for emlite::Val {
     fn from(s: SharedWorkerGlobalScope) -> emlite::Val {
@@ -48,22 +49,26 @@ impl From<SharedWorkerGlobalScope> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SharedWorkerGlobalScope);
 
+
 impl SharedWorkerGlobalScope {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
-    }
-}
-impl SharedWorkerGlobalScope {
-    pub fn close(&self) -> jsbind::Undefined {
-        self.inner.call("close", &[]).as_::<jsbind::Undefined>()
-    }
-}
-impl SharedWorkerGlobalScope {
-    pub fn onconnect(&self) -> jsbind::Any {
-        self.inner.get("onconnect").as_::<jsbind::Any>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
-    pub fn set_onconnect(&mut self, value: jsbind::Any) {
+}
+impl SharedWorkerGlobalScope {
+    pub fn close(&self, ) -> Undefined {
+        self.inner.call("close", &[]).as_::<Undefined>()
+    }
+
+}
+impl SharedWorkerGlobalScope {
+    pub fn onconnect(&self) -> Any {
+        self.inner.get("onconnect").as_::<Any>()
+    }
+
+    pub fn set_onconnect(&mut self, value: Any) {
         self.inner.set("onconnect", value);
     }
+
 }

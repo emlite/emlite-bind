@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CanvasPattern {
@@ -7,9 +10,7 @@ pub struct CanvasPattern {
 }
 impl FromVal for CanvasPattern {
     fn from_val(v: &emlite::Val) -> Self {
-        CanvasPattern {
-            inner: emlite::Val::from_val(v),
-        }
+        CanvasPattern { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CanvasPattern {
 }
 impl AsMut<emlite::Val> for CanvasPattern {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CanvasPattern> for emlite::Val {
     fn from(s: CanvasPattern) -> emlite::Val {
@@ -48,16 +49,14 @@ impl From<CanvasPattern> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CanvasPattern);
 
+
 impl CanvasPattern {
-    pub fn set_transform0(&self) -> jsbind::Undefined {
-        self.inner
-            .call("setTransform", &[])
-            .as_::<jsbind::Undefined>()
+    pub fn set_transform0(&self, ) -> Undefined {
+        self.inner.call("setTransform", &[]).as_::<Undefined>()
     }
 
-    pub fn set_transform1(&self, transform: DOMMatrix2DInit) -> jsbind::Undefined {
-        self.inner
-            .call("setTransform", &[transform.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn set_transform1(&self, transform: DOMMatrix2DInit) -> Undefined {
+        self.inner.call("setTransform", &[transform.into(), ]).as_::<Undefined>()
     }
+
 }

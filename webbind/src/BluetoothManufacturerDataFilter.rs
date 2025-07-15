@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BluetoothManufacturerDataFilter {
@@ -7,9 +10,7 @@ pub struct BluetoothManufacturerDataFilter {
 }
 impl FromVal for BluetoothManufacturerDataFilter {
     fn from_val(v: &emlite::Val) -> Self {
-        BluetoothManufacturerDataFilter {
-            inner: emlite::Val::from_val(v),
-        }
+        BluetoothManufacturerDataFilter { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for BluetoothManufacturerDataFilter {
 }
 impl AsMut<emlite::Val> for BluetoothManufacturerDataFilter {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<BluetoothManufacturerDataFilter> for emlite::Val {
     fn from(s: BluetoothManufacturerDataFilter) -> emlite::Val {
@@ -48,20 +49,19 @@ impl From<BluetoothManufacturerDataFilter> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BluetoothManufacturerDataFilter);
 
+
+
 impl BluetoothManufacturerDataFilter {
     pub fn new0() -> BluetoothManufacturerDataFilter {
         Self {
-            inner: emlite::Val::global("BluetoothManufacturerDataFilter")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("BluetoothManufacturerDataFilter").new(&[]).as_::<emlite::Val>(),
         }
     }
 
-    pub fn new1(init: jsbind::Object) -> BluetoothManufacturerDataFilter {
+    pub fn new1(init: Object) -> BluetoothManufacturerDataFilter {
         Self {
-            inner: emlite::Val::global("BluetoothManufacturerDataFilter")
-                .new(&[init.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("BluetoothManufacturerDataFilter").new(&[init.into()]).as_::<emlite::Val>(),
         }
     }
+
 }

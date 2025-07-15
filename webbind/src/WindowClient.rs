@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WindowClient {
@@ -7,9 +10,7 @@ pub struct WindowClient {
 }
 impl FromVal for WindowClient {
     fn from_val(v: &emlite::Val) -> Self {
-        WindowClient {
-            inner: Client::from_val(v),
-        }
+        WindowClient { inner: Client::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WindowClient {
 }
 impl AsMut<emlite::Val> for WindowClient {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WindowClient> for emlite::Val {
     fn from(s: WindowClient) -> emlite::Val {
@@ -48,34 +49,34 @@ impl From<WindowClient> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WindowClient);
 
+
 impl WindowClient {
     pub fn visibility_state(&self) -> DocumentVisibilityState {
-        self.inner
-            .get("visibilityState")
-            .as_::<DocumentVisibilityState>()
+        self.inner.get("visibilityState").as_::<DocumentVisibilityState>()
     }
+
 }
 impl WindowClient {
     pub fn focused(&self) -> bool {
         self.inner.get("focused").as_::<bool>()
     }
+
 }
 impl WindowClient {
-    pub fn ancestor_origins(&self) -> jsbind::FrozenArray<jsbind::USVString> {
-        self.inner
-            .get("ancestorOrigins")
-            .as_::<jsbind::FrozenArray<jsbind::USVString>>()
+    pub fn ancestor_origins(&self) -> FrozenArray<USVString> {
+        self.inner.get("ancestorOrigins").as_::<FrozenArray<USVString>>()
     }
+
 }
 impl WindowClient {
-    pub fn focus(&self) -> jsbind::Promise {
-        self.inner.call("focus", &[]).as_::<jsbind::Promise>()
+    pub fn focus(&self, ) -> Promise {
+        self.inner.call("focus", &[]).as_::<Promise>()
     }
+
 }
 impl WindowClient {
-    pub fn navigate(&self, url: jsbind::USVString) -> jsbind::Promise {
-        self.inner
-            .call("navigate", &[url.into()])
-            .as_::<jsbind::Promise>()
+    pub fn navigate(&self, url: USVString) -> Promise {
+        self.inner.call("navigate", &[url.into(), ]).as_::<Promise>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CookieListItem {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for CookieListItem {
 }
 impl AsMut<emlite::Val> for CookieListItem {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CookieListItem> for emlite::Val {
     fn from(s: CookieListItem) -> emlite::Val {
@@ -46,49 +49,54 @@ impl From<CookieListItem> for emlite::Val {
 }
 
 impl CookieListItem {
-    pub fn name(&self) -> jsbind::USVString {
-        self.inner.get("name").as_::<jsbind::USVString>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn set_name(&mut self, value: jsbind::USVString) {
+    pub fn set_name(&mut self, value: USVString) {
         self.inner.set("name", value);
     }
+
 }
 impl CookieListItem {
-    pub fn value(&self) -> jsbind::USVString {
-        self.inner.get("value").as_::<jsbind::USVString>()
+    pub fn value(&self) -> USVString {
+        self.inner.get("value").as_::<USVString>()
     }
 
-    pub fn set_value(&mut self, value: jsbind::USVString) {
+    pub fn set_value(&mut self, value: USVString) {
         self.inner.set("value", value);
     }
+
 }
 impl CookieListItem {
-    pub fn domain(&self) -> jsbind::USVString {
-        self.inner.get("domain").as_::<jsbind::USVString>()
+    pub fn domain(&self) -> USVString {
+        self.inner.get("domain").as_::<USVString>()
     }
 
-    pub fn set_domain(&mut self, value: jsbind::USVString) {
+    pub fn set_domain(&mut self, value: USVString) {
         self.inner.set("domain", value);
     }
+
 }
 impl CookieListItem {
-    pub fn path(&self) -> jsbind::USVString {
-        self.inner.get("path").as_::<jsbind::USVString>()
+    pub fn path(&self) -> USVString {
+        self.inner.get("path").as_::<USVString>()
     }
 
-    pub fn set_path(&mut self, value: jsbind::USVString) {
+    pub fn set_path(&mut self, value: USVString) {
         self.inner.set("path", value);
     }
+
 }
 impl CookieListItem {
-    pub fn expires(&self) -> jsbind::Any {
-        self.inner.get("expires").as_::<jsbind::Any>()
+    pub fn expires(&self) -> Any {
+        self.inner.get("expires").as_::<Any>()
     }
 
-    pub fn set_expires(&mut self, value: jsbind::Any) {
+    pub fn set_expires(&mut self, value: Any) {
         self.inner.set("expires", value);
     }
+
 }
 impl CookieListItem {
     pub fn secure(&self) -> bool {
@@ -98,6 +106,7 @@ impl CookieListItem {
     pub fn set_secure(&mut self, value: bool) {
         self.inner.set("secure", value);
     }
+
 }
 impl CookieListItem {
     pub fn same_site(&self) -> CookieSameSite {
@@ -107,6 +116,7 @@ impl CookieListItem {
     pub fn set_same_site(&mut self, value: CookieSameSite) {
         self.inner.set("sameSite", value);
     }
+
 }
 impl CookieListItem {
     pub fn partitioned(&self) -> bool {
@@ -116,6 +126,7 @@ impl CookieListItem {
     pub fn set_partitioned(&mut self, value: bool) {
         self.inner.set("partitioned", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -151,8 +162,8 @@ impl AsRef<emlite::Val> for CookieStoreGetOptions {
 }
 impl AsMut<emlite::Val> for CookieStoreGetOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CookieStoreGetOptions> for emlite::Val {
     fn from(s: CookieStoreGetOptions) -> emlite::Val {
@@ -163,22 +174,24 @@ impl From<CookieStoreGetOptions> for emlite::Val {
 }
 
 impl CookieStoreGetOptions {
-    pub fn name(&self) -> jsbind::USVString {
-        self.inner.get("name").as_::<jsbind::USVString>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn set_name(&mut self, value: jsbind::USVString) {
+    pub fn set_name(&mut self, value: USVString) {
         self.inner.set("name", value);
     }
+
 }
 impl CookieStoreGetOptions {
-    pub fn url(&self) -> jsbind::USVString {
-        self.inner.get("url").as_::<jsbind::USVString>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 
-    pub fn set_url(&mut self, value: jsbind::USVString) {
+    pub fn set_url(&mut self, value: USVString) {
         self.inner.set("url", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -214,8 +227,8 @@ impl AsRef<emlite::Val> for CookieInit {
 }
 impl AsMut<emlite::Val> for CookieInit {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CookieInit> for emlite::Val {
     fn from(s: CookieInit) -> emlite::Val {
@@ -226,49 +239,54 @@ impl From<CookieInit> for emlite::Val {
 }
 
 impl CookieInit {
-    pub fn name(&self) -> jsbind::USVString {
-        self.inner.get("name").as_::<jsbind::USVString>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn set_name(&mut self, value: jsbind::USVString) {
+    pub fn set_name(&mut self, value: USVString) {
         self.inner.set("name", value);
     }
+
 }
 impl CookieInit {
-    pub fn value(&self) -> jsbind::USVString {
-        self.inner.get("value").as_::<jsbind::USVString>()
+    pub fn value(&self) -> USVString {
+        self.inner.get("value").as_::<USVString>()
     }
 
-    pub fn set_value(&mut self, value: jsbind::USVString) {
+    pub fn set_value(&mut self, value: USVString) {
         self.inner.set("value", value);
     }
+
 }
 impl CookieInit {
-    pub fn expires(&self) -> jsbind::Any {
-        self.inner.get("expires").as_::<jsbind::Any>()
+    pub fn expires(&self) -> Any {
+        self.inner.get("expires").as_::<Any>()
     }
 
-    pub fn set_expires(&mut self, value: jsbind::Any) {
+    pub fn set_expires(&mut self, value: Any) {
         self.inner.set("expires", value);
     }
+
 }
 impl CookieInit {
-    pub fn domain(&self) -> jsbind::USVString {
-        self.inner.get("domain").as_::<jsbind::USVString>()
+    pub fn domain(&self) -> USVString {
+        self.inner.get("domain").as_::<USVString>()
     }
 
-    pub fn set_domain(&mut self, value: jsbind::USVString) {
+    pub fn set_domain(&mut self, value: USVString) {
         self.inner.set("domain", value);
     }
+
 }
 impl CookieInit {
-    pub fn path(&self) -> jsbind::USVString {
-        self.inner.get("path").as_::<jsbind::USVString>()
+    pub fn path(&self) -> USVString {
+        self.inner.get("path").as_::<USVString>()
     }
 
-    pub fn set_path(&mut self, value: jsbind::USVString) {
+    pub fn set_path(&mut self, value: USVString) {
         self.inner.set("path", value);
     }
+
 }
 impl CookieInit {
     pub fn same_site(&self) -> CookieSameSite {
@@ -278,6 +296,7 @@ impl CookieInit {
     pub fn set_same_site(&mut self, value: CookieSameSite) {
         self.inner.set("sameSite", value);
     }
+
 }
 impl CookieInit {
     pub fn partitioned(&self) -> bool {
@@ -287,6 +306,7 @@ impl CookieInit {
     pub fn set_partitioned(&mut self, value: bool) {
         self.inner.set("partitioned", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -322,8 +342,8 @@ impl AsRef<emlite::Val> for CookieStoreDeleteOptions {
 }
 impl AsMut<emlite::Val> for CookieStoreDeleteOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CookieStoreDeleteOptions> for emlite::Val {
     fn from(s: CookieStoreDeleteOptions) -> emlite::Val {
@@ -334,31 +354,34 @@ impl From<CookieStoreDeleteOptions> for emlite::Val {
 }
 
 impl CookieStoreDeleteOptions {
-    pub fn name(&self) -> jsbind::USVString {
-        self.inner.get("name").as_::<jsbind::USVString>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn set_name(&mut self, value: jsbind::USVString) {
+    pub fn set_name(&mut self, value: USVString) {
         self.inner.set("name", value);
     }
+
 }
 impl CookieStoreDeleteOptions {
-    pub fn domain(&self) -> jsbind::USVString {
-        self.inner.get("domain").as_::<jsbind::USVString>()
+    pub fn domain(&self) -> USVString {
+        self.inner.get("domain").as_::<USVString>()
     }
 
-    pub fn set_domain(&mut self, value: jsbind::USVString) {
+    pub fn set_domain(&mut self, value: USVString) {
         self.inner.set("domain", value);
     }
+
 }
 impl CookieStoreDeleteOptions {
-    pub fn path(&self) -> jsbind::USVString {
-        self.inner.get("path").as_::<jsbind::USVString>()
+    pub fn path(&self) -> USVString {
+        self.inner.get("path").as_::<USVString>()
     }
 
-    pub fn set_path(&mut self, value: jsbind::USVString) {
+    pub fn set_path(&mut self, value: USVString) {
         self.inner.set("path", value);
     }
+
 }
 impl CookieStoreDeleteOptions {
     pub fn partitioned(&self) -> bool {
@@ -368,6 +391,7 @@ impl CookieStoreDeleteOptions {
     pub fn set_partitioned(&mut self, value: bool) {
         self.inner.set("partitioned", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -376,9 +400,7 @@ pub struct CookieStore {
 }
 impl FromVal for CookieStore {
     fn from_val(v: &emlite::Val) -> Self {
-        CookieStore {
-            inner: EventTarget::from_val(v),
-        }
+        CookieStore { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -405,8 +427,8 @@ impl AsRef<emlite::Val> for CookieStore {
 }
 impl AsMut<emlite::Val> for CookieStore {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CookieStore> for emlite::Val {
     fn from(s: CookieStore) -> emlite::Val {
@@ -417,48 +439,46 @@ impl From<CookieStore> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CookieStore);
 
+
 impl CookieStore {
-    pub fn get0(&self) -> jsbind::Promise {
-        self.inner.call("get", &[]).as_::<jsbind::Promise>()
+    pub fn get0(&self, ) -> Promise {
+        self.inner.call("get", &[]).as_::<Promise>()
     }
 
-    pub fn get1(&self, options: CookieStoreGetOptions) -> jsbind::Promise {
-        self.inner
-            .call("get", &[options.into()])
-            .as_::<jsbind::Promise>()
-    }
-}
-impl CookieStore {
-    pub fn get_all0(&self) -> jsbind::Promise {
-        self.inner.call("getAll", &[]).as_::<jsbind::Promise>()
+    pub fn get1(&self, options: CookieStoreGetOptions) -> Promise {
+        self.inner.call("get", &[options.into(), ]).as_::<Promise>()
     }
 
-    pub fn get_all1(&self, options: CookieStoreGetOptions) -> jsbind::Promise {
-        self.inner
-            .call("getAll", &[options.into()])
-            .as_::<jsbind::Promise>()
-    }
 }
 impl CookieStore {
-    pub fn set(&self, options: CookieInit) -> jsbind::Promise {
-        self.inner
-            .call("set", &[options.into()])
-            .as_::<jsbind::Promise>()
-    }
-}
-impl CookieStore {
-    pub fn delete(&self, options: CookieStoreDeleteOptions) -> jsbind::Promise {
-        self.inner
-            .call("delete", &[options.into()])
-            .as_::<jsbind::Promise>()
-    }
-}
-impl CookieStore {
-    pub fn onchange(&self) -> jsbind::Any {
-        self.inner.get("onchange").as_::<jsbind::Any>()
+    pub fn get_all0(&self, ) -> Promise {
+        self.inner.call("getAll", &[]).as_::<Promise>()
     }
 
-    pub fn set_onchange(&mut self, value: jsbind::Any) {
+    pub fn get_all1(&self, options: CookieStoreGetOptions) -> Promise {
+        self.inner.call("getAll", &[options.into(), ]).as_::<Promise>()
+    }
+
+}
+impl CookieStore {
+    pub fn set(&self, options: CookieInit) -> Promise {
+        self.inner.call("set", &[options.into(), ]).as_::<Promise>()
+    }
+
+}
+impl CookieStore {
+    pub fn delete(&self, options: CookieStoreDeleteOptions) -> Promise {
+        self.inner.call("delete", &[options.into(), ]).as_::<Promise>()
+    }
+
+}
+impl CookieStore {
+    pub fn onchange(&self) -> Any {
+        self.inner.get("onchange").as_::<Any>()
+    }
+
+    pub fn set_onchange(&mut self, value: Any) {
         self.inner.set("onchange", value);
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRHitTestResult {
@@ -7,9 +10,7 @@ pub struct XRHitTestResult {
 }
 impl FromVal for XRHitTestResult {
     fn from_val(v: &emlite::Val) -> Self {
-        XRHitTestResult {
-            inner: emlite::Val::from_val(v),
-        }
+        XRHitTestResult { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRHitTestResult {
 }
 impl AsMut<emlite::Val> for XRHitTestResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRHitTestResult> for emlite::Val {
     fn from(s: XRHitTestResult) -> emlite::Val {
@@ -48,17 +49,16 @@ impl From<XRHitTestResult> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRHitTestResult);
 
+
 impl XRHitTestResult {
     pub fn get_pose(&self, base_space: XRSpace) -> XRPose {
-        self.inner
-            .call("getPose", &[base_space.into()])
-            .as_::<XRPose>()
+        self.inner.call("getPose", &[base_space.into(), ]).as_::<XRPose>()
     }
+
 }
 impl XRHitTestResult {
-    pub fn create_anchor(&self) -> jsbind::Promise {
-        self.inner
-            .call("createAnchor", &[])
-            .as_::<jsbind::Promise>()
+    pub fn create_anchor(&self, ) -> Promise {
+        self.inner.call("createAnchor", &[]).as_::<Promise>()
     }
+
 }

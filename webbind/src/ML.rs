@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ML {
@@ -7,9 +10,7 @@ pub struct ML {
 }
 impl FromVal for ML {
     fn from_val(v: &emlite::Val) -> Self {
-        ML {
-            inner: emlite::Val::from_val(v),
-        }
+        ML { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ML {
 }
 impl AsMut<emlite::Val> for ML {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ML> for emlite::Val {
     fn from(s: ML) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<ML> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ML);
 
+
 impl ML {
-    pub fn create_context(&self, gpu_device: GPUDevice) -> jsbind::Promise {
-        self.inner
-            .call("createContext", &[gpu_device.into()])
-            .as_::<jsbind::Promise>()
+    pub fn create_context(&self, gpu_device: GPUDevice) -> Promise {
+        self.inner.call("createContext", &[gpu_device.into(), ]).as_::<Promise>()
     }
+
 }

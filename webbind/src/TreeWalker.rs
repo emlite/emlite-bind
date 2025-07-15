@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TreeWalker {
@@ -7,9 +10,7 @@ pub struct TreeWalker {
 }
 impl FromVal for TreeWalker {
     fn from_val(v: &emlite::Val) -> Self {
-        TreeWalker {
-            inner: emlite::Val::from_val(v),
-        }
+        TreeWalker { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for TreeWalker {
 }
 impl AsMut<emlite::Val> for TreeWalker {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<TreeWalker> for emlite::Val {
     fn from(s: TreeWalker) -> emlite::Val {
@@ -48,20 +49,24 @@ impl From<TreeWalker> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(TreeWalker);
 
+
 impl TreeWalker {
     pub fn root(&self) -> Node {
         self.inner.get("root").as_::<Node>()
     }
+
 }
 impl TreeWalker {
     pub fn what_to_show(&self) -> u32 {
         self.inner.get("whatToShow").as_::<u32>()
     }
+
 }
 impl TreeWalker {
-    pub fn filter(&self) -> jsbind::Function {
-        self.inner.get("filter").as_::<jsbind::Function>()
+    pub fn filter(&self) -> Function {
+        self.inner.get("filter").as_::<Function>()
     }
+
 }
 impl TreeWalker {
     pub fn current_node(&self) -> Node {
@@ -71,39 +76,47 @@ impl TreeWalker {
     pub fn set_current_node(&mut self, value: Node) {
         self.inner.set("currentNode", value);
     }
+
 }
 impl TreeWalker {
-    pub fn parent_node(&self) -> Node {
+    pub fn parent_node(&self, ) -> Node {
         self.inner.call("parentNode", &[]).as_::<Node>()
     }
+
 }
 impl TreeWalker {
-    pub fn first_child(&self) -> Node {
+    pub fn first_child(&self, ) -> Node {
         self.inner.call("firstChild", &[]).as_::<Node>()
     }
+
 }
 impl TreeWalker {
-    pub fn last_child(&self) -> Node {
+    pub fn last_child(&self, ) -> Node {
         self.inner.call("lastChild", &[]).as_::<Node>()
     }
+
 }
 impl TreeWalker {
-    pub fn previous_sibling(&self) -> Node {
+    pub fn previous_sibling(&self, ) -> Node {
         self.inner.call("previousSibling", &[]).as_::<Node>()
     }
+
 }
 impl TreeWalker {
-    pub fn next_sibling(&self) -> Node {
+    pub fn next_sibling(&self, ) -> Node {
         self.inner.call("nextSibling", &[]).as_::<Node>()
     }
+
 }
 impl TreeWalker {
-    pub fn previous_node(&self) -> Node {
+    pub fn previous_node(&self, ) -> Node {
         self.inner.call("previousNode", &[]).as_::<Node>()
     }
+
 }
 impl TreeWalker {
-    pub fn next_node(&self) -> Node {
+    pub fn next_node(&self, ) -> Node {
         self.inner.call("nextNode", &[]).as_::<Node>()
     }
+
 }

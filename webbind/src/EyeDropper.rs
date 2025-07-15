@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ColorSelectionResult {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for ColorSelectionResult {
 }
 impl AsMut<emlite::Val> for ColorSelectionResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ColorSelectionResult> for emlite::Val {
     fn from(s: ColorSelectionResult) -> emlite::Val {
@@ -46,13 +49,14 @@ impl From<ColorSelectionResult> for emlite::Val {
 }
 
 impl ColorSelectionResult {
-    pub fn s_rgb_hex(&self) -> jsbind::DOMString {
-        self.inner.get("sRGBHex").as_::<jsbind::DOMString>()
+    pub fn s_rgb_hex(&self) -> DOMString {
+        self.inner.get("sRGBHex").as_::<DOMString>()
     }
 
-    pub fn set_s_rgb_hex(&mut self, value: jsbind::DOMString) {
+    pub fn set_s_rgb_hex(&mut self, value: DOMString) {
         self.inner.set("sRGBHex", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -88,8 +92,8 @@ impl AsRef<emlite::Val> for ColorSelectionOptions {
 }
 impl AsMut<emlite::Val> for ColorSelectionOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ColorSelectionOptions> for emlite::Val {
     fn from(s: ColorSelectionOptions) -> emlite::Val {
@@ -107,6 +111,7 @@ impl ColorSelectionOptions {
     pub fn set_signal(&mut self, value: AbortSignal) {
         self.inner.set("signal", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -115,9 +120,7 @@ pub struct EyeDropper {
 }
 impl FromVal for EyeDropper {
     fn from_val(v: &emlite::Val) -> Self {
-        EyeDropper {
-            inner: emlite::Val::from_val(v),
-        }
+        EyeDropper { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -144,8 +147,8 @@ impl AsRef<emlite::Val> for EyeDropper {
 }
 impl AsMut<emlite::Val> for EyeDropper {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<EyeDropper> for emlite::Val {
     fn from(s: EyeDropper) -> emlite::Val {
@@ -156,23 +159,23 @@ impl From<EyeDropper> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(EyeDropper);
 
+
+
 impl EyeDropper {
     pub fn new() -> EyeDropper {
         Self {
-            inner: emlite::Val::global("EyeDropper")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("EyeDropper").new(&[]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl EyeDropper {
-    pub fn open0(&self) -> jsbind::Promise {
-        self.inner.call("open", &[]).as_::<jsbind::Promise>()
+    pub fn open0(&self, ) -> Promise {
+        self.inner.call("open", &[]).as_::<Promise>()
     }
 
-    pub fn open1(&self, options: ColorSelectionOptions) -> jsbind::Promise {
-        self.inner
-            .call("open", &[options.into()])
-            .as_::<jsbind::Promise>()
+    pub fn open1(&self, options: ColorSelectionOptions) -> Promise {
+        self.inner.call("open", &[options.into(), ]).as_::<Promise>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct OES_texture_float_linear {
@@ -7,9 +10,7 @@ pub struct OES_texture_float_linear {
 }
 impl FromVal for OES_texture_float_linear {
     fn from_val(v: &emlite::Val) -> Self {
-        OES_texture_float_linear {
-            inner: emlite::Val::from_val(v),
-        }
+        OES_texture_float_linear { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for OES_texture_float_linear {
 }
 impl AsMut<emlite::Val> for OES_texture_float_linear {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<OES_texture_float_linear> for emlite::Val {
     fn from(s: OES_texture_float_linear) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<OES_texture_float_linear> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(OES_texture_float_linear);
+
+

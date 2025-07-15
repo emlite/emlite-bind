@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DetectedFace {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for DetectedFace {
 }
 impl AsMut<emlite::Val> for DetectedFace {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<DetectedFace> for emlite::Val {
     fn from(s: DetectedFace) -> emlite::Val {
@@ -53,17 +56,17 @@ impl DetectedFace {
     pub fn set_bounding_box(&mut self, value: DOMRectReadOnly) {
         self.inner.set("boundingBox", value);
     }
+
 }
 impl DetectedFace {
-    pub fn landmarks(&self) -> jsbind::Sequence<jsbind::Any> {
-        self.inner
-            .get("landmarks")
-            .as_::<jsbind::Sequence<jsbind::Any>>()
+    pub fn landmarks(&self) -> Sequence<Any> {
+        self.inner.get("landmarks").as_::<Sequence<Any>>()
     }
 
-    pub fn set_landmarks(&mut self, value: jsbind::Sequence<jsbind::Any>) {
+    pub fn set_landmarks(&mut self, value: Sequence<Any>) {
         self.inner.set("landmarks", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -72,9 +75,7 @@ pub struct FaceDetector {
 }
 impl FromVal for FaceDetector {
     fn from_val(v: &emlite::Val) -> Self {
-        FaceDetector {
-            inner: emlite::Val::from_val(v),
-        }
+        FaceDetector { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -101,8 +102,8 @@ impl AsRef<emlite::Val> for FaceDetector {
 }
 impl AsMut<emlite::Val> for FaceDetector {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<FaceDetector> for emlite::Val {
     fn from(s: FaceDetector) -> emlite::Val {
@@ -113,27 +114,25 @@ impl From<FaceDetector> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FaceDetector);
 
+
+
 impl FaceDetector {
     pub fn new0() -> FaceDetector {
         Self {
-            inner: emlite::Val::global("FaceDetector")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("FaceDetector").new(&[]).as_::<emlite::Val>(),
         }
     }
 
-    pub fn new1(face_detector_options: jsbind::Any) -> FaceDetector {
+    pub fn new1(face_detector_options: Any) -> FaceDetector {
         Self {
-            inner: emlite::Val::global("FaceDetector")
-                .new(&[face_detector_options.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("FaceDetector").new(&[face_detector_options.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl FaceDetector {
-    pub fn detect(&self, image: jsbind::Any) -> jsbind::Promise {
-        self.inner
-            .call("detect", &[image.into()])
-            .as_::<jsbind::Promise>()
+    pub fn detect(&self, image: Any) -> Promise {
+        self.inner.call("detect", &[image.into(), ]).as_::<Promise>()
     }
+
 }

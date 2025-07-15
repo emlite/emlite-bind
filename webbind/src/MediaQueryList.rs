@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaQueryList {
@@ -7,9 +10,7 @@ pub struct MediaQueryList {
 }
 impl FromVal for MediaQueryList {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaQueryList {
-            inner: EventTarget::from_val(v),
-        }
+        MediaQueryList { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for MediaQueryList {
 }
 impl AsMut<emlite::Val> for MediaQueryList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MediaQueryList> for emlite::Val {
     fn from(s: MediaQueryList) -> emlite::Val {
@@ -48,36 +49,38 @@ impl From<MediaQueryList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MediaQueryList);
 
+
 impl MediaQueryList {
-    pub fn media(&self) -> jsbind::CSSOMString {
-        self.inner.get("media").as_::<jsbind::CSSOMString>()
+    pub fn media(&self) -> CSSOMString {
+        self.inner.get("media").as_::<CSSOMString>()
     }
+
 }
 impl MediaQueryList {
     pub fn matches(&self) -> bool {
         self.inner.get("matches").as_::<bool>()
     }
+
 }
 impl MediaQueryList {
-    pub fn add_listener(&self, callback: jsbind::Function) -> jsbind::Undefined {
-        self.inner
-            .call("addListener", &[callback.into()])
-            .as_::<jsbind::Undefined>()
-    }
-}
-impl MediaQueryList {
-    pub fn remove_listener(&self, callback: jsbind::Function) -> jsbind::Undefined {
-        self.inner
-            .call("removeListener", &[callback.into()])
-            .as_::<jsbind::Undefined>()
-    }
-}
-impl MediaQueryList {
-    pub fn onchange(&self) -> jsbind::Any {
-        self.inner.get("onchange").as_::<jsbind::Any>()
+    pub fn add_listener(&self, callback: Function) -> Undefined {
+        self.inner.call("addListener", &[callback.into(), ]).as_::<Undefined>()
     }
 
-    pub fn set_onchange(&mut self, value: jsbind::Any) {
+}
+impl MediaQueryList {
+    pub fn remove_listener(&self, callback: Function) -> Undefined {
+        self.inner.call("removeListener", &[callback.into(), ]).as_::<Undefined>()
+    }
+
+}
+impl MediaQueryList {
+    pub fn onchange(&self) -> Any {
+        self.inner.get("onchange").as_::<Any>()
+    }
+
+    pub fn set_onchange(&mut self, value: Any) {
         self.inner.set("onchange", value);
     }
+
 }

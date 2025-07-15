@@ -7,6 +7,7 @@
 extern crate alloc;
 
 use emlite::FromVal;
+use jsbind::prelude::*;
 
 #[path = "ANGLE_instanced_arrays.rs"]
 pub mod angle_instanced_arrays;

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RelativeOrientationSensor {
@@ -7,9 +10,7 @@ pub struct RelativeOrientationSensor {
 }
 impl FromVal for RelativeOrientationSensor {
     fn from_val(v: &emlite::Val) -> Self {
-        RelativeOrientationSensor {
-            inner: OrientationSensor::from_val(v),
-        }
+        RelativeOrientationSensor { inner: OrientationSensor::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for RelativeOrientationSensor {
 }
 impl AsMut<emlite::Val> for RelativeOrientationSensor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RelativeOrientationSensor> for emlite::Val {
     fn from(s: RelativeOrientationSensor) -> emlite::Val {
@@ -48,20 +49,19 @@ impl From<RelativeOrientationSensor> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RelativeOrientationSensor);
 
+
+
 impl RelativeOrientationSensor {
     pub fn new0() -> RelativeOrientationSensor {
         Self {
-            inner: emlite::Val::global("RelativeOrientationSensor")
-                .new(&[])
-                .as_::<OrientationSensor>(),
+            inner: emlite::Val::global("RelativeOrientationSensor").new(&[]).as_::<OrientationSensor>(),
         }
     }
 
-    pub fn new1(sensor_options: jsbind::Any) -> RelativeOrientationSensor {
+    pub fn new1(sensor_options: Any) -> RelativeOrientationSensor {
         Self {
-            inner: emlite::Val::global("RelativeOrientationSensor")
-                .new(&[sensor_options.into()])
-                .as_::<OrientationSensor>(),
+            inner: emlite::Val::global("RelativeOrientationSensor").new(&[sensor_options.into()]).as_::<OrientationSensor>(),
         }
     }
+
 }

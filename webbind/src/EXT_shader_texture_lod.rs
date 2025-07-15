@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EXT_shader_texture_lod {
@@ -7,9 +10,7 @@ pub struct EXT_shader_texture_lod {
 }
 impl FromVal for EXT_shader_texture_lod {
     fn from_val(v: &emlite::Val) -> Self {
-        EXT_shader_texture_lod {
-            inner: emlite::Val::from_val(v),
-        }
+        EXT_shader_texture_lod { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for EXT_shader_texture_lod {
 }
 impl AsMut<emlite::Val> for EXT_shader_texture_lod {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<EXT_shader_texture_lod> for emlite::Val {
     fn from(s: EXT_shader_texture_lod) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<EXT_shader_texture_lod> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(EXT_shader_texture_lod);
+
+

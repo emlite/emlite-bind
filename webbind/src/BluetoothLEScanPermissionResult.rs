@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BluetoothLEScanPermissionResult {
@@ -7,9 +10,7 @@ pub struct BluetoothLEScanPermissionResult {
 }
 impl FromVal for BluetoothLEScanPermissionResult {
     fn from_val(v: &emlite::Val) -> Self {
-        BluetoothLEScanPermissionResult {
-            inner: PermissionStatus::from_val(v),
-        }
+        BluetoothLEScanPermissionResult { inner: PermissionStatus::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for BluetoothLEScanPermissionResult {
 }
 impl AsMut<emlite::Val> for BluetoothLEScanPermissionResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<BluetoothLEScanPermissionResult> for emlite::Val {
     fn from(s: BluetoothLEScanPermissionResult) -> emlite::Val {
@@ -48,14 +49,14 @@ impl From<BluetoothLEScanPermissionResult> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BluetoothLEScanPermissionResult);
 
+
 impl BluetoothLEScanPermissionResult {
-    pub fn scans(&self) -> jsbind::FrozenArray<BluetoothLEScan> {
-        self.inner
-            .get("scans")
-            .as_::<jsbind::FrozenArray<BluetoothLEScan>>()
+    pub fn scans(&self) -> FrozenArray<BluetoothLEScan> {
+        self.inner.get("scans").as_::<FrozenArray<BluetoothLEScan>>()
     }
 
-    pub fn set_scans(&mut self, value: jsbind::FrozenArray<BluetoothLEScan>) {
+    pub fn set_scans(&mut self, value: FrozenArray<BluetoothLEScan>) {
         self.inner.set("scans", value);
     }
+
 }

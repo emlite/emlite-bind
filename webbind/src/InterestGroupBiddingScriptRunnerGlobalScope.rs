@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct InterestGroupBiddingScriptRunnerGlobalScope {
@@ -7,9 +10,7 @@ pub struct InterestGroupBiddingScriptRunnerGlobalScope {
 }
 impl FromVal for InterestGroupBiddingScriptRunnerGlobalScope {
     fn from_val(v: &emlite::Val) -> Self {
-        InterestGroupBiddingScriptRunnerGlobalScope {
-            inner: InterestGroupBiddingAndScoringScriptRunnerGlobalScope::from_val(v),
-        }
+        InterestGroupBiddingScriptRunnerGlobalScope { inner: InterestGroupBiddingAndScoringScriptRunnerGlobalScope::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for InterestGroupBiddingScriptRunnerGlobalScope {
 }
 impl AsMut<emlite::Val> for InterestGroupBiddingScriptRunnerGlobalScope {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<InterestGroupBiddingScriptRunnerGlobalScope> for emlite::Val {
     fn from(s: InterestGroupBiddingScriptRunnerGlobalScope) -> emlite::Val {
@@ -48,38 +49,30 @@ impl From<InterestGroupBiddingScriptRunnerGlobalScope> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(InterestGroupBiddingScriptRunnerGlobalScope);
 
+
 impl InterestGroupBiddingScriptRunnerGlobalScope {
-    pub fn set_bid0(&self) -> bool {
+    pub fn set_bid0(&self, ) -> bool {
         self.inner.call("setBid", &[]).as_::<bool>()
     }
 
-    pub fn set_bid1(&self, one_or_many_bids: jsbind::Any) -> bool {
-        self.inner
-            .call("setBid", &[one_or_many_bids.into()])
-            .as_::<bool>()
-    }
-}
-impl InterestGroupBiddingScriptRunnerGlobalScope {
-    pub fn set_priority(&self, priority: f64) -> jsbind::Undefined {
-        self.inner
-            .call("setPriority", &[priority.into()])
-            .as_::<jsbind::Undefined>()
-    }
-}
-impl InterestGroupBiddingScriptRunnerGlobalScope {
-    pub fn set_priority_signals_override0(&self, key: jsbind::DOMString) -> jsbind::Undefined {
-        self.inner
-            .call("setPrioritySignalsOverride", &[key.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn set_bid1(&self, one_or_many_bids: Any) -> bool {
+        self.inner.call("setBid", &[one_or_many_bids.into(), ]).as_::<bool>()
     }
 
-    pub fn set_priority_signals_override1(
-        &self,
-        key: jsbind::DOMString,
-        priority: f64,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("setPrioritySignalsOverride", &[key.into(), priority.into()])
-            .as_::<jsbind::Undefined>()
+}
+impl InterestGroupBiddingScriptRunnerGlobalScope {
+    pub fn set_priority(&self, priority: f64) -> Undefined {
+        self.inner.call("setPriority", &[priority.into(), ]).as_::<Undefined>()
     }
+
+}
+impl InterestGroupBiddingScriptRunnerGlobalScope {
+    pub fn set_priority_signals_override0(&self, key: DOMString) -> Undefined {
+        self.inner.call("setPrioritySignalsOverride", &[key.into(), ]).as_::<Undefined>()
+    }
+
+    pub fn set_priority_signals_override1(&self, key: DOMString, priority: f64) -> Undefined {
+        self.inner.call("setPrioritySignalsOverride", &[key.into(), priority.into(), ]).as_::<Undefined>()
+    }
+
 }

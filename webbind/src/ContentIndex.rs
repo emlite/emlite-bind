@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ContentDescription {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for ContentDescription {
 }
 impl AsMut<emlite::Val> for ContentDescription {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ContentDescription> for emlite::Val {
     fn from(s: ContentDescription) -> emlite::Val {
@@ -46,31 +49,34 @@ impl From<ContentDescription> for emlite::Val {
 }
 
 impl ContentDescription {
-    pub fn id(&self) -> jsbind::DOMString {
-        self.inner.get("id").as_::<jsbind::DOMString>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 
-    pub fn set_id(&mut self, value: jsbind::DOMString) {
+    pub fn set_id(&mut self, value: DOMString) {
         self.inner.set("id", value);
     }
+
 }
 impl ContentDescription {
-    pub fn title(&self) -> jsbind::DOMString {
-        self.inner.get("title").as_::<jsbind::DOMString>()
+    pub fn title(&self) -> DOMString {
+        self.inner.get("title").as_::<DOMString>()
     }
 
-    pub fn set_title(&mut self, value: jsbind::DOMString) {
+    pub fn set_title(&mut self, value: DOMString) {
         self.inner.set("title", value);
     }
+
 }
 impl ContentDescription {
-    pub fn description(&self) -> jsbind::DOMString {
-        self.inner.get("description").as_::<jsbind::DOMString>()
+    pub fn description(&self) -> DOMString {
+        self.inner.get("description").as_::<DOMString>()
     }
 
-    pub fn set_description(&mut self, value: jsbind::DOMString) {
+    pub fn set_description(&mut self, value: DOMString) {
         self.inner.set("description", value);
     }
+
 }
 impl ContentDescription {
     pub fn category(&self) -> ContentCategory {
@@ -80,26 +86,27 @@ impl ContentDescription {
     pub fn set_category(&mut self, value: ContentCategory) {
         self.inner.set("category", value);
     }
+
 }
 impl ContentDescription {
-    pub fn icons(&self) -> jsbind::Sequence<jsbind::Any> {
-        self.inner
-            .get("icons")
-            .as_::<jsbind::Sequence<jsbind::Any>>()
+    pub fn icons(&self) -> Sequence<Any> {
+        self.inner.get("icons").as_::<Sequence<Any>>()
     }
 
-    pub fn set_icons(&mut self, value: jsbind::Sequence<jsbind::Any>) {
+    pub fn set_icons(&mut self, value: Sequence<Any>) {
         self.inner.set("icons", value);
     }
+
 }
 impl ContentDescription {
-    pub fn url(&self) -> jsbind::USVString {
-        self.inner.get("url").as_::<jsbind::USVString>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 
-    pub fn set_url(&mut self, value: jsbind::USVString) {
+    pub fn set_url(&mut self, value: USVString) {
         self.inner.set("url", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -108,9 +115,7 @@ pub struct ContentIndex {
 }
 impl FromVal for ContentIndex {
     fn from_val(v: &emlite::Val) -> Self {
-        ContentIndex {
-            inner: emlite::Val::from_val(v),
-        }
+        ContentIndex { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -137,8 +142,8 @@ impl AsRef<emlite::Val> for ContentIndex {
 }
 impl AsMut<emlite::Val> for ContentIndex {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ContentIndex> for emlite::Val {
     fn from(s: ContentIndex) -> emlite::Val {
@@ -149,22 +154,22 @@ impl From<ContentIndex> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ContentIndex);
 
+
 impl ContentIndex {
-    pub fn add(&self, description: ContentDescription) -> jsbind::Promise {
-        self.inner
-            .call("add", &[description.into()])
-            .as_::<jsbind::Promise>()
+    pub fn add(&self, description: ContentDescription) -> Promise {
+        self.inner.call("add", &[description.into(), ]).as_::<Promise>()
     }
+
 }
 impl ContentIndex {
-    pub fn delete(&self, id: jsbind::DOMString) -> jsbind::Promise {
-        self.inner
-            .call("delete", &[id.into()])
-            .as_::<jsbind::Promise>()
+    pub fn delete(&self, id: DOMString) -> Promise {
+        self.inner.call("delete", &[id.into(), ]).as_::<Promise>()
     }
+
 }
 impl ContentIndex {
-    pub fn get_all(&self) -> jsbind::Promise {
-        self.inner.call("getAll", &[]).as_::<jsbind::Promise>()
+    pub fn get_all(&self, ) -> Promise {
+        self.inner.call("getAll", &[]).as_::<Promise>()
     }
+
 }

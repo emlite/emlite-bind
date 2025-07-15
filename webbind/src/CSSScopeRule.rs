@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSScopeRule {
@@ -7,9 +10,7 @@ pub struct CSSScopeRule {
 }
 impl FromVal for CSSScopeRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSScopeRule {
-            inner: CSSGroupingRule::from_val(v),
-        }
+        CSSScopeRule { inner: CSSGroupingRule::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSScopeRule {
 }
 impl AsMut<emlite::Val> for CSSScopeRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSScopeRule> for emlite::Val {
     fn from(s: CSSScopeRule) -> emlite::Val {
@@ -48,13 +49,16 @@ impl From<CSSScopeRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSScopeRule);
 
+
 impl CSSScopeRule {
-    pub fn start(&self) -> jsbind::CSSOMString {
-        self.inner.get("start").as_::<jsbind::CSSOMString>()
+    pub fn start(&self) -> CSSOMString {
+        self.inner.get("start").as_::<CSSOMString>()
     }
+
 }
 impl CSSScopeRule {
-    pub fn end(&self) -> jsbind::CSSOMString {
-        self.inner.get("end").as_::<jsbind::CSSOMString>()
+    pub fn end(&self) -> CSSOMString {
+        self.inner.get("end").as_::<CSSOMString>()
     }
+
 }

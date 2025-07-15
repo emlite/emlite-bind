@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioParamMap {
@@ -7,9 +10,7 @@ pub struct AudioParamMap {
 }
 impl FromVal for AudioParamMap {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioParamMap {
-            inner: emlite::Val::from_val(v),
-        }
+        AudioParamMap { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for AudioParamMap {
 }
 impl AsMut<emlite::Val> for AudioParamMap {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AudioParamMap> for emlite::Val {
     fn from(s: AudioParamMap) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<AudioParamMap> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(AudioParamMap);
+
+

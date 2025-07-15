@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MLTensorDescriptor {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for MLTensorDescriptor {
 }
 impl AsMut<emlite::Val> for MLTensorDescriptor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MLTensorDescriptor> for emlite::Val {
     fn from(s: MLTensorDescriptor) -> emlite::Val {
@@ -53,6 +56,7 @@ impl MLTensorDescriptor {
     pub fn set_readable(&mut self, value: bool) {
         self.inner.set("readable", value);
     }
+
 }
 impl MLTensorDescriptor {
     pub fn writable(&self) -> bool {
@@ -62,6 +66,7 @@ impl MLTensorDescriptor {
     pub fn set_writable(&mut self, value: bool) {
         self.inner.set("writable", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -97,8 +102,8 @@ impl AsRef<emlite::Val> for MLOperandDescriptor {
 }
 impl AsMut<emlite::Val> for MLOperandDescriptor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MLOperandDescriptor> for emlite::Val {
     fn from(s: MLOperandDescriptor) -> emlite::Val {
@@ -116,15 +121,17 @@ impl MLOperandDescriptor {
     pub fn set_data_type(&mut self, value: MLOperandDataType) {
         self.inner.set("dataType", value);
     }
+
 }
 impl MLOperandDescriptor {
-    pub fn shape(&self) -> jsbind::Sequence<u32> {
-        self.inner.get("shape").as_::<jsbind::Sequence<u32>>()
+    pub fn shape(&self) -> Sequence<u32> {
+        self.inner.get("shape").as_::<Sequence<u32>>()
     }
 
-    pub fn set_shape(&mut self, value: jsbind::Sequence<u32>) {
+    pub fn set_shape(&mut self, value: Sequence<u32>) {
         self.inner.set("shape", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -160,8 +167,8 @@ impl AsRef<emlite::Val> for MLOpSupportLimits {
 }
 impl AsMut<emlite::Val> for MLOpSupportLimits {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MLOpSupportLimits> for emlite::Val {
     fn from(s: MLOpSupportLimits) -> emlite::Val {
@@ -172,13 +179,14 @@ impl From<MLOpSupportLimits> for emlite::Val {
 }
 
 impl MLOpSupportLimits {
-    pub fn where_(&self) -> jsbind::Any {
-        self.inner.get("where").as_::<jsbind::Any>()
+    pub fn where_(&self) -> Any {
+        self.inner.get("where").as_::<Any>()
     }
 
-    pub fn set_where_(&mut self, value: jsbind::Any) {
+    pub fn set_where_(&mut self, value: Any) {
         self.inner.set("where", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -214,8 +222,8 @@ impl AsRef<emlite::Val> for MLContextLostInfo {
 }
 impl AsMut<emlite::Val> for MLContextLostInfo {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MLContextLostInfo> for emlite::Val {
     fn from(s: MLContextLostInfo) -> emlite::Val {
@@ -226,13 +234,14 @@ impl From<MLContextLostInfo> for emlite::Val {
 }
 
 impl MLContextLostInfo {
-    pub fn message(&self) -> jsbind::DOMString {
-        self.inner.get("message").as_::<jsbind::DOMString>()
+    pub fn message(&self) -> DOMString {
+        self.inner.get("message").as_::<DOMString>()
     }
 
-    pub fn set_message(&mut self, value: jsbind::DOMString) {
+    pub fn set_message(&mut self, value: DOMString) {
         self.inner.set("message", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -241,9 +250,7 @@ pub struct MLContext {
 }
 impl FromVal for MLContext {
     fn from_val(v: &emlite::Val) -> Self {
-        MLContext {
-            inner: emlite::Val::from_val(v),
-        }
+        MLContext { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -270,8 +277,8 @@ impl AsRef<emlite::Val> for MLContext {
 }
 impl AsMut<emlite::Val> for MLContext {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MLContext> for emlite::Val {
     fn from(s: MLContext) -> emlite::Val {
@@ -282,67 +289,52 @@ impl From<MLContext> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MLContext);
 
+
 impl MLContext {
-    pub fn dispatch(
-        &self,
-        graph: MLGraph,
-        inputs: jsbind::Any,
-        outputs: jsbind::Any,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("dispatch", &[graph.into(), inputs.into(), outputs.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn dispatch(&self, graph: MLGraph, inputs: Any, outputs: Any) -> Undefined {
+        self.inner.call("dispatch", &[graph.into(), inputs.into(), outputs.into(), ]).as_::<Undefined>()
     }
+
 }
 impl MLContext {
-    pub fn create_tensor(&self, descriptor: MLTensorDescriptor) -> jsbind::Promise {
-        self.inner
-            .call("createTensor", &[descriptor.into()])
-            .as_::<jsbind::Promise>()
+    pub fn create_tensor(&self, descriptor: MLTensorDescriptor) -> Promise {
+        self.inner.call("createTensor", &[descriptor.into(), ]).as_::<Promise>()
     }
+
 }
 impl MLContext {
-    pub fn create_constant_tensor(
-        &self,
-        descriptor: MLOperandDescriptor,
-        input_data: jsbind::Any,
-    ) -> jsbind::Promise {
-        self.inner
-            .call(
-                "createConstantTensor",
-                &[descriptor.into(), input_data.into()],
-            )
-            .as_::<jsbind::Promise>()
+    pub fn create_constant_tensor(&self, descriptor: MLOperandDescriptor, input_data: Any) -> Promise {
+        self.inner.call("createConstantTensor", &[descriptor.into(), input_data.into(), ]).as_::<Promise>()
     }
+
 }
 impl MLContext {
-    pub fn read_tensor(&self, tensor: MLTensor, output_data: jsbind::Any) -> jsbind::Promise {
-        self.inner
-            .call("readTensor", &[tensor.into(), output_data.into()])
-            .as_::<jsbind::Promise>()
+    pub fn read_tensor(&self, tensor: MLTensor, output_data: Any) -> Promise {
+        self.inner.call("readTensor", &[tensor.into(), output_data.into(), ]).as_::<Promise>()
     }
+
 }
 impl MLContext {
-    pub fn write_tensor(&self, tensor: MLTensor, input_data: jsbind::Any) -> jsbind::Undefined {
-        self.inner
-            .call("writeTensor", &[tensor.into(), input_data.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn write_tensor(&self, tensor: MLTensor, input_data: Any) -> Undefined {
+        self.inner.call("writeTensor", &[tensor.into(), input_data.into(), ]).as_::<Undefined>()
     }
+
 }
 impl MLContext {
-    pub fn op_support_limits(&self) -> MLOpSupportLimits {
-        self.inner
-            .call("opSupportLimits", &[])
-            .as_::<MLOpSupportLimits>()
+    pub fn op_support_limits(&self, ) -> MLOpSupportLimits {
+        self.inner.call("opSupportLimits", &[]).as_::<MLOpSupportLimits>()
     }
+
 }
 impl MLContext {
-    pub fn destroy(&self) -> jsbind::Undefined {
-        self.inner.call("destroy", &[]).as_::<jsbind::Undefined>()
+    pub fn destroy(&self, ) -> Undefined {
+        self.inner.call("destroy", &[]).as_::<Undefined>()
     }
+
 }
 impl MLContext {
-    pub fn lost(&self) -> jsbind::Promise {
-        self.inner.get("lost").as_::<jsbind::Promise>()
+    pub fn lost(&self) -> Promise {
+        self.inner.get("lost").as_::<Promise>()
     }
+
 }

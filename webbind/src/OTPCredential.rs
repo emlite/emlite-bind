@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct OTPCredential {
@@ -7,9 +10,7 @@ pub struct OTPCredential {
 }
 impl FromVal for OTPCredential {
     fn from_val(v: &emlite::Val) -> Self {
-        OTPCredential {
-            inner: Credential::from_val(v),
-        }
+        OTPCredential { inner: Credential::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for OTPCredential {
 }
 impl AsMut<emlite::Val> for OTPCredential {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<OTPCredential> for emlite::Val {
     fn from(s: OTPCredential) -> emlite::Val {
@@ -48,8 +49,10 @@ impl From<OTPCredential> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(OTPCredential);
 
+
 impl OTPCredential {
-    pub fn code(&self) -> jsbind::DOMString {
-        self.inner.get("code").as_::<jsbind::DOMString>()
+    pub fn code(&self) -> DOMString {
+        self.inner.get("code").as_::<DOMString>()
     }
+
 }

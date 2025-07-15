@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLFormElement {
@@ -7,9 +10,7 @@ pub struct HTMLFormElement {
 }
 impl FromVal for HTMLFormElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLFormElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLFormElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLFormElement {
 }
 impl AsMut<emlite::Val> for HTMLFormElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLFormElement> for emlite::Val {
     fn from(s: HTMLFormElement) -> emlite::Val {
@@ -48,77 +49,85 @@ impl From<HTMLFormElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLFormElement);
 
+
+
 impl HTMLFormElement {
     pub fn new() -> HTMLFormElement {
         Self {
-            inner: emlite::Val::global("HTMLFormElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLFormElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLFormElement {
-    pub fn accept_charset(&self) -> jsbind::DOMString {
-        self.inner.get("acceptCharset").as_::<jsbind::DOMString>()
+    pub fn accept_charset(&self) -> DOMString {
+        self.inner.get("acceptCharset").as_::<DOMString>()
     }
 
-    pub fn set_accept_charset(&mut self, value: jsbind::DOMString) {
+    pub fn set_accept_charset(&mut self, value: DOMString) {
         self.inner.set("acceptCharset", value);
     }
+
 }
 impl HTMLFormElement {
-    pub fn action(&self) -> jsbind::USVString {
-        self.inner.get("action").as_::<jsbind::USVString>()
+    pub fn action(&self) -> USVString {
+        self.inner.get("action").as_::<USVString>()
     }
 
-    pub fn set_action(&mut self, value: jsbind::USVString) {
+    pub fn set_action(&mut self, value: USVString) {
         self.inner.set("action", value);
     }
+
 }
 impl HTMLFormElement {
-    pub fn autocomplete(&self) -> jsbind::DOMString {
-        self.inner.get("autocomplete").as_::<jsbind::DOMString>()
+    pub fn autocomplete(&self) -> DOMString {
+        self.inner.get("autocomplete").as_::<DOMString>()
     }
 
-    pub fn set_autocomplete(&mut self, value: jsbind::DOMString) {
+    pub fn set_autocomplete(&mut self, value: DOMString) {
         self.inner.set("autocomplete", value);
     }
+
 }
 impl HTMLFormElement {
-    pub fn enctype(&self) -> jsbind::DOMString {
-        self.inner.get("enctype").as_::<jsbind::DOMString>()
+    pub fn enctype(&self) -> DOMString {
+        self.inner.get("enctype").as_::<DOMString>()
     }
 
-    pub fn set_enctype(&mut self, value: jsbind::DOMString) {
+    pub fn set_enctype(&mut self, value: DOMString) {
         self.inner.set("enctype", value);
     }
+
 }
 impl HTMLFormElement {
-    pub fn encoding(&self) -> jsbind::DOMString {
-        self.inner.get("encoding").as_::<jsbind::DOMString>()
+    pub fn encoding(&self) -> DOMString {
+        self.inner.get("encoding").as_::<DOMString>()
     }
 
-    pub fn set_encoding(&mut self, value: jsbind::DOMString) {
+    pub fn set_encoding(&mut self, value: DOMString) {
         self.inner.set("encoding", value);
     }
+
 }
 impl HTMLFormElement {
-    pub fn method(&self) -> jsbind::DOMString {
-        self.inner.get("method").as_::<jsbind::DOMString>()
+    pub fn method(&self) -> DOMString {
+        self.inner.get("method").as_::<DOMString>()
     }
 
-    pub fn set_method(&mut self, value: jsbind::DOMString) {
+    pub fn set_method(&mut self, value: DOMString) {
         self.inner.set("method", value);
     }
+
 }
 impl HTMLFormElement {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
-    pub fn set_name(&mut self, value: jsbind::DOMString) {
+    pub fn set_name(&mut self, value: DOMString) {
         self.inner.set("name", value);
     }
+
 }
 impl HTMLFormElement {
     pub fn no_validate(&self) -> bool {
@@ -128,72 +137,77 @@ impl HTMLFormElement {
     pub fn set_no_validate(&mut self, value: bool) {
         self.inner.set("noValidate", value);
     }
+
 }
 impl HTMLFormElement {
-    pub fn target(&self) -> jsbind::DOMString {
-        self.inner.get("target").as_::<jsbind::DOMString>()
+    pub fn target(&self) -> DOMString {
+        self.inner.get("target").as_::<DOMString>()
     }
 
-    pub fn set_target(&mut self, value: jsbind::DOMString) {
+    pub fn set_target(&mut self, value: DOMString) {
         self.inner.set("target", value);
     }
+
 }
 impl HTMLFormElement {
-    pub fn rel(&self) -> jsbind::DOMString {
-        self.inner.get("rel").as_::<jsbind::DOMString>()
+    pub fn rel(&self) -> DOMString {
+        self.inner.get("rel").as_::<DOMString>()
     }
 
-    pub fn set_rel(&mut self, value: jsbind::DOMString) {
+    pub fn set_rel(&mut self, value: DOMString) {
         self.inner.set("rel", value);
     }
+
 }
 impl HTMLFormElement {
     pub fn rel_list(&self) -> DOMTokenList {
         self.inner.get("relList").as_::<DOMTokenList>()
     }
+
 }
 impl HTMLFormElement {
     pub fn elements(&self) -> HTMLFormControlsCollection {
-        self.inner
-            .get("elements")
-            .as_::<HTMLFormControlsCollection>()
+        self.inner.get("elements").as_::<HTMLFormControlsCollection>()
     }
+
 }
 impl HTMLFormElement {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl HTMLFormElement {
-    pub fn submit(&self) -> jsbind::Undefined {
-        self.inner.call("submit", &[]).as_::<jsbind::Undefined>()
-    }
-}
-impl HTMLFormElement {
-    pub fn request_submit0(&self) -> jsbind::Undefined {
-        self.inner
-            .call("requestSubmit", &[])
-            .as_::<jsbind::Undefined>()
+    pub fn submit(&self, ) -> Undefined {
+        self.inner.call("submit", &[]).as_::<Undefined>()
     }
 
-    pub fn request_submit1(&self, submitter: HTMLElement) -> jsbind::Undefined {
-        self.inner
-            .call("requestSubmit", &[submitter.into()])
-            .as_::<jsbind::Undefined>()
-    }
 }
 impl HTMLFormElement {
-    pub fn reset(&self) -> jsbind::Undefined {
-        self.inner.call("reset", &[]).as_::<jsbind::Undefined>()
+    pub fn request_submit0(&self, ) -> Undefined {
+        self.inner.call("requestSubmit", &[]).as_::<Undefined>()
     }
+
+    pub fn request_submit1(&self, submitter: HTMLElement) -> Undefined {
+        self.inner.call("requestSubmit", &[submitter.into(), ]).as_::<Undefined>()
+    }
+
 }
 impl HTMLFormElement {
-    pub fn check_validity(&self) -> bool {
+    pub fn reset(&self, ) -> Undefined {
+        self.inner.call("reset", &[]).as_::<Undefined>()
+    }
+
+}
+impl HTMLFormElement {
+    pub fn check_validity(&self, ) -> bool {
         self.inner.call("checkValidity", &[]).as_::<bool>()
     }
+
 }
 impl HTMLFormElement {
-    pub fn report_validity(&self) -> bool {
+    pub fn report_validity(&self, ) -> bool {
         self.inner.call("reportValidity", &[]).as_::<bool>()
     }
+
 }

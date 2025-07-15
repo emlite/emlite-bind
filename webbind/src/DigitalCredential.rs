@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DigitalCredential {
@@ -7,9 +10,7 @@ pub struct DigitalCredential {
 }
 impl FromVal for DigitalCredential {
     fn from_val(v: &emlite::Val) -> Self {
-        DigitalCredential {
-            inner: Credential::from_val(v),
-        }
+        DigitalCredential { inner: Credential::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for DigitalCredential {
 }
 impl AsMut<emlite::Val> for DigitalCredential {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<DigitalCredential> for emlite::Val {
     fn from(s: DigitalCredential) -> emlite::Val {
@@ -48,25 +49,28 @@ impl From<DigitalCredential> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(DigitalCredential);
 
+
 impl DigitalCredential {
-    pub fn to_json(&self) -> jsbind::Object {
-        self.inner.call("toJSON", &[]).as_::<jsbind::Object>()
+    pub fn to_json(&self, ) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
+
 }
 impl DigitalCredential {
-    pub fn protocol(&self) -> jsbind::DOMString {
-        self.inner.get("protocol").as_::<jsbind::DOMString>()
+    pub fn protocol(&self) -> DOMString {
+        self.inner.get("protocol").as_::<DOMString>()
     }
+
 }
 impl DigitalCredential {
-    pub fn data(&self) -> jsbind::Object {
-        self.inner.get("data").as_::<jsbind::Object>()
+    pub fn data(&self) -> Object {
+        self.inner.get("data").as_::<Object>()
     }
+
 }
 impl DigitalCredential {
-    pub fn user_agent_allows_protocol(protocol: jsbind::DOMString) -> bool {
-        emlite::Val::global("digitalcredential")
-            .call("userAgentAllowsProtocol", &[protocol.into()])
-            .as_::<bool>()
+    pub fn user_agent_allows_protocol(protocol: DOMString) -> bool {
+        emlite::Val::global("digitalcredential").call("userAgentAllowsProtocol", &[protocol.into(), ]).as_::<bool>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WakeLockSentinel {
@@ -7,9 +10,7 @@ pub struct WakeLockSentinel {
 }
 impl FromVal for WakeLockSentinel {
     fn from_val(v: &emlite::Val) -> Self {
-        WakeLockSentinel {
-            inner: EventTarget::from_val(v),
-        }
+        WakeLockSentinel { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WakeLockSentinel {
 }
 impl AsMut<emlite::Val> for WakeLockSentinel {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WakeLockSentinel> for emlite::Val {
     fn from(s: WakeLockSentinel) -> emlite::Val {
@@ -48,27 +49,32 @@ impl From<WakeLockSentinel> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WakeLockSentinel);
 
+
 impl WakeLockSentinel {
     pub fn released(&self) -> bool {
         self.inner.get("released").as_::<bool>()
     }
+
 }
 impl WakeLockSentinel {
     pub fn type_(&self) -> WakeLockType {
         self.inner.get("type").as_::<WakeLockType>()
     }
+
 }
 impl WakeLockSentinel {
-    pub fn release(&self) -> jsbind::Promise {
-        self.inner.call("release", &[]).as_::<jsbind::Promise>()
-    }
-}
-impl WakeLockSentinel {
-    pub fn onrelease(&self) -> jsbind::Any {
-        self.inner.get("onrelease").as_::<jsbind::Any>()
+    pub fn release(&self, ) -> Promise {
+        self.inner.call("release", &[]).as_::<Promise>()
     }
 
-    pub fn set_onrelease(&mut self, value: jsbind::Any) {
+}
+impl WakeLockSentinel {
+    pub fn onrelease(&self) -> Any {
+        self.inner.get("onrelease").as_::<Any>()
+    }
+
+    pub fn set_onrelease(&mut self, value: Any) {
         self.inner.set("onrelease", value);
     }
+
 }

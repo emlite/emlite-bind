@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLLabelElement {
@@ -7,9 +10,7 @@ pub struct HTMLLabelElement {
 }
 impl FromVal for HTMLLabelElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLLabelElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLLabelElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLLabelElement {
 }
 impl AsMut<emlite::Val> for HTMLLabelElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLLabelElement> for emlite::Val {
     fn from(s: HTMLLabelElement) -> emlite::Val {
@@ -48,31 +49,35 @@ impl From<HTMLLabelElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLLabelElement);
 
+
+
 impl HTMLLabelElement {
     pub fn new() -> HTMLLabelElement {
         Self {
-            inner: emlite::Val::global("HTMLLabelElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLLabelElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLLabelElement {
     pub fn form(&self) -> HTMLFormElement {
         self.inner.get("form").as_::<HTMLFormElement>()
     }
+
 }
 impl HTMLLabelElement {
-    pub fn html_for(&self) -> jsbind::DOMString {
-        self.inner.get("htmlFor").as_::<jsbind::DOMString>()
+    pub fn html_for(&self) -> DOMString {
+        self.inner.get("htmlFor").as_::<DOMString>()
     }
 
-    pub fn set_html_for(&mut self, value: jsbind::DOMString) {
+    pub fn set_html_for(&mut self, value: DOMString) {
         self.inner.set("htmlFor", value);
     }
+
 }
 impl HTMLLabelElement {
     pub fn control(&self) -> HTMLElement {
         self.inner.get("control").as_::<HTMLElement>()
     }
+
 }

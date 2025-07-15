@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BluetoothLEScanFilter {
@@ -7,9 +10,7 @@ pub struct BluetoothLEScanFilter {
 }
 impl FromVal for BluetoothLEScanFilter {
     fn from_val(v: &emlite::Val) -> Self {
-        BluetoothLEScanFilter {
-            inner: emlite::Val::from_val(v),
-        }
+        BluetoothLEScanFilter { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for BluetoothLEScanFilter {
 }
 impl AsMut<emlite::Val> for BluetoothLEScanFilter {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<BluetoothLEScanFilter> for emlite::Val {
     fn from(s: BluetoothLEScanFilter) -> emlite::Val {
@@ -48,51 +49,49 @@ impl From<BluetoothLEScanFilter> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(BluetoothLEScanFilter);
 
+
+
 impl BluetoothLEScanFilter {
     pub fn new0() -> BluetoothLEScanFilter {
         Self {
-            inner: emlite::Val::global("BluetoothLEScanFilter")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("BluetoothLEScanFilter").new(&[]).as_::<emlite::Val>(),
         }
     }
 
-    pub fn new1(init: jsbind::Any) -> BluetoothLEScanFilter {
+    pub fn new1(init: Any) -> BluetoothLEScanFilter {
         Self {
-            inner: emlite::Val::global("BluetoothLEScanFilter")
-                .new(&[init.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("BluetoothLEScanFilter").new(&[init.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl BluetoothLEScanFilter {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
+
 }
 impl BluetoothLEScanFilter {
-    pub fn name_prefix(&self) -> jsbind::DOMString {
-        self.inner.get("namePrefix").as_::<jsbind::DOMString>()
+    pub fn name_prefix(&self) -> DOMString {
+        self.inner.get("namePrefix").as_::<DOMString>()
     }
+
 }
 impl BluetoothLEScanFilter {
-    pub fn services(&self) -> jsbind::FrozenArray<jsbind::Any> {
-        self.inner
-            .get("services")
-            .as_::<jsbind::FrozenArray<jsbind::Any>>()
+    pub fn services(&self) -> FrozenArray<Any> {
+        self.inner.get("services").as_::<FrozenArray<Any>>()
     }
+
 }
 impl BluetoothLEScanFilter {
     pub fn manufacturer_data(&self) -> BluetoothManufacturerDataFilter {
-        self.inner
-            .get("manufacturerData")
-            .as_::<BluetoothManufacturerDataFilter>()
+        self.inner.get("manufacturerData").as_::<BluetoothManufacturerDataFilter>()
     }
+
 }
 impl BluetoothLEScanFilter {
     pub fn service_data(&self) -> BluetoothServiceDataFilter {
-        self.inner
-            .get("serviceData")
-            .as_::<BluetoothServiceDataFilter>()
+        self.inner.get("serviceData").as_::<BluetoothServiceDataFilter>()
     }
+
 }

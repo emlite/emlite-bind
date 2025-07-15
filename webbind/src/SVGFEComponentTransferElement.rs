@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGFEComponentTransferElement {
@@ -7,9 +10,7 @@ pub struct SVGFEComponentTransferElement {
 }
 impl FromVal for SVGFEComponentTransferElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGFEComponentTransferElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFEComponentTransferElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGFEComponentTransferElement {
 }
 impl AsMut<emlite::Val> for SVGFEComponentTransferElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGFEComponentTransferElement> for emlite::Val {
     fn from(s: SVGFEComponentTransferElement) -> emlite::Val {
@@ -48,33 +49,40 @@ impl From<SVGFEComponentTransferElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGFEComponentTransferElement);
 
+
 impl SVGFEComponentTransferElement {
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGFEComponentTransferElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEComponentTransferElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEComponentTransferElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEComponentTransferElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEComponentTransferElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLStyleElement {
@@ -7,9 +10,7 @@ pub struct HTMLStyleElement {
 }
 impl FromVal for HTMLStyleElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLStyleElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLStyleElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLStyleElement {
 }
 impl AsMut<emlite::Val> for HTMLStyleElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLStyleElement> for emlite::Val {
     fn from(s: HTMLStyleElement) -> emlite::Val {
@@ -48,14 +49,15 @@ impl From<HTMLStyleElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLStyleElement);
 
+
+
 impl HTMLStyleElement {
     pub fn new() -> HTMLStyleElement {
         Self {
-            inner: emlite::Val::global("HTMLStyleElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLStyleElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLStyleElement {
     pub fn disabled(&self) -> bool {
@@ -65,32 +67,37 @@ impl HTMLStyleElement {
     pub fn set_disabled(&mut self, value: bool) {
         self.inner.set("disabled", value);
     }
+
 }
 impl HTMLStyleElement {
-    pub fn media(&self) -> jsbind::DOMString {
-        self.inner.get("media").as_::<jsbind::DOMString>()
+    pub fn media(&self) -> DOMString {
+        self.inner.get("media").as_::<DOMString>()
     }
 
-    pub fn set_media(&mut self, value: jsbind::DOMString) {
+    pub fn set_media(&mut self, value: DOMString) {
         self.inner.set("media", value);
     }
+
 }
 impl HTMLStyleElement {
     pub fn blocking(&self) -> DOMTokenList {
         self.inner.get("blocking").as_::<DOMTokenList>()
     }
+
 }
 impl HTMLStyleElement {
-    pub fn type_(&self) -> jsbind::DOMString {
-        self.inner.get("type").as_::<jsbind::DOMString>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 
-    pub fn set_type_(&mut self, value: jsbind::DOMString) {
+    pub fn set_type_(&mut self, value: DOMString) {
         self.inner.set("type", value);
     }
+
 }
 impl HTMLStyleElement {
     pub fn sheet(&self) -> CSSStyleSheet {
         self.inner.get("sheet").as_::<CSSStyleSheet>()
     }
+
 }

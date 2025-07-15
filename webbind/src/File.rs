@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct File {
@@ -7,9 +10,7 @@ pub struct File {
 }
 impl FromVal for File {
     fn from_val(v: &emlite::Val) -> Self {
-        File {
-            inner: Blob::from_val(v),
-        }
+        File { inner: Blob::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for File {
 }
 impl AsMut<emlite::Val> for File {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<File> for emlite::Val {
     fn from(s: File) -> emlite::Val {
@@ -48,41 +49,37 @@ impl From<File> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(File);
 
+
+
 impl File {
-    pub fn new0(file_bits: jsbind::Sequence<jsbind::Any>, file_name: jsbind::USVString) -> File {
+    pub fn new0(file_bits: Sequence<Any>, file_name: USVString) -> File {
         Self {
-            inner: emlite::Val::global("File")
-                .new(&[file_bits.into(), file_name.into()])
-                .as_::<Blob>(),
+            inner: emlite::Val::global("File").new(&[file_bits.into(), file_name.into()]).as_::<Blob>(),
         }
     }
 
-    pub fn new1(
-        file_bits: jsbind::Sequence<jsbind::Any>,
-        file_name: jsbind::USVString,
-        options: jsbind::Any,
-    ) -> File {
+    pub fn new1(file_bits: Sequence<Any>, file_name: USVString, options: Any) -> File {
         Self {
-            inner: emlite::Val::global("File")
-                .new(&[file_bits.into(), file_name.into(), options.into()])
-                .as_::<Blob>(),
+            inner: emlite::Val::global("File").new(&[file_bits.into(), file_name.into(), options.into()]).as_::<Blob>(),
         }
     }
+
 }
 impl File {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
+
 }
 impl File {
     pub fn last_modified(&self) -> i64 {
         self.inner.get("lastModified").as_::<i64>()
     }
+
 }
 impl File {
-    pub fn webkit_relative_path(&self) -> jsbind::USVString {
-        self.inner
-            .get("webkitRelativePath")
-            .as_::<jsbind::USVString>()
+    pub fn webkit_relative_path(&self) -> USVString {
+        self.inner.get("webkitRelativePath").as_::<USVString>()
     }
+
 }

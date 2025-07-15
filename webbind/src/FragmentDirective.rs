@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FragmentDirective {
@@ -7,9 +10,7 @@ pub struct FragmentDirective {
 }
 impl FromVal for FragmentDirective {
     fn from_val(v: &emlite::Val) -> Self {
-        FragmentDirective {
-            inner: emlite::Val::from_val(v),
-        }
+        FragmentDirective { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for FragmentDirective {
 }
 impl AsMut<emlite::Val> for FragmentDirective {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<FragmentDirective> for emlite::Val {
     fn from(s: FragmentDirective) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<FragmentDirective> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(FragmentDirective);
+
+

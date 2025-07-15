@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EXT_texture_filter_anisotropic {
@@ -7,9 +10,7 @@ pub struct EXT_texture_filter_anisotropic {
 }
 impl FromVal for EXT_texture_filter_anisotropic {
     fn from_val(v: &emlite::Val) -> Self {
-        EXT_texture_filter_anisotropic {
-            inner: emlite::Val::from_val(v),
-        }
+        EXT_texture_filter_anisotropic { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for EXT_texture_filter_anisotropic {
 }
 impl AsMut<emlite::Val> for EXT_texture_filter_anisotropic {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<EXT_texture_filter_anisotropic> for emlite::Val {
     fn from(s: EXT_texture_filter_anisotropic) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<EXT_texture_filter_anisotropic> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(EXT_texture_filter_anisotropic);
+
+

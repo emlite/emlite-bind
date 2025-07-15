@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGLinearGradientElement {
@@ -7,9 +10,7 @@ pub struct SVGLinearGradientElement {
 }
 impl FromVal for SVGLinearGradientElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGLinearGradientElement {
-            inner: SVGGradientElement::from_val(v),
-        }
+        SVGLinearGradientElement { inner: SVGGradientElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGLinearGradientElement {
 }
 impl AsMut<emlite::Val> for SVGLinearGradientElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGLinearGradientElement> for emlite::Val {
     fn from(s: SVGLinearGradientElement) -> emlite::Val {
@@ -48,23 +49,28 @@ impl From<SVGLinearGradientElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGLinearGradientElement);
 
+
 impl SVGLinearGradientElement {
     pub fn x1(&self) -> SVGAnimatedLength {
         self.inner.get("x1").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGLinearGradientElement {
     pub fn y1(&self) -> SVGAnimatedLength {
         self.inner.get("y1").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGLinearGradientElement {
     pub fn x2(&self) -> SVGAnimatedLength {
         self.inner.get("x2").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGLinearGradientElement {
     pub fn y2(&self) -> SVGAnimatedLength {
         self.inner.get("y2").as_::<SVGAnimatedLength>()
     }
+
 }

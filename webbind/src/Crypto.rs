@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Crypto {
@@ -7,9 +10,7 @@ pub struct Crypto {
 }
 impl FromVal for Crypto {
     fn from_val(v: &emlite::Val) -> Self {
-        Crypto {
-            inner: emlite::Val::from_val(v),
-        }
+        Crypto { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for Crypto {
 }
 impl AsMut<emlite::Val> for Crypto {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<Crypto> for emlite::Val {
     fn from(s: Crypto) -> emlite::Val {
@@ -48,22 +49,22 @@ impl From<Crypto> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Crypto);
 
+
 impl Crypto {
     pub fn subtle(&self) -> SubtleCrypto {
         self.inner.get("subtle").as_::<SubtleCrypto>()
     }
+
 }
 impl Crypto {
-    pub fn get_random_values(&self, array: jsbind::Any) -> jsbind::Any {
-        self.inner
-            .call("getRandomValues", &[array.into()])
-            .as_::<jsbind::Any>()
+    pub fn get_random_values(&self, array: Any) -> Any {
+        self.inner.call("getRandomValues", &[array.into(), ]).as_::<Any>()
     }
+
 }
 impl Crypto {
-    pub fn random_uuid(&self) -> jsbind::DOMString {
-        self.inner
-            .call("randomUUID", &[])
-            .as_::<jsbind::DOMString>()
+    pub fn random_uuid(&self, ) -> DOMString {
+        self.inner.call("randomUUID", &[]).as_::<DOMString>()
     }
+
 }

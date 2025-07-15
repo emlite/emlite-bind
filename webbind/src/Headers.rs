@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Headers {
@@ -7,9 +10,7 @@ pub struct Headers {
 }
 impl FromVal for Headers {
     fn from_val(v: &emlite::Val) -> Self {
-        Headers {
-            inner: emlite::Val::from_val(v),
-        }
+        Headers { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for Headers {
 }
 impl AsMut<emlite::Val> for Headers {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<Headers> for emlite::Val {
     fn from(s: Headers) -> emlite::Val {
@@ -48,6 +49,8 @@ impl From<Headers> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Headers);
 
+
+
 impl Headers {
     pub fn new0() -> Headers {
         Self {
@@ -55,51 +58,46 @@ impl Headers {
         }
     }
 
-    pub fn new1(init: jsbind::Any) -> Headers {
+    pub fn new1(init: Any) -> Headers {
         Self {
-            inner: emlite::Val::global("Headers")
-                .new(&[init.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("Headers").new(&[init.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl Headers {
-    pub fn append(&self, name: jsbind::ByteString, value: jsbind::ByteString) -> jsbind::Undefined {
-        self.inner
-            .call("append", &[name.into(), value.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn append(&self, name: ByteString, value: ByteString) -> Undefined {
+        self.inner.call("append", &[name.into(), value.into(), ]).as_::<Undefined>()
     }
+
 }
 impl Headers {
-    pub fn delete(&self, name: jsbind::ByteString) -> jsbind::Undefined {
-        self.inner
-            .call("delete", &[name.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn delete(&self, name: ByteString) -> Undefined {
+        self.inner.call("delete", &[name.into(), ]).as_::<Undefined>()
     }
+
 }
 impl Headers {
-    pub fn get(&self, name: jsbind::ByteString) -> jsbind::ByteString {
-        self.inner
-            .call("get", &[name.into()])
-            .as_::<jsbind::ByteString>()
+    pub fn get(&self, name: ByteString) -> ByteString {
+        self.inner.call("get", &[name.into(), ]).as_::<ByteString>()
     }
+
 }
 impl Headers {
-    pub fn get_set_cookie(&self) -> jsbind::Sequence<jsbind::ByteString> {
-        self.inner
-            .call("getSetCookie", &[])
-            .as_::<jsbind::Sequence<jsbind::ByteString>>()
+    pub fn get_set_cookie(&self, ) -> Sequence<ByteString> {
+        self.inner.call("getSetCookie", &[]).as_::<Sequence<ByteString>>()
     }
+
 }
 impl Headers {
-    pub fn has(&self, name: jsbind::ByteString) -> bool {
-        self.inner.call("has", &[name.into()]).as_::<bool>()
+    pub fn has(&self, name: ByteString) -> bool {
+        self.inner.call("has", &[name.into(), ]).as_::<bool>()
     }
+
 }
 impl Headers {
-    pub fn set(&self, name: jsbind::ByteString, value: jsbind::ByteString) -> jsbind::Undefined {
-        self.inner
-            .call("set", &[name.into(), value.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn set(&self, name: ByteString, value: ByteString) -> Undefined {
+        self.inner.call("set", &[name.into(), value.into(), ]).as_::<Undefined>()
     }
+
 }

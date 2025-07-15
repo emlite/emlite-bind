@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGAngle {
@@ -7,9 +10,7 @@ pub struct SVGAngle {
 }
 impl FromVal for SVGAngle {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGAngle {
-            inner: emlite::Val::from_val(v),
-        }
+        SVGAngle { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGAngle {
 }
 impl AsMut<emlite::Val> for SVGAngle {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGAngle> for emlite::Val {
     fn from(s: SVGAngle) -> emlite::Val {
@@ -48,10 +49,12 @@ impl From<SVGAngle> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGAngle);
 
+
 impl SVGAngle {
     pub fn unit_type(&self) -> u16 {
         self.inner.get("unitType").as_::<u16>()
     }
+
 }
 impl SVGAngle {
     pub fn value(&self) -> f32 {
@@ -61,6 +64,7 @@ impl SVGAngle {
     pub fn set_value(&mut self, value: f32) {
         self.inner.set("value", value);
     }
+
 }
 impl SVGAngle {
     pub fn value_in_specified_units(&self) -> f32 {
@@ -70,34 +74,27 @@ impl SVGAngle {
     pub fn set_value_in_specified_units(&mut self, value: f32) {
         self.inner.set("valueInSpecifiedUnits", value);
     }
+
 }
 impl SVGAngle {
-    pub fn value_as_string(&self) -> jsbind::DOMString {
-        self.inner.get("valueAsString").as_::<jsbind::DOMString>()
+    pub fn value_as_string(&self) -> DOMString {
+        self.inner.get("valueAsString").as_::<DOMString>()
     }
 
-    pub fn set_value_as_string(&mut self, value: jsbind::DOMString) {
+    pub fn set_value_as_string(&mut self, value: DOMString) {
         self.inner.set("valueAsString", value);
     }
+
 }
 impl SVGAngle {
-    pub fn new_value_specified_units(
-        &self,
-        unit_type: u16,
-        value_in_specified_units: f32,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call(
-                "newValueSpecifiedUnits",
-                &[unit_type.into(), value_in_specified_units.into()],
-            )
-            .as_::<jsbind::Undefined>()
+    pub fn new_value_specified_units(&self, unit_type: u16, value_in_specified_units: f32) -> Undefined {
+        self.inner.call("newValueSpecifiedUnits", &[unit_type.into(), value_in_specified_units.into(), ]).as_::<Undefined>()
     }
+
 }
 impl SVGAngle {
-    pub fn convert_to_specified_units(&self, unit_type: u16) -> jsbind::Undefined {
-        self.inner
-            .call("convertToSpecifiedUnits", &[unit_type.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn convert_to_specified_units(&self, unit_type: u16) -> Undefined {
+        self.inner.call("convertToSpecifiedUnits", &[unit_type.into(), ]).as_::<Undefined>()
     }
+
 }

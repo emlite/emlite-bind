@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct InputDeviceInfo {
@@ -7,9 +10,7 @@ pub struct InputDeviceInfo {
 }
 impl FromVal for InputDeviceInfo {
     fn from_val(v: &emlite::Val) -> Self {
-        InputDeviceInfo {
-            inner: MediaDeviceInfo::from_val(v),
-        }
+        InputDeviceInfo { inner: MediaDeviceInfo::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for InputDeviceInfo {
 }
 impl AsMut<emlite::Val> for InputDeviceInfo {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<InputDeviceInfo> for emlite::Val {
     fn from(s: InputDeviceInfo) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<InputDeviceInfo> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(InputDeviceInfo);
 
+
 impl InputDeviceInfo {
-    pub fn get_capabilities(&self) -> MediaTrackCapabilities {
-        self.inner
-            .call("getCapabilities", &[])
-            .as_::<MediaTrackCapabilities>()
+    pub fn get_capabilities(&self, ) -> MediaTrackCapabilities {
+        self.inner.call("getCapabilities", &[]).as_::<MediaTrackCapabilities>()
     }
+
 }

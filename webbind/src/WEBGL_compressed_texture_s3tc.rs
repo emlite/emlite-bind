@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WEBGL_compressed_texture_s3tc {
@@ -7,9 +10,7 @@ pub struct WEBGL_compressed_texture_s3tc {
 }
 impl FromVal for WEBGL_compressed_texture_s3tc {
     fn from_val(v: &emlite::Val) -> Self {
-        WEBGL_compressed_texture_s3tc {
-            inner: emlite::Val::from_val(v),
-        }
+        WEBGL_compressed_texture_s3tc { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WEBGL_compressed_texture_s3tc {
 }
 impl AsMut<emlite::Val> for WEBGL_compressed_texture_s3tc {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WEBGL_compressed_texture_s3tc> for emlite::Val {
     fn from(s: WEBGL_compressed_texture_s3tc) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<WEBGL_compressed_texture_s3tc> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(WEBGL_compressed_texture_s3tc);
+
+

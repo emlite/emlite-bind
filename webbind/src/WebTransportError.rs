@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebTransportError {
@@ -7,9 +10,7 @@ pub struct WebTransportError {
 }
 impl FromVal for WebTransportError {
     fn from_val(v: &emlite::Val) -> Self {
-        WebTransportError {
-            inner: DOMException::from_val(v),
-        }
+        WebTransportError { inner: DOMException::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WebTransportError {
 }
 impl AsMut<emlite::Val> for WebTransportError {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WebTransportError> for emlite::Val {
     fn from(s: WebTransportError) -> emlite::Val {
@@ -48,38 +49,37 @@ impl From<WebTransportError> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WebTransportError);
 
+
+
 impl WebTransportError {
     pub fn new0() -> WebTransportError {
         Self {
-            inner: emlite::Val::global("WebTransportError")
-                .new(&[])
-                .as_::<DOMException>(),
+            inner: emlite::Val::global("WebTransportError").new(&[]).as_::<DOMException>(),
         }
     }
 
-    pub fn new1(message: jsbind::DOMString) -> WebTransportError {
+    pub fn new1(message: DOMString) -> WebTransportError {
         Self {
-            inner: emlite::Val::global("WebTransportError")
-                .new(&[message.into()])
-                .as_::<DOMException>(),
+            inner: emlite::Val::global("WebTransportError").new(&[message.into()]).as_::<DOMException>(),
         }
     }
 
-    pub fn new2(message: jsbind::DOMString, options: jsbind::Any) -> WebTransportError {
+    pub fn new2(message: DOMString, options: Any) -> WebTransportError {
         Self {
-            inner: emlite::Val::global("WebTransportError")
-                .new(&[message.into(), options.into()])
-                .as_::<DOMException>(),
+            inner: emlite::Val::global("WebTransportError").new(&[message.into(), options.into()]).as_::<DOMException>(),
         }
     }
+
 }
 impl WebTransportError {
     pub fn source(&self) -> WebTransportErrorSource {
         self.inner.get("source").as_::<WebTransportErrorSource>()
     }
+
 }
 impl WebTransportError {
     pub fn stream_error_code(&self) -> u32 {
         self.inner.get("streamErrorCode").as_::<u32>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PhotoSettings {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for PhotoSettings {
 }
 impl AsMut<emlite::Val> for PhotoSettings {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PhotoSettings> for emlite::Val {
     fn from(s: PhotoSettings) -> emlite::Val {
@@ -53,6 +56,7 @@ impl PhotoSettings {
     pub fn set_fill_light_mode(&mut self, value: FillLightMode) {
         self.inner.set("fillLightMode", value);
     }
+
 }
 impl PhotoSettings {
     pub fn image_height(&self) -> f64 {
@@ -62,6 +66,7 @@ impl PhotoSettings {
     pub fn set_image_height(&mut self, value: f64) {
         self.inner.set("imageHeight", value);
     }
+
 }
 impl PhotoSettings {
     pub fn image_width(&self) -> f64 {
@@ -71,6 +76,7 @@ impl PhotoSettings {
     pub fn set_image_width(&mut self, value: f64) {
         self.inner.set("imageWidth", value);
     }
+
 }
 impl PhotoSettings {
     pub fn red_eye_reduction(&self) -> bool {
@@ -80,6 +86,7 @@ impl PhotoSettings {
     pub fn set_red_eye_reduction(&mut self, value: bool) {
         self.inner.set("redEyeReduction", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -115,8 +122,8 @@ impl AsRef<emlite::Val> for PhotoCapabilities {
 }
 impl AsMut<emlite::Val> for PhotoCapabilities {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PhotoCapabilities> for emlite::Val {
     fn from(s: PhotoCapabilities) -> emlite::Val {
@@ -134,35 +141,37 @@ impl PhotoCapabilities {
     pub fn set_red_eye_reduction(&mut self, value: RedEyeReduction) {
         self.inner.set("redEyeReduction", value);
     }
+
 }
 impl PhotoCapabilities {
-    pub fn image_height(&self) -> jsbind::Any {
-        self.inner.get("imageHeight").as_::<jsbind::Any>()
+    pub fn image_height(&self) -> Any {
+        self.inner.get("imageHeight").as_::<Any>()
     }
 
-    pub fn set_image_height(&mut self, value: jsbind::Any) {
+    pub fn set_image_height(&mut self, value: Any) {
         self.inner.set("imageHeight", value);
     }
+
 }
 impl PhotoCapabilities {
-    pub fn image_width(&self) -> jsbind::Any {
-        self.inner.get("imageWidth").as_::<jsbind::Any>()
+    pub fn image_width(&self) -> Any {
+        self.inner.get("imageWidth").as_::<Any>()
     }
 
-    pub fn set_image_width(&mut self, value: jsbind::Any) {
+    pub fn set_image_width(&mut self, value: Any) {
         self.inner.set("imageWidth", value);
     }
+
 }
 impl PhotoCapabilities {
-    pub fn fill_light_mode(&self) -> jsbind::Sequence<FillLightMode> {
-        self.inner
-            .get("fillLightMode")
-            .as_::<jsbind::Sequence<FillLightMode>>()
+    pub fn fill_light_mode(&self) -> Sequence<FillLightMode> {
+        self.inner.get("fillLightMode").as_::<Sequence<FillLightMode>>()
     }
 
-    pub fn set_fill_light_mode(&mut self, value: jsbind::Sequence<FillLightMode>) {
+    pub fn set_fill_light_mode(&mut self, value: Sequence<FillLightMode>) {
         self.inner.set("fillLightMode", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -171,9 +180,7 @@ pub struct ImageCapture {
 }
 impl FromVal for ImageCapture {
     fn from_val(v: &emlite::Val) -> Self {
-        ImageCapture {
-            inner: emlite::Val::from_val(v),
-        }
+        ImageCapture { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -200,8 +207,8 @@ impl AsRef<emlite::Val> for ImageCapture {
 }
 impl AsMut<emlite::Val> for ImageCapture {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ImageCapture> for emlite::Val {
     fn from(s: ImageCapture) -> emlite::Val {
@@ -212,47 +219,47 @@ impl From<ImageCapture> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ImageCapture);
 
+
+
 impl ImageCapture {
     pub fn new(video_track: MediaStreamTrack) -> ImageCapture {
         Self {
-            inner: emlite::Val::global("ImageCapture")
-                .new(&[video_track.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("ImageCapture").new(&[video_track.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl ImageCapture {
-    pub fn take_photo0(&self) -> jsbind::Promise {
-        self.inner.call("takePhoto", &[]).as_::<jsbind::Promise>()
+    pub fn take_photo0(&self, ) -> Promise {
+        self.inner.call("takePhoto", &[]).as_::<Promise>()
     }
 
-    pub fn take_photo1(&self, photo_settings: PhotoSettings) -> jsbind::Promise {
-        self.inner
-            .call("takePhoto", &[photo_settings.into()])
-            .as_::<jsbind::Promise>()
+    pub fn take_photo1(&self, photo_settings: PhotoSettings) -> Promise {
+        self.inner.call("takePhoto", &[photo_settings.into(), ]).as_::<Promise>()
     }
+
 }
 impl ImageCapture {
-    pub fn get_photo_capabilities(&self) -> jsbind::Promise {
-        self.inner
-            .call("getPhotoCapabilities", &[])
-            .as_::<jsbind::Promise>()
+    pub fn get_photo_capabilities(&self, ) -> Promise {
+        self.inner.call("getPhotoCapabilities", &[]).as_::<Promise>()
     }
+
 }
 impl ImageCapture {
-    pub fn get_photo_settings(&self) -> jsbind::Promise {
-        self.inner
-            .call("getPhotoSettings", &[])
-            .as_::<jsbind::Promise>()
+    pub fn get_photo_settings(&self, ) -> Promise {
+        self.inner.call("getPhotoSettings", &[]).as_::<Promise>()
     }
+
 }
 impl ImageCapture {
-    pub fn grab_frame(&self) -> jsbind::Promise {
-        self.inner.call("grabFrame", &[]).as_::<jsbind::Promise>()
+    pub fn grab_frame(&self, ) -> Promise {
+        self.inner.call("grabFrame", &[]).as_::<Promise>()
     }
+
 }
 impl ImageCapture {
     pub fn track(&self) -> MediaStreamTrack {
         self.inner.get("track").as_::<MediaStreamTrack>()
     }
+
 }

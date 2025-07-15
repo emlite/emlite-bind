@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaKeySystemConfiguration {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for MediaKeySystemConfiguration {
 }
 impl AsMut<emlite::Val> for MediaKeySystemConfiguration {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MediaKeySystemConfiguration> for emlite::Val {
     fn from(s: MediaKeySystemConfiguration) -> emlite::Val {
@@ -46,79 +49,74 @@ impl From<MediaKeySystemConfiguration> for emlite::Val {
 }
 
 impl MediaKeySystemConfiguration {
-    pub fn label(&self) -> jsbind::DOMString {
-        self.inner.get("label").as_::<jsbind::DOMString>()
+    pub fn label(&self) -> DOMString {
+        self.inner.get("label").as_::<DOMString>()
     }
 
-    pub fn set_label(&mut self, value: jsbind::DOMString) {
+    pub fn set_label(&mut self, value: DOMString) {
         self.inner.set("label", value);
     }
+
 }
 impl MediaKeySystemConfiguration {
-    pub fn init_data_types(&self) -> jsbind::Sequence<jsbind::DOMString> {
-        self.inner
-            .get("initDataTypes")
-            .as_::<jsbind::Sequence<jsbind::DOMString>>()
+    pub fn init_data_types(&self) -> Sequence<DOMString> {
+        self.inner.get("initDataTypes").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_init_data_types(&mut self, value: jsbind::Sequence<jsbind::DOMString>) {
+    pub fn set_init_data_types(&mut self, value: Sequence<DOMString>) {
         self.inner.set("initDataTypes", value);
     }
+
 }
 impl MediaKeySystemConfiguration {
-    pub fn audio_capabilities(&self) -> jsbind::Sequence<jsbind::Any> {
-        self.inner
-            .get("audioCapabilities")
-            .as_::<jsbind::Sequence<jsbind::Any>>()
+    pub fn audio_capabilities(&self) -> Sequence<Any> {
+        self.inner.get("audioCapabilities").as_::<Sequence<Any>>()
     }
 
-    pub fn set_audio_capabilities(&mut self, value: jsbind::Sequence<jsbind::Any>) {
+    pub fn set_audio_capabilities(&mut self, value: Sequence<Any>) {
         self.inner.set("audioCapabilities", value);
     }
+
 }
 impl MediaKeySystemConfiguration {
-    pub fn video_capabilities(&self) -> jsbind::Sequence<jsbind::Any> {
-        self.inner
-            .get("videoCapabilities")
-            .as_::<jsbind::Sequence<jsbind::Any>>()
+    pub fn video_capabilities(&self) -> Sequence<Any> {
+        self.inner.get("videoCapabilities").as_::<Sequence<Any>>()
     }
 
-    pub fn set_video_capabilities(&mut self, value: jsbind::Sequence<jsbind::Any>) {
+    pub fn set_video_capabilities(&mut self, value: Sequence<Any>) {
         self.inner.set("videoCapabilities", value);
     }
+
 }
 impl MediaKeySystemConfiguration {
     pub fn distinctive_identifier(&self) -> MediaKeysRequirement {
-        self.inner
-            .get("distinctiveIdentifier")
-            .as_::<MediaKeysRequirement>()
+        self.inner.get("distinctiveIdentifier").as_::<MediaKeysRequirement>()
     }
 
     pub fn set_distinctive_identifier(&mut self, value: MediaKeysRequirement) {
         self.inner.set("distinctiveIdentifier", value);
     }
+
 }
 impl MediaKeySystemConfiguration {
     pub fn persistent_state(&self) -> MediaKeysRequirement {
-        self.inner
-            .get("persistentState")
-            .as_::<MediaKeysRequirement>()
+        self.inner.get("persistentState").as_::<MediaKeysRequirement>()
     }
 
     pub fn set_persistent_state(&mut self, value: MediaKeysRequirement) {
         self.inner.set("persistentState", value);
     }
+
 }
 impl MediaKeySystemConfiguration {
-    pub fn session_types(&self) -> jsbind::Sequence<jsbind::DOMString> {
-        self.inner
-            .get("sessionTypes")
-            .as_::<jsbind::Sequence<jsbind::DOMString>>()
+    pub fn session_types(&self) -> Sequence<DOMString> {
+        self.inner.get("sessionTypes").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_session_types(&mut self, value: jsbind::Sequence<jsbind::DOMString>) {
+    pub fn set_session_types(&mut self, value: Sequence<DOMString>) {
         self.inner.set("sessionTypes", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -154,8 +152,8 @@ impl AsRef<emlite::Val> for RelatedApplication {
 }
 impl AsMut<emlite::Val> for RelatedApplication {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RelatedApplication> for emlite::Val {
     fn from(s: RelatedApplication) -> emlite::Val {
@@ -166,40 +164,44 @@ impl From<RelatedApplication> for emlite::Val {
 }
 
 impl RelatedApplication {
-    pub fn platform(&self) -> jsbind::USVString {
-        self.inner.get("platform").as_::<jsbind::USVString>()
+    pub fn platform(&self) -> USVString {
+        self.inner.get("platform").as_::<USVString>()
     }
 
-    pub fn set_platform(&mut self, value: jsbind::USVString) {
+    pub fn set_platform(&mut self, value: USVString) {
         self.inner.set("platform", value);
     }
+
 }
 impl RelatedApplication {
-    pub fn url(&self) -> jsbind::USVString {
-        self.inner.get("url").as_::<jsbind::USVString>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 
-    pub fn set_url(&mut self, value: jsbind::USVString) {
+    pub fn set_url(&mut self, value: USVString) {
         self.inner.set("url", value);
     }
+
 }
 impl RelatedApplication {
-    pub fn id(&self) -> jsbind::DOMString {
-        self.inner.get("id").as_::<jsbind::DOMString>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 
-    pub fn set_id(&mut self, value: jsbind::DOMString) {
+    pub fn set_id(&mut self, value: DOMString) {
         self.inner.set("id", value);
     }
+
 }
 impl RelatedApplication {
-    pub fn version(&self) -> jsbind::USVString {
-        self.inner.get("version").as_::<jsbind::USVString>()
+    pub fn version(&self) -> USVString {
+        self.inner.get("version").as_::<USVString>()
     }
 
-    pub fn set_version(&mut self, value: jsbind::USVString) {
+    pub fn set_version(&mut self, value: USVString) {
         self.inner.set("version", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -235,8 +237,8 @@ impl AsRef<emlite::Val> for HandwritingRecognizerQueryResult {
 }
 impl AsMut<emlite::Val> for HandwritingRecognizerQueryResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HandwritingRecognizerQueryResult> for emlite::Val {
     fn from(s: HandwritingRecognizerQueryResult) -> emlite::Val {
@@ -254,6 +256,7 @@ impl HandwritingRecognizerQueryResult {
     pub fn set_text_alternatives(&mut self, value: bool) {
         self.inner.set("textAlternatives", value);
     }
+
 }
 impl HandwritingRecognizerQueryResult {
     pub fn text_segmentation(&self) -> bool {
@@ -263,15 +266,17 @@ impl HandwritingRecognizerQueryResult {
     pub fn set_text_segmentation(&mut self, value: bool) {
         self.inner.set("textSegmentation", value);
     }
+
 }
 impl HandwritingRecognizerQueryResult {
-    pub fn hints(&self) -> jsbind::Any {
-        self.inner.get("hints").as_::<jsbind::Any>()
+    pub fn hints(&self) -> Any {
+        self.inner.get("hints").as_::<Any>()
     }
 
-    pub fn set_hints(&mut self, value: jsbind::Any) {
+    pub fn set_hints(&mut self, value: Any) {
         self.inner.set("hints", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -307,8 +312,8 @@ impl AsRef<emlite::Val> for HandwritingModelConstraint {
 }
 impl AsMut<emlite::Val> for HandwritingModelConstraint {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HandwritingModelConstraint> for emlite::Val {
     fn from(s: HandwritingModelConstraint) -> emlite::Val {
@@ -319,15 +324,14 @@ impl From<HandwritingModelConstraint> for emlite::Val {
 }
 
 impl HandwritingModelConstraint {
-    pub fn languages(&self) -> jsbind::Sequence<jsbind::DOMString> {
-        self.inner
-            .get("languages")
-            .as_::<jsbind::Sequence<jsbind::DOMString>>()
+    pub fn languages(&self) -> Sequence<DOMString> {
+        self.inner.get("languages").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_languages(&mut self, value: jsbind::Sequence<jsbind::DOMString>) {
+    pub fn set_languages(&mut self, value: Sequence<DOMString>) {
         self.inner.set("languages", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -363,8 +367,8 @@ impl AsRef<emlite::Val> for AuctionAdInterestGroup {
 }
 impl AsMut<emlite::Val> for AuctionAdInterestGroup {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AuctionAdInterestGroup> for emlite::Val {
     fn from(s: AuctionAdInterestGroup) -> emlite::Val {
@@ -382,20 +386,17 @@ impl AuctionAdInterestGroup {
     pub fn set_priority(&mut self, value: f64) {
         self.inner.set("priority", value);
     }
+
 }
 impl AuctionAdInterestGroup {
-    pub fn priority_signals_overrides(&self) -> jsbind::Record<jsbind::DOMString, f64> {
-        self.inner
-            .get("prioritySignalsOverrides")
-            .as_::<jsbind::Record<jsbind::DOMString, f64>>()
+    pub fn priority_signals_overrides(&self) -> Record<DOMString, f64> {
+        self.inner.get("prioritySignalsOverrides").as_::<Record<DOMString, f64>>()
     }
 
-    pub fn set_priority_signals_overrides(
-        &mut self,
-        value: jsbind::Record<jsbind::DOMString, f64>,
-    ) {
+    pub fn set_priority_signals_overrides(&mut self, value: Record<DOMString, f64>) {
         self.inner.set("prioritySignalsOverrides", value);
     }
+
 }
 impl AuctionAdInterestGroup {
     pub fn lifetime_ms(&self) -> f64 {
@@ -405,28 +406,27 @@ impl AuctionAdInterestGroup {
     pub fn set_lifetime_ms(&mut self, value: f64) {
         self.inner.set("lifetimeMs", value);
     }
+
 }
 impl AuctionAdInterestGroup {
-    pub fn additional_bid_key(&self) -> jsbind::DOMString {
-        self.inner
-            .get("additionalBidKey")
-            .as_::<jsbind::DOMString>()
+    pub fn additional_bid_key(&self) -> DOMString {
+        self.inner.get("additionalBidKey").as_::<DOMString>()
     }
 
-    pub fn set_additional_bid_key(&mut self, value: jsbind::DOMString) {
+    pub fn set_additional_bid_key(&mut self, value: DOMString) {
         self.inner.set("additionalBidKey", value);
     }
+
 }
 impl AuctionAdInterestGroup {
-    pub fn private_aggregation_config(&self) -> jsbind::Any {
-        self.inner
-            .get("privateAggregationConfig")
-            .as_::<jsbind::Any>()
+    pub fn private_aggregation_config(&self) -> Any {
+        self.inner.get("privateAggregationConfig").as_::<Any>()
     }
 
-    pub fn set_private_aggregation_config(&mut self, value: jsbind::Any) {
+    pub fn set_private_aggregation_config(&mut self, value: Any) {
         self.inner.set("privateAggregationConfig", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -462,8 +462,8 @@ impl AsRef<emlite::Val> for AuctionAdInterestGroupKey {
 }
 impl AsMut<emlite::Val> for AuctionAdInterestGroupKey {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AuctionAdInterestGroupKey> for emlite::Val {
     fn from(s: AuctionAdInterestGroupKey) -> emlite::Val {
@@ -474,22 +474,24 @@ impl From<AuctionAdInterestGroupKey> for emlite::Val {
 }
 
 impl AuctionAdInterestGroupKey {
-    pub fn owner(&self) -> jsbind::USVString {
-        self.inner.get("owner").as_::<jsbind::USVString>()
+    pub fn owner(&self) -> USVString {
+        self.inner.get("owner").as_::<USVString>()
     }
 
-    pub fn set_owner(&mut self, value: jsbind::USVString) {
+    pub fn set_owner(&mut self, value: USVString) {
         self.inner.set("owner", value);
     }
+
 }
 impl AuctionAdInterestGroupKey {
-    pub fn name(&self) -> jsbind::USVString {
-        self.inner.get("name").as_::<jsbind::USVString>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn set_name(&mut self, value: jsbind::USVString) {
+    pub fn set_name(&mut self, value: USVString) {
         self.inner.set("name", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -525,8 +527,8 @@ impl AsRef<emlite::Val> for AuctionAdConfig {
 }
 impl AsMut<emlite::Val> for AuctionAdConfig {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AuctionAdConfig> for emlite::Val {
     fn from(s: AuctionAdConfig) -> emlite::Val {
@@ -537,57 +539,54 @@ impl From<AuctionAdConfig> for emlite::Val {
 }
 
 impl AuctionAdConfig {
-    pub fn seller(&self) -> jsbind::USVString {
-        self.inner.get("seller").as_::<jsbind::USVString>()
+    pub fn seller(&self) -> USVString {
+        self.inner.get("seller").as_::<USVString>()
     }
 
-    pub fn set_seller(&mut self, value: jsbind::USVString) {
+    pub fn set_seller(&mut self, value: USVString) {
         self.inner.set("seller", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn decision_logic_url(&self) -> jsbind::USVString {
-        self.inner
-            .get("decisionLogicURL")
-            .as_::<jsbind::USVString>()
+    pub fn decision_logic_url(&self) -> USVString {
+        self.inner.get("decisionLogicURL").as_::<USVString>()
     }
 
-    pub fn set_decision_logic_url(&mut self, value: jsbind::USVString) {
+    pub fn set_decision_logic_url(&mut self, value: USVString) {
         self.inner.set("decisionLogicURL", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn trusted_scoring_signals_url(&self) -> jsbind::USVString {
-        self.inner
-            .get("trustedScoringSignalsURL")
-            .as_::<jsbind::USVString>()
+    pub fn trusted_scoring_signals_url(&self) -> USVString {
+        self.inner.get("trustedScoringSignalsURL").as_::<USVString>()
     }
 
-    pub fn set_trusted_scoring_signals_url(&mut self, value: jsbind::USVString) {
+    pub fn set_trusted_scoring_signals_url(&mut self, value: USVString) {
         self.inner.set("trustedScoringSignalsURL", value);
     }
+
 }
 impl AuctionAdConfig {
     pub fn max_trusted_scoring_signals_url_length(&self) -> i32 {
-        self.inner
-            .get("maxTrustedScoringSignalsURLLength")
-            .as_::<i32>()
+        self.inner.get("maxTrustedScoringSignalsURLLength").as_::<i32>()
     }
 
     pub fn set_max_trusted_scoring_signals_url_length(&mut self, value: i32) {
         self.inner.set("maxTrustedScoringSignalsURLLength", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn trusted_scoring_signals_coordinator(&self) -> jsbind::USVString {
-        self.inner
-            .get("trustedScoringSignalsCoordinator")
-            .as_::<jsbind::USVString>()
+    pub fn trusted_scoring_signals_coordinator(&self) -> USVString {
+        self.inner.get("trustedScoringSignalsCoordinator").as_::<USVString>()
     }
 
-    pub fn set_trusted_scoring_signals_coordinator(&mut self, value: jsbind::USVString) {
+    pub fn set_trusted_scoring_signals_coordinator(&mut self, value: USVString) {
         self.inner.set("trustedScoringSignalsCoordinator", value);
     }
+
 }
 impl AuctionAdConfig {
     pub fn send_creative_scanning_metadata(&self) -> bool {
@@ -597,57 +596,57 @@ impl AuctionAdConfig {
     pub fn set_send_creative_scanning_metadata(&mut self, value: bool) {
         self.inner.set("sendCreativeScanningMetadata", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn interest_group_buyers(&self) -> jsbind::Sequence<jsbind::USVString> {
-        self.inner
-            .get("interestGroupBuyers")
-            .as_::<jsbind::Sequence<jsbind::USVString>>()
+    pub fn interest_group_buyers(&self) -> Sequence<USVString> {
+        self.inner.get("interestGroupBuyers").as_::<Sequence<USVString>>()
     }
 
-    pub fn set_interest_group_buyers(&mut self, value: jsbind::Sequence<jsbind::USVString>) {
+    pub fn set_interest_group_buyers(&mut self, value: Sequence<USVString>) {
         self.inner.set("interestGroupBuyers", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn auction_signals(&self) -> jsbind::Promise {
-        self.inner.get("auctionSignals").as_::<jsbind::Promise>()
+    pub fn auction_signals(&self) -> Promise {
+        self.inner.get("auctionSignals").as_::<Promise>()
     }
 
-    pub fn set_auction_signals(&mut self, value: jsbind::Promise) {
+    pub fn set_auction_signals(&mut self, value: Promise) {
         self.inner.set("auctionSignals", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn seller_signals(&self) -> jsbind::Promise {
-        self.inner.get("sellerSignals").as_::<jsbind::Promise>()
+    pub fn seller_signals(&self) -> Promise {
+        self.inner.get("sellerSignals").as_::<Promise>()
     }
 
-    pub fn set_seller_signals(&mut self, value: jsbind::Promise) {
+    pub fn set_seller_signals(&mut self, value: Promise) {
         self.inner.set("sellerSignals", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn direct_from_seller_signals_header_ad_slot(&self) -> jsbind::Promise {
-        self.inner
-            .get("directFromSellerSignalsHeaderAdSlot")
-            .as_::<jsbind::Promise>()
+    pub fn direct_from_seller_signals_header_ad_slot(&self) -> Promise {
+        self.inner.get("directFromSellerSignalsHeaderAdSlot").as_::<Promise>()
     }
 
-    pub fn set_direct_from_seller_signals_header_ad_slot(&mut self, value: jsbind::Promise) {
+    pub fn set_direct_from_seller_signals_header_ad_slot(&mut self, value: Promise) {
         self.inner.set("directFromSellerSignalsHeaderAdSlot", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn deprecated_render_url_replacements(&self) -> jsbind::Promise {
-        self.inner
-            .get("deprecatedRenderURLReplacements")
-            .as_::<jsbind::Promise>()
+    pub fn deprecated_render_url_replacements(&self) -> Promise {
+        self.inner.get("deprecatedRenderURLReplacements").as_::<Promise>()
     }
 
-    pub fn set_deprecated_render_url_replacements(&mut self, value: jsbind::Promise) {
+    pub fn set_deprecated_render_url_replacements(&mut self, value: Promise) {
         self.inner.set("deprecatedRenderURLReplacements", value);
     }
+
 }
 impl AuctionAdConfig {
     pub fn seller_timeout(&self) -> u64 {
@@ -657,6 +656,7 @@ impl AuctionAdConfig {
     pub fn set_seller_timeout(&mut self, value: u64) {
         self.inner.set("sellerTimeout", value);
     }
+
 }
 impl AuctionAdConfig {
     pub fn seller_experiment_group_id(&self) -> u16 {
@@ -666,35 +666,37 @@ impl AuctionAdConfig {
     pub fn set_seller_experiment_group_id(&mut self, value: u16) {
         self.inner.set("sellerExperimentGroupId", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_signals(&self) -> jsbind::Promise {
-        self.inner.get("perBuyerSignals").as_::<jsbind::Promise>()
+    pub fn per_buyer_signals(&self) -> Promise {
+        self.inner.get("perBuyerSignals").as_::<Promise>()
     }
 
-    pub fn set_per_buyer_signals(&mut self, value: jsbind::Promise) {
+    pub fn set_per_buyer_signals(&mut self, value: Promise) {
         self.inner.set("perBuyerSignals", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_timeouts(&self) -> jsbind::Promise {
-        self.inner.get("perBuyerTimeouts").as_::<jsbind::Promise>()
+    pub fn per_buyer_timeouts(&self) -> Promise {
+        self.inner.get("perBuyerTimeouts").as_::<Promise>()
     }
 
-    pub fn set_per_buyer_timeouts(&mut self, value: jsbind::Promise) {
+    pub fn set_per_buyer_timeouts(&mut self, value: Promise) {
         self.inner.set("perBuyerTimeouts", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_cumulative_timeouts(&self) -> jsbind::Promise {
-        self.inner
-            .get("perBuyerCumulativeTimeouts")
-            .as_::<jsbind::Promise>()
+    pub fn per_buyer_cumulative_timeouts(&self) -> Promise {
+        self.inner.get("perBuyerCumulativeTimeouts").as_::<Promise>()
     }
 
-    pub fn set_per_buyer_cumulative_timeouts(&mut self, value: jsbind::Promise) {
+    pub fn set_per_buyer_cumulative_timeouts(&mut self, value: Promise) {
         self.inner.set("perBuyerCumulativeTimeouts", value);
     }
+
 }
 impl AuctionAdConfig {
     pub fn reporting_timeout(&self) -> u64 {
@@ -704,225 +706,187 @@ impl AuctionAdConfig {
     pub fn set_reporting_timeout(&mut self, value: u64) {
         self.inner.set("reportingTimeout", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn seller_currency(&self) -> jsbind::USVString {
-        self.inner.get("sellerCurrency").as_::<jsbind::USVString>()
+    pub fn seller_currency(&self) -> USVString {
+        self.inner.get("sellerCurrency").as_::<USVString>()
     }
 
-    pub fn set_seller_currency(&mut self, value: jsbind::USVString) {
+    pub fn set_seller_currency(&mut self, value: USVString) {
         self.inner.set("sellerCurrency", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_currencies(&self) -> jsbind::Promise {
-        self.inner
-            .get("perBuyerCurrencies")
-            .as_::<jsbind::Promise>()
+    pub fn per_buyer_currencies(&self) -> Promise {
+        self.inner.get("perBuyerCurrencies").as_::<Promise>()
     }
 
-    pub fn set_per_buyer_currencies(&mut self, value: jsbind::Promise) {
+    pub fn set_per_buyer_currencies(&mut self, value: Promise) {
         self.inner.set("perBuyerCurrencies", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_multi_bid_limits(&self) -> jsbind::Record<jsbind::USVString, u16> {
-        self.inner
-            .get("perBuyerMultiBidLimits")
-            .as_::<jsbind::Record<jsbind::USVString, u16>>()
+    pub fn per_buyer_multi_bid_limits(&self) -> Record<USVString, u16> {
+        self.inner.get("perBuyerMultiBidLimits").as_::<Record<USVString, u16>>()
     }
 
-    pub fn set_per_buyer_multi_bid_limits(
-        &mut self,
-        value: jsbind::Record<jsbind::USVString, u16>,
-    ) {
+    pub fn set_per_buyer_multi_bid_limits(&mut self, value: Record<USVString, u16>) {
         self.inner.set("perBuyerMultiBidLimits", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_group_limits(&self) -> jsbind::Record<jsbind::USVString, u16> {
-        self.inner
-            .get("perBuyerGroupLimits")
-            .as_::<jsbind::Record<jsbind::USVString, u16>>()
+    pub fn per_buyer_group_limits(&self) -> Record<USVString, u16> {
+        self.inner.get("perBuyerGroupLimits").as_::<Record<USVString, u16>>()
     }
 
-    pub fn set_per_buyer_group_limits(&mut self, value: jsbind::Record<jsbind::USVString, u16>) {
+    pub fn set_per_buyer_group_limits(&mut self, value: Record<USVString, u16>) {
         self.inner.set("perBuyerGroupLimits", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_experiment_group_ids(&self) -> jsbind::Record<jsbind::USVString, u16> {
-        self.inner
-            .get("perBuyerExperimentGroupIds")
-            .as_::<jsbind::Record<jsbind::USVString, u16>>()
+    pub fn per_buyer_experiment_group_ids(&self) -> Record<USVString, u16> {
+        self.inner.get("perBuyerExperimentGroupIds").as_::<Record<USVString, u16>>()
     }
 
-    pub fn set_per_buyer_experiment_group_ids(
-        &mut self,
-        value: jsbind::Record<jsbind::USVString, u16>,
-    ) {
+    pub fn set_per_buyer_experiment_group_ids(&mut self, value: Record<USVString, u16>) {
         self.inner.set("perBuyerExperimentGroupIds", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_priority_signals(
-        &self,
-    ) -> jsbind::Record<jsbind::USVString, jsbind::Record<jsbind::USVString, f64>> {
-        self.inner
-            .get("perBuyerPrioritySignals")
-            .as_::<jsbind::Record<jsbind::USVString, jsbind::Record<jsbind::USVString, f64>>>()
+    pub fn per_buyer_priority_signals(&self) -> Record<USVString, Record<USVString, f64>> {
+        self.inner.get("perBuyerPrioritySignals").as_::<Record<USVString, Record<USVString, f64>>>()
     }
 
-    pub fn set_per_buyer_priority_signals(
-        &mut self,
-        value: jsbind::Record<jsbind::USVString, jsbind::Record<jsbind::USVString, f64>>,
-    ) {
+    pub fn set_per_buyer_priority_signals(&mut self, value: Record<USVString, Record<USVString, f64>>) {
         self.inner.set("perBuyerPrioritySignals", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn auction_report_buyer_keys(&self) -> jsbind::Sequence<i64> {
-        self.inner
-            .get("auctionReportBuyerKeys")
-            .as_::<jsbind::Sequence<i64>>()
+    pub fn auction_report_buyer_keys(&self) -> Sequence<i64> {
+        self.inner.get("auctionReportBuyerKeys").as_::<Sequence<i64>>()
     }
 
-    pub fn set_auction_report_buyer_keys(&mut self, value: jsbind::Sequence<i64>) {
+    pub fn set_auction_report_buyer_keys(&mut self, value: Sequence<i64>) {
         self.inner.set("auctionReportBuyerKeys", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn auction_report_buyers(&self) -> jsbind::Record<jsbind::DOMString, jsbind::Any> {
-        self.inner
-            .get("auctionReportBuyers")
-            .as_::<jsbind::Record<jsbind::DOMString, jsbind::Any>>()
+    pub fn auction_report_buyers(&self) -> Record<DOMString, Any> {
+        self.inner.get("auctionReportBuyers").as_::<Record<DOMString, Any>>()
     }
 
-    pub fn set_auction_report_buyers(
-        &mut self,
-        value: jsbind::Record<jsbind::DOMString, jsbind::Any>,
-    ) {
+    pub fn set_auction_report_buyers(&mut self, value: Record<DOMString, Any>) {
         self.inner.set("auctionReportBuyers", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn auction_report_buyer_debug_mode_config(&self) -> jsbind::Any {
-        self.inner
-            .get("auctionReportBuyerDebugModeConfig")
-            .as_::<jsbind::Any>()
+    pub fn auction_report_buyer_debug_mode_config(&self) -> Any {
+        self.inner.get("auctionReportBuyerDebugModeConfig").as_::<Any>()
     }
 
-    pub fn set_auction_report_buyer_debug_mode_config(&mut self, value: jsbind::Any) {
+    pub fn set_auction_report_buyer_debug_mode_config(&mut self, value: Any) {
         self.inner.set("auctionReportBuyerDebugModeConfig", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn required_seller_capabilities(&self) -> jsbind::Sequence<jsbind::DOMString> {
-        self.inner
-            .get("requiredSellerCapabilities")
-            .as_::<jsbind::Sequence<jsbind::DOMString>>()
+    pub fn required_seller_capabilities(&self) -> Sequence<DOMString> {
+        self.inner.get("requiredSellerCapabilities").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_required_seller_capabilities(&mut self, value: jsbind::Sequence<jsbind::DOMString>) {
+    pub fn set_required_seller_capabilities(&mut self, value: Sequence<DOMString>) {
         self.inner.set("requiredSellerCapabilities", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn private_aggregation_config(&self) -> jsbind::Any {
-        self.inner
-            .get("privateAggregationConfig")
-            .as_::<jsbind::Any>()
+    pub fn private_aggregation_config(&self) -> Any {
+        self.inner.get("privateAggregationConfig").as_::<Any>()
     }
 
-    pub fn set_private_aggregation_config(&mut self, value: jsbind::Any) {
+    pub fn set_private_aggregation_config(&mut self, value: Any) {
         self.inner.set("privateAggregationConfig", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn requested_size(&self) -> jsbind::Record<jsbind::DOMString, jsbind::DOMString> {
-        self.inner
-            .get("requestedSize")
-            .as_::<jsbind::Record<jsbind::DOMString, jsbind::DOMString>>()
+    pub fn requested_size(&self) -> Record<DOMString, DOMString> {
+        self.inner.get("requestedSize").as_::<Record<DOMString, DOMString>>()
     }
 
-    pub fn set_requested_size(
-        &mut self,
-        value: jsbind::Record<jsbind::DOMString, jsbind::DOMString>,
-    ) {
+    pub fn set_requested_size(&mut self, value: Record<DOMString, DOMString>) {
         self.inner.set("requestedSize", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn all_slots_requested_sizes(
-        &self,
-    ) -> jsbind::Sequence<jsbind::Record<jsbind::DOMString, jsbind::DOMString>> {
-        self.inner
-            .get("allSlotsRequestedSizes")
-            .as_::<jsbind::Sequence<jsbind::Record<jsbind::DOMString, jsbind::DOMString>>>()
+    pub fn all_slots_requested_sizes(&self) -> Sequence<Record<DOMString, DOMString>> {
+        self.inner.get("allSlotsRequestedSizes").as_::<Sequence<Record<DOMString, DOMString>>>()
     }
 
-    pub fn set_all_slots_requested_sizes(
-        &mut self,
-        value: jsbind::Sequence<jsbind::Record<jsbind::DOMString, jsbind::DOMString>>,
-    ) {
+    pub fn set_all_slots_requested_sizes(&mut self, value: Sequence<Record<DOMString, DOMString>>) {
         self.inner.set("allSlotsRequestedSizes", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn additional_bids(&self) -> jsbind::Promise {
-        self.inner.get("additionalBids").as_::<jsbind::Promise>()
+    pub fn additional_bids(&self) -> Promise {
+        self.inner.get("additionalBids").as_::<Promise>()
     }
 
-    pub fn set_additional_bids(&mut self, value: jsbind::Promise) {
+    pub fn set_additional_bids(&mut self, value: Promise) {
         self.inner.set("additionalBids", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn auction_nonce(&self) -> jsbind::DOMString {
-        self.inner.get("auctionNonce").as_::<jsbind::DOMString>()
+    pub fn auction_nonce(&self) -> DOMString {
+        self.inner.get("auctionNonce").as_::<DOMString>()
     }
 
-    pub fn set_auction_nonce(&mut self, value: jsbind::DOMString) {
+    pub fn set_auction_nonce(&mut self, value: DOMString) {
         self.inner.set("auctionNonce", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn seller_real_time_reporting_config(&self) -> jsbind::Any {
-        self.inner
-            .get("sellerRealTimeReportingConfig")
-            .as_::<jsbind::Any>()
+    pub fn seller_real_time_reporting_config(&self) -> Any {
+        self.inner.get("sellerRealTimeReportingConfig").as_::<Any>()
     }
 
-    pub fn set_seller_real_time_reporting_config(&mut self, value: jsbind::Any) {
+    pub fn set_seller_real_time_reporting_config(&mut self, value: Any) {
         self.inner.set("sellerRealTimeReportingConfig", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_real_time_reporting_config(
-        &self,
-    ) -> jsbind::Record<jsbind::USVString, jsbind::Any> {
-        self.inner
-            .get("perBuyerRealTimeReportingConfig")
-            .as_::<jsbind::Record<jsbind::USVString, jsbind::Any>>()
+    pub fn per_buyer_real_time_reporting_config(&self) -> Record<USVString, Any> {
+        self.inner.get("perBuyerRealTimeReportingConfig").as_::<Record<USVString, Any>>()
     }
 
-    pub fn set_per_buyer_real_time_reporting_config(
-        &mut self,
-        value: jsbind::Record<jsbind::USVString, jsbind::Any>,
-    ) {
+    pub fn set_per_buyer_real_time_reporting_config(&mut self, value: Record<USVString, Any>) {
         self.inner.set("perBuyerRealTimeReportingConfig", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn component_auctions(&self) -> jsbind::Sequence<AuctionAdConfig> {
-        self.inner
-            .get("componentAuctions")
-            .as_::<jsbind::Sequence<AuctionAdConfig>>()
+    pub fn component_auctions(&self) -> Sequence<AuctionAdConfig> {
+        self.inner.get("componentAuctions").as_::<Sequence<AuctionAdConfig>>()
     }
 
-    pub fn set_component_auctions(&mut self, value: jsbind::Sequence<AuctionAdConfig>) {
+    pub fn set_component_auctions(&mut self, value: Sequence<AuctionAdConfig>) {
         self.inner.set("componentAuctions", value);
     }
+
 }
 impl AuctionAdConfig {
     pub fn signal(&self) -> AbortSignal {
@@ -932,33 +896,37 @@ impl AuctionAdConfig {
     pub fn set_signal(&mut self, value: AbortSignal) {
         self.inner.set("signal", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn resolve_to_config(&self) -> jsbind::Promise {
-        self.inner.get("resolveToConfig").as_::<jsbind::Promise>()
+    pub fn resolve_to_config(&self) -> Promise {
+        self.inner.get("resolveToConfig").as_::<Promise>()
     }
 
-    pub fn set_resolve_to_config(&mut self, value: jsbind::Promise) {
+    pub fn set_resolve_to_config(&mut self, value: Promise) {
         self.inner.set("resolveToConfig", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn server_response(&self) -> jsbind::Promise {
-        self.inner.get("serverResponse").as_::<jsbind::Promise>()
+    pub fn server_response(&self) -> Promise {
+        self.inner.get("serverResponse").as_::<Promise>()
     }
 
-    pub fn set_server_response(&mut self, value: jsbind::Promise) {
+    pub fn set_server_response(&mut self, value: Promise) {
         self.inner.set("serverResponse", value);
     }
+
 }
 impl AuctionAdConfig {
-    pub fn request_id(&self) -> jsbind::USVString {
-        self.inner.get("requestId").as_::<jsbind::USVString>()
+    pub fn request_id(&self) -> USVString {
+        self.inner.get("requestId").as_::<USVString>()
     }
 
-    pub fn set_request_id(&mut self, value: jsbind::USVString) {
+    pub fn set_request_id(&mut self, value: USVString) {
         self.inner.set("requestId", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -994,8 +962,8 @@ impl AsRef<emlite::Val> for AdAuctionData {
 }
 impl AsMut<emlite::Val> for AdAuctionData {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AdAuctionData> for emlite::Val {
     fn from(s: AdAuctionData) -> emlite::Val {
@@ -1006,33 +974,34 @@ impl From<AdAuctionData> for emlite::Val {
 }
 
 impl AdAuctionData {
-    pub fn request_id(&self) -> jsbind::USVString {
-        self.inner.get("requestId").as_::<jsbind::USVString>()
+    pub fn request_id(&self) -> USVString {
+        self.inner.get("requestId").as_::<USVString>()
     }
 
-    pub fn set_request_id(&mut self, value: jsbind::USVString) {
+    pub fn set_request_id(&mut self, value: USVString) {
         self.inner.set("requestId", value);
     }
+
 }
 impl AdAuctionData {
-    pub fn request(&self) -> jsbind::Uint8Array {
-        self.inner.get("request").as_::<jsbind::Uint8Array>()
+    pub fn request(&self) -> Uint8Array {
+        self.inner.get("request").as_::<Uint8Array>()
     }
 
-    pub fn set_request(&mut self, value: jsbind::Uint8Array) {
+    pub fn set_request(&mut self, value: Uint8Array) {
         self.inner.set("request", value);
     }
+
 }
 impl AdAuctionData {
-    pub fn requests(&self) -> jsbind::Sequence<jsbind::Any> {
-        self.inner
-            .get("requests")
-            .as_::<jsbind::Sequence<jsbind::Any>>()
+    pub fn requests(&self) -> Sequence<Any> {
+        self.inner.get("requests").as_::<Sequence<Any>>()
     }
 
-    pub fn set_requests(&mut self, value: jsbind::Sequence<jsbind::Any>) {
+    pub fn set_requests(&mut self, value: Sequence<Any>) {
         self.inner.set("requests", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -1068,8 +1037,8 @@ impl AsRef<emlite::Val> for AdAuctionDataConfig {
 }
 impl AsMut<emlite::Val> for AdAuctionDataConfig {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AdAuctionDataConfig> for emlite::Val {
     fn from(s: AdAuctionDataConfig) -> emlite::Val {
@@ -1080,35 +1049,34 @@ impl From<AdAuctionDataConfig> for emlite::Val {
 }
 
 impl AdAuctionDataConfig {
-    pub fn seller(&self) -> jsbind::USVString {
-        self.inner.get("seller").as_::<jsbind::USVString>()
+    pub fn seller(&self) -> USVString {
+        self.inner.get("seller").as_::<USVString>()
     }
 
-    pub fn set_seller(&mut self, value: jsbind::USVString) {
+    pub fn set_seller(&mut self, value: USVString) {
         self.inner.set("seller", value);
     }
+
 }
 impl AdAuctionDataConfig {
-    pub fn coordinator_origin(&self) -> jsbind::USVString {
-        self.inner
-            .get("coordinatorOrigin")
-            .as_::<jsbind::USVString>()
+    pub fn coordinator_origin(&self) -> USVString {
+        self.inner.get("coordinatorOrigin").as_::<USVString>()
     }
 
-    pub fn set_coordinator_origin(&mut self, value: jsbind::USVString) {
+    pub fn set_coordinator_origin(&mut self, value: USVString) {
         self.inner.set("coordinatorOrigin", value);
     }
+
 }
 impl AdAuctionDataConfig {
-    pub fn sellers(&self) -> jsbind::Sequence<jsbind::Any> {
-        self.inner
-            .get("sellers")
-            .as_::<jsbind::Sequence<jsbind::Any>>()
+    pub fn sellers(&self) -> Sequence<Any> {
+        self.inner.get("sellers").as_::<Sequence<Any>>()
     }
 
-    pub fn set_sellers(&mut self, value: jsbind::Sequence<jsbind::Any>) {
+    pub fn set_sellers(&mut self, value: Sequence<Any>) {
         self.inner.set("sellers", value);
     }
+
 }
 impl AdAuctionDataConfig {
     pub fn request_size(&self) -> u32 {
@@ -1118,17 +1086,17 @@ impl AdAuctionDataConfig {
     pub fn set_request_size(&mut self, value: u32) {
         self.inner.set("requestSize", value);
     }
+
 }
 impl AdAuctionDataConfig {
-    pub fn per_buyer_config(&self) -> jsbind::Record<jsbind::USVString, jsbind::Any> {
-        self.inner
-            .get("perBuyerConfig")
-            .as_::<jsbind::Record<jsbind::USVString, jsbind::Any>>()
+    pub fn per_buyer_config(&self) -> Record<USVString, Any> {
+        self.inner.get("perBuyerConfig").as_::<Record<USVString, Any>>()
     }
 
-    pub fn set_per_buyer_config(&mut self, value: jsbind::Record<jsbind::USVString, jsbind::Any>) {
+    pub fn set_per_buyer_config(&mut self, value: Record<USVString, Any>) {
         self.inner.set("perBuyerConfig", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -1164,8 +1132,8 @@ impl AsRef<emlite::Val> for ShareData {
 }
 impl AsMut<emlite::Val> for ShareData {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ShareData> for emlite::Val {
     fn from(s: ShareData) -> emlite::Val {
@@ -1176,40 +1144,44 @@ impl From<ShareData> for emlite::Val {
 }
 
 impl ShareData {
-    pub fn files(&self) -> jsbind::Sequence<File> {
-        self.inner.get("files").as_::<jsbind::Sequence<File>>()
+    pub fn files(&self) -> Sequence<File> {
+        self.inner.get("files").as_::<Sequence<File>>()
     }
 
-    pub fn set_files(&mut self, value: jsbind::Sequence<File>) {
+    pub fn set_files(&mut self, value: Sequence<File>) {
         self.inner.set("files", value);
     }
+
 }
 impl ShareData {
-    pub fn title(&self) -> jsbind::USVString {
-        self.inner.get("title").as_::<jsbind::USVString>()
+    pub fn title(&self) -> USVString {
+        self.inner.get("title").as_::<USVString>()
     }
 
-    pub fn set_title(&mut self, value: jsbind::USVString) {
+    pub fn set_title(&mut self, value: USVString) {
         self.inner.set("title", value);
     }
+
 }
 impl ShareData {
-    pub fn text(&self) -> jsbind::USVString {
-        self.inner.get("text").as_::<jsbind::USVString>()
+    pub fn text(&self) -> USVString {
+        self.inner.get("text").as_::<USVString>()
     }
 
-    pub fn set_text(&mut self, value: jsbind::USVString) {
+    pub fn set_text(&mut self, value: USVString) {
         self.inner.set("text", value);
     }
+
 }
 impl ShareData {
-    pub fn url(&self) -> jsbind::USVString {
-        self.inner.get("url").as_::<jsbind::USVString>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 
-    pub fn set_url(&mut self, value: jsbind::USVString) {
+    pub fn set_url(&mut self, value: USVString) {
         self.inner.set("url", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -1245,8 +1217,8 @@ impl AsRef<emlite::Val> for MIDIOptions {
 }
 impl AsMut<emlite::Val> for MIDIOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MIDIOptions> for emlite::Val {
     fn from(s: MIDIOptions) -> emlite::Val {
@@ -1264,6 +1236,7 @@ impl MIDIOptions {
     pub fn set_sysex(&mut self, value: bool) {
         self.inner.set("sysex", value);
     }
+
 }
 impl MIDIOptions {
     pub fn software(&self) -> bool {
@@ -1273,6 +1246,7 @@ impl MIDIOptions {
     pub fn set_software(&mut self, value: bool) {
         self.inner.set("software", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -1281,9 +1255,7 @@ pub struct Navigator {
 }
 impl FromVal for Navigator {
     fn from_val(v: &emlite::Val) -> Self {
-        Navigator {
-            inner: emlite::Val::from_val(v),
-        }
+        Navigator { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -1310,8 +1282,8 @@ impl AsRef<emlite::Val> for Navigator {
 }
 impl AsMut<emlite::Val> for Navigator {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<Navigator> for emlite::Val {
     fn from(s: Navigator) -> emlite::Val {
@@ -1322,557 +1294,514 @@ impl From<Navigator> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Navigator);
 
+
 impl Navigator {
     pub fn audio_session(&self) -> AudioSession {
         self.inner.get("audioSession").as_::<AudioSession>()
     }
+
 }
 impl Navigator {
     pub fn get_autoplay_policy(&self, context: AudioContext) -> AutoplayPolicy {
-        self.inner
-            .call("getAutoplayPolicy", &[context.into()])
-            .as_::<AutoplayPolicy>()
-    }
-}
-impl Navigator {
-    pub fn get_battery(&self) -> jsbind::Promise {
-        self.inner.call("getBattery", &[]).as_::<jsbind::Promise>()
-    }
-}
-impl Navigator {
-    pub fn send_beacon0(&self, url: jsbind::USVString) -> bool {
-        self.inner.call("sendBeacon", &[url.into()]).as_::<bool>()
+        self.inner.call("getAutoplayPolicy", &[context.into(), ]).as_::<AutoplayPolicy>()
     }
 
-    pub fn send_beacon1(&self, url: jsbind::USVString, data: jsbind::Any) -> bool {
-        self.inner
-            .call("sendBeacon", &[url.into(), data.into()])
-            .as_::<bool>()
+}
+impl Navigator {
+    pub fn get_battery(&self, ) -> Promise {
+        self.inner.call("getBattery", &[]).as_::<Promise>()
     }
+
+}
+impl Navigator {
+    pub fn send_beacon0(&self, url: USVString) -> bool {
+        self.inner.call("sendBeacon", &[url.into(), ]).as_::<bool>()
+    }
+
+    pub fn send_beacon1(&self, url: USVString, data: Any) -> bool {
+        self.inner.call("sendBeacon", &[url.into(), data.into(), ]).as_::<bool>()
+    }
+
 }
 impl Navigator {
     pub fn clipboard(&self) -> Clipboard {
         self.inner.get("clipboard").as_::<Clipboard>()
     }
+
 }
 impl Navigator {
     pub fn contacts(&self) -> ContactsManager {
         self.inner.get("contacts").as_::<ContactsManager>()
     }
+
 }
 impl Navigator {
     pub fn credentials(&self) -> CredentialsContainer {
         self.inner.get("credentials").as_::<CredentialsContainer>()
     }
+
 }
 impl Navigator {
     pub fn device_posture(&self) -> DevicePosture {
         self.inner.get("devicePosture").as_::<DevicePosture>()
     }
+
 }
 impl Navigator {
-    pub fn request_media_key_system_access(
-        &self,
-        key_system: jsbind::DOMString,
-        supported_configurations: jsbind::Sequence<MediaKeySystemConfiguration>,
-    ) -> jsbind::Promise {
-        self.inner
-            .call(
-                "requestMediaKeySystemAccess",
-                &[key_system.into(), supported_configurations.into()],
-            )
-            .as_::<jsbind::Promise>()
-    }
-}
-impl Navigator {
-    pub fn deprecated_replace_in_urn(
-        &self,
-        urn_or_config: jsbind::Any,
-        replacements: jsbind::Record<jsbind::USVString, jsbind::USVString>,
-    ) -> jsbind::Promise {
-        self.inner
-            .call(
-                "deprecatedReplaceInURN",
-                &[urn_or_config.into(), replacements.into()],
-            )
-            .as_::<jsbind::Promise>()
-    }
-}
-impl Navigator {
-    pub fn deprecated_ur_nto_url0(&self, urn_or_config: jsbind::Any) -> jsbind::Promise {
-        self.inner
-            .call("deprecatedURNtoURL", &[urn_or_config.into()])
-            .as_::<jsbind::Promise>()
+    pub fn request_media_key_system_access(&self, key_system: DOMString, supported_configurations: Sequence<MediaKeySystemConfiguration>) -> Promise {
+        self.inner.call("requestMediaKeySystemAccess", &[key_system.into(), supported_configurations.into(), ]).as_::<Promise>()
     }
 
-    pub fn deprecated_ur_nto_url1(
-        &self,
-        urn_or_config: jsbind::Any,
-        send_reports: bool,
-    ) -> jsbind::Promise {
-        self.inner
-            .call(
-                "deprecatedURNtoURL",
-                &[urn_or_config.into(), send_reports.into()],
-            )
-            .as_::<jsbind::Promise>()
-    }
 }
 impl Navigator {
-    pub fn ad_auction_components(
-        &self,
-        num_ad_components: u16,
-    ) -> jsbind::Sequence<jsbind::USVString> {
-        self.inner
-            .call("adAuctionComponents", &[num_ad_components.into()])
-            .as_::<jsbind::Sequence<jsbind::USVString>>()
+    pub fn deprecated_replace_in_urn(&self, urn_or_config: Any, replacements: Record<USVString, USVString>) -> Promise {
+        self.inner.call("deprecatedReplaceInURN", &[urn_or_config.into(), replacements.into(), ]).as_::<Promise>()
     }
+
 }
 impl Navigator {
-    pub fn get_gamepads(&self) -> jsbind::Sequence<Gamepad> {
-        self.inner
-            .call("getGamepads", &[])
-            .as_::<jsbind::Sequence<Gamepad>>()
+    pub fn deprecated_ur_nto_url0(&self, urn_or_config: Any) -> Promise {
+        self.inner.call("deprecatedURNtoURL", &[urn_or_config.into(), ]).as_::<Promise>()
     }
+
+    pub fn deprecated_ur_nto_url1(&self, urn_or_config: Any, send_reports: bool) -> Promise {
+        self.inner.call("deprecatedURNtoURL", &[urn_or_config.into(), send_reports.into(), ]).as_::<Promise>()
+    }
+
+}
+impl Navigator {
+    pub fn ad_auction_components(&self, num_ad_components: u16) -> Sequence<USVString> {
+        self.inner.call("adAuctionComponents", &[num_ad_components.into(), ]).as_::<Sequence<USVString>>()
+    }
+
+}
+impl Navigator {
+    pub fn get_gamepads(&self, ) -> Sequence<Gamepad> {
+        self.inner.call("getGamepads", &[]).as_::<Sequence<Gamepad>>()
+    }
+
 }
 impl Navigator {
     pub fn geolocation(&self) -> Geolocation {
         self.inner.get("geolocation").as_::<Geolocation>()
     }
+
 }
 impl Navigator {
-    pub fn get_installed_related_apps(&self) -> jsbind::Promise {
-        self.inner
-            .call("getInstalledRelatedApps", &[])
-            .as_::<jsbind::Promise>()
+    pub fn get_installed_related_apps(&self, ) -> Promise {
+        self.inner.call("getInstalledRelatedApps", &[]).as_::<Promise>()
     }
+
 }
 impl Navigator {
-    pub fn query_handwriting_recognizer(
-        &self,
-        constraint: HandwritingModelConstraint,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("queryHandwritingRecognizer", &[constraint.into()])
-            .as_::<jsbind::Promise>()
+    pub fn query_handwriting_recognizer(&self, constraint: HandwritingModelConstraint) -> Promise {
+        self.inner.call("queryHandwritingRecognizer", &[constraint.into(), ]).as_::<Promise>()
     }
+
 }
 impl Navigator {
-    pub fn create_handwriting_recognizer(
-        &self,
-        constraint: HandwritingModelConstraint,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("createHandwritingRecognizer", &[constraint.into()])
-            .as_::<jsbind::Promise>()
+    pub fn create_handwriting_recognizer(&self, constraint: HandwritingModelConstraint) -> Promise {
+        self.inner.call("createHandwritingRecognizer", &[constraint.into(), ]).as_::<Promise>()
     }
+
 }
 impl Navigator {
     pub fn user_activation(&self) -> UserActivation {
         self.inner.get("userActivation").as_::<UserActivation>()
     }
+
 }
 impl Navigator {
     pub fn ink(&self) -> Ink {
         self.inner.get("ink").as_::<Ink>()
     }
+
 }
 impl Navigator {
     pub fn scheduling(&self) -> Scheduling {
         self.inner.get("scheduling").as_::<Scheduling>()
     }
+
 }
 impl Navigator {
     pub fn keyboard(&self) -> Keyboard {
         self.inner.get("keyboard").as_::<Keyboard>()
     }
+
 }
 impl Navigator {
     pub fn login(&self) -> NavigatorLogin {
         self.inner.get("login").as_::<NavigatorLogin>()
     }
+
 }
 impl Navigator {
     pub fn managed(&self) -> NavigatorManagedData {
         self.inner.get("managed").as_::<NavigatorManagedData>()
     }
+
 }
 impl Navigator {
     pub fn media_capabilities(&self) -> MediaCapabilities {
-        self.inner
-            .get("mediaCapabilities")
-            .as_::<MediaCapabilities>()
+        self.inner.get("mediaCapabilities").as_::<MediaCapabilities>()
     }
+
 }
 impl Navigator {
     pub fn media_devices(&self) -> MediaDevices {
         self.inner.get("mediaDevices").as_::<MediaDevices>()
     }
+
 }
 impl Navigator {
     pub fn preferences(&self) -> PreferenceManager {
         self.inner.get("preferences").as_::<PreferenceManager>()
     }
+
 }
 impl Navigator {
     pub fn media_session(&self) -> MediaSession {
         self.inner.get("mediaSession").as_::<MediaSession>()
     }
+
 }
 impl Navigator {
     pub fn permissions(&self) -> Permissions {
         self.inner.get("permissions").as_::<Permissions>()
     }
+
 }
 impl Navigator {
     pub fn max_touch_points(&self) -> i32 {
         self.inner.get("maxTouchPoints").as_::<i32>()
     }
+
 }
 impl Navigator {
     pub fn presentation(&self) -> Presentation {
         self.inner.get("presentation").as_::<Presentation>()
     }
+
 }
 impl Navigator {
     pub fn attribution(&self) -> Attribution {
         self.inner.get("attribution").as_::<Attribution>()
     }
+
 }
 impl Navigator {
     pub fn wake_lock(&self) -> WakeLock {
         self.inner.get("wakeLock").as_::<WakeLock>()
     }
+
 }
 impl Navigator {
     pub fn serial(&self) -> Serial {
         self.inner.get("serial").as_::<Serial>()
     }
+
 }
 impl Navigator {
     pub fn service_worker(&self) -> ServiceWorkerContainer {
-        self.inner
-            .get("serviceWorker")
-            .as_::<ServiceWorkerContainer>()
-    }
-}
-impl Navigator {
-    pub fn join_ad_interest_group(&self, group: AuctionAdInterestGroup) -> jsbind::Promise {
-        self.inner
-            .call("joinAdInterestGroup", &[group.into()])
-            .as_::<jsbind::Promise>()
-    }
-}
-impl Navigator {
-    pub fn leave_ad_interest_group0(&self) -> jsbind::Promise {
-        self.inner
-            .call("leaveAdInterestGroup", &[])
-            .as_::<jsbind::Promise>()
+        self.inner.get("serviceWorker").as_::<ServiceWorkerContainer>()
     }
 
-    pub fn leave_ad_interest_group1(&self, group: AuctionAdInterestGroupKey) -> jsbind::Promise {
-        self.inner
-            .call("leaveAdInterestGroup", &[group.into()])
-            .as_::<jsbind::Promise>()
-    }
 }
 impl Navigator {
-    pub fn clear_origin_joined_ad_interest_groups0(
-        &self,
-        owner: jsbind::USVString,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("clearOriginJoinedAdInterestGroups", &[owner.into()])
-            .as_::<jsbind::Promise>()
+    pub fn join_ad_interest_group(&self, group: AuctionAdInterestGroup) -> Promise {
+        self.inner.call("joinAdInterestGroup", &[group.into(), ]).as_::<Promise>()
     }
 
-    pub fn clear_origin_joined_ad_interest_groups1(
-        &self,
-        owner: jsbind::USVString,
-        interest_groups_to_keep: jsbind::Sequence<jsbind::USVString>,
-    ) -> jsbind::Promise {
-        self.inner
-            .call(
-                "clearOriginJoinedAdInterestGroups",
-                &[owner.into(), interest_groups_to_keep.into()],
-            )
-            .as_::<jsbind::Promise>()
-    }
 }
 impl Navigator {
-    pub fn run_ad_auction(&self, config: AuctionAdConfig) -> jsbind::Promise {
-        self.inner
-            .call("runAdAuction", &[config.into()])
-            .as_::<jsbind::Promise>()
+    pub fn leave_ad_interest_group0(&self, ) -> Promise {
+        self.inner.call("leaveAdInterestGroup", &[]).as_::<Promise>()
     }
+
+    pub fn leave_ad_interest_group1(&self, group: AuctionAdInterestGroupKey) -> Promise {
+        self.inner.call("leaveAdInterestGroup", &[group.into(), ]).as_::<Promise>()
+    }
+
+}
+impl Navigator {
+    pub fn clear_origin_joined_ad_interest_groups0(&self, owner: USVString) -> Promise {
+        self.inner.call("clearOriginJoinedAdInterestGroups", &[owner.into(), ]).as_::<Promise>()
+    }
+
+    pub fn clear_origin_joined_ad_interest_groups1(&self, owner: USVString, interest_groups_to_keep: Sequence<USVString>) -> Promise {
+        self.inner.call("clearOriginJoinedAdInterestGroups", &[owner.into(), interest_groups_to_keep.into(), ]).as_::<Promise>()
+    }
+
+}
+impl Navigator {
+    pub fn run_ad_auction(&self, config: AuctionAdConfig) -> Promise {
+        self.inner.call("runAdAuction", &[config.into(), ]).as_::<Promise>()
+    }
+
 }
 impl Navigator {
     pub fn deprecated_run_ad_auction_enforces_k_anonymity(&self) -> bool {
-        self.inner
-            .get("deprecatedRunAdAuctionEnforcesKAnonymity")
-            .as_::<bool>()
-    }
-}
-impl Navigator {
-    pub fn can_load_ad_auction_fenced_frame(&self) -> bool {
-        self.inner
-            .call("canLoadAdAuctionFencedFrame", &[])
-            .as_::<bool>()
-    }
-}
-impl Navigator {
-    pub fn get_interest_group_ad_auction_data0(&self) -> jsbind::Promise {
-        self.inner
-            .call("getInterestGroupAdAuctionData", &[])
-            .as_::<jsbind::Promise>()
+        self.inner.get("deprecatedRunAdAuctionEnforcesKAnonymity").as_::<bool>()
     }
 
-    pub fn get_interest_group_ad_auction_data1(
-        &self,
-        config: AdAuctionDataConfig,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("getInterestGroupAdAuctionData", &[config.into()])
-            .as_::<jsbind::Promise>()
-    }
 }
 impl Navigator {
-    pub fn create_auction_nonce(&self) -> jsbind::Promise {
-        self.inner
-            .call("createAuctionNonce", &[])
-            .as_::<jsbind::Promise>()
+    pub fn can_load_ad_auction_fenced_frame(&self, ) -> bool {
+        self.inner.call("canLoadAdAuctionFencedFrame", &[]).as_::<bool>()
     }
+
 }
 impl Navigator {
-    pub fn update_ad_interest_groups(&self) -> jsbind::Undefined {
-        self.inner
-            .call("updateAdInterestGroups", &[])
-            .as_::<jsbind::Undefined>()
+    pub fn get_interest_group_ad_auction_data0(&self, ) -> Promise {
+        self.inner.call("getInterestGroupAdAuctionData", &[]).as_::<Promise>()
     }
+
+    pub fn get_interest_group_ad_auction_data1(&self, config: AdAuctionDataConfig) -> Promise {
+        self.inner.call("getInterestGroupAdAuctionData", &[config.into(), ]).as_::<Promise>()
+    }
+
+}
+impl Navigator {
+    pub fn create_auction_nonce(&self, ) -> Promise {
+        self.inner.call("createAuctionNonce", &[]).as_::<Promise>()
+    }
+
+}
+impl Navigator {
+    pub fn update_ad_interest_groups(&self, ) -> Undefined {
+        self.inner.call("updateAdInterestGroups", &[]).as_::<Undefined>()
+    }
+
 }
 impl Navigator {
     pub fn protected_audience(&self) -> ProtectedAudience {
-        self.inner
-            .get("protectedAudience")
-            .as_::<ProtectedAudience>()
+        self.inner.get("protectedAudience").as_::<ProtectedAudience>()
     }
+
 }
 impl Navigator {
-    pub fn vibrate(&self, pattern: jsbind::Any) -> bool {
-        self.inner.call("vibrate", &[pattern.into()]).as_::<bool>()
+    pub fn vibrate(&self, pattern: Any) -> bool {
+        self.inner.call("vibrate", &[pattern.into(), ]).as_::<bool>()
     }
+
 }
 impl Navigator {
     pub fn virtual_keyboard(&self) -> VirtualKeyboard {
         self.inner.get("virtualKeyboard").as_::<VirtualKeyboard>()
     }
+
 }
 impl Navigator {
     pub fn bluetooth(&self) -> Bluetooth {
         self.inner.get("bluetooth").as_::<Bluetooth>()
     }
+
 }
 impl Navigator {
-    pub fn share0(&self) -> jsbind::Promise {
-        self.inner.call("share", &[]).as_::<jsbind::Promise>()
+    pub fn share0(&self, ) -> Promise {
+        self.inner.call("share", &[]).as_::<Promise>()
     }
 
-    pub fn share1(&self, data: ShareData) -> jsbind::Promise {
-        self.inner
-            .call("share", &[data.into()])
-            .as_::<jsbind::Promise>()
+    pub fn share1(&self, data: ShareData) -> Promise {
+        self.inner.call("share", &[data.into(), ]).as_::<Promise>()
     }
+
 }
 impl Navigator {
-    pub fn can_share0(&self) -> bool {
+    pub fn can_share0(&self, ) -> bool {
         self.inner.call("canShare", &[]).as_::<bool>()
     }
 
     pub fn can_share1(&self, data: ShareData) -> bool {
-        self.inner.call("canShare", &[data.into()]).as_::<bool>()
+        self.inner.call("canShare", &[data.into(), ]).as_::<bool>()
     }
+
 }
 impl Navigator {
     pub fn hid(&self) -> HID {
         self.inner.get("hid").as_::<HID>()
     }
+
 }
 impl Navigator {
-    pub fn request_midi_access0(&self) -> jsbind::Promise {
-        self.inner
-            .call("requestMIDIAccess", &[])
-            .as_::<jsbind::Promise>()
+    pub fn request_midi_access0(&self, ) -> Promise {
+        self.inner.call("requestMIDIAccess", &[]).as_::<Promise>()
     }
 
-    pub fn request_midi_access1(&self, options: MIDIOptions) -> jsbind::Promise {
-        self.inner
-            .call("requestMIDIAccess", &[options.into()])
-            .as_::<jsbind::Promise>()
+    pub fn request_midi_access1(&self, options: MIDIOptions) -> Promise {
+        self.inner.call("requestMIDIAccess", &[options.into(), ]).as_::<Promise>()
     }
+
 }
 impl Navigator {
     pub fn usb(&self) -> USB {
         self.inner.get("usb").as_::<USB>()
     }
+
 }
 impl Navigator {
     pub fn xr(&self) -> XRSystem {
         self.inner.get("xr").as_::<XRSystem>()
     }
+
 }
 impl Navigator {
     pub fn window_controls_overlay(&self) -> WindowControlsOverlay {
-        self.inner
-            .get("windowControlsOverlay")
-            .as_::<WindowControlsOverlay>()
-    }
-}
-impl Navigator {
-    pub fn set_app_badge0(&self) -> jsbind::Promise {
-        self.inner.call("setAppBadge", &[]).as_::<jsbind::Promise>()
+        self.inner.get("windowControlsOverlay").as_::<WindowControlsOverlay>()
     }
 
-    pub fn set_app_badge1(&self, contents: u64) -> jsbind::Promise {
-        self.inner
-            .call("setAppBadge", &[contents.into()])
-            .as_::<jsbind::Promise>()
-    }
 }
 impl Navigator {
-    pub fn clear_app_badge(&self) -> jsbind::Promise {
-        self.inner
-            .call("clearAppBadge", &[])
-            .as_::<jsbind::Promise>()
+    pub fn set_app_badge0(&self, ) -> Promise {
+        self.inner.call("setAppBadge", &[]).as_::<Promise>()
     }
+
+    pub fn set_app_badge1(&self, contents: u64) -> Promise {
+        self.inner.call("setAppBadge", &[contents.into(), ]).as_::<Promise>()
+    }
+
+}
+impl Navigator {
+    pub fn clear_app_badge(&self, ) -> Promise {
+        self.inner.call("clearAppBadge", &[]).as_::<Promise>()
+    }
+
 }
 impl Navigator {
     pub fn device_memory(&self) -> f64 {
         self.inner.get("deviceMemory").as_::<f64>()
     }
+
 }
 impl Navigator {
     pub fn global_privacy_control(&self) -> bool {
         self.inner.get("globalPrivacyControl").as_::<bool>()
     }
+
 }
 impl Navigator {
-    pub fn taint_enabled(&self) -> bool {
+    pub fn taint_enabled(&self, ) -> bool {
         self.inner.call("taintEnabled", &[]).as_::<bool>()
     }
+
 }
 impl Navigator {
-    pub fn oscpu(&self) -> jsbind::DOMString {
-        self.inner.get("oscpu").as_::<jsbind::DOMString>()
+    pub fn oscpu(&self) -> DOMString {
+        self.inner.get("oscpu").as_::<DOMString>()
     }
+
 }
 impl Navigator {
-    pub fn language(&self) -> jsbind::DOMString {
-        self.inner.get("language").as_::<jsbind::DOMString>()
+    pub fn language(&self) -> DOMString {
+        self.inner.get("language").as_::<DOMString>()
     }
+
 }
 impl Navigator {
-    pub fn languages(&self) -> jsbind::FrozenArray<jsbind::DOMString> {
-        self.inner
-            .get("languages")
-            .as_::<jsbind::FrozenArray<jsbind::DOMString>>()
+    pub fn languages(&self) -> FrozenArray<DOMString> {
+        self.inner.get("languages").as_::<FrozenArray<DOMString>>()
     }
+
 }
 impl Navigator {
     pub fn on_line(&self) -> bool {
         self.inner.get("onLine").as_::<bool>()
     }
+
 }
 impl Navigator {
-    pub fn register_protocol_handler(
-        &self,
-        scheme: jsbind::DOMString,
-        url: jsbind::USVString,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("registerProtocolHandler", &[scheme.into(), url.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn register_protocol_handler(&self, scheme: DOMString, url: USVString) -> Undefined {
+        self.inner.call("registerProtocolHandler", &[scheme.into(), url.into(), ]).as_::<Undefined>()
     }
+
 }
 impl Navigator {
-    pub fn unregister_protocol_handler(
-        &self,
-        scheme: jsbind::DOMString,
-        url: jsbind::USVString,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("unregisterProtocolHandler", &[scheme.into(), url.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn unregister_protocol_handler(&self, scheme: DOMString, url: USVString) -> Undefined {
+        self.inner.call("unregisterProtocolHandler", &[scheme.into(), url.into(), ]).as_::<Undefined>()
     }
+
 }
 impl Navigator {
     pub fn cookie_enabled(&self) -> bool {
         self.inner.get("cookieEnabled").as_::<bool>()
     }
+
 }
 impl Navigator {
     pub fn plugins(&self) -> PluginArray {
         self.inner.get("plugins").as_::<PluginArray>()
     }
+
 }
 impl Navigator {
     pub fn mime_types(&self) -> MimeTypeArray {
         self.inner.get("mimeTypes").as_::<MimeTypeArray>()
     }
+
 }
 impl Navigator {
-    pub fn java_enabled(&self) -> bool {
+    pub fn java_enabled(&self, ) -> bool {
         self.inner.call("javaEnabled", &[]).as_::<bool>()
     }
+
 }
 impl Navigator {
     pub fn pdf_viewer_enabled(&self) -> bool {
         self.inner.get("pdfViewerEnabled").as_::<bool>()
     }
+
 }
 impl Navigator {
     pub fn hardware_concurrency(&self) -> u64 {
         self.inner.get("hardwareConcurrency").as_::<u64>()
     }
+
 }
 impl Navigator {
     pub fn connection(&self) -> NetworkInformation {
         self.inner.get("connection").as_::<NetworkInformation>()
     }
+
 }
 impl Navigator {
     pub fn storage_buckets(&self) -> StorageBucketManager {
-        self.inner
-            .get("storageBuckets")
-            .as_::<StorageBucketManager>()
+        self.inner.get("storageBuckets").as_::<StorageBucketManager>()
     }
+
 }
 impl Navigator {
     pub fn storage(&self) -> StorageManager {
         self.inner.get("storage").as_::<StorageManager>()
     }
+
 }
 impl Navigator {
     pub fn user_agent_data(&self) -> NavigatorUAData {
         self.inner.get("userAgentData").as_::<NavigatorUAData>()
     }
+
 }
 impl Navigator {
     pub fn locks(&self) -> LockManager {
         self.inner.get("locks").as_::<LockManager>()
     }
+
 }
 impl Navigator {
     pub fn webdriver(&self) -> bool {
         self.inner.get("webdriver").as_::<bool>()
     }
+
 }
 impl Navigator {
     pub fn gpu(&self) -> GPU {
         self.inner.get("gpu").as_::<GPU>()
     }
+
 }
 impl Navigator {
     pub fn ml(&self) -> ML {
         self.inner.get("ml").as_::<ML>()
     }
+
 }

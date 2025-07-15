@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioTrack {
@@ -7,9 +10,7 @@ pub struct AudioTrack {
 }
 impl FromVal for AudioTrack {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioTrack {
-            inner: emlite::Val::from_val(v),
-        }
+        AudioTrack { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for AudioTrack {
 }
 impl AsMut<emlite::Val> for AudioTrack {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AudioTrack> for emlite::Val {
     fn from(s: AudioTrack) -> emlite::Val {
@@ -48,25 +49,30 @@ impl From<AudioTrack> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AudioTrack);
 
+
 impl AudioTrack {
-    pub fn id(&self) -> jsbind::DOMString {
-        self.inner.get("id").as_::<jsbind::DOMString>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
+
 }
 impl AudioTrack {
-    pub fn kind(&self) -> jsbind::DOMString {
-        self.inner.get("kind").as_::<jsbind::DOMString>()
+    pub fn kind(&self) -> DOMString {
+        self.inner.get("kind").as_::<DOMString>()
     }
+
 }
 impl AudioTrack {
-    pub fn label(&self) -> jsbind::DOMString {
-        self.inner.get("label").as_::<jsbind::DOMString>()
+    pub fn label(&self) -> DOMString {
+        self.inner.get("label").as_::<DOMString>()
     }
+
 }
 impl AudioTrack {
-    pub fn language(&self) -> jsbind::DOMString {
-        self.inner.get("language").as_::<jsbind::DOMString>()
+    pub fn language(&self) -> DOMString {
+        self.inner.get("language").as_::<DOMString>()
     }
+
 }
 impl AudioTrack {
     pub fn enabled(&self) -> bool {
@@ -76,9 +82,11 @@ impl AudioTrack {
     pub fn set_enabled(&mut self, value: bool) {
         self.inner.set("enabled", value);
     }
+
 }
 impl AudioTrack {
     pub fn source_buffer(&self) -> SourceBuffer {
         self.inner.get("sourceBuffer").as_::<SourceBuffer>()
     }
+
 }

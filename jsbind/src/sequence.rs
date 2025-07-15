@@ -97,11 +97,16 @@ impl<T> Sequence<T> {
     }
 
     /// Return a copy of the element at `idx` converted to `T`.
-    pub fn get(&self, idx: usize) -> T
+    pub fn get(&self, idx: usize) -> Option<T>
     where
         T: FromVal,
     {
-        self.inner.get(idx).as_::<T>()
+        let v = self.inner.get(idx);
+        if v.is_undefined() {
+            None
+        } else {
+            Some(v.as_::<T>())
+        }
     }
 
     /// Returns whether a value exists in the sequence.
@@ -145,7 +150,7 @@ where
         if self.idx < self.len {
             let v = self.parent.get(self.idx);
             self.idx += 1;
-            Some(v)
+            v
         } else {
             None
         }

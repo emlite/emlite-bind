@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ProximitySensor {
@@ -7,9 +10,7 @@ pub struct ProximitySensor {
 }
 impl FromVal for ProximitySensor {
     fn from_val(v: &emlite::Val) -> Self {
-        ProximitySensor {
-            inner: Sensor::from_val(v),
-        }
+        ProximitySensor { inner: Sensor::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ProximitySensor {
 }
 impl AsMut<emlite::Val> for ProximitySensor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ProximitySensor> for emlite::Val {
     fn from(s: ProximitySensor) -> emlite::Val {
@@ -48,35 +49,37 @@ impl From<ProximitySensor> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ProximitySensor);
 
+
+
 impl ProximitySensor {
     pub fn new0() -> ProximitySensor {
         Self {
-            inner: emlite::Val::global("ProximitySensor")
-                .new(&[])
-                .as_::<Sensor>(),
+            inner: emlite::Val::global("ProximitySensor").new(&[]).as_::<Sensor>(),
         }
     }
 
-    pub fn new1(sensor_options: jsbind::Any) -> ProximitySensor {
+    pub fn new1(sensor_options: Any) -> ProximitySensor {
         Self {
-            inner: emlite::Val::global("ProximitySensor")
-                .new(&[sensor_options.into()])
-                .as_::<Sensor>(),
+            inner: emlite::Val::global("ProximitySensor").new(&[sensor_options.into()]).as_::<Sensor>(),
         }
     }
+
 }
 impl ProximitySensor {
     pub fn distance(&self) -> f64 {
         self.inner.get("distance").as_::<f64>()
     }
+
 }
 impl ProximitySensor {
     pub fn max(&self) -> f64 {
         self.inner.get("max").as_::<f64>()
     }
+
 }
 impl ProximitySensor {
     pub fn near(&self) -> bool {
         self.inner.get("near").as_::<bool>()
     }
+
 }

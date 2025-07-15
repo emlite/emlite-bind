@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct OptionalEffectTiming {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for OptionalEffectTiming {
 }
 impl AsMut<emlite::Val> for OptionalEffectTiming {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<OptionalEffectTiming> for emlite::Val {
     fn from(s: OptionalEffectTiming) -> emlite::Val {
@@ -53,6 +56,7 @@ impl OptionalEffectTiming {
     pub fn set_delay(&mut self, value: f64) {
         self.inner.set("delay", value);
     }
+
 }
 impl OptionalEffectTiming {
     pub fn end_delay(&self) -> f64 {
@@ -62,6 +66,7 @@ impl OptionalEffectTiming {
     pub fn set_end_delay(&mut self, value: f64) {
         self.inner.set("endDelay", value);
     }
+
 }
 impl OptionalEffectTiming {
     pub fn fill(&self) -> FillMode {
@@ -71,6 +76,7 @@ impl OptionalEffectTiming {
     pub fn set_fill(&mut self, value: FillMode) {
         self.inner.set("fill", value);
     }
+
 }
 impl OptionalEffectTiming {
     pub fn iteration_start(&self) -> f64 {
@@ -80,6 +86,7 @@ impl OptionalEffectTiming {
     pub fn set_iteration_start(&mut self, value: f64) {
         self.inner.set("iterationStart", value);
     }
+
 }
 impl OptionalEffectTiming {
     pub fn iterations(&self) -> f64 {
@@ -89,15 +96,17 @@ impl OptionalEffectTiming {
     pub fn set_iterations(&mut self, value: f64) {
         self.inner.set("iterations", value);
     }
+
 }
 impl OptionalEffectTiming {
-    pub fn duration(&self) -> jsbind::Any {
-        self.inner.get("duration").as_::<jsbind::Any>()
+    pub fn duration(&self) -> Any {
+        self.inner.get("duration").as_::<Any>()
     }
 
-    pub fn set_duration(&mut self, value: jsbind::Any) {
+    pub fn set_duration(&mut self, value: Any) {
         self.inner.set("duration", value);
     }
+
 }
 impl OptionalEffectTiming {
     pub fn direction(&self) -> PlaybackDirection {
@@ -107,15 +116,17 @@ impl OptionalEffectTiming {
     pub fn set_direction(&mut self, value: PlaybackDirection) {
         self.inner.set("direction", value);
     }
+
 }
 impl OptionalEffectTiming {
-    pub fn easing(&self) -> jsbind::DOMString {
-        self.inner.get("easing").as_::<jsbind::DOMString>()
+    pub fn easing(&self) -> DOMString {
+        self.inner.get("easing").as_::<DOMString>()
     }
 
-    pub fn set_easing(&mut self, value: jsbind::DOMString) {
+    pub fn set_easing(&mut self, value: DOMString) {
         self.inner.set("easing", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -124,9 +135,7 @@ pub struct AnimationEffect {
 }
 impl FromVal for AnimationEffect {
     fn from_val(v: &emlite::Val) -> Self {
-        AnimationEffect {
-            inner: emlite::Val::from_val(v),
-        }
+        AnimationEffect { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -153,8 +162,8 @@ impl AsRef<emlite::Val> for AnimationEffect {
 }
 impl AsMut<emlite::Val> for AnimationEffect {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AnimationEffect> for emlite::Val {
     fn from(s: AnimationEffect) -> emlite::Val {
@@ -165,69 +174,68 @@ impl From<AnimationEffect> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AnimationEffect);
 
+
 impl AnimationEffect {
-    pub fn get_timing(&self) -> EffectTiming {
+    pub fn get_timing(&self, ) -> EffectTiming {
         self.inner.call("getTiming", &[]).as_::<EffectTiming>()
     }
+
 }
 impl AnimationEffect {
-    pub fn get_computed_timing(&self) -> ComputedEffectTiming {
-        self.inner
-            .call("getComputedTiming", &[])
-            .as_::<ComputedEffectTiming>()
-    }
-}
-impl AnimationEffect {
-    pub fn update_timing0(&self) -> jsbind::Undefined {
-        self.inner
-            .call("updateTiming", &[])
-            .as_::<jsbind::Undefined>()
+    pub fn get_computed_timing(&self, ) -> ComputedEffectTiming {
+        self.inner.call("getComputedTiming", &[]).as_::<ComputedEffectTiming>()
     }
 
-    pub fn update_timing1(&self, timing: OptionalEffectTiming) -> jsbind::Undefined {
-        self.inner
-            .call("updateTiming", &[timing.into()])
-            .as_::<jsbind::Undefined>()
+}
+impl AnimationEffect {
+    pub fn update_timing0(&self, ) -> Undefined {
+        self.inner.call("updateTiming", &[]).as_::<Undefined>()
     }
+
+    pub fn update_timing1(&self, timing: OptionalEffectTiming) -> Undefined {
+        self.inner.call("updateTiming", &[timing.into(), ]).as_::<Undefined>()
+    }
+
 }
 impl AnimationEffect {
     pub fn parent(&self) -> GroupEffect {
         self.inner.get("parent").as_::<GroupEffect>()
     }
+
 }
 impl AnimationEffect {
     pub fn previous_sibling(&self) -> AnimationEffect {
         self.inner.get("previousSibling").as_::<AnimationEffect>()
     }
+
 }
 impl AnimationEffect {
     pub fn next_sibling(&self) -> AnimationEffect {
         self.inner.get("nextSibling").as_::<AnimationEffect>()
     }
+
 }
 impl AnimationEffect {
-    pub fn before(&self, effects: AnimationEffect) -> jsbind::Undefined {
-        self.inner
-            .call("before", &[effects.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn before(&self, effects: AnimationEffect) -> Undefined {
+        self.inner.call("before", &[effects.into(), ]).as_::<Undefined>()
     }
+
 }
 impl AnimationEffect {
-    pub fn after(&self, effects: AnimationEffect) -> jsbind::Undefined {
-        self.inner
-            .call("after", &[effects.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn after(&self, effects: AnimationEffect) -> Undefined {
+        self.inner.call("after", &[effects.into(), ]).as_::<Undefined>()
     }
+
 }
 impl AnimationEffect {
-    pub fn replace(&self, effects: AnimationEffect) -> jsbind::Undefined {
-        self.inner
-            .call("replace", &[effects.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn replace(&self, effects: AnimationEffect) -> Undefined {
+        self.inner.call("replace", &[effects.into(), ]).as_::<Undefined>()
     }
+
 }
 impl AnimationEffect {
-    pub fn remove(&self) -> jsbind::Undefined {
-        self.inner.call("remove", &[]).as_::<jsbind::Undefined>()
+    pub fn remove(&self, ) -> Undefined {
+        self.inner.call("remove", &[]).as_::<Undefined>()
     }
+
 }

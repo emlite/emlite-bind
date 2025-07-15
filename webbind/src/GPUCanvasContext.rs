@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUCanvasConfiguration {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for GPUCanvasConfiguration {
 }
 impl AsMut<emlite::Val> for GPUCanvasConfiguration {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<GPUCanvasConfiguration> for emlite::Val {
     fn from(s: GPUCanvasConfiguration) -> emlite::Val {
@@ -53,6 +56,7 @@ impl GPUCanvasConfiguration {
     pub fn set_device(&mut self, value: GPUDevice) {
         self.inner.set("device", value);
     }
+
 }
 impl GPUCanvasConfiguration {
     pub fn format(&self) -> GPUTextureFormat {
@@ -62,26 +66,27 @@ impl GPUCanvasConfiguration {
     pub fn set_format(&mut self, value: GPUTextureFormat) {
         self.inner.set("format", value);
     }
+
 }
 impl GPUCanvasConfiguration {
-    pub fn usage(&self) -> jsbind::Any {
-        self.inner.get("usage").as_::<jsbind::Any>()
+    pub fn usage(&self) -> Any {
+        self.inner.get("usage").as_::<Any>()
     }
 
-    pub fn set_usage(&mut self, value: jsbind::Any) {
+    pub fn set_usage(&mut self, value: Any) {
         self.inner.set("usage", value);
     }
+
 }
 impl GPUCanvasConfiguration {
-    pub fn view_formats(&self) -> jsbind::Sequence<GPUTextureFormat> {
-        self.inner
-            .get("viewFormats")
-            .as_::<jsbind::Sequence<GPUTextureFormat>>()
+    pub fn view_formats(&self) -> Sequence<GPUTextureFormat> {
+        self.inner.get("viewFormats").as_::<Sequence<GPUTextureFormat>>()
     }
 
-    pub fn set_view_formats(&mut self, value: jsbind::Sequence<GPUTextureFormat>) {
+    pub fn set_view_formats(&mut self, value: Sequence<GPUTextureFormat>) {
         self.inner.set("viewFormats", value);
     }
+
 }
 impl GPUCanvasConfiguration {
     pub fn color_space(&self) -> PredefinedColorSpace {
@@ -91,15 +96,17 @@ impl GPUCanvasConfiguration {
     pub fn set_color_space(&mut self, value: PredefinedColorSpace) {
         self.inner.set("colorSpace", value);
     }
+
 }
 impl GPUCanvasConfiguration {
-    pub fn tone_mapping(&self) -> jsbind::Any {
-        self.inner.get("toneMapping").as_::<jsbind::Any>()
+    pub fn tone_mapping(&self) -> Any {
+        self.inner.get("toneMapping").as_::<Any>()
     }
 
-    pub fn set_tone_mapping(&mut self, value: jsbind::Any) {
+    pub fn set_tone_mapping(&mut self, value: Any) {
         self.inner.set("toneMapping", value);
     }
+
 }
 impl GPUCanvasConfiguration {
     pub fn alpha_mode(&self) -> GPUCanvasAlphaMode {
@@ -109,6 +116,7 @@ impl GPUCanvasConfiguration {
     pub fn set_alpha_mode(&mut self, value: GPUCanvasAlphaMode) {
         self.inner.set("alphaMode", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -117,9 +125,7 @@ pub struct GPUCanvasContext {
 }
 impl FromVal for GPUCanvasContext {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUCanvasContext {
-            inner: emlite::Val::from_val(v),
-        }
+        GPUCanvasContext { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -146,8 +152,8 @@ impl AsRef<emlite::Val> for GPUCanvasContext {
 }
 impl AsMut<emlite::Val> for GPUCanvasContext {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<GPUCanvasContext> for emlite::Val {
     fn from(s: GPUCanvasContext) -> emlite::Val {
@@ -158,36 +164,34 @@ impl From<GPUCanvasContext> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GPUCanvasContext);
 
+
 impl GPUCanvasContext {
-    pub fn canvas(&self) -> jsbind::Any {
-        self.inner.get("canvas").as_::<jsbind::Any>()
+    pub fn canvas(&self) -> Any {
+        self.inner.get("canvas").as_::<Any>()
     }
+
 }
 impl GPUCanvasContext {
-    pub fn configure(&self, configuration: GPUCanvasConfiguration) -> jsbind::Undefined {
-        self.inner
-            .call("configure", &[configuration.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn configure(&self, configuration: GPUCanvasConfiguration) -> Undefined {
+        self.inner.call("configure", &[configuration.into(), ]).as_::<Undefined>()
     }
+
 }
 impl GPUCanvasContext {
-    pub fn unconfigure(&self) -> jsbind::Undefined {
-        self.inner
-            .call("unconfigure", &[])
-            .as_::<jsbind::Undefined>()
+    pub fn unconfigure(&self, ) -> Undefined {
+        self.inner.call("unconfigure", &[]).as_::<Undefined>()
     }
+
 }
 impl GPUCanvasContext {
-    pub fn get_configuration(&self) -> GPUCanvasConfiguration {
-        self.inner
-            .call("getConfiguration", &[])
-            .as_::<GPUCanvasConfiguration>()
+    pub fn get_configuration(&self, ) -> GPUCanvasConfiguration {
+        self.inner.call("getConfiguration", &[]).as_::<GPUCanvasConfiguration>()
     }
+
 }
 impl GPUCanvasContext {
-    pub fn get_current_texture(&self) -> GPUTexture {
-        self.inner
-            .call("getCurrentTexture", &[])
-            .as_::<GPUTexture>()
+    pub fn get_current_texture(&self, ) -> GPUTexture {
+        self.inner.call("getCurrentTexture", &[]).as_::<GPUTexture>()
     }
+
 }

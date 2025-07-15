@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TextFormat {
@@ -7,9 +10,7 @@ pub struct TextFormat {
 }
 impl FromVal for TextFormat {
     fn from_val(v: &emlite::Val) -> Self {
-        TextFormat {
-            inner: emlite::Val::from_val(v),
-        }
+        TextFormat { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for TextFormat {
 }
 impl AsMut<emlite::Val> for TextFormat {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<TextFormat> for emlite::Val {
     fn from(s: TextFormat) -> emlite::Val {
@@ -48,42 +49,43 @@ impl From<TextFormat> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(TextFormat);
 
+
+
 impl TextFormat {
     pub fn new0() -> TextFormat {
         Self {
-            inner: emlite::Val::global("TextFormat")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("TextFormat").new(&[]).as_::<emlite::Val>(),
         }
     }
 
-    pub fn new1(options: jsbind::Any) -> TextFormat {
+    pub fn new1(options: Any) -> TextFormat {
         Self {
-            inner: emlite::Val::global("TextFormat")
-                .new(&[options.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("TextFormat").new(&[options.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl TextFormat {
     pub fn range_start(&self) -> u32 {
         self.inner.get("rangeStart").as_::<u32>()
     }
+
 }
 impl TextFormat {
     pub fn range_end(&self) -> u32 {
         self.inner.get("rangeEnd").as_::<u32>()
     }
+
 }
 impl TextFormat {
     pub fn underline_style(&self) -> UnderlineStyle {
         self.inner.get("underlineStyle").as_::<UnderlineStyle>()
     }
+
 }
 impl TextFormat {
     pub fn underline_thickness(&self) -> UnderlineThickness {
-        self.inner
-            .get("underlineThickness")
-            .as_::<UnderlineThickness>()
+        self.inner.get("underlineThickness").as_::<UnderlineThickness>()
     }
+
 }

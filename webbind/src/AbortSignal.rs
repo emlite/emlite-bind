@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AbortSignal {
@@ -7,9 +10,7 @@ pub struct AbortSignal {
 }
 impl FromVal for AbortSignal {
     fn from_val(v: &emlite::Val) -> Self {
-        AbortSignal {
-            inner: EventTarget::from_val(v),
-        }
+        AbortSignal { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for AbortSignal {
 }
 impl AsMut<emlite::Val> for AbortSignal {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AbortSignal> for emlite::Val {
     fn from(s: AbortSignal) -> emlite::Val {
@@ -48,56 +49,54 @@ impl From<AbortSignal> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AbortSignal);
 
+
 impl AbortSignal {
     pub fn abort0() -> AbortSignal {
-        emlite::Val::global("abortsignal")
-            .call("abort", &[])
-            .as_::<AbortSignal>()
+        emlite::Val::global("abortsignal").call("abort", &[]).as_::<AbortSignal>()
     }
 
-    pub fn abort1(reason: jsbind::Any) -> AbortSignal {
-        emlite::Val::global("abortsignal")
-            .call("abort", &[reason.into()])
-            .as_::<AbortSignal>()
+    pub fn abort1(reason: Any) -> AbortSignal {
+        emlite::Val::global("abortsignal").call("abort", &[reason.into(), ]).as_::<AbortSignal>()
     }
+
 }
 impl AbortSignal {
     pub fn timeout(milliseconds: u64) -> AbortSignal {
-        emlite::Val::global("abortsignal")
-            .call("timeout", &[milliseconds.into()])
-            .as_::<AbortSignal>()
+        emlite::Val::global("abortsignal").call("timeout", &[milliseconds.into(), ]).as_::<AbortSignal>()
     }
+
 }
 impl AbortSignal {
-    pub fn any(signals: jsbind::Sequence<AbortSignal>) -> AbortSignal {
-        emlite::Val::global("abortsignal")
-            .call("any", &[signals.into()])
-            .as_::<AbortSignal>()
+    pub fn any(signals: Sequence<AbortSignal>) -> AbortSignal {
+        emlite::Val::global("abortsignal").call("any", &[signals.into(), ]).as_::<AbortSignal>()
     }
+
 }
 impl AbortSignal {
     pub fn aborted(&self) -> bool {
         self.inner.get("aborted").as_::<bool>()
     }
+
 }
 impl AbortSignal {
-    pub fn reason(&self) -> jsbind::Any {
-        self.inner.get("reason").as_::<jsbind::Any>()
-    }
-}
-impl AbortSignal {
-    pub fn throw_if_aborted(&self) -> jsbind::Undefined {
-        self.inner
-            .call("throwIfAborted", &[])
-            .as_::<jsbind::Undefined>()
-    }
-}
-impl AbortSignal {
-    pub fn onabort(&self) -> jsbind::Any {
-        self.inner.get("onabort").as_::<jsbind::Any>()
+    pub fn reason(&self) -> Any {
+        self.inner.get("reason").as_::<Any>()
     }
 
-    pub fn set_onabort(&mut self, value: jsbind::Any) {
+}
+impl AbortSignal {
+    pub fn throw_if_aborted(&self, ) -> Undefined {
+        self.inner.call("throwIfAborted", &[]).as_::<Undefined>()
+    }
+
+}
+impl AbortSignal {
+    pub fn onabort(&self) -> Any {
+        self.inner.get("onabort").as_::<Any>()
+    }
+
+    pub fn set_onabort(&mut self, value: Any) {
         self.inner.set("onabort", value);
     }
+
 }

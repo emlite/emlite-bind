@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGForeignObjectElement {
@@ -7,9 +10,7 @@ pub struct SVGForeignObjectElement {
 }
 impl FromVal for SVGForeignObjectElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGForeignObjectElement {
-            inner: SVGGraphicsElement::from_val(v),
-        }
+        SVGForeignObjectElement { inner: SVGGraphicsElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGForeignObjectElement {
 }
 impl AsMut<emlite::Val> for SVGForeignObjectElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGForeignObjectElement> for emlite::Val {
     fn from(s: SVGForeignObjectElement) -> emlite::Val {
@@ -48,23 +49,28 @@ impl From<SVGForeignObjectElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGForeignObjectElement);
 
+
 impl SVGForeignObjectElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGForeignObjectElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGForeignObjectElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGForeignObjectElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }

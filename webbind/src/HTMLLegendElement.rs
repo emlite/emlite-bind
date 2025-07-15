@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLLegendElement {
@@ -7,9 +10,7 @@ pub struct HTMLLegendElement {
 }
 impl FromVal for HTMLLegendElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLLegendElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLLegendElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLLegendElement {
 }
 impl AsMut<emlite::Val> for HTMLLegendElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLLegendElement> for emlite::Val {
     fn from(s: HTMLLegendElement) -> emlite::Val {
@@ -48,26 +49,29 @@ impl From<HTMLLegendElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLLegendElement);
 
+
+
 impl HTMLLegendElement {
     pub fn new() -> HTMLLegendElement {
         Self {
-            inner: emlite::Val::global("HTMLLegendElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLLegendElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLLegendElement {
     pub fn form(&self) -> HTMLFormElement {
         self.inner.get("form").as_::<HTMLFormElement>()
     }
+
 }
 impl HTMLLegendElement {
-    pub fn align(&self) -> jsbind::DOMString {
-        self.inner.get("align").as_::<jsbind::DOMString>()
+    pub fn align(&self) -> DOMString {
+        self.inner.get("align").as_::<DOMString>()
     }
 
-    pub fn set_align(&mut self, value: jsbind::DOMString) {
+    pub fn set_align(&mut self, value: DOMString) {
         self.inner.set("align", value);
     }
+
 }

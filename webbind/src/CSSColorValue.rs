@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSColorValue {
@@ -7,9 +10,7 @@ pub struct CSSColorValue {
 }
 impl FromVal for CSSColorValue {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSColorValue {
-            inner: CSSStyleValue::from_val(v),
-        }
+        CSSColorValue { inner: CSSStyleValue::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSColorValue {
 }
 impl AsMut<emlite::Val> for CSSColorValue {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSColorValue> for emlite::Val {
     fn from(s: CSSColorValue) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<CSSColorValue> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSColorValue);
 
+
 impl CSSColorValue {
-    pub fn parse(css_text: jsbind::USVString) -> jsbind::Any {
-        emlite::Val::global("csscolorvalue")
-            .call("parse", &[css_text.into()])
-            .as_::<jsbind::Any>()
+    pub fn parse(css_text: USVString) -> Any {
+        emlite::Val::global("csscolorvalue").call("parse", &[css_text.into(), ]).as_::<Any>()
     }
+
 }

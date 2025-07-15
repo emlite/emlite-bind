@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGSwitchElement {
@@ -7,9 +10,7 @@ pub struct SVGSwitchElement {
 }
 impl FromVal for SVGSwitchElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGSwitchElement {
-            inner: SVGGraphicsElement::from_val(v),
-        }
+        SVGSwitchElement { inner: SVGGraphicsElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGSwitchElement {
 }
 impl AsMut<emlite::Val> for SVGSwitchElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGSwitchElement> for emlite::Val {
     fn from(s: SVGSwitchElement) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<SVGSwitchElement> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(SVGSwitchElement);
+
+

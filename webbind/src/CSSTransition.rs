@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSTransition {
@@ -7,9 +10,7 @@ pub struct CSSTransition {
 }
 impl FromVal for CSSTransition {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSTransition {
-            inner: Animation::from_val(v),
-        }
+        CSSTransition { inner: Animation::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSTransition {
 }
 impl AsMut<emlite::Val> for CSSTransition {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSTransition> for emlite::Val {
     fn from(s: CSSTransition) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<CSSTransition> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSTransition);
 
+
 impl CSSTransition {
-    pub fn transition_property(&self) -> jsbind::CSSOMString {
-        self.inner
-            .get("transitionProperty")
-            .as_::<jsbind::CSSOMString>()
+    pub fn transition_property(&self) -> CSSOMString {
+        self.inner.get("transitionProperty").as_::<CSSOMString>()
     }
+
 }

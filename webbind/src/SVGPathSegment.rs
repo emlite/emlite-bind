@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGPathSegment {
@@ -7,9 +10,7 @@ pub struct SVGPathSegment {
 }
 impl FromVal for SVGPathSegment {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGPathSegment {
-            inner: emlite::Val::from_val(v),
-        }
+        SVGPathSegment { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGPathSegment {
 }
 impl AsMut<emlite::Val> for SVGPathSegment {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGPathSegment> for emlite::Val {
     fn from(s: SVGPathSegment) -> emlite::Val {
@@ -48,21 +49,24 @@ impl From<SVGPathSegment> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGPathSegment);
 
+
 impl SVGPathSegment {
-    pub fn type_(&self) -> jsbind::DOMString {
-        self.inner.get("type").as_::<jsbind::DOMString>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 
-    pub fn set_type_(&mut self, value: jsbind::DOMString) {
+    pub fn set_type_(&mut self, value: DOMString) {
         self.inner.set("type", value);
     }
+
 }
 impl SVGPathSegment {
-    pub fn values(&self) -> jsbind::FrozenArray<f32> {
-        self.inner.get("values").as_::<jsbind::FrozenArray<f32>>()
+    pub fn values(&self) -> FrozenArray<f32> {
+        self.inner.get("values").as_::<FrozenArray<f32>>()
     }
 
-    pub fn set_values(&mut self, value: jsbind::FrozenArray<f32>) {
+    pub fn set_values(&mut self, value: FrozenArray<f32>) {
         self.inner.set("values", value);
     }
+
 }

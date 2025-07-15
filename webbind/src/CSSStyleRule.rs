@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSStyleRule {
@@ -7,9 +10,7 @@ pub struct CSSStyleRule {
 }
 impl FromVal for CSSStyleRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSStyleRule {
-            inner: CSSGroupingRule::from_val(v),
-        }
+        CSSStyleRule { inner: CSSGroupingRule::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSStyleRule {
 }
 impl AsMut<emlite::Val> for CSSStyleRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSStyleRule> for emlite::Val {
     fn from(s: CSSStyleRule) -> emlite::Val {
@@ -48,22 +49,26 @@ impl From<CSSStyleRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSStyleRule);
 
+
 impl CSSStyleRule {
-    pub fn selector_text(&self) -> jsbind::CSSOMString {
-        self.inner.get("selectorText").as_::<jsbind::CSSOMString>()
+    pub fn selector_text(&self) -> CSSOMString {
+        self.inner.get("selectorText").as_::<CSSOMString>()
     }
 
-    pub fn set_selector_text(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_selector_text(&mut self, value: CSSOMString) {
         self.inner.set("selectorText", value);
     }
+
 }
 impl CSSStyleRule {
     pub fn style(&self) -> CSSStyleProperties {
         self.inner.get("style").as_::<CSSStyleProperties>()
     }
+
 }
 impl CSSStyleRule {
     pub fn style_map(&self) -> StylePropertyMap {
         self.inner.get("styleMap").as_::<StylePropertyMap>()
     }
+
 }

@@ -1,5 +1,5 @@
 use crate::utils::*;
-use crate::{Any, Uint8Array};
+use crate::{any::Any, array::Uint8Array};
 use alloc::string::String;
 
 /// JavaScript `TextEncoder` (`new TextEncoder()`).

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaList {
@@ -7,9 +10,7 @@ pub struct MediaList {
 }
 impl FromVal for MediaList {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaList {
-            inner: emlite::Val::from_val(v),
-        }
+        MediaList { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for MediaList {
 }
 impl AsMut<emlite::Val> for MediaList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MediaList> for emlite::Val {
     fn from(s: MediaList) -> emlite::Val {
@@ -48,38 +49,38 @@ impl From<MediaList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MediaList);
 
+
 impl MediaList {
-    pub fn media_text(&self) -> jsbind::CSSOMString {
-        self.inner.get("mediaText").as_::<jsbind::CSSOMString>()
+    pub fn media_text(&self) -> CSSOMString {
+        self.inner.get("mediaText").as_::<CSSOMString>()
     }
 
-    pub fn set_media_text(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_media_text(&mut self, value: CSSOMString) {
         self.inner.set("mediaText", value);
     }
+
 }
 impl MediaList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl MediaList {
-    pub fn item(&self, index: u32) -> jsbind::CSSOMString {
-        self.inner
-            .call("item", &[index.into()])
-            .as_::<jsbind::CSSOMString>()
+    pub fn item(&self, index: u32) -> CSSOMString {
+        self.inner.call("item", &[index.into(), ]).as_::<CSSOMString>()
     }
+
 }
 impl MediaList {
-    pub fn append_medium(&self, medium: jsbind::CSSOMString) -> jsbind::Undefined {
-        self.inner
-            .call("appendMedium", &[medium.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn append_medium(&self, medium: CSSOMString) -> Undefined {
+        self.inner.call("appendMedium", &[medium.into(), ]).as_::<Undefined>()
     }
+
 }
 impl MediaList {
-    pub fn delete_medium(&self, medium: jsbind::CSSOMString) -> jsbind::Undefined {
-        self.inner
-            .call("deleteMedium", &[medium.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn delete_medium(&self, medium: CSSOMString) -> Undefined {
+        self.inner.call("deleteMedium", &[medium.into(), ]).as_::<Undefined>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLParagraphElement {
@@ -7,9 +10,7 @@ pub struct HTMLParagraphElement {
 }
 impl FromVal for HTMLParagraphElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLParagraphElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLParagraphElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLParagraphElement {
 }
 impl AsMut<emlite::Val> for HTMLParagraphElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLParagraphElement> for emlite::Val {
     fn from(s: HTMLParagraphElement) -> emlite::Val {
@@ -48,21 +49,23 @@ impl From<HTMLParagraphElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLParagraphElement);
 
+
+
 impl HTMLParagraphElement {
     pub fn new() -> HTMLParagraphElement {
         Self {
-            inner: emlite::Val::global("HTMLParagraphElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLParagraphElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLParagraphElement {
-    pub fn align(&self) -> jsbind::DOMString {
-        self.inner.get("align").as_::<jsbind::DOMString>()
+    pub fn align(&self) -> DOMString {
+        self.inner.get("align").as_::<DOMString>()
     }
 
-    pub fn set_align(&mut self, value: jsbind::DOMString) {
+    pub fn set_align(&mut self, value: DOMString) {
         self.inner.set("align", value);
     }
+
 }

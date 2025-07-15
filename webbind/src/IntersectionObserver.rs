@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IntersectionObserver {
@@ -7,9 +10,7 @@ pub struct IntersectionObserver {
 }
 impl FromVal for IntersectionObserver {
     fn from_val(v: &emlite::Val) -> Self {
-        IntersectionObserver {
-            inner: emlite::Val::from_val(v),
-        }
+        IntersectionObserver { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for IntersectionObserver {
 }
 impl AsMut<emlite::Val> for IntersectionObserver {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<IntersectionObserver> for emlite::Val {
     fn from(s: IntersectionObserver) -> emlite::Val {
@@ -48,80 +49,79 @@ impl From<IntersectionObserver> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(IntersectionObserver);
 
+
+
 impl IntersectionObserver {
-    pub fn new0(callback: jsbind::Function) -> IntersectionObserver {
+    pub fn new0(callback: Function) -> IntersectionObserver {
         Self {
-            inner: emlite::Val::global("IntersectionObserver")
-                .new(&[callback.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("IntersectionObserver").new(&[callback.into()]).as_::<emlite::Val>(),
         }
     }
 
-    pub fn new1(callback: jsbind::Function, options: jsbind::Any) -> IntersectionObserver {
+    pub fn new1(callback: Function, options: Any) -> IntersectionObserver {
         Self {
-            inner: emlite::Val::global("IntersectionObserver")
-                .new(&[callback.into(), options.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("IntersectionObserver").new(&[callback.into(), options.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl IntersectionObserver {
-    pub fn root(&self) -> jsbind::Any {
-        self.inner.get("root").as_::<jsbind::Any>()
+    pub fn root(&self) -> Any {
+        self.inner.get("root").as_::<Any>()
     }
+
 }
 impl IntersectionObserver {
-    pub fn root_margin(&self) -> jsbind::DOMString {
-        self.inner.get("rootMargin").as_::<jsbind::DOMString>()
+    pub fn root_margin(&self) -> DOMString {
+        self.inner.get("rootMargin").as_::<DOMString>()
     }
+
 }
 impl IntersectionObserver {
-    pub fn scroll_margin(&self) -> jsbind::DOMString {
-        self.inner.get("scrollMargin").as_::<jsbind::DOMString>()
+    pub fn scroll_margin(&self) -> DOMString {
+        self.inner.get("scrollMargin").as_::<DOMString>()
     }
+
 }
 impl IntersectionObserver {
-    pub fn thresholds(&self) -> jsbind::FrozenArray<f64> {
-        self.inner
-            .get("thresholds")
-            .as_::<jsbind::FrozenArray<f64>>()
+    pub fn thresholds(&self) -> FrozenArray<f64> {
+        self.inner.get("thresholds").as_::<FrozenArray<f64>>()
     }
+
 }
 impl IntersectionObserver {
     pub fn delay(&self) -> i32 {
         self.inner.get("delay").as_::<i32>()
     }
+
 }
 impl IntersectionObserver {
     pub fn track_visibility(&self) -> bool {
         self.inner.get("trackVisibility").as_::<bool>()
     }
+
 }
 impl IntersectionObserver {
-    pub fn observe(&self, target: Element) -> jsbind::Undefined {
-        self.inner
-            .call("observe", &[target.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn observe(&self, target: Element) -> Undefined {
+        self.inner.call("observe", &[target.into(), ]).as_::<Undefined>()
     }
+
 }
 impl IntersectionObserver {
-    pub fn unobserve(&self, target: Element) -> jsbind::Undefined {
-        self.inner
-            .call("unobserve", &[target.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn unobserve(&self, target: Element) -> Undefined {
+        self.inner.call("unobserve", &[target.into(), ]).as_::<Undefined>()
     }
+
 }
 impl IntersectionObserver {
-    pub fn disconnect(&self) -> jsbind::Undefined {
-        self.inner
-            .call("disconnect", &[])
-            .as_::<jsbind::Undefined>()
+    pub fn disconnect(&self, ) -> Undefined {
+        self.inner.call("disconnect", &[]).as_::<Undefined>()
     }
+
 }
 impl IntersectionObserver {
-    pub fn take_records(&self) -> jsbind::Sequence<IntersectionObserverEntry> {
-        self.inner
-            .call("takeRecords", &[])
-            .as_::<jsbind::Sequence<IntersectionObserverEntry>>()
+    pub fn take_records(&self, ) -> Sequence<IntersectionObserverEntry> {
+        self.inner.call("takeRecords", &[]).as_::<Sequence<IntersectionObserverEntry>>()
     }
+
 }

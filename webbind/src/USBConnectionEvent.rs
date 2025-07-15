@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct USBConnectionEvent {
@@ -7,9 +10,7 @@ pub struct USBConnectionEvent {
 }
 impl FromVal for USBConnectionEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        USBConnectionEvent {
-            inner: Event::from_val(v),
-        }
+        USBConnectionEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for USBConnectionEvent {
 }
 impl AsMut<emlite::Val> for USBConnectionEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<USBConnectionEvent> for emlite::Val {
     fn from(s: USBConnectionEvent) -> emlite::Val {
@@ -48,17 +49,19 @@ impl From<USBConnectionEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(USBConnectionEvent);
 
+
+
 impl USBConnectionEvent {
-    pub fn new(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> USBConnectionEvent {
+    pub fn new(type_: DOMString, event_init_dict: Any) -> USBConnectionEvent {
         Self {
-            inner: emlite::Val::global("USBConnectionEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("USBConnectionEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl USBConnectionEvent {
     pub fn device(&self) -> USBDevice {
         self.inner.get("device").as_::<USBDevice>()
     }
+
 }

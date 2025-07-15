@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DocumentTimeline {
@@ -7,9 +10,7 @@ pub struct DocumentTimeline {
 }
 impl FromVal for DocumentTimeline {
     fn from_val(v: &emlite::Val) -> Self {
-        DocumentTimeline {
-            inner: AnimationTimeline::from_val(v),
-        }
+        DocumentTimeline { inner: AnimationTimeline::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for DocumentTimeline {
 }
 impl AsMut<emlite::Val> for DocumentTimeline {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<DocumentTimeline> for emlite::Val {
     fn from(s: DocumentTimeline) -> emlite::Val {
@@ -48,20 +49,19 @@ impl From<DocumentTimeline> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(DocumentTimeline);
 
+
+
 impl DocumentTimeline {
     pub fn new0() -> DocumentTimeline {
         Self {
-            inner: emlite::Val::global("DocumentTimeline")
-                .new(&[])
-                .as_::<AnimationTimeline>(),
+            inner: emlite::Val::global("DocumentTimeline").new(&[]).as_::<AnimationTimeline>(),
         }
     }
 
-    pub fn new1(options: jsbind::Any) -> DocumentTimeline {
+    pub fn new1(options: Any) -> DocumentTimeline {
         Self {
-            inner: emlite::Val::global("DocumentTimeline")
-                .new(&[options.into()])
-                .as_::<AnimationTimeline>(),
+            inner: emlite::Val::global("DocumentTimeline").new(&[options.into()]).as_::<AnimationTimeline>(),
         }
     }
+
 }

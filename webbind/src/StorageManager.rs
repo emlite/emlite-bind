@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct StorageEstimate {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for StorageEstimate {
 }
 impl AsMut<emlite::Val> for StorageEstimate {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<StorageEstimate> for emlite::Val {
     fn from(s: StorageEstimate) -> emlite::Val {
@@ -53,6 +56,7 @@ impl StorageEstimate {
     pub fn set_usage(&mut self, value: u64) {
         self.inner.set("usage", value);
     }
+
 }
 impl StorageEstimate {
     pub fn quota(&self) -> u64 {
@@ -62,6 +66,7 @@ impl StorageEstimate {
     pub fn set_quota(&mut self, value: u64) {
         self.inner.set("quota", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -70,9 +75,7 @@ pub struct StorageManager {
 }
 impl FromVal for StorageManager {
     fn from_val(v: &emlite::Val) -> Self {
-        StorageManager {
-            inner: emlite::Val::from_val(v),
-        }
+        StorageManager { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -99,8 +102,8 @@ impl AsRef<emlite::Val> for StorageManager {
 }
 impl AsMut<emlite::Val> for StorageManager {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<StorageManager> for emlite::Val {
     fn from(s: StorageManager) -> emlite::Val {
@@ -111,25 +114,28 @@ impl From<StorageManager> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(StorageManager);
 
+
 impl StorageManager {
-    pub fn persisted(&self) -> jsbind::Promise {
-        self.inner.call("persisted", &[]).as_::<jsbind::Promise>()
+    pub fn persisted(&self, ) -> Promise {
+        self.inner.call("persisted", &[]).as_::<Promise>()
     }
+
 }
 impl StorageManager {
-    pub fn persist(&self) -> jsbind::Promise {
-        self.inner.call("persist", &[]).as_::<jsbind::Promise>()
+    pub fn persist(&self, ) -> Promise {
+        self.inner.call("persist", &[]).as_::<Promise>()
     }
+
 }
 impl StorageManager {
-    pub fn estimate(&self) -> jsbind::Promise {
-        self.inner.call("estimate", &[]).as_::<jsbind::Promise>()
+    pub fn estimate(&self, ) -> Promise {
+        self.inner.call("estimate", &[]).as_::<Promise>()
     }
+
 }
 impl StorageManager {
-    pub fn get_directory(&self) -> jsbind::Promise {
-        self.inner
-            .call("getDirectory", &[])
-            .as_::<jsbind::Promise>()
+    pub fn get_directory(&self, ) -> Promise {
+        self.inner.call("getDirectory", &[]).as_::<Promise>()
     }
+
 }

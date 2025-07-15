@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct StereoPannerNode {
@@ -7,9 +10,7 @@ pub struct StereoPannerNode {
 }
 impl FromVal for StereoPannerNode {
     fn from_val(v: &emlite::Val) -> Self {
-        StereoPannerNode {
-            inner: AudioNode::from_val(v),
-        }
+        StereoPannerNode { inner: AudioNode::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for StereoPannerNode {
 }
 impl AsMut<emlite::Val> for StereoPannerNode {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<StereoPannerNode> for emlite::Val {
     fn from(s: StereoPannerNode) -> emlite::Val {
@@ -48,25 +49,25 @@ impl From<StereoPannerNode> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(StereoPannerNode);
 
+
+
 impl StereoPannerNode {
     pub fn new0(context: BaseAudioContext) -> StereoPannerNode {
         Self {
-            inner: emlite::Val::global("StereoPannerNode")
-                .new(&[context.into()])
-                .as_::<AudioNode>(),
+            inner: emlite::Val::global("StereoPannerNode").new(&[context.into()]).as_::<AudioNode>(),
         }
     }
 
-    pub fn new1(context: BaseAudioContext, options: jsbind::Any) -> StereoPannerNode {
+    pub fn new1(context: BaseAudioContext, options: Any) -> StereoPannerNode {
         Self {
-            inner: emlite::Val::global("StereoPannerNode")
-                .new(&[context.into(), options.into()])
-                .as_::<AudioNode>(),
+            inner: emlite::Val::global("StereoPannerNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
         }
     }
+
 }
 impl StereoPannerNode {
     pub fn pan(&self) -> AudioParam {
         self.inner.get("pan").as_::<AudioParam>()
     }
+
 }

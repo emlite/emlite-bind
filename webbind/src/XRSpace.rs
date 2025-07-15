@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRSpace {
@@ -7,9 +10,7 @@ pub struct XRSpace {
 }
 impl FromVal for XRSpace {
     fn from_val(v: &emlite::Val) -> Self {
-        XRSpace {
-            inner: EventTarget::from_val(v),
-        }
+        XRSpace { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRSpace {
 }
 impl AsMut<emlite::Val> for XRSpace {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRSpace> for emlite::Val {
     fn from(s: XRSpace) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<XRSpace> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(XRSpace);
+
+

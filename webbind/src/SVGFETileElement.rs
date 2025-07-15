@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGFETileElement {
@@ -7,9 +10,7 @@ pub struct SVGFETileElement {
 }
 impl FromVal for SVGFETileElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGFETileElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFETileElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGFETileElement {
 }
 impl AsMut<emlite::Val> for SVGFETileElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGFETileElement> for emlite::Val {
     fn from(s: SVGFETileElement) -> emlite::Val {
@@ -48,33 +49,40 @@ impl From<SVGFETileElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGFETileElement);
 
+
 impl SVGFETileElement {
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGFETileElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFETileElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFETileElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFETileElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFETileElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
+
 }

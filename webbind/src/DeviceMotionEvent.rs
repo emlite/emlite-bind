@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DeviceMotionEvent {
@@ -7,9 +10,7 @@ pub struct DeviceMotionEvent {
 }
 impl FromVal for DeviceMotionEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        DeviceMotionEvent {
-            inner: Event::from_val(v),
-        }
+        DeviceMotionEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for DeviceMotionEvent {
 }
 impl AsMut<emlite::Val> for DeviceMotionEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<DeviceMotionEvent> for emlite::Val {
     fn from(s: DeviceMotionEvent) -> emlite::Val {
@@ -48,53 +49,49 @@ impl From<DeviceMotionEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(DeviceMotionEvent);
 
+
+
 impl DeviceMotionEvent {
-    pub fn new0(type_: jsbind::DOMString) -> DeviceMotionEvent {
+    pub fn new0(type_: DOMString) -> DeviceMotionEvent {
         Self {
-            inner: emlite::Val::global("DeviceMotionEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("DeviceMotionEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
-    pub fn new1(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> DeviceMotionEvent {
+    pub fn new1(type_: DOMString, event_init_dict: Any) -> DeviceMotionEvent {
         Self {
-            inner: emlite::Val::global("DeviceMotionEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("DeviceMotionEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl DeviceMotionEvent {
     pub fn acceleration(&self) -> DeviceMotionEventAcceleration {
-        self.inner
-            .get("acceleration")
-            .as_::<DeviceMotionEventAcceleration>()
+        self.inner.get("acceleration").as_::<DeviceMotionEventAcceleration>()
     }
+
 }
 impl DeviceMotionEvent {
     pub fn acceleration_including_gravity(&self) -> DeviceMotionEventAcceleration {
-        self.inner
-            .get("accelerationIncludingGravity")
-            .as_::<DeviceMotionEventAcceleration>()
+        self.inner.get("accelerationIncludingGravity").as_::<DeviceMotionEventAcceleration>()
     }
+
 }
 impl DeviceMotionEvent {
     pub fn rotation_rate(&self) -> DeviceMotionEventRotationRate {
-        self.inner
-            .get("rotationRate")
-            .as_::<DeviceMotionEventRotationRate>()
+        self.inner.get("rotationRate").as_::<DeviceMotionEventRotationRate>()
     }
+
 }
 impl DeviceMotionEvent {
     pub fn interval(&self) -> f64 {
         self.inner.get("interval").as_::<f64>()
     }
+
 }
 impl DeviceMotionEvent {
-    pub fn request_permission() -> jsbind::Promise {
-        emlite::Val::global("devicemotionevent")
-            .call("requestPermission", &[])
-            .as_::<jsbind::Promise>()
+    pub fn request_permission() -> Promise {
+        emlite::Val::global("devicemotionevent").call("requestPermission", &[]).as_::<Promise>()
     }
+
 }

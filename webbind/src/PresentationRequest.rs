@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PresentationRequest {
@@ -7,9 +10,7 @@ pub struct PresentationRequest {
 }
 impl FromVal for PresentationRequest {
     fn from_val(v: &emlite::Val) -> Self {
-        PresentationRequest {
-            inner: EventTarget::from_val(v),
-        }
+        PresentationRequest { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PresentationRequest {
 }
 impl AsMut<emlite::Val> for PresentationRequest {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PresentationRequest> for emlite::Val {
     fn from(s: PresentationRequest) -> emlite::Val {
@@ -48,40 +49,41 @@ impl From<PresentationRequest> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PresentationRequest);
 
+
+
 impl PresentationRequest {
-    pub fn new(urls: jsbind::Sequence<jsbind::USVString>) -> PresentationRequest {
+    pub fn new(urls: Sequence<USVString>) -> PresentationRequest {
         Self {
-            inner: emlite::Val::global("PresentationRequest")
-                .new(&[urls.into()])
-                .as_::<EventTarget>(),
+            inner: emlite::Val::global("PresentationRequest").new(&[urls.into()]).as_::<EventTarget>(),
         }
     }
+
 }
 impl PresentationRequest {
-    pub fn start(&self) -> jsbind::Promise {
-        self.inner.call("start", &[]).as_::<jsbind::Promise>()
-    }
-}
-impl PresentationRequest {
-    pub fn reconnect(&self, presentation_id: jsbind::USVString) -> jsbind::Promise {
-        self.inner
-            .call("reconnect", &[presentation_id.into()])
-            .as_::<jsbind::Promise>()
-    }
-}
-impl PresentationRequest {
-    pub fn get_availability(&self) -> jsbind::Promise {
-        self.inner
-            .call("getAvailability", &[])
-            .as_::<jsbind::Promise>()
-    }
-}
-impl PresentationRequest {
-    pub fn onconnectionavailable(&self) -> jsbind::Any {
-        self.inner.get("onconnectionavailable").as_::<jsbind::Any>()
+    pub fn start(&self, ) -> Promise {
+        self.inner.call("start", &[]).as_::<Promise>()
     }
 
-    pub fn set_onconnectionavailable(&mut self, value: jsbind::Any) {
+}
+impl PresentationRequest {
+    pub fn reconnect(&self, presentation_id: USVString) -> Promise {
+        self.inner.call("reconnect", &[presentation_id.into(), ]).as_::<Promise>()
+    }
+
+}
+impl PresentationRequest {
+    pub fn get_availability(&self, ) -> Promise {
+        self.inner.call("getAvailability", &[]).as_::<Promise>()
+    }
+
+}
+impl PresentationRequest {
+    pub fn onconnectionavailable(&self) -> Any {
+        self.inner.get("onconnectionavailable").as_::<Any>()
+    }
+
+    pub fn set_onconnectionavailable(&mut self, value: Any) {
         self.inner.set("onconnectionavailable", value);
     }
+
 }

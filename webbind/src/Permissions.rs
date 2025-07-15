@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Permissions {
@@ -7,9 +10,7 @@ pub struct Permissions {
 }
 impl FromVal for Permissions {
     fn from_val(v: &emlite::Val) -> Self {
-        Permissions {
-            inner: emlite::Val::from_val(v),
-        }
+        Permissions { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for Permissions {
 }
 impl AsMut<emlite::Val> for Permissions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<Permissions> for emlite::Val {
     fn from(s: Permissions) -> emlite::Val {
@@ -48,24 +49,22 @@ impl From<Permissions> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Permissions);
 
+
 impl Permissions {
-    pub fn query(&self, permission_desc: jsbind::Object) -> jsbind::Promise {
-        self.inner
-            .call("query", &[permission_desc.into()])
-            .as_::<jsbind::Promise>()
+    pub fn query(&self, permission_desc: Object) -> Promise {
+        self.inner.call("query", &[permission_desc.into(), ]).as_::<Promise>()
     }
+
 }
 impl Permissions {
-    pub fn request(&self, permission_desc: jsbind::Object) -> jsbind::Promise {
-        self.inner
-            .call("request", &[permission_desc.into()])
-            .as_::<jsbind::Promise>()
+    pub fn request(&self, permission_desc: Object) -> Promise {
+        self.inner.call("request", &[permission_desc.into(), ]).as_::<Promise>()
     }
+
 }
 impl Permissions {
-    pub fn revoke(&self, permission_desc: jsbind::Object) -> jsbind::Promise {
-        self.inner
-            .call("revoke", &[permission_desc.into()])
-            .as_::<jsbind::Promise>()
+    pub fn revoke(&self, permission_desc: Object) -> Promise {
+        self.inner.call("revoke", &[permission_desc.into(), ]).as_::<Promise>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRTransientInputHitTestResult {
@@ -7,9 +10,7 @@ pub struct XRTransientInputHitTestResult {
 }
 impl FromVal for XRTransientInputHitTestResult {
     fn from_val(v: &emlite::Val) -> Self {
-        XRTransientInputHitTestResult {
-            inner: emlite::Val::from_val(v),
-        }
+        XRTransientInputHitTestResult { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRTransientInputHitTestResult {
 }
 impl AsMut<emlite::Val> for XRTransientInputHitTestResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRTransientInputHitTestResult> for emlite::Val {
     fn from(s: XRTransientInputHitTestResult) -> emlite::Val {
@@ -48,15 +49,16 @@ impl From<XRTransientInputHitTestResult> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRTransientInputHitTestResult);
 
+
 impl XRTransientInputHitTestResult {
     pub fn input_source(&self) -> XRInputSource {
         self.inner.get("inputSource").as_::<XRInputSource>()
     }
+
 }
 impl XRTransientInputHitTestResult {
-    pub fn results(&self) -> jsbind::FrozenArray<XRHitTestResult> {
-        self.inner
-            .get("results")
-            .as_::<jsbind::FrozenArray<XRHitTestResult>>()
+    pub fn results(&self) -> FrozenArray<XRHitTestResult> {
+        self.inner.get("results").as_::<FrozenArray<XRHitTestResult>>()
     }
+
 }

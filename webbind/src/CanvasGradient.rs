@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CanvasGradient {
@@ -7,9 +10,7 @@ pub struct CanvasGradient {
 }
 impl FromVal for CanvasGradient {
     fn from_val(v: &emlite::Val) -> Self {
-        CanvasGradient {
-            inner: emlite::Val::from_val(v),
-        }
+        CanvasGradient { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CanvasGradient {
 }
 impl AsMut<emlite::Val> for CanvasGradient {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CanvasGradient> for emlite::Val {
     fn from(s: CanvasGradient) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<CanvasGradient> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CanvasGradient);
 
+
 impl CanvasGradient {
-    pub fn add_color_stop(&self, offset: f64, color: jsbind::DOMString) -> jsbind::Undefined {
-        self.inner
-            .call("addColorStop", &[offset.into(), color.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn add_color_stop(&self, offset: f64, color: DOMString) -> Undefined {
+        self.inner.call("addColorStop", &[offset.into(), color.into(), ]).as_::<Undefined>()
     }
+
 }

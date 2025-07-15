@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGFEFloodElement {
@@ -7,9 +10,7 @@ pub struct SVGFEFloodElement {
 }
 impl FromVal for SVGFEFloodElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGFEFloodElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFEFloodElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGFEFloodElement {
 }
 impl AsMut<emlite::Val> for SVGFEFloodElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGFEFloodElement> for emlite::Val {
     fn from(s: SVGFEFloodElement) -> emlite::Val {
@@ -48,28 +49,34 @@ impl From<SVGFEFloodElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGFEFloodElement);
 
+
 impl SVGFEFloodElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEFloodElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEFloodElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEFloodElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFEFloodElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
+
 }

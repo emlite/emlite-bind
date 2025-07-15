@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ExtendableCookieChangeEvent {
@@ -7,9 +10,7 @@ pub struct ExtendableCookieChangeEvent {
 }
 impl FromVal for ExtendableCookieChangeEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        ExtendableCookieChangeEvent {
-            inner: ExtendableEvent::from_val(v),
-        }
+        ExtendableCookieChangeEvent { inner: ExtendableEvent::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ExtendableCookieChangeEvent {
 }
 impl AsMut<emlite::Val> for ExtendableCookieChangeEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ExtendableCookieChangeEvent> for emlite::Val {
     fn from(s: ExtendableCookieChangeEvent) -> emlite::Val {
@@ -48,37 +49,31 @@ impl From<ExtendableCookieChangeEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ExtendableCookieChangeEvent);
 
+
+
 impl ExtendableCookieChangeEvent {
-    pub fn new0(type_: jsbind::DOMString) -> ExtendableCookieChangeEvent {
+    pub fn new0(type_: DOMString) -> ExtendableCookieChangeEvent {
         Self {
-            inner: emlite::Val::global("ExtendableCookieChangeEvent")
-                .new(&[type_.into()])
-                .as_::<ExtendableEvent>(),
+            inner: emlite::Val::global("ExtendableCookieChangeEvent").new(&[type_.into()]).as_::<ExtendableEvent>(),
         }
     }
 
-    pub fn new1(
-        type_: jsbind::DOMString,
-        event_init_dict: jsbind::Any,
-    ) -> ExtendableCookieChangeEvent {
+    pub fn new1(type_: DOMString, event_init_dict: Any) -> ExtendableCookieChangeEvent {
         Self {
-            inner: emlite::Val::global("ExtendableCookieChangeEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<ExtendableEvent>(),
+            inner: emlite::Val::global("ExtendableCookieChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<ExtendableEvent>(),
         }
     }
+
 }
 impl ExtendableCookieChangeEvent {
-    pub fn changed(&self) -> jsbind::FrozenArray<CookieListItem> {
-        self.inner
-            .get("changed")
-            .as_::<jsbind::FrozenArray<CookieListItem>>()
+    pub fn changed(&self) -> FrozenArray<CookieListItem> {
+        self.inner.get("changed").as_::<FrozenArray<CookieListItem>>()
     }
+
 }
 impl ExtendableCookieChangeEvent {
-    pub fn deleted(&self) -> jsbind::FrozenArray<CookieListItem> {
-        self.inner
-            .get("deleted")
-            .as_::<jsbind::FrozenArray<CookieListItem>>()
+    pub fn deleted(&self) -> FrozenArray<CookieListItem> {
+        self.inner.get("deleted").as_::<FrozenArray<CookieListItem>>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NavigationUpdateCurrentEntryOptions {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for NavigationUpdateCurrentEntryOptions {
 }
 impl AsMut<emlite::Val> for NavigationUpdateCurrentEntryOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NavigationUpdateCurrentEntryOptions> for emlite::Val {
     fn from(s: NavigationUpdateCurrentEntryOptions) -> emlite::Val {
@@ -46,13 +49,14 @@ impl From<NavigationUpdateCurrentEntryOptions> for emlite::Val {
 }
 
 impl NavigationUpdateCurrentEntryOptions {
-    pub fn state(&self) -> jsbind::Any {
-        self.inner.get("state").as_::<jsbind::Any>()
+    pub fn state(&self) -> Any {
+        self.inner.get("state").as_::<Any>()
     }
 
-    pub fn set_state(&mut self, value: jsbind::Any) {
+    pub fn set_state(&mut self, value: Any) {
         self.inner.set("state", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -88,8 +92,8 @@ impl AsRef<emlite::Val> for NavigationResult {
 }
 impl AsMut<emlite::Val> for NavigationResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NavigationResult> for emlite::Val {
     fn from(s: NavigationResult) -> emlite::Val {
@@ -100,22 +104,24 @@ impl From<NavigationResult> for emlite::Val {
 }
 
 impl NavigationResult {
-    pub fn committed(&self) -> jsbind::Promise {
-        self.inner.get("committed").as_::<jsbind::Promise>()
+    pub fn committed(&self) -> Promise {
+        self.inner.get("committed").as_::<Promise>()
     }
 
-    pub fn set_committed(&mut self, value: jsbind::Promise) {
+    pub fn set_committed(&mut self, value: Promise) {
         self.inner.set("committed", value);
     }
+
 }
 impl NavigationResult {
-    pub fn finished(&self) -> jsbind::Promise {
-        self.inner.get("finished").as_::<jsbind::Promise>()
+    pub fn finished(&self) -> Promise {
+        self.inner.get("finished").as_::<Promise>()
     }
 
-    pub fn set_finished(&mut self, value: jsbind::Promise) {
+    pub fn set_finished(&mut self, value: Promise) {
         self.inner.set("finished", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -151,8 +157,8 @@ impl AsRef<emlite::Val> for NavigationNavigateOptions {
 }
 impl AsMut<emlite::Val> for NavigationNavigateOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NavigationNavigateOptions> for emlite::Val {
     fn from(s: NavigationNavigateOptions) -> emlite::Val {
@@ -163,13 +169,14 @@ impl From<NavigationNavigateOptions> for emlite::Val {
 }
 
 impl NavigationNavigateOptions {
-    pub fn state(&self) -> jsbind::Any {
-        self.inner.get("state").as_::<jsbind::Any>()
+    pub fn state(&self) -> Any {
+        self.inner.get("state").as_::<Any>()
     }
 
-    pub fn set_state(&mut self, value: jsbind::Any) {
+    pub fn set_state(&mut self, value: Any) {
         self.inner.set("state", value);
     }
+
 }
 impl NavigationNavigateOptions {
     pub fn history(&self) -> NavigationHistoryBehavior {
@@ -179,6 +186,7 @@ impl NavigationNavigateOptions {
     pub fn set_history(&mut self, value: NavigationHistoryBehavior) {
         self.inner.set("history", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -214,8 +222,8 @@ impl AsRef<emlite::Val> for NavigationReloadOptions {
 }
 impl AsMut<emlite::Val> for NavigationReloadOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NavigationReloadOptions> for emlite::Val {
     fn from(s: NavigationReloadOptions) -> emlite::Val {
@@ -226,13 +234,14 @@ impl From<NavigationReloadOptions> for emlite::Val {
 }
 
 impl NavigationReloadOptions {
-    pub fn state(&self) -> jsbind::Any {
-        self.inner.get("state").as_::<jsbind::Any>()
+    pub fn state(&self) -> Any {
+        self.inner.get("state").as_::<Any>()
     }
 
-    pub fn set_state(&mut self, value: jsbind::Any) {
+    pub fn set_state(&mut self, value: Any) {
         self.inner.set("state", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -268,8 +277,8 @@ impl AsRef<emlite::Val> for NavigationOptions {
 }
 impl AsMut<emlite::Val> for NavigationOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NavigationOptions> for emlite::Val {
     fn from(s: NavigationOptions) -> emlite::Val {
@@ -280,13 +289,14 @@ impl From<NavigationOptions> for emlite::Val {
 }
 
 impl NavigationOptions {
-    pub fn info(&self) -> jsbind::Any {
-        self.inner.get("info").as_::<jsbind::Any>()
+    pub fn info(&self) -> Any {
+        self.inner.get("info").as_::<Any>()
     }
 
-    pub fn set_info(&mut self, value: jsbind::Any) {
+    pub fn set_info(&mut self, value: Any) {
         self.inner.set("info", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -295,9 +305,7 @@ pub struct Navigation {
 }
 impl FromVal for Navigation {
     fn from_val(v: &emlite::Val) -> Self {
-        Navigation {
-            inner: EventTarget::from_val(v),
-        }
+        Navigation { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -324,8 +332,8 @@ impl AsRef<emlite::Val> for Navigation {
 }
 impl AsMut<emlite::Val> for Navigation {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<Navigation> for emlite::Val {
     fn from(s: Navigation) -> emlite::Val {
@@ -336,150 +344,136 @@ impl From<Navigation> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Navigation);
 
+
 impl Navigation {
-    pub fn entries(&self) -> jsbind::Sequence<NavigationHistoryEntry> {
-        self.inner
-            .call("entries", &[])
-            .as_::<jsbind::Sequence<NavigationHistoryEntry>>()
+    pub fn entries(&self, ) -> Sequence<NavigationHistoryEntry> {
+        self.inner.call("entries", &[]).as_::<Sequence<NavigationHistoryEntry>>()
     }
+
 }
 impl Navigation {
     pub fn current_entry(&self) -> NavigationHistoryEntry {
-        self.inner
-            .get("currentEntry")
-            .as_::<NavigationHistoryEntry>()
+        self.inner.get("currentEntry").as_::<NavigationHistoryEntry>()
     }
+
 }
 impl Navigation {
-    pub fn update_current_entry(
-        &self,
-        options: NavigationUpdateCurrentEntryOptions,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("updateCurrentEntry", &[options.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn update_current_entry(&self, options: NavigationUpdateCurrentEntryOptions) -> Undefined {
+        self.inner.call("updateCurrentEntry", &[options.into(), ]).as_::<Undefined>()
     }
+
 }
 impl Navigation {
     pub fn transition(&self) -> NavigationTransition {
         self.inner.get("transition").as_::<NavigationTransition>()
     }
+
 }
 impl Navigation {
     pub fn activation(&self) -> NavigationActivation {
         self.inner.get("activation").as_::<NavigationActivation>()
     }
+
 }
 impl Navigation {
     pub fn can_go_back(&self) -> bool {
         self.inner.get("canGoBack").as_::<bool>()
     }
+
 }
 impl Navigation {
     pub fn can_go_forward(&self) -> bool {
         self.inner.get("canGoForward").as_::<bool>()
     }
+
 }
 impl Navigation {
-    pub fn navigate0(&self, url: jsbind::USVString) -> NavigationResult {
-        self.inner
-            .call("navigate", &[url.into()])
-            .as_::<NavigationResult>()
+    pub fn navigate0(&self, url: USVString) -> NavigationResult {
+        self.inner.call("navigate", &[url.into(), ]).as_::<NavigationResult>()
     }
 
-    pub fn navigate1(
-        &self,
-        url: jsbind::USVString,
-        options: NavigationNavigateOptions,
-    ) -> NavigationResult {
-        self.inner
-            .call("navigate", &[url.into(), options.into()])
-            .as_::<NavigationResult>()
+    pub fn navigate1(&self, url: USVString, options: NavigationNavigateOptions) -> NavigationResult {
+        self.inner.call("navigate", &[url.into(), options.into(), ]).as_::<NavigationResult>()
     }
+
 }
 impl Navigation {
-    pub fn reload0(&self) -> NavigationResult {
+    pub fn reload0(&self, ) -> NavigationResult {
         self.inner.call("reload", &[]).as_::<NavigationResult>()
     }
 
     pub fn reload1(&self, options: NavigationReloadOptions) -> NavigationResult {
-        self.inner
-            .call("reload", &[options.into()])
-            .as_::<NavigationResult>()
-    }
-}
-impl Navigation {
-    pub fn traverse_to0(&self, key: jsbind::DOMString) -> NavigationResult {
-        self.inner
-            .call("traverseTo", &[key.into()])
-            .as_::<NavigationResult>()
+        self.inner.call("reload", &[options.into(), ]).as_::<NavigationResult>()
     }
 
-    pub fn traverse_to1(
-        &self,
-        key: jsbind::DOMString,
-        options: NavigationOptions,
-    ) -> NavigationResult {
-        self.inner
-            .call("traverseTo", &[key.into(), options.into()])
-            .as_::<NavigationResult>()
-    }
 }
 impl Navigation {
-    pub fn back0(&self) -> NavigationResult {
+    pub fn traverse_to0(&self, key: DOMString) -> NavigationResult {
+        self.inner.call("traverseTo", &[key.into(), ]).as_::<NavigationResult>()
+    }
+
+    pub fn traverse_to1(&self, key: DOMString, options: NavigationOptions) -> NavigationResult {
+        self.inner.call("traverseTo", &[key.into(), options.into(), ]).as_::<NavigationResult>()
+    }
+
+}
+impl Navigation {
+    pub fn back0(&self, ) -> NavigationResult {
         self.inner.call("back", &[]).as_::<NavigationResult>()
     }
 
     pub fn back1(&self, options: NavigationOptions) -> NavigationResult {
-        self.inner
-            .call("back", &[options.into()])
-            .as_::<NavigationResult>()
+        self.inner.call("back", &[options.into(), ]).as_::<NavigationResult>()
     }
+
 }
 impl Navigation {
-    pub fn forward0(&self) -> NavigationResult {
+    pub fn forward0(&self, ) -> NavigationResult {
         self.inner.call("forward", &[]).as_::<NavigationResult>()
     }
 
     pub fn forward1(&self, options: NavigationOptions) -> NavigationResult {
-        self.inner
-            .call("forward", &[options.into()])
-            .as_::<NavigationResult>()
-    }
-}
-impl Navigation {
-    pub fn onnavigate(&self) -> jsbind::Any {
-        self.inner.get("onnavigate").as_::<jsbind::Any>()
+        self.inner.call("forward", &[options.into(), ]).as_::<NavigationResult>()
     }
 
-    pub fn set_onnavigate(&mut self, value: jsbind::Any) {
+}
+impl Navigation {
+    pub fn onnavigate(&self) -> Any {
+        self.inner.get("onnavigate").as_::<Any>()
+    }
+
+    pub fn set_onnavigate(&mut self, value: Any) {
         self.inner.set("onnavigate", value);
     }
+
 }
 impl Navigation {
-    pub fn onnavigatesuccess(&self) -> jsbind::Any {
-        self.inner.get("onnavigatesuccess").as_::<jsbind::Any>()
+    pub fn onnavigatesuccess(&self) -> Any {
+        self.inner.get("onnavigatesuccess").as_::<Any>()
     }
 
-    pub fn set_onnavigatesuccess(&mut self, value: jsbind::Any) {
+    pub fn set_onnavigatesuccess(&mut self, value: Any) {
         self.inner.set("onnavigatesuccess", value);
     }
+
 }
 impl Navigation {
-    pub fn onnavigateerror(&self) -> jsbind::Any {
-        self.inner.get("onnavigateerror").as_::<jsbind::Any>()
+    pub fn onnavigateerror(&self) -> Any {
+        self.inner.get("onnavigateerror").as_::<Any>()
     }
 
-    pub fn set_onnavigateerror(&mut self, value: jsbind::Any) {
+    pub fn set_onnavigateerror(&mut self, value: Any) {
         self.inner.set("onnavigateerror", value);
     }
+
 }
 impl Navigation {
-    pub fn oncurrententrychange(&self) -> jsbind::Any {
-        self.inner.get("oncurrententrychange").as_::<jsbind::Any>()
+    pub fn oncurrententrychange(&self) -> Any {
+        self.inner.get("oncurrententrychange").as_::<Any>()
     }
 
-    pub fn set_oncurrententrychange(&mut self, value: jsbind::Any) {
+    pub fn set_oncurrententrychange(&mut self, value: Any) {
         self.inner.set("oncurrententrychange", value);
     }
+
 }

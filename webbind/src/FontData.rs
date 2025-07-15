@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FontData {
@@ -7,9 +10,7 @@ pub struct FontData {
 }
 impl FromVal for FontData {
     fn from_val(v: &emlite::Val) -> Self {
-        FontData {
-            inner: emlite::Val::from_val(v),
-        }
+        FontData { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for FontData {
 }
 impl AsMut<emlite::Val> for FontData {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<FontData> for emlite::Val {
     fn from(s: FontData) -> emlite::Val {
@@ -48,28 +49,34 @@ impl From<FontData> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(FontData);
 
+
 impl FontData {
-    pub fn blob(&self) -> jsbind::Promise {
-        self.inner.call("blob", &[]).as_::<jsbind::Promise>()
+    pub fn blob(&self, ) -> Promise {
+        self.inner.call("blob", &[]).as_::<Promise>()
     }
+
 }
 impl FontData {
-    pub fn postscript_name(&self) -> jsbind::USVString {
-        self.inner.get("postscriptName").as_::<jsbind::USVString>()
+    pub fn postscript_name(&self) -> USVString {
+        self.inner.get("postscriptName").as_::<USVString>()
     }
+
 }
 impl FontData {
-    pub fn full_name(&self) -> jsbind::USVString {
-        self.inner.get("fullName").as_::<jsbind::USVString>()
+    pub fn full_name(&self) -> USVString {
+        self.inner.get("fullName").as_::<USVString>()
     }
+
 }
 impl FontData {
-    pub fn family(&self) -> jsbind::USVString {
-        self.inner.get("family").as_::<jsbind::USVString>()
+    pub fn family(&self) -> USVString {
+        self.inner.get("family").as_::<USVString>()
     }
+
 }
 impl FontData {
-    pub fn style(&self) -> jsbind::USVString {
-        self.inner.get("style").as_::<jsbind::USVString>()
+    pub fn style(&self) -> USVString {
+        self.inner.get("style").as_::<USVString>()
     }
+
 }

@@ -1,5 +1,6 @@
 use crate::utils::*;
 use alloc::string::String;
+use crate::any::Any;
 
 macro_rules! declare_string {
     ($name:ident) => {
@@ -35,7 +36,7 @@ macro_rules! declare_string {
 
         impl crate::prelude::DynCast for $name {
             #[inline]
-            fn instanceof(val: &emlite::Val) -> bool {
+            fn instanceof(val: &Any) -> bool {
                 let ctor = emlite::Val::global("String");
                 val.instanceof(ctor)
             }
@@ -73,8 +74,13 @@ macro_rules! declare_string {
             }
 
             /// Returns the 16-bit code unit at `idx` (like `charCodeAt`).
-            pub fn char_code_at(&self, idx: usize) -> u16 {
-                self.inner.call("charCodeAt", &[idx.into()]).as_::<u16>()
+            pub fn char_code_at(&self, idx: usize) -> Option<u16> {
+                let v = self.inner.call("charCodeAt", &[idx.into()]);
+                if v.is_undefined() {
+                    None
+                } else {
+                    Some(v.as_::<u16>())
+                }
             }
 
             pub fn set(&self, idx: usize, val: char) {
@@ -135,11 +141,11 @@ macro_rules! declare_string {
                     .as_::<i32>()
             }
             /// [`String.prototype.match`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/match)
-            pub fn match_(&self, pat: &emlite::Val) -> emlite::Val {
+            pub fn match_(&self, pat: &Any) -> Any {
                 self.inner.call("match", &[pat.clone()])
             }
             /// [`String.prototype.matchAll`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/matchAll)
-            pub fn match_all(&self, pat: &emlite::Val) -> emlite::Val {
+            pub fn match_all(&self, pat: &Any) -> Any {
                 self.inner.call("matchAll", &[pat.clone()])
             }
             /// [`String.prototype.normalize`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/normalize)
@@ -171,19 +177,19 @@ macro_rules! declare_string {
                 self.inner.call("repeat", &[count.into()]).as_::<Self>()
             }
             /// [`String.prototype.replace`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
-            pub fn replace(&self, pat: &emlite::Val, repl: &emlite::Val) -> Self {
+            pub fn replace(&self, pat: &Any, repl: &Any) -> Self {
                 self.inner
                     .call("replace", &[pat.clone(), repl.clone()])
                     .as_::<Self>()
             }
             /// [`String.prototype.replaceAll`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/replaceAll)
-            pub fn replace_all(&self, pat: &emlite::Val, repl: &emlite::Val) -> Self {
+            pub fn replace_all(&self, pat: &Any, repl: &Any) -> Self {
                 self.inner
                     .call("replaceAll", &[pat.clone(), repl.clone()])
                     .as_::<Self>()
             }
             /// [`String.prototype.search`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/search)
-            pub fn search(&self, pat: &emlite::Val) -> isize {
+            pub fn search(&self, pat: &Any) -> isize {
                 self.inner.call("search", &[pat.clone()]).as_::<i32>() as isize
             }
             /// [`String.prototype.slice`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/slice)
@@ -195,10 +201,10 @@ macro_rules! declare_string {
                 .as_::<Self>()
             }
             /// [`String.prototype.split`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/split)
-            pub fn split(&self, sep: &str) -> crate::Sequence<Self> {
+            pub fn split(&self, sep: &str) -> crate::sequence::Sequence<Self> {
                 self.inner
                     .call("split", &[sep.into()])
-                    .as_::<crate::Sequence<Self>>()
+                    .as_::<crate::sequence::Sequence<Self>>()
             }
             /// [`String.prototype.startsWith`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith)
             pub fn starts_with(&self, pat: &str) -> bool {

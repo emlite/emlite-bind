@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ModuleExportDescriptor {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for ModuleExportDescriptor {
 }
 impl AsMut<emlite::Val> for ModuleExportDescriptor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ModuleExportDescriptor> for emlite::Val {
     fn from(s: ModuleExportDescriptor) -> emlite::Val {
@@ -46,13 +49,14 @@ impl From<ModuleExportDescriptor> for emlite::Val {
 }
 
 impl ModuleExportDescriptor {
-    pub fn name(&self) -> jsbind::USVString {
-        self.inner.get("name").as_::<jsbind::USVString>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn set_name(&mut self, value: jsbind::USVString) {
+    pub fn set_name(&mut self, value: USVString) {
         self.inner.set("name", value);
     }
+
 }
 impl ModuleExportDescriptor {
     pub fn kind(&self) -> ImportExportKind {
@@ -62,6 +66,7 @@ impl ModuleExportDescriptor {
     pub fn set_kind(&mut self, value: ImportExportKind) {
         self.inner.set("kind", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -97,8 +102,8 @@ impl AsRef<emlite::Val> for ModuleImportDescriptor {
 }
 impl AsMut<emlite::Val> for ModuleImportDescriptor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ModuleImportDescriptor> for emlite::Val {
     fn from(s: ModuleImportDescriptor) -> emlite::Val {
@@ -109,22 +114,24 @@ impl From<ModuleImportDescriptor> for emlite::Val {
 }
 
 impl ModuleImportDescriptor {
-    pub fn module(&self) -> jsbind::USVString {
-        self.inner.get("module").as_::<jsbind::USVString>()
+    pub fn module(&self) -> USVString {
+        self.inner.get("module").as_::<USVString>()
     }
 
-    pub fn set_module(&mut self, value: jsbind::USVString) {
+    pub fn set_module(&mut self, value: USVString) {
         self.inner.set("module", value);
     }
+
 }
 impl ModuleImportDescriptor {
-    pub fn name(&self) -> jsbind::USVString {
-        self.inner.get("name").as_::<jsbind::USVString>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn set_name(&mut self, value: jsbind::USVString) {
+    pub fn set_name(&mut self, value: USVString) {
         self.inner.set("name", value);
     }
+
 }
 impl ModuleImportDescriptor {
     pub fn kind(&self) -> ImportExportKind {
@@ -134,6 +141,7 @@ impl ModuleImportDescriptor {
     pub fn set_kind(&mut self, value: ImportExportKind) {
         self.inner.set("kind", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -142,9 +150,7 @@ pub struct Module {
 }
 impl FromVal for Module {
     fn from_val(v: &emlite::Val) -> Self {
-        Module {
-            inner: emlite::Val::from_val(v),
-        }
+        Module { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -171,8 +177,8 @@ impl AsRef<emlite::Val> for Module {
 }
 impl AsMut<emlite::Val> for Module {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<Module> for emlite::Val {
     fn from(s: Module) -> emlite::Val {
@@ -183,39 +189,31 @@ impl From<Module> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Module);
 
+
+
 impl Module {
-    pub fn new(bytes: jsbind::Any) -> Module {
+    pub fn new(bytes: Any) -> Module {
         Self {
-            inner: emlite::Val::global("Module")
-                .new(&[bytes.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("Module").new(&[bytes.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl Module {
-    pub fn exports(module_object: Module) -> jsbind::Sequence<ModuleExportDescriptor> {
-        emlite::Val::global("module")
-            .call("exports", &[module_object.into()])
-            .as_::<jsbind::Sequence<ModuleExportDescriptor>>()
+    pub fn exports(module_object: Module) -> Sequence<ModuleExportDescriptor> {
+        emlite::Val::global("module").call("exports", &[module_object.into(), ]).as_::<Sequence<ModuleExportDescriptor>>()
     }
+
 }
 impl Module {
-    pub fn imports(module_object: Module) -> jsbind::Sequence<ModuleImportDescriptor> {
-        emlite::Val::global("module")
-            .call("imports", &[module_object.into()])
-            .as_::<jsbind::Sequence<ModuleImportDescriptor>>()
+    pub fn imports(module_object: Module) -> Sequence<ModuleImportDescriptor> {
+        emlite::Val::global("module").call("imports", &[module_object.into(), ]).as_::<Sequence<ModuleImportDescriptor>>()
     }
+
 }
 impl Module {
-    pub fn custom_sections(
-        module_object: Module,
-        section_name: jsbind::DOMString,
-    ) -> jsbind::Sequence<jsbind::ArrayBuffer> {
-        emlite::Val::global("module")
-            .call(
-                "customSections",
-                &[module_object.into(), section_name.into()],
-            )
-            .as_::<jsbind::Sequence<jsbind::ArrayBuffer>>()
+    pub fn custom_sections(module_object: Module, section_name: DOMString) -> Sequence<ArrayBuffer> {
+        emlite::Val::global("module").call("customSections", &[module_object.into(), section_name.into(), ]).as_::<Sequence<ArrayBuffer>>()
     }
+
 }

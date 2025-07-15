@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Plugin {
@@ -7,9 +10,7 @@ pub struct Plugin {
 }
 impl FromVal for Plugin {
     fn from_val(v: &emlite::Val) -> Self {
-        Plugin {
-            inner: emlite::Val::from_val(v),
-        }
+        Plugin { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for Plugin {
 }
 impl AsMut<emlite::Val> for Plugin {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<Plugin> for emlite::Val {
     fn from(s: Plugin) -> emlite::Val {
@@ -48,35 +49,40 @@ impl From<Plugin> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Plugin);
 
+
 impl Plugin {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
+
 }
 impl Plugin {
-    pub fn description(&self) -> jsbind::DOMString {
-        self.inner.get("description").as_::<jsbind::DOMString>()
+    pub fn description(&self) -> DOMString {
+        self.inner.get("description").as_::<DOMString>()
     }
+
 }
 impl Plugin {
-    pub fn filename(&self) -> jsbind::DOMString {
-        self.inner.get("filename").as_::<jsbind::DOMString>()
+    pub fn filename(&self) -> DOMString {
+        self.inner.get("filename").as_::<DOMString>()
     }
+
 }
 impl Plugin {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl Plugin {
     pub fn item(&self, index: u32) -> MimeType {
-        self.inner.call("item", &[index.into()]).as_::<MimeType>()
+        self.inner.call("item", &[index.into(), ]).as_::<MimeType>()
     }
+
 }
 impl Plugin {
-    pub fn named_item(&self, name: jsbind::DOMString) -> MimeType {
-        self.inner
-            .call("namedItem", &[name.into()])
-            .as_::<MimeType>()
+    pub fn named_item(&self, name: DOMString) -> MimeType {
+        self.inner.call("namedItem", &[name.into(), ]).as_::<MimeType>()
     }
+
 }

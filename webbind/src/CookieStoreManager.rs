@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CookieStoreManager {
@@ -7,9 +10,7 @@ pub struct CookieStoreManager {
 }
 impl FromVal for CookieStoreManager {
     fn from_val(v: &emlite::Val) -> Self {
-        CookieStoreManager {
-            inner: emlite::Val::from_val(v),
-        }
+        CookieStoreManager { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CookieStoreManager {
 }
 impl AsMut<emlite::Val> for CookieStoreManager {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CookieStoreManager> for emlite::Val {
     fn from(s: CookieStoreManager) -> emlite::Val {
@@ -48,30 +49,22 @@ impl From<CookieStoreManager> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CookieStoreManager);
 
+
 impl CookieStoreManager {
-    pub fn subscribe(
-        &self,
-        subscriptions: jsbind::Sequence<CookieStoreGetOptions>,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("subscribe", &[subscriptions.into()])
-            .as_::<jsbind::Promise>()
+    pub fn subscribe(&self, subscriptions: Sequence<CookieStoreGetOptions>) -> Promise {
+        self.inner.call("subscribe", &[subscriptions.into(), ]).as_::<Promise>()
     }
+
 }
 impl CookieStoreManager {
-    pub fn get_subscriptions(&self) -> jsbind::Promise {
-        self.inner
-            .call("getSubscriptions", &[])
-            .as_::<jsbind::Promise>()
+    pub fn get_subscriptions(&self, ) -> Promise {
+        self.inner.call("getSubscriptions", &[]).as_::<Promise>()
     }
+
 }
 impl CookieStoreManager {
-    pub fn unsubscribe(
-        &self,
-        subscriptions: jsbind::Sequence<CookieStoreGetOptions>,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("unsubscribe", &[subscriptions.into()])
-            .as_::<jsbind::Promise>()
+    pub fn unsubscribe(&self, subscriptions: Sequence<CookieStoreGetOptions>) -> Promise {
+        self.inner.call("unsubscribe", &[subscriptions.into(), ]).as_::<Promise>()
     }
+
 }

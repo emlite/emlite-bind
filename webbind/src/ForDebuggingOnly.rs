@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ForDebuggingOnly {
@@ -7,9 +10,7 @@ pub struct ForDebuggingOnly {
 }
 impl FromVal for ForDebuggingOnly {
     fn from_val(v: &emlite::Val) -> Self {
-        ForDebuggingOnly {
-            inner: emlite::Val::from_val(v),
-        }
+        ForDebuggingOnly { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ForDebuggingOnly {
 }
 impl AsMut<emlite::Val> for ForDebuggingOnly {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ForDebuggingOnly> for emlite::Val {
     fn from(s: ForDebuggingOnly) -> emlite::Val {
@@ -48,17 +49,16 @@ impl From<ForDebuggingOnly> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ForDebuggingOnly);
 
+
 impl ForDebuggingOnly {
-    pub fn report_ad_auction_win(&self, url: jsbind::USVString) -> jsbind::Undefined {
-        self.inner
-            .call("reportAdAuctionWin", &[url.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn report_ad_auction_win(&self, url: USVString) -> Undefined {
+        self.inner.call("reportAdAuctionWin", &[url.into(), ]).as_::<Undefined>()
     }
+
 }
 impl ForDebuggingOnly {
-    pub fn report_ad_auction_loss(&self, url: jsbind::USVString) -> jsbind::Undefined {
-        self.inner
-            .call("reportAdAuctionLoss", &[url.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn report_ad_auction_loss(&self, url: USVString) -> Undefined {
+        self.inner.call("reportAdAuctionLoss", &[url.into(), ]).as_::<Undefined>()
     }
+
 }

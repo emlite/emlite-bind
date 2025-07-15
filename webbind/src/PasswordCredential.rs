@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PasswordCredential {
@@ -7,9 +10,7 @@ pub struct PasswordCredential {
 }
 impl FromVal for PasswordCredential {
     fn from_val(v: &emlite::Val) -> Self {
-        PasswordCredential {
-            inner: Credential::from_val(v),
-        }
+        PasswordCredential { inner: Credential::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PasswordCredential {
 }
 impl AsMut<emlite::Val> for PasswordCredential {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PasswordCredential> for emlite::Val {
     fn from(s: PasswordCredential) -> emlite::Val {
@@ -48,27 +49,31 @@ impl From<PasswordCredential> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PasswordCredential);
 
+
+
 impl PasswordCredential {
-    pub fn new(data: jsbind::Any) -> PasswordCredential {
+    pub fn new(data: Any) -> PasswordCredential {
         Self {
-            inner: emlite::Val::global("PasswordCredential")
-                .new(&[data.into()])
-                .as_::<Credential>(),
+            inner: emlite::Val::global("PasswordCredential").new(&[data.into()]).as_::<Credential>(),
         }
     }
+
 }
 impl PasswordCredential {
-    pub fn password(&self) -> jsbind::USVString {
-        self.inner.get("password").as_::<jsbind::USVString>()
+    pub fn password(&self) -> USVString {
+        self.inner.get("password").as_::<USVString>()
     }
+
 }
 impl PasswordCredential {
-    pub fn name(&self) -> jsbind::USVString {
-        self.inner.get("name").as_::<jsbind::USVString>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
+
 }
 impl PasswordCredential {
-    pub fn icon_url(&self) -> jsbind::USVString {
-        self.inner.get("iconURL").as_::<jsbind::USVString>()
+    pub fn icon_url(&self) -> USVString {
+        self.inner.get("iconURL").as_::<USVString>()
     }
+
 }

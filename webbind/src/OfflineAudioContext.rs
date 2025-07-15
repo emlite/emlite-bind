@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct OfflineAudioContext {
@@ -7,9 +10,7 @@ pub struct OfflineAudioContext {
 }
 impl FromVal for OfflineAudioContext {
     fn from_val(v: &emlite::Val) -> Self {
-        OfflineAudioContext {
-            inner: BaseAudioContext::from_val(v),
-        }
+        OfflineAudioContext { inner: BaseAudioContext::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for OfflineAudioContext {
 }
 impl AsMut<emlite::Val> for OfflineAudioContext {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<OfflineAudioContext> for emlite::Val {
     fn from(s: OfflineAudioContext) -> emlite::Val {
@@ -48,45 +49,47 @@ impl From<OfflineAudioContext> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(OfflineAudioContext);
 
+
+
 impl OfflineAudioContext {
     pub fn new(number_of_channels: u32, length: u32, sample_rate: f32) -> OfflineAudioContext {
         Self {
-            inner: emlite::Val::global("OfflineAudioContext")
-                .new(&[number_of_channels.into(), length.into(), sample_rate.into()])
-                .as_::<BaseAudioContext>(),
+            inner: emlite::Val::global("OfflineAudioContext").new(&[number_of_channels.into(), length.into(), sample_rate.into()]).as_::<BaseAudioContext>(),
         }
     }
+
 }
 impl OfflineAudioContext {
-    pub fn start_rendering(&self) -> jsbind::Promise {
-        self.inner
-            .call("startRendering", &[])
-            .as_::<jsbind::Promise>()
+    pub fn start_rendering(&self, ) -> Promise {
+        self.inner.call("startRendering", &[]).as_::<Promise>()
     }
+
 }
 impl OfflineAudioContext {
-    pub fn resume(&self) -> jsbind::Promise {
-        self.inner.call("resume", &[]).as_::<jsbind::Promise>()
+    pub fn resume(&self, ) -> Promise {
+        self.inner.call("resume", &[]).as_::<Promise>()
     }
+
 }
 impl OfflineAudioContext {
-    pub fn suspend(&self, suspend_time: f64) -> jsbind::Promise {
-        self.inner
-            .call("suspend", &[suspend_time.into()])
-            .as_::<jsbind::Promise>()
+    pub fn suspend(&self, suspend_time: f64) -> Promise {
+        self.inner.call("suspend", &[suspend_time.into(), ]).as_::<Promise>()
     }
+
 }
 impl OfflineAudioContext {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl OfflineAudioContext {
-    pub fn oncomplete(&self) -> jsbind::Any {
-        self.inner.get("oncomplete").as_::<jsbind::Any>()
+    pub fn oncomplete(&self) -> Any {
+        self.inner.get("oncomplete").as_::<Any>()
     }
 
-    pub fn set_oncomplete(&mut self, value: jsbind::Any) {
+    pub fn set_oncomplete(&mut self, value: Any) {
         self.inner.set("oncomplete", value);
     }
+
 }

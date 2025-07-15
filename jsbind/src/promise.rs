@@ -1,5 +1,5 @@
 use crate::utils::*;
-use crate::{Any, Function};
+use crate::{any::Any, function::Function, sequence::Sequence};
 
 /// JavaScript [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) wrapper.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
@@ -20,7 +20,7 @@ impl Default for Promise {
 
 impl Promise {
     /// JavaScript `Promise.all(iterable)`
-    pub fn all(iterable: &crate::Sequence<Any>) -> Self {
+    pub fn all(iterable: &Sequence<Any>) -> Self {
         emlite::Val::global("Promise")
             .call("all", &[iterable.clone().into()])
             .as_::<Self>()

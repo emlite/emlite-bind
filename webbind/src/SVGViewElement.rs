@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGViewElement {
@@ -7,9 +10,7 @@ pub struct SVGViewElement {
 }
 impl FromVal for SVGViewElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGViewElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGViewElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGViewElement {
 }
 impl AsMut<emlite::Val> for SVGViewElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGViewElement> for emlite::Val {
     fn from(s: SVGViewElement) -> emlite::Val {
@@ -48,15 +49,16 @@ impl From<SVGViewElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGViewElement);
 
+
 impl SVGViewElement {
     pub fn view_box(&self) -> SVGAnimatedRect {
         self.inner.get("viewBox").as_::<SVGAnimatedRect>()
     }
+
 }
 impl SVGViewElement {
     pub fn preserve_aspect_ratio(&self) -> SVGAnimatedPreserveAspectRatio {
-        self.inner
-            .get("preserveAspectRatio")
-            .as_::<SVGAnimatedPreserveAspectRatio>()
+        self.inner.get("preserveAspectRatio").as_::<SVGAnimatedPreserveAspectRatio>()
     }
+
 }

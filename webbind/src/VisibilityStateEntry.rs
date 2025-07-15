@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VisibilityStateEntry {
@@ -7,9 +10,7 @@ pub struct VisibilityStateEntry {
 }
 impl FromVal for VisibilityStateEntry {
     fn from_val(v: &emlite::Val) -> Self {
-        VisibilityStateEntry {
-            inner: PerformanceEntry::from_val(v),
-        }
+        VisibilityStateEntry { inner: PerformanceEntry::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for VisibilityStateEntry {
 }
 impl AsMut<emlite::Val> for VisibilityStateEntry {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<VisibilityStateEntry> for emlite::Val {
     fn from(s: VisibilityStateEntry) -> emlite::Val {
@@ -48,23 +49,28 @@ impl From<VisibilityStateEntry> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(VisibilityStateEntry);
 
+
 impl VisibilityStateEntry {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
+
 }
 impl VisibilityStateEntry {
-    pub fn entry_type(&self) -> jsbind::DOMString {
-        self.inner.get("entryType").as_::<jsbind::DOMString>()
+    pub fn entry_type(&self) -> DOMString {
+        self.inner.get("entryType").as_::<DOMString>()
     }
+
 }
 impl VisibilityStateEntry {
-    pub fn start_time(&self) -> jsbind::Any {
-        self.inner.get("startTime").as_::<jsbind::Any>()
+    pub fn start_time(&self) -> Any {
+        self.inner.get("startTime").as_::<Any>()
     }
+
 }
 impl VisibilityStateEntry {
     pub fn duration(&self) -> u32 {
         self.inner.get("duration").as_::<u32>()
     }
+
 }

@@ -1,4 +1,5 @@
-use crate::Any;
+use crate::any::Any;
+use crate::array::Array;
 use crate::utils::*;
 use alloc::string::String;
 use alloc::vec::Vec;
@@ -57,7 +58,7 @@ impl Function {
     }
 
     /// Call `fn.apply(this, args_array)`.
-    pub fn apply(&self, this_arg: &Any, args_array: &crate::Array) -> Any {
+    pub fn apply(&self, this_arg: &Any, args_array: &Array) -> Any {
         self.inner
             .call("apply", &[this_arg.clone(), args_array.clone().into()])
             .as_()

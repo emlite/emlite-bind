@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSFontFeatureValuesMap {
@@ -7,9 +10,7 @@ pub struct CSSFontFeatureValuesMap {
 }
 impl FromVal for CSSFontFeatureValuesMap {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSFontFeatureValuesMap {
-            inner: emlite::Val::from_val(v),
-        }
+        CSSFontFeatureValuesMap { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSFontFeatureValuesMap {
 }
 impl AsMut<emlite::Val> for CSSFontFeatureValuesMap {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSFontFeatureValuesMap> for emlite::Val {
     fn from(s: CSSFontFeatureValuesMap) -> emlite::Val {
@@ -48,14 +49,10 @@ impl From<CSSFontFeatureValuesMap> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSFontFeatureValuesMap);
 
+
 impl CSSFontFeatureValuesMap {
-    pub fn set(
-        &self,
-        feature_value_name: jsbind::CSSOMString,
-        values: jsbind::Any,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("set", &[feature_value_name.into(), values.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn set(&self, feature_value_name: CSSOMString, values: Any) -> Undefined {
+        self.inner.call("set", &[feature_value_name.into(), values.into(), ]).as_::<Undefined>()
     }
+
 }

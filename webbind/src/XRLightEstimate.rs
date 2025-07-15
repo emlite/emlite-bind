@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRLightEstimate {
@@ -7,9 +10,7 @@ pub struct XRLightEstimate {
 }
 impl FromVal for XRLightEstimate {
     fn from_val(v: &emlite::Val) -> Self {
-        XRLightEstimate {
-            inner: emlite::Val::from_val(v),
-        }
+        XRLightEstimate { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRLightEstimate {
 }
 impl AsMut<emlite::Val> for XRLightEstimate {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRLightEstimate> for emlite::Val {
     fn from(s: XRLightEstimate) -> emlite::Val {
@@ -48,24 +49,22 @@ impl From<XRLightEstimate> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRLightEstimate);
 
+
 impl XRLightEstimate {
-    pub fn spherical_harmonics_coefficients(&self) -> jsbind::Float32Array {
-        self.inner
-            .get("sphericalHarmonicsCoefficients")
-            .as_::<jsbind::Float32Array>()
+    pub fn spherical_harmonics_coefficients(&self) -> Float32Array {
+        self.inner.get("sphericalHarmonicsCoefficients").as_::<Float32Array>()
     }
+
 }
 impl XRLightEstimate {
     pub fn primary_light_direction(&self) -> DOMPointReadOnly {
-        self.inner
-            .get("primaryLightDirection")
-            .as_::<DOMPointReadOnly>()
+        self.inner.get("primaryLightDirection").as_::<DOMPointReadOnly>()
     }
+
 }
 impl XRLightEstimate {
     pub fn primary_light_intensity(&self) -> DOMPointReadOnly {
-        self.inner
-            .get("primaryLightIntensity")
-            .as_::<DOMPointReadOnly>()
+        self.inner.get("primaryLightIntensity").as_::<DOMPointReadOnly>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
@@ -7,9 +10,7 @@ pub struct InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
 }
 impl FromVal for InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
     fn from_val(v: &emlite::Val) -> Self {
-        InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
-            inner: InterestGroupScriptRunnerGlobalScope::from_val(v),
-        }
+        InterestGroupBiddingAndScoringScriptRunnerGlobalScope { inner: InterestGroupScriptRunnerGlobalScope::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for InterestGroupBiddingAndScoringScriptRunnerGlobalScop
 }
 impl AsMut<emlite::Val> for InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<InterestGroupBiddingAndScoringScriptRunnerGlobalScope> for emlite::Val {
     fn from(s: InterestGroupBiddingAndScoringScriptRunnerGlobalScope) -> emlite::Val {
@@ -48,15 +49,16 @@ impl From<InterestGroupBiddingAndScoringScriptRunnerGlobalScope> for emlite::Val
 }
 jsbind::utils::impl_dyn_cast!(InterestGroupBiddingAndScoringScriptRunnerGlobalScope);
 
+
 impl InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
     pub fn for_debugging_only(&self) -> ForDebuggingOnly {
         self.inner.get("forDebuggingOnly").as_::<ForDebuggingOnly>()
     }
+
 }
 impl InterestGroupBiddingAndScoringScriptRunnerGlobalScope {
     pub fn real_time_reporting(&self) -> RealTimeReporting {
-        self.inner
-            .get("realTimeReporting")
-            .as_::<RealTimeReporting>()
+        self.inner.get("realTimeReporting").as_::<RealTimeReporting>()
     }
+
 }

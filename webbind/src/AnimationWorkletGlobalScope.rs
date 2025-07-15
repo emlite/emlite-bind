@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AnimationWorkletGlobalScope {
@@ -7,9 +10,7 @@ pub struct AnimationWorkletGlobalScope {
 }
 impl FromVal for AnimationWorkletGlobalScope {
     fn from_val(v: &emlite::Val) -> Self {
-        AnimationWorkletGlobalScope {
-            inner: WorkletGlobalScope::from_val(v),
-        }
+        AnimationWorkletGlobalScope { inner: WorkletGlobalScope::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for AnimationWorkletGlobalScope {
 }
 impl AsMut<emlite::Val> for AnimationWorkletGlobalScope {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AnimationWorkletGlobalScope> for emlite::Val {
     fn from(s: AnimationWorkletGlobalScope) -> emlite::Val {
@@ -48,14 +49,10 @@ impl From<AnimationWorkletGlobalScope> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AnimationWorkletGlobalScope);
 
+
 impl AnimationWorkletGlobalScope {
-    pub fn register_animator(
-        &self,
-        name: jsbind::DOMString,
-        animator_ctor: jsbind::Function,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call("registerAnimator", &[name.into(), animator_ctor.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn register_animator(&self, name: DOMString, animator_ctor: Function) -> Undefined {
+        self.inner.call("registerAnimator", &[name.into(), animator_ctor.into(), ]).as_::<Undefined>()
     }
+
 }

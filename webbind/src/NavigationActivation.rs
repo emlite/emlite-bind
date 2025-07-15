@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NavigationActivation {
@@ -7,9 +10,7 @@ pub struct NavigationActivation {
 }
 impl FromVal for NavigationActivation {
     fn from_val(v: &emlite::Val) -> Self {
-        NavigationActivation {
-            inner: emlite::Val::from_val(v),
-        }
+        NavigationActivation { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for NavigationActivation {
 }
 impl AsMut<emlite::Val> for NavigationActivation {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NavigationActivation> for emlite::Val {
     fn from(s: NavigationActivation) -> emlite::Val {
@@ -48,18 +49,22 @@ impl From<NavigationActivation> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(NavigationActivation);
 
+
 impl NavigationActivation {
     pub fn from(&self) -> NavigationHistoryEntry {
         self.inner.get("from").as_::<NavigationHistoryEntry>()
     }
+
 }
 impl NavigationActivation {
     pub fn entry(&self) -> NavigationHistoryEntry {
         self.inner.get("entry").as_::<NavigationHistoryEntry>()
     }
+
 }
 impl NavigationActivation {
     pub fn navigation_type(&self) -> NavigationType {
         self.inner.get("navigationType").as_::<NavigationType>()
     }
+
 }

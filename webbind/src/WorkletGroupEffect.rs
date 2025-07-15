@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WorkletGroupEffect {
@@ -7,9 +10,7 @@ pub struct WorkletGroupEffect {
 }
 impl FromVal for WorkletGroupEffect {
     fn from_val(v: &emlite::Val) -> Self {
-        WorkletGroupEffect {
-            inner: emlite::Val::from_val(v),
-        }
+        WorkletGroupEffect { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WorkletGroupEffect {
 }
 impl AsMut<emlite::Val> for WorkletGroupEffect {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WorkletGroupEffect> for emlite::Val {
     fn from(s: WorkletGroupEffect) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<WorkletGroupEffect> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WorkletGroupEffect);
 
+
 impl WorkletGroupEffect {
-    pub fn get_children(&self) -> jsbind::Sequence<WorkletAnimationEffect> {
-        self.inner
-            .call("getChildren", &[])
-            .as_::<jsbind::Sequence<WorkletAnimationEffect>>()
+    pub fn get_children(&self, ) -> Sequence<WorkletAnimationEffect> {
+        self.inner.call("getChildren", &[]).as_::<Sequence<WorkletAnimationEffect>>()
     }
+
 }

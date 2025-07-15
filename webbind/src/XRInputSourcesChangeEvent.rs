@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRInputSourcesChangeEvent {
@@ -7,9 +10,7 @@ pub struct XRInputSourcesChangeEvent {
 }
 impl FromVal for XRInputSourcesChangeEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        XRInputSourcesChangeEvent {
-            inner: Event::from_val(v),
-        }
+        XRInputSourcesChangeEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRInputSourcesChangeEvent {
 }
 impl AsMut<emlite::Val> for XRInputSourcesChangeEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRInputSourcesChangeEvent> for emlite::Val {
     fn from(s: XRInputSourcesChangeEvent) -> emlite::Val {
@@ -48,34 +49,31 @@ impl From<XRInputSourcesChangeEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRInputSourcesChangeEvent);
 
+
+
 impl XRInputSourcesChangeEvent {
-    pub fn new(
-        type_: jsbind::DOMString,
-        event_init_dict: jsbind::Any,
-    ) -> XRInputSourcesChangeEvent {
+    pub fn new(type_: DOMString, event_init_dict: Any) -> XRInputSourcesChangeEvent {
         Self {
-            inner: emlite::Val::global("XRInputSourcesChangeEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("XRInputSourcesChangeEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl XRInputSourcesChangeEvent {
     pub fn session(&self) -> XRSession {
         self.inner.get("session").as_::<XRSession>()
     }
+
 }
 impl XRInputSourcesChangeEvent {
-    pub fn added(&self) -> jsbind::FrozenArray<XRInputSource> {
-        self.inner
-            .get("added")
-            .as_::<jsbind::FrozenArray<XRInputSource>>()
+    pub fn added(&self) -> FrozenArray<XRInputSource> {
+        self.inner.get("added").as_::<FrozenArray<XRInputSource>>()
     }
+
 }
 impl XRInputSourcesChangeEvent {
-    pub fn removed(&self) -> jsbind::FrozenArray<XRInputSource> {
-        self.inner
-            .get("removed")
-            .as_::<jsbind::FrozenArray<XRInputSource>>()
+    pub fn removed(&self) -> FrozenArray<XRInputSource> {
+        self.inner.get("removed").as_::<FrozenArray<XRInputSource>>()
     }
+
 }

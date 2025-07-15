@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PaymentCompleteDetails {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for PaymentCompleteDetails {
 }
 impl AsMut<emlite::Val> for PaymentCompleteDetails {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PaymentCompleteDetails> for emlite::Val {
     fn from(s: PaymentCompleteDetails) -> emlite::Val {
@@ -46,13 +49,14 @@ impl From<PaymentCompleteDetails> for emlite::Val {
 }
 
 impl PaymentCompleteDetails {
-    pub fn data(&self) -> jsbind::Object {
-        self.inner.get("data").as_::<jsbind::Object>()
+    pub fn data(&self) -> Object {
+        self.inner.get("data").as_::<Object>()
     }
 
-    pub fn set_data(&mut self, value: jsbind::Object) {
+    pub fn set_data(&mut self, value: Object) {
         self.inner.set("data", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -88,8 +92,8 @@ impl AsRef<emlite::Val> for PaymentValidationErrors {
 }
 impl AsMut<emlite::Val> for PaymentValidationErrors {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PaymentValidationErrors> for emlite::Val {
     fn from(s: PaymentValidationErrors) -> emlite::Val {
@@ -100,40 +104,44 @@ impl From<PaymentValidationErrors> for emlite::Val {
 }
 
 impl PaymentValidationErrors {
-    pub fn payer(&self) -> jsbind::Any {
-        self.inner.get("payer").as_::<jsbind::Any>()
+    pub fn payer(&self) -> Any {
+        self.inner.get("payer").as_::<Any>()
     }
 
-    pub fn set_payer(&mut self, value: jsbind::Any) {
+    pub fn set_payer(&mut self, value: Any) {
         self.inner.set("payer", value);
     }
+
 }
 impl PaymentValidationErrors {
-    pub fn shipping_address(&self) -> jsbind::Any {
-        self.inner.get("shippingAddress").as_::<jsbind::Any>()
+    pub fn shipping_address(&self) -> Any {
+        self.inner.get("shippingAddress").as_::<Any>()
     }
 
-    pub fn set_shipping_address(&mut self, value: jsbind::Any) {
+    pub fn set_shipping_address(&mut self, value: Any) {
         self.inner.set("shippingAddress", value);
     }
+
 }
 impl PaymentValidationErrors {
-    pub fn error(&self) -> jsbind::DOMString {
-        self.inner.get("error").as_::<jsbind::DOMString>()
+    pub fn error(&self) -> DOMString {
+        self.inner.get("error").as_::<DOMString>()
     }
 
-    pub fn set_error(&mut self, value: jsbind::DOMString) {
+    pub fn set_error(&mut self, value: DOMString) {
         self.inner.set("error", value);
     }
+
 }
 impl PaymentValidationErrors {
-    pub fn payment_method(&self) -> jsbind::Object {
-        self.inner.get("paymentMethod").as_::<jsbind::Object>()
+    pub fn payment_method(&self) -> Object {
+        self.inner.get("paymentMethod").as_::<Object>()
     }
 
-    pub fn set_payment_method(&mut self, value: jsbind::Object) {
+    pub fn set_payment_method(&mut self, value: Object) {
         self.inner.set("paymentMethod", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -142,9 +150,7 @@ pub struct PaymentResponse {
 }
 impl FromVal for PaymentResponse {
     fn from_val(v: &emlite::Val) -> Self {
-        PaymentResponse {
-            inner: EventTarget::from_val(v),
-        }
+        PaymentResponse { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -171,8 +177,8 @@ impl AsRef<emlite::Val> for PaymentResponse {
 }
 impl AsMut<emlite::Val> for PaymentResponse {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PaymentResponse> for emlite::Val {
     fn from(s: PaymentResponse) -> emlite::Val {
@@ -183,89 +189,92 @@ impl From<PaymentResponse> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PaymentResponse);
 
+
 impl PaymentResponse {
-    pub fn to_json(&self) -> jsbind::Object {
-        self.inner.call("toJSON", &[]).as_::<jsbind::Object>()
+    pub fn to_json(&self, ) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
+
 }
 impl PaymentResponse {
-    pub fn request_id(&self) -> jsbind::DOMString {
-        self.inner.get("requestId").as_::<jsbind::DOMString>()
+    pub fn request_id(&self) -> DOMString {
+        self.inner.get("requestId").as_::<DOMString>()
     }
+
 }
 impl PaymentResponse {
-    pub fn method_name(&self) -> jsbind::DOMString {
-        self.inner.get("methodName").as_::<jsbind::DOMString>()
+    pub fn method_name(&self) -> DOMString {
+        self.inner.get("methodName").as_::<DOMString>()
     }
+
 }
 impl PaymentResponse {
-    pub fn details(&self) -> jsbind::Object {
-        self.inner.get("details").as_::<jsbind::Object>()
+    pub fn details(&self) -> Object {
+        self.inner.get("details").as_::<Object>()
     }
+
 }
 impl PaymentResponse {
     pub fn shipping_address(&self) -> ContactAddress {
         self.inner.get("shippingAddress").as_::<ContactAddress>()
     }
+
 }
 impl PaymentResponse {
-    pub fn shipping_option(&self) -> jsbind::DOMString {
-        self.inner.get("shippingOption").as_::<jsbind::DOMString>()
-    }
-}
-impl PaymentResponse {
-    pub fn payer_name(&self) -> jsbind::DOMString {
-        self.inner.get("payerName").as_::<jsbind::DOMString>()
-    }
-}
-impl PaymentResponse {
-    pub fn payer_email(&self) -> jsbind::DOMString {
-        self.inner.get("payerEmail").as_::<jsbind::DOMString>()
-    }
-}
-impl PaymentResponse {
-    pub fn payer_phone(&self) -> jsbind::DOMString {
-        self.inner.get("payerPhone").as_::<jsbind::DOMString>()
-    }
-}
-impl PaymentResponse {
-    pub fn complete0(&self) -> jsbind::Promise {
-        self.inner.call("complete", &[]).as_::<jsbind::Promise>()
+    pub fn shipping_option(&self) -> DOMString {
+        self.inner.get("shippingOption").as_::<DOMString>()
     }
 
-    pub fn complete1(&self, result: PaymentComplete) -> jsbind::Promise {
-        self.inner
-            .call("complete", &[result.into()])
-            .as_::<jsbind::Promise>()
-    }
-
-    pub fn complete2(
-        &self,
-        result: PaymentComplete,
-        details: PaymentCompleteDetails,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("complete", &[result.into(), details.into()])
-            .as_::<jsbind::Promise>()
-    }
 }
 impl PaymentResponse {
-    pub fn retry0(&self) -> jsbind::Promise {
-        self.inner.call("retry", &[]).as_::<jsbind::Promise>()
+    pub fn payer_name(&self) -> DOMString {
+        self.inner.get("payerName").as_::<DOMString>()
     }
 
-    pub fn retry1(&self, error_fields: PaymentValidationErrors) -> jsbind::Promise {
-        self.inner
-            .call("retry", &[error_fields.into()])
-            .as_::<jsbind::Promise>()
-    }
 }
 impl PaymentResponse {
-    pub fn onpayerdetailchange(&self) -> jsbind::Any {
-        self.inner.get("onpayerdetailchange").as_::<jsbind::Any>()
+    pub fn payer_email(&self) -> DOMString {
+        self.inner.get("payerEmail").as_::<DOMString>()
     }
 
-    pub fn set_onpayerdetailchange(&mut self, value: jsbind::Any) {
+}
+impl PaymentResponse {
+    pub fn payer_phone(&self) -> DOMString {
+        self.inner.get("payerPhone").as_::<DOMString>()
+    }
+
+}
+impl PaymentResponse {
+    pub fn complete0(&self, ) -> Promise {
+        self.inner.call("complete", &[]).as_::<Promise>()
+    }
+
+    pub fn complete1(&self, result: PaymentComplete) -> Promise {
+        self.inner.call("complete", &[result.into(), ]).as_::<Promise>()
+    }
+
+    pub fn complete2(&self, result: PaymentComplete, details: PaymentCompleteDetails) -> Promise {
+        self.inner.call("complete", &[result.into(), details.into(), ]).as_::<Promise>()
+    }
+
+}
+impl PaymentResponse {
+    pub fn retry0(&self, ) -> Promise {
+        self.inner.call("retry", &[]).as_::<Promise>()
+    }
+
+    pub fn retry1(&self, error_fields: PaymentValidationErrors) -> Promise {
+        self.inner.call("retry", &[error_fields.into(), ]).as_::<Promise>()
+    }
+
+}
+impl PaymentResponse {
+    pub fn onpayerdetailchange(&self) -> Any {
+        self.inner.get("onpayerdetailchange").as_::<Any>()
+    }
+
+    pub fn set_onpayerdetailchange(&mut self, value: Any) {
         self.inner.set("onpayerdetailchange", value);
     }
+
 }

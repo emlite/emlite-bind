@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NavigatorLogin {
@@ -7,9 +10,7 @@ pub struct NavigatorLogin {
 }
 impl FromVal for NavigatorLogin {
     fn from_val(v: &emlite::Val) -> Self {
-        NavigatorLogin {
-            inner: emlite::Val::from_val(v),
-        }
+        NavigatorLogin { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for NavigatorLogin {
 }
 impl AsMut<emlite::Val> for NavigatorLogin {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NavigatorLogin> for emlite::Val {
     fn from(s: NavigatorLogin) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<NavigatorLogin> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(NavigatorLogin);
 
+
 impl NavigatorLogin {
-    pub fn set_status(&self, status: LoginStatus) -> jsbind::Promise {
-        self.inner
-            .call("setStatus", &[status.into()])
-            .as_::<jsbind::Promise>()
+    pub fn set_status(&self, status: LoginStatus) -> Promise {
+        self.inner.call("setStatus", &[status.into(), ]).as_::<Promise>()
     }
+
 }

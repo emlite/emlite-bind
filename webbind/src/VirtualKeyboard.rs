@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VirtualKeyboard {
@@ -7,9 +10,7 @@ pub struct VirtualKeyboard {
 }
 impl FromVal for VirtualKeyboard {
     fn from_val(v: &emlite::Val) -> Self {
-        VirtualKeyboard {
-            inner: EventTarget::from_val(v),
-        }
+        VirtualKeyboard { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for VirtualKeyboard {
 }
 impl AsMut<emlite::Val> for VirtualKeyboard {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<VirtualKeyboard> for emlite::Val {
     fn from(s: VirtualKeyboard) -> emlite::Val {
@@ -48,20 +49,24 @@ impl From<VirtualKeyboard> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(VirtualKeyboard);
 
+
 impl VirtualKeyboard {
-    pub fn show(&self) -> jsbind::Undefined {
-        self.inner.call("show", &[]).as_::<jsbind::Undefined>()
+    pub fn show(&self, ) -> Undefined {
+        self.inner.call("show", &[]).as_::<Undefined>()
     }
+
 }
 impl VirtualKeyboard {
-    pub fn hide(&self) -> jsbind::Undefined {
-        self.inner.call("hide", &[]).as_::<jsbind::Undefined>()
+    pub fn hide(&self, ) -> Undefined {
+        self.inner.call("hide", &[]).as_::<Undefined>()
     }
+
 }
 impl VirtualKeyboard {
     pub fn bounding_rect(&self) -> DOMRect {
         self.inner.get("boundingRect").as_::<DOMRect>()
     }
+
 }
 impl VirtualKeyboard {
     pub fn overlays_content(&self) -> bool {
@@ -71,13 +76,15 @@ impl VirtualKeyboard {
     pub fn set_overlays_content(&mut self, value: bool) {
         self.inner.set("overlaysContent", value);
     }
+
 }
 impl VirtualKeyboard {
-    pub fn ongeometrychange(&self) -> jsbind::Any {
-        self.inner.get("ongeometrychange").as_::<jsbind::Any>()
+    pub fn ongeometrychange(&self) -> Any {
+        self.inner.get("ongeometrychange").as_::<Any>()
     }
 
-    pub fn set_ongeometrychange(&mut self, value: jsbind::Any) {
+    pub fn set_ongeometrychange(&mut self, value: Any) {
         self.inner.set("ongeometrychange", value);
     }
+
 }

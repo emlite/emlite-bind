@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FunctionParameter {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for FunctionParameter {
 }
 impl AsMut<emlite::Val> for FunctionParameter {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<FunctionParameter> for emlite::Val {
     fn from(s: FunctionParameter) -> emlite::Val {
@@ -46,31 +49,34 @@ impl From<FunctionParameter> for emlite::Val {
 }
 
 impl FunctionParameter {
-    pub fn name(&self) -> jsbind::CSSOMString {
-        self.inner.get("name").as_::<jsbind::CSSOMString>()
+    pub fn name(&self) -> CSSOMString {
+        self.inner.get("name").as_::<CSSOMString>()
     }
 
-    pub fn set_name(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_name(&mut self, value: CSSOMString) {
         self.inner.set("name", value);
     }
+
 }
 impl FunctionParameter {
-    pub fn type_(&self) -> jsbind::CSSOMString {
-        self.inner.get("type").as_::<jsbind::CSSOMString>()
+    pub fn type_(&self) -> CSSOMString {
+        self.inner.get("type").as_::<CSSOMString>()
     }
 
-    pub fn set_type_(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_type_(&mut self, value: CSSOMString) {
         self.inner.set("type", value);
     }
+
 }
 impl FunctionParameter {
-    pub fn default_value(&self) -> jsbind::CSSOMString {
-        self.inner.get("defaultValue").as_::<jsbind::CSSOMString>()
+    pub fn default_value(&self) -> CSSOMString {
+        self.inner.get("defaultValue").as_::<CSSOMString>()
     }
 
-    pub fn set_default_value(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_default_value(&mut self, value: CSSOMString) {
         self.inner.set("defaultValue", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -79,9 +85,7 @@ pub struct CSSFunctionRule {
 }
 impl FromVal for CSSFunctionRule {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSFunctionRule {
-            inner: CSSGroupingRule::from_val(v),
-        }
+        CSSFunctionRule { inner: CSSGroupingRule::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -108,8 +112,8 @@ impl AsRef<emlite::Val> for CSSFunctionRule {
 }
 impl AsMut<emlite::Val> for CSSFunctionRule {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSFunctionRule> for emlite::Val {
     fn from(s: CSSFunctionRule) -> emlite::Val {
@@ -120,20 +124,22 @@ impl From<CSSFunctionRule> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSFunctionRule);
 
+
 impl CSSFunctionRule {
-    pub fn name(&self) -> jsbind::CSSOMString {
-        self.inner.get("name").as_::<jsbind::CSSOMString>()
+    pub fn name(&self) -> CSSOMString {
+        self.inner.get("name").as_::<CSSOMString>()
     }
+
 }
 impl CSSFunctionRule {
-    pub fn get_parameters(&self) -> jsbind::Sequence<FunctionParameter> {
-        self.inner
-            .call("getParameters", &[])
-            .as_::<jsbind::Sequence<FunctionParameter>>()
+    pub fn get_parameters(&self, ) -> Sequence<FunctionParameter> {
+        self.inner.call("getParameters", &[]).as_::<Sequence<FunctionParameter>>()
     }
+
 }
 impl CSSFunctionRule {
-    pub fn return_type(&self) -> jsbind::CSSOMString {
-        self.inner.get("returnType").as_::<jsbind::CSSOMString>()
+    pub fn return_type(&self) -> CSSOMString {
+        self.inner.get("returnType").as_::<CSSOMString>()
     }
+
 }

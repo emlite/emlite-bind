@@ -53,87 +53,87 @@ impl From<CSSPageDescriptors> for emlite::Val {
 }
 
 impl CSSPageDescriptors {
-    pub fn margin(&self) -> jsbind::CSSOMString {
-        self.inner.get("margin").as_::<jsbind::CSSOMString>()
+    pub fn margin(&self) -> CSSOMString {
+        self.inner.get("margin").as_::<CSSOMString>()
     }
 
-    pub fn set_margin(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_margin(&mut self, value: CSSOMString) {
         self.inner.set("margin", value);
     }
 }
 impl CSSPageDescriptors {
-    pub fn margin_top(&self) -> jsbind::CSSOMString {
-        self.inner.get("marginTop").as_::<jsbind::CSSOMString>()
+    pub fn margin_top(&self) -> CSSOMString {
+        self.inner.get("marginTop").as_::<CSSOMString>()
     }
 
-    pub fn set_margin_top(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_margin_top(&mut self, value: CSSOMString) {
         self.inner.set("marginTop", value);
     }
 }
 impl CSSPageDescriptors {
-    pub fn margin_right(&self) -> jsbind::CSSOMString {
-        self.inner.get("marginRight").as_::<jsbind::CSSOMString>()
+    pub fn margin_right(&self) -> CSSOMString {
+        self.inner.get("marginRight").as_::<CSSOMString>()
     }
 
-    pub fn set_margin_right(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_margin_right(&mut self, value: CSSOMString) {
         self.inner.set("marginRight", value);
     }
 }
 impl CSSPageDescriptors {
-    pub fn margin_bottom(&self) -> jsbind::CSSOMString {
-        self.inner.get("marginBottom").as_::<jsbind::CSSOMString>()
+    pub fn margin_bottom(&self) -> CSSOMString {
+        self.inner.get("marginBottom").as_::<CSSOMString>()
     }
 
-    pub fn set_margin_bottom(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_margin_bottom(&mut self, value: CSSOMString) {
         self.inner.set("marginBottom", value);
     }
 }
 impl CSSPageDescriptors {
-    pub fn margin_left(&self) -> jsbind::CSSOMString {
-        self.inner.get("marginLeft").as_::<jsbind::CSSOMString>()
+    pub fn margin_left(&self) -> CSSOMString {
+        self.inner.get("marginLeft").as_::<CSSOMString>()
     }
 
-    pub fn set_margin_left(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_margin_left(&mut self, value: CSSOMString) {
         self.inner.set("marginLeft", value);
     }
 }
 
 impl CSSPageDescriptors {
-    pub fn size(&self) -> jsbind::CSSOMString {
-        self.inner.get("size").as_::<jsbind::CSSOMString>()
+    pub fn size(&self) -> CSSOMString {
+        self.inner.get("size").as_::<CSSOMString>()
     }
 
-    pub fn set_size(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_size(&mut self, value: CSSOMString) {
         self.inner.set("size", value);
     }
 }
 impl CSSPageDescriptors {
-    pub fn page_orientation(&self) -> jsbind::CSSOMString {
+    pub fn page_orientation(&self) -> CSSOMString {
         self.inner
             .get("pageOrientation")
-            .as_::<jsbind::CSSOMString>()
+            .as_::<CSSOMString>()
     }
 
-    pub fn set_page_orientation(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_page_orientation(&mut self, value: CSSOMString) {
         self.inner.set("pageOrientation", value);
     }
 }
 
 impl CSSPageDescriptors {
-    pub fn marks(&self) -> jsbind::CSSOMString {
-        self.inner.get("marks").as_::<jsbind::CSSOMString>()
+    pub fn marks(&self) -> CSSOMString {
+        self.inner.get("marks").as_::<CSSOMString>()
     }
 
-    pub fn set_marks(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_marks(&mut self, value: CSSOMString) {
         self.inner.set("marks", value);
     }
 }
 impl CSSPageDescriptors {
-    pub fn bleed(&self) -> jsbind::CSSOMString {
-        self.inner.get("bleed").as_::<jsbind::CSSOMString>()
+    pub fn bleed(&self) -> CSSOMString {
+        self.inner.get("bleed").as_::<CSSOMString>()
     }
 
-    pub fn set_bleed(&mut self, value: jsbind::CSSOMString) {
+    pub fn set_bleed(&mut self, value: CSSOMString) {
         self.inner.set("bleed", value);
     }
 }

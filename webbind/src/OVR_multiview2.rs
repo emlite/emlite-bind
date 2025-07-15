@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct OVR_multiview2 {
@@ -7,9 +10,7 @@ pub struct OVR_multiview2 {
 }
 impl FromVal for OVR_multiview2 {
     fn from_val(v: &emlite::Val) -> Self {
-        OVR_multiview2 {
-            inner: emlite::Val::from_val(v),
-        }
+        OVR_multiview2 { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for OVR_multiview2 {
 }
 impl AsMut<emlite::Val> for OVR_multiview2 {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<OVR_multiview2> for emlite::Val {
     fn from(s: OVR_multiview2) -> emlite::Val {
@@ -48,28 +49,10 @@ impl From<OVR_multiview2> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(OVR_multiview2);
 
+
 impl OVR_multiview2 {
-    pub fn framebuffer_texture_multiview_ovr(
-        &self,
-        target: jsbind::Any,
-        attachment: jsbind::Any,
-        texture: WebGLTexture,
-        level: jsbind::Any,
-        base_view_index: jsbind::Any,
-        num_views: jsbind::Any,
-    ) -> jsbind::Undefined {
-        self.inner
-            .call(
-                "framebufferTextureMultiviewOVR",
-                &[
-                    target.into(),
-                    attachment.into(),
-                    texture.into(),
-                    level.into(),
-                    base_view_index.into(),
-                    num_views.into(),
-                ],
-            )
-            .as_::<jsbind::Undefined>()
+    pub fn framebuffer_texture_multiview_ovr(&self, target: Any, attachment: Any, texture: WebGLTexture, level: Any, base_view_index: Any, num_views: Any) -> Undefined {
+        self.inner.call("framebufferTextureMultiviewOVR", &[target.into(), attachment.into(), texture.into(), level.into(), base_view_index.into(), num_views.into(), ]).as_::<Undefined>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCSessionDescription {
@@ -7,9 +10,7 @@ pub struct RTCSessionDescription {
 }
 impl FromVal for RTCSessionDescription {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCSessionDescription {
-            inner: emlite::Val::from_val(v),
-        }
+        RTCSessionDescription { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for RTCSessionDescription {
 }
 impl AsMut<emlite::Val> for RTCSessionDescription {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RTCSessionDescription> for emlite::Val {
     fn from(s: RTCSessionDescription) -> emlite::Val {
@@ -48,29 +49,31 @@ impl From<RTCSessionDescription> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCSessionDescription);
 
+
+
 impl RTCSessionDescription {
     pub fn new(description_init_dict: RTCSessionDescriptionInit) -> RTCSessionDescription {
         Self {
-            inner: emlite::Val::global("RTCSessionDescription")
-                .new(&[description_init_dict.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("RTCSessionDescription").new(&[description_init_dict.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl RTCSessionDescription {
     pub fn type_(&self) -> RTCSdpType {
         self.inner.get("type").as_::<RTCSdpType>()
     }
+
 }
 impl RTCSessionDescription {
-    pub fn sdp(&self) -> jsbind::DOMString {
-        self.inner.get("sdp").as_::<jsbind::DOMString>()
+    pub fn sdp(&self) -> DOMString {
+        self.inner.get("sdp").as_::<DOMString>()
     }
+
 }
 impl RTCSessionDescription {
-    pub fn to_json(&self) -> RTCSessionDescriptionInit {
-        self.inner
-            .call("toJSON", &[])
-            .as_::<RTCSessionDescriptionInit>()
+    pub fn to_json(&self, ) -> RTCSessionDescriptionInit {
+        self.inner.call("toJSON", &[]).as_::<RTCSessionDescriptionInit>()
     }
+
 }

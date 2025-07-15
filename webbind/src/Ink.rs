@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct InkPresenterParam {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for InkPresenterParam {
 }
 impl AsMut<emlite::Val> for InkPresenterParam {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<InkPresenterParam> for emlite::Val {
     fn from(s: InkPresenterParam) -> emlite::Val {
@@ -53,6 +56,7 @@ impl InkPresenterParam {
     pub fn set_presentation_area(&mut self, value: Element) {
         self.inner.set("presentationArea", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -61,9 +65,7 @@ pub struct Ink {
 }
 impl FromVal for Ink {
     fn from_val(v: &emlite::Val) -> Self {
-        Ink {
-            inner: emlite::Val::from_val(v),
-        }
+        Ink { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -90,8 +92,8 @@ impl AsRef<emlite::Val> for Ink {
 }
 impl AsMut<emlite::Val> for Ink {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<Ink> for emlite::Val {
     fn from(s: Ink) -> emlite::Val {
@@ -102,16 +104,14 @@ impl From<Ink> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Ink);
 
+
 impl Ink {
-    pub fn request_presenter0(&self) -> jsbind::Promise {
-        self.inner
-            .call("requestPresenter", &[])
-            .as_::<jsbind::Promise>()
+    pub fn request_presenter0(&self, ) -> Promise {
+        self.inner.call("requestPresenter", &[]).as_::<Promise>()
     }
 
-    pub fn request_presenter1(&self, param: InkPresenterParam) -> jsbind::Promise {
-        self.inner
-            .call("requestPresenter", &[param.into()])
-            .as_::<jsbind::Promise>()
+    pub fn request_presenter1(&self, param: InkPresenterParam) -> Promise {
+        self.inner.call("requestPresenter", &[param.into(), ]).as_::<Promise>()
     }
+
 }

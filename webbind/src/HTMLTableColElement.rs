@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLTableColElement {
@@ -7,9 +10,7 @@ pub struct HTMLTableColElement {
 }
 impl FromVal for HTMLTableColElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLTableColElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLTableColElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLTableColElement {
 }
 impl AsMut<emlite::Val> for HTMLTableColElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLTableColElement> for emlite::Val {
     fn from(s: HTMLTableColElement) -> emlite::Val {
@@ -48,14 +49,15 @@ impl From<HTMLTableColElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLTableColElement);
 
+
+
 impl HTMLTableColElement {
     pub fn new() -> HTMLTableColElement {
         Self {
-            inner: emlite::Val::global("HTMLTableColElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLTableColElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLTableColElement {
     pub fn span(&self) -> u32 {
@@ -65,49 +67,55 @@ impl HTMLTableColElement {
     pub fn set_span(&mut self, value: u32) {
         self.inner.set("span", value);
     }
+
 }
 impl HTMLTableColElement {
-    pub fn align(&self) -> jsbind::DOMString {
-        self.inner.get("align").as_::<jsbind::DOMString>()
+    pub fn align(&self) -> DOMString {
+        self.inner.get("align").as_::<DOMString>()
     }
 
-    pub fn set_align(&mut self, value: jsbind::DOMString) {
+    pub fn set_align(&mut self, value: DOMString) {
         self.inner.set("align", value);
     }
+
 }
 impl HTMLTableColElement {
-    pub fn ch(&self) -> jsbind::DOMString {
-        self.inner.get("ch").as_::<jsbind::DOMString>()
+    pub fn ch(&self) -> DOMString {
+        self.inner.get("ch").as_::<DOMString>()
     }
 
-    pub fn set_ch(&mut self, value: jsbind::DOMString) {
+    pub fn set_ch(&mut self, value: DOMString) {
         self.inner.set("ch", value);
     }
+
 }
 impl HTMLTableColElement {
-    pub fn ch_off(&self) -> jsbind::DOMString {
-        self.inner.get("chOff").as_::<jsbind::DOMString>()
+    pub fn ch_off(&self) -> DOMString {
+        self.inner.get("chOff").as_::<DOMString>()
     }
 
-    pub fn set_ch_off(&mut self, value: jsbind::DOMString) {
+    pub fn set_ch_off(&mut self, value: DOMString) {
         self.inner.set("chOff", value);
     }
+
 }
 impl HTMLTableColElement {
-    pub fn v_align(&self) -> jsbind::DOMString {
-        self.inner.get("vAlign").as_::<jsbind::DOMString>()
+    pub fn v_align(&self) -> DOMString {
+        self.inner.get("vAlign").as_::<DOMString>()
     }
 
-    pub fn set_v_align(&mut self, value: jsbind::DOMString) {
+    pub fn set_v_align(&mut self, value: DOMString) {
         self.inner.set("vAlign", value);
     }
+
 }
 impl HTMLTableColElement {
-    pub fn width(&self) -> jsbind::DOMString {
-        self.inner.get("width").as_::<jsbind::DOMString>()
+    pub fn width(&self) -> DOMString {
+        self.inner.get("width").as_::<DOMString>()
     }
 
-    pub fn set_width(&mut self, value: jsbind::DOMString) {
+    pub fn set_width(&mut self, value: DOMString) {
         self.inner.set("width", value);
     }
+
 }

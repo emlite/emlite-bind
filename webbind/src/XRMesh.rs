@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRMesh {
@@ -7,9 +10,7 @@ pub struct XRMesh {
 }
 impl FromVal for XRMesh {
     fn from_val(v: &emlite::Val) -> Self {
-        XRMesh {
-            inner: emlite::Val::from_val(v),
-        }
+        XRMesh { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRMesh {
 }
 impl AsMut<emlite::Val> for XRMesh {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRMesh> for emlite::Val {
     fn from(s: XRMesh) -> emlite::Val {
@@ -48,30 +49,34 @@ impl From<XRMesh> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRMesh);
 
+
 impl XRMesh {
     pub fn mesh_space(&self) -> XRSpace {
         self.inner.get("meshSpace").as_::<XRSpace>()
     }
+
 }
 impl XRMesh {
-    pub fn vertices(&self) -> jsbind::FrozenArray<jsbind::Float32Array> {
-        self.inner
-            .get("vertices")
-            .as_::<jsbind::FrozenArray<jsbind::Float32Array>>()
+    pub fn vertices(&self) -> FrozenArray<Float32Array> {
+        self.inner.get("vertices").as_::<FrozenArray<Float32Array>>()
     }
+
 }
 impl XRMesh {
-    pub fn indices(&self) -> jsbind::Uint32Array {
-        self.inner.get("indices").as_::<jsbind::Uint32Array>()
+    pub fn indices(&self) -> Uint32Array {
+        self.inner.get("indices").as_::<Uint32Array>()
     }
+
 }
 impl XRMesh {
-    pub fn last_changed_time(&self) -> jsbind::Any {
-        self.inner.get("lastChangedTime").as_::<jsbind::Any>()
+    pub fn last_changed_time(&self) -> Any {
+        self.inner.get("lastChangedTime").as_::<Any>()
     }
+
 }
 impl XRMesh {
-    pub fn semantic_label(&self) -> jsbind::DOMString {
-        self.inner.get("semanticLabel").as_::<jsbind::DOMString>()
+    pub fn semantic_label(&self) -> DOMString {
+        self.inner.get("semanticLabel").as_::<DOMString>()
     }
+
 }

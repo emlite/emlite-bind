@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSHWB {
@@ -7,9 +10,7 @@ pub struct CSSHWB {
 }
 impl FromVal for CSSHWB {
     fn from_val(v: &emlite::Val) -> Self {
-        CSSHWB {
-            inner: CSSColorValue::from_val(v),
-        }
+        CSSHWB { inner: CSSColorValue::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for CSSHWB {
 }
 impl AsMut<emlite::Val> for CSSHWB {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CSSHWB> for emlite::Val {
     fn from(s: CSSHWB) -> emlite::Val {
@@ -48,22 +49,21 @@ impl From<CSSHWB> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CSSHWB);
 
+
+
 impl CSSHWB {
-    pub fn new0(h: CSSNumericValue, w: jsbind::Any, b: jsbind::Any) -> CSSHWB {
+    pub fn new0(h: CSSNumericValue, w: Any, b: Any) -> CSSHWB {
         Self {
-            inner: emlite::Val::global("CSSHWB")
-                .new(&[h.into(), w.into(), b.into()])
-                .as_::<CSSColorValue>(),
+            inner: emlite::Val::global("CSSHWB").new(&[h.into(), w.into(), b.into()]).as_::<CSSColorValue>(),
         }
     }
 
-    pub fn new1(h: CSSNumericValue, w: jsbind::Any, b: jsbind::Any, alpha: jsbind::Any) -> CSSHWB {
+    pub fn new1(h: CSSNumericValue, w: Any, b: Any, alpha: Any) -> CSSHWB {
         Self {
-            inner: emlite::Val::global("CSSHWB")
-                .new(&[h.into(), w.into(), b.into(), alpha.into()])
-                .as_::<CSSColorValue>(),
+            inner: emlite::Val::global("CSSHWB").new(&[h.into(), w.into(), b.into(), alpha.into()]).as_::<CSSColorValue>(),
         }
     }
+
 }
 impl CSSHWB {
     pub fn h(&self) -> CSSNumericValue {
@@ -73,31 +73,35 @@ impl CSSHWB {
     pub fn set_h(&mut self, value: CSSNumericValue) {
         self.inner.set("h", value);
     }
+
 }
 impl CSSHWB {
-    pub fn w(&self) -> jsbind::Any {
-        self.inner.get("w").as_::<jsbind::Any>()
+    pub fn w(&self) -> Any {
+        self.inner.get("w").as_::<Any>()
     }
 
-    pub fn set_w(&mut self, value: jsbind::Any) {
+    pub fn set_w(&mut self, value: Any) {
         self.inner.set("w", value);
     }
+
 }
 impl CSSHWB {
-    pub fn b(&self) -> jsbind::Any {
-        self.inner.get("b").as_::<jsbind::Any>()
+    pub fn b(&self) -> Any {
+        self.inner.get("b").as_::<Any>()
     }
 
-    pub fn set_b(&mut self, value: jsbind::Any) {
+    pub fn set_b(&mut self, value: Any) {
         self.inner.set("b", value);
     }
+
 }
 impl CSSHWB {
-    pub fn alpha(&self) -> jsbind::Any {
-        self.inner.get("alpha").as_::<jsbind::Any>()
+    pub fn alpha(&self) -> Any {
+        self.inner.get("alpha").as_::<Any>()
     }
 
-    pub fn set_alpha(&mut self, value: jsbind::Any) {
+    pub fn set_alpha(&mut self, value: Any) {
         self.inner.set("alpha", value);
     }
+
 }

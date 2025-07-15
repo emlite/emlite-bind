@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUTextureViewDescriptor {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for GPUTextureViewDescriptor {
 }
 impl AsMut<emlite::Val> for GPUTextureViewDescriptor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<GPUTextureViewDescriptor> for emlite::Val {
     fn from(s: GPUTextureViewDescriptor) -> emlite::Val {
@@ -53,6 +56,7 @@ impl GPUTextureViewDescriptor {
     pub fn set_format(&mut self, value: GPUTextureFormat) {
         self.inner.set("format", value);
     }
+
 }
 impl GPUTextureViewDescriptor {
     pub fn dimension(&self) -> GPUTextureViewDimension {
@@ -62,15 +66,17 @@ impl GPUTextureViewDescriptor {
     pub fn set_dimension(&mut self, value: GPUTextureViewDimension) {
         self.inner.set("dimension", value);
     }
+
 }
 impl GPUTextureViewDescriptor {
-    pub fn usage(&self) -> jsbind::Any {
-        self.inner.get("usage").as_::<jsbind::Any>()
+    pub fn usage(&self) -> Any {
+        self.inner.get("usage").as_::<Any>()
     }
 
-    pub fn set_usage(&mut self, value: jsbind::Any) {
+    pub fn set_usage(&mut self, value: Any) {
         self.inner.set("usage", value);
     }
+
 }
 impl GPUTextureViewDescriptor {
     pub fn aspect(&self) -> GPUTextureAspect {
@@ -80,42 +86,47 @@ impl GPUTextureViewDescriptor {
     pub fn set_aspect(&mut self, value: GPUTextureAspect) {
         self.inner.set("aspect", value);
     }
+
 }
 impl GPUTextureViewDescriptor {
-    pub fn base_mip_level(&self) -> jsbind::Any {
-        self.inner.get("baseMipLevel").as_::<jsbind::Any>()
+    pub fn base_mip_level(&self) -> Any {
+        self.inner.get("baseMipLevel").as_::<Any>()
     }
 
-    pub fn set_base_mip_level(&mut self, value: jsbind::Any) {
+    pub fn set_base_mip_level(&mut self, value: Any) {
         self.inner.set("baseMipLevel", value);
     }
+
 }
 impl GPUTextureViewDescriptor {
-    pub fn mip_level_count(&self) -> jsbind::Any {
-        self.inner.get("mipLevelCount").as_::<jsbind::Any>()
+    pub fn mip_level_count(&self) -> Any {
+        self.inner.get("mipLevelCount").as_::<Any>()
     }
 
-    pub fn set_mip_level_count(&mut self, value: jsbind::Any) {
+    pub fn set_mip_level_count(&mut self, value: Any) {
         self.inner.set("mipLevelCount", value);
     }
+
 }
 impl GPUTextureViewDescriptor {
-    pub fn base_array_layer(&self) -> jsbind::Any {
-        self.inner.get("baseArrayLayer").as_::<jsbind::Any>()
+    pub fn base_array_layer(&self) -> Any {
+        self.inner.get("baseArrayLayer").as_::<Any>()
     }
 
-    pub fn set_base_array_layer(&mut self, value: jsbind::Any) {
+    pub fn set_base_array_layer(&mut self, value: Any) {
         self.inner.set("baseArrayLayer", value);
     }
+
 }
 impl GPUTextureViewDescriptor {
-    pub fn array_layer_count(&self) -> jsbind::Any {
-        self.inner.get("arrayLayerCount").as_::<jsbind::Any>()
+    pub fn array_layer_count(&self) -> Any {
+        self.inner.get("arrayLayerCount").as_::<Any>()
     }
 
-    pub fn set_array_layer_count(&mut self, value: jsbind::Any) {
+    pub fn set_array_layer_count(&mut self, value: Any) {
         self.inner.set("arrayLayerCount", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -124,9 +135,7 @@ pub struct GPUTexture {
 }
 impl FromVal for GPUTexture {
     fn from_val(v: &emlite::Val) -> Self {
-        GPUTexture {
-            inner: emlite::Val::from_val(v),
-        }
+        GPUTexture { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -153,8 +162,8 @@ impl AsRef<emlite::Val> for GPUTexture {
 }
 impl AsMut<emlite::Val> for GPUTexture {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<GPUTexture> for emlite::Val {
     fn from(s: GPUTexture) -> emlite::Val {
@@ -165,68 +174,78 @@ impl From<GPUTexture> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GPUTexture);
 
+
 impl GPUTexture {
-    pub fn create_view0(&self) -> GPUTextureView {
+    pub fn create_view0(&self, ) -> GPUTextureView {
         self.inner.call("createView", &[]).as_::<GPUTextureView>()
     }
 
     pub fn create_view1(&self, descriptor: GPUTextureViewDescriptor) -> GPUTextureView {
-        self.inner
-            .call("createView", &[descriptor.into()])
-            .as_::<GPUTextureView>()
+        self.inner.call("createView", &[descriptor.into(), ]).as_::<GPUTextureView>()
     }
+
 }
 impl GPUTexture {
-    pub fn destroy(&self) -> jsbind::Undefined {
-        self.inner.call("destroy", &[]).as_::<jsbind::Undefined>()
+    pub fn destroy(&self, ) -> Undefined {
+        self.inner.call("destroy", &[]).as_::<Undefined>()
     }
+
 }
 impl GPUTexture {
-    pub fn width(&self) -> jsbind::Any {
-        self.inner.get("width").as_::<jsbind::Any>()
+    pub fn width(&self) -> Any {
+        self.inner.get("width").as_::<Any>()
     }
+
 }
 impl GPUTexture {
-    pub fn height(&self) -> jsbind::Any {
-        self.inner.get("height").as_::<jsbind::Any>()
+    pub fn height(&self) -> Any {
+        self.inner.get("height").as_::<Any>()
     }
+
 }
 impl GPUTexture {
-    pub fn depth_or_array_layers(&self) -> jsbind::Any {
-        self.inner.get("depthOrArrayLayers").as_::<jsbind::Any>()
+    pub fn depth_or_array_layers(&self) -> Any {
+        self.inner.get("depthOrArrayLayers").as_::<Any>()
     }
+
 }
 impl GPUTexture {
-    pub fn mip_level_count(&self) -> jsbind::Any {
-        self.inner.get("mipLevelCount").as_::<jsbind::Any>()
+    pub fn mip_level_count(&self) -> Any {
+        self.inner.get("mipLevelCount").as_::<Any>()
     }
+
 }
 impl GPUTexture {
-    pub fn sample_count(&self) -> jsbind::Any {
-        self.inner.get("sampleCount").as_::<jsbind::Any>()
+    pub fn sample_count(&self) -> Any {
+        self.inner.get("sampleCount").as_::<Any>()
     }
+
 }
 impl GPUTexture {
     pub fn dimension(&self) -> GPUTextureDimension {
         self.inner.get("dimension").as_::<GPUTextureDimension>()
     }
+
 }
 impl GPUTexture {
     pub fn format(&self) -> GPUTextureFormat {
         self.inner.get("format").as_::<GPUTextureFormat>()
     }
+
 }
 impl GPUTexture {
-    pub fn usage(&self) -> jsbind::Any {
-        self.inner.get("usage").as_::<jsbind::Any>()
-    }
-}
-impl GPUTexture {
-    pub fn label(&self) -> jsbind::USVString {
-        self.inner.get("label").as_::<jsbind::USVString>()
+    pub fn usage(&self) -> Any {
+        self.inner.get("usage").as_::<Any>()
     }
 
-    pub fn set_label(&mut self, value: jsbind::USVString) {
+}
+impl GPUTexture {
+    pub fn label(&self) -> USVString {
+        self.inner.get("label").as_::<USVString>()
+    }
+
+    pub fn set_label(&mut self, value: USVString) {
         self.inner.set("label", value);
     }
+
 }

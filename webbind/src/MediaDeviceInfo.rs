@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaDeviceInfo {
@@ -7,9 +10,7 @@ pub struct MediaDeviceInfo {
 }
 impl FromVal for MediaDeviceInfo {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaDeviceInfo {
-            inner: emlite::Val::from_val(v),
-        }
+        MediaDeviceInfo { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for MediaDeviceInfo {
 }
 impl AsMut<emlite::Val> for MediaDeviceInfo {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MediaDeviceInfo> for emlite::Val {
     fn from(s: MediaDeviceInfo) -> emlite::Val {
@@ -48,28 +49,34 @@ impl From<MediaDeviceInfo> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MediaDeviceInfo);
 
+
 impl MediaDeviceInfo {
-    pub fn device_id(&self) -> jsbind::DOMString {
-        self.inner.get("deviceId").as_::<jsbind::DOMString>()
+    pub fn device_id(&self) -> DOMString {
+        self.inner.get("deviceId").as_::<DOMString>()
     }
+
 }
 impl MediaDeviceInfo {
     pub fn kind(&self) -> MediaDeviceKind {
         self.inner.get("kind").as_::<MediaDeviceKind>()
     }
+
 }
 impl MediaDeviceInfo {
-    pub fn label(&self) -> jsbind::DOMString {
-        self.inner.get("label").as_::<jsbind::DOMString>()
+    pub fn label(&self) -> DOMString {
+        self.inner.get("label").as_::<DOMString>()
     }
+
 }
 impl MediaDeviceInfo {
-    pub fn group_id(&self) -> jsbind::DOMString {
-        self.inner.get("groupId").as_::<jsbind::DOMString>()
+    pub fn group_id(&self) -> DOMString {
+        self.inner.get("groupId").as_::<DOMString>()
     }
+
 }
 impl MediaDeviceInfo {
-    pub fn to_json(&self) -> jsbind::Object {
-        self.inner.call("toJSON", &[]).as_::<jsbind::Object>()
+    pub fn to_json(&self, ) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
+
 }

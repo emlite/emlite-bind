@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GamepadButton {
@@ -7,9 +10,7 @@ pub struct GamepadButton {
 }
 impl FromVal for GamepadButton {
     fn from_val(v: &emlite::Val) -> Self {
-        GamepadButton {
-            inner: emlite::Val::from_val(v),
-        }
+        GamepadButton { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for GamepadButton {
 }
 impl AsMut<emlite::Val> for GamepadButton {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<GamepadButton> for emlite::Val {
     fn from(s: GamepadButton) -> emlite::Val {
@@ -48,18 +49,22 @@ impl From<GamepadButton> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(GamepadButton);
 
+
 impl GamepadButton {
     pub fn pressed(&self) -> bool {
         self.inner.get("pressed").as_::<bool>()
     }
+
 }
 impl GamepadButton {
     pub fn touched(&self) -> bool {
         self.inner.get("touched").as_::<bool>()
     }
+
 }
 impl GamepadButton {
     pub fn value(&self) -> f64 {
         self.inner.get("value").as_::<f64>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AbsoluteOrientationSensor {
@@ -7,9 +10,7 @@ pub struct AbsoluteOrientationSensor {
 }
 impl FromVal for AbsoluteOrientationSensor {
     fn from_val(v: &emlite::Val) -> Self {
-        AbsoluteOrientationSensor {
-            inner: OrientationSensor::from_val(v),
-        }
+        AbsoluteOrientationSensor { inner: OrientationSensor::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for AbsoluteOrientationSensor {
 }
 impl AsMut<emlite::Val> for AbsoluteOrientationSensor {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AbsoluteOrientationSensor> for emlite::Val {
     fn from(s: AbsoluteOrientationSensor) -> emlite::Val {
@@ -48,20 +49,19 @@ impl From<AbsoluteOrientationSensor> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AbsoluteOrientationSensor);
 
+
+
 impl AbsoluteOrientationSensor {
     pub fn new0() -> AbsoluteOrientationSensor {
         Self {
-            inner: emlite::Val::global("AbsoluteOrientationSensor")
-                .new(&[])
-                .as_::<OrientationSensor>(),
+            inner: emlite::Val::global("AbsoluteOrientationSensor").new(&[]).as_::<OrientationSensor>(),
         }
     }
 
-    pub fn new1(sensor_options: jsbind::Any) -> AbsoluteOrientationSensor {
+    pub fn new1(sensor_options: Any) -> AbsoluteOrientationSensor {
         Self {
-            inner: emlite::Val::global("AbsoluteOrientationSensor")
-                .new(&[sensor_options.into()])
-                .as_::<OrientationSensor>(),
+            inner: emlite::Val::global("AbsoluteOrientationSensor").new(&[sensor_options.into()]).as_::<OrientationSensor>(),
         }
     }
+
 }

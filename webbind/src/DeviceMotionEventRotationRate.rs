@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DeviceMotionEventRotationRate {
@@ -7,9 +10,7 @@ pub struct DeviceMotionEventRotationRate {
 }
 impl FromVal for DeviceMotionEventRotationRate {
     fn from_val(v: &emlite::Val) -> Self {
-        DeviceMotionEventRotationRate {
-            inner: emlite::Val::from_val(v),
-        }
+        DeviceMotionEventRotationRate { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for DeviceMotionEventRotationRate {
 }
 impl AsMut<emlite::Val> for DeviceMotionEventRotationRate {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<DeviceMotionEventRotationRate> for emlite::Val {
     fn from(s: DeviceMotionEventRotationRate) -> emlite::Val {
@@ -48,18 +49,22 @@ impl From<DeviceMotionEventRotationRate> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(DeviceMotionEventRotationRate);
 
+
 impl DeviceMotionEventRotationRate {
     pub fn alpha(&self) -> f64 {
         self.inner.get("alpha").as_::<f64>()
     }
+
 }
 impl DeviceMotionEventRotationRate {
     pub fn beta(&self) -> f64 {
         self.inner.get("beta").as_::<f64>()
     }
+
 }
 impl DeviceMotionEventRotationRate {
     pub fn gamma(&self) -> f64 {
         self.inner.get("gamma").as_::<f64>()
     }
+
 }

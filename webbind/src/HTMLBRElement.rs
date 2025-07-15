@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLBRElement {
@@ -7,9 +10,7 @@ pub struct HTMLBRElement {
 }
 impl FromVal for HTMLBRElement {
     fn from_val(v: &emlite::Val) -> Self {
-        HTMLBRElement {
-            inner: HTMLElement::from_val(v),
-        }
+        HTMLBRElement { inner: HTMLElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for HTMLBRElement {
 }
 impl AsMut<emlite::Val> for HTMLBRElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<HTMLBRElement> for emlite::Val {
     fn from(s: HTMLBRElement) -> emlite::Val {
@@ -48,21 +49,23 @@ impl From<HTMLBRElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(HTMLBRElement);
 
+
+
 impl HTMLBRElement {
     pub fn new() -> HTMLBRElement {
         Self {
-            inner: emlite::Val::global("HTMLBRElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: emlite::Val::global("HTMLBRElement").new(&[]).as_::<HTMLElement>(),
         }
     }
+
 }
 impl HTMLBRElement {
-    pub fn clear(&self) -> jsbind::DOMString {
-        self.inner.get("clear").as_::<jsbind::DOMString>()
+    pub fn clear(&self) -> DOMString {
+        self.inner.get("clear").as_::<DOMString>()
     }
 
-    pub fn set_clear(&mut self, value: jsbind::DOMString) {
+    pub fn set_clear(&mut self, value: DOMString) {
         self.inner.set("clear", value);
     }
+
 }

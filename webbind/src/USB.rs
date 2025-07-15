@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct USBDeviceRequestOptions {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for USBDeviceRequestOptions {
 }
 impl AsMut<emlite::Val> for USBDeviceRequestOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<USBDeviceRequestOptions> for emlite::Val {
     fn from(s: USBDeviceRequestOptions) -> emlite::Val {
@@ -46,26 +49,24 @@ impl From<USBDeviceRequestOptions> for emlite::Val {
 }
 
 impl USBDeviceRequestOptions {
-    pub fn filters(&self) -> jsbind::Sequence<jsbind::Any> {
-        self.inner
-            .get("filters")
-            .as_::<jsbind::Sequence<jsbind::Any>>()
+    pub fn filters(&self) -> Sequence<Any> {
+        self.inner.get("filters").as_::<Sequence<Any>>()
     }
 
-    pub fn set_filters(&mut self, value: jsbind::Sequence<jsbind::Any>) {
+    pub fn set_filters(&mut self, value: Sequence<Any>) {
         self.inner.set("filters", value);
     }
+
 }
 impl USBDeviceRequestOptions {
-    pub fn exclusion_filters(&self) -> jsbind::Sequence<jsbind::Any> {
-        self.inner
-            .get("exclusionFilters")
-            .as_::<jsbind::Sequence<jsbind::Any>>()
+    pub fn exclusion_filters(&self) -> Sequence<Any> {
+        self.inner.get("exclusionFilters").as_::<Sequence<Any>>()
     }
 
-    pub fn set_exclusion_filters(&mut self, value: jsbind::Sequence<jsbind::Any>) {
+    pub fn set_exclusion_filters(&mut self, value: Sequence<Any>) {
         self.inner.set("exclusionFilters", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -74,9 +75,7 @@ pub struct USB {
 }
 impl FromVal for USB {
     fn from_val(v: &emlite::Val) -> Self {
-        USB {
-            inner: EventTarget::from_val(v),
-        }
+        USB { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -103,8 +102,8 @@ impl AsRef<emlite::Val> for USB {
 }
 impl AsMut<emlite::Val> for USB {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<USB> for emlite::Val {
     fn from(s: USB) -> emlite::Val {
@@ -115,33 +114,36 @@ impl From<USB> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(USB);
 
+
 impl USB {
-    pub fn onconnect(&self) -> jsbind::Any {
-        self.inner.get("onconnect").as_::<jsbind::Any>()
+    pub fn onconnect(&self) -> Any {
+        self.inner.get("onconnect").as_::<Any>()
     }
 
-    pub fn set_onconnect(&mut self, value: jsbind::Any) {
+    pub fn set_onconnect(&mut self, value: Any) {
         self.inner.set("onconnect", value);
     }
+
 }
 impl USB {
-    pub fn ondisconnect(&self) -> jsbind::Any {
-        self.inner.get("ondisconnect").as_::<jsbind::Any>()
+    pub fn ondisconnect(&self) -> Any {
+        self.inner.get("ondisconnect").as_::<Any>()
     }
 
-    pub fn set_ondisconnect(&mut self, value: jsbind::Any) {
+    pub fn set_ondisconnect(&mut self, value: Any) {
         self.inner.set("ondisconnect", value);
     }
+
 }
 impl USB {
-    pub fn get_devices(&self) -> jsbind::Promise {
-        self.inner.call("getDevices", &[]).as_::<jsbind::Promise>()
+    pub fn get_devices(&self, ) -> Promise {
+        self.inner.call("getDevices", &[]).as_::<Promise>()
     }
+
 }
 impl USB {
-    pub fn request_device(&self, options: USBDeviceRequestOptions) -> jsbind::Promise {
-        self.inner
-            .call("requestDevice", &[options.into()])
-            .as_::<jsbind::Promise>()
+    pub fn request_device(&self, options: USBDeviceRequestOptions) -> Promise {
+        self.inner.call("requestDevice", &[options.into(), ]).as_::<Promise>()
     }
+
 }

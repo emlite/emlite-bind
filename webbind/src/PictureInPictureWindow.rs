@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PictureInPictureWindow {
@@ -7,9 +10,7 @@ pub struct PictureInPictureWindow {
 }
 impl FromVal for PictureInPictureWindow {
     fn from_val(v: &emlite::Val) -> Self {
-        PictureInPictureWindow {
-            inner: EventTarget::from_val(v),
-        }
+        PictureInPictureWindow { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PictureInPictureWindow {
 }
 impl AsMut<emlite::Val> for PictureInPictureWindow {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PictureInPictureWindow> for emlite::Val {
     fn from(s: PictureInPictureWindow) -> emlite::Val {
@@ -48,22 +49,26 @@ impl From<PictureInPictureWindow> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PictureInPictureWindow);
 
+
 impl PictureInPictureWindow {
     pub fn width(&self) -> i32 {
         self.inner.get("width").as_::<i32>()
     }
+
 }
 impl PictureInPictureWindow {
     pub fn height(&self) -> i32 {
         self.inner.get("height").as_::<i32>()
     }
+
 }
 impl PictureInPictureWindow {
-    pub fn onresize(&self) -> jsbind::Any {
-        self.inner.get("onresize").as_::<jsbind::Any>()
+    pub fn onresize(&self) -> Any {
+        self.inner.get("onresize").as_::<Any>()
     }
 
-    pub fn set_onresize(&mut self, value: jsbind::Any) {
+    pub fn set_onresize(&mut self, value: Any) {
         self.inner.set("onresize", value);
     }
+
 }

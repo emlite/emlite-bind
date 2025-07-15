@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaElementAudioSourceNode {
@@ -7,9 +10,7 @@ pub struct MediaElementAudioSourceNode {
 }
 impl FromVal for MediaElementAudioSourceNode {
     fn from_val(v: &emlite::Val) -> Self {
-        MediaElementAudioSourceNode {
-            inner: AudioNode::from_val(v),
-        }
+        MediaElementAudioSourceNode { inner: AudioNode::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for MediaElementAudioSourceNode {
 }
 impl AsMut<emlite::Val> for MediaElementAudioSourceNode {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MediaElementAudioSourceNode> for emlite::Val {
     fn from(s: MediaElementAudioSourceNode) -> emlite::Val {
@@ -48,17 +49,19 @@ impl From<MediaElementAudioSourceNode> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MediaElementAudioSourceNode);
 
+
+
 impl MediaElementAudioSourceNode {
-    pub fn new(context: AudioContext, options: jsbind::Any) -> MediaElementAudioSourceNode {
+    pub fn new(context: AudioContext, options: Any) -> MediaElementAudioSourceNode {
         Self {
-            inner: emlite::Val::global("MediaElementAudioSourceNode")
-                .new(&[context.into(), options.into()])
-                .as_::<AudioNode>(),
+            inner: emlite::Val::global("MediaElementAudioSourceNode").new(&[context.into(), options.into()]).as_::<AudioNode>(),
         }
     }
+
 }
 impl MediaElementAudioSourceNode {
     pub fn media_element(&self) -> HTMLMediaElement {
         self.inner.get("mediaElement").as_::<HTMLMediaElement>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DragEvent {
@@ -7,9 +10,7 @@ pub struct DragEvent {
 }
 impl FromVal for DragEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        DragEvent {
-            inner: MouseEvent::from_val(v),
-        }
+        DragEvent { inner: MouseEvent::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for DragEvent {
 }
 impl AsMut<emlite::Val> for DragEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<DragEvent> for emlite::Val {
     fn from(s: DragEvent) -> emlite::Val {
@@ -48,25 +49,25 @@ impl From<DragEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(DragEvent);
 
+
+
 impl DragEvent {
-    pub fn new0(type_: jsbind::DOMString) -> DragEvent {
+    pub fn new0(type_: DOMString) -> DragEvent {
         Self {
-            inner: emlite::Val::global("DragEvent")
-                .new(&[type_.into()])
-                .as_::<MouseEvent>(),
+            inner: emlite::Val::global("DragEvent").new(&[type_.into()]).as_::<MouseEvent>(),
         }
     }
 
-    pub fn new1(type_: jsbind::DOMString, event_init_dict: jsbind::Any) -> DragEvent {
+    pub fn new1(type_: DOMString, event_init_dict: Any) -> DragEvent {
         Self {
-            inner: emlite::Val::global("DragEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<MouseEvent>(),
+            inner: emlite::Val::global("DragEvent").new(&[type_.into(), event_init_dict.into()]).as_::<MouseEvent>(),
         }
     }
+
 }
 impl DragEvent {
     pub fn data_transfer(&self) -> DataTransfer {
         self.inner.get("dataTransfer").as_::<DataTransfer>()
     }
+
 }

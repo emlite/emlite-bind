@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCTransformEvent {
@@ -7,9 +10,7 @@ pub struct RTCTransformEvent {
 }
 impl FromVal for RTCTransformEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCTransformEvent {
-            inner: Event::from_val(v),
-        }
+        RTCTransformEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for RTCTransformEvent {
 }
 impl AsMut<emlite::Val> for RTCTransformEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RTCTransformEvent> for emlite::Val {
     fn from(s: RTCTransformEvent) -> emlite::Val {
@@ -48,10 +49,10 @@ impl From<RTCTransformEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCTransformEvent);
 
+
 impl RTCTransformEvent {
     pub fn transformer(&self) -> RTCRtpScriptTransformer {
-        self.inner
-            .get("transformer")
-            .as_::<RTCRtpScriptTransformer>()
+        self.inner.get("transformer").as_::<RTCRtpScriptTransformer>()
     }
+
 }

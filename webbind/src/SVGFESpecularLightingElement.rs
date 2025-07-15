@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGFESpecularLightingElement {
@@ -7,9 +10,7 @@ pub struct SVGFESpecularLightingElement {
 }
 impl FromVal for SVGFESpecularLightingElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGFESpecularLightingElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFESpecularLightingElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGFESpecularLightingElement {
 }
 impl AsMut<emlite::Val> for SVGFESpecularLightingElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGFESpecularLightingElement> for emlite::Val {
     fn from(s: SVGFESpecularLightingElement) -> emlite::Val {
@@ -48,66 +49,70 @@ impl From<SVGFESpecularLightingElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGFESpecularLightingElement);
 
+
 impl SVGFESpecularLightingElement {
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }
+
 }
 impl SVGFESpecularLightingElement {
     pub fn surface_scale(&self) -> SVGAnimatedNumber {
         self.inner.get("surfaceScale").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFESpecularLightingElement {
     pub fn specular_constant(&self) -> SVGAnimatedNumber {
-        self.inner
-            .get("specularConstant")
-            .as_::<SVGAnimatedNumber>()
+        self.inner.get("specularConstant").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFESpecularLightingElement {
     pub fn specular_exponent(&self) -> SVGAnimatedNumber {
-        self.inner
-            .get("specularExponent")
-            .as_::<SVGAnimatedNumber>()
+        self.inner.get("specularExponent").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFESpecularLightingElement {
     pub fn kernel_unit_length_x(&self) -> SVGAnimatedNumber {
-        self.inner
-            .get("kernelUnitLengthX")
-            .as_::<SVGAnimatedNumber>()
+        self.inner.get("kernelUnitLengthX").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFESpecularLightingElement {
     pub fn kernel_unit_length_y(&self) -> SVGAnimatedNumber {
-        self.inner
-            .get("kernelUnitLengthY")
-            .as_::<SVGAnimatedNumber>()
+        self.inner.get("kernelUnitLengthY").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFESpecularLightingElement {
     pub fn x(&self) -> SVGAnimatedLength {
         self.inner.get("x").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFESpecularLightingElement {
     pub fn y(&self) -> SVGAnimatedLength {
         self.inner.get("y").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFESpecularLightingElement {
     pub fn width(&self) -> SVGAnimatedLength {
         self.inner.get("width").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFESpecularLightingElement {
     pub fn height(&self) -> SVGAnimatedLength {
         self.inner.get("height").as_::<SVGAnimatedLength>()
     }
+
 }
 impl SVGFESpecularLightingElement {
     pub fn result(&self) -> SVGAnimatedString {
         self.inner.get("result").as_::<SVGAnimatedString>()
     }
+
 }

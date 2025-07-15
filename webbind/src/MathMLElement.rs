@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MathMLElement {
@@ -7,9 +10,7 @@ pub struct MathMLElement {
 }
 impl FromVal for MathMLElement {
     fn from_val(v: &emlite::Val) -> Self {
-        MathMLElement {
-            inner: Element::from_val(v),
-        }
+        MathMLElement { inner: Element::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for MathMLElement {
 }
 impl AsMut<emlite::Val> for MathMLElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MathMLElement> for emlite::Val {
     fn from(s: MathMLElement) -> emlite::Val {
@@ -48,33 +49,38 @@ impl From<MathMLElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(MathMLElement);
 
+
 impl MathMLElement {
     pub fn style(&self) -> CSSStyleDeclaration {
         self.inner.get("style").as_::<CSSStyleDeclaration>()
     }
+
 }
 impl MathMLElement {
-    pub fn onbeforexrselect(&self) -> jsbind::Any {
-        self.inner.get("onbeforexrselect").as_::<jsbind::Any>()
+    pub fn onbeforexrselect(&self) -> Any {
+        self.inner.get("onbeforexrselect").as_::<Any>()
     }
 
-    pub fn set_onbeforexrselect(&mut self, value: jsbind::Any) {
+    pub fn set_onbeforexrselect(&mut self, value: Any) {
         self.inner.set("onbeforexrselect", value);
     }
+
 }
 impl MathMLElement {
     pub fn dataset(&self) -> DOMStringMap {
         self.inner.get("dataset").as_::<DOMStringMap>()
     }
+
 }
 impl MathMLElement {
-    pub fn nonce(&self) -> jsbind::DOMString {
-        self.inner.get("nonce").as_::<jsbind::DOMString>()
+    pub fn nonce(&self) -> DOMString {
+        self.inner.get("nonce").as_::<DOMString>()
     }
 
-    pub fn set_nonce(&mut self, value: jsbind::DOMString) {
+    pub fn set_nonce(&mut self, value: DOMString) {
         self.inner.set("nonce", value);
     }
+
 }
 impl MathMLElement {
     pub fn autofocus(&self) -> bool {
@@ -84,6 +90,7 @@ impl MathMLElement {
     pub fn set_autofocus(&mut self, value: bool) {
         self.inner.set("autofocus", value);
     }
+
 }
 impl MathMLElement {
     pub fn tab_index(&self) -> i32 {
@@ -93,20 +100,21 @@ impl MathMLElement {
     pub fn set_tab_index(&mut self, value: i32) {
         self.inner.set("tabIndex", value);
     }
+
 }
 impl MathMLElement {
-    pub fn focus0(&self) -> jsbind::Undefined {
-        self.inner.call("focus", &[]).as_::<jsbind::Undefined>()
+    pub fn focus0(&self, ) -> Undefined {
+        self.inner.call("focus", &[]).as_::<Undefined>()
     }
 
-    pub fn focus1(&self, options: FocusOptions) -> jsbind::Undefined {
-        self.inner
-            .call("focus", &[options.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn focus1(&self, options: FocusOptions) -> Undefined {
+        self.inner.call("focus", &[options.into(), ]).as_::<Undefined>()
     }
+
 }
 impl MathMLElement {
-    pub fn blur(&self) -> jsbind::Undefined {
-        self.inner.call("blur", &[]).as_::<jsbind::Undefined>()
+    pub fn blur(&self, ) -> Undefined {
+        self.inner.call("blur", &[]).as_::<Undefined>()
     }
+
 }

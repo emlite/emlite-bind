@@ -64,27 +64,27 @@ export function flat(t) {
 export function rust(idlType) {
   const { n, unsigned } = flat(idlType);
   const jsbindMap = {
-    undefined: "jsbind::Undefined",
-    DOMString: "jsbind::DOMString",
-    USVString: "jsbind::USVString",
-    ByteString: "jsbind::ByteString",
-    CSSOMString: "jsbind::CSSOMString",
-    Promise: "jsbind::Promise",
-    object: "jsbind::Object",
-    any: "jsbind::Any",
-    Uint8Array: "jsbind::Uint8Array",
-    Int8Array: "jsbind::Int8Array",
-    Uint32Array: "jsbind::Uint32Array",
-    Int32Array: "jsbind::Int32Array",
-    Float32Array: "jsbind::Float32Array",
-    Float64Array: "jsbind::Float64Array",
-    ArrayBuffer: "jsbind::ArrayBuffer",
-    DataView: "jsbind::DataView",
+    undefined: "Undefined",
+    DOMString: "DOMString",
+    USVString: "USVString",
+    ByteString: "ByteString",
+    CSSOMString: "CSSOMString",
+    Promise: "Promise",
+    object: "Object",
+    any: "Any",
+    Uint8Array: "Uint8Array",
+    Int8Array: "Int8Array",
+    Uint32Array: "Uint32Array",
+    Int32Array: "Int32Array",
+    Float32Array: "Float32Array",
+    Float64Array: "Float64Array",
+    ArrayBuffer: "ArrayBuffer",
+    DataView: "DataView",
   };
 
   if (missingDictFallback.has(n) || builtinNominals.has(n))
-    return "jsbind::Any";
-  if (n.includes("EventInit")) return "jsbind::Any";
+    return "Any";
+  if (n.includes("EventInit")) return "Any";
 
   if (jsbindMap[n]) return jsbindMap[n];
 
@@ -94,23 +94,23 @@ export function rust(idlType) {
     const elem = Array.isArray(inner) ? inner[0] : inner;
 
     if (idlType.generic === "sequence") {
-      return `jsbind::Sequence<${rust(elem)}>`;
+      return `Sequence<${rust(elem)}>`;
     }
 
     if (idlType.generic === "FrozenArray") {
-      return `jsbind::FrozenArray<${rust(elem)}>`;
+      return `FrozenArray<${rust(elem)}>`;
     }
 
     if (idlType.generic === "ObservableArray") {
-      return `jsbind::ObservableArray<${rust(elem)}>`;
+      return `ObservableArray<${rust(elem)}>`;
     }
 
     if (idlType.generic === "record") {
       const [k, v] = inner;
-      return `jsbind::Record<${rust(k)}, ${rust(v)}>`;
+      return `Record<${rust(k)}, ${rust(v)}>`;
     }
   }
-  if (["__union", "__unk"].includes(n)) return "jsbind::Any";
+  if (["__union", "__unk"].includes(n)) return "Any";
   if (n === "boolean") return "bool";
   if (n === "byte") return "i8";
   if (n === "bigint") return "i64";
@@ -128,8 +128,8 @@ export function rust(idlType) {
   if (n === "double") return "f64";
   if (n === "float") return "f32";
   if (enums.has(n)) return n;
-  if (callbacks.has(n)) return "jsbind::Function";
-  if (typedefs.has(n) || n === "__union") return "jsbind::Any";
+  if (callbacks.has(n)) return "Function";
+  if (typedefs.has(n) || n === "__union") return "Any";
 
   return n;
 }

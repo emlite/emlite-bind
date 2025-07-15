@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGLUniformLocation {
@@ -7,9 +10,7 @@ pub struct WebGLUniformLocation {
 }
 impl FromVal for WebGLUniformLocation {
     fn from_val(v: &emlite::Val) -> Self {
-        WebGLUniformLocation {
-            inner: emlite::Val::from_val(v),
-        }
+        WebGLUniformLocation { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WebGLUniformLocation {
 }
 impl AsMut<emlite::Val> for WebGLUniformLocation {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WebGLUniformLocation> for emlite::Val {
     fn from(s: WebGLUniformLocation) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<WebGLUniformLocation> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(WebGLUniformLocation);
+
+

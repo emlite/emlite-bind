@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PerformanceServerTiming {
@@ -7,9 +10,7 @@ pub struct PerformanceServerTiming {
 }
 impl FromVal for PerformanceServerTiming {
     fn from_val(v: &emlite::Val) -> Self {
-        PerformanceServerTiming {
-            inner: emlite::Val::from_val(v),
-        }
+        PerformanceServerTiming { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PerformanceServerTiming {
 }
 impl AsMut<emlite::Val> for PerformanceServerTiming {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PerformanceServerTiming> for emlite::Val {
     fn from(s: PerformanceServerTiming) -> emlite::Val {
@@ -48,23 +49,28 @@ impl From<PerformanceServerTiming> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PerformanceServerTiming);
 
+
 impl PerformanceServerTiming {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
+
 }
 impl PerformanceServerTiming {
-    pub fn duration(&self) -> jsbind::Any {
-        self.inner.get("duration").as_::<jsbind::Any>()
+    pub fn duration(&self) -> Any {
+        self.inner.get("duration").as_::<Any>()
     }
+
 }
 impl PerformanceServerTiming {
-    pub fn description(&self) -> jsbind::DOMString {
-        self.inner.get("description").as_::<jsbind::DOMString>()
+    pub fn description(&self) -> DOMString {
+        self.inner.get("description").as_::<DOMString>()
     }
+
 }
 impl PerformanceServerTiming {
-    pub fn to_json(&self) -> jsbind::Object {
-        self.inner.call("toJSON", &[]).as_::<jsbind::Object>()
+    pub fn to_json(&self, ) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
+
 }

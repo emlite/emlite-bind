@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRSubImage {
@@ -7,9 +10,7 @@ pub struct XRSubImage {
 }
 impl FromVal for XRSubImage {
     fn from_val(v: &emlite::Val) -> Self {
-        XRSubImage {
-            inner: emlite::Val::from_val(v),
-        }
+        XRSubImage { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for XRSubImage {
 }
 impl AsMut<emlite::Val> for XRSubImage {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<XRSubImage> for emlite::Val {
     fn from(s: XRSubImage) -> emlite::Val {
@@ -48,8 +49,10 @@ impl From<XRSubImage> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(XRSubImage);
 
+
 impl XRSubImage {
     pub fn viewport(&self) -> XRViewport {
         self.inner.get("viewport").as_::<XRViewport>()
     }
+
 }

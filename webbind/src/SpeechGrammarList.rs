@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SpeechGrammarList {
@@ -7,9 +10,7 @@ pub struct SpeechGrammarList {
 }
 impl FromVal for SpeechGrammarList {
     fn from_val(v: &emlite::Val) -> Self {
-        SpeechGrammarList {
-            inner: emlite::Val::from_val(v),
-        }
+        SpeechGrammarList { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SpeechGrammarList {
 }
 impl AsMut<emlite::Val> for SpeechGrammarList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SpeechGrammarList> for emlite::Val {
     fn from(s: SpeechGrammarList) -> emlite::Val {
@@ -48,50 +49,45 @@ impl From<SpeechGrammarList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SpeechGrammarList);
 
+
+
 impl SpeechGrammarList {
     pub fn new() -> SpeechGrammarList {
         Self {
-            inner: emlite::Val::global("SpeechGrammarList")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("SpeechGrammarList").new(&[]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl SpeechGrammarList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl SpeechGrammarList {
     pub fn item(&self, index: u32) -> SpeechGrammar {
-        self.inner
-            .call("item", &[index.into()])
-            .as_::<SpeechGrammar>()
-    }
-}
-impl SpeechGrammarList {
-    pub fn add_from_uri0(&self, src: jsbind::DOMString) -> jsbind::Undefined {
-        self.inner
-            .call("addFromURI", &[src.into()])
-            .as_::<jsbind::Undefined>()
+        self.inner.call("item", &[index.into(), ]).as_::<SpeechGrammar>()
     }
 
-    pub fn add_from_uri1(&self, src: jsbind::DOMString, weight: f32) -> jsbind::Undefined {
-        self.inner
-            .call("addFromURI", &[src.into(), weight.into()])
-            .as_::<jsbind::Undefined>()
-    }
 }
 impl SpeechGrammarList {
-    pub fn add_from_string0(&self, string: jsbind::DOMString) -> jsbind::Undefined {
-        self.inner
-            .call("addFromString", &[string.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn add_from_uri0(&self, src: DOMString) -> Undefined {
+        self.inner.call("addFromURI", &[src.into(), ]).as_::<Undefined>()
     }
 
-    pub fn add_from_string1(&self, string: jsbind::DOMString, weight: f32) -> jsbind::Undefined {
-        self.inner
-            .call("addFromString", &[string.into(), weight.into()])
-            .as_::<jsbind::Undefined>()
+    pub fn add_from_uri1(&self, src: DOMString, weight: f32) -> Undefined {
+        self.inner.call("addFromURI", &[src.into(), weight.into(), ]).as_::<Undefined>()
     }
+
+}
+impl SpeechGrammarList {
+    pub fn add_from_string0(&self, string: DOMString) -> Undefined {
+        self.inner.call("addFromString", &[string.into(), ]).as_::<Undefined>()
+    }
+
+    pub fn add_from_string1(&self, string: DOMString, weight: f32) -> Undefined {
+        self.inner.call("addFromString", &[string.into(), weight.into(), ]).as_::<Undefined>()
+    }
+
 }

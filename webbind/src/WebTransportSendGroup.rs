@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebTransportSendGroup {
@@ -7,9 +10,7 @@ pub struct WebTransportSendGroup {
 }
 impl FromVal for WebTransportSendGroup {
     fn from_val(v: &emlite::Val) -> Self {
-        WebTransportSendGroup {
-            inner: emlite::Val::from_val(v),
-        }
+        WebTransportSendGroup { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WebTransportSendGroup {
 }
 impl AsMut<emlite::Val> for WebTransportSendGroup {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WebTransportSendGroup> for emlite::Val {
     fn from(s: WebTransportSendGroup) -> emlite::Val {
@@ -48,8 +49,10 @@ impl From<WebTransportSendGroup> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WebTransportSendGroup);
 
+
 impl WebTransportSendGroup {
-    pub fn get_stats(&self) -> jsbind::Promise {
-        self.inner.call("getStats", &[]).as_::<jsbind::Promise>()
+    pub fn get_stats(&self, ) -> Promise {
+        self.inner.call("getStats", &[]).as_::<Promise>()
     }
+
 }

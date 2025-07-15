@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct URLPatternResult {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for URLPatternResult {
 }
 impl AsMut<emlite::Val> for URLPatternResult {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<URLPatternResult> for emlite::Val {
     fn from(s: URLPatternResult) -> emlite::Val {
@@ -46,87 +49,94 @@ impl From<URLPatternResult> for emlite::Val {
 }
 
 impl URLPatternResult {
-    pub fn inputs(&self) -> jsbind::Sequence<jsbind::Any> {
-        self.inner
-            .get("inputs")
-            .as_::<jsbind::Sequence<jsbind::Any>>()
+    pub fn inputs(&self) -> Sequence<Any> {
+        self.inner.get("inputs").as_::<Sequence<Any>>()
     }
 
-    pub fn set_inputs(&mut self, value: jsbind::Sequence<jsbind::Any>) {
+    pub fn set_inputs(&mut self, value: Sequence<Any>) {
         self.inner.set("inputs", value);
     }
+
 }
 impl URLPatternResult {
-    pub fn protocol(&self) -> jsbind::Any {
-        self.inner.get("protocol").as_::<jsbind::Any>()
+    pub fn protocol(&self) -> Any {
+        self.inner.get("protocol").as_::<Any>()
     }
 
-    pub fn set_protocol(&mut self, value: jsbind::Any) {
+    pub fn set_protocol(&mut self, value: Any) {
         self.inner.set("protocol", value);
     }
+
 }
 impl URLPatternResult {
-    pub fn username(&self) -> jsbind::Any {
-        self.inner.get("username").as_::<jsbind::Any>()
+    pub fn username(&self) -> Any {
+        self.inner.get("username").as_::<Any>()
     }
 
-    pub fn set_username(&mut self, value: jsbind::Any) {
+    pub fn set_username(&mut self, value: Any) {
         self.inner.set("username", value);
     }
+
 }
 impl URLPatternResult {
-    pub fn password(&self) -> jsbind::Any {
-        self.inner.get("password").as_::<jsbind::Any>()
+    pub fn password(&self) -> Any {
+        self.inner.get("password").as_::<Any>()
     }
 
-    pub fn set_password(&mut self, value: jsbind::Any) {
+    pub fn set_password(&mut self, value: Any) {
         self.inner.set("password", value);
     }
+
 }
 impl URLPatternResult {
-    pub fn hostname(&self) -> jsbind::Any {
-        self.inner.get("hostname").as_::<jsbind::Any>()
+    pub fn hostname(&self) -> Any {
+        self.inner.get("hostname").as_::<Any>()
     }
 
-    pub fn set_hostname(&mut self, value: jsbind::Any) {
+    pub fn set_hostname(&mut self, value: Any) {
         self.inner.set("hostname", value);
     }
+
 }
 impl URLPatternResult {
-    pub fn port(&self) -> jsbind::Any {
-        self.inner.get("port").as_::<jsbind::Any>()
+    pub fn port(&self) -> Any {
+        self.inner.get("port").as_::<Any>()
     }
 
-    pub fn set_port(&mut self, value: jsbind::Any) {
+    pub fn set_port(&mut self, value: Any) {
         self.inner.set("port", value);
     }
+
 }
 impl URLPatternResult {
-    pub fn pathname(&self) -> jsbind::Any {
-        self.inner.get("pathname").as_::<jsbind::Any>()
+    pub fn pathname(&self) -> Any {
+        self.inner.get("pathname").as_::<Any>()
     }
 
-    pub fn set_pathname(&mut self, value: jsbind::Any) {
+    pub fn set_pathname(&mut self, value: Any) {
         self.inner.set("pathname", value);
     }
+
 }
 impl URLPatternResult {
-    pub fn search(&self) -> jsbind::Any {
-        self.inner.get("search").as_::<jsbind::Any>()
+    pub fn search(&self) -> Any {
+        self.inner.get("search").as_::<Any>()
     }
 
-    pub fn set_search(&mut self, value: jsbind::Any) {
+    pub fn set_search(&mut self, value: Any) {
         self.inner.set("search", value);
     }
+
 }
 impl URLPatternResult {
-    pub fn hash(&self) -> jsbind::Any {
-        self.inner.get("hash").as_::<jsbind::Any>()
+    pub fn hash(&self) -> Any {
+        self.inner.get("hash").as_::<Any>()
     }
 
-    pub fn set_hash(&mut self, value: jsbind::Any) {
+    pub fn set_hash(&mut self, value: Any) {
         self.inner.set("hash", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -135,9 +145,7 @@ pub struct URLPattern {
 }
 impl FromVal for URLPattern {
     fn from_val(v: &emlite::Val) -> Self {
-        URLPattern {
-            inner: emlite::Val::from_val(v),
-        }
+        URLPattern { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -164,8 +172,8 @@ impl AsRef<emlite::Val> for URLPattern {
 }
 impl AsMut<emlite::Val> for URLPattern {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<URLPattern> for emlite::Val {
     fn from(s: URLPattern) -> emlite::Val {
@@ -176,105 +184,107 @@ impl From<URLPattern> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(URLPattern);
 
+
+
 impl URLPattern {
     pub fn new0() -> URLPattern {
         Self {
-            inner: emlite::Val::global("URLPattern")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("URLPattern").new(&[]).as_::<emlite::Val>(),
         }
     }
 
-    pub fn new1(input: jsbind::Any) -> URLPattern {
+    pub fn new1(input: Any) -> URLPattern {
         Self {
-            inner: emlite::Val::global("URLPattern")
-                .new(&[input.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("URLPattern").new(&[input.into()]).as_::<emlite::Val>(),
         }
     }
 
-    pub fn new2(input: jsbind::Any, options: jsbind::Any) -> URLPattern {
+    pub fn new2(input: Any, options: Any) -> URLPattern {
         Self {
-            inner: emlite::Val::global("URLPattern")
-                .new(&[input.into(), options.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("URLPattern").new(&[input.into(), options.into()]).as_::<emlite::Val>(),
         }
     }
+
 }
 impl URLPattern {
-    pub fn test0(&self) -> bool {
+    pub fn test0(&self, ) -> bool {
         self.inner.call("test", &[]).as_::<bool>()
     }
 
-    pub fn test1(&self, input: jsbind::Any) -> bool {
-        self.inner.call("test", &[input.into()]).as_::<bool>()
+    pub fn test1(&self, input: Any) -> bool {
+        self.inner.call("test", &[input.into(), ]).as_::<bool>()
     }
 
-    pub fn test2(&self, input: jsbind::Any, base_url: jsbind::USVString) -> bool {
-        self.inner
-            .call("test", &[input.into(), base_url.into()])
-            .as_::<bool>()
+    pub fn test2(&self, input: Any, base_url: USVString) -> bool {
+        self.inner.call("test", &[input.into(), base_url.into(), ]).as_::<bool>()
     }
+
 }
 impl URLPattern {
-    pub fn exec0(&self) -> URLPatternResult {
+    pub fn exec0(&self, ) -> URLPatternResult {
         self.inner.call("exec", &[]).as_::<URLPatternResult>()
     }
 
-    pub fn exec1(&self, input: jsbind::Any) -> URLPatternResult {
-        self.inner
-            .call("exec", &[input.into()])
-            .as_::<URLPatternResult>()
+    pub fn exec1(&self, input: Any) -> URLPatternResult {
+        self.inner.call("exec", &[input.into(), ]).as_::<URLPatternResult>()
     }
 
-    pub fn exec2(&self, input: jsbind::Any, base_url: jsbind::USVString) -> URLPatternResult {
-        self.inner
-            .call("exec", &[input.into(), base_url.into()])
-            .as_::<URLPatternResult>()
+    pub fn exec2(&self, input: Any, base_url: USVString) -> URLPatternResult {
+        self.inner.call("exec", &[input.into(), base_url.into(), ]).as_::<URLPatternResult>()
     }
+
 }
 impl URLPattern {
-    pub fn protocol(&self) -> jsbind::USVString {
-        self.inner.get("protocol").as_::<jsbind::USVString>()
+    pub fn protocol(&self) -> USVString {
+        self.inner.get("protocol").as_::<USVString>()
     }
+
 }
 impl URLPattern {
-    pub fn username(&self) -> jsbind::USVString {
-        self.inner.get("username").as_::<jsbind::USVString>()
+    pub fn username(&self) -> USVString {
+        self.inner.get("username").as_::<USVString>()
     }
+
 }
 impl URLPattern {
-    pub fn password(&self) -> jsbind::USVString {
-        self.inner.get("password").as_::<jsbind::USVString>()
+    pub fn password(&self) -> USVString {
+        self.inner.get("password").as_::<USVString>()
     }
+
 }
 impl URLPattern {
-    pub fn hostname(&self) -> jsbind::USVString {
-        self.inner.get("hostname").as_::<jsbind::USVString>()
+    pub fn hostname(&self) -> USVString {
+        self.inner.get("hostname").as_::<USVString>()
     }
+
 }
 impl URLPattern {
-    pub fn port(&self) -> jsbind::USVString {
-        self.inner.get("port").as_::<jsbind::USVString>()
+    pub fn port(&self) -> USVString {
+        self.inner.get("port").as_::<USVString>()
     }
+
 }
 impl URLPattern {
-    pub fn pathname(&self) -> jsbind::USVString {
-        self.inner.get("pathname").as_::<jsbind::USVString>()
+    pub fn pathname(&self) -> USVString {
+        self.inner.get("pathname").as_::<USVString>()
     }
+
 }
 impl URLPattern {
-    pub fn search(&self) -> jsbind::USVString {
-        self.inner.get("search").as_::<jsbind::USVString>()
+    pub fn search(&self) -> USVString {
+        self.inner.get("search").as_::<USVString>()
     }
+
 }
 impl URLPattern {
-    pub fn hash(&self) -> jsbind::USVString {
-        self.inner.get("hash").as_::<jsbind::USVString>()
+    pub fn hash(&self) -> USVString {
+        self.inner.get("hash").as_::<USVString>()
     }
+
 }
 impl URLPattern {
     pub fn has_reg_exp_groups(&self) -> bool {
         self.inner.get("hasRegExpGroups").as_::<bool>()
     }
+
 }

@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGPointList {
@@ -7,9 +10,7 @@ pub struct SVGPointList {
 }
 impl FromVal for SVGPointList {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGPointList {
-            inner: emlite::Val::from_val(v),
-        }
+        SVGPointList { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGPointList {
 }
 impl AsMut<emlite::Val> for SVGPointList {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGPointList> for emlite::Val {
     fn from(s: SVGPointList) -> emlite::Val {
@@ -48,60 +49,58 @@ impl From<SVGPointList> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGPointList);
 
+
 impl SVGPointList {
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
+
 }
 impl SVGPointList {
     pub fn number_of_items(&self) -> u32 {
         self.inner.get("numberOfItems").as_::<u32>()
     }
+
 }
 impl SVGPointList {
-    pub fn clear(&self) -> jsbind::Undefined {
-        self.inner.call("clear", &[]).as_::<jsbind::Undefined>()
+    pub fn clear(&self, ) -> Undefined {
+        self.inner.call("clear", &[]).as_::<Undefined>()
     }
+
 }
 impl SVGPointList {
     pub fn initialize(&self, new_item: DOMPoint) -> DOMPoint {
-        self.inner
-            .call("initialize", &[new_item.into()])
-            .as_::<DOMPoint>()
+        self.inner.call("initialize", &[new_item.into(), ]).as_::<DOMPoint>()
     }
+
 }
 impl SVGPointList {
     pub fn get_item(&self, index: u32) -> DOMPoint {
-        self.inner
-            .call("getItem", &[index.into()])
-            .as_::<DOMPoint>()
+        self.inner.call("getItem", &[index.into(), ]).as_::<DOMPoint>()
     }
+
 }
 impl SVGPointList {
     pub fn insert_item_before(&self, new_item: DOMPoint, index: u32) -> DOMPoint {
-        self.inner
-            .call("insertItemBefore", &[new_item.into(), index.into()])
-            .as_::<DOMPoint>()
+        self.inner.call("insertItemBefore", &[new_item.into(), index.into(), ]).as_::<DOMPoint>()
     }
+
 }
 impl SVGPointList {
     pub fn replace_item(&self, new_item: DOMPoint, index: u32) -> DOMPoint {
-        self.inner
-            .call("replaceItem", &[new_item.into(), index.into()])
-            .as_::<DOMPoint>()
+        self.inner.call("replaceItem", &[new_item.into(), index.into(), ]).as_::<DOMPoint>()
     }
+
 }
 impl SVGPointList {
     pub fn remove_item(&self, index: u32) -> DOMPoint {
-        self.inner
-            .call("removeItem", &[index.into()])
-            .as_::<DOMPoint>()
+        self.inner.call("removeItem", &[index.into(), ]).as_::<DOMPoint>()
     }
+
 }
 impl SVGPointList {
     pub fn append_item(&self, new_item: DOMPoint) -> DOMPoint {
-        self.inner
-            .call("appendItem", &[new_item.into()])
-            .as_::<DOMPoint>()
+        self.inner.call("appendItem", &[new_item.into(), ]).as_::<DOMPoint>()
     }
+
 }

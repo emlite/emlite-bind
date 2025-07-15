@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SFrameTransformErrorEvent {
@@ -7,9 +10,7 @@ pub struct SFrameTransformErrorEvent {
 }
 impl FromVal for SFrameTransformErrorEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        SFrameTransformErrorEvent {
-            inner: Event::from_val(v),
-        }
+        SFrameTransformErrorEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SFrameTransformErrorEvent {
 }
 impl AsMut<emlite::Val> for SFrameTransformErrorEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SFrameTransformErrorEvent> for emlite::Val {
     fn from(s: SFrameTransformErrorEvent) -> emlite::Val {
@@ -48,32 +49,31 @@ impl From<SFrameTransformErrorEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SFrameTransformErrorEvent);
 
+
+
 impl SFrameTransformErrorEvent {
-    pub fn new(
-        type_: jsbind::DOMString,
-        event_init_dict: jsbind::Any,
-    ) -> SFrameTransformErrorEvent {
+    pub fn new(type_: DOMString, event_init_dict: Any) -> SFrameTransformErrorEvent {
         Self {
-            inner: emlite::Val::global("SFrameTransformErrorEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("SFrameTransformErrorEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl SFrameTransformErrorEvent {
     pub fn error_type(&self) -> SFrameTransformErrorEventType {
-        self.inner
-            .get("errorType")
-            .as_::<SFrameTransformErrorEventType>()
+        self.inner.get("errorType").as_::<SFrameTransformErrorEventType>()
     }
+
 }
 impl SFrameTransformErrorEvent {
-    pub fn key_id(&self) -> jsbind::Any {
-        self.inner.get("keyID").as_::<jsbind::Any>()
+    pub fn key_id(&self) -> Any {
+        self.inner.get("keyID").as_::<Any>()
     }
+
 }
 impl SFrameTransformErrorEvent {
-    pub fn frame(&self) -> jsbind::Any {
-        self.inner.get("frame").as_::<jsbind::Any>()
+    pub fn frame(&self) -> Any {
+        self.inner.get("frame").as_::<Any>()
     }
+
 }

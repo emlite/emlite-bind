@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PresentationReceiver {
@@ -7,9 +10,7 @@ pub struct PresentationReceiver {
 }
 impl FromVal for PresentationReceiver {
     fn from_val(v: &emlite::Val) -> Self {
-        PresentationReceiver {
-            inner: emlite::Val::from_val(v),
-        }
+        PresentationReceiver { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PresentationReceiver {
 }
 impl AsMut<emlite::Val> for PresentationReceiver {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PresentationReceiver> for emlite::Val {
     fn from(s: PresentationReceiver) -> emlite::Val {
@@ -48,8 +49,10 @@ impl From<PresentationReceiver> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PresentationReceiver);
 
+
 impl PresentationReceiver {
-    pub fn connection_list(&self) -> jsbind::Promise {
-        self.inner.get("connectionList").as_::<jsbind::Promise>()
+    pub fn connection_list(&self) -> Promise {
+        self.inner.get("connectionList").as_::<Promise>()
     }
+
 }

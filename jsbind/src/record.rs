@@ -6,20 +6,15 @@ use emlite::FromVal;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Record<K, V> {
-    /// Underlying JavaScript object.
     inner: emlite::Val,
-    /// Marks the key type at compile‑time.
-    phantom1: PhantomData<K>,
-    /// Marks the value type at compile‑time.
-    phantom2: PhantomData<V>,
+    _phantom: PhantomData<(K, V)>,
 }
 
 impl<K, V> emlite::FromVal for Record<K, V> {
     fn from_val(v: &emlite::Val) -> Self {
         Self {
             inner: v.clone(),
-            phantom1: PhantomData,
-            phantom2: PhantomData,
+            _phantom: PhantomData,
         }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
@@ -73,13 +68,18 @@ impl<K, V> Record<K, V> {
         self.inner.set(item, val);
     }
 
-    pub fn get(&self, item: K) -> V
+    pub fn get(&self, item: K) -> Option<V>
     where
         emlite::Val: From<K>,
         emlite::Val: From<V>,
         V: FromVal,
     {
-        self.inner.get(item).as_::<V>()
+        let v = self.inner.get(item);
+        if v.is_undefined() {
+            None
+        } else {
+            Some(v.as_::<V>())
+        }
     }
 
     /// Returns whether a value exists in the sequence.

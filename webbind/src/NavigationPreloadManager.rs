@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NavigationPreloadState {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for NavigationPreloadState {
 }
 impl AsMut<emlite::Val> for NavigationPreloadState {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NavigationPreloadState> for emlite::Val {
     fn from(s: NavigationPreloadState) -> emlite::Val {
@@ -53,15 +56,17 @@ impl NavigationPreloadState {
     pub fn set_enabled(&mut self, value: bool) {
         self.inner.set("enabled", value);
     }
+
 }
 impl NavigationPreloadState {
-    pub fn header_value(&self) -> jsbind::ByteString {
-        self.inner.get("headerValue").as_::<jsbind::ByteString>()
+    pub fn header_value(&self) -> ByteString {
+        self.inner.get("headerValue").as_::<ByteString>()
     }
 
-    pub fn set_header_value(&mut self, value: jsbind::ByteString) {
+    pub fn set_header_value(&mut self, value: ByteString) {
         self.inner.set("headerValue", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -70,9 +75,7 @@ pub struct NavigationPreloadManager {
 }
 impl FromVal for NavigationPreloadManager {
     fn from_val(v: &emlite::Val) -> Self {
-        NavigationPreloadManager {
-            inner: emlite::Val::from_val(v),
-        }
+        NavigationPreloadManager { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -99,8 +102,8 @@ impl AsRef<emlite::Val> for NavigationPreloadManager {
 }
 impl AsMut<emlite::Val> for NavigationPreloadManager {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<NavigationPreloadManager> for emlite::Val {
     fn from(s: NavigationPreloadManager) -> emlite::Val {
@@ -111,25 +114,28 @@ impl From<NavigationPreloadManager> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(NavigationPreloadManager);
 
+
 impl NavigationPreloadManager {
-    pub fn enable(&self) -> jsbind::Promise {
-        self.inner.call("enable", &[]).as_::<jsbind::Promise>()
+    pub fn enable(&self, ) -> Promise {
+        self.inner.call("enable", &[]).as_::<Promise>()
     }
+
 }
 impl NavigationPreloadManager {
-    pub fn disable(&self) -> jsbind::Promise {
-        self.inner.call("disable", &[]).as_::<jsbind::Promise>()
+    pub fn disable(&self, ) -> Promise {
+        self.inner.call("disable", &[]).as_::<Promise>()
     }
+
 }
 impl NavigationPreloadManager {
-    pub fn set_header_value(&self, value: jsbind::ByteString) -> jsbind::Promise {
-        self.inner
-            .call("setHeaderValue", &[value.into()])
-            .as_::<jsbind::Promise>()
+    pub fn set_header_value(&self, value: ByteString) -> Promise {
+        self.inner.call("setHeaderValue", &[value.into(), ]).as_::<Promise>()
     }
+
 }
 impl NavigationPreloadManager {
-    pub fn get_state(&self) -> jsbind::Promise {
-        self.inner.call("getState", &[]).as_::<jsbind::Promise>()
+    pub fn get_state(&self, ) -> Promise {
+        self.inner.call("getState", &[]).as_::<Promise>()
     }
+
 }

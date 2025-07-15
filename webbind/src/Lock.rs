@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Lock {
@@ -7,9 +10,7 @@ pub struct Lock {
 }
 impl FromVal for Lock {
     fn from_val(v: &emlite::Val) -> Self {
-        Lock {
-            inner: emlite::Val::from_val(v),
-        }
+        Lock { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for Lock {
 }
 impl AsMut<emlite::Val> for Lock {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<Lock> for emlite::Val {
     fn from(s: Lock) -> emlite::Val {
@@ -48,13 +49,16 @@ impl From<Lock> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(Lock);
 
+
 impl Lock {
-    pub fn name(&self) -> jsbind::DOMString {
-        self.inner.get("name").as_::<jsbind::DOMString>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
+
 }
 impl Lock {
     pub fn mode(&self) -> LockMode {
         self.inner.get("mode").as_::<LockMode>()
     }
+
 }

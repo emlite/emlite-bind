@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGSymbolElement {
@@ -7,9 +10,7 @@ pub struct SVGSymbolElement {
 }
 impl FromVal for SVGSymbolElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGSymbolElement {
-            inner: SVGGraphicsElement::from_val(v),
-        }
+        SVGSymbolElement { inner: SVGGraphicsElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGSymbolElement {
 }
 impl AsMut<emlite::Val> for SVGSymbolElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGSymbolElement> for emlite::Val {
     fn from(s: SVGSymbolElement) -> emlite::Val {
@@ -48,15 +49,16 @@ impl From<SVGSymbolElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGSymbolElement);
 
+
 impl SVGSymbolElement {
     pub fn view_box(&self) -> SVGAnimatedRect {
         self.inner.get("viewBox").as_::<SVGAnimatedRect>()
     }
+
 }
 impl SVGSymbolElement {
     pub fn preserve_aspect_ratio(&self) -> SVGAnimatedPreserveAspectRatio {
-        self.inner
-            .get("preserveAspectRatio")
-            .as_::<SVGAnimatedPreserveAspectRatio>()
+        self.inner.get("preserveAspectRatio").as_::<SVGAnimatedPreserveAspectRatio>()
     }
+
 }

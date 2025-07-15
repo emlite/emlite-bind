@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SyncEvent {
@@ -7,9 +10,7 @@ pub struct SyncEvent {
 }
 impl FromVal for SyncEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        SyncEvent {
-            inner: ExtendableEvent::from_val(v),
-        }
+        SyncEvent { inner: ExtendableEvent::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SyncEvent {
 }
 impl AsMut<emlite::Val> for SyncEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SyncEvent> for emlite::Val {
     fn from(s: SyncEvent) -> emlite::Val {
@@ -48,22 +49,25 @@ impl From<SyncEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SyncEvent);
 
+
+
 impl SyncEvent {
-    pub fn new(type_: jsbind::DOMString, init: jsbind::Any) -> SyncEvent {
+    pub fn new(type_: DOMString, init: Any) -> SyncEvent {
         Self {
-            inner: emlite::Val::global("SyncEvent")
-                .new(&[type_.into(), init.into()])
-                .as_::<ExtendableEvent>(),
+            inner: emlite::Val::global("SyncEvent").new(&[type_.into(), init.into()]).as_::<ExtendableEvent>(),
         }
     }
+
 }
 impl SyncEvent {
-    pub fn tag(&self) -> jsbind::DOMString {
-        self.inner.get("tag").as_::<jsbind::DOMString>()
+    pub fn tag(&self) -> DOMString {
+        self.inner.get("tag").as_::<DOMString>()
     }
+
 }
 impl SyncEvent {
     pub fn last_chance(&self) -> bool {
         self.inner.get("lastChance").as_::<bool>()
     }
+
 }

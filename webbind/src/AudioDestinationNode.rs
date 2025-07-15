@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioDestinationNode {
@@ -7,9 +10,7 @@ pub struct AudioDestinationNode {
 }
 impl FromVal for AudioDestinationNode {
     fn from_val(v: &emlite::Val) -> Self {
-        AudioDestinationNode {
-            inner: AudioNode::from_val(v),
-        }
+        AudioDestinationNode { inner: AudioNode::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for AudioDestinationNode {
 }
 impl AsMut<emlite::Val> for AudioDestinationNode {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<AudioDestinationNode> for emlite::Val {
     fn from(s: AudioDestinationNode) -> emlite::Val {
@@ -48,8 +49,10 @@ impl From<AudioDestinationNode> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(AudioDestinationNode);
 
+
 impl AudioDestinationNode {
     pub fn max_channel_count(&self) -> u32 {
         self.inner.get("maxChannelCount").as_::<u32>()
     }
+
 }

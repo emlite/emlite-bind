@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCRtpReceiveParameters {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for RTCRtpReceiveParameters {
 }
 impl AsMut<emlite::Val> for RTCRtpReceiveParameters {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RTCRtpReceiveParameters> for emlite::Val {
     fn from(s: RTCRtpReceiveParameters) -> emlite::Val {
@@ -79,8 +82,8 @@ impl AsRef<emlite::Val> for RTCRtpContributingSource {
 }
 impl AsMut<emlite::Val> for RTCRtpContributingSource {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RTCRtpContributingSource> for emlite::Val {
     fn from(s: RTCRtpContributingSource) -> emlite::Val {
@@ -91,13 +94,14 @@ impl From<RTCRtpContributingSource> for emlite::Val {
 }
 
 impl RTCRtpContributingSource {
-    pub fn timestamp(&self) -> jsbind::Any {
-        self.inner.get("timestamp").as_::<jsbind::Any>()
+    pub fn timestamp(&self) -> Any {
+        self.inner.get("timestamp").as_::<Any>()
     }
 
-    pub fn set_timestamp(&mut self, value: jsbind::Any) {
+    pub fn set_timestamp(&mut self, value: Any) {
         self.inner.set("timestamp", value);
     }
+
 }
 impl RTCRtpContributingSource {
     pub fn source(&self) -> u32 {
@@ -107,6 +111,7 @@ impl RTCRtpContributingSource {
     pub fn set_source(&mut self, value: u32) {
         self.inner.set("source", value);
     }
+
 }
 impl RTCRtpContributingSource {
     pub fn audio_level(&self) -> f64 {
@@ -116,6 +121,7 @@ impl RTCRtpContributingSource {
     pub fn set_audio_level(&mut self, value: f64) {
         self.inner.set("audioLevel", value);
     }
+
 }
 impl RTCRtpContributingSource {
     pub fn rtp_timestamp(&self) -> u32 {
@@ -125,6 +131,7 @@ impl RTCRtpContributingSource {
     pub fn set_rtp_timestamp(&mut self, value: u32) {
         self.inner.set("rtpTimestamp", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -160,8 +167,8 @@ impl AsRef<emlite::Val> for RTCRtpSynchronizationSource {
 }
 impl AsMut<emlite::Val> for RTCRtpSynchronizationSource {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RTCRtpSynchronizationSource> for emlite::Val {
     fn from(s: RTCRtpSynchronizationSource) -> emlite::Val {
@@ -178,9 +185,7 @@ pub struct RTCRtpReceiver {
 }
 impl FromVal for RTCRtpReceiver {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCRtpReceiver {
-            inner: emlite::Val::from_val(v),
-        }
+        RTCRtpReceiver { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -207,8 +212,8 @@ impl AsRef<emlite::Val> for RTCRtpReceiver {
 }
 impl AsMut<emlite::Val> for RTCRtpReceiver {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RTCRtpReceiver> for emlite::Val {
     fn from(s: RTCRtpReceiver) -> emlite::Val {
@@ -219,64 +224,66 @@ impl From<RTCRtpReceiver> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCRtpReceiver);
 
+
 impl RTCRtpReceiver {
     pub fn track(&self) -> MediaStreamTrack {
         self.inner.get("track").as_::<MediaStreamTrack>()
     }
+
 }
 impl RTCRtpReceiver {
     pub fn transport(&self) -> RTCDtlsTransport {
         self.inner.get("transport").as_::<RTCDtlsTransport>()
     }
+
 }
 impl RTCRtpReceiver {
-    pub fn get_capabilities(kind: jsbind::DOMString) -> RTCRtpCapabilities {
-        emlite::Val::global("rtcrtpreceiver")
-            .call("getCapabilities", &[kind.into()])
-            .as_::<RTCRtpCapabilities>()
-    }
-}
-impl RTCRtpReceiver {
-    pub fn get_parameters(&self) -> RTCRtpReceiveParameters {
-        self.inner
-            .call("getParameters", &[])
-            .as_::<RTCRtpReceiveParameters>()
-    }
-}
-impl RTCRtpReceiver {
-    pub fn get_contributing_sources(&self) -> jsbind::Sequence<RTCRtpContributingSource> {
-        self.inner
-            .call("getContributingSources", &[])
-            .as_::<jsbind::Sequence<RTCRtpContributingSource>>()
-    }
-}
-impl RTCRtpReceiver {
-    pub fn get_synchronization_sources(&self) -> jsbind::Sequence<RTCRtpSynchronizationSource> {
-        self.inner
-            .call("getSynchronizationSources", &[])
-            .as_::<jsbind::Sequence<RTCRtpSynchronizationSource>>()
-    }
-}
-impl RTCRtpReceiver {
-    pub fn get_stats(&self) -> jsbind::Promise {
-        self.inner.call("getStats", &[]).as_::<jsbind::Promise>()
-    }
-}
-impl RTCRtpReceiver {
-    pub fn jitter_buffer_target(&self) -> jsbind::Any {
-        self.inner.get("jitterBufferTarget").as_::<jsbind::Any>()
+    pub fn get_capabilities(kind: DOMString) -> RTCRtpCapabilities {
+        emlite::Val::global("rtcrtpreceiver").call("getCapabilities", &[kind.into(), ]).as_::<RTCRtpCapabilities>()
     }
 
-    pub fn set_jitter_buffer_target(&mut self, value: jsbind::Any) {
+}
+impl RTCRtpReceiver {
+    pub fn get_parameters(&self, ) -> RTCRtpReceiveParameters {
+        self.inner.call("getParameters", &[]).as_::<RTCRtpReceiveParameters>()
+    }
+
+}
+impl RTCRtpReceiver {
+    pub fn get_contributing_sources(&self, ) -> Sequence<RTCRtpContributingSource> {
+        self.inner.call("getContributingSources", &[]).as_::<Sequence<RTCRtpContributingSource>>()
+    }
+
+}
+impl RTCRtpReceiver {
+    pub fn get_synchronization_sources(&self, ) -> Sequence<RTCRtpSynchronizationSource> {
+        self.inner.call("getSynchronizationSources", &[]).as_::<Sequence<RTCRtpSynchronizationSource>>()
+    }
+
+}
+impl RTCRtpReceiver {
+    pub fn get_stats(&self, ) -> Promise {
+        self.inner.call("getStats", &[]).as_::<Promise>()
+    }
+
+}
+impl RTCRtpReceiver {
+    pub fn jitter_buffer_target(&self) -> Any {
+        self.inner.get("jitterBufferTarget").as_::<Any>()
+    }
+
+    pub fn set_jitter_buffer_target(&mut self, value: Any) {
         self.inner.set("jitterBufferTarget", value);
     }
+
 }
 impl RTCRtpReceiver {
-    pub fn transform(&self) -> jsbind::Any {
-        self.inner.get("transform").as_::<jsbind::Any>()
+    pub fn transform(&self) -> Any {
+        self.inner.get("transform").as_::<Any>()
     }
 
-    pub fn set_transform(&mut self, value: jsbind::Any) {
+    pub fn set_transform(&mut self, value: Any) {
         self.inner.set("transform", value);
     }
+
 }

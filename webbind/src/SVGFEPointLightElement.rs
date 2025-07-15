@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGFEPointLightElement {
@@ -7,9 +10,7 @@ pub struct SVGFEPointLightElement {
 }
 impl FromVal for SVGFEPointLightElement {
     fn from_val(v: &emlite::Val) -> Self {
-        SVGFEPointLightElement {
-            inner: SVGElement::from_val(v),
-        }
+        SVGFEPointLightElement { inner: SVGElement::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for SVGFEPointLightElement {
 }
 impl AsMut<emlite::Val> for SVGFEPointLightElement {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<SVGFEPointLightElement> for emlite::Val {
     fn from(s: SVGFEPointLightElement) -> emlite::Val {
@@ -48,18 +49,22 @@ impl From<SVGFEPointLightElement> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(SVGFEPointLightElement);
 
+
 impl SVGFEPointLightElement {
     pub fn x(&self) -> SVGAnimatedNumber {
         self.inner.get("x").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEPointLightElement {
     pub fn y(&self) -> SVGAnimatedNumber {
         self.inner.get("y").as_::<SVGAnimatedNumber>()
     }
+
 }
 impl SVGFEPointLightElement {
     pub fn z(&self) -> SVGAnimatedNumber {
         self.inner.get("z").as_::<SVGAnimatedNumber>()
     }
+
 }

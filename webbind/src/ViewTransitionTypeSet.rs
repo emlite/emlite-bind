@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ViewTransitionTypeSet {
@@ -7,9 +10,7 @@ pub struct ViewTransitionTypeSet {
 }
 impl FromVal for ViewTransitionTypeSet {
     fn from_val(v: &emlite::Val) -> Self {
-        ViewTransitionTypeSet {
-            inner: emlite::Val::from_val(v),
-        }
+        ViewTransitionTypeSet { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ViewTransitionTypeSet {
 }
 impl AsMut<emlite::Val> for ViewTransitionTypeSet {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ViewTransitionTypeSet> for emlite::Val {
     fn from(s: ViewTransitionTypeSet) -> emlite::Val {
@@ -47,3 +48,5 @@ impl From<ViewTransitionTypeSet> for emlite::Val {
     }
 }
 jsbind::utils::impl_dyn_cast!(ViewTransitionTypeSet);
+
+

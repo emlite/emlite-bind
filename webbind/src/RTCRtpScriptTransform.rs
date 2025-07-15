@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCRtpScriptTransform {
@@ -7,9 +10,7 @@ pub struct RTCRtpScriptTransform {
 }
 impl FromVal for RTCRtpScriptTransform {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCRtpScriptTransform {
-            inner: emlite::Val::from_val(v),
-        }
+        RTCRtpScriptTransform { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for RTCRtpScriptTransform {
 }
 impl AsMut<emlite::Val> for RTCRtpScriptTransform {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RTCRtpScriptTransform> for emlite::Val {
     fn from(s: RTCRtpScriptTransform) -> emlite::Val {
@@ -48,32 +49,25 @@ impl From<RTCRtpScriptTransform> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCRtpScriptTransform);
 
+
+
 impl RTCRtpScriptTransform {
     pub fn new0(worker: Worker) -> RTCRtpScriptTransform {
         Self {
-            inner: emlite::Val::global("RTCRtpScriptTransform")
-                .new(&[worker.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("RTCRtpScriptTransform").new(&[worker.into()]).as_::<emlite::Val>(),
         }
     }
 
-    pub fn new1(worker: Worker, options: jsbind::Any) -> RTCRtpScriptTransform {
+    pub fn new1(worker: Worker, options: Any) -> RTCRtpScriptTransform {
         Self {
-            inner: emlite::Val::global("RTCRtpScriptTransform")
-                .new(&[worker.into(), options.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("RTCRtpScriptTransform").new(&[worker.into(), options.into()]).as_::<emlite::Val>(),
         }
     }
 
-    pub fn new2(
-        worker: Worker,
-        options: jsbind::Any,
-        transfer: jsbind::Sequence<jsbind::Object>,
-    ) -> RTCRtpScriptTransform {
+    pub fn new2(worker: Worker, options: Any, transfer: Sequence<Object>) -> RTCRtpScriptTransform {
         Self {
-            inner: emlite::Val::global("RTCRtpScriptTransform")
-                .new(&[worker.into(), options.into(), transfer.into()])
-                .as_::<emlite::Val>(),
+            inner: emlite::Val::global("RTCRtpScriptTransform").new(&[worker.into(), options.into(), transfer.into()]).as_::<emlite::Val>(),
         }
     }
+
 }

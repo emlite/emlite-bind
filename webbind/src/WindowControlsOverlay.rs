@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WindowControlsOverlay {
@@ -7,9 +10,7 @@ pub struct WindowControlsOverlay {
 }
 impl FromVal for WindowControlsOverlay {
     fn from_val(v: &emlite::Val) -> Self {
-        WindowControlsOverlay {
-            inner: EventTarget::from_val(v),
-        }
+        WindowControlsOverlay { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for WindowControlsOverlay {
 }
 impl AsMut<emlite::Val> for WindowControlsOverlay {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<WindowControlsOverlay> for emlite::Val {
     fn from(s: WindowControlsOverlay) -> emlite::Val {
@@ -48,22 +49,26 @@ impl From<WindowControlsOverlay> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(WindowControlsOverlay);
 
+
 impl WindowControlsOverlay {
     pub fn visible(&self) -> bool {
         self.inner.get("visible").as_::<bool>()
     }
+
 }
 impl WindowControlsOverlay {
-    pub fn get_titlebar_area_rect(&self) -> DOMRect {
+    pub fn get_titlebar_area_rect(&self, ) -> DOMRect {
         self.inner.call("getTitlebarAreaRect", &[]).as_::<DOMRect>()
     }
+
 }
 impl WindowControlsOverlay {
-    pub fn ongeometrychange(&self) -> jsbind::Any {
-        self.inner.get("ongeometrychange").as_::<jsbind::Any>()
+    pub fn ongeometrychange(&self) -> Any {
+        self.inner.get("ongeometrychange").as_::<Any>()
     }
 
-    pub fn set_ongeometrychange(&mut self, value: jsbind::Any) {
+    pub fn set_ongeometrychange(&mut self, value: Any) {
         self.inner.set("ongeometrychange", value);
     }
+
 }

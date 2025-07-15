@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PressureRecord {
@@ -7,9 +10,7 @@ pub struct PressureRecord {
 }
 impl FromVal for PressureRecord {
     fn from_val(v: &emlite::Val) -> Self {
-        PressureRecord {
-            inner: emlite::Val::from_val(v),
-        }
+        PressureRecord { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PressureRecord {
 }
 impl AsMut<emlite::Val> for PressureRecord {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PressureRecord> for emlite::Val {
     fn from(s: PressureRecord) -> emlite::Val {
@@ -48,23 +49,28 @@ impl From<PressureRecord> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PressureRecord);
 
+
 impl PressureRecord {
     pub fn source(&self) -> PressureSource {
         self.inner.get("source").as_::<PressureSource>()
     }
+
 }
 impl PressureRecord {
     pub fn state(&self) -> PressureState {
         self.inner.get("state").as_::<PressureState>()
     }
+
 }
 impl PressureRecord {
-    pub fn time(&self) -> jsbind::Any {
-        self.inner.get("time").as_::<jsbind::Any>()
+    pub fn time(&self) -> Any {
+        self.inner.get("time").as_::<Any>()
     }
+
 }
 impl PressureRecord {
-    pub fn to_json(&self) -> jsbind::Object {
-        self.inner.call("toJSON", &[]).as_::<jsbind::Object>()
+    pub fn to_json(&self, ) -> Object {
+        self.inner.call("toJSON", &[]).as_::<Object>()
     }
+
 }

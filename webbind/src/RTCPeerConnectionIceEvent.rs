@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCPeerConnectionIceEvent {
@@ -7,9 +10,7 @@ pub struct RTCPeerConnectionIceEvent {
 }
 impl FromVal for RTCPeerConnectionIceEvent {
     fn from_val(v: &emlite::Val) -> Self {
-        RTCPeerConnectionIceEvent {
-            inner: Event::from_val(v),
-        }
+        RTCPeerConnectionIceEvent { inner: Event::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for RTCPeerConnectionIceEvent {
 }
 impl AsMut<emlite::Val> for RTCPeerConnectionIceEvent {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<RTCPeerConnectionIceEvent> for emlite::Val {
     fn from(s: RTCPeerConnectionIceEvent) -> emlite::Val {
@@ -48,33 +49,31 @@ impl From<RTCPeerConnectionIceEvent> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(RTCPeerConnectionIceEvent);
 
+
+
 impl RTCPeerConnectionIceEvent {
-    pub fn new0(type_: jsbind::DOMString) -> RTCPeerConnectionIceEvent {
+    pub fn new0(type_: DOMString) -> RTCPeerConnectionIceEvent {
         Self {
-            inner: emlite::Val::global("RTCPeerConnectionIceEvent")
-                .new(&[type_.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("RTCPeerConnectionIceEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
-    pub fn new1(
-        type_: jsbind::DOMString,
-        event_init_dict: jsbind::Any,
-    ) -> RTCPeerConnectionIceEvent {
+    pub fn new1(type_: DOMString, event_init_dict: Any) -> RTCPeerConnectionIceEvent {
         Self {
-            inner: emlite::Val::global("RTCPeerConnectionIceEvent")
-                .new(&[type_.into(), event_init_dict.into()])
-                .as_::<Event>(),
+            inner: emlite::Val::global("RTCPeerConnectionIceEvent").new(&[type_.into(), event_init_dict.into()]).as_::<Event>(),
         }
     }
+
 }
 impl RTCPeerConnectionIceEvent {
     pub fn candidate(&self) -> RTCIceCandidate {
         self.inner.get("candidate").as_::<RTCIceCandidate>()
     }
+
 }
 impl RTCPeerConnectionIceEvent {
-    pub fn url(&self) -> jsbind::USVString {
-        self.inner.get("url").as_::<jsbind::USVString>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
+
 }

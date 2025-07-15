@@ -1,5 +1,5 @@
 use crate::utils::*;
-use crate::{Any, Promise};
+use crate::{any::Any, promise::Promise};
 
 /// JavaScript `Response` object returned by `fetch`.
 #[derive(Clone, Debug, PartialEq, PartialOrd)]

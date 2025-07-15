@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MultiCacheQueryOptions {
@@ -34,8 +37,8 @@ impl AsRef<emlite::Val> for MultiCacheQueryOptions {
 }
 impl AsMut<emlite::Val> for MultiCacheQueryOptions {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<MultiCacheQueryOptions> for emlite::Val {
     fn from(s: MultiCacheQueryOptions) -> emlite::Val {
@@ -46,13 +49,14 @@ impl From<MultiCacheQueryOptions> for emlite::Val {
 }
 
 impl MultiCacheQueryOptions {
-    pub fn cache_name(&self) -> jsbind::DOMString {
-        self.inner.get("cacheName").as_::<jsbind::DOMString>()
+    pub fn cache_name(&self) -> DOMString {
+        self.inner.get("cacheName").as_::<DOMString>()
     }
 
-    pub fn set_cache_name(&mut self, value: jsbind::DOMString) {
+    pub fn set_cache_name(&mut self, value: DOMString) {
         self.inner.set("cacheName", value);
     }
+
 }
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
@@ -61,9 +65,7 @@ pub struct CacheStorage {
 }
 impl FromVal for CacheStorage {
     fn from_val(v: &emlite::Val) -> Self {
-        CacheStorage {
-            inner: emlite::Val::from_val(v),
-        }
+        CacheStorage { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -90,8 +92,8 @@ impl AsRef<emlite::Val> for CacheStorage {
 }
 impl AsMut<emlite::Val> for CacheStorage {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<CacheStorage> for emlite::Val {
     fn from(s: CacheStorage) -> emlite::Val {
@@ -102,46 +104,38 @@ impl From<CacheStorage> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(CacheStorage);
 
+
 impl CacheStorage {
-    pub fn match_0(&self, request: jsbind::Any) -> jsbind::Promise {
-        self.inner
-            .call("match", &[request.into()])
-            .as_::<jsbind::Promise>()
+    pub fn match_0(&self, request: Any) -> Promise {
+        self.inner.call("match", &[request.into(), ]).as_::<Promise>()
     }
 
-    pub fn match_1(
-        &self,
-        request: jsbind::Any,
-        options: MultiCacheQueryOptions,
-    ) -> jsbind::Promise {
-        self.inner
-            .call("match", &[request.into(), options.into()])
-            .as_::<jsbind::Promise>()
+    pub fn match_1(&self, request: Any, options: MultiCacheQueryOptions) -> Promise {
+        self.inner.call("match", &[request.into(), options.into(), ]).as_::<Promise>()
     }
+
 }
 impl CacheStorage {
-    pub fn has(&self, cache_name: jsbind::DOMString) -> jsbind::Promise {
-        self.inner
-            .call("has", &[cache_name.into()])
-            .as_::<jsbind::Promise>()
+    pub fn has(&self, cache_name: DOMString) -> Promise {
+        self.inner.call("has", &[cache_name.into(), ]).as_::<Promise>()
     }
+
 }
 impl CacheStorage {
-    pub fn open(&self, cache_name: jsbind::DOMString) -> jsbind::Promise {
-        self.inner
-            .call("open", &[cache_name.into()])
-            .as_::<jsbind::Promise>()
+    pub fn open(&self, cache_name: DOMString) -> Promise {
+        self.inner.call("open", &[cache_name.into(), ]).as_::<Promise>()
     }
+
 }
 impl CacheStorage {
-    pub fn delete(&self, cache_name: jsbind::DOMString) -> jsbind::Promise {
-        self.inner
-            .call("delete", &[cache_name.into()])
-            .as_::<jsbind::Promise>()
+    pub fn delete(&self, cache_name: DOMString) -> Promise {
+        self.inner.call("delete", &[cache_name.into(), ]).as_::<Promise>()
     }
+
 }
 impl CacheStorage {
-    pub fn keys(&self) -> jsbind::Promise {
-        self.inner.call("keys", &[]).as_::<jsbind::Promise>()
+    pub fn keys(&self, ) -> Promise {
+        self.inner.call("keys", &[]).as_::<Promise>()
     }
+
 }

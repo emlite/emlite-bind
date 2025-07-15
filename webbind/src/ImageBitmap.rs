@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ImageBitmap {
@@ -7,9 +10,7 @@ pub struct ImageBitmap {
 }
 impl FromVal for ImageBitmap {
     fn from_val(v: &emlite::Val) -> Self {
-        ImageBitmap {
-            inner: emlite::Val::from_val(v),
-        }
+        ImageBitmap { inner: emlite::Val::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for ImageBitmap {
 }
 impl AsMut<emlite::Val> for ImageBitmap {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<ImageBitmap> for emlite::Val {
     fn from(s: ImageBitmap) -> emlite::Val {
@@ -48,18 +49,22 @@ impl From<ImageBitmap> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(ImageBitmap);
 
+
 impl ImageBitmap {
     pub fn width(&self) -> u32 {
         self.inner.get("width").as_::<u32>()
     }
+
 }
 impl ImageBitmap {
     pub fn height(&self) -> u32 {
         self.inner.get("height").as_::<u32>()
     }
+
 }
 impl ImageBitmap {
-    pub fn close(&self) -> jsbind::Undefined {
-        self.inner.call("close", &[]).as_::<jsbind::Undefined>()
+    pub fn close(&self, ) -> Undefined {
+        self.inner.call("close", &[]).as_::<Undefined>()
     }
+
 }

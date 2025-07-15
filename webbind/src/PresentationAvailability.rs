@@ -1,5 +1,8 @@
 use super::*;
 
+
+
+
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PresentationAvailability {
@@ -7,9 +10,7 @@ pub struct PresentationAvailability {
 }
 impl FromVal for PresentationAvailability {
     fn from_val(v: &emlite::Val) -> Self {
-        PresentationAvailability {
-            inner: EventTarget::from_val(v),
-        }
+        PresentationAvailability { inner: EventTarget::from_val(v) }
     }
     fn take_ownership(v: emlite::env::Handle) -> Self {
         Self::from_val(&emlite::Val::take_ownership(v))
@@ -36,8 +37,8 @@ impl AsRef<emlite::Val> for PresentationAvailability {
 }
 impl AsMut<emlite::Val> for PresentationAvailability {
     fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
+      &mut self.inner
+  }
 }
 impl From<PresentationAvailability> for emlite::Val {
     fn from(s: PresentationAvailability) -> emlite::Val {
@@ -48,17 +49,20 @@ impl From<PresentationAvailability> for emlite::Val {
 }
 jsbind::utils::impl_dyn_cast!(PresentationAvailability);
 
+
 impl PresentationAvailability {
     pub fn value(&self) -> bool {
         self.inner.get("value").as_::<bool>()
     }
+
 }
 impl PresentationAvailability {
-    pub fn onchange(&self) -> jsbind::Any {
-        self.inner.get("onchange").as_::<jsbind::Any>()
+    pub fn onchange(&self) -> Any {
+        self.inner.get("onchange").as_::<Any>()
     }
 
-    pub fn set_onchange(&mut self, value: jsbind::Any) {
+    pub fn set_onchange(&mut self, value: Any) {
         self.inner.set("onchange", value);
     }
+
 }
