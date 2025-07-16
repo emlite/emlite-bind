@@ -1,20 +1,22 @@
 use super::*;
 
+/// The MediaStream class.
+/// [`MediaStream`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaStream {
     inner: EventTarget,
 }
 impl FromVal for MediaStream {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaStream {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,45 +31,50 @@ impl core::ops::DerefMut for MediaStream {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaStream {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaStream {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaStream {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaStream {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaStream> for emlite::Val {
-    fn from(s: MediaStream) -> emlite::Val {
+impl From<MediaStream> for Any {
+    fn from(s: MediaStream) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaStream> for emlite::Val {
-    fn from(s: &MediaStream) -> emlite::Val {
+impl From<&MediaStream> for Any {
+    fn from(s: &MediaStream) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaStream);
 
 impl MediaStream {
+    /// The `new MediaStream(..)` constructor, creating a new MediaStream instance
     pub fn new(tracks: &Sequence<MediaStreamTrack>) -> MediaStream {
         Self {
-            inner: emlite::Val::global("MediaStream")
+            inner: Any::global("MediaStream")
                 .new(&[tracks.into()])
                 .as_::<EventTarget>(),
         }
     }
 }
 impl MediaStream {
+    /// Getter of the `id` attribute.
+    /// [`MediaStream.id`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/id)
     pub fn id(&self) -> String {
         self.inner.get("id").as_::<String>()
     }
 }
 impl MediaStream {
+    /// The getAudioTracks method.
+    /// [`MediaStream.getAudioTracks`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/getAudioTracks)
     pub fn get_audio_tracks(&self) -> Sequence<MediaStreamTrack> {
         self.inner
             .call("getAudioTracks", &[])
@@ -75,6 +82,8 @@ impl MediaStream {
     }
 }
 impl MediaStream {
+    /// The getVideoTracks method.
+    /// [`MediaStream.getVideoTracks`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/getVideoTracks)
     pub fn get_video_tracks(&self) -> Sequence<MediaStreamTrack> {
         self.inner
             .call("getVideoTracks", &[])
@@ -82,6 +91,8 @@ impl MediaStream {
     }
 }
 impl MediaStream {
+    /// The getTracks method.
+    /// [`MediaStream.getTracks`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/getTracks)
     pub fn get_tracks(&self) -> Sequence<MediaStreamTrack> {
         self.inner
             .call("getTracks", &[])
@@ -89,6 +100,8 @@ impl MediaStream {
     }
 }
 impl MediaStream {
+    /// The getTrackById method.
+    /// [`MediaStream.getTrackById`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/getTrackById)
     pub fn get_track_by_id(&self, track_id: &str) -> MediaStreamTrack {
         self.inner
             .call("getTrackById", &[track_id.into()])
@@ -96,6 +109,8 @@ impl MediaStream {
     }
 }
 impl MediaStream {
+    /// The addTrack method.
+    /// [`MediaStream.addTrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/addTrack)
     pub fn add_track(&self, track: &MediaStreamTrack) -> Undefined {
         self.inner
             .call("addTrack", &[track.into()])
@@ -103,6 +118,8 @@ impl MediaStream {
     }
 }
 impl MediaStream {
+    /// The removeTrack method.
+    /// [`MediaStream.removeTrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/removeTrack)
     pub fn remove_track(&self, track: &MediaStreamTrack) -> Undefined {
         self.inner
             .call("removeTrack", &[track.into()])
@@ -110,29 +127,41 @@ impl MediaStream {
     }
 }
 impl MediaStream {
+    /// The clone method.
+    /// [`MediaStream.clone`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/clone)
     pub fn clone_(&self) -> MediaStream {
         self.inner.call("clone", &[]).as_::<MediaStream>()
     }
 }
 impl MediaStream {
+    /// Getter of the `active` attribute.
+    /// [`MediaStream.active`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/active)
     pub fn active(&self) -> bool {
         self.inner.get("active").as_::<bool>()
     }
 }
 impl MediaStream {
+    /// Getter of the `onaddtrack` attribute.
+    /// [`MediaStream.onaddtrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/onaddtrack)
     pub fn onaddtrack(&self) -> Any {
         self.inner.get("onaddtrack").as_::<Any>()
     }
 
+    /// Setter of the `onaddtrack` attribute.
+    /// [`MediaStream.onaddtrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/onaddtrack)
     pub fn set_onaddtrack(&mut self, value: &Any) {
         self.inner.set("onaddtrack", value);
     }
 }
 impl MediaStream {
+    /// Getter of the `onremovetrack` attribute.
+    /// [`MediaStream.onremovetrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/onremovetrack)
     pub fn onremovetrack(&self) -> Any {
         self.inner.get("onremovetrack").as_::<Any>()
     }
 
+    /// Setter of the `onremovetrack` attribute.
+    /// [`MediaStream.onremovetrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/onremovetrack)
     pub fn set_onremovetrack(&mut self, value: &Any) {
         self.inner.set("onremovetrack", value);
     }

@@ -1,25 +1,27 @@
 use super::*;
 
+/// The TextEncoderStream class.
+/// [`TextEncoderStream`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoderStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TextEncoderStream {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for TextEncoderStream {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         TextEncoderStream {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for TextEncoderStream {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,50 +31,55 @@ impl core::ops::DerefMut for TextEncoderStream {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for TextEncoderStream {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for TextEncoderStream {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for TextEncoderStream {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for TextEncoderStream {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<TextEncoderStream> for emlite::Val {
-    fn from(s: TextEncoderStream) -> emlite::Val {
+impl From<TextEncoderStream> for Any {
+    fn from(s: TextEncoderStream) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&TextEncoderStream> for emlite::Val {
-    fn from(s: &TextEncoderStream) -> emlite::Val {
+impl From<&TextEncoderStream> for Any {
+    fn from(s: &TextEncoderStream) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(TextEncoderStream);
 
 impl TextEncoderStream {
+    /// The `new TextEncoderStream(..)` constructor, creating a new TextEncoderStream instance
     pub fn new() -> TextEncoderStream {
         Self {
-            inner: emlite::Val::global("TextEncoderStream")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("TextEncoderStream").new(&[]).as_::<Any>(),
         }
     }
 }
 impl TextEncoderStream {
+    /// Getter of the `encoding` attribute.
+    /// [`TextEncoderStream.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoderStream/encoding)
     pub fn encoding(&self) -> String {
         self.inner.get("encoding").as_::<String>()
     }
 }
 impl TextEncoderStream {
+    /// Getter of the `readable` attribute.
+    /// [`TextEncoderStream.readable`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoderStream/readable)
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
 }
 impl TextEncoderStream {
+    /// Getter of the `writable` attribute.
+    /// [`TextEncoderStream.writable`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoderStream/writable)
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
     }

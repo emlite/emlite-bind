@@ -1,20 +1,22 @@
 use super::*;
 
+/// The WebSocket class.
+/// [`WebSocket`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebSocket {
     inner: EventTarget,
 }
 impl FromVal for WebSocket {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WebSocket {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,108 +31,136 @@ impl core::ops::DerefMut for WebSocket {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WebSocket {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WebSocket {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WebSocket {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WebSocket {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WebSocket> for emlite::Val {
-    fn from(s: WebSocket) -> emlite::Val {
+impl From<WebSocket> for Any {
+    fn from(s: WebSocket) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WebSocket> for emlite::Val {
-    fn from(s: &WebSocket) -> emlite::Val {
+impl From<&WebSocket> for Any {
+    fn from(s: &WebSocket) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(WebSocket);
 
 impl WebSocket {
+    /// The `new WebSocket(..)` constructor, creating a new WebSocket instance
     pub fn new0(url: &str) -> WebSocket {
         Self {
-            inner: emlite::Val::global("WebSocket")
+            inner: Any::global("WebSocket")
                 .new(&[url.into()])
                 .as_::<EventTarget>(),
         }
     }
 
+    /// The `new WebSocket(..)` constructor, creating a new WebSocket instance
     pub fn new1(url: &str, protocols: &Any) -> WebSocket {
         Self {
-            inner: emlite::Val::global("WebSocket")
+            inner: Any::global("WebSocket")
                 .new(&[url.into(), protocols.into()])
                 .as_::<EventTarget>(),
         }
     }
 }
 impl WebSocket {
+    /// Getter of the `url` attribute.
+    /// [`WebSocket.url`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/url)
     pub fn url(&self) -> String {
         self.inner.get("url").as_::<String>()
     }
 }
 impl WebSocket {
+    /// Getter of the `readyState` attribute.
+    /// [`WebSocket.readyState`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/readyState)
     pub fn ready_state(&self) -> u16 {
         self.inner.get("readyState").as_::<u16>()
     }
 }
 impl WebSocket {
+    /// Getter of the `bufferedAmount` attribute.
+    /// [`WebSocket.bufferedAmount`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/bufferedAmount)
     pub fn buffered_amount(&self) -> u64 {
         self.inner.get("bufferedAmount").as_::<u64>()
     }
 }
 impl WebSocket {
+    /// Getter of the `onopen` attribute.
+    /// [`WebSocket.onopen`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/onopen)
     pub fn onopen(&self) -> Any {
         self.inner.get("onopen").as_::<Any>()
     }
 
+    /// Setter of the `onopen` attribute.
+    /// [`WebSocket.onopen`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/onopen)
     pub fn set_onopen(&mut self, value: &Any) {
         self.inner.set("onopen", value);
     }
 }
 impl WebSocket {
+    /// Getter of the `onerror` attribute.
+    /// [`WebSocket.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/onerror)
     pub fn onerror(&self) -> Any {
         self.inner.get("onerror").as_::<Any>()
     }
 
+    /// Setter of the `onerror` attribute.
+    /// [`WebSocket.onerror`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/onerror)
     pub fn set_onerror(&mut self, value: &Any) {
         self.inner.set("onerror", value);
     }
 }
 impl WebSocket {
+    /// Getter of the `onclose` attribute.
+    /// [`WebSocket.onclose`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/onclose)
     pub fn onclose(&self) -> Any {
         self.inner.get("onclose").as_::<Any>()
     }
 
+    /// Setter of the `onclose` attribute.
+    /// [`WebSocket.onclose`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/onclose)
     pub fn set_onclose(&mut self, value: &Any) {
         self.inner.set("onclose", value);
     }
 }
 impl WebSocket {
+    /// Getter of the `extensions` attribute.
+    /// [`WebSocket.extensions`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/extensions)
     pub fn extensions(&self) -> String {
         self.inner.get("extensions").as_::<String>()
     }
 }
 impl WebSocket {
+    /// Getter of the `protocol` attribute.
+    /// [`WebSocket.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/protocol)
     pub fn protocol(&self) -> String {
         self.inner.get("protocol").as_::<String>()
     }
 }
 impl WebSocket {
+    /// The close method.
+    /// [`WebSocket.close`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close)
     pub fn close0(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
-
+    /// The close method.
+    /// [`WebSocket.close`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close)
     pub fn close1(&self, code: u16) -> Undefined {
         self.inner.call("close", &[code.into()]).as_::<Undefined>()
     }
-
+    /// The close method.
+    /// [`WebSocket.close`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close)
     pub fn close2(&self, code: u16, reason: &str) -> Undefined {
         self.inner
             .call("close", &[code.into(), reason.into()])
@@ -138,24 +168,34 @@ impl WebSocket {
     }
 }
 impl WebSocket {
+    /// Getter of the `onmessage` attribute.
+    /// [`WebSocket.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/onmessage)
     pub fn onmessage(&self) -> Any {
         self.inner.get("onmessage").as_::<Any>()
     }
 
+    /// Setter of the `onmessage` attribute.
+    /// [`WebSocket.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/onmessage)
     pub fn set_onmessage(&mut self, value: &Any) {
         self.inner.set("onmessage", value);
     }
 }
 impl WebSocket {
+    /// Getter of the `binaryType` attribute.
+    /// [`WebSocket.binaryType`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/binaryType)
     pub fn binary_type(&self) -> BinaryType {
         self.inner.get("binaryType").as_::<BinaryType>()
     }
 
+    /// Setter of the `binaryType` attribute.
+    /// [`WebSocket.binaryType`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/binaryType)
     pub fn set_binary_type(&mut self, value: &BinaryType) {
         self.inner.set("binaryType", value);
     }
 }
 impl WebSocket {
+    /// The send method.
+    /// [`WebSocket.send`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/send)
     pub fn send(&self, data: &Any) -> Undefined {
         self.inner.call("send", &[data.into()]).as_::<Undefined>()
     }

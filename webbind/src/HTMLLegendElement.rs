@@ -1,20 +1,22 @@
 use super::*;
 
+/// The HTMLLegendElement class.
+/// [`HTMLLegendElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLegendElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLLegendElement {
     inner: HTMLElement,
 }
 impl FromVal for HTMLLegendElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HTMLLegendElement {
             inner: HTMLElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,49 +31,56 @@ impl core::ops::DerefMut for HTMLLegendElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HTMLLegendElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HTMLLegendElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HTMLLegendElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HTMLLegendElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HTMLLegendElement> for emlite::Val {
-    fn from(s: HTMLLegendElement) -> emlite::Val {
+impl From<HTMLLegendElement> for Any {
+    fn from(s: HTMLLegendElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HTMLLegendElement> for emlite::Val {
-    fn from(s: &HTMLLegendElement) -> emlite::Val {
+impl From<&HTMLLegendElement> for Any {
+    fn from(s: &HTMLLegendElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLLegendElement);
 
 impl HTMLLegendElement {
+    /// The `new HTMLLegendElement(..)` constructor, creating a new HTMLLegendElement instance
     pub fn new() -> HTMLLegendElement {
         Self {
-            inner: emlite::Val::global("HTMLLegendElement")
+            inner: Any::global("HTMLLegendElement")
                 .new(&[])
                 .as_::<HTMLElement>(),
         }
     }
 }
 impl HTMLLegendElement {
+    /// Getter of the `form` attribute.
+    /// [`HTMLLegendElement.form`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLegendElement/form)
     pub fn form(&self) -> HTMLFormElement {
         self.inner.get("form").as_::<HTMLFormElement>()
     }
 }
 impl HTMLLegendElement {
+    /// Getter of the `align` attribute.
+    /// [`HTMLLegendElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLegendElement/align)
     pub fn align(&self) -> String {
         self.inner.get("align").as_::<String>()
     }
 
+    /// Setter of the `align` attribute.
+    /// [`HTMLLegendElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLegendElement/align)
     pub fn set_align(&mut self, value: &str) {
         self.inner.set("align", value);
     }

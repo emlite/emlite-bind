@@ -6,7 +6,7 @@ import {
   builtinNominals,
   rustKeywords,
   missingDictFallback,
-  IGNOREDFILES
+  IGNOREDFILES,
 } from "./ignored.js";
 import { enums, typedefs, callbacks } from "./globals.js";
 
@@ -16,7 +16,7 @@ const __dirname = path.dirname(__filename);
 export const OUT_SRC = path.resolve(__dirname, "../webbind/src");
 
 function srcFile(name) {
-    return path.join(OUT_SRC, `${name}.rs`);
+  return path.join(OUT_SRC, `${name}.rs`);
 }
 
 export function writeSrcFile(name, srcLines) {
@@ -82,8 +82,7 @@ export function rust(idlType) {
     DataView: "DataView",
   };
 
-  if (missingDictFallback.has(n) || builtinNominals.has(n))
-    return "Any";
+  if (missingDictFallback.has(n) || builtinNominals.has(n)) return "Any";
   if (n.includes("EventInit")) return "Any";
 
   if (jsbindMap[n]) return jsbindMap[n];
@@ -143,7 +142,6 @@ export function argtypeFix(type) {
 export function fixIdent(name0) {
   const name = changeCase.snakeCase(name0);
   if (rustKeywords.has(name)) return name + "_";
-  if (name === "BroadcastChannel" || name === "SharedWorker") return name + "_";
   if (name === "") return "none";
   let out = name.replace(/[/\-+]/g, "_");
   if (/^[0-9]/.test(out)) out = "_" + out;

@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct InkPresenterParam {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for InkPresenterParam {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         InkPresenterParam { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for InkPresenterParam {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for InkPresenterParam {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for InkPresenterParam {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for InkPresenterParam {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for InkPresenterParam {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for InkPresenterParam {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<InkPresenterParam> for emlite::Val {
-    fn from(s: InkPresenterParam) -> emlite::Val {
+impl From<InkPresenterParam> for Any {
+    fn from(s: InkPresenterParam) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&InkPresenterParam> for emlite::Val {
-    fn from(s: &InkPresenterParam) -> emlite::Val {
+impl From<&InkPresenterParam> for Any {
+    fn from(s: &InkPresenterParam) -> Any {
         s.inner.clone()
     }
 }
@@ -59,26 +59,28 @@ impl InkPresenterParam {
         self.inner.set("presentationArea", value);
     }
 }
+/// The Ink class.
+/// [`Ink`](https://developer.mozilla.org/en-US/docs/Web/API/Ink)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Ink {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Ink {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Ink {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Ink {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -88,35 +90,38 @@ impl core::ops::DerefMut for Ink {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Ink {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Ink {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Ink {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Ink {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Ink> for emlite::Val {
-    fn from(s: Ink) -> emlite::Val {
+impl From<Ink> for Any {
+    fn from(s: Ink) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Ink> for emlite::Val {
-    fn from(s: &Ink) -> emlite::Val {
+impl From<&Ink> for Any {
+    fn from(s: &Ink) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Ink);
 
 impl Ink {
+    /// The requestPresenter method.
+    /// [`Ink.requestPresenter`](https://developer.mozilla.org/en-US/docs/Web/API/Ink/requestPresenter)
     pub fn request_presenter0(&self) -> Promise {
         self.inner.call("requestPresenter", &[]).as_::<Promise>()
     }
-
+    /// The requestPresenter method.
+    /// [`Ink.requestPresenter`](https://developer.mozilla.org/en-US/docs/Web/API/Ink/requestPresenter)
     pub fn request_presenter1(&self, param: &InkPresenterParam) -> Promise {
         self.inner
             .call("requestPresenter", &[param.into()])

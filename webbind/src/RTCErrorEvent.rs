@@ -1,20 +1,22 @@
 use super::*;
 
+/// The RTCErrorEvent class.
+/// [`RTCErrorEvent`](https://developer.mozilla.org/en-US/docs/Web/API/RTCErrorEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCErrorEvent {
     inner: Event,
 }
 impl FromVal for RTCErrorEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCErrorEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,40 +31,43 @@ impl core::ops::DerefMut for RTCErrorEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCErrorEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCErrorEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCErrorEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCErrorEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCErrorEvent> for emlite::Val {
-    fn from(s: RTCErrorEvent) -> emlite::Val {
+impl From<RTCErrorEvent> for Any {
+    fn from(s: RTCErrorEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCErrorEvent> for emlite::Val {
-    fn from(s: &RTCErrorEvent) -> emlite::Val {
+impl From<&RTCErrorEvent> for Any {
+    fn from(s: &RTCErrorEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCErrorEvent);
 
 impl RTCErrorEvent {
+    /// The `new RTCErrorEvent(..)` constructor, creating a new RTCErrorEvent instance
     pub fn new(type_: &str, event_init_dict: &Any) -> RTCErrorEvent {
         Self {
-            inner: emlite::Val::global("RTCErrorEvent")
+            inner: Any::global("RTCErrorEvent")
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl RTCErrorEvent {
+    /// Getter of the `error` attribute.
+    /// [`RTCErrorEvent.error`](https://developer.mozilla.org/en-US/docs/Web/API/RTCErrorEvent/error)
     pub fn error(&self) -> RTCError {
         self.inner.get("error").as_::<RTCError>()
     }

@@ -1,35 +1,22 @@
 use super::*;
 
+/// The CSSPageDescriptors class.
+/// [`CSSPageDescriptors`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSPageDescriptors {
     inner: CSSStyleDeclaration,
 }
-
-jsbind::utils::impl_dyn_cast!(CSSPageDescriptors);
-
-impl AsRef<emlite::Val> for CSSPageDescriptors {
-    fn as_ref(&self) -> &emlite::Val {
-        &self.inner
-    }
-}
-
-impl AsMut<emlite::Val> for CSSPageDescriptors {
-    fn as_mut(&mut self) -> &mut emlite::Val {
-        &mut self.inner
-    }
-}
-
 impl FromVal for CSSPageDescriptors {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSPageDescriptors {
             inner: CSSStyleDeclaration::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -44,99 +31,143 @@ impl core::ops::DerefMut for CSSPageDescriptors {
         &mut self.inner
     }
 }
-impl From<CSSPageDescriptors> for emlite::Val {
-    fn from(x: CSSPageDescriptors) -> emlite::Val {
-        let handle = x.inner.as_handle();
-        core::mem::forget(x);
-        emlite::Val::take_ownership(handle)
+impl AsRef<Any> for CSSPageDescriptors {
+    fn as_ref(&self) -> &Any {
+        &self.inner
     }
 }
-
-impl From<&CSSPageDescriptors> for emlite::Val {
-    fn from(x: &CSSPageDescriptors) -> emlite::Val {
-        x.inner.clone().into()
+impl AsMut<Any> for CSSPageDescriptors {
+    fn as_mut(&mut self) -> &mut Any {
+        &mut self.inner
     }
 }
+impl From<CSSPageDescriptors> for Any {
+    fn from(s: CSSPageDescriptors) -> Any {
+        let handle = s.inner.as_handle();
+        core::mem::forget(s);
+        Any::take_ownership(handle)
+    }
+}
+impl From<&CSSPageDescriptors> for Any {
+    fn from(s: &CSSPageDescriptors) -> Any {
+        s.inner.clone().into()
+    }
+}
+jsbind::utils::impl_dyn_cast!(CSSPageDescriptors);
 
 impl CSSPageDescriptors {
+    /// Getter of the `margin` attribute.
+    /// [`CSSPageDescriptors.margin`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/margin)
     pub fn margin(&self) -> String {
         self.inner.get("margin").as_::<String>()
     }
 
+    /// Setter of the `margin` attribute.
+    /// [`CSSPageDescriptors.margin`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/margin)
     pub fn set_margin(&mut self, value: &str) {
         self.inner.set("margin", value);
     }
 }
 impl CSSPageDescriptors {
+    /// Getter of the `marginTop` attribute.
+    /// [`CSSPageDescriptors.marginTop`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/marginTop)
     pub fn margin_top(&self) -> String {
         self.inner.get("marginTop").as_::<String>()
     }
 
+    /// Setter of the `marginTop` attribute.
+    /// [`CSSPageDescriptors.marginTop`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/marginTop)
     pub fn set_margin_top(&mut self, value: &str) {
         self.inner.set("marginTop", value);
     }
 }
 impl CSSPageDescriptors {
+    /// Getter of the `marginRight` attribute.
+    /// [`CSSPageDescriptors.marginRight`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/marginRight)
     pub fn margin_right(&self) -> String {
         self.inner.get("marginRight").as_::<String>()
     }
 
+    /// Setter of the `marginRight` attribute.
+    /// [`CSSPageDescriptors.marginRight`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/marginRight)
     pub fn set_margin_right(&mut self, value: &str) {
         self.inner.set("marginRight", value);
     }
 }
 impl CSSPageDescriptors {
+    /// Getter of the `marginBottom` attribute.
+    /// [`CSSPageDescriptors.marginBottom`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/marginBottom)
     pub fn margin_bottom(&self) -> String {
         self.inner.get("marginBottom").as_::<String>()
     }
 
+    /// Setter of the `marginBottom` attribute.
+    /// [`CSSPageDescriptors.marginBottom`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/marginBottom)
     pub fn set_margin_bottom(&mut self, value: &str) {
         self.inner.set("marginBottom", value);
     }
 }
 impl CSSPageDescriptors {
+    /// Getter of the `marginLeft` attribute.
+    /// [`CSSPageDescriptors.marginLeft`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/marginLeft)
     pub fn margin_left(&self) -> String {
         self.inner.get("marginLeft").as_::<String>()
     }
 
+    /// Setter of the `marginLeft` attribute.
+    /// [`CSSPageDescriptors.marginLeft`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/marginLeft)
     pub fn set_margin_left(&mut self, value: &str) {
         self.inner.set("marginLeft", value);
     }
 }
-
 impl CSSPageDescriptors {
+    /// Getter of the `size` attribute.
+    /// [`CSSPageDescriptors.size`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/size)
     pub fn size(&self) -> String {
         self.inner.get("size").as_::<String>()
     }
 
+    /// Setter of the `size` attribute.
+    /// [`CSSPageDescriptors.size`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/size)
     pub fn set_size(&mut self, value: &str) {
         self.inner.set("size", value);
     }
 }
 impl CSSPageDescriptors {
+    /// Getter of the `pageOrientation` attribute.
+    /// [`CSSPageDescriptors.pageOrientation`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/pageOrientation)
     pub fn page_orientation(&self) -> String {
         self.inner.get("pageOrientation").as_::<String>()
     }
 
+    /// Setter of the `pageOrientation` attribute.
+    /// [`CSSPageDescriptors.pageOrientation`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/pageOrientation)
     pub fn set_page_orientation(&mut self, value: &str) {
         self.inner.set("pageOrientation", value);
     }
 }
-
 impl CSSPageDescriptors {
+    /// Getter of the `marks` attribute.
+    /// [`CSSPageDescriptors.marks`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/marks)
     pub fn marks(&self) -> String {
         self.inner.get("marks").as_::<String>()
     }
 
+    /// Setter of the `marks` attribute.
+    /// [`CSSPageDescriptors.marks`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/marks)
     pub fn set_marks(&mut self, value: &str) {
         self.inner.set("marks", value);
     }
 }
 impl CSSPageDescriptors {
+    /// Getter of the `bleed` attribute.
+    /// [`CSSPageDescriptors.bleed`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/bleed)
     pub fn bleed(&self) -> String {
         self.inner.get("bleed").as_::<String>()
     }
 
+    /// Setter of the `bleed` attribute.
+    /// [`CSSPageDescriptors.bleed`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageDescriptors/bleed)
     pub fn set_bleed(&mut self, value: &str) {
         self.inner.set("bleed", value);
     }

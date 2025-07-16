@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PAHistogramContribution {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PAHistogramContribution {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PAHistogramContribution { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PAHistogramContribution {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for PAHistogramContribution {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PAHistogramContribution {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PAHistogramContribution {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PAHistogramContribution {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PAHistogramContribution {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PAHistogramContribution> for emlite::Val {
-    fn from(s: PAHistogramContribution) -> emlite::Val {
+impl From<PAHistogramContribution> for Any {
+    fn from(s: PAHistogramContribution) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PAHistogramContribution> for emlite::Val {
-    fn from(s: &PAHistogramContribution) -> emlite::Val {
+impl From<&PAHistogramContribution> for Any {
+    fn from(s: &PAHistogramContribution) -> Any {
         s.inner.clone()
     }
 }
@@ -80,21 +80,21 @@ impl PAHistogramContribution {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PADebugModeOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PADebugModeOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PADebugModeOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PADebugModeOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -104,25 +104,25 @@ impl core::ops::DerefMut for PADebugModeOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PADebugModeOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PADebugModeOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PADebugModeOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PADebugModeOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PADebugModeOptions> for emlite::Val {
-    fn from(s: PADebugModeOptions) -> emlite::Val {
+impl From<PADebugModeOptions> for Any {
+    fn from(s: PADebugModeOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PADebugModeOptions> for emlite::Val {
-    fn from(s: &PADebugModeOptions) -> emlite::Val {
+impl From<&PADebugModeOptions> for Any {
+    fn from(s: &PADebugModeOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -136,26 +136,28 @@ impl PADebugModeOptions {
         self.inner.set("debugKey", value);
     }
 }
+/// The PrivateAggregation class.
+/// [`PrivateAggregation`](https://developer.mozilla.org/en-US/docs/Web/API/PrivateAggregation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PrivateAggregation {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PrivateAggregation {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PrivateAggregation {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PrivateAggregation {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -165,31 +167,33 @@ impl core::ops::DerefMut for PrivateAggregation {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PrivateAggregation {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PrivateAggregation {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PrivateAggregation {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PrivateAggregation {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PrivateAggregation> for emlite::Val {
-    fn from(s: PrivateAggregation) -> emlite::Val {
+impl From<PrivateAggregation> for Any {
+    fn from(s: PrivateAggregation) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PrivateAggregation> for emlite::Val {
-    fn from(s: &PrivateAggregation) -> emlite::Val {
+impl From<&PrivateAggregation> for Any {
+    fn from(s: &PrivateAggregation) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PrivateAggregation);
 
 impl PrivateAggregation {
+    /// The contributeToHistogram method.
+    /// [`PrivateAggregation.contributeToHistogram`](https://developer.mozilla.org/en-US/docs/Web/API/PrivateAggregation/contributeToHistogram)
     pub fn contribute_to_histogram(&self, contribution: &PAHistogramContribution) -> Undefined {
         self.inner
             .call("contributeToHistogram", &[contribution.into()])
@@ -197,6 +201,8 @@ impl PrivateAggregation {
     }
 }
 impl PrivateAggregation {
+    /// The contributeToHistogramOnEvent method.
+    /// [`PrivateAggregation.contributeToHistogramOnEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PrivateAggregation/contributeToHistogramOnEvent)
     pub fn contribute_to_histogram_on_event(
         &self,
         event: &str,
@@ -211,10 +217,13 @@ impl PrivateAggregation {
     }
 }
 impl PrivateAggregation {
+    /// The enableDebugMode method.
+    /// [`PrivateAggregation.enableDebugMode`](https://developer.mozilla.org/en-US/docs/Web/API/PrivateAggregation/enableDebugMode)
     pub fn enable_debug_mode0(&self) -> Undefined {
         self.inner.call("enableDebugMode", &[]).as_::<Undefined>()
     }
-
+    /// The enableDebugMode method.
+    /// [`PrivateAggregation.enableDebugMode`](https://developer.mozilla.org/en-US/docs/Web/API/PrivateAggregation/enableDebugMode)
     pub fn enable_debug_mode1(&self, options: &PADebugModeOptions) -> Undefined {
         self.inner
             .call("enableDebugMode", &[options.into()])

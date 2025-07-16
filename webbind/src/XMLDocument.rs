@@ -1,20 +1,22 @@
 use super::*;
 
+/// The XMLDocument class.
+/// [`XMLDocument`](https://developer.mozilla.org/en-US/docs/Web/API/XMLDocument)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XMLDocument {
     inner: Document,
 }
 impl FromVal for XMLDocument {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XMLDocument {
             inner: Document::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,25 +31,25 @@ impl core::ops::DerefMut for XMLDocument {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XMLDocument {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XMLDocument {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XMLDocument {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XMLDocument {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XMLDocument> for emlite::Val {
-    fn from(s: XMLDocument) -> emlite::Val {
+impl From<XMLDocument> for Any {
+    fn from(s: XMLDocument) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XMLDocument> for emlite::Val {
-    fn from(s: &XMLDocument) -> emlite::Val {
+impl From<&XMLDocument> for Any {
+    fn from(s: &XMLDocument) -> Any {
         s.inner.clone().into()
     }
 }

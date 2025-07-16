@@ -1,20 +1,22 @@
 use super::*;
 
+/// The SVGAnimateElement class.
+/// [`SVGAnimateElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimateElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGAnimateElement {
     inner: SVGAnimationElement,
 }
 impl FromVal for SVGAnimateElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SVGAnimateElement {
             inner: SVGAnimationElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,25 +31,25 @@ impl core::ops::DerefMut for SVGAnimateElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SVGAnimateElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SVGAnimateElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SVGAnimateElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SVGAnimateElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SVGAnimateElement> for emlite::Val {
-    fn from(s: SVGAnimateElement) -> emlite::Val {
+impl From<SVGAnimateElement> for Any {
+    fn from(s: SVGAnimateElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SVGAnimateElement> for emlite::Val {
-    fn from(s: &SVGAnimateElement) -> emlite::Val {
+impl From<&SVGAnimateElement> for Any {
+    fn from(s: &SVGAnimateElement) -> Any {
         s.inner.clone().into()
     }
 }

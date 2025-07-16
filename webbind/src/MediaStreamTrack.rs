@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaTrackCapabilities {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaTrackCapabilities {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaTrackCapabilities { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaTrackCapabilities {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for MediaTrackCapabilities {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaTrackCapabilities {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaTrackCapabilities {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaTrackCapabilities {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaTrackCapabilities {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaTrackCapabilities> for emlite::Val {
-    fn from(s: MediaTrackCapabilities) -> emlite::Val {
+impl From<MediaTrackCapabilities> for Any {
+    fn from(s: MediaTrackCapabilities) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaTrackCapabilities> for emlite::Val {
-    fn from(s: &MediaTrackCapabilities) -> emlite::Val {
+impl From<&MediaTrackCapabilities> for Any {
+    fn from(s: &MediaTrackCapabilities) -> Any {
         s.inner.clone()
     }
 }
@@ -80,21 +80,21 @@ impl MediaTrackCapabilities {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaTrackConstraints {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaTrackConstraints {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaTrackConstraints { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaTrackConstraints {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -104,25 +104,25 @@ impl core::ops::DerefMut for MediaTrackConstraints {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaTrackConstraints {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaTrackConstraints {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaTrackConstraints {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaTrackConstraints {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaTrackConstraints> for emlite::Val {
-    fn from(s: MediaTrackConstraints) -> emlite::Val {
+impl From<MediaTrackConstraints> for Any {
+    fn from(s: MediaTrackConstraints) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaTrackConstraints> for emlite::Val {
-    fn from(s: &MediaTrackConstraints) -> emlite::Val {
+impl From<&MediaTrackConstraints> for Any {
+    fn from(s: &MediaTrackConstraints) -> Any {
         s.inner.clone()
     }
 }
@@ -139,21 +139,21 @@ impl MediaTrackConstraints {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaTrackSettings {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaTrackSettings {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaTrackSettings { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaTrackSettings {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -163,25 +163,25 @@ impl core::ops::DerefMut for MediaTrackSettings {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaTrackSettings {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaTrackSettings {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaTrackSettings {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaTrackSettings {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaTrackSettings> for emlite::Val {
-    fn from(s: MediaTrackSettings) -> emlite::Val {
+impl From<MediaTrackSettings> for Any {
+    fn from(s: MediaTrackSettings) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaTrackSettings> for emlite::Val {
-    fn from(s: &MediaTrackSettings) -> emlite::Val {
+impl From<&MediaTrackSettings> for Any {
+    fn from(s: &MediaTrackSettings) -> Any {
         s.inner.clone()
     }
 }
@@ -243,21 +243,21 @@ impl MediaTrackSettings {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CaptureHandle {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for CaptureHandle {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CaptureHandle { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for CaptureHandle {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -267,25 +267,25 @@ impl core::ops::DerefMut for CaptureHandle {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CaptureHandle {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CaptureHandle {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CaptureHandle {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CaptureHandle {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CaptureHandle> for emlite::Val {
-    fn from(s: CaptureHandle) -> emlite::Val {
+impl From<CaptureHandle> for Any {
+    fn from(s: CaptureHandle) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CaptureHandle> for emlite::Val {
-    fn from(s: &CaptureHandle) -> emlite::Val {
+impl From<&CaptureHandle> for Any {
+    fn from(s: &CaptureHandle) -> Any {
         s.inner.clone()
     }
 }
@@ -308,21 +308,23 @@ impl CaptureHandle {
         self.inner.set("handle", value);
     }
 }
+/// The MediaStreamTrack class.
+/// [`MediaStreamTrack`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaStreamTrack {
     inner: EventTarget,
 }
 impl FromVal for MediaStreamTrack {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaStreamTrack {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -337,102 +339,134 @@ impl core::ops::DerefMut for MediaStreamTrack {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaStreamTrack {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaStreamTrack {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaStreamTrack {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaStreamTrack {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaStreamTrack> for emlite::Val {
-    fn from(s: MediaStreamTrack) -> emlite::Val {
+impl From<MediaStreamTrack> for Any {
+    fn from(s: MediaStreamTrack) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaStreamTrack> for emlite::Val {
-    fn from(s: &MediaStreamTrack) -> emlite::Val {
+impl From<&MediaStreamTrack> for Any {
+    fn from(s: &MediaStreamTrack) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaStreamTrack);
 
 impl MediaStreamTrack {
+    /// Getter of the `kind` attribute.
+    /// [`MediaStreamTrack.kind`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/kind)
     pub fn kind(&self) -> String {
         self.inner.get("kind").as_::<String>()
     }
 }
 impl MediaStreamTrack {
+    /// Getter of the `id` attribute.
+    /// [`MediaStreamTrack.id`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/id)
     pub fn id(&self) -> String {
         self.inner.get("id").as_::<String>()
     }
 }
 impl MediaStreamTrack {
+    /// Getter of the `label` attribute.
+    /// [`MediaStreamTrack.label`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/label)
     pub fn label(&self) -> String {
         self.inner.get("label").as_::<String>()
     }
 }
 impl MediaStreamTrack {
+    /// Getter of the `enabled` attribute.
+    /// [`MediaStreamTrack.enabled`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/enabled)
     pub fn enabled(&self) -> bool {
         self.inner.get("enabled").as_::<bool>()
     }
 
+    /// Setter of the `enabled` attribute.
+    /// [`MediaStreamTrack.enabled`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/enabled)
     pub fn set_enabled(&mut self, value: bool) {
         self.inner.set("enabled", value);
     }
 }
 impl MediaStreamTrack {
+    /// Getter of the `muted` attribute.
+    /// [`MediaStreamTrack.muted`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/muted)
     pub fn muted(&self) -> bool {
         self.inner.get("muted").as_::<bool>()
     }
 }
 impl MediaStreamTrack {
+    /// Getter of the `onmute` attribute.
+    /// [`MediaStreamTrack.onmute`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/onmute)
     pub fn onmute(&self) -> Any {
         self.inner.get("onmute").as_::<Any>()
     }
 
+    /// Setter of the `onmute` attribute.
+    /// [`MediaStreamTrack.onmute`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/onmute)
     pub fn set_onmute(&mut self, value: &Any) {
         self.inner.set("onmute", value);
     }
 }
 impl MediaStreamTrack {
+    /// Getter of the `onunmute` attribute.
+    /// [`MediaStreamTrack.onunmute`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/onunmute)
     pub fn onunmute(&self) -> Any {
         self.inner.get("onunmute").as_::<Any>()
     }
 
+    /// Setter of the `onunmute` attribute.
+    /// [`MediaStreamTrack.onunmute`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/onunmute)
     pub fn set_onunmute(&mut self, value: &Any) {
         self.inner.set("onunmute", value);
     }
 }
 impl MediaStreamTrack {
+    /// Getter of the `readyState` attribute.
+    /// [`MediaStreamTrack.readyState`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/readyState)
     pub fn ready_state(&self) -> MediaStreamTrackState {
         self.inner.get("readyState").as_::<MediaStreamTrackState>()
     }
 }
 impl MediaStreamTrack {
+    /// Getter of the `onended` attribute.
+    /// [`MediaStreamTrack.onended`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/onended)
     pub fn onended(&self) -> Any {
         self.inner.get("onended").as_::<Any>()
     }
 
+    /// Setter of the `onended` attribute.
+    /// [`MediaStreamTrack.onended`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/onended)
     pub fn set_onended(&mut self, value: &Any) {
         self.inner.set("onended", value);
     }
 }
 impl MediaStreamTrack {
+    /// The clone method.
+    /// [`MediaStreamTrack.clone`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/clone)
     pub fn clone_(&self) -> MediaStreamTrack {
         self.inner.call("clone", &[]).as_::<MediaStreamTrack>()
     }
 }
 impl MediaStreamTrack {
+    /// The stop method.
+    /// [`MediaStreamTrack.stop`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/stop)
     pub fn stop(&self) -> Undefined {
         self.inner.call("stop", &[]).as_::<Undefined>()
     }
 }
 impl MediaStreamTrack {
+    /// The getCapabilities method.
+    /// [`MediaStreamTrack.getCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/getCapabilities)
     pub fn get_capabilities(&self) -> MediaTrackCapabilities {
         self.inner
             .call("getCapabilities", &[])
@@ -440,6 +474,8 @@ impl MediaStreamTrack {
     }
 }
 impl MediaStreamTrack {
+    /// The getConstraints method.
+    /// [`MediaStreamTrack.getConstraints`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/getConstraints)
     pub fn get_constraints(&self) -> MediaTrackConstraints {
         self.inner
             .call("getConstraints", &[])
@@ -447,6 +483,8 @@ impl MediaStreamTrack {
     }
 }
 impl MediaStreamTrack {
+    /// The getSettings method.
+    /// [`MediaStreamTrack.getSettings`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/getSettings)
     pub fn get_settings(&self) -> MediaTrackSettings {
         self.inner
             .call("getSettings", &[])
@@ -454,10 +492,13 @@ impl MediaStreamTrack {
     }
 }
 impl MediaStreamTrack {
+    /// The applyConstraints method.
+    /// [`MediaStreamTrack.applyConstraints`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/applyConstraints)
     pub fn apply_constraints0(&self) -> Promise {
         self.inner.call("applyConstraints", &[]).as_::<Promise>()
     }
-
+    /// The applyConstraints method.
+    /// [`MediaStreamTrack.applyConstraints`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/applyConstraints)
     pub fn apply_constraints1(&self, constraints: &MediaTrackConstraints) -> Promise {
         self.inner
             .call("applyConstraints", &[constraints.into()])
@@ -465,6 +506,8 @@ impl MediaStreamTrack {
     }
 }
 impl MediaStreamTrack {
+    /// The getCaptureHandle method.
+    /// [`MediaStreamTrack.getCaptureHandle`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/getCaptureHandle)
     pub fn get_capture_handle(&self) -> CaptureHandle {
         self.inner
             .call("getCaptureHandle", &[])
@@ -472,15 +515,21 @@ impl MediaStreamTrack {
     }
 }
 impl MediaStreamTrack {
+    /// Getter of the `oncapturehandlechange` attribute.
+    /// [`MediaStreamTrack.oncapturehandlechange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/oncapturehandlechange)
     pub fn oncapturehandlechange(&self) -> Any {
         self.inner.get("oncapturehandlechange").as_::<Any>()
     }
 
+    /// Setter of the `oncapturehandlechange` attribute.
+    /// [`MediaStreamTrack.oncapturehandlechange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/oncapturehandlechange)
     pub fn set_oncapturehandlechange(&mut self, value: &Any) {
         self.inner.set("oncapturehandlechange", value);
     }
 }
 impl MediaStreamTrack {
+    /// The getSupportedCaptureActions method.
+    /// [`MediaStreamTrack.getSupportedCaptureActions`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/getSupportedCaptureActions)
     pub fn get_supported_capture_actions(&self) -> Sequence<String> {
         self.inner
             .call("getSupportedCaptureActions", &[])
@@ -488,6 +537,8 @@ impl MediaStreamTrack {
     }
 }
 impl MediaStreamTrack {
+    /// The sendCaptureAction method.
+    /// [`MediaStreamTrack.sendCaptureAction`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/sendCaptureAction)
     pub fn send_capture_action(&self, action: &CaptureAction) -> Promise {
         self.inner
             .call("sendCaptureAction", &[action.into()])
@@ -495,24 +546,34 @@ impl MediaStreamTrack {
     }
 }
 impl MediaStreamTrack {
+    /// Getter of the `contentHint` attribute.
+    /// [`MediaStreamTrack.contentHint`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/contentHint)
     pub fn content_hint(&self) -> String {
         self.inner.get("contentHint").as_::<String>()
     }
 
+    /// Setter of the `contentHint` attribute.
+    /// [`MediaStreamTrack.contentHint`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/contentHint)
     pub fn set_content_hint(&mut self, value: &str) {
         self.inner.set("contentHint", value);
     }
 }
 impl MediaStreamTrack {
+    /// Getter of the `isolated` attribute.
+    /// [`MediaStreamTrack.isolated`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/isolated)
     pub fn isolated(&self) -> bool {
         self.inner.get("isolated").as_::<bool>()
     }
 }
 impl MediaStreamTrack {
+    /// Getter of the `onisolationchange` attribute.
+    /// [`MediaStreamTrack.onisolationchange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/onisolationchange)
     pub fn onisolationchange(&self) -> Any {
         self.inner.get("onisolationchange").as_::<Any>()
     }
 
+    /// Setter of the `onisolationchange` attribute.
+    /// [`MediaStreamTrack.onisolationchange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/onisolationchange)
     pub fn set_onisolationchange(&mut self, value: &Any) {
         self.inner.set("onisolationchange", value);
     }

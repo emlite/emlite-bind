@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HandwritingPoint {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for HandwritingPoint {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HandwritingPoint { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for HandwritingPoint {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for HandwritingPoint {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HandwritingPoint {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HandwritingPoint {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HandwritingPoint {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HandwritingPoint {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HandwritingPoint> for emlite::Val {
-    fn from(s: HandwritingPoint) -> emlite::Val {
+impl From<HandwritingPoint> for Any {
+    fn from(s: HandwritingPoint) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HandwritingPoint> for emlite::Val {
-    fn from(s: &HandwritingPoint) -> emlite::Val {
+impl From<&HandwritingPoint> for Any {
+    fn from(s: &HandwritingPoint) -> Any {
         s.inner.clone()
     }
 }
@@ -77,26 +77,28 @@ impl HandwritingPoint {
         self.inner.set("t", value);
     }
 }
+/// The HandwritingStroke class.
+/// [`HandwritingStroke`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingStroke)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HandwritingStroke {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for HandwritingStroke {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HandwritingStroke {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for HandwritingStroke {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -106,40 +108,41 @@ impl core::ops::DerefMut for HandwritingStroke {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HandwritingStroke {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HandwritingStroke {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HandwritingStroke {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HandwritingStroke {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HandwritingStroke> for emlite::Val {
-    fn from(s: HandwritingStroke) -> emlite::Val {
+impl From<HandwritingStroke> for Any {
+    fn from(s: HandwritingStroke) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HandwritingStroke> for emlite::Val {
-    fn from(s: &HandwritingStroke) -> emlite::Val {
+impl From<&HandwritingStroke> for Any {
+    fn from(s: &HandwritingStroke) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HandwritingStroke);
 
 impl HandwritingStroke {
+    /// The `new HandwritingStroke(..)` constructor, creating a new HandwritingStroke instance
     pub fn new() -> HandwritingStroke {
         Self {
-            inner: emlite::Val::global("HandwritingStroke")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("HandwritingStroke").new(&[]).as_::<Any>(),
         }
     }
 }
 impl HandwritingStroke {
+    /// The addPoint method.
+    /// [`HandwritingStroke.addPoint`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingStroke/addPoint)
     pub fn add_point(&self, point: &HandwritingPoint) -> Undefined {
         self.inner
             .call("addPoint", &[point.into()])
@@ -147,6 +150,8 @@ impl HandwritingStroke {
     }
 }
 impl HandwritingStroke {
+    /// The getPoints method.
+    /// [`HandwritingStroke.getPoints`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingStroke/getPoints)
     pub fn get_points(&self) -> Sequence<HandwritingPoint> {
         self.inner
             .call("getPoints", &[])
@@ -154,6 +159,8 @@ impl HandwritingStroke {
     }
 }
 impl HandwritingStroke {
+    /// The clear method.
+    /// [`HandwritingStroke.clear`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingStroke/clear)
     pub fn clear(&self) -> Undefined {
         self.inner.call("clear", &[]).as_::<Undefined>()
     }

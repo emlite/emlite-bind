@@ -1,25 +1,27 @@
 use super::*;
 
+/// The VideoTrackGenerator class.
+/// [`VideoTrackGenerator`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackGenerator)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VideoTrackGenerator {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for VideoTrackGenerator {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         VideoTrackGenerator {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for VideoTrackGenerator {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,54 +31,61 @@ impl core::ops::DerefMut for VideoTrackGenerator {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for VideoTrackGenerator {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for VideoTrackGenerator {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for VideoTrackGenerator {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for VideoTrackGenerator {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<VideoTrackGenerator> for emlite::Val {
-    fn from(s: VideoTrackGenerator) -> emlite::Val {
+impl From<VideoTrackGenerator> for Any {
+    fn from(s: VideoTrackGenerator) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&VideoTrackGenerator> for emlite::Val {
-    fn from(s: &VideoTrackGenerator) -> emlite::Val {
+impl From<&VideoTrackGenerator> for Any {
+    fn from(s: &VideoTrackGenerator) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(VideoTrackGenerator);
 
 impl VideoTrackGenerator {
+    /// The `new VideoTrackGenerator(..)` constructor, creating a new VideoTrackGenerator instance
     pub fn new() -> VideoTrackGenerator {
         Self {
-            inner: emlite::Val::global("VideoTrackGenerator")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("VideoTrackGenerator").new(&[]).as_::<Any>(),
         }
     }
 }
 impl VideoTrackGenerator {
+    /// Getter of the `writable` attribute.
+    /// [`VideoTrackGenerator.writable`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackGenerator/writable)
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
     }
 }
 impl VideoTrackGenerator {
+    /// Getter of the `muted` attribute.
+    /// [`VideoTrackGenerator.muted`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackGenerator/muted)
     pub fn muted(&self) -> bool {
         self.inner.get("muted").as_::<bool>()
     }
 
+    /// Setter of the `muted` attribute.
+    /// [`VideoTrackGenerator.muted`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackGenerator/muted)
     pub fn set_muted(&mut self, value: bool) {
         self.inner.set("muted", value);
     }
 }
 impl VideoTrackGenerator {
+    /// Getter of the `track` attribute.
+    /// [`VideoTrackGenerator.track`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackGenerator/track)
     pub fn track(&self) -> MediaStreamTrack {
         self.inner.get("track").as_::<MediaStreamTrack>()
     }

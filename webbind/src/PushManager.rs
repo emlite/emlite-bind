@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PushSubscriptionOptionsInit {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PushSubscriptionOptionsInit {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PushSubscriptionOptionsInit { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PushSubscriptionOptionsInit {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for PushSubscriptionOptionsInit {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PushSubscriptionOptionsInit {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PushSubscriptionOptionsInit {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PushSubscriptionOptionsInit {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PushSubscriptionOptionsInit {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PushSubscriptionOptionsInit> for emlite::Val {
-    fn from(s: PushSubscriptionOptionsInit) -> emlite::Val {
+impl From<PushSubscriptionOptionsInit> for Any {
+    fn from(s: PushSubscriptionOptionsInit) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PushSubscriptionOptionsInit> for emlite::Val {
-    fn from(s: &PushSubscriptionOptionsInit) -> emlite::Val {
+impl From<&PushSubscriptionOptionsInit> for Any {
+    fn from(s: &PushSubscriptionOptionsInit) -> Any {
         s.inner.clone()
     }
 }
@@ -68,26 +68,28 @@ impl PushSubscriptionOptionsInit {
         self.inner.set("applicationServerKey", value);
     }
 }
+/// The PushManager class.
+/// [`PushManager`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PushManager {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PushManager {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PushManager {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PushManager {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -97,42 +99,47 @@ impl core::ops::DerefMut for PushManager {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PushManager {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PushManager {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PushManager {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PushManager {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PushManager> for emlite::Val {
-    fn from(s: PushManager) -> emlite::Val {
+impl From<PushManager> for Any {
+    fn from(s: PushManager) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PushManager> for emlite::Val {
-    fn from(s: &PushManager) -> emlite::Val {
+impl From<&PushManager> for Any {
+    fn from(s: &PushManager) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PushManager);
 
 impl PushManager {
+    /// Getter of the `supportedContentEncodings` static attribute.
+    /// [`PushManager.supportedContentEncodings`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/supportedContentEncodings)
     pub fn supported_content_encodings() -> FrozenArray<String> {
-        emlite::Val::global("PushManager")
+        Any::global("PushManager")
             .get("supportedContentEncodings")
             .as_::<FrozenArray<String>>()
     }
 }
 impl PushManager {
+    /// The subscribe method.
+    /// [`PushManager.subscribe`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/subscribe)
     pub fn subscribe0(&self) -> Promise {
         self.inner.call("subscribe", &[]).as_::<Promise>()
     }
-
+    /// The subscribe method.
+    /// [`PushManager.subscribe`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/subscribe)
     pub fn subscribe1(&self, options: &PushSubscriptionOptionsInit) -> Promise {
         self.inner
             .call("subscribe", &[options.into()])
@@ -140,15 +147,20 @@ impl PushManager {
     }
 }
 impl PushManager {
+    /// The getSubscription method.
+    /// [`PushManager.getSubscription`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/getSubscription)
     pub fn get_subscription(&self) -> Promise {
         self.inner.call("getSubscription", &[]).as_::<Promise>()
     }
 }
 impl PushManager {
+    /// The permissionState method.
+    /// [`PushManager.permissionState`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/permissionState)
     pub fn permission_state0(&self) -> Promise {
         self.inner.call("permissionState", &[]).as_::<Promise>()
     }
-
+    /// The permissionState method.
+    /// [`PushManager.permissionState`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/permissionState)
     pub fn permission_state1(&self, options: &PushSubscriptionOptionsInit) -> Promise {
         self.inner
             .call("permissionState", &[options.into()])

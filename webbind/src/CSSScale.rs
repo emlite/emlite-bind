@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CSSScale class.
+/// [`CSSScale`](https://developer.mozilla.org/en-US/docs/Web/API/CSSScale)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSScale {
     inner: CSSTransformComponent,
 }
 impl FromVal for CSSScale {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSScale {
             inner: CSSTransformComponent::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,70 +31,84 @@ impl core::ops::DerefMut for CSSScale {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSScale {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSScale {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSScale {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSScale {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSScale> for emlite::Val {
-    fn from(s: CSSScale) -> emlite::Val {
+impl From<CSSScale> for Any {
+    fn from(s: CSSScale) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSScale> for emlite::Val {
-    fn from(s: &CSSScale) -> emlite::Val {
+impl From<&CSSScale> for Any {
+    fn from(s: &CSSScale) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSScale);
 
 impl CSSScale {
+    /// The `new CSSScale(..)` constructor, creating a new CSSScale instance
     pub fn new0(x: &Any, y: &Any) -> CSSScale {
         Self {
-            inner: emlite::Val::global("CSSScale")
+            inner: Any::global("CSSScale")
                 .new(&[x.into(), y.into()])
                 .as_::<CSSTransformComponent>(),
         }
     }
 
+    /// The `new CSSScale(..)` constructor, creating a new CSSScale instance
     pub fn new1(x: &Any, y: &Any, z: &Any) -> CSSScale {
         Self {
-            inner: emlite::Val::global("CSSScale")
+            inner: Any::global("CSSScale")
                 .new(&[x.into(), y.into(), z.into()])
                 .as_::<CSSTransformComponent>(),
         }
     }
 }
 impl CSSScale {
+    /// Getter of the `x` attribute.
+    /// [`CSSScale.x`](https://developer.mozilla.org/en-US/docs/Web/API/CSSScale/x)
     pub fn x(&self) -> Any {
         self.inner.get("x").as_::<Any>()
     }
 
+    /// Setter of the `x` attribute.
+    /// [`CSSScale.x`](https://developer.mozilla.org/en-US/docs/Web/API/CSSScale/x)
     pub fn set_x(&mut self, value: &Any) {
         self.inner.set("x", value);
     }
 }
 impl CSSScale {
+    /// Getter of the `y` attribute.
+    /// [`CSSScale.y`](https://developer.mozilla.org/en-US/docs/Web/API/CSSScale/y)
     pub fn y(&self) -> Any {
         self.inner.get("y").as_::<Any>()
     }
 
+    /// Setter of the `y` attribute.
+    /// [`CSSScale.y`](https://developer.mozilla.org/en-US/docs/Web/API/CSSScale/y)
     pub fn set_y(&mut self, value: &Any) {
         self.inner.set("y", value);
     }
 }
 impl CSSScale {
+    /// Getter of the `z` attribute.
+    /// [`CSSScale.z`](https://developer.mozilla.org/en-US/docs/Web/API/CSSScale/z)
     pub fn z(&self) -> Any {
         self.inner.get("z").as_::<Any>()
     }
 
+    /// Setter of the `z` attribute.
+    /// [`CSSScale.z`](https://developer.mozilla.org/en-US/docs/Web/API/CSSScale/z)
     pub fn set_z(&mut self, value: &Any) {
         self.inner.set("z", value);
     }

@@ -1,25 +1,27 @@
 use super::*;
 
+/// The Cache class.
+/// [`Cache`](https://developer.mozilla.org/en-US/docs/Web/API/Cache)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Cache {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Cache {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Cache {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Cache {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,35 +31,38 @@ impl core::ops::DerefMut for Cache {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Cache {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Cache {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Cache {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Cache {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Cache> for emlite::Val {
-    fn from(s: Cache) -> emlite::Val {
+impl From<Cache> for Any {
+    fn from(s: Cache) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Cache> for emlite::Val {
-    fn from(s: &Cache) -> emlite::Val {
+impl From<&Cache> for Any {
+    fn from(s: &Cache) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Cache);
 
 impl Cache {
+    /// The match method.
+    /// [`Cache.match`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/match)
     pub fn match_0(&self, request: &Any) -> Promise {
         self.inner.call("match", &[request.into()]).as_::<Promise>()
     }
-
+    /// The match method.
+    /// [`Cache.match`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/match)
     pub fn match_1(&self, request: &Any, options: &CacheQueryOptions) -> Promise {
         self.inner
             .call("match", &[request.into(), options.into()])
@@ -65,16 +70,20 @@ impl Cache {
     }
 }
 impl Cache {
+    /// The matchAll method.
+    /// [`Cache.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/matchAll)
     pub fn match_all0(&self) -> Promise {
         self.inner.call("matchAll", &[]).as_::<Promise>()
     }
-
+    /// The matchAll method.
+    /// [`Cache.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/matchAll)
     pub fn match_all1(&self, request: &Any) -> Promise {
         self.inner
             .call("matchAll", &[request.into()])
             .as_::<Promise>()
     }
-
+    /// The matchAll method.
+    /// [`Cache.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/matchAll)
     pub fn match_all2(&self, request: &Any, options: &CacheQueryOptions) -> Promise {
         self.inner
             .call("matchAll", &[request.into(), options.into()])
@@ -82,11 +91,15 @@ impl Cache {
     }
 }
 impl Cache {
+    /// The add method.
+    /// [`Cache.add`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/add)
     pub fn add(&self, request: &Any) -> Promise {
         self.inner.call("add", &[request.into()]).as_::<Promise>()
     }
 }
 impl Cache {
+    /// The addAll method.
+    /// [`Cache.addAll`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/addAll)
     pub fn add_all(&self, requests: &Sequence<Any>) -> Promise {
         self.inner
             .call("addAll", &[requests.into()])
@@ -94,6 +107,8 @@ impl Cache {
     }
 }
 impl Cache {
+    /// The put method.
+    /// [`Cache.put`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/put)
     pub fn put(&self, request: &Any, response: &Response) -> Promise {
         self.inner
             .call("put", &[request.into(), response.into()])
@@ -101,12 +116,15 @@ impl Cache {
     }
 }
 impl Cache {
+    /// The delete method.
+    /// [`Cache.delete`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/delete)
     pub fn delete0(&self, request: &Any) -> Promise {
         self.inner
             .call("delete", &[request.into()])
             .as_::<Promise>()
     }
-
+    /// The delete method.
+    /// [`Cache.delete`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/delete)
     pub fn delete1(&self, request: &Any, options: &CacheQueryOptions) -> Promise {
         self.inner
             .call("delete", &[request.into(), options.into()])
@@ -114,14 +132,18 @@ impl Cache {
     }
 }
 impl Cache {
+    /// The keys method.
+    /// [`Cache.keys`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/keys)
     pub fn keys0(&self) -> Promise {
         self.inner.call("keys", &[]).as_::<Promise>()
     }
-
+    /// The keys method.
+    /// [`Cache.keys`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/keys)
     pub fn keys1(&self, request: &Any) -> Promise {
         self.inner.call("keys", &[request.into()]).as_::<Promise>()
     }
-
+    /// The keys method.
+    /// [`Cache.keys`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/keys)
     pub fn keys2(&self, request: &Any, options: &CacheQueryOptions) -> Promise {
         self.inner
             .call("keys", &[request.into(), options.into()])

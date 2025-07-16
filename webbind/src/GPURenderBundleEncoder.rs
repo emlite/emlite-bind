@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPURenderBundleDescriptor {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPURenderBundleDescriptor {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPURenderBundleDescriptor { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPURenderBundleDescriptor {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,49 +27,51 @@ impl core::ops::DerefMut for GPURenderBundleDescriptor {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPURenderBundleDescriptor {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPURenderBundleDescriptor {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPURenderBundleDescriptor {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPURenderBundleDescriptor {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPURenderBundleDescriptor> for emlite::Val {
-    fn from(s: GPURenderBundleDescriptor) -> emlite::Val {
+impl From<GPURenderBundleDescriptor> for Any {
+    fn from(s: GPURenderBundleDescriptor) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPURenderBundleDescriptor> for emlite::Val {
-    fn from(s: &GPURenderBundleDescriptor) -> emlite::Val {
+impl From<&GPURenderBundleDescriptor> for Any {
+    fn from(s: &GPURenderBundleDescriptor) -> Any {
         s.inner.clone()
     }
 }
 
+/// The GPURenderBundleEncoder class.
+/// [`GPURenderBundleEncoder`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPURenderBundleEncoder {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPURenderBundleEncoder {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPURenderBundleEncoder {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPURenderBundleEncoder {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -79,35 +81,38 @@ impl core::ops::DerefMut for GPURenderBundleEncoder {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPURenderBundleEncoder {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPURenderBundleEncoder {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPURenderBundleEncoder {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPURenderBundleEncoder {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPURenderBundleEncoder> for emlite::Val {
-    fn from(s: GPURenderBundleEncoder) -> emlite::Val {
+impl From<GPURenderBundleEncoder> for Any {
+    fn from(s: GPURenderBundleEncoder) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPURenderBundleEncoder> for emlite::Val {
-    fn from(s: &GPURenderBundleEncoder) -> emlite::Val {
+impl From<&GPURenderBundleEncoder> for Any {
+    fn from(s: &GPURenderBundleEncoder) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GPURenderBundleEncoder);
 
 impl GPURenderBundleEncoder {
+    /// The finish method.
+    /// [`GPURenderBundleEncoder.finish`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/finish)
     pub fn finish0(&self) -> GPURenderBundle {
         self.inner.call("finish", &[]).as_::<GPURenderBundle>()
     }
-
+    /// The finish method.
+    /// [`GPURenderBundleEncoder.finish`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/finish)
     pub fn finish1(&self, descriptor: &GPURenderBundleDescriptor) -> GPURenderBundle {
         self.inner
             .call("finish", &[descriptor.into()])
@@ -115,15 +120,21 @@ impl GPURenderBundleEncoder {
     }
 }
 impl GPURenderBundleEncoder {
+    /// Getter of the `label` attribute.
+    /// [`GPURenderBundleEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/label)
     pub fn label(&self) -> String {
         self.inner.get("label").as_::<String>()
     }
 
+    /// Setter of the `label` attribute.
+    /// [`GPURenderBundleEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/label)
     pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }
 }
 impl GPURenderBundleEncoder {
+    /// The pushDebugGroup method.
+    /// [`GPURenderBundleEncoder.pushDebugGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/pushDebugGroup)
     pub fn push_debug_group(&self, group_label: &str) -> Undefined {
         self.inner
             .call("pushDebugGroup", &[group_label.into()])
@@ -131,11 +142,15 @@ impl GPURenderBundleEncoder {
     }
 }
 impl GPURenderBundleEncoder {
+    /// The popDebugGroup method.
+    /// [`GPURenderBundleEncoder.popDebugGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/popDebugGroup)
     pub fn pop_debug_group(&self) -> Undefined {
         self.inner.call("popDebugGroup", &[]).as_::<Undefined>()
     }
 }
 impl GPURenderBundleEncoder {
+    /// The insertDebugMarker method.
+    /// [`GPURenderBundleEncoder.insertDebugMarker`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/insertDebugMarker)
     pub fn insert_debug_marker(&self, marker_label: &str) -> Undefined {
         self.inner
             .call("insertDebugMarker", &[marker_label.into()])
@@ -143,6 +158,8 @@ impl GPURenderBundleEncoder {
     }
 }
 impl GPURenderBundleEncoder {
+    /// The setBindGroup method.
+    /// [`GPURenderBundleEncoder.setBindGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setBindGroup)
     pub fn set_bind_group(
         &self,
         index: &Any,
@@ -166,6 +183,8 @@ impl GPURenderBundleEncoder {
     }
 }
 impl GPURenderBundleEncoder {
+    /// The setPipeline method.
+    /// [`GPURenderBundleEncoder.setPipeline`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setPipeline)
     pub fn set_pipeline(&self, pipeline: &GPURenderPipeline) -> Undefined {
         self.inner
             .call("setPipeline", &[pipeline.into()])
@@ -173,6 +192,8 @@ impl GPURenderBundleEncoder {
     }
 }
 impl GPURenderBundleEncoder {
+    /// The setIndexBuffer method.
+    /// [`GPURenderBundleEncoder.setIndexBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setIndexBuffer)
     pub fn set_index_buffer0(
         &self,
         buffer: &GPUBuffer,
@@ -182,7 +203,8 @@ impl GPURenderBundleEncoder {
             .call("setIndexBuffer", &[buffer.into(), index_format.into()])
             .as_::<Undefined>()
     }
-
+    /// The setIndexBuffer method.
+    /// [`GPURenderBundleEncoder.setIndexBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setIndexBuffer)
     pub fn set_index_buffer1(
         &self,
         buffer: &GPUBuffer,
@@ -196,7 +218,8 @@ impl GPURenderBundleEncoder {
             )
             .as_::<Undefined>()
     }
-
+    /// The setIndexBuffer method.
+    /// [`GPURenderBundleEncoder.setIndexBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setIndexBuffer)
     pub fn set_index_buffer2(
         &self,
         buffer: &GPUBuffer,
@@ -218,12 +241,15 @@ impl GPURenderBundleEncoder {
     }
 }
 impl GPURenderBundleEncoder {
+    /// The setVertexBuffer method.
+    /// [`GPURenderBundleEncoder.setVertexBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setVertexBuffer)
     pub fn set_vertex_buffer0(&self, slot: &Any, buffer: &GPUBuffer) -> Undefined {
         self.inner
             .call("setVertexBuffer", &[slot.into(), buffer.into()])
             .as_::<Undefined>()
     }
-
+    /// The setVertexBuffer method.
+    /// [`GPURenderBundleEncoder.setVertexBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setVertexBuffer)
     pub fn set_vertex_buffer1(&self, slot: &Any, buffer: &GPUBuffer, offset: &Any) -> Undefined {
         self.inner
             .call(
@@ -232,7 +258,8 @@ impl GPURenderBundleEncoder {
             )
             .as_::<Undefined>()
     }
-
+    /// The setVertexBuffer method.
+    /// [`GPURenderBundleEncoder.setVertexBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/setVertexBuffer)
     pub fn set_vertex_buffer2(
         &self,
         slot: &Any,
@@ -249,18 +276,22 @@ impl GPURenderBundleEncoder {
     }
 }
 impl GPURenderBundleEncoder {
+    /// The draw method.
+    /// [`GPURenderBundleEncoder.draw`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/draw)
     pub fn draw0(&self, vertex_count: &Any) -> Undefined {
         self.inner
             .call("draw", &[vertex_count.into()])
             .as_::<Undefined>()
     }
-
+    /// The draw method.
+    /// [`GPURenderBundleEncoder.draw`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/draw)
     pub fn draw1(&self, vertex_count: &Any, instance_count: &Any) -> Undefined {
         self.inner
             .call("draw", &[vertex_count.into(), instance_count.into()])
             .as_::<Undefined>()
     }
-
+    /// The draw method.
+    /// [`GPURenderBundleEncoder.draw`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/draw)
     pub fn draw2(&self, vertex_count: &Any, instance_count: &Any, first_vertex: &Any) -> Undefined {
         self.inner
             .call(
@@ -273,7 +304,8 @@ impl GPURenderBundleEncoder {
             )
             .as_::<Undefined>()
     }
-
+    /// The draw method.
+    /// [`GPURenderBundleEncoder.draw`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/draw)
     pub fn draw3(
         &self,
         vertex_count: &Any,
@@ -295,18 +327,22 @@ impl GPURenderBundleEncoder {
     }
 }
 impl GPURenderBundleEncoder {
+    /// The drawIndexed method.
+    /// [`GPURenderBundleEncoder.drawIndexed`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/drawIndexed)
     pub fn draw_indexed0(&self, index_count: &Any) -> Undefined {
         self.inner
             .call("drawIndexed", &[index_count.into()])
             .as_::<Undefined>()
     }
-
+    /// The drawIndexed method.
+    /// [`GPURenderBundleEncoder.drawIndexed`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/drawIndexed)
     pub fn draw_indexed1(&self, index_count: &Any, instance_count: &Any) -> Undefined {
         self.inner
             .call("drawIndexed", &[index_count.into(), instance_count.into()])
             .as_::<Undefined>()
     }
-
+    /// The drawIndexed method.
+    /// [`GPURenderBundleEncoder.drawIndexed`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/drawIndexed)
     pub fn draw_indexed2(
         &self,
         index_count: &Any,
@@ -324,7 +360,8 @@ impl GPURenderBundleEncoder {
             )
             .as_::<Undefined>()
     }
-
+    /// The drawIndexed method.
+    /// [`GPURenderBundleEncoder.drawIndexed`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/drawIndexed)
     pub fn draw_indexed3(
         &self,
         index_count: &Any,
@@ -344,7 +381,8 @@ impl GPURenderBundleEncoder {
             )
             .as_::<Undefined>()
     }
-
+    /// The drawIndexed method.
+    /// [`GPURenderBundleEncoder.drawIndexed`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/drawIndexed)
     pub fn draw_indexed4(
         &self,
         index_count: &Any,
@@ -368,6 +406,8 @@ impl GPURenderBundleEncoder {
     }
 }
 impl GPURenderBundleEncoder {
+    /// The drawIndirect method.
+    /// [`GPURenderBundleEncoder.drawIndirect`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/drawIndirect)
     pub fn draw_indirect(&self, indirect_buffer: &GPUBuffer, indirect_offset: &Any) -> Undefined {
         self.inner
             .call(
@@ -378,6 +418,8 @@ impl GPURenderBundleEncoder {
     }
 }
 impl GPURenderBundleEncoder {
+    /// The drawIndexedIndirect method.
+    /// [`GPURenderBundleEncoder.drawIndexedIndirect`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/drawIndexedIndirect)
     pub fn draw_indexed_indirect(
         &self,
         indirect_buffer: &GPUBuffer,

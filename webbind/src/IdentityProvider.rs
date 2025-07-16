@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IdentityResolveOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for IdentityResolveOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         IdentityResolveOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for IdentityResolveOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for IdentityResolveOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for IdentityResolveOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for IdentityResolveOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for IdentityResolveOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for IdentityResolveOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<IdentityResolveOptions> for emlite::Val {
-    fn from(s: IdentityResolveOptions) -> emlite::Val {
+impl From<IdentityResolveOptions> for Any {
+    fn from(s: IdentityResolveOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&IdentityResolveOptions> for emlite::Val {
-    fn from(s: &IdentityResolveOptions) -> emlite::Val {
+impl From<&IdentityResolveOptions> for Any {
+    fn from(s: &IdentityResolveOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -62,21 +62,21 @@ impl IdentityResolveOptions {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IdentityUserInfo {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for IdentityUserInfo {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         IdentityUserInfo { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for IdentityUserInfo {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -86,25 +86,25 @@ impl core::ops::DerefMut for IdentityUserInfo {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for IdentityUserInfo {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for IdentityUserInfo {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for IdentityUserInfo {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for IdentityUserInfo {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<IdentityUserInfo> for emlite::Val {
-    fn from(s: IdentityUserInfo) -> emlite::Val {
+impl From<IdentityUserInfo> for Any {
+    fn from(s: IdentityUserInfo) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&IdentityUserInfo> for emlite::Val {
-    fn from(s: &IdentityUserInfo) -> emlite::Val {
+impl From<&IdentityUserInfo> for Any {
+    fn from(s: &IdentityUserInfo) -> Any {
         s.inner.clone()
     }
 }
@@ -148,21 +148,21 @@ impl IdentityUserInfo {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IdentityProviderConfig {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for IdentityProviderConfig {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         IdentityProviderConfig { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for IdentityProviderConfig {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -172,25 +172,25 @@ impl core::ops::DerefMut for IdentityProviderConfig {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for IdentityProviderConfig {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for IdentityProviderConfig {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for IdentityProviderConfig {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for IdentityProviderConfig {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<IdentityProviderConfig> for emlite::Val {
-    fn from(s: IdentityProviderConfig) -> emlite::Val {
+impl From<IdentityProviderConfig> for Any {
+    fn from(s: IdentityProviderConfig) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&IdentityProviderConfig> for emlite::Val {
-    fn from(s: &IdentityProviderConfig) -> emlite::Val {
+impl From<&IdentityProviderConfig> for Any {
+    fn from(s: &IdentityProviderConfig) -> Any {
         s.inner.clone()
     }
 }
@@ -213,26 +213,28 @@ impl IdentityProviderConfig {
         self.inner.set("clientId", value);
     }
 }
+/// The IdentityProvider class.
+/// [`IdentityProvider`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityProvider)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IdentityProvider {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for IdentityProvider {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         IdentityProvider {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for IdentityProvider {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -242,53 +244,60 @@ impl core::ops::DerefMut for IdentityProvider {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for IdentityProvider {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for IdentityProvider {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for IdentityProvider {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for IdentityProvider {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<IdentityProvider> for emlite::Val {
-    fn from(s: IdentityProvider) -> emlite::Val {
+impl From<IdentityProvider> for Any {
+    fn from(s: IdentityProvider) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&IdentityProvider> for emlite::Val {
-    fn from(s: &IdentityProvider) -> emlite::Val {
+impl From<&IdentityProvider> for Any {
+    fn from(s: &IdentityProvider) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(IdentityProvider);
 
 impl IdentityProvider {
+    /// The close method.
+    /// [`IdentityProvider.close`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityProvider/close)
     pub fn close() -> Undefined {
-        emlite::Val::global("IdentityProvider")
+        Any::global("IdentityProvider")
             .call("close", &[])
             .as_::<Undefined>()
     }
 }
 impl IdentityProvider {
+    /// The resolve method.
+    /// [`IdentityProvider.resolve`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityProvider/resolve)
     pub fn resolve0(token: &str) -> Promise {
-        emlite::Val::global("IdentityProvider")
+        Any::global("IdentityProvider")
             .call("resolve", &[token.into()])
             .as_::<Promise>()
     }
-
+    /// The resolve method.
+    /// [`IdentityProvider.resolve`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityProvider/resolve)
     pub fn resolve1(token: &str, options: &IdentityResolveOptions) -> Promise {
-        emlite::Val::global("IdentityProvider")
+        Any::global("IdentityProvider")
             .call("resolve", &[token.into(), options.into()])
             .as_::<Promise>()
     }
 }
 impl IdentityProvider {
+    /// The getUserInfo method.
+    /// [`IdentityProvider.getUserInfo`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityProvider/getUserInfo)
     pub fn get_user_info(config: &IdentityProviderConfig) -> Promise {
-        emlite::Val::global("IdentityProvider")
+        Any::global("IdentityProvider")
             .call("getUserInfo", &[config.into()])
             .as_::<Promise>()
     }

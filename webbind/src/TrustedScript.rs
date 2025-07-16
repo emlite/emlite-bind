@@ -1,25 +1,27 @@
 use super::*;
 
+/// The TrustedScript class.
+/// [`TrustedScript`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedScript)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TrustedScript {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for TrustedScript {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         TrustedScript {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for TrustedScript {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for TrustedScript {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for TrustedScript {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for TrustedScript {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for TrustedScript {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for TrustedScript {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<TrustedScript> for emlite::Val {
-    fn from(s: TrustedScript) -> emlite::Val {
+impl From<TrustedScript> for Any {
+    fn from(s: TrustedScript) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&TrustedScript> for emlite::Val {
-    fn from(s: &TrustedScript) -> emlite::Val {
+impl From<&TrustedScript> for Any {
+    fn from(s: &TrustedScript) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(TrustedScript);
 
 impl TrustedScript {
+    /// The toJSON method.
+    /// [`TrustedScript.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedScript/toJSON)
     pub fn to_json(&self) -> String {
         self.inner.call("toJSON", &[]).as_::<String>()
     }

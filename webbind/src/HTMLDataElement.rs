@@ -1,20 +1,22 @@
 use super::*;
 
+/// The HTMLDataElement class.
+/// [`HTMLDataElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDataElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLDataElement {
     inner: HTMLElement,
 }
 impl FromVal for HTMLDataElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HTMLDataElement {
             inner: HTMLElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,44 +31,47 @@ impl core::ops::DerefMut for HTMLDataElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HTMLDataElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HTMLDataElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HTMLDataElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HTMLDataElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HTMLDataElement> for emlite::Val {
-    fn from(s: HTMLDataElement) -> emlite::Val {
+impl From<HTMLDataElement> for Any {
+    fn from(s: HTMLDataElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HTMLDataElement> for emlite::Val {
-    fn from(s: &HTMLDataElement) -> emlite::Val {
+impl From<&HTMLDataElement> for Any {
+    fn from(s: &HTMLDataElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLDataElement);
 
 impl HTMLDataElement {
+    /// The `new HTMLDataElement(..)` constructor, creating a new HTMLDataElement instance
     pub fn new() -> HTMLDataElement {
         Self {
-            inner: emlite::Val::global("HTMLDataElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLDataElement").new(&[]).as_::<HTMLElement>(),
         }
     }
 }
 impl HTMLDataElement {
+    /// Getter of the `value` attribute.
+    /// [`HTMLDataElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDataElement/value)
     pub fn value(&self) -> String {
         self.inner.get("value").as_::<String>()
     }
 
+    /// Setter of the `value` attribute.
+    /// [`HTMLDataElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDataElement/value)
     pub fn set_value(&mut self, value: &str) {
         self.inner.set("value", value);
     }

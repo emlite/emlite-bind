@@ -1,25 +1,27 @@
 use super::*;
 
+/// The EXT_shader_texture_lod class.
+/// [`EXT_shader_texture_lod`](https://developer.mozilla.org/en-US/docs/Web/API/EXT_shader_texture_lod)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EXT_shader_texture_lod {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for EXT_shader_texture_lod {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         EXT_shader_texture_lod {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for EXT_shader_texture_lod {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,25 +31,25 @@ impl core::ops::DerefMut for EXT_shader_texture_lod {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for EXT_shader_texture_lod {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for EXT_shader_texture_lod {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for EXT_shader_texture_lod {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for EXT_shader_texture_lod {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<EXT_shader_texture_lod> for emlite::Val {
-    fn from(s: EXT_shader_texture_lod) -> emlite::Val {
+impl From<EXT_shader_texture_lod> for Any {
+    fn from(s: EXT_shader_texture_lod) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&EXT_shader_texture_lod> for emlite::Val {
-    fn from(s: &EXT_shader_texture_lod) -> emlite::Val {
+impl From<&EXT_shader_texture_lod> for Any {
+    fn from(s: &EXT_shader_texture_lod) -> Any {
         s.inner.clone().into()
     }
 }

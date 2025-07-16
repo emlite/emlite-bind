@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GamepadEffectParameters {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GamepadEffectParameters {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GamepadEffectParameters { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GamepadEffectParameters {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for GamepadEffectParameters {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GamepadEffectParameters {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GamepadEffectParameters {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GamepadEffectParameters {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GamepadEffectParameters {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GamepadEffectParameters> for emlite::Val {
-    fn from(s: GamepadEffectParameters) -> emlite::Val {
+impl From<GamepadEffectParameters> for Any {
+    fn from(s: GamepadEffectParameters) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GamepadEffectParameters> for emlite::Val {
-    fn from(s: &GamepadEffectParameters) -> emlite::Val {
+impl From<&GamepadEffectParameters> for Any {
+    fn from(s: &GamepadEffectParameters) -> Any {
         s.inner.clone()
     }
 }
@@ -104,26 +104,28 @@ impl GamepadEffectParameters {
         self.inner.set("rightTrigger", value);
     }
 }
+/// The GamepadHapticActuator class.
+/// [`GamepadHapticActuator`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GamepadHapticActuator {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GamepadHapticActuator {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GamepadHapticActuator {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GamepadHapticActuator {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -133,31 +135,33 @@ impl core::ops::DerefMut for GamepadHapticActuator {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GamepadHapticActuator {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GamepadHapticActuator {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GamepadHapticActuator {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GamepadHapticActuator {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GamepadHapticActuator> for emlite::Val {
-    fn from(s: GamepadHapticActuator) -> emlite::Val {
+impl From<GamepadHapticActuator> for Any {
+    fn from(s: GamepadHapticActuator) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GamepadHapticActuator> for emlite::Val {
-    fn from(s: &GamepadHapticActuator) -> emlite::Val {
+impl From<&GamepadHapticActuator> for Any {
+    fn from(s: &GamepadHapticActuator) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GamepadHapticActuator);
 
 impl GamepadHapticActuator {
+    /// Getter of the `effects` attribute.
+    /// [`GamepadHapticActuator.effects`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator/effects)
     pub fn effects(&self) -> FrozenArray<GamepadHapticEffectType> {
         self.inner
             .get("effects")
@@ -165,12 +169,15 @@ impl GamepadHapticActuator {
     }
 }
 impl GamepadHapticActuator {
+    /// The playEffect method.
+    /// [`GamepadHapticActuator.playEffect`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator/playEffect)
     pub fn play_effect0(&self, type_: &GamepadHapticEffectType) -> Promise {
         self.inner
             .call("playEffect", &[type_.into()])
             .as_::<Promise>()
     }
-
+    /// The playEffect method.
+    /// [`GamepadHapticActuator.playEffect`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator/playEffect)
     pub fn play_effect1(
         &self,
         type_: &GamepadHapticEffectType,
@@ -182,11 +189,15 @@ impl GamepadHapticActuator {
     }
 }
 impl GamepadHapticActuator {
+    /// The reset method.
+    /// [`GamepadHapticActuator.reset`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator/reset)
     pub fn reset(&self) -> Promise {
         self.inner.call("reset", &[]).as_::<Promise>()
     }
 }
 impl GamepadHapticActuator {
+    /// The pulse method.
+    /// [`GamepadHapticActuator.pulse`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator/pulse)
     pub fn pulse(&self, value: f64, duration: f64) -> Promise {
         self.inner
             .call("pulse", &[value.into(), duration.into()])

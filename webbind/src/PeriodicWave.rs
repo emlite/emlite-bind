@@ -1,25 +1,27 @@
 use super::*;
 
+/// The PeriodicWave class.
+/// [`PeriodicWave`](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicWave)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PeriodicWave {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PeriodicWave {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PeriodicWave {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PeriodicWave {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,44 +31,46 @@ impl core::ops::DerefMut for PeriodicWave {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PeriodicWave {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PeriodicWave {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PeriodicWave {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PeriodicWave {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PeriodicWave> for emlite::Val {
-    fn from(s: PeriodicWave) -> emlite::Val {
+impl From<PeriodicWave> for Any {
+    fn from(s: PeriodicWave) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PeriodicWave> for emlite::Val {
-    fn from(s: &PeriodicWave) -> emlite::Val {
+impl From<&PeriodicWave> for Any {
+    fn from(s: &PeriodicWave) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PeriodicWave);
 
 impl PeriodicWave {
+    /// The `new PeriodicWave(..)` constructor, creating a new PeriodicWave instance
     pub fn new0(context: &BaseAudioContext) -> PeriodicWave {
         Self {
-            inner: emlite::Val::global("PeriodicWave")
+            inner: Any::global("PeriodicWave")
                 .new(&[context.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 
+    /// The `new PeriodicWave(..)` constructor, creating a new PeriodicWave instance
     pub fn new1(context: &BaseAudioContext, options: &Any) -> PeriodicWave {
         Self {
-            inner: emlite::Val::global("PeriodicWave")
+            inner: Any::global("PeriodicWave")
                 .new(&[context.into(), options.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }

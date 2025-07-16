@@ -1,25 +1,27 @@
 use super::*;
 
+/// The USBIsochronousOutTransferPacket class.
+/// [`USBIsochronousOutTransferPacket`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousOutTransferPacket)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct USBIsochronousOutTransferPacket {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for USBIsochronousOutTransferPacket {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         USBIsochronousOutTransferPacket {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for USBIsochronousOutTransferPacket {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,53 +31,59 @@ impl core::ops::DerefMut for USBIsochronousOutTransferPacket {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for USBIsochronousOutTransferPacket {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for USBIsochronousOutTransferPacket {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for USBIsochronousOutTransferPacket {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for USBIsochronousOutTransferPacket {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<USBIsochronousOutTransferPacket> for emlite::Val {
-    fn from(s: USBIsochronousOutTransferPacket) -> emlite::Val {
+impl From<USBIsochronousOutTransferPacket> for Any {
+    fn from(s: USBIsochronousOutTransferPacket) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&USBIsochronousOutTransferPacket> for emlite::Val {
-    fn from(s: &USBIsochronousOutTransferPacket) -> emlite::Val {
+impl From<&USBIsochronousOutTransferPacket> for Any {
+    fn from(s: &USBIsochronousOutTransferPacket) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(USBIsochronousOutTransferPacket);
 
 impl USBIsochronousOutTransferPacket {
+    /// The `new USBIsochronousOutTransferPacket(..)` constructor, creating a new USBIsochronousOutTransferPacket instance
     pub fn new0(status: &USBTransferStatus) -> USBIsochronousOutTransferPacket {
         Self {
-            inner: emlite::Val::global("USBIsochronousOutTransferPacket")
+            inner: Any::global("USBIsochronousOutTransferPacket")
                 .new(&[status.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 
+    /// The `new USBIsochronousOutTransferPacket(..)` constructor, creating a new USBIsochronousOutTransferPacket instance
     pub fn new1(status: &USBTransferStatus, bytes_written: u32) -> USBIsochronousOutTransferPacket {
         Self {
-            inner: emlite::Val::global("USBIsochronousOutTransferPacket")
+            inner: Any::global("USBIsochronousOutTransferPacket")
                 .new(&[status.into(), bytes_written.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl USBIsochronousOutTransferPacket {
+    /// Getter of the `bytesWritten` attribute.
+    /// [`USBIsochronousOutTransferPacket.bytesWritten`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousOutTransferPacket/bytesWritten)
     pub fn bytes_written(&self) -> u32 {
         self.inner.get("bytesWritten").as_::<u32>()
     }
 }
 impl USBIsochronousOutTransferPacket {
+    /// Getter of the `status` attribute.
+    /// [`USBIsochronousOutTransferPacket.status`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousOutTransferPacket/status)
     pub fn status(&self) -> USBTransferStatus {
         self.inner.get("status").as_::<USBTransferStatus>()
     }

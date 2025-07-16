@@ -1,25 +1,27 @@
 use super::*;
 
+/// The CSSVariableReferenceValue class.
+/// [`CSSVariableReferenceValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSVariableReferenceValue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSVariableReferenceValue {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for CSSVariableReferenceValue {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSVariableReferenceValue {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for CSSVariableReferenceValue {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,57 +31,65 @@ impl core::ops::DerefMut for CSSVariableReferenceValue {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSVariableReferenceValue {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSVariableReferenceValue {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSVariableReferenceValue {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSVariableReferenceValue {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSVariableReferenceValue> for emlite::Val {
-    fn from(s: CSSVariableReferenceValue) -> emlite::Val {
+impl From<CSSVariableReferenceValue> for Any {
+    fn from(s: CSSVariableReferenceValue) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSVariableReferenceValue> for emlite::Val {
-    fn from(s: &CSSVariableReferenceValue) -> emlite::Val {
+impl From<&CSSVariableReferenceValue> for Any {
+    fn from(s: &CSSVariableReferenceValue) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSVariableReferenceValue);
 
 impl CSSVariableReferenceValue {
+    /// The `new CSSVariableReferenceValue(..)` constructor, creating a new CSSVariableReferenceValue instance
     pub fn new0(variable: &str) -> CSSVariableReferenceValue {
         Self {
-            inner: emlite::Val::global("CSSVariableReferenceValue")
+            inner: Any::global("CSSVariableReferenceValue")
                 .new(&[variable.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 
+    /// The `new CSSVariableReferenceValue(..)` constructor, creating a new CSSVariableReferenceValue instance
     pub fn new1(variable: &str, fallback: &CSSUnparsedValue) -> CSSVariableReferenceValue {
         Self {
-            inner: emlite::Val::global("CSSVariableReferenceValue")
+            inner: Any::global("CSSVariableReferenceValue")
                 .new(&[variable.into(), fallback.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl CSSVariableReferenceValue {
+    /// Getter of the `variable` attribute.
+    /// [`CSSVariableReferenceValue.variable`](https://developer.mozilla.org/en-US/docs/Web/API/CSSVariableReferenceValue/variable)
     pub fn variable(&self) -> String {
         self.inner.get("variable").as_::<String>()
     }
 
+    /// Setter of the `variable` attribute.
+    /// [`CSSVariableReferenceValue.variable`](https://developer.mozilla.org/en-US/docs/Web/API/CSSVariableReferenceValue/variable)
     pub fn set_variable(&mut self, value: &str) {
         self.inner.set("variable", value);
     }
 }
 impl CSSVariableReferenceValue {
+    /// Getter of the `fallback` attribute.
+    /// [`CSSVariableReferenceValue.fallback`](https://developer.mozilla.org/en-US/docs/Web/API/CSSVariableReferenceValue/fallback)
     pub fn fallback(&self) -> CSSUnparsedValue {
         self.inner.get("fallback").as_::<CSSUnparsedValue>()
     }

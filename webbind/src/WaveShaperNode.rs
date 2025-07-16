@@ -1,20 +1,22 @@
 use super::*;
 
+/// The WaveShaperNode class.
+/// [`WaveShaperNode`](https://developer.mozilla.org/en-US/docs/Web/API/WaveShaperNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WaveShaperNode {
     inner: AudioNode,
 }
 impl FromVal for WaveShaperNode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WaveShaperNode {
             inner: AudioNode::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,61 +31,71 @@ impl core::ops::DerefMut for WaveShaperNode {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WaveShaperNode {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WaveShaperNode {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WaveShaperNode {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WaveShaperNode {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WaveShaperNode> for emlite::Val {
-    fn from(s: WaveShaperNode) -> emlite::Val {
+impl From<WaveShaperNode> for Any {
+    fn from(s: WaveShaperNode) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WaveShaperNode> for emlite::Val {
-    fn from(s: &WaveShaperNode) -> emlite::Val {
+impl From<&WaveShaperNode> for Any {
+    fn from(s: &WaveShaperNode) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(WaveShaperNode);
 
 impl WaveShaperNode {
+    /// The `new WaveShaperNode(..)` constructor, creating a new WaveShaperNode instance
     pub fn new0(context: &BaseAudioContext) -> WaveShaperNode {
         Self {
-            inner: emlite::Val::global("WaveShaperNode")
+            inner: Any::global("WaveShaperNode")
                 .new(&[context.into()])
                 .as_::<AudioNode>(),
         }
     }
 
+    /// The `new WaveShaperNode(..)` constructor, creating a new WaveShaperNode instance
     pub fn new1(context: &BaseAudioContext, options: &Any) -> WaveShaperNode {
         Self {
-            inner: emlite::Val::global("WaveShaperNode")
+            inner: Any::global("WaveShaperNode")
                 .new(&[context.into(), options.into()])
                 .as_::<AudioNode>(),
         }
     }
 }
 impl WaveShaperNode {
+    /// Getter of the `curve` attribute.
+    /// [`WaveShaperNode.curve`](https://developer.mozilla.org/en-US/docs/Web/API/WaveShaperNode/curve)
     pub fn curve(&self) -> Float32Array {
         self.inner.get("curve").as_::<Float32Array>()
     }
 
+    /// Setter of the `curve` attribute.
+    /// [`WaveShaperNode.curve`](https://developer.mozilla.org/en-US/docs/Web/API/WaveShaperNode/curve)
     pub fn set_curve(&mut self, value: &Float32Array) {
         self.inner.set("curve", value);
     }
 }
 impl WaveShaperNode {
+    /// Getter of the `oversample` attribute.
+    /// [`WaveShaperNode.oversample`](https://developer.mozilla.org/en-US/docs/Web/API/WaveShaperNode/oversample)
     pub fn oversample(&self) -> OverSampleType {
         self.inner.get("oversample").as_::<OverSampleType>()
     }
 
+    /// Setter of the `oversample` attribute.
+    /// [`WaveShaperNode.oversample`](https://developer.mozilla.org/en-US/docs/Web/API/WaveShaperNode/oversample)
     pub fn set_oversample(&mut self, value: &OverSampleType) {
         self.inner.set("oversample", value);
     }

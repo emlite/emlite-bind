@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebTransportSendOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for WebTransportSendOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WebTransportSendOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for WebTransportSendOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for WebTransportSendOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WebTransportSendOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WebTransportSendOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WebTransportSendOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WebTransportSendOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WebTransportSendOptions> for emlite::Val {
-    fn from(s: WebTransportSendOptions) -> emlite::Val {
+impl From<WebTransportSendOptions> for Any {
+    fn from(s: WebTransportSendOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WebTransportSendOptions> for emlite::Val {
-    fn from(s: &WebTransportSendOptions) -> emlite::Val {
+impl From<&WebTransportSendOptions> for Any {
+    fn from(s: &WebTransportSendOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -68,26 +68,28 @@ impl WebTransportSendOptions {
         self.inner.set("sendOrder", value);
     }
 }
+/// The WebTransportDatagramDuplexStream class.
+/// [`WebTransportDatagramDuplexStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebTransportDatagramDuplexStream {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for WebTransportDatagramDuplexStream {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WebTransportDatagramDuplexStream {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for WebTransportDatagramDuplexStream {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -97,37 +99,40 @@ impl core::ops::DerefMut for WebTransportDatagramDuplexStream {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WebTransportDatagramDuplexStream {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WebTransportDatagramDuplexStream {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WebTransportDatagramDuplexStream {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WebTransportDatagramDuplexStream {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WebTransportDatagramDuplexStream> for emlite::Val {
-    fn from(s: WebTransportDatagramDuplexStream) -> emlite::Val {
+impl From<WebTransportDatagramDuplexStream> for Any {
+    fn from(s: WebTransportDatagramDuplexStream) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WebTransportDatagramDuplexStream> for emlite::Val {
-    fn from(s: &WebTransportDatagramDuplexStream) -> emlite::Val {
+impl From<&WebTransportDatagramDuplexStream> for Any {
+    fn from(s: &WebTransportDatagramDuplexStream) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(WebTransportDatagramDuplexStream);
 
 impl WebTransportDatagramDuplexStream {
+    /// The createWritable method.
+    /// [`WebTransportDatagramDuplexStream.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/createWritable)
     pub fn create_writable0(&self) -> WebTransportDatagramsWritable {
         self.inner
             .call("createWritable", &[])
             .as_::<WebTransportDatagramsWritable>()
     }
-
+    /// The createWritable method.
+    /// [`WebTransportDatagramDuplexStream.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/createWritable)
     pub fn create_writable1(
         &self,
         options: &WebTransportSendOptions,
@@ -138,47 +143,67 @@ impl WebTransportDatagramDuplexStream {
     }
 }
 impl WebTransportDatagramDuplexStream {
+    /// Getter of the `readable` attribute.
+    /// [`WebTransportDatagramDuplexStream.readable`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/readable)
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
 }
 impl WebTransportDatagramDuplexStream {
+    /// Getter of the `maxDatagramSize` attribute.
+    /// [`WebTransportDatagramDuplexStream.maxDatagramSize`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/maxDatagramSize)
     pub fn max_datagram_size(&self) -> u32 {
         self.inner.get("maxDatagramSize").as_::<u32>()
     }
 }
 impl WebTransportDatagramDuplexStream {
+    /// Getter of the `incomingMaxAge` attribute.
+    /// [`WebTransportDatagramDuplexStream.incomingMaxAge`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/incomingMaxAge)
     pub fn incoming_max_age(&self) -> f64 {
         self.inner.get("incomingMaxAge").as_::<f64>()
     }
 
+    /// Setter of the `incomingMaxAge` attribute.
+    /// [`WebTransportDatagramDuplexStream.incomingMaxAge`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/incomingMaxAge)
     pub fn set_incoming_max_age(&mut self, value: f64) {
         self.inner.set("incomingMaxAge", value);
     }
 }
 impl WebTransportDatagramDuplexStream {
+    /// Getter of the `outgoingMaxAge` attribute.
+    /// [`WebTransportDatagramDuplexStream.outgoingMaxAge`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/outgoingMaxAge)
     pub fn outgoing_max_age(&self) -> f64 {
         self.inner.get("outgoingMaxAge").as_::<f64>()
     }
 
+    /// Setter of the `outgoingMaxAge` attribute.
+    /// [`WebTransportDatagramDuplexStream.outgoingMaxAge`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/outgoingMaxAge)
     pub fn set_outgoing_max_age(&mut self, value: f64) {
         self.inner.set("outgoingMaxAge", value);
     }
 }
 impl WebTransportDatagramDuplexStream {
+    /// Getter of the `incomingHighWaterMark` attribute.
+    /// [`WebTransportDatagramDuplexStream.incomingHighWaterMark`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/incomingHighWaterMark)
     pub fn incoming_high_water_mark(&self) -> f64 {
         self.inner.get("incomingHighWaterMark").as_::<f64>()
     }
 
+    /// Setter of the `incomingHighWaterMark` attribute.
+    /// [`WebTransportDatagramDuplexStream.incomingHighWaterMark`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/incomingHighWaterMark)
     pub fn set_incoming_high_water_mark(&mut self, value: f64) {
         self.inner.set("incomingHighWaterMark", value);
     }
 }
 impl WebTransportDatagramDuplexStream {
+    /// Getter of the `outgoingHighWaterMark` attribute.
+    /// [`WebTransportDatagramDuplexStream.outgoingHighWaterMark`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/outgoingHighWaterMark)
     pub fn outgoing_high_water_mark(&self) -> f64 {
         self.inner.get("outgoingHighWaterMark").as_::<f64>()
     }
 
+    /// Setter of the `outgoingHighWaterMark` attribute.
+    /// [`WebTransportDatagramDuplexStream.outgoingHighWaterMark`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportDatagramDuplexStream/outgoingHighWaterMark)
     pub fn set_outgoing_high_water_mark(&mut self, value: f64) {
         self.inner.set("outgoingHighWaterMark", value);
     }

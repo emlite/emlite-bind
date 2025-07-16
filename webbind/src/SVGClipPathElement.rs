@@ -1,20 +1,22 @@
 use super::*;
 
+/// The SVGClipPathElement class.
+/// [`SVGClipPathElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGClipPathElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGClipPathElement {
     inner: SVGElement,
 }
 impl FromVal for SVGClipPathElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SVGClipPathElement {
             inner: SVGElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for SVGClipPathElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SVGClipPathElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SVGClipPathElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SVGClipPathElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SVGClipPathElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SVGClipPathElement> for emlite::Val {
-    fn from(s: SVGClipPathElement) -> emlite::Val {
+impl From<SVGClipPathElement> for Any {
+    fn from(s: SVGClipPathElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SVGClipPathElement> for emlite::Val {
-    fn from(s: &SVGClipPathElement) -> emlite::Val {
+impl From<&SVGClipPathElement> for Any {
+    fn from(s: &SVGClipPathElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SVGClipPathElement);
 
 impl SVGClipPathElement {
+    /// Getter of the `clipPathUnits` attribute.
+    /// [`SVGClipPathElement.clipPathUnits`](https://developer.mozilla.org/en-US/docs/Web/API/SVGClipPathElement/clipPathUnits)
     pub fn clip_path_units(&self) -> SVGAnimatedEnumeration {
         self.inner
             .get("clipPathUnits")
@@ -61,6 +65,8 @@ impl SVGClipPathElement {
     }
 }
 impl SVGClipPathElement {
+    /// Getter of the `transform` attribute.
+    /// [`SVGClipPathElement.transform`](https://developer.mozilla.org/en-US/docs/Web/API/SVGClipPathElement/transform)
     pub fn transform(&self) -> SVGAnimatedTransformList {
         self.inner
             .get("transform")

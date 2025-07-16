@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct StorageBucketOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for StorageBucketOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         StorageBucketOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for StorageBucketOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for StorageBucketOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for StorageBucketOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for StorageBucketOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for StorageBucketOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for StorageBucketOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<StorageBucketOptions> for emlite::Val {
-    fn from(s: StorageBucketOptions) -> emlite::Val {
+impl From<StorageBucketOptions> for Any {
+    fn from(s: StorageBucketOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&StorageBucketOptions> for emlite::Val {
-    fn from(s: &StorageBucketOptions) -> emlite::Val {
+impl From<&StorageBucketOptions> for Any {
+    fn from(s: &StorageBucketOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -77,26 +77,28 @@ impl StorageBucketOptions {
         self.inner.set("expires", value);
     }
 }
+/// The StorageBucketManager class.
+/// [`StorageBucketManager`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucketManager)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct StorageBucketManager {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for StorageBucketManager {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         StorageBucketManager {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for StorageBucketManager {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -106,35 +108,38 @@ impl core::ops::DerefMut for StorageBucketManager {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for StorageBucketManager {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for StorageBucketManager {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for StorageBucketManager {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for StorageBucketManager {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<StorageBucketManager> for emlite::Val {
-    fn from(s: StorageBucketManager) -> emlite::Val {
+impl From<StorageBucketManager> for Any {
+    fn from(s: StorageBucketManager) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&StorageBucketManager> for emlite::Val {
-    fn from(s: &StorageBucketManager) -> emlite::Val {
+impl From<&StorageBucketManager> for Any {
+    fn from(s: &StorageBucketManager) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(StorageBucketManager);
 
 impl StorageBucketManager {
+    /// The open method.
+    /// [`StorageBucketManager.open`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucketManager/open)
     pub fn open0(&self, name: &str) -> Promise {
         self.inner.call("open", &[name.into()]).as_::<Promise>()
     }
-
+    /// The open method.
+    /// [`StorageBucketManager.open`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucketManager/open)
     pub fn open1(&self, name: &str, options: &StorageBucketOptions) -> Promise {
         self.inner
             .call("open", &[name.into(), options.into()])
@@ -142,11 +147,15 @@ impl StorageBucketManager {
     }
 }
 impl StorageBucketManager {
+    /// The keys method.
+    /// [`StorageBucketManager.keys`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucketManager/keys)
     pub fn keys(&self) -> Promise {
         self.inner.call("keys", &[]).as_::<Promise>()
     }
 }
 impl StorageBucketManager {
+    /// The delete method.
+    /// [`StorageBucketManager.delete`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucketManager/delete)
     pub fn delete(&self, name: &str) -> Promise {
         self.inner.call("delete", &[name.into()]).as_::<Promise>()
     }

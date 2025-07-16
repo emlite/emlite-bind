@@ -1,25 +1,27 @@
 use super::*;
 
+/// The DOMStringList class.
+/// [`DOMStringList`](https://developer.mozilla.org/en-US/docs/Web/API/DOMStringList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DOMStringList {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for DOMStringList {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         DOMStringList {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for DOMStringList {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,41 +31,47 @@ impl core::ops::DerefMut for DOMStringList {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for DOMStringList {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for DOMStringList {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for DOMStringList {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for DOMStringList {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<DOMStringList> for emlite::Val {
-    fn from(s: DOMStringList) -> emlite::Val {
+impl From<DOMStringList> for Any {
+    fn from(s: DOMStringList) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&DOMStringList> for emlite::Val {
-    fn from(s: &DOMStringList) -> emlite::Val {
+impl From<&DOMStringList> for Any {
+    fn from(s: &DOMStringList) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(DOMStringList);
 
 impl DOMStringList {
+    /// Getter of the `length` attribute.
+    /// [`DOMStringList.length`](https://developer.mozilla.org/en-US/docs/Web/API/DOMStringList/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
 }
 impl DOMStringList {
+    /// The item method.
+    /// [`DOMStringList.item`](https://developer.mozilla.org/en-US/docs/Web/API/DOMStringList/item)
     pub fn item(&self, index: u32) -> String {
         self.inner.call("item", &[index.into()]).as_::<String>()
     }
 }
 impl DOMStringList {
+    /// The contains method.
+    /// [`DOMStringList.contains`](https://developer.mozilla.org/en-US/docs/Web/API/DOMStringList/contains)
     pub fn contains(&self, string: &str) -> bool {
         self.inner.call("contains", &[string.into()]).as_::<bool>()
     }

@@ -1,25 +1,27 @@
 use super::*;
 
+/// The EXT_disjoint_timer_query_webgl2 class.
+/// [`EXT_disjoint_timer_query_webgl2`](https://developer.mozilla.org/en-US/docs/Web/API/EXT_disjoint_timer_query_webgl2)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EXT_disjoint_timer_query_webgl2 {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for EXT_disjoint_timer_query_webgl2 {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         EXT_disjoint_timer_query_webgl2 {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for EXT_disjoint_timer_query_webgl2 {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for EXT_disjoint_timer_query_webgl2 {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for EXT_disjoint_timer_query_webgl2 {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for EXT_disjoint_timer_query_webgl2 {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for EXT_disjoint_timer_query_webgl2 {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for EXT_disjoint_timer_query_webgl2 {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<EXT_disjoint_timer_query_webgl2> for emlite::Val {
-    fn from(s: EXT_disjoint_timer_query_webgl2) -> emlite::Val {
+impl From<EXT_disjoint_timer_query_webgl2> for Any {
+    fn from(s: EXT_disjoint_timer_query_webgl2) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&EXT_disjoint_timer_query_webgl2> for emlite::Val {
-    fn from(s: &EXT_disjoint_timer_query_webgl2) -> emlite::Val {
+impl From<&EXT_disjoint_timer_query_webgl2> for Any {
+    fn from(s: &EXT_disjoint_timer_query_webgl2) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(EXT_disjoint_timer_query_webgl2);
 
 impl EXT_disjoint_timer_query_webgl2 {
+    /// The queryCounterEXT method.
+    /// [`EXT_disjoint_timer_query_webgl2.queryCounterEXT`](https://developer.mozilla.org/en-US/docs/Web/API/EXT_disjoint_timer_query_webgl2/queryCounterEXT)
     pub fn query_counter_ext(&self, query: &WebGLQuery, target: &Any) -> Undefined {
         self.inner
             .call("queryCounterEXT", &[query.into(), target.into()])

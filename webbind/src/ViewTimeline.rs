@@ -1,20 +1,22 @@
 use super::*;
 
+/// The ViewTimeline class.
+/// [`ViewTimeline`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTimeline)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ViewTimeline {
     inner: ScrollTimeline,
 }
 impl FromVal for ViewTimeline {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ViewTimeline {
             inner: ScrollTimeline::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,58 +31,64 @@ impl core::ops::DerefMut for ViewTimeline {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ViewTimeline {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ViewTimeline {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ViewTimeline {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ViewTimeline {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ViewTimeline> for emlite::Val {
-    fn from(s: ViewTimeline) -> emlite::Val {
+impl From<ViewTimeline> for Any {
+    fn from(s: ViewTimeline) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ViewTimeline> for emlite::Val {
-    fn from(s: &ViewTimeline) -> emlite::Val {
+impl From<&ViewTimeline> for Any {
+    fn from(s: &ViewTimeline) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ViewTimeline);
 
 impl ViewTimeline {
+    /// The `new ViewTimeline(..)` constructor, creating a new ViewTimeline instance
     pub fn new0() -> ViewTimeline {
         Self {
-            inner: emlite::Val::global("ViewTimeline")
-                .new(&[])
-                .as_::<ScrollTimeline>(),
+            inner: Any::global("ViewTimeline").new(&[]).as_::<ScrollTimeline>(),
         }
     }
 
+    /// The `new ViewTimeline(..)` constructor, creating a new ViewTimeline instance
     pub fn new1(options: &Any) -> ViewTimeline {
         Self {
-            inner: emlite::Val::global("ViewTimeline")
+            inner: Any::global("ViewTimeline")
                 .new(&[options.into()])
                 .as_::<ScrollTimeline>(),
         }
     }
 }
 impl ViewTimeline {
+    /// Getter of the `subject` attribute.
+    /// [`ViewTimeline.subject`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTimeline/subject)
     pub fn subject(&self) -> Element {
         self.inner.get("subject").as_::<Element>()
     }
 }
 impl ViewTimeline {
+    /// Getter of the `startOffset` attribute.
+    /// [`ViewTimeline.startOffset`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTimeline/startOffset)
     pub fn start_offset(&self) -> CSSNumericValue {
         self.inner.get("startOffset").as_::<CSSNumericValue>()
     }
 }
 impl ViewTimeline {
+    /// Getter of the `endOffset` attribute.
+    /// [`ViewTimeline.endOffset`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTimeline/endOffset)
     pub fn end_offset(&self) -> CSSNumericValue {
         self.inner.get("endOffset").as_::<CSSNumericValue>()
     }

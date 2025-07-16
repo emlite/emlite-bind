@@ -1,25 +1,27 @@
 use super::*;
 
+/// The URLSearchParams class.
+/// [`URLSearchParams`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct URLSearchParams {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for URLSearchParams {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         URLSearchParams {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for URLSearchParams {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,53 +31,57 @@ impl core::ops::DerefMut for URLSearchParams {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for URLSearchParams {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for URLSearchParams {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for URLSearchParams {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for URLSearchParams {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<URLSearchParams> for emlite::Val {
-    fn from(s: URLSearchParams) -> emlite::Val {
+impl From<URLSearchParams> for Any {
+    fn from(s: URLSearchParams) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&URLSearchParams> for emlite::Val {
-    fn from(s: &URLSearchParams) -> emlite::Val {
+impl From<&URLSearchParams> for Any {
+    fn from(s: &URLSearchParams) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(URLSearchParams);
 
 impl URLSearchParams {
+    /// The `new URLSearchParams(..)` constructor, creating a new URLSearchParams instance
     pub fn new0() -> URLSearchParams {
         Self {
-            inner: emlite::Val::global("URLSearchParams")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("URLSearchParams").new(&[]).as_::<Any>(),
         }
     }
 
+    /// The `new URLSearchParams(..)` constructor, creating a new URLSearchParams instance
     pub fn new1(init: &Any) -> URLSearchParams {
         Self {
-            inner: emlite::Val::global("URLSearchParams")
+            inner: Any::global("URLSearchParams")
                 .new(&[init.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl URLSearchParams {
+    /// Getter of the `size` attribute.
+    /// [`URLSearchParams.size`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/size)
     pub fn size(&self) -> u32 {
         self.inner.get("size").as_::<u32>()
     }
 }
 impl URLSearchParams {
+    /// The append method.
+    /// [`URLSearchParams.append`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/append)
     pub fn append(&self, name: &str, value: &str) -> Undefined {
         self.inner
             .call("append", &[name.into(), value.into()])
@@ -83,10 +89,13 @@ impl URLSearchParams {
     }
 }
 impl URLSearchParams {
+    /// The delete method.
+    /// [`URLSearchParams.delete`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/delete)
     pub fn delete0(&self, name: &str) -> Undefined {
         self.inner.call("delete", &[name.into()]).as_::<Undefined>()
     }
-
+    /// The delete method.
+    /// [`URLSearchParams.delete`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/delete)
     pub fn delete1(&self, name: &str, value: &str) -> Undefined {
         self.inner
             .call("delete", &[name.into(), value.into()])
@@ -94,11 +103,15 @@ impl URLSearchParams {
     }
 }
 impl URLSearchParams {
+    /// The get method.
+    /// [`URLSearchParams.get`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/get)
     pub fn get(&self, name: &str) -> String {
         self.inner.call("get", &[name.into()]).as_::<String>()
     }
 }
 impl URLSearchParams {
+    /// The getAll method.
+    /// [`URLSearchParams.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/getAll)
     pub fn get_all(&self, name: &str) -> Sequence<String> {
         self.inner
             .call("getAll", &[name.into()])
@@ -106,10 +119,13 @@ impl URLSearchParams {
     }
 }
 impl URLSearchParams {
+    /// The has method.
+    /// [`URLSearchParams.has`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/has)
     pub fn has0(&self, name: &str) -> bool {
         self.inner.call("has", &[name.into()]).as_::<bool>()
     }
-
+    /// The has method.
+    /// [`URLSearchParams.has`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/has)
     pub fn has1(&self, name: &str, value: &str) -> bool {
         self.inner
             .call("has", &[name.into(), value.into()])
@@ -117,6 +133,8 @@ impl URLSearchParams {
     }
 }
 impl URLSearchParams {
+    /// The set method.
+    /// [`URLSearchParams.set`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/set)
     pub fn set(&self, name: &str, value: &str) -> Undefined {
         self.inner
             .call("set", &[name.into(), value.into()])
@@ -124,6 +142,8 @@ impl URLSearchParams {
     }
 }
 impl URLSearchParams {
+    /// The sort method.
+    /// [`URLSearchParams.sort`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/sort)
     pub fn sort(&self) -> Undefined {
         self.inner.call("sort", &[]).as_::<Undefined>()
     }

@@ -1,20 +1,22 @@
 use super::*;
 
+/// The Text class.
+/// [`Text`](https://developer.mozilla.org/en-US/docs/Web/API/Text)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Text {
     inner: CharacterData,
 }
 impl FromVal for Text {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Text {
             inner: CharacterData::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,62 +31,71 @@ impl core::ops::DerefMut for Text {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Text {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Text {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Text {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Text {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Text> for emlite::Val {
-    fn from(s: Text) -> emlite::Val {
+impl From<Text> for Any {
+    fn from(s: Text) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Text> for emlite::Val {
-    fn from(s: &Text) -> emlite::Val {
+impl From<&Text> for Any {
+    fn from(s: &Text) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Text);
 
 impl Text {
+    /// The `new Text(..)` constructor, creating a new Text instance
     pub fn new0() -> Text {
         Self {
-            inner: emlite::Val::global("Text").new(&[]).as_::<CharacterData>(),
+            inner: Any::global("Text").new(&[]).as_::<CharacterData>(),
         }
     }
 
+    /// The `new Text(..)` constructor, creating a new Text instance
     pub fn new1(data: &str) -> Text {
         Self {
-            inner: emlite::Val::global("Text")
+            inner: Any::global("Text")
                 .new(&[data.into()])
                 .as_::<CharacterData>(),
         }
     }
 }
 impl Text {
+    /// The splitText method.
+    /// [`Text.splitText`](https://developer.mozilla.org/en-US/docs/Web/API/Text/splitText)
     pub fn split_text(&self, offset: u32) -> Text {
         self.inner.call("splitText", &[offset.into()]).as_::<Text>()
     }
 }
 impl Text {
+    /// Getter of the `wholeText` attribute.
+    /// [`Text.wholeText`](https://developer.mozilla.org/en-US/docs/Web/API/Text/wholeText)
     pub fn whole_text(&self) -> String {
         self.inner.get("wholeText").as_::<String>()
     }
 }
 impl Text {
+    /// The getBoxQuads method.
+    /// [`Text.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Text/getBoxQuads)
     pub fn get_box_quads0(&self) -> Sequence<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[])
             .as_::<Sequence<DOMQuad>>()
     }
-
+    /// The getBoxQuads method.
+    /// [`Text.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Text/getBoxQuads)
     pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> Sequence<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[options.into()])
@@ -92,12 +103,15 @@ impl Text {
     }
 }
 impl Text {
+    /// The convertQuadFromNode method.
+    /// [`Text.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Text/convertQuadFromNode)
     pub fn convert_quad_from_node0(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
         self.inner
             .call("convertQuadFromNode", &[quad.into(), from.into()])
             .as_::<DOMQuad>()
     }
-
+    /// The convertQuadFromNode method.
+    /// [`Text.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Text/convertQuadFromNode)
     pub fn convert_quad_from_node1(
         &self,
         quad: &DOMQuadInit,
@@ -113,12 +127,15 @@ impl Text {
     }
 }
 impl Text {
+    /// The convertRectFromNode method.
+    /// [`Text.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Text/convertRectFromNode)
     pub fn convert_rect_from_node0(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
         self.inner
             .call("convertRectFromNode", &[rect.into(), from.into()])
             .as_::<DOMQuad>()
     }
-
+    /// The convertRectFromNode method.
+    /// [`Text.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Text/convertRectFromNode)
     pub fn convert_rect_from_node1(
         &self,
         rect: &DOMRectReadOnly,
@@ -134,12 +151,15 @@ impl Text {
     }
 }
 impl Text {
+    /// The convertPointFromNode method.
+    /// [`Text.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Text/convertPointFromNode)
     pub fn convert_point_from_node0(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
         self.inner
             .call("convertPointFromNode", &[point.into(), from.into()])
             .as_::<DOMPoint>()
     }
-
+    /// The convertPointFromNode method.
+    /// [`Text.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/Text/convertPointFromNode)
     pub fn convert_point_from_node1(
         &self,
         point: &DOMPointInit,
@@ -155,6 +175,8 @@ impl Text {
     }
 }
 impl Text {
+    /// Getter of the `assignedSlot` attribute.
+    /// [`Text.assignedSlot`](https://developer.mozilla.org/en-US/docs/Web/API/Text/assignedSlot)
     pub fn assigned_slot(&self) -> HTMLSlotElement {
         self.inner.get("assignedSlot").as_::<HTMLSlotElement>()
     }

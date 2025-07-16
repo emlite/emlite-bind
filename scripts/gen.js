@@ -15,20 +15,28 @@ import {
   callbacks,
 } from "./globals.js";
 
-function emitAttr(attr, owner, isStatic = false) {
+function emitAttr(attr, owner, isStatic = false, isInterface = false) {
+  if (attr.name.includes("-")) return [];
   const S = [`impl ${owner} {`];
   const type = rust(attr.idlType);
-
   if (isStatic) {
+    if (isInterface)
+      S.push(
+        `    /// Getter of the \`${attr.name}\` static attribute.`,
+        `    /// [\`${owner}.${attr.name}\`](https://developer.mozilla.org/en-US/docs/Web/API/${owner}/${attr.name})`
+      );
     S.push(
       `    pub fn ${fixIdent(attr.name)}() -> ${type} {`,
-      `        emlite::Val::global("${owner}").get("${
-        attr.name
-      }").as_::<${type}>()`,
+      `        Any::global("${owner}").get("${attr.name}").as_::<${type}>()`,
       `    }`,
       ""
     );
   } else {
+    if (isInterface)
+      S.push(
+        `    /// Getter of the \`${attr.name}\` attribute.`,
+        `    /// [\`${owner}.${attr.name}\`](https://developer.mozilla.org/en-US/docs/Web/API/${owner}/${attr.name})`
+      );
     S.push(
       `    pub fn ${fixIdent(attr.name)}(&self) -> ${type} {`,
       `        self.inner.get("${attr.name}").as_::<${type}>()`,
@@ -37,13 +45,17 @@ function emitAttr(attr, owner, isStatic = false) {
     );
 
     if (!attr.readonly) {
+      if (isInterface)
+        S.push(
+          `    /// Setter of the \`${attr.name}\` attribute.`,
+          `    /// [\`${owner}.${attr.name}\`](https://developer.mozilla.org/en-US/docs/Web/API/${owner}/${attr.name})`
+        );
       S.push(
         `    pub fn set_${fixIdent(attr.name)}(&mut self, value: ${argtypeFix(
           type
         )}) {`,
         `        self.inner.set("${attr.name}", value);`,
-        `    }`,
-        ""
+        `    }`
       );
     }
   }
@@ -51,7 +63,7 @@ function emitAttr(attr, owner, isStatic = false) {
   return S;
 }
 
-function emitOp(op, owner, isStatic = false) {
+function emitOp(op, owner, isStatic = false, isInterface = false) {
   const S = [];
   if (!op.name) return S;
   S.push(`impl ${owner} {`);
@@ -65,18 +77,21 @@ function emitOp(op, owner, isStatic = false) {
     const declSrc = argDecl(v);
     const callArgs = v.map((a) => `${fixIdent(a.name)}.into()`).join(", ");
     const callExpr = isStatic
-      ? `emlite::Val::global("${owner}").call("${op.name}", &[${
+      ? `Any::global("${owner}").call("${op.name}", &[${
           callArgs ? callArgs + ", " : ""
         }])`
       : `self.inner.call("${op.name}", &[${callArgs ? callArgs + ", " : ""}])`;
-
+    if (isInterface)
+      S.push(
+        `    /// The ${op.name} method.`,
+        `    /// [\`${owner}.${op.name}\`](https://developer.mozilla.org/en-US/docs/Web/API/${owner}/${op.name})`
+      );
     S.push(
       `    pub fn ${rustName}${sz === 1 ? "" : i}(${
         isStatic ? "" : "&self, "
       }${declSrc}) -> ${ret} {`,
       `        ${callExpr}.as_::<${ret}>()`,
-      `    }`,
-      ""
+      `    }`
     );
     i += 1;
   }
@@ -95,9 +110,10 @@ function emitCtor(ctor, owner, parent) {
     const callArgs = v.map((a) => `${fixIdent(a.name)}.into()`).join(", ");
 
     S.push(
+      `    /// The \`new ${owner}(..)\` constructor, creating a new ${owner} instance`,
       `    pub fn new${sz === 1 ? "" : i}(${declSrc}) -> ${owner} {
         Self {
-            inner: emlite::Val::global("${owner}").new(&[${callArgs}]).as_::<${parent}>(),
+            inner: Any::global("${owner}").new(&[${callArgs}]).as_::<${parent}>(),
         }
     }`,
       ""
@@ -118,21 +134,21 @@ function embedDict(dict, src, ownerName) {
     `#[derive(Clone, Debug, PartialEq, PartialOrd)]`,
     `#[repr(transparent)]`,
     `pub struct ${dict.name} {`,
-    `    inner: emlite::Val,`,
+    `    inner: Any,`,
     `}`,
     `impl FromVal for ${dict.name} {`,
-    `    fn from_val(v: &emlite::Val) -> Self {`,
+    `    fn from_val(v: &Any) -> Self {`,
     `        ${dict.name} { inner: v.clone() }`,
     `    }`,
-    `    fn take_ownership(v: emlite::env::Handle) -> Self {`,
-    `        Self::from_val(&emlite::Val::take_ownership(v))`,
+    `    fn take_ownership(v: AnyHandle) -> Self {`,
+    `        Self::from_val(&Any::take_ownership(v))`,
     `    }`,
-    `    fn as_handle(&self) -> emlite::env::Handle {`,
+    `    fn as_handle(&self) -> AnyHandle {`,
     `        self.inner.as_handle()`,
     `    }`,
     `}`,
     `impl core::ops::Deref for ${dict.name} {`,
-    `    type Target = emlite::Val;`,
+    `    type Target = Any;`,
     `    fn deref(&self) -> &Self::Target {`,
     `        &self.inner`,
     `    }`,
@@ -142,25 +158,25 @@ function embedDict(dict, src, ownerName) {
     `        &mut self.inner`,
     `    }`,
     `}`,
-    `impl AsRef<emlite::Val> for ${dict.name} {`,
-    `    fn as_ref(&self) -> &emlite::Val {`,
+    `impl AsRef<Any> for ${dict.name} {`,
+    `    fn as_ref(&self) -> &Any {`,
     `        &self.inner`,
     `    }`,
     `}`,
-    `impl AsMut<emlite::Val> for ${dict.name} {`,
-    `    fn as_mut(&mut self) -> &mut emlite::Val {`,
+    `impl AsMut<Any> for ${dict.name} {`,
+    `    fn as_mut(&mut self) -> &mut Any {`,
     `      &mut self.inner`,
     `  }`,
     `}`,
-    `impl From<${dict.name}> for emlite::Val {`,
-    `    fn from(s: ${dict.name}) -> emlite::Val {`,
+    `impl From<${dict.name}> for Any {`,
+    `    fn from(s: ${dict.name}) -> Any {`,
     `        let handle = s.inner.as_handle();`,
     `        core::mem::forget(s);`,
-    `        emlite::Val::take_ownership(handle)`,
+    `        Any::take_ownership(handle)`,
     `    }`,
     `}`,
-    `impl From<&${dict.name}> for emlite::Val {`,
-    `    fn from(s: &${dict.name}) -> emlite::Val {`,
+    `impl From<&${dict.name}> for Any {`,
+    `    fn from(s: &${dict.name}) -> Any {`,
     `        s.inner.clone()`,
     `    }`,
     `}`,
@@ -256,65 +272,67 @@ export function generate(specAst) {
   {
     const src = ["\n"];
     for (const e of enums.values()) {
-     src.push(
+      src.push(
         `#[derive(Copy, Clone, Debug, PartialEq, PartialOrd)]`,
-        `pub enum ${e.name} {`);
+        `pub enum ${e.name} {`
+      );
       for (const v of e.values) {
-        src.push(
-          `    ${fixIdent(v.value).toUpperCase()},`);
+        src.push(`    ${fixIdent(v.value).toUpperCase()},`);
       }
       src.push("}");
       src.push(
-      `impl FromVal for ${e.name} {`,
-      `    fn from_val(v: &emlite::Val) -> Self {`,
-      `         match v.as_::<&str>() {`
+        `impl FromVal for ${e.name} {`,
+        `    fn from_val(v: &Any) -> Self {`,
+        `         match v.as_::<&str>() {`
       );
       for (const v of e.values) {
         src.push(
-          `            "${v.value}" => Self::${fixIdent(v.value).toUpperCase()},`
+          `            "${v.value}" => Self::${fixIdent(
+            v.value
+          ).toUpperCase()},`
         );
       }
       src.push(
-      `             _ => unreachable!(),`,
-      `        }`,
-      `    }`,
-      `    fn take_ownership(v: emlite::env::Handle) -> Self {`,
-      `        Self::from_val(&emlite::Val::take_ownership(v))`,
-      `    }`,
-      `    fn as_handle(&self) -> emlite::env::Handle {`,
-      `        emlite::Val::from(*self).as_handle()`,
-      `    }`,
-      `}`,
+        `             _ => unreachable!(),`,
+        `        }`,
+        `    }`,
+        `    fn take_ownership(v: AnyHandle) -> Self {`,
+        `        Self::from_val(&Any::take_ownership(v))`,
+        `    }`,
+        `    fn as_handle(&self) -> AnyHandle {`,
+        `        Any::from(*self).as_handle()`,
+        `    }`,
+        `}`
       );
       src.push(
-        `impl From<${e.name}> for emlite::Val {`,
-        `    fn from(s: ${e.name}) -> emlite::Val {`,
-        `         match s {`);
-      for (const v of e.values) {
-        src.push(
-          `            ${e.name}::${fixIdent(v.value).toUpperCase()} => emlite::Val::from("${
-            v.value
-          }"),`
-        );
-      }
-      src.push("         }");
-      src.push(`    }`,
-        `}`,
-        `impl From<&${e.name}> for emlite::Val {`,
-        `    fn from(s: &${e.name}) -> emlite::Val {`,
-        `         match *s {`);
-      for (const v of e.values) {
-        src.push(
-          `            ${e.name}::${fixIdent(v.value).toUpperCase()} => emlite::Val::from("${
-            v.value
-          }"),`
-        );
-      }
-      src.push("         }");
-      src.push(`    }`,
-        `}`,
-        ""
+        `impl From<${e.name}> for Any {`,
+        `    fn from(s: ${e.name}) -> Any {`,
+        `         match s {`
       );
+      for (const v of e.values) {
+        src.push(
+          `            ${e.name}::${fixIdent(
+            v.value
+          ).toUpperCase()} => Any::from("${v.value}"),`
+        );
+      }
+      src.push("         }");
+      src.push(
+        `    }`,
+        `}`,
+        `impl From<&${e.name}> for Any {`,
+        `    fn from(s: &${e.name}) -> Any {`,
+        `         match *s {`
+      );
+      for (const v of e.values) {
+        src.push(
+          `            ${e.name}::${fixIdent(
+            v.value
+          ).toUpperCase()} => Any::from("${v.value}"),`
+        );
+      }
+      src.push("         }");
+      src.push(`    }`, `}`, "");
       src.push("");
     }
 
@@ -400,22 +418,24 @@ export function generate(specAst) {
 
     localDicts.forEach((d) => embedDict(d, src, iname));
 
-    if (!parent) parent = "emlite::Val";
+    if (!parent) parent = "Any";
 
     src.push(
+      `/// The ${iname} class.`,
+      `/// [\`${iname}\`](https://developer.mozilla.org/en-US/docs/Web/API/${iname})`,
       `#[derive(Clone, Debug, PartialEq, PartialOrd)]`,
       `#[repr(transparent)]`,
       `pub struct ${iname} {`,
       `    inner: ${parent},`,
       `}`,
       `impl FromVal for ${iname} {`,
-      `    fn from_val(v: &emlite::Val) -> Self {`,
+      `    fn from_val(v: &Any) -> Self {`,
       `        ${iname} { inner: ${parent}::from_val(v) }`,
       `    }`,
-      `    fn take_ownership(v: emlite::env::Handle) -> Self {`,
-      `        Self::from_val(&emlite::Val::take_ownership(v))`,
+      `    fn take_ownership(v: AnyHandle) -> Self {`,
+      `        Self::from_val(&Any::take_ownership(v))`,
       `    }`,
-      `    fn as_handle(&self) -> emlite::env::Handle {`,
+      `    fn as_handle(&self) -> AnyHandle {`,
       `        self.inner.as_handle()`,
       `    }`,
       `}`,
@@ -430,25 +450,25 @@ export function generate(specAst) {
       `        &mut self.inner`,
       `    }`,
       `}`,
-      `impl AsRef<emlite::Val> for ${iname} {`,
-      `    fn as_ref(&self) -> &emlite::Val {`,
+      `impl AsRef<Any> for ${iname} {`,
+      `    fn as_ref(&self) -> &Any {`,
       `        &self.inner`,
       `    }`,
       `}`,
-      `impl AsMut<emlite::Val> for ${iname} {`,
-      `    fn as_mut(&mut self) -> &mut emlite::Val {`,
+      `impl AsMut<Any> for ${iname} {`,
+      `    fn as_mut(&mut self) -> &mut Any {`,
       `      &mut self.inner`,
       `  }`,
       `}`,
-      `impl From<${iname}> for emlite::Val {`,
-      `    fn from(s: ${iname}) -> emlite::Val {`,
+      `impl From<${iname}> for Any {`,
+      `    fn from(s: ${iname}) -> Any {`,
       `        let handle = s.inner.as_handle();`,
       `        core::mem::forget(s);`,
-      `        emlite::Val::take_ownership(handle)`,
+      `        Any::take_ownership(handle)`,
       `    }`,
       `}`,
-      `impl From<&${iname}> for emlite::Val {`,
-      `    fn from(s: &${iname}) -> emlite::Val {`,
+      `impl From<&${iname}> for Any {`,
+      `    fn from(s: &${iname}) -> Any {`,
       `        s.inner.clone().into()`,
       `    }`,
       `}`,
@@ -463,10 +483,10 @@ export function generate(specAst) {
     rec.members.forEach((m) => {
       const isStatic = m.static === true || m.special === "static";
       if (m.type === "attribute") {
-        const S = emitAttr(m, iname, isStatic);
+        const S = emitAttr(m, iname, isStatic, true);
         src.push(...S);
       } else if (m.type === "operation") {
-        const S = emitOp(m, iname, isStatic);
+        const S = emitOp(m, iname, isStatic, true);
         src.push(...S);
       } else if (
         m.type === "constructor" ||
@@ -496,9 +516,9 @@ export function generate(specAst) {
             .map((a) => `${fixIdent(a.name)}.into()`)
             .join(", ");
 
-          const callExpr = `emlite::Val::global("${ns.name}").call("${
-            op.name
-          }", &[${callArgs ? callArgs + ", " : ""}])`;
+          const callExpr = `Any::global("${ns.name}").call("${op.name}", &[${
+            callArgs ? callArgs + ", " : ""
+          }])`;
 
           src.push(
             `pub fn ${cppName}${sz === 1 ? "" : i}(${declSrc}) -> ${ret} {`,

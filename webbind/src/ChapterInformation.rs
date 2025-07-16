@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaImage {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaImage {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaImage { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaImage {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for MediaImage {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaImage {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaImage {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaImage {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaImage {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaImage> for emlite::Val {
-    fn from(s: MediaImage) -> emlite::Val {
+impl From<MediaImage> for Any {
+    fn from(s: MediaImage) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaImage> for emlite::Val {
-    fn from(s: &MediaImage) -> emlite::Val {
+impl From<&MediaImage> for Any {
+    fn from(s: &MediaImage) -> Any {
         s.inner.clone()
     }
 }
@@ -77,26 +77,28 @@ impl MediaImage {
         self.inner.set("type", value);
     }
 }
+/// The ChapterInformation class.
+/// [`ChapterInformation`](https://developer.mozilla.org/en-US/docs/Web/API/ChapterInformation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ChapterInformation {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ChapterInformation {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ChapterInformation {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ChapterInformation {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -106,41 +108,47 @@ impl core::ops::DerefMut for ChapterInformation {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ChapterInformation {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ChapterInformation {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ChapterInformation {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ChapterInformation {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ChapterInformation> for emlite::Val {
-    fn from(s: ChapterInformation) -> emlite::Val {
+impl From<ChapterInformation> for Any {
+    fn from(s: ChapterInformation) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ChapterInformation> for emlite::Val {
-    fn from(s: &ChapterInformation) -> emlite::Val {
+impl From<&ChapterInformation> for Any {
+    fn from(s: &ChapterInformation) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ChapterInformation);
 
 impl ChapterInformation {
+    /// Getter of the `title` attribute.
+    /// [`ChapterInformation.title`](https://developer.mozilla.org/en-US/docs/Web/API/ChapterInformation/title)
     pub fn title(&self) -> String {
         self.inner.get("title").as_::<String>()
     }
 }
 impl ChapterInformation {
+    /// Getter of the `startTime` attribute.
+    /// [`ChapterInformation.startTime`](https://developer.mozilla.org/en-US/docs/Web/API/ChapterInformation/startTime)
     pub fn start_time(&self) -> f64 {
         self.inner.get("startTime").as_::<f64>()
     }
 }
 impl ChapterInformation {
+    /// Getter of the `artwork` attribute.
+    /// [`ChapterInformation.artwork`](https://developer.mozilla.org/en-US/docs/Web/API/ChapterInformation/artwork)
     pub fn artwork(&self) -> FrozenArray<MediaImage> {
         self.inner.get("artwork").as_::<FrozenArray<MediaImage>>()
     }

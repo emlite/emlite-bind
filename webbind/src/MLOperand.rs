@@ -1,25 +1,27 @@
 use super::*;
 
+/// The MLOperand class.
+/// [`MLOperand`](https://developer.mozilla.org/en-US/docs/Web/API/MLOperand)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MLOperand {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MLOperand {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MLOperand {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MLOperand {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for MLOperand {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MLOperand {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MLOperand {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MLOperand {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MLOperand {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MLOperand> for emlite::Val {
-    fn from(s: MLOperand) -> emlite::Val {
+impl From<MLOperand> for Any {
+    fn from(s: MLOperand) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MLOperand> for emlite::Val {
-    fn from(s: &MLOperand) -> emlite::Val {
+impl From<&MLOperand> for Any {
+    fn from(s: &MLOperand) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MLOperand);
 
 impl MLOperand {
+    /// Getter of the `dataType` attribute.
+    /// [`MLOperand.dataType`](https://developer.mozilla.org/en-US/docs/Web/API/MLOperand/dataType)
     pub fn data_type(&self) -> MLOperandDataType {
         self.inner.get("dataType").as_::<MLOperandDataType>()
     }
 }
 impl MLOperand {
+    /// Getter of the `shape` attribute.
+    /// [`MLOperand.shape`](https://developer.mozilla.org/en-US/docs/Web/API/MLOperand/shape)
     pub fn shape(&self) -> FrozenArray<u32> {
         self.inner.get("shape").as_::<FrozenArray<u32>>()
     }

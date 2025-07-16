@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NotificationOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for NotificationOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         NotificationOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for NotificationOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for NotificationOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for NotificationOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for NotificationOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for NotificationOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for NotificationOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<NotificationOptions> for emlite::Val {
-    fn from(s: NotificationOptions) -> emlite::Val {
+impl From<NotificationOptions> for Any {
+    fn from(s: NotificationOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&NotificationOptions> for emlite::Val {
-    fn from(s: &NotificationOptions) -> emlite::Val {
+impl From<&NotificationOptions> for Any {
+    fn from(s: &NotificationOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -181,21 +181,21 @@ impl NotificationOptions {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GetNotificationOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GetNotificationOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GetNotificationOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GetNotificationOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -205,25 +205,25 @@ impl core::ops::DerefMut for GetNotificationOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GetNotificationOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GetNotificationOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GetNotificationOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GetNotificationOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GetNotificationOptions> for emlite::Val {
-    fn from(s: GetNotificationOptions) -> emlite::Val {
+impl From<GetNotificationOptions> for Any {
+    fn from(s: GetNotificationOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GetNotificationOptions> for emlite::Val {
-    fn from(s: &GetNotificationOptions) -> emlite::Val {
+impl From<&GetNotificationOptions> for Any {
+    fn from(s: &GetNotificationOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -237,21 +237,23 @@ impl GetNotificationOptions {
         self.inner.set("tag", value);
     }
 }
+/// The ServiceWorkerRegistration class.
+/// [`ServiceWorkerRegistration`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ServiceWorkerRegistration {
     inner: EventTarget,
 }
 impl FromVal for ServiceWorkerRegistration {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ServiceWorkerRegistration {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -266,46 +268,54 @@ impl core::ops::DerefMut for ServiceWorkerRegistration {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ServiceWorkerRegistration {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ServiceWorkerRegistration {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ServiceWorkerRegistration {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ServiceWorkerRegistration {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ServiceWorkerRegistration> for emlite::Val {
-    fn from(s: ServiceWorkerRegistration) -> emlite::Val {
+impl From<ServiceWorkerRegistration> for Any {
+    fn from(s: ServiceWorkerRegistration) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ServiceWorkerRegistration> for emlite::Val {
-    fn from(s: &ServiceWorkerRegistration) -> emlite::Val {
+impl From<&ServiceWorkerRegistration> for Any {
+    fn from(s: &ServiceWorkerRegistration) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ServiceWorkerRegistration);
 
 impl ServiceWorkerRegistration {
+    /// Getter of the `installing` attribute.
+    /// [`ServiceWorkerRegistration.installing`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/installing)
     pub fn installing(&self) -> ServiceWorker {
         self.inner.get("installing").as_::<ServiceWorker>()
     }
 }
 impl ServiceWorkerRegistration {
+    /// Getter of the `waiting` attribute.
+    /// [`ServiceWorkerRegistration.waiting`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/waiting)
     pub fn waiting(&self) -> ServiceWorker {
         self.inner.get("waiting").as_::<ServiceWorker>()
     }
 }
 impl ServiceWorkerRegistration {
+    /// Getter of the `active` attribute.
+    /// [`ServiceWorkerRegistration.active`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/active)
     pub fn active(&self) -> ServiceWorker {
         self.inner.get("active").as_::<ServiceWorker>()
     }
 }
 impl ServiceWorkerRegistration {
+    /// Getter of the `navigationPreload` attribute.
+    /// [`ServiceWorkerRegistration.navigationPreload`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/navigationPreload)
     pub fn navigation_preload(&self) -> NavigationPreloadManager {
         self.inner
             .get("navigationPreload")
@@ -313,11 +323,15 @@ impl ServiceWorkerRegistration {
     }
 }
 impl ServiceWorkerRegistration {
+    /// Getter of the `scope` attribute.
+    /// [`ServiceWorkerRegistration.scope`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/scope)
     pub fn scope(&self) -> String {
         self.inner.get("scope").as_::<String>()
     }
 }
 impl ServiceWorkerRegistration {
+    /// Getter of the `updateViaCache` attribute.
+    /// [`ServiceWorkerRegistration.updateViaCache`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/updateViaCache)
     pub fn update_via_cache(&self) -> ServiceWorkerUpdateViaCache {
         self.inner
             .get("updateViaCache")
@@ -325,25 +339,35 @@ impl ServiceWorkerRegistration {
     }
 }
 impl ServiceWorkerRegistration {
+    /// The update method.
+    /// [`ServiceWorkerRegistration.update`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/update)
     pub fn update(&self) -> Promise {
         self.inner.call("update", &[]).as_::<Promise>()
     }
 }
 impl ServiceWorkerRegistration {
+    /// The unregister method.
+    /// [`ServiceWorkerRegistration.unregister`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/unregister)
     pub fn unregister(&self) -> Promise {
         self.inner.call("unregister", &[]).as_::<Promise>()
     }
 }
 impl ServiceWorkerRegistration {
+    /// Getter of the `onupdatefound` attribute.
+    /// [`ServiceWorkerRegistration.onupdatefound`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/onupdatefound)
     pub fn onupdatefound(&self) -> Any {
         self.inner.get("onupdatefound").as_::<Any>()
     }
 
+    /// Setter of the `onupdatefound` attribute.
+    /// [`ServiceWorkerRegistration.onupdatefound`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/onupdatefound)
     pub fn set_onupdatefound(&mut self, value: &Any) {
         self.inner.set("onupdatefound", value);
     }
 }
 impl ServiceWorkerRegistration {
+    /// Getter of the `backgroundFetch` attribute.
+    /// [`ServiceWorkerRegistration.backgroundFetch`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/backgroundFetch)
     pub fn background_fetch(&self) -> BackgroundFetchManager {
         self.inner
             .get("backgroundFetch")
@@ -351,27 +375,36 @@ impl ServiceWorkerRegistration {
     }
 }
 impl ServiceWorkerRegistration {
+    /// Getter of the `sync` attribute.
+    /// [`ServiceWorkerRegistration.sync`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/sync)
     pub fn sync(&self) -> SyncManager {
         self.inner.get("sync").as_::<SyncManager>()
     }
 }
 impl ServiceWorkerRegistration {
+    /// Getter of the `index` attribute.
+    /// [`ServiceWorkerRegistration.index`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/index)
     pub fn index(&self) -> ContentIndex {
         self.inner.get("index").as_::<ContentIndex>()
     }
 }
 impl ServiceWorkerRegistration {
+    /// Getter of the `cookies` attribute.
+    /// [`ServiceWorkerRegistration.cookies`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/cookies)
     pub fn cookies(&self) -> CookieStoreManager {
         self.inner.get("cookies").as_::<CookieStoreManager>()
     }
 }
 impl ServiceWorkerRegistration {
+    /// The showNotification method.
+    /// [`ServiceWorkerRegistration.showNotification`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
     pub fn show_notification0(&self, title: &str) -> Promise {
         self.inner
             .call("showNotification", &[title.into()])
             .as_::<Promise>()
     }
-
+    /// The showNotification method.
+    /// [`ServiceWorkerRegistration.showNotification`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
     pub fn show_notification1(&self, title: &str, options: &NotificationOptions) -> Promise {
         self.inner
             .call("showNotification", &[title.into(), options.into()])
@@ -379,10 +412,13 @@ impl ServiceWorkerRegistration {
     }
 }
 impl ServiceWorkerRegistration {
+    /// The getNotifications method.
+    /// [`ServiceWorkerRegistration.getNotifications`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/getNotifications)
     pub fn get_notifications0(&self) -> Promise {
         self.inner.call("getNotifications", &[]).as_::<Promise>()
     }
-
+    /// The getNotifications method.
+    /// [`ServiceWorkerRegistration.getNotifications`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/getNotifications)
     pub fn get_notifications1(&self, filter: &GetNotificationOptions) -> Promise {
         self.inner
             .call("getNotifications", &[filter.into()])
@@ -390,16 +426,22 @@ impl ServiceWorkerRegistration {
     }
 }
 impl ServiceWorkerRegistration {
+    /// Getter of the `paymentManager` attribute.
+    /// [`ServiceWorkerRegistration.paymentManager`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/paymentManager)
     pub fn payment_manager(&self) -> PaymentManager {
         self.inner.get("paymentManager").as_::<PaymentManager>()
     }
 }
 impl ServiceWorkerRegistration {
+    /// Getter of the `periodicSync` attribute.
+    /// [`ServiceWorkerRegistration.periodicSync`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/periodicSync)
     pub fn periodic_sync(&self) -> PeriodicSyncManager {
         self.inner.get("periodicSync").as_::<PeriodicSyncManager>()
     }
 }
 impl ServiceWorkerRegistration {
+    /// Getter of the `pushManager` attribute.
+    /// [`ServiceWorkerRegistration.pushManager`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/pushManager)
     pub fn push_manager(&self) -> PushManager {
         self.inner.get("pushManager").as_::<PushManager>()
     }

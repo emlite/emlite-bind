@@ -1,25 +1,27 @@
 use super::*;
 
+/// The RTCSessionDescription class.
+/// [`RTCSessionDescription`](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCSessionDescription {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RTCSessionDescription {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCSessionDescription {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RTCSessionDescription {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,50 +31,57 @@ impl core::ops::DerefMut for RTCSessionDescription {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCSessionDescription {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCSessionDescription {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCSessionDescription {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCSessionDescription {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCSessionDescription> for emlite::Val {
-    fn from(s: RTCSessionDescription) -> emlite::Val {
+impl From<RTCSessionDescription> for Any {
+    fn from(s: RTCSessionDescription) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCSessionDescription> for emlite::Val {
-    fn from(s: &RTCSessionDescription) -> emlite::Val {
+impl From<&RTCSessionDescription> for Any {
+    fn from(s: &RTCSessionDescription) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCSessionDescription);
 
 impl RTCSessionDescription {
+    /// The `new RTCSessionDescription(..)` constructor, creating a new RTCSessionDescription instance
     pub fn new(description_init_dict: &RTCSessionDescriptionInit) -> RTCSessionDescription {
         Self {
-            inner: emlite::Val::global("RTCSessionDescription")
+            inner: Any::global("RTCSessionDescription")
                 .new(&[description_init_dict.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl RTCSessionDescription {
+    /// Getter of the `type` attribute.
+    /// [`RTCSessionDescription.type`](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription/type)
     pub fn type_(&self) -> RTCSdpType {
         self.inner.get("type").as_::<RTCSdpType>()
     }
 }
 impl RTCSessionDescription {
+    /// Getter of the `sdp` attribute.
+    /// [`RTCSessionDescription.sdp`](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription/sdp)
     pub fn sdp(&self) -> String {
         self.inner.get("sdp").as_::<String>()
     }
 }
 impl RTCSessionDescription {
+    /// The toJSON method.
+    /// [`RTCSessionDescription.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription/toJSON)
     pub fn to_json(&self) -> RTCSessionDescriptionInit {
         self.inner
             .call("toJSON", &[])

@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CSSContainerRule class.
+/// [`CSSContainerRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSContainerRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSContainerRule {
     inner: CSSConditionRule,
 }
 impl FromVal for CSSContainerRule {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSContainerRule {
             inner: CSSConditionRule::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for CSSContainerRule {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSContainerRule {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSContainerRule {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSContainerRule {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSContainerRule {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSContainerRule> for emlite::Val {
-    fn from(s: CSSContainerRule) -> emlite::Val {
+impl From<CSSContainerRule> for Any {
+    fn from(s: CSSContainerRule) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSContainerRule> for emlite::Val {
-    fn from(s: &CSSContainerRule) -> emlite::Val {
+impl From<&CSSContainerRule> for Any {
+    fn from(s: &CSSContainerRule) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSContainerRule);
 
 impl CSSContainerRule {
+    /// Getter of the `containerName` attribute.
+    /// [`CSSContainerRule.containerName`](https://developer.mozilla.org/en-US/docs/Web/API/CSSContainerRule/containerName)
     pub fn container_name(&self) -> String {
         self.inner.get("containerName").as_::<String>()
     }
 }
 impl CSSContainerRule {
+    /// Getter of the `containerQuery` attribute.
+    /// [`CSSContainerRule.containerQuery`](https://developer.mozilla.org/en-US/docs/Web/API/CSSContainerRule/containerQuery)
     pub fn container_query(&self) -> String {
         self.inner.get("containerQuery").as_::<String>()
     }

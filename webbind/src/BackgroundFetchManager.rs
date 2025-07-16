@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BackgroundFetchOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for BackgroundFetchOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         BackgroundFetchOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for BackgroundFetchOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for BackgroundFetchOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for BackgroundFetchOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for BackgroundFetchOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for BackgroundFetchOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for BackgroundFetchOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<BackgroundFetchOptions> for emlite::Val {
-    fn from(s: BackgroundFetchOptions) -> emlite::Val {
+impl From<BackgroundFetchOptions> for Any {
+    fn from(s: BackgroundFetchOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&BackgroundFetchOptions> for emlite::Val {
-    fn from(s: &BackgroundFetchOptions) -> emlite::Val {
+impl From<&BackgroundFetchOptions> for Any {
+    fn from(s: &BackgroundFetchOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -59,26 +59,28 @@ impl BackgroundFetchOptions {
         self.inner.set("downloadTotal", value);
     }
 }
+/// The BackgroundFetchManager class.
+/// [`BackgroundFetchManager`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchManager)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BackgroundFetchManager {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for BackgroundFetchManager {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         BackgroundFetchManager {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for BackgroundFetchManager {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -88,37 +90,40 @@ impl core::ops::DerefMut for BackgroundFetchManager {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for BackgroundFetchManager {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for BackgroundFetchManager {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for BackgroundFetchManager {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for BackgroundFetchManager {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<BackgroundFetchManager> for emlite::Val {
-    fn from(s: BackgroundFetchManager) -> emlite::Val {
+impl From<BackgroundFetchManager> for Any {
+    fn from(s: BackgroundFetchManager) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&BackgroundFetchManager> for emlite::Val {
-    fn from(s: &BackgroundFetchManager) -> emlite::Val {
+impl From<&BackgroundFetchManager> for Any {
+    fn from(s: &BackgroundFetchManager) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BackgroundFetchManager);
 
 impl BackgroundFetchManager {
+    /// The fetch method.
+    /// [`BackgroundFetchManager.fetch`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchManager/fetch)
     pub fn fetch0(&self, id: &str, requests: &Any) -> Promise {
         self.inner
             .call("fetch", &[id.into(), requests.into()])
             .as_::<Promise>()
     }
-
+    /// The fetch method.
+    /// [`BackgroundFetchManager.fetch`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchManager/fetch)
     pub fn fetch1(&self, id: &str, requests: &Any, options: &BackgroundFetchOptions) -> Promise {
         self.inner
             .call("fetch", &[id.into(), requests.into(), options.into()])
@@ -126,11 +131,15 @@ impl BackgroundFetchManager {
     }
 }
 impl BackgroundFetchManager {
+    /// The get method.
+    /// [`BackgroundFetchManager.get`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchManager/get)
     pub fn get(&self, id: &str) -> Promise {
         self.inner.call("get", &[id.into()]).as_::<Promise>()
     }
 }
 impl BackgroundFetchManager {
+    /// The getIds method.
+    /// [`BackgroundFetchManager.getIds`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchManager/getIds)
     pub fn get_ids(&self) -> Promise {
         self.inner.call("getIds", &[]).as_::<Promise>()
     }

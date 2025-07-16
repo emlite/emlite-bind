@@ -1,25 +1,27 @@
 use super::*;
 
+/// The SVGAnimatedBoolean class.
+/// [`SVGAnimatedBoolean`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedBoolean)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGAnimatedBoolean {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for SVGAnimatedBoolean {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SVGAnimatedBoolean {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for SVGAnimatedBoolean {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,40 +31,46 @@ impl core::ops::DerefMut for SVGAnimatedBoolean {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SVGAnimatedBoolean {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SVGAnimatedBoolean {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SVGAnimatedBoolean {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SVGAnimatedBoolean {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SVGAnimatedBoolean> for emlite::Val {
-    fn from(s: SVGAnimatedBoolean) -> emlite::Val {
+impl From<SVGAnimatedBoolean> for Any {
+    fn from(s: SVGAnimatedBoolean) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SVGAnimatedBoolean> for emlite::Val {
-    fn from(s: &SVGAnimatedBoolean) -> emlite::Val {
+impl From<&SVGAnimatedBoolean> for Any {
+    fn from(s: &SVGAnimatedBoolean) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SVGAnimatedBoolean);
 
 impl SVGAnimatedBoolean {
+    /// Getter of the `baseVal` attribute.
+    /// [`SVGAnimatedBoolean.baseVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedBoolean/baseVal)
     pub fn base_val(&self) -> bool {
         self.inner.get("baseVal").as_::<bool>()
     }
 
+    /// Setter of the `baseVal` attribute.
+    /// [`SVGAnimatedBoolean.baseVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedBoolean/baseVal)
     pub fn set_base_val(&mut self, value: bool) {
         self.inner.set("baseVal", value);
     }
 }
 impl SVGAnimatedBoolean {
+    /// Getter of the `animVal` attribute.
+    /// [`SVGAnimatedBoolean.animVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedBoolean/animVal)
     pub fn anim_val(&self) -> bool {
         self.inner.get("animVal").as_::<bool>()
     }

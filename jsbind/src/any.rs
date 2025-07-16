@@ -1,6 +1,8 @@
 /// Any is just a wrapper around `emlite::Val`
 pub use emlite::Val as Any;
 
+pub type AnyHandle = emlite::env::Handle;
+
 impl crate::prelude::DynCast for Any {
     #[inline]
     fn instanceof(_val: &emlite::Val) -> bool {

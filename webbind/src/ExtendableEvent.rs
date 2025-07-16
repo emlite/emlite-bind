@@ -1,20 +1,22 @@
 use super::*;
 
+/// The ExtendableEvent class.
+/// [`ExtendableEvent`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ExtendableEvent {
     inner: Event,
 }
 impl FromVal for ExtendableEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ExtendableEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,48 +31,52 @@ impl core::ops::DerefMut for ExtendableEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ExtendableEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ExtendableEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ExtendableEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ExtendableEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ExtendableEvent> for emlite::Val {
-    fn from(s: ExtendableEvent) -> emlite::Val {
+impl From<ExtendableEvent> for Any {
+    fn from(s: ExtendableEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ExtendableEvent> for emlite::Val {
-    fn from(s: &ExtendableEvent) -> emlite::Val {
+impl From<&ExtendableEvent> for Any {
+    fn from(s: &ExtendableEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ExtendableEvent);
 
 impl ExtendableEvent {
+    /// The `new ExtendableEvent(..)` constructor, creating a new ExtendableEvent instance
     pub fn new0(type_: &str) -> ExtendableEvent {
         Self {
-            inner: emlite::Val::global("ExtendableEvent")
+            inner: Any::global("ExtendableEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
 
+    /// The `new ExtendableEvent(..)` constructor, creating a new ExtendableEvent instance
     pub fn new1(type_: &str, event_init_dict: &Any) -> ExtendableEvent {
         Self {
-            inner: emlite::Val::global("ExtendableEvent")
+            inner: Any::global("ExtendableEvent")
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl ExtendableEvent {
+    /// The waitUntil method.
+    /// [`ExtendableEvent.waitUntil`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil)
     pub fn wait_until(&self, f: &Promise) -> Undefined {
         self.inner.call("waitUntil", &[f.into()]).as_::<Undefined>()
     }

@@ -1,20 +1,22 @@
 use super::*;
 
+/// The PasswordCredential class.
+/// [`PasswordCredential`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PasswordCredential {
     inner: Credential,
 }
 impl FromVal for PasswordCredential {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PasswordCredential {
             inner: Credential::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,50 +31,57 @@ impl core::ops::DerefMut for PasswordCredential {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PasswordCredential {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PasswordCredential {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PasswordCredential {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PasswordCredential {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PasswordCredential> for emlite::Val {
-    fn from(s: PasswordCredential) -> emlite::Val {
+impl From<PasswordCredential> for Any {
+    fn from(s: PasswordCredential) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PasswordCredential> for emlite::Val {
-    fn from(s: &PasswordCredential) -> emlite::Val {
+impl From<&PasswordCredential> for Any {
+    fn from(s: &PasswordCredential) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PasswordCredential);
 
 impl PasswordCredential {
+    /// The `new PasswordCredential(..)` constructor, creating a new PasswordCredential instance
     pub fn new(data: &Any) -> PasswordCredential {
         Self {
-            inner: emlite::Val::global("PasswordCredential")
+            inner: Any::global("PasswordCredential")
                 .new(&[data.into()])
                 .as_::<Credential>(),
         }
     }
 }
 impl PasswordCredential {
+    /// Getter of the `password` attribute.
+    /// [`PasswordCredential.password`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential/password)
     pub fn password(&self) -> String {
         self.inner.get("password").as_::<String>()
     }
 }
 impl PasswordCredential {
+    /// Getter of the `name` attribute.
+    /// [`PasswordCredential.name`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 }
 impl PasswordCredential {
+    /// Getter of the `iconURL` attribute.
+    /// [`PasswordCredential.iconURL`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential/iconURL)
     pub fn icon_url(&self) -> String {
         self.inner.get("iconURL").as_::<String>()
     }

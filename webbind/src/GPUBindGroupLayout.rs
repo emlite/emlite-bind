@@ -1,25 +1,27 @@
 use super::*;
 
+/// The GPUBindGroupLayout class.
+/// [`GPUBindGroupLayout`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBindGroupLayout)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUBindGroupLayout {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPUBindGroupLayout {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPUBindGroupLayout {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPUBindGroupLayout {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,35 +31,39 @@ impl core::ops::DerefMut for GPUBindGroupLayout {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPUBindGroupLayout {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPUBindGroupLayout {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPUBindGroupLayout {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPUBindGroupLayout {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPUBindGroupLayout> for emlite::Val {
-    fn from(s: GPUBindGroupLayout) -> emlite::Val {
+impl From<GPUBindGroupLayout> for Any {
+    fn from(s: GPUBindGroupLayout) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPUBindGroupLayout> for emlite::Val {
-    fn from(s: &GPUBindGroupLayout) -> emlite::Val {
+impl From<&GPUBindGroupLayout> for Any {
+    fn from(s: &GPUBindGroupLayout) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GPUBindGroupLayout);
 
 impl GPUBindGroupLayout {
+    /// Getter of the `label` attribute.
+    /// [`GPUBindGroupLayout.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBindGroupLayout/label)
     pub fn label(&self) -> String {
         self.inner.get("label").as_::<String>()
     }
 
+    /// Setter of the `label` attribute.
+    /// [`GPUBindGroupLayout.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBindGroupLayout/label)
     pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }

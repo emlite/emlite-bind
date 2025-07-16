@@ -1,25 +1,27 @@
 use super::*;
 
+/// The FontData class.
+/// [`FontData`](https://developer.mozilla.org/en-US/docs/Web/API/FontData)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FontData {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for FontData {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         FontData {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for FontData {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,51 +31,61 @@ impl core::ops::DerefMut for FontData {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for FontData {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for FontData {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for FontData {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for FontData {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<FontData> for emlite::Val {
-    fn from(s: FontData) -> emlite::Val {
+impl From<FontData> for Any {
+    fn from(s: FontData) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&FontData> for emlite::Val {
-    fn from(s: &FontData) -> emlite::Val {
+impl From<&FontData> for Any {
+    fn from(s: &FontData) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(FontData);
 
 impl FontData {
+    /// The blob method.
+    /// [`FontData.blob`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/blob)
     pub fn blob(&self) -> Promise {
         self.inner.call("blob", &[]).as_::<Promise>()
     }
 }
 impl FontData {
+    /// Getter of the `postscriptName` attribute.
+    /// [`FontData.postscriptName`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/postscriptName)
     pub fn postscript_name(&self) -> String {
         self.inner.get("postscriptName").as_::<String>()
     }
 }
 impl FontData {
+    /// Getter of the `fullName` attribute.
+    /// [`FontData.fullName`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/fullName)
     pub fn full_name(&self) -> String {
         self.inner.get("fullName").as_::<String>()
     }
 }
 impl FontData {
+    /// Getter of the `family` attribute.
+    /// [`FontData.family`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/family)
     pub fn family(&self) -> String {
         self.inner.get("family").as_::<String>()
     }
 }
 impl FontData {
+    /// Getter of the `style` attribute.
+    /// [`FontData.style`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/style)
     pub fn style(&self) -> String {
         self.inner.get("style").as_::<String>()
     }

@@ -1,20 +1,22 @@
 use super::*;
 
+/// The SequenceEffect class.
+/// [`SequenceEffect`](https://developer.mozilla.org/en-US/docs/Web/API/SequenceEffect)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SequenceEffect {
     inner: GroupEffect,
 }
 impl FromVal for SequenceEffect {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SequenceEffect {
             inner: GroupEffect::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,48 +31,52 @@ impl core::ops::DerefMut for SequenceEffect {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SequenceEffect {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SequenceEffect {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SequenceEffect {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SequenceEffect {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SequenceEffect> for emlite::Val {
-    fn from(s: SequenceEffect) -> emlite::Val {
+impl From<SequenceEffect> for Any {
+    fn from(s: SequenceEffect) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SequenceEffect> for emlite::Val {
-    fn from(s: &SequenceEffect) -> emlite::Val {
+impl From<&SequenceEffect> for Any {
+    fn from(s: &SequenceEffect) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SequenceEffect);
 
 impl SequenceEffect {
+    /// The `new SequenceEffect(..)` constructor, creating a new SequenceEffect instance
     pub fn new0(children: &Sequence<AnimationEffect>) -> SequenceEffect {
         Self {
-            inner: emlite::Val::global("SequenceEffect")
+            inner: Any::global("SequenceEffect")
                 .new(&[children.into()])
                 .as_::<GroupEffect>(),
         }
     }
 
+    /// The `new SequenceEffect(..)` constructor, creating a new SequenceEffect instance
     pub fn new1(children: &Sequence<AnimationEffect>, timing: &Any) -> SequenceEffect {
         Self {
-            inner: emlite::Val::global("SequenceEffect")
+            inner: Any::global("SequenceEffect")
                 .new(&[children.into(), timing.into()])
                 .as_::<GroupEffect>(),
         }
     }
 }
 impl SequenceEffect {
+    /// The clone method.
+    /// [`SequenceEffect.clone`](https://developer.mozilla.org/en-US/docs/Web/API/SequenceEffect/clone)
     pub fn clone_(&self) -> SequenceEffect {
         self.inner.call("clone", &[]).as_::<SequenceEffect>()
     }

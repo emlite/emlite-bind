@@ -1,25 +1,27 @@
 use super::*;
 
+/// The SVGAnimatedString class.
+/// [`SVGAnimatedString`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedString)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGAnimatedString {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for SVGAnimatedString {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SVGAnimatedString {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for SVGAnimatedString {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,40 +31,46 @@ impl core::ops::DerefMut for SVGAnimatedString {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SVGAnimatedString {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SVGAnimatedString {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SVGAnimatedString {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SVGAnimatedString {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SVGAnimatedString> for emlite::Val {
-    fn from(s: SVGAnimatedString) -> emlite::Val {
+impl From<SVGAnimatedString> for Any {
+    fn from(s: SVGAnimatedString) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SVGAnimatedString> for emlite::Val {
-    fn from(s: &SVGAnimatedString) -> emlite::Val {
+impl From<&SVGAnimatedString> for Any {
+    fn from(s: &SVGAnimatedString) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SVGAnimatedString);
 
 impl SVGAnimatedString {
+    /// Getter of the `baseVal` attribute.
+    /// [`SVGAnimatedString.baseVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedString/baseVal)
     pub fn base_val(&self) -> String {
         self.inner.get("baseVal").as_::<String>()
     }
 
+    /// Setter of the `baseVal` attribute.
+    /// [`SVGAnimatedString.baseVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedString/baseVal)
     pub fn set_base_val(&mut self, value: &str) {
         self.inner.set("baseVal", value);
     }
 }
 impl SVGAnimatedString {
+    /// Getter of the `animVal` attribute.
+    /// [`SVGAnimatedString.animVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedString/animVal)
     pub fn anim_val(&self) -> String {
         self.inner.get("animVal").as_::<String>()
     }

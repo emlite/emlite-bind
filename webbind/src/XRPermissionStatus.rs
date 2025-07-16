@@ -1,20 +1,22 @@
 use super::*;
 
+/// The XRPermissionStatus class.
+/// [`XRPermissionStatus`](https://developer.mozilla.org/en-US/docs/Web/API/XRPermissionStatus)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRPermissionStatus {
     inner: PermissionStatus,
 }
 impl FromVal for XRPermissionStatus {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRPermissionStatus {
             inner: PermissionStatus::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,35 +31,39 @@ impl core::ops::DerefMut for XRPermissionStatus {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRPermissionStatus {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRPermissionStatus {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRPermissionStatus {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRPermissionStatus {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRPermissionStatus> for emlite::Val {
-    fn from(s: XRPermissionStatus) -> emlite::Val {
+impl From<XRPermissionStatus> for Any {
+    fn from(s: XRPermissionStatus) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRPermissionStatus> for emlite::Val {
-    fn from(s: &XRPermissionStatus) -> emlite::Val {
+impl From<&XRPermissionStatus> for Any {
+    fn from(s: &XRPermissionStatus) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(XRPermissionStatus);
 
 impl XRPermissionStatus {
+    /// Getter of the `granted` attribute.
+    /// [`XRPermissionStatus.granted`](https://developer.mozilla.org/en-US/docs/Web/API/XRPermissionStatus/granted)
     pub fn granted(&self) -> FrozenArray<String> {
         self.inner.get("granted").as_::<FrozenArray<String>>()
     }
 
+    /// Setter of the `granted` attribute.
+    /// [`XRPermissionStatus.granted`](https://developer.mozilla.org/en-US/docs/Web/API/XRPermissionStatus/granted)
     pub fn set_granted(&mut self, value: &FrozenArray<String>) {
         self.inner.set("granted", value);
     }

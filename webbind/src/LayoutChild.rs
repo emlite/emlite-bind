@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct LayoutConstraintsOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for LayoutConstraintsOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         LayoutConstraintsOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for LayoutConstraintsOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for LayoutConstraintsOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for LayoutConstraintsOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for LayoutConstraintsOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for LayoutConstraintsOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for LayoutConstraintsOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<LayoutConstraintsOptions> for emlite::Val {
-    fn from(s: LayoutConstraintsOptions) -> emlite::Val {
+impl From<LayoutConstraintsOptions> for Any {
+    fn from(s: LayoutConstraintsOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&LayoutConstraintsOptions> for emlite::Val {
-    fn from(s: &LayoutConstraintsOptions) -> emlite::Val {
+impl From<&LayoutConstraintsOptions> for Any {
+    fn from(s: &LayoutConstraintsOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -133,26 +133,28 @@ impl LayoutConstraintsOptions {
         self.inner.set("data", value);
     }
 }
+/// The LayoutChild class.
+/// [`LayoutChild`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutChild)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct LayoutChild {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for LayoutChild {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         LayoutChild {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for LayoutChild {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -162,41 +164,47 @@ impl core::ops::DerefMut for LayoutChild {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for LayoutChild {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for LayoutChild {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for LayoutChild {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for LayoutChild {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<LayoutChild> for emlite::Val {
-    fn from(s: LayoutChild) -> emlite::Val {
+impl From<LayoutChild> for Any {
+    fn from(s: LayoutChild) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&LayoutChild> for emlite::Val {
-    fn from(s: &LayoutChild) -> emlite::Val {
+impl From<&LayoutChild> for Any {
+    fn from(s: &LayoutChild) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(LayoutChild);
 
 impl LayoutChild {
+    /// Getter of the `styleMap` attribute.
+    /// [`LayoutChild.styleMap`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutChild/styleMap)
     pub fn style_map(&self) -> StylePropertyMapReadOnly {
         self.inner.get("styleMap").as_::<StylePropertyMapReadOnly>()
     }
 }
 impl LayoutChild {
+    /// The intrinsicSizes method.
+    /// [`LayoutChild.intrinsicSizes`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutChild/intrinsicSizes)
     pub fn intrinsic_sizes(&self) -> Promise {
         self.inner.call("intrinsicSizes", &[]).as_::<Promise>()
     }
 }
 impl LayoutChild {
+    /// The layoutNextFragment method.
+    /// [`LayoutChild.layoutNextFragment`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutChild/layoutNextFragment)
     pub fn layout_next_fragment(
         &self,
         constraints: &LayoutConstraintsOptions,

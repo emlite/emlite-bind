@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SanitizerConfig {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for SanitizerConfig {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SanitizerConfig { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for SanitizerConfig {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for SanitizerConfig {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SanitizerConfig {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SanitizerConfig {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SanitizerConfig {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SanitizerConfig {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SanitizerConfig> for emlite::Val {
-    fn from(s: SanitizerConfig) -> emlite::Val {
+impl From<SanitizerConfig> for Any {
+    fn from(s: SanitizerConfig) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SanitizerConfig> for emlite::Val {
-    fn from(s: &SanitizerConfig) -> emlite::Val {
+impl From<&SanitizerConfig> for Any {
+    fn from(s: &SanitizerConfig) -> Any {
         s.inner.clone()
     }
 }
@@ -115,26 +115,28 @@ impl SanitizerConfig {
         self.inner.set("dataAttributes", value);
     }
 }
+/// The Sanitizer class.
+/// [`Sanitizer`](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Sanitizer {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Sanitizer {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Sanitizer {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Sanitizer {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -144,53 +146,57 @@ impl core::ops::DerefMut for Sanitizer {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Sanitizer {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Sanitizer {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Sanitizer {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Sanitizer {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Sanitizer> for emlite::Val {
-    fn from(s: Sanitizer) -> emlite::Val {
+impl From<Sanitizer> for Any {
+    fn from(s: Sanitizer) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Sanitizer> for emlite::Val {
-    fn from(s: &Sanitizer) -> emlite::Val {
+impl From<&Sanitizer> for Any {
+    fn from(s: &Sanitizer) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Sanitizer);
 
 impl Sanitizer {
+    /// The `new Sanitizer(..)` constructor, creating a new Sanitizer instance
     pub fn new0() -> Sanitizer {
         Self {
-            inner: emlite::Val::global("Sanitizer")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("Sanitizer").new(&[]).as_::<Any>(),
         }
     }
 
+    /// The `new Sanitizer(..)` constructor, creating a new Sanitizer instance
     pub fn new1(configuration: &Any) -> Sanitizer {
         Self {
-            inner: emlite::Val::global("Sanitizer")
+            inner: Any::global("Sanitizer")
                 .new(&[configuration.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl Sanitizer {
+    /// The get method.
+    /// [`Sanitizer.get`](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer/get)
     pub fn get(&self) -> SanitizerConfig {
         self.inner.call("get", &[]).as_::<SanitizerConfig>()
     }
 }
 impl Sanitizer {
+    /// The allowElement method.
+    /// [`Sanitizer.allowElement`](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer/allowElement)
     pub fn allow_element(&self, element: &Any) -> Undefined {
         self.inner
             .call("allowElement", &[element.into()])
@@ -198,6 +204,8 @@ impl Sanitizer {
     }
 }
 impl Sanitizer {
+    /// The removeElement method.
+    /// [`Sanitizer.removeElement`](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer/removeElement)
     pub fn remove_element(&self, element: &Any) -> Undefined {
         self.inner
             .call("removeElement", &[element.into()])
@@ -205,6 +213,8 @@ impl Sanitizer {
     }
 }
 impl Sanitizer {
+    /// The replaceElementWithChildren method.
+    /// [`Sanitizer.replaceElementWithChildren`](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer/replaceElementWithChildren)
     pub fn replace_element_with_children(&self, element: &Any) -> Undefined {
         self.inner
             .call("replaceElementWithChildren", &[element.into()])
@@ -212,6 +222,8 @@ impl Sanitizer {
     }
 }
 impl Sanitizer {
+    /// The allowAttribute method.
+    /// [`Sanitizer.allowAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer/allowAttribute)
     pub fn allow_attribute(&self, attribute: &Any) -> Undefined {
         self.inner
             .call("allowAttribute", &[attribute.into()])
@@ -219,6 +231,8 @@ impl Sanitizer {
     }
 }
 impl Sanitizer {
+    /// The removeAttribute method.
+    /// [`Sanitizer.removeAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer/removeAttribute)
     pub fn remove_attribute(&self, attribute: &Any) -> Undefined {
         self.inner
             .call("removeAttribute", &[attribute.into()])
@@ -226,6 +240,8 @@ impl Sanitizer {
     }
 }
 impl Sanitizer {
+    /// The setComments method.
+    /// [`Sanitizer.setComments`](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer/setComments)
     pub fn set_comments(&self, allow: bool) -> Undefined {
         self.inner
             .call("setComments", &[allow.into()])
@@ -233,6 +249,8 @@ impl Sanitizer {
     }
 }
 impl Sanitizer {
+    /// The setDataAttributes method.
+    /// [`Sanitizer.setDataAttributes`](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer/setDataAttributes)
     pub fn set_data_attributes(&self, allow: bool) -> Undefined {
         self.inner
             .call("setDataAttributes", &[allow.into()])
@@ -240,6 +258,8 @@ impl Sanitizer {
     }
 }
 impl Sanitizer {
+    /// The removeUnsafe method.
+    /// [`Sanitizer.removeUnsafe`](https://developer.mozilla.org/en-US/docs/Web/API/Sanitizer/removeUnsafe)
     pub fn remove_unsafe(&self) -> Undefined {
         self.inner.call("removeUnsafe", &[]).as_::<Undefined>()
     }

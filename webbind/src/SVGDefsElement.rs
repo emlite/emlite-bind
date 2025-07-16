@@ -1,20 +1,22 @@
 use super::*;
 
+/// The SVGDefsElement class.
+/// [`SVGDefsElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGDefsElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGDefsElement {
     inner: SVGGraphicsElement,
 }
 impl FromVal for SVGDefsElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SVGDefsElement {
             inner: SVGGraphicsElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,25 +31,25 @@ impl core::ops::DerefMut for SVGDefsElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SVGDefsElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SVGDefsElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SVGDefsElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SVGDefsElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SVGDefsElement> for emlite::Val {
-    fn from(s: SVGDefsElement) -> emlite::Val {
+impl From<SVGDefsElement> for Any {
+    fn from(s: SVGDefsElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SVGDefsElement> for emlite::Val {
-    fn from(s: &SVGDefsElement) -> emlite::Val {
+impl From<&SVGDefsElement> for Any {
+    fn from(s: &SVGDefsElement) -> Any {
         s.inner.clone().into()
     }
 }

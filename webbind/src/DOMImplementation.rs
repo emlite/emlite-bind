@@ -1,25 +1,27 @@
 use super::*;
 
+/// The DOMImplementation class.
+/// [`DOMImplementation`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DOMImplementation {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for DOMImplementation {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         DOMImplementation {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for DOMImplementation {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for DOMImplementation {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for DOMImplementation {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for DOMImplementation {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for DOMImplementation {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for DOMImplementation {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<DOMImplementation> for emlite::Val {
-    fn from(s: DOMImplementation) -> emlite::Val {
+impl From<DOMImplementation> for Any {
+    fn from(s: DOMImplementation) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&DOMImplementation> for emlite::Val {
-    fn from(s: &DOMImplementation) -> emlite::Val {
+impl From<&DOMImplementation> for Any {
+    fn from(s: &DOMImplementation) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(DOMImplementation);
 
 impl DOMImplementation {
+    /// The createDocumentType method.
+    /// [`DOMImplementation.createDocumentType`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createDocumentType)
     pub fn create_document_type(
         &self,
         name: &str,
@@ -69,12 +73,15 @@ impl DOMImplementation {
     }
 }
 impl DOMImplementation {
+    /// The createDocument method.
+    /// [`DOMImplementation.createDocument`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createDocument)
     pub fn create_document0(&self, namespace: &str, qualified_name: &str) -> XMLDocument {
         self.inner
             .call("createDocument", &[namespace.into(), qualified_name.into()])
             .as_::<XMLDocument>()
     }
-
+    /// The createDocument method.
+    /// [`DOMImplementation.createDocument`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createDocument)
     pub fn create_document1(
         &self,
         namespace: &str,
@@ -90,10 +97,13 @@ impl DOMImplementation {
     }
 }
 impl DOMImplementation {
+    /// The createHTMLDocument method.
+    /// [`DOMImplementation.createHTMLDocument`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument)
     pub fn create_html_document0(&self) -> Document {
         self.inner.call("createHTMLDocument", &[]).as_::<Document>()
     }
-
+    /// The createHTMLDocument method.
+    /// [`DOMImplementation.createHTMLDocument`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument)
     pub fn create_html_document1(&self, title: &str) -> Document {
         self.inner
             .call("createHTMLDocument", &[title.into()])
@@ -101,6 +111,8 @@ impl DOMImplementation {
     }
 }
 impl DOMImplementation {
+    /// The hasFeature method.
+    /// [`DOMImplementation.hasFeature`](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/hasFeature)
     pub fn has_feature(&self) -> bool {
         self.inner.call("hasFeature", &[]).as_::<bool>()
     }

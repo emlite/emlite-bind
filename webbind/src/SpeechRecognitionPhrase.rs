@@ -1,25 +1,27 @@
 use super::*;
 
+/// The SpeechRecognitionPhrase class.
+/// [`SpeechRecognitionPhrase`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionPhrase)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SpeechRecognitionPhrase {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for SpeechRecognitionPhrase {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SpeechRecognitionPhrase {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for SpeechRecognitionPhrase {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,53 +31,59 @@ impl core::ops::DerefMut for SpeechRecognitionPhrase {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SpeechRecognitionPhrase {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SpeechRecognitionPhrase {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SpeechRecognitionPhrase {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SpeechRecognitionPhrase {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SpeechRecognitionPhrase> for emlite::Val {
-    fn from(s: SpeechRecognitionPhrase) -> emlite::Val {
+impl From<SpeechRecognitionPhrase> for Any {
+    fn from(s: SpeechRecognitionPhrase) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SpeechRecognitionPhrase> for emlite::Val {
-    fn from(s: &SpeechRecognitionPhrase) -> emlite::Val {
+impl From<&SpeechRecognitionPhrase> for Any {
+    fn from(s: &SpeechRecognitionPhrase) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionPhrase);
 
 impl SpeechRecognitionPhrase {
+    /// The `new SpeechRecognitionPhrase(..)` constructor, creating a new SpeechRecognitionPhrase instance
     pub fn new0(phrase: &str) -> SpeechRecognitionPhrase {
         Self {
-            inner: emlite::Val::global("SpeechRecognitionPhrase")
+            inner: Any::global("SpeechRecognitionPhrase")
                 .new(&[phrase.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 
+    /// The `new SpeechRecognitionPhrase(..)` constructor, creating a new SpeechRecognitionPhrase instance
     pub fn new1(phrase: &str, boost: f32) -> SpeechRecognitionPhrase {
         Self {
-            inner: emlite::Val::global("SpeechRecognitionPhrase")
+            inner: Any::global("SpeechRecognitionPhrase")
                 .new(&[phrase.into(), boost.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl SpeechRecognitionPhrase {
+    /// Getter of the `phrase` attribute.
+    /// [`SpeechRecognitionPhrase.phrase`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionPhrase/phrase)
     pub fn phrase(&self) -> String {
         self.inner.get("phrase").as_::<String>()
     }
 }
 impl SpeechRecognitionPhrase {
+    /// Getter of the `boost` attribute.
+    /// [`SpeechRecognitionPhrase.boost`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionPhrase/boost)
     pub fn boost(&self) -> f32 {
         self.inner.get("boost").as_::<f32>()
     }

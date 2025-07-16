@@ -1,25 +1,27 @@
 use super::*;
 
+/// The WritableStreamDefaultController class.
+/// [`WritableStreamDefaultController`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultController)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WritableStreamDefaultController {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for WritableStreamDefaultController {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WritableStreamDefaultController {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for WritableStreamDefaultController {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,40 +31,45 @@ impl core::ops::DerefMut for WritableStreamDefaultController {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WritableStreamDefaultController {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WritableStreamDefaultController {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WritableStreamDefaultController {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WritableStreamDefaultController {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WritableStreamDefaultController> for emlite::Val {
-    fn from(s: WritableStreamDefaultController) -> emlite::Val {
+impl From<WritableStreamDefaultController> for Any {
+    fn from(s: WritableStreamDefaultController) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WritableStreamDefaultController> for emlite::Val {
-    fn from(s: &WritableStreamDefaultController) -> emlite::Val {
+impl From<&WritableStreamDefaultController> for Any {
+    fn from(s: &WritableStreamDefaultController) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(WritableStreamDefaultController);
 
 impl WritableStreamDefaultController {
+    /// Getter of the `signal` attribute.
+    /// [`WritableStreamDefaultController.signal`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultController/signal)
     pub fn signal(&self) -> AbortSignal {
         self.inner.get("signal").as_::<AbortSignal>()
     }
 }
 impl WritableStreamDefaultController {
+    /// The error method.
+    /// [`WritableStreamDefaultController.error`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultController/error)
     pub fn error0(&self) -> Undefined {
         self.inner.call("error", &[]).as_::<Undefined>()
     }
-
+    /// The error method.
+    /// [`WritableStreamDefaultController.error`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStreamDefaultController/error)
     pub fn error1(&self, e: &Any) -> Undefined {
         self.inner.call("error", &[e.into()]).as_::<Undefined>()
     }

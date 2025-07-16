@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IDBDatabaseInfo {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for IDBDatabaseInfo {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         IDBDatabaseInfo { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for IDBDatabaseInfo {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for IDBDatabaseInfo {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for IDBDatabaseInfo {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for IDBDatabaseInfo {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for IDBDatabaseInfo {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for IDBDatabaseInfo {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<IDBDatabaseInfo> for emlite::Val {
-    fn from(s: IDBDatabaseInfo) -> emlite::Val {
+impl From<IDBDatabaseInfo> for Any {
+    fn from(s: IDBDatabaseInfo) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&IDBDatabaseInfo> for emlite::Val {
-    fn from(s: &IDBDatabaseInfo) -> emlite::Val {
+impl From<&IDBDatabaseInfo> for Any {
+    fn from(s: &IDBDatabaseInfo) -> Any {
         s.inner.clone()
     }
 }
@@ -68,26 +68,28 @@ impl IDBDatabaseInfo {
         self.inner.set("version", value);
     }
 }
+/// The IDBFactory class.
+/// [`IDBFactory`](https://developer.mozilla.org/en-US/docs/Web/API/IDBFactory)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IDBFactory {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for IDBFactory {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         IDBFactory {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for IDBFactory {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -97,37 +99,40 @@ impl core::ops::DerefMut for IDBFactory {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for IDBFactory {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for IDBFactory {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for IDBFactory {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for IDBFactory {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<IDBFactory> for emlite::Val {
-    fn from(s: IDBFactory) -> emlite::Val {
+impl From<IDBFactory> for Any {
+    fn from(s: IDBFactory) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&IDBFactory> for emlite::Val {
-    fn from(s: &IDBFactory) -> emlite::Val {
+impl From<&IDBFactory> for Any {
+    fn from(s: &IDBFactory) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(IDBFactory);
 
 impl IDBFactory {
+    /// The open method.
+    /// [`IDBFactory.open`](https://developer.mozilla.org/en-US/docs/Web/API/IDBFactory/open)
     pub fn open0(&self, name: &str) -> IDBOpenDBRequest {
         self.inner
             .call("open", &[name.into()])
             .as_::<IDBOpenDBRequest>()
     }
-
+    /// The open method.
+    /// [`IDBFactory.open`](https://developer.mozilla.org/en-US/docs/Web/API/IDBFactory/open)
     pub fn open1(&self, name: &str, version: u64) -> IDBOpenDBRequest {
         self.inner
             .call("open", &[name.into(), version.into()])
@@ -135,6 +140,8 @@ impl IDBFactory {
     }
 }
 impl IDBFactory {
+    /// The deleteDatabase method.
+    /// [`IDBFactory.deleteDatabase`](https://developer.mozilla.org/en-US/docs/Web/API/IDBFactory/deleteDatabase)
     pub fn delete_database(&self, name: &str) -> IDBOpenDBRequest {
         self.inner
             .call("deleteDatabase", &[name.into()])
@@ -142,11 +149,15 @@ impl IDBFactory {
     }
 }
 impl IDBFactory {
+    /// The databases method.
+    /// [`IDBFactory.databases`](https://developer.mozilla.org/en-US/docs/Web/API/IDBFactory/databases)
     pub fn databases(&self) -> Promise {
         self.inner.call("databases", &[]).as_::<Promise>()
     }
 }
 impl IDBFactory {
+    /// The cmp method.
+    /// [`IDBFactory.cmp`](https://developer.mozilla.org/en-US/docs/Web/API/IDBFactory/cmp)
     pub fn cmp(&self, first: &Any, second: &Any) -> i16 {
         self.inner
             .call("cmp", &[first.into(), second.into()])

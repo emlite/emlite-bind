@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CompositionEvent class.
+/// [`CompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CompositionEvent {
     inner: UIEvent,
 }
 impl FromVal for CompositionEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CompositionEvent {
             inner: UIEvent::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,59 +31,66 @@ impl core::ops::DerefMut for CompositionEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CompositionEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CompositionEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CompositionEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CompositionEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CompositionEvent> for emlite::Val {
-    fn from(s: CompositionEvent) -> emlite::Val {
+impl From<CompositionEvent> for Any {
+    fn from(s: CompositionEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CompositionEvent> for emlite::Val {
-    fn from(s: &CompositionEvent) -> emlite::Val {
+impl From<&CompositionEvent> for Any {
+    fn from(s: &CompositionEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CompositionEvent);
 
 impl CompositionEvent {
+    /// The `new CompositionEvent(..)` constructor, creating a new CompositionEvent instance
     pub fn new0(type_: &str) -> CompositionEvent {
         Self {
-            inner: emlite::Val::global("CompositionEvent")
+            inner: Any::global("CompositionEvent")
                 .new(&[type_.into()])
                 .as_::<UIEvent>(),
         }
     }
 
+    /// The `new CompositionEvent(..)` constructor, creating a new CompositionEvent instance
     pub fn new1(type_: &str, event_init_dict: &Any) -> CompositionEvent {
         Self {
-            inner: emlite::Val::global("CompositionEvent")
+            inner: Any::global("CompositionEvent")
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<UIEvent>(),
         }
     }
 }
 impl CompositionEvent {
+    /// Getter of the `data` attribute.
+    /// [`CompositionEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/data)
     pub fn data(&self) -> String {
         self.inner.get("data").as_::<String>()
     }
 }
 impl CompositionEvent {
+    /// The initCompositionEvent method.
+    /// [`CompositionEvent.initCompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/initCompositionEvent)
     pub fn init_composition_event0(&self, type_arg: &str) -> Undefined {
         self.inner
             .call("initCompositionEvent", &[type_arg.into()])
             .as_::<Undefined>()
     }
-
+    /// The initCompositionEvent method.
+    /// [`CompositionEvent.initCompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/initCompositionEvent)
     pub fn init_composition_event1(&self, type_arg: &str, bubbles_arg: bool) -> Undefined {
         self.inner
             .call(
@@ -90,7 +99,8 @@ impl CompositionEvent {
             )
             .as_::<Undefined>()
     }
-
+    /// The initCompositionEvent method.
+    /// [`CompositionEvent.initCompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/initCompositionEvent)
     pub fn init_composition_event2(
         &self,
         type_arg: &str,
@@ -104,7 +114,8 @@ impl CompositionEvent {
             )
             .as_::<Undefined>()
     }
-
+    /// The initCompositionEvent method.
+    /// [`CompositionEvent.initCompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/initCompositionEvent)
     pub fn init_composition_event3(
         &self,
         type_arg: &str,
@@ -124,7 +135,8 @@ impl CompositionEvent {
             )
             .as_::<Undefined>()
     }
-
+    /// The initCompositionEvent method.
+    /// [`CompositionEvent.initCompositionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent/initCompositionEvent)
     pub fn init_composition_event4(
         &self,
         type_arg: &str,

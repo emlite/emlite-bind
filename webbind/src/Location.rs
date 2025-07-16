@@ -1,25 +1,27 @@
 use super::*;
 
+/// The Location class.
+/// [`Location`](https://developer.mozilla.org/en-US/docs/Web/API/Location)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Location {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Location {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Location {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Location {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,123 +31,165 @@ impl core::ops::DerefMut for Location {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Location {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Location {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Location {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Location {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Location> for emlite::Val {
-    fn from(s: Location) -> emlite::Val {
+impl From<Location> for Any {
+    fn from(s: Location) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Location> for emlite::Val {
-    fn from(s: &Location) -> emlite::Val {
+impl From<&Location> for Any {
+    fn from(s: &Location) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Location);
 
 impl Location {
+    /// Getter of the `href` attribute.
+    /// [`Location.href`](https://developer.mozilla.org/en-US/docs/Web/API/Location/href)
     pub fn href(&self) -> String {
         self.inner.get("href").as_::<String>()
     }
 
+    /// Setter of the `href` attribute.
+    /// [`Location.href`](https://developer.mozilla.org/en-US/docs/Web/API/Location/href)
     pub fn set_href(&mut self, value: &str) {
         self.inner.set("href", value);
     }
 }
 impl Location {
+    /// Getter of the `origin` attribute.
+    /// [`Location.origin`](https://developer.mozilla.org/en-US/docs/Web/API/Location/origin)
     pub fn origin(&self) -> String {
         self.inner.get("origin").as_::<String>()
     }
 }
 impl Location {
+    /// Getter of the `protocol` attribute.
+    /// [`Location.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/Location/protocol)
     pub fn protocol(&self) -> String {
         self.inner.get("protocol").as_::<String>()
     }
 
+    /// Setter of the `protocol` attribute.
+    /// [`Location.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/Location/protocol)
     pub fn set_protocol(&mut self, value: &str) {
         self.inner.set("protocol", value);
     }
 }
 impl Location {
+    /// Getter of the `host` attribute.
+    /// [`Location.host`](https://developer.mozilla.org/en-US/docs/Web/API/Location/host)
     pub fn host(&self) -> String {
         self.inner.get("host").as_::<String>()
     }
 
+    /// Setter of the `host` attribute.
+    /// [`Location.host`](https://developer.mozilla.org/en-US/docs/Web/API/Location/host)
     pub fn set_host(&mut self, value: &str) {
         self.inner.set("host", value);
     }
 }
 impl Location {
+    /// Getter of the `hostname` attribute.
+    /// [`Location.hostname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/hostname)
     pub fn hostname(&self) -> String {
         self.inner.get("hostname").as_::<String>()
     }
 
+    /// Setter of the `hostname` attribute.
+    /// [`Location.hostname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/hostname)
     pub fn set_hostname(&mut self, value: &str) {
         self.inner.set("hostname", value);
     }
 }
 impl Location {
+    /// Getter of the `port` attribute.
+    /// [`Location.port`](https://developer.mozilla.org/en-US/docs/Web/API/Location/port)
     pub fn port(&self) -> String {
         self.inner.get("port").as_::<String>()
     }
 
+    /// Setter of the `port` attribute.
+    /// [`Location.port`](https://developer.mozilla.org/en-US/docs/Web/API/Location/port)
     pub fn set_port(&mut self, value: &str) {
         self.inner.set("port", value);
     }
 }
 impl Location {
+    /// Getter of the `pathname` attribute.
+    /// [`Location.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname)
     pub fn pathname(&self) -> String {
         self.inner.get("pathname").as_::<String>()
     }
 
+    /// Setter of the `pathname` attribute.
+    /// [`Location.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname)
     pub fn set_pathname(&mut self, value: &str) {
         self.inner.set("pathname", value);
     }
 }
 impl Location {
+    /// Getter of the `search` attribute.
+    /// [`Location.search`](https://developer.mozilla.org/en-US/docs/Web/API/Location/search)
     pub fn search(&self) -> String {
         self.inner.get("search").as_::<String>()
     }
 
+    /// Setter of the `search` attribute.
+    /// [`Location.search`](https://developer.mozilla.org/en-US/docs/Web/API/Location/search)
     pub fn set_search(&mut self, value: &str) {
         self.inner.set("search", value);
     }
 }
 impl Location {
+    /// Getter of the `hash` attribute.
+    /// [`Location.hash`](https://developer.mozilla.org/en-US/docs/Web/API/Location/hash)
     pub fn hash(&self) -> String {
         self.inner.get("hash").as_::<String>()
     }
 
+    /// Setter of the `hash` attribute.
+    /// [`Location.hash`](https://developer.mozilla.org/en-US/docs/Web/API/Location/hash)
     pub fn set_hash(&mut self, value: &str) {
         self.inner.set("hash", value);
     }
 }
 impl Location {
+    /// The assign method.
+    /// [`Location.assign`](https://developer.mozilla.org/en-US/docs/Web/API/Location/assign)
     pub fn assign(&self, url: &str) -> Undefined {
         self.inner.call("assign", &[url.into()]).as_::<Undefined>()
     }
 }
 impl Location {
+    /// The replace method.
+    /// [`Location.replace`](https://developer.mozilla.org/en-US/docs/Web/API/Location/replace)
     pub fn replace(&self, url: &str) -> Undefined {
         self.inner.call("replace", &[url.into()]).as_::<Undefined>()
     }
 }
 impl Location {
+    /// The reload method.
+    /// [`Location.reload`](https://developer.mozilla.org/en-US/docs/Web/API/Location/reload)
     pub fn reload(&self) -> Undefined {
         self.inner.call("reload", &[]).as_::<Undefined>()
     }
 }
 impl Location {
+    /// Getter of the `ancestorOrigins` attribute.
+    /// [`Location.ancestorOrigins`](https://developer.mozilla.org/en-US/docs/Web/API/Location/ancestorOrigins)
     pub fn ancestor_origins(&self) -> DOMStringList {
         self.inner.get("ancestorOrigins").as_::<DOMStringList>()
     }

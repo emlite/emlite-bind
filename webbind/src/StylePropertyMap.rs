@@ -1,20 +1,22 @@
 use super::*;
 
+/// The StylePropertyMap class.
+/// [`StylePropertyMap`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMap)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct StylePropertyMap {
     inner: StylePropertyMapReadOnly,
 }
 impl FromVal for StylePropertyMap {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         StylePropertyMap {
             inner: StylePropertyMapReadOnly::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for StylePropertyMap {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for StylePropertyMap {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for StylePropertyMap {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for StylePropertyMap {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for StylePropertyMap {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<StylePropertyMap> for emlite::Val {
-    fn from(s: StylePropertyMap) -> emlite::Val {
+impl From<StylePropertyMap> for Any {
+    fn from(s: StylePropertyMap) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&StylePropertyMap> for emlite::Val {
-    fn from(s: &StylePropertyMap) -> emlite::Val {
+impl From<&StylePropertyMap> for Any {
+    fn from(s: &StylePropertyMap) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(StylePropertyMap);
 
 impl StylePropertyMap {
+    /// The set method.
+    /// [`StylePropertyMap.set`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMap/set)
     pub fn set(&self, property: &str, values: &Any) -> Undefined {
         self.inner
             .call("set", &[property.into(), values.into()])
@@ -61,6 +65,8 @@ impl StylePropertyMap {
     }
 }
 impl StylePropertyMap {
+    /// The append method.
+    /// [`StylePropertyMap.append`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMap/append)
     pub fn append(&self, property: &str, values: &Any) -> Undefined {
         self.inner
             .call("append", &[property.into(), values.into()])
@@ -68,6 +74,8 @@ impl StylePropertyMap {
     }
 }
 impl StylePropertyMap {
+    /// The delete method.
+    /// [`StylePropertyMap.delete`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMap/delete)
     pub fn delete(&self, property: &str) -> Undefined {
         self.inner
             .call("delete", &[property.into()])
@@ -75,6 +83,8 @@ impl StylePropertyMap {
     }
 }
 impl StylePropertyMap {
+    /// The clear method.
+    /// [`StylePropertyMap.clear`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMap/clear)
     pub fn clear(&self) -> Undefined {
         self.inner.call("clear", &[]).as_::<Undefined>()
     }

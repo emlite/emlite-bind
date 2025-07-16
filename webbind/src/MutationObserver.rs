@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MutationObserverInit {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MutationObserverInit {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MutationObserverInit { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MutationObserverInit {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for MutationObserverInit {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MutationObserverInit {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MutationObserverInit {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MutationObserverInit {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MutationObserverInit {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MutationObserverInit> for emlite::Val {
-    fn from(s: MutationObserverInit) -> emlite::Val {
+impl From<MutationObserverInit> for Any {
+    fn from(s: MutationObserverInit) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MutationObserverInit> for emlite::Val {
-    fn from(s: &MutationObserverInit) -> emlite::Val {
+impl From<&MutationObserverInit> for Any {
+    fn from(s: &MutationObserverInit) -> Any {
         s.inner.clone()
     }
 }
@@ -113,26 +113,28 @@ impl MutationObserverInit {
         self.inner.set("attributeFilter", value);
     }
 }
+/// The MutationObserver class.
+/// [`MutationObserver`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MutationObserver {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MutationObserver {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MutationObserver {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MutationObserver {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -142,46 +144,50 @@ impl core::ops::DerefMut for MutationObserver {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MutationObserver {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MutationObserver {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MutationObserver {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MutationObserver {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MutationObserver> for emlite::Val {
-    fn from(s: MutationObserver) -> emlite::Val {
+impl From<MutationObserver> for Any {
+    fn from(s: MutationObserver) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MutationObserver> for emlite::Val {
-    fn from(s: &MutationObserver) -> emlite::Val {
+impl From<&MutationObserver> for Any {
+    fn from(s: &MutationObserver) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MutationObserver);
 
 impl MutationObserver {
+    /// The `new MutationObserver(..)` constructor, creating a new MutationObserver instance
     pub fn new(callback: &Function) -> MutationObserver {
         Self {
-            inner: emlite::Val::global("MutationObserver")
+            inner: Any::global("MutationObserver")
                 .new(&[callback.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl MutationObserver {
+    /// The observe method.
+    /// [`MutationObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/observe)
     pub fn observe0(&self, target: &Node) -> Undefined {
         self.inner
             .call("observe", &[target.into()])
             .as_::<Undefined>()
     }
-
+    /// The observe method.
+    /// [`MutationObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/observe)
     pub fn observe1(&self, target: &Node, options: &MutationObserverInit) -> Undefined {
         self.inner
             .call("observe", &[target.into(), options.into()])
@@ -189,11 +195,15 @@ impl MutationObserver {
     }
 }
 impl MutationObserver {
+    /// The disconnect method.
+    /// [`MutationObserver.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/disconnect)
     pub fn disconnect(&self) -> Undefined {
         self.inner.call("disconnect", &[]).as_::<Undefined>()
     }
 }
 impl MutationObserver {
+    /// The takeRecords method.
+    /// [`MutationObserver.takeRecords`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/takeRecords)
     pub fn take_records(&self) -> Sequence<MutationRecord> {
         self.inner
             .call("takeRecords", &[])

@@ -1,20 +1,22 @@
 use super::*;
 
+/// The NDEFReadingEvent class.
+/// [`NDEFReadingEvent`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFReadingEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NDEFReadingEvent {
     inner: Event,
 }
 impl FromVal for NDEFReadingEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         NDEFReadingEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,45 +31,50 @@ impl core::ops::DerefMut for NDEFReadingEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for NDEFReadingEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for NDEFReadingEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for NDEFReadingEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for NDEFReadingEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<NDEFReadingEvent> for emlite::Val {
-    fn from(s: NDEFReadingEvent) -> emlite::Val {
+impl From<NDEFReadingEvent> for Any {
+    fn from(s: NDEFReadingEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&NDEFReadingEvent> for emlite::Val {
-    fn from(s: &NDEFReadingEvent) -> emlite::Val {
+impl From<&NDEFReadingEvent> for Any {
+    fn from(s: &NDEFReadingEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(NDEFReadingEvent);
 
 impl NDEFReadingEvent {
+    /// The `new NDEFReadingEvent(..)` constructor, creating a new NDEFReadingEvent instance
     pub fn new(type_: &str, reading_event_init_dict: &Any) -> NDEFReadingEvent {
         Self {
-            inner: emlite::Val::global("NDEFReadingEvent")
+            inner: Any::global("NDEFReadingEvent")
                 .new(&[type_.into(), reading_event_init_dict.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl NDEFReadingEvent {
+    /// Getter of the `serialNumber` attribute.
+    /// [`NDEFReadingEvent.serialNumber`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFReadingEvent/serialNumber)
     pub fn serial_number(&self) -> String {
         self.inner.get("serialNumber").as_::<String>()
     }
 }
 impl NDEFReadingEvent {
+    /// Getter of the `message` attribute.
+    /// [`NDEFReadingEvent.message`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFReadingEvent/message)
     pub fn message(&self) -> NDEFMessage {
         self.inner.get("message").as_::<NDEFMessage>()
     }

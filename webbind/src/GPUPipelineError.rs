@@ -1,20 +1,22 @@
 use super::*;
 
+/// The GPUPipelineError class.
+/// [`GPUPipelineError`](https://developer.mozilla.org/en-US/docs/Web/API/GPUPipelineError)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUPipelineError {
     inner: DOMException,
 }
 impl FromVal for GPUPipelineError {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPUPipelineError {
             inner: DOMException::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,56 +31,61 @@ impl core::ops::DerefMut for GPUPipelineError {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPUPipelineError {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPUPipelineError {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPUPipelineError {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPUPipelineError {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPUPipelineError> for emlite::Val {
-    fn from(s: GPUPipelineError) -> emlite::Val {
+impl From<GPUPipelineError> for Any {
+    fn from(s: GPUPipelineError) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPUPipelineError> for emlite::Val {
-    fn from(s: &GPUPipelineError) -> emlite::Val {
+impl From<&GPUPipelineError> for Any {
+    fn from(s: &GPUPipelineError) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GPUPipelineError);
 
 impl GPUPipelineError {
+    /// The `new GPUPipelineError(..)` constructor, creating a new GPUPipelineError instance
     pub fn new0() -> GPUPipelineError {
         Self {
-            inner: emlite::Val::global("GPUPipelineError")
+            inner: Any::global("GPUPipelineError")
                 .new(&[])
                 .as_::<DOMException>(),
         }
     }
 
+    /// The `new GPUPipelineError(..)` constructor, creating a new GPUPipelineError instance
     pub fn new1(message: &str) -> GPUPipelineError {
         Self {
-            inner: emlite::Val::global("GPUPipelineError")
+            inner: Any::global("GPUPipelineError")
                 .new(&[message.into()])
                 .as_::<DOMException>(),
         }
     }
 
+    /// The `new GPUPipelineError(..)` constructor, creating a new GPUPipelineError instance
     pub fn new2(message: &str, options: &Any) -> GPUPipelineError {
         Self {
-            inner: emlite::Val::global("GPUPipelineError")
+            inner: Any::global("GPUPipelineError")
                 .new(&[message.into(), options.into()])
                 .as_::<DOMException>(),
         }
     }
 }
 impl GPUPipelineError {
+    /// Getter of the `reason` attribute.
+    /// [`GPUPipelineError.reason`](https://developer.mozilla.org/en-US/docs/Web/API/GPUPipelineError/reason)
     pub fn reason(&self) -> GPUPipelineErrorReason {
         self.inner.get("reason").as_::<GPUPipelineErrorReason>()
     }

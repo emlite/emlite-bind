@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CSSKeywordValue class.
+/// [`CSSKeywordValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeywordValue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSKeywordValue {
     inner: CSSStyleValue,
 }
 impl FromVal for CSSKeywordValue {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSKeywordValue {
             inner: CSSStyleValue::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,44 +31,49 @@ impl core::ops::DerefMut for CSSKeywordValue {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSKeywordValue {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSKeywordValue {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSKeywordValue {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSKeywordValue {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSKeywordValue> for emlite::Val {
-    fn from(s: CSSKeywordValue) -> emlite::Val {
+impl From<CSSKeywordValue> for Any {
+    fn from(s: CSSKeywordValue) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSKeywordValue> for emlite::Val {
-    fn from(s: &CSSKeywordValue) -> emlite::Val {
+impl From<&CSSKeywordValue> for Any {
+    fn from(s: &CSSKeywordValue) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSKeywordValue);
 
 impl CSSKeywordValue {
+    /// The `new CSSKeywordValue(..)` constructor, creating a new CSSKeywordValue instance
     pub fn new(value: &str) -> CSSKeywordValue {
         Self {
-            inner: emlite::Val::global("CSSKeywordValue")
+            inner: Any::global("CSSKeywordValue")
                 .new(&[value.into()])
                 .as_::<CSSStyleValue>(),
         }
     }
 }
 impl CSSKeywordValue {
+    /// Getter of the `value` attribute.
+    /// [`CSSKeywordValue.value`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeywordValue/value)
     pub fn value(&self) -> String {
         self.inner.get("value").as_::<String>()
     }
 
+    /// Setter of the `value` attribute.
+    /// [`CSSKeywordValue.value`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeywordValue/value)
     pub fn set_value(&mut self, value: &str) {
         self.inner.set("value", value);
     }

@@ -1,20 +1,22 @@
 use super::*;
 
+/// The HTMLHRElement class.
+/// [`HTMLHRElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLHRElement {
     inner: HTMLElement,
 }
 impl FromVal for HTMLHRElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HTMLHRElement {
             inner: HTMLElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,80 +31,99 @@ impl core::ops::DerefMut for HTMLHRElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HTMLHRElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HTMLHRElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HTMLHRElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HTMLHRElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HTMLHRElement> for emlite::Val {
-    fn from(s: HTMLHRElement) -> emlite::Val {
+impl From<HTMLHRElement> for Any {
+    fn from(s: HTMLHRElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HTMLHRElement> for emlite::Val {
-    fn from(s: &HTMLHRElement) -> emlite::Val {
+impl From<&HTMLHRElement> for Any {
+    fn from(s: &HTMLHRElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLHRElement);
 
 impl HTMLHRElement {
+    /// The `new HTMLHRElement(..)` constructor, creating a new HTMLHRElement instance
     pub fn new() -> HTMLHRElement {
         Self {
-            inner: emlite::Val::global("HTMLHRElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLHRElement").new(&[]).as_::<HTMLElement>(),
         }
     }
 }
 impl HTMLHRElement {
+    /// Getter of the `align` attribute.
+    /// [`HTMLHRElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/align)
     pub fn align(&self) -> String {
         self.inner.get("align").as_::<String>()
     }
 
+    /// Setter of the `align` attribute.
+    /// [`HTMLHRElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/align)
     pub fn set_align(&mut self, value: &str) {
         self.inner.set("align", value);
     }
 }
 impl HTMLHRElement {
+    /// Getter of the `color` attribute.
+    /// [`HTMLHRElement.color`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/color)
     pub fn color(&self) -> String {
         self.inner.get("color").as_::<String>()
     }
 
+    /// Setter of the `color` attribute.
+    /// [`HTMLHRElement.color`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/color)
     pub fn set_color(&mut self, value: &str) {
         self.inner.set("color", value);
     }
 }
 impl HTMLHRElement {
+    /// Getter of the `noShade` attribute.
+    /// [`HTMLHRElement.noShade`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/noShade)
     pub fn no_shade(&self) -> bool {
         self.inner.get("noShade").as_::<bool>()
     }
 
+    /// Setter of the `noShade` attribute.
+    /// [`HTMLHRElement.noShade`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/noShade)
     pub fn set_no_shade(&mut self, value: bool) {
         self.inner.set("noShade", value);
     }
 }
 impl HTMLHRElement {
+    /// Getter of the `size` attribute.
+    /// [`HTMLHRElement.size`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/size)
     pub fn size(&self) -> String {
         self.inner.get("size").as_::<String>()
     }
 
+    /// Setter of the `size` attribute.
+    /// [`HTMLHRElement.size`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/size)
     pub fn set_size(&mut self, value: &str) {
         self.inner.set("size", value);
     }
 }
 impl HTMLHRElement {
+    /// Getter of the `width` attribute.
+    /// [`HTMLHRElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/width)
     pub fn width(&self) -> String {
         self.inner.get("width").as_::<String>()
     }
 
+    /// Setter of the `width` attribute.
+    /// [`HTMLHRElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/width)
     pub fn set_width(&mut self, value: &str) {
         self.inner.set("width", value);
     }

@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPURequestAdapterOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPURequestAdapterOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPURequestAdapterOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPURequestAdapterOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for GPURequestAdapterOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPURequestAdapterOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPURequestAdapterOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPURequestAdapterOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPURequestAdapterOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPURequestAdapterOptions> for emlite::Val {
-    fn from(s: GPURequestAdapterOptions) -> emlite::Val {
+impl From<GPURequestAdapterOptions> for Any {
+    fn from(s: GPURequestAdapterOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPURequestAdapterOptions> for emlite::Val {
-    fn from(s: &GPURequestAdapterOptions) -> emlite::Val {
+impl From<&GPURequestAdapterOptions> for Any {
+    fn from(s: &GPURequestAdapterOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -88,26 +88,28 @@ impl GPURequestAdapterOptions {
         self.inner.set("xrCompatible", value);
     }
 }
+/// The GPU class.
+/// [`GPU`](https://developer.mozilla.org/en-US/docs/Web/API/GPU)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPU {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPU {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPU {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPU {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -117,35 +119,38 @@ impl core::ops::DerefMut for GPU {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPU {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPU {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPU {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPU {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPU> for emlite::Val {
-    fn from(s: GPU) -> emlite::Val {
+impl From<GPU> for Any {
+    fn from(s: GPU) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPU> for emlite::Val {
-    fn from(s: &GPU) -> emlite::Val {
+impl From<&GPU> for Any {
+    fn from(s: &GPU) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GPU);
 
 impl GPU {
+    /// The requestAdapter method.
+    /// [`GPU.requestAdapter`](https://developer.mozilla.org/en-US/docs/Web/API/GPU/requestAdapter)
     pub fn request_adapter0(&self) -> Promise {
         self.inner.call("requestAdapter", &[]).as_::<Promise>()
     }
-
+    /// The requestAdapter method.
+    /// [`GPU.requestAdapter`](https://developer.mozilla.org/en-US/docs/Web/API/GPU/requestAdapter)
     pub fn request_adapter1(&self, options: &GPURequestAdapterOptions) -> Promise {
         self.inner
             .call("requestAdapter", &[options.into()])
@@ -153,6 +158,8 @@ impl GPU {
     }
 }
 impl GPU {
+    /// The getPreferredCanvasFormat method.
+    /// [`GPU.getPreferredCanvasFormat`](https://developer.mozilla.org/en-US/docs/Web/API/GPU/getPreferredCanvasFormat)
     pub fn get_preferred_canvas_format(&self) -> GPUTextureFormat {
         self.inner
             .call("getPreferredCanvasFormat", &[])
@@ -160,6 +167,8 @@ impl GPU {
     }
 }
 impl GPU {
+    /// Getter of the `wgslLanguageFeatures` attribute.
+    /// [`GPU.wgslLanguageFeatures`](https://developer.mozilla.org/en-US/docs/Web/API/GPU/wgslLanguageFeatures)
     pub fn wgsl_language_features(&self) -> WGSLLanguageFeatures {
         self.inner
             .get("wgslLanguageFeatures")

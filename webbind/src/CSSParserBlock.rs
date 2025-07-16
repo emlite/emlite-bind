@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CSSParserBlock class.
+/// [`CSSParserBlock`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserBlock)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSParserBlock {
     inner: CSSParserValue,
 }
 impl FromVal for CSSParserBlock {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSParserBlock {
             inner: CSSParserValue::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,45 +31,50 @@ impl core::ops::DerefMut for CSSParserBlock {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSParserBlock {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSParserBlock {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSParserBlock {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSParserBlock {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSParserBlock> for emlite::Val {
-    fn from(s: CSSParserBlock) -> emlite::Val {
+impl From<CSSParserBlock> for Any {
+    fn from(s: CSSParserBlock) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSParserBlock> for emlite::Val {
-    fn from(s: &CSSParserBlock) -> emlite::Val {
+impl From<&CSSParserBlock> for Any {
+    fn from(s: &CSSParserBlock) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSParserBlock);
 
 impl CSSParserBlock {
+    /// The `new CSSParserBlock(..)` constructor, creating a new CSSParserBlock instance
     pub fn new(name: &str, body: &Sequence<CSSParserValue>) -> CSSParserBlock {
         Self {
-            inner: emlite::Val::global("CSSParserBlock")
+            inner: Any::global("CSSParserBlock")
                 .new(&[name.into(), body.into()])
                 .as_::<CSSParserValue>(),
         }
     }
 }
 impl CSSParserBlock {
+    /// Getter of the `name` attribute.
+    /// [`CSSParserBlock.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserBlock/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 }
 impl CSSParserBlock {
+    /// Getter of the `body` attribute.
+    /// [`CSSParserBlock.body`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserBlock/body)
     pub fn body(&self) -> FrozenArray<CSSParserValue> {
         self.inner.get("body").as_::<FrozenArray<CSSParserValue>>()
     }

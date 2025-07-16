@@ -1,25 +1,27 @@
 use super::*;
 
+/// The AttributionAggregationServices class.
+/// [`AttributionAggregationServices`](https://developer.mozilla.org/en-US/docs/Web/API/AttributionAggregationServices)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AttributionAggregationServices {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for AttributionAggregationServices {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AttributionAggregationServices {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for AttributionAggregationServices {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,25 +31,25 @@ impl core::ops::DerefMut for AttributionAggregationServices {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AttributionAggregationServices {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AttributionAggregationServices {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AttributionAggregationServices {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AttributionAggregationServices {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AttributionAggregationServices> for emlite::Val {
-    fn from(s: AttributionAggregationServices) -> emlite::Val {
+impl From<AttributionAggregationServices> for Any {
+    fn from(s: AttributionAggregationServices) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AttributionAggregationServices> for emlite::Val {
-    fn from(s: &AttributionAggregationServices) -> emlite::Val {
+impl From<&AttributionAggregationServices> for Any {
+    fn from(s: &AttributionAggregationServices) -> Any {
         s.inner.clone().into()
     }
 }

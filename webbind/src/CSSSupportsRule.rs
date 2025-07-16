@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CSSSupportsRule class.
+/// [`CSSSupportsRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSSupportsRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSSupportsRule {
     inner: CSSConditionRule,
 }
 impl FromVal for CSSSupportsRule {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSSupportsRule {
             inner: CSSConditionRule::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for CSSSupportsRule {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSSupportsRule {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSSupportsRule {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSSupportsRule {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSSupportsRule {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSSupportsRule> for emlite::Val {
-    fn from(s: CSSSupportsRule) -> emlite::Val {
+impl From<CSSSupportsRule> for Any {
+    fn from(s: CSSSupportsRule) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSSupportsRule> for emlite::Val {
-    fn from(s: &CSSSupportsRule) -> emlite::Val {
+impl From<&CSSSupportsRule> for Any {
+    fn from(s: &CSSSupportsRule) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSSupportsRule);
 
 impl CSSSupportsRule {
+    /// Getter of the `matches` attribute.
+    /// [`CSSSupportsRule.matches`](https://developer.mozilla.org/en-US/docs/Web/API/CSSSupportsRule/matches)
     pub fn matches(&self) -> bool {
         self.inner.get("matches").as_::<bool>()
     }

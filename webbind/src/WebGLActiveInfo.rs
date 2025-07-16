@@ -1,25 +1,27 @@
 use super::*;
 
+/// The WebGLActiveInfo class.
+/// [`WebGLActiveInfo`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLActiveInfo)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGLActiveInfo {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for WebGLActiveInfo {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WebGLActiveInfo {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for WebGLActiveInfo {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,41 +31,47 @@ impl core::ops::DerefMut for WebGLActiveInfo {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WebGLActiveInfo {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WebGLActiveInfo {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WebGLActiveInfo {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WebGLActiveInfo {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WebGLActiveInfo> for emlite::Val {
-    fn from(s: WebGLActiveInfo) -> emlite::Val {
+impl From<WebGLActiveInfo> for Any {
+    fn from(s: WebGLActiveInfo) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WebGLActiveInfo> for emlite::Val {
-    fn from(s: &WebGLActiveInfo) -> emlite::Val {
+impl From<&WebGLActiveInfo> for Any {
+    fn from(s: &WebGLActiveInfo) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(WebGLActiveInfo);
 
 impl WebGLActiveInfo {
+    /// Getter of the `size` attribute.
+    /// [`WebGLActiveInfo.size`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLActiveInfo/size)
     pub fn size(&self) -> Any {
         self.inner.get("size").as_::<Any>()
     }
 }
 impl WebGLActiveInfo {
+    /// Getter of the `type` attribute.
+    /// [`WebGLActiveInfo.type`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLActiveInfo/type)
     pub fn type_(&self) -> Any {
         self.inner.get("type").as_::<Any>()
     }
 }
 impl WebGLActiveInfo {
+    /// Getter of the `name` attribute.
+    /// [`WebGLActiveInfo.name`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLActiveInfo/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }

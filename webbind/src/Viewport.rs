@@ -1,25 +1,27 @@
 use super::*;
 
+/// The Viewport class.
+/// [`Viewport`](https://developer.mozilla.org/en-US/docs/Web/API/Viewport)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Viewport {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Viewport {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Viewport {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Viewport {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for Viewport {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Viewport {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Viewport {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Viewport {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Viewport {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Viewport> for emlite::Val {
-    fn from(s: Viewport) -> emlite::Val {
+impl From<Viewport> for Any {
+    fn from(s: Viewport) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Viewport> for emlite::Val {
-    fn from(s: &Viewport) -> emlite::Val {
+impl From<&Viewport> for Any {
+    fn from(s: &Viewport) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Viewport);
 
 impl Viewport {
+    /// Getter of the `segments` attribute.
+    /// [`Viewport.segments`](https://developer.mozilla.org/en-US/docs/Web/API/Viewport/segments)
     pub fn segments(&self) -> FrozenArray<DOMRect> {
         self.inner.get("segments").as_::<FrozenArray<DOMRect>>()
     }

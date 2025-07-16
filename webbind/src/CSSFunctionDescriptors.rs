@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CSSFunctionDescriptors class.
+/// [`CSSFunctionDescriptors`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionDescriptors)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSFunctionDescriptors {
     inner: CSSStyleDeclaration,
 }
 impl FromVal for CSSFunctionDescriptors {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSFunctionDescriptors {
             inner: CSSStyleDeclaration::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,35 +31,39 @@ impl core::ops::DerefMut for CSSFunctionDescriptors {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSFunctionDescriptors {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSFunctionDescriptors {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSFunctionDescriptors {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSFunctionDescriptors {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSFunctionDescriptors> for emlite::Val {
-    fn from(s: CSSFunctionDescriptors) -> emlite::Val {
+impl From<CSSFunctionDescriptors> for Any {
+    fn from(s: CSSFunctionDescriptors) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSFunctionDescriptors> for emlite::Val {
-    fn from(s: &CSSFunctionDescriptors) -> emlite::Val {
+impl From<&CSSFunctionDescriptors> for Any {
+    fn from(s: &CSSFunctionDescriptors) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSFunctionDescriptors);
 
 impl CSSFunctionDescriptors {
+    /// Getter of the `result` attribute.
+    /// [`CSSFunctionDescriptors.result`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionDescriptors/result)
     pub fn result(&self) -> String {
         self.inner.get("result").as_::<String>()
     }
 
+    /// Setter of the `result` attribute.
+    /// [`CSSFunctionDescriptors.result`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionDescriptors/result)
     pub fn set_result(&mut self, value: &str) {
         self.inner.set("result", value);
     }

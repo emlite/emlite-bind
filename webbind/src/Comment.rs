@@ -1,20 +1,22 @@
 use super::*;
 
+/// The Comment class.
+/// [`Comment`](https://developer.mozilla.org/en-US/docs/Web/API/Comment)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Comment {
     inner: CharacterData,
 }
 impl FromVal for Comment {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Comment {
             inner: CharacterData::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,42 +31,42 @@ impl core::ops::DerefMut for Comment {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Comment {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Comment {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Comment {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Comment {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Comment> for emlite::Val {
-    fn from(s: Comment) -> emlite::Val {
+impl From<Comment> for Any {
+    fn from(s: Comment) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Comment> for emlite::Val {
-    fn from(s: &Comment) -> emlite::Val {
+impl From<&Comment> for Any {
+    fn from(s: &Comment) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Comment);
 
 impl Comment {
+    /// The `new Comment(..)` constructor, creating a new Comment instance
     pub fn new0() -> Comment {
         Self {
-            inner: emlite::Val::global("Comment")
-                .new(&[])
-                .as_::<CharacterData>(),
+            inner: Any::global("Comment").new(&[]).as_::<CharacterData>(),
         }
     }
 
+    /// The `new Comment(..)` constructor, creating a new Comment instance
     pub fn new1(data: &str) -> Comment {
         Self {
-            inner: emlite::Val::global("Comment")
+            inner: Any::global("Comment")
                 .new(&[data.into()])
                 .as_::<CharacterData>(),
         }

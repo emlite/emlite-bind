@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VideoDecoderConfig {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for VideoDecoderConfig {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         VideoDecoderConfig { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for VideoDecoderConfig {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for VideoDecoderConfig {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for VideoDecoderConfig {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for VideoDecoderConfig {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for VideoDecoderConfig {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for VideoDecoderConfig {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<VideoDecoderConfig> for emlite::Val {
-    fn from(s: VideoDecoderConfig) -> emlite::Val {
+impl From<VideoDecoderConfig> for Any {
+    fn from(s: VideoDecoderConfig) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&VideoDecoderConfig> for emlite::Val {
-    fn from(s: &VideoDecoderConfig) -> emlite::Val {
+impl From<&VideoDecoderConfig> for Any {
+    fn from(s: &VideoDecoderConfig) -> Any {
         s.inner.clone()
     }
 }
@@ -154,21 +154,21 @@ impl VideoDecoderConfig {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VideoDecoderSupport {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for VideoDecoderSupport {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         VideoDecoderSupport { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for VideoDecoderSupport {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -178,25 +178,25 @@ impl core::ops::DerefMut for VideoDecoderSupport {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for VideoDecoderSupport {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for VideoDecoderSupport {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for VideoDecoderSupport {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for VideoDecoderSupport {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<VideoDecoderSupport> for emlite::Val {
-    fn from(s: VideoDecoderSupport) -> emlite::Val {
+impl From<VideoDecoderSupport> for Any {
+    fn from(s: VideoDecoderSupport) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&VideoDecoderSupport> for emlite::Val {
-    fn from(s: &VideoDecoderSupport) -> emlite::Val {
+impl From<&VideoDecoderSupport> for Any {
+    fn from(s: &VideoDecoderSupport) -> Any {
         s.inner.clone()
     }
 }
@@ -219,21 +219,23 @@ impl VideoDecoderSupport {
         self.inner.set("config", value);
     }
 }
+/// The VideoDecoder class.
+/// [`VideoDecoder`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VideoDecoder {
     inner: EventTarget,
 }
 impl FromVal for VideoDecoder {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         VideoDecoder {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -248,59 +250,70 @@ impl core::ops::DerefMut for VideoDecoder {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for VideoDecoder {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for VideoDecoder {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for VideoDecoder {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for VideoDecoder {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<VideoDecoder> for emlite::Val {
-    fn from(s: VideoDecoder) -> emlite::Val {
+impl From<VideoDecoder> for Any {
+    fn from(s: VideoDecoder) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&VideoDecoder> for emlite::Val {
-    fn from(s: &VideoDecoder) -> emlite::Val {
+impl From<&VideoDecoder> for Any {
+    fn from(s: &VideoDecoder) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(VideoDecoder);
 
 impl VideoDecoder {
+    /// The `new VideoDecoder(..)` constructor, creating a new VideoDecoder instance
     pub fn new(init: &Any) -> VideoDecoder {
         Self {
-            inner: emlite::Val::global("VideoDecoder")
+            inner: Any::global("VideoDecoder")
                 .new(&[init.into()])
                 .as_::<EventTarget>(),
         }
     }
 }
 impl VideoDecoder {
+    /// Getter of the `state` attribute.
+    /// [`VideoDecoder.state`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/state)
     pub fn state(&self) -> CodecState {
         self.inner.get("state").as_::<CodecState>()
     }
 }
 impl VideoDecoder {
+    /// Getter of the `decodeQueueSize` attribute.
+    /// [`VideoDecoder.decodeQueueSize`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/decodeQueueSize)
     pub fn decode_queue_size(&self) -> u32 {
         self.inner.get("decodeQueueSize").as_::<u32>()
     }
 }
 impl VideoDecoder {
+    /// Getter of the `ondequeue` attribute.
+    /// [`VideoDecoder.ondequeue`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/ondequeue)
     pub fn ondequeue(&self) -> Any {
         self.inner.get("ondequeue").as_::<Any>()
     }
 
+    /// Setter of the `ondequeue` attribute.
+    /// [`VideoDecoder.ondequeue`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/ondequeue)
     pub fn set_ondequeue(&mut self, value: &Any) {
         self.inner.set("ondequeue", value);
     }
 }
 impl VideoDecoder {
+    /// The configure method.
+    /// [`VideoDecoder.configure`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/configure)
     pub fn configure(&self, config: &VideoDecoderConfig) -> Undefined {
         self.inner
             .call("configure", &[config.into()])
@@ -308,6 +321,8 @@ impl VideoDecoder {
     }
 }
 impl VideoDecoder {
+    /// The decode method.
+    /// [`VideoDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/decode)
     pub fn decode(&self, chunk: &EncodedVideoChunk) -> Undefined {
         self.inner
             .call("decode", &[chunk.into()])
@@ -315,23 +330,31 @@ impl VideoDecoder {
     }
 }
 impl VideoDecoder {
+    /// The flush method.
+    /// [`VideoDecoder.flush`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/flush)
     pub fn flush(&self) -> Promise {
         self.inner.call("flush", &[]).as_::<Promise>()
     }
 }
 impl VideoDecoder {
+    /// The reset method.
+    /// [`VideoDecoder.reset`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/reset)
     pub fn reset(&self) -> Undefined {
         self.inner.call("reset", &[]).as_::<Undefined>()
     }
 }
 impl VideoDecoder {
+    /// The close method.
+    /// [`VideoDecoder.close`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/close)
     pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }
 impl VideoDecoder {
+    /// The isConfigSupported method.
+    /// [`VideoDecoder.isConfigSupported`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/isConfigSupported)
     pub fn is_config_supported(config: &VideoDecoderConfig) -> Promise {
-        emlite::Val::global("VideoDecoder")
+        Any::global("VideoDecoder")
             .call("isConfigSupported", &[config.into()])
             .as_::<Promise>()
     }

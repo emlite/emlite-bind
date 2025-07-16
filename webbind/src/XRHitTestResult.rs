@@ -1,25 +1,27 @@
 use super::*;
 
+/// The XRHitTestResult class.
+/// [`XRHitTestResult`](https://developer.mozilla.org/en-US/docs/Web/API/XRHitTestResult)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRHitTestResult {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XRHitTestResult {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRHitTestResult {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XRHitTestResult {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for XRHitTestResult {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRHitTestResult {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRHitTestResult {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRHitTestResult {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRHitTestResult {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRHitTestResult> for emlite::Val {
-    fn from(s: XRHitTestResult) -> emlite::Val {
+impl From<XRHitTestResult> for Any {
+    fn from(s: XRHitTestResult) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRHitTestResult> for emlite::Val {
-    fn from(s: &XRHitTestResult) -> emlite::Val {
+impl From<&XRHitTestResult> for Any {
+    fn from(s: &XRHitTestResult) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(XRHitTestResult);
 
 impl XRHitTestResult {
+    /// The getPose method.
+    /// [`XRHitTestResult.getPose`](https://developer.mozilla.org/en-US/docs/Web/API/XRHitTestResult/getPose)
     pub fn get_pose(&self, base_space: &XRSpace) -> XRPose {
         self.inner
             .call("getPose", &[base_space.into()])
@@ -61,6 +65,8 @@ impl XRHitTestResult {
     }
 }
 impl XRHitTestResult {
+    /// The createAnchor method.
+    /// [`XRHitTestResult.createAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRHitTestResult/createAnchor)
     pub fn create_anchor(&self) -> Promise {
         self.inner.call("createAnchor", &[]).as_::<Promise>()
     }

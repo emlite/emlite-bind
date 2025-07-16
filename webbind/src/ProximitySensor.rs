@@ -1,20 +1,22 @@
 use super::*;
 
+/// The ProximitySensor class.
+/// [`ProximitySensor`](https://developer.mozilla.org/en-US/docs/Web/API/ProximitySensor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ProximitySensor {
     inner: Sensor,
 }
 impl FromVal for ProximitySensor {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ProximitySensor {
             inner: Sensor::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,58 +31,64 @@ impl core::ops::DerefMut for ProximitySensor {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ProximitySensor {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ProximitySensor {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ProximitySensor {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ProximitySensor {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ProximitySensor> for emlite::Val {
-    fn from(s: ProximitySensor) -> emlite::Val {
+impl From<ProximitySensor> for Any {
+    fn from(s: ProximitySensor) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ProximitySensor> for emlite::Val {
-    fn from(s: &ProximitySensor) -> emlite::Val {
+impl From<&ProximitySensor> for Any {
+    fn from(s: &ProximitySensor) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ProximitySensor);
 
 impl ProximitySensor {
+    /// The `new ProximitySensor(..)` constructor, creating a new ProximitySensor instance
     pub fn new0() -> ProximitySensor {
         Self {
-            inner: emlite::Val::global("ProximitySensor")
-                .new(&[])
-                .as_::<Sensor>(),
+            inner: Any::global("ProximitySensor").new(&[]).as_::<Sensor>(),
         }
     }
 
+    /// The `new ProximitySensor(..)` constructor, creating a new ProximitySensor instance
     pub fn new1(sensor_options: &Any) -> ProximitySensor {
         Self {
-            inner: emlite::Val::global("ProximitySensor")
+            inner: Any::global("ProximitySensor")
                 .new(&[sensor_options.into()])
                 .as_::<Sensor>(),
         }
     }
 }
 impl ProximitySensor {
+    /// Getter of the `distance` attribute.
+    /// [`ProximitySensor.distance`](https://developer.mozilla.org/en-US/docs/Web/API/ProximitySensor/distance)
     pub fn distance(&self) -> f64 {
         self.inner.get("distance").as_::<f64>()
     }
 }
 impl ProximitySensor {
+    /// Getter of the `max` attribute.
+    /// [`ProximitySensor.max`](https://developer.mozilla.org/en-US/docs/Web/API/ProximitySensor/max)
     pub fn max(&self) -> f64 {
         self.inner.get("max").as_::<f64>()
     }
 }
 impl ProximitySensor {
+    /// Getter of the `near` attribute.
+    /// [`ProximitySensor.near`](https://developer.mozilla.org/en-US/docs/Web/API/ProximitySensor/near)
     pub fn near(&self) -> bool {
         self.inner.get("near").as_::<bool>()
     }

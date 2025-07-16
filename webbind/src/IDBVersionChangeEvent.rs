@@ -1,20 +1,22 @@
 use super::*;
 
+/// The IDBVersionChangeEvent class.
+/// [`IDBVersionChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/IDBVersionChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IDBVersionChangeEvent {
     inner: Event,
 }
 impl FromVal for IDBVersionChangeEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         IDBVersionChangeEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,53 +31,59 @@ impl core::ops::DerefMut for IDBVersionChangeEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for IDBVersionChangeEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for IDBVersionChangeEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for IDBVersionChangeEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for IDBVersionChangeEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<IDBVersionChangeEvent> for emlite::Val {
-    fn from(s: IDBVersionChangeEvent) -> emlite::Val {
+impl From<IDBVersionChangeEvent> for Any {
+    fn from(s: IDBVersionChangeEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&IDBVersionChangeEvent> for emlite::Val {
-    fn from(s: &IDBVersionChangeEvent) -> emlite::Val {
+impl From<&IDBVersionChangeEvent> for Any {
+    fn from(s: &IDBVersionChangeEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(IDBVersionChangeEvent);
 
 impl IDBVersionChangeEvent {
+    /// The `new IDBVersionChangeEvent(..)` constructor, creating a new IDBVersionChangeEvent instance
     pub fn new0(type_: &str) -> IDBVersionChangeEvent {
         Self {
-            inner: emlite::Val::global("IDBVersionChangeEvent")
+            inner: Any::global("IDBVersionChangeEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
 
+    /// The `new IDBVersionChangeEvent(..)` constructor, creating a new IDBVersionChangeEvent instance
     pub fn new1(type_: &str, event_init_dict: &Any) -> IDBVersionChangeEvent {
         Self {
-            inner: emlite::Val::global("IDBVersionChangeEvent")
+            inner: Any::global("IDBVersionChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl IDBVersionChangeEvent {
+    /// Getter of the `oldVersion` attribute.
+    /// [`IDBVersionChangeEvent.oldVersion`](https://developer.mozilla.org/en-US/docs/Web/API/IDBVersionChangeEvent/oldVersion)
     pub fn old_version(&self) -> u64 {
         self.inner.get("oldVersion").as_::<u64>()
     }
 }
 impl IDBVersionChangeEvent {
+    /// Getter of the `newVersion` attribute.
+    /// [`IDBVersionChangeEvent.newVersion`](https://developer.mozilla.org/en-US/docs/Web/API/IDBVersionChangeEvent/newVersion)
     pub fn new_version(&self) -> u64 {
         self.inner.get("newVersion").as_::<u64>()
     }

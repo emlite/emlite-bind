@@ -1,20 +1,22 @@
 use super::*;
 
+/// The HTMLTitleElement class.
+/// [`HTMLTitleElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTitleElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLTitleElement {
     inner: HTMLElement,
 }
 impl FromVal for HTMLTitleElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HTMLTitleElement {
             inner: HTMLElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,44 +31,49 @@ impl core::ops::DerefMut for HTMLTitleElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HTMLTitleElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HTMLTitleElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HTMLTitleElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HTMLTitleElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HTMLTitleElement> for emlite::Val {
-    fn from(s: HTMLTitleElement) -> emlite::Val {
+impl From<HTMLTitleElement> for Any {
+    fn from(s: HTMLTitleElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HTMLTitleElement> for emlite::Val {
-    fn from(s: &HTMLTitleElement) -> emlite::Val {
+impl From<&HTMLTitleElement> for Any {
+    fn from(s: &HTMLTitleElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLTitleElement);
 
 impl HTMLTitleElement {
+    /// The `new HTMLTitleElement(..)` constructor, creating a new HTMLTitleElement instance
     pub fn new() -> HTMLTitleElement {
         Self {
-            inner: emlite::Val::global("HTMLTitleElement")
+            inner: Any::global("HTMLTitleElement")
                 .new(&[])
                 .as_::<HTMLElement>(),
         }
     }
 }
 impl HTMLTitleElement {
+    /// Getter of the `text` attribute.
+    /// [`HTMLTitleElement.text`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTitleElement/text)
     pub fn text(&self) -> String {
         self.inner.get("text").as_::<String>()
     }
 
+    /// Setter of the `text` attribute.
+    /// [`HTMLTitleElement.text`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTitleElement/text)
     pub fn set_text(&mut self, value: &str) {
         self.inner.set("text", value);
     }

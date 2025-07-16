@@ -1,25 +1,27 @@
 use super::*;
 
+/// The USBInTransferResult class.
+/// [`USBInTransferResult`](https://developer.mozilla.org/en-US/docs/Web/API/USBInTransferResult)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct USBInTransferResult {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for USBInTransferResult {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         USBInTransferResult {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for USBInTransferResult {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,53 +31,59 @@ impl core::ops::DerefMut for USBInTransferResult {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for USBInTransferResult {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for USBInTransferResult {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for USBInTransferResult {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for USBInTransferResult {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<USBInTransferResult> for emlite::Val {
-    fn from(s: USBInTransferResult) -> emlite::Val {
+impl From<USBInTransferResult> for Any {
+    fn from(s: USBInTransferResult) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&USBInTransferResult> for emlite::Val {
-    fn from(s: &USBInTransferResult) -> emlite::Val {
+impl From<&USBInTransferResult> for Any {
+    fn from(s: &USBInTransferResult) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(USBInTransferResult);
 
 impl USBInTransferResult {
+    /// The `new USBInTransferResult(..)` constructor, creating a new USBInTransferResult instance
     pub fn new0(status: &USBTransferStatus) -> USBInTransferResult {
         Self {
-            inner: emlite::Val::global("USBInTransferResult")
+            inner: Any::global("USBInTransferResult")
                 .new(&[status.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 
+    /// The `new USBInTransferResult(..)` constructor, creating a new USBInTransferResult instance
     pub fn new1(status: &USBTransferStatus, data: &DataView) -> USBInTransferResult {
         Self {
-            inner: emlite::Val::global("USBInTransferResult")
+            inner: Any::global("USBInTransferResult")
                 .new(&[status.into(), data.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl USBInTransferResult {
+    /// Getter of the `data` attribute.
+    /// [`USBInTransferResult.data`](https://developer.mozilla.org/en-US/docs/Web/API/USBInTransferResult/data)
     pub fn data(&self) -> DataView {
         self.inner.get("data").as_::<DataView>()
     }
 }
 impl USBInTransferResult {
+    /// Getter of the `status` attribute.
+    /// [`USBInTransferResult.status`](https://developer.mozilla.org/en-US/docs/Web/API/USBInTransferResult/status)
     pub fn status(&self) -> USBTransferStatus {
         self.inner.get("status").as_::<USBTransferStatus>()
     }

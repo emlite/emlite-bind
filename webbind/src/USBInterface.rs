@@ -1,25 +1,27 @@
 use super::*;
 
+/// The USBInterface class.
+/// [`USBInterface`](https://developer.mozilla.org/en-US/docs/Web/API/USBInterface)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct USBInterface {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for USBInterface {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         USBInterface {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for USBInterface {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,50 +31,57 @@ impl core::ops::DerefMut for USBInterface {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for USBInterface {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for USBInterface {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for USBInterface {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for USBInterface {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<USBInterface> for emlite::Val {
-    fn from(s: USBInterface) -> emlite::Val {
+impl From<USBInterface> for Any {
+    fn from(s: USBInterface) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&USBInterface> for emlite::Val {
-    fn from(s: &USBInterface) -> emlite::Val {
+impl From<&USBInterface> for Any {
+    fn from(s: &USBInterface) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(USBInterface);
 
 impl USBInterface {
+    /// The `new USBInterface(..)` constructor, creating a new USBInterface instance
     pub fn new(configuration: &USBConfiguration, interface_number: u8) -> USBInterface {
         Self {
-            inner: emlite::Val::global("USBInterface")
+            inner: Any::global("USBInterface")
                 .new(&[configuration.into(), interface_number.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl USBInterface {
+    /// Getter of the `interfaceNumber` attribute.
+    /// [`USBInterface.interfaceNumber`](https://developer.mozilla.org/en-US/docs/Web/API/USBInterface/interfaceNumber)
     pub fn interface_number(&self) -> u8 {
         self.inner.get("interfaceNumber").as_::<u8>()
     }
 }
 impl USBInterface {
+    /// Getter of the `alternate` attribute.
+    /// [`USBInterface.alternate`](https://developer.mozilla.org/en-US/docs/Web/API/USBInterface/alternate)
     pub fn alternate(&self) -> USBAlternateInterface {
         self.inner.get("alternate").as_::<USBAlternateInterface>()
     }
 }
 impl USBInterface {
+    /// Getter of the `alternates` attribute.
+    /// [`USBInterface.alternates`](https://developer.mozilla.org/en-US/docs/Web/API/USBInterface/alternates)
     pub fn alternates(&self) -> FrozenArray<USBAlternateInterface> {
         self.inner
             .get("alternates")
@@ -80,6 +89,8 @@ impl USBInterface {
     }
 }
 impl USBInterface {
+    /// Getter of the `claimed` attribute.
+    /// [`USBInterface.claimed`](https://developer.mozilla.org/en-US/docs/Web/API/USBInterface/claimed)
     pub fn claimed(&self) -> bool {
         self.inner.get("claimed").as_::<bool>()
     }

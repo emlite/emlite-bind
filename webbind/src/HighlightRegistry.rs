@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HighlightHitResult {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for HighlightHitResult {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HighlightHitResult { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for HighlightHitResult {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for HighlightHitResult {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HighlightHitResult {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HighlightHitResult {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HighlightHitResult {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HighlightHitResult {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HighlightHitResult> for emlite::Val {
-    fn from(s: HighlightHitResult) -> emlite::Val {
+impl From<HighlightHitResult> for Any {
+    fn from(s: HighlightHitResult) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HighlightHitResult> for emlite::Val {
-    fn from(s: &HighlightHitResult) -> emlite::Val {
+impl From<&HighlightHitResult> for Any {
+    fn from(s: &HighlightHitResult) -> Any {
         s.inner.clone()
     }
 }
@@ -71,21 +71,21 @@ impl HighlightHitResult {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HighlightsFromPointOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for HighlightsFromPointOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HighlightsFromPointOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for HighlightsFromPointOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -95,25 +95,25 @@ impl core::ops::DerefMut for HighlightsFromPointOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HighlightsFromPointOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HighlightsFromPointOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HighlightsFromPointOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HighlightsFromPointOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HighlightsFromPointOptions> for emlite::Val {
-    fn from(s: HighlightsFromPointOptions) -> emlite::Val {
+impl From<HighlightsFromPointOptions> for Any {
+    fn from(s: HighlightsFromPointOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HighlightsFromPointOptions> for emlite::Val {
-    fn from(s: &HighlightsFromPointOptions) -> emlite::Val {
+impl From<&HighlightsFromPointOptions> for Any {
+    fn from(s: &HighlightsFromPointOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -127,26 +127,28 @@ impl HighlightsFromPointOptions {
         self.inner.set("shadowRoots", value);
     }
 }
+/// The HighlightRegistry class.
+/// [`HighlightRegistry`](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HighlightRegistry {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for HighlightRegistry {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HighlightRegistry {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for HighlightRegistry {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -156,37 +158,40 @@ impl core::ops::DerefMut for HighlightRegistry {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HighlightRegistry {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HighlightRegistry {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HighlightRegistry {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HighlightRegistry {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HighlightRegistry> for emlite::Val {
-    fn from(s: HighlightRegistry) -> emlite::Val {
+impl From<HighlightRegistry> for Any {
+    fn from(s: HighlightRegistry) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HighlightRegistry> for emlite::Val {
-    fn from(s: &HighlightRegistry) -> emlite::Val {
+impl From<&HighlightRegistry> for Any {
+    fn from(s: &HighlightRegistry) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HighlightRegistry);
 
 impl HighlightRegistry {
+    /// The highlightsFromPoint method.
+    /// [`HighlightRegistry.highlightsFromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/highlightsFromPoint)
     pub fn highlights_from_point0(&self, x: f32, y: f32) -> Sequence<HighlightHitResult> {
         self.inner
             .call("highlightsFromPoint", &[x.into(), y.into()])
             .as_::<Sequence<HighlightHitResult>>()
     }
-
+    /// The highlightsFromPoint method.
+    /// [`HighlightRegistry.highlightsFromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/highlightsFromPoint)
     pub fn highlights_from_point1(
         &self,
         x: f32,

@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCDtlsFingerprint {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RTCDtlsFingerprint {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCDtlsFingerprint { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RTCDtlsFingerprint {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for RTCDtlsFingerprint {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCDtlsFingerprint {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCDtlsFingerprint {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCDtlsFingerprint {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCDtlsFingerprint {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCDtlsFingerprint> for emlite::Val {
-    fn from(s: RTCDtlsFingerprint) -> emlite::Val {
+impl From<RTCDtlsFingerprint> for Any {
+    fn from(s: RTCDtlsFingerprint) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCDtlsFingerprint> for emlite::Val {
-    fn from(s: &RTCDtlsFingerprint) -> emlite::Val {
+impl From<&RTCDtlsFingerprint> for Any {
+    fn from(s: &RTCDtlsFingerprint) -> Any {
         s.inner.clone()
     }
 }
@@ -68,26 +68,28 @@ impl RTCDtlsFingerprint {
         self.inner.set("value", value);
     }
 }
+/// The RTCCertificate class.
+/// [`RTCCertificate`](https://developer.mozilla.org/en-US/docs/Web/API/RTCCertificate)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCCertificate {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RTCCertificate {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCCertificate {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RTCCertificate {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -97,36 +99,40 @@ impl core::ops::DerefMut for RTCCertificate {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCCertificate {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCCertificate {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCCertificate {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCCertificate {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCCertificate> for emlite::Val {
-    fn from(s: RTCCertificate) -> emlite::Val {
+impl From<RTCCertificate> for Any {
+    fn from(s: RTCCertificate) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCCertificate> for emlite::Val {
-    fn from(s: &RTCCertificate) -> emlite::Val {
+impl From<&RTCCertificate> for Any {
+    fn from(s: &RTCCertificate) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCCertificate);
 
 impl RTCCertificate {
+    /// Getter of the `expires` attribute.
+    /// [`RTCCertificate.expires`](https://developer.mozilla.org/en-US/docs/Web/API/RTCCertificate/expires)
     pub fn expires(&self) -> Any {
         self.inner.get("expires").as_::<Any>()
     }
 }
 impl RTCCertificate {
+    /// The getFingerprints method.
+    /// [`RTCCertificate.getFingerprints`](https://developer.mozilla.org/en-US/docs/Web/API/RTCCertificate/getFingerprints)
     pub fn get_fingerprints(&self) -> Sequence<RTCDtlsFingerprint> {
         self.inner
             .call("getFingerprints", &[])

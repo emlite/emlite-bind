@@ -1,25 +1,27 @@
 use super::*;
 
+/// The FileReaderSync class.
+/// [`FileReaderSync`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileReaderSync {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for FileReaderSync {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         FileReaderSync {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for FileReaderSync {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,40 +31,41 @@ impl core::ops::DerefMut for FileReaderSync {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for FileReaderSync {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for FileReaderSync {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for FileReaderSync {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for FileReaderSync {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<FileReaderSync> for emlite::Val {
-    fn from(s: FileReaderSync) -> emlite::Val {
+impl From<FileReaderSync> for Any {
+    fn from(s: FileReaderSync) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&FileReaderSync> for emlite::Val {
-    fn from(s: &FileReaderSync) -> emlite::Val {
+impl From<&FileReaderSync> for Any {
+    fn from(s: &FileReaderSync) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(FileReaderSync);
 
 impl FileReaderSync {
+    /// The `new FileReaderSync(..)` constructor, creating a new FileReaderSync instance
     pub fn new() -> FileReaderSync {
         Self {
-            inner: emlite::Val::global("FileReaderSync")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("FileReaderSync").new(&[]).as_::<Any>(),
         }
     }
 }
 impl FileReaderSync {
+    /// The readAsArrayBuffer method.
+    /// [`FileReaderSync.readAsArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsArrayBuffer)
     pub fn read_as_array_buffer(&self, blob: &Blob) -> ArrayBuffer {
         self.inner
             .call("readAsArrayBuffer", &[blob.into()])
@@ -70,6 +73,8 @@ impl FileReaderSync {
     }
 }
 impl FileReaderSync {
+    /// The readAsBinaryString method.
+    /// [`FileReaderSync.readAsBinaryString`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsBinaryString)
     pub fn read_as_binary_string(&self, blob: &Blob) -> String {
         self.inner
             .call("readAsBinaryString", &[blob.into()])
@@ -77,12 +82,15 @@ impl FileReaderSync {
     }
 }
 impl FileReaderSync {
+    /// The readAsText method.
+    /// [`FileReaderSync.readAsText`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsText)
     pub fn read_as_text0(&self, blob: &Blob) -> String {
         self.inner
             .call("readAsText", &[blob.into()])
             .as_::<String>()
     }
-
+    /// The readAsText method.
+    /// [`FileReaderSync.readAsText`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsText)
     pub fn read_as_text1(&self, blob: &Blob, encoding: &str) -> String {
         self.inner
             .call("readAsText", &[blob.into(), encoding.into()])
@@ -90,6 +98,8 @@ impl FileReaderSync {
     }
 }
 impl FileReaderSync {
+    /// The readAsDataURL method.
+    /// [`FileReaderSync.readAsDataURL`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsDataURL)
     pub fn read_as_data_url(&self, blob: &Blob) -> String {
         self.inner
             .call("readAsDataURL", &[blob.into()])

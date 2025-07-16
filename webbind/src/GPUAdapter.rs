@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUDeviceDescriptor {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPUDeviceDescriptor {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPUDeviceDescriptor { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPUDeviceDescriptor {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for GPUDeviceDescriptor {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPUDeviceDescriptor {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPUDeviceDescriptor {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPUDeviceDescriptor {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPUDeviceDescriptor {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPUDeviceDescriptor> for emlite::Val {
-    fn from(s: GPUDeviceDescriptor) -> emlite::Val {
+impl From<GPUDeviceDescriptor> for Any {
+    fn from(s: GPUDeviceDescriptor) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPUDeviceDescriptor> for emlite::Val {
-    fn from(s: &GPUDeviceDescriptor) -> emlite::Val {
+impl From<&GPUDeviceDescriptor> for Any {
+    fn from(s: &GPUDeviceDescriptor) -> Any {
         s.inner.clone()
     }
 }
@@ -81,26 +81,28 @@ impl GPUDeviceDescriptor {
         self.inner.set("defaultQueue", value);
     }
 }
+/// The GPUAdapter class.
+/// [`GPUAdapter`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapter)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUAdapter {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPUAdapter {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPUAdapter {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPUAdapter {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -110,50 +112,59 @@ impl core::ops::DerefMut for GPUAdapter {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPUAdapter {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPUAdapter {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPUAdapter {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPUAdapter {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPUAdapter> for emlite::Val {
-    fn from(s: GPUAdapter) -> emlite::Val {
+impl From<GPUAdapter> for Any {
+    fn from(s: GPUAdapter) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPUAdapter> for emlite::Val {
-    fn from(s: &GPUAdapter) -> emlite::Val {
+impl From<&GPUAdapter> for Any {
+    fn from(s: &GPUAdapter) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GPUAdapter);
 
 impl GPUAdapter {
+    /// Getter of the `features` attribute.
+    /// [`GPUAdapter.features`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapter/features)
     pub fn features(&self) -> GPUSupportedFeatures {
         self.inner.get("features").as_::<GPUSupportedFeatures>()
     }
 }
 impl GPUAdapter {
+    /// Getter of the `limits` attribute.
+    /// [`GPUAdapter.limits`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapter/limits)
     pub fn limits(&self) -> GPUSupportedLimits {
         self.inner.get("limits").as_::<GPUSupportedLimits>()
     }
 }
 impl GPUAdapter {
+    /// Getter of the `info` attribute.
+    /// [`GPUAdapter.info`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapter/info)
     pub fn info(&self) -> GPUAdapterInfo {
         self.inner.get("info").as_::<GPUAdapterInfo>()
     }
 }
 impl GPUAdapter {
+    /// The requestDevice method.
+    /// [`GPUAdapter.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapter/requestDevice)
     pub fn request_device0(&self) -> Promise {
         self.inner.call("requestDevice", &[]).as_::<Promise>()
     }
-
+    /// The requestDevice method.
+    /// [`GPUAdapter.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapter/requestDevice)
     pub fn request_device1(&self, descriptor: &GPUDeviceDescriptor) -> Promise {
         self.inner
             .call("requestDevice", &[descriptor.into()])

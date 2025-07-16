@@ -1,25 +1,27 @@
 use super::*;
 
+/// The Path2D class.
+/// [`Path2D`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Path2D {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Path2D {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Path2D {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Path2D {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,52 +31,55 @@ impl core::ops::DerefMut for Path2D {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Path2D {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Path2D {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Path2D {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Path2D {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Path2D> for emlite::Val {
-    fn from(s: Path2D) -> emlite::Val {
+impl From<Path2D> for Any {
+    fn from(s: Path2D) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Path2D> for emlite::Val {
-    fn from(s: &Path2D) -> emlite::Val {
+impl From<&Path2D> for Any {
+    fn from(s: &Path2D) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Path2D);
 
 impl Path2D {
+    /// The `new Path2D(..)` constructor, creating a new Path2D instance
     pub fn new0() -> Path2D {
         Self {
-            inner: emlite::Val::global("Path2D").new(&[]).as_::<emlite::Val>(),
+            inner: Any::global("Path2D").new(&[]).as_::<Any>(),
         }
     }
 
+    /// The `new Path2D(..)` constructor, creating a new Path2D instance
     pub fn new1(path: &Any) -> Path2D {
         Self {
-            inner: emlite::Val::global("Path2D")
-                .new(&[path.into()])
-                .as_::<emlite::Val>(),
+            inner: Any::global("Path2D").new(&[path.into()]).as_::<Any>(),
         }
     }
 }
 impl Path2D {
+    /// The addPath method.
+    /// [`Path2D.addPath`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/addPath)
     pub fn add_path0(&self, path: &Path2D) -> Undefined {
         self.inner
             .call("addPath", &[path.into()])
             .as_::<Undefined>()
     }
-
+    /// The addPath method.
+    /// [`Path2D.addPath`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/addPath)
     pub fn add_path1(&self, path: &Path2D, transform: &DOMMatrix2DInit) -> Undefined {
         self.inner
             .call("addPath", &[path.into(), transform.into()])
@@ -82,11 +87,15 @@ impl Path2D {
     }
 }
 impl Path2D {
+    /// The closePath method.
+    /// [`Path2D.closePath`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/closePath)
     pub fn close_path(&self) -> Undefined {
         self.inner.call("closePath", &[]).as_::<Undefined>()
     }
 }
 impl Path2D {
+    /// The moveTo method.
+    /// [`Path2D.moveTo`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/moveTo)
     pub fn move_to(&self, x: f64, y: f64) -> Undefined {
         self.inner
             .call("moveTo", &[x.into(), y.into()])
@@ -94,6 +103,8 @@ impl Path2D {
     }
 }
 impl Path2D {
+    /// The lineTo method.
+    /// [`Path2D.lineTo`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/lineTo)
     pub fn line_to(&self, x: f64, y: f64) -> Undefined {
         self.inner
             .call("lineTo", &[x.into(), y.into()])
@@ -101,6 +112,8 @@ impl Path2D {
     }
 }
 impl Path2D {
+    /// The quadraticCurveTo method.
+    /// [`Path2D.quadraticCurveTo`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/quadraticCurveTo)
     pub fn quadratic_curve_to(&self, cpx: f64, cpy: f64, x: f64, y: f64) -> Undefined {
         self.inner
             .call(
@@ -111,6 +124,8 @@ impl Path2D {
     }
 }
 impl Path2D {
+    /// The bezierCurveTo method.
+    /// [`Path2D.bezierCurveTo`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/bezierCurveTo)
     pub fn bezier_curve_to(
         &self,
         cp1x: f64,
@@ -136,6 +151,8 @@ impl Path2D {
     }
 }
 impl Path2D {
+    /// The arcTo method.
+    /// [`Path2D.arcTo`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/arcTo)
     pub fn arc_to(&self, x1: f64, y1: f64, x2: f64, y2: f64, radius: f64) -> Undefined {
         self.inner
             .call(
@@ -146,6 +163,8 @@ impl Path2D {
     }
 }
 impl Path2D {
+    /// The rect method.
+    /// [`Path2D.rect`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/rect)
     pub fn rect(&self, x: f64, y: f64, w: f64, h: f64) -> Undefined {
         self.inner
             .call("rect", &[x.into(), y.into(), w.into(), h.into()])
@@ -153,12 +172,15 @@ impl Path2D {
     }
 }
 impl Path2D {
+    /// The roundRect method.
+    /// [`Path2D.roundRect`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/roundRect)
     pub fn round_rect0(&self, x: f64, y: f64, w: f64, h: f64) -> Undefined {
         self.inner
             .call("roundRect", &[x.into(), y.into(), w.into(), h.into()])
             .as_::<Undefined>()
     }
-
+    /// The roundRect method.
+    /// [`Path2D.roundRect`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/roundRect)
     pub fn round_rect1(&self, x: f64, y: f64, w: f64, h: f64, radii: &Any) -> Undefined {
         self.inner
             .call(
@@ -169,6 +191,8 @@ impl Path2D {
     }
 }
 impl Path2D {
+    /// The arc method.
+    /// [`Path2D.arc`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/arc)
     pub fn arc0(&self, x: f64, y: f64, radius: f64, start_angle: f64, end_angle: f64) -> Undefined {
         self.inner
             .call(
@@ -183,7 +207,8 @@ impl Path2D {
             )
             .as_::<Undefined>()
     }
-
+    /// The arc method.
+    /// [`Path2D.arc`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/arc)
     pub fn arc1(
         &self,
         x: f64,
@@ -209,6 +234,8 @@ impl Path2D {
     }
 }
 impl Path2D {
+    /// The ellipse method.
+    /// [`Path2D.ellipse`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/ellipse)
     pub fn ellipse0(
         &self,
         x: f64,
@@ -234,7 +261,8 @@ impl Path2D {
             )
             .as_::<Undefined>()
     }
-
+    /// The ellipse method.
+    /// [`Path2D.ellipse`](https://developer.mozilla.org/en-US/docs/Web/API/Path2D/ellipse)
     pub fn ellipse1(
         &self,
         x: f64,

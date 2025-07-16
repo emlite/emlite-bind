@@ -1,20 +1,22 @@
 use super::*;
 
+/// The ConvolverNode class.
+/// [`ConvolverNode`](https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ConvolverNode {
     inner: AudioNode,
 }
 impl FromVal for ConvolverNode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ConvolverNode {
             inner: AudioNode::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,61 +31,71 @@ impl core::ops::DerefMut for ConvolverNode {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ConvolverNode {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ConvolverNode {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ConvolverNode {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ConvolverNode {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ConvolverNode> for emlite::Val {
-    fn from(s: ConvolverNode) -> emlite::Val {
+impl From<ConvolverNode> for Any {
+    fn from(s: ConvolverNode) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ConvolverNode> for emlite::Val {
-    fn from(s: &ConvolverNode) -> emlite::Val {
+impl From<&ConvolverNode> for Any {
+    fn from(s: &ConvolverNode) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ConvolverNode);
 
 impl ConvolverNode {
+    /// The `new ConvolverNode(..)` constructor, creating a new ConvolverNode instance
     pub fn new0(context: &BaseAudioContext) -> ConvolverNode {
         Self {
-            inner: emlite::Val::global("ConvolverNode")
+            inner: Any::global("ConvolverNode")
                 .new(&[context.into()])
                 .as_::<AudioNode>(),
         }
     }
 
+    /// The `new ConvolverNode(..)` constructor, creating a new ConvolverNode instance
     pub fn new1(context: &BaseAudioContext, options: &Any) -> ConvolverNode {
         Self {
-            inner: emlite::Val::global("ConvolverNode")
+            inner: Any::global("ConvolverNode")
                 .new(&[context.into(), options.into()])
                 .as_::<AudioNode>(),
         }
     }
 }
 impl ConvolverNode {
+    /// Getter of the `buffer` attribute.
+    /// [`ConvolverNode.buffer`](https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode/buffer)
     pub fn buffer(&self) -> AudioBuffer {
         self.inner.get("buffer").as_::<AudioBuffer>()
     }
 
+    /// Setter of the `buffer` attribute.
+    /// [`ConvolverNode.buffer`](https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode/buffer)
     pub fn set_buffer(&mut self, value: &AudioBuffer) {
         self.inner.set("buffer", value);
     }
 }
 impl ConvolverNode {
+    /// Getter of the `normalize` attribute.
+    /// [`ConvolverNode.normalize`](https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode/normalize)
     pub fn normalize(&self) -> bool {
         self.inner.get("normalize").as_::<bool>()
     }
 
+    /// Setter of the `normalize` attribute.
+    /// [`ConvolverNode.normalize`](https://developer.mozilla.org/en-US/docs/Web/API/ConvolverNode/normalize)
     pub fn set_normalize(&mut self, value: bool) {
         self.inner.set("normalize", value);
     }

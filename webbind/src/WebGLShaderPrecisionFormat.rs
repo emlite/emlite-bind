@@ -1,25 +1,27 @@
 use super::*;
 
+/// The WebGLShaderPrecisionFormat class.
+/// [`WebGLShaderPrecisionFormat`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLShaderPrecisionFormat)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGLShaderPrecisionFormat {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for WebGLShaderPrecisionFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WebGLShaderPrecisionFormat {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for WebGLShaderPrecisionFormat {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,41 +31,47 @@ impl core::ops::DerefMut for WebGLShaderPrecisionFormat {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WebGLShaderPrecisionFormat {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WebGLShaderPrecisionFormat {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WebGLShaderPrecisionFormat {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WebGLShaderPrecisionFormat {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WebGLShaderPrecisionFormat> for emlite::Val {
-    fn from(s: WebGLShaderPrecisionFormat) -> emlite::Val {
+impl From<WebGLShaderPrecisionFormat> for Any {
+    fn from(s: WebGLShaderPrecisionFormat) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WebGLShaderPrecisionFormat> for emlite::Val {
-    fn from(s: &WebGLShaderPrecisionFormat) -> emlite::Val {
+impl From<&WebGLShaderPrecisionFormat> for Any {
+    fn from(s: &WebGLShaderPrecisionFormat) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(WebGLShaderPrecisionFormat);
 
 impl WebGLShaderPrecisionFormat {
+    /// Getter of the `rangeMin` attribute.
+    /// [`WebGLShaderPrecisionFormat.rangeMin`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLShaderPrecisionFormat/rangeMin)
     pub fn range_min(&self) -> Any {
         self.inner.get("rangeMin").as_::<Any>()
     }
 }
 impl WebGLShaderPrecisionFormat {
+    /// Getter of the `rangeMax` attribute.
+    /// [`WebGLShaderPrecisionFormat.rangeMax`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLShaderPrecisionFormat/rangeMax)
     pub fn range_max(&self) -> Any {
         self.inner.get("rangeMax").as_::<Any>()
     }
 }
 impl WebGLShaderPrecisionFormat {
+    /// Getter of the `precision` attribute.
+    /// [`WebGLShaderPrecisionFormat.precision`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLShaderPrecisionFormat/precision)
     pub fn precision(&self) -> Any {
         self.inner.get("precision").as_::<Any>()
     }

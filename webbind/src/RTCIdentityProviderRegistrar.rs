@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCIdentityProvider {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RTCIdentityProvider {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCIdentityProvider { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RTCIdentityProvider {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for RTCIdentityProvider {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCIdentityProvider {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCIdentityProvider {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCIdentityProvider {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCIdentityProvider {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCIdentityProvider> for emlite::Val {
-    fn from(s: RTCIdentityProvider) -> emlite::Val {
+impl From<RTCIdentityProvider> for Any {
+    fn from(s: RTCIdentityProvider) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCIdentityProvider> for emlite::Val {
-    fn from(s: &RTCIdentityProvider) -> emlite::Val {
+impl From<&RTCIdentityProvider> for Any {
+    fn from(s: &RTCIdentityProvider) -> Any {
         s.inner.clone()
     }
 }
@@ -68,26 +68,28 @@ impl RTCIdentityProvider {
         self.inner.set("validateAssertion", value);
     }
 }
+/// The RTCIdentityProviderRegistrar class.
+/// [`RTCIdentityProviderRegistrar`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityProviderRegistrar)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCIdentityProviderRegistrar {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RTCIdentityProviderRegistrar {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCIdentityProviderRegistrar {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RTCIdentityProviderRegistrar {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -97,31 +99,33 @@ impl core::ops::DerefMut for RTCIdentityProviderRegistrar {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCIdentityProviderRegistrar {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCIdentityProviderRegistrar {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCIdentityProviderRegistrar {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCIdentityProviderRegistrar {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCIdentityProviderRegistrar> for emlite::Val {
-    fn from(s: RTCIdentityProviderRegistrar) -> emlite::Val {
+impl From<RTCIdentityProviderRegistrar> for Any {
+    fn from(s: RTCIdentityProviderRegistrar) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCIdentityProviderRegistrar> for emlite::Val {
-    fn from(s: &RTCIdentityProviderRegistrar) -> emlite::Val {
+impl From<&RTCIdentityProviderRegistrar> for Any {
+    fn from(s: &RTCIdentityProviderRegistrar) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCIdentityProviderRegistrar);
 
 impl RTCIdentityProviderRegistrar {
+    /// The register method.
+    /// [`RTCIdentityProviderRegistrar.register`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityProviderRegistrar/register)
     pub fn register(&self, idp: &RTCIdentityProvider) -> Undefined {
         self.inner
             .call("register", &[idp.into()])

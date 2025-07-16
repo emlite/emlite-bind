@@ -1,20 +1,22 @@
 use super::*;
 
+/// The SVGDescElement class.
+/// [`SVGDescElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGDescElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGDescElement {
     inner: SVGElement,
 }
 impl FromVal for SVGDescElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SVGDescElement {
             inner: SVGElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,25 +31,25 @@ impl core::ops::DerefMut for SVGDescElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SVGDescElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SVGDescElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SVGDescElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SVGDescElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SVGDescElement> for emlite::Val {
-    fn from(s: SVGDescElement) -> emlite::Val {
+impl From<SVGDescElement> for Any {
+    fn from(s: SVGDescElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SVGDescElement> for emlite::Val {
-    fn from(s: &SVGDescElement) -> emlite::Val {
+impl From<&SVGDescElement> for Any {
+    fn from(s: &SVGDescElement) -> Any {
         s.inner.clone().into()
     }
 }

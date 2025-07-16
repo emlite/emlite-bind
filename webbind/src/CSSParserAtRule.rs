@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CSSParserAtRule class.
+/// [`CSSParserAtRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserAtRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSParserAtRule {
     inner: CSSParserRule,
 }
 impl FromVal for CSSParserAtRule {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSParserAtRule {
             inner: CSSParserRule::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,57 +31,63 @@ impl core::ops::DerefMut for CSSParserAtRule {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSParserAtRule {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSParserAtRule {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSParserAtRule {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSParserAtRule {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSParserAtRule> for emlite::Val {
-    fn from(s: CSSParserAtRule) -> emlite::Val {
+impl From<CSSParserAtRule> for Any {
+    fn from(s: CSSParserAtRule) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSParserAtRule> for emlite::Val {
-    fn from(s: &CSSParserAtRule) -> emlite::Val {
+impl From<&CSSParserAtRule> for Any {
+    fn from(s: &CSSParserAtRule) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSParserAtRule);
 
 impl CSSParserAtRule {
+    /// The `new CSSParserAtRule(..)` constructor, creating a new CSSParserAtRule instance
     pub fn new0(name: &str, prelude: &Sequence<Any>) -> CSSParserAtRule {
         Self {
-            inner: emlite::Val::global("CSSParserAtRule")
+            inner: Any::global("CSSParserAtRule")
                 .new(&[name.into(), prelude.into()])
                 .as_::<CSSParserRule>(),
         }
     }
 
+    /// The `new CSSParserAtRule(..)` constructor, creating a new CSSParserAtRule instance
     pub fn new1(
         name: &str,
         prelude: &Sequence<Any>,
         body: &Sequence<CSSParserRule>,
     ) -> CSSParserAtRule {
         Self {
-            inner: emlite::Val::global("CSSParserAtRule")
+            inner: Any::global("CSSParserAtRule")
                 .new(&[name.into(), prelude.into(), body.into()])
                 .as_::<CSSParserRule>(),
         }
     }
 }
 impl CSSParserAtRule {
+    /// Getter of the `name` attribute.
+    /// [`CSSParserAtRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserAtRule/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 }
 impl CSSParserAtRule {
+    /// Getter of the `prelude` attribute.
+    /// [`CSSParserAtRule.prelude`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserAtRule/prelude)
     pub fn prelude(&self) -> FrozenArray<CSSParserValue> {
         self.inner
             .get("prelude")
@@ -87,6 +95,8 @@ impl CSSParserAtRule {
     }
 }
 impl CSSParserAtRule {
+    /// Getter of the `body` attribute.
+    /// [`CSSParserAtRule.body`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserAtRule/body)
     pub fn body(&self) -> FrozenArray<CSSParserRule> {
         self.inner.get("body").as_::<FrozenArray<CSSParserRule>>()
     }

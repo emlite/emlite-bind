@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ModuleExportDescriptor {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ModuleExportDescriptor {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ModuleExportDescriptor { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ModuleExportDescriptor {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for ModuleExportDescriptor {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ModuleExportDescriptor {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ModuleExportDescriptor {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ModuleExportDescriptor {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ModuleExportDescriptor {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ModuleExportDescriptor> for emlite::Val {
-    fn from(s: ModuleExportDescriptor) -> emlite::Val {
+impl From<ModuleExportDescriptor> for Any {
+    fn from(s: ModuleExportDescriptor) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ModuleExportDescriptor> for emlite::Val {
-    fn from(s: &ModuleExportDescriptor) -> emlite::Val {
+impl From<&ModuleExportDescriptor> for Any {
+    fn from(s: &ModuleExportDescriptor) -> Any {
         s.inner.clone()
     }
 }
@@ -71,21 +71,21 @@ impl ModuleExportDescriptor {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ModuleImportDescriptor {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ModuleImportDescriptor {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ModuleImportDescriptor { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ModuleImportDescriptor {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -95,25 +95,25 @@ impl core::ops::DerefMut for ModuleImportDescriptor {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ModuleImportDescriptor {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ModuleImportDescriptor {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ModuleImportDescriptor {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ModuleImportDescriptor {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ModuleImportDescriptor> for emlite::Val {
-    fn from(s: ModuleImportDescriptor) -> emlite::Val {
+impl From<ModuleImportDescriptor> for Any {
+    fn from(s: ModuleImportDescriptor) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ModuleImportDescriptor> for emlite::Val {
-    fn from(s: &ModuleImportDescriptor) -> emlite::Val {
+impl From<&ModuleImportDescriptor> for Any {
+    fn from(s: &ModuleImportDescriptor) -> Any {
         s.inner.clone()
     }
 }
@@ -145,26 +145,28 @@ impl ModuleImportDescriptor {
         self.inner.set("kind", value);
     }
 }
+/// The Module class.
+/// [`Module`](https://developer.mozilla.org/en-US/docs/Web/API/Module)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Module {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Module {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Module {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Module {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -174,56 +176,61 @@ impl core::ops::DerefMut for Module {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Module {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Module {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Module {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Module {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Module> for emlite::Val {
-    fn from(s: Module) -> emlite::Val {
+impl From<Module> for Any {
+    fn from(s: Module) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Module> for emlite::Val {
-    fn from(s: &Module) -> emlite::Val {
+impl From<&Module> for Any {
+    fn from(s: &Module) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Module);
 
 impl Module {
+    /// The `new Module(..)` constructor, creating a new Module instance
     pub fn new(bytes: &Any) -> Module {
         Self {
-            inner: emlite::Val::global("Module")
-                .new(&[bytes.into()])
-                .as_::<emlite::Val>(),
+            inner: Any::global("Module").new(&[bytes.into()]).as_::<Any>(),
         }
     }
 }
 impl Module {
+    /// The exports method.
+    /// [`Module.exports`](https://developer.mozilla.org/en-US/docs/Web/API/Module/exports)
     pub fn exports(module_object: &Module) -> Sequence<ModuleExportDescriptor> {
-        emlite::Val::global("Module")
+        Any::global("Module")
             .call("exports", &[module_object.into()])
             .as_::<Sequence<ModuleExportDescriptor>>()
     }
 }
 impl Module {
+    /// The imports method.
+    /// [`Module.imports`](https://developer.mozilla.org/en-US/docs/Web/API/Module/imports)
     pub fn imports(module_object: &Module) -> Sequence<ModuleImportDescriptor> {
-        emlite::Val::global("Module")
+        Any::global("Module")
             .call("imports", &[module_object.into()])
             .as_::<Sequence<ModuleImportDescriptor>>()
     }
 }
 impl Module {
+    /// The customSections method.
+    /// [`Module.customSections`](https://developer.mozilla.org/en-US/docs/Web/API/Module/customSections)
     pub fn custom_sections(module_object: &Module, section_name: &str) -> Sequence<ArrayBuffer> {
-        emlite::Val::global("Module")
+        Any::global("Module")
             .call(
                 "customSections",
                 &[module_object.into(), section_name.into()],

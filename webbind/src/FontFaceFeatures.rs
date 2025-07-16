@@ -1,25 +1,27 @@
 use super::*;
 
+/// The FontFaceFeatures class.
+/// [`FontFaceFeatures`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceFeatures)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FontFaceFeatures {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for FontFaceFeatures {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         FontFaceFeatures {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for FontFaceFeatures {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,25 +31,25 @@ impl core::ops::DerefMut for FontFaceFeatures {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for FontFaceFeatures {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for FontFaceFeatures {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for FontFaceFeatures {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for FontFaceFeatures {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<FontFaceFeatures> for emlite::Val {
-    fn from(s: FontFaceFeatures) -> emlite::Val {
+impl From<FontFaceFeatures> for Any {
+    fn from(s: FontFaceFeatures) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&FontFaceFeatures> for emlite::Val {
-    fn from(s: &FontFaceFeatures) -> emlite::Val {
+impl From<&FontFaceFeatures> for Any {
+    fn from(s: &FontFaceFeatures) -> Any {
         s.inner.clone().into()
     }
 }

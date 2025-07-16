@@ -1,25 +1,27 @@
 use super::*;
 
+/// The SpeechRecognitionResult class.
+/// [`SpeechRecognitionResult`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionResult)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SpeechRecognitionResult {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for SpeechRecognitionResult {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SpeechRecognitionResult {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for SpeechRecognitionResult {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for SpeechRecognitionResult {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SpeechRecognitionResult {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SpeechRecognitionResult {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SpeechRecognitionResult {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SpeechRecognitionResult {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SpeechRecognitionResult> for emlite::Val {
-    fn from(s: SpeechRecognitionResult) -> emlite::Val {
+impl From<SpeechRecognitionResult> for Any {
+    fn from(s: SpeechRecognitionResult) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SpeechRecognitionResult> for emlite::Val {
-    fn from(s: &SpeechRecognitionResult) -> emlite::Val {
+impl From<&SpeechRecognitionResult> for Any {
+    fn from(s: &SpeechRecognitionResult) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SpeechRecognitionResult);
 
 impl SpeechRecognitionResult {
+    /// Getter of the `length` attribute.
+    /// [`SpeechRecognitionResult.length`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionResult/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
 }
 impl SpeechRecognitionResult {
+    /// The item method.
+    /// [`SpeechRecognitionResult.item`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionResult/item)
     pub fn item(&self, index: u32) -> SpeechRecognitionAlternative {
         self.inner
             .call("item", &[index.into()])
@@ -66,6 +72,8 @@ impl SpeechRecognitionResult {
     }
 }
 impl SpeechRecognitionResult {
+    /// Getter of the `isFinal` attribute.
+    /// [`SpeechRecognitionResult.isFinal`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionResult/isFinal)
     pub fn is_final(&self) -> bool {
         self.inner.get("isFinal").as_::<bool>()
     }

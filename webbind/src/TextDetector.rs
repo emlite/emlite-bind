@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DetectedText {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for DetectedText {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         DetectedText { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for DetectedText {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for DetectedText {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for DetectedText {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for DetectedText {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for DetectedText {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for DetectedText {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<DetectedText> for emlite::Val {
-    fn from(s: DetectedText) -> emlite::Val {
+impl From<DetectedText> for Any {
+    fn from(s: DetectedText) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&DetectedText> for emlite::Val {
-    fn from(s: &DetectedText) -> emlite::Val {
+impl From<&DetectedText> for Any {
+    fn from(s: &DetectedText) -> Any {
         s.inner.clone()
     }
 }
@@ -77,26 +77,28 @@ impl DetectedText {
         self.inner.set("cornerPoints", value);
     }
 }
+/// The TextDetector class.
+/// [`TextDetector`](https://developer.mozilla.org/en-US/docs/Web/API/TextDetector)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TextDetector {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for TextDetector {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         TextDetector {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for TextDetector {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -106,40 +108,41 @@ impl core::ops::DerefMut for TextDetector {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for TextDetector {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for TextDetector {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for TextDetector {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for TextDetector {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<TextDetector> for emlite::Val {
-    fn from(s: TextDetector) -> emlite::Val {
+impl From<TextDetector> for Any {
+    fn from(s: TextDetector) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&TextDetector> for emlite::Val {
-    fn from(s: &TextDetector) -> emlite::Val {
+impl From<&TextDetector> for Any {
+    fn from(s: &TextDetector) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(TextDetector);
 
 impl TextDetector {
+    /// The `new TextDetector(..)` constructor, creating a new TextDetector instance
     pub fn new() -> TextDetector {
         Self {
-            inner: emlite::Val::global("TextDetector")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("TextDetector").new(&[]).as_::<Any>(),
         }
     }
 }
 impl TextDetector {
+    /// The detect method.
+    /// [`TextDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/TextDetector/detect)
     pub fn detect(&self, image: &Any) -> Promise {
         self.inner.call("detect", &[image.into()]).as_::<Promise>()
     }

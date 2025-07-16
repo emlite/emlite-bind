@@ -1,20 +1,22 @@
 use super::*;
 
+/// The WebGLVertexArrayObject class.
+/// [`WebGLVertexArrayObject`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLVertexArrayObject)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGLVertexArrayObject {
     inner: WebGLObject,
 }
 impl FromVal for WebGLVertexArrayObject {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WebGLVertexArrayObject {
             inner: WebGLObject::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,25 +31,25 @@ impl core::ops::DerefMut for WebGLVertexArrayObject {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WebGLVertexArrayObject {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WebGLVertexArrayObject {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WebGLVertexArrayObject {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WebGLVertexArrayObject {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WebGLVertexArrayObject> for emlite::Val {
-    fn from(s: WebGLVertexArrayObject) -> emlite::Val {
+impl From<WebGLVertexArrayObject> for Any {
+    fn from(s: WebGLVertexArrayObject) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WebGLVertexArrayObject> for emlite::Val {
-    fn from(s: &WebGLVertexArrayObject) -> emlite::Val {
+impl From<&WebGLVertexArrayObject> for Any {
+    fn from(s: &WebGLVertexArrayObject) -> Any {
         s.inner.clone().into()
     }
 }

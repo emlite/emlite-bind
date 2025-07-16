@@ -1,25 +1,27 @@
 use super::*;
 
+/// The SpeechSynthesisVoice class.
+/// [`SpeechSynthesisVoice`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SpeechSynthesisVoice {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for SpeechSynthesisVoice {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SpeechSynthesisVoice {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for SpeechSynthesisVoice {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,51 +31,61 @@ impl core::ops::DerefMut for SpeechSynthesisVoice {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SpeechSynthesisVoice {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SpeechSynthesisVoice {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SpeechSynthesisVoice {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SpeechSynthesisVoice {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SpeechSynthesisVoice> for emlite::Val {
-    fn from(s: SpeechSynthesisVoice) -> emlite::Val {
+impl From<SpeechSynthesisVoice> for Any {
+    fn from(s: SpeechSynthesisVoice) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SpeechSynthesisVoice> for emlite::Val {
-    fn from(s: &SpeechSynthesisVoice) -> emlite::Val {
+impl From<&SpeechSynthesisVoice> for Any {
+    fn from(s: &SpeechSynthesisVoice) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SpeechSynthesisVoice);
 
 impl SpeechSynthesisVoice {
+    /// Getter of the `voiceURI` attribute.
+    /// [`SpeechSynthesisVoice.voiceURI`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/voiceURI)
     pub fn voice_uri(&self) -> String {
         self.inner.get("voiceURI").as_::<String>()
     }
 }
 impl SpeechSynthesisVoice {
+    /// Getter of the `name` attribute.
+    /// [`SpeechSynthesisVoice.name`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 }
 impl SpeechSynthesisVoice {
+    /// Getter of the `lang` attribute.
+    /// [`SpeechSynthesisVoice.lang`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/lang)
     pub fn lang(&self) -> String {
         self.inner.get("lang").as_::<String>()
     }
 }
 impl SpeechSynthesisVoice {
+    /// Getter of the `localService` attribute.
+    /// [`SpeechSynthesisVoice.localService`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService)
     pub fn local_service(&self) -> bool {
         self.inner.get("localService").as_::<bool>()
     }
 }
 impl SpeechSynthesisVoice {
+    /// Getter of the `default` attribute.
+    /// [`SpeechSynthesisVoice.default`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/default)
     pub fn default(&self) -> bool {
         self.inner.get("default").as_::<bool>()
     }

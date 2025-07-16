@@ -1,25 +1,27 @@
 use super::*;
 
+/// The XPathExpression class.
+/// [`XPathExpression`](https://developer.mozilla.org/en-US/docs/Web/API/XPathExpression)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XPathExpression {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XPathExpression {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XPathExpression {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XPathExpression {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,43 +31,47 @@ impl core::ops::DerefMut for XPathExpression {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XPathExpression {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XPathExpression {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XPathExpression {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XPathExpression {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XPathExpression> for emlite::Val {
-    fn from(s: XPathExpression) -> emlite::Val {
+impl From<XPathExpression> for Any {
+    fn from(s: XPathExpression) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XPathExpression> for emlite::Val {
-    fn from(s: &XPathExpression) -> emlite::Val {
+impl From<&XPathExpression> for Any {
+    fn from(s: &XPathExpression) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(XPathExpression);
 
 impl XPathExpression {
+    /// The evaluate method.
+    /// [`XPathExpression.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathExpression/evaluate)
     pub fn evaluate0(&self, context_node: &Node) -> XPathResult {
         self.inner
             .call("evaluate", &[context_node.into()])
             .as_::<XPathResult>()
     }
-
+    /// The evaluate method.
+    /// [`XPathExpression.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathExpression/evaluate)
     pub fn evaluate1(&self, context_node: &Node, type_: u16) -> XPathResult {
         self.inner
             .call("evaluate", &[context_node.into(), type_.into()])
             .as_::<XPathResult>()
     }
-
+    /// The evaluate method.
+    /// [`XPathExpression.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathExpression/evaluate)
     pub fn evaluate2(&self, context_node: &Node, type_: u16, result: &XPathResult) -> XPathResult {
         self.inner
             .call(

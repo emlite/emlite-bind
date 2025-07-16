@@ -1,25 +1,27 @@
 use super::*;
 
+/// The ChildBreakToken class.
+/// [`ChildBreakToken`](https://developer.mozilla.org/en-US/docs/Web/API/ChildBreakToken)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ChildBreakToken {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ChildBreakToken {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ChildBreakToken {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ChildBreakToken {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for ChildBreakToken {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ChildBreakToken {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ChildBreakToken {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ChildBreakToken {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ChildBreakToken {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ChildBreakToken> for emlite::Val {
-    fn from(s: ChildBreakToken) -> emlite::Val {
+impl From<ChildBreakToken> for Any {
+    fn from(s: ChildBreakToken) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ChildBreakToken> for emlite::Val {
-    fn from(s: &ChildBreakToken) -> emlite::Val {
+impl From<&ChildBreakToken> for Any {
+    fn from(s: &ChildBreakToken) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ChildBreakToken);
 
 impl ChildBreakToken {
+    /// Getter of the `breakType` attribute.
+    /// [`ChildBreakToken.breakType`](https://developer.mozilla.org/en-US/docs/Web/API/ChildBreakToken/breakType)
     pub fn break_type(&self) -> BreakType {
         self.inner.get("breakType").as_::<BreakType>()
     }
 }
 impl ChildBreakToken {
+    /// Getter of the `child` attribute.
+    /// [`ChildBreakToken.child`](https://developer.mozilla.org/en-US/docs/Web/API/ChildBreakToken/child)
     pub fn child(&self) -> LayoutChild {
         self.inner.get("child").as_::<LayoutChild>()
     }

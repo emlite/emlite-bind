@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioOutputOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for AudioOutputOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AudioOutputOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for AudioOutputOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for AudioOutputOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AudioOutputOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AudioOutputOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AudioOutputOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AudioOutputOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AudioOutputOptions> for emlite::Val {
-    fn from(s: AudioOutputOptions) -> emlite::Val {
+impl From<AudioOutputOptions> for Any {
+    fn from(s: AudioOutputOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AudioOutputOptions> for emlite::Val {
-    fn from(s: &AudioOutputOptions) -> emlite::Val {
+impl From<&AudioOutputOptions> for Any {
+    fn from(s: &AudioOutputOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -62,21 +62,21 @@ impl AudioOutputOptions {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CaptureHandleConfig {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for CaptureHandleConfig {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CaptureHandleConfig { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for CaptureHandleConfig {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -86,25 +86,25 @@ impl core::ops::DerefMut for CaptureHandleConfig {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CaptureHandleConfig {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CaptureHandleConfig {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CaptureHandleConfig {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CaptureHandleConfig {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CaptureHandleConfig> for emlite::Val {
-    fn from(s: CaptureHandleConfig) -> emlite::Val {
+impl From<CaptureHandleConfig> for Any {
+    fn from(s: CaptureHandleConfig) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CaptureHandleConfig> for emlite::Val {
-    fn from(s: &CaptureHandleConfig) -> emlite::Val {
+impl From<&CaptureHandleConfig> for Any {
+    fn from(s: &CaptureHandleConfig) -> Any {
         s.inner.clone()
     }
 }
@@ -139,21 +139,21 @@ impl CaptureHandleConfig {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaTrackSupportedConstraints {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaTrackSupportedConstraints {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaTrackSupportedConstraints { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaTrackSupportedConstraints {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -163,25 +163,25 @@ impl core::ops::DerefMut for MediaTrackSupportedConstraints {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaTrackSupportedConstraints {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaTrackSupportedConstraints {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaTrackSupportedConstraints {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaTrackSupportedConstraints {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaTrackSupportedConstraints> for emlite::Val {
-    fn from(s: MediaTrackSupportedConstraints) -> emlite::Val {
+impl From<MediaTrackSupportedConstraints> for Any {
+    fn from(s: MediaTrackSupportedConstraints) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaTrackSupportedConstraints> for emlite::Val {
-    fn from(s: &MediaTrackSupportedConstraints) -> emlite::Val {
+impl From<&MediaTrackSupportedConstraints> for Any {
+    fn from(s: &MediaTrackSupportedConstraints) -> Any {
         s.inner.clone()
     }
 }
@@ -234,21 +234,21 @@ impl MediaTrackSupportedConstraints {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaStreamConstraints {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaStreamConstraints {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaStreamConstraints { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaStreamConstraints {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -258,25 +258,25 @@ impl core::ops::DerefMut for MediaStreamConstraints {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaStreamConstraints {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaStreamConstraints {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaStreamConstraints {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaStreamConstraints {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaStreamConstraints> for emlite::Val {
-    fn from(s: MediaStreamConstraints) -> emlite::Val {
+impl From<MediaStreamConstraints> for Any {
+    fn from(s: MediaStreamConstraints) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaStreamConstraints> for emlite::Val {
-    fn from(s: &MediaStreamConstraints) -> emlite::Val {
+impl From<&MediaStreamConstraints> for Any {
+    fn from(s: &MediaStreamConstraints) -> Any {
         s.inner.clone()
     }
 }
@@ -293,21 +293,21 @@ impl MediaStreamConstraints {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DisplayMediaStreamOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for DisplayMediaStreamOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         DisplayMediaStreamOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for DisplayMediaStreamOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -317,25 +317,25 @@ impl core::ops::DerefMut for DisplayMediaStreamOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for DisplayMediaStreamOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for DisplayMediaStreamOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for DisplayMediaStreamOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for DisplayMediaStreamOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<DisplayMediaStreamOptions> for emlite::Val {
-    fn from(s: DisplayMediaStreamOptions) -> emlite::Val {
+impl From<DisplayMediaStreamOptions> for Any {
+    fn from(s: DisplayMediaStreamOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&DisplayMediaStreamOptions> for emlite::Val {
-    fn from(s: &DisplayMediaStreamOptions) -> emlite::Val {
+impl From<&DisplayMediaStreamOptions> for Any {
+    fn from(s: &DisplayMediaStreamOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -422,21 +422,23 @@ impl DisplayMediaStreamOptions {
         self.inner.set("monitorTypeSurfaces", value);
     }
 }
+/// The MediaDevices class.
+/// [`MediaDevices`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaDevices {
     inner: EventTarget,
 }
 impl FromVal for MediaDevices {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaDevices {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -451,49 +453,58 @@ impl core::ops::DerefMut for MediaDevices {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaDevices {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaDevices {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaDevices {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaDevices {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaDevices> for emlite::Val {
-    fn from(s: MediaDevices) -> emlite::Val {
+impl From<MediaDevices> for Any {
+    fn from(s: MediaDevices) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaDevices> for emlite::Val {
-    fn from(s: &MediaDevices) -> emlite::Val {
+impl From<&MediaDevices> for Any {
+    fn from(s: &MediaDevices) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaDevices);
 
 impl MediaDevices {
+    /// Getter of the `ondevicechange` attribute.
+    /// [`MediaDevices.ondevicechange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/ondevicechange)
     pub fn ondevicechange(&self) -> Any {
         self.inner.get("ondevicechange").as_::<Any>()
     }
 
+    /// Setter of the `ondevicechange` attribute.
+    /// [`MediaDevices.ondevicechange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/ondevicechange)
     pub fn set_ondevicechange(&mut self, value: &Any) {
         self.inner.set("ondevicechange", value);
     }
 }
 impl MediaDevices {
+    /// The enumerateDevices method.
+    /// [`MediaDevices.enumerateDevices`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices)
     pub fn enumerate_devices(&self) -> Promise {
         self.inner.call("enumerateDevices", &[]).as_::<Promise>()
     }
 }
 impl MediaDevices {
+    /// The selectAudioOutput method.
+    /// [`MediaDevices.selectAudioOutput`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/selectAudioOutput)
     pub fn select_audio_output0(&self) -> Promise {
         self.inner.call("selectAudioOutput", &[]).as_::<Promise>()
     }
-
+    /// The selectAudioOutput method.
+    /// [`MediaDevices.selectAudioOutput`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/selectAudioOutput)
     pub fn select_audio_output1(&self, options: &AudioOutputOptions) -> Promise {
         self.inner
             .call("selectAudioOutput", &[options.into()])
@@ -501,12 +512,15 @@ impl MediaDevices {
     }
 }
 impl MediaDevices {
+    /// The setCaptureHandleConfig method.
+    /// [`MediaDevices.setCaptureHandleConfig`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/setCaptureHandleConfig)
     pub fn set_capture_handle_config0(&self) -> Undefined {
         self.inner
             .call("setCaptureHandleConfig", &[])
             .as_::<Undefined>()
     }
-
+    /// The setCaptureHandleConfig method.
+    /// [`MediaDevices.setCaptureHandleConfig`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/setCaptureHandleConfig)
     pub fn set_capture_handle_config1(&self, config: &CaptureHandleConfig) -> Undefined {
         self.inner
             .call("setCaptureHandleConfig", &[config.into()])
@@ -514,6 +528,8 @@ impl MediaDevices {
     }
 }
 impl MediaDevices {
+    /// The setSupportedCaptureActions method.
+    /// [`MediaDevices.setSupportedCaptureActions`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/setSupportedCaptureActions)
     pub fn set_supported_capture_actions(&self, actions: &Sequence<String>) -> Undefined {
         self.inner
             .call("setSupportedCaptureActions", &[actions.into()])
@@ -521,15 +537,21 @@ impl MediaDevices {
     }
 }
 impl MediaDevices {
+    /// Getter of the `oncaptureaction` attribute.
+    /// [`MediaDevices.oncaptureaction`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/oncaptureaction)
     pub fn oncaptureaction(&self) -> Any {
         self.inner.get("oncaptureaction").as_::<Any>()
     }
 
+    /// Setter of the `oncaptureaction` attribute.
+    /// [`MediaDevices.oncaptureaction`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/oncaptureaction)
     pub fn set_oncaptureaction(&mut self, value: &Any) {
         self.inner.set("oncaptureaction", value);
     }
 }
 impl MediaDevices {
+    /// The getSupportedConstraints method.
+    /// [`MediaDevices.getSupportedConstraints`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getSupportedConstraints)
     pub fn get_supported_constraints(&self) -> MediaTrackSupportedConstraints {
         self.inner
             .call("getSupportedConstraints", &[])
@@ -537,10 +559,13 @@ impl MediaDevices {
     }
 }
 impl MediaDevices {
+    /// The getUserMedia method.
+    /// [`MediaDevices.getUserMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)
     pub fn get_user_media0(&self) -> Promise {
         self.inner.call("getUserMedia", &[]).as_::<Promise>()
     }
-
+    /// The getUserMedia method.
+    /// [`MediaDevices.getUserMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia)
     pub fn get_user_media1(&self, constraints: &MediaStreamConstraints) -> Promise {
         self.inner
             .call("getUserMedia", &[constraints.into()])
@@ -548,10 +573,13 @@ impl MediaDevices {
     }
 }
 impl MediaDevices {
+    /// The getViewportMedia method.
+    /// [`MediaDevices.getViewportMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getViewportMedia)
     pub fn get_viewport_media0(&self) -> Promise {
         self.inner.call("getViewportMedia", &[]).as_::<Promise>()
     }
-
+    /// The getViewportMedia method.
+    /// [`MediaDevices.getViewportMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getViewportMedia)
     pub fn get_viewport_media1(&self, options: &DisplayMediaStreamOptions) -> Promise {
         self.inner
             .call("getViewportMedia", &[options.into()])
@@ -559,10 +587,13 @@ impl MediaDevices {
     }
 }
 impl MediaDevices {
+    /// The getDisplayMedia method.
+    /// [`MediaDevices.getDisplayMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getDisplayMedia)
     pub fn get_display_media0(&self) -> Promise {
         self.inner.call("getDisplayMedia", &[]).as_::<Promise>()
     }
-
+    /// The getDisplayMedia method.
+    /// [`MediaDevices.getDisplayMedia`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getDisplayMedia)
     pub fn get_display_media1(&self, options: &DisplayMediaStreamOptions) -> Promise {
         self.inner
             .call("getDisplayMedia", &[options.into()])

@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CSSPseudoElement class.
+/// [`CSSPseudoElement`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSPseudoElement {
     inner: EventTarget,
 }
 impl FromVal for CSSPseudoElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSPseudoElement {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,46 +31,54 @@ impl core::ops::DerefMut for CSSPseudoElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSPseudoElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSPseudoElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSPseudoElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSPseudoElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSPseudoElement> for emlite::Val {
-    fn from(s: CSSPseudoElement) -> emlite::Val {
+impl From<CSSPseudoElement> for Any {
+    fn from(s: CSSPseudoElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSPseudoElement> for emlite::Val {
-    fn from(s: &CSSPseudoElement) -> emlite::Val {
+impl From<&CSSPseudoElement> for Any {
+    fn from(s: &CSSPseudoElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSPseudoElement);
 
 impl CSSPseudoElement {
+    /// Getter of the `type` attribute.
+    /// [`CSSPseudoElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/type)
     pub fn type_(&self) -> String {
         self.inner.get("type").as_::<String>()
     }
 }
 impl CSSPseudoElement {
+    /// Getter of the `element` attribute.
+    /// [`CSSPseudoElement.element`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/element)
     pub fn element(&self) -> Element {
         self.inner.get("element").as_::<Element>()
     }
 }
 impl CSSPseudoElement {
+    /// Getter of the `parent` attribute.
+    /// [`CSSPseudoElement.parent`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/parent)
     pub fn parent(&self) -> Any {
         self.inner.get("parent").as_::<Any>()
     }
 }
 impl CSSPseudoElement {
+    /// The pseudo method.
+    /// [`CSSPseudoElement.pseudo`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/pseudo)
     pub fn pseudo(&self, type_: &str) -> CSSPseudoElement {
         self.inner
             .call("pseudo", &[type_.into()])
@@ -76,12 +86,15 @@ impl CSSPseudoElement {
     }
 }
 impl CSSPseudoElement {
+    /// The getBoxQuads method.
+    /// [`CSSPseudoElement.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/getBoxQuads)
     pub fn get_box_quads0(&self) -> Sequence<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[])
             .as_::<Sequence<DOMQuad>>()
     }
-
+    /// The getBoxQuads method.
+    /// [`CSSPseudoElement.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/getBoxQuads)
     pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> Sequence<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[options.into()])
@@ -89,12 +102,15 @@ impl CSSPseudoElement {
     }
 }
 impl CSSPseudoElement {
+    /// The convertQuadFromNode method.
+    /// [`CSSPseudoElement.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/convertQuadFromNode)
     pub fn convert_quad_from_node0(&self, quad: &DOMQuadInit, from: &Any) -> DOMQuad {
         self.inner
             .call("convertQuadFromNode", &[quad.into(), from.into()])
             .as_::<DOMQuad>()
     }
-
+    /// The convertQuadFromNode method.
+    /// [`CSSPseudoElement.convertQuadFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/convertQuadFromNode)
     pub fn convert_quad_from_node1(
         &self,
         quad: &DOMQuadInit,
@@ -110,12 +126,15 @@ impl CSSPseudoElement {
     }
 }
 impl CSSPseudoElement {
+    /// The convertRectFromNode method.
+    /// [`CSSPseudoElement.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/convertRectFromNode)
     pub fn convert_rect_from_node0(&self, rect: &DOMRectReadOnly, from: &Any) -> DOMQuad {
         self.inner
             .call("convertRectFromNode", &[rect.into(), from.into()])
             .as_::<DOMQuad>()
     }
-
+    /// The convertRectFromNode method.
+    /// [`CSSPseudoElement.convertRectFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/convertRectFromNode)
     pub fn convert_rect_from_node1(
         &self,
         rect: &DOMRectReadOnly,
@@ -131,12 +150,15 @@ impl CSSPseudoElement {
     }
 }
 impl CSSPseudoElement {
+    /// The convertPointFromNode method.
+    /// [`CSSPseudoElement.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/convertPointFromNode)
     pub fn convert_point_from_node0(&self, point: &DOMPointInit, from: &Any) -> DOMPoint {
         self.inner
             .call("convertPointFromNode", &[point.into(), from.into()])
             .as_::<DOMPoint>()
     }
-
+    /// The convertPointFromNode method.
+    /// [`CSSPseudoElement.convertPointFromNode`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/convertPointFromNode)
     pub fn convert_point_from_node1(
         &self,
         point: &DOMPointInit,

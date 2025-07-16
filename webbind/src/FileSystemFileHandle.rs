@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileSystemCreateWritableOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for FileSystemCreateWritableOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         FileSystemCreateWritableOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for FileSystemCreateWritableOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for FileSystemCreateWritableOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for FileSystemCreateWritableOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for FileSystemCreateWritableOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for FileSystemCreateWritableOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for FileSystemCreateWritableOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<FileSystemCreateWritableOptions> for emlite::Val {
-    fn from(s: FileSystemCreateWritableOptions) -> emlite::Val {
+impl From<FileSystemCreateWritableOptions> for Any {
+    fn from(s: FileSystemCreateWritableOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&FileSystemCreateWritableOptions> for emlite::Val {
-    fn from(s: &FileSystemCreateWritableOptions) -> emlite::Val {
+impl From<&FileSystemCreateWritableOptions> for Any {
+    fn from(s: &FileSystemCreateWritableOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -59,21 +59,23 @@ impl FileSystemCreateWritableOptions {
         self.inner.set("keepExistingData", value);
     }
 }
+/// The FileSystemFileHandle class.
+/// [`FileSystemFileHandle`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileSystemFileHandle {
     inner: FileSystemHandle,
 }
 impl FromVal for FileSystemFileHandle {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         FileSystemFileHandle {
             inner: FileSystemHandle::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -88,40 +90,45 @@ impl core::ops::DerefMut for FileSystemFileHandle {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for FileSystemFileHandle {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for FileSystemFileHandle {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for FileSystemFileHandle {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for FileSystemFileHandle {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<FileSystemFileHandle> for emlite::Val {
-    fn from(s: FileSystemFileHandle) -> emlite::Val {
+impl From<FileSystemFileHandle> for Any {
+    fn from(s: FileSystemFileHandle) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&FileSystemFileHandle> for emlite::Val {
-    fn from(s: &FileSystemFileHandle) -> emlite::Val {
+impl From<&FileSystemFileHandle> for Any {
+    fn from(s: &FileSystemFileHandle) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(FileSystemFileHandle);
 
 impl FileSystemFileHandle {
+    /// The getFile method.
+    /// [`FileSystemFileHandle.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle/getFile)
     pub fn get_file(&self) -> Promise {
         self.inner.call("getFile", &[]).as_::<Promise>()
     }
 }
 impl FileSystemFileHandle {
+    /// The createWritable method.
+    /// [`FileSystemFileHandle.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle/createWritable)
     pub fn create_writable0(&self) -> Promise {
         self.inner.call("createWritable", &[]).as_::<Promise>()
     }
-
+    /// The createWritable method.
+    /// [`FileSystemFileHandle.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle/createWritable)
     pub fn create_writable1(&self, options: &FileSystemCreateWritableOptions) -> Promise {
         self.inner
             .call("createWritable", &[options.into()])
@@ -129,6 +136,8 @@ impl FileSystemFileHandle {
     }
 }
 impl FileSystemFileHandle {
+    /// The createSyncAccessHandle method.
+    /// [`FileSystemFileHandle.createSyncAccessHandle`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle/createSyncAccessHandle)
     pub fn create_sync_access_handle(&self) -> Promise {
         self.inner
             .call("createSyncAccessHandle", &[])

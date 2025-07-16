@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileSystemHandlePermissionDescriptor {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for FileSystemHandlePermissionDescriptor {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         FileSystemHandlePermissionDescriptor { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for FileSystemHandlePermissionDescriptor {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for FileSystemHandlePermissionDescriptor {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for FileSystemHandlePermissionDescriptor {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for FileSystemHandlePermissionDescriptor {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for FileSystemHandlePermissionDescriptor {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for FileSystemHandlePermissionDescriptor {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<FileSystemHandlePermissionDescriptor> for emlite::Val {
-    fn from(s: FileSystemHandlePermissionDescriptor) -> emlite::Val {
+impl From<FileSystemHandlePermissionDescriptor> for Any {
+    fn from(s: FileSystemHandlePermissionDescriptor) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&FileSystemHandlePermissionDescriptor> for emlite::Val {
-    fn from(s: &FileSystemHandlePermissionDescriptor) -> emlite::Val {
+impl From<&FileSystemHandlePermissionDescriptor> for Any {
+    fn from(s: &FileSystemHandlePermissionDescriptor) -> Any {
         s.inner.clone()
     }
 }
@@ -59,26 +59,28 @@ impl FileSystemHandlePermissionDescriptor {
         self.inner.set("mode", value);
     }
 }
+/// The FileSystemHandle class.
+/// [`FileSystemHandle`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileSystemHandle {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for FileSystemHandle {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         FileSystemHandle {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for FileSystemHandle {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -88,41 +90,47 @@ impl core::ops::DerefMut for FileSystemHandle {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for FileSystemHandle {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for FileSystemHandle {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for FileSystemHandle {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for FileSystemHandle {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<FileSystemHandle> for emlite::Val {
-    fn from(s: FileSystemHandle) -> emlite::Val {
+impl From<FileSystemHandle> for Any {
+    fn from(s: FileSystemHandle) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&FileSystemHandle> for emlite::Val {
-    fn from(s: &FileSystemHandle) -> emlite::Val {
+impl From<&FileSystemHandle> for Any {
+    fn from(s: &FileSystemHandle) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(FileSystemHandle);
 
 impl FileSystemHandle {
+    /// Getter of the `kind` attribute.
+    /// [`FileSystemHandle.kind`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/kind)
     pub fn kind(&self) -> FileSystemHandleKind {
         self.inner.get("kind").as_::<FileSystemHandleKind>()
     }
 }
 impl FileSystemHandle {
+    /// Getter of the `name` attribute.
+    /// [`FileSystemHandle.name`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 }
 impl FileSystemHandle {
+    /// The isSameEntry method.
+    /// [`FileSystemHandle.isSameEntry`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/isSameEntry)
     pub fn is_same_entry(&self, other: &FileSystemHandle) -> Promise {
         self.inner
             .call("isSameEntry", &[other.into()])
@@ -130,10 +138,13 @@ impl FileSystemHandle {
     }
 }
 impl FileSystemHandle {
+    /// The queryPermission method.
+    /// [`FileSystemHandle.queryPermission`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/queryPermission)
     pub fn query_permission0(&self) -> Promise {
         self.inner.call("queryPermission", &[]).as_::<Promise>()
     }
-
+    /// The queryPermission method.
+    /// [`FileSystemHandle.queryPermission`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/queryPermission)
     pub fn query_permission1(&self, descriptor: &FileSystemHandlePermissionDescriptor) -> Promise {
         self.inner
             .call("queryPermission", &[descriptor.into()])
@@ -141,10 +152,13 @@ impl FileSystemHandle {
     }
 }
 impl FileSystemHandle {
+    /// The requestPermission method.
+    /// [`FileSystemHandle.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/requestPermission)
     pub fn request_permission0(&self) -> Promise {
         self.inner.call("requestPermission", &[]).as_::<Promise>()
     }
-
+    /// The requestPermission method.
+    /// [`FileSystemHandle.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/requestPermission)
     pub fn request_permission1(
         &self,
         descriptor: &FileSystemHandlePermissionDescriptor,

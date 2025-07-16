@@ -1,20 +1,22 @@
 use super::*;
 
+/// The MediaKeySession class.
+/// [`MediaKeySession`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaKeySession {
     inner: EventTarget,
 }
 impl FromVal for MediaKeySession {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaKeySession {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,69 +31,87 @@ impl core::ops::DerefMut for MediaKeySession {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaKeySession {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaKeySession {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaKeySession {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaKeySession {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaKeySession> for emlite::Val {
-    fn from(s: MediaKeySession) -> emlite::Val {
+impl From<MediaKeySession> for Any {
+    fn from(s: MediaKeySession) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaKeySession> for emlite::Val {
-    fn from(s: &MediaKeySession) -> emlite::Val {
+impl From<&MediaKeySession> for Any {
+    fn from(s: &MediaKeySession) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaKeySession);
 
 impl MediaKeySession {
+    /// Getter of the `sessionId` attribute.
+    /// [`MediaKeySession.sessionId`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/sessionId)
     pub fn session_id(&self) -> String {
         self.inner.get("sessionId").as_::<String>()
     }
 }
 impl MediaKeySession {
+    /// Getter of the `expiration` attribute.
+    /// [`MediaKeySession.expiration`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/expiration)
     pub fn expiration(&self) -> f64 {
         self.inner.get("expiration").as_::<f64>()
     }
 }
 impl MediaKeySession {
+    /// Getter of the `closed` attribute.
+    /// [`MediaKeySession.closed`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/closed)
     pub fn closed(&self) -> Promise {
         self.inner.get("closed").as_::<Promise>()
     }
 }
 impl MediaKeySession {
+    /// Getter of the `keyStatuses` attribute.
+    /// [`MediaKeySession.keyStatuses`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/keyStatuses)
     pub fn key_statuses(&self) -> MediaKeyStatusMap {
         self.inner.get("keyStatuses").as_::<MediaKeyStatusMap>()
     }
 }
 impl MediaKeySession {
+    /// Getter of the `onkeystatuseschange` attribute.
+    /// [`MediaKeySession.onkeystatuseschange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/onkeystatuseschange)
     pub fn onkeystatuseschange(&self) -> Any {
         self.inner.get("onkeystatuseschange").as_::<Any>()
     }
 
+    /// Setter of the `onkeystatuseschange` attribute.
+    /// [`MediaKeySession.onkeystatuseschange`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/onkeystatuseschange)
     pub fn set_onkeystatuseschange(&mut self, value: &Any) {
         self.inner.set("onkeystatuseschange", value);
     }
 }
 impl MediaKeySession {
+    /// Getter of the `onmessage` attribute.
+    /// [`MediaKeySession.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/onmessage)
     pub fn onmessage(&self) -> Any {
         self.inner.get("onmessage").as_::<Any>()
     }
 
+    /// Setter of the `onmessage` attribute.
+    /// [`MediaKeySession.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/onmessage)
     pub fn set_onmessage(&mut self, value: &Any) {
         self.inner.set("onmessage", value);
     }
 }
 impl MediaKeySession {
+    /// The generateRequest method.
+    /// [`MediaKeySession.generateRequest`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/generateRequest)
     pub fn generate_request(&self, init_data_type: &str, init_data: &Any) -> Promise {
         self.inner
             .call(
@@ -102,6 +122,8 @@ impl MediaKeySession {
     }
 }
 impl MediaKeySession {
+    /// The load method.
+    /// [`MediaKeySession.load`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/load)
     pub fn load(&self, session_id: &str) -> Promise {
         self.inner
             .call("load", &[session_id.into()])
@@ -109,6 +131,8 @@ impl MediaKeySession {
     }
 }
 impl MediaKeySession {
+    /// The update method.
+    /// [`MediaKeySession.update`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/update)
     pub fn update(&self, response: &Any) -> Promise {
         self.inner
             .call("update", &[response.into()])
@@ -116,11 +140,15 @@ impl MediaKeySession {
     }
 }
 impl MediaKeySession {
+    /// The close method.
+    /// [`MediaKeySession.close`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/close)
     pub fn close(&self) -> Promise {
         self.inner.call("close", &[]).as_::<Promise>()
     }
 }
 impl MediaKeySession {
+    /// The remove method.
+    /// [`MediaKeySession.remove`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/remove)
     pub fn remove(&self) -> Promise {
         self.inner.call("remove", &[]).as_::<Promise>()
     }

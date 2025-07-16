@@ -1,25 +1,27 @@
 use super::*;
 
+/// The FragmentResult class.
+/// [`FragmentResult`](https://developer.mozilla.org/en-US/docs/Web/API/FragmentResult)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FragmentResult {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for FragmentResult {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         FragmentResult {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for FragmentResult {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,53 +31,57 @@ impl core::ops::DerefMut for FragmentResult {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for FragmentResult {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for FragmentResult {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for FragmentResult {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for FragmentResult {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<FragmentResult> for emlite::Val {
-    fn from(s: FragmentResult) -> emlite::Val {
+impl From<FragmentResult> for Any {
+    fn from(s: FragmentResult) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&FragmentResult> for emlite::Val {
-    fn from(s: &FragmentResult) -> emlite::Val {
+impl From<&FragmentResult> for Any {
+    fn from(s: &FragmentResult) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(FragmentResult);
 
 impl FragmentResult {
+    /// The `new FragmentResult(..)` constructor, creating a new FragmentResult instance
     pub fn new0() -> FragmentResult {
         Self {
-            inner: emlite::Val::global("FragmentResult")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("FragmentResult").new(&[]).as_::<Any>(),
         }
     }
 
+    /// The `new FragmentResult(..)` constructor, creating a new FragmentResult instance
     pub fn new1(options: &Any) -> FragmentResult {
         Self {
-            inner: emlite::Val::global("FragmentResult")
+            inner: Any::global("FragmentResult")
                 .new(&[options.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl FragmentResult {
+    /// Getter of the `inlineSize` attribute.
+    /// [`FragmentResult.inlineSize`](https://developer.mozilla.org/en-US/docs/Web/API/FragmentResult/inlineSize)
     pub fn inline_size(&self) -> f64 {
         self.inner.get("inlineSize").as_::<f64>()
     }
 }
 impl FragmentResult {
+    /// Getter of the `blockSize` attribute.
+    /// [`FragmentResult.blockSize`](https://developer.mozilla.org/en-US/docs/Web/API/FragmentResult/blockSize)
     pub fn block_size(&self) -> f64 {
         self.inner.get("blockSize").as_::<f64>()
     }

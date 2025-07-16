@@ -1,25 +1,27 @@
 use super::*;
 
+/// The ImageTrackList class.
+/// [`ImageTrackList`](https://developer.mozilla.org/en-US/docs/Web/API/ImageTrackList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ImageTrackList {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ImageTrackList {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ImageTrackList {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ImageTrackList {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,46 +31,54 @@ impl core::ops::DerefMut for ImageTrackList {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ImageTrackList {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ImageTrackList {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ImageTrackList {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ImageTrackList {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ImageTrackList> for emlite::Val {
-    fn from(s: ImageTrackList) -> emlite::Val {
+impl From<ImageTrackList> for Any {
+    fn from(s: ImageTrackList) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ImageTrackList> for emlite::Val {
-    fn from(s: &ImageTrackList) -> emlite::Val {
+impl From<&ImageTrackList> for Any {
+    fn from(s: &ImageTrackList) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ImageTrackList);
 
 impl ImageTrackList {
+    /// Getter of the `ready` attribute.
+    /// [`ImageTrackList.ready`](https://developer.mozilla.org/en-US/docs/Web/API/ImageTrackList/ready)
     pub fn ready(&self) -> Promise {
         self.inner.get("ready").as_::<Promise>()
     }
 }
 impl ImageTrackList {
+    /// Getter of the `length` attribute.
+    /// [`ImageTrackList.length`](https://developer.mozilla.org/en-US/docs/Web/API/ImageTrackList/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
 }
 impl ImageTrackList {
+    /// Getter of the `selectedIndex` attribute.
+    /// [`ImageTrackList.selectedIndex`](https://developer.mozilla.org/en-US/docs/Web/API/ImageTrackList/selectedIndex)
     pub fn selected_index(&self) -> i32 {
         self.inner.get("selectedIndex").as_::<i32>()
     }
 }
 impl ImageTrackList {
+    /// Getter of the `selectedTrack` attribute.
+    /// [`ImageTrackList.selectedTrack`](https://developer.mozilla.org/en-US/docs/Web/API/ImageTrackList/selectedTrack)
     pub fn selected_track(&self) -> ImageTrack {
         self.inner.get("selectedTrack").as_::<ImageTrack>()
     }

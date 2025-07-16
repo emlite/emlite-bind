@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRMediaQuadLayerInit {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XRMediaQuadLayerInit {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRMediaQuadLayerInit { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XRMediaQuadLayerInit {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for XRMediaQuadLayerInit {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRMediaQuadLayerInit {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRMediaQuadLayerInit {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRMediaQuadLayerInit {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRMediaQuadLayerInit {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRMediaQuadLayerInit> for emlite::Val {
-    fn from(s: XRMediaQuadLayerInit) -> emlite::Val {
+impl From<XRMediaQuadLayerInit> for Any {
+    fn from(s: XRMediaQuadLayerInit) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRMediaQuadLayerInit> for emlite::Val {
-    fn from(s: &XRMediaQuadLayerInit) -> emlite::Val {
+impl From<&XRMediaQuadLayerInit> for Any {
+    fn from(s: &XRMediaQuadLayerInit) -> Any {
         s.inner.clone()
     }
 }
@@ -80,21 +80,21 @@ impl XRMediaQuadLayerInit {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRMediaCylinderLayerInit {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XRMediaCylinderLayerInit {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRMediaCylinderLayerInit { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XRMediaCylinderLayerInit {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -104,25 +104,25 @@ impl core::ops::DerefMut for XRMediaCylinderLayerInit {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRMediaCylinderLayerInit {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRMediaCylinderLayerInit {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRMediaCylinderLayerInit {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRMediaCylinderLayerInit {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRMediaCylinderLayerInit> for emlite::Val {
-    fn from(s: XRMediaCylinderLayerInit) -> emlite::Val {
+impl From<XRMediaCylinderLayerInit> for Any {
+    fn from(s: XRMediaCylinderLayerInit) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRMediaCylinderLayerInit> for emlite::Val {
-    fn from(s: &XRMediaCylinderLayerInit) -> emlite::Val {
+impl From<&XRMediaCylinderLayerInit> for Any {
+    fn from(s: &XRMediaCylinderLayerInit) -> Any {
         s.inner.clone()
     }
 }
@@ -166,21 +166,21 @@ impl XRMediaCylinderLayerInit {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRMediaEquirectLayerInit {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XRMediaEquirectLayerInit {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRMediaEquirectLayerInit { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XRMediaEquirectLayerInit {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -190,25 +190,25 @@ impl core::ops::DerefMut for XRMediaEquirectLayerInit {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRMediaEquirectLayerInit {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRMediaEquirectLayerInit {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRMediaEquirectLayerInit {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRMediaEquirectLayerInit {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRMediaEquirectLayerInit> for emlite::Val {
-    fn from(s: XRMediaEquirectLayerInit) -> emlite::Val {
+impl From<XRMediaEquirectLayerInit> for Any {
+    fn from(s: XRMediaEquirectLayerInit) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRMediaEquirectLayerInit> for emlite::Val {
-    fn from(s: &XRMediaEquirectLayerInit) -> emlite::Val {
+impl From<&XRMediaEquirectLayerInit> for Any {
+    fn from(s: &XRMediaEquirectLayerInit) -> Any {
         s.inner.clone()
     }
 }
@@ -258,26 +258,28 @@ impl XRMediaEquirectLayerInit {
         self.inner.set("lowerVerticalAngle", value);
     }
 }
+/// The XRMediaBinding class.
+/// [`XRMediaBinding`](https://developer.mozilla.org/en-US/docs/Web/API/XRMediaBinding)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRMediaBinding {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XRMediaBinding {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRMediaBinding {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XRMediaBinding {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -287,46 +289,50 @@ impl core::ops::DerefMut for XRMediaBinding {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRMediaBinding {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRMediaBinding {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRMediaBinding {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRMediaBinding {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRMediaBinding> for emlite::Val {
-    fn from(s: XRMediaBinding) -> emlite::Val {
+impl From<XRMediaBinding> for Any {
+    fn from(s: XRMediaBinding) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRMediaBinding> for emlite::Val {
-    fn from(s: &XRMediaBinding) -> emlite::Val {
+impl From<&XRMediaBinding> for Any {
+    fn from(s: &XRMediaBinding) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(XRMediaBinding);
 
 impl XRMediaBinding {
+    /// The `new XRMediaBinding(..)` constructor, creating a new XRMediaBinding instance
     pub fn new(session: &XRSession) -> XRMediaBinding {
         Self {
-            inner: emlite::Val::global("XRMediaBinding")
+            inner: Any::global("XRMediaBinding")
                 .new(&[session.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl XRMediaBinding {
+    /// The createQuadLayer method.
+    /// [`XRMediaBinding.createQuadLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRMediaBinding/createQuadLayer)
     pub fn create_quad_layer0(&self, video: &HTMLVideoElement) -> XRQuadLayer {
         self.inner
             .call("createQuadLayer", &[video.into()])
             .as_::<XRQuadLayer>()
     }
-
+    /// The createQuadLayer method.
+    /// [`XRMediaBinding.createQuadLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRMediaBinding/createQuadLayer)
     pub fn create_quad_layer1(
         &self,
         video: &HTMLVideoElement,
@@ -338,12 +344,15 @@ impl XRMediaBinding {
     }
 }
 impl XRMediaBinding {
+    /// The createCylinderLayer method.
+    /// [`XRMediaBinding.createCylinderLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRMediaBinding/createCylinderLayer)
     pub fn create_cylinder_layer0(&self, video: &HTMLVideoElement) -> XRCylinderLayer {
         self.inner
             .call("createCylinderLayer", &[video.into()])
             .as_::<XRCylinderLayer>()
     }
-
+    /// The createCylinderLayer method.
+    /// [`XRMediaBinding.createCylinderLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRMediaBinding/createCylinderLayer)
     pub fn create_cylinder_layer1(
         &self,
         video: &HTMLVideoElement,
@@ -355,12 +364,15 @@ impl XRMediaBinding {
     }
 }
 impl XRMediaBinding {
+    /// The createEquirectLayer method.
+    /// [`XRMediaBinding.createEquirectLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRMediaBinding/createEquirectLayer)
     pub fn create_equirect_layer0(&self, video: &HTMLVideoElement) -> XREquirectLayer {
         self.inner
             .call("createEquirectLayer", &[video.into()])
             .as_::<XREquirectLayer>()
     }
-
+    /// The createEquirectLayer method.
+    /// [`XRMediaBinding.createEquirectLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRMediaBinding/createEquirectLayer)
     pub fn create_equirect_layer1(
         &self,
         video: &HTMLVideoElement,

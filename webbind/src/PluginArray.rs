@@ -1,25 +1,27 @@
 use super::*;
 
+/// The PluginArray class.
+/// [`PluginArray`](https://developer.mozilla.org/en-US/docs/Web/API/PluginArray)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PluginArray {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PluginArray {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PluginArray {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PluginArray {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,46 +31,54 @@ impl core::ops::DerefMut for PluginArray {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PluginArray {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PluginArray {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PluginArray {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PluginArray {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PluginArray> for emlite::Val {
-    fn from(s: PluginArray) -> emlite::Val {
+impl From<PluginArray> for Any {
+    fn from(s: PluginArray) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PluginArray> for emlite::Val {
-    fn from(s: &PluginArray) -> emlite::Val {
+impl From<&PluginArray> for Any {
+    fn from(s: &PluginArray) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PluginArray);
 
 impl PluginArray {
+    /// The refresh method.
+    /// [`PluginArray.refresh`](https://developer.mozilla.org/en-US/docs/Web/API/PluginArray/refresh)
     pub fn refresh(&self) -> Undefined {
         self.inner.call("refresh", &[]).as_::<Undefined>()
     }
 }
 impl PluginArray {
+    /// Getter of the `length` attribute.
+    /// [`PluginArray.length`](https://developer.mozilla.org/en-US/docs/Web/API/PluginArray/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
 }
 impl PluginArray {
+    /// The item method.
+    /// [`PluginArray.item`](https://developer.mozilla.org/en-US/docs/Web/API/PluginArray/item)
     pub fn item(&self, index: u32) -> Plugin {
         self.inner.call("item", &[index.into()]).as_::<Plugin>()
     }
 }
 impl PluginArray {
+    /// The namedItem method.
+    /// [`PluginArray.namedItem`](https://developer.mozilla.org/en-US/docs/Web/API/PluginArray/namedItem)
     pub fn named_item(&self, name: &str) -> Plugin {
         self.inner.call("namedItem", &[name.into()]).as_::<Plugin>()
     }

@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaPositionState {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaPositionState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaPositionState { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaPositionState {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for MediaPositionState {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaPositionState {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaPositionState {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaPositionState {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaPositionState {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaPositionState> for emlite::Val {
-    fn from(s: MediaPositionState) -> emlite::Val {
+impl From<MediaPositionState> for Any {
+    fn from(s: MediaPositionState) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaPositionState> for emlite::Val {
-    fn from(s: &MediaPositionState) -> emlite::Val {
+impl From<&MediaPositionState> for Any {
+    fn from(s: &MediaPositionState) -> Any {
         s.inner.clone()
     }
 }
@@ -77,26 +77,28 @@ impl MediaPositionState {
         self.inner.set("position", value);
     }
 }
+/// The MediaSession class.
+/// [`MediaSession`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaSession {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaSession {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaSession {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaSession {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -106,51 +108,61 @@ impl core::ops::DerefMut for MediaSession {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaSession {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaSession {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaSession {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaSession {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaSession> for emlite::Val {
-    fn from(s: MediaSession) -> emlite::Val {
+impl From<MediaSession> for Any {
+    fn from(s: MediaSession) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaSession> for emlite::Val {
-    fn from(s: &MediaSession) -> emlite::Val {
+impl From<&MediaSession> for Any {
+    fn from(s: &MediaSession) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaSession);
 
 impl MediaSession {
+    /// Getter of the `metadata` attribute.
+    /// [`MediaSession.metadata`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/metadata)
     pub fn metadata(&self) -> MediaMetadata {
         self.inner.get("metadata").as_::<MediaMetadata>()
     }
 
+    /// Setter of the `metadata` attribute.
+    /// [`MediaSession.metadata`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/metadata)
     pub fn set_metadata(&mut self, value: &MediaMetadata) {
         self.inner.set("metadata", value);
     }
 }
 impl MediaSession {
+    /// Getter of the `playbackState` attribute.
+    /// [`MediaSession.playbackState`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/playbackState)
     pub fn playback_state(&self) -> MediaSessionPlaybackState {
         self.inner
             .get("playbackState")
             .as_::<MediaSessionPlaybackState>()
     }
 
+    /// Setter of the `playbackState` attribute.
+    /// [`MediaSession.playbackState`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/playbackState)
     pub fn set_playback_state(&mut self, value: &MediaSessionPlaybackState) {
         self.inner.set("playbackState", value);
     }
 }
 impl MediaSession {
+    /// The setActionHandler method.
+    /// [`MediaSession.setActionHandler`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/setActionHandler)
     pub fn set_action_handler(&self, action: &MediaSessionAction, handler: &Function) -> Undefined {
         self.inner
             .call("setActionHandler", &[action.into(), handler.into()])
@@ -158,10 +170,13 @@ impl MediaSession {
     }
 }
 impl MediaSession {
+    /// The setPositionState method.
+    /// [`MediaSession.setPositionState`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/setPositionState)
     pub fn set_position_state0(&self) -> Undefined {
         self.inner.call("setPositionState", &[]).as_::<Undefined>()
     }
-
+    /// The setPositionState method.
+    /// [`MediaSession.setPositionState`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/setPositionState)
     pub fn set_position_state1(&self, state: &MediaPositionState) -> Undefined {
         self.inner
             .call("setPositionState", &[state.into()])
@@ -169,6 +184,8 @@ impl MediaSession {
     }
 }
 impl MediaSession {
+    /// The setMicrophoneActive method.
+    /// [`MediaSession.setMicrophoneActive`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/setMicrophoneActive)
     pub fn set_microphone_active(&self, active: bool) -> Promise {
         self.inner
             .call("setMicrophoneActive", &[active.into()])
@@ -176,6 +193,8 @@ impl MediaSession {
     }
 }
 impl MediaSession {
+    /// The setCameraActive method.
+    /// [`MediaSession.setCameraActive`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/setCameraActive)
     pub fn set_camera_active(&self, active: bool) -> Promise {
         self.inner
             .call("setCameraActive", &[active.into()])
@@ -183,6 +202,8 @@ impl MediaSession {
     }
 }
 impl MediaSession {
+    /// The setScreenshareActive method.
+    /// [`MediaSession.setScreenshareActive`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/setScreenshareActive)
     pub fn set_screenshare_active(&self, active: bool) -> Promise {
         self.inner
             .call("setScreenshareActive", &[active.into()])

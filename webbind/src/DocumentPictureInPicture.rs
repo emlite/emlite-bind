@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DocumentPictureInPictureOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for DocumentPictureInPictureOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         DocumentPictureInPictureOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for DocumentPictureInPictureOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for DocumentPictureInPictureOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for DocumentPictureInPictureOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for DocumentPictureInPictureOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for DocumentPictureInPictureOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for DocumentPictureInPictureOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<DocumentPictureInPictureOptions> for emlite::Val {
-    fn from(s: DocumentPictureInPictureOptions) -> emlite::Val {
+impl From<DocumentPictureInPictureOptions> for Any {
+    fn from(s: DocumentPictureInPictureOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&DocumentPictureInPictureOptions> for emlite::Val {
-    fn from(s: &DocumentPictureInPictureOptions) -> emlite::Val {
+impl From<&DocumentPictureInPictureOptions> for Any {
+    fn from(s: &DocumentPictureInPictureOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -86,21 +86,23 @@ impl DocumentPictureInPictureOptions {
         self.inner.set("preferInitialWindowPlacement", value);
     }
 }
+/// The DocumentPictureInPicture class.
+/// [`DocumentPictureInPicture`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DocumentPictureInPicture {
     inner: EventTarget,
 }
 impl FromVal for DocumentPictureInPicture {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         DocumentPictureInPicture {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -115,35 +117,38 @@ impl core::ops::DerefMut for DocumentPictureInPicture {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for DocumentPictureInPicture {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for DocumentPictureInPicture {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for DocumentPictureInPicture {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for DocumentPictureInPicture {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<DocumentPictureInPicture> for emlite::Val {
-    fn from(s: DocumentPictureInPicture) -> emlite::Val {
+impl From<DocumentPictureInPicture> for Any {
+    fn from(s: DocumentPictureInPicture) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&DocumentPictureInPicture> for emlite::Val {
-    fn from(s: &DocumentPictureInPicture) -> emlite::Val {
+impl From<&DocumentPictureInPicture> for Any {
+    fn from(s: &DocumentPictureInPicture) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(DocumentPictureInPicture);
 
 impl DocumentPictureInPicture {
+    /// The requestWindow method.
+    /// [`DocumentPictureInPicture.requestWindow`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow)
     pub fn request_window0(&self) -> Promise {
         self.inner.call("requestWindow", &[]).as_::<Promise>()
     }
-
+    /// The requestWindow method.
+    /// [`DocumentPictureInPicture.requestWindow`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow)
     pub fn request_window1(&self, options: &DocumentPictureInPictureOptions) -> Promise {
         self.inner
             .call("requestWindow", &[options.into()])
@@ -151,15 +156,21 @@ impl DocumentPictureInPicture {
     }
 }
 impl DocumentPictureInPicture {
+    /// Getter of the `window` attribute.
+    /// [`DocumentPictureInPicture.window`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/window)
     pub fn window(&self) -> Window {
         self.inner.get("window").as_::<Window>()
     }
 }
 impl DocumentPictureInPicture {
+    /// Getter of the `onenter` attribute.
+    /// [`DocumentPictureInPicture.onenter`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/onenter)
     pub fn onenter(&self) -> Any {
         self.inner.get("onenter").as_::<Any>()
     }
 
+    /// Setter of the `onenter` attribute.
+    /// [`DocumentPictureInPicture.onenter`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/onenter)
     pub fn set_onenter(&mut self, value: &Any) {
         self.inner.set("onenter", value);
     }

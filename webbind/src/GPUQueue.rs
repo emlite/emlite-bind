@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUTexelCopyBufferLayout {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPUTexelCopyBufferLayout {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPUTexelCopyBufferLayout { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPUTexelCopyBufferLayout {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for GPUTexelCopyBufferLayout {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPUTexelCopyBufferLayout {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPUTexelCopyBufferLayout {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPUTexelCopyBufferLayout {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPUTexelCopyBufferLayout {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPUTexelCopyBufferLayout> for emlite::Val {
-    fn from(s: GPUTexelCopyBufferLayout) -> emlite::Val {
+impl From<GPUTexelCopyBufferLayout> for Any {
+    fn from(s: GPUTexelCopyBufferLayout) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPUTexelCopyBufferLayout> for emlite::Val {
-    fn from(s: &GPUTexelCopyBufferLayout) -> emlite::Val {
+impl From<&GPUTexelCopyBufferLayout> for Any {
+    fn from(s: &GPUTexelCopyBufferLayout) -> Any {
         s.inner.clone()
     }
 }
@@ -80,21 +80,21 @@ impl GPUTexelCopyBufferLayout {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUCopyExternalImageSourceInfo {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPUCopyExternalImageSourceInfo {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPUCopyExternalImageSourceInfo { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPUCopyExternalImageSourceInfo {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -104,25 +104,25 @@ impl core::ops::DerefMut for GPUCopyExternalImageSourceInfo {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPUCopyExternalImageSourceInfo {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPUCopyExternalImageSourceInfo {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPUCopyExternalImageSourceInfo {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPUCopyExternalImageSourceInfo {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPUCopyExternalImageSourceInfo> for emlite::Val {
-    fn from(s: GPUCopyExternalImageSourceInfo) -> emlite::Val {
+impl From<GPUCopyExternalImageSourceInfo> for Any {
+    fn from(s: GPUCopyExternalImageSourceInfo) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPUCopyExternalImageSourceInfo> for emlite::Val {
-    fn from(s: &GPUCopyExternalImageSourceInfo) -> emlite::Val {
+impl From<&GPUCopyExternalImageSourceInfo> for Any {
+    fn from(s: &GPUCopyExternalImageSourceInfo) -> Any {
         s.inner.clone()
     }
 }
@@ -157,21 +157,21 @@ impl GPUCopyExternalImageSourceInfo {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUCopyExternalImageDestInfo {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPUCopyExternalImageDestInfo {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPUCopyExternalImageDestInfo { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPUCopyExternalImageDestInfo {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -181,25 +181,25 @@ impl core::ops::DerefMut for GPUCopyExternalImageDestInfo {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPUCopyExternalImageDestInfo {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPUCopyExternalImageDestInfo {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPUCopyExternalImageDestInfo {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPUCopyExternalImageDestInfo {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPUCopyExternalImageDestInfo> for emlite::Val {
-    fn from(s: GPUCopyExternalImageDestInfo) -> emlite::Val {
+impl From<GPUCopyExternalImageDestInfo> for Any {
+    fn from(s: GPUCopyExternalImageDestInfo) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPUCopyExternalImageDestInfo> for emlite::Val {
-    fn from(s: &GPUCopyExternalImageDestInfo) -> emlite::Val {
+impl From<&GPUCopyExternalImageDestInfo> for Any {
+    fn from(s: &GPUCopyExternalImageDestInfo) -> Any {
         s.inner.clone()
     }
 }
@@ -222,26 +222,28 @@ impl GPUCopyExternalImageDestInfo {
         self.inner.set("premultipliedAlpha", value);
     }
 }
+/// The GPUQueue class.
+/// [`GPUQueue`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUQueue {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPUQueue {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPUQueue {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPUQueue {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -251,31 +253,33 @@ impl core::ops::DerefMut for GPUQueue {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPUQueue {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPUQueue {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPUQueue {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPUQueue {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPUQueue> for emlite::Val {
-    fn from(s: GPUQueue) -> emlite::Val {
+impl From<GPUQueue> for Any {
+    fn from(s: GPUQueue) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPUQueue> for emlite::Val {
-    fn from(s: &GPUQueue) -> emlite::Val {
+impl From<&GPUQueue> for Any {
+    fn from(s: &GPUQueue) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GPUQueue);
 
 impl GPUQueue {
+    /// The submit method.
+    /// [`GPUQueue.submit`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/submit)
     pub fn submit(&self, command_buffers: &Sequence<GPUCommandBuffer>) -> Undefined {
         self.inner
             .call("submit", &[command_buffers.into()])
@@ -283,11 +287,15 @@ impl GPUQueue {
     }
 }
 impl GPUQueue {
+    /// The onSubmittedWorkDone method.
+    /// [`GPUQueue.onSubmittedWorkDone`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/onSubmittedWorkDone)
     pub fn on_submitted_work_done(&self) -> Promise {
         self.inner.call("onSubmittedWorkDone", &[]).as_::<Promise>()
     }
 }
 impl GPUQueue {
+    /// The writeBuffer method.
+    /// [`GPUQueue.writeBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/writeBuffer)
     pub fn write_buffer0(&self, buffer: &GPUBuffer, buffer_offset: &Any, data: &Any) -> Undefined {
         self.inner
             .call(
@@ -296,7 +304,8 @@ impl GPUQueue {
             )
             .as_::<Undefined>()
     }
-
+    /// The writeBuffer method.
+    /// [`GPUQueue.writeBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/writeBuffer)
     pub fn write_buffer1(
         &self,
         buffer: &GPUBuffer,
@@ -316,7 +325,8 @@ impl GPUQueue {
             )
             .as_::<Undefined>()
     }
-
+    /// The writeBuffer method.
+    /// [`GPUQueue.writeBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/writeBuffer)
     pub fn write_buffer2(
         &self,
         buffer: &GPUBuffer,
@@ -340,6 +350,8 @@ impl GPUQueue {
     }
 }
 impl GPUQueue {
+    /// The writeTexture method.
+    /// [`GPUQueue.writeTexture`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/writeTexture)
     pub fn write_texture(
         &self,
         destination: &GPUTexelCopyTextureInfo,
@@ -361,6 +373,8 @@ impl GPUQueue {
     }
 }
 impl GPUQueue {
+    /// The copyExternalImageToTexture method.
+    /// [`GPUQueue.copyExternalImageToTexture`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/copyExternalImageToTexture)
     pub fn copy_external_image_to_texture(
         &self,
         source: &GPUCopyExternalImageSourceInfo,
@@ -376,10 +390,14 @@ impl GPUQueue {
     }
 }
 impl GPUQueue {
+    /// Getter of the `label` attribute.
+    /// [`GPUQueue.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/label)
     pub fn label(&self) -> String {
         self.inner.get("label").as_::<String>()
     }
 
+    /// Setter of the `label` attribute.
+    /// [`GPUQueue.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/label)
     pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }

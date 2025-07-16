@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaCapabilitiesDecodingInfo {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaCapabilitiesDecodingInfo {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaCapabilitiesDecodingInfo { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaCapabilitiesDecodingInfo {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for MediaCapabilitiesDecodingInfo {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaCapabilitiesDecodingInfo {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaCapabilitiesDecodingInfo {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaCapabilitiesDecodingInfo {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaCapabilitiesDecodingInfo {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaCapabilitiesDecodingInfo> for emlite::Val {
-    fn from(s: MediaCapabilitiesDecodingInfo) -> emlite::Val {
+impl From<MediaCapabilitiesDecodingInfo> for Any {
+    fn from(s: MediaCapabilitiesDecodingInfo) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaCapabilitiesDecodingInfo> for emlite::Val {
-    fn from(s: &MediaCapabilitiesDecodingInfo) -> emlite::Val {
+impl From<&MediaCapabilitiesDecodingInfo> for Any {
+    fn from(s: &MediaCapabilitiesDecodingInfo) -> Any {
         s.inner.clone()
     }
 }
@@ -75,21 +75,21 @@ impl MediaCapabilitiesDecodingInfo {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaDecodingConfiguration {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaDecodingConfiguration {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaDecodingConfiguration { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaDecodingConfiguration {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -99,25 +99,25 @@ impl core::ops::DerefMut for MediaDecodingConfiguration {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaDecodingConfiguration {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaDecodingConfiguration {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaDecodingConfiguration {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaDecodingConfiguration {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaDecodingConfiguration> for emlite::Val {
-    fn from(s: MediaDecodingConfiguration) -> emlite::Val {
+impl From<MediaDecodingConfiguration> for Any {
+    fn from(s: MediaDecodingConfiguration) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaDecodingConfiguration> for emlite::Val {
-    fn from(s: &MediaDecodingConfiguration) -> emlite::Val {
+impl From<&MediaDecodingConfiguration> for Any {
+    fn from(s: &MediaDecodingConfiguration) -> Any {
         s.inner.clone()
     }
 }
@@ -143,21 +143,21 @@ impl MediaDecodingConfiguration {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaCapabilitiesEncodingInfo {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaCapabilitiesEncodingInfo {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaCapabilitiesEncodingInfo { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaCapabilitiesEncodingInfo {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -167,25 +167,25 @@ impl core::ops::DerefMut for MediaCapabilitiesEncodingInfo {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaCapabilitiesEncodingInfo {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaCapabilitiesEncodingInfo {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaCapabilitiesEncodingInfo {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaCapabilitiesEncodingInfo {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaCapabilitiesEncodingInfo> for emlite::Val {
-    fn from(s: MediaCapabilitiesEncodingInfo) -> emlite::Val {
+impl From<MediaCapabilitiesEncodingInfo> for Any {
+    fn from(s: MediaCapabilitiesEncodingInfo) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaCapabilitiesEncodingInfo> for emlite::Val {
-    fn from(s: &MediaCapabilitiesEncodingInfo) -> emlite::Val {
+impl From<&MediaCapabilitiesEncodingInfo> for Any {
+    fn from(s: &MediaCapabilitiesEncodingInfo) -> Any {
         s.inner.clone()
     }
 }
@@ -204,21 +204,21 @@ impl MediaCapabilitiesEncodingInfo {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaEncodingConfiguration {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaEncodingConfiguration {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaEncodingConfiguration { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaEncodingConfiguration {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -228,25 +228,25 @@ impl core::ops::DerefMut for MediaEncodingConfiguration {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaEncodingConfiguration {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaEncodingConfiguration {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaEncodingConfiguration {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaEncodingConfiguration {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaEncodingConfiguration> for emlite::Val {
-    fn from(s: MediaEncodingConfiguration) -> emlite::Val {
+impl From<MediaEncodingConfiguration> for Any {
+    fn from(s: MediaEncodingConfiguration) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaEncodingConfiguration> for emlite::Val {
-    fn from(s: &MediaEncodingConfiguration) -> emlite::Val {
+impl From<&MediaEncodingConfiguration> for Any {
+    fn from(s: &MediaEncodingConfiguration) -> Any {
         s.inner.clone()
     }
 }
@@ -260,26 +260,28 @@ impl MediaEncodingConfiguration {
         self.inner.set("type", value);
     }
 }
+/// The MediaCapabilities class.
+/// [`MediaCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/MediaCapabilities)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaCapabilities {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaCapabilities {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaCapabilities {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaCapabilities {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -289,31 +291,33 @@ impl core::ops::DerefMut for MediaCapabilities {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaCapabilities {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaCapabilities {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaCapabilities {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaCapabilities {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaCapabilities> for emlite::Val {
-    fn from(s: MediaCapabilities) -> emlite::Val {
+impl From<MediaCapabilities> for Any {
+    fn from(s: MediaCapabilities) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaCapabilities> for emlite::Val {
-    fn from(s: &MediaCapabilities) -> emlite::Val {
+impl From<&MediaCapabilities> for Any {
+    fn from(s: &MediaCapabilities) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaCapabilities);
 
 impl MediaCapabilities {
+    /// The decodingInfo method.
+    /// [`MediaCapabilities.decodingInfo`](https://developer.mozilla.org/en-US/docs/Web/API/MediaCapabilities/decodingInfo)
     pub fn decoding_info(&self, configuration: &MediaDecodingConfiguration) -> Promise {
         self.inner
             .call("decodingInfo", &[configuration.into()])
@@ -321,6 +325,8 @@ impl MediaCapabilities {
     }
 }
 impl MediaCapabilities {
+    /// The encodingInfo method.
+    /// [`MediaCapabilities.encodingInfo`](https://developer.mozilla.org/en-US/docs/Web/API/MediaCapabilities/encodingInfo)
     pub fn encoding_info(&self, configuration: &MediaEncodingConfiguration) -> Promise {
         self.inner
             .call("encodingInfo", &[configuration.into()])

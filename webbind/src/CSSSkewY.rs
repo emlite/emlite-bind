@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CSSSkewY class.
+/// [`CSSSkewY`](https://developer.mozilla.org/en-US/docs/Web/API/CSSSkewY)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSSkewY {
     inner: CSSTransformComponent,
 }
 impl FromVal for CSSSkewY {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSSkewY {
             inner: CSSTransformComponent::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,44 +31,49 @@ impl core::ops::DerefMut for CSSSkewY {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSSkewY {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSSkewY {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSSkewY {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSSkewY {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSSkewY> for emlite::Val {
-    fn from(s: CSSSkewY) -> emlite::Val {
+impl From<CSSSkewY> for Any {
+    fn from(s: CSSSkewY) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSSkewY> for emlite::Val {
-    fn from(s: &CSSSkewY) -> emlite::Val {
+impl From<&CSSSkewY> for Any {
+    fn from(s: &CSSSkewY) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSSkewY);
 
 impl CSSSkewY {
+    /// The `new CSSSkewY(..)` constructor, creating a new CSSSkewY instance
     pub fn new(ay: &CSSNumericValue) -> CSSSkewY {
         Self {
-            inner: emlite::Val::global("CSSSkewY")
+            inner: Any::global("CSSSkewY")
                 .new(&[ay.into()])
                 .as_::<CSSTransformComponent>(),
         }
     }
 }
 impl CSSSkewY {
+    /// Getter of the `ay` attribute.
+    /// [`CSSSkewY.ay`](https://developer.mozilla.org/en-US/docs/Web/API/CSSSkewY/ay)
     pub fn ay(&self) -> CSSNumericValue {
         self.inner.get("ay").as_::<CSSNumericValue>()
     }
 
+    /// Setter of the `ay` attribute.
+    /// [`CSSSkewY.ay`](https://developer.mozilla.org/en-US/docs/Web/API/CSSSkewY/ay)
     pub fn set_ay(&mut self, value: &CSSNumericValue) {
         self.inner.set("ay", value);
     }

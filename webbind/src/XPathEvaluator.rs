@@ -1,25 +1,27 @@
 use super::*;
 
+/// The XPathEvaluator class.
+/// [`XPathEvaluator`](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XPathEvaluator {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XPathEvaluator {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XPathEvaluator {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XPathEvaluator {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,46 +31,48 @@ impl core::ops::DerefMut for XPathEvaluator {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XPathEvaluator {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XPathEvaluator {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XPathEvaluator {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XPathEvaluator {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XPathEvaluator> for emlite::Val {
-    fn from(s: XPathEvaluator) -> emlite::Val {
+impl From<XPathEvaluator> for Any {
+    fn from(s: XPathEvaluator) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XPathEvaluator> for emlite::Val {
-    fn from(s: &XPathEvaluator) -> emlite::Val {
+impl From<&XPathEvaluator> for Any {
+    fn from(s: &XPathEvaluator) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(XPathEvaluator);
 
 impl XPathEvaluator {
+    /// The `new XPathEvaluator(..)` constructor, creating a new XPathEvaluator instance
     pub fn new() -> XPathEvaluator {
         Self {
-            inner: emlite::Val::global("XPathEvaluator")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("XPathEvaluator").new(&[]).as_::<Any>(),
         }
     }
 }
 impl XPathEvaluator {
+    /// The createExpression method.
+    /// [`XPathEvaluator.createExpression`](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator/createExpression)
     pub fn create_expression0(&self, expression: &str) -> XPathExpression {
         self.inner
             .call("createExpression", &[expression.into()])
             .as_::<XPathExpression>()
     }
-
+    /// The createExpression method.
+    /// [`XPathEvaluator.createExpression`](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator/createExpression)
     pub fn create_expression1(&self, expression: &str, resolver: &Function) -> XPathExpression {
         self.inner
             .call("createExpression", &[expression.into(), resolver.into()])
@@ -76,6 +80,8 @@ impl XPathEvaluator {
     }
 }
 impl XPathEvaluator {
+    /// The createNSResolver method.
+    /// [`XPathEvaluator.createNSResolver`](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator/createNSResolver)
     pub fn create_ns_resolver(&self, node_resolver: &Node) -> Node {
         self.inner
             .call("createNSResolver", &[node_resolver.into()])
@@ -83,12 +89,15 @@ impl XPathEvaluator {
     }
 }
 impl XPathEvaluator {
+    /// The evaluate method.
+    /// [`XPathEvaluator.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator/evaluate)
     pub fn evaluate0(&self, expression: &str, context_node: &Node) -> XPathResult {
         self.inner
             .call("evaluate", &[expression.into(), context_node.into()])
             .as_::<XPathResult>()
     }
-
+    /// The evaluate method.
+    /// [`XPathEvaluator.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator/evaluate)
     pub fn evaluate1(
         &self,
         expression: &str,
@@ -102,7 +111,8 @@ impl XPathEvaluator {
             )
             .as_::<XPathResult>()
     }
-
+    /// The evaluate method.
+    /// [`XPathEvaluator.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator/evaluate)
     pub fn evaluate2(
         &self,
         expression: &str,
@@ -122,7 +132,8 @@ impl XPathEvaluator {
             )
             .as_::<XPathResult>()
     }
-
+    /// The evaluate method.
+    /// [`XPathEvaluator.evaluate`](https://developer.mozilla.org/en-US/docs/Web/API/XPathEvaluator/evaluate)
     pub fn evaluate3(
         &self,
         expression: &str,

@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PhotoSettings {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PhotoSettings {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PhotoSettings { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PhotoSettings {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for PhotoSettings {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PhotoSettings {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PhotoSettings {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PhotoSettings {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PhotoSettings {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PhotoSettings> for emlite::Val {
-    fn from(s: PhotoSettings) -> emlite::Val {
+impl From<PhotoSettings> for Any {
+    fn from(s: PhotoSettings) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PhotoSettings> for emlite::Val {
-    fn from(s: &PhotoSettings) -> emlite::Val {
+impl From<&PhotoSettings> for Any {
+    fn from(s: &PhotoSettings) -> Any {
         s.inner.clone()
     }
 }
@@ -89,21 +89,21 @@ impl PhotoSettings {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PhotoCapabilities {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PhotoCapabilities {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PhotoCapabilities { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PhotoCapabilities {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -113,25 +113,25 @@ impl core::ops::DerefMut for PhotoCapabilities {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PhotoCapabilities {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PhotoCapabilities {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PhotoCapabilities {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PhotoCapabilities {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PhotoCapabilities> for emlite::Val {
-    fn from(s: PhotoCapabilities) -> emlite::Val {
+impl From<PhotoCapabilities> for Any {
+    fn from(s: PhotoCapabilities) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PhotoCapabilities> for emlite::Val {
-    fn from(s: &PhotoCapabilities) -> emlite::Val {
+impl From<&PhotoCapabilities> for Any {
+    fn from(s: &PhotoCapabilities) -> Any {
         s.inner.clone()
     }
 }
@@ -174,26 +174,28 @@ impl PhotoCapabilities {
         self.inner.set("fillLightMode", value);
     }
 }
+/// The ImageCapture class.
+/// [`ImageCapture`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ImageCapture {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ImageCapture {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ImageCapture {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ImageCapture {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -203,44 +205,48 @@ impl core::ops::DerefMut for ImageCapture {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ImageCapture {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ImageCapture {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ImageCapture {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ImageCapture {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ImageCapture> for emlite::Val {
-    fn from(s: ImageCapture) -> emlite::Val {
+impl From<ImageCapture> for Any {
+    fn from(s: ImageCapture) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ImageCapture> for emlite::Val {
-    fn from(s: &ImageCapture) -> emlite::Val {
+impl From<&ImageCapture> for Any {
+    fn from(s: &ImageCapture) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ImageCapture);
 
 impl ImageCapture {
+    /// The `new ImageCapture(..)` constructor, creating a new ImageCapture instance
     pub fn new(video_track: &MediaStreamTrack) -> ImageCapture {
         Self {
-            inner: emlite::Val::global("ImageCapture")
+            inner: Any::global("ImageCapture")
                 .new(&[video_track.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl ImageCapture {
+    /// The takePhoto method.
+    /// [`ImageCapture.takePhoto`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/takePhoto)
     pub fn take_photo0(&self) -> Promise {
         self.inner.call("takePhoto", &[]).as_::<Promise>()
     }
-
+    /// The takePhoto method.
+    /// [`ImageCapture.takePhoto`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/takePhoto)
     pub fn take_photo1(&self, photo_settings: &PhotoSettings) -> Promise {
         self.inner
             .call("takePhoto", &[photo_settings.into()])
@@ -248,6 +254,8 @@ impl ImageCapture {
     }
 }
 impl ImageCapture {
+    /// The getPhotoCapabilities method.
+    /// [`ImageCapture.getPhotoCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/getPhotoCapabilities)
     pub fn get_photo_capabilities(&self) -> Promise {
         self.inner
             .call("getPhotoCapabilities", &[])
@@ -255,16 +263,22 @@ impl ImageCapture {
     }
 }
 impl ImageCapture {
+    /// The getPhotoSettings method.
+    /// [`ImageCapture.getPhotoSettings`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/getPhotoSettings)
     pub fn get_photo_settings(&self) -> Promise {
         self.inner.call("getPhotoSettings", &[]).as_::<Promise>()
     }
 }
 impl ImageCapture {
+    /// The grabFrame method.
+    /// [`ImageCapture.grabFrame`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/grabFrame)
     pub fn grab_frame(&self) -> Promise {
         self.inner.call("grabFrame", &[]).as_::<Promise>()
     }
 }
 impl ImageCapture {
+    /// Getter of the `track` attribute.
+    /// [`ImageCapture.track`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/track)
     pub fn track(&self) -> MediaStreamTrack {
         self.inner.get("track").as_::<MediaStreamTrack>()
     }

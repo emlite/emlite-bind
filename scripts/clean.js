@@ -13,12 +13,12 @@ async function* walk(dir) {
 
 export async function clean() {
   const targetDirs = [OUT_SRC];
-    console.log(OUT_SRC);
+  console.log(OUT_SRC);
   for (let dir of targetDirs) {
     for await (const file of walk(dir)) {
       if (IGNOREDFILES.has(path.basename(file))) continue;
       await fs.writeFile(file, "use super::*;\n\n", "utf8");
-    //   console.log(`Trimmed ${path.relative(dir, file)}`);
+      //   console.log(`Trimmed ${path.relative(dir, file)}`);
     }
   }
 }

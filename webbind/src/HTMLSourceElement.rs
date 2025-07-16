@@ -1,20 +1,22 @@
 use super::*;
 
+/// The HTMLSourceElement class.
+/// [`HTMLSourceElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLSourceElement {
     inner: HTMLElement,
 }
 impl FromVal for HTMLSourceElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HTMLSourceElement {
             inner: HTMLElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,98 +31,127 @@ impl core::ops::DerefMut for HTMLSourceElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HTMLSourceElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HTMLSourceElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HTMLSourceElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HTMLSourceElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HTMLSourceElement> for emlite::Val {
-    fn from(s: HTMLSourceElement) -> emlite::Val {
+impl From<HTMLSourceElement> for Any {
+    fn from(s: HTMLSourceElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HTMLSourceElement> for emlite::Val {
-    fn from(s: &HTMLSourceElement) -> emlite::Val {
+impl From<&HTMLSourceElement> for Any {
+    fn from(s: &HTMLSourceElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLSourceElement);
 
 impl HTMLSourceElement {
+    /// The `new HTMLSourceElement(..)` constructor, creating a new HTMLSourceElement instance
     pub fn new() -> HTMLSourceElement {
         Self {
-            inner: emlite::Val::global("HTMLSourceElement")
+            inner: Any::global("HTMLSourceElement")
                 .new(&[])
                 .as_::<HTMLElement>(),
         }
     }
 }
 impl HTMLSourceElement {
+    /// Getter of the `src` attribute.
+    /// [`HTMLSourceElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/src)
     pub fn src(&self) -> String {
         self.inner.get("src").as_::<String>()
     }
 
+    /// Setter of the `src` attribute.
+    /// [`HTMLSourceElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/src)
     pub fn set_src(&mut self, value: &str) {
         self.inner.set("src", value);
     }
 }
 impl HTMLSourceElement {
+    /// Getter of the `type` attribute.
+    /// [`HTMLSourceElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/type)
     pub fn type_(&self) -> String {
         self.inner.get("type").as_::<String>()
     }
 
+    /// Setter of the `type` attribute.
+    /// [`HTMLSourceElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/type)
     pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }
 }
 impl HTMLSourceElement {
+    /// Getter of the `srcset` attribute.
+    /// [`HTMLSourceElement.srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/srcset)
     pub fn srcset(&self) -> String {
         self.inner.get("srcset").as_::<String>()
     }
 
+    /// Setter of the `srcset` attribute.
+    /// [`HTMLSourceElement.srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/srcset)
     pub fn set_srcset(&mut self, value: &str) {
         self.inner.set("srcset", value);
     }
 }
 impl HTMLSourceElement {
+    /// Getter of the `sizes` attribute.
+    /// [`HTMLSourceElement.sizes`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/sizes)
     pub fn sizes(&self) -> String {
         self.inner.get("sizes").as_::<String>()
     }
 
+    /// Setter of the `sizes` attribute.
+    /// [`HTMLSourceElement.sizes`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/sizes)
     pub fn set_sizes(&mut self, value: &str) {
         self.inner.set("sizes", value);
     }
 }
 impl HTMLSourceElement {
+    /// Getter of the `media` attribute.
+    /// [`HTMLSourceElement.media`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/media)
     pub fn media(&self) -> String {
         self.inner.get("media").as_::<String>()
     }
 
+    /// Setter of the `media` attribute.
+    /// [`HTMLSourceElement.media`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/media)
     pub fn set_media(&mut self, value: &str) {
         self.inner.set("media", value);
     }
 }
 impl HTMLSourceElement {
+    /// Getter of the `width` attribute.
+    /// [`HTMLSourceElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/width)
     pub fn width(&self) -> u32 {
         self.inner.get("width").as_::<u32>()
     }
 
+    /// Setter of the `width` attribute.
+    /// [`HTMLSourceElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/width)
     pub fn set_width(&mut self, value: u32) {
         self.inner.set("width", value);
     }
 }
 impl HTMLSourceElement {
+    /// Getter of the `height` attribute.
+    /// [`HTMLSourceElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/height)
     pub fn height(&self) -> u32 {
         self.inner.get("height").as_::<u32>()
     }
 
+    /// Setter of the `height` attribute.
+    /// [`HTMLSourceElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/height)
     pub fn set_height(&mut self, value: u32) {
         self.inner.set("height", value);
     }

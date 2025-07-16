@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PushSubscriptionJSON {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PushSubscriptionJSON {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PushSubscriptionJSON { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PushSubscriptionJSON {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for PushSubscriptionJSON {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PushSubscriptionJSON {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PushSubscriptionJSON {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PushSubscriptionJSON {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PushSubscriptionJSON {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PushSubscriptionJSON> for emlite::Val {
-    fn from(s: PushSubscriptionJSON) -> emlite::Val {
+impl From<PushSubscriptionJSON> for Any {
+    fn from(s: PushSubscriptionJSON) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PushSubscriptionJSON> for emlite::Val {
-    fn from(s: &PushSubscriptionJSON) -> emlite::Val {
+impl From<&PushSubscriptionJSON> for Any {
+    fn from(s: &PushSubscriptionJSON) -> Any {
         s.inner.clone()
     }
 }
@@ -77,26 +77,28 @@ impl PushSubscriptionJSON {
         self.inner.set("keys", value);
     }
 }
+/// The PushSubscription class.
+/// [`PushSubscription`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PushSubscription {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PushSubscription {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PushSubscription {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PushSubscription {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -106,46 +108,54 @@ impl core::ops::DerefMut for PushSubscription {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PushSubscription {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PushSubscription {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PushSubscription {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PushSubscription {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PushSubscription> for emlite::Val {
-    fn from(s: PushSubscription) -> emlite::Val {
+impl From<PushSubscription> for Any {
+    fn from(s: PushSubscription) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PushSubscription> for emlite::Val {
-    fn from(s: &PushSubscription) -> emlite::Val {
+impl From<&PushSubscription> for Any {
+    fn from(s: &PushSubscription) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PushSubscription);
 
 impl PushSubscription {
+    /// Getter of the `endpoint` attribute.
+    /// [`PushSubscription.endpoint`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription/endpoint)
     pub fn endpoint(&self) -> String {
         self.inner.get("endpoint").as_::<String>()
     }
 }
 impl PushSubscription {
+    /// Getter of the `expirationTime` attribute.
+    /// [`PushSubscription.expirationTime`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription/expirationTime)
     pub fn expiration_time(&self) -> Any {
         self.inner.get("expirationTime").as_::<Any>()
     }
 }
 impl PushSubscription {
+    /// Getter of the `options` attribute.
+    /// [`PushSubscription.options`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription/options)
     pub fn options(&self) -> PushSubscriptionOptions {
         self.inner.get("options").as_::<PushSubscriptionOptions>()
     }
 }
 impl PushSubscription {
+    /// The getKey method.
+    /// [`PushSubscription.getKey`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription/getKey)
     pub fn get_key(&self, name: &PushEncryptionKeyName) -> ArrayBuffer {
         self.inner
             .call("getKey", &[name.into()])
@@ -153,11 +163,15 @@ impl PushSubscription {
     }
 }
 impl PushSubscription {
+    /// The unsubscribe method.
+    /// [`PushSubscription.unsubscribe`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription/unsubscribe)
     pub fn unsubscribe(&self) -> Promise {
         self.inner.call("unsubscribe", &[]).as_::<Promise>()
     }
 }
 impl PushSubscription {
+    /// The toJSON method.
+    /// [`PushSubscription.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription/toJSON)
     pub fn to_json(&self) -> PushSubscriptionJSON {
         self.inner.call("toJSON", &[]).as_::<PushSubscriptionJSON>()
     }

@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VideoFrameMetadata {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for VideoFrameMetadata {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         VideoFrameMetadata { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for VideoFrameMetadata {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for VideoFrameMetadata {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for VideoFrameMetadata {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for VideoFrameMetadata {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for VideoFrameMetadata {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for VideoFrameMetadata {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<VideoFrameMetadata> for emlite::Val {
-    fn from(s: VideoFrameMetadata) -> emlite::Val {
+impl From<VideoFrameMetadata> for Any {
+    fn from(s: VideoFrameMetadata) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&VideoFrameMetadata> for emlite::Val {
-    fn from(s: &VideoFrameMetadata) -> emlite::Val {
+impl From<&VideoFrameMetadata> for Any {
+    fn from(s: &VideoFrameMetadata) -> Any {
         s.inner.clone()
     }
 }
@@ -53,21 +53,21 @@ impl From<&VideoFrameMetadata> for emlite::Val {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VideoFrameCopyToOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for VideoFrameCopyToOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         VideoFrameCopyToOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for VideoFrameCopyToOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -77,25 +77,25 @@ impl core::ops::DerefMut for VideoFrameCopyToOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for VideoFrameCopyToOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for VideoFrameCopyToOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for VideoFrameCopyToOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for VideoFrameCopyToOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<VideoFrameCopyToOptions> for emlite::Val {
-    fn from(s: VideoFrameCopyToOptions) -> emlite::Val {
+impl From<VideoFrameCopyToOptions> for Any {
+    fn from(s: VideoFrameCopyToOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&VideoFrameCopyToOptions> for emlite::Val {
-    fn from(s: &VideoFrameCopyToOptions) -> emlite::Val {
+impl From<&VideoFrameCopyToOptions> for Any {
+    fn from(s: &VideoFrameCopyToOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -139,21 +139,21 @@ impl VideoFrameCopyToOptions {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PlaneLayout {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PlaneLayout {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PlaneLayout { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PlaneLayout {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -163,25 +163,25 @@ impl core::ops::DerefMut for PlaneLayout {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PlaneLayout {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PlaneLayout {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PlaneLayout {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PlaneLayout {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PlaneLayout> for emlite::Val {
-    fn from(s: PlaneLayout) -> emlite::Val {
+impl From<PlaneLayout> for Any {
+    fn from(s: PlaneLayout) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PlaneLayout> for emlite::Val {
-    fn from(s: &PlaneLayout) -> emlite::Val {
+impl From<&PlaneLayout> for Any {
+    fn from(s: &PlaneLayout) -> Any {
         s.inner.clone()
     }
 }
@@ -204,26 +204,28 @@ impl PlaneLayout {
         self.inner.set("stride", value);
     }
 }
+/// The VideoFrame class.
+/// [`VideoFrame`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct VideoFrame {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for VideoFrame {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         VideoFrame {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for VideoFrame {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -233,109 +235,139 @@ impl core::ops::DerefMut for VideoFrame {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for VideoFrame {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for VideoFrame {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for VideoFrame {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for VideoFrame {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<VideoFrame> for emlite::Val {
-    fn from(s: VideoFrame) -> emlite::Val {
+impl From<VideoFrame> for Any {
+    fn from(s: VideoFrame) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&VideoFrame> for emlite::Val {
-    fn from(s: &VideoFrame) -> emlite::Val {
+impl From<&VideoFrame> for Any {
+    fn from(s: &VideoFrame) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(VideoFrame);
 
 impl VideoFrame {
+    /// The `new VideoFrame(..)` constructor, creating a new VideoFrame instance
     pub fn new(data: &Any, init: &Any) -> VideoFrame {
         Self {
-            inner: emlite::Val::global("VideoFrame")
+            inner: Any::global("VideoFrame")
                 .new(&[data.into(), init.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl VideoFrame {
+    /// Getter of the `format` attribute.
+    /// [`VideoFrame.format`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/format)
     pub fn format(&self) -> VideoPixelFormat {
         self.inner.get("format").as_::<VideoPixelFormat>()
     }
 }
 impl VideoFrame {
+    /// Getter of the `codedWidth` attribute.
+    /// [`VideoFrame.codedWidth`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/codedWidth)
     pub fn coded_width(&self) -> u32 {
         self.inner.get("codedWidth").as_::<u32>()
     }
 }
 impl VideoFrame {
+    /// Getter of the `codedHeight` attribute.
+    /// [`VideoFrame.codedHeight`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/codedHeight)
     pub fn coded_height(&self) -> u32 {
         self.inner.get("codedHeight").as_::<u32>()
     }
 }
 impl VideoFrame {
+    /// Getter of the `codedRect` attribute.
+    /// [`VideoFrame.codedRect`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/codedRect)
     pub fn coded_rect(&self) -> DOMRectReadOnly {
         self.inner.get("codedRect").as_::<DOMRectReadOnly>()
     }
 }
 impl VideoFrame {
+    /// Getter of the `visibleRect` attribute.
+    /// [`VideoFrame.visibleRect`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/visibleRect)
     pub fn visible_rect(&self) -> DOMRectReadOnly {
         self.inner.get("visibleRect").as_::<DOMRectReadOnly>()
     }
 }
 impl VideoFrame {
+    /// Getter of the `rotation` attribute.
+    /// [`VideoFrame.rotation`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/rotation)
     pub fn rotation(&self) -> f64 {
         self.inner.get("rotation").as_::<f64>()
     }
 }
 impl VideoFrame {
+    /// Getter of the `flip` attribute.
+    /// [`VideoFrame.flip`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/flip)
     pub fn flip(&self) -> bool {
         self.inner.get("flip").as_::<bool>()
     }
 }
 impl VideoFrame {
+    /// Getter of the `displayWidth` attribute.
+    /// [`VideoFrame.displayWidth`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/displayWidth)
     pub fn display_width(&self) -> u32 {
         self.inner.get("displayWidth").as_::<u32>()
     }
 }
 impl VideoFrame {
+    /// Getter of the `displayHeight` attribute.
+    /// [`VideoFrame.displayHeight`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/displayHeight)
     pub fn display_height(&self) -> u32 {
         self.inner.get("displayHeight").as_::<u32>()
     }
 }
 impl VideoFrame {
+    /// Getter of the `duration` attribute.
+    /// [`VideoFrame.duration`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/duration)
     pub fn duration(&self) -> u64 {
         self.inner.get("duration").as_::<u64>()
     }
 }
 impl VideoFrame {
+    /// Getter of the `timestamp` attribute.
+    /// [`VideoFrame.timestamp`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/timestamp)
     pub fn timestamp(&self) -> i64 {
         self.inner.get("timestamp").as_::<i64>()
     }
 }
 impl VideoFrame {
+    /// Getter of the `colorSpace` attribute.
+    /// [`VideoFrame.colorSpace`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/colorSpace)
     pub fn color_space(&self) -> VideoColorSpace {
         self.inner.get("colorSpace").as_::<VideoColorSpace>()
     }
 }
 impl VideoFrame {
+    /// The metadata method.
+    /// [`VideoFrame.metadata`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/metadata)
     pub fn metadata(&self) -> VideoFrameMetadata {
         self.inner.call("metadata", &[]).as_::<VideoFrameMetadata>()
     }
 }
 impl VideoFrame {
+    /// The allocationSize method.
+    /// [`VideoFrame.allocationSize`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/allocationSize)
     pub fn allocation_size0(&self) -> u32 {
         self.inner.call("allocationSize", &[]).as_::<u32>()
     }
-
+    /// The allocationSize method.
+    /// [`VideoFrame.allocationSize`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/allocationSize)
     pub fn allocation_size1(&self, options: &VideoFrameCopyToOptions) -> u32 {
         self.inner
             .call("allocationSize", &[options.into()])
@@ -343,12 +375,15 @@ impl VideoFrame {
     }
 }
 impl VideoFrame {
+    /// The copyTo method.
+    /// [`VideoFrame.copyTo`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/copyTo)
     pub fn copy_to0(&self, destination: &Any) -> Promise {
         self.inner
             .call("copyTo", &[destination.into()])
             .as_::<Promise>()
     }
-
+    /// The copyTo method.
+    /// [`VideoFrame.copyTo`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/copyTo)
     pub fn copy_to1(&self, destination: &Any, options: &VideoFrameCopyToOptions) -> Promise {
         self.inner
             .call("copyTo", &[destination.into(), options.into()])
@@ -356,11 +391,15 @@ impl VideoFrame {
     }
 }
 impl VideoFrame {
+    /// The clone method.
+    /// [`VideoFrame.clone`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/clone)
     pub fn clone_(&self) -> VideoFrame {
         self.inner.call("clone", &[]).as_::<VideoFrame>()
     }
 }
 impl VideoFrame {
+    /// The close method.
+    /// [`VideoFrame.close`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/close)
     pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }

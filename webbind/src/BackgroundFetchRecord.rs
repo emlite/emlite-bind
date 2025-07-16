@@ -1,25 +1,27 @@
 use super::*;
 
+/// The BackgroundFetchRecord class.
+/// [`BackgroundFetchRecord`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRecord)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BackgroundFetchRecord {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for BackgroundFetchRecord {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         BackgroundFetchRecord {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for BackgroundFetchRecord {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for BackgroundFetchRecord {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for BackgroundFetchRecord {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for BackgroundFetchRecord {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for BackgroundFetchRecord {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for BackgroundFetchRecord {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<BackgroundFetchRecord> for emlite::Val {
-    fn from(s: BackgroundFetchRecord) -> emlite::Val {
+impl From<BackgroundFetchRecord> for Any {
+    fn from(s: BackgroundFetchRecord) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&BackgroundFetchRecord> for emlite::Val {
-    fn from(s: &BackgroundFetchRecord) -> emlite::Val {
+impl From<&BackgroundFetchRecord> for Any {
+    fn from(s: &BackgroundFetchRecord) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BackgroundFetchRecord);
 
 impl BackgroundFetchRecord {
+    /// Getter of the `request` attribute.
+    /// [`BackgroundFetchRecord.request`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRecord/request)
     pub fn request(&self) -> Request {
         self.inner.get("request").as_::<Request>()
     }
 }
 impl BackgroundFetchRecord {
+    /// Getter of the `responseReady` attribute.
+    /// [`BackgroundFetchRecord.responseReady`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRecord/responseReady)
     pub fn response_ready(&self) -> Promise {
         self.inner.get("responseReady").as_::<Promise>()
     }

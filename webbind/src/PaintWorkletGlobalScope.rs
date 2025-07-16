@@ -1,20 +1,22 @@
 use super::*;
 
+/// The PaintWorkletGlobalScope class.
+/// [`PaintWorkletGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/PaintWorkletGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PaintWorkletGlobalScope {
     inner: WorkletGlobalScope,
 }
 impl FromVal for PaintWorkletGlobalScope {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PaintWorkletGlobalScope {
             inner: WorkletGlobalScope::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for PaintWorkletGlobalScope {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PaintWorkletGlobalScope {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PaintWorkletGlobalScope {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PaintWorkletGlobalScope {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PaintWorkletGlobalScope {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PaintWorkletGlobalScope> for emlite::Val {
-    fn from(s: PaintWorkletGlobalScope) -> emlite::Val {
+impl From<PaintWorkletGlobalScope> for Any {
+    fn from(s: PaintWorkletGlobalScope) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PaintWorkletGlobalScope> for emlite::Val {
-    fn from(s: &PaintWorkletGlobalScope) -> emlite::Val {
+impl From<&PaintWorkletGlobalScope> for Any {
+    fn from(s: &PaintWorkletGlobalScope) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PaintWorkletGlobalScope);
 
 impl PaintWorkletGlobalScope {
+    /// The registerPaint method.
+    /// [`PaintWorkletGlobalScope.registerPaint`](https://developer.mozilla.org/en-US/docs/Web/API/PaintWorkletGlobalScope/registerPaint)
     pub fn register_paint(&self, name: &str, paint_ctor: &Any) -> Undefined {
         self.inner
             .call("registerPaint", &[name.into(), paint_ctor.into()])
@@ -61,6 +65,8 @@ impl PaintWorkletGlobalScope {
     }
 }
 impl PaintWorkletGlobalScope {
+    /// Getter of the `devicePixelRatio` attribute.
+    /// [`PaintWorkletGlobalScope.devicePixelRatio`](https://developer.mozilla.org/en-US/docs/Web/API/PaintWorkletGlobalScope/devicePixelRatio)
     pub fn device_pixel_ratio(&self) -> f64 {
         self.inner.get("devicePixelRatio").as_::<f64>()
     }

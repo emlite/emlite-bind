@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PeriodicWaveConstraints {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PeriodicWaveConstraints {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PeriodicWaveConstraints { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PeriodicWaveConstraints {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for PeriodicWaveConstraints {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PeriodicWaveConstraints {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PeriodicWaveConstraints {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PeriodicWaveConstraints {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PeriodicWaveConstraints {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PeriodicWaveConstraints> for emlite::Val {
-    fn from(s: PeriodicWaveConstraints) -> emlite::Val {
+impl From<PeriodicWaveConstraints> for Any {
+    fn from(s: PeriodicWaveConstraints) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PeriodicWaveConstraints> for emlite::Val {
-    fn from(s: &PeriodicWaveConstraints) -> emlite::Val {
+impl From<&PeriodicWaveConstraints> for Any {
+    fn from(s: &PeriodicWaveConstraints) -> Any {
         s.inner.clone()
     }
 }
@@ -59,21 +59,23 @@ impl PeriodicWaveConstraints {
         self.inner.set("disableNormalization", value);
     }
 }
+/// The BaseAudioContext class.
+/// [`BaseAudioContext`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BaseAudioContext {
     inner: EventTarget,
 }
 impl FromVal for BaseAudioContext {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         BaseAudioContext {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -88,80 +90,102 @@ impl core::ops::DerefMut for BaseAudioContext {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for BaseAudioContext {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for BaseAudioContext {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for BaseAudioContext {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for BaseAudioContext {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<BaseAudioContext> for emlite::Val {
-    fn from(s: BaseAudioContext) -> emlite::Val {
+impl From<BaseAudioContext> for Any {
+    fn from(s: BaseAudioContext) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&BaseAudioContext> for emlite::Val {
-    fn from(s: &BaseAudioContext) -> emlite::Val {
+impl From<&BaseAudioContext> for Any {
+    fn from(s: &BaseAudioContext) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BaseAudioContext);
 
 impl BaseAudioContext {
+    /// Getter of the `destination` attribute.
+    /// [`BaseAudioContext.destination`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/destination)
     pub fn destination(&self) -> AudioDestinationNode {
         self.inner.get("destination").as_::<AudioDestinationNode>()
     }
 }
 impl BaseAudioContext {
+    /// Getter of the `sampleRate` attribute.
+    /// [`BaseAudioContext.sampleRate`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/sampleRate)
     pub fn sample_rate(&self) -> f32 {
         self.inner.get("sampleRate").as_::<f32>()
     }
 }
 impl BaseAudioContext {
+    /// Getter of the `currentTime` attribute.
+    /// [`BaseAudioContext.currentTime`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/currentTime)
     pub fn current_time(&self) -> f64 {
         self.inner.get("currentTime").as_::<f64>()
     }
 }
 impl BaseAudioContext {
+    /// Getter of the `listener` attribute.
+    /// [`BaseAudioContext.listener`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/listener)
     pub fn listener(&self) -> AudioListener {
         self.inner.get("listener").as_::<AudioListener>()
     }
 }
 impl BaseAudioContext {
+    /// Getter of the `state` attribute.
+    /// [`BaseAudioContext.state`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/state)
     pub fn state(&self) -> AudioContextState {
         self.inner.get("state").as_::<AudioContextState>()
     }
 }
 impl BaseAudioContext {
+    /// Getter of the `renderQuantumSize` attribute.
+    /// [`BaseAudioContext.renderQuantumSize`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/renderQuantumSize)
     pub fn render_quantum_size(&self) -> u32 {
         self.inner.get("renderQuantumSize").as_::<u32>()
     }
 }
 impl BaseAudioContext {
+    /// Getter of the `audioWorklet` attribute.
+    /// [`BaseAudioContext.audioWorklet`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/audioWorklet)
     pub fn audio_worklet(&self) -> AudioWorklet {
         self.inner.get("audioWorklet").as_::<AudioWorklet>()
     }
 }
 impl BaseAudioContext {
+    /// Getter of the `onstatechange` attribute.
+    /// [`BaseAudioContext.onstatechange`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/onstatechange)
     pub fn onstatechange(&self) -> Any {
         self.inner.get("onstatechange").as_::<Any>()
     }
 
+    /// Setter of the `onstatechange` attribute.
+    /// [`BaseAudioContext.onstatechange`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/onstatechange)
     pub fn set_onstatechange(&mut self, value: &Any) {
         self.inner.set("onstatechange", value);
     }
 }
 impl BaseAudioContext {
+    /// The createAnalyser method.
+    /// [`BaseAudioContext.createAnalyser`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createAnalyser)
     pub fn create_analyser(&self) -> AnalyserNode {
         self.inner.call("createAnalyser", &[]).as_::<AnalyserNode>()
     }
 }
 impl BaseAudioContext {
+    /// The createBiquadFilter method.
+    /// [`BaseAudioContext.createBiquadFilter`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createBiquadFilter)
     pub fn create_biquad_filter(&self) -> BiquadFilterNode {
         self.inner
             .call("createBiquadFilter", &[])
@@ -169,6 +193,8 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
+    /// The createBuffer method.
+    /// [`BaseAudioContext.createBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createBuffer)
     pub fn create_buffer(
         &self,
         number_of_channels: u32,
@@ -184,6 +210,8 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
+    /// The createBufferSource method.
+    /// [`BaseAudioContext.createBufferSource`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createBufferSource)
     pub fn create_buffer_source(&self) -> AudioBufferSourceNode {
         self.inner
             .call("createBufferSource", &[])
@@ -191,12 +219,15 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
+    /// The createChannelMerger method.
+    /// [`BaseAudioContext.createChannelMerger`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createChannelMerger)
     pub fn create_channel_merger0(&self) -> ChannelMergerNode {
         self.inner
             .call("createChannelMerger", &[])
             .as_::<ChannelMergerNode>()
     }
-
+    /// The createChannelMerger method.
+    /// [`BaseAudioContext.createChannelMerger`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createChannelMerger)
     pub fn create_channel_merger1(&self, number_of_inputs: u32) -> ChannelMergerNode {
         self.inner
             .call("createChannelMerger", &[number_of_inputs.into()])
@@ -204,12 +235,15 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
+    /// The createChannelSplitter method.
+    /// [`BaseAudioContext.createChannelSplitter`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createChannelSplitter)
     pub fn create_channel_splitter0(&self) -> ChannelSplitterNode {
         self.inner
             .call("createChannelSplitter", &[])
             .as_::<ChannelSplitterNode>()
     }
-
+    /// The createChannelSplitter method.
+    /// [`BaseAudioContext.createChannelSplitter`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createChannelSplitter)
     pub fn create_channel_splitter1(&self, number_of_outputs: u32) -> ChannelSplitterNode {
         self.inner
             .call("createChannelSplitter", &[number_of_outputs.into()])
@@ -217,6 +251,8 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
+    /// The createConstantSource method.
+    /// [`BaseAudioContext.createConstantSource`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createConstantSource)
     pub fn create_constant_source(&self) -> ConstantSourceNode {
         self.inner
             .call("createConstantSource", &[])
@@ -224,6 +260,8 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
+    /// The createConvolver method.
+    /// [`BaseAudioContext.createConvolver`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createConvolver)
     pub fn create_convolver(&self) -> ConvolverNode {
         self.inner
             .call("createConvolver", &[])
@@ -231,10 +269,13 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
+    /// The createDelay method.
+    /// [`BaseAudioContext.createDelay`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createDelay)
     pub fn create_delay0(&self) -> DelayNode {
         self.inner.call("createDelay", &[]).as_::<DelayNode>()
     }
-
+    /// The createDelay method.
+    /// [`BaseAudioContext.createDelay`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createDelay)
     pub fn create_delay1(&self, max_delay_time: f64) -> DelayNode {
         self.inner
             .call("createDelay", &[max_delay_time.into()])
@@ -242,6 +283,8 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
+    /// The createDynamicsCompressor method.
+    /// [`BaseAudioContext.createDynamicsCompressor`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createDynamicsCompressor)
     pub fn create_dynamics_compressor(&self) -> DynamicsCompressorNode {
         self.inner
             .call("createDynamicsCompressor", &[])
@@ -249,11 +292,15 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
+    /// The createGain method.
+    /// [`BaseAudioContext.createGain`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createGain)
     pub fn create_gain(&self) -> GainNode {
         self.inner.call("createGain", &[]).as_::<GainNode>()
     }
 }
 impl BaseAudioContext {
+    /// The createIIRFilter method.
+    /// [`BaseAudioContext.createIIRFilter`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createIIRFilter)
     pub fn create_iir_filter(
         &self,
         feedforward: Sequence<f64>,
@@ -265,6 +312,8 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
+    /// The createOscillator method.
+    /// [`BaseAudioContext.createOscillator`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createOscillator)
     pub fn create_oscillator(&self) -> OscillatorNode {
         self.inner
             .call("createOscillator", &[])
@@ -272,17 +321,22 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
+    /// The createPanner method.
+    /// [`BaseAudioContext.createPanner`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createPanner)
     pub fn create_panner(&self) -> PannerNode {
         self.inner.call("createPanner", &[]).as_::<PannerNode>()
     }
 }
 impl BaseAudioContext {
+    /// The createPeriodicWave method.
+    /// [`BaseAudioContext.createPeriodicWave`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createPeriodicWave)
     pub fn create_periodic_wave0(&self, real: Sequence<f32>, imag: Sequence<f32>) -> PeriodicWave {
         self.inner
             .call("createPeriodicWave", &[real.into(), imag.into()])
             .as_::<PeriodicWave>()
     }
-
+    /// The createPeriodicWave method.
+    /// [`BaseAudioContext.createPeriodicWave`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createPeriodicWave)
     pub fn create_periodic_wave1(
         &self,
         real: Sequence<f32>,
@@ -298,18 +352,22 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
+    /// The createScriptProcessor method.
+    /// [`BaseAudioContext.createScriptProcessor`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createScriptProcessor)
     pub fn create_script_processor0(&self) -> ScriptProcessorNode {
         self.inner
             .call("createScriptProcessor", &[])
             .as_::<ScriptProcessorNode>()
     }
-
+    /// The createScriptProcessor method.
+    /// [`BaseAudioContext.createScriptProcessor`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createScriptProcessor)
     pub fn create_script_processor1(&self, buffer_size: u32) -> ScriptProcessorNode {
         self.inner
             .call("createScriptProcessor", &[buffer_size.into()])
             .as_::<ScriptProcessorNode>()
     }
-
+    /// The createScriptProcessor method.
+    /// [`BaseAudioContext.createScriptProcessor`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createScriptProcessor)
     pub fn create_script_processor2(
         &self,
         buffer_size: u32,
@@ -322,7 +380,8 @@ impl BaseAudioContext {
             )
             .as_::<ScriptProcessorNode>()
     }
-
+    /// The createScriptProcessor method.
+    /// [`BaseAudioContext.createScriptProcessor`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createScriptProcessor)
     pub fn create_script_processor3(
         &self,
         buffer_size: u32,
@@ -342,6 +401,8 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
+    /// The createStereoPanner method.
+    /// [`BaseAudioContext.createStereoPanner`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createStereoPanner)
     pub fn create_stereo_panner(&self) -> StereoPannerNode {
         self.inner
             .call("createStereoPanner", &[])
@@ -349,6 +410,8 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
+    /// The createWaveShaper method.
+    /// [`BaseAudioContext.createWaveShaper`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createWaveShaper)
     pub fn create_wave_shaper(&self) -> WaveShaperNode {
         self.inner
             .call("createWaveShaper", &[])
@@ -356,12 +419,15 @@ impl BaseAudioContext {
     }
 }
 impl BaseAudioContext {
+    /// The decodeAudioData method.
+    /// [`BaseAudioContext.decodeAudioData`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData)
     pub fn decode_audio_data0(&self, audio_data: &ArrayBuffer) -> Promise {
         self.inner
             .call("decodeAudioData", &[audio_data.into()])
             .as_::<Promise>()
     }
-
+    /// The decodeAudioData method.
+    /// [`BaseAudioContext.decodeAudioData`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData)
     pub fn decode_audio_data1(
         &self,
         audio_data: &ArrayBuffer,
@@ -374,7 +440,8 @@ impl BaseAudioContext {
             )
             .as_::<Promise>()
     }
-
+    /// The decodeAudioData method.
+    /// [`BaseAudioContext.decodeAudioData`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData)
     pub fn decode_audio_data2(
         &self,
         audio_data: &ArrayBuffer,

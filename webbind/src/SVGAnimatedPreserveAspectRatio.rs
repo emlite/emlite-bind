@@ -1,25 +1,27 @@
 use super::*;
 
+/// The SVGAnimatedPreserveAspectRatio class.
+/// [`SVGAnimatedPreserveAspectRatio`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedPreserveAspectRatio)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGAnimatedPreserveAspectRatio {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for SVGAnimatedPreserveAspectRatio {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SVGAnimatedPreserveAspectRatio {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for SVGAnimatedPreserveAspectRatio {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for SVGAnimatedPreserveAspectRatio {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SVGAnimatedPreserveAspectRatio {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SVGAnimatedPreserveAspectRatio {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SVGAnimatedPreserveAspectRatio {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SVGAnimatedPreserveAspectRatio {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SVGAnimatedPreserveAspectRatio> for emlite::Val {
-    fn from(s: SVGAnimatedPreserveAspectRatio) -> emlite::Val {
+impl From<SVGAnimatedPreserveAspectRatio> for Any {
+    fn from(s: SVGAnimatedPreserveAspectRatio) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SVGAnimatedPreserveAspectRatio> for emlite::Val {
-    fn from(s: &SVGAnimatedPreserveAspectRatio) -> emlite::Val {
+impl From<&SVGAnimatedPreserveAspectRatio> for Any {
+    fn from(s: &SVGAnimatedPreserveAspectRatio) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SVGAnimatedPreserveAspectRatio);
 
 impl SVGAnimatedPreserveAspectRatio {
+    /// Getter of the `baseVal` attribute.
+    /// [`SVGAnimatedPreserveAspectRatio.baseVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedPreserveAspectRatio/baseVal)
     pub fn base_val(&self) -> SVGPreserveAspectRatio {
         self.inner.get("baseVal").as_::<SVGPreserveAspectRatio>()
     }
 }
 impl SVGAnimatedPreserveAspectRatio {
+    /// Getter of the `animVal` attribute.
+    /// [`SVGAnimatedPreserveAspectRatio.animVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedPreserveAspectRatio/animVal)
     pub fn anim_val(&self) -> SVGPreserveAspectRatio {
         self.inner.get("animVal").as_::<SVGPreserveAspectRatio>()
     }

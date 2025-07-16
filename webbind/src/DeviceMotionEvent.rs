@@ -1,20 +1,22 @@
 use super::*;
 
+/// The DeviceMotionEvent class.
+/// [`DeviceMotionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DeviceMotionEvent {
     inner: Event,
 }
 impl FromVal for DeviceMotionEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         DeviceMotionEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,48 +31,52 @@ impl core::ops::DerefMut for DeviceMotionEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for DeviceMotionEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for DeviceMotionEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for DeviceMotionEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for DeviceMotionEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<DeviceMotionEvent> for emlite::Val {
-    fn from(s: DeviceMotionEvent) -> emlite::Val {
+impl From<DeviceMotionEvent> for Any {
+    fn from(s: DeviceMotionEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&DeviceMotionEvent> for emlite::Val {
-    fn from(s: &DeviceMotionEvent) -> emlite::Val {
+impl From<&DeviceMotionEvent> for Any {
+    fn from(s: &DeviceMotionEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(DeviceMotionEvent);
 
 impl DeviceMotionEvent {
+    /// The `new DeviceMotionEvent(..)` constructor, creating a new DeviceMotionEvent instance
     pub fn new0(type_: &str) -> DeviceMotionEvent {
         Self {
-            inner: emlite::Val::global("DeviceMotionEvent")
+            inner: Any::global("DeviceMotionEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
 
+    /// The `new DeviceMotionEvent(..)` constructor, creating a new DeviceMotionEvent instance
     pub fn new1(type_: &str, event_init_dict: &Any) -> DeviceMotionEvent {
         Self {
-            inner: emlite::Val::global("DeviceMotionEvent")
+            inner: Any::global("DeviceMotionEvent")
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl DeviceMotionEvent {
+    /// Getter of the `acceleration` attribute.
+    /// [`DeviceMotionEvent.acceleration`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent/acceleration)
     pub fn acceleration(&self) -> DeviceMotionEventAcceleration {
         self.inner
             .get("acceleration")
@@ -78,6 +84,8 @@ impl DeviceMotionEvent {
     }
 }
 impl DeviceMotionEvent {
+    /// Getter of the `accelerationIncludingGravity` attribute.
+    /// [`DeviceMotionEvent.accelerationIncludingGravity`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent/accelerationIncludingGravity)
     pub fn acceleration_including_gravity(&self) -> DeviceMotionEventAcceleration {
         self.inner
             .get("accelerationIncludingGravity")
@@ -85,6 +93,8 @@ impl DeviceMotionEvent {
     }
 }
 impl DeviceMotionEvent {
+    /// Getter of the `rotationRate` attribute.
+    /// [`DeviceMotionEvent.rotationRate`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent/rotationRate)
     pub fn rotation_rate(&self) -> DeviceMotionEventRotationRate {
         self.inner
             .get("rotationRate")
@@ -92,13 +102,17 @@ impl DeviceMotionEvent {
     }
 }
 impl DeviceMotionEvent {
+    /// Getter of the `interval` attribute.
+    /// [`DeviceMotionEvent.interval`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent/interval)
     pub fn interval(&self) -> f64 {
         self.inner.get("interval").as_::<f64>()
     }
 }
 impl DeviceMotionEvent {
+    /// The requestPermission method.
+    /// [`DeviceMotionEvent.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent/requestPermission)
     pub fn request_permission() -> Promise {
-        emlite::Val::global("DeviceMotionEvent")
+        Any::global("DeviceMotionEvent")
             .call("requestPermission", &[])
             .as_::<Promise>()
     }

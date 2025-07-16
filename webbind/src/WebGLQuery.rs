@@ -1,20 +1,22 @@
 use super::*;
 
+/// The WebGLQuery class.
+/// [`WebGLQuery`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLQuery)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGLQuery {
     inner: WebGLObject,
 }
 impl FromVal for WebGLQuery {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WebGLQuery {
             inner: WebGLObject::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,25 +31,25 @@ impl core::ops::DerefMut for WebGLQuery {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WebGLQuery {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WebGLQuery {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WebGLQuery {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WebGLQuery {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WebGLQuery> for emlite::Val {
-    fn from(s: WebGLQuery) -> emlite::Val {
+impl From<WebGLQuery> for Any {
+    fn from(s: WebGLQuery) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WebGLQuery> for emlite::Val {
-    fn from(s: &WebGLQuery) -> emlite::Val {
+impl From<&WebGLQuery> for Any {
+    fn from(s: &WebGLQuery) -> Any {
         s.inner.clone().into()
     }
 }

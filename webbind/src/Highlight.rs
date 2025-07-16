@@ -1,25 +1,27 @@
 use super::*;
 
+/// The Highlight class.
+/// [`Highlight`](https://developer.mozilla.org/en-US/docs/Web/API/Highlight)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Highlight {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Highlight {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Highlight {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Highlight {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,53 +31,62 @@ impl core::ops::DerefMut for Highlight {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Highlight {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Highlight {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Highlight {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Highlight {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Highlight> for emlite::Val {
-    fn from(s: Highlight) -> emlite::Val {
+impl From<Highlight> for Any {
+    fn from(s: Highlight) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Highlight> for emlite::Val {
-    fn from(s: &Highlight) -> emlite::Val {
+impl From<&Highlight> for Any {
+    fn from(s: &Highlight) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Highlight);
 
 impl Highlight {
+    /// The `new Highlight(..)` constructor, creating a new Highlight instance
     pub fn new(initial_ranges: &AbstractRange) -> Highlight {
         Self {
-            inner: emlite::Val::global("Highlight")
+            inner: Any::global("Highlight")
                 .new(&[initial_ranges.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl Highlight {
+    /// Getter of the `priority` attribute.
+    /// [`Highlight.priority`](https://developer.mozilla.org/en-US/docs/Web/API/Highlight/priority)
     pub fn priority(&self) -> i32 {
         self.inner.get("priority").as_::<i32>()
     }
 
+    /// Setter of the `priority` attribute.
+    /// [`Highlight.priority`](https://developer.mozilla.org/en-US/docs/Web/API/Highlight/priority)
     pub fn set_priority(&mut self, value: i32) {
         self.inner.set("priority", value);
     }
 }
 impl Highlight {
+    /// Getter of the `type` attribute.
+    /// [`Highlight.type`](https://developer.mozilla.org/en-US/docs/Web/API/Highlight/type)
     pub fn type_(&self) -> HighlightType {
         self.inner.get("type").as_::<HighlightType>()
     }
 
+    /// Setter of the `type` attribute.
+    /// [`Highlight.type`](https://developer.mozilla.org/en-US/docs/Web/API/Highlight/type)
     pub fn set_type_(&mut self, value: &HighlightType) {
         self.inner.set("type", value);
     }

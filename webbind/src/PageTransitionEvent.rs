@@ -1,20 +1,22 @@
 use super::*;
 
+/// The PageTransitionEvent class.
+/// [`PageTransitionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PageTransitionEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PageTransitionEvent {
     inner: Event,
 }
 impl FromVal for PageTransitionEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PageTransitionEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,48 +31,52 @@ impl core::ops::DerefMut for PageTransitionEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PageTransitionEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PageTransitionEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PageTransitionEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PageTransitionEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PageTransitionEvent> for emlite::Val {
-    fn from(s: PageTransitionEvent) -> emlite::Val {
+impl From<PageTransitionEvent> for Any {
+    fn from(s: PageTransitionEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PageTransitionEvent> for emlite::Val {
-    fn from(s: &PageTransitionEvent) -> emlite::Val {
+impl From<&PageTransitionEvent> for Any {
+    fn from(s: &PageTransitionEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PageTransitionEvent);
 
 impl PageTransitionEvent {
+    /// The `new PageTransitionEvent(..)` constructor, creating a new PageTransitionEvent instance
     pub fn new0(type_: &str) -> PageTransitionEvent {
         Self {
-            inner: emlite::Val::global("PageTransitionEvent")
+            inner: Any::global("PageTransitionEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
 
+    /// The `new PageTransitionEvent(..)` constructor, creating a new PageTransitionEvent instance
     pub fn new1(type_: &str, event_init_dict: &Any) -> PageTransitionEvent {
         Self {
-            inner: emlite::Val::global("PageTransitionEvent")
+            inner: Any::global("PageTransitionEvent")
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl PageTransitionEvent {
+    /// Getter of the `persisted` attribute.
+    /// [`PageTransitionEvent.persisted`](https://developer.mozilla.org/en-US/docs/Web/API/PageTransitionEvent/persisted)
     pub fn persisted(&self) -> bool {
         self.inner.get("persisted").as_::<bool>()
     }

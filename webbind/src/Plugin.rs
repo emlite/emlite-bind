@@ -1,25 +1,27 @@
 use super::*;
 
+/// The Plugin class.
+/// [`Plugin`](https://developer.mozilla.org/en-US/docs/Web/API/Plugin)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Plugin {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Plugin {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Plugin {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Plugin {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,56 +31,68 @@ impl core::ops::DerefMut for Plugin {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Plugin {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Plugin {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Plugin {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Plugin {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Plugin> for emlite::Val {
-    fn from(s: Plugin) -> emlite::Val {
+impl From<Plugin> for Any {
+    fn from(s: Plugin) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Plugin> for emlite::Val {
-    fn from(s: &Plugin) -> emlite::Val {
+impl From<&Plugin> for Any {
+    fn from(s: &Plugin) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Plugin);
 
 impl Plugin {
+    /// Getter of the `name` attribute.
+    /// [`Plugin.name`](https://developer.mozilla.org/en-US/docs/Web/API/Plugin/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 }
 impl Plugin {
+    /// Getter of the `description` attribute.
+    /// [`Plugin.description`](https://developer.mozilla.org/en-US/docs/Web/API/Plugin/description)
     pub fn description(&self) -> String {
         self.inner.get("description").as_::<String>()
     }
 }
 impl Plugin {
+    /// Getter of the `filename` attribute.
+    /// [`Plugin.filename`](https://developer.mozilla.org/en-US/docs/Web/API/Plugin/filename)
     pub fn filename(&self) -> String {
         self.inner.get("filename").as_::<String>()
     }
 }
 impl Plugin {
+    /// Getter of the `length` attribute.
+    /// [`Plugin.length`](https://developer.mozilla.org/en-US/docs/Web/API/Plugin/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
 }
 impl Plugin {
+    /// The item method.
+    /// [`Plugin.item`](https://developer.mozilla.org/en-US/docs/Web/API/Plugin/item)
     pub fn item(&self, index: u32) -> MimeType {
         self.inner.call("item", &[index.into()]).as_::<MimeType>()
     }
 }
 impl Plugin {
+    /// The namedItem method.
+    /// [`Plugin.namedItem`](https://developer.mozilla.org/en-US/docs/Web/API/Plugin/namedItem)
     pub fn named_item(&self, name: &str) -> MimeType {
         self.inner
             .call("namedItem", &[name.into()])

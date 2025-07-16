@@ -1,20 +1,22 @@
 use super::*;
 
+/// The RemotePlayback class.
+/// [`RemotePlayback`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RemotePlayback {
     inner: EventTarget,
 }
 impl FromVal for RemotePlayback {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RemotePlayback {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for RemotePlayback {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RemotePlayback {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RemotePlayback {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RemotePlayback {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RemotePlayback {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RemotePlayback> for emlite::Val {
-    fn from(s: RemotePlayback) -> emlite::Val {
+impl From<RemotePlayback> for Any {
+    fn from(s: RemotePlayback) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RemotePlayback> for emlite::Val {
-    fn from(s: &RemotePlayback) -> emlite::Val {
+impl From<&RemotePlayback> for Any {
+    fn from(s: &RemotePlayback) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RemotePlayback);
 
 impl RemotePlayback {
+    /// The watchAvailability method.
+    /// [`RemotePlayback.watchAvailability`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/watchAvailability)
     pub fn watch_availability(&self, callback: &Function) -> Promise {
         self.inner
             .call("watchAvailability", &[callback.into()])
@@ -61,12 +65,15 @@ impl RemotePlayback {
     }
 }
 impl RemotePlayback {
+    /// The cancelWatchAvailability method.
+    /// [`RemotePlayback.cancelWatchAvailability`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/cancelWatchAvailability)
     pub fn cancel_watch_availability0(&self) -> Promise {
         self.inner
             .call("cancelWatchAvailability", &[])
             .as_::<Promise>()
     }
-
+    /// The cancelWatchAvailability method.
+    /// [`RemotePlayback.cancelWatchAvailability`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/cancelWatchAvailability)
     pub fn cancel_watch_availability1(&self, id: i32) -> Promise {
         self.inner
             .call("cancelWatchAvailability", &[id.into()])
@@ -74,38 +81,54 @@ impl RemotePlayback {
     }
 }
 impl RemotePlayback {
+    /// Getter of the `state` attribute.
+    /// [`RemotePlayback.state`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/state)
     pub fn state(&self) -> RemotePlaybackState {
         self.inner.get("state").as_::<RemotePlaybackState>()
     }
 }
 impl RemotePlayback {
+    /// Getter of the `onconnecting` attribute.
+    /// [`RemotePlayback.onconnecting`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/onconnecting)
     pub fn onconnecting(&self) -> Any {
         self.inner.get("onconnecting").as_::<Any>()
     }
 
+    /// Setter of the `onconnecting` attribute.
+    /// [`RemotePlayback.onconnecting`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/onconnecting)
     pub fn set_onconnecting(&mut self, value: &Any) {
         self.inner.set("onconnecting", value);
     }
 }
 impl RemotePlayback {
+    /// Getter of the `onconnect` attribute.
+    /// [`RemotePlayback.onconnect`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/onconnect)
     pub fn onconnect(&self) -> Any {
         self.inner.get("onconnect").as_::<Any>()
     }
 
+    /// Setter of the `onconnect` attribute.
+    /// [`RemotePlayback.onconnect`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/onconnect)
     pub fn set_onconnect(&mut self, value: &Any) {
         self.inner.set("onconnect", value);
     }
 }
 impl RemotePlayback {
+    /// Getter of the `ondisconnect` attribute.
+    /// [`RemotePlayback.ondisconnect`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/ondisconnect)
     pub fn ondisconnect(&self) -> Any {
         self.inner.get("ondisconnect").as_::<Any>()
     }
 
+    /// Setter of the `ondisconnect` attribute.
+    /// [`RemotePlayback.ondisconnect`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/ondisconnect)
     pub fn set_ondisconnect(&mut self, value: &Any) {
         self.inner.set("ondisconnect", value);
     }
 }
 impl RemotePlayback {
+    /// The prompt method.
+    /// [`RemotePlayback.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/RemotePlayback/prompt)
     pub fn prompt(&self) -> Promise {
         self.inner.call("prompt", &[]).as_::<Promise>()
     }

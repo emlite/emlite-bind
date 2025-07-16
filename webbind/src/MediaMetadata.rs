@@ -1,25 +1,27 @@
 use super::*;
 
+/// The MediaMetadata class.
+/// [`MediaMetadata`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaMetadata {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaMetadata {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaMetadata {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaMetadata {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,84 +31,102 @@ impl core::ops::DerefMut for MediaMetadata {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaMetadata {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaMetadata {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaMetadata {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaMetadata {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaMetadata> for emlite::Val {
-    fn from(s: MediaMetadata) -> emlite::Val {
+impl From<MediaMetadata> for Any {
+    fn from(s: MediaMetadata) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaMetadata> for emlite::Val {
-    fn from(s: &MediaMetadata) -> emlite::Val {
+impl From<&MediaMetadata> for Any {
+    fn from(s: &MediaMetadata) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaMetadata);
 
 impl MediaMetadata {
+    /// The `new MediaMetadata(..)` constructor, creating a new MediaMetadata instance
     pub fn new0() -> MediaMetadata {
         Self {
-            inner: emlite::Val::global("MediaMetadata")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("MediaMetadata").new(&[]).as_::<Any>(),
         }
     }
 
+    /// The `new MediaMetadata(..)` constructor, creating a new MediaMetadata instance
     pub fn new1(init: &Any) -> MediaMetadata {
         Self {
-            inner: emlite::Val::global("MediaMetadata")
+            inner: Any::global("MediaMetadata")
                 .new(&[init.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl MediaMetadata {
+    /// Getter of the `title` attribute.
+    /// [`MediaMetadata.title`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/title)
     pub fn title(&self) -> String {
         self.inner.get("title").as_::<String>()
     }
 
+    /// Setter of the `title` attribute.
+    /// [`MediaMetadata.title`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/title)
     pub fn set_title(&mut self, value: &str) {
         self.inner.set("title", value);
     }
 }
 impl MediaMetadata {
+    /// Getter of the `artist` attribute.
+    /// [`MediaMetadata.artist`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/artist)
     pub fn artist(&self) -> String {
         self.inner.get("artist").as_::<String>()
     }
 
+    /// Setter of the `artist` attribute.
+    /// [`MediaMetadata.artist`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/artist)
     pub fn set_artist(&mut self, value: &str) {
         self.inner.set("artist", value);
     }
 }
 impl MediaMetadata {
+    /// Getter of the `album` attribute.
+    /// [`MediaMetadata.album`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/album)
     pub fn album(&self) -> String {
         self.inner.get("album").as_::<String>()
     }
 
+    /// Setter of the `album` attribute.
+    /// [`MediaMetadata.album`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/album)
     pub fn set_album(&mut self, value: &str) {
         self.inner.set("album", value);
     }
 }
 impl MediaMetadata {
+    /// Getter of the `artwork` attribute.
+    /// [`MediaMetadata.artwork`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/artwork)
     pub fn artwork(&self) -> FrozenArray<Object> {
         self.inner.get("artwork").as_::<FrozenArray<Object>>()
     }
 
+    /// Setter of the `artwork` attribute.
+    /// [`MediaMetadata.artwork`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/artwork)
     pub fn set_artwork(&mut self, value: &FrozenArray<Object>) {
         self.inner.set("artwork", value);
     }
 }
 impl MediaMetadata {
+    /// Getter of the `chapterInfo` attribute.
+    /// [`MediaMetadata.chapterInfo`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/chapterInfo)
     pub fn chapter_info(&self) -> FrozenArray<ChapterInformation> {
         self.inner
             .get("chapterInfo")

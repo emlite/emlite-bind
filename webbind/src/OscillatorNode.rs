@@ -1,20 +1,22 @@
 use super::*;
 
+/// The OscillatorNode class.
+/// [`OscillatorNode`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct OscillatorNode {
     inner: AudioScheduledSourceNode,
 }
 impl FromVal for OscillatorNode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         OscillatorNode {
             inner: AudioScheduledSourceNode::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,67 +31,79 @@ impl core::ops::DerefMut for OscillatorNode {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for OscillatorNode {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for OscillatorNode {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for OscillatorNode {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for OscillatorNode {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<OscillatorNode> for emlite::Val {
-    fn from(s: OscillatorNode) -> emlite::Val {
+impl From<OscillatorNode> for Any {
+    fn from(s: OscillatorNode) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&OscillatorNode> for emlite::Val {
-    fn from(s: &OscillatorNode) -> emlite::Val {
+impl From<&OscillatorNode> for Any {
+    fn from(s: &OscillatorNode) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(OscillatorNode);
 
 impl OscillatorNode {
+    /// The `new OscillatorNode(..)` constructor, creating a new OscillatorNode instance
     pub fn new0(context: &BaseAudioContext) -> OscillatorNode {
         Self {
-            inner: emlite::Val::global("OscillatorNode")
+            inner: Any::global("OscillatorNode")
                 .new(&[context.into()])
                 .as_::<AudioScheduledSourceNode>(),
         }
     }
 
+    /// The `new OscillatorNode(..)` constructor, creating a new OscillatorNode instance
     pub fn new1(context: &BaseAudioContext, options: &Any) -> OscillatorNode {
         Self {
-            inner: emlite::Val::global("OscillatorNode")
+            inner: Any::global("OscillatorNode")
                 .new(&[context.into(), options.into()])
                 .as_::<AudioScheduledSourceNode>(),
         }
     }
 }
 impl OscillatorNode {
+    /// Getter of the `type` attribute.
+    /// [`OscillatorNode.type`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/type)
     pub fn type_(&self) -> OscillatorType {
         self.inner.get("type").as_::<OscillatorType>()
     }
 
+    /// Setter of the `type` attribute.
+    /// [`OscillatorNode.type`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/type)
     pub fn set_type_(&mut self, value: &OscillatorType) {
         self.inner.set("type", value);
     }
 }
 impl OscillatorNode {
+    /// Getter of the `frequency` attribute.
+    /// [`OscillatorNode.frequency`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/frequency)
     pub fn frequency(&self) -> AudioParam {
         self.inner.get("frequency").as_::<AudioParam>()
     }
 }
 impl OscillatorNode {
+    /// Getter of the `detune` attribute.
+    /// [`OscillatorNode.detune`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/detune)
     pub fn detune(&self) -> AudioParam {
         self.inner.get("detune").as_::<AudioParam>()
     }
 }
 impl OscillatorNode {
+    /// The setPeriodicWave method.
+    /// [`OscillatorNode.setPeriodicWave`](https://developer.mozilla.org/en-US/docs/Web/API/OscillatorNode/setPeriodicWave)
     pub fn set_periodic_wave(&self, periodic_wave: &PeriodicWave) -> Undefined {
         self.inner
             .call("setPeriodicWave", &[periodic_wave.into()])

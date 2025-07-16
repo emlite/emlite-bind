@@ -1,25 +1,27 @@
 use super::*;
 
+/// The NDEFMessage class.
+/// [`NDEFMessage`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFMessage)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NDEFMessage {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for NDEFMessage {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         NDEFMessage {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for NDEFMessage {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,40 +31,43 @@ impl core::ops::DerefMut for NDEFMessage {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for NDEFMessage {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for NDEFMessage {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for NDEFMessage {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for NDEFMessage {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<NDEFMessage> for emlite::Val {
-    fn from(s: NDEFMessage) -> emlite::Val {
+impl From<NDEFMessage> for Any {
+    fn from(s: NDEFMessage) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&NDEFMessage> for emlite::Val {
-    fn from(s: &NDEFMessage) -> emlite::Val {
+impl From<&NDEFMessage> for Any {
+    fn from(s: &NDEFMessage) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(NDEFMessage);
 
 impl NDEFMessage {
+    /// The `new NDEFMessage(..)` constructor, creating a new NDEFMessage instance
     pub fn new(message_init: &Any) -> NDEFMessage {
         Self {
-            inner: emlite::Val::global("NDEFMessage")
+            inner: Any::global("NDEFMessage")
                 .new(&[message_init.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl NDEFMessage {
+    /// Getter of the `records` attribute.
+    /// [`NDEFMessage.records`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFMessage/records)
     pub fn records(&self) -> FrozenArray<NDEFRecord> {
         self.inner.get("records").as_::<FrozenArray<NDEFRecord>>()
     }

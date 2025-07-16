@@ -1,25 +1,27 @@
 use super::*;
 
+/// The WebGLUniformLocation class.
+/// [`WebGLUniformLocation`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLUniformLocation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGLUniformLocation {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for WebGLUniformLocation {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WebGLUniformLocation {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for WebGLUniformLocation {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,25 +31,25 @@ impl core::ops::DerefMut for WebGLUniformLocation {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WebGLUniformLocation {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WebGLUniformLocation {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WebGLUniformLocation {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WebGLUniformLocation {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WebGLUniformLocation> for emlite::Val {
-    fn from(s: WebGLUniformLocation) -> emlite::Val {
+impl From<WebGLUniformLocation> for Any {
+    fn from(s: WebGLUniformLocation) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WebGLUniformLocation> for emlite::Val {
-    fn from(s: &WebGLUniformLocation) -> emlite::Val {
+impl From<&WebGLUniformLocation> for Any {
+    fn from(s: &WebGLUniformLocation) -> Any {
         s.inner.clone().into()
     }
 }

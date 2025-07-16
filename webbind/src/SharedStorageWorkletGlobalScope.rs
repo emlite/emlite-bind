@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct StorageInterestGroup {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for StorageInterestGroup {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         StorageInterestGroup { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for StorageInterestGroup {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for StorageInterestGroup {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for StorageInterestGroup {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for StorageInterestGroup {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for StorageInterestGroup {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for StorageInterestGroup {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<StorageInterestGroup> for emlite::Val {
-    fn from(s: StorageInterestGroup) -> emlite::Val {
+impl From<StorageInterestGroup> for Any {
+    fn from(s: StorageInterestGroup) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&StorageInterestGroup> for emlite::Val {
-    fn from(s: &StorageInterestGroup) -> emlite::Val {
+impl From<&StorageInterestGroup> for Any {
+    fn from(s: &StorageInterestGroup) -> Any {
         s.inner.clone()
     }
 }
@@ -131,21 +131,23 @@ impl StorageInterestGroup {
         self.inner.set("estimatedSize", value);
     }
 }
+/// The SharedStorageWorkletGlobalScope class.
+/// [`SharedStorageWorkletGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SharedStorageWorkletGlobalScope {
     inner: WorkletGlobalScope,
 }
 impl FromVal for SharedStorageWorkletGlobalScope {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SharedStorageWorkletGlobalScope {
             inner: WorkletGlobalScope::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -160,31 +162,33 @@ impl core::ops::DerefMut for SharedStorageWorkletGlobalScope {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SharedStorageWorkletGlobalScope {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SharedStorageWorkletGlobalScope {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SharedStorageWorkletGlobalScope {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SharedStorageWorkletGlobalScope {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SharedStorageWorkletGlobalScope> for emlite::Val {
-    fn from(s: SharedStorageWorkletGlobalScope) -> emlite::Val {
+impl From<SharedStorageWorkletGlobalScope> for Any {
+    fn from(s: SharedStorageWorkletGlobalScope) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SharedStorageWorkletGlobalScope> for emlite::Val {
-    fn from(s: &SharedStorageWorkletGlobalScope) -> emlite::Val {
+impl From<&SharedStorageWorkletGlobalScope> for Any {
+    fn from(s: &SharedStorageWorkletGlobalScope) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SharedStorageWorkletGlobalScope);
 
 impl SharedStorageWorkletGlobalScope {
+    /// The register method.
+    /// [`SharedStorageWorkletGlobalScope.register`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/register)
     pub fn register(&self, name: &str, operation_ctor: &Function) -> Undefined {
         self.inner
             .call("register", &[name.into(), operation_ctor.into()])
@@ -192,11 +196,15 @@ impl SharedStorageWorkletGlobalScope {
     }
 }
 impl SharedStorageWorkletGlobalScope {
+    /// Getter of the `sharedStorage` attribute.
+    /// [`SharedStorageWorkletGlobalScope.sharedStorage`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/sharedStorage)
     pub fn shared_storage(&self) -> SharedStorage {
         self.inner.get("sharedStorage").as_::<SharedStorage>()
     }
 }
 impl SharedStorageWorkletGlobalScope {
+    /// Getter of the `privateAggregation` attribute.
+    /// [`SharedStorageWorkletGlobalScope.privateAggregation`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/privateAggregation)
     pub fn private_aggregation(&self) -> PrivateAggregation {
         self.inner
             .get("privateAggregation")
@@ -204,11 +212,15 @@ impl SharedStorageWorkletGlobalScope {
     }
 }
 impl SharedStorageWorkletGlobalScope {
+    /// The interestGroups method.
+    /// [`SharedStorageWorkletGlobalScope.interestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/interestGroups)
     pub fn interest_groups(&self) -> Promise {
         self.inner.call("interestGroups", &[]).as_::<Promise>()
     }
 }
 impl SharedStorageWorkletGlobalScope {
+    /// Getter of the `navigator` attribute.
+    /// [`SharedStorageWorkletGlobalScope.navigator`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/navigator)
     pub fn navigator(&self) -> SharedStorageWorkletNavigator {
         self.inner
             .get("navigator")

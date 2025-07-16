@@ -1,11 +1,11 @@
 macro_rules! bind {
     ($i:ident) => {
         impl emlite::FromVal for $i {
-            fn from_val(v: &emlite::Val) -> Self {
+            fn from_val(v: &$crate::prelude::Any) -> Self {
                 $i { inner: v.clone() }
             }
             fn take_ownership(v: emlite::env::Handle) -> Self {
-                Self::from_val(&emlite::Val::take_ownership(v))
+                Self::from_val(&$crate::prelude::Any::take_ownership(v))
             }
             fn as_handle(&self) -> emlite::env::Handle {
                 self.inner.as_handle()
@@ -13,7 +13,7 @@ macro_rules! bind {
         }
 
         impl core::ops::Deref for $i {
-            type Target = emlite::Val;
+            type Target = $crate::prelude::Any;
 
             fn deref(&self) -> &Self::Target {
                 &self.inner
@@ -26,29 +26,29 @@ macro_rules! bind {
             }
         }
 
-        impl AsRef<emlite::Val> for $i {
-            fn as_ref(&self) -> &emlite::Val {
+        impl AsRef<$crate::prelude::Any> for $i {
+            fn as_ref(&self) -> &$crate::prelude::Any {
                 &self.inner
             }
         }
 
-        impl AsMut<emlite::Val> for $i {
-            fn as_mut(&mut self) -> &mut emlite::Val {
+        impl AsMut<$crate::prelude::Any> for $i {
+            fn as_mut(&mut self) -> &mut $crate::prelude::Any {
                 &mut self.inner
             }
         }
 
-        impl From<$i> for emlite::Val {
-            fn from(x: $i) -> emlite::Val {
+        impl From<$i> for $crate::prelude::Any {
+            fn from(x: $i) -> $crate::prelude::Any {
                 use emlite::FromVal;
                 let handle = x.inner.as_handle();
                 core::mem::forget(x);
-                emlite::Val::take_ownership(handle)
+                $crate::prelude::Any::take_ownership(handle)
             }
         }
 
-        impl From<&$i> for emlite::Val {
-            fn from(x: &$i) -> emlite::Val {
+        impl From<&$i> for $crate::prelude::Any {
+            fn from(x: &$i) -> $crate::prelude::Any {
                 x.inner.clone()
             }
         }
@@ -62,36 +62,36 @@ macro_rules! impl_dyn_cast {
     ($ty:ty) => {
         impl $crate::prelude::DynCast for $ty {
             #[inline]
-            fn instanceof(val: &emlite::Val) -> bool {
-                // assumes `emlite::Val::instance_of(&ctor)` exists
-                let ctor = emlite::Val::global(stringify!($ty));
+            fn instanceof(val: &$crate::prelude::Any) -> bool {
+                // assumes `$crate::prelude::Any::instance_of(&ctor)` exists
+                let ctor = $crate::prelude::Any::global(stringify!($ty));
                 val.instanceof(ctor)
             }
             #[inline]
-            fn unchecked_from_val(v: emlite::Val) -> Self {
+            fn unchecked_from_val(v: $crate::prelude::Any) -> Self {
                 v.as_::<Self>() // zero-cost new-type cast
             }
             #[inline]
-            fn unchecked_from_val_ref(v: &emlite::Val) -> &Self {
-                unsafe { &*(v as *const emlite::Val as *const Self) }
+            fn unchecked_from_val_ref(v: &$crate::prelude::Any) -> &Self {
+                unsafe { &*(v as *const $crate::prelude::Any as *const Self) }
             }
         }
     };
     ($ty:ty, $global_ctor:expr) => {
         impl $crate::prelude::DynCast for $ty {
             #[inline]
-            fn instanceof(val: &emlite::Val) -> bool {
-                // assumes `emlite::Val::instance_of(&ctor)` exists
-                let ctor = emlite::Val::global($global_ctor);
+            fn instanceof(val: &$crate::prelude::Any) -> bool {
+                // assumes `$crate::prelude::Any::instance_of(&ctor)` exists
+                let ctor = $crate::prelude::Any::global($global_ctor);
                 val.instanceof(ctor)
             }
             #[inline]
-            fn unchecked_from_val(v: emlite::Val) -> Self {
+            fn unchecked_from_val(v: $crate::prelude::Any) -> Self {
                 v.as_::<Self>() // zero-cost new-type cast
             }
             #[inline]
-            fn unchecked_from_val_ref(v: &emlite::Val) -> &Self {
-                unsafe { &*(v as *const emlite::Val as *const Self) }
+            fn unchecked_from_val_ref(v: &$crate::prelude::Any) -> &Self {
+                unsafe { &*(v as *const $crate::prelude::Any as *const Self) }
             }
         }
     };

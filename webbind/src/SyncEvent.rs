@@ -1,20 +1,22 @@
 use super::*;
 
+/// The SyncEvent class.
+/// [`SyncEvent`](https://developer.mozilla.org/en-US/docs/Web/API/SyncEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SyncEvent {
     inner: ExtendableEvent,
 }
 impl FromVal for SyncEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SyncEvent {
             inner: ExtendableEvent::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,45 +31,50 @@ impl core::ops::DerefMut for SyncEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SyncEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SyncEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SyncEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SyncEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SyncEvent> for emlite::Val {
-    fn from(s: SyncEvent) -> emlite::Val {
+impl From<SyncEvent> for Any {
+    fn from(s: SyncEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SyncEvent> for emlite::Val {
-    fn from(s: &SyncEvent) -> emlite::Val {
+impl From<&SyncEvent> for Any {
+    fn from(s: &SyncEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SyncEvent);
 
 impl SyncEvent {
+    /// The `new SyncEvent(..)` constructor, creating a new SyncEvent instance
     pub fn new(type_: &str, init: &Any) -> SyncEvent {
         Self {
-            inner: emlite::Val::global("SyncEvent")
+            inner: Any::global("SyncEvent")
                 .new(&[type_.into(), init.into()])
                 .as_::<ExtendableEvent>(),
         }
     }
 }
 impl SyncEvent {
+    /// Getter of the `tag` attribute.
+    /// [`SyncEvent.tag`](https://developer.mozilla.org/en-US/docs/Web/API/SyncEvent/tag)
     pub fn tag(&self) -> String {
         self.inner.get("tag").as_::<String>()
     }
 }
 impl SyncEvent {
+    /// Getter of the `lastChance` attribute.
+    /// [`SyncEvent.lastChance`](https://developer.mozilla.org/en-US/docs/Web/API/SyncEvent/lastChance)
     pub fn last_chance(&self) -> bool {
         self.inner.get("lastChance").as_::<bool>()
     }

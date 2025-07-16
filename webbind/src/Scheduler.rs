@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SchedulerPostTaskOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for SchedulerPostTaskOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SchedulerPostTaskOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for SchedulerPostTaskOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for SchedulerPostTaskOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SchedulerPostTaskOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SchedulerPostTaskOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SchedulerPostTaskOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SchedulerPostTaskOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SchedulerPostTaskOptions> for emlite::Val {
-    fn from(s: SchedulerPostTaskOptions) -> emlite::Val {
+impl From<SchedulerPostTaskOptions> for Any {
+    fn from(s: SchedulerPostTaskOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SchedulerPostTaskOptions> for emlite::Val {
-    fn from(s: &SchedulerPostTaskOptions) -> emlite::Val {
+impl From<&SchedulerPostTaskOptions> for Any {
+    fn from(s: &SchedulerPostTaskOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -77,26 +77,28 @@ impl SchedulerPostTaskOptions {
         self.inner.set("delay", value);
     }
 }
+/// The Scheduler class.
+/// [`Scheduler`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduler)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Scheduler {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Scheduler {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Scheduler {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Scheduler {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -106,37 +108,40 @@ impl core::ops::DerefMut for Scheduler {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Scheduler {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Scheduler {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Scheduler {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Scheduler {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Scheduler> for emlite::Val {
-    fn from(s: Scheduler) -> emlite::Val {
+impl From<Scheduler> for Any {
+    fn from(s: Scheduler) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Scheduler> for emlite::Val {
-    fn from(s: &Scheduler) -> emlite::Val {
+impl From<&Scheduler> for Any {
+    fn from(s: &Scheduler) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Scheduler);
 
 impl Scheduler {
+    /// The postTask method.
+    /// [`Scheduler.postTask`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduler/postTask)
     pub fn post_task0(&self, callback: &Function) -> Promise {
         self.inner
             .call("postTask", &[callback.into()])
             .as_::<Promise>()
     }
-
+    /// The postTask method.
+    /// [`Scheduler.postTask`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduler/postTask)
     pub fn post_task1(&self, callback: &Function, options: &SchedulerPostTaskOptions) -> Promise {
         self.inner
             .call("postTask", &[callback.into(), options.into()])
@@ -144,6 +149,8 @@ impl Scheduler {
     }
 }
 impl Scheduler {
+    /// The yield method.
+    /// [`Scheduler.yield`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduler/yield)
     pub fn yield_(&self) -> Promise {
         self.inner.call("yield", &[]).as_::<Promise>()
     }

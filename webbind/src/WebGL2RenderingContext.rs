@@ -1,25 +1,27 @@
 use super::*;
 
+/// The WebGL2RenderingContext class.
+/// [`WebGL2RenderingContext`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGL2RenderingContext {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for WebGL2RenderingContext {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WebGL2RenderingContext {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for WebGL2RenderingContext {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for WebGL2RenderingContext {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WebGL2RenderingContext {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WebGL2RenderingContext {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WebGL2RenderingContext {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WebGL2RenderingContext {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WebGL2RenderingContext> for emlite::Val {
-    fn from(s: WebGL2RenderingContext) -> emlite::Val {
+impl From<WebGL2RenderingContext> for Any {
+    fn from(s: WebGL2RenderingContext) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WebGL2RenderingContext> for emlite::Val {
-    fn from(s: &WebGL2RenderingContext) -> emlite::Val {
+impl From<&WebGL2RenderingContext> for Any {
+    fn from(s: &WebGL2RenderingContext) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(WebGL2RenderingContext);
 
 impl WebGL2RenderingContext {
+    /// The makeXRCompatible method.
+    /// [`WebGL2RenderingContext.makeXRCompatible`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/makeXRCompatible)
     pub fn make_xr_compatible(&self) -> Promise {
         self.inner.call("makeXRCompatible", &[]).as_::<Promise>()
     }
 }
 impl WebGL2RenderingContext {
+    /// The copyBufferSubData method.
+    /// [`WebGL2RenderingContext.copyBufferSubData`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/copyBufferSubData)
     pub fn copy_buffer_sub_data(
         &self,
         read_target: &Any,
@@ -82,6 +88,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The getBufferSubData method.
+    /// [`WebGL2RenderingContext.getBufferSubData`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getBufferSubData)
     pub fn get_buffer_sub_data0(
         &self,
         target: &Any,
@@ -95,7 +103,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The getBufferSubData method.
+    /// [`WebGL2RenderingContext.getBufferSubData`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getBufferSubData)
     pub fn get_buffer_sub_data1(
         &self,
         target: &Any,
@@ -115,7 +124,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The getBufferSubData method.
+    /// [`WebGL2RenderingContext.getBufferSubData`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getBufferSubData)
     pub fn get_buffer_sub_data2(
         &self,
         target: &Any,
@@ -139,6 +149,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The blitFramebuffer method.
+    /// [`WebGL2RenderingContext.blitFramebuffer`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/blitFramebuffer)
     pub fn blit_framebuffer(
         &self,
         src_x0: &Any,
@@ -172,6 +184,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The framebufferTextureLayer method.
+    /// [`WebGL2RenderingContext.framebufferTextureLayer`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/framebufferTextureLayer)
     pub fn framebuffer_texture_layer(
         &self,
         target: &Any,
@@ -195,6 +209,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The invalidateFramebuffer method.
+    /// [`WebGL2RenderingContext.invalidateFramebuffer`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/invalidateFramebuffer)
     pub fn invalidate_framebuffer(&self, target: &Any, attachments: &Sequence<Any>) -> Undefined {
         self.inner
             .call(
@@ -205,6 +221,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The invalidateSubFramebuffer method.
+    /// [`WebGL2RenderingContext.invalidateSubFramebuffer`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/invalidateSubFramebuffer)
     pub fn invalidate_sub_framebuffer(
         &self,
         target: &Any,
@@ -230,6 +248,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The readBuffer method.
+    /// [`WebGL2RenderingContext.readBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/readBuffer)
     pub fn read_buffer(&self, src: &Any) -> Undefined {
         self.inner
             .call("readBuffer", &[src.into()])
@@ -237,6 +257,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The getInternalformatParameter method.
+    /// [`WebGL2RenderingContext.getInternalformatParameter`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getInternalformatParameter)
     pub fn get_internalformat_parameter(
         &self,
         target: &Any,
@@ -252,6 +274,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The renderbufferStorageMultisample method.
+    /// [`WebGL2RenderingContext.renderbufferStorageMultisample`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/renderbufferStorageMultisample)
     pub fn renderbuffer_storage_multisample(
         &self,
         target: &Any,
@@ -275,6 +299,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The texStorage2D method.
+    /// [`WebGL2RenderingContext.texStorage2D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/texStorage2D)
     pub fn tex_storage2_d(
         &self,
         target: &Any,
@@ -298,6 +324,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The texStorage3D method.
+    /// [`WebGL2RenderingContext.texStorage3D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/texStorage3D)
     pub fn tex_storage3_d(
         &self,
         target: &Any,
@@ -323,6 +351,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The texImage3D method.
+    /// [`WebGL2RenderingContext.texImage3D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/texImage3D)
     pub fn tex_image3_d(
         &self,
         target: &Any,
@@ -358,6 +388,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The texSubImage3D method.
+    /// [`WebGL2RenderingContext.texSubImage3D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/texSubImage3D)
     pub fn tex_sub_image3_d0(
         &self,
         target: &Any,
@@ -391,7 +423,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The texSubImage3D method.
+    /// [`WebGL2RenderingContext.texSubImage3D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/texSubImage3D)
     pub fn tex_sub_image3_d1(
         &self,
         target: &Any,
@@ -429,6 +462,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The copyTexSubImage3D method.
+    /// [`WebGL2RenderingContext.copyTexSubImage3D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/copyTexSubImage3D)
     pub fn copy_tex_sub_image3_d(
         &self,
         target: &Any,
@@ -460,6 +495,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The compressedTexImage3D method.
+    /// [`WebGL2RenderingContext.compressedTexImage3D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/compressedTexImage3D)
     pub fn compressed_tex_image3_d0(
         &self,
         target: &Any,
@@ -487,7 +524,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The compressedTexImage3D method.
+    /// [`WebGL2RenderingContext.compressedTexImage3D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/compressedTexImage3D)
     pub fn compressed_tex_image3_d1(
         &self,
         target: &Any,
@@ -517,7 +555,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The compressedTexImage3D method.
+    /// [`WebGL2RenderingContext.compressedTexImage3D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/compressedTexImage3D)
     pub fn compressed_tex_image3_d2(
         &self,
         target: &Any,
@@ -551,6 +590,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The compressedTexSubImage3D method.
+    /// [`WebGL2RenderingContext.compressedTexSubImage3D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/compressedTexSubImage3D)
     pub fn compressed_tex_sub_image3_d0(
         &self,
         target: &Any,
@@ -582,7 +623,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The compressedTexSubImage3D method.
+    /// [`WebGL2RenderingContext.compressedTexSubImage3D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/compressedTexSubImage3D)
     pub fn compressed_tex_sub_image3_d1(
         &self,
         target: &Any,
@@ -616,7 +658,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The compressedTexSubImage3D method.
+    /// [`WebGL2RenderingContext.compressedTexSubImage3D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/compressedTexSubImage3D)
     pub fn compressed_tex_sub_image3_d2(
         &self,
         target: &Any,
@@ -654,6 +697,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The getFragDataLocation method.
+    /// [`WebGL2RenderingContext.getFragDataLocation`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getFragDataLocation)
     pub fn get_frag_data_location(&self, program: &WebGLProgram, name: &str) -> Any {
         self.inner
             .call("getFragDataLocation", &[program.into(), name.into()])
@@ -661,6 +706,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform1ui method.
+    /// [`WebGL2RenderingContext.uniform1ui`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform1ui)
     pub fn uniform1ui(&self, location: &WebGLUniformLocation, v0: &Any) -> Undefined {
         self.inner
             .call("uniform1ui", &[location.into(), v0.into()])
@@ -668,6 +715,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform2ui method.
+    /// [`WebGL2RenderingContext.uniform2ui`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform2ui)
     pub fn uniform2ui(&self, location: &WebGLUniformLocation, v0: &Any, v1: &Any) -> Undefined {
         self.inner
             .call("uniform2ui", &[location.into(), v0.into(), v1.into()])
@@ -675,6 +724,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform3ui method.
+    /// [`WebGL2RenderingContext.uniform3ui`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform3ui)
     pub fn uniform3ui(
         &self,
         location: &WebGLUniformLocation,
@@ -691,6 +742,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform4ui method.
+    /// [`WebGL2RenderingContext.uniform4ui`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform4ui)
     pub fn uniform4ui(
         &self,
         location: &WebGLUniformLocation,
@@ -708,12 +761,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform1uiv method.
+    /// [`WebGL2RenderingContext.uniform1uiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform1uiv)
     pub fn uniform1uiv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform1uiv", &[location.into(), data.into()])
             .as_::<Undefined>()
     }
-
+    /// The uniform1uiv method.
+    /// [`WebGL2RenderingContext.uniform1uiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform1uiv)
     pub fn uniform1uiv1(
         &self,
         location: &WebGLUniformLocation,
@@ -727,7 +783,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniform1uiv method.
+    /// [`WebGL2RenderingContext.uniform1uiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform1uiv)
     pub fn uniform1uiv2(
         &self,
         location: &WebGLUniformLocation,
@@ -749,12 +806,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform2uiv method.
+    /// [`WebGL2RenderingContext.uniform2uiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform2uiv)
     pub fn uniform2uiv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform2uiv", &[location.into(), data.into()])
             .as_::<Undefined>()
     }
-
+    /// The uniform2uiv method.
+    /// [`WebGL2RenderingContext.uniform2uiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform2uiv)
     pub fn uniform2uiv1(
         &self,
         location: &WebGLUniformLocation,
@@ -768,7 +828,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniform2uiv method.
+    /// [`WebGL2RenderingContext.uniform2uiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform2uiv)
     pub fn uniform2uiv2(
         &self,
         location: &WebGLUniformLocation,
@@ -790,12 +851,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform3uiv method.
+    /// [`WebGL2RenderingContext.uniform3uiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform3uiv)
     pub fn uniform3uiv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform3uiv", &[location.into(), data.into()])
             .as_::<Undefined>()
     }
-
+    /// The uniform3uiv method.
+    /// [`WebGL2RenderingContext.uniform3uiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform3uiv)
     pub fn uniform3uiv1(
         &self,
         location: &WebGLUniformLocation,
@@ -809,7 +873,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniform3uiv method.
+    /// [`WebGL2RenderingContext.uniform3uiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform3uiv)
     pub fn uniform3uiv2(
         &self,
         location: &WebGLUniformLocation,
@@ -831,12 +896,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform4uiv method.
+    /// [`WebGL2RenderingContext.uniform4uiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform4uiv)
     pub fn uniform4uiv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform4uiv", &[location.into(), data.into()])
             .as_::<Undefined>()
     }
-
+    /// The uniform4uiv method.
+    /// [`WebGL2RenderingContext.uniform4uiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform4uiv)
     pub fn uniform4uiv1(
         &self,
         location: &WebGLUniformLocation,
@@ -850,7 +918,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniform4uiv method.
+    /// [`WebGL2RenderingContext.uniform4uiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform4uiv)
     pub fn uniform4uiv2(
         &self,
         location: &WebGLUniformLocation,
@@ -872,6 +941,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniformMatrix3x2fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix3x2fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix3x2fv)
     pub fn uniform_matrix3x2fv0(
         &self,
         location: &WebGLUniformLocation,
@@ -885,7 +956,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix3x2fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix3x2fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix3x2fv)
     pub fn uniform_matrix3x2fv1(
         &self,
         location: &WebGLUniformLocation,
@@ -905,7 +977,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix3x2fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix3x2fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix3x2fv)
     pub fn uniform_matrix3x2fv2(
         &self,
         location: &WebGLUniformLocation,
@@ -929,6 +1002,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniformMatrix4x2fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix4x2fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix4x2fv)
     pub fn uniform_matrix4x2fv0(
         &self,
         location: &WebGLUniformLocation,
@@ -942,7 +1017,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix4x2fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix4x2fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix4x2fv)
     pub fn uniform_matrix4x2fv1(
         &self,
         location: &WebGLUniformLocation,
@@ -962,7 +1038,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix4x2fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix4x2fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix4x2fv)
     pub fn uniform_matrix4x2fv2(
         &self,
         location: &WebGLUniformLocation,
@@ -986,6 +1063,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniformMatrix2x3fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix2x3fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix2x3fv)
     pub fn uniform_matrix2x3fv0(
         &self,
         location: &WebGLUniformLocation,
@@ -999,7 +1078,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix2x3fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix2x3fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix2x3fv)
     pub fn uniform_matrix2x3fv1(
         &self,
         location: &WebGLUniformLocation,
@@ -1019,7 +1099,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix2x3fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix2x3fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix2x3fv)
     pub fn uniform_matrix2x3fv2(
         &self,
         location: &WebGLUniformLocation,
@@ -1043,6 +1124,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniformMatrix4x3fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix4x3fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix4x3fv)
     pub fn uniform_matrix4x3fv0(
         &self,
         location: &WebGLUniformLocation,
@@ -1056,7 +1139,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix4x3fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix4x3fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix4x3fv)
     pub fn uniform_matrix4x3fv1(
         &self,
         location: &WebGLUniformLocation,
@@ -1076,7 +1160,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix4x3fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix4x3fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix4x3fv)
     pub fn uniform_matrix4x3fv2(
         &self,
         location: &WebGLUniformLocation,
@@ -1100,6 +1185,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniformMatrix2x4fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix2x4fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix2x4fv)
     pub fn uniform_matrix2x4fv0(
         &self,
         location: &WebGLUniformLocation,
@@ -1113,7 +1200,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix2x4fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix2x4fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix2x4fv)
     pub fn uniform_matrix2x4fv1(
         &self,
         location: &WebGLUniformLocation,
@@ -1133,7 +1221,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix2x4fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix2x4fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix2x4fv)
     pub fn uniform_matrix2x4fv2(
         &self,
         location: &WebGLUniformLocation,
@@ -1157,6 +1246,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniformMatrix3x4fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix3x4fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix3x4fv)
     pub fn uniform_matrix3x4fv0(
         &self,
         location: &WebGLUniformLocation,
@@ -1170,7 +1261,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix3x4fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix3x4fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix3x4fv)
     pub fn uniform_matrix3x4fv1(
         &self,
         location: &WebGLUniformLocation,
@@ -1190,7 +1282,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix3x4fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix3x4fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix3x4fv)
     pub fn uniform_matrix3x4fv2(
         &self,
         location: &WebGLUniformLocation,
@@ -1214,6 +1307,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The vertexAttribI4i method.
+    /// [`WebGL2RenderingContext.vertexAttribI4i`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/vertexAttribI4i)
     pub fn vertex_attrib_i4i(&self, index: &Any, x: &Any, y: &Any, z: &Any, w: &Any) -> Undefined {
         self.inner
             .call(
@@ -1224,6 +1319,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The vertexAttribI4iv method.
+    /// [`WebGL2RenderingContext.vertexAttribI4iv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/vertexAttribI4iv)
     pub fn vertex_attrib_i4iv(&self, index: &Any, values: &Any) -> Undefined {
         self.inner
             .call("vertexAttribI4iv", &[index.into(), values.into()])
@@ -1231,6 +1328,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The vertexAttribI4ui method.
+    /// [`WebGL2RenderingContext.vertexAttribI4ui`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/vertexAttribI4ui)
     pub fn vertex_attrib_i4ui(&self, index: &Any, x: &Any, y: &Any, z: &Any, w: &Any) -> Undefined {
         self.inner
             .call(
@@ -1241,6 +1340,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The vertexAttribI4uiv method.
+    /// [`WebGL2RenderingContext.vertexAttribI4uiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/vertexAttribI4uiv)
     pub fn vertex_attrib_i4uiv(&self, index: &Any, values: &Any) -> Undefined {
         self.inner
             .call("vertexAttribI4uiv", &[index.into(), values.into()])
@@ -1248,6 +1349,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The vertexAttribIPointer method.
+    /// [`WebGL2RenderingContext.vertexAttribIPointer`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/vertexAttribIPointer)
     pub fn vertex_attrib_i_pointer(
         &self,
         index: &Any,
@@ -1271,6 +1374,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The vertexAttribDivisor method.
+    /// [`WebGL2RenderingContext.vertexAttribDivisor`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/vertexAttribDivisor)
     pub fn vertex_attrib_divisor(&self, index: &Any, divisor: &Any) -> Undefined {
         self.inner
             .call("vertexAttribDivisor", &[index.into(), divisor.into()])
@@ -1278,6 +1383,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The drawArraysInstanced method.
+    /// [`WebGL2RenderingContext.drawArraysInstanced`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/drawArraysInstanced)
     pub fn draw_arrays_instanced(
         &self,
         mode: &Any,
@@ -1299,6 +1406,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The drawElementsInstanced method.
+    /// [`WebGL2RenderingContext.drawElementsInstanced`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/drawElementsInstanced)
     pub fn draw_elements_instanced(
         &self,
         mode: &Any,
@@ -1322,6 +1431,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The drawRangeElements method.
+    /// [`WebGL2RenderingContext.drawRangeElements`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/drawRangeElements)
     pub fn draw_range_elements(
         &self,
         mode: &Any,
@@ -1347,6 +1458,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The drawBuffers method.
+    /// [`WebGL2RenderingContext.drawBuffers`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/drawBuffers)
     pub fn draw_buffers(&self, buffers: &Sequence<Any>) -> Undefined {
         self.inner
             .call("drawBuffers", &[buffers.into()])
@@ -1354,6 +1467,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The clearBufferfv method.
+    /// [`WebGL2RenderingContext.clearBufferfv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/clearBufferfv)
     pub fn clear_bufferfv0(&self, buffer: &Any, drawbuffer: &Any, values: &Any) -> Undefined {
         self.inner
             .call(
@@ -1362,7 +1477,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The clearBufferfv method.
+    /// [`WebGL2RenderingContext.clearBufferfv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/clearBufferfv)
     pub fn clear_bufferfv1(
         &self,
         buffer: &Any,
@@ -1384,6 +1500,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The clearBufferiv method.
+    /// [`WebGL2RenderingContext.clearBufferiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/clearBufferiv)
     pub fn clear_bufferiv0(&self, buffer: &Any, drawbuffer: &Any, values: &Any) -> Undefined {
         self.inner
             .call(
@@ -1392,7 +1510,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The clearBufferiv method.
+    /// [`WebGL2RenderingContext.clearBufferiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/clearBufferiv)
     pub fn clear_bufferiv1(
         &self,
         buffer: &Any,
@@ -1414,6 +1533,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The clearBufferuiv method.
+    /// [`WebGL2RenderingContext.clearBufferuiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/clearBufferuiv)
     pub fn clear_bufferuiv0(&self, buffer: &Any, drawbuffer: &Any, values: &Any) -> Undefined {
         self.inner
             .call(
@@ -1422,7 +1543,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The clearBufferuiv method.
+    /// [`WebGL2RenderingContext.clearBufferuiv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/clearBufferuiv)
     pub fn clear_bufferuiv1(
         &self,
         buffer: &Any,
@@ -1444,6 +1566,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The clearBufferfi method.
+    /// [`WebGL2RenderingContext.clearBufferfi`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/clearBufferfi)
     pub fn clear_bufferfi(
         &self,
         buffer: &Any,
@@ -1465,11 +1589,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The createQuery method.
+    /// [`WebGL2RenderingContext.createQuery`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/createQuery)
     pub fn create_query(&self) -> WebGLQuery {
         self.inner.call("createQuery", &[]).as_::<WebGLQuery>()
     }
 }
 impl WebGL2RenderingContext {
+    /// The deleteQuery method.
+    /// [`WebGL2RenderingContext.deleteQuery`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/deleteQuery)
     pub fn delete_query(&self, query: &WebGLQuery) -> Undefined {
         self.inner
             .call("deleteQuery", &[query.into()])
@@ -1477,11 +1605,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The isQuery method.
+    /// [`WebGL2RenderingContext.isQuery`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/isQuery)
     pub fn is_query(&self, query: &WebGLQuery) -> Any {
         self.inner.call("isQuery", &[query.into()]).as_::<Any>()
     }
 }
 impl WebGL2RenderingContext {
+    /// The beginQuery method.
+    /// [`WebGL2RenderingContext.beginQuery`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/beginQuery)
     pub fn begin_query(&self, target: &Any, query: &WebGLQuery) -> Undefined {
         self.inner
             .call("beginQuery", &[target.into(), query.into()])
@@ -1489,6 +1621,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The endQuery method.
+    /// [`WebGL2RenderingContext.endQuery`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/endQuery)
     pub fn end_query(&self, target: &Any) -> Undefined {
         self.inner
             .call("endQuery", &[target.into()])
@@ -1496,6 +1630,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The getQuery method.
+    /// [`WebGL2RenderingContext.getQuery`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getQuery)
     pub fn get_query(&self, target: &Any, pname: &Any) -> WebGLQuery {
         self.inner
             .call("getQuery", &[target.into(), pname.into()])
@@ -1503,6 +1639,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The getQueryParameter method.
+    /// [`WebGL2RenderingContext.getQueryParameter`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getQueryParameter)
     pub fn get_query_parameter(&self, query: &WebGLQuery, pname: &Any) -> Any {
         self.inner
             .call("getQueryParameter", &[query.into(), pname.into()])
@@ -1510,11 +1648,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The createSampler method.
+    /// [`WebGL2RenderingContext.createSampler`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/createSampler)
     pub fn create_sampler(&self) -> WebGLSampler {
         self.inner.call("createSampler", &[]).as_::<WebGLSampler>()
     }
 }
 impl WebGL2RenderingContext {
+    /// The deleteSampler method.
+    /// [`WebGL2RenderingContext.deleteSampler`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/deleteSampler)
     pub fn delete_sampler(&self, sampler: &WebGLSampler) -> Undefined {
         self.inner
             .call("deleteSampler", &[sampler.into()])
@@ -1522,11 +1664,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The isSampler method.
+    /// [`WebGL2RenderingContext.isSampler`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/isSampler)
     pub fn is_sampler(&self, sampler: &WebGLSampler) -> Any {
         self.inner.call("isSampler", &[sampler.into()]).as_::<Any>()
     }
 }
 impl WebGL2RenderingContext {
+    /// The bindSampler method.
+    /// [`WebGL2RenderingContext.bindSampler`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/bindSampler)
     pub fn bind_sampler(&self, unit: &Any, sampler: &WebGLSampler) -> Undefined {
         self.inner
             .call("bindSampler", &[unit.into(), sampler.into()])
@@ -1534,6 +1680,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The samplerParameteri method.
+    /// [`WebGL2RenderingContext.samplerParameteri`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/samplerParameteri)
     pub fn sampler_parameteri(
         &self,
         sampler: &WebGLSampler,
@@ -1549,6 +1697,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The samplerParameterf method.
+    /// [`WebGL2RenderingContext.samplerParameterf`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/samplerParameterf)
     pub fn sampler_parameterf(
         &self,
         sampler: &WebGLSampler,
@@ -1564,6 +1714,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The getSamplerParameter method.
+    /// [`WebGL2RenderingContext.getSamplerParameter`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getSamplerParameter)
     pub fn get_sampler_parameter(&self, sampler: &WebGLSampler, pname: &Any) -> Any {
         self.inner
             .call("getSamplerParameter", &[sampler.into(), pname.into()])
@@ -1571,6 +1723,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The fenceSync method.
+    /// [`WebGL2RenderingContext.fenceSync`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/fenceSync)
     pub fn fence_sync(&self, condition: &Any, flags: &Any) -> WebGLSync {
         self.inner
             .call("fenceSync", &[condition.into(), flags.into()])
@@ -1578,11 +1732,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The isSync method.
+    /// [`WebGL2RenderingContext.isSync`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/isSync)
     pub fn is_sync(&self, sync: &WebGLSync) -> Any {
         self.inner.call("isSync", &[sync.into()]).as_::<Any>()
     }
 }
 impl WebGL2RenderingContext {
+    /// The deleteSync method.
+    /// [`WebGL2RenderingContext.deleteSync`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/deleteSync)
     pub fn delete_sync(&self, sync: &WebGLSync) -> Undefined {
         self.inner
             .call("deleteSync", &[sync.into()])
@@ -1590,6 +1748,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The clientWaitSync method.
+    /// [`WebGL2RenderingContext.clientWaitSync`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/clientWaitSync)
     pub fn client_wait_sync(&self, sync: &WebGLSync, flags: &Any, timeout: &Any) -> Any {
         self.inner
             .call(
@@ -1600,6 +1760,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The waitSync method.
+    /// [`WebGL2RenderingContext.waitSync`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/waitSync)
     pub fn wait_sync(&self, sync: &WebGLSync, flags: &Any, timeout: &Any) -> Undefined {
         self.inner
             .call("waitSync", &[sync.into(), flags.into(), timeout.into()])
@@ -1607,6 +1769,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The getSyncParameter method.
+    /// [`WebGL2RenderingContext.getSyncParameter`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getSyncParameter)
     pub fn get_sync_parameter(&self, sync: &WebGLSync, pname: &Any) -> Any {
         self.inner
             .call("getSyncParameter", &[sync.into(), pname.into()])
@@ -1614,6 +1778,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The createTransformFeedback method.
+    /// [`WebGL2RenderingContext.createTransformFeedback`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/createTransformFeedback)
     pub fn create_transform_feedback(&self) -> WebGLTransformFeedback {
         self.inner
             .call("createTransformFeedback", &[])
@@ -1621,6 +1787,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The deleteTransformFeedback method.
+    /// [`WebGL2RenderingContext.deleteTransformFeedback`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/deleteTransformFeedback)
     pub fn delete_transform_feedback(&self, tf: &WebGLTransformFeedback) -> Undefined {
         self.inner
             .call("deleteTransformFeedback", &[tf.into()])
@@ -1628,6 +1796,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The isTransformFeedback method.
+    /// [`WebGL2RenderingContext.isTransformFeedback`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/isTransformFeedback)
     pub fn is_transform_feedback(&self, tf: &WebGLTransformFeedback) -> Any {
         self.inner
             .call("isTransformFeedback", &[tf.into()])
@@ -1635,6 +1805,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The bindTransformFeedback method.
+    /// [`WebGL2RenderingContext.bindTransformFeedback`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/bindTransformFeedback)
     pub fn bind_transform_feedback(&self, target: &Any, tf: &WebGLTransformFeedback) -> Undefined {
         self.inner
             .call("bindTransformFeedback", &[target.into(), tf.into()])
@@ -1642,6 +1814,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The beginTransformFeedback method.
+    /// [`WebGL2RenderingContext.beginTransformFeedback`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/beginTransformFeedback)
     pub fn begin_transform_feedback(&self, primitive_mode: &Any) -> Undefined {
         self.inner
             .call("beginTransformFeedback", &[primitive_mode.into()])
@@ -1649,6 +1823,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The endTransformFeedback method.
+    /// [`WebGL2RenderingContext.endTransformFeedback`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/endTransformFeedback)
     pub fn end_transform_feedback(&self) -> Undefined {
         self.inner
             .call("endTransformFeedback", &[])
@@ -1656,6 +1832,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The transformFeedbackVaryings method.
+    /// [`WebGL2RenderingContext.transformFeedbackVaryings`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/transformFeedbackVaryings)
     pub fn transform_feedback_varyings(
         &self,
         program: &WebGLProgram,
@@ -1671,6 +1849,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The getTransformFeedbackVarying method.
+    /// [`WebGL2RenderingContext.getTransformFeedbackVarying`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getTransformFeedbackVarying)
     pub fn get_transform_feedback_varying(
         &self,
         program: &WebGLProgram,
@@ -1685,6 +1865,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The pauseTransformFeedback method.
+    /// [`WebGL2RenderingContext.pauseTransformFeedback`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/pauseTransformFeedback)
     pub fn pause_transform_feedback(&self) -> Undefined {
         self.inner
             .call("pauseTransformFeedback", &[])
@@ -1692,6 +1874,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The resumeTransformFeedback method.
+    /// [`WebGL2RenderingContext.resumeTransformFeedback`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/resumeTransformFeedback)
     pub fn resume_transform_feedback(&self) -> Undefined {
         self.inner
             .call("resumeTransformFeedback", &[])
@@ -1699,6 +1883,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The bindBufferBase method.
+    /// [`WebGL2RenderingContext.bindBufferBase`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/bindBufferBase)
     pub fn bind_buffer_base(&self, target: &Any, index: &Any, buffer: &WebGLBuffer) -> Undefined {
         self.inner
             .call(
@@ -1709,6 +1895,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The bindBufferRange method.
+    /// [`WebGL2RenderingContext.bindBufferRange`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/bindBufferRange)
     pub fn bind_buffer_range(
         &self,
         target: &Any,
@@ -1732,6 +1920,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The getIndexedParameter method.
+    /// [`WebGL2RenderingContext.getIndexedParameter`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getIndexedParameter)
     pub fn get_indexed_parameter(&self, target: &Any, index: &Any) -> Any {
         self.inner
             .call("getIndexedParameter", &[target.into(), index.into()])
@@ -1739,6 +1929,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The getUniformIndices method.
+    /// [`WebGL2RenderingContext.getUniformIndices`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getUniformIndices)
     pub fn get_uniform_indices(
         &self,
         program: &WebGLProgram,
@@ -1750,6 +1942,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The getActiveUniforms method.
+    /// [`WebGL2RenderingContext.getActiveUniforms`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getActiveUniforms)
     pub fn get_active_uniforms(
         &self,
         program: &WebGLProgram,
@@ -1765,6 +1959,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The getUniformBlockIndex method.
+    /// [`WebGL2RenderingContext.getUniformBlockIndex`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getUniformBlockIndex)
     pub fn get_uniform_block_index(&self, program: &WebGLProgram, uniform_block_name: &str) -> Any {
         self.inner
             .call(
@@ -1775,6 +1971,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The getActiveUniformBlockParameter method.
+    /// [`WebGL2RenderingContext.getActiveUniformBlockParameter`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getActiveUniformBlockParameter)
     pub fn get_active_uniform_block_parameter(
         &self,
         program: &WebGLProgram,
@@ -1790,6 +1988,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The getActiveUniformBlockName method.
+    /// [`WebGL2RenderingContext.getActiveUniformBlockName`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getActiveUniformBlockName)
     pub fn get_active_uniform_block_name(
         &self,
         program: &WebGLProgram,
@@ -1804,6 +2004,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniformBlockBinding method.
+    /// [`WebGL2RenderingContext.uniformBlockBinding`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformBlockBinding)
     pub fn uniform_block_binding(
         &self,
         program: &WebGLProgram,
@@ -1823,6 +2025,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The createVertexArray method.
+    /// [`WebGL2RenderingContext.createVertexArray`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/createVertexArray)
     pub fn create_vertex_array(&self) -> WebGLVertexArrayObject {
         self.inner
             .call("createVertexArray", &[])
@@ -1830,6 +2034,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The deleteVertexArray method.
+    /// [`WebGL2RenderingContext.deleteVertexArray`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/deleteVertexArray)
     pub fn delete_vertex_array(&self, vertex_array: &WebGLVertexArrayObject) -> Undefined {
         self.inner
             .call("deleteVertexArray", &[vertex_array.into()])
@@ -1837,6 +2043,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The isVertexArray method.
+    /// [`WebGL2RenderingContext.isVertexArray`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/isVertexArray)
     pub fn is_vertex_array(&self, vertex_array: &WebGLVertexArrayObject) -> Any {
         self.inner
             .call("isVertexArray", &[vertex_array.into()])
@@ -1844,6 +2052,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The bindVertexArray method.
+    /// [`WebGL2RenderingContext.bindVertexArray`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/bindVertexArray)
     pub fn bind_vertex_array(&self, array: &WebGLVertexArrayObject) -> Undefined {
         self.inner
             .call("bindVertexArray", &[array.into()])
@@ -1851,6 +2061,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The bufferData method.
+    /// [`WebGL2RenderingContext.bufferData`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/bufferData)
     pub fn buffer_data0(
         &self,
         target: &Any,
@@ -1870,7 +2082,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The bufferData method.
+    /// [`WebGL2RenderingContext.bufferData`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/bufferData)
     pub fn buffer_data1(
         &self,
         target: &Any,
@@ -1894,6 +2107,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The bufferSubData method.
+    /// [`WebGL2RenderingContext.bufferSubData`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/bufferSubData)
     pub fn buffer_sub_data0(
         &self,
         target: &Any,
@@ -1913,7 +2128,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The bufferSubData method.
+    /// [`WebGL2RenderingContext.bufferSubData`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/bufferSubData)
     pub fn buffer_sub_data1(
         &self,
         target: &Any,
@@ -1937,6 +2153,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The texImage2D method.
+    /// [`WebGL2RenderingContext.texImage2D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/texImage2D)
     pub fn tex_image2_d(
         &self,
         target: &Any,
@@ -1970,6 +2188,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The texSubImage2D method.
+    /// [`WebGL2RenderingContext.texSubImage2D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/texSubImage2D)
     pub fn tex_sub_image2_d(
         &self,
         target: &Any,
@@ -2003,6 +2223,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The compressedTexImage2D method.
+    /// [`WebGL2RenderingContext.compressedTexImage2D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/compressedTexImage2D)
     pub fn compressed_tex_image2_d0(
         &self,
         target: &Any,
@@ -2028,7 +2250,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The compressedTexImage2D method.
+    /// [`WebGL2RenderingContext.compressedTexImage2D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/compressedTexImage2D)
     pub fn compressed_tex_image2_d1(
         &self,
         target: &Any,
@@ -2056,7 +2279,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The compressedTexImage2D method.
+    /// [`WebGL2RenderingContext.compressedTexImage2D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/compressedTexImage2D)
     pub fn compressed_tex_image2_d2(
         &self,
         target: &Any,
@@ -2088,6 +2312,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The compressedTexSubImage2D method.
+    /// [`WebGL2RenderingContext.compressedTexSubImage2D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/compressedTexSubImage2D)
     pub fn compressed_tex_sub_image2_d0(
         &self,
         target: &Any,
@@ -2115,7 +2341,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The compressedTexSubImage2D method.
+    /// [`WebGL2RenderingContext.compressedTexSubImage2D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/compressedTexSubImage2D)
     pub fn compressed_tex_sub_image2_d1(
         &self,
         target: &Any,
@@ -2145,7 +2372,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The compressedTexSubImage2D method.
+    /// [`WebGL2RenderingContext.compressedTexSubImage2D`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/compressedTexSubImage2D)
     pub fn compressed_tex_sub_image2_d2(
         &self,
         target: &Any,
@@ -2179,12 +2407,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform1fv method.
+    /// [`WebGL2RenderingContext.uniform1fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform1fv)
     pub fn uniform1fv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform1fv", &[location.into(), data.into()])
             .as_::<Undefined>()
     }
-
+    /// The uniform1fv method.
+    /// [`WebGL2RenderingContext.uniform1fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform1fv)
     pub fn uniform1fv1(
         &self,
         location: &WebGLUniformLocation,
@@ -2198,7 +2429,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniform1fv method.
+    /// [`WebGL2RenderingContext.uniform1fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform1fv)
     pub fn uniform1fv2(
         &self,
         location: &WebGLUniformLocation,
@@ -2220,12 +2452,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform2fv method.
+    /// [`WebGL2RenderingContext.uniform2fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform2fv)
     pub fn uniform2fv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform2fv", &[location.into(), data.into()])
             .as_::<Undefined>()
     }
-
+    /// The uniform2fv method.
+    /// [`WebGL2RenderingContext.uniform2fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform2fv)
     pub fn uniform2fv1(
         &self,
         location: &WebGLUniformLocation,
@@ -2239,7 +2474,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniform2fv method.
+    /// [`WebGL2RenderingContext.uniform2fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform2fv)
     pub fn uniform2fv2(
         &self,
         location: &WebGLUniformLocation,
@@ -2261,12 +2497,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform3fv method.
+    /// [`WebGL2RenderingContext.uniform3fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform3fv)
     pub fn uniform3fv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform3fv", &[location.into(), data.into()])
             .as_::<Undefined>()
     }
-
+    /// The uniform3fv method.
+    /// [`WebGL2RenderingContext.uniform3fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform3fv)
     pub fn uniform3fv1(
         &self,
         location: &WebGLUniformLocation,
@@ -2280,7 +2519,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniform3fv method.
+    /// [`WebGL2RenderingContext.uniform3fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform3fv)
     pub fn uniform3fv2(
         &self,
         location: &WebGLUniformLocation,
@@ -2302,12 +2542,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform4fv method.
+    /// [`WebGL2RenderingContext.uniform4fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform4fv)
     pub fn uniform4fv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform4fv", &[location.into(), data.into()])
             .as_::<Undefined>()
     }
-
+    /// The uniform4fv method.
+    /// [`WebGL2RenderingContext.uniform4fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform4fv)
     pub fn uniform4fv1(
         &self,
         location: &WebGLUniformLocation,
@@ -2321,7 +2564,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniform4fv method.
+    /// [`WebGL2RenderingContext.uniform4fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform4fv)
     pub fn uniform4fv2(
         &self,
         location: &WebGLUniformLocation,
@@ -2343,12 +2587,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform1iv method.
+    /// [`WebGL2RenderingContext.uniform1iv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform1iv)
     pub fn uniform1iv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform1iv", &[location.into(), data.into()])
             .as_::<Undefined>()
     }
-
+    /// The uniform1iv method.
+    /// [`WebGL2RenderingContext.uniform1iv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform1iv)
     pub fn uniform1iv1(
         &self,
         location: &WebGLUniformLocation,
@@ -2362,7 +2609,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniform1iv method.
+    /// [`WebGL2RenderingContext.uniform1iv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform1iv)
     pub fn uniform1iv2(
         &self,
         location: &WebGLUniformLocation,
@@ -2384,12 +2632,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform2iv method.
+    /// [`WebGL2RenderingContext.uniform2iv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform2iv)
     pub fn uniform2iv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform2iv", &[location.into(), data.into()])
             .as_::<Undefined>()
     }
-
+    /// The uniform2iv method.
+    /// [`WebGL2RenderingContext.uniform2iv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform2iv)
     pub fn uniform2iv1(
         &self,
         location: &WebGLUniformLocation,
@@ -2403,7 +2654,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniform2iv method.
+    /// [`WebGL2RenderingContext.uniform2iv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform2iv)
     pub fn uniform2iv2(
         &self,
         location: &WebGLUniformLocation,
@@ -2425,12 +2677,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform3iv method.
+    /// [`WebGL2RenderingContext.uniform3iv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform3iv)
     pub fn uniform3iv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform3iv", &[location.into(), data.into()])
             .as_::<Undefined>()
     }
-
+    /// The uniform3iv method.
+    /// [`WebGL2RenderingContext.uniform3iv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform3iv)
     pub fn uniform3iv1(
         &self,
         location: &WebGLUniformLocation,
@@ -2444,7 +2699,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniform3iv method.
+    /// [`WebGL2RenderingContext.uniform3iv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform3iv)
     pub fn uniform3iv2(
         &self,
         location: &WebGLUniformLocation,
@@ -2466,12 +2722,15 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniform4iv method.
+    /// [`WebGL2RenderingContext.uniform4iv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform4iv)
     pub fn uniform4iv0(&self, location: &WebGLUniformLocation, data: &Any) -> Undefined {
         self.inner
             .call("uniform4iv", &[location.into(), data.into()])
             .as_::<Undefined>()
     }
-
+    /// The uniform4iv method.
+    /// [`WebGL2RenderingContext.uniform4iv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform4iv)
     pub fn uniform4iv1(
         &self,
         location: &WebGLUniformLocation,
@@ -2485,7 +2744,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniform4iv method.
+    /// [`WebGL2RenderingContext.uniform4iv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniform4iv)
     pub fn uniform4iv2(
         &self,
         location: &WebGLUniformLocation,
@@ -2507,6 +2767,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniformMatrix2fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix2fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix2fv)
     pub fn uniform_matrix2fv0(
         &self,
         location: &WebGLUniformLocation,
@@ -2520,7 +2782,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix2fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix2fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix2fv)
     pub fn uniform_matrix2fv1(
         &self,
         location: &WebGLUniformLocation,
@@ -2540,7 +2803,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix2fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix2fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix2fv)
     pub fn uniform_matrix2fv2(
         &self,
         location: &WebGLUniformLocation,
@@ -2564,6 +2828,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniformMatrix3fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix3fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix3fv)
     pub fn uniform_matrix3fv0(
         &self,
         location: &WebGLUniformLocation,
@@ -2577,7 +2843,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix3fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix3fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix3fv)
     pub fn uniform_matrix3fv1(
         &self,
         location: &WebGLUniformLocation,
@@ -2597,7 +2864,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix3fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix3fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix3fv)
     pub fn uniform_matrix3fv2(
         &self,
         location: &WebGLUniformLocation,
@@ -2621,6 +2889,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The uniformMatrix4fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix4fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix4fv)
     pub fn uniform_matrix4fv0(
         &self,
         location: &WebGLUniformLocation,
@@ -2634,7 +2904,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix4fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix4fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix4fv)
     pub fn uniform_matrix4fv1(
         &self,
         location: &WebGLUniformLocation,
@@ -2654,7 +2925,8 @@ impl WebGL2RenderingContext {
             )
             .as_::<Undefined>()
     }
-
+    /// The uniformMatrix4fv method.
+    /// [`WebGL2RenderingContext.uniformMatrix4fv`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/uniformMatrix4fv)
     pub fn uniform_matrix4fv2(
         &self,
         location: &WebGLUniformLocation,
@@ -2678,6 +2950,8 @@ impl WebGL2RenderingContext {
     }
 }
 impl WebGL2RenderingContext {
+    /// The readPixels method.
+    /// [`WebGL2RenderingContext.readPixels`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/readPixels)
     pub fn read_pixels(
         &self,
         x: &Any,

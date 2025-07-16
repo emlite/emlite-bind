@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ResizeObserverOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ResizeObserverOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ResizeObserverOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ResizeObserverOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for ResizeObserverOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ResizeObserverOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ResizeObserverOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ResizeObserverOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ResizeObserverOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ResizeObserverOptions> for emlite::Val {
-    fn from(s: ResizeObserverOptions) -> emlite::Val {
+impl From<ResizeObserverOptions> for Any {
+    fn from(s: ResizeObserverOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ResizeObserverOptions> for emlite::Val {
-    fn from(s: &ResizeObserverOptions) -> emlite::Val {
+impl From<&ResizeObserverOptions> for Any {
+    fn from(s: &ResizeObserverOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -59,26 +59,28 @@ impl ResizeObserverOptions {
         self.inner.set("box", value);
     }
 }
+/// The ResizeObserver class.
+/// [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ResizeObserver {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ResizeObserver {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ResizeObserver {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ResizeObserver {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -88,46 +90,50 @@ impl core::ops::DerefMut for ResizeObserver {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ResizeObserver {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ResizeObserver {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ResizeObserver {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ResizeObserver {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ResizeObserver> for emlite::Val {
-    fn from(s: ResizeObserver) -> emlite::Val {
+impl From<ResizeObserver> for Any {
+    fn from(s: ResizeObserver) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ResizeObserver> for emlite::Val {
-    fn from(s: &ResizeObserver) -> emlite::Val {
+impl From<&ResizeObserver> for Any {
+    fn from(s: &ResizeObserver) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ResizeObserver);
 
 impl ResizeObserver {
+    /// The `new ResizeObserver(..)` constructor, creating a new ResizeObserver instance
     pub fn new(callback: &Function) -> ResizeObserver {
         Self {
-            inner: emlite::Val::global("ResizeObserver")
+            inner: Any::global("ResizeObserver")
                 .new(&[callback.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl ResizeObserver {
+    /// The observe method.
+    /// [`ResizeObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/observe)
     pub fn observe0(&self, target: &Element) -> Undefined {
         self.inner
             .call("observe", &[target.into()])
             .as_::<Undefined>()
     }
-
+    /// The observe method.
+    /// [`ResizeObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/observe)
     pub fn observe1(&self, target: &Element, options: &ResizeObserverOptions) -> Undefined {
         self.inner
             .call("observe", &[target.into(), options.into()])
@@ -135,6 +141,8 @@ impl ResizeObserver {
     }
 }
 impl ResizeObserver {
+    /// The unobserve method.
+    /// [`ResizeObserver.unobserve`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/unobserve)
     pub fn unobserve(&self, target: &Element) -> Undefined {
         self.inner
             .call("unobserve", &[target.into()])
@@ -142,6 +150,8 @@ impl ResizeObserver {
     }
 }
 impl ResizeObserver {
+    /// The disconnect method.
+    /// [`ResizeObserver.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/disconnect)
     pub fn disconnect(&self) -> Undefined {
         self.inner.call("disconnect", &[]).as_::<Undefined>()
     }

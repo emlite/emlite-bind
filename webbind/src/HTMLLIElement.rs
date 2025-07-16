@@ -1,20 +1,22 @@
 use super::*;
 
+/// The HTMLLIElement class.
+/// [`HTMLLIElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLIElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLLIElement {
     inner: HTMLElement,
 }
 impl FromVal for HTMLLIElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HTMLLIElement {
             inner: HTMLElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,53 +31,60 @@ impl core::ops::DerefMut for HTMLLIElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HTMLLIElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HTMLLIElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HTMLLIElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HTMLLIElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HTMLLIElement> for emlite::Val {
-    fn from(s: HTMLLIElement) -> emlite::Val {
+impl From<HTMLLIElement> for Any {
+    fn from(s: HTMLLIElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HTMLLIElement> for emlite::Val {
-    fn from(s: &HTMLLIElement) -> emlite::Val {
+impl From<&HTMLLIElement> for Any {
+    fn from(s: &HTMLLIElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLLIElement);
 
 impl HTMLLIElement {
+    /// The `new HTMLLIElement(..)` constructor, creating a new HTMLLIElement instance
     pub fn new() -> HTMLLIElement {
         Self {
-            inner: emlite::Val::global("HTMLLIElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLLIElement").new(&[]).as_::<HTMLElement>(),
         }
     }
 }
 impl HTMLLIElement {
+    /// Getter of the `value` attribute.
+    /// [`HTMLLIElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLIElement/value)
     pub fn value(&self) -> i32 {
         self.inner.get("value").as_::<i32>()
     }
 
+    /// Setter of the `value` attribute.
+    /// [`HTMLLIElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLIElement/value)
     pub fn set_value(&mut self, value: i32) {
         self.inner.set("value", value);
     }
 }
 impl HTMLLIElement {
+    /// Getter of the `type` attribute.
+    /// [`HTMLLIElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLIElement/type)
     pub fn type_(&self) -> String {
         self.inner.get("type").as_::<String>()
     }
 
+    /// Setter of the `type` attribute.
+    /// [`HTMLLIElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLIElement/type)
     pub fn set_type_(&mut self, value: &str) {
         self.inner.set("type", value);
     }

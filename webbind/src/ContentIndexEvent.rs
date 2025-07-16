@@ -1,20 +1,22 @@
 use super::*;
 
+/// The ContentIndexEvent class.
+/// [`ContentIndexEvent`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndexEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ContentIndexEvent {
     inner: ExtendableEvent,
 }
 impl FromVal for ContentIndexEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ContentIndexEvent {
             inner: ExtendableEvent::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,40 +31,43 @@ impl core::ops::DerefMut for ContentIndexEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ContentIndexEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ContentIndexEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ContentIndexEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ContentIndexEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ContentIndexEvent> for emlite::Val {
-    fn from(s: ContentIndexEvent) -> emlite::Val {
+impl From<ContentIndexEvent> for Any {
+    fn from(s: ContentIndexEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ContentIndexEvent> for emlite::Val {
-    fn from(s: &ContentIndexEvent) -> emlite::Val {
+impl From<&ContentIndexEvent> for Any {
+    fn from(s: &ContentIndexEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ContentIndexEvent);
 
 impl ContentIndexEvent {
+    /// The `new ContentIndexEvent(..)` constructor, creating a new ContentIndexEvent instance
     pub fn new(type_: &str, init: &Any) -> ContentIndexEvent {
         Self {
-            inner: emlite::Val::global("ContentIndexEvent")
+            inner: Any::global("ContentIndexEvent")
                 .new(&[type_.into(), init.into()])
                 .as_::<ExtendableEvent>(),
         }
     }
 }
 impl ContentIndexEvent {
+    /// Getter of the `id` attribute.
+    /// [`ContentIndexEvent.id`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndexEvent/id)
     pub fn id(&self) -> String {
         self.inner.get("id").as_::<String>()
     }

@@ -1,20 +1,22 @@
 use super::*;
 
+/// The DOMPoint class.
+/// [`DOMPoint`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DOMPoint {
     inner: DOMPointReadOnly,
 }
 impl FromVal for DOMPoint {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         DOMPoint {
             inner: DOMPointReadOnly::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,116 +31,138 @@ impl core::ops::DerefMut for DOMPoint {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for DOMPoint {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for DOMPoint {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for DOMPoint {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for DOMPoint {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<DOMPoint> for emlite::Val {
-    fn from(s: DOMPoint) -> emlite::Val {
+impl From<DOMPoint> for Any {
+    fn from(s: DOMPoint) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&DOMPoint> for emlite::Val {
-    fn from(s: &DOMPoint) -> emlite::Val {
+impl From<&DOMPoint> for Any {
+    fn from(s: &DOMPoint) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(DOMPoint);
 
 impl DOMPoint {
+    /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
     pub fn new0() -> DOMPoint {
         Self {
-            inner: emlite::Val::global("DOMPoint")
-                .new(&[])
-                .as_::<DOMPointReadOnly>(),
+            inner: Any::global("DOMPoint").new(&[]).as_::<DOMPointReadOnly>(),
         }
     }
 
+    /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
     pub fn new1(x: f64) -> DOMPoint {
         Self {
-            inner: emlite::Val::global("DOMPoint")
+            inner: Any::global("DOMPoint")
                 .new(&[x.into()])
                 .as_::<DOMPointReadOnly>(),
         }
     }
 
+    /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
     pub fn new2(x: f64, y: f64) -> DOMPoint {
         Self {
-            inner: emlite::Val::global("DOMPoint")
+            inner: Any::global("DOMPoint")
                 .new(&[x.into(), y.into()])
                 .as_::<DOMPointReadOnly>(),
         }
     }
 
+    /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
     pub fn new3(x: f64, y: f64, z: f64) -> DOMPoint {
         Self {
-            inner: emlite::Val::global("DOMPoint")
+            inner: Any::global("DOMPoint")
                 .new(&[x.into(), y.into(), z.into()])
                 .as_::<DOMPointReadOnly>(),
         }
     }
 
+    /// The `new DOMPoint(..)` constructor, creating a new DOMPoint instance
     pub fn new4(x: f64, y: f64, z: f64, w: f64) -> DOMPoint {
         Self {
-            inner: emlite::Val::global("DOMPoint")
+            inner: Any::global("DOMPoint")
                 .new(&[x.into(), y.into(), z.into(), w.into()])
                 .as_::<DOMPointReadOnly>(),
         }
     }
 }
 impl DOMPoint {
+    /// The fromPoint method.
+    /// [`DOMPoint.fromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/fromPoint)
     pub fn from_point0() -> DOMPoint {
-        emlite::Val::global("DOMPoint")
+        Any::global("DOMPoint")
             .call("fromPoint", &[])
             .as_::<DOMPoint>()
     }
-
+    /// The fromPoint method.
+    /// [`DOMPoint.fromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/fromPoint)
     pub fn from_point1(other: &DOMPointInit) -> DOMPoint {
-        emlite::Val::global("DOMPoint")
+        Any::global("DOMPoint")
             .call("fromPoint", &[other.into()])
             .as_::<DOMPoint>()
     }
 }
 impl DOMPoint {
+    /// Getter of the `x` attribute.
+    /// [`DOMPoint.x`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/x)
     pub fn x(&self) -> f64 {
         self.inner.get("x").as_::<f64>()
     }
 
+    /// Setter of the `x` attribute.
+    /// [`DOMPoint.x`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/x)
     pub fn set_x(&mut self, value: f64) {
         self.inner.set("x", value);
     }
 }
 impl DOMPoint {
+    /// Getter of the `y` attribute.
+    /// [`DOMPoint.y`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/y)
     pub fn y(&self) -> f64 {
         self.inner.get("y").as_::<f64>()
     }
 
+    /// Setter of the `y` attribute.
+    /// [`DOMPoint.y`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/y)
     pub fn set_y(&mut self, value: f64) {
         self.inner.set("y", value);
     }
 }
 impl DOMPoint {
+    /// Getter of the `z` attribute.
+    /// [`DOMPoint.z`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/z)
     pub fn z(&self) -> f64 {
         self.inner.get("z").as_::<f64>()
     }
 
+    /// Setter of the `z` attribute.
+    /// [`DOMPoint.z`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/z)
     pub fn set_z(&mut self, value: f64) {
         self.inner.set("z", value);
     }
 }
 impl DOMPoint {
+    /// Getter of the `w` attribute.
+    /// [`DOMPoint.w`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/w)
     pub fn w(&self) -> f64 {
         self.inner.get("w").as_::<f64>()
     }
 
+    /// Setter of the `w` attribute.
+    /// [`DOMPoint.w`](https://developer.mozilla.org/en-US/docs/Web/API/DOMPoint/w)
     pub fn set_w(&mut self, value: f64) {
         self.inner.set("w", value);
     }

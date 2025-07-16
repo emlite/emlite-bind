@@ -1,25 +1,27 @@
 use super::*;
 
+/// The OVR_multiview2 class.
+/// [`OVR_multiview2`](https://developer.mozilla.org/en-US/docs/Web/API/OVR_multiview2)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct OVR_multiview2 {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for OVR_multiview2 {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         OVR_multiview2 {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for OVR_multiview2 {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for OVR_multiview2 {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for OVR_multiview2 {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for OVR_multiview2 {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for OVR_multiview2 {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for OVR_multiview2 {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<OVR_multiview2> for emlite::Val {
-    fn from(s: OVR_multiview2) -> emlite::Val {
+impl From<OVR_multiview2> for Any {
+    fn from(s: OVR_multiview2) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&OVR_multiview2> for emlite::Val {
-    fn from(s: &OVR_multiview2) -> emlite::Val {
+impl From<&OVR_multiview2> for Any {
+    fn from(s: &OVR_multiview2) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(OVR_multiview2);
 
 impl OVR_multiview2 {
+    /// The framebufferTextureMultiviewOVR method.
+    /// [`OVR_multiview2.framebufferTextureMultiviewOVR`](https://developer.mozilla.org/en-US/docs/Web/API/OVR_multiview2/framebufferTextureMultiviewOVR)
     pub fn framebuffer_texture_multiview_ovr(
         &self,
         target: &Any,

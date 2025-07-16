@@ -1,20 +1,22 @@
 use super::*;
 
+/// The DelayNode class.
+/// [`DelayNode`](https://developer.mozilla.org/en-US/docs/Web/API/DelayNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DelayNode {
     inner: AudioNode,
 }
 impl FromVal for DelayNode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         DelayNode {
             inner: AudioNode::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,48 +31,52 @@ impl core::ops::DerefMut for DelayNode {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for DelayNode {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for DelayNode {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for DelayNode {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for DelayNode {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<DelayNode> for emlite::Val {
-    fn from(s: DelayNode) -> emlite::Val {
+impl From<DelayNode> for Any {
+    fn from(s: DelayNode) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&DelayNode> for emlite::Val {
-    fn from(s: &DelayNode) -> emlite::Val {
+impl From<&DelayNode> for Any {
+    fn from(s: &DelayNode) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(DelayNode);
 
 impl DelayNode {
+    /// The `new DelayNode(..)` constructor, creating a new DelayNode instance
     pub fn new0(context: &BaseAudioContext) -> DelayNode {
         Self {
-            inner: emlite::Val::global("DelayNode")
+            inner: Any::global("DelayNode")
                 .new(&[context.into()])
                 .as_::<AudioNode>(),
         }
     }
 
+    /// The `new DelayNode(..)` constructor, creating a new DelayNode instance
     pub fn new1(context: &BaseAudioContext, options: &Any) -> DelayNode {
         Self {
-            inner: emlite::Val::global("DelayNode")
+            inner: Any::global("DelayNode")
                 .new(&[context.into(), options.into()])
                 .as_::<AudioNode>(),
         }
     }
 }
 impl DelayNode {
+    /// Getter of the `delayTime` attribute.
+    /// [`DelayNode.delayTime`](https://developer.mozilla.org/en-US/docs/Web/API/DelayNode/delayTime)
     pub fn delay_time(&self) -> AudioParam {
         self.inner.get("delayTime").as_::<AudioParam>()
     }

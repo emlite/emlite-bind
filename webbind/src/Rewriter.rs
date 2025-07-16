@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RewriterCreateOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RewriterCreateOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RewriterCreateOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RewriterCreateOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for RewriterCreateOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RewriterCreateOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RewriterCreateOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RewriterCreateOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RewriterCreateOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RewriterCreateOptions> for emlite::Val {
-    fn from(s: RewriterCreateOptions) -> emlite::Val {
+impl From<RewriterCreateOptions> for Any {
+    fn from(s: RewriterCreateOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RewriterCreateOptions> for emlite::Val {
-    fn from(s: &RewriterCreateOptions) -> emlite::Val {
+impl From<&RewriterCreateOptions> for Any {
+    fn from(s: &RewriterCreateOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -80,21 +80,21 @@ impl RewriterCreateOptions {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RewriterCreateCoreOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RewriterCreateCoreOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RewriterCreateCoreOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RewriterCreateCoreOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -104,25 +104,25 @@ impl core::ops::DerefMut for RewriterCreateCoreOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RewriterCreateCoreOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RewriterCreateCoreOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RewriterCreateCoreOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RewriterCreateCoreOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RewriterCreateCoreOptions> for emlite::Val {
-    fn from(s: RewriterCreateCoreOptions) -> emlite::Val {
+impl From<RewriterCreateCoreOptions> for Any {
+    fn from(s: RewriterCreateCoreOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RewriterCreateCoreOptions> for emlite::Val {
-    fn from(s: &RewriterCreateCoreOptions) -> emlite::Val {
+impl From<&RewriterCreateCoreOptions> for Any {
+    fn from(s: &RewriterCreateCoreOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -188,21 +188,21 @@ impl RewriterCreateCoreOptions {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RewriterRewriteOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RewriterRewriteOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RewriterRewriteOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RewriterRewriteOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -212,25 +212,25 @@ impl core::ops::DerefMut for RewriterRewriteOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RewriterRewriteOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RewriterRewriteOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RewriterRewriteOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RewriterRewriteOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RewriterRewriteOptions> for emlite::Val {
-    fn from(s: RewriterRewriteOptions) -> emlite::Val {
+impl From<RewriterRewriteOptions> for Any {
+    fn from(s: RewriterRewriteOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RewriterRewriteOptions> for emlite::Val {
-    fn from(s: &RewriterRewriteOptions) -> emlite::Val {
+impl From<&RewriterRewriteOptions> for Any {
+    fn from(s: &RewriterRewriteOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -253,26 +253,28 @@ impl RewriterRewriteOptions {
         self.inner.set("signal", value);
     }
 }
+/// The Rewriter class.
+/// [`Rewriter`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Rewriter {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Rewriter {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Rewriter {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Rewriter {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -282,61 +284,68 @@ impl core::ops::DerefMut for Rewriter {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Rewriter {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Rewriter {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Rewriter {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Rewriter {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Rewriter> for emlite::Val {
-    fn from(s: Rewriter) -> emlite::Val {
+impl From<Rewriter> for Any {
+    fn from(s: Rewriter) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Rewriter> for emlite::Val {
-    fn from(s: &Rewriter) -> emlite::Val {
+impl From<&Rewriter> for Any {
+    fn from(s: &Rewriter) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Rewriter);
 
 impl Rewriter {
+    /// The create method.
+    /// [`Rewriter.create`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/create)
     pub fn create0() -> Promise {
-        emlite::Val::global("Rewriter")
-            .call("create", &[])
-            .as_::<Promise>()
+        Any::global("Rewriter").call("create", &[]).as_::<Promise>()
     }
-
+    /// The create method.
+    /// [`Rewriter.create`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/create)
     pub fn create1(options: &RewriterCreateOptions) -> Promise {
-        emlite::Val::global("Rewriter")
+        Any::global("Rewriter")
             .call("create", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl Rewriter {
+    /// The availability method.
+    /// [`Rewriter.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/availability)
     pub fn availability0() -> Promise {
-        emlite::Val::global("Rewriter")
+        Any::global("Rewriter")
             .call("availability", &[])
             .as_::<Promise>()
     }
-
+    /// The availability method.
+    /// [`Rewriter.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/availability)
     pub fn availability1(options: &RewriterCreateCoreOptions) -> Promise {
-        emlite::Val::global("Rewriter")
+        Any::global("Rewriter")
             .call("availability", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl Rewriter {
+    /// The rewrite method.
+    /// [`Rewriter.rewrite`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewrite)
     pub fn rewrite0(&self, input: &str) -> Promise {
         self.inner.call("rewrite", &[input.into()]).as_::<Promise>()
     }
-
+    /// The rewrite method.
+    /// [`Rewriter.rewrite`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewrite)
     pub fn rewrite1(&self, input: &str, options: &RewriterRewriteOptions) -> Promise {
         self.inner
             .call("rewrite", &[input.into(), options.into()])
@@ -344,12 +353,15 @@ impl Rewriter {
     }
 }
 impl Rewriter {
+    /// The rewriteStreaming method.
+    /// [`Rewriter.rewriteStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewriteStreaming)
     pub fn rewrite_streaming0(&self, input: &str) -> ReadableStream {
         self.inner
             .call("rewriteStreaming", &[input.into()])
             .as_::<ReadableStream>()
     }
-
+    /// The rewriteStreaming method.
+    /// [`Rewriter.rewriteStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewriteStreaming)
     pub fn rewrite_streaming1(
         &self,
         input: &str,
@@ -361,26 +373,36 @@ impl Rewriter {
     }
 }
 impl Rewriter {
+    /// Getter of the `sharedContext` attribute.
+    /// [`Rewriter.sharedContext`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/sharedContext)
     pub fn shared_context(&self) -> String {
         self.inner.get("sharedContext").as_::<String>()
     }
 }
 impl Rewriter {
+    /// Getter of the `tone` attribute.
+    /// [`Rewriter.tone`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/tone)
     pub fn tone(&self) -> RewriterTone {
         self.inner.get("tone").as_::<RewriterTone>()
     }
 }
 impl Rewriter {
+    /// Getter of the `format` attribute.
+    /// [`Rewriter.format`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/format)
     pub fn format(&self) -> RewriterFormat {
         self.inner.get("format").as_::<RewriterFormat>()
     }
 }
 impl Rewriter {
+    /// Getter of the `length` attribute.
+    /// [`Rewriter.length`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/length)
     pub fn length(&self) -> RewriterLength {
         self.inner.get("length").as_::<RewriterLength>()
     }
 }
 impl Rewriter {
+    /// Getter of the `expectedInputLanguages` attribute.
+    /// [`Rewriter.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/expectedInputLanguages)
     pub fn expected_input_languages(&self) -> FrozenArray<String> {
         self.inner
             .get("expectedInputLanguages")
@@ -388,6 +410,8 @@ impl Rewriter {
     }
 }
 impl Rewriter {
+    /// Getter of the `expectedContextLanguages` attribute.
+    /// [`Rewriter.expectedContextLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/expectedContextLanguages)
     pub fn expected_context_languages(&self) -> FrozenArray<String> {
         self.inner
             .get("expectedContextLanguages")
@@ -395,17 +419,22 @@ impl Rewriter {
     }
 }
 impl Rewriter {
+    /// Getter of the `outputLanguage` attribute.
+    /// [`Rewriter.outputLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/outputLanguage)
     pub fn output_language(&self) -> String {
         self.inner.get("outputLanguage").as_::<String>()
     }
 }
 impl Rewriter {
+    /// The measureInputUsage method.
+    /// [`Rewriter.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/measureInputUsage)
     pub fn measure_input_usage0(&self, input: &str) -> Promise {
         self.inner
             .call("measureInputUsage", &[input.into()])
             .as_::<Promise>()
     }
-
+    /// The measureInputUsage method.
+    /// [`Rewriter.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/measureInputUsage)
     pub fn measure_input_usage1(&self, input: &str, options: &RewriterRewriteOptions) -> Promise {
         self.inner
             .call("measureInputUsage", &[input.into(), options.into()])
@@ -413,11 +442,15 @@ impl Rewriter {
     }
 }
 impl Rewriter {
+    /// Getter of the `inputQuota` attribute.
+    /// [`Rewriter.inputQuota`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/inputQuota)
     pub fn input_quota(&self) -> f64 {
         self.inner.get("inputQuota").as_::<f64>()
     }
 }
 impl Rewriter {
+    /// The destroy method.
+    /// [`Rewriter.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/destroy)
     pub fn destroy(&self) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
     }

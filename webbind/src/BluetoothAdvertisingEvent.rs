@@ -1,20 +1,22 @@
 use super::*;
 
+/// The BluetoothAdvertisingEvent class.
+/// [`BluetoothAdvertisingEvent`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothAdvertisingEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BluetoothAdvertisingEvent {
     inner: Event,
 }
 impl FromVal for BluetoothAdvertisingEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         BluetoothAdvertisingEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,70 +31,85 @@ impl core::ops::DerefMut for BluetoothAdvertisingEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for BluetoothAdvertisingEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for BluetoothAdvertisingEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for BluetoothAdvertisingEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for BluetoothAdvertisingEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<BluetoothAdvertisingEvent> for emlite::Val {
-    fn from(s: BluetoothAdvertisingEvent) -> emlite::Val {
+impl From<BluetoothAdvertisingEvent> for Any {
+    fn from(s: BluetoothAdvertisingEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&BluetoothAdvertisingEvent> for emlite::Val {
-    fn from(s: &BluetoothAdvertisingEvent) -> emlite::Val {
+impl From<&BluetoothAdvertisingEvent> for Any {
+    fn from(s: &BluetoothAdvertisingEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BluetoothAdvertisingEvent);
 
 impl BluetoothAdvertisingEvent {
+    /// The `new BluetoothAdvertisingEvent(..)` constructor, creating a new BluetoothAdvertisingEvent instance
     pub fn new(type_: &str, init: &Any) -> BluetoothAdvertisingEvent {
         Self {
-            inner: emlite::Val::global("BluetoothAdvertisingEvent")
+            inner: Any::global("BluetoothAdvertisingEvent")
                 .new(&[type_.into(), init.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl BluetoothAdvertisingEvent {
+    /// Getter of the `device` attribute.
+    /// [`BluetoothAdvertisingEvent.device`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothAdvertisingEvent/device)
     pub fn device(&self) -> BluetoothDevice {
         self.inner.get("device").as_::<BluetoothDevice>()
     }
 }
 impl BluetoothAdvertisingEvent {
+    /// Getter of the `uuids` attribute.
+    /// [`BluetoothAdvertisingEvent.uuids`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothAdvertisingEvent/uuids)
     pub fn uuids(&self) -> FrozenArray<Any> {
         self.inner.get("uuids").as_::<FrozenArray<Any>>()
     }
 }
 impl BluetoothAdvertisingEvent {
+    /// Getter of the `name` attribute.
+    /// [`BluetoothAdvertisingEvent.name`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothAdvertisingEvent/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 }
 impl BluetoothAdvertisingEvent {
+    /// Getter of the `appearance` attribute.
+    /// [`BluetoothAdvertisingEvent.appearance`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothAdvertisingEvent/appearance)
     pub fn appearance(&self) -> u16 {
         self.inner.get("appearance").as_::<u16>()
     }
 }
 impl BluetoothAdvertisingEvent {
+    /// Getter of the `txPower` attribute.
+    /// [`BluetoothAdvertisingEvent.txPower`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothAdvertisingEvent/txPower)
     pub fn tx_power(&self) -> i8 {
         self.inner.get("txPower").as_::<i8>()
     }
 }
 impl BluetoothAdvertisingEvent {
+    /// Getter of the `rssi` attribute.
+    /// [`BluetoothAdvertisingEvent.rssi`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothAdvertisingEvent/rssi)
     pub fn rssi(&self) -> i8 {
         self.inner.get("rssi").as_::<i8>()
     }
 }
 impl BluetoothAdvertisingEvent {
+    /// Getter of the `manufacturerData` attribute.
+    /// [`BluetoothAdvertisingEvent.manufacturerData`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothAdvertisingEvent/manufacturerData)
     pub fn manufacturer_data(&self) -> BluetoothManufacturerDataMap {
         self.inner
             .get("manufacturerData")
@@ -100,6 +117,8 @@ impl BluetoothAdvertisingEvent {
     }
 }
 impl BluetoothAdvertisingEvent {
+    /// Getter of the `serviceData` attribute.
+    /// [`BluetoothAdvertisingEvent.serviceData`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothAdvertisingEvent/serviceData)
     pub fn service_data(&self) -> BluetoothServiceDataMap {
         self.inner
             .get("serviceData")

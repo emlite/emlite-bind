@@ -1,25 +1,27 @@
 use super::*;
 
+/// The EXT_texture_filter_anisotropic class.
+/// [`EXT_texture_filter_anisotropic`](https://developer.mozilla.org/en-US/docs/Web/API/EXT_texture_filter_anisotropic)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EXT_texture_filter_anisotropic {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for EXT_texture_filter_anisotropic {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         EXT_texture_filter_anisotropic {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for EXT_texture_filter_anisotropic {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,25 +31,25 @@ impl core::ops::DerefMut for EXT_texture_filter_anisotropic {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for EXT_texture_filter_anisotropic {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for EXT_texture_filter_anisotropic {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for EXT_texture_filter_anisotropic {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for EXT_texture_filter_anisotropic {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<EXT_texture_filter_anisotropic> for emlite::Val {
-    fn from(s: EXT_texture_filter_anisotropic) -> emlite::Val {
+impl From<EXT_texture_filter_anisotropic> for Any {
+    fn from(s: EXT_texture_filter_anisotropic) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&EXT_texture_filter_anisotropic> for emlite::Val {
-    fn from(s: &EXT_texture_filter_anisotropic) -> emlite::Val {
+impl From<&EXT_texture_filter_anisotropic> for Any {
+    fn from(s: &EXT_texture_filter_anisotropic) -> Any {
         s.inner.clone().into()
     }
 }

@@ -1,25 +1,27 @@
 use super::*;
 
+/// The Lock class.
+/// [`Lock`](https://developer.mozilla.org/en-US/docs/Web/API/Lock)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Lock {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Lock {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Lock {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Lock {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for Lock {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Lock {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Lock {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Lock {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Lock {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Lock> for emlite::Val {
-    fn from(s: Lock) -> emlite::Val {
+impl From<Lock> for Any {
+    fn from(s: Lock) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Lock> for emlite::Val {
-    fn from(s: &Lock) -> emlite::Val {
+impl From<&Lock> for Any {
+    fn from(s: &Lock) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Lock);
 
 impl Lock {
+    /// Getter of the `name` attribute.
+    /// [`Lock.name`](https://developer.mozilla.org/en-US/docs/Web/API/Lock/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 }
 impl Lock {
+    /// Getter of the `mode` attribute.
+    /// [`Lock.mode`](https://developer.mozilla.org/en-US/docs/Web/API/Lock/mode)
     pub fn mode(&self) -> LockMode {
         self.inner.get("mode").as_::<LockMode>()
     }

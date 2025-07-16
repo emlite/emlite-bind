@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AttributionImpressionResult {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for AttributionImpressionResult {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AttributionImpressionResult { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for AttributionImpressionResult {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for AttributionImpressionResult {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AttributionImpressionResult {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AttributionImpressionResult {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AttributionImpressionResult {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AttributionImpressionResult {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AttributionImpressionResult> for emlite::Val {
-    fn from(s: AttributionImpressionResult) -> emlite::Val {
+impl From<AttributionImpressionResult> for Any {
+    fn from(s: AttributionImpressionResult) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AttributionImpressionResult> for emlite::Val {
-    fn from(s: &AttributionImpressionResult) -> emlite::Val {
+impl From<&AttributionImpressionResult> for Any {
+    fn from(s: &AttributionImpressionResult) -> Any {
         s.inner.clone()
     }
 }
@@ -53,21 +53,21 @@ impl From<&AttributionImpressionResult> for emlite::Val {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AttributionImpressionOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for AttributionImpressionOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AttributionImpressionOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for AttributionImpressionOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -77,25 +77,25 @@ impl core::ops::DerefMut for AttributionImpressionOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AttributionImpressionOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AttributionImpressionOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AttributionImpressionOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AttributionImpressionOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AttributionImpressionOptions> for emlite::Val {
-    fn from(s: AttributionImpressionOptions) -> emlite::Val {
+impl From<AttributionImpressionOptions> for Any {
+    fn from(s: AttributionImpressionOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AttributionImpressionOptions> for emlite::Val {
-    fn from(s: &AttributionImpressionOptions) -> emlite::Val {
+impl From<&AttributionImpressionOptions> for Any {
+    fn from(s: &AttributionImpressionOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -150,21 +150,21 @@ impl AttributionImpressionOptions {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AttributionConversionResult {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for AttributionConversionResult {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AttributionConversionResult { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for AttributionConversionResult {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -174,25 +174,25 @@ impl core::ops::DerefMut for AttributionConversionResult {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AttributionConversionResult {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AttributionConversionResult {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AttributionConversionResult {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AttributionConversionResult {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AttributionConversionResult> for emlite::Val {
-    fn from(s: AttributionConversionResult) -> emlite::Val {
+impl From<AttributionConversionResult> for Any {
+    fn from(s: AttributionConversionResult) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AttributionConversionResult> for emlite::Val {
-    fn from(s: &AttributionConversionResult) -> emlite::Val {
+impl From<&AttributionConversionResult> for Any {
+    fn from(s: &AttributionConversionResult) -> Any {
         s.inner.clone()
     }
 }
@@ -209,21 +209,21 @@ impl AttributionConversionResult {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AttributionConversionOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for AttributionConversionOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AttributionConversionOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for AttributionConversionOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -233,25 +233,25 @@ impl core::ops::DerefMut for AttributionConversionOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AttributionConversionOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AttributionConversionOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AttributionConversionOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AttributionConversionOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AttributionConversionOptions> for emlite::Val {
-    fn from(s: AttributionConversionOptions) -> emlite::Val {
+impl From<AttributionConversionOptions> for Any {
+    fn from(s: AttributionConversionOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AttributionConversionOptions> for emlite::Val {
-    fn from(s: &AttributionConversionOptions) -> emlite::Val {
+impl From<&AttributionConversionOptions> for Any {
+    fn from(s: &AttributionConversionOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -348,26 +348,28 @@ impl AttributionConversionOptions {
         self.inner.set("maxValue", value);
     }
 }
+/// The Attribution class.
+/// [`Attribution`](https://developer.mozilla.org/en-US/docs/Web/API/Attribution)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Attribution {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Attribution {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Attribution {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Attribution {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -377,31 +379,33 @@ impl core::ops::DerefMut for Attribution {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Attribution {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Attribution {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Attribution {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Attribution {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Attribution> for emlite::Val {
-    fn from(s: Attribution) -> emlite::Val {
+impl From<Attribution> for Any {
+    fn from(s: Attribution) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Attribution> for emlite::Val {
-    fn from(s: &Attribution) -> emlite::Val {
+impl From<&Attribution> for Any {
+    fn from(s: &Attribution) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Attribution);
 
 impl Attribution {
+    /// Getter of the `aggregationServices` attribute.
+    /// [`Attribution.aggregationServices`](https://developer.mozilla.org/en-US/docs/Web/API/Attribution/aggregationServices)
     pub fn aggregation_services(&self) -> AttributionAggregationServices {
         self.inner
             .get("aggregationServices")
@@ -409,6 +413,8 @@ impl Attribution {
     }
 }
 impl Attribution {
+    /// The saveImpression method.
+    /// [`Attribution.saveImpression`](https://developer.mozilla.org/en-US/docs/Web/API/Attribution/saveImpression)
     pub fn save_impression(&self, options: &AttributionImpressionOptions) -> Promise {
         self.inner
             .call("saveImpression", &[options.into()])
@@ -416,6 +422,8 @@ impl Attribution {
     }
 }
 impl Attribution {
+    /// The measureConversion method.
+    /// [`Attribution.measureConversion`](https://developer.mozilla.org/en-US/docs/Web/API/Attribution/measureConversion)
     pub fn measure_conversion(&self, options: &AttributionConversionOptions) -> Promise {
         self.inner
             .call("measureConversion", &[options.into()])

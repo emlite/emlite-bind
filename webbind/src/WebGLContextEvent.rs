@@ -1,20 +1,22 @@
 use super::*;
 
+/// The WebGLContextEvent class.
+/// [`WebGLContextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLContextEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebGLContextEvent {
     inner: Event,
 }
 impl FromVal for WebGLContextEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WebGLContextEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,48 +31,52 @@ impl core::ops::DerefMut for WebGLContextEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WebGLContextEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WebGLContextEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WebGLContextEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WebGLContextEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WebGLContextEvent> for emlite::Val {
-    fn from(s: WebGLContextEvent) -> emlite::Val {
+impl From<WebGLContextEvent> for Any {
+    fn from(s: WebGLContextEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WebGLContextEvent> for emlite::Val {
-    fn from(s: &WebGLContextEvent) -> emlite::Val {
+impl From<&WebGLContextEvent> for Any {
+    fn from(s: &WebGLContextEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(WebGLContextEvent);
 
 impl WebGLContextEvent {
+    /// The `new WebGLContextEvent(..)` constructor, creating a new WebGLContextEvent instance
     pub fn new0(type_: &str) -> WebGLContextEvent {
         Self {
-            inner: emlite::Val::global("WebGLContextEvent")
+            inner: Any::global("WebGLContextEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
 
+    /// The `new WebGLContextEvent(..)` constructor, creating a new WebGLContextEvent instance
     pub fn new1(type_: &str, event_init: &Any) -> WebGLContextEvent {
         Self {
-            inner: emlite::Val::global("WebGLContextEvent")
+            inner: Any::global("WebGLContextEvent")
                 .new(&[type_.into(), event_init.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl WebGLContextEvent {
+    /// Getter of the `statusMessage` attribute.
+    /// [`WebGLContextEvent.statusMessage`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLContextEvent/statusMessage)
     pub fn status_message(&self) -> String {
         self.inner.get("statusMessage").as_::<String>()
     }

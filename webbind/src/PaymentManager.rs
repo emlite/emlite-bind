@@ -1,25 +1,27 @@
 use super::*;
 
+/// The PaymentManager class.
+/// [`PaymentManager`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentManager)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PaymentManager {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PaymentManager {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PaymentManager {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PaymentManager {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,40 +31,46 @@ impl core::ops::DerefMut for PaymentManager {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PaymentManager {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PaymentManager {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PaymentManager {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PaymentManager {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PaymentManager> for emlite::Val {
-    fn from(s: PaymentManager) -> emlite::Val {
+impl From<PaymentManager> for Any {
+    fn from(s: PaymentManager) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PaymentManager> for emlite::Val {
-    fn from(s: &PaymentManager) -> emlite::Val {
+impl From<&PaymentManager> for Any {
+    fn from(s: &PaymentManager) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PaymentManager);
 
 impl PaymentManager {
+    /// Getter of the `userHint` attribute.
+    /// [`PaymentManager.userHint`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentManager/userHint)
     pub fn user_hint(&self) -> String {
         self.inner.get("userHint").as_::<String>()
     }
 
+    /// Setter of the `userHint` attribute.
+    /// [`PaymentManager.userHint`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentManager/userHint)
     pub fn set_user_hint(&mut self, value: &str) {
         self.inner.set("userHint", value);
     }
 }
 impl PaymentManager {
+    /// The enableDelegations method.
+    /// [`PaymentManager.enableDelegations`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentManager/enableDelegations)
     pub fn enable_delegations(&self, delegations: &Sequence<PaymentDelegation>) -> Promise {
         self.inner
             .call("enableDelegations", &[delegations.into()])

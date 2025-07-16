@@ -1,20 +1,22 @@
 use super::*;
 
+/// The MessageEvent class.
+/// [`MessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MessageEvent {
     inner: Event,
 }
 impl FromVal for MessageEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MessageEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,85 +31,101 @@ impl core::ops::DerefMut for MessageEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MessageEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MessageEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MessageEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MessageEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MessageEvent> for emlite::Val {
-    fn from(s: MessageEvent) -> emlite::Val {
+impl From<MessageEvent> for Any {
+    fn from(s: MessageEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MessageEvent> for emlite::Val {
-    fn from(s: &MessageEvent) -> emlite::Val {
+impl From<&MessageEvent> for Any {
+    fn from(s: &MessageEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MessageEvent);
 
 impl MessageEvent {
+    /// The `new MessageEvent(..)` constructor, creating a new MessageEvent instance
     pub fn new0(type_: &str) -> MessageEvent {
         Self {
-            inner: emlite::Val::global("MessageEvent")
+            inner: Any::global("MessageEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
 
+    /// The `new MessageEvent(..)` constructor, creating a new MessageEvent instance
     pub fn new1(type_: &str, event_init_dict: &Any) -> MessageEvent {
         Self {
-            inner: emlite::Val::global("MessageEvent")
+            inner: Any::global("MessageEvent")
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl MessageEvent {
+    /// Getter of the `data` attribute.
+    /// [`MessageEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/data)
     pub fn data(&self) -> Any {
         self.inner.get("data").as_::<Any>()
     }
 }
 impl MessageEvent {
+    /// Getter of the `origin` attribute.
+    /// [`MessageEvent.origin`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/origin)
     pub fn origin(&self) -> String {
         self.inner.get("origin").as_::<String>()
     }
 }
 impl MessageEvent {
+    /// Getter of the `lastEventId` attribute.
+    /// [`MessageEvent.lastEventId`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/lastEventId)
     pub fn last_event_id(&self) -> String {
         self.inner.get("lastEventId").as_::<String>()
     }
 }
 impl MessageEvent {
+    /// Getter of the `source` attribute.
+    /// [`MessageEvent.source`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/source)
     pub fn source(&self) -> Any {
         self.inner.get("source").as_::<Any>()
     }
 }
 impl MessageEvent {
+    /// Getter of the `ports` attribute.
+    /// [`MessageEvent.ports`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/ports)
     pub fn ports(&self) -> FrozenArray<Any> {
         self.inner.get("ports").as_::<FrozenArray<Any>>()
     }
 }
 impl MessageEvent {
+    /// The initMessageEvent method.
+    /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
     pub fn init_message_event0(&self, type_: &str) -> Undefined {
         self.inner
             .call("initMessageEvent", &[type_.into()])
             .as_::<Undefined>()
     }
-
+    /// The initMessageEvent method.
+    /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
     pub fn init_message_event1(&self, type_: &str, bubbles: bool) -> Undefined {
         self.inner
             .call("initMessageEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
     }
-
+    /// The initMessageEvent method.
+    /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
     pub fn init_message_event2(&self, type_: &str, bubbles: bool, cancelable: bool) -> Undefined {
         self.inner
             .call(
@@ -116,7 +134,8 @@ impl MessageEvent {
             )
             .as_::<Undefined>()
     }
-
+    /// The initMessageEvent method.
+    /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
     pub fn init_message_event3(
         &self,
         type_: &str,
@@ -131,7 +150,8 @@ impl MessageEvent {
             )
             .as_::<Undefined>()
     }
-
+    /// The initMessageEvent method.
+    /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
     pub fn init_message_event4(
         &self,
         type_: &str,
@@ -153,7 +173,8 @@ impl MessageEvent {
             )
             .as_::<Undefined>()
     }
-
+    /// The initMessageEvent method.
+    /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
     pub fn init_message_event5(
         &self,
         type_: &str,
@@ -177,7 +198,8 @@ impl MessageEvent {
             )
             .as_::<Undefined>()
     }
-
+    /// The initMessageEvent method.
+    /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
     pub fn init_message_event6(
         &self,
         type_: &str,
@@ -203,7 +225,8 @@ impl MessageEvent {
             )
             .as_::<Undefined>()
     }
-
+    /// The initMessageEvent method.
+    /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
     pub fn init_message_event7(
         &self,
         type_: &str,

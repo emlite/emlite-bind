@@ -1,25 +1,27 @@
 use super::*;
 
+/// The XRAnchor class.
+/// [`XRAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRAnchor {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XRAnchor {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRAnchor {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XRAnchor {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for XRAnchor {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRAnchor {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRAnchor {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRAnchor {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRAnchor {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRAnchor> for emlite::Val {
-    fn from(s: XRAnchor) -> emlite::Val {
+impl From<XRAnchor> for Any {
+    fn from(s: XRAnchor) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRAnchor> for emlite::Val {
-    fn from(s: &XRAnchor) -> emlite::Val {
+impl From<&XRAnchor> for Any {
+    fn from(s: &XRAnchor) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(XRAnchor);
 
 impl XRAnchor {
+    /// Getter of the `anchorSpace` attribute.
+    /// [`XRAnchor.anchorSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor/anchorSpace)
     pub fn anchor_space(&self) -> XRSpace {
         self.inner.get("anchorSpace").as_::<XRSpace>()
     }
 }
 impl XRAnchor {
+    /// The requestPersistentHandle method.
+    /// [`XRAnchor.requestPersistentHandle`](https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor/requestPersistentHandle)
     pub fn request_persistent_handle(&self) -> Promise {
         self.inner
             .call("requestPersistentHandle", &[])
@@ -66,6 +72,8 @@ impl XRAnchor {
     }
 }
 impl XRAnchor {
+    /// The delete method.
+    /// [`XRAnchor.delete`](https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor/delete)
     pub fn delete(&self) -> Undefined {
         self.inner.call("delete", &[]).as_::<Undefined>()
     }

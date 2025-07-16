@@ -1,20 +1,22 @@
 use super::*;
 
+/// The AbsoluteOrientationSensor class.
+/// [`AbsoluteOrientationSensor`](https://developer.mozilla.org/en-US/docs/Web/API/AbsoluteOrientationSensor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AbsoluteOrientationSensor {
     inner: OrientationSensor,
 }
 impl FromVal for AbsoluteOrientationSensor {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AbsoluteOrientationSensor {
             inner: OrientationSensor::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,42 +31,44 @@ impl core::ops::DerefMut for AbsoluteOrientationSensor {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AbsoluteOrientationSensor {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AbsoluteOrientationSensor {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AbsoluteOrientationSensor {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AbsoluteOrientationSensor {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AbsoluteOrientationSensor> for emlite::Val {
-    fn from(s: AbsoluteOrientationSensor) -> emlite::Val {
+impl From<AbsoluteOrientationSensor> for Any {
+    fn from(s: AbsoluteOrientationSensor) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AbsoluteOrientationSensor> for emlite::Val {
-    fn from(s: &AbsoluteOrientationSensor) -> emlite::Val {
+impl From<&AbsoluteOrientationSensor> for Any {
+    fn from(s: &AbsoluteOrientationSensor) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(AbsoluteOrientationSensor);
 
 impl AbsoluteOrientationSensor {
+    /// The `new AbsoluteOrientationSensor(..)` constructor, creating a new AbsoluteOrientationSensor instance
     pub fn new0() -> AbsoluteOrientationSensor {
         Self {
-            inner: emlite::Val::global("AbsoluteOrientationSensor")
+            inner: Any::global("AbsoluteOrientationSensor")
                 .new(&[])
                 .as_::<OrientationSensor>(),
         }
     }
 
+    /// The `new AbsoluteOrientationSensor(..)` constructor, creating a new AbsoluteOrientationSensor instance
     pub fn new1(sensor_options: &Any) -> AbsoluteOrientationSensor {
         Self {
-            inner: emlite::Val::global("AbsoluteOrientationSensor")
+            inner: Any::global("AbsoluteOrientationSensor")
                 .new(&[sensor_options.into()])
                 .as_::<OrientationSensor>(),
         }

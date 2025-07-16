@@ -1,25 +1,27 @@
 use super::*;
 
+/// The DOMException class.
+/// [`DOMException`](https://developer.mozilla.org/en-US/docs/Web/API/DOMException)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DOMException {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for DOMException {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         DOMException {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for DOMException {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,66 +31,73 @@ impl core::ops::DerefMut for DOMException {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for DOMException {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for DOMException {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for DOMException {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for DOMException {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<DOMException> for emlite::Val {
-    fn from(s: DOMException) -> emlite::Val {
+impl From<DOMException> for Any {
+    fn from(s: DOMException) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&DOMException> for emlite::Val {
-    fn from(s: &DOMException) -> emlite::Val {
+impl From<&DOMException> for Any {
+    fn from(s: &DOMException) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(DOMException);
 
 impl DOMException {
+    /// The `new DOMException(..)` constructor, creating a new DOMException instance
     pub fn new0() -> DOMException {
         Self {
-            inner: emlite::Val::global("DOMException")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("DOMException").new(&[]).as_::<Any>(),
         }
     }
 
+    /// The `new DOMException(..)` constructor, creating a new DOMException instance
     pub fn new1(message: &str) -> DOMException {
         Self {
-            inner: emlite::Val::global("DOMException")
+            inner: Any::global("DOMException")
                 .new(&[message.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 
+    /// The `new DOMException(..)` constructor, creating a new DOMException instance
     pub fn new2(message: &str, name: &str) -> DOMException {
         Self {
-            inner: emlite::Val::global("DOMException")
+            inner: Any::global("DOMException")
                 .new(&[message.into(), name.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl DOMException {
+    /// Getter of the `name` attribute.
+    /// [`DOMException.name`](https://developer.mozilla.org/en-US/docs/Web/API/DOMException/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 }
 impl DOMException {
+    /// Getter of the `message` attribute.
+    /// [`DOMException.message`](https://developer.mozilla.org/en-US/docs/Web/API/DOMException/message)
     pub fn message(&self) -> String {
         self.inner.get("message").as_::<String>()
     }
 }
 impl DOMException {
+    /// Getter of the `code` attribute.
+    /// [`DOMException.code`](https://developer.mozilla.org/en-US/docs/Web/API/DOMException/code)
     pub fn code(&self) -> u16 {
         self.inner.get("code").as_::<u16>()
     }

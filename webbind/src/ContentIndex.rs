@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ContentDescription {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ContentDescription {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ContentDescription { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ContentDescription {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for ContentDescription {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ContentDescription {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ContentDescription {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ContentDescription {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ContentDescription {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ContentDescription> for emlite::Val {
-    fn from(s: ContentDescription) -> emlite::Val {
+impl From<ContentDescription> for Any {
+    fn from(s: ContentDescription) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ContentDescription> for emlite::Val {
-    fn from(s: &ContentDescription) -> emlite::Val {
+impl From<&ContentDescription> for Any {
+    fn from(s: &ContentDescription) -> Any {
         s.inner.clone()
     }
 }
@@ -104,26 +104,28 @@ impl ContentDescription {
         self.inner.set("url", value);
     }
 }
+/// The ContentIndex class.
+/// [`ContentIndex`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndex)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ContentIndex {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ContentIndex {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ContentIndex {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ContentIndex {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -133,31 +135,33 @@ impl core::ops::DerefMut for ContentIndex {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ContentIndex {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ContentIndex {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ContentIndex {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ContentIndex {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ContentIndex> for emlite::Val {
-    fn from(s: ContentIndex) -> emlite::Val {
+impl From<ContentIndex> for Any {
+    fn from(s: ContentIndex) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ContentIndex> for emlite::Val {
-    fn from(s: &ContentIndex) -> emlite::Val {
+impl From<&ContentIndex> for Any {
+    fn from(s: &ContentIndex) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ContentIndex);
 
 impl ContentIndex {
+    /// The add method.
+    /// [`ContentIndex.add`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndex/add)
     pub fn add(&self, description: &ContentDescription) -> Promise {
         self.inner
             .call("add", &[description.into()])
@@ -165,11 +169,15 @@ impl ContentIndex {
     }
 }
 impl ContentIndex {
+    /// The delete method.
+    /// [`ContentIndex.delete`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndex/delete)
     pub fn delete(&self, id: &str) -> Promise {
         self.inner.call("delete", &[id.into()]).as_::<Promise>()
     }
 }
 impl ContentIndex {
+    /// The getAll method.
+    /// [`ContentIndex.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndex/getAll)
     pub fn get_all(&self) -> Promise {
         self.inner.call("getAll", &[]).as_::<Promise>()
     }

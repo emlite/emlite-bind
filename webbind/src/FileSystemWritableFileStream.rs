@@ -1,20 +1,22 @@
 use super::*;
 
+/// The FileSystemWritableFileStream class.
+/// [`FileSystemWritableFileStream`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileSystemWritableFileStream {
     inner: WritableStream,
 }
 impl FromVal for FileSystemWritableFileStream {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         FileSystemWritableFileStream {
             inner: WritableStream::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,41 +31,47 @@ impl core::ops::DerefMut for FileSystemWritableFileStream {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for FileSystemWritableFileStream {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for FileSystemWritableFileStream {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for FileSystemWritableFileStream {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for FileSystemWritableFileStream {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<FileSystemWritableFileStream> for emlite::Val {
-    fn from(s: FileSystemWritableFileStream) -> emlite::Val {
+impl From<FileSystemWritableFileStream> for Any {
+    fn from(s: FileSystemWritableFileStream) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&FileSystemWritableFileStream> for emlite::Val {
-    fn from(s: &FileSystemWritableFileStream) -> emlite::Val {
+impl From<&FileSystemWritableFileStream> for Any {
+    fn from(s: &FileSystemWritableFileStream) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(FileSystemWritableFileStream);
 
 impl FileSystemWritableFileStream {
+    /// The write method.
+    /// [`FileSystemWritableFileStream.write`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream/write)
     pub fn write(&self, data: &Any) -> Promise {
         self.inner.call("write", &[data.into()]).as_::<Promise>()
     }
 }
 impl FileSystemWritableFileStream {
+    /// The seek method.
+    /// [`FileSystemWritableFileStream.seek`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream/seek)
     pub fn seek(&self, position: u64) -> Promise {
         self.inner.call("seek", &[position.into()]).as_::<Promise>()
     }
 }
 impl FileSystemWritableFileStream {
+    /// The truncate method.
+    /// [`FileSystemWritableFileStream.truncate`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream/truncate)
     pub fn truncate(&self, size: u64) -> Promise {
         self.inner.call("truncate", &[size.into()]).as_::<Promise>()
     }

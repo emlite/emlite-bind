@@ -1,20 +1,22 @@
 use super::*;
 
+/// The SVGFEMergeNodeElement class.
+/// [`SVGFEMergeNodeElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEMergeNodeElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGFEMergeNodeElement {
     inner: SVGElement,
 }
 impl FromVal for SVGFEMergeNodeElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SVGFEMergeNodeElement {
             inner: SVGElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for SVGFEMergeNodeElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SVGFEMergeNodeElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SVGFEMergeNodeElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SVGFEMergeNodeElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SVGFEMergeNodeElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SVGFEMergeNodeElement> for emlite::Val {
-    fn from(s: SVGFEMergeNodeElement) -> emlite::Val {
+impl From<SVGFEMergeNodeElement> for Any {
+    fn from(s: SVGFEMergeNodeElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SVGFEMergeNodeElement> for emlite::Val {
-    fn from(s: &SVGFEMergeNodeElement) -> emlite::Val {
+impl From<&SVGFEMergeNodeElement> for Any {
+    fn from(s: &SVGFEMergeNodeElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SVGFEMergeNodeElement);
 
 impl SVGFEMergeNodeElement {
+    /// Getter of the `in1` attribute.
+    /// [`SVGFEMergeNodeElement.in1`](https://developer.mozilla.org/en-US/docs/Web/API/SVGFEMergeNodeElement/in1)
     pub fn in1(&self) -> SVGAnimatedString {
         self.inner.get("in1").as_::<SVGAnimatedString>()
     }

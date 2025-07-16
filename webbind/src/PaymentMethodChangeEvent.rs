@@ -1,20 +1,22 @@
 use super::*;
 
+/// The PaymentMethodChangeEvent class.
+/// [`PaymentMethodChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentMethodChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PaymentMethodChangeEvent {
     inner: PaymentRequestUpdateEvent,
 }
 impl FromVal for PaymentMethodChangeEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PaymentMethodChangeEvent {
             inner: PaymentRequestUpdateEvent::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,53 +31,59 @@ impl core::ops::DerefMut for PaymentMethodChangeEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PaymentMethodChangeEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PaymentMethodChangeEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PaymentMethodChangeEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PaymentMethodChangeEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PaymentMethodChangeEvent> for emlite::Val {
-    fn from(s: PaymentMethodChangeEvent) -> emlite::Val {
+impl From<PaymentMethodChangeEvent> for Any {
+    fn from(s: PaymentMethodChangeEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PaymentMethodChangeEvent> for emlite::Val {
-    fn from(s: &PaymentMethodChangeEvent) -> emlite::Val {
+impl From<&PaymentMethodChangeEvent> for Any {
+    fn from(s: &PaymentMethodChangeEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PaymentMethodChangeEvent);
 
 impl PaymentMethodChangeEvent {
+    /// The `new PaymentMethodChangeEvent(..)` constructor, creating a new PaymentMethodChangeEvent instance
     pub fn new0(type_: &str) -> PaymentMethodChangeEvent {
         Self {
-            inner: emlite::Val::global("PaymentMethodChangeEvent")
+            inner: Any::global("PaymentMethodChangeEvent")
                 .new(&[type_.into()])
                 .as_::<PaymentRequestUpdateEvent>(),
         }
     }
 
+    /// The `new PaymentMethodChangeEvent(..)` constructor, creating a new PaymentMethodChangeEvent instance
     pub fn new1(type_: &str, event_init_dict: &Any) -> PaymentMethodChangeEvent {
         Self {
-            inner: emlite::Val::global("PaymentMethodChangeEvent")
+            inner: Any::global("PaymentMethodChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<PaymentRequestUpdateEvent>(),
         }
     }
 }
 impl PaymentMethodChangeEvent {
+    /// Getter of the `methodName` attribute.
+    /// [`PaymentMethodChangeEvent.methodName`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentMethodChangeEvent/methodName)
     pub fn method_name(&self) -> String {
         self.inner.get("methodName").as_::<String>()
     }
 }
 impl PaymentMethodChangeEvent {
+    /// Getter of the `methodDetails` attribute.
+    /// [`PaymentMethodChangeEvent.methodDetails`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentMethodChangeEvent/methodDetails)
     pub fn method_details(&self) -> Object {
         self.inner.get("methodDetails").as_::<Object>()
     }

@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebTransportConnectionStats {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for WebTransportConnectionStats {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WebTransportConnectionStats { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for WebTransportConnectionStats {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for WebTransportConnectionStats {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WebTransportConnectionStats {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WebTransportConnectionStats {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WebTransportConnectionStats {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WebTransportConnectionStats {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WebTransportConnectionStats> for emlite::Val {
-    fn from(s: WebTransportConnectionStats) -> emlite::Val {
+impl From<WebTransportConnectionStats> for Any {
+    fn from(s: WebTransportConnectionStats) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WebTransportConnectionStats> for emlite::Val {
-    fn from(s: &WebTransportConnectionStats) -> emlite::Val {
+impl From<&WebTransportConnectionStats> for Any {
+    fn from(s: &WebTransportConnectionStats) -> Any {
         s.inner.clone()
     }
 }
@@ -161,21 +161,21 @@ impl WebTransportConnectionStats {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebTransportCloseInfo {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for WebTransportCloseInfo {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WebTransportCloseInfo { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for WebTransportCloseInfo {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -185,25 +185,25 @@ impl core::ops::DerefMut for WebTransportCloseInfo {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WebTransportCloseInfo {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WebTransportCloseInfo {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WebTransportCloseInfo {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WebTransportCloseInfo {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WebTransportCloseInfo> for emlite::Val {
-    fn from(s: WebTransportCloseInfo) -> emlite::Val {
+impl From<WebTransportCloseInfo> for Any {
+    fn from(s: WebTransportCloseInfo) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WebTransportCloseInfo> for emlite::Val {
-    fn from(s: &WebTransportCloseInfo) -> emlite::Val {
+impl From<&WebTransportCloseInfo> for Any {
+    fn from(s: &WebTransportCloseInfo) -> Any {
         s.inner.clone()
     }
 }
@@ -229,21 +229,21 @@ impl WebTransportCloseInfo {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebTransportSendStreamOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for WebTransportSendStreamOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WebTransportSendStreamOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for WebTransportSendStreamOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -253,25 +253,25 @@ impl core::ops::DerefMut for WebTransportSendStreamOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WebTransportSendStreamOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WebTransportSendStreamOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WebTransportSendStreamOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WebTransportSendStreamOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WebTransportSendStreamOptions> for emlite::Val {
-    fn from(s: WebTransportSendStreamOptions) -> emlite::Val {
+impl From<WebTransportSendStreamOptions> for Any {
+    fn from(s: WebTransportSendStreamOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WebTransportSendStreamOptions> for emlite::Val {
-    fn from(s: &WebTransportSendStreamOptions) -> emlite::Val {
+impl From<&WebTransportSendStreamOptions> for Any {
+    fn from(s: &WebTransportSendStreamOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -285,26 +285,28 @@ impl WebTransportSendStreamOptions {
         self.inner.set("waitUntilAvailable", value);
     }
 }
+/// The WebTransport class.
+/// [`WebTransport`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WebTransport {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for WebTransport {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WebTransport {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for WebTransport {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -314,59 +316,64 @@ impl core::ops::DerefMut for WebTransport {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WebTransport {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WebTransport {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WebTransport {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WebTransport {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WebTransport> for emlite::Val {
-    fn from(s: WebTransport) -> emlite::Val {
+impl From<WebTransport> for Any {
+    fn from(s: WebTransport) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WebTransport> for emlite::Val {
-    fn from(s: &WebTransport) -> emlite::Val {
+impl From<&WebTransport> for Any {
+    fn from(s: &WebTransport) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(WebTransport);
 
 impl WebTransport {
+    /// The `new WebTransport(..)` constructor, creating a new WebTransport instance
     pub fn new0(url: &str) -> WebTransport {
         Self {
-            inner: emlite::Val::global("WebTransport")
-                .new(&[url.into()])
-                .as_::<emlite::Val>(),
+            inner: Any::global("WebTransport").new(&[url.into()]).as_::<Any>(),
         }
     }
 
+    /// The `new WebTransport(..)` constructor, creating a new WebTransport instance
     pub fn new1(url: &str, options: &Any) -> WebTransport {
         Self {
-            inner: emlite::Val::global("WebTransport")
+            inner: Any::global("WebTransport")
                 .new(&[url.into(), options.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl WebTransport {
+    /// The getStats method.
+    /// [`WebTransport.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/getStats)
     pub fn get_stats(&self) -> Promise {
         self.inner.call("getStats", &[]).as_::<Promise>()
     }
 }
 impl WebTransport {
+    /// The exportKeyingMaterial method.
+    /// [`WebTransport.exportKeyingMaterial`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/exportKeyingMaterial)
     pub fn export_keying_material0(&self, label: &Any) -> Promise {
         self.inner
             .call("exportKeyingMaterial", &[label.into()])
             .as_::<Promise>()
     }
-
+    /// The exportKeyingMaterial method.
+    /// [`WebTransport.exportKeyingMaterial`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/exportKeyingMaterial)
     pub fn export_keying_material1(&self, label: &Any, context: &Any) -> Promise {
         self.inner
             .call("exportKeyingMaterial", &[label.into(), context.into()])
@@ -374,11 +381,15 @@ impl WebTransport {
     }
 }
 impl WebTransport {
+    /// Getter of the `ready` attribute.
+    /// [`WebTransport.ready`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/ready)
     pub fn ready(&self) -> Promise {
         self.inner.get("ready").as_::<Promise>()
     }
 }
 impl WebTransport {
+    /// Getter of the `reliability` attribute.
+    /// [`WebTransport.reliability`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/reliability)
     pub fn reliability(&self) -> WebTransportReliabilityMode {
         self.inner
             .get("reliability")
@@ -386,6 +397,8 @@ impl WebTransport {
     }
 }
 impl WebTransport {
+    /// Getter of the `congestionControl` attribute.
+    /// [`WebTransport.congestionControl`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/congestionControl)
     pub fn congestion_control(&self) -> WebTransportCongestionControl {
         self.inner
             .get("congestionControl")
@@ -393,49 +406,66 @@ impl WebTransport {
     }
 }
 impl WebTransport {
+    /// Getter of the `anticipatedConcurrentIncomingUnidirectionalStreams` attribute.
+    /// [`WebTransport.anticipatedConcurrentIncomingUnidirectionalStreams`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/anticipatedConcurrentIncomingUnidirectionalStreams)
     pub fn anticipated_concurrent_incoming_unidirectional_streams(&self) -> u16 {
         self.inner
             .get("anticipatedConcurrentIncomingUnidirectionalStreams")
             .as_::<u16>()
     }
 
+    /// Setter of the `anticipatedConcurrentIncomingUnidirectionalStreams` attribute.
+    /// [`WebTransport.anticipatedConcurrentIncomingUnidirectionalStreams`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/anticipatedConcurrentIncomingUnidirectionalStreams)
     pub fn set_anticipated_concurrent_incoming_unidirectional_streams(&mut self, value: u16) {
         self.inner
             .set("anticipatedConcurrentIncomingUnidirectionalStreams", value);
     }
 }
 impl WebTransport {
+    /// Getter of the `anticipatedConcurrentIncomingBidirectionalStreams` attribute.
+    /// [`WebTransport.anticipatedConcurrentIncomingBidirectionalStreams`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/anticipatedConcurrentIncomingBidirectionalStreams)
     pub fn anticipated_concurrent_incoming_bidirectional_streams(&self) -> u16 {
         self.inner
             .get("anticipatedConcurrentIncomingBidirectionalStreams")
             .as_::<u16>()
     }
 
+    /// Setter of the `anticipatedConcurrentIncomingBidirectionalStreams` attribute.
+    /// [`WebTransport.anticipatedConcurrentIncomingBidirectionalStreams`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/anticipatedConcurrentIncomingBidirectionalStreams)
     pub fn set_anticipated_concurrent_incoming_bidirectional_streams(&mut self, value: u16) {
         self.inner
             .set("anticipatedConcurrentIncomingBidirectionalStreams", value);
     }
 }
 impl WebTransport {
+    /// Getter of the `protocol` attribute.
+    /// [`WebTransport.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/protocol)
     pub fn protocol(&self) -> String {
         self.inner.get("protocol").as_::<String>()
     }
 }
 impl WebTransport {
+    /// Getter of the `closed` attribute.
+    /// [`WebTransport.closed`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/closed)
     pub fn closed(&self) -> Promise {
         self.inner.get("closed").as_::<Promise>()
     }
 }
 impl WebTransport {
+    /// Getter of the `draining` attribute.
+    /// [`WebTransport.draining`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/draining)
     pub fn draining(&self) -> Promise {
         self.inner.get("draining").as_::<Promise>()
     }
 }
 impl WebTransport {
+    /// The close method.
+    /// [`WebTransport.close`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/close)
     pub fn close0(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
-
+    /// The close method.
+    /// [`WebTransport.close`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/close)
     pub fn close1(&self, close_info: &WebTransportCloseInfo) -> Undefined {
         self.inner
             .call("close", &[close_info.into()])
@@ -443,6 +473,8 @@ impl WebTransport {
     }
 }
 impl WebTransport {
+    /// Getter of the `datagrams` attribute.
+    /// [`WebTransport.datagrams`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/datagrams)
     pub fn datagrams(&self) -> WebTransportDatagramDuplexStream {
         self.inner
             .get("datagrams")
@@ -450,12 +482,15 @@ impl WebTransport {
     }
 }
 impl WebTransport {
+    /// The createBidirectionalStream method.
+    /// [`WebTransport.createBidirectionalStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/createBidirectionalStream)
     pub fn create_bidirectional_stream0(&self) -> Promise {
         self.inner
             .call("createBidirectionalStream", &[])
             .as_::<Promise>()
     }
-
+    /// The createBidirectionalStream method.
+    /// [`WebTransport.createBidirectionalStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/createBidirectionalStream)
     pub fn create_bidirectional_stream1(&self, options: &WebTransportSendStreamOptions) -> Promise {
         self.inner
             .call("createBidirectionalStream", &[options.into()])
@@ -463,6 +498,8 @@ impl WebTransport {
     }
 }
 impl WebTransport {
+    /// Getter of the `incomingBidirectionalStreams` attribute.
+    /// [`WebTransport.incomingBidirectionalStreams`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/incomingBidirectionalStreams)
     pub fn incoming_bidirectional_streams(&self) -> ReadableStream {
         self.inner
             .get("incomingBidirectionalStreams")
@@ -470,12 +507,15 @@ impl WebTransport {
     }
 }
 impl WebTransport {
+    /// The createUnidirectionalStream method.
+    /// [`WebTransport.createUnidirectionalStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/createUnidirectionalStream)
     pub fn create_unidirectional_stream0(&self) -> Promise {
         self.inner
             .call("createUnidirectionalStream", &[])
             .as_::<Promise>()
     }
-
+    /// The createUnidirectionalStream method.
+    /// [`WebTransport.createUnidirectionalStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/createUnidirectionalStream)
     pub fn create_unidirectional_stream1(
         &self,
         options: &WebTransportSendStreamOptions,
@@ -486,6 +526,8 @@ impl WebTransport {
     }
 }
 impl WebTransport {
+    /// Getter of the `incomingUnidirectionalStreams` attribute.
+    /// [`WebTransport.incomingUnidirectionalStreams`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/incomingUnidirectionalStreams)
     pub fn incoming_unidirectional_streams(&self) -> ReadableStream {
         self.inner
             .get("incomingUnidirectionalStreams")
@@ -493,6 +535,8 @@ impl WebTransport {
     }
 }
 impl WebTransport {
+    /// The createSendGroup method.
+    /// [`WebTransport.createSendGroup`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/createSendGroup)
     pub fn create_send_group(&self) -> WebTransportSendGroup {
         self.inner
             .call("createSendGroup", &[])
@@ -500,8 +544,10 @@ impl WebTransport {
     }
 }
 impl WebTransport {
+    /// Getter of the `supportsReliableOnly` static attribute.
+    /// [`WebTransport.supportsReliableOnly`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/supportsReliableOnly)
     pub fn supports_reliable_only() -> bool {
-        emlite::Val::global("WebTransport")
+        Any::global("WebTransport")
             .get("supportsReliableOnly")
             .as_::<bool>()
     }

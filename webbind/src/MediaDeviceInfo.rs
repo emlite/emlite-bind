@@ -1,25 +1,27 @@
 use super::*;
 
+/// The MediaDeviceInfo class.
+/// [`MediaDeviceInfo`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaDeviceInfo {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaDeviceInfo {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaDeviceInfo {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaDeviceInfo {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,51 +31,61 @@ impl core::ops::DerefMut for MediaDeviceInfo {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaDeviceInfo {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaDeviceInfo {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaDeviceInfo {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaDeviceInfo {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaDeviceInfo> for emlite::Val {
-    fn from(s: MediaDeviceInfo) -> emlite::Val {
+impl From<MediaDeviceInfo> for Any {
+    fn from(s: MediaDeviceInfo) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaDeviceInfo> for emlite::Val {
-    fn from(s: &MediaDeviceInfo) -> emlite::Val {
+impl From<&MediaDeviceInfo> for Any {
+    fn from(s: &MediaDeviceInfo) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaDeviceInfo);
 
 impl MediaDeviceInfo {
+    /// Getter of the `deviceId` attribute.
+    /// [`MediaDeviceInfo.deviceId`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo/deviceId)
     pub fn device_id(&self) -> String {
         self.inner.get("deviceId").as_::<String>()
     }
 }
 impl MediaDeviceInfo {
+    /// Getter of the `kind` attribute.
+    /// [`MediaDeviceInfo.kind`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo/kind)
     pub fn kind(&self) -> MediaDeviceKind {
         self.inner.get("kind").as_::<MediaDeviceKind>()
     }
 }
 impl MediaDeviceInfo {
+    /// Getter of the `label` attribute.
+    /// [`MediaDeviceInfo.label`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo/label)
     pub fn label(&self) -> String {
         self.inner.get("label").as_::<String>()
     }
 }
 impl MediaDeviceInfo {
+    /// Getter of the `groupId` attribute.
+    /// [`MediaDeviceInfo.groupId`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo/groupId)
     pub fn group_id(&self) -> String {
         self.inner.get("groupId").as_::<String>()
     }
 }
 impl MediaDeviceInfo {
+    /// The toJSON method.
+    /// [`MediaDeviceInfo.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo/toJSON)
     pub fn to_json(&self) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }

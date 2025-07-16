@@ -1,20 +1,22 @@
 use super::*;
 
+/// The HTMLFrameElement class.
+/// [`HTMLFrameElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLFrameElement {
     inner: HTMLElement,
 }
 impl FromVal for HTMLFrameElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HTMLFrameElement {
             inner: HTMLElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,117 +31,154 @@ impl core::ops::DerefMut for HTMLFrameElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HTMLFrameElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HTMLFrameElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HTMLFrameElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HTMLFrameElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HTMLFrameElement> for emlite::Val {
-    fn from(s: HTMLFrameElement) -> emlite::Val {
+impl From<HTMLFrameElement> for Any {
+    fn from(s: HTMLFrameElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HTMLFrameElement> for emlite::Val {
-    fn from(s: &HTMLFrameElement) -> emlite::Val {
+impl From<&HTMLFrameElement> for Any {
+    fn from(s: &HTMLFrameElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLFrameElement);
 
 impl HTMLFrameElement {
+    /// The `new HTMLFrameElement(..)` constructor, creating a new HTMLFrameElement instance
     pub fn new() -> HTMLFrameElement {
         Self {
-            inner: emlite::Val::global("HTMLFrameElement")
+            inner: Any::global("HTMLFrameElement")
                 .new(&[])
                 .as_::<HTMLElement>(),
         }
     }
 }
 impl HTMLFrameElement {
+    /// Getter of the `name` attribute.
+    /// [`HTMLFrameElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 
+    /// Setter of the `name` attribute.
+    /// [`HTMLFrameElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/name)
     pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
 impl HTMLFrameElement {
+    /// Getter of the `scrolling` attribute.
+    /// [`HTMLFrameElement.scrolling`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/scrolling)
     pub fn scrolling(&self) -> String {
         self.inner.get("scrolling").as_::<String>()
     }
 
+    /// Setter of the `scrolling` attribute.
+    /// [`HTMLFrameElement.scrolling`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/scrolling)
     pub fn set_scrolling(&mut self, value: &str) {
         self.inner.set("scrolling", value);
     }
 }
 impl HTMLFrameElement {
+    /// Getter of the `src` attribute.
+    /// [`HTMLFrameElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/src)
     pub fn src(&self) -> String {
         self.inner.get("src").as_::<String>()
     }
 
+    /// Setter of the `src` attribute.
+    /// [`HTMLFrameElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/src)
     pub fn set_src(&mut self, value: &str) {
         self.inner.set("src", value);
     }
 }
 impl HTMLFrameElement {
+    /// Getter of the `frameBorder` attribute.
+    /// [`HTMLFrameElement.frameBorder`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/frameBorder)
     pub fn frame_border(&self) -> String {
         self.inner.get("frameBorder").as_::<String>()
     }
 
+    /// Setter of the `frameBorder` attribute.
+    /// [`HTMLFrameElement.frameBorder`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/frameBorder)
     pub fn set_frame_border(&mut self, value: &str) {
         self.inner.set("frameBorder", value);
     }
 }
 impl HTMLFrameElement {
+    /// Getter of the `longDesc` attribute.
+    /// [`HTMLFrameElement.longDesc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/longDesc)
     pub fn long_desc(&self) -> String {
         self.inner.get("longDesc").as_::<String>()
     }
 
+    /// Setter of the `longDesc` attribute.
+    /// [`HTMLFrameElement.longDesc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/longDesc)
     pub fn set_long_desc(&mut self, value: &str) {
         self.inner.set("longDesc", value);
     }
 }
 impl HTMLFrameElement {
+    /// Getter of the `noResize` attribute.
+    /// [`HTMLFrameElement.noResize`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/noResize)
     pub fn no_resize(&self) -> bool {
         self.inner.get("noResize").as_::<bool>()
     }
 
+    /// Setter of the `noResize` attribute.
+    /// [`HTMLFrameElement.noResize`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/noResize)
     pub fn set_no_resize(&mut self, value: bool) {
         self.inner.set("noResize", value);
     }
 }
 impl HTMLFrameElement {
+    /// Getter of the `contentDocument` attribute.
+    /// [`HTMLFrameElement.contentDocument`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/contentDocument)
     pub fn content_document(&self) -> Document {
         self.inner.get("contentDocument").as_::<Document>()
     }
 }
 impl HTMLFrameElement {
+    /// Getter of the `contentWindow` attribute.
+    /// [`HTMLFrameElement.contentWindow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/contentWindow)
     pub fn content_window(&self) -> Any {
         self.inner.get("contentWindow").as_::<Any>()
     }
 }
 impl HTMLFrameElement {
+    /// Getter of the `marginHeight` attribute.
+    /// [`HTMLFrameElement.marginHeight`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/marginHeight)
     pub fn margin_height(&self) -> String {
         self.inner.get("marginHeight").as_::<String>()
     }
 
+    /// Setter of the `marginHeight` attribute.
+    /// [`HTMLFrameElement.marginHeight`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/marginHeight)
     pub fn set_margin_height(&mut self, value: &str) {
         self.inner.set("marginHeight", value);
     }
 }
 impl HTMLFrameElement {
+    /// Getter of the `marginWidth` attribute.
+    /// [`HTMLFrameElement.marginWidth`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/marginWidth)
     pub fn margin_width(&self) -> String {
         self.inner.get("marginWidth").as_::<String>()
     }
 
+    /// Setter of the `marginWidth` attribute.
+    /// [`HTMLFrameElement.marginWidth`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/marginWidth)
     pub fn set_margin_width(&mut self, value: &str) {
         self.inner.set("marginWidth", value);
     }

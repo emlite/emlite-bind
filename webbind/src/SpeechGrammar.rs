@@ -1,25 +1,27 @@
 use super::*;
 
+/// The SpeechGrammar class.
+/// [`SpeechGrammar`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammar)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SpeechGrammar {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for SpeechGrammar {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SpeechGrammar {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for SpeechGrammar {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,44 +31,52 @@ impl core::ops::DerefMut for SpeechGrammar {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SpeechGrammar {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SpeechGrammar {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SpeechGrammar {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SpeechGrammar {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SpeechGrammar> for emlite::Val {
-    fn from(s: SpeechGrammar) -> emlite::Val {
+impl From<SpeechGrammar> for Any {
+    fn from(s: SpeechGrammar) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SpeechGrammar> for emlite::Val {
-    fn from(s: &SpeechGrammar) -> emlite::Val {
+impl From<&SpeechGrammar> for Any {
+    fn from(s: &SpeechGrammar) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SpeechGrammar);
 
 impl SpeechGrammar {
+    /// Getter of the `src` attribute.
+    /// [`SpeechGrammar.src`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammar/src)
     pub fn src(&self) -> String {
         self.inner.get("src").as_::<String>()
     }
 
+    /// Setter of the `src` attribute.
+    /// [`SpeechGrammar.src`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammar/src)
     pub fn set_src(&mut self, value: &str) {
         self.inner.set("src", value);
     }
 }
 impl SpeechGrammar {
+    /// Getter of the `weight` attribute.
+    /// [`SpeechGrammar.weight`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammar/weight)
     pub fn weight(&self) -> f32 {
         self.inner.get("weight").as_::<f32>()
     }
 
+    /// Setter of the `weight` attribute.
+    /// [`SpeechGrammar.weight`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammar/weight)
     pub fn set_weight(&mut self, value: f32) {
         self.inner.set("weight", value);
     }

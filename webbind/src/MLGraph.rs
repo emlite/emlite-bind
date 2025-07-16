@@ -1,25 +1,27 @@
 use super::*;
 
+/// The MLGraph class.
+/// [`MLGraph`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraph)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MLGraph {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MLGraph {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MLGraph {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MLGraph {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for MLGraph {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MLGraph {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MLGraph {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MLGraph {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MLGraph {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MLGraph> for emlite::Val {
-    fn from(s: MLGraph) -> emlite::Val {
+impl From<MLGraph> for Any {
+    fn from(s: MLGraph) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MLGraph> for emlite::Val {
-    fn from(s: &MLGraph) -> emlite::Val {
+impl From<&MLGraph> for Any {
+    fn from(s: &MLGraph) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MLGraph);
 
 impl MLGraph {
+    /// The destroy method.
+    /// [`MLGraph.destroy`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraph/destroy)
     pub fn destroy(&self) -> Undefined {
         self.inner.call("destroy", &[]).as_::<Undefined>()
     }

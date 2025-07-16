@@ -7,7 +7,6 @@
 extern crate alloc;
 
 use alloc::string::String;
-use emlite::FromVal;
 use jsbind::prelude::*;
 
 #[path = "ANGLE_instanced_arrays.rs"]
@@ -4491,5 +4490,5 @@ pub mod enums;
 pub(crate) use enums::*;
 
 pub fn window() -> Window {
-    emlite::Val::global("window").as_::<Window>()
+    Any::global("window").as_::<Window>()
 }

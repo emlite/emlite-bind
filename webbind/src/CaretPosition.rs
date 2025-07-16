@@ -1,25 +1,27 @@
 use super::*;
 
+/// The CaretPosition class.
+/// [`CaretPosition`](https://developer.mozilla.org/en-US/docs/Web/API/CaretPosition)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CaretPosition {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for CaretPosition {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CaretPosition {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for CaretPosition {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,41 +31,47 @@ impl core::ops::DerefMut for CaretPosition {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CaretPosition {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CaretPosition {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CaretPosition {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CaretPosition {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CaretPosition> for emlite::Val {
-    fn from(s: CaretPosition) -> emlite::Val {
+impl From<CaretPosition> for Any {
+    fn from(s: CaretPosition) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CaretPosition> for emlite::Val {
-    fn from(s: &CaretPosition) -> emlite::Val {
+impl From<&CaretPosition> for Any {
+    fn from(s: &CaretPosition) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CaretPosition);
 
 impl CaretPosition {
+    /// Getter of the `offsetNode` attribute.
+    /// [`CaretPosition.offsetNode`](https://developer.mozilla.org/en-US/docs/Web/API/CaretPosition/offsetNode)
     pub fn offset_node(&self) -> Node {
         self.inner.get("offsetNode").as_::<Node>()
     }
 }
 impl CaretPosition {
+    /// Getter of the `offset` attribute.
+    /// [`CaretPosition.offset`](https://developer.mozilla.org/en-US/docs/Web/API/CaretPosition/offset)
     pub fn offset(&self) -> u32 {
         self.inner.get("offset").as_::<u32>()
     }
 }
 impl CaretPosition {
+    /// The getClientRect method.
+    /// [`CaretPosition.getClientRect`](https://developer.mozilla.org/en-US/docs/Web/API/CaretPosition/getClientRect)
     pub fn get_client_rect(&self) -> DOMRect {
         self.inner.call("getClientRect", &[]).as_::<DOMRect>()
     }

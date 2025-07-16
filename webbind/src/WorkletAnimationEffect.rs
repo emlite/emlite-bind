@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct EffectTiming {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for EffectTiming {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         EffectTiming { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for EffectTiming {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for EffectTiming {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for EffectTiming {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for EffectTiming {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for EffectTiming {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for EffectTiming {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<EffectTiming> for emlite::Val {
-    fn from(s: EffectTiming) -> emlite::Val {
+impl From<EffectTiming> for Any {
+    fn from(s: EffectTiming) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&EffectTiming> for emlite::Val {
-    fn from(s: &EffectTiming) -> emlite::Val {
+impl From<&EffectTiming> for Any {
+    fn from(s: &EffectTiming) -> Any {
         s.inner.clone()
     }
 }
@@ -98,21 +98,21 @@ impl EffectTiming {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ComputedEffectTiming {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ComputedEffectTiming {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ComputedEffectTiming { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ComputedEffectTiming {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -122,25 +122,25 @@ impl core::ops::DerefMut for ComputedEffectTiming {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ComputedEffectTiming {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ComputedEffectTiming {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ComputedEffectTiming {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ComputedEffectTiming {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ComputedEffectTiming> for emlite::Val {
-    fn from(s: ComputedEffectTiming) -> emlite::Val {
+impl From<ComputedEffectTiming> for Any {
+    fn from(s: ComputedEffectTiming) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ComputedEffectTiming> for emlite::Val {
-    fn from(s: &ComputedEffectTiming) -> emlite::Val {
+impl From<&ComputedEffectTiming> for Any {
+    fn from(s: &ComputedEffectTiming) -> Any {
         s.inner.clone()
     }
 }
@@ -163,26 +163,28 @@ impl ComputedEffectTiming {
         self.inner.set("currentIteration", value);
     }
 }
+/// The WorkletAnimationEffect class.
+/// [`WorkletAnimationEffect`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimationEffect)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WorkletAnimationEffect {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for WorkletAnimationEffect {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WorkletAnimationEffect {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for WorkletAnimationEffect {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -192,36 +194,40 @@ impl core::ops::DerefMut for WorkletAnimationEffect {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WorkletAnimationEffect {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WorkletAnimationEffect {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WorkletAnimationEffect {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WorkletAnimationEffect {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WorkletAnimationEffect> for emlite::Val {
-    fn from(s: WorkletAnimationEffect) -> emlite::Val {
+impl From<WorkletAnimationEffect> for Any {
+    fn from(s: WorkletAnimationEffect) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WorkletAnimationEffect> for emlite::Val {
-    fn from(s: &WorkletAnimationEffect) -> emlite::Val {
+impl From<&WorkletAnimationEffect> for Any {
+    fn from(s: &WorkletAnimationEffect) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(WorkletAnimationEffect);
 
 impl WorkletAnimationEffect {
+    /// The getTiming method.
+    /// [`WorkletAnimationEffect.getTiming`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimationEffect/getTiming)
     pub fn get_timing(&self) -> EffectTiming {
         self.inner.call("getTiming", &[]).as_::<EffectTiming>()
     }
 }
 impl WorkletAnimationEffect {
+    /// The getComputedTiming method.
+    /// [`WorkletAnimationEffect.getComputedTiming`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimationEffect/getComputedTiming)
     pub fn get_computed_timing(&self) -> ComputedEffectTiming {
         self.inner
             .call("getComputedTiming", &[])
@@ -229,10 +235,14 @@ impl WorkletAnimationEffect {
     }
 }
 impl WorkletAnimationEffect {
+    /// Getter of the `localTime` attribute.
+    /// [`WorkletAnimationEffect.localTime`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimationEffect/localTime)
     pub fn local_time(&self) -> f64 {
         self.inner.get("localTime").as_::<f64>()
     }
 
+    /// Setter of the `localTime` attribute.
+    /// [`WorkletAnimationEffect.localTime`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimationEffect/localTime)
     pub fn set_local_time(&mut self, value: f64) {
         self.inner.set("localTime", value);
     }

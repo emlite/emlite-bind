@@ -1,20 +1,22 @@
 use super::*;
 
+/// The TextFormatUpdateEvent class.
+/// [`TextFormatUpdateEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextFormatUpdateEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TextFormatUpdateEvent {
     inner: Event,
 }
 impl FromVal for TextFormatUpdateEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         TextFormatUpdateEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,48 +31,52 @@ impl core::ops::DerefMut for TextFormatUpdateEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for TextFormatUpdateEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for TextFormatUpdateEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for TextFormatUpdateEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for TextFormatUpdateEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<TextFormatUpdateEvent> for emlite::Val {
-    fn from(s: TextFormatUpdateEvent) -> emlite::Val {
+impl From<TextFormatUpdateEvent> for Any {
+    fn from(s: TextFormatUpdateEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&TextFormatUpdateEvent> for emlite::Val {
-    fn from(s: &TextFormatUpdateEvent) -> emlite::Val {
+impl From<&TextFormatUpdateEvent> for Any {
+    fn from(s: &TextFormatUpdateEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(TextFormatUpdateEvent);
 
 impl TextFormatUpdateEvent {
+    /// The `new TextFormatUpdateEvent(..)` constructor, creating a new TextFormatUpdateEvent instance
     pub fn new0(type_: &str) -> TextFormatUpdateEvent {
         Self {
-            inner: emlite::Val::global("TextFormatUpdateEvent")
+            inner: Any::global("TextFormatUpdateEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
 
+    /// The `new TextFormatUpdateEvent(..)` constructor, creating a new TextFormatUpdateEvent instance
     pub fn new1(type_: &str, options: &Any) -> TextFormatUpdateEvent {
         Self {
-            inner: emlite::Val::global("TextFormatUpdateEvent")
+            inner: Any::global("TextFormatUpdateEvent")
                 .new(&[type_.into(), options.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl TextFormatUpdateEvent {
+    /// The getTextFormats method.
+    /// [`TextFormatUpdateEvent.getTextFormats`](https://developer.mozilla.org/en-US/docs/Web/API/TextFormatUpdateEvent/getTextFormats)
     pub fn get_text_formats(&self) -> Sequence<TextFormat> {
         self.inner
             .call("getTextFormats", &[])

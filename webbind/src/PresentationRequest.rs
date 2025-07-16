@@ -1,20 +1,22 @@
 use super::*;
 
+/// The PresentationRequest class.
+/// [`PresentationRequest`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PresentationRequest {
     inner: EventTarget,
 }
 impl FromVal for PresentationRequest {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PresentationRequest {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,45 +31,50 @@ impl core::ops::DerefMut for PresentationRequest {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PresentationRequest {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PresentationRequest {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PresentationRequest {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PresentationRequest {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PresentationRequest> for emlite::Val {
-    fn from(s: PresentationRequest) -> emlite::Val {
+impl From<PresentationRequest> for Any {
+    fn from(s: PresentationRequest) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PresentationRequest> for emlite::Val {
-    fn from(s: &PresentationRequest) -> emlite::Val {
+impl From<&PresentationRequest> for Any {
+    fn from(s: &PresentationRequest) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PresentationRequest);
 
 impl PresentationRequest {
+    /// The `new PresentationRequest(..)` constructor, creating a new PresentationRequest instance
     pub fn new(urls: &Sequence<String>) -> PresentationRequest {
         Self {
-            inner: emlite::Val::global("PresentationRequest")
+            inner: Any::global("PresentationRequest")
                 .new(&[urls.into()])
                 .as_::<EventTarget>(),
         }
     }
 }
 impl PresentationRequest {
+    /// The start method.
+    /// [`PresentationRequest.start`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest/start)
     pub fn start(&self) -> Promise {
         self.inner.call("start", &[]).as_::<Promise>()
     }
 }
 impl PresentationRequest {
+    /// The reconnect method.
+    /// [`PresentationRequest.reconnect`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest/reconnect)
     pub fn reconnect(&self, presentation_id: &str) -> Promise {
         self.inner
             .call("reconnect", &[presentation_id.into()])
@@ -75,15 +82,21 @@ impl PresentationRequest {
     }
 }
 impl PresentationRequest {
+    /// The getAvailability method.
+    /// [`PresentationRequest.getAvailability`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest/getAvailability)
     pub fn get_availability(&self) -> Promise {
         self.inner.call("getAvailability", &[]).as_::<Promise>()
     }
 }
 impl PresentationRequest {
+    /// Getter of the `onconnectionavailable` attribute.
+    /// [`PresentationRequest.onconnectionavailable`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest/onconnectionavailable)
     pub fn onconnectionavailable(&self) -> Any {
         self.inner.get("onconnectionavailable").as_::<Any>()
     }
 
+    /// Setter of the `onconnectionavailable` attribute.
+    /// [`PresentationRequest.onconnectionavailable`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest/onconnectionavailable)
     pub fn set_onconnectionavailable(&mut self, value: &Any) {
         self.inner.set("onconnectionavailable", value);
     }

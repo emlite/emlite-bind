@@ -1,20 +1,22 @@
 use super::*;
 
+/// The HTMLPreElement class.
+/// [`HTMLPreElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPreElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLPreElement {
     inner: HTMLElement,
 }
 impl FromVal for HTMLPreElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HTMLPreElement {
             inner: HTMLElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,44 +31,47 @@ impl core::ops::DerefMut for HTMLPreElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HTMLPreElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HTMLPreElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HTMLPreElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HTMLPreElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HTMLPreElement> for emlite::Val {
-    fn from(s: HTMLPreElement) -> emlite::Val {
+impl From<HTMLPreElement> for Any {
+    fn from(s: HTMLPreElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HTMLPreElement> for emlite::Val {
-    fn from(s: &HTMLPreElement) -> emlite::Val {
+impl From<&HTMLPreElement> for Any {
+    fn from(s: &HTMLPreElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLPreElement);
 
 impl HTMLPreElement {
+    /// The `new HTMLPreElement(..)` constructor, creating a new HTMLPreElement instance
     pub fn new() -> HTMLPreElement {
         Self {
-            inner: emlite::Val::global("HTMLPreElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLPreElement").new(&[]).as_::<HTMLElement>(),
         }
     }
 }
 impl HTMLPreElement {
+    /// Getter of the `width` attribute.
+    /// [`HTMLPreElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPreElement/width)
     pub fn width(&self) -> i32 {
         self.inner.get("width").as_::<i32>()
     }
 
+    /// Setter of the `width` attribute.
+    /// [`HTMLPreElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPreElement/width)
     pub fn set_width(&mut self, value: i32) {
         self.inner.set("width", value);
     }

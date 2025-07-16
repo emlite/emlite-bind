@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ReadableStreamBYOBReaderReadOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ReadableStreamBYOBReaderReadOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ReadableStreamBYOBReaderReadOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ReadableStreamBYOBReaderReadOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for ReadableStreamBYOBReaderReadOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ReadableStreamBYOBReaderReadOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ReadableStreamBYOBReaderReadOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ReadableStreamBYOBReaderReadOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ReadableStreamBYOBReaderReadOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ReadableStreamBYOBReaderReadOptions> for emlite::Val {
-    fn from(s: ReadableStreamBYOBReaderReadOptions) -> emlite::Val {
+impl From<ReadableStreamBYOBReaderReadOptions> for Any {
+    fn from(s: ReadableStreamBYOBReaderReadOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ReadableStreamBYOBReaderReadOptions> for emlite::Val {
-    fn from(s: &ReadableStreamBYOBReaderReadOptions) -> emlite::Val {
+impl From<&ReadableStreamBYOBReaderReadOptions> for Any {
+    fn from(s: &ReadableStreamBYOBReaderReadOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -59,26 +59,28 @@ impl ReadableStreamBYOBReaderReadOptions {
         self.inner.set("min", value);
     }
 }
+/// The ReadableStreamBYOBReader class.
+/// [`ReadableStreamBYOBReader`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ReadableStreamBYOBReader {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ReadableStreamBYOBReader {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ReadableStreamBYOBReader {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ReadableStreamBYOBReader {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -88,44 +90,48 @@ impl core::ops::DerefMut for ReadableStreamBYOBReader {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ReadableStreamBYOBReader {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ReadableStreamBYOBReader {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ReadableStreamBYOBReader {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ReadableStreamBYOBReader {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ReadableStreamBYOBReader> for emlite::Val {
-    fn from(s: ReadableStreamBYOBReader) -> emlite::Val {
+impl From<ReadableStreamBYOBReader> for Any {
+    fn from(s: ReadableStreamBYOBReader) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ReadableStreamBYOBReader> for emlite::Val {
-    fn from(s: &ReadableStreamBYOBReader) -> emlite::Val {
+impl From<&ReadableStreamBYOBReader> for Any {
+    fn from(s: &ReadableStreamBYOBReader) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ReadableStreamBYOBReader);
 
 impl ReadableStreamBYOBReader {
+    /// The `new ReadableStreamBYOBReader(..)` constructor, creating a new ReadableStreamBYOBReader instance
     pub fn new(stream: &ReadableStream) -> ReadableStreamBYOBReader {
         Self {
-            inner: emlite::Val::global("ReadableStreamBYOBReader")
+            inner: Any::global("ReadableStreamBYOBReader")
                 .new(&[stream.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl ReadableStreamBYOBReader {
+    /// The read method.
+    /// [`ReadableStreamBYOBReader.read`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader/read)
     pub fn read0(&self, view: &Any) -> Promise {
         self.inner.call("read", &[view.into()]).as_::<Promise>()
     }
-
+    /// The read method.
+    /// [`ReadableStreamBYOBReader.read`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader/read)
     pub fn read1(&self, view: &Any, options: &ReadableStreamBYOBReaderReadOptions) -> Promise {
         self.inner
             .call("read", &[view.into(), options.into()])
@@ -133,20 +139,27 @@ impl ReadableStreamBYOBReader {
     }
 }
 impl ReadableStreamBYOBReader {
+    /// The releaseLock method.
+    /// [`ReadableStreamBYOBReader.releaseLock`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader/releaseLock)
     pub fn release_lock(&self) -> Undefined {
         self.inner.call("releaseLock", &[]).as_::<Undefined>()
     }
 }
 impl ReadableStreamBYOBReader {
+    /// Getter of the `closed` attribute.
+    /// [`ReadableStreamBYOBReader.closed`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader/closed)
     pub fn closed(&self) -> Promise {
         self.inner.get("closed").as_::<Promise>()
     }
 }
 impl ReadableStreamBYOBReader {
+    /// The cancel method.
+    /// [`ReadableStreamBYOBReader.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader/cancel)
     pub fn cancel0(&self) -> Promise {
         self.inner.call("cancel", &[]).as_::<Promise>()
     }
-
+    /// The cancel method.
+    /// [`ReadableStreamBYOBReader.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamBYOBReader/cancel)
     pub fn cancel1(&self, reason: &Any) -> Promise {
         self.inner.call("cancel", &[reason.into()]).as_::<Promise>()
     }

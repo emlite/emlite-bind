@@ -1,25 +1,27 @@
 use super::*;
 
+/// The XRPlane class.
+/// [`XRPlane`](https://developer.mozilla.org/en-US/docs/Web/API/XRPlane)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRPlane {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XRPlane {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRPlane {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XRPlane {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for XRPlane {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRPlane {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRPlane {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRPlane {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRPlane {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRPlane> for emlite::Val {
-    fn from(s: XRPlane) -> emlite::Val {
+impl From<XRPlane> for Any {
+    fn from(s: XRPlane) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRPlane> for emlite::Val {
-    fn from(s: &XRPlane) -> emlite::Val {
+impl From<&XRPlane> for Any {
+    fn from(s: &XRPlane) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(XRPlane);
 
 impl XRPlane {
+    /// Getter of the `planeSpace` attribute.
+    /// [`XRPlane.planeSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRPlane/planeSpace)
     pub fn plane_space(&self) -> XRSpace {
         self.inner.get("planeSpace").as_::<XRSpace>()
     }
 }
 impl XRPlane {
+    /// Getter of the `polygon` attribute.
+    /// [`XRPlane.polygon`](https://developer.mozilla.org/en-US/docs/Web/API/XRPlane/polygon)
     pub fn polygon(&self) -> FrozenArray<DOMPointReadOnly> {
         self.inner
             .get("polygon")
@@ -66,16 +72,22 @@ impl XRPlane {
     }
 }
 impl XRPlane {
+    /// Getter of the `orientation` attribute.
+    /// [`XRPlane.orientation`](https://developer.mozilla.org/en-US/docs/Web/API/XRPlane/orientation)
     pub fn orientation(&self) -> XRPlaneOrientation {
         self.inner.get("orientation").as_::<XRPlaneOrientation>()
     }
 }
 impl XRPlane {
+    /// Getter of the `lastChangedTime` attribute.
+    /// [`XRPlane.lastChangedTime`](https://developer.mozilla.org/en-US/docs/Web/API/XRPlane/lastChangedTime)
     pub fn last_changed_time(&self) -> Any {
         self.inner.get("lastChangedTime").as_::<Any>()
     }
 }
 impl XRPlane {
+    /// Getter of the `semanticLabel` attribute.
+    /// [`XRPlane.semanticLabel`](https://developer.mozilla.org/en-US/docs/Web/API/XRPlane/semanticLabel)
     pub fn semantic_label(&self) -> String {
         self.inner.get("semanticLabel").as_::<String>()
     }

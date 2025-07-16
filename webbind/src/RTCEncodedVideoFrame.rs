@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCEncodedVideoFrameMetadata {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RTCEncodedVideoFrameMetadata {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCEncodedVideoFrameMetadata { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RTCEncodedVideoFrameMetadata {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for RTCEncodedVideoFrameMetadata {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCEncodedVideoFrameMetadata {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCEncodedVideoFrameMetadata {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCEncodedVideoFrameMetadata {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCEncodedVideoFrameMetadata {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCEncodedVideoFrameMetadata> for emlite::Val {
-    fn from(s: RTCEncodedVideoFrameMetadata) -> emlite::Val {
+impl From<RTCEncodedVideoFrameMetadata> for Any {
+    fn from(s: RTCEncodedVideoFrameMetadata) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCEncodedVideoFrameMetadata> for emlite::Val {
-    fn from(s: &RTCEncodedVideoFrameMetadata) -> emlite::Val {
+impl From<&RTCEncodedVideoFrameMetadata> for Any {
+    fn from(s: &RTCEncodedVideoFrameMetadata) -> Any {
         s.inner.clone()
     }
 }
@@ -113,26 +113,28 @@ impl RTCEncodedVideoFrameMetadata {
         self.inner.set("timestamp", value);
     }
 }
+/// The RTCEncodedVideoFrame class.
+/// [`RTCEncodedVideoFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedVideoFrame)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCEncodedVideoFrame {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RTCEncodedVideoFrame {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCEncodedVideoFrame {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RTCEncodedVideoFrame {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -142,62 +144,72 @@ impl core::ops::DerefMut for RTCEncodedVideoFrame {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCEncodedVideoFrame {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCEncodedVideoFrame {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCEncodedVideoFrame {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCEncodedVideoFrame {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCEncodedVideoFrame> for emlite::Val {
-    fn from(s: RTCEncodedVideoFrame) -> emlite::Val {
+impl From<RTCEncodedVideoFrame> for Any {
+    fn from(s: RTCEncodedVideoFrame) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCEncodedVideoFrame> for emlite::Val {
-    fn from(s: &RTCEncodedVideoFrame) -> emlite::Val {
+impl From<&RTCEncodedVideoFrame> for Any {
+    fn from(s: &RTCEncodedVideoFrame) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCEncodedVideoFrame);
 
 impl RTCEncodedVideoFrame {
+    /// The `new RTCEncodedVideoFrame(..)` constructor, creating a new RTCEncodedVideoFrame instance
     pub fn new0(original_frame: &RTCEncodedVideoFrame) -> RTCEncodedVideoFrame {
         Self {
-            inner: emlite::Val::global("RTCEncodedVideoFrame")
+            inner: Any::global("RTCEncodedVideoFrame")
                 .new(&[original_frame.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 
+    /// The `new RTCEncodedVideoFrame(..)` constructor, creating a new RTCEncodedVideoFrame instance
     pub fn new1(original_frame: &RTCEncodedVideoFrame, options: &Any) -> RTCEncodedVideoFrame {
         Self {
-            inner: emlite::Val::global("RTCEncodedVideoFrame")
+            inner: Any::global("RTCEncodedVideoFrame")
                 .new(&[original_frame.into(), options.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl RTCEncodedVideoFrame {
+    /// Getter of the `type` attribute.
+    /// [`RTCEncodedVideoFrame.type`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedVideoFrame/type)
     pub fn type_(&self) -> RTCEncodedVideoFrameType {
         self.inner.get("type").as_::<RTCEncodedVideoFrameType>()
     }
 }
 impl RTCEncodedVideoFrame {
+    /// Getter of the `data` attribute.
+    /// [`RTCEncodedVideoFrame.data`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedVideoFrame/data)
     pub fn data(&self) -> ArrayBuffer {
         self.inner.get("data").as_::<ArrayBuffer>()
     }
 
+    /// Setter of the `data` attribute.
+    /// [`RTCEncodedVideoFrame.data`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedVideoFrame/data)
     pub fn set_data(&mut self, value: &ArrayBuffer) {
         self.inner.set("data", value);
     }
 }
 impl RTCEncodedVideoFrame {
+    /// The getMetadata method.
+    /// [`RTCEncodedVideoFrame.getMetadata`](https://developer.mozilla.org/en-US/docs/Web/API/RTCEncodedVideoFrame/getMetadata)
     pub fn get_metadata(&self) -> RTCEncodedVideoFrameMetadata {
         self.inner
             .call("getMetadata", &[])

@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CSSTransition class.
+/// [`CSSTransition`](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransition)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSTransition {
     inner: Animation,
 }
 impl FromVal for CSSTransition {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSTransition {
             inner: Animation::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for CSSTransition {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSTransition {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSTransition {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSTransition {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSTransition {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSTransition> for emlite::Val {
-    fn from(s: CSSTransition) -> emlite::Val {
+impl From<CSSTransition> for Any {
+    fn from(s: CSSTransition) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSTransition> for emlite::Val {
-    fn from(s: &CSSTransition) -> emlite::Val {
+impl From<&CSSTransition> for Any {
+    fn from(s: &CSSTransition) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSTransition);
 
 impl CSSTransition {
+    /// Getter of the `transitionProperty` attribute.
+    /// [`CSSTransition.transitionProperty`](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransition/transitionProperty)
     pub fn transition_property(&self) -> String {
         self.inner.get("transitionProperty").as_::<String>()
     }

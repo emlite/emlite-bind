@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RegistrationOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RegistrationOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RegistrationOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RegistrationOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for RegistrationOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RegistrationOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RegistrationOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RegistrationOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RegistrationOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RegistrationOptions> for emlite::Val {
-    fn from(s: RegistrationOptions) -> emlite::Val {
+impl From<RegistrationOptions> for Any {
+    fn from(s: RegistrationOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RegistrationOptions> for emlite::Val {
-    fn from(s: &RegistrationOptions) -> emlite::Val {
+impl From<&RegistrationOptions> for Any {
+    fn from(s: &RegistrationOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -79,21 +79,23 @@ impl RegistrationOptions {
         self.inner.set("updateViaCache", value);
     }
 }
+/// The ServiceWorkerContainer class.
+/// [`ServiceWorkerContainer`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ServiceWorkerContainer {
     inner: EventTarget,
 }
 impl FromVal for ServiceWorkerContainer {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ServiceWorkerContainer {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -108,47 +110,54 @@ impl core::ops::DerefMut for ServiceWorkerContainer {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ServiceWorkerContainer {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ServiceWorkerContainer {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ServiceWorkerContainer {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ServiceWorkerContainer {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ServiceWorkerContainer> for emlite::Val {
-    fn from(s: ServiceWorkerContainer) -> emlite::Val {
+impl From<ServiceWorkerContainer> for Any {
+    fn from(s: ServiceWorkerContainer) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ServiceWorkerContainer> for emlite::Val {
-    fn from(s: &ServiceWorkerContainer) -> emlite::Val {
+impl From<&ServiceWorkerContainer> for Any {
+    fn from(s: &ServiceWorkerContainer) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ServiceWorkerContainer);
 
 impl ServiceWorkerContainer {
+    /// Getter of the `controller` attribute.
+    /// [`ServiceWorkerContainer.controller`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/controller)
     pub fn controller(&self) -> ServiceWorker {
         self.inner.get("controller").as_::<ServiceWorker>()
     }
 }
 impl ServiceWorkerContainer {
+    /// Getter of the `ready` attribute.
+    /// [`ServiceWorkerContainer.ready`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/ready)
     pub fn ready(&self) -> Promise {
         self.inner.get("ready").as_::<Promise>()
     }
 }
 impl ServiceWorkerContainer {
+    /// The register method.
+    /// [`ServiceWorkerContainer.register`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register)
     pub fn register0(&self, script_url: &Any) -> Promise {
         self.inner
             .call("register", &[script_url.into()])
             .as_::<Promise>()
     }
-
+    /// The register method.
+    /// [`ServiceWorkerContainer.register`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register)
     pub fn register1(&self, script_url: &Any, options: &RegistrationOptions) -> Promise {
         self.inner
             .call("register", &[script_url.into(), options.into()])
@@ -156,10 +165,13 @@ impl ServiceWorkerContainer {
     }
 }
 impl ServiceWorkerContainer {
+    /// The getRegistration method.
+    /// [`ServiceWorkerContainer.getRegistration`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/getRegistration)
     pub fn get_registration0(&self) -> Promise {
         self.inner.call("getRegistration", &[]).as_::<Promise>()
     }
-
+    /// The getRegistration method.
+    /// [`ServiceWorkerContainer.getRegistration`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/getRegistration)
     pub fn get_registration1(&self, client_url: &str) -> Promise {
         self.inner
             .call("getRegistration", &[client_url.into()])
@@ -167,38 +179,54 @@ impl ServiceWorkerContainer {
     }
 }
 impl ServiceWorkerContainer {
+    /// The getRegistrations method.
+    /// [`ServiceWorkerContainer.getRegistrations`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/getRegistrations)
     pub fn get_registrations(&self) -> Promise {
         self.inner.call("getRegistrations", &[]).as_::<Promise>()
     }
 }
 impl ServiceWorkerContainer {
+    /// The startMessages method.
+    /// [`ServiceWorkerContainer.startMessages`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/startMessages)
     pub fn start_messages(&self) -> Undefined {
         self.inner.call("startMessages", &[]).as_::<Undefined>()
     }
 }
 impl ServiceWorkerContainer {
+    /// Getter of the `oncontrollerchange` attribute.
+    /// [`ServiceWorkerContainer.oncontrollerchange`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/oncontrollerchange)
     pub fn oncontrollerchange(&self) -> Any {
         self.inner.get("oncontrollerchange").as_::<Any>()
     }
 
+    /// Setter of the `oncontrollerchange` attribute.
+    /// [`ServiceWorkerContainer.oncontrollerchange`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/oncontrollerchange)
     pub fn set_oncontrollerchange(&mut self, value: &Any) {
         self.inner.set("oncontrollerchange", value);
     }
 }
 impl ServiceWorkerContainer {
+    /// Getter of the `onmessage` attribute.
+    /// [`ServiceWorkerContainer.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/onmessage)
     pub fn onmessage(&self) -> Any {
         self.inner.get("onmessage").as_::<Any>()
     }
 
+    /// Setter of the `onmessage` attribute.
+    /// [`ServiceWorkerContainer.onmessage`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/onmessage)
     pub fn set_onmessage(&mut self, value: &Any) {
         self.inner.set("onmessage", value);
     }
 }
 impl ServiceWorkerContainer {
+    /// Getter of the `onmessageerror` attribute.
+    /// [`ServiceWorkerContainer.onmessageerror`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/onmessageerror)
     pub fn onmessageerror(&self) -> Any {
         self.inner.get("onmessageerror").as_::<Any>()
     }
 
+    /// Setter of the `onmessageerror` attribute.
+    /// [`ServiceWorkerContainer.onmessageerror`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/onmessageerror)
     pub fn set_onmessageerror(&mut self, value: &Any) {
         self.inner.set("onmessageerror", value);
     }

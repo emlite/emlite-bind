@@ -1,20 +1,22 @@
 use super::*;
 
+/// The DeviceOrientationEvent class.
+/// [`DeviceOrientationEvent`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DeviceOrientationEvent {
     inner: Event,
 }
 impl FromVal for DeviceOrientationEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         DeviceOrientationEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,76 +31,89 @@ impl core::ops::DerefMut for DeviceOrientationEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for DeviceOrientationEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for DeviceOrientationEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for DeviceOrientationEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for DeviceOrientationEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<DeviceOrientationEvent> for emlite::Val {
-    fn from(s: DeviceOrientationEvent) -> emlite::Val {
+impl From<DeviceOrientationEvent> for Any {
+    fn from(s: DeviceOrientationEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&DeviceOrientationEvent> for emlite::Val {
-    fn from(s: &DeviceOrientationEvent) -> emlite::Val {
+impl From<&DeviceOrientationEvent> for Any {
+    fn from(s: &DeviceOrientationEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(DeviceOrientationEvent);
 
 impl DeviceOrientationEvent {
+    /// The `new DeviceOrientationEvent(..)` constructor, creating a new DeviceOrientationEvent instance
     pub fn new0(type_: &str) -> DeviceOrientationEvent {
         Self {
-            inner: emlite::Val::global("DeviceOrientationEvent")
+            inner: Any::global("DeviceOrientationEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
 
+    /// The `new DeviceOrientationEvent(..)` constructor, creating a new DeviceOrientationEvent instance
     pub fn new1(type_: &str, event_init_dict: &Any) -> DeviceOrientationEvent {
         Self {
-            inner: emlite::Val::global("DeviceOrientationEvent")
+            inner: Any::global("DeviceOrientationEvent")
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl DeviceOrientationEvent {
+    /// Getter of the `alpha` attribute.
+    /// [`DeviceOrientationEvent.alpha`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent/alpha)
     pub fn alpha(&self) -> f64 {
         self.inner.get("alpha").as_::<f64>()
     }
 }
 impl DeviceOrientationEvent {
+    /// Getter of the `beta` attribute.
+    /// [`DeviceOrientationEvent.beta`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent/beta)
     pub fn beta(&self) -> f64 {
         self.inner.get("beta").as_::<f64>()
     }
 }
 impl DeviceOrientationEvent {
+    /// Getter of the `gamma` attribute.
+    /// [`DeviceOrientationEvent.gamma`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent/gamma)
     pub fn gamma(&self) -> f64 {
         self.inner.get("gamma").as_::<f64>()
     }
 }
 impl DeviceOrientationEvent {
+    /// Getter of the `absolute` attribute.
+    /// [`DeviceOrientationEvent.absolute`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent/absolute)
     pub fn absolute(&self) -> bool {
         self.inner.get("absolute").as_::<bool>()
     }
 }
 impl DeviceOrientationEvent {
+    /// The requestPermission method.
+    /// [`DeviceOrientationEvent.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent/requestPermission)
     pub fn request_permission0() -> Promise {
-        emlite::Val::global("DeviceOrientationEvent")
+        Any::global("DeviceOrientationEvent")
             .call("requestPermission", &[])
             .as_::<Promise>()
     }
-
+    /// The requestPermission method.
+    /// [`DeviceOrientationEvent.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent/requestPermission)
     pub fn request_permission1(absolute: bool) -> Promise {
-        emlite::Val::global("DeviceOrientationEvent")
+        Any::global("DeviceOrientationEvent")
             .call("requestPermission", &[absolute.into()])
             .as_::<Promise>()
     }

@@ -1,25 +1,27 @@
 use super::*;
 
+/// The RTCRtpScriptTransform class.
+/// [`RTCRtpScriptTransform`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransform)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCRtpScriptTransform {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RTCRtpScriptTransform {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCRtpScriptTransform {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RTCRtpScriptTransform {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,56 +31,59 @@ impl core::ops::DerefMut for RTCRtpScriptTransform {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCRtpScriptTransform {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCRtpScriptTransform {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCRtpScriptTransform {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCRtpScriptTransform {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCRtpScriptTransform> for emlite::Val {
-    fn from(s: RTCRtpScriptTransform) -> emlite::Val {
+impl From<RTCRtpScriptTransform> for Any {
+    fn from(s: RTCRtpScriptTransform) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCRtpScriptTransform> for emlite::Val {
-    fn from(s: &RTCRtpScriptTransform) -> emlite::Val {
+impl From<&RTCRtpScriptTransform> for Any {
+    fn from(s: &RTCRtpScriptTransform) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCRtpScriptTransform);
 
 impl RTCRtpScriptTransform {
+    /// The `new RTCRtpScriptTransform(..)` constructor, creating a new RTCRtpScriptTransform instance
     pub fn new0(worker: &Worker) -> RTCRtpScriptTransform {
         Self {
-            inner: emlite::Val::global("RTCRtpScriptTransform")
+            inner: Any::global("RTCRtpScriptTransform")
                 .new(&[worker.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 
+    /// The `new RTCRtpScriptTransform(..)` constructor, creating a new RTCRtpScriptTransform instance
     pub fn new1(worker: &Worker, options: &Any) -> RTCRtpScriptTransform {
         Self {
-            inner: emlite::Val::global("RTCRtpScriptTransform")
+            inner: Any::global("RTCRtpScriptTransform")
                 .new(&[worker.into(), options.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 
+    /// The `new RTCRtpScriptTransform(..)` constructor, creating a new RTCRtpScriptTransform instance
     pub fn new2(
         worker: &Worker,
         options: &Any,
         transfer: &Sequence<Object>,
     ) -> RTCRtpScriptTransform {
         Self {
-            inner: emlite::Val::global("RTCRtpScriptTransform")
+            inner: Any::global("RTCRtpScriptTransform")
                 .new(&[worker.into(), options.into(), transfer.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }

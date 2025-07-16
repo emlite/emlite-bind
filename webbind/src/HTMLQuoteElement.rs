@@ -1,20 +1,22 @@
 use super::*;
 
+/// The HTMLQuoteElement class.
+/// [`HTMLQuoteElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLQuoteElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLQuoteElement {
     inner: HTMLElement,
 }
 impl FromVal for HTMLQuoteElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HTMLQuoteElement {
             inner: HTMLElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,44 +31,49 @@ impl core::ops::DerefMut for HTMLQuoteElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HTMLQuoteElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HTMLQuoteElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HTMLQuoteElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HTMLQuoteElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HTMLQuoteElement> for emlite::Val {
-    fn from(s: HTMLQuoteElement) -> emlite::Val {
+impl From<HTMLQuoteElement> for Any {
+    fn from(s: HTMLQuoteElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HTMLQuoteElement> for emlite::Val {
-    fn from(s: &HTMLQuoteElement) -> emlite::Val {
+impl From<&HTMLQuoteElement> for Any {
+    fn from(s: &HTMLQuoteElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLQuoteElement);
 
 impl HTMLQuoteElement {
+    /// The `new HTMLQuoteElement(..)` constructor, creating a new HTMLQuoteElement instance
     pub fn new() -> HTMLQuoteElement {
         Self {
-            inner: emlite::Val::global("HTMLQuoteElement")
+            inner: Any::global("HTMLQuoteElement")
                 .new(&[])
                 .as_::<HTMLElement>(),
         }
     }
 }
 impl HTMLQuoteElement {
+    /// Getter of the `cite` attribute.
+    /// [`HTMLQuoteElement.cite`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLQuoteElement/cite)
     pub fn cite(&self) -> String {
         self.inner.get("cite").as_::<String>()
     }
 
+    /// Setter of the `cite` attribute.
+    /// [`HTMLQuoteElement.cite`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLQuoteElement/cite)
     pub fn set_cite(&mut self, value: &str) {
         self.inner.set("cite", value);
     }

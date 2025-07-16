@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ClientQueryOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ClientQueryOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ClientQueryOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ClientQueryOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for ClientQueryOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ClientQueryOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ClientQueryOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ClientQueryOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ClientQueryOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ClientQueryOptions> for emlite::Val {
-    fn from(s: ClientQueryOptions) -> emlite::Val {
+impl From<ClientQueryOptions> for Any {
+    fn from(s: ClientQueryOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ClientQueryOptions> for emlite::Val {
-    fn from(s: &ClientQueryOptions) -> emlite::Val {
+impl From<&ClientQueryOptions> for Any {
+    fn from(s: &ClientQueryOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -68,26 +68,28 @@ impl ClientQueryOptions {
         self.inner.set("type", value);
     }
 }
+/// The Clients class.
+/// [`Clients`](https://developer.mozilla.org/en-US/docs/Web/API/Clients)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Clients {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Clients {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Clients {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Clients {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -97,40 +99,45 @@ impl core::ops::DerefMut for Clients {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Clients {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Clients {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Clients {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Clients {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Clients> for emlite::Val {
-    fn from(s: Clients) -> emlite::Val {
+impl From<Clients> for Any {
+    fn from(s: Clients) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Clients> for emlite::Val {
-    fn from(s: &Clients) -> emlite::Val {
+impl From<&Clients> for Any {
+    fn from(s: &Clients) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Clients);
 
 impl Clients {
+    /// The get method.
+    /// [`Clients.get`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/get)
     pub fn get(&self, id: &str) -> Promise {
         self.inner.call("get", &[id.into()]).as_::<Promise>()
     }
 }
 impl Clients {
+    /// The matchAll method.
+    /// [`Clients.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll)
     pub fn match_all0(&self) -> Promise {
         self.inner.call("matchAll", &[]).as_::<Promise>()
     }
-
+    /// The matchAll method.
+    /// [`Clients.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll)
     pub fn match_all1(&self, options: &ClientQueryOptions) -> Promise {
         self.inner
             .call("matchAll", &[options.into()])
@@ -138,6 +145,8 @@ impl Clients {
     }
 }
 impl Clients {
+    /// The openWindow method.
+    /// [`Clients.openWindow`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/openWindow)
     pub fn open_window(&self, url: &str) -> Promise {
         self.inner
             .call("openWindow", &[url.into()])
@@ -145,6 +154,8 @@ impl Clients {
     }
 }
 impl Clients {
+    /// The claim method.
+    /// [`Clients.claim`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/claim)
     pub fn claim(&self) -> Promise {
         self.inner.call("claim", &[]).as_::<Promise>()
     }

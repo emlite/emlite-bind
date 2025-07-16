@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IsInputPendingOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for IsInputPendingOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         IsInputPendingOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for IsInputPendingOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for IsInputPendingOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for IsInputPendingOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for IsInputPendingOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for IsInputPendingOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for IsInputPendingOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<IsInputPendingOptions> for emlite::Val {
-    fn from(s: IsInputPendingOptions) -> emlite::Val {
+impl From<IsInputPendingOptions> for Any {
+    fn from(s: IsInputPendingOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&IsInputPendingOptions> for emlite::Val {
-    fn from(s: &IsInputPendingOptions) -> emlite::Val {
+impl From<&IsInputPendingOptions> for Any {
+    fn from(s: &IsInputPendingOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -59,26 +59,28 @@ impl IsInputPendingOptions {
         self.inner.set("includeContinuous", value);
     }
 }
+/// The Scheduling class.
+/// [`Scheduling`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduling)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Scheduling {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Scheduling {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Scheduling {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Scheduling {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -88,35 +90,38 @@ impl core::ops::DerefMut for Scheduling {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Scheduling {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Scheduling {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Scheduling {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Scheduling {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Scheduling> for emlite::Val {
-    fn from(s: Scheduling) -> emlite::Val {
+impl From<Scheduling> for Any {
+    fn from(s: Scheduling) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Scheduling> for emlite::Val {
-    fn from(s: &Scheduling) -> emlite::Val {
+impl From<&Scheduling> for Any {
+    fn from(s: &Scheduling) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Scheduling);
 
 impl Scheduling {
+    /// The isInputPending method.
+    /// [`Scheduling.isInputPending`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduling/isInputPending)
     pub fn is_input_pending0(&self) -> bool {
         self.inner.call("isInputPending", &[]).as_::<bool>()
     }
-
+    /// The isInputPending method.
+    /// [`Scheduling.isInputPending`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduling/isInputPending)
     pub fn is_input_pending1(&self, is_input_pending_options: &IsInputPendingOptions) -> bool {
         self.inner
             .call("isInputPending", &[is_input_pending_options.into()])

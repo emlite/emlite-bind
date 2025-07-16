@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ProfilerTrace {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ProfilerTrace {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ProfilerTrace { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ProfilerTrace {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for ProfilerTrace {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ProfilerTrace {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ProfilerTrace {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ProfilerTrace {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ProfilerTrace {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ProfilerTrace> for emlite::Val {
-    fn from(s: ProfilerTrace) -> emlite::Val {
+impl From<ProfilerTrace> for Any {
+    fn from(s: ProfilerTrace) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ProfilerTrace> for emlite::Val {
-    fn from(s: &ProfilerTrace) -> emlite::Val {
+impl From<&ProfilerTrace> for Any {
+    fn from(s: &ProfilerTrace) -> Any {
         s.inner.clone()
     }
 }
@@ -86,21 +86,23 @@ impl ProfilerTrace {
         self.inner.set("samples", value);
     }
 }
+/// The Profiler class.
+/// [`Profiler`](https://developer.mozilla.org/en-US/docs/Web/API/Profiler)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Profiler {
     inner: EventTarget,
 }
 impl FromVal for Profiler {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Profiler {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -115,51 +117,58 @@ impl core::ops::DerefMut for Profiler {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Profiler {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Profiler {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Profiler {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Profiler {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Profiler> for emlite::Val {
-    fn from(s: Profiler) -> emlite::Val {
+impl From<Profiler> for Any {
+    fn from(s: Profiler) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Profiler> for emlite::Val {
-    fn from(s: &Profiler) -> emlite::Val {
+impl From<&Profiler> for Any {
+    fn from(s: &Profiler) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Profiler);
 
 impl Profiler {
+    /// Getter of the `sampleInterval` attribute.
+    /// [`Profiler.sampleInterval`](https://developer.mozilla.org/en-US/docs/Web/API/Profiler/sampleInterval)
     pub fn sample_interval(&self) -> Any {
         self.inner.get("sampleInterval").as_::<Any>()
     }
 }
 impl Profiler {
+    /// Getter of the `stopped` attribute.
+    /// [`Profiler.stopped`](https://developer.mozilla.org/en-US/docs/Web/API/Profiler/stopped)
     pub fn stopped(&self) -> bool {
         self.inner.get("stopped").as_::<bool>()
     }
 }
 
 impl Profiler {
+    /// The `new Profiler(..)` constructor, creating a new Profiler instance
     pub fn new(options: &Any) -> Profiler {
         Self {
-            inner: emlite::Val::global("Profiler")
+            inner: Any::global("Profiler")
                 .new(&[options.into()])
                 .as_::<EventTarget>(),
         }
     }
 }
 impl Profiler {
+    /// The stop method.
+    /// [`Profiler.stop`](https://developer.mozilla.org/en-US/docs/Web/API/Profiler/stop)
     pub fn stop(&self) -> Promise {
         self.inner.call("stop", &[]).as_::<Promise>()
     }

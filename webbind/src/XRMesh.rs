@@ -1,25 +1,27 @@
 use super::*;
 
+/// The XRMesh class.
+/// [`XRMesh`](https://developer.mozilla.org/en-US/docs/Web/API/XRMesh)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRMesh {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XRMesh {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRMesh {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XRMesh {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for XRMesh {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRMesh {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRMesh {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRMesh {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRMesh {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRMesh> for emlite::Val {
-    fn from(s: XRMesh) -> emlite::Val {
+impl From<XRMesh> for Any {
+    fn from(s: XRMesh) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRMesh> for emlite::Val {
-    fn from(s: &XRMesh) -> emlite::Val {
+impl From<&XRMesh> for Any {
+    fn from(s: &XRMesh) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(XRMesh);
 
 impl XRMesh {
+    /// Getter of the `meshSpace` attribute.
+    /// [`XRMesh.meshSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRMesh/meshSpace)
     pub fn mesh_space(&self) -> XRSpace {
         self.inner.get("meshSpace").as_::<XRSpace>()
     }
 }
 impl XRMesh {
+    /// Getter of the `vertices` attribute.
+    /// [`XRMesh.vertices`](https://developer.mozilla.org/en-US/docs/Web/API/XRMesh/vertices)
     pub fn vertices(&self) -> FrozenArray<Float32Array> {
         self.inner
             .get("vertices")
@@ -66,16 +72,22 @@ impl XRMesh {
     }
 }
 impl XRMesh {
+    /// Getter of the `indices` attribute.
+    /// [`XRMesh.indices`](https://developer.mozilla.org/en-US/docs/Web/API/XRMesh/indices)
     pub fn indices(&self) -> Uint32Array {
         self.inner.get("indices").as_::<Uint32Array>()
     }
 }
 impl XRMesh {
+    /// Getter of the `lastChangedTime` attribute.
+    /// [`XRMesh.lastChangedTime`](https://developer.mozilla.org/en-US/docs/Web/API/XRMesh/lastChangedTime)
     pub fn last_changed_time(&self) -> Any {
         self.inner.get("lastChangedTime").as_::<Any>()
     }
 }
 impl XRMesh {
+    /// Getter of the `semanticLabel` attribute.
+    /// [`XRMesh.semanticLabel`](https://developer.mozilla.org/en-US/docs/Web/API/XRMesh/semanticLabel)
     pub fn semantic_label(&self) -> String {
         self.inner.get("semanticLabel").as_::<String>()
     }

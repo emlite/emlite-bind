@@ -1,20 +1,22 @@
 use super::*;
 
+/// The InputEvent class.
+/// [`InputEvent`](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct InputEvent {
     inner: UIEvent,
 }
 impl FromVal for InputEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         InputEvent {
             inner: UIEvent::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,68 +31,80 @@ impl core::ops::DerefMut for InputEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for InputEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for InputEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for InputEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for InputEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<InputEvent> for emlite::Val {
-    fn from(s: InputEvent) -> emlite::Val {
+impl From<InputEvent> for Any {
+    fn from(s: InputEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&InputEvent> for emlite::Val {
-    fn from(s: &InputEvent) -> emlite::Val {
+impl From<&InputEvent> for Any {
+    fn from(s: &InputEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(InputEvent);
 
 impl InputEvent {
+    /// The `new InputEvent(..)` constructor, creating a new InputEvent instance
     pub fn new0(type_: &str) -> InputEvent {
         Self {
-            inner: emlite::Val::global("InputEvent")
+            inner: Any::global("InputEvent")
                 .new(&[type_.into()])
                 .as_::<UIEvent>(),
         }
     }
 
+    /// The `new InputEvent(..)` constructor, creating a new InputEvent instance
     pub fn new1(type_: &str, event_init_dict: &Any) -> InputEvent {
         Self {
-            inner: emlite::Val::global("InputEvent")
+            inner: Any::global("InputEvent")
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<UIEvent>(),
         }
     }
 }
 impl InputEvent {
+    /// Getter of the `data` attribute.
+    /// [`InputEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/data)
     pub fn data(&self) -> String {
         self.inner.get("data").as_::<String>()
     }
 }
 impl InputEvent {
+    /// Getter of the `isComposing` attribute.
+    /// [`InputEvent.isComposing`](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/isComposing)
     pub fn is_composing(&self) -> bool {
         self.inner.get("isComposing").as_::<bool>()
     }
 }
 impl InputEvent {
+    /// Getter of the `inputType` attribute.
+    /// [`InputEvent.inputType`](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/inputType)
     pub fn input_type(&self) -> String {
         self.inner.get("inputType").as_::<String>()
     }
 }
 impl InputEvent {
+    /// Getter of the `dataTransfer` attribute.
+    /// [`InputEvent.dataTransfer`](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/dataTransfer)
     pub fn data_transfer(&self) -> DataTransfer {
         self.inner.get("dataTransfer").as_::<DataTransfer>()
     }
 }
 impl InputEvent {
+    /// The getTargetRanges method.
+    /// [`InputEvent.getTargetRanges`](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/getTargetRanges)
     pub fn get_target_ranges(&self) -> Sequence<StaticRange> {
         self.inner
             .call("getTargetRanges", &[])

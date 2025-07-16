@@ -1,20 +1,22 @@
 use super::*;
 
+/// The AudioNode class.
+/// [`AudioNode`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioNode {
     inner: EventTarget,
 }
 impl FromVal for AudioNode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AudioNode {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,37 +31,40 @@ impl core::ops::DerefMut for AudioNode {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AudioNode {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AudioNode {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AudioNode {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AudioNode {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AudioNode> for emlite::Val {
-    fn from(s: AudioNode) -> emlite::Val {
+impl From<AudioNode> for Any {
+    fn from(s: AudioNode) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AudioNode> for emlite::Val {
-    fn from(s: &AudioNode) -> emlite::Val {
+impl From<&AudioNode> for Any {
+    fn from(s: &AudioNode) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(AudioNode);
 
 impl AudioNode {
+    /// The connect method.
+    /// [`AudioNode.connect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/connect)
     pub fn connect0(&self, destination_param: &AudioParam) -> Undefined {
         self.inner
             .call("connect", &[destination_param.into()])
             .as_::<Undefined>()
     }
-
+    /// The connect method.
+    /// [`AudioNode.connect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/connect)
     pub fn connect1(&self, destination_param: &AudioParam, output: u32) -> Undefined {
         self.inner
             .call("connect", &[destination_param.into(), output.into()])
@@ -67,6 +72,8 @@ impl AudioNode {
     }
 }
 impl AudioNode {
+    /// The disconnect method.
+    /// [`AudioNode.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/disconnect)
     pub fn disconnect(&self, destination_param: &AudioParam, output: u32) -> Undefined {
         self.inner
             .call("disconnect", &[destination_param.into(), output.into()])
@@ -74,45 +81,63 @@ impl AudioNode {
     }
 }
 impl AudioNode {
+    /// Getter of the `context` attribute.
+    /// [`AudioNode.context`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/context)
     pub fn context(&self) -> BaseAudioContext {
         self.inner.get("context").as_::<BaseAudioContext>()
     }
 }
 impl AudioNode {
+    /// Getter of the `numberOfInputs` attribute.
+    /// [`AudioNode.numberOfInputs`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/numberOfInputs)
     pub fn number_of_inputs(&self) -> u32 {
         self.inner.get("numberOfInputs").as_::<u32>()
     }
 }
 impl AudioNode {
+    /// Getter of the `numberOfOutputs` attribute.
+    /// [`AudioNode.numberOfOutputs`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/numberOfOutputs)
     pub fn number_of_outputs(&self) -> u32 {
         self.inner.get("numberOfOutputs").as_::<u32>()
     }
 }
 impl AudioNode {
+    /// Getter of the `channelCount` attribute.
+    /// [`AudioNode.channelCount`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/channelCount)
     pub fn channel_count(&self) -> u32 {
         self.inner.get("channelCount").as_::<u32>()
     }
 
+    /// Setter of the `channelCount` attribute.
+    /// [`AudioNode.channelCount`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/channelCount)
     pub fn set_channel_count(&mut self, value: u32) {
         self.inner.set("channelCount", value);
     }
 }
 impl AudioNode {
+    /// Getter of the `channelCountMode` attribute.
+    /// [`AudioNode.channelCountMode`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/channelCountMode)
     pub fn channel_count_mode(&self) -> ChannelCountMode {
         self.inner.get("channelCountMode").as_::<ChannelCountMode>()
     }
 
+    /// Setter of the `channelCountMode` attribute.
+    /// [`AudioNode.channelCountMode`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/channelCountMode)
     pub fn set_channel_count_mode(&mut self, value: &ChannelCountMode) {
         self.inner.set("channelCountMode", value);
     }
 }
 impl AudioNode {
+    /// Getter of the `channelInterpretation` attribute.
+    /// [`AudioNode.channelInterpretation`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/channelInterpretation)
     pub fn channel_interpretation(&self) -> ChannelInterpretation {
         self.inner
             .get("channelInterpretation")
             .as_::<ChannelInterpretation>()
     }
 
+    /// Setter of the `channelInterpretation` attribute.
+    /// [`AudioNode.channelInterpretation`](https://developer.mozilla.org/en-US/docs/Web/API/AudioNode/channelInterpretation)
     pub fn set_channel_interpretation(&mut self, value: &ChannelInterpretation) {
         self.inner.set("channelInterpretation", value);
     }

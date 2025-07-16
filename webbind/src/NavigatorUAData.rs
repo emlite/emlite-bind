@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NavigatorUABrandVersion {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for NavigatorUABrandVersion {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         NavigatorUABrandVersion { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for NavigatorUABrandVersion {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for NavigatorUABrandVersion {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for NavigatorUABrandVersion {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for NavigatorUABrandVersion {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for NavigatorUABrandVersion {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for NavigatorUABrandVersion {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<NavigatorUABrandVersion> for emlite::Val {
-    fn from(s: NavigatorUABrandVersion) -> emlite::Val {
+impl From<NavigatorUABrandVersion> for Any {
+    fn from(s: NavigatorUABrandVersion) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&NavigatorUABrandVersion> for emlite::Val {
-    fn from(s: &NavigatorUABrandVersion) -> emlite::Val {
+impl From<&NavigatorUABrandVersion> for Any {
+    fn from(s: &NavigatorUABrandVersion) -> Any {
         s.inner.clone()
     }
 }
@@ -71,21 +71,21 @@ impl NavigatorUABrandVersion {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct UADataValues {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for UADataValues {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         UADataValues { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for UADataValues {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -95,25 +95,25 @@ impl core::ops::DerefMut for UADataValues {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for UADataValues {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for UADataValues {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for UADataValues {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for UADataValues {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<UADataValues> for emlite::Val {
-    fn from(s: UADataValues) -> emlite::Val {
+impl From<UADataValues> for Any {
+    fn from(s: UADataValues) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&UADataValues> for emlite::Val {
-    fn from(s: &UADataValues) -> emlite::Val {
+impl From<&UADataValues> for Any {
+    fn from(s: &UADataValues) -> Any {
         s.inner.clone()
     }
 }
@@ -224,21 +224,21 @@ impl UADataValues {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct UALowEntropyJSON {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for UALowEntropyJSON {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         UALowEntropyJSON { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for UALowEntropyJSON {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -248,25 +248,25 @@ impl core::ops::DerefMut for UALowEntropyJSON {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for UALowEntropyJSON {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for UALowEntropyJSON {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for UALowEntropyJSON {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for UALowEntropyJSON {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<UALowEntropyJSON> for emlite::Val {
-    fn from(s: UALowEntropyJSON) -> emlite::Val {
+impl From<UALowEntropyJSON> for Any {
+    fn from(s: UALowEntropyJSON) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&UALowEntropyJSON> for emlite::Val {
-    fn from(s: &UALowEntropyJSON) -> emlite::Val {
+impl From<&UALowEntropyJSON> for Any {
+    fn from(s: &UALowEntropyJSON) -> Any {
         s.inner.clone()
     }
 }
@@ -300,26 +300,28 @@ impl UALowEntropyJSON {
         self.inner.set("platform", value);
     }
 }
+/// The NavigatorUAData class.
+/// [`NavigatorUAData`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorUAData)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NavigatorUAData {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for NavigatorUAData {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         NavigatorUAData {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for NavigatorUAData {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -329,31 +331,33 @@ impl core::ops::DerefMut for NavigatorUAData {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for NavigatorUAData {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for NavigatorUAData {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for NavigatorUAData {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for NavigatorUAData {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<NavigatorUAData> for emlite::Val {
-    fn from(s: NavigatorUAData) -> emlite::Val {
+impl From<NavigatorUAData> for Any {
+    fn from(s: NavigatorUAData) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&NavigatorUAData> for emlite::Val {
-    fn from(s: &NavigatorUAData) -> emlite::Val {
+impl From<&NavigatorUAData> for Any {
+    fn from(s: &NavigatorUAData) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(NavigatorUAData);
 
 impl NavigatorUAData {
+    /// Getter of the `brands` attribute.
+    /// [`NavigatorUAData.brands`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorUAData/brands)
     pub fn brands(&self) -> FrozenArray<NavigatorUABrandVersion> {
         self.inner
             .get("brands")
@@ -361,16 +365,22 @@ impl NavigatorUAData {
     }
 }
 impl NavigatorUAData {
+    /// Getter of the `mobile` attribute.
+    /// [`NavigatorUAData.mobile`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorUAData/mobile)
     pub fn mobile(&self) -> bool {
         self.inner.get("mobile").as_::<bool>()
     }
 }
 impl NavigatorUAData {
+    /// Getter of the `platform` attribute.
+    /// [`NavigatorUAData.platform`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorUAData/platform)
     pub fn platform(&self) -> String {
         self.inner.get("platform").as_::<String>()
     }
 }
 impl NavigatorUAData {
+    /// The getHighEntropyValues method.
+    /// [`NavigatorUAData.getHighEntropyValues`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorUAData/getHighEntropyValues)
     pub fn get_high_entropy_values(&self, hints: &Sequence<String>) -> Promise {
         self.inner
             .call("getHighEntropyValues", &[hints.into()])
@@ -378,6 +388,8 @@ impl NavigatorUAData {
     }
 }
 impl NavigatorUAData {
+    /// The toJSON method.
+    /// [`NavigatorUAData.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorUAData/toJSON)
     pub fn to_json(&self) -> UALowEntropyJSON {
         self.inner.call("toJSON", &[]).as_::<UALowEntropyJSON>()
     }

@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CSSParserQualifiedRule class.
+/// [`CSSParserQualifiedRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserQualifiedRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSParserQualifiedRule {
     inner: CSSParserRule,
 }
 impl FromVal for CSSParserQualifiedRule {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSParserQualifiedRule {
             inner: CSSParserRule::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,48 +31,52 @@ impl core::ops::DerefMut for CSSParserQualifiedRule {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSParserQualifiedRule {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSParserQualifiedRule {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSParserQualifiedRule {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSParserQualifiedRule {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSParserQualifiedRule> for emlite::Val {
-    fn from(s: CSSParserQualifiedRule) -> emlite::Val {
+impl From<CSSParserQualifiedRule> for Any {
+    fn from(s: CSSParserQualifiedRule) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSParserQualifiedRule> for emlite::Val {
-    fn from(s: &CSSParserQualifiedRule) -> emlite::Val {
+impl From<&CSSParserQualifiedRule> for Any {
+    fn from(s: &CSSParserQualifiedRule) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSParserQualifiedRule);
 
 impl CSSParserQualifiedRule {
+    /// The `new CSSParserQualifiedRule(..)` constructor, creating a new CSSParserQualifiedRule instance
     pub fn new0(prelude: &Sequence<Any>) -> CSSParserQualifiedRule {
         Self {
-            inner: emlite::Val::global("CSSParserQualifiedRule")
+            inner: Any::global("CSSParserQualifiedRule")
                 .new(&[prelude.into()])
                 .as_::<CSSParserRule>(),
         }
     }
 
+    /// The `new CSSParserQualifiedRule(..)` constructor, creating a new CSSParserQualifiedRule instance
     pub fn new1(prelude: &Sequence<Any>, body: &Sequence<CSSParserRule>) -> CSSParserQualifiedRule {
         Self {
-            inner: emlite::Val::global("CSSParserQualifiedRule")
+            inner: Any::global("CSSParserQualifiedRule")
                 .new(&[prelude.into(), body.into()])
                 .as_::<CSSParserRule>(),
         }
     }
 }
 impl CSSParserQualifiedRule {
+    /// Getter of the `prelude` attribute.
+    /// [`CSSParserQualifiedRule.prelude`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserQualifiedRule/prelude)
     pub fn prelude(&self) -> FrozenArray<CSSParserValue> {
         self.inner
             .get("prelude")
@@ -78,6 +84,8 @@ impl CSSParserQualifiedRule {
     }
 }
 impl CSSParserQualifiedRule {
+    /// Getter of the `body` attribute.
+    /// [`CSSParserQualifiedRule.body`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserQualifiedRule/body)
     pub fn body(&self) -> FrozenArray<CSSParserRule> {
         self.inner.get("body").as_::<FrozenArray<CSSParserRule>>()
     }

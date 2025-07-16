@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ReadableStreamGetReaderOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ReadableStreamGetReaderOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ReadableStreamGetReaderOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ReadableStreamGetReaderOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for ReadableStreamGetReaderOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ReadableStreamGetReaderOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ReadableStreamGetReaderOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ReadableStreamGetReaderOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ReadableStreamGetReaderOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ReadableStreamGetReaderOptions> for emlite::Val {
-    fn from(s: ReadableStreamGetReaderOptions) -> emlite::Val {
+impl From<ReadableStreamGetReaderOptions> for Any {
+    fn from(s: ReadableStreamGetReaderOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ReadableStreamGetReaderOptions> for emlite::Val {
-    fn from(s: &ReadableStreamGetReaderOptions) -> emlite::Val {
+impl From<&ReadableStreamGetReaderOptions> for Any {
+    fn from(s: &ReadableStreamGetReaderOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -62,21 +62,21 @@ impl ReadableStreamGetReaderOptions {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ReadableWritablePair {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ReadableWritablePair {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ReadableWritablePair { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ReadableWritablePair {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -86,25 +86,25 @@ impl core::ops::DerefMut for ReadableWritablePair {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ReadableWritablePair {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ReadableWritablePair {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ReadableWritablePair {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ReadableWritablePair {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ReadableWritablePair> for emlite::Val {
-    fn from(s: ReadableWritablePair) -> emlite::Val {
+impl From<ReadableWritablePair> for Any {
+    fn from(s: ReadableWritablePair) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ReadableWritablePair> for emlite::Val {
-    fn from(s: &ReadableWritablePair) -> emlite::Val {
+impl From<&ReadableWritablePair> for Any {
+    fn from(s: &ReadableWritablePair) -> Any {
         s.inner.clone()
     }
 }
@@ -130,21 +130,21 @@ impl ReadableWritablePair {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct StreamPipeOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for StreamPipeOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         StreamPipeOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for StreamPipeOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -154,25 +154,25 @@ impl core::ops::DerefMut for StreamPipeOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for StreamPipeOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for StreamPipeOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for StreamPipeOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for StreamPipeOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<StreamPipeOptions> for emlite::Val {
-    fn from(s: StreamPipeOptions) -> emlite::Val {
+impl From<StreamPipeOptions> for Any {
+    fn from(s: StreamPipeOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&StreamPipeOptions> for emlite::Val {
-    fn from(s: &StreamPipeOptions) -> emlite::Val {
+impl From<&StreamPipeOptions> for Any {
+    fn from(s: &StreamPipeOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -213,26 +213,28 @@ impl StreamPipeOptions {
         self.inner.set("signal", value);
     }
 }
+/// The ReadableStream class.
+/// [`ReadableStream`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ReadableStream {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ReadableStream {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ReadableStream {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ReadableStream {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -242,92 +244,106 @@ impl core::ops::DerefMut for ReadableStream {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ReadableStream {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ReadableStream {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ReadableStream {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ReadableStream {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ReadableStream> for emlite::Val {
-    fn from(s: ReadableStream) -> emlite::Val {
+impl From<ReadableStream> for Any {
+    fn from(s: ReadableStream) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ReadableStream> for emlite::Val {
-    fn from(s: &ReadableStream) -> emlite::Val {
+impl From<&ReadableStream> for Any {
+    fn from(s: &ReadableStream) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ReadableStream);
 
 impl ReadableStream {
+    /// The `new ReadableStream(..)` constructor, creating a new ReadableStream instance
     pub fn new0() -> ReadableStream {
         Self {
-            inner: emlite::Val::global("ReadableStream")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("ReadableStream").new(&[]).as_::<Any>(),
         }
     }
 
+    /// The `new ReadableStream(..)` constructor, creating a new ReadableStream instance
     pub fn new1(underlying_source: &Object) -> ReadableStream {
         Self {
-            inner: emlite::Val::global("ReadableStream")
+            inner: Any::global("ReadableStream")
                 .new(&[underlying_source.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 
+    /// The `new ReadableStream(..)` constructor, creating a new ReadableStream instance
     pub fn new2(underlying_source: &Object, strategy: &Any) -> ReadableStream {
         Self {
-            inner: emlite::Val::global("ReadableStream")
+            inner: Any::global("ReadableStream")
                 .new(&[underlying_source.into(), strategy.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl ReadableStream {
+    /// The from method.
+    /// [`ReadableStream.from`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/from)
     pub fn from(async_iterable: &Any) -> ReadableStream {
-        emlite::Val::global("ReadableStream")
+        Any::global("ReadableStream")
             .call("from", &[async_iterable.into()])
             .as_::<ReadableStream>()
     }
 }
 impl ReadableStream {
+    /// Getter of the `locked` attribute.
+    /// [`ReadableStream.locked`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/locked)
     pub fn locked(&self) -> bool {
         self.inner.get("locked").as_::<bool>()
     }
 }
 impl ReadableStream {
+    /// The cancel method.
+    /// [`ReadableStream.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/cancel)
     pub fn cancel0(&self) -> Promise {
         self.inner.call("cancel", &[]).as_::<Promise>()
     }
-
+    /// The cancel method.
+    /// [`ReadableStream.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/cancel)
     pub fn cancel1(&self, reason: &Any) -> Promise {
         self.inner.call("cancel", &[reason.into()]).as_::<Promise>()
     }
 }
 impl ReadableStream {
+    /// The getReader method.
+    /// [`ReadableStream.getReader`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/getReader)
     pub fn get_reader0(&self) -> Any {
         self.inner.call("getReader", &[]).as_::<Any>()
     }
-
+    /// The getReader method.
+    /// [`ReadableStream.getReader`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/getReader)
     pub fn get_reader1(&self, options: &ReadableStreamGetReaderOptions) -> Any {
         self.inner.call("getReader", &[options.into()]).as_::<Any>()
     }
 }
 impl ReadableStream {
+    /// The pipeThrough method.
+    /// [`ReadableStream.pipeThrough`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeThrough)
     pub fn pipe_through0(&self, transform: &ReadableWritablePair) -> ReadableStream {
         self.inner
             .call("pipeThrough", &[transform.into()])
             .as_::<ReadableStream>()
     }
-
+    /// The pipeThrough method.
+    /// [`ReadableStream.pipeThrough`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeThrough)
     pub fn pipe_through1(
         &self,
         transform: &ReadableWritablePair,
@@ -339,12 +355,15 @@ impl ReadableStream {
     }
 }
 impl ReadableStream {
+    /// The pipeTo method.
+    /// [`ReadableStream.pipeTo`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo)
     pub fn pipe_to0(&self, destination: &WritableStream) -> Promise {
         self.inner
             .call("pipeTo", &[destination.into()])
             .as_::<Promise>()
     }
-
+    /// The pipeTo method.
+    /// [`ReadableStream.pipeTo`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo)
     pub fn pipe_to1(&self, destination: &WritableStream, options: &StreamPipeOptions) -> Promise {
         self.inner
             .call("pipeTo", &[destination.into(), options.into()])
@@ -352,6 +371,8 @@ impl ReadableStream {
     }
 }
 impl ReadableStream {
+    /// The tee method.
+    /// [`ReadableStream.tee`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee)
     pub fn tee(&self) -> Sequence<ReadableStream> {
         self.inner
             .call("tee", &[])

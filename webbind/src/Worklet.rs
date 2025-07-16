@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WorkletOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for WorkletOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WorkletOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for WorkletOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for WorkletOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WorkletOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WorkletOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WorkletOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WorkletOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WorkletOptions> for emlite::Val {
-    fn from(s: WorkletOptions) -> emlite::Val {
+impl From<WorkletOptions> for Any {
+    fn from(s: WorkletOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WorkletOptions> for emlite::Val {
-    fn from(s: &WorkletOptions) -> emlite::Val {
+impl From<&WorkletOptions> for Any {
+    fn from(s: &WorkletOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -59,26 +59,28 @@ impl WorkletOptions {
         self.inner.set("credentials", value);
     }
 }
+/// The Worklet class.
+/// [`Worklet`](https://developer.mozilla.org/en-US/docs/Web/API/Worklet)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Worklet {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Worklet {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Worklet {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Worklet {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -88,37 +90,40 @@ impl core::ops::DerefMut for Worklet {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Worklet {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Worklet {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Worklet {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Worklet {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Worklet> for emlite::Val {
-    fn from(s: Worklet) -> emlite::Val {
+impl From<Worklet> for Any {
+    fn from(s: Worklet) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Worklet> for emlite::Val {
-    fn from(s: &Worklet) -> emlite::Val {
+impl From<&Worklet> for Any {
+    fn from(s: &Worklet) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Worklet);
 
 impl Worklet {
+    /// The addModule method.
+    /// [`Worklet.addModule`](https://developer.mozilla.org/en-US/docs/Web/API/Worklet/addModule)
     pub fn add_module0(&self, module_url: &str) -> Promise {
         self.inner
             .call("addModule", &[module_url.into()])
             .as_::<Promise>()
     }
-
+    /// The addModule method.
+    /// [`Worklet.addModule`](https://developer.mozilla.org/en-US/docs/Web/API/Worklet/addModule)
     pub fn add_module1(&self, module_url: &str, options: &WorkletOptions) -> Promise {
         self.inner
             .call("addModule", &[module_url.into(), options.into()])

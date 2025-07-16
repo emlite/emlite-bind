@@ -1,20 +1,22 @@
 use super::*;
 
+/// The RTCIdentityProviderGlobalScope class.
+/// [`RTCIdentityProviderGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityProviderGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCIdentityProviderGlobalScope {
     inner: WorkerGlobalScope,
 }
 impl FromVal for RTCIdentityProviderGlobalScope {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCIdentityProviderGlobalScope {
             inner: WorkerGlobalScope::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for RTCIdentityProviderGlobalScope {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCIdentityProviderGlobalScope {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCIdentityProviderGlobalScope {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCIdentityProviderGlobalScope {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCIdentityProviderGlobalScope {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCIdentityProviderGlobalScope> for emlite::Val {
-    fn from(s: RTCIdentityProviderGlobalScope) -> emlite::Val {
+impl From<RTCIdentityProviderGlobalScope> for Any {
+    fn from(s: RTCIdentityProviderGlobalScope) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCIdentityProviderGlobalScope> for emlite::Val {
-    fn from(s: &RTCIdentityProviderGlobalScope) -> emlite::Val {
+impl From<&RTCIdentityProviderGlobalScope> for Any {
+    fn from(s: &RTCIdentityProviderGlobalScope) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCIdentityProviderGlobalScope);
 
 impl RTCIdentityProviderGlobalScope {
+    /// Getter of the `rtcIdentityProvider` attribute.
+    /// [`RTCIdentityProviderGlobalScope.rtcIdentityProvider`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityProviderGlobalScope/rtcIdentityProvider)
     pub fn rtc_identity_provider(&self) -> RTCIdentityProviderRegistrar {
         self.inner
             .get("rtcIdentityProvider")

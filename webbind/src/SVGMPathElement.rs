@@ -1,20 +1,22 @@
 use super::*;
 
+/// The SVGMPathElement class.
+/// [`SVGMPathElement`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMPathElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGMPathElement {
     inner: SVGElement,
 }
 impl FromVal for SVGMPathElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SVGMPathElement {
             inner: SVGElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for SVGMPathElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SVGMPathElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SVGMPathElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SVGMPathElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SVGMPathElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SVGMPathElement> for emlite::Val {
-    fn from(s: SVGMPathElement) -> emlite::Val {
+impl From<SVGMPathElement> for Any {
+    fn from(s: SVGMPathElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SVGMPathElement> for emlite::Val {
-    fn from(s: &SVGMPathElement) -> emlite::Val {
+impl From<&SVGMPathElement> for Any {
+    fn from(s: &SVGMPathElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SVGMPathElement);
 
 impl SVGMPathElement {
+    /// Getter of the `href` attribute.
+    /// [`SVGMPathElement.href`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMPathElement/href)
     pub fn href(&self) -> SVGAnimatedString {
         self.inner.get("href").as_::<SVGAnimatedString>()
     }

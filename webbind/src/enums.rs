@@ -6,33 +6,33 @@ pub enum SecurityPolicyViolationEventDisposition {
     REPORT,
 }
 impl FromVal for SecurityPolicyViolationEventDisposition {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "enforce" => Self::ENFORCE,
             "report" => Self::REPORT,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SecurityPolicyViolationEventDisposition> for emlite::Val {
-    fn from(s: SecurityPolicyViolationEventDisposition) -> emlite::Val {
+impl From<SecurityPolicyViolationEventDisposition> for Any {
+    fn from(s: SecurityPolicyViolationEventDisposition) -> Any {
         match s {
-            SecurityPolicyViolationEventDisposition::ENFORCE => emlite::Val::from("enforce"),
-            SecurityPolicyViolationEventDisposition::REPORT => emlite::Val::from("report"),
+            SecurityPolicyViolationEventDisposition::ENFORCE => Any::from("enforce"),
+            SecurityPolicyViolationEventDisposition::REPORT => Any::from("report"),
         }
     }
 }
-impl From<&SecurityPolicyViolationEventDisposition> for emlite::Val {
-    fn from(s: &SecurityPolicyViolationEventDisposition) -> emlite::Val {
+impl From<&SecurityPolicyViolationEventDisposition> for Any {
+    fn from(s: &SecurityPolicyViolationEventDisposition) -> Any {
         match *s {
-            SecurityPolicyViolationEventDisposition::ENFORCE => emlite::Val::from("enforce"),
-            SecurityPolicyViolationEventDisposition::REPORT => emlite::Val::from("report"),
+            SecurityPolicyViolationEventDisposition::ENFORCE => Any::from("enforce"),
+            SecurityPolicyViolationEventDisposition::REPORT => Any::from("report"),
         }
     }
 }
@@ -43,33 +43,33 @@ pub enum EndingType {
     NATIVE,
 }
 impl FromVal for EndingType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "transparent" => Self::TRANSPARENT,
             "native" => Self::NATIVE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<EndingType> for emlite::Val {
-    fn from(s: EndingType) -> emlite::Val {
+impl From<EndingType> for Any {
+    fn from(s: EndingType) -> Any {
         match s {
-            EndingType::TRANSPARENT => emlite::Val::from("transparent"),
-            EndingType::NATIVE => emlite::Val::from("native"),
+            EndingType::TRANSPARENT => Any::from("transparent"),
+            EndingType::NATIVE => Any::from("native"),
         }
     }
 }
-impl From<&EndingType> for emlite::Val {
-    fn from(s: &EndingType) -> emlite::Val {
+impl From<&EndingType> for Any {
+    fn from(s: &EndingType) -> Any {
         match *s {
-            EndingType::TRANSPARENT => emlite::Val::from("transparent"),
-            EndingType::NATIVE => emlite::Val::from("native"),
+            EndingType::TRANSPARENT => Any::from("transparent"),
+            EndingType::NATIVE => Any::from("native"),
         }
     }
 }
@@ -80,33 +80,33 @@ pub enum IDBRequestReadyState {
     DONE,
 }
 impl FromVal for IDBRequestReadyState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "pending" => Self::PENDING,
             "done" => Self::DONE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<IDBRequestReadyState> for emlite::Val {
-    fn from(s: IDBRequestReadyState) -> emlite::Val {
+impl From<IDBRequestReadyState> for Any {
+    fn from(s: IDBRequestReadyState) -> Any {
         match s {
-            IDBRequestReadyState::PENDING => emlite::Val::from("pending"),
-            IDBRequestReadyState::DONE => emlite::Val::from("done"),
+            IDBRequestReadyState::PENDING => Any::from("pending"),
+            IDBRequestReadyState::DONE => Any::from("done"),
         }
     }
 }
-impl From<&IDBRequestReadyState> for emlite::Val {
-    fn from(s: &IDBRequestReadyState) -> emlite::Val {
+impl From<&IDBRequestReadyState> for Any {
+    fn from(s: &IDBRequestReadyState) -> Any {
         match *s {
-            IDBRequestReadyState::PENDING => emlite::Val::from("pending"),
-            IDBRequestReadyState::DONE => emlite::Val::from("done"),
+            IDBRequestReadyState::PENDING => Any::from("pending"),
+            IDBRequestReadyState::DONE => Any::from("done"),
         }
     }
 }
@@ -118,7 +118,7 @@ pub enum IDBTransactionDurability {
     RELAXED,
 }
 impl FromVal for IDBTransactionDurability {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "default" => Self::DEFAULT,
             "strict" => Self::STRICT,
@@ -126,28 +126,28 @@ impl FromVal for IDBTransactionDurability {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<IDBTransactionDurability> for emlite::Val {
-    fn from(s: IDBTransactionDurability) -> emlite::Val {
+impl From<IDBTransactionDurability> for Any {
+    fn from(s: IDBTransactionDurability) -> Any {
         match s {
-            IDBTransactionDurability::DEFAULT => emlite::Val::from("default"),
-            IDBTransactionDurability::STRICT => emlite::Val::from("strict"),
-            IDBTransactionDurability::RELAXED => emlite::Val::from("relaxed"),
+            IDBTransactionDurability::DEFAULT => Any::from("default"),
+            IDBTransactionDurability::STRICT => Any::from("strict"),
+            IDBTransactionDurability::RELAXED => Any::from("relaxed"),
         }
     }
 }
-impl From<&IDBTransactionDurability> for emlite::Val {
-    fn from(s: &IDBTransactionDurability) -> emlite::Val {
+impl From<&IDBTransactionDurability> for Any {
+    fn from(s: &IDBTransactionDurability) -> Any {
         match *s {
-            IDBTransactionDurability::DEFAULT => emlite::Val::from("default"),
-            IDBTransactionDurability::STRICT => emlite::Val::from("strict"),
-            IDBTransactionDurability::RELAXED => emlite::Val::from("relaxed"),
+            IDBTransactionDurability::DEFAULT => Any::from("default"),
+            IDBTransactionDurability::STRICT => Any::from("strict"),
+            IDBTransactionDurability::RELAXED => Any::from("relaxed"),
         }
     }
 }
@@ -160,7 +160,7 @@ pub enum IDBCursorDirection {
     PREVUNIQUE,
 }
 impl FromVal for IDBCursorDirection {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "next" => Self::NEXT,
             "nextunique" => Self::NEXTUNIQUE,
@@ -169,30 +169,30 @@ impl FromVal for IDBCursorDirection {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<IDBCursorDirection> for emlite::Val {
-    fn from(s: IDBCursorDirection) -> emlite::Val {
+impl From<IDBCursorDirection> for Any {
+    fn from(s: IDBCursorDirection) -> Any {
         match s {
-            IDBCursorDirection::NEXT => emlite::Val::from("next"),
-            IDBCursorDirection::NEXTUNIQUE => emlite::Val::from("nextunique"),
-            IDBCursorDirection::PREV => emlite::Val::from("prev"),
-            IDBCursorDirection::PREVUNIQUE => emlite::Val::from("prevunique"),
+            IDBCursorDirection::NEXT => Any::from("next"),
+            IDBCursorDirection::NEXTUNIQUE => Any::from("nextunique"),
+            IDBCursorDirection::PREV => Any::from("prev"),
+            IDBCursorDirection::PREVUNIQUE => Any::from("prevunique"),
         }
     }
 }
-impl From<&IDBCursorDirection> for emlite::Val {
-    fn from(s: &IDBCursorDirection) -> emlite::Val {
+impl From<&IDBCursorDirection> for Any {
+    fn from(s: &IDBCursorDirection) -> Any {
         match *s {
-            IDBCursorDirection::NEXT => emlite::Val::from("next"),
-            IDBCursorDirection::NEXTUNIQUE => emlite::Val::from("nextunique"),
-            IDBCursorDirection::PREV => emlite::Val::from("prev"),
-            IDBCursorDirection::PREVUNIQUE => emlite::Val::from("prevunique"),
+            IDBCursorDirection::NEXT => Any::from("next"),
+            IDBCursorDirection::NEXTUNIQUE => Any::from("nextunique"),
+            IDBCursorDirection::PREV => Any::from("prev"),
+            IDBCursorDirection::PREVUNIQUE => Any::from("prevunique"),
         }
     }
 }
@@ -204,7 +204,7 @@ pub enum IDBTransactionMode {
     VERSIONCHANGE,
 }
 impl FromVal for IDBTransactionMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "readonly" => Self::READONLY,
             "readwrite" => Self::READWRITE,
@@ -212,28 +212,28 @@ impl FromVal for IDBTransactionMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<IDBTransactionMode> for emlite::Val {
-    fn from(s: IDBTransactionMode) -> emlite::Val {
+impl From<IDBTransactionMode> for Any {
+    fn from(s: IDBTransactionMode) -> Any {
         match s {
-            IDBTransactionMode::READONLY => emlite::Val::from("readonly"),
-            IDBTransactionMode::READWRITE => emlite::Val::from("readwrite"),
-            IDBTransactionMode::VERSIONCHANGE => emlite::Val::from("versionchange"),
+            IDBTransactionMode::READONLY => Any::from("readonly"),
+            IDBTransactionMode::READWRITE => Any::from("readwrite"),
+            IDBTransactionMode::VERSIONCHANGE => Any::from("versionchange"),
         }
     }
 }
-impl From<&IDBTransactionMode> for emlite::Val {
-    fn from(s: &IDBTransactionMode) -> emlite::Val {
+impl From<&IDBTransactionMode> for Any {
+    fn from(s: &IDBTransactionMode) -> Any {
         match *s {
-            IDBTransactionMode::READONLY => emlite::Val::from("readonly"),
-            IDBTransactionMode::READWRITE => emlite::Val::from("readwrite"),
-            IDBTransactionMode::VERSIONCHANGE => emlite::Val::from("versionchange"),
+            IDBTransactionMode::READONLY => Any::from("readonly"),
+            IDBTransactionMode::READWRITE => Any::from("readwrite"),
+            IDBTransactionMode::VERSIONCHANGE => Any::from("versionchange"),
         }
     }
 }
@@ -244,33 +244,33 @@ pub enum AccelerometerLocalCoordinateSystem {
     SCREEN,
 }
 impl FromVal for AccelerometerLocalCoordinateSystem {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "device" => Self::DEVICE,
             "screen" => Self::SCREEN,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AccelerometerLocalCoordinateSystem> for emlite::Val {
-    fn from(s: AccelerometerLocalCoordinateSystem) -> emlite::Val {
+impl From<AccelerometerLocalCoordinateSystem> for Any {
+    fn from(s: AccelerometerLocalCoordinateSystem) -> Any {
         match s {
-            AccelerometerLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
-            AccelerometerLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+            AccelerometerLocalCoordinateSystem::DEVICE => Any::from("device"),
+            AccelerometerLocalCoordinateSystem::SCREEN => Any::from("screen"),
         }
     }
 }
-impl From<&AccelerometerLocalCoordinateSystem> for emlite::Val {
-    fn from(s: &AccelerometerLocalCoordinateSystem) -> emlite::Val {
+impl From<&AccelerometerLocalCoordinateSystem> for Any {
+    fn from(s: &AccelerometerLocalCoordinateSystem) -> Any {
         match *s {
-            AccelerometerLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
-            AccelerometerLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+            AccelerometerLocalCoordinateSystem::DEVICE => Any::from("device"),
+            AccelerometerLocalCoordinateSystem::SCREEN => Any::from("screen"),
         }
     }
 }
@@ -285,7 +285,7 @@ pub enum AudioSessionType {
     PLAY_AND_RECORD,
 }
 impl FromVal for AudioSessionType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "auto" => Self::AUTO,
             "playback" => Self::PLAYBACK,
@@ -296,34 +296,34 @@ impl FromVal for AudioSessionType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AudioSessionType> for emlite::Val {
-    fn from(s: AudioSessionType) -> emlite::Val {
+impl From<AudioSessionType> for Any {
+    fn from(s: AudioSessionType) -> Any {
         match s {
-            AudioSessionType::AUTO => emlite::Val::from("auto"),
-            AudioSessionType::PLAYBACK => emlite::Val::from("playback"),
-            AudioSessionType::TRANSIENT => emlite::Val::from("transient"),
-            AudioSessionType::TRANSIENT_SOLO => emlite::Val::from("transient-solo"),
-            AudioSessionType::AMBIENT => emlite::Val::from("ambient"),
-            AudioSessionType::PLAY_AND_RECORD => emlite::Val::from("play-and-record"),
+            AudioSessionType::AUTO => Any::from("auto"),
+            AudioSessionType::PLAYBACK => Any::from("playback"),
+            AudioSessionType::TRANSIENT => Any::from("transient"),
+            AudioSessionType::TRANSIENT_SOLO => Any::from("transient-solo"),
+            AudioSessionType::AMBIENT => Any::from("ambient"),
+            AudioSessionType::PLAY_AND_RECORD => Any::from("play-and-record"),
         }
     }
 }
-impl From<&AudioSessionType> for emlite::Val {
-    fn from(s: &AudioSessionType) -> emlite::Val {
+impl From<&AudioSessionType> for Any {
+    fn from(s: &AudioSessionType) -> Any {
         match *s {
-            AudioSessionType::AUTO => emlite::Val::from("auto"),
-            AudioSessionType::PLAYBACK => emlite::Val::from("playback"),
-            AudioSessionType::TRANSIENT => emlite::Val::from("transient"),
-            AudioSessionType::TRANSIENT_SOLO => emlite::Val::from("transient-solo"),
-            AudioSessionType::AMBIENT => emlite::Val::from("ambient"),
-            AudioSessionType::PLAY_AND_RECORD => emlite::Val::from("play-and-record"),
+            AudioSessionType::AUTO => Any::from("auto"),
+            AudioSessionType::PLAYBACK => Any::from("playback"),
+            AudioSessionType::TRANSIENT => Any::from("transient"),
+            AudioSessionType::TRANSIENT_SOLO => Any::from("transient-solo"),
+            AudioSessionType::AMBIENT => Any::from("ambient"),
+            AudioSessionType::PLAY_AND_RECORD => Any::from("play-and-record"),
         }
     }
 }
@@ -335,7 +335,7 @@ pub enum AudioSessionState {
     INTERRUPTED,
 }
 impl FromVal for AudioSessionState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "inactive" => Self::INACTIVE,
             "active" => Self::ACTIVE,
@@ -343,28 +343,28 @@ impl FromVal for AudioSessionState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AudioSessionState> for emlite::Val {
-    fn from(s: AudioSessionState) -> emlite::Val {
+impl From<AudioSessionState> for Any {
+    fn from(s: AudioSessionState) -> Any {
         match s {
-            AudioSessionState::INACTIVE => emlite::Val::from("inactive"),
-            AudioSessionState::ACTIVE => emlite::Val::from("active"),
-            AudioSessionState::INTERRUPTED => emlite::Val::from("interrupted"),
+            AudioSessionState::INACTIVE => Any::from("inactive"),
+            AudioSessionState::ACTIVE => Any::from("active"),
+            AudioSessionState::INTERRUPTED => Any::from("interrupted"),
         }
     }
 }
-impl From<&AudioSessionState> for emlite::Val {
-    fn from(s: &AudioSessionState) -> emlite::Val {
+impl From<&AudioSessionState> for Any {
+    fn from(s: &AudioSessionState) -> Any {
         match *s {
-            AudioSessionState::INACTIVE => emlite::Val::from("inactive"),
-            AudioSessionState::ACTIVE => emlite::Val::from("active"),
-            AudioSessionState::INTERRUPTED => emlite::Val::from("interrupted"),
+            AudioSessionState::INACTIVE => Any::from("inactive"),
+            AudioSessionState::ACTIVE => Any::from("active"),
+            AudioSessionState::INTERRUPTED => Any::from("interrupted"),
         }
     }
 }
@@ -376,7 +376,7 @@ pub enum AutoplayPolicy {
     DISALLOWED,
 }
 impl FromVal for AutoplayPolicy {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "allowed" => Self::ALLOWED,
             "allowed-muted" => Self::ALLOWED_MUTED,
@@ -384,28 +384,28 @@ impl FromVal for AutoplayPolicy {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AutoplayPolicy> for emlite::Val {
-    fn from(s: AutoplayPolicy) -> emlite::Val {
+impl From<AutoplayPolicy> for Any {
+    fn from(s: AutoplayPolicy) -> Any {
         match s {
-            AutoplayPolicy::ALLOWED => emlite::Val::from("allowed"),
-            AutoplayPolicy::ALLOWED_MUTED => emlite::Val::from("allowed-muted"),
-            AutoplayPolicy::DISALLOWED => emlite::Val::from("disallowed"),
+            AutoplayPolicy::ALLOWED => Any::from("allowed"),
+            AutoplayPolicy::ALLOWED_MUTED => Any::from("allowed-muted"),
+            AutoplayPolicy::DISALLOWED => Any::from("disallowed"),
         }
     }
 }
-impl From<&AutoplayPolicy> for emlite::Val {
-    fn from(s: &AutoplayPolicy) -> emlite::Val {
+impl From<&AutoplayPolicy> for Any {
+    fn from(s: &AutoplayPolicy) -> Any {
         match *s {
-            AutoplayPolicy::ALLOWED => emlite::Val::from("allowed"),
-            AutoplayPolicy::ALLOWED_MUTED => emlite::Val::from("allowed-muted"),
-            AutoplayPolicy::DISALLOWED => emlite::Val::from("disallowed"),
+            AutoplayPolicy::ALLOWED => Any::from("allowed"),
+            AutoplayPolicy::ALLOWED_MUTED => Any::from("allowed-muted"),
+            AutoplayPolicy::DISALLOWED => Any::from("disallowed"),
         }
     }
 }
@@ -416,33 +416,33 @@ pub enum AutoplayPolicyMediaType {
     AUDIOCONTEXT,
 }
 impl FromVal for AutoplayPolicyMediaType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "mediaelement" => Self::MEDIAELEMENT,
             "audiocontext" => Self::AUDIOCONTEXT,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AutoplayPolicyMediaType> for emlite::Val {
-    fn from(s: AutoplayPolicyMediaType) -> emlite::Val {
+impl From<AutoplayPolicyMediaType> for Any {
+    fn from(s: AutoplayPolicyMediaType) -> Any {
         match s {
-            AutoplayPolicyMediaType::MEDIAELEMENT => emlite::Val::from("mediaelement"),
-            AutoplayPolicyMediaType::AUDIOCONTEXT => emlite::Val::from("audiocontext"),
+            AutoplayPolicyMediaType::MEDIAELEMENT => Any::from("mediaelement"),
+            AutoplayPolicyMediaType::AUDIOCONTEXT => Any::from("audiocontext"),
         }
     }
 }
-impl From<&AutoplayPolicyMediaType> for emlite::Val {
-    fn from(s: &AutoplayPolicyMediaType) -> emlite::Val {
+impl From<&AutoplayPolicyMediaType> for Any {
+    fn from(s: &AutoplayPolicyMediaType) -> Any {
         match *s {
-            AutoplayPolicyMediaType::MEDIAELEMENT => emlite::Val::from("mediaelement"),
-            AutoplayPolicyMediaType::AUDIOCONTEXT => emlite::Val::from("audiocontext"),
+            AutoplayPolicyMediaType::MEDIAELEMENT => Any::from("mediaelement"),
+            AutoplayPolicyMediaType::AUDIOCONTEXT => Any::from("audiocontext"),
         }
     }
 }
@@ -454,7 +454,7 @@ pub enum BackgroundFetchResult {
     FAILURE,
 }
 impl FromVal for BackgroundFetchResult {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "" => Self::NONE,
             "success" => Self::SUCCESS,
@@ -462,28 +462,28 @@ impl FromVal for BackgroundFetchResult {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<BackgroundFetchResult> for emlite::Val {
-    fn from(s: BackgroundFetchResult) -> emlite::Val {
+impl From<BackgroundFetchResult> for Any {
+    fn from(s: BackgroundFetchResult) -> Any {
         match s {
-            BackgroundFetchResult::NONE => emlite::Val::from(""),
-            BackgroundFetchResult::SUCCESS => emlite::Val::from("success"),
-            BackgroundFetchResult::FAILURE => emlite::Val::from("failure"),
+            BackgroundFetchResult::NONE => Any::from(""),
+            BackgroundFetchResult::SUCCESS => Any::from("success"),
+            BackgroundFetchResult::FAILURE => Any::from("failure"),
         }
     }
 }
-impl From<&BackgroundFetchResult> for emlite::Val {
-    fn from(s: &BackgroundFetchResult) -> emlite::Val {
+impl From<&BackgroundFetchResult> for Any {
+    fn from(s: &BackgroundFetchResult) -> Any {
         match *s {
-            BackgroundFetchResult::NONE => emlite::Val::from(""),
-            BackgroundFetchResult::SUCCESS => emlite::Val::from("success"),
-            BackgroundFetchResult::FAILURE => emlite::Val::from("failure"),
+            BackgroundFetchResult::NONE => Any::from(""),
+            BackgroundFetchResult::SUCCESS => Any::from("success"),
+            BackgroundFetchResult::FAILURE => Any::from("failure"),
         }
     }
 }
@@ -498,7 +498,7 @@ pub enum BackgroundFetchFailureReason {
     DOWNLOAD_TOTAL_EXCEEDED,
 }
 impl FromVal for BackgroundFetchFailureReason {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "" => Self::NONE,
             "aborted" => Self::ABORTED,
@@ -509,37 +509,37 @@ impl FromVal for BackgroundFetchFailureReason {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<BackgroundFetchFailureReason> for emlite::Val {
-    fn from(s: BackgroundFetchFailureReason) -> emlite::Val {
+impl From<BackgroundFetchFailureReason> for Any {
+    fn from(s: BackgroundFetchFailureReason) -> Any {
         match s {
-            BackgroundFetchFailureReason::NONE => emlite::Val::from(""),
-            BackgroundFetchFailureReason::ABORTED => emlite::Val::from("aborted"),
-            BackgroundFetchFailureReason::BAD_STATUS => emlite::Val::from("bad-status"),
-            BackgroundFetchFailureReason::FETCH_ERROR => emlite::Val::from("fetch-error"),
-            BackgroundFetchFailureReason::QUOTA_EXCEEDED => emlite::Val::from("quota-exceeded"),
+            BackgroundFetchFailureReason::NONE => Any::from(""),
+            BackgroundFetchFailureReason::ABORTED => Any::from("aborted"),
+            BackgroundFetchFailureReason::BAD_STATUS => Any::from("bad-status"),
+            BackgroundFetchFailureReason::FETCH_ERROR => Any::from("fetch-error"),
+            BackgroundFetchFailureReason::QUOTA_EXCEEDED => Any::from("quota-exceeded"),
             BackgroundFetchFailureReason::DOWNLOAD_TOTAL_EXCEEDED => {
-                emlite::Val::from("download-total-exceeded")
+                Any::from("download-total-exceeded")
             }
         }
     }
 }
-impl From<&BackgroundFetchFailureReason> for emlite::Val {
-    fn from(s: &BackgroundFetchFailureReason) -> emlite::Val {
+impl From<&BackgroundFetchFailureReason> for Any {
+    fn from(s: &BackgroundFetchFailureReason) -> Any {
         match *s {
-            BackgroundFetchFailureReason::NONE => emlite::Val::from(""),
-            BackgroundFetchFailureReason::ABORTED => emlite::Val::from("aborted"),
-            BackgroundFetchFailureReason::BAD_STATUS => emlite::Val::from("bad-status"),
-            BackgroundFetchFailureReason::FETCH_ERROR => emlite::Val::from("fetch-error"),
-            BackgroundFetchFailureReason::QUOTA_EXCEEDED => emlite::Val::from("quota-exceeded"),
+            BackgroundFetchFailureReason::NONE => Any::from(""),
+            BackgroundFetchFailureReason::ABORTED => Any::from("aborted"),
+            BackgroundFetchFailureReason::BAD_STATUS => Any::from("bad-status"),
+            BackgroundFetchFailureReason::FETCH_ERROR => Any::from("fetch-error"),
+            BackgroundFetchFailureReason::QUOTA_EXCEEDED => Any::from("quota-exceeded"),
             BackgroundFetchFailureReason::DOWNLOAD_TOTAL_EXCEEDED => {
-                emlite::Val::from("download-total-exceeded")
+                Any::from("download-total-exceeded")
             }
         }
     }
@@ -552,7 +552,7 @@ pub enum PresentationStyle {
     ATTACHMENT,
 }
 impl FromVal for PresentationStyle {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "unspecified" => Self::UNSPECIFIED,
             "inline" => Self::INLINE,
@@ -560,28 +560,28 @@ impl FromVal for PresentationStyle {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PresentationStyle> for emlite::Val {
-    fn from(s: PresentationStyle) -> emlite::Val {
+impl From<PresentationStyle> for Any {
+    fn from(s: PresentationStyle) -> Any {
         match s {
-            PresentationStyle::UNSPECIFIED => emlite::Val::from("unspecified"),
-            PresentationStyle::INLINE => emlite::Val::from("inline"),
-            PresentationStyle::ATTACHMENT => emlite::Val::from("attachment"),
+            PresentationStyle::UNSPECIFIED => Any::from("unspecified"),
+            PresentationStyle::INLINE => Any::from("inline"),
+            PresentationStyle::ATTACHMENT => Any::from("attachment"),
         }
     }
 }
-impl From<&PresentationStyle> for emlite::Val {
-    fn from(s: &PresentationStyle) -> emlite::Val {
+impl From<&PresentationStyle> for Any {
+    fn from(s: &PresentationStyle) -> Any {
         match *s {
-            PresentationStyle::UNSPECIFIED => emlite::Val::from("unspecified"),
-            PresentationStyle::INLINE => emlite::Val::from("inline"),
-            PresentationStyle::ATTACHMENT => emlite::Val::from("attachment"),
+            PresentationStyle::UNSPECIFIED => Any::from("unspecified"),
+            PresentationStyle::INLINE => Any::from("inline"),
+            PresentationStyle::ATTACHMENT => Any::from("attachment"),
         }
     }
 }
@@ -593,7 +593,7 @@ pub enum CompressionFormat {
     GZIP,
 }
 impl FromVal for CompressionFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "deflate" => Self::DEFLATE,
             "deflate-raw" => Self::DEFLATE_RAW,
@@ -601,28 +601,28 @@ impl FromVal for CompressionFormat {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CompressionFormat> for emlite::Val {
-    fn from(s: CompressionFormat) -> emlite::Val {
+impl From<CompressionFormat> for Any {
+    fn from(s: CompressionFormat) -> Any {
         match s {
-            CompressionFormat::DEFLATE => emlite::Val::from("deflate"),
-            CompressionFormat::DEFLATE_RAW => emlite::Val::from("deflate-raw"),
-            CompressionFormat::GZIP => emlite::Val::from("gzip"),
+            CompressionFormat::DEFLATE => Any::from("deflate"),
+            CompressionFormat::DEFLATE_RAW => Any::from("deflate-raw"),
+            CompressionFormat::GZIP => Any::from("gzip"),
         }
     }
 }
-impl From<&CompressionFormat> for emlite::Val {
-    fn from(s: &CompressionFormat) -> emlite::Val {
+impl From<&CompressionFormat> for Any {
+    fn from(s: &CompressionFormat) -> Any {
         match *s {
-            CompressionFormat::DEFLATE => emlite::Val::from("deflate"),
-            CompressionFormat::DEFLATE_RAW => emlite::Val::from("deflate-raw"),
-            CompressionFormat::GZIP => emlite::Val::from("gzip"),
+            CompressionFormat::DEFLATE => Any::from("deflate"),
+            CompressionFormat::DEFLATE_RAW => Any::from("deflate-raw"),
+            CompressionFormat::GZIP => Any::from("gzip"),
         }
     }
 }
@@ -632,30 +632,30 @@ pub enum PressureSource {
     CPU,
 }
 impl FromVal for PressureSource {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "cpu" => Self::CPU,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PressureSource> for emlite::Val {
-    fn from(s: PressureSource) -> emlite::Val {
+impl From<PressureSource> for Any {
+    fn from(s: PressureSource) -> Any {
         match s {
-            PressureSource::CPU => emlite::Val::from("cpu"),
+            PressureSource::CPU => Any::from("cpu"),
         }
     }
 }
-impl From<&PressureSource> for emlite::Val {
-    fn from(s: &PressureSource) -> emlite::Val {
+impl From<&PressureSource> for Any {
+    fn from(s: &PressureSource) -> Any {
         match *s {
-            PressureSource::CPU => emlite::Val::from("cpu"),
+            PressureSource::CPU => Any::from("cpu"),
         }
     }
 }
@@ -668,7 +668,7 @@ pub enum PressureState {
     CRITICAL,
 }
 impl FromVal for PressureState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "nominal" => Self::NOMINAL,
             "fair" => Self::FAIR,
@@ -677,30 +677,30 @@ impl FromVal for PressureState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PressureState> for emlite::Val {
-    fn from(s: PressureState) -> emlite::Val {
+impl From<PressureState> for Any {
+    fn from(s: PressureState) -> Any {
         match s {
-            PressureState::NOMINAL => emlite::Val::from("nominal"),
-            PressureState::FAIR => emlite::Val::from("fair"),
-            PressureState::SERIOUS => emlite::Val::from("serious"),
-            PressureState::CRITICAL => emlite::Val::from("critical"),
+            PressureState::NOMINAL => Any::from("nominal"),
+            PressureState::FAIR => Any::from("fair"),
+            PressureState::SERIOUS => Any::from("serious"),
+            PressureState::CRITICAL => Any::from("critical"),
         }
     }
 }
-impl From<&PressureState> for emlite::Val {
-    fn from(s: &PressureState) -> emlite::Val {
+impl From<&PressureState> for Any {
+    fn from(s: &PressureState) -> Any {
         match *s {
-            PressureState::NOMINAL => emlite::Val::from("nominal"),
-            PressureState::FAIR => emlite::Val::from("fair"),
-            PressureState::SERIOUS => emlite::Val::from("serious"),
-            PressureState::CRITICAL => emlite::Val::from("critical"),
+            PressureState::NOMINAL => Any::from("nominal"),
+            PressureState::FAIR => Any::from("fair"),
+            PressureState::SERIOUS => Any::from("serious"),
+            PressureState::CRITICAL => Any::from("critical"),
         }
     }
 }
@@ -714,7 +714,7 @@ pub enum ContactProperty {
     TEL,
 }
 impl FromVal for ContactProperty {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "address" => Self::ADDRESS,
             "email" => Self::EMAIL,
@@ -724,32 +724,32 @@ impl FromVal for ContactProperty {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ContactProperty> for emlite::Val {
-    fn from(s: ContactProperty) -> emlite::Val {
+impl From<ContactProperty> for Any {
+    fn from(s: ContactProperty) -> Any {
         match s {
-            ContactProperty::ADDRESS => emlite::Val::from("address"),
-            ContactProperty::EMAIL => emlite::Val::from("email"),
-            ContactProperty::ICON => emlite::Val::from("icon"),
-            ContactProperty::NAME => emlite::Val::from("name"),
-            ContactProperty::TEL => emlite::Val::from("tel"),
+            ContactProperty::ADDRESS => Any::from("address"),
+            ContactProperty::EMAIL => Any::from("email"),
+            ContactProperty::ICON => Any::from("icon"),
+            ContactProperty::NAME => Any::from("name"),
+            ContactProperty::TEL => Any::from("tel"),
         }
     }
 }
-impl From<&ContactProperty> for emlite::Val {
-    fn from(s: &ContactProperty) -> emlite::Val {
+impl From<&ContactProperty> for Any {
+    fn from(s: &ContactProperty) -> Any {
         match *s {
-            ContactProperty::ADDRESS => emlite::Val::from("address"),
-            ContactProperty::EMAIL => emlite::Val::from("email"),
-            ContactProperty::ICON => emlite::Val::from("icon"),
-            ContactProperty::NAME => emlite::Val::from("name"),
-            ContactProperty::TEL => emlite::Val::from("tel"),
+            ContactProperty::ADDRESS => Any::from("address"),
+            ContactProperty::EMAIL => Any::from("email"),
+            ContactProperty::ICON => Any::from("icon"),
+            ContactProperty::NAME => Any::from("name"),
+            ContactProperty::TEL => Any::from("tel"),
         }
     }
 }
@@ -763,7 +763,7 @@ pub enum ContentCategory {
     AUDIO,
 }
 impl FromVal for ContentCategory {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "" => Self::NONE,
             "homepage" => Self::HOMEPAGE,
@@ -773,32 +773,32 @@ impl FromVal for ContentCategory {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ContentCategory> for emlite::Val {
-    fn from(s: ContentCategory) -> emlite::Val {
+impl From<ContentCategory> for Any {
+    fn from(s: ContentCategory) -> Any {
         match s {
-            ContentCategory::NONE => emlite::Val::from(""),
-            ContentCategory::HOMEPAGE => emlite::Val::from("homepage"),
-            ContentCategory::ARTICLE => emlite::Val::from("article"),
-            ContentCategory::VIDEO => emlite::Val::from("video"),
-            ContentCategory::AUDIO => emlite::Val::from("audio"),
+            ContentCategory::NONE => Any::from(""),
+            ContentCategory::HOMEPAGE => Any::from("homepage"),
+            ContentCategory::ARTICLE => Any::from("article"),
+            ContentCategory::VIDEO => Any::from("video"),
+            ContentCategory::AUDIO => Any::from("audio"),
         }
     }
 }
-impl From<&ContentCategory> for emlite::Val {
-    fn from(s: &ContentCategory) -> emlite::Val {
+impl From<&ContentCategory> for Any {
+    fn from(s: &ContentCategory) -> Any {
         match *s {
-            ContentCategory::NONE => emlite::Val::from(""),
-            ContentCategory::HOMEPAGE => emlite::Val::from("homepage"),
-            ContentCategory::ARTICLE => emlite::Val::from("article"),
-            ContentCategory::VIDEO => emlite::Val::from("video"),
-            ContentCategory::AUDIO => emlite::Val::from("audio"),
+            ContentCategory::NONE => Any::from(""),
+            ContentCategory::HOMEPAGE => Any::from("homepage"),
+            ContentCategory::ARTICLE => Any::from("article"),
+            ContentCategory::VIDEO => Any::from("video"),
+            ContentCategory::AUDIO => Any::from("audio"),
         }
     }
 }
@@ -810,7 +810,7 @@ pub enum CookieSameSite {
     NONE,
 }
 impl FromVal for CookieSameSite {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "strict" => Self::STRICT,
             "lax" => Self::LAX,
@@ -818,28 +818,28 @@ impl FromVal for CookieSameSite {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CookieSameSite> for emlite::Val {
-    fn from(s: CookieSameSite) -> emlite::Val {
+impl From<CookieSameSite> for Any {
+    fn from(s: CookieSameSite) -> Any {
         match s {
-            CookieSameSite::STRICT => emlite::Val::from("strict"),
-            CookieSameSite::LAX => emlite::Val::from("lax"),
-            CookieSameSite::NONE => emlite::Val::from("none"),
+            CookieSameSite::STRICT => Any::from("strict"),
+            CookieSameSite::LAX => Any::from("lax"),
+            CookieSameSite::NONE => Any::from("none"),
         }
     }
 }
-impl From<&CookieSameSite> for emlite::Val {
-    fn from(s: &CookieSameSite) -> emlite::Val {
+impl From<&CookieSameSite> for Any {
+    fn from(s: &CookieSameSite) -> Any {
         match *s {
-            CookieSameSite::STRICT => emlite::Val::from("strict"),
-            CookieSameSite::LAX => emlite::Val::from("lax"),
-            CookieSameSite::NONE => emlite::Val::from("none"),
+            CookieSameSite::STRICT => Any::from("strict"),
+            CookieSameSite::LAX => Any::from("lax"),
+            CookieSameSite::NONE => Any::from("none"),
         }
     }
 }
@@ -852,7 +852,7 @@ pub enum CredentialMediationRequirement {
     REQUIRED,
 }
 impl FromVal for CredentialMediationRequirement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "silent" => Self::SILENT,
             "optional" => Self::OPTIONAL,
@@ -861,30 +861,30 @@ impl FromVal for CredentialMediationRequirement {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CredentialMediationRequirement> for emlite::Val {
-    fn from(s: CredentialMediationRequirement) -> emlite::Val {
+impl From<CredentialMediationRequirement> for Any {
+    fn from(s: CredentialMediationRequirement) -> Any {
         match s {
-            CredentialMediationRequirement::SILENT => emlite::Val::from("silent"),
-            CredentialMediationRequirement::OPTIONAL => emlite::Val::from("optional"),
-            CredentialMediationRequirement::CONDITIONAL => emlite::Val::from("conditional"),
-            CredentialMediationRequirement::REQUIRED => emlite::Val::from("required"),
+            CredentialMediationRequirement::SILENT => Any::from("silent"),
+            CredentialMediationRequirement::OPTIONAL => Any::from("optional"),
+            CredentialMediationRequirement::CONDITIONAL => Any::from("conditional"),
+            CredentialMediationRequirement::REQUIRED => Any::from("required"),
         }
     }
 }
-impl From<&CredentialMediationRequirement> for emlite::Val {
-    fn from(s: &CredentialMediationRequirement) -> emlite::Val {
+impl From<&CredentialMediationRequirement> for Any {
+    fn from(s: &CredentialMediationRequirement) -> Any {
         match *s {
-            CredentialMediationRequirement::SILENT => emlite::Val::from("silent"),
-            CredentialMediationRequirement::OPTIONAL => emlite::Val::from("optional"),
-            CredentialMediationRequirement::CONDITIONAL => emlite::Val::from("conditional"),
-            CredentialMediationRequirement::REQUIRED => emlite::Val::from("required"),
+            CredentialMediationRequirement::SILENT => Any::from("silent"),
+            CredentialMediationRequirement::OPTIONAL => Any::from("optional"),
+            CredentialMediationRequirement::CONDITIONAL => Any::from("conditional"),
+            CredentialMediationRequirement::REQUIRED => Any::from("required"),
         }
     }
 }
@@ -897,7 +897,7 @@ pub enum ScriptingPolicyViolationType {
     EVAL,
 }
 impl FromVal for ScriptingPolicyViolationType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "externalScript" => Self::EXTERNAL_SCRIPT,
             "inlineScript" => Self::INLINE_SCRIPT,
@@ -906,34 +906,30 @@ impl FromVal for ScriptingPolicyViolationType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ScriptingPolicyViolationType> for emlite::Val {
-    fn from(s: ScriptingPolicyViolationType) -> emlite::Val {
+impl From<ScriptingPolicyViolationType> for Any {
+    fn from(s: ScriptingPolicyViolationType) -> Any {
         match s {
-            ScriptingPolicyViolationType::EXTERNAL_SCRIPT => emlite::Val::from("externalScript"),
-            ScriptingPolicyViolationType::INLINE_SCRIPT => emlite::Val::from("inlineScript"),
-            ScriptingPolicyViolationType::INLINE_EVENT_HANDLER => {
-                emlite::Val::from("inlineEventHandler")
-            }
-            ScriptingPolicyViolationType::EVAL => emlite::Val::from("eval"),
+            ScriptingPolicyViolationType::EXTERNAL_SCRIPT => Any::from("externalScript"),
+            ScriptingPolicyViolationType::INLINE_SCRIPT => Any::from("inlineScript"),
+            ScriptingPolicyViolationType::INLINE_EVENT_HANDLER => Any::from("inlineEventHandler"),
+            ScriptingPolicyViolationType::EVAL => Any::from("eval"),
         }
     }
 }
-impl From<&ScriptingPolicyViolationType> for emlite::Val {
-    fn from(s: &ScriptingPolicyViolationType) -> emlite::Val {
+impl From<&ScriptingPolicyViolationType> for Any {
+    fn from(s: &ScriptingPolicyViolationType) -> Any {
         match *s {
-            ScriptingPolicyViolationType::EXTERNAL_SCRIPT => emlite::Val::from("externalScript"),
-            ScriptingPolicyViolationType::INLINE_SCRIPT => emlite::Val::from("inlineScript"),
-            ScriptingPolicyViolationType::INLINE_EVENT_HANDLER => {
-                emlite::Val::from("inlineEventHandler")
-            }
-            ScriptingPolicyViolationType::EVAL => emlite::Val::from("eval"),
+            ScriptingPolicyViolationType::EXTERNAL_SCRIPT => Any::from("externalScript"),
+            ScriptingPolicyViolationType::INLINE_SCRIPT => Any::from("inlineScript"),
+            ScriptingPolicyViolationType::INLINE_EVENT_HANDLER => Any::from("inlineEventHandler"),
+            ScriptingPolicyViolationType::EVAL => Any::from("eval"),
         }
     }
 }
@@ -946,7 +942,7 @@ pub enum FontFaceLoadStatus {
     ERROR,
 }
 impl FromVal for FontFaceLoadStatus {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "unloaded" => Self::UNLOADED,
             "loading" => Self::LOADING,
@@ -955,30 +951,30 @@ impl FromVal for FontFaceLoadStatus {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<FontFaceLoadStatus> for emlite::Val {
-    fn from(s: FontFaceLoadStatus) -> emlite::Val {
+impl From<FontFaceLoadStatus> for Any {
+    fn from(s: FontFaceLoadStatus) -> Any {
         match s {
-            FontFaceLoadStatus::UNLOADED => emlite::Val::from("unloaded"),
-            FontFaceLoadStatus::LOADING => emlite::Val::from("loading"),
-            FontFaceLoadStatus::LOADED => emlite::Val::from("loaded"),
-            FontFaceLoadStatus::ERROR => emlite::Val::from("error"),
+            FontFaceLoadStatus::UNLOADED => Any::from("unloaded"),
+            FontFaceLoadStatus::LOADING => Any::from("loading"),
+            FontFaceLoadStatus::LOADED => Any::from("loaded"),
+            FontFaceLoadStatus::ERROR => Any::from("error"),
         }
     }
 }
-impl From<&FontFaceLoadStatus> for emlite::Val {
-    fn from(s: &FontFaceLoadStatus) -> emlite::Val {
+impl From<&FontFaceLoadStatus> for Any {
+    fn from(s: &FontFaceLoadStatus) -> Any {
         match *s {
-            FontFaceLoadStatus::UNLOADED => emlite::Val::from("unloaded"),
-            FontFaceLoadStatus::LOADING => emlite::Val::from("loading"),
-            FontFaceLoadStatus::LOADED => emlite::Val::from("loaded"),
-            FontFaceLoadStatus::ERROR => emlite::Val::from("error"),
+            FontFaceLoadStatus::UNLOADED => Any::from("unloaded"),
+            FontFaceLoadStatus::LOADING => Any::from("loading"),
+            FontFaceLoadStatus::LOADED => Any::from("loaded"),
+            FontFaceLoadStatus::ERROR => Any::from("error"),
         }
     }
 }
@@ -989,33 +985,33 @@ pub enum FontFaceSetLoadStatus {
     LOADED,
 }
 impl FromVal for FontFaceSetLoadStatus {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "loading" => Self::LOADING,
             "loaded" => Self::LOADED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<FontFaceSetLoadStatus> for emlite::Val {
-    fn from(s: FontFaceSetLoadStatus) -> emlite::Val {
+impl From<FontFaceSetLoadStatus> for Any {
+    fn from(s: FontFaceSetLoadStatus) -> Any {
         match s {
-            FontFaceSetLoadStatus::LOADING => emlite::Val::from("loading"),
-            FontFaceSetLoadStatus::LOADED => emlite::Val::from("loaded"),
+            FontFaceSetLoadStatus::LOADING => Any::from("loading"),
+            FontFaceSetLoadStatus::LOADED => Any::from("loaded"),
         }
     }
 }
-impl From<&FontFaceSetLoadStatus> for emlite::Val {
-    fn from(s: &FontFaceSetLoadStatus) -> emlite::Val {
+impl From<&FontFaceSetLoadStatus> for Any {
+    fn from(s: &FontFaceSetLoadStatus) -> Any {
         match *s {
-            FontFaceSetLoadStatus::LOADING => emlite::Val::from("loading"),
-            FontFaceSetLoadStatus::LOADED => emlite::Val::from("loaded"),
+            FontFaceSetLoadStatus::LOADING => Any::from("loading"),
+            FontFaceSetLoadStatus::LOADED => Any::from("loaded"),
         }
     }
 }
@@ -1027,7 +1023,7 @@ pub enum HighlightType {
     GRAMMAR_ERROR,
 }
 impl FromVal for HighlightType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "highlight" => Self::HIGHLIGHT,
             "spelling-error" => Self::SPELLING_ERROR,
@@ -1035,28 +1031,28 @@ impl FromVal for HighlightType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<HighlightType> for emlite::Val {
-    fn from(s: HighlightType) -> emlite::Val {
+impl From<HighlightType> for Any {
+    fn from(s: HighlightType) -> Any {
         match s {
-            HighlightType::HIGHLIGHT => emlite::Val::from("highlight"),
-            HighlightType::SPELLING_ERROR => emlite::Val::from("spelling-error"),
-            HighlightType::GRAMMAR_ERROR => emlite::Val::from("grammar-error"),
+            HighlightType::HIGHLIGHT => Any::from("highlight"),
+            HighlightType::SPELLING_ERROR => Any::from("spelling-error"),
+            HighlightType::GRAMMAR_ERROR => Any::from("grammar-error"),
         }
     }
 }
-impl From<&HighlightType> for emlite::Val {
-    fn from(s: &HighlightType) -> emlite::Val {
+impl From<&HighlightType> for Any {
+    fn from(s: &HighlightType) -> Any {
         match *s {
-            HighlightType::HIGHLIGHT => emlite::Val::from("highlight"),
-            HighlightType::SPELLING_ERROR => emlite::Val::from("spelling-error"),
-            HighlightType::GRAMMAR_ERROR => emlite::Val::from("grammar-error"),
+            HighlightType::HIGHLIGHT => Any::from("highlight"),
+            HighlightType::SPELLING_ERROR => Any::from("spelling-error"),
+            HighlightType::GRAMMAR_ERROR => Any::from("grammar-error"),
         }
     }
 }
@@ -1067,33 +1063,33 @@ pub enum ChildDisplayType {
     NORMAL,
 }
 impl FromVal for ChildDisplayType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "block" => Self::BLOCK,
             "normal" => Self::NORMAL,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ChildDisplayType> for emlite::Val {
-    fn from(s: ChildDisplayType) -> emlite::Val {
+impl From<ChildDisplayType> for Any {
+    fn from(s: ChildDisplayType) -> Any {
         match s {
-            ChildDisplayType::BLOCK => emlite::Val::from("block"),
-            ChildDisplayType::NORMAL => emlite::Val::from("normal"),
+            ChildDisplayType::BLOCK => Any::from("block"),
+            ChildDisplayType::NORMAL => Any::from("normal"),
         }
     }
 }
-impl From<&ChildDisplayType> for emlite::Val {
-    fn from(s: &ChildDisplayType) -> emlite::Val {
+impl From<&ChildDisplayType> for Any {
+    fn from(s: &ChildDisplayType) -> Any {
         match *s {
-            ChildDisplayType::BLOCK => emlite::Val::from("block"),
-            ChildDisplayType::NORMAL => emlite::Val::from("normal"),
+            ChildDisplayType::BLOCK => Any::from("block"),
+            ChildDisplayType::NORMAL => Any::from("normal"),
         }
     }
 }
@@ -1104,33 +1100,33 @@ pub enum LayoutSizingMode {
     MANUAL,
 }
 impl FromVal for LayoutSizingMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "block-like" => Self::BLOCK_LIKE,
             "manual" => Self::MANUAL,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<LayoutSizingMode> for emlite::Val {
-    fn from(s: LayoutSizingMode) -> emlite::Val {
+impl From<LayoutSizingMode> for Any {
+    fn from(s: LayoutSizingMode) -> Any {
         match s {
-            LayoutSizingMode::BLOCK_LIKE => emlite::Val::from("block-like"),
-            LayoutSizingMode::MANUAL => emlite::Val::from("manual"),
+            LayoutSizingMode::BLOCK_LIKE => Any::from("block-like"),
+            LayoutSizingMode::MANUAL => Any::from("manual"),
         }
     }
 }
-impl From<&LayoutSizingMode> for emlite::Val {
-    fn from(s: &LayoutSizingMode) -> emlite::Val {
+impl From<&LayoutSizingMode> for Any {
+    fn from(s: &LayoutSizingMode) -> Any {
         match *s {
-            LayoutSizingMode::BLOCK_LIKE => emlite::Val::from("block-like"),
-            LayoutSizingMode::MANUAL => emlite::Val::from("manual"),
+            LayoutSizingMode::BLOCK_LIKE => Any::from("block-like"),
+            LayoutSizingMode::MANUAL => Any::from("manual"),
         }
     }
 }
@@ -1143,7 +1139,7 @@ pub enum BlockFragmentationType {
     REGION,
 }
 impl FromVal for BlockFragmentationType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "page" => Self::PAGE,
@@ -1152,30 +1148,30 @@ impl FromVal for BlockFragmentationType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<BlockFragmentationType> for emlite::Val {
-    fn from(s: BlockFragmentationType) -> emlite::Val {
+impl From<BlockFragmentationType> for Any {
+    fn from(s: BlockFragmentationType) -> Any {
         match s {
-            BlockFragmentationType::NONE => emlite::Val::from("none"),
-            BlockFragmentationType::PAGE => emlite::Val::from("page"),
-            BlockFragmentationType::COLUMN => emlite::Val::from("column"),
-            BlockFragmentationType::REGION => emlite::Val::from("region"),
+            BlockFragmentationType::NONE => Any::from("none"),
+            BlockFragmentationType::PAGE => Any::from("page"),
+            BlockFragmentationType::COLUMN => Any::from("column"),
+            BlockFragmentationType::REGION => Any::from("region"),
         }
     }
 }
-impl From<&BlockFragmentationType> for emlite::Val {
-    fn from(s: &BlockFragmentationType) -> emlite::Val {
+impl From<&BlockFragmentationType> for Any {
+    fn from(s: &BlockFragmentationType) -> Any {
         match *s {
-            BlockFragmentationType::NONE => emlite::Val::from("none"),
-            BlockFragmentationType::PAGE => emlite::Val::from("page"),
-            BlockFragmentationType::COLUMN => emlite::Val::from("column"),
-            BlockFragmentationType::REGION => emlite::Val::from("region"),
+            BlockFragmentationType::NONE => Any::from("none"),
+            BlockFragmentationType::PAGE => Any::from("page"),
+            BlockFragmentationType::COLUMN => Any::from("column"),
+            BlockFragmentationType::REGION => Any::from("region"),
         }
     }
 }
@@ -1189,7 +1185,7 @@ pub enum BreakType {
     REGION,
 }
 impl FromVal for BreakType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "line" => Self::LINE,
@@ -1199,32 +1195,32 @@ impl FromVal for BreakType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<BreakType> for emlite::Val {
-    fn from(s: BreakType) -> emlite::Val {
+impl From<BreakType> for Any {
+    fn from(s: BreakType) -> Any {
         match s {
-            BreakType::NONE => emlite::Val::from("none"),
-            BreakType::LINE => emlite::Val::from("line"),
-            BreakType::COLUMN => emlite::Val::from("column"),
-            BreakType::PAGE => emlite::Val::from("page"),
-            BreakType::REGION => emlite::Val::from("region"),
+            BreakType::NONE => Any::from("none"),
+            BreakType::LINE => Any::from("line"),
+            BreakType::COLUMN => Any::from("column"),
+            BreakType::PAGE => Any::from("page"),
+            BreakType::REGION => Any::from("region"),
         }
     }
 }
-impl From<&BreakType> for emlite::Val {
-    fn from(s: &BreakType) -> emlite::Val {
+impl From<&BreakType> for Any {
+    fn from(s: &BreakType) -> Any {
         match *s {
-            BreakType::NONE => emlite::Val::from("none"),
-            BreakType::LINE => emlite::Val::from("line"),
-            BreakType::COLUMN => emlite::Val::from("column"),
-            BreakType::PAGE => emlite::Val::from("page"),
-            BreakType::REGION => emlite::Val::from("region"),
+            BreakType::NONE => Any::from("none"),
+            BreakType::LINE => Any::from("line"),
+            BreakType::COLUMN => Any::from("column"),
+            BreakType::PAGE => Any::from("page"),
+            BreakType::REGION => Any::from("region"),
         }
     }
 }
@@ -1237,7 +1233,7 @@ pub enum SpatialNavigationDirection {
     RIGHT,
 }
 impl FromVal for SpatialNavigationDirection {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "up" => Self::UP,
             "down" => Self::DOWN,
@@ -1246,30 +1242,30 @@ impl FromVal for SpatialNavigationDirection {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SpatialNavigationDirection> for emlite::Val {
-    fn from(s: SpatialNavigationDirection) -> emlite::Val {
+impl From<SpatialNavigationDirection> for Any {
+    fn from(s: SpatialNavigationDirection) -> Any {
         match s {
-            SpatialNavigationDirection::UP => emlite::Val::from("up"),
-            SpatialNavigationDirection::DOWN => emlite::Val::from("down"),
-            SpatialNavigationDirection::LEFT => emlite::Val::from("left"),
-            SpatialNavigationDirection::RIGHT => emlite::Val::from("right"),
+            SpatialNavigationDirection::UP => Any::from("up"),
+            SpatialNavigationDirection::DOWN => Any::from("down"),
+            SpatialNavigationDirection::LEFT => Any::from("left"),
+            SpatialNavigationDirection::RIGHT => Any::from("right"),
         }
     }
 }
-impl From<&SpatialNavigationDirection> for emlite::Val {
-    fn from(s: &SpatialNavigationDirection) -> emlite::Val {
+impl From<&SpatialNavigationDirection> for Any {
+    fn from(s: &SpatialNavigationDirection) -> Any {
         match *s {
-            SpatialNavigationDirection::UP => emlite::Val::from("up"),
-            SpatialNavigationDirection::DOWN => emlite::Val::from("down"),
-            SpatialNavigationDirection::LEFT => emlite::Val::from("left"),
-            SpatialNavigationDirection::RIGHT => emlite::Val::from("right"),
+            SpatialNavigationDirection::UP => Any::from("up"),
+            SpatialNavigationDirection::DOWN => Any::from("down"),
+            SpatialNavigationDirection::LEFT => Any::from("left"),
+            SpatialNavigationDirection::RIGHT => Any::from("right"),
         }
     }
 }
@@ -1280,33 +1276,33 @@ pub enum FocusableAreaSearchMode {
     ALL,
 }
 impl FromVal for FocusableAreaSearchMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "visible" => Self::VISIBLE,
             "all" => Self::ALL,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<FocusableAreaSearchMode> for emlite::Val {
-    fn from(s: FocusableAreaSearchMode) -> emlite::Val {
+impl From<FocusableAreaSearchMode> for Any {
+    fn from(s: FocusableAreaSearchMode) -> Any {
         match s {
-            FocusableAreaSearchMode::VISIBLE => emlite::Val::from("visible"),
-            FocusableAreaSearchMode::ALL => emlite::Val::from("all"),
+            FocusableAreaSearchMode::VISIBLE => Any::from("visible"),
+            FocusableAreaSearchMode::ALL => Any::from("all"),
         }
     }
 }
-impl From<&FocusableAreaSearchMode> for emlite::Val {
-    fn from(s: &FocusableAreaSearchMode) -> emlite::Val {
+impl From<&FocusableAreaSearchMode> for Any {
+    fn from(s: &FocusableAreaSearchMode) -> Any {
         match *s {
-            FocusableAreaSearchMode::VISIBLE => emlite::Val::from("visible"),
-            FocusableAreaSearchMode::ALL => emlite::Val::from("all"),
+            FocusableAreaSearchMode::VISIBLE => Any::from("visible"),
+            FocusableAreaSearchMode::ALL => Any::from("all"),
         }
     }
 }
@@ -1322,7 +1318,7 @@ pub enum CSSNumericBaseType {
     PERCENT,
 }
 impl FromVal for CSSNumericBaseType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "length" => Self::LENGTH,
             "angle" => Self::ANGLE,
@@ -1334,36 +1330,36 @@ impl FromVal for CSSNumericBaseType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CSSNumericBaseType> for emlite::Val {
-    fn from(s: CSSNumericBaseType) -> emlite::Val {
+impl From<CSSNumericBaseType> for Any {
+    fn from(s: CSSNumericBaseType) -> Any {
         match s {
-            CSSNumericBaseType::LENGTH => emlite::Val::from("length"),
-            CSSNumericBaseType::ANGLE => emlite::Val::from("angle"),
-            CSSNumericBaseType::TIME => emlite::Val::from("time"),
-            CSSNumericBaseType::FREQUENCY => emlite::Val::from("frequency"),
-            CSSNumericBaseType::RESOLUTION => emlite::Val::from("resolution"),
-            CSSNumericBaseType::FLEX => emlite::Val::from("flex"),
-            CSSNumericBaseType::PERCENT => emlite::Val::from("percent"),
+            CSSNumericBaseType::LENGTH => Any::from("length"),
+            CSSNumericBaseType::ANGLE => Any::from("angle"),
+            CSSNumericBaseType::TIME => Any::from("time"),
+            CSSNumericBaseType::FREQUENCY => Any::from("frequency"),
+            CSSNumericBaseType::RESOLUTION => Any::from("resolution"),
+            CSSNumericBaseType::FLEX => Any::from("flex"),
+            CSSNumericBaseType::PERCENT => Any::from("percent"),
         }
     }
 }
-impl From<&CSSNumericBaseType> for emlite::Val {
-    fn from(s: &CSSNumericBaseType) -> emlite::Val {
+impl From<&CSSNumericBaseType> for Any {
+    fn from(s: &CSSNumericBaseType) -> Any {
         match *s {
-            CSSNumericBaseType::LENGTH => emlite::Val::from("length"),
-            CSSNumericBaseType::ANGLE => emlite::Val::from("angle"),
-            CSSNumericBaseType::TIME => emlite::Val::from("time"),
-            CSSNumericBaseType::FREQUENCY => emlite::Val::from("frequency"),
-            CSSNumericBaseType::RESOLUTION => emlite::Val::from("resolution"),
-            CSSNumericBaseType::FLEX => emlite::Val::from("flex"),
-            CSSNumericBaseType::PERCENT => emlite::Val::from("percent"),
+            CSSNumericBaseType::LENGTH => Any::from("length"),
+            CSSNumericBaseType::ANGLE => Any::from("angle"),
+            CSSNumericBaseType::TIME => Any::from("time"),
+            CSSNumericBaseType::FREQUENCY => Any::from("frequency"),
+            CSSNumericBaseType::RESOLUTION => Any::from("resolution"),
+            CSSNumericBaseType::FLEX => Any::from("flex"),
+            CSSNumericBaseType::PERCENT => Any::from("percent"),
         }
     }
 }
@@ -1379,7 +1375,7 @@ pub enum CSSMathOperator {
     CLAMP,
 }
 impl FromVal for CSSMathOperator {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "sum" => Self::SUM,
             "product" => Self::PRODUCT,
@@ -1391,36 +1387,36 @@ impl FromVal for CSSMathOperator {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CSSMathOperator> for emlite::Val {
-    fn from(s: CSSMathOperator) -> emlite::Val {
+impl From<CSSMathOperator> for Any {
+    fn from(s: CSSMathOperator) -> Any {
         match s {
-            CSSMathOperator::SUM => emlite::Val::from("sum"),
-            CSSMathOperator::PRODUCT => emlite::Val::from("product"),
-            CSSMathOperator::NEGATE => emlite::Val::from("negate"),
-            CSSMathOperator::INVERT => emlite::Val::from("invert"),
-            CSSMathOperator::MIN => emlite::Val::from("min"),
-            CSSMathOperator::MAX => emlite::Val::from("max"),
-            CSSMathOperator::CLAMP => emlite::Val::from("clamp"),
+            CSSMathOperator::SUM => Any::from("sum"),
+            CSSMathOperator::PRODUCT => Any::from("product"),
+            CSSMathOperator::NEGATE => Any::from("negate"),
+            CSSMathOperator::INVERT => Any::from("invert"),
+            CSSMathOperator::MIN => Any::from("min"),
+            CSSMathOperator::MAX => Any::from("max"),
+            CSSMathOperator::CLAMP => Any::from("clamp"),
         }
     }
 }
-impl From<&CSSMathOperator> for emlite::Val {
-    fn from(s: &CSSMathOperator) -> emlite::Val {
+impl From<&CSSMathOperator> for Any {
+    fn from(s: &CSSMathOperator) -> Any {
         match *s {
-            CSSMathOperator::SUM => emlite::Val::from("sum"),
-            CSSMathOperator::PRODUCT => emlite::Val::from("product"),
-            CSSMathOperator::NEGATE => emlite::Val::from("negate"),
-            CSSMathOperator::INVERT => emlite::Val::from("invert"),
-            CSSMathOperator::MIN => emlite::Val::from("min"),
-            CSSMathOperator::MAX => emlite::Val::from("max"),
-            CSSMathOperator::CLAMP => emlite::Val::from("clamp"),
+            CSSMathOperator::SUM => Any::from("sum"),
+            CSSMathOperator::PRODUCT => Any::from("product"),
+            CSSMathOperator::NEGATE => Any::from("negate"),
+            CSSMathOperator::INVERT => Any::from("invert"),
+            CSSMathOperator::MIN => Any::from("min"),
+            CSSMathOperator::MAX => Any::from("max"),
+            CSSMathOperator::CLAMP => Any::from("clamp"),
         }
     }
 }
@@ -1432,7 +1428,7 @@ pub enum ScrollBehavior {
     SMOOTH,
 }
 impl FromVal for ScrollBehavior {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "auto" => Self::AUTO,
             "instant" => Self::INSTANT,
@@ -1440,28 +1436,28 @@ impl FromVal for ScrollBehavior {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ScrollBehavior> for emlite::Val {
-    fn from(s: ScrollBehavior) -> emlite::Val {
+impl From<ScrollBehavior> for Any {
+    fn from(s: ScrollBehavior) -> Any {
         match s {
-            ScrollBehavior::AUTO => emlite::Val::from("auto"),
-            ScrollBehavior::INSTANT => emlite::Val::from("instant"),
-            ScrollBehavior::SMOOTH => emlite::Val::from("smooth"),
+            ScrollBehavior::AUTO => Any::from("auto"),
+            ScrollBehavior::INSTANT => Any::from("instant"),
+            ScrollBehavior::SMOOTH => Any::from("smooth"),
         }
     }
 }
-impl From<&ScrollBehavior> for emlite::Val {
-    fn from(s: &ScrollBehavior) -> emlite::Val {
+impl From<&ScrollBehavior> for Any {
+    fn from(s: &ScrollBehavior) -> Any {
         match *s {
-            ScrollBehavior::AUTO => emlite::Val::from("auto"),
-            ScrollBehavior::INSTANT => emlite::Val::from("instant"),
-            ScrollBehavior::SMOOTH => emlite::Val::from("smooth"),
+            ScrollBehavior::AUTO => Any::from("auto"),
+            ScrollBehavior::INSTANT => Any::from("instant"),
+            ScrollBehavior::SMOOTH => Any::from("smooth"),
         }
     }
 }
@@ -1474,7 +1470,7 @@ pub enum ScrollLogicalPosition {
     NEAREST,
 }
 impl FromVal for ScrollLogicalPosition {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "start" => Self::START,
             "center" => Self::CENTER,
@@ -1483,30 +1479,30 @@ impl FromVal for ScrollLogicalPosition {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ScrollLogicalPosition> for emlite::Val {
-    fn from(s: ScrollLogicalPosition) -> emlite::Val {
+impl From<ScrollLogicalPosition> for Any {
+    fn from(s: ScrollLogicalPosition) -> Any {
         match s {
-            ScrollLogicalPosition::START => emlite::Val::from("start"),
-            ScrollLogicalPosition::CENTER => emlite::Val::from("center"),
-            ScrollLogicalPosition::END => emlite::Val::from("end"),
-            ScrollLogicalPosition::NEAREST => emlite::Val::from("nearest"),
+            ScrollLogicalPosition::START => Any::from("start"),
+            ScrollLogicalPosition::CENTER => Any::from("center"),
+            ScrollLogicalPosition::END => Any::from("end"),
+            ScrollLogicalPosition::NEAREST => Any::from("nearest"),
         }
     }
 }
-impl From<&ScrollLogicalPosition> for emlite::Val {
-    fn from(s: &ScrollLogicalPosition) -> emlite::Val {
+impl From<&ScrollLogicalPosition> for Any {
+    fn from(s: &ScrollLogicalPosition) -> Any {
         match *s {
-            ScrollLogicalPosition::START => emlite::Val::from("start"),
-            ScrollLogicalPosition::CENTER => emlite::Val::from("center"),
-            ScrollLogicalPosition::END => emlite::Val::from("end"),
-            ScrollLogicalPosition::NEAREST => emlite::Val::from("nearest"),
+            ScrollLogicalPosition::START => Any::from("start"),
+            ScrollLogicalPosition::CENTER => Any::from("center"),
+            ScrollLogicalPosition::END => Any::from("end"),
+            ScrollLogicalPosition::NEAREST => Any::from("nearest"),
         }
     }
 }
@@ -1517,33 +1513,33 @@ pub enum ScrollIntoViewContainer {
     NEAREST,
 }
 impl FromVal for ScrollIntoViewContainer {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "all" => Self::ALL,
             "nearest" => Self::NEAREST,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ScrollIntoViewContainer> for emlite::Val {
-    fn from(s: ScrollIntoViewContainer) -> emlite::Val {
+impl From<ScrollIntoViewContainer> for Any {
+    fn from(s: ScrollIntoViewContainer) -> Any {
         match s {
-            ScrollIntoViewContainer::ALL => emlite::Val::from("all"),
-            ScrollIntoViewContainer::NEAREST => emlite::Val::from("nearest"),
+            ScrollIntoViewContainer::ALL => Any::from("all"),
+            ScrollIntoViewContainer::NEAREST => Any::from("nearest"),
         }
     }
 }
-impl From<&ScrollIntoViewContainer> for emlite::Val {
-    fn from(s: &ScrollIntoViewContainer) -> emlite::Val {
+impl From<&ScrollIntoViewContainer> for Any {
+    fn from(s: &ScrollIntoViewContainer) -> Any {
         match *s {
-            ScrollIntoViewContainer::ALL => emlite::Val::from("all"),
-            ScrollIntoViewContainer::NEAREST => emlite::Val::from("nearest"),
+            ScrollIntoViewContainer::ALL => Any::from("all"),
+            ScrollIntoViewContainer::NEAREST => Any::from("nearest"),
         }
     }
 }
@@ -1556,7 +1552,7 @@ pub enum CSSBoxType {
     CONTENT,
 }
 impl FromVal for CSSBoxType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "margin" => Self::MARGIN,
             "border" => Self::BORDER,
@@ -1565,30 +1561,30 @@ impl FromVal for CSSBoxType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CSSBoxType> for emlite::Val {
-    fn from(s: CSSBoxType) -> emlite::Val {
+impl From<CSSBoxType> for Any {
+    fn from(s: CSSBoxType) -> Any {
         match s {
-            CSSBoxType::MARGIN => emlite::Val::from("margin"),
-            CSSBoxType::BORDER => emlite::Val::from("border"),
-            CSSBoxType::PADDING => emlite::Val::from("padding"),
-            CSSBoxType::CONTENT => emlite::Val::from("content"),
+            CSSBoxType::MARGIN => Any::from("margin"),
+            CSSBoxType::BORDER => Any::from("border"),
+            CSSBoxType::PADDING => Any::from("padding"),
+            CSSBoxType::CONTENT => Any::from("content"),
         }
     }
 }
-impl From<&CSSBoxType> for emlite::Val {
-    fn from(s: &CSSBoxType) -> emlite::Val {
+impl From<&CSSBoxType> for Any {
+    fn from(s: &CSSBoxType) -> Any {
         match *s {
-            CSSBoxType::MARGIN => emlite::Val::from("margin"),
-            CSSBoxType::BORDER => emlite::Val::from("border"),
-            CSSBoxType::PADDING => emlite::Val::from("padding"),
-            CSSBoxType::CONTENT => emlite::Val::from("content"),
+            CSSBoxType::MARGIN => Any::from("margin"),
+            CSSBoxType::BORDER => Any::from("border"),
+            CSSBoxType::PADDING => Any::from("padding"),
+            CSSBoxType::CONTENT => Any::from("content"),
         }
     }
 }
@@ -1599,33 +1595,33 @@ pub enum DevicePostureType {
     FOLDED,
 }
 impl FromVal for DevicePostureType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "continuous" => Self::CONTINUOUS,
             "folded" => Self::FOLDED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<DevicePostureType> for emlite::Val {
-    fn from(s: DevicePostureType) -> emlite::Val {
+impl From<DevicePostureType> for Any {
+    fn from(s: DevicePostureType) -> Any {
         match s {
-            DevicePostureType::CONTINUOUS => emlite::Val::from("continuous"),
-            DevicePostureType::FOLDED => emlite::Val::from("folded"),
+            DevicePostureType::CONTINUOUS => Any::from("continuous"),
+            DevicePostureType::FOLDED => Any::from("folded"),
         }
     }
 }
-impl From<&DevicePostureType> for emlite::Val {
-    fn from(s: &DevicePostureType) -> emlite::Val {
+impl From<&DevicePostureType> for Any {
+    fn from(s: &DevicePostureType) -> Any {
         match *s {
-            DevicePostureType::CONTINUOUS => emlite::Val::from("continuous"),
-            DevicePostureType::FOLDED => emlite::Val::from("folded"),
+            DevicePostureType::CONTINUOUS => Any::from("continuous"),
+            DevicePostureType::FOLDED => Any::from("folded"),
         }
     }
 }
@@ -1636,33 +1632,33 @@ pub enum ItemType {
     SUBSCRIPTION,
 }
 impl FromVal for ItemType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "product" => Self::PRODUCT,
             "subscription" => Self::SUBSCRIPTION,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ItemType> for emlite::Val {
-    fn from(s: ItemType) -> emlite::Val {
+impl From<ItemType> for Any {
+    fn from(s: ItemType) -> Any {
         match s {
-            ItemType::PRODUCT => emlite::Val::from("product"),
-            ItemType::SUBSCRIPTION => emlite::Val::from("subscription"),
+            ItemType::PRODUCT => Any::from("product"),
+            ItemType::SUBSCRIPTION => Any::from("subscription"),
         }
     }
 }
-impl From<&ItemType> for emlite::Val {
-    fn from(s: &ItemType) -> emlite::Val {
+impl From<&ItemType> for Any {
+    fn from(s: &ItemType) -> Any {
         match *s {
-            ItemType::PRODUCT => emlite::Val::from("product"),
-            ItemType::SUBSCRIPTION => emlite::Val::from("subscription"),
+            ItemType::PRODUCT => Any::from("product"),
+            ItemType::SUBSCRIPTION => Any::from("subscription"),
         }
     }
 }
@@ -1673,33 +1669,33 @@ pub enum ShadowRootMode {
     CLOSED,
 }
 impl FromVal for ShadowRootMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "open" => Self::OPEN,
             "closed" => Self::CLOSED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ShadowRootMode> for emlite::Val {
-    fn from(s: ShadowRootMode) -> emlite::Val {
+impl From<ShadowRootMode> for Any {
+    fn from(s: ShadowRootMode) -> Any {
         match s {
-            ShadowRootMode::OPEN => emlite::Val::from("open"),
-            ShadowRootMode::CLOSED => emlite::Val::from("closed"),
+            ShadowRootMode::OPEN => Any::from("open"),
+            ShadowRootMode::CLOSED => Any::from("closed"),
         }
     }
 }
-impl From<&ShadowRootMode> for emlite::Val {
-    fn from(s: &ShadowRootMode) -> emlite::Val {
+impl From<&ShadowRootMode> for Any {
+    fn from(s: &ShadowRootMode) -> Any {
         match *s {
-            ShadowRootMode::OPEN => emlite::Val::from("open"),
-            ShadowRootMode::CLOSED => emlite::Val::from("closed"),
+            ShadowRootMode::OPEN => Any::from("open"),
+            ShadowRootMode::CLOSED => Any::from("closed"),
         }
     }
 }
@@ -1710,33 +1706,33 @@ pub enum SlotAssignmentMode {
     NAMED,
 }
 impl FromVal for SlotAssignmentMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "manual" => Self::MANUAL,
             "named" => Self::NAMED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SlotAssignmentMode> for emlite::Val {
-    fn from(s: SlotAssignmentMode) -> emlite::Val {
+impl From<SlotAssignmentMode> for Any {
+    fn from(s: SlotAssignmentMode) -> Any {
         match s {
-            SlotAssignmentMode::MANUAL => emlite::Val::from("manual"),
-            SlotAssignmentMode::NAMED => emlite::Val::from("named"),
+            SlotAssignmentMode::MANUAL => Any::from("manual"),
+            SlotAssignmentMode::NAMED => Any::from("named"),
         }
     }
 }
-impl From<&SlotAssignmentMode> for emlite::Val {
-    fn from(s: &SlotAssignmentMode) -> emlite::Val {
+impl From<&SlotAssignmentMode> for Any {
+    fn from(s: &SlotAssignmentMode) -> Any {
         match *s {
-            SlotAssignmentMode::MANUAL => emlite::Val::from("manual"),
-            SlotAssignmentMode::NAMED => emlite::Val::from("named"),
+            SlotAssignmentMode::MANUAL => Any::from("manual"),
+            SlotAssignmentMode::NAMED => Any::from("named"),
         }
     }
 }
@@ -1750,7 +1746,7 @@ pub enum UnderlineStyle {
     WAVY,
 }
 impl FromVal for UnderlineStyle {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "solid" => Self::SOLID,
@@ -1760,32 +1756,32 @@ impl FromVal for UnderlineStyle {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<UnderlineStyle> for emlite::Val {
-    fn from(s: UnderlineStyle) -> emlite::Val {
+impl From<UnderlineStyle> for Any {
+    fn from(s: UnderlineStyle) -> Any {
         match s {
-            UnderlineStyle::NONE => emlite::Val::from("none"),
-            UnderlineStyle::SOLID => emlite::Val::from("solid"),
-            UnderlineStyle::DOTTED => emlite::Val::from("dotted"),
-            UnderlineStyle::DASHED => emlite::Val::from("dashed"),
-            UnderlineStyle::WAVY => emlite::Val::from("wavy"),
+            UnderlineStyle::NONE => Any::from("none"),
+            UnderlineStyle::SOLID => Any::from("solid"),
+            UnderlineStyle::DOTTED => Any::from("dotted"),
+            UnderlineStyle::DASHED => Any::from("dashed"),
+            UnderlineStyle::WAVY => Any::from("wavy"),
         }
     }
 }
-impl From<&UnderlineStyle> for emlite::Val {
-    fn from(s: &UnderlineStyle) -> emlite::Val {
+impl From<&UnderlineStyle> for Any {
+    fn from(s: &UnderlineStyle) -> Any {
         match *s {
-            UnderlineStyle::NONE => emlite::Val::from("none"),
-            UnderlineStyle::SOLID => emlite::Val::from("solid"),
-            UnderlineStyle::DOTTED => emlite::Val::from("dotted"),
-            UnderlineStyle::DASHED => emlite::Val::from("dashed"),
-            UnderlineStyle::WAVY => emlite::Val::from("wavy"),
+            UnderlineStyle::NONE => Any::from("none"),
+            UnderlineStyle::SOLID => Any::from("solid"),
+            UnderlineStyle::DOTTED => Any::from("dotted"),
+            UnderlineStyle::DASHED => Any::from("dashed"),
+            UnderlineStyle::WAVY => Any::from("wavy"),
         }
     }
 }
@@ -1797,7 +1793,7 @@ pub enum UnderlineThickness {
     THICK,
 }
 impl FromVal for UnderlineThickness {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "thin" => Self::THIN,
@@ -1805,28 +1801,28 @@ impl FromVal for UnderlineThickness {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<UnderlineThickness> for emlite::Val {
-    fn from(s: UnderlineThickness) -> emlite::Val {
+impl From<UnderlineThickness> for Any {
+    fn from(s: UnderlineThickness) -> Any {
         match s {
-            UnderlineThickness::NONE => emlite::Val::from("none"),
-            UnderlineThickness::THIN => emlite::Val::from("thin"),
-            UnderlineThickness::THICK => emlite::Val::from("thick"),
+            UnderlineThickness::NONE => Any::from("none"),
+            UnderlineThickness::THIN => Any::from("thin"),
+            UnderlineThickness::THICK => Any::from("thick"),
         }
     }
 }
-impl From<&UnderlineThickness> for emlite::Val {
-    fn from(s: &UnderlineThickness) -> emlite::Val {
+impl From<&UnderlineThickness> for Any {
+    fn from(s: &UnderlineThickness) -> Any {
         match *s {
-            UnderlineThickness::NONE => emlite::Val::from("none"),
-            UnderlineThickness::THIN => emlite::Val::from("thin"),
-            UnderlineThickness::THICK => emlite::Val::from("thick"),
+            UnderlineThickness::NONE => Any::from("none"),
+            UnderlineThickness::THIN => Any::from("thin"),
+            UnderlineThickness::THICK => Any::from("thick"),
         }
     }
 }
@@ -1838,7 +1834,7 @@ pub enum MediaKeysRequirement {
     NOT_ALLOWED,
 }
 impl FromVal for MediaKeysRequirement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "required" => Self::REQUIRED,
             "optional" => Self::OPTIONAL,
@@ -1846,28 +1842,28 @@ impl FromVal for MediaKeysRequirement {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MediaKeysRequirement> for emlite::Val {
-    fn from(s: MediaKeysRequirement) -> emlite::Val {
+impl From<MediaKeysRequirement> for Any {
+    fn from(s: MediaKeysRequirement) -> Any {
         match s {
-            MediaKeysRequirement::REQUIRED => emlite::Val::from("required"),
-            MediaKeysRequirement::OPTIONAL => emlite::Val::from("optional"),
-            MediaKeysRequirement::NOT_ALLOWED => emlite::Val::from("not-allowed"),
+            MediaKeysRequirement::REQUIRED => Any::from("required"),
+            MediaKeysRequirement::OPTIONAL => Any::from("optional"),
+            MediaKeysRequirement::NOT_ALLOWED => Any::from("not-allowed"),
         }
     }
 }
-impl From<&MediaKeysRequirement> for emlite::Val {
-    fn from(s: &MediaKeysRequirement) -> emlite::Val {
+impl From<&MediaKeysRequirement> for Any {
+    fn from(s: &MediaKeysRequirement) -> Any {
         match *s {
-            MediaKeysRequirement::REQUIRED => emlite::Val::from("required"),
-            MediaKeysRequirement::OPTIONAL => emlite::Val::from("optional"),
-            MediaKeysRequirement::NOT_ALLOWED => emlite::Val::from("not-allowed"),
+            MediaKeysRequirement::REQUIRED => Any::from("required"),
+            MediaKeysRequirement::OPTIONAL => Any::from("optional"),
+            MediaKeysRequirement::NOT_ALLOWED => Any::from("not-allowed"),
         }
     }
 }
@@ -1878,33 +1874,33 @@ pub enum MediaKeySessionType {
     PERSISTENT_LICENSE,
 }
 impl FromVal for MediaKeySessionType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "temporary" => Self::TEMPORARY,
             "persistent-license" => Self::PERSISTENT_LICENSE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MediaKeySessionType> for emlite::Val {
-    fn from(s: MediaKeySessionType) -> emlite::Val {
+impl From<MediaKeySessionType> for Any {
+    fn from(s: MediaKeySessionType) -> Any {
         match s {
-            MediaKeySessionType::TEMPORARY => emlite::Val::from("temporary"),
-            MediaKeySessionType::PERSISTENT_LICENSE => emlite::Val::from("persistent-license"),
+            MediaKeySessionType::TEMPORARY => Any::from("temporary"),
+            MediaKeySessionType::PERSISTENT_LICENSE => Any::from("persistent-license"),
         }
     }
 }
-impl From<&MediaKeySessionType> for emlite::Val {
-    fn from(s: &MediaKeySessionType) -> emlite::Val {
+impl From<&MediaKeySessionType> for Any {
+    fn from(s: &MediaKeySessionType) -> Any {
         match *s {
-            MediaKeySessionType::TEMPORARY => emlite::Val::from("temporary"),
-            MediaKeySessionType::PERSISTENT_LICENSE => emlite::Val::from("persistent-license"),
+            MediaKeySessionType::TEMPORARY => Any::from("temporary"),
+            MediaKeySessionType::PERSISTENT_LICENSE => Any::from("persistent-license"),
         }
     }
 }
@@ -1918,7 +1914,7 @@ pub enum MediaKeySessionClosedReason {
     RESOURCE_EVICTED,
 }
 impl FromVal for MediaKeySessionClosedReason {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "internal-error" => Self::INTERNAL_ERROR,
             "closed-by-application" => Self::CLOSED_BY_APPLICATION,
@@ -1928,44 +1924,40 @@ impl FromVal for MediaKeySessionClosedReason {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MediaKeySessionClosedReason> for emlite::Val {
-    fn from(s: MediaKeySessionClosedReason) -> emlite::Val {
+impl From<MediaKeySessionClosedReason> for Any {
+    fn from(s: MediaKeySessionClosedReason) -> Any {
         match s {
-            MediaKeySessionClosedReason::INTERNAL_ERROR => emlite::Val::from("internal-error"),
+            MediaKeySessionClosedReason::INTERNAL_ERROR => Any::from("internal-error"),
             MediaKeySessionClosedReason::CLOSED_BY_APPLICATION => {
-                emlite::Val::from("closed-by-application")
+                Any::from("closed-by-application")
             }
-            MediaKeySessionClosedReason::RELEASE_ACKNOWLEDGED => {
-                emlite::Val::from("release-acknowledged")
-            }
+            MediaKeySessionClosedReason::RELEASE_ACKNOWLEDGED => Any::from("release-acknowledged"),
             MediaKeySessionClosedReason::HARDWARE_CONTEXT_RESET => {
-                emlite::Val::from("hardware-context-reset")
+                Any::from("hardware-context-reset")
             }
-            MediaKeySessionClosedReason::RESOURCE_EVICTED => emlite::Val::from("resource-evicted"),
+            MediaKeySessionClosedReason::RESOURCE_EVICTED => Any::from("resource-evicted"),
         }
     }
 }
-impl From<&MediaKeySessionClosedReason> for emlite::Val {
-    fn from(s: &MediaKeySessionClosedReason) -> emlite::Val {
+impl From<&MediaKeySessionClosedReason> for Any {
+    fn from(s: &MediaKeySessionClosedReason) -> Any {
         match *s {
-            MediaKeySessionClosedReason::INTERNAL_ERROR => emlite::Val::from("internal-error"),
+            MediaKeySessionClosedReason::INTERNAL_ERROR => Any::from("internal-error"),
             MediaKeySessionClosedReason::CLOSED_BY_APPLICATION => {
-                emlite::Val::from("closed-by-application")
+                Any::from("closed-by-application")
             }
-            MediaKeySessionClosedReason::RELEASE_ACKNOWLEDGED => {
-                emlite::Val::from("release-acknowledged")
-            }
+            MediaKeySessionClosedReason::RELEASE_ACKNOWLEDGED => Any::from("release-acknowledged"),
             MediaKeySessionClosedReason::HARDWARE_CONTEXT_RESET => {
-                emlite::Val::from("hardware-context-reset")
+                Any::from("hardware-context-reset")
             }
-            MediaKeySessionClosedReason::RESOURCE_EVICTED => emlite::Val::from("resource-evicted"),
+            MediaKeySessionClosedReason::RESOURCE_EVICTED => Any::from("resource-evicted"),
         }
     }
 }
@@ -1982,7 +1974,7 @@ pub enum MediaKeyStatus {
     INTERNAL_ERROR,
 }
 impl FromVal for MediaKeyStatus {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "usable" => Self::USABLE,
             "expired" => Self::EXPIRED,
@@ -1995,38 +1987,38 @@ impl FromVal for MediaKeyStatus {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MediaKeyStatus> for emlite::Val {
-    fn from(s: MediaKeyStatus) -> emlite::Val {
+impl From<MediaKeyStatus> for Any {
+    fn from(s: MediaKeyStatus) -> Any {
         match s {
-            MediaKeyStatus::USABLE => emlite::Val::from("usable"),
-            MediaKeyStatus::EXPIRED => emlite::Val::from("expired"),
-            MediaKeyStatus::RELEASED => emlite::Val::from("released"),
-            MediaKeyStatus::OUTPUT_RESTRICTED => emlite::Val::from("output-restricted"),
-            MediaKeyStatus::OUTPUT_DOWNSCALED => emlite::Val::from("output-downscaled"),
-            MediaKeyStatus::USABLE_IN_FUTURE => emlite::Val::from("usable-in-future"),
-            MediaKeyStatus::STATUS_PENDING => emlite::Val::from("status-pending"),
-            MediaKeyStatus::INTERNAL_ERROR => emlite::Val::from("internal-error"),
+            MediaKeyStatus::USABLE => Any::from("usable"),
+            MediaKeyStatus::EXPIRED => Any::from("expired"),
+            MediaKeyStatus::RELEASED => Any::from("released"),
+            MediaKeyStatus::OUTPUT_RESTRICTED => Any::from("output-restricted"),
+            MediaKeyStatus::OUTPUT_DOWNSCALED => Any::from("output-downscaled"),
+            MediaKeyStatus::USABLE_IN_FUTURE => Any::from("usable-in-future"),
+            MediaKeyStatus::STATUS_PENDING => Any::from("status-pending"),
+            MediaKeyStatus::INTERNAL_ERROR => Any::from("internal-error"),
         }
     }
 }
-impl From<&MediaKeyStatus> for emlite::Val {
-    fn from(s: &MediaKeyStatus) -> emlite::Val {
+impl From<&MediaKeyStatus> for Any {
+    fn from(s: &MediaKeyStatus) -> Any {
         match *s {
-            MediaKeyStatus::USABLE => emlite::Val::from("usable"),
-            MediaKeyStatus::EXPIRED => emlite::Val::from("expired"),
-            MediaKeyStatus::RELEASED => emlite::Val::from("released"),
-            MediaKeyStatus::OUTPUT_RESTRICTED => emlite::Val::from("output-restricted"),
-            MediaKeyStatus::OUTPUT_DOWNSCALED => emlite::Val::from("output-downscaled"),
-            MediaKeyStatus::USABLE_IN_FUTURE => emlite::Val::from("usable-in-future"),
-            MediaKeyStatus::STATUS_PENDING => emlite::Val::from("status-pending"),
-            MediaKeyStatus::INTERNAL_ERROR => emlite::Val::from("internal-error"),
+            MediaKeyStatus::USABLE => Any::from("usable"),
+            MediaKeyStatus::EXPIRED => Any::from("expired"),
+            MediaKeyStatus::RELEASED => Any::from("released"),
+            MediaKeyStatus::OUTPUT_RESTRICTED => Any::from("output-restricted"),
+            MediaKeyStatus::OUTPUT_DOWNSCALED => Any::from("output-downscaled"),
+            MediaKeyStatus::USABLE_IN_FUTURE => Any::from("usable-in-future"),
+            MediaKeyStatus::STATUS_PENDING => Any::from("status-pending"),
+            MediaKeyStatus::INTERNAL_ERROR => Any::from("internal-error"),
         }
     }
 }
@@ -2039,7 +2031,7 @@ pub enum MediaKeyMessageType {
     INDIVIDUALIZATION_REQUEST,
 }
 impl FromVal for MediaKeyMessageType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "license-request" => Self::LICENSE_REQUEST,
             "license-renewal" => Self::LICENSE_RENEWAL,
@@ -2048,33 +2040,33 @@ impl FromVal for MediaKeyMessageType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MediaKeyMessageType> for emlite::Val {
-    fn from(s: MediaKeyMessageType) -> emlite::Val {
+impl From<MediaKeyMessageType> for Any {
+    fn from(s: MediaKeyMessageType) -> Any {
         match s {
-            MediaKeyMessageType::LICENSE_REQUEST => emlite::Val::from("license-request"),
-            MediaKeyMessageType::LICENSE_RENEWAL => emlite::Val::from("license-renewal"),
-            MediaKeyMessageType::LICENSE_RELEASE => emlite::Val::from("license-release"),
+            MediaKeyMessageType::LICENSE_REQUEST => Any::from("license-request"),
+            MediaKeyMessageType::LICENSE_RENEWAL => Any::from("license-renewal"),
+            MediaKeyMessageType::LICENSE_RELEASE => Any::from("license-release"),
             MediaKeyMessageType::INDIVIDUALIZATION_REQUEST => {
-                emlite::Val::from("individualization-request")
+                Any::from("individualization-request")
             }
         }
     }
 }
-impl From<&MediaKeyMessageType> for emlite::Val {
-    fn from(s: &MediaKeyMessageType) -> emlite::Val {
+impl From<&MediaKeyMessageType> for Any {
+    fn from(s: &MediaKeyMessageType) -> Any {
         match *s {
-            MediaKeyMessageType::LICENSE_REQUEST => emlite::Val::from("license-request"),
-            MediaKeyMessageType::LICENSE_RENEWAL => emlite::Val::from("license-renewal"),
-            MediaKeyMessageType::LICENSE_RELEASE => emlite::Val::from("license-release"),
+            MediaKeyMessageType::LICENSE_REQUEST => Any::from("license-request"),
+            MediaKeyMessageType::LICENSE_RENEWAL => Any::from("license-renewal"),
+            MediaKeyMessageType::LICENSE_RELEASE => Any::from("license-release"),
             MediaKeyMessageType::INDIVIDUALIZATION_REQUEST => {
-                emlite::Val::from("individualization-request")
+                Any::from("individualization-request")
             }
         }
     }
@@ -2088,7 +2080,7 @@ pub enum IdentityCredentialRequestOptionsContext {
     CONTINUE_,
 }
 impl FromVal for IdentityCredentialRequestOptionsContext {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "signin" => Self::SIGNIN,
             "signup" => Self::SIGNUP,
@@ -2097,30 +2089,30 @@ impl FromVal for IdentityCredentialRequestOptionsContext {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<IdentityCredentialRequestOptionsContext> for emlite::Val {
-    fn from(s: IdentityCredentialRequestOptionsContext) -> emlite::Val {
+impl From<IdentityCredentialRequestOptionsContext> for Any {
+    fn from(s: IdentityCredentialRequestOptionsContext) -> Any {
         match s {
-            IdentityCredentialRequestOptionsContext::SIGNIN => emlite::Val::from("signin"),
-            IdentityCredentialRequestOptionsContext::SIGNUP => emlite::Val::from("signup"),
-            IdentityCredentialRequestOptionsContext::USE_ => emlite::Val::from("use"),
-            IdentityCredentialRequestOptionsContext::CONTINUE_ => emlite::Val::from("continue"),
+            IdentityCredentialRequestOptionsContext::SIGNIN => Any::from("signin"),
+            IdentityCredentialRequestOptionsContext::SIGNUP => Any::from("signup"),
+            IdentityCredentialRequestOptionsContext::USE_ => Any::from("use"),
+            IdentityCredentialRequestOptionsContext::CONTINUE_ => Any::from("continue"),
         }
     }
 }
-impl From<&IdentityCredentialRequestOptionsContext> for emlite::Val {
-    fn from(s: &IdentityCredentialRequestOptionsContext) -> emlite::Val {
+impl From<&IdentityCredentialRequestOptionsContext> for Any {
+    fn from(s: &IdentityCredentialRequestOptionsContext) -> Any {
         match *s {
-            IdentityCredentialRequestOptionsContext::SIGNIN => emlite::Val::from("signin"),
-            IdentityCredentialRequestOptionsContext::SIGNUP => emlite::Val::from("signup"),
-            IdentityCredentialRequestOptionsContext::USE_ => emlite::Val::from("use"),
-            IdentityCredentialRequestOptionsContext::CONTINUE_ => emlite::Val::from("continue"),
+            IdentityCredentialRequestOptionsContext::SIGNIN => Any::from("signin"),
+            IdentityCredentialRequestOptionsContext::SIGNUP => Any::from("signup"),
+            IdentityCredentialRequestOptionsContext::USE_ => Any::from("use"),
+            IdentityCredentialRequestOptionsContext::CONTINUE_ => Any::from("continue"),
         }
     }
 }
@@ -2131,33 +2123,33 @@ pub enum IdentityCredentialRequestOptionsMode {
     PASSIVE,
 }
 impl FromVal for IdentityCredentialRequestOptionsMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "active" => Self::ACTIVE,
             "passive" => Self::PASSIVE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<IdentityCredentialRequestOptionsMode> for emlite::Val {
-    fn from(s: IdentityCredentialRequestOptionsMode) -> emlite::Val {
+impl From<IdentityCredentialRequestOptionsMode> for Any {
+    fn from(s: IdentityCredentialRequestOptionsMode) -> Any {
         match s {
-            IdentityCredentialRequestOptionsMode::ACTIVE => emlite::Val::from("active"),
-            IdentityCredentialRequestOptionsMode::PASSIVE => emlite::Val::from("passive"),
+            IdentityCredentialRequestOptionsMode::ACTIVE => Any::from("active"),
+            IdentityCredentialRequestOptionsMode::PASSIVE => Any::from("passive"),
         }
     }
 }
-impl From<&IdentityCredentialRequestOptionsMode> for emlite::Val {
-    fn from(s: &IdentityCredentialRequestOptionsMode) -> emlite::Val {
+impl From<&IdentityCredentialRequestOptionsMode> for Any {
+    fn from(s: &IdentityCredentialRequestOptionsMode) -> Any {
         match *s {
-            IdentityCredentialRequestOptionsMode::ACTIVE => emlite::Val::from("active"),
-            IdentityCredentialRequestOptionsMode::PASSIVE => emlite::Val::from("passive"),
+            IdentityCredentialRequestOptionsMode::ACTIVE => Any::from("active"),
+            IdentityCredentialRequestOptionsMode::PASSIVE => Any::from("passive"),
         }
     }
 }
@@ -2167,30 +2159,30 @@ pub enum OpaqueProperty {
     OPAQUE,
 }
 impl FromVal for OpaqueProperty {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "opaque" => Self::OPAQUE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<OpaqueProperty> for emlite::Val {
-    fn from(s: OpaqueProperty) -> emlite::Val {
+impl From<OpaqueProperty> for Any {
+    fn from(s: OpaqueProperty) -> Any {
         match s {
-            OpaqueProperty::OPAQUE => emlite::Val::from("opaque"),
+            OpaqueProperty::OPAQUE => Any::from("opaque"),
         }
     }
 }
-impl From<&OpaqueProperty> for emlite::Val {
-    fn from(s: &OpaqueProperty) -> emlite::Val {
+impl From<&OpaqueProperty> for Any {
+    fn from(s: &OpaqueProperty) -> Any {
         match *s {
-            OpaqueProperty::OPAQUE => emlite::Val::from("opaque"),
+            OpaqueProperty::OPAQUE => Any::from("opaque"),
         }
     }
 }
@@ -2204,7 +2196,7 @@ pub enum FenceReportingDestination {
     SHARED_STORAGE_SELECT_URL,
 }
 impl FromVal for FenceReportingDestination {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "buyer" => Self::BUYER,
             "seller" => Self::SELLER,
@@ -2214,35 +2206,35 @@ impl FromVal for FenceReportingDestination {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<FenceReportingDestination> for emlite::Val {
-    fn from(s: FenceReportingDestination) -> emlite::Val {
+impl From<FenceReportingDestination> for Any {
+    fn from(s: FenceReportingDestination) -> Any {
         match s {
-            FenceReportingDestination::BUYER => emlite::Val::from("buyer"),
-            FenceReportingDestination::SELLER => emlite::Val::from("seller"),
-            FenceReportingDestination::COMPONENT_SELLER => emlite::Val::from("component-seller"),
-            FenceReportingDestination::DIRECT_SELLER => emlite::Val::from("direct-seller"),
+            FenceReportingDestination::BUYER => Any::from("buyer"),
+            FenceReportingDestination::SELLER => Any::from("seller"),
+            FenceReportingDestination::COMPONENT_SELLER => Any::from("component-seller"),
+            FenceReportingDestination::DIRECT_SELLER => Any::from("direct-seller"),
             FenceReportingDestination::SHARED_STORAGE_SELECT_URL => {
-                emlite::Val::from("shared-storage-select-url")
+                Any::from("shared-storage-select-url")
             }
         }
     }
 }
-impl From<&FenceReportingDestination> for emlite::Val {
-    fn from(s: &FenceReportingDestination) -> emlite::Val {
+impl From<&FenceReportingDestination> for Any {
+    fn from(s: &FenceReportingDestination) -> Any {
         match *s {
-            FenceReportingDestination::BUYER => emlite::Val::from("buyer"),
-            FenceReportingDestination::SELLER => emlite::Val::from("seller"),
-            FenceReportingDestination::COMPONENT_SELLER => emlite::Val::from("component-seller"),
-            FenceReportingDestination::DIRECT_SELLER => emlite::Val::from("direct-seller"),
+            FenceReportingDestination::BUYER => Any::from("buyer"),
+            FenceReportingDestination::SELLER => Any::from("seller"),
+            FenceReportingDestination::COMPONENT_SELLER => Any::from("component-seller"),
+            FenceReportingDestination::DIRECT_SELLER => Any::from("direct-seller"),
             FenceReportingDestination::SHARED_STORAGE_SELECT_URL => {
-                emlite::Val::from("shared-storage-select-url")
+                Any::from("shared-storage-select-url")
             }
         }
     }
@@ -2273,7 +2265,7 @@ pub enum RequestDestination {
     XSLT,
 }
 impl FromVal for RequestDestination {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "" => Self::NONE,
             "audio" => Self::AUDIO,
@@ -2299,64 +2291,64 @@ impl FromVal for RequestDestination {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RequestDestination> for emlite::Val {
-    fn from(s: RequestDestination) -> emlite::Val {
+impl From<RequestDestination> for Any {
+    fn from(s: RequestDestination) -> Any {
         match s {
-            RequestDestination::NONE => emlite::Val::from(""),
-            RequestDestination::AUDIO => emlite::Val::from("audio"),
-            RequestDestination::AUDIOWORKLET => emlite::Val::from("audioworklet"),
-            RequestDestination::DOCUMENT => emlite::Val::from("document"),
-            RequestDestination::EMBED => emlite::Val::from("embed"),
-            RequestDestination::FONT => emlite::Val::from("font"),
-            RequestDestination::FRAME => emlite::Val::from("frame"),
-            RequestDestination::IFRAME => emlite::Val::from("iframe"),
-            RequestDestination::IMAGE => emlite::Val::from("image"),
-            RequestDestination::JSON => emlite::Val::from("json"),
-            RequestDestination::MANIFEST => emlite::Val::from("manifest"),
-            RequestDestination::OBJECT => emlite::Val::from("object"),
-            RequestDestination::PAINTWORKLET => emlite::Val::from("paintworklet"),
-            RequestDestination::REPORT => emlite::Val::from("report"),
-            RequestDestination::SCRIPT => emlite::Val::from("script"),
-            RequestDestination::SHAREDWORKER => emlite::Val::from("sharedworker"),
-            RequestDestination::STYLE => emlite::Val::from("style"),
-            RequestDestination::TRACK => emlite::Val::from("track"),
-            RequestDestination::VIDEO => emlite::Val::from("video"),
-            RequestDestination::WORKER => emlite::Val::from("worker"),
-            RequestDestination::XSLT => emlite::Val::from("xslt"),
+            RequestDestination::NONE => Any::from(""),
+            RequestDestination::AUDIO => Any::from("audio"),
+            RequestDestination::AUDIOWORKLET => Any::from("audioworklet"),
+            RequestDestination::DOCUMENT => Any::from("document"),
+            RequestDestination::EMBED => Any::from("embed"),
+            RequestDestination::FONT => Any::from("font"),
+            RequestDestination::FRAME => Any::from("frame"),
+            RequestDestination::IFRAME => Any::from("iframe"),
+            RequestDestination::IMAGE => Any::from("image"),
+            RequestDestination::JSON => Any::from("json"),
+            RequestDestination::MANIFEST => Any::from("manifest"),
+            RequestDestination::OBJECT => Any::from("object"),
+            RequestDestination::PAINTWORKLET => Any::from("paintworklet"),
+            RequestDestination::REPORT => Any::from("report"),
+            RequestDestination::SCRIPT => Any::from("script"),
+            RequestDestination::SHAREDWORKER => Any::from("sharedworker"),
+            RequestDestination::STYLE => Any::from("style"),
+            RequestDestination::TRACK => Any::from("track"),
+            RequestDestination::VIDEO => Any::from("video"),
+            RequestDestination::WORKER => Any::from("worker"),
+            RequestDestination::XSLT => Any::from("xslt"),
         }
     }
 }
-impl From<&RequestDestination> for emlite::Val {
-    fn from(s: &RequestDestination) -> emlite::Val {
+impl From<&RequestDestination> for Any {
+    fn from(s: &RequestDestination) -> Any {
         match *s {
-            RequestDestination::NONE => emlite::Val::from(""),
-            RequestDestination::AUDIO => emlite::Val::from("audio"),
-            RequestDestination::AUDIOWORKLET => emlite::Val::from("audioworklet"),
-            RequestDestination::DOCUMENT => emlite::Val::from("document"),
-            RequestDestination::EMBED => emlite::Val::from("embed"),
-            RequestDestination::FONT => emlite::Val::from("font"),
-            RequestDestination::FRAME => emlite::Val::from("frame"),
-            RequestDestination::IFRAME => emlite::Val::from("iframe"),
-            RequestDestination::IMAGE => emlite::Val::from("image"),
-            RequestDestination::JSON => emlite::Val::from("json"),
-            RequestDestination::MANIFEST => emlite::Val::from("manifest"),
-            RequestDestination::OBJECT => emlite::Val::from("object"),
-            RequestDestination::PAINTWORKLET => emlite::Val::from("paintworklet"),
-            RequestDestination::REPORT => emlite::Val::from("report"),
-            RequestDestination::SCRIPT => emlite::Val::from("script"),
-            RequestDestination::SHAREDWORKER => emlite::Val::from("sharedworker"),
-            RequestDestination::STYLE => emlite::Val::from("style"),
-            RequestDestination::TRACK => emlite::Val::from("track"),
-            RequestDestination::VIDEO => emlite::Val::from("video"),
-            RequestDestination::WORKER => emlite::Val::from("worker"),
-            RequestDestination::XSLT => emlite::Val::from("xslt"),
+            RequestDestination::NONE => Any::from(""),
+            RequestDestination::AUDIO => Any::from("audio"),
+            RequestDestination::AUDIOWORKLET => Any::from("audioworklet"),
+            RequestDestination::DOCUMENT => Any::from("document"),
+            RequestDestination::EMBED => Any::from("embed"),
+            RequestDestination::FONT => Any::from("font"),
+            RequestDestination::FRAME => Any::from("frame"),
+            RequestDestination::IFRAME => Any::from("iframe"),
+            RequestDestination::IMAGE => Any::from("image"),
+            RequestDestination::JSON => Any::from("json"),
+            RequestDestination::MANIFEST => Any::from("manifest"),
+            RequestDestination::OBJECT => Any::from("object"),
+            RequestDestination::PAINTWORKLET => Any::from("paintworklet"),
+            RequestDestination::REPORT => Any::from("report"),
+            RequestDestination::SCRIPT => Any::from("script"),
+            RequestDestination::SHAREDWORKER => Any::from("sharedworker"),
+            RequestDestination::STYLE => Any::from("style"),
+            RequestDestination::TRACK => Any::from("track"),
+            RequestDestination::VIDEO => Any::from("video"),
+            RequestDestination::WORKER => Any::from("worker"),
+            RequestDestination::XSLT => Any::from("xslt"),
         }
     }
 }
@@ -2369,7 +2361,7 @@ pub enum RequestMode {
     CORS,
 }
 impl FromVal for RequestMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "navigate" => Self::NAVIGATE,
             "same-origin" => Self::SAME_ORIGIN,
@@ -2378,30 +2370,30 @@ impl FromVal for RequestMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RequestMode> for emlite::Val {
-    fn from(s: RequestMode) -> emlite::Val {
+impl From<RequestMode> for Any {
+    fn from(s: RequestMode) -> Any {
         match s {
-            RequestMode::NAVIGATE => emlite::Val::from("navigate"),
-            RequestMode::SAME_ORIGIN => emlite::Val::from("same-origin"),
-            RequestMode::NO_CORS => emlite::Val::from("no-cors"),
-            RequestMode::CORS => emlite::Val::from("cors"),
+            RequestMode::NAVIGATE => Any::from("navigate"),
+            RequestMode::SAME_ORIGIN => Any::from("same-origin"),
+            RequestMode::NO_CORS => Any::from("no-cors"),
+            RequestMode::CORS => Any::from("cors"),
         }
     }
 }
-impl From<&RequestMode> for emlite::Val {
-    fn from(s: &RequestMode) -> emlite::Val {
+impl From<&RequestMode> for Any {
+    fn from(s: &RequestMode) -> Any {
         match *s {
-            RequestMode::NAVIGATE => emlite::Val::from("navigate"),
-            RequestMode::SAME_ORIGIN => emlite::Val::from("same-origin"),
-            RequestMode::NO_CORS => emlite::Val::from("no-cors"),
-            RequestMode::CORS => emlite::Val::from("cors"),
+            RequestMode::NAVIGATE => Any::from("navigate"),
+            RequestMode::SAME_ORIGIN => Any::from("same-origin"),
+            RequestMode::NO_CORS => Any::from("no-cors"),
+            RequestMode::CORS => Any::from("cors"),
         }
     }
 }
@@ -2413,7 +2405,7 @@ pub enum RequestCredentials {
     INCLUDE,
 }
 impl FromVal for RequestCredentials {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "omit" => Self::OMIT,
             "same-origin" => Self::SAME_ORIGIN,
@@ -2421,28 +2413,28 @@ impl FromVal for RequestCredentials {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RequestCredentials> for emlite::Val {
-    fn from(s: RequestCredentials) -> emlite::Val {
+impl From<RequestCredentials> for Any {
+    fn from(s: RequestCredentials) -> Any {
         match s {
-            RequestCredentials::OMIT => emlite::Val::from("omit"),
-            RequestCredentials::SAME_ORIGIN => emlite::Val::from("same-origin"),
-            RequestCredentials::INCLUDE => emlite::Val::from("include"),
+            RequestCredentials::OMIT => Any::from("omit"),
+            RequestCredentials::SAME_ORIGIN => Any::from("same-origin"),
+            RequestCredentials::INCLUDE => Any::from("include"),
         }
     }
 }
-impl From<&RequestCredentials> for emlite::Val {
-    fn from(s: &RequestCredentials) -> emlite::Val {
+impl From<&RequestCredentials> for Any {
+    fn from(s: &RequestCredentials) -> Any {
         match *s {
-            RequestCredentials::OMIT => emlite::Val::from("omit"),
-            RequestCredentials::SAME_ORIGIN => emlite::Val::from("same-origin"),
-            RequestCredentials::INCLUDE => emlite::Val::from("include"),
+            RequestCredentials::OMIT => Any::from("omit"),
+            RequestCredentials::SAME_ORIGIN => Any::from("same-origin"),
+            RequestCredentials::INCLUDE => Any::from("include"),
         }
     }
 }
@@ -2457,7 +2449,7 @@ pub enum RequestCache {
     ONLY_IF_CACHED,
 }
 impl FromVal for RequestCache {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "default" => Self::DEFAULT,
             "no-store" => Self::NO_STORE,
@@ -2468,34 +2460,34 @@ impl FromVal for RequestCache {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RequestCache> for emlite::Val {
-    fn from(s: RequestCache) -> emlite::Val {
+impl From<RequestCache> for Any {
+    fn from(s: RequestCache) -> Any {
         match s {
-            RequestCache::DEFAULT => emlite::Val::from("default"),
-            RequestCache::NO_STORE => emlite::Val::from("no-store"),
-            RequestCache::RELOAD => emlite::Val::from("reload"),
-            RequestCache::NO_CACHE => emlite::Val::from("no-cache"),
-            RequestCache::FORCE_CACHE => emlite::Val::from("force-cache"),
-            RequestCache::ONLY_IF_CACHED => emlite::Val::from("only-if-cached"),
+            RequestCache::DEFAULT => Any::from("default"),
+            RequestCache::NO_STORE => Any::from("no-store"),
+            RequestCache::RELOAD => Any::from("reload"),
+            RequestCache::NO_CACHE => Any::from("no-cache"),
+            RequestCache::FORCE_CACHE => Any::from("force-cache"),
+            RequestCache::ONLY_IF_CACHED => Any::from("only-if-cached"),
         }
     }
 }
-impl From<&RequestCache> for emlite::Val {
-    fn from(s: &RequestCache) -> emlite::Val {
+impl From<&RequestCache> for Any {
+    fn from(s: &RequestCache) -> Any {
         match *s {
-            RequestCache::DEFAULT => emlite::Val::from("default"),
-            RequestCache::NO_STORE => emlite::Val::from("no-store"),
-            RequestCache::RELOAD => emlite::Val::from("reload"),
-            RequestCache::NO_CACHE => emlite::Val::from("no-cache"),
-            RequestCache::FORCE_CACHE => emlite::Val::from("force-cache"),
-            RequestCache::ONLY_IF_CACHED => emlite::Val::from("only-if-cached"),
+            RequestCache::DEFAULT => Any::from("default"),
+            RequestCache::NO_STORE => Any::from("no-store"),
+            RequestCache::RELOAD => Any::from("reload"),
+            RequestCache::NO_CACHE => Any::from("no-cache"),
+            RequestCache::FORCE_CACHE => Any::from("force-cache"),
+            RequestCache::ONLY_IF_CACHED => Any::from("only-if-cached"),
         }
     }
 }
@@ -2507,7 +2499,7 @@ pub enum RequestRedirect {
     MANUAL,
 }
 impl FromVal for RequestRedirect {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "follow" => Self::FOLLOW,
             "error" => Self::ERROR,
@@ -2515,28 +2507,28 @@ impl FromVal for RequestRedirect {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RequestRedirect> for emlite::Val {
-    fn from(s: RequestRedirect) -> emlite::Val {
+impl From<RequestRedirect> for Any {
+    fn from(s: RequestRedirect) -> Any {
         match s {
-            RequestRedirect::FOLLOW => emlite::Val::from("follow"),
-            RequestRedirect::ERROR => emlite::Val::from("error"),
-            RequestRedirect::MANUAL => emlite::Val::from("manual"),
+            RequestRedirect::FOLLOW => Any::from("follow"),
+            RequestRedirect::ERROR => Any::from("error"),
+            RequestRedirect::MANUAL => Any::from("manual"),
         }
     }
 }
-impl From<&RequestRedirect> for emlite::Val {
-    fn from(s: &RequestRedirect) -> emlite::Val {
+impl From<&RequestRedirect> for Any {
+    fn from(s: &RequestRedirect) -> Any {
         match *s {
-            RequestRedirect::FOLLOW => emlite::Val::from("follow"),
-            RequestRedirect::ERROR => emlite::Val::from("error"),
-            RequestRedirect::MANUAL => emlite::Val::from("manual"),
+            RequestRedirect::FOLLOW => Any::from("follow"),
+            RequestRedirect::ERROR => Any::from("error"),
+            RequestRedirect::MANUAL => Any::from("manual"),
         }
     }
 }
@@ -2546,30 +2538,30 @@ pub enum RequestDuplex {
     HALF,
 }
 impl FromVal for RequestDuplex {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "half" => Self::HALF,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RequestDuplex> for emlite::Val {
-    fn from(s: RequestDuplex) -> emlite::Val {
+impl From<RequestDuplex> for Any {
+    fn from(s: RequestDuplex) -> Any {
         match s {
-            RequestDuplex::HALF => emlite::Val::from("half"),
+            RequestDuplex::HALF => Any::from("half"),
         }
     }
 }
-impl From<&RequestDuplex> for emlite::Val {
-    fn from(s: &RequestDuplex) -> emlite::Val {
+impl From<&RequestDuplex> for Any {
+    fn from(s: &RequestDuplex) -> Any {
         match *s {
-            RequestDuplex::HALF => emlite::Val::from("half"),
+            RequestDuplex::HALF => Any::from("half"),
         }
     }
 }
@@ -2581,7 +2573,7 @@ pub enum RequestPriority {
     AUTO,
 }
 impl FromVal for RequestPriority {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "high" => Self::HIGH,
             "low" => Self::LOW,
@@ -2589,28 +2581,28 @@ impl FromVal for RequestPriority {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RequestPriority> for emlite::Val {
-    fn from(s: RequestPriority) -> emlite::Val {
+impl From<RequestPriority> for Any {
+    fn from(s: RequestPriority) -> Any {
         match s {
-            RequestPriority::HIGH => emlite::Val::from("high"),
-            RequestPriority::LOW => emlite::Val::from("low"),
-            RequestPriority::AUTO => emlite::Val::from("auto"),
+            RequestPriority::HIGH => Any::from("high"),
+            RequestPriority::LOW => Any::from("low"),
+            RequestPriority::AUTO => Any::from("auto"),
         }
     }
 }
-impl From<&RequestPriority> for emlite::Val {
-    fn from(s: &RequestPriority) -> emlite::Val {
+impl From<&RequestPriority> for Any {
+    fn from(s: &RequestPriority) -> Any {
         match *s {
-            RequestPriority::HIGH => emlite::Val::from("high"),
-            RequestPriority::LOW => emlite::Val::from("low"),
-            RequestPriority::AUTO => emlite::Val::from("auto"),
+            RequestPriority::HIGH => Any::from("high"),
+            RequestPriority::LOW => Any::from("low"),
+            RequestPriority::AUTO => Any::from("auto"),
         }
     }
 }
@@ -2625,7 +2617,7 @@ pub enum ResponseType {
     OPAQUEREDIRECT,
 }
 impl FromVal for ResponseType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "basic" => Self::BASIC,
             "cors" => Self::CORS,
@@ -2636,34 +2628,34 @@ impl FromVal for ResponseType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ResponseType> for emlite::Val {
-    fn from(s: ResponseType) -> emlite::Val {
+impl From<ResponseType> for Any {
+    fn from(s: ResponseType) -> Any {
         match s {
-            ResponseType::BASIC => emlite::Val::from("basic"),
-            ResponseType::CORS => emlite::Val::from("cors"),
-            ResponseType::DEFAULT => emlite::Val::from("default"),
-            ResponseType::ERROR => emlite::Val::from("error"),
-            ResponseType::OPAQUE => emlite::Val::from("opaque"),
-            ResponseType::OPAQUEREDIRECT => emlite::Val::from("opaqueredirect"),
+            ResponseType::BASIC => Any::from("basic"),
+            ResponseType::CORS => Any::from("cors"),
+            ResponseType::DEFAULT => Any::from("default"),
+            ResponseType::ERROR => Any::from("error"),
+            ResponseType::OPAQUE => Any::from("opaque"),
+            ResponseType::OPAQUEREDIRECT => Any::from("opaqueredirect"),
         }
     }
 }
-impl From<&ResponseType> for emlite::Val {
-    fn from(s: &ResponseType) -> emlite::Val {
+impl From<&ResponseType> for Any {
+    fn from(s: &ResponseType) -> Any {
         match *s {
-            ResponseType::BASIC => emlite::Val::from("basic"),
-            ResponseType::CORS => emlite::Val::from("cors"),
-            ResponseType::DEFAULT => emlite::Val::from("default"),
-            ResponseType::ERROR => emlite::Val::from("error"),
-            ResponseType::OPAQUE => emlite::Val::from("opaque"),
-            ResponseType::OPAQUEREDIRECT => emlite::Val::from("opaqueredirect"),
+            ResponseType::BASIC => Any::from("basic"),
+            ResponseType::CORS => Any::from("cors"),
+            ResponseType::DEFAULT => Any::from("default"),
+            ResponseType::ERROR => Any::from("error"),
+            ResponseType::OPAQUE => Any::from("opaque"),
+            ResponseType::OPAQUEREDIRECT => Any::from("opaqueredirect"),
         }
     }
 }
@@ -2674,33 +2666,33 @@ pub enum FileSystemPermissionMode {
     READWRITE,
 }
 impl FromVal for FileSystemPermissionMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "read" => Self::READ,
             "readwrite" => Self::READWRITE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<FileSystemPermissionMode> for emlite::Val {
-    fn from(s: FileSystemPermissionMode) -> emlite::Val {
+impl From<FileSystemPermissionMode> for Any {
+    fn from(s: FileSystemPermissionMode) -> Any {
         match s {
-            FileSystemPermissionMode::READ => emlite::Val::from("read"),
-            FileSystemPermissionMode::READWRITE => emlite::Val::from("readwrite"),
+            FileSystemPermissionMode::READ => Any::from("read"),
+            FileSystemPermissionMode::READWRITE => Any::from("readwrite"),
         }
     }
 }
-impl From<&FileSystemPermissionMode> for emlite::Val {
-    fn from(s: &FileSystemPermissionMode) -> emlite::Val {
+impl From<&FileSystemPermissionMode> for Any {
+    fn from(s: &FileSystemPermissionMode) -> Any {
         match *s {
-            FileSystemPermissionMode::READ => emlite::Val::from("read"),
-            FileSystemPermissionMode::READWRITE => emlite::Val::from("readwrite"),
+            FileSystemPermissionMode::READ => Any::from("read"),
+            FileSystemPermissionMode::READWRITE => Any::from("readwrite"),
         }
     }
 }
@@ -2715,7 +2707,7 @@ pub enum WellKnownDirectory {
     VIDEOS,
 }
 impl FromVal for WellKnownDirectory {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "desktop" => Self::DESKTOP,
             "documents" => Self::DOCUMENTS,
@@ -2726,34 +2718,34 @@ impl FromVal for WellKnownDirectory {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<WellKnownDirectory> for emlite::Val {
-    fn from(s: WellKnownDirectory) -> emlite::Val {
+impl From<WellKnownDirectory> for Any {
+    fn from(s: WellKnownDirectory) -> Any {
         match s {
-            WellKnownDirectory::DESKTOP => emlite::Val::from("desktop"),
-            WellKnownDirectory::DOCUMENTS => emlite::Val::from("documents"),
-            WellKnownDirectory::DOWNLOADS => emlite::Val::from("downloads"),
-            WellKnownDirectory::MUSIC => emlite::Val::from("music"),
-            WellKnownDirectory::PICTURES => emlite::Val::from("pictures"),
-            WellKnownDirectory::VIDEOS => emlite::Val::from("videos"),
+            WellKnownDirectory::DESKTOP => Any::from("desktop"),
+            WellKnownDirectory::DOCUMENTS => Any::from("documents"),
+            WellKnownDirectory::DOWNLOADS => Any::from("downloads"),
+            WellKnownDirectory::MUSIC => Any::from("music"),
+            WellKnownDirectory::PICTURES => Any::from("pictures"),
+            WellKnownDirectory::VIDEOS => Any::from("videos"),
         }
     }
 }
-impl From<&WellKnownDirectory> for emlite::Val {
-    fn from(s: &WellKnownDirectory) -> emlite::Val {
+impl From<&WellKnownDirectory> for Any {
+    fn from(s: &WellKnownDirectory) -> Any {
         match *s {
-            WellKnownDirectory::DESKTOP => emlite::Val::from("desktop"),
-            WellKnownDirectory::DOCUMENTS => emlite::Val::from("documents"),
-            WellKnownDirectory::DOWNLOADS => emlite::Val::from("downloads"),
-            WellKnownDirectory::MUSIC => emlite::Val::from("music"),
-            WellKnownDirectory::PICTURES => emlite::Val::from("pictures"),
-            WellKnownDirectory::VIDEOS => emlite::Val::from("videos"),
+            WellKnownDirectory::DESKTOP => Any::from("desktop"),
+            WellKnownDirectory::DOCUMENTS => Any::from("documents"),
+            WellKnownDirectory::DOWNLOADS => Any::from("downloads"),
+            WellKnownDirectory::MUSIC => Any::from("music"),
+            WellKnownDirectory::PICTURES => Any::from("pictures"),
+            WellKnownDirectory::VIDEOS => Any::from("videos"),
         }
     }
 }
@@ -2764,33 +2756,33 @@ pub enum FileSystemHandleKind {
     DIRECTORY,
 }
 impl FromVal for FileSystemHandleKind {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "file" => Self::FILE,
             "directory" => Self::DIRECTORY,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<FileSystemHandleKind> for emlite::Val {
-    fn from(s: FileSystemHandleKind) -> emlite::Val {
+impl From<FileSystemHandleKind> for Any {
+    fn from(s: FileSystemHandleKind) -> Any {
         match s {
-            FileSystemHandleKind::FILE => emlite::Val::from("file"),
-            FileSystemHandleKind::DIRECTORY => emlite::Val::from("directory"),
+            FileSystemHandleKind::FILE => Any::from("file"),
+            FileSystemHandleKind::DIRECTORY => Any::from("directory"),
         }
     }
 }
-impl From<&FileSystemHandleKind> for emlite::Val {
-    fn from(s: &FileSystemHandleKind) -> emlite::Val {
+impl From<&FileSystemHandleKind> for Any {
+    fn from(s: &FileSystemHandleKind) -> Any {
         match *s {
-            FileSystemHandleKind::FILE => emlite::Val::from("file"),
-            FileSystemHandleKind::DIRECTORY => emlite::Val::from("directory"),
+            FileSystemHandleKind::FILE => Any::from("file"),
+            FileSystemHandleKind::DIRECTORY => Any::from("directory"),
         }
     }
 }
@@ -2802,7 +2794,7 @@ pub enum WriteCommandType {
     TRUNCATE,
 }
 impl FromVal for WriteCommandType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "write" => Self::WRITE,
             "seek" => Self::SEEK,
@@ -2810,28 +2802,28 @@ impl FromVal for WriteCommandType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<WriteCommandType> for emlite::Val {
-    fn from(s: WriteCommandType) -> emlite::Val {
+impl From<WriteCommandType> for Any {
+    fn from(s: WriteCommandType) -> Any {
         match s {
-            WriteCommandType::WRITE => emlite::Val::from("write"),
-            WriteCommandType::SEEK => emlite::Val::from("seek"),
-            WriteCommandType::TRUNCATE => emlite::Val::from("truncate"),
+            WriteCommandType::WRITE => Any::from("write"),
+            WriteCommandType::SEEK => Any::from("seek"),
+            WriteCommandType::TRUNCATE => Any::from("truncate"),
         }
     }
 }
-impl From<&WriteCommandType> for emlite::Val {
-    fn from(s: &WriteCommandType) -> emlite::Val {
+impl From<&WriteCommandType> for Any {
+    fn from(s: &WriteCommandType) -> Any {
         match *s {
-            WriteCommandType::WRITE => emlite::Val::from("write"),
-            WriteCommandType::SEEK => emlite::Val::from("seek"),
-            WriteCommandType::TRUNCATE => emlite::Val::from("truncate"),
+            WriteCommandType::WRITE => Any::from("write"),
+            WriteCommandType::SEEK => Any::from("seek"),
+            WriteCommandType::TRUNCATE => Any::from("truncate"),
         }
     }
 }
@@ -2843,7 +2835,7 @@ pub enum FullscreenNavigationUI {
     HIDE,
 }
 impl FromVal for FullscreenNavigationUI {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "auto" => Self::AUTO,
             "show" => Self::SHOW,
@@ -2851,28 +2843,28 @@ impl FromVal for FullscreenNavigationUI {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<FullscreenNavigationUI> for emlite::Val {
-    fn from(s: FullscreenNavigationUI) -> emlite::Val {
+impl From<FullscreenNavigationUI> for Any {
+    fn from(s: FullscreenNavigationUI) -> Any {
         match s {
-            FullscreenNavigationUI::AUTO => emlite::Val::from("auto"),
-            FullscreenNavigationUI::SHOW => emlite::Val::from("show"),
-            FullscreenNavigationUI::HIDE => emlite::Val::from("hide"),
+            FullscreenNavigationUI::AUTO => Any::from("auto"),
+            FullscreenNavigationUI::SHOW => Any::from("show"),
+            FullscreenNavigationUI::HIDE => Any::from("hide"),
         }
     }
 }
-impl From<&FullscreenNavigationUI> for emlite::Val {
-    fn from(s: &FullscreenNavigationUI) -> emlite::Val {
+impl From<&FullscreenNavigationUI> for Any {
+    fn from(s: &FullscreenNavigationUI) -> Any {
         match *s {
-            FullscreenNavigationUI::AUTO => emlite::Val::from("auto"),
-            FullscreenNavigationUI::SHOW => emlite::Val::from("show"),
-            FullscreenNavigationUI::HIDE => emlite::Val::from("hide"),
+            FullscreenNavigationUI::AUTO => Any::from("auto"),
+            FullscreenNavigationUI::SHOW => Any::from("show"),
+            FullscreenNavigationUI::HIDE => Any::from("hide"),
         }
     }
 }
@@ -2884,7 +2876,7 @@ pub enum GamepadHand {
     RIGHT,
 }
 impl FromVal for GamepadHand {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "" => Self::NONE,
             "left" => Self::LEFT,
@@ -2892,28 +2884,28 @@ impl FromVal for GamepadHand {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GamepadHand> for emlite::Val {
-    fn from(s: GamepadHand) -> emlite::Val {
+impl From<GamepadHand> for Any {
+    fn from(s: GamepadHand) -> Any {
         match s {
-            GamepadHand::NONE => emlite::Val::from(""),
-            GamepadHand::LEFT => emlite::Val::from("left"),
-            GamepadHand::RIGHT => emlite::Val::from("right"),
+            GamepadHand::NONE => Any::from(""),
+            GamepadHand::LEFT => Any::from("left"),
+            GamepadHand::RIGHT => Any::from("right"),
         }
     }
 }
-impl From<&GamepadHand> for emlite::Val {
-    fn from(s: &GamepadHand) -> emlite::Val {
+impl From<&GamepadHand> for Any {
+    fn from(s: &GamepadHand) -> Any {
         match *s {
-            GamepadHand::NONE => emlite::Val::from(""),
-            GamepadHand::LEFT => emlite::Val::from("left"),
-            GamepadHand::RIGHT => emlite::Val::from("right"),
+            GamepadHand::NONE => Any::from(""),
+            GamepadHand::LEFT => Any::from("left"),
+            GamepadHand::RIGHT => Any::from("right"),
         }
     }
 }
@@ -2925,7 +2917,7 @@ pub enum GamepadMappingType {
     XR_STANDARD,
 }
 impl FromVal for GamepadMappingType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "" => Self::NONE,
             "standard" => Self::STANDARD,
@@ -2933,28 +2925,28 @@ impl FromVal for GamepadMappingType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GamepadMappingType> for emlite::Val {
-    fn from(s: GamepadMappingType) -> emlite::Val {
+impl From<GamepadMappingType> for Any {
+    fn from(s: GamepadMappingType) -> Any {
         match s {
-            GamepadMappingType::NONE => emlite::Val::from(""),
-            GamepadMappingType::STANDARD => emlite::Val::from("standard"),
-            GamepadMappingType::XR_STANDARD => emlite::Val::from("xr-standard"),
+            GamepadMappingType::NONE => Any::from(""),
+            GamepadMappingType::STANDARD => Any::from("standard"),
+            GamepadMappingType::XR_STANDARD => Any::from("xr-standard"),
         }
     }
 }
-impl From<&GamepadMappingType> for emlite::Val {
-    fn from(s: &GamepadMappingType) -> emlite::Val {
+impl From<&GamepadMappingType> for Any {
+    fn from(s: &GamepadMappingType) -> Any {
         match *s {
-            GamepadMappingType::NONE => emlite::Val::from(""),
-            GamepadMappingType::STANDARD => emlite::Val::from("standard"),
-            GamepadMappingType::XR_STANDARD => emlite::Val::from("xr-standard"),
+            GamepadMappingType::NONE => Any::from(""),
+            GamepadMappingType::STANDARD => Any::from("standard"),
+            GamepadMappingType::XR_STANDARD => Any::from("xr-standard"),
         }
     }
 }
@@ -2965,33 +2957,33 @@ pub enum GamepadHapticsResult {
     PREEMPTED,
 }
 impl FromVal for GamepadHapticsResult {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "complete" => Self::COMPLETE,
             "preempted" => Self::PREEMPTED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GamepadHapticsResult> for emlite::Val {
-    fn from(s: GamepadHapticsResult) -> emlite::Val {
+impl From<GamepadHapticsResult> for Any {
+    fn from(s: GamepadHapticsResult) -> Any {
         match s {
-            GamepadHapticsResult::COMPLETE => emlite::Val::from("complete"),
-            GamepadHapticsResult::PREEMPTED => emlite::Val::from("preempted"),
+            GamepadHapticsResult::COMPLETE => Any::from("complete"),
+            GamepadHapticsResult::PREEMPTED => Any::from("preempted"),
         }
     }
 }
-impl From<&GamepadHapticsResult> for emlite::Val {
-    fn from(s: &GamepadHapticsResult) -> emlite::Val {
+impl From<&GamepadHapticsResult> for Any {
+    fn from(s: &GamepadHapticsResult) -> Any {
         match *s {
-            GamepadHapticsResult::COMPLETE => emlite::Val::from("complete"),
-            GamepadHapticsResult::PREEMPTED => emlite::Val::from("preempted"),
+            GamepadHapticsResult::COMPLETE => Any::from("complete"),
+            GamepadHapticsResult::PREEMPTED => Any::from("preempted"),
         }
     }
 }
@@ -3002,33 +2994,33 @@ pub enum GamepadHapticEffectType {
     TRIGGER_RUMBLE,
 }
 impl FromVal for GamepadHapticEffectType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "dual-rumble" => Self::DUAL_RUMBLE,
             "trigger-rumble" => Self::TRIGGER_RUMBLE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GamepadHapticEffectType> for emlite::Val {
-    fn from(s: GamepadHapticEffectType) -> emlite::Val {
+impl From<GamepadHapticEffectType> for Any {
+    fn from(s: GamepadHapticEffectType) -> Any {
         match s {
-            GamepadHapticEffectType::DUAL_RUMBLE => emlite::Val::from("dual-rumble"),
-            GamepadHapticEffectType::TRIGGER_RUMBLE => emlite::Val::from("trigger-rumble"),
+            GamepadHapticEffectType::DUAL_RUMBLE => Any::from("dual-rumble"),
+            GamepadHapticEffectType::TRIGGER_RUMBLE => Any::from("trigger-rumble"),
         }
     }
 }
-impl From<&GamepadHapticEffectType> for emlite::Val {
-    fn from(s: &GamepadHapticEffectType) -> emlite::Val {
+impl From<&GamepadHapticEffectType> for Any {
+    fn from(s: &GamepadHapticEffectType) -> Any {
         match *s {
-            GamepadHapticEffectType::DUAL_RUMBLE => emlite::Val::from("dual-rumble"),
-            GamepadHapticEffectType::TRIGGER_RUMBLE => emlite::Val::from("trigger-rumble"),
+            GamepadHapticEffectType::DUAL_RUMBLE => Any::from("dual-rumble"),
+            GamepadHapticEffectType::TRIGGER_RUMBLE => Any::from("trigger-rumble"),
         }
     }
 }
@@ -3039,33 +3031,33 @@ pub enum GyroscopeLocalCoordinateSystem {
     SCREEN,
 }
 impl FromVal for GyroscopeLocalCoordinateSystem {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "device" => Self::DEVICE,
             "screen" => Self::SCREEN,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GyroscopeLocalCoordinateSystem> for emlite::Val {
-    fn from(s: GyroscopeLocalCoordinateSystem) -> emlite::Val {
+impl From<GyroscopeLocalCoordinateSystem> for Any {
+    fn from(s: GyroscopeLocalCoordinateSystem) -> Any {
         match s {
-            GyroscopeLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
-            GyroscopeLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+            GyroscopeLocalCoordinateSystem::DEVICE => Any::from("device"),
+            GyroscopeLocalCoordinateSystem::SCREEN => Any::from("screen"),
         }
     }
 }
-impl From<&GyroscopeLocalCoordinateSystem> for emlite::Val {
-    fn from(s: &GyroscopeLocalCoordinateSystem) -> emlite::Val {
+impl From<&GyroscopeLocalCoordinateSystem> for Any {
+    fn from(s: &GyroscopeLocalCoordinateSystem) -> Any {
         match *s {
-            GyroscopeLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
-            GyroscopeLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+            GyroscopeLocalCoordinateSystem::DEVICE => Any::from("device"),
+            GyroscopeLocalCoordinateSystem::SCREEN => Any::from("screen"),
         }
     }
 }
@@ -3076,33 +3068,33 @@ pub enum HandwritingRecognitionType {
     PER_CHARACTER,
 }
 impl FromVal for HandwritingRecognitionType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "text" => Self::TEXT,
             "per-character" => Self::PER_CHARACTER,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<HandwritingRecognitionType> for emlite::Val {
-    fn from(s: HandwritingRecognitionType) -> emlite::Val {
+impl From<HandwritingRecognitionType> for Any {
+    fn from(s: HandwritingRecognitionType) -> Any {
         match s {
-            HandwritingRecognitionType::TEXT => emlite::Val::from("text"),
-            HandwritingRecognitionType::PER_CHARACTER => emlite::Val::from("per-character"),
+            HandwritingRecognitionType::TEXT => Any::from("text"),
+            HandwritingRecognitionType::PER_CHARACTER => Any::from("per-character"),
         }
     }
 }
-impl From<&HandwritingRecognitionType> for emlite::Val {
-    fn from(s: &HandwritingRecognitionType) -> emlite::Val {
+impl From<&HandwritingRecognitionType> for Any {
+    fn from(s: &HandwritingRecognitionType) -> Any {
         match *s {
-            HandwritingRecognitionType::TEXT => emlite::Val::from("text"),
-            HandwritingRecognitionType::PER_CHARACTER => emlite::Val::from("per-character"),
+            HandwritingRecognitionType::TEXT => Any::from("text"),
+            HandwritingRecognitionType::PER_CHARACTER => Any::from("per-character"),
         }
     }
 }
@@ -3114,7 +3106,7 @@ pub enum HandwritingInputType {
     TOUCH,
 }
 impl FromVal for HandwritingInputType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "mouse" => Self::MOUSE,
             "stylus" => Self::STYLUS,
@@ -3122,28 +3114,28 @@ impl FromVal for HandwritingInputType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<HandwritingInputType> for emlite::Val {
-    fn from(s: HandwritingInputType) -> emlite::Val {
+impl From<HandwritingInputType> for Any {
+    fn from(s: HandwritingInputType) -> Any {
         match s {
-            HandwritingInputType::MOUSE => emlite::Val::from("mouse"),
-            HandwritingInputType::STYLUS => emlite::Val::from("stylus"),
-            HandwritingInputType::TOUCH => emlite::Val::from("touch"),
+            HandwritingInputType::MOUSE => Any::from("mouse"),
+            HandwritingInputType::STYLUS => Any::from("stylus"),
+            HandwritingInputType::TOUCH => Any::from("touch"),
         }
     }
 }
-impl From<&HandwritingInputType> for emlite::Val {
-    fn from(s: &HandwritingInputType) -> emlite::Val {
+impl From<&HandwritingInputType> for Any {
+    fn from(s: &HandwritingInputType) -> Any {
         match *s {
-            HandwritingInputType::MOUSE => emlite::Val::from("mouse"),
-            HandwritingInputType::STYLUS => emlite::Val::from("stylus"),
-            HandwritingInputType::TOUCH => emlite::Val::from("touch"),
+            HandwritingInputType::MOUSE => Any::from("mouse"),
+            HandwritingInputType::STYLUS => Any::from("stylus"),
+            HandwritingInputType::TOUCH => Any::from("touch"),
         }
     }
 }
@@ -3155,7 +3147,7 @@ pub enum DocumentReadyState {
     COMPLETE,
 }
 impl FromVal for DocumentReadyState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "loading" => Self::LOADING,
             "interactive" => Self::INTERACTIVE,
@@ -3163,28 +3155,28 @@ impl FromVal for DocumentReadyState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<DocumentReadyState> for emlite::Val {
-    fn from(s: DocumentReadyState) -> emlite::Val {
+impl From<DocumentReadyState> for Any {
+    fn from(s: DocumentReadyState) -> Any {
         match s {
-            DocumentReadyState::LOADING => emlite::Val::from("loading"),
-            DocumentReadyState::INTERACTIVE => emlite::Val::from("interactive"),
-            DocumentReadyState::COMPLETE => emlite::Val::from("complete"),
+            DocumentReadyState::LOADING => Any::from("loading"),
+            DocumentReadyState::INTERACTIVE => Any::from("interactive"),
+            DocumentReadyState::COMPLETE => Any::from("complete"),
         }
     }
 }
-impl From<&DocumentReadyState> for emlite::Val {
-    fn from(s: &DocumentReadyState) -> emlite::Val {
+impl From<&DocumentReadyState> for Any {
+    fn from(s: &DocumentReadyState) -> Any {
         match *s {
-            DocumentReadyState::LOADING => emlite::Val::from("loading"),
-            DocumentReadyState::INTERACTIVE => emlite::Val::from("interactive"),
-            DocumentReadyState::COMPLETE => emlite::Val::from("complete"),
+            DocumentReadyState::LOADING => Any::from("loading"),
+            DocumentReadyState::INTERACTIVE => Any::from("interactive"),
+            DocumentReadyState::COMPLETE => Any::from("complete"),
         }
     }
 }
@@ -3195,33 +3187,33 @@ pub enum DocumentVisibilityState {
     HIDDEN,
 }
 impl FromVal for DocumentVisibilityState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "visible" => Self::VISIBLE,
             "hidden" => Self::HIDDEN,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<DocumentVisibilityState> for emlite::Val {
-    fn from(s: DocumentVisibilityState) -> emlite::Val {
+impl From<DocumentVisibilityState> for Any {
+    fn from(s: DocumentVisibilityState) -> Any {
         match s {
-            DocumentVisibilityState::VISIBLE => emlite::Val::from("visible"),
-            DocumentVisibilityState::HIDDEN => emlite::Val::from("hidden"),
+            DocumentVisibilityState::VISIBLE => Any::from("visible"),
+            DocumentVisibilityState::HIDDEN => Any::from("hidden"),
         }
     }
 }
-impl From<&DocumentVisibilityState> for emlite::Val {
-    fn from(s: &DocumentVisibilityState) -> emlite::Val {
+impl From<&DocumentVisibilityState> for Any {
+    fn from(s: &DocumentVisibilityState) -> Any {
         match *s {
-            DocumentVisibilityState::VISIBLE => emlite::Val::from("visible"),
-            DocumentVisibilityState::HIDDEN => emlite::Val::from("hidden"),
+            DocumentVisibilityState::VISIBLE => Any::from("visible"),
+            DocumentVisibilityState::HIDDEN => Any::from("hidden"),
         }
     }
 }
@@ -3233,7 +3225,7 @@ pub enum CanPlayTypeResult {
     PROBABLY,
 }
 impl FromVal for CanPlayTypeResult {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "" => Self::NONE,
             "maybe" => Self::MAYBE,
@@ -3241,28 +3233,28 @@ impl FromVal for CanPlayTypeResult {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CanPlayTypeResult> for emlite::Val {
-    fn from(s: CanPlayTypeResult) -> emlite::Val {
+impl From<CanPlayTypeResult> for Any {
+    fn from(s: CanPlayTypeResult) -> Any {
         match s {
-            CanPlayTypeResult::NONE => emlite::Val::from(""),
-            CanPlayTypeResult::MAYBE => emlite::Val::from("maybe"),
-            CanPlayTypeResult::PROBABLY => emlite::Val::from("probably"),
+            CanPlayTypeResult::NONE => Any::from(""),
+            CanPlayTypeResult::MAYBE => Any::from("maybe"),
+            CanPlayTypeResult::PROBABLY => Any::from("probably"),
         }
     }
 }
-impl From<&CanPlayTypeResult> for emlite::Val {
-    fn from(s: &CanPlayTypeResult) -> emlite::Val {
+impl From<&CanPlayTypeResult> for Any {
+    fn from(s: &CanPlayTypeResult) -> Any {
         match *s {
-            CanPlayTypeResult::NONE => emlite::Val::from(""),
-            CanPlayTypeResult::MAYBE => emlite::Val::from("maybe"),
-            CanPlayTypeResult::PROBABLY => emlite::Val::from("probably"),
+            CanPlayTypeResult::NONE => Any::from(""),
+            CanPlayTypeResult::MAYBE => Any::from("maybe"),
+            CanPlayTypeResult::PROBABLY => Any::from("probably"),
         }
     }
 }
@@ -3274,7 +3266,7 @@ pub enum TextTrackMode {
     SHOWING,
 }
 impl FromVal for TextTrackMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "disabled" => Self::DISABLED,
             "hidden" => Self::HIDDEN,
@@ -3282,28 +3274,28 @@ impl FromVal for TextTrackMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<TextTrackMode> for emlite::Val {
-    fn from(s: TextTrackMode) -> emlite::Val {
+impl From<TextTrackMode> for Any {
+    fn from(s: TextTrackMode) -> Any {
         match s {
-            TextTrackMode::DISABLED => emlite::Val::from("disabled"),
-            TextTrackMode::HIDDEN => emlite::Val::from("hidden"),
-            TextTrackMode::SHOWING => emlite::Val::from("showing"),
+            TextTrackMode::DISABLED => Any::from("disabled"),
+            TextTrackMode::HIDDEN => Any::from("hidden"),
+            TextTrackMode::SHOWING => Any::from("showing"),
         }
     }
 }
-impl From<&TextTrackMode> for emlite::Val {
-    fn from(s: &TextTrackMode) -> emlite::Val {
+impl From<&TextTrackMode> for Any {
+    fn from(s: &TextTrackMode) -> Any {
         match *s {
-            TextTrackMode::DISABLED => emlite::Val::from("disabled"),
-            TextTrackMode::HIDDEN => emlite::Val::from("hidden"),
-            TextTrackMode::SHOWING => emlite::Val::from("showing"),
+            TextTrackMode::DISABLED => Any::from("disabled"),
+            TextTrackMode::HIDDEN => Any::from("hidden"),
+            TextTrackMode::SHOWING => Any::from("showing"),
         }
     }
 }
@@ -3317,7 +3309,7 @@ pub enum TextTrackKind {
     METADATA,
 }
 impl FromVal for TextTrackKind {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "subtitles" => Self::SUBTITLES,
             "captions" => Self::CAPTIONS,
@@ -3327,32 +3319,32 @@ impl FromVal for TextTrackKind {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<TextTrackKind> for emlite::Val {
-    fn from(s: TextTrackKind) -> emlite::Val {
+impl From<TextTrackKind> for Any {
+    fn from(s: TextTrackKind) -> Any {
         match s {
-            TextTrackKind::SUBTITLES => emlite::Val::from("subtitles"),
-            TextTrackKind::CAPTIONS => emlite::Val::from("captions"),
-            TextTrackKind::DESCRIPTIONS => emlite::Val::from("descriptions"),
-            TextTrackKind::CHAPTERS => emlite::Val::from("chapters"),
-            TextTrackKind::METADATA => emlite::Val::from("metadata"),
+            TextTrackKind::SUBTITLES => Any::from("subtitles"),
+            TextTrackKind::CAPTIONS => Any::from("captions"),
+            TextTrackKind::DESCRIPTIONS => Any::from("descriptions"),
+            TextTrackKind::CHAPTERS => Any::from("chapters"),
+            TextTrackKind::METADATA => Any::from("metadata"),
         }
     }
 }
-impl From<&TextTrackKind> for emlite::Val {
-    fn from(s: &TextTrackKind) -> emlite::Val {
+impl From<&TextTrackKind> for Any {
+    fn from(s: &TextTrackKind) -> Any {
         match *s {
-            TextTrackKind::SUBTITLES => emlite::Val::from("subtitles"),
-            TextTrackKind::CAPTIONS => emlite::Val::from("captions"),
-            TextTrackKind::DESCRIPTIONS => emlite::Val::from("descriptions"),
-            TextTrackKind::CHAPTERS => emlite::Val::from("chapters"),
-            TextTrackKind::METADATA => emlite::Val::from("metadata"),
+            TextTrackKind::SUBTITLES => Any::from("subtitles"),
+            TextTrackKind::CAPTIONS => Any::from("captions"),
+            TextTrackKind::DESCRIPTIONS => Any::from("descriptions"),
+            TextTrackKind::CHAPTERS => Any::from("chapters"),
+            TextTrackKind::METADATA => Any::from("metadata"),
         }
     }
 }
@@ -3365,7 +3357,7 @@ pub enum SelectionMode {
     PRESERVE,
 }
 impl FromVal for SelectionMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "select" => Self::SELECT,
             "start" => Self::START,
@@ -3374,30 +3366,30 @@ impl FromVal for SelectionMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SelectionMode> for emlite::Val {
-    fn from(s: SelectionMode) -> emlite::Val {
+impl From<SelectionMode> for Any {
+    fn from(s: SelectionMode) -> Any {
         match s {
-            SelectionMode::SELECT => emlite::Val::from("select"),
-            SelectionMode::START => emlite::Val::from("start"),
-            SelectionMode::END => emlite::Val::from("end"),
-            SelectionMode::PRESERVE => emlite::Val::from("preserve"),
+            SelectionMode::SELECT => Any::from("select"),
+            SelectionMode::START => Any::from("start"),
+            SelectionMode::END => Any::from("end"),
+            SelectionMode::PRESERVE => Any::from("preserve"),
         }
     }
 }
-impl From<&SelectionMode> for emlite::Val {
-    fn from(s: &SelectionMode) -> emlite::Val {
+impl From<&SelectionMode> for Any {
+    fn from(s: &SelectionMode) -> Any {
         match *s {
-            SelectionMode::SELECT => emlite::Val::from("select"),
-            SelectionMode::START => emlite::Val::from("start"),
-            SelectionMode::END => emlite::Val::from("end"),
-            SelectionMode::PRESERVE => emlite::Val::from("preserve"),
+            SelectionMode::SELECT => Any::from("select"),
+            SelectionMode::START => Any::from("start"),
+            SelectionMode::END => Any::from("end"),
+            SelectionMode::PRESERVE => Any::from("preserve"),
         }
     }
 }
@@ -3408,33 +3400,33 @@ pub enum PredefinedColorSpace {
     DISPLAY_P3,
 }
 impl FromVal for PredefinedColorSpace {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "srgb" => Self::SRGB,
             "display-p3" => Self::DISPLAY_P3,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PredefinedColorSpace> for emlite::Val {
-    fn from(s: PredefinedColorSpace) -> emlite::Val {
+impl From<PredefinedColorSpace> for Any {
+    fn from(s: PredefinedColorSpace) -> Any {
         match s {
-            PredefinedColorSpace::SRGB => emlite::Val::from("srgb"),
-            PredefinedColorSpace::DISPLAY_P3 => emlite::Val::from("display-p3"),
+            PredefinedColorSpace::SRGB => Any::from("srgb"),
+            PredefinedColorSpace::DISPLAY_P3 => Any::from("display-p3"),
         }
     }
 }
-impl From<&PredefinedColorSpace> for emlite::Val {
-    fn from(s: &PredefinedColorSpace) -> emlite::Val {
+impl From<&PredefinedColorSpace> for Any {
+    fn from(s: &PredefinedColorSpace) -> Any {
         match *s {
-            PredefinedColorSpace::SRGB => emlite::Val::from("srgb"),
-            PredefinedColorSpace::DISPLAY_P3 => emlite::Val::from("display-p3"),
+            PredefinedColorSpace::SRGB => Any::from("srgb"),
+            PredefinedColorSpace::DISPLAY_P3 => Any::from("display-p3"),
         }
     }
 }
@@ -3445,33 +3437,33 @@ pub enum CanvasColorType {
     FLOAT16,
 }
 impl FromVal for CanvasColorType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "unorm8" => Self::UNORM8,
             "float16" => Self::FLOAT16,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CanvasColorType> for emlite::Val {
-    fn from(s: CanvasColorType) -> emlite::Val {
+impl From<CanvasColorType> for Any {
+    fn from(s: CanvasColorType) -> Any {
         match s {
-            CanvasColorType::UNORM8 => emlite::Val::from("unorm8"),
-            CanvasColorType::FLOAT16 => emlite::Val::from("float16"),
+            CanvasColorType::UNORM8 => Any::from("unorm8"),
+            CanvasColorType::FLOAT16 => Any::from("float16"),
         }
     }
 }
-impl From<&CanvasColorType> for emlite::Val {
-    fn from(s: &CanvasColorType) -> emlite::Val {
+impl From<&CanvasColorType> for Any {
+    fn from(s: &CanvasColorType) -> Any {
         match *s {
-            CanvasColorType::UNORM8 => emlite::Val::from("unorm8"),
-            CanvasColorType::FLOAT16 => emlite::Val::from("float16"),
+            CanvasColorType::UNORM8 => Any::from("unorm8"),
+            CanvasColorType::FLOAT16 => Any::from("float16"),
         }
     }
 }
@@ -3482,33 +3474,33 @@ pub enum CanvasFillRule {
     EVENODD,
 }
 impl FromVal for CanvasFillRule {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "nonzero" => Self::NONZERO,
             "evenodd" => Self::EVENODD,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CanvasFillRule> for emlite::Val {
-    fn from(s: CanvasFillRule) -> emlite::Val {
+impl From<CanvasFillRule> for Any {
+    fn from(s: CanvasFillRule) -> Any {
         match s {
-            CanvasFillRule::NONZERO => emlite::Val::from("nonzero"),
-            CanvasFillRule::EVENODD => emlite::Val::from("evenodd"),
+            CanvasFillRule::NONZERO => Any::from("nonzero"),
+            CanvasFillRule::EVENODD => Any::from("evenodd"),
         }
     }
 }
-impl From<&CanvasFillRule> for emlite::Val {
-    fn from(s: &CanvasFillRule) -> emlite::Val {
+impl From<&CanvasFillRule> for Any {
+    fn from(s: &CanvasFillRule) -> Any {
         match *s {
-            CanvasFillRule::NONZERO => emlite::Val::from("nonzero"),
-            CanvasFillRule::EVENODD => emlite::Val::from("evenodd"),
+            CanvasFillRule::NONZERO => Any::from("nonzero"),
+            CanvasFillRule::EVENODD => Any::from("evenodd"),
         }
     }
 }
@@ -3520,7 +3512,7 @@ pub enum ImageSmoothingQuality {
     HIGH,
 }
 impl FromVal for ImageSmoothingQuality {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "low" => Self::LOW,
             "medium" => Self::MEDIUM,
@@ -3528,28 +3520,28 @@ impl FromVal for ImageSmoothingQuality {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ImageSmoothingQuality> for emlite::Val {
-    fn from(s: ImageSmoothingQuality) -> emlite::Val {
+impl From<ImageSmoothingQuality> for Any {
+    fn from(s: ImageSmoothingQuality) -> Any {
         match s {
-            ImageSmoothingQuality::LOW => emlite::Val::from("low"),
-            ImageSmoothingQuality::MEDIUM => emlite::Val::from("medium"),
-            ImageSmoothingQuality::HIGH => emlite::Val::from("high"),
+            ImageSmoothingQuality::LOW => Any::from("low"),
+            ImageSmoothingQuality::MEDIUM => Any::from("medium"),
+            ImageSmoothingQuality::HIGH => Any::from("high"),
         }
     }
 }
-impl From<&ImageSmoothingQuality> for emlite::Val {
-    fn from(s: &ImageSmoothingQuality) -> emlite::Val {
+impl From<&ImageSmoothingQuality> for Any {
+    fn from(s: &ImageSmoothingQuality) -> Any {
         match *s {
-            ImageSmoothingQuality::LOW => emlite::Val::from("low"),
-            ImageSmoothingQuality::MEDIUM => emlite::Val::from("medium"),
-            ImageSmoothingQuality::HIGH => emlite::Val::from("high"),
+            ImageSmoothingQuality::LOW => Any::from("low"),
+            ImageSmoothingQuality::MEDIUM => Any::from("medium"),
+            ImageSmoothingQuality::HIGH => Any::from("high"),
         }
     }
 }
@@ -3561,7 +3553,7 @@ pub enum CanvasLineCap {
     SQUARE,
 }
 impl FromVal for CanvasLineCap {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "butt" => Self::BUTT,
             "round" => Self::ROUND,
@@ -3569,28 +3561,28 @@ impl FromVal for CanvasLineCap {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CanvasLineCap> for emlite::Val {
-    fn from(s: CanvasLineCap) -> emlite::Val {
+impl From<CanvasLineCap> for Any {
+    fn from(s: CanvasLineCap) -> Any {
         match s {
-            CanvasLineCap::BUTT => emlite::Val::from("butt"),
-            CanvasLineCap::ROUND => emlite::Val::from("round"),
-            CanvasLineCap::SQUARE => emlite::Val::from("square"),
+            CanvasLineCap::BUTT => Any::from("butt"),
+            CanvasLineCap::ROUND => Any::from("round"),
+            CanvasLineCap::SQUARE => Any::from("square"),
         }
     }
 }
-impl From<&CanvasLineCap> for emlite::Val {
-    fn from(s: &CanvasLineCap) -> emlite::Val {
+impl From<&CanvasLineCap> for Any {
+    fn from(s: &CanvasLineCap) -> Any {
         match *s {
-            CanvasLineCap::BUTT => emlite::Val::from("butt"),
-            CanvasLineCap::ROUND => emlite::Val::from("round"),
-            CanvasLineCap::SQUARE => emlite::Val::from("square"),
+            CanvasLineCap::BUTT => Any::from("butt"),
+            CanvasLineCap::ROUND => Any::from("round"),
+            CanvasLineCap::SQUARE => Any::from("square"),
         }
     }
 }
@@ -3602,7 +3594,7 @@ pub enum CanvasLineJoin {
     MITER,
 }
 impl FromVal for CanvasLineJoin {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "round" => Self::ROUND,
             "bevel" => Self::BEVEL,
@@ -3610,28 +3602,28 @@ impl FromVal for CanvasLineJoin {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CanvasLineJoin> for emlite::Val {
-    fn from(s: CanvasLineJoin) -> emlite::Val {
+impl From<CanvasLineJoin> for Any {
+    fn from(s: CanvasLineJoin) -> Any {
         match s {
-            CanvasLineJoin::ROUND => emlite::Val::from("round"),
-            CanvasLineJoin::BEVEL => emlite::Val::from("bevel"),
-            CanvasLineJoin::MITER => emlite::Val::from("miter"),
+            CanvasLineJoin::ROUND => Any::from("round"),
+            CanvasLineJoin::BEVEL => Any::from("bevel"),
+            CanvasLineJoin::MITER => Any::from("miter"),
         }
     }
 }
-impl From<&CanvasLineJoin> for emlite::Val {
-    fn from(s: &CanvasLineJoin) -> emlite::Val {
+impl From<&CanvasLineJoin> for Any {
+    fn from(s: &CanvasLineJoin) -> Any {
         match *s {
-            CanvasLineJoin::ROUND => emlite::Val::from("round"),
-            CanvasLineJoin::BEVEL => emlite::Val::from("bevel"),
-            CanvasLineJoin::MITER => emlite::Val::from("miter"),
+            CanvasLineJoin::ROUND => Any::from("round"),
+            CanvasLineJoin::BEVEL => Any::from("bevel"),
+            CanvasLineJoin::MITER => Any::from("miter"),
         }
     }
 }
@@ -3645,7 +3637,7 @@ pub enum CanvasTextAlign {
     CENTER,
 }
 impl FromVal for CanvasTextAlign {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "start" => Self::START,
             "end" => Self::END,
@@ -3655,32 +3647,32 @@ impl FromVal for CanvasTextAlign {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CanvasTextAlign> for emlite::Val {
-    fn from(s: CanvasTextAlign) -> emlite::Val {
+impl From<CanvasTextAlign> for Any {
+    fn from(s: CanvasTextAlign) -> Any {
         match s {
-            CanvasTextAlign::START => emlite::Val::from("start"),
-            CanvasTextAlign::END => emlite::Val::from("end"),
-            CanvasTextAlign::LEFT => emlite::Val::from("left"),
-            CanvasTextAlign::RIGHT => emlite::Val::from("right"),
-            CanvasTextAlign::CENTER => emlite::Val::from("center"),
+            CanvasTextAlign::START => Any::from("start"),
+            CanvasTextAlign::END => Any::from("end"),
+            CanvasTextAlign::LEFT => Any::from("left"),
+            CanvasTextAlign::RIGHT => Any::from("right"),
+            CanvasTextAlign::CENTER => Any::from("center"),
         }
     }
 }
-impl From<&CanvasTextAlign> for emlite::Val {
-    fn from(s: &CanvasTextAlign) -> emlite::Val {
+impl From<&CanvasTextAlign> for Any {
+    fn from(s: &CanvasTextAlign) -> Any {
         match *s {
-            CanvasTextAlign::START => emlite::Val::from("start"),
-            CanvasTextAlign::END => emlite::Val::from("end"),
-            CanvasTextAlign::LEFT => emlite::Val::from("left"),
-            CanvasTextAlign::RIGHT => emlite::Val::from("right"),
-            CanvasTextAlign::CENTER => emlite::Val::from("center"),
+            CanvasTextAlign::START => Any::from("start"),
+            CanvasTextAlign::END => Any::from("end"),
+            CanvasTextAlign::LEFT => Any::from("left"),
+            CanvasTextAlign::RIGHT => Any::from("right"),
+            CanvasTextAlign::CENTER => Any::from("center"),
         }
     }
 }
@@ -3695,7 +3687,7 @@ pub enum CanvasTextBaseline {
     BOTTOM,
 }
 impl FromVal for CanvasTextBaseline {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "top" => Self::TOP,
             "hanging" => Self::HANGING,
@@ -3706,34 +3698,34 @@ impl FromVal for CanvasTextBaseline {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CanvasTextBaseline> for emlite::Val {
-    fn from(s: CanvasTextBaseline) -> emlite::Val {
+impl From<CanvasTextBaseline> for Any {
+    fn from(s: CanvasTextBaseline) -> Any {
         match s {
-            CanvasTextBaseline::TOP => emlite::Val::from("top"),
-            CanvasTextBaseline::HANGING => emlite::Val::from("hanging"),
-            CanvasTextBaseline::MIDDLE => emlite::Val::from("middle"),
-            CanvasTextBaseline::ALPHABETIC => emlite::Val::from("alphabetic"),
-            CanvasTextBaseline::IDEOGRAPHIC => emlite::Val::from("ideographic"),
-            CanvasTextBaseline::BOTTOM => emlite::Val::from("bottom"),
+            CanvasTextBaseline::TOP => Any::from("top"),
+            CanvasTextBaseline::HANGING => Any::from("hanging"),
+            CanvasTextBaseline::MIDDLE => Any::from("middle"),
+            CanvasTextBaseline::ALPHABETIC => Any::from("alphabetic"),
+            CanvasTextBaseline::IDEOGRAPHIC => Any::from("ideographic"),
+            CanvasTextBaseline::BOTTOM => Any::from("bottom"),
         }
     }
 }
-impl From<&CanvasTextBaseline> for emlite::Val {
-    fn from(s: &CanvasTextBaseline) -> emlite::Val {
+impl From<&CanvasTextBaseline> for Any {
+    fn from(s: &CanvasTextBaseline) -> Any {
         match *s {
-            CanvasTextBaseline::TOP => emlite::Val::from("top"),
-            CanvasTextBaseline::HANGING => emlite::Val::from("hanging"),
-            CanvasTextBaseline::MIDDLE => emlite::Val::from("middle"),
-            CanvasTextBaseline::ALPHABETIC => emlite::Val::from("alphabetic"),
-            CanvasTextBaseline::IDEOGRAPHIC => emlite::Val::from("ideographic"),
-            CanvasTextBaseline::BOTTOM => emlite::Val::from("bottom"),
+            CanvasTextBaseline::TOP => Any::from("top"),
+            CanvasTextBaseline::HANGING => Any::from("hanging"),
+            CanvasTextBaseline::MIDDLE => Any::from("middle"),
+            CanvasTextBaseline::ALPHABETIC => Any::from("alphabetic"),
+            CanvasTextBaseline::IDEOGRAPHIC => Any::from("ideographic"),
+            CanvasTextBaseline::BOTTOM => Any::from("bottom"),
         }
     }
 }
@@ -3745,7 +3737,7 @@ pub enum CanvasDirection {
     INHERIT,
 }
 impl FromVal for CanvasDirection {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "ltr" => Self::LTR,
             "rtl" => Self::RTL,
@@ -3753,28 +3745,28 @@ impl FromVal for CanvasDirection {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CanvasDirection> for emlite::Val {
-    fn from(s: CanvasDirection) -> emlite::Val {
+impl From<CanvasDirection> for Any {
+    fn from(s: CanvasDirection) -> Any {
         match s {
-            CanvasDirection::LTR => emlite::Val::from("ltr"),
-            CanvasDirection::RTL => emlite::Val::from("rtl"),
-            CanvasDirection::INHERIT => emlite::Val::from("inherit"),
+            CanvasDirection::LTR => Any::from("ltr"),
+            CanvasDirection::RTL => Any::from("rtl"),
+            CanvasDirection::INHERIT => Any::from("inherit"),
         }
     }
 }
-impl From<&CanvasDirection> for emlite::Val {
-    fn from(s: &CanvasDirection) -> emlite::Val {
+impl From<&CanvasDirection> for Any {
+    fn from(s: &CanvasDirection) -> Any {
         match *s {
-            CanvasDirection::LTR => emlite::Val::from("ltr"),
-            CanvasDirection::RTL => emlite::Val::from("rtl"),
-            CanvasDirection::INHERIT => emlite::Val::from("inherit"),
+            CanvasDirection::LTR => Any::from("ltr"),
+            CanvasDirection::RTL => Any::from("rtl"),
+            CanvasDirection::INHERIT => Any::from("inherit"),
         }
     }
 }
@@ -3786,7 +3778,7 @@ pub enum CanvasFontKerning {
     NONE,
 }
 impl FromVal for CanvasFontKerning {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "auto" => Self::AUTO,
             "normal" => Self::NORMAL,
@@ -3794,28 +3786,28 @@ impl FromVal for CanvasFontKerning {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CanvasFontKerning> for emlite::Val {
-    fn from(s: CanvasFontKerning) -> emlite::Val {
+impl From<CanvasFontKerning> for Any {
+    fn from(s: CanvasFontKerning) -> Any {
         match s {
-            CanvasFontKerning::AUTO => emlite::Val::from("auto"),
-            CanvasFontKerning::NORMAL => emlite::Val::from("normal"),
-            CanvasFontKerning::NONE => emlite::Val::from("none"),
+            CanvasFontKerning::AUTO => Any::from("auto"),
+            CanvasFontKerning::NORMAL => Any::from("normal"),
+            CanvasFontKerning::NONE => Any::from("none"),
         }
     }
 }
-impl From<&CanvasFontKerning> for emlite::Val {
-    fn from(s: &CanvasFontKerning) -> emlite::Val {
+impl From<&CanvasFontKerning> for Any {
+    fn from(s: &CanvasFontKerning) -> Any {
         match *s {
-            CanvasFontKerning::AUTO => emlite::Val::from("auto"),
-            CanvasFontKerning::NORMAL => emlite::Val::from("normal"),
-            CanvasFontKerning::NONE => emlite::Val::from("none"),
+            CanvasFontKerning::AUTO => Any::from("auto"),
+            CanvasFontKerning::NORMAL => Any::from("normal"),
+            CanvasFontKerning::NONE => Any::from("none"),
         }
     }
 }
@@ -3833,7 +3825,7 @@ pub enum CanvasFontStretch {
     ULTRA_EXPANDED,
 }
 impl FromVal for CanvasFontStretch {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "ultra-condensed" => Self::ULTRA_CONDENSED,
             "extra-condensed" => Self::EXTRA_CONDENSED,
@@ -3847,40 +3839,40 @@ impl FromVal for CanvasFontStretch {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CanvasFontStretch> for emlite::Val {
-    fn from(s: CanvasFontStretch) -> emlite::Val {
+impl From<CanvasFontStretch> for Any {
+    fn from(s: CanvasFontStretch) -> Any {
         match s {
-            CanvasFontStretch::ULTRA_CONDENSED => emlite::Val::from("ultra-condensed"),
-            CanvasFontStretch::EXTRA_CONDENSED => emlite::Val::from("extra-condensed"),
-            CanvasFontStretch::CONDENSED => emlite::Val::from("condensed"),
-            CanvasFontStretch::SEMI_CONDENSED => emlite::Val::from("semi-condensed"),
-            CanvasFontStretch::NORMAL => emlite::Val::from("normal"),
-            CanvasFontStretch::SEMI_EXPANDED => emlite::Val::from("semi-expanded"),
-            CanvasFontStretch::EXPANDED => emlite::Val::from("expanded"),
-            CanvasFontStretch::EXTRA_EXPANDED => emlite::Val::from("extra-expanded"),
-            CanvasFontStretch::ULTRA_EXPANDED => emlite::Val::from("ultra-expanded"),
+            CanvasFontStretch::ULTRA_CONDENSED => Any::from("ultra-condensed"),
+            CanvasFontStretch::EXTRA_CONDENSED => Any::from("extra-condensed"),
+            CanvasFontStretch::CONDENSED => Any::from("condensed"),
+            CanvasFontStretch::SEMI_CONDENSED => Any::from("semi-condensed"),
+            CanvasFontStretch::NORMAL => Any::from("normal"),
+            CanvasFontStretch::SEMI_EXPANDED => Any::from("semi-expanded"),
+            CanvasFontStretch::EXPANDED => Any::from("expanded"),
+            CanvasFontStretch::EXTRA_EXPANDED => Any::from("extra-expanded"),
+            CanvasFontStretch::ULTRA_EXPANDED => Any::from("ultra-expanded"),
         }
     }
 }
-impl From<&CanvasFontStretch> for emlite::Val {
-    fn from(s: &CanvasFontStretch) -> emlite::Val {
+impl From<&CanvasFontStretch> for Any {
+    fn from(s: &CanvasFontStretch) -> Any {
         match *s {
-            CanvasFontStretch::ULTRA_CONDENSED => emlite::Val::from("ultra-condensed"),
-            CanvasFontStretch::EXTRA_CONDENSED => emlite::Val::from("extra-condensed"),
-            CanvasFontStretch::CONDENSED => emlite::Val::from("condensed"),
-            CanvasFontStretch::SEMI_CONDENSED => emlite::Val::from("semi-condensed"),
-            CanvasFontStretch::NORMAL => emlite::Val::from("normal"),
-            CanvasFontStretch::SEMI_EXPANDED => emlite::Val::from("semi-expanded"),
-            CanvasFontStretch::EXPANDED => emlite::Val::from("expanded"),
-            CanvasFontStretch::EXTRA_EXPANDED => emlite::Val::from("extra-expanded"),
-            CanvasFontStretch::ULTRA_EXPANDED => emlite::Val::from("ultra-expanded"),
+            CanvasFontStretch::ULTRA_CONDENSED => Any::from("ultra-condensed"),
+            CanvasFontStretch::EXTRA_CONDENSED => Any::from("extra-condensed"),
+            CanvasFontStretch::CONDENSED => Any::from("condensed"),
+            CanvasFontStretch::SEMI_CONDENSED => Any::from("semi-condensed"),
+            CanvasFontStretch::NORMAL => Any::from("normal"),
+            CanvasFontStretch::SEMI_EXPANDED => Any::from("semi-expanded"),
+            CanvasFontStretch::EXPANDED => Any::from("expanded"),
+            CanvasFontStretch::EXTRA_EXPANDED => Any::from("extra-expanded"),
+            CanvasFontStretch::ULTRA_EXPANDED => Any::from("ultra-expanded"),
         }
     }
 }
@@ -3896,7 +3888,7 @@ pub enum CanvasFontVariantCaps {
     TITLING_CAPS,
 }
 impl FromVal for CanvasFontVariantCaps {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "normal" => Self::NORMAL,
             "small-caps" => Self::SMALL_CAPS,
@@ -3908,36 +3900,36 @@ impl FromVal for CanvasFontVariantCaps {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CanvasFontVariantCaps> for emlite::Val {
-    fn from(s: CanvasFontVariantCaps) -> emlite::Val {
+impl From<CanvasFontVariantCaps> for Any {
+    fn from(s: CanvasFontVariantCaps) -> Any {
         match s {
-            CanvasFontVariantCaps::NORMAL => emlite::Val::from("normal"),
-            CanvasFontVariantCaps::SMALL_CAPS => emlite::Val::from("small-caps"),
-            CanvasFontVariantCaps::ALL_SMALL_CAPS => emlite::Val::from("all-small-caps"),
-            CanvasFontVariantCaps::PETITE_CAPS => emlite::Val::from("petite-caps"),
-            CanvasFontVariantCaps::ALL_PETITE_CAPS => emlite::Val::from("all-petite-caps"),
-            CanvasFontVariantCaps::UNICASE => emlite::Val::from("unicase"),
-            CanvasFontVariantCaps::TITLING_CAPS => emlite::Val::from("titling-caps"),
+            CanvasFontVariantCaps::NORMAL => Any::from("normal"),
+            CanvasFontVariantCaps::SMALL_CAPS => Any::from("small-caps"),
+            CanvasFontVariantCaps::ALL_SMALL_CAPS => Any::from("all-small-caps"),
+            CanvasFontVariantCaps::PETITE_CAPS => Any::from("petite-caps"),
+            CanvasFontVariantCaps::ALL_PETITE_CAPS => Any::from("all-petite-caps"),
+            CanvasFontVariantCaps::UNICASE => Any::from("unicase"),
+            CanvasFontVariantCaps::TITLING_CAPS => Any::from("titling-caps"),
         }
     }
 }
-impl From<&CanvasFontVariantCaps> for emlite::Val {
-    fn from(s: &CanvasFontVariantCaps) -> emlite::Val {
+impl From<&CanvasFontVariantCaps> for Any {
+    fn from(s: &CanvasFontVariantCaps) -> Any {
         match *s {
-            CanvasFontVariantCaps::NORMAL => emlite::Val::from("normal"),
-            CanvasFontVariantCaps::SMALL_CAPS => emlite::Val::from("small-caps"),
-            CanvasFontVariantCaps::ALL_SMALL_CAPS => emlite::Val::from("all-small-caps"),
-            CanvasFontVariantCaps::PETITE_CAPS => emlite::Val::from("petite-caps"),
-            CanvasFontVariantCaps::ALL_PETITE_CAPS => emlite::Val::from("all-petite-caps"),
-            CanvasFontVariantCaps::UNICASE => emlite::Val::from("unicase"),
-            CanvasFontVariantCaps::TITLING_CAPS => emlite::Val::from("titling-caps"),
+            CanvasFontVariantCaps::NORMAL => Any::from("normal"),
+            CanvasFontVariantCaps::SMALL_CAPS => Any::from("small-caps"),
+            CanvasFontVariantCaps::ALL_SMALL_CAPS => Any::from("all-small-caps"),
+            CanvasFontVariantCaps::PETITE_CAPS => Any::from("petite-caps"),
+            CanvasFontVariantCaps::ALL_PETITE_CAPS => Any::from("all-petite-caps"),
+            CanvasFontVariantCaps::UNICASE => Any::from("unicase"),
+            CanvasFontVariantCaps::TITLING_CAPS => Any::from("titling-caps"),
         }
     }
 }
@@ -3950,7 +3942,7 @@ pub enum CanvasTextRendering {
     GEOMETRIC_PRECISION,
 }
 impl FromVal for CanvasTextRendering {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "auto" => Self::AUTO,
             "optimizeSpeed" => Self::OPTIMIZE_SPEED,
@@ -3959,30 +3951,30 @@ impl FromVal for CanvasTextRendering {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CanvasTextRendering> for emlite::Val {
-    fn from(s: CanvasTextRendering) -> emlite::Val {
+impl From<CanvasTextRendering> for Any {
+    fn from(s: CanvasTextRendering) -> Any {
         match s {
-            CanvasTextRendering::AUTO => emlite::Val::from("auto"),
-            CanvasTextRendering::OPTIMIZE_SPEED => emlite::Val::from("optimizeSpeed"),
-            CanvasTextRendering::OPTIMIZE_LEGIBILITY => emlite::Val::from("optimizeLegibility"),
-            CanvasTextRendering::GEOMETRIC_PRECISION => emlite::Val::from("geometricPrecision"),
+            CanvasTextRendering::AUTO => Any::from("auto"),
+            CanvasTextRendering::OPTIMIZE_SPEED => Any::from("optimizeSpeed"),
+            CanvasTextRendering::OPTIMIZE_LEGIBILITY => Any::from("optimizeLegibility"),
+            CanvasTextRendering::GEOMETRIC_PRECISION => Any::from("geometricPrecision"),
         }
     }
 }
-impl From<&CanvasTextRendering> for emlite::Val {
-    fn from(s: &CanvasTextRendering) -> emlite::Val {
+impl From<&CanvasTextRendering> for Any {
+    fn from(s: &CanvasTextRendering) -> Any {
         match *s {
-            CanvasTextRendering::AUTO => emlite::Val::from("auto"),
-            CanvasTextRendering::OPTIMIZE_SPEED => emlite::Val::from("optimizeSpeed"),
-            CanvasTextRendering::OPTIMIZE_LEGIBILITY => emlite::Val::from("optimizeLegibility"),
-            CanvasTextRendering::GEOMETRIC_PRECISION => emlite::Val::from("geometricPrecision"),
+            CanvasTextRendering::AUTO => Any::from("auto"),
+            CanvasTextRendering::OPTIMIZE_SPEED => Any::from("optimizeSpeed"),
+            CanvasTextRendering::OPTIMIZE_LEGIBILITY => Any::from("optimizeLegibility"),
+            CanvasTextRendering::GEOMETRIC_PRECISION => Any::from("geometricPrecision"),
         }
     }
 }
@@ -3996,7 +3988,7 @@ pub enum OffscreenRenderingContextId {
     WEBGPU,
 }
 impl FromVal for OffscreenRenderingContextId {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "2d" => Self::_2D,
             "bitmaprenderer" => Self::BITMAPRENDERER,
@@ -4006,32 +3998,32 @@ impl FromVal for OffscreenRenderingContextId {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<OffscreenRenderingContextId> for emlite::Val {
-    fn from(s: OffscreenRenderingContextId) -> emlite::Val {
+impl From<OffscreenRenderingContextId> for Any {
+    fn from(s: OffscreenRenderingContextId) -> Any {
         match s {
-            OffscreenRenderingContextId::_2D => emlite::Val::from("2d"),
-            OffscreenRenderingContextId::BITMAPRENDERER => emlite::Val::from("bitmaprenderer"),
-            OffscreenRenderingContextId::WEBGL => emlite::Val::from("webgl"),
-            OffscreenRenderingContextId::WEBGL2 => emlite::Val::from("webgl2"),
-            OffscreenRenderingContextId::WEBGPU => emlite::Val::from("webgpu"),
+            OffscreenRenderingContextId::_2D => Any::from("2d"),
+            OffscreenRenderingContextId::BITMAPRENDERER => Any::from("bitmaprenderer"),
+            OffscreenRenderingContextId::WEBGL => Any::from("webgl"),
+            OffscreenRenderingContextId::WEBGL2 => Any::from("webgl2"),
+            OffscreenRenderingContextId::WEBGPU => Any::from("webgpu"),
         }
     }
 }
-impl From<&OffscreenRenderingContextId> for emlite::Val {
-    fn from(s: &OffscreenRenderingContextId) -> emlite::Val {
+impl From<&OffscreenRenderingContextId> for Any {
+    fn from(s: &OffscreenRenderingContextId) -> Any {
         match *s {
-            OffscreenRenderingContextId::_2D => emlite::Val::from("2d"),
-            OffscreenRenderingContextId::BITMAPRENDERER => emlite::Val::from("bitmaprenderer"),
-            OffscreenRenderingContextId::WEBGL => emlite::Val::from("webgl"),
-            OffscreenRenderingContextId::WEBGL2 => emlite::Val::from("webgl2"),
-            OffscreenRenderingContextId::WEBGPU => emlite::Val::from("webgpu"),
+            OffscreenRenderingContextId::_2D => Any::from("2d"),
+            OffscreenRenderingContextId::BITMAPRENDERER => Any::from("bitmaprenderer"),
+            OffscreenRenderingContextId::WEBGL => Any::from("webgl"),
+            OffscreenRenderingContextId::WEBGL2 => Any::from("webgl2"),
+            OffscreenRenderingContextId::WEBGPU => Any::from("webgpu"),
         }
     }
 }
@@ -4042,33 +4034,33 @@ pub enum ScrollRestoration {
     MANUAL,
 }
 impl FromVal for ScrollRestoration {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "auto" => Self::AUTO,
             "manual" => Self::MANUAL,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ScrollRestoration> for emlite::Val {
-    fn from(s: ScrollRestoration) -> emlite::Val {
+impl From<ScrollRestoration> for Any {
+    fn from(s: ScrollRestoration) -> Any {
         match s {
-            ScrollRestoration::AUTO => emlite::Val::from("auto"),
-            ScrollRestoration::MANUAL => emlite::Val::from("manual"),
+            ScrollRestoration::AUTO => Any::from("auto"),
+            ScrollRestoration::MANUAL => Any::from("manual"),
         }
     }
 }
-impl From<&ScrollRestoration> for emlite::Val {
-    fn from(s: &ScrollRestoration) -> emlite::Val {
+impl From<&ScrollRestoration> for Any {
+    fn from(s: &ScrollRestoration) -> Any {
         match *s {
-            ScrollRestoration::AUTO => emlite::Val::from("auto"),
-            ScrollRestoration::MANUAL => emlite::Val::from("manual"),
+            ScrollRestoration::AUTO => Any::from("auto"),
+            ScrollRestoration::MANUAL => Any::from("manual"),
         }
     }
 }
@@ -4080,7 +4072,7 @@ pub enum NavigationHistoryBehavior {
     REPLACE,
 }
 impl FromVal for NavigationHistoryBehavior {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "auto" => Self::AUTO,
             "push" => Self::PUSH,
@@ -4088,28 +4080,28 @@ impl FromVal for NavigationHistoryBehavior {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<NavigationHistoryBehavior> for emlite::Val {
-    fn from(s: NavigationHistoryBehavior) -> emlite::Val {
+impl From<NavigationHistoryBehavior> for Any {
+    fn from(s: NavigationHistoryBehavior) -> Any {
         match s {
-            NavigationHistoryBehavior::AUTO => emlite::Val::from("auto"),
-            NavigationHistoryBehavior::PUSH => emlite::Val::from("push"),
-            NavigationHistoryBehavior::REPLACE => emlite::Val::from("replace"),
+            NavigationHistoryBehavior::AUTO => Any::from("auto"),
+            NavigationHistoryBehavior::PUSH => Any::from("push"),
+            NavigationHistoryBehavior::REPLACE => Any::from("replace"),
         }
     }
 }
-impl From<&NavigationHistoryBehavior> for emlite::Val {
-    fn from(s: &NavigationHistoryBehavior) -> emlite::Val {
+impl From<&NavigationHistoryBehavior> for Any {
+    fn from(s: &NavigationHistoryBehavior) -> Any {
         match *s {
-            NavigationHistoryBehavior::AUTO => emlite::Val::from("auto"),
-            NavigationHistoryBehavior::PUSH => emlite::Val::from("push"),
-            NavigationHistoryBehavior::REPLACE => emlite::Val::from("replace"),
+            NavigationHistoryBehavior::AUTO => Any::from("auto"),
+            NavigationHistoryBehavior::PUSH => Any::from("push"),
+            NavigationHistoryBehavior::REPLACE => Any::from("replace"),
         }
     }
 }
@@ -4122,7 +4114,7 @@ pub enum NavigationType {
     TRAVERSE,
 }
 impl FromVal for NavigationType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "push" => Self::PUSH,
             "replace" => Self::REPLACE,
@@ -4131,30 +4123,30 @@ impl FromVal for NavigationType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<NavigationType> for emlite::Val {
-    fn from(s: NavigationType) -> emlite::Val {
+impl From<NavigationType> for Any {
+    fn from(s: NavigationType) -> Any {
         match s {
-            NavigationType::PUSH => emlite::Val::from("push"),
-            NavigationType::REPLACE => emlite::Val::from("replace"),
-            NavigationType::RELOAD => emlite::Val::from("reload"),
-            NavigationType::TRAVERSE => emlite::Val::from("traverse"),
+            NavigationType::PUSH => Any::from("push"),
+            NavigationType::REPLACE => Any::from("replace"),
+            NavigationType::RELOAD => Any::from("reload"),
+            NavigationType::TRAVERSE => Any::from("traverse"),
         }
     }
 }
-impl From<&NavigationType> for emlite::Val {
-    fn from(s: &NavigationType) -> emlite::Val {
+impl From<&NavigationType> for Any {
+    fn from(s: &NavigationType) -> Any {
         match *s {
-            NavigationType::PUSH => emlite::Val::from("push"),
-            NavigationType::REPLACE => emlite::Val::from("replace"),
-            NavigationType::RELOAD => emlite::Val::from("reload"),
-            NavigationType::TRAVERSE => emlite::Val::from("traverse"),
+            NavigationType::PUSH => Any::from("push"),
+            NavigationType::REPLACE => Any::from("replace"),
+            NavigationType::RELOAD => Any::from("reload"),
+            NavigationType::TRAVERSE => Any::from("traverse"),
         }
     }
 }
@@ -4165,33 +4157,33 @@ pub enum NavigationFocusReset {
     MANUAL,
 }
 impl FromVal for NavigationFocusReset {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "after-transition" => Self::AFTER_TRANSITION,
             "manual" => Self::MANUAL,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<NavigationFocusReset> for emlite::Val {
-    fn from(s: NavigationFocusReset) -> emlite::Val {
+impl From<NavigationFocusReset> for Any {
+    fn from(s: NavigationFocusReset) -> Any {
         match s {
-            NavigationFocusReset::AFTER_TRANSITION => emlite::Val::from("after-transition"),
-            NavigationFocusReset::MANUAL => emlite::Val::from("manual"),
+            NavigationFocusReset::AFTER_TRANSITION => Any::from("after-transition"),
+            NavigationFocusReset::MANUAL => Any::from("manual"),
         }
     }
 }
-impl From<&NavigationFocusReset> for emlite::Val {
-    fn from(s: &NavigationFocusReset) -> emlite::Val {
+impl From<&NavigationFocusReset> for Any {
+    fn from(s: &NavigationFocusReset) -> Any {
         match *s {
-            NavigationFocusReset::AFTER_TRANSITION => emlite::Val::from("after-transition"),
-            NavigationFocusReset::MANUAL => emlite::Val::from("manual"),
+            NavigationFocusReset::AFTER_TRANSITION => Any::from("after-transition"),
+            NavigationFocusReset::MANUAL => Any::from("manual"),
         }
     }
 }
@@ -4202,33 +4194,33 @@ pub enum NavigationScrollBehavior {
     MANUAL,
 }
 impl FromVal for NavigationScrollBehavior {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "after-transition" => Self::AFTER_TRANSITION,
             "manual" => Self::MANUAL,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<NavigationScrollBehavior> for emlite::Val {
-    fn from(s: NavigationScrollBehavior) -> emlite::Val {
+impl From<NavigationScrollBehavior> for Any {
+    fn from(s: NavigationScrollBehavior) -> Any {
         match s {
-            NavigationScrollBehavior::AFTER_TRANSITION => emlite::Val::from("after-transition"),
-            NavigationScrollBehavior::MANUAL => emlite::Val::from("manual"),
+            NavigationScrollBehavior::AFTER_TRANSITION => Any::from("after-transition"),
+            NavigationScrollBehavior::MANUAL => Any::from("manual"),
         }
     }
 }
-impl From<&NavigationScrollBehavior> for emlite::Val {
-    fn from(s: &NavigationScrollBehavior) -> emlite::Val {
+impl From<&NavigationScrollBehavior> for Any {
+    fn from(s: &NavigationScrollBehavior) -> Any {
         match *s {
-            NavigationScrollBehavior::AFTER_TRANSITION => emlite::Val::from("after-transition"),
-            NavigationScrollBehavior::MANUAL => emlite::Val::from("manual"),
+            NavigationScrollBehavior::AFTER_TRANSITION => Any::from("after-transition"),
+            NavigationScrollBehavior::MANUAL => Any::from("manual"),
         }
     }
 }
@@ -4242,7 +4234,7 @@ pub enum DOMParserSupportedType {
     IMAGE_SVG_XML,
 }
 impl FromVal for DOMParserSupportedType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "text/html" => Self::TEXT_HTML,
             "text/xml" => Self::TEXT_XML,
@@ -4252,36 +4244,32 @@ impl FromVal for DOMParserSupportedType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<DOMParserSupportedType> for emlite::Val {
-    fn from(s: DOMParserSupportedType) -> emlite::Val {
+impl From<DOMParserSupportedType> for Any {
+    fn from(s: DOMParserSupportedType) -> Any {
         match s {
-            DOMParserSupportedType::TEXT_HTML => emlite::Val::from("text/html"),
-            DOMParserSupportedType::TEXT_XML => emlite::Val::from("text/xml"),
-            DOMParserSupportedType::APPLICATION_XML => emlite::Val::from("application/xml"),
-            DOMParserSupportedType::APPLICATION_XHTML_XML => {
-                emlite::Val::from("application/xhtml+xml")
-            }
-            DOMParserSupportedType::IMAGE_SVG_XML => emlite::Val::from("image/svg+xml"),
+            DOMParserSupportedType::TEXT_HTML => Any::from("text/html"),
+            DOMParserSupportedType::TEXT_XML => Any::from("text/xml"),
+            DOMParserSupportedType::APPLICATION_XML => Any::from("application/xml"),
+            DOMParserSupportedType::APPLICATION_XHTML_XML => Any::from("application/xhtml+xml"),
+            DOMParserSupportedType::IMAGE_SVG_XML => Any::from("image/svg+xml"),
         }
     }
 }
-impl From<&DOMParserSupportedType> for emlite::Val {
-    fn from(s: &DOMParserSupportedType) -> emlite::Val {
+impl From<&DOMParserSupportedType> for Any {
+    fn from(s: &DOMParserSupportedType) -> Any {
         match *s {
-            DOMParserSupportedType::TEXT_HTML => emlite::Val::from("text/html"),
-            DOMParserSupportedType::TEXT_XML => emlite::Val::from("text/xml"),
-            DOMParserSupportedType::APPLICATION_XML => emlite::Val::from("application/xml"),
-            DOMParserSupportedType::APPLICATION_XHTML_XML => {
-                emlite::Val::from("application/xhtml+xml")
-            }
-            DOMParserSupportedType::IMAGE_SVG_XML => emlite::Val::from("image/svg+xml"),
+            DOMParserSupportedType::TEXT_HTML => Any::from("text/html"),
+            DOMParserSupportedType::TEXT_XML => Any::from("text/xml"),
+            DOMParserSupportedType::APPLICATION_XML => Any::from("application/xml"),
+            DOMParserSupportedType::APPLICATION_XHTML_XML => Any::from("application/xhtml+xml"),
+            DOMParserSupportedType::IMAGE_SVG_XML => Any::from("image/svg+xml"),
         }
     }
 }
@@ -4292,33 +4280,33 @@ pub enum ImageDataPixelFormat {
     RGBA_FLOAT16,
 }
 impl FromVal for ImageDataPixelFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "rgba-unorm8" => Self::RGBA_UNORM8,
             "rgba-float16" => Self::RGBA_FLOAT16,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ImageDataPixelFormat> for emlite::Val {
-    fn from(s: ImageDataPixelFormat) -> emlite::Val {
+impl From<ImageDataPixelFormat> for Any {
+    fn from(s: ImageDataPixelFormat) -> Any {
         match s {
-            ImageDataPixelFormat::RGBA_UNORM8 => emlite::Val::from("rgba-unorm8"),
-            ImageDataPixelFormat::RGBA_FLOAT16 => emlite::Val::from("rgba-float16"),
+            ImageDataPixelFormat::RGBA_UNORM8 => Any::from("rgba-unorm8"),
+            ImageDataPixelFormat::RGBA_FLOAT16 => Any::from("rgba-float16"),
         }
     }
 }
-impl From<&ImageDataPixelFormat> for emlite::Val {
-    fn from(s: &ImageDataPixelFormat) -> emlite::Val {
+impl From<&ImageDataPixelFormat> for Any {
+    fn from(s: &ImageDataPixelFormat) -> Any {
         match *s {
-            ImageDataPixelFormat::RGBA_UNORM8 => emlite::Val::from("rgba-unorm8"),
-            ImageDataPixelFormat::RGBA_FLOAT16 => emlite::Val::from("rgba-float16"),
+            ImageDataPixelFormat::RGBA_UNORM8 => Any::from("rgba-unorm8"),
+            ImageDataPixelFormat::RGBA_FLOAT16 => Any::from("rgba-float16"),
         }
     }
 }
@@ -4329,33 +4317,33 @@ pub enum ImageOrientation {
     FLIP_Y,
 }
 impl FromVal for ImageOrientation {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "from-image" => Self::FROM_IMAGE,
             "flipY" => Self::FLIP_Y,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ImageOrientation> for emlite::Val {
-    fn from(s: ImageOrientation) -> emlite::Val {
+impl From<ImageOrientation> for Any {
+    fn from(s: ImageOrientation) -> Any {
         match s {
-            ImageOrientation::FROM_IMAGE => emlite::Val::from("from-image"),
-            ImageOrientation::FLIP_Y => emlite::Val::from("flipY"),
+            ImageOrientation::FROM_IMAGE => Any::from("from-image"),
+            ImageOrientation::FLIP_Y => Any::from("flipY"),
         }
     }
 }
-impl From<&ImageOrientation> for emlite::Val {
-    fn from(s: &ImageOrientation) -> emlite::Val {
+impl From<&ImageOrientation> for Any {
+    fn from(s: &ImageOrientation) -> Any {
         match *s {
-            ImageOrientation::FROM_IMAGE => emlite::Val::from("from-image"),
-            ImageOrientation::FLIP_Y => emlite::Val::from("flipY"),
+            ImageOrientation::FROM_IMAGE => Any::from("from-image"),
+            ImageOrientation::FLIP_Y => Any::from("flipY"),
         }
     }
 }
@@ -4367,7 +4355,7 @@ pub enum PremultiplyAlpha {
     DEFAULT,
 }
 impl FromVal for PremultiplyAlpha {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "premultiply" => Self::PREMULTIPLY,
@@ -4375,28 +4363,28 @@ impl FromVal for PremultiplyAlpha {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PremultiplyAlpha> for emlite::Val {
-    fn from(s: PremultiplyAlpha) -> emlite::Val {
+impl From<PremultiplyAlpha> for Any {
+    fn from(s: PremultiplyAlpha) -> Any {
         match s {
-            PremultiplyAlpha::NONE => emlite::Val::from("none"),
-            PremultiplyAlpha::PREMULTIPLY => emlite::Val::from("premultiply"),
-            PremultiplyAlpha::DEFAULT => emlite::Val::from("default"),
+            PremultiplyAlpha::NONE => Any::from("none"),
+            PremultiplyAlpha::PREMULTIPLY => Any::from("premultiply"),
+            PremultiplyAlpha::DEFAULT => Any::from("default"),
         }
     }
 }
-impl From<&PremultiplyAlpha> for emlite::Val {
-    fn from(s: &PremultiplyAlpha) -> emlite::Val {
+impl From<&PremultiplyAlpha> for Any {
+    fn from(s: &PremultiplyAlpha) -> Any {
         match *s {
-            PremultiplyAlpha::NONE => emlite::Val::from("none"),
-            PremultiplyAlpha::PREMULTIPLY => emlite::Val::from("premultiply"),
-            PremultiplyAlpha::DEFAULT => emlite::Val::from("default"),
+            PremultiplyAlpha::NONE => Any::from("none"),
+            PremultiplyAlpha::PREMULTIPLY => Any::from("premultiply"),
+            PremultiplyAlpha::DEFAULT => Any::from("default"),
         }
     }
 }
@@ -4407,33 +4395,33 @@ pub enum ColorSpaceConversion {
     DEFAULT,
 }
 impl FromVal for ColorSpaceConversion {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "default" => Self::DEFAULT,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ColorSpaceConversion> for emlite::Val {
-    fn from(s: ColorSpaceConversion) -> emlite::Val {
+impl From<ColorSpaceConversion> for Any {
+    fn from(s: ColorSpaceConversion) -> Any {
         match s {
-            ColorSpaceConversion::NONE => emlite::Val::from("none"),
-            ColorSpaceConversion::DEFAULT => emlite::Val::from("default"),
+            ColorSpaceConversion::NONE => Any::from("none"),
+            ColorSpaceConversion::DEFAULT => Any::from("default"),
         }
     }
 }
-impl From<&ColorSpaceConversion> for emlite::Val {
-    fn from(s: &ColorSpaceConversion) -> emlite::Val {
+impl From<&ColorSpaceConversion> for Any {
+    fn from(s: &ColorSpaceConversion) -> Any {
         match *s {
-            ColorSpaceConversion::NONE => emlite::Val::from("none"),
-            ColorSpaceConversion::DEFAULT => emlite::Val::from("default"),
+            ColorSpaceConversion::NONE => Any::from("none"),
+            ColorSpaceConversion::DEFAULT => Any::from("default"),
         }
     }
 }
@@ -4446,7 +4434,7 @@ pub enum ResizeQuality {
     HIGH,
 }
 impl FromVal for ResizeQuality {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "pixelated" => Self::PIXELATED,
             "low" => Self::LOW,
@@ -4455,30 +4443,30 @@ impl FromVal for ResizeQuality {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ResizeQuality> for emlite::Val {
-    fn from(s: ResizeQuality) -> emlite::Val {
+impl From<ResizeQuality> for Any {
+    fn from(s: ResizeQuality) -> Any {
         match s {
-            ResizeQuality::PIXELATED => emlite::Val::from("pixelated"),
-            ResizeQuality::LOW => emlite::Val::from("low"),
-            ResizeQuality::MEDIUM => emlite::Val::from("medium"),
-            ResizeQuality::HIGH => emlite::Val::from("high"),
+            ResizeQuality::PIXELATED => Any::from("pixelated"),
+            ResizeQuality::LOW => Any::from("low"),
+            ResizeQuality::MEDIUM => Any::from("medium"),
+            ResizeQuality::HIGH => Any::from("high"),
         }
     }
 }
-impl From<&ResizeQuality> for emlite::Val {
-    fn from(s: &ResizeQuality) -> emlite::Val {
+impl From<&ResizeQuality> for Any {
+    fn from(s: &ResizeQuality) -> Any {
         match *s {
-            ResizeQuality::PIXELATED => emlite::Val::from("pixelated"),
-            ResizeQuality::LOW => emlite::Val::from("low"),
-            ResizeQuality::MEDIUM => emlite::Val::from("medium"),
-            ResizeQuality::HIGH => emlite::Val::from("high"),
+            ResizeQuality::PIXELATED => Any::from("pixelated"),
+            ResizeQuality::LOW => Any::from("low"),
+            ResizeQuality::MEDIUM => Any::from("medium"),
+            ResizeQuality::HIGH => Any::from("high"),
         }
     }
 }
@@ -4489,33 +4477,33 @@ pub enum WorkerType {
     MODULE,
 }
 impl FromVal for WorkerType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "classic" => Self::CLASSIC,
             "module" => Self::MODULE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<WorkerType> for emlite::Val {
-    fn from(s: WorkerType) -> emlite::Val {
+impl From<WorkerType> for Any {
+    fn from(s: WorkerType) -> Any {
         match s {
-            WorkerType::CLASSIC => emlite::Val::from("classic"),
-            WorkerType::MODULE => emlite::Val::from("module"),
+            WorkerType::CLASSIC => Any::from("classic"),
+            WorkerType::MODULE => Any::from("module"),
         }
     }
 }
-impl From<&WorkerType> for emlite::Val {
-    fn from(s: &WorkerType) -> emlite::Val {
+impl From<&WorkerType> for Any {
+    fn from(s: &WorkerType) -> Any {
         match *s {
-            WorkerType::CLASSIC => emlite::Val::from("classic"),
-            WorkerType::MODULE => emlite::Val::from("module"),
+            WorkerType::CLASSIC => Any::from("classic"),
+            WorkerType::MODULE => Any::from("module"),
         }
     }
 }
@@ -4526,33 +4514,33 @@ pub enum UserIdleState {
     IDLE,
 }
 impl FromVal for UserIdleState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "active" => Self::ACTIVE,
             "idle" => Self::IDLE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<UserIdleState> for emlite::Val {
-    fn from(s: UserIdleState) -> emlite::Val {
+impl From<UserIdleState> for Any {
+    fn from(s: UserIdleState) -> Any {
         match s {
-            UserIdleState::ACTIVE => emlite::Val::from("active"),
-            UserIdleState::IDLE => emlite::Val::from("idle"),
+            UserIdleState::ACTIVE => Any::from("active"),
+            UserIdleState::IDLE => Any::from("idle"),
         }
     }
 }
-impl From<&UserIdleState> for emlite::Val {
-    fn from(s: &UserIdleState) -> emlite::Val {
+impl From<&UserIdleState> for Any {
+    fn from(s: &UserIdleState) -> Any {
         match *s {
-            UserIdleState::ACTIVE => emlite::Val::from("active"),
-            UserIdleState::IDLE => emlite::Val::from("idle"),
+            UserIdleState::ACTIVE => Any::from("active"),
+            UserIdleState::IDLE => Any::from("idle"),
         }
     }
 }
@@ -4563,33 +4551,33 @@ pub enum ScreenIdleState {
     UNLOCKED,
 }
 impl FromVal for ScreenIdleState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "locked" => Self::LOCKED,
             "unlocked" => Self::UNLOCKED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ScreenIdleState> for emlite::Val {
-    fn from(s: ScreenIdleState) -> emlite::Val {
+impl From<ScreenIdleState> for Any {
+    fn from(s: ScreenIdleState) -> Any {
         match s {
-            ScreenIdleState::LOCKED => emlite::Val::from("locked"),
-            ScreenIdleState::UNLOCKED => emlite::Val::from("unlocked"),
+            ScreenIdleState::LOCKED => Any::from("locked"),
+            ScreenIdleState::UNLOCKED => Any::from("unlocked"),
         }
     }
 }
-impl From<&ScreenIdleState> for emlite::Val {
-    fn from(s: &ScreenIdleState) -> emlite::Val {
+impl From<&ScreenIdleState> for Any {
+    fn from(s: &ScreenIdleState) -> Any {
         match *s {
-            ScreenIdleState::LOCKED => emlite::Val::from("locked"),
-            ScreenIdleState::UNLOCKED => emlite::Val::from("unlocked"),
+            ScreenIdleState::LOCKED => Any::from("locked"),
+            ScreenIdleState::UNLOCKED => Any::from("unlocked"),
         }
     }
 }
@@ -4601,7 +4589,7 @@ pub enum RedEyeReduction {
     CONTROLLABLE,
 }
 impl FromVal for RedEyeReduction {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "never" => Self::NEVER,
             "always" => Self::ALWAYS,
@@ -4609,28 +4597,28 @@ impl FromVal for RedEyeReduction {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RedEyeReduction> for emlite::Val {
-    fn from(s: RedEyeReduction) -> emlite::Val {
+impl From<RedEyeReduction> for Any {
+    fn from(s: RedEyeReduction) -> Any {
         match s {
-            RedEyeReduction::NEVER => emlite::Val::from("never"),
-            RedEyeReduction::ALWAYS => emlite::Val::from("always"),
-            RedEyeReduction::CONTROLLABLE => emlite::Val::from("controllable"),
+            RedEyeReduction::NEVER => Any::from("never"),
+            RedEyeReduction::ALWAYS => Any::from("always"),
+            RedEyeReduction::CONTROLLABLE => Any::from("controllable"),
         }
     }
 }
-impl From<&RedEyeReduction> for emlite::Val {
-    fn from(s: &RedEyeReduction) -> emlite::Val {
+impl From<&RedEyeReduction> for Any {
+    fn from(s: &RedEyeReduction) -> Any {
         match *s {
-            RedEyeReduction::NEVER => emlite::Val::from("never"),
-            RedEyeReduction::ALWAYS => emlite::Val::from("always"),
-            RedEyeReduction::CONTROLLABLE => emlite::Val::from("controllable"),
+            RedEyeReduction::NEVER => Any::from("never"),
+            RedEyeReduction::ALWAYS => Any::from("always"),
+            RedEyeReduction::CONTROLLABLE => Any::from("controllable"),
         }
     }
 }
@@ -4642,7 +4630,7 @@ pub enum FillLightMode {
     FLASH,
 }
 impl FromVal for FillLightMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "auto" => Self::AUTO,
             "off" => Self::OFF,
@@ -4650,28 +4638,28 @@ impl FromVal for FillLightMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<FillLightMode> for emlite::Val {
-    fn from(s: FillLightMode) -> emlite::Val {
+impl From<FillLightMode> for Any {
+    fn from(s: FillLightMode) -> Any {
         match s {
-            FillLightMode::AUTO => emlite::Val::from("auto"),
-            FillLightMode::OFF => emlite::Val::from("off"),
-            FillLightMode::FLASH => emlite::Val::from("flash"),
+            FillLightMode::AUTO => Any::from("auto"),
+            FillLightMode::OFF => Any::from("off"),
+            FillLightMode::FLASH => Any::from("flash"),
         }
     }
 }
-impl From<&FillLightMode> for emlite::Val {
-    fn from(s: &FillLightMode) -> emlite::Val {
+impl From<&FillLightMode> for Any {
+    fn from(s: &FillLightMode) -> Any {
         match *s {
-            FillLightMode::AUTO => emlite::Val::from("auto"),
-            FillLightMode::OFF => emlite::Val::from("off"),
-            FillLightMode::FLASH => emlite::Val::from("flash"),
+            FillLightMode::AUTO => Any::from("auto"),
+            FillLightMode::OFF => Any::from("off"),
+            FillLightMode::FLASH => Any::from("flash"),
         }
     }
 }
@@ -4684,7 +4672,7 @@ pub enum MeteringMode {
     CONTINUOUS,
 }
 impl FromVal for MeteringMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "manual" => Self::MANUAL,
@@ -4693,30 +4681,30 @@ impl FromVal for MeteringMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MeteringMode> for emlite::Val {
-    fn from(s: MeteringMode) -> emlite::Val {
+impl From<MeteringMode> for Any {
+    fn from(s: MeteringMode) -> Any {
         match s {
-            MeteringMode::NONE => emlite::Val::from("none"),
-            MeteringMode::MANUAL => emlite::Val::from("manual"),
-            MeteringMode::SINGLE_SHOT => emlite::Val::from("single-shot"),
-            MeteringMode::CONTINUOUS => emlite::Val::from("continuous"),
+            MeteringMode::NONE => Any::from("none"),
+            MeteringMode::MANUAL => Any::from("manual"),
+            MeteringMode::SINGLE_SHOT => Any::from("single-shot"),
+            MeteringMode::CONTINUOUS => Any::from("continuous"),
         }
     }
 }
-impl From<&MeteringMode> for emlite::Val {
-    fn from(s: &MeteringMode) -> emlite::Val {
+impl From<&MeteringMode> for Any {
+    fn from(s: &MeteringMode) -> Any {
         match *s {
-            MeteringMode::NONE => emlite::Val::from("none"),
-            MeteringMode::MANUAL => emlite::Val::from("manual"),
-            MeteringMode::SINGLE_SHOT => emlite::Val::from("single-shot"),
-            MeteringMode::CONTINUOUS => emlite::Val::from("continuous"),
+            MeteringMode::NONE => Any::from("none"),
+            MeteringMode::MANUAL => Any::from("manual"),
+            MeteringMode::SINGLE_SHOT => Any::from("single-shot"),
+            MeteringMode::CONTINUOUS => Any::from("continuous"),
         }
     }
 }
@@ -4727,33 +4715,33 @@ pub enum LoginStatus {
     LOGGED_OUT,
 }
 impl FromVal for LoginStatus {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "logged-in" => Self::LOGGED_IN,
             "logged-out" => Self::LOGGED_OUT,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<LoginStatus> for emlite::Val {
-    fn from(s: LoginStatus) -> emlite::Val {
+impl From<LoginStatus> for Any {
+    fn from(s: LoginStatus) -> Any {
         match s {
-            LoginStatus::LOGGED_IN => emlite::Val::from("logged-in"),
-            LoginStatus::LOGGED_OUT => emlite::Val::from("logged-out"),
+            LoginStatus::LOGGED_IN => Any::from("logged-in"),
+            LoginStatus::LOGGED_OUT => Any::from("logged-out"),
         }
     }
 }
-impl From<&LoginStatus> for emlite::Val {
-    fn from(s: &LoginStatus) -> emlite::Val {
+impl From<&LoginStatus> for Any {
+    fn from(s: &LoginStatus) -> Any {
         match *s {
-            LoginStatus::LOGGED_IN => emlite::Val::from("logged-in"),
-            LoginStatus::LOGGED_OUT => emlite::Val::from("logged-out"),
+            LoginStatus::LOGGED_IN => Any::from("logged-in"),
+            LoginStatus::LOGGED_OUT => Any::from("logged-out"),
         }
     }
 }
@@ -4768,7 +4756,7 @@ pub enum ScriptInvokerType {
     REJECT_PROMISE,
 }
 impl FromVal for ScriptInvokerType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "classic-script" => Self::CLASSIC_SCRIPT,
             "module-script" => Self::MODULE_SCRIPT,
@@ -4779,34 +4767,34 @@ impl FromVal for ScriptInvokerType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ScriptInvokerType> for emlite::Val {
-    fn from(s: ScriptInvokerType) -> emlite::Val {
+impl From<ScriptInvokerType> for Any {
+    fn from(s: ScriptInvokerType) -> Any {
         match s {
-            ScriptInvokerType::CLASSIC_SCRIPT => emlite::Val::from("classic-script"),
-            ScriptInvokerType::MODULE_SCRIPT => emlite::Val::from("module-script"),
-            ScriptInvokerType::EVENT_LISTENER => emlite::Val::from("event-listener"),
-            ScriptInvokerType::USER_CALLBACK => emlite::Val::from("user-callback"),
-            ScriptInvokerType::RESOLVE_PROMISE => emlite::Val::from("resolve-promise"),
-            ScriptInvokerType::REJECT_PROMISE => emlite::Val::from("reject-promise"),
+            ScriptInvokerType::CLASSIC_SCRIPT => Any::from("classic-script"),
+            ScriptInvokerType::MODULE_SCRIPT => Any::from("module-script"),
+            ScriptInvokerType::EVENT_LISTENER => Any::from("event-listener"),
+            ScriptInvokerType::USER_CALLBACK => Any::from("user-callback"),
+            ScriptInvokerType::RESOLVE_PROMISE => Any::from("resolve-promise"),
+            ScriptInvokerType::REJECT_PROMISE => Any::from("reject-promise"),
         }
     }
 }
-impl From<&ScriptInvokerType> for emlite::Val {
-    fn from(s: &ScriptInvokerType) -> emlite::Val {
+impl From<&ScriptInvokerType> for Any {
+    fn from(s: &ScriptInvokerType) -> Any {
         match *s {
-            ScriptInvokerType::CLASSIC_SCRIPT => emlite::Val::from("classic-script"),
-            ScriptInvokerType::MODULE_SCRIPT => emlite::Val::from("module-script"),
-            ScriptInvokerType::EVENT_LISTENER => emlite::Val::from("event-listener"),
-            ScriptInvokerType::USER_CALLBACK => emlite::Val::from("user-callback"),
-            ScriptInvokerType::RESOLVE_PROMISE => emlite::Val::from("resolve-promise"),
-            ScriptInvokerType::REJECT_PROMISE => emlite::Val::from("reject-promise"),
+            ScriptInvokerType::CLASSIC_SCRIPT => Any::from("classic-script"),
+            ScriptInvokerType::MODULE_SCRIPT => Any::from("module-script"),
+            ScriptInvokerType::EVENT_LISTENER => Any::from("event-listener"),
+            ScriptInvokerType::USER_CALLBACK => Any::from("user-callback"),
+            ScriptInvokerType::RESOLVE_PROMISE => Any::from("resolve-promise"),
+            ScriptInvokerType::REJECT_PROMISE => Any::from("reject-promise"),
         }
     }
 }
@@ -4820,7 +4808,7 @@ pub enum ScriptWindowAttribution {
     OTHER,
 }
 impl FromVal for ScriptWindowAttribution {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "self" => Self::SELF_,
             "descendant" => Self::DESCENDANT,
@@ -4830,32 +4818,32 @@ impl FromVal for ScriptWindowAttribution {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ScriptWindowAttribution> for emlite::Val {
-    fn from(s: ScriptWindowAttribution) -> emlite::Val {
+impl From<ScriptWindowAttribution> for Any {
+    fn from(s: ScriptWindowAttribution) -> Any {
         match s {
-            ScriptWindowAttribution::SELF_ => emlite::Val::from("self"),
-            ScriptWindowAttribution::DESCENDANT => emlite::Val::from("descendant"),
-            ScriptWindowAttribution::ANCESTOR => emlite::Val::from("ancestor"),
-            ScriptWindowAttribution::SAME_PAGE => emlite::Val::from("same-page"),
-            ScriptWindowAttribution::OTHER => emlite::Val::from("other"),
+            ScriptWindowAttribution::SELF_ => Any::from("self"),
+            ScriptWindowAttribution::DESCENDANT => Any::from("descendant"),
+            ScriptWindowAttribution::ANCESTOR => Any::from("ancestor"),
+            ScriptWindowAttribution::SAME_PAGE => Any::from("same-page"),
+            ScriptWindowAttribution::OTHER => Any::from("other"),
         }
     }
 }
-impl From<&ScriptWindowAttribution> for emlite::Val {
-    fn from(s: &ScriptWindowAttribution) -> emlite::Val {
+impl From<&ScriptWindowAttribution> for Any {
+    fn from(s: &ScriptWindowAttribution) -> Any {
         match *s {
-            ScriptWindowAttribution::SELF_ => emlite::Val::from("self"),
-            ScriptWindowAttribution::DESCENDANT => emlite::Val::from("descendant"),
-            ScriptWindowAttribution::ANCESTOR => emlite::Val::from("ancestor"),
-            ScriptWindowAttribution::SAME_PAGE => emlite::Val::from("same-page"),
-            ScriptWindowAttribution::OTHER => emlite::Val::from("other"),
+            ScriptWindowAttribution::SELF_ => Any::from("self"),
+            ScriptWindowAttribution::DESCENDANT => Any::from("descendant"),
+            ScriptWindowAttribution::ANCESTOR => Any::from("ancestor"),
+            ScriptWindowAttribution::SAME_PAGE => Any::from("same-page"),
+            ScriptWindowAttribution::OTHER => Any::from("other"),
         }
     }
 }
@@ -4866,33 +4854,33 @@ pub enum MagnetometerLocalCoordinateSystem {
     SCREEN,
 }
 impl FromVal for MagnetometerLocalCoordinateSystem {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "device" => Self::DEVICE,
             "screen" => Self::SCREEN,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MagnetometerLocalCoordinateSystem> for emlite::Val {
-    fn from(s: MagnetometerLocalCoordinateSystem) -> emlite::Val {
+impl From<MagnetometerLocalCoordinateSystem> for Any {
+    fn from(s: MagnetometerLocalCoordinateSystem) -> Any {
         match s {
-            MagnetometerLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
-            MagnetometerLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+            MagnetometerLocalCoordinateSystem::DEVICE => Any::from("device"),
+            MagnetometerLocalCoordinateSystem::SCREEN => Any::from("screen"),
         }
     }
 }
-impl From<&MagnetometerLocalCoordinateSystem> for emlite::Val {
-    fn from(s: &MagnetometerLocalCoordinateSystem) -> emlite::Val {
+impl From<&MagnetometerLocalCoordinateSystem> for Any {
+    fn from(s: &MagnetometerLocalCoordinateSystem) -> Any {
         match *s {
-            MagnetometerLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
-            MagnetometerLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+            MagnetometerLocalCoordinateSystem::DEVICE => Any::from("device"),
+            MagnetometerLocalCoordinateSystem::SCREEN => Any::from("screen"),
         }
     }
 }
@@ -4903,33 +4891,33 @@ pub enum AppBannerPromptOutcome {
     DISMISSED,
 }
 impl FromVal for AppBannerPromptOutcome {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "accepted" => Self::ACCEPTED,
             "dismissed" => Self::DISMISSED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AppBannerPromptOutcome> for emlite::Val {
-    fn from(s: AppBannerPromptOutcome) -> emlite::Val {
+impl From<AppBannerPromptOutcome> for Any {
+    fn from(s: AppBannerPromptOutcome) -> Any {
         match s {
-            AppBannerPromptOutcome::ACCEPTED => emlite::Val::from("accepted"),
-            AppBannerPromptOutcome::DISMISSED => emlite::Val::from("dismissed"),
+            AppBannerPromptOutcome::ACCEPTED => Any::from("accepted"),
+            AppBannerPromptOutcome::DISMISSED => Any::from("dismissed"),
         }
     }
 }
-impl From<&AppBannerPromptOutcome> for emlite::Val {
-    fn from(s: &AppBannerPromptOutcome) -> emlite::Val {
+impl From<&AppBannerPromptOutcome> for Any {
+    fn from(s: &AppBannerPromptOutcome) -> Any {
         match *s {
-            AppBannerPromptOutcome::ACCEPTED => emlite::Val::from("accepted"),
-            AppBannerPromptOutcome::DISMISSED => emlite::Val::from("dismissed"),
+            AppBannerPromptOutcome::ACCEPTED => Any::from("accepted"),
+            AppBannerPromptOutcome::DISMISSED => Any::from("dismissed"),
         }
     }
 }
@@ -4941,7 +4929,7 @@ pub enum MediaDecodingType {
     WEBRTC,
 }
 impl FromVal for MediaDecodingType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "file" => Self::FILE,
             "media-source" => Self::MEDIA_SOURCE,
@@ -4949,28 +4937,28 @@ impl FromVal for MediaDecodingType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MediaDecodingType> for emlite::Val {
-    fn from(s: MediaDecodingType) -> emlite::Val {
+impl From<MediaDecodingType> for Any {
+    fn from(s: MediaDecodingType) -> Any {
         match s {
-            MediaDecodingType::FILE => emlite::Val::from("file"),
-            MediaDecodingType::MEDIA_SOURCE => emlite::Val::from("media-source"),
-            MediaDecodingType::WEBRTC => emlite::Val::from("webrtc"),
+            MediaDecodingType::FILE => Any::from("file"),
+            MediaDecodingType::MEDIA_SOURCE => Any::from("media-source"),
+            MediaDecodingType::WEBRTC => Any::from("webrtc"),
         }
     }
 }
-impl From<&MediaDecodingType> for emlite::Val {
-    fn from(s: &MediaDecodingType) -> emlite::Val {
+impl From<&MediaDecodingType> for Any {
+    fn from(s: &MediaDecodingType) -> Any {
         match *s {
-            MediaDecodingType::FILE => emlite::Val::from("file"),
-            MediaDecodingType::MEDIA_SOURCE => emlite::Val::from("media-source"),
-            MediaDecodingType::WEBRTC => emlite::Val::from("webrtc"),
+            MediaDecodingType::FILE => Any::from("file"),
+            MediaDecodingType::MEDIA_SOURCE => Any::from("media-source"),
+            MediaDecodingType::WEBRTC => Any::from("webrtc"),
         }
     }
 }
@@ -4981,33 +4969,33 @@ pub enum MediaEncodingType {
     WEBRTC,
 }
 impl FromVal for MediaEncodingType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "record" => Self::RECORD,
             "webrtc" => Self::WEBRTC,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MediaEncodingType> for emlite::Val {
-    fn from(s: MediaEncodingType) -> emlite::Val {
+impl From<MediaEncodingType> for Any {
+    fn from(s: MediaEncodingType) -> Any {
         match s {
-            MediaEncodingType::RECORD => emlite::Val::from("record"),
-            MediaEncodingType::WEBRTC => emlite::Val::from("webrtc"),
+            MediaEncodingType::RECORD => Any::from("record"),
+            MediaEncodingType::WEBRTC => Any::from("webrtc"),
         }
     }
 }
-impl From<&MediaEncodingType> for emlite::Val {
-    fn from(s: &MediaEncodingType) -> emlite::Val {
+impl From<&MediaEncodingType> for Any {
+    fn from(s: &MediaEncodingType) -> Any {
         match *s {
-            MediaEncodingType::RECORD => emlite::Val::from("record"),
-            MediaEncodingType::WEBRTC => emlite::Val::from("webrtc"),
+            MediaEncodingType::RECORD => Any::from("record"),
+            MediaEncodingType::WEBRTC => Any::from("webrtc"),
         }
     }
 }
@@ -5019,7 +5007,7 @@ pub enum HdrMetadataType {
     SMPTE_ST2094_40,
 }
 impl FromVal for HdrMetadataType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "smpteSt2086" => Self::SMPTE_ST2086,
             "smpteSt2094-10" => Self::SMPTE_ST2094_10,
@@ -5027,28 +5015,28 @@ impl FromVal for HdrMetadataType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<HdrMetadataType> for emlite::Val {
-    fn from(s: HdrMetadataType) -> emlite::Val {
+impl From<HdrMetadataType> for Any {
+    fn from(s: HdrMetadataType) -> Any {
         match s {
-            HdrMetadataType::SMPTE_ST2086 => emlite::Val::from("smpteSt2086"),
-            HdrMetadataType::SMPTE_ST2094_10 => emlite::Val::from("smpteSt2094-10"),
-            HdrMetadataType::SMPTE_ST2094_40 => emlite::Val::from("smpteSt2094-40"),
+            HdrMetadataType::SMPTE_ST2086 => Any::from("smpteSt2086"),
+            HdrMetadataType::SMPTE_ST2094_10 => Any::from("smpteSt2094-10"),
+            HdrMetadataType::SMPTE_ST2094_40 => Any::from("smpteSt2094-40"),
         }
     }
 }
-impl From<&HdrMetadataType> for emlite::Val {
-    fn from(s: &HdrMetadataType) -> emlite::Val {
+impl From<&HdrMetadataType> for Any {
+    fn from(s: &HdrMetadataType) -> Any {
         match *s {
-            HdrMetadataType::SMPTE_ST2086 => emlite::Val::from("smpteSt2086"),
-            HdrMetadataType::SMPTE_ST2094_10 => emlite::Val::from("smpteSt2094-10"),
-            HdrMetadataType::SMPTE_ST2094_40 => emlite::Val::from("smpteSt2094-40"),
+            HdrMetadataType::SMPTE_ST2086 => Any::from("smpteSt2086"),
+            HdrMetadataType::SMPTE_ST2094_10 => Any::from("smpteSt2094-10"),
+            HdrMetadataType::SMPTE_ST2094_40 => Any::from("smpteSt2094-40"),
         }
     }
 }
@@ -5060,7 +5048,7 @@ pub enum ColorGamut {
     REC2020,
 }
 impl FromVal for ColorGamut {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "srgb" => Self::SRGB,
             "p3" => Self::P3,
@@ -5068,28 +5056,28 @@ impl FromVal for ColorGamut {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ColorGamut> for emlite::Val {
-    fn from(s: ColorGamut) -> emlite::Val {
+impl From<ColorGamut> for Any {
+    fn from(s: ColorGamut) -> Any {
         match s {
-            ColorGamut::SRGB => emlite::Val::from("srgb"),
-            ColorGamut::P3 => emlite::Val::from("p3"),
-            ColorGamut::REC2020 => emlite::Val::from("rec2020"),
+            ColorGamut::SRGB => Any::from("srgb"),
+            ColorGamut::P3 => Any::from("p3"),
+            ColorGamut::REC2020 => Any::from("rec2020"),
         }
     }
 }
-impl From<&ColorGamut> for emlite::Val {
-    fn from(s: &ColorGamut) -> emlite::Val {
+impl From<&ColorGamut> for Any {
+    fn from(s: &ColorGamut) -> Any {
         match *s {
-            ColorGamut::SRGB => emlite::Val::from("srgb"),
-            ColorGamut::P3 => emlite::Val::from("p3"),
-            ColorGamut::REC2020 => emlite::Val::from("rec2020"),
+            ColorGamut::SRGB => Any::from("srgb"),
+            ColorGamut::P3 => Any::from("p3"),
+            ColorGamut::REC2020 => Any::from("rec2020"),
         }
     }
 }
@@ -5101,7 +5089,7 @@ pub enum TransferFunction {
     HLG,
 }
 impl FromVal for TransferFunction {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "srgb" => Self::SRGB,
             "pq" => Self::PQ,
@@ -5109,28 +5097,28 @@ impl FromVal for TransferFunction {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<TransferFunction> for emlite::Val {
-    fn from(s: TransferFunction) -> emlite::Val {
+impl From<TransferFunction> for Any {
+    fn from(s: TransferFunction) -> Any {
         match s {
-            TransferFunction::SRGB => emlite::Val::from("srgb"),
-            TransferFunction::PQ => emlite::Val::from("pq"),
-            TransferFunction::HLG => emlite::Val::from("hlg"),
+            TransferFunction::SRGB => Any::from("srgb"),
+            TransferFunction::PQ => Any::from("pq"),
+            TransferFunction::HLG => Any::from("hlg"),
         }
     }
 }
-impl From<&TransferFunction> for emlite::Val {
-    fn from(s: &TransferFunction) -> emlite::Val {
+impl From<&TransferFunction> for Any {
+    fn from(s: &TransferFunction) -> Any {
         match *s {
-            TransferFunction::SRGB => emlite::Val::from("srgb"),
-            TransferFunction::PQ => emlite::Val::from("pq"),
-            TransferFunction::HLG => emlite::Val::from("hlg"),
+            TransferFunction::SRGB => Any::from("srgb"),
+            TransferFunction::PQ => Any::from("pq"),
+            TransferFunction::HLG => Any::from("hlg"),
         }
     }
 }
@@ -5142,7 +5130,7 @@ pub enum ReadyState {
     ENDED,
 }
 impl FromVal for ReadyState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "closed" => Self::CLOSED,
             "open" => Self::OPEN,
@@ -5150,28 +5138,28 @@ impl FromVal for ReadyState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ReadyState> for emlite::Val {
-    fn from(s: ReadyState) -> emlite::Val {
+impl From<ReadyState> for Any {
+    fn from(s: ReadyState) -> Any {
         match s {
-            ReadyState::CLOSED => emlite::Val::from("closed"),
-            ReadyState::OPEN => emlite::Val::from("open"),
-            ReadyState::ENDED => emlite::Val::from("ended"),
+            ReadyState::CLOSED => Any::from("closed"),
+            ReadyState::OPEN => Any::from("open"),
+            ReadyState::ENDED => Any::from("ended"),
         }
     }
 }
-impl From<&ReadyState> for emlite::Val {
-    fn from(s: &ReadyState) -> emlite::Val {
+impl From<&ReadyState> for Any {
+    fn from(s: &ReadyState) -> Any {
         match *s {
-            ReadyState::CLOSED => emlite::Val::from("closed"),
-            ReadyState::OPEN => emlite::Val::from("open"),
-            ReadyState::ENDED => emlite::Val::from("ended"),
+            ReadyState::CLOSED => Any::from("closed"),
+            ReadyState::OPEN => Any::from("open"),
+            ReadyState::ENDED => Any::from("ended"),
         }
     }
 }
@@ -5182,33 +5170,33 @@ pub enum EndOfStreamError {
     DECODE,
 }
 impl FromVal for EndOfStreamError {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "network" => Self::NETWORK,
             "decode" => Self::DECODE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<EndOfStreamError> for emlite::Val {
-    fn from(s: EndOfStreamError) -> emlite::Val {
+impl From<EndOfStreamError> for Any {
+    fn from(s: EndOfStreamError) -> Any {
         match s {
-            EndOfStreamError::NETWORK => emlite::Val::from("network"),
-            EndOfStreamError::DECODE => emlite::Val::from("decode"),
+            EndOfStreamError::NETWORK => Any::from("network"),
+            EndOfStreamError::DECODE => Any::from("decode"),
         }
     }
 }
-impl From<&EndOfStreamError> for emlite::Val {
-    fn from(s: &EndOfStreamError) -> emlite::Val {
+impl From<&EndOfStreamError> for Any {
+    fn from(s: &EndOfStreamError) -> Any {
         match *s {
-            EndOfStreamError::NETWORK => emlite::Val::from("network"),
-            EndOfStreamError::DECODE => emlite::Val::from("decode"),
+            EndOfStreamError::NETWORK => Any::from("network"),
+            EndOfStreamError::DECODE => Any::from("decode"),
         }
     }
 }
@@ -5219,33 +5207,33 @@ pub enum AppendMode {
     SEQUENCE,
 }
 impl FromVal for AppendMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "segments" => Self::SEGMENTS,
             "sequence" => Self::SEQUENCE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AppendMode> for emlite::Val {
-    fn from(s: AppendMode) -> emlite::Val {
+impl From<AppendMode> for Any {
+    fn from(s: AppendMode) -> Any {
         match s {
-            AppendMode::SEGMENTS => emlite::Val::from("segments"),
-            AppendMode::SEQUENCE => emlite::Val::from("sequence"),
+            AppendMode::SEGMENTS => Any::from("segments"),
+            AppendMode::SEQUENCE => Any::from("sequence"),
         }
     }
 }
-impl From<&AppendMode> for emlite::Val {
-    fn from(s: &AppendMode) -> emlite::Val {
+impl From<&AppendMode> for Any {
+    fn from(s: &AppendMode) -> Any {
         match *s {
-            AppendMode::SEGMENTS => emlite::Val::from("segments"),
-            AppendMode::SEQUENCE => emlite::Val::from("sequence"),
+            AppendMode::SEGMENTS => Any::from("segments"),
+            AppendMode::SEQUENCE => Any::from("sequence"),
         }
     }
 }
@@ -5256,33 +5244,33 @@ pub enum MockCapturePromptResult {
     DENIED,
 }
 impl FromVal for MockCapturePromptResult {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "granted" => Self::GRANTED,
             "denied" => Self::DENIED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MockCapturePromptResult> for emlite::Val {
-    fn from(s: MockCapturePromptResult) -> emlite::Val {
+impl From<MockCapturePromptResult> for Any {
+    fn from(s: MockCapturePromptResult) -> Any {
         match s {
-            MockCapturePromptResult::GRANTED => emlite::Val::from("granted"),
-            MockCapturePromptResult::DENIED => emlite::Val::from("denied"),
+            MockCapturePromptResult::GRANTED => Any::from("granted"),
+            MockCapturePromptResult::DENIED => Any::from("denied"),
         }
     }
 }
-impl From<&MockCapturePromptResult> for emlite::Val {
-    fn from(s: &MockCapturePromptResult) -> emlite::Val {
+impl From<&MockCapturePromptResult> for Any {
+    fn from(s: &MockCapturePromptResult) -> Any {
         match *s {
-            MockCapturePromptResult::GRANTED => emlite::Val::from("granted"),
-            MockCapturePromptResult::DENIED => emlite::Val::from("denied"),
+            MockCapturePromptResult::GRANTED => Any::from("granted"),
+            MockCapturePromptResult::DENIED => Any::from("denied"),
         }
     }
 }
@@ -5295,7 +5283,7 @@ pub enum CaptureAction {
     LAST,
 }
 impl FromVal for CaptureAction {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "next" => Self::NEXT,
             "previous" => Self::PREVIOUS,
@@ -5304,30 +5292,30 @@ impl FromVal for CaptureAction {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CaptureAction> for emlite::Val {
-    fn from(s: CaptureAction) -> emlite::Val {
+impl From<CaptureAction> for Any {
+    fn from(s: CaptureAction) -> Any {
         match s {
-            CaptureAction::NEXT => emlite::Val::from("next"),
-            CaptureAction::PREVIOUS => emlite::Val::from("previous"),
-            CaptureAction::FIRST => emlite::Val::from("first"),
-            CaptureAction::LAST => emlite::Val::from("last"),
+            CaptureAction::NEXT => Any::from("next"),
+            CaptureAction::PREVIOUS => Any::from("previous"),
+            CaptureAction::FIRST => Any::from("first"),
+            CaptureAction::LAST => Any::from("last"),
         }
     }
 }
-impl From<&CaptureAction> for emlite::Val {
-    fn from(s: &CaptureAction) -> emlite::Val {
+impl From<&CaptureAction> for Any {
+    fn from(s: &CaptureAction) -> Any {
         match *s {
-            CaptureAction::NEXT => emlite::Val::from("next"),
-            CaptureAction::PREVIOUS => emlite::Val::from("previous"),
-            CaptureAction::FIRST => emlite::Val::from("first"),
-            CaptureAction::LAST => emlite::Val::from("last"),
+            CaptureAction::NEXT => Any::from("next"),
+            CaptureAction::PREVIOUS => Any::from("previous"),
+            CaptureAction::FIRST => Any::from("first"),
+            CaptureAction::LAST => Any::from("last"),
         }
     }
 }
@@ -5338,33 +5326,33 @@ pub enum MediaStreamTrackState {
     ENDED,
 }
 impl FromVal for MediaStreamTrackState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "live" => Self::LIVE,
             "ended" => Self::ENDED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MediaStreamTrackState> for emlite::Val {
-    fn from(s: MediaStreamTrackState) -> emlite::Val {
+impl From<MediaStreamTrackState> for Any {
+    fn from(s: MediaStreamTrackState) -> Any {
         match s {
-            MediaStreamTrackState::LIVE => emlite::Val::from("live"),
-            MediaStreamTrackState::ENDED => emlite::Val::from("ended"),
+            MediaStreamTrackState::LIVE => Any::from("live"),
+            MediaStreamTrackState::ENDED => Any::from("ended"),
         }
     }
 }
-impl From<&MediaStreamTrackState> for emlite::Val {
-    fn from(s: &MediaStreamTrackState) -> emlite::Val {
+impl From<&MediaStreamTrackState> for Any {
+    fn from(s: &MediaStreamTrackState) -> Any {
         match *s {
-            MediaStreamTrackState::LIVE => emlite::Val::from("live"),
-            MediaStreamTrackState::ENDED => emlite::Val::from("ended"),
+            MediaStreamTrackState::LIVE => Any::from("live"),
+            MediaStreamTrackState::ENDED => Any::from("ended"),
         }
     }
 }
@@ -5377,7 +5365,7 @@ pub enum VideoFacingModeEnum {
     RIGHT,
 }
 impl FromVal for VideoFacingModeEnum {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "user" => Self::USER,
             "environment" => Self::ENVIRONMENT,
@@ -5386,30 +5374,30 @@ impl FromVal for VideoFacingModeEnum {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<VideoFacingModeEnum> for emlite::Val {
-    fn from(s: VideoFacingModeEnum) -> emlite::Val {
+impl From<VideoFacingModeEnum> for Any {
+    fn from(s: VideoFacingModeEnum) -> Any {
         match s {
-            VideoFacingModeEnum::USER => emlite::Val::from("user"),
-            VideoFacingModeEnum::ENVIRONMENT => emlite::Val::from("environment"),
-            VideoFacingModeEnum::LEFT => emlite::Val::from("left"),
-            VideoFacingModeEnum::RIGHT => emlite::Val::from("right"),
+            VideoFacingModeEnum::USER => Any::from("user"),
+            VideoFacingModeEnum::ENVIRONMENT => Any::from("environment"),
+            VideoFacingModeEnum::LEFT => Any::from("left"),
+            VideoFacingModeEnum::RIGHT => Any::from("right"),
         }
     }
 }
-impl From<&VideoFacingModeEnum> for emlite::Val {
-    fn from(s: &VideoFacingModeEnum) -> emlite::Val {
+impl From<&VideoFacingModeEnum> for Any {
+    fn from(s: &VideoFacingModeEnum) -> Any {
         match *s {
-            VideoFacingModeEnum::USER => emlite::Val::from("user"),
-            VideoFacingModeEnum::ENVIRONMENT => emlite::Val::from("environment"),
-            VideoFacingModeEnum::LEFT => emlite::Val::from("left"),
-            VideoFacingModeEnum::RIGHT => emlite::Val::from("right"),
+            VideoFacingModeEnum::USER => Any::from("user"),
+            VideoFacingModeEnum::ENVIRONMENT => Any::from("environment"),
+            VideoFacingModeEnum::LEFT => Any::from("left"),
+            VideoFacingModeEnum::RIGHT => Any::from("right"),
         }
     }
 }
@@ -5420,33 +5408,33 @@ pub enum VideoResizeModeEnum {
     CROP_AND_SCALE,
 }
 impl FromVal for VideoResizeModeEnum {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "crop-and-scale" => Self::CROP_AND_SCALE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<VideoResizeModeEnum> for emlite::Val {
-    fn from(s: VideoResizeModeEnum) -> emlite::Val {
+impl From<VideoResizeModeEnum> for Any {
+    fn from(s: VideoResizeModeEnum) -> Any {
         match s {
-            VideoResizeModeEnum::NONE => emlite::Val::from("none"),
-            VideoResizeModeEnum::CROP_AND_SCALE => emlite::Val::from("crop-and-scale"),
+            VideoResizeModeEnum::NONE => Any::from("none"),
+            VideoResizeModeEnum::CROP_AND_SCALE => Any::from("crop-and-scale"),
         }
     }
 }
-impl From<&VideoResizeModeEnum> for emlite::Val {
-    fn from(s: &VideoResizeModeEnum) -> emlite::Val {
+impl From<&VideoResizeModeEnum> for Any {
+    fn from(s: &VideoResizeModeEnum) -> Any {
         match *s {
-            VideoResizeModeEnum::NONE => emlite::Val::from("none"),
-            VideoResizeModeEnum::CROP_AND_SCALE => emlite::Val::from("crop-and-scale"),
+            VideoResizeModeEnum::NONE => Any::from("none"),
+            VideoResizeModeEnum::CROP_AND_SCALE => Any::from("crop-and-scale"),
         }
     }
 }
@@ -5457,33 +5445,33 @@ pub enum EchoCancellationModeEnum {
     REMOTE_ONLY,
 }
 impl FromVal for EchoCancellationModeEnum {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "all" => Self::ALL,
             "remote-only" => Self::REMOTE_ONLY,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<EchoCancellationModeEnum> for emlite::Val {
-    fn from(s: EchoCancellationModeEnum) -> emlite::Val {
+impl From<EchoCancellationModeEnum> for Any {
+    fn from(s: EchoCancellationModeEnum) -> Any {
         match s {
-            EchoCancellationModeEnum::ALL => emlite::Val::from("all"),
-            EchoCancellationModeEnum::REMOTE_ONLY => emlite::Val::from("remote-only"),
+            EchoCancellationModeEnum::ALL => Any::from("all"),
+            EchoCancellationModeEnum::REMOTE_ONLY => Any::from("remote-only"),
         }
     }
 }
-impl From<&EchoCancellationModeEnum> for emlite::Val {
-    fn from(s: &EchoCancellationModeEnum) -> emlite::Val {
+impl From<&EchoCancellationModeEnum> for Any {
+    fn from(s: &EchoCancellationModeEnum) -> Any {
         match *s {
-            EchoCancellationModeEnum::ALL => emlite::Val::from("all"),
-            EchoCancellationModeEnum::REMOTE_ONLY => emlite::Val::from("remote-only"),
+            EchoCancellationModeEnum::ALL => Any::from("all"),
+            EchoCancellationModeEnum::REMOTE_ONLY => Any::from("remote-only"),
         }
     }
 }
@@ -5495,7 +5483,7 @@ pub enum MediaDeviceKind {
     VIDEOINPUT,
 }
 impl FromVal for MediaDeviceKind {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "audioinput" => Self::AUDIOINPUT,
             "audiooutput" => Self::AUDIOOUTPUT,
@@ -5503,28 +5491,28 @@ impl FromVal for MediaDeviceKind {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MediaDeviceKind> for emlite::Val {
-    fn from(s: MediaDeviceKind) -> emlite::Val {
+impl From<MediaDeviceKind> for Any {
+    fn from(s: MediaDeviceKind) -> Any {
         match s {
-            MediaDeviceKind::AUDIOINPUT => emlite::Val::from("audioinput"),
-            MediaDeviceKind::AUDIOOUTPUT => emlite::Val::from("audiooutput"),
-            MediaDeviceKind::VIDEOINPUT => emlite::Val::from("videoinput"),
+            MediaDeviceKind::AUDIOINPUT => Any::from("audioinput"),
+            MediaDeviceKind::AUDIOOUTPUT => Any::from("audiooutput"),
+            MediaDeviceKind::VIDEOINPUT => Any::from("videoinput"),
         }
     }
 }
-impl From<&MediaDeviceKind> for emlite::Val {
-    fn from(s: &MediaDeviceKind) -> emlite::Val {
+impl From<&MediaDeviceKind> for Any {
+    fn from(s: &MediaDeviceKind) -> Any {
         match *s {
-            MediaDeviceKind::AUDIOINPUT => emlite::Val::from("audioinput"),
-            MediaDeviceKind::AUDIOOUTPUT => emlite::Val::from("audiooutput"),
-            MediaDeviceKind::VIDEOINPUT => emlite::Val::from("videoinput"),
+            MediaDeviceKind::AUDIOINPUT => Any::from("audioinput"),
+            MediaDeviceKind::AUDIOOUTPUT => Any::from("audiooutput"),
+            MediaDeviceKind::VIDEOINPUT => Any::from("videoinput"),
         }
     }
 }
@@ -5536,7 +5524,7 @@ pub enum MediaSessionPlaybackState {
     PLAYING,
 }
 impl FromVal for MediaSessionPlaybackState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "paused" => Self::PAUSED,
@@ -5544,28 +5532,28 @@ impl FromVal for MediaSessionPlaybackState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MediaSessionPlaybackState> for emlite::Val {
-    fn from(s: MediaSessionPlaybackState) -> emlite::Val {
+impl From<MediaSessionPlaybackState> for Any {
+    fn from(s: MediaSessionPlaybackState) -> Any {
         match s {
-            MediaSessionPlaybackState::NONE => emlite::Val::from("none"),
-            MediaSessionPlaybackState::PAUSED => emlite::Val::from("paused"),
-            MediaSessionPlaybackState::PLAYING => emlite::Val::from("playing"),
+            MediaSessionPlaybackState::NONE => Any::from("none"),
+            MediaSessionPlaybackState::PAUSED => Any::from("paused"),
+            MediaSessionPlaybackState::PLAYING => Any::from("playing"),
         }
     }
 }
-impl From<&MediaSessionPlaybackState> for emlite::Val {
-    fn from(s: &MediaSessionPlaybackState) -> emlite::Val {
+impl From<&MediaSessionPlaybackState> for Any {
+    fn from(s: &MediaSessionPlaybackState) -> Any {
         match *s {
-            MediaSessionPlaybackState::NONE => emlite::Val::from("none"),
-            MediaSessionPlaybackState::PAUSED => emlite::Val::from("paused"),
-            MediaSessionPlaybackState::PLAYING => emlite::Val::from("playing"),
+            MediaSessionPlaybackState::NONE => Any::from("none"),
+            MediaSessionPlaybackState::PAUSED => Any::from("paused"),
+            MediaSessionPlaybackState::PLAYING => Any::from("playing"),
         }
     }
 }
@@ -5591,7 +5579,7 @@ pub enum MediaSessionAction {
     VOICEACTIVITY,
 }
 impl FromVal for MediaSessionAction {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "play" => Self::PLAY,
             "pause" => Self::PAUSE,
@@ -5613,56 +5601,56 @@ impl FromVal for MediaSessionAction {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MediaSessionAction> for emlite::Val {
-    fn from(s: MediaSessionAction) -> emlite::Val {
+impl From<MediaSessionAction> for Any {
+    fn from(s: MediaSessionAction) -> Any {
         match s {
-            MediaSessionAction::PLAY => emlite::Val::from("play"),
-            MediaSessionAction::PAUSE => emlite::Val::from("pause"),
-            MediaSessionAction::SEEKBACKWARD => emlite::Val::from("seekbackward"),
-            MediaSessionAction::SEEKFORWARD => emlite::Val::from("seekforward"),
-            MediaSessionAction::PREVIOUSTRACK => emlite::Val::from("previoustrack"),
-            MediaSessionAction::NEXTTRACK => emlite::Val::from("nexttrack"),
-            MediaSessionAction::SKIPAD => emlite::Val::from("skipad"),
-            MediaSessionAction::STOP => emlite::Val::from("stop"),
-            MediaSessionAction::SEEKTO => emlite::Val::from("seekto"),
-            MediaSessionAction::TOGGLEMICROPHONE => emlite::Val::from("togglemicrophone"),
-            MediaSessionAction::TOGGLECAMERA => emlite::Val::from("togglecamera"),
-            MediaSessionAction::TOGGLESCREENSHARE => emlite::Val::from("togglescreenshare"),
-            MediaSessionAction::HANGUP => emlite::Val::from("hangup"),
-            MediaSessionAction::PREVIOUSSLIDE => emlite::Val::from("previousslide"),
-            MediaSessionAction::NEXTSLIDE => emlite::Val::from("nextslide"),
-            MediaSessionAction::ENTERPICTUREINPICTURE => emlite::Val::from("enterpictureinpicture"),
-            MediaSessionAction::VOICEACTIVITY => emlite::Val::from("voiceactivity"),
+            MediaSessionAction::PLAY => Any::from("play"),
+            MediaSessionAction::PAUSE => Any::from("pause"),
+            MediaSessionAction::SEEKBACKWARD => Any::from("seekbackward"),
+            MediaSessionAction::SEEKFORWARD => Any::from("seekforward"),
+            MediaSessionAction::PREVIOUSTRACK => Any::from("previoustrack"),
+            MediaSessionAction::NEXTTRACK => Any::from("nexttrack"),
+            MediaSessionAction::SKIPAD => Any::from("skipad"),
+            MediaSessionAction::STOP => Any::from("stop"),
+            MediaSessionAction::SEEKTO => Any::from("seekto"),
+            MediaSessionAction::TOGGLEMICROPHONE => Any::from("togglemicrophone"),
+            MediaSessionAction::TOGGLECAMERA => Any::from("togglecamera"),
+            MediaSessionAction::TOGGLESCREENSHARE => Any::from("togglescreenshare"),
+            MediaSessionAction::HANGUP => Any::from("hangup"),
+            MediaSessionAction::PREVIOUSSLIDE => Any::from("previousslide"),
+            MediaSessionAction::NEXTSLIDE => Any::from("nextslide"),
+            MediaSessionAction::ENTERPICTUREINPICTURE => Any::from("enterpictureinpicture"),
+            MediaSessionAction::VOICEACTIVITY => Any::from("voiceactivity"),
         }
     }
 }
-impl From<&MediaSessionAction> for emlite::Val {
-    fn from(s: &MediaSessionAction) -> emlite::Val {
+impl From<&MediaSessionAction> for Any {
+    fn from(s: &MediaSessionAction) -> Any {
         match *s {
-            MediaSessionAction::PLAY => emlite::Val::from("play"),
-            MediaSessionAction::PAUSE => emlite::Val::from("pause"),
-            MediaSessionAction::SEEKBACKWARD => emlite::Val::from("seekbackward"),
-            MediaSessionAction::SEEKFORWARD => emlite::Val::from("seekforward"),
-            MediaSessionAction::PREVIOUSTRACK => emlite::Val::from("previoustrack"),
-            MediaSessionAction::NEXTTRACK => emlite::Val::from("nexttrack"),
-            MediaSessionAction::SKIPAD => emlite::Val::from("skipad"),
-            MediaSessionAction::STOP => emlite::Val::from("stop"),
-            MediaSessionAction::SEEKTO => emlite::Val::from("seekto"),
-            MediaSessionAction::TOGGLEMICROPHONE => emlite::Val::from("togglemicrophone"),
-            MediaSessionAction::TOGGLECAMERA => emlite::Val::from("togglecamera"),
-            MediaSessionAction::TOGGLESCREENSHARE => emlite::Val::from("togglescreenshare"),
-            MediaSessionAction::HANGUP => emlite::Val::from("hangup"),
-            MediaSessionAction::PREVIOUSSLIDE => emlite::Val::from("previousslide"),
-            MediaSessionAction::NEXTSLIDE => emlite::Val::from("nextslide"),
-            MediaSessionAction::ENTERPICTUREINPICTURE => emlite::Val::from("enterpictureinpicture"),
-            MediaSessionAction::VOICEACTIVITY => emlite::Val::from("voiceactivity"),
+            MediaSessionAction::PLAY => Any::from("play"),
+            MediaSessionAction::PAUSE => Any::from("pause"),
+            MediaSessionAction::SEEKBACKWARD => Any::from("seekbackward"),
+            MediaSessionAction::SEEKFORWARD => Any::from("seekforward"),
+            MediaSessionAction::PREVIOUSTRACK => Any::from("previoustrack"),
+            MediaSessionAction::NEXTTRACK => Any::from("nexttrack"),
+            MediaSessionAction::SKIPAD => Any::from("skipad"),
+            MediaSessionAction::STOP => Any::from("stop"),
+            MediaSessionAction::SEEKTO => Any::from("seekto"),
+            MediaSessionAction::TOGGLEMICROPHONE => Any::from("togglemicrophone"),
+            MediaSessionAction::TOGGLECAMERA => Any::from("togglecamera"),
+            MediaSessionAction::TOGGLESCREENSHARE => Any::from("togglescreenshare"),
+            MediaSessionAction::HANGUP => Any::from("hangup"),
+            MediaSessionAction::PREVIOUSSLIDE => Any::from("previousslide"),
+            MediaSessionAction::NEXTSLIDE => Any::from("nextslide"),
+            MediaSessionAction::ENTERPICTUREINPICTURE => Any::from("enterpictureinpicture"),
+            MediaSessionAction::VOICEACTIVITY => Any::from("voiceactivity"),
         }
     }
 }
@@ -5673,33 +5661,33 @@ pub enum BitrateMode {
     VARIABLE,
 }
 impl FromVal for BitrateMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "constant" => Self::CONSTANT,
             "variable" => Self::VARIABLE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<BitrateMode> for emlite::Val {
-    fn from(s: BitrateMode) -> emlite::Val {
+impl From<BitrateMode> for Any {
+    fn from(s: BitrateMode) -> Any {
         match s {
-            BitrateMode::CONSTANT => emlite::Val::from("constant"),
-            BitrateMode::VARIABLE => emlite::Val::from("variable"),
+            BitrateMode::CONSTANT => Any::from("constant"),
+            BitrateMode::VARIABLE => Any::from("variable"),
         }
     }
 }
-impl From<&BitrateMode> for emlite::Val {
-    fn from(s: &BitrateMode) -> emlite::Val {
+impl From<&BitrateMode> for Any {
+    fn from(s: &BitrateMode) -> Any {
         match *s {
-            BitrateMode::CONSTANT => emlite::Val::from("constant"),
-            BitrateMode::VARIABLE => emlite::Val::from("variable"),
+            BitrateMode::CONSTANT => Any::from("constant"),
+            BitrateMode::VARIABLE => Any::from("variable"),
         }
     }
 }
@@ -5711,7 +5699,7 @@ pub enum RecordingState {
     PAUSED,
 }
 impl FromVal for RecordingState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "inactive" => Self::INACTIVE,
             "recording" => Self::RECORDING,
@@ -5719,28 +5707,28 @@ impl FromVal for RecordingState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RecordingState> for emlite::Val {
-    fn from(s: RecordingState) -> emlite::Val {
+impl From<RecordingState> for Any {
+    fn from(s: RecordingState) -> Any {
         match s {
-            RecordingState::INACTIVE => emlite::Val::from("inactive"),
-            RecordingState::RECORDING => emlite::Val::from("recording"),
-            RecordingState::PAUSED => emlite::Val::from("paused"),
+            RecordingState::INACTIVE => Any::from("inactive"),
+            RecordingState::RECORDING => Any::from("recording"),
+            RecordingState::PAUSED => Any::from("paused"),
         }
     }
 }
-impl From<&RecordingState> for emlite::Val {
-    fn from(s: &RecordingState) -> emlite::Val {
+impl From<&RecordingState> for Any {
+    fn from(s: &RecordingState) -> Any {
         match *s {
-            RecordingState::INACTIVE => emlite::Val::from("inactive"),
-            RecordingState::RECORDING => emlite::Val::from("recording"),
-            RecordingState::PAUSED => emlite::Val::from("paused"),
+            RecordingState::INACTIVE => Any::from("inactive"),
+            RecordingState::RECORDING => Any::from("recording"),
+            RecordingState::PAUSED => Any::from("paused"),
         }
     }
 }
@@ -5752,7 +5740,7 @@ pub enum RTCDegradationPreference {
     BALANCED,
 }
 impl FromVal for RTCDegradationPreference {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "maintain-framerate" => Self::MAINTAIN_FRAMERATE,
             "maintain-resolution" => Self::MAINTAIN_RESOLUTION,
@@ -5760,32 +5748,28 @@ impl FromVal for RTCDegradationPreference {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCDegradationPreference> for emlite::Val {
-    fn from(s: RTCDegradationPreference) -> emlite::Val {
+impl From<RTCDegradationPreference> for Any {
+    fn from(s: RTCDegradationPreference) -> Any {
         match s {
-            RTCDegradationPreference::MAINTAIN_FRAMERATE => emlite::Val::from("maintain-framerate"),
-            RTCDegradationPreference::MAINTAIN_RESOLUTION => {
-                emlite::Val::from("maintain-resolution")
-            }
-            RTCDegradationPreference::BALANCED => emlite::Val::from("balanced"),
+            RTCDegradationPreference::MAINTAIN_FRAMERATE => Any::from("maintain-framerate"),
+            RTCDegradationPreference::MAINTAIN_RESOLUTION => Any::from("maintain-resolution"),
+            RTCDegradationPreference::BALANCED => Any::from("balanced"),
         }
     }
 }
-impl From<&RTCDegradationPreference> for emlite::Val {
-    fn from(s: &RTCDegradationPreference) -> emlite::Val {
+impl From<&RTCDegradationPreference> for Any {
+    fn from(s: &RTCDegradationPreference) -> Any {
         match *s {
-            RTCDegradationPreference::MAINTAIN_FRAMERATE => emlite::Val::from("maintain-framerate"),
-            RTCDegradationPreference::MAINTAIN_RESOLUTION => {
-                emlite::Val::from("maintain-resolution")
-            }
-            RTCDegradationPreference::BALANCED => emlite::Val::from("balanced"),
+            RTCDegradationPreference::MAINTAIN_FRAMERATE => Any::from("maintain-framerate"),
+            RTCDegradationPreference::MAINTAIN_RESOLUTION => Any::from("maintain-resolution"),
+            RTCDegradationPreference::BALANCED => Any::from("balanced"),
         }
     }
 }
@@ -5798,7 +5782,7 @@ pub enum NavigationTimingType {
     PRERENDER,
 }
 impl FromVal for NavigationTimingType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "navigate" => Self::NAVIGATE,
             "reload" => Self::RELOAD,
@@ -5807,30 +5791,30 @@ impl FromVal for NavigationTimingType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<NavigationTimingType> for emlite::Val {
-    fn from(s: NavigationTimingType) -> emlite::Val {
+impl From<NavigationTimingType> for Any {
+    fn from(s: NavigationTimingType) -> Any {
         match s {
-            NavigationTimingType::NAVIGATE => emlite::Val::from("navigate"),
-            NavigationTimingType::RELOAD => emlite::Val::from("reload"),
-            NavigationTimingType::BACK_FORWARD => emlite::Val::from("back_forward"),
-            NavigationTimingType::PRERENDER => emlite::Val::from("prerender"),
+            NavigationTimingType::NAVIGATE => Any::from("navigate"),
+            NavigationTimingType::RELOAD => Any::from("reload"),
+            NavigationTimingType::BACK_FORWARD => Any::from("back_forward"),
+            NavigationTimingType::PRERENDER => Any::from("prerender"),
         }
     }
 }
-impl From<&NavigationTimingType> for emlite::Val {
-    fn from(s: &NavigationTimingType) -> emlite::Val {
+impl From<&NavigationTimingType> for Any {
+    fn from(s: &NavigationTimingType) -> Any {
         match *s {
-            NavigationTimingType::NAVIGATE => emlite::Val::from("navigate"),
-            NavigationTimingType::RELOAD => emlite::Val::from("reload"),
-            NavigationTimingType::BACK_FORWARD => emlite::Val::from("back_forward"),
-            NavigationTimingType::PRERENDER => emlite::Val::from("prerender"),
+            NavigationTimingType::NAVIGATE => Any::from("navigate"),
+            NavigationTimingType::RELOAD => Any::from("reload"),
+            NavigationTimingType::BACK_FORWARD => Any::from("back_forward"),
+            NavigationTimingType::PRERENDER => Any::from("prerender"),
         }
     }
 }
@@ -5848,7 +5832,7 @@ pub enum ConnectionType {
     WIMAX,
 }
 impl FromVal for ConnectionType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "bluetooth" => Self::BLUETOOTH,
             "cellular" => Self::CELLULAR,
@@ -5862,40 +5846,40 @@ impl FromVal for ConnectionType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ConnectionType> for emlite::Val {
-    fn from(s: ConnectionType) -> emlite::Val {
+impl From<ConnectionType> for Any {
+    fn from(s: ConnectionType) -> Any {
         match s {
-            ConnectionType::BLUETOOTH => emlite::Val::from("bluetooth"),
-            ConnectionType::CELLULAR => emlite::Val::from("cellular"),
-            ConnectionType::ETHERNET => emlite::Val::from("ethernet"),
-            ConnectionType::MIXED => emlite::Val::from("mixed"),
-            ConnectionType::NONE => emlite::Val::from("none"),
-            ConnectionType::OTHER => emlite::Val::from("other"),
-            ConnectionType::UNKNOWN => emlite::Val::from("unknown"),
-            ConnectionType::WIFI => emlite::Val::from("wifi"),
-            ConnectionType::WIMAX => emlite::Val::from("wimax"),
+            ConnectionType::BLUETOOTH => Any::from("bluetooth"),
+            ConnectionType::CELLULAR => Any::from("cellular"),
+            ConnectionType::ETHERNET => Any::from("ethernet"),
+            ConnectionType::MIXED => Any::from("mixed"),
+            ConnectionType::NONE => Any::from("none"),
+            ConnectionType::OTHER => Any::from("other"),
+            ConnectionType::UNKNOWN => Any::from("unknown"),
+            ConnectionType::WIFI => Any::from("wifi"),
+            ConnectionType::WIMAX => Any::from("wimax"),
         }
     }
 }
-impl From<&ConnectionType> for emlite::Val {
-    fn from(s: &ConnectionType) -> emlite::Val {
+impl From<&ConnectionType> for Any {
+    fn from(s: &ConnectionType) -> Any {
         match *s {
-            ConnectionType::BLUETOOTH => emlite::Val::from("bluetooth"),
-            ConnectionType::CELLULAR => emlite::Val::from("cellular"),
-            ConnectionType::ETHERNET => emlite::Val::from("ethernet"),
-            ConnectionType::MIXED => emlite::Val::from("mixed"),
-            ConnectionType::NONE => emlite::Val::from("none"),
-            ConnectionType::OTHER => emlite::Val::from("other"),
-            ConnectionType::UNKNOWN => emlite::Val::from("unknown"),
-            ConnectionType::WIFI => emlite::Val::from("wifi"),
-            ConnectionType::WIMAX => emlite::Val::from("wimax"),
+            ConnectionType::BLUETOOTH => Any::from("bluetooth"),
+            ConnectionType::CELLULAR => Any::from("cellular"),
+            ConnectionType::ETHERNET => Any::from("ethernet"),
+            ConnectionType::MIXED => Any::from("mixed"),
+            ConnectionType::NONE => Any::from("none"),
+            ConnectionType::OTHER => Any::from("other"),
+            ConnectionType::UNKNOWN => Any::from("unknown"),
+            ConnectionType::WIFI => Any::from("wifi"),
+            ConnectionType::WIMAX => Any::from("wimax"),
         }
     }
 }
@@ -5908,7 +5892,7 @@ pub enum EffectiveConnectionType {
     SLOW_2G,
 }
 impl FromVal for EffectiveConnectionType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "2g" => Self::_2G,
             "3g" => Self::_3G,
@@ -5917,30 +5901,30 @@ impl FromVal for EffectiveConnectionType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<EffectiveConnectionType> for emlite::Val {
-    fn from(s: EffectiveConnectionType) -> emlite::Val {
+impl From<EffectiveConnectionType> for Any {
+    fn from(s: EffectiveConnectionType) -> Any {
         match s {
-            EffectiveConnectionType::_2G => emlite::Val::from("2g"),
-            EffectiveConnectionType::_3G => emlite::Val::from("3g"),
-            EffectiveConnectionType::_4G => emlite::Val::from("4g"),
-            EffectiveConnectionType::SLOW_2G => emlite::Val::from("slow-2g"),
+            EffectiveConnectionType::_2G => Any::from("2g"),
+            EffectiveConnectionType::_3G => Any::from("3g"),
+            EffectiveConnectionType::_4G => Any::from("4g"),
+            EffectiveConnectionType::SLOW_2G => Any::from("slow-2g"),
         }
     }
 }
-impl From<&EffectiveConnectionType> for emlite::Val {
-    fn from(s: &EffectiveConnectionType) -> emlite::Val {
+impl From<&EffectiveConnectionType> for Any {
+    fn from(s: &EffectiveConnectionType) -> Any {
         match *s {
-            EffectiveConnectionType::_2G => emlite::Val::from("2g"),
-            EffectiveConnectionType::_3G => emlite::Val::from("3g"),
-            EffectiveConnectionType::_4G => emlite::Val::from("4g"),
-            EffectiveConnectionType::SLOW_2G => emlite::Val::from("slow-2g"),
+            EffectiveConnectionType::_2G => Any::from("2g"),
+            EffectiveConnectionType::_3G => Any::from("3g"),
+            EffectiveConnectionType::_4G => Any::from("4g"),
+            EffectiveConnectionType::SLOW_2G => Any::from("slow-2g"),
         }
     }
 }
@@ -5952,7 +5936,7 @@ pub enum NotificationPermission {
     GRANTED,
 }
 impl FromVal for NotificationPermission {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "default" => Self::DEFAULT,
             "denied" => Self::DENIED,
@@ -5960,28 +5944,28 @@ impl FromVal for NotificationPermission {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<NotificationPermission> for emlite::Val {
-    fn from(s: NotificationPermission) -> emlite::Val {
+impl From<NotificationPermission> for Any {
+    fn from(s: NotificationPermission) -> Any {
         match s {
-            NotificationPermission::DEFAULT => emlite::Val::from("default"),
-            NotificationPermission::DENIED => emlite::Val::from("denied"),
-            NotificationPermission::GRANTED => emlite::Val::from("granted"),
+            NotificationPermission::DEFAULT => Any::from("default"),
+            NotificationPermission::DENIED => Any::from("denied"),
+            NotificationPermission::GRANTED => Any::from("granted"),
         }
     }
 }
-impl From<&NotificationPermission> for emlite::Val {
-    fn from(s: &NotificationPermission) -> emlite::Val {
+impl From<&NotificationPermission> for Any {
+    fn from(s: &NotificationPermission) -> Any {
         match *s {
-            NotificationPermission::DEFAULT => emlite::Val::from("default"),
-            NotificationPermission::DENIED => emlite::Val::from("denied"),
-            NotificationPermission::GRANTED => emlite::Val::from("granted"),
+            NotificationPermission::DEFAULT => Any::from("default"),
+            NotificationPermission::DENIED => Any::from("denied"),
+            NotificationPermission::GRANTED => Any::from("granted"),
         }
     }
 }
@@ -5993,7 +5977,7 @@ pub enum NotificationDirection {
     RTL,
 }
 impl FromVal for NotificationDirection {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "auto" => Self::AUTO,
             "ltr" => Self::LTR,
@@ -6001,28 +5985,28 @@ impl FromVal for NotificationDirection {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<NotificationDirection> for emlite::Val {
-    fn from(s: NotificationDirection) -> emlite::Val {
+impl From<NotificationDirection> for Any {
+    fn from(s: NotificationDirection) -> Any {
         match s {
-            NotificationDirection::AUTO => emlite::Val::from("auto"),
-            NotificationDirection::LTR => emlite::Val::from("ltr"),
-            NotificationDirection::RTL => emlite::Val::from("rtl"),
+            NotificationDirection::AUTO => Any::from("auto"),
+            NotificationDirection::LTR => Any::from("ltr"),
+            NotificationDirection::RTL => Any::from("rtl"),
         }
     }
 }
-impl From<&NotificationDirection> for emlite::Val {
-    fn from(s: &NotificationDirection) -> emlite::Val {
+impl From<&NotificationDirection> for Any {
+    fn from(s: &NotificationDirection) -> Any {
         match *s {
-            NotificationDirection::AUTO => emlite::Val::from("auto"),
-            NotificationDirection::LTR => emlite::Val::from("ltr"),
-            NotificationDirection::RTL => emlite::Val::from("rtl"),
+            NotificationDirection::AUTO => Any::from("auto"),
+            NotificationDirection::LTR => Any::from("ltr"),
+            NotificationDirection::RTL => Any::from("rtl"),
         }
     }
 }
@@ -6033,33 +6017,33 @@ pub enum OrientationSensorLocalCoordinateSystem {
     SCREEN,
 }
 impl FromVal for OrientationSensorLocalCoordinateSystem {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "device" => Self::DEVICE,
             "screen" => Self::SCREEN,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<OrientationSensorLocalCoordinateSystem> for emlite::Val {
-    fn from(s: OrientationSensorLocalCoordinateSystem) -> emlite::Val {
+impl From<OrientationSensorLocalCoordinateSystem> for Any {
+    fn from(s: OrientationSensorLocalCoordinateSystem) -> Any {
         match s {
-            OrientationSensorLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
-            OrientationSensorLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+            OrientationSensorLocalCoordinateSystem::DEVICE => Any::from("device"),
+            OrientationSensorLocalCoordinateSystem::SCREEN => Any::from("screen"),
         }
     }
 }
-impl From<&OrientationSensorLocalCoordinateSystem> for emlite::Val {
-    fn from(s: &OrientationSensorLocalCoordinateSystem) -> emlite::Val {
+impl From<&OrientationSensorLocalCoordinateSystem> for Any {
+    fn from(s: &OrientationSensorLocalCoordinateSystem) -> Any {
         match *s {
-            OrientationSensorLocalCoordinateSystem::DEVICE => emlite::Val::from("device"),
-            OrientationSensorLocalCoordinateSystem::SCREEN => emlite::Val::from("screen"),
+            OrientationSensorLocalCoordinateSystem::DEVICE => Any::from("device"),
+            OrientationSensorLocalCoordinateSystem::SCREEN => Any::from("screen"),
         }
     }
 }
@@ -6070,33 +6054,33 @@ pub enum ClientLifecycleState {
     FROZEN,
 }
 impl FromVal for ClientLifecycleState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "active" => Self::ACTIVE,
             "frozen" => Self::FROZEN,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ClientLifecycleState> for emlite::Val {
-    fn from(s: ClientLifecycleState) -> emlite::Val {
+impl From<ClientLifecycleState> for Any {
+    fn from(s: ClientLifecycleState) -> Any {
         match s {
-            ClientLifecycleState::ACTIVE => emlite::Val::from("active"),
-            ClientLifecycleState::FROZEN => emlite::Val::from("frozen"),
+            ClientLifecycleState::ACTIVE => Any::from("active"),
+            ClientLifecycleState::FROZEN => Any::from("frozen"),
         }
     }
 }
-impl From<&ClientLifecycleState> for emlite::Val {
-    fn from(s: &ClientLifecycleState) -> emlite::Val {
+impl From<&ClientLifecycleState> for Any {
+    fn from(s: &ClientLifecycleState) -> Any {
         match *s {
-            ClientLifecycleState::ACTIVE => emlite::Val::from("active"),
-            ClientLifecycleState::FROZEN => emlite::Val::from("frozen"),
+            ClientLifecycleState::ACTIVE => Any::from("active"),
+            ClientLifecycleState::FROZEN => Any::from("frozen"),
         }
     }
 }
@@ -6109,7 +6093,7 @@ pub enum PaymentDelegation {
     PAYER_EMAIL,
 }
 impl FromVal for PaymentDelegation {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "shippingAddress" => Self::SHIPPING_ADDRESS,
             "payerName" => Self::PAYER_NAME,
@@ -6118,30 +6102,30 @@ impl FromVal for PaymentDelegation {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PaymentDelegation> for emlite::Val {
-    fn from(s: PaymentDelegation) -> emlite::Val {
+impl From<PaymentDelegation> for Any {
+    fn from(s: PaymentDelegation) -> Any {
         match s {
-            PaymentDelegation::SHIPPING_ADDRESS => emlite::Val::from("shippingAddress"),
-            PaymentDelegation::PAYER_NAME => emlite::Val::from("payerName"),
-            PaymentDelegation::PAYER_PHONE => emlite::Val::from("payerPhone"),
-            PaymentDelegation::PAYER_EMAIL => emlite::Val::from("payerEmail"),
+            PaymentDelegation::SHIPPING_ADDRESS => Any::from("shippingAddress"),
+            PaymentDelegation::PAYER_NAME => Any::from("payerName"),
+            PaymentDelegation::PAYER_PHONE => Any::from("payerPhone"),
+            PaymentDelegation::PAYER_EMAIL => Any::from("payerEmail"),
         }
     }
 }
-impl From<&PaymentDelegation> for emlite::Val {
-    fn from(s: &PaymentDelegation) -> emlite::Val {
+impl From<&PaymentDelegation> for Any {
+    fn from(s: &PaymentDelegation) -> Any {
         match *s {
-            PaymentDelegation::SHIPPING_ADDRESS => emlite::Val::from("shippingAddress"),
-            PaymentDelegation::PAYER_NAME => emlite::Val::from("payerName"),
-            PaymentDelegation::PAYER_PHONE => emlite::Val::from("payerPhone"),
-            PaymentDelegation::PAYER_EMAIL => emlite::Val::from("payerEmail"),
+            PaymentDelegation::SHIPPING_ADDRESS => Any::from("shippingAddress"),
+            PaymentDelegation::PAYER_NAME => Any::from("payerName"),
+            PaymentDelegation::PAYER_PHONE => Any::from("payerPhone"),
+            PaymentDelegation::PAYER_EMAIL => Any::from("payerEmail"),
         }
     }
 }
@@ -6153,7 +6137,7 @@ pub enum PaymentShippingType {
     PICKUP,
 }
 impl FromVal for PaymentShippingType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "shipping" => Self::SHIPPING,
             "delivery" => Self::DELIVERY,
@@ -6161,28 +6145,28 @@ impl FromVal for PaymentShippingType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PaymentShippingType> for emlite::Val {
-    fn from(s: PaymentShippingType) -> emlite::Val {
+impl From<PaymentShippingType> for Any {
+    fn from(s: PaymentShippingType) -> Any {
         match s {
-            PaymentShippingType::SHIPPING => emlite::Val::from("shipping"),
-            PaymentShippingType::DELIVERY => emlite::Val::from("delivery"),
-            PaymentShippingType::PICKUP => emlite::Val::from("pickup"),
+            PaymentShippingType::SHIPPING => Any::from("shipping"),
+            PaymentShippingType::DELIVERY => Any::from("delivery"),
+            PaymentShippingType::PICKUP => Any::from("pickup"),
         }
     }
 }
-impl From<&PaymentShippingType> for emlite::Val {
-    fn from(s: &PaymentShippingType) -> emlite::Val {
+impl From<&PaymentShippingType> for Any {
+    fn from(s: &PaymentShippingType) -> Any {
         match *s {
-            PaymentShippingType::SHIPPING => emlite::Val::from("shipping"),
-            PaymentShippingType::DELIVERY => emlite::Val::from("delivery"),
-            PaymentShippingType::PICKUP => emlite::Val::from("pickup"),
+            PaymentShippingType::SHIPPING => Any::from("shipping"),
+            PaymentShippingType::DELIVERY => Any::from("delivery"),
+            PaymentShippingType::PICKUP => Any::from("pickup"),
         }
     }
 }
@@ -6194,7 +6178,7 @@ pub enum PaymentComplete {
     UNKNOWN,
 }
 impl FromVal for PaymentComplete {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "fail" => Self::FAIL,
             "success" => Self::SUCCESS,
@@ -6202,28 +6186,28 @@ impl FromVal for PaymentComplete {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PaymentComplete> for emlite::Val {
-    fn from(s: PaymentComplete) -> emlite::Val {
+impl From<PaymentComplete> for Any {
+    fn from(s: PaymentComplete) -> Any {
         match s {
-            PaymentComplete::FAIL => emlite::Val::from("fail"),
-            PaymentComplete::SUCCESS => emlite::Val::from("success"),
-            PaymentComplete::UNKNOWN => emlite::Val::from("unknown"),
+            PaymentComplete::FAIL => Any::from("fail"),
+            PaymentComplete::SUCCESS => Any::from("success"),
+            PaymentComplete::UNKNOWN => Any::from("unknown"),
         }
     }
 }
-impl From<&PaymentComplete> for emlite::Val {
-    fn from(s: &PaymentComplete) -> emlite::Val {
+impl From<&PaymentComplete> for Any {
+    fn from(s: &PaymentComplete) -> Any {
         match *s {
-            PaymentComplete::FAIL => emlite::Val::from("fail"),
-            PaymentComplete::SUCCESS => emlite::Val::from("success"),
-            PaymentComplete::UNKNOWN => emlite::Val::from("unknown"),
+            PaymentComplete::FAIL => Any::from("fail"),
+            PaymentComplete::SUCCESS => Any::from("success"),
+            PaymentComplete::UNKNOWN => Any::from("unknown"),
         }
     }
 }
@@ -6235,7 +6219,7 @@ pub enum PermissionState {
     PROMPT,
 }
 impl FromVal for PermissionState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "granted" => Self::GRANTED,
             "denied" => Self::DENIED,
@@ -6243,28 +6227,28 @@ impl FromVal for PermissionState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PermissionState> for emlite::Val {
-    fn from(s: PermissionState) -> emlite::Val {
+impl From<PermissionState> for Any {
+    fn from(s: PermissionState) -> Any {
         match s {
-            PermissionState::GRANTED => emlite::Val::from("granted"),
-            PermissionState::DENIED => emlite::Val::from("denied"),
-            PermissionState::PROMPT => emlite::Val::from("prompt"),
+            PermissionState::GRANTED => Any::from("granted"),
+            PermissionState::DENIED => Any::from("denied"),
+            PermissionState::PROMPT => Any::from("prompt"),
         }
     }
 }
-impl From<&PermissionState> for emlite::Val {
-    fn from(s: &PermissionState) -> emlite::Val {
+impl From<&PermissionState> for Any {
+    fn from(s: &PermissionState) -> Any {
         match *s {
-            PermissionState::GRANTED => emlite::Val::from("granted"),
-            PermissionState::DENIED => emlite::Val::from("denied"),
-            PermissionState::PROMPT => emlite::Val::from("prompt"),
+            PermissionState::GRANTED => Any::from("granted"),
+            PermissionState::DENIED => Any::from("denied"),
+            PermissionState::PROMPT => Any::from("prompt"),
         }
     }
 }
@@ -6277,7 +6261,7 @@ pub enum PointerAxis {
     Y,
 }
 impl FromVal for PointerAxis {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "block" => Self::BLOCK,
             "inline" => Self::INLINE,
@@ -6286,30 +6270,30 @@ impl FromVal for PointerAxis {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PointerAxis> for emlite::Val {
-    fn from(s: PointerAxis) -> emlite::Val {
+impl From<PointerAxis> for Any {
+    fn from(s: PointerAxis) -> Any {
         match s {
-            PointerAxis::BLOCK => emlite::Val::from("block"),
-            PointerAxis::INLINE => emlite::Val::from("inline"),
-            PointerAxis::X => emlite::Val::from("x"),
-            PointerAxis::Y => emlite::Val::from("y"),
+            PointerAxis::BLOCK => Any::from("block"),
+            PointerAxis::INLINE => Any::from("inline"),
+            PointerAxis::X => Any::from("x"),
+            PointerAxis::Y => Any::from("y"),
         }
     }
 }
-impl From<&PointerAxis> for emlite::Val {
-    fn from(s: &PointerAxis) -> emlite::Val {
+impl From<&PointerAxis> for Any {
+    fn from(s: &PointerAxis) -> Any {
         match *s {
-            PointerAxis::BLOCK => emlite::Val::from("block"),
-            PointerAxis::INLINE => emlite::Val::from("inline"),
-            PointerAxis::X => emlite::Val::from("x"),
-            PointerAxis::Y => emlite::Val::from("y"),
+            PointerAxis::BLOCK => Any::from("block"),
+            PointerAxis::INLINE => Any::from("inline"),
+            PointerAxis::X => Any::from("x"),
+            PointerAxis::Y => Any::from("y"),
         }
     }
 }
@@ -6322,7 +6306,7 @@ pub enum PresentationConnectionState {
     TERMINATED,
 }
 impl FromVal for PresentationConnectionState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "connecting" => Self::CONNECTING,
             "connected" => Self::CONNECTED,
@@ -6331,30 +6315,30 @@ impl FromVal for PresentationConnectionState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PresentationConnectionState> for emlite::Val {
-    fn from(s: PresentationConnectionState) -> emlite::Val {
+impl From<PresentationConnectionState> for Any {
+    fn from(s: PresentationConnectionState) -> Any {
         match s {
-            PresentationConnectionState::CONNECTING => emlite::Val::from("connecting"),
-            PresentationConnectionState::CONNECTED => emlite::Val::from("connected"),
-            PresentationConnectionState::CLOSED => emlite::Val::from("closed"),
-            PresentationConnectionState::TERMINATED => emlite::Val::from("terminated"),
+            PresentationConnectionState::CONNECTING => Any::from("connecting"),
+            PresentationConnectionState::CONNECTED => Any::from("connected"),
+            PresentationConnectionState::CLOSED => Any::from("closed"),
+            PresentationConnectionState::TERMINATED => Any::from("terminated"),
         }
     }
 }
-impl From<&PresentationConnectionState> for emlite::Val {
-    fn from(s: &PresentationConnectionState) -> emlite::Val {
+impl From<&PresentationConnectionState> for Any {
+    fn from(s: &PresentationConnectionState) -> Any {
         match *s {
-            PresentationConnectionState::CONNECTING => emlite::Val::from("connecting"),
-            PresentationConnectionState::CONNECTED => emlite::Val::from("connected"),
-            PresentationConnectionState::CLOSED => emlite::Val::from("closed"),
-            PresentationConnectionState::TERMINATED => emlite::Val::from("terminated"),
+            PresentationConnectionState::CONNECTING => Any::from("connecting"),
+            PresentationConnectionState::CONNECTED => Any::from("connected"),
+            PresentationConnectionState::CLOSED => Any::from("closed"),
+            PresentationConnectionState::TERMINATED => Any::from("terminated"),
         }
     }
 }
@@ -6366,7 +6350,7 @@ pub enum PresentationConnectionCloseReason {
     WENTAWAY,
 }
 impl FromVal for PresentationConnectionCloseReason {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "error" => Self::ERROR,
             "closed" => Self::CLOSED,
@@ -6374,28 +6358,28 @@ impl FromVal for PresentationConnectionCloseReason {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PresentationConnectionCloseReason> for emlite::Val {
-    fn from(s: PresentationConnectionCloseReason) -> emlite::Val {
+impl From<PresentationConnectionCloseReason> for Any {
+    fn from(s: PresentationConnectionCloseReason) -> Any {
         match s {
-            PresentationConnectionCloseReason::ERROR => emlite::Val::from("error"),
-            PresentationConnectionCloseReason::CLOSED => emlite::Val::from("closed"),
-            PresentationConnectionCloseReason::WENTAWAY => emlite::Val::from("wentaway"),
+            PresentationConnectionCloseReason::ERROR => Any::from("error"),
+            PresentationConnectionCloseReason::CLOSED => Any::from("closed"),
+            PresentationConnectionCloseReason::WENTAWAY => Any::from("wentaway"),
         }
     }
 }
-impl From<&PresentationConnectionCloseReason> for emlite::Val {
-    fn from(s: &PresentationConnectionCloseReason) -> emlite::Val {
+impl From<&PresentationConnectionCloseReason> for Any {
+    fn from(s: &PresentationConnectionCloseReason) -> Any {
         match *s {
-            PresentationConnectionCloseReason::ERROR => emlite::Val::from("error"),
-            PresentationConnectionCloseReason::CLOSED => emlite::Val::from("closed"),
-            PresentationConnectionCloseReason::WENTAWAY => emlite::Val::from("wentaway"),
+            PresentationConnectionCloseReason::ERROR => Any::from("error"),
+            PresentationConnectionCloseReason::CLOSED => Any::from("closed"),
+            PresentationConnectionCloseReason::WENTAWAY => Any::from("wentaway"),
         }
     }
 }
@@ -6406,37 +6390,37 @@ pub enum PrivateAttributionAggregationProtocol {
     TEE_00,
 }
 impl FromVal for PrivateAttributionAggregationProtocol {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "dap-12-histogram" => Self::DAP_12_HISTOGRAM,
             "tee-00" => Self::TEE_00,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PrivateAttributionAggregationProtocol> for emlite::Val {
-    fn from(s: PrivateAttributionAggregationProtocol) -> emlite::Val {
+impl From<PrivateAttributionAggregationProtocol> for Any {
+    fn from(s: PrivateAttributionAggregationProtocol) -> Any {
         match s {
             PrivateAttributionAggregationProtocol::DAP_12_HISTOGRAM => {
-                emlite::Val::from("dap-12-histogram")
+                Any::from("dap-12-histogram")
             }
-            PrivateAttributionAggregationProtocol::TEE_00 => emlite::Val::from("tee-00"),
+            PrivateAttributionAggregationProtocol::TEE_00 => Any::from("tee-00"),
         }
     }
 }
-impl From<&PrivateAttributionAggregationProtocol> for emlite::Val {
-    fn from(s: &PrivateAttributionAggregationProtocol) -> emlite::Val {
+impl From<&PrivateAttributionAggregationProtocol> for Any {
+    fn from(s: &PrivateAttributionAggregationProtocol) -> Any {
         match *s {
             PrivateAttributionAggregationProtocol::DAP_12_HISTOGRAM => {
-                emlite::Val::from("dap-12-histogram")
+                Any::from("dap-12-histogram")
             }
-            PrivateAttributionAggregationProtocol::TEE_00 => emlite::Val::from("tee-00"),
+            PrivateAttributionAggregationProtocol::TEE_00 => Any::from("tee-00"),
         }
     }
 }
@@ -6446,30 +6430,30 @@ pub enum AttributionLogic {
     LAST_TOUCH,
 }
 impl FromVal for AttributionLogic {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "last-touch" => Self::LAST_TOUCH,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AttributionLogic> for emlite::Val {
-    fn from(s: AttributionLogic) -> emlite::Val {
+impl From<AttributionLogic> for Any {
+    fn from(s: AttributionLogic) -> Any {
         match s {
-            AttributionLogic::LAST_TOUCH => emlite::Val::from("last-touch"),
+            AttributionLogic::LAST_TOUCH => Any::from("last-touch"),
         }
     }
 }
-impl From<&AttributionLogic> for emlite::Val {
-    fn from(s: &AttributionLogic) -> emlite::Val {
+impl From<&AttributionLogic> for Any {
+    fn from(s: &AttributionLogic) -> Any {
         match *s {
-            AttributionLogic::LAST_TOUCH => emlite::Val::from("last-touch"),
+            AttributionLogic::LAST_TOUCH => Any::from("last-touch"),
         }
     }
 }
@@ -6481,7 +6465,7 @@ pub enum IPAddressSpace {
     LOCAL,
 }
 impl FromVal for IPAddressSpace {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "public" => Self::PUBLIC,
             "private" => Self::PRIVATE,
@@ -6489,28 +6473,28 @@ impl FromVal for IPAddressSpace {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<IPAddressSpace> for emlite::Val {
-    fn from(s: IPAddressSpace) -> emlite::Val {
+impl From<IPAddressSpace> for Any {
+    fn from(s: IPAddressSpace) -> Any {
         match s {
-            IPAddressSpace::PUBLIC => emlite::Val::from("public"),
-            IPAddressSpace::PRIVATE => emlite::Val::from("private"),
-            IPAddressSpace::LOCAL => emlite::Val::from("local"),
+            IPAddressSpace::PUBLIC => Any::from("public"),
+            IPAddressSpace::PRIVATE => Any::from("private"),
+            IPAddressSpace::LOCAL => Any::from("local"),
         }
     }
 }
-impl From<&IPAddressSpace> for emlite::Val {
-    fn from(s: &IPAddressSpace) -> emlite::Val {
+impl From<&IPAddressSpace> for Any {
+    fn from(s: &IPAddressSpace) -> Any {
         match *s {
-            IPAddressSpace::PUBLIC => emlite::Val::from("public"),
-            IPAddressSpace::PRIVATE => emlite::Val::from("private"),
-            IPAddressSpace::LOCAL => emlite::Val::from("local"),
+            IPAddressSpace::PUBLIC => Any::from("public"),
+            IPAddressSpace::PRIVATE => Any::from("private"),
+            IPAddressSpace::LOCAL => Any::from("local"),
         }
     }
 }
@@ -6521,33 +6505,33 @@ pub enum PushEncryptionKeyName {
     AUTH,
 }
 impl FromVal for PushEncryptionKeyName {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "p256dh" => Self::P256DH,
             "auth" => Self::AUTH,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PushEncryptionKeyName> for emlite::Val {
-    fn from(s: PushEncryptionKeyName) -> emlite::Val {
+impl From<PushEncryptionKeyName> for Any {
+    fn from(s: PushEncryptionKeyName) -> Any {
         match s {
-            PushEncryptionKeyName::P256DH => emlite::Val::from("p256dh"),
-            PushEncryptionKeyName::AUTH => emlite::Val::from("auth"),
+            PushEncryptionKeyName::P256DH => Any::from("p256dh"),
+            PushEncryptionKeyName::AUTH => Any::from("auth"),
         }
     }
 }
-impl From<&PushEncryptionKeyName> for emlite::Val {
-    fn from(s: &PushEncryptionKeyName) -> emlite::Val {
+impl From<&PushEncryptionKeyName> for Any {
+    fn from(s: &PushEncryptionKeyName) -> Any {
         match *s {
-            PushEncryptionKeyName::P256DH => emlite::Val::from("p256dh"),
-            PushEncryptionKeyName::AUTH => emlite::Val::from("auth"),
+            PushEncryptionKeyName::P256DH => Any::from("p256dh"),
+            PushEncryptionKeyName::AUTH => Any::from("auth"),
         }
     }
 }
@@ -6565,7 +6549,7 @@ pub enum ReferrerPolicy {
     UNSAFE_URL,
 }
 impl FromVal for ReferrerPolicy {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "" => Self::NONE,
             "no-referrer" => Self::NO_REFERRER,
@@ -6579,52 +6563,44 @@ impl FromVal for ReferrerPolicy {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ReferrerPolicy> for emlite::Val {
-    fn from(s: ReferrerPolicy) -> emlite::Val {
+impl From<ReferrerPolicy> for Any {
+    fn from(s: ReferrerPolicy) -> Any {
         match s {
-            ReferrerPolicy::NONE => emlite::Val::from(""),
-            ReferrerPolicy::NO_REFERRER => emlite::Val::from("no-referrer"),
-            ReferrerPolicy::NO_REFERRER_WHEN_DOWNGRADE => {
-                emlite::Val::from("no-referrer-when-downgrade")
-            }
-            ReferrerPolicy::SAME_ORIGIN => emlite::Val::from("same-origin"),
-            ReferrerPolicy::ORIGIN => emlite::Val::from("origin"),
-            ReferrerPolicy::STRICT_ORIGIN => emlite::Val::from("strict-origin"),
-            ReferrerPolicy::ORIGIN_WHEN_CROSS_ORIGIN => {
-                emlite::Val::from("origin-when-cross-origin")
-            }
+            ReferrerPolicy::NONE => Any::from(""),
+            ReferrerPolicy::NO_REFERRER => Any::from("no-referrer"),
+            ReferrerPolicy::NO_REFERRER_WHEN_DOWNGRADE => Any::from("no-referrer-when-downgrade"),
+            ReferrerPolicy::SAME_ORIGIN => Any::from("same-origin"),
+            ReferrerPolicy::ORIGIN => Any::from("origin"),
+            ReferrerPolicy::STRICT_ORIGIN => Any::from("strict-origin"),
+            ReferrerPolicy::ORIGIN_WHEN_CROSS_ORIGIN => Any::from("origin-when-cross-origin"),
             ReferrerPolicy::STRICT_ORIGIN_WHEN_CROSS_ORIGIN => {
-                emlite::Val::from("strict-origin-when-cross-origin")
+                Any::from("strict-origin-when-cross-origin")
             }
-            ReferrerPolicy::UNSAFE_URL => emlite::Val::from("unsafe-url"),
+            ReferrerPolicy::UNSAFE_URL => Any::from("unsafe-url"),
         }
     }
 }
-impl From<&ReferrerPolicy> for emlite::Val {
-    fn from(s: &ReferrerPolicy) -> emlite::Val {
+impl From<&ReferrerPolicy> for Any {
+    fn from(s: &ReferrerPolicy) -> Any {
         match *s {
-            ReferrerPolicy::NONE => emlite::Val::from(""),
-            ReferrerPolicy::NO_REFERRER => emlite::Val::from("no-referrer"),
-            ReferrerPolicy::NO_REFERRER_WHEN_DOWNGRADE => {
-                emlite::Val::from("no-referrer-when-downgrade")
-            }
-            ReferrerPolicy::SAME_ORIGIN => emlite::Val::from("same-origin"),
-            ReferrerPolicy::ORIGIN => emlite::Val::from("origin"),
-            ReferrerPolicy::STRICT_ORIGIN => emlite::Val::from("strict-origin"),
-            ReferrerPolicy::ORIGIN_WHEN_CROSS_ORIGIN => {
-                emlite::Val::from("origin-when-cross-origin")
-            }
+            ReferrerPolicy::NONE => Any::from(""),
+            ReferrerPolicy::NO_REFERRER => Any::from("no-referrer"),
+            ReferrerPolicy::NO_REFERRER_WHEN_DOWNGRADE => Any::from("no-referrer-when-downgrade"),
+            ReferrerPolicy::SAME_ORIGIN => Any::from("same-origin"),
+            ReferrerPolicy::ORIGIN => Any::from("origin"),
+            ReferrerPolicy::STRICT_ORIGIN => Any::from("strict-origin"),
+            ReferrerPolicy::ORIGIN_WHEN_CROSS_ORIGIN => Any::from("origin-when-cross-origin"),
             ReferrerPolicy::STRICT_ORIGIN_WHEN_CROSS_ORIGIN => {
-                emlite::Val::from("strict-origin-when-cross-origin")
+                Any::from("strict-origin-when-cross-origin")
             }
-            ReferrerPolicy::UNSAFE_URL => emlite::Val::from("unsafe-url"),
+            ReferrerPolicy::UNSAFE_URL => Any::from("unsafe-url"),
         }
     }
 }
@@ -6636,7 +6612,7 @@ pub enum RemotePlaybackState {
     DISCONNECTED,
 }
 impl FromVal for RemotePlaybackState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "connecting" => Self::CONNECTING,
             "connected" => Self::CONNECTED,
@@ -6644,28 +6620,28 @@ impl FromVal for RemotePlaybackState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RemotePlaybackState> for emlite::Val {
-    fn from(s: RemotePlaybackState) -> emlite::Val {
+impl From<RemotePlaybackState> for Any {
+    fn from(s: RemotePlaybackState) -> Any {
         match s {
-            RemotePlaybackState::CONNECTING => emlite::Val::from("connecting"),
-            RemotePlaybackState::CONNECTED => emlite::Val::from("connected"),
-            RemotePlaybackState::DISCONNECTED => emlite::Val::from("disconnected"),
+            RemotePlaybackState::CONNECTING => Any::from("connecting"),
+            RemotePlaybackState::CONNECTED => Any::from("connected"),
+            RemotePlaybackState::DISCONNECTED => Any::from("disconnected"),
         }
     }
 }
-impl From<&RemotePlaybackState> for emlite::Val {
-    fn from(s: &RemotePlaybackState) -> emlite::Val {
+impl From<&RemotePlaybackState> for Any {
+    fn from(s: &RemotePlaybackState) -> Any {
         match *s {
-            RemotePlaybackState::CONNECTING => emlite::Val::from("connecting"),
-            RemotePlaybackState::CONNECTED => emlite::Val::from("connected"),
-            RemotePlaybackState::DISCONNECTED => emlite::Val::from("disconnected"),
+            RemotePlaybackState::CONNECTING => Any::from("connecting"),
+            RemotePlaybackState::CONNECTED => Any::from("connected"),
+            RemotePlaybackState::DISCONNECTED => Any::from("disconnected"),
         }
     }
 }
@@ -6677,7 +6653,7 @@ pub enum ResizeObserverBoxOptions {
     DEVICE_PIXEL_CONTENT_BOX,
 }
 impl FromVal for ResizeObserverBoxOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "border-box" => Self::BORDER_BOX,
             "content-box" => Self::CONTENT_BOX,
@@ -6685,31 +6661,31 @@ impl FromVal for ResizeObserverBoxOptions {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ResizeObserverBoxOptions> for emlite::Val {
-    fn from(s: ResizeObserverBoxOptions) -> emlite::Val {
+impl From<ResizeObserverBoxOptions> for Any {
+    fn from(s: ResizeObserverBoxOptions) -> Any {
         match s {
-            ResizeObserverBoxOptions::BORDER_BOX => emlite::Val::from("border-box"),
-            ResizeObserverBoxOptions::CONTENT_BOX => emlite::Val::from("content-box"),
+            ResizeObserverBoxOptions::BORDER_BOX => Any::from("border-box"),
+            ResizeObserverBoxOptions::CONTENT_BOX => Any::from("content-box"),
             ResizeObserverBoxOptions::DEVICE_PIXEL_CONTENT_BOX => {
-                emlite::Val::from("device-pixel-content-box")
+                Any::from("device-pixel-content-box")
             }
         }
     }
 }
-impl From<&ResizeObserverBoxOptions> for emlite::Val {
-    fn from(s: &ResizeObserverBoxOptions) -> emlite::Val {
+impl From<&ResizeObserverBoxOptions> for Any {
+    fn from(s: &ResizeObserverBoxOptions) -> Any {
         match *s {
-            ResizeObserverBoxOptions::BORDER_BOX => emlite::Val::from("border-box"),
-            ResizeObserverBoxOptions::CONTENT_BOX => emlite::Val::from("content-box"),
+            ResizeObserverBoxOptions::BORDER_BOX => Any::from("border-box"),
+            ResizeObserverBoxOptions::CONTENT_BOX => Any::from("content-box"),
             ResizeObserverBoxOptions::DEVICE_PIXEL_CONTENT_BOX => {
-                emlite::Val::from("device-pixel-content-box")
+                Any::from("device-pixel-content-box")
             }
         }
     }
@@ -6721,33 +6697,33 @@ pub enum RenderBlockingStatusType {
     NON_BLOCKING,
 }
 impl FromVal for RenderBlockingStatusType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "blocking" => Self::BLOCKING,
             "non-blocking" => Self::NON_BLOCKING,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RenderBlockingStatusType> for emlite::Val {
-    fn from(s: RenderBlockingStatusType) -> emlite::Val {
+impl From<RenderBlockingStatusType> for Any {
+    fn from(s: RenderBlockingStatusType) -> Any {
         match s {
-            RenderBlockingStatusType::BLOCKING => emlite::Val::from("blocking"),
-            RenderBlockingStatusType::NON_BLOCKING => emlite::Val::from("non-blocking"),
+            RenderBlockingStatusType::BLOCKING => Any::from("blocking"),
+            RenderBlockingStatusType::NON_BLOCKING => Any::from("non-blocking"),
         }
     }
 }
-impl From<&RenderBlockingStatusType> for emlite::Val {
-    fn from(s: &RenderBlockingStatusType) -> emlite::Val {
+impl From<&RenderBlockingStatusType> for Any {
+    fn from(s: &RenderBlockingStatusType) -> Any {
         match *s {
-            RenderBlockingStatusType::BLOCKING => emlite::Val::from("blocking"),
-            RenderBlockingStatusType::NON_BLOCKING => emlite::Val::from("non-blocking"),
+            RenderBlockingStatusType::BLOCKING => Any::from("blocking"),
+            RenderBlockingStatusType::NON_BLOCKING => Any::from("non-blocking"),
         }
     }
 }
@@ -6758,33 +6734,33 @@ pub enum SameSiteCookiesType {
     NONE,
 }
 impl FromVal for SameSiteCookiesType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "all" => Self::ALL,
             "none" => Self::NONE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SameSiteCookiesType> for emlite::Val {
-    fn from(s: SameSiteCookiesType) -> emlite::Val {
+impl From<SameSiteCookiesType> for Any {
+    fn from(s: SameSiteCookiesType) -> Any {
         match s {
-            SameSiteCookiesType::ALL => emlite::Val::from("all"),
-            SameSiteCookiesType::NONE => emlite::Val::from("none"),
+            SameSiteCookiesType::ALL => Any::from("all"),
+            SameSiteCookiesType::NONE => Any::from("none"),
         }
     }
 }
-impl From<&SameSiteCookiesType> for emlite::Val {
-    fn from(s: &SameSiteCookiesType) -> emlite::Val {
+impl From<&SameSiteCookiesType> for Any {
+    fn from(s: &SameSiteCookiesType) -> Any {
         match *s {
-            SameSiteCookiesType::ALL => emlite::Val::from("all"),
-            SameSiteCookiesType::NONE => emlite::Val::from("none"),
+            SameSiteCookiesType::ALL => Any::from("all"),
+            SameSiteCookiesType::NONE => Any::from("none"),
         }
     }
 }
@@ -6794,30 +6770,30 @@ pub enum SanitizerPresets {
     DEFAULT,
 }
 impl FromVal for SanitizerPresets {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "default" => Self::DEFAULT,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SanitizerPresets> for emlite::Val {
-    fn from(s: SanitizerPresets) -> emlite::Val {
+impl From<SanitizerPresets> for Any {
+    fn from(s: SanitizerPresets) -> Any {
         match s {
-            SanitizerPresets::DEFAULT => emlite::Val::from("default"),
+            SanitizerPresets::DEFAULT => Any::from("default"),
         }
     }
 }
-impl From<&SanitizerPresets> for emlite::Val {
-    fn from(s: &SanitizerPresets) -> emlite::Val {
+impl From<&SanitizerPresets> for Any {
+    fn from(s: &SanitizerPresets) -> Any {
         match *s {
-            SanitizerPresets::DEFAULT => emlite::Val::from("default"),
+            SanitizerPresets::DEFAULT => Any::from("default"),
         }
     }
 }
@@ -6829,7 +6805,7 @@ pub enum TaskPriority {
     BACKGROUND,
 }
 impl FromVal for TaskPriority {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "user-blocking" => Self::USER_BLOCKING,
             "user-visible" => Self::USER_VISIBLE,
@@ -6837,28 +6813,28 @@ impl FromVal for TaskPriority {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<TaskPriority> for emlite::Val {
-    fn from(s: TaskPriority) -> emlite::Val {
+impl From<TaskPriority> for Any {
+    fn from(s: TaskPriority) -> Any {
         match s {
-            TaskPriority::USER_BLOCKING => emlite::Val::from("user-blocking"),
-            TaskPriority::USER_VISIBLE => emlite::Val::from("user-visible"),
-            TaskPriority::BACKGROUND => emlite::Val::from("background"),
+            TaskPriority::USER_BLOCKING => Any::from("user-blocking"),
+            TaskPriority::USER_VISIBLE => Any::from("user-visible"),
+            TaskPriority::BACKGROUND => Any::from("background"),
         }
     }
 }
-impl From<&TaskPriority> for emlite::Val {
-    fn from(s: &TaskPriority) -> emlite::Val {
+impl From<&TaskPriority> for Any {
+    fn from(s: &TaskPriority) -> Any {
         match *s {
-            TaskPriority::USER_BLOCKING => emlite::Val::from("user-blocking"),
-            TaskPriority::USER_VISIBLE => emlite::Val::from("user-visible"),
-            TaskPriority::BACKGROUND => emlite::Val::from("background"),
+            TaskPriority::USER_BLOCKING => Any::from("user-blocking"),
+            TaskPriority::USER_VISIBLE => Any::from("user-visible"),
+            TaskPriority::BACKGROUND => Any::from("background"),
         }
     }
 }
@@ -6870,7 +6846,7 @@ pub enum CaptureStartFocusBehavior {
     NO_FOCUS_CHANGE,
 }
 impl FromVal for CaptureStartFocusBehavior {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "focus-capturing-application" => Self::FOCUS_CAPTURING_APPLICATION,
             "focus-captured-surface" => Self::FOCUS_CAPTURED_SURFACE,
@@ -6878,36 +6854,36 @@ impl FromVal for CaptureStartFocusBehavior {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CaptureStartFocusBehavior> for emlite::Val {
-    fn from(s: CaptureStartFocusBehavior) -> emlite::Val {
+impl From<CaptureStartFocusBehavior> for Any {
+    fn from(s: CaptureStartFocusBehavior) -> Any {
         match s {
             CaptureStartFocusBehavior::FOCUS_CAPTURING_APPLICATION => {
-                emlite::Val::from("focus-capturing-application")
+                Any::from("focus-capturing-application")
             }
             CaptureStartFocusBehavior::FOCUS_CAPTURED_SURFACE => {
-                emlite::Val::from("focus-captured-surface")
+                Any::from("focus-captured-surface")
             }
-            CaptureStartFocusBehavior::NO_FOCUS_CHANGE => emlite::Val::from("no-focus-change"),
+            CaptureStartFocusBehavior::NO_FOCUS_CHANGE => Any::from("no-focus-change"),
         }
     }
 }
-impl From<&CaptureStartFocusBehavior> for emlite::Val {
-    fn from(s: &CaptureStartFocusBehavior) -> emlite::Val {
+impl From<&CaptureStartFocusBehavior> for Any {
+    fn from(s: &CaptureStartFocusBehavior) -> Any {
         match *s {
             CaptureStartFocusBehavior::FOCUS_CAPTURING_APPLICATION => {
-                emlite::Val::from("focus-capturing-application")
+                Any::from("focus-capturing-application")
             }
             CaptureStartFocusBehavior::FOCUS_CAPTURED_SURFACE => {
-                emlite::Val::from("focus-captured-surface")
+                Any::from("focus-captured-surface")
             }
-            CaptureStartFocusBehavior::NO_FOCUS_CHANGE => emlite::Val::from("no-focus-change"),
+            CaptureStartFocusBehavior::NO_FOCUS_CHANGE => Any::from("no-focus-change"),
         }
     }
 }
@@ -6918,33 +6894,33 @@ pub enum SelfCapturePreferenceEnum {
     EXCLUDE,
 }
 impl FromVal for SelfCapturePreferenceEnum {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "include" => Self::INCLUDE,
             "exclude" => Self::EXCLUDE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SelfCapturePreferenceEnum> for emlite::Val {
-    fn from(s: SelfCapturePreferenceEnum) -> emlite::Val {
+impl From<SelfCapturePreferenceEnum> for Any {
+    fn from(s: SelfCapturePreferenceEnum) -> Any {
         match s {
-            SelfCapturePreferenceEnum::INCLUDE => emlite::Val::from("include"),
-            SelfCapturePreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+            SelfCapturePreferenceEnum::INCLUDE => Any::from("include"),
+            SelfCapturePreferenceEnum::EXCLUDE => Any::from("exclude"),
         }
     }
 }
-impl From<&SelfCapturePreferenceEnum> for emlite::Val {
-    fn from(s: &SelfCapturePreferenceEnum) -> emlite::Val {
+impl From<&SelfCapturePreferenceEnum> for Any {
+    fn from(s: &SelfCapturePreferenceEnum) -> Any {
         match *s {
-            SelfCapturePreferenceEnum::INCLUDE => emlite::Val::from("include"),
-            SelfCapturePreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+            SelfCapturePreferenceEnum::INCLUDE => Any::from("include"),
+            SelfCapturePreferenceEnum::EXCLUDE => Any::from("exclude"),
         }
     }
 }
@@ -6955,33 +6931,33 @@ pub enum SystemAudioPreferenceEnum {
     EXCLUDE,
 }
 impl FromVal for SystemAudioPreferenceEnum {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "include" => Self::INCLUDE,
             "exclude" => Self::EXCLUDE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SystemAudioPreferenceEnum> for emlite::Val {
-    fn from(s: SystemAudioPreferenceEnum) -> emlite::Val {
+impl From<SystemAudioPreferenceEnum> for Any {
+    fn from(s: SystemAudioPreferenceEnum) -> Any {
         match s {
-            SystemAudioPreferenceEnum::INCLUDE => emlite::Val::from("include"),
-            SystemAudioPreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+            SystemAudioPreferenceEnum::INCLUDE => Any::from("include"),
+            SystemAudioPreferenceEnum::EXCLUDE => Any::from("exclude"),
         }
     }
 }
-impl From<&SystemAudioPreferenceEnum> for emlite::Val {
-    fn from(s: &SystemAudioPreferenceEnum) -> emlite::Val {
+impl From<&SystemAudioPreferenceEnum> for Any {
+    fn from(s: &SystemAudioPreferenceEnum) -> Any {
         match *s {
-            SystemAudioPreferenceEnum::INCLUDE => emlite::Val::from("include"),
-            SystemAudioPreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+            SystemAudioPreferenceEnum::INCLUDE => Any::from("include"),
+            SystemAudioPreferenceEnum::EXCLUDE => Any::from("exclude"),
         }
     }
 }
@@ -6993,7 +6969,7 @@ pub enum WindowAudioPreferenceEnum {
     EXCLUDE,
 }
 impl FromVal for WindowAudioPreferenceEnum {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "system" => Self::SYSTEM,
             "window" => Self::WINDOW,
@@ -7001,28 +6977,28 @@ impl FromVal for WindowAudioPreferenceEnum {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<WindowAudioPreferenceEnum> for emlite::Val {
-    fn from(s: WindowAudioPreferenceEnum) -> emlite::Val {
+impl From<WindowAudioPreferenceEnum> for Any {
+    fn from(s: WindowAudioPreferenceEnum) -> Any {
         match s {
-            WindowAudioPreferenceEnum::SYSTEM => emlite::Val::from("system"),
-            WindowAudioPreferenceEnum::WINDOW => emlite::Val::from("window"),
-            WindowAudioPreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+            WindowAudioPreferenceEnum::SYSTEM => Any::from("system"),
+            WindowAudioPreferenceEnum::WINDOW => Any::from("window"),
+            WindowAudioPreferenceEnum::EXCLUDE => Any::from("exclude"),
         }
     }
 }
-impl From<&WindowAudioPreferenceEnum> for emlite::Val {
-    fn from(s: &WindowAudioPreferenceEnum) -> emlite::Val {
+impl From<&WindowAudioPreferenceEnum> for Any {
+    fn from(s: &WindowAudioPreferenceEnum) -> Any {
         match *s {
-            WindowAudioPreferenceEnum::SYSTEM => emlite::Val::from("system"),
-            WindowAudioPreferenceEnum::WINDOW => emlite::Val::from("window"),
-            WindowAudioPreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+            WindowAudioPreferenceEnum::SYSTEM => Any::from("system"),
+            WindowAudioPreferenceEnum::WINDOW => Any::from("window"),
+            WindowAudioPreferenceEnum::EXCLUDE => Any::from("exclude"),
         }
     }
 }
@@ -7033,33 +7009,33 @@ pub enum SurfaceSwitchingPreferenceEnum {
     EXCLUDE,
 }
 impl FromVal for SurfaceSwitchingPreferenceEnum {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "include" => Self::INCLUDE,
             "exclude" => Self::EXCLUDE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SurfaceSwitchingPreferenceEnum> for emlite::Val {
-    fn from(s: SurfaceSwitchingPreferenceEnum) -> emlite::Val {
+impl From<SurfaceSwitchingPreferenceEnum> for Any {
+    fn from(s: SurfaceSwitchingPreferenceEnum) -> Any {
         match s {
-            SurfaceSwitchingPreferenceEnum::INCLUDE => emlite::Val::from("include"),
-            SurfaceSwitchingPreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+            SurfaceSwitchingPreferenceEnum::INCLUDE => Any::from("include"),
+            SurfaceSwitchingPreferenceEnum::EXCLUDE => Any::from("exclude"),
         }
     }
 }
-impl From<&SurfaceSwitchingPreferenceEnum> for emlite::Val {
-    fn from(s: &SurfaceSwitchingPreferenceEnum) -> emlite::Val {
+impl From<&SurfaceSwitchingPreferenceEnum> for Any {
+    fn from(s: &SurfaceSwitchingPreferenceEnum) -> Any {
         match *s {
-            SurfaceSwitchingPreferenceEnum::INCLUDE => emlite::Val::from("include"),
-            SurfaceSwitchingPreferenceEnum::EXCLUDE => emlite::Val::from("exclude"),
+            SurfaceSwitchingPreferenceEnum::INCLUDE => Any::from("include"),
+            SurfaceSwitchingPreferenceEnum::EXCLUDE => Any::from("exclude"),
         }
     }
 }
@@ -7070,33 +7046,33 @@ pub enum MonitorTypeSurfacesEnum {
     EXCLUDE,
 }
 impl FromVal for MonitorTypeSurfacesEnum {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "include" => Self::INCLUDE,
             "exclude" => Self::EXCLUDE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MonitorTypeSurfacesEnum> for emlite::Val {
-    fn from(s: MonitorTypeSurfacesEnum) -> emlite::Val {
+impl From<MonitorTypeSurfacesEnum> for Any {
+    fn from(s: MonitorTypeSurfacesEnum) -> Any {
         match s {
-            MonitorTypeSurfacesEnum::INCLUDE => emlite::Val::from("include"),
-            MonitorTypeSurfacesEnum::EXCLUDE => emlite::Val::from("exclude"),
+            MonitorTypeSurfacesEnum::INCLUDE => Any::from("include"),
+            MonitorTypeSurfacesEnum::EXCLUDE => Any::from("exclude"),
         }
     }
 }
-impl From<&MonitorTypeSurfacesEnum> for emlite::Val {
-    fn from(s: &MonitorTypeSurfacesEnum) -> emlite::Val {
+impl From<&MonitorTypeSurfacesEnum> for Any {
+    fn from(s: &MonitorTypeSurfacesEnum) -> Any {
         match *s {
-            MonitorTypeSurfacesEnum::INCLUDE => emlite::Val::from("include"),
-            MonitorTypeSurfacesEnum::EXCLUDE => emlite::Val::from("exclude"),
+            MonitorTypeSurfacesEnum::INCLUDE => Any::from("include"),
+            MonitorTypeSurfacesEnum::EXCLUDE => Any::from("exclude"),
         }
     }
 }
@@ -7108,7 +7084,7 @@ pub enum DisplayCaptureSurfaceType {
     BROWSER,
 }
 impl FromVal for DisplayCaptureSurfaceType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "monitor" => Self::MONITOR,
             "window" => Self::WINDOW,
@@ -7116,28 +7092,28 @@ impl FromVal for DisplayCaptureSurfaceType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<DisplayCaptureSurfaceType> for emlite::Val {
-    fn from(s: DisplayCaptureSurfaceType) -> emlite::Val {
+impl From<DisplayCaptureSurfaceType> for Any {
+    fn from(s: DisplayCaptureSurfaceType) -> Any {
         match s {
-            DisplayCaptureSurfaceType::MONITOR => emlite::Val::from("monitor"),
-            DisplayCaptureSurfaceType::WINDOW => emlite::Val::from("window"),
-            DisplayCaptureSurfaceType::BROWSER => emlite::Val::from("browser"),
+            DisplayCaptureSurfaceType::MONITOR => Any::from("monitor"),
+            DisplayCaptureSurfaceType::WINDOW => Any::from("window"),
+            DisplayCaptureSurfaceType::BROWSER => Any::from("browser"),
         }
     }
 }
-impl From<&DisplayCaptureSurfaceType> for emlite::Val {
-    fn from(s: &DisplayCaptureSurfaceType) -> emlite::Val {
+impl From<&DisplayCaptureSurfaceType> for Any {
+    fn from(s: &DisplayCaptureSurfaceType) -> Any {
         match *s {
-            DisplayCaptureSurfaceType::MONITOR => emlite::Val::from("monitor"),
-            DisplayCaptureSurfaceType::WINDOW => emlite::Val::from("window"),
-            DisplayCaptureSurfaceType::BROWSER => emlite::Val::from("browser"),
+            DisplayCaptureSurfaceType::MONITOR => Any::from("monitor"),
+            DisplayCaptureSurfaceType::WINDOW => Any::from("window"),
+            DisplayCaptureSurfaceType::BROWSER => Any::from("browser"),
         }
     }
 }
@@ -7149,7 +7125,7 @@ pub enum CursorCaptureConstraint {
     MOTION,
 }
 impl FromVal for CursorCaptureConstraint {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "never" => Self::NEVER,
             "always" => Self::ALWAYS,
@@ -7157,28 +7133,28 @@ impl FromVal for CursorCaptureConstraint {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CursorCaptureConstraint> for emlite::Val {
-    fn from(s: CursorCaptureConstraint) -> emlite::Val {
+impl From<CursorCaptureConstraint> for Any {
+    fn from(s: CursorCaptureConstraint) -> Any {
         match s {
-            CursorCaptureConstraint::NEVER => emlite::Val::from("never"),
-            CursorCaptureConstraint::ALWAYS => emlite::Val::from("always"),
-            CursorCaptureConstraint::MOTION => emlite::Val::from("motion"),
+            CursorCaptureConstraint::NEVER => Any::from("never"),
+            CursorCaptureConstraint::ALWAYS => Any::from("always"),
+            CursorCaptureConstraint::MOTION => Any::from("motion"),
         }
     }
 }
-impl From<&CursorCaptureConstraint> for emlite::Val {
-    fn from(s: &CursorCaptureConstraint) -> emlite::Val {
+impl From<&CursorCaptureConstraint> for Any {
+    fn from(s: &CursorCaptureConstraint) -> Any {
         match *s {
-            CursorCaptureConstraint::NEVER => emlite::Val::from("never"),
-            CursorCaptureConstraint::ALWAYS => emlite::Val::from("always"),
-            CursorCaptureConstraint::MOTION => emlite::Val::from("motion"),
+            CursorCaptureConstraint::NEVER => Any::from("never"),
+            CursorCaptureConstraint::ALWAYS => Any::from("always"),
+            CursorCaptureConstraint::MOTION => Any::from("motion"),
         }
     }
 }
@@ -7195,7 +7171,7 @@ pub enum OrientationLockType {
     LANDSCAPE_SECONDARY,
 }
 impl FromVal for OrientationLockType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "any" => Self::ANY,
             "natural" => Self::NATURAL,
@@ -7208,38 +7184,38 @@ impl FromVal for OrientationLockType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<OrientationLockType> for emlite::Val {
-    fn from(s: OrientationLockType) -> emlite::Val {
+impl From<OrientationLockType> for Any {
+    fn from(s: OrientationLockType) -> Any {
         match s {
-            OrientationLockType::ANY => emlite::Val::from("any"),
-            OrientationLockType::NATURAL => emlite::Val::from("natural"),
-            OrientationLockType::LANDSCAPE => emlite::Val::from("landscape"),
-            OrientationLockType::PORTRAIT => emlite::Val::from("portrait"),
-            OrientationLockType::PORTRAIT_PRIMARY => emlite::Val::from("portrait-primary"),
-            OrientationLockType::PORTRAIT_SECONDARY => emlite::Val::from("portrait-secondary"),
-            OrientationLockType::LANDSCAPE_PRIMARY => emlite::Val::from("landscape-primary"),
-            OrientationLockType::LANDSCAPE_SECONDARY => emlite::Val::from("landscape-secondary"),
+            OrientationLockType::ANY => Any::from("any"),
+            OrientationLockType::NATURAL => Any::from("natural"),
+            OrientationLockType::LANDSCAPE => Any::from("landscape"),
+            OrientationLockType::PORTRAIT => Any::from("portrait"),
+            OrientationLockType::PORTRAIT_PRIMARY => Any::from("portrait-primary"),
+            OrientationLockType::PORTRAIT_SECONDARY => Any::from("portrait-secondary"),
+            OrientationLockType::LANDSCAPE_PRIMARY => Any::from("landscape-primary"),
+            OrientationLockType::LANDSCAPE_SECONDARY => Any::from("landscape-secondary"),
         }
     }
 }
-impl From<&OrientationLockType> for emlite::Val {
-    fn from(s: &OrientationLockType) -> emlite::Val {
+impl From<&OrientationLockType> for Any {
+    fn from(s: &OrientationLockType) -> Any {
         match *s {
-            OrientationLockType::ANY => emlite::Val::from("any"),
-            OrientationLockType::NATURAL => emlite::Val::from("natural"),
-            OrientationLockType::LANDSCAPE => emlite::Val::from("landscape"),
-            OrientationLockType::PORTRAIT => emlite::Val::from("portrait"),
-            OrientationLockType::PORTRAIT_PRIMARY => emlite::Val::from("portrait-primary"),
-            OrientationLockType::PORTRAIT_SECONDARY => emlite::Val::from("portrait-secondary"),
-            OrientationLockType::LANDSCAPE_PRIMARY => emlite::Val::from("landscape-primary"),
-            OrientationLockType::LANDSCAPE_SECONDARY => emlite::Val::from("landscape-secondary"),
+            OrientationLockType::ANY => Any::from("any"),
+            OrientationLockType::NATURAL => Any::from("natural"),
+            OrientationLockType::LANDSCAPE => Any::from("landscape"),
+            OrientationLockType::PORTRAIT => Any::from("portrait"),
+            OrientationLockType::PORTRAIT_PRIMARY => Any::from("portrait-primary"),
+            OrientationLockType::PORTRAIT_SECONDARY => Any::from("portrait-secondary"),
+            OrientationLockType::LANDSCAPE_PRIMARY => Any::from("landscape-primary"),
+            OrientationLockType::LANDSCAPE_SECONDARY => Any::from("landscape-secondary"),
         }
     }
 }
@@ -7252,7 +7228,7 @@ pub enum OrientationType {
     LANDSCAPE_SECONDARY,
 }
 impl FromVal for OrientationType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "portrait-primary" => Self::PORTRAIT_PRIMARY,
             "portrait-secondary" => Self::PORTRAIT_SECONDARY,
@@ -7261,30 +7237,30 @@ impl FromVal for OrientationType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<OrientationType> for emlite::Val {
-    fn from(s: OrientationType) -> emlite::Val {
+impl From<OrientationType> for Any {
+    fn from(s: OrientationType) -> Any {
         match s {
-            OrientationType::PORTRAIT_PRIMARY => emlite::Val::from("portrait-primary"),
-            OrientationType::PORTRAIT_SECONDARY => emlite::Val::from("portrait-secondary"),
-            OrientationType::LANDSCAPE_PRIMARY => emlite::Val::from("landscape-primary"),
-            OrientationType::LANDSCAPE_SECONDARY => emlite::Val::from("landscape-secondary"),
+            OrientationType::PORTRAIT_PRIMARY => Any::from("portrait-primary"),
+            OrientationType::PORTRAIT_SECONDARY => Any::from("portrait-secondary"),
+            OrientationType::LANDSCAPE_PRIMARY => Any::from("landscape-primary"),
+            OrientationType::LANDSCAPE_SECONDARY => Any::from("landscape-secondary"),
         }
     }
 }
-impl From<&OrientationType> for emlite::Val {
-    fn from(s: &OrientationType) -> emlite::Val {
+impl From<&OrientationType> for Any {
+    fn from(s: &OrientationType) -> Any {
         match *s {
-            OrientationType::PORTRAIT_PRIMARY => emlite::Val::from("portrait-primary"),
-            OrientationType::PORTRAIT_SECONDARY => emlite::Val::from("portrait-secondary"),
-            OrientationType::LANDSCAPE_PRIMARY => emlite::Val::from("landscape-primary"),
-            OrientationType::LANDSCAPE_SECONDARY => emlite::Val::from("landscape-secondary"),
+            OrientationType::PORTRAIT_PRIMARY => Any::from("portrait-primary"),
+            OrientationType::PORTRAIT_SECONDARY => Any::from("portrait-secondary"),
+            OrientationType::LANDSCAPE_PRIMARY => Any::from("landscape-primary"),
+            OrientationType::LANDSCAPE_SECONDARY => Any::from("landscape-secondary"),
         }
     }
 }
@@ -7294,30 +7270,30 @@ pub enum WakeLockType {
     SCREEN,
 }
 impl FromVal for WakeLockType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "screen" => Self::SCREEN,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<WakeLockType> for emlite::Val {
-    fn from(s: WakeLockType) -> emlite::Val {
+impl From<WakeLockType> for Any {
+    fn from(s: WakeLockType) -> Any {
         match s {
-            WakeLockType::SCREEN => emlite::Val::from("screen"),
+            WakeLockType::SCREEN => Any::from("screen"),
         }
     }
 }
-impl From<&WakeLockType> for emlite::Val {
-    fn from(s: &WakeLockType) -> emlite::Val {
+impl From<&WakeLockType> for Any {
+    fn from(s: &WakeLockType) -> Any {
         match *s {
-            WakeLockType::SCREEN => emlite::Val::from("screen"),
+            WakeLockType::SCREEN => Any::from("screen"),
         }
     }
 }
@@ -7330,7 +7306,7 @@ pub enum ScrollAxis {
     Y,
 }
 impl FromVal for ScrollAxis {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "block" => Self::BLOCK,
             "inline" => Self::INLINE,
@@ -7339,30 +7315,30 @@ impl FromVal for ScrollAxis {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ScrollAxis> for emlite::Val {
-    fn from(s: ScrollAxis) -> emlite::Val {
+impl From<ScrollAxis> for Any {
+    fn from(s: ScrollAxis) -> Any {
         match s {
-            ScrollAxis::BLOCK => emlite::Val::from("block"),
-            ScrollAxis::INLINE => emlite::Val::from("inline"),
-            ScrollAxis::X => emlite::Val::from("x"),
-            ScrollAxis::Y => emlite::Val::from("y"),
+            ScrollAxis::BLOCK => Any::from("block"),
+            ScrollAxis::INLINE => Any::from("inline"),
+            ScrollAxis::X => Any::from("x"),
+            ScrollAxis::Y => Any::from("y"),
         }
     }
 }
-impl From<&ScrollAxis> for emlite::Val {
-    fn from(s: &ScrollAxis) -> emlite::Val {
+impl From<&ScrollAxis> for Any {
+    fn from(s: &ScrollAxis) -> Any {
         match *s {
-            ScrollAxis::BLOCK => emlite::Val::from("block"),
-            ScrollAxis::INLINE => emlite::Val::from("inline"),
-            ScrollAxis::X => emlite::Val::from("x"),
-            ScrollAxis::Y => emlite::Val::from("y"),
+            ScrollAxis::BLOCK => Any::from("block"),
+            ScrollAxis::INLINE => Any::from("inline"),
+            ScrollAxis::X => Any::from("x"),
+            ScrollAxis::Y => Any::from("y"),
         }
     }
 }
@@ -7376,7 +7352,7 @@ pub enum SecurePaymentConfirmationAvailability {
     UNAVAILABLE_NO_USER_VERIFYING_PLATFORM_AUTHENTICATOR,
 }
 impl FromVal for SecurePaymentConfirmationAvailability {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "available" => Self::AVAILABLE,
             "unavailable-unknown-reason" => Self::UNAVAILABLE_UNKNOWN_REASON,
@@ -7388,32 +7364,32 @@ impl FromVal for SecurePaymentConfirmationAvailability {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SecurePaymentConfirmationAvailability> for emlite::Val {
-    fn from(s: SecurePaymentConfirmationAvailability) -> emlite::Val {
+impl From<SecurePaymentConfirmationAvailability> for Any {
+    fn from(s: SecurePaymentConfirmationAvailability) -> Any {
         match s {
-            SecurePaymentConfirmationAvailability::AVAILABLE => emlite::Val::from("available"),
-            SecurePaymentConfirmationAvailability::UNAVAILABLE_UNKNOWN_REASON => emlite::Val::from("unavailable-unknown-reason"),
-            SecurePaymentConfirmationAvailability::UNAVAILABLE_FEATURE_NOT_ENABLED => emlite::Val::from("unavailable-feature-not-enabled"),
-            SecurePaymentConfirmationAvailability::UNAVAILABLE_NO_PERMISSION_POLICY => emlite::Val::from("unavailable-no-permission-policy"),
-            SecurePaymentConfirmationAvailability::UNAVAILABLE_NO_USER_VERIFYING_PLATFORM_AUTHENTICATOR => emlite::Val::from("unavailable-no-user-verifying-platform-authenticator"),
+            SecurePaymentConfirmationAvailability::AVAILABLE => Any::from("available"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_UNKNOWN_REASON => Any::from("unavailable-unknown-reason"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_FEATURE_NOT_ENABLED => Any::from("unavailable-feature-not-enabled"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_NO_PERMISSION_POLICY => Any::from("unavailable-no-permission-policy"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_NO_USER_VERIFYING_PLATFORM_AUTHENTICATOR => Any::from("unavailable-no-user-verifying-platform-authenticator"),
          }
     }
 }
-impl From<&SecurePaymentConfirmationAvailability> for emlite::Val {
-    fn from(s: &SecurePaymentConfirmationAvailability) -> emlite::Val {
+impl From<&SecurePaymentConfirmationAvailability> for Any {
+    fn from(s: &SecurePaymentConfirmationAvailability) -> Any {
         match *s {
-            SecurePaymentConfirmationAvailability::AVAILABLE => emlite::Val::from("available"),
-            SecurePaymentConfirmationAvailability::UNAVAILABLE_UNKNOWN_REASON => emlite::Val::from("unavailable-unknown-reason"),
-            SecurePaymentConfirmationAvailability::UNAVAILABLE_FEATURE_NOT_ENABLED => emlite::Val::from("unavailable-feature-not-enabled"),
-            SecurePaymentConfirmationAvailability::UNAVAILABLE_NO_PERMISSION_POLICY => emlite::Val::from("unavailable-no-permission-policy"),
-            SecurePaymentConfirmationAvailability::UNAVAILABLE_NO_USER_VERIFYING_PLATFORM_AUTHENTICATOR => emlite::Val::from("unavailable-no-user-verifying-platform-authenticator"),
+            SecurePaymentConfirmationAvailability::AVAILABLE => Any::from("available"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_UNKNOWN_REASON => Any::from("unavailable-unknown-reason"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_FEATURE_NOT_ENABLED => Any::from("unavailable-feature-not-enabled"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_NO_PERMISSION_POLICY => Any::from("unavailable-no-permission-policy"),
+            SecurePaymentConfirmationAvailability::UNAVAILABLE_NO_USER_VERIFYING_PLATFORM_AUTHENTICATOR => Any::from("unavailable-no-user-verifying-platform-authenticator"),
          }
     }
 }
@@ -7425,7 +7401,7 @@ pub enum ParityType {
     ODD,
 }
 impl FromVal for ParityType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "even" => Self::EVEN,
@@ -7433,28 +7409,28 @@ impl FromVal for ParityType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ParityType> for emlite::Val {
-    fn from(s: ParityType) -> emlite::Val {
+impl From<ParityType> for Any {
+    fn from(s: ParityType) -> Any {
         match s {
-            ParityType::NONE => emlite::Val::from("none"),
-            ParityType::EVEN => emlite::Val::from("even"),
-            ParityType::ODD => emlite::Val::from("odd"),
+            ParityType::NONE => Any::from("none"),
+            ParityType::EVEN => Any::from("even"),
+            ParityType::ODD => Any::from("odd"),
         }
     }
 }
-impl From<&ParityType> for emlite::Val {
-    fn from(s: &ParityType) -> emlite::Val {
+impl From<&ParityType> for Any {
+    fn from(s: &ParityType) -> Any {
         match *s {
-            ParityType::NONE => emlite::Val::from("none"),
-            ParityType::EVEN => emlite::Val::from("even"),
-            ParityType::ODD => emlite::Val::from("odd"),
+            ParityType::NONE => Any::from("none"),
+            ParityType::EVEN => Any::from("even"),
+            ParityType::ODD => Any::from("odd"),
         }
     }
 }
@@ -7465,33 +7441,33 @@ pub enum FlowControlType {
     HARDWARE,
 }
 impl FromVal for FlowControlType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "hardware" => Self::HARDWARE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<FlowControlType> for emlite::Val {
-    fn from(s: FlowControlType) -> emlite::Val {
+impl From<FlowControlType> for Any {
+    fn from(s: FlowControlType) -> Any {
         match s {
-            FlowControlType::NONE => emlite::Val::from("none"),
-            FlowControlType::HARDWARE => emlite::Val::from("hardware"),
+            FlowControlType::NONE => Any::from("none"),
+            FlowControlType::HARDWARE => Any::from("hardware"),
         }
     }
 }
-impl From<&FlowControlType> for emlite::Val {
-    fn from(s: &FlowControlType) -> emlite::Val {
+impl From<&FlowControlType> for Any {
+    fn from(s: &FlowControlType) -> Any {
         match *s {
-            FlowControlType::NONE => emlite::Val::from("none"),
-            FlowControlType::HARDWARE => emlite::Val::from("hardware"),
+            FlowControlType::NONE => Any::from("none"),
+            FlowControlType::HARDWARE => Any::from("hardware"),
         }
     }
 }
@@ -7506,7 +7482,7 @@ pub enum ServiceWorkerState {
     REDUNDANT,
 }
 impl FromVal for ServiceWorkerState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "parsed" => Self::PARSED,
             "installing" => Self::INSTALLING,
@@ -7517,34 +7493,34 @@ impl FromVal for ServiceWorkerState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ServiceWorkerState> for emlite::Val {
-    fn from(s: ServiceWorkerState) -> emlite::Val {
+impl From<ServiceWorkerState> for Any {
+    fn from(s: ServiceWorkerState) -> Any {
         match s {
-            ServiceWorkerState::PARSED => emlite::Val::from("parsed"),
-            ServiceWorkerState::INSTALLING => emlite::Val::from("installing"),
-            ServiceWorkerState::INSTALLED => emlite::Val::from("installed"),
-            ServiceWorkerState::ACTIVATING => emlite::Val::from("activating"),
-            ServiceWorkerState::ACTIVATED => emlite::Val::from("activated"),
-            ServiceWorkerState::REDUNDANT => emlite::Val::from("redundant"),
+            ServiceWorkerState::PARSED => Any::from("parsed"),
+            ServiceWorkerState::INSTALLING => Any::from("installing"),
+            ServiceWorkerState::INSTALLED => Any::from("installed"),
+            ServiceWorkerState::ACTIVATING => Any::from("activating"),
+            ServiceWorkerState::ACTIVATED => Any::from("activated"),
+            ServiceWorkerState::REDUNDANT => Any::from("redundant"),
         }
     }
 }
-impl From<&ServiceWorkerState> for emlite::Val {
-    fn from(s: &ServiceWorkerState) -> emlite::Val {
+impl From<&ServiceWorkerState> for Any {
+    fn from(s: &ServiceWorkerState) -> Any {
         match *s {
-            ServiceWorkerState::PARSED => emlite::Val::from("parsed"),
-            ServiceWorkerState::INSTALLING => emlite::Val::from("installing"),
-            ServiceWorkerState::INSTALLED => emlite::Val::from("installed"),
-            ServiceWorkerState::ACTIVATING => emlite::Val::from("activating"),
-            ServiceWorkerState::ACTIVATED => emlite::Val::from("activated"),
-            ServiceWorkerState::REDUNDANT => emlite::Val::from("redundant"),
+            ServiceWorkerState::PARSED => Any::from("parsed"),
+            ServiceWorkerState::INSTALLING => Any::from("installing"),
+            ServiceWorkerState::INSTALLED => Any::from("installed"),
+            ServiceWorkerState::ACTIVATING => Any::from("activating"),
+            ServiceWorkerState::ACTIVATED => Any::from("activated"),
+            ServiceWorkerState::REDUNDANT => Any::from("redundant"),
         }
     }
 }
@@ -7556,7 +7532,7 @@ pub enum ServiceWorkerUpdateViaCache {
     NONE,
 }
 impl FromVal for ServiceWorkerUpdateViaCache {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "imports" => Self::IMPORTS,
             "all" => Self::ALL,
@@ -7564,28 +7540,28 @@ impl FromVal for ServiceWorkerUpdateViaCache {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ServiceWorkerUpdateViaCache> for emlite::Val {
-    fn from(s: ServiceWorkerUpdateViaCache) -> emlite::Val {
+impl From<ServiceWorkerUpdateViaCache> for Any {
+    fn from(s: ServiceWorkerUpdateViaCache) -> Any {
         match s {
-            ServiceWorkerUpdateViaCache::IMPORTS => emlite::Val::from("imports"),
-            ServiceWorkerUpdateViaCache::ALL => emlite::Val::from("all"),
-            ServiceWorkerUpdateViaCache::NONE => emlite::Val::from("none"),
+            ServiceWorkerUpdateViaCache::IMPORTS => Any::from("imports"),
+            ServiceWorkerUpdateViaCache::ALL => Any::from("all"),
+            ServiceWorkerUpdateViaCache::NONE => Any::from("none"),
         }
     }
 }
-impl From<&ServiceWorkerUpdateViaCache> for emlite::Val {
-    fn from(s: &ServiceWorkerUpdateViaCache) -> emlite::Val {
+impl From<&ServiceWorkerUpdateViaCache> for Any {
+    fn from(s: &ServiceWorkerUpdateViaCache) -> Any {
         match *s {
-            ServiceWorkerUpdateViaCache::IMPORTS => emlite::Val::from("imports"),
-            ServiceWorkerUpdateViaCache::ALL => emlite::Val::from("all"),
-            ServiceWorkerUpdateViaCache::NONE => emlite::Val::from("none"),
+            ServiceWorkerUpdateViaCache::IMPORTS => Any::from("imports"),
+            ServiceWorkerUpdateViaCache::ALL => Any::from("all"),
+            ServiceWorkerUpdateViaCache::NONE => Any::from("none"),
         }
     }
 }
@@ -7598,7 +7574,7 @@ pub enum FrameType {
     NONE,
 }
 impl FromVal for FrameType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "auxiliary" => Self::AUXILIARY,
             "top-level" => Self::TOP_LEVEL,
@@ -7607,30 +7583,30 @@ impl FromVal for FrameType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<FrameType> for emlite::Val {
-    fn from(s: FrameType) -> emlite::Val {
+impl From<FrameType> for Any {
+    fn from(s: FrameType) -> Any {
         match s {
-            FrameType::AUXILIARY => emlite::Val::from("auxiliary"),
-            FrameType::TOP_LEVEL => emlite::Val::from("top-level"),
-            FrameType::NESTED => emlite::Val::from("nested"),
-            FrameType::NONE => emlite::Val::from("none"),
+            FrameType::AUXILIARY => Any::from("auxiliary"),
+            FrameType::TOP_LEVEL => Any::from("top-level"),
+            FrameType::NESTED => Any::from("nested"),
+            FrameType::NONE => Any::from("none"),
         }
     }
 }
-impl From<&FrameType> for emlite::Val {
-    fn from(s: &FrameType) -> emlite::Val {
+impl From<&FrameType> for Any {
+    fn from(s: &FrameType) -> Any {
         match *s {
-            FrameType::AUXILIARY => emlite::Val::from("auxiliary"),
-            FrameType::TOP_LEVEL => emlite::Val::from("top-level"),
-            FrameType::NESTED => emlite::Val::from("nested"),
-            FrameType::NONE => emlite::Val::from("none"),
+            FrameType::AUXILIARY => Any::from("auxiliary"),
+            FrameType::TOP_LEVEL => Any::from("top-level"),
+            FrameType::NESTED => Any::from("nested"),
+            FrameType::NONE => Any::from("none"),
         }
     }
 }
@@ -7643,7 +7619,7 @@ pub enum ClientType {
     ALL,
 }
 impl FromVal for ClientType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "window" => Self::WINDOW,
             "worker" => Self::WORKER,
@@ -7652,30 +7628,30 @@ impl FromVal for ClientType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ClientType> for emlite::Val {
-    fn from(s: ClientType) -> emlite::Val {
+impl From<ClientType> for Any {
+    fn from(s: ClientType) -> Any {
         match s {
-            ClientType::WINDOW => emlite::Val::from("window"),
-            ClientType::WORKER => emlite::Val::from("worker"),
-            ClientType::SHAREDWORKER => emlite::Val::from("sharedworker"),
-            ClientType::ALL => emlite::Val::from("all"),
+            ClientType::WINDOW => Any::from("window"),
+            ClientType::WORKER => Any::from("worker"),
+            ClientType::SHAREDWORKER => Any::from("sharedworker"),
+            ClientType::ALL => Any::from("all"),
         }
     }
 }
-impl From<&ClientType> for emlite::Val {
-    fn from(s: &ClientType) -> emlite::Val {
+impl From<&ClientType> for Any {
+    fn from(s: &ClientType) -> Any {
         match *s {
-            ClientType::WINDOW => emlite::Val::from("window"),
-            ClientType::WORKER => emlite::Val::from("worker"),
-            ClientType::SHAREDWORKER => emlite::Val::from("sharedworker"),
-            ClientType::ALL => emlite::Val::from("all"),
+            ClientType::WINDOW => Any::from("window"),
+            ClientType::WORKER => Any::from("worker"),
+            ClientType::SHAREDWORKER => Any::from("sharedworker"),
+            ClientType::ALL => Any::from("all"),
         }
     }
 }
@@ -7686,33 +7662,33 @@ pub enum RunningStatus {
     NOT_RUNNING,
 }
 impl FromVal for RunningStatus {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "running" => Self::RUNNING,
             "not-running" => Self::NOT_RUNNING,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RunningStatus> for emlite::Val {
-    fn from(s: RunningStatus) -> emlite::Val {
+impl From<RunningStatus> for Any {
+    fn from(s: RunningStatus) -> Any {
         match s {
-            RunningStatus::RUNNING => emlite::Val::from("running"),
-            RunningStatus::NOT_RUNNING => emlite::Val::from("not-running"),
+            RunningStatus::RUNNING => Any::from("running"),
+            RunningStatus::NOT_RUNNING => Any::from("not-running"),
         }
     }
 }
-impl From<&RunningStatus> for emlite::Val {
-    fn from(s: &RunningStatus) -> emlite::Val {
+impl From<&RunningStatus> for Any {
+    fn from(s: &RunningStatus) -> Any {
         match *s {
-            RunningStatus::RUNNING => emlite::Val::from("running"),
-            RunningStatus::NOT_RUNNING => emlite::Val::from("not-running"),
+            RunningStatus::RUNNING => Any::from("running"),
+            RunningStatus::NOT_RUNNING => Any::from("not-running"),
         }
     }
 }
@@ -7725,7 +7701,7 @@ pub enum RouterSourceEnum {
     RACE_NETWORK_AND_FETCH_HANDLER,
 }
 impl FromVal for RouterSourceEnum {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "cache" => Self::CACHE,
             "fetch-event" => Self::FETCH_EVENT,
@@ -7734,33 +7710,33 @@ impl FromVal for RouterSourceEnum {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RouterSourceEnum> for emlite::Val {
-    fn from(s: RouterSourceEnum) -> emlite::Val {
+impl From<RouterSourceEnum> for Any {
+    fn from(s: RouterSourceEnum) -> Any {
         match s {
-            RouterSourceEnum::CACHE => emlite::Val::from("cache"),
-            RouterSourceEnum::FETCH_EVENT => emlite::Val::from("fetch-event"),
-            RouterSourceEnum::NETWORK => emlite::Val::from("network"),
+            RouterSourceEnum::CACHE => Any::from("cache"),
+            RouterSourceEnum::FETCH_EVENT => Any::from("fetch-event"),
+            RouterSourceEnum::NETWORK => Any::from("network"),
             RouterSourceEnum::RACE_NETWORK_AND_FETCH_HANDLER => {
-                emlite::Val::from("race-network-and-fetch-handler")
+                Any::from("race-network-and-fetch-handler")
             }
         }
     }
 }
-impl From<&RouterSourceEnum> for emlite::Val {
-    fn from(s: &RouterSourceEnum) -> emlite::Val {
+impl From<&RouterSourceEnum> for Any {
+    fn from(s: &RouterSourceEnum) -> Any {
         match *s {
-            RouterSourceEnum::CACHE => emlite::Val::from("cache"),
-            RouterSourceEnum::FETCH_EVENT => emlite::Val::from("fetch-event"),
-            RouterSourceEnum::NETWORK => emlite::Val::from("network"),
+            RouterSourceEnum::CACHE => Any::from("cache"),
+            RouterSourceEnum::FETCH_EVENT => Any::from("fetch-event"),
+            RouterSourceEnum::NETWORK => Any::from("network"),
             RouterSourceEnum::RACE_NETWORK_AND_FETCH_HANDLER => {
-                emlite::Val::from("race-network-and-fetch-handler")
+                Any::from("race-network-and-fetch-handler")
             }
         }
     }
@@ -7773,7 +7749,7 @@ pub enum LandmarkType {
     NOSE,
 }
 impl FromVal for LandmarkType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "mouth" => Self::MOUTH,
             "eye" => Self::EYE,
@@ -7781,28 +7757,28 @@ impl FromVal for LandmarkType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<LandmarkType> for emlite::Val {
-    fn from(s: LandmarkType) -> emlite::Val {
+impl From<LandmarkType> for Any {
+    fn from(s: LandmarkType) -> Any {
         match s {
-            LandmarkType::MOUTH => emlite::Val::from("mouth"),
-            LandmarkType::EYE => emlite::Val::from("eye"),
-            LandmarkType::NOSE => emlite::Val::from("nose"),
+            LandmarkType::MOUTH => Any::from("mouth"),
+            LandmarkType::EYE => Any::from("eye"),
+            LandmarkType::NOSE => Any::from("nose"),
         }
     }
 }
-impl From<&LandmarkType> for emlite::Val {
-    fn from(s: &LandmarkType) -> emlite::Val {
+impl From<&LandmarkType> for Any {
+    fn from(s: &LandmarkType) -> Any {
         match *s {
-            LandmarkType::MOUTH => emlite::Val::from("mouth"),
-            LandmarkType::EYE => emlite::Val::from("eye"),
-            LandmarkType::NOSE => emlite::Val::from("nose"),
+            LandmarkType::MOUTH => Any::from("mouth"),
+            LandmarkType::EYE => Any::from("eye"),
+            LandmarkType::NOSE => Any::from("nose"),
         }
     }
 }
@@ -7825,7 +7801,7 @@ pub enum BarcodeFormat {
     UPC_E,
 }
 impl FromVal for BarcodeFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "aztec" => Self::AZTEC,
             "code_128" => Self::CODE_128,
@@ -7844,50 +7820,50 @@ impl FromVal for BarcodeFormat {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<BarcodeFormat> for emlite::Val {
-    fn from(s: BarcodeFormat) -> emlite::Val {
+impl From<BarcodeFormat> for Any {
+    fn from(s: BarcodeFormat) -> Any {
         match s {
-            BarcodeFormat::AZTEC => emlite::Val::from("aztec"),
-            BarcodeFormat::CODE_128 => emlite::Val::from("code_128"),
-            BarcodeFormat::CODE_39 => emlite::Val::from("code_39"),
-            BarcodeFormat::CODE_93 => emlite::Val::from("code_93"),
-            BarcodeFormat::CODABAR => emlite::Val::from("codabar"),
-            BarcodeFormat::DATA_MATRIX => emlite::Val::from("data_matrix"),
-            BarcodeFormat::EAN_13 => emlite::Val::from("ean_13"),
-            BarcodeFormat::EAN_8 => emlite::Val::from("ean_8"),
-            BarcodeFormat::ITF => emlite::Val::from("itf"),
-            BarcodeFormat::PDF417 => emlite::Val::from("pdf417"),
-            BarcodeFormat::QR_CODE => emlite::Val::from("qr_code"),
-            BarcodeFormat::UNKNOWN => emlite::Val::from("unknown"),
-            BarcodeFormat::UPC_A => emlite::Val::from("upc_a"),
-            BarcodeFormat::UPC_E => emlite::Val::from("upc_e"),
+            BarcodeFormat::AZTEC => Any::from("aztec"),
+            BarcodeFormat::CODE_128 => Any::from("code_128"),
+            BarcodeFormat::CODE_39 => Any::from("code_39"),
+            BarcodeFormat::CODE_93 => Any::from("code_93"),
+            BarcodeFormat::CODABAR => Any::from("codabar"),
+            BarcodeFormat::DATA_MATRIX => Any::from("data_matrix"),
+            BarcodeFormat::EAN_13 => Any::from("ean_13"),
+            BarcodeFormat::EAN_8 => Any::from("ean_8"),
+            BarcodeFormat::ITF => Any::from("itf"),
+            BarcodeFormat::PDF417 => Any::from("pdf417"),
+            BarcodeFormat::QR_CODE => Any::from("qr_code"),
+            BarcodeFormat::UNKNOWN => Any::from("unknown"),
+            BarcodeFormat::UPC_A => Any::from("upc_a"),
+            BarcodeFormat::UPC_E => Any::from("upc_e"),
         }
     }
 }
-impl From<&BarcodeFormat> for emlite::Val {
-    fn from(s: &BarcodeFormat) -> emlite::Val {
+impl From<&BarcodeFormat> for Any {
+    fn from(s: &BarcodeFormat) -> Any {
         match *s {
-            BarcodeFormat::AZTEC => emlite::Val::from("aztec"),
-            BarcodeFormat::CODE_128 => emlite::Val::from("code_128"),
-            BarcodeFormat::CODE_39 => emlite::Val::from("code_39"),
-            BarcodeFormat::CODE_93 => emlite::Val::from("code_93"),
-            BarcodeFormat::CODABAR => emlite::Val::from("codabar"),
-            BarcodeFormat::DATA_MATRIX => emlite::Val::from("data_matrix"),
-            BarcodeFormat::EAN_13 => emlite::Val::from("ean_13"),
-            BarcodeFormat::EAN_8 => emlite::Val::from("ean_8"),
-            BarcodeFormat::ITF => emlite::Val::from("itf"),
-            BarcodeFormat::PDF417 => emlite::Val::from("pdf417"),
-            BarcodeFormat::QR_CODE => emlite::Val::from("qr_code"),
-            BarcodeFormat::UNKNOWN => emlite::Val::from("unknown"),
-            BarcodeFormat::UPC_A => emlite::Val::from("upc_a"),
-            BarcodeFormat::UPC_E => emlite::Val::from("upc_e"),
+            BarcodeFormat::AZTEC => Any::from("aztec"),
+            BarcodeFormat::CODE_128 => Any::from("code_128"),
+            BarcodeFormat::CODE_39 => Any::from("code_39"),
+            BarcodeFormat::CODE_93 => Any::from("code_93"),
+            BarcodeFormat::CODABAR => Any::from("codabar"),
+            BarcodeFormat::DATA_MATRIX => Any::from("data_matrix"),
+            BarcodeFormat::EAN_13 => Any::from("ean_13"),
+            BarcodeFormat::EAN_8 => Any::from("ean_8"),
+            BarcodeFormat::ITF => Any::from("itf"),
+            BarcodeFormat::PDF417 => Any::from("pdf417"),
+            BarcodeFormat::QR_CODE => Any::from("qr_code"),
+            BarcodeFormat::UNKNOWN => Any::from("unknown"),
+            BarcodeFormat::UPC_A => Any::from("upc_a"),
+            BarcodeFormat::UPC_E => Any::from("upc_e"),
         }
     }
 }
@@ -7904,7 +7880,7 @@ pub enum SpeechRecognitionErrorCode {
     PHRASES_NOT_SUPPORTED,
 }
 impl FromVal for SpeechRecognitionErrorCode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "no-speech" => Self::NO_SPEECH,
             "aborted" => Self::ABORTED,
@@ -7917,50 +7893,42 @@ impl FromVal for SpeechRecognitionErrorCode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SpeechRecognitionErrorCode> for emlite::Val {
-    fn from(s: SpeechRecognitionErrorCode) -> emlite::Val {
+impl From<SpeechRecognitionErrorCode> for Any {
+    fn from(s: SpeechRecognitionErrorCode) -> Any {
         match s {
-            SpeechRecognitionErrorCode::NO_SPEECH => emlite::Val::from("no-speech"),
-            SpeechRecognitionErrorCode::ABORTED => emlite::Val::from("aborted"),
-            SpeechRecognitionErrorCode::AUDIO_CAPTURE => emlite::Val::from("audio-capture"),
-            SpeechRecognitionErrorCode::NETWORK => emlite::Val::from("network"),
-            SpeechRecognitionErrorCode::NOT_ALLOWED => emlite::Val::from("not-allowed"),
-            SpeechRecognitionErrorCode::SERVICE_NOT_ALLOWED => {
-                emlite::Val::from("service-not-allowed")
-            }
+            SpeechRecognitionErrorCode::NO_SPEECH => Any::from("no-speech"),
+            SpeechRecognitionErrorCode::ABORTED => Any::from("aborted"),
+            SpeechRecognitionErrorCode::AUDIO_CAPTURE => Any::from("audio-capture"),
+            SpeechRecognitionErrorCode::NETWORK => Any::from("network"),
+            SpeechRecognitionErrorCode::NOT_ALLOWED => Any::from("not-allowed"),
+            SpeechRecognitionErrorCode::SERVICE_NOT_ALLOWED => Any::from("service-not-allowed"),
             SpeechRecognitionErrorCode::LANGUAGE_NOT_SUPPORTED => {
-                emlite::Val::from("language-not-supported")
+                Any::from("language-not-supported")
             }
-            SpeechRecognitionErrorCode::PHRASES_NOT_SUPPORTED => {
-                emlite::Val::from("phrases-not-supported")
-            }
+            SpeechRecognitionErrorCode::PHRASES_NOT_SUPPORTED => Any::from("phrases-not-supported"),
         }
     }
 }
-impl From<&SpeechRecognitionErrorCode> for emlite::Val {
-    fn from(s: &SpeechRecognitionErrorCode) -> emlite::Val {
+impl From<&SpeechRecognitionErrorCode> for Any {
+    fn from(s: &SpeechRecognitionErrorCode) -> Any {
         match *s {
-            SpeechRecognitionErrorCode::NO_SPEECH => emlite::Val::from("no-speech"),
-            SpeechRecognitionErrorCode::ABORTED => emlite::Val::from("aborted"),
-            SpeechRecognitionErrorCode::AUDIO_CAPTURE => emlite::Val::from("audio-capture"),
-            SpeechRecognitionErrorCode::NETWORK => emlite::Val::from("network"),
-            SpeechRecognitionErrorCode::NOT_ALLOWED => emlite::Val::from("not-allowed"),
-            SpeechRecognitionErrorCode::SERVICE_NOT_ALLOWED => {
-                emlite::Val::from("service-not-allowed")
-            }
+            SpeechRecognitionErrorCode::NO_SPEECH => Any::from("no-speech"),
+            SpeechRecognitionErrorCode::ABORTED => Any::from("aborted"),
+            SpeechRecognitionErrorCode::AUDIO_CAPTURE => Any::from("audio-capture"),
+            SpeechRecognitionErrorCode::NETWORK => Any::from("network"),
+            SpeechRecognitionErrorCode::NOT_ALLOWED => Any::from("not-allowed"),
+            SpeechRecognitionErrorCode::SERVICE_NOT_ALLOWED => Any::from("service-not-allowed"),
             SpeechRecognitionErrorCode::LANGUAGE_NOT_SUPPORTED => {
-                emlite::Val::from("language-not-supported")
+                Any::from("language-not-supported")
             }
-            SpeechRecognitionErrorCode::PHRASES_NOT_SUPPORTED => {
-                emlite::Val::from("phrases-not-supported")
-            }
+            SpeechRecognitionErrorCode::PHRASES_NOT_SUPPORTED => Any::from("phrases-not-supported"),
         }
     }
 }
@@ -7973,7 +7941,7 @@ pub enum AvailabilityStatus {
     AVAILABLE,
 }
 impl FromVal for AvailabilityStatus {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "unavailable" => Self::UNAVAILABLE,
             "downloadable" => Self::DOWNLOADABLE,
@@ -7982,30 +7950,30 @@ impl FromVal for AvailabilityStatus {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AvailabilityStatus> for emlite::Val {
-    fn from(s: AvailabilityStatus) -> emlite::Val {
+impl From<AvailabilityStatus> for Any {
+    fn from(s: AvailabilityStatus) -> Any {
         match s {
-            AvailabilityStatus::UNAVAILABLE => emlite::Val::from("unavailable"),
-            AvailabilityStatus::DOWNLOADABLE => emlite::Val::from("downloadable"),
-            AvailabilityStatus::DOWNLOADING => emlite::Val::from("downloading"),
-            AvailabilityStatus::AVAILABLE => emlite::Val::from("available"),
+            AvailabilityStatus::UNAVAILABLE => Any::from("unavailable"),
+            AvailabilityStatus::DOWNLOADABLE => Any::from("downloadable"),
+            AvailabilityStatus::DOWNLOADING => Any::from("downloading"),
+            AvailabilityStatus::AVAILABLE => Any::from("available"),
         }
     }
 }
-impl From<&AvailabilityStatus> for emlite::Val {
-    fn from(s: &AvailabilityStatus) -> emlite::Val {
+impl From<&AvailabilityStatus> for Any {
+    fn from(s: &AvailabilityStatus) -> Any {
         match *s {
-            AvailabilityStatus::UNAVAILABLE => emlite::Val::from("unavailable"),
-            AvailabilityStatus::DOWNLOADABLE => emlite::Val::from("downloadable"),
-            AvailabilityStatus::DOWNLOADING => emlite::Val::from("downloading"),
-            AvailabilityStatus::AVAILABLE => emlite::Val::from("available"),
+            AvailabilityStatus::UNAVAILABLE => Any::from("unavailable"),
+            AvailabilityStatus::DOWNLOADABLE => Any::from("downloadable"),
+            AvailabilityStatus::DOWNLOADING => Any::from("downloading"),
+            AvailabilityStatus::AVAILABLE => Any::from("available"),
         }
     }
 }
@@ -8026,7 +7994,7 @@ pub enum SpeechSynthesisErrorCode {
     NOT_ALLOWED,
 }
 impl FromVal for SpeechSynthesisErrorCode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "canceled" => Self::CANCELED,
             "interrupted" => Self::INTERRUPTED,
@@ -8043,54 +8011,46 @@ impl FromVal for SpeechSynthesisErrorCode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SpeechSynthesisErrorCode> for emlite::Val {
-    fn from(s: SpeechSynthesisErrorCode) -> emlite::Val {
+impl From<SpeechSynthesisErrorCode> for Any {
+    fn from(s: SpeechSynthesisErrorCode) -> Any {
         match s {
-            SpeechSynthesisErrorCode::CANCELED => emlite::Val::from("canceled"),
-            SpeechSynthesisErrorCode::INTERRUPTED => emlite::Val::from("interrupted"),
-            SpeechSynthesisErrorCode::AUDIO_BUSY => emlite::Val::from("audio-busy"),
-            SpeechSynthesisErrorCode::AUDIO_HARDWARE => emlite::Val::from("audio-hardware"),
-            SpeechSynthesisErrorCode::NETWORK => emlite::Val::from("network"),
-            SpeechSynthesisErrorCode::SYNTHESIS_UNAVAILABLE => {
-                emlite::Val::from("synthesis-unavailable")
-            }
-            SpeechSynthesisErrorCode::SYNTHESIS_FAILED => emlite::Val::from("synthesis-failed"),
-            SpeechSynthesisErrorCode::LANGUAGE_UNAVAILABLE => {
-                emlite::Val::from("language-unavailable")
-            }
-            SpeechSynthesisErrorCode::VOICE_UNAVAILABLE => emlite::Val::from("voice-unavailable"),
-            SpeechSynthesisErrorCode::TEXT_TOO_LONG => emlite::Val::from("text-too-long"),
-            SpeechSynthesisErrorCode::INVALID_ARGUMENT => emlite::Val::from("invalid-argument"),
-            SpeechSynthesisErrorCode::NOT_ALLOWED => emlite::Val::from("not-allowed"),
+            SpeechSynthesisErrorCode::CANCELED => Any::from("canceled"),
+            SpeechSynthesisErrorCode::INTERRUPTED => Any::from("interrupted"),
+            SpeechSynthesisErrorCode::AUDIO_BUSY => Any::from("audio-busy"),
+            SpeechSynthesisErrorCode::AUDIO_HARDWARE => Any::from("audio-hardware"),
+            SpeechSynthesisErrorCode::NETWORK => Any::from("network"),
+            SpeechSynthesisErrorCode::SYNTHESIS_UNAVAILABLE => Any::from("synthesis-unavailable"),
+            SpeechSynthesisErrorCode::SYNTHESIS_FAILED => Any::from("synthesis-failed"),
+            SpeechSynthesisErrorCode::LANGUAGE_UNAVAILABLE => Any::from("language-unavailable"),
+            SpeechSynthesisErrorCode::VOICE_UNAVAILABLE => Any::from("voice-unavailable"),
+            SpeechSynthesisErrorCode::TEXT_TOO_LONG => Any::from("text-too-long"),
+            SpeechSynthesisErrorCode::INVALID_ARGUMENT => Any::from("invalid-argument"),
+            SpeechSynthesisErrorCode::NOT_ALLOWED => Any::from("not-allowed"),
         }
     }
 }
-impl From<&SpeechSynthesisErrorCode> for emlite::Val {
-    fn from(s: &SpeechSynthesisErrorCode) -> emlite::Val {
+impl From<&SpeechSynthesisErrorCode> for Any {
+    fn from(s: &SpeechSynthesisErrorCode) -> Any {
         match *s {
-            SpeechSynthesisErrorCode::CANCELED => emlite::Val::from("canceled"),
-            SpeechSynthesisErrorCode::INTERRUPTED => emlite::Val::from("interrupted"),
-            SpeechSynthesisErrorCode::AUDIO_BUSY => emlite::Val::from("audio-busy"),
-            SpeechSynthesisErrorCode::AUDIO_HARDWARE => emlite::Val::from("audio-hardware"),
-            SpeechSynthesisErrorCode::NETWORK => emlite::Val::from("network"),
-            SpeechSynthesisErrorCode::SYNTHESIS_UNAVAILABLE => {
-                emlite::Val::from("synthesis-unavailable")
-            }
-            SpeechSynthesisErrorCode::SYNTHESIS_FAILED => emlite::Val::from("synthesis-failed"),
-            SpeechSynthesisErrorCode::LANGUAGE_UNAVAILABLE => {
-                emlite::Val::from("language-unavailable")
-            }
-            SpeechSynthesisErrorCode::VOICE_UNAVAILABLE => emlite::Val::from("voice-unavailable"),
-            SpeechSynthesisErrorCode::TEXT_TOO_LONG => emlite::Val::from("text-too-long"),
-            SpeechSynthesisErrorCode::INVALID_ARGUMENT => emlite::Val::from("invalid-argument"),
-            SpeechSynthesisErrorCode::NOT_ALLOWED => emlite::Val::from("not-allowed"),
+            SpeechSynthesisErrorCode::CANCELED => Any::from("canceled"),
+            SpeechSynthesisErrorCode::INTERRUPTED => Any::from("interrupted"),
+            SpeechSynthesisErrorCode::AUDIO_BUSY => Any::from("audio-busy"),
+            SpeechSynthesisErrorCode::AUDIO_HARDWARE => Any::from("audio-hardware"),
+            SpeechSynthesisErrorCode::NETWORK => Any::from("network"),
+            SpeechSynthesisErrorCode::SYNTHESIS_UNAVAILABLE => Any::from("synthesis-unavailable"),
+            SpeechSynthesisErrorCode::SYNTHESIS_FAILED => Any::from("synthesis-failed"),
+            SpeechSynthesisErrorCode::LANGUAGE_UNAVAILABLE => Any::from("language-unavailable"),
+            SpeechSynthesisErrorCode::VOICE_UNAVAILABLE => Any::from("voice-unavailable"),
+            SpeechSynthesisErrorCode::TEXT_TOO_LONG => Any::from("text-too-long"),
+            SpeechSynthesisErrorCode::INVALID_ARGUMENT => Any::from("invalid-argument"),
+            SpeechSynthesisErrorCode::NOT_ALLOWED => Any::from("not-allowed"),
         }
     }
 }
@@ -8100,30 +8060,30 @@ pub enum ReadableStreamReaderMode {
     BYOB,
 }
 impl FromVal for ReadableStreamReaderMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "byob" => Self::BYOB,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ReadableStreamReaderMode> for emlite::Val {
-    fn from(s: ReadableStreamReaderMode) -> emlite::Val {
+impl From<ReadableStreamReaderMode> for Any {
+    fn from(s: ReadableStreamReaderMode) -> Any {
         match s {
-            ReadableStreamReaderMode::BYOB => emlite::Val::from("byob"),
+            ReadableStreamReaderMode::BYOB => Any::from("byob"),
         }
     }
 }
-impl From<&ReadableStreamReaderMode> for emlite::Val {
-    fn from(s: &ReadableStreamReaderMode) -> emlite::Val {
+impl From<&ReadableStreamReaderMode> for Any {
+    fn from(s: &ReadableStreamReaderMode) -> Any {
         match *s {
-            ReadableStreamReaderMode::BYOB => emlite::Val::from("byob"),
+            ReadableStreamReaderMode::BYOB => Any::from("byob"),
         }
     }
 }
@@ -8133,30 +8093,30 @@ pub enum ReadableStreamType {
     BYTES,
 }
 impl FromVal for ReadableStreamType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "bytes" => Self::BYTES,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ReadableStreamType> for emlite::Val {
-    fn from(s: ReadableStreamType) -> emlite::Val {
+impl From<ReadableStreamType> for Any {
+    fn from(s: ReadableStreamType) -> Any {
         match s {
-            ReadableStreamType::BYTES => emlite::Val::from("bytes"),
+            ReadableStreamType::BYTES => Any::from("bytes"),
         }
     }
 }
-impl From<&ReadableStreamType> for emlite::Val {
-    fn from(s: &ReadableStreamType) -> emlite::Val {
+impl From<&ReadableStreamType> for Any {
+    fn from(s: &ReadableStreamType) -> Any {
         match *s {
-            ReadableStreamType::BYTES => emlite::Val::from("bytes"),
+            ReadableStreamType::BYTES => Any::from("bytes"),
         }
     }
 }
@@ -8167,33 +8127,33 @@ pub enum TouchType {
     STYLUS,
 }
 impl FromVal for TouchType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "direct" => Self::DIRECT,
             "stylus" => Self::STYLUS,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<TouchType> for emlite::Val {
-    fn from(s: TouchType) -> emlite::Val {
+impl From<TouchType> for Any {
+    fn from(s: TouchType) -> Any {
         match s {
-            TouchType::DIRECT => emlite::Val::from("direct"),
-            TouchType::STYLUS => emlite::Val::from("stylus"),
+            TouchType::DIRECT => Any::from("direct"),
+            TouchType::STYLUS => Any::from("stylus"),
         }
     }
 }
-impl From<&TouchType> for emlite::Val {
-    fn from(s: &TouchType) -> emlite::Val {
+impl From<&TouchType> for Any {
+    fn from(s: &TouchType) -> Any {
         match *s {
-            TouchType::DIRECT => emlite::Val::from("direct"),
-            TouchType::STYLUS => emlite::Val::from("stylus"),
+            TouchType::DIRECT => Any::from("direct"),
+            TouchType::STYLUS => Any::from("stylus"),
         }
     }
 }
@@ -8204,33 +8164,33 @@ pub enum RefreshPolicy {
     REFRESH,
 }
 impl FromVal for RefreshPolicy {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "refresh" => Self::REFRESH,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RefreshPolicy> for emlite::Val {
-    fn from(s: RefreshPolicy) -> emlite::Val {
+impl From<RefreshPolicy> for Any {
+    fn from(s: RefreshPolicy) -> Any {
         match s {
-            RefreshPolicy::NONE => emlite::Val::from("none"),
-            RefreshPolicy::REFRESH => emlite::Val::from("refresh"),
+            RefreshPolicy::NONE => Any::from("none"),
+            RefreshPolicy::REFRESH => Any::from("refresh"),
         }
     }
 }
-impl From<&RefreshPolicy> for emlite::Val {
-    fn from(s: &RefreshPolicy) -> emlite::Val {
+impl From<&RefreshPolicy> for Any {
+    fn from(s: &RefreshPolicy) -> Any {
         match *s {
-            RefreshPolicy::NONE => emlite::Val::from("none"),
-            RefreshPolicy::REFRESH => emlite::Val::from("refresh"),
+            RefreshPolicy::NONE => Any::from("none"),
+            RefreshPolicy::REFRESH => Any::from("refresh"),
         }
     }
 }
@@ -8240,30 +8200,30 @@ pub enum TokenVersion {
     _1,
 }
 impl FromVal for TokenVersion {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "1" => Self::_1,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<TokenVersion> for emlite::Val {
-    fn from(s: TokenVersion) -> emlite::Val {
+impl From<TokenVersion> for Any {
+    fn from(s: TokenVersion) -> Any {
         match s {
-            TokenVersion::_1 => emlite::Val::from("1"),
+            TokenVersion::_1 => Any::from("1"),
         }
     }
 }
-impl From<&TokenVersion> for emlite::Val {
-    fn from(s: &TokenVersion) -> emlite::Val {
+impl From<&TokenVersion> for Any {
+    fn from(s: &TokenVersion) -> Any {
         match *s {
-            TokenVersion::_1 => emlite::Val::from("1"),
+            TokenVersion::_1 => Any::from("1"),
         }
     }
 }
@@ -8275,7 +8235,7 @@ pub enum OperationType {
     TOKEN_REDEMPTION,
 }
 impl FromVal for OperationType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "token-request" => Self::TOKEN_REQUEST,
             "send-redemption-record" => Self::SEND_REDEMPTION_RECORD,
@@ -8283,28 +8243,28 @@ impl FromVal for OperationType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<OperationType> for emlite::Val {
-    fn from(s: OperationType) -> emlite::Val {
+impl From<OperationType> for Any {
+    fn from(s: OperationType) -> Any {
         match s {
-            OperationType::TOKEN_REQUEST => emlite::Val::from("token-request"),
-            OperationType::SEND_REDEMPTION_RECORD => emlite::Val::from("send-redemption-record"),
-            OperationType::TOKEN_REDEMPTION => emlite::Val::from("token-redemption"),
+            OperationType::TOKEN_REQUEST => Any::from("token-request"),
+            OperationType::SEND_REDEMPTION_RECORD => Any::from("send-redemption-record"),
+            OperationType::TOKEN_REDEMPTION => Any::from("token-redemption"),
         }
     }
 }
-impl From<&OperationType> for emlite::Val {
-    fn from(s: &OperationType) -> emlite::Val {
+impl From<&OperationType> for Any {
+    fn from(s: &OperationType) -> Any {
         match *s {
-            OperationType::TOKEN_REQUEST => emlite::Val::from("token-request"),
-            OperationType::SEND_REDEMPTION_RECORD => emlite::Val::from("send-redemption-record"),
-            OperationType::TOKEN_REDEMPTION => emlite::Val::from("token-redemption"),
+            OperationType::TOKEN_REQUEST => Any::from("token-request"),
+            OperationType::SEND_REDEMPTION_RECORD => Any::from("send-redemption-record"),
+            OperationType::TOKEN_REDEMPTION => Any::from("token-redemption"),
         }
     }
 }
@@ -8317,7 +8277,7 @@ pub enum KAnonStatus {
     NOT_CALCULATED,
 }
 impl FromVal for KAnonStatus {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "passedAndEnforced" => Self::PASSED_AND_ENFORCED,
             "passedNotEnforced" => Self::PASSED_NOT_ENFORCED,
@@ -8326,30 +8286,30 @@ impl FromVal for KAnonStatus {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<KAnonStatus> for emlite::Val {
-    fn from(s: KAnonStatus) -> emlite::Val {
+impl From<KAnonStatus> for Any {
+    fn from(s: KAnonStatus) -> Any {
         match s {
-            KAnonStatus::PASSED_AND_ENFORCED => emlite::Val::from("passedAndEnforced"),
-            KAnonStatus::PASSED_NOT_ENFORCED => emlite::Val::from("passedNotEnforced"),
-            KAnonStatus::BELOW_THRESHOLD => emlite::Val::from("belowThreshold"),
-            KAnonStatus::NOT_CALCULATED => emlite::Val::from("notCalculated"),
+            KAnonStatus::PASSED_AND_ENFORCED => Any::from("passedAndEnforced"),
+            KAnonStatus::PASSED_NOT_ENFORCED => Any::from("passedNotEnforced"),
+            KAnonStatus::BELOW_THRESHOLD => Any::from("belowThreshold"),
+            KAnonStatus::NOT_CALCULATED => Any::from("notCalculated"),
         }
     }
 }
-impl From<&KAnonStatus> for emlite::Val {
-    fn from(s: &KAnonStatus) -> emlite::Val {
+impl From<&KAnonStatus> for Any {
+    fn from(s: &KAnonStatus) -> Any {
         match *s {
-            KAnonStatus::PASSED_AND_ENFORCED => emlite::Val::from("passedAndEnforced"),
-            KAnonStatus::PASSED_NOT_ENFORCED => emlite::Val::from("passedNotEnforced"),
-            KAnonStatus::BELOW_THRESHOLD => emlite::Val::from("belowThreshold"),
-            KAnonStatus::NOT_CALCULATED => emlite::Val::from("notCalculated"),
+            KAnonStatus::PASSED_AND_ENFORCED => Any::from("passedAndEnforced"),
+            KAnonStatus::PASSED_NOT_ENFORCED => Any::from("passedNotEnforced"),
+            KAnonStatus::BELOW_THRESHOLD => Any::from("belowThreshold"),
+            KAnonStatus::NOT_CALCULATED => Any::from("notCalculated"),
         }
     }
 }
@@ -8362,7 +8322,7 @@ pub enum ImportExportKind {
     GLOBAL,
 }
 impl FromVal for ImportExportKind {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "function" => Self::FUNCTION,
             "table" => Self::TABLE,
@@ -8371,30 +8331,30 @@ impl FromVal for ImportExportKind {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ImportExportKind> for emlite::Val {
-    fn from(s: ImportExportKind) -> emlite::Val {
+impl From<ImportExportKind> for Any {
+    fn from(s: ImportExportKind) -> Any {
         match s {
-            ImportExportKind::FUNCTION => emlite::Val::from("function"),
-            ImportExportKind::TABLE => emlite::Val::from("table"),
-            ImportExportKind::MEMORY => emlite::Val::from("memory"),
-            ImportExportKind::GLOBAL => emlite::Val::from("global"),
+            ImportExportKind::FUNCTION => Any::from("function"),
+            ImportExportKind::TABLE => Any::from("table"),
+            ImportExportKind::MEMORY => Any::from("memory"),
+            ImportExportKind::GLOBAL => Any::from("global"),
         }
     }
 }
-impl From<&ImportExportKind> for emlite::Val {
-    fn from(s: &ImportExportKind) -> emlite::Val {
+impl From<&ImportExportKind> for Any {
+    fn from(s: &ImportExportKind) -> Any {
         match *s {
-            ImportExportKind::FUNCTION => emlite::Val::from("function"),
-            ImportExportKind::TABLE => emlite::Val::from("table"),
-            ImportExportKind::MEMORY => emlite::Val::from("memory"),
-            ImportExportKind::GLOBAL => emlite::Val::from("global"),
+            ImportExportKind::FUNCTION => Any::from("function"),
+            ImportExportKind::TABLE => Any::from("table"),
+            ImportExportKind::MEMORY => Any::from("memory"),
+            ImportExportKind::GLOBAL => Any::from("global"),
         }
     }
 }
@@ -8405,33 +8365,33 @@ pub enum TableKind {
     ANYFUNC,
 }
 impl FromVal for TableKind {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "externref" => Self::EXTERNREF,
             "anyfunc" => Self::ANYFUNC,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<TableKind> for emlite::Val {
-    fn from(s: TableKind) -> emlite::Val {
+impl From<TableKind> for Any {
+    fn from(s: TableKind) -> Any {
         match s {
-            TableKind::EXTERNREF => emlite::Val::from("externref"),
-            TableKind::ANYFUNC => emlite::Val::from("anyfunc"),
+            TableKind::EXTERNREF => Any::from("externref"),
+            TableKind::ANYFUNC => Any::from("anyfunc"),
         }
     }
 }
-impl From<&TableKind> for emlite::Val {
-    fn from(s: &TableKind) -> emlite::Val {
+impl From<&TableKind> for Any {
+    fn from(s: &TableKind) -> Any {
         match *s {
-            TableKind::EXTERNREF => emlite::Val::from("externref"),
-            TableKind::ANYFUNC => emlite::Val::from("anyfunc"),
+            TableKind::EXTERNREF => Any::from("externref"),
+            TableKind::ANYFUNC => Any::from("anyfunc"),
         }
     }
 }
@@ -8447,7 +8407,7 @@ pub enum ValueType {
     ANYFUNC,
 }
 impl FromVal for ValueType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "i32" => Self::I32_,
             "i64" => Self::I64_,
@@ -8459,36 +8419,36 @@ impl FromVal for ValueType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ValueType> for emlite::Val {
-    fn from(s: ValueType) -> emlite::Val {
+impl From<ValueType> for Any {
+    fn from(s: ValueType) -> Any {
         match s {
-            ValueType::I32_ => emlite::Val::from("i32"),
-            ValueType::I64_ => emlite::Val::from("i64"),
-            ValueType::F32_ => emlite::Val::from("f32"),
-            ValueType::F64_ => emlite::Val::from("f64"),
-            ValueType::V128 => emlite::Val::from("v128"),
-            ValueType::EXTERNREF => emlite::Val::from("externref"),
-            ValueType::ANYFUNC => emlite::Val::from("anyfunc"),
+            ValueType::I32_ => Any::from("i32"),
+            ValueType::I64_ => Any::from("i64"),
+            ValueType::F32_ => Any::from("f32"),
+            ValueType::F64_ => Any::from("f64"),
+            ValueType::V128 => Any::from("v128"),
+            ValueType::EXTERNREF => Any::from("externref"),
+            ValueType::ANYFUNC => Any::from("anyfunc"),
         }
     }
 }
-impl From<&ValueType> for emlite::Val {
-    fn from(s: &ValueType) -> emlite::Val {
+impl From<&ValueType> for Any {
+    fn from(s: &ValueType) -> Any {
         match *s {
-            ValueType::I32_ => emlite::Val::from("i32"),
-            ValueType::I64_ => emlite::Val::from("i64"),
-            ValueType::F32_ => emlite::Val::from("f32"),
-            ValueType::F64_ => emlite::Val::from("f64"),
-            ValueType::V128 => emlite::Val::from("v128"),
-            ValueType::EXTERNREF => emlite::Val::from("externref"),
-            ValueType::ANYFUNC => emlite::Val::from("anyfunc"),
+            ValueType::I32_ => Any::from("i32"),
+            ValueType::I64_ => Any::from("i64"),
+            ValueType::F32_ => Any::from("f32"),
+            ValueType::F64_ => Any::from("f64"),
+            ValueType::V128 => Any::from("v128"),
+            ValueType::EXTERNREF => Any::from("externref"),
+            ValueType::ANYFUNC => Any::from("anyfunc"),
         }
     }
 }
@@ -8499,33 +8459,33 @@ pub enum IterationCompositeOperation {
     ACCUMULATE,
 }
 impl FromVal for IterationCompositeOperation {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "replace" => Self::REPLACE,
             "accumulate" => Self::ACCUMULATE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<IterationCompositeOperation> for emlite::Val {
-    fn from(s: IterationCompositeOperation) -> emlite::Val {
+impl From<IterationCompositeOperation> for Any {
+    fn from(s: IterationCompositeOperation) -> Any {
         match s {
-            IterationCompositeOperation::REPLACE => emlite::Val::from("replace"),
-            IterationCompositeOperation::ACCUMULATE => emlite::Val::from("accumulate"),
+            IterationCompositeOperation::REPLACE => Any::from("replace"),
+            IterationCompositeOperation::ACCUMULATE => Any::from("accumulate"),
         }
     }
 }
-impl From<&IterationCompositeOperation> for emlite::Val {
-    fn from(s: &IterationCompositeOperation) -> emlite::Val {
+impl From<&IterationCompositeOperation> for Any {
+    fn from(s: &IterationCompositeOperation) -> Any {
         match *s {
-            IterationCompositeOperation::REPLACE => emlite::Val::from("replace"),
-            IterationCompositeOperation::ACCUMULATE => emlite::Val::from("accumulate"),
+            IterationCompositeOperation::REPLACE => Any::from("replace"),
+            IterationCompositeOperation::ACCUMULATE => Any::from("accumulate"),
         }
     }
 }
@@ -8538,7 +8498,7 @@ pub enum AnimationTriggerBehavior {
     STATE,
 }
 impl FromVal for AnimationTriggerBehavior {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "once" => Self::ONCE,
             "repeat" => Self::REPEAT,
@@ -8547,30 +8507,30 @@ impl FromVal for AnimationTriggerBehavior {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AnimationTriggerBehavior> for emlite::Val {
-    fn from(s: AnimationTriggerBehavior) -> emlite::Val {
+impl From<AnimationTriggerBehavior> for Any {
+    fn from(s: AnimationTriggerBehavior) -> Any {
         match s {
-            AnimationTriggerBehavior::ONCE => emlite::Val::from("once"),
-            AnimationTriggerBehavior::REPEAT => emlite::Val::from("repeat"),
-            AnimationTriggerBehavior::ALTERNATE => emlite::Val::from("alternate"),
-            AnimationTriggerBehavior::STATE => emlite::Val::from("state"),
+            AnimationTriggerBehavior::ONCE => Any::from("once"),
+            AnimationTriggerBehavior::REPEAT => Any::from("repeat"),
+            AnimationTriggerBehavior::ALTERNATE => Any::from("alternate"),
+            AnimationTriggerBehavior::STATE => Any::from("state"),
         }
     }
 }
-impl From<&AnimationTriggerBehavior> for emlite::Val {
-    fn from(s: &AnimationTriggerBehavior) -> emlite::Val {
+impl From<&AnimationTriggerBehavior> for Any {
+    fn from(s: &AnimationTriggerBehavior) -> Any {
         match *s {
-            AnimationTriggerBehavior::ONCE => emlite::Val::from("once"),
-            AnimationTriggerBehavior::REPEAT => emlite::Val::from("repeat"),
-            AnimationTriggerBehavior::ALTERNATE => emlite::Val::from("alternate"),
-            AnimationTriggerBehavior::STATE => emlite::Val::from("state"),
+            AnimationTriggerBehavior::ONCE => Any::from("once"),
+            AnimationTriggerBehavior::REPEAT => Any::from("repeat"),
+            AnimationTriggerBehavior::ALTERNATE => Any::from("alternate"),
+            AnimationTriggerBehavior::STATE => Any::from("state"),
         }
     }
 }
@@ -8583,7 +8543,7 @@ pub enum AnimationPlayState {
     FINISHED,
 }
 impl FromVal for AnimationPlayState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "idle" => Self::IDLE,
             "running" => Self::RUNNING,
@@ -8592,30 +8552,30 @@ impl FromVal for AnimationPlayState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AnimationPlayState> for emlite::Val {
-    fn from(s: AnimationPlayState) -> emlite::Val {
+impl From<AnimationPlayState> for Any {
+    fn from(s: AnimationPlayState) -> Any {
         match s {
-            AnimationPlayState::IDLE => emlite::Val::from("idle"),
-            AnimationPlayState::RUNNING => emlite::Val::from("running"),
-            AnimationPlayState::PAUSED => emlite::Val::from("paused"),
-            AnimationPlayState::FINISHED => emlite::Val::from("finished"),
+            AnimationPlayState::IDLE => Any::from("idle"),
+            AnimationPlayState::RUNNING => Any::from("running"),
+            AnimationPlayState::PAUSED => Any::from("paused"),
+            AnimationPlayState::FINISHED => Any::from("finished"),
         }
     }
 }
-impl From<&AnimationPlayState> for emlite::Val {
-    fn from(s: &AnimationPlayState) -> emlite::Val {
+impl From<&AnimationPlayState> for Any {
+    fn from(s: &AnimationPlayState) -> Any {
         match *s {
-            AnimationPlayState::IDLE => emlite::Val::from("idle"),
-            AnimationPlayState::RUNNING => emlite::Val::from("running"),
-            AnimationPlayState::PAUSED => emlite::Val::from("paused"),
-            AnimationPlayState::FINISHED => emlite::Val::from("finished"),
+            AnimationPlayState::IDLE => Any::from("idle"),
+            AnimationPlayState::RUNNING => Any::from("running"),
+            AnimationPlayState::PAUSED => Any::from("paused"),
+            AnimationPlayState::FINISHED => Any::from("finished"),
         }
     }
 }
@@ -8627,7 +8587,7 @@ pub enum AnimationReplaceState {
     PERSISTED,
 }
 impl FromVal for AnimationReplaceState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "active" => Self::ACTIVE,
             "removed" => Self::REMOVED,
@@ -8635,28 +8595,28 @@ impl FromVal for AnimationReplaceState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AnimationReplaceState> for emlite::Val {
-    fn from(s: AnimationReplaceState) -> emlite::Val {
+impl From<AnimationReplaceState> for Any {
+    fn from(s: AnimationReplaceState) -> Any {
         match s {
-            AnimationReplaceState::ACTIVE => emlite::Val::from("active"),
-            AnimationReplaceState::REMOVED => emlite::Val::from("removed"),
-            AnimationReplaceState::PERSISTED => emlite::Val::from("persisted"),
+            AnimationReplaceState::ACTIVE => Any::from("active"),
+            AnimationReplaceState::REMOVED => Any::from("removed"),
+            AnimationReplaceState::PERSISTED => Any::from("persisted"),
         }
     }
 }
-impl From<&AnimationReplaceState> for emlite::Val {
-    fn from(s: &AnimationReplaceState) -> emlite::Val {
+impl From<&AnimationReplaceState> for Any {
+    fn from(s: &AnimationReplaceState) -> Any {
         match *s {
-            AnimationReplaceState::ACTIVE => emlite::Val::from("active"),
-            AnimationReplaceState::REMOVED => emlite::Val::from("removed"),
-            AnimationReplaceState::PERSISTED => emlite::Val::from("persisted"),
+            AnimationReplaceState::ACTIVE => Any::from("active"),
+            AnimationReplaceState::REMOVED => Any::from("removed"),
+            AnimationReplaceState::PERSISTED => Any::from("persisted"),
         }
     }
 }
@@ -8670,7 +8630,7 @@ pub enum FillMode {
     AUTO,
 }
 impl FromVal for FillMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "forwards" => Self::FORWARDS,
@@ -8680,32 +8640,32 @@ impl FromVal for FillMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<FillMode> for emlite::Val {
-    fn from(s: FillMode) -> emlite::Val {
+impl From<FillMode> for Any {
+    fn from(s: FillMode) -> Any {
         match s {
-            FillMode::NONE => emlite::Val::from("none"),
-            FillMode::FORWARDS => emlite::Val::from("forwards"),
-            FillMode::BACKWARDS => emlite::Val::from("backwards"),
-            FillMode::BOTH => emlite::Val::from("both"),
-            FillMode::AUTO => emlite::Val::from("auto"),
+            FillMode::NONE => Any::from("none"),
+            FillMode::FORWARDS => Any::from("forwards"),
+            FillMode::BACKWARDS => Any::from("backwards"),
+            FillMode::BOTH => Any::from("both"),
+            FillMode::AUTO => Any::from("auto"),
         }
     }
 }
-impl From<&FillMode> for emlite::Val {
-    fn from(s: &FillMode) -> emlite::Val {
+impl From<&FillMode> for Any {
+    fn from(s: &FillMode) -> Any {
         match *s {
-            FillMode::NONE => emlite::Val::from("none"),
-            FillMode::FORWARDS => emlite::Val::from("forwards"),
-            FillMode::BACKWARDS => emlite::Val::from("backwards"),
-            FillMode::BOTH => emlite::Val::from("both"),
-            FillMode::AUTO => emlite::Val::from("auto"),
+            FillMode::NONE => Any::from("none"),
+            FillMode::FORWARDS => Any::from("forwards"),
+            FillMode::BACKWARDS => Any::from("backwards"),
+            FillMode::BOTH => Any::from("both"),
+            FillMode::AUTO => Any::from("auto"),
         }
     }
 }
@@ -8718,7 +8678,7 @@ pub enum PlaybackDirection {
     ALTERNATE_REVERSE,
 }
 impl FromVal for PlaybackDirection {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "normal" => Self::NORMAL,
             "reverse" => Self::REVERSE,
@@ -8727,30 +8687,30 @@ impl FromVal for PlaybackDirection {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PlaybackDirection> for emlite::Val {
-    fn from(s: PlaybackDirection) -> emlite::Val {
+impl From<PlaybackDirection> for Any {
+    fn from(s: PlaybackDirection) -> Any {
         match s {
-            PlaybackDirection::NORMAL => emlite::Val::from("normal"),
-            PlaybackDirection::REVERSE => emlite::Val::from("reverse"),
-            PlaybackDirection::ALTERNATE => emlite::Val::from("alternate"),
-            PlaybackDirection::ALTERNATE_REVERSE => emlite::Val::from("alternate-reverse"),
+            PlaybackDirection::NORMAL => Any::from("normal"),
+            PlaybackDirection::REVERSE => Any::from("reverse"),
+            PlaybackDirection::ALTERNATE => Any::from("alternate"),
+            PlaybackDirection::ALTERNATE_REVERSE => Any::from("alternate-reverse"),
         }
     }
 }
-impl From<&PlaybackDirection> for emlite::Val {
-    fn from(s: &PlaybackDirection) -> emlite::Val {
+impl From<&PlaybackDirection> for Any {
+    fn from(s: &PlaybackDirection) -> Any {
         match *s {
-            PlaybackDirection::NORMAL => emlite::Val::from("normal"),
-            PlaybackDirection::REVERSE => emlite::Val::from("reverse"),
-            PlaybackDirection::ALTERNATE => emlite::Val::from("alternate"),
-            PlaybackDirection::ALTERNATE_REVERSE => emlite::Val::from("alternate-reverse"),
+            PlaybackDirection::NORMAL => Any::from("normal"),
+            PlaybackDirection::REVERSE => Any::from("reverse"),
+            PlaybackDirection::ALTERNATE => Any::from("alternate"),
+            PlaybackDirection::ALTERNATE_REVERSE => Any::from("alternate-reverse"),
         }
     }
 }
@@ -8762,7 +8722,7 @@ pub enum CompositeOperation {
     ACCUMULATE,
 }
 impl FromVal for CompositeOperation {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "replace" => Self::REPLACE,
             "add" => Self::ADD,
@@ -8770,28 +8730,28 @@ impl FromVal for CompositeOperation {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CompositeOperation> for emlite::Val {
-    fn from(s: CompositeOperation) -> emlite::Val {
+impl From<CompositeOperation> for Any {
+    fn from(s: CompositeOperation) -> Any {
         match s {
-            CompositeOperation::REPLACE => emlite::Val::from("replace"),
-            CompositeOperation::ADD => emlite::Val::from("add"),
-            CompositeOperation::ACCUMULATE => emlite::Val::from("accumulate"),
+            CompositeOperation::REPLACE => Any::from("replace"),
+            CompositeOperation::ADD => Any::from("add"),
+            CompositeOperation::ACCUMULATE => Any::from("accumulate"),
         }
     }
 }
-impl From<&CompositeOperation> for emlite::Val {
-    fn from(s: &CompositeOperation) -> emlite::Val {
+impl From<&CompositeOperation> for Any {
+    fn from(s: &CompositeOperation) -> Any {
         match *s {
-            CompositeOperation::REPLACE => emlite::Val::from("replace"),
-            CompositeOperation::ADD => emlite::Val::from("add"),
-            CompositeOperation::ACCUMULATE => emlite::Val::from("accumulate"),
+            CompositeOperation::REPLACE => Any::from("replace"),
+            CompositeOperation::ADD => Any::from("add"),
+            CompositeOperation::ACCUMULATE => Any::from("accumulate"),
         }
     }
 }
@@ -8804,7 +8764,7 @@ pub enum CompositeOperationOrAuto {
     AUTO,
 }
 impl FromVal for CompositeOperationOrAuto {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "replace" => Self::REPLACE,
             "add" => Self::ADD,
@@ -8813,30 +8773,30 @@ impl FromVal for CompositeOperationOrAuto {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CompositeOperationOrAuto> for emlite::Val {
-    fn from(s: CompositeOperationOrAuto) -> emlite::Val {
+impl From<CompositeOperationOrAuto> for Any {
+    fn from(s: CompositeOperationOrAuto) -> Any {
         match s {
-            CompositeOperationOrAuto::REPLACE => emlite::Val::from("replace"),
-            CompositeOperationOrAuto::ADD => emlite::Val::from("add"),
-            CompositeOperationOrAuto::ACCUMULATE => emlite::Val::from("accumulate"),
-            CompositeOperationOrAuto::AUTO => emlite::Val::from("auto"),
+            CompositeOperationOrAuto::REPLACE => Any::from("replace"),
+            CompositeOperationOrAuto::ADD => Any::from("add"),
+            CompositeOperationOrAuto::ACCUMULATE => Any::from("accumulate"),
+            CompositeOperationOrAuto::AUTO => Any::from("auto"),
         }
     }
 }
-impl From<&CompositeOperationOrAuto> for emlite::Val {
-    fn from(s: &CompositeOperationOrAuto) -> emlite::Val {
+impl From<&CompositeOperationOrAuto> for Any {
+    fn from(s: &CompositeOperationOrAuto) -> Any {
         match *s {
-            CompositeOperationOrAuto::REPLACE => emlite::Val::from("replace"),
-            CompositeOperationOrAuto::ADD => emlite::Val::from("add"),
-            CompositeOperationOrAuto::ACCUMULATE => emlite::Val::from("accumulate"),
-            CompositeOperationOrAuto::AUTO => emlite::Val::from("auto"),
+            CompositeOperationOrAuto::REPLACE => Any::from("replace"),
+            CompositeOperationOrAuto::ADD => Any::from("add"),
+            CompositeOperationOrAuto::ACCUMULATE => Any::from("accumulate"),
+            CompositeOperationOrAuto::AUTO => Any::from("auto"),
         }
     }
 }
@@ -8847,33 +8807,33 @@ pub enum LockMode {
     EXCLUSIVE,
 }
 impl FromVal for LockMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "shared" => Self::SHARED,
             "exclusive" => Self::EXCLUSIVE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<LockMode> for emlite::Val {
-    fn from(s: LockMode) -> emlite::Val {
+impl From<LockMode> for Any {
+    fn from(s: LockMode) -> Any {
         match s {
-            LockMode::SHARED => emlite::Val::from("shared"),
-            LockMode::EXCLUSIVE => emlite::Val::from("exclusive"),
+            LockMode::SHARED => Any::from("shared"),
+            LockMode::EXCLUSIVE => Any::from("exclusive"),
         }
     }
 }
-impl From<&LockMode> for emlite::Val {
-    fn from(s: &LockMode) -> emlite::Val {
+impl From<&LockMode> for Any {
+    fn from(s: &LockMode) -> Any {
         match *s {
-            LockMode::SHARED => emlite::Val::from("shared"),
-            LockMode::EXCLUSIVE => emlite::Val::from("exclusive"),
+            LockMode::SHARED => Any::from("shared"),
+            LockMode::EXCLUSIVE => Any::from("exclusive"),
         }
     }
 }
@@ -8883,30 +8843,30 @@ pub enum OTPCredentialTransportType {
     SMS,
 }
 impl FromVal for OTPCredentialTransportType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "sms" => Self::SMS,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<OTPCredentialTransportType> for emlite::Val {
-    fn from(s: OTPCredentialTransportType) -> emlite::Val {
+impl From<OTPCredentialTransportType> for Any {
+    fn from(s: OTPCredentialTransportType) -> Any {
         match s {
-            OTPCredentialTransportType::SMS => emlite::Val::from("sms"),
+            OTPCredentialTransportType::SMS => Any::from("sms"),
         }
     }
 }
-impl From<&OTPCredentialTransportType> for emlite::Val {
-    fn from(s: &OTPCredentialTransportType) -> emlite::Val {
+impl From<&OTPCredentialTransportType> for Any {
+    fn from(s: &OTPCredentialTransportType) -> Any {
         match *s {
-            OTPCredentialTransportType::SMS => emlite::Val::from("sms"),
+            OTPCredentialTransportType::SMS => Any::from("sms"),
         }
     }
 }
@@ -8919,7 +8879,7 @@ pub enum AudioContextState {
     INTERRUPTED,
 }
 impl FromVal for AudioContextState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "suspended" => Self::SUSPENDED,
             "running" => Self::RUNNING,
@@ -8928,30 +8888,30 @@ impl FromVal for AudioContextState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AudioContextState> for emlite::Val {
-    fn from(s: AudioContextState) -> emlite::Val {
+impl From<AudioContextState> for Any {
+    fn from(s: AudioContextState) -> Any {
         match s {
-            AudioContextState::SUSPENDED => emlite::Val::from("suspended"),
-            AudioContextState::RUNNING => emlite::Val::from("running"),
-            AudioContextState::CLOSED => emlite::Val::from("closed"),
-            AudioContextState::INTERRUPTED => emlite::Val::from("interrupted"),
+            AudioContextState::SUSPENDED => Any::from("suspended"),
+            AudioContextState::RUNNING => Any::from("running"),
+            AudioContextState::CLOSED => Any::from("closed"),
+            AudioContextState::INTERRUPTED => Any::from("interrupted"),
         }
     }
 }
-impl From<&AudioContextState> for emlite::Val {
-    fn from(s: &AudioContextState) -> emlite::Val {
+impl From<&AudioContextState> for Any {
+    fn from(s: &AudioContextState) -> Any {
         match *s {
-            AudioContextState::SUSPENDED => emlite::Val::from("suspended"),
-            AudioContextState::RUNNING => emlite::Val::from("running"),
-            AudioContextState::CLOSED => emlite::Val::from("closed"),
-            AudioContextState::INTERRUPTED => emlite::Val::from("interrupted"),
+            AudioContextState::SUSPENDED => Any::from("suspended"),
+            AudioContextState::RUNNING => Any::from("running"),
+            AudioContextState::CLOSED => Any::from("closed"),
+            AudioContextState::INTERRUPTED => Any::from("interrupted"),
         }
     }
 }
@@ -8962,33 +8922,33 @@ pub enum AudioContextRenderSizeCategory {
     HARDWARE,
 }
 impl FromVal for AudioContextRenderSizeCategory {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "default" => Self::DEFAULT,
             "hardware" => Self::HARDWARE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AudioContextRenderSizeCategory> for emlite::Val {
-    fn from(s: AudioContextRenderSizeCategory) -> emlite::Val {
+impl From<AudioContextRenderSizeCategory> for Any {
+    fn from(s: AudioContextRenderSizeCategory) -> Any {
         match s {
-            AudioContextRenderSizeCategory::DEFAULT => emlite::Val::from("default"),
-            AudioContextRenderSizeCategory::HARDWARE => emlite::Val::from("hardware"),
+            AudioContextRenderSizeCategory::DEFAULT => Any::from("default"),
+            AudioContextRenderSizeCategory::HARDWARE => Any::from("hardware"),
         }
     }
 }
-impl From<&AudioContextRenderSizeCategory> for emlite::Val {
-    fn from(s: &AudioContextRenderSizeCategory) -> emlite::Val {
+impl From<&AudioContextRenderSizeCategory> for Any {
+    fn from(s: &AudioContextRenderSizeCategory) -> Any {
         match *s {
-            AudioContextRenderSizeCategory::DEFAULT => emlite::Val::from("default"),
-            AudioContextRenderSizeCategory::HARDWARE => emlite::Val::from("hardware"),
+            AudioContextRenderSizeCategory::DEFAULT => Any::from("default"),
+            AudioContextRenderSizeCategory::HARDWARE => Any::from("hardware"),
         }
     }
 }
@@ -9000,7 +8960,7 @@ pub enum AudioContextLatencyCategory {
     PLAYBACK,
 }
 impl FromVal for AudioContextLatencyCategory {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "balanced" => Self::BALANCED,
             "interactive" => Self::INTERACTIVE,
@@ -9008,28 +8968,28 @@ impl FromVal for AudioContextLatencyCategory {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AudioContextLatencyCategory> for emlite::Val {
-    fn from(s: AudioContextLatencyCategory) -> emlite::Val {
+impl From<AudioContextLatencyCategory> for Any {
+    fn from(s: AudioContextLatencyCategory) -> Any {
         match s {
-            AudioContextLatencyCategory::BALANCED => emlite::Val::from("balanced"),
-            AudioContextLatencyCategory::INTERACTIVE => emlite::Val::from("interactive"),
-            AudioContextLatencyCategory::PLAYBACK => emlite::Val::from("playback"),
+            AudioContextLatencyCategory::BALANCED => Any::from("balanced"),
+            AudioContextLatencyCategory::INTERACTIVE => Any::from("interactive"),
+            AudioContextLatencyCategory::PLAYBACK => Any::from("playback"),
         }
     }
 }
-impl From<&AudioContextLatencyCategory> for emlite::Val {
-    fn from(s: &AudioContextLatencyCategory) -> emlite::Val {
+impl From<&AudioContextLatencyCategory> for Any {
+    fn from(s: &AudioContextLatencyCategory) -> Any {
         match *s {
-            AudioContextLatencyCategory::BALANCED => emlite::Val::from("balanced"),
-            AudioContextLatencyCategory::INTERACTIVE => emlite::Val::from("interactive"),
-            AudioContextLatencyCategory::PLAYBACK => emlite::Val::from("playback"),
+            AudioContextLatencyCategory::BALANCED => Any::from("balanced"),
+            AudioContextLatencyCategory::INTERACTIVE => Any::from("interactive"),
+            AudioContextLatencyCategory::PLAYBACK => Any::from("playback"),
         }
     }
 }
@@ -9039,30 +8999,30 @@ pub enum AudioSinkType {
     NONE,
 }
 impl FromVal for AudioSinkType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AudioSinkType> for emlite::Val {
-    fn from(s: AudioSinkType) -> emlite::Val {
+impl From<AudioSinkType> for Any {
+    fn from(s: AudioSinkType) -> Any {
         match s {
-            AudioSinkType::NONE => emlite::Val::from("none"),
+            AudioSinkType::NONE => Any::from("none"),
         }
     }
 }
-impl From<&AudioSinkType> for emlite::Val {
-    fn from(s: &AudioSinkType) -> emlite::Val {
+impl From<&AudioSinkType> for Any {
+    fn from(s: &AudioSinkType) -> Any {
         match *s {
-            AudioSinkType::NONE => emlite::Val::from("none"),
+            AudioSinkType::NONE => Any::from("none"),
         }
     }
 }
@@ -9074,7 +9034,7 @@ pub enum ChannelCountMode {
     EXPLICIT,
 }
 impl FromVal for ChannelCountMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "max" => Self::MAX,
             "clamped-max" => Self::CLAMPED_MAX,
@@ -9082,28 +9042,28 @@ impl FromVal for ChannelCountMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ChannelCountMode> for emlite::Val {
-    fn from(s: ChannelCountMode) -> emlite::Val {
+impl From<ChannelCountMode> for Any {
+    fn from(s: ChannelCountMode) -> Any {
         match s {
-            ChannelCountMode::MAX => emlite::Val::from("max"),
-            ChannelCountMode::CLAMPED_MAX => emlite::Val::from("clamped-max"),
-            ChannelCountMode::EXPLICIT => emlite::Val::from("explicit"),
+            ChannelCountMode::MAX => Any::from("max"),
+            ChannelCountMode::CLAMPED_MAX => Any::from("clamped-max"),
+            ChannelCountMode::EXPLICIT => Any::from("explicit"),
         }
     }
 }
-impl From<&ChannelCountMode> for emlite::Val {
-    fn from(s: &ChannelCountMode) -> emlite::Val {
+impl From<&ChannelCountMode> for Any {
+    fn from(s: &ChannelCountMode) -> Any {
         match *s {
-            ChannelCountMode::MAX => emlite::Val::from("max"),
-            ChannelCountMode::CLAMPED_MAX => emlite::Val::from("clamped-max"),
-            ChannelCountMode::EXPLICIT => emlite::Val::from("explicit"),
+            ChannelCountMode::MAX => Any::from("max"),
+            ChannelCountMode::CLAMPED_MAX => Any::from("clamped-max"),
+            ChannelCountMode::EXPLICIT => Any::from("explicit"),
         }
     }
 }
@@ -9114,33 +9074,33 @@ pub enum ChannelInterpretation {
     DISCRETE,
 }
 impl FromVal for ChannelInterpretation {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "speakers" => Self::SPEAKERS,
             "discrete" => Self::DISCRETE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ChannelInterpretation> for emlite::Val {
-    fn from(s: ChannelInterpretation) -> emlite::Val {
+impl From<ChannelInterpretation> for Any {
+    fn from(s: ChannelInterpretation) -> Any {
         match s {
-            ChannelInterpretation::SPEAKERS => emlite::Val::from("speakers"),
-            ChannelInterpretation::DISCRETE => emlite::Val::from("discrete"),
+            ChannelInterpretation::SPEAKERS => Any::from("speakers"),
+            ChannelInterpretation::DISCRETE => Any::from("discrete"),
         }
     }
 }
-impl From<&ChannelInterpretation> for emlite::Val {
-    fn from(s: &ChannelInterpretation) -> emlite::Val {
+impl From<&ChannelInterpretation> for Any {
+    fn from(s: &ChannelInterpretation) -> Any {
         match *s {
-            ChannelInterpretation::SPEAKERS => emlite::Val::from("speakers"),
-            ChannelInterpretation::DISCRETE => emlite::Val::from("discrete"),
+            ChannelInterpretation::SPEAKERS => Any::from("speakers"),
+            ChannelInterpretation::DISCRETE => Any::from("discrete"),
         }
     }
 }
@@ -9151,33 +9111,33 @@ pub enum AutomationRate {
     K_RATE,
 }
 impl FromVal for AutomationRate {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "a-rate" => Self::A_RATE,
             "k-rate" => Self::K_RATE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AutomationRate> for emlite::Val {
-    fn from(s: AutomationRate) -> emlite::Val {
+impl From<AutomationRate> for Any {
+    fn from(s: AutomationRate) -> Any {
         match s {
-            AutomationRate::A_RATE => emlite::Val::from("a-rate"),
-            AutomationRate::K_RATE => emlite::Val::from("k-rate"),
+            AutomationRate::A_RATE => Any::from("a-rate"),
+            AutomationRate::K_RATE => Any::from("k-rate"),
         }
     }
 }
-impl From<&AutomationRate> for emlite::Val {
-    fn from(s: &AutomationRate) -> emlite::Val {
+impl From<&AutomationRate> for Any {
+    fn from(s: &AutomationRate) -> Any {
         match *s {
-            AutomationRate::A_RATE => emlite::Val::from("a-rate"),
-            AutomationRate::K_RATE => emlite::Val::from("k-rate"),
+            AutomationRate::A_RATE => Any::from("a-rate"),
+            AutomationRate::K_RATE => Any::from("k-rate"),
         }
     }
 }
@@ -9194,7 +9154,7 @@ pub enum BiquadFilterType {
     ALLPASS,
 }
 impl FromVal for BiquadFilterType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "lowpass" => Self::LOWPASS,
             "highpass" => Self::HIGHPASS,
@@ -9207,38 +9167,38 @@ impl FromVal for BiquadFilterType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<BiquadFilterType> for emlite::Val {
-    fn from(s: BiquadFilterType) -> emlite::Val {
+impl From<BiquadFilterType> for Any {
+    fn from(s: BiquadFilterType) -> Any {
         match s {
-            BiquadFilterType::LOWPASS => emlite::Val::from("lowpass"),
-            BiquadFilterType::HIGHPASS => emlite::Val::from("highpass"),
-            BiquadFilterType::BANDPASS => emlite::Val::from("bandpass"),
-            BiquadFilterType::LOWSHELF => emlite::Val::from("lowshelf"),
-            BiquadFilterType::HIGHSHELF => emlite::Val::from("highshelf"),
-            BiquadFilterType::PEAKING => emlite::Val::from("peaking"),
-            BiquadFilterType::NOTCH => emlite::Val::from("notch"),
-            BiquadFilterType::ALLPASS => emlite::Val::from("allpass"),
+            BiquadFilterType::LOWPASS => Any::from("lowpass"),
+            BiquadFilterType::HIGHPASS => Any::from("highpass"),
+            BiquadFilterType::BANDPASS => Any::from("bandpass"),
+            BiquadFilterType::LOWSHELF => Any::from("lowshelf"),
+            BiquadFilterType::HIGHSHELF => Any::from("highshelf"),
+            BiquadFilterType::PEAKING => Any::from("peaking"),
+            BiquadFilterType::NOTCH => Any::from("notch"),
+            BiquadFilterType::ALLPASS => Any::from("allpass"),
         }
     }
 }
-impl From<&BiquadFilterType> for emlite::Val {
-    fn from(s: &BiquadFilterType) -> emlite::Val {
+impl From<&BiquadFilterType> for Any {
+    fn from(s: &BiquadFilterType) -> Any {
         match *s {
-            BiquadFilterType::LOWPASS => emlite::Val::from("lowpass"),
-            BiquadFilterType::HIGHPASS => emlite::Val::from("highpass"),
-            BiquadFilterType::BANDPASS => emlite::Val::from("bandpass"),
-            BiquadFilterType::LOWSHELF => emlite::Val::from("lowshelf"),
-            BiquadFilterType::HIGHSHELF => emlite::Val::from("highshelf"),
-            BiquadFilterType::PEAKING => emlite::Val::from("peaking"),
-            BiquadFilterType::NOTCH => emlite::Val::from("notch"),
-            BiquadFilterType::ALLPASS => emlite::Val::from("allpass"),
+            BiquadFilterType::LOWPASS => Any::from("lowpass"),
+            BiquadFilterType::HIGHPASS => Any::from("highpass"),
+            BiquadFilterType::BANDPASS => Any::from("bandpass"),
+            BiquadFilterType::LOWSHELF => Any::from("lowshelf"),
+            BiquadFilterType::HIGHSHELF => Any::from("highshelf"),
+            BiquadFilterType::PEAKING => Any::from("peaking"),
+            BiquadFilterType::NOTCH => Any::from("notch"),
+            BiquadFilterType::ALLPASS => Any::from("allpass"),
         }
     }
 }
@@ -9252,7 +9212,7 @@ pub enum OscillatorType {
     CUSTOM,
 }
 impl FromVal for OscillatorType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "sine" => Self::SINE,
             "square" => Self::SQUARE,
@@ -9262,32 +9222,32 @@ impl FromVal for OscillatorType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<OscillatorType> for emlite::Val {
-    fn from(s: OscillatorType) -> emlite::Val {
+impl From<OscillatorType> for Any {
+    fn from(s: OscillatorType) -> Any {
         match s {
-            OscillatorType::SINE => emlite::Val::from("sine"),
-            OscillatorType::SQUARE => emlite::Val::from("square"),
-            OscillatorType::SAWTOOTH => emlite::Val::from("sawtooth"),
-            OscillatorType::TRIANGLE => emlite::Val::from("triangle"),
-            OscillatorType::CUSTOM => emlite::Val::from("custom"),
+            OscillatorType::SINE => Any::from("sine"),
+            OscillatorType::SQUARE => Any::from("square"),
+            OscillatorType::SAWTOOTH => Any::from("sawtooth"),
+            OscillatorType::TRIANGLE => Any::from("triangle"),
+            OscillatorType::CUSTOM => Any::from("custom"),
         }
     }
 }
-impl From<&OscillatorType> for emlite::Val {
-    fn from(s: &OscillatorType) -> emlite::Val {
+impl From<&OscillatorType> for Any {
+    fn from(s: &OscillatorType) -> Any {
         match *s {
-            OscillatorType::SINE => emlite::Val::from("sine"),
-            OscillatorType::SQUARE => emlite::Val::from("square"),
-            OscillatorType::SAWTOOTH => emlite::Val::from("sawtooth"),
-            OscillatorType::TRIANGLE => emlite::Val::from("triangle"),
-            OscillatorType::CUSTOM => emlite::Val::from("custom"),
+            OscillatorType::SINE => Any::from("sine"),
+            OscillatorType::SQUARE => Any::from("square"),
+            OscillatorType::SAWTOOTH => Any::from("sawtooth"),
+            OscillatorType::TRIANGLE => Any::from("triangle"),
+            OscillatorType::CUSTOM => Any::from("custom"),
         }
     }
 }
@@ -9298,33 +9258,33 @@ pub enum PanningModelType {
     HRTF,
 }
 impl FromVal for PanningModelType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "equalpower" => Self::EQUALPOWER,
             "HRTF" => Self::HRTF,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PanningModelType> for emlite::Val {
-    fn from(s: PanningModelType) -> emlite::Val {
+impl From<PanningModelType> for Any {
+    fn from(s: PanningModelType) -> Any {
         match s {
-            PanningModelType::EQUALPOWER => emlite::Val::from("equalpower"),
-            PanningModelType::HRTF => emlite::Val::from("HRTF"),
+            PanningModelType::EQUALPOWER => Any::from("equalpower"),
+            PanningModelType::HRTF => Any::from("HRTF"),
         }
     }
 }
-impl From<&PanningModelType> for emlite::Val {
-    fn from(s: &PanningModelType) -> emlite::Val {
+impl From<&PanningModelType> for Any {
+    fn from(s: &PanningModelType) -> Any {
         match *s {
-            PanningModelType::EQUALPOWER => emlite::Val::from("equalpower"),
-            PanningModelType::HRTF => emlite::Val::from("HRTF"),
+            PanningModelType::EQUALPOWER => Any::from("equalpower"),
+            PanningModelType::HRTF => Any::from("HRTF"),
         }
     }
 }
@@ -9336,7 +9296,7 @@ pub enum DistanceModelType {
     EXPONENTIAL,
 }
 impl FromVal for DistanceModelType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "linear" => Self::LINEAR,
             "inverse" => Self::INVERSE,
@@ -9344,28 +9304,28 @@ impl FromVal for DistanceModelType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<DistanceModelType> for emlite::Val {
-    fn from(s: DistanceModelType) -> emlite::Val {
+impl From<DistanceModelType> for Any {
+    fn from(s: DistanceModelType) -> Any {
         match s {
-            DistanceModelType::LINEAR => emlite::Val::from("linear"),
-            DistanceModelType::INVERSE => emlite::Val::from("inverse"),
-            DistanceModelType::EXPONENTIAL => emlite::Val::from("exponential"),
+            DistanceModelType::LINEAR => Any::from("linear"),
+            DistanceModelType::INVERSE => Any::from("inverse"),
+            DistanceModelType::EXPONENTIAL => Any::from("exponential"),
         }
     }
 }
-impl From<&DistanceModelType> for emlite::Val {
-    fn from(s: &DistanceModelType) -> emlite::Val {
+impl From<&DistanceModelType> for Any {
+    fn from(s: &DistanceModelType) -> Any {
         match *s {
-            DistanceModelType::LINEAR => emlite::Val::from("linear"),
-            DistanceModelType::INVERSE => emlite::Val::from("inverse"),
-            DistanceModelType::EXPONENTIAL => emlite::Val::from("exponential"),
+            DistanceModelType::LINEAR => Any::from("linear"),
+            DistanceModelType::INVERSE => Any::from("inverse"),
+            DistanceModelType::EXPONENTIAL => Any::from("exponential"),
         }
     }
 }
@@ -9377,7 +9337,7 @@ pub enum OverSampleType {
     _4X,
 }
 impl FromVal for OverSampleType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "2x" => Self::_2X,
@@ -9385,28 +9345,28 @@ impl FromVal for OverSampleType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<OverSampleType> for emlite::Val {
-    fn from(s: OverSampleType) -> emlite::Val {
+impl From<OverSampleType> for Any {
+    fn from(s: OverSampleType) -> Any {
         match s {
-            OverSampleType::NONE => emlite::Val::from("none"),
-            OverSampleType::_2X => emlite::Val::from("2x"),
-            OverSampleType::_4X => emlite::Val::from("4x"),
+            OverSampleType::NONE => Any::from("none"),
+            OverSampleType::_2X => Any::from("2x"),
+            OverSampleType::_4X => Any::from("4x"),
         }
     }
 }
-impl From<&OverSampleType> for emlite::Val {
-    fn from(s: &OverSampleType) -> emlite::Val {
+impl From<&OverSampleType> for Any {
+    fn from(s: &OverSampleType) -> Any {
         match *s {
-            OverSampleType::NONE => emlite::Val::from("none"),
-            OverSampleType::_2X => emlite::Val::from("2x"),
-            OverSampleType::_4X => emlite::Val::from("4x"),
+            OverSampleType::NONE => Any::from("none"),
+            OverSampleType::_2X => Any::from("2x"),
+            OverSampleType::_4X => Any::from("4x"),
         }
     }
 }
@@ -9417,33 +9377,33 @@ pub enum AuthenticatorAttachment {
     CROSS_PLATFORM,
 }
 impl FromVal for AuthenticatorAttachment {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "platform" => Self::PLATFORM,
             "cross-platform" => Self::CROSS_PLATFORM,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AuthenticatorAttachment> for emlite::Val {
-    fn from(s: AuthenticatorAttachment) -> emlite::Val {
+impl From<AuthenticatorAttachment> for Any {
+    fn from(s: AuthenticatorAttachment) -> Any {
         match s {
-            AuthenticatorAttachment::PLATFORM => emlite::Val::from("platform"),
-            AuthenticatorAttachment::CROSS_PLATFORM => emlite::Val::from("cross-platform"),
+            AuthenticatorAttachment::PLATFORM => Any::from("platform"),
+            AuthenticatorAttachment::CROSS_PLATFORM => Any::from("cross-platform"),
         }
     }
 }
-impl From<&AuthenticatorAttachment> for emlite::Val {
-    fn from(s: &AuthenticatorAttachment) -> emlite::Val {
+impl From<&AuthenticatorAttachment> for Any {
+    fn from(s: &AuthenticatorAttachment) -> Any {
         match *s {
-            AuthenticatorAttachment::PLATFORM => emlite::Val::from("platform"),
-            AuthenticatorAttachment::CROSS_PLATFORM => emlite::Val::from("cross-platform"),
+            AuthenticatorAttachment::PLATFORM => Any::from("platform"),
+            AuthenticatorAttachment::CROSS_PLATFORM => Any::from("cross-platform"),
         }
     }
 }
@@ -9455,7 +9415,7 @@ pub enum ResidentKeyRequirement {
     REQUIRED,
 }
 impl FromVal for ResidentKeyRequirement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "discouraged" => Self::DISCOURAGED,
             "preferred" => Self::PREFERRED,
@@ -9463,28 +9423,28 @@ impl FromVal for ResidentKeyRequirement {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ResidentKeyRequirement> for emlite::Val {
-    fn from(s: ResidentKeyRequirement) -> emlite::Val {
+impl From<ResidentKeyRequirement> for Any {
+    fn from(s: ResidentKeyRequirement) -> Any {
         match s {
-            ResidentKeyRequirement::DISCOURAGED => emlite::Val::from("discouraged"),
-            ResidentKeyRequirement::PREFERRED => emlite::Val::from("preferred"),
-            ResidentKeyRequirement::REQUIRED => emlite::Val::from("required"),
+            ResidentKeyRequirement::DISCOURAGED => Any::from("discouraged"),
+            ResidentKeyRequirement::PREFERRED => Any::from("preferred"),
+            ResidentKeyRequirement::REQUIRED => Any::from("required"),
         }
     }
 }
-impl From<&ResidentKeyRequirement> for emlite::Val {
-    fn from(s: &ResidentKeyRequirement) -> emlite::Val {
+impl From<&ResidentKeyRequirement> for Any {
+    fn from(s: &ResidentKeyRequirement) -> Any {
         match *s {
-            ResidentKeyRequirement::DISCOURAGED => emlite::Val::from("discouraged"),
-            ResidentKeyRequirement::PREFERRED => emlite::Val::from("preferred"),
-            ResidentKeyRequirement::REQUIRED => emlite::Val::from("required"),
+            ResidentKeyRequirement::DISCOURAGED => Any::from("discouraged"),
+            ResidentKeyRequirement::PREFERRED => Any::from("preferred"),
+            ResidentKeyRequirement::REQUIRED => Any::from("required"),
         }
     }
 }
@@ -9497,7 +9457,7 @@ pub enum AttestationConveyancePreference {
     ENTERPRISE,
 }
 impl FromVal for AttestationConveyancePreference {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "indirect" => Self::INDIRECT,
@@ -9506,30 +9466,30 @@ impl FromVal for AttestationConveyancePreference {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AttestationConveyancePreference> for emlite::Val {
-    fn from(s: AttestationConveyancePreference) -> emlite::Val {
+impl From<AttestationConveyancePreference> for Any {
+    fn from(s: AttestationConveyancePreference) -> Any {
         match s {
-            AttestationConveyancePreference::NONE => emlite::Val::from("none"),
-            AttestationConveyancePreference::INDIRECT => emlite::Val::from("indirect"),
-            AttestationConveyancePreference::DIRECT => emlite::Val::from("direct"),
-            AttestationConveyancePreference::ENTERPRISE => emlite::Val::from("enterprise"),
+            AttestationConveyancePreference::NONE => Any::from("none"),
+            AttestationConveyancePreference::INDIRECT => Any::from("indirect"),
+            AttestationConveyancePreference::DIRECT => Any::from("direct"),
+            AttestationConveyancePreference::ENTERPRISE => Any::from("enterprise"),
         }
     }
 }
-impl From<&AttestationConveyancePreference> for emlite::Val {
-    fn from(s: &AttestationConveyancePreference) -> emlite::Val {
+impl From<&AttestationConveyancePreference> for Any {
+    fn from(s: &AttestationConveyancePreference) -> Any {
         match *s {
-            AttestationConveyancePreference::NONE => emlite::Val::from("none"),
-            AttestationConveyancePreference::INDIRECT => emlite::Val::from("indirect"),
-            AttestationConveyancePreference::DIRECT => emlite::Val::from("direct"),
-            AttestationConveyancePreference::ENTERPRISE => emlite::Val::from("enterprise"),
+            AttestationConveyancePreference::NONE => Any::from("none"),
+            AttestationConveyancePreference::INDIRECT => Any::from("indirect"),
+            AttestationConveyancePreference::DIRECT => Any::from("direct"),
+            AttestationConveyancePreference::ENTERPRISE => Any::from("enterprise"),
         }
     }
 }
@@ -9540,33 +9500,33 @@ pub enum TokenBindingStatus {
     SUPPORTED,
 }
 impl FromVal for TokenBindingStatus {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "present" => Self::PRESENT,
             "supported" => Self::SUPPORTED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<TokenBindingStatus> for emlite::Val {
-    fn from(s: TokenBindingStatus) -> emlite::Val {
+impl From<TokenBindingStatus> for Any {
+    fn from(s: TokenBindingStatus) -> Any {
         match s {
-            TokenBindingStatus::PRESENT => emlite::Val::from("present"),
-            TokenBindingStatus::SUPPORTED => emlite::Val::from("supported"),
+            TokenBindingStatus::PRESENT => Any::from("present"),
+            TokenBindingStatus::SUPPORTED => Any::from("supported"),
         }
     }
 }
-impl From<&TokenBindingStatus> for emlite::Val {
-    fn from(s: &TokenBindingStatus) -> emlite::Val {
+impl From<&TokenBindingStatus> for Any {
+    fn from(s: &TokenBindingStatus) -> Any {
         match *s {
-            TokenBindingStatus::PRESENT => emlite::Val::from("present"),
-            TokenBindingStatus::SUPPORTED => emlite::Val::from("supported"),
+            TokenBindingStatus::PRESENT => Any::from("present"),
+            TokenBindingStatus::SUPPORTED => Any::from("supported"),
         }
     }
 }
@@ -9576,30 +9536,30 @@ pub enum PublicKeyCredentialType {
     PUBLIC_KEY,
 }
 impl FromVal for PublicKeyCredentialType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "public-key" => Self::PUBLIC_KEY,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PublicKeyCredentialType> for emlite::Val {
-    fn from(s: PublicKeyCredentialType) -> emlite::Val {
+impl From<PublicKeyCredentialType> for Any {
+    fn from(s: PublicKeyCredentialType) -> Any {
         match s {
-            PublicKeyCredentialType::PUBLIC_KEY => emlite::Val::from("public-key"),
+            PublicKeyCredentialType::PUBLIC_KEY => Any::from("public-key"),
         }
     }
 }
-impl From<&PublicKeyCredentialType> for emlite::Val {
-    fn from(s: &PublicKeyCredentialType) -> emlite::Val {
+impl From<&PublicKeyCredentialType> for Any {
+    fn from(s: &PublicKeyCredentialType) -> Any {
         match *s {
-            PublicKeyCredentialType::PUBLIC_KEY => emlite::Val::from("public-key"),
+            PublicKeyCredentialType::PUBLIC_KEY => Any::from("public-key"),
         }
     }
 }
@@ -9614,7 +9574,7 @@ pub enum AuthenticatorTransport {
     INTERNAL,
 }
 impl FromVal for AuthenticatorTransport {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "usb" => Self::USB,
             "nfc" => Self::NFC,
@@ -9625,34 +9585,34 @@ impl FromVal for AuthenticatorTransport {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AuthenticatorTransport> for emlite::Val {
-    fn from(s: AuthenticatorTransport) -> emlite::Val {
+impl From<AuthenticatorTransport> for Any {
+    fn from(s: AuthenticatorTransport) -> Any {
         match s {
-            AuthenticatorTransport::USB => emlite::Val::from("usb"),
-            AuthenticatorTransport::NFC => emlite::Val::from("nfc"),
-            AuthenticatorTransport::BLE => emlite::Val::from("ble"),
-            AuthenticatorTransport::SMART_CARD => emlite::Val::from("smart-card"),
-            AuthenticatorTransport::HYBRID => emlite::Val::from("hybrid"),
-            AuthenticatorTransport::INTERNAL => emlite::Val::from("internal"),
+            AuthenticatorTransport::USB => Any::from("usb"),
+            AuthenticatorTransport::NFC => Any::from("nfc"),
+            AuthenticatorTransport::BLE => Any::from("ble"),
+            AuthenticatorTransport::SMART_CARD => Any::from("smart-card"),
+            AuthenticatorTransport::HYBRID => Any::from("hybrid"),
+            AuthenticatorTransport::INTERNAL => Any::from("internal"),
         }
     }
 }
-impl From<&AuthenticatorTransport> for emlite::Val {
-    fn from(s: &AuthenticatorTransport) -> emlite::Val {
+impl From<&AuthenticatorTransport> for Any {
+    fn from(s: &AuthenticatorTransport) -> Any {
         match *s {
-            AuthenticatorTransport::USB => emlite::Val::from("usb"),
-            AuthenticatorTransport::NFC => emlite::Val::from("nfc"),
-            AuthenticatorTransport::BLE => emlite::Val::from("ble"),
-            AuthenticatorTransport::SMART_CARD => emlite::Val::from("smart-card"),
-            AuthenticatorTransport::HYBRID => emlite::Val::from("hybrid"),
-            AuthenticatorTransport::INTERNAL => emlite::Val::from("internal"),
+            AuthenticatorTransport::USB => Any::from("usb"),
+            AuthenticatorTransport::NFC => Any::from("nfc"),
+            AuthenticatorTransport::BLE => Any::from("ble"),
+            AuthenticatorTransport::SMART_CARD => Any::from("smart-card"),
+            AuthenticatorTransport::HYBRID => Any::from("hybrid"),
+            AuthenticatorTransport::INTERNAL => Any::from("internal"),
         }
     }
 }
@@ -9664,7 +9624,7 @@ pub enum UserVerificationRequirement {
     DISCOURAGED,
 }
 impl FromVal for UserVerificationRequirement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "required" => Self::REQUIRED,
             "preferred" => Self::PREFERRED,
@@ -9672,28 +9632,28 @@ impl FromVal for UserVerificationRequirement {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<UserVerificationRequirement> for emlite::Val {
-    fn from(s: UserVerificationRequirement) -> emlite::Val {
+impl From<UserVerificationRequirement> for Any {
+    fn from(s: UserVerificationRequirement) -> Any {
         match s {
-            UserVerificationRequirement::REQUIRED => emlite::Val::from("required"),
-            UserVerificationRequirement::PREFERRED => emlite::Val::from("preferred"),
-            UserVerificationRequirement::DISCOURAGED => emlite::Val::from("discouraged"),
+            UserVerificationRequirement::REQUIRED => Any::from("required"),
+            UserVerificationRequirement::PREFERRED => Any::from("preferred"),
+            UserVerificationRequirement::DISCOURAGED => Any::from("discouraged"),
         }
     }
 }
-impl From<&UserVerificationRequirement> for emlite::Val {
-    fn from(s: &UserVerificationRequirement) -> emlite::Val {
+impl From<&UserVerificationRequirement> for Any {
+    fn from(s: &UserVerificationRequirement) -> Any {
         match *s {
-            UserVerificationRequirement::REQUIRED => emlite::Val::from("required"),
-            UserVerificationRequirement::PREFERRED => emlite::Val::from("preferred"),
-            UserVerificationRequirement::DISCOURAGED => emlite::Val::from("discouraged"),
+            UserVerificationRequirement::REQUIRED => Any::from("required"),
+            UserVerificationRequirement::PREFERRED => Any::from("preferred"),
+            UserVerificationRequirement::DISCOURAGED => Any::from("discouraged"),
         }
     }
 }
@@ -9711,7 +9671,7 @@ pub enum ClientCapability {
     SIGNAL_UNKNOWN_CREDENTIAL,
 }
 impl FromVal for ClientCapability {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "conditionalCreate" => Self::CONDITIONAL_CREATE,
             "conditionalGet" => Self::CONDITIONAL_GET,
@@ -9725,60 +9685,52 @@ impl FromVal for ClientCapability {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ClientCapability> for emlite::Val {
-    fn from(s: ClientCapability) -> emlite::Val {
+impl From<ClientCapability> for Any {
+    fn from(s: ClientCapability) -> Any {
         match s {
-            ClientCapability::CONDITIONAL_CREATE => emlite::Val::from("conditionalCreate"),
-            ClientCapability::CONDITIONAL_GET => emlite::Val::from("conditionalGet"),
-            ClientCapability::HYBRID_TRANSPORT => emlite::Val::from("hybridTransport"),
+            ClientCapability::CONDITIONAL_CREATE => Any::from("conditionalCreate"),
+            ClientCapability::CONDITIONAL_GET => Any::from("conditionalGet"),
+            ClientCapability::HYBRID_TRANSPORT => Any::from("hybridTransport"),
             ClientCapability::PASSKEY_PLATFORM_AUTHENTICATOR => {
-                emlite::Val::from("passkeyPlatformAuthenticator")
+                Any::from("passkeyPlatformAuthenticator")
             }
             ClientCapability::USER_VERIFYING_PLATFORM_AUTHENTICATOR => {
-                emlite::Val::from("userVerifyingPlatformAuthenticator")
+                Any::from("userVerifyingPlatformAuthenticator")
             }
-            ClientCapability::RELATED_ORIGINS => emlite::Val::from("relatedOrigins"),
+            ClientCapability::RELATED_ORIGINS => Any::from("relatedOrigins"),
             ClientCapability::SIGNAL_ALL_ACCEPTED_CREDENTIALS => {
-                emlite::Val::from("signalAllAcceptedCredentials")
+                Any::from("signalAllAcceptedCredentials")
             }
-            ClientCapability::SIGNAL_CURRENT_USER_DETAILS => {
-                emlite::Val::from("signalCurrentUserDetails")
-            }
-            ClientCapability::SIGNAL_UNKNOWN_CREDENTIAL => {
-                emlite::Val::from("signalUnknownCredential")
-            }
+            ClientCapability::SIGNAL_CURRENT_USER_DETAILS => Any::from("signalCurrentUserDetails"),
+            ClientCapability::SIGNAL_UNKNOWN_CREDENTIAL => Any::from("signalUnknownCredential"),
         }
     }
 }
-impl From<&ClientCapability> for emlite::Val {
-    fn from(s: &ClientCapability) -> emlite::Val {
+impl From<&ClientCapability> for Any {
+    fn from(s: &ClientCapability) -> Any {
         match *s {
-            ClientCapability::CONDITIONAL_CREATE => emlite::Val::from("conditionalCreate"),
-            ClientCapability::CONDITIONAL_GET => emlite::Val::from("conditionalGet"),
-            ClientCapability::HYBRID_TRANSPORT => emlite::Val::from("hybridTransport"),
+            ClientCapability::CONDITIONAL_CREATE => Any::from("conditionalCreate"),
+            ClientCapability::CONDITIONAL_GET => Any::from("conditionalGet"),
+            ClientCapability::HYBRID_TRANSPORT => Any::from("hybridTransport"),
             ClientCapability::PASSKEY_PLATFORM_AUTHENTICATOR => {
-                emlite::Val::from("passkeyPlatformAuthenticator")
+                Any::from("passkeyPlatformAuthenticator")
             }
             ClientCapability::USER_VERIFYING_PLATFORM_AUTHENTICATOR => {
-                emlite::Val::from("userVerifyingPlatformAuthenticator")
+                Any::from("userVerifyingPlatformAuthenticator")
             }
-            ClientCapability::RELATED_ORIGINS => emlite::Val::from("relatedOrigins"),
+            ClientCapability::RELATED_ORIGINS => Any::from("relatedOrigins"),
             ClientCapability::SIGNAL_ALL_ACCEPTED_CREDENTIALS => {
-                emlite::Val::from("signalAllAcceptedCredentials")
+                Any::from("signalAllAcceptedCredentials")
             }
-            ClientCapability::SIGNAL_CURRENT_USER_DETAILS => {
-                emlite::Val::from("signalCurrentUserDetails")
-            }
-            ClientCapability::SIGNAL_UNKNOWN_CREDENTIAL => {
-                emlite::Val::from("signalUnknownCredential")
-            }
+            ClientCapability::SIGNAL_CURRENT_USER_DETAILS => Any::from("signalCurrentUserDetails"),
+            ClientCapability::SIGNAL_UNKNOWN_CREDENTIAL => Any::from("signalUnknownCredential"),
         }
     }
 }
@@ -9790,7 +9742,7 @@ pub enum PublicKeyCredentialHint {
     HYBRID,
 }
 impl FromVal for PublicKeyCredentialHint {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "security-key" => Self::SECURITY_KEY,
             "client-device" => Self::CLIENT_DEVICE,
@@ -9798,28 +9750,28 @@ impl FromVal for PublicKeyCredentialHint {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PublicKeyCredentialHint> for emlite::Val {
-    fn from(s: PublicKeyCredentialHint) -> emlite::Val {
+impl From<PublicKeyCredentialHint> for Any {
+    fn from(s: PublicKeyCredentialHint) -> Any {
         match s {
-            PublicKeyCredentialHint::SECURITY_KEY => emlite::Val::from("security-key"),
-            PublicKeyCredentialHint::CLIENT_DEVICE => emlite::Val::from("client-device"),
-            PublicKeyCredentialHint::HYBRID => emlite::Val::from("hybrid"),
+            PublicKeyCredentialHint::SECURITY_KEY => Any::from("security-key"),
+            PublicKeyCredentialHint::CLIENT_DEVICE => Any::from("client-device"),
+            PublicKeyCredentialHint::HYBRID => Any::from("hybrid"),
         }
     }
 }
-impl From<&PublicKeyCredentialHint> for emlite::Val {
-    fn from(s: &PublicKeyCredentialHint) -> emlite::Val {
+impl From<&PublicKeyCredentialHint> for Any {
+    fn from(s: &PublicKeyCredentialHint) -> Any {
         match *s {
-            PublicKeyCredentialHint::SECURITY_KEY => emlite::Val::from("security-key"),
-            PublicKeyCredentialHint::CLIENT_DEVICE => emlite::Val::from("client-device"),
-            PublicKeyCredentialHint::HYBRID => emlite::Val::from("hybrid"),
+            PublicKeyCredentialHint::SECURITY_KEY => Any::from("security-key"),
+            PublicKeyCredentialHint::CLIENT_DEVICE => Any::from("client-device"),
+            PublicKeyCredentialHint::HYBRID => Any::from("hybrid"),
         }
     }
 }
@@ -9830,33 +9782,33 @@ pub enum LargeBlobSupport {
     PREFERRED,
 }
 impl FromVal for LargeBlobSupport {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "required" => Self::REQUIRED,
             "preferred" => Self::PREFERRED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<LargeBlobSupport> for emlite::Val {
-    fn from(s: LargeBlobSupport) -> emlite::Val {
+impl From<LargeBlobSupport> for Any {
+    fn from(s: LargeBlobSupport) -> Any {
         match s {
-            LargeBlobSupport::REQUIRED => emlite::Val::from("required"),
-            LargeBlobSupport::PREFERRED => emlite::Val::from("preferred"),
+            LargeBlobSupport::REQUIRED => Any::from("required"),
+            LargeBlobSupport::PREFERRED => Any::from("preferred"),
         }
     }
 }
-impl From<&LargeBlobSupport> for emlite::Val {
-    fn from(s: &LargeBlobSupport) -> emlite::Val {
+impl From<&LargeBlobSupport> for Any {
+    fn from(s: &LargeBlobSupport) -> Any {
         match *s {
-            LargeBlobSupport::REQUIRED => emlite::Val::from("required"),
-            LargeBlobSupport::PREFERRED => emlite::Val::from("preferred"),
+            LargeBlobSupport::REQUIRED => Any::from("required"),
+            LargeBlobSupport::PREFERRED => Any::from("preferred"),
         }
     }
 }
@@ -9867,33 +9819,33 @@ pub enum AacBitstreamFormat {
     ADTS,
 }
 impl FromVal for AacBitstreamFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "aac" => Self::AAC,
             "adts" => Self::ADTS,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AacBitstreamFormat> for emlite::Val {
-    fn from(s: AacBitstreamFormat) -> emlite::Val {
+impl From<AacBitstreamFormat> for Any {
+    fn from(s: AacBitstreamFormat) -> Any {
         match s {
-            AacBitstreamFormat::AAC => emlite::Val::from("aac"),
-            AacBitstreamFormat::ADTS => emlite::Val::from("adts"),
+            AacBitstreamFormat::AAC => Any::from("aac"),
+            AacBitstreamFormat::ADTS => Any::from("adts"),
         }
     }
 }
-impl From<&AacBitstreamFormat> for emlite::Val {
-    fn from(s: &AacBitstreamFormat) -> emlite::Val {
+impl From<&AacBitstreamFormat> for Any {
+    fn from(s: &AacBitstreamFormat) -> Any {
         match *s {
-            AacBitstreamFormat::AAC => emlite::Val::from("aac"),
-            AacBitstreamFormat::ADTS => emlite::Val::from("adts"),
+            AacBitstreamFormat::AAC => Any::from("aac"),
+            AacBitstreamFormat::ADTS => Any::from("adts"),
         }
     }
 }
@@ -9904,33 +9856,33 @@ pub enum AvcBitstreamFormat {
     AVC,
 }
 impl FromVal for AvcBitstreamFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "annexb" => Self::ANNEXB,
             "avc" => Self::AVC,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AvcBitstreamFormat> for emlite::Val {
-    fn from(s: AvcBitstreamFormat) -> emlite::Val {
+impl From<AvcBitstreamFormat> for Any {
+    fn from(s: AvcBitstreamFormat) -> Any {
         match s {
-            AvcBitstreamFormat::ANNEXB => emlite::Val::from("annexb"),
-            AvcBitstreamFormat::AVC => emlite::Val::from("avc"),
+            AvcBitstreamFormat::ANNEXB => Any::from("annexb"),
+            AvcBitstreamFormat::AVC => Any::from("avc"),
         }
     }
 }
-impl From<&AvcBitstreamFormat> for emlite::Val {
-    fn from(s: &AvcBitstreamFormat) -> emlite::Val {
+impl From<&AvcBitstreamFormat> for Any {
+    fn from(s: &AvcBitstreamFormat) -> Any {
         match *s {
-            AvcBitstreamFormat::ANNEXB => emlite::Val::from("annexb"),
-            AvcBitstreamFormat::AVC => emlite::Val::from("avc"),
+            AvcBitstreamFormat::ANNEXB => Any::from("annexb"),
+            AvcBitstreamFormat::AVC => Any::from("avc"),
         }
     }
 }
@@ -9941,33 +9893,33 @@ pub enum HevcBitstreamFormat {
     HEVC,
 }
 impl FromVal for HevcBitstreamFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "annexb" => Self::ANNEXB,
             "hevc" => Self::HEVC,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<HevcBitstreamFormat> for emlite::Val {
-    fn from(s: HevcBitstreamFormat) -> emlite::Val {
+impl From<HevcBitstreamFormat> for Any {
+    fn from(s: HevcBitstreamFormat) -> Any {
         match s {
-            HevcBitstreamFormat::ANNEXB => emlite::Val::from("annexb"),
-            HevcBitstreamFormat::HEVC => emlite::Val::from("hevc"),
+            HevcBitstreamFormat::ANNEXB => Any::from("annexb"),
+            HevcBitstreamFormat::HEVC => Any::from("hevc"),
         }
     }
 }
-impl From<&HevcBitstreamFormat> for emlite::Val {
-    fn from(s: &HevcBitstreamFormat) -> emlite::Val {
+impl From<&HevcBitstreamFormat> for Any {
+    fn from(s: &HevcBitstreamFormat) -> Any {
         match *s {
-            HevcBitstreamFormat::ANNEXB => emlite::Val::from("annexb"),
-            HevcBitstreamFormat::HEVC => emlite::Val::from("hevc"),
+            HevcBitstreamFormat::ANNEXB => Any::from("annexb"),
+            HevcBitstreamFormat::HEVC => Any::from("hevc"),
         }
     }
 }
@@ -9978,33 +9930,33 @@ pub enum OpusBitstreamFormat {
     OGG,
 }
 impl FromVal for OpusBitstreamFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "opus" => Self::OPUS,
             "ogg" => Self::OGG,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<OpusBitstreamFormat> for emlite::Val {
-    fn from(s: OpusBitstreamFormat) -> emlite::Val {
+impl From<OpusBitstreamFormat> for Any {
+    fn from(s: OpusBitstreamFormat) -> Any {
         match s {
-            OpusBitstreamFormat::OPUS => emlite::Val::from("opus"),
-            OpusBitstreamFormat::OGG => emlite::Val::from("ogg"),
+            OpusBitstreamFormat::OPUS => Any::from("opus"),
+            OpusBitstreamFormat::OGG => Any::from("ogg"),
         }
     }
 }
-impl From<&OpusBitstreamFormat> for emlite::Val {
-    fn from(s: &OpusBitstreamFormat) -> emlite::Val {
+impl From<&OpusBitstreamFormat> for Any {
+    fn from(s: &OpusBitstreamFormat) -> Any {
         match *s {
-            OpusBitstreamFormat::OPUS => emlite::Val::from("opus"),
-            OpusBitstreamFormat::OGG => emlite::Val::from("ogg"),
+            OpusBitstreamFormat::OPUS => Any::from("opus"),
+            OpusBitstreamFormat::OGG => Any::from("ogg"),
         }
     }
 }
@@ -10016,7 +9968,7 @@ pub enum OpusSignal {
     VOICE,
 }
 impl FromVal for OpusSignal {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "auto" => Self::AUTO,
             "music" => Self::MUSIC,
@@ -10024,28 +9976,28 @@ impl FromVal for OpusSignal {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<OpusSignal> for emlite::Val {
-    fn from(s: OpusSignal) -> emlite::Val {
+impl From<OpusSignal> for Any {
+    fn from(s: OpusSignal) -> Any {
         match s {
-            OpusSignal::AUTO => emlite::Val::from("auto"),
-            OpusSignal::MUSIC => emlite::Val::from("music"),
-            OpusSignal::VOICE => emlite::Val::from("voice"),
+            OpusSignal::AUTO => Any::from("auto"),
+            OpusSignal::MUSIC => Any::from("music"),
+            OpusSignal::VOICE => Any::from("voice"),
         }
     }
 }
-impl From<&OpusSignal> for emlite::Val {
-    fn from(s: &OpusSignal) -> emlite::Val {
+impl From<&OpusSignal> for Any {
+    fn from(s: &OpusSignal) -> Any {
         match *s {
-            OpusSignal::AUTO => emlite::Val::from("auto"),
-            OpusSignal::MUSIC => emlite::Val::from("music"),
-            OpusSignal::VOICE => emlite::Val::from("voice"),
+            OpusSignal::AUTO => Any::from("auto"),
+            OpusSignal::MUSIC => Any::from("music"),
+            OpusSignal::VOICE => Any::from("voice"),
         }
     }
 }
@@ -10057,7 +10009,7 @@ pub enum OpusApplication {
     LOWDELAY,
 }
 impl FromVal for OpusApplication {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "voip" => Self::VOIP,
             "audio" => Self::AUDIO,
@@ -10065,28 +10017,28 @@ impl FromVal for OpusApplication {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<OpusApplication> for emlite::Val {
-    fn from(s: OpusApplication) -> emlite::Val {
+impl From<OpusApplication> for Any {
+    fn from(s: OpusApplication) -> Any {
         match s {
-            OpusApplication::VOIP => emlite::Val::from("voip"),
-            OpusApplication::AUDIO => emlite::Val::from("audio"),
-            OpusApplication::LOWDELAY => emlite::Val::from("lowdelay"),
+            OpusApplication::VOIP => Any::from("voip"),
+            OpusApplication::AUDIO => Any::from("audio"),
+            OpusApplication::LOWDELAY => Any::from("lowdelay"),
         }
     }
 }
-impl From<&OpusApplication> for emlite::Val {
-    fn from(s: &OpusApplication) -> emlite::Val {
+impl From<&OpusApplication> for Any {
+    fn from(s: &OpusApplication) -> Any {
         match *s {
-            OpusApplication::VOIP => emlite::Val::from("voip"),
-            OpusApplication::AUDIO => emlite::Val::from("audio"),
-            OpusApplication::LOWDELAY => emlite::Val::from("lowdelay"),
+            OpusApplication::VOIP => Any::from("voip"),
+            OpusApplication::AUDIO => Any::from("audio"),
+            OpusApplication::LOWDELAY => Any::from("lowdelay"),
         }
     }
 }
@@ -10098,7 +10050,7 @@ pub enum HardwareAcceleration {
     PREFER_SOFTWARE,
 }
 impl FromVal for HardwareAcceleration {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "no-preference" => Self::NO_PREFERENCE,
             "prefer-hardware" => Self::PREFER_HARDWARE,
@@ -10106,28 +10058,28 @@ impl FromVal for HardwareAcceleration {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<HardwareAcceleration> for emlite::Val {
-    fn from(s: HardwareAcceleration) -> emlite::Val {
+impl From<HardwareAcceleration> for Any {
+    fn from(s: HardwareAcceleration) -> Any {
         match s {
-            HardwareAcceleration::NO_PREFERENCE => emlite::Val::from("no-preference"),
-            HardwareAcceleration::PREFER_HARDWARE => emlite::Val::from("prefer-hardware"),
-            HardwareAcceleration::PREFER_SOFTWARE => emlite::Val::from("prefer-software"),
+            HardwareAcceleration::NO_PREFERENCE => Any::from("no-preference"),
+            HardwareAcceleration::PREFER_HARDWARE => Any::from("prefer-hardware"),
+            HardwareAcceleration::PREFER_SOFTWARE => Any::from("prefer-software"),
         }
     }
 }
-impl From<&HardwareAcceleration> for emlite::Val {
-    fn from(s: &HardwareAcceleration) -> emlite::Val {
+impl From<&HardwareAcceleration> for Any {
+    fn from(s: &HardwareAcceleration) -> Any {
         match *s {
-            HardwareAcceleration::NO_PREFERENCE => emlite::Val::from("no-preference"),
-            HardwareAcceleration::PREFER_HARDWARE => emlite::Val::from("prefer-hardware"),
-            HardwareAcceleration::PREFER_SOFTWARE => emlite::Val::from("prefer-software"),
+            HardwareAcceleration::NO_PREFERENCE => Any::from("no-preference"),
+            HardwareAcceleration::PREFER_HARDWARE => Any::from("prefer-hardware"),
+            HardwareAcceleration::PREFER_SOFTWARE => Any::from("prefer-software"),
         }
     }
 }
@@ -10138,33 +10090,33 @@ pub enum AlphaOption {
     DISCARD,
 }
 impl FromVal for AlphaOption {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "keep" => Self::KEEP,
             "discard" => Self::DISCARD,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AlphaOption> for emlite::Val {
-    fn from(s: AlphaOption) -> emlite::Val {
+impl From<AlphaOption> for Any {
+    fn from(s: AlphaOption) -> Any {
         match s {
-            AlphaOption::KEEP => emlite::Val::from("keep"),
-            AlphaOption::DISCARD => emlite::Val::from("discard"),
+            AlphaOption::KEEP => Any::from("keep"),
+            AlphaOption::DISCARD => Any::from("discard"),
         }
     }
 }
-impl From<&AlphaOption> for emlite::Val {
-    fn from(s: &AlphaOption) -> emlite::Val {
+impl From<&AlphaOption> for Any {
+    fn from(s: &AlphaOption) -> Any {
         match *s {
-            AlphaOption::KEEP => emlite::Val::from("keep"),
-            AlphaOption::DISCARD => emlite::Val::from("discard"),
+            AlphaOption::KEEP => Any::from("keep"),
+            AlphaOption::DISCARD => Any::from("discard"),
         }
     }
 }
@@ -10175,33 +10127,33 @@ pub enum LatencyMode {
     REALTIME,
 }
 impl FromVal for LatencyMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "quality" => Self::QUALITY,
             "realtime" => Self::REALTIME,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<LatencyMode> for emlite::Val {
-    fn from(s: LatencyMode) -> emlite::Val {
+impl From<LatencyMode> for Any {
+    fn from(s: LatencyMode) -> Any {
         match s {
-            LatencyMode::QUALITY => emlite::Val::from("quality"),
-            LatencyMode::REALTIME => emlite::Val::from("realtime"),
+            LatencyMode::QUALITY => Any::from("quality"),
+            LatencyMode::REALTIME => Any::from("realtime"),
         }
     }
 }
-impl From<&LatencyMode> for emlite::Val {
-    fn from(s: &LatencyMode) -> emlite::Val {
+impl From<&LatencyMode> for Any {
+    fn from(s: &LatencyMode) -> Any {
         match *s {
-            LatencyMode::QUALITY => emlite::Val::from("quality"),
-            LatencyMode::REALTIME => emlite::Val::from("realtime"),
+            LatencyMode::QUALITY => Any::from("quality"),
+            LatencyMode::REALTIME => Any::from("realtime"),
         }
     }
 }
@@ -10213,7 +10165,7 @@ pub enum VideoEncoderBitrateMode {
     QUANTIZER,
 }
 impl FromVal for VideoEncoderBitrateMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "constant" => Self::CONSTANT,
             "variable" => Self::VARIABLE,
@@ -10221,28 +10173,28 @@ impl FromVal for VideoEncoderBitrateMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<VideoEncoderBitrateMode> for emlite::Val {
-    fn from(s: VideoEncoderBitrateMode) -> emlite::Val {
+impl From<VideoEncoderBitrateMode> for Any {
+    fn from(s: VideoEncoderBitrateMode) -> Any {
         match s {
-            VideoEncoderBitrateMode::CONSTANT => emlite::Val::from("constant"),
-            VideoEncoderBitrateMode::VARIABLE => emlite::Val::from("variable"),
-            VideoEncoderBitrateMode::QUANTIZER => emlite::Val::from("quantizer"),
+            VideoEncoderBitrateMode::CONSTANT => Any::from("constant"),
+            VideoEncoderBitrateMode::VARIABLE => Any::from("variable"),
+            VideoEncoderBitrateMode::QUANTIZER => Any::from("quantizer"),
         }
     }
 }
-impl From<&VideoEncoderBitrateMode> for emlite::Val {
-    fn from(s: &VideoEncoderBitrateMode) -> emlite::Val {
+impl From<&VideoEncoderBitrateMode> for Any {
+    fn from(s: &VideoEncoderBitrateMode) -> Any {
         match *s {
-            VideoEncoderBitrateMode::CONSTANT => emlite::Val::from("constant"),
-            VideoEncoderBitrateMode::VARIABLE => emlite::Val::from("variable"),
-            VideoEncoderBitrateMode::QUANTIZER => emlite::Val::from("quantizer"),
+            VideoEncoderBitrateMode::CONSTANT => Any::from("constant"),
+            VideoEncoderBitrateMode::VARIABLE => Any::from("variable"),
+            VideoEncoderBitrateMode::QUANTIZER => Any::from("quantizer"),
         }
     }
 }
@@ -10254,7 +10206,7 @@ pub enum CodecState {
     CLOSED,
 }
 impl FromVal for CodecState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "unconfigured" => Self::UNCONFIGURED,
             "configured" => Self::CONFIGURED,
@@ -10262,28 +10214,28 @@ impl FromVal for CodecState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<CodecState> for emlite::Val {
-    fn from(s: CodecState) -> emlite::Val {
+impl From<CodecState> for Any {
+    fn from(s: CodecState) -> Any {
         match s {
-            CodecState::UNCONFIGURED => emlite::Val::from("unconfigured"),
-            CodecState::CONFIGURED => emlite::Val::from("configured"),
-            CodecState::CLOSED => emlite::Val::from("closed"),
+            CodecState::UNCONFIGURED => Any::from("unconfigured"),
+            CodecState::CONFIGURED => Any::from("configured"),
+            CodecState::CLOSED => Any::from("closed"),
         }
     }
 }
-impl From<&CodecState> for emlite::Val {
-    fn from(s: &CodecState) -> emlite::Val {
+impl From<&CodecState> for Any {
+    fn from(s: &CodecState) -> Any {
         match *s {
-            CodecState::UNCONFIGURED => emlite::Val::from("unconfigured"),
-            CodecState::CONFIGURED => emlite::Val::from("configured"),
-            CodecState::CLOSED => emlite::Val::from("closed"),
+            CodecState::UNCONFIGURED => Any::from("unconfigured"),
+            CodecState::CONFIGURED => Any::from("configured"),
+            CodecState::CLOSED => Any::from("closed"),
         }
     }
 }
@@ -10294,33 +10246,33 @@ pub enum EncodedAudioChunkType {
     DELTA,
 }
 impl FromVal for EncodedAudioChunkType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "key" => Self::KEY,
             "delta" => Self::DELTA,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<EncodedAudioChunkType> for emlite::Val {
-    fn from(s: EncodedAudioChunkType) -> emlite::Val {
+impl From<EncodedAudioChunkType> for Any {
+    fn from(s: EncodedAudioChunkType) -> Any {
         match s {
-            EncodedAudioChunkType::KEY => emlite::Val::from("key"),
-            EncodedAudioChunkType::DELTA => emlite::Val::from("delta"),
+            EncodedAudioChunkType::KEY => Any::from("key"),
+            EncodedAudioChunkType::DELTA => Any::from("delta"),
         }
     }
 }
-impl From<&EncodedAudioChunkType> for emlite::Val {
-    fn from(s: &EncodedAudioChunkType) -> emlite::Val {
+impl From<&EncodedAudioChunkType> for Any {
+    fn from(s: &EncodedAudioChunkType) -> Any {
         match *s {
-            EncodedAudioChunkType::KEY => emlite::Val::from("key"),
-            EncodedAudioChunkType::DELTA => emlite::Val::from("delta"),
+            EncodedAudioChunkType::KEY => Any::from("key"),
+            EncodedAudioChunkType::DELTA => Any::from("delta"),
         }
     }
 }
@@ -10331,33 +10283,33 @@ pub enum EncodedVideoChunkType {
     DELTA,
 }
 impl FromVal for EncodedVideoChunkType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "key" => Self::KEY,
             "delta" => Self::DELTA,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<EncodedVideoChunkType> for emlite::Val {
-    fn from(s: EncodedVideoChunkType) -> emlite::Val {
+impl From<EncodedVideoChunkType> for Any {
+    fn from(s: EncodedVideoChunkType) -> Any {
         match s {
-            EncodedVideoChunkType::KEY => emlite::Val::from("key"),
-            EncodedVideoChunkType::DELTA => emlite::Val::from("delta"),
+            EncodedVideoChunkType::KEY => Any::from("key"),
+            EncodedVideoChunkType::DELTA => Any::from("delta"),
         }
     }
 }
-impl From<&EncodedVideoChunkType> for emlite::Val {
-    fn from(s: &EncodedVideoChunkType) -> emlite::Val {
+impl From<&EncodedVideoChunkType> for Any {
+    fn from(s: &EncodedVideoChunkType) -> Any {
         match *s {
-            EncodedVideoChunkType::KEY => emlite::Val::from("key"),
-            EncodedVideoChunkType::DELTA => emlite::Val::from("delta"),
+            EncodedVideoChunkType::KEY => Any::from("key"),
+            EncodedVideoChunkType::DELTA => Any::from("delta"),
         }
     }
 }
@@ -10374,7 +10326,7 @@ pub enum AudioSampleFormat {
     F32_PLANAR,
 }
 impl FromVal for AudioSampleFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "u8" => Self::U8_,
             "s16" => Self::S16,
@@ -10387,38 +10339,38 @@ impl FromVal for AudioSampleFormat {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AudioSampleFormat> for emlite::Val {
-    fn from(s: AudioSampleFormat) -> emlite::Val {
+impl From<AudioSampleFormat> for Any {
+    fn from(s: AudioSampleFormat) -> Any {
         match s {
-            AudioSampleFormat::U8_ => emlite::Val::from("u8"),
-            AudioSampleFormat::S16 => emlite::Val::from("s16"),
-            AudioSampleFormat::S32 => emlite::Val::from("s32"),
-            AudioSampleFormat::F32_ => emlite::Val::from("f32"),
-            AudioSampleFormat::U8_PLANAR => emlite::Val::from("u8-planar"),
-            AudioSampleFormat::S16_PLANAR => emlite::Val::from("s16-planar"),
-            AudioSampleFormat::S32_PLANAR => emlite::Val::from("s32-planar"),
-            AudioSampleFormat::F32_PLANAR => emlite::Val::from("f32-planar"),
+            AudioSampleFormat::U8_ => Any::from("u8"),
+            AudioSampleFormat::S16 => Any::from("s16"),
+            AudioSampleFormat::S32 => Any::from("s32"),
+            AudioSampleFormat::F32_ => Any::from("f32"),
+            AudioSampleFormat::U8_PLANAR => Any::from("u8-planar"),
+            AudioSampleFormat::S16_PLANAR => Any::from("s16-planar"),
+            AudioSampleFormat::S32_PLANAR => Any::from("s32-planar"),
+            AudioSampleFormat::F32_PLANAR => Any::from("f32-planar"),
         }
     }
 }
-impl From<&AudioSampleFormat> for emlite::Val {
-    fn from(s: &AudioSampleFormat) -> emlite::Val {
+impl From<&AudioSampleFormat> for Any {
+    fn from(s: &AudioSampleFormat) -> Any {
         match *s {
-            AudioSampleFormat::U8_ => emlite::Val::from("u8"),
-            AudioSampleFormat::S16 => emlite::Val::from("s16"),
-            AudioSampleFormat::S32 => emlite::Val::from("s32"),
-            AudioSampleFormat::F32_ => emlite::Val::from("f32"),
-            AudioSampleFormat::U8_PLANAR => emlite::Val::from("u8-planar"),
-            AudioSampleFormat::S16_PLANAR => emlite::Val::from("s16-planar"),
-            AudioSampleFormat::S32_PLANAR => emlite::Val::from("s32-planar"),
-            AudioSampleFormat::F32_PLANAR => emlite::Val::from("f32-planar"),
+            AudioSampleFormat::U8_ => Any::from("u8"),
+            AudioSampleFormat::S16 => Any::from("s16"),
+            AudioSampleFormat::S32 => Any::from("s32"),
+            AudioSampleFormat::F32_ => Any::from("f32"),
+            AudioSampleFormat::U8_PLANAR => Any::from("u8-planar"),
+            AudioSampleFormat::S16_PLANAR => Any::from("s16-planar"),
+            AudioSampleFormat::S32_PLANAR => Any::from("s32-planar"),
+            AudioSampleFormat::F32_PLANAR => Any::from("f32-planar"),
         }
     }
 }
@@ -10450,7 +10402,7 @@ pub enum VideoPixelFormat {
     BGRX,
 }
 impl FromVal for VideoPixelFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "I420" => Self::I420,
             "I420P10" => Self::I420_P10,
@@ -10478,68 +10430,68 @@ impl FromVal for VideoPixelFormat {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<VideoPixelFormat> for emlite::Val {
-    fn from(s: VideoPixelFormat) -> emlite::Val {
+impl From<VideoPixelFormat> for Any {
+    fn from(s: VideoPixelFormat) -> Any {
         match s {
-            VideoPixelFormat::I420 => emlite::Val::from("I420"),
-            VideoPixelFormat::I420_P10 => emlite::Val::from("I420P10"),
-            VideoPixelFormat::I420_P12 => emlite::Val::from("I420P12"),
-            VideoPixelFormat::I420_A => emlite::Val::from("I420A"),
-            VideoPixelFormat::I420_AP10 => emlite::Val::from("I420AP10"),
-            VideoPixelFormat::I420_AP12 => emlite::Val::from("I420AP12"),
-            VideoPixelFormat::I422 => emlite::Val::from("I422"),
-            VideoPixelFormat::I422_P10 => emlite::Val::from("I422P10"),
-            VideoPixelFormat::I422_P12 => emlite::Val::from("I422P12"),
-            VideoPixelFormat::I422_A => emlite::Val::from("I422A"),
-            VideoPixelFormat::I422_AP10 => emlite::Val::from("I422AP10"),
-            VideoPixelFormat::I422_AP12 => emlite::Val::from("I422AP12"),
-            VideoPixelFormat::I444 => emlite::Val::from("I444"),
-            VideoPixelFormat::I444_P10 => emlite::Val::from("I444P10"),
-            VideoPixelFormat::I444_P12 => emlite::Val::from("I444P12"),
-            VideoPixelFormat::I444_A => emlite::Val::from("I444A"),
-            VideoPixelFormat::I444_AP10 => emlite::Val::from("I444AP10"),
-            VideoPixelFormat::I444_AP12 => emlite::Val::from("I444AP12"),
-            VideoPixelFormat::NV12 => emlite::Val::from("NV12"),
-            VideoPixelFormat::RGBA => emlite::Val::from("RGBA"),
-            VideoPixelFormat::RGBX => emlite::Val::from("RGBX"),
-            VideoPixelFormat::BGRA => emlite::Val::from("BGRA"),
-            VideoPixelFormat::BGRX => emlite::Val::from("BGRX"),
+            VideoPixelFormat::I420 => Any::from("I420"),
+            VideoPixelFormat::I420_P10 => Any::from("I420P10"),
+            VideoPixelFormat::I420_P12 => Any::from("I420P12"),
+            VideoPixelFormat::I420_A => Any::from("I420A"),
+            VideoPixelFormat::I420_AP10 => Any::from("I420AP10"),
+            VideoPixelFormat::I420_AP12 => Any::from("I420AP12"),
+            VideoPixelFormat::I422 => Any::from("I422"),
+            VideoPixelFormat::I422_P10 => Any::from("I422P10"),
+            VideoPixelFormat::I422_P12 => Any::from("I422P12"),
+            VideoPixelFormat::I422_A => Any::from("I422A"),
+            VideoPixelFormat::I422_AP10 => Any::from("I422AP10"),
+            VideoPixelFormat::I422_AP12 => Any::from("I422AP12"),
+            VideoPixelFormat::I444 => Any::from("I444"),
+            VideoPixelFormat::I444_P10 => Any::from("I444P10"),
+            VideoPixelFormat::I444_P12 => Any::from("I444P12"),
+            VideoPixelFormat::I444_A => Any::from("I444A"),
+            VideoPixelFormat::I444_AP10 => Any::from("I444AP10"),
+            VideoPixelFormat::I444_AP12 => Any::from("I444AP12"),
+            VideoPixelFormat::NV12 => Any::from("NV12"),
+            VideoPixelFormat::RGBA => Any::from("RGBA"),
+            VideoPixelFormat::RGBX => Any::from("RGBX"),
+            VideoPixelFormat::BGRA => Any::from("BGRA"),
+            VideoPixelFormat::BGRX => Any::from("BGRX"),
         }
     }
 }
-impl From<&VideoPixelFormat> for emlite::Val {
-    fn from(s: &VideoPixelFormat) -> emlite::Val {
+impl From<&VideoPixelFormat> for Any {
+    fn from(s: &VideoPixelFormat) -> Any {
         match *s {
-            VideoPixelFormat::I420 => emlite::Val::from("I420"),
-            VideoPixelFormat::I420_P10 => emlite::Val::from("I420P10"),
-            VideoPixelFormat::I420_P12 => emlite::Val::from("I420P12"),
-            VideoPixelFormat::I420_A => emlite::Val::from("I420A"),
-            VideoPixelFormat::I420_AP10 => emlite::Val::from("I420AP10"),
-            VideoPixelFormat::I420_AP12 => emlite::Val::from("I420AP12"),
-            VideoPixelFormat::I422 => emlite::Val::from("I422"),
-            VideoPixelFormat::I422_P10 => emlite::Val::from("I422P10"),
-            VideoPixelFormat::I422_P12 => emlite::Val::from("I422P12"),
-            VideoPixelFormat::I422_A => emlite::Val::from("I422A"),
-            VideoPixelFormat::I422_AP10 => emlite::Val::from("I422AP10"),
-            VideoPixelFormat::I422_AP12 => emlite::Val::from("I422AP12"),
-            VideoPixelFormat::I444 => emlite::Val::from("I444"),
-            VideoPixelFormat::I444_P10 => emlite::Val::from("I444P10"),
-            VideoPixelFormat::I444_P12 => emlite::Val::from("I444P12"),
-            VideoPixelFormat::I444_A => emlite::Val::from("I444A"),
-            VideoPixelFormat::I444_AP10 => emlite::Val::from("I444AP10"),
-            VideoPixelFormat::I444_AP12 => emlite::Val::from("I444AP12"),
-            VideoPixelFormat::NV12 => emlite::Val::from("NV12"),
-            VideoPixelFormat::RGBA => emlite::Val::from("RGBA"),
-            VideoPixelFormat::RGBX => emlite::Val::from("RGBX"),
-            VideoPixelFormat::BGRA => emlite::Val::from("BGRA"),
-            VideoPixelFormat::BGRX => emlite::Val::from("BGRX"),
+            VideoPixelFormat::I420 => Any::from("I420"),
+            VideoPixelFormat::I420_P10 => Any::from("I420P10"),
+            VideoPixelFormat::I420_P12 => Any::from("I420P12"),
+            VideoPixelFormat::I420_A => Any::from("I420A"),
+            VideoPixelFormat::I420_AP10 => Any::from("I420AP10"),
+            VideoPixelFormat::I420_AP12 => Any::from("I420AP12"),
+            VideoPixelFormat::I422 => Any::from("I422"),
+            VideoPixelFormat::I422_P10 => Any::from("I422P10"),
+            VideoPixelFormat::I422_P12 => Any::from("I422P12"),
+            VideoPixelFormat::I422_A => Any::from("I422A"),
+            VideoPixelFormat::I422_AP10 => Any::from("I422AP10"),
+            VideoPixelFormat::I422_AP12 => Any::from("I422AP12"),
+            VideoPixelFormat::I444 => Any::from("I444"),
+            VideoPixelFormat::I444_P10 => Any::from("I444P10"),
+            VideoPixelFormat::I444_P12 => Any::from("I444P12"),
+            VideoPixelFormat::I444_A => Any::from("I444A"),
+            VideoPixelFormat::I444_AP10 => Any::from("I444AP10"),
+            VideoPixelFormat::I444_AP12 => Any::from("I444AP12"),
+            VideoPixelFormat::NV12 => Any::from("NV12"),
+            VideoPixelFormat::RGBA => Any::from("RGBA"),
+            VideoPixelFormat::RGBX => Any::from("RGBX"),
+            VideoPixelFormat::BGRA => Any::from("BGRA"),
+            VideoPixelFormat::BGRX => Any::from("BGRX"),
         }
     }
 }
@@ -10553,7 +10505,7 @@ pub enum VideoColorPrimaries {
     SMPTE432,
 }
 impl FromVal for VideoColorPrimaries {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "bt709" => Self::BT709,
             "bt470bg" => Self::BT470BG,
@@ -10563,32 +10515,32 @@ impl FromVal for VideoColorPrimaries {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<VideoColorPrimaries> for emlite::Val {
-    fn from(s: VideoColorPrimaries) -> emlite::Val {
+impl From<VideoColorPrimaries> for Any {
+    fn from(s: VideoColorPrimaries) -> Any {
         match s {
-            VideoColorPrimaries::BT709 => emlite::Val::from("bt709"),
-            VideoColorPrimaries::BT470BG => emlite::Val::from("bt470bg"),
-            VideoColorPrimaries::SMPTE170M => emlite::Val::from("smpte170m"),
-            VideoColorPrimaries::BT2020 => emlite::Val::from("bt2020"),
-            VideoColorPrimaries::SMPTE432 => emlite::Val::from("smpte432"),
+            VideoColorPrimaries::BT709 => Any::from("bt709"),
+            VideoColorPrimaries::BT470BG => Any::from("bt470bg"),
+            VideoColorPrimaries::SMPTE170M => Any::from("smpte170m"),
+            VideoColorPrimaries::BT2020 => Any::from("bt2020"),
+            VideoColorPrimaries::SMPTE432 => Any::from("smpte432"),
         }
     }
 }
-impl From<&VideoColorPrimaries> for emlite::Val {
-    fn from(s: &VideoColorPrimaries) -> emlite::Val {
+impl From<&VideoColorPrimaries> for Any {
+    fn from(s: &VideoColorPrimaries) -> Any {
         match *s {
-            VideoColorPrimaries::BT709 => emlite::Val::from("bt709"),
-            VideoColorPrimaries::BT470BG => emlite::Val::from("bt470bg"),
-            VideoColorPrimaries::SMPTE170M => emlite::Val::from("smpte170m"),
-            VideoColorPrimaries::BT2020 => emlite::Val::from("bt2020"),
-            VideoColorPrimaries::SMPTE432 => emlite::Val::from("smpte432"),
+            VideoColorPrimaries::BT709 => Any::from("bt709"),
+            VideoColorPrimaries::BT470BG => Any::from("bt470bg"),
+            VideoColorPrimaries::SMPTE170M => Any::from("smpte170m"),
+            VideoColorPrimaries::BT2020 => Any::from("bt2020"),
+            VideoColorPrimaries::SMPTE432 => Any::from("smpte432"),
         }
     }
 }
@@ -10603,7 +10555,7 @@ pub enum VideoTransferCharacteristics {
     HLG,
 }
 impl FromVal for VideoTransferCharacteristics {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "bt709" => Self::BT709,
             "smpte170m" => Self::SMPTE170M,
@@ -10614,34 +10566,34 @@ impl FromVal for VideoTransferCharacteristics {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<VideoTransferCharacteristics> for emlite::Val {
-    fn from(s: VideoTransferCharacteristics) -> emlite::Val {
+impl From<VideoTransferCharacteristics> for Any {
+    fn from(s: VideoTransferCharacteristics) -> Any {
         match s {
-            VideoTransferCharacteristics::BT709 => emlite::Val::from("bt709"),
-            VideoTransferCharacteristics::SMPTE170M => emlite::Val::from("smpte170m"),
-            VideoTransferCharacteristics::IEC61966_2_1 => emlite::Val::from("iec61966-2-1"),
-            VideoTransferCharacteristics::LINEAR => emlite::Val::from("linear"),
-            VideoTransferCharacteristics::PQ => emlite::Val::from("pq"),
-            VideoTransferCharacteristics::HLG => emlite::Val::from("hlg"),
+            VideoTransferCharacteristics::BT709 => Any::from("bt709"),
+            VideoTransferCharacteristics::SMPTE170M => Any::from("smpte170m"),
+            VideoTransferCharacteristics::IEC61966_2_1 => Any::from("iec61966-2-1"),
+            VideoTransferCharacteristics::LINEAR => Any::from("linear"),
+            VideoTransferCharacteristics::PQ => Any::from("pq"),
+            VideoTransferCharacteristics::HLG => Any::from("hlg"),
         }
     }
 }
-impl From<&VideoTransferCharacteristics> for emlite::Val {
-    fn from(s: &VideoTransferCharacteristics) -> emlite::Val {
+impl From<&VideoTransferCharacteristics> for Any {
+    fn from(s: &VideoTransferCharacteristics) -> Any {
         match *s {
-            VideoTransferCharacteristics::BT709 => emlite::Val::from("bt709"),
-            VideoTransferCharacteristics::SMPTE170M => emlite::Val::from("smpte170m"),
-            VideoTransferCharacteristics::IEC61966_2_1 => emlite::Val::from("iec61966-2-1"),
-            VideoTransferCharacteristics::LINEAR => emlite::Val::from("linear"),
-            VideoTransferCharacteristics::PQ => emlite::Val::from("pq"),
-            VideoTransferCharacteristics::HLG => emlite::Val::from("hlg"),
+            VideoTransferCharacteristics::BT709 => Any::from("bt709"),
+            VideoTransferCharacteristics::SMPTE170M => Any::from("smpte170m"),
+            VideoTransferCharacteristics::IEC61966_2_1 => Any::from("iec61966-2-1"),
+            VideoTransferCharacteristics::LINEAR => Any::from("linear"),
+            VideoTransferCharacteristics::PQ => Any::from("pq"),
+            VideoTransferCharacteristics::HLG => Any::from("hlg"),
         }
     }
 }
@@ -10655,7 +10607,7 @@ pub enum VideoMatrixCoefficients {
     BT2020_NCL,
 }
 impl FromVal for VideoMatrixCoefficients {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "rgb" => Self::RGB,
             "bt709" => Self::BT709,
@@ -10665,32 +10617,32 @@ impl FromVal for VideoMatrixCoefficients {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<VideoMatrixCoefficients> for emlite::Val {
-    fn from(s: VideoMatrixCoefficients) -> emlite::Val {
+impl From<VideoMatrixCoefficients> for Any {
+    fn from(s: VideoMatrixCoefficients) -> Any {
         match s {
-            VideoMatrixCoefficients::RGB => emlite::Val::from("rgb"),
-            VideoMatrixCoefficients::BT709 => emlite::Val::from("bt709"),
-            VideoMatrixCoefficients::BT470BG => emlite::Val::from("bt470bg"),
-            VideoMatrixCoefficients::SMPTE170M => emlite::Val::from("smpte170m"),
-            VideoMatrixCoefficients::BT2020_NCL => emlite::Val::from("bt2020-ncl"),
+            VideoMatrixCoefficients::RGB => Any::from("rgb"),
+            VideoMatrixCoefficients::BT709 => Any::from("bt709"),
+            VideoMatrixCoefficients::BT470BG => Any::from("bt470bg"),
+            VideoMatrixCoefficients::SMPTE170M => Any::from("smpte170m"),
+            VideoMatrixCoefficients::BT2020_NCL => Any::from("bt2020-ncl"),
         }
     }
 }
-impl From<&VideoMatrixCoefficients> for emlite::Val {
-    fn from(s: &VideoMatrixCoefficients) -> emlite::Val {
+impl From<&VideoMatrixCoefficients> for Any {
+    fn from(s: &VideoMatrixCoefficients) -> Any {
         match *s {
-            VideoMatrixCoefficients::RGB => emlite::Val::from("rgb"),
-            VideoMatrixCoefficients::BT709 => emlite::Val::from("bt709"),
-            VideoMatrixCoefficients::BT470BG => emlite::Val::from("bt470bg"),
-            VideoMatrixCoefficients::SMPTE170M => emlite::Val::from("smpte170m"),
-            VideoMatrixCoefficients::BT2020_NCL => emlite::Val::from("bt2020-ncl"),
+            VideoMatrixCoefficients::RGB => Any::from("rgb"),
+            VideoMatrixCoefficients::BT709 => Any::from("bt709"),
+            VideoMatrixCoefficients::BT470BG => Any::from("bt470bg"),
+            VideoMatrixCoefficients::SMPTE170M => Any::from("smpte170m"),
+            VideoMatrixCoefficients::BT2020_NCL => Any::from("bt2020-ncl"),
         }
     }
 }
@@ -10702,7 +10654,7 @@ pub enum KeyType {
     SECRET,
 }
 impl FromVal for KeyType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "public" => Self::PUBLIC,
             "private" => Self::PRIVATE,
@@ -10710,28 +10662,28 @@ impl FromVal for KeyType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<KeyType> for emlite::Val {
-    fn from(s: KeyType) -> emlite::Val {
+impl From<KeyType> for Any {
+    fn from(s: KeyType) -> Any {
         match s {
-            KeyType::PUBLIC => emlite::Val::from("public"),
-            KeyType::PRIVATE => emlite::Val::from("private"),
-            KeyType::SECRET => emlite::Val::from("secret"),
+            KeyType::PUBLIC => Any::from("public"),
+            KeyType::PRIVATE => Any::from("private"),
+            KeyType::SECRET => Any::from("secret"),
         }
     }
 }
-impl From<&KeyType> for emlite::Val {
-    fn from(s: &KeyType) -> emlite::Val {
+impl From<&KeyType> for Any {
+    fn from(s: &KeyType) -> Any {
         match *s {
-            KeyType::PUBLIC => emlite::Val::from("public"),
-            KeyType::PRIVATE => emlite::Val::from("private"),
-            KeyType::SECRET => emlite::Val::from("secret"),
+            KeyType::PUBLIC => Any::from("public"),
+            KeyType::PRIVATE => Any::from("private"),
+            KeyType::SECRET => Any::from("secret"),
         }
     }
 }
@@ -10748,7 +10700,7 @@ pub enum KeyUsage {
     UNWRAP_KEY,
 }
 impl FromVal for KeyUsage {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "encrypt" => Self::ENCRYPT,
             "decrypt" => Self::DECRYPT,
@@ -10761,38 +10713,38 @@ impl FromVal for KeyUsage {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<KeyUsage> for emlite::Val {
-    fn from(s: KeyUsage) -> emlite::Val {
+impl From<KeyUsage> for Any {
+    fn from(s: KeyUsage) -> Any {
         match s {
-            KeyUsage::ENCRYPT => emlite::Val::from("encrypt"),
-            KeyUsage::DECRYPT => emlite::Val::from("decrypt"),
-            KeyUsage::SIGN => emlite::Val::from("sign"),
-            KeyUsage::VERIFY => emlite::Val::from("verify"),
-            KeyUsage::DERIVE_KEY => emlite::Val::from("deriveKey"),
-            KeyUsage::DERIVE_BITS => emlite::Val::from("deriveBits"),
-            KeyUsage::WRAP_KEY => emlite::Val::from("wrapKey"),
-            KeyUsage::UNWRAP_KEY => emlite::Val::from("unwrapKey"),
+            KeyUsage::ENCRYPT => Any::from("encrypt"),
+            KeyUsage::DECRYPT => Any::from("decrypt"),
+            KeyUsage::SIGN => Any::from("sign"),
+            KeyUsage::VERIFY => Any::from("verify"),
+            KeyUsage::DERIVE_KEY => Any::from("deriveKey"),
+            KeyUsage::DERIVE_BITS => Any::from("deriveBits"),
+            KeyUsage::WRAP_KEY => Any::from("wrapKey"),
+            KeyUsage::UNWRAP_KEY => Any::from("unwrapKey"),
         }
     }
 }
-impl From<&KeyUsage> for emlite::Val {
-    fn from(s: &KeyUsage) -> emlite::Val {
+impl From<&KeyUsage> for Any {
+    fn from(s: &KeyUsage) -> Any {
         match *s {
-            KeyUsage::ENCRYPT => emlite::Val::from("encrypt"),
-            KeyUsage::DECRYPT => emlite::Val::from("decrypt"),
-            KeyUsage::SIGN => emlite::Val::from("sign"),
-            KeyUsage::VERIFY => emlite::Val::from("verify"),
-            KeyUsage::DERIVE_KEY => emlite::Val::from("deriveKey"),
-            KeyUsage::DERIVE_BITS => emlite::Val::from("deriveBits"),
-            KeyUsage::WRAP_KEY => emlite::Val::from("wrapKey"),
-            KeyUsage::UNWRAP_KEY => emlite::Val::from("unwrapKey"),
+            KeyUsage::ENCRYPT => Any::from("encrypt"),
+            KeyUsage::DECRYPT => Any::from("decrypt"),
+            KeyUsage::SIGN => Any::from("sign"),
+            KeyUsage::VERIFY => Any::from("verify"),
+            KeyUsage::DERIVE_KEY => Any::from("deriveKey"),
+            KeyUsage::DERIVE_BITS => Any::from("deriveBits"),
+            KeyUsage::WRAP_KEY => Any::from("wrapKey"),
+            KeyUsage::UNWRAP_KEY => Any::from("unwrapKey"),
         }
     }
 }
@@ -10805,7 +10757,7 @@ pub enum KeyFormat {
     JWK,
 }
 impl FromVal for KeyFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "raw" => Self::RAW_,
             "spki" => Self::SPKI,
@@ -10814,30 +10766,30 @@ impl FromVal for KeyFormat {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<KeyFormat> for emlite::Val {
-    fn from(s: KeyFormat) -> emlite::Val {
+impl From<KeyFormat> for Any {
+    fn from(s: KeyFormat) -> Any {
         match s {
-            KeyFormat::RAW_ => emlite::Val::from("raw"),
-            KeyFormat::SPKI => emlite::Val::from("spki"),
-            KeyFormat::PKCS8 => emlite::Val::from("pkcs8"),
-            KeyFormat::JWK => emlite::Val::from("jwk"),
+            KeyFormat::RAW_ => Any::from("raw"),
+            KeyFormat::SPKI => Any::from("spki"),
+            KeyFormat::PKCS8 => Any::from("pkcs8"),
+            KeyFormat::JWK => Any::from("jwk"),
         }
     }
 }
-impl From<&KeyFormat> for emlite::Val {
-    fn from(s: &KeyFormat) -> emlite::Val {
+impl From<&KeyFormat> for Any {
+    fn from(s: &KeyFormat) -> Any {
         match *s {
-            KeyFormat::RAW_ => emlite::Val::from("raw"),
-            KeyFormat::SPKI => emlite::Val::from("spki"),
-            KeyFormat::PKCS8 => emlite::Val::from("pkcs8"),
-            KeyFormat::JWK => emlite::Val::from("jwk"),
+            KeyFormat::RAW_ => Any::from("raw"),
+            KeyFormat::SPKI => Any::from("spki"),
+            KeyFormat::PKCS8 => Any::from("pkcs8"),
+            KeyFormat::JWK => Any::from("jwk"),
         }
     }
 }
@@ -10849,7 +10801,7 @@ pub enum WebGLPowerPreference {
     HIGH_PERFORMANCE,
 }
 impl FromVal for WebGLPowerPreference {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "default" => Self::DEFAULT,
             "low-power" => Self::LOW_POWER,
@@ -10857,28 +10809,28 @@ impl FromVal for WebGLPowerPreference {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<WebGLPowerPreference> for emlite::Val {
-    fn from(s: WebGLPowerPreference) -> emlite::Val {
+impl From<WebGLPowerPreference> for Any {
+    fn from(s: WebGLPowerPreference) -> Any {
         match s {
-            WebGLPowerPreference::DEFAULT => emlite::Val::from("default"),
-            WebGLPowerPreference::LOW_POWER => emlite::Val::from("low-power"),
-            WebGLPowerPreference::HIGH_PERFORMANCE => emlite::Val::from("high-performance"),
+            WebGLPowerPreference::DEFAULT => Any::from("default"),
+            WebGLPowerPreference::LOW_POWER => Any::from("low-power"),
+            WebGLPowerPreference::HIGH_PERFORMANCE => Any::from("high-performance"),
         }
     }
 }
-impl From<&WebGLPowerPreference> for emlite::Val {
-    fn from(s: &WebGLPowerPreference) -> emlite::Val {
+impl From<&WebGLPowerPreference> for Any {
+    fn from(s: &WebGLPowerPreference) -> Any {
         match *s {
-            WebGLPowerPreference::DEFAULT => emlite::Val::from("default"),
-            WebGLPowerPreference::LOW_POWER => emlite::Val::from("low-power"),
-            WebGLPowerPreference::HIGH_PERFORMANCE => emlite::Val::from("high-performance"),
+            WebGLPowerPreference::DEFAULT => Any::from("default"),
+            WebGLPowerPreference::LOW_POWER => Any::from("low-power"),
+            WebGLPowerPreference::HIGH_PERFORMANCE => Any::from("high-performance"),
         }
     }
 }
@@ -10889,33 +10841,33 @@ pub enum GPUPowerPreference {
     HIGH_PERFORMANCE,
 }
 impl FromVal for GPUPowerPreference {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "low-power" => Self::LOW_POWER,
             "high-performance" => Self::HIGH_PERFORMANCE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUPowerPreference> for emlite::Val {
-    fn from(s: GPUPowerPreference) -> emlite::Val {
+impl From<GPUPowerPreference> for Any {
+    fn from(s: GPUPowerPreference) -> Any {
         match s {
-            GPUPowerPreference::LOW_POWER => emlite::Val::from("low-power"),
-            GPUPowerPreference::HIGH_PERFORMANCE => emlite::Val::from("high-performance"),
+            GPUPowerPreference::LOW_POWER => Any::from("low-power"),
+            GPUPowerPreference::HIGH_PERFORMANCE => Any::from("high-performance"),
         }
     }
 }
-impl From<&GPUPowerPreference> for emlite::Val {
-    fn from(s: &GPUPowerPreference) -> emlite::Val {
+impl From<&GPUPowerPreference> for Any {
+    fn from(s: &GPUPowerPreference) -> Any {
         match *s {
-            GPUPowerPreference::LOW_POWER => emlite::Val::from("low-power"),
-            GPUPowerPreference::HIGH_PERFORMANCE => emlite::Val::from("high-performance"),
+            GPUPowerPreference::LOW_POWER => Any::from("low-power"),
+            GPUPowerPreference::HIGH_PERFORMANCE => Any::from("high-performance"),
         }
     }
 }
@@ -10944,7 +10896,7 @@ pub enum GPUFeatureName {
     TEXTURE_FORMATS_TIER2,
 }
 impl FromVal for GPUFeatureName {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "core-features-and-limits" => Self::CORE_FEATURES_AND_LIMITS,
             "depth-clip-control" => Self::DEPTH_CLIP_CONTROL,
@@ -10969,86 +10921,70 @@ impl FromVal for GPUFeatureName {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUFeatureName> for emlite::Val {
-    fn from(s: GPUFeatureName) -> emlite::Val {
+impl From<GPUFeatureName> for Any {
+    fn from(s: GPUFeatureName) -> Any {
         match s {
-            GPUFeatureName::CORE_FEATURES_AND_LIMITS => {
-                emlite::Val::from("core-features-and-limits")
-            }
-            GPUFeatureName::DEPTH_CLIP_CONTROL => emlite::Val::from("depth-clip-control"),
-            GPUFeatureName::DEPTH32FLOAT_STENCIL8 => emlite::Val::from("depth32float-stencil8"),
-            GPUFeatureName::TEXTURE_COMPRESSION_BC => emlite::Val::from("texture-compression-bc"),
+            GPUFeatureName::CORE_FEATURES_AND_LIMITS => Any::from("core-features-and-limits"),
+            GPUFeatureName::DEPTH_CLIP_CONTROL => Any::from("depth-clip-control"),
+            GPUFeatureName::DEPTH32FLOAT_STENCIL8 => Any::from("depth32float-stencil8"),
+            GPUFeatureName::TEXTURE_COMPRESSION_BC => Any::from("texture-compression-bc"),
             GPUFeatureName::TEXTURE_COMPRESSION_BC_SLICED_3D => {
-                emlite::Val::from("texture-compression-bc-sliced-3d")
+                Any::from("texture-compression-bc-sliced-3d")
             }
-            GPUFeatureName::TEXTURE_COMPRESSION_ETC2 => {
-                emlite::Val::from("texture-compression-etc2")
-            }
-            GPUFeatureName::TEXTURE_COMPRESSION_ASTC => {
-                emlite::Val::from("texture-compression-astc")
-            }
+            GPUFeatureName::TEXTURE_COMPRESSION_ETC2 => Any::from("texture-compression-etc2"),
+            GPUFeatureName::TEXTURE_COMPRESSION_ASTC => Any::from("texture-compression-astc"),
             GPUFeatureName::TEXTURE_COMPRESSION_ASTC_SLICED_3D => {
-                emlite::Val::from("texture-compression-astc-sliced-3d")
+                Any::from("texture-compression-astc-sliced-3d")
             }
-            GPUFeatureName::TIMESTAMP_QUERY => emlite::Val::from("timestamp-query"),
-            GPUFeatureName::INDIRECT_FIRST_INSTANCE => emlite::Val::from("indirect-first-instance"),
-            GPUFeatureName::SHADER_F16 => emlite::Val::from("shader-f16"),
-            GPUFeatureName::RG11B10UFLOAT_RENDERABLE => {
-                emlite::Val::from("rg11b10ufloat-renderable")
-            }
-            GPUFeatureName::BGRA8UNORM_STORAGE => emlite::Val::from("bgra8unorm-storage"),
-            GPUFeatureName::FLOAT32_FILTERABLE => emlite::Val::from("float32-filterable"),
-            GPUFeatureName::FLOAT32_BLENDABLE => emlite::Val::from("float32-blendable"),
-            GPUFeatureName::CLIP_DISTANCES => emlite::Val::from("clip-distances"),
-            GPUFeatureName::DUAL_SOURCE_BLENDING => emlite::Val::from("dual-source-blending"),
-            GPUFeatureName::SUBGROUPS => emlite::Val::from("subgroups"),
-            GPUFeatureName::TEXTURE_FORMATS_TIER1 => emlite::Val::from("texture-formats-tier1"),
-            GPUFeatureName::TEXTURE_FORMATS_TIER2 => emlite::Val::from("texture-formats-tier2"),
+            GPUFeatureName::TIMESTAMP_QUERY => Any::from("timestamp-query"),
+            GPUFeatureName::INDIRECT_FIRST_INSTANCE => Any::from("indirect-first-instance"),
+            GPUFeatureName::SHADER_F16 => Any::from("shader-f16"),
+            GPUFeatureName::RG11B10UFLOAT_RENDERABLE => Any::from("rg11b10ufloat-renderable"),
+            GPUFeatureName::BGRA8UNORM_STORAGE => Any::from("bgra8unorm-storage"),
+            GPUFeatureName::FLOAT32_FILTERABLE => Any::from("float32-filterable"),
+            GPUFeatureName::FLOAT32_BLENDABLE => Any::from("float32-blendable"),
+            GPUFeatureName::CLIP_DISTANCES => Any::from("clip-distances"),
+            GPUFeatureName::DUAL_SOURCE_BLENDING => Any::from("dual-source-blending"),
+            GPUFeatureName::SUBGROUPS => Any::from("subgroups"),
+            GPUFeatureName::TEXTURE_FORMATS_TIER1 => Any::from("texture-formats-tier1"),
+            GPUFeatureName::TEXTURE_FORMATS_TIER2 => Any::from("texture-formats-tier2"),
         }
     }
 }
-impl From<&GPUFeatureName> for emlite::Val {
-    fn from(s: &GPUFeatureName) -> emlite::Val {
+impl From<&GPUFeatureName> for Any {
+    fn from(s: &GPUFeatureName) -> Any {
         match *s {
-            GPUFeatureName::CORE_FEATURES_AND_LIMITS => {
-                emlite::Val::from("core-features-and-limits")
-            }
-            GPUFeatureName::DEPTH_CLIP_CONTROL => emlite::Val::from("depth-clip-control"),
-            GPUFeatureName::DEPTH32FLOAT_STENCIL8 => emlite::Val::from("depth32float-stencil8"),
-            GPUFeatureName::TEXTURE_COMPRESSION_BC => emlite::Val::from("texture-compression-bc"),
+            GPUFeatureName::CORE_FEATURES_AND_LIMITS => Any::from("core-features-and-limits"),
+            GPUFeatureName::DEPTH_CLIP_CONTROL => Any::from("depth-clip-control"),
+            GPUFeatureName::DEPTH32FLOAT_STENCIL8 => Any::from("depth32float-stencil8"),
+            GPUFeatureName::TEXTURE_COMPRESSION_BC => Any::from("texture-compression-bc"),
             GPUFeatureName::TEXTURE_COMPRESSION_BC_SLICED_3D => {
-                emlite::Val::from("texture-compression-bc-sliced-3d")
+                Any::from("texture-compression-bc-sliced-3d")
             }
-            GPUFeatureName::TEXTURE_COMPRESSION_ETC2 => {
-                emlite::Val::from("texture-compression-etc2")
-            }
-            GPUFeatureName::TEXTURE_COMPRESSION_ASTC => {
-                emlite::Val::from("texture-compression-astc")
-            }
+            GPUFeatureName::TEXTURE_COMPRESSION_ETC2 => Any::from("texture-compression-etc2"),
+            GPUFeatureName::TEXTURE_COMPRESSION_ASTC => Any::from("texture-compression-astc"),
             GPUFeatureName::TEXTURE_COMPRESSION_ASTC_SLICED_3D => {
-                emlite::Val::from("texture-compression-astc-sliced-3d")
+                Any::from("texture-compression-astc-sliced-3d")
             }
-            GPUFeatureName::TIMESTAMP_QUERY => emlite::Val::from("timestamp-query"),
-            GPUFeatureName::INDIRECT_FIRST_INSTANCE => emlite::Val::from("indirect-first-instance"),
-            GPUFeatureName::SHADER_F16 => emlite::Val::from("shader-f16"),
-            GPUFeatureName::RG11B10UFLOAT_RENDERABLE => {
-                emlite::Val::from("rg11b10ufloat-renderable")
-            }
-            GPUFeatureName::BGRA8UNORM_STORAGE => emlite::Val::from("bgra8unorm-storage"),
-            GPUFeatureName::FLOAT32_FILTERABLE => emlite::Val::from("float32-filterable"),
-            GPUFeatureName::FLOAT32_BLENDABLE => emlite::Val::from("float32-blendable"),
-            GPUFeatureName::CLIP_DISTANCES => emlite::Val::from("clip-distances"),
-            GPUFeatureName::DUAL_SOURCE_BLENDING => emlite::Val::from("dual-source-blending"),
-            GPUFeatureName::SUBGROUPS => emlite::Val::from("subgroups"),
-            GPUFeatureName::TEXTURE_FORMATS_TIER1 => emlite::Val::from("texture-formats-tier1"),
-            GPUFeatureName::TEXTURE_FORMATS_TIER2 => emlite::Val::from("texture-formats-tier2"),
+            GPUFeatureName::TIMESTAMP_QUERY => Any::from("timestamp-query"),
+            GPUFeatureName::INDIRECT_FIRST_INSTANCE => Any::from("indirect-first-instance"),
+            GPUFeatureName::SHADER_F16 => Any::from("shader-f16"),
+            GPUFeatureName::RG11B10UFLOAT_RENDERABLE => Any::from("rg11b10ufloat-renderable"),
+            GPUFeatureName::BGRA8UNORM_STORAGE => Any::from("bgra8unorm-storage"),
+            GPUFeatureName::FLOAT32_FILTERABLE => Any::from("float32-filterable"),
+            GPUFeatureName::FLOAT32_BLENDABLE => Any::from("float32-blendable"),
+            GPUFeatureName::CLIP_DISTANCES => Any::from("clip-distances"),
+            GPUFeatureName::DUAL_SOURCE_BLENDING => Any::from("dual-source-blending"),
+            GPUFeatureName::SUBGROUPS => Any::from("subgroups"),
+            GPUFeatureName::TEXTURE_FORMATS_TIER1 => Any::from("texture-formats-tier1"),
+            GPUFeatureName::TEXTURE_FORMATS_TIER2 => Any::from("texture-formats-tier2"),
         }
     }
 }
@@ -11060,7 +10996,7 @@ pub enum GPUBufferMapState {
     MAPPED,
 }
 impl FromVal for GPUBufferMapState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "unmapped" => Self::UNMAPPED,
             "pending" => Self::PENDING,
@@ -11068,28 +11004,28 @@ impl FromVal for GPUBufferMapState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUBufferMapState> for emlite::Val {
-    fn from(s: GPUBufferMapState) -> emlite::Val {
+impl From<GPUBufferMapState> for Any {
+    fn from(s: GPUBufferMapState) -> Any {
         match s {
-            GPUBufferMapState::UNMAPPED => emlite::Val::from("unmapped"),
-            GPUBufferMapState::PENDING => emlite::Val::from("pending"),
-            GPUBufferMapState::MAPPED => emlite::Val::from("mapped"),
+            GPUBufferMapState::UNMAPPED => Any::from("unmapped"),
+            GPUBufferMapState::PENDING => Any::from("pending"),
+            GPUBufferMapState::MAPPED => Any::from("mapped"),
         }
     }
 }
-impl From<&GPUBufferMapState> for emlite::Val {
-    fn from(s: &GPUBufferMapState) -> emlite::Val {
+impl From<&GPUBufferMapState> for Any {
+    fn from(s: &GPUBufferMapState) -> Any {
         match *s {
-            GPUBufferMapState::UNMAPPED => emlite::Val::from("unmapped"),
-            GPUBufferMapState::PENDING => emlite::Val::from("pending"),
-            GPUBufferMapState::MAPPED => emlite::Val::from("mapped"),
+            GPUBufferMapState::UNMAPPED => Any::from("unmapped"),
+            GPUBufferMapState::PENDING => Any::from("pending"),
+            GPUBufferMapState::MAPPED => Any::from("mapped"),
         }
     }
 }
@@ -11101,7 +11037,7 @@ pub enum GPUTextureDimension {
     _3D,
 }
 impl FromVal for GPUTextureDimension {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "1d" => Self::_1D,
             "2d" => Self::_2D,
@@ -11109,28 +11045,28 @@ impl FromVal for GPUTextureDimension {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUTextureDimension> for emlite::Val {
-    fn from(s: GPUTextureDimension) -> emlite::Val {
+impl From<GPUTextureDimension> for Any {
+    fn from(s: GPUTextureDimension) -> Any {
         match s {
-            GPUTextureDimension::_1D => emlite::Val::from("1d"),
-            GPUTextureDimension::_2D => emlite::Val::from("2d"),
-            GPUTextureDimension::_3D => emlite::Val::from("3d"),
+            GPUTextureDimension::_1D => Any::from("1d"),
+            GPUTextureDimension::_2D => Any::from("2d"),
+            GPUTextureDimension::_3D => Any::from("3d"),
         }
     }
 }
-impl From<&GPUTextureDimension> for emlite::Val {
-    fn from(s: &GPUTextureDimension) -> emlite::Val {
+impl From<&GPUTextureDimension> for Any {
+    fn from(s: &GPUTextureDimension) -> Any {
         match *s {
-            GPUTextureDimension::_1D => emlite::Val::from("1d"),
-            GPUTextureDimension::_2D => emlite::Val::from("2d"),
-            GPUTextureDimension::_3D => emlite::Val::from("3d"),
+            GPUTextureDimension::_1D => Any::from("1d"),
+            GPUTextureDimension::_2D => Any::from("2d"),
+            GPUTextureDimension::_3D => Any::from("3d"),
         }
     }
 }
@@ -11145,7 +11081,7 @@ pub enum GPUTextureViewDimension {
     _3D,
 }
 impl FromVal for GPUTextureViewDimension {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "1d" => Self::_1D,
             "2d" => Self::_2D,
@@ -11156,34 +11092,34 @@ impl FromVal for GPUTextureViewDimension {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUTextureViewDimension> for emlite::Val {
-    fn from(s: GPUTextureViewDimension) -> emlite::Val {
+impl From<GPUTextureViewDimension> for Any {
+    fn from(s: GPUTextureViewDimension) -> Any {
         match s {
-            GPUTextureViewDimension::_1D => emlite::Val::from("1d"),
-            GPUTextureViewDimension::_2D => emlite::Val::from("2d"),
-            GPUTextureViewDimension::_2D_ARRAY => emlite::Val::from("2d-array"),
-            GPUTextureViewDimension::CUBE => emlite::Val::from("cube"),
-            GPUTextureViewDimension::CUBE_ARRAY => emlite::Val::from("cube-array"),
-            GPUTextureViewDimension::_3D => emlite::Val::from("3d"),
+            GPUTextureViewDimension::_1D => Any::from("1d"),
+            GPUTextureViewDimension::_2D => Any::from("2d"),
+            GPUTextureViewDimension::_2D_ARRAY => Any::from("2d-array"),
+            GPUTextureViewDimension::CUBE => Any::from("cube"),
+            GPUTextureViewDimension::CUBE_ARRAY => Any::from("cube-array"),
+            GPUTextureViewDimension::_3D => Any::from("3d"),
         }
     }
 }
-impl From<&GPUTextureViewDimension> for emlite::Val {
-    fn from(s: &GPUTextureViewDimension) -> emlite::Val {
+impl From<&GPUTextureViewDimension> for Any {
+    fn from(s: &GPUTextureViewDimension) -> Any {
         match *s {
-            GPUTextureViewDimension::_1D => emlite::Val::from("1d"),
-            GPUTextureViewDimension::_2D => emlite::Val::from("2d"),
-            GPUTextureViewDimension::_2D_ARRAY => emlite::Val::from("2d-array"),
-            GPUTextureViewDimension::CUBE => emlite::Val::from("cube"),
-            GPUTextureViewDimension::CUBE_ARRAY => emlite::Val::from("cube-array"),
-            GPUTextureViewDimension::_3D => emlite::Val::from("3d"),
+            GPUTextureViewDimension::_1D => Any::from("1d"),
+            GPUTextureViewDimension::_2D => Any::from("2d"),
+            GPUTextureViewDimension::_2D_ARRAY => Any::from("2d-array"),
+            GPUTextureViewDimension::CUBE => Any::from("cube"),
+            GPUTextureViewDimension::CUBE_ARRAY => Any::from("cube-array"),
+            GPUTextureViewDimension::_3D => Any::from("3d"),
         }
     }
 }
@@ -11195,7 +11131,7 @@ pub enum GPUTextureAspect {
     DEPTH_ONLY,
 }
 impl FromVal for GPUTextureAspect {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "all" => Self::ALL,
             "stencil-only" => Self::STENCIL_ONLY,
@@ -11203,28 +11139,28 @@ impl FromVal for GPUTextureAspect {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUTextureAspect> for emlite::Val {
-    fn from(s: GPUTextureAspect) -> emlite::Val {
+impl From<GPUTextureAspect> for Any {
+    fn from(s: GPUTextureAspect) -> Any {
         match s {
-            GPUTextureAspect::ALL => emlite::Val::from("all"),
-            GPUTextureAspect::STENCIL_ONLY => emlite::Val::from("stencil-only"),
-            GPUTextureAspect::DEPTH_ONLY => emlite::Val::from("depth-only"),
+            GPUTextureAspect::ALL => Any::from("all"),
+            GPUTextureAspect::STENCIL_ONLY => Any::from("stencil-only"),
+            GPUTextureAspect::DEPTH_ONLY => Any::from("depth-only"),
         }
     }
 }
-impl From<&GPUTextureAspect> for emlite::Val {
-    fn from(s: &GPUTextureAspect) -> emlite::Val {
+impl From<&GPUTextureAspect> for Any {
+    fn from(s: &GPUTextureAspect) -> Any {
         match *s {
-            GPUTextureAspect::ALL => emlite::Val::from("all"),
-            GPUTextureAspect::STENCIL_ONLY => emlite::Val::from("stencil-only"),
-            GPUTextureAspect::DEPTH_ONLY => emlite::Val::from("depth-only"),
+            GPUTextureAspect::ALL => Any::from("all"),
+            GPUTextureAspect::STENCIL_ONLY => Any::from("stencil-only"),
+            GPUTextureAspect::DEPTH_ONLY => Any::from("depth-only"),
         }
     }
 }
@@ -11334,7 +11270,7 @@ pub enum GPUTextureFormat {
     ASTC_12X12_UNORM_SRGB,
 }
 impl FromVal for GPUTextureFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "r8unorm" => Self::R8UNORM,
             "r8snorm" => Self::R8SNORM,
@@ -11440,224 +11376,224 @@ impl FromVal for GPUTextureFormat {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUTextureFormat> for emlite::Val {
-    fn from(s: GPUTextureFormat) -> emlite::Val {
+impl From<GPUTextureFormat> for Any {
+    fn from(s: GPUTextureFormat) -> Any {
         match s {
-            GPUTextureFormat::R8UNORM => emlite::Val::from("r8unorm"),
-            GPUTextureFormat::R8SNORM => emlite::Val::from("r8snorm"),
-            GPUTextureFormat::R8UINT => emlite::Val::from("r8uint"),
-            GPUTextureFormat::R8SINT => emlite::Val::from("r8sint"),
-            GPUTextureFormat::R16UNORM => emlite::Val::from("r16unorm"),
-            GPUTextureFormat::R16SNORM => emlite::Val::from("r16snorm"),
-            GPUTextureFormat::R16UINT => emlite::Val::from("r16uint"),
-            GPUTextureFormat::R16SINT => emlite::Val::from("r16sint"),
-            GPUTextureFormat::R16FLOAT => emlite::Val::from("r16float"),
-            GPUTextureFormat::RG8UNORM => emlite::Val::from("rg8unorm"),
-            GPUTextureFormat::RG8SNORM => emlite::Val::from("rg8snorm"),
-            GPUTextureFormat::RG8UINT => emlite::Val::from("rg8uint"),
-            GPUTextureFormat::RG8SINT => emlite::Val::from("rg8sint"),
-            GPUTextureFormat::R32UINT => emlite::Val::from("r32uint"),
-            GPUTextureFormat::R32SINT => emlite::Val::from("r32sint"),
-            GPUTextureFormat::R32FLOAT => emlite::Val::from("r32float"),
-            GPUTextureFormat::RG16UNORM => emlite::Val::from("rg16unorm"),
-            GPUTextureFormat::RG16SNORM => emlite::Val::from("rg16snorm"),
-            GPUTextureFormat::RG16UINT => emlite::Val::from("rg16uint"),
-            GPUTextureFormat::RG16SINT => emlite::Val::from("rg16sint"),
-            GPUTextureFormat::RG16FLOAT => emlite::Val::from("rg16float"),
-            GPUTextureFormat::RGBA8UNORM => emlite::Val::from("rgba8unorm"),
-            GPUTextureFormat::RGBA8UNORM_SRGB => emlite::Val::from("rgba8unorm-srgb"),
-            GPUTextureFormat::RGBA8SNORM => emlite::Val::from("rgba8snorm"),
-            GPUTextureFormat::RGBA8UINT => emlite::Val::from("rgba8uint"),
-            GPUTextureFormat::RGBA8SINT => emlite::Val::from("rgba8sint"),
-            GPUTextureFormat::BGRA8UNORM => emlite::Val::from("bgra8unorm"),
-            GPUTextureFormat::BGRA8UNORM_SRGB => emlite::Val::from("bgra8unorm-srgb"),
-            GPUTextureFormat::RGB9E5UFLOAT => emlite::Val::from("rgb9e5ufloat"),
-            GPUTextureFormat::RGB10A2UINT => emlite::Val::from("rgb10a2uint"),
-            GPUTextureFormat::RGB10A2UNORM => emlite::Val::from("rgb10a2unorm"),
-            GPUTextureFormat::RG11B10UFLOAT => emlite::Val::from("rg11b10ufloat"),
-            GPUTextureFormat::RG32UINT => emlite::Val::from("rg32uint"),
-            GPUTextureFormat::RG32SINT => emlite::Val::from("rg32sint"),
-            GPUTextureFormat::RG32FLOAT => emlite::Val::from("rg32float"),
-            GPUTextureFormat::RGBA16UNORM => emlite::Val::from("rgba16unorm"),
-            GPUTextureFormat::RGBA16SNORM => emlite::Val::from("rgba16snorm"),
-            GPUTextureFormat::RGBA16UINT => emlite::Val::from("rgba16uint"),
-            GPUTextureFormat::RGBA16SINT => emlite::Val::from("rgba16sint"),
-            GPUTextureFormat::RGBA16FLOAT => emlite::Val::from("rgba16float"),
-            GPUTextureFormat::RGBA32UINT => emlite::Val::from("rgba32uint"),
-            GPUTextureFormat::RGBA32SINT => emlite::Val::from("rgba32sint"),
-            GPUTextureFormat::RGBA32FLOAT => emlite::Val::from("rgba32float"),
-            GPUTextureFormat::STENCIL8 => emlite::Val::from("stencil8"),
-            GPUTextureFormat::DEPTH16UNORM => emlite::Val::from("depth16unorm"),
-            GPUTextureFormat::DEPTH24PLUS => emlite::Val::from("depth24plus"),
-            GPUTextureFormat::DEPTH24PLUS_STENCIL8 => emlite::Val::from("depth24plus-stencil8"),
-            GPUTextureFormat::DEPTH32FLOAT => emlite::Val::from("depth32float"),
-            GPUTextureFormat::DEPTH32FLOAT_STENCIL8 => emlite::Val::from("depth32float-stencil8"),
-            GPUTextureFormat::BC1_RGBA_UNORM => emlite::Val::from("bc1-rgba-unorm"),
-            GPUTextureFormat::BC1_RGBA_UNORM_SRGB => emlite::Val::from("bc1-rgba-unorm-srgb"),
-            GPUTextureFormat::BC2_RGBA_UNORM => emlite::Val::from("bc2-rgba-unorm"),
-            GPUTextureFormat::BC2_RGBA_UNORM_SRGB => emlite::Val::from("bc2-rgba-unorm-srgb"),
-            GPUTextureFormat::BC3_RGBA_UNORM => emlite::Val::from("bc3-rgba-unorm"),
-            GPUTextureFormat::BC3_RGBA_UNORM_SRGB => emlite::Val::from("bc3-rgba-unorm-srgb"),
-            GPUTextureFormat::BC4_R_UNORM => emlite::Val::from("bc4-r-unorm"),
-            GPUTextureFormat::BC4_R_SNORM => emlite::Val::from("bc4-r-snorm"),
-            GPUTextureFormat::BC5_RG_UNORM => emlite::Val::from("bc5-rg-unorm"),
-            GPUTextureFormat::BC5_RG_SNORM => emlite::Val::from("bc5-rg-snorm"),
-            GPUTextureFormat::BC6H_RGB_UFLOAT => emlite::Val::from("bc6h-rgb-ufloat"),
-            GPUTextureFormat::BC6H_RGB_FLOAT => emlite::Val::from("bc6h-rgb-float"),
-            GPUTextureFormat::BC7_RGBA_UNORM => emlite::Val::from("bc7-rgba-unorm"),
-            GPUTextureFormat::BC7_RGBA_UNORM_SRGB => emlite::Val::from("bc7-rgba-unorm-srgb"),
-            GPUTextureFormat::ETC2_RGB8UNORM => emlite::Val::from("etc2-rgb8unorm"),
-            GPUTextureFormat::ETC2_RGB8UNORM_SRGB => emlite::Val::from("etc2-rgb8unorm-srgb"),
-            GPUTextureFormat::ETC2_RGB8A1UNORM => emlite::Val::from("etc2-rgb8a1unorm"),
-            GPUTextureFormat::ETC2_RGB8A1UNORM_SRGB => emlite::Val::from("etc2-rgb8a1unorm-srgb"),
-            GPUTextureFormat::ETC2_RGBA8UNORM => emlite::Val::from("etc2-rgba8unorm"),
-            GPUTextureFormat::ETC2_RGBA8UNORM_SRGB => emlite::Val::from("etc2-rgba8unorm-srgb"),
-            GPUTextureFormat::EAC_R11UNORM => emlite::Val::from("eac-r11unorm"),
-            GPUTextureFormat::EAC_R11SNORM => emlite::Val::from("eac-r11snorm"),
-            GPUTextureFormat::EAC_RG11UNORM => emlite::Val::from("eac-rg11unorm"),
-            GPUTextureFormat::EAC_RG11SNORM => emlite::Val::from("eac-rg11snorm"),
-            GPUTextureFormat::ASTC_4X4_UNORM => emlite::Val::from("astc-4x4-unorm"),
-            GPUTextureFormat::ASTC_4X4_UNORM_SRGB => emlite::Val::from("astc-4x4-unorm-srgb"),
-            GPUTextureFormat::ASTC_5X4_UNORM => emlite::Val::from("astc-5x4-unorm"),
-            GPUTextureFormat::ASTC_5X4_UNORM_SRGB => emlite::Val::from("astc-5x4-unorm-srgb"),
-            GPUTextureFormat::ASTC_5X5_UNORM => emlite::Val::from("astc-5x5-unorm"),
-            GPUTextureFormat::ASTC_5X5_UNORM_SRGB => emlite::Val::from("astc-5x5-unorm-srgb"),
-            GPUTextureFormat::ASTC_6X5_UNORM => emlite::Val::from("astc-6x5-unorm"),
-            GPUTextureFormat::ASTC_6X5_UNORM_SRGB => emlite::Val::from("astc-6x5-unorm-srgb"),
-            GPUTextureFormat::ASTC_6X6_UNORM => emlite::Val::from("astc-6x6-unorm"),
-            GPUTextureFormat::ASTC_6X6_UNORM_SRGB => emlite::Val::from("astc-6x6-unorm-srgb"),
-            GPUTextureFormat::ASTC_8X5_UNORM => emlite::Val::from("astc-8x5-unorm"),
-            GPUTextureFormat::ASTC_8X5_UNORM_SRGB => emlite::Val::from("astc-8x5-unorm-srgb"),
-            GPUTextureFormat::ASTC_8X6_UNORM => emlite::Val::from("astc-8x6-unorm"),
-            GPUTextureFormat::ASTC_8X6_UNORM_SRGB => emlite::Val::from("astc-8x6-unorm-srgb"),
-            GPUTextureFormat::ASTC_8X8_UNORM => emlite::Val::from("astc-8x8-unorm"),
-            GPUTextureFormat::ASTC_8X8_UNORM_SRGB => emlite::Val::from("astc-8x8-unorm-srgb"),
-            GPUTextureFormat::ASTC_10X5_UNORM => emlite::Val::from("astc-10x5-unorm"),
-            GPUTextureFormat::ASTC_10X5_UNORM_SRGB => emlite::Val::from("astc-10x5-unorm-srgb"),
-            GPUTextureFormat::ASTC_10X6_UNORM => emlite::Val::from("astc-10x6-unorm"),
-            GPUTextureFormat::ASTC_10X6_UNORM_SRGB => emlite::Val::from("astc-10x6-unorm-srgb"),
-            GPUTextureFormat::ASTC_10X8_UNORM => emlite::Val::from("astc-10x8-unorm"),
-            GPUTextureFormat::ASTC_10X8_UNORM_SRGB => emlite::Val::from("astc-10x8-unorm-srgb"),
-            GPUTextureFormat::ASTC_10X10_UNORM => emlite::Val::from("astc-10x10-unorm"),
-            GPUTextureFormat::ASTC_10X10_UNORM_SRGB => emlite::Val::from("astc-10x10-unorm-srgb"),
-            GPUTextureFormat::ASTC_12X10_UNORM => emlite::Val::from("astc-12x10-unorm"),
-            GPUTextureFormat::ASTC_12X10_UNORM_SRGB => emlite::Val::from("astc-12x10-unorm-srgb"),
-            GPUTextureFormat::ASTC_12X12_UNORM => emlite::Val::from("astc-12x12-unorm"),
-            GPUTextureFormat::ASTC_12X12_UNORM_SRGB => emlite::Val::from("astc-12x12-unorm-srgb"),
+            GPUTextureFormat::R8UNORM => Any::from("r8unorm"),
+            GPUTextureFormat::R8SNORM => Any::from("r8snorm"),
+            GPUTextureFormat::R8UINT => Any::from("r8uint"),
+            GPUTextureFormat::R8SINT => Any::from("r8sint"),
+            GPUTextureFormat::R16UNORM => Any::from("r16unorm"),
+            GPUTextureFormat::R16SNORM => Any::from("r16snorm"),
+            GPUTextureFormat::R16UINT => Any::from("r16uint"),
+            GPUTextureFormat::R16SINT => Any::from("r16sint"),
+            GPUTextureFormat::R16FLOAT => Any::from("r16float"),
+            GPUTextureFormat::RG8UNORM => Any::from("rg8unorm"),
+            GPUTextureFormat::RG8SNORM => Any::from("rg8snorm"),
+            GPUTextureFormat::RG8UINT => Any::from("rg8uint"),
+            GPUTextureFormat::RG8SINT => Any::from("rg8sint"),
+            GPUTextureFormat::R32UINT => Any::from("r32uint"),
+            GPUTextureFormat::R32SINT => Any::from("r32sint"),
+            GPUTextureFormat::R32FLOAT => Any::from("r32float"),
+            GPUTextureFormat::RG16UNORM => Any::from("rg16unorm"),
+            GPUTextureFormat::RG16SNORM => Any::from("rg16snorm"),
+            GPUTextureFormat::RG16UINT => Any::from("rg16uint"),
+            GPUTextureFormat::RG16SINT => Any::from("rg16sint"),
+            GPUTextureFormat::RG16FLOAT => Any::from("rg16float"),
+            GPUTextureFormat::RGBA8UNORM => Any::from("rgba8unorm"),
+            GPUTextureFormat::RGBA8UNORM_SRGB => Any::from("rgba8unorm-srgb"),
+            GPUTextureFormat::RGBA8SNORM => Any::from("rgba8snorm"),
+            GPUTextureFormat::RGBA8UINT => Any::from("rgba8uint"),
+            GPUTextureFormat::RGBA8SINT => Any::from("rgba8sint"),
+            GPUTextureFormat::BGRA8UNORM => Any::from("bgra8unorm"),
+            GPUTextureFormat::BGRA8UNORM_SRGB => Any::from("bgra8unorm-srgb"),
+            GPUTextureFormat::RGB9E5UFLOAT => Any::from("rgb9e5ufloat"),
+            GPUTextureFormat::RGB10A2UINT => Any::from("rgb10a2uint"),
+            GPUTextureFormat::RGB10A2UNORM => Any::from("rgb10a2unorm"),
+            GPUTextureFormat::RG11B10UFLOAT => Any::from("rg11b10ufloat"),
+            GPUTextureFormat::RG32UINT => Any::from("rg32uint"),
+            GPUTextureFormat::RG32SINT => Any::from("rg32sint"),
+            GPUTextureFormat::RG32FLOAT => Any::from("rg32float"),
+            GPUTextureFormat::RGBA16UNORM => Any::from("rgba16unorm"),
+            GPUTextureFormat::RGBA16SNORM => Any::from("rgba16snorm"),
+            GPUTextureFormat::RGBA16UINT => Any::from("rgba16uint"),
+            GPUTextureFormat::RGBA16SINT => Any::from("rgba16sint"),
+            GPUTextureFormat::RGBA16FLOAT => Any::from("rgba16float"),
+            GPUTextureFormat::RGBA32UINT => Any::from("rgba32uint"),
+            GPUTextureFormat::RGBA32SINT => Any::from("rgba32sint"),
+            GPUTextureFormat::RGBA32FLOAT => Any::from("rgba32float"),
+            GPUTextureFormat::STENCIL8 => Any::from("stencil8"),
+            GPUTextureFormat::DEPTH16UNORM => Any::from("depth16unorm"),
+            GPUTextureFormat::DEPTH24PLUS => Any::from("depth24plus"),
+            GPUTextureFormat::DEPTH24PLUS_STENCIL8 => Any::from("depth24plus-stencil8"),
+            GPUTextureFormat::DEPTH32FLOAT => Any::from("depth32float"),
+            GPUTextureFormat::DEPTH32FLOAT_STENCIL8 => Any::from("depth32float-stencil8"),
+            GPUTextureFormat::BC1_RGBA_UNORM => Any::from("bc1-rgba-unorm"),
+            GPUTextureFormat::BC1_RGBA_UNORM_SRGB => Any::from("bc1-rgba-unorm-srgb"),
+            GPUTextureFormat::BC2_RGBA_UNORM => Any::from("bc2-rgba-unorm"),
+            GPUTextureFormat::BC2_RGBA_UNORM_SRGB => Any::from("bc2-rgba-unorm-srgb"),
+            GPUTextureFormat::BC3_RGBA_UNORM => Any::from("bc3-rgba-unorm"),
+            GPUTextureFormat::BC3_RGBA_UNORM_SRGB => Any::from("bc3-rgba-unorm-srgb"),
+            GPUTextureFormat::BC4_R_UNORM => Any::from("bc4-r-unorm"),
+            GPUTextureFormat::BC4_R_SNORM => Any::from("bc4-r-snorm"),
+            GPUTextureFormat::BC5_RG_UNORM => Any::from("bc5-rg-unorm"),
+            GPUTextureFormat::BC5_RG_SNORM => Any::from("bc5-rg-snorm"),
+            GPUTextureFormat::BC6H_RGB_UFLOAT => Any::from("bc6h-rgb-ufloat"),
+            GPUTextureFormat::BC6H_RGB_FLOAT => Any::from("bc6h-rgb-float"),
+            GPUTextureFormat::BC7_RGBA_UNORM => Any::from("bc7-rgba-unorm"),
+            GPUTextureFormat::BC7_RGBA_UNORM_SRGB => Any::from("bc7-rgba-unorm-srgb"),
+            GPUTextureFormat::ETC2_RGB8UNORM => Any::from("etc2-rgb8unorm"),
+            GPUTextureFormat::ETC2_RGB8UNORM_SRGB => Any::from("etc2-rgb8unorm-srgb"),
+            GPUTextureFormat::ETC2_RGB8A1UNORM => Any::from("etc2-rgb8a1unorm"),
+            GPUTextureFormat::ETC2_RGB8A1UNORM_SRGB => Any::from("etc2-rgb8a1unorm-srgb"),
+            GPUTextureFormat::ETC2_RGBA8UNORM => Any::from("etc2-rgba8unorm"),
+            GPUTextureFormat::ETC2_RGBA8UNORM_SRGB => Any::from("etc2-rgba8unorm-srgb"),
+            GPUTextureFormat::EAC_R11UNORM => Any::from("eac-r11unorm"),
+            GPUTextureFormat::EAC_R11SNORM => Any::from("eac-r11snorm"),
+            GPUTextureFormat::EAC_RG11UNORM => Any::from("eac-rg11unorm"),
+            GPUTextureFormat::EAC_RG11SNORM => Any::from("eac-rg11snorm"),
+            GPUTextureFormat::ASTC_4X4_UNORM => Any::from("astc-4x4-unorm"),
+            GPUTextureFormat::ASTC_4X4_UNORM_SRGB => Any::from("astc-4x4-unorm-srgb"),
+            GPUTextureFormat::ASTC_5X4_UNORM => Any::from("astc-5x4-unorm"),
+            GPUTextureFormat::ASTC_5X4_UNORM_SRGB => Any::from("astc-5x4-unorm-srgb"),
+            GPUTextureFormat::ASTC_5X5_UNORM => Any::from("astc-5x5-unorm"),
+            GPUTextureFormat::ASTC_5X5_UNORM_SRGB => Any::from("astc-5x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_6X5_UNORM => Any::from("astc-6x5-unorm"),
+            GPUTextureFormat::ASTC_6X5_UNORM_SRGB => Any::from("astc-6x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_6X6_UNORM => Any::from("astc-6x6-unorm"),
+            GPUTextureFormat::ASTC_6X6_UNORM_SRGB => Any::from("astc-6x6-unorm-srgb"),
+            GPUTextureFormat::ASTC_8X5_UNORM => Any::from("astc-8x5-unorm"),
+            GPUTextureFormat::ASTC_8X5_UNORM_SRGB => Any::from("astc-8x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_8X6_UNORM => Any::from("astc-8x6-unorm"),
+            GPUTextureFormat::ASTC_8X6_UNORM_SRGB => Any::from("astc-8x6-unorm-srgb"),
+            GPUTextureFormat::ASTC_8X8_UNORM => Any::from("astc-8x8-unorm"),
+            GPUTextureFormat::ASTC_8X8_UNORM_SRGB => Any::from("astc-8x8-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X5_UNORM => Any::from("astc-10x5-unorm"),
+            GPUTextureFormat::ASTC_10X5_UNORM_SRGB => Any::from("astc-10x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X6_UNORM => Any::from("astc-10x6-unorm"),
+            GPUTextureFormat::ASTC_10X6_UNORM_SRGB => Any::from("astc-10x6-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X8_UNORM => Any::from("astc-10x8-unorm"),
+            GPUTextureFormat::ASTC_10X8_UNORM_SRGB => Any::from("astc-10x8-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X10_UNORM => Any::from("astc-10x10-unorm"),
+            GPUTextureFormat::ASTC_10X10_UNORM_SRGB => Any::from("astc-10x10-unorm-srgb"),
+            GPUTextureFormat::ASTC_12X10_UNORM => Any::from("astc-12x10-unorm"),
+            GPUTextureFormat::ASTC_12X10_UNORM_SRGB => Any::from("astc-12x10-unorm-srgb"),
+            GPUTextureFormat::ASTC_12X12_UNORM => Any::from("astc-12x12-unorm"),
+            GPUTextureFormat::ASTC_12X12_UNORM_SRGB => Any::from("astc-12x12-unorm-srgb"),
         }
     }
 }
-impl From<&GPUTextureFormat> for emlite::Val {
-    fn from(s: &GPUTextureFormat) -> emlite::Val {
+impl From<&GPUTextureFormat> for Any {
+    fn from(s: &GPUTextureFormat) -> Any {
         match *s {
-            GPUTextureFormat::R8UNORM => emlite::Val::from("r8unorm"),
-            GPUTextureFormat::R8SNORM => emlite::Val::from("r8snorm"),
-            GPUTextureFormat::R8UINT => emlite::Val::from("r8uint"),
-            GPUTextureFormat::R8SINT => emlite::Val::from("r8sint"),
-            GPUTextureFormat::R16UNORM => emlite::Val::from("r16unorm"),
-            GPUTextureFormat::R16SNORM => emlite::Val::from("r16snorm"),
-            GPUTextureFormat::R16UINT => emlite::Val::from("r16uint"),
-            GPUTextureFormat::R16SINT => emlite::Val::from("r16sint"),
-            GPUTextureFormat::R16FLOAT => emlite::Val::from("r16float"),
-            GPUTextureFormat::RG8UNORM => emlite::Val::from("rg8unorm"),
-            GPUTextureFormat::RG8SNORM => emlite::Val::from("rg8snorm"),
-            GPUTextureFormat::RG8UINT => emlite::Val::from("rg8uint"),
-            GPUTextureFormat::RG8SINT => emlite::Val::from("rg8sint"),
-            GPUTextureFormat::R32UINT => emlite::Val::from("r32uint"),
-            GPUTextureFormat::R32SINT => emlite::Val::from("r32sint"),
-            GPUTextureFormat::R32FLOAT => emlite::Val::from("r32float"),
-            GPUTextureFormat::RG16UNORM => emlite::Val::from("rg16unorm"),
-            GPUTextureFormat::RG16SNORM => emlite::Val::from("rg16snorm"),
-            GPUTextureFormat::RG16UINT => emlite::Val::from("rg16uint"),
-            GPUTextureFormat::RG16SINT => emlite::Val::from("rg16sint"),
-            GPUTextureFormat::RG16FLOAT => emlite::Val::from("rg16float"),
-            GPUTextureFormat::RGBA8UNORM => emlite::Val::from("rgba8unorm"),
-            GPUTextureFormat::RGBA8UNORM_SRGB => emlite::Val::from("rgba8unorm-srgb"),
-            GPUTextureFormat::RGBA8SNORM => emlite::Val::from("rgba8snorm"),
-            GPUTextureFormat::RGBA8UINT => emlite::Val::from("rgba8uint"),
-            GPUTextureFormat::RGBA8SINT => emlite::Val::from("rgba8sint"),
-            GPUTextureFormat::BGRA8UNORM => emlite::Val::from("bgra8unorm"),
-            GPUTextureFormat::BGRA8UNORM_SRGB => emlite::Val::from("bgra8unorm-srgb"),
-            GPUTextureFormat::RGB9E5UFLOAT => emlite::Val::from("rgb9e5ufloat"),
-            GPUTextureFormat::RGB10A2UINT => emlite::Val::from("rgb10a2uint"),
-            GPUTextureFormat::RGB10A2UNORM => emlite::Val::from("rgb10a2unorm"),
-            GPUTextureFormat::RG11B10UFLOAT => emlite::Val::from("rg11b10ufloat"),
-            GPUTextureFormat::RG32UINT => emlite::Val::from("rg32uint"),
-            GPUTextureFormat::RG32SINT => emlite::Val::from("rg32sint"),
-            GPUTextureFormat::RG32FLOAT => emlite::Val::from("rg32float"),
-            GPUTextureFormat::RGBA16UNORM => emlite::Val::from("rgba16unorm"),
-            GPUTextureFormat::RGBA16SNORM => emlite::Val::from("rgba16snorm"),
-            GPUTextureFormat::RGBA16UINT => emlite::Val::from("rgba16uint"),
-            GPUTextureFormat::RGBA16SINT => emlite::Val::from("rgba16sint"),
-            GPUTextureFormat::RGBA16FLOAT => emlite::Val::from("rgba16float"),
-            GPUTextureFormat::RGBA32UINT => emlite::Val::from("rgba32uint"),
-            GPUTextureFormat::RGBA32SINT => emlite::Val::from("rgba32sint"),
-            GPUTextureFormat::RGBA32FLOAT => emlite::Val::from("rgba32float"),
-            GPUTextureFormat::STENCIL8 => emlite::Val::from("stencil8"),
-            GPUTextureFormat::DEPTH16UNORM => emlite::Val::from("depth16unorm"),
-            GPUTextureFormat::DEPTH24PLUS => emlite::Val::from("depth24plus"),
-            GPUTextureFormat::DEPTH24PLUS_STENCIL8 => emlite::Val::from("depth24plus-stencil8"),
-            GPUTextureFormat::DEPTH32FLOAT => emlite::Val::from("depth32float"),
-            GPUTextureFormat::DEPTH32FLOAT_STENCIL8 => emlite::Val::from("depth32float-stencil8"),
-            GPUTextureFormat::BC1_RGBA_UNORM => emlite::Val::from("bc1-rgba-unorm"),
-            GPUTextureFormat::BC1_RGBA_UNORM_SRGB => emlite::Val::from("bc1-rgba-unorm-srgb"),
-            GPUTextureFormat::BC2_RGBA_UNORM => emlite::Val::from("bc2-rgba-unorm"),
-            GPUTextureFormat::BC2_RGBA_UNORM_SRGB => emlite::Val::from("bc2-rgba-unorm-srgb"),
-            GPUTextureFormat::BC3_RGBA_UNORM => emlite::Val::from("bc3-rgba-unorm"),
-            GPUTextureFormat::BC3_RGBA_UNORM_SRGB => emlite::Val::from("bc3-rgba-unorm-srgb"),
-            GPUTextureFormat::BC4_R_UNORM => emlite::Val::from("bc4-r-unorm"),
-            GPUTextureFormat::BC4_R_SNORM => emlite::Val::from("bc4-r-snorm"),
-            GPUTextureFormat::BC5_RG_UNORM => emlite::Val::from("bc5-rg-unorm"),
-            GPUTextureFormat::BC5_RG_SNORM => emlite::Val::from("bc5-rg-snorm"),
-            GPUTextureFormat::BC6H_RGB_UFLOAT => emlite::Val::from("bc6h-rgb-ufloat"),
-            GPUTextureFormat::BC6H_RGB_FLOAT => emlite::Val::from("bc6h-rgb-float"),
-            GPUTextureFormat::BC7_RGBA_UNORM => emlite::Val::from("bc7-rgba-unorm"),
-            GPUTextureFormat::BC7_RGBA_UNORM_SRGB => emlite::Val::from("bc7-rgba-unorm-srgb"),
-            GPUTextureFormat::ETC2_RGB8UNORM => emlite::Val::from("etc2-rgb8unorm"),
-            GPUTextureFormat::ETC2_RGB8UNORM_SRGB => emlite::Val::from("etc2-rgb8unorm-srgb"),
-            GPUTextureFormat::ETC2_RGB8A1UNORM => emlite::Val::from("etc2-rgb8a1unorm"),
-            GPUTextureFormat::ETC2_RGB8A1UNORM_SRGB => emlite::Val::from("etc2-rgb8a1unorm-srgb"),
-            GPUTextureFormat::ETC2_RGBA8UNORM => emlite::Val::from("etc2-rgba8unorm"),
-            GPUTextureFormat::ETC2_RGBA8UNORM_SRGB => emlite::Val::from("etc2-rgba8unorm-srgb"),
-            GPUTextureFormat::EAC_R11UNORM => emlite::Val::from("eac-r11unorm"),
-            GPUTextureFormat::EAC_R11SNORM => emlite::Val::from("eac-r11snorm"),
-            GPUTextureFormat::EAC_RG11UNORM => emlite::Val::from("eac-rg11unorm"),
-            GPUTextureFormat::EAC_RG11SNORM => emlite::Val::from("eac-rg11snorm"),
-            GPUTextureFormat::ASTC_4X4_UNORM => emlite::Val::from("astc-4x4-unorm"),
-            GPUTextureFormat::ASTC_4X4_UNORM_SRGB => emlite::Val::from("astc-4x4-unorm-srgb"),
-            GPUTextureFormat::ASTC_5X4_UNORM => emlite::Val::from("astc-5x4-unorm"),
-            GPUTextureFormat::ASTC_5X4_UNORM_SRGB => emlite::Val::from("astc-5x4-unorm-srgb"),
-            GPUTextureFormat::ASTC_5X5_UNORM => emlite::Val::from("astc-5x5-unorm"),
-            GPUTextureFormat::ASTC_5X5_UNORM_SRGB => emlite::Val::from("astc-5x5-unorm-srgb"),
-            GPUTextureFormat::ASTC_6X5_UNORM => emlite::Val::from("astc-6x5-unorm"),
-            GPUTextureFormat::ASTC_6X5_UNORM_SRGB => emlite::Val::from("astc-6x5-unorm-srgb"),
-            GPUTextureFormat::ASTC_6X6_UNORM => emlite::Val::from("astc-6x6-unorm"),
-            GPUTextureFormat::ASTC_6X6_UNORM_SRGB => emlite::Val::from("astc-6x6-unorm-srgb"),
-            GPUTextureFormat::ASTC_8X5_UNORM => emlite::Val::from("astc-8x5-unorm"),
-            GPUTextureFormat::ASTC_8X5_UNORM_SRGB => emlite::Val::from("astc-8x5-unorm-srgb"),
-            GPUTextureFormat::ASTC_8X6_UNORM => emlite::Val::from("astc-8x6-unorm"),
-            GPUTextureFormat::ASTC_8X6_UNORM_SRGB => emlite::Val::from("astc-8x6-unorm-srgb"),
-            GPUTextureFormat::ASTC_8X8_UNORM => emlite::Val::from("astc-8x8-unorm"),
-            GPUTextureFormat::ASTC_8X8_UNORM_SRGB => emlite::Val::from("astc-8x8-unorm-srgb"),
-            GPUTextureFormat::ASTC_10X5_UNORM => emlite::Val::from("astc-10x5-unorm"),
-            GPUTextureFormat::ASTC_10X5_UNORM_SRGB => emlite::Val::from("astc-10x5-unorm-srgb"),
-            GPUTextureFormat::ASTC_10X6_UNORM => emlite::Val::from("astc-10x6-unorm"),
-            GPUTextureFormat::ASTC_10X6_UNORM_SRGB => emlite::Val::from("astc-10x6-unorm-srgb"),
-            GPUTextureFormat::ASTC_10X8_UNORM => emlite::Val::from("astc-10x8-unorm"),
-            GPUTextureFormat::ASTC_10X8_UNORM_SRGB => emlite::Val::from("astc-10x8-unorm-srgb"),
-            GPUTextureFormat::ASTC_10X10_UNORM => emlite::Val::from("astc-10x10-unorm"),
-            GPUTextureFormat::ASTC_10X10_UNORM_SRGB => emlite::Val::from("astc-10x10-unorm-srgb"),
-            GPUTextureFormat::ASTC_12X10_UNORM => emlite::Val::from("astc-12x10-unorm"),
-            GPUTextureFormat::ASTC_12X10_UNORM_SRGB => emlite::Val::from("astc-12x10-unorm-srgb"),
-            GPUTextureFormat::ASTC_12X12_UNORM => emlite::Val::from("astc-12x12-unorm"),
-            GPUTextureFormat::ASTC_12X12_UNORM_SRGB => emlite::Val::from("astc-12x12-unorm-srgb"),
+            GPUTextureFormat::R8UNORM => Any::from("r8unorm"),
+            GPUTextureFormat::R8SNORM => Any::from("r8snorm"),
+            GPUTextureFormat::R8UINT => Any::from("r8uint"),
+            GPUTextureFormat::R8SINT => Any::from("r8sint"),
+            GPUTextureFormat::R16UNORM => Any::from("r16unorm"),
+            GPUTextureFormat::R16SNORM => Any::from("r16snorm"),
+            GPUTextureFormat::R16UINT => Any::from("r16uint"),
+            GPUTextureFormat::R16SINT => Any::from("r16sint"),
+            GPUTextureFormat::R16FLOAT => Any::from("r16float"),
+            GPUTextureFormat::RG8UNORM => Any::from("rg8unorm"),
+            GPUTextureFormat::RG8SNORM => Any::from("rg8snorm"),
+            GPUTextureFormat::RG8UINT => Any::from("rg8uint"),
+            GPUTextureFormat::RG8SINT => Any::from("rg8sint"),
+            GPUTextureFormat::R32UINT => Any::from("r32uint"),
+            GPUTextureFormat::R32SINT => Any::from("r32sint"),
+            GPUTextureFormat::R32FLOAT => Any::from("r32float"),
+            GPUTextureFormat::RG16UNORM => Any::from("rg16unorm"),
+            GPUTextureFormat::RG16SNORM => Any::from("rg16snorm"),
+            GPUTextureFormat::RG16UINT => Any::from("rg16uint"),
+            GPUTextureFormat::RG16SINT => Any::from("rg16sint"),
+            GPUTextureFormat::RG16FLOAT => Any::from("rg16float"),
+            GPUTextureFormat::RGBA8UNORM => Any::from("rgba8unorm"),
+            GPUTextureFormat::RGBA8UNORM_SRGB => Any::from("rgba8unorm-srgb"),
+            GPUTextureFormat::RGBA8SNORM => Any::from("rgba8snorm"),
+            GPUTextureFormat::RGBA8UINT => Any::from("rgba8uint"),
+            GPUTextureFormat::RGBA8SINT => Any::from("rgba8sint"),
+            GPUTextureFormat::BGRA8UNORM => Any::from("bgra8unorm"),
+            GPUTextureFormat::BGRA8UNORM_SRGB => Any::from("bgra8unorm-srgb"),
+            GPUTextureFormat::RGB9E5UFLOAT => Any::from("rgb9e5ufloat"),
+            GPUTextureFormat::RGB10A2UINT => Any::from("rgb10a2uint"),
+            GPUTextureFormat::RGB10A2UNORM => Any::from("rgb10a2unorm"),
+            GPUTextureFormat::RG11B10UFLOAT => Any::from("rg11b10ufloat"),
+            GPUTextureFormat::RG32UINT => Any::from("rg32uint"),
+            GPUTextureFormat::RG32SINT => Any::from("rg32sint"),
+            GPUTextureFormat::RG32FLOAT => Any::from("rg32float"),
+            GPUTextureFormat::RGBA16UNORM => Any::from("rgba16unorm"),
+            GPUTextureFormat::RGBA16SNORM => Any::from("rgba16snorm"),
+            GPUTextureFormat::RGBA16UINT => Any::from("rgba16uint"),
+            GPUTextureFormat::RGBA16SINT => Any::from("rgba16sint"),
+            GPUTextureFormat::RGBA16FLOAT => Any::from("rgba16float"),
+            GPUTextureFormat::RGBA32UINT => Any::from("rgba32uint"),
+            GPUTextureFormat::RGBA32SINT => Any::from("rgba32sint"),
+            GPUTextureFormat::RGBA32FLOAT => Any::from("rgba32float"),
+            GPUTextureFormat::STENCIL8 => Any::from("stencil8"),
+            GPUTextureFormat::DEPTH16UNORM => Any::from("depth16unorm"),
+            GPUTextureFormat::DEPTH24PLUS => Any::from("depth24plus"),
+            GPUTextureFormat::DEPTH24PLUS_STENCIL8 => Any::from("depth24plus-stencil8"),
+            GPUTextureFormat::DEPTH32FLOAT => Any::from("depth32float"),
+            GPUTextureFormat::DEPTH32FLOAT_STENCIL8 => Any::from("depth32float-stencil8"),
+            GPUTextureFormat::BC1_RGBA_UNORM => Any::from("bc1-rgba-unorm"),
+            GPUTextureFormat::BC1_RGBA_UNORM_SRGB => Any::from("bc1-rgba-unorm-srgb"),
+            GPUTextureFormat::BC2_RGBA_UNORM => Any::from("bc2-rgba-unorm"),
+            GPUTextureFormat::BC2_RGBA_UNORM_SRGB => Any::from("bc2-rgba-unorm-srgb"),
+            GPUTextureFormat::BC3_RGBA_UNORM => Any::from("bc3-rgba-unorm"),
+            GPUTextureFormat::BC3_RGBA_UNORM_SRGB => Any::from("bc3-rgba-unorm-srgb"),
+            GPUTextureFormat::BC4_R_UNORM => Any::from("bc4-r-unorm"),
+            GPUTextureFormat::BC4_R_SNORM => Any::from("bc4-r-snorm"),
+            GPUTextureFormat::BC5_RG_UNORM => Any::from("bc5-rg-unorm"),
+            GPUTextureFormat::BC5_RG_SNORM => Any::from("bc5-rg-snorm"),
+            GPUTextureFormat::BC6H_RGB_UFLOAT => Any::from("bc6h-rgb-ufloat"),
+            GPUTextureFormat::BC6H_RGB_FLOAT => Any::from("bc6h-rgb-float"),
+            GPUTextureFormat::BC7_RGBA_UNORM => Any::from("bc7-rgba-unorm"),
+            GPUTextureFormat::BC7_RGBA_UNORM_SRGB => Any::from("bc7-rgba-unorm-srgb"),
+            GPUTextureFormat::ETC2_RGB8UNORM => Any::from("etc2-rgb8unorm"),
+            GPUTextureFormat::ETC2_RGB8UNORM_SRGB => Any::from("etc2-rgb8unorm-srgb"),
+            GPUTextureFormat::ETC2_RGB8A1UNORM => Any::from("etc2-rgb8a1unorm"),
+            GPUTextureFormat::ETC2_RGB8A1UNORM_SRGB => Any::from("etc2-rgb8a1unorm-srgb"),
+            GPUTextureFormat::ETC2_RGBA8UNORM => Any::from("etc2-rgba8unorm"),
+            GPUTextureFormat::ETC2_RGBA8UNORM_SRGB => Any::from("etc2-rgba8unorm-srgb"),
+            GPUTextureFormat::EAC_R11UNORM => Any::from("eac-r11unorm"),
+            GPUTextureFormat::EAC_R11SNORM => Any::from("eac-r11snorm"),
+            GPUTextureFormat::EAC_RG11UNORM => Any::from("eac-rg11unorm"),
+            GPUTextureFormat::EAC_RG11SNORM => Any::from("eac-rg11snorm"),
+            GPUTextureFormat::ASTC_4X4_UNORM => Any::from("astc-4x4-unorm"),
+            GPUTextureFormat::ASTC_4X4_UNORM_SRGB => Any::from("astc-4x4-unorm-srgb"),
+            GPUTextureFormat::ASTC_5X4_UNORM => Any::from("astc-5x4-unorm"),
+            GPUTextureFormat::ASTC_5X4_UNORM_SRGB => Any::from("astc-5x4-unorm-srgb"),
+            GPUTextureFormat::ASTC_5X5_UNORM => Any::from("astc-5x5-unorm"),
+            GPUTextureFormat::ASTC_5X5_UNORM_SRGB => Any::from("astc-5x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_6X5_UNORM => Any::from("astc-6x5-unorm"),
+            GPUTextureFormat::ASTC_6X5_UNORM_SRGB => Any::from("astc-6x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_6X6_UNORM => Any::from("astc-6x6-unorm"),
+            GPUTextureFormat::ASTC_6X6_UNORM_SRGB => Any::from("astc-6x6-unorm-srgb"),
+            GPUTextureFormat::ASTC_8X5_UNORM => Any::from("astc-8x5-unorm"),
+            GPUTextureFormat::ASTC_8X5_UNORM_SRGB => Any::from("astc-8x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_8X6_UNORM => Any::from("astc-8x6-unorm"),
+            GPUTextureFormat::ASTC_8X6_UNORM_SRGB => Any::from("astc-8x6-unorm-srgb"),
+            GPUTextureFormat::ASTC_8X8_UNORM => Any::from("astc-8x8-unorm"),
+            GPUTextureFormat::ASTC_8X8_UNORM_SRGB => Any::from("astc-8x8-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X5_UNORM => Any::from("astc-10x5-unorm"),
+            GPUTextureFormat::ASTC_10X5_UNORM_SRGB => Any::from("astc-10x5-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X6_UNORM => Any::from("astc-10x6-unorm"),
+            GPUTextureFormat::ASTC_10X6_UNORM_SRGB => Any::from("astc-10x6-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X8_UNORM => Any::from("astc-10x8-unorm"),
+            GPUTextureFormat::ASTC_10X8_UNORM_SRGB => Any::from("astc-10x8-unorm-srgb"),
+            GPUTextureFormat::ASTC_10X10_UNORM => Any::from("astc-10x10-unorm"),
+            GPUTextureFormat::ASTC_10X10_UNORM_SRGB => Any::from("astc-10x10-unorm-srgb"),
+            GPUTextureFormat::ASTC_12X10_UNORM => Any::from("astc-12x10-unorm"),
+            GPUTextureFormat::ASTC_12X10_UNORM_SRGB => Any::from("astc-12x10-unorm-srgb"),
+            GPUTextureFormat::ASTC_12X12_UNORM => Any::from("astc-12x12-unorm"),
+            GPUTextureFormat::ASTC_12X12_UNORM_SRGB => Any::from("astc-12x12-unorm-srgb"),
         }
     }
 }
@@ -11669,7 +11605,7 @@ pub enum GPUAddressMode {
     MIRROR_REPEAT,
 }
 impl FromVal for GPUAddressMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "clamp-to-edge" => Self::CLAMP_TO_EDGE,
             "repeat" => Self::REPEAT,
@@ -11677,28 +11613,28 @@ impl FromVal for GPUAddressMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUAddressMode> for emlite::Val {
-    fn from(s: GPUAddressMode) -> emlite::Val {
+impl From<GPUAddressMode> for Any {
+    fn from(s: GPUAddressMode) -> Any {
         match s {
-            GPUAddressMode::CLAMP_TO_EDGE => emlite::Val::from("clamp-to-edge"),
-            GPUAddressMode::REPEAT => emlite::Val::from("repeat"),
-            GPUAddressMode::MIRROR_REPEAT => emlite::Val::from("mirror-repeat"),
+            GPUAddressMode::CLAMP_TO_EDGE => Any::from("clamp-to-edge"),
+            GPUAddressMode::REPEAT => Any::from("repeat"),
+            GPUAddressMode::MIRROR_REPEAT => Any::from("mirror-repeat"),
         }
     }
 }
-impl From<&GPUAddressMode> for emlite::Val {
-    fn from(s: &GPUAddressMode) -> emlite::Val {
+impl From<&GPUAddressMode> for Any {
+    fn from(s: &GPUAddressMode) -> Any {
         match *s {
-            GPUAddressMode::CLAMP_TO_EDGE => emlite::Val::from("clamp-to-edge"),
-            GPUAddressMode::REPEAT => emlite::Val::from("repeat"),
-            GPUAddressMode::MIRROR_REPEAT => emlite::Val::from("mirror-repeat"),
+            GPUAddressMode::CLAMP_TO_EDGE => Any::from("clamp-to-edge"),
+            GPUAddressMode::REPEAT => Any::from("repeat"),
+            GPUAddressMode::MIRROR_REPEAT => Any::from("mirror-repeat"),
         }
     }
 }
@@ -11709,33 +11645,33 @@ pub enum GPUFilterMode {
     LINEAR,
 }
 impl FromVal for GPUFilterMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "nearest" => Self::NEAREST,
             "linear" => Self::LINEAR,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUFilterMode> for emlite::Val {
-    fn from(s: GPUFilterMode) -> emlite::Val {
+impl From<GPUFilterMode> for Any {
+    fn from(s: GPUFilterMode) -> Any {
         match s {
-            GPUFilterMode::NEAREST => emlite::Val::from("nearest"),
-            GPUFilterMode::LINEAR => emlite::Val::from("linear"),
+            GPUFilterMode::NEAREST => Any::from("nearest"),
+            GPUFilterMode::LINEAR => Any::from("linear"),
         }
     }
 }
-impl From<&GPUFilterMode> for emlite::Val {
-    fn from(s: &GPUFilterMode) -> emlite::Val {
+impl From<&GPUFilterMode> for Any {
+    fn from(s: &GPUFilterMode) -> Any {
         match *s {
-            GPUFilterMode::NEAREST => emlite::Val::from("nearest"),
-            GPUFilterMode::LINEAR => emlite::Val::from("linear"),
+            GPUFilterMode::NEAREST => Any::from("nearest"),
+            GPUFilterMode::LINEAR => Any::from("linear"),
         }
     }
 }
@@ -11746,33 +11682,33 @@ pub enum GPUMipmapFilterMode {
     LINEAR,
 }
 impl FromVal for GPUMipmapFilterMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "nearest" => Self::NEAREST,
             "linear" => Self::LINEAR,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUMipmapFilterMode> for emlite::Val {
-    fn from(s: GPUMipmapFilterMode) -> emlite::Val {
+impl From<GPUMipmapFilterMode> for Any {
+    fn from(s: GPUMipmapFilterMode) -> Any {
         match s {
-            GPUMipmapFilterMode::NEAREST => emlite::Val::from("nearest"),
-            GPUMipmapFilterMode::LINEAR => emlite::Val::from("linear"),
+            GPUMipmapFilterMode::NEAREST => Any::from("nearest"),
+            GPUMipmapFilterMode::LINEAR => Any::from("linear"),
         }
     }
 }
-impl From<&GPUMipmapFilterMode> for emlite::Val {
-    fn from(s: &GPUMipmapFilterMode) -> emlite::Val {
+impl From<&GPUMipmapFilterMode> for Any {
+    fn from(s: &GPUMipmapFilterMode) -> Any {
         match *s {
-            GPUMipmapFilterMode::NEAREST => emlite::Val::from("nearest"),
-            GPUMipmapFilterMode::LINEAR => emlite::Val::from("linear"),
+            GPUMipmapFilterMode::NEAREST => Any::from("nearest"),
+            GPUMipmapFilterMode::LINEAR => Any::from("linear"),
         }
     }
 }
@@ -11789,7 +11725,7 @@ pub enum GPUCompareFunction {
     ALWAYS,
 }
 impl FromVal for GPUCompareFunction {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "never" => Self::NEVER,
             "less" => Self::LESS,
@@ -11802,38 +11738,38 @@ impl FromVal for GPUCompareFunction {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUCompareFunction> for emlite::Val {
-    fn from(s: GPUCompareFunction) -> emlite::Val {
+impl From<GPUCompareFunction> for Any {
+    fn from(s: GPUCompareFunction) -> Any {
         match s {
-            GPUCompareFunction::NEVER => emlite::Val::from("never"),
-            GPUCompareFunction::LESS => emlite::Val::from("less"),
-            GPUCompareFunction::EQUAL => emlite::Val::from("equal"),
-            GPUCompareFunction::LESS_EQUAL => emlite::Val::from("less-equal"),
-            GPUCompareFunction::GREATER => emlite::Val::from("greater"),
-            GPUCompareFunction::NOT_EQUAL => emlite::Val::from("not-equal"),
-            GPUCompareFunction::GREATER_EQUAL => emlite::Val::from("greater-equal"),
-            GPUCompareFunction::ALWAYS => emlite::Val::from("always"),
+            GPUCompareFunction::NEVER => Any::from("never"),
+            GPUCompareFunction::LESS => Any::from("less"),
+            GPUCompareFunction::EQUAL => Any::from("equal"),
+            GPUCompareFunction::LESS_EQUAL => Any::from("less-equal"),
+            GPUCompareFunction::GREATER => Any::from("greater"),
+            GPUCompareFunction::NOT_EQUAL => Any::from("not-equal"),
+            GPUCompareFunction::GREATER_EQUAL => Any::from("greater-equal"),
+            GPUCompareFunction::ALWAYS => Any::from("always"),
         }
     }
 }
-impl From<&GPUCompareFunction> for emlite::Val {
-    fn from(s: &GPUCompareFunction) -> emlite::Val {
+impl From<&GPUCompareFunction> for Any {
+    fn from(s: &GPUCompareFunction) -> Any {
         match *s {
-            GPUCompareFunction::NEVER => emlite::Val::from("never"),
-            GPUCompareFunction::LESS => emlite::Val::from("less"),
-            GPUCompareFunction::EQUAL => emlite::Val::from("equal"),
-            GPUCompareFunction::LESS_EQUAL => emlite::Val::from("less-equal"),
-            GPUCompareFunction::GREATER => emlite::Val::from("greater"),
-            GPUCompareFunction::NOT_EQUAL => emlite::Val::from("not-equal"),
-            GPUCompareFunction::GREATER_EQUAL => emlite::Val::from("greater-equal"),
-            GPUCompareFunction::ALWAYS => emlite::Val::from("always"),
+            GPUCompareFunction::NEVER => Any::from("never"),
+            GPUCompareFunction::LESS => Any::from("less"),
+            GPUCompareFunction::EQUAL => Any::from("equal"),
+            GPUCompareFunction::LESS_EQUAL => Any::from("less-equal"),
+            GPUCompareFunction::GREATER => Any::from("greater"),
+            GPUCompareFunction::NOT_EQUAL => Any::from("not-equal"),
+            GPUCompareFunction::GREATER_EQUAL => Any::from("greater-equal"),
+            GPUCompareFunction::ALWAYS => Any::from("always"),
         }
     }
 }
@@ -11845,7 +11781,7 @@ pub enum GPUBufferBindingType {
     READ_ONLY_STORAGE,
 }
 impl FromVal for GPUBufferBindingType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "uniform" => Self::UNIFORM,
             "storage" => Self::STORAGE,
@@ -11853,28 +11789,28 @@ impl FromVal for GPUBufferBindingType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUBufferBindingType> for emlite::Val {
-    fn from(s: GPUBufferBindingType) -> emlite::Val {
+impl From<GPUBufferBindingType> for Any {
+    fn from(s: GPUBufferBindingType) -> Any {
         match s {
-            GPUBufferBindingType::UNIFORM => emlite::Val::from("uniform"),
-            GPUBufferBindingType::STORAGE => emlite::Val::from("storage"),
-            GPUBufferBindingType::READ_ONLY_STORAGE => emlite::Val::from("read-only-storage"),
+            GPUBufferBindingType::UNIFORM => Any::from("uniform"),
+            GPUBufferBindingType::STORAGE => Any::from("storage"),
+            GPUBufferBindingType::READ_ONLY_STORAGE => Any::from("read-only-storage"),
         }
     }
 }
-impl From<&GPUBufferBindingType> for emlite::Val {
-    fn from(s: &GPUBufferBindingType) -> emlite::Val {
+impl From<&GPUBufferBindingType> for Any {
+    fn from(s: &GPUBufferBindingType) -> Any {
         match *s {
-            GPUBufferBindingType::UNIFORM => emlite::Val::from("uniform"),
-            GPUBufferBindingType::STORAGE => emlite::Val::from("storage"),
-            GPUBufferBindingType::READ_ONLY_STORAGE => emlite::Val::from("read-only-storage"),
+            GPUBufferBindingType::UNIFORM => Any::from("uniform"),
+            GPUBufferBindingType::STORAGE => Any::from("storage"),
+            GPUBufferBindingType::READ_ONLY_STORAGE => Any::from("read-only-storage"),
         }
     }
 }
@@ -11886,7 +11822,7 @@ pub enum GPUSamplerBindingType {
     COMPARISON,
 }
 impl FromVal for GPUSamplerBindingType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "filtering" => Self::FILTERING,
             "non-filtering" => Self::NON_FILTERING,
@@ -11894,28 +11830,28 @@ impl FromVal for GPUSamplerBindingType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUSamplerBindingType> for emlite::Val {
-    fn from(s: GPUSamplerBindingType) -> emlite::Val {
+impl From<GPUSamplerBindingType> for Any {
+    fn from(s: GPUSamplerBindingType) -> Any {
         match s {
-            GPUSamplerBindingType::FILTERING => emlite::Val::from("filtering"),
-            GPUSamplerBindingType::NON_FILTERING => emlite::Val::from("non-filtering"),
-            GPUSamplerBindingType::COMPARISON => emlite::Val::from("comparison"),
+            GPUSamplerBindingType::FILTERING => Any::from("filtering"),
+            GPUSamplerBindingType::NON_FILTERING => Any::from("non-filtering"),
+            GPUSamplerBindingType::COMPARISON => Any::from("comparison"),
         }
     }
 }
-impl From<&GPUSamplerBindingType> for emlite::Val {
-    fn from(s: &GPUSamplerBindingType) -> emlite::Val {
+impl From<&GPUSamplerBindingType> for Any {
+    fn from(s: &GPUSamplerBindingType) -> Any {
         match *s {
-            GPUSamplerBindingType::FILTERING => emlite::Val::from("filtering"),
-            GPUSamplerBindingType::NON_FILTERING => emlite::Val::from("non-filtering"),
-            GPUSamplerBindingType::COMPARISON => emlite::Val::from("comparison"),
+            GPUSamplerBindingType::FILTERING => Any::from("filtering"),
+            GPUSamplerBindingType::NON_FILTERING => Any::from("non-filtering"),
+            GPUSamplerBindingType::COMPARISON => Any::from("comparison"),
         }
     }
 }
@@ -11929,7 +11865,7 @@ pub enum GPUTextureSampleType {
     UINT,
 }
 impl FromVal for GPUTextureSampleType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "float" => Self::FLOAT,
             "unfilterable-float" => Self::UNFILTERABLE_FLOAT,
@@ -11939,32 +11875,32 @@ impl FromVal for GPUTextureSampleType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUTextureSampleType> for emlite::Val {
-    fn from(s: GPUTextureSampleType) -> emlite::Val {
+impl From<GPUTextureSampleType> for Any {
+    fn from(s: GPUTextureSampleType) -> Any {
         match s {
-            GPUTextureSampleType::FLOAT => emlite::Val::from("float"),
-            GPUTextureSampleType::UNFILTERABLE_FLOAT => emlite::Val::from("unfilterable-float"),
-            GPUTextureSampleType::DEPTH => emlite::Val::from("depth"),
-            GPUTextureSampleType::SINT => emlite::Val::from("sint"),
-            GPUTextureSampleType::UINT => emlite::Val::from("uint"),
+            GPUTextureSampleType::FLOAT => Any::from("float"),
+            GPUTextureSampleType::UNFILTERABLE_FLOAT => Any::from("unfilterable-float"),
+            GPUTextureSampleType::DEPTH => Any::from("depth"),
+            GPUTextureSampleType::SINT => Any::from("sint"),
+            GPUTextureSampleType::UINT => Any::from("uint"),
         }
     }
 }
-impl From<&GPUTextureSampleType> for emlite::Val {
-    fn from(s: &GPUTextureSampleType) -> emlite::Val {
+impl From<&GPUTextureSampleType> for Any {
+    fn from(s: &GPUTextureSampleType) -> Any {
         match *s {
-            GPUTextureSampleType::FLOAT => emlite::Val::from("float"),
-            GPUTextureSampleType::UNFILTERABLE_FLOAT => emlite::Val::from("unfilterable-float"),
-            GPUTextureSampleType::DEPTH => emlite::Val::from("depth"),
-            GPUTextureSampleType::SINT => emlite::Val::from("sint"),
-            GPUTextureSampleType::UINT => emlite::Val::from("uint"),
+            GPUTextureSampleType::FLOAT => Any::from("float"),
+            GPUTextureSampleType::UNFILTERABLE_FLOAT => Any::from("unfilterable-float"),
+            GPUTextureSampleType::DEPTH => Any::from("depth"),
+            GPUTextureSampleType::SINT => Any::from("sint"),
+            GPUTextureSampleType::UINT => Any::from("uint"),
         }
     }
 }
@@ -11976,7 +11912,7 @@ pub enum GPUStorageTextureAccess {
     READ_WRITE,
 }
 impl FromVal for GPUStorageTextureAccess {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "write-only" => Self::WRITE_ONLY,
             "read-only" => Self::READ_ONLY,
@@ -11984,28 +11920,28 @@ impl FromVal for GPUStorageTextureAccess {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUStorageTextureAccess> for emlite::Val {
-    fn from(s: GPUStorageTextureAccess) -> emlite::Val {
+impl From<GPUStorageTextureAccess> for Any {
+    fn from(s: GPUStorageTextureAccess) -> Any {
         match s {
-            GPUStorageTextureAccess::WRITE_ONLY => emlite::Val::from("write-only"),
-            GPUStorageTextureAccess::READ_ONLY => emlite::Val::from("read-only"),
-            GPUStorageTextureAccess::READ_WRITE => emlite::Val::from("read-write"),
+            GPUStorageTextureAccess::WRITE_ONLY => Any::from("write-only"),
+            GPUStorageTextureAccess::READ_ONLY => Any::from("read-only"),
+            GPUStorageTextureAccess::READ_WRITE => Any::from("read-write"),
         }
     }
 }
-impl From<&GPUStorageTextureAccess> for emlite::Val {
-    fn from(s: &GPUStorageTextureAccess) -> emlite::Val {
+impl From<&GPUStorageTextureAccess> for Any {
+    fn from(s: &GPUStorageTextureAccess) -> Any {
         match *s {
-            GPUStorageTextureAccess::WRITE_ONLY => emlite::Val::from("write-only"),
-            GPUStorageTextureAccess::READ_ONLY => emlite::Val::from("read-only"),
-            GPUStorageTextureAccess::READ_WRITE => emlite::Val::from("read-write"),
+            GPUStorageTextureAccess::WRITE_ONLY => Any::from("write-only"),
+            GPUStorageTextureAccess::READ_ONLY => Any::from("read-only"),
+            GPUStorageTextureAccess::READ_WRITE => Any::from("read-write"),
         }
     }
 }
@@ -12017,7 +11953,7 @@ pub enum GPUCompilationMessageType {
     INFO,
 }
 impl FromVal for GPUCompilationMessageType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "error" => Self::ERROR,
             "warning" => Self::WARNING,
@@ -12025,28 +11961,28 @@ impl FromVal for GPUCompilationMessageType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUCompilationMessageType> for emlite::Val {
-    fn from(s: GPUCompilationMessageType) -> emlite::Val {
+impl From<GPUCompilationMessageType> for Any {
+    fn from(s: GPUCompilationMessageType) -> Any {
         match s {
-            GPUCompilationMessageType::ERROR => emlite::Val::from("error"),
-            GPUCompilationMessageType::WARNING => emlite::Val::from("warning"),
-            GPUCompilationMessageType::INFO => emlite::Val::from("info"),
+            GPUCompilationMessageType::ERROR => Any::from("error"),
+            GPUCompilationMessageType::WARNING => Any::from("warning"),
+            GPUCompilationMessageType::INFO => Any::from("info"),
         }
     }
 }
-impl From<&GPUCompilationMessageType> for emlite::Val {
-    fn from(s: &GPUCompilationMessageType) -> emlite::Val {
+impl From<&GPUCompilationMessageType> for Any {
+    fn from(s: &GPUCompilationMessageType) -> Any {
         match *s {
-            GPUCompilationMessageType::ERROR => emlite::Val::from("error"),
-            GPUCompilationMessageType::WARNING => emlite::Val::from("warning"),
-            GPUCompilationMessageType::INFO => emlite::Val::from("info"),
+            GPUCompilationMessageType::ERROR => Any::from("error"),
+            GPUCompilationMessageType::WARNING => Any::from("warning"),
+            GPUCompilationMessageType::INFO => Any::from("info"),
         }
     }
 }
@@ -12057,33 +11993,33 @@ pub enum GPUPipelineErrorReason {
     INTERNAL,
 }
 impl FromVal for GPUPipelineErrorReason {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "validation" => Self::VALIDATION,
             "internal" => Self::INTERNAL,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUPipelineErrorReason> for emlite::Val {
-    fn from(s: GPUPipelineErrorReason) -> emlite::Val {
+impl From<GPUPipelineErrorReason> for Any {
+    fn from(s: GPUPipelineErrorReason) -> Any {
         match s {
-            GPUPipelineErrorReason::VALIDATION => emlite::Val::from("validation"),
-            GPUPipelineErrorReason::INTERNAL => emlite::Val::from("internal"),
+            GPUPipelineErrorReason::VALIDATION => Any::from("validation"),
+            GPUPipelineErrorReason::INTERNAL => Any::from("internal"),
         }
     }
 }
-impl From<&GPUPipelineErrorReason> for emlite::Val {
-    fn from(s: &GPUPipelineErrorReason) -> emlite::Val {
+impl From<&GPUPipelineErrorReason> for Any {
+    fn from(s: &GPUPipelineErrorReason) -> Any {
         match *s {
-            GPUPipelineErrorReason::VALIDATION => emlite::Val::from("validation"),
-            GPUPipelineErrorReason::INTERNAL => emlite::Val::from("internal"),
+            GPUPipelineErrorReason::VALIDATION => Any::from("validation"),
+            GPUPipelineErrorReason::INTERNAL => Any::from("internal"),
         }
     }
 }
@@ -12093,30 +12029,30 @@ pub enum GPUAutoLayoutMode {
     AUTO,
 }
 impl FromVal for GPUAutoLayoutMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "auto" => Self::AUTO,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUAutoLayoutMode> for emlite::Val {
-    fn from(s: GPUAutoLayoutMode) -> emlite::Val {
+impl From<GPUAutoLayoutMode> for Any {
+    fn from(s: GPUAutoLayoutMode) -> Any {
         match s {
-            GPUAutoLayoutMode::AUTO => emlite::Val::from("auto"),
+            GPUAutoLayoutMode::AUTO => Any::from("auto"),
         }
     }
 }
-impl From<&GPUAutoLayoutMode> for emlite::Val {
-    fn from(s: &GPUAutoLayoutMode) -> emlite::Val {
+impl From<&GPUAutoLayoutMode> for Any {
+    fn from(s: &GPUAutoLayoutMode) -> Any {
         match *s {
-            GPUAutoLayoutMode::AUTO => emlite::Val::from("auto"),
+            GPUAutoLayoutMode::AUTO => Any::from("auto"),
         }
     }
 }
@@ -12130,7 +12066,7 @@ pub enum GPUPrimitiveTopology {
     TRIANGLE_STRIP,
 }
 impl FromVal for GPUPrimitiveTopology {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "point-list" => Self::POINT_LIST,
             "line-list" => Self::LINE_LIST,
@@ -12140,32 +12076,32 @@ impl FromVal for GPUPrimitiveTopology {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUPrimitiveTopology> for emlite::Val {
-    fn from(s: GPUPrimitiveTopology) -> emlite::Val {
+impl From<GPUPrimitiveTopology> for Any {
+    fn from(s: GPUPrimitiveTopology) -> Any {
         match s {
-            GPUPrimitiveTopology::POINT_LIST => emlite::Val::from("point-list"),
-            GPUPrimitiveTopology::LINE_LIST => emlite::Val::from("line-list"),
-            GPUPrimitiveTopology::LINE_STRIP => emlite::Val::from("line-strip"),
-            GPUPrimitiveTopology::TRIANGLE_LIST => emlite::Val::from("triangle-list"),
-            GPUPrimitiveTopology::TRIANGLE_STRIP => emlite::Val::from("triangle-strip"),
+            GPUPrimitiveTopology::POINT_LIST => Any::from("point-list"),
+            GPUPrimitiveTopology::LINE_LIST => Any::from("line-list"),
+            GPUPrimitiveTopology::LINE_STRIP => Any::from("line-strip"),
+            GPUPrimitiveTopology::TRIANGLE_LIST => Any::from("triangle-list"),
+            GPUPrimitiveTopology::TRIANGLE_STRIP => Any::from("triangle-strip"),
         }
     }
 }
-impl From<&GPUPrimitiveTopology> for emlite::Val {
-    fn from(s: &GPUPrimitiveTopology) -> emlite::Val {
+impl From<&GPUPrimitiveTopology> for Any {
+    fn from(s: &GPUPrimitiveTopology) -> Any {
         match *s {
-            GPUPrimitiveTopology::POINT_LIST => emlite::Val::from("point-list"),
-            GPUPrimitiveTopology::LINE_LIST => emlite::Val::from("line-list"),
-            GPUPrimitiveTopology::LINE_STRIP => emlite::Val::from("line-strip"),
-            GPUPrimitiveTopology::TRIANGLE_LIST => emlite::Val::from("triangle-list"),
-            GPUPrimitiveTopology::TRIANGLE_STRIP => emlite::Val::from("triangle-strip"),
+            GPUPrimitiveTopology::POINT_LIST => Any::from("point-list"),
+            GPUPrimitiveTopology::LINE_LIST => Any::from("line-list"),
+            GPUPrimitiveTopology::LINE_STRIP => Any::from("line-strip"),
+            GPUPrimitiveTopology::TRIANGLE_LIST => Any::from("triangle-list"),
+            GPUPrimitiveTopology::TRIANGLE_STRIP => Any::from("triangle-strip"),
         }
     }
 }
@@ -12176,33 +12112,33 @@ pub enum GPUFrontFace {
     CW,
 }
 impl FromVal for GPUFrontFace {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "ccw" => Self::CCW,
             "cw" => Self::CW,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUFrontFace> for emlite::Val {
-    fn from(s: GPUFrontFace) -> emlite::Val {
+impl From<GPUFrontFace> for Any {
+    fn from(s: GPUFrontFace) -> Any {
         match s {
-            GPUFrontFace::CCW => emlite::Val::from("ccw"),
-            GPUFrontFace::CW => emlite::Val::from("cw"),
+            GPUFrontFace::CCW => Any::from("ccw"),
+            GPUFrontFace::CW => Any::from("cw"),
         }
     }
 }
-impl From<&GPUFrontFace> for emlite::Val {
-    fn from(s: &GPUFrontFace) -> emlite::Val {
+impl From<&GPUFrontFace> for Any {
+    fn from(s: &GPUFrontFace) -> Any {
         match *s {
-            GPUFrontFace::CCW => emlite::Val::from("ccw"),
-            GPUFrontFace::CW => emlite::Val::from("cw"),
+            GPUFrontFace::CCW => Any::from("ccw"),
+            GPUFrontFace::CW => Any::from("cw"),
         }
     }
 }
@@ -12214,7 +12150,7 @@ pub enum GPUCullMode {
     BACK,
 }
 impl FromVal for GPUCullMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "front" => Self::FRONT,
@@ -12222,28 +12158,28 @@ impl FromVal for GPUCullMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUCullMode> for emlite::Val {
-    fn from(s: GPUCullMode) -> emlite::Val {
+impl From<GPUCullMode> for Any {
+    fn from(s: GPUCullMode) -> Any {
         match s {
-            GPUCullMode::NONE => emlite::Val::from("none"),
-            GPUCullMode::FRONT => emlite::Val::from("front"),
-            GPUCullMode::BACK => emlite::Val::from("back"),
+            GPUCullMode::NONE => Any::from("none"),
+            GPUCullMode::FRONT => Any::from("front"),
+            GPUCullMode::BACK => Any::from("back"),
         }
     }
 }
-impl From<&GPUCullMode> for emlite::Val {
-    fn from(s: &GPUCullMode) -> emlite::Val {
+impl From<&GPUCullMode> for Any {
+    fn from(s: &GPUCullMode) -> Any {
         match *s {
-            GPUCullMode::NONE => emlite::Val::from("none"),
-            GPUCullMode::FRONT => emlite::Val::from("front"),
-            GPUCullMode::BACK => emlite::Val::from("back"),
+            GPUCullMode::NONE => Any::from("none"),
+            GPUCullMode::FRONT => Any::from("front"),
+            GPUCullMode::BACK => Any::from("back"),
         }
     }
 }
@@ -12269,7 +12205,7 @@ pub enum GPUBlendFactor {
     ONE_MINUS_SRC1_ALPHA,
 }
 impl FromVal for GPUBlendFactor {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "zero" => Self::ZERO,
             "one" => Self::ONE,
@@ -12291,56 +12227,56 @@ impl FromVal for GPUBlendFactor {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUBlendFactor> for emlite::Val {
-    fn from(s: GPUBlendFactor) -> emlite::Val {
+impl From<GPUBlendFactor> for Any {
+    fn from(s: GPUBlendFactor) -> Any {
         match s {
-            GPUBlendFactor::ZERO => emlite::Val::from("zero"),
-            GPUBlendFactor::ONE => emlite::Val::from("one"),
-            GPUBlendFactor::SRC => emlite::Val::from("src"),
-            GPUBlendFactor::ONE_MINUS_SRC => emlite::Val::from("one-minus-src"),
-            GPUBlendFactor::SRC_ALPHA => emlite::Val::from("src-alpha"),
-            GPUBlendFactor::ONE_MINUS_SRC_ALPHA => emlite::Val::from("one-minus-src-alpha"),
-            GPUBlendFactor::DST => emlite::Val::from("dst"),
-            GPUBlendFactor::ONE_MINUS_DST => emlite::Val::from("one-minus-dst"),
-            GPUBlendFactor::DST_ALPHA => emlite::Val::from("dst-alpha"),
-            GPUBlendFactor::ONE_MINUS_DST_ALPHA => emlite::Val::from("one-minus-dst-alpha"),
-            GPUBlendFactor::SRC_ALPHA_SATURATED => emlite::Val::from("src-alpha-saturated"),
-            GPUBlendFactor::CONSTANT => emlite::Val::from("constant"),
-            GPUBlendFactor::ONE_MINUS_CONSTANT => emlite::Val::from("one-minus-constant"),
-            GPUBlendFactor::SRC1 => emlite::Val::from("src1"),
-            GPUBlendFactor::ONE_MINUS_SRC1 => emlite::Val::from("one-minus-src1"),
-            GPUBlendFactor::SRC1_ALPHA => emlite::Val::from("src1-alpha"),
-            GPUBlendFactor::ONE_MINUS_SRC1_ALPHA => emlite::Val::from("one-minus-src1-alpha"),
+            GPUBlendFactor::ZERO => Any::from("zero"),
+            GPUBlendFactor::ONE => Any::from("one"),
+            GPUBlendFactor::SRC => Any::from("src"),
+            GPUBlendFactor::ONE_MINUS_SRC => Any::from("one-minus-src"),
+            GPUBlendFactor::SRC_ALPHA => Any::from("src-alpha"),
+            GPUBlendFactor::ONE_MINUS_SRC_ALPHA => Any::from("one-minus-src-alpha"),
+            GPUBlendFactor::DST => Any::from("dst"),
+            GPUBlendFactor::ONE_MINUS_DST => Any::from("one-minus-dst"),
+            GPUBlendFactor::DST_ALPHA => Any::from("dst-alpha"),
+            GPUBlendFactor::ONE_MINUS_DST_ALPHA => Any::from("one-minus-dst-alpha"),
+            GPUBlendFactor::SRC_ALPHA_SATURATED => Any::from("src-alpha-saturated"),
+            GPUBlendFactor::CONSTANT => Any::from("constant"),
+            GPUBlendFactor::ONE_MINUS_CONSTANT => Any::from("one-minus-constant"),
+            GPUBlendFactor::SRC1 => Any::from("src1"),
+            GPUBlendFactor::ONE_MINUS_SRC1 => Any::from("one-minus-src1"),
+            GPUBlendFactor::SRC1_ALPHA => Any::from("src1-alpha"),
+            GPUBlendFactor::ONE_MINUS_SRC1_ALPHA => Any::from("one-minus-src1-alpha"),
         }
     }
 }
-impl From<&GPUBlendFactor> for emlite::Val {
-    fn from(s: &GPUBlendFactor) -> emlite::Val {
+impl From<&GPUBlendFactor> for Any {
+    fn from(s: &GPUBlendFactor) -> Any {
         match *s {
-            GPUBlendFactor::ZERO => emlite::Val::from("zero"),
-            GPUBlendFactor::ONE => emlite::Val::from("one"),
-            GPUBlendFactor::SRC => emlite::Val::from("src"),
-            GPUBlendFactor::ONE_MINUS_SRC => emlite::Val::from("one-minus-src"),
-            GPUBlendFactor::SRC_ALPHA => emlite::Val::from("src-alpha"),
-            GPUBlendFactor::ONE_MINUS_SRC_ALPHA => emlite::Val::from("one-minus-src-alpha"),
-            GPUBlendFactor::DST => emlite::Val::from("dst"),
-            GPUBlendFactor::ONE_MINUS_DST => emlite::Val::from("one-minus-dst"),
-            GPUBlendFactor::DST_ALPHA => emlite::Val::from("dst-alpha"),
-            GPUBlendFactor::ONE_MINUS_DST_ALPHA => emlite::Val::from("one-minus-dst-alpha"),
-            GPUBlendFactor::SRC_ALPHA_SATURATED => emlite::Val::from("src-alpha-saturated"),
-            GPUBlendFactor::CONSTANT => emlite::Val::from("constant"),
-            GPUBlendFactor::ONE_MINUS_CONSTANT => emlite::Val::from("one-minus-constant"),
-            GPUBlendFactor::SRC1 => emlite::Val::from("src1"),
-            GPUBlendFactor::ONE_MINUS_SRC1 => emlite::Val::from("one-minus-src1"),
-            GPUBlendFactor::SRC1_ALPHA => emlite::Val::from("src1-alpha"),
-            GPUBlendFactor::ONE_MINUS_SRC1_ALPHA => emlite::Val::from("one-minus-src1-alpha"),
+            GPUBlendFactor::ZERO => Any::from("zero"),
+            GPUBlendFactor::ONE => Any::from("one"),
+            GPUBlendFactor::SRC => Any::from("src"),
+            GPUBlendFactor::ONE_MINUS_SRC => Any::from("one-minus-src"),
+            GPUBlendFactor::SRC_ALPHA => Any::from("src-alpha"),
+            GPUBlendFactor::ONE_MINUS_SRC_ALPHA => Any::from("one-minus-src-alpha"),
+            GPUBlendFactor::DST => Any::from("dst"),
+            GPUBlendFactor::ONE_MINUS_DST => Any::from("one-minus-dst"),
+            GPUBlendFactor::DST_ALPHA => Any::from("dst-alpha"),
+            GPUBlendFactor::ONE_MINUS_DST_ALPHA => Any::from("one-minus-dst-alpha"),
+            GPUBlendFactor::SRC_ALPHA_SATURATED => Any::from("src-alpha-saturated"),
+            GPUBlendFactor::CONSTANT => Any::from("constant"),
+            GPUBlendFactor::ONE_MINUS_CONSTANT => Any::from("one-minus-constant"),
+            GPUBlendFactor::SRC1 => Any::from("src1"),
+            GPUBlendFactor::ONE_MINUS_SRC1 => Any::from("one-minus-src1"),
+            GPUBlendFactor::SRC1_ALPHA => Any::from("src1-alpha"),
+            GPUBlendFactor::ONE_MINUS_SRC1_ALPHA => Any::from("one-minus-src1-alpha"),
         }
     }
 }
@@ -12354,7 +12290,7 @@ pub enum GPUBlendOperation {
     MAX,
 }
 impl FromVal for GPUBlendOperation {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "add" => Self::ADD,
             "subtract" => Self::SUBTRACT,
@@ -12364,32 +12300,32 @@ impl FromVal for GPUBlendOperation {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUBlendOperation> for emlite::Val {
-    fn from(s: GPUBlendOperation) -> emlite::Val {
+impl From<GPUBlendOperation> for Any {
+    fn from(s: GPUBlendOperation) -> Any {
         match s {
-            GPUBlendOperation::ADD => emlite::Val::from("add"),
-            GPUBlendOperation::SUBTRACT => emlite::Val::from("subtract"),
-            GPUBlendOperation::REVERSE_SUBTRACT => emlite::Val::from("reverse-subtract"),
-            GPUBlendOperation::MIN => emlite::Val::from("min"),
-            GPUBlendOperation::MAX => emlite::Val::from("max"),
+            GPUBlendOperation::ADD => Any::from("add"),
+            GPUBlendOperation::SUBTRACT => Any::from("subtract"),
+            GPUBlendOperation::REVERSE_SUBTRACT => Any::from("reverse-subtract"),
+            GPUBlendOperation::MIN => Any::from("min"),
+            GPUBlendOperation::MAX => Any::from("max"),
         }
     }
 }
-impl From<&GPUBlendOperation> for emlite::Val {
-    fn from(s: &GPUBlendOperation) -> emlite::Val {
+impl From<&GPUBlendOperation> for Any {
+    fn from(s: &GPUBlendOperation) -> Any {
         match *s {
-            GPUBlendOperation::ADD => emlite::Val::from("add"),
-            GPUBlendOperation::SUBTRACT => emlite::Val::from("subtract"),
-            GPUBlendOperation::REVERSE_SUBTRACT => emlite::Val::from("reverse-subtract"),
-            GPUBlendOperation::MIN => emlite::Val::from("min"),
-            GPUBlendOperation::MAX => emlite::Val::from("max"),
+            GPUBlendOperation::ADD => Any::from("add"),
+            GPUBlendOperation::SUBTRACT => Any::from("subtract"),
+            GPUBlendOperation::REVERSE_SUBTRACT => Any::from("reverse-subtract"),
+            GPUBlendOperation::MIN => Any::from("min"),
+            GPUBlendOperation::MAX => Any::from("max"),
         }
     }
 }
@@ -12406,7 +12342,7 @@ pub enum GPUStencilOperation {
     DECREMENT_WRAP,
 }
 impl FromVal for GPUStencilOperation {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "keep" => Self::KEEP,
             "zero" => Self::ZERO,
@@ -12419,38 +12355,38 @@ impl FromVal for GPUStencilOperation {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUStencilOperation> for emlite::Val {
-    fn from(s: GPUStencilOperation) -> emlite::Val {
+impl From<GPUStencilOperation> for Any {
+    fn from(s: GPUStencilOperation) -> Any {
         match s {
-            GPUStencilOperation::KEEP => emlite::Val::from("keep"),
-            GPUStencilOperation::ZERO => emlite::Val::from("zero"),
-            GPUStencilOperation::REPLACE => emlite::Val::from("replace"),
-            GPUStencilOperation::INVERT => emlite::Val::from("invert"),
-            GPUStencilOperation::INCREMENT_CLAMP => emlite::Val::from("increment-clamp"),
-            GPUStencilOperation::DECREMENT_CLAMP => emlite::Val::from("decrement-clamp"),
-            GPUStencilOperation::INCREMENT_WRAP => emlite::Val::from("increment-wrap"),
-            GPUStencilOperation::DECREMENT_WRAP => emlite::Val::from("decrement-wrap"),
+            GPUStencilOperation::KEEP => Any::from("keep"),
+            GPUStencilOperation::ZERO => Any::from("zero"),
+            GPUStencilOperation::REPLACE => Any::from("replace"),
+            GPUStencilOperation::INVERT => Any::from("invert"),
+            GPUStencilOperation::INCREMENT_CLAMP => Any::from("increment-clamp"),
+            GPUStencilOperation::DECREMENT_CLAMP => Any::from("decrement-clamp"),
+            GPUStencilOperation::INCREMENT_WRAP => Any::from("increment-wrap"),
+            GPUStencilOperation::DECREMENT_WRAP => Any::from("decrement-wrap"),
         }
     }
 }
-impl From<&GPUStencilOperation> for emlite::Val {
-    fn from(s: &GPUStencilOperation) -> emlite::Val {
+impl From<&GPUStencilOperation> for Any {
+    fn from(s: &GPUStencilOperation) -> Any {
         match *s {
-            GPUStencilOperation::KEEP => emlite::Val::from("keep"),
-            GPUStencilOperation::ZERO => emlite::Val::from("zero"),
-            GPUStencilOperation::REPLACE => emlite::Val::from("replace"),
-            GPUStencilOperation::INVERT => emlite::Val::from("invert"),
-            GPUStencilOperation::INCREMENT_CLAMP => emlite::Val::from("increment-clamp"),
-            GPUStencilOperation::DECREMENT_CLAMP => emlite::Val::from("decrement-clamp"),
-            GPUStencilOperation::INCREMENT_WRAP => emlite::Val::from("increment-wrap"),
-            GPUStencilOperation::DECREMENT_WRAP => emlite::Val::from("decrement-wrap"),
+            GPUStencilOperation::KEEP => Any::from("keep"),
+            GPUStencilOperation::ZERO => Any::from("zero"),
+            GPUStencilOperation::REPLACE => Any::from("replace"),
+            GPUStencilOperation::INVERT => Any::from("invert"),
+            GPUStencilOperation::INCREMENT_CLAMP => Any::from("increment-clamp"),
+            GPUStencilOperation::DECREMENT_CLAMP => Any::from("decrement-clamp"),
+            GPUStencilOperation::INCREMENT_WRAP => Any::from("increment-wrap"),
+            GPUStencilOperation::DECREMENT_WRAP => Any::from("decrement-wrap"),
         }
     }
 }
@@ -12461,33 +12397,33 @@ pub enum GPUIndexFormat {
     UINT32,
 }
 impl FromVal for GPUIndexFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "uint16" => Self::UINT16,
             "uint32" => Self::UINT32,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUIndexFormat> for emlite::Val {
-    fn from(s: GPUIndexFormat) -> emlite::Val {
+impl From<GPUIndexFormat> for Any {
+    fn from(s: GPUIndexFormat) -> Any {
         match s {
-            GPUIndexFormat::UINT16 => emlite::Val::from("uint16"),
-            GPUIndexFormat::UINT32 => emlite::Val::from("uint32"),
+            GPUIndexFormat::UINT16 => Any::from("uint16"),
+            GPUIndexFormat::UINT32 => Any::from("uint32"),
         }
     }
 }
-impl From<&GPUIndexFormat> for emlite::Val {
-    fn from(s: &GPUIndexFormat) -> emlite::Val {
+impl From<&GPUIndexFormat> for Any {
+    fn from(s: &GPUIndexFormat) -> Any {
         match *s {
-            GPUIndexFormat::UINT16 => emlite::Val::from("uint16"),
-            GPUIndexFormat::UINT32 => emlite::Val::from("uint32"),
+            GPUIndexFormat::UINT16 => Any::from("uint16"),
+            GPUIndexFormat::UINT32 => Any::from("uint32"),
         }
     }
 }
@@ -12537,7 +12473,7 @@ pub enum GPUVertexFormat {
     UNORM8X4_BGRA,
 }
 impl FromVal for GPUVertexFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "uint8" => Self::UINT8,
             "uint8x2" => Self::UINT8X2,
@@ -12583,104 +12519,104 @@ impl FromVal for GPUVertexFormat {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUVertexFormat> for emlite::Val {
-    fn from(s: GPUVertexFormat) -> emlite::Val {
+impl From<GPUVertexFormat> for Any {
+    fn from(s: GPUVertexFormat) -> Any {
         match s {
-            GPUVertexFormat::UINT8 => emlite::Val::from("uint8"),
-            GPUVertexFormat::UINT8X2 => emlite::Val::from("uint8x2"),
-            GPUVertexFormat::UINT8X4 => emlite::Val::from("uint8x4"),
-            GPUVertexFormat::SINT8 => emlite::Val::from("sint8"),
-            GPUVertexFormat::SINT8X2 => emlite::Val::from("sint8x2"),
-            GPUVertexFormat::SINT8X4 => emlite::Val::from("sint8x4"),
-            GPUVertexFormat::UNORM8 => emlite::Val::from("unorm8"),
-            GPUVertexFormat::UNORM8X2 => emlite::Val::from("unorm8x2"),
-            GPUVertexFormat::UNORM8X4 => emlite::Val::from("unorm8x4"),
-            GPUVertexFormat::SNORM8 => emlite::Val::from("snorm8"),
-            GPUVertexFormat::SNORM8X2 => emlite::Val::from("snorm8x2"),
-            GPUVertexFormat::SNORM8X4 => emlite::Val::from("snorm8x4"),
-            GPUVertexFormat::UINT16 => emlite::Val::from("uint16"),
-            GPUVertexFormat::UINT16X2 => emlite::Val::from("uint16x2"),
-            GPUVertexFormat::UINT16X4 => emlite::Val::from("uint16x4"),
-            GPUVertexFormat::SINT16 => emlite::Val::from("sint16"),
-            GPUVertexFormat::SINT16X2 => emlite::Val::from("sint16x2"),
-            GPUVertexFormat::SINT16X4 => emlite::Val::from("sint16x4"),
-            GPUVertexFormat::UNORM16 => emlite::Val::from("unorm16"),
-            GPUVertexFormat::UNORM16X2 => emlite::Val::from("unorm16x2"),
-            GPUVertexFormat::UNORM16X4 => emlite::Val::from("unorm16x4"),
-            GPUVertexFormat::SNORM16 => emlite::Val::from("snorm16"),
-            GPUVertexFormat::SNORM16X2 => emlite::Val::from("snorm16x2"),
-            GPUVertexFormat::SNORM16X4 => emlite::Val::from("snorm16x4"),
-            GPUVertexFormat::FLOAT16 => emlite::Val::from("float16"),
-            GPUVertexFormat::FLOAT16X2 => emlite::Val::from("float16x2"),
-            GPUVertexFormat::FLOAT16X4 => emlite::Val::from("float16x4"),
-            GPUVertexFormat::FLOAT32 => emlite::Val::from("float32"),
-            GPUVertexFormat::FLOAT32X2 => emlite::Val::from("float32x2"),
-            GPUVertexFormat::FLOAT32X3 => emlite::Val::from("float32x3"),
-            GPUVertexFormat::FLOAT32X4 => emlite::Val::from("float32x4"),
-            GPUVertexFormat::UINT32 => emlite::Val::from("uint32"),
-            GPUVertexFormat::UINT32X2 => emlite::Val::from("uint32x2"),
-            GPUVertexFormat::UINT32X3 => emlite::Val::from("uint32x3"),
-            GPUVertexFormat::UINT32X4 => emlite::Val::from("uint32x4"),
-            GPUVertexFormat::SINT32 => emlite::Val::from("sint32"),
-            GPUVertexFormat::SINT32X2 => emlite::Val::from("sint32x2"),
-            GPUVertexFormat::SINT32X3 => emlite::Val::from("sint32x3"),
-            GPUVertexFormat::SINT32X4 => emlite::Val::from("sint32x4"),
-            GPUVertexFormat::UNORM10_10_10_2 => emlite::Val::from("unorm10-10-10-2"),
-            GPUVertexFormat::UNORM8X4_BGRA => emlite::Val::from("unorm8x4-bgra"),
+            GPUVertexFormat::UINT8 => Any::from("uint8"),
+            GPUVertexFormat::UINT8X2 => Any::from("uint8x2"),
+            GPUVertexFormat::UINT8X4 => Any::from("uint8x4"),
+            GPUVertexFormat::SINT8 => Any::from("sint8"),
+            GPUVertexFormat::SINT8X2 => Any::from("sint8x2"),
+            GPUVertexFormat::SINT8X4 => Any::from("sint8x4"),
+            GPUVertexFormat::UNORM8 => Any::from("unorm8"),
+            GPUVertexFormat::UNORM8X2 => Any::from("unorm8x2"),
+            GPUVertexFormat::UNORM8X4 => Any::from("unorm8x4"),
+            GPUVertexFormat::SNORM8 => Any::from("snorm8"),
+            GPUVertexFormat::SNORM8X2 => Any::from("snorm8x2"),
+            GPUVertexFormat::SNORM8X4 => Any::from("snorm8x4"),
+            GPUVertexFormat::UINT16 => Any::from("uint16"),
+            GPUVertexFormat::UINT16X2 => Any::from("uint16x2"),
+            GPUVertexFormat::UINT16X4 => Any::from("uint16x4"),
+            GPUVertexFormat::SINT16 => Any::from("sint16"),
+            GPUVertexFormat::SINT16X2 => Any::from("sint16x2"),
+            GPUVertexFormat::SINT16X4 => Any::from("sint16x4"),
+            GPUVertexFormat::UNORM16 => Any::from("unorm16"),
+            GPUVertexFormat::UNORM16X2 => Any::from("unorm16x2"),
+            GPUVertexFormat::UNORM16X4 => Any::from("unorm16x4"),
+            GPUVertexFormat::SNORM16 => Any::from("snorm16"),
+            GPUVertexFormat::SNORM16X2 => Any::from("snorm16x2"),
+            GPUVertexFormat::SNORM16X4 => Any::from("snorm16x4"),
+            GPUVertexFormat::FLOAT16 => Any::from("float16"),
+            GPUVertexFormat::FLOAT16X2 => Any::from("float16x2"),
+            GPUVertexFormat::FLOAT16X4 => Any::from("float16x4"),
+            GPUVertexFormat::FLOAT32 => Any::from("float32"),
+            GPUVertexFormat::FLOAT32X2 => Any::from("float32x2"),
+            GPUVertexFormat::FLOAT32X3 => Any::from("float32x3"),
+            GPUVertexFormat::FLOAT32X4 => Any::from("float32x4"),
+            GPUVertexFormat::UINT32 => Any::from("uint32"),
+            GPUVertexFormat::UINT32X2 => Any::from("uint32x2"),
+            GPUVertexFormat::UINT32X3 => Any::from("uint32x3"),
+            GPUVertexFormat::UINT32X4 => Any::from("uint32x4"),
+            GPUVertexFormat::SINT32 => Any::from("sint32"),
+            GPUVertexFormat::SINT32X2 => Any::from("sint32x2"),
+            GPUVertexFormat::SINT32X3 => Any::from("sint32x3"),
+            GPUVertexFormat::SINT32X4 => Any::from("sint32x4"),
+            GPUVertexFormat::UNORM10_10_10_2 => Any::from("unorm10-10-10-2"),
+            GPUVertexFormat::UNORM8X4_BGRA => Any::from("unorm8x4-bgra"),
         }
     }
 }
-impl From<&GPUVertexFormat> for emlite::Val {
-    fn from(s: &GPUVertexFormat) -> emlite::Val {
+impl From<&GPUVertexFormat> for Any {
+    fn from(s: &GPUVertexFormat) -> Any {
         match *s {
-            GPUVertexFormat::UINT8 => emlite::Val::from("uint8"),
-            GPUVertexFormat::UINT8X2 => emlite::Val::from("uint8x2"),
-            GPUVertexFormat::UINT8X4 => emlite::Val::from("uint8x4"),
-            GPUVertexFormat::SINT8 => emlite::Val::from("sint8"),
-            GPUVertexFormat::SINT8X2 => emlite::Val::from("sint8x2"),
-            GPUVertexFormat::SINT8X4 => emlite::Val::from("sint8x4"),
-            GPUVertexFormat::UNORM8 => emlite::Val::from("unorm8"),
-            GPUVertexFormat::UNORM8X2 => emlite::Val::from("unorm8x2"),
-            GPUVertexFormat::UNORM8X4 => emlite::Val::from("unorm8x4"),
-            GPUVertexFormat::SNORM8 => emlite::Val::from("snorm8"),
-            GPUVertexFormat::SNORM8X2 => emlite::Val::from("snorm8x2"),
-            GPUVertexFormat::SNORM8X4 => emlite::Val::from("snorm8x4"),
-            GPUVertexFormat::UINT16 => emlite::Val::from("uint16"),
-            GPUVertexFormat::UINT16X2 => emlite::Val::from("uint16x2"),
-            GPUVertexFormat::UINT16X4 => emlite::Val::from("uint16x4"),
-            GPUVertexFormat::SINT16 => emlite::Val::from("sint16"),
-            GPUVertexFormat::SINT16X2 => emlite::Val::from("sint16x2"),
-            GPUVertexFormat::SINT16X4 => emlite::Val::from("sint16x4"),
-            GPUVertexFormat::UNORM16 => emlite::Val::from("unorm16"),
-            GPUVertexFormat::UNORM16X2 => emlite::Val::from("unorm16x2"),
-            GPUVertexFormat::UNORM16X4 => emlite::Val::from("unorm16x4"),
-            GPUVertexFormat::SNORM16 => emlite::Val::from("snorm16"),
-            GPUVertexFormat::SNORM16X2 => emlite::Val::from("snorm16x2"),
-            GPUVertexFormat::SNORM16X4 => emlite::Val::from("snorm16x4"),
-            GPUVertexFormat::FLOAT16 => emlite::Val::from("float16"),
-            GPUVertexFormat::FLOAT16X2 => emlite::Val::from("float16x2"),
-            GPUVertexFormat::FLOAT16X4 => emlite::Val::from("float16x4"),
-            GPUVertexFormat::FLOAT32 => emlite::Val::from("float32"),
-            GPUVertexFormat::FLOAT32X2 => emlite::Val::from("float32x2"),
-            GPUVertexFormat::FLOAT32X3 => emlite::Val::from("float32x3"),
-            GPUVertexFormat::FLOAT32X4 => emlite::Val::from("float32x4"),
-            GPUVertexFormat::UINT32 => emlite::Val::from("uint32"),
-            GPUVertexFormat::UINT32X2 => emlite::Val::from("uint32x2"),
-            GPUVertexFormat::UINT32X3 => emlite::Val::from("uint32x3"),
-            GPUVertexFormat::UINT32X4 => emlite::Val::from("uint32x4"),
-            GPUVertexFormat::SINT32 => emlite::Val::from("sint32"),
-            GPUVertexFormat::SINT32X2 => emlite::Val::from("sint32x2"),
-            GPUVertexFormat::SINT32X3 => emlite::Val::from("sint32x3"),
-            GPUVertexFormat::SINT32X4 => emlite::Val::from("sint32x4"),
-            GPUVertexFormat::UNORM10_10_10_2 => emlite::Val::from("unorm10-10-10-2"),
-            GPUVertexFormat::UNORM8X4_BGRA => emlite::Val::from("unorm8x4-bgra"),
+            GPUVertexFormat::UINT8 => Any::from("uint8"),
+            GPUVertexFormat::UINT8X2 => Any::from("uint8x2"),
+            GPUVertexFormat::UINT8X4 => Any::from("uint8x4"),
+            GPUVertexFormat::SINT8 => Any::from("sint8"),
+            GPUVertexFormat::SINT8X2 => Any::from("sint8x2"),
+            GPUVertexFormat::SINT8X4 => Any::from("sint8x4"),
+            GPUVertexFormat::UNORM8 => Any::from("unorm8"),
+            GPUVertexFormat::UNORM8X2 => Any::from("unorm8x2"),
+            GPUVertexFormat::UNORM8X4 => Any::from("unorm8x4"),
+            GPUVertexFormat::SNORM8 => Any::from("snorm8"),
+            GPUVertexFormat::SNORM8X2 => Any::from("snorm8x2"),
+            GPUVertexFormat::SNORM8X4 => Any::from("snorm8x4"),
+            GPUVertexFormat::UINT16 => Any::from("uint16"),
+            GPUVertexFormat::UINT16X2 => Any::from("uint16x2"),
+            GPUVertexFormat::UINT16X4 => Any::from("uint16x4"),
+            GPUVertexFormat::SINT16 => Any::from("sint16"),
+            GPUVertexFormat::SINT16X2 => Any::from("sint16x2"),
+            GPUVertexFormat::SINT16X4 => Any::from("sint16x4"),
+            GPUVertexFormat::UNORM16 => Any::from("unorm16"),
+            GPUVertexFormat::UNORM16X2 => Any::from("unorm16x2"),
+            GPUVertexFormat::UNORM16X4 => Any::from("unorm16x4"),
+            GPUVertexFormat::SNORM16 => Any::from("snorm16"),
+            GPUVertexFormat::SNORM16X2 => Any::from("snorm16x2"),
+            GPUVertexFormat::SNORM16X4 => Any::from("snorm16x4"),
+            GPUVertexFormat::FLOAT16 => Any::from("float16"),
+            GPUVertexFormat::FLOAT16X2 => Any::from("float16x2"),
+            GPUVertexFormat::FLOAT16X4 => Any::from("float16x4"),
+            GPUVertexFormat::FLOAT32 => Any::from("float32"),
+            GPUVertexFormat::FLOAT32X2 => Any::from("float32x2"),
+            GPUVertexFormat::FLOAT32X3 => Any::from("float32x3"),
+            GPUVertexFormat::FLOAT32X4 => Any::from("float32x4"),
+            GPUVertexFormat::UINT32 => Any::from("uint32"),
+            GPUVertexFormat::UINT32X2 => Any::from("uint32x2"),
+            GPUVertexFormat::UINT32X3 => Any::from("uint32x3"),
+            GPUVertexFormat::UINT32X4 => Any::from("uint32x4"),
+            GPUVertexFormat::SINT32 => Any::from("sint32"),
+            GPUVertexFormat::SINT32X2 => Any::from("sint32x2"),
+            GPUVertexFormat::SINT32X3 => Any::from("sint32x3"),
+            GPUVertexFormat::SINT32X4 => Any::from("sint32x4"),
+            GPUVertexFormat::UNORM10_10_10_2 => Any::from("unorm10-10-10-2"),
+            GPUVertexFormat::UNORM8X4_BGRA => Any::from("unorm8x4-bgra"),
         }
     }
 }
@@ -12691,33 +12627,33 @@ pub enum GPUVertexStepMode {
     INSTANCE,
 }
 impl FromVal for GPUVertexStepMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "vertex" => Self::VERTEX,
             "instance" => Self::INSTANCE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUVertexStepMode> for emlite::Val {
-    fn from(s: GPUVertexStepMode) -> emlite::Val {
+impl From<GPUVertexStepMode> for Any {
+    fn from(s: GPUVertexStepMode) -> Any {
         match s {
-            GPUVertexStepMode::VERTEX => emlite::Val::from("vertex"),
-            GPUVertexStepMode::INSTANCE => emlite::Val::from("instance"),
+            GPUVertexStepMode::VERTEX => Any::from("vertex"),
+            GPUVertexStepMode::INSTANCE => Any::from("instance"),
         }
     }
 }
-impl From<&GPUVertexStepMode> for emlite::Val {
-    fn from(s: &GPUVertexStepMode) -> emlite::Val {
+impl From<&GPUVertexStepMode> for Any {
+    fn from(s: &GPUVertexStepMode) -> Any {
         match *s {
-            GPUVertexStepMode::VERTEX => emlite::Val::from("vertex"),
-            GPUVertexStepMode::INSTANCE => emlite::Val::from("instance"),
+            GPUVertexStepMode::VERTEX => Any::from("vertex"),
+            GPUVertexStepMode::INSTANCE => Any::from("instance"),
         }
     }
 }
@@ -12728,33 +12664,33 @@ pub enum GPULoadOp {
     CLEAR,
 }
 impl FromVal for GPULoadOp {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "load" => Self::LOAD,
             "clear" => Self::CLEAR,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPULoadOp> for emlite::Val {
-    fn from(s: GPULoadOp) -> emlite::Val {
+impl From<GPULoadOp> for Any {
+    fn from(s: GPULoadOp) -> Any {
         match s {
-            GPULoadOp::LOAD => emlite::Val::from("load"),
-            GPULoadOp::CLEAR => emlite::Val::from("clear"),
+            GPULoadOp::LOAD => Any::from("load"),
+            GPULoadOp::CLEAR => Any::from("clear"),
         }
     }
 }
-impl From<&GPULoadOp> for emlite::Val {
-    fn from(s: &GPULoadOp) -> emlite::Val {
+impl From<&GPULoadOp> for Any {
+    fn from(s: &GPULoadOp) -> Any {
         match *s {
-            GPULoadOp::LOAD => emlite::Val::from("load"),
-            GPULoadOp::CLEAR => emlite::Val::from("clear"),
+            GPULoadOp::LOAD => Any::from("load"),
+            GPULoadOp::CLEAR => Any::from("clear"),
         }
     }
 }
@@ -12765,33 +12701,33 @@ pub enum GPUStoreOp {
     DISCARD,
 }
 impl FromVal for GPUStoreOp {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "store" => Self::STORE,
             "discard" => Self::DISCARD,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUStoreOp> for emlite::Val {
-    fn from(s: GPUStoreOp) -> emlite::Val {
+impl From<GPUStoreOp> for Any {
+    fn from(s: GPUStoreOp) -> Any {
         match s {
-            GPUStoreOp::STORE => emlite::Val::from("store"),
-            GPUStoreOp::DISCARD => emlite::Val::from("discard"),
+            GPUStoreOp::STORE => Any::from("store"),
+            GPUStoreOp::DISCARD => Any::from("discard"),
         }
     }
 }
-impl From<&GPUStoreOp> for emlite::Val {
-    fn from(s: &GPUStoreOp) -> emlite::Val {
+impl From<&GPUStoreOp> for Any {
+    fn from(s: &GPUStoreOp) -> Any {
         match *s {
-            GPUStoreOp::STORE => emlite::Val::from("store"),
-            GPUStoreOp::DISCARD => emlite::Val::from("discard"),
+            GPUStoreOp::STORE => Any::from("store"),
+            GPUStoreOp::DISCARD => Any::from("discard"),
         }
     }
 }
@@ -12802,33 +12738,33 @@ pub enum GPUQueryType {
     TIMESTAMP,
 }
 impl FromVal for GPUQueryType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "occlusion" => Self::OCCLUSION,
             "timestamp" => Self::TIMESTAMP,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUQueryType> for emlite::Val {
-    fn from(s: GPUQueryType) -> emlite::Val {
+impl From<GPUQueryType> for Any {
+    fn from(s: GPUQueryType) -> Any {
         match s {
-            GPUQueryType::OCCLUSION => emlite::Val::from("occlusion"),
-            GPUQueryType::TIMESTAMP => emlite::Val::from("timestamp"),
+            GPUQueryType::OCCLUSION => Any::from("occlusion"),
+            GPUQueryType::TIMESTAMP => Any::from("timestamp"),
         }
     }
 }
-impl From<&GPUQueryType> for emlite::Val {
-    fn from(s: &GPUQueryType) -> emlite::Val {
+impl From<&GPUQueryType> for Any {
+    fn from(s: &GPUQueryType) -> Any {
         match *s {
-            GPUQueryType::OCCLUSION => emlite::Val::from("occlusion"),
-            GPUQueryType::TIMESTAMP => emlite::Val::from("timestamp"),
+            GPUQueryType::OCCLUSION => Any::from("occlusion"),
+            GPUQueryType::TIMESTAMP => Any::from("timestamp"),
         }
     }
 }
@@ -12839,33 +12775,33 @@ pub enum GPUCanvasAlphaMode {
     PREMULTIPLIED,
 }
 impl FromVal for GPUCanvasAlphaMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "opaque" => Self::OPAQUE,
             "premultiplied" => Self::PREMULTIPLIED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUCanvasAlphaMode> for emlite::Val {
-    fn from(s: GPUCanvasAlphaMode) -> emlite::Val {
+impl From<GPUCanvasAlphaMode> for Any {
+    fn from(s: GPUCanvasAlphaMode) -> Any {
         match s {
-            GPUCanvasAlphaMode::OPAQUE => emlite::Val::from("opaque"),
-            GPUCanvasAlphaMode::PREMULTIPLIED => emlite::Val::from("premultiplied"),
+            GPUCanvasAlphaMode::OPAQUE => Any::from("opaque"),
+            GPUCanvasAlphaMode::PREMULTIPLIED => Any::from("premultiplied"),
         }
     }
 }
-impl From<&GPUCanvasAlphaMode> for emlite::Val {
-    fn from(s: &GPUCanvasAlphaMode) -> emlite::Val {
+impl From<&GPUCanvasAlphaMode> for Any {
+    fn from(s: &GPUCanvasAlphaMode) -> Any {
         match *s {
-            GPUCanvasAlphaMode::OPAQUE => emlite::Val::from("opaque"),
-            GPUCanvasAlphaMode::PREMULTIPLIED => emlite::Val::from("premultiplied"),
+            GPUCanvasAlphaMode::OPAQUE => Any::from("opaque"),
+            GPUCanvasAlphaMode::PREMULTIPLIED => Any::from("premultiplied"),
         }
     }
 }
@@ -12876,33 +12812,33 @@ pub enum GPUCanvasToneMappingMode {
     EXTENDED,
 }
 impl FromVal for GPUCanvasToneMappingMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "standard" => Self::STANDARD,
             "extended" => Self::EXTENDED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUCanvasToneMappingMode> for emlite::Val {
-    fn from(s: GPUCanvasToneMappingMode) -> emlite::Val {
+impl From<GPUCanvasToneMappingMode> for Any {
+    fn from(s: GPUCanvasToneMappingMode) -> Any {
         match s {
-            GPUCanvasToneMappingMode::STANDARD => emlite::Val::from("standard"),
-            GPUCanvasToneMappingMode::EXTENDED => emlite::Val::from("extended"),
+            GPUCanvasToneMappingMode::STANDARD => Any::from("standard"),
+            GPUCanvasToneMappingMode::EXTENDED => Any::from("extended"),
         }
     }
 }
-impl From<&GPUCanvasToneMappingMode> for emlite::Val {
-    fn from(s: &GPUCanvasToneMappingMode) -> emlite::Val {
+impl From<&GPUCanvasToneMappingMode> for Any {
+    fn from(s: &GPUCanvasToneMappingMode) -> Any {
         match *s {
-            GPUCanvasToneMappingMode::STANDARD => emlite::Val::from("standard"),
-            GPUCanvasToneMappingMode::EXTENDED => emlite::Val::from("extended"),
+            GPUCanvasToneMappingMode::STANDARD => Any::from("standard"),
+            GPUCanvasToneMappingMode::EXTENDED => Any::from("extended"),
         }
     }
 }
@@ -12913,33 +12849,33 @@ pub enum GPUDeviceLostReason {
     DESTROYED,
 }
 impl FromVal for GPUDeviceLostReason {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "unknown" => Self::UNKNOWN,
             "destroyed" => Self::DESTROYED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUDeviceLostReason> for emlite::Val {
-    fn from(s: GPUDeviceLostReason) -> emlite::Val {
+impl From<GPUDeviceLostReason> for Any {
+    fn from(s: GPUDeviceLostReason) -> Any {
         match s {
-            GPUDeviceLostReason::UNKNOWN => emlite::Val::from("unknown"),
-            GPUDeviceLostReason::DESTROYED => emlite::Val::from("destroyed"),
+            GPUDeviceLostReason::UNKNOWN => Any::from("unknown"),
+            GPUDeviceLostReason::DESTROYED => Any::from("destroyed"),
         }
     }
 }
-impl From<&GPUDeviceLostReason> for emlite::Val {
-    fn from(s: &GPUDeviceLostReason) -> emlite::Val {
+impl From<&GPUDeviceLostReason> for Any {
+    fn from(s: &GPUDeviceLostReason) -> Any {
         match *s {
-            GPUDeviceLostReason::UNKNOWN => emlite::Val::from("unknown"),
-            GPUDeviceLostReason::DESTROYED => emlite::Val::from("destroyed"),
+            GPUDeviceLostReason::UNKNOWN => Any::from("unknown"),
+            GPUDeviceLostReason::DESTROYED => Any::from("destroyed"),
         }
     }
 }
@@ -12951,7 +12887,7 @@ pub enum GPUErrorFilter {
     INTERNAL,
 }
 impl FromVal for GPUErrorFilter {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "validation" => Self::VALIDATION,
             "out-of-memory" => Self::OUT_OF_MEMORY,
@@ -12959,28 +12895,28 @@ impl FromVal for GPUErrorFilter {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<GPUErrorFilter> for emlite::Val {
-    fn from(s: GPUErrorFilter) -> emlite::Val {
+impl From<GPUErrorFilter> for Any {
+    fn from(s: GPUErrorFilter) -> Any {
         match s {
-            GPUErrorFilter::VALIDATION => emlite::Val::from("validation"),
-            GPUErrorFilter::OUT_OF_MEMORY => emlite::Val::from("out-of-memory"),
-            GPUErrorFilter::INTERNAL => emlite::Val::from("internal"),
+            GPUErrorFilter::VALIDATION => Any::from("validation"),
+            GPUErrorFilter::OUT_OF_MEMORY => Any::from("out-of-memory"),
+            GPUErrorFilter::INTERNAL => Any::from("internal"),
         }
     }
 }
-impl From<&GPUErrorFilter> for emlite::Val {
-    fn from(s: &GPUErrorFilter) -> emlite::Val {
+impl From<&GPUErrorFilter> for Any {
+    fn from(s: &GPUErrorFilter) -> Any {
         match *s {
-            GPUErrorFilter::VALIDATION => emlite::Val::from("validation"),
-            GPUErrorFilter::OUT_OF_MEMORY => emlite::Val::from("out-of-memory"),
-            GPUErrorFilter::INTERNAL => emlite::Val::from("internal"),
+            GPUErrorFilter::VALIDATION => Any::from("validation"),
+            GPUErrorFilter::OUT_OF_MEMORY => Any::from("out-of-memory"),
+            GPUErrorFilter::INTERNAL => Any::from("internal"),
         }
     }
 }
@@ -12996,7 +12932,7 @@ pub enum HIDUnitSystem {
     RESERVED,
 }
 impl FromVal for HIDUnitSystem {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "si-linear" => Self::SI_LINEAR,
@@ -13008,36 +12944,36 @@ impl FromVal for HIDUnitSystem {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<HIDUnitSystem> for emlite::Val {
-    fn from(s: HIDUnitSystem) -> emlite::Val {
+impl From<HIDUnitSystem> for Any {
+    fn from(s: HIDUnitSystem) -> Any {
         match s {
-            HIDUnitSystem::NONE => emlite::Val::from("none"),
-            HIDUnitSystem::SI_LINEAR => emlite::Val::from("si-linear"),
-            HIDUnitSystem::SI_ROTATION => emlite::Val::from("si-rotation"),
-            HIDUnitSystem::ENGLISH_LINEAR => emlite::Val::from("english-linear"),
-            HIDUnitSystem::ENGLISH_ROTATION => emlite::Val::from("english-rotation"),
-            HIDUnitSystem::VENDOR_DEFINED => emlite::Val::from("vendor-defined"),
-            HIDUnitSystem::RESERVED => emlite::Val::from("reserved"),
+            HIDUnitSystem::NONE => Any::from("none"),
+            HIDUnitSystem::SI_LINEAR => Any::from("si-linear"),
+            HIDUnitSystem::SI_ROTATION => Any::from("si-rotation"),
+            HIDUnitSystem::ENGLISH_LINEAR => Any::from("english-linear"),
+            HIDUnitSystem::ENGLISH_ROTATION => Any::from("english-rotation"),
+            HIDUnitSystem::VENDOR_DEFINED => Any::from("vendor-defined"),
+            HIDUnitSystem::RESERVED => Any::from("reserved"),
         }
     }
 }
-impl From<&HIDUnitSystem> for emlite::Val {
-    fn from(s: &HIDUnitSystem) -> emlite::Val {
+impl From<&HIDUnitSystem> for Any {
+    fn from(s: &HIDUnitSystem) -> Any {
         match *s {
-            HIDUnitSystem::NONE => emlite::Val::from("none"),
-            HIDUnitSystem::SI_LINEAR => emlite::Val::from("si-linear"),
-            HIDUnitSystem::SI_ROTATION => emlite::Val::from("si-rotation"),
-            HIDUnitSystem::ENGLISH_LINEAR => emlite::Val::from("english-linear"),
-            HIDUnitSystem::ENGLISH_ROTATION => emlite::Val::from("english-rotation"),
-            HIDUnitSystem::VENDOR_DEFINED => emlite::Val::from("vendor-defined"),
-            HIDUnitSystem::RESERVED => emlite::Val::from("reserved"),
+            HIDUnitSystem::NONE => Any::from("none"),
+            HIDUnitSystem::SI_LINEAR => Any::from("si-linear"),
+            HIDUnitSystem::SI_ROTATION => Any::from("si-rotation"),
+            HIDUnitSystem::ENGLISH_LINEAR => Any::from("english-linear"),
+            HIDUnitSystem::ENGLISH_ROTATION => Any::from("english-rotation"),
+            HIDUnitSystem::VENDOR_DEFINED => Any::from("vendor-defined"),
+            HIDUnitSystem::RESERVED => Any::from("reserved"),
         }
     }
 }
@@ -13048,33 +12984,33 @@ pub enum MIDIPortType {
     OUTPUT,
 }
 impl FromVal for MIDIPortType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "input" => Self::INPUT,
             "output" => Self::OUTPUT,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MIDIPortType> for emlite::Val {
-    fn from(s: MIDIPortType) -> emlite::Val {
+impl From<MIDIPortType> for Any {
+    fn from(s: MIDIPortType) -> Any {
         match s {
-            MIDIPortType::INPUT => emlite::Val::from("input"),
-            MIDIPortType::OUTPUT => emlite::Val::from("output"),
+            MIDIPortType::INPUT => Any::from("input"),
+            MIDIPortType::OUTPUT => Any::from("output"),
         }
     }
 }
-impl From<&MIDIPortType> for emlite::Val {
-    fn from(s: &MIDIPortType) -> emlite::Val {
+impl From<&MIDIPortType> for Any {
+    fn from(s: &MIDIPortType) -> Any {
         match *s {
-            MIDIPortType::INPUT => emlite::Val::from("input"),
-            MIDIPortType::OUTPUT => emlite::Val::from("output"),
+            MIDIPortType::INPUT => Any::from("input"),
+            MIDIPortType::OUTPUT => Any::from("output"),
         }
     }
 }
@@ -13085,33 +13021,33 @@ pub enum MIDIPortDeviceState {
     CONNECTED,
 }
 impl FromVal for MIDIPortDeviceState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "disconnected" => Self::DISCONNECTED,
             "connected" => Self::CONNECTED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MIDIPortDeviceState> for emlite::Val {
-    fn from(s: MIDIPortDeviceState) -> emlite::Val {
+impl From<MIDIPortDeviceState> for Any {
+    fn from(s: MIDIPortDeviceState) -> Any {
         match s {
-            MIDIPortDeviceState::DISCONNECTED => emlite::Val::from("disconnected"),
-            MIDIPortDeviceState::CONNECTED => emlite::Val::from("connected"),
+            MIDIPortDeviceState::DISCONNECTED => Any::from("disconnected"),
+            MIDIPortDeviceState::CONNECTED => Any::from("connected"),
         }
     }
 }
-impl From<&MIDIPortDeviceState> for emlite::Val {
-    fn from(s: &MIDIPortDeviceState) -> emlite::Val {
+impl From<&MIDIPortDeviceState> for Any {
+    fn from(s: &MIDIPortDeviceState) -> Any {
         match *s {
-            MIDIPortDeviceState::DISCONNECTED => emlite::Val::from("disconnected"),
-            MIDIPortDeviceState::CONNECTED => emlite::Val::from("connected"),
+            MIDIPortDeviceState::DISCONNECTED => Any::from("disconnected"),
+            MIDIPortDeviceState::CONNECTED => Any::from("connected"),
         }
     }
 }
@@ -13123,7 +13059,7 @@ pub enum MIDIPortConnectionState {
     PENDING,
 }
 impl FromVal for MIDIPortConnectionState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "open" => Self::OPEN,
             "closed" => Self::CLOSED,
@@ -13131,28 +13067,28 @@ impl FromVal for MIDIPortConnectionState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MIDIPortConnectionState> for emlite::Val {
-    fn from(s: MIDIPortConnectionState) -> emlite::Val {
+impl From<MIDIPortConnectionState> for Any {
+    fn from(s: MIDIPortConnectionState) -> Any {
         match s {
-            MIDIPortConnectionState::OPEN => emlite::Val::from("open"),
-            MIDIPortConnectionState::CLOSED => emlite::Val::from("closed"),
-            MIDIPortConnectionState::PENDING => emlite::Val::from("pending"),
+            MIDIPortConnectionState::OPEN => Any::from("open"),
+            MIDIPortConnectionState::CLOSED => Any::from("closed"),
+            MIDIPortConnectionState::PENDING => Any::from("pending"),
         }
     }
 }
-impl From<&MIDIPortConnectionState> for emlite::Val {
-    fn from(s: &MIDIPortConnectionState) -> emlite::Val {
+impl From<&MIDIPortConnectionState> for Any {
+    fn from(s: &MIDIPortConnectionState) -> Any {
         match *s {
-            MIDIPortConnectionState::OPEN => emlite::Val::from("open"),
-            MIDIPortConnectionState::CLOSED => emlite::Val::from("closed"),
-            MIDIPortConnectionState::PENDING => emlite::Val::from("pending"),
+            MIDIPortConnectionState::OPEN => Any::from("open"),
+            MIDIPortConnectionState::CLOSED => Any::from("closed"),
+            MIDIPortConnectionState::PENDING => Any::from("pending"),
         }
     }
 }
@@ -13164,7 +13100,7 @@ pub enum MLPowerPreference {
     LOW_POWER,
 }
 impl FromVal for MLPowerPreference {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "default" => Self::DEFAULT,
             "high-performance" => Self::HIGH_PERFORMANCE,
@@ -13172,28 +13108,28 @@ impl FromVal for MLPowerPreference {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MLPowerPreference> for emlite::Val {
-    fn from(s: MLPowerPreference) -> emlite::Val {
+impl From<MLPowerPreference> for Any {
+    fn from(s: MLPowerPreference) -> Any {
         match s {
-            MLPowerPreference::DEFAULT => emlite::Val::from("default"),
-            MLPowerPreference::HIGH_PERFORMANCE => emlite::Val::from("high-performance"),
-            MLPowerPreference::LOW_POWER => emlite::Val::from("low-power"),
+            MLPowerPreference::DEFAULT => Any::from("default"),
+            MLPowerPreference::HIGH_PERFORMANCE => Any::from("high-performance"),
+            MLPowerPreference::LOW_POWER => Any::from("low-power"),
         }
     }
 }
-impl From<&MLPowerPreference> for emlite::Val {
-    fn from(s: &MLPowerPreference) -> emlite::Val {
+impl From<&MLPowerPreference> for Any {
+    fn from(s: &MLPowerPreference) -> Any {
         match *s {
-            MLPowerPreference::DEFAULT => emlite::Val::from("default"),
-            MLPowerPreference::HIGH_PERFORMANCE => emlite::Val::from("high-performance"),
-            MLPowerPreference::LOW_POWER => emlite::Val::from("low-power"),
+            MLPowerPreference::DEFAULT => Any::from("default"),
+            MLPowerPreference::HIGH_PERFORMANCE => Any::from("high-performance"),
+            MLPowerPreference::LOW_POWER => Any::from("low-power"),
         }
     }
 }
@@ -13204,33 +13140,33 @@ pub enum MLInputOperandLayout {
     NHWC,
 }
 impl FromVal for MLInputOperandLayout {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "nchw" => Self::NCHW,
             "nhwc" => Self::NHWC,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MLInputOperandLayout> for emlite::Val {
-    fn from(s: MLInputOperandLayout) -> emlite::Val {
+impl From<MLInputOperandLayout> for Any {
+    fn from(s: MLInputOperandLayout) -> Any {
         match s {
-            MLInputOperandLayout::NCHW => emlite::Val::from("nchw"),
-            MLInputOperandLayout::NHWC => emlite::Val::from("nhwc"),
+            MLInputOperandLayout::NCHW => Any::from("nchw"),
+            MLInputOperandLayout::NHWC => Any::from("nhwc"),
         }
     }
 }
-impl From<&MLInputOperandLayout> for emlite::Val {
-    fn from(s: &MLInputOperandLayout) -> emlite::Val {
+impl From<&MLInputOperandLayout> for Any {
+    fn from(s: &MLInputOperandLayout) -> Any {
         match *s {
-            MLInputOperandLayout::NCHW => emlite::Val::from("nchw"),
-            MLInputOperandLayout::NHWC => emlite::Val::from("nhwc"),
+            MLInputOperandLayout::NCHW => Any::from("nchw"),
+            MLInputOperandLayout::NHWC => Any::from("nhwc"),
         }
     }
 }
@@ -13247,7 +13183,7 @@ pub enum MLOperandDataType {
     UINT8,
 }
 impl FromVal for MLOperandDataType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "float32" => Self::FLOAT32,
             "float16" => Self::FLOAT16,
@@ -13260,38 +13196,38 @@ impl FromVal for MLOperandDataType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MLOperandDataType> for emlite::Val {
-    fn from(s: MLOperandDataType) -> emlite::Val {
+impl From<MLOperandDataType> for Any {
+    fn from(s: MLOperandDataType) -> Any {
         match s {
-            MLOperandDataType::FLOAT32 => emlite::Val::from("float32"),
-            MLOperandDataType::FLOAT16 => emlite::Val::from("float16"),
-            MLOperandDataType::INT32 => emlite::Val::from("int32"),
-            MLOperandDataType::UINT32 => emlite::Val::from("uint32"),
-            MLOperandDataType::INT64 => emlite::Val::from("int64"),
-            MLOperandDataType::UINT64 => emlite::Val::from("uint64"),
-            MLOperandDataType::INT8 => emlite::Val::from("int8"),
-            MLOperandDataType::UINT8 => emlite::Val::from("uint8"),
+            MLOperandDataType::FLOAT32 => Any::from("float32"),
+            MLOperandDataType::FLOAT16 => Any::from("float16"),
+            MLOperandDataType::INT32 => Any::from("int32"),
+            MLOperandDataType::UINT32 => Any::from("uint32"),
+            MLOperandDataType::INT64 => Any::from("int64"),
+            MLOperandDataType::UINT64 => Any::from("uint64"),
+            MLOperandDataType::INT8 => Any::from("int8"),
+            MLOperandDataType::UINT8 => Any::from("uint8"),
         }
     }
 }
-impl From<&MLOperandDataType> for emlite::Val {
-    fn from(s: &MLOperandDataType) -> emlite::Val {
+impl From<&MLOperandDataType> for Any {
+    fn from(s: &MLOperandDataType) -> Any {
         match *s {
-            MLOperandDataType::FLOAT32 => emlite::Val::from("float32"),
-            MLOperandDataType::FLOAT16 => emlite::Val::from("float16"),
-            MLOperandDataType::INT32 => emlite::Val::from("int32"),
-            MLOperandDataType::UINT32 => emlite::Val::from("uint32"),
-            MLOperandDataType::INT64 => emlite::Val::from("int64"),
-            MLOperandDataType::UINT64 => emlite::Val::from("uint64"),
-            MLOperandDataType::INT8 => emlite::Val::from("int8"),
-            MLOperandDataType::UINT8 => emlite::Val::from("uint8"),
+            MLOperandDataType::FLOAT32 => Any::from("float32"),
+            MLOperandDataType::FLOAT16 => Any::from("float16"),
+            MLOperandDataType::INT32 => Any::from("int32"),
+            MLOperandDataType::UINT32 => Any::from("uint32"),
+            MLOperandDataType::INT64 => Any::from("int64"),
+            MLOperandDataType::UINT64 => Any::from("uint64"),
+            MLOperandDataType::INT8 => Any::from("int8"),
+            MLOperandDataType::UINT8 => Any::from("uint8"),
         }
     }
 }
@@ -13304,7 +13240,7 @@ pub enum MLConv2dFilterOperandLayout {
     IHWO,
 }
 impl FromVal for MLConv2dFilterOperandLayout {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "oihw" => Self::OIHW,
             "hwio" => Self::HWIO,
@@ -13313,30 +13249,30 @@ impl FromVal for MLConv2dFilterOperandLayout {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MLConv2dFilterOperandLayout> for emlite::Val {
-    fn from(s: MLConv2dFilterOperandLayout) -> emlite::Val {
+impl From<MLConv2dFilterOperandLayout> for Any {
+    fn from(s: MLConv2dFilterOperandLayout) -> Any {
         match s {
-            MLConv2dFilterOperandLayout::OIHW => emlite::Val::from("oihw"),
-            MLConv2dFilterOperandLayout::HWIO => emlite::Val::from("hwio"),
-            MLConv2dFilterOperandLayout::OHWI => emlite::Val::from("ohwi"),
-            MLConv2dFilterOperandLayout::IHWO => emlite::Val::from("ihwo"),
+            MLConv2dFilterOperandLayout::OIHW => Any::from("oihw"),
+            MLConv2dFilterOperandLayout::HWIO => Any::from("hwio"),
+            MLConv2dFilterOperandLayout::OHWI => Any::from("ohwi"),
+            MLConv2dFilterOperandLayout::IHWO => Any::from("ihwo"),
         }
     }
 }
-impl From<&MLConv2dFilterOperandLayout> for emlite::Val {
-    fn from(s: &MLConv2dFilterOperandLayout) -> emlite::Val {
+impl From<&MLConv2dFilterOperandLayout> for Any {
+    fn from(s: &MLConv2dFilterOperandLayout) -> Any {
         match *s {
-            MLConv2dFilterOperandLayout::OIHW => emlite::Val::from("oihw"),
-            MLConv2dFilterOperandLayout::HWIO => emlite::Val::from("hwio"),
-            MLConv2dFilterOperandLayout::OHWI => emlite::Val::from("ohwi"),
-            MLConv2dFilterOperandLayout::IHWO => emlite::Val::from("ihwo"),
+            MLConv2dFilterOperandLayout::OIHW => Any::from("oihw"),
+            MLConv2dFilterOperandLayout::HWIO => Any::from("hwio"),
+            MLConv2dFilterOperandLayout::OHWI => Any::from("ohwi"),
+            MLConv2dFilterOperandLayout::IHWO => Any::from("ihwo"),
         }
     }
 }
@@ -13348,7 +13284,7 @@ pub enum MLConvTranspose2dFilterOperandLayout {
     OHWI,
 }
 impl FromVal for MLConvTranspose2dFilterOperandLayout {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "iohw" => Self::IOHW,
             "hwoi" => Self::HWOI,
@@ -13356,28 +13292,28 @@ impl FromVal for MLConvTranspose2dFilterOperandLayout {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MLConvTranspose2dFilterOperandLayout> for emlite::Val {
-    fn from(s: MLConvTranspose2dFilterOperandLayout) -> emlite::Val {
+impl From<MLConvTranspose2dFilterOperandLayout> for Any {
+    fn from(s: MLConvTranspose2dFilterOperandLayout) -> Any {
         match s {
-            MLConvTranspose2dFilterOperandLayout::IOHW => emlite::Val::from("iohw"),
-            MLConvTranspose2dFilterOperandLayout::HWOI => emlite::Val::from("hwoi"),
-            MLConvTranspose2dFilterOperandLayout::OHWI => emlite::Val::from("ohwi"),
+            MLConvTranspose2dFilterOperandLayout::IOHW => Any::from("iohw"),
+            MLConvTranspose2dFilterOperandLayout::HWOI => Any::from("hwoi"),
+            MLConvTranspose2dFilterOperandLayout::OHWI => Any::from("ohwi"),
         }
     }
 }
-impl From<&MLConvTranspose2dFilterOperandLayout> for emlite::Val {
-    fn from(s: &MLConvTranspose2dFilterOperandLayout) -> emlite::Val {
+impl From<&MLConvTranspose2dFilterOperandLayout> for Any {
+    fn from(s: &MLConvTranspose2dFilterOperandLayout) -> Any {
         match *s {
-            MLConvTranspose2dFilterOperandLayout::IOHW => emlite::Val::from("iohw"),
-            MLConvTranspose2dFilterOperandLayout::HWOI => emlite::Val::from("hwoi"),
-            MLConvTranspose2dFilterOperandLayout::OHWI => emlite::Val::from("ohwi"),
+            MLConvTranspose2dFilterOperandLayout::IOHW => Any::from("iohw"),
+            MLConvTranspose2dFilterOperandLayout::HWOI => Any::from("hwoi"),
+            MLConvTranspose2dFilterOperandLayout::OHWI => Any::from("ohwi"),
         }
     }
 }
@@ -13388,33 +13324,33 @@ pub enum MLGruWeightLayout {
     RZN,
 }
 impl FromVal for MLGruWeightLayout {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "zrn" => Self::ZRN,
             "rzn" => Self::RZN,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MLGruWeightLayout> for emlite::Val {
-    fn from(s: MLGruWeightLayout) -> emlite::Val {
+impl From<MLGruWeightLayout> for Any {
+    fn from(s: MLGruWeightLayout) -> Any {
         match s {
-            MLGruWeightLayout::ZRN => emlite::Val::from("zrn"),
-            MLGruWeightLayout::RZN => emlite::Val::from("rzn"),
+            MLGruWeightLayout::ZRN => Any::from("zrn"),
+            MLGruWeightLayout::RZN => Any::from("rzn"),
         }
     }
 }
-impl From<&MLGruWeightLayout> for emlite::Val {
-    fn from(s: &MLGruWeightLayout) -> emlite::Val {
+impl From<&MLGruWeightLayout> for Any {
+    fn from(s: &MLGruWeightLayout) -> Any {
         match *s {
-            MLGruWeightLayout::ZRN => emlite::Val::from("zrn"),
-            MLGruWeightLayout::RZN => emlite::Val::from("rzn"),
+            MLGruWeightLayout::ZRN => Any::from("zrn"),
+            MLGruWeightLayout::RZN => Any::from("rzn"),
         }
     }
 }
@@ -13426,7 +13362,7 @@ pub enum MLRecurrentNetworkActivation {
     TANH,
 }
 impl FromVal for MLRecurrentNetworkActivation {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "relu" => Self::RELU,
             "sigmoid" => Self::SIGMOID,
@@ -13434,28 +13370,28 @@ impl FromVal for MLRecurrentNetworkActivation {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MLRecurrentNetworkActivation> for emlite::Val {
-    fn from(s: MLRecurrentNetworkActivation) -> emlite::Val {
+impl From<MLRecurrentNetworkActivation> for Any {
+    fn from(s: MLRecurrentNetworkActivation) -> Any {
         match s {
-            MLRecurrentNetworkActivation::RELU => emlite::Val::from("relu"),
-            MLRecurrentNetworkActivation::SIGMOID => emlite::Val::from("sigmoid"),
-            MLRecurrentNetworkActivation::TANH => emlite::Val::from("tanh"),
+            MLRecurrentNetworkActivation::RELU => Any::from("relu"),
+            MLRecurrentNetworkActivation::SIGMOID => Any::from("sigmoid"),
+            MLRecurrentNetworkActivation::TANH => Any::from("tanh"),
         }
     }
 }
-impl From<&MLRecurrentNetworkActivation> for emlite::Val {
-    fn from(s: &MLRecurrentNetworkActivation) -> emlite::Val {
+impl From<&MLRecurrentNetworkActivation> for Any {
+    fn from(s: &MLRecurrentNetworkActivation) -> Any {
         match *s {
-            MLRecurrentNetworkActivation::RELU => emlite::Val::from("relu"),
-            MLRecurrentNetworkActivation::SIGMOID => emlite::Val::from("sigmoid"),
-            MLRecurrentNetworkActivation::TANH => emlite::Val::from("tanh"),
+            MLRecurrentNetworkActivation::RELU => Any::from("relu"),
+            MLRecurrentNetworkActivation::SIGMOID => Any::from("sigmoid"),
+            MLRecurrentNetworkActivation::TANH => Any::from("tanh"),
         }
     }
 }
@@ -13467,7 +13403,7 @@ pub enum MLRecurrentNetworkDirection {
     BOTH,
 }
 impl FromVal for MLRecurrentNetworkDirection {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "forward" => Self::FORWARD,
             "backward" => Self::BACKWARD,
@@ -13475,28 +13411,28 @@ impl FromVal for MLRecurrentNetworkDirection {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MLRecurrentNetworkDirection> for emlite::Val {
-    fn from(s: MLRecurrentNetworkDirection) -> emlite::Val {
+impl From<MLRecurrentNetworkDirection> for Any {
+    fn from(s: MLRecurrentNetworkDirection) -> Any {
         match s {
-            MLRecurrentNetworkDirection::FORWARD => emlite::Val::from("forward"),
-            MLRecurrentNetworkDirection::BACKWARD => emlite::Val::from("backward"),
-            MLRecurrentNetworkDirection::BOTH => emlite::Val::from("both"),
+            MLRecurrentNetworkDirection::FORWARD => Any::from("forward"),
+            MLRecurrentNetworkDirection::BACKWARD => Any::from("backward"),
+            MLRecurrentNetworkDirection::BOTH => Any::from("both"),
         }
     }
 }
-impl From<&MLRecurrentNetworkDirection> for emlite::Val {
-    fn from(s: &MLRecurrentNetworkDirection) -> emlite::Val {
+impl From<&MLRecurrentNetworkDirection> for Any {
+    fn from(s: &MLRecurrentNetworkDirection) -> Any {
         match *s {
-            MLRecurrentNetworkDirection::FORWARD => emlite::Val::from("forward"),
-            MLRecurrentNetworkDirection::BACKWARD => emlite::Val::from("backward"),
-            MLRecurrentNetworkDirection::BOTH => emlite::Val::from("both"),
+            MLRecurrentNetworkDirection::FORWARD => Any::from("forward"),
+            MLRecurrentNetworkDirection::BACKWARD => Any::from("backward"),
+            MLRecurrentNetworkDirection::BOTH => Any::from("both"),
         }
     }
 }
@@ -13507,33 +13443,33 @@ pub enum MLLstmWeightLayout {
     IFGO,
 }
 impl FromVal for MLLstmWeightLayout {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "iofg" => Self::IOFG,
             "ifgo" => Self::IFGO,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MLLstmWeightLayout> for emlite::Val {
-    fn from(s: MLLstmWeightLayout) -> emlite::Val {
+impl From<MLLstmWeightLayout> for Any {
+    fn from(s: MLLstmWeightLayout) -> Any {
         match s {
-            MLLstmWeightLayout::IOFG => emlite::Val::from("iofg"),
-            MLLstmWeightLayout::IFGO => emlite::Val::from("ifgo"),
+            MLLstmWeightLayout::IOFG => Any::from("iofg"),
+            MLLstmWeightLayout::IFGO => Any::from("ifgo"),
         }
     }
 }
-impl From<&MLLstmWeightLayout> for emlite::Val {
-    fn from(s: &MLLstmWeightLayout) -> emlite::Val {
+impl From<&MLLstmWeightLayout> for Any {
+    fn from(s: &MLLstmWeightLayout) -> Any {
         match *s {
-            MLLstmWeightLayout::IOFG => emlite::Val::from("iofg"),
-            MLLstmWeightLayout::IFGO => emlite::Val::from("ifgo"),
+            MLLstmWeightLayout::IOFG => Any::from("iofg"),
+            MLLstmWeightLayout::IFGO => Any::from("ifgo"),
         }
     }
 }
@@ -13545,7 +13481,7 @@ pub enum MLPaddingMode {
     REFLECTION,
 }
 impl FromVal for MLPaddingMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "constant" => Self::CONSTANT,
             "edge" => Self::EDGE,
@@ -13553,28 +13489,28 @@ impl FromVal for MLPaddingMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MLPaddingMode> for emlite::Val {
-    fn from(s: MLPaddingMode) -> emlite::Val {
+impl From<MLPaddingMode> for Any {
+    fn from(s: MLPaddingMode) -> Any {
         match s {
-            MLPaddingMode::CONSTANT => emlite::Val::from("constant"),
-            MLPaddingMode::EDGE => emlite::Val::from("edge"),
-            MLPaddingMode::REFLECTION => emlite::Val::from("reflection"),
+            MLPaddingMode::CONSTANT => Any::from("constant"),
+            MLPaddingMode::EDGE => Any::from("edge"),
+            MLPaddingMode::REFLECTION => Any::from("reflection"),
         }
     }
 }
-impl From<&MLPaddingMode> for emlite::Val {
-    fn from(s: &MLPaddingMode) -> emlite::Val {
+impl From<&MLPaddingMode> for Any {
+    fn from(s: &MLPaddingMode) -> Any {
         match *s {
-            MLPaddingMode::CONSTANT => emlite::Val::from("constant"),
-            MLPaddingMode::EDGE => emlite::Val::from("edge"),
-            MLPaddingMode::REFLECTION => emlite::Val::from("reflection"),
+            MLPaddingMode::CONSTANT => Any::from("constant"),
+            MLPaddingMode::EDGE => Any::from("edge"),
+            MLPaddingMode::REFLECTION => Any::from("reflection"),
         }
     }
 }
@@ -13585,33 +13521,33 @@ pub enum MLRoundingType {
     CEIL,
 }
 impl FromVal for MLRoundingType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "floor" => Self::FLOOR,
             "ceil" => Self::CEIL,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MLRoundingType> for emlite::Val {
-    fn from(s: MLRoundingType) -> emlite::Val {
+impl From<MLRoundingType> for Any {
+    fn from(s: MLRoundingType) -> Any {
         match s {
-            MLRoundingType::FLOOR => emlite::Val::from("floor"),
-            MLRoundingType::CEIL => emlite::Val::from("ceil"),
+            MLRoundingType::FLOOR => Any::from("floor"),
+            MLRoundingType::CEIL => Any::from("ceil"),
         }
     }
 }
-impl From<&MLRoundingType> for emlite::Val {
-    fn from(s: &MLRoundingType) -> emlite::Val {
+impl From<&MLRoundingType> for Any {
+    fn from(s: &MLRoundingType) -> Any {
         match *s {
-            MLRoundingType::FLOOR => emlite::Val::from("floor"),
-            MLRoundingType::CEIL => emlite::Val::from("ceil"),
+            MLRoundingType::FLOOR => Any::from("floor"),
+            MLRoundingType::CEIL => Any::from("ceil"),
         }
     }
 }
@@ -13622,33 +13558,33 @@ pub enum MLInterpolationMode {
     LINEAR,
 }
 impl FromVal for MLInterpolationMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "nearest-neighbor" => Self::NEAREST_NEIGHBOR,
             "linear" => Self::LINEAR,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<MLInterpolationMode> for emlite::Val {
-    fn from(s: MLInterpolationMode) -> emlite::Val {
+impl From<MLInterpolationMode> for Any {
+    fn from(s: MLInterpolationMode) -> Any {
         match s {
-            MLInterpolationMode::NEAREST_NEIGHBOR => emlite::Val::from("nearest-neighbor"),
-            MLInterpolationMode::LINEAR => emlite::Val::from("linear"),
+            MLInterpolationMode::NEAREST_NEIGHBOR => Any::from("nearest-neighbor"),
+            MLInterpolationMode::LINEAR => Any::from("linear"),
         }
     }
 }
-impl From<&MLInterpolationMode> for emlite::Val {
-    fn from(s: &MLInterpolationMode) -> emlite::Val {
+impl From<&MLInterpolationMode> for Any {
+    fn from(s: &MLInterpolationMode) -> Any {
         match *s {
-            MLInterpolationMode::NEAREST_NEIGHBOR => emlite::Val::from("nearest-neighbor"),
-            MLInterpolationMode::LINEAR => emlite::Val::from("linear"),
+            MLInterpolationMode::NEAREST_NEIGHBOR => Any::from("nearest-neighbor"),
+            MLInterpolationMode::LINEAR => Any::from("linear"),
         }
     }
 }
@@ -13659,33 +13595,33 @@ pub enum SFrameTransformRole {
     DECRYPT,
 }
 impl FromVal for SFrameTransformRole {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "encrypt" => Self::ENCRYPT,
             "decrypt" => Self::DECRYPT,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SFrameTransformRole> for emlite::Val {
-    fn from(s: SFrameTransformRole) -> emlite::Val {
+impl From<SFrameTransformRole> for Any {
+    fn from(s: SFrameTransformRole) -> Any {
         match s {
-            SFrameTransformRole::ENCRYPT => emlite::Val::from("encrypt"),
-            SFrameTransformRole::DECRYPT => emlite::Val::from("decrypt"),
+            SFrameTransformRole::ENCRYPT => Any::from("encrypt"),
+            SFrameTransformRole::DECRYPT => Any::from("decrypt"),
         }
     }
 }
-impl From<&SFrameTransformRole> for emlite::Val {
-    fn from(s: &SFrameTransformRole) -> emlite::Val {
+impl From<&SFrameTransformRole> for Any {
+    fn from(s: &SFrameTransformRole) -> Any {
         match *s {
-            SFrameTransformRole::ENCRYPT => emlite::Val::from("encrypt"),
-            SFrameTransformRole::DECRYPT => emlite::Val::from("decrypt"),
+            SFrameTransformRole::ENCRYPT => Any::from("encrypt"),
+            SFrameTransformRole::DECRYPT => Any::from("decrypt"),
         }
     }
 }
@@ -13697,7 +13633,7 @@ pub enum SFrameTransformErrorEventType {
     SYNTAX,
 }
 impl FromVal for SFrameTransformErrorEventType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "authentication" => Self::AUTHENTICATION,
             "keyID" => Self::KEY_ID,
@@ -13705,28 +13641,28 @@ impl FromVal for SFrameTransformErrorEventType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SFrameTransformErrorEventType> for emlite::Val {
-    fn from(s: SFrameTransformErrorEventType) -> emlite::Val {
+impl From<SFrameTransformErrorEventType> for Any {
+    fn from(s: SFrameTransformErrorEventType) -> Any {
         match s {
-            SFrameTransformErrorEventType::AUTHENTICATION => emlite::Val::from("authentication"),
-            SFrameTransformErrorEventType::KEY_ID => emlite::Val::from("keyID"),
-            SFrameTransformErrorEventType::SYNTAX => emlite::Val::from("syntax"),
+            SFrameTransformErrorEventType::AUTHENTICATION => Any::from("authentication"),
+            SFrameTransformErrorEventType::KEY_ID => Any::from("keyID"),
+            SFrameTransformErrorEventType::SYNTAX => Any::from("syntax"),
         }
     }
 }
-impl From<&SFrameTransformErrorEventType> for emlite::Val {
-    fn from(s: &SFrameTransformErrorEventType) -> emlite::Val {
+impl From<&SFrameTransformErrorEventType> for Any {
+    fn from(s: &SFrameTransformErrorEventType) -> Any {
         match *s {
-            SFrameTransformErrorEventType::AUTHENTICATION => emlite::Val::from("authentication"),
-            SFrameTransformErrorEventType::KEY_ID => emlite::Val::from("keyID"),
-            SFrameTransformErrorEventType::SYNTAX => emlite::Val::from("syntax"),
+            SFrameTransformErrorEventType::AUTHENTICATION => Any::from("authentication"),
+            SFrameTransformErrorEventType::KEY_ID => Any::from("keyID"),
+            SFrameTransformErrorEventType::SYNTAX => Any::from("syntax"),
         }
     }
 }
@@ -13738,7 +13674,7 @@ pub enum RTCEncodedVideoFrameType {
     DELTA,
 }
 impl FromVal for RTCEncodedVideoFrameType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "empty" => Self::EMPTY,
             "key" => Self::KEY,
@@ -13746,28 +13682,28 @@ impl FromVal for RTCEncodedVideoFrameType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCEncodedVideoFrameType> for emlite::Val {
-    fn from(s: RTCEncodedVideoFrameType) -> emlite::Val {
+impl From<RTCEncodedVideoFrameType> for Any {
+    fn from(s: RTCEncodedVideoFrameType) -> Any {
         match s {
-            RTCEncodedVideoFrameType::EMPTY => emlite::Val::from("empty"),
-            RTCEncodedVideoFrameType::KEY => emlite::Val::from("key"),
-            RTCEncodedVideoFrameType::DELTA => emlite::Val::from("delta"),
+            RTCEncodedVideoFrameType::EMPTY => Any::from("empty"),
+            RTCEncodedVideoFrameType::KEY => Any::from("key"),
+            RTCEncodedVideoFrameType::DELTA => Any::from("delta"),
         }
     }
 }
-impl From<&RTCEncodedVideoFrameType> for emlite::Val {
-    fn from(s: &RTCEncodedVideoFrameType) -> emlite::Val {
+impl From<&RTCEncodedVideoFrameType> for Any {
+    fn from(s: &RTCEncodedVideoFrameType) -> Any {
         match *s {
-            RTCEncodedVideoFrameType::EMPTY => emlite::Val::from("empty"),
-            RTCEncodedVideoFrameType::KEY => emlite::Val::from("key"),
-            RTCEncodedVideoFrameType::DELTA => emlite::Val::from("delta"),
+            RTCEncodedVideoFrameType::EMPTY => Any::from("empty"),
+            RTCEncodedVideoFrameType::KEY => Any::from("key"),
+            RTCEncodedVideoFrameType::DELTA => Any::from("delta"),
         }
     }
 }
@@ -13784,7 +13720,7 @@ pub enum RTCErrorDetailTypeIdp {
     IDP_TOKEN_INVALID,
 }
 impl FromVal for RTCErrorDetailTypeIdp {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "idp-bad-script-failure" => Self::IDP_BAD_SCRIPT_FAILURE,
             "idp-execution-failure" => Self::IDP_EXECUTION_FAILURE,
@@ -13797,46 +13733,38 @@ impl FromVal for RTCErrorDetailTypeIdp {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCErrorDetailTypeIdp> for emlite::Val {
-    fn from(s: RTCErrorDetailTypeIdp) -> emlite::Val {
+impl From<RTCErrorDetailTypeIdp> for Any {
+    fn from(s: RTCErrorDetailTypeIdp) -> Any {
         match s {
-            RTCErrorDetailTypeIdp::IDP_BAD_SCRIPT_FAILURE => {
-                emlite::Val::from("idp-bad-script-failure")
-            }
-            RTCErrorDetailTypeIdp::IDP_EXECUTION_FAILURE => {
-                emlite::Val::from("idp-execution-failure")
-            }
-            RTCErrorDetailTypeIdp::IDP_LOAD_FAILURE => emlite::Val::from("idp-load-failure"),
-            RTCErrorDetailTypeIdp::IDP_NEED_LOGIN => emlite::Val::from("idp-need-login"),
-            RTCErrorDetailTypeIdp::IDP_TIMEOUT => emlite::Val::from("idp-timeout"),
-            RTCErrorDetailTypeIdp::IDP_TLS_FAILURE => emlite::Val::from("idp-tls-failure"),
-            RTCErrorDetailTypeIdp::IDP_TOKEN_EXPIRED => emlite::Val::from("idp-token-expired"),
-            RTCErrorDetailTypeIdp::IDP_TOKEN_INVALID => emlite::Val::from("idp-token-invalid"),
+            RTCErrorDetailTypeIdp::IDP_BAD_SCRIPT_FAILURE => Any::from("idp-bad-script-failure"),
+            RTCErrorDetailTypeIdp::IDP_EXECUTION_FAILURE => Any::from("idp-execution-failure"),
+            RTCErrorDetailTypeIdp::IDP_LOAD_FAILURE => Any::from("idp-load-failure"),
+            RTCErrorDetailTypeIdp::IDP_NEED_LOGIN => Any::from("idp-need-login"),
+            RTCErrorDetailTypeIdp::IDP_TIMEOUT => Any::from("idp-timeout"),
+            RTCErrorDetailTypeIdp::IDP_TLS_FAILURE => Any::from("idp-tls-failure"),
+            RTCErrorDetailTypeIdp::IDP_TOKEN_EXPIRED => Any::from("idp-token-expired"),
+            RTCErrorDetailTypeIdp::IDP_TOKEN_INVALID => Any::from("idp-token-invalid"),
         }
     }
 }
-impl From<&RTCErrorDetailTypeIdp> for emlite::Val {
-    fn from(s: &RTCErrorDetailTypeIdp) -> emlite::Val {
+impl From<&RTCErrorDetailTypeIdp> for Any {
+    fn from(s: &RTCErrorDetailTypeIdp) -> Any {
         match *s {
-            RTCErrorDetailTypeIdp::IDP_BAD_SCRIPT_FAILURE => {
-                emlite::Val::from("idp-bad-script-failure")
-            }
-            RTCErrorDetailTypeIdp::IDP_EXECUTION_FAILURE => {
-                emlite::Val::from("idp-execution-failure")
-            }
-            RTCErrorDetailTypeIdp::IDP_LOAD_FAILURE => emlite::Val::from("idp-load-failure"),
-            RTCErrorDetailTypeIdp::IDP_NEED_LOGIN => emlite::Val::from("idp-need-login"),
-            RTCErrorDetailTypeIdp::IDP_TIMEOUT => emlite::Val::from("idp-timeout"),
-            RTCErrorDetailTypeIdp::IDP_TLS_FAILURE => emlite::Val::from("idp-tls-failure"),
-            RTCErrorDetailTypeIdp::IDP_TOKEN_EXPIRED => emlite::Val::from("idp-token-expired"),
-            RTCErrorDetailTypeIdp::IDP_TOKEN_INVALID => emlite::Val::from("idp-token-invalid"),
+            RTCErrorDetailTypeIdp::IDP_BAD_SCRIPT_FAILURE => Any::from("idp-bad-script-failure"),
+            RTCErrorDetailTypeIdp::IDP_EXECUTION_FAILURE => Any::from("idp-execution-failure"),
+            RTCErrorDetailTypeIdp::IDP_LOAD_FAILURE => Any::from("idp-load-failure"),
+            RTCErrorDetailTypeIdp::IDP_NEED_LOGIN => Any::from("idp-need-login"),
+            RTCErrorDetailTypeIdp::IDP_TIMEOUT => Any::from("idp-timeout"),
+            RTCErrorDetailTypeIdp::IDP_TLS_FAILURE => Any::from("idp-tls-failure"),
+            RTCErrorDetailTypeIdp::IDP_TOKEN_EXPIRED => Any::from("idp-token-expired"),
+            RTCErrorDetailTypeIdp::IDP_TOKEN_INVALID => Any::from("idp-token-invalid"),
         }
     }
 }
@@ -13849,7 +13777,7 @@ pub enum RTCPriorityType {
     HIGH,
 }
 impl FromVal for RTCPriorityType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "very-low" => Self::VERY_LOW,
             "low" => Self::LOW,
@@ -13858,30 +13786,30 @@ impl FromVal for RTCPriorityType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCPriorityType> for emlite::Val {
-    fn from(s: RTCPriorityType) -> emlite::Val {
+impl From<RTCPriorityType> for Any {
+    fn from(s: RTCPriorityType) -> Any {
         match s {
-            RTCPriorityType::VERY_LOW => emlite::Val::from("very-low"),
-            RTCPriorityType::LOW => emlite::Val::from("low"),
-            RTCPriorityType::MEDIUM => emlite::Val::from("medium"),
-            RTCPriorityType::HIGH => emlite::Val::from("high"),
+            RTCPriorityType::VERY_LOW => Any::from("very-low"),
+            RTCPriorityType::LOW => Any::from("low"),
+            RTCPriorityType::MEDIUM => Any::from("medium"),
+            RTCPriorityType::HIGH => Any::from("high"),
         }
     }
 }
-impl From<&RTCPriorityType> for emlite::Val {
-    fn from(s: &RTCPriorityType) -> emlite::Val {
+impl From<&RTCPriorityType> for Any {
+    fn from(s: &RTCPriorityType) -> Any {
         match *s {
-            RTCPriorityType::VERY_LOW => emlite::Val::from("very-low"),
-            RTCPriorityType::LOW => emlite::Val::from("low"),
-            RTCPriorityType::MEDIUM => emlite::Val::from("medium"),
-            RTCPriorityType::HIGH => emlite::Val::from("high"),
+            RTCPriorityType::VERY_LOW => Any::from("very-low"),
+            RTCPriorityType::LOW => Any::from("low"),
+            RTCPriorityType::MEDIUM => Any::from("medium"),
+            RTCPriorityType::HIGH => Any::from("high"),
         }
     }
 }
@@ -13904,7 +13832,7 @@ pub enum RTCStatsType {
     CERTIFICATE,
 }
 impl FromVal for RTCStatsType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "codec" => Self::CODEC,
             "inbound-rtp" => Self::INBOUND_RTP,
@@ -13923,50 +13851,50 @@ impl FromVal for RTCStatsType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCStatsType> for emlite::Val {
-    fn from(s: RTCStatsType) -> emlite::Val {
+impl From<RTCStatsType> for Any {
+    fn from(s: RTCStatsType) -> Any {
         match s {
-            RTCStatsType::CODEC => emlite::Val::from("codec"),
-            RTCStatsType::INBOUND_RTP => emlite::Val::from("inbound-rtp"),
-            RTCStatsType::OUTBOUND_RTP => emlite::Val::from("outbound-rtp"),
-            RTCStatsType::REMOTE_INBOUND_RTP => emlite::Val::from("remote-inbound-rtp"),
-            RTCStatsType::REMOTE_OUTBOUND_RTP => emlite::Val::from("remote-outbound-rtp"),
-            RTCStatsType::MEDIA_SOURCE => emlite::Val::from("media-source"),
-            RTCStatsType::MEDIA_PLAYOUT => emlite::Val::from("media-playout"),
-            RTCStatsType::PEER_CONNECTION => emlite::Val::from("peer-connection"),
-            RTCStatsType::DATA_CHANNEL => emlite::Val::from("data-channel"),
-            RTCStatsType::TRANSPORT => emlite::Val::from("transport"),
-            RTCStatsType::CANDIDATE_PAIR => emlite::Val::from("candidate-pair"),
-            RTCStatsType::LOCAL_CANDIDATE => emlite::Val::from("local-candidate"),
-            RTCStatsType::REMOTE_CANDIDATE => emlite::Val::from("remote-candidate"),
-            RTCStatsType::CERTIFICATE => emlite::Val::from("certificate"),
+            RTCStatsType::CODEC => Any::from("codec"),
+            RTCStatsType::INBOUND_RTP => Any::from("inbound-rtp"),
+            RTCStatsType::OUTBOUND_RTP => Any::from("outbound-rtp"),
+            RTCStatsType::REMOTE_INBOUND_RTP => Any::from("remote-inbound-rtp"),
+            RTCStatsType::REMOTE_OUTBOUND_RTP => Any::from("remote-outbound-rtp"),
+            RTCStatsType::MEDIA_SOURCE => Any::from("media-source"),
+            RTCStatsType::MEDIA_PLAYOUT => Any::from("media-playout"),
+            RTCStatsType::PEER_CONNECTION => Any::from("peer-connection"),
+            RTCStatsType::DATA_CHANNEL => Any::from("data-channel"),
+            RTCStatsType::TRANSPORT => Any::from("transport"),
+            RTCStatsType::CANDIDATE_PAIR => Any::from("candidate-pair"),
+            RTCStatsType::LOCAL_CANDIDATE => Any::from("local-candidate"),
+            RTCStatsType::REMOTE_CANDIDATE => Any::from("remote-candidate"),
+            RTCStatsType::CERTIFICATE => Any::from("certificate"),
         }
     }
 }
-impl From<&RTCStatsType> for emlite::Val {
-    fn from(s: &RTCStatsType) -> emlite::Val {
+impl From<&RTCStatsType> for Any {
+    fn from(s: &RTCStatsType) -> Any {
         match *s {
-            RTCStatsType::CODEC => emlite::Val::from("codec"),
-            RTCStatsType::INBOUND_RTP => emlite::Val::from("inbound-rtp"),
-            RTCStatsType::OUTBOUND_RTP => emlite::Val::from("outbound-rtp"),
-            RTCStatsType::REMOTE_INBOUND_RTP => emlite::Val::from("remote-inbound-rtp"),
-            RTCStatsType::REMOTE_OUTBOUND_RTP => emlite::Val::from("remote-outbound-rtp"),
-            RTCStatsType::MEDIA_SOURCE => emlite::Val::from("media-source"),
-            RTCStatsType::MEDIA_PLAYOUT => emlite::Val::from("media-playout"),
-            RTCStatsType::PEER_CONNECTION => emlite::Val::from("peer-connection"),
-            RTCStatsType::DATA_CHANNEL => emlite::Val::from("data-channel"),
-            RTCStatsType::TRANSPORT => emlite::Val::from("transport"),
-            RTCStatsType::CANDIDATE_PAIR => emlite::Val::from("candidate-pair"),
-            RTCStatsType::LOCAL_CANDIDATE => emlite::Val::from("local-candidate"),
-            RTCStatsType::REMOTE_CANDIDATE => emlite::Val::from("remote-candidate"),
-            RTCStatsType::CERTIFICATE => emlite::Val::from("certificate"),
+            RTCStatsType::CODEC => Any::from("codec"),
+            RTCStatsType::INBOUND_RTP => Any::from("inbound-rtp"),
+            RTCStatsType::OUTBOUND_RTP => Any::from("outbound-rtp"),
+            RTCStatsType::REMOTE_INBOUND_RTP => Any::from("remote-inbound-rtp"),
+            RTCStatsType::REMOTE_OUTBOUND_RTP => Any::from("remote-outbound-rtp"),
+            RTCStatsType::MEDIA_SOURCE => Any::from("media-source"),
+            RTCStatsType::MEDIA_PLAYOUT => Any::from("media-playout"),
+            RTCStatsType::PEER_CONNECTION => Any::from("peer-connection"),
+            RTCStatsType::DATA_CHANNEL => Any::from("data-channel"),
+            RTCStatsType::TRANSPORT => Any::from("transport"),
+            RTCStatsType::CANDIDATE_PAIR => Any::from("candidate-pair"),
+            RTCStatsType::LOCAL_CANDIDATE => Any::from("local-candidate"),
+            RTCStatsType::REMOTE_CANDIDATE => Any::from("remote-candidate"),
+            RTCStatsType::CERTIFICATE => Any::from("certificate"),
         }
     }
 }
@@ -13979,7 +13907,7 @@ pub enum RTCQualityLimitationReason {
     OTHER,
 }
 impl FromVal for RTCQualityLimitationReason {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "cpu" => Self::CPU,
@@ -13988,30 +13916,30 @@ impl FromVal for RTCQualityLimitationReason {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCQualityLimitationReason> for emlite::Val {
-    fn from(s: RTCQualityLimitationReason) -> emlite::Val {
+impl From<RTCQualityLimitationReason> for Any {
+    fn from(s: RTCQualityLimitationReason) -> Any {
         match s {
-            RTCQualityLimitationReason::NONE => emlite::Val::from("none"),
-            RTCQualityLimitationReason::CPU => emlite::Val::from("cpu"),
-            RTCQualityLimitationReason::BANDWIDTH => emlite::Val::from("bandwidth"),
-            RTCQualityLimitationReason::OTHER => emlite::Val::from("other"),
+            RTCQualityLimitationReason::NONE => Any::from("none"),
+            RTCQualityLimitationReason::CPU => Any::from("cpu"),
+            RTCQualityLimitationReason::BANDWIDTH => Any::from("bandwidth"),
+            RTCQualityLimitationReason::OTHER => Any::from("other"),
         }
     }
 }
-impl From<&RTCQualityLimitationReason> for emlite::Val {
-    fn from(s: &RTCQualityLimitationReason) -> emlite::Val {
+impl From<&RTCQualityLimitationReason> for Any {
+    fn from(s: &RTCQualityLimitationReason) -> Any {
         match *s {
-            RTCQualityLimitationReason::NONE => emlite::Val::from("none"),
-            RTCQualityLimitationReason::CPU => emlite::Val::from("cpu"),
-            RTCQualityLimitationReason::BANDWIDTH => emlite::Val::from("bandwidth"),
-            RTCQualityLimitationReason::OTHER => emlite::Val::from("other"),
+            RTCQualityLimitationReason::NONE => Any::from("none"),
+            RTCQualityLimitationReason::CPU => Any::from("cpu"),
+            RTCQualityLimitationReason::BANDWIDTH => Any::from("bandwidth"),
+            RTCQualityLimitationReason::OTHER => Any::from("other"),
         }
     }
 }
@@ -14023,7 +13951,7 @@ pub enum RTCDtlsRole {
     UNKNOWN,
 }
 impl FromVal for RTCDtlsRole {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "client" => Self::CLIENT,
             "server" => Self::SERVER,
@@ -14031,28 +13959,28 @@ impl FromVal for RTCDtlsRole {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCDtlsRole> for emlite::Val {
-    fn from(s: RTCDtlsRole) -> emlite::Val {
+impl From<RTCDtlsRole> for Any {
+    fn from(s: RTCDtlsRole) -> Any {
         match s {
-            RTCDtlsRole::CLIENT => emlite::Val::from("client"),
-            RTCDtlsRole::SERVER => emlite::Val::from("server"),
-            RTCDtlsRole::UNKNOWN => emlite::Val::from("unknown"),
+            RTCDtlsRole::CLIENT => Any::from("client"),
+            RTCDtlsRole::SERVER => Any::from("server"),
+            RTCDtlsRole::UNKNOWN => Any::from("unknown"),
         }
     }
 }
-impl From<&RTCDtlsRole> for emlite::Val {
-    fn from(s: &RTCDtlsRole) -> emlite::Val {
+impl From<&RTCDtlsRole> for Any {
+    fn from(s: &RTCDtlsRole) -> Any {
         match *s {
-            RTCDtlsRole::CLIENT => emlite::Val::from("client"),
-            RTCDtlsRole::SERVER => emlite::Val::from("server"),
-            RTCDtlsRole::UNKNOWN => emlite::Val::from("unknown"),
+            RTCDtlsRole::CLIENT => Any::from("client"),
+            RTCDtlsRole::SERVER => Any::from("server"),
+            RTCDtlsRole::UNKNOWN => Any::from("unknown"),
         }
     }
 }
@@ -14066,7 +13994,7 @@ pub enum RTCStatsIceCandidatePairState {
     SUCCEEDED,
 }
 impl FromVal for RTCStatsIceCandidatePairState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "frozen" => Self::FROZEN,
             "waiting" => Self::WAITING,
@@ -14076,32 +14004,32 @@ impl FromVal for RTCStatsIceCandidatePairState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCStatsIceCandidatePairState> for emlite::Val {
-    fn from(s: RTCStatsIceCandidatePairState) -> emlite::Val {
+impl From<RTCStatsIceCandidatePairState> for Any {
+    fn from(s: RTCStatsIceCandidatePairState) -> Any {
         match s {
-            RTCStatsIceCandidatePairState::FROZEN => emlite::Val::from("frozen"),
-            RTCStatsIceCandidatePairState::WAITING => emlite::Val::from("waiting"),
-            RTCStatsIceCandidatePairState::IN_PROGRESS => emlite::Val::from("in-progress"),
-            RTCStatsIceCandidatePairState::FAILED => emlite::Val::from("failed"),
-            RTCStatsIceCandidatePairState::SUCCEEDED => emlite::Val::from("succeeded"),
+            RTCStatsIceCandidatePairState::FROZEN => Any::from("frozen"),
+            RTCStatsIceCandidatePairState::WAITING => Any::from("waiting"),
+            RTCStatsIceCandidatePairState::IN_PROGRESS => Any::from("in-progress"),
+            RTCStatsIceCandidatePairState::FAILED => Any::from("failed"),
+            RTCStatsIceCandidatePairState::SUCCEEDED => Any::from("succeeded"),
         }
     }
 }
-impl From<&RTCStatsIceCandidatePairState> for emlite::Val {
-    fn from(s: &RTCStatsIceCandidatePairState) -> emlite::Val {
+impl From<&RTCStatsIceCandidatePairState> for Any {
+    fn from(s: &RTCStatsIceCandidatePairState) -> Any {
         match *s {
-            RTCStatsIceCandidatePairState::FROZEN => emlite::Val::from("frozen"),
-            RTCStatsIceCandidatePairState::WAITING => emlite::Val::from("waiting"),
-            RTCStatsIceCandidatePairState::IN_PROGRESS => emlite::Val::from("in-progress"),
-            RTCStatsIceCandidatePairState::FAILED => emlite::Val::from("failed"),
-            RTCStatsIceCandidatePairState::SUCCEEDED => emlite::Val::from("succeeded"),
+            RTCStatsIceCandidatePairState::FROZEN => Any::from("frozen"),
+            RTCStatsIceCandidatePairState::WAITING => Any::from("waiting"),
+            RTCStatsIceCandidatePairState::IN_PROGRESS => Any::from("in-progress"),
+            RTCStatsIceCandidatePairState::FAILED => Any::from("failed"),
+            RTCStatsIceCandidatePairState::SUCCEEDED => Any::from("succeeded"),
         }
     }
 }
@@ -14112,33 +14040,33 @@ pub enum RTCIceTransportPolicy {
     ALL,
 }
 impl FromVal for RTCIceTransportPolicy {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "relay" => Self::RELAY,
             "all" => Self::ALL,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCIceTransportPolicy> for emlite::Val {
-    fn from(s: RTCIceTransportPolicy) -> emlite::Val {
+impl From<RTCIceTransportPolicy> for Any {
+    fn from(s: RTCIceTransportPolicy) -> Any {
         match s {
-            RTCIceTransportPolicy::RELAY => emlite::Val::from("relay"),
-            RTCIceTransportPolicy::ALL => emlite::Val::from("all"),
+            RTCIceTransportPolicy::RELAY => Any::from("relay"),
+            RTCIceTransportPolicy::ALL => Any::from("all"),
         }
     }
 }
-impl From<&RTCIceTransportPolicy> for emlite::Val {
-    fn from(s: &RTCIceTransportPolicy) -> emlite::Val {
+impl From<&RTCIceTransportPolicy> for Any {
+    fn from(s: &RTCIceTransportPolicy) -> Any {
         match *s {
-            RTCIceTransportPolicy::RELAY => emlite::Val::from("relay"),
-            RTCIceTransportPolicy::ALL => emlite::Val::from("all"),
+            RTCIceTransportPolicy::RELAY => Any::from("relay"),
+            RTCIceTransportPolicy::ALL => Any::from("all"),
         }
     }
 }
@@ -14150,7 +14078,7 @@ pub enum RTCBundlePolicy {
     MAX_BUNDLE,
 }
 impl FromVal for RTCBundlePolicy {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "balanced" => Self::BALANCED,
             "max-compat" => Self::MAX_COMPAT,
@@ -14158,28 +14086,28 @@ impl FromVal for RTCBundlePolicy {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCBundlePolicy> for emlite::Val {
-    fn from(s: RTCBundlePolicy) -> emlite::Val {
+impl From<RTCBundlePolicy> for Any {
+    fn from(s: RTCBundlePolicy) -> Any {
         match s {
-            RTCBundlePolicy::BALANCED => emlite::Val::from("balanced"),
-            RTCBundlePolicy::MAX_COMPAT => emlite::Val::from("max-compat"),
-            RTCBundlePolicy::MAX_BUNDLE => emlite::Val::from("max-bundle"),
+            RTCBundlePolicy::BALANCED => Any::from("balanced"),
+            RTCBundlePolicy::MAX_COMPAT => Any::from("max-compat"),
+            RTCBundlePolicy::MAX_BUNDLE => Any::from("max-bundle"),
         }
     }
 }
-impl From<&RTCBundlePolicy> for emlite::Val {
-    fn from(s: &RTCBundlePolicy) -> emlite::Val {
+impl From<&RTCBundlePolicy> for Any {
+    fn from(s: &RTCBundlePolicy) -> Any {
         match *s {
-            RTCBundlePolicy::BALANCED => emlite::Val::from("balanced"),
-            RTCBundlePolicy::MAX_COMPAT => emlite::Val::from("max-compat"),
-            RTCBundlePolicy::MAX_BUNDLE => emlite::Val::from("max-bundle"),
+            RTCBundlePolicy::BALANCED => Any::from("balanced"),
+            RTCBundlePolicy::MAX_COMPAT => Any::from("max-compat"),
+            RTCBundlePolicy::MAX_BUNDLE => Any::from("max-bundle"),
         }
     }
 }
@@ -14189,30 +14117,30 @@ pub enum RTCRtcpMuxPolicy {
     REQUIRE,
 }
 impl FromVal for RTCRtcpMuxPolicy {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "require" => Self::REQUIRE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCRtcpMuxPolicy> for emlite::Val {
-    fn from(s: RTCRtcpMuxPolicy) -> emlite::Val {
+impl From<RTCRtcpMuxPolicy> for Any {
+    fn from(s: RTCRtcpMuxPolicy) -> Any {
         match s {
-            RTCRtcpMuxPolicy::REQUIRE => emlite::Val::from("require"),
+            RTCRtcpMuxPolicy::REQUIRE => Any::from("require"),
         }
     }
 }
-impl From<&RTCRtcpMuxPolicy> for emlite::Val {
-    fn from(s: &RTCRtcpMuxPolicy) -> emlite::Val {
+impl From<&RTCRtcpMuxPolicy> for Any {
+    fn from(s: &RTCRtcpMuxPolicy) -> Any {
         match *s {
-            RTCRtcpMuxPolicy::REQUIRE => emlite::Val::from("require"),
+            RTCRtcpMuxPolicy::REQUIRE => Any::from("require"),
         }
     }
 }
@@ -14227,7 +14155,7 @@ pub enum RTCSignalingState {
     CLOSED,
 }
 impl FromVal for RTCSignalingState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "stable" => Self::STABLE,
             "have-local-offer" => Self::HAVE_LOCAL_OFFER,
@@ -14238,34 +14166,34 @@ impl FromVal for RTCSignalingState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCSignalingState> for emlite::Val {
-    fn from(s: RTCSignalingState) -> emlite::Val {
+impl From<RTCSignalingState> for Any {
+    fn from(s: RTCSignalingState) -> Any {
         match s {
-            RTCSignalingState::STABLE => emlite::Val::from("stable"),
-            RTCSignalingState::HAVE_LOCAL_OFFER => emlite::Val::from("have-local-offer"),
-            RTCSignalingState::HAVE_REMOTE_OFFER => emlite::Val::from("have-remote-offer"),
-            RTCSignalingState::HAVE_LOCAL_PRANSWER => emlite::Val::from("have-local-pranswer"),
-            RTCSignalingState::HAVE_REMOTE_PRANSWER => emlite::Val::from("have-remote-pranswer"),
-            RTCSignalingState::CLOSED => emlite::Val::from("closed"),
+            RTCSignalingState::STABLE => Any::from("stable"),
+            RTCSignalingState::HAVE_LOCAL_OFFER => Any::from("have-local-offer"),
+            RTCSignalingState::HAVE_REMOTE_OFFER => Any::from("have-remote-offer"),
+            RTCSignalingState::HAVE_LOCAL_PRANSWER => Any::from("have-local-pranswer"),
+            RTCSignalingState::HAVE_REMOTE_PRANSWER => Any::from("have-remote-pranswer"),
+            RTCSignalingState::CLOSED => Any::from("closed"),
         }
     }
 }
-impl From<&RTCSignalingState> for emlite::Val {
-    fn from(s: &RTCSignalingState) -> emlite::Val {
+impl From<&RTCSignalingState> for Any {
+    fn from(s: &RTCSignalingState) -> Any {
         match *s {
-            RTCSignalingState::STABLE => emlite::Val::from("stable"),
-            RTCSignalingState::HAVE_LOCAL_OFFER => emlite::Val::from("have-local-offer"),
-            RTCSignalingState::HAVE_REMOTE_OFFER => emlite::Val::from("have-remote-offer"),
-            RTCSignalingState::HAVE_LOCAL_PRANSWER => emlite::Val::from("have-local-pranswer"),
-            RTCSignalingState::HAVE_REMOTE_PRANSWER => emlite::Val::from("have-remote-pranswer"),
-            RTCSignalingState::CLOSED => emlite::Val::from("closed"),
+            RTCSignalingState::STABLE => Any::from("stable"),
+            RTCSignalingState::HAVE_LOCAL_OFFER => Any::from("have-local-offer"),
+            RTCSignalingState::HAVE_REMOTE_OFFER => Any::from("have-remote-offer"),
+            RTCSignalingState::HAVE_LOCAL_PRANSWER => Any::from("have-local-pranswer"),
+            RTCSignalingState::HAVE_REMOTE_PRANSWER => Any::from("have-remote-pranswer"),
+            RTCSignalingState::CLOSED => Any::from("closed"),
         }
     }
 }
@@ -14277,7 +14205,7 @@ pub enum RTCIceGatheringState {
     COMPLETE,
 }
 impl FromVal for RTCIceGatheringState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "new" => Self::NEW,
             "gathering" => Self::GATHERING,
@@ -14285,28 +14213,28 @@ impl FromVal for RTCIceGatheringState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCIceGatheringState> for emlite::Val {
-    fn from(s: RTCIceGatheringState) -> emlite::Val {
+impl From<RTCIceGatheringState> for Any {
+    fn from(s: RTCIceGatheringState) -> Any {
         match s {
-            RTCIceGatheringState::NEW => emlite::Val::from("new"),
-            RTCIceGatheringState::GATHERING => emlite::Val::from("gathering"),
-            RTCIceGatheringState::COMPLETE => emlite::Val::from("complete"),
+            RTCIceGatheringState::NEW => Any::from("new"),
+            RTCIceGatheringState::GATHERING => Any::from("gathering"),
+            RTCIceGatheringState::COMPLETE => Any::from("complete"),
         }
     }
 }
-impl From<&RTCIceGatheringState> for emlite::Val {
-    fn from(s: &RTCIceGatheringState) -> emlite::Val {
+impl From<&RTCIceGatheringState> for Any {
+    fn from(s: &RTCIceGatheringState) -> Any {
         match *s {
-            RTCIceGatheringState::NEW => emlite::Val::from("new"),
-            RTCIceGatheringState::GATHERING => emlite::Val::from("gathering"),
-            RTCIceGatheringState::COMPLETE => emlite::Val::from("complete"),
+            RTCIceGatheringState::NEW => Any::from("new"),
+            RTCIceGatheringState::GATHERING => Any::from("gathering"),
+            RTCIceGatheringState::COMPLETE => Any::from("complete"),
         }
     }
 }
@@ -14321,7 +14249,7 @@ pub enum RTCPeerConnectionState {
     CONNECTED,
 }
 impl FromVal for RTCPeerConnectionState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "closed" => Self::CLOSED,
             "failed" => Self::FAILED,
@@ -14332,34 +14260,34 @@ impl FromVal for RTCPeerConnectionState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCPeerConnectionState> for emlite::Val {
-    fn from(s: RTCPeerConnectionState) -> emlite::Val {
+impl From<RTCPeerConnectionState> for Any {
+    fn from(s: RTCPeerConnectionState) -> Any {
         match s {
-            RTCPeerConnectionState::CLOSED => emlite::Val::from("closed"),
-            RTCPeerConnectionState::FAILED => emlite::Val::from("failed"),
-            RTCPeerConnectionState::DISCONNECTED => emlite::Val::from("disconnected"),
-            RTCPeerConnectionState::NEW => emlite::Val::from("new"),
-            RTCPeerConnectionState::CONNECTING => emlite::Val::from("connecting"),
-            RTCPeerConnectionState::CONNECTED => emlite::Val::from("connected"),
+            RTCPeerConnectionState::CLOSED => Any::from("closed"),
+            RTCPeerConnectionState::FAILED => Any::from("failed"),
+            RTCPeerConnectionState::DISCONNECTED => Any::from("disconnected"),
+            RTCPeerConnectionState::NEW => Any::from("new"),
+            RTCPeerConnectionState::CONNECTING => Any::from("connecting"),
+            RTCPeerConnectionState::CONNECTED => Any::from("connected"),
         }
     }
 }
-impl From<&RTCPeerConnectionState> for emlite::Val {
-    fn from(s: &RTCPeerConnectionState) -> emlite::Val {
+impl From<&RTCPeerConnectionState> for Any {
+    fn from(s: &RTCPeerConnectionState) -> Any {
         match *s {
-            RTCPeerConnectionState::CLOSED => emlite::Val::from("closed"),
-            RTCPeerConnectionState::FAILED => emlite::Val::from("failed"),
-            RTCPeerConnectionState::DISCONNECTED => emlite::Val::from("disconnected"),
-            RTCPeerConnectionState::NEW => emlite::Val::from("new"),
-            RTCPeerConnectionState::CONNECTING => emlite::Val::from("connecting"),
-            RTCPeerConnectionState::CONNECTED => emlite::Val::from("connected"),
+            RTCPeerConnectionState::CLOSED => Any::from("closed"),
+            RTCPeerConnectionState::FAILED => Any::from("failed"),
+            RTCPeerConnectionState::DISCONNECTED => Any::from("disconnected"),
+            RTCPeerConnectionState::NEW => Any::from("new"),
+            RTCPeerConnectionState::CONNECTING => Any::from("connecting"),
+            RTCPeerConnectionState::CONNECTED => Any::from("connected"),
         }
     }
 }
@@ -14375,7 +14303,7 @@ pub enum RTCIceConnectionState {
     CONNECTED,
 }
 impl FromVal for RTCIceConnectionState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "closed" => Self::CLOSED,
             "failed" => Self::FAILED,
@@ -14387,36 +14315,36 @@ impl FromVal for RTCIceConnectionState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCIceConnectionState> for emlite::Val {
-    fn from(s: RTCIceConnectionState) -> emlite::Val {
+impl From<RTCIceConnectionState> for Any {
+    fn from(s: RTCIceConnectionState) -> Any {
         match s {
-            RTCIceConnectionState::CLOSED => emlite::Val::from("closed"),
-            RTCIceConnectionState::FAILED => emlite::Val::from("failed"),
-            RTCIceConnectionState::DISCONNECTED => emlite::Val::from("disconnected"),
-            RTCIceConnectionState::NEW => emlite::Val::from("new"),
-            RTCIceConnectionState::CHECKING => emlite::Val::from("checking"),
-            RTCIceConnectionState::COMPLETED => emlite::Val::from("completed"),
-            RTCIceConnectionState::CONNECTED => emlite::Val::from("connected"),
+            RTCIceConnectionState::CLOSED => Any::from("closed"),
+            RTCIceConnectionState::FAILED => Any::from("failed"),
+            RTCIceConnectionState::DISCONNECTED => Any::from("disconnected"),
+            RTCIceConnectionState::NEW => Any::from("new"),
+            RTCIceConnectionState::CHECKING => Any::from("checking"),
+            RTCIceConnectionState::COMPLETED => Any::from("completed"),
+            RTCIceConnectionState::CONNECTED => Any::from("connected"),
         }
     }
 }
-impl From<&RTCIceConnectionState> for emlite::Val {
-    fn from(s: &RTCIceConnectionState) -> emlite::Val {
+impl From<&RTCIceConnectionState> for Any {
+    fn from(s: &RTCIceConnectionState) -> Any {
         match *s {
-            RTCIceConnectionState::CLOSED => emlite::Val::from("closed"),
-            RTCIceConnectionState::FAILED => emlite::Val::from("failed"),
-            RTCIceConnectionState::DISCONNECTED => emlite::Val::from("disconnected"),
-            RTCIceConnectionState::NEW => emlite::Val::from("new"),
-            RTCIceConnectionState::CHECKING => emlite::Val::from("checking"),
-            RTCIceConnectionState::COMPLETED => emlite::Val::from("completed"),
-            RTCIceConnectionState::CONNECTED => emlite::Val::from("connected"),
+            RTCIceConnectionState::CLOSED => Any::from("closed"),
+            RTCIceConnectionState::FAILED => Any::from("failed"),
+            RTCIceConnectionState::DISCONNECTED => Any::from("disconnected"),
+            RTCIceConnectionState::NEW => Any::from("new"),
+            RTCIceConnectionState::CHECKING => Any::from("checking"),
+            RTCIceConnectionState::COMPLETED => Any::from("completed"),
+            RTCIceConnectionState::CONNECTED => Any::from("connected"),
         }
     }
 }
@@ -14429,7 +14357,7 @@ pub enum RTCSdpType {
     ROLLBACK,
 }
 impl FromVal for RTCSdpType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "offer" => Self::OFFER,
             "pranswer" => Self::PRANSWER,
@@ -14438,30 +14366,30 @@ impl FromVal for RTCSdpType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCSdpType> for emlite::Val {
-    fn from(s: RTCSdpType) -> emlite::Val {
+impl From<RTCSdpType> for Any {
+    fn from(s: RTCSdpType) -> Any {
         match s {
-            RTCSdpType::OFFER => emlite::Val::from("offer"),
-            RTCSdpType::PRANSWER => emlite::Val::from("pranswer"),
-            RTCSdpType::ANSWER => emlite::Val::from("answer"),
-            RTCSdpType::ROLLBACK => emlite::Val::from("rollback"),
+            RTCSdpType::OFFER => Any::from("offer"),
+            RTCSdpType::PRANSWER => Any::from("pranswer"),
+            RTCSdpType::ANSWER => Any::from("answer"),
+            RTCSdpType::ROLLBACK => Any::from("rollback"),
         }
     }
 }
-impl From<&RTCSdpType> for emlite::Val {
-    fn from(s: &RTCSdpType) -> emlite::Val {
+impl From<&RTCSdpType> for Any {
+    fn from(s: &RTCSdpType) -> Any {
         match *s {
-            RTCSdpType::OFFER => emlite::Val::from("offer"),
-            RTCSdpType::PRANSWER => emlite::Val::from("pranswer"),
-            RTCSdpType::ANSWER => emlite::Val::from("answer"),
-            RTCSdpType::ROLLBACK => emlite::Val::from("rollback"),
+            RTCSdpType::OFFER => Any::from("offer"),
+            RTCSdpType::PRANSWER => Any::from("pranswer"),
+            RTCSdpType::ANSWER => Any::from("answer"),
+            RTCSdpType::ROLLBACK => Any::from("rollback"),
         }
     }
 }
@@ -14472,33 +14400,33 @@ pub enum RTCIceProtocol {
     TCP,
 }
 impl FromVal for RTCIceProtocol {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "udp" => Self::UDP,
             "tcp" => Self::TCP,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCIceProtocol> for emlite::Val {
-    fn from(s: RTCIceProtocol) -> emlite::Val {
+impl From<RTCIceProtocol> for Any {
+    fn from(s: RTCIceProtocol) -> Any {
         match s {
-            RTCIceProtocol::UDP => emlite::Val::from("udp"),
-            RTCIceProtocol::TCP => emlite::Val::from("tcp"),
+            RTCIceProtocol::UDP => Any::from("udp"),
+            RTCIceProtocol::TCP => Any::from("tcp"),
         }
     }
 }
-impl From<&RTCIceProtocol> for emlite::Val {
-    fn from(s: &RTCIceProtocol) -> emlite::Val {
+impl From<&RTCIceProtocol> for Any {
+    fn from(s: &RTCIceProtocol) -> Any {
         match *s {
-            RTCIceProtocol::UDP => emlite::Val::from("udp"),
-            RTCIceProtocol::TCP => emlite::Val::from("tcp"),
+            RTCIceProtocol::UDP => Any::from("udp"),
+            RTCIceProtocol::TCP => Any::from("tcp"),
         }
     }
 }
@@ -14510,7 +14438,7 @@ pub enum RTCIceTcpCandidateType {
     SO,
 }
 impl FromVal for RTCIceTcpCandidateType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "active" => Self::ACTIVE,
             "passive" => Self::PASSIVE,
@@ -14518,28 +14446,28 @@ impl FromVal for RTCIceTcpCandidateType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCIceTcpCandidateType> for emlite::Val {
-    fn from(s: RTCIceTcpCandidateType) -> emlite::Val {
+impl From<RTCIceTcpCandidateType> for Any {
+    fn from(s: RTCIceTcpCandidateType) -> Any {
         match s {
-            RTCIceTcpCandidateType::ACTIVE => emlite::Val::from("active"),
-            RTCIceTcpCandidateType::PASSIVE => emlite::Val::from("passive"),
-            RTCIceTcpCandidateType::SO => emlite::Val::from("so"),
+            RTCIceTcpCandidateType::ACTIVE => Any::from("active"),
+            RTCIceTcpCandidateType::PASSIVE => Any::from("passive"),
+            RTCIceTcpCandidateType::SO => Any::from("so"),
         }
     }
 }
-impl From<&RTCIceTcpCandidateType> for emlite::Val {
-    fn from(s: &RTCIceTcpCandidateType) -> emlite::Val {
+impl From<&RTCIceTcpCandidateType> for Any {
+    fn from(s: &RTCIceTcpCandidateType) -> Any {
         match *s {
-            RTCIceTcpCandidateType::ACTIVE => emlite::Val::from("active"),
-            RTCIceTcpCandidateType::PASSIVE => emlite::Val::from("passive"),
-            RTCIceTcpCandidateType::SO => emlite::Val::from("so"),
+            RTCIceTcpCandidateType::ACTIVE => Any::from("active"),
+            RTCIceTcpCandidateType::PASSIVE => Any::from("passive"),
+            RTCIceTcpCandidateType::SO => Any::from("so"),
         }
     }
 }
@@ -14552,7 +14480,7 @@ pub enum RTCIceCandidateType {
     RELAY,
 }
 impl FromVal for RTCIceCandidateType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "host" => Self::HOST,
             "srflx" => Self::SRFLX,
@@ -14561,30 +14489,30 @@ impl FromVal for RTCIceCandidateType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCIceCandidateType> for emlite::Val {
-    fn from(s: RTCIceCandidateType) -> emlite::Val {
+impl From<RTCIceCandidateType> for Any {
+    fn from(s: RTCIceCandidateType) -> Any {
         match s {
-            RTCIceCandidateType::HOST => emlite::Val::from("host"),
-            RTCIceCandidateType::SRFLX => emlite::Val::from("srflx"),
-            RTCIceCandidateType::PRFLX => emlite::Val::from("prflx"),
-            RTCIceCandidateType::RELAY => emlite::Val::from("relay"),
+            RTCIceCandidateType::HOST => Any::from("host"),
+            RTCIceCandidateType::SRFLX => Any::from("srflx"),
+            RTCIceCandidateType::PRFLX => Any::from("prflx"),
+            RTCIceCandidateType::RELAY => Any::from("relay"),
         }
     }
 }
-impl From<&RTCIceCandidateType> for emlite::Val {
-    fn from(s: &RTCIceCandidateType) -> emlite::Val {
+impl From<&RTCIceCandidateType> for Any {
+    fn from(s: &RTCIceCandidateType) -> Any {
         match *s {
-            RTCIceCandidateType::HOST => emlite::Val::from("host"),
-            RTCIceCandidateType::SRFLX => emlite::Val::from("srflx"),
-            RTCIceCandidateType::PRFLX => emlite::Val::from("prflx"),
-            RTCIceCandidateType::RELAY => emlite::Val::from("relay"),
+            RTCIceCandidateType::HOST => Any::from("host"),
+            RTCIceCandidateType::SRFLX => Any::from("srflx"),
+            RTCIceCandidateType::PRFLX => Any::from("prflx"),
+            RTCIceCandidateType::RELAY => Any::from("relay"),
         }
     }
 }
@@ -14596,7 +14524,7 @@ pub enum RTCIceServerTransportProtocol {
     TLS,
 }
 impl FromVal for RTCIceServerTransportProtocol {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "udp" => Self::UDP,
             "tcp" => Self::TCP,
@@ -14604,28 +14532,28 @@ impl FromVal for RTCIceServerTransportProtocol {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCIceServerTransportProtocol> for emlite::Val {
-    fn from(s: RTCIceServerTransportProtocol) -> emlite::Val {
+impl From<RTCIceServerTransportProtocol> for Any {
+    fn from(s: RTCIceServerTransportProtocol) -> Any {
         match s {
-            RTCIceServerTransportProtocol::UDP => emlite::Val::from("udp"),
-            RTCIceServerTransportProtocol::TCP => emlite::Val::from("tcp"),
-            RTCIceServerTransportProtocol::TLS => emlite::Val::from("tls"),
+            RTCIceServerTransportProtocol::UDP => Any::from("udp"),
+            RTCIceServerTransportProtocol::TCP => Any::from("tcp"),
+            RTCIceServerTransportProtocol::TLS => Any::from("tls"),
         }
     }
 }
-impl From<&RTCIceServerTransportProtocol> for emlite::Val {
-    fn from(s: &RTCIceServerTransportProtocol) -> emlite::Val {
+impl From<&RTCIceServerTransportProtocol> for Any {
+    fn from(s: &RTCIceServerTransportProtocol) -> Any {
         match *s {
-            RTCIceServerTransportProtocol::UDP => emlite::Val::from("udp"),
-            RTCIceServerTransportProtocol::TCP => emlite::Val::from("tcp"),
-            RTCIceServerTransportProtocol::TLS => emlite::Val::from("tls"),
+            RTCIceServerTransportProtocol::UDP => Any::from("udp"),
+            RTCIceServerTransportProtocol::TCP => Any::from("tcp"),
+            RTCIceServerTransportProtocol::TLS => Any::from("tls"),
         }
     }
 }
@@ -14639,7 +14567,7 @@ pub enum RTCRtpTransceiverDirection {
     STOPPED,
 }
 impl FromVal for RTCRtpTransceiverDirection {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "sendrecv" => Self::SENDRECV,
             "sendonly" => Self::SENDONLY,
@@ -14649,32 +14577,32 @@ impl FromVal for RTCRtpTransceiverDirection {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCRtpTransceiverDirection> for emlite::Val {
-    fn from(s: RTCRtpTransceiverDirection) -> emlite::Val {
+impl From<RTCRtpTransceiverDirection> for Any {
+    fn from(s: RTCRtpTransceiverDirection) -> Any {
         match s {
-            RTCRtpTransceiverDirection::SENDRECV => emlite::Val::from("sendrecv"),
-            RTCRtpTransceiverDirection::SENDONLY => emlite::Val::from("sendonly"),
-            RTCRtpTransceiverDirection::RECVONLY => emlite::Val::from("recvonly"),
-            RTCRtpTransceiverDirection::INACTIVE => emlite::Val::from("inactive"),
-            RTCRtpTransceiverDirection::STOPPED => emlite::Val::from("stopped"),
+            RTCRtpTransceiverDirection::SENDRECV => Any::from("sendrecv"),
+            RTCRtpTransceiverDirection::SENDONLY => Any::from("sendonly"),
+            RTCRtpTransceiverDirection::RECVONLY => Any::from("recvonly"),
+            RTCRtpTransceiverDirection::INACTIVE => Any::from("inactive"),
+            RTCRtpTransceiverDirection::STOPPED => Any::from("stopped"),
         }
     }
 }
-impl From<&RTCRtpTransceiverDirection> for emlite::Val {
-    fn from(s: &RTCRtpTransceiverDirection) -> emlite::Val {
+impl From<&RTCRtpTransceiverDirection> for Any {
+    fn from(s: &RTCRtpTransceiverDirection) -> Any {
         match *s {
-            RTCRtpTransceiverDirection::SENDRECV => emlite::Val::from("sendrecv"),
-            RTCRtpTransceiverDirection::SENDONLY => emlite::Val::from("sendonly"),
-            RTCRtpTransceiverDirection::RECVONLY => emlite::Val::from("recvonly"),
-            RTCRtpTransceiverDirection::INACTIVE => emlite::Val::from("inactive"),
-            RTCRtpTransceiverDirection::STOPPED => emlite::Val::from("stopped"),
+            RTCRtpTransceiverDirection::SENDRECV => Any::from("sendrecv"),
+            RTCRtpTransceiverDirection::SENDONLY => Any::from("sendonly"),
+            RTCRtpTransceiverDirection::RECVONLY => Any::from("recvonly"),
+            RTCRtpTransceiverDirection::INACTIVE => Any::from("inactive"),
+            RTCRtpTransceiverDirection::STOPPED => Any::from("stopped"),
         }
     }
 }
@@ -14688,7 +14616,7 @@ pub enum RTCDtlsTransportState {
     FAILED,
 }
 impl FromVal for RTCDtlsTransportState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "new" => Self::NEW,
             "connecting" => Self::CONNECTING,
@@ -14698,32 +14626,32 @@ impl FromVal for RTCDtlsTransportState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCDtlsTransportState> for emlite::Val {
-    fn from(s: RTCDtlsTransportState) -> emlite::Val {
+impl From<RTCDtlsTransportState> for Any {
+    fn from(s: RTCDtlsTransportState) -> Any {
         match s {
-            RTCDtlsTransportState::NEW => emlite::Val::from("new"),
-            RTCDtlsTransportState::CONNECTING => emlite::Val::from("connecting"),
-            RTCDtlsTransportState::CONNECTED => emlite::Val::from("connected"),
-            RTCDtlsTransportState::CLOSED => emlite::Val::from("closed"),
-            RTCDtlsTransportState::FAILED => emlite::Val::from("failed"),
+            RTCDtlsTransportState::NEW => Any::from("new"),
+            RTCDtlsTransportState::CONNECTING => Any::from("connecting"),
+            RTCDtlsTransportState::CONNECTED => Any::from("connected"),
+            RTCDtlsTransportState::CLOSED => Any::from("closed"),
+            RTCDtlsTransportState::FAILED => Any::from("failed"),
         }
     }
 }
-impl From<&RTCDtlsTransportState> for emlite::Val {
-    fn from(s: &RTCDtlsTransportState) -> emlite::Val {
+impl From<&RTCDtlsTransportState> for Any {
+    fn from(s: &RTCDtlsTransportState) -> Any {
         match *s {
-            RTCDtlsTransportState::NEW => emlite::Val::from("new"),
-            RTCDtlsTransportState::CONNECTING => emlite::Val::from("connecting"),
-            RTCDtlsTransportState::CONNECTED => emlite::Val::from("connected"),
-            RTCDtlsTransportState::CLOSED => emlite::Val::from("closed"),
-            RTCDtlsTransportState::FAILED => emlite::Val::from("failed"),
+            RTCDtlsTransportState::NEW => Any::from("new"),
+            RTCDtlsTransportState::CONNECTING => Any::from("connecting"),
+            RTCDtlsTransportState::CONNECTED => Any::from("connected"),
+            RTCDtlsTransportState::CLOSED => Any::from("closed"),
+            RTCDtlsTransportState::FAILED => Any::from("failed"),
         }
     }
 }
@@ -14735,7 +14663,7 @@ pub enum RTCIceGathererState {
     COMPLETE,
 }
 impl FromVal for RTCIceGathererState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "new" => Self::NEW,
             "gathering" => Self::GATHERING,
@@ -14743,28 +14671,28 @@ impl FromVal for RTCIceGathererState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCIceGathererState> for emlite::Val {
-    fn from(s: RTCIceGathererState) -> emlite::Val {
+impl From<RTCIceGathererState> for Any {
+    fn from(s: RTCIceGathererState) -> Any {
         match s {
-            RTCIceGathererState::NEW => emlite::Val::from("new"),
-            RTCIceGathererState::GATHERING => emlite::Val::from("gathering"),
-            RTCIceGathererState::COMPLETE => emlite::Val::from("complete"),
+            RTCIceGathererState::NEW => Any::from("new"),
+            RTCIceGathererState::GATHERING => Any::from("gathering"),
+            RTCIceGathererState::COMPLETE => Any::from("complete"),
         }
     }
 }
-impl From<&RTCIceGathererState> for emlite::Val {
-    fn from(s: &RTCIceGathererState) -> emlite::Val {
+impl From<&RTCIceGathererState> for Any {
+    fn from(s: &RTCIceGathererState) -> Any {
         match *s {
-            RTCIceGathererState::NEW => emlite::Val::from("new"),
-            RTCIceGathererState::GATHERING => emlite::Val::from("gathering"),
-            RTCIceGathererState::COMPLETE => emlite::Val::from("complete"),
+            RTCIceGathererState::NEW => Any::from("new"),
+            RTCIceGathererState::GATHERING => Any::from("gathering"),
+            RTCIceGathererState::COMPLETE => Any::from("complete"),
         }
     }
 }
@@ -14780,7 +14708,7 @@ pub enum RTCIceTransportState {
     CONNECTED,
 }
 impl FromVal for RTCIceTransportState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "closed" => Self::CLOSED,
             "failed" => Self::FAILED,
@@ -14792,36 +14720,36 @@ impl FromVal for RTCIceTransportState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCIceTransportState> for emlite::Val {
-    fn from(s: RTCIceTransportState) -> emlite::Val {
+impl From<RTCIceTransportState> for Any {
+    fn from(s: RTCIceTransportState) -> Any {
         match s {
-            RTCIceTransportState::CLOSED => emlite::Val::from("closed"),
-            RTCIceTransportState::FAILED => emlite::Val::from("failed"),
-            RTCIceTransportState::DISCONNECTED => emlite::Val::from("disconnected"),
-            RTCIceTransportState::NEW => emlite::Val::from("new"),
-            RTCIceTransportState::CHECKING => emlite::Val::from("checking"),
-            RTCIceTransportState::COMPLETED => emlite::Val::from("completed"),
-            RTCIceTransportState::CONNECTED => emlite::Val::from("connected"),
+            RTCIceTransportState::CLOSED => Any::from("closed"),
+            RTCIceTransportState::FAILED => Any::from("failed"),
+            RTCIceTransportState::DISCONNECTED => Any::from("disconnected"),
+            RTCIceTransportState::NEW => Any::from("new"),
+            RTCIceTransportState::CHECKING => Any::from("checking"),
+            RTCIceTransportState::COMPLETED => Any::from("completed"),
+            RTCIceTransportState::CONNECTED => Any::from("connected"),
         }
     }
 }
-impl From<&RTCIceTransportState> for emlite::Val {
-    fn from(s: &RTCIceTransportState) -> emlite::Val {
+impl From<&RTCIceTransportState> for Any {
+    fn from(s: &RTCIceTransportState) -> Any {
         match *s {
-            RTCIceTransportState::CLOSED => emlite::Val::from("closed"),
-            RTCIceTransportState::FAILED => emlite::Val::from("failed"),
-            RTCIceTransportState::DISCONNECTED => emlite::Val::from("disconnected"),
-            RTCIceTransportState::NEW => emlite::Val::from("new"),
-            RTCIceTransportState::CHECKING => emlite::Val::from("checking"),
-            RTCIceTransportState::COMPLETED => emlite::Val::from("completed"),
-            RTCIceTransportState::CONNECTED => emlite::Val::from("connected"),
+            RTCIceTransportState::CLOSED => Any::from("closed"),
+            RTCIceTransportState::FAILED => Any::from("failed"),
+            RTCIceTransportState::DISCONNECTED => Any::from("disconnected"),
+            RTCIceTransportState::NEW => Any::from("new"),
+            RTCIceTransportState::CHECKING => Any::from("checking"),
+            RTCIceTransportState::COMPLETED => Any::from("completed"),
+            RTCIceTransportState::CONNECTED => Any::from("connected"),
         }
     }
 }
@@ -14833,7 +14761,7 @@ pub enum RTCIceRole {
     CONTROLLED,
 }
 impl FromVal for RTCIceRole {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "unknown" => Self::UNKNOWN,
             "controlling" => Self::CONTROLLING,
@@ -14841,28 +14769,28 @@ impl FromVal for RTCIceRole {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCIceRole> for emlite::Val {
-    fn from(s: RTCIceRole) -> emlite::Val {
+impl From<RTCIceRole> for Any {
+    fn from(s: RTCIceRole) -> Any {
         match s {
-            RTCIceRole::UNKNOWN => emlite::Val::from("unknown"),
-            RTCIceRole::CONTROLLING => emlite::Val::from("controlling"),
-            RTCIceRole::CONTROLLED => emlite::Val::from("controlled"),
+            RTCIceRole::UNKNOWN => Any::from("unknown"),
+            RTCIceRole::CONTROLLING => Any::from("controlling"),
+            RTCIceRole::CONTROLLED => Any::from("controlled"),
         }
     }
 }
-impl From<&RTCIceRole> for emlite::Val {
-    fn from(s: &RTCIceRole) -> emlite::Val {
+impl From<&RTCIceRole> for Any {
+    fn from(s: &RTCIceRole) -> Any {
         match *s {
-            RTCIceRole::UNKNOWN => emlite::Val::from("unknown"),
-            RTCIceRole::CONTROLLING => emlite::Val::from("controlling"),
-            RTCIceRole::CONTROLLED => emlite::Val::from("controlled"),
+            RTCIceRole::UNKNOWN => Any::from("unknown"),
+            RTCIceRole::CONTROLLING => Any::from("controlling"),
+            RTCIceRole::CONTROLLED => Any::from("controlled"),
         }
     }
 }
@@ -14873,33 +14801,33 @@ pub enum RTCIceComponent {
     RTCP,
 }
 impl FromVal for RTCIceComponent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "rtp" => Self::RTP,
             "rtcp" => Self::RTCP,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCIceComponent> for emlite::Val {
-    fn from(s: RTCIceComponent) -> emlite::Val {
+impl From<RTCIceComponent> for Any {
+    fn from(s: RTCIceComponent) -> Any {
         match s {
-            RTCIceComponent::RTP => emlite::Val::from("rtp"),
-            RTCIceComponent::RTCP => emlite::Val::from("rtcp"),
+            RTCIceComponent::RTP => Any::from("rtp"),
+            RTCIceComponent::RTCP => Any::from("rtcp"),
         }
     }
 }
-impl From<&RTCIceComponent> for emlite::Val {
-    fn from(s: &RTCIceComponent) -> emlite::Val {
+impl From<&RTCIceComponent> for Any {
+    fn from(s: &RTCIceComponent) -> Any {
         match *s {
-            RTCIceComponent::RTP => emlite::Val::from("rtp"),
-            RTCIceComponent::RTCP => emlite::Val::from("rtcp"),
+            RTCIceComponent::RTP => Any::from("rtp"),
+            RTCIceComponent::RTCP => Any::from("rtcp"),
         }
     }
 }
@@ -14911,7 +14839,7 @@ pub enum RTCSctpTransportState {
     CLOSED,
 }
 impl FromVal for RTCSctpTransportState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "connecting" => Self::CONNECTING,
             "connected" => Self::CONNECTED,
@@ -14919,28 +14847,28 @@ impl FromVal for RTCSctpTransportState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCSctpTransportState> for emlite::Val {
-    fn from(s: RTCSctpTransportState) -> emlite::Val {
+impl From<RTCSctpTransportState> for Any {
+    fn from(s: RTCSctpTransportState) -> Any {
         match s {
-            RTCSctpTransportState::CONNECTING => emlite::Val::from("connecting"),
-            RTCSctpTransportState::CONNECTED => emlite::Val::from("connected"),
-            RTCSctpTransportState::CLOSED => emlite::Val::from("closed"),
+            RTCSctpTransportState::CONNECTING => Any::from("connecting"),
+            RTCSctpTransportState::CONNECTED => Any::from("connected"),
+            RTCSctpTransportState::CLOSED => Any::from("closed"),
         }
     }
 }
-impl From<&RTCSctpTransportState> for emlite::Val {
-    fn from(s: &RTCSctpTransportState) -> emlite::Val {
+impl From<&RTCSctpTransportState> for Any {
+    fn from(s: &RTCSctpTransportState) -> Any {
         match *s {
-            RTCSctpTransportState::CONNECTING => emlite::Val::from("connecting"),
-            RTCSctpTransportState::CONNECTED => emlite::Val::from("connected"),
-            RTCSctpTransportState::CLOSED => emlite::Val::from("closed"),
+            RTCSctpTransportState::CONNECTING => Any::from("connecting"),
+            RTCSctpTransportState::CONNECTED => Any::from("connected"),
+            RTCSctpTransportState::CLOSED => Any::from("closed"),
         }
     }
 }
@@ -14953,7 +14881,7 @@ pub enum RTCDataChannelState {
     CLOSED,
 }
 impl FromVal for RTCDataChannelState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "connecting" => Self::CONNECTING,
             "open" => Self::OPEN,
@@ -14962,30 +14890,30 @@ impl FromVal for RTCDataChannelState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCDataChannelState> for emlite::Val {
-    fn from(s: RTCDataChannelState) -> emlite::Val {
+impl From<RTCDataChannelState> for Any {
+    fn from(s: RTCDataChannelState) -> Any {
         match s {
-            RTCDataChannelState::CONNECTING => emlite::Val::from("connecting"),
-            RTCDataChannelState::OPEN => emlite::Val::from("open"),
-            RTCDataChannelState::CLOSING => emlite::Val::from("closing"),
-            RTCDataChannelState::CLOSED => emlite::Val::from("closed"),
+            RTCDataChannelState::CONNECTING => Any::from("connecting"),
+            RTCDataChannelState::OPEN => Any::from("open"),
+            RTCDataChannelState::CLOSING => Any::from("closing"),
+            RTCDataChannelState::CLOSED => Any::from("closed"),
         }
     }
 }
-impl From<&RTCDataChannelState> for emlite::Val {
-    fn from(s: &RTCDataChannelState) -> emlite::Val {
+impl From<&RTCDataChannelState> for Any {
+    fn from(s: &RTCDataChannelState) -> Any {
         match *s {
-            RTCDataChannelState::CONNECTING => emlite::Val::from("connecting"),
-            RTCDataChannelState::OPEN => emlite::Val::from("open"),
-            RTCDataChannelState::CLOSING => emlite::Val::from("closing"),
-            RTCDataChannelState::CLOSED => emlite::Val::from("closed"),
+            RTCDataChannelState::CONNECTING => Any::from("connecting"),
+            RTCDataChannelState::OPEN => Any::from("open"),
+            RTCDataChannelState::CLOSING => Any::from("closing"),
+            RTCDataChannelState::CLOSED => Any::from("closed"),
         }
     }
 }
@@ -15001,7 +14929,7 @@ pub enum RTCErrorDetailType {
     HARDWARE_ENCODER_ERROR,
 }
 impl FromVal for RTCErrorDetailType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "data-channel-failure" => Self::DATA_CHANNEL_FAILURE,
             "dtls-failure" => Self::DTLS_FAILURE,
@@ -15013,44 +14941,40 @@ impl FromVal for RTCErrorDetailType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RTCErrorDetailType> for emlite::Val {
-    fn from(s: RTCErrorDetailType) -> emlite::Val {
+impl From<RTCErrorDetailType> for Any {
+    fn from(s: RTCErrorDetailType) -> Any {
         match s {
-            RTCErrorDetailType::DATA_CHANNEL_FAILURE => emlite::Val::from("data-channel-failure"),
-            RTCErrorDetailType::DTLS_FAILURE => emlite::Val::from("dtls-failure"),
-            RTCErrorDetailType::FINGERPRINT_FAILURE => emlite::Val::from("fingerprint-failure"),
-            RTCErrorDetailType::SCTP_FAILURE => emlite::Val::from("sctp-failure"),
-            RTCErrorDetailType::SDP_SYNTAX_ERROR => emlite::Val::from("sdp-syntax-error"),
+            RTCErrorDetailType::DATA_CHANNEL_FAILURE => Any::from("data-channel-failure"),
+            RTCErrorDetailType::DTLS_FAILURE => Any::from("dtls-failure"),
+            RTCErrorDetailType::FINGERPRINT_FAILURE => Any::from("fingerprint-failure"),
+            RTCErrorDetailType::SCTP_FAILURE => Any::from("sctp-failure"),
+            RTCErrorDetailType::SDP_SYNTAX_ERROR => Any::from("sdp-syntax-error"),
             RTCErrorDetailType::HARDWARE_ENCODER_NOT_AVAILABLE => {
-                emlite::Val::from("hardware-encoder-not-available")
+                Any::from("hardware-encoder-not-available")
             }
-            RTCErrorDetailType::HARDWARE_ENCODER_ERROR => {
-                emlite::Val::from("hardware-encoder-error")
-            }
+            RTCErrorDetailType::HARDWARE_ENCODER_ERROR => Any::from("hardware-encoder-error"),
         }
     }
 }
-impl From<&RTCErrorDetailType> for emlite::Val {
-    fn from(s: &RTCErrorDetailType) -> emlite::Val {
+impl From<&RTCErrorDetailType> for Any {
+    fn from(s: &RTCErrorDetailType) -> Any {
         match *s {
-            RTCErrorDetailType::DATA_CHANNEL_FAILURE => emlite::Val::from("data-channel-failure"),
-            RTCErrorDetailType::DTLS_FAILURE => emlite::Val::from("dtls-failure"),
-            RTCErrorDetailType::FINGERPRINT_FAILURE => emlite::Val::from("fingerprint-failure"),
-            RTCErrorDetailType::SCTP_FAILURE => emlite::Val::from("sctp-failure"),
-            RTCErrorDetailType::SDP_SYNTAX_ERROR => emlite::Val::from("sdp-syntax-error"),
+            RTCErrorDetailType::DATA_CHANNEL_FAILURE => Any::from("data-channel-failure"),
+            RTCErrorDetailType::DTLS_FAILURE => Any::from("dtls-failure"),
+            RTCErrorDetailType::FINGERPRINT_FAILURE => Any::from("fingerprint-failure"),
+            RTCErrorDetailType::SCTP_FAILURE => Any::from("sctp-failure"),
+            RTCErrorDetailType::SDP_SYNTAX_ERROR => Any::from("sdp-syntax-error"),
             RTCErrorDetailType::HARDWARE_ENCODER_NOT_AVAILABLE => {
-                emlite::Val::from("hardware-encoder-not-available")
+                Any::from("hardware-encoder-not-available")
             }
-            RTCErrorDetailType::HARDWARE_ENCODER_ERROR => {
-                emlite::Val::from("hardware-encoder-error")
-            }
+            RTCErrorDetailType::HARDWARE_ENCODER_ERROR => Any::from("hardware-encoder-error"),
         }
     }
 }
@@ -15061,33 +14985,33 @@ pub enum BinaryType {
     ARRAYBUFFER,
 }
 impl FromVal for BinaryType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "blob" => Self::BLOB,
             "arraybuffer" => Self::ARRAYBUFFER,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<BinaryType> for emlite::Val {
-    fn from(s: BinaryType) -> emlite::Val {
+impl From<BinaryType> for Any {
+    fn from(s: BinaryType) -> Any {
         match s {
-            BinaryType::BLOB => emlite::Val::from("blob"),
-            BinaryType::ARRAYBUFFER => emlite::Val::from("arraybuffer"),
+            BinaryType::BLOB => Any::from("blob"),
+            BinaryType::ARRAYBUFFER => Any::from("arraybuffer"),
         }
     }
 }
-impl From<&BinaryType> for emlite::Val {
-    fn from(s: &BinaryType) -> emlite::Val {
+impl From<&BinaryType> for Any {
+    fn from(s: &BinaryType) -> Any {
         match *s {
-            BinaryType::BLOB => emlite::Val::from("blob"),
-            BinaryType::ARRAYBUFFER => emlite::Val::from("arraybuffer"),
+            BinaryType::BLOB => Any::from("blob"),
+            BinaryType::ARRAYBUFFER => Any::from("arraybuffer"),
         }
     }
 }
@@ -15099,7 +15023,7 @@ pub enum WebTransportReliabilityMode {
     SUPPORTS_UNRELIABLE,
 }
 impl FromVal for WebTransportReliabilityMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "pending" => Self::PENDING,
             "reliable-only" => Self::RELIABLE_ONLY,
@@ -15107,32 +15031,28 @@ impl FromVal for WebTransportReliabilityMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<WebTransportReliabilityMode> for emlite::Val {
-    fn from(s: WebTransportReliabilityMode) -> emlite::Val {
+impl From<WebTransportReliabilityMode> for Any {
+    fn from(s: WebTransportReliabilityMode) -> Any {
         match s {
-            WebTransportReliabilityMode::PENDING => emlite::Val::from("pending"),
-            WebTransportReliabilityMode::RELIABLE_ONLY => emlite::Val::from("reliable-only"),
-            WebTransportReliabilityMode::SUPPORTS_UNRELIABLE => {
-                emlite::Val::from("supports-unreliable")
-            }
+            WebTransportReliabilityMode::PENDING => Any::from("pending"),
+            WebTransportReliabilityMode::RELIABLE_ONLY => Any::from("reliable-only"),
+            WebTransportReliabilityMode::SUPPORTS_UNRELIABLE => Any::from("supports-unreliable"),
         }
     }
 }
-impl From<&WebTransportReliabilityMode> for emlite::Val {
-    fn from(s: &WebTransportReliabilityMode) -> emlite::Val {
+impl From<&WebTransportReliabilityMode> for Any {
+    fn from(s: &WebTransportReliabilityMode) -> Any {
         match *s {
-            WebTransportReliabilityMode::PENDING => emlite::Val::from("pending"),
-            WebTransportReliabilityMode::RELIABLE_ONLY => emlite::Val::from("reliable-only"),
-            WebTransportReliabilityMode::SUPPORTS_UNRELIABLE => {
-                emlite::Val::from("supports-unreliable")
-            }
+            WebTransportReliabilityMode::PENDING => Any::from("pending"),
+            WebTransportReliabilityMode::RELIABLE_ONLY => Any::from("reliable-only"),
+            WebTransportReliabilityMode::SUPPORTS_UNRELIABLE => Any::from("supports-unreliable"),
         }
     }
 }
@@ -15144,7 +15064,7 @@ pub enum WebTransportCongestionControl {
     LOW_LATENCY,
 }
 impl FromVal for WebTransportCongestionControl {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "default" => Self::DEFAULT,
             "throughput" => Self::THROUGHPUT,
@@ -15152,28 +15072,28 @@ impl FromVal for WebTransportCongestionControl {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<WebTransportCongestionControl> for emlite::Val {
-    fn from(s: WebTransportCongestionControl) -> emlite::Val {
+impl From<WebTransportCongestionControl> for Any {
+    fn from(s: WebTransportCongestionControl) -> Any {
         match s {
-            WebTransportCongestionControl::DEFAULT => emlite::Val::from("default"),
-            WebTransportCongestionControl::THROUGHPUT => emlite::Val::from("throughput"),
-            WebTransportCongestionControl::LOW_LATENCY => emlite::Val::from("low-latency"),
+            WebTransportCongestionControl::DEFAULT => Any::from("default"),
+            WebTransportCongestionControl::THROUGHPUT => Any::from("throughput"),
+            WebTransportCongestionControl::LOW_LATENCY => Any::from("low-latency"),
         }
     }
 }
-impl From<&WebTransportCongestionControl> for emlite::Val {
-    fn from(s: &WebTransportCongestionControl) -> emlite::Val {
+impl From<&WebTransportCongestionControl> for Any {
+    fn from(s: &WebTransportCongestionControl) -> Any {
         match *s {
-            WebTransportCongestionControl::DEFAULT => emlite::Val::from("default"),
-            WebTransportCongestionControl::THROUGHPUT => emlite::Val::from("throughput"),
-            WebTransportCongestionControl::LOW_LATENCY => emlite::Val::from("low-latency"),
+            WebTransportCongestionControl::DEFAULT => Any::from("default"),
+            WebTransportCongestionControl::THROUGHPUT => Any::from("throughput"),
+            WebTransportCongestionControl::LOW_LATENCY => Any::from("low-latency"),
         }
     }
 }
@@ -15184,33 +15104,33 @@ pub enum WebTransportErrorSource {
     SESSION,
 }
 impl FromVal for WebTransportErrorSource {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "stream" => Self::STREAM,
             "session" => Self::SESSION,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<WebTransportErrorSource> for emlite::Val {
-    fn from(s: WebTransportErrorSource) -> emlite::Val {
+impl From<WebTransportErrorSource> for Any {
+    fn from(s: WebTransportErrorSource) -> Any {
         match s {
-            WebTransportErrorSource::STREAM => emlite::Val::from("stream"),
-            WebTransportErrorSource::SESSION => emlite::Val::from("session"),
+            WebTransportErrorSource::STREAM => Any::from("stream"),
+            WebTransportErrorSource::SESSION => Any::from("session"),
         }
     }
 }
-impl From<&WebTransportErrorSource> for emlite::Val {
-    fn from(s: &WebTransportErrorSource) -> emlite::Val {
+impl From<&WebTransportErrorSource> for Any {
+    fn from(s: &WebTransportErrorSource) -> Any {
         match *s {
-            WebTransportErrorSource::STREAM => emlite::Val::from("stream"),
-            WebTransportErrorSource::SESSION => emlite::Val::from("session"),
+            WebTransportErrorSource::STREAM => Any::from("stream"),
+            WebTransportErrorSource::SESSION => Any::from("session"),
         }
     }
 }
@@ -15222,7 +15142,7 @@ pub enum USBTransferStatus {
     BABBLE,
 }
 impl FromVal for USBTransferStatus {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "ok" => Self::OK,
             "stall" => Self::STALL,
@@ -15230,28 +15150,28 @@ impl FromVal for USBTransferStatus {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<USBTransferStatus> for emlite::Val {
-    fn from(s: USBTransferStatus) -> emlite::Val {
+impl From<USBTransferStatus> for Any {
+    fn from(s: USBTransferStatus) -> Any {
         match s {
-            USBTransferStatus::OK => emlite::Val::from("ok"),
-            USBTransferStatus::STALL => emlite::Val::from("stall"),
-            USBTransferStatus::BABBLE => emlite::Val::from("babble"),
+            USBTransferStatus::OK => Any::from("ok"),
+            USBTransferStatus::STALL => Any::from("stall"),
+            USBTransferStatus::BABBLE => Any::from("babble"),
         }
     }
 }
-impl From<&USBTransferStatus> for emlite::Val {
-    fn from(s: &USBTransferStatus) -> emlite::Val {
+impl From<&USBTransferStatus> for Any {
+    fn from(s: &USBTransferStatus) -> Any {
         match *s {
-            USBTransferStatus::OK => emlite::Val::from("ok"),
-            USBTransferStatus::STALL => emlite::Val::from("stall"),
-            USBTransferStatus::BABBLE => emlite::Val::from("babble"),
+            USBTransferStatus::OK => Any::from("ok"),
+            USBTransferStatus::STALL => Any::from("stall"),
+            USBTransferStatus::BABBLE => Any::from("babble"),
         }
     }
 }
@@ -15263,7 +15183,7 @@ pub enum USBRequestType {
     VENDOR,
 }
 impl FromVal for USBRequestType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "standard" => Self::STANDARD,
             "class" => Self::CLASS,
@@ -15271,28 +15191,28 @@ impl FromVal for USBRequestType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<USBRequestType> for emlite::Val {
-    fn from(s: USBRequestType) -> emlite::Val {
+impl From<USBRequestType> for Any {
+    fn from(s: USBRequestType) -> Any {
         match s {
-            USBRequestType::STANDARD => emlite::Val::from("standard"),
-            USBRequestType::CLASS => emlite::Val::from("class"),
-            USBRequestType::VENDOR => emlite::Val::from("vendor"),
+            USBRequestType::STANDARD => Any::from("standard"),
+            USBRequestType::CLASS => Any::from("class"),
+            USBRequestType::VENDOR => Any::from("vendor"),
         }
     }
 }
-impl From<&USBRequestType> for emlite::Val {
-    fn from(s: &USBRequestType) -> emlite::Val {
+impl From<&USBRequestType> for Any {
+    fn from(s: &USBRequestType) -> Any {
         match *s {
-            USBRequestType::STANDARD => emlite::Val::from("standard"),
-            USBRequestType::CLASS => emlite::Val::from("class"),
-            USBRequestType::VENDOR => emlite::Val::from("vendor"),
+            USBRequestType::STANDARD => Any::from("standard"),
+            USBRequestType::CLASS => Any::from("class"),
+            USBRequestType::VENDOR => Any::from("vendor"),
         }
     }
 }
@@ -15305,7 +15225,7 @@ pub enum USBRecipient {
     OTHER,
 }
 impl FromVal for USBRecipient {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "device" => Self::DEVICE,
             "interface" => Self::INTERFACE,
@@ -15314,30 +15234,30 @@ impl FromVal for USBRecipient {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<USBRecipient> for emlite::Val {
-    fn from(s: USBRecipient) -> emlite::Val {
+impl From<USBRecipient> for Any {
+    fn from(s: USBRecipient) -> Any {
         match s {
-            USBRecipient::DEVICE => emlite::Val::from("device"),
-            USBRecipient::INTERFACE => emlite::Val::from("interface"),
-            USBRecipient::ENDPOINT => emlite::Val::from("endpoint"),
-            USBRecipient::OTHER => emlite::Val::from("other"),
+            USBRecipient::DEVICE => Any::from("device"),
+            USBRecipient::INTERFACE => Any::from("interface"),
+            USBRecipient::ENDPOINT => Any::from("endpoint"),
+            USBRecipient::OTHER => Any::from("other"),
         }
     }
 }
-impl From<&USBRecipient> for emlite::Val {
-    fn from(s: &USBRecipient) -> emlite::Val {
+impl From<&USBRecipient> for Any {
+    fn from(s: &USBRecipient) -> Any {
         match *s {
-            USBRecipient::DEVICE => emlite::Val::from("device"),
-            USBRecipient::INTERFACE => emlite::Val::from("interface"),
-            USBRecipient::ENDPOINT => emlite::Val::from("endpoint"),
-            USBRecipient::OTHER => emlite::Val::from("other"),
+            USBRecipient::DEVICE => Any::from("device"),
+            USBRecipient::INTERFACE => Any::from("interface"),
+            USBRecipient::ENDPOINT => Any::from("endpoint"),
+            USBRecipient::OTHER => Any::from("other"),
         }
     }
 }
@@ -15348,33 +15268,33 @@ pub enum USBDirection {
     OUT,
 }
 impl FromVal for USBDirection {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "in" => Self::IN_,
             "out" => Self::OUT,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<USBDirection> for emlite::Val {
-    fn from(s: USBDirection) -> emlite::Val {
+impl From<USBDirection> for Any {
+    fn from(s: USBDirection) -> Any {
         match s {
-            USBDirection::IN_ => emlite::Val::from("in"),
-            USBDirection::OUT => emlite::Val::from("out"),
+            USBDirection::IN_ => Any::from("in"),
+            USBDirection::OUT => Any::from("out"),
         }
     }
 }
-impl From<&USBDirection> for emlite::Val {
-    fn from(s: &USBDirection) -> emlite::Val {
+impl From<&USBDirection> for Any {
+    fn from(s: &USBDirection) -> Any {
         match *s {
-            USBDirection::IN_ => emlite::Val::from("in"),
-            USBDirection::OUT => emlite::Val::from("out"),
+            USBDirection::IN_ => Any::from("in"),
+            USBDirection::OUT => Any::from("out"),
         }
     }
 }
@@ -15386,7 +15306,7 @@ pub enum USBEndpointType {
     ISOCHRONOUS,
 }
 impl FromVal for USBEndpointType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "bulk" => Self::BULK,
             "interrupt" => Self::INTERRUPT,
@@ -15394,28 +15314,28 @@ impl FromVal for USBEndpointType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<USBEndpointType> for emlite::Val {
-    fn from(s: USBEndpointType) -> emlite::Val {
+impl From<USBEndpointType> for Any {
+    fn from(s: USBEndpointType) -> Any {
         match s {
-            USBEndpointType::BULK => emlite::Val::from("bulk"),
-            USBEndpointType::INTERRUPT => emlite::Val::from("interrupt"),
-            USBEndpointType::ISOCHRONOUS => emlite::Val::from("isochronous"),
+            USBEndpointType::BULK => Any::from("bulk"),
+            USBEndpointType::INTERRUPT => Any::from("interrupt"),
+            USBEndpointType::ISOCHRONOUS => Any::from("isochronous"),
         }
     }
 }
-impl From<&USBEndpointType> for emlite::Val {
-    fn from(s: &USBEndpointType) -> emlite::Val {
+impl From<&USBEndpointType> for Any {
+    fn from(s: &USBEndpointType) -> Any {
         match *s {
-            USBEndpointType::BULK => emlite::Val::from("bulk"),
-            USBEndpointType::INTERRUPT => emlite::Val::from("interrupt"),
-            USBEndpointType::ISOCHRONOUS => emlite::Val::from("isochronous"),
+            USBEndpointType::BULK => Any::from("bulk"),
+            USBEndpointType::INTERRUPT => Any::from("interrupt"),
+            USBEndpointType::ISOCHRONOUS => Any::from("isochronous"),
         }
     }
 }
@@ -15425,30 +15345,30 @@ pub enum AutoKeyword {
     AUTO,
 }
 impl FromVal for AutoKeyword {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "auto" => Self::AUTO,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AutoKeyword> for emlite::Val {
-    fn from(s: AutoKeyword) -> emlite::Val {
+impl From<AutoKeyword> for Any {
+    fn from(s: AutoKeyword) -> Any {
         match s {
-            AutoKeyword::AUTO => emlite::Val::from("auto"),
+            AutoKeyword::AUTO => Any::from("auto"),
         }
     }
 }
-impl From<&AutoKeyword> for emlite::Val {
-    fn from(s: &AutoKeyword) -> emlite::Val {
+impl From<&AutoKeyword> for Any {
+    fn from(s: &AutoKeyword) -> Any {
         match *s {
-            AutoKeyword::AUTO => emlite::Val::from("auto"),
+            AutoKeyword::AUTO => Any::from("auto"),
         }
     }
 }
@@ -15460,7 +15380,7 @@ pub enum DirectionSetting {
     LR,
 }
 impl FromVal for DirectionSetting {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "" => Self::NONE,
             "rl" => Self::RL,
@@ -15468,28 +15388,28 @@ impl FromVal for DirectionSetting {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<DirectionSetting> for emlite::Val {
-    fn from(s: DirectionSetting) -> emlite::Val {
+impl From<DirectionSetting> for Any {
+    fn from(s: DirectionSetting) -> Any {
         match s {
-            DirectionSetting::NONE => emlite::Val::from(""),
-            DirectionSetting::RL => emlite::Val::from("rl"),
-            DirectionSetting::LR => emlite::Val::from("lr"),
+            DirectionSetting::NONE => Any::from(""),
+            DirectionSetting::RL => Any::from("rl"),
+            DirectionSetting::LR => Any::from("lr"),
         }
     }
 }
-impl From<&DirectionSetting> for emlite::Val {
-    fn from(s: &DirectionSetting) -> emlite::Val {
+impl From<&DirectionSetting> for Any {
+    fn from(s: &DirectionSetting) -> Any {
         match *s {
-            DirectionSetting::NONE => emlite::Val::from(""),
-            DirectionSetting::RL => emlite::Val::from("rl"),
-            DirectionSetting::LR => emlite::Val::from("lr"),
+            DirectionSetting::NONE => Any::from(""),
+            DirectionSetting::RL => Any::from("rl"),
+            DirectionSetting::LR => Any::from("lr"),
         }
     }
 }
@@ -15501,7 +15421,7 @@ pub enum LineAlignSetting {
     END,
 }
 impl FromVal for LineAlignSetting {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "start" => Self::START,
             "center" => Self::CENTER,
@@ -15509,28 +15429,28 @@ impl FromVal for LineAlignSetting {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<LineAlignSetting> for emlite::Val {
-    fn from(s: LineAlignSetting) -> emlite::Val {
+impl From<LineAlignSetting> for Any {
+    fn from(s: LineAlignSetting) -> Any {
         match s {
-            LineAlignSetting::START => emlite::Val::from("start"),
-            LineAlignSetting::CENTER => emlite::Val::from("center"),
-            LineAlignSetting::END => emlite::Val::from("end"),
+            LineAlignSetting::START => Any::from("start"),
+            LineAlignSetting::CENTER => Any::from("center"),
+            LineAlignSetting::END => Any::from("end"),
         }
     }
 }
-impl From<&LineAlignSetting> for emlite::Val {
-    fn from(s: &LineAlignSetting) -> emlite::Val {
+impl From<&LineAlignSetting> for Any {
+    fn from(s: &LineAlignSetting) -> Any {
         match *s {
-            LineAlignSetting::START => emlite::Val::from("start"),
-            LineAlignSetting::CENTER => emlite::Val::from("center"),
-            LineAlignSetting::END => emlite::Val::from("end"),
+            LineAlignSetting::START => Any::from("start"),
+            LineAlignSetting::CENTER => Any::from("center"),
+            LineAlignSetting::END => Any::from("end"),
         }
     }
 }
@@ -15543,7 +15463,7 @@ pub enum PositionAlignSetting {
     AUTO,
 }
 impl FromVal for PositionAlignSetting {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "line-left" => Self::LINE_LEFT,
             "center" => Self::CENTER,
@@ -15552,30 +15472,30 @@ impl FromVal for PositionAlignSetting {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<PositionAlignSetting> for emlite::Val {
-    fn from(s: PositionAlignSetting) -> emlite::Val {
+impl From<PositionAlignSetting> for Any {
+    fn from(s: PositionAlignSetting) -> Any {
         match s {
-            PositionAlignSetting::LINE_LEFT => emlite::Val::from("line-left"),
-            PositionAlignSetting::CENTER => emlite::Val::from("center"),
-            PositionAlignSetting::LINE_RIGHT => emlite::Val::from("line-right"),
-            PositionAlignSetting::AUTO => emlite::Val::from("auto"),
+            PositionAlignSetting::LINE_LEFT => Any::from("line-left"),
+            PositionAlignSetting::CENTER => Any::from("center"),
+            PositionAlignSetting::LINE_RIGHT => Any::from("line-right"),
+            PositionAlignSetting::AUTO => Any::from("auto"),
         }
     }
 }
-impl From<&PositionAlignSetting> for emlite::Val {
-    fn from(s: &PositionAlignSetting) -> emlite::Val {
+impl From<&PositionAlignSetting> for Any {
+    fn from(s: &PositionAlignSetting) -> Any {
         match *s {
-            PositionAlignSetting::LINE_LEFT => emlite::Val::from("line-left"),
-            PositionAlignSetting::CENTER => emlite::Val::from("center"),
-            PositionAlignSetting::LINE_RIGHT => emlite::Val::from("line-right"),
-            PositionAlignSetting::AUTO => emlite::Val::from("auto"),
+            PositionAlignSetting::LINE_LEFT => Any::from("line-left"),
+            PositionAlignSetting::CENTER => Any::from("center"),
+            PositionAlignSetting::LINE_RIGHT => Any::from("line-right"),
+            PositionAlignSetting::AUTO => Any::from("auto"),
         }
     }
 }
@@ -15589,7 +15509,7 @@ pub enum AlignSetting {
     RIGHT,
 }
 impl FromVal for AlignSetting {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "start" => Self::START,
             "center" => Self::CENTER,
@@ -15599,32 +15519,32 @@ impl FromVal for AlignSetting {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<AlignSetting> for emlite::Val {
-    fn from(s: AlignSetting) -> emlite::Val {
+impl From<AlignSetting> for Any {
+    fn from(s: AlignSetting) -> Any {
         match s {
-            AlignSetting::START => emlite::Val::from("start"),
-            AlignSetting::CENTER => emlite::Val::from("center"),
-            AlignSetting::END => emlite::Val::from("end"),
-            AlignSetting::LEFT => emlite::Val::from("left"),
-            AlignSetting::RIGHT => emlite::Val::from("right"),
+            AlignSetting::START => Any::from("start"),
+            AlignSetting::CENTER => Any::from("center"),
+            AlignSetting::END => Any::from("end"),
+            AlignSetting::LEFT => Any::from("left"),
+            AlignSetting::RIGHT => Any::from("right"),
         }
     }
 }
-impl From<&AlignSetting> for emlite::Val {
-    fn from(s: &AlignSetting) -> emlite::Val {
+impl From<&AlignSetting> for Any {
+    fn from(s: &AlignSetting) -> Any {
         match *s {
-            AlignSetting::START => emlite::Val::from("start"),
-            AlignSetting::CENTER => emlite::Val::from("center"),
-            AlignSetting::END => emlite::Val::from("end"),
-            AlignSetting::LEFT => emlite::Val::from("left"),
-            AlignSetting::RIGHT => emlite::Val::from("right"),
+            AlignSetting::START => Any::from("start"),
+            AlignSetting::CENTER => Any::from("center"),
+            AlignSetting::END => Any::from("end"),
+            AlignSetting::LEFT => Any::from("left"),
+            AlignSetting::RIGHT => Any::from("right"),
         }
     }
 }
@@ -15635,33 +15555,33 @@ pub enum ScrollSetting {
     UP,
 }
 impl FromVal for ScrollSetting {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "" => Self::NONE,
             "up" => Self::UP,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<ScrollSetting> for emlite::Val {
-    fn from(s: ScrollSetting) -> emlite::Val {
+impl From<ScrollSetting> for Any {
+    fn from(s: ScrollSetting) -> Any {
         match s {
-            ScrollSetting::NONE => emlite::Val::from(""),
-            ScrollSetting::UP => emlite::Val::from("up"),
+            ScrollSetting::NONE => Any::from(""),
+            ScrollSetting::UP => Any::from("up"),
         }
     }
 }
-impl From<&ScrollSetting> for emlite::Val {
-    fn from(s: &ScrollSetting) -> emlite::Val {
+impl From<&ScrollSetting> for Any {
+    fn from(s: &ScrollSetting) -> Any {
         match *s {
-            ScrollSetting::NONE => emlite::Val::from(""),
-            ScrollSetting::UP => emlite::Val::from("up"),
+            ScrollSetting::NONE => Any::from(""),
+            ScrollSetting::UP => Any::from("up"),
         }
     }
 }
@@ -15673,7 +15593,7 @@ pub enum XREnvironmentBlendMode {
     ADDITIVE,
 }
 impl FromVal for XREnvironmentBlendMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "opaque" => Self::OPAQUE,
             "alpha-blend" => Self::ALPHA_BLEND,
@@ -15681,28 +15601,28 @@ impl FromVal for XREnvironmentBlendMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XREnvironmentBlendMode> for emlite::Val {
-    fn from(s: XREnvironmentBlendMode) -> emlite::Val {
+impl From<XREnvironmentBlendMode> for Any {
+    fn from(s: XREnvironmentBlendMode) -> Any {
         match s {
-            XREnvironmentBlendMode::OPAQUE => emlite::Val::from("opaque"),
-            XREnvironmentBlendMode::ALPHA_BLEND => emlite::Val::from("alpha-blend"),
-            XREnvironmentBlendMode::ADDITIVE => emlite::Val::from("additive"),
+            XREnvironmentBlendMode::OPAQUE => Any::from("opaque"),
+            XREnvironmentBlendMode::ALPHA_BLEND => Any::from("alpha-blend"),
+            XREnvironmentBlendMode::ADDITIVE => Any::from("additive"),
         }
     }
 }
-impl From<&XREnvironmentBlendMode> for emlite::Val {
-    fn from(s: &XREnvironmentBlendMode) -> emlite::Val {
+impl From<&XREnvironmentBlendMode> for Any {
+    fn from(s: &XREnvironmentBlendMode) -> Any {
         match *s {
-            XREnvironmentBlendMode::OPAQUE => emlite::Val::from("opaque"),
-            XREnvironmentBlendMode::ALPHA_BLEND => emlite::Val::from("alpha-blend"),
-            XREnvironmentBlendMode::ADDITIVE => emlite::Val::from("additive"),
+            XREnvironmentBlendMode::OPAQUE => Any::from("opaque"),
+            XREnvironmentBlendMode::ALPHA_BLEND => Any::from("alpha-blend"),
+            XREnvironmentBlendMode::ADDITIVE => Any::from("additive"),
         }
     }
 }
@@ -15713,33 +15633,33 @@ pub enum XRInteractionMode {
     WORLD_SPACE,
 }
 impl FromVal for XRInteractionMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "screen-space" => Self::SCREEN_SPACE,
             "world-space" => Self::WORLD_SPACE,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRInteractionMode> for emlite::Val {
-    fn from(s: XRInteractionMode) -> emlite::Val {
+impl From<XRInteractionMode> for Any {
+    fn from(s: XRInteractionMode) -> Any {
         match s {
-            XRInteractionMode::SCREEN_SPACE => emlite::Val::from("screen-space"),
-            XRInteractionMode::WORLD_SPACE => emlite::Val::from("world-space"),
+            XRInteractionMode::SCREEN_SPACE => Any::from("screen-space"),
+            XRInteractionMode::WORLD_SPACE => Any::from("world-space"),
         }
     }
 }
-impl From<&XRInteractionMode> for emlite::Val {
-    fn from(s: &XRInteractionMode) -> emlite::Val {
+impl From<&XRInteractionMode> for Any {
+    fn from(s: &XRInteractionMode) -> Any {
         match *s {
-            XRInteractionMode::SCREEN_SPACE => emlite::Val::from("screen-space"),
-            XRInteractionMode::WORLD_SPACE => emlite::Val::from("world-space"),
+            XRInteractionMode::SCREEN_SPACE => Any::from("screen-space"),
+            XRInteractionMode::WORLD_SPACE => Any::from("world-space"),
         }
     }
 }
@@ -15750,33 +15670,33 @@ pub enum XRDepthType {
     SMOOTH,
 }
 impl FromVal for XRDepthType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "raw" => Self::RAW_,
             "smooth" => Self::SMOOTH,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRDepthType> for emlite::Val {
-    fn from(s: XRDepthType) -> emlite::Val {
+impl From<XRDepthType> for Any {
+    fn from(s: XRDepthType) -> Any {
         match s {
-            XRDepthType::RAW_ => emlite::Val::from("raw"),
-            XRDepthType::SMOOTH => emlite::Val::from("smooth"),
+            XRDepthType::RAW_ => Any::from("raw"),
+            XRDepthType::SMOOTH => Any::from("smooth"),
         }
     }
 }
-impl From<&XRDepthType> for emlite::Val {
-    fn from(s: &XRDepthType) -> emlite::Val {
+impl From<&XRDepthType> for Any {
+    fn from(s: &XRDepthType) -> Any {
         match *s {
-            XRDepthType::RAW_ => emlite::Val::from("raw"),
-            XRDepthType::SMOOTH => emlite::Val::from("smooth"),
+            XRDepthType::RAW_ => Any::from("raw"),
+            XRDepthType::SMOOTH => Any::from("smooth"),
         }
     }
 }
@@ -15787,33 +15707,33 @@ pub enum XRDepthUsage {
     GPU_OPTIMIZED,
 }
 impl FromVal for XRDepthUsage {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "cpu-optimized" => Self::CPU_OPTIMIZED,
             "gpu-optimized" => Self::GPU_OPTIMIZED,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRDepthUsage> for emlite::Val {
-    fn from(s: XRDepthUsage) -> emlite::Val {
+impl From<XRDepthUsage> for Any {
+    fn from(s: XRDepthUsage) -> Any {
         match s {
-            XRDepthUsage::CPU_OPTIMIZED => emlite::Val::from("cpu-optimized"),
-            XRDepthUsage::GPU_OPTIMIZED => emlite::Val::from("gpu-optimized"),
+            XRDepthUsage::CPU_OPTIMIZED => Any::from("cpu-optimized"),
+            XRDepthUsage::GPU_OPTIMIZED => Any::from("gpu-optimized"),
         }
     }
 }
-impl From<&XRDepthUsage> for emlite::Val {
-    fn from(s: &XRDepthUsage) -> emlite::Val {
+impl From<&XRDepthUsage> for Any {
+    fn from(s: &XRDepthUsage) -> Any {
         match *s {
-            XRDepthUsage::CPU_OPTIMIZED => emlite::Val::from("cpu-optimized"),
-            XRDepthUsage::GPU_OPTIMIZED => emlite::Val::from("gpu-optimized"),
+            XRDepthUsage::CPU_OPTIMIZED => Any::from("cpu-optimized"),
+            XRDepthUsage::GPU_OPTIMIZED => Any::from("gpu-optimized"),
         }
     }
 }
@@ -15825,7 +15745,7 @@ pub enum XRDepthDataFormat {
     UNSIGNED_SHORT,
 }
 impl FromVal for XRDepthDataFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "luminance-alpha" => Self::LUMINANCE_ALPHA,
             "float32" => Self::FLOAT32,
@@ -15833,28 +15753,28 @@ impl FromVal for XRDepthDataFormat {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRDepthDataFormat> for emlite::Val {
-    fn from(s: XRDepthDataFormat) -> emlite::Val {
+impl From<XRDepthDataFormat> for Any {
+    fn from(s: XRDepthDataFormat) -> Any {
         match s {
-            XRDepthDataFormat::LUMINANCE_ALPHA => emlite::Val::from("luminance-alpha"),
-            XRDepthDataFormat::FLOAT32 => emlite::Val::from("float32"),
-            XRDepthDataFormat::UNSIGNED_SHORT => emlite::Val::from("unsigned-short"),
+            XRDepthDataFormat::LUMINANCE_ALPHA => Any::from("luminance-alpha"),
+            XRDepthDataFormat::FLOAT32 => Any::from("float32"),
+            XRDepthDataFormat::UNSIGNED_SHORT => Any::from("unsigned-short"),
         }
     }
 }
-impl From<&XRDepthDataFormat> for emlite::Val {
-    fn from(s: &XRDepthDataFormat) -> emlite::Val {
+impl From<&XRDepthDataFormat> for Any {
+    fn from(s: &XRDepthDataFormat) -> Any {
         match *s {
-            XRDepthDataFormat::LUMINANCE_ALPHA => emlite::Val::from("luminance-alpha"),
-            XRDepthDataFormat::FLOAT32 => emlite::Val::from("float32"),
-            XRDepthDataFormat::UNSIGNED_SHORT => emlite::Val::from("unsigned-short"),
+            XRDepthDataFormat::LUMINANCE_ALPHA => Any::from("luminance-alpha"),
+            XRDepthDataFormat::FLOAT32 => Any::from("float32"),
+            XRDepthDataFormat::UNSIGNED_SHORT => Any::from("unsigned-short"),
         }
     }
 }
@@ -15866,7 +15786,7 @@ pub enum XRDOMOverlayType {
     HEAD_LOCKED,
 }
 impl FromVal for XRDOMOverlayType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "screen" => Self::SCREEN,
             "floating" => Self::FLOATING,
@@ -15874,28 +15794,28 @@ impl FromVal for XRDOMOverlayType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRDOMOverlayType> for emlite::Val {
-    fn from(s: XRDOMOverlayType) -> emlite::Val {
+impl From<XRDOMOverlayType> for Any {
+    fn from(s: XRDOMOverlayType) -> Any {
         match s {
-            XRDOMOverlayType::SCREEN => emlite::Val::from("screen"),
-            XRDOMOverlayType::FLOATING => emlite::Val::from("floating"),
-            XRDOMOverlayType::HEAD_LOCKED => emlite::Val::from("head-locked"),
+            XRDOMOverlayType::SCREEN => Any::from("screen"),
+            XRDOMOverlayType::FLOATING => Any::from("floating"),
+            XRDOMOverlayType::HEAD_LOCKED => Any::from("head-locked"),
         }
     }
 }
-impl From<&XRDOMOverlayType> for emlite::Val {
-    fn from(s: &XRDOMOverlayType) -> emlite::Val {
+impl From<&XRDOMOverlayType> for Any {
+    fn from(s: &XRDOMOverlayType) -> Any {
         match *s {
-            XRDOMOverlayType::SCREEN => emlite::Val::from("screen"),
-            XRDOMOverlayType::FLOATING => emlite::Val::from("floating"),
-            XRDOMOverlayType::HEAD_LOCKED => emlite::Val::from("head-locked"),
+            XRDOMOverlayType::SCREEN => Any::from("screen"),
+            XRDOMOverlayType::FLOATING => Any::from("floating"),
+            XRDOMOverlayType::HEAD_LOCKED => Any::from("head-locked"),
         }
     }
 }
@@ -15929,7 +15849,7 @@ pub enum XRHandJoint {
     PINKY_FINGER_TIP,
 }
 impl FromVal for XRHandJoint {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "wrist" => Self::WRIST,
             "thumb-metacarpal" => Self::THUMB_METACARPAL,
@@ -15959,120 +15879,100 @@ impl FromVal for XRHandJoint {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRHandJoint> for emlite::Val {
-    fn from(s: XRHandJoint) -> emlite::Val {
+impl From<XRHandJoint> for Any {
+    fn from(s: XRHandJoint) -> Any {
         match s {
-            XRHandJoint::WRIST => emlite::Val::from("wrist"),
-            XRHandJoint::THUMB_METACARPAL => emlite::Val::from("thumb-metacarpal"),
-            XRHandJoint::THUMB_PHALANX_PROXIMAL => emlite::Val::from("thumb-phalanx-proximal"),
-            XRHandJoint::THUMB_PHALANX_DISTAL => emlite::Val::from("thumb-phalanx-distal"),
-            XRHandJoint::THUMB_TIP => emlite::Val::from("thumb-tip"),
-            XRHandJoint::INDEX_FINGER_METACARPAL => emlite::Val::from("index-finger-metacarpal"),
+            XRHandJoint::WRIST => Any::from("wrist"),
+            XRHandJoint::THUMB_METACARPAL => Any::from("thumb-metacarpal"),
+            XRHandJoint::THUMB_PHALANX_PROXIMAL => Any::from("thumb-phalanx-proximal"),
+            XRHandJoint::THUMB_PHALANX_DISTAL => Any::from("thumb-phalanx-distal"),
+            XRHandJoint::THUMB_TIP => Any::from("thumb-tip"),
+            XRHandJoint::INDEX_FINGER_METACARPAL => Any::from("index-finger-metacarpal"),
             XRHandJoint::INDEX_FINGER_PHALANX_PROXIMAL => {
-                emlite::Val::from("index-finger-phalanx-proximal")
+                Any::from("index-finger-phalanx-proximal")
             }
             XRHandJoint::INDEX_FINGER_PHALANX_INTERMEDIATE => {
-                emlite::Val::from("index-finger-phalanx-intermediate")
+                Any::from("index-finger-phalanx-intermediate")
             }
-            XRHandJoint::INDEX_FINGER_PHALANX_DISTAL => {
-                emlite::Val::from("index-finger-phalanx-distal")
-            }
-            XRHandJoint::INDEX_FINGER_TIP => emlite::Val::from("index-finger-tip"),
-            XRHandJoint::MIDDLE_FINGER_METACARPAL => emlite::Val::from("middle-finger-metacarpal"),
+            XRHandJoint::INDEX_FINGER_PHALANX_DISTAL => Any::from("index-finger-phalanx-distal"),
+            XRHandJoint::INDEX_FINGER_TIP => Any::from("index-finger-tip"),
+            XRHandJoint::MIDDLE_FINGER_METACARPAL => Any::from("middle-finger-metacarpal"),
             XRHandJoint::MIDDLE_FINGER_PHALANX_PROXIMAL => {
-                emlite::Val::from("middle-finger-phalanx-proximal")
+                Any::from("middle-finger-phalanx-proximal")
             }
             XRHandJoint::MIDDLE_FINGER_PHALANX_INTERMEDIATE => {
-                emlite::Val::from("middle-finger-phalanx-intermediate")
+                Any::from("middle-finger-phalanx-intermediate")
             }
-            XRHandJoint::MIDDLE_FINGER_PHALANX_DISTAL => {
-                emlite::Val::from("middle-finger-phalanx-distal")
-            }
-            XRHandJoint::MIDDLE_FINGER_TIP => emlite::Val::from("middle-finger-tip"),
-            XRHandJoint::RING_FINGER_METACARPAL => emlite::Val::from("ring-finger-metacarpal"),
-            XRHandJoint::RING_FINGER_PHALANX_PROXIMAL => {
-                emlite::Val::from("ring-finger-phalanx-proximal")
-            }
+            XRHandJoint::MIDDLE_FINGER_PHALANX_DISTAL => Any::from("middle-finger-phalanx-distal"),
+            XRHandJoint::MIDDLE_FINGER_TIP => Any::from("middle-finger-tip"),
+            XRHandJoint::RING_FINGER_METACARPAL => Any::from("ring-finger-metacarpal"),
+            XRHandJoint::RING_FINGER_PHALANX_PROXIMAL => Any::from("ring-finger-phalanx-proximal"),
             XRHandJoint::RING_FINGER_PHALANX_INTERMEDIATE => {
-                emlite::Val::from("ring-finger-phalanx-intermediate")
+                Any::from("ring-finger-phalanx-intermediate")
             }
-            XRHandJoint::RING_FINGER_PHALANX_DISTAL => {
-                emlite::Val::from("ring-finger-phalanx-distal")
-            }
-            XRHandJoint::RING_FINGER_TIP => emlite::Val::from("ring-finger-tip"),
-            XRHandJoint::PINKY_FINGER_METACARPAL => emlite::Val::from("pinky-finger-metacarpal"),
+            XRHandJoint::RING_FINGER_PHALANX_DISTAL => Any::from("ring-finger-phalanx-distal"),
+            XRHandJoint::RING_FINGER_TIP => Any::from("ring-finger-tip"),
+            XRHandJoint::PINKY_FINGER_METACARPAL => Any::from("pinky-finger-metacarpal"),
             XRHandJoint::PINKY_FINGER_PHALANX_PROXIMAL => {
-                emlite::Val::from("pinky-finger-phalanx-proximal")
+                Any::from("pinky-finger-phalanx-proximal")
             }
             XRHandJoint::PINKY_FINGER_PHALANX_INTERMEDIATE => {
-                emlite::Val::from("pinky-finger-phalanx-intermediate")
+                Any::from("pinky-finger-phalanx-intermediate")
             }
-            XRHandJoint::PINKY_FINGER_PHALANX_DISTAL => {
-                emlite::Val::from("pinky-finger-phalanx-distal")
-            }
-            XRHandJoint::PINKY_FINGER_TIP => emlite::Val::from("pinky-finger-tip"),
+            XRHandJoint::PINKY_FINGER_PHALANX_DISTAL => Any::from("pinky-finger-phalanx-distal"),
+            XRHandJoint::PINKY_FINGER_TIP => Any::from("pinky-finger-tip"),
         }
     }
 }
-impl From<&XRHandJoint> for emlite::Val {
-    fn from(s: &XRHandJoint) -> emlite::Val {
+impl From<&XRHandJoint> for Any {
+    fn from(s: &XRHandJoint) -> Any {
         match *s {
-            XRHandJoint::WRIST => emlite::Val::from("wrist"),
-            XRHandJoint::THUMB_METACARPAL => emlite::Val::from("thumb-metacarpal"),
-            XRHandJoint::THUMB_PHALANX_PROXIMAL => emlite::Val::from("thumb-phalanx-proximal"),
-            XRHandJoint::THUMB_PHALANX_DISTAL => emlite::Val::from("thumb-phalanx-distal"),
-            XRHandJoint::THUMB_TIP => emlite::Val::from("thumb-tip"),
-            XRHandJoint::INDEX_FINGER_METACARPAL => emlite::Val::from("index-finger-metacarpal"),
+            XRHandJoint::WRIST => Any::from("wrist"),
+            XRHandJoint::THUMB_METACARPAL => Any::from("thumb-metacarpal"),
+            XRHandJoint::THUMB_PHALANX_PROXIMAL => Any::from("thumb-phalanx-proximal"),
+            XRHandJoint::THUMB_PHALANX_DISTAL => Any::from("thumb-phalanx-distal"),
+            XRHandJoint::THUMB_TIP => Any::from("thumb-tip"),
+            XRHandJoint::INDEX_FINGER_METACARPAL => Any::from("index-finger-metacarpal"),
             XRHandJoint::INDEX_FINGER_PHALANX_PROXIMAL => {
-                emlite::Val::from("index-finger-phalanx-proximal")
+                Any::from("index-finger-phalanx-proximal")
             }
             XRHandJoint::INDEX_FINGER_PHALANX_INTERMEDIATE => {
-                emlite::Val::from("index-finger-phalanx-intermediate")
+                Any::from("index-finger-phalanx-intermediate")
             }
-            XRHandJoint::INDEX_FINGER_PHALANX_DISTAL => {
-                emlite::Val::from("index-finger-phalanx-distal")
-            }
-            XRHandJoint::INDEX_FINGER_TIP => emlite::Val::from("index-finger-tip"),
-            XRHandJoint::MIDDLE_FINGER_METACARPAL => emlite::Val::from("middle-finger-metacarpal"),
+            XRHandJoint::INDEX_FINGER_PHALANX_DISTAL => Any::from("index-finger-phalanx-distal"),
+            XRHandJoint::INDEX_FINGER_TIP => Any::from("index-finger-tip"),
+            XRHandJoint::MIDDLE_FINGER_METACARPAL => Any::from("middle-finger-metacarpal"),
             XRHandJoint::MIDDLE_FINGER_PHALANX_PROXIMAL => {
-                emlite::Val::from("middle-finger-phalanx-proximal")
+                Any::from("middle-finger-phalanx-proximal")
             }
             XRHandJoint::MIDDLE_FINGER_PHALANX_INTERMEDIATE => {
-                emlite::Val::from("middle-finger-phalanx-intermediate")
+                Any::from("middle-finger-phalanx-intermediate")
             }
-            XRHandJoint::MIDDLE_FINGER_PHALANX_DISTAL => {
-                emlite::Val::from("middle-finger-phalanx-distal")
-            }
-            XRHandJoint::MIDDLE_FINGER_TIP => emlite::Val::from("middle-finger-tip"),
-            XRHandJoint::RING_FINGER_METACARPAL => emlite::Val::from("ring-finger-metacarpal"),
-            XRHandJoint::RING_FINGER_PHALANX_PROXIMAL => {
-                emlite::Val::from("ring-finger-phalanx-proximal")
-            }
+            XRHandJoint::MIDDLE_FINGER_PHALANX_DISTAL => Any::from("middle-finger-phalanx-distal"),
+            XRHandJoint::MIDDLE_FINGER_TIP => Any::from("middle-finger-tip"),
+            XRHandJoint::RING_FINGER_METACARPAL => Any::from("ring-finger-metacarpal"),
+            XRHandJoint::RING_FINGER_PHALANX_PROXIMAL => Any::from("ring-finger-phalanx-proximal"),
             XRHandJoint::RING_FINGER_PHALANX_INTERMEDIATE => {
-                emlite::Val::from("ring-finger-phalanx-intermediate")
+                Any::from("ring-finger-phalanx-intermediate")
             }
-            XRHandJoint::RING_FINGER_PHALANX_DISTAL => {
-                emlite::Val::from("ring-finger-phalanx-distal")
-            }
-            XRHandJoint::RING_FINGER_TIP => emlite::Val::from("ring-finger-tip"),
-            XRHandJoint::PINKY_FINGER_METACARPAL => emlite::Val::from("pinky-finger-metacarpal"),
+            XRHandJoint::RING_FINGER_PHALANX_DISTAL => Any::from("ring-finger-phalanx-distal"),
+            XRHandJoint::RING_FINGER_TIP => Any::from("ring-finger-tip"),
+            XRHandJoint::PINKY_FINGER_METACARPAL => Any::from("pinky-finger-metacarpal"),
             XRHandJoint::PINKY_FINGER_PHALANX_PROXIMAL => {
-                emlite::Val::from("pinky-finger-phalanx-proximal")
+                Any::from("pinky-finger-phalanx-proximal")
             }
             XRHandJoint::PINKY_FINGER_PHALANX_INTERMEDIATE => {
-                emlite::Val::from("pinky-finger-phalanx-intermediate")
+                Any::from("pinky-finger-phalanx-intermediate")
             }
-            XRHandJoint::PINKY_FINGER_PHALANX_DISTAL => {
-                emlite::Val::from("pinky-finger-phalanx-distal")
-            }
-            XRHandJoint::PINKY_FINGER_TIP => emlite::Val::from("pinky-finger-tip"),
+            XRHandJoint::PINKY_FINGER_PHALANX_DISTAL => Any::from("pinky-finger-phalanx-distal"),
+            XRHandJoint::PINKY_FINGER_TIP => Any::from("pinky-finger-tip"),
         }
     }
 }
@@ -16084,7 +15984,7 @@ pub enum XRHitTestTrackableType {
     MESH,
 }
 impl FromVal for XRHitTestTrackableType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "point" => Self::POINT,
             "plane" => Self::PLANE,
@@ -16092,28 +15992,28 @@ impl FromVal for XRHitTestTrackableType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRHitTestTrackableType> for emlite::Val {
-    fn from(s: XRHitTestTrackableType) -> emlite::Val {
+impl From<XRHitTestTrackableType> for Any {
+    fn from(s: XRHitTestTrackableType) -> Any {
         match s {
-            XRHitTestTrackableType::POINT => emlite::Val::from("point"),
-            XRHitTestTrackableType::PLANE => emlite::Val::from("plane"),
-            XRHitTestTrackableType::MESH => emlite::Val::from("mesh"),
+            XRHitTestTrackableType::POINT => Any::from("point"),
+            XRHitTestTrackableType::PLANE => Any::from("plane"),
+            XRHitTestTrackableType::MESH => Any::from("mesh"),
         }
     }
 }
-impl From<&XRHitTestTrackableType> for emlite::Val {
-    fn from(s: &XRHitTestTrackableType) -> emlite::Val {
+impl From<&XRHitTestTrackableType> for Any {
+    fn from(s: &XRHitTestTrackableType) -> Any {
         match *s {
-            XRHitTestTrackableType::POINT => emlite::Val::from("point"),
-            XRHitTestTrackableType::PLANE => emlite::Val::from("plane"),
-            XRHitTestTrackableType::MESH => emlite::Val::from("mesh"),
+            XRHitTestTrackableType::POINT => Any::from("point"),
+            XRHitTestTrackableType::PLANE => Any::from("plane"),
+            XRHitTestTrackableType::MESH => Any::from("mesh"),
         }
     }
 }
@@ -16124,33 +16024,33 @@ pub enum XRReflectionFormat {
     RGBA16F,
 }
 impl FromVal for XRReflectionFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "srgba8" => Self::SRGBA8,
             "rgba16f" => Self::RGBA16F,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRReflectionFormat> for emlite::Val {
-    fn from(s: XRReflectionFormat) -> emlite::Val {
+impl From<XRReflectionFormat> for Any {
+    fn from(s: XRReflectionFormat) -> Any {
         match s {
-            XRReflectionFormat::SRGBA8 => emlite::Val::from("srgba8"),
-            XRReflectionFormat::RGBA16F => emlite::Val::from("rgba16f"),
+            XRReflectionFormat::SRGBA8 => Any::from("srgba8"),
+            XRReflectionFormat::RGBA16F => Any::from("rgba16f"),
         }
     }
 }
-impl From<&XRReflectionFormat> for emlite::Val {
-    fn from(s: &XRReflectionFormat) -> emlite::Val {
+impl From<&XRReflectionFormat> for Any {
+    fn from(s: &XRReflectionFormat) -> Any {
         match *s {
-            XRReflectionFormat::SRGBA8 => emlite::Val::from("srgba8"),
-            XRReflectionFormat::RGBA16F => emlite::Val::from("rgba16f"),
+            XRReflectionFormat::SRGBA8 => Any::from("srgba8"),
+            XRReflectionFormat::RGBA16F => Any::from("rgba16f"),
         }
     }
 }
@@ -16161,33 +16061,33 @@ pub enum XRPlaneOrientation {
     VERTICAL,
 }
 impl FromVal for XRPlaneOrientation {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "horizontal" => Self::HORIZONTAL,
             "vertical" => Self::VERTICAL,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRPlaneOrientation> for emlite::Val {
-    fn from(s: XRPlaneOrientation) -> emlite::Val {
+impl From<XRPlaneOrientation> for Any {
+    fn from(s: XRPlaneOrientation) -> Any {
         match s {
-            XRPlaneOrientation::HORIZONTAL => emlite::Val::from("horizontal"),
-            XRPlaneOrientation::VERTICAL => emlite::Val::from("vertical"),
+            XRPlaneOrientation::HORIZONTAL => Any::from("horizontal"),
+            XRPlaneOrientation::VERTICAL => Any::from("vertical"),
         }
     }
 }
-impl From<&XRPlaneOrientation> for emlite::Val {
-    fn from(s: &XRPlaneOrientation) -> emlite::Val {
+impl From<&XRPlaneOrientation> for Any {
+    fn from(s: &XRPlaneOrientation) -> Any {
         match *s {
-            XRPlaneOrientation::HORIZONTAL => emlite::Val::from("horizontal"),
-            XRPlaneOrientation::VERTICAL => emlite::Val::from("vertical"),
+            XRPlaneOrientation::HORIZONTAL => Any::from("horizontal"),
+            XRPlaneOrientation::VERTICAL => Any::from("vertical"),
         }
     }
 }
@@ -16199,7 +16099,7 @@ pub enum XRSessionMode {
     IMMERSIVE_AR,
 }
 impl FromVal for XRSessionMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "inline" => Self::INLINE,
             "immersive-vr" => Self::IMMERSIVE_VR,
@@ -16207,28 +16107,28 @@ impl FromVal for XRSessionMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRSessionMode> for emlite::Val {
-    fn from(s: XRSessionMode) -> emlite::Val {
+impl From<XRSessionMode> for Any {
+    fn from(s: XRSessionMode) -> Any {
         match s {
-            XRSessionMode::INLINE => emlite::Val::from("inline"),
-            XRSessionMode::IMMERSIVE_VR => emlite::Val::from("immersive-vr"),
-            XRSessionMode::IMMERSIVE_AR => emlite::Val::from("immersive-ar"),
+            XRSessionMode::INLINE => Any::from("inline"),
+            XRSessionMode::IMMERSIVE_VR => Any::from("immersive-vr"),
+            XRSessionMode::IMMERSIVE_AR => Any::from("immersive-ar"),
         }
     }
 }
-impl From<&XRSessionMode> for emlite::Val {
-    fn from(s: &XRSessionMode) -> emlite::Val {
+impl From<&XRSessionMode> for Any {
+    fn from(s: &XRSessionMode) -> Any {
         match *s {
-            XRSessionMode::INLINE => emlite::Val::from("inline"),
-            XRSessionMode::IMMERSIVE_VR => emlite::Val::from("immersive-vr"),
-            XRSessionMode::IMMERSIVE_AR => emlite::Val::from("immersive-ar"),
+            XRSessionMode::INLINE => Any::from("inline"),
+            XRSessionMode::IMMERSIVE_VR => Any::from("immersive-vr"),
+            XRSessionMode::IMMERSIVE_AR => Any::from("immersive-ar"),
         }
     }
 }
@@ -16240,7 +16140,7 @@ pub enum XRVisibilityState {
     HIDDEN,
 }
 impl FromVal for XRVisibilityState {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "visible" => Self::VISIBLE,
             "visible-blurred" => Self::VISIBLE_BLURRED,
@@ -16248,28 +16148,28 @@ impl FromVal for XRVisibilityState {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRVisibilityState> for emlite::Val {
-    fn from(s: XRVisibilityState) -> emlite::Val {
+impl From<XRVisibilityState> for Any {
+    fn from(s: XRVisibilityState) -> Any {
         match s {
-            XRVisibilityState::VISIBLE => emlite::Val::from("visible"),
-            XRVisibilityState::VISIBLE_BLURRED => emlite::Val::from("visible-blurred"),
-            XRVisibilityState::HIDDEN => emlite::Val::from("hidden"),
+            XRVisibilityState::VISIBLE => Any::from("visible"),
+            XRVisibilityState::VISIBLE_BLURRED => Any::from("visible-blurred"),
+            XRVisibilityState::HIDDEN => Any::from("hidden"),
         }
     }
 }
-impl From<&XRVisibilityState> for emlite::Val {
-    fn from(s: &XRVisibilityState) -> emlite::Val {
+impl From<&XRVisibilityState> for Any {
+    fn from(s: &XRVisibilityState) -> Any {
         match *s {
-            XRVisibilityState::VISIBLE => emlite::Val::from("visible"),
-            XRVisibilityState::VISIBLE_BLURRED => emlite::Val::from("visible-blurred"),
-            XRVisibilityState::HIDDEN => emlite::Val::from("hidden"),
+            XRVisibilityState::VISIBLE => Any::from("visible"),
+            XRVisibilityState::VISIBLE_BLURRED => Any::from("visible-blurred"),
+            XRVisibilityState::HIDDEN => Any::from("hidden"),
         }
     }
 }
@@ -16283,7 +16183,7 @@ pub enum XRReferenceSpaceType {
     UNBOUNDED,
 }
 impl FromVal for XRReferenceSpaceType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "viewer" => Self::VIEWER,
             "local" => Self::LOCAL,
@@ -16293,32 +16193,32 @@ impl FromVal for XRReferenceSpaceType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRReferenceSpaceType> for emlite::Val {
-    fn from(s: XRReferenceSpaceType) -> emlite::Val {
+impl From<XRReferenceSpaceType> for Any {
+    fn from(s: XRReferenceSpaceType) -> Any {
         match s {
-            XRReferenceSpaceType::VIEWER => emlite::Val::from("viewer"),
-            XRReferenceSpaceType::LOCAL => emlite::Val::from("local"),
-            XRReferenceSpaceType::LOCAL_FLOOR => emlite::Val::from("local-floor"),
-            XRReferenceSpaceType::BOUNDED_FLOOR => emlite::Val::from("bounded-floor"),
-            XRReferenceSpaceType::UNBOUNDED => emlite::Val::from("unbounded"),
+            XRReferenceSpaceType::VIEWER => Any::from("viewer"),
+            XRReferenceSpaceType::LOCAL => Any::from("local"),
+            XRReferenceSpaceType::LOCAL_FLOOR => Any::from("local-floor"),
+            XRReferenceSpaceType::BOUNDED_FLOOR => Any::from("bounded-floor"),
+            XRReferenceSpaceType::UNBOUNDED => Any::from("unbounded"),
         }
     }
 }
-impl From<&XRReferenceSpaceType> for emlite::Val {
-    fn from(s: &XRReferenceSpaceType) -> emlite::Val {
+impl From<&XRReferenceSpaceType> for Any {
+    fn from(s: &XRReferenceSpaceType) -> Any {
         match *s {
-            XRReferenceSpaceType::VIEWER => emlite::Val::from("viewer"),
-            XRReferenceSpaceType::LOCAL => emlite::Val::from("local"),
-            XRReferenceSpaceType::LOCAL_FLOOR => emlite::Val::from("local-floor"),
-            XRReferenceSpaceType::BOUNDED_FLOOR => emlite::Val::from("bounded-floor"),
-            XRReferenceSpaceType::UNBOUNDED => emlite::Val::from("unbounded"),
+            XRReferenceSpaceType::VIEWER => Any::from("viewer"),
+            XRReferenceSpaceType::LOCAL => Any::from("local"),
+            XRReferenceSpaceType::LOCAL_FLOOR => Any::from("local-floor"),
+            XRReferenceSpaceType::BOUNDED_FLOOR => Any::from("bounded-floor"),
+            XRReferenceSpaceType::UNBOUNDED => Any::from("unbounded"),
         }
     }
 }
@@ -16330,7 +16230,7 @@ pub enum XREye {
     RIGHT,
 }
 impl FromVal for XREye {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "left" => Self::LEFT,
@@ -16338,28 +16238,28 @@ impl FromVal for XREye {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XREye> for emlite::Val {
-    fn from(s: XREye) -> emlite::Val {
+impl From<XREye> for Any {
+    fn from(s: XREye) -> Any {
         match s {
-            XREye::NONE => emlite::Val::from("none"),
-            XREye::LEFT => emlite::Val::from("left"),
-            XREye::RIGHT => emlite::Val::from("right"),
+            XREye::NONE => Any::from("none"),
+            XREye::LEFT => Any::from("left"),
+            XREye::RIGHT => Any::from("right"),
         }
     }
 }
-impl From<&XREye> for emlite::Val {
-    fn from(s: &XREye) -> emlite::Val {
+impl From<&XREye> for Any {
+    fn from(s: &XREye) -> Any {
         match *s {
-            XREye::NONE => emlite::Val::from("none"),
-            XREye::LEFT => emlite::Val::from("left"),
-            XREye::RIGHT => emlite::Val::from("right"),
+            XREye::NONE => Any::from("none"),
+            XREye::LEFT => Any::from("left"),
+            XREye::RIGHT => Any::from("right"),
         }
     }
 }
@@ -16371,7 +16271,7 @@ pub enum XRHandedness {
     RIGHT,
 }
 impl FromVal for XRHandedness {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "none" => Self::NONE,
             "left" => Self::LEFT,
@@ -16379,28 +16279,28 @@ impl FromVal for XRHandedness {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRHandedness> for emlite::Val {
-    fn from(s: XRHandedness) -> emlite::Val {
+impl From<XRHandedness> for Any {
+    fn from(s: XRHandedness) -> Any {
         match s {
-            XRHandedness::NONE => emlite::Val::from("none"),
-            XRHandedness::LEFT => emlite::Val::from("left"),
-            XRHandedness::RIGHT => emlite::Val::from("right"),
+            XRHandedness::NONE => Any::from("none"),
+            XRHandedness::LEFT => Any::from("left"),
+            XRHandedness::RIGHT => Any::from("right"),
         }
     }
 }
-impl From<&XRHandedness> for emlite::Val {
-    fn from(s: &XRHandedness) -> emlite::Val {
+impl From<&XRHandedness> for Any {
+    fn from(s: &XRHandedness) -> Any {
         match *s {
-            XRHandedness::NONE => emlite::Val::from("none"),
-            XRHandedness::LEFT => emlite::Val::from("left"),
-            XRHandedness::RIGHT => emlite::Val::from("right"),
+            XRHandedness::NONE => Any::from("none"),
+            XRHandedness::LEFT => Any::from("left"),
+            XRHandedness::RIGHT => Any::from("right"),
         }
     }
 }
@@ -16413,7 +16313,7 @@ pub enum XRTargetRayMode {
     TRANSIENT_POINTER,
 }
 impl FromVal for XRTargetRayMode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "gaze" => Self::GAZE,
             "tracked-pointer" => Self::TRACKED_POINTER,
@@ -16422,30 +16322,30 @@ impl FromVal for XRTargetRayMode {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRTargetRayMode> for emlite::Val {
-    fn from(s: XRTargetRayMode) -> emlite::Val {
+impl From<XRTargetRayMode> for Any {
+    fn from(s: XRTargetRayMode) -> Any {
         match s {
-            XRTargetRayMode::GAZE => emlite::Val::from("gaze"),
-            XRTargetRayMode::TRACKED_POINTER => emlite::Val::from("tracked-pointer"),
-            XRTargetRayMode::SCREEN => emlite::Val::from("screen"),
-            XRTargetRayMode::TRANSIENT_POINTER => emlite::Val::from("transient-pointer"),
+            XRTargetRayMode::GAZE => Any::from("gaze"),
+            XRTargetRayMode::TRACKED_POINTER => Any::from("tracked-pointer"),
+            XRTargetRayMode::SCREEN => Any::from("screen"),
+            XRTargetRayMode::TRANSIENT_POINTER => Any::from("transient-pointer"),
         }
     }
 }
-impl From<&XRTargetRayMode> for emlite::Val {
-    fn from(s: &XRTargetRayMode) -> emlite::Val {
+impl From<&XRTargetRayMode> for Any {
+    fn from(s: &XRTargetRayMode) -> Any {
         match *s {
-            XRTargetRayMode::GAZE => emlite::Val::from("gaze"),
-            XRTargetRayMode::TRACKED_POINTER => emlite::Val::from("tracked-pointer"),
-            XRTargetRayMode::SCREEN => emlite::Val::from("screen"),
-            XRTargetRayMode::TRANSIENT_POINTER => emlite::Val::from("transient-pointer"),
+            XRTargetRayMode::GAZE => Any::from("gaze"),
+            XRTargetRayMode::TRACKED_POINTER => Any::from("tracked-pointer"),
+            XRTargetRayMode::SCREEN => Any::from("screen"),
+            XRTargetRayMode::TRANSIENT_POINTER => Any::from("transient-pointer"),
         }
     }
 }
@@ -16459,7 +16359,7 @@ pub enum XRLayerLayout {
     STEREO_TOP_BOTTOM,
 }
 impl FromVal for XRLayerLayout {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "default" => Self::DEFAULT,
             "mono" => Self::MONO,
@@ -16469,32 +16369,32 @@ impl FromVal for XRLayerLayout {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRLayerLayout> for emlite::Val {
-    fn from(s: XRLayerLayout) -> emlite::Val {
+impl From<XRLayerLayout> for Any {
+    fn from(s: XRLayerLayout) -> Any {
         match s {
-            XRLayerLayout::DEFAULT => emlite::Val::from("default"),
-            XRLayerLayout::MONO => emlite::Val::from("mono"),
-            XRLayerLayout::STEREO => emlite::Val::from("stereo"),
-            XRLayerLayout::STEREO_LEFT_RIGHT => emlite::Val::from("stereo-left-right"),
-            XRLayerLayout::STEREO_TOP_BOTTOM => emlite::Val::from("stereo-top-bottom"),
+            XRLayerLayout::DEFAULT => Any::from("default"),
+            XRLayerLayout::MONO => Any::from("mono"),
+            XRLayerLayout::STEREO => Any::from("stereo"),
+            XRLayerLayout::STEREO_LEFT_RIGHT => Any::from("stereo-left-right"),
+            XRLayerLayout::STEREO_TOP_BOTTOM => Any::from("stereo-top-bottom"),
         }
     }
 }
-impl From<&XRLayerLayout> for emlite::Val {
-    fn from(s: &XRLayerLayout) -> emlite::Val {
+impl From<&XRLayerLayout> for Any {
+    fn from(s: &XRLayerLayout) -> Any {
         match *s {
-            XRLayerLayout::DEFAULT => emlite::Val::from("default"),
-            XRLayerLayout::MONO => emlite::Val::from("mono"),
-            XRLayerLayout::STEREO => emlite::Val::from("stereo"),
-            XRLayerLayout::STEREO_LEFT_RIGHT => emlite::Val::from("stereo-left-right"),
-            XRLayerLayout::STEREO_TOP_BOTTOM => emlite::Val::from("stereo-top-bottom"),
+            XRLayerLayout::DEFAULT => Any::from("default"),
+            XRLayerLayout::MONO => Any::from("mono"),
+            XRLayerLayout::STEREO => Any::from("stereo"),
+            XRLayerLayout::STEREO_LEFT_RIGHT => Any::from("stereo-left-right"),
+            XRLayerLayout::STEREO_TOP_BOTTOM => Any::from("stereo-top-bottom"),
         }
     }
 }
@@ -16506,7 +16406,7 @@ pub enum XRLayerQuality {
     GRAPHICS_OPTIMIZED,
 }
 impl FromVal for XRLayerQuality {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "default" => Self::DEFAULT,
             "text-optimized" => Self::TEXT_OPTIMIZED,
@@ -16514,28 +16414,28 @@ impl FromVal for XRLayerQuality {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRLayerQuality> for emlite::Val {
-    fn from(s: XRLayerQuality) -> emlite::Val {
+impl From<XRLayerQuality> for Any {
+    fn from(s: XRLayerQuality) -> Any {
         match s {
-            XRLayerQuality::DEFAULT => emlite::Val::from("default"),
-            XRLayerQuality::TEXT_OPTIMIZED => emlite::Val::from("text-optimized"),
-            XRLayerQuality::GRAPHICS_OPTIMIZED => emlite::Val::from("graphics-optimized"),
+            XRLayerQuality::DEFAULT => Any::from("default"),
+            XRLayerQuality::TEXT_OPTIMIZED => Any::from("text-optimized"),
+            XRLayerQuality::GRAPHICS_OPTIMIZED => Any::from("graphics-optimized"),
         }
     }
 }
-impl From<&XRLayerQuality> for emlite::Val {
-    fn from(s: &XRLayerQuality) -> emlite::Val {
+impl From<&XRLayerQuality> for Any {
+    fn from(s: &XRLayerQuality) -> Any {
         match *s {
-            XRLayerQuality::DEFAULT => emlite::Val::from("default"),
-            XRLayerQuality::TEXT_OPTIMIZED => emlite::Val::from("text-optimized"),
-            XRLayerQuality::GRAPHICS_OPTIMIZED => emlite::Val::from("graphics-optimized"),
+            XRLayerQuality::DEFAULT => Any::from("default"),
+            XRLayerQuality::TEXT_OPTIMIZED => Any::from("text-optimized"),
+            XRLayerQuality::GRAPHICS_OPTIMIZED => Any::from("graphics-optimized"),
         }
     }
 }
@@ -16546,33 +16446,33 @@ pub enum XRTextureType {
     TEXTURE_ARRAY,
 }
 impl FromVal for XRTextureType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "texture" => Self::TEXTURE,
             "texture-array" => Self::TEXTURE_ARRAY,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XRTextureType> for emlite::Val {
-    fn from(s: XRTextureType) -> emlite::Val {
+impl From<XRTextureType> for Any {
+    fn from(s: XRTextureType) -> Any {
         match s {
-            XRTextureType::TEXTURE => emlite::Val::from("texture"),
-            XRTextureType::TEXTURE_ARRAY => emlite::Val::from("texture-array"),
+            XRTextureType::TEXTURE => Any::from("texture"),
+            XRTextureType::TEXTURE_ARRAY => Any::from("texture-array"),
         }
     }
 }
-impl From<&XRTextureType> for emlite::Val {
-    fn from(s: &XRTextureType) -> emlite::Val {
+impl From<&XRTextureType> for Any {
+    fn from(s: &XRTextureType) -> Any {
         match *s {
-            XRTextureType::TEXTURE => emlite::Val::from("texture"),
-            XRTextureType::TEXTURE_ARRAY => emlite::Val::from("texture-array"),
+            XRTextureType::TEXTURE => Any::from("texture"),
+            XRTextureType::TEXTURE_ARRAY => Any::from("texture-array"),
         }
     }
 }
@@ -16585,7 +16485,7 @@ pub enum SummarizerType {
     HEADLINE,
 }
 impl FromVal for SummarizerType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "tldr" => Self::TLDR,
             "teaser" => Self::TEASER,
@@ -16594,30 +16494,30 @@ impl FromVal for SummarizerType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SummarizerType> for emlite::Val {
-    fn from(s: SummarizerType) -> emlite::Val {
+impl From<SummarizerType> for Any {
+    fn from(s: SummarizerType) -> Any {
         match s {
-            SummarizerType::TLDR => emlite::Val::from("tldr"),
-            SummarizerType::TEASER => emlite::Val::from("teaser"),
-            SummarizerType::KEY_POINTS => emlite::Val::from("key-points"),
-            SummarizerType::HEADLINE => emlite::Val::from("headline"),
+            SummarizerType::TLDR => Any::from("tldr"),
+            SummarizerType::TEASER => Any::from("teaser"),
+            SummarizerType::KEY_POINTS => Any::from("key-points"),
+            SummarizerType::HEADLINE => Any::from("headline"),
         }
     }
 }
-impl From<&SummarizerType> for emlite::Val {
-    fn from(s: &SummarizerType) -> emlite::Val {
+impl From<&SummarizerType> for Any {
+    fn from(s: &SummarizerType) -> Any {
         match *s {
-            SummarizerType::TLDR => emlite::Val::from("tldr"),
-            SummarizerType::TEASER => emlite::Val::from("teaser"),
-            SummarizerType::KEY_POINTS => emlite::Val::from("key-points"),
-            SummarizerType::HEADLINE => emlite::Val::from("headline"),
+            SummarizerType::TLDR => Any::from("tldr"),
+            SummarizerType::TEASER => Any::from("teaser"),
+            SummarizerType::KEY_POINTS => Any::from("key-points"),
+            SummarizerType::HEADLINE => Any::from("headline"),
         }
     }
 }
@@ -16628,33 +16528,33 @@ pub enum SummarizerFormat {
     MARKDOWN,
 }
 impl FromVal for SummarizerFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "plain-text" => Self::PLAIN_TEXT,
             "markdown" => Self::MARKDOWN,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SummarizerFormat> for emlite::Val {
-    fn from(s: SummarizerFormat) -> emlite::Val {
+impl From<SummarizerFormat> for Any {
+    fn from(s: SummarizerFormat) -> Any {
         match s {
-            SummarizerFormat::PLAIN_TEXT => emlite::Val::from("plain-text"),
-            SummarizerFormat::MARKDOWN => emlite::Val::from("markdown"),
+            SummarizerFormat::PLAIN_TEXT => Any::from("plain-text"),
+            SummarizerFormat::MARKDOWN => Any::from("markdown"),
         }
     }
 }
-impl From<&SummarizerFormat> for emlite::Val {
-    fn from(s: &SummarizerFormat) -> emlite::Val {
+impl From<&SummarizerFormat> for Any {
+    fn from(s: &SummarizerFormat) -> Any {
         match *s {
-            SummarizerFormat::PLAIN_TEXT => emlite::Val::from("plain-text"),
-            SummarizerFormat::MARKDOWN => emlite::Val::from("markdown"),
+            SummarizerFormat::PLAIN_TEXT => Any::from("plain-text"),
+            SummarizerFormat::MARKDOWN => Any::from("markdown"),
         }
     }
 }
@@ -16666,7 +16566,7 @@ pub enum SummarizerLength {
     LONG,
 }
 impl FromVal for SummarizerLength {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "short" => Self::SHORT,
             "medium" => Self::MEDIUM,
@@ -16674,28 +16574,28 @@ impl FromVal for SummarizerLength {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<SummarizerLength> for emlite::Val {
-    fn from(s: SummarizerLength) -> emlite::Val {
+impl From<SummarizerLength> for Any {
+    fn from(s: SummarizerLength) -> Any {
         match s {
-            SummarizerLength::SHORT => emlite::Val::from("short"),
-            SummarizerLength::MEDIUM => emlite::Val::from("medium"),
-            SummarizerLength::LONG => emlite::Val::from("long"),
+            SummarizerLength::SHORT => Any::from("short"),
+            SummarizerLength::MEDIUM => Any::from("medium"),
+            SummarizerLength::LONG => Any::from("long"),
         }
     }
 }
-impl From<&SummarizerLength> for emlite::Val {
-    fn from(s: &SummarizerLength) -> emlite::Val {
+impl From<&SummarizerLength> for Any {
+    fn from(s: &SummarizerLength) -> Any {
         match *s {
-            SummarizerLength::SHORT => emlite::Val::from("short"),
-            SummarizerLength::MEDIUM => emlite::Val::from("medium"),
-            SummarizerLength::LONG => emlite::Val::from("long"),
+            SummarizerLength::SHORT => Any::from("short"),
+            SummarizerLength::MEDIUM => Any::from("medium"),
+            SummarizerLength::LONG => Any::from("long"),
         }
     }
 }
@@ -16707,7 +16607,7 @@ pub enum WriterTone {
     CASUAL,
 }
 impl FromVal for WriterTone {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "formal" => Self::FORMAL,
             "neutral" => Self::NEUTRAL,
@@ -16715,28 +16615,28 @@ impl FromVal for WriterTone {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<WriterTone> for emlite::Val {
-    fn from(s: WriterTone) -> emlite::Val {
+impl From<WriterTone> for Any {
+    fn from(s: WriterTone) -> Any {
         match s {
-            WriterTone::FORMAL => emlite::Val::from("formal"),
-            WriterTone::NEUTRAL => emlite::Val::from("neutral"),
-            WriterTone::CASUAL => emlite::Val::from("casual"),
+            WriterTone::FORMAL => Any::from("formal"),
+            WriterTone::NEUTRAL => Any::from("neutral"),
+            WriterTone::CASUAL => Any::from("casual"),
         }
     }
 }
-impl From<&WriterTone> for emlite::Val {
-    fn from(s: &WriterTone) -> emlite::Val {
+impl From<&WriterTone> for Any {
+    fn from(s: &WriterTone) -> Any {
         match *s {
-            WriterTone::FORMAL => emlite::Val::from("formal"),
-            WriterTone::NEUTRAL => emlite::Val::from("neutral"),
-            WriterTone::CASUAL => emlite::Val::from("casual"),
+            WriterTone::FORMAL => Any::from("formal"),
+            WriterTone::NEUTRAL => Any::from("neutral"),
+            WriterTone::CASUAL => Any::from("casual"),
         }
     }
 }
@@ -16747,33 +16647,33 @@ pub enum WriterFormat {
     MARKDOWN,
 }
 impl FromVal for WriterFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "plain-text" => Self::PLAIN_TEXT,
             "markdown" => Self::MARKDOWN,
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<WriterFormat> for emlite::Val {
-    fn from(s: WriterFormat) -> emlite::Val {
+impl From<WriterFormat> for Any {
+    fn from(s: WriterFormat) -> Any {
         match s {
-            WriterFormat::PLAIN_TEXT => emlite::Val::from("plain-text"),
-            WriterFormat::MARKDOWN => emlite::Val::from("markdown"),
+            WriterFormat::PLAIN_TEXT => Any::from("plain-text"),
+            WriterFormat::MARKDOWN => Any::from("markdown"),
         }
     }
 }
-impl From<&WriterFormat> for emlite::Val {
-    fn from(s: &WriterFormat) -> emlite::Val {
+impl From<&WriterFormat> for Any {
+    fn from(s: &WriterFormat) -> Any {
         match *s {
-            WriterFormat::PLAIN_TEXT => emlite::Val::from("plain-text"),
-            WriterFormat::MARKDOWN => emlite::Val::from("markdown"),
+            WriterFormat::PLAIN_TEXT => Any::from("plain-text"),
+            WriterFormat::MARKDOWN => Any::from("markdown"),
         }
     }
 }
@@ -16785,7 +16685,7 @@ pub enum WriterLength {
     LONG,
 }
 impl FromVal for WriterLength {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "short" => Self::SHORT,
             "medium" => Self::MEDIUM,
@@ -16793,28 +16693,28 @@ impl FromVal for WriterLength {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<WriterLength> for emlite::Val {
-    fn from(s: WriterLength) -> emlite::Val {
+impl From<WriterLength> for Any {
+    fn from(s: WriterLength) -> Any {
         match s {
-            WriterLength::SHORT => emlite::Val::from("short"),
-            WriterLength::MEDIUM => emlite::Val::from("medium"),
-            WriterLength::LONG => emlite::Val::from("long"),
+            WriterLength::SHORT => Any::from("short"),
+            WriterLength::MEDIUM => Any::from("medium"),
+            WriterLength::LONG => Any::from("long"),
         }
     }
 }
-impl From<&WriterLength> for emlite::Val {
-    fn from(s: &WriterLength) -> emlite::Val {
+impl From<&WriterLength> for Any {
+    fn from(s: &WriterLength) -> Any {
         match *s {
-            WriterLength::SHORT => emlite::Val::from("short"),
-            WriterLength::MEDIUM => emlite::Val::from("medium"),
-            WriterLength::LONG => emlite::Val::from("long"),
+            WriterLength::SHORT => Any::from("short"),
+            WriterLength::MEDIUM => Any::from("medium"),
+            WriterLength::LONG => Any::from("long"),
         }
     }
 }
@@ -16826,7 +16726,7 @@ pub enum RewriterTone {
     MORE_CASUAL,
 }
 impl FromVal for RewriterTone {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "as-is" => Self::AS_IS,
             "more-formal" => Self::MORE_FORMAL,
@@ -16834,28 +16734,28 @@ impl FromVal for RewriterTone {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RewriterTone> for emlite::Val {
-    fn from(s: RewriterTone) -> emlite::Val {
+impl From<RewriterTone> for Any {
+    fn from(s: RewriterTone) -> Any {
         match s {
-            RewriterTone::AS_IS => emlite::Val::from("as-is"),
-            RewriterTone::MORE_FORMAL => emlite::Val::from("more-formal"),
-            RewriterTone::MORE_CASUAL => emlite::Val::from("more-casual"),
+            RewriterTone::AS_IS => Any::from("as-is"),
+            RewriterTone::MORE_FORMAL => Any::from("more-formal"),
+            RewriterTone::MORE_CASUAL => Any::from("more-casual"),
         }
     }
 }
-impl From<&RewriterTone> for emlite::Val {
-    fn from(s: &RewriterTone) -> emlite::Val {
+impl From<&RewriterTone> for Any {
+    fn from(s: &RewriterTone) -> Any {
         match *s {
-            RewriterTone::AS_IS => emlite::Val::from("as-is"),
-            RewriterTone::MORE_FORMAL => emlite::Val::from("more-formal"),
-            RewriterTone::MORE_CASUAL => emlite::Val::from("more-casual"),
+            RewriterTone::AS_IS => Any::from("as-is"),
+            RewriterTone::MORE_FORMAL => Any::from("more-formal"),
+            RewriterTone::MORE_CASUAL => Any::from("more-casual"),
         }
     }
 }
@@ -16867,7 +16767,7 @@ pub enum RewriterFormat {
     MARKDOWN,
 }
 impl FromVal for RewriterFormat {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "as-is" => Self::AS_IS,
             "plain-text" => Self::PLAIN_TEXT,
@@ -16875,28 +16775,28 @@ impl FromVal for RewriterFormat {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RewriterFormat> for emlite::Val {
-    fn from(s: RewriterFormat) -> emlite::Val {
+impl From<RewriterFormat> for Any {
+    fn from(s: RewriterFormat) -> Any {
         match s {
-            RewriterFormat::AS_IS => emlite::Val::from("as-is"),
-            RewriterFormat::PLAIN_TEXT => emlite::Val::from("plain-text"),
-            RewriterFormat::MARKDOWN => emlite::Val::from("markdown"),
+            RewriterFormat::AS_IS => Any::from("as-is"),
+            RewriterFormat::PLAIN_TEXT => Any::from("plain-text"),
+            RewriterFormat::MARKDOWN => Any::from("markdown"),
         }
     }
 }
-impl From<&RewriterFormat> for emlite::Val {
-    fn from(s: &RewriterFormat) -> emlite::Val {
+impl From<&RewriterFormat> for Any {
+    fn from(s: &RewriterFormat) -> Any {
         match *s {
-            RewriterFormat::AS_IS => emlite::Val::from("as-is"),
-            RewriterFormat::PLAIN_TEXT => emlite::Val::from("plain-text"),
-            RewriterFormat::MARKDOWN => emlite::Val::from("markdown"),
+            RewriterFormat::AS_IS => Any::from("as-is"),
+            RewriterFormat::PLAIN_TEXT => Any::from("plain-text"),
+            RewriterFormat::MARKDOWN => Any::from("markdown"),
         }
     }
 }
@@ -16908,7 +16808,7 @@ pub enum RewriterLength {
     LONGER,
 }
 impl FromVal for RewriterLength {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "as-is" => Self::AS_IS,
             "shorter" => Self::SHORTER,
@@ -16916,28 +16816,28 @@ impl FromVal for RewriterLength {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<RewriterLength> for emlite::Val {
-    fn from(s: RewriterLength) -> emlite::Val {
+impl From<RewriterLength> for Any {
+    fn from(s: RewriterLength) -> Any {
         match s {
-            RewriterLength::AS_IS => emlite::Val::from("as-is"),
-            RewriterLength::SHORTER => emlite::Val::from("shorter"),
-            RewriterLength::LONGER => emlite::Val::from("longer"),
+            RewriterLength::AS_IS => Any::from("as-is"),
+            RewriterLength::SHORTER => Any::from("shorter"),
+            RewriterLength::LONGER => Any::from("longer"),
         }
     }
 }
-impl From<&RewriterLength> for emlite::Val {
-    fn from(s: &RewriterLength) -> emlite::Val {
+impl From<&RewriterLength> for Any {
+    fn from(s: &RewriterLength) -> Any {
         match *s {
-            RewriterLength::AS_IS => emlite::Val::from("as-is"),
-            RewriterLength::SHORTER => emlite::Val::from("shorter"),
-            RewriterLength::LONGER => emlite::Val::from("longer"),
+            RewriterLength::AS_IS => Any::from("as-is"),
+            RewriterLength::SHORTER => Any::from("shorter"),
+            RewriterLength::LONGER => Any::from("longer"),
         }
     }
 }
@@ -16950,7 +16850,7 @@ pub enum Availability {
     AVAILABLE,
 }
 impl FromVal for Availability {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "unavailable" => Self::UNAVAILABLE,
             "downloadable" => Self::DOWNLOADABLE,
@@ -16959,30 +16859,30 @@ impl FromVal for Availability {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<Availability> for emlite::Val {
-    fn from(s: Availability) -> emlite::Val {
+impl From<Availability> for Any {
+    fn from(s: Availability) -> Any {
         match s {
-            Availability::UNAVAILABLE => emlite::Val::from("unavailable"),
-            Availability::DOWNLOADABLE => emlite::Val::from("downloadable"),
-            Availability::DOWNLOADING => emlite::Val::from("downloading"),
-            Availability::AVAILABLE => emlite::Val::from("available"),
+            Availability::UNAVAILABLE => Any::from("unavailable"),
+            Availability::DOWNLOADABLE => Any::from("downloadable"),
+            Availability::DOWNLOADING => Any::from("downloading"),
+            Availability::AVAILABLE => Any::from("available"),
         }
     }
 }
-impl From<&Availability> for emlite::Val {
-    fn from(s: &Availability) -> emlite::Val {
+impl From<&Availability> for Any {
+    fn from(s: &Availability) -> Any {
         match *s {
-            Availability::UNAVAILABLE => emlite::Val::from("unavailable"),
-            Availability::DOWNLOADABLE => emlite::Val::from("downloadable"),
-            Availability::DOWNLOADING => emlite::Val::from("downloading"),
-            Availability::AVAILABLE => emlite::Val::from("available"),
+            Availability::UNAVAILABLE => Any::from("unavailable"),
+            Availability::DOWNLOADABLE => Any::from("downloadable"),
+            Availability::DOWNLOADING => Any::from("downloading"),
+            Availability::AVAILABLE => Any::from("available"),
         }
     }
 }
@@ -16997,7 +16897,7 @@ pub enum XMLHttpRequestResponseType {
     TEXT,
 }
 impl FromVal for XMLHttpRequestResponseType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         match v.as_::<&str>() {
             "" => Self::NONE,
             "arraybuffer" => Self::ARRAYBUFFER,
@@ -17008,34 +16908,34 @@ impl FromVal for XMLHttpRequestResponseType {
             _ => unreachable!(),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
-        emlite::Val::from(*self).as_handle()
+    fn as_handle(&self) -> AnyHandle {
+        Any::from(*self).as_handle()
     }
 }
-impl From<XMLHttpRequestResponseType> for emlite::Val {
-    fn from(s: XMLHttpRequestResponseType) -> emlite::Val {
+impl From<XMLHttpRequestResponseType> for Any {
+    fn from(s: XMLHttpRequestResponseType) -> Any {
         match s {
-            XMLHttpRequestResponseType::NONE => emlite::Val::from(""),
-            XMLHttpRequestResponseType::ARRAYBUFFER => emlite::Val::from("arraybuffer"),
-            XMLHttpRequestResponseType::BLOB => emlite::Val::from("blob"),
-            XMLHttpRequestResponseType::DOCUMENT => emlite::Val::from("document"),
-            XMLHttpRequestResponseType::JSON => emlite::Val::from("json"),
-            XMLHttpRequestResponseType::TEXT => emlite::Val::from("text"),
+            XMLHttpRequestResponseType::NONE => Any::from(""),
+            XMLHttpRequestResponseType::ARRAYBUFFER => Any::from("arraybuffer"),
+            XMLHttpRequestResponseType::BLOB => Any::from("blob"),
+            XMLHttpRequestResponseType::DOCUMENT => Any::from("document"),
+            XMLHttpRequestResponseType::JSON => Any::from("json"),
+            XMLHttpRequestResponseType::TEXT => Any::from("text"),
         }
     }
 }
-impl From<&XMLHttpRequestResponseType> for emlite::Val {
-    fn from(s: &XMLHttpRequestResponseType) -> emlite::Val {
+impl From<&XMLHttpRequestResponseType> for Any {
+    fn from(s: &XMLHttpRequestResponseType) -> Any {
         match *s {
-            XMLHttpRequestResponseType::NONE => emlite::Val::from(""),
-            XMLHttpRequestResponseType::ARRAYBUFFER => emlite::Val::from("arraybuffer"),
-            XMLHttpRequestResponseType::BLOB => emlite::Val::from("blob"),
-            XMLHttpRequestResponseType::DOCUMENT => emlite::Val::from("document"),
-            XMLHttpRequestResponseType::JSON => emlite::Val::from("json"),
-            XMLHttpRequestResponseType::TEXT => emlite::Val::from("text"),
+            XMLHttpRequestResponseType::NONE => Any::from(""),
+            XMLHttpRequestResponseType::ARRAYBUFFER => Any::from("arraybuffer"),
+            XMLHttpRequestResponseType::BLOB => Any::from("blob"),
+            XMLHttpRequestResponseType::DOCUMENT => Any::from("document"),
+            XMLHttpRequestResponseType::JSON => Any::from("json"),
+            XMLHttpRequestResponseType::TEXT => Any::from("text"),
         }
     }
 }

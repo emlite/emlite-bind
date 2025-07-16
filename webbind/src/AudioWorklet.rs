@@ -1,20 +1,22 @@
 use super::*;
 
+/// The AudioWorklet class.
+/// [`AudioWorklet`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorklet)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioWorklet {
     inner: Worklet,
 }
 impl FromVal for AudioWorklet {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AudioWorklet {
             inner: Worklet::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for AudioWorklet {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AudioWorklet {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AudioWorklet {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AudioWorklet {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AudioWorklet {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AudioWorklet> for emlite::Val {
-    fn from(s: AudioWorklet) -> emlite::Val {
+impl From<AudioWorklet> for Any {
+    fn from(s: AudioWorklet) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AudioWorklet> for emlite::Val {
-    fn from(s: &AudioWorklet) -> emlite::Val {
+impl From<&AudioWorklet> for Any {
+    fn from(s: &AudioWorklet) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(AudioWorklet);
 
 impl AudioWorklet {
+    /// Getter of the `port` attribute.
+    /// [`AudioWorklet.port`](https://developer.mozilla.org/en-US/docs/Web/API/AudioWorklet/port)
     pub fn port(&self) -> Any {
         self.inner.get("port").as_::<Any>()
     }

@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CSSParserFunction class.
+/// [`CSSParserFunction`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserFunction)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSParserFunction {
     inner: CSSParserValue,
 }
 impl FromVal for CSSParserFunction {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSParserFunction {
             inner: CSSParserValue::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,45 +31,50 @@ impl core::ops::DerefMut for CSSParserFunction {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSParserFunction {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSParserFunction {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSParserFunction {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSParserFunction {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSParserFunction> for emlite::Val {
-    fn from(s: CSSParserFunction) -> emlite::Val {
+impl From<CSSParserFunction> for Any {
+    fn from(s: CSSParserFunction) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSParserFunction> for emlite::Val {
-    fn from(s: &CSSParserFunction) -> emlite::Val {
+impl From<&CSSParserFunction> for Any {
+    fn from(s: &CSSParserFunction) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSParserFunction);
 
 impl CSSParserFunction {
+    /// The `new CSSParserFunction(..)` constructor, creating a new CSSParserFunction instance
     pub fn new(name: &str, args: &Sequence<Sequence<CSSParserValue>>) -> CSSParserFunction {
         Self {
-            inner: emlite::Val::global("CSSParserFunction")
+            inner: Any::global("CSSParserFunction")
                 .new(&[name.into(), args.into()])
                 .as_::<CSSParserValue>(),
         }
     }
 }
 impl CSSParserFunction {
+    /// Getter of the `name` attribute.
+    /// [`CSSParserFunction.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserFunction/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 }
 impl CSSParserFunction {
+    /// Getter of the `args` attribute.
+    /// [`CSSParserFunction.args`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserFunction/args)
     pub fn args(&self) -> FrozenArray<FrozenArray<CSSParserValue>> {
         self.inner
             .get("args")

@@ -1,6 +1,7 @@
-use emlite::FromVal;
+pub use emlite::Console;
+pub use emlite::FromVal;
 
-pub use crate::any::Any;
+pub use crate::any::{Any, AnyHandle};
 pub use crate::array::{
     Array, ArrayBuffer, DataView, Endian, Float32Array, Float64Array, FrozenArray, Int8Array,
     Int32Array, ObservableArray, TypedArray, Uint8Array, Uint32Array,
@@ -24,7 +25,6 @@ pub use crate::text::{TextDecoder, TextEncoder};
 pub use crate::time::*;
 pub use crate::undefined::Undefined;
 pub use crate::url::URL;
-pub use emlite::Console;
 
 /// Parse `src` with an optional `radix`.  Mirrors `parseInt(str, radix)`.
 pub fn parse_int(src: &str, radix: Option<i32>) -> i32 {

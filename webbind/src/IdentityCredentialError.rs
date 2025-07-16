@@ -1,20 +1,22 @@
 use super::*;
 
+/// The IdentityCredentialError class.
+/// [`IdentityCredentialError`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredentialError)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IdentityCredentialError {
     inner: DOMException,
 }
 impl FromVal for IdentityCredentialError {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         IdentityCredentialError {
             inner: DOMException::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,61 +31,68 @@ impl core::ops::DerefMut for IdentityCredentialError {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for IdentityCredentialError {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for IdentityCredentialError {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for IdentityCredentialError {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for IdentityCredentialError {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<IdentityCredentialError> for emlite::Val {
-    fn from(s: IdentityCredentialError) -> emlite::Val {
+impl From<IdentityCredentialError> for Any {
+    fn from(s: IdentityCredentialError) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&IdentityCredentialError> for emlite::Val {
-    fn from(s: &IdentityCredentialError) -> emlite::Val {
+impl From<&IdentityCredentialError> for Any {
+    fn from(s: &IdentityCredentialError) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(IdentityCredentialError);
 
 impl IdentityCredentialError {
+    /// The `new IdentityCredentialError(..)` constructor, creating a new IdentityCredentialError instance
     pub fn new0() -> IdentityCredentialError {
         Self {
-            inner: emlite::Val::global("IdentityCredentialError")
+            inner: Any::global("IdentityCredentialError")
                 .new(&[])
                 .as_::<DOMException>(),
         }
     }
 
+    /// The `new IdentityCredentialError(..)` constructor, creating a new IdentityCredentialError instance
     pub fn new1(message: &str) -> IdentityCredentialError {
         Self {
-            inner: emlite::Val::global("IdentityCredentialError")
+            inner: Any::global("IdentityCredentialError")
                 .new(&[message.into()])
                 .as_::<DOMException>(),
         }
     }
 
+    /// The `new IdentityCredentialError(..)` constructor, creating a new IdentityCredentialError instance
     pub fn new2(message: &str, options: &Any) -> IdentityCredentialError {
         Self {
-            inner: emlite::Val::global("IdentityCredentialError")
+            inner: Any::global("IdentityCredentialError")
                 .new(&[message.into(), options.into()])
                 .as_::<DOMException>(),
         }
     }
 }
 impl IdentityCredentialError {
+    /// Getter of the `error` attribute.
+    /// [`IdentityCredentialError.error`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredentialError/error)
     pub fn error(&self) -> String {
         self.inner.get("error").as_::<String>()
     }
 }
 impl IdentityCredentialError {
+    /// Getter of the `url` attribute.
+    /// [`IdentityCredentialError.url`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredentialError/url)
     pub fn url(&self) -> String {
         self.inner.get("url").as_::<String>()
     }

@@ -1,25 +1,27 @@
 use super::*;
 
+/// The BluetoothUUID class.
+/// [`BluetoothUUID`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothUUID)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BluetoothUUID {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for BluetoothUUID {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         BluetoothUUID {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for BluetoothUUID {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,54 +31,62 @@ impl core::ops::DerefMut for BluetoothUUID {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for BluetoothUUID {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for BluetoothUUID {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for BluetoothUUID {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for BluetoothUUID {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<BluetoothUUID> for emlite::Val {
-    fn from(s: BluetoothUUID) -> emlite::Val {
+impl From<BluetoothUUID> for Any {
+    fn from(s: BluetoothUUID) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&BluetoothUUID> for emlite::Val {
-    fn from(s: &BluetoothUUID) -> emlite::Val {
+impl From<&BluetoothUUID> for Any {
+    fn from(s: &BluetoothUUID) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BluetoothUUID);
 
 impl BluetoothUUID {
+    /// The getService method.
+    /// [`BluetoothUUID.getService`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothUUID/getService)
     pub fn get_service(name: &Any) -> Any {
-        emlite::Val::global("BluetoothUUID")
+        Any::global("BluetoothUUID")
             .call("getService", &[name.into()])
             .as_::<Any>()
     }
 }
 impl BluetoothUUID {
+    /// The getCharacteristic method.
+    /// [`BluetoothUUID.getCharacteristic`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothUUID/getCharacteristic)
     pub fn get_characteristic(name: &Any) -> Any {
-        emlite::Val::global("BluetoothUUID")
+        Any::global("BluetoothUUID")
             .call("getCharacteristic", &[name.into()])
             .as_::<Any>()
     }
 }
 impl BluetoothUUID {
+    /// The getDescriptor method.
+    /// [`BluetoothUUID.getDescriptor`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothUUID/getDescriptor)
     pub fn get_descriptor(name: &Any) -> Any {
-        emlite::Val::global("BluetoothUUID")
+        Any::global("BluetoothUUID")
             .call("getDescriptor", &[name.into()])
             .as_::<Any>()
     }
 }
 impl BluetoothUUID {
+    /// The canonicalUUID method.
+    /// [`BluetoothUUID.canonicalUUID`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothUUID/canonicalUUID)
     pub fn canonical_uuid(alias: u32) -> Any {
-        emlite::Val::global("BluetoothUUID")
+        Any::global("BluetoothUUID")
             .call("canonicalUUID", &[alias.into()])
             .as_::<Any>()
     }

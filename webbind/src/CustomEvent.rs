@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CustomEvent class.
+/// [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CustomEvent {
     inner: Event,
 }
 impl FromVal for CustomEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CustomEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,65 +31,73 @@ impl core::ops::DerefMut for CustomEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CustomEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CustomEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CustomEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CustomEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CustomEvent> for emlite::Val {
-    fn from(s: CustomEvent) -> emlite::Val {
+impl From<CustomEvent> for Any {
+    fn from(s: CustomEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CustomEvent> for emlite::Val {
-    fn from(s: &CustomEvent) -> emlite::Val {
+impl From<&CustomEvent> for Any {
+    fn from(s: &CustomEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CustomEvent);
 
 impl CustomEvent {
+    /// The `new CustomEvent(..)` constructor, creating a new CustomEvent instance
     pub fn new0(type_: &str) -> CustomEvent {
         Self {
-            inner: emlite::Val::global("CustomEvent")
+            inner: Any::global("CustomEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
 
+    /// The `new CustomEvent(..)` constructor, creating a new CustomEvent instance
     pub fn new1(type_: &str, event_init_dict: &Any) -> CustomEvent {
         Self {
-            inner: emlite::Val::global("CustomEvent")
+            inner: Any::global("CustomEvent")
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl CustomEvent {
+    /// Getter of the `detail` attribute.
+    /// [`CustomEvent.detail`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/detail)
     pub fn detail(&self) -> Any {
         self.inner.get("detail").as_::<Any>()
     }
 }
 impl CustomEvent {
+    /// The initCustomEvent method.
+    /// [`CustomEvent.initCustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/initCustomEvent)
     pub fn init_custom_event0(&self, type_: &str) -> Undefined {
         self.inner
             .call("initCustomEvent", &[type_.into()])
             .as_::<Undefined>()
     }
-
+    /// The initCustomEvent method.
+    /// [`CustomEvent.initCustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/initCustomEvent)
     pub fn init_custom_event1(&self, type_: &str, bubbles: bool) -> Undefined {
         self.inner
             .call("initCustomEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
     }
-
+    /// The initCustomEvent method.
+    /// [`CustomEvent.initCustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/initCustomEvent)
     pub fn init_custom_event2(&self, type_: &str, bubbles: bool, cancelable: bool) -> Undefined {
         self.inner
             .call(
@@ -96,7 +106,8 @@ impl CustomEvent {
             )
             .as_::<Undefined>()
     }
-
+    /// The initCustomEvent method.
+    /// [`CustomEvent.initCustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/initCustomEvent)
     pub fn init_custom_event3(
         &self,
         type_: &str,

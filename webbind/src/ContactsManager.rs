@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ContactInfo {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ContactInfo {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ContactInfo { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ContactInfo {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for ContactInfo {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ContactInfo {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ContactInfo {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ContactInfo {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ContactInfo {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ContactInfo> for emlite::Val {
-    fn from(s: ContactInfo) -> emlite::Val {
+impl From<ContactInfo> for Any {
+    fn from(s: ContactInfo) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ContactInfo> for emlite::Val {
-    fn from(s: &ContactInfo) -> emlite::Val {
+impl From<&ContactInfo> for Any {
+    fn from(s: &ContactInfo) -> Any {
         s.inner.clone()
     }
 }
@@ -98,21 +98,21 @@ impl ContactInfo {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ContactsSelectOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ContactsSelectOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ContactsSelectOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ContactsSelectOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -122,25 +122,25 @@ impl core::ops::DerefMut for ContactsSelectOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ContactsSelectOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ContactsSelectOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ContactsSelectOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ContactsSelectOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ContactsSelectOptions> for emlite::Val {
-    fn from(s: ContactsSelectOptions) -> emlite::Val {
+impl From<ContactsSelectOptions> for Any {
+    fn from(s: ContactsSelectOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ContactsSelectOptions> for emlite::Val {
-    fn from(s: &ContactsSelectOptions) -> emlite::Val {
+impl From<&ContactsSelectOptions> for Any {
+    fn from(s: &ContactsSelectOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -154,26 +154,28 @@ impl ContactsSelectOptions {
         self.inner.set("multiple", value);
     }
 }
+/// The ContactsManager class.
+/// [`ContactsManager`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ContactsManager {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ContactsManager {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ContactsManager {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ContactsManager {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -183,42 +185,47 @@ impl core::ops::DerefMut for ContactsManager {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ContactsManager {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ContactsManager {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ContactsManager {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ContactsManager {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ContactsManager> for emlite::Val {
-    fn from(s: ContactsManager) -> emlite::Val {
+impl From<ContactsManager> for Any {
+    fn from(s: ContactsManager) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ContactsManager> for emlite::Val {
-    fn from(s: &ContactsManager) -> emlite::Val {
+impl From<&ContactsManager> for Any {
+    fn from(s: &ContactsManager) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ContactsManager);
 
 impl ContactsManager {
+    /// The getProperties method.
+    /// [`ContactsManager.getProperties`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager/getProperties)
     pub fn get_properties(&self) -> Promise {
         self.inner.call("getProperties", &[]).as_::<Promise>()
     }
 }
 impl ContactsManager {
+    /// The select method.
+    /// [`ContactsManager.select`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager/select)
     pub fn select0(&self, properties: &Sequence<ContactProperty>) -> Promise {
         self.inner
             .call("select", &[properties.into()])
             .as_::<Promise>()
     }
-
+    /// The select method.
+    /// [`ContactsManager.select`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager/select)
     pub fn select1(
         &self,
         properties: &Sequence<ContactProperty>,

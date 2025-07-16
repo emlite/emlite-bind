@@ -1,25 +1,27 @@
 use super::*;
 
+/// The GPUCommandBuffer class.
+/// [`GPUCommandBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandBuffer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUCommandBuffer {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPUCommandBuffer {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPUCommandBuffer {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPUCommandBuffer {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,35 +31,39 @@ impl core::ops::DerefMut for GPUCommandBuffer {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPUCommandBuffer {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPUCommandBuffer {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPUCommandBuffer {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPUCommandBuffer {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPUCommandBuffer> for emlite::Val {
-    fn from(s: GPUCommandBuffer) -> emlite::Val {
+impl From<GPUCommandBuffer> for Any {
+    fn from(s: GPUCommandBuffer) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPUCommandBuffer> for emlite::Val {
-    fn from(s: &GPUCommandBuffer) -> emlite::Val {
+impl From<&GPUCommandBuffer> for Any {
+    fn from(s: &GPUCommandBuffer) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GPUCommandBuffer);
 
 impl GPUCommandBuffer {
+    /// Getter of the `label` attribute.
+    /// [`GPUCommandBuffer.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandBuffer/label)
     pub fn label(&self) -> String {
         self.inner.get("label").as_::<String>()
     }
 
+    /// Setter of the `label` attribute.
+    /// [`GPUCommandBuffer.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandBuffer/label)
     pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }

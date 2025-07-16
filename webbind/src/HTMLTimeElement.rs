@@ -1,20 +1,22 @@
 use super::*;
 
+/// The HTMLTimeElement class.
+/// [`HTMLTimeElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLTimeElement {
     inner: HTMLElement,
 }
 impl FromVal for HTMLTimeElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HTMLTimeElement {
             inner: HTMLElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,44 +31,47 @@ impl core::ops::DerefMut for HTMLTimeElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HTMLTimeElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HTMLTimeElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HTMLTimeElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HTMLTimeElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HTMLTimeElement> for emlite::Val {
-    fn from(s: HTMLTimeElement) -> emlite::Val {
+impl From<HTMLTimeElement> for Any {
+    fn from(s: HTMLTimeElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HTMLTimeElement> for emlite::Val {
-    fn from(s: &HTMLTimeElement) -> emlite::Val {
+impl From<&HTMLTimeElement> for Any {
+    fn from(s: &HTMLTimeElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLTimeElement);
 
 impl HTMLTimeElement {
+    /// The `new HTMLTimeElement(..)` constructor, creating a new HTMLTimeElement instance
     pub fn new() -> HTMLTimeElement {
         Self {
-            inner: emlite::Val::global("HTMLTimeElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLTimeElement").new(&[]).as_::<HTMLElement>(),
         }
     }
 }
 impl HTMLTimeElement {
+    /// Getter of the `dateTime` attribute.
+    /// [`HTMLTimeElement.dateTime`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/dateTime)
     pub fn date_time(&self) -> String {
         self.inner.get("dateTime").as_::<String>()
     }
 
+    /// Setter of the `dateTime` attribute.
+    /// [`HTMLTimeElement.dateTime`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/dateTime)
     pub fn set_date_time(&mut self, value: &str) {
         self.inner.set("dateTime", value);
     }

@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCRtpCapabilities {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RTCRtpCapabilities {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCRtpCapabilities { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RTCRtpCapabilities {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for RTCRtpCapabilities {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCRtpCapabilities {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCRtpCapabilities {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCRtpCapabilities {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCRtpCapabilities {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCRtpCapabilities> for emlite::Val {
-    fn from(s: RTCRtpCapabilities) -> emlite::Val {
+impl From<RTCRtpCapabilities> for Any {
+    fn from(s: RTCRtpCapabilities) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCRtpCapabilities> for emlite::Val {
-    fn from(s: &RTCRtpCapabilities) -> emlite::Val {
+impl From<&RTCRtpCapabilities> for Any {
+    fn from(s: &RTCRtpCapabilities) -> Any {
         s.inner.clone()
     }
 }
@@ -71,21 +71,21 @@ impl RTCRtpCapabilities {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCRtpSendParameters {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RTCRtpSendParameters {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCRtpSendParameters { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RTCRtpSendParameters {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -95,25 +95,25 @@ impl core::ops::DerefMut for RTCRtpSendParameters {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCRtpSendParameters {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCRtpSendParameters {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCRtpSendParameters {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCRtpSendParameters {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCRtpSendParameters> for emlite::Val {
-    fn from(s: RTCRtpSendParameters) -> emlite::Val {
+impl From<RTCRtpSendParameters> for Any {
+    fn from(s: RTCRtpSendParameters) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCRtpSendParameters> for emlite::Val {
-    fn from(s: &RTCRtpSendParameters) -> emlite::Val {
+impl From<&RTCRtpSendParameters> for Any {
+    fn from(s: &RTCRtpSendParameters) -> Any {
         s.inner.clone()
     }
 }
@@ -139,21 +139,21 @@ impl RTCRtpSendParameters {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCSetParameterOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RTCSetParameterOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCSetParameterOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RTCSetParameterOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -163,49 +163,51 @@ impl core::ops::DerefMut for RTCSetParameterOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCSetParameterOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCSetParameterOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCSetParameterOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCSetParameterOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCSetParameterOptions> for emlite::Val {
-    fn from(s: RTCSetParameterOptions) -> emlite::Val {
+impl From<RTCSetParameterOptions> for Any {
+    fn from(s: RTCSetParameterOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCSetParameterOptions> for emlite::Val {
-    fn from(s: &RTCSetParameterOptions) -> emlite::Val {
+impl From<&RTCSetParameterOptions> for Any {
+    fn from(s: &RTCSetParameterOptions) -> Any {
         s.inner.clone()
     }
 }
 
+/// The RTCRtpSender class.
+/// [`RTCRtpSender`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCRtpSender {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RTCRtpSender {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCRtpSender {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RTCRtpSender {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -215,54 +217,63 @@ impl core::ops::DerefMut for RTCRtpSender {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCRtpSender {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCRtpSender {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCRtpSender {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCRtpSender {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCRtpSender> for emlite::Val {
-    fn from(s: RTCRtpSender) -> emlite::Val {
+impl From<RTCRtpSender> for Any {
+    fn from(s: RTCRtpSender) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCRtpSender> for emlite::Val {
-    fn from(s: &RTCRtpSender) -> emlite::Val {
+impl From<&RTCRtpSender> for Any {
+    fn from(s: &RTCRtpSender) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCRtpSender);
 
 impl RTCRtpSender {
+    /// Getter of the `track` attribute.
+    /// [`RTCRtpSender.track`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/track)
     pub fn track(&self) -> MediaStreamTrack {
         self.inner.get("track").as_::<MediaStreamTrack>()
     }
 }
 impl RTCRtpSender {
+    /// Getter of the `transport` attribute.
+    /// [`RTCRtpSender.transport`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/transport)
     pub fn transport(&self) -> RTCDtlsTransport {
         self.inner.get("transport").as_::<RTCDtlsTransport>()
     }
 }
 impl RTCRtpSender {
+    /// The getCapabilities method.
+    /// [`RTCRtpSender.getCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/getCapabilities)
     pub fn get_capabilities(kind: &str) -> RTCRtpCapabilities {
-        emlite::Val::global("RTCRtpSender")
+        Any::global("RTCRtpSender")
             .call("getCapabilities", &[kind.into()])
             .as_::<RTCRtpCapabilities>()
     }
 }
 impl RTCRtpSender {
+    /// The setParameters method.
+    /// [`RTCRtpSender.setParameters`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setParameters)
     pub fn set_parameters0(&self, parameters: &RTCRtpSendParameters) -> Promise {
         self.inner
             .call("setParameters", &[parameters.into()])
             .as_::<Promise>()
     }
-
+    /// The setParameters method.
+    /// [`RTCRtpSender.setParameters`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setParameters)
     pub fn set_parameters1(
         &self,
         parameters: &RTCRtpSendParameters,
@@ -277,6 +288,8 @@ impl RTCRtpSender {
     }
 }
 impl RTCRtpSender {
+    /// The getParameters method.
+    /// [`RTCRtpSender.getParameters`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/getParameters)
     pub fn get_parameters(&self) -> RTCRtpSendParameters {
         self.inner
             .call("getParameters", &[])
@@ -284,6 +297,8 @@ impl RTCRtpSender {
     }
 }
 impl RTCRtpSender {
+    /// The replaceTrack method.
+    /// [`RTCRtpSender.replaceTrack`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/replaceTrack)
     pub fn replace_track(&self, with_track: &MediaStreamTrack) -> Promise {
         self.inner
             .call("replaceTrack", &[with_track.into()])
@@ -291,6 +306,8 @@ impl RTCRtpSender {
     }
 }
 impl RTCRtpSender {
+    /// The setStreams method.
+    /// [`RTCRtpSender.setStreams`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setStreams)
     pub fn set_streams(&self, streams: &MediaStream) -> Undefined {
         self.inner
             .call("setStreams", &[streams.into()])
@@ -298,24 +315,33 @@ impl RTCRtpSender {
     }
 }
 impl RTCRtpSender {
+    /// The getStats method.
+    /// [`RTCRtpSender.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/getStats)
     pub fn get_stats(&self) -> Promise {
         self.inner.call("getStats", &[]).as_::<Promise>()
     }
 }
 impl RTCRtpSender {
+    /// Getter of the `transform` attribute.
+    /// [`RTCRtpSender.transform`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/transform)
     pub fn transform(&self) -> Any {
         self.inner.get("transform").as_::<Any>()
     }
 
+    /// Setter of the `transform` attribute.
+    /// [`RTCRtpSender.transform`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/transform)
     pub fn set_transform(&mut self, value: &Any) {
         self.inner.set("transform", value);
     }
 }
 impl RTCRtpSender {
+    /// The generateKeyFrame method.
+    /// [`RTCRtpSender.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/generateKeyFrame)
     pub fn generate_key_frame0(&self) -> Promise {
         self.inner.call("generateKeyFrame", &[]).as_::<Promise>()
     }
-
+    /// The generateKeyFrame method.
+    /// [`RTCRtpSender.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/generateKeyFrame)
     pub fn generate_key_frame1(&self, rids: &Sequence<String>) -> Promise {
         self.inner
             .call("generateKeyFrame", &[rids.into()])
@@ -323,6 +349,8 @@ impl RTCRtpSender {
     }
 }
 impl RTCRtpSender {
+    /// Getter of the `dtmf` attribute.
+    /// [`RTCRtpSender.dtmf`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/dtmf)
     pub fn dtmf(&self) -> RTCDTMFSender {
         self.inner.get("dtmf").as_::<RTCDTMFSender>()
     }

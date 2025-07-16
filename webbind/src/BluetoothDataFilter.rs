@@ -1,25 +1,27 @@
 use super::*;
 
+/// The BluetoothDataFilter class.
+/// [`BluetoothDataFilter`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDataFilter)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BluetoothDataFilter {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for BluetoothDataFilter {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         BluetoothDataFilter {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for BluetoothDataFilter {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,53 +31,57 @@ impl core::ops::DerefMut for BluetoothDataFilter {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for BluetoothDataFilter {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for BluetoothDataFilter {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for BluetoothDataFilter {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for BluetoothDataFilter {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<BluetoothDataFilter> for emlite::Val {
-    fn from(s: BluetoothDataFilter) -> emlite::Val {
+impl From<BluetoothDataFilter> for Any {
+    fn from(s: BluetoothDataFilter) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&BluetoothDataFilter> for emlite::Val {
-    fn from(s: &BluetoothDataFilter) -> emlite::Val {
+impl From<&BluetoothDataFilter> for Any {
+    fn from(s: &BluetoothDataFilter) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BluetoothDataFilter);
 
 impl BluetoothDataFilter {
+    /// The `new BluetoothDataFilter(..)` constructor, creating a new BluetoothDataFilter instance
     pub fn new0() -> BluetoothDataFilter {
         Self {
-            inner: emlite::Val::global("BluetoothDataFilter")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("BluetoothDataFilter").new(&[]).as_::<Any>(),
         }
     }
 
+    /// The `new BluetoothDataFilter(..)` constructor, creating a new BluetoothDataFilter instance
     pub fn new1(init: &Any) -> BluetoothDataFilter {
         Self {
-            inner: emlite::Val::global("BluetoothDataFilter")
+            inner: Any::global("BluetoothDataFilter")
                 .new(&[init.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl BluetoothDataFilter {
+    /// Getter of the `dataPrefix` attribute.
+    /// [`BluetoothDataFilter.dataPrefix`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDataFilter/dataPrefix)
     pub fn data_prefix(&self) -> ArrayBuffer {
         self.inner.get("dataPrefix").as_::<ArrayBuffer>()
     }
 }
 impl BluetoothDataFilter {
+    /// Getter of the `mask` attribute.
+    /// [`BluetoothDataFilter.mask`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDataFilter/mask)
     pub fn mask(&self) -> ArrayBuffer {
         self.inner.get("mask").as_::<ArrayBuffer>()
     }

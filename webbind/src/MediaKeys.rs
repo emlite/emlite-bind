@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaKeysPolicy {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaKeysPolicy {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaKeysPolicy { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaKeysPolicy {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for MediaKeysPolicy {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaKeysPolicy {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaKeysPolicy {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaKeysPolicy {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaKeysPolicy {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaKeysPolicy> for emlite::Val {
-    fn from(s: MediaKeysPolicy) -> emlite::Val {
+impl From<MediaKeysPolicy> for Any {
+    fn from(s: MediaKeysPolicy) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaKeysPolicy> for emlite::Val {
-    fn from(s: &MediaKeysPolicy) -> emlite::Val {
+impl From<&MediaKeysPolicy> for Any {
+    fn from(s: &MediaKeysPolicy) -> Any {
         s.inner.clone()
     }
 }
@@ -59,26 +59,28 @@ impl MediaKeysPolicy {
         self.inner.set("minHdcpVersion", value);
     }
 }
+/// The MediaKeys class.
+/// [`MediaKeys`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaKeys {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaKeys {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaKeys {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaKeys {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -88,37 +90,40 @@ impl core::ops::DerefMut for MediaKeys {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaKeys {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaKeys {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaKeys {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaKeys {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaKeys> for emlite::Val {
-    fn from(s: MediaKeys) -> emlite::Val {
+impl From<MediaKeys> for Any {
+    fn from(s: MediaKeys) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaKeys> for emlite::Val {
-    fn from(s: &MediaKeys) -> emlite::Val {
+impl From<&MediaKeys> for Any {
+    fn from(s: &MediaKeys) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaKeys);
 
 impl MediaKeys {
+    /// The createSession method.
+    /// [`MediaKeys.createSession`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys/createSession)
     pub fn create_session0(&self) -> MediaKeySession {
         self.inner
             .call("createSession", &[])
             .as_::<MediaKeySession>()
     }
-
+    /// The createSession method.
+    /// [`MediaKeys.createSession`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys/createSession)
     pub fn create_session1(&self, session_type: &MediaKeySessionType) -> MediaKeySession {
         self.inner
             .call("createSession", &[session_type.into()])
@@ -126,10 +131,13 @@ impl MediaKeys {
     }
 }
 impl MediaKeys {
+    /// The getStatusForPolicy method.
+    /// [`MediaKeys.getStatusForPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys/getStatusForPolicy)
     pub fn get_status_for_policy0(&self) -> Promise {
         self.inner.call("getStatusForPolicy", &[]).as_::<Promise>()
     }
-
+    /// The getStatusForPolicy method.
+    /// [`MediaKeys.getStatusForPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys/getStatusForPolicy)
     pub fn get_status_for_policy1(&self, policy: &MediaKeysPolicy) -> Promise {
         self.inner
             .call("getStatusForPolicy", &[policy.into()])
@@ -137,6 +145,8 @@ impl MediaKeys {
     }
 }
 impl MediaKeys {
+    /// The setServerCertificate method.
+    /// [`MediaKeys.setServerCertificate`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys/setServerCertificate)
     pub fn set_server_certificate(&self, server_certificate: &Any) -> Promise {
         self.inner
             .call("setServerCertificate", &[server_certificate.into()])

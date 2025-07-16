@@ -1,25 +1,27 @@
 use super::*;
 
+/// The TrustedTypePolicy class.
+/// [`TrustedTypePolicy`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicy)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TrustedTypePolicy {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for TrustedTypePolicy {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         TrustedTypePolicy {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for TrustedTypePolicy {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for TrustedTypePolicy {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for TrustedTypePolicy {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for TrustedTypePolicy {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for TrustedTypePolicy {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for TrustedTypePolicy {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<TrustedTypePolicy> for emlite::Val {
-    fn from(s: TrustedTypePolicy) -> emlite::Val {
+impl From<TrustedTypePolicy> for Any {
+    fn from(s: TrustedTypePolicy) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&TrustedTypePolicy> for emlite::Val {
-    fn from(s: &TrustedTypePolicy) -> emlite::Val {
+impl From<&TrustedTypePolicy> for Any {
+    fn from(s: &TrustedTypePolicy) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(TrustedTypePolicy);
 
 impl TrustedTypePolicy {
+    /// Getter of the `name` attribute.
+    /// [`TrustedTypePolicy.name`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicy/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 }
 impl TrustedTypePolicy {
+    /// The createHTML method.
+    /// [`TrustedTypePolicy.createHTML`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicy/createHTML)
     pub fn create_html(&self, input: &str, arguments: &Any) -> TrustedHTML {
         self.inner
             .call("createHTML", &[input.into(), arguments.into()])
@@ -66,6 +72,8 @@ impl TrustedTypePolicy {
     }
 }
 impl TrustedTypePolicy {
+    /// The createScript method.
+    /// [`TrustedTypePolicy.createScript`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicy/createScript)
     pub fn create_script(&self, input: &str, arguments: &Any) -> TrustedScript {
         self.inner
             .call("createScript", &[input.into(), arguments.into()])
@@ -73,6 +81,8 @@ impl TrustedTypePolicy {
     }
 }
 impl TrustedTypePolicy {
+    /// The createScriptURL method.
+    /// [`TrustedTypePolicy.createScriptURL`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicy/createScriptURL)
     pub fn create_script_url(&self, input: &str, arguments: &Any) -> TrustedScriptURL {
         self.inner
             .call("createScriptURL", &[input.into(), arguments.into()])

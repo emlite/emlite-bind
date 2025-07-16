@@ -1,20 +1,22 @@
 use super::*;
 
+/// The BackgroundFetchEvent class.
+/// [`BackgroundFetchEvent`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BackgroundFetchEvent {
     inner: ExtendableEvent,
 }
 impl FromVal for BackgroundFetchEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         BackgroundFetchEvent {
             inner: ExtendableEvent::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,40 +31,43 @@ impl core::ops::DerefMut for BackgroundFetchEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for BackgroundFetchEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for BackgroundFetchEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for BackgroundFetchEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for BackgroundFetchEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<BackgroundFetchEvent> for emlite::Val {
-    fn from(s: BackgroundFetchEvent) -> emlite::Val {
+impl From<BackgroundFetchEvent> for Any {
+    fn from(s: BackgroundFetchEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&BackgroundFetchEvent> for emlite::Val {
-    fn from(s: &BackgroundFetchEvent) -> emlite::Val {
+impl From<&BackgroundFetchEvent> for Any {
+    fn from(s: &BackgroundFetchEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BackgroundFetchEvent);
 
 impl BackgroundFetchEvent {
+    /// The `new BackgroundFetchEvent(..)` constructor, creating a new BackgroundFetchEvent instance
     pub fn new(type_: &str, init: &Any) -> BackgroundFetchEvent {
         Self {
-            inner: emlite::Val::global("BackgroundFetchEvent")
+            inner: Any::global("BackgroundFetchEvent")
                 .new(&[type_.into(), init.into()])
                 .as_::<ExtendableEvent>(),
         }
     }
 }
 impl BackgroundFetchEvent {
+    /// Getter of the `registration` attribute.
+    /// [`BackgroundFetchEvent.registration`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchEvent/registration)
     pub fn registration(&self) -> BackgroundFetchRegistration {
         self.inner
             .get("registration")

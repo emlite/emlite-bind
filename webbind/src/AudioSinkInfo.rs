@@ -1,25 +1,27 @@
 use super::*;
 
+/// The AudioSinkInfo class.
+/// [`AudioSinkInfo`](https://developer.mozilla.org/en-US/docs/Web/API/AudioSinkInfo)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioSinkInfo {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for AudioSinkInfo {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AudioSinkInfo {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for AudioSinkInfo {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for AudioSinkInfo {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AudioSinkInfo {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AudioSinkInfo {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AudioSinkInfo {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AudioSinkInfo {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AudioSinkInfo> for emlite::Val {
-    fn from(s: AudioSinkInfo) -> emlite::Val {
+impl From<AudioSinkInfo> for Any {
+    fn from(s: AudioSinkInfo) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AudioSinkInfo> for emlite::Val {
-    fn from(s: &AudioSinkInfo) -> emlite::Val {
+impl From<&AudioSinkInfo> for Any {
+    fn from(s: &AudioSinkInfo) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(AudioSinkInfo);
 
 impl AudioSinkInfo {
+    /// Getter of the `type` attribute.
+    /// [`AudioSinkInfo.type`](https://developer.mozilla.org/en-US/docs/Web/API/AudioSinkInfo/type)
     pub fn type_(&self) -> AudioSinkType {
         self.inner.get("type").as_::<AudioSinkType>()
     }

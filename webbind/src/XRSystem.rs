@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRSessionInit {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XRSessionInit {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRSessionInit { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XRSessionInit {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for XRSessionInit {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRSessionInit {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRSessionInit {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRSessionInit {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRSessionInit {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRSessionInit> for emlite::Val {
-    fn from(s: XRSessionInit) -> emlite::Val {
+impl From<XRSessionInit> for Any {
+    fn from(s: XRSessionInit) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRSessionInit> for emlite::Val {
-    fn from(s: &XRSessionInit) -> emlite::Val {
+impl From<&XRSessionInit> for Any {
+    fn from(s: &XRSessionInit) -> Any {
         s.inner.clone()
     }
 }
@@ -68,21 +68,23 @@ impl XRSessionInit {
         self.inner.set("optionalFeatures", value);
     }
 }
+/// The XRSystem class.
+/// [`XRSystem`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRSystem {
     inner: EventTarget,
 }
 impl FromVal for XRSystem {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRSystem {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -97,31 +99,33 @@ impl core::ops::DerefMut for XRSystem {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRSystem {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRSystem {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRSystem {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRSystem {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRSystem> for emlite::Val {
-    fn from(s: XRSystem) -> emlite::Val {
+impl From<XRSystem> for Any {
+    fn from(s: XRSystem) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRSystem> for emlite::Val {
-    fn from(s: &XRSystem) -> emlite::Val {
+impl From<&XRSystem> for Any {
+    fn from(s: &XRSystem) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(XRSystem);
 
 impl XRSystem {
+    /// The isSessionSupported method.
+    /// [`XRSystem.isSessionSupported`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/isSessionSupported)
     pub fn is_session_supported(&self, mode: &XRSessionMode) -> Promise {
         self.inner
             .call("isSessionSupported", &[mode.into()])
@@ -129,12 +133,15 @@ impl XRSystem {
     }
 }
 impl XRSystem {
+    /// The requestSession method.
+    /// [`XRSystem.requestSession`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession)
     pub fn request_session0(&self, mode: &XRSessionMode) -> Promise {
         self.inner
             .call("requestSession", &[mode.into()])
             .as_::<Promise>()
     }
-
+    /// The requestSession method.
+    /// [`XRSystem.requestSession`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession)
     pub fn request_session1(&self, mode: &XRSessionMode, options: &XRSessionInit) -> Promise {
         self.inner
             .call("requestSession", &[mode.into(), options.into()])
@@ -142,10 +149,14 @@ impl XRSystem {
     }
 }
 impl XRSystem {
+    /// Getter of the `ondevicechange` attribute.
+    /// [`XRSystem.ondevicechange`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/ondevicechange)
     pub fn ondevicechange(&self) -> Any {
         self.inner.get("ondevicechange").as_::<Any>()
     }
 
+    /// Setter of the `ondevicechange` attribute.
+    /// [`XRSystem.ondevicechange`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/ondevicechange)
     pub fn set_ondevicechange(&mut self, value: &Any) {
         self.inner.set("ondevicechange", value);
     }

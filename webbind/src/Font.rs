@@ -1,25 +1,27 @@
 use super::*;
 
+/// The Font class.
+/// [`Font`](https://developer.mozilla.org/en-US/docs/Web/API/Font)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Font {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Font {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Font {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Font {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for Font {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Font {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Font {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Font {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Font {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Font> for emlite::Val {
-    fn from(s: Font) -> emlite::Val {
+impl From<Font> for Any {
+    fn from(s: Font) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Font> for emlite::Val {
-    fn from(s: &Font) -> emlite::Val {
+impl From<&Font> for Any {
+    fn from(s: &Font) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Font);
 
 impl Font {
+    /// Getter of the `name` attribute.
+    /// [`Font.name`](https://developer.mozilla.org/en-US/docs/Web/API/Font/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 }
 impl Font {
+    /// Getter of the `glyphsRendered` attribute.
+    /// [`Font.glyphsRendered`](https://developer.mozilla.org/en-US/docs/Web/API/Font/glyphsRendered)
     pub fn glyphs_rendered(&self) -> u32 {
         self.inner.get("glyphsRendered").as_::<u32>()
     }

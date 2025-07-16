@@ -1,25 +1,27 @@
 use super::*;
 
+/// The BluetoothRemoteGATTServer class.
+/// [`BluetoothRemoteGATTServer`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BluetoothRemoteGATTServer {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for BluetoothRemoteGATTServer {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         BluetoothRemoteGATTServer {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for BluetoothRemoteGATTServer {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,51 +31,61 @@ impl core::ops::DerefMut for BluetoothRemoteGATTServer {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for BluetoothRemoteGATTServer {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for BluetoothRemoteGATTServer {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for BluetoothRemoteGATTServer {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for BluetoothRemoteGATTServer {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<BluetoothRemoteGATTServer> for emlite::Val {
-    fn from(s: BluetoothRemoteGATTServer) -> emlite::Val {
+impl From<BluetoothRemoteGATTServer> for Any {
+    fn from(s: BluetoothRemoteGATTServer) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&BluetoothRemoteGATTServer> for emlite::Val {
-    fn from(s: &BluetoothRemoteGATTServer) -> emlite::Val {
+impl From<&BluetoothRemoteGATTServer> for Any {
+    fn from(s: &BluetoothRemoteGATTServer) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BluetoothRemoteGATTServer);
 
 impl BluetoothRemoteGATTServer {
+    /// Getter of the `device` attribute.
+    /// [`BluetoothRemoteGATTServer.device`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/device)
     pub fn device(&self) -> BluetoothDevice {
         self.inner.get("device").as_::<BluetoothDevice>()
     }
 }
 impl BluetoothRemoteGATTServer {
+    /// Getter of the `connected` attribute.
+    /// [`BluetoothRemoteGATTServer.connected`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/connected)
     pub fn connected(&self) -> bool {
         self.inner.get("connected").as_::<bool>()
     }
 }
 impl BluetoothRemoteGATTServer {
+    /// The connect method.
+    /// [`BluetoothRemoteGATTServer.connect`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/connect)
     pub fn connect(&self) -> Promise {
         self.inner.call("connect", &[]).as_::<Promise>()
     }
 }
 impl BluetoothRemoteGATTServer {
+    /// The disconnect method.
+    /// [`BluetoothRemoteGATTServer.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/disconnect)
     pub fn disconnect(&self) -> Undefined {
         self.inner.call("disconnect", &[]).as_::<Undefined>()
     }
 }
 impl BluetoothRemoteGATTServer {
+    /// The getPrimaryService method.
+    /// [`BluetoothRemoteGATTServer.getPrimaryService`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/getPrimaryService)
     pub fn get_primary_service(&self, service: &Any) -> Promise {
         self.inner
             .call("getPrimaryService", &[service.into()])
@@ -81,10 +93,13 @@ impl BluetoothRemoteGATTServer {
     }
 }
 impl BluetoothRemoteGATTServer {
+    /// The getPrimaryServices method.
+    /// [`BluetoothRemoteGATTServer.getPrimaryServices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/getPrimaryServices)
     pub fn get_primary_services0(&self) -> Promise {
         self.inner.call("getPrimaryServices", &[]).as_::<Promise>()
     }
-
+    /// The getPrimaryServices method.
+    /// [`BluetoothRemoteGATTServer.getPrimaryServices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/getPrimaryServices)
     pub fn get_primary_services1(&self, service: &Any) -> Promise {
         self.inner
             .call("getPrimaryServices", &[service.into()])

@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GeolocationSensorReading {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GeolocationSensorReading {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GeolocationSensorReading { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GeolocationSensorReading {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for GeolocationSensorReading {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GeolocationSensorReading {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GeolocationSensorReading {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GeolocationSensorReading {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GeolocationSensorReading {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GeolocationSensorReading> for emlite::Val {
-    fn from(s: GeolocationSensorReading) -> emlite::Val {
+impl From<GeolocationSensorReading> for Any {
+    fn from(s: GeolocationSensorReading) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GeolocationSensorReading> for emlite::Val {
-    fn from(s: &GeolocationSensorReading) -> emlite::Val {
+impl From<&GeolocationSensorReading> for Any {
+    fn from(s: &GeolocationSensorReading) -> Any {
         s.inner.clone()
     }
 }
@@ -125,21 +125,21 @@ impl GeolocationSensorReading {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ReadOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ReadOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ReadOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ReadOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -149,25 +149,25 @@ impl core::ops::DerefMut for ReadOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ReadOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ReadOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ReadOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ReadOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ReadOptions> for emlite::Val {
-    fn from(s: ReadOptions) -> emlite::Val {
+impl From<ReadOptions> for Any {
+    fn from(s: ReadOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ReadOptions> for emlite::Val {
-    fn from(s: &ReadOptions) -> emlite::Val {
+impl From<&ReadOptions> for Any {
+    fn from(s: &ReadOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -181,21 +181,23 @@ impl ReadOptions {
         self.inner.set("signal", value);
     }
 }
+/// The GeolocationSensor class.
+/// [`GeolocationSensor`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GeolocationSensor {
     inner: Sensor,
 }
 impl FromVal for GeolocationSensor {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GeolocationSensor {
             inner: Sensor::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -210,91 +212,108 @@ impl core::ops::DerefMut for GeolocationSensor {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GeolocationSensor {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GeolocationSensor {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GeolocationSensor {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GeolocationSensor {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GeolocationSensor> for emlite::Val {
-    fn from(s: GeolocationSensor) -> emlite::Val {
+impl From<GeolocationSensor> for Any {
+    fn from(s: GeolocationSensor) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GeolocationSensor> for emlite::Val {
-    fn from(s: &GeolocationSensor) -> emlite::Val {
+impl From<&GeolocationSensor> for Any {
+    fn from(s: &GeolocationSensor) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GeolocationSensor);
 
 impl GeolocationSensor {
+    /// The `new GeolocationSensor(..)` constructor, creating a new GeolocationSensor instance
     pub fn new0() -> GeolocationSensor {
         Self {
-            inner: emlite::Val::global("GeolocationSensor")
-                .new(&[])
-                .as_::<Sensor>(),
+            inner: Any::global("GeolocationSensor").new(&[]).as_::<Sensor>(),
         }
     }
 
+    /// The `new GeolocationSensor(..)` constructor, creating a new GeolocationSensor instance
     pub fn new1(options: &Any) -> GeolocationSensor {
         Self {
-            inner: emlite::Val::global("GeolocationSensor")
+            inner: Any::global("GeolocationSensor")
                 .new(&[options.into()])
                 .as_::<Sensor>(),
         }
     }
 }
 impl GeolocationSensor {
+    /// The read method.
+    /// [`GeolocationSensor.read`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor/read)
     pub fn read0() -> Promise {
-        emlite::Val::global("GeolocationSensor")
+        Any::global("GeolocationSensor")
             .call("read", &[])
             .as_::<Promise>()
     }
-
+    /// The read method.
+    /// [`GeolocationSensor.read`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor/read)
     pub fn read1(read_options: &ReadOptions) -> Promise {
-        emlite::Val::global("GeolocationSensor")
+        Any::global("GeolocationSensor")
             .call("read", &[read_options.into()])
             .as_::<Promise>()
     }
 }
 impl GeolocationSensor {
+    /// Getter of the `latitude` attribute.
+    /// [`GeolocationSensor.latitude`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor/latitude)
     pub fn latitude(&self) -> f64 {
         self.inner.get("latitude").as_::<f64>()
     }
 }
 impl GeolocationSensor {
+    /// Getter of the `longitude` attribute.
+    /// [`GeolocationSensor.longitude`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor/longitude)
     pub fn longitude(&self) -> f64 {
         self.inner.get("longitude").as_::<f64>()
     }
 }
 impl GeolocationSensor {
+    /// Getter of the `altitude` attribute.
+    /// [`GeolocationSensor.altitude`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor/altitude)
     pub fn altitude(&self) -> f64 {
         self.inner.get("altitude").as_::<f64>()
     }
 }
 impl GeolocationSensor {
+    /// Getter of the `accuracy` attribute.
+    /// [`GeolocationSensor.accuracy`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor/accuracy)
     pub fn accuracy(&self) -> f64 {
         self.inner.get("accuracy").as_::<f64>()
     }
 }
 impl GeolocationSensor {
+    /// Getter of the `altitudeAccuracy` attribute.
+    /// [`GeolocationSensor.altitudeAccuracy`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor/altitudeAccuracy)
     pub fn altitude_accuracy(&self) -> f64 {
         self.inner.get("altitudeAccuracy").as_::<f64>()
     }
 }
 impl GeolocationSensor {
+    /// Getter of the `heading` attribute.
+    /// [`GeolocationSensor.heading`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor/heading)
     pub fn heading(&self) -> f64 {
         self.inner.get("heading").as_::<f64>()
     }
 }
 impl GeolocationSensor {
+    /// Getter of the `speed` attribute.
+    /// [`GeolocationSensor.speed`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor/speed)
     pub fn speed(&self) -> f64 {
         self.inner.get("speed").as_::<f64>()
     }

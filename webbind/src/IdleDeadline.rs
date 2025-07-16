@@ -1,25 +1,27 @@
 use super::*;
 
+/// The IdleDeadline class.
+/// [`IdleDeadline`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDeadline)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IdleDeadline {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for IdleDeadline {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         IdleDeadline {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for IdleDeadline {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for IdleDeadline {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for IdleDeadline {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for IdleDeadline {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for IdleDeadline {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for IdleDeadline {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<IdleDeadline> for emlite::Val {
-    fn from(s: IdleDeadline) -> emlite::Val {
+impl From<IdleDeadline> for Any {
+    fn from(s: IdleDeadline) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&IdleDeadline> for emlite::Val {
-    fn from(s: &IdleDeadline) -> emlite::Val {
+impl From<&IdleDeadline> for Any {
+    fn from(s: &IdleDeadline) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(IdleDeadline);
 
 impl IdleDeadline {
+    /// The timeRemaining method.
+    /// [`IdleDeadline.timeRemaining`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDeadline/timeRemaining)
     pub fn time_remaining(&self) -> Any {
         self.inner.call("timeRemaining", &[]).as_::<Any>()
     }
 }
 impl IdleDeadline {
+    /// Getter of the `didTimeout` attribute.
+    /// [`IdleDeadline.didTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDeadline/didTimeout)
     pub fn did_timeout(&self) -> bool {
         self.inner.get("didTimeout").as_::<bool>()
     }

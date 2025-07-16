@@ -1,25 +1,27 @@
 use super::*;
 
+/// The RTCIdentityAssertion class.
+/// [`RTCIdentityAssertion`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityAssertion)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCIdentityAssertion {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RTCIdentityAssertion {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCIdentityAssertion {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RTCIdentityAssertion {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,53 +31,62 @@ impl core::ops::DerefMut for RTCIdentityAssertion {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCIdentityAssertion {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCIdentityAssertion {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCIdentityAssertion {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCIdentityAssertion {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCIdentityAssertion> for emlite::Val {
-    fn from(s: RTCIdentityAssertion) -> emlite::Val {
+impl From<RTCIdentityAssertion> for Any {
+    fn from(s: RTCIdentityAssertion) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCIdentityAssertion> for emlite::Val {
-    fn from(s: &RTCIdentityAssertion) -> emlite::Val {
+impl From<&RTCIdentityAssertion> for Any {
+    fn from(s: &RTCIdentityAssertion) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCIdentityAssertion);
 
 impl RTCIdentityAssertion {
+    /// The `new RTCIdentityAssertion(..)` constructor, creating a new RTCIdentityAssertion instance
     pub fn new(idp: &str, name: &str) -> RTCIdentityAssertion {
         Self {
-            inner: emlite::Val::global("RTCIdentityAssertion")
+            inner: Any::global("RTCIdentityAssertion")
                 .new(&[idp.into(), name.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl RTCIdentityAssertion {
+    /// Getter of the `idp` attribute.
+    /// [`RTCIdentityAssertion.idp`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityAssertion/idp)
     pub fn idp(&self) -> String {
         self.inner.get("idp").as_::<String>()
     }
 
+    /// Setter of the `idp` attribute.
+    /// [`RTCIdentityAssertion.idp`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityAssertion/idp)
     pub fn set_idp(&mut self, value: &str) {
         self.inner.set("idp", value);
     }
 }
 impl RTCIdentityAssertion {
+    /// Getter of the `name` attribute.
+    /// [`RTCIdentityAssertion.name`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityAssertion/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 
+    /// Setter of the `name` attribute.
+    /// [`RTCIdentityAssertion.name`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityAssertion/name)
     pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }

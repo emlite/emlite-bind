@@ -1,25 +1,27 @@
 use super::*;
 
+/// The CanvasGradient class.
+/// [`CanvasGradient`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CanvasGradient {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for CanvasGradient {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CanvasGradient {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for CanvasGradient {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for CanvasGradient {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CanvasGradient {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CanvasGradient {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CanvasGradient {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CanvasGradient {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CanvasGradient> for emlite::Val {
-    fn from(s: CanvasGradient) -> emlite::Val {
+impl From<CanvasGradient> for Any {
+    fn from(s: CanvasGradient) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CanvasGradient> for emlite::Val {
-    fn from(s: &CanvasGradient) -> emlite::Val {
+impl From<&CanvasGradient> for Any {
+    fn from(s: &CanvasGradient) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CanvasGradient);
 
 impl CanvasGradient {
+    /// The addColorStop method.
+    /// [`CanvasGradient.addColorStop`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient/addColorStop)
     pub fn add_color_stop(&self, offset: f64, color: &str) -> Undefined {
         self.inner
             .call("addColorStop", &[offset.into(), color.into()])

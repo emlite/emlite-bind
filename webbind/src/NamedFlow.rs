@@ -1,20 +1,22 @@
 use super::*;
 
+/// The NamedFlow class.
+/// [`NamedFlow`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NamedFlow {
     inner: EventTarget,
 }
 impl FromVal for NamedFlow {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         NamedFlow {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,41 +31,47 @@ impl core::ops::DerefMut for NamedFlow {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for NamedFlow {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for NamedFlow {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for NamedFlow {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for NamedFlow {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<NamedFlow> for emlite::Val {
-    fn from(s: NamedFlow) -> emlite::Val {
+impl From<NamedFlow> for Any {
+    fn from(s: NamedFlow) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&NamedFlow> for emlite::Val {
-    fn from(s: &NamedFlow) -> emlite::Val {
+impl From<&NamedFlow> for Any {
+    fn from(s: &NamedFlow) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(NamedFlow);
 
 impl NamedFlow {
+    /// Getter of the `name` attribute.
+    /// [`NamedFlow.name`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 }
 impl NamedFlow {
+    /// Getter of the `overset` attribute.
+    /// [`NamedFlow.overset`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/overset)
     pub fn overset(&self) -> bool {
         self.inner.get("overset").as_::<bool>()
     }
 }
 impl NamedFlow {
+    /// The getRegions method.
+    /// [`NamedFlow.getRegions`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/getRegions)
     pub fn get_regions(&self) -> Sequence<Element> {
         self.inner
             .call("getRegions", &[])
@@ -71,16 +79,22 @@ impl NamedFlow {
     }
 }
 impl NamedFlow {
+    /// Getter of the `firstEmptyRegionIndex` attribute.
+    /// [`NamedFlow.firstEmptyRegionIndex`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/firstEmptyRegionIndex)
     pub fn first_empty_region_index(&self) -> i16 {
         self.inner.get("firstEmptyRegionIndex").as_::<i16>()
     }
 }
 impl NamedFlow {
+    /// The getContent method.
+    /// [`NamedFlow.getContent`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/getContent)
     pub fn get_content(&self) -> Sequence<Node> {
         self.inner.call("getContent", &[]).as_::<Sequence<Node>>()
     }
 }
 impl NamedFlow {
+    /// The getRegionsByContent method.
+    /// [`NamedFlow.getRegionsByContent`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/getRegionsByContent)
     pub fn get_regions_by_content(&self, node: &Node) -> Sequence<Element> {
         self.inner
             .call("getRegionsByContent", &[node.into()])

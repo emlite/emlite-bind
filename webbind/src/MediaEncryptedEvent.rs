@@ -1,20 +1,22 @@
 use super::*;
 
+/// The MediaEncryptedEvent class.
+/// [`MediaEncryptedEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MediaEncryptedEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaEncryptedEvent {
     inner: Event,
 }
 impl FromVal for MediaEncryptedEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaEncryptedEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,53 +31,59 @@ impl core::ops::DerefMut for MediaEncryptedEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaEncryptedEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaEncryptedEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaEncryptedEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaEncryptedEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaEncryptedEvent> for emlite::Val {
-    fn from(s: MediaEncryptedEvent) -> emlite::Val {
+impl From<MediaEncryptedEvent> for Any {
+    fn from(s: MediaEncryptedEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaEncryptedEvent> for emlite::Val {
-    fn from(s: &MediaEncryptedEvent) -> emlite::Val {
+impl From<&MediaEncryptedEvent> for Any {
+    fn from(s: &MediaEncryptedEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaEncryptedEvent);
 
 impl MediaEncryptedEvent {
+    /// The `new MediaEncryptedEvent(..)` constructor, creating a new MediaEncryptedEvent instance
     pub fn new0(type_: &str) -> MediaEncryptedEvent {
         Self {
-            inner: emlite::Val::global("MediaEncryptedEvent")
+            inner: Any::global("MediaEncryptedEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
 
+    /// The `new MediaEncryptedEvent(..)` constructor, creating a new MediaEncryptedEvent instance
     pub fn new1(type_: &str, event_init_dict: &Any) -> MediaEncryptedEvent {
         Self {
-            inner: emlite::Val::global("MediaEncryptedEvent")
+            inner: Any::global("MediaEncryptedEvent")
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl MediaEncryptedEvent {
+    /// Getter of the `initDataType` attribute.
+    /// [`MediaEncryptedEvent.initDataType`](https://developer.mozilla.org/en-US/docs/Web/API/MediaEncryptedEvent/initDataType)
     pub fn init_data_type(&self) -> String {
         self.inner.get("initDataType").as_::<String>()
     }
 }
 impl MediaEncryptedEvent {
+    /// Getter of the `initData` attribute.
+    /// [`MediaEncryptedEvent.initData`](https://developer.mozilla.org/en-US/docs/Web/API/MediaEncryptedEvent/initData)
     pub fn init_data(&self) -> ArrayBuffer {
         self.inner.get("initData").as_::<ArrayBuffer>()
     }

@@ -1,25 +1,27 @@
 use super::*;
 
+/// The MediaError class.
+/// [`MediaError`](https://developer.mozilla.org/en-US/docs/Web/API/MediaError)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaError {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaError {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaError {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaError {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for MediaError {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaError {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaError {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaError {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaError {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaError> for emlite::Val {
-    fn from(s: MediaError) -> emlite::Val {
+impl From<MediaError> for Any {
+    fn from(s: MediaError) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaError> for emlite::Val {
-    fn from(s: &MediaError) -> emlite::Val {
+impl From<&MediaError> for Any {
+    fn from(s: &MediaError) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MediaError);
 
 impl MediaError {
+    /// Getter of the `code` attribute.
+    /// [`MediaError.code`](https://developer.mozilla.org/en-US/docs/Web/API/MediaError/code)
     pub fn code(&self) -> u16 {
         self.inner.get("code").as_::<u16>()
     }
 }
 impl MediaError {
+    /// Getter of the `message` attribute.
+    /// [`MediaError.message`](https://developer.mozilla.org/en-US/docs/Web/API/MediaError/message)
     pub fn message(&self) -> String {
         self.inner.get("message").as_::<String>()
     }

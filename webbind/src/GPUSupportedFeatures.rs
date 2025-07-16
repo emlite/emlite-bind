@@ -1,25 +1,27 @@
 use super::*;
 
+/// The GPUSupportedFeatures class.
+/// [`GPUSupportedFeatures`](https://developer.mozilla.org/en-US/docs/Web/API/GPUSupportedFeatures)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUSupportedFeatures {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPUSupportedFeatures {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPUSupportedFeatures {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPUSupportedFeatures {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,25 +31,25 @@ impl core::ops::DerefMut for GPUSupportedFeatures {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPUSupportedFeatures {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPUSupportedFeatures {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPUSupportedFeatures {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPUSupportedFeatures {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPUSupportedFeatures> for emlite::Val {
-    fn from(s: GPUSupportedFeatures) -> emlite::Val {
+impl From<GPUSupportedFeatures> for Any {
+    fn from(s: GPUSupportedFeatures) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPUSupportedFeatures> for emlite::Val {
-    fn from(s: &GPUSupportedFeatures) -> emlite::Val {
+impl From<&GPUSupportedFeatures> for Any {
+    fn from(s: &GPUSupportedFeatures) -> Any {
         s.inner.clone().into()
     }
 }

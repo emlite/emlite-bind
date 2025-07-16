@@ -1,25 +1,27 @@
 use super::*;
 
+/// The HTMLCollection class.
+/// [`HTMLCollection`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLCollection {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for HTMLCollection {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HTMLCollection {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for HTMLCollection {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,41 +31,47 @@ impl core::ops::DerefMut for HTMLCollection {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HTMLCollection {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HTMLCollection {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HTMLCollection {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HTMLCollection {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HTMLCollection> for emlite::Val {
-    fn from(s: HTMLCollection) -> emlite::Val {
+impl From<HTMLCollection> for Any {
+    fn from(s: HTMLCollection) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HTMLCollection> for emlite::Val {
-    fn from(s: &HTMLCollection) -> emlite::Val {
+impl From<&HTMLCollection> for Any {
+    fn from(s: &HTMLCollection) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLCollection);
 
 impl HTMLCollection {
+    /// Getter of the `length` attribute.
+    /// [`HTMLCollection.length`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
 }
 impl HTMLCollection {
+    /// The item method.
+    /// [`HTMLCollection.item`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection/item)
     pub fn item(&self, index: u32) -> Element {
         self.inner.call("item", &[index.into()]).as_::<Element>()
     }
 }
 impl HTMLCollection {
+    /// The namedItem method.
+    /// [`HTMLCollection.namedItem`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection/namedItem)
     pub fn named_item(&self, name: &str) -> Element {
         self.inner
             .call("namedItem", &[name.into()])

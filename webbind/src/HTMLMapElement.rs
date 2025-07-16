@@ -1,20 +1,22 @@
 use super::*;
 
+/// The HTMLMapElement class.
+/// [`HTMLMapElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMapElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLMapElement {
     inner: HTMLElement,
 }
 impl FromVal for HTMLMapElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HTMLMapElement {
             inner: HTMLElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,49 +31,54 @@ impl core::ops::DerefMut for HTMLMapElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HTMLMapElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HTMLMapElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HTMLMapElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HTMLMapElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HTMLMapElement> for emlite::Val {
-    fn from(s: HTMLMapElement) -> emlite::Val {
+impl From<HTMLMapElement> for Any {
+    fn from(s: HTMLMapElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HTMLMapElement> for emlite::Val {
-    fn from(s: &HTMLMapElement) -> emlite::Val {
+impl From<&HTMLMapElement> for Any {
+    fn from(s: &HTMLMapElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLMapElement);
 
 impl HTMLMapElement {
+    /// The `new HTMLMapElement(..)` constructor, creating a new HTMLMapElement instance
     pub fn new() -> HTMLMapElement {
         Self {
-            inner: emlite::Val::global("HTMLMapElement")
-                .new(&[])
-                .as_::<HTMLElement>(),
+            inner: Any::global("HTMLMapElement").new(&[]).as_::<HTMLElement>(),
         }
     }
 }
 impl HTMLMapElement {
+    /// Getter of the `name` attribute.
+    /// [`HTMLMapElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMapElement/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 
+    /// Setter of the `name` attribute.
+    /// [`HTMLMapElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMapElement/name)
     pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
 impl HTMLMapElement {
+    /// Getter of the `areas` attribute.
+    /// [`HTMLMapElement.areas`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMapElement/areas)
     pub fn areas(&self) -> HTMLCollection {
         self.inner.get("areas").as_::<HTMLCollection>()
     }

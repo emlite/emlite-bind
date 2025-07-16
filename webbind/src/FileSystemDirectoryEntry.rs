@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileSystemFlags {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for FileSystemFlags {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         FileSystemFlags { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for FileSystemFlags {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for FileSystemFlags {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for FileSystemFlags {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for FileSystemFlags {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for FileSystemFlags {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for FileSystemFlags {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<FileSystemFlags> for emlite::Val {
-    fn from(s: FileSystemFlags) -> emlite::Val {
+impl From<FileSystemFlags> for Any {
+    fn from(s: FileSystemFlags) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&FileSystemFlags> for emlite::Val {
-    fn from(s: &FileSystemFlags) -> emlite::Val {
+impl From<&FileSystemFlags> for Any {
+    fn from(s: &FileSystemFlags) -> Any {
         s.inner.clone()
     }
 }
@@ -68,21 +68,23 @@ impl FileSystemFlags {
         self.inner.set("exclusive", value);
     }
 }
+/// The FileSystemDirectoryEntry class.
+/// [`FileSystemDirectoryEntry`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FileSystemDirectoryEntry {
     inner: FileSystemEntry,
 }
 impl FromVal for FileSystemDirectoryEntry {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         FileSystemDirectoryEntry {
             inner: FileSystemEntry::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -97,31 +99,33 @@ impl core::ops::DerefMut for FileSystemDirectoryEntry {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for FileSystemDirectoryEntry {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for FileSystemDirectoryEntry {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for FileSystemDirectoryEntry {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for FileSystemDirectoryEntry {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<FileSystemDirectoryEntry> for emlite::Val {
-    fn from(s: FileSystemDirectoryEntry) -> emlite::Val {
+impl From<FileSystemDirectoryEntry> for Any {
+    fn from(s: FileSystemDirectoryEntry) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&FileSystemDirectoryEntry> for emlite::Val {
-    fn from(s: &FileSystemDirectoryEntry) -> emlite::Val {
+impl From<&FileSystemDirectoryEntry> for Any {
+    fn from(s: &FileSystemDirectoryEntry) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(FileSystemDirectoryEntry);
 
 impl FileSystemDirectoryEntry {
+    /// The createReader method.
+    /// [`FileSystemDirectoryEntry.createReader`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/createReader)
     pub fn create_reader(&self) -> FileSystemDirectoryReader {
         self.inner
             .call("createReader", &[])
@@ -129,22 +133,27 @@ impl FileSystemDirectoryEntry {
     }
 }
 impl FileSystemDirectoryEntry {
+    /// The getFile method.
+    /// [`FileSystemDirectoryEntry.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getFile)
     pub fn get_file0(&self) -> Undefined {
         self.inner.call("getFile", &[]).as_::<Undefined>()
     }
-
+    /// The getFile method.
+    /// [`FileSystemDirectoryEntry.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getFile)
     pub fn get_file1(&self, path: &str) -> Undefined {
         self.inner
             .call("getFile", &[path.into()])
             .as_::<Undefined>()
     }
-
+    /// The getFile method.
+    /// [`FileSystemDirectoryEntry.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getFile)
     pub fn get_file2(&self, path: &str, options: &FileSystemFlags) -> Undefined {
         self.inner
             .call("getFile", &[path.into(), options.into()])
             .as_::<Undefined>()
     }
-
+    /// The getFile method.
+    /// [`FileSystemDirectoryEntry.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getFile)
     pub fn get_file3(
         &self,
         path: &str,
@@ -158,7 +167,8 @@ impl FileSystemDirectoryEntry {
             )
             .as_::<Undefined>()
     }
-
+    /// The getFile method.
+    /// [`FileSystemDirectoryEntry.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getFile)
     pub fn get_file4(
         &self,
         path: &str,
@@ -180,22 +190,27 @@ impl FileSystemDirectoryEntry {
     }
 }
 impl FileSystemDirectoryEntry {
+    /// The getDirectory method.
+    /// [`FileSystemDirectoryEntry.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getDirectory)
     pub fn get_directory0(&self) -> Undefined {
         self.inner.call("getDirectory", &[]).as_::<Undefined>()
     }
-
+    /// The getDirectory method.
+    /// [`FileSystemDirectoryEntry.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getDirectory)
     pub fn get_directory1(&self, path: &str) -> Undefined {
         self.inner
             .call("getDirectory", &[path.into()])
             .as_::<Undefined>()
     }
-
+    /// The getDirectory method.
+    /// [`FileSystemDirectoryEntry.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getDirectory)
     pub fn get_directory2(&self, path: &str, options: &FileSystemFlags) -> Undefined {
         self.inner
             .call("getDirectory", &[path.into(), options.into()])
             .as_::<Undefined>()
     }
-
+    /// The getDirectory method.
+    /// [`FileSystemDirectoryEntry.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getDirectory)
     pub fn get_directory3(
         &self,
         path: &str,
@@ -209,7 +224,8 @@ impl FileSystemDirectoryEntry {
             )
             .as_::<Undefined>()
     }
-
+    /// The getDirectory method.
+    /// [`FileSystemDirectoryEntry.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryEntry/getDirectory)
     pub fn get_directory4(
         &self,
         path: &str,

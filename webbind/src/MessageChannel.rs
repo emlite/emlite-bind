@@ -1,25 +1,27 @@
 use super::*;
 
+/// The MessageChannel class.
+/// [`MessageChannel`](https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MessageChannel {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MessageChannel {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MessageChannel {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MessageChannel {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,45 +31,48 @@ impl core::ops::DerefMut for MessageChannel {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MessageChannel {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MessageChannel {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MessageChannel {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MessageChannel {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MessageChannel> for emlite::Val {
-    fn from(s: MessageChannel) -> emlite::Val {
+impl From<MessageChannel> for Any {
+    fn from(s: MessageChannel) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MessageChannel> for emlite::Val {
-    fn from(s: &MessageChannel) -> emlite::Val {
+impl From<&MessageChannel> for Any {
+    fn from(s: &MessageChannel) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(MessageChannel);
 
 impl MessageChannel {
+    /// The `new MessageChannel(..)` constructor, creating a new MessageChannel instance
     pub fn new() -> MessageChannel {
         Self {
-            inner: emlite::Val::global("MessageChannel")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("MessageChannel").new(&[]).as_::<Any>(),
         }
     }
 }
 impl MessageChannel {
+    /// Getter of the `port1` attribute.
+    /// [`MessageChannel.port1`](https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel/port1)
     pub fn port1(&self) -> Any {
         self.inner.get("port1").as_::<Any>()
     }
 }
 impl MessageChannel {
+    /// Getter of the `port2` attribute.
+    /// [`MessageChannel.port2`](https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel/port2)
     pub fn port2(&self) -> Any {
         self.inner.get("port2").as_::<Any>()
     }

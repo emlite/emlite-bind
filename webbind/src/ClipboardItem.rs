@@ -1,25 +1,27 @@
 use super::*;
 
+/// The ClipboardItem class.
+/// [`ClipboardItem`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ClipboardItem {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ClipboardItem {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ClipboardItem {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ClipboardItem {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,48 +31,52 @@ impl core::ops::DerefMut for ClipboardItem {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ClipboardItem {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ClipboardItem {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ClipboardItem {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ClipboardItem {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ClipboardItem> for emlite::Val {
-    fn from(s: ClipboardItem) -> emlite::Val {
+impl From<ClipboardItem> for Any {
+    fn from(s: ClipboardItem) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ClipboardItem> for emlite::Val {
-    fn from(s: &ClipboardItem) -> emlite::Val {
+impl From<&ClipboardItem> for Any {
+    fn from(s: &ClipboardItem) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ClipboardItem);
 
 impl ClipboardItem {
+    /// The `new ClipboardItem(..)` constructor, creating a new ClipboardItem instance
     pub fn new0(items: &Record<String, Any>) -> ClipboardItem {
         Self {
-            inner: emlite::Val::global("ClipboardItem")
+            inner: Any::global("ClipboardItem")
                 .new(&[items.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 
+    /// The `new ClipboardItem(..)` constructor, creating a new ClipboardItem instance
     pub fn new1(items: &Record<String, Any>, options: &Any) -> ClipboardItem {
         Self {
-            inner: emlite::Val::global("ClipboardItem")
+            inner: Any::global("ClipboardItem")
                 .new(&[items.into(), options.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl ClipboardItem {
+    /// Getter of the `presentationStyle` attribute.
+    /// [`ClipboardItem.presentationStyle`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem/presentationStyle)
     pub fn presentation_style(&self) -> PresentationStyle {
         self.inner
             .get("presentationStyle")
@@ -78,18 +84,24 @@ impl ClipboardItem {
     }
 }
 impl ClipboardItem {
+    /// Getter of the `types` attribute.
+    /// [`ClipboardItem.types`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem/types)
     pub fn types(&self) -> FrozenArray<String> {
         self.inner.get("types").as_::<FrozenArray<String>>()
     }
 }
 impl ClipboardItem {
+    /// The getType method.
+    /// [`ClipboardItem.getType`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem/getType)
     pub fn get_type(&self, type_: &str) -> Promise {
         self.inner.call("getType", &[type_.into()]).as_::<Promise>()
     }
 }
 impl ClipboardItem {
+    /// The supports method.
+    /// [`ClipboardItem.supports`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem/supports)
     pub fn supports(type_: &str) -> bool {
-        emlite::Val::global("ClipboardItem")
+        Any::global("ClipboardItem")
             .call("supports", &[type_.into()])
             .as_::<bool>()
     }

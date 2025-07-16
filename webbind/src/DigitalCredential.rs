@@ -1,20 +1,22 @@
 use super::*;
 
+/// The DigitalCredential class.
+/// [`DigitalCredential`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalCredential)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DigitalCredential {
     inner: Credential,
 }
 impl FromVal for DigitalCredential {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         DigitalCredential {
             inner: Credential::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,48 +31,56 @@ impl core::ops::DerefMut for DigitalCredential {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for DigitalCredential {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for DigitalCredential {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for DigitalCredential {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for DigitalCredential {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<DigitalCredential> for emlite::Val {
-    fn from(s: DigitalCredential) -> emlite::Val {
+impl From<DigitalCredential> for Any {
+    fn from(s: DigitalCredential) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&DigitalCredential> for emlite::Val {
-    fn from(s: &DigitalCredential) -> emlite::Val {
+impl From<&DigitalCredential> for Any {
+    fn from(s: &DigitalCredential) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(DigitalCredential);
 
 impl DigitalCredential {
+    /// The toJSON method.
+    /// [`DigitalCredential.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalCredential/toJSON)
     pub fn to_json(&self) -> Object {
         self.inner.call("toJSON", &[]).as_::<Object>()
     }
 }
 impl DigitalCredential {
+    /// Getter of the `protocol` attribute.
+    /// [`DigitalCredential.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalCredential/protocol)
     pub fn protocol(&self) -> String {
         self.inner.get("protocol").as_::<String>()
     }
 }
 impl DigitalCredential {
+    /// Getter of the `data` attribute.
+    /// [`DigitalCredential.data`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalCredential/data)
     pub fn data(&self) -> Object {
         self.inner.get("data").as_::<Object>()
     }
 }
 impl DigitalCredential {
+    /// The userAgentAllowsProtocol method.
+    /// [`DigitalCredential.userAgentAllowsProtocol`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalCredential/userAgentAllowsProtocol)
     pub fn user_agent_allows_protocol(protocol: &str) -> bool {
-        emlite::Val::global("DigitalCredential")
+        Any::global("DigitalCredential")
             .call("userAgentAllowsProtocol", &[protocol.into()])
             .as_::<bool>()
     }

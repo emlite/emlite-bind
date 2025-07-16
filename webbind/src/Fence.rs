@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct FenceEvent {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for FenceEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         FenceEvent { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for FenceEvent {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for FenceEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for FenceEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for FenceEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for FenceEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for FenceEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<FenceEvent> for emlite::Val {
-    fn from(s: FenceEvent) -> emlite::Val {
+impl From<FenceEvent> for Any {
+    fn from(s: FenceEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&FenceEvent> for emlite::Val {
-    fn from(s: &FenceEvent) -> emlite::Val {
+impl From<&FenceEvent> for Any {
+    fn from(s: &FenceEvent) -> Any {
         s.inner.clone()
     }
 }
@@ -106,26 +106,28 @@ impl FenceEvent {
         self.inner.set("destinationURL", value);
     }
 }
+/// The Fence class.
+/// [`Fence`](https://developer.mozilla.org/en-US/docs/Web/API/Fence)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Fence {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Fence {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Fence {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Fence {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -135,35 +137,38 @@ impl core::ops::DerefMut for Fence {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Fence {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Fence {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Fence {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Fence {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Fence> for emlite::Val {
-    fn from(s: Fence) -> emlite::Val {
+impl From<Fence> for Any {
+    fn from(s: Fence) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Fence> for emlite::Val {
-    fn from(s: &Fence) -> emlite::Val {
+impl From<&Fence> for Any {
+    fn from(s: &Fence) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Fence);
 
 impl Fence {
+    /// The reportEvent method.
+    /// [`Fence.reportEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/reportEvent)
     pub fn report_event0(&self) -> Undefined {
         self.inner.call("reportEvent", &[]).as_::<Undefined>()
     }
-
+    /// The reportEvent method.
+    /// [`Fence.reportEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/reportEvent)
     pub fn report_event1(&self, event: &Any) -> Undefined {
         self.inner
             .call("reportEvent", &[event.into()])
@@ -171,12 +176,15 @@ impl Fence {
     }
 }
 impl Fence {
+    /// The setReportEventDataForAutomaticBeacons method.
+    /// [`Fence.setReportEventDataForAutomaticBeacons`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/setReportEventDataForAutomaticBeacons)
     pub fn set_report_event_data_for_automatic_beacons0(&self) -> Undefined {
         self.inner
             .call("setReportEventDataForAutomaticBeacons", &[])
             .as_::<Undefined>()
     }
-
+    /// The setReportEventDataForAutomaticBeacons method.
+    /// [`Fence.setReportEventDataForAutomaticBeacons`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/setReportEventDataForAutomaticBeacons)
     pub fn set_report_event_data_for_automatic_beacons1(&self, event: &FenceEvent) -> Undefined {
         self.inner
             .call("setReportEventDataForAutomaticBeacons", &[event.into()])
@@ -184,6 +192,8 @@ impl Fence {
     }
 }
 impl Fence {
+    /// The getNestedConfigs method.
+    /// [`Fence.getNestedConfigs`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/getNestedConfigs)
     pub fn get_nested_configs(&self) -> Sequence<FencedFrameConfig> {
         self.inner
             .call("getNestedConfigs", &[])
@@ -191,6 +201,8 @@ impl Fence {
     }
 }
 impl Fence {
+    /// The disableUntrustedNetwork method.
+    /// [`Fence.disableUntrustedNetwork`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/disableUntrustedNetwork)
     pub fn disable_untrusted_network(&self) -> Promise {
         self.inner
             .call("disableUntrustedNetwork", &[])
@@ -198,6 +210,8 @@ impl Fence {
     }
 }
 impl Fence {
+    /// The notifyEvent method.
+    /// [`Fence.notifyEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/notifyEvent)
     pub fn notify_event(&self, event: &Event) -> Undefined {
         self.inner
             .call("notifyEvent", &[event.into()])

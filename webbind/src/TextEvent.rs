@@ -1,20 +1,22 @@
 use super::*;
 
+/// The TextEvent class.
+/// [`TextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TextEvent {
     inner: UIEvent,
 }
 impl FromVal for TextEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         TextEvent {
             inner: UIEvent::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,48 +31,54 @@ impl core::ops::DerefMut for TextEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for TextEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for TextEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for TextEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for TextEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<TextEvent> for emlite::Val {
-    fn from(s: TextEvent) -> emlite::Val {
+impl From<TextEvent> for Any {
+    fn from(s: TextEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&TextEvent> for emlite::Val {
-    fn from(s: &TextEvent) -> emlite::Val {
+impl From<&TextEvent> for Any {
+    fn from(s: &TextEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(TextEvent);
 
 impl TextEvent {
+    /// Getter of the `data` attribute.
+    /// [`TextEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/data)
     pub fn data(&self) -> String {
         self.inner.get("data").as_::<String>()
     }
 }
 impl TextEvent {
+    /// The initTextEvent method.
+    /// [`TextEvent.initTextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/initTextEvent)
     pub fn init_text_event0(&self, type_: &str) -> Undefined {
         self.inner
             .call("initTextEvent", &[type_.into()])
             .as_::<Undefined>()
     }
-
+    /// The initTextEvent method.
+    /// [`TextEvent.initTextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/initTextEvent)
     pub fn init_text_event1(&self, type_: &str, bubbles: bool) -> Undefined {
         self.inner
             .call("initTextEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
     }
-
+    /// The initTextEvent method.
+    /// [`TextEvent.initTextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/initTextEvent)
     pub fn init_text_event2(&self, type_: &str, bubbles: bool, cancelable: bool) -> Undefined {
         self.inner
             .call(
@@ -79,7 +87,8 @@ impl TextEvent {
             )
             .as_::<Undefined>()
     }
-
+    /// The initTextEvent method.
+    /// [`TextEvent.initTextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/initTextEvent)
     pub fn init_text_event3(
         &self,
         type_: &str,
@@ -94,7 +103,8 @@ impl TextEvent {
             )
             .as_::<Undefined>()
     }
-
+    /// The initTextEvent method.
+    /// [`TextEvent.initTextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/initTextEvent)
     pub fn init_text_event4(
         &self,
         type_: &str,

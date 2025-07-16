@@ -1,25 +1,27 @@
 use super::*;
 
+/// The WorkerLocation class.
+/// [`WorkerLocation`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct WorkerLocation {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for WorkerLocation {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         WorkerLocation {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for WorkerLocation {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,71 +31,89 @@ impl core::ops::DerefMut for WorkerLocation {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for WorkerLocation {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for WorkerLocation {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for WorkerLocation {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for WorkerLocation {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<WorkerLocation> for emlite::Val {
-    fn from(s: WorkerLocation) -> emlite::Val {
+impl From<WorkerLocation> for Any {
+    fn from(s: WorkerLocation) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&WorkerLocation> for emlite::Val {
-    fn from(s: &WorkerLocation) -> emlite::Val {
+impl From<&WorkerLocation> for Any {
+    fn from(s: &WorkerLocation) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(WorkerLocation);
 
 impl WorkerLocation {
+    /// Getter of the `href` attribute.
+    /// [`WorkerLocation.href`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/href)
     pub fn href(&self) -> String {
         self.inner.get("href").as_::<String>()
     }
 }
 impl WorkerLocation {
+    /// Getter of the `origin` attribute.
+    /// [`WorkerLocation.origin`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/origin)
     pub fn origin(&self) -> String {
         self.inner.get("origin").as_::<String>()
     }
 }
 impl WorkerLocation {
+    /// Getter of the `protocol` attribute.
+    /// [`WorkerLocation.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/protocol)
     pub fn protocol(&self) -> String {
         self.inner.get("protocol").as_::<String>()
     }
 }
 impl WorkerLocation {
+    /// Getter of the `host` attribute.
+    /// [`WorkerLocation.host`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/host)
     pub fn host(&self) -> String {
         self.inner.get("host").as_::<String>()
     }
 }
 impl WorkerLocation {
+    /// Getter of the `hostname` attribute.
+    /// [`WorkerLocation.hostname`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/hostname)
     pub fn hostname(&self) -> String {
         self.inner.get("hostname").as_::<String>()
     }
 }
 impl WorkerLocation {
+    /// Getter of the `port` attribute.
+    /// [`WorkerLocation.port`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/port)
     pub fn port(&self) -> String {
         self.inner.get("port").as_::<String>()
     }
 }
 impl WorkerLocation {
+    /// Getter of the `pathname` attribute.
+    /// [`WorkerLocation.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/pathname)
     pub fn pathname(&self) -> String {
         self.inner.get("pathname").as_::<String>()
     }
 }
 impl WorkerLocation {
+    /// Getter of the `search` attribute.
+    /// [`WorkerLocation.search`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/search)
     pub fn search(&self) -> String {
         self.inner.get("search").as_::<String>()
     }
 }
 impl WorkerLocation {
+    /// Getter of the `hash` attribute.
+    /// [`WorkerLocation.hash`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/hash)
     pub fn hash(&self) -> String {
         self.inner.get("hash").as_::<String>()
     }

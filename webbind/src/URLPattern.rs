@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct URLPatternResult {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for URLPatternResult {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         URLPatternResult { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for URLPatternResult {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for URLPatternResult {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for URLPatternResult {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for URLPatternResult {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for URLPatternResult {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for URLPatternResult {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<URLPatternResult> for emlite::Val {
-    fn from(s: URLPatternResult) -> emlite::Val {
+impl From<URLPatternResult> for Any {
+    fn from(s: URLPatternResult) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&URLPatternResult> for emlite::Val {
-    fn from(s: &URLPatternResult) -> emlite::Val {
+impl From<&URLPatternResult> for Any {
+    fn from(s: &URLPatternResult) -> Any {
         s.inner.clone()
     }
 }
@@ -131,26 +131,28 @@ impl URLPatternResult {
         self.inner.set("hash", value);
     }
 }
+/// The URLPattern class.
+/// [`URLPattern`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct URLPattern {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for URLPattern {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         URLPattern {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for URLPattern {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -160,64 +162,67 @@ impl core::ops::DerefMut for URLPattern {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for URLPattern {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for URLPattern {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for URLPattern {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for URLPattern {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<URLPattern> for emlite::Val {
-    fn from(s: URLPattern) -> emlite::Val {
+impl From<URLPattern> for Any {
+    fn from(s: URLPattern) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&URLPattern> for emlite::Val {
-    fn from(s: &URLPattern) -> emlite::Val {
+impl From<&URLPattern> for Any {
+    fn from(s: &URLPattern) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(URLPattern);
 
 impl URLPattern {
+    /// The `new URLPattern(..)` constructor, creating a new URLPattern instance
     pub fn new0() -> URLPattern {
         Self {
-            inner: emlite::Val::global("URLPattern")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("URLPattern").new(&[]).as_::<Any>(),
         }
     }
 
+    /// The `new URLPattern(..)` constructor, creating a new URLPattern instance
     pub fn new1(input: &Any) -> URLPattern {
         Self {
-            inner: emlite::Val::global("URLPattern")
-                .new(&[input.into()])
-                .as_::<emlite::Val>(),
+            inner: Any::global("URLPattern").new(&[input.into()]).as_::<Any>(),
         }
     }
 
+    /// The `new URLPattern(..)` constructor, creating a new URLPattern instance
     pub fn new2(input: &Any, options: &Any) -> URLPattern {
         Self {
-            inner: emlite::Val::global("URLPattern")
+            inner: Any::global("URLPattern")
                 .new(&[input.into(), options.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl URLPattern {
+    /// The test method.
+    /// [`URLPattern.test`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/test)
     pub fn test0(&self) -> bool {
         self.inner.call("test", &[]).as_::<bool>()
     }
-
+    /// The test method.
+    /// [`URLPattern.test`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/test)
     pub fn test1(&self, input: &Any) -> bool {
         self.inner.call("test", &[input.into()]).as_::<bool>()
     }
-
+    /// The test method.
+    /// [`URLPattern.test`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/test)
     pub fn test2(&self, input: &Any, base_url: &str) -> bool {
         self.inner
             .call("test", &[input.into(), base_url.into()])
@@ -225,16 +230,20 @@ impl URLPattern {
     }
 }
 impl URLPattern {
+    /// The exec method.
+    /// [`URLPattern.exec`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/exec)
     pub fn exec0(&self) -> URLPatternResult {
         self.inner.call("exec", &[]).as_::<URLPatternResult>()
     }
-
+    /// The exec method.
+    /// [`URLPattern.exec`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/exec)
     pub fn exec1(&self, input: &Any) -> URLPatternResult {
         self.inner
             .call("exec", &[input.into()])
             .as_::<URLPatternResult>()
     }
-
+    /// The exec method.
+    /// [`URLPattern.exec`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/exec)
     pub fn exec2(&self, input: &Any, base_url: &str) -> URLPatternResult {
         self.inner
             .call("exec", &[input.into(), base_url.into()])
@@ -242,46 +251,64 @@ impl URLPattern {
     }
 }
 impl URLPattern {
+    /// Getter of the `protocol` attribute.
+    /// [`URLPattern.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/protocol)
     pub fn protocol(&self) -> String {
         self.inner.get("protocol").as_::<String>()
     }
 }
 impl URLPattern {
+    /// Getter of the `username` attribute.
+    /// [`URLPattern.username`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/username)
     pub fn username(&self) -> String {
         self.inner.get("username").as_::<String>()
     }
 }
 impl URLPattern {
+    /// Getter of the `password` attribute.
+    /// [`URLPattern.password`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/password)
     pub fn password(&self) -> String {
         self.inner.get("password").as_::<String>()
     }
 }
 impl URLPattern {
+    /// Getter of the `hostname` attribute.
+    /// [`URLPattern.hostname`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/hostname)
     pub fn hostname(&self) -> String {
         self.inner.get("hostname").as_::<String>()
     }
 }
 impl URLPattern {
+    /// Getter of the `port` attribute.
+    /// [`URLPattern.port`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/port)
     pub fn port(&self) -> String {
         self.inner.get("port").as_::<String>()
     }
 }
 impl URLPattern {
+    /// Getter of the `pathname` attribute.
+    /// [`URLPattern.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/pathname)
     pub fn pathname(&self) -> String {
         self.inner.get("pathname").as_::<String>()
     }
 }
 impl URLPattern {
+    /// Getter of the `search` attribute.
+    /// [`URLPattern.search`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/search)
     pub fn search(&self) -> String {
         self.inner.get("search").as_::<String>()
     }
 }
 impl URLPattern {
+    /// Getter of the `hash` attribute.
+    /// [`URLPattern.hash`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/hash)
     pub fn hash(&self) -> String {
         self.inner.get("hash").as_::<String>()
     }
 }
 impl URLPattern {
+    /// Getter of the `hasRegExpGroups` attribute.
+    /// [`URLPattern.hasRegExpGroups`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/hasRegExpGroups)
     pub fn has_reg_exp_groups(&self) -> bool {
         self.inner.get("hasRegExpGroups").as_::<bool>()
     }

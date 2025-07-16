@@ -1,25 +1,27 @@
 use super::*;
 
+/// The Memory class.
+/// [`Memory`](https://developer.mozilla.org/en-US/docs/Web/API/Memory)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Memory {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Memory {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Memory {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Memory {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,45 +31,48 @@ impl core::ops::DerefMut for Memory {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Memory {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Memory {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Memory {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Memory {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Memory> for emlite::Val {
-    fn from(s: Memory) -> emlite::Val {
+impl From<Memory> for Any {
+    fn from(s: Memory) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Memory> for emlite::Val {
-    fn from(s: &Memory) -> emlite::Val {
+impl From<&Memory> for Any {
+    fn from(s: &Memory) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Memory);
 
 impl Memory {
+    /// The `new Memory(..)` constructor, creating a new Memory instance
     pub fn new(descriptor: &Any) -> Memory {
         Self {
-            inner: emlite::Val::global("Memory")
-                .new(&[descriptor.into()])
-                .as_::<emlite::Val>(),
+            inner: Any::global("Memory").new(&[descriptor.into()]).as_::<Any>(),
         }
     }
 }
 impl Memory {
+    /// The grow method.
+    /// [`Memory.grow`](https://developer.mozilla.org/en-US/docs/Web/API/Memory/grow)
     pub fn grow(&self, delta: u32) -> u32 {
         self.inner.call("grow", &[delta.into()]).as_::<u32>()
     }
 }
 impl Memory {
+    /// The toFixedLengthBuffer method.
+    /// [`Memory.toFixedLengthBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/Memory/toFixedLengthBuffer)
     pub fn to_fixed_length_buffer(&self) -> ArrayBuffer {
         self.inner
             .call("toFixedLengthBuffer", &[])
@@ -75,6 +80,8 @@ impl Memory {
     }
 }
 impl Memory {
+    /// The toResizableBuffer method.
+    /// [`Memory.toResizableBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/Memory/toResizableBuffer)
     pub fn to_resizable_buffer(&self) -> ArrayBuffer {
         self.inner
             .call("toResizableBuffer", &[])
@@ -82,6 +89,8 @@ impl Memory {
     }
 }
 impl Memory {
+    /// Getter of the `buffer` attribute.
+    /// [`Memory.buffer`](https://developer.mozilla.org/en-US/docs/Web/API/Memory/buffer)
     pub fn buffer(&self) -> ArrayBuffer {
         self.inner.get("buffer").as_::<ArrayBuffer>()
     }

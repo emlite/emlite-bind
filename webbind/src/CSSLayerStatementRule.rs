@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CSSLayerStatementRule class.
+/// [`CSSLayerStatementRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSLayerStatementRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSLayerStatementRule {
     inner: CSSRule,
 }
 impl FromVal for CSSLayerStatementRule {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSLayerStatementRule {
             inner: CSSRule::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for CSSLayerStatementRule {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSLayerStatementRule {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSLayerStatementRule {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSLayerStatementRule {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSLayerStatementRule {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSLayerStatementRule> for emlite::Val {
-    fn from(s: CSSLayerStatementRule) -> emlite::Val {
+impl From<CSSLayerStatementRule> for Any {
+    fn from(s: CSSLayerStatementRule) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSLayerStatementRule> for emlite::Val {
-    fn from(s: &CSSLayerStatementRule) -> emlite::Val {
+impl From<&CSSLayerStatementRule> for Any {
+    fn from(s: &CSSLayerStatementRule) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSLayerStatementRule);
 
 impl CSSLayerStatementRule {
+    /// Getter of the `nameList` attribute.
+    /// [`CSSLayerStatementRule.nameList`](https://developer.mozilla.org/en-US/docs/Web/API/CSSLayerStatementRule/nameList)
     pub fn name_list(&self) -> FrozenArray<String> {
         self.inner.get("nameList").as_::<FrozenArray<String>>()
     }

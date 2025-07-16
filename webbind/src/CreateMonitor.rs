@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CreateMonitor class.
+/// [`CreateMonitor`](https://developer.mozilla.org/en-US/docs/Web/API/CreateMonitor)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CreateMonitor {
     inner: EventTarget,
 }
 impl FromVal for CreateMonitor {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CreateMonitor {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,35 +31,39 @@ impl core::ops::DerefMut for CreateMonitor {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CreateMonitor {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CreateMonitor {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CreateMonitor {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CreateMonitor {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CreateMonitor> for emlite::Val {
-    fn from(s: CreateMonitor) -> emlite::Val {
+impl From<CreateMonitor> for Any {
+    fn from(s: CreateMonitor) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CreateMonitor> for emlite::Val {
-    fn from(s: &CreateMonitor) -> emlite::Val {
+impl From<&CreateMonitor> for Any {
+    fn from(s: &CreateMonitor) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CreateMonitor);
 
 impl CreateMonitor {
+    /// Getter of the `ondownloadprogress` attribute.
+    /// [`CreateMonitor.ondownloadprogress`](https://developer.mozilla.org/en-US/docs/Web/API/CreateMonitor/ondownloadprogress)
     pub fn ondownloadprogress(&self) -> Any {
         self.inner.get("ondownloadprogress").as_::<Any>()
     }
 
+    /// Setter of the `ondownloadprogress` attribute.
+    /// [`CreateMonitor.ondownloadprogress`](https://developer.mozilla.org/en-US/docs/Web/API/CreateMonitor/ondownloadprogress)
     pub fn set_ondownloadprogress(&mut self, value: &Any) {
         self.inner.set("ondownloadprogress", value);
     }

@@ -1,20 +1,22 @@
 use super::*;
 
+/// The PointerTimeline class.
+/// [`PointerTimeline`](https://developer.mozilla.org/en-US/docs/Web/API/PointerTimeline)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PointerTimeline {
     inner: AnimationTimeline,
 }
 impl FromVal for PointerTimeline {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PointerTimeline {
             inner: AnimationTimeline::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,53 +31,59 @@ impl core::ops::DerefMut for PointerTimeline {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PointerTimeline {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PointerTimeline {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PointerTimeline {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PointerTimeline {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PointerTimeline> for emlite::Val {
-    fn from(s: PointerTimeline) -> emlite::Val {
+impl From<PointerTimeline> for Any {
+    fn from(s: PointerTimeline) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PointerTimeline> for emlite::Val {
-    fn from(s: &PointerTimeline) -> emlite::Val {
+impl From<&PointerTimeline> for Any {
+    fn from(s: &PointerTimeline) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PointerTimeline);
 
 impl PointerTimeline {
+    /// The `new PointerTimeline(..)` constructor, creating a new PointerTimeline instance
     pub fn new0() -> PointerTimeline {
         Self {
-            inner: emlite::Val::global("PointerTimeline")
+            inner: Any::global("PointerTimeline")
                 .new(&[])
                 .as_::<AnimationTimeline>(),
         }
     }
 
+    /// The `new PointerTimeline(..)` constructor, creating a new PointerTimeline instance
     pub fn new1(options: &Any) -> PointerTimeline {
         Self {
-            inner: emlite::Val::global("PointerTimeline")
+            inner: Any::global("PointerTimeline")
                 .new(&[options.into()])
                 .as_::<AnimationTimeline>(),
         }
     }
 }
 impl PointerTimeline {
+    /// Getter of the `source` attribute.
+    /// [`PointerTimeline.source`](https://developer.mozilla.org/en-US/docs/Web/API/PointerTimeline/source)
     pub fn source(&self) -> Element {
         self.inner.get("source").as_::<Element>()
     }
 }
 impl PointerTimeline {
+    /// Getter of the `axis` attribute.
+    /// [`PointerTimeline.axis`](https://developer.mozilla.org/en-US/docs/Web/API/PointerTimeline/axis)
     pub fn axis(&self) -> PointerAxis {
         self.inner.get("axis").as_::<PointerAxis>()
     }

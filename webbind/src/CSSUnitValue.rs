@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CSSUnitValue class.
+/// [`CSSUnitValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSUnitValue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSUnitValue {
     inner: CSSNumericValue,
 }
 impl FromVal for CSSUnitValue {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSUnitValue {
             inner: CSSNumericValue::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,49 +31,56 @@ impl core::ops::DerefMut for CSSUnitValue {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSUnitValue {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSUnitValue {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSUnitValue {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSUnitValue {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSUnitValue> for emlite::Val {
-    fn from(s: CSSUnitValue) -> emlite::Val {
+impl From<CSSUnitValue> for Any {
+    fn from(s: CSSUnitValue) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSUnitValue> for emlite::Val {
-    fn from(s: &CSSUnitValue) -> emlite::Val {
+impl From<&CSSUnitValue> for Any {
+    fn from(s: &CSSUnitValue) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSUnitValue);
 
 impl CSSUnitValue {
+    /// The `new CSSUnitValue(..)` constructor, creating a new CSSUnitValue instance
     pub fn new(value: f64, unit: &str) -> CSSUnitValue {
         Self {
-            inner: emlite::Val::global("CSSUnitValue")
+            inner: Any::global("CSSUnitValue")
                 .new(&[value.into(), unit.into()])
                 .as_::<CSSNumericValue>(),
         }
     }
 }
 impl CSSUnitValue {
+    /// Getter of the `value` attribute.
+    /// [`CSSUnitValue.value`](https://developer.mozilla.org/en-US/docs/Web/API/CSSUnitValue/value)
     pub fn value(&self) -> f64 {
         self.inner.get("value").as_::<f64>()
     }
 
+    /// Setter of the `value` attribute.
+    /// [`CSSUnitValue.value`](https://developer.mozilla.org/en-US/docs/Web/API/CSSUnitValue/value)
     pub fn set_value(&mut self, value: f64) {
         self.inner.set("value", value);
     }
 }
 impl CSSUnitValue {
+    /// Getter of the `unit` attribute.
+    /// [`CSSUnitValue.unit`](https://developer.mozilla.org/en-US/docs/Web/API/CSSUnitValue/unit)
     pub fn unit(&self) -> String {
         self.inner.get("unit").as_::<String>()
     }

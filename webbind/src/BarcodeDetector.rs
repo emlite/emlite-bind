@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DetectedBarcode {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for DetectedBarcode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         DetectedBarcode { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for DetectedBarcode {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for DetectedBarcode {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for DetectedBarcode {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for DetectedBarcode {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for DetectedBarcode {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for DetectedBarcode {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<DetectedBarcode> for emlite::Val {
-    fn from(s: DetectedBarcode) -> emlite::Val {
+impl From<DetectedBarcode> for Any {
+    fn from(s: DetectedBarcode) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&DetectedBarcode> for emlite::Val {
-    fn from(s: &DetectedBarcode) -> emlite::Val {
+impl From<&DetectedBarcode> for Any {
+    fn from(s: &DetectedBarcode) -> Any {
         s.inner.clone()
     }
 }
@@ -86,26 +86,28 @@ impl DetectedBarcode {
         self.inner.set("cornerPoints", value);
     }
 }
+/// The BarcodeDetector class.
+/// [`BarcodeDetector`](https://developer.mozilla.org/en-US/docs/Web/API/BarcodeDetector)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BarcodeDetector {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for BarcodeDetector {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         BarcodeDetector {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for BarcodeDetector {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -115,55 +117,59 @@ impl core::ops::DerefMut for BarcodeDetector {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for BarcodeDetector {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for BarcodeDetector {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for BarcodeDetector {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for BarcodeDetector {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<BarcodeDetector> for emlite::Val {
-    fn from(s: BarcodeDetector) -> emlite::Val {
+impl From<BarcodeDetector> for Any {
+    fn from(s: BarcodeDetector) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&BarcodeDetector> for emlite::Val {
-    fn from(s: &BarcodeDetector) -> emlite::Val {
+impl From<&BarcodeDetector> for Any {
+    fn from(s: &BarcodeDetector) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BarcodeDetector);
 
 impl BarcodeDetector {
+    /// The `new BarcodeDetector(..)` constructor, creating a new BarcodeDetector instance
     pub fn new0() -> BarcodeDetector {
         Self {
-            inner: emlite::Val::global("BarcodeDetector")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("BarcodeDetector").new(&[]).as_::<Any>(),
         }
     }
 
+    /// The `new BarcodeDetector(..)` constructor, creating a new BarcodeDetector instance
     pub fn new1(barcode_detector_options: &Any) -> BarcodeDetector {
         Self {
-            inner: emlite::Val::global("BarcodeDetector")
+            inner: Any::global("BarcodeDetector")
                 .new(&[barcode_detector_options.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl BarcodeDetector {
+    /// The getSupportedFormats method.
+    /// [`BarcodeDetector.getSupportedFormats`](https://developer.mozilla.org/en-US/docs/Web/API/BarcodeDetector/getSupportedFormats)
     pub fn get_supported_formats() -> Promise {
-        emlite::Val::global("BarcodeDetector")
+        Any::global("BarcodeDetector")
             .call("getSupportedFormats", &[])
             .as_::<Promise>()
     }
 }
 impl BarcodeDetector {
+    /// The detect method.
+    /// [`BarcodeDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/BarcodeDetector/detect)
     pub fn detect(&self, image: &Any) -> Promise {
         self.inner.call("detect", &[image.into()]).as_::<Promise>()
     }

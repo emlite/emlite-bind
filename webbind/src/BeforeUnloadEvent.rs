@@ -1,20 +1,22 @@
 use super::*;
 
+/// The BeforeUnloadEvent class.
+/// [`BeforeUnloadEvent`](https://developer.mozilla.org/en-US/docs/Web/API/BeforeUnloadEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct BeforeUnloadEvent {
     inner: Event,
 }
 impl FromVal for BeforeUnloadEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         BeforeUnloadEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,35 +31,39 @@ impl core::ops::DerefMut for BeforeUnloadEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for BeforeUnloadEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for BeforeUnloadEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for BeforeUnloadEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for BeforeUnloadEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<BeforeUnloadEvent> for emlite::Val {
-    fn from(s: BeforeUnloadEvent) -> emlite::Val {
+impl From<BeforeUnloadEvent> for Any {
+    fn from(s: BeforeUnloadEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&BeforeUnloadEvent> for emlite::Val {
-    fn from(s: &BeforeUnloadEvent) -> emlite::Val {
+impl From<&BeforeUnloadEvent> for Any {
+    fn from(s: &BeforeUnloadEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(BeforeUnloadEvent);
 
 impl BeforeUnloadEvent {
+    /// Getter of the `returnValue` attribute.
+    /// [`BeforeUnloadEvent.returnValue`](https://developer.mozilla.org/en-US/docs/Web/API/BeforeUnloadEvent/returnValue)
     pub fn return_value(&self) -> String {
         self.inner.get("returnValue").as_::<String>()
     }
 
+    /// Setter of the `returnValue` attribute.
+    /// [`BeforeUnloadEvent.returnValue`](https://developer.mozilla.org/en-US/docs/Web/API/BeforeUnloadEvent/returnValue)
     pub fn set_return_value(&mut self, value: &str) {
         self.inner.set("returnValue", value);
     }

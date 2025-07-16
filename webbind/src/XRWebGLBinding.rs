@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRProjectionLayerInit {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XRProjectionLayerInit {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRProjectionLayerInit { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XRProjectionLayerInit {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for XRProjectionLayerInit {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRProjectionLayerInit {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRProjectionLayerInit {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRProjectionLayerInit {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRProjectionLayerInit {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRProjectionLayerInit> for emlite::Val {
-    fn from(s: XRProjectionLayerInit) -> emlite::Val {
+impl From<XRProjectionLayerInit> for Any {
+    fn from(s: XRProjectionLayerInit) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRProjectionLayerInit> for emlite::Val {
-    fn from(s: &XRProjectionLayerInit) -> emlite::Val {
+impl From<&XRProjectionLayerInit> for Any {
+    fn from(s: &XRProjectionLayerInit) -> Any {
         s.inner.clone()
     }
 }
@@ -98,21 +98,21 @@ impl XRProjectionLayerInit {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRQuadLayerInit {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XRQuadLayerInit {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRQuadLayerInit { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XRQuadLayerInit {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -122,25 +122,25 @@ impl core::ops::DerefMut for XRQuadLayerInit {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRQuadLayerInit {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRQuadLayerInit {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRQuadLayerInit {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRQuadLayerInit {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRQuadLayerInit> for emlite::Val {
-    fn from(s: XRQuadLayerInit) -> emlite::Val {
+impl From<XRQuadLayerInit> for Any {
+    fn from(s: XRQuadLayerInit) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRQuadLayerInit> for emlite::Val {
-    fn from(s: &XRQuadLayerInit) -> emlite::Val {
+impl From<&XRQuadLayerInit> for Any {
+    fn from(s: &XRQuadLayerInit) -> Any {
         s.inner.clone()
     }
 }
@@ -184,21 +184,21 @@ impl XRQuadLayerInit {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRCylinderLayerInit {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XRCylinderLayerInit {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRCylinderLayerInit { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XRCylinderLayerInit {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -208,25 +208,25 @@ impl core::ops::DerefMut for XRCylinderLayerInit {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRCylinderLayerInit {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRCylinderLayerInit {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRCylinderLayerInit {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRCylinderLayerInit {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRCylinderLayerInit> for emlite::Val {
-    fn from(s: XRCylinderLayerInit) -> emlite::Val {
+impl From<XRCylinderLayerInit> for Any {
+    fn from(s: XRCylinderLayerInit) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRCylinderLayerInit> for emlite::Val {
-    fn from(s: &XRCylinderLayerInit) -> emlite::Val {
+impl From<&XRCylinderLayerInit> for Any {
+    fn from(s: &XRCylinderLayerInit) -> Any {
         s.inner.clone()
     }
 }
@@ -279,21 +279,21 @@ impl XRCylinderLayerInit {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XREquirectLayerInit {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XREquirectLayerInit {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XREquirectLayerInit { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XREquirectLayerInit {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -303,25 +303,25 @@ impl core::ops::DerefMut for XREquirectLayerInit {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XREquirectLayerInit {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XREquirectLayerInit {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XREquirectLayerInit {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XREquirectLayerInit {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XREquirectLayerInit> for emlite::Val {
-    fn from(s: XREquirectLayerInit) -> emlite::Val {
+impl From<XREquirectLayerInit> for Any {
+    fn from(s: XREquirectLayerInit) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XREquirectLayerInit> for emlite::Val {
-    fn from(s: &XREquirectLayerInit) -> emlite::Val {
+impl From<&XREquirectLayerInit> for Any {
+    fn from(s: &XREquirectLayerInit) -> Any {
         s.inner.clone()
     }
 }
@@ -383,21 +383,21 @@ impl XREquirectLayerInit {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRCubeLayerInit {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XRCubeLayerInit {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRCubeLayerInit { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XRCubeLayerInit {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -407,25 +407,25 @@ impl core::ops::DerefMut for XRCubeLayerInit {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRCubeLayerInit {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRCubeLayerInit {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRCubeLayerInit {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRCubeLayerInit {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRCubeLayerInit> for emlite::Val {
-    fn from(s: XRCubeLayerInit) -> emlite::Val {
+impl From<XRCubeLayerInit> for Any {
+    fn from(s: XRCubeLayerInit) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRCubeLayerInit> for emlite::Val {
-    fn from(s: &XRCubeLayerInit) -> emlite::Val {
+impl From<&XRCubeLayerInit> for Any {
+    fn from(s: &XRCubeLayerInit) -> Any {
         s.inner.clone()
     }
 }
@@ -439,26 +439,28 @@ impl XRCubeLayerInit {
         self.inner.set("orientation", value);
     }
 }
+/// The XRWebGLBinding class.
+/// [`XRWebGLBinding`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRWebGLBinding {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for XRWebGLBinding {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRWebGLBinding {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for XRWebGLBinding {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -468,56 +470,64 @@ impl core::ops::DerefMut for XRWebGLBinding {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRWebGLBinding {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRWebGLBinding {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRWebGLBinding {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRWebGLBinding {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRWebGLBinding> for emlite::Val {
-    fn from(s: XRWebGLBinding) -> emlite::Val {
+impl From<XRWebGLBinding> for Any {
+    fn from(s: XRWebGLBinding) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRWebGLBinding> for emlite::Val {
-    fn from(s: &XRWebGLBinding) -> emlite::Val {
+impl From<&XRWebGLBinding> for Any {
+    fn from(s: &XRWebGLBinding) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(XRWebGLBinding);
 
 impl XRWebGLBinding {
+    /// The `new XRWebGLBinding(..)` constructor, creating a new XRWebGLBinding instance
     pub fn new(session: &XRSession, context: &Any) -> XRWebGLBinding {
         Self {
-            inner: emlite::Val::global("XRWebGLBinding")
+            inner: Any::global("XRWebGLBinding")
                 .new(&[session.into(), context.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl XRWebGLBinding {
+    /// Getter of the `nativeProjectionScaleFactor` attribute.
+    /// [`XRWebGLBinding.nativeProjectionScaleFactor`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/nativeProjectionScaleFactor)
     pub fn native_projection_scale_factor(&self) -> f64 {
         self.inner.get("nativeProjectionScaleFactor").as_::<f64>()
     }
 }
 impl XRWebGLBinding {
+    /// Getter of the `usesDepthValues` attribute.
+    /// [`XRWebGLBinding.usesDepthValues`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/usesDepthValues)
     pub fn uses_depth_values(&self) -> bool {
         self.inner.get("usesDepthValues").as_::<bool>()
     }
 }
 impl XRWebGLBinding {
+    /// The createProjectionLayer method.
+    /// [`XRWebGLBinding.createProjectionLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createProjectionLayer)
     pub fn create_projection_layer0(&self) -> XRProjectionLayer {
         self.inner
             .call("createProjectionLayer", &[])
             .as_::<XRProjectionLayer>()
     }
-
+    /// The createProjectionLayer method.
+    /// [`XRWebGLBinding.createProjectionLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createProjectionLayer)
     pub fn create_projection_layer1(&self, init: &XRProjectionLayerInit) -> XRProjectionLayer {
         self.inner
             .call("createProjectionLayer", &[init.into()])
@@ -525,10 +535,13 @@ impl XRWebGLBinding {
     }
 }
 impl XRWebGLBinding {
+    /// The createQuadLayer method.
+    /// [`XRWebGLBinding.createQuadLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createQuadLayer)
     pub fn create_quad_layer0(&self) -> XRQuadLayer {
         self.inner.call("createQuadLayer", &[]).as_::<XRQuadLayer>()
     }
-
+    /// The createQuadLayer method.
+    /// [`XRWebGLBinding.createQuadLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createQuadLayer)
     pub fn create_quad_layer1(&self, init: &XRQuadLayerInit) -> XRQuadLayer {
         self.inner
             .call("createQuadLayer", &[init.into()])
@@ -536,12 +549,15 @@ impl XRWebGLBinding {
     }
 }
 impl XRWebGLBinding {
+    /// The createCylinderLayer method.
+    /// [`XRWebGLBinding.createCylinderLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createCylinderLayer)
     pub fn create_cylinder_layer0(&self) -> XRCylinderLayer {
         self.inner
             .call("createCylinderLayer", &[])
             .as_::<XRCylinderLayer>()
     }
-
+    /// The createCylinderLayer method.
+    /// [`XRWebGLBinding.createCylinderLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createCylinderLayer)
     pub fn create_cylinder_layer1(&self, init: &XRCylinderLayerInit) -> XRCylinderLayer {
         self.inner
             .call("createCylinderLayer", &[init.into()])
@@ -549,12 +565,15 @@ impl XRWebGLBinding {
     }
 }
 impl XRWebGLBinding {
+    /// The createEquirectLayer method.
+    /// [`XRWebGLBinding.createEquirectLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createEquirectLayer)
     pub fn create_equirect_layer0(&self) -> XREquirectLayer {
         self.inner
             .call("createEquirectLayer", &[])
             .as_::<XREquirectLayer>()
     }
-
+    /// The createEquirectLayer method.
+    /// [`XRWebGLBinding.createEquirectLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createEquirectLayer)
     pub fn create_equirect_layer1(&self, init: &XREquirectLayerInit) -> XREquirectLayer {
         self.inner
             .call("createEquirectLayer", &[init.into()])
@@ -562,10 +581,13 @@ impl XRWebGLBinding {
     }
 }
 impl XRWebGLBinding {
+    /// The createCubeLayer method.
+    /// [`XRWebGLBinding.createCubeLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createCubeLayer)
     pub fn create_cube_layer0(&self) -> XRCubeLayer {
         self.inner.call("createCubeLayer", &[]).as_::<XRCubeLayer>()
     }
-
+    /// The createCubeLayer method.
+    /// [`XRWebGLBinding.createCubeLayer`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/createCubeLayer)
     pub fn create_cube_layer1(&self, init: &XRCubeLayerInit) -> XRCubeLayer {
         self.inner
             .call("createCubeLayer", &[init.into()])
@@ -573,12 +595,15 @@ impl XRWebGLBinding {
     }
 }
 impl XRWebGLBinding {
+    /// The getSubImage method.
+    /// [`XRWebGLBinding.getSubImage`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/getSubImage)
     pub fn get_sub_image0(&self, layer: &XRCompositionLayer, frame: &XRFrame) -> XRWebGLSubImage {
         self.inner
             .call("getSubImage", &[layer.into(), frame.into()])
             .as_::<XRWebGLSubImage>()
     }
-
+    /// The getSubImage method.
+    /// [`XRWebGLBinding.getSubImage`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/getSubImage)
     pub fn get_sub_image1(
         &self,
         layer: &XRCompositionLayer,
@@ -591,6 +616,8 @@ impl XRWebGLBinding {
     }
 }
 impl XRWebGLBinding {
+    /// The getViewSubImage method.
+    /// [`XRWebGLBinding.getViewSubImage`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/getViewSubImage)
     pub fn get_view_sub_image(&self, layer: &XRProjectionLayer, view: &XRView) -> XRWebGLSubImage {
         self.inner
             .call("getViewSubImage", &[layer.into(), view.into()])
@@ -598,6 +625,8 @@ impl XRWebGLBinding {
     }
 }
 impl XRWebGLBinding {
+    /// The foveateBoundTexture method.
+    /// [`XRWebGLBinding.foveateBoundTexture`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/foveateBoundTexture)
     pub fn foveate_bound_texture(&self, target: &Any, fixed_foveation: f32) -> Undefined {
         self.inner
             .call(
@@ -608,6 +637,8 @@ impl XRWebGLBinding {
     }
 }
 impl XRWebGLBinding {
+    /// The getCameraImage method.
+    /// [`XRWebGLBinding.getCameraImage`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/getCameraImage)
     pub fn get_camera_image(&self, camera: &XRCamera) -> WebGLTexture {
         self.inner
             .call("getCameraImage", &[camera.into()])
@@ -615,6 +646,8 @@ impl XRWebGLBinding {
     }
 }
 impl XRWebGLBinding {
+    /// The getDepthInformation method.
+    /// [`XRWebGLBinding.getDepthInformation`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/getDepthInformation)
     pub fn get_depth_information(&self, view: &XRView) -> XRWebGLDepthInformation {
         self.inner
             .call("getDepthInformation", &[view.into()])
@@ -622,6 +655,8 @@ impl XRWebGLBinding {
     }
 }
 impl XRWebGLBinding {
+    /// The getReflectionCubeMap method.
+    /// [`XRWebGLBinding.getReflectionCubeMap`](https://developer.mozilla.org/en-US/docs/Web/API/XRWebGLBinding/getReflectionCubeMap)
     pub fn get_reflection_cube_map(&self, light_probe: &XRLightProbe) -> WebGLTexture {
         self.inner
             .call("getReflectionCubeMap", &[light_probe.into()])

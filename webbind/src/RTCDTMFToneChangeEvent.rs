@@ -1,20 +1,22 @@
 use super::*;
 
+/// The RTCDTMFToneChangeEvent class.
+/// [`RTCDTMFToneChangeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFToneChangeEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RTCDTMFToneChangeEvent {
     inner: Event,
 }
 impl FromVal for RTCDTMFToneChangeEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RTCDTMFToneChangeEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,48 +31,52 @@ impl core::ops::DerefMut for RTCDTMFToneChangeEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RTCDTMFToneChangeEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RTCDTMFToneChangeEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RTCDTMFToneChangeEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RTCDTMFToneChangeEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RTCDTMFToneChangeEvent> for emlite::Val {
-    fn from(s: RTCDTMFToneChangeEvent) -> emlite::Val {
+impl From<RTCDTMFToneChangeEvent> for Any {
+    fn from(s: RTCDTMFToneChangeEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RTCDTMFToneChangeEvent> for emlite::Val {
-    fn from(s: &RTCDTMFToneChangeEvent) -> emlite::Val {
+impl From<&RTCDTMFToneChangeEvent> for Any {
+    fn from(s: &RTCDTMFToneChangeEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RTCDTMFToneChangeEvent);
 
 impl RTCDTMFToneChangeEvent {
+    /// The `new RTCDTMFToneChangeEvent(..)` constructor, creating a new RTCDTMFToneChangeEvent instance
     pub fn new0(type_: &str) -> RTCDTMFToneChangeEvent {
         Self {
-            inner: emlite::Val::global("RTCDTMFToneChangeEvent")
+            inner: Any::global("RTCDTMFToneChangeEvent")
                 .new(&[type_.into()])
                 .as_::<Event>(),
         }
     }
 
+    /// The `new RTCDTMFToneChangeEvent(..)` constructor, creating a new RTCDTMFToneChangeEvent instance
     pub fn new1(type_: &str, event_init_dict: &Any) -> RTCDTMFToneChangeEvent {
         Self {
-            inner: emlite::Val::global("RTCDTMFToneChangeEvent")
+            inner: Any::global("RTCDTMFToneChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl RTCDTMFToneChangeEvent {
+    /// Getter of the `tone` attribute.
+    /// [`RTCDTMFToneChangeEvent.tone`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFToneChangeEvent/tone)
     pub fn tone(&self) -> String {
         self.inner.get("tone").as_::<String>()
     }

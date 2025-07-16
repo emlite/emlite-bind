@@ -1,20 +1,22 @@
 use super::*;
 
+/// The InterestGroupReportingScriptRunnerGlobalScope class.
+/// [`InterestGroupReportingScriptRunnerGlobalScope`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupReportingScriptRunnerGlobalScope)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct InterestGroupReportingScriptRunnerGlobalScope {
     inner: InterestGroupScriptRunnerGlobalScope,
 }
 impl FromVal for InterestGroupReportingScriptRunnerGlobalScope {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         InterestGroupReportingScriptRunnerGlobalScope {
             inner: InterestGroupScriptRunnerGlobalScope::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for InterestGroupReportingScriptRunnerGlobalScope {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for InterestGroupReportingScriptRunnerGlobalScope {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for InterestGroupReportingScriptRunnerGlobalScope {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for InterestGroupReportingScriptRunnerGlobalScope {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for InterestGroupReportingScriptRunnerGlobalScope {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<InterestGroupReportingScriptRunnerGlobalScope> for emlite::Val {
-    fn from(s: InterestGroupReportingScriptRunnerGlobalScope) -> emlite::Val {
+impl From<InterestGroupReportingScriptRunnerGlobalScope> for Any {
+    fn from(s: InterestGroupReportingScriptRunnerGlobalScope) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&InterestGroupReportingScriptRunnerGlobalScope> for emlite::Val {
-    fn from(s: &InterestGroupReportingScriptRunnerGlobalScope) -> emlite::Val {
+impl From<&InterestGroupReportingScriptRunnerGlobalScope> for Any {
+    fn from(s: &InterestGroupReportingScriptRunnerGlobalScope) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(InterestGroupReportingScriptRunnerGlobalScope);
 
 impl InterestGroupReportingScriptRunnerGlobalScope {
+    /// The sendReportTo method.
+    /// [`InterestGroupReportingScriptRunnerGlobalScope.sendReportTo`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupReportingScriptRunnerGlobalScope/sendReportTo)
     pub fn send_report_to(&self, url: &str) -> Undefined {
         self.inner
             .call("sendReportTo", &[url.into()])
@@ -61,6 +65,8 @@ impl InterestGroupReportingScriptRunnerGlobalScope {
     }
 }
 impl InterestGroupReportingScriptRunnerGlobalScope {
+    /// The registerAdBeacon method.
+    /// [`InterestGroupReportingScriptRunnerGlobalScope.registerAdBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupReportingScriptRunnerGlobalScope/registerAdBeacon)
     pub fn register_ad_beacon(&self, map: &Record<String, String>) -> Undefined {
         self.inner
             .call("registerAdBeacon", &[map.into()])
@@ -68,6 +74,8 @@ impl InterestGroupReportingScriptRunnerGlobalScope {
     }
 }
 impl InterestGroupReportingScriptRunnerGlobalScope {
+    /// The registerAdMacro method.
+    /// [`InterestGroupReportingScriptRunnerGlobalScope.registerAdMacro`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupReportingScriptRunnerGlobalScope/registerAdMacro)
     pub fn register_ad_macro(&self, name: &str, value: &str) -> Undefined {
         self.inner
             .call("registerAdMacro", &[name.into(), value.into()])

@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RealTimeContribution {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RealTimeContribution {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RealTimeContribution { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RealTimeContribution {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for RealTimeContribution {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RealTimeContribution {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RealTimeContribution {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RealTimeContribution {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RealTimeContribution {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RealTimeContribution> for emlite::Val {
-    fn from(s: RealTimeContribution) -> emlite::Val {
+impl From<RealTimeContribution> for Any {
+    fn from(s: RealTimeContribution) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RealTimeContribution> for emlite::Val {
-    fn from(s: &RealTimeContribution) -> emlite::Val {
+impl From<&RealTimeContribution> for Any {
+    fn from(s: &RealTimeContribution) -> Any {
         s.inner.clone()
     }
 }
@@ -77,26 +77,28 @@ impl RealTimeContribution {
         self.inner.set("latencyThreshold", value);
     }
 }
+/// The RealTimeReporting class.
+/// [`RealTimeReporting`](https://developer.mozilla.org/en-US/docs/Web/API/RealTimeReporting)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RealTimeReporting {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RealTimeReporting {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RealTimeReporting {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RealTimeReporting {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -106,31 +108,33 @@ impl core::ops::DerefMut for RealTimeReporting {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RealTimeReporting {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RealTimeReporting {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RealTimeReporting {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RealTimeReporting {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RealTimeReporting> for emlite::Val {
-    fn from(s: RealTimeReporting) -> emlite::Val {
+impl From<RealTimeReporting> for Any {
+    fn from(s: RealTimeReporting) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RealTimeReporting> for emlite::Val {
-    fn from(s: &RealTimeReporting) -> emlite::Val {
+impl From<&RealTimeReporting> for Any {
+    fn from(s: &RealTimeReporting) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(RealTimeReporting);
 
 impl RealTimeReporting {
+    /// The contributeToHistogram method.
+    /// [`RealTimeReporting.contributeToHistogram`](https://developer.mozilla.org/en-US/docs/Web/API/RealTimeReporting/contributeToHistogram)
     pub fn contribute_to_histogram(&self, contribution: &RealTimeContribution) -> Undefined {
         self.inner
             .call("contributeToHistogram", &[contribution.into()])

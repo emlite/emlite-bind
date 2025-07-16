@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct LockOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for LockOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         LockOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for LockOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for LockOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for LockOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for LockOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for LockOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for LockOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<LockOptions> for emlite::Val {
-    fn from(s: LockOptions) -> emlite::Val {
+impl From<LockOptions> for Any {
+    fn from(s: LockOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&LockOptions> for emlite::Val {
-    fn from(s: &LockOptions) -> emlite::Val {
+impl From<&LockOptions> for Any {
+    fn from(s: &LockOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -89,21 +89,21 @@ impl LockOptions {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct LockManagerSnapshot {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for LockManagerSnapshot {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         LockManagerSnapshot { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for LockManagerSnapshot {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -113,25 +113,25 @@ impl core::ops::DerefMut for LockManagerSnapshot {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for LockManagerSnapshot {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for LockManagerSnapshot {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for LockManagerSnapshot {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for LockManagerSnapshot {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<LockManagerSnapshot> for emlite::Val {
-    fn from(s: LockManagerSnapshot) -> emlite::Val {
+impl From<LockManagerSnapshot> for Any {
+    fn from(s: LockManagerSnapshot) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&LockManagerSnapshot> for emlite::Val {
-    fn from(s: &LockManagerSnapshot) -> emlite::Val {
+impl From<&LockManagerSnapshot> for Any {
+    fn from(s: &LockManagerSnapshot) -> Any {
         s.inner.clone()
     }
 }
@@ -154,26 +154,28 @@ impl LockManagerSnapshot {
         self.inner.set("pending", value);
     }
 }
+/// The LockManager class.
+/// [`LockManager`](https://developer.mozilla.org/en-US/docs/Web/API/LockManager)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct LockManager {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for LockManager {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         LockManager {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for LockManager {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -183,31 +185,33 @@ impl core::ops::DerefMut for LockManager {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for LockManager {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for LockManager {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for LockManager {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for LockManager {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<LockManager> for emlite::Val {
-    fn from(s: LockManager) -> emlite::Val {
+impl From<LockManager> for Any {
+    fn from(s: LockManager) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&LockManager> for emlite::Val {
-    fn from(s: &LockManager) -> emlite::Val {
+impl From<&LockManager> for Any {
+    fn from(s: &LockManager) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(LockManager);
 
 impl LockManager {
+    /// The request method.
+    /// [`LockManager.request`](https://developer.mozilla.org/en-US/docs/Web/API/LockManager/request)
     pub fn request(&self, name: &str, options: &LockOptions, callback: &Function) -> Promise {
         self.inner
             .call("request", &[name.into(), options.into(), callback.into()])
@@ -215,6 +219,8 @@ impl LockManager {
     }
 }
 impl LockManager {
+    /// The query method.
+    /// [`LockManager.query`](https://developer.mozilla.org/en-US/docs/Web/API/LockManager/query)
     pub fn query(&self) -> Promise {
         self.inner.call("query", &[]).as_::<Promise>()
     }

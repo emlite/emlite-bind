@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TextDecodeOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for TextDecodeOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         TextDecodeOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for TextDecodeOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for TextDecodeOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for TextDecodeOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for TextDecodeOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for TextDecodeOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for TextDecodeOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<TextDecodeOptions> for emlite::Val {
-    fn from(s: TextDecodeOptions) -> emlite::Val {
+impl From<TextDecodeOptions> for Any {
+    fn from(s: TextDecodeOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&TextDecodeOptions> for emlite::Val {
-    fn from(s: &TextDecodeOptions) -> emlite::Val {
+impl From<&TextDecodeOptions> for Any {
+    fn from(s: &TextDecodeOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -59,26 +59,28 @@ impl TextDecodeOptions {
         self.inner.set("stream", value);
     }
 }
+/// The TextDecoder class.
+/// [`TextDecoder`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct TextDecoder {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for TextDecoder {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         TextDecoder {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for TextDecoder {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -88,64 +90,67 @@ impl core::ops::DerefMut for TextDecoder {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for TextDecoder {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for TextDecoder {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for TextDecoder {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for TextDecoder {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<TextDecoder> for emlite::Val {
-    fn from(s: TextDecoder) -> emlite::Val {
+impl From<TextDecoder> for Any {
+    fn from(s: TextDecoder) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&TextDecoder> for emlite::Val {
-    fn from(s: &TextDecoder) -> emlite::Val {
+impl From<&TextDecoder> for Any {
+    fn from(s: &TextDecoder) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(TextDecoder);
 
 impl TextDecoder {
+    /// The `new TextDecoder(..)` constructor, creating a new TextDecoder instance
     pub fn new0() -> TextDecoder {
         Self {
-            inner: emlite::Val::global("TextDecoder")
-                .new(&[])
-                .as_::<emlite::Val>(),
+            inner: Any::global("TextDecoder").new(&[]).as_::<Any>(),
         }
     }
 
+    /// The `new TextDecoder(..)` constructor, creating a new TextDecoder instance
     pub fn new1(label: &str) -> TextDecoder {
         Self {
-            inner: emlite::Val::global("TextDecoder")
-                .new(&[label.into()])
-                .as_::<emlite::Val>(),
+            inner: Any::global("TextDecoder").new(&[label.into()]).as_::<Any>(),
         }
     }
 
+    /// The `new TextDecoder(..)` constructor, creating a new TextDecoder instance
     pub fn new2(label: &str, options: &Any) -> TextDecoder {
         Self {
-            inner: emlite::Val::global("TextDecoder")
+            inner: Any::global("TextDecoder")
                 .new(&[label.into(), options.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl TextDecoder {
+    /// The decode method.
+    /// [`TextDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode)
     pub fn decode0(&self) -> String {
         self.inner.call("decode", &[]).as_::<String>()
     }
-
+    /// The decode method.
+    /// [`TextDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode)
     pub fn decode1(&self, input: &Any) -> String {
         self.inner.call("decode", &[input.into()]).as_::<String>()
     }
-
+    /// The decode method.
+    /// [`TextDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode)
     pub fn decode2(&self, input: &Any, options: &TextDecodeOptions) -> String {
         self.inner
             .call("decode", &[input.into(), options.into()])
@@ -153,16 +158,22 @@ impl TextDecoder {
     }
 }
 impl TextDecoder {
+    /// Getter of the `encoding` attribute.
+    /// [`TextDecoder.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/encoding)
     pub fn encoding(&self) -> String {
         self.inner.get("encoding").as_::<String>()
     }
 }
 impl TextDecoder {
+    /// Getter of the `fatal` attribute.
+    /// [`TextDecoder.fatal`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/fatal)
     pub fn fatal(&self) -> bool {
         self.inner.get("fatal").as_::<bool>()
     }
 }
 impl TextDecoder {
+    /// Getter of the `ignoreBOM` attribute.
+    /// [`TextDecoder.ignoreBOM`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/ignoreBOM)
     pub fn ignore_bom(&self) -> bool {
         self.inner.get("ignoreBOM").as_::<bool>()
     }

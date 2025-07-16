@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HIDDeviceRequestOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for HIDDeviceRequestOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HIDDeviceRequestOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for HIDDeviceRequestOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for HIDDeviceRequestOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HIDDeviceRequestOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HIDDeviceRequestOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HIDDeviceRequestOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HIDDeviceRequestOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HIDDeviceRequestOptions> for emlite::Val {
-    fn from(s: HIDDeviceRequestOptions) -> emlite::Val {
+impl From<HIDDeviceRequestOptions> for Any {
+    fn from(s: HIDDeviceRequestOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HIDDeviceRequestOptions> for emlite::Val {
-    fn from(s: &HIDDeviceRequestOptions) -> emlite::Val {
+impl From<&HIDDeviceRequestOptions> for Any {
+    fn from(s: &HIDDeviceRequestOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -68,21 +68,23 @@ impl HIDDeviceRequestOptions {
         self.inner.set("exclusionFilters", value);
     }
 }
+/// The HID class.
+/// [`HID`](https://developer.mozilla.org/en-US/docs/Web/API/HID)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HID {
     inner: EventTarget,
 }
 impl FromVal for HID {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HID {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -97,54 +99,66 @@ impl core::ops::DerefMut for HID {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HID {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HID {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HID {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HID {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HID> for emlite::Val {
-    fn from(s: HID) -> emlite::Val {
+impl From<HID> for Any {
+    fn from(s: HID) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HID> for emlite::Val {
-    fn from(s: &HID) -> emlite::Val {
+impl From<&HID> for Any {
+    fn from(s: &HID) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HID);
 
 impl HID {
+    /// Getter of the `onconnect` attribute.
+    /// [`HID.onconnect`](https://developer.mozilla.org/en-US/docs/Web/API/HID/onconnect)
     pub fn onconnect(&self) -> Any {
         self.inner.get("onconnect").as_::<Any>()
     }
 
+    /// Setter of the `onconnect` attribute.
+    /// [`HID.onconnect`](https://developer.mozilla.org/en-US/docs/Web/API/HID/onconnect)
     pub fn set_onconnect(&mut self, value: &Any) {
         self.inner.set("onconnect", value);
     }
 }
 impl HID {
+    /// Getter of the `ondisconnect` attribute.
+    /// [`HID.ondisconnect`](https://developer.mozilla.org/en-US/docs/Web/API/HID/ondisconnect)
     pub fn ondisconnect(&self) -> Any {
         self.inner.get("ondisconnect").as_::<Any>()
     }
 
+    /// Setter of the `ondisconnect` attribute.
+    /// [`HID.ondisconnect`](https://developer.mozilla.org/en-US/docs/Web/API/HID/ondisconnect)
     pub fn set_ondisconnect(&mut self, value: &Any) {
         self.inner.set("ondisconnect", value);
     }
 }
 impl HID {
+    /// The getDevices method.
+    /// [`HID.getDevices`](https://developer.mozilla.org/en-US/docs/Web/API/HID/getDevices)
     pub fn get_devices(&self) -> Promise {
         self.inner.call("getDevices", &[]).as_::<Promise>()
     }
 }
 impl HID {
+    /// The requestDevice method.
+    /// [`HID.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/HID/requestDevice)
     pub fn request_device(&self, options: &HIDDeviceRequestOptions) -> Promise {
         self.inner
             .call("requestDevice", &[options.into()])

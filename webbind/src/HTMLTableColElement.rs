@@ -1,20 +1,22 @@
 use super::*;
 
+/// The HTMLTableColElement class.
+/// [`HTMLTableColElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLTableColElement {
     inner: HTMLElement,
 }
 impl FromVal for HTMLTableColElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HTMLTableColElement {
             inner: HTMLElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,89 +31,114 @@ impl core::ops::DerefMut for HTMLTableColElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HTMLTableColElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HTMLTableColElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HTMLTableColElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HTMLTableColElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HTMLTableColElement> for emlite::Val {
-    fn from(s: HTMLTableColElement) -> emlite::Val {
+impl From<HTMLTableColElement> for Any {
+    fn from(s: HTMLTableColElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HTMLTableColElement> for emlite::Val {
-    fn from(s: &HTMLTableColElement) -> emlite::Val {
+impl From<&HTMLTableColElement> for Any {
+    fn from(s: &HTMLTableColElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLTableColElement);
 
 impl HTMLTableColElement {
+    /// The `new HTMLTableColElement(..)` constructor, creating a new HTMLTableColElement instance
     pub fn new() -> HTMLTableColElement {
         Self {
-            inner: emlite::Val::global("HTMLTableColElement")
+            inner: Any::global("HTMLTableColElement")
                 .new(&[])
                 .as_::<HTMLElement>(),
         }
     }
 }
 impl HTMLTableColElement {
+    /// Getter of the `span` attribute.
+    /// [`HTMLTableColElement.span`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/span)
     pub fn span(&self) -> u32 {
         self.inner.get("span").as_::<u32>()
     }
 
+    /// Setter of the `span` attribute.
+    /// [`HTMLTableColElement.span`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/span)
     pub fn set_span(&mut self, value: u32) {
         self.inner.set("span", value);
     }
 }
 impl HTMLTableColElement {
+    /// Getter of the `align` attribute.
+    /// [`HTMLTableColElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/align)
     pub fn align(&self) -> String {
         self.inner.get("align").as_::<String>()
     }
 
+    /// Setter of the `align` attribute.
+    /// [`HTMLTableColElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/align)
     pub fn set_align(&mut self, value: &str) {
         self.inner.set("align", value);
     }
 }
 impl HTMLTableColElement {
+    /// Getter of the `ch` attribute.
+    /// [`HTMLTableColElement.ch`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/ch)
     pub fn ch(&self) -> String {
         self.inner.get("ch").as_::<String>()
     }
 
+    /// Setter of the `ch` attribute.
+    /// [`HTMLTableColElement.ch`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/ch)
     pub fn set_ch(&mut self, value: &str) {
         self.inner.set("ch", value);
     }
 }
 impl HTMLTableColElement {
+    /// Getter of the `chOff` attribute.
+    /// [`HTMLTableColElement.chOff`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/chOff)
     pub fn ch_off(&self) -> String {
         self.inner.get("chOff").as_::<String>()
     }
 
+    /// Setter of the `chOff` attribute.
+    /// [`HTMLTableColElement.chOff`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/chOff)
     pub fn set_ch_off(&mut self, value: &str) {
         self.inner.set("chOff", value);
     }
 }
 impl HTMLTableColElement {
+    /// Getter of the `vAlign` attribute.
+    /// [`HTMLTableColElement.vAlign`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/vAlign)
     pub fn v_align(&self) -> String {
         self.inner.get("vAlign").as_::<String>()
     }
 
+    /// Setter of the `vAlign` attribute.
+    /// [`HTMLTableColElement.vAlign`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/vAlign)
     pub fn set_v_align(&mut self, value: &str) {
         self.inner.set("vAlign", value);
     }
 }
 impl HTMLTableColElement {
+    /// Getter of the `width` attribute.
+    /// [`HTMLTableColElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/width)
     pub fn width(&self) -> String {
         self.inner.get("width").as_::<String>()
     }
 
+    /// Setter of the `width` attribute.
+    /// [`HTMLTableColElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/width)
     pub fn set_width(&mut self, value: &str) {
         self.inner.set("width", value);
     }

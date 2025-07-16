@@ -1,20 +1,22 @@
 use super::*;
 
+/// The DocumentTimeline class.
+/// [`DocumentTimeline`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentTimeline)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DocumentTimeline {
     inner: AnimationTimeline,
 }
 impl FromVal for DocumentTimeline {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         DocumentTimeline {
             inner: AnimationTimeline::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,42 +31,44 @@ impl core::ops::DerefMut for DocumentTimeline {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for DocumentTimeline {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for DocumentTimeline {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for DocumentTimeline {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for DocumentTimeline {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<DocumentTimeline> for emlite::Val {
-    fn from(s: DocumentTimeline) -> emlite::Val {
+impl From<DocumentTimeline> for Any {
+    fn from(s: DocumentTimeline) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&DocumentTimeline> for emlite::Val {
-    fn from(s: &DocumentTimeline) -> emlite::Val {
+impl From<&DocumentTimeline> for Any {
+    fn from(s: &DocumentTimeline) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(DocumentTimeline);
 
 impl DocumentTimeline {
+    /// The `new DocumentTimeline(..)` constructor, creating a new DocumentTimeline instance
     pub fn new0() -> DocumentTimeline {
         Self {
-            inner: emlite::Val::global("DocumentTimeline")
+            inner: Any::global("DocumentTimeline")
                 .new(&[])
                 .as_::<AnimationTimeline>(),
         }
     }
 
+    /// The `new DocumentTimeline(..)` constructor, creating a new DocumentTimeline instance
     pub fn new1(options: &Any) -> DocumentTimeline {
         Self {
-            inner: emlite::Val::global("DocumentTimeline")
+            inner: Any::global("DocumentTimeline")
                 .new(&[options.into()])
                 .as_::<AnimationTimeline>(),
         }

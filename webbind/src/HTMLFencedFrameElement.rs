@@ -1,20 +1,22 @@
 use super::*;
 
+/// The HTMLFencedFrameElement class.
+/// [`HTMLFencedFrameElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HTMLFencedFrameElement {
     inner: HTMLElement,
 }
 impl FromVal for HTMLFencedFrameElement {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HTMLFencedFrameElement {
             inner: HTMLElement::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,76 +31,95 @@ impl core::ops::DerefMut for HTMLFencedFrameElement {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HTMLFencedFrameElement {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HTMLFencedFrameElement {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HTMLFencedFrameElement {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HTMLFencedFrameElement {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HTMLFencedFrameElement> for emlite::Val {
-    fn from(s: HTMLFencedFrameElement) -> emlite::Val {
+impl From<HTMLFencedFrameElement> for Any {
+    fn from(s: HTMLFencedFrameElement) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HTMLFencedFrameElement> for emlite::Val {
-    fn from(s: &HTMLFencedFrameElement) -> emlite::Val {
+impl From<&HTMLFencedFrameElement> for Any {
+    fn from(s: &HTMLFencedFrameElement) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(HTMLFencedFrameElement);
 
 impl HTMLFencedFrameElement {
+    /// The `new HTMLFencedFrameElement(..)` constructor, creating a new HTMLFencedFrameElement instance
     pub fn new() -> HTMLFencedFrameElement {
         Self {
-            inner: emlite::Val::global("HTMLFencedFrameElement")
+            inner: Any::global("HTMLFencedFrameElement")
                 .new(&[])
                 .as_::<HTMLElement>(),
         }
     }
 }
 impl HTMLFencedFrameElement {
+    /// Getter of the `config` attribute.
+    /// [`HTMLFencedFrameElement.config`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/config)
     pub fn config(&self) -> FencedFrameConfig {
         self.inner.get("config").as_::<FencedFrameConfig>()
     }
 
+    /// Setter of the `config` attribute.
+    /// [`HTMLFencedFrameElement.config`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/config)
     pub fn set_config(&mut self, value: &FencedFrameConfig) {
         self.inner.set("config", value);
     }
 }
 impl HTMLFencedFrameElement {
+    /// Getter of the `width` attribute.
+    /// [`HTMLFencedFrameElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/width)
     pub fn width(&self) -> String {
         self.inner.get("width").as_::<String>()
     }
 
+    /// Setter of the `width` attribute.
+    /// [`HTMLFencedFrameElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/width)
     pub fn set_width(&mut self, value: &str) {
         self.inner.set("width", value);
     }
 }
 impl HTMLFencedFrameElement {
+    /// Getter of the `height` attribute.
+    /// [`HTMLFencedFrameElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/height)
     pub fn height(&self) -> String {
         self.inner.get("height").as_::<String>()
     }
 
+    /// Setter of the `height` attribute.
+    /// [`HTMLFencedFrameElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/height)
     pub fn set_height(&mut self, value: &str) {
         self.inner.set("height", value);
     }
 }
 impl HTMLFencedFrameElement {
+    /// Getter of the `sandbox` attribute.
+    /// [`HTMLFencedFrameElement.sandbox`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/sandbox)
     pub fn sandbox(&self) -> DOMTokenList {
         self.inner.get("sandbox").as_::<DOMTokenList>()
     }
 }
 impl HTMLFencedFrameElement {
+    /// Getter of the `allow` attribute.
+    /// [`HTMLFencedFrameElement.allow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/allow)
     pub fn allow(&self) -> String {
         self.inner.get("allow").as_::<String>()
     }
 
+    /// Setter of the `allow` attribute.
+    /// [`HTMLFencedFrameElement.allow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/allow)
     pub fn set_allow(&mut self, value: &str) {
         self.inner.set("allow", value);
     }

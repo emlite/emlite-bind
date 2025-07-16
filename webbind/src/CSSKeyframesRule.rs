@@ -1,20 +1,22 @@
 use super::*;
 
+/// The CSSKeyframesRule class.
+/// [`CSSKeyframesRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSKeyframesRule {
     inner: CSSRule,
 }
 impl FromVal for CSSKeyframesRule {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSKeyframesRule {
             inner: CSSRule::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,50 +31,60 @@ impl core::ops::DerefMut for CSSKeyframesRule {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSKeyframesRule {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSKeyframesRule {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSKeyframesRule {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSKeyframesRule {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSKeyframesRule> for emlite::Val {
-    fn from(s: CSSKeyframesRule) -> emlite::Val {
+impl From<CSSKeyframesRule> for Any {
+    fn from(s: CSSKeyframesRule) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSKeyframesRule> for emlite::Val {
-    fn from(s: &CSSKeyframesRule) -> emlite::Val {
+impl From<&CSSKeyframesRule> for Any {
+    fn from(s: &CSSKeyframesRule) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSKeyframesRule);
 
 impl CSSKeyframesRule {
+    /// Getter of the `name` attribute.
+    /// [`CSSKeyframesRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule/name)
     pub fn name(&self) -> String {
         self.inner.get("name").as_::<String>()
     }
 
+    /// Setter of the `name` attribute.
+    /// [`CSSKeyframesRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule/name)
     pub fn set_name(&mut self, value: &str) {
         self.inner.set("name", value);
     }
 }
 impl CSSKeyframesRule {
+    /// Getter of the `cssRules` attribute.
+    /// [`CSSKeyframesRule.cssRules`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule/cssRules)
     pub fn css_rules(&self) -> CSSRuleList {
         self.inner.get("cssRules").as_::<CSSRuleList>()
     }
 }
 impl CSSKeyframesRule {
+    /// Getter of the `length` attribute.
+    /// [`CSSKeyframesRule.length`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }
 }
 impl CSSKeyframesRule {
+    /// The appendRule method.
+    /// [`CSSKeyframesRule.appendRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule/appendRule)
     pub fn append_rule(&self, rule: &str) -> Undefined {
         self.inner
             .call("appendRule", &[rule.into()])
@@ -80,6 +92,8 @@ impl CSSKeyframesRule {
     }
 }
 impl CSSKeyframesRule {
+    /// The deleteRule method.
+    /// [`CSSKeyframesRule.deleteRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule/deleteRule)
     pub fn delete_rule(&self, select: &str) -> Undefined {
         self.inner
             .call("deleteRule", &[select.into()])
@@ -87,6 +101,8 @@ impl CSSKeyframesRule {
     }
 }
 impl CSSKeyframesRule {
+    /// The findRule method.
+    /// [`CSSKeyframesRule.findRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule/findRule)
     pub fn find_rule(&self, select: &str) -> CSSKeyframeRule {
         self.inner
             .call("findRule", &[select.into()])

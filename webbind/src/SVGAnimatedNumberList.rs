@@ -1,25 +1,27 @@
 use super::*;
 
+/// The SVGAnimatedNumberList class.
+/// [`SVGAnimatedNumberList`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedNumberList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct SVGAnimatedNumberList {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for SVGAnimatedNumberList {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         SVGAnimatedNumberList {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for SVGAnimatedNumberList {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for SVGAnimatedNumberList {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for SVGAnimatedNumberList {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for SVGAnimatedNumberList {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for SVGAnimatedNumberList {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for SVGAnimatedNumberList {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<SVGAnimatedNumberList> for emlite::Val {
-    fn from(s: SVGAnimatedNumberList) -> emlite::Val {
+impl From<SVGAnimatedNumberList> for Any {
+    fn from(s: SVGAnimatedNumberList) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&SVGAnimatedNumberList> for emlite::Val {
-    fn from(s: &SVGAnimatedNumberList) -> emlite::Val {
+impl From<&SVGAnimatedNumberList> for Any {
+    fn from(s: &SVGAnimatedNumberList) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(SVGAnimatedNumberList);
 
 impl SVGAnimatedNumberList {
+    /// Getter of the `baseVal` attribute.
+    /// [`SVGAnimatedNumberList.baseVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedNumberList/baseVal)
     pub fn base_val(&self) -> SVGNumberList {
         self.inner.get("baseVal").as_::<SVGNumberList>()
     }
 }
 impl SVGAnimatedNumberList {
+    /// Getter of the `animVal` attribute.
+    /// [`SVGAnimatedNumberList.animVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedNumberList/animVal)
     pub fn anim_val(&self) -> SVGNumberList {
         self.inner.get("animVal").as_::<SVGNumberList>()
     }

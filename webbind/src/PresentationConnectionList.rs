@@ -1,20 +1,22 @@
 use super::*;
 
+/// The PresentationConnectionList class.
+/// [`PresentationConnectionList`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnectionList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PresentationConnectionList {
     inner: EventTarget,
 }
 impl FromVal for PresentationConnectionList {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PresentationConnectionList {
             inner: EventTarget::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for PresentationConnectionList {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PresentationConnectionList {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PresentationConnectionList {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PresentationConnectionList {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PresentationConnectionList {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PresentationConnectionList> for emlite::Val {
-    fn from(s: PresentationConnectionList) -> emlite::Val {
+impl From<PresentationConnectionList> for Any {
+    fn from(s: PresentationConnectionList) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PresentationConnectionList> for emlite::Val {
-    fn from(s: &PresentationConnectionList) -> emlite::Val {
+impl From<&PresentationConnectionList> for Any {
+    fn from(s: &PresentationConnectionList) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PresentationConnectionList);
 
 impl PresentationConnectionList {
+    /// Getter of the `connections` attribute.
+    /// [`PresentationConnectionList.connections`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnectionList/connections)
     pub fn connections(&self) -> FrozenArray<PresentationConnection> {
         self.inner
             .get("connections")
@@ -61,10 +65,14 @@ impl PresentationConnectionList {
     }
 }
 impl PresentationConnectionList {
+    /// Getter of the `onconnectionavailable` attribute.
+    /// [`PresentationConnectionList.onconnectionavailable`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnectionList/onconnectionavailable)
     pub fn onconnectionavailable(&self) -> Any {
         self.inner.get("onconnectionavailable").as_::<Any>()
     }
 
+    /// Setter of the `onconnectionavailable` attribute.
+    /// [`PresentationConnectionList.onconnectionavailable`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnectionList/onconnectionavailable)
     pub fn set_onconnectionavailable(&mut self, value: &Any) {
         self.inner.set("onconnectionavailable", value);
     }

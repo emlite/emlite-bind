@@ -1,25 +1,27 @@
 use super::*;
 
+/// The NodeList class.
+/// [`NodeList`](https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NodeList {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for NodeList {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         NodeList {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for NodeList {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,36 +31,40 @@ impl core::ops::DerefMut for NodeList {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for NodeList {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for NodeList {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for NodeList {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for NodeList {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<NodeList> for emlite::Val {
-    fn from(s: NodeList) -> emlite::Val {
+impl From<NodeList> for Any {
+    fn from(s: NodeList) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&NodeList> for emlite::Val {
-    fn from(s: &NodeList) -> emlite::Val {
+impl From<&NodeList> for Any {
+    fn from(s: &NodeList) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(NodeList);
 
 impl NodeList {
+    /// The item method.
+    /// [`NodeList.item`](https://developer.mozilla.org/en-US/docs/Web/API/NodeList/item)
     pub fn item(&self, index: u32) -> Node {
         self.inner.call("item", &[index.into()]).as_::<Node>()
     }
 }
 impl NodeList {
+    /// Getter of the `length` attribute.
+    /// [`NodeList.length`](https://developer.mozilla.org/en-US/docs/Web/API/NodeList/length)
     pub fn length(&self) -> u32 {
         self.inner.get("length").as_::<u32>()
     }

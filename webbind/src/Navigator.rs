@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MediaKeySystemConfiguration {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MediaKeySystemConfiguration {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MediaKeySystemConfiguration { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MediaKeySystemConfiguration {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for MediaKeySystemConfiguration {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MediaKeySystemConfiguration {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MediaKeySystemConfiguration {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MediaKeySystemConfiguration {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MediaKeySystemConfiguration {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MediaKeySystemConfiguration> for emlite::Val {
-    fn from(s: MediaKeySystemConfiguration) -> emlite::Val {
+impl From<MediaKeySystemConfiguration> for Any {
+    fn from(s: MediaKeySystemConfiguration) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MediaKeySystemConfiguration> for emlite::Val {
-    fn from(s: &MediaKeySystemConfiguration) -> emlite::Val {
+impl From<&MediaKeySystemConfiguration> for Any {
+    fn from(s: &MediaKeySystemConfiguration) -> Any {
         s.inner.clone()
     }
 }
@@ -120,21 +120,21 @@ impl MediaKeySystemConfiguration {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct RelatedApplication {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for RelatedApplication {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         RelatedApplication { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for RelatedApplication {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -144,25 +144,25 @@ impl core::ops::DerefMut for RelatedApplication {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for RelatedApplication {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for RelatedApplication {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for RelatedApplication {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for RelatedApplication {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<RelatedApplication> for emlite::Val {
-    fn from(s: RelatedApplication) -> emlite::Val {
+impl From<RelatedApplication> for Any {
+    fn from(s: RelatedApplication) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&RelatedApplication> for emlite::Val {
-    fn from(s: &RelatedApplication) -> emlite::Val {
+impl From<&RelatedApplication> for Any {
+    fn from(s: &RelatedApplication) -> Any {
         s.inner.clone()
     }
 }
@@ -206,21 +206,21 @@ impl RelatedApplication {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HandwritingRecognizerQueryResult {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for HandwritingRecognizerQueryResult {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HandwritingRecognizerQueryResult { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for HandwritingRecognizerQueryResult {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -230,25 +230,25 @@ impl core::ops::DerefMut for HandwritingRecognizerQueryResult {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HandwritingRecognizerQueryResult {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HandwritingRecognizerQueryResult {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HandwritingRecognizerQueryResult {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HandwritingRecognizerQueryResult {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HandwritingRecognizerQueryResult> for emlite::Val {
-    fn from(s: HandwritingRecognizerQueryResult) -> emlite::Val {
+impl From<HandwritingRecognizerQueryResult> for Any {
+    fn from(s: HandwritingRecognizerQueryResult) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HandwritingRecognizerQueryResult> for emlite::Val {
-    fn from(s: &HandwritingRecognizerQueryResult) -> emlite::Val {
+impl From<&HandwritingRecognizerQueryResult> for Any {
+    fn from(s: &HandwritingRecognizerQueryResult) -> Any {
         s.inner.clone()
     }
 }
@@ -283,21 +283,21 @@ impl HandwritingRecognizerQueryResult {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct HandwritingModelConstraint {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for HandwritingModelConstraint {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         HandwritingModelConstraint { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for HandwritingModelConstraint {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -307,25 +307,25 @@ impl core::ops::DerefMut for HandwritingModelConstraint {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for HandwritingModelConstraint {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for HandwritingModelConstraint {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for HandwritingModelConstraint {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for HandwritingModelConstraint {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<HandwritingModelConstraint> for emlite::Val {
-    fn from(s: HandwritingModelConstraint) -> emlite::Val {
+impl From<HandwritingModelConstraint> for Any {
+    fn from(s: HandwritingModelConstraint) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&HandwritingModelConstraint> for emlite::Val {
-    fn from(s: &HandwritingModelConstraint) -> emlite::Val {
+impl From<&HandwritingModelConstraint> for Any {
+    fn from(s: &HandwritingModelConstraint) -> Any {
         s.inner.clone()
     }
 }
@@ -342,21 +342,21 @@ impl HandwritingModelConstraint {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AuctionAdInterestGroup {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for AuctionAdInterestGroup {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AuctionAdInterestGroup { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for AuctionAdInterestGroup {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -366,25 +366,25 @@ impl core::ops::DerefMut for AuctionAdInterestGroup {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AuctionAdInterestGroup {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AuctionAdInterestGroup {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AuctionAdInterestGroup {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AuctionAdInterestGroup {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AuctionAdInterestGroup> for emlite::Val {
-    fn from(s: AuctionAdInterestGroup) -> emlite::Val {
+impl From<AuctionAdInterestGroup> for Any {
+    fn from(s: AuctionAdInterestGroup) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AuctionAdInterestGroup> for emlite::Val {
-    fn from(s: &AuctionAdInterestGroup) -> emlite::Val {
+impl From<&AuctionAdInterestGroup> for Any {
+    fn from(s: &AuctionAdInterestGroup) -> Any {
         s.inner.clone()
     }
 }
@@ -439,21 +439,21 @@ impl AuctionAdInterestGroup {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AuctionAdInterestGroupKey {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for AuctionAdInterestGroupKey {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AuctionAdInterestGroupKey { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for AuctionAdInterestGroupKey {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -463,25 +463,25 @@ impl core::ops::DerefMut for AuctionAdInterestGroupKey {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AuctionAdInterestGroupKey {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AuctionAdInterestGroupKey {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AuctionAdInterestGroupKey {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AuctionAdInterestGroupKey {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AuctionAdInterestGroupKey> for emlite::Val {
-    fn from(s: AuctionAdInterestGroupKey) -> emlite::Val {
+impl From<AuctionAdInterestGroupKey> for Any {
+    fn from(s: AuctionAdInterestGroupKey) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AuctionAdInterestGroupKey> for emlite::Val {
-    fn from(s: &AuctionAdInterestGroupKey) -> emlite::Val {
+impl From<&AuctionAdInterestGroupKey> for Any {
+    fn from(s: &AuctionAdInterestGroupKey) -> Any {
         s.inner.clone()
     }
 }
@@ -507,21 +507,21 @@ impl AuctionAdInterestGroupKey {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AuctionAdConfig {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for AuctionAdConfig {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AuctionAdConfig { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for AuctionAdConfig {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -531,25 +531,25 @@ impl core::ops::DerefMut for AuctionAdConfig {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AuctionAdConfig {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AuctionAdConfig {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AuctionAdConfig {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AuctionAdConfig {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AuctionAdConfig> for emlite::Val {
-    fn from(s: AuctionAdConfig) -> emlite::Val {
+impl From<AuctionAdConfig> for Any {
+    fn from(s: AuctionAdConfig) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AuctionAdConfig> for emlite::Val {
-    fn from(s: &AuctionAdConfig) -> emlite::Val {
+impl From<&AuctionAdConfig> for Any {
+    fn from(s: &AuctionAdConfig) -> Any {
         s.inner.clone()
     }
 }
@@ -944,21 +944,21 @@ impl AuctionAdConfig {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AdAuctionData {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for AdAuctionData {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AdAuctionData { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for AdAuctionData {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -968,25 +968,25 @@ impl core::ops::DerefMut for AdAuctionData {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AdAuctionData {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AdAuctionData {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AdAuctionData {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AdAuctionData {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AdAuctionData> for emlite::Val {
-    fn from(s: AdAuctionData) -> emlite::Val {
+impl From<AdAuctionData> for Any {
+    fn from(s: AdAuctionData) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AdAuctionData> for emlite::Val {
-    fn from(s: &AdAuctionData) -> emlite::Val {
+impl From<&AdAuctionData> for Any {
+    fn from(s: &AdAuctionData) -> Any {
         s.inner.clone()
     }
 }
@@ -1021,21 +1021,21 @@ impl AdAuctionData {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AdAuctionDataConfig {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for AdAuctionDataConfig {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AdAuctionDataConfig { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for AdAuctionDataConfig {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -1045,25 +1045,25 @@ impl core::ops::DerefMut for AdAuctionDataConfig {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AdAuctionDataConfig {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AdAuctionDataConfig {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AdAuctionDataConfig {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AdAuctionDataConfig {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AdAuctionDataConfig> for emlite::Val {
-    fn from(s: AdAuctionDataConfig) -> emlite::Val {
+impl From<AdAuctionDataConfig> for Any {
+    fn from(s: AdAuctionDataConfig) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AdAuctionDataConfig> for emlite::Val {
-    fn from(s: &AdAuctionDataConfig) -> emlite::Val {
+impl From<&AdAuctionDataConfig> for Any {
+    fn from(s: &AdAuctionDataConfig) -> Any {
         s.inner.clone()
     }
 }
@@ -1118,21 +1118,21 @@ impl AdAuctionDataConfig {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ShareData {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ShareData {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ShareData { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ShareData {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -1142,25 +1142,25 @@ impl core::ops::DerefMut for ShareData {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ShareData {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ShareData {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ShareData {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ShareData {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ShareData> for emlite::Val {
-    fn from(s: ShareData) -> emlite::Val {
+impl From<ShareData> for Any {
+    fn from(s: ShareData) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ShareData> for emlite::Val {
-    fn from(s: &ShareData) -> emlite::Val {
+impl From<&ShareData> for Any {
+    fn from(s: &ShareData) -> Any {
         s.inner.clone()
     }
 }
@@ -1204,21 +1204,21 @@ impl ShareData {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MIDIOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MIDIOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MIDIOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MIDIOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -1228,25 +1228,25 @@ impl core::ops::DerefMut for MIDIOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MIDIOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MIDIOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MIDIOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MIDIOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MIDIOptions> for emlite::Val {
-    fn from(s: MIDIOptions) -> emlite::Val {
+impl From<MIDIOptions> for Any {
+    fn from(s: MIDIOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MIDIOptions> for emlite::Val {
-    fn from(s: &MIDIOptions) -> emlite::Val {
+impl From<&MIDIOptions> for Any {
+    fn from(s: &MIDIOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -1269,26 +1269,28 @@ impl MIDIOptions {
         self.inner.set("software", value);
     }
 }
+/// The Navigator class.
+/// [`Navigator`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct Navigator {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for Navigator {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         Navigator {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for Navigator {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -1298,36 +1300,40 @@ impl core::ops::DerefMut for Navigator {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for Navigator {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for Navigator {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for Navigator {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for Navigator {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<Navigator> for emlite::Val {
-    fn from(s: Navigator) -> emlite::Val {
+impl From<Navigator> for Any {
+    fn from(s: Navigator) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&Navigator> for emlite::Val {
-    fn from(s: &Navigator) -> emlite::Val {
+impl From<&Navigator> for Any {
+    fn from(s: &Navigator) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(Navigator);
 
 impl Navigator {
+    /// Getter of the `audioSession` attribute.
+    /// [`Navigator.audioSession`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/audioSession)
     pub fn audio_session(&self) -> AudioSession {
         self.inner.get("audioSession").as_::<AudioSession>()
     }
 }
 impl Navigator {
+    /// The getAutoplayPolicy method.
+    /// [`Navigator.getAutoplayPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getAutoplayPolicy)
     pub fn get_autoplay_policy(&self, context: &AudioContext) -> AutoplayPolicy {
         self.inner
             .call("getAutoplayPolicy", &[context.into()])
@@ -1335,15 +1341,20 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The getBattery method.
+    /// [`Navigator.getBattery`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getBattery)
     pub fn get_battery(&self) -> Promise {
         self.inner.call("getBattery", &[]).as_::<Promise>()
     }
 }
 impl Navigator {
+    /// The sendBeacon method.
+    /// [`Navigator.sendBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon)
     pub fn send_beacon0(&self, url: &str) -> bool {
         self.inner.call("sendBeacon", &[url.into()]).as_::<bool>()
     }
-
+    /// The sendBeacon method.
+    /// [`Navigator.sendBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon)
     pub fn send_beacon1(&self, url: &str, data: &Any) -> bool {
         self.inner
             .call("sendBeacon", &[url.into(), data.into()])
@@ -1351,26 +1362,36 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// Getter of the `clipboard` attribute.
+    /// [`Navigator.clipboard`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clipboard)
     pub fn clipboard(&self) -> Clipboard {
         self.inner.get("clipboard").as_::<Clipboard>()
     }
 }
 impl Navigator {
+    /// Getter of the `contacts` attribute.
+    /// [`Navigator.contacts`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/contacts)
     pub fn contacts(&self) -> ContactsManager {
         self.inner.get("contacts").as_::<ContactsManager>()
     }
 }
 impl Navigator {
+    /// Getter of the `credentials` attribute.
+    /// [`Navigator.credentials`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/credentials)
     pub fn credentials(&self) -> CredentialsContainer {
         self.inner.get("credentials").as_::<CredentialsContainer>()
     }
 }
 impl Navigator {
+    /// Getter of the `devicePosture` attribute.
+    /// [`Navigator.devicePosture`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/devicePosture)
     pub fn device_posture(&self) -> DevicePosture {
         self.inner.get("devicePosture").as_::<DevicePosture>()
     }
 }
 impl Navigator {
+    /// The requestMediaKeySystemAccess method.
+    /// [`Navigator.requestMediaKeySystemAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/requestMediaKeySystemAccess)
     pub fn request_media_key_system_access(
         &self,
         key_system: &str,
@@ -1385,6 +1406,8 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The deprecatedReplaceInURN method.
+    /// [`Navigator.deprecatedReplaceInURN`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedReplaceInURN)
     pub fn deprecated_replace_in_urn(
         &self,
         urn_or_config: &Any,
@@ -1399,12 +1422,15 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The deprecatedURNtoURL method.
+    /// [`Navigator.deprecatedURNtoURL`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedURNtoURL)
     pub fn deprecated_ur_nto_url0(&self, urn_or_config: &Any) -> Promise {
         self.inner
             .call("deprecatedURNtoURL", &[urn_or_config.into()])
             .as_::<Promise>()
     }
-
+    /// The deprecatedURNtoURL method.
+    /// [`Navigator.deprecatedURNtoURL`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedURNtoURL)
     pub fn deprecated_ur_nto_url1(&self, urn_or_config: &Any, send_reports: bool) -> Promise {
         self.inner
             .call(
@@ -1415,6 +1441,8 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The adAuctionComponents method.
+    /// [`Navigator.adAuctionComponents`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/adAuctionComponents)
     pub fn ad_auction_components(&self, num_ad_components: u16) -> Sequence<String> {
         self.inner
             .call("adAuctionComponents", &[num_ad_components.into()])
@@ -1422,6 +1450,8 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The getGamepads method.
+    /// [`Navigator.getGamepads`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getGamepads)
     pub fn get_gamepads(&self) -> Sequence<Gamepad> {
         self.inner
             .call("getGamepads", &[])
@@ -1429,11 +1459,15 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// Getter of the `geolocation` attribute.
+    /// [`Navigator.geolocation`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/geolocation)
     pub fn geolocation(&self) -> Geolocation {
         self.inner.get("geolocation").as_::<Geolocation>()
     }
 }
 impl Navigator {
+    /// The getInstalledRelatedApps method.
+    /// [`Navigator.getInstalledRelatedApps`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getInstalledRelatedApps)
     pub fn get_installed_related_apps(&self) -> Promise {
         self.inner
             .call("getInstalledRelatedApps", &[])
@@ -1441,6 +1475,8 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The queryHandwritingRecognizer method.
+    /// [`Navigator.queryHandwritingRecognizer`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/queryHandwritingRecognizer)
     pub fn query_handwriting_recognizer(&self, constraint: &HandwritingModelConstraint) -> Promise {
         self.inner
             .call("queryHandwritingRecognizer", &[constraint.into()])
@@ -1448,6 +1484,8 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The createHandwritingRecognizer method.
+    /// [`Navigator.createHandwritingRecognizer`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/createHandwritingRecognizer)
     pub fn create_handwriting_recognizer(
         &self,
         constraint: &HandwritingModelConstraint,
@@ -1458,36 +1496,50 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// Getter of the `userActivation` attribute.
+    /// [`Navigator.userActivation`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/userActivation)
     pub fn user_activation(&self) -> UserActivation {
         self.inner.get("userActivation").as_::<UserActivation>()
     }
 }
 impl Navigator {
+    /// Getter of the `ink` attribute.
+    /// [`Navigator.ink`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/ink)
     pub fn ink(&self) -> Ink {
         self.inner.get("ink").as_::<Ink>()
     }
 }
 impl Navigator {
+    /// Getter of the `scheduling` attribute.
+    /// [`Navigator.scheduling`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/scheduling)
     pub fn scheduling(&self) -> Scheduling {
         self.inner.get("scheduling").as_::<Scheduling>()
     }
 }
 impl Navigator {
+    /// Getter of the `keyboard` attribute.
+    /// [`Navigator.keyboard`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/keyboard)
     pub fn keyboard(&self) -> Keyboard {
         self.inner.get("keyboard").as_::<Keyboard>()
     }
 }
 impl Navigator {
+    /// Getter of the `login` attribute.
+    /// [`Navigator.login`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/login)
     pub fn login(&self) -> NavigatorLogin {
         self.inner.get("login").as_::<NavigatorLogin>()
     }
 }
 impl Navigator {
+    /// Getter of the `managed` attribute.
+    /// [`Navigator.managed`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/managed)
     pub fn managed(&self) -> NavigatorManagedData {
         self.inner.get("managed").as_::<NavigatorManagedData>()
     }
 }
 impl Navigator {
+    /// Getter of the `mediaCapabilities` attribute.
+    /// [`Navigator.mediaCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/mediaCapabilities)
     pub fn media_capabilities(&self) -> MediaCapabilities {
         self.inner
             .get("mediaCapabilities")
@@ -1495,51 +1547,71 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// Getter of the `mediaDevices` attribute.
+    /// [`Navigator.mediaDevices`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/mediaDevices)
     pub fn media_devices(&self) -> MediaDevices {
         self.inner.get("mediaDevices").as_::<MediaDevices>()
     }
 }
 impl Navigator {
+    /// Getter of the `preferences` attribute.
+    /// [`Navigator.preferences`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/preferences)
     pub fn preferences(&self) -> PreferenceManager {
         self.inner.get("preferences").as_::<PreferenceManager>()
     }
 }
 impl Navigator {
+    /// Getter of the `mediaSession` attribute.
+    /// [`Navigator.mediaSession`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/mediaSession)
     pub fn media_session(&self) -> MediaSession {
         self.inner.get("mediaSession").as_::<MediaSession>()
     }
 }
 impl Navigator {
+    /// Getter of the `permissions` attribute.
+    /// [`Navigator.permissions`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/permissions)
     pub fn permissions(&self) -> Permissions {
         self.inner.get("permissions").as_::<Permissions>()
     }
 }
 impl Navigator {
+    /// Getter of the `maxTouchPoints` attribute.
+    /// [`Navigator.maxTouchPoints`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/maxTouchPoints)
     pub fn max_touch_points(&self) -> i32 {
         self.inner.get("maxTouchPoints").as_::<i32>()
     }
 }
 impl Navigator {
+    /// Getter of the `presentation` attribute.
+    /// [`Navigator.presentation`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/presentation)
     pub fn presentation(&self) -> Presentation {
         self.inner.get("presentation").as_::<Presentation>()
     }
 }
 impl Navigator {
+    /// Getter of the `attribution` attribute.
+    /// [`Navigator.attribution`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/attribution)
     pub fn attribution(&self) -> Attribution {
         self.inner.get("attribution").as_::<Attribution>()
     }
 }
 impl Navigator {
+    /// Getter of the `wakeLock` attribute.
+    /// [`Navigator.wakeLock`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/wakeLock)
     pub fn wake_lock(&self) -> WakeLock {
         self.inner.get("wakeLock").as_::<WakeLock>()
     }
 }
 impl Navigator {
+    /// Getter of the `serial` attribute.
+    /// [`Navigator.serial`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/serial)
     pub fn serial(&self) -> Serial {
         self.inner.get("serial").as_::<Serial>()
     }
 }
 impl Navigator {
+    /// Getter of the `serviceWorker` attribute.
+    /// [`Navigator.serviceWorker`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/serviceWorker)
     pub fn service_worker(&self) -> ServiceWorkerContainer {
         self.inner
             .get("serviceWorker")
@@ -1547,6 +1619,8 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The joinAdInterestGroup method.
+    /// [`Navigator.joinAdInterestGroup`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/joinAdInterestGroup)
     pub fn join_ad_interest_group(&self, group: &AuctionAdInterestGroup) -> Promise {
         self.inner
             .call("joinAdInterestGroup", &[group.into()])
@@ -1554,12 +1628,15 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The leaveAdInterestGroup method.
+    /// [`Navigator.leaveAdInterestGroup`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/leaveAdInterestGroup)
     pub fn leave_ad_interest_group0(&self) -> Promise {
         self.inner
             .call("leaveAdInterestGroup", &[])
             .as_::<Promise>()
     }
-
+    /// The leaveAdInterestGroup method.
+    /// [`Navigator.leaveAdInterestGroup`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/leaveAdInterestGroup)
     pub fn leave_ad_interest_group1(&self, group: &AuctionAdInterestGroupKey) -> Promise {
         self.inner
             .call("leaveAdInterestGroup", &[group.into()])
@@ -1567,12 +1644,15 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The clearOriginJoinedAdInterestGroups method.
+    /// [`Navigator.clearOriginJoinedAdInterestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearOriginJoinedAdInterestGroups)
     pub fn clear_origin_joined_ad_interest_groups0(&self, owner: &str) -> Promise {
         self.inner
             .call("clearOriginJoinedAdInterestGroups", &[owner.into()])
             .as_::<Promise>()
     }
-
+    /// The clearOriginJoinedAdInterestGroups method.
+    /// [`Navigator.clearOriginJoinedAdInterestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearOriginJoinedAdInterestGroups)
     pub fn clear_origin_joined_ad_interest_groups1(
         &self,
         owner: &str,
@@ -1587,6 +1667,8 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The runAdAuction method.
+    /// [`Navigator.runAdAuction`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/runAdAuction)
     pub fn run_ad_auction(&self, config: &AuctionAdConfig) -> Promise {
         self.inner
             .call("runAdAuction", &[config.into()])
@@ -1594,6 +1676,8 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// Getter of the `deprecatedRunAdAuctionEnforcesKAnonymity` attribute.
+    /// [`Navigator.deprecatedRunAdAuctionEnforcesKAnonymity`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedRunAdAuctionEnforcesKAnonymity)
     pub fn deprecated_run_ad_auction_enforces_k_anonymity(&self) -> bool {
         self.inner
             .get("deprecatedRunAdAuctionEnforcesKAnonymity")
@@ -1601,6 +1685,8 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The canLoadAdAuctionFencedFrame method.
+    /// [`Navigator.canLoadAdAuctionFencedFrame`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canLoadAdAuctionFencedFrame)
     pub fn can_load_ad_auction_fenced_frame(&self) -> bool {
         self.inner
             .call("canLoadAdAuctionFencedFrame", &[])
@@ -1608,12 +1694,15 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The getInterestGroupAdAuctionData method.
+    /// [`Navigator.getInterestGroupAdAuctionData`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getInterestGroupAdAuctionData)
     pub fn get_interest_group_ad_auction_data0(&self) -> Promise {
         self.inner
             .call("getInterestGroupAdAuctionData", &[])
             .as_::<Promise>()
     }
-
+    /// The getInterestGroupAdAuctionData method.
+    /// [`Navigator.getInterestGroupAdAuctionData`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getInterestGroupAdAuctionData)
     pub fn get_interest_group_ad_auction_data1(&self, config: &AdAuctionDataConfig) -> Promise {
         self.inner
             .call("getInterestGroupAdAuctionData", &[config.into()])
@@ -1621,11 +1710,15 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The createAuctionNonce method.
+    /// [`Navigator.createAuctionNonce`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/createAuctionNonce)
     pub fn create_auction_nonce(&self) -> Promise {
         self.inner.call("createAuctionNonce", &[]).as_::<Promise>()
     }
 }
 impl Navigator {
+    /// The updateAdInterestGroups method.
+    /// [`Navigator.updateAdInterestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/updateAdInterestGroups)
     pub fn update_ad_interest_groups(&self) -> Undefined {
         self.inner
             .call("updateAdInterestGroups", &[])
@@ -1633,6 +1726,8 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// Getter of the `protectedAudience` attribute.
+    /// [`Navigator.protectedAudience`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/protectedAudience)
     pub fn protected_audience(&self) -> ProtectedAudience {
         self.inner
             .get("protectedAudience")
@@ -1640,48 +1735,65 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The vibrate method.
+    /// [`Navigator.vibrate`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/vibrate)
     pub fn vibrate(&self, pattern: &Any) -> bool {
         self.inner.call("vibrate", &[pattern.into()]).as_::<bool>()
     }
 }
 impl Navigator {
+    /// Getter of the `virtualKeyboard` attribute.
+    /// [`Navigator.virtualKeyboard`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/virtualKeyboard)
     pub fn virtual_keyboard(&self) -> VirtualKeyboard {
         self.inner.get("virtualKeyboard").as_::<VirtualKeyboard>()
     }
 }
 impl Navigator {
+    /// Getter of the `bluetooth` attribute.
+    /// [`Navigator.bluetooth`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/bluetooth)
     pub fn bluetooth(&self) -> Bluetooth {
         self.inner.get("bluetooth").as_::<Bluetooth>()
     }
 }
 impl Navigator {
+    /// The share method.
+    /// [`Navigator.share`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
     pub fn share0(&self) -> Promise {
         self.inner.call("share", &[]).as_::<Promise>()
     }
-
+    /// The share method.
+    /// [`Navigator.share`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
     pub fn share1(&self, data: &ShareData) -> Promise {
         self.inner.call("share", &[data.into()]).as_::<Promise>()
     }
 }
 impl Navigator {
+    /// The canShare method.
+    /// [`Navigator.canShare`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canShare)
     pub fn can_share0(&self) -> bool {
         self.inner.call("canShare", &[]).as_::<bool>()
     }
-
+    /// The canShare method.
+    /// [`Navigator.canShare`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canShare)
     pub fn can_share1(&self, data: &ShareData) -> bool {
         self.inner.call("canShare", &[data.into()]).as_::<bool>()
     }
 }
 impl Navigator {
+    /// Getter of the `hid` attribute.
+    /// [`Navigator.hid`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/hid)
     pub fn hid(&self) -> HID {
         self.inner.get("hid").as_::<HID>()
     }
 }
 impl Navigator {
+    /// The requestMIDIAccess method.
+    /// [`Navigator.requestMIDIAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/requestMIDIAccess)
     pub fn request_midi_access0(&self) -> Promise {
         self.inner.call("requestMIDIAccess", &[]).as_::<Promise>()
     }
-
+    /// The requestMIDIAccess method.
+    /// [`Navigator.requestMIDIAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/requestMIDIAccess)
     pub fn request_midi_access1(&self, options: &MIDIOptions) -> Promise {
         self.inner
             .call("requestMIDIAccess", &[options.into()])
@@ -1689,16 +1801,22 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// Getter of the `usb` attribute.
+    /// [`Navigator.usb`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/usb)
     pub fn usb(&self) -> USB {
         self.inner.get("usb").as_::<USB>()
     }
 }
 impl Navigator {
+    /// Getter of the `xr` attribute.
+    /// [`Navigator.xr`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/xr)
     pub fn xr(&self) -> XRSystem {
         self.inner.get("xr").as_::<XRSystem>()
     }
 }
 impl Navigator {
+    /// Getter of the `windowControlsOverlay` attribute.
+    /// [`Navigator.windowControlsOverlay`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/windowControlsOverlay)
     pub fn window_controls_overlay(&self) -> WindowControlsOverlay {
         self.inner
             .get("windowControlsOverlay")
@@ -1706,10 +1824,13 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The setAppBadge method.
+    /// [`Navigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/setAppBadge)
     pub fn set_app_badge0(&self) -> Promise {
         self.inner.call("setAppBadge", &[]).as_::<Promise>()
     }
-
+    /// The setAppBadge method.
+    /// [`Navigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/setAppBadge)
     pub fn set_app_badge1(&self, contents: u64) -> Promise {
         self.inner
             .call("setAppBadge", &[contents.into()])
@@ -1717,46 +1838,64 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The clearAppBadge method.
+    /// [`Navigator.clearAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearAppBadge)
     pub fn clear_app_badge(&self) -> Promise {
         self.inner.call("clearAppBadge", &[]).as_::<Promise>()
     }
 }
 impl Navigator {
+    /// Getter of the `deviceMemory` attribute.
+    /// [`Navigator.deviceMemory`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deviceMemory)
     pub fn device_memory(&self) -> f64 {
         self.inner.get("deviceMemory").as_::<f64>()
     }
 }
 impl Navigator {
+    /// Getter of the `globalPrivacyControl` attribute.
+    /// [`Navigator.globalPrivacyControl`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/globalPrivacyControl)
     pub fn global_privacy_control(&self) -> bool {
         self.inner.get("globalPrivacyControl").as_::<bool>()
     }
 }
 impl Navigator {
+    /// The taintEnabled method.
+    /// [`Navigator.taintEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/taintEnabled)
     pub fn taint_enabled(&self) -> bool {
         self.inner.call("taintEnabled", &[]).as_::<bool>()
     }
 }
 impl Navigator {
+    /// Getter of the `oscpu` attribute.
+    /// [`Navigator.oscpu`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/oscpu)
     pub fn oscpu(&self) -> String {
         self.inner.get("oscpu").as_::<String>()
     }
 }
 impl Navigator {
+    /// Getter of the `language` attribute.
+    /// [`Navigator.language`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language)
     pub fn language(&self) -> String {
         self.inner.get("language").as_::<String>()
     }
 }
 impl Navigator {
+    /// Getter of the `languages` attribute.
+    /// [`Navigator.languages`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/languages)
     pub fn languages(&self) -> FrozenArray<String> {
         self.inner.get("languages").as_::<FrozenArray<String>>()
     }
 }
 impl Navigator {
+    /// Getter of the `onLine` attribute.
+    /// [`Navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine)
     pub fn on_line(&self) -> bool {
         self.inner.get("onLine").as_::<bool>()
     }
 }
 impl Navigator {
+    /// The registerProtocolHandler method.
+    /// [`Navigator.registerProtocolHandler`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/registerProtocolHandler)
     pub fn register_protocol_handler(&self, scheme: &str, url: &str) -> Undefined {
         self.inner
             .call("registerProtocolHandler", &[scheme.into(), url.into()])
@@ -1764,6 +1903,8 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// The unregisterProtocolHandler method.
+    /// [`Navigator.unregisterProtocolHandler`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/unregisterProtocolHandler)
     pub fn unregister_protocol_handler(&self, scheme: &str, url: &str) -> Undefined {
         self.inner
             .call("unregisterProtocolHandler", &[scheme.into(), url.into()])
@@ -1771,41 +1912,57 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// Getter of the `cookieEnabled` attribute.
+    /// [`Navigator.cookieEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/cookieEnabled)
     pub fn cookie_enabled(&self) -> bool {
         self.inner.get("cookieEnabled").as_::<bool>()
     }
 }
 impl Navigator {
+    /// Getter of the `plugins` attribute.
+    /// [`Navigator.plugins`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/plugins)
     pub fn plugins(&self) -> PluginArray {
         self.inner.get("plugins").as_::<PluginArray>()
     }
 }
 impl Navigator {
+    /// Getter of the `mimeTypes` attribute.
+    /// [`Navigator.mimeTypes`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/mimeTypes)
     pub fn mime_types(&self) -> MimeTypeArray {
         self.inner.get("mimeTypes").as_::<MimeTypeArray>()
     }
 }
 impl Navigator {
+    /// The javaEnabled method.
+    /// [`Navigator.javaEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/javaEnabled)
     pub fn java_enabled(&self) -> bool {
         self.inner.call("javaEnabled", &[]).as_::<bool>()
     }
 }
 impl Navigator {
+    /// Getter of the `pdfViewerEnabled` attribute.
+    /// [`Navigator.pdfViewerEnabled`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/pdfViewerEnabled)
     pub fn pdf_viewer_enabled(&self) -> bool {
         self.inner.get("pdfViewerEnabled").as_::<bool>()
     }
 }
 impl Navigator {
+    /// Getter of the `hardwareConcurrency` attribute.
+    /// [`Navigator.hardwareConcurrency`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/hardwareConcurrency)
     pub fn hardware_concurrency(&self) -> u64 {
         self.inner.get("hardwareConcurrency").as_::<u64>()
     }
 }
 impl Navigator {
+    /// Getter of the `connection` attribute.
+    /// [`Navigator.connection`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/connection)
     pub fn connection(&self) -> NetworkInformation {
         self.inner.get("connection").as_::<NetworkInformation>()
     }
 }
 impl Navigator {
+    /// Getter of the `storageBuckets` attribute.
+    /// [`Navigator.storageBuckets`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/storageBuckets)
     pub fn storage_buckets(&self) -> StorageBucketManager {
         self.inner
             .get("storageBuckets")
@@ -1813,31 +1970,43 @@ impl Navigator {
     }
 }
 impl Navigator {
+    /// Getter of the `storage` attribute.
+    /// [`Navigator.storage`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/storage)
     pub fn storage(&self) -> StorageManager {
         self.inner.get("storage").as_::<StorageManager>()
     }
 }
 impl Navigator {
+    /// Getter of the `userAgentData` attribute.
+    /// [`Navigator.userAgentData`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/userAgentData)
     pub fn user_agent_data(&self) -> NavigatorUAData {
         self.inner.get("userAgentData").as_::<NavigatorUAData>()
     }
 }
 impl Navigator {
+    /// Getter of the `locks` attribute.
+    /// [`Navigator.locks`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/locks)
     pub fn locks(&self) -> LockManager {
         self.inner.get("locks").as_::<LockManager>()
     }
 }
 impl Navigator {
+    /// Getter of the `webdriver` attribute.
+    /// [`Navigator.webdriver`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/webdriver)
     pub fn webdriver(&self) -> bool {
         self.inner.get("webdriver").as_::<bool>()
     }
 }
 impl Navigator {
+    /// Getter of the `gpu` attribute.
+    /// [`Navigator.gpu`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/gpu)
     pub fn gpu(&self) -> GPU {
         self.inner.get("gpu").as_::<GPU>()
     }
 }
 impl Navigator {
+    /// Getter of the `ml` attribute.
+    /// [`Navigator.ml`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/ml)
     pub fn ml(&self) -> ML {
         self.inner.get("ml").as_::<ML>()
     }

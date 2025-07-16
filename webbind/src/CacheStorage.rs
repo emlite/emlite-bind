@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct MultiCacheQueryOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for MultiCacheQueryOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         MultiCacheQueryOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for MultiCacheQueryOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for MultiCacheQueryOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for MultiCacheQueryOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for MultiCacheQueryOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for MultiCacheQueryOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for MultiCacheQueryOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<MultiCacheQueryOptions> for emlite::Val {
-    fn from(s: MultiCacheQueryOptions) -> emlite::Val {
+impl From<MultiCacheQueryOptions> for Any {
+    fn from(s: MultiCacheQueryOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&MultiCacheQueryOptions> for emlite::Val {
-    fn from(s: &MultiCacheQueryOptions) -> emlite::Val {
+impl From<&MultiCacheQueryOptions> for Any {
+    fn from(s: &MultiCacheQueryOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -59,26 +59,28 @@ impl MultiCacheQueryOptions {
         self.inner.set("cacheName", value);
     }
 }
+/// The CacheStorage class.
+/// [`CacheStorage`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CacheStorage {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for CacheStorage {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CacheStorage {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for CacheStorage {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -88,35 +90,38 @@ impl core::ops::DerefMut for CacheStorage {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CacheStorage {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CacheStorage {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CacheStorage {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CacheStorage {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CacheStorage> for emlite::Val {
-    fn from(s: CacheStorage) -> emlite::Val {
+impl From<CacheStorage> for Any {
+    fn from(s: CacheStorage) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CacheStorage> for emlite::Val {
-    fn from(s: &CacheStorage) -> emlite::Val {
+impl From<&CacheStorage> for Any {
+    fn from(s: &CacheStorage) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CacheStorage);
 
 impl CacheStorage {
+    /// The match method.
+    /// [`CacheStorage.match`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/match)
     pub fn match_0(&self, request: &Any) -> Promise {
         self.inner.call("match", &[request.into()]).as_::<Promise>()
     }
-
+    /// The match method.
+    /// [`CacheStorage.match`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/match)
     pub fn match_1(&self, request: &Any, options: &MultiCacheQueryOptions) -> Promise {
         self.inner
             .call("match", &[request.into(), options.into()])
@@ -124,6 +129,8 @@ impl CacheStorage {
     }
 }
 impl CacheStorage {
+    /// The has method.
+    /// [`CacheStorage.has`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/has)
     pub fn has(&self, cache_name: &str) -> Promise {
         self.inner
             .call("has", &[cache_name.into()])
@@ -131,6 +138,8 @@ impl CacheStorage {
     }
 }
 impl CacheStorage {
+    /// The open method.
+    /// [`CacheStorage.open`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/open)
     pub fn open(&self, cache_name: &str) -> Promise {
         self.inner
             .call("open", &[cache_name.into()])
@@ -138,6 +147,8 @@ impl CacheStorage {
     }
 }
 impl CacheStorage {
+    /// The delete method.
+    /// [`CacheStorage.delete`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/delete)
     pub fn delete(&self, cache_name: &str) -> Promise {
         self.inner
             .call("delete", &[cache_name.into()])
@@ -145,6 +156,8 @@ impl CacheStorage {
     }
 }
 impl CacheStorage {
+    /// The keys method.
+    /// [`CacheStorage.keys`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/keys)
     pub fn keys(&self) -> Promise {
         self.inner.call("keys", &[]).as_::<Promise>()
     }

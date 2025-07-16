@@ -1,20 +1,22 @@
 use super::*;
 
+/// The XRSessionEvent class.
+/// [`XRSessionEvent`](https://developer.mozilla.org/en-US/docs/Web/API/XRSessionEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct XRSessionEvent {
     inner: Event,
 }
 impl FromVal for XRSessionEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         XRSessionEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,40 +31,43 @@ impl core::ops::DerefMut for XRSessionEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for XRSessionEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for XRSessionEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for XRSessionEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for XRSessionEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<XRSessionEvent> for emlite::Val {
-    fn from(s: XRSessionEvent) -> emlite::Val {
+impl From<XRSessionEvent> for Any {
+    fn from(s: XRSessionEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&XRSessionEvent> for emlite::Val {
-    fn from(s: &XRSessionEvent) -> emlite::Val {
+impl From<&XRSessionEvent> for Any {
+    fn from(s: &XRSessionEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(XRSessionEvent);
 
 impl XRSessionEvent {
+    /// The `new XRSessionEvent(..)` constructor, creating a new XRSessionEvent instance
     pub fn new(type_: &str, event_init_dict: &Any) -> XRSessionEvent {
         Self {
-            inner: emlite::Val::global("XRSessionEvent")
+            inner: Any::global("XRSessionEvent")
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl XRSessionEvent {
+    /// Getter of the `session` attribute.
+    /// [`XRSessionEvent.session`](https://developer.mozilla.org/en-US/docs/Web/API/XRSessionEvent/session)
     pub fn session(&self) -> XRSession {
         self.inner.get("session").as_::<XRSession>()
     }

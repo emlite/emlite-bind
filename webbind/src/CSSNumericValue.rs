@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSNumericType {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for CSSNumericType {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSNumericType { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for CSSNumericType {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for CSSNumericType {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSNumericType {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSNumericType {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSNumericType {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSNumericType {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSNumericType> for emlite::Val {
-    fn from(s: CSSNumericType) -> emlite::Val {
+impl From<CSSNumericType> for Any {
+    fn from(s: CSSNumericType) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSNumericType> for emlite::Val {
-    fn from(s: &CSSNumericType) -> emlite::Val {
+impl From<&CSSNumericType> for Any {
+    fn from(s: &CSSNumericType) -> Any {
         s.inner.clone()
     }
 }
@@ -122,21 +122,23 @@ impl CSSNumericType {
         self.inner.set("percentHint", value);
     }
 }
+/// The CSSNumericValue class.
+/// [`CSSNumericValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CSSNumericValue {
     inner: CSSStyleValue,
 }
 impl FromVal for CSSNumericValue {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CSSNumericValue {
             inner: CSSStyleValue::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -151,31 +153,33 @@ impl core::ops::DerefMut for CSSNumericValue {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CSSNumericValue {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CSSNumericValue {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CSSNumericValue {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CSSNumericValue {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CSSNumericValue> for emlite::Val {
-    fn from(s: CSSNumericValue) -> emlite::Val {
+impl From<CSSNumericValue> for Any {
+    fn from(s: CSSNumericValue) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CSSNumericValue> for emlite::Val {
-    fn from(s: &CSSNumericValue) -> emlite::Val {
+impl From<&CSSNumericValue> for Any {
+    fn from(s: &CSSNumericValue) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CSSNumericValue);
 
 impl CSSNumericValue {
+    /// The add method.
+    /// [`CSSNumericValue.add`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue/add)
     pub fn add(&self, values: &Any) -> CSSNumericValue {
         self.inner
             .call("add", &[values.into()])
@@ -183,6 +187,8 @@ impl CSSNumericValue {
     }
 }
 impl CSSNumericValue {
+    /// The sub method.
+    /// [`CSSNumericValue.sub`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue/sub)
     pub fn sub(&self, values: &Any) -> CSSNumericValue {
         self.inner
             .call("sub", &[values.into()])
@@ -190,6 +196,8 @@ impl CSSNumericValue {
     }
 }
 impl CSSNumericValue {
+    /// The mul method.
+    /// [`CSSNumericValue.mul`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue/mul)
     pub fn mul(&self, values: &Any) -> CSSNumericValue {
         self.inner
             .call("mul", &[values.into()])
@@ -197,6 +205,8 @@ impl CSSNumericValue {
     }
 }
 impl CSSNumericValue {
+    /// The div method.
+    /// [`CSSNumericValue.div`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue/div)
     pub fn div(&self, values: &Any) -> CSSNumericValue {
         self.inner
             .call("div", &[values.into()])
@@ -204,6 +214,8 @@ impl CSSNumericValue {
     }
 }
 impl CSSNumericValue {
+    /// The min method.
+    /// [`CSSNumericValue.min`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue/min)
     pub fn min(&self, values: &Any) -> CSSNumericValue {
         self.inner
             .call("min", &[values.into()])
@@ -211,6 +223,8 @@ impl CSSNumericValue {
     }
 }
 impl CSSNumericValue {
+    /// The max method.
+    /// [`CSSNumericValue.max`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue/max)
     pub fn max(&self, values: &Any) -> CSSNumericValue {
         self.inner
             .call("max", &[values.into()])
@@ -218,16 +232,22 @@ impl CSSNumericValue {
     }
 }
 impl CSSNumericValue {
+    /// The equals method.
+    /// [`CSSNumericValue.equals`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue/equals)
     pub fn equals(&self, value: &Any) -> bool {
         self.inner.call("equals", &[value.into()]).as_::<bool>()
     }
 }
 impl CSSNumericValue {
+    /// The to method.
+    /// [`CSSNumericValue.to`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue/to)
     pub fn to(&self, unit: &str) -> CSSUnitValue {
         self.inner.call("to", &[unit.into()]).as_::<CSSUnitValue>()
     }
 }
 impl CSSNumericValue {
+    /// The toSum method.
+    /// [`CSSNumericValue.toSum`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue/toSum)
     pub fn to_sum(&self, units: &str) -> CSSMathSum {
         self.inner
             .call("toSum", &[units.into()])
@@ -235,13 +255,17 @@ impl CSSNumericValue {
     }
 }
 impl CSSNumericValue {
+    /// The type method.
+    /// [`CSSNumericValue.type`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue/type)
     pub fn type_(&self) -> CSSNumericType {
         self.inner.call("type", &[]).as_::<CSSNumericType>()
     }
 }
 impl CSSNumericValue {
+    /// The parse method.
+    /// [`CSSNumericValue.parse`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue/parse)
     pub fn parse(css_text: &str) -> CSSNumericValue {
-        emlite::Val::global("CSSNumericValue")
+        Any::global("CSSNumericValue")
             .call("parse", &[css_text.into()])
             .as_::<CSSNumericValue>()
     }

@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPURenderPassDescriptor {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPURenderPassDescriptor {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPURenderPassDescriptor { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPURenderPassDescriptor {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for GPURenderPassDescriptor {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPURenderPassDescriptor {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPURenderPassDescriptor {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPURenderPassDescriptor {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPURenderPassDescriptor {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPURenderPassDescriptor> for emlite::Val {
-    fn from(s: GPURenderPassDescriptor) -> emlite::Val {
+impl From<GPURenderPassDescriptor> for Any {
+    fn from(s: GPURenderPassDescriptor) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPURenderPassDescriptor> for emlite::Val {
-    fn from(s: &GPURenderPassDescriptor) -> emlite::Val {
+impl From<&GPURenderPassDescriptor> for Any {
+    fn from(s: &GPURenderPassDescriptor) -> Any {
         s.inner.clone()
     }
 }
@@ -98,21 +98,21 @@ impl GPURenderPassDescriptor {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUComputePassDescriptor {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPUComputePassDescriptor {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPUComputePassDescriptor { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPUComputePassDescriptor {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -122,25 +122,25 @@ impl core::ops::DerefMut for GPUComputePassDescriptor {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPUComputePassDescriptor {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPUComputePassDescriptor {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPUComputePassDescriptor {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPUComputePassDescriptor {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPUComputePassDescriptor> for emlite::Val {
-    fn from(s: GPUComputePassDescriptor) -> emlite::Val {
+impl From<GPUComputePassDescriptor> for Any {
+    fn from(s: GPUComputePassDescriptor) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPUComputePassDescriptor> for emlite::Val {
-    fn from(s: &GPUComputePassDescriptor) -> emlite::Val {
+impl From<&GPUComputePassDescriptor> for Any {
+    fn from(s: &GPUComputePassDescriptor) -> Any {
         s.inner.clone()
     }
 }
@@ -157,21 +157,21 @@ impl GPUComputePassDescriptor {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUTexelCopyBufferInfo {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPUTexelCopyBufferInfo {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPUTexelCopyBufferInfo { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPUTexelCopyBufferInfo {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -181,25 +181,25 @@ impl core::ops::DerefMut for GPUTexelCopyBufferInfo {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPUTexelCopyBufferInfo {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPUTexelCopyBufferInfo {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPUTexelCopyBufferInfo {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPUTexelCopyBufferInfo {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPUTexelCopyBufferInfo> for emlite::Val {
-    fn from(s: GPUTexelCopyBufferInfo) -> emlite::Val {
+impl From<GPUTexelCopyBufferInfo> for Any {
+    fn from(s: GPUTexelCopyBufferInfo) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPUTexelCopyBufferInfo> for emlite::Val {
-    fn from(s: &GPUTexelCopyBufferInfo) -> emlite::Val {
+impl From<&GPUTexelCopyBufferInfo> for Any {
+    fn from(s: &GPUTexelCopyBufferInfo) -> Any {
         s.inner.clone()
     }
 }
@@ -216,21 +216,21 @@ impl GPUTexelCopyBufferInfo {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUTexelCopyTextureInfo {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPUTexelCopyTextureInfo {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPUTexelCopyTextureInfo { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPUTexelCopyTextureInfo {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -240,25 +240,25 @@ impl core::ops::DerefMut for GPUTexelCopyTextureInfo {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPUTexelCopyTextureInfo {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPUTexelCopyTextureInfo {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPUTexelCopyTextureInfo {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPUTexelCopyTextureInfo {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPUTexelCopyTextureInfo> for emlite::Val {
-    fn from(s: GPUTexelCopyTextureInfo) -> emlite::Val {
+impl From<GPUTexelCopyTextureInfo> for Any {
+    fn from(s: GPUTexelCopyTextureInfo) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPUTexelCopyTextureInfo> for emlite::Val {
-    fn from(s: &GPUTexelCopyTextureInfo) -> emlite::Val {
+impl From<&GPUTexelCopyTextureInfo> for Any {
+    fn from(s: &GPUTexelCopyTextureInfo) -> Any {
         s.inner.clone()
     }
 }
@@ -302,21 +302,21 @@ impl GPUTexelCopyTextureInfo {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUCommandBufferDescriptor {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPUCommandBufferDescriptor {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPUCommandBufferDescriptor { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPUCommandBufferDescriptor {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -326,49 +326,51 @@ impl core::ops::DerefMut for GPUCommandBufferDescriptor {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPUCommandBufferDescriptor {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPUCommandBufferDescriptor {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPUCommandBufferDescriptor {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPUCommandBufferDescriptor {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPUCommandBufferDescriptor> for emlite::Val {
-    fn from(s: GPUCommandBufferDescriptor) -> emlite::Val {
+impl From<GPUCommandBufferDescriptor> for Any {
+    fn from(s: GPUCommandBufferDescriptor) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPUCommandBufferDescriptor> for emlite::Val {
-    fn from(s: &GPUCommandBufferDescriptor) -> emlite::Val {
+impl From<&GPUCommandBufferDescriptor> for Any {
+    fn from(s: &GPUCommandBufferDescriptor) -> Any {
         s.inner.clone()
     }
 }
 
+/// The GPUCommandEncoder class.
+/// [`GPUCommandEncoder`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct GPUCommandEncoder {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for GPUCommandEncoder {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         GPUCommandEncoder {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for GPUCommandEncoder {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -378,31 +380,33 @@ impl core::ops::DerefMut for GPUCommandEncoder {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for GPUCommandEncoder {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for GPUCommandEncoder {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for GPUCommandEncoder {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for GPUCommandEncoder {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<GPUCommandEncoder> for emlite::Val {
-    fn from(s: GPUCommandEncoder) -> emlite::Val {
+impl From<GPUCommandEncoder> for Any {
+    fn from(s: GPUCommandEncoder) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&GPUCommandEncoder> for emlite::Val {
-    fn from(s: &GPUCommandEncoder) -> emlite::Val {
+impl From<&GPUCommandEncoder> for Any {
+    fn from(s: &GPUCommandEncoder) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(GPUCommandEncoder);
 
 impl GPUCommandEncoder {
+    /// The beginRenderPass method.
+    /// [`GPUCommandEncoder.beginRenderPass`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/beginRenderPass)
     pub fn begin_render_pass(&self, descriptor: &GPURenderPassDescriptor) -> GPURenderPassEncoder {
         self.inner
             .call("beginRenderPass", &[descriptor.into()])
@@ -410,12 +414,15 @@ impl GPUCommandEncoder {
     }
 }
 impl GPUCommandEncoder {
+    /// The beginComputePass method.
+    /// [`GPUCommandEncoder.beginComputePass`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/beginComputePass)
     pub fn begin_compute_pass0(&self) -> GPUComputePassEncoder {
         self.inner
             .call("beginComputePass", &[])
             .as_::<GPUComputePassEncoder>()
     }
-
+    /// The beginComputePass method.
+    /// [`GPUCommandEncoder.beginComputePass`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/beginComputePass)
     pub fn begin_compute_pass1(
         &self,
         descriptor: &GPUComputePassDescriptor,
@@ -426,6 +433,8 @@ impl GPUCommandEncoder {
     }
 }
 impl GPUCommandEncoder {
+    /// The copyBufferToBuffer method.
+    /// [`GPUCommandEncoder.copyBufferToBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/copyBufferToBuffer)
     pub fn copy_buffer_to_buffer0(
         &self,
         source: &GPUBuffer,
@@ -445,7 +454,8 @@ impl GPUCommandEncoder {
             )
             .as_::<Undefined>()
     }
-
+    /// The copyBufferToBuffer method.
+    /// [`GPUCommandEncoder.copyBufferToBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/copyBufferToBuffer)
     pub fn copy_buffer_to_buffer1(
         &self,
         source: &GPUBuffer,
@@ -469,6 +479,8 @@ impl GPUCommandEncoder {
     }
 }
 impl GPUCommandEncoder {
+    /// The copyBufferToTexture method.
+    /// [`GPUCommandEncoder.copyBufferToTexture`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/copyBufferToTexture)
     pub fn copy_buffer_to_texture(
         &self,
         source: &GPUTexelCopyBufferInfo,
@@ -484,6 +496,8 @@ impl GPUCommandEncoder {
     }
 }
 impl GPUCommandEncoder {
+    /// The copyTextureToBuffer method.
+    /// [`GPUCommandEncoder.copyTextureToBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/copyTextureToBuffer)
     pub fn copy_texture_to_buffer(
         &self,
         source: &GPUTexelCopyTextureInfo,
@@ -499,6 +513,8 @@ impl GPUCommandEncoder {
     }
 }
 impl GPUCommandEncoder {
+    /// The copyTextureToTexture method.
+    /// [`GPUCommandEncoder.copyTextureToTexture`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/copyTextureToTexture)
     pub fn copy_texture_to_texture(
         &self,
         source: &GPUTexelCopyTextureInfo,
@@ -514,18 +530,22 @@ impl GPUCommandEncoder {
     }
 }
 impl GPUCommandEncoder {
+    /// The clearBuffer method.
+    /// [`GPUCommandEncoder.clearBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/clearBuffer)
     pub fn clear_buffer0(&self, buffer: &GPUBuffer) -> Undefined {
         self.inner
             .call("clearBuffer", &[buffer.into()])
             .as_::<Undefined>()
     }
-
+    /// The clearBuffer method.
+    /// [`GPUCommandEncoder.clearBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/clearBuffer)
     pub fn clear_buffer1(&self, buffer: &GPUBuffer, offset: &Any) -> Undefined {
         self.inner
             .call("clearBuffer", &[buffer.into(), offset.into()])
             .as_::<Undefined>()
     }
-
+    /// The clearBuffer method.
+    /// [`GPUCommandEncoder.clearBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/clearBuffer)
     pub fn clear_buffer2(&self, buffer: &GPUBuffer, offset: &Any, size: &Any) -> Undefined {
         self.inner
             .call("clearBuffer", &[buffer.into(), offset.into(), size.into()])
@@ -533,6 +553,8 @@ impl GPUCommandEncoder {
     }
 }
 impl GPUCommandEncoder {
+    /// The resolveQuerySet method.
+    /// [`GPUCommandEncoder.resolveQuerySet`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/resolveQuerySet)
     pub fn resolve_query_set(
         &self,
         query_set: &GPUQuerySet,
@@ -556,10 +578,13 @@ impl GPUCommandEncoder {
     }
 }
 impl GPUCommandEncoder {
+    /// The finish method.
+    /// [`GPUCommandEncoder.finish`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/finish)
     pub fn finish0(&self) -> GPUCommandBuffer {
         self.inner.call("finish", &[]).as_::<GPUCommandBuffer>()
     }
-
+    /// The finish method.
+    /// [`GPUCommandEncoder.finish`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/finish)
     pub fn finish1(&self, descriptor: &GPUCommandBufferDescriptor) -> GPUCommandBuffer {
         self.inner
             .call("finish", &[descriptor.into()])
@@ -567,15 +592,21 @@ impl GPUCommandEncoder {
     }
 }
 impl GPUCommandEncoder {
+    /// Getter of the `label` attribute.
+    /// [`GPUCommandEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/label)
     pub fn label(&self) -> String {
         self.inner.get("label").as_::<String>()
     }
 
+    /// Setter of the `label` attribute.
+    /// [`GPUCommandEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/label)
     pub fn set_label(&mut self, value: &str) {
         self.inner.set("label", value);
     }
 }
 impl GPUCommandEncoder {
+    /// The pushDebugGroup method.
+    /// [`GPUCommandEncoder.pushDebugGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/pushDebugGroup)
     pub fn push_debug_group(&self, group_label: &str) -> Undefined {
         self.inner
             .call("pushDebugGroup", &[group_label.into()])
@@ -583,11 +614,15 @@ impl GPUCommandEncoder {
     }
 }
 impl GPUCommandEncoder {
+    /// The popDebugGroup method.
+    /// [`GPUCommandEncoder.popDebugGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/popDebugGroup)
     pub fn pop_debug_group(&self) -> Undefined {
         self.inner.call("popDebugGroup", &[]).as_::<Undefined>()
     }
 }
 impl GPUCommandEncoder {
+    /// The insertDebugMarker method.
+    /// [`GPUCommandEncoder.insertDebugMarker`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCommandEncoder/insertDebugMarker)
     pub fn insert_debug_marker(&self, marker_label: &str) -> Undefined {
         self.inner
             .call("insertDebugMarker", &[marker_label.into()])

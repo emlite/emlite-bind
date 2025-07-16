@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ImageDecodeResult {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ImageDecodeResult {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ImageDecodeResult { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ImageDecodeResult {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for ImageDecodeResult {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ImageDecodeResult {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ImageDecodeResult {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ImageDecodeResult {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ImageDecodeResult {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ImageDecodeResult> for emlite::Val {
-    fn from(s: ImageDecodeResult) -> emlite::Val {
+impl From<ImageDecodeResult> for Any {
+    fn from(s: ImageDecodeResult) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ImageDecodeResult> for emlite::Val {
-    fn from(s: &ImageDecodeResult) -> emlite::Val {
+impl From<&ImageDecodeResult> for Any {
+    fn from(s: &ImageDecodeResult) -> Any {
         s.inner.clone()
     }
 }
@@ -71,21 +71,21 @@ impl ImageDecodeResult {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ImageDecodeOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ImageDecodeOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ImageDecodeOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ImageDecodeOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -95,25 +95,25 @@ impl core::ops::DerefMut for ImageDecodeOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ImageDecodeOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ImageDecodeOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ImageDecodeOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ImageDecodeOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ImageDecodeOptions> for emlite::Val {
-    fn from(s: ImageDecodeOptions) -> emlite::Val {
+impl From<ImageDecodeOptions> for Any {
+    fn from(s: ImageDecodeOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ImageDecodeOptions> for emlite::Val {
-    fn from(s: &ImageDecodeOptions) -> emlite::Val {
+impl From<&ImageDecodeOptions> for Any {
+    fn from(s: &ImageDecodeOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -136,26 +136,28 @@ impl ImageDecodeOptions {
         self.inner.set("completeFramesOnly", value);
     }
 }
+/// The ImageDecoder class.
+/// [`ImageDecoder`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ImageDecoder {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ImageDecoder {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ImageDecoder {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ImageDecoder {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -165,64 +167,74 @@ impl core::ops::DerefMut for ImageDecoder {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ImageDecoder {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ImageDecoder {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ImageDecoder {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ImageDecoder {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ImageDecoder> for emlite::Val {
-    fn from(s: ImageDecoder) -> emlite::Val {
+impl From<ImageDecoder> for Any {
+    fn from(s: ImageDecoder) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ImageDecoder> for emlite::Val {
-    fn from(s: &ImageDecoder) -> emlite::Val {
+impl From<&ImageDecoder> for Any {
+    fn from(s: &ImageDecoder) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(ImageDecoder);
 
 impl ImageDecoder {
+    /// The `new ImageDecoder(..)` constructor, creating a new ImageDecoder instance
     pub fn new(init: &Any) -> ImageDecoder {
         Self {
-            inner: emlite::Val::global("ImageDecoder")
-                .new(&[init.into()])
-                .as_::<emlite::Val>(),
+            inner: Any::global("ImageDecoder").new(&[init.into()]).as_::<Any>(),
         }
     }
 }
 impl ImageDecoder {
+    /// Getter of the `type` attribute.
+    /// [`ImageDecoder.type`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/type)
     pub fn type_(&self) -> String {
         self.inner.get("type").as_::<String>()
     }
 }
 impl ImageDecoder {
+    /// Getter of the `complete` attribute.
+    /// [`ImageDecoder.complete`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/complete)
     pub fn complete(&self) -> bool {
         self.inner.get("complete").as_::<bool>()
     }
 }
 impl ImageDecoder {
+    /// Getter of the `completed` attribute.
+    /// [`ImageDecoder.completed`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/completed)
     pub fn completed(&self) -> Promise {
         self.inner.get("completed").as_::<Promise>()
     }
 }
 impl ImageDecoder {
+    /// Getter of the `tracks` attribute.
+    /// [`ImageDecoder.tracks`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/tracks)
     pub fn tracks(&self) -> ImageTrackList {
         self.inner.get("tracks").as_::<ImageTrackList>()
     }
 }
 impl ImageDecoder {
+    /// The decode method.
+    /// [`ImageDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/decode)
     pub fn decode0(&self) -> Promise {
         self.inner.call("decode", &[]).as_::<Promise>()
     }
-
+    /// The decode method.
+    /// [`ImageDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/decode)
     pub fn decode1(&self, options: &ImageDecodeOptions) -> Promise {
         self.inner
             .call("decode", &[options.into()])
@@ -230,18 +242,24 @@ impl ImageDecoder {
     }
 }
 impl ImageDecoder {
+    /// The reset method.
+    /// [`ImageDecoder.reset`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/reset)
     pub fn reset(&self) -> Undefined {
         self.inner.call("reset", &[]).as_::<Undefined>()
     }
 }
 impl ImageDecoder {
+    /// The close method.
+    /// [`ImageDecoder.close`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/close)
     pub fn close(&self) -> Undefined {
         self.inner.call("close", &[]).as_::<Undefined>()
     }
 }
 impl ImageDecoder {
+    /// The isTypeSupported method.
+    /// [`ImageDecoder.isTypeSupported`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/isTypeSupported)
     pub fn is_type_supported(type_: &str) -> Promise {
-        emlite::Val::global("ImageDecoder")
+        Any::global("ImageDecoder")
             .call("isTypeSupported", &[type_.into()])
             .as_::<Promise>()
     }

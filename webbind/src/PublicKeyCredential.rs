@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AuthenticationExtensionsClientOutputs {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for AuthenticationExtensionsClientOutputs {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AuthenticationExtensionsClientOutputs { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for AuthenticationExtensionsClientOutputs {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for AuthenticationExtensionsClientOutputs {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AuthenticationExtensionsClientOutputs {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AuthenticationExtensionsClientOutputs {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AuthenticationExtensionsClientOutputs {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AuthenticationExtensionsClientOutputs {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AuthenticationExtensionsClientOutputs> for emlite::Val {
-    fn from(s: AuthenticationExtensionsClientOutputs) -> emlite::Val {
+impl From<AuthenticationExtensionsClientOutputs> for Any {
+    fn from(s: AuthenticationExtensionsClientOutputs) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AuthenticationExtensionsClientOutputs> for emlite::Val {
-    fn from(s: &AuthenticationExtensionsClientOutputs) -> emlite::Val {
+impl From<&AuthenticationExtensionsClientOutputs> for Any {
+    fn from(s: &AuthenticationExtensionsClientOutputs) -> Any {
         s.inner.clone()
     }
 }
@@ -62,21 +62,21 @@ impl AuthenticationExtensionsClientOutputs {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PublicKeyCredentialCreationOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PublicKeyCredentialCreationOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PublicKeyCredentialCreationOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PublicKeyCredentialCreationOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -86,25 +86,25 @@ impl core::ops::DerefMut for PublicKeyCredentialCreationOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PublicKeyCredentialCreationOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PublicKeyCredentialCreationOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PublicKeyCredentialCreationOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PublicKeyCredentialCreationOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PublicKeyCredentialCreationOptions> for emlite::Val {
-    fn from(s: PublicKeyCredentialCreationOptions) -> emlite::Val {
+impl From<PublicKeyCredentialCreationOptions> for Any {
+    fn from(s: PublicKeyCredentialCreationOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PublicKeyCredentialCreationOptions> for emlite::Val {
-    fn from(s: &PublicKeyCredentialCreationOptions) -> emlite::Val {
+impl From<&PublicKeyCredentialCreationOptions> for Any {
+    fn from(s: &PublicKeyCredentialCreationOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -213,21 +213,21 @@ impl PublicKeyCredentialCreationOptions {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PublicKeyCredentialCreationOptionsJSON {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PublicKeyCredentialCreationOptionsJSON {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PublicKeyCredentialCreationOptionsJSON { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PublicKeyCredentialCreationOptionsJSON {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -237,25 +237,25 @@ impl core::ops::DerefMut for PublicKeyCredentialCreationOptionsJSON {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PublicKeyCredentialCreationOptionsJSON {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PublicKeyCredentialCreationOptionsJSON {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PublicKeyCredentialCreationOptionsJSON {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PublicKeyCredentialCreationOptionsJSON {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PublicKeyCredentialCreationOptionsJSON> for emlite::Val {
-    fn from(s: PublicKeyCredentialCreationOptionsJSON) -> emlite::Val {
+impl From<PublicKeyCredentialCreationOptionsJSON> for Any {
+    fn from(s: PublicKeyCredentialCreationOptionsJSON) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PublicKeyCredentialCreationOptionsJSON> for emlite::Val {
-    fn from(s: &PublicKeyCredentialCreationOptionsJSON) -> emlite::Val {
+impl From<&PublicKeyCredentialCreationOptionsJSON> for Any {
+    fn from(s: &PublicKeyCredentialCreationOptionsJSON) -> Any {
         s.inner.clone()
     }
 }
@@ -364,21 +364,21 @@ impl PublicKeyCredentialCreationOptionsJSON {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PublicKeyCredentialRequestOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PublicKeyCredentialRequestOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PublicKeyCredentialRequestOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PublicKeyCredentialRequestOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -388,25 +388,25 @@ impl core::ops::DerefMut for PublicKeyCredentialRequestOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PublicKeyCredentialRequestOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PublicKeyCredentialRequestOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PublicKeyCredentialRequestOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PublicKeyCredentialRequestOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PublicKeyCredentialRequestOptions> for emlite::Val {
-    fn from(s: PublicKeyCredentialRequestOptions) -> emlite::Val {
+impl From<PublicKeyCredentialRequestOptions> for Any {
+    fn from(s: PublicKeyCredentialRequestOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PublicKeyCredentialRequestOptions> for emlite::Val {
-    fn from(s: &PublicKeyCredentialRequestOptions) -> emlite::Val {
+impl From<&PublicKeyCredentialRequestOptions> for Any {
+    fn from(s: &PublicKeyCredentialRequestOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -477,21 +477,21 @@ impl PublicKeyCredentialRequestOptions {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PublicKeyCredentialRequestOptionsJSON {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PublicKeyCredentialRequestOptionsJSON {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PublicKeyCredentialRequestOptionsJSON { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PublicKeyCredentialRequestOptionsJSON {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -501,25 +501,25 @@ impl core::ops::DerefMut for PublicKeyCredentialRequestOptionsJSON {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PublicKeyCredentialRequestOptionsJSON {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PublicKeyCredentialRequestOptionsJSON {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PublicKeyCredentialRequestOptionsJSON {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PublicKeyCredentialRequestOptionsJSON {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PublicKeyCredentialRequestOptionsJSON> for emlite::Val {
-    fn from(s: PublicKeyCredentialRequestOptionsJSON) -> emlite::Val {
+impl From<PublicKeyCredentialRequestOptionsJSON> for Any {
+    fn from(s: PublicKeyCredentialRequestOptionsJSON) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PublicKeyCredentialRequestOptionsJSON> for emlite::Val {
-    fn from(s: &PublicKeyCredentialRequestOptionsJSON) -> emlite::Val {
+impl From<&PublicKeyCredentialRequestOptionsJSON> for Any {
+    fn from(s: &PublicKeyCredentialRequestOptionsJSON) -> Any {
         s.inner.clone()
     }
 }
@@ -590,21 +590,21 @@ impl PublicKeyCredentialRequestOptionsJSON {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct UnknownCredentialOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for UnknownCredentialOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         UnknownCredentialOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for UnknownCredentialOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -614,25 +614,25 @@ impl core::ops::DerefMut for UnknownCredentialOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for UnknownCredentialOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for UnknownCredentialOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for UnknownCredentialOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for UnknownCredentialOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<UnknownCredentialOptions> for emlite::Val {
-    fn from(s: UnknownCredentialOptions) -> emlite::Val {
+impl From<UnknownCredentialOptions> for Any {
+    fn from(s: UnknownCredentialOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&UnknownCredentialOptions> for emlite::Val {
-    fn from(s: &UnknownCredentialOptions) -> emlite::Val {
+impl From<&UnknownCredentialOptions> for Any {
+    fn from(s: &UnknownCredentialOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -658,21 +658,21 @@ impl UnknownCredentialOptions {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AllAcceptedCredentialsOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for AllAcceptedCredentialsOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AllAcceptedCredentialsOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for AllAcceptedCredentialsOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -682,25 +682,25 @@ impl core::ops::DerefMut for AllAcceptedCredentialsOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AllAcceptedCredentialsOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AllAcceptedCredentialsOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AllAcceptedCredentialsOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AllAcceptedCredentialsOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AllAcceptedCredentialsOptions> for emlite::Val {
-    fn from(s: AllAcceptedCredentialsOptions) -> emlite::Val {
+impl From<AllAcceptedCredentialsOptions> for Any {
+    fn from(s: AllAcceptedCredentialsOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AllAcceptedCredentialsOptions> for emlite::Val {
-    fn from(s: &AllAcceptedCredentialsOptions) -> emlite::Val {
+impl From<&AllAcceptedCredentialsOptions> for Any {
+    fn from(s: &AllAcceptedCredentialsOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -737,21 +737,21 @@ impl AllAcceptedCredentialsOptions {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CurrentUserDetailsOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for CurrentUserDetailsOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CurrentUserDetailsOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for CurrentUserDetailsOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -761,25 +761,25 @@ impl core::ops::DerefMut for CurrentUserDetailsOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CurrentUserDetailsOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CurrentUserDetailsOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CurrentUserDetailsOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CurrentUserDetailsOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CurrentUserDetailsOptions> for emlite::Val {
-    fn from(s: CurrentUserDetailsOptions) -> emlite::Val {
+impl From<CurrentUserDetailsOptions> for Any {
+    fn from(s: CurrentUserDetailsOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CurrentUserDetailsOptions> for emlite::Val {
-    fn from(s: &CurrentUserDetailsOptions) -> emlite::Val {
+impl From<&CurrentUserDetailsOptions> for Any {
+    fn from(s: &CurrentUserDetailsOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -820,21 +820,23 @@ impl CurrentUserDetailsOptions {
         self.inner.set("displayName", value);
     }
 }
+/// The PublicKeyCredential class.
+/// [`PublicKeyCredential`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PublicKeyCredential {
     inner: Credential,
 }
 impl FromVal for PublicKeyCredential {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PublicKeyCredential {
             inner: Credential::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -849,46 +851,54 @@ impl core::ops::DerefMut for PublicKeyCredential {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PublicKeyCredential {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PublicKeyCredential {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PublicKeyCredential {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PublicKeyCredential {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PublicKeyCredential> for emlite::Val {
-    fn from(s: PublicKeyCredential) -> emlite::Val {
+impl From<PublicKeyCredential> for Any {
+    fn from(s: PublicKeyCredential) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PublicKeyCredential> for emlite::Val {
-    fn from(s: &PublicKeyCredential) -> emlite::Val {
+impl From<&PublicKeyCredential> for Any {
+    fn from(s: &PublicKeyCredential) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(PublicKeyCredential);
 
 impl PublicKeyCredential {
+    /// Getter of the `rawId` attribute.
+    /// [`PublicKeyCredential.rawId`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/rawId)
     pub fn raw_id(&self) -> ArrayBuffer {
         self.inner.get("rawId").as_::<ArrayBuffer>()
     }
 }
 impl PublicKeyCredential {
+    /// Getter of the `response` attribute.
+    /// [`PublicKeyCredential.response`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/response)
     pub fn response(&self) -> AuthenticatorResponse {
         self.inner.get("response").as_::<AuthenticatorResponse>()
     }
 }
 impl PublicKeyCredential {
+    /// Getter of the `authenticatorAttachment` attribute.
+    /// [`PublicKeyCredential.authenticatorAttachment`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/authenticatorAttachment)
     pub fn authenticator_attachment(&self) -> String {
         self.inner.get("authenticatorAttachment").as_::<String>()
     }
 }
 impl PublicKeyCredential {
+    /// The getClientExtensionResults method.
+    /// [`PublicKeyCredential.getClientExtensionResults`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/getClientExtensionResults)
     pub fn get_client_extension_results(&self) -> AuthenticationExtensionsClientOutputs {
         self.inner
             .call("getClientExtensionResults", &[])
@@ -896,66 +906,84 @@ impl PublicKeyCredential {
     }
 }
 impl PublicKeyCredential {
+    /// The isConditionalMediationAvailable method.
+    /// [`PublicKeyCredential.isConditionalMediationAvailable`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/isConditionalMediationAvailable)
     pub fn is_conditional_mediation_available() -> Promise {
-        emlite::Val::global("PublicKeyCredential")
+        Any::global("PublicKeyCredential")
             .call("isConditionalMediationAvailable", &[])
             .as_::<Promise>()
     }
 }
 impl PublicKeyCredential {
+    /// The toJSON method.
+    /// [`PublicKeyCredential.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/toJSON)
     pub fn to_json(&self) -> Any {
         self.inner.call("toJSON", &[]).as_::<Any>()
     }
 }
 impl PublicKeyCredential {
+    /// The isUserVerifyingPlatformAuthenticatorAvailable method.
+    /// [`PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/isUserVerifyingPlatformAuthenticatorAvailable)
     pub fn is_user_verifying_platform_authenticator_available() -> Promise {
-        emlite::Val::global("PublicKeyCredential")
+        Any::global("PublicKeyCredential")
             .call("isUserVerifyingPlatformAuthenticatorAvailable", &[])
             .as_::<Promise>()
     }
 }
 impl PublicKeyCredential {
+    /// The getClientCapabilities method.
+    /// [`PublicKeyCredential.getClientCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/getClientCapabilities)
     pub fn get_client_capabilities() -> Promise {
-        emlite::Val::global("PublicKeyCredential")
+        Any::global("PublicKeyCredential")
             .call("getClientCapabilities", &[])
             .as_::<Promise>()
     }
 }
 impl PublicKeyCredential {
+    /// The parseCreationOptionsFromJSON method.
+    /// [`PublicKeyCredential.parseCreationOptionsFromJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/parseCreationOptionsFromJSON)
     pub fn parse_creation_options_from_json(
         options: &PublicKeyCredentialCreationOptionsJSON,
     ) -> PublicKeyCredentialCreationOptions {
-        emlite::Val::global("PublicKeyCredential")
+        Any::global("PublicKeyCredential")
             .call("parseCreationOptionsFromJSON", &[options.into()])
             .as_::<PublicKeyCredentialCreationOptions>()
     }
 }
 impl PublicKeyCredential {
+    /// The parseRequestOptionsFromJSON method.
+    /// [`PublicKeyCredential.parseRequestOptionsFromJSON`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/parseRequestOptionsFromJSON)
     pub fn parse_request_options_from_json(
         options: &PublicKeyCredentialRequestOptionsJSON,
     ) -> PublicKeyCredentialRequestOptions {
-        emlite::Val::global("PublicKeyCredential")
+        Any::global("PublicKeyCredential")
             .call("parseRequestOptionsFromJSON", &[options.into()])
             .as_::<PublicKeyCredentialRequestOptions>()
     }
 }
 impl PublicKeyCredential {
+    /// The signalUnknownCredential method.
+    /// [`PublicKeyCredential.signalUnknownCredential`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/signalUnknownCredential)
     pub fn signal_unknown_credential(options: &UnknownCredentialOptions) -> Promise {
-        emlite::Val::global("PublicKeyCredential")
+        Any::global("PublicKeyCredential")
             .call("signalUnknownCredential", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl PublicKeyCredential {
+    /// The signalAllAcceptedCredentials method.
+    /// [`PublicKeyCredential.signalAllAcceptedCredentials`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/signalAllAcceptedCredentials)
     pub fn signal_all_accepted_credentials(options: &AllAcceptedCredentialsOptions) -> Promise {
-        emlite::Val::global("PublicKeyCredential")
+        Any::global("PublicKeyCredential")
             .call("signalAllAcceptedCredentials", &[options.into()])
             .as_::<Promise>()
     }
 }
 impl PublicKeyCredential {
+    /// The signalCurrentUserDetails method.
+    /// [`PublicKeyCredential.signalCurrentUserDetails`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/signalCurrentUserDetails)
     pub fn signal_current_user_details(options: &CurrentUserDetailsOptions) -> Promise {
-        emlite::Val::global("PublicKeyCredential")
+        Any::global("PublicKeyCredential")
             .call("signalCurrentUserDetails", &[options.into()])
             .as_::<Promise>()
     }

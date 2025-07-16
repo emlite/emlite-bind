@@ -1,20 +1,22 @@
 use super::*;
 
+/// The IIRFilterNode class.
+/// [`IIRFilterNode`](https://developer.mozilla.org/en-US/docs/Web/API/IIRFilterNode)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct IIRFilterNode {
     inner: AudioNode,
 }
 impl FromVal for IIRFilterNode {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         IIRFilterNode {
             inner: AudioNode::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,40 +31,43 @@ impl core::ops::DerefMut for IIRFilterNode {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for IIRFilterNode {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for IIRFilterNode {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for IIRFilterNode {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for IIRFilterNode {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<IIRFilterNode> for emlite::Val {
-    fn from(s: IIRFilterNode) -> emlite::Val {
+impl From<IIRFilterNode> for Any {
+    fn from(s: IIRFilterNode) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&IIRFilterNode> for emlite::Val {
-    fn from(s: &IIRFilterNode) -> emlite::Val {
+impl From<&IIRFilterNode> for Any {
+    fn from(s: &IIRFilterNode) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(IIRFilterNode);
 
 impl IIRFilterNode {
+    /// The `new IIRFilterNode(..)` constructor, creating a new IIRFilterNode instance
     pub fn new(context: &BaseAudioContext, options: &Any) -> IIRFilterNode {
         Self {
-            inner: emlite::Val::global("IIRFilterNode")
+            inner: Any::global("IIRFilterNode")
                 .new(&[context.into(), options.into()])
                 .as_::<AudioNode>(),
         }
     }
 }
 impl IIRFilterNode {
+    /// The getFrequencyResponse method.
+    /// [`IIRFilterNode.getFrequencyResponse`](https://developer.mozilla.org/en-US/docs/Web/API/IIRFilterNode/getFrequencyResponse)
     pub fn get_frequency_response(
         &self,
         frequency_hz: &Float32Array,

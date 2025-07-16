@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CredentialRequestOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for CredentialRequestOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CredentialRequestOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for CredentialRequestOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for CredentialRequestOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CredentialRequestOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CredentialRequestOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CredentialRequestOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CredentialRequestOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CredentialRequestOptions> for emlite::Val {
-    fn from(s: CredentialRequestOptions) -> emlite::Val {
+impl From<CredentialRequestOptions> for Any {
+    fn from(s: CredentialRequestOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CredentialRequestOptions> for emlite::Val {
-    fn from(s: &CredentialRequestOptions) -> emlite::Val {
+impl From<&CredentialRequestOptions> for Any {
+    fn from(s: &CredentialRequestOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -64,21 +64,21 @@ impl CredentialRequestOptions {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CredentialCreationOptions {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for CredentialCreationOptions {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CredentialCreationOptions { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for CredentialCreationOptions {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -88,25 +88,25 @@ impl core::ops::DerefMut for CredentialCreationOptions {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CredentialCreationOptions {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CredentialCreationOptions {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CredentialCreationOptions {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CredentialCreationOptions {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CredentialCreationOptions> for emlite::Val {
-    fn from(s: CredentialCreationOptions) -> emlite::Val {
+impl From<CredentialCreationOptions> for Any {
+    fn from(s: CredentialCreationOptions) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CredentialCreationOptions> for emlite::Val {
-    fn from(s: &CredentialCreationOptions) -> emlite::Val {
+impl From<&CredentialCreationOptions> for Any {
+    fn from(s: &CredentialCreationOptions) -> Any {
         s.inner.clone()
     }
 }
@@ -122,26 +122,28 @@ impl CredentialCreationOptions {
         self.inner.set("publicKey", value);
     }
 }
+/// The CredentialsContainer class.
+/// [`CredentialsContainer`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CredentialsContainer {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for CredentialsContainer {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CredentialsContainer {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for CredentialsContainer {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -151,40 +153,45 @@ impl core::ops::DerefMut for CredentialsContainer {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CredentialsContainer {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CredentialsContainer {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CredentialsContainer {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CredentialsContainer {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CredentialsContainer> for emlite::Val {
-    fn from(s: CredentialsContainer) -> emlite::Val {
+impl From<CredentialsContainer> for Any {
+    fn from(s: CredentialsContainer) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CredentialsContainer> for emlite::Val {
-    fn from(s: &CredentialsContainer) -> emlite::Val {
+impl From<&CredentialsContainer> for Any {
+    fn from(s: &CredentialsContainer) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CredentialsContainer);
 
 impl CredentialsContainer {
+    /// The get method.
+    /// [`CredentialsContainer.get`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/get)
     pub fn get0(&self) -> Promise {
         self.inner.call("get", &[]).as_::<Promise>()
     }
-
+    /// The get method.
+    /// [`CredentialsContainer.get`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/get)
     pub fn get1(&self, options: &CredentialRequestOptions) -> Promise {
         self.inner.call("get", &[options.into()]).as_::<Promise>()
     }
 }
 impl CredentialsContainer {
+    /// The store method.
+    /// [`CredentialsContainer.store`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/store)
     pub fn store(&self, credential: &Credential) -> Promise {
         self.inner
             .call("store", &[credential.into()])
@@ -192,10 +199,13 @@ impl CredentialsContainer {
     }
 }
 impl CredentialsContainer {
+    /// The create method.
+    /// [`CredentialsContainer.create`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/create)
     pub fn create0(&self) -> Promise {
         self.inner.call("create", &[]).as_::<Promise>()
     }
-
+    /// The create method.
+    /// [`CredentialsContainer.create`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/create)
     pub fn create1(&self, options: &CredentialCreationOptions) -> Promise {
         self.inner
             .call("create", &[options.into()])
@@ -203,6 +213,8 @@ impl CredentialsContainer {
     }
 }
 impl CredentialsContainer {
+    /// The preventSilentAccess method.
+    /// [`CredentialsContainer.preventSilentAccess`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/preventSilentAccess)
     pub fn prevent_silent_access(&self) -> Promise {
         self.inner.call("preventSilentAccess", &[]).as_::<Promise>()
     }

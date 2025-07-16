@@ -1,25 +1,27 @@
 use super::*;
 
+/// The NavigationTransition class.
+/// [`NavigationTransition`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationTransition)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct NavigationTransition {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for NavigationTransition {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         NavigationTransition {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for NavigationTransition {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,41 +31,47 @@ impl core::ops::DerefMut for NavigationTransition {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for NavigationTransition {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for NavigationTransition {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for NavigationTransition {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for NavigationTransition {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<NavigationTransition> for emlite::Val {
-    fn from(s: NavigationTransition) -> emlite::Val {
+impl From<NavigationTransition> for Any {
+    fn from(s: NavigationTransition) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&NavigationTransition> for emlite::Val {
-    fn from(s: &NavigationTransition) -> emlite::Val {
+impl From<&NavigationTransition> for Any {
+    fn from(s: &NavigationTransition) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(NavigationTransition);
 
 impl NavigationTransition {
+    /// Getter of the `navigationType` attribute.
+    /// [`NavigationTransition.navigationType`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationTransition/navigationType)
     pub fn navigation_type(&self) -> NavigationType {
         self.inner.get("navigationType").as_::<NavigationType>()
     }
 }
 impl NavigationTransition {
+    /// Getter of the `from` attribute.
+    /// [`NavigationTransition.from`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationTransition/from)
     pub fn from(&self) -> NavigationHistoryEntry {
         self.inner.get("from").as_::<NavigationHistoryEntry>()
     }
 }
 impl NavigationTransition {
+    /// Getter of the `finished` attribute.
+    /// [`NavigationTransition.finished`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationTransition/finished)
     pub fn finished(&self) -> Promise {
         self.inner.get("finished").as_::<Promise>()
     }

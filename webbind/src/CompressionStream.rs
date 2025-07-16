@@ -1,25 +1,27 @@
 use super::*;
 
+/// The CompressionStream class.
+/// [`CompressionStream`](https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct CompressionStream {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for CompressionStream {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         CompressionStream {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for CompressionStream {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,45 +31,50 @@ impl core::ops::DerefMut for CompressionStream {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for CompressionStream {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for CompressionStream {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for CompressionStream {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for CompressionStream {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<CompressionStream> for emlite::Val {
-    fn from(s: CompressionStream) -> emlite::Val {
+impl From<CompressionStream> for Any {
+    fn from(s: CompressionStream) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&CompressionStream> for emlite::Val {
-    fn from(s: &CompressionStream) -> emlite::Val {
+impl From<&CompressionStream> for Any {
+    fn from(s: &CompressionStream) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(CompressionStream);
 
 impl CompressionStream {
+    /// The `new CompressionStream(..)` constructor, creating a new CompressionStream instance
     pub fn new(format: &CompressionFormat) -> CompressionStream {
         Self {
-            inner: emlite::Val::global("CompressionStream")
+            inner: Any::global("CompressionStream")
                 .new(&[format.into()])
-                .as_::<emlite::Val>(),
+                .as_::<Any>(),
         }
     }
 }
 impl CompressionStream {
+    /// Getter of the `readable` attribute.
+    /// [`CompressionStream.readable`](https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream/readable)
     pub fn readable(&self) -> ReadableStream {
         self.inner.get("readable").as_::<ReadableStream>()
     }
 }
 impl CompressionStream {
+    /// Getter of the `writable` attribute.
+    /// [`CompressionStream.writable`](https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream/writable)
     pub fn writable(&self) -> WritableStream {
         self.inner.get("writable").as_::<WritableStream>()
     }

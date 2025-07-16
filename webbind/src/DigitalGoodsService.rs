@@ -3,21 +3,21 @@ use super::*;
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct ItemDetails {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for ItemDetails {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         ItemDetails { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for ItemDetails {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -27,25 +27,25 @@ impl core::ops::DerefMut for ItemDetails {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for ItemDetails {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for ItemDetails {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for ItemDetails {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for ItemDetails {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<ItemDetails> for emlite::Val {
-    fn from(s: ItemDetails) -> emlite::Val {
+impl From<ItemDetails> for Any {
+    fn from(s: ItemDetails) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&ItemDetails> for emlite::Val {
-    fn from(s: &ItemDetails) -> emlite::Val {
+impl From<&ItemDetails> for Any {
+    fn from(s: &ItemDetails) -> Any {
         s.inner.clone()
     }
 }
@@ -152,21 +152,21 @@ impl ItemDetails {
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct PurchaseDetails {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for PurchaseDetails {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         PurchaseDetails { inner: v.clone() }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for PurchaseDetails {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -176,25 +176,25 @@ impl core::ops::DerefMut for PurchaseDetails {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for PurchaseDetails {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for PurchaseDetails {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for PurchaseDetails {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for PurchaseDetails {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<PurchaseDetails> for emlite::Val {
-    fn from(s: PurchaseDetails) -> emlite::Val {
+impl From<PurchaseDetails> for Any {
+    fn from(s: PurchaseDetails) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&PurchaseDetails> for emlite::Val {
-    fn from(s: &PurchaseDetails) -> emlite::Val {
+impl From<&PurchaseDetails> for Any {
+    fn from(s: &PurchaseDetails) -> Any {
         s.inner.clone()
     }
 }
@@ -217,26 +217,28 @@ impl PurchaseDetails {
         self.inner.set("purchaseToken", value);
     }
 }
+/// The DigitalGoodsService class.
+/// [`DigitalGoodsService`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalGoodsService)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct DigitalGoodsService {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for DigitalGoodsService {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         DigitalGoodsService {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for DigitalGoodsService {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -246,31 +248,33 @@ impl core::ops::DerefMut for DigitalGoodsService {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for DigitalGoodsService {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for DigitalGoodsService {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for DigitalGoodsService {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for DigitalGoodsService {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<DigitalGoodsService> for emlite::Val {
-    fn from(s: DigitalGoodsService) -> emlite::Val {
+impl From<DigitalGoodsService> for Any {
+    fn from(s: DigitalGoodsService) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&DigitalGoodsService> for emlite::Val {
-    fn from(s: &DigitalGoodsService) -> emlite::Val {
+impl From<&DigitalGoodsService> for Any {
+    fn from(s: &DigitalGoodsService) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(DigitalGoodsService);
 
 impl DigitalGoodsService {
+    /// The getDetails method.
+    /// [`DigitalGoodsService.getDetails`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalGoodsService/getDetails)
     pub fn get_details(&self, item_ids: &Sequence<String>) -> Promise {
         self.inner
             .call("getDetails", &[item_ids.into()])
@@ -278,16 +282,22 @@ impl DigitalGoodsService {
     }
 }
 impl DigitalGoodsService {
+    /// The listPurchases method.
+    /// [`DigitalGoodsService.listPurchases`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalGoodsService/listPurchases)
     pub fn list_purchases(&self) -> Promise {
         self.inner.call("listPurchases", &[]).as_::<Promise>()
     }
 }
 impl DigitalGoodsService {
+    /// The listPurchaseHistory method.
+    /// [`DigitalGoodsService.listPurchaseHistory`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalGoodsService/listPurchaseHistory)
     pub fn list_purchase_history(&self) -> Promise {
         self.inner.call("listPurchaseHistory", &[]).as_::<Promise>()
     }
 }
 impl DigitalGoodsService {
+    /// The consume method.
+    /// [`DigitalGoodsService.consume`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalGoodsService/consume)
     pub fn consume(&self, purchase_token: &str) -> Promise {
         self.inner
             .call("consume", &[purchase_token.into()])

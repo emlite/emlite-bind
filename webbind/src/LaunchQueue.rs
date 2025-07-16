@@ -1,25 +1,27 @@
 use super::*;
 
+/// The LaunchQueue class.
+/// [`LaunchQueue`](https://developer.mozilla.org/en-US/docs/Web/API/LaunchQueue)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct LaunchQueue {
-    inner: emlite::Val,
+    inner: Any,
 }
 impl FromVal for LaunchQueue {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         LaunchQueue {
-            inner: emlite::Val::from_val(v),
+            inner: Any::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
 impl core::ops::Deref for LaunchQueue {
-    type Target = emlite::Val;
+    type Target = Any;
     fn deref(&self) -> &Self::Target {
         &self.inner
     }
@@ -29,31 +31,33 @@ impl core::ops::DerefMut for LaunchQueue {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for LaunchQueue {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for LaunchQueue {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for LaunchQueue {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for LaunchQueue {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<LaunchQueue> for emlite::Val {
-    fn from(s: LaunchQueue) -> emlite::Val {
+impl From<LaunchQueue> for Any {
+    fn from(s: LaunchQueue) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&LaunchQueue> for emlite::Val {
-    fn from(s: &LaunchQueue) -> emlite::Val {
+impl From<&LaunchQueue> for Any {
+    fn from(s: &LaunchQueue) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(LaunchQueue);
 
 impl LaunchQueue {
+    /// The setConsumer method.
+    /// [`LaunchQueue.setConsumer`](https://developer.mozilla.org/en-US/docs/Web/API/LaunchQueue/setConsumer)
     pub fn set_consumer(&self, consumer: &Function) -> Undefined {
         self.inner
             .call("setConsumer", &[consumer.into()])

@@ -1,20 +1,22 @@
 use super::*;
 
+/// The AudioProcessingEvent class.
+/// [`AudioProcessingEvent`](https://developer.mozilla.org/en-US/docs/Web/API/AudioProcessingEvent)
 #[derive(Clone, Debug, PartialEq, PartialOrd)]
 #[repr(transparent)]
 pub struct AudioProcessingEvent {
     inner: Event,
 }
 impl FromVal for AudioProcessingEvent {
-    fn from_val(v: &emlite::Val) -> Self {
+    fn from_val(v: &Any) -> Self {
         AudioProcessingEvent {
             inner: Event::from_val(v),
         }
     }
-    fn take_ownership(v: emlite::env::Handle) -> Self {
-        Self::from_val(&emlite::Val::take_ownership(v))
+    fn take_ownership(v: AnyHandle) -> Self {
+        Self::from_val(&Any::take_ownership(v))
     }
-    fn as_handle(&self) -> emlite::env::Handle {
+    fn as_handle(&self) -> AnyHandle {
         self.inner.as_handle()
     }
 }
@@ -29,50 +31,57 @@ impl core::ops::DerefMut for AudioProcessingEvent {
         &mut self.inner
     }
 }
-impl AsRef<emlite::Val> for AudioProcessingEvent {
-    fn as_ref(&self) -> &emlite::Val {
+impl AsRef<Any> for AudioProcessingEvent {
+    fn as_ref(&self) -> &Any {
         &self.inner
     }
 }
-impl AsMut<emlite::Val> for AudioProcessingEvent {
-    fn as_mut(&mut self) -> &mut emlite::Val {
+impl AsMut<Any> for AudioProcessingEvent {
+    fn as_mut(&mut self) -> &mut Any {
         &mut self.inner
     }
 }
-impl From<AudioProcessingEvent> for emlite::Val {
-    fn from(s: AudioProcessingEvent) -> emlite::Val {
+impl From<AudioProcessingEvent> for Any {
+    fn from(s: AudioProcessingEvent) -> Any {
         let handle = s.inner.as_handle();
         core::mem::forget(s);
-        emlite::Val::take_ownership(handle)
+        Any::take_ownership(handle)
     }
 }
-impl From<&AudioProcessingEvent> for emlite::Val {
-    fn from(s: &AudioProcessingEvent) -> emlite::Val {
+impl From<&AudioProcessingEvent> for Any {
+    fn from(s: &AudioProcessingEvent) -> Any {
         s.inner.clone().into()
     }
 }
 jsbind::utils::impl_dyn_cast!(AudioProcessingEvent);
 
 impl AudioProcessingEvent {
+    /// The `new AudioProcessingEvent(..)` constructor, creating a new AudioProcessingEvent instance
     pub fn new(type_: &str, event_init_dict: &Any) -> AudioProcessingEvent {
         Self {
-            inner: emlite::Val::global("AudioProcessingEvent")
+            inner: Any::global("AudioProcessingEvent")
                 .new(&[type_.into(), event_init_dict.into()])
                 .as_::<Event>(),
         }
     }
 }
 impl AudioProcessingEvent {
+    /// Getter of the `playbackTime` attribute.
+    /// [`AudioProcessingEvent.playbackTime`](https://developer.mozilla.org/en-US/docs/Web/API/AudioProcessingEvent/playbackTime)
     pub fn playback_time(&self) -> f64 {
         self.inner.get("playbackTime").as_::<f64>()
     }
 }
 impl AudioProcessingEvent {
+    /// Getter of the `inputBuffer` attribute.
+    /// [`AudioProcessingEvent.inputBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/AudioProcessingEvent/inputBuffer)
     pub fn input_buffer(&self) -> AudioBuffer {
         self.inner.get("inputBuffer").as_::<AudioBuffer>()
     }
 }
 impl AudioProcessingEvent {
+    /// Getter of the `outputBuffer` attribute.
+    /// [`AudioProcessingEvent.outputBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/AudioProcessingEvent/outputBuffer)
     pub fn output_buffer(&self) -> AudioBuffer {
         self.inner.get("outputBuffer").as_::<AudioBuffer>()
     }
