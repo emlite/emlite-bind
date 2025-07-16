@@ -150,6 +150,8 @@ If targeting wasi, you will need a wasi shim. The following example uses @bjorn3
 </html>
 ```
 
+In the above html examples, emlite.js is fetched from unpkg, you can alternatively vendor the source, or create a node project and `npm i emlite`. If creating a node project, it's advisable to use a bundler (such as webpack for example).
+
 If targeting emscripten, the link flags in .cargo/config.toml instruct the emscripten toolchain to generate an ES6 module. As such, you would need to initialize emscripten's js module:
 ```html
 <!DOCTYPE html>
@@ -161,10 +163,8 @@ If targeting emscripten, the link flags in .cargo/config.toml instruct the emscr
 </head>
 <body>
     <script type="module">
-        import { Emlite } from "./src/emlite.js";
         import initModule from "./target/wasm32-unknown-emscripten/release/examples/button.js";
         window.onload = async () => {
-            const emlite = new Emlite();
             const mymain = await initModule();
         };
     </script>
@@ -172,7 +172,10 @@ If targeting emscripten, the link flags in .cargo/config.toml instruct the emscr
 </html>
 ```
 
-In the above html examples, emlite.js is fetched from unpkg, you can alternatively vendor the source, or create a node project and `npm i emlite`. If creating a node project, it's advisable to use a bundler (such as webpack for example).
+If you don't emscripten the `-sMODULARIZE=1 -sEXPORT_ES6=1` flags, then you would just need to import the script in the script tag:
+```html
+<script src="./target/wasm32-unknown-emscripten/release/examples/button.js"></script>
+```
 
 ## Testing
 This repo comes with an index.html which you can use for testing purposes. Note that loading wasm in the browser requires an http server.
