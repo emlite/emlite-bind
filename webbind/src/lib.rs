@@ -1522,8 +1522,8 @@ pub mod html_audio_element;
 pub(crate) use html_audio_element::*;
 
 #[path = "HTMLBRElement.rs"]
-pub mod htmlbr_element;
-pub(crate) use htmlbr_element::*;
+pub mod html_br_element;
+pub(crate) use html_br_element::*;
 
 #[path = "HTMLBaseElement.rs"]
 pub mod html_base_element;
@@ -1546,8 +1546,8 @@ pub mod html_collection;
 pub(crate) use html_collection::*;
 
 #[path = "HTMLDListElement.rs"]
-pub mod htmld_list_element;
-pub(crate) use htmld_list_element::*;
+pub mod html_dlist_element;
+pub(crate) use html_dlist_element::*;
 
 #[path = "HTMLDataElement.rs"]
 pub mod html_data_element;
@@ -1610,8 +1610,8 @@ pub mod html_frame_set_element;
 pub(crate) use html_frame_set_element::*;
 
 #[path = "HTMLHRElement.rs"]
-pub mod htmlhr_element;
-pub(crate) use htmlhr_element::*;
+pub mod html_hr_element;
+pub(crate) use html_hr_element::*;
 
 #[path = "HTMLHeadElement.rs"]
 pub mod html_head_element;
@@ -1626,8 +1626,8 @@ pub mod html_html_element;
 pub(crate) use html_html_element::*;
 
 #[path = "HTMLIFrameElement.rs"]
-pub mod htmli_frame_element;
-pub(crate) use htmli_frame_element::*;
+pub mod html_iframe_element;
+pub(crate) use html_iframe_element::*;
 
 #[path = "HTMLImageElement.rs"]
 pub mod html_image_element;
@@ -1638,8 +1638,8 @@ pub mod html_input_element;
 pub(crate) use html_input_element::*;
 
 #[path = "HTMLLIElement.rs"]
-pub mod htmlli_element;
-pub(crate) use htmlli_element::*;
+pub mod html_li_element;
+pub(crate) use html_li_element::*;
 
 #[path = "HTMLLabelElement.rs"]
 pub mod html_label_element;
@@ -1686,8 +1686,8 @@ pub mod html_model_element;
 pub(crate) use html_model_element::*;
 
 #[path = "HTMLOListElement.rs"]
-pub mod htmlo_list_element;
-pub(crate) use htmlo_list_element::*;
+pub mod html_olist_element;
+pub(crate) use html_olist_element::*;
 
 #[path = "HTMLObjectElement.rs"]
 pub mod html_object_element;
@@ -1806,8 +1806,8 @@ pub mod html_track_element;
 pub(crate) use html_track_element::*;
 
 #[path = "HTMLUListElement.rs"]
-pub mod htmlu_list_element;
-pub(crate) use htmlu_list_element::*;
+pub mod html_ulist_element;
+pub(crate) use html_ulist_element::*;
 
 #[path = "HTMLUnknownElement.rs"]
 pub mod html_unknown_element;
@@ -4282,8 +4282,8 @@ pub mod xr_bounded_reference_space;
 pub(crate) use xr_bounded_reference_space::*;
 
 #[path = "XRCPUDepthInformation.rs"]
-pub mod xrcpu_depth_information;
-pub(crate) use xrcpu_depth_information::*;
+pub mod xr_cpu_depth_information;
+pub(crate) use xr_cpu_depth_information::*;
 
 #[path = "XRCamera.rs"]
 pub mod xr_camera;
