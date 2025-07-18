@@ -26,7 +26,7 @@ pub fn set_timeout(cb: &Function, millis: i32, extra_args: &[Any]) -> i32 {
 /// `clearTimeout(id)`
 #[inline]
 pub fn clear_timeout(id: i32) {
-    emlite::Val::global("clearTimeout").call("", &[id.into()]);
+    emlite::Val::global("clearTimeout").invoke(&[id.into()]);
 }
 
 /// `setInterval(cb, ms, ...args)` → returns id
@@ -43,5 +43,5 @@ pub fn set_interval(cb: &Function, millis: i32, extra_args: &[Any]) -> i32 {
 /// `clearInterval(id)`
 #[inline]
 pub fn clear_interval(id: i32) {
-    emlite::Val::global("clearInterval").call("", &[id.into()]);
+    emlite::Val::global("clearInterval").invoke(&[id.into()]);
 }

@@ -57,8 +57,8 @@ impl Response {
 pub fn fetch(input: &str, init: Option<&Any>) -> Promise {
     let fetch_fn = emlite::Val::global("fetch");
     match init {
-        Some(i) => fetch_fn.call("", &[input.into(), i.clone()]),
-        None => fetch_fn.call("", &[input.into()]),
+        Some(i) => fetch_fn.invoke(&[input.into(), i.clone()]),
+        None => fetch_fn.invoke(&[input.into()]),
     }
     .as_::<Promise>()
 }
@@ -67,8 +67,8 @@ pub fn fetch(input: &str, init: Option<&Any>) -> Promise {
 pub fn fetch_val(input: &Any, init: Option<&Any>) -> Promise {
     let fetch_fn = emlite::Val::global("fetch");
     match init {
-        Some(i) => fetch_fn.call("", &[input.clone(), i.clone()]),
-        None => fetch_fn.call("", &[input.clone()]),
+        Some(i) => fetch_fn.invoke(&[input.clone(), i.clone()]),
+        None => fetch_fn.invoke(&[input.clone()]),
     }
     .as_::<Promise>()
 }
