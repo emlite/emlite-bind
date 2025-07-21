@@ -169,7 +169,7 @@ impl Profiler {
 impl Profiler {
     /// The stop method.
     /// [`Profiler.stop`](https://developer.mozilla.org/en-US/docs/Web/API/Profiler/stop)
-    pub fn stop(&self) -> Promise {
-        self.inner.call("stop", &[]).as_::<Promise>()
+    pub fn stop(&self) -> Promise<ProfilerTrace> {
+        self.inner.call("stop", &[]).as_::<Promise<ProfilerTrace>>()
     }
 }

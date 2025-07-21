@@ -58,10 +58,10 @@ jsbind::utils::impl_dyn_cast!(ScreenOrientation);
 impl ScreenOrientation {
     /// The lock method.
     /// [`ScreenOrientation.lock`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenOrientation/lock)
-    pub fn lock(&self, orientation: &OrientationLockType) -> Promise {
+    pub fn lock(&self, orientation: &OrientationLockType) -> Promise<Undefined> {
         self.inner
             .call("lock", &[orientation.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl ScreenOrientation {

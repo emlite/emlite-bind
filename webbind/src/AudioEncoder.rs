@@ -274,8 +274,8 @@ impl AudioEncoder {
 impl AudioEncoder {
     /// The flush method.
     /// [`AudioEncoder.flush`](https://developer.mozilla.org/en-US/docs/Web/API/AudioEncoder/flush)
-    pub fn flush(&self) -> Promise {
-        self.inner.call("flush", &[]).as_::<Promise>()
+    pub fn flush(&self) -> Promise<Undefined> {
+        self.inner.call("flush", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl AudioEncoder {
@@ -295,9 +295,9 @@ impl AudioEncoder {
 impl AudioEncoder {
     /// The isConfigSupported method.
     /// [`AudioEncoder.isConfigSupported`](https://developer.mozilla.org/en-US/docs/Web/API/AudioEncoder/isConfigSupported)
-    pub fn is_config_supported(config: &AudioEncoderConfig) -> Promise {
+    pub fn is_config_supported(config: &AudioEncoderConfig) -> Promise<AudioEncoderSupport> {
         Any::global("AudioEncoder")
             .call("isConfigSupported", &[config.into()])
-            .as_::<Promise>()
+            .as_::<Promise<AudioEncoderSupport>>()
     }
 }

@@ -154,21 +154,25 @@ impl Serial {
 impl Serial {
     /// The getPorts method.
     /// [`Serial.getPorts`](https://developer.mozilla.org/en-US/docs/Web/API/Serial/getPorts)
-    pub fn get_ports(&self) -> Promise {
-        self.inner.call("getPorts", &[]).as_::<Promise>()
+    pub fn get_ports(&self) -> Promise<Sequence<SerialPort>> {
+        self.inner
+            .call("getPorts", &[])
+            .as_::<Promise<Sequence<SerialPort>>>()
     }
 }
 impl Serial {
     /// The requestPort method.
     /// [`Serial.requestPort`](https://developer.mozilla.org/en-US/docs/Web/API/Serial/requestPort)
-    pub fn request_port0(&self) -> Promise {
-        self.inner.call("requestPort", &[]).as_::<Promise>()
+    pub fn request_port0(&self) -> Promise<SerialPort> {
+        self.inner
+            .call("requestPort", &[])
+            .as_::<Promise<SerialPort>>()
     }
     /// The requestPort method.
     /// [`Serial.requestPort`](https://developer.mozilla.org/en-US/docs/Web/API/Serial/requestPort)
-    pub fn request_port1(&self, options: &SerialPortRequestOptions) -> Promise {
+    pub fn request_port1(&self, options: &SerialPortRequestOptions) -> Promise<SerialPort> {
         self.inner
             .call("requestPort", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<SerialPort>>()
     }
 }

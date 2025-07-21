@@ -381,10 +381,10 @@ impl NavigatorUAData {
 impl NavigatorUAData {
     /// The getHighEntropyValues method.
     /// [`NavigatorUAData.getHighEntropyValues`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorUAData/getHighEntropyValues)
-    pub fn get_high_entropy_values(&self, hints: &Sequence<String>) -> Promise {
+    pub fn get_high_entropy_values(&self, hints: &Sequence<String>) -> Promise<UADataValues> {
         self.inner
             .call("getHighEntropyValues", &[hints.into()])
-            .as_::<Promise>()
+            .as_::<Promise<UADataValues>>()
     }
 }
 impl NavigatorUAData {

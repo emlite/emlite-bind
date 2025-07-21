@@ -162,10 +162,10 @@ impl CustomElementRegistry {
 impl CustomElementRegistry {
     /// The whenDefined method.
     /// [`CustomElementRegistry.whenDefined`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined)
-    pub fn when_defined(&self, name: &str) -> Promise {
+    pub fn when_defined(&self, name: &str) -> Promise<Function> {
         self.inner
             .call("whenDefined", &[name.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Function>>()
     }
 }
 impl CustomElementRegistry {

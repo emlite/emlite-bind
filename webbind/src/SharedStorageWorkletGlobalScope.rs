@@ -214,8 +214,10 @@ impl SharedStorageWorkletGlobalScope {
 impl SharedStorageWorkletGlobalScope {
     /// The interestGroups method.
     /// [`SharedStorageWorkletGlobalScope.interestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/interestGroups)
-    pub fn interest_groups(&self) -> Promise {
-        self.inner.call("interestGroups", &[]).as_::<Promise>()
+    pub fn interest_groups(&self) -> Promise<Sequence<StorageInterestGroup>> {
+        self.inner
+            .call("interestGroups", &[])
+            .as_::<Promise<Sequence<StorageInterestGroup>>>()
     }
 }
 impl SharedStorageWorkletGlobalScope {

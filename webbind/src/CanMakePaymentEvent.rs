@@ -68,7 +68,7 @@ impl CanMakePaymentEvent {
 impl CanMakePaymentEvent {
     /// The respondWith method.
     /// [`CanMakePaymentEvent.respondWith`](https://developer.mozilla.org/en-US/docs/Web/API/CanMakePaymentEvent/respondWith)
-    pub fn respond_with(&self, can_make_payment_response: &Promise) -> Undefined {
+    pub fn respond_with(&self, can_make_payment_response: Promise<bool>) -> Undefined {
         self.inner
             .call("respondWith", &[can_make_payment_response.into()])
             .as_::<Undefined>()

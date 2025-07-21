@@ -117,10 +117,10 @@ jsbind::utils::impl_dyn_cast!(IdentityCredential);
 impl IdentityCredential {
     /// The disconnect method.
     /// [`IdentityCredential.disconnect`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredential/disconnect)
-    pub fn disconnect(options: &IdentityCredentialDisconnectOptions) -> Promise {
+    pub fn disconnect(options: &IdentityCredentialDisconnectOptions) -> Promise<Undefined> {
         Any::global("IdentityCredential")
             .call("disconnect", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl IdentityCredential {

@@ -117,14 +117,19 @@ jsbind::utils::impl_dyn_cast!(Ink);
 impl Ink {
     /// The requestPresenter method.
     /// [`Ink.requestPresenter`](https://developer.mozilla.org/en-US/docs/Web/API/Ink/requestPresenter)
-    pub fn request_presenter0(&self) -> Promise {
-        self.inner.call("requestPresenter", &[]).as_::<Promise>()
+    pub fn request_presenter0(&self) -> Promise<DelegatedInkTrailPresenter> {
+        self.inner
+            .call("requestPresenter", &[])
+            .as_::<Promise<DelegatedInkTrailPresenter>>()
     }
     /// The requestPresenter method.
     /// [`Ink.requestPresenter`](https://developer.mozilla.org/en-US/docs/Web/API/Ink/requestPresenter)
-    pub fn request_presenter1(&self, param: &InkPresenterParam) -> Promise {
+    pub fn request_presenter1(
+        &self,
+        param: &InkPresenterParam,
+    ) -> Promise<DelegatedInkTrailPresenter> {
         self.inner
             .call("requestPresenter", &[param.into()])
-            .as_::<Promise>()
+            .as_::<Promise<DelegatedInkTrailPresenter>>()
     }
 }

@@ -126,37 +126,39 @@ jsbind::utils::impl_dyn_cast!(Clients);
 impl Clients {
     /// The get method.
     /// [`Clients.get`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/get)
-    pub fn get(&self, id: &str) -> Promise {
-        self.inner.call("get", &[id.into()]).as_::<Promise>()
+    pub fn get(&self, id: &str) -> Promise<Any> {
+        self.inner.call("get", &[id.into()]).as_::<Promise<Any>>()
     }
 }
 impl Clients {
     /// The matchAll method.
     /// [`Clients.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll)
-    pub fn match_all0(&self) -> Promise {
-        self.inner.call("matchAll", &[]).as_::<Promise>()
+    pub fn match_all0(&self) -> Promise<FrozenArray<Client>> {
+        self.inner
+            .call("matchAll", &[])
+            .as_::<Promise<FrozenArray<Client>>>()
     }
     /// The matchAll method.
     /// [`Clients.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll)
-    pub fn match_all1(&self, options: &ClientQueryOptions) -> Promise {
+    pub fn match_all1(&self, options: &ClientQueryOptions) -> Promise<FrozenArray<Client>> {
         self.inner
             .call("matchAll", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<FrozenArray<Client>>>()
     }
 }
 impl Clients {
     /// The openWindow method.
     /// [`Clients.openWindow`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/openWindow)
-    pub fn open_window(&self, url: &str) -> Promise {
+    pub fn open_window(&self, url: &str) -> Promise<WindowClient> {
         self.inner
             .call("openWindow", &[url.into()])
-            .as_::<Promise>()
+            .as_::<Promise<WindowClient>>()
     }
 }
 impl Clients {
     /// The claim method.
     /// [`Clients.claim`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/claim)
-    pub fn claim(&self) -> Promise {
-        self.inner.call("claim", &[]).as_::<Promise>()
+    pub fn claim(&self) -> Promise<Undefined> {
+        self.inner.call("claim", &[]).as_::<Promise<Undefined>>()
     }
 }

@@ -1,5 +1,7 @@
 use super::*;
 
-pub fn gc() -> Promise {
-    Any::global("TestUtils").call("gc", &[]).as_::<Promise>()
+pub fn gc() -> Promise<Undefined> {
+    Any::global("TestUtils")
+        .call("gc", &[])
+        .as_::<Promise<Undefined>>()
 }

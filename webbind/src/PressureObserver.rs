@@ -127,17 +127,21 @@ impl PressureObserver {
 impl PressureObserver {
     /// The observe method.
     /// [`PressureObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/PressureObserver/observe)
-    pub fn observe0(&self, source: &PressureSource) -> Promise {
+    pub fn observe0(&self, source: &PressureSource) -> Promise<Undefined> {
         self.inner
             .call("observe", &[source.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
     /// The observe method.
     /// [`PressureObserver.observe`](https://developer.mozilla.org/en-US/docs/Web/API/PressureObserver/observe)
-    pub fn observe1(&self, source: &PressureSource, options: &PressureObserverOptions) -> Promise {
+    pub fn observe1(
+        &self,
+        source: &PressureSource,
+        options: &PressureObserverOptions,
+    ) -> Promise<Undefined> {
         self.inner
             .call("observe", &[source.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl PressureObserver {

@@ -93,15 +93,19 @@ impl StorageAccessHandle {
 impl StorageAccessHandle {
     /// The getDirectory method.
     /// [`StorageAccessHandle.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/StorageAccessHandle/getDirectory)
-    pub fn get_directory(&self) -> Promise {
-        self.inner.call("getDirectory", &[]).as_::<Promise>()
+    pub fn get_directory(&self) -> Promise<FileSystemDirectoryHandle> {
+        self.inner
+            .call("getDirectory", &[])
+            .as_::<Promise<FileSystemDirectoryHandle>>()
     }
 }
 impl StorageAccessHandle {
     /// The estimate method.
     /// [`StorageAccessHandle.estimate`](https://developer.mozilla.org/en-US/docs/Web/API/StorageAccessHandle/estimate)
-    pub fn estimate(&self) -> Promise {
-        self.inner.call("estimate", &[]).as_::<Promise>()
+    pub fn estimate(&self) -> Promise<StorageEstimate> {
+        self.inner
+            .call("estimate", &[])
+            .as_::<Promise<StorageEstimate>>()
     }
 }
 impl StorageAccessHandle {

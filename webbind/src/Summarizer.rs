@@ -311,49 +311,49 @@ jsbind::utils::impl_dyn_cast!(Summarizer);
 impl Summarizer {
     /// The create method.
     /// [`Summarizer.create`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/create)
-    pub fn create0() -> Promise {
+    pub fn create0() -> Promise<Summarizer> {
         Any::global("Summarizer")
             .call("create", &[])
-            .as_::<Promise>()
+            .as_::<Promise<Summarizer>>()
     }
     /// The create method.
     /// [`Summarizer.create`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/create)
-    pub fn create1(options: &SummarizerCreateOptions) -> Promise {
+    pub fn create1(options: &SummarizerCreateOptions) -> Promise<Summarizer> {
         Any::global("Summarizer")
             .call("create", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Summarizer>>()
     }
 }
 impl Summarizer {
     /// The availability method.
     /// [`Summarizer.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/availability)
-    pub fn availability0() -> Promise {
+    pub fn availability0() -> Promise<Availability> {
         Any::global("Summarizer")
             .call("availability", &[])
-            .as_::<Promise>()
+            .as_::<Promise<Availability>>()
     }
     /// The availability method.
     /// [`Summarizer.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/availability)
-    pub fn availability1(options: &SummarizerCreateCoreOptions) -> Promise {
+    pub fn availability1(options: &SummarizerCreateCoreOptions) -> Promise<Availability> {
         Any::global("Summarizer")
             .call("availability", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Availability>>()
     }
 }
 impl Summarizer {
     /// The summarize method.
     /// [`Summarizer.summarize`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/summarize)
-    pub fn summarize0(&self, input: &str) -> Promise {
+    pub fn summarize0(&self, input: &str) -> Promise<String> {
         self.inner
             .call("summarize", &[input.into()])
-            .as_::<Promise>()
+            .as_::<Promise<String>>()
     }
     /// The summarize method.
     /// [`Summarizer.summarize`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/summarize)
-    pub fn summarize1(&self, input: &str, options: &SummarizerSummarizeOptions) -> Promise {
+    pub fn summarize1(&self, input: &str, options: &SummarizerSummarizeOptions) -> Promise<String> {
         self.inner
             .call("summarize", &[input.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<String>>()
     }
 }
 impl Summarizer {
@@ -432,10 +432,10 @@ impl Summarizer {
 impl Summarizer {
     /// The measureInputUsage method.
     /// [`Summarizer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/measureInputUsage)
-    pub fn measure_input_usage0(&self, input: &str) -> Promise {
+    pub fn measure_input_usage0(&self, input: &str) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into()])
-            .as_::<Promise>()
+            .as_::<Promise<f64>>()
     }
     /// The measureInputUsage method.
     /// [`Summarizer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/measureInputUsage)
@@ -443,10 +443,10 @@ impl Summarizer {
         &self,
         input: &str,
         options: &SummarizerSummarizeOptions,
-    ) -> Promise {
+    ) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<f64>>()
     }
 }
 impl Summarizer {

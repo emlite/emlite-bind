@@ -418,8 +418,8 @@ impl VideoEncoder {
 impl VideoEncoder {
     /// The flush method.
     /// [`VideoEncoder.flush`](https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder/flush)
-    pub fn flush(&self) -> Promise {
-        self.inner.call("flush", &[]).as_::<Promise>()
+    pub fn flush(&self) -> Promise<Undefined> {
+        self.inner.call("flush", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl VideoEncoder {
@@ -439,9 +439,9 @@ impl VideoEncoder {
 impl VideoEncoder {
     /// The isConfigSupported method.
     /// [`VideoEncoder.isConfigSupported`](https://developer.mozilla.org/en-US/docs/Web/API/VideoEncoder/isConfigSupported)
-    pub fn is_config_supported(config: &VideoEncoderConfig) -> Promise {
+    pub fn is_config_supported(config: &VideoEncoderConfig) -> Promise<VideoEncoderSupport> {
         Any::global("VideoEncoder")
             .call("isConfigSupported", &[config.into()])
-            .as_::<Promise>()
+            .as_::<Promise<VideoEncoderSupport>>()
     }
 }

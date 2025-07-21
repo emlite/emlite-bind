@@ -253,35 +253,35 @@ jsbind::utils::impl_dyn_cast!(Translator);
 impl Translator {
     /// The create method.
     /// [`Translator.create`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/create)
-    pub fn create(options: &TranslatorCreateOptions) -> Promise {
+    pub fn create(options: &TranslatorCreateOptions) -> Promise<Translator> {
         Any::global("Translator")
             .call("create", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Translator>>()
     }
 }
 impl Translator {
     /// The availability method.
     /// [`Translator.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/availability)
-    pub fn availability(options: &TranslatorCreateCoreOptions) -> Promise {
+    pub fn availability(options: &TranslatorCreateCoreOptions) -> Promise<Availability> {
         Any::global("Translator")
             .call("availability", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Availability>>()
     }
 }
 impl Translator {
     /// The translate method.
     /// [`Translator.translate`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/translate)
-    pub fn translate0(&self, input: &str) -> Promise {
+    pub fn translate0(&self, input: &str) -> Promise<String> {
         self.inner
             .call("translate", &[input.into()])
-            .as_::<Promise>()
+            .as_::<Promise<String>>()
     }
     /// The translate method.
     /// [`Translator.translate`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/translate)
-    pub fn translate1(&self, input: &str, options: &TranslatorTranslateOptions) -> Promise {
+    pub fn translate1(&self, input: &str, options: &TranslatorTranslateOptions) -> Promise<String> {
         self.inner
             .call("translate", &[input.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<String>>()
     }
 }
 impl Translator {
@@ -321,10 +321,10 @@ impl Translator {
 impl Translator {
     /// The measureInputUsage method.
     /// [`Translator.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/measureInputUsage)
-    pub fn measure_input_usage0(&self, input: &str) -> Promise {
+    pub fn measure_input_usage0(&self, input: &str) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into()])
-            .as_::<Promise>()
+            .as_::<Promise<f64>>()
     }
     /// The measureInputUsage method.
     /// [`Translator.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/measureInputUsage)
@@ -332,10 +332,10 @@ impl Translator {
         &self,
         input: &str,
         options: &TranslatorTranslateOptions,
-    ) -> Promise {
+    ) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<f64>>()
     }
 }
 impl Translator {

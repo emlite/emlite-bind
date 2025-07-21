@@ -58,9 +58,9 @@ jsbind::utils::impl_dyn_cast!(NavigatorLogin);
 impl NavigatorLogin {
     /// The setStatus method.
     /// [`NavigatorLogin.setStatus`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorLogin/setStatus)
-    pub fn set_status(&self, status: &LoginStatus) -> Promise {
+    pub fn set_status(&self, status: &LoginStatus) -> Promise<Undefined> {
         self.inner
             .call("setStatus", &[status.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }

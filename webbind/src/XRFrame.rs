@@ -90,10 +90,10 @@ impl XRFrame {
 impl XRFrame {
     /// The createAnchor method.
     /// [`XRFrame.createAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/createAnchor)
-    pub fn create_anchor(&self, pose: &XRRigidTransform, space: &XRSpace) -> Promise {
+    pub fn create_anchor(&self, pose: &XRRigidTransform, space: &XRSpace) -> Promise<XRAnchor> {
         self.inner
             .call("createAnchor", &[pose.into(), space.into()])
-            .as_::<Promise>()
+            .as_::<Promise<XRAnchor>>()
     }
 }
 impl XRFrame {

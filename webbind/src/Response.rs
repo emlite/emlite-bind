@@ -105,8 +105,8 @@ impl Response {
 impl Response {
     /// The json method.
     /// [`Response.json`](https://developer.mozilla.org/en-US/docs/Web/API/Response/json)
-    pub fn json(&self) -> Promise {
-        self.inner.call("json", &[]).as_::<Promise>()
+    pub fn json(&self) -> Promise<Any> {
+        self.inner.call("json", &[]).as_::<Promise<Any>>()
     }
 }
 impl Response {
@@ -182,35 +182,37 @@ impl Response {
 impl Response {
     /// The arrayBuffer method.
     /// [`Response.arrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/Response/arrayBuffer)
-    pub fn array_buffer(&self) -> Promise {
-        self.inner.call("arrayBuffer", &[]).as_::<Promise>()
+    pub fn array_buffer(&self) -> Promise<ArrayBuffer> {
+        self.inner
+            .call("arrayBuffer", &[])
+            .as_::<Promise<ArrayBuffer>>()
     }
 }
 impl Response {
     /// The blob method.
     /// [`Response.blob`](https://developer.mozilla.org/en-US/docs/Web/API/Response/blob)
-    pub fn blob(&self) -> Promise {
-        self.inner.call("blob", &[]).as_::<Promise>()
+    pub fn blob(&self) -> Promise<Blob> {
+        self.inner.call("blob", &[]).as_::<Promise<Blob>>()
     }
 }
 impl Response {
     /// The bytes method.
     /// [`Response.bytes`](https://developer.mozilla.org/en-US/docs/Web/API/Response/bytes)
-    pub fn bytes(&self) -> Promise {
-        self.inner.call("bytes", &[]).as_::<Promise>()
+    pub fn bytes(&self) -> Promise<Uint8Array> {
+        self.inner.call("bytes", &[]).as_::<Promise<Uint8Array>>()
     }
 }
 impl Response {
     /// The formData method.
     /// [`Response.formData`](https://developer.mozilla.org/en-US/docs/Web/API/Response/formData)
-    pub fn form_data(&self) -> Promise {
-        self.inner.call("formData", &[]).as_::<Promise>()
+    pub fn form_data(&self) -> Promise<FormData> {
+        self.inner.call("formData", &[]).as_::<Promise<FormData>>()
     }
 }
 impl Response {
     /// The text method.
     /// [`Response.text`](https://developer.mozilla.org/en-US/docs/Web/API/Response/text)
-    pub fn text(&self) -> Promise {
-        self.inner.call("text", &[]).as_::<Promise>()
+    pub fn text(&self) -> Promise<String> {
+        self.inner.call("text", &[]).as_::<Promise<String>>()
     }
 }

@@ -198,8 +198,10 @@ impl LayoutChild {
 impl LayoutChild {
     /// The intrinsicSizes method.
     /// [`LayoutChild.intrinsicSizes`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutChild/intrinsicSizes)
-    pub fn intrinsic_sizes(&self) -> Promise {
-        self.inner.call("intrinsicSizes", &[]).as_::<Promise>()
+    pub fn intrinsic_sizes(&self) -> Promise<IntrinsicSizes> {
+        self.inner
+            .call("intrinsicSizes", &[])
+            .as_::<Promise<IntrinsicSizes>>()
     }
 }
 impl LayoutChild {
@@ -209,12 +211,12 @@ impl LayoutChild {
         &self,
         constraints: &LayoutConstraintsOptions,
         break_token: &ChildBreakToken,
-    ) -> Promise {
+    ) -> Promise<LayoutFragment> {
         self.inner
             .call(
                 "layoutNextFragment",
                 &[constraints.into(), break_token.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<LayoutFragment>>()
     }
 }

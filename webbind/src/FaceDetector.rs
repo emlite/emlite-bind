@@ -143,7 +143,9 @@ impl FaceDetector {
 impl FaceDetector {
     /// The detect method.
     /// [`FaceDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/FaceDetector/detect)
-    pub fn detect(&self, image: &Any) -> Promise {
-        self.inner.call("detect", &[image.into()]).as_::<Promise>()
+    pub fn detect(&self, image: &Any) -> Promise<Sequence<DetectedFace>> {
+        self.inner
+            .call("detect", &[image.into()])
+            .as_::<Promise<Sequence<DetectedFace>>>()
     }
 }

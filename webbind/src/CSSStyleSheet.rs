@@ -112,8 +112,10 @@ impl CSSStyleSheet {
 impl CSSStyleSheet {
     /// The replace method.
     /// [`CSSStyleSheet.replace`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/replace)
-    pub fn replace(&self, text: &str) -> Promise {
-        self.inner.call("replace", &[text.into()]).as_::<Promise>()
+    pub fn replace(&self, text: &str) -> Promise<CSSStyleSheet> {
+        self.inner
+            .call("replace", &[text.into()])
+            .as_::<Promise<CSSStyleSheet>>()
     }
 }
 impl CSSStyleSheet {

@@ -75,8 +75,8 @@ impl FetchEvent {
 impl FetchEvent {
     /// Getter of the `preloadResponse` attribute.
     /// [`FetchEvent.preloadResponse`](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/preloadResponse)
-    pub fn preload_response(&self) -> Promise {
-        self.inner.get("preloadResponse").as_::<Promise>()
+    pub fn preload_response(&self) -> Promise<Any> {
+        self.inner.get("preloadResponse").as_::<Promise<Any>>()
     }
 }
 impl FetchEvent {
@@ -103,14 +103,14 @@ impl FetchEvent {
 impl FetchEvent {
     /// Getter of the `handled` attribute.
     /// [`FetchEvent.handled`](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/handled)
-    pub fn handled(&self) -> Promise {
-        self.inner.get("handled").as_::<Promise>()
+    pub fn handled(&self) -> Promise<Undefined> {
+        self.inner.get("handled").as_::<Promise<Undefined>>()
     }
 }
 impl FetchEvent {
     /// The respondWith method.
     /// [`FetchEvent.respondWith`](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith)
-    pub fn respond_with(&self, r: &Promise) -> Undefined {
+    pub fn respond_with(&self, r: &Promise<Response>) -> Undefined {
         self.inner
             .call("respondWith", &[r.into()])
             .as_::<Undefined>()

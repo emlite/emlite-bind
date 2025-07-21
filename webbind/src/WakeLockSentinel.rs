@@ -72,8 +72,8 @@ impl WakeLockSentinel {
 impl WakeLockSentinel {
     /// The release method.
     /// [`WakeLockSentinel.release`](https://developer.mozilla.org/en-US/docs/Web/API/WakeLockSentinel/release)
-    pub fn release(&self) -> Promise {
-        self.inner.call("release", &[]).as_::<Promise>()
+    pub fn release(&self) -> Promise<Undefined> {
+        self.inner.call("release", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl WakeLockSentinel {

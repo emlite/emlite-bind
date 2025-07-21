@@ -72,8 +72,10 @@ impl MediaKeySession {
 impl MediaKeySession {
     /// Getter of the `closed` attribute.
     /// [`MediaKeySession.closed`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/closed)
-    pub fn closed(&self) -> Promise {
-        self.inner.get("closed").as_::<Promise>()
+    pub fn closed(&self) -> Promise<MediaKeySessionClosedReason> {
+        self.inner
+            .get("closed")
+            .as_::<Promise<MediaKeySessionClosedReason>>()
     }
 }
 impl MediaKeySession {
@@ -112,44 +114,44 @@ impl MediaKeySession {
 impl MediaKeySession {
     /// The generateRequest method.
     /// [`MediaKeySession.generateRequest`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/generateRequest)
-    pub fn generate_request(&self, init_data_type: &str, init_data: &Any) -> Promise {
+    pub fn generate_request(&self, init_data_type: &str, init_data: &Any) -> Promise<Undefined> {
         self.inner
             .call(
                 "generateRequest",
                 &[init_data_type.into(), init_data.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl MediaKeySession {
     /// The load method.
     /// [`MediaKeySession.load`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/load)
-    pub fn load(&self, session_id: &str) -> Promise {
+    pub fn load(&self, session_id: &str) -> Promise<bool> {
         self.inner
             .call("load", &[session_id.into()])
-            .as_::<Promise>()
+            .as_::<Promise<bool>>()
     }
 }
 impl MediaKeySession {
     /// The update method.
     /// [`MediaKeySession.update`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/update)
-    pub fn update(&self, response: &Any) -> Promise {
+    pub fn update(&self, response: &Any) -> Promise<Undefined> {
         self.inner
             .call("update", &[response.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl MediaKeySession {
     /// The close method.
     /// [`MediaKeySession.close`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/close)
-    pub fn close(&self) -> Promise {
-        self.inner.call("close", &[]).as_::<Promise>()
+    pub fn close(&self) -> Promise<Undefined> {
+        self.inner.call("close", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl MediaKeySession {
     /// The remove method.
     /// [`MediaKeySession.remove`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/remove)
-    pub fn remove(&self) -> Promise {
-        self.inner.call("remove", &[]).as_::<Promise>()
+    pub fn remove(&self) -> Promise<Undefined> {
+        self.inner.call("remove", &[]).as_::<Promise<Undefined>>()
     }
 }

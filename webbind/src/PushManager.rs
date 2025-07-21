@@ -135,35 +135,44 @@ impl PushManager {
 impl PushManager {
     /// The subscribe method.
     /// [`PushManager.subscribe`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/subscribe)
-    pub fn subscribe0(&self) -> Promise {
-        self.inner.call("subscribe", &[]).as_::<Promise>()
+    pub fn subscribe0(&self) -> Promise<PushSubscription> {
+        self.inner
+            .call("subscribe", &[])
+            .as_::<Promise<PushSubscription>>()
     }
     /// The subscribe method.
     /// [`PushManager.subscribe`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/subscribe)
-    pub fn subscribe1(&self, options: &PushSubscriptionOptionsInit) -> Promise {
+    pub fn subscribe1(&self, options: &PushSubscriptionOptionsInit) -> Promise<PushSubscription> {
         self.inner
             .call("subscribe", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<PushSubscription>>()
     }
 }
 impl PushManager {
     /// The getSubscription method.
     /// [`PushManager.getSubscription`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/getSubscription)
-    pub fn get_subscription(&self) -> Promise {
-        self.inner.call("getSubscription", &[]).as_::<Promise>()
+    pub fn get_subscription(&self) -> Promise<PushSubscription> {
+        self.inner
+            .call("getSubscription", &[])
+            .as_::<Promise<PushSubscription>>()
     }
 }
 impl PushManager {
     /// The permissionState method.
     /// [`PushManager.permissionState`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/permissionState)
-    pub fn permission_state0(&self) -> Promise {
-        self.inner.call("permissionState", &[]).as_::<Promise>()
+    pub fn permission_state0(&self) -> Promise<PermissionState> {
+        self.inner
+            .call("permissionState", &[])
+            .as_::<Promise<PermissionState>>()
     }
     /// The permissionState method.
     /// [`PushManager.permissionState`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/permissionState)
-    pub fn permission_state1(&self, options: &PushSubscriptionOptionsInit) -> Promise {
+    pub fn permission_state1(
+        &self,
+        options: &PushSubscriptionOptionsInit,
+    ) -> Promise<PermissionState> {
         self.inner
             .call("permissionState", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<PermissionState>>()
     }
 }

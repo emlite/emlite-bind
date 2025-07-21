@@ -69,7 +69,6 @@ export function rust(idlType) {
     USVString: "String",
     ByteString: "String",
     CSSOMString: "String",
-    Promise: "Promise",
     object: "Object",
     any: "Any",
     Uint8Array: "Uint8Array",
@@ -94,6 +93,10 @@ export function rust(idlType) {
 
     if (idlType.generic === "sequence") {
       return `Sequence<${rust(elem)}>`;
+    }
+
+    if (idlType.generic === "Promise") {
+      return `Promise<${rust(elem)}>`;
     }
 
     if (idlType.generic === "FrozenArray") {

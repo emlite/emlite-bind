@@ -985,10 +985,13 @@ impl Window {
 impl Window {
     /// The getDigitalGoodsService method.
     /// [`Window.getDigitalGoodsService`](https://developer.mozilla.org/en-US/docs/Web/API/Window/getDigitalGoodsService)
-    pub fn get_digital_goods_service(&self, service_provider: &str) -> Promise {
+    pub fn get_digital_goods_service(
+        &self,
+        service_provider: &str,
+    ) -> Promise<DigitalGoodsService> {
         self.inner
             .call("getDigitalGoodsService", &[service_provider.into()])
-            .as_::<Promise>()
+            .as_::<Promise<DigitalGoodsService>>()
     }
 }
 impl Window {
@@ -1017,43 +1020,58 @@ impl Window {
 impl Window {
     /// The showOpenFilePicker method.
     /// [`Window.showOpenFilePicker`](https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker)
-    pub fn show_open_file_picker0(&self) -> Promise {
-        self.inner.call("showOpenFilePicker", &[]).as_::<Promise>()
+    pub fn show_open_file_picker0(&self) -> Promise<Sequence<FileSystemFileHandle>> {
+        self.inner
+            .call("showOpenFilePicker", &[])
+            .as_::<Promise<Sequence<FileSystemFileHandle>>>()
     }
     /// The showOpenFilePicker method.
     /// [`Window.showOpenFilePicker`](https://developer.mozilla.org/en-US/docs/Web/API/Window/showOpenFilePicker)
-    pub fn show_open_file_picker1(&self, options: &OpenFilePickerOptions) -> Promise {
+    pub fn show_open_file_picker1(
+        &self,
+        options: &OpenFilePickerOptions,
+    ) -> Promise<Sequence<FileSystemFileHandle>> {
         self.inner
             .call("showOpenFilePicker", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<FileSystemFileHandle>>>()
     }
 }
 impl Window {
     /// The showSaveFilePicker method.
     /// [`Window.showSaveFilePicker`](https://developer.mozilla.org/en-US/docs/Web/API/Window/showSaveFilePicker)
-    pub fn show_save_file_picker0(&self) -> Promise {
-        self.inner.call("showSaveFilePicker", &[]).as_::<Promise>()
+    pub fn show_save_file_picker0(&self) -> Promise<FileSystemFileHandle> {
+        self.inner
+            .call("showSaveFilePicker", &[])
+            .as_::<Promise<FileSystemFileHandle>>()
     }
     /// The showSaveFilePicker method.
     /// [`Window.showSaveFilePicker`](https://developer.mozilla.org/en-US/docs/Web/API/Window/showSaveFilePicker)
-    pub fn show_save_file_picker1(&self, options: &SaveFilePickerOptions) -> Promise {
+    pub fn show_save_file_picker1(
+        &self,
+        options: &SaveFilePickerOptions,
+    ) -> Promise<FileSystemFileHandle> {
         self.inner
             .call("showSaveFilePicker", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<FileSystemFileHandle>>()
     }
 }
 impl Window {
     /// The showDirectoryPicker method.
     /// [`Window.showDirectoryPicker`](https://developer.mozilla.org/en-US/docs/Web/API/Window/showDirectoryPicker)
-    pub fn show_directory_picker0(&self) -> Promise {
-        self.inner.call("showDirectoryPicker", &[]).as_::<Promise>()
+    pub fn show_directory_picker0(&self) -> Promise<FileSystemDirectoryHandle> {
+        self.inner
+            .call("showDirectoryPicker", &[])
+            .as_::<Promise<FileSystemDirectoryHandle>>()
     }
     /// The showDirectoryPicker method.
     /// [`Window.showDirectoryPicker`](https://developer.mozilla.org/en-US/docs/Web/API/Window/showDirectoryPicker)
-    pub fn show_directory_picker1(&self, options: &DirectoryPickerOptions) -> Promise {
+    pub fn show_directory_picker1(
+        &self,
+        options: &DirectoryPickerOptions,
+    ) -> Promise<FileSystemDirectoryHandle> {
         self.inner
             .call("showDirectoryPicker", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<FileSystemDirectoryHandle>>()
     }
 }
 impl Window {
@@ -1080,15 +1098,17 @@ impl Window {
 impl Window {
     /// The queryLocalFonts method.
     /// [`Window.queryLocalFonts`](https://developer.mozilla.org/en-US/docs/Web/API/Window/queryLocalFonts)
-    pub fn query_local_fonts0(&self) -> Promise {
-        self.inner.call("queryLocalFonts", &[]).as_::<Promise>()
+    pub fn query_local_fonts0(&self) -> Promise<Sequence<FontData>> {
+        self.inner
+            .call("queryLocalFonts", &[])
+            .as_::<Promise<Sequence<FontData>>>()
     }
     /// The queryLocalFonts method.
     /// [`Window.queryLocalFonts`](https://developer.mozilla.org/en-US/docs/Web/API/Window/queryLocalFonts)
-    pub fn query_local_fonts1(&self, options: &QueryOptions) -> Promise {
+    pub fn query_local_fonts1(&self, options: &QueryOptions) -> Promise<Sequence<FontData>> {
         self.inner
             .call("queryLocalFonts", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<FontData>>>()
     }
 }
 impl Window {
@@ -1219,8 +1239,10 @@ impl Window {
 impl Window {
     /// The getScreenDetails method.
     /// [`Window.getScreenDetails`](https://developer.mozilla.org/en-US/docs/Web/API/Window/getScreenDetails)
-    pub fn get_screen_details(&self) -> Promise {
-        self.inner.call("getScreenDetails", &[]).as_::<Promise>()
+    pub fn get_screen_details(&self) -> Promise<ScreenDetails> {
+        self.inner
+            .call("getScreenDetails", &[])
+            .as_::<Promise<ScreenDetails>>()
     }
 }
 impl Window {

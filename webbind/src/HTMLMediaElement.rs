@@ -297,8 +297,8 @@ impl HTMLMediaElement {
 impl HTMLMediaElement {
     /// The play method.
     /// [`HTMLMediaElement.play`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/play)
-    pub fn play(&self) -> Promise {
-        self.inner.call("play", &[]).as_::<Promise>()
+    pub fn play(&self) -> Promise<Undefined> {
+        self.inner.call("play", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl HTMLMediaElement {
@@ -417,10 +417,10 @@ impl HTMLMediaElement {
 impl HTMLMediaElement {
     /// The setSinkId method.
     /// [`HTMLMediaElement.setSinkId`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/setSinkId)
-    pub fn set_sink_id(&self, sink_id: &str) -> Promise {
+    pub fn set_sink_id(&self, sink_id: &str) -> Promise<Undefined> {
         self.inner
             .call("setSinkId", &[sink_id.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl HTMLMediaElement {
@@ -459,10 +459,10 @@ impl HTMLMediaElement {
 impl HTMLMediaElement {
     /// The setMediaKeys method.
     /// [`HTMLMediaElement.setMediaKeys`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/setMediaKeys)
-    pub fn set_media_keys(&self, media_keys: &MediaKeys) -> Promise {
+    pub fn set_media_keys(&self, media_keys: &MediaKeys) -> Promise<Undefined> {
         self.inner
             .call("setMediaKeys", &[media_keys.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl HTMLMediaElement {

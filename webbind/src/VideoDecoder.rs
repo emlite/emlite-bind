@@ -332,8 +332,8 @@ impl VideoDecoder {
 impl VideoDecoder {
     /// The flush method.
     /// [`VideoDecoder.flush`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/flush)
-    pub fn flush(&self) -> Promise {
-        self.inner.call("flush", &[]).as_::<Promise>()
+    pub fn flush(&self) -> Promise<Undefined> {
+        self.inner.call("flush", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl VideoDecoder {
@@ -353,9 +353,9 @@ impl VideoDecoder {
 impl VideoDecoder {
     /// The isConfigSupported method.
     /// [`VideoDecoder.isConfigSupported`](https://developer.mozilla.org/en-US/docs/Web/API/VideoDecoder/isConfigSupported)
-    pub fn is_config_supported(config: &VideoDecoderConfig) -> Promise {
+    pub fn is_config_supported(config: &VideoDecoderConfig) -> Promise<VideoDecoderSupport> {
         Any::global("VideoDecoder")
             .call("isConfigSupported", &[config.into()])
-            .as_::<Promise>()
+            .as_::<Promise<VideoDecoderSupport>>()
     }
 }

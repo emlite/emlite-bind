@@ -360,31 +360,33 @@ impl WebTransport {
 impl WebTransport {
     /// The getStats method.
     /// [`WebTransport.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/getStats)
-    pub fn get_stats(&self) -> Promise {
-        self.inner.call("getStats", &[]).as_::<Promise>()
+    pub fn get_stats(&self) -> Promise<WebTransportConnectionStats> {
+        self.inner
+            .call("getStats", &[])
+            .as_::<Promise<WebTransportConnectionStats>>()
     }
 }
 impl WebTransport {
     /// The exportKeyingMaterial method.
     /// [`WebTransport.exportKeyingMaterial`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/exportKeyingMaterial)
-    pub fn export_keying_material0(&self, label: &Any) -> Promise {
+    pub fn export_keying_material0(&self, label: &Any) -> Promise<ArrayBuffer> {
         self.inner
             .call("exportKeyingMaterial", &[label.into()])
-            .as_::<Promise>()
+            .as_::<Promise<ArrayBuffer>>()
     }
     /// The exportKeyingMaterial method.
     /// [`WebTransport.exportKeyingMaterial`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/exportKeyingMaterial)
-    pub fn export_keying_material1(&self, label: &Any, context: &Any) -> Promise {
+    pub fn export_keying_material1(&self, label: &Any, context: &Any) -> Promise<ArrayBuffer> {
         self.inner
             .call("exportKeyingMaterial", &[label.into(), context.into()])
-            .as_::<Promise>()
+            .as_::<Promise<ArrayBuffer>>()
     }
 }
 impl WebTransport {
     /// Getter of the `ready` attribute.
     /// [`WebTransport.ready`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/ready)
-    pub fn ready(&self) -> Promise {
-        self.inner.get("ready").as_::<Promise>()
+    pub fn ready(&self) -> Promise<Undefined> {
+        self.inner.get("ready").as_::<Promise<Undefined>>()
     }
 }
 impl WebTransport {
@@ -447,15 +449,17 @@ impl WebTransport {
 impl WebTransport {
     /// Getter of the `closed` attribute.
     /// [`WebTransport.closed`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/closed)
-    pub fn closed(&self) -> Promise {
-        self.inner.get("closed").as_::<Promise>()
+    pub fn closed(&self) -> Promise<WebTransportCloseInfo> {
+        self.inner
+            .get("closed")
+            .as_::<Promise<WebTransportCloseInfo>>()
     }
 }
 impl WebTransport {
     /// Getter of the `draining` attribute.
     /// [`WebTransport.draining`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/draining)
-    pub fn draining(&self) -> Promise {
-        self.inner.get("draining").as_::<Promise>()
+    pub fn draining(&self) -> Promise<Undefined> {
+        self.inner.get("draining").as_::<Promise<Undefined>>()
     }
 }
 impl WebTransport {
@@ -484,17 +488,20 @@ impl WebTransport {
 impl WebTransport {
     /// The createBidirectionalStream method.
     /// [`WebTransport.createBidirectionalStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/createBidirectionalStream)
-    pub fn create_bidirectional_stream0(&self) -> Promise {
+    pub fn create_bidirectional_stream0(&self) -> Promise<WebTransportBidirectionalStream> {
         self.inner
             .call("createBidirectionalStream", &[])
-            .as_::<Promise>()
+            .as_::<Promise<WebTransportBidirectionalStream>>()
     }
     /// The createBidirectionalStream method.
     /// [`WebTransport.createBidirectionalStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/createBidirectionalStream)
-    pub fn create_bidirectional_stream1(&self, options: &WebTransportSendStreamOptions) -> Promise {
+    pub fn create_bidirectional_stream1(
+        &self,
+        options: &WebTransportSendStreamOptions,
+    ) -> Promise<WebTransportBidirectionalStream> {
         self.inner
             .call("createBidirectionalStream", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<WebTransportBidirectionalStream>>()
     }
 }
 impl WebTransport {
@@ -509,20 +516,20 @@ impl WebTransport {
 impl WebTransport {
     /// The createUnidirectionalStream method.
     /// [`WebTransport.createUnidirectionalStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/createUnidirectionalStream)
-    pub fn create_unidirectional_stream0(&self) -> Promise {
+    pub fn create_unidirectional_stream0(&self) -> Promise<WebTransportSendStream> {
         self.inner
             .call("createUnidirectionalStream", &[])
-            .as_::<Promise>()
+            .as_::<Promise<WebTransportSendStream>>()
     }
     /// The createUnidirectionalStream method.
     /// [`WebTransport.createUnidirectionalStream`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/createUnidirectionalStream)
     pub fn create_unidirectional_stream1(
         &self,
         options: &WebTransportSendStreamOptions,
-    ) -> Promise {
+    ) -> Promise<WebTransportSendStream> {
         self.inner
             .call("createUnidirectionalStream", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<WebTransportSendStream>>()
     }
 }
 impl WebTransport {

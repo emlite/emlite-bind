@@ -144,15 +144,17 @@ jsbind::utils::impl_dyn_cast!(DocumentPictureInPicture);
 impl DocumentPictureInPicture {
     /// The requestWindow method.
     /// [`DocumentPictureInPicture.requestWindow`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow)
-    pub fn request_window0(&self) -> Promise {
-        self.inner.call("requestWindow", &[]).as_::<Promise>()
+    pub fn request_window0(&self) -> Promise<Window> {
+        self.inner
+            .call("requestWindow", &[])
+            .as_::<Promise<Window>>()
     }
     /// The requestWindow method.
     /// [`DocumentPictureInPicture.requestWindow`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentPictureInPicture/requestWindow)
-    pub fn request_window1(&self, options: &DocumentPictureInPictureOptions) -> Promise {
+    pub fn request_window1(&self, options: &DocumentPictureInPictureOptions) -> Promise<Window> {
         self.inner
             .call("requestWindow", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Window>>()
     }
 }
 impl DocumentPictureInPicture {

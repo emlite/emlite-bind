@@ -117,48 +117,52 @@ jsbind::utils::impl_dyn_cast!(CacheStorage);
 impl CacheStorage {
     /// The match method.
     /// [`CacheStorage.match`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/match)
-    pub fn match_0(&self, request: &Any) -> Promise {
-        self.inner.call("match", &[request.into()]).as_::<Promise>()
+    pub fn match_0(&self, request: &Any) -> Promise<Any> {
+        self.inner
+            .call("match", &[request.into()])
+            .as_::<Promise<Any>>()
     }
     /// The match method.
     /// [`CacheStorage.match`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/match)
-    pub fn match_1(&self, request: &Any, options: &MultiCacheQueryOptions) -> Promise {
+    pub fn match_1(&self, request: &Any, options: &MultiCacheQueryOptions) -> Promise<Any> {
         self.inner
             .call("match", &[request.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
 }
 impl CacheStorage {
     /// The has method.
     /// [`CacheStorage.has`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/has)
-    pub fn has(&self, cache_name: &str) -> Promise {
+    pub fn has(&self, cache_name: &str) -> Promise<bool> {
         self.inner
             .call("has", &[cache_name.into()])
-            .as_::<Promise>()
+            .as_::<Promise<bool>>()
     }
 }
 impl CacheStorage {
     /// The open method.
     /// [`CacheStorage.open`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/open)
-    pub fn open(&self, cache_name: &str) -> Promise {
+    pub fn open(&self, cache_name: &str) -> Promise<Cache> {
         self.inner
             .call("open", &[cache_name.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Cache>>()
     }
 }
 impl CacheStorage {
     /// The delete method.
     /// [`CacheStorage.delete`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/delete)
-    pub fn delete(&self, cache_name: &str) -> Promise {
+    pub fn delete(&self, cache_name: &str) -> Promise<bool> {
         self.inner
             .call("delete", &[cache_name.into()])
-            .as_::<Promise>()
+            .as_::<Promise<bool>>()
     }
 }
 impl CacheStorage {
     /// The keys method.
     /// [`CacheStorage.keys`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/keys)
-    pub fn keys(&self) -> Promise {
-        self.inner.call("keys", &[]).as_::<Promise>()
+    pub fn keys(&self) -> Promise<Sequence<String>> {
+        self.inner
+            .call("keys", &[])
+            .as_::<Promise<Sequence<String>>>()
     }
 }

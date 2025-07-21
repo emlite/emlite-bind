@@ -180,42 +180,46 @@ jsbind::utils::impl_dyn_cast!(CredentialsContainer);
 impl CredentialsContainer {
     /// The get method.
     /// [`CredentialsContainer.get`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/get)
-    pub fn get0(&self) -> Promise {
-        self.inner.call("get", &[]).as_::<Promise>()
+    pub fn get0(&self) -> Promise<Credential> {
+        self.inner.call("get", &[]).as_::<Promise<Credential>>()
     }
     /// The get method.
     /// [`CredentialsContainer.get`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/get)
-    pub fn get1(&self, options: &CredentialRequestOptions) -> Promise {
-        self.inner.call("get", &[options.into()]).as_::<Promise>()
+    pub fn get1(&self, options: &CredentialRequestOptions) -> Promise<Credential> {
+        self.inner
+            .call("get", &[options.into()])
+            .as_::<Promise<Credential>>()
     }
 }
 impl CredentialsContainer {
     /// The store method.
     /// [`CredentialsContainer.store`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/store)
-    pub fn store(&self, credential: &Credential) -> Promise {
+    pub fn store(&self, credential: &Credential) -> Promise<Undefined> {
         self.inner
             .call("store", &[credential.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl CredentialsContainer {
     /// The create method.
     /// [`CredentialsContainer.create`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/create)
-    pub fn create0(&self) -> Promise {
-        self.inner.call("create", &[]).as_::<Promise>()
+    pub fn create0(&self) -> Promise<Credential> {
+        self.inner.call("create", &[]).as_::<Promise<Credential>>()
     }
     /// The create method.
     /// [`CredentialsContainer.create`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/create)
-    pub fn create1(&self, options: &CredentialCreationOptions) -> Promise {
+    pub fn create1(&self, options: &CredentialCreationOptions) -> Promise<Credential> {
         self.inner
             .call("create", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Credential>>()
     }
 }
 impl CredentialsContainer {
     /// The preventSilentAccess method.
     /// [`CredentialsContainer.preventSilentAccess`](https://developer.mozilla.org/en-US/docs/Web/API/CredentialsContainer/preventSilentAccess)
-    pub fn prevent_silent_access(&self) -> Promise {
-        self.inner.call("preventSilentAccess", &[]).as_::<Promise>()
+    pub fn prevent_silent_access(&self) -> Promise<Undefined> {
+        self.inner
+            .call("preventSilentAccess", &[])
+            .as_::<Promise<Undefined>>()
     }
 }

@@ -65,7 +65,7 @@ impl BackgroundFetchRecord {
 impl BackgroundFetchRecord {
     /// Getter of the `responseReady` attribute.
     /// [`BackgroundFetchRecord.responseReady`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRecord/responseReady)
-    pub fn response_ready(&self) -> Promise {
-        self.inner.get("responseReady").as_::<Promise>()
+    pub fn response_ready(&self) -> Promise<Response> {
+        self.inner.get("responseReady").as_::<Promise<Response>>()
     }
 }

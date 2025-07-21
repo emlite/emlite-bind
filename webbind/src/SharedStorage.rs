@@ -235,33 +235,40 @@ jsbind::utils::impl_dyn_cast!(SharedStorage);
 impl SharedStorage {
     /// The get method.
     /// [`SharedStorage.get`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/get)
-    pub fn get(&self, key: &str) -> Promise {
-        self.inner.call("get", &[key.into()]).as_::<Promise>()
+    pub fn get(&self, key: &str) -> Promise<String> {
+        self.inner
+            .call("get", &[key.into()])
+            .as_::<Promise<String>>()
     }
 }
 impl SharedStorage {
     /// The set method.
     /// [`SharedStorage.set`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/set)
-    pub fn set0(&self, key: &str, value: &str) -> Promise {
+    pub fn set0(&self, key: &str, value: &str) -> Promise<Any> {
         self.inner
             .call("set", &[key.into(), value.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
     /// The set method.
     /// [`SharedStorage.set`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/set)
-    pub fn set1(&self, key: &str, value: &str, options: &SharedStorageSetMethodOptions) -> Promise {
+    pub fn set1(
+        &self,
+        key: &str,
+        value: &str,
+        options: &SharedStorageSetMethodOptions,
+    ) -> Promise<Any> {
         self.inner
             .call("set", &[key.into(), value.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
 }
 impl SharedStorage {
     /// The append method.
     /// [`SharedStorage.append`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/append)
-    pub fn append0(&self, key: &str, value: &str) -> Promise {
+    pub fn append0(&self, key: &str, value: &str) -> Promise<Any> {
         self.inner
             .call("append", &[key.into(), value.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
     /// The append method.
     /// [`SharedStorage.append`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/append)
@@ -270,45 +277,49 @@ impl SharedStorage {
         key: &str,
         value: &str,
         options: &SharedStorageModifierMethodOptions,
-    ) -> Promise {
+    ) -> Promise<Any> {
         self.inner
             .call("append", &[key.into(), value.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
 }
 impl SharedStorage {
     /// The delete method.
     /// [`SharedStorage.delete`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/delete)
-    pub fn delete0(&self, key: &str) -> Promise {
-        self.inner.call("delete", &[key.into()]).as_::<Promise>()
+    pub fn delete0(&self, key: &str) -> Promise<Any> {
+        self.inner
+            .call("delete", &[key.into()])
+            .as_::<Promise<Any>>()
     }
     /// The delete method.
     /// [`SharedStorage.delete`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/delete)
-    pub fn delete1(&self, key: &str, options: &SharedStorageModifierMethodOptions) -> Promise {
+    pub fn delete1(&self, key: &str, options: &SharedStorageModifierMethodOptions) -> Promise<Any> {
         self.inner
             .call("delete", &[key.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
 }
 impl SharedStorage {
     /// The clear method.
     /// [`SharedStorage.clear`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/clear)
-    pub fn clear0(&self) -> Promise {
-        self.inner.call("clear", &[]).as_::<Promise>()
+    pub fn clear0(&self) -> Promise<Any> {
+        self.inner.call("clear", &[]).as_::<Promise<Any>>()
     }
     /// The clear method.
     /// [`SharedStorage.clear`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/clear)
-    pub fn clear1(&self, options: &SharedStorageModifierMethodOptions) -> Promise {
-        self.inner.call("clear", &[options.into()]).as_::<Promise>()
+    pub fn clear1(&self, options: &SharedStorageModifierMethodOptions) -> Promise<Any> {
+        self.inner
+            .call("clear", &[options.into()])
+            .as_::<Promise<Any>>()
     }
 }
 impl SharedStorage {
     /// The batchUpdate method.
     /// [`SharedStorage.batchUpdate`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/batchUpdate)
-    pub fn batch_update0(&self, methods: &Sequence<SharedStorageModifierMethod>) -> Promise {
+    pub fn batch_update0(&self, methods: &Sequence<SharedStorageModifierMethod>) -> Promise<Any> {
         self.inner
             .call("batchUpdate", &[methods.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
     /// The batchUpdate method.
     /// [`SharedStorage.batchUpdate`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/batchUpdate)
@@ -316,10 +327,10 @@ impl SharedStorage {
         &self,
         methods: &Sequence<SharedStorageModifierMethod>,
         options: &SharedStorageModifierMethodOptions,
-    ) -> Promise {
+    ) -> Promise<Any> {
         self.inner
             .call("batchUpdate", &[methods.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
 }
 impl SharedStorage {
@@ -329,10 +340,10 @@ impl SharedStorage {
         &self,
         name: &str,
         urls: &Sequence<SharedStorageUrlWithMetadata>,
-    ) -> Promise {
+    ) -> Promise<Any> {
         self.inner
             .call("selectURL", &[name.into(), urls.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
     /// The selectURL method.
     /// [`SharedStorage.selectURL`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/selectURL)
@@ -341,33 +352,37 @@ impl SharedStorage {
         name: &str,
         urls: &Sequence<SharedStorageUrlWithMetadata>,
         options: &SharedStorageRunOperationMethodOptions,
-    ) -> Promise {
+    ) -> Promise<Any> {
         self.inner
             .call("selectURL", &[name.into(), urls.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
 }
 impl SharedStorage {
     /// The run method.
     /// [`SharedStorage.run`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/run)
-    pub fn run0(&self, name: &str) -> Promise {
-        self.inner.call("run", &[name.into()]).as_::<Promise>()
+    pub fn run0(&self, name: &str) -> Promise<Any> {
+        self.inner.call("run", &[name.into()]).as_::<Promise<Any>>()
     }
     /// The run method.
     /// [`SharedStorage.run`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/run)
-    pub fn run1(&self, name: &str, options: &SharedStorageRunOperationMethodOptions) -> Promise {
+    pub fn run1(
+        &self,
+        name: &str,
+        options: &SharedStorageRunOperationMethodOptions,
+    ) -> Promise<Any> {
         self.inner
             .call("run", &[name.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
 }
 impl SharedStorage {
     /// The createWorklet method.
     /// [`SharedStorage.createWorklet`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/createWorklet)
-    pub fn create_worklet0(&self, module_url: &str) -> Promise {
+    pub fn create_worklet0(&self, module_url: &str) -> Promise<SharedStorageWorklet> {
         self.inner
             .call("createWorklet", &[module_url.into()])
-            .as_::<Promise>()
+            .as_::<Promise<SharedStorageWorklet>>()
     }
     /// The createWorklet method.
     /// [`SharedStorage.createWorklet`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/createWorklet)
@@ -375,10 +390,10 @@ impl SharedStorage {
         &self,
         module_url: &str,
         options: &SharedStorageWorkletOptions,
-    ) -> Promise {
+    ) -> Promise<SharedStorageWorklet> {
         self.inner
             .call("createWorklet", &[module_url.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<SharedStorageWorklet>>()
     }
 }
 impl SharedStorage {
@@ -391,14 +406,16 @@ impl SharedStorage {
 impl SharedStorage {
     /// The length method.
     /// [`SharedStorage.length`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/length)
-    pub fn length(&self) -> Promise {
-        self.inner.call("length", &[]).as_::<Promise>()
+    pub fn length(&self) -> Promise<u32> {
+        self.inner.call("length", &[]).as_::<Promise<u32>>()
     }
 }
 impl SharedStorage {
     /// The remainingBudget method.
     /// [`SharedStorage.remainingBudget`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/remainingBudget)
-    pub fn remaining_budget(&self) -> Promise {
-        self.inner.call("remainingBudget", &[]).as_::<Promise>()
+    pub fn remaining_budget(&self) -> Promise<f64> {
+        self.inner
+            .call("remainingBudget", &[])
+            .as_::<Promise<f64>>()
     }
 }

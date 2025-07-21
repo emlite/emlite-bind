@@ -289,8 +289,10 @@ impl GPUQueue {
 impl GPUQueue {
     /// The onSubmittedWorkDone method.
     /// [`GPUQueue.onSubmittedWorkDone`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/onSubmittedWorkDone)
-    pub fn on_submitted_work_done(&self) -> Promise {
-        self.inner.call("onSubmittedWorkDone", &[]).as_::<Promise>()
+    pub fn on_submitted_work_done(&self) -> Promise<Undefined> {
+        self.inner
+            .call("onSubmittedWorkDone", &[])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl GPUQueue {

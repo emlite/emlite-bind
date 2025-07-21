@@ -227,15 +227,15 @@ impl FontFace {
 impl FontFace {
     /// The load method.
     /// [`FontFace.load`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/load)
-    pub fn load(&self) -> Promise {
-        self.inner.call("load", &[]).as_::<Promise>()
+    pub fn load(&self) -> Promise<FontFace> {
+        self.inner.call("load", &[]).as_::<Promise<FontFace>>()
     }
 }
 impl FontFace {
     /// Getter of the `loaded` attribute.
     /// [`FontFace.loaded`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/loaded)
-    pub fn loaded(&self) -> Promise {
-        self.inner.get("loaded").as_::<Promise>()
+    pub fn loaded(&self) -> Promise<FontFace> {
+        self.inner.get("loaded").as_::<Promise<FontFace>>()
     }
 }
 impl FontFace {

@@ -624,42 +624,45 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn auction_signals(&self) -> Promise {
-        self.inner.get("auctionSignals").as_::<Promise>()
+    pub fn auction_signals(&self) -> Promise<Any> {
+        self.inner.get("auctionSignals").as_::<Promise<Any>>()
     }
 
-    pub fn set_auction_signals(&mut self, value: &Promise) {
+    pub fn set_auction_signals(&mut self, value: &Promise<Any>) {
         self.inner.set("auctionSignals", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn seller_signals(&self) -> Promise {
-        self.inner.get("sellerSignals").as_::<Promise>()
+    pub fn seller_signals(&self) -> Promise<Any> {
+        self.inner.get("sellerSignals").as_::<Promise<Any>>()
     }
 
-    pub fn set_seller_signals(&mut self, value: &Promise) {
+    pub fn set_seller_signals(&mut self, value: &Promise<Any>) {
         self.inner.set("sellerSignals", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn direct_from_seller_signals_header_ad_slot(&self) -> Promise {
+    pub fn direct_from_seller_signals_header_ad_slot(&self) -> Promise<String> {
         self.inner
             .get("directFromSellerSignalsHeaderAdSlot")
-            .as_::<Promise>()
+            .as_::<Promise<String>>()
     }
 
-    pub fn set_direct_from_seller_signals_header_ad_slot(&mut self, value: &Promise) {
+    pub fn set_direct_from_seller_signals_header_ad_slot(&mut self, value: &Promise<String>) {
         self.inner.set("directFromSellerSignalsHeaderAdSlot", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn deprecated_render_url_replacements(&self) -> Promise {
+    pub fn deprecated_render_url_replacements(&self) -> Promise<Record<String, String>> {
         self.inner
             .get("deprecatedRenderURLReplacements")
-            .as_::<Promise>()
+            .as_::<Promise<Record<String, String>>>()
     }
 
-    pub fn set_deprecated_render_url_replacements(&mut self, value: &Promise) {
+    pub fn set_deprecated_render_url_replacements(
+        &mut self,
+        value: &Promise<Record<String, String>>,
+    ) {
         self.inner.set("deprecatedRenderURLReplacements", value);
     }
 }
@@ -682,31 +685,35 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_signals(&self) -> Promise {
-        self.inner.get("perBuyerSignals").as_::<Promise>()
+    pub fn per_buyer_signals(&self) -> Promise<Record<String, Any>> {
+        self.inner
+            .get("perBuyerSignals")
+            .as_::<Promise<Record<String, Any>>>()
     }
 
-    pub fn set_per_buyer_signals(&mut self, value: &Promise) {
+    pub fn set_per_buyer_signals(&mut self, value: &Promise<Record<String, Any>>) {
         self.inner.set("perBuyerSignals", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_timeouts(&self) -> Promise {
-        self.inner.get("perBuyerTimeouts").as_::<Promise>()
+    pub fn per_buyer_timeouts(&self) -> Promise<Record<String, u64>> {
+        self.inner
+            .get("perBuyerTimeouts")
+            .as_::<Promise<Record<String, u64>>>()
     }
 
-    pub fn set_per_buyer_timeouts(&mut self, value: &Promise) {
+    pub fn set_per_buyer_timeouts(&mut self, value: Promise<Record<String, u64>>) {
         self.inner.set("perBuyerTimeouts", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_cumulative_timeouts(&self) -> Promise {
+    pub fn per_buyer_cumulative_timeouts(&self) -> Promise<Record<String, u64>> {
         self.inner
             .get("perBuyerCumulativeTimeouts")
-            .as_::<Promise>()
+            .as_::<Promise<Record<String, u64>>>()
     }
 
-    pub fn set_per_buyer_cumulative_timeouts(&mut self, value: &Promise) {
+    pub fn set_per_buyer_cumulative_timeouts(&mut self, value: Promise<Record<String, u64>>) {
         self.inner.set("perBuyerCumulativeTimeouts", value);
     }
 }
@@ -729,11 +736,13 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_currencies(&self) -> Promise {
-        self.inner.get("perBuyerCurrencies").as_::<Promise>()
+    pub fn per_buyer_currencies(&self) -> Promise<Record<String, String>> {
+        self.inner
+            .get("perBuyerCurrencies")
+            .as_::<Promise<Record<String, String>>>()
     }
 
-    pub fn set_per_buyer_currencies(&mut self, value: &Promise) {
+    pub fn set_per_buyer_currencies(&mut self, value: &Promise<Record<String, String>>) {
         self.inner.set("perBuyerCurrencies", value);
     }
 }
@@ -857,11 +866,11 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn additional_bids(&self) -> Promise {
-        self.inner.get("additionalBids").as_::<Promise>()
+    pub fn additional_bids(&self) -> Promise<Undefined> {
+        self.inner.get("additionalBids").as_::<Promise<Undefined>>()
     }
 
-    pub fn set_additional_bids(&mut self, value: &Promise) {
+    pub fn set_additional_bids(&mut self, value: &Promise<Undefined>) {
         self.inner.set("additionalBids", value);
     }
 }
@@ -915,20 +924,22 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn resolve_to_config(&self) -> Promise {
-        self.inner.get("resolveToConfig").as_::<Promise>()
+    pub fn resolve_to_config(&self) -> Promise<bool> {
+        self.inner.get("resolveToConfig").as_::<Promise<bool>>()
     }
 
-    pub fn set_resolve_to_config(&mut self, value: &Promise) {
+    pub fn set_resolve_to_config(&mut self, value: Promise<bool>) {
         self.inner.set("resolveToConfig", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn server_response(&self) -> Promise {
-        self.inner.get("serverResponse").as_::<Promise>()
+    pub fn server_response(&self) -> Promise<Uint8Array> {
+        self.inner
+            .get("serverResponse")
+            .as_::<Promise<Uint8Array>>()
     }
 
-    pub fn set_server_response(&mut self, value: &Promise) {
+    pub fn set_server_response(&mut self, value: &Promise<Uint8Array>) {
         self.inner.set("serverResponse", value);
     }
 }
@@ -1343,8 +1354,10 @@ impl Navigator {
 impl Navigator {
     /// The getBattery method.
     /// [`Navigator.getBattery`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getBattery)
-    pub fn get_battery(&self) -> Promise {
-        self.inner.call("getBattery", &[]).as_::<Promise>()
+    pub fn get_battery(&self) -> Promise<BatteryManager> {
+        self.inner
+            .call("getBattery", &[])
+            .as_::<Promise<BatteryManager>>()
     }
 }
 impl Navigator {
@@ -1396,13 +1409,13 @@ impl Navigator {
         &self,
         key_system: &str,
         supported_configurations: &Sequence<MediaKeySystemConfiguration>,
-    ) -> Promise {
+    ) -> Promise<MediaKeySystemAccess> {
         self.inner
             .call(
                 "requestMediaKeySystemAccess",
                 &[key_system.into(), supported_configurations.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<MediaKeySystemAccess>>()
     }
 }
 impl Navigator {
@@ -1412,32 +1425,36 @@ impl Navigator {
         &self,
         urn_or_config: &Any,
         replacements: &Record<String, String>,
-    ) -> Promise {
+    ) -> Promise<Undefined> {
         self.inner
             .call(
                 "deprecatedReplaceInURN",
                 &[urn_or_config.into(), replacements.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Navigator {
     /// The deprecatedURNtoURL method.
     /// [`Navigator.deprecatedURNtoURL`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedURNtoURL)
-    pub fn deprecated_ur_nto_url0(&self, urn_or_config: &Any) -> Promise {
+    pub fn deprecated_ur_nto_url0(&self, urn_or_config: &Any) -> Promise<String> {
         self.inner
             .call("deprecatedURNtoURL", &[urn_or_config.into()])
-            .as_::<Promise>()
+            .as_::<Promise<String>>()
     }
     /// The deprecatedURNtoURL method.
     /// [`Navigator.deprecatedURNtoURL`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedURNtoURL)
-    pub fn deprecated_ur_nto_url1(&self, urn_or_config: &Any, send_reports: bool) -> Promise {
+    pub fn deprecated_ur_nto_url1(
+        &self,
+        urn_or_config: &Any,
+        send_reports: bool,
+    ) -> Promise<String> {
         self.inner
             .call(
                 "deprecatedURNtoURL",
                 &[urn_or_config.into(), send_reports.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<String>>()
     }
 }
 impl Navigator {
@@ -1468,19 +1485,22 @@ impl Navigator {
 impl Navigator {
     /// The getInstalledRelatedApps method.
     /// [`Navigator.getInstalledRelatedApps`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getInstalledRelatedApps)
-    pub fn get_installed_related_apps(&self) -> Promise {
+    pub fn get_installed_related_apps(&self) -> Promise<Sequence<RelatedApplication>> {
         self.inner
             .call("getInstalledRelatedApps", &[])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<RelatedApplication>>>()
     }
 }
 impl Navigator {
     /// The queryHandwritingRecognizer method.
     /// [`Navigator.queryHandwritingRecognizer`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/queryHandwritingRecognizer)
-    pub fn query_handwriting_recognizer(&self, constraint: &HandwritingModelConstraint) -> Promise {
+    pub fn query_handwriting_recognizer(
+        &self,
+        constraint: &HandwritingModelConstraint,
+    ) -> Promise<HandwritingRecognizerQueryResult> {
         self.inner
             .call("queryHandwritingRecognizer", &[constraint.into()])
-            .as_::<Promise>()
+            .as_::<Promise<HandwritingRecognizerQueryResult>>()
     }
 }
 impl Navigator {
@@ -1489,10 +1509,10 @@ impl Navigator {
     pub fn create_handwriting_recognizer(
         &self,
         constraint: &HandwritingModelConstraint,
-    ) -> Promise {
+    ) -> Promise<HandwritingRecognizer> {
         self.inner
             .call("createHandwritingRecognizer", &[constraint.into()])
-            .as_::<Promise>()
+            .as_::<Promise<HandwritingRecognizer>>()
     }
 }
 impl Navigator {
@@ -1621,35 +1641,38 @@ impl Navigator {
 impl Navigator {
     /// The joinAdInterestGroup method.
     /// [`Navigator.joinAdInterestGroup`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/joinAdInterestGroup)
-    pub fn join_ad_interest_group(&self, group: &AuctionAdInterestGroup) -> Promise {
+    pub fn join_ad_interest_group(&self, group: &AuctionAdInterestGroup) -> Promise<Undefined> {
         self.inner
             .call("joinAdInterestGroup", &[group.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Navigator {
     /// The leaveAdInterestGroup method.
     /// [`Navigator.leaveAdInterestGroup`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/leaveAdInterestGroup)
-    pub fn leave_ad_interest_group0(&self) -> Promise {
+    pub fn leave_ad_interest_group0(&self) -> Promise<Undefined> {
         self.inner
             .call("leaveAdInterestGroup", &[])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
     /// The leaveAdInterestGroup method.
     /// [`Navigator.leaveAdInterestGroup`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/leaveAdInterestGroup)
-    pub fn leave_ad_interest_group1(&self, group: &AuctionAdInterestGroupKey) -> Promise {
+    pub fn leave_ad_interest_group1(
+        &self,
+        group: &AuctionAdInterestGroupKey,
+    ) -> Promise<Undefined> {
         self.inner
             .call("leaveAdInterestGroup", &[group.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Navigator {
     /// The clearOriginJoinedAdInterestGroups method.
     /// [`Navigator.clearOriginJoinedAdInterestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearOriginJoinedAdInterestGroups)
-    pub fn clear_origin_joined_ad_interest_groups0(&self, owner: &str) -> Promise {
+    pub fn clear_origin_joined_ad_interest_groups0(&self, owner: &str) -> Promise<Undefined> {
         self.inner
             .call("clearOriginJoinedAdInterestGroups", &[owner.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
     /// The clearOriginJoinedAdInterestGroups method.
     /// [`Navigator.clearOriginJoinedAdInterestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearOriginJoinedAdInterestGroups)
@@ -1657,22 +1680,22 @@ impl Navigator {
         &self,
         owner: &str,
         interest_groups_to_keep: &Sequence<String>,
-    ) -> Promise {
+    ) -> Promise<Undefined> {
         self.inner
             .call(
                 "clearOriginJoinedAdInterestGroups",
                 &[owner.into(), interest_groups_to_keep.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Navigator {
     /// The runAdAuction method.
     /// [`Navigator.runAdAuction`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/runAdAuction)
-    pub fn run_ad_auction(&self, config: &AuctionAdConfig) -> Promise {
+    pub fn run_ad_auction(&self, config: &AuctionAdConfig) -> Promise<Any> {
         self.inner
             .call("runAdAuction", &[config.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
 }
 impl Navigator {
@@ -1696,24 +1719,29 @@ impl Navigator {
 impl Navigator {
     /// The getInterestGroupAdAuctionData method.
     /// [`Navigator.getInterestGroupAdAuctionData`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getInterestGroupAdAuctionData)
-    pub fn get_interest_group_ad_auction_data0(&self) -> Promise {
+    pub fn get_interest_group_ad_auction_data0(&self) -> Promise<AdAuctionData> {
         self.inner
             .call("getInterestGroupAdAuctionData", &[])
-            .as_::<Promise>()
+            .as_::<Promise<AdAuctionData>>()
     }
     /// The getInterestGroupAdAuctionData method.
     /// [`Navigator.getInterestGroupAdAuctionData`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/getInterestGroupAdAuctionData)
-    pub fn get_interest_group_ad_auction_data1(&self, config: &AdAuctionDataConfig) -> Promise {
+    pub fn get_interest_group_ad_auction_data1(
+        &self,
+        config: &AdAuctionDataConfig,
+    ) -> Promise<AdAuctionData> {
         self.inner
             .call("getInterestGroupAdAuctionData", &[config.into()])
-            .as_::<Promise>()
+            .as_::<Promise<AdAuctionData>>()
     }
 }
 impl Navigator {
     /// The createAuctionNonce method.
     /// [`Navigator.createAuctionNonce`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/createAuctionNonce)
-    pub fn create_auction_nonce(&self) -> Promise {
-        self.inner.call("createAuctionNonce", &[]).as_::<Promise>()
+    pub fn create_auction_nonce(&self) -> Promise<String> {
+        self.inner
+            .call("createAuctionNonce", &[])
+            .as_::<Promise<String>>()
     }
 }
 impl Navigator {
@@ -1758,13 +1786,15 @@ impl Navigator {
 impl Navigator {
     /// The share method.
     /// [`Navigator.share`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
-    pub fn share0(&self) -> Promise {
-        self.inner.call("share", &[]).as_::<Promise>()
+    pub fn share0(&self) -> Promise<Undefined> {
+        self.inner.call("share", &[]).as_::<Promise<Undefined>>()
     }
     /// The share method.
     /// [`Navigator.share`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share)
-    pub fn share1(&self, data: &ShareData) -> Promise {
-        self.inner.call("share", &[data.into()]).as_::<Promise>()
+    pub fn share1(&self, data: &ShareData) -> Promise<Undefined> {
+        self.inner
+            .call("share", &[data.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Navigator {
@@ -1789,15 +1819,17 @@ impl Navigator {
 impl Navigator {
     /// The requestMIDIAccess method.
     /// [`Navigator.requestMIDIAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/requestMIDIAccess)
-    pub fn request_midi_access0(&self) -> Promise {
-        self.inner.call("requestMIDIAccess", &[]).as_::<Promise>()
+    pub fn request_midi_access0(&self) -> Promise<MIDIAccess> {
+        self.inner
+            .call("requestMIDIAccess", &[])
+            .as_::<Promise<MIDIAccess>>()
     }
     /// The requestMIDIAccess method.
     /// [`Navigator.requestMIDIAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/requestMIDIAccess)
-    pub fn request_midi_access1(&self, options: &MIDIOptions) -> Promise {
+    pub fn request_midi_access1(&self, options: &MIDIOptions) -> Promise<MIDIAccess> {
         self.inner
             .call("requestMIDIAccess", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<MIDIAccess>>()
     }
 }
 impl Navigator {
@@ -1826,22 +1858,26 @@ impl Navigator {
 impl Navigator {
     /// The setAppBadge method.
     /// [`Navigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/setAppBadge)
-    pub fn set_app_badge0(&self) -> Promise {
-        self.inner.call("setAppBadge", &[]).as_::<Promise>()
+    pub fn set_app_badge0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("setAppBadge", &[])
+            .as_::<Promise<Undefined>>()
     }
     /// The setAppBadge method.
     /// [`Navigator.setAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/setAppBadge)
-    pub fn set_app_badge1(&self, contents: u64) -> Promise {
+    pub fn set_app_badge1(&self, contents: u64) -> Promise<Undefined> {
         self.inner
             .call("setAppBadge", &[contents.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Navigator {
     /// The clearAppBadge method.
     /// [`Navigator.clearAppBadge`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearAppBadge)
-    pub fn clear_app_badge(&self) -> Promise {
-        self.inner.call("clearAppBadge", &[]).as_::<Promise>()
+    pub fn clear_app_badge(&self) -> Promise<Undefined> {
+        self.inner
+            .call("clearAppBadge", &[])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Navigator {

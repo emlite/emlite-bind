@@ -143,10 +143,10 @@ impl HTMLVideoElement {
 impl HTMLVideoElement {
     /// The requestPictureInPicture method.
     /// [`HTMLVideoElement.requestPictureInPicture`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/requestPictureInPicture)
-    pub fn request_picture_in_picture(&self) -> Promise {
+    pub fn request_picture_in_picture(&self) -> Promise<PictureInPictureWindow> {
         self.inner
             .call("requestPictureInPicture", &[])
-            .as_::<Promise>()
+            .as_::<Promise<PictureInPictureWindow>>()
     }
 }
 impl HTMLVideoElement {

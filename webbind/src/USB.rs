@@ -152,16 +152,18 @@ impl USB {
 impl USB {
     /// The getDevices method.
     /// [`USB.getDevices`](https://developer.mozilla.org/en-US/docs/Web/API/USB/getDevices)
-    pub fn get_devices(&self) -> Promise {
-        self.inner.call("getDevices", &[]).as_::<Promise>()
+    pub fn get_devices(&self) -> Promise<Sequence<USBDevice>> {
+        self.inner
+            .call("getDevices", &[])
+            .as_::<Promise<Sequence<USBDevice>>>()
     }
 }
 impl USB {
     /// The requestDevice method.
     /// [`USB.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/USB/requestDevice)
-    pub fn request_device(&self, options: &USBDeviceRequestOptions) -> Promise {
+    pub fn request_device(&self, options: &USBDeviceRequestOptions) -> Promise<USBDevice> {
         self.inner
             .call("requestDevice", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<USBDevice>>()
     }
 }

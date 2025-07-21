@@ -267,8 +267,8 @@ impl AudioDecoder {
 impl AudioDecoder {
     /// The flush method.
     /// [`AudioDecoder.flush`](https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder/flush)
-    pub fn flush(&self) -> Promise {
-        self.inner.call("flush", &[]).as_::<Promise>()
+    pub fn flush(&self) -> Promise<Undefined> {
+        self.inner.call("flush", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl AudioDecoder {
@@ -288,9 +288,9 @@ impl AudioDecoder {
 impl AudioDecoder {
     /// The isConfigSupported method.
     /// [`AudioDecoder.isConfigSupported`](https://developer.mozilla.org/en-US/docs/Web/API/AudioDecoder/isConfigSupported)
-    pub fn is_config_supported(config: &AudioDecoderConfig) -> Promise {
+    pub fn is_config_supported(config: &AudioDecoderConfig) -> Promise<AudioDecoderSupport> {
         Any::global("AudioDecoder")
             .call("isConfigSupported", &[config.into()])
-            .as_::<Promise>()
+            .as_::<Promise<AudioDecoderSupport>>()
     }
 }

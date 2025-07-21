@@ -126,28 +126,32 @@ jsbind::utils::impl_dyn_cast!(StorageManager);
 impl StorageManager {
     /// The persisted method.
     /// [`StorageManager.persisted`](https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/persisted)
-    pub fn persisted(&self) -> Promise {
-        self.inner.call("persisted", &[]).as_::<Promise>()
+    pub fn persisted(&self) -> Promise<bool> {
+        self.inner.call("persisted", &[]).as_::<Promise<bool>>()
     }
 }
 impl StorageManager {
     /// The persist method.
     /// [`StorageManager.persist`](https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/persist)
-    pub fn persist(&self) -> Promise {
-        self.inner.call("persist", &[]).as_::<Promise>()
+    pub fn persist(&self) -> Promise<bool> {
+        self.inner.call("persist", &[]).as_::<Promise<bool>>()
     }
 }
 impl StorageManager {
     /// The estimate method.
     /// [`StorageManager.estimate`](https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/estimate)
-    pub fn estimate(&self) -> Promise {
-        self.inner.call("estimate", &[]).as_::<Promise>()
+    pub fn estimate(&self) -> Promise<StorageEstimate> {
+        self.inner
+            .call("estimate", &[])
+            .as_::<Promise<StorageEstimate>>()
     }
 }
 impl StorageManager {
     /// The getDirectory method.
     /// [`StorageManager.getDirectory`](https://developer.mozilla.org/en-US/docs/Web/API/StorageManager/getDirectory)
-    pub fn get_directory(&self) -> Promise {
-        self.inner.call("getDirectory", &[]).as_::<Promise>()
+    pub fn get_directory(&self) -> Promise<FileSystemDirectoryHandle> {
+        self.inner
+            .call("getDirectory", &[])
+            .as_::<Promise<FileSystemDirectoryHandle>>()
     }
 }

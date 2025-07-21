@@ -58,10 +58,10 @@ jsbind::utils::impl_dyn_cast!(BrowserCaptureMediaStreamTrack);
 impl BrowserCaptureMediaStreamTrack {
     /// The cropTo method.
     /// [`BrowserCaptureMediaStreamTrack.cropTo`](https://developer.mozilla.org/en-US/docs/Web/API/BrowserCaptureMediaStreamTrack/cropTo)
-    pub fn crop_to(&self, crop_target: &CropTarget) -> Promise {
+    pub fn crop_to(&self, crop_target: &CropTarget) -> Promise<Undefined> {
         self.inner
             .call("cropTo", &[crop_target.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl BrowserCaptureMediaStreamTrack {
@@ -76,9 +76,9 @@ impl BrowserCaptureMediaStreamTrack {
 impl BrowserCaptureMediaStreamTrack {
     /// The restrictTo method.
     /// [`BrowserCaptureMediaStreamTrack.restrictTo`](https://developer.mozilla.org/en-US/docs/Web/API/BrowserCaptureMediaStreamTrack/restrictTo)
-    pub fn restrict_to(&self, restriction_target: &RestrictionTarget) -> Promise {
+    pub fn restrict_to(&self, restriction_target: &RestrictionTarget) -> Promise<Undefined> {
         self.inner
             .call("restrictTo", &[restriction_target.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }

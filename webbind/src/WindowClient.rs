@@ -83,14 +83,16 @@ impl WindowClient {
 impl WindowClient {
     /// The focus method.
     /// [`WindowClient.focus`](https://developer.mozilla.org/en-US/docs/Web/API/WindowClient/focus)
-    pub fn focus(&self) -> Promise {
-        self.inner.call("focus", &[]).as_::<Promise>()
+    pub fn focus(&self) -> Promise<WindowClient> {
+        self.inner.call("focus", &[]).as_::<Promise<WindowClient>>()
     }
 }
 impl WindowClient {
     /// The navigate method.
     /// [`WindowClient.navigate`](https://developer.mozilla.org/en-US/docs/Web/API/WindowClient/navigate)
-    pub fn navigate(&self, url: &str) -> Promise {
-        self.inner.call("navigate", &[url.into()]).as_::<Promise>()
+    pub fn navigate(&self, url: &str) -> Promise<WindowClient> {
+        self.inner
+            .call("navigate", &[url.into()])
+            .as_::<Promise<WindowClient>>()
     }
 }

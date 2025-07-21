@@ -184,12 +184,16 @@ impl EyeDropper {
 impl EyeDropper {
     /// The open method.
     /// [`EyeDropper.open`](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper/open)
-    pub fn open0(&self) -> Promise {
-        self.inner.call("open", &[]).as_::<Promise>()
+    pub fn open0(&self) -> Promise<ColorSelectionResult> {
+        self.inner
+            .call("open", &[])
+            .as_::<Promise<ColorSelectionResult>>()
     }
     /// The open method.
     /// [`EyeDropper.open`](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper/open)
-    pub fn open1(&self, options: &ColorSelectionOptions) -> Promise {
-        self.inner.call("open", &[options.into()]).as_::<Promise>()
+    pub fn open1(&self, options: &ColorSelectionOptions) -> Promise<ColorSelectionResult> {
+        self.inner
+            .call("open", &[options.into()])
+            .as_::<Promise<ColorSelectionResult>>()
     }
 }

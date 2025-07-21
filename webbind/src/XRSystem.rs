@@ -126,26 +126,30 @@ jsbind::utils::impl_dyn_cast!(XRSystem);
 impl XRSystem {
     /// The isSessionSupported method.
     /// [`XRSystem.isSessionSupported`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/isSessionSupported)
-    pub fn is_session_supported(&self, mode: &XRSessionMode) -> Promise {
+    pub fn is_session_supported(&self, mode: &XRSessionMode) -> Promise<bool> {
         self.inner
             .call("isSessionSupported", &[mode.into()])
-            .as_::<Promise>()
+            .as_::<Promise<bool>>()
     }
 }
 impl XRSystem {
     /// The requestSession method.
     /// [`XRSystem.requestSession`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession)
-    pub fn request_session0(&self, mode: &XRSessionMode) -> Promise {
+    pub fn request_session0(&self, mode: &XRSessionMode) -> Promise<XRSession> {
         self.inner
             .call("requestSession", &[mode.into()])
-            .as_::<Promise>()
+            .as_::<Promise<XRSession>>()
     }
     /// The requestSession method.
     /// [`XRSystem.requestSession`](https://developer.mozilla.org/en-US/docs/Web/API/XRSystem/requestSession)
-    pub fn request_session1(&self, mode: &XRSessionMode, options: &XRSessionInit) -> Promise {
+    pub fn request_session1(
+        &self,
+        mode: &XRSessionMode,
+        options: &XRSessionInit,
+    ) -> Promise<XRSession> {
         self.inner
             .call("requestSession", &[mode.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<XRSession>>()
     }
 }
 impl XRSystem {

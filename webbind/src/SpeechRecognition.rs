@@ -252,19 +252,19 @@ impl SpeechRecognition {
 impl SpeechRecognition {
     /// The available method.
     /// [`SpeechRecognition.available`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/available)
-    pub fn available(options: &SpeechRecognitionOptions) -> Promise {
+    pub fn available(options: &SpeechRecognitionOptions) -> Promise<AvailabilityStatus> {
         Any::global("SpeechRecognition")
             .call("available", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<AvailabilityStatus>>()
     }
 }
 impl SpeechRecognition {
     /// The install method.
     /// [`SpeechRecognition.install`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/install)
-    pub fn install(options: &SpeechRecognitionOptions) -> Promise {
+    pub fn install(options: &SpeechRecognitionOptions) -> Promise<bool> {
         Any::global("SpeechRecognition")
             .call("install", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<bool>>()
     }
 }
 impl SpeechRecognition {

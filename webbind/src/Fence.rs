@@ -203,10 +203,10 @@ impl Fence {
 impl Fence {
     /// The disableUntrustedNetwork method.
     /// [`Fence.disableUntrustedNetwork`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/disableUntrustedNetwork)
-    pub fn disable_untrusted_network(&self) -> Promise {
+    pub fn disable_untrusted_network(&self) -> Promise<Undefined> {
         self.inner
             .call("disableUntrustedNetwork", &[])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Fence {

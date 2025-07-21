@@ -256,17 +256,17 @@ impl GeolocationSensor {
 impl GeolocationSensor {
     /// The read method.
     /// [`GeolocationSensor.read`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor/read)
-    pub fn read0() -> Promise {
+    pub fn read0() -> Promise<GeolocationSensorReading> {
         Any::global("GeolocationSensor")
             .call("read", &[])
-            .as_::<Promise>()
+            .as_::<Promise<GeolocationSensorReading>>()
     }
     /// The read method.
     /// [`GeolocationSensor.read`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationSensor/read)
-    pub fn read1(read_options: &ReadOptions) -> Promise {
+    pub fn read1(read_options: &ReadOptions) -> Promise<GeolocationSensorReading> {
         Any::global("GeolocationSensor")
             .call("read", &[read_options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<GeolocationSensorReading>>()
     }
 }
 impl GeolocationSensor {

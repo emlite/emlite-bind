@@ -110,20 +110,24 @@ impl From<&NavigationResult> for Any {
 }
 
 impl NavigationResult {
-    pub fn committed(&self) -> Promise {
-        self.inner.get("committed").as_::<Promise>()
+    pub fn committed(&self) -> Promise<NavigationHistoryEntry> {
+        self.inner
+            .get("committed")
+            .as_::<Promise<NavigationHistoryEntry>>()
     }
 
-    pub fn set_committed(&mut self, value: &Promise) {
+    pub fn set_committed(&mut self, value: &Promise<NavigationHistoryEntry>) {
         self.inner.set("committed", value);
     }
 }
 impl NavigationResult {
-    pub fn finished(&self) -> Promise {
-        self.inner.get("finished").as_::<Promise>()
+    pub fn finished(&self) -> Promise<NavigationHistoryEntry> {
+        self.inner
+            .get("finished")
+            .as_::<Promise<NavigationHistoryEntry>>()
     }
 
-    pub fn set_finished(&mut self, value: &Promise) {
+    pub fn set_finished(&mut self, value: &Promise<NavigationHistoryEntry>) {
         self.inner.set("finished", value);
     }
 }

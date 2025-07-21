@@ -187,15 +187,15 @@ impl OffscreenCanvas {
 impl OffscreenCanvas {
     /// The convertToBlob method.
     /// [`OffscreenCanvas.convertToBlob`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/convertToBlob)
-    pub fn convert_to_blob0(&self) -> Promise {
-        self.inner.call("convertToBlob", &[]).as_::<Promise>()
+    pub fn convert_to_blob0(&self) -> Promise<Blob> {
+        self.inner.call("convertToBlob", &[]).as_::<Promise<Blob>>()
     }
     /// The convertToBlob method.
     /// [`OffscreenCanvas.convertToBlob`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas/convertToBlob)
-    pub fn convert_to_blob1(&self, options: &ImageEncodeOptions) -> Promise {
+    pub fn convert_to_blob1(&self, options: &ImageEncodeOptions) -> Promise<Blob> {
         self.inner
             .call("convertToBlob", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Blob>>()
     }
 }
 impl OffscreenCanvas {

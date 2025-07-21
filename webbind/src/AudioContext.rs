@@ -201,31 +201,31 @@ impl AudioContext {
 impl AudioContext {
     /// The resume method.
     /// [`AudioContext.resume`](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/resume)
-    pub fn resume(&self) -> Promise {
-        self.inner.call("resume", &[]).as_::<Promise>()
+    pub fn resume(&self) -> Promise<Undefined> {
+        self.inner.call("resume", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl AudioContext {
     /// The suspend method.
     /// [`AudioContext.suspend`](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/suspend)
-    pub fn suspend(&self) -> Promise {
-        self.inner.call("suspend", &[]).as_::<Promise>()
+    pub fn suspend(&self) -> Promise<Undefined> {
+        self.inner.call("suspend", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl AudioContext {
     /// The close method.
     /// [`AudioContext.close`](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/close)
-    pub fn close(&self) -> Promise {
-        self.inner.call("close", &[]).as_::<Promise>()
+    pub fn close(&self) -> Promise<Undefined> {
+        self.inner.call("close", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl AudioContext {
     /// The setSinkId method.
     /// [`AudioContext.setSinkId`](https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/setSinkId)
-    pub fn set_sink_id(&self, sink_id: &Any) -> Promise {
+    pub fn set_sink_id(&self, sink_id: &Any) -> Promise<Undefined> {
         self.inner
             .call("setSinkId", &[sink_id.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl AudioContext {

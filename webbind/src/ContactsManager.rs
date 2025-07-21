@@ -212,17 +212,22 @@ jsbind::utils::impl_dyn_cast!(ContactsManager);
 impl ContactsManager {
     /// The getProperties method.
     /// [`ContactsManager.getProperties`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager/getProperties)
-    pub fn get_properties(&self) -> Promise {
-        self.inner.call("getProperties", &[]).as_::<Promise>()
+    pub fn get_properties(&self) -> Promise<Sequence<ContactProperty>> {
+        self.inner
+            .call("getProperties", &[])
+            .as_::<Promise<Sequence<ContactProperty>>>()
     }
 }
 impl ContactsManager {
     /// The select method.
     /// [`ContactsManager.select`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager/select)
-    pub fn select0(&self, properties: &Sequence<ContactProperty>) -> Promise {
+    pub fn select0(
+        &self,
+        properties: &Sequence<ContactProperty>,
+    ) -> Promise<Sequence<ContactInfo>> {
         self.inner
             .call("select", &[properties.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<ContactInfo>>>()
     }
     /// The select method.
     /// [`ContactsManager.select`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager/select)
@@ -230,9 +235,9 @@ impl ContactsManager {
         &self,
         properties: &Sequence<ContactProperty>,
         options: &ContactsSelectOptions,
-    ) -> Promise {
+    ) -> Promise<Sequence<ContactInfo>> {
         self.inner
             .call("select", &[properties.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<ContactInfo>>>()
     }
 }

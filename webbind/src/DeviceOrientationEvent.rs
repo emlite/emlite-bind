@@ -105,16 +105,16 @@ impl DeviceOrientationEvent {
 impl DeviceOrientationEvent {
     /// The requestPermission method.
     /// [`DeviceOrientationEvent.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent/requestPermission)
-    pub fn request_permission0() -> Promise {
+    pub fn request_permission0() -> Promise<PermissionState> {
         Any::global("DeviceOrientationEvent")
             .call("requestPermission", &[])
-            .as_::<Promise>()
+            .as_::<Promise<PermissionState>>()
     }
     /// The requestPermission method.
     /// [`DeviceOrientationEvent.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent/requestPermission)
-    pub fn request_permission1(absolute: bool) -> Promise {
+    pub fn request_permission1(absolute: bool) -> Promise<PermissionState> {
         Any::global("DeviceOrientationEvent")
             .call("requestPermission", &[absolute.into()])
-            .as_::<Promise>()
+            .as_::<Promise<PermissionState>>()
     }
 }

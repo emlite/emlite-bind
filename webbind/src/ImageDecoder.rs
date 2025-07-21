@@ -216,8 +216,8 @@ impl ImageDecoder {
 impl ImageDecoder {
     /// Getter of the `completed` attribute.
     /// [`ImageDecoder.completed`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/completed)
-    pub fn completed(&self) -> Promise {
-        self.inner.get("completed").as_::<Promise>()
+    pub fn completed(&self) -> Promise<Undefined> {
+        self.inner.get("completed").as_::<Promise<Undefined>>()
     }
 }
 impl ImageDecoder {
@@ -230,15 +230,17 @@ impl ImageDecoder {
 impl ImageDecoder {
     /// The decode method.
     /// [`ImageDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/decode)
-    pub fn decode0(&self) -> Promise {
-        self.inner.call("decode", &[]).as_::<Promise>()
+    pub fn decode0(&self) -> Promise<ImageDecodeResult> {
+        self.inner
+            .call("decode", &[])
+            .as_::<Promise<ImageDecodeResult>>()
     }
     /// The decode method.
     /// [`ImageDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/decode)
-    pub fn decode1(&self, options: &ImageDecodeOptions) -> Promise {
+    pub fn decode1(&self, options: &ImageDecodeOptions) -> Promise<ImageDecodeResult> {
         self.inner
             .call("decode", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<ImageDecodeResult>>()
     }
 }
 impl ImageDecoder {
@@ -258,9 +260,9 @@ impl ImageDecoder {
 impl ImageDecoder {
     /// The isTypeSupported method.
     /// [`ImageDecoder.isTypeSupported`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/isTypeSupported)
-    pub fn is_type_supported(type_: &str) -> Promise {
+    pub fn is_type_supported(type_: &str) -> Promise<bool> {
         Any::global("ImageDecoder")
             .call("isTypeSupported", &[type_.into()])
-            .as_::<Promise>()
+            .as_::<Promise<bool>>()
     }
 }

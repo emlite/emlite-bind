@@ -58,22 +58,24 @@ jsbind::utils::impl_dyn_cast!(ViewTransition);
 impl ViewTransition {
     /// Getter of the `updateCallbackDone` attribute.
     /// [`ViewTransition.updateCallbackDone`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTransition/updateCallbackDone)
-    pub fn update_callback_done(&self) -> Promise {
-        self.inner.get("updateCallbackDone").as_::<Promise>()
+    pub fn update_callback_done(&self) -> Promise<Undefined> {
+        self.inner
+            .get("updateCallbackDone")
+            .as_::<Promise<Undefined>>()
     }
 }
 impl ViewTransition {
     /// Getter of the `ready` attribute.
     /// [`ViewTransition.ready`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTransition/ready)
-    pub fn ready(&self) -> Promise {
-        self.inner.get("ready").as_::<Promise>()
+    pub fn ready(&self) -> Promise<Undefined> {
+        self.inner.get("ready").as_::<Promise<Undefined>>()
     }
 }
 impl ViewTransition {
     /// Getter of the `finished` attribute.
     /// [`ViewTransition.finished`](https://developer.mozilla.org/en-US/docs/Web/API/ViewTransition/finished)
-    pub fn finished(&self) -> Promise {
-        self.inner.get("finished").as_::<Promise>()
+    pub fn finished(&self) -> Promise<Undefined> {
+        self.inner.get("finished").as_::<Promise<Undefined>>()
     }
 }
 impl ViewTransition {

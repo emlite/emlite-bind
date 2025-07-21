@@ -118,15 +118,17 @@ impl FontFaceSet {
 impl FontFaceSet {
     /// The load method.
     /// [`FontFaceSet.load`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/load)
-    pub fn load0(&self, font: &str) -> Promise {
-        self.inner.call("load", &[font.into()]).as_::<Promise>()
+    pub fn load0(&self, font: &str) -> Promise<Sequence<FontFace>> {
+        self.inner
+            .call("load", &[font.into()])
+            .as_::<Promise<Sequence<FontFace>>>()
     }
     /// The load method.
     /// [`FontFaceSet.load`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/load)
-    pub fn load1(&self, font: &str, text: &str) -> Promise {
+    pub fn load1(&self, font: &str, text: &str) -> Promise<Sequence<FontFace>> {
         self.inner
             .call("load", &[font.into(), text.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<FontFace>>>()
     }
 }
 impl FontFaceSet {
@@ -146,8 +148,8 @@ impl FontFaceSet {
 impl FontFaceSet {
     /// Getter of the `ready` attribute.
     /// [`FontFaceSet.ready`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/ready)
-    pub fn ready(&self) -> Promise {
-        self.inner.get("ready").as_::<Promise>()
+    pub fn ready(&self) -> Promise<FontFaceSet> {
+        self.inner.get("ready").as_::<Promise<FontFaceSet>>()
     }
 }
 impl FontFaceSet {

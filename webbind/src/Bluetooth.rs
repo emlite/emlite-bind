@@ -232,8 +232,10 @@ jsbind::utils::impl_dyn_cast!(Bluetooth);
 impl Bluetooth {
     /// The getAvailability method.
     /// [`Bluetooth.getAvailability`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/getAvailability)
-    pub fn get_availability(&self) -> Promise {
-        self.inner.call("getAvailability", &[]).as_::<Promise>()
+    pub fn get_availability(&self) -> Promise<bool> {
+        self.inner
+            .call("getAvailability", &[])
+            .as_::<Promise<bool>>()
     }
 }
 impl Bluetooth {
@@ -259,36 +261,42 @@ impl Bluetooth {
 impl Bluetooth {
     /// The getDevices method.
     /// [`Bluetooth.getDevices`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/getDevices)
-    pub fn get_devices(&self) -> Promise {
-        self.inner.call("getDevices", &[]).as_::<Promise>()
+    pub fn get_devices(&self) -> Promise<Sequence<BluetoothDevice>> {
+        self.inner
+            .call("getDevices", &[])
+            .as_::<Promise<Sequence<BluetoothDevice>>>()
     }
 }
 impl Bluetooth {
     /// The requestDevice method.
     /// [`Bluetooth.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/requestDevice)
-    pub fn request_device0(&self) -> Promise {
-        self.inner.call("requestDevice", &[]).as_::<Promise>()
+    pub fn request_device0(&self) -> Promise<BluetoothDevice> {
+        self.inner
+            .call("requestDevice", &[])
+            .as_::<Promise<BluetoothDevice>>()
     }
     /// The requestDevice method.
     /// [`Bluetooth.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/requestDevice)
-    pub fn request_device1(&self, options: &RequestDeviceOptions) -> Promise {
+    pub fn request_device1(&self, options: &RequestDeviceOptions) -> Promise<BluetoothDevice> {
         self.inner
             .call("requestDevice", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<BluetoothDevice>>()
     }
 }
 impl Bluetooth {
     /// The requestLEScan method.
     /// [`Bluetooth.requestLEScan`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/requestLEScan)
-    pub fn request_le_scan0(&self) -> Promise {
-        self.inner.call("requestLEScan", &[]).as_::<Promise>()
+    pub fn request_le_scan0(&self) -> Promise<BluetoothLEScan> {
+        self.inner
+            .call("requestLEScan", &[])
+            .as_::<Promise<BluetoothLEScan>>()
     }
     /// The requestLEScan method.
     /// [`Bluetooth.requestLEScan`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/requestLEScan)
-    pub fn request_le_scan1(&self, options: &BluetoothLEScanOptions) -> Promise {
+    pub fn request_le_scan1(&self, options: &BluetoothLEScanOptions) -> Promise<BluetoothLEScan> {
         self.inner
             .call("requestLEScan", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<BluetoothLEScan>>()
     }
 }
 impl Bluetooth {

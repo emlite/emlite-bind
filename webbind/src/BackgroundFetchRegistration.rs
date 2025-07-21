@@ -206,42 +206,54 @@ impl BackgroundFetchRegistration {
 impl BackgroundFetchRegistration {
     /// The abort method.
     /// [`BackgroundFetchRegistration.abort`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/abort)
-    pub fn abort(&self) -> Promise {
-        self.inner.call("abort", &[]).as_::<Promise>()
+    pub fn abort(&self) -> Promise<bool> {
+        self.inner.call("abort", &[]).as_::<Promise<bool>>()
     }
 }
 impl BackgroundFetchRegistration {
     /// The match method.
     /// [`BackgroundFetchRegistration.match`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/match)
-    pub fn match_0(&self, request: &Any) -> Promise {
-        self.inner.call("match", &[request.into()]).as_::<Promise>()
+    pub fn match_0(&self, request: &Any) -> Promise<BackgroundFetchRecord> {
+        self.inner
+            .call("match", &[request.into()])
+            .as_::<Promise<BackgroundFetchRecord>>()
     }
     /// The match method.
     /// [`BackgroundFetchRegistration.match`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/match)
-    pub fn match_1(&self, request: &Any, options: &CacheQueryOptions) -> Promise {
+    pub fn match_1(
+        &self,
+        request: &Any,
+        options: &CacheQueryOptions,
+    ) -> Promise<BackgroundFetchRecord> {
         self.inner
             .call("match", &[request.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<BackgroundFetchRecord>>()
     }
 }
 impl BackgroundFetchRegistration {
     /// The matchAll method.
     /// [`BackgroundFetchRegistration.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/matchAll)
-    pub fn match_all0(&self) -> Promise {
-        self.inner.call("matchAll", &[]).as_::<Promise>()
+    pub fn match_all0(&self) -> Promise<Sequence<BackgroundFetchRecord>> {
+        self.inner
+            .call("matchAll", &[])
+            .as_::<Promise<Sequence<BackgroundFetchRecord>>>()
     }
     /// The matchAll method.
     /// [`BackgroundFetchRegistration.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/matchAll)
-    pub fn match_all1(&self, request: &Any) -> Promise {
+    pub fn match_all1(&self, request: &Any) -> Promise<Sequence<BackgroundFetchRecord>> {
         self.inner
             .call("matchAll", &[request.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<BackgroundFetchRecord>>>()
     }
     /// The matchAll method.
     /// [`BackgroundFetchRegistration.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/matchAll)
-    pub fn match_all2(&self, request: &Any, options: &CacheQueryOptions) -> Promise {
+    pub fn match_all2(
+        &self,
+        request: &Any,
+        options: &CacheQueryOptions,
+    ) -> Promise<Sequence<BackgroundFetchRecord>> {
         self.inner
             .call("matchAll", &[request.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<BackgroundFetchRecord>>>()
     }
 }

@@ -58,8 +58,10 @@ jsbind::utils::impl_dyn_cast!(WebGLRenderingContext);
 impl WebGLRenderingContext {
     /// The makeXRCompatible method.
     /// [`WebGLRenderingContext.makeXRCompatible`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLRenderingContext/makeXRCompatible)
-    pub fn make_xr_compatible(&self) -> Promise {
-        self.inner.call("makeXRCompatible", &[]).as_::<Promise>()
+    pub fn make_xr_compatible(&self) -> Promise<Undefined> {
+        self.inner
+            .call("makeXRCompatible", &[])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl WebGLRenderingContext {

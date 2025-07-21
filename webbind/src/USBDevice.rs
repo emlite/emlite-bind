@@ -274,49 +274,49 @@ impl USBDevice {
 impl USBDevice {
     /// The open method.
     /// [`USBDevice.open`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/open)
-    pub fn open(&self) -> Promise {
-        self.inner.call("open", &[]).as_::<Promise>()
+    pub fn open(&self) -> Promise<Undefined> {
+        self.inner.call("open", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl USBDevice {
     /// The close method.
     /// [`USBDevice.close`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/close)
-    pub fn close(&self) -> Promise {
-        self.inner.call("close", &[]).as_::<Promise>()
+    pub fn close(&self) -> Promise<Undefined> {
+        self.inner.call("close", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl USBDevice {
     /// The forget method.
     /// [`USBDevice.forget`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/forget)
-    pub fn forget(&self) -> Promise {
-        self.inner.call("forget", &[]).as_::<Promise>()
+    pub fn forget(&self) -> Promise<Undefined> {
+        self.inner.call("forget", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl USBDevice {
     /// The selectConfiguration method.
     /// [`USBDevice.selectConfiguration`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/selectConfiguration)
-    pub fn select_configuration(&self, configuration_value: u8) -> Promise {
+    pub fn select_configuration(&self, configuration_value: u8) -> Promise<Undefined> {
         self.inner
             .call("selectConfiguration", &[configuration_value.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl USBDevice {
     /// The claimInterface method.
     /// [`USBDevice.claimInterface`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/claimInterface)
-    pub fn claim_interface(&self, interface_number: u8) -> Promise {
+    pub fn claim_interface(&self, interface_number: u8) -> Promise<Undefined> {
         self.inner
             .call("claimInterface", &[interface_number.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl USBDevice {
     /// The releaseInterface method.
     /// [`USBDevice.releaseInterface`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/releaseInterface)
-    pub fn release_interface(&self, interface_number: u8) -> Promise {
+    pub fn release_interface(&self, interface_number: u8) -> Promise<Undefined> {
         self.inner
             .call("releaseInterface", &[interface_number.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl USBDevice {
@@ -326,13 +326,13 @@ impl USBDevice {
         &self,
         interface_number: u8,
         alternate_setting: u8,
-    ) -> Promise {
+    ) -> Promise<Undefined> {
         self.inner
             .call(
                 "selectAlternateInterface",
                 &[interface_number.into(), alternate_setting.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl USBDevice {
@@ -342,19 +342,22 @@ impl USBDevice {
         &self,
         setup: &USBControlTransferParameters,
         length: u16,
-    ) -> Promise {
+    ) -> Promise<USBInTransferResult> {
         self.inner
             .call("controlTransferIn", &[setup.into(), length.into()])
-            .as_::<Promise>()
+            .as_::<Promise<USBInTransferResult>>()
     }
 }
 impl USBDevice {
     /// The controlTransferOut method.
     /// [`USBDevice.controlTransferOut`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/controlTransferOut)
-    pub fn control_transfer_out0(&self, setup: &USBControlTransferParameters) -> Promise {
+    pub fn control_transfer_out0(
+        &self,
+        setup: &USBControlTransferParameters,
+    ) -> Promise<USBOutTransferResult> {
         self.inner
             .call("controlTransferOut", &[setup.into()])
-            .as_::<Promise>()
+            .as_::<Promise<USBOutTransferResult>>()
     }
     /// The controlTransferOut method.
     /// [`USBDevice.controlTransferOut`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/controlTransferOut)
@@ -362,37 +365,37 @@ impl USBDevice {
         &self,
         setup: &USBControlTransferParameters,
         data: &Any,
-    ) -> Promise {
+    ) -> Promise<USBOutTransferResult> {
         self.inner
             .call("controlTransferOut", &[setup.into(), data.into()])
-            .as_::<Promise>()
+            .as_::<Promise<USBOutTransferResult>>()
     }
 }
 impl USBDevice {
     /// The clearHalt method.
     /// [`USBDevice.clearHalt`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/clearHalt)
-    pub fn clear_halt(&self, direction: &USBDirection, endpoint_number: u8) -> Promise {
+    pub fn clear_halt(&self, direction: &USBDirection, endpoint_number: u8) -> Promise<Undefined> {
         self.inner
             .call("clearHalt", &[direction.into(), endpoint_number.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl USBDevice {
     /// The transferIn method.
     /// [`USBDevice.transferIn`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/transferIn)
-    pub fn transfer_in(&self, endpoint_number: u8, length: u32) -> Promise {
+    pub fn transfer_in(&self, endpoint_number: u8, length: u32) -> Promise<USBInTransferResult> {
         self.inner
             .call("transferIn", &[endpoint_number.into(), length.into()])
-            .as_::<Promise>()
+            .as_::<Promise<USBInTransferResult>>()
     }
 }
 impl USBDevice {
     /// The transferOut method.
     /// [`USBDevice.transferOut`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/transferOut)
-    pub fn transfer_out(&self, endpoint_number: u8, data: &Any) -> Promise {
+    pub fn transfer_out(&self, endpoint_number: u8, data: &Any) -> Promise<USBOutTransferResult> {
         self.inner
             .call("transferOut", &[endpoint_number.into(), data.into()])
-            .as_::<Promise>()
+            .as_::<Promise<USBOutTransferResult>>()
     }
 }
 impl USBDevice {
@@ -402,13 +405,13 @@ impl USBDevice {
         &self,
         endpoint_number: u8,
         packet_lengths: Sequence<u32>,
-    ) -> Promise {
+    ) -> Promise<USBIsochronousInTransferResult> {
         self.inner
             .call(
                 "isochronousTransferIn",
                 &[endpoint_number.into(), packet_lengths.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<USBIsochronousInTransferResult>>()
     }
 }
 impl USBDevice {
@@ -419,19 +422,19 @@ impl USBDevice {
         endpoint_number: u8,
         data: &Any,
         packet_lengths: Sequence<u32>,
-    ) -> Promise {
+    ) -> Promise<USBIsochronousOutTransferResult> {
         self.inner
             .call(
                 "isochronousTransferOut",
                 &[endpoint_number.into(), data.into(), packet_lengths.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<USBIsochronousOutTransferResult>>()
     }
 }
 impl USBDevice {
     /// The reset method.
     /// [`USBDevice.reset`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/reset)
-    pub fn reset(&self) -> Promise {
-        self.inner.call("reset", &[]).as_::<Promise>()
+    pub fn reset(&self) -> Promise<Undefined> {
+        self.inner.call("reset", &[]).as_::<Promise<Undefined>>()
     }
 }

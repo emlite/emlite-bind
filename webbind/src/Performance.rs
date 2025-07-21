@@ -243,10 +243,10 @@ impl Performance {
 impl Performance {
     /// The measureUserAgentSpecificMemory method.
     /// [`Performance.measureUserAgentSpecificMemory`](https://developer.mozilla.org/en-US/docs/Web/API/Performance/measureUserAgentSpecificMemory)
-    pub fn measure_user_agent_specific_memory(&self) -> Promise {
+    pub fn measure_user_agent_specific_memory(&self) -> Promise<MemoryMeasurement> {
         self.inner
             .call("measureUserAgentSpecificMemory", &[])
-            .as_::<Promise>()
+            .as_::<Promise<MemoryMeasurement>>()
     }
 }
 impl Performance {

@@ -79,22 +79,24 @@ impl GPUBuffer {
 impl GPUBuffer {
     /// The mapAsync method.
     /// [`GPUBuffer.mapAsync`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/mapAsync)
-    pub fn map_async0(&self, mode: &Any) -> Promise {
-        self.inner.call("mapAsync", &[mode.into()]).as_::<Promise>()
+    pub fn map_async0(&self, mode: &Any) -> Promise<Undefined> {
+        self.inner
+            .call("mapAsync", &[mode.into()])
+            .as_::<Promise<Undefined>>()
     }
     /// The mapAsync method.
     /// [`GPUBuffer.mapAsync`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/mapAsync)
-    pub fn map_async1(&self, mode: &Any, offset: &Any) -> Promise {
+    pub fn map_async1(&self, mode: &Any, offset: &Any) -> Promise<Undefined> {
         self.inner
             .call("mapAsync", &[mode.into(), offset.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
     /// The mapAsync method.
     /// [`GPUBuffer.mapAsync`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/mapAsync)
-    pub fn map_async2(&self, mode: &Any, offset: &Any, size: &Any) -> Promise {
+    pub fn map_async2(&self, mode: &Any, offset: &Any, size: &Any) -> Promise<Undefined> {
         self.inner
             .call("mapAsync", &[mode.into(), offset.into(), size.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl GPUBuffer {

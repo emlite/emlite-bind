@@ -163,17 +163,17 @@ impl Notification {
 impl Notification {
     /// The requestPermission method.
     /// [`Notification.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/requestPermission)
-    pub fn request_permission0() -> Promise {
+    pub fn request_permission0() -> Promise<NotificationPermission> {
         Any::global("Notification")
             .call("requestPermission", &[])
-            .as_::<Promise>()
+            .as_::<Promise<NotificationPermission>>()
     }
     /// The requestPermission method.
     /// [`Notification.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/requestPermission)
-    pub fn request_permission1(deprecated_callback: &Function) -> Promise {
+    pub fn request_permission1(deprecated_callback: &Function) -> Promise<NotificationPermission> {
         Any::global("Notification")
             .call("requestPermission", &[deprecated_callback.into()])
-            .as_::<Promise>()
+            .as_::<Promise<NotificationPermission>>()
     }
 }
 impl Notification {

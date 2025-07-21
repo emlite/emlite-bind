@@ -86,10 +86,10 @@ impl PreferenceObject {
 impl PreferenceObject {
     /// The requestOverride method.
     /// [`PreferenceObject.requestOverride`](https://developer.mozilla.org/en-US/docs/Web/API/PreferenceObject/requestOverride)
-    pub fn request_override(&self, value: &str) -> Promise {
+    pub fn request_override(&self, value: &str) -> Promise<Undefined> {
         self.inner
             .call("requestOverride", &[value.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl PreferenceObject {

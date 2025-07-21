@@ -58,7 +58,9 @@ jsbind::utils::impl_dyn_cast!(WebTransportSendGroup);
 impl WebTransportSendGroup {
     /// The getStats method.
     /// [`WebTransportSendGroup.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportSendGroup/getStats)
-    pub fn get_stats(&self) -> Promise {
-        self.inner.call("getStats", &[]).as_::<Promise>()
+    pub fn get_stats(&self) -> Promise<WebTransportSendStreamStats> {
+        self.inner
+            .call("getStats", &[])
+            .as_::<Promise<WebTransportSendStreamStats>>()
     }
 }

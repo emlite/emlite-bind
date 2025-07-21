@@ -160,7 +160,9 @@ impl HandwritingDrawing {
 impl HandwritingDrawing {
     /// The getPrediction method.
     /// [`HandwritingDrawing.getPrediction`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingDrawing/getPrediction)
-    pub fn get_prediction(&self) -> Promise {
-        self.inner.call("getPrediction", &[]).as_::<Promise>()
+    pub fn get_prediction(&self) -> Promise<Sequence<HandwritingPrediction>> {
+        self.inner
+            .call("getPrediction", &[])
+            .as_::<Promise<Sequence<HandwritingPrediction>>>()
     }
 }

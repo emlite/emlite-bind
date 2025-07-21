@@ -90,72 +90,81 @@ impl BluetoothRemoteGATTCharacteristic {
 impl BluetoothRemoteGATTCharacteristic {
     /// The getDescriptor method.
     /// [`BluetoothRemoteGATTCharacteristic.getDescriptor`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/getDescriptor)
-    pub fn get_descriptor(&self, descriptor: &Any) -> Promise {
+    pub fn get_descriptor(&self, descriptor: &Any) -> Promise<BluetoothRemoteGATTDescriptor> {
         self.inner
             .call("getDescriptor", &[descriptor.into()])
-            .as_::<Promise>()
+            .as_::<Promise<BluetoothRemoteGATTDescriptor>>()
     }
 }
 impl BluetoothRemoteGATTCharacteristic {
     /// The getDescriptors method.
     /// [`BluetoothRemoteGATTCharacteristic.getDescriptors`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/getDescriptors)
-    pub fn get_descriptors0(&self) -> Promise {
-        self.inner.call("getDescriptors", &[]).as_::<Promise>()
+    pub fn get_descriptors0(&self) -> Promise<Sequence<BluetoothRemoteGATTDescriptor>> {
+        self.inner
+            .call("getDescriptors", &[])
+            .as_::<Promise<Sequence<BluetoothRemoteGATTDescriptor>>>()
     }
     /// The getDescriptors method.
     /// [`BluetoothRemoteGATTCharacteristic.getDescriptors`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/getDescriptors)
-    pub fn get_descriptors1(&self, descriptor: &Any) -> Promise {
+    pub fn get_descriptors1(
+        &self,
+        descriptor: &Any,
+    ) -> Promise<Sequence<BluetoothRemoteGATTDescriptor>> {
         self.inner
             .call("getDescriptors", &[descriptor.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<BluetoothRemoteGATTDescriptor>>>()
     }
 }
 impl BluetoothRemoteGATTCharacteristic {
     /// The readValue method.
     /// [`BluetoothRemoteGATTCharacteristic.readValue`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/readValue)
-    pub fn read_value(&self) -> Promise {
-        self.inner.call("readValue", &[]).as_::<Promise>()
+    pub fn read_value(&self) -> Promise<DataView> {
+        self.inner.call("readValue", &[]).as_::<Promise<DataView>>()
     }
 }
 impl BluetoothRemoteGATTCharacteristic {
     /// The writeValue method.
     /// [`BluetoothRemoteGATTCharacteristic.writeValue`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/writeValue)
-    pub fn write_value(&self, value: &Any) -> Promise {
+    pub fn write_value(&self, value: &Any) -> Promise<Undefined> {
         self.inner
             .call("writeValue", &[value.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl BluetoothRemoteGATTCharacteristic {
     /// The writeValueWithResponse method.
     /// [`BluetoothRemoteGATTCharacteristic.writeValueWithResponse`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/writeValueWithResponse)
-    pub fn write_value_with_response(&self, value: &Any) -> Promise {
+    pub fn write_value_with_response(&self, value: &Any) -> Promise<Undefined> {
         self.inner
             .call("writeValueWithResponse", &[value.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl BluetoothRemoteGATTCharacteristic {
     /// The writeValueWithoutResponse method.
     /// [`BluetoothRemoteGATTCharacteristic.writeValueWithoutResponse`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/writeValueWithoutResponse)
-    pub fn write_value_without_response(&self, value: &Any) -> Promise {
+    pub fn write_value_without_response(&self, value: &Any) -> Promise<Undefined> {
         self.inner
             .call("writeValueWithoutResponse", &[value.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl BluetoothRemoteGATTCharacteristic {
     /// The startNotifications method.
     /// [`BluetoothRemoteGATTCharacteristic.startNotifications`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/startNotifications)
-    pub fn start_notifications(&self) -> Promise {
-        self.inner.call("startNotifications", &[]).as_::<Promise>()
+    pub fn start_notifications(&self) -> Promise<BluetoothRemoteGATTCharacteristic> {
+        self.inner
+            .call("startNotifications", &[])
+            .as_::<Promise<BluetoothRemoteGATTCharacteristic>>()
     }
 }
 impl BluetoothRemoteGATTCharacteristic {
     /// The stopNotifications method.
     /// [`BluetoothRemoteGATTCharacteristic.stopNotifications`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/stopNotifications)
-    pub fn stop_notifications(&self) -> Promise {
-        self.inner.call("stopNotifications", &[]).as_::<Promise>()
+    pub fn stop_notifications(&self) -> Promise<BluetoothRemoteGATTCharacteristic> {
+        self.inner
+            .call("stopNotifications", &[])
+            .as_::<Promise<BluetoothRemoteGATTCharacteristic>>()
     }
 }
 impl BluetoothRemoteGATTCharacteristic {

@@ -68,24 +68,26 @@ impl OfflineAudioContext {
 impl OfflineAudioContext {
     /// The startRendering method.
     /// [`OfflineAudioContext.startRendering`](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioContext/startRendering)
-    pub fn start_rendering(&self) -> Promise {
-        self.inner.call("startRendering", &[]).as_::<Promise>()
+    pub fn start_rendering(&self) -> Promise<AudioBuffer> {
+        self.inner
+            .call("startRendering", &[])
+            .as_::<Promise<AudioBuffer>>()
     }
 }
 impl OfflineAudioContext {
     /// The resume method.
     /// [`OfflineAudioContext.resume`](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioContext/resume)
-    pub fn resume(&self) -> Promise {
-        self.inner.call("resume", &[]).as_::<Promise>()
+    pub fn resume(&self) -> Promise<Undefined> {
+        self.inner.call("resume", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl OfflineAudioContext {
     /// The suspend method.
     /// [`OfflineAudioContext.suspend`](https://developer.mozilla.org/en-US/docs/Web/API/OfflineAudioContext/suspend)
-    pub fn suspend(&self, suspend_time: f64) -> Promise {
+    pub fn suspend(&self, suspend_time: f64) -> Promise<Undefined> {
         self.inner
             .call("suspend", &[suspend_time.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl OfflineAudioContext {

@@ -75,17 +75,17 @@ impl SFrameTransform {
 impl SFrameTransform {
     /// The setEncryptionKey method.
     /// [`SFrameTransform.setEncryptionKey`](https://developer.mozilla.org/en-US/docs/Web/API/SFrameTransform/setEncryptionKey)
-    pub fn set_encryption_key0(&self, key: &CryptoKey) -> Promise {
+    pub fn set_encryption_key0(&self, key: &CryptoKey) -> Promise<Undefined> {
         self.inner
             .call("setEncryptionKey", &[key.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
     /// The setEncryptionKey method.
     /// [`SFrameTransform.setEncryptionKey`](https://developer.mozilla.org/en-US/docs/Web/API/SFrameTransform/setEncryptionKey)
-    pub fn set_encryption_key1(&self, key: &CryptoKey, key_id: &Any) -> Promise {
+    pub fn set_encryption_key1(&self, key: &CryptoKey, key_id: &Any) -> Promise<Undefined> {
         self.inner
             .call("setEncryptionKey", &[key.into(), key_id.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl SFrameTransform {

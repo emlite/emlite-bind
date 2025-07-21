@@ -280,25 +280,25 @@ impl IdentityProvider {
 impl IdentityProvider {
     /// The resolve method.
     /// [`IdentityProvider.resolve`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityProvider/resolve)
-    pub fn resolve0(token: &str) -> Promise {
+    pub fn resolve0(token: &str) -> Promise<Undefined> {
         Any::global("IdentityProvider")
             .call("resolve", &[token.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
     /// The resolve method.
     /// [`IdentityProvider.resolve`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityProvider/resolve)
-    pub fn resolve1(token: &str, options: &IdentityResolveOptions) -> Promise {
+    pub fn resolve1(token: &str, options: &IdentityResolveOptions) -> Promise<Undefined> {
         Any::global("IdentityProvider")
             .call("resolve", &[token.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl IdentityProvider {
     /// The getUserInfo method.
     /// [`IdentityProvider.getUserInfo`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityProvider/getUserInfo)
-    pub fn get_user_info(config: &IdentityProviderConfig) -> Promise {
+    pub fn get_user_info(config: &IdentityProviderConfig) -> Promise<Sequence<IdentityUserInfo>> {
         Any::global("IdentityProvider")
             .call("getUserInfo", &[config.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<IdentityUserInfo>>>()
     }
 }

@@ -117,30 +117,34 @@ jsbind::utils::impl_dyn_cast!(PeriodicSyncManager);
 impl PeriodicSyncManager {
     /// The register method.
     /// [`PeriodicSyncManager.register`](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncManager/register)
-    pub fn register0(&self, tag: &str) -> Promise {
-        self.inner.call("register", &[tag.into()]).as_::<Promise>()
+    pub fn register0(&self, tag: &str) -> Promise<Undefined> {
+        self.inner
+            .call("register", &[tag.into()])
+            .as_::<Promise<Undefined>>()
     }
     /// The register method.
     /// [`PeriodicSyncManager.register`](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncManager/register)
-    pub fn register1(&self, tag: &str, options: &BackgroundSyncOptions) -> Promise {
+    pub fn register1(&self, tag: &str, options: &BackgroundSyncOptions) -> Promise<Undefined> {
         self.inner
             .call("register", &[tag.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl PeriodicSyncManager {
     /// The getTags method.
     /// [`PeriodicSyncManager.getTags`](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncManager/getTags)
-    pub fn get_tags(&self) -> Promise {
-        self.inner.call("getTags", &[]).as_::<Promise>()
+    pub fn get_tags(&self) -> Promise<Sequence<String>> {
+        self.inner
+            .call("getTags", &[])
+            .as_::<Promise<Sequence<String>>>()
     }
 }
 impl PeriodicSyncManager {
     /// The unregister method.
     /// [`PeriodicSyncManager.unregister`](https://developer.mozilla.org/en-US/docs/Web/API/PeriodicSyncManager/unregister)
-    pub fn unregister(&self, tag: &str) -> Promise {
+    pub fn unregister(&self, tag: &str) -> Promise<Undefined> {
         self.inner
             .call("unregister", &[tag.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }

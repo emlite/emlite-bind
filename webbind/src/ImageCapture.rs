@@ -242,38 +242,42 @@ impl ImageCapture {
 impl ImageCapture {
     /// The takePhoto method.
     /// [`ImageCapture.takePhoto`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/takePhoto)
-    pub fn take_photo0(&self) -> Promise {
-        self.inner.call("takePhoto", &[]).as_::<Promise>()
+    pub fn take_photo0(&self) -> Promise<Blob> {
+        self.inner.call("takePhoto", &[]).as_::<Promise<Blob>>()
     }
     /// The takePhoto method.
     /// [`ImageCapture.takePhoto`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/takePhoto)
-    pub fn take_photo1(&self, photo_settings: &PhotoSettings) -> Promise {
+    pub fn take_photo1(&self, photo_settings: &PhotoSettings) -> Promise<Blob> {
         self.inner
             .call("takePhoto", &[photo_settings.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Blob>>()
     }
 }
 impl ImageCapture {
     /// The getPhotoCapabilities method.
     /// [`ImageCapture.getPhotoCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/getPhotoCapabilities)
-    pub fn get_photo_capabilities(&self) -> Promise {
+    pub fn get_photo_capabilities(&self) -> Promise<PhotoCapabilities> {
         self.inner
             .call("getPhotoCapabilities", &[])
-            .as_::<Promise>()
+            .as_::<Promise<PhotoCapabilities>>()
     }
 }
 impl ImageCapture {
     /// The getPhotoSettings method.
     /// [`ImageCapture.getPhotoSettings`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/getPhotoSettings)
-    pub fn get_photo_settings(&self) -> Promise {
-        self.inner.call("getPhotoSettings", &[]).as_::<Promise>()
+    pub fn get_photo_settings(&self) -> Promise<PhotoSettings> {
+        self.inner
+            .call("getPhotoSettings", &[])
+            .as_::<Promise<PhotoSettings>>()
     }
 }
 impl ImageCapture {
     /// The grabFrame method.
     /// [`ImageCapture.grabFrame`](https://developer.mozilla.org/en-US/docs/Web/API/ImageCapture/grabFrame)
-    pub fn grab_frame(&self) -> Promise {
-        self.inner.call("grabFrame", &[]).as_::<Promise>()
+    pub fn grab_frame(&self) -> Promise<ImageBitmap> {
+        self.inner
+            .call("grabFrame", &[])
+            .as_::<Promise<ImageBitmap>>()
     }
 }
 impl ImageCapture {

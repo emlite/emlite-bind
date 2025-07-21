@@ -91,20 +91,22 @@ impl WritableStream {
 impl WritableStream {
     /// The abort method.
     /// [`WritableStream.abort`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream/abort)
-    pub fn abort0(&self) -> Promise {
-        self.inner.call("abort", &[]).as_::<Promise>()
+    pub fn abort0(&self) -> Promise<Undefined> {
+        self.inner.call("abort", &[]).as_::<Promise<Undefined>>()
     }
     /// The abort method.
     /// [`WritableStream.abort`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream/abort)
-    pub fn abort1(&self, reason: &Any) -> Promise {
-        self.inner.call("abort", &[reason.into()]).as_::<Promise>()
+    pub fn abort1(&self, reason: &Any) -> Promise<Undefined> {
+        self.inner
+            .call("abort", &[reason.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl WritableStream {
     /// The close method.
     /// [`WritableStream.close`](https://developer.mozilla.org/en-US/docs/Web/API/WritableStream/close)
-    pub fn close(&self) -> Promise {
-        self.inner.call("close", &[]).as_::<Promise>()
+    pub fn close(&self) -> Promise<Undefined> {
+        self.inner.call("close", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl WritableStream {

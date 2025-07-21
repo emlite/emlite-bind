@@ -266,36 +266,40 @@ impl PaymentResponse {
 impl PaymentResponse {
     /// The complete method.
     /// [`PaymentResponse.complete`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/complete)
-    pub fn complete0(&self) -> Promise {
-        self.inner.call("complete", &[]).as_::<Promise>()
+    pub fn complete0(&self) -> Promise<Undefined> {
+        self.inner.call("complete", &[]).as_::<Promise<Undefined>>()
     }
     /// The complete method.
     /// [`PaymentResponse.complete`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/complete)
-    pub fn complete1(&self, result: &PaymentComplete) -> Promise {
+    pub fn complete1(&self, result: &PaymentComplete) -> Promise<Undefined> {
         self.inner
             .call("complete", &[result.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
     /// The complete method.
     /// [`PaymentResponse.complete`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/complete)
-    pub fn complete2(&self, result: &PaymentComplete, details: &PaymentCompleteDetails) -> Promise {
+    pub fn complete2(
+        &self,
+        result: &PaymentComplete,
+        details: &PaymentCompleteDetails,
+    ) -> Promise<Undefined> {
         self.inner
             .call("complete", &[result.into(), details.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl PaymentResponse {
     /// The retry method.
     /// [`PaymentResponse.retry`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/retry)
-    pub fn retry0(&self) -> Promise {
-        self.inner.call("retry", &[]).as_::<Promise>()
+    pub fn retry0(&self) -> Promise<Undefined> {
+        self.inner.call("retry", &[]).as_::<Promise<Undefined>>()
     }
     /// The retry method.
     /// [`PaymentResponse.retry`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/retry)
-    pub fn retry1(&self, error_fields: &PaymentValidationErrors) -> Promise {
+    pub fn retry1(&self, error_fields: &PaymentValidationErrors) -> Promise<Undefined> {
         self.inner
             .call("retry", &[error_fields.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl PaymentResponse {

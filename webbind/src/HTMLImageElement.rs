@@ -265,8 +265,8 @@ impl HTMLImageElement {
 impl HTMLImageElement {
     /// The decode method.
     /// [`HTMLImageElement.decode`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode)
-    pub fn decode(&self) -> Promise {
-        self.inner.call("decode", &[]).as_::<Promise>()
+    pub fn decode(&self) -> Promise<Undefined> {
+        self.inner.call("decode", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl HTMLImageElement {

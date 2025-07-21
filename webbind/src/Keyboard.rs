@@ -58,15 +58,15 @@ jsbind::utils::impl_dyn_cast!(Keyboard);
 impl Keyboard {
     /// The lock method.
     /// [`Keyboard.lock`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/lock)
-    pub fn lock0(&self) -> Promise {
-        self.inner.call("lock", &[]).as_::<Promise>()
+    pub fn lock0(&self) -> Promise<Undefined> {
+        self.inner.call("lock", &[]).as_::<Promise<Undefined>>()
     }
     /// The lock method.
     /// [`Keyboard.lock`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/lock)
-    pub fn lock1(&self, key_codes: &Sequence<String>) -> Promise {
+    pub fn lock1(&self, key_codes: &Sequence<String>) -> Promise<Undefined> {
         self.inner
             .call("lock", &[key_codes.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Keyboard {
@@ -79,8 +79,10 @@ impl Keyboard {
 impl Keyboard {
     /// The getLayoutMap method.
     /// [`Keyboard.getLayoutMap`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/getLayoutMap)
-    pub fn get_layout_map(&self) -> Promise {
-        self.inner.call("getLayoutMap", &[]).as_::<Promise>()
+    pub fn get_layout_map(&self) -> Promise<KeyboardLayoutMap> {
+        self.inner
+            .call("getLayoutMap", &[])
+            .as_::<Promise<KeyboardLayoutMap>>()
     }
 }
 impl Keyboard {

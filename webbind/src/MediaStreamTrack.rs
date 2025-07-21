@@ -494,15 +494,17 @@ impl MediaStreamTrack {
 impl MediaStreamTrack {
     /// The applyConstraints method.
     /// [`MediaStreamTrack.applyConstraints`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/applyConstraints)
-    pub fn apply_constraints0(&self) -> Promise {
-        self.inner.call("applyConstraints", &[]).as_::<Promise>()
+    pub fn apply_constraints0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("applyConstraints", &[])
+            .as_::<Promise<Undefined>>()
     }
     /// The applyConstraints method.
     /// [`MediaStreamTrack.applyConstraints`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/applyConstraints)
-    pub fn apply_constraints1(&self, constraints: &MediaTrackConstraints) -> Promise {
+    pub fn apply_constraints1(&self, constraints: &MediaTrackConstraints) -> Promise<Undefined> {
         self.inner
             .call("applyConstraints", &[constraints.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl MediaStreamTrack {
@@ -539,10 +541,10 @@ impl MediaStreamTrack {
 impl MediaStreamTrack {
     /// The sendCaptureAction method.
     /// [`MediaStreamTrack.sendCaptureAction`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/sendCaptureAction)
-    pub fn send_capture_action(&self, action: &CaptureAction) -> Promise {
+    pub fn send_capture_action(&self, action: &CaptureAction) -> Promise<Undefined> {
         self.inner
             .call("sendCaptureAction", &[action.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl MediaStreamTrack {

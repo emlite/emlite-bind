@@ -161,16 +161,18 @@ impl BarcodeDetector {
 impl BarcodeDetector {
     /// The getSupportedFormats method.
     /// [`BarcodeDetector.getSupportedFormats`](https://developer.mozilla.org/en-US/docs/Web/API/BarcodeDetector/getSupportedFormats)
-    pub fn get_supported_formats() -> Promise {
+    pub fn get_supported_formats() -> Promise<Sequence<BarcodeFormat>> {
         Any::global("BarcodeDetector")
             .call("getSupportedFormats", &[])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<BarcodeFormat>>>()
     }
 }
 impl BarcodeDetector {
     /// The detect method.
     /// [`BarcodeDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/BarcodeDetector/detect)
-    pub fn detect(&self, image: &Any) -> Promise {
-        self.inner.call("detect", &[image.into()]).as_::<Promise>()
+    pub fn detect(&self, image: &Any) -> Promise<Sequence<DetectedBarcode>> {
+        self.inner
+            .call("detect", &[image.into()])
+            .as_::<Promise<Sequence<DetectedBarcode>>>()
     }
 }

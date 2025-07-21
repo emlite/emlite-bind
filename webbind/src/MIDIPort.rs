@@ -122,14 +122,14 @@ impl MIDIPort {
 impl MIDIPort {
     /// The open method.
     /// [`MIDIPort.open`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIPort/open)
-    pub fn open(&self) -> Promise {
-        self.inner.call("open", &[]).as_::<Promise>()
+    pub fn open(&self) -> Promise<MIDIPort> {
+        self.inner.call("open", &[]).as_::<Promise<MIDIPort>>()
     }
 }
 impl MIDIPort {
     /// The close method.
     /// [`MIDIPort.close`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIPort/close)
-    pub fn close(&self) -> Promise {
-        self.inner.call("close", &[]).as_::<Promise>()
+    pub fn close(&self) -> Promise<MIDIPort> {
+        self.inner.call("close", &[]).as_::<Promise<MIDIPort>>()
     }
 }

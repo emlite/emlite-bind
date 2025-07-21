@@ -143,7 +143,9 @@ impl TextDetector {
 impl TextDetector {
     /// The detect method.
     /// [`TextDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/TextDetector/detect)
-    pub fn detect(&self, image: &Any) -> Promise {
-        self.inner.call("detect", &[image.into()]).as_::<Promise>()
+    pub fn detect(&self, image: &Any) -> Promise<Sequence<DetectedText>> {
+        self.inner
+            .call("detect", &[image.into()])
+            .as_::<Promise<Sequence<DetectedText>>>()
     }
 }

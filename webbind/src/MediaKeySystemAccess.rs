@@ -74,7 +74,9 @@ impl MediaKeySystemAccess {
 impl MediaKeySystemAccess {
     /// The createMediaKeys method.
     /// [`MediaKeySystemAccess.createMediaKeys`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySystemAccess/createMediaKeys)
-    pub fn create_media_keys(&self) -> Promise {
-        self.inner.call("createMediaKeys", &[]).as_::<Promise>()
+    pub fn create_media_keys(&self) -> Promise<MediaKeys> {
+        self.inner
+            .call("createMediaKeys", &[])
+            .as_::<Promise<MediaKeys>>()
     }
 }

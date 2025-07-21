@@ -58,9 +58,9 @@ jsbind::utils::impl_dyn_cast!(CropTarget);
 impl CropTarget {
     /// The fromElement method.
     /// [`CropTarget.fromElement`](https://developer.mozilla.org/en-US/docs/Web/API/CropTarget/fromElement)
-    pub fn from_element(element: &Element) -> Promise {
+    pub fn from_element(element: &Element) -> Promise<CropTarget> {
         Any::global("CropTarget")
             .call("fromElement", &[element.into()])
-            .as_::<Promise>()
+            .as_::<Promise<CropTarget>>()
     }
 }

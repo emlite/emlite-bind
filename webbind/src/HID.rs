@@ -152,16 +152,21 @@ impl HID {
 impl HID {
     /// The getDevices method.
     /// [`HID.getDevices`](https://developer.mozilla.org/en-US/docs/Web/API/HID/getDevices)
-    pub fn get_devices(&self) -> Promise {
-        self.inner.call("getDevices", &[]).as_::<Promise>()
+    pub fn get_devices(&self) -> Promise<Sequence<HIDDevice>> {
+        self.inner
+            .call("getDevices", &[])
+            .as_::<Promise<Sequence<HIDDevice>>>()
     }
 }
 impl HID {
     /// The requestDevice method.
     /// [`HID.requestDevice`](https://developer.mozilla.org/en-US/docs/Web/API/HID/requestDevice)
-    pub fn request_device(&self, options: &HIDDeviceRequestOptions) -> Promise {
+    pub fn request_device(
+        &self,
+        options: &HIDDeviceRequestOptions,
+    ) -> Promise<Sequence<HIDDevice>> {
         self.inner
             .call("requestDevice", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<HIDDevice>>>()
     }
 }

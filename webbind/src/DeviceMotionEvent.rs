@@ -111,9 +111,9 @@ impl DeviceMotionEvent {
 impl DeviceMotionEvent {
     /// The requestPermission method.
     /// [`DeviceMotionEvent.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent/requestPermission)
-    pub fn request_permission() -> Promise {
+    pub fn request_permission() -> Promise<PermissionState> {
         Any::global("DeviceMotionEvent")
             .call("requestPermission", &[])
-            .as_::<Promise>()
+            .as_::<Promise<PermissionState>>()
     }
 }

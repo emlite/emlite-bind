@@ -67,7 +67,9 @@ impl XRHitTestResult {
 impl XRHitTestResult {
     /// The createAnchor method.
     /// [`XRHitTestResult.createAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRHitTestResult/createAnchor)
-    pub fn create_anchor(&self) -> Promise {
-        self.inner.call("createAnchor", &[]).as_::<Promise>()
+    pub fn create_anchor(&self) -> Promise<XRAnchor> {
+        self.inner
+            .call("createAnchor", &[])
+            .as_::<Promise<XRAnchor>>()
     }
 }

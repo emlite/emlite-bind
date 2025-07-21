@@ -144,45 +144,55 @@ impl ServiceWorkerContainer {
 impl ServiceWorkerContainer {
     /// Getter of the `ready` attribute.
     /// [`ServiceWorkerContainer.ready`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/ready)
-    pub fn ready(&self) -> Promise {
-        self.inner.get("ready").as_::<Promise>()
+    pub fn ready(&self) -> Promise<ServiceWorkerRegistration> {
+        self.inner
+            .get("ready")
+            .as_::<Promise<ServiceWorkerRegistration>>()
     }
 }
 impl ServiceWorkerContainer {
     /// The register method.
     /// [`ServiceWorkerContainer.register`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register)
-    pub fn register0(&self, script_url: &Any) -> Promise {
+    pub fn register0(&self, script_url: &Any) -> Promise<ServiceWorkerRegistration> {
         self.inner
             .call("register", &[script_url.into()])
-            .as_::<Promise>()
+            .as_::<Promise<ServiceWorkerRegistration>>()
     }
     /// The register method.
     /// [`ServiceWorkerContainer.register`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register)
-    pub fn register1(&self, script_url: &Any, options: &RegistrationOptions) -> Promise {
+    pub fn register1(
+        &self,
+        script_url: &Any,
+        options: &RegistrationOptions,
+    ) -> Promise<ServiceWorkerRegistration> {
         self.inner
             .call("register", &[script_url.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<ServiceWorkerRegistration>>()
     }
 }
 impl ServiceWorkerContainer {
     /// The getRegistration method.
     /// [`ServiceWorkerContainer.getRegistration`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/getRegistration)
-    pub fn get_registration0(&self) -> Promise {
-        self.inner.call("getRegistration", &[]).as_::<Promise>()
+    pub fn get_registration0(&self) -> Promise<Any> {
+        self.inner
+            .call("getRegistration", &[])
+            .as_::<Promise<Any>>()
     }
     /// The getRegistration method.
     /// [`ServiceWorkerContainer.getRegistration`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/getRegistration)
-    pub fn get_registration1(&self, client_url: &str) -> Promise {
+    pub fn get_registration1(&self, client_url: &str) -> Promise<Any> {
         self.inner
             .call("getRegistration", &[client_url.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
 }
 impl ServiceWorkerContainer {
     /// The getRegistrations method.
     /// [`ServiceWorkerContainer.getRegistrations`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/getRegistrations)
-    pub fn get_registrations(&self) -> Promise {
-        self.inner.call("getRegistrations", &[]).as_::<Promise>()
+    pub fn get_registrations(&self) -> Promise<FrozenArray<ServiceWorkerRegistration>> {
+        self.inner
+            .call("getRegistrations", &[])
+            .as_::<Promise<FrozenArray<ServiceWorkerRegistration>>>()
     }
 }
 impl ServiceWorkerContainer {

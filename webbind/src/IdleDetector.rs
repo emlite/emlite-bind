@@ -161,21 +161,23 @@ impl IdleDetector {
 impl IdleDetector {
     /// The requestPermission method.
     /// [`IdleDetector.requestPermission`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDetector/requestPermission)
-    pub fn request_permission() -> Promise {
+    pub fn request_permission() -> Promise<PermissionState> {
         Any::global("IdleDetector")
             .call("requestPermission", &[])
-            .as_::<Promise>()
+            .as_::<Promise<PermissionState>>()
     }
 }
 impl IdleDetector {
     /// The start method.
     /// [`IdleDetector.start`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDetector/start)
-    pub fn start0(&self) -> Promise {
-        self.inner.call("start", &[]).as_::<Promise>()
+    pub fn start0(&self) -> Promise<Undefined> {
+        self.inner.call("start", &[]).as_::<Promise<Undefined>>()
     }
     /// The start method.
     /// [`IdleDetector.start`](https://developer.mozilla.org/en-US/docs/Web/API/IdleDetector/start)
-    pub fn start1(&self, options: &IdleOptions) -> Promise {
-        self.inner.call("start", &[options.into()]).as_::<Promise>()
+    pub fn start1(&self, options: &IdleOptions) -> Promise<Undefined> {
+        self.inner
+            .call("start", &[options.into()])
+            .as_::<Promise<Undefined>>()
     }
 }

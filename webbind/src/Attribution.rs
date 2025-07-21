@@ -415,18 +415,24 @@ impl Attribution {
 impl Attribution {
     /// The saveImpression method.
     /// [`Attribution.saveImpression`](https://developer.mozilla.org/en-US/docs/Web/API/Attribution/saveImpression)
-    pub fn save_impression(&self, options: &AttributionImpressionOptions) -> Promise {
+    pub fn save_impression(
+        &self,
+        options: &AttributionImpressionOptions,
+    ) -> Promise<AttributionImpressionResult> {
         self.inner
             .call("saveImpression", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<AttributionImpressionResult>>()
     }
 }
 impl Attribution {
     /// The measureConversion method.
     /// [`Attribution.measureConversion`](https://developer.mozilla.org/en-US/docs/Web/API/Attribution/measureConversion)
-    pub fn measure_conversion(&self, options: &AttributionConversionOptions) -> Promise {
+    pub fn measure_conversion(
+        &self,
+        options: &AttributionConversionOptions,
+    ) -> Promise<AttributionConversionResult> {
         self.inner
             .call("measureConversion", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<AttributionConversionResult>>()
     }
 }

@@ -267,10 +267,10 @@ impl RTCRtpSender {
 impl RTCRtpSender {
     /// The setParameters method.
     /// [`RTCRtpSender.setParameters`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setParameters)
-    pub fn set_parameters0(&self, parameters: &RTCRtpSendParameters) -> Promise {
+    pub fn set_parameters0(&self, parameters: &RTCRtpSendParameters) -> Promise<Undefined> {
         self.inner
             .call("setParameters", &[parameters.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
     /// The setParameters method.
     /// [`RTCRtpSender.setParameters`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setParameters)
@@ -278,13 +278,13 @@ impl RTCRtpSender {
         &self,
         parameters: &RTCRtpSendParameters,
         set_parameter_options: &RTCSetParameterOptions,
-    ) -> Promise {
+    ) -> Promise<Undefined> {
         self.inner
             .call(
                 "setParameters",
                 &[parameters.into(), set_parameter_options.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl RTCRtpSender {
@@ -299,10 +299,10 @@ impl RTCRtpSender {
 impl RTCRtpSender {
     /// The replaceTrack method.
     /// [`RTCRtpSender.replaceTrack`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/replaceTrack)
-    pub fn replace_track(&self, with_track: &MediaStreamTrack) -> Promise {
+    pub fn replace_track(&self, with_track: &MediaStreamTrack) -> Promise<Undefined> {
         self.inner
             .call("replaceTrack", &[with_track.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl RTCRtpSender {
@@ -317,8 +317,10 @@ impl RTCRtpSender {
 impl RTCRtpSender {
     /// The getStats method.
     /// [`RTCRtpSender.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/getStats)
-    pub fn get_stats(&self) -> Promise {
-        self.inner.call("getStats", &[]).as_::<Promise>()
+    pub fn get_stats(&self) -> Promise<RTCStatsReport> {
+        self.inner
+            .call("getStats", &[])
+            .as_::<Promise<RTCStatsReport>>()
     }
 }
 impl RTCRtpSender {
@@ -337,15 +339,17 @@ impl RTCRtpSender {
 impl RTCRtpSender {
     /// The generateKeyFrame method.
     /// [`RTCRtpSender.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/generateKeyFrame)
-    pub fn generate_key_frame0(&self) -> Promise {
-        self.inner.call("generateKeyFrame", &[]).as_::<Promise>()
+    pub fn generate_key_frame0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("generateKeyFrame", &[])
+            .as_::<Promise<Undefined>>()
     }
     /// The generateKeyFrame method.
     /// [`RTCRtpSender.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/generateKeyFrame)
-    pub fn generate_key_frame1(&self, rids: &Sequence<String>) -> Promise {
+    pub fn generate_key_frame1(&self, rids: &Sequence<String>) -> Promise<Undefined> {
         self.inner
             .call("generateKeyFrame", &[rids.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl RTCRtpSender {

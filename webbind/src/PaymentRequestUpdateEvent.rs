@@ -77,7 +77,7 @@ impl PaymentRequestUpdateEvent {
 impl PaymentRequestUpdateEvent {
     /// The updateWith method.
     /// [`PaymentRequestUpdateEvent.updateWith`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestUpdateEvent/updateWith)
-    pub fn update_with(&self, details_promise: &Promise) -> Undefined {
+    pub fn update_with(&self, details_promise: &Promise<PaymentDetailsUpdate>) -> Undefined {
         self.inner
             .call("updateWith", &[details_promise.into()])
             .as_::<Undefined>()

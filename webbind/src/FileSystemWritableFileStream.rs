@@ -58,21 +58,27 @@ jsbind::utils::impl_dyn_cast!(FileSystemWritableFileStream);
 impl FileSystemWritableFileStream {
     /// The write method.
     /// [`FileSystemWritableFileStream.write`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream/write)
-    pub fn write(&self, data: &Any) -> Promise {
-        self.inner.call("write", &[data.into()]).as_::<Promise>()
+    pub fn write(&self, data: &Any) -> Promise<Undefined> {
+        self.inner
+            .call("write", &[data.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl FileSystemWritableFileStream {
     /// The seek method.
     /// [`FileSystemWritableFileStream.seek`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream/seek)
-    pub fn seek(&self, position: u64) -> Promise {
-        self.inner.call("seek", &[position.into()]).as_::<Promise>()
+    pub fn seek(&self, position: u64) -> Promise<Undefined> {
+        self.inner
+            .call("seek", &[position.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl FileSystemWritableFileStream {
     /// The truncate method.
     /// [`FileSystemWritableFileStream.truncate`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemWritableFileStream/truncate)
-    pub fn truncate(&self, size: u64) -> Promise {
-        self.inner.call("truncate", &[size.into()]).as_::<Promise>()
+    pub fn truncate(&self, size: u64) -> Promise<Undefined> {
+        self.inner
+            .call("truncate", &[size.into()])
+            .as_::<Promise<Undefined>>()
     }
 }

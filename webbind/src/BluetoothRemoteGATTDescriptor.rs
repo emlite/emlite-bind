@@ -81,16 +81,16 @@ impl BluetoothRemoteGATTDescriptor {
 impl BluetoothRemoteGATTDescriptor {
     /// The readValue method.
     /// [`BluetoothRemoteGATTDescriptor.readValue`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTDescriptor/readValue)
-    pub fn read_value(&self) -> Promise {
-        self.inner.call("readValue", &[]).as_::<Promise>()
+    pub fn read_value(&self) -> Promise<DataView> {
+        self.inner.call("readValue", &[]).as_::<Promise<DataView>>()
     }
 }
 impl BluetoothRemoteGATTDescriptor {
     /// The writeValue method.
     /// [`BluetoothRemoteGATTDescriptor.writeValue`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTDescriptor/writeValue)
-    pub fn write_value(&self, value: &Any) -> Promise {
+    pub fn write_value(&self, value: &Any) -> Promise<Undefined> {
         self.inner
             .call("writeValue", &[value.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }

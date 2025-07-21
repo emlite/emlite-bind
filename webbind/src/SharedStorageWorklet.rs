@@ -225,10 +225,10 @@ impl SharedStorageWorklet {
         &self,
         name: &str,
         urls: &Sequence<SharedStorageUrlWithMetadata>,
-    ) -> Promise {
+    ) -> Promise<Any> {
         self.inner
             .call("selectURL", &[name.into(), urls.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
     /// The selectURL method.
     /// [`SharedStorageWorklet.selectURL`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorklet/selectURL)
@@ -237,23 +237,27 @@ impl SharedStorageWorklet {
         name: &str,
         urls: &Sequence<SharedStorageUrlWithMetadata>,
         options: &SharedStorageRunOperationMethodOptions,
-    ) -> Promise {
+    ) -> Promise<Any> {
         self.inner
             .call("selectURL", &[name.into(), urls.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
 }
 impl SharedStorageWorklet {
     /// The run method.
     /// [`SharedStorageWorklet.run`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorklet/run)
-    pub fn run0(&self, name: &str) -> Promise {
-        self.inner.call("run", &[name.into()]).as_::<Promise>()
+    pub fn run0(&self, name: &str) -> Promise<Any> {
+        self.inner.call("run", &[name.into()]).as_::<Promise<Any>>()
     }
     /// The run method.
     /// [`SharedStorageWorklet.run`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorklet/run)
-    pub fn run1(&self, name: &str, options: &SharedStorageRunOperationMethodOptions) -> Promise {
+    pub fn run1(
+        &self,
+        name: &str,
+        options: &SharedStorageRunOperationMethodOptions,
+    ) -> Promise<Any> {
         self.inner
             .call("run", &[name.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
 }

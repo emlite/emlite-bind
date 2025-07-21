@@ -742,60 +742,76 @@ impl PaymentRequestEvent {
 impl PaymentRequestEvent {
     /// The openWindow method.
     /// [`PaymentRequestEvent.openWindow`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestEvent/openWindow)
-    pub fn open_window(&self, url: &str) -> Promise {
+    pub fn open_window(&self, url: &str) -> Promise<WindowClient> {
         self.inner
             .call("openWindow", &[url.into()])
-            .as_::<Promise>()
+            .as_::<Promise<WindowClient>>()
     }
 }
 impl PaymentRequestEvent {
     /// The changePaymentMethod method.
     /// [`PaymentRequestEvent.changePaymentMethod`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestEvent/changePaymentMethod)
-    pub fn change_payment_method0(&self, method_name: &str) -> Promise {
+    pub fn change_payment_method0(
+        &self,
+        method_name: &str,
+    ) -> Promise<PaymentRequestDetailsUpdate> {
         self.inner
             .call("changePaymentMethod", &[method_name.into()])
-            .as_::<Promise>()
+            .as_::<Promise<PaymentRequestDetailsUpdate>>()
     }
     /// The changePaymentMethod method.
     /// [`PaymentRequestEvent.changePaymentMethod`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestEvent/changePaymentMethod)
-    pub fn change_payment_method1(&self, method_name: &str, method_details: &Object) -> Promise {
+    pub fn change_payment_method1(
+        &self,
+        method_name: &str,
+        method_details: &Object,
+    ) -> Promise<PaymentRequestDetailsUpdate> {
         self.inner
             .call(
                 "changePaymentMethod",
                 &[method_name.into(), method_details.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<PaymentRequestDetailsUpdate>>()
     }
 }
 impl PaymentRequestEvent {
     /// The changeShippingAddress method.
     /// [`PaymentRequestEvent.changeShippingAddress`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestEvent/changeShippingAddress)
-    pub fn change_shipping_address0(&self) -> Promise {
+    pub fn change_shipping_address0(&self) -> Promise<PaymentRequestDetailsUpdate> {
         self.inner
             .call("changeShippingAddress", &[])
-            .as_::<Promise>()
+            .as_::<Promise<PaymentRequestDetailsUpdate>>()
     }
     /// The changeShippingAddress method.
     /// [`PaymentRequestEvent.changeShippingAddress`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestEvent/changeShippingAddress)
-    pub fn change_shipping_address1(&self, shipping_address: &AddressInit) -> Promise {
+    pub fn change_shipping_address1(
+        &self,
+        shipping_address: &AddressInit,
+    ) -> Promise<PaymentRequestDetailsUpdate> {
         self.inner
             .call("changeShippingAddress", &[shipping_address.into()])
-            .as_::<Promise>()
+            .as_::<Promise<PaymentRequestDetailsUpdate>>()
     }
 }
 impl PaymentRequestEvent {
     /// The changeShippingOption method.
     /// [`PaymentRequestEvent.changeShippingOption`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestEvent/changeShippingOption)
-    pub fn change_shipping_option(&self, shipping_option: &str) -> Promise {
+    pub fn change_shipping_option(
+        &self,
+        shipping_option: &str,
+    ) -> Promise<PaymentRequestDetailsUpdate> {
         self.inner
             .call("changeShippingOption", &[shipping_option.into()])
-            .as_::<Promise>()
+            .as_::<Promise<PaymentRequestDetailsUpdate>>()
     }
 }
 impl PaymentRequestEvent {
     /// The respondWith method.
     /// [`PaymentRequestEvent.respondWith`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequestEvent/respondWith)
-    pub fn respond_with(&self, handler_response_promise: &Promise) -> Undefined {
+    pub fn respond_with(
+        &self,
+        handler_response_promise: &Promise<PaymentHandlerResponse>,
+    ) -> Undefined {
         self.inner
             .call("respondWith", &[handler_response_promise.into()])
             .as_::<Undefined>()

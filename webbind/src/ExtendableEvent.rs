@@ -77,7 +77,7 @@ impl ExtendableEvent {
 impl ExtendableEvent {
     /// The waitUntil method.
     /// [`ExtendableEvent.waitUntil`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil)
-    pub fn wait_until(&self, f: &Promise) -> Undefined {
+    pub fn wait_until(&self, f: &Promise<Any>) -> Undefined {
         self.inner.call("waitUntil", &[f.into()]).as_::<Undefined>()
     }
 }

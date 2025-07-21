@@ -136,7 +136,9 @@ impl BeforeInstallPromptEvent {
 impl BeforeInstallPromptEvent {
     /// The prompt method.
     /// [`BeforeInstallPromptEvent.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent/prompt)
-    pub fn prompt(&self) -> Promise {
-        self.inner.call("prompt", &[]).as_::<Promise>()
+    pub fn prompt(&self) -> Promise<PromptResponseObject> {
+        self.inner
+            .call("prompt", &[])
+            .as_::<Promise<PromptResponseObject>>()
     }
 }

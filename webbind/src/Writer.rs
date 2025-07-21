@@ -311,45 +311,49 @@ jsbind::utils::impl_dyn_cast!(Writer);
 impl Writer {
     /// The create method.
     /// [`Writer.create`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/create)
-    pub fn create0() -> Promise {
-        Any::global("Writer").call("create", &[]).as_::<Promise>()
+    pub fn create0() -> Promise<Writer> {
+        Any::global("Writer")
+            .call("create", &[])
+            .as_::<Promise<Writer>>()
     }
     /// The create method.
     /// [`Writer.create`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/create)
-    pub fn create1(options: &WriterCreateOptions) -> Promise {
+    pub fn create1(options: &WriterCreateOptions) -> Promise<Writer> {
         Any::global("Writer")
             .call("create", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Writer>>()
     }
 }
 impl Writer {
     /// The availability method.
     /// [`Writer.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/availability)
-    pub fn availability0() -> Promise {
+    pub fn availability0() -> Promise<Availability> {
         Any::global("Writer")
             .call("availability", &[])
-            .as_::<Promise>()
+            .as_::<Promise<Availability>>()
     }
     /// The availability method.
     /// [`Writer.availability`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/availability)
-    pub fn availability1(options: &WriterCreateCoreOptions) -> Promise {
+    pub fn availability1(options: &WriterCreateCoreOptions) -> Promise<Availability> {
         Any::global("Writer")
             .call("availability", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Availability>>()
     }
 }
 impl Writer {
     /// The write method.
     /// [`Writer.write`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/write)
-    pub fn write0(&self, input: &str) -> Promise {
-        self.inner.call("write", &[input.into()]).as_::<Promise>()
+    pub fn write0(&self, input: &str) -> Promise<String> {
+        self.inner
+            .call("write", &[input.into()])
+            .as_::<Promise<String>>()
     }
     /// The write method.
     /// [`Writer.write`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/write)
-    pub fn write1(&self, input: &str, options: &WriterWriteOptions) -> Promise {
+    pub fn write1(&self, input: &str, options: &WriterWriteOptions) -> Promise<String> {
         self.inner
             .call("write", &[input.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<String>>()
     }
 }
 impl Writer {
@@ -424,17 +428,17 @@ impl Writer {
 impl Writer {
     /// The measureInputUsage method.
     /// [`Writer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/measureInputUsage)
-    pub fn measure_input_usage0(&self, input: &str) -> Promise {
+    pub fn measure_input_usage0(&self, input: &str) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into()])
-            .as_::<Promise>()
+            .as_::<Promise<f64>>()
     }
     /// The measureInputUsage method.
     /// [`Writer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/measureInputUsage)
-    pub fn measure_input_usage1(&self, input: &str, options: &WriterWriteOptions) -> Promise {
+    pub fn measure_input_usage1(&self, input: &str, options: &WriterWriteOptions) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<f64>>()
     }
 }
 impl Writer {

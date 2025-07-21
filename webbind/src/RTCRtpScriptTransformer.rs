@@ -65,22 +65,26 @@ impl RTCRtpScriptTransformer {
 impl RTCRtpScriptTransformer {
     /// The generateKeyFrame method.
     /// [`RTCRtpScriptTransformer.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransformer/generateKeyFrame)
-    pub fn generate_key_frame0(&self) -> Promise {
-        self.inner.call("generateKeyFrame", &[]).as_::<Promise>()
+    pub fn generate_key_frame0(&self) -> Promise<u64> {
+        self.inner
+            .call("generateKeyFrame", &[])
+            .as_::<Promise<u64>>()
     }
     /// The generateKeyFrame method.
     /// [`RTCRtpScriptTransformer.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransformer/generateKeyFrame)
-    pub fn generate_key_frame1(&self, rid: &str) -> Promise {
+    pub fn generate_key_frame1(&self, rid: &str) -> Promise<u64> {
         self.inner
             .call("generateKeyFrame", &[rid.into()])
-            .as_::<Promise>()
+            .as_::<Promise<u64>>()
     }
 }
 impl RTCRtpScriptTransformer {
     /// The sendKeyFrameRequest method.
     /// [`RTCRtpScriptTransformer.sendKeyFrameRequest`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransformer/sendKeyFrameRequest)
-    pub fn send_key_frame_request(&self) -> Promise {
-        self.inner.call("sendKeyFrameRequest", &[]).as_::<Promise>()
+    pub fn send_key_frame_request(&self) -> Promise<Undefined> {
+        self.inner
+            .call("sendKeyFrameRequest", &[])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl RTCRtpScriptTransformer {

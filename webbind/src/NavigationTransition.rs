@@ -72,7 +72,7 @@ impl NavigationTransition {
 impl NavigationTransition {
     /// Getter of the `finished` attribute.
     /// [`NavigationTransition.finished`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationTransition/finished)
-    pub fn finished(&self) -> Promise {
-        self.inner.get("finished").as_::<Promise>()
+    pub fn finished(&self) -> Promise<Undefined> {
+        self.inner.get("finished").as_::<Promise<Undefined>>()
     }
 }

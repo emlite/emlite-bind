@@ -117,30 +117,39 @@ jsbind::utils::impl_dyn_cast!(BackgroundFetchManager);
 impl BackgroundFetchManager {
     /// The fetch method.
     /// [`BackgroundFetchManager.fetch`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchManager/fetch)
-    pub fn fetch0(&self, id: &str, requests: &Any) -> Promise {
+    pub fn fetch0(&self, id: &str, requests: &Any) -> Promise<BackgroundFetchRegistration> {
         self.inner
             .call("fetch", &[id.into(), requests.into()])
-            .as_::<Promise>()
+            .as_::<Promise<BackgroundFetchRegistration>>()
     }
     /// The fetch method.
     /// [`BackgroundFetchManager.fetch`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchManager/fetch)
-    pub fn fetch1(&self, id: &str, requests: &Any, options: &BackgroundFetchOptions) -> Promise {
+    pub fn fetch1(
+        &self,
+        id: &str,
+        requests: &Any,
+        options: &BackgroundFetchOptions,
+    ) -> Promise<BackgroundFetchRegistration> {
         self.inner
             .call("fetch", &[id.into(), requests.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<BackgroundFetchRegistration>>()
     }
 }
 impl BackgroundFetchManager {
     /// The get method.
     /// [`BackgroundFetchManager.get`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchManager/get)
-    pub fn get(&self, id: &str) -> Promise {
-        self.inner.call("get", &[id.into()]).as_::<Promise>()
+    pub fn get(&self, id: &str) -> Promise<BackgroundFetchRegistration> {
+        self.inner
+            .call("get", &[id.into()])
+            .as_::<Promise<BackgroundFetchRegistration>>()
     }
 }
 impl BackgroundFetchManager {
     /// The getIds method.
     /// [`BackgroundFetchManager.getIds`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchManager/getIds)
-    pub fn get_ids(&self) -> Promise {
-        self.inner.call("getIds", &[]).as_::<Promise>()
+    pub fn get_ids(&self) -> Promise<Sequence<String>> {
+        self.inner
+            .call("getIds", &[])
+            .as_::<Promise<Sequence<String>>>()
     }
 }

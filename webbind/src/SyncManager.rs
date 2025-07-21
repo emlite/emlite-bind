@@ -58,14 +58,18 @@ jsbind::utils::impl_dyn_cast!(SyncManager);
 impl SyncManager {
     /// The register method.
     /// [`SyncManager.register`](https://developer.mozilla.org/en-US/docs/Web/API/SyncManager/register)
-    pub fn register(&self, tag: &str) -> Promise {
-        self.inner.call("register", &[tag.into()]).as_::<Promise>()
+    pub fn register(&self, tag: &str) -> Promise<Undefined> {
+        self.inner
+            .call("register", &[tag.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl SyncManager {
     /// The getTags method.
     /// [`SyncManager.getTags`](https://developer.mozilla.org/en-US/docs/Web/API/SyncManager/getTags)
-    pub fn get_tags(&self) -> Promise {
-        self.inner.call("getTags", &[]).as_::<Promise>()
+    pub fn get_tags(&self) -> Promise<Sequence<String>> {
+        self.inner
+            .call("getTags", &[])
+            .as_::<Promise<Sequence<String>>>()
     }
 }

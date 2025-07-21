@@ -176,29 +176,36 @@ impl PaymentRequest {
 impl PaymentRequest {
     /// The show method.
     /// [`PaymentRequest.show`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/show)
-    pub fn show0(&self) -> Promise {
-        self.inner.call("show", &[]).as_::<Promise>()
+    pub fn show0(&self) -> Promise<PaymentResponse> {
+        self.inner
+            .call("show", &[])
+            .as_::<Promise<PaymentResponse>>()
     }
     /// The show method.
     /// [`PaymentRequest.show`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/show)
-    pub fn show1(&self, details_promise: &Promise) -> Promise {
+    pub fn show1(
+        &self,
+        details_promise: &Promise<PaymentDetailsUpdate>,
+    ) -> Promise<PaymentResponse> {
         self.inner
             .call("show", &[details_promise.into()])
-            .as_::<Promise>()
+            .as_::<Promise<PaymentResponse>>()
     }
 }
 impl PaymentRequest {
     /// The abort method.
     /// [`PaymentRequest.abort`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/abort)
-    pub fn abort(&self) -> Promise {
-        self.inner.call("abort", &[]).as_::<Promise>()
+    pub fn abort(&self) -> Promise<Undefined> {
+        self.inner.call("abort", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl PaymentRequest {
     /// The canMakePayment method.
     /// [`PaymentRequest.canMakePayment`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/canMakePayment)
-    pub fn can_make_payment(&self) -> Promise {
-        self.inner.call("canMakePayment", &[]).as_::<Promise>()
+    pub fn can_make_payment(&self) -> Promise<bool> {
+        self.inner
+            .call("canMakePayment", &[])
+            .as_::<Promise<bool>>()
     }
 }
 impl PaymentRequest {
@@ -271,9 +278,10 @@ impl PaymentRequest {
 impl PaymentRequest {
     /// The securePaymentConfirmationAvailability method.
     /// [`PaymentRequest.securePaymentConfirmationAvailability`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/securePaymentConfirmationAvailability)
-    pub fn secure_payment_confirmation_availability() -> Promise {
+    pub fn secure_payment_confirmation_availability()
+    -> Promise<SecurePaymentConfirmationAvailability> {
         Any::global("PaymentRequest")
             .call("securePaymentConfirmationAvailability", &[])
-            .as_::<Promise>()
+            .as_::<Promise<SecurePaymentConfirmationAvailability>>()
     }
 }

@@ -117,35 +117,39 @@ jsbind::utils::impl_dyn_cast!(Clipboard);
 impl Clipboard {
     /// The read method.
     /// [`Clipboard.read`](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/read)
-    pub fn read0(&self) -> Promise {
-        self.inner.call("read", &[]).as_::<Promise>()
+    pub fn read0(&self) -> Promise<Any> {
+        self.inner.call("read", &[]).as_::<Promise<Any>>()
     }
     /// The read method.
     /// [`Clipboard.read`](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/read)
-    pub fn read1(&self, formats: &ClipboardUnsanitizedFormats) -> Promise {
-        self.inner.call("read", &[formats.into()]).as_::<Promise>()
+    pub fn read1(&self, formats: &ClipboardUnsanitizedFormats) -> Promise<Any> {
+        self.inner
+            .call("read", &[formats.into()])
+            .as_::<Promise<Any>>()
     }
 }
 impl Clipboard {
     /// The readText method.
     /// [`Clipboard.readText`](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/readText)
-    pub fn read_text(&self) -> Promise {
-        self.inner.call("readText", &[]).as_::<Promise>()
+    pub fn read_text(&self) -> Promise<String> {
+        self.inner.call("readText", &[]).as_::<Promise<String>>()
     }
 }
 impl Clipboard {
     /// The write method.
     /// [`Clipboard.write`](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/write)
-    pub fn write(&self, data: &Any) -> Promise {
-        self.inner.call("write", &[data.into()]).as_::<Promise>()
+    pub fn write(&self, data: &Any) -> Promise<Undefined> {
+        self.inner
+            .call("write", &[data.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Clipboard {
     /// The writeText method.
     /// [`Clipboard.writeText`](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText)
-    pub fn write_text(&self, data: &str) -> Promise {
+    pub fn write_text(&self, data: &str) -> Promise<Undefined> {
         self.inner
             .call("writeText", &[data.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }

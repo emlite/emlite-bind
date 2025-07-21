@@ -766,8 +766,10 @@ impl Document {
 impl Document {
     /// The exitFullscreen method.
     /// [`Document.exitFullscreen`](https://developer.mozilla.org/en-US/docs/Web/API/Document/exitFullscreen)
-    pub fn exit_fullscreen(&self) -> Promise {
-        self.inner.call("exitFullscreen", &[]).as_::<Promise>()
+    pub fn exit_fullscreen(&self) -> Promise<Undefined> {
+        self.inner
+            .call("exitFullscreen", &[])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Document {
@@ -1294,10 +1296,10 @@ impl Document {
 impl Document {
     /// The exitPictureInPicture method.
     /// [`Document.exitPictureInPicture`](https://developer.mozilla.org/en-US/docs/Web/API/Document/exitPictureInPicture)
-    pub fn exit_picture_in_picture(&self) -> Promise {
+    pub fn exit_picture_in_picture(&self) -> Promise<Undefined> {
         self.inner
             .call("exitPictureInPicture", &[])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Document {
@@ -1356,19 +1358,19 @@ impl Document {
 impl Document {
     /// The requestStorageAccessFor method.
     /// [`Document.requestStorageAccessFor`](https://developer.mozilla.org/en-US/docs/Web/API/Document/requestStorageAccessFor)
-    pub fn request_storage_access_for(&self, requested_origin: &str) -> Promise {
+    pub fn request_storage_access_for(&self, requested_origin: &str) -> Promise<Undefined> {
         self.inner
             .call("requestStorageAccessFor", &[requested_origin.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Document {
     /// The hasUnpartitionedCookieAccess method.
     /// [`Document.hasUnpartitionedCookieAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Document/hasUnpartitionedCookieAccess)
-    pub fn has_unpartitioned_cookie_access(&self) -> Promise {
+    pub fn has_unpartitioned_cookie_access(&self) -> Promise<bool> {
         self.inner
             .call("hasUnpartitionedCookieAccess", &[])
-            .as_::<Promise>()
+            .as_::<Promise<bool>>()
     }
 }
 impl Document {
@@ -1390,35 +1392,37 @@ impl Document {
 impl Document {
     /// The hasStorageAccess method.
     /// [`Document.hasStorageAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Document/hasStorageAccess)
-    pub fn has_storage_access(&self) -> Promise {
-        self.inner.call("hasStorageAccess", &[]).as_::<Promise>()
+    pub fn has_storage_access(&self) -> Promise<bool> {
+        self.inner
+            .call("hasStorageAccess", &[])
+            .as_::<Promise<bool>>()
     }
 }
 impl Document {
     /// The requestStorageAccess method.
     /// [`Document.requestStorageAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Document/requestStorageAccess)
-    pub fn request_storage_access(&self) -> Promise {
+    pub fn request_storage_access(&self) -> Promise<Undefined> {
         self.inner
             .call("requestStorageAccess", &[])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Document {
     /// The hasPrivateToken method.
     /// [`Document.hasPrivateToken`](https://developer.mozilla.org/en-US/docs/Web/API/Document/hasPrivateToken)
-    pub fn has_private_token(&self, issuer: &str) -> Promise {
+    pub fn has_private_token(&self, issuer: &str) -> Promise<bool> {
         self.inner
             .call("hasPrivateToken", &[issuer.into()])
-            .as_::<Promise>()
+            .as_::<Promise<bool>>()
     }
 }
 impl Document {
     /// The hasRedemptionRecord method.
     /// [`Document.hasRedemptionRecord`](https://developer.mozilla.org/en-US/docs/Web/API/Document/hasRedemptionRecord)
-    pub fn has_redemption_record(&self, issuer: &str) -> Promise {
+    pub fn has_redemption_record(&self, issuer: &str) -> Promise<bool> {
         self.inner
             .call("hasRedemptionRecord", &[issuer.into()])
-            .as_::<Promise>()
+            .as_::<Promise<bool>>()
     }
 }
 impl Document {

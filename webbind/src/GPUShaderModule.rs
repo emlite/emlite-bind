@@ -58,8 +58,10 @@ jsbind::utils::impl_dyn_cast!(GPUShaderModule);
 impl GPUShaderModule {
     /// The getCompilationInfo method.
     /// [`GPUShaderModule.getCompilationInfo`](https://developer.mozilla.org/en-US/docs/Web/API/GPUShaderModule/getCompilationInfo)
-    pub fn get_compilation_info(&self) -> Promise {
-        self.inner.call("getCompilationInfo", &[]).as_::<Promise>()
+    pub fn get_compilation_info(&self) -> Promise<GPUCompilationInfo> {
+        self.inner
+            .call("getCompilationInfo", &[])
+            .as_::<Promise<GPUCompilationInfo>>()
     }
 }
 impl GPUShaderModule {

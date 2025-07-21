@@ -65,10 +65,10 @@ impl XRAnchor {
 impl XRAnchor {
     /// The requestPersistentHandle method.
     /// [`XRAnchor.requestPersistentHandle`](https://developer.mozilla.org/en-US/docs/Web/API/XRAnchor/requestPersistentHandle)
-    pub fn request_persistent_handle(&self) -> Promise {
+    pub fn request_persistent_handle(&self) -> Promise<String> {
         self.inner
             .call("requestPersistentHandle", &[])
-            .as_::<Promise>()
+            .as_::<Promise<String>>()
     }
 }
 impl XRAnchor {

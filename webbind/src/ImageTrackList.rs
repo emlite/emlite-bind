@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(ImageTrackList);
 impl ImageTrackList {
     /// Getter of the `ready` attribute.
     /// [`ImageTrackList.ready`](https://developer.mozilla.org/en-US/docs/Web/API/ImageTrackList/ready)
-    pub fn ready(&self) -> Promise {
-        self.inner.get("ready").as_::<Promise>()
+    pub fn ready(&self) -> Promise<Undefined> {
+        self.inner.get("ready").as_::<Promise<Undefined>>()
     }
 }
 impl ImageTrackList {

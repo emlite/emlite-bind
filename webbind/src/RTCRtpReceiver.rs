@@ -294,8 +294,10 @@ impl RTCRtpReceiver {
 impl RTCRtpReceiver {
     /// The getStats method.
     /// [`RTCRtpReceiver.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver/getStats)
-    pub fn get_stats(&self) -> Promise {
-        self.inner.call("getStats", &[]).as_::<Promise>()
+    pub fn get_stats(&self) -> Promise<RTCStatsReport> {
+        self.inner
+            .call("getStats", &[])
+            .as_::<Promise<RTCStatsReport>>()
     }
 }
 impl RTCRtpReceiver {

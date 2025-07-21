@@ -72,18 +72,18 @@ impl Credential {
 impl Credential {
     /// The isConditionalMediationAvailable method.
     /// [`Credential.isConditionalMediationAvailable`](https://developer.mozilla.org/en-US/docs/Web/API/Credential/isConditionalMediationAvailable)
-    pub fn is_conditional_mediation_available() -> Promise {
+    pub fn is_conditional_mediation_available() -> Promise<bool> {
         Any::global("Credential")
             .call("isConditionalMediationAvailable", &[])
-            .as_::<Promise>()
+            .as_::<Promise<bool>>()
     }
 }
 impl Credential {
     /// The willRequestConditionalCreation method.
     /// [`Credential.willRequestConditionalCreation`](https://developer.mozilla.org/en-US/docs/Web/API/Credential/willRequestConditionalCreation)
-    pub fn will_request_conditional_creation() -> Promise {
+    pub fn will_request_conditional_creation() -> Promise<Undefined> {
         Any::global("Credential")
             .call("willRequestConditionalCreation", &[])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }

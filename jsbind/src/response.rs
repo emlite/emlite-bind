@@ -1,5 +1,6 @@
 use crate::utils::*;
-use crate::{any::Any, promise::Promise};
+use crate::{any::Any, array::ArrayBuffer, promise::Promise};
+use alloc::string::String;
 
 /// JavaScript `Response` object returned by `fetch`. There is also a Response object in webbind.
 /// This requires a javascript runtime which supports Response and fetch!
@@ -27,17 +28,17 @@ impl Response {
     }
 
     /// `response.text()` – consumes the body and resolves to DOMString.
-    pub fn text(&self) -> Promise {
-        self.inner.call("text", &[]).as_::<Promise>()
+    pub fn text(&self) -> Promise<String> {
+        self.inner.call("text", &[]).as_::<Promise<_>>()
     }
     /// `response.json()` – resolves to any JS value (`Any`).
-    pub fn json(&self) -> Promise {
-        self.inner.call("json", &[]).as_::<Promise>()
+    pub fn json(&self) -> Promise<Any> {
+        self.inner.call("json", &[]).as_::<Promise<_>>()
     }
     /// `response.arrayBuffer()` – resolves to `ArrayBuffer`; we map to
     /// `Uint8Array` for easy use in Rust.
-    pub fn array_buffer(&self) -> Promise {
-        self.inner.call("arrayBuffer", &[]).as_::<Promise>()
+    pub fn array_buffer(&self) -> Promise<ArrayBuffer> {
+        self.inner.call("arrayBuffer", &[]).as_::<Promise<_>>()
     }
 }
 
@@ -54,21 +55,21 @@ impl Response {
 ///     println!("{}", txt);
 /// }
 /// ```
-pub fn fetch(input: &str, init: Option<&Any>) -> Promise {
+pub fn fetch(input: &str, init: Option<&Any>) -> Promise<Response> {
     let fetch_fn = emlite::Val::global("fetch");
     match init {
         Some(i) => fetch_fn.invoke(&[input.into(), i.clone()]),
         None => fetch_fn.invoke(&[input.into()]),
     }
-    .as_::<Promise>()
+    .as_::<Promise<_>>()
 }
 
 /* Convenience: fetch with Request object or other Any */
-pub fn fetch_val(input: &Any, init: Option<&Any>) -> Promise {
+pub fn fetch_val(input: &Any, init: Option<&Any>) -> Promise<Response> {
     let fetch_fn = emlite::Val::global("fetch");
     match init {
         Some(i) => fetch_fn.invoke(&[input.clone(), i.clone()]),
         None => fetch_fn.invoke(&[input.clone()]),
     }
-    .as_::<Promise>()
+    .as_::<Promise<_>>()
 }

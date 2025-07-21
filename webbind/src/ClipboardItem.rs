@@ -93,8 +93,10 @@ impl ClipboardItem {
 impl ClipboardItem {
     /// The getType method.
     /// [`ClipboardItem.getType`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem/getType)
-    pub fn get_type(&self, type_: &str) -> Promise {
-        self.inner.call("getType", &[type_.into()]).as_::<Promise>()
+    pub fn get_type(&self, type_: &str) -> Promise<Blob> {
+        self.inner
+            .call("getType", &[type_.into()])
+            .as_::<Promise<Blob>>()
     }
 }
 impl ClipboardItem {

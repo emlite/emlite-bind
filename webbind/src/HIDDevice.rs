@@ -223,48 +223,48 @@ impl HIDDevice {
 impl HIDDevice {
     /// The open method.
     /// [`HIDDevice.open`](https://developer.mozilla.org/en-US/docs/Web/API/HIDDevice/open)
-    pub fn open(&self) -> Promise {
-        self.inner.call("open", &[]).as_::<Promise>()
+    pub fn open(&self) -> Promise<Undefined> {
+        self.inner.call("open", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl HIDDevice {
     /// The close method.
     /// [`HIDDevice.close`](https://developer.mozilla.org/en-US/docs/Web/API/HIDDevice/close)
-    pub fn close(&self) -> Promise {
-        self.inner.call("close", &[]).as_::<Promise>()
+    pub fn close(&self) -> Promise<Undefined> {
+        self.inner.call("close", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl HIDDevice {
     /// The forget method.
     /// [`HIDDevice.forget`](https://developer.mozilla.org/en-US/docs/Web/API/HIDDevice/forget)
-    pub fn forget(&self) -> Promise {
-        self.inner.call("forget", &[]).as_::<Promise>()
+    pub fn forget(&self) -> Promise<Undefined> {
+        self.inner.call("forget", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl HIDDevice {
     /// The sendReport method.
     /// [`HIDDevice.sendReport`](https://developer.mozilla.org/en-US/docs/Web/API/HIDDevice/sendReport)
-    pub fn send_report(&self, report_id: u8, data: &Any) -> Promise {
+    pub fn send_report(&self, report_id: u8, data: &Any) -> Promise<Undefined> {
         self.inner
             .call("sendReport", &[report_id.into(), data.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl HIDDevice {
     /// The sendFeatureReport method.
     /// [`HIDDevice.sendFeatureReport`](https://developer.mozilla.org/en-US/docs/Web/API/HIDDevice/sendFeatureReport)
-    pub fn send_feature_report(&self, report_id: u8, data: &Any) -> Promise {
+    pub fn send_feature_report(&self, report_id: u8, data: &Any) -> Promise<Undefined> {
         self.inner
             .call("sendFeatureReport", &[report_id.into(), data.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl HIDDevice {
     /// The receiveFeatureReport method.
     /// [`HIDDevice.receiveFeatureReport`](https://developer.mozilla.org/en-US/docs/Web/API/HIDDevice/receiveFeatureReport)
-    pub fn receive_feature_report(&self, report_id: u8) -> Promise {
+    pub fn receive_feature_report(&self, report_id: u8) -> Promise<DataView> {
         self.inner
             .call("receiveFeatureReport", &[report_id.into()])
-            .as_::<Promise>()
+            .as_::<Promise<DataView>>()
     }
 }

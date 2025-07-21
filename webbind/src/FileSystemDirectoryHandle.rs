@@ -235,26 +235,30 @@ jsbind::utils::impl_dyn_cast!(FileSystemDirectoryHandle);
 impl FileSystemDirectoryHandle {
     /// The getFileHandle method.
     /// [`FileSystemDirectoryHandle.getFileHandle`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryHandle/getFileHandle)
-    pub fn get_file_handle0(&self, name: &str) -> Promise {
+    pub fn get_file_handle0(&self, name: &str) -> Promise<FileSystemFileHandle> {
         self.inner
             .call("getFileHandle", &[name.into()])
-            .as_::<Promise>()
+            .as_::<Promise<FileSystemFileHandle>>()
     }
     /// The getFileHandle method.
     /// [`FileSystemDirectoryHandle.getFileHandle`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryHandle/getFileHandle)
-    pub fn get_file_handle1(&self, name: &str, options: &FileSystemGetFileOptions) -> Promise {
+    pub fn get_file_handle1(
+        &self,
+        name: &str,
+        options: &FileSystemGetFileOptions,
+    ) -> Promise<FileSystemFileHandle> {
         self.inner
             .call("getFileHandle", &[name.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<FileSystemFileHandle>>()
     }
 }
 impl FileSystemDirectoryHandle {
     /// The getDirectoryHandle method.
     /// [`FileSystemDirectoryHandle.getDirectoryHandle`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryHandle/getDirectoryHandle)
-    pub fn get_directory_handle0(&self, name: &str) -> Promise {
+    pub fn get_directory_handle0(&self, name: &str) -> Promise<FileSystemDirectoryHandle> {
         self.inner
             .call("getDirectoryHandle", &[name.into()])
-            .as_::<Promise>()
+            .as_::<Promise<FileSystemDirectoryHandle>>()
     }
     /// The getDirectoryHandle method.
     /// [`FileSystemDirectoryHandle.getDirectoryHandle`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryHandle/getDirectoryHandle)
@@ -262,34 +266,38 @@ impl FileSystemDirectoryHandle {
         &self,
         name: &str,
         options: &FileSystemGetDirectoryOptions,
-    ) -> Promise {
+    ) -> Promise<FileSystemDirectoryHandle> {
         self.inner
             .call("getDirectoryHandle", &[name.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<FileSystemDirectoryHandle>>()
     }
 }
 impl FileSystemDirectoryHandle {
     /// The removeEntry method.
     /// [`FileSystemDirectoryHandle.removeEntry`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryHandle/removeEntry)
-    pub fn remove_entry0(&self, name: &str) -> Promise {
+    pub fn remove_entry0(&self, name: &str) -> Promise<Undefined> {
         self.inner
             .call("removeEntry", &[name.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
     /// The removeEntry method.
     /// [`FileSystemDirectoryHandle.removeEntry`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryHandle/removeEntry)
-    pub fn remove_entry1(&self, name: &str, options: &FileSystemRemoveOptions) -> Promise {
+    pub fn remove_entry1(
+        &self,
+        name: &str,
+        options: &FileSystemRemoveOptions,
+    ) -> Promise<Undefined> {
         self.inner
             .call("removeEntry", &[name.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl FileSystemDirectoryHandle {
     /// The resolve method.
     /// [`FileSystemDirectoryHandle.resolve`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemDirectoryHandle/resolve)
-    pub fn resolve(&self, possible_descendant: &FileSystemHandle) -> Promise {
+    pub fn resolve(&self, possible_descendant: &FileSystemHandle) -> Promise<Sequence<String>> {
         self.inner
             .call("resolve", &[possible_descendant.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<String>>>()
     }
 }

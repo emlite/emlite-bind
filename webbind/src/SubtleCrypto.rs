@@ -58,49 +58,55 @@ jsbind::utils::impl_dyn_cast!(SubtleCrypto);
 impl SubtleCrypto {
     /// The encrypt method.
     /// [`SubtleCrypto.encrypt`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt)
-    pub fn encrypt(&self, algorithm: &Any, key: &CryptoKey, data: &Any) -> Promise {
+    pub fn encrypt(&self, algorithm: &Any, key: &CryptoKey, data: &Any) -> Promise<ArrayBuffer> {
         self.inner
             .call("encrypt", &[algorithm.into(), key.into(), data.into()])
-            .as_::<Promise>()
+            .as_::<Promise<ArrayBuffer>>()
     }
 }
 impl SubtleCrypto {
     /// The decrypt method.
     /// [`SubtleCrypto.decrypt`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/decrypt)
-    pub fn decrypt(&self, algorithm: &Any, key: &CryptoKey, data: &Any) -> Promise {
+    pub fn decrypt(&self, algorithm: &Any, key: &CryptoKey, data: &Any) -> Promise<ArrayBuffer> {
         self.inner
             .call("decrypt", &[algorithm.into(), key.into(), data.into()])
-            .as_::<Promise>()
+            .as_::<Promise<ArrayBuffer>>()
     }
 }
 impl SubtleCrypto {
     /// The sign method.
     /// [`SubtleCrypto.sign`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/sign)
-    pub fn sign(&self, algorithm: &Any, key: &CryptoKey, data: &Any) -> Promise {
+    pub fn sign(&self, algorithm: &Any, key: &CryptoKey, data: &Any) -> Promise<ArrayBuffer> {
         self.inner
             .call("sign", &[algorithm.into(), key.into(), data.into()])
-            .as_::<Promise>()
+            .as_::<Promise<ArrayBuffer>>()
     }
 }
 impl SubtleCrypto {
     /// The verify method.
     /// [`SubtleCrypto.verify`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/verify)
-    pub fn verify(&self, algorithm: &Any, key: &CryptoKey, signature: &Any, data: &Any) -> Promise {
+    pub fn verify(
+        &self,
+        algorithm: &Any,
+        key: &CryptoKey,
+        signature: &Any,
+        data: &Any,
+    ) -> Promise<bool> {
         self.inner
             .call(
                 "verify",
                 &[algorithm.into(), key.into(), signature.into(), data.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<bool>>()
     }
 }
 impl SubtleCrypto {
     /// The digest method.
     /// [`SubtleCrypto.digest`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest)
-    pub fn digest(&self, algorithm: &Any, data: &Any) -> Promise {
+    pub fn digest(&self, algorithm: &Any, data: &Any) -> Promise<ArrayBuffer> {
         self.inner
             .call("digest", &[algorithm.into(), data.into()])
-            .as_::<Promise>()
+            .as_::<Promise<ArrayBuffer>>()
     }
 }
 impl SubtleCrypto {
@@ -111,13 +117,13 @@ impl SubtleCrypto {
         algorithm: &Any,
         extractable: bool,
         key_usages: &Sequence<KeyUsage>,
-    ) -> Promise {
+    ) -> Promise<Any> {
         self.inner
             .call(
                 "generateKey",
                 &[algorithm.into(), extractable.into(), key_usages.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
 }
 impl SubtleCrypto {
@@ -130,7 +136,7 @@ impl SubtleCrypto {
         derived_key_type: &Any,
         extractable: bool,
         key_usages: &Sequence<KeyUsage>,
-    ) -> Promise {
+    ) -> Promise<CryptoKey> {
         self.inner
             .call(
                 "deriveKey",
@@ -142,26 +148,31 @@ impl SubtleCrypto {
                     key_usages.into(),
                 ],
             )
-            .as_::<Promise>()
+            .as_::<Promise<CryptoKey>>()
     }
 }
 impl SubtleCrypto {
     /// The deriveBits method.
     /// [`SubtleCrypto.deriveBits`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveBits)
-    pub fn derive_bits0(&self, algorithm: &Any, base_key: &CryptoKey) -> Promise {
+    pub fn derive_bits0(&self, algorithm: &Any, base_key: &CryptoKey) -> Promise<ArrayBuffer> {
         self.inner
             .call("deriveBits", &[algorithm.into(), base_key.into()])
-            .as_::<Promise>()
+            .as_::<Promise<ArrayBuffer>>()
     }
     /// The deriveBits method.
     /// [`SubtleCrypto.deriveBits`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveBits)
-    pub fn derive_bits1(&self, algorithm: &Any, base_key: &CryptoKey, length: u32) -> Promise {
+    pub fn derive_bits1(
+        &self,
+        algorithm: &Any,
+        base_key: &CryptoKey,
+        length: u32,
+    ) -> Promise<ArrayBuffer> {
         self.inner
             .call(
                 "deriveBits",
                 &[algorithm.into(), base_key.into(), length.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<ArrayBuffer>>()
     }
 }
 impl SubtleCrypto {
@@ -174,7 +185,7 @@ impl SubtleCrypto {
         algorithm: &Any,
         extractable: bool,
         key_usages: &Sequence<KeyUsage>,
-    ) -> Promise {
+    ) -> Promise<CryptoKey> {
         self.inner
             .call(
                 "importKey",
@@ -186,16 +197,16 @@ impl SubtleCrypto {
                     key_usages.into(),
                 ],
             )
-            .as_::<Promise>()
+            .as_::<Promise<CryptoKey>>()
     }
 }
 impl SubtleCrypto {
     /// The exportKey method.
     /// [`SubtleCrypto.exportKey`](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/exportKey)
-    pub fn export_key(&self, format: &KeyFormat, key: &CryptoKey) -> Promise {
+    pub fn export_key(&self, format: &KeyFormat, key: &CryptoKey) -> Promise<Any> {
         self.inner
             .call("exportKey", &[format.into(), key.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
 }
 impl SubtleCrypto {
@@ -207,7 +218,7 @@ impl SubtleCrypto {
         key: &CryptoKey,
         wrapping_key: &CryptoKey,
         wrap_algorithm: &Any,
-    ) -> Promise {
+    ) -> Promise<ArrayBuffer> {
         self.inner
             .call(
                 "wrapKey",
@@ -218,7 +229,7 @@ impl SubtleCrypto {
                     wrap_algorithm.into(),
                 ],
             )
-            .as_::<Promise>()
+            .as_::<Promise<ArrayBuffer>>()
     }
 }
 impl SubtleCrypto {
@@ -233,7 +244,7 @@ impl SubtleCrypto {
         unwrapped_key_algorithm: &Any,
         extractable: bool,
         key_usages: &Sequence<KeyUsage>,
-    ) -> Promise {
+    ) -> Promise<CryptoKey> {
         self.inner
             .call(
                 "unwrapKey",
@@ -247,6 +258,6 @@ impl SubtleCrypto {
                     key_usages.into(),
                 ],
             )
-            .as_::<Promise>()
+            .as_::<Promise<CryptoKey>>()
     }
 }

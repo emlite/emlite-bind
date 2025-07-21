@@ -377,17 +377,21 @@ impl VideoFrame {
 impl VideoFrame {
     /// The copyTo method.
     /// [`VideoFrame.copyTo`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/copyTo)
-    pub fn copy_to0(&self, destination: &Any) -> Promise {
+    pub fn copy_to0(&self, destination: &Any) -> Promise<Sequence<PlaneLayout>> {
         self.inner
             .call("copyTo", &[destination.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<PlaneLayout>>>()
     }
     /// The copyTo method.
     /// [`VideoFrame.copyTo`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/copyTo)
-    pub fn copy_to1(&self, destination: &Any, options: &VideoFrameCopyToOptions) -> Promise {
+    pub fn copy_to1(
+        &self,
+        destination: &Any,
+        options: &VideoFrameCopyToOptions,
+    ) -> Promise<Sequence<PlaneLayout>> {
         self.inner
             .call("copyTo", &[destination.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<PlaneLayout>>>()
     }
 }
 impl VideoFrame {

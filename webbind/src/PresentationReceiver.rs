@@ -58,7 +58,9 @@ jsbind::utils::impl_dyn_cast!(PresentationReceiver);
 impl PresentationReceiver {
     /// Getter of the `connectionList` attribute.
     /// [`PresentationReceiver.connectionList`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationReceiver/connectionList)
-    pub fn connection_list(&self) -> Promise {
-        self.inner.get("connectionList").as_::<Promise>()
+    pub fn connection_list(&self) -> Promise<PresentationConnectionList> {
+        self.inner
+            .get("connectionList")
+            .as_::<Promise<PresentationConnectionList>>()
     }
 }

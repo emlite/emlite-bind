@@ -58,9 +58,9 @@ jsbind::utils::impl_dyn_cast!(RestrictionTarget);
 impl RestrictionTarget {
     /// The fromElement method.
     /// [`RestrictionTarget.fromElement`](https://developer.mozilla.org/en-US/docs/Web/API/RestrictionTarget/fromElement)
-    pub fn from_element(element: &Element) -> Promise {
+    pub fn from_element(element: &Element) -> Promise<RestrictionTarget> {
         Any::global("RestrictionTarget")
             .call("fromElement", &[element.into()])
-            .as_::<Promise>()
+            .as_::<Promise<RestrictionTarget>>()
     }
 }

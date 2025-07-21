@@ -126,7 +126,9 @@ jsbind::utils::impl_dyn_cast!(WebTransportReceiveStream);
 impl WebTransportReceiveStream {
     /// The getStats method.
     /// [`WebTransportReceiveStream.getStats`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportReceiveStream/getStats)
-    pub fn get_stats(&self) -> Promise {
-        self.inner.call("getStats", &[]).as_::<Promise>()
+    pub fn get_stats(&self) -> Promise<WebTransportReceiveStreamStats> {
+        self.inner
+            .call("getStats", &[])
+            .as_::<Promise<WebTransportReceiveStreamStats>>()
     }
 }

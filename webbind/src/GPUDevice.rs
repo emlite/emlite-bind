@@ -1202,10 +1202,10 @@ impl GPUDevice {
     pub fn create_compute_pipeline_async(
         &self,
         descriptor: &GPUComputePipelineDescriptor,
-    ) -> Promise {
+    ) -> Promise<GPUComputePipeline> {
         self.inner
             .call("createComputePipelineAsync", &[descriptor.into()])
-            .as_::<Promise>()
+            .as_::<Promise<GPUComputePipeline>>()
     }
 }
 impl GPUDevice {
@@ -1214,10 +1214,10 @@ impl GPUDevice {
     pub fn create_render_pipeline_async(
         &self,
         descriptor: &GPURenderPipelineDescriptor,
-    ) -> Promise {
+    ) -> Promise<GPURenderPipeline> {
         self.inner
             .call("createRenderPipelineAsync", &[descriptor.into()])
-            .as_::<Promise>()
+            .as_::<Promise<GPURenderPipeline>>()
     }
 }
 impl GPUDevice {
@@ -1263,8 +1263,8 @@ impl GPUDevice {
 impl GPUDevice {
     /// Getter of the `lost` attribute.
     /// [`GPUDevice.lost`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/lost)
-    pub fn lost(&self) -> Promise {
-        self.inner.get("lost").as_::<Promise>()
+    pub fn lost(&self) -> Promise<GPUDeviceLostInfo> {
+        self.inner.get("lost").as_::<Promise<GPUDeviceLostInfo>>()
     }
 }
 impl GPUDevice {
@@ -1279,8 +1279,10 @@ impl GPUDevice {
 impl GPUDevice {
     /// The popErrorScope method.
     /// [`GPUDevice.popErrorScope`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/popErrorScope)
-    pub fn pop_error_scope(&self) -> Promise {
-        self.inner.call("popErrorScope", &[]).as_::<Promise>()
+    pub fn pop_error_scope(&self) -> Promise<GPUError> {
+        self.inner
+            .call("popErrorScope", &[])
+            .as_::<Promise<GPUError>>()
     }
 }
 impl GPUDevice {

@@ -908,10 +908,10 @@ impl PublicKeyCredential {
 impl PublicKeyCredential {
     /// The isConditionalMediationAvailable method.
     /// [`PublicKeyCredential.isConditionalMediationAvailable`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/isConditionalMediationAvailable)
-    pub fn is_conditional_mediation_available() -> Promise {
+    pub fn is_conditional_mediation_available() -> Promise<bool> {
         Any::global("PublicKeyCredential")
             .call("isConditionalMediationAvailable", &[])
-            .as_::<Promise>()
+            .as_::<Promise<bool>>()
     }
 }
 impl PublicKeyCredential {
@@ -924,19 +924,19 @@ impl PublicKeyCredential {
 impl PublicKeyCredential {
     /// The isUserVerifyingPlatformAuthenticatorAvailable method.
     /// [`PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/isUserVerifyingPlatformAuthenticatorAvailable)
-    pub fn is_user_verifying_platform_authenticator_available() -> Promise {
+    pub fn is_user_verifying_platform_authenticator_available() -> Promise<bool> {
         Any::global("PublicKeyCredential")
             .call("isUserVerifyingPlatformAuthenticatorAvailable", &[])
-            .as_::<Promise>()
+            .as_::<Promise<bool>>()
     }
 }
 impl PublicKeyCredential {
     /// The getClientCapabilities method.
     /// [`PublicKeyCredential.getClientCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/getClientCapabilities)
-    pub fn get_client_capabilities() -> Promise {
+    pub fn get_client_capabilities() -> Promise<Any> {
         Any::global("PublicKeyCredential")
             .call("getClientCapabilities", &[])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
 }
 impl PublicKeyCredential {
@@ -964,27 +964,29 @@ impl PublicKeyCredential {
 impl PublicKeyCredential {
     /// The signalUnknownCredential method.
     /// [`PublicKeyCredential.signalUnknownCredential`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/signalUnknownCredential)
-    pub fn signal_unknown_credential(options: &UnknownCredentialOptions) -> Promise {
+    pub fn signal_unknown_credential(options: &UnknownCredentialOptions) -> Promise<Undefined> {
         Any::global("PublicKeyCredential")
             .call("signalUnknownCredential", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl PublicKeyCredential {
     /// The signalAllAcceptedCredentials method.
     /// [`PublicKeyCredential.signalAllAcceptedCredentials`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/signalAllAcceptedCredentials)
-    pub fn signal_all_accepted_credentials(options: &AllAcceptedCredentialsOptions) -> Promise {
+    pub fn signal_all_accepted_credentials(
+        options: &AllAcceptedCredentialsOptions,
+    ) -> Promise<Undefined> {
         Any::global("PublicKeyCredential")
             .call("signalAllAcceptedCredentials", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl PublicKeyCredential {
     /// The signalCurrentUserDetails method.
     /// [`PublicKeyCredential.signalCurrentUserDetails`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/signalCurrentUserDetails)
-    pub fn signal_current_user_details(options: &CurrentUserDetailsOptions) -> Promise {
+    pub fn signal_current_user_details(options: &CurrentUserDetailsOptions) -> Promise<Undefined> {
         Any::global("PublicKeyCredential")
             .call("signalCurrentUserDetails", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }

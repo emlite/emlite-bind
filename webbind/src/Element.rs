@@ -1207,15 +1207,17 @@ impl Element {
 impl Element {
     /// The requestFullscreen method.
     /// [`Element.requestFullscreen`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen)
-    pub fn request_fullscreen0(&self) -> Promise {
-        self.inner.call("requestFullscreen", &[]).as_::<Promise>()
+    pub fn request_fullscreen0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("requestFullscreen", &[])
+            .as_::<Promise<Undefined>>()
     }
     /// The requestFullscreen method.
     /// [`Element.requestFullscreen`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullscreen)
-    pub fn request_fullscreen1(&self, options: &FullscreenOptions) -> Promise {
+    pub fn request_fullscreen1(&self, options: &FullscreenOptions) -> Promise<Undefined> {
         self.inner
             .call("requestFullscreen", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Element {
@@ -1332,15 +1334,17 @@ impl Element {
 impl Element {
     /// The requestPointerLock method.
     /// [`Element.requestPointerLock`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestPointerLock)
-    pub fn request_pointer_lock0(&self) -> Promise {
-        self.inner.call("requestPointerLock", &[]).as_::<Promise>()
+    pub fn request_pointer_lock0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("requestPointerLock", &[])
+            .as_::<Promise<Undefined>>()
     }
     /// The requestPointerLock method.
     /// [`Element.requestPointerLock`](https://developer.mozilla.org/en-US/docs/Web/API/Element/requestPointerLock)
-    pub fn request_pointer_lock1(&self, options: &PointerLockOptions) -> Promise {
+    pub fn request_pointer_lock1(&self, options: &PointerLockOptions) -> Promise<Undefined> {
         self.inner
             .call("requestPointerLock", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl Element {

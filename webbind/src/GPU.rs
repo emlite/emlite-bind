@@ -146,15 +146,17 @@ jsbind::utils::impl_dyn_cast!(GPU);
 impl GPU {
     /// The requestAdapter method.
     /// [`GPU.requestAdapter`](https://developer.mozilla.org/en-US/docs/Web/API/GPU/requestAdapter)
-    pub fn request_adapter0(&self) -> Promise {
-        self.inner.call("requestAdapter", &[]).as_::<Promise>()
+    pub fn request_adapter0(&self) -> Promise<GPUAdapter> {
+        self.inner
+            .call("requestAdapter", &[])
+            .as_::<Promise<GPUAdapter>>()
     }
     /// The requestAdapter method.
     /// [`GPU.requestAdapter`](https://developer.mozilla.org/en-US/docs/Web/API/GPU/requestAdapter)
-    pub fn request_adapter1(&self, options: &GPURequestAdapterOptions) -> Promise {
+    pub fn request_adapter1(&self, options: &GPURequestAdapterOptions) -> Promise<GPUAdapter> {
         self.inner
             .call("requestAdapter", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<GPUAdapter>>()
     }
 }
 impl GPU {

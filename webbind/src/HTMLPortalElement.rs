@@ -153,15 +153,15 @@ impl HTMLPortalElement {
 impl HTMLPortalElement {
     /// The activate method.
     /// [`HTMLPortalElement.activate`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/activate)
-    pub fn activate0(&self) -> Promise {
-        self.inner.call("activate", &[]).as_::<Promise>()
+    pub fn activate0(&self) -> Promise<Undefined> {
+        self.inner.call("activate", &[]).as_::<Promise<Undefined>>()
     }
     /// The activate method.
     /// [`HTMLPortalElement.activate`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/activate)
-    pub fn activate1(&self, options: &PortalActivateOptions) -> Promise {
+    pub fn activate1(&self, options: &PortalActivateOptions) -> Promise<Undefined> {
         self.inner
             .call("activate", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl HTMLPortalElement {

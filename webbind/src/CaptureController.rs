@@ -106,22 +106,28 @@ impl CaptureController {
 impl CaptureController {
     /// The increaseZoomLevel method.
     /// [`CaptureController.increaseZoomLevel`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/increaseZoomLevel)
-    pub fn increase_zoom_level(&self) -> Promise {
-        self.inner.call("increaseZoomLevel", &[]).as_::<Promise>()
+    pub fn increase_zoom_level(&self) -> Promise<Undefined> {
+        self.inner
+            .call("increaseZoomLevel", &[])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl CaptureController {
     /// The decreaseZoomLevel method.
     /// [`CaptureController.decreaseZoomLevel`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/decreaseZoomLevel)
-    pub fn decrease_zoom_level(&self) -> Promise {
-        self.inner.call("decreaseZoomLevel", &[]).as_::<Promise>()
+    pub fn decrease_zoom_level(&self) -> Promise<Undefined> {
+        self.inner
+            .call("decreaseZoomLevel", &[])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl CaptureController {
     /// The resetZoomLevel method.
     /// [`CaptureController.resetZoomLevel`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/resetZoomLevel)
-    pub fn reset_zoom_level(&self) -> Promise {
-        self.inner.call("resetZoomLevel", &[]).as_::<Promise>()
+    pub fn reset_zoom_level(&self) -> Promise<Undefined> {
+        self.inner
+            .call("resetZoomLevel", &[])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl CaptureController {
@@ -140,9 +146,9 @@ impl CaptureController {
 impl CaptureController {
     /// The forwardWheel method.
     /// [`CaptureController.forwardWheel`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/forwardWheel)
-    pub fn forward_wheel(&self, element: &HTMLElement) -> Promise {
+    pub fn forward_wheel(&self, element: &HTMLElement) -> Promise<Undefined> {
         self.inner
             .call("forwardWheel", &[element.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }

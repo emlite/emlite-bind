@@ -186,27 +186,27 @@ impl MediaSession {
 impl MediaSession {
     /// The setMicrophoneActive method.
     /// [`MediaSession.setMicrophoneActive`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/setMicrophoneActive)
-    pub fn set_microphone_active(&self, active: bool) -> Promise {
+    pub fn set_microphone_active(&self, active: bool) -> Promise<Undefined> {
         self.inner
             .call("setMicrophoneActive", &[active.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl MediaSession {
     /// The setCameraActive method.
     /// [`MediaSession.setCameraActive`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/setCameraActive)
-    pub fn set_camera_active(&self, active: bool) -> Promise {
+    pub fn set_camera_active(&self, active: bool) -> Promise<Undefined> {
         self.inner
             .call("setCameraActive", &[active.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl MediaSession {
     /// The setScreenshareActive method.
     /// [`MediaSession.setScreenshareActive`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSession/setScreenshareActive)
-    pub fn set_screenshare_active(&self, active: bool) -> Promise {
+    pub fn set_screenshare_active(&self, active: bool) -> Promise<Undefined> {
         self.inner
             .call("setScreenshareActive", &[active.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }

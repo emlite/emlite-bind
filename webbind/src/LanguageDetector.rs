@@ -314,47 +314,53 @@ jsbind::utils::impl_dyn_cast!(LanguageDetector);
 impl LanguageDetector {
     /// The create method.
     /// [`LanguageDetector.create`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/create)
-    pub fn create0() -> Promise {
+    pub fn create0() -> Promise<LanguageDetector> {
         Any::global("LanguageDetector")
             .call("create", &[])
-            .as_::<Promise>()
+            .as_::<Promise<LanguageDetector>>()
     }
     /// The create method.
     /// [`LanguageDetector.create`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/create)
-    pub fn create1(options: &LanguageDetectorCreateOptions) -> Promise {
+    pub fn create1(options: &LanguageDetectorCreateOptions) -> Promise<LanguageDetector> {
         Any::global("LanguageDetector")
             .call("create", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<LanguageDetector>>()
     }
 }
 impl LanguageDetector {
     /// The availability method.
     /// [`LanguageDetector.availability`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/availability)
-    pub fn availability0() -> Promise {
+    pub fn availability0() -> Promise<Availability> {
         Any::global("LanguageDetector")
             .call("availability", &[])
-            .as_::<Promise>()
+            .as_::<Promise<Availability>>()
     }
     /// The availability method.
     /// [`LanguageDetector.availability`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/availability)
-    pub fn availability1(options: &LanguageDetectorCreateCoreOptions) -> Promise {
+    pub fn availability1(options: &LanguageDetectorCreateCoreOptions) -> Promise<Availability> {
         Any::global("LanguageDetector")
             .call("availability", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Availability>>()
     }
 }
 impl LanguageDetector {
     /// The detect method.
     /// [`LanguageDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/detect)
-    pub fn detect0(&self, input: &str) -> Promise {
-        self.inner.call("detect", &[input.into()]).as_::<Promise>()
+    pub fn detect0(&self, input: &str) -> Promise<Sequence<LanguageDetectionResult>> {
+        self.inner
+            .call("detect", &[input.into()])
+            .as_::<Promise<Sequence<LanguageDetectionResult>>>()
     }
     /// The detect method.
     /// [`LanguageDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/detect)
-    pub fn detect1(&self, input: &str, options: &LanguageDetectorDetectOptions) -> Promise {
+    pub fn detect1(
+        &self,
+        input: &str,
+        options: &LanguageDetectorDetectOptions,
+    ) -> Promise<Sequence<LanguageDetectionResult>> {
         self.inner
             .call("detect", &[input.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<LanguageDetectionResult>>>()
     }
 }
 impl LanguageDetector {
@@ -369,10 +375,10 @@ impl LanguageDetector {
 impl LanguageDetector {
     /// The measureInputUsage method.
     /// [`LanguageDetector.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/measureInputUsage)
-    pub fn measure_input_usage0(&self, input: &str) -> Promise {
+    pub fn measure_input_usage0(&self, input: &str) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into()])
-            .as_::<Promise>()
+            .as_::<Promise<f64>>()
     }
     /// The measureInputUsage method.
     /// [`LanguageDetector.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/measureInputUsage)
@@ -380,10 +386,10 @@ impl LanguageDetector {
         &self,
         input: &str,
         options: &LanguageDetectorDetectOptions,
-    ) -> Promise {
+    ) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<f64>>()
     }
 }
 impl LanguageDetector {

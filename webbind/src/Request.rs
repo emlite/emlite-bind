@@ -215,42 +215,44 @@ impl Request {
 impl Request {
     /// The arrayBuffer method.
     /// [`Request.arrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/Request/arrayBuffer)
-    pub fn array_buffer(&self) -> Promise {
-        self.inner.call("arrayBuffer", &[]).as_::<Promise>()
+    pub fn array_buffer(&self) -> Promise<ArrayBuffer> {
+        self.inner
+            .call("arrayBuffer", &[])
+            .as_::<Promise<ArrayBuffer>>()
     }
 }
 impl Request {
     /// The blob method.
     /// [`Request.blob`](https://developer.mozilla.org/en-US/docs/Web/API/Request/blob)
-    pub fn blob(&self) -> Promise {
-        self.inner.call("blob", &[]).as_::<Promise>()
+    pub fn blob(&self) -> Promise<Blob> {
+        self.inner.call("blob", &[]).as_::<Promise<Blob>>()
     }
 }
 impl Request {
     /// The bytes method.
     /// [`Request.bytes`](https://developer.mozilla.org/en-US/docs/Web/API/Request/bytes)
-    pub fn bytes(&self) -> Promise {
-        self.inner.call("bytes", &[]).as_::<Promise>()
+    pub fn bytes(&self) -> Promise<Uint8Array> {
+        self.inner.call("bytes", &[]).as_::<Promise<Uint8Array>>()
     }
 }
 impl Request {
     /// The formData method.
     /// [`Request.formData`](https://developer.mozilla.org/en-US/docs/Web/API/Request/formData)
-    pub fn form_data(&self) -> Promise {
-        self.inner.call("formData", &[]).as_::<Promise>()
+    pub fn form_data(&self) -> Promise<FormData> {
+        self.inner.call("formData", &[]).as_::<Promise<FormData>>()
     }
 }
 impl Request {
     /// The json method.
     /// [`Request.json`](https://developer.mozilla.org/en-US/docs/Web/API/Request/json)
-    pub fn json(&self) -> Promise {
-        self.inner.call("json", &[]).as_::<Promise>()
+    pub fn json(&self) -> Promise<Any> {
+        self.inner.call("json", &[]).as_::<Promise<Any>>()
     }
 }
 impl Request {
     /// The text method.
     /// [`Request.text`](https://developer.mozilla.org/en-US/docs/Web/API/Request/text)
-    pub fn text(&self) -> Promise {
-        self.inner.call("text", &[]).as_::<Promise>()
+    pub fn text(&self) -> Promise<String> {
+        self.inner.call("text", &[]).as_::<Promise<String>>()
     }
 }

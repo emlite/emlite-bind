@@ -135,23 +135,27 @@ jsbind::utils::impl_dyn_cast!(Scheduler);
 impl Scheduler {
     /// The postTask method.
     /// [`Scheduler.postTask`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduler/postTask)
-    pub fn post_task0(&self, callback: &Function) -> Promise {
+    pub fn post_task0(&self, callback: &Function) -> Promise<Any> {
         self.inner
             .call("postTask", &[callback.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
     /// The postTask method.
     /// [`Scheduler.postTask`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduler/postTask)
-    pub fn post_task1(&self, callback: &Function, options: &SchedulerPostTaskOptions) -> Promise {
+    pub fn post_task1(
+        &self,
+        callback: &Function,
+        options: &SchedulerPostTaskOptions,
+    ) -> Promise<Any> {
         self.inner
             .call("postTask", &[callback.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Any>>()
     }
 }
 impl Scheduler {
     /// The yield method.
     /// [`Scheduler.yield`](https://developer.mozilla.org/en-US/docs/Web/API/Scheduler/yield)
-    pub fn yield_(&self) -> Promise {
-        self.inner.call("yield", &[]).as_::<Promise>()
+    pub fn yield_(&self) -> Promise<Undefined> {
+        self.inner.call("yield", &[]).as_::<Promise<Undefined>>()
     }
 }

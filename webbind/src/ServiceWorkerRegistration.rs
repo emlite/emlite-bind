@@ -341,15 +341,17 @@ impl ServiceWorkerRegistration {
 impl ServiceWorkerRegistration {
     /// The update method.
     /// [`ServiceWorkerRegistration.update`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/update)
-    pub fn update(&self) -> Promise {
-        self.inner.call("update", &[]).as_::<Promise>()
+    pub fn update(&self) -> Promise<ServiceWorkerRegistration> {
+        self.inner
+            .call("update", &[])
+            .as_::<Promise<ServiceWorkerRegistration>>()
     }
 }
 impl ServiceWorkerRegistration {
     /// The unregister method.
     /// [`ServiceWorkerRegistration.unregister`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/unregister)
-    pub fn unregister(&self) -> Promise {
-        self.inner.call("unregister", &[]).as_::<Promise>()
+    pub fn unregister(&self) -> Promise<bool> {
+        self.inner.call("unregister", &[]).as_::<Promise<bool>>()
     }
 }
 impl ServiceWorkerRegistration {
@@ -398,31 +400,40 @@ impl ServiceWorkerRegistration {
 impl ServiceWorkerRegistration {
     /// The showNotification method.
     /// [`ServiceWorkerRegistration.showNotification`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
-    pub fn show_notification0(&self, title: &str) -> Promise {
+    pub fn show_notification0(&self, title: &str) -> Promise<Undefined> {
         self.inner
             .call("showNotification", &[title.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
     /// The showNotification method.
     /// [`ServiceWorkerRegistration.showNotification`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
-    pub fn show_notification1(&self, title: &str, options: &NotificationOptions) -> Promise {
+    pub fn show_notification1(
+        &self,
+        title: &str,
+        options: &NotificationOptions,
+    ) -> Promise<Undefined> {
         self.inner
             .call("showNotification", &[title.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl ServiceWorkerRegistration {
     /// The getNotifications method.
     /// [`ServiceWorkerRegistration.getNotifications`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/getNotifications)
-    pub fn get_notifications0(&self) -> Promise {
-        self.inner.call("getNotifications", &[]).as_::<Promise>()
+    pub fn get_notifications0(&self) -> Promise<Sequence<Notification>> {
+        self.inner
+            .call("getNotifications", &[])
+            .as_::<Promise<Sequence<Notification>>>()
     }
     /// The getNotifications method.
     /// [`ServiceWorkerRegistration.getNotifications`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/getNotifications)
-    pub fn get_notifications1(&self, filter: &GetNotificationOptions) -> Promise {
+    pub fn get_notifications1(
+        &self,
+        filter: &GetNotificationOptions,
+    ) -> Promise<Sequence<Notification>> {
         self.inner
             .call("getNotifications", &[filter.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<Notification>>>()
     }
 }
 impl ServiceWorkerRegistration {

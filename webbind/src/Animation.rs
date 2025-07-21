@@ -159,15 +159,15 @@ impl Animation {
 impl Animation {
     /// Getter of the `ready` attribute.
     /// [`Animation.ready`](https://developer.mozilla.org/en-US/docs/Web/API/Animation/ready)
-    pub fn ready(&self) -> Promise {
-        self.inner.get("ready").as_::<Promise>()
+    pub fn ready(&self) -> Promise<Animation> {
+        self.inner.get("ready").as_::<Promise<Animation>>()
     }
 }
 impl Animation {
     /// Getter of the `finished` attribute.
     /// [`Animation.finished`](https://developer.mozilla.org/en-US/docs/Web/API/Animation/finished)
-    pub fn finished(&self) -> Promise {
-        self.inner.get("finished").as_::<Promise>()
+    pub fn finished(&self) -> Promise<Animation> {
+        self.inner.get("finished").as_::<Promise<Animation>>()
     }
 }
 impl Animation {

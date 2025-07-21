@@ -58,15 +58,17 @@ jsbind::utils::impl_dyn_cast!(WebTransportWriter);
 impl WebTransportWriter {
     /// The atomicWrite method.
     /// [`WebTransportWriter.atomicWrite`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportWriter/atomicWrite)
-    pub fn atomic_write0(&self) -> Promise {
-        self.inner.call("atomicWrite", &[]).as_::<Promise>()
+    pub fn atomic_write0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("atomicWrite", &[])
+            .as_::<Promise<Undefined>>()
     }
     /// The atomicWrite method.
     /// [`WebTransportWriter.atomicWrite`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransportWriter/atomicWrite)
-    pub fn atomic_write1(&self, chunk: &Any) -> Promise {
+    pub fn atomic_write1(&self, chunk: &Any) -> Promise<Undefined> {
         self.inner
             .call("atomicWrite", &[chunk.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl WebTransportWriter {

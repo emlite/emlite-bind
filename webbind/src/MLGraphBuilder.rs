@@ -2416,8 +2416,10 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The build method.
     /// [`MLGraphBuilder.build`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/build)
-    pub fn build(&self, outputs: &Any) -> Promise {
-        self.inner.call("build", &[outputs.into()]).as_::<Promise>()
+    pub fn build(&self, outputs: &Any) -> Promise<MLGraph> {
+        self.inner
+            .call("build", &[outputs.into()])
+            .as_::<Promise<MLGraph>>()
     }
 }
 impl MLGraphBuilder {

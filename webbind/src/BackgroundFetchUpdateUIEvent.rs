@@ -136,14 +136,14 @@ impl BackgroundFetchUpdateUIEvent {
 impl BackgroundFetchUpdateUIEvent {
     /// The updateUI method.
     /// [`BackgroundFetchUpdateUIEvent.updateUI`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchUpdateUIEvent/updateUI)
-    pub fn update_ui0(&self) -> Promise {
-        self.inner.call("updateUI", &[]).as_::<Promise>()
+    pub fn update_ui0(&self) -> Promise<Undefined> {
+        self.inner.call("updateUI", &[]).as_::<Promise<Undefined>>()
     }
     /// The updateUI method.
     /// [`BackgroundFetchUpdateUIEvent.updateUI`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchUpdateUIEvent/updateUI)
-    pub fn update_ui1(&self, options: &BackgroundFetchUIOptions) -> Promise {
+    pub fn update_ui1(&self, options: &BackgroundFetchUIOptions) -> Promise<Undefined> {
         self.inner
             .call("updateUI", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }

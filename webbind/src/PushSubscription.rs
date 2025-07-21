@@ -165,8 +165,8 @@ impl PushSubscription {
 impl PushSubscription {
     /// The unsubscribe method.
     /// [`PushSubscription.unsubscribe`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription/unsubscribe)
-    pub fn unsubscribe(&self) -> Promise {
-        self.inner.call("unsubscribe", &[]).as_::<Promise>()
+    pub fn unsubscribe(&self) -> Promise<bool> {
+        self.inner.call("unsubscribe", &[]).as_::<Promise<bool>>()
     }
 }
 impl PushSubscription {

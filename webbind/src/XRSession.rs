@@ -512,19 +512,22 @@ impl XRSession {
 impl XRSession {
     /// The updateTargetFrameRate method.
     /// [`XRSession.updateTargetFrameRate`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/updateTargetFrameRate)
-    pub fn update_target_frame_rate(&self, rate: f32) -> Promise {
+    pub fn update_target_frame_rate(&self, rate: f32) -> Promise<Undefined> {
         self.inner
             .call("updateTargetFrameRate", &[rate.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl XRSession {
     /// The requestReferenceSpace method.
     /// [`XRSession.requestReferenceSpace`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestReferenceSpace)
-    pub fn request_reference_space(&self, type_: &XRReferenceSpaceType) -> Promise {
+    pub fn request_reference_space(
+        &self,
+        type_: &XRReferenceSpaceType,
+    ) -> Promise<XRReferenceSpace> {
         self.inner
             .call("requestReferenceSpace", &[type_.into()])
-            .as_::<Promise>()
+            .as_::<Promise<XRReferenceSpace>>()
     }
 }
 impl XRSession {
@@ -548,8 +551,8 @@ impl XRSession {
 impl XRSession {
     /// The end method.
     /// [`XRSession.end`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/end)
-    pub fn end(&self) -> Promise {
-        self.inner.call("end", &[]).as_::<Promise>()
+    pub fn end(&self) -> Promise<Undefined> {
+        self.inner.call("end", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl XRSession {
@@ -694,19 +697,19 @@ impl XRSession {
 impl XRSession {
     /// The restorePersistentAnchor method.
     /// [`XRSession.restorePersistentAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/restorePersistentAnchor)
-    pub fn restore_persistent_anchor(&self, uuid: &str) -> Promise {
+    pub fn restore_persistent_anchor(&self, uuid: &str) -> Promise<XRAnchor> {
         self.inner
             .call("restorePersistentAnchor", &[uuid.into()])
-            .as_::<Promise>()
+            .as_::<Promise<XRAnchor>>()
     }
 }
 impl XRSession {
     /// The deletePersistentAnchor method.
     /// [`XRSession.deletePersistentAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/deletePersistentAnchor)
-    pub fn delete_persistent_anchor(&self, uuid: &str) -> Promise {
+    pub fn delete_persistent_anchor(&self, uuid: &str) -> Promise<Undefined> {
         self.inner
             .call("deletePersistentAnchor", &[uuid.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl XRSession {
@@ -779,10 +782,13 @@ impl XRSession {
 impl XRSession {
     /// The requestHitTestSource method.
     /// [`XRSession.requestHitTestSource`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestHitTestSource)
-    pub fn request_hit_test_source(&self, options: &XRHitTestOptionsInit) -> Promise {
+    pub fn request_hit_test_source(
+        &self,
+        options: &XRHitTestOptionsInit,
+    ) -> Promise<XRHitTestSource> {
         self.inner
             .call("requestHitTestSource", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<XRHitTestSource>>()
     }
 }
 impl XRSession {
@@ -791,24 +797,26 @@ impl XRSession {
     pub fn request_hit_test_source_for_transient_input(
         &self,
         options: &XRTransientInputHitTestOptionsInit,
-    ) -> Promise {
+    ) -> Promise<XRTransientInputHitTestSource> {
         self.inner
             .call("requestHitTestSourceForTransientInput", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<XRTransientInputHitTestSource>>()
     }
 }
 impl XRSession {
     /// The requestLightProbe method.
     /// [`XRSession.requestLightProbe`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestLightProbe)
-    pub fn request_light_probe0(&self) -> Promise {
-        self.inner.call("requestLightProbe", &[]).as_::<Promise>()
+    pub fn request_light_probe0(&self) -> Promise<XRLightProbe> {
+        self.inner
+            .call("requestLightProbe", &[])
+            .as_::<Promise<XRLightProbe>>()
     }
     /// The requestLightProbe method.
     /// [`XRSession.requestLightProbe`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/requestLightProbe)
-    pub fn request_light_probe1(&self, options: &XRLightProbeInit) -> Promise {
+    pub fn request_light_probe1(&self, options: &XRLightProbeInit) -> Promise<XRLightProbe> {
         self.inner
             .call("requestLightProbe", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<XRLightProbe>>()
     }
 }
 impl XRSession {
@@ -823,7 +831,9 @@ impl XRSession {
 impl XRSession {
     /// The initiateRoomCapture method.
     /// [`XRSession.initiateRoomCapture`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/initiateRoomCapture)
-    pub fn initiate_room_capture(&self) -> Promise {
-        self.inner.call("initiateRoomCapture", &[]).as_::<Promise>()
+    pub fn initiate_room_capture(&self) -> Promise<Undefined> {
+        self.inner
+            .call("initiateRoomCapture", &[])
+            .as_::<Promise<Undefined>>()
     }
 }

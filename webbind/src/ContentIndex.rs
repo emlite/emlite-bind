@@ -162,23 +162,27 @@ jsbind::utils::impl_dyn_cast!(ContentIndex);
 impl ContentIndex {
     /// The add method.
     /// [`ContentIndex.add`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndex/add)
-    pub fn add(&self, description: &ContentDescription) -> Promise {
+    pub fn add(&self, description: &ContentDescription) -> Promise<Undefined> {
         self.inner
             .call("add", &[description.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl ContentIndex {
     /// The delete method.
     /// [`ContentIndex.delete`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndex/delete)
-    pub fn delete(&self, id: &str) -> Promise {
-        self.inner.call("delete", &[id.into()]).as_::<Promise>()
+    pub fn delete(&self, id: &str) -> Promise<Undefined> {
+        self.inner
+            .call("delete", &[id.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl ContentIndex {
     /// The getAll method.
     /// [`ContentIndex.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndex/getAll)
-    pub fn get_all(&self) -> Promise {
-        self.inner.call("getAll", &[]).as_::<Promise>()
+    pub fn get_all(&self) -> Promise<Sequence<ContentDescription>> {
+        self.inner
+            .call("getAll", &[])
+            .as_::<Promise<Sequence<ContentDescription>>>()
     }
 }

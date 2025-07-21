@@ -151,8 +151,10 @@ impl IDBFactory {
 impl IDBFactory {
     /// The databases method.
     /// [`IDBFactory.databases`](https://developer.mozilla.org/en-US/docs/Web/API/IDBFactory/databases)
-    pub fn databases(&self) -> Promise {
-        self.inner.call("databases", &[]).as_::<Promise>()
+    pub fn databases(&self) -> Promise<Sequence<IDBDatabaseInfo>> {
+        self.inner
+            .call("databases", &[])
+            .as_::<Promise<Sequence<IDBDatabaseInfo>>>()
     }
 }
 impl IDBFactory {

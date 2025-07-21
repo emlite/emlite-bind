@@ -117,30 +117,35 @@ jsbind::utils::impl_dyn_cast!(FileSystemFileHandle);
 impl FileSystemFileHandle {
     /// The getFile method.
     /// [`FileSystemFileHandle.getFile`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle/getFile)
-    pub fn get_file(&self) -> Promise {
-        self.inner.call("getFile", &[]).as_::<Promise>()
+    pub fn get_file(&self) -> Promise<File> {
+        self.inner.call("getFile", &[]).as_::<Promise<File>>()
     }
 }
 impl FileSystemFileHandle {
     /// The createWritable method.
     /// [`FileSystemFileHandle.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle/createWritable)
-    pub fn create_writable0(&self) -> Promise {
-        self.inner.call("createWritable", &[]).as_::<Promise>()
+    pub fn create_writable0(&self) -> Promise<FileSystemWritableFileStream> {
+        self.inner
+            .call("createWritable", &[])
+            .as_::<Promise<FileSystemWritableFileStream>>()
     }
     /// The createWritable method.
     /// [`FileSystemFileHandle.createWritable`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle/createWritable)
-    pub fn create_writable1(&self, options: &FileSystemCreateWritableOptions) -> Promise {
+    pub fn create_writable1(
+        &self,
+        options: &FileSystemCreateWritableOptions,
+    ) -> Promise<FileSystemWritableFileStream> {
         self.inner
             .call("createWritable", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<FileSystemWritableFileStream>>()
     }
 }
 impl FileSystemFileHandle {
     /// The createSyncAccessHandle method.
     /// [`FileSystemFileHandle.createSyncAccessHandle`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemFileHandle/createSyncAccessHandle)
-    pub fn create_sync_access_handle(&self) -> Promise {
+    pub fn create_sync_access_handle(&self) -> Promise<FileSystemSyncAccessHandle> {
         self.inner
             .call("createSyncAccessHandle", &[])
-            .as_::<Promise>()
+            .as_::<Promise<FileSystemSyncAccessHandle>>()
     }
 }

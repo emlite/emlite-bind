@@ -72,8 +72,10 @@ impl BluetoothRemoteGATTServer {
 impl BluetoothRemoteGATTServer {
     /// The connect method.
     /// [`BluetoothRemoteGATTServer.connect`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/connect)
-    pub fn connect(&self) -> Promise {
-        self.inner.call("connect", &[]).as_::<Promise>()
+    pub fn connect(&self) -> Promise<BluetoothRemoteGATTServer> {
+        self.inner
+            .call("connect", &[])
+            .as_::<Promise<BluetoothRemoteGATTServer>>()
     }
 }
 impl BluetoothRemoteGATTServer {
@@ -86,23 +88,28 @@ impl BluetoothRemoteGATTServer {
 impl BluetoothRemoteGATTServer {
     /// The getPrimaryService method.
     /// [`BluetoothRemoteGATTServer.getPrimaryService`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/getPrimaryService)
-    pub fn get_primary_service(&self, service: &Any) -> Promise {
+    pub fn get_primary_service(&self, service: &Any) -> Promise<BluetoothRemoteGATTService> {
         self.inner
             .call("getPrimaryService", &[service.into()])
-            .as_::<Promise>()
+            .as_::<Promise<BluetoothRemoteGATTService>>()
     }
 }
 impl BluetoothRemoteGATTServer {
     /// The getPrimaryServices method.
     /// [`BluetoothRemoteGATTServer.getPrimaryServices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/getPrimaryServices)
-    pub fn get_primary_services0(&self) -> Promise {
-        self.inner.call("getPrimaryServices", &[]).as_::<Promise>()
+    pub fn get_primary_services0(&self) -> Promise<Sequence<BluetoothRemoteGATTService>> {
+        self.inner
+            .call("getPrimaryServices", &[])
+            .as_::<Promise<Sequence<BluetoothRemoteGATTService>>>()
     }
     /// The getPrimaryServices method.
     /// [`BluetoothRemoteGATTServer.getPrimaryServices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTServer/getPrimaryServices)
-    pub fn get_primary_services1(&self, service: &Any) -> Promise {
+    pub fn get_primary_services1(
+        &self,
+        service: &Any,
+    ) -> Promise<Sequence<BluetoothRemoteGATTService>> {
         self.inner
             .call("getPrimaryServices", &[service.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<BluetoothRemoteGATTService>>>()
     }
 }

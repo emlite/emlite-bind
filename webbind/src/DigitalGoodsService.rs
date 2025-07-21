@@ -275,32 +275,36 @@ jsbind::utils::impl_dyn_cast!(DigitalGoodsService);
 impl DigitalGoodsService {
     /// The getDetails method.
     /// [`DigitalGoodsService.getDetails`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalGoodsService/getDetails)
-    pub fn get_details(&self, item_ids: &Sequence<String>) -> Promise {
+    pub fn get_details(&self, item_ids: &Sequence<String>) -> Promise<Sequence<ItemDetails>> {
         self.inner
             .call("getDetails", &[item_ids.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Sequence<ItemDetails>>>()
     }
 }
 impl DigitalGoodsService {
     /// The listPurchases method.
     /// [`DigitalGoodsService.listPurchases`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalGoodsService/listPurchases)
-    pub fn list_purchases(&self) -> Promise {
-        self.inner.call("listPurchases", &[]).as_::<Promise>()
+    pub fn list_purchases(&self) -> Promise<Sequence<PurchaseDetails>> {
+        self.inner
+            .call("listPurchases", &[])
+            .as_::<Promise<Sequence<PurchaseDetails>>>()
     }
 }
 impl DigitalGoodsService {
     /// The listPurchaseHistory method.
     /// [`DigitalGoodsService.listPurchaseHistory`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalGoodsService/listPurchaseHistory)
-    pub fn list_purchase_history(&self) -> Promise {
-        self.inner.call("listPurchaseHistory", &[]).as_::<Promise>()
+    pub fn list_purchase_history(&self) -> Promise<Sequence<PurchaseDetails>> {
+        self.inner
+            .call("listPurchaseHistory", &[])
+            .as_::<Promise<Sequence<PurchaseDetails>>>()
     }
 }
 impl DigitalGoodsService {
     /// The consume method.
     /// [`DigitalGoodsService.consume`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalGoodsService/consume)
-    pub fn consume(&self, purchase_token: &str) -> Promise {
+    pub fn consume(&self, purchase_token: &str) -> Promise<Undefined> {
         self.inner
             .call("consume", &[purchase_token.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }

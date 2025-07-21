@@ -129,21 +129,23 @@ impl Blob {
 impl Blob {
     /// The text method.
     /// [`Blob.text`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/text)
-    pub fn text(&self) -> Promise {
-        self.inner.call("text", &[]).as_::<Promise>()
+    pub fn text(&self) -> Promise<String> {
+        self.inner.call("text", &[]).as_::<Promise<String>>()
     }
 }
 impl Blob {
     /// The arrayBuffer method.
     /// [`Blob.arrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/arrayBuffer)
-    pub fn array_buffer(&self) -> Promise {
-        self.inner.call("arrayBuffer", &[]).as_::<Promise>()
+    pub fn array_buffer(&self) -> Promise<ArrayBuffer> {
+        self.inner
+            .call("arrayBuffer", &[])
+            .as_::<Promise<ArrayBuffer>>()
     }
 }
 impl Blob {
     /// The bytes method.
     /// [`Blob.bytes`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/bytes)
-    pub fn bytes(&self) -> Promise {
-        self.inner.call("bytes", &[]).as_::<Promise>()
+    pub fn bytes(&self) -> Promise<Uint8Array> {
+        self.inner.call("bytes", &[]).as_::<Promise<Uint8Array>>()
     }
 }

@@ -313,13 +313,15 @@ impl ReadableStream {
 impl ReadableStream {
     /// The cancel method.
     /// [`ReadableStream.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/cancel)
-    pub fn cancel0(&self) -> Promise {
-        self.inner.call("cancel", &[]).as_::<Promise>()
+    pub fn cancel0(&self) -> Promise<Undefined> {
+        self.inner.call("cancel", &[]).as_::<Promise<Undefined>>()
     }
     /// The cancel method.
     /// [`ReadableStream.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/cancel)
-    pub fn cancel1(&self, reason: &Any) -> Promise {
-        self.inner.call("cancel", &[reason.into()]).as_::<Promise>()
+    pub fn cancel1(&self, reason: &Any) -> Promise<Undefined> {
+        self.inner
+            .call("cancel", &[reason.into()])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl ReadableStream {
@@ -357,17 +359,21 @@ impl ReadableStream {
 impl ReadableStream {
     /// The pipeTo method.
     /// [`ReadableStream.pipeTo`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo)
-    pub fn pipe_to0(&self, destination: &WritableStream) -> Promise {
+    pub fn pipe_to0(&self, destination: &WritableStream) -> Promise<Undefined> {
         self.inner
             .call("pipeTo", &[destination.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
     /// The pipeTo method.
     /// [`ReadableStream.pipeTo`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/pipeTo)
-    pub fn pipe_to1(&self, destination: &WritableStream, options: &StreamPipeOptions) -> Promise {
+    pub fn pipe_to1(
+        &self,
+        destination: &WritableStream,
+        options: &StreamPipeOptions,
+    ) -> Promise<Undefined> {
         self.inner
             .call("pipeTo", &[destination.into(), options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl ReadableStream {

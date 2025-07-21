@@ -77,9 +77,9 @@ impl InstallEvent {
 impl InstallEvent {
     /// The addRoutes method.
     /// [`InstallEvent.addRoutes`](https://developer.mozilla.org/en-US/docs/Web/API/InstallEvent/addRoutes)
-    pub fn add_routes(&self, rules: &Any) -> Promise {
+    pub fn add_routes(&self, rules: &Any) -> Promise<Undefined> {
         self.inner
             .call("addRoutes", &[rules.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }

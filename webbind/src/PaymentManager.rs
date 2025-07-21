@@ -71,9 +71,12 @@ impl PaymentManager {
 impl PaymentManager {
     /// The enableDelegations method.
     /// [`PaymentManager.enableDelegations`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentManager/enableDelegations)
-    pub fn enable_delegations(&self, delegations: &Sequence<PaymentDelegation>) -> Promise {
+    pub fn enable_delegations(
+        &self,
+        delegations: &Sequence<PaymentDelegation>,
+    ) -> Promise<Undefined> {
         self.inner
             .call("enableDelegations", &[delegations.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }

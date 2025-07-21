@@ -81,8 +81,10 @@ impl ServiceWorkerGlobalScope {
 impl ServiceWorkerGlobalScope {
     /// The skipWaiting method.
     /// [`ServiceWorkerGlobalScope.skipWaiting`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerGlobalScope/skipWaiting)
-    pub fn skip_waiting(&self) -> Promise {
-        self.inner.call("skipWaiting", &[]).as_::<Promise>()
+    pub fn skip_waiting(&self) -> Promise<Undefined> {
+        self.inner
+            .call("skipWaiting", &[])
+            .as_::<Promise<Undefined>>()
     }
 }
 impl ServiceWorkerGlobalScope {

@@ -136,8 +136,10 @@ impl ReadableStreamDefaultReader {
 impl ReadableStreamDefaultReader {
     /// The read method.
     /// [`ReadableStreamDefaultReader.read`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/read)
-    pub fn read(&self) -> Promise {
-        self.inner.call("read", &[]).as_::<Promise>()
+    pub fn read(&self) -> Promise<ReadableStreamReadResult> {
+        self.inner
+            .call("read", &[])
+            .as_::<Promise<ReadableStreamReadResult>>()
     }
 }
 impl ReadableStreamDefaultReader {
@@ -150,19 +152,21 @@ impl ReadableStreamDefaultReader {
 impl ReadableStreamDefaultReader {
     /// Getter of the `closed` attribute.
     /// [`ReadableStreamDefaultReader.closed`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/closed)
-    pub fn closed(&self) -> Promise {
-        self.inner.get("closed").as_::<Promise>()
+    pub fn closed(&self) -> Promise<Undefined> {
+        self.inner.get("closed").as_::<Promise<Undefined>>()
     }
 }
 impl ReadableStreamDefaultReader {
     /// The cancel method.
     /// [`ReadableStreamDefaultReader.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/cancel)
-    pub fn cancel0(&self) -> Promise {
-        self.inner.call("cancel", &[]).as_::<Promise>()
+    pub fn cancel0(&self) -> Promise<Undefined> {
+        self.inner.call("cancel", &[]).as_::<Promise<Undefined>>()
     }
     /// The cancel method.
     /// [`ReadableStreamDefaultReader.cancel`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStreamDefaultReader/cancel)
-    pub fn cancel1(&self, reason: &Any) -> Promise {
-        self.inner.call("cancel", &[reason.into()]).as_::<Promise>()
+    pub fn cancel1(&self, reason: &Any) -> Promise<Undefined> {
+        self.inner
+            .call("cancel", &[reason.into()])
+            .as_::<Promise<Undefined>>()
     }
 }

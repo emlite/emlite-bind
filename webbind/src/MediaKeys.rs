@@ -133,23 +133,25 @@ impl MediaKeys {
 impl MediaKeys {
     /// The getStatusForPolicy method.
     /// [`MediaKeys.getStatusForPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys/getStatusForPolicy)
-    pub fn get_status_for_policy0(&self) -> Promise {
-        self.inner.call("getStatusForPolicy", &[]).as_::<Promise>()
+    pub fn get_status_for_policy0(&self) -> Promise<MediaKeyStatus> {
+        self.inner
+            .call("getStatusForPolicy", &[])
+            .as_::<Promise<MediaKeyStatus>>()
     }
     /// The getStatusForPolicy method.
     /// [`MediaKeys.getStatusForPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys/getStatusForPolicy)
-    pub fn get_status_for_policy1(&self, policy: &MediaKeysPolicy) -> Promise {
+    pub fn get_status_for_policy1(&self, policy: &MediaKeysPolicy) -> Promise<MediaKeyStatus> {
         self.inner
             .call("getStatusForPolicy", &[policy.into()])
-            .as_::<Promise>()
+            .as_::<Promise<MediaKeyStatus>>()
     }
 }
 impl MediaKeys {
     /// The setServerCertificate method.
     /// [`MediaKeys.setServerCertificate`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeys/setServerCertificate)
-    pub fn set_server_certificate(&self, server_certificate: &Any) -> Promise {
+    pub fn set_server_certificate(&self, server_certificate: &Any) -> Promise<bool> {
         self.inner
             .call("setServerCertificate", &[server_certificate.into()])
-            .as_::<Promise>()
+            .as_::<Promise<bool>>()
     }
 }

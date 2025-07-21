@@ -58,27 +58,27 @@ jsbind::utils::impl_dyn_cast!(Permissions);
 impl Permissions {
     /// The query method.
     /// [`Permissions.query`](https://developer.mozilla.org/en-US/docs/Web/API/Permissions/query)
-    pub fn query(&self, permission_desc: &Object) -> Promise {
+    pub fn query(&self, permission_desc: &Object) -> Promise<PermissionStatus> {
         self.inner
             .call("query", &[permission_desc.into()])
-            .as_::<Promise>()
+            .as_::<Promise<PermissionStatus>>()
     }
 }
 impl Permissions {
     /// The request method.
     /// [`Permissions.request`](https://developer.mozilla.org/en-US/docs/Web/API/Permissions/request)
-    pub fn request(&self, permission_desc: &Object) -> Promise {
+    pub fn request(&self, permission_desc: &Object) -> Promise<PermissionStatus> {
         self.inner
             .call("request", &[permission_desc.into()])
-            .as_::<Promise>()
+            .as_::<Promise<PermissionStatus>>()
     }
 }
 impl Permissions {
     /// The revoke method.
     /// [`Permissions.revoke`](https://developer.mozilla.org/en-US/docs/Web/API/Permissions/revoke)
-    pub fn revoke(&self, permission_desc: &Object) -> Promise {
+    pub fn revoke(&self, permission_desc: &Object) -> Promise<PermissionStatus> {
         self.inner
             .call("revoke", &[permission_desc.into()])
-            .as_::<Promise>()
+            .as_::<Promise<PermissionStatus>>()
     }
 }

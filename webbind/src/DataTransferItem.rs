@@ -97,9 +97,9 @@ impl DataTransferItem {
 impl DataTransferItem {
     /// The getAsFileSystemHandle method.
     /// [`DataTransferItem.getAsFileSystemHandle`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItem/getAsFileSystemHandle)
-    pub fn get_as_file_system_handle(&self) -> Promise {
+    pub fn get_as_file_system_handle(&self) -> Promise<FileSystemHandle> {
         self.inner
             .call("getAsFileSystemHandle", &[])
-            .as_::<Promise>()
+            .as_::<Promise<FileSystemHandle>>()
     }
 }

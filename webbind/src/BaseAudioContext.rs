@@ -421,10 +421,10 @@ impl BaseAudioContext {
 impl BaseAudioContext {
     /// The decodeAudioData method.
     /// [`BaseAudioContext.decodeAudioData`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData)
-    pub fn decode_audio_data0(&self, audio_data: &ArrayBuffer) -> Promise {
+    pub fn decode_audio_data0(&self, audio_data: &ArrayBuffer) -> Promise<AudioBuffer> {
         self.inner
             .call("decodeAudioData", &[audio_data.into()])
-            .as_::<Promise>()
+            .as_::<Promise<AudioBuffer>>()
     }
     /// The decodeAudioData method.
     /// [`BaseAudioContext.decodeAudioData`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData)
@@ -432,13 +432,13 @@ impl BaseAudioContext {
         &self,
         audio_data: &ArrayBuffer,
         success_callback: &Function,
-    ) -> Promise {
+    ) -> Promise<AudioBuffer> {
         self.inner
             .call(
                 "decodeAudioData",
                 &[audio_data.into(), success_callback.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<AudioBuffer>>()
     }
     /// The decodeAudioData method.
     /// [`BaseAudioContext.decodeAudioData`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData)
@@ -447,7 +447,7 @@ impl BaseAudioContext {
         audio_data: &ArrayBuffer,
         success_callback: &Function,
         error_callback: &Function,
-    ) -> Promise {
+    ) -> Promise<AudioBuffer> {
         self.inner
             .call(
                 "decodeAudioData",
@@ -457,6 +457,6 @@ impl BaseAudioContext {
                     error_callback.into(),
                 ],
             )
-            .as_::<Promise>()
+            .as_::<Promise<AudioBuffer>>()
     }
 }

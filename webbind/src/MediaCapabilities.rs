@@ -318,18 +318,24 @@ jsbind::utils::impl_dyn_cast!(MediaCapabilities);
 impl MediaCapabilities {
     /// The decodingInfo method.
     /// [`MediaCapabilities.decodingInfo`](https://developer.mozilla.org/en-US/docs/Web/API/MediaCapabilities/decodingInfo)
-    pub fn decoding_info(&self, configuration: &MediaDecodingConfiguration) -> Promise {
+    pub fn decoding_info(
+        &self,
+        configuration: &MediaDecodingConfiguration,
+    ) -> Promise<MediaCapabilitiesDecodingInfo> {
         self.inner
             .call("decodingInfo", &[configuration.into()])
-            .as_::<Promise>()
+            .as_::<Promise<MediaCapabilitiesDecodingInfo>>()
     }
 }
 impl MediaCapabilities {
     /// The encodingInfo method.
     /// [`MediaCapabilities.encodingInfo`](https://developer.mozilla.org/en-US/docs/Web/API/MediaCapabilities/encodingInfo)
-    pub fn encoding_info(&self, configuration: &MediaEncodingConfiguration) -> Promise {
+    pub fn encoding_info(
+        &self,
+        configuration: &MediaEncodingConfiguration,
+    ) -> Promise<MediaCapabilitiesEncodingInfo> {
         self.inner
             .call("encodingInfo", &[configuration.into()])
-            .as_::<Promise>()
+            .as_::<Promise<MediaCapabilitiesEncodingInfo>>()
     }
 }

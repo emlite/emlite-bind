@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(FontData);
 impl FontData {
     /// The blob method.
     /// [`FontData.blob`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/blob)
-    pub fn blob(&self) -> Promise {
-        self.inner.call("blob", &[]).as_::<Promise>()
+    pub fn blob(&self) -> Promise<Blob> {
+        self.inner.call("blob", &[]).as_::<Promise<Blob>>()
     }
 }
 impl FontData {

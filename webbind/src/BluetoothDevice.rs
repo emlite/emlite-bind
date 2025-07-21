@@ -138,22 +138,27 @@ impl BluetoothDevice {
 impl BluetoothDevice {
     /// The forget method.
     /// [`BluetoothDevice.forget`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/forget)
-    pub fn forget(&self) -> Promise {
-        self.inner.call("forget", &[]).as_::<Promise>()
+    pub fn forget(&self) -> Promise<Undefined> {
+        self.inner.call("forget", &[]).as_::<Promise<Undefined>>()
     }
 }
 impl BluetoothDevice {
     /// The watchAdvertisements method.
     /// [`BluetoothDevice.watchAdvertisements`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/watchAdvertisements)
-    pub fn watch_advertisements0(&self) -> Promise {
-        self.inner.call("watchAdvertisements", &[]).as_::<Promise>()
+    pub fn watch_advertisements0(&self) -> Promise<Undefined> {
+        self.inner
+            .call("watchAdvertisements", &[])
+            .as_::<Promise<Undefined>>()
     }
     /// The watchAdvertisements method.
     /// [`BluetoothDevice.watchAdvertisements`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/watchAdvertisements)
-    pub fn watch_advertisements1(&self, options: &WatchAdvertisementsOptions) -> Promise {
+    pub fn watch_advertisements1(
+        &self,
+        options: &WatchAdvertisementsOptions,
+    ) -> Promise<Undefined> {
         self.inner
             .call("watchAdvertisements", &[options.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl BluetoothDevice {

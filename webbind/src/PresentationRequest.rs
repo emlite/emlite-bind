@@ -68,24 +68,28 @@ impl PresentationRequest {
 impl PresentationRequest {
     /// The start method.
     /// [`PresentationRequest.start`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest/start)
-    pub fn start(&self) -> Promise {
-        self.inner.call("start", &[]).as_::<Promise>()
+    pub fn start(&self) -> Promise<PresentationConnection> {
+        self.inner
+            .call("start", &[])
+            .as_::<Promise<PresentationConnection>>()
     }
 }
 impl PresentationRequest {
     /// The reconnect method.
     /// [`PresentationRequest.reconnect`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest/reconnect)
-    pub fn reconnect(&self, presentation_id: &str) -> Promise {
+    pub fn reconnect(&self, presentation_id: &str) -> Promise<PresentationConnection> {
         self.inner
             .call("reconnect", &[presentation_id.into()])
-            .as_::<Promise>()
+            .as_::<Promise<PresentationConnection>>()
     }
 }
 impl PresentationRequest {
     /// The getAvailability method.
     /// [`PresentationRequest.getAvailability`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest/getAvailability)
-    pub fn get_availability(&self) -> Promise {
-        self.inner.call("getAvailability", &[]).as_::<Promise>()
+    pub fn get_availability(&self) -> Promise<PresentationAvailability> {
+        self.inner
+            .call("getAvailability", &[])
+            .as_::<Promise<PresentationAvailability>>()
     }
 }
 impl PresentationRequest {

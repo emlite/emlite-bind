@@ -321,10 +321,10 @@ impl MLContext {
 impl MLContext {
     /// The createTensor method.
     /// [`MLContext.createTensor`](https://developer.mozilla.org/en-US/docs/Web/API/MLContext/createTensor)
-    pub fn create_tensor(&self, descriptor: &MLTensorDescriptor) -> Promise {
+    pub fn create_tensor(&self, descriptor: &MLTensorDescriptor) -> Promise<MLTensor> {
         self.inner
             .call("createTensor", &[descriptor.into()])
-            .as_::<Promise>()
+            .as_::<Promise<MLTensor>>()
     }
 }
 impl MLContext {
@@ -334,22 +334,22 @@ impl MLContext {
         &self,
         descriptor: &MLOperandDescriptor,
         input_data: &Any,
-    ) -> Promise {
+    ) -> Promise<MLTensor> {
         self.inner
             .call(
                 "createConstantTensor",
                 &[descriptor.into(), input_data.into()],
             )
-            .as_::<Promise>()
+            .as_::<Promise<MLTensor>>()
     }
 }
 impl MLContext {
     /// The readTensor method.
     /// [`MLContext.readTensor`](https://developer.mozilla.org/en-US/docs/Web/API/MLContext/readTensor)
-    pub fn read_tensor(&self, tensor: &MLTensor, output_data: &Any) -> Promise {
+    pub fn read_tensor(&self, tensor: &MLTensor, output_data: &Any) -> Promise<Undefined> {
         self.inner
             .call("readTensor", &[tensor.into(), output_data.into()])
-            .as_::<Promise>()
+            .as_::<Promise<Undefined>>()
     }
 }
 impl MLContext {
@@ -380,7 +380,7 @@ impl MLContext {
 impl MLContext {
     /// Getter of the `lost` attribute.
     /// [`MLContext.lost`](https://developer.mozilla.org/en-US/docs/Web/API/MLContext/lost)
-    pub fn lost(&self) -> Promise {
-        self.inner.get("lost").as_::<Promise>()
+    pub fn lost(&self) -> Promise<MLContextLostInfo> {
+        self.inner.get("lost").as_::<Promise<MLContextLostInfo>>()
     }
 }

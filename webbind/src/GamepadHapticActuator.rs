@@ -171,10 +171,10 @@ impl GamepadHapticActuator {
 impl GamepadHapticActuator {
     /// The playEffect method.
     /// [`GamepadHapticActuator.playEffect`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator/playEffect)
-    pub fn play_effect0(&self, type_: &GamepadHapticEffectType) -> Promise {
+    pub fn play_effect0(&self, type_: &GamepadHapticEffectType) -> Promise<GamepadHapticsResult> {
         self.inner
             .call("playEffect", &[type_.into()])
-            .as_::<Promise>()
+            .as_::<Promise<GamepadHapticsResult>>()
     }
     /// The playEffect method.
     /// [`GamepadHapticActuator.playEffect`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator/playEffect)
@@ -182,25 +182,27 @@ impl GamepadHapticActuator {
         &self,
         type_: &GamepadHapticEffectType,
         params: &GamepadEffectParameters,
-    ) -> Promise {
+    ) -> Promise<GamepadHapticsResult> {
         self.inner
             .call("playEffect", &[type_.into(), params.into()])
-            .as_::<Promise>()
+            .as_::<Promise<GamepadHapticsResult>>()
     }
 }
 impl GamepadHapticActuator {
     /// The reset method.
     /// [`GamepadHapticActuator.reset`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator/reset)
-    pub fn reset(&self) -> Promise {
-        self.inner.call("reset", &[]).as_::<Promise>()
+    pub fn reset(&self) -> Promise<GamepadHapticsResult> {
+        self.inner
+            .call("reset", &[])
+            .as_::<Promise<GamepadHapticsResult>>()
     }
 }
 impl GamepadHapticActuator {
     /// The pulse method.
     /// [`GamepadHapticActuator.pulse`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator/pulse)
-    pub fn pulse(&self, value: f64, duration: f64) -> Promise {
+    pub fn pulse(&self, value: f64, duration: f64) -> Promise<bool> {
         self.inner
             .call("pulse", &[value.into(), duration.into()])
-            .as_::<Promise>()
+            .as_::<Promise<bool>>()
     }
 }
