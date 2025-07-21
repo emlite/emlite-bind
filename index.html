@@ -11,7 +11,7 @@
 
         window.onload = async () => {
             const emlite = new Emlite();
-            const bytes = await emlite.readFile(new URL("./target/wasm32-unknown-unknown/debug/examples/button.wasm", import.meta.url));
+            const bytes = await emlite.readFile(new URL("./target/wasm32-unknown-unknown/release/examples/audio.wasm", import.meta.url));
             let wasm = await WebAssembly.compile(bytes);
             let inst = await WebAssembly.instantiate(wasm, {
                 "env": {...emlite.env },
