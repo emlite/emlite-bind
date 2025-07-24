@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(TouchEvent);
 
 impl TouchEvent {
     /// The `new TouchEvent(..)` constructor, creating a new TouchEvent instance
-    pub fn new0(type_: &str) -> TouchEvent {
+    pub fn new0(type_: &DOMString) -> TouchEvent {
         Self {
             inner: Any::global("TouchEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl TouchEvent {
     }
 
     /// The `new TouchEvent(..)` constructor, creating a new TouchEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> TouchEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> TouchEvent {
         Self {
             inner: Any::global("TouchEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -126,7 +126,7 @@ impl TouchEvent {
 impl TouchEvent {
     /// The getModifierState method.
     /// [`TouchEvent.getModifierState`](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/getModifierState)
-    pub fn get_modifier_state(&self, key_arg: &str) -> bool {
+    pub fn get_modifier_state(&self, key_arg: &DOMString) -> bool {
         self.inner
             .call("getModifierState", &[key_arg.into()])
             .as_::<bool>()

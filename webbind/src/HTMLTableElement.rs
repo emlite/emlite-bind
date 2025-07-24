@@ -203,117 +203,117 @@ impl HTMLTableElement {
 impl HTMLTableElement {
     /// Getter of the `align` attribute.
     /// [`HTMLTableElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/align)
-    pub fn align(&self) -> String {
-        self.inner.get("align").as_::<String>()
+    pub fn align(&self) -> DOMString {
+        self.inner.get("align").as_::<DOMString>()
     }
 
     /// Setter of the `align` attribute.
     /// [`HTMLTableElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/align)
-    pub fn set_align(&mut self, value: &str) {
+    pub fn set_align(&mut self, value: &DOMString) {
         self.inner.set("align", value);
     }
 }
 impl HTMLTableElement {
     /// Getter of the `border` attribute.
     /// [`HTMLTableElement.border`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/border)
-    pub fn border(&self) -> String {
-        self.inner.get("border").as_::<String>()
+    pub fn border(&self) -> DOMString {
+        self.inner.get("border").as_::<DOMString>()
     }
 
     /// Setter of the `border` attribute.
     /// [`HTMLTableElement.border`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/border)
-    pub fn set_border(&mut self, value: &str) {
+    pub fn set_border(&mut self, value: &DOMString) {
         self.inner.set("border", value);
     }
 }
 impl HTMLTableElement {
     /// Getter of the `frame` attribute.
     /// [`HTMLTableElement.frame`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/frame)
-    pub fn frame(&self) -> String {
-        self.inner.get("frame").as_::<String>()
+    pub fn frame(&self) -> DOMString {
+        self.inner.get("frame").as_::<DOMString>()
     }
 
     /// Setter of the `frame` attribute.
     /// [`HTMLTableElement.frame`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/frame)
-    pub fn set_frame(&mut self, value: &str) {
+    pub fn set_frame(&mut self, value: &DOMString) {
         self.inner.set("frame", value);
     }
 }
 impl HTMLTableElement {
     /// Getter of the `rules` attribute.
     /// [`HTMLTableElement.rules`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/rules)
-    pub fn rules(&self) -> String {
-        self.inner.get("rules").as_::<String>()
+    pub fn rules(&self) -> DOMString {
+        self.inner.get("rules").as_::<DOMString>()
     }
 
     /// Setter of the `rules` attribute.
     /// [`HTMLTableElement.rules`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/rules)
-    pub fn set_rules(&mut self, value: &str) {
+    pub fn set_rules(&mut self, value: &DOMString) {
         self.inner.set("rules", value);
     }
 }
 impl HTMLTableElement {
     /// Getter of the `summary` attribute.
     /// [`HTMLTableElement.summary`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/summary)
-    pub fn summary(&self) -> String {
-        self.inner.get("summary").as_::<String>()
+    pub fn summary(&self) -> DOMString {
+        self.inner.get("summary").as_::<DOMString>()
     }
 
     /// Setter of the `summary` attribute.
     /// [`HTMLTableElement.summary`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/summary)
-    pub fn set_summary(&mut self, value: &str) {
+    pub fn set_summary(&mut self, value: &DOMString) {
         self.inner.set("summary", value);
     }
 }
 impl HTMLTableElement {
     /// Getter of the `width` attribute.
     /// [`HTMLTableElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/width)
-    pub fn width(&self) -> String {
-        self.inner.get("width").as_::<String>()
+    pub fn width(&self) -> DOMString {
+        self.inner.get("width").as_::<DOMString>()
     }
 
     /// Setter of the `width` attribute.
     /// [`HTMLTableElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/width)
-    pub fn set_width(&mut self, value: &str) {
+    pub fn set_width(&mut self, value: &DOMString) {
         self.inner.set("width", value);
     }
 }
 impl HTMLTableElement {
     /// Getter of the `bgColor` attribute.
     /// [`HTMLTableElement.bgColor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/bgColor)
-    pub fn bg_color(&self) -> String {
-        self.inner.get("bgColor").as_::<String>()
+    pub fn bg_color(&self) -> DOMString {
+        self.inner.get("bgColor").as_::<DOMString>()
     }
 
     /// Setter of the `bgColor` attribute.
     /// [`HTMLTableElement.bgColor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/bgColor)
-    pub fn set_bg_color(&mut self, value: &str) {
+    pub fn set_bg_color(&mut self, value: &DOMString) {
         self.inner.set("bgColor", value);
     }
 }
 impl HTMLTableElement {
     /// Getter of the `cellPadding` attribute.
     /// [`HTMLTableElement.cellPadding`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/cellPadding)
-    pub fn cell_padding(&self) -> String {
-        self.inner.get("cellPadding").as_::<String>()
+    pub fn cell_padding(&self) -> DOMString {
+        self.inner.get("cellPadding").as_::<DOMString>()
     }
 
     /// Setter of the `cellPadding` attribute.
     /// [`HTMLTableElement.cellPadding`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/cellPadding)
-    pub fn set_cell_padding(&mut self, value: &str) {
+    pub fn set_cell_padding(&mut self, value: &DOMString) {
         self.inner.set("cellPadding", value);
     }
 }
 impl HTMLTableElement {
     /// Getter of the `cellSpacing` attribute.
     /// [`HTMLTableElement.cellSpacing`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/cellSpacing)
-    pub fn cell_spacing(&self) -> String {
-        self.inner.get("cellSpacing").as_::<String>()
+    pub fn cell_spacing(&self) -> DOMString {
+        self.inner.get("cellSpacing").as_::<DOMString>()
     }
 
     /// Setter of the `cellSpacing` attribute.
     /// [`HTMLTableElement.cellSpacing`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableElement/cellSpacing)
-    pub fn set_cell_spacing(&mut self, value: &str) {
+    pub fn set_cell_spacing(&mut self, value: &DOMString) {
         self.inner.set("cellSpacing", value);
     }
 }

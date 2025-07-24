@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CapturedMouseEvent);
 
 impl CapturedMouseEvent {
     /// The `new CapturedMouseEvent(..)` constructor, creating a new CapturedMouseEvent instance
-    pub fn new0(type_: &str) -> CapturedMouseEvent {
+    pub fn new0(type_: &DOMString) -> CapturedMouseEvent {
         Self {
             inner: Any::global("CapturedMouseEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl CapturedMouseEvent {
     }
 
     /// The `new CapturedMouseEvent(..)` constructor, creating a new CapturedMouseEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> CapturedMouseEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> CapturedMouseEvent {
         Self {
             inner: Any::global("CapturedMouseEvent")
                 .new(&[type_.into(), event_init_dict.into()])

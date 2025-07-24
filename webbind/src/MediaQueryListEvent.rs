@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(MediaQueryListEvent);
 
 impl MediaQueryListEvent {
     /// The `new MediaQueryListEvent(..)` constructor, creating a new MediaQueryListEvent instance
-    pub fn new0(type_: &str) -> MediaQueryListEvent {
+    pub fn new0(type_: &CSSOMString) -> MediaQueryListEvent {
         Self {
             inner: Any::global("MediaQueryListEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl MediaQueryListEvent {
     }
 
     /// The `new MediaQueryListEvent(..)` constructor, creating a new MediaQueryListEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> MediaQueryListEvent {
+    pub fn new1(type_: &CSSOMString, event_init_dict: &Any) -> MediaQueryListEvent {
         Self {
             inner: Any::global("MediaQueryListEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -77,8 +77,8 @@ impl MediaQueryListEvent {
 impl MediaQueryListEvent {
     /// Getter of the `media` attribute.
     /// [`MediaQueryListEvent.media`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryListEvent/media)
-    pub fn media(&self) -> String {
-        self.inner.get("media").as_::<String>()
+    pub fn media(&self) -> CSSOMString {
+        self.inner.get("media").as_::<CSSOMString>()
     }
 }
 impl MediaQueryListEvent {

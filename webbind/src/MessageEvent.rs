@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(MessageEvent);
 
 impl MessageEvent {
     /// The `new MessageEvent(..)` constructor, creating a new MessageEvent instance
-    pub fn new0(type_: &str) -> MessageEvent {
+    pub fn new0(type_: &DOMString) -> MessageEvent {
         Self {
             inner: Any::global("MessageEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl MessageEvent {
     }
 
     /// The `new MessageEvent(..)` constructor, creating a new MessageEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> MessageEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> MessageEvent {
         Self {
             inner: Any::global("MessageEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -84,15 +84,15 @@ impl MessageEvent {
 impl MessageEvent {
     /// Getter of the `origin` attribute.
     /// [`MessageEvent.origin`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/origin)
-    pub fn origin(&self) -> String {
-        self.inner.get("origin").as_::<String>()
+    pub fn origin(&self) -> USVString {
+        self.inner.get("origin").as_::<USVString>()
     }
 }
 impl MessageEvent {
     /// Getter of the `lastEventId` attribute.
     /// [`MessageEvent.lastEventId`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/lastEventId)
-    pub fn last_event_id(&self) -> String {
-        self.inner.get("lastEventId").as_::<String>()
+    pub fn last_event_id(&self) -> DOMString {
+        self.inner.get("lastEventId").as_::<DOMString>()
     }
 }
 impl MessageEvent {
@@ -112,21 +112,26 @@ impl MessageEvent {
 impl MessageEvent {
     /// The initMessageEvent method.
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
-    pub fn init_message_event0(&self, type_: &str) -> Undefined {
+    pub fn init_message_event0(&self, type_: &DOMString) -> Undefined {
         self.inner
             .call("initMessageEvent", &[type_.into()])
             .as_::<Undefined>()
     }
     /// The initMessageEvent method.
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
-    pub fn init_message_event1(&self, type_: &str, bubbles: bool) -> Undefined {
+    pub fn init_message_event1(&self, type_: &DOMString, bubbles: bool) -> Undefined {
         self.inner
             .call("initMessageEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
     }
     /// The initMessageEvent method.
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
-    pub fn init_message_event2(&self, type_: &str, bubbles: bool, cancelable: bool) -> Undefined {
+    pub fn init_message_event2(
+        &self,
+        type_: &DOMString,
+        bubbles: bool,
+        cancelable: bool,
+    ) -> Undefined {
         self.inner
             .call(
                 "initMessageEvent",
@@ -138,7 +143,7 @@ impl MessageEvent {
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
     pub fn init_message_event3(
         &self,
-        type_: &str,
+        type_: &DOMString,
         bubbles: bool,
         cancelable: bool,
         data: &Any,
@@ -154,11 +159,11 @@ impl MessageEvent {
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
     pub fn init_message_event4(
         &self,
-        type_: &str,
+        type_: &DOMString,
         bubbles: bool,
         cancelable: bool,
         data: &Any,
-        origin: &str,
+        origin: &USVString,
     ) -> Undefined {
         self.inner
             .call(
@@ -177,12 +182,12 @@ impl MessageEvent {
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
     pub fn init_message_event5(
         &self,
-        type_: &str,
+        type_: &DOMString,
         bubbles: bool,
         cancelable: bool,
         data: &Any,
-        origin: &str,
-        last_event_id: &str,
+        origin: &USVString,
+        last_event_id: &DOMString,
     ) -> Undefined {
         self.inner
             .call(
@@ -202,12 +207,12 @@ impl MessageEvent {
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
     pub fn init_message_event6(
         &self,
-        type_: &str,
+        type_: &DOMString,
         bubbles: bool,
         cancelable: bool,
         data: &Any,
-        origin: &str,
-        last_event_id: &str,
+        origin: &USVString,
+        last_event_id: &DOMString,
         source: &Any,
     ) -> Undefined {
         self.inner
@@ -229,12 +234,12 @@ impl MessageEvent {
     /// [`MessageEvent.initMessageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/initMessageEvent)
     pub fn init_message_event7(
         &self,
-        type_: &str,
+        type_: &DOMString,
         bubbles: bool,
         cancelable: bool,
         data: &Any,
-        origin: &str,
-        last_event_id: &str,
+        origin: &USVString,
+        last_event_id: &DOMString,
         source: &Any,
         ports: &Sequence<Any>,
     ) -> Undefined {

@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(ProtectedAudience);
 impl ProtectedAudience {
     /// The queryFeatureSupport method.
     /// [`ProtectedAudience.queryFeatureSupport`](https://developer.mozilla.org/en-US/docs/Web/API/ProtectedAudience/queryFeatureSupport)
-    pub fn query_feature_support(&self, feature: &str) -> Any {
+    pub fn query_feature_support(&self, feature: &DOMString) -> Any {
         self.inner
             .call("queryFeatureSupport", &[feature.into()])
             .as_::<Any>()

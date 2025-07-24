@@ -65,14 +65,14 @@ impl DOMStringList {
 impl DOMStringList {
     /// The item method.
     /// [`DOMStringList.item`](https://developer.mozilla.org/en-US/docs/Web/API/DOMStringList/item)
-    pub fn item(&self, index: u32) -> String {
-        self.inner.call("item", &[index.into()]).as_::<String>()
+    pub fn item(&self, index: u32) -> DOMString {
+        self.inner.call("item", &[index.into()]).as_::<DOMString>()
     }
 }
 impl DOMStringList {
     /// The contains method.
     /// [`DOMStringList.contains`](https://developer.mozilla.org/en-US/docs/Web/API/DOMStringList/contains)
-    pub fn contains(&self, string: &str) -> bool {
+    pub fn contains(&self, string: &DOMString) -> bool {
         self.inner.call("contains", &[string.into()]).as_::<bool>()
     }
 }

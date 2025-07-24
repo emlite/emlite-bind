@@ -58,20 +58,20 @@ jsbind::utils::impl_dyn_cast!(SVGAnimatedString);
 impl SVGAnimatedString {
     /// Getter of the `baseVal` attribute.
     /// [`SVGAnimatedString.baseVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedString/baseVal)
-    pub fn base_val(&self) -> String {
-        self.inner.get("baseVal").as_::<String>()
+    pub fn base_val(&self) -> DOMString {
+        self.inner.get("baseVal").as_::<DOMString>()
     }
 
     /// Setter of the `baseVal` attribute.
     /// [`SVGAnimatedString.baseVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedString/baseVal)
-    pub fn set_base_val(&mut self, value: &str) {
+    pub fn set_base_val(&mut self, value: &DOMString) {
         self.inner.set("baseVal", value);
     }
 }
 impl SVGAnimatedString {
     /// Getter of the `animVal` attribute.
     /// [`SVGAnimatedString.animVal`](https://developer.mozilla.org/en-US/docs/Web/API/SVGAnimatedString/animVal)
-    pub fn anim_val(&self) -> String {
-        self.inner.get("animVal").as_::<String>()
+    pub fn anim_val(&self) -> DOMString {
+        self.inner.get("animVal").as_::<DOMString>()
     }
 }

@@ -117,14 +117,18 @@ jsbind::utils::impl_dyn_cast!(Worklet);
 impl Worklet {
     /// The addModule method.
     /// [`Worklet.addModule`](https://developer.mozilla.org/en-US/docs/Web/API/Worklet/addModule)
-    pub fn add_module0(&self, module_url: &str) -> Promise<Undefined> {
+    pub fn add_module0(&self, module_url: &USVString) -> Promise<Undefined> {
         self.inner
             .call("addModule", &[module_url.into()])
             .as_::<Promise<Undefined>>()
     }
     /// The addModule method.
     /// [`Worklet.addModule`](https://developer.mozilla.org/en-US/docs/Web/API/Worklet/addModule)
-    pub fn add_module1(&self, module_url: &str, options: &WorkletOptions) -> Promise<Undefined> {
+    pub fn add_module1(
+        &self,
+        module_url: &USVString,
+        options: &WorkletOptions,
+    ) -> Promise<Undefined> {
         self.inner
             .call("addModule", &[module_url.into(), options.into()])
             .as_::<Promise<Undefined>>()

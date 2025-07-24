@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(MIDIConnectionEvent);
 
 impl MIDIConnectionEvent {
     /// The `new MIDIConnectionEvent(..)` constructor, creating a new MIDIConnectionEvent instance
-    pub fn new0(type_: &str) -> MIDIConnectionEvent {
+    pub fn new0(type_: &DOMString) -> MIDIConnectionEvent {
         Self {
             inner: Any::global("MIDIConnectionEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl MIDIConnectionEvent {
     }
 
     /// The `new MIDIConnectionEvent(..)` constructor, creating a new MIDIConnectionEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> MIDIConnectionEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> MIDIConnectionEvent {
         Self {
             inner: Any::global("MIDIConnectionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

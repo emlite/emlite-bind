@@ -65,8 +65,8 @@ impl PermissionStatus {
 impl PermissionStatus {
     /// Getter of the `name` attribute.
     /// [`PermissionStatus.name`](https://developer.mozilla.org/en-US/docs/Web/API/PermissionStatus/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl PermissionStatus {

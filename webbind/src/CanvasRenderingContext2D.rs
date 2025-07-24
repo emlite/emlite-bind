@@ -345,13 +345,15 @@ impl CanvasRenderingContext2D {
 impl CanvasRenderingContext2D {
     /// Getter of the `globalCompositeOperation` attribute.
     /// [`CanvasRenderingContext2D.globalCompositeOperation`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation)
-    pub fn global_composite_operation(&self) -> String {
-        self.inner.get("globalCompositeOperation").as_::<String>()
+    pub fn global_composite_operation(&self) -> DOMString {
+        self.inner
+            .get("globalCompositeOperation")
+            .as_::<DOMString>()
     }
 
     /// Setter of the `globalCompositeOperation` attribute.
     /// [`CanvasRenderingContext2D.globalCompositeOperation`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation)
-    pub fn set_global_composite_operation(&mut self, value: &str) {
+    pub fn set_global_composite_operation(&mut self, value: &DOMString) {
         self.inner.set("globalCompositeOperation", value);
     }
 }
@@ -463,7 +465,7 @@ impl CanvasRenderingContext2D {
 impl CanvasRenderingContext2D {
     /// The createPattern method.
     /// [`CanvasRenderingContext2D.createPattern`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createPattern)
-    pub fn create_pattern(&self, image: &Any, repetition: &str) -> CanvasPattern {
+    pub fn create_pattern(&self, image: &Any, repetition: &DOMString) -> CanvasPattern {
         self.inner
             .call("createPattern", &[image.into(), repetition.into()])
             .as_::<CanvasPattern>()
@@ -511,26 +513,26 @@ impl CanvasRenderingContext2D {
 impl CanvasRenderingContext2D {
     /// Getter of the `shadowColor` attribute.
     /// [`CanvasRenderingContext2D.shadowColor`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/shadowColor)
-    pub fn shadow_color(&self) -> String {
-        self.inner.get("shadowColor").as_::<String>()
+    pub fn shadow_color(&self) -> DOMString {
+        self.inner.get("shadowColor").as_::<DOMString>()
     }
 
     /// Setter of the `shadowColor` attribute.
     /// [`CanvasRenderingContext2D.shadowColor`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/shadowColor)
-    pub fn set_shadow_color(&mut self, value: &str) {
+    pub fn set_shadow_color(&mut self, value: &DOMString) {
         self.inner.set("shadowColor", value);
     }
 }
 impl CanvasRenderingContext2D {
     /// Getter of the `filter` attribute.
     /// [`CanvasRenderingContext2D.filter`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/filter)
-    pub fn filter(&self) -> String {
-        self.inner.get("filter").as_::<String>()
+    pub fn filter(&self) -> DOMString {
+        self.inner.get("filter").as_::<DOMString>()
     }
 
     /// Setter of the `filter` attribute.
     /// [`CanvasRenderingContext2D.filter`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/filter)
-    pub fn set_filter(&mut self, value: &str) {
+    pub fn set_filter(&mut self, value: &DOMString) {
         self.inner.set("filter", value);
     }
 }
@@ -649,14 +651,14 @@ impl CanvasRenderingContext2D {
 impl CanvasRenderingContext2D {
     /// The fillText method.
     /// [`CanvasRenderingContext2D.fillText`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText)
-    pub fn fill_text0(&self, text: &str, x: f64, y: f64) -> Undefined {
+    pub fn fill_text0(&self, text: &DOMString, x: f64, y: f64) -> Undefined {
         self.inner
             .call("fillText", &[text.into(), x.into(), y.into()])
             .as_::<Undefined>()
     }
     /// The fillText method.
     /// [`CanvasRenderingContext2D.fillText`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/fillText)
-    pub fn fill_text1(&self, text: &str, x: f64, y: f64, max_width: f64) -> Undefined {
+    pub fn fill_text1(&self, text: &DOMString, x: f64, y: f64, max_width: f64) -> Undefined {
         self.inner
             .call(
                 "fillText",
@@ -668,14 +670,14 @@ impl CanvasRenderingContext2D {
 impl CanvasRenderingContext2D {
     /// The strokeText method.
     /// [`CanvasRenderingContext2D.strokeText`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText)
-    pub fn stroke_text0(&self, text: &str, x: f64, y: f64) -> Undefined {
+    pub fn stroke_text0(&self, text: &DOMString, x: f64, y: f64) -> Undefined {
         self.inner
             .call("strokeText", &[text.into(), x.into(), y.into()])
             .as_::<Undefined>()
     }
     /// The strokeText method.
     /// [`CanvasRenderingContext2D.strokeText`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/strokeText)
-    pub fn stroke_text1(&self, text: &str, x: f64, y: f64, max_width: f64) -> Undefined {
+    pub fn stroke_text1(&self, text: &DOMString, x: f64, y: f64, max_width: f64) -> Undefined {
         self.inner
             .call(
                 "strokeText",
@@ -687,7 +689,7 @@ impl CanvasRenderingContext2D {
 impl CanvasRenderingContext2D {
     /// The measureText method.
     /// [`CanvasRenderingContext2D.measureText`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/measureText)
-    pub fn measure_text(&self, text: &str) -> TextMetrics {
+    pub fn measure_text(&self, text: &DOMString) -> TextMetrics {
         self.inner
             .call("measureText", &[text.into()])
             .as_::<TextMetrics>()
@@ -877,26 +879,26 @@ impl CanvasRenderingContext2D {
 impl CanvasRenderingContext2D {
     /// Getter of the `lang` attribute.
     /// [`CanvasRenderingContext2D.lang`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lang)
-    pub fn lang(&self) -> String {
-        self.inner.get("lang").as_::<String>()
+    pub fn lang(&self) -> DOMString {
+        self.inner.get("lang").as_::<DOMString>()
     }
 
     /// Setter of the `lang` attribute.
     /// [`CanvasRenderingContext2D.lang`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lang)
-    pub fn set_lang(&mut self, value: &str) {
+    pub fn set_lang(&mut self, value: &DOMString) {
         self.inner.set("lang", value);
     }
 }
 impl CanvasRenderingContext2D {
     /// Getter of the `font` attribute.
     /// [`CanvasRenderingContext2D.font`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/font)
-    pub fn font(&self) -> String {
-        self.inner.get("font").as_::<String>()
+    pub fn font(&self) -> DOMString {
+        self.inner.get("font").as_::<DOMString>()
     }
 
     /// Setter of the `font` attribute.
     /// [`CanvasRenderingContext2D.font`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/font)
-    pub fn set_font(&mut self, value: &str) {
+    pub fn set_font(&mut self, value: &DOMString) {
         self.inner.set("font", value);
     }
 }
@@ -942,13 +944,13 @@ impl CanvasRenderingContext2D {
 impl CanvasRenderingContext2D {
     /// Getter of the `letterSpacing` attribute.
     /// [`CanvasRenderingContext2D.letterSpacing`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/letterSpacing)
-    pub fn letter_spacing(&self) -> String {
-        self.inner.get("letterSpacing").as_::<String>()
+    pub fn letter_spacing(&self) -> DOMString {
+        self.inner.get("letterSpacing").as_::<DOMString>()
     }
 
     /// Setter of the `letterSpacing` attribute.
     /// [`CanvasRenderingContext2D.letterSpacing`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/letterSpacing)
-    pub fn set_letter_spacing(&mut self, value: &str) {
+    pub fn set_letter_spacing(&mut self, value: &DOMString) {
         self.inner.set("letterSpacing", value);
     }
 }
@@ -1009,13 +1011,13 @@ impl CanvasRenderingContext2D {
 impl CanvasRenderingContext2D {
     /// Getter of the `wordSpacing` attribute.
     /// [`CanvasRenderingContext2D.wordSpacing`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/wordSpacing)
-    pub fn word_spacing(&self) -> String {
-        self.inner.get("wordSpacing").as_::<String>()
+    pub fn word_spacing(&self) -> DOMString {
+        self.inner.get("wordSpacing").as_::<DOMString>()
     }
 
     /// Setter of the `wordSpacing` attribute.
     /// [`CanvasRenderingContext2D.wordSpacing`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/wordSpacing)
-    pub fn set_word_spacing(&mut self, value: &str) {
+    pub fn set_word_spacing(&mut self, value: &DOMString) {
         self.inner.set("wordSpacing", value);
     }
 }

@@ -81,26 +81,26 @@ impl HTMLFencedFrameElement {
 impl HTMLFencedFrameElement {
     /// Getter of the `width` attribute.
     /// [`HTMLFencedFrameElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/width)
-    pub fn width(&self) -> String {
-        self.inner.get("width").as_::<String>()
+    pub fn width(&self) -> DOMString {
+        self.inner.get("width").as_::<DOMString>()
     }
 
     /// Setter of the `width` attribute.
     /// [`HTMLFencedFrameElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/width)
-    pub fn set_width(&mut self, value: &str) {
+    pub fn set_width(&mut self, value: &DOMString) {
         self.inner.set("width", value);
     }
 }
 impl HTMLFencedFrameElement {
     /// Getter of the `height` attribute.
     /// [`HTMLFencedFrameElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/height)
-    pub fn height(&self) -> String {
-        self.inner.get("height").as_::<String>()
+    pub fn height(&self) -> DOMString {
+        self.inner.get("height").as_::<DOMString>()
     }
 
     /// Setter of the `height` attribute.
     /// [`HTMLFencedFrameElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/height)
-    pub fn set_height(&mut self, value: &str) {
+    pub fn set_height(&mut self, value: &DOMString) {
         self.inner.set("height", value);
     }
 }
@@ -114,13 +114,13 @@ impl HTMLFencedFrameElement {
 impl HTMLFencedFrameElement {
     /// Getter of the `allow` attribute.
     /// [`HTMLFencedFrameElement.allow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/allow)
-    pub fn allow(&self) -> String {
-        self.inner.get("allow").as_::<String>()
+    pub fn allow(&self) -> DOMString {
+        self.inner.get("allow").as_::<DOMString>()
     }
 
     /// Setter of the `allow` attribute.
     /// [`HTMLFencedFrameElement.allow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/allow)
-    pub fn set_allow(&mut self, value: &str) {
+    pub fn set_allow(&mut self, value: &DOMString) {
         self.inner.set("allow", value);
     }
 }

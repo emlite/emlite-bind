@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(PageRevealEvent);
 
 impl PageRevealEvent {
     /// The `new PageRevealEvent(..)` constructor, creating a new PageRevealEvent instance
-    pub fn new0(type_: &str) -> PageRevealEvent {
+    pub fn new0(type_: &DOMString) -> PageRevealEvent {
         Self {
             inner: Any::global("PageRevealEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl PageRevealEvent {
     }
 
     /// The `new PageRevealEvent(..)` constructor, creating a new PageRevealEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> PageRevealEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> PageRevealEvent {
         Self {
             inner: Any::global("PageRevealEvent")
                 .new(&[type_.into(), event_init_dict.into()])

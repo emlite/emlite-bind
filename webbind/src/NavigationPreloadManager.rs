@@ -60,11 +60,11 @@ impl NavigationPreloadState {
     }
 }
 impl NavigationPreloadState {
-    pub fn header_value(&self) -> String {
-        self.inner.get("headerValue").as_::<String>()
+    pub fn header_value(&self) -> ByteString {
+        self.inner.get("headerValue").as_::<ByteString>()
     }
 
-    pub fn set_header_value(&mut self, value: &str) {
+    pub fn set_header_value(&mut self, value: &ByteString) {
         self.inner.set("headerValue", value);
     }
 }
@@ -140,7 +140,7 @@ impl NavigationPreloadManager {
 impl NavigationPreloadManager {
     /// The setHeaderValue method.
     /// [`NavigationPreloadManager.setHeaderValue`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationPreloadManager/setHeaderValue)
-    pub fn set_header_value(&self, value: &str) -> Promise<Undefined> {
+    pub fn set_header_value(&self, value: &ByteString) -> Promise<Undefined> {
         self.inner
             .call("setHeaderValue", &[value.into()])
             .as_::<Promise<Undefined>>()

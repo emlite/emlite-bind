@@ -66,13 +66,13 @@ impl HTMLDataElement {
 impl HTMLDataElement {
     /// Getter of the `value` attribute.
     /// [`HTMLDataElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDataElement/value)
-    pub fn value(&self) -> String {
-        self.inner.get("value").as_::<String>()
+    pub fn value(&self) -> DOMString {
+        self.inner.get("value").as_::<DOMString>()
     }
 
     /// Setter of the `value` attribute.
     /// [`HTMLDataElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDataElement/value)
-    pub fn set_value(&mut self, value: &str) {
+    pub fn set_value(&mut self, value: &DOMString) {
         self.inner.set("value", value);
     }
 }

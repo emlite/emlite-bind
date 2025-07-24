@@ -137,13 +137,13 @@ impl GPUBuffer {
 impl GPUBuffer {
     /// Getter of the `label` attribute.
     /// [`GPUBuffer.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/label)
-    pub fn label(&self) -> String {
-        self.inner.get("label").as_::<String>()
+    pub fn label(&self) -> USVString {
+        self.inner.get("label").as_::<USVString>()
     }
 
     /// Setter of the `label` attribute.
     /// [`GPUBuffer.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUBuffer/label)
-    pub fn set_label(&mut self, value: &str) {
+    pub fn set_label(&mut self, value: &USVString) {
         self.inner.set("label", value);
     }
 }

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(GPUInternalError);
 
 impl GPUInternalError {
     /// The `new GPUInternalError(..)` constructor, creating a new GPUInternalError instance
-    pub fn new(message: &str) -> GPUInternalError {
+    pub fn new(message: &DOMString) -> GPUInternalError {
         Self {
             inner: Any::global("GPUInternalError")
                 .new(&[message.into()])

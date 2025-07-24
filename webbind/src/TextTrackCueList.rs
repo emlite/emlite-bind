@@ -65,7 +65,7 @@ impl TextTrackCueList {
 impl TextTrackCueList {
     /// The getCueById method.
     /// [`TextTrackCueList.getCueById`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackCueList/getCueById)
-    pub fn get_cue_by_id(&self, id: &str) -> TextTrackCue {
+    pub fn get_cue_by_id(&self, id: &DOMString) -> TextTrackCue {
         self.inner
             .call("getCueById", &[id.into()])
             .as_::<TextTrackCue>()

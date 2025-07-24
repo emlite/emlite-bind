@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(FileSystem);
 impl FileSystem {
     /// Getter of the `name` attribute.
     /// [`FileSystem.name`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystem/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 }
 impl FileSystem {

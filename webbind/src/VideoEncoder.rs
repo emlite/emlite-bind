@@ -51,11 +51,11 @@ impl From<&VideoEncoderConfig> for Any {
 }
 
 impl VideoEncoderConfig {
-    pub fn codec(&self) -> String {
-        self.inner.get("codec").as_::<String>()
+    pub fn codec(&self) -> DOMString {
+        self.inner.get("codec").as_::<DOMString>()
     }
 
-    pub fn set_codec(&mut self, value: &str) {
+    pub fn set_codec(&mut self, value: &DOMString) {
         self.inner.set("codec", value);
     }
 }
@@ -134,11 +134,11 @@ impl VideoEncoderConfig {
     }
 }
 impl VideoEncoderConfig {
-    pub fn scalability_mode(&self) -> String {
-        self.inner.get("scalabilityMode").as_::<String>()
+    pub fn scalability_mode(&self) -> DOMString {
+        self.inner.get("scalabilityMode").as_::<DOMString>()
     }
 
-    pub fn set_scalability_mode(&mut self, value: &str) {
+    pub fn set_scalability_mode(&mut self, value: &DOMString) {
         self.inner.set("scalabilityMode", value);
     }
 }
@@ -163,11 +163,11 @@ impl VideoEncoderConfig {
     }
 }
 impl VideoEncoderConfig {
-    pub fn content_hint(&self) -> String {
-        self.inner.get("contentHint").as_::<String>()
+    pub fn content_hint(&self) -> DOMString {
+        self.inner.get("contentHint").as_::<DOMString>()
     }
 
-    pub fn set_content_hint(&mut self, value: &str) {
+    pub fn set_content_hint(&mut self, value: &DOMString) {
         self.inner.set("contentHint", value);
     }
 }

@@ -75,13 +75,13 @@ impl HTMLLegendElement {
 impl HTMLLegendElement {
     /// Getter of the `align` attribute.
     /// [`HTMLLegendElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLegendElement/align)
-    pub fn align(&self) -> String {
-        self.inner.get("align").as_::<String>()
+    pub fn align(&self) -> DOMString {
+        self.inner.get("align").as_::<DOMString>()
     }
 
     /// Setter of the `align` attribute.
     /// [`HTMLLegendElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLegendElement/align)
-    pub fn set_align(&mut self, value: &str) {
+    pub fn set_align(&mut self, value: &DOMString) {
         self.inner.set("align", value);
     }
 }

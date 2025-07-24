@@ -51,11 +51,11 @@ impl From<&MediaTrackCapabilities> for Any {
 }
 
 impl MediaTrackCapabilities {
-    pub fn display_surface(&self) -> String {
-        self.inner.get("displaySurface").as_::<String>()
+    pub fn display_surface(&self) -> DOMString {
+        self.inner.get("displaySurface").as_::<DOMString>()
     }
 
-    pub fn set_display_surface(&mut self, value: &str) {
+    pub fn set_display_surface(&mut self, value: &DOMString) {
         self.inner.set("displaySurface", value);
     }
 }
@@ -69,11 +69,11 @@ impl MediaTrackCapabilities {
     }
 }
 impl MediaTrackCapabilities {
-    pub fn cursor(&self) -> Sequence<String> {
-        self.inner.get("cursor").as_::<Sequence<String>>()
+    pub fn cursor(&self) -> Sequence<DOMString> {
+        self.inner.get("cursor").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_cursor(&mut self, value: &Sequence<String>) {
+    pub fn set_cursor(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("cursor", value);
     }
 }
@@ -187,11 +187,11 @@ impl From<&MediaTrackSettings> for Any {
 }
 
 impl MediaTrackSettings {
-    pub fn display_surface(&self) -> String {
-        self.inner.get("displaySurface").as_::<String>()
+    pub fn display_surface(&self) -> DOMString {
+        self.inner.get("displaySurface").as_::<DOMString>()
     }
 
-    pub fn set_display_surface(&mut self, value: &str) {
+    pub fn set_display_surface(&mut self, value: &DOMString) {
         self.inner.set("displaySurface", value);
     }
 }
@@ -205,11 +205,11 @@ impl MediaTrackSettings {
     }
 }
 impl MediaTrackSettings {
-    pub fn cursor(&self) -> String {
-        self.inner.get("cursor").as_::<String>()
+    pub fn cursor(&self) -> DOMString {
+        self.inner.get("cursor").as_::<DOMString>()
     }
 
-    pub fn set_cursor(&mut self, value: &str) {
+    pub fn set_cursor(&mut self, value: &DOMString) {
         self.inner.set("cursor", value);
     }
 }
@@ -291,20 +291,20 @@ impl From<&CaptureHandle> for Any {
 }
 
 impl CaptureHandle {
-    pub fn origin(&self) -> String {
-        self.inner.get("origin").as_::<String>()
+    pub fn origin(&self) -> DOMString {
+        self.inner.get("origin").as_::<DOMString>()
     }
 
-    pub fn set_origin(&mut self, value: &str) {
+    pub fn set_origin(&mut self, value: &DOMString) {
         self.inner.set("origin", value);
     }
 }
 impl CaptureHandle {
-    pub fn handle(&self) -> String {
-        self.inner.get("handle").as_::<String>()
+    pub fn handle(&self) -> DOMString {
+        self.inner.get("handle").as_::<DOMString>()
     }
 
-    pub fn set_handle(&mut self, value: &str) {
+    pub fn set_handle(&mut self, value: &DOMString) {
         self.inner.set("handle", value);
     }
 }
@@ -366,22 +366,22 @@ jsbind::utils::impl_dyn_cast!(MediaStreamTrack);
 impl MediaStreamTrack {
     /// Getter of the `kind` attribute.
     /// [`MediaStreamTrack.kind`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/kind)
-    pub fn kind(&self) -> String {
-        self.inner.get("kind").as_::<String>()
+    pub fn kind(&self) -> DOMString {
+        self.inner.get("kind").as_::<DOMString>()
     }
 }
 impl MediaStreamTrack {
     /// Getter of the `id` attribute.
     /// [`MediaStreamTrack.id`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/id)
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 }
 impl MediaStreamTrack {
     /// Getter of the `label` attribute.
     /// [`MediaStreamTrack.label`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/label)
-    pub fn label(&self) -> String {
-        self.inner.get("label").as_::<String>()
+    pub fn label(&self) -> DOMString {
+        self.inner.get("label").as_::<DOMString>()
     }
 }
 impl MediaStreamTrack {
@@ -532,10 +532,10 @@ impl MediaStreamTrack {
 impl MediaStreamTrack {
     /// The getSupportedCaptureActions method.
     /// [`MediaStreamTrack.getSupportedCaptureActions`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/getSupportedCaptureActions)
-    pub fn get_supported_capture_actions(&self) -> Sequence<String> {
+    pub fn get_supported_capture_actions(&self) -> Sequence<DOMString> {
         self.inner
             .call("getSupportedCaptureActions", &[])
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<DOMString>>()
     }
 }
 impl MediaStreamTrack {
@@ -550,13 +550,13 @@ impl MediaStreamTrack {
 impl MediaStreamTrack {
     /// Getter of the `contentHint` attribute.
     /// [`MediaStreamTrack.contentHint`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/contentHint)
-    pub fn content_hint(&self) -> String {
-        self.inner.get("contentHint").as_::<String>()
+    pub fn content_hint(&self) -> DOMString {
+        self.inner.get("contentHint").as_::<DOMString>()
     }
 
     /// Setter of the `contentHint` attribute.
     /// [`MediaStreamTrack.contentHint`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/contentHint)
-    pub fn set_content_hint(&mut self, value: &str) {
+    pub fn set_content_hint(&mut self, value: &DOMString) {
         self.inner.set("contentHint", value);
     }
 }

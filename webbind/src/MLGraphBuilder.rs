@@ -205,11 +205,11 @@ impl From<&MLOperatorOptions> for Any {
 }
 
 impl MLOperatorOptions {
-    pub fn label(&self) -> String {
-        self.inner.get("label").as_::<String>()
+    pub fn label(&self) -> USVString {
+        self.inner.get("label").as_::<USVString>()
     }
 
-    pub fn set_label(&mut self, value: &str) {
+    pub fn set_label(&mut self, value: &USVString) {
         self.inner.set("label", value);
     }
 }
@@ -2398,7 +2398,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The input method.
     /// [`MLGraphBuilder.input`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/input)
-    pub fn input(&self, name: &str, descriptor: &MLOperandDescriptor) -> MLOperand {
+    pub fn input(&self, name: &USVString, descriptor: &MLOperandDescriptor) -> MLOperand {
         self.inner
             .call("input", &[name.into(), descriptor.into()])
             .as_::<MLOperand>()

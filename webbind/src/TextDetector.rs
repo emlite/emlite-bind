@@ -60,11 +60,11 @@ impl DetectedText {
     }
 }
 impl DetectedText {
-    pub fn raw_value(&self) -> String {
-        self.inner.get("rawValue").as_::<String>()
+    pub fn raw_value(&self) -> DOMString {
+        self.inner.get("rawValue").as_::<DOMString>()
     }
 
-    pub fn set_raw_value(&mut self, value: &str) {
+    pub fn set_raw_value(&mut self, value: &DOMString) {
         self.inner.set("rawValue", value);
     }
 }

@@ -51,11 +51,11 @@ impl From<&MultiCacheQueryOptions> for Any {
 }
 
 impl MultiCacheQueryOptions {
-    pub fn cache_name(&self) -> String {
-        self.inner.get("cacheName").as_::<String>()
+    pub fn cache_name(&self) -> DOMString {
+        self.inner.get("cacheName").as_::<DOMString>()
     }
 
-    pub fn set_cache_name(&mut self, value: &str) {
+    pub fn set_cache_name(&mut self, value: &DOMString) {
         self.inner.set("cacheName", value);
     }
 }
@@ -133,7 +133,7 @@ impl CacheStorage {
 impl CacheStorage {
     /// The has method.
     /// [`CacheStorage.has`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/has)
-    pub fn has(&self, cache_name: &str) -> Promise<bool> {
+    pub fn has(&self, cache_name: &DOMString) -> Promise<bool> {
         self.inner
             .call("has", &[cache_name.into()])
             .as_::<Promise<bool>>()
@@ -142,7 +142,7 @@ impl CacheStorage {
 impl CacheStorage {
     /// The open method.
     /// [`CacheStorage.open`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/open)
-    pub fn open(&self, cache_name: &str) -> Promise<Cache> {
+    pub fn open(&self, cache_name: &DOMString) -> Promise<Cache> {
         self.inner
             .call("open", &[cache_name.into()])
             .as_::<Promise<Cache>>()
@@ -151,7 +151,7 @@ impl CacheStorage {
 impl CacheStorage {
     /// The delete method.
     /// [`CacheStorage.delete`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/delete)
-    pub fn delete(&self, cache_name: &str) -> Promise<bool> {
+    pub fn delete(&self, cache_name: &DOMString) -> Promise<bool> {
         self.inner
             .call("delete", &[cache_name.into()])
             .as_::<Promise<bool>>()
@@ -160,9 +160,9 @@ impl CacheStorage {
 impl CacheStorage {
     /// The keys method.
     /// [`CacheStorage.keys`](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/keys)
-    pub fn keys(&self) -> Promise<Sequence<String>> {
+    pub fn keys(&self) -> Promise<Sequence<DOMString>> {
         self.inner
             .call("keys", &[])
-            .as_::<Promise<Sequence<String>>>()
+            .as_::<Promise<Sequence<DOMString>>>()
     }
 }

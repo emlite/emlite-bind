@@ -135,7 +135,7 @@ jsbind::utils::impl_dyn_cast!(TrustedTypePolicyFactory);
 impl TrustedTypePolicyFactory {
     /// The createPolicy method.
     /// [`TrustedTypePolicyFactory.createPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/createPolicy)
-    pub fn create_policy0(&self, policy_name: &str) -> TrustedTypePolicy {
+    pub fn create_policy0(&self, policy_name: &DOMString) -> TrustedTypePolicy {
         self.inner
             .call("createPolicy", &[policy_name.into()])
             .as_::<TrustedTypePolicy>()
@@ -144,7 +144,7 @@ impl TrustedTypePolicyFactory {
     /// [`TrustedTypePolicyFactory.createPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/createPolicy)
     pub fn create_policy1(
         &self,
-        policy_name: &str,
+        policy_name: &DOMString,
         policy_options: &TrustedTypePolicyOptions,
     ) -> TrustedTypePolicy {
         self.inner
@@ -192,30 +192,35 @@ impl TrustedTypePolicyFactory {
 impl TrustedTypePolicyFactory {
     /// The getAttributeType method.
     /// [`TrustedTypePolicyFactory.getAttributeType`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/getAttributeType)
-    pub fn get_attribute_type0(&self, tag_name: &str, attribute: &str) -> String {
+    pub fn get_attribute_type0(&self, tag_name: &DOMString, attribute: &DOMString) -> DOMString {
         self.inner
             .call("getAttributeType", &[tag_name.into(), attribute.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
     /// The getAttributeType method.
     /// [`TrustedTypePolicyFactory.getAttributeType`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/getAttributeType)
-    pub fn get_attribute_type1(&self, tag_name: &str, attribute: &str, element_ns: &str) -> String {
+    pub fn get_attribute_type1(
+        &self,
+        tag_name: &DOMString,
+        attribute: &DOMString,
+        element_ns: &DOMString,
+    ) -> DOMString {
         self.inner
             .call(
                 "getAttributeType",
                 &[tag_name.into(), attribute.into(), element_ns.into()],
             )
-            .as_::<String>()
+            .as_::<DOMString>()
     }
     /// The getAttributeType method.
     /// [`TrustedTypePolicyFactory.getAttributeType`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/getAttributeType)
     pub fn get_attribute_type2(
         &self,
-        tag_name: &str,
-        attribute: &str,
-        element_ns: &str,
-        attr_ns: &str,
-    ) -> String {
+        tag_name: &DOMString,
+        attribute: &DOMString,
+        element_ns: &DOMString,
+        attr_ns: &DOMString,
+    ) -> DOMString {
         self.inner
             .call(
                 "getAttributeType",
@@ -226,26 +231,31 @@ impl TrustedTypePolicyFactory {
                     attr_ns.into(),
                 ],
             )
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl TrustedTypePolicyFactory {
     /// The getPropertyType method.
     /// [`TrustedTypePolicyFactory.getPropertyType`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/getPropertyType)
-    pub fn get_property_type0(&self, tag_name: &str, property: &str) -> String {
+    pub fn get_property_type0(&self, tag_name: &DOMString, property: &DOMString) -> DOMString {
         self.inner
             .call("getPropertyType", &[tag_name.into(), property.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
     /// The getPropertyType method.
     /// [`TrustedTypePolicyFactory.getPropertyType`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicyFactory/getPropertyType)
-    pub fn get_property_type1(&self, tag_name: &str, property: &str, element_ns: &str) -> String {
+    pub fn get_property_type1(
+        &self,
+        tag_name: &DOMString,
+        property: &DOMString,
+        element_ns: &DOMString,
+    ) -> DOMString {
         self.inner
             .call(
                 "getPropertyType",
                 &[tag_name.into(), property.into(), element_ns.into()],
             )
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl TrustedTypePolicyFactory {

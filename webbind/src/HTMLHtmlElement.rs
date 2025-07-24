@@ -66,13 +66,13 @@ impl HTMLHtmlElement {
 impl HTMLHtmlElement {
     /// Getter of the `version` attribute.
     /// [`HTMLHtmlElement.version`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHtmlElement/version)
-    pub fn version(&self) -> String {
-        self.inner.get("version").as_::<String>()
+    pub fn version(&self) -> DOMString {
+        self.inner.get("version").as_::<DOMString>()
     }
 
     /// Setter of the `version` attribute.
     /// [`HTMLHtmlElement.version`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHtmlElement/version)
-    pub fn set_version(&mut self, value: &str) {
+    pub fn set_version(&mut self, value: &DOMString) {
         self.inner.set("version", value);
     }
 }

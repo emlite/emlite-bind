@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(RTCErrorEvent);
 
 impl RTCErrorEvent {
     /// The `new RTCErrorEvent(..)` constructor, creating a new RTCErrorEvent instance
-    pub fn new(type_: &str, event_init_dict: &Any) -> RTCErrorEvent {
+    pub fn new(type_: &DOMString, event_init_dict: &Any) -> RTCErrorEvent {
         Self {
             inner: Any::global("RTCErrorEvent")
                 .new(&[type_.into(), event_init_dict.into()])

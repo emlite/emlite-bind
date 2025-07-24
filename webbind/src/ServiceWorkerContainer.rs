@@ -51,11 +51,11 @@ impl From<&RegistrationOptions> for Any {
 }
 
 impl RegistrationOptions {
-    pub fn scope(&self) -> String {
-        self.inner.get("scope").as_::<String>()
+    pub fn scope(&self) -> USVString {
+        self.inner.get("scope").as_::<USVString>()
     }
 
-    pub fn set_scope(&mut self, value: &str) {
+    pub fn set_scope(&mut self, value: &USVString) {
         self.inner.set("scope", value);
     }
 }
@@ -180,7 +180,7 @@ impl ServiceWorkerContainer {
     }
     /// The getRegistration method.
     /// [`ServiceWorkerContainer.getRegistration`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/getRegistration)
-    pub fn get_registration1(&self, client_url: &str) -> Promise<Any> {
+    pub fn get_registration1(&self, client_url: &USVString) -> Promise<Any> {
         self.inner
             .call("getRegistration", &[client_url.into()])
             .as_::<Promise<Any>>()

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(PointerEvent);
 
 impl PointerEvent {
     /// The `new PointerEvent(..)` constructor, creating a new PointerEvent instance
-    pub fn new0(type_: &str) -> PointerEvent {
+    pub fn new0(type_: &DOMString) -> PointerEvent {
         Self {
             inner: Any::global("PointerEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl PointerEvent {
     }
 
     /// The `new PointerEvent(..)` constructor, creating a new PointerEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> PointerEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> PointerEvent {
         Self {
             inner: Any::global("PointerEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -147,8 +147,8 @@ impl PointerEvent {
 impl PointerEvent {
     /// Getter of the `pointerType` attribute.
     /// [`PointerEvent.pointerType`](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent/pointerType)
-    pub fn pointer_type(&self) -> String {
-        self.inner.get("pointerType").as_::<String>()
+    pub fn pointer_type(&self) -> DOMString {
+        self.inner.get("pointerType").as_::<DOMString>()
     }
 }
 impl PointerEvent {

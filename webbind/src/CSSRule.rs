@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(CSSRule);
 impl CSSRule {
     /// Getter of the `cssText` attribute.
     /// [`CSSRule.cssText`](https://developer.mozilla.org/en-US/docs/Web/API/CSSRule/cssText)
-    pub fn css_text(&self) -> String {
-        self.inner.get("cssText").as_::<String>()
+    pub fn css_text(&self) -> CSSOMString {
+        self.inner.get("cssText").as_::<CSSOMString>()
     }
 
     /// Setter of the `cssText` attribute.
     /// [`CSSRule.cssText`](https://developer.mozilla.org/en-US/docs/Web/API/CSSRule/cssText)
-    pub fn set_css_text(&mut self, value: &str) {
+    pub fn set_css_text(&mut self, value: &CSSOMString) {
         self.inner.set("cssText", value);
     }
 }

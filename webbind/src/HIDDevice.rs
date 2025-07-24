@@ -207,8 +207,8 @@ impl HIDDevice {
 impl HIDDevice {
     /// Getter of the `productName` attribute.
     /// [`HIDDevice.productName`](https://developer.mozilla.org/en-US/docs/Web/API/HIDDevice/productName)
-    pub fn product_name(&self) -> String {
-        self.inner.get("productName").as_::<String>()
+    pub fn product_name(&self) -> DOMString {
+        self.inner.get("productName").as_::<DOMString>()
     }
 }
 impl HIDDevice {

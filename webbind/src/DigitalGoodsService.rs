@@ -51,20 +51,20 @@ impl From<&ItemDetails> for Any {
 }
 
 impl ItemDetails {
-    pub fn item_id(&self) -> String {
-        self.inner.get("itemId").as_::<String>()
+    pub fn item_id(&self) -> DOMString {
+        self.inner.get("itemId").as_::<DOMString>()
     }
 
-    pub fn set_item_id(&mut self, value: &str) {
+    pub fn set_item_id(&mut self, value: &DOMString) {
         self.inner.set("itemId", value);
     }
 }
 impl ItemDetails {
-    pub fn title(&self) -> String {
-        self.inner.get("title").as_::<String>()
+    pub fn title(&self) -> DOMString {
+        self.inner.get("title").as_::<DOMString>()
     }
 
-    pub fn set_title(&mut self, value: &str) {
+    pub fn set_title(&mut self, value: &DOMString) {
         self.inner.set("title", value);
     }
 }
@@ -87,38 +87,38 @@ impl ItemDetails {
     }
 }
 impl ItemDetails {
-    pub fn description(&self) -> String {
-        self.inner.get("description").as_::<String>()
+    pub fn description(&self) -> DOMString {
+        self.inner.get("description").as_::<DOMString>()
     }
 
-    pub fn set_description(&mut self, value: &str) {
+    pub fn set_description(&mut self, value: &DOMString) {
         self.inner.set("description", value);
     }
 }
 impl ItemDetails {
-    pub fn icon_ur_ls(&self) -> Sequence<String> {
-        self.inner.get("iconURLs").as_::<Sequence<String>>()
+    pub fn icon_ur_ls(&self) -> Sequence<DOMString> {
+        self.inner.get("iconURLs").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_icon_ur_ls(&mut self, value: &Sequence<String>) {
+    pub fn set_icon_ur_ls(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("iconURLs", value);
     }
 }
 impl ItemDetails {
-    pub fn subscription_period(&self) -> String {
-        self.inner.get("subscriptionPeriod").as_::<String>()
+    pub fn subscription_period(&self) -> DOMString {
+        self.inner.get("subscriptionPeriod").as_::<DOMString>()
     }
 
-    pub fn set_subscription_period(&mut self, value: &str) {
+    pub fn set_subscription_period(&mut self, value: &DOMString) {
         self.inner.set("subscriptionPeriod", value);
     }
 }
 impl ItemDetails {
-    pub fn free_trial_period(&self) -> String {
-        self.inner.get("freeTrialPeriod").as_::<String>()
+    pub fn free_trial_period(&self) -> DOMString {
+        self.inner.get("freeTrialPeriod").as_::<DOMString>()
     }
 
-    pub fn set_free_trial_period(&mut self, value: &str) {
+    pub fn set_free_trial_period(&mut self, value: &DOMString) {
         self.inner.set("freeTrialPeriod", value);
     }
 }
@@ -132,11 +132,11 @@ impl ItemDetails {
     }
 }
 impl ItemDetails {
-    pub fn introductory_price_period(&self) -> String {
-        self.inner.get("introductoryPricePeriod").as_::<String>()
+    pub fn introductory_price_period(&self) -> DOMString {
+        self.inner.get("introductoryPricePeriod").as_::<DOMString>()
     }
 
-    pub fn set_introductory_price_period(&mut self, value: &str) {
+    pub fn set_introductory_price_period(&mut self, value: &DOMString) {
         self.inner.set("introductoryPricePeriod", value);
     }
 }
@@ -200,20 +200,20 @@ impl From<&PurchaseDetails> for Any {
 }
 
 impl PurchaseDetails {
-    pub fn item_id(&self) -> String {
-        self.inner.get("itemId").as_::<String>()
+    pub fn item_id(&self) -> DOMString {
+        self.inner.get("itemId").as_::<DOMString>()
     }
 
-    pub fn set_item_id(&mut self, value: &str) {
+    pub fn set_item_id(&mut self, value: &DOMString) {
         self.inner.set("itemId", value);
     }
 }
 impl PurchaseDetails {
-    pub fn purchase_token(&self) -> String {
-        self.inner.get("purchaseToken").as_::<String>()
+    pub fn purchase_token(&self) -> DOMString {
+        self.inner.get("purchaseToken").as_::<DOMString>()
     }
 
-    pub fn set_purchase_token(&mut self, value: &str) {
+    pub fn set_purchase_token(&mut self, value: &DOMString) {
         self.inner.set("purchaseToken", value);
     }
 }
@@ -275,7 +275,7 @@ jsbind::utils::impl_dyn_cast!(DigitalGoodsService);
 impl DigitalGoodsService {
     /// The getDetails method.
     /// [`DigitalGoodsService.getDetails`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalGoodsService/getDetails)
-    pub fn get_details(&self, item_ids: &Sequence<String>) -> Promise<Sequence<ItemDetails>> {
+    pub fn get_details(&self, item_ids: &Sequence<DOMString>) -> Promise<Sequence<ItemDetails>> {
         self.inner
             .call("getDetails", &[item_ids.into()])
             .as_::<Promise<Sequence<ItemDetails>>>()
@@ -302,7 +302,7 @@ impl DigitalGoodsService {
 impl DigitalGoodsService {
     /// The consume method.
     /// [`DigitalGoodsService.consume`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalGoodsService/consume)
-    pub fn consume(&self, purchase_token: &str) -> Promise<Undefined> {
+    pub fn consume(&self, purchase_token: &DOMString) -> Promise<Undefined> {
         self.inner
             .call("consume", &[purchase_token.into()])
             .as_::<Promise<Undefined>>()

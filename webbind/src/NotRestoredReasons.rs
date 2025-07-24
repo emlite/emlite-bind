@@ -58,29 +58,29 @@ jsbind::utils::impl_dyn_cast!(NotRestoredReasons);
 impl NotRestoredReasons {
     /// Getter of the `src` attribute.
     /// [`NotRestoredReasons.src`](https://developer.mozilla.org/en-US/docs/Web/API/NotRestoredReasons/src)
-    pub fn src(&self) -> String {
-        self.inner.get("src").as_::<String>()
+    pub fn src(&self) -> USVString {
+        self.inner.get("src").as_::<USVString>()
     }
 }
 impl NotRestoredReasons {
     /// Getter of the `id` attribute.
     /// [`NotRestoredReasons.id`](https://developer.mozilla.org/en-US/docs/Web/API/NotRestoredReasons/id)
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 }
 impl NotRestoredReasons {
     /// Getter of the `name` attribute.
     /// [`NotRestoredReasons.name`](https://developer.mozilla.org/en-US/docs/Web/API/NotRestoredReasons/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl NotRestoredReasons {
     /// Getter of the `url` attribute.
     /// [`NotRestoredReasons.url`](https://developer.mozilla.org/en-US/docs/Web/API/NotRestoredReasons/url)
-    pub fn url(&self) -> String {
-        self.inner.get("url").as_::<String>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 }
 impl NotRestoredReasons {

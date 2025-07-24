@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(PerformanceMark);
 
 impl PerformanceMark {
     /// The `new PerformanceMark(..)` constructor, creating a new PerformanceMark instance
-    pub fn new0(mark_name: &str) -> PerformanceMark {
+    pub fn new0(mark_name: &DOMString) -> PerformanceMark {
         Self {
             inner: Any::global("PerformanceMark")
                 .new(&[mark_name.into()])
@@ -66,7 +66,7 @@ impl PerformanceMark {
     }
 
     /// The `new PerformanceMark(..)` constructor, creating a new PerformanceMark instance
-    pub fn new1(mark_name: &str, mark_options: &PerformanceMarkOptions) -> PerformanceMark {
+    pub fn new1(mark_name: &DOMString, mark_options: &PerformanceMarkOptions) -> PerformanceMark {
         Self {
             inner: Any::global("PerformanceMark")
                 .new(&[mark_name.into(), mark_options.into()])

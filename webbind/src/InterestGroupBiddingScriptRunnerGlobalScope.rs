@@ -81,14 +81,14 @@ impl InterestGroupBiddingScriptRunnerGlobalScope {
 impl InterestGroupBiddingScriptRunnerGlobalScope {
     /// The setPrioritySignalsOverride method.
     /// [`InterestGroupBiddingScriptRunnerGlobalScope.setPrioritySignalsOverride`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupBiddingScriptRunnerGlobalScope/setPrioritySignalsOverride)
-    pub fn set_priority_signals_override0(&self, key: &str) -> Undefined {
+    pub fn set_priority_signals_override0(&self, key: &DOMString) -> Undefined {
         self.inner
             .call("setPrioritySignalsOverride", &[key.into()])
             .as_::<Undefined>()
     }
     /// The setPrioritySignalsOverride method.
     /// [`InterestGroupBiddingScriptRunnerGlobalScope.setPrioritySignalsOverride`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupBiddingScriptRunnerGlobalScope/setPrioritySignalsOverride)
-    pub fn set_priority_signals_override1(&self, key: &str, priority: f64) -> Undefined {
+    pub fn set_priority_signals_override1(&self, key: &DOMString, priority: f64) -> Undefined {
         self.inner
             .call("setPrioritySignalsOverride", &[key.into(), priority.into()])
             .as_::<Undefined>()

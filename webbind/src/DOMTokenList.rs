@@ -65,28 +65,28 @@ impl DOMTokenList {
 impl DOMTokenList {
     /// The item method.
     /// [`DOMTokenList.item`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/item)
-    pub fn item(&self, index: u32) -> String {
-        self.inner.call("item", &[index.into()]).as_::<String>()
+    pub fn item(&self, index: u32) -> DOMString {
+        self.inner.call("item", &[index.into()]).as_::<DOMString>()
     }
 }
 impl DOMTokenList {
     /// The contains method.
     /// [`DOMTokenList.contains`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/contains)
-    pub fn contains(&self, token: &str) -> bool {
+    pub fn contains(&self, token: &DOMString) -> bool {
         self.inner.call("contains", &[token.into()]).as_::<bool>()
     }
 }
 impl DOMTokenList {
     /// The add method.
     /// [`DOMTokenList.add`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/add)
-    pub fn add(&self, tokens: &str) -> Undefined {
+    pub fn add(&self, tokens: &DOMString) -> Undefined {
         self.inner.call("add", &[tokens.into()]).as_::<Undefined>()
     }
 }
 impl DOMTokenList {
     /// The remove method.
     /// [`DOMTokenList.remove`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/remove)
-    pub fn remove(&self, tokens: &str) -> Undefined {
+    pub fn remove(&self, tokens: &DOMString) -> Undefined {
         self.inner
             .call("remove", &[tokens.into()])
             .as_::<Undefined>()
@@ -95,12 +95,12 @@ impl DOMTokenList {
 impl DOMTokenList {
     /// The toggle method.
     /// [`DOMTokenList.toggle`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/toggle)
-    pub fn toggle0(&self, token: &str) -> bool {
+    pub fn toggle0(&self, token: &DOMString) -> bool {
         self.inner.call("toggle", &[token.into()]).as_::<bool>()
     }
     /// The toggle method.
     /// [`DOMTokenList.toggle`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/toggle)
-    pub fn toggle1(&self, token: &str, force: bool) -> bool {
+    pub fn toggle1(&self, token: &DOMString, force: bool) -> bool {
         self.inner
             .call("toggle", &[token.into(), force.into()])
             .as_::<bool>()
@@ -109,7 +109,7 @@ impl DOMTokenList {
 impl DOMTokenList {
     /// The replace method.
     /// [`DOMTokenList.replace`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/replace)
-    pub fn replace(&self, token: &str, new_token: &str) -> bool {
+    pub fn replace(&self, token: &DOMString, new_token: &DOMString) -> bool {
         self.inner
             .call("replace", &[token.into(), new_token.into()])
             .as_::<bool>()
@@ -118,20 +118,20 @@ impl DOMTokenList {
 impl DOMTokenList {
     /// The supports method.
     /// [`DOMTokenList.supports`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/supports)
-    pub fn supports(&self, token: &str) -> bool {
+    pub fn supports(&self, token: &DOMString) -> bool {
         self.inner.call("supports", &[token.into()]).as_::<bool>()
     }
 }
 impl DOMTokenList {
     /// Getter of the `value` attribute.
     /// [`DOMTokenList.value`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/value)
-    pub fn value(&self) -> String {
-        self.inner.get("value").as_::<String>()
+    pub fn value(&self) -> DOMString {
+        self.inner.get("value").as_::<DOMString>()
     }
 
     /// Setter of the `value` attribute.
     /// [`DOMTokenList.value`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList/value)
-    pub fn set_value(&mut self, value: &str) {
+    pub fn set_value(&mut self, value: &DOMString) {
         self.inner.set("value", value);
     }
 }

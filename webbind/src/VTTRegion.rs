@@ -66,13 +66,13 @@ impl VTTRegion {
 impl VTTRegion {
     /// Getter of the `id` attribute.
     /// [`VTTRegion.id`](https://developer.mozilla.org/en-US/docs/Web/API/VTTRegion/id)
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 
     /// Setter of the `id` attribute.
     /// [`VTTRegion.id`](https://developer.mozilla.org/en-US/docs/Web/API/VTTRegion/id)
-    pub fn set_id(&mut self, value: &str) {
+    pub fn set_id(&mut self, value: &DOMString) {
         self.inner.set("id", value);
     }
 }

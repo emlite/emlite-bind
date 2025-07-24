@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(AnimationEvent);
 
 impl AnimationEvent {
     /// The `new AnimationEvent(..)` constructor, creating a new AnimationEvent instance
-    pub fn new0(type_: &str) -> AnimationEvent {
+    pub fn new0(type_: &CSSOMString) -> AnimationEvent {
         Self {
             inner: Any::global("AnimationEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl AnimationEvent {
     }
 
     /// The `new AnimationEvent(..)` constructor, creating a new AnimationEvent instance
-    pub fn new1(type_: &str, animation_event_init_dict: &Any) -> AnimationEvent {
+    pub fn new1(type_: &CSSOMString, animation_event_init_dict: &Any) -> AnimationEvent {
         Self {
             inner: Any::global("AnimationEvent")
                 .new(&[type_.into(), animation_event_init_dict.into()])
@@ -77,8 +77,8 @@ impl AnimationEvent {
 impl AnimationEvent {
     /// Getter of the `animationName` attribute.
     /// [`AnimationEvent.animationName`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent/animationName)
-    pub fn animation_name(&self) -> String {
-        self.inner.get("animationName").as_::<String>()
+    pub fn animation_name(&self) -> CSSOMString {
+        self.inner.get("animationName").as_::<CSSOMString>()
     }
 }
 impl AnimationEvent {
@@ -91,7 +91,7 @@ impl AnimationEvent {
 impl AnimationEvent {
     /// Getter of the `pseudoElement` attribute.
     /// [`AnimationEvent.pseudoElement`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationEvent/pseudoElement)
-    pub fn pseudo_element(&self) -> String {
-        self.inner.get("pseudoElement").as_::<String>()
+    pub fn pseudo_element(&self) -> CSSOMString {
+        self.inner.get("pseudoElement").as_::<CSSOMString>()
     }
 }

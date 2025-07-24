@@ -128,11 +128,11 @@ impl PaymentValidationErrors {
     }
 }
 impl PaymentValidationErrors {
-    pub fn error(&self) -> String {
-        self.inner.get("error").as_::<String>()
+    pub fn error(&self) -> DOMString {
+        self.inner.get("error").as_::<DOMString>()
     }
 
-    pub fn set_error(&mut self, value: &str) {
+    pub fn set_error(&mut self, value: &DOMString) {
         self.inner.set("error", value);
     }
 }
@@ -210,15 +210,15 @@ impl PaymentResponse {
 impl PaymentResponse {
     /// Getter of the `requestId` attribute.
     /// [`PaymentResponse.requestId`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/requestId)
-    pub fn request_id(&self) -> String {
-        self.inner.get("requestId").as_::<String>()
+    pub fn request_id(&self) -> DOMString {
+        self.inner.get("requestId").as_::<DOMString>()
     }
 }
 impl PaymentResponse {
     /// Getter of the `methodName` attribute.
     /// [`PaymentResponse.methodName`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/methodName)
-    pub fn method_name(&self) -> String {
-        self.inner.get("methodName").as_::<String>()
+    pub fn method_name(&self) -> DOMString {
+        self.inner.get("methodName").as_::<DOMString>()
     }
 }
 impl PaymentResponse {
@@ -238,29 +238,29 @@ impl PaymentResponse {
 impl PaymentResponse {
     /// Getter of the `shippingOption` attribute.
     /// [`PaymentResponse.shippingOption`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/shippingOption)
-    pub fn shipping_option(&self) -> String {
-        self.inner.get("shippingOption").as_::<String>()
+    pub fn shipping_option(&self) -> DOMString {
+        self.inner.get("shippingOption").as_::<DOMString>()
     }
 }
 impl PaymentResponse {
     /// Getter of the `payerName` attribute.
     /// [`PaymentResponse.payerName`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/payerName)
-    pub fn payer_name(&self) -> String {
-        self.inner.get("payerName").as_::<String>()
+    pub fn payer_name(&self) -> DOMString {
+        self.inner.get("payerName").as_::<DOMString>()
     }
 }
 impl PaymentResponse {
     /// Getter of the `payerEmail` attribute.
     /// [`PaymentResponse.payerEmail`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/payerEmail)
-    pub fn payer_email(&self) -> String {
-        self.inner.get("payerEmail").as_::<String>()
+    pub fn payer_email(&self) -> DOMString {
+        self.inner.get("payerEmail").as_::<DOMString>()
     }
 }
 impl PaymentResponse {
     /// Getter of the `payerPhone` attribute.
     /// [`PaymentResponse.payerPhone`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentResponse/payerPhone)
-    pub fn payer_phone(&self) -> String {
-        self.inner.get("payerPhone").as_::<String>()
+    pub fn payer_phone(&self) -> DOMString {
+        self.inner.get("payerPhone").as_::<DOMString>()
     }
 }
 impl PaymentResponse {

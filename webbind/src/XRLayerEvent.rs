@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(XRLayerEvent);
 
 impl XRLayerEvent {
     /// The `new XRLayerEvent(..)` constructor, creating a new XRLayerEvent instance
-    pub fn new(type_: &str, event_init_dict: &Any) -> XRLayerEvent {
+    pub fn new(type_: &DOMString, event_init_dict: &Any) -> XRLayerEvent {
         Self {
             inner: Any::global("XRLayerEvent")
                 .new(&[type_.into(), event_init_dict.into()])

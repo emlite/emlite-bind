@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CSSParserDeclaration);
 
 impl CSSParserDeclaration {
     /// The `new CSSParserDeclaration(..)` constructor, creating a new CSSParserDeclaration instance
-    pub fn new0(name: &str) -> CSSParserDeclaration {
+    pub fn new0(name: &DOMString) -> CSSParserDeclaration {
         Self {
             inner: Any::global("CSSParserDeclaration")
                 .new(&[name.into()])
@@ -66,7 +66,7 @@ impl CSSParserDeclaration {
     }
 
     /// The `new CSSParserDeclaration(..)` constructor, creating a new CSSParserDeclaration instance
-    pub fn new1(name: &str, body: &Sequence<CSSParserRule>) -> CSSParserDeclaration {
+    pub fn new1(name: &DOMString, body: &Sequence<CSSParserRule>) -> CSSParserDeclaration {
         Self {
             inner: Any::global("CSSParserDeclaration")
                 .new(&[name.into(), body.into()])
@@ -77,8 +77,8 @@ impl CSSParserDeclaration {
 impl CSSParserDeclaration {
     /// Getter of the `name` attribute.
     /// [`CSSParserDeclaration.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserDeclaration/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl CSSParserDeclaration {

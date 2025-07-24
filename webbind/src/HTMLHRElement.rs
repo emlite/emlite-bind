@@ -66,26 +66,26 @@ impl HTMLHRElement {
 impl HTMLHRElement {
     /// Getter of the `align` attribute.
     /// [`HTMLHRElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/align)
-    pub fn align(&self) -> String {
-        self.inner.get("align").as_::<String>()
+    pub fn align(&self) -> DOMString {
+        self.inner.get("align").as_::<DOMString>()
     }
 
     /// Setter of the `align` attribute.
     /// [`HTMLHRElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/align)
-    pub fn set_align(&mut self, value: &str) {
+    pub fn set_align(&mut self, value: &DOMString) {
         self.inner.set("align", value);
     }
 }
 impl HTMLHRElement {
     /// Getter of the `color` attribute.
     /// [`HTMLHRElement.color`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/color)
-    pub fn color(&self) -> String {
-        self.inner.get("color").as_::<String>()
+    pub fn color(&self) -> DOMString {
+        self.inner.get("color").as_::<DOMString>()
     }
 
     /// Setter of the `color` attribute.
     /// [`HTMLHRElement.color`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/color)
-    pub fn set_color(&mut self, value: &str) {
+    pub fn set_color(&mut self, value: &DOMString) {
         self.inner.set("color", value);
     }
 }
@@ -105,26 +105,26 @@ impl HTMLHRElement {
 impl HTMLHRElement {
     /// Getter of the `size` attribute.
     /// [`HTMLHRElement.size`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/size)
-    pub fn size(&self) -> String {
-        self.inner.get("size").as_::<String>()
+    pub fn size(&self) -> DOMString {
+        self.inner.get("size").as_::<DOMString>()
     }
 
     /// Setter of the `size` attribute.
     /// [`HTMLHRElement.size`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/size)
-    pub fn set_size(&mut self, value: &str) {
+    pub fn set_size(&mut self, value: &DOMString) {
         self.inner.set("size", value);
     }
 }
 impl HTMLHRElement {
     /// Getter of the `width` attribute.
     /// [`HTMLHRElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/width)
-    pub fn width(&self) -> String {
-        self.inner.get("width").as_::<String>()
+    pub fn width(&self) -> DOMString {
+        self.inner.get("width").as_::<DOMString>()
     }
 
     /// Setter of the `width` attribute.
     /// [`HTMLHRElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHRElement/width)
-    pub fn set_width(&mut self, value: &str) {
+    pub fn set_width(&mut self, value: &DOMString) {
         self.inner.set("width", value);
     }
 }

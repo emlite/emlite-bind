@@ -66,13 +66,13 @@ impl HTMLBRElement {
 impl HTMLBRElement {
     /// Getter of the `clear` attribute.
     /// [`HTMLBRElement.clear`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBRElement/clear)
-    pub fn clear(&self) -> String {
-        self.inner.get("clear").as_::<String>()
+    pub fn clear(&self) -> DOMString {
+        self.inner.get("clear").as_::<DOMString>()
     }
 
     /// Setter of the `clear` attribute.
     /// [`HTMLBRElement.clear`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBRElement/clear)
-    pub fn set_clear(&mut self, value: &str) {
+    pub fn set_clear(&mut self, value: &DOMString) {
         self.inner.set("clear", value);
     }
 }

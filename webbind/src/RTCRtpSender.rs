@@ -119,11 +119,11 @@ impl From<&RTCRtpSendParameters> for Any {
 }
 
 impl RTCRtpSendParameters {
-    pub fn transaction_id(&self) -> String {
-        self.inner.get("transactionId").as_::<String>()
+    pub fn transaction_id(&self) -> DOMString {
+        self.inner.get("transactionId").as_::<DOMString>()
     }
 
-    pub fn set_transaction_id(&mut self, value: &str) {
+    pub fn set_transaction_id(&mut self, value: &DOMString) {
         self.inner.set("transactionId", value);
     }
 }
@@ -258,7 +258,7 @@ impl RTCRtpSender {
 impl RTCRtpSender {
     /// The getCapabilities method.
     /// [`RTCRtpSender.getCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/getCapabilities)
-    pub fn get_capabilities(kind: &str) -> RTCRtpCapabilities {
+    pub fn get_capabilities(kind: &DOMString) -> RTCRtpCapabilities {
         Any::global("RTCRtpSender")
             .call("getCapabilities", &[kind.into()])
             .as_::<RTCRtpCapabilities>()
@@ -346,7 +346,7 @@ impl RTCRtpSender {
     }
     /// The generateKeyFrame method.
     /// [`RTCRtpSender.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/generateKeyFrame)
-    pub fn generate_key_frame1(&self, rids: &Sequence<String>) -> Promise<Undefined> {
+    pub fn generate_key_frame1(&self, rids: &Sequence<DOMString>) -> Promise<Undefined> {
         self.inner
             .call("generateKeyFrame", &[rids.into()])
             .as_::<Promise<Undefined>>()

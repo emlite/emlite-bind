@@ -729,7 +729,7 @@ impl DOMMatrix {
 impl DOMMatrix {
     /// The setMatrixValue method.
     /// [`DOMMatrix.setMatrixValue`](https://developer.mozilla.org/en-US/docs/Web/API/DOMMatrix/setMatrixValue)
-    pub fn set_matrix_value(&self, transform_list: &str) -> DOMMatrix {
+    pub fn set_matrix_value(&self, transform_list: &DOMString) -> DOMMatrix {
         self.inner
             .call("setMatrixValue", &[transform_list.into()])
             .as_::<DOMMatrix>()

@@ -258,7 +258,7 @@ impl RTCRtpReceiver {
 impl RTCRtpReceiver {
     /// The getCapabilities method.
     /// [`RTCRtpReceiver.getCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver/getCapabilities)
-    pub fn get_capabilities(kind: &str) -> RTCRtpCapabilities {
+    pub fn get_capabilities(kind: &DOMString) -> RTCRtpCapabilities {
         Any::global("RTCRtpReceiver")
             .call("getCapabilities", &[kind.into()])
             .as_::<RTCRtpCapabilities>()

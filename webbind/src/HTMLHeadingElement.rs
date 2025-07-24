@@ -68,13 +68,13 @@ impl HTMLHeadingElement {
 impl HTMLHeadingElement {
     /// Getter of the `align` attribute.
     /// [`HTMLHeadingElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHeadingElement/align)
-    pub fn align(&self) -> String {
-        self.inner.get("align").as_::<String>()
+    pub fn align(&self) -> DOMString {
+        self.inner.get("align").as_::<DOMString>()
     }
 
     /// Setter of the `align` attribute.
     /// [`HTMLHeadingElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLHeadingElement/align)
-    pub fn set_align(&mut self, value: &str) {
+    pub fn set_align(&mut self, value: &DOMString) {
         self.inner.set("align", value);
     }
 }

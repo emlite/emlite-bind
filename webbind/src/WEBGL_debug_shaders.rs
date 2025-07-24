@@ -58,9 +58,9 @@ jsbind::utils::impl_dyn_cast!(WEBGL_debug_shaders);
 impl WEBGL_debug_shaders {
     /// The getTranslatedShaderSource method.
     /// [`WEBGL_debug_shaders.getTranslatedShaderSource`](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_debug_shaders/getTranslatedShaderSource)
-    pub fn get_translated_shader_source(&self, shader: &WebGLShader) -> String {
+    pub fn get_translated_shader_source(&self, shader: &WebGLShader) -> DOMString {
         self.inner
             .call("getTranslatedShaderSource", &[shader.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }

@@ -66,7 +66,7 @@ impl SpeechSynthesisUtterance {
     }
 
     /// The `new SpeechSynthesisUtterance(..)` constructor, creating a new SpeechSynthesisUtterance instance
-    pub fn new1(text: &str) -> SpeechSynthesisUtterance {
+    pub fn new1(text: &DOMString) -> SpeechSynthesisUtterance {
         Self {
             inner: Any::global("SpeechSynthesisUtterance")
                 .new(&[text.into()])
@@ -77,26 +77,26 @@ impl SpeechSynthesisUtterance {
 impl SpeechSynthesisUtterance {
     /// Getter of the `text` attribute.
     /// [`SpeechSynthesisUtterance.text`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/text)
-    pub fn text(&self) -> String {
-        self.inner.get("text").as_::<String>()
+    pub fn text(&self) -> DOMString {
+        self.inner.get("text").as_::<DOMString>()
     }
 
     /// Setter of the `text` attribute.
     /// [`SpeechSynthesisUtterance.text`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/text)
-    pub fn set_text(&mut self, value: &str) {
+    pub fn set_text(&mut self, value: &DOMString) {
         self.inner.set("text", value);
     }
 }
 impl SpeechSynthesisUtterance {
     /// Getter of the `lang` attribute.
     /// [`SpeechSynthesisUtterance.lang`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/lang)
-    pub fn lang(&self) -> String {
-        self.inner.get("lang").as_::<String>()
+    pub fn lang(&self) -> DOMString {
+        self.inner.get("lang").as_::<DOMString>()
     }
 
     /// Setter of the `lang` attribute.
     /// [`SpeechSynthesisUtterance.lang`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance/lang)
-    pub fn set_lang(&mut self, value: &str) {
+    pub fn set_lang(&mut self, value: &DOMString) {
         self.inner.set("lang", value);
     }
 }

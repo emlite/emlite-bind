@@ -75,39 +75,39 @@ impl MediaMetadata {
 impl MediaMetadata {
     /// Getter of the `title` attribute.
     /// [`MediaMetadata.title`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/title)
-    pub fn title(&self) -> String {
-        self.inner.get("title").as_::<String>()
+    pub fn title(&self) -> DOMString {
+        self.inner.get("title").as_::<DOMString>()
     }
 
     /// Setter of the `title` attribute.
     /// [`MediaMetadata.title`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/title)
-    pub fn set_title(&mut self, value: &str) {
+    pub fn set_title(&mut self, value: &DOMString) {
         self.inner.set("title", value);
     }
 }
 impl MediaMetadata {
     /// Getter of the `artist` attribute.
     /// [`MediaMetadata.artist`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/artist)
-    pub fn artist(&self) -> String {
-        self.inner.get("artist").as_::<String>()
+    pub fn artist(&self) -> DOMString {
+        self.inner.get("artist").as_::<DOMString>()
     }
 
     /// Setter of the `artist` attribute.
     /// [`MediaMetadata.artist`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/artist)
-    pub fn set_artist(&mut self, value: &str) {
+    pub fn set_artist(&mut self, value: &DOMString) {
         self.inner.set("artist", value);
     }
 }
 impl MediaMetadata {
     /// Getter of the `album` attribute.
     /// [`MediaMetadata.album`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/album)
-    pub fn album(&self) -> String {
-        self.inner.get("album").as_::<String>()
+    pub fn album(&self) -> DOMString {
+        self.inner.get("album").as_::<DOMString>()
     }
 
     /// Setter of the `album` attribute.
     /// [`MediaMetadata.album`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/album)
-    pub fn set_album(&mut self, value: &str) {
+    pub fn set_album(&mut self, value: &DOMString) {
         self.inner.set("album", value);
     }
 }

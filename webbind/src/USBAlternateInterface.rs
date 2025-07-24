@@ -96,8 +96,8 @@ impl USBAlternateInterface {
 impl USBAlternateInterface {
     /// Getter of the `interfaceName` attribute.
     /// [`USBAlternateInterface.interfaceName`](https://developer.mozilla.org/en-US/docs/Web/API/USBAlternateInterface/interfaceName)
-    pub fn interface_name(&self) -> String {
-        self.inner.get("interfaceName").as_::<String>()
+    pub fn interface_name(&self) -> DOMString {
+        self.inner.get("interfaceName").as_::<DOMString>()
     }
 }
 impl USBAlternateInterface {

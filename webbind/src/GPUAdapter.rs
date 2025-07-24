@@ -62,13 +62,13 @@ impl GPUDeviceDescriptor {
     }
 }
 impl GPUDeviceDescriptor {
-    pub fn required_limits(&self) -> Record<String, Any> {
+    pub fn required_limits(&self) -> Record<DOMString, Any> {
         self.inner
             .get("requiredLimits")
-            .as_::<Record<String, Any>>()
+            .as_::<Record<DOMString, Any>>()
     }
 
-    pub fn set_required_limits(&mut self, value: &Record<String, Any>) {
+    pub fn set_required_limits(&mut self, value: &Record<DOMString, Any>) {
         self.inner.set("requiredLimits", value);
     }
 }

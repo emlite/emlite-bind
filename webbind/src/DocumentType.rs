@@ -58,22 +58,22 @@ jsbind::utils::impl_dyn_cast!(DocumentType);
 impl DocumentType {
     /// Getter of the `name` attribute.
     /// [`DocumentType.name`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentType/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl DocumentType {
     /// Getter of the `publicId` attribute.
     /// [`DocumentType.publicId`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentType/publicId)
-    pub fn public_id(&self) -> String {
-        self.inner.get("publicId").as_::<String>()
+    pub fn public_id(&self) -> DOMString {
+        self.inner.get("publicId").as_::<DOMString>()
     }
 }
 impl DocumentType {
     /// Getter of the `systemId` attribute.
     /// [`DocumentType.systemId`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentType/systemId)
-    pub fn system_id(&self) -> String {
-        self.inner.get("systemId").as_::<String>()
+    pub fn system_id(&self) -> DOMString {
+        self.inner.get("systemId").as_::<DOMString>()
     }
 }
 impl DocumentType {

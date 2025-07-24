@@ -132,20 +132,20 @@ impl GPUComputePassEncoder {
 impl GPUComputePassEncoder {
     /// Getter of the `label` attribute.
     /// [`GPUComputePassEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/label)
-    pub fn label(&self) -> String {
-        self.inner.get("label").as_::<String>()
+    pub fn label(&self) -> USVString {
+        self.inner.get("label").as_::<USVString>()
     }
 
     /// Setter of the `label` attribute.
     /// [`GPUComputePassEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/label)
-    pub fn set_label(&mut self, value: &str) {
+    pub fn set_label(&mut self, value: &USVString) {
         self.inner.set("label", value);
     }
 }
 impl GPUComputePassEncoder {
     /// The pushDebugGroup method.
     /// [`GPUComputePassEncoder.pushDebugGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/pushDebugGroup)
-    pub fn push_debug_group(&self, group_label: &str) -> Undefined {
+    pub fn push_debug_group(&self, group_label: &USVString) -> Undefined {
         self.inner
             .call("pushDebugGroup", &[group_label.into()])
             .as_::<Undefined>()
@@ -161,7 +161,7 @@ impl GPUComputePassEncoder {
 impl GPUComputePassEncoder {
     /// The insertDebugMarker method.
     /// [`GPUComputePassEncoder.insertDebugMarker`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePassEncoder/insertDebugMarker)
-    pub fn insert_debug_marker(&self, marker_label: &str) -> Undefined {
+    pub fn insert_debug_marker(&self, marker_label: &USVString) -> Undefined {
         self.inner
             .call("insertDebugMarker", &[marker_label.into()])
             .as_::<Undefined>()

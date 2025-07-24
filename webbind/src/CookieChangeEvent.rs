@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CookieChangeEvent);
 
 impl CookieChangeEvent {
     /// The `new CookieChangeEvent(..)` constructor, creating a new CookieChangeEvent instance
-    pub fn new0(type_: &str) -> CookieChangeEvent {
+    pub fn new0(type_: &DOMString) -> CookieChangeEvent {
         Self {
             inner: Any::global("CookieChangeEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl CookieChangeEvent {
     }
 
     /// The `new CookieChangeEvent(..)` constructor, creating a new CookieChangeEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> CookieChangeEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> CookieChangeEvent {
         Self {
             inner: Any::global("CookieChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

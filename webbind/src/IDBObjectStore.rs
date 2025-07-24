@@ -126,13 +126,13 @@ jsbind::utils::impl_dyn_cast!(IDBObjectStore);
 impl IDBObjectStore {
     /// Getter of the `name` attribute.
     /// [`IDBObjectStore.name`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`IDBObjectStore.name`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/name)
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &DOMString) {
         self.inner.set("name", value);
     }
 }
@@ -325,14 +325,14 @@ impl IDBObjectStore {
 impl IDBObjectStore {
     /// The index method.
     /// [`IDBObjectStore.index`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/index)
-    pub fn index(&self, name: &str) -> IDBIndex {
+    pub fn index(&self, name: &DOMString) -> IDBIndex {
         self.inner.call("index", &[name.into()]).as_::<IDBIndex>()
     }
 }
 impl IDBObjectStore {
     /// The createIndex method.
     /// [`IDBObjectStore.createIndex`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/createIndex)
-    pub fn create_index0(&self, name: &str, key_path: &Any) -> IDBIndex {
+    pub fn create_index0(&self, name: &DOMString, key_path: &Any) -> IDBIndex {
         self.inner
             .call("createIndex", &[name.into(), key_path.into()])
             .as_::<IDBIndex>()
@@ -341,7 +341,7 @@ impl IDBObjectStore {
     /// [`IDBObjectStore.createIndex`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/createIndex)
     pub fn create_index1(
         &self,
-        name: &str,
+        name: &DOMString,
         key_path: &Any,
         options: &IDBIndexParameters,
     ) -> IDBIndex {
@@ -356,7 +356,7 @@ impl IDBObjectStore {
 impl IDBObjectStore {
     /// The deleteIndex method.
     /// [`IDBObjectStore.deleteIndex`](https://developer.mozilla.org/en-US/docs/Web/API/IDBObjectStore/deleteIndex)
-    pub fn delete_index(&self, name: &str) -> Undefined {
+    pub fn delete_index(&self, name: &DOMString) -> Undefined {
         self.inner
             .call("deleteIndex", &[name.into()])
             .as_::<Undefined>()

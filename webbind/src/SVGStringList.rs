@@ -79,52 +79,54 @@ impl SVGStringList {
 impl SVGStringList {
     /// The initialize method.
     /// [`SVGStringList.initialize`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList/initialize)
-    pub fn initialize(&self, new_item: &str) -> String {
+    pub fn initialize(&self, new_item: &DOMString) -> DOMString {
         self.inner
             .call("initialize", &[new_item.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl SVGStringList {
     /// The getItem method.
     /// [`SVGStringList.getItem`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList/getItem)
-    pub fn get_item(&self, index: u32) -> String {
-        self.inner.call("getItem", &[index.into()]).as_::<String>()
+    pub fn get_item(&self, index: u32) -> DOMString {
+        self.inner
+            .call("getItem", &[index.into()])
+            .as_::<DOMString>()
     }
 }
 impl SVGStringList {
     /// The insertItemBefore method.
     /// [`SVGStringList.insertItemBefore`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList/insertItemBefore)
-    pub fn insert_item_before(&self, new_item: &str, index: u32) -> String {
+    pub fn insert_item_before(&self, new_item: &DOMString, index: u32) -> DOMString {
         self.inner
             .call("insertItemBefore", &[new_item.into(), index.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl SVGStringList {
     /// The replaceItem method.
     /// [`SVGStringList.replaceItem`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList/replaceItem)
-    pub fn replace_item(&self, new_item: &str, index: u32) -> String {
+    pub fn replace_item(&self, new_item: &DOMString, index: u32) -> DOMString {
         self.inner
             .call("replaceItem", &[new_item.into(), index.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl SVGStringList {
     /// The removeItem method.
     /// [`SVGStringList.removeItem`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList/removeItem)
-    pub fn remove_item(&self, index: u32) -> String {
+    pub fn remove_item(&self, index: u32) -> DOMString {
         self.inner
             .call("removeItem", &[index.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl SVGStringList {
     /// The appendItem method.
     /// [`SVGStringList.appendItem`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStringList/appendItem)
-    pub fn append_item(&self, new_item: &str) -> String {
+    pub fn append_item(&self, new_item: &DOMString) -> DOMString {
         self.inner
             .call("appendItem", &[new_item.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }

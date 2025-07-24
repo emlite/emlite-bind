@@ -88,21 +88,21 @@ impl HTMLFieldSetElement {
 impl HTMLFieldSetElement {
     /// Getter of the `name` attribute.
     /// [`HTMLFieldSetElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`HTMLFieldSetElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement/name)
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &DOMString) {
         self.inner.set("name", value);
     }
 }
 impl HTMLFieldSetElement {
     /// Getter of the `type` attribute.
     /// [`HTMLFieldSetElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement/type)
-    pub fn type_(&self) -> String {
-        self.inner.get("type").as_::<String>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 }
 impl HTMLFieldSetElement {
@@ -129,8 +129,8 @@ impl HTMLFieldSetElement {
 impl HTMLFieldSetElement {
     /// Getter of the `validationMessage` attribute.
     /// [`HTMLFieldSetElement.validationMessage`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement/validationMessage)
-    pub fn validation_message(&self) -> String {
-        self.inner.get("validationMessage").as_::<String>()
+    pub fn validation_message(&self) -> DOMString {
+        self.inner.get("validationMessage").as_::<DOMString>()
     }
 }
 impl HTMLFieldSetElement {
@@ -150,7 +150,7 @@ impl HTMLFieldSetElement {
 impl HTMLFieldSetElement {
     /// The setCustomValidity method.
     /// [`HTMLFieldSetElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFieldSetElement/setCustomValidity)
-    pub fn set_custom_validity(&self, error: &str) -> Undefined {
+    pub fn set_custom_validity(&self, error: &DOMString) -> Undefined {
         self.inner
             .call("setCustomValidity", &[error.into()])
             .as_::<Undefined>()

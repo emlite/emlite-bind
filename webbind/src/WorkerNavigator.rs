@@ -150,22 +150,22 @@ impl WorkerNavigator {
 impl WorkerNavigator {
     /// Getter of the `oscpu` attribute.
     /// [`WorkerNavigator.oscpu`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/oscpu)
-    pub fn oscpu(&self) -> String {
-        self.inner.get("oscpu").as_::<String>()
+    pub fn oscpu(&self) -> DOMString {
+        self.inner.get("oscpu").as_::<DOMString>()
     }
 }
 impl WorkerNavigator {
     /// Getter of the `language` attribute.
     /// [`WorkerNavigator.language`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/language)
-    pub fn language(&self) -> String {
-        self.inner.get("language").as_::<String>()
+    pub fn language(&self) -> DOMString {
+        self.inner.get("language").as_::<DOMString>()
     }
 }
 impl WorkerNavigator {
     /// Getter of the `languages` attribute.
     /// [`WorkerNavigator.languages`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerNavigator/languages)
-    pub fn languages(&self) -> FrozenArray<String> {
-        self.inner.get("languages").as_::<FrozenArray<String>>()
+    pub fn languages(&self) -> FrozenArray<DOMString> {
+        self.inner.get("languages").as_::<FrozenArray<DOMString>>()
     }
 }
 impl WorkerNavigator {

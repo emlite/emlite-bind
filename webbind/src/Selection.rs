@@ -159,15 +159,15 @@ impl Selection {
 impl Selection {
     /// Getter of the `type` attribute.
     /// [`Selection.type`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/type)
-    pub fn type_(&self) -> String {
-        self.inner.get("type").as_::<String>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 }
 impl Selection {
     /// Getter of the `direction` attribute.
     /// [`Selection.direction`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/direction)
-    pub fn direction(&self) -> String {
-        self.inner.get("direction").as_::<String>()
+    pub fn direction(&self) -> DOMString {
+        self.inner.get("direction").as_::<DOMString>()
     }
 }
 impl Selection {
@@ -330,21 +330,26 @@ impl Selection {
     }
     /// The modify method.
     /// [`Selection.modify`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/modify)
-    pub fn modify1(&self, alter: &str) -> Undefined {
+    pub fn modify1(&self, alter: &DOMString) -> Undefined {
         self.inner
             .call("modify", &[alter.into()])
             .as_::<Undefined>()
     }
     /// The modify method.
     /// [`Selection.modify`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/modify)
-    pub fn modify2(&self, alter: &str, direction: &str) -> Undefined {
+    pub fn modify2(&self, alter: &DOMString, direction: &DOMString) -> Undefined {
         self.inner
             .call("modify", &[alter.into(), direction.into()])
             .as_::<Undefined>()
     }
     /// The modify method.
     /// [`Selection.modify`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/modify)
-    pub fn modify3(&self, alter: &str, direction: &str, granularity: &str) -> Undefined {
+    pub fn modify3(
+        &self,
+        alter: &DOMString,
+        direction: &DOMString,
+        granularity: &DOMString,
+    ) -> Undefined {
         self.inner
             .call(
                 "modify",

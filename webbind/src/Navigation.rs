@@ -430,14 +430,18 @@ impl Navigation {
 impl Navigation {
     /// The navigate method.
     /// [`Navigation.navigate`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/navigate)
-    pub fn navigate0(&self, url: &str) -> NavigationResult {
+    pub fn navigate0(&self, url: &USVString) -> NavigationResult {
         self.inner
             .call("navigate", &[url.into()])
             .as_::<NavigationResult>()
     }
     /// The navigate method.
     /// [`Navigation.navigate`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/navigate)
-    pub fn navigate1(&self, url: &str, options: &NavigationNavigateOptions) -> NavigationResult {
+    pub fn navigate1(
+        &self,
+        url: &USVString,
+        options: &NavigationNavigateOptions,
+    ) -> NavigationResult {
         self.inner
             .call("navigate", &[url.into(), options.into()])
             .as_::<NavigationResult>()
@@ -460,14 +464,14 @@ impl Navigation {
 impl Navigation {
     /// The traverseTo method.
     /// [`Navigation.traverseTo`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/traverseTo)
-    pub fn traverse_to0(&self, key: &str) -> NavigationResult {
+    pub fn traverse_to0(&self, key: &DOMString) -> NavigationResult {
         self.inner
             .call("traverseTo", &[key.into()])
             .as_::<NavigationResult>()
     }
     /// The traverseTo method.
     /// [`Navigation.traverseTo`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/traverseTo)
-    pub fn traverse_to1(&self, key: &str, options: &NavigationOptions) -> NavigationResult {
+    pub fn traverse_to1(&self, key: &DOMString, options: &NavigationOptions) -> NavigationResult {
         self.inner
             .call("traverseTo", &[key.into(), options.into()])
             .as_::<NavigationResult>()

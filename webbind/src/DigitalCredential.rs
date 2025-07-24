@@ -65,8 +65,8 @@ impl DigitalCredential {
 impl DigitalCredential {
     /// Getter of the `protocol` attribute.
     /// [`DigitalCredential.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalCredential/protocol)
-    pub fn protocol(&self) -> String {
-        self.inner.get("protocol").as_::<String>()
+    pub fn protocol(&self) -> DOMString {
+        self.inner.get("protocol").as_::<DOMString>()
     }
 }
 impl DigitalCredential {
@@ -79,7 +79,7 @@ impl DigitalCredential {
 impl DigitalCredential {
     /// The userAgentAllowsProtocol method.
     /// [`DigitalCredential.userAgentAllowsProtocol`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalCredential/userAgentAllowsProtocol)
-    pub fn user_agent_allows_protocol(protocol: &str) -> bool {
+    pub fn user_agent_allows_protocol(protocol: &DOMString) -> bool {
         Any::global("DigitalCredential")
             .call("userAgentAllowsProtocol", &[protocol.into()])
             .as_::<bool>()

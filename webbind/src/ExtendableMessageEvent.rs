@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(ExtendableMessageEvent);
 
 impl ExtendableMessageEvent {
     /// The `new ExtendableMessageEvent(..)` constructor, creating a new ExtendableMessageEvent instance
-    pub fn new0(type_: &str) -> ExtendableMessageEvent {
+    pub fn new0(type_: &DOMString) -> ExtendableMessageEvent {
         Self {
             inner: Any::global("ExtendableMessageEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl ExtendableMessageEvent {
     }
 
     /// The `new ExtendableMessageEvent(..)` constructor, creating a new ExtendableMessageEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> ExtendableMessageEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> ExtendableMessageEvent {
         Self {
             inner: Any::global("ExtendableMessageEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -84,15 +84,15 @@ impl ExtendableMessageEvent {
 impl ExtendableMessageEvent {
     /// Getter of the `origin` attribute.
     /// [`ExtendableMessageEvent.origin`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableMessageEvent/origin)
-    pub fn origin(&self) -> String {
-        self.inner.get("origin").as_::<String>()
+    pub fn origin(&self) -> USVString {
+        self.inner.get("origin").as_::<USVString>()
     }
 }
 impl ExtendableMessageEvent {
     /// Getter of the `lastEventId` attribute.
     /// [`ExtendableMessageEvent.lastEventId`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableMessageEvent/lastEventId)
-    pub fn last_event_id(&self) -> String {
-        self.inner.get("lastEventId").as_::<String>()
+    pub fn last_event_id(&self) -> DOMString {
+        self.inner.get("lastEventId").as_::<DOMString>()
     }
 }
 impl ExtendableMessageEvent {

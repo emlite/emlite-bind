@@ -111,16 +111,16 @@ impl StorageAccessHandle {
 impl StorageAccessHandle {
     /// The createObjectURL method.
     /// [`StorageAccessHandle.createObjectURL`](https://developer.mozilla.org/en-US/docs/Web/API/StorageAccessHandle/createObjectURL)
-    pub fn create_object_url(&self, obj: &Any) -> String {
+    pub fn create_object_url(&self, obj: &Any) -> DOMString {
         self.inner
             .call("createObjectURL", &[obj.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl StorageAccessHandle {
     /// The revokeObjectURL method.
     /// [`StorageAccessHandle.revokeObjectURL`](https://developer.mozilla.org/en-US/docs/Web/API/StorageAccessHandle/revokeObjectURL)
-    pub fn revoke_object_url(&self, url: &str) -> Undefined {
+    pub fn revoke_object_url(&self, url: &DOMString) -> Undefined {
         self.inner
             .call("revokeObjectURL", &[url.into()])
             .as_::<Undefined>()
@@ -129,7 +129,7 @@ impl StorageAccessHandle {
 impl StorageAccessHandle {
     /// The BroadcastChannel method.
     /// [`StorageAccessHandle.BroadcastChannel`](https://developer.mozilla.org/en-US/docs/Web/API/StorageAccessHandle/BroadcastChannel)
-    pub fn broadcast_channel(&self, name: &str) -> BroadcastChannel {
+    pub fn broadcast_channel(&self, name: &DOMString) -> BroadcastChannel {
         self.inner
             .call("BroadcastChannel", &[name.into()])
             .as_::<BroadcastChannel>()
@@ -138,14 +138,14 @@ impl StorageAccessHandle {
 impl StorageAccessHandle {
     /// The SharedWorker method.
     /// [`StorageAccessHandle.SharedWorker`](https://developer.mozilla.org/en-US/docs/Web/API/StorageAccessHandle/SharedWorker)
-    pub fn shared_worker0(&self, script_url: &str) -> SharedWorker {
+    pub fn shared_worker0(&self, script_url: &USVString) -> SharedWorker {
         self.inner
             .call("SharedWorker", &[script_url.into()])
             .as_::<SharedWorker>()
     }
     /// The SharedWorker method.
     /// [`StorageAccessHandle.SharedWorker`](https://developer.mozilla.org/en-US/docs/Web/API/StorageAccessHandle/SharedWorker)
-    pub fn shared_worker1(&self, script_url: &str, options: &Any) -> SharedWorker {
+    pub fn shared_worker1(&self, script_url: &USVString, options: &Any) -> SharedWorker {
         self.inner
             .call("SharedWorker", &[script_url.into(), options.into()])
             .as_::<SharedWorker>()

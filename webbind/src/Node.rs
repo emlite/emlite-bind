@@ -124,15 +124,15 @@ impl Node {
 impl Node {
     /// Getter of the `nodeName` attribute.
     /// [`Node.nodeName`](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeName)
-    pub fn node_name(&self) -> String {
-        self.inner.get("nodeName").as_::<String>()
+    pub fn node_name(&self) -> DOMString {
+        self.inner.get("nodeName").as_::<DOMString>()
     }
 }
 impl Node {
     /// Getter of the `baseURI` attribute.
     /// [`Node.baseURI`](https://developer.mozilla.org/en-US/docs/Web/API/Node/baseURI)
-    pub fn base_uri(&self) -> String {
-        self.inner.get("baseURI").as_::<String>()
+    pub fn base_uri(&self) -> USVString {
+        self.inner.get("baseURI").as_::<USVString>()
     }
 }
 impl Node {
@@ -222,26 +222,26 @@ impl Node {
 impl Node {
     /// Getter of the `nodeValue` attribute.
     /// [`Node.nodeValue`](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeValue)
-    pub fn node_value(&self) -> String {
-        self.inner.get("nodeValue").as_::<String>()
+    pub fn node_value(&self) -> DOMString {
+        self.inner.get("nodeValue").as_::<DOMString>()
     }
 
     /// Setter of the `nodeValue` attribute.
     /// [`Node.nodeValue`](https://developer.mozilla.org/en-US/docs/Web/API/Node/nodeValue)
-    pub fn set_node_value(&mut self, value: &str) {
+    pub fn set_node_value(&mut self, value: &DOMString) {
         self.inner.set("nodeValue", value);
     }
 }
 impl Node {
     /// Getter of the `textContent` attribute.
     /// [`Node.textContent`](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
-    pub fn text_content(&self) -> String {
-        self.inner.get("textContent").as_::<String>()
+    pub fn text_content(&self) -> DOMString {
+        self.inner.get("textContent").as_::<DOMString>()
     }
 
     /// Setter of the `textContent` attribute.
     /// [`Node.textContent`](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
-    pub fn set_text_content(&mut self, value: &str) {
+    pub fn set_text_content(&mut self, value: &DOMString) {
         self.inner.set("textContent", value);
     }
 }
@@ -303,25 +303,25 @@ impl Node {
 impl Node {
     /// The lookupPrefix method.
     /// [`Node.lookupPrefix`](https://developer.mozilla.org/en-US/docs/Web/API/Node/lookupPrefix)
-    pub fn lookup_prefix(&self, namespace: &str) -> String {
+    pub fn lookup_prefix(&self, namespace: &DOMString) -> DOMString {
         self.inner
             .call("lookupPrefix", &[namespace.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl Node {
     /// The lookupNamespaceURI method.
     /// [`Node.lookupNamespaceURI`](https://developer.mozilla.org/en-US/docs/Web/API/Node/lookupNamespaceURI)
-    pub fn lookup_namespace_uri(&self, prefix: &str) -> String {
+    pub fn lookup_namespace_uri(&self, prefix: &DOMString) -> DOMString {
         self.inner
             .call("lookupNamespaceURI", &[prefix.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl Node {
     /// The isDefaultNamespace method.
     /// [`Node.isDefaultNamespace`](https://developer.mozilla.org/en-US/docs/Web/API/Node/isDefaultNamespace)
-    pub fn is_default_namespace(&self, namespace: &str) -> bool {
+    pub fn is_default_namespace(&self, namespace: &DOMString) -> bool {
         self.inner
             .call("isDefaultNamespace", &[namespace.into()])
             .as_::<bool>()

@@ -60,11 +60,11 @@ impl NavigatorManagedData {
     /// [`NavigatorManagedData.getManagedConfiguration`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/getManagedConfiguration)
     pub fn get_managed_configuration(
         &self,
-        keys: &Sequence<String>,
-    ) -> Promise<Record<String, Object>> {
+        keys: &Sequence<DOMString>,
+    ) -> Promise<Record<DOMString, Object>> {
         self.inner
             .call("getManagedConfiguration", &[keys.into()])
-            .as_::<Promise<Record<String, Object>>>()
+            .as_::<Promise<Record<DOMString, Object>>>()
     }
 }
 impl NavigatorManagedData {
@@ -83,43 +83,45 @@ impl NavigatorManagedData {
 impl NavigatorManagedData {
     /// The getAnnotatedAssetId method.
     /// [`NavigatorManagedData.getAnnotatedAssetId`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/getAnnotatedAssetId)
-    pub fn get_annotated_asset_id(&self) -> Promise<String> {
+    pub fn get_annotated_asset_id(&self) -> Promise<DOMString> {
         self.inner
             .call("getAnnotatedAssetId", &[])
-            .as_::<Promise<String>>()
+            .as_::<Promise<DOMString>>()
     }
 }
 impl NavigatorManagedData {
     /// The getAnnotatedLocation method.
     /// [`NavigatorManagedData.getAnnotatedLocation`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/getAnnotatedLocation)
-    pub fn get_annotated_location(&self) -> Promise<String> {
+    pub fn get_annotated_location(&self) -> Promise<DOMString> {
         self.inner
             .call("getAnnotatedLocation", &[])
-            .as_::<Promise<String>>()
+            .as_::<Promise<DOMString>>()
     }
 }
 impl NavigatorManagedData {
     /// The getDirectoryId method.
     /// [`NavigatorManagedData.getDirectoryId`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/getDirectoryId)
-    pub fn get_directory_id(&self) -> Promise<String> {
+    pub fn get_directory_id(&self) -> Promise<DOMString> {
         self.inner
             .call("getDirectoryId", &[])
-            .as_::<Promise<String>>()
+            .as_::<Promise<DOMString>>()
     }
 }
 impl NavigatorManagedData {
     /// The getHostname method.
     /// [`NavigatorManagedData.getHostname`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/getHostname)
-    pub fn get_hostname(&self) -> Promise<String> {
-        self.inner.call("getHostname", &[]).as_::<Promise<String>>()
+    pub fn get_hostname(&self) -> Promise<DOMString> {
+        self.inner
+            .call("getHostname", &[])
+            .as_::<Promise<DOMString>>()
     }
 }
 impl NavigatorManagedData {
     /// The getSerialNumber method.
     /// [`NavigatorManagedData.getSerialNumber`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorManagedData/getSerialNumber)
-    pub fn get_serial_number(&self) -> Promise<String> {
+    pub fn get_serial_number(&self) -> Promise<DOMString> {
         self.inner
             .call("getSerialNumber", &[])
-            .as_::<Promise<String>>()
+            .as_::<Promise<DOMString>>()
     }
 }

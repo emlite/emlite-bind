@@ -72,15 +72,15 @@ impl PerformanceLongTaskTiming {
 impl PerformanceLongTaskTiming {
     /// Getter of the `name` attribute.
     /// [`PerformanceLongTaskTiming.name`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl PerformanceLongTaskTiming {
     /// Getter of the `entryType` attribute.
     /// [`PerformanceLongTaskTiming.entryType`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming/entryType)
-    pub fn entry_type(&self) -> String {
-        self.inner.get("entryType").as_::<String>()
+    pub fn entry_type(&self) -> DOMString {
+        self.inner.get("entryType").as_::<DOMString>()
     }
 }
 impl PerformanceLongTaskTiming {

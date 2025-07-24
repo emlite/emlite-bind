@@ -1,7 +1,7 @@
 use super::*;
 
-pub fn escape(ident: &str) -> String {
+pub fn escape(ident: &CSSOMString) -> CSSOMString {
     Any::global("CSS")
         .call("escape", &[ident.into()])
-        .as_::<String>()
+        .as_::<CSSOMString>()
 }

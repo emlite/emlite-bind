@@ -51,20 +51,20 @@ impl From<&RTCIceParameters> for Any {
 }
 
 impl RTCIceParameters {
-    pub fn username_fragment(&self) -> String {
-        self.inner.get("usernameFragment").as_::<String>()
+    pub fn username_fragment(&self) -> DOMString {
+        self.inner.get("usernameFragment").as_::<DOMString>()
     }
 
-    pub fn set_username_fragment(&mut self, value: &str) {
+    pub fn set_username_fragment(&mut self, value: &DOMString) {
         self.inner.set("usernameFragment", value);
     }
 }
 impl RTCIceParameters {
-    pub fn password(&self) -> String {
-        self.inner.get("password").as_::<String>()
+    pub fn password(&self) -> DOMString {
+        self.inner.get("password").as_::<DOMString>()
     }
 
-    pub fn set_password(&mut self, value: &str) {
+    pub fn set_password(&mut self, value: &DOMString) {
         self.inner.set("password", value);
     }
 }
@@ -189,20 +189,20 @@ impl From<&RTCIceCandidateInit> for Any {
 }
 
 impl RTCIceCandidateInit {
-    pub fn candidate(&self) -> String {
-        self.inner.get("candidate").as_::<String>()
+    pub fn candidate(&self) -> DOMString {
+        self.inner.get("candidate").as_::<DOMString>()
     }
 
-    pub fn set_candidate(&mut self, value: &str) {
+    pub fn set_candidate(&mut self, value: &DOMString) {
         self.inner.set("candidate", value);
     }
 }
 impl RTCIceCandidateInit {
-    pub fn sdp_mid(&self) -> String {
-        self.inner.get("sdpMid").as_::<String>()
+    pub fn sdp_mid(&self) -> DOMString {
+        self.inner.get("sdpMid").as_::<DOMString>()
     }
 
-    pub fn set_sdp_mid(&mut self, value: &str) {
+    pub fn set_sdp_mid(&mut self, value: &DOMString) {
         self.inner.set("sdpMid", value);
     }
 }
@@ -216,11 +216,11 @@ impl RTCIceCandidateInit {
     }
 }
 impl RTCIceCandidateInit {
-    pub fn username_fragment(&self) -> String {
-        self.inner.get("usernameFragment").as_::<String>()
+    pub fn username_fragment(&self) -> DOMString {
+        self.inner.get("usernameFragment").as_::<DOMString>()
     }
 
-    pub fn set_username_fragment(&mut self, value: &str) {
+    pub fn set_username_fragment(&mut self, value: &DOMString) {
         self.inner.set("usernameFragment", value);
     }
 }

@@ -65,13 +65,13 @@ impl HTMLMediaElement {
 impl HTMLMediaElement {
     /// Getter of the `src` attribute.
     /// [`HTMLMediaElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/src)
-    pub fn src(&self) -> String {
-        self.inner.get("src").as_::<String>()
+    pub fn src(&self) -> USVString {
+        self.inner.get("src").as_::<USVString>()
     }
 
     /// Setter of the `src` attribute.
     /// [`HTMLMediaElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/src)
-    pub fn set_src(&mut self, value: &str) {
+    pub fn set_src(&mut self, value: &USVString) {
         self.inner.set("src", value);
     }
 }
@@ -91,20 +91,20 @@ impl HTMLMediaElement {
 impl HTMLMediaElement {
     /// Getter of the `currentSrc` attribute.
     /// [`HTMLMediaElement.currentSrc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/currentSrc)
-    pub fn current_src(&self) -> String {
-        self.inner.get("currentSrc").as_::<String>()
+    pub fn current_src(&self) -> USVString {
+        self.inner.get("currentSrc").as_::<USVString>()
     }
 }
 impl HTMLMediaElement {
     /// Getter of the `crossOrigin` attribute.
     /// [`HTMLMediaElement.crossOrigin`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/crossOrigin)
-    pub fn cross_origin(&self) -> String {
-        self.inner.get("crossOrigin").as_::<String>()
+    pub fn cross_origin(&self) -> DOMString {
+        self.inner.get("crossOrigin").as_::<DOMString>()
     }
 
     /// Setter of the `crossOrigin` attribute.
     /// [`HTMLMediaElement.crossOrigin`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/crossOrigin)
-    pub fn set_cross_origin(&mut self, value: &str) {
+    pub fn set_cross_origin(&mut self, value: &DOMString) {
         self.inner.set("crossOrigin", value);
     }
 }
@@ -118,13 +118,13 @@ impl HTMLMediaElement {
 impl HTMLMediaElement {
     /// Getter of the `preload` attribute.
     /// [`HTMLMediaElement.preload`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/preload)
-    pub fn preload(&self) -> String {
-        self.inner.get("preload").as_::<String>()
+    pub fn preload(&self) -> DOMString {
+        self.inner.get("preload").as_::<DOMString>()
     }
 
     /// Setter of the `preload` attribute.
     /// [`HTMLMediaElement.preload`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/preload)
-    pub fn set_preload(&mut self, value: &str) {
+    pub fn set_preload(&mut self, value: &DOMString) {
         self.inner.set("preload", value);
     }
 }
@@ -145,7 +145,7 @@ impl HTMLMediaElement {
 impl HTMLMediaElement {
     /// The canPlayType method.
     /// [`HTMLMediaElement.canPlayType`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canPlayType)
-    pub fn can_play_type(&self, type_: &str) -> CanPlayTypeResult {
+    pub fn can_play_type(&self, type_: &DOMString) -> CanPlayTypeResult {
         self.inner
             .call("canPlayType", &[type_.into()])
             .as_::<CanPlayTypeResult>()
@@ -391,14 +391,19 @@ impl HTMLMediaElement {
     }
     /// The addTextTrack method.
     /// [`HTMLMediaElement.addTextTrack`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/addTextTrack)
-    pub fn add_text_track1(&self, kind: &TextTrackKind, label: &str) -> TextTrack {
+    pub fn add_text_track1(&self, kind: &TextTrackKind, label: &DOMString) -> TextTrack {
         self.inner
             .call("addTextTrack", &[kind.into(), label.into()])
             .as_::<TextTrack>()
     }
     /// The addTextTrack method.
     /// [`HTMLMediaElement.addTextTrack`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/addTextTrack)
-    pub fn add_text_track2(&self, kind: &TextTrackKind, label: &str, language: &str) -> TextTrack {
+    pub fn add_text_track2(
+        &self,
+        kind: &TextTrackKind,
+        label: &DOMString,
+        language: &DOMString,
+    ) -> TextTrack {
         self.inner
             .call(
                 "addTextTrack",
@@ -410,14 +415,14 @@ impl HTMLMediaElement {
 impl HTMLMediaElement {
     /// Getter of the `sinkId` attribute.
     /// [`HTMLMediaElement.sinkId`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/sinkId)
-    pub fn sink_id(&self) -> String {
-        self.inner.get("sinkId").as_::<String>()
+    pub fn sink_id(&self) -> DOMString {
+        self.inner.get("sinkId").as_::<DOMString>()
     }
 }
 impl HTMLMediaElement {
     /// The setSinkId method.
     /// [`HTMLMediaElement.setSinkId`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/setSinkId)
-    pub fn set_sink_id(&self, sink_id: &str) -> Promise<Undefined> {
+    pub fn set_sink_id(&self, sink_id: &DOMString) -> Promise<Undefined> {
         self.inner
             .call("setSinkId", &[sink_id.into()])
             .as_::<Promise<Undefined>>()

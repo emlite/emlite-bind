@@ -173,31 +173,31 @@ impl PublicKeyCredentialCreationOptions {
     }
 }
 impl PublicKeyCredentialCreationOptions {
-    pub fn hints(&self) -> Sequence<String> {
-        self.inner.get("hints").as_::<Sequence<String>>()
+    pub fn hints(&self) -> Sequence<DOMString> {
+        self.inner.get("hints").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_hints(&mut self, value: &Sequence<String>) {
+    pub fn set_hints(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("hints", value);
     }
 }
 impl PublicKeyCredentialCreationOptions {
-    pub fn attestation(&self) -> String {
-        self.inner.get("attestation").as_::<String>()
+    pub fn attestation(&self) -> DOMString {
+        self.inner.get("attestation").as_::<DOMString>()
     }
 
-    pub fn set_attestation(&mut self, value: &str) {
+    pub fn set_attestation(&mut self, value: &DOMString) {
         self.inner.set("attestation", value);
     }
 }
 impl PublicKeyCredentialCreationOptions {
-    pub fn attestation_formats(&self) -> Sequence<String> {
+    pub fn attestation_formats(&self) -> Sequence<DOMString> {
         self.inner
             .get("attestationFormats")
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_attestation_formats(&mut self, value: &Sequence<String>) {
+    pub fn set_attestation_formats(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("attestationFormats", value);
     }
 }
@@ -324,31 +324,31 @@ impl PublicKeyCredentialCreationOptionsJSON {
     }
 }
 impl PublicKeyCredentialCreationOptionsJSON {
-    pub fn hints(&self) -> Sequence<String> {
-        self.inner.get("hints").as_::<Sequence<String>>()
+    pub fn hints(&self) -> Sequence<DOMString> {
+        self.inner.get("hints").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_hints(&mut self, value: &Sequence<String>) {
+    pub fn set_hints(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("hints", value);
     }
 }
 impl PublicKeyCredentialCreationOptionsJSON {
-    pub fn attestation(&self) -> String {
-        self.inner.get("attestation").as_::<String>()
+    pub fn attestation(&self) -> DOMString {
+        self.inner.get("attestation").as_::<DOMString>()
     }
 
-    pub fn set_attestation(&mut self, value: &str) {
+    pub fn set_attestation(&mut self, value: &DOMString) {
         self.inner.set("attestation", value);
     }
 }
 impl PublicKeyCredentialCreationOptionsJSON {
-    pub fn attestation_formats(&self) -> Sequence<String> {
+    pub fn attestation_formats(&self) -> Sequence<DOMString> {
         self.inner
             .get("attestationFormats")
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_attestation_formats(&mut self, value: &Sequence<String>) {
+    pub fn set_attestation_formats(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("attestationFormats", value);
     }
 }
@@ -430,11 +430,11 @@ impl PublicKeyCredentialRequestOptions {
     }
 }
 impl PublicKeyCredentialRequestOptions {
-    pub fn rp_id(&self) -> String {
-        self.inner.get("rpId").as_::<String>()
+    pub fn rp_id(&self) -> DOMString {
+        self.inner.get("rpId").as_::<DOMString>()
     }
 
-    pub fn set_rp_id(&mut self, value: &str) {
+    pub fn set_rp_id(&mut self, value: &DOMString) {
         self.inner.set("rpId", value);
     }
 }
@@ -448,20 +448,20 @@ impl PublicKeyCredentialRequestOptions {
     }
 }
 impl PublicKeyCredentialRequestOptions {
-    pub fn user_verification(&self) -> String {
-        self.inner.get("userVerification").as_::<String>()
+    pub fn user_verification(&self) -> DOMString {
+        self.inner.get("userVerification").as_::<DOMString>()
     }
 
-    pub fn set_user_verification(&mut self, value: &str) {
+    pub fn set_user_verification(&mut self, value: &DOMString) {
         self.inner.set("userVerification", value);
     }
 }
 impl PublicKeyCredentialRequestOptions {
-    pub fn hints(&self) -> Sequence<String> {
-        self.inner.get("hints").as_::<Sequence<String>>()
+    pub fn hints(&self) -> Sequence<DOMString> {
+        self.inner.get("hints").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_hints(&mut self, value: &Sequence<String>) {
+    pub fn set_hints(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("hints", value);
     }
 }
@@ -543,11 +543,11 @@ impl PublicKeyCredentialRequestOptionsJSON {
     }
 }
 impl PublicKeyCredentialRequestOptionsJSON {
-    pub fn rp_id(&self) -> String {
-        self.inner.get("rpId").as_::<String>()
+    pub fn rp_id(&self) -> DOMString {
+        self.inner.get("rpId").as_::<DOMString>()
     }
 
-    pub fn set_rp_id(&mut self, value: &str) {
+    pub fn set_rp_id(&mut self, value: &DOMString) {
         self.inner.set("rpId", value);
     }
 }
@@ -561,20 +561,20 @@ impl PublicKeyCredentialRequestOptionsJSON {
     }
 }
 impl PublicKeyCredentialRequestOptionsJSON {
-    pub fn user_verification(&self) -> String {
-        self.inner.get("userVerification").as_::<String>()
+    pub fn user_verification(&self) -> DOMString {
+        self.inner.get("userVerification").as_::<DOMString>()
     }
 
-    pub fn set_user_verification(&mut self, value: &str) {
+    pub fn set_user_verification(&mut self, value: &DOMString) {
         self.inner.set("userVerification", value);
     }
 }
 impl PublicKeyCredentialRequestOptionsJSON {
-    pub fn hints(&self) -> Sequence<String> {
-        self.inner.get("hints").as_::<Sequence<String>>()
+    pub fn hints(&self) -> Sequence<DOMString> {
+        self.inner.get("hints").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_hints(&mut self, value: &Sequence<String>) {
+    pub fn set_hints(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("hints", value);
     }
 }
@@ -638,11 +638,11 @@ impl From<&UnknownCredentialOptions> for Any {
 }
 
 impl UnknownCredentialOptions {
-    pub fn rp_id(&self) -> String {
-        self.inner.get("rpId").as_::<String>()
+    pub fn rp_id(&self) -> DOMString {
+        self.inner.get("rpId").as_::<DOMString>()
     }
 
-    pub fn set_rp_id(&mut self, value: &str) {
+    pub fn set_rp_id(&mut self, value: &DOMString) {
         self.inner.set("rpId", value);
     }
 }
@@ -706,11 +706,11 @@ impl From<&AllAcceptedCredentialsOptions> for Any {
 }
 
 impl AllAcceptedCredentialsOptions {
-    pub fn rp_id(&self) -> String {
-        self.inner.get("rpId").as_::<String>()
+    pub fn rp_id(&self) -> DOMString {
+        self.inner.get("rpId").as_::<DOMString>()
     }
 
-    pub fn set_rp_id(&mut self, value: &str) {
+    pub fn set_rp_id(&mut self, value: &DOMString) {
         self.inner.set("rpId", value);
     }
 }
@@ -785,11 +785,11 @@ impl From<&CurrentUserDetailsOptions> for Any {
 }
 
 impl CurrentUserDetailsOptions {
-    pub fn rp_id(&self) -> String {
-        self.inner.get("rpId").as_::<String>()
+    pub fn rp_id(&self) -> DOMString {
+        self.inner.get("rpId").as_::<DOMString>()
     }
 
-    pub fn set_rp_id(&mut self, value: &str) {
+    pub fn set_rp_id(&mut self, value: &DOMString) {
         self.inner.set("rpId", value);
     }
 }
@@ -803,20 +803,20 @@ impl CurrentUserDetailsOptions {
     }
 }
 impl CurrentUserDetailsOptions {
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &DOMString) {
         self.inner.set("name", value);
     }
 }
 impl CurrentUserDetailsOptions {
-    pub fn display_name(&self) -> String {
-        self.inner.get("displayName").as_::<String>()
+    pub fn display_name(&self) -> DOMString {
+        self.inner.get("displayName").as_::<DOMString>()
     }
 
-    pub fn set_display_name(&mut self, value: &str) {
+    pub fn set_display_name(&mut self, value: &DOMString) {
         self.inner.set("displayName", value);
     }
 }
@@ -892,8 +892,8 @@ impl PublicKeyCredential {
 impl PublicKeyCredential {
     /// Getter of the `authenticatorAttachment` attribute.
     /// [`PublicKeyCredential.authenticatorAttachment`](https://developer.mozilla.org/en-US/docs/Web/API/PublicKeyCredential/authenticatorAttachment)
-    pub fn authenticator_attachment(&self) -> String {
-        self.inner.get("authenticatorAttachment").as_::<String>()
+    pub fn authenticator_attachment(&self) -> DOMString {
+        self.inner.get("authenticatorAttachment").as_::<DOMString>()
     }
 }
 impl PublicKeyCredential {

@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(CSSStyleValue);
 impl CSSStyleValue {
     /// The parse method.
     /// [`CSSStyleValue.parse`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleValue/parse)
-    pub fn parse(property: &str, css_text: &str) -> CSSStyleValue {
+    pub fn parse(property: &USVString, css_text: &USVString) -> CSSStyleValue {
         Any::global("CSSStyleValue")
             .call("parse", &[property.into(), css_text.into()])
             .as_::<CSSStyleValue>()
@@ -67,7 +67,7 @@ impl CSSStyleValue {
 impl CSSStyleValue {
     /// The parseAll method.
     /// [`CSSStyleValue.parseAll`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleValue/parseAll)
-    pub fn parse_all(property: &str, css_text: &str) -> Sequence<CSSStyleValue> {
+    pub fn parse_all(property: &USVString, css_text: &USVString) -> Sequence<CSSStyleValue> {
         Any::global("CSSStyleValue")
             .call("parseAll", &[property.into(), css_text.into()])
             .as_::<Sequence<CSSStyleValue>>()

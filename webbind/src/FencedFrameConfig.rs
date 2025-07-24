@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(FencedFrameConfig);
 
 impl FencedFrameConfig {
     /// The `new FencedFrameConfig(..)` constructor, creating a new FencedFrameConfig instance
-    pub fn new(url: &str) -> FencedFrameConfig {
+    pub fn new(url: &USVString) -> FencedFrameConfig {
         Self {
             inner: Any::global("FencedFrameConfig")
                 .new(&[url.into()])
@@ -68,7 +68,7 @@ impl FencedFrameConfig {
 impl FencedFrameConfig {
     /// The setSharedStorageContext method.
     /// [`FencedFrameConfig.setSharedStorageContext`](https://developer.mozilla.org/en-US/docs/Web/API/FencedFrameConfig/setSharedStorageContext)
-    pub fn set_shared_storage_context(&self, context_string: &str) -> Undefined {
+    pub fn set_shared_storage_context(&self, context_string: &DOMString) -> Undefined {
         self.inner
             .call("setSharedStorageContext", &[context_string.into()])
             .as_::<Undefined>()

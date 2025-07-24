@@ -81,13 +81,13 @@ impl KeyframeEffect {
 impl KeyframeEffect {
     /// Getter of the `pseudoElement` attribute.
     /// [`KeyframeEffect.pseudoElement`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/pseudoElement)
-    pub fn pseudo_element(&self) -> String {
-        self.inner.get("pseudoElement").as_::<String>()
+    pub fn pseudo_element(&self) -> CSSOMString {
+        self.inner.get("pseudoElement").as_::<CSSOMString>()
     }
 
     /// Setter of the `pseudoElement` attribute.
     /// [`KeyframeEffect.pseudoElement`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/pseudoElement)
-    pub fn set_pseudo_element(&mut self, value: &str) {
+    pub fn set_pseudo_element(&mut self, value: &CSSOMString) {
         self.inner.set("pseudoElement", value);
     }
 }

@@ -183,13 +183,13 @@ impl SVGElement {
 impl SVGElement {
     /// Getter of the `nonce` attribute.
     /// [`SVGElement.nonce`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement/nonce)
-    pub fn nonce(&self) -> String {
-        self.inner.get("nonce").as_::<String>()
+    pub fn nonce(&self) -> DOMString {
+        self.inner.get("nonce").as_::<DOMString>()
     }
 
     /// Setter of the `nonce` attribute.
     /// [`SVGElement.nonce`](https://developer.mozilla.org/en-US/docs/Web/API/SVGElement/nonce)
-    pub fn set_nonce(&mut self, value: &str) {
+    pub fn set_nonce(&mut self, value: &DOMString) {
         self.inner.set("nonce", value);
     }
 }

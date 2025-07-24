@@ -68,65 +68,65 @@ impl HTMLFrameElement {
 impl HTMLFrameElement {
     /// Getter of the `name` attribute.
     /// [`HTMLFrameElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`HTMLFrameElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/name)
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &DOMString) {
         self.inner.set("name", value);
     }
 }
 impl HTMLFrameElement {
     /// Getter of the `scrolling` attribute.
     /// [`HTMLFrameElement.scrolling`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/scrolling)
-    pub fn scrolling(&self) -> String {
-        self.inner.get("scrolling").as_::<String>()
+    pub fn scrolling(&self) -> DOMString {
+        self.inner.get("scrolling").as_::<DOMString>()
     }
 
     /// Setter of the `scrolling` attribute.
     /// [`HTMLFrameElement.scrolling`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/scrolling)
-    pub fn set_scrolling(&mut self, value: &str) {
+    pub fn set_scrolling(&mut self, value: &DOMString) {
         self.inner.set("scrolling", value);
     }
 }
 impl HTMLFrameElement {
     /// Getter of the `src` attribute.
     /// [`HTMLFrameElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/src)
-    pub fn src(&self) -> String {
-        self.inner.get("src").as_::<String>()
+    pub fn src(&self) -> USVString {
+        self.inner.get("src").as_::<USVString>()
     }
 
     /// Setter of the `src` attribute.
     /// [`HTMLFrameElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/src)
-    pub fn set_src(&mut self, value: &str) {
+    pub fn set_src(&mut self, value: &USVString) {
         self.inner.set("src", value);
     }
 }
 impl HTMLFrameElement {
     /// Getter of the `frameBorder` attribute.
     /// [`HTMLFrameElement.frameBorder`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/frameBorder)
-    pub fn frame_border(&self) -> String {
-        self.inner.get("frameBorder").as_::<String>()
+    pub fn frame_border(&self) -> DOMString {
+        self.inner.get("frameBorder").as_::<DOMString>()
     }
 
     /// Setter of the `frameBorder` attribute.
     /// [`HTMLFrameElement.frameBorder`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/frameBorder)
-    pub fn set_frame_border(&mut self, value: &str) {
+    pub fn set_frame_border(&mut self, value: &DOMString) {
         self.inner.set("frameBorder", value);
     }
 }
 impl HTMLFrameElement {
     /// Getter of the `longDesc` attribute.
     /// [`HTMLFrameElement.longDesc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/longDesc)
-    pub fn long_desc(&self) -> String {
-        self.inner.get("longDesc").as_::<String>()
+    pub fn long_desc(&self) -> USVString {
+        self.inner.get("longDesc").as_::<USVString>()
     }
 
     /// Setter of the `longDesc` attribute.
     /// [`HTMLFrameElement.longDesc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/longDesc)
-    pub fn set_long_desc(&mut self, value: &str) {
+    pub fn set_long_desc(&mut self, value: &USVString) {
         self.inner.set("longDesc", value);
     }
 }
@@ -160,26 +160,26 @@ impl HTMLFrameElement {
 impl HTMLFrameElement {
     /// Getter of the `marginHeight` attribute.
     /// [`HTMLFrameElement.marginHeight`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/marginHeight)
-    pub fn margin_height(&self) -> String {
-        self.inner.get("marginHeight").as_::<String>()
+    pub fn margin_height(&self) -> DOMString {
+        self.inner.get("marginHeight").as_::<DOMString>()
     }
 
     /// Setter of the `marginHeight` attribute.
     /// [`HTMLFrameElement.marginHeight`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/marginHeight)
-    pub fn set_margin_height(&mut self, value: &str) {
+    pub fn set_margin_height(&mut self, value: &DOMString) {
         self.inner.set("marginHeight", value);
     }
 }
 impl HTMLFrameElement {
     /// Getter of the `marginWidth` attribute.
     /// [`HTMLFrameElement.marginWidth`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/marginWidth)
-    pub fn margin_width(&self) -> String {
-        self.inner.get("marginWidth").as_::<String>()
+    pub fn margin_width(&self) -> DOMString {
+        self.inner.get("marginWidth").as_::<DOMString>()
     }
 
     /// Setter of the `marginWidth` attribute.
     /// [`HTMLFrameElement.marginWidth`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameElement/marginWidth)
-    pub fn set_margin_width(&mut self, value: &str) {
+    pub fn set_margin_width(&mut self, value: &DOMString) {
         self.inner.set("marginWidth", value);
     }
 }

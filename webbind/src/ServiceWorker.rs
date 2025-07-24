@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(ServiceWorker);
 impl ServiceWorker {
     /// Getter of the `scriptURL` attribute.
     /// [`ServiceWorker.scriptURL`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker/scriptURL)
-    pub fn script_url(&self) -> String {
-        self.inner.get("scriptURL").as_::<String>()
+    pub fn script_url(&self) -> USVString {
+        self.inner.get("scriptURL").as_::<USVString>()
     }
 }
 impl ServiceWorker {

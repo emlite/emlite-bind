@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(CSSPseudoElement);
 impl CSSPseudoElement {
     /// Getter of the `type` attribute.
     /// [`CSSPseudoElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/type)
-    pub fn type_(&self) -> String {
-        self.inner.get("type").as_::<String>()
+    pub fn type_(&self) -> CSSOMString {
+        self.inner.get("type").as_::<CSSOMString>()
     }
 }
 impl CSSPseudoElement {
@@ -79,7 +79,7 @@ impl CSSPseudoElement {
 impl CSSPseudoElement {
     /// The pseudo method.
     /// [`CSSPseudoElement.pseudo`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/pseudo)
-    pub fn pseudo(&self, type_: &str) -> CSSPseudoElement {
+    pub fn pseudo(&self, type_: &CSSOMString) -> CSSPseudoElement {
         self.inner
             .call("pseudo", &[type_.into()])
             .as_::<CSSPseudoElement>()

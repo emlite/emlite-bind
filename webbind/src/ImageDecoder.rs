@@ -202,8 +202,8 @@ impl ImageDecoder {
 impl ImageDecoder {
     /// Getter of the `type` attribute.
     /// [`ImageDecoder.type`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/type)
-    pub fn type_(&self) -> String {
-        self.inner.get("type").as_::<String>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 }
 impl ImageDecoder {
@@ -260,7 +260,7 @@ impl ImageDecoder {
 impl ImageDecoder {
     /// The isTypeSupported method.
     /// [`ImageDecoder.isTypeSupported`](https://developer.mozilla.org/en-US/docs/Web/API/ImageDecoder/isTypeSupported)
-    pub fn is_type_supported(type_: &str) -> Promise<bool> {
+    pub fn is_type_supported(type_: &DOMString) -> Promise<bool> {
         Any::global("ImageDecoder")
             .call("isTypeSupported", &[type_.into()])
             .as_::<Promise<bool>>()

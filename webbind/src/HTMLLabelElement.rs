@@ -75,13 +75,13 @@ impl HTMLLabelElement {
 impl HTMLLabelElement {
     /// Getter of the `htmlFor` attribute.
     /// [`HTMLLabelElement.htmlFor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor)
-    pub fn html_for(&self) -> String {
-        self.inner.get("htmlFor").as_::<String>()
+    pub fn html_for(&self) -> DOMString {
+        self.inner.get("htmlFor").as_::<DOMString>()
     }
 
     /// Setter of the `htmlFor` attribute.
     /// [`HTMLLabelElement.htmlFor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor)
-    pub fn set_html_for(&mut self, value: &str) {
+    pub fn set_html_for(&mut self, value: &DOMString) {
         self.inner.set("htmlFor", value);
     }
 }

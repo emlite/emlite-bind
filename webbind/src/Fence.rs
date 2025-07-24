@@ -51,20 +51,20 @@ impl From<&FenceEvent> for Any {
 }
 
 impl FenceEvent {
-    pub fn event_type(&self) -> String {
-        self.inner.get("eventType").as_::<String>()
+    pub fn event_type(&self) -> DOMString {
+        self.inner.get("eventType").as_::<DOMString>()
     }
 
-    pub fn set_event_type(&mut self, value: &str) {
+    pub fn set_event_type(&mut self, value: &DOMString) {
         self.inner.set("eventType", value);
     }
 }
 impl FenceEvent {
-    pub fn event_data(&self) -> String {
-        self.inner.get("eventData").as_::<String>()
+    pub fn event_data(&self) -> DOMString {
+        self.inner.get("eventData").as_::<DOMString>()
     }
 
-    pub fn set_event_data(&mut self, value: &str) {
+    pub fn set_event_data(&mut self, value: &DOMString) {
         self.inner.set("eventData", value);
     }
 }
@@ -98,11 +98,11 @@ impl FenceEvent {
     }
 }
 impl FenceEvent {
-    pub fn destination_url(&self) -> String {
-        self.inner.get("destinationURL").as_::<String>()
+    pub fn destination_url(&self) -> USVString {
+        self.inner.get("destinationURL").as_::<USVString>()
     }
 
-    pub fn set_destination_url(&mut self, value: &str) {
+    pub fn set_destination_url(&mut self, value: &USVString) {
         self.inner.set("destinationURL", value);
     }
 }

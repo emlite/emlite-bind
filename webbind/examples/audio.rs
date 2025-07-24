@@ -17,15 +17,15 @@ fn main() {
     oscillator.frequency().set_value(261.63); // Middle C
 
     let document = window().document();
-    let body = document.get_elements_by_tag_name("body").item(0);
+    let body = document.get_elements_by_tag_name(&"body".into()).item(0);
     let mut button = document
-        .create_element0("BUTTON")
+        .create_element0(&"BUTTON".into())
         .dyn_into::<HTMLButtonElement>()
         .unwrap();
 
-    button.set_text_content("Click me");
+    button.set_text_content(&"Click me".into());
     button.add_event_listener0(
-        "click",
+        &DOMString::from("click"),
         &Closure::bind1(move |_p: PointerEvent| {
             println!("Playing");
             oscillator.connect0(context.destination().unchecked_ref::<AudioParam>());

@@ -65,7 +65,7 @@ impl MediaError {
 impl MediaError {
     /// Getter of the `message` attribute.
     /// [`MediaError.message`](https://developer.mozilla.org/en-US/docs/Web/API/MediaError/message)
-    pub fn message(&self) -> String {
-        self.inner.get("message").as_::<String>()
+    pub fn message(&self) -> DOMString {
+        self.inner.get("message").as_::<DOMString>()
     }
 }

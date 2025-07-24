@@ -88,7 +88,7 @@ impl XRMesh {
 impl XRMesh {
     /// Getter of the `semanticLabel` attribute.
     /// [`XRMesh.semanticLabel`](https://developer.mozilla.org/en-US/docs/Web/API/XRMesh/semanticLabel)
-    pub fn semantic_label(&self) -> String {
-        self.inner.get("semanticLabel").as_::<String>()
+    pub fn semantic_label(&self) -> DOMString {
+        self.inner.get("semanticLabel").as_::<DOMString>()
     }
 }

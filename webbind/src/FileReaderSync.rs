@@ -75,34 +75,34 @@ impl FileReaderSync {
 impl FileReaderSync {
     /// The readAsBinaryString method.
     /// [`FileReaderSync.readAsBinaryString`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsBinaryString)
-    pub fn read_as_binary_string(&self, blob: &Blob) -> String {
+    pub fn read_as_binary_string(&self, blob: &Blob) -> DOMString {
         self.inner
             .call("readAsBinaryString", &[blob.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl FileReaderSync {
     /// The readAsText method.
     /// [`FileReaderSync.readAsText`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsText)
-    pub fn read_as_text0(&self, blob: &Blob) -> String {
+    pub fn read_as_text0(&self, blob: &Blob) -> DOMString {
         self.inner
             .call("readAsText", &[blob.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
     /// The readAsText method.
     /// [`FileReaderSync.readAsText`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsText)
-    pub fn read_as_text1(&self, blob: &Blob, encoding: &str) -> String {
+    pub fn read_as_text1(&self, blob: &Blob, encoding: &DOMString) -> DOMString {
         self.inner
             .call("readAsText", &[blob.into(), encoding.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl FileReaderSync {
     /// The readAsDataURL method.
     /// [`FileReaderSync.readAsDataURL`](https://developer.mozilla.org/en-US/docs/Web/API/FileReaderSync/readAsDataURL)
-    pub fn read_as_data_url(&self, blob: &Blob) -> String {
+    pub fn read_as_data_url(&self, blob: &Blob) -> DOMString {
         self.inner
             .call("readAsDataURL", &[blob.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }

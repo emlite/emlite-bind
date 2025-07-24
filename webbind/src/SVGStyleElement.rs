@@ -58,39 +58,39 @@ jsbind::utils::impl_dyn_cast!(SVGStyleElement);
 impl SVGStyleElement {
     /// Getter of the `type` attribute.
     /// [`SVGStyleElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStyleElement/type)
-    pub fn type_(&self) -> String {
-        self.inner.get("type").as_::<String>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 
     /// Setter of the `type` attribute.
     /// [`SVGStyleElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStyleElement/type)
-    pub fn set_type_(&mut self, value: &str) {
+    pub fn set_type_(&mut self, value: &DOMString) {
         self.inner.set("type", value);
     }
 }
 impl SVGStyleElement {
     /// Getter of the `media` attribute.
     /// [`SVGStyleElement.media`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStyleElement/media)
-    pub fn media(&self) -> String {
-        self.inner.get("media").as_::<String>()
+    pub fn media(&self) -> DOMString {
+        self.inner.get("media").as_::<DOMString>()
     }
 
     /// Setter of the `media` attribute.
     /// [`SVGStyleElement.media`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStyleElement/media)
-    pub fn set_media(&mut self, value: &str) {
+    pub fn set_media(&mut self, value: &DOMString) {
         self.inner.set("media", value);
     }
 }
 impl SVGStyleElement {
     /// Getter of the `title` attribute.
     /// [`SVGStyleElement.title`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStyleElement/title)
-    pub fn title(&self) -> String {
-        self.inner.get("title").as_::<String>()
+    pub fn title(&self) -> DOMString {
+        self.inner.get("title").as_::<DOMString>()
     }
 
     /// Setter of the `title` attribute.
     /// [`SVGStyleElement.title`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStyleElement/title)
-    pub fn set_title(&mut self, value: &str) {
+    pub fn set_title(&mut self, value: &DOMString) {
         self.inner.set("title", value);
     }
 }

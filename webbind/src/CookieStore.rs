@@ -51,38 +51,38 @@ impl From<&CookieListItem> for Any {
 }
 
 impl CookieListItem {
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &USVString) {
         self.inner.set("name", value);
     }
 }
 impl CookieListItem {
-    pub fn value(&self) -> String {
-        self.inner.get("value").as_::<String>()
+    pub fn value(&self) -> USVString {
+        self.inner.get("value").as_::<USVString>()
     }
 
-    pub fn set_value(&mut self, value: &str) {
+    pub fn set_value(&mut self, value: &USVString) {
         self.inner.set("value", value);
     }
 }
 impl CookieListItem {
-    pub fn domain(&self) -> String {
-        self.inner.get("domain").as_::<String>()
+    pub fn domain(&self) -> USVString {
+        self.inner.get("domain").as_::<USVString>()
     }
 
-    pub fn set_domain(&mut self, value: &str) {
+    pub fn set_domain(&mut self, value: &USVString) {
         self.inner.set("domain", value);
     }
 }
 impl CookieListItem {
-    pub fn path(&self) -> String {
-        self.inner.get("path").as_::<String>()
+    pub fn path(&self) -> USVString {
+        self.inner.get("path").as_::<USVString>()
     }
 
-    pub fn set_path(&mut self, value: &str) {
+    pub fn set_path(&mut self, value: &USVString) {
         self.inner.set("path", value);
     }
 }
@@ -173,20 +173,20 @@ impl From<&CookieStoreGetOptions> for Any {
 }
 
 impl CookieStoreGetOptions {
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &USVString) {
         self.inner.set("name", value);
     }
 }
 impl CookieStoreGetOptions {
-    pub fn url(&self) -> String {
-        self.inner.get("url").as_::<String>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 
-    pub fn set_url(&mut self, value: &str) {
+    pub fn set_url(&mut self, value: &USVString) {
         self.inner.set("url", value);
     }
 }
@@ -241,20 +241,20 @@ impl From<&CookieInit> for Any {
 }
 
 impl CookieInit {
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &USVString) {
         self.inner.set("name", value);
     }
 }
 impl CookieInit {
-    pub fn value(&self) -> String {
-        self.inner.get("value").as_::<String>()
+    pub fn value(&self) -> USVString {
+        self.inner.get("value").as_::<USVString>()
     }
 
-    pub fn set_value(&mut self, value: &str) {
+    pub fn set_value(&mut self, value: &USVString) {
         self.inner.set("value", value);
     }
 }
@@ -268,20 +268,20 @@ impl CookieInit {
     }
 }
 impl CookieInit {
-    pub fn domain(&self) -> String {
-        self.inner.get("domain").as_::<String>()
+    pub fn domain(&self) -> USVString {
+        self.inner.get("domain").as_::<USVString>()
     }
 
-    pub fn set_domain(&mut self, value: &str) {
+    pub fn set_domain(&mut self, value: &USVString) {
         self.inner.set("domain", value);
     }
 }
 impl CookieInit {
-    pub fn path(&self) -> String {
-        self.inner.get("path").as_::<String>()
+    pub fn path(&self) -> USVString {
+        self.inner.get("path").as_::<USVString>()
     }
 
-    pub fn set_path(&mut self, value: &str) {
+    pub fn set_path(&mut self, value: &USVString) {
         self.inner.set("path", value);
     }
 }
@@ -354,29 +354,29 @@ impl From<&CookieStoreDeleteOptions> for Any {
 }
 
 impl CookieStoreDeleteOptions {
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &USVString) {
         self.inner.set("name", value);
     }
 }
 impl CookieStoreDeleteOptions {
-    pub fn domain(&self) -> String {
-        self.inner.get("domain").as_::<String>()
+    pub fn domain(&self) -> USVString {
+        self.inner.get("domain").as_::<USVString>()
     }
 
-    pub fn set_domain(&mut self, value: &str) {
+    pub fn set_domain(&mut self, value: &USVString) {
         self.inner.set("domain", value);
     }
 }
 impl CookieStoreDeleteOptions {
-    pub fn path(&self) -> String {
-        self.inner.get("path").as_::<String>()
+    pub fn path(&self) -> USVString {
+        self.inner.get("path").as_::<USVString>()
     }
 
-    pub fn set_path(&mut self, value: &str) {
+    pub fn set_path(&mut self, value: &USVString) {
         self.inner.set("path", value);
     }
 }

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(BlobEvent);
 
 impl BlobEvent {
     /// The `new BlobEvent(..)` constructor, creating a new BlobEvent instance
-    pub fn new(type_: &str, event_init_dict: &Any) -> BlobEvent {
+    pub fn new(type_: &DOMString, event_init_dict: &Any) -> BlobEvent {
         Self {
             inner: Any::global("BlobEvent")
                 .new(&[type_.into(), event_init_dict.into()])

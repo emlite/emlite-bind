@@ -144,8 +144,8 @@ jsbind::utils::impl_dyn_cast!(Gamepad);
 impl Gamepad {
     /// Getter of the `id` attribute.
     /// [`Gamepad.id`](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad/id)
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 }
 impl Gamepad {

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(ContentVisibilityAutoStateChangeEvent);
 
 impl ContentVisibilityAutoStateChangeEvent {
     /// The `new ContentVisibilityAutoStateChangeEvent(..)` constructor, creating a new ContentVisibilityAutoStateChangeEvent instance
-    pub fn new0(type_: &str) -> ContentVisibilityAutoStateChangeEvent {
+    pub fn new0(type_: &DOMString) -> ContentVisibilityAutoStateChangeEvent {
         Self {
             inner: Any::global("ContentVisibilityAutoStateChangeEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl ContentVisibilityAutoStateChangeEvent {
     }
 
     /// The `new ContentVisibilityAutoStateChangeEvent(..)` constructor, creating a new ContentVisibilityAutoStateChangeEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> ContentVisibilityAutoStateChangeEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> ContentVisibilityAutoStateChangeEvent {
         Self {
             inner: Any::global("ContentVisibilityAutoStateChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

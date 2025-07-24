@@ -66,8 +66,8 @@ impl TextEncoderStream {
 impl TextEncoderStream {
     /// Getter of the `encoding` attribute.
     /// [`TextEncoderStream.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoderStream/encoding)
-    pub fn encoding(&self) -> String {
-        self.inner.get("encoding").as_::<String>()
+    pub fn encoding(&self) -> DOMString {
+        self.inner.get("encoding").as_::<DOMString>()
     }
 }
 impl TextEncoderStream {

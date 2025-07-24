@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(OfflineAudioCompletionEvent);
 
 impl OfflineAudioCompletionEvent {
     /// The `new OfflineAudioCompletionEvent(..)` constructor, creating a new OfflineAudioCompletionEvent instance
-    pub fn new(type_: &str, event_init_dict: &Any) -> OfflineAudioCompletionEvent {
+    pub fn new(type_: &DOMString, event_init_dict: &Any) -> OfflineAudioCompletionEvent {
         Self {
             inner: Any::global("OfflineAudioCompletionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

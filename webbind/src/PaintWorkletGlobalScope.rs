@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(PaintWorkletGlobalScope);
 impl PaintWorkletGlobalScope {
     /// The registerPaint method.
     /// [`PaintWorkletGlobalScope.registerPaint`](https://developer.mozilla.org/en-US/docs/Web/API/PaintWorkletGlobalScope/registerPaint)
-    pub fn register_paint(&self, name: &str, paint_ctor: &Any) -> Undefined {
+    pub fn register_paint(&self, name: &DOMString, paint_ctor: &Any) -> Undefined {
         self.inner
             .call("registerPaint", &[name.into(), paint_ctor.into()])
             .as_::<Undefined>()

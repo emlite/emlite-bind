@@ -157,7 +157,7 @@ impl MediaSource {
 impl MediaSource {
     /// The addSourceBuffer method.
     /// [`MediaSource.addSourceBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/addSourceBuffer)
-    pub fn add_source_buffer(&self, type_: &str) -> SourceBuffer {
+    pub fn add_source_buffer(&self, type_: &DOMString) -> SourceBuffer {
         self.inner
             .call("addSourceBuffer", &[type_.into()])
             .as_::<SourceBuffer>()
@@ -207,7 +207,7 @@ impl MediaSource {
 impl MediaSource {
     /// The isTypeSupported method.
     /// [`MediaSource.isTypeSupported`](https://developer.mozilla.org/en-US/docs/Web/API/MediaSource/isTypeSupported)
-    pub fn is_type_supported(type_: &str) -> bool {
+    pub fn is_type_supported(type_: &DOMString) -> bool {
         Any::global("MediaSource")
             .call("isTypeSupported", &[type_.into()])
             .as_::<bool>()

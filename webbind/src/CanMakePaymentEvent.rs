@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CanMakePaymentEvent);
 
 impl CanMakePaymentEvent {
     /// The `new CanMakePaymentEvent(..)` constructor, creating a new CanMakePaymentEvent instance
-    pub fn new(type_: &str) -> CanMakePaymentEvent {
+    pub fn new(type_: &DOMString) -> CanMakePaymentEvent {
         Self {
             inner: Any::global("CanMakePaymentEvent")
                 .new(&[type_.into()])

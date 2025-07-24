@@ -60,11 +60,11 @@ impl BackgroundFetchUIOptions {
     }
 }
 impl BackgroundFetchUIOptions {
-    pub fn title(&self) -> String {
-        self.inner.get("title").as_::<String>()
+    pub fn title(&self) -> DOMString {
+        self.inner.get("title").as_::<DOMString>()
     }
 
-    pub fn set_title(&mut self, value: &str) {
+    pub fn set_title(&mut self, value: &DOMString) {
         self.inner.set("title", value);
     }
 }
@@ -125,7 +125,7 @@ jsbind::utils::impl_dyn_cast!(BackgroundFetchUpdateUIEvent);
 
 impl BackgroundFetchUpdateUIEvent {
     /// The `new BackgroundFetchUpdateUIEvent(..)` constructor, creating a new BackgroundFetchUpdateUIEvent instance
-    pub fn new(type_: &str, init: &Any) -> BackgroundFetchUpdateUIEvent {
+    pub fn new(type_: &DOMString, init: &Any) -> BackgroundFetchUpdateUIEvent {
         Self {
             inner: Any::global("BackgroundFetchUpdateUIEvent")
                 .new(&[type_.into(), init.into()])

@@ -135,8 +135,8 @@ jsbind::utils::impl_dyn_cast!(BackgroundFetchRegistration);
 impl BackgroundFetchRegistration {
     /// Getter of the `id` attribute.
     /// [`BackgroundFetchRegistration.id`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/id)
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 }
 impl BackgroundFetchRegistration {

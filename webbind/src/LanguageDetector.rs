@@ -119,13 +119,13 @@ impl From<&LanguageDetectorCreateCoreOptions> for Any {
 }
 
 impl LanguageDetectorCreateCoreOptions {
-    pub fn expected_input_languages(&self) -> Sequence<String> {
+    pub fn expected_input_languages(&self) -> Sequence<DOMString> {
         self.inner
             .get("expectedInputLanguages")
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_expected_input_languages(&mut self, value: &Sequence<String>) {
+    pub fn set_expected_input_languages(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("expectedInputLanguages", value);
     }
 }
@@ -180,11 +180,11 @@ impl From<&LanguageDetectionResult> for Any {
 }
 
 impl LanguageDetectionResult {
-    pub fn detected_language(&self) -> String {
-        self.inner.get("detectedLanguage").as_::<String>()
+    pub fn detected_language(&self) -> DOMString {
+        self.inner.get("detectedLanguage").as_::<DOMString>()
     }
 
-    pub fn set_detected_language(&mut self, value: &str) {
+    pub fn set_detected_language(&mut self, value: &DOMString) {
         self.inner.set("detectedLanguage", value);
     }
 }
@@ -346,7 +346,7 @@ impl LanguageDetector {
 impl LanguageDetector {
     /// The detect method.
     /// [`LanguageDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/detect)
-    pub fn detect0(&self, input: &str) -> Promise<Sequence<LanguageDetectionResult>> {
+    pub fn detect0(&self, input: &DOMString) -> Promise<Sequence<LanguageDetectionResult>> {
         self.inner
             .call("detect", &[input.into()])
             .as_::<Promise<Sequence<LanguageDetectionResult>>>()
@@ -355,7 +355,7 @@ impl LanguageDetector {
     /// [`LanguageDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/detect)
     pub fn detect1(
         &self,
-        input: &str,
+        input: &DOMString,
         options: &LanguageDetectorDetectOptions,
     ) -> Promise<Sequence<LanguageDetectionResult>> {
         self.inner
@@ -366,16 +366,16 @@ impl LanguageDetector {
 impl LanguageDetector {
     /// Getter of the `expectedInputLanguages` attribute.
     /// [`LanguageDetector.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/expectedInputLanguages)
-    pub fn expected_input_languages(&self) -> FrozenArray<String> {
+    pub fn expected_input_languages(&self) -> FrozenArray<DOMString> {
         self.inner
             .get("expectedInputLanguages")
-            .as_::<FrozenArray<String>>()
+            .as_::<FrozenArray<DOMString>>()
     }
 }
 impl LanguageDetector {
     /// The measureInputUsage method.
     /// [`LanguageDetector.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/measureInputUsage)
-    pub fn measure_input_usage0(&self, input: &str) -> Promise<f64> {
+    pub fn measure_input_usage0(&self, input: &DOMString) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into()])
             .as_::<Promise<f64>>()
@@ -384,7 +384,7 @@ impl LanguageDetector {
     /// [`LanguageDetector.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/LanguageDetector/measureInputUsage)
     pub fn measure_input_usage1(
         &self,
-        input: &str,
+        input: &DOMString,
         options: &LanguageDetectorDetectOptions,
     ) -> Promise<f64> {
         self.inner

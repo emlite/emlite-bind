@@ -68,13 +68,13 @@ impl HTMLIFrameElement {
 impl HTMLIFrameElement {
     /// Getter of the `src` attribute.
     /// [`HTMLIFrameElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/src)
-    pub fn src(&self) -> String {
-        self.inner.get("src").as_::<String>()
+    pub fn src(&self) -> USVString {
+        self.inner.get("src").as_::<USVString>()
     }
 
     /// Setter of the `src` attribute.
     /// [`HTMLIFrameElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/src)
-    pub fn set_src(&mut self, value: &str) {
+    pub fn set_src(&mut self, value: &USVString) {
         self.inner.set("src", value);
     }
 }
@@ -94,13 +94,13 @@ impl HTMLIFrameElement {
 impl HTMLIFrameElement {
     /// Getter of the `name` attribute.
     /// [`HTMLIFrameElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`HTMLIFrameElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/name)
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &DOMString) {
         self.inner.set("name", value);
     }
 }
@@ -114,13 +114,13 @@ impl HTMLIFrameElement {
 impl HTMLIFrameElement {
     /// Getter of the `allow` attribute.
     /// [`HTMLIFrameElement.allow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/allow)
-    pub fn allow(&self) -> String {
-        self.inner.get("allow").as_::<String>()
+    pub fn allow(&self) -> DOMString {
+        self.inner.get("allow").as_::<DOMString>()
     }
 
     /// Setter of the `allow` attribute.
     /// [`HTMLIFrameElement.allow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/allow)
-    pub fn set_allow(&mut self, value: &str) {
+    pub fn set_allow(&mut self, value: &DOMString) {
         self.inner.set("allow", value);
     }
 }
@@ -140,52 +140,52 @@ impl HTMLIFrameElement {
 impl HTMLIFrameElement {
     /// Getter of the `width` attribute.
     /// [`HTMLIFrameElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/width)
-    pub fn width(&self) -> String {
-        self.inner.get("width").as_::<String>()
+    pub fn width(&self) -> DOMString {
+        self.inner.get("width").as_::<DOMString>()
     }
 
     /// Setter of the `width` attribute.
     /// [`HTMLIFrameElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/width)
-    pub fn set_width(&mut self, value: &str) {
+    pub fn set_width(&mut self, value: &DOMString) {
         self.inner.set("width", value);
     }
 }
 impl HTMLIFrameElement {
     /// Getter of the `height` attribute.
     /// [`HTMLIFrameElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/height)
-    pub fn height(&self) -> String {
-        self.inner.get("height").as_::<String>()
+    pub fn height(&self) -> DOMString {
+        self.inner.get("height").as_::<DOMString>()
     }
 
     /// Setter of the `height` attribute.
     /// [`HTMLIFrameElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/height)
-    pub fn set_height(&mut self, value: &str) {
+    pub fn set_height(&mut self, value: &DOMString) {
         self.inner.set("height", value);
     }
 }
 impl HTMLIFrameElement {
     /// Getter of the `referrerPolicy` attribute.
     /// [`HTMLIFrameElement.referrerPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/referrerPolicy)
-    pub fn referrer_policy(&self) -> String {
-        self.inner.get("referrerPolicy").as_::<String>()
+    pub fn referrer_policy(&self) -> DOMString {
+        self.inner.get("referrerPolicy").as_::<DOMString>()
     }
 
     /// Setter of the `referrerPolicy` attribute.
     /// [`HTMLIFrameElement.referrerPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/referrerPolicy)
-    pub fn set_referrer_policy(&mut self, value: &str) {
+    pub fn set_referrer_policy(&mut self, value: &DOMString) {
         self.inner.set("referrerPolicy", value);
     }
 }
 impl HTMLIFrameElement {
     /// Getter of the `loading` attribute.
     /// [`HTMLIFrameElement.loading`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/loading)
-    pub fn loading(&self) -> String {
-        self.inner.get("loading").as_::<String>()
+    pub fn loading(&self) -> DOMString {
+        self.inner.get("loading").as_::<DOMString>()
     }
 
     /// Setter of the `loading` attribute.
     /// [`HTMLIFrameElement.loading`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/loading)
-    pub fn set_loading(&mut self, value: &str) {
+    pub fn set_loading(&mut self, value: &DOMString) {
         self.inner.set("loading", value);
     }
 }
@@ -226,91 +226,91 @@ impl HTMLIFrameElement {
 impl HTMLIFrameElement {
     /// Getter of the `csp` attribute.
     /// [`HTMLIFrameElement.csp`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/csp)
-    pub fn csp(&self) -> String {
-        self.inner.get("csp").as_::<String>()
+    pub fn csp(&self) -> DOMString {
+        self.inner.get("csp").as_::<DOMString>()
     }
 
     /// Setter of the `csp` attribute.
     /// [`HTMLIFrameElement.csp`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/csp)
-    pub fn set_csp(&mut self, value: &str) {
+    pub fn set_csp(&mut self, value: &DOMString) {
         self.inner.set("csp", value);
     }
 }
 impl HTMLIFrameElement {
     /// Getter of the `align` attribute.
     /// [`HTMLIFrameElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/align)
-    pub fn align(&self) -> String {
-        self.inner.get("align").as_::<String>()
+    pub fn align(&self) -> DOMString {
+        self.inner.get("align").as_::<DOMString>()
     }
 
     /// Setter of the `align` attribute.
     /// [`HTMLIFrameElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/align)
-    pub fn set_align(&mut self, value: &str) {
+    pub fn set_align(&mut self, value: &DOMString) {
         self.inner.set("align", value);
     }
 }
 impl HTMLIFrameElement {
     /// Getter of the `scrolling` attribute.
     /// [`HTMLIFrameElement.scrolling`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/scrolling)
-    pub fn scrolling(&self) -> String {
-        self.inner.get("scrolling").as_::<String>()
+    pub fn scrolling(&self) -> DOMString {
+        self.inner.get("scrolling").as_::<DOMString>()
     }
 
     /// Setter of the `scrolling` attribute.
     /// [`HTMLIFrameElement.scrolling`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/scrolling)
-    pub fn set_scrolling(&mut self, value: &str) {
+    pub fn set_scrolling(&mut self, value: &DOMString) {
         self.inner.set("scrolling", value);
     }
 }
 impl HTMLIFrameElement {
     /// Getter of the `frameBorder` attribute.
     /// [`HTMLIFrameElement.frameBorder`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/frameBorder)
-    pub fn frame_border(&self) -> String {
-        self.inner.get("frameBorder").as_::<String>()
+    pub fn frame_border(&self) -> DOMString {
+        self.inner.get("frameBorder").as_::<DOMString>()
     }
 
     /// Setter of the `frameBorder` attribute.
     /// [`HTMLIFrameElement.frameBorder`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/frameBorder)
-    pub fn set_frame_border(&mut self, value: &str) {
+    pub fn set_frame_border(&mut self, value: &DOMString) {
         self.inner.set("frameBorder", value);
     }
 }
 impl HTMLIFrameElement {
     /// Getter of the `longDesc` attribute.
     /// [`HTMLIFrameElement.longDesc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/longDesc)
-    pub fn long_desc(&self) -> String {
-        self.inner.get("longDesc").as_::<String>()
+    pub fn long_desc(&self) -> USVString {
+        self.inner.get("longDesc").as_::<USVString>()
     }
 
     /// Setter of the `longDesc` attribute.
     /// [`HTMLIFrameElement.longDesc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/longDesc)
-    pub fn set_long_desc(&mut self, value: &str) {
+    pub fn set_long_desc(&mut self, value: &USVString) {
         self.inner.set("longDesc", value);
     }
 }
 impl HTMLIFrameElement {
     /// Getter of the `marginHeight` attribute.
     /// [`HTMLIFrameElement.marginHeight`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/marginHeight)
-    pub fn margin_height(&self) -> String {
-        self.inner.get("marginHeight").as_::<String>()
+    pub fn margin_height(&self) -> DOMString {
+        self.inner.get("marginHeight").as_::<DOMString>()
     }
 
     /// Setter of the `marginHeight` attribute.
     /// [`HTMLIFrameElement.marginHeight`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/marginHeight)
-    pub fn set_margin_height(&mut self, value: &str) {
+    pub fn set_margin_height(&mut self, value: &DOMString) {
         self.inner.set("marginHeight", value);
     }
 }
 impl HTMLIFrameElement {
     /// Getter of the `marginWidth` attribute.
     /// [`HTMLIFrameElement.marginWidth`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/marginWidth)
-    pub fn margin_width(&self) -> String {
-        self.inner.get("marginWidth").as_::<String>()
+    pub fn margin_width(&self) -> DOMString {
+        self.inner.get("marginWidth").as_::<DOMString>()
     }
 
     /// Setter of the `marginWidth` attribute.
     /// [`HTMLIFrameElement.marginWidth`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/marginWidth)
-    pub fn set_margin_width(&mut self, value: &str) {
+    pub fn set_margin_width(&mut self, value: &DOMString) {
         self.inner.set("marginWidth", value);
     }
 }
@@ -326,13 +326,13 @@ impl HTMLIFrameElement {
 impl HTMLIFrameElement {
     /// Getter of the `privateToken` attribute.
     /// [`HTMLIFrameElement.privateToken`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/privateToken)
-    pub fn private_token(&self) -> String {
-        self.inner.get("privateToken").as_::<String>()
+    pub fn private_token(&self) -> DOMString {
+        self.inner.get("privateToken").as_::<DOMString>()
     }
 
     /// Setter of the `privateToken` attribute.
     /// [`HTMLIFrameElement.privateToken`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/privateToken)
-    pub fn set_private_token(&mut self, value: &str) {
+    pub fn set_private_token(&mut self, value: &DOMString) {
         self.inner.set("privateToken", value);
     }
 }

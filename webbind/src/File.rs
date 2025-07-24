@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(File);
 
 impl File {
     /// The `new File(..)` constructor, creating a new File instance
-    pub fn new0(file_bits: &Sequence<Any>, file_name: &str) -> File {
+    pub fn new0(file_bits: &Sequence<Any>, file_name: &USVString) -> File {
         Self {
             inner: Any::global("File")
                 .new(&[file_bits.into(), file_name.into()])
@@ -66,7 +66,7 @@ impl File {
     }
 
     /// The `new File(..)` constructor, creating a new File instance
-    pub fn new1(file_bits: &Sequence<Any>, file_name: &str, options: &Any) -> File {
+    pub fn new1(file_bits: &Sequence<Any>, file_name: &USVString, options: &Any) -> File {
         Self {
             inner: Any::global("File")
                 .new(&[file_bits.into(), file_name.into(), options.into()])
@@ -77,8 +77,8 @@ impl File {
 impl File {
     /// Getter of the `name` attribute.
     /// [`File.name`](https://developer.mozilla.org/en-US/docs/Web/API/File/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl File {
@@ -91,7 +91,7 @@ impl File {
 impl File {
     /// Getter of the `webkitRelativePath` attribute.
     /// [`File.webkitRelativePath`](https://developer.mozilla.org/en-US/docs/Web/API/File/webkitRelativePath)
-    pub fn webkit_relative_path(&self) -> String {
-        self.inner.get("webkitRelativePath").as_::<String>()
+    pub fn webkit_relative_path(&self) -> USVString {
+        self.inner.get("webkitRelativePath").as_::<USVString>()
     }
 }

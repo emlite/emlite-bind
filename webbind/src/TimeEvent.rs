@@ -72,7 +72,12 @@ impl TimeEvent {
 impl TimeEvent {
     /// The initTimeEvent method.
     /// [`TimeEvent.initTimeEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TimeEvent/initTimeEvent)
-    pub fn init_time_event(&self, type_arg: &str, view_arg: &Window, detail_arg: i32) -> Undefined {
+    pub fn init_time_event(
+        &self,
+        type_arg: &DOMString,
+        view_arg: &Window,
+        detail_arg: i32,
+    ) -> Undefined {
         self.inner
             .call(
                 "initTimeEvent",

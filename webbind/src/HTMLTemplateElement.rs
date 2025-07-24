@@ -75,13 +75,13 @@ impl HTMLTemplateElement {
 impl HTMLTemplateElement {
     /// Getter of the `shadowRootMode` attribute.
     /// [`HTMLTemplateElement.shadowRootMode`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement/shadowRootMode)
-    pub fn shadow_root_mode(&self) -> String {
-        self.inner.get("shadowRootMode").as_::<String>()
+    pub fn shadow_root_mode(&self) -> DOMString {
+        self.inner.get("shadowRootMode").as_::<DOMString>()
     }
 
     /// Setter of the `shadowRootMode` attribute.
     /// [`HTMLTemplateElement.shadowRootMode`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement/shadowRootMode)
-    pub fn set_shadow_root_mode(&mut self, value: &str) {
+    pub fn set_shadow_root_mode(&mut self, value: &DOMString) {
         self.inner.set("shadowRootMode", value);
     }
 }
@@ -127,15 +127,15 @@ impl HTMLTemplateElement {
 impl HTMLTemplateElement {
     /// Getter of the `shadowRootCustomElementRegistry` attribute.
     /// [`HTMLTemplateElement.shadowRootCustomElementRegistry`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement/shadowRootCustomElementRegistry)
-    pub fn shadow_root_custom_element_registry(&self) -> String {
+    pub fn shadow_root_custom_element_registry(&self) -> DOMString {
         self.inner
             .get("shadowRootCustomElementRegistry")
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 
     /// Setter of the `shadowRootCustomElementRegistry` attribute.
     /// [`HTMLTemplateElement.shadowRootCustomElementRegistry`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement/shadowRootCustomElementRegistry)
-    pub fn set_shadow_root_custom_element_registry(&mut self, value: &str) {
+    pub fn set_shadow_root_custom_element_registry(&mut self, value: &DOMString) {
         self.inner.set("shadowRootCustomElementRegistry", value);
     }
 }

@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(CSSPositionTryRule);
 impl CSSPositionTryRule {
     /// Getter of the `name` attribute.
     /// [`CSSPositionTryRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPositionTryRule/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> CSSOMString {
+        self.inner.get("name").as_::<CSSOMString>()
     }
 }
 impl CSSPositionTryRule {

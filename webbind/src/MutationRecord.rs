@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(MutationRecord);
 impl MutationRecord {
     /// Getter of the `type` attribute.
     /// [`MutationRecord.type`](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/type)
-    pub fn type_(&self) -> String {
-        self.inner.get("type").as_::<String>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 }
 impl MutationRecord {
@@ -100,21 +100,21 @@ impl MutationRecord {
 impl MutationRecord {
     /// Getter of the `attributeName` attribute.
     /// [`MutationRecord.attributeName`](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/attributeName)
-    pub fn attribute_name(&self) -> String {
-        self.inner.get("attributeName").as_::<String>()
+    pub fn attribute_name(&self) -> DOMString {
+        self.inner.get("attributeName").as_::<DOMString>()
     }
 }
 impl MutationRecord {
     /// Getter of the `attributeNamespace` attribute.
     /// [`MutationRecord.attributeNamespace`](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/attributeNamespace)
-    pub fn attribute_namespace(&self) -> String {
-        self.inner.get("attributeNamespace").as_::<String>()
+    pub fn attribute_namespace(&self) -> DOMString {
+        self.inner.get("attributeNamespace").as_::<DOMString>()
     }
 }
 impl MutationRecord {
     /// Getter of the `oldValue` attribute.
     /// [`MutationRecord.oldValue`](https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord/oldValue)
-    pub fn old_value(&self) -> String {
-        self.inner.get("oldValue").as_::<String>()
+    pub fn old_value(&self) -> DOMString {
+        self.inner.get("oldValue").as_::<DOMString>()
     }
 }

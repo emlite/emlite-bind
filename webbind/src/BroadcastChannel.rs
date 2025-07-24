@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(BroadcastChannel);
 
 impl BroadcastChannel {
     /// The `new BroadcastChannel(..)` constructor, creating a new BroadcastChannel instance
-    pub fn new(name: &str) -> BroadcastChannel {
+    pub fn new(name: &DOMString) -> BroadcastChannel {
         Self {
             inner: Any::global("BroadcastChannel")
                 .new(&[name.into()])
@@ -68,8 +68,8 @@ impl BroadcastChannel {
 impl BroadcastChannel {
     /// Getter of the `name` attribute.
     /// [`BroadcastChannel.name`](https://developer.mozilla.org/en-US/docs/Web/API/BroadcastChannel/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl BroadcastChannel {

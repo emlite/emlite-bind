@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(EventSource);
 
 impl EventSource {
     /// The `new EventSource(..)` constructor, creating a new EventSource instance
-    pub fn new0(url: &str) -> EventSource {
+    pub fn new0(url: &USVString) -> EventSource {
         Self {
             inner: Any::global("EventSource")
                 .new(&[url.into()])
@@ -66,7 +66,7 @@ impl EventSource {
     }
 
     /// The `new EventSource(..)` constructor, creating a new EventSource instance
-    pub fn new1(url: &str, event_source_init_dict: &Any) -> EventSource {
+    pub fn new1(url: &USVString, event_source_init_dict: &Any) -> EventSource {
         Self {
             inner: Any::global("EventSource")
                 .new(&[url.into(), event_source_init_dict.into()])
@@ -77,8 +77,8 @@ impl EventSource {
 impl EventSource {
     /// Getter of the `url` attribute.
     /// [`EventSource.url`](https://developer.mozilla.org/en-US/docs/Web/API/EventSource/url)
-    pub fn url(&self) -> String {
-        self.inner.get("url").as_::<String>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 }
 impl EventSource {

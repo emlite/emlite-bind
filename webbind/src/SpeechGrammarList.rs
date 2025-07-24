@@ -82,14 +82,14 @@ impl SpeechGrammarList {
 impl SpeechGrammarList {
     /// The addFromURI method.
     /// [`SpeechGrammarList.addFromURI`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/addFromURI)
-    pub fn add_from_uri0(&self, src: &str) -> Undefined {
+    pub fn add_from_uri0(&self, src: &DOMString) -> Undefined {
         self.inner
             .call("addFromURI", &[src.into()])
             .as_::<Undefined>()
     }
     /// The addFromURI method.
     /// [`SpeechGrammarList.addFromURI`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/addFromURI)
-    pub fn add_from_uri1(&self, src: &str, weight: f32) -> Undefined {
+    pub fn add_from_uri1(&self, src: &DOMString, weight: f32) -> Undefined {
         self.inner
             .call("addFromURI", &[src.into(), weight.into()])
             .as_::<Undefined>()
@@ -98,14 +98,14 @@ impl SpeechGrammarList {
 impl SpeechGrammarList {
     /// The addFromString method.
     /// [`SpeechGrammarList.addFromString`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/addFromString)
-    pub fn add_from_string0(&self, string: &str) -> Undefined {
+    pub fn add_from_string0(&self, string: &DOMString) -> Undefined {
         self.inner
             .call("addFromString", &[string.into()])
             .as_::<Undefined>()
     }
     /// The addFromString method.
     /// [`SpeechGrammarList.addFromString`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammarList/addFromString)
-    pub fn add_from_string1(&self, string: &str, weight: f32) -> Undefined {
+    pub fn add_from_string1(&self, string: &DOMString, weight: f32) -> Undefined {
         self.inner
             .call("addFromString", &[string.into(), weight.into()])
             .as_::<Undefined>()

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CSSKeywordValue);
 
 impl CSSKeywordValue {
     /// The `new CSSKeywordValue(..)` constructor, creating a new CSSKeywordValue instance
-    pub fn new(value: &str) -> CSSKeywordValue {
+    pub fn new(value: &USVString) -> CSSKeywordValue {
         Self {
             inner: Any::global("CSSKeywordValue")
                 .new(&[value.into()])
@@ -68,13 +68,13 @@ impl CSSKeywordValue {
 impl CSSKeywordValue {
     /// Getter of the `value` attribute.
     /// [`CSSKeywordValue.value`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeywordValue/value)
-    pub fn value(&self) -> String {
-        self.inner.get("value").as_::<String>()
+    pub fn value(&self) -> USVString {
+        self.inner.get("value").as_::<USVString>()
     }
 
     /// Setter of the `value` attribute.
     /// [`CSSKeywordValue.value`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeywordValue/value)
-    pub fn set_value(&mut self, value: &str) {
+    pub fn set_value(&mut self, value: &USVString) {
         self.inner.set("value", value);
     }
 }

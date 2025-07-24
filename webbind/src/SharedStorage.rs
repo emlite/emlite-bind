@@ -110,11 +110,11 @@ impl From<&SharedStorageModifierMethodOptions> for Any {
 }
 
 impl SharedStorageModifierMethodOptions {
-    pub fn with_lock(&self) -> String {
-        self.inner.get("withLock").as_::<String>()
+    pub fn with_lock(&self) -> DOMString {
+        self.inner.get("withLock").as_::<DOMString>()
     }
 
-    pub fn set_with_lock(&mut self, value: &str) {
+    pub fn set_with_lock(&mut self, value: &DOMString) {
         self.inner.set("withLock", value);
     }
 }
@@ -169,11 +169,11 @@ impl From<&SharedStorageWorkletOptions> for Any {
 }
 
 impl SharedStorageWorkletOptions {
-    pub fn data_origin(&self) -> String {
-        self.inner.get("dataOrigin").as_::<String>()
+    pub fn data_origin(&self) -> USVString {
+        self.inner.get("dataOrigin").as_::<USVString>()
     }
 
-    pub fn set_data_origin(&mut self, value: &str) {
+    pub fn set_data_origin(&mut self, value: &USVString) {
         self.inner.set("dataOrigin", value);
     }
 }
@@ -235,16 +235,16 @@ jsbind::utils::impl_dyn_cast!(SharedStorage);
 impl SharedStorage {
     /// The get method.
     /// [`SharedStorage.get`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/get)
-    pub fn get(&self, key: &str) -> Promise<String> {
+    pub fn get(&self, key: &DOMString) -> Promise<DOMString> {
         self.inner
             .call("get", &[key.into()])
-            .as_::<Promise<String>>()
+            .as_::<Promise<DOMString>>()
     }
 }
 impl SharedStorage {
     /// The set method.
     /// [`SharedStorage.set`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/set)
-    pub fn set0(&self, key: &str, value: &str) -> Promise<Any> {
+    pub fn set0(&self, key: &DOMString, value: &DOMString) -> Promise<Any> {
         self.inner
             .call("set", &[key.into(), value.into()])
             .as_::<Promise<Any>>()
@@ -253,8 +253,8 @@ impl SharedStorage {
     /// [`SharedStorage.set`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/set)
     pub fn set1(
         &self,
-        key: &str,
-        value: &str,
+        key: &DOMString,
+        value: &DOMString,
         options: &SharedStorageSetMethodOptions,
     ) -> Promise<Any> {
         self.inner
@@ -265,7 +265,7 @@ impl SharedStorage {
 impl SharedStorage {
     /// The append method.
     /// [`SharedStorage.append`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/append)
-    pub fn append0(&self, key: &str, value: &str) -> Promise<Any> {
+    pub fn append0(&self, key: &DOMString, value: &DOMString) -> Promise<Any> {
         self.inner
             .call("append", &[key.into(), value.into()])
             .as_::<Promise<Any>>()
@@ -274,8 +274,8 @@ impl SharedStorage {
     /// [`SharedStorage.append`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/append)
     pub fn append1(
         &self,
-        key: &str,
-        value: &str,
+        key: &DOMString,
+        value: &DOMString,
         options: &SharedStorageModifierMethodOptions,
     ) -> Promise<Any> {
         self.inner
@@ -286,14 +286,18 @@ impl SharedStorage {
 impl SharedStorage {
     /// The delete method.
     /// [`SharedStorage.delete`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/delete)
-    pub fn delete0(&self, key: &str) -> Promise<Any> {
+    pub fn delete0(&self, key: &DOMString) -> Promise<Any> {
         self.inner
             .call("delete", &[key.into()])
             .as_::<Promise<Any>>()
     }
     /// The delete method.
     /// [`SharedStorage.delete`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/delete)
-    pub fn delete1(&self, key: &str, options: &SharedStorageModifierMethodOptions) -> Promise<Any> {
+    pub fn delete1(
+        &self,
+        key: &DOMString,
+        options: &SharedStorageModifierMethodOptions,
+    ) -> Promise<Any> {
         self.inner
             .call("delete", &[key.into(), options.into()])
             .as_::<Promise<Any>>()
@@ -338,7 +342,7 @@ impl SharedStorage {
     /// [`SharedStorage.selectURL`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/selectURL)
     pub fn select_url0(
         &self,
-        name: &str,
+        name: &DOMString,
         urls: &Sequence<SharedStorageUrlWithMetadata>,
     ) -> Promise<Any> {
         self.inner
@@ -349,7 +353,7 @@ impl SharedStorage {
     /// [`SharedStorage.selectURL`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/selectURL)
     pub fn select_url1(
         &self,
-        name: &str,
+        name: &DOMString,
         urls: &Sequence<SharedStorageUrlWithMetadata>,
         options: &SharedStorageRunOperationMethodOptions,
     ) -> Promise<Any> {
@@ -361,14 +365,14 @@ impl SharedStorage {
 impl SharedStorage {
     /// The run method.
     /// [`SharedStorage.run`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/run)
-    pub fn run0(&self, name: &str) -> Promise<Any> {
+    pub fn run0(&self, name: &DOMString) -> Promise<Any> {
         self.inner.call("run", &[name.into()]).as_::<Promise<Any>>()
     }
     /// The run method.
     /// [`SharedStorage.run`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/run)
     pub fn run1(
         &self,
-        name: &str,
+        name: &DOMString,
         options: &SharedStorageRunOperationMethodOptions,
     ) -> Promise<Any> {
         self.inner
@@ -379,7 +383,7 @@ impl SharedStorage {
 impl SharedStorage {
     /// The createWorklet method.
     /// [`SharedStorage.createWorklet`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/createWorklet)
-    pub fn create_worklet0(&self, module_url: &str) -> Promise<SharedStorageWorklet> {
+    pub fn create_worklet0(&self, module_url: &USVString) -> Promise<SharedStorageWorklet> {
         self.inner
             .call("createWorklet", &[module_url.into()])
             .as_::<Promise<SharedStorageWorklet>>()
@@ -388,7 +392,7 @@ impl SharedStorage {
     /// [`SharedStorage.createWorklet`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorage/createWorklet)
     pub fn create_worklet1(
         &self,
-        module_url: &str,
+        module_url: &USVString,
         options: &SharedStorageWorkletOptions,
     ) -> Promise<SharedStorageWorklet> {
         self.inner

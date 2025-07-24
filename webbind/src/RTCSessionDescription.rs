@@ -75,8 +75,8 @@ impl RTCSessionDescription {
 impl RTCSessionDescription {
     /// Getter of the `sdp` attribute.
     /// [`RTCSessionDescription.sdp`](https://developer.mozilla.org/en-US/docs/Web/API/RTCSessionDescription/sdp)
-    pub fn sdp(&self) -> String {
-        self.inner.get("sdp").as_::<String>()
+    pub fn sdp(&self) -> DOMString {
+        self.inner.get("sdp").as_::<DOMString>()
     }
 }
 impl RTCSessionDescription {

@@ -68,13 +68,13 @@ impl HTMLTitleElement {
 impl HTMLTitleElement {
     /// Getter of the `text` attribute.
     /// [`HTMLTitleElement.text`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTitleElement/text)
-    pub fn text(&self) -> String {
-        self.inner.get("text").as_::<String>()
+    pub fn text(&self) -> DOMString {
+        self.inner.get("text").as_::<DOMString>()
     }
 
     /// Setter of the `text` attribute.
     /// [`HTMLTitleElement.text`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTitleElement/text)
-    pub fn set_text(&mut self, value: &str) {
+    pub fn set_text(&mut self, value: &DOMString) {
         self.inner.set("text", value);
     }
 }

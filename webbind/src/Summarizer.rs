@@ -69,11 +69,11 @@ impl SummarizerCreateOptions {
     }
 }
 impl SummarizerCreateOptions {
-    pub fn shared_context(&self) -> String {
-        self.inner.get("sharedContext").as_::<String>()
+    pub fn shared_context(&self) -> DOMString {
+        self.inner.get("sharedContext").as_::<DOMString>()
     }
 
-    pub fn set_shared_context(&mut self, value: &str) {
+    pub fn set_shared_context(&mut self, value: &DOMString) {
         self.inner.set("sharedContext", value);
     }
 }
@@ -155,33 +155,33 @@ impl SummarizerCreateCoreOptions {
     }
 }
 impl SummarizerCreateCoreOptions {
-    pub fn expected_input_languages(&self) -> Sequence<String> {
+    pub fn expected_input_languages(&self) -> Sequence<DOMString> {
         self.inner
             .get("expectedInputLanguages")
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_expected_input_languages(&mut self, value: &Sequence<String>) {
+    pub fn set_expected_input_languages(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("expectedInputLanguages", value);
     }
 }
 impl SummarizerCreateCoreOptions {
-    pub fn expected_context_languages(&self) -> Sequence<String> {
+    pub fn expected_context_languages(&self) -> Sequence<DOMString> {
         self.inner
             .get("expectedContextLanguages")
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_expected_context_languages(&mut self, value: &Sequence<String>) {
+    pub fn set_expected_context_languages(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("expectedContextLanguages", value);
     }
 }
 impl SummarizerCreateCoreOptions {
-    pub fn output_language(&self) -> String {
-        self.inner.get("outputLanguage").as_::<String>()
+    pub fn output_language(&self) -> DOMString {
+        self.inner.get("outputLanguage").as_::<DOMString>()
     }
 
-    pub fn set_output_language(&mut self, value: &str) {
+    pub fn set_output_language(&mut self, value: &DOMString) {
         self.inner.set("outputLanguage", value);
     }
 }
@@ -245,11 +245,11 @@ impl SummarizerSummarizeOptions {
     }
 }
 impl SummarizerSummarizeOptions {
-    pub fn context(&self) -> String {
-        self.inner.get("context").as_::<String>()
+    pub fn context(&self) -> DOMString {
+        self.inner.get("context").as_::<DOMString>()
     }
 
-    pub fn set_context(&mut self, value: &str) {
+    pub fn set_context(&mut self, value: &DOMString) {
         self.inner.set("context", value);
     }
 }
@@ -343,23 +343,27 @@ impl Summarizer {
 impl Summarizer {
     /// The summarize method.
     /// [`Summarizer.summarize`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/summarize)
-    pub fn summarize0(&self, input: &str) -> Promise<String> {
+    pub fn summarize0(&self, input: &DOMString) -> Promise<DOMString> {
         self.inner
             .call("summarize", &[input.into()])
-            .as_::<Promise<String>>()
+            .as_::<Promise<DOMString>>()
     }
     /// The summarize method.
     /// [`Summarizer.summarize`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/summarize)
-    pub fn summarize1(&self, input: &str, options: &SummarizerSummarizeOptions) -> Promise<String> {
+    pub fn summarize1(
+        &self,
+        input: &DOMString,
+        options: &SummarizerSummarizeOptions,
+    ) -> Promise<DOMString> {
         self.inner
             .call("summarize", &[input.into(), options.into()])
-            .as_::<Promise<String>>()
+            .as_::<Promise<DOMString>>()
     }
 }
 impl Summarizer {
     /// The summarizeStreaming method.
     /// [`Summarizer.summarizeStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/summarizeStreaming)
-    pub fn summarize_streaming0(&self, input: &str) -> ReadableStream {
+    pub fn summarize_streaming0(&self, input: &DOMString) -> ReadableStream {
         self.inner
             .call("summarizeStreaming", &[input.into()])
             .as_::<ReadableStream>()
@@ -368,7 +372,7 @@ impl Summarizer {
     /// [`Summarizer.summarizeStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/summarizeStreaming)
     pub fn summarize_streaming1(
         &self,
-        input: &str,
+        input: &DOMString,
         options: &SummarizerSummarizeOptions,
     ) -> ReadableStream {
         self.inner
@@ -379,8 +383,8 @@ impl Summarizer {
 impl Summarizer {
     /// Getter of the `sharedContext` attribute.
     /// [`Summarizer.sharedContext`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/sharedContext)
-    pub fn shared_context(&self) -> String {
-        self.inner.get("sharedContext").as_::<String>()
+    pub fn shared_context(&self) -> DOMString {
+        self.inner.get("sharedContext").as_::<DOMString>()
     }
 }
 impl Summarizer {
@@ -407,32 +411,32 @@ impl Summarizer {
 impl Summarizer {
     /// Getter of the `expectedInputLanguages` attribute.
     /// [`Summarizer.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/expectedInputLanguages)
-    pub fn expected_input_languages(&self) -> FrozenArray<String> {
+    pub fn expected_input_languages(&self) -> FrozenArray<DOMString> {
         self.inner
             .get("expectedInputLanguages")
-            .as_::<FrozenArray<String>>()
+            .as_::<FrozenArray<DOMString>>()
     }
 }
 impl Summarizer {
     /// Getter of the `expectedContextLanguages` attribute.
     /// [`Summarizer.expectedContextLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/expectedContextLanguages)
-    pub fn expected_context_languages(&self) -> FrozenArray<String> {
+    pub fn expected_context_languages(&self) -> FrozenArray<DOMString> {
         self.inner
             .get("expectedContextLanguages")
-            .as_::<FrozenArray<String>>()
+            .as_::<FrozenArray<DOMString>>()
     }
 }
 impl Summarizer {
     /// Getter of the `outputLanguage` attribute.
     /// [`Summarizer.outputLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/outputLanguage)
-    pub fn output_language(&self) -> String {
-        self.inner.get("outputLanguage").as_::<String>()
+    pub fn output_language(&self) -> DOMString {
+        self.inner.get("outputLanguage").as_::<DOMString>()
     }
 }
 impl Summarizer {
     /// The measureInputUsage method.
     /// [`Summarizer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/measureInputUsage)
-    pub fn measure_input_usage0(&self, input: &str) -> Promise<f64> {
+    pub fn measure_input_usage0(&self, input: &DOMString) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into()])
             .as_::<Promise<f64>>()
@@ -441,7 +445,7 @@ impl Summarizer {
     /// [`Summarizer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Summarizer/measureInputUsage)
     pub fn measure_input_usage1(
         &self,
-        input: &str,
+        input: &DOMString,
         options: &SummarizerSummarizeOptions,
     ) -> Promise<f64> {
         self.inner

@@ -75,8 +75,8 @@ impl USBConfiguration {
 impl USBConfiguration {
     /// Getter of the `configurationName` attribute.
     /// [`USBConfiguration.configurationName`](https://developer.mozilla.org/en-US/docs/Web/API/USBConfiguration/configurationName)
-    pub fn configuration_name(&self) -> String {
-        self.inner.get("configurationName").as_::<String>()
+    pub fn configuration_name(&self) -> DOMString {
+        self.inner.get("configurationName").as_::<DOMString>()
     }
 }
 impl USBConfiguration {

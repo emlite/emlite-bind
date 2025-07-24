@@ -51,20 +51,20 @@ impl From<&MediaKeySystemConfiguration> for Any {
 }
 
 impl MediaKeySystemConfiguration {
-    pub fn label(&self) -> String {
-        self.inner.get("label").as_::<String>()
+    pub fn label(&self) -> DOMString {
+        self.inner.get("label").as_::<DOMString>()
     }
 
-    pub fn set_label(&mut self, value: &str) {
+    pub fn set_label(&mut self, value: &DOMString) {
         self.inner.set("label", value);
     }
 }
 impl MediaKeySystemConfiguration {
-    pub fn init_data_types(&self) -> Sequence<String> {
-        self.inner.get("initDataTypes").as_::<Sequence<String>>()
+    pub fn init_data_types(&self) -> Sequence<DOMString> {
+        self.inner.get("initDataTypes").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_init_data_types(&mut self, value: &Sequence<String>) {
+    pub fn set_init_data_types(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("initDataTypes", value);
     }
 }
@@ -109,11 +109,11 @@ impl MediaKeySystemConfiguration {
     }
 }
 impl MediaKeySystemConfiguration {
-    pub fn session_types(&self) -> Sequence<String> {
-        self.inner.get("sessionTypes").as_::<Sequence<String>>()
+    pub fn session_types(&self) -> Sequence<DOMString> {
+        self.inner.get("sessionTypes").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_session_types(&mut self, value: &Sequence<String>) {
+    pub fn set_session_types(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("sessionTypes", value);
     }
 }
@@ -168,38 +168,38 @@ impl From<&RelatedApplication> for Any {
 }
 
 impl RelatedApplication {
-    pub fn platform(&self) -> String {
-        self.inner.get("platform").as_::<String>()
+    pub fn platform(&self) -> USVString {
+        self.inner.get("platform").as_::<USVString>()
     }
 
-    pub fn set_platform(&mut self, value: &str) {
+    pub fn set_platform(&mut self, value: &USVString) {
         self.inner.set("platform", value);
     }
 }
 impl RelatedApplication {
-    pub fn url(&self) -> String {
-        self.inner.get("url").as_::<String>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 
-    pub fn set_url(&mut self, value: &str) {
+    pub fn set_url(&mut self, value: &USVString) {
         self.inner.set("url", value);
     }
 }
 impl RelatedApplication {
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 
-    pub fn set_id(&mut self, value: &str) {
+    pub fn set_id(&mut self, value: &DOMString) {
         self.inner.set("id", value);
     }
 }
 impl RelatedApplication {
-    pub fn version(&self) -> String {
-        self.inner.get("version").as_::<String>()
+    pub fn version(&self) -> USVString {
+        self.inner.get("version").as_::<USVString>()
     }
 
-    pub fn set_version(&mut self, value: &str) {
+    pub fn set_version(&mut self, value: &USVString) {
         self.inner.set("version", value);
     }
 }
@@ -331,11 +331,11 @@ impl From<&HandwritingModelConstraint> for Any {
 }
 
 impl HandwritingModelConstraint {
-    pub fn languages(&self) -> Sequence<String> {
-        self.inner.get("languages").as_::<Sequence<String>>()
+    pub fn languages(&self) -> Sequence<DOMString> {
+        self.inner.get("languages").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_languages(&mut self, value: &Sequence<String>) {
+    pub fn set_languages(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("languages", value);
     }
 }
@@ -399,13 +399,13 @@ impl AuctionAdInterestGroup {
     }
 }
 impl AuctionAdInterestGroup {
-    pub fn priority_signals_overrides(&self) -> Record<String, f64> {
+    pub fn priority_signals_overrides(&self) -> Record<DOMString, f64> {
         self.inner
             .get("prioritySignalsOverrides")
-            .as_::<Record<String, f64>>()
+            .as_::<Record<DOMString, f64>>()
     }
 
-    pub fn set_priority_signals_overrides(&mut self, value: Record<String, f64>) {
+    pub fn set_priority_signals_overrides(&mut self, value: Record<DOMString, f64>) {
         self.inner.set("prioritySignalsOverrides", value);
     }
 }
@@ -419,11 +419,11 @@ impl AuctionAdInterestGroup {
     }
 }
 impl AuctionAdInterestGroup {
-    pub fn additional_bid_key(&self) -> String {
-        self.inner.get("additionalBidKey").as_::<String>()
+    pub fn additional_bid_key(&self) -> DOMString {
+        self.inner.get("additionalBidKey").as_::<DOMString>()
     }
 
-    pub fn set_additional_bid_key(&mut self, value: &str) {
+    pub fn set_additional_bid_key(&mut self, value: &DOMString) {
         self.inner.set("additionalBidKey", value);
     }
 }
@@ -487,20 +487,20 @@ impl From<&AuctionAdInterestGroupKey> for Any {
 }
 
 impl AuctionAdInterestGroupKey {
-    pub fn owner(&self) -> String {
-        self.inner.get("owner").as_::<String>()
+    pub fn owner(&self) -> USVString {
+        self.inner.get("owner").as_::<USVString>()
     }
 
-    pub fn set_owner(&mut self, value: &str) {
+    pub fn set_owner(&mut self, value: &USVString) {
         self.inner.set("owner", value);
     }
 }
 impl AuctionAdInterestGroupKey {
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &USVString) {
         self.inner.set("name", value);
     }
 }
@@ -555,29 +555,31 @@ impl From<&AuctionAdConfig> for Any {
 }
 
 impl AuctionAdConfig {
-    pub fn seller(&self) -> String {
-        self.inner.get("seller").as_::<String>()
+    pub fn seller(&self) -> USVString {
+        self.inner.get("seller").as_::<USVString>()
     }
 
-    pub fn set_seller(&mut self, value: &str) {
+    pub fn set_seller(&mut self, value: &USVString) {
         self.inner.set("seller", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn decision_logic_url(&self) -> String {
-        self.inner.get("decisionLogicURL").as_::<String>()
+    pub fn decision_logic_url(&self) -> USVString {
+        self.inner.get("decisionLogicURL").as_::<USVString>()
     }
 
-    pub fn set_decision_logic_url(&mut self, value: &str) {
+    pub fn set_decision_logic_url(&mut self, value: &USVString) {
         self.inner.set("decisionLogicURL", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn trusted_scoring_signals_url(&self) -> String {
-        self.inner.get("trustedScoringSignalsURL").as_::<String>()
+    pub fn trusted_scoring_signals_url(&self) -> USVString {
+        self.inner
+            .get("trustedScoringSignalsURL")
+            .as_::<USVString>()
     }
 
-    pub fn set_trusted_scoring_signals_url(&mut self, value: &str) {
+    pub fn set_trusted_scoring_signals_url(&mut self, value: &USVString) {
         self.inner.set("trustedScoringSignalsURL", value);
     }
 }
@@ -593,13 +595,13 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn trusted_scoring_signals_coordinator(&self) -> String {
+    pub fn trusted_scoring_signals_coordinator(&self) -> USVString {
         self.inner
             .get("trustedScoringSignalsCoordinator")
-            .as_::<String>()
+            .as_::<USVString>()
     }
 
-    pub fn set_trusted_scoring_signals_coordinator(&mut self, value: &str) {
+    pub fn set_trusted_scoring_signals_coordinator(&mut self, value: &USVString) {
         self.inner.set("trustedScoringSignalsCoordinator", value);
     }
 }
@@ -613,13 +615,13 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn interest_group_buyers(&self) -> Sequence<String> {
+    pub fn interest_group_buyers(&self) -> Sequence<USVString> {
         self.inner
             .get("interestGroupBuyers")
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<USVString>>()
     }
 
-    pub fn set_interest_group_buyers(&mut self, value: &Sequence<String>) {
+    pub fn set_interest_group_buyers(&mut self, value: &Sequence<USVString>) {
         self.inner.set("interestGroupBuyers", value);
     }
 }
@@ -642,26 +644,26 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn direct_from_seller_signals_header_ad_slot(&self) -> Promise<String> {
+    pub fn direct_from_seller_signals_header_ad_slot(&self) -> Promise<DOMString> {
         self.inner
             .get("directFromSellerSignalsHeaderAdSlot")
-            .as_::<Promise<String>>()
+            .as_::<Promise<DOMString>>()
     }
 
-    pub fn set_direct_from_seller_signals_header_ad_slot(&mut self, value: &Promise<String>) {
+    pub fn set_direct_from_seller_signals_header_ad_slot(&mut self, value: &Promise<DOMString>) {
         self.inner.set("directFromSellerSignalsHeaderAdSlot", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn deprecated_render_url_replacements(&self) -> Promise<Record<String, String>> {
+    pub fn deprecated_render_url_replacements(&self) -> Promise<Record<USVString, USVString>> {
         self.inner
             .get("deprecatedRenderURLReplacements")
-            .as_::<Promise<Record<String, String>>>()
+            .as_::<Promise<Record<USVString, USVString>>>()
     }
 
     pub fn set_deprecated_render_url_replacements(
         &mut self,
-        value: &Promise<Record<String, String>>,
+        value: &Promise<Record<USVString, USVString>>,
     ) {
         self.inner.set("deprecatedRenderURLReplacements", value);
     }
@@ -685,35 +687,35 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_signals(&self) -> Promise<Record<String, Any>> {
+    pub fn per_buyer_signals(&self) -> Promise<Record<USVString, Any>> {
         self.inner
             .get("perBuyerSignals")
-            .as_::<Promise<Record<String, Any>>>()
+            .as_::<Promise<Record<USVString, Any>>>()
     }
 
-    pub fn set_per_buyer_signals(&mut self, value: &Promise<Record<String, Any>>) {
+    pub fn set_per_buyer_signals(&mut self, value: &Promise<Record<USVString, Any>>) {
         self.inner.set("perBuyerSignals", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_timeouts(&self) -> Promise<Record<String, u64>> {
+    pub fn per_buyer_timeouts(&self) -> Promise<Record<USVString, u64>> {
         self.inner
             .get("perBuyerTimeouts")
-            .as_::<Promise<Record<String, u64>>>()
+            .as_::<Promise<Record<USVString, u64>>>()
     }
 
-    pub fn set_per_buyer_timeouts(&mut self, value: Promise<Record<String, u64>>) {
+    pub fn set_per_buyer_timeouts(&mut self, value: Promise<Record<USVString, u64>>) {
         self.inner.set("perBuyerTimeouts", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_cumulative_timeouts(&self) -> Promise<Record<String, u64>> {
+    pub fn per_buyer_cumulative_timeouts(&self) -> Promise<Record<USVString, u64>> {
         self.inner
             .get("perBuyerCumulativeTimeouts")
-            .as_::<Promise<Record<String, u64>>>()
+            .as_::<Promise<Record<USVString, u64>>>()
     }
 
-    pub fn set_per_buyer_cumulative_timeouts(&mut self, value: Promise<Record<String, u64>>) {
+    pub fn set_per_buyer_cumulative_timeouts(&mut self, value: Promise<Record<USVString, u64>>) {
         self.inner.set("perBuyerCumulativeTimeouts", value);
     }
 }
@@ -727,66 +729,69 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn seller_currency(&self) -> String {
-        self.inner.get("sellerCurrency").as_::<String>()
+    pub fn seller_currency(&self) -> USVString {
+        self.inner.get("sellerCurrency").as_::<USVString>()
     }
 
-    pub fn set_seller_currency(&mut self, value: &str) {
+    pub fn set_seller_currency(&mut self, value: &USVString) {
         self.inner.set("sellerCurrency", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_currencies(&self) -> Promise<Record<String, String>> {
+    pub fn per_buyer_currencies(&self) -> Promise<Record<USVString, USVString>> {
         self.inner
             .get("perBuyerCurrencies")
-            .as_::<Promise<Record<String, String>>>()
+            .as_::<Promise<Record<USVString, USVString>>>()
     }
 
-    pub fn set_per_buyer_currencies(&mut self, value: &Promise<Record<String, String>>) {
+    pub fn set_per_buyer_currencies(&mut self, value: &Promise<Record<USVString, USVString>>) {
         self.inner.set("perBuyerCurrencies", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_multi_bid_limits(&self) -> Record<String, u16> {
+    pub fn per_buyer_multi_bid_limits(&self) -> Record<USVString, u16> {
         self.inner
             .get("perBuyerMultiBidLimits")
-            .as_::<Record<String, u16>>()
+            .as_::<Record<USVString, u16>>()
     }
 
-    pub fn set_per_buyer_multi_bid_limits(&mut self, value: Record<String, u16>) {
+    pub fn set_per_buyer_multi_bid_limits(&mut self, value: Record<USVString, u16>) {
         self.inner.set("perBuyerMultiBidLimits", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_group_limits(&self) -> Record<String, u16> {
+    pub fn per_buyer_group_limits(&self) -> Record<USVString, u16> {
         self.inner
             .get("perBuyerGroupLimits")
-            .as_::<Record<String, u16>>()
+            .as_::<Record<USVString, u16>>()
     }
 
-    pub fn set_per_buyer_group_limits(&mut self, value: Record<String, u16>) {
+    pub fn set_per_buyer_group_limits(&mut self, value: Record<USVString, u16>) {
         self.inner.set("perBuyerGroupLimits", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_experiment_group_ids(&self) -> Record<String, u16> {
+    pub fn per_buyer_experiment_group_ids(&self) -> Record<USVString, u16> {
         self.inner
             .get("perBuyerExperimentGroupIds")
-            .as_::<Record<String, u16>>()
+            .as_::<Record<USVString, u16>>()
     }
 
-    pub fn set_per_buyer_experiment_group_ids(&mut self, value: Record<String, u16>) {
+    pub fn set_per_buyer_experiment_group_ids(&mut self, value: Record<USVString, u16>) {
         self.inner.set("perBuyerExperimentGroupIds", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_priority_signals(&self) -> Record<String, Record<String, f64>> {
+    pub fn per_buyer_priority_signals(&self) -> Record<USVString, Record<USVString, f64>> {
         self.inner
             .get("perBuyerPrioritySignals")
-            .as_::<Record<String, Record<String, f64>>>()
+            .as_::<Record<USVString, Record<USVString, f64>>>()
     }
 
-    pub fn set_per_buyer_priority_signals(&mut self, value: Record<String, Record<String, f64>>) {
+    pub fn set_per_buyer_priority_signals(
+        &mut self,
+        value: Record<USVString, Record<USVString, f64>>,
+    ) {
         self.inner.set("perBuyerPrioritySignals", value);
     }
 }
@@ -802,13 +807,13 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn auction_report_buyers(&self) -> Record<String, Any> {
+    pub fn auction_report_buyers(&self) -> Record<DOMString, Any> {
         self.inner
             .get("auctionReportBuyers")
-            .as_::<Record<String, Any>>()
+            .as_::<Record<DOMString, Any>>()
     }
 
-    pub fn set_auction_report_buyers(&mut self, value: &Record<String, Any>) {
+    pub fn set_auction_report_buyers(&mut self, value: &Record<DOMString, Any>) {
         self.inner.set("auctionReportBuyers", value);
     }
 }
@@ -824,13 +829,13 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn required_seller_capabilities(&self) -> Sequence<String> {
+    pub fn required_seller_capabilities(&self) -> Sequence<DOMString> {
         self.inner
             .get("requiredSellerCapabilities")
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_required_seller_capabilities(&mut self, value: &Sequence<String>) {
+    pub fn set_required_seller_capabilities(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("requiredSellerCapabilities", value);
     }
 }
@@ -844,24 +849,27 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn requested_size(&self) -> Record<String, String> {
+    pub fn requested_size(&self) -> Record<DOMString, DOMString> {
         self.inner
             .get("requestedSize")
-            .as_::<Record<String, String>>()
+            .as_::<Record<DOMString, DOMString>>()
     }
 
-    pub fn set_requested_size(&mut self, value: &Record<String, String>) {
+    pub fn set_requested_size(&mut self, value: &Record<DOMString, DOMString>) {
         self.inner.set("requestedSize", value);
     }
 }
 impl AuctionAdConfig {
-    pub fn all_slots_requested_sizes(&self) -> Sequence<Record<String, String>> {
+    pub fn all_slots_requested_sizes(&self) -> Sequence<Record<DOMString, DOMString>> {
         self.inner
             .get("allSlotsRequestedSizes")
-            .as_::<Sequence<Record<String, String>>>()
+            .as_::<Sequence<Record<DOMString, DOMString>>>()
     }
 
-    pub fn set_all_slots_requested_sizes(&mut self, value: &Sequence<Record<String, String>>) {
+    pub fn set_all_slots_requested_sizes(
+        &mut self,
+        value: &Sequence<Record<DOMString, DOMString>>,
+    ) {
         self.inner.set("allSlotsRequestedSizes", value);
     }
 }
@@ -875,11 +883,11 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn auction_nonce(&self) -> String {
-        self.inner.get("auctionNonce").as_::<String>()
+    pub fn auction_nonce(&self) -> DOMString {
+        self.inner.get("auctionNonce").as_::<DOMString>()
     }
 
-    pub fn set_auction_nonce(&mut self, value: &str) {
+    pub fn set_auction_nonce(&mut self, value: &DOMString) {
         self.inner.set("auctionNonce", value);
     }
 }
@@ -893,13 +901,13 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn per_buyer_real_time_reporting_config(&self) -> Record<String, Any> {
+    pub fn per_buyer_real_time_reporting_config(&self) -> Record<USVString, Any> {
         self.inner
             .get("perBuyerRealTimeReportingConfig")
-            .as_::<Record<String, Any>>()
+            .as_::<Record<USVString, Any>>()
     }
 
-    pub fn set_per_buyer_real_time_reporting_config(&mut self, value: &Record<String, Any>) {
+    pub fn set_per_buyer_real_time_reporting_config(&mut self, value: &Record<USVString, Any>) {
         self.inner.set("perBuyerRealTimeReportingConfig", value);
     }
 }
@@ -944,11 +952,11 @@ impl AuctionAdConfig {
     }
 }
 impl AuctionAdConfig {
-    pub fn request_id(&self) -> String {
-        self.inner.get("requestId").as_::<String>()
+    pub fn request_id(&self) -> USVString {
+        self.inner.get("requestId").as_::<USVString>()
     }
 
-    pub fn set_request_id(&mut self, value: &str) {
+    pub fn set_request_id(&mut self, value: &USVString) {
         self.inner.set("requestId", value);
     }
 }
@@ -1003,11 +1011,11 @@ impl From<&AdAuctionData> for Any {
 }
 
 impl AdAuctionData {
-    pub fn request_id(&self) -> String {
-        self.inner.get("requestId").as_::<String>()
+    pub fn request_id(&self) -> USVString {
+        self.inner.get("requestId").as_::<USVString>()
     }
 
-    pub fn set_request_id(&mut self, value: &str) {
+    pub fn set_request_id(&mut self, value: &USVString) {
         self.inner.set("requestId", value);
     }
 }
@@ -1080,20 +1088,20 @@ impl From<&AdAuctionDataConfig> for Any {
 }
 
 impl AdAuctionDataConfig {
-    pub fn seller(&self) -> String {
-        self.inner.get("seller").as_::<String>()
+    pub fn seller(&self) -> USVString {
+        self.inner.get("seller").as_::<USVString>()
     }
 
-    pub fn set_seller(&mut self, value: &str) {
+    pub fn set_seller(&mut self, value: &USVString) {
         self.inner.set("seller", value);
     }
 }
 impl AdAuctionDataConfig {
-    pub fn coordinator_origin(&self) -> String {
-        self.inner.get("coordinatorOrigin").as_::<String>()
+    pub fn coordinator_origin(&self) -> USVString {
+        self.inner.get("coordinatorOrigin").as_::<USVString>()
     }
 
-    pub fn set_coordinator_origin(&mut self, value: &str) {
+    pub fn set_coordinator_origin(&mut self, value: &USVString) {
         self.inner.set("coordinatorOrigin", value);
     }
 }
@@ -1116,13 +1124,13 @@ impl AdAuctionDataConfig {
     }
 }
 impl AdAuctionDataConfig {
-    pub fn per_buyer_config(&self) -> Record<String, Any> {
+    pub fn per_buyer_config(&self) -> Record<USVString, Any> {
         self.inner
             .get("perBuyerConfig")
-            .as_::<Record<String, Any>>()
+            .as_::<Record<USVString, Any>>()
     }
 
-    pub fn set_per_buyer_config(&mut self, value: &Record<String, Any>) {
+    pub fn set_per_buyer_config(&mut self, value: &Record<USVString, Any>) {
         self.inner.set("perBuyerConfig", value);
     }
 }
@@ -1186,29 +1194,29 @@ impl ShareData {
     }
 }
 impl ShareData {
-    pub fn title(&self) -> String {
-        self.inner.get("title").as_::<String>()
+    pub fn title(&self) -> USVString {
+        self.inner.get("title").as_::<USVString>()
     }
 
-    pub fn set_title(&mut self, value: &str) {
+    pub fn set_title(&mut self, value: &USVString) {
         self.inner.set("title", value);
     }
 }
 impl ShareData {
-    pub fn text(&self) -> String {
-        self.inner.get("text").as_::<String>()
+    pub fn text(&self) -> USVString {
+        self.inner.get("text").as_::<USVString>()
     }
 
-    pub fn set_text(&mut self, value: &str) {
+    pub fn set_text(&mut self, value: &USVString) {
         self.inner.set("text", value);
     }
 }
 impl ShareData {
-    pub fn url(&self) -> String {
-        self.inner.get("url").as_::<String>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 
-    pub fn set_url(&mut self, value: &str) {
+    pub fn set_url(&mut self, value: &USVString) {
         self.inner.set("url", value);
     }
 }
@@ -1363,12 +1371,12 @@ impl Navigator {
 impl Navigator {
     /// The sendBeacon method.
     /// [`Navigator.sendBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon)
-    pub fn send_beacon0(&self, url: &str) -> bool {
+    pub fn send_beacon0(&self, url: &USVString) -> bool {
         self.inner.call("sendBeacon", &[url.into()]).as_::<bool>()
     }
     /// The sendBeacon method.
     /// [`Navigator.sendBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/sendBeacon)
-    pub fn send_beacon1(&self, url: &str, data: &Any) -> bool {
+    pub fn send_beacon1(&self, url: &USVString, data: &Any) -> bool {
         self.inner
             .call("sendBeacon", &[url.into(), data.into()])
             .as_::<bool>()
@@ -1407,7 +1415,7 @@ impl Navigator {
     /// [`Navigator.requestMediaKeySystemAccess`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/requestMediaKeySystemAccess)
     pub fn request_media_key_system_access(
         &self,
-        key_system: &str,
+        key_system: &DOMString,
         supported_configurations: &Sequence<MediaKeySystemConfiguration>,
     ) -> Promise<MediaKeySystemAccess> {
         self.inner
@@ -1424,7 +1432,7 @@ impl Navigator {
     pub fn deprecated_replace_in_urn(
         &self,
         urn_or_config: &Any,
-        replacements: &Record<String, String>,
+        replacements: &Record<USVString, USVString>,
     ) -> Promise<Undefined> {
         self.inner
             .call(
@@ -1437,10 +1445,10 @@ impl Navigator {
 impl Navigator {
     /// The deprecatedURNtoURL method.
     /// [`Navigator.deprecatedURNtoURL`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedURNtoURL)
-    pub fn deprecated_ur_nto_url0(&self, urn_or_config: &Any) -> Promise<String> {
+    pub fn deprecated_ur_nto_url0(&self, urn_or_config: &Any) -> Promise<USVString> {
         self.inner
             .call("deprecatedURNtoURL", &[urn_or_config.into()])
-            .as_::<Promise<String>>()
+            .as_::<Promise<USVString>>()
     }
     /// The deprecatedURNtoURL method.
     /// [`Navigator.deprecatedURNtoURL`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/deprecatedURNtoURL)
@@ -1448,22 +1456,22 @@ impl Navigator {
         &self,
         urn_or_config: &Any,
         send_reports: bool,
-    ) -> Promise<String> {
+    ) -> Promise<USVString> {
         self.inner
             .call(
                 "deprecatedURNtoURL",
                 &[urn_or_config.into(), send_reports.into()],
             )
-            .as_::<Promise<String>>()
+            .as_::<Promise<USVString>>()
     }
 }
 impl Navigator {
     /// The adAuctionComponents method.
     /// [`Navigator.adAuctionComponents`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/adAuctionComponents)
-    pub fn ad_auction_components(&self, num_ad_components: u16) -> Sequence<String> {
+    pub fn ad_auction_components(&self, num_ad_components: u16) -> Sequence<USVString> {
         self.inner
             .call("adAuctionComponents", &[num_ad_components.into()])
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<USVString>>()
     }
 }
 impl Navigator {
@@ -1669,7 +1677,7 @@ impl Navigator {
 impl Navigator {
     /// The clearOriginJoinedAdInterestGroups method.
     /// [`Navigator.clearOriginJoinedAdInterestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearOriginJoinedAdInterestGroups)
-    pub fn clear_origin_joined_ad_interest_groups0(&self, owner: &str) -> Promise<Undefined> {
+    pub fn clear_origin_joined_ad_interest_groups0(&self, owner: &USVString) -> Promise<Undefined> {
         self.inner
             .call("clearOriginJoinedAdInterestGroups", &[owner.into()])
             .as_::<Promise<Undefined>>()
@@ -1678,8 +1686,8 @@ impl Navigator {
     /// [`Navigator.clearOriginJoinedAdInterestGroups`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clearOriginJoinedAdInterestGroups)
     pub fn clear_origin_joined_ad_interest_groups1(
         &self,
-        owner: &str,
-        interest_groups_to_keep: &Sequence<String>,
+        owner: &USVString,
+        interest_groups_to_keep: &Sequence<USVString>,
     ) -> Promise<Undefined> {
         self.inner
             .call(
@@ -1738,10 +1746,10 @@ impl Navigator {
 impl Navigator {
     /// The createAuctionNonce method.
     /// [`Navigator.createAuctionNonce`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/createAuctionNonce)
-    pub fn create_auction_nonce(&self) -> Promise<String> {
+    pub fn create_auction_nonce(&self) -> Promise<DOMString> {
         self.inner
             .call("createAuctionNonce", &[])
-            .as_::<Promise<String>>()
+            .as_::<Promise<DOMString>>()
     }
 }
 impl Navigator {
@@ -1904,22 +1912,22 @@ impl Navigator {
 impl Navigator {
     /// Getter of the `oscpu` attribute.
     /// [`Navigator.oscpu`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/oscpu)
-    pub fn oscpu(&self) -> String {
-        self.inner.get("oscpu").as_::<String>()
+    pub fn oscpu(&self) -> DOMString {
+        self.inner.get("oscpu").as_::<DOMString>()
     }
 }
 impl Navigator {
     /// Getter of the `language` attribute.
     /// [`Navigator.language`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language)
-    pub fn language(&self) -> String {
-        self.inner.get("language").as_::<String>()
+    pub fn language(&self) -> DOMString {
+        self.inner.get("language").as_::<DOMString>()
     }
 }
 impl Navigator {
     /// Getter of the `languages` attribute.
     /// [`Navigator.languages`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/languages)
-    pub fn languages(&self) -> FrozenArray<String> {
-        self.inner.get("languages").as_::<FrozenArray<String>>()
+    pub fn languages(&self) -> FrozenArray<DOMString> {
+        self.inner.get("languages").as_::<FrozenArray<DOMString>>()
     }
 }
 impl Navigator {
@@ -1932,7 +1940,7 @@ impl Navigator {
 impl Navigator {
     /// The registerProtocolHandler method.
     /// [`Navigator.registerProtocolHandler`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/registerProtocolHandler)
-    pub fn register_protocol_handler(&self, scheme: &str, url: &str) -> Undefined {
+    pub fn register_protocol_handler(&self, scheme: &DOMString, url: &USVString) -> Undefined {
         self.inner
             .call("registerProtocolHandler", &[scheme.into(), url.into()])
             .as_::<Undefined>()
@@ -1941,7 +1949,7 @@ impl Navigator {
 impl Navigator {
     /// The unregisterProtocolHandler method.
     /// [`Navigator.unregisterProtocolHandler`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/unregisterProtocolHandler)
-    pub fn unregister_protocol_handler(&self, scheme: &str, url: &str) -> Undefined {
+    pub fn unregister_protocol_handler(&self, scheme: &DOMString, url: &USVString) -> Undefined {
         self.inner
             .call("unregisterProtocolHandler", &[scheme.into(), url.into()])
             .as_::<Undefined>()

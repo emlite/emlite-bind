@@ -58,29 +58,29 @@ jsbind::utils::impl_dyn_cast!(VideoTrack);
 impl VideoTrack {
     /// Getter of the `id` attribute.
     /// [`VideoTrack.id`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrack/id)
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 }
 impl VideoTrack {
     /// Getter of the `kind` attribute.
     /// [`VideoTrack.kind`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrack/kind)
-    pub fn kind(&self) -> String {
-        self.inner.get("kind").as_::<String>()
+    pub fn kind(&self) -> DOMString {
+        self.inner.get("kind").as_::<DOMString>()
     }
 }
 impl VideoTrack {
     /// Getter of the `label` attribute.
     /// [`VideoTrack.label`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrack/label)
-    pub fn label(&self) -> String {
-        self.inner.get("label").as_::<String>()
+    pub fn label(&self) -> DOMString {
+        self.inner.get("label").as_::<DOMString>()
     }
 }
 impl VideoTrack {
     /// Getter of the `language` attribute.
     /// [`VideoTrack.language`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrack/language)
-    pub fn language(&self) -> String {
-        self.inner.get("language").as_::<String>()
+    pub fn language(&self) -> DOMString {
+        self.inner.get("language").as_::<DOMString>()
     }
 }
 impl VideoTrack {

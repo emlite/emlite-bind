@@ -126,7 +126,7 @@ jsbind::utils::impl_dyn_cast!(Clients);
 impl Clients {
     /// The get method.
     /// [`Clients.get`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/get)
-    pub fn get(&self, id: &str) -> Promise<Any> {
+    pub fn get(&self, id: &DOMString) -> Promise<Any> {
         self.inner.call("get", &[id.into()]).as_::<Promise<Any>>()
     }
 }
@@ -149,7 +149,7 @@ impl Clients {
 impl Clients {
     /// The openWindow method.
     /// [`Clients.openWindow`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/openWindow)
-    pub fn open_window(&self, url: &str) -> Promise<WindowClient> {
+    pub fn open_window(&self, url: &USVString) -> Promise<WindowClient> {
         self.inner
             .call("openWindow", &[url.into()])
             .as_::<Promise<WindowClient>>()

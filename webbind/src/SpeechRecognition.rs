@@ -51,11 +51,11 @@ impl From<&SpeechRecognitionOptions> for Any {
 }
 
 impl SpeechRecognitionOptions {
-    pub fn langs(&self) -> Sequence<String> {
-        self.inner.get("langs").as_::<Sequence<String>>()
+    pub fn langs(&self) -> Sequence<DOMString> {
+        self.inner.get("langs").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_langs(&mut self, value: &Sequence<String>) {
+    pub fn set_langs(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("langs", value);
     }
 }
@@ -149,13 +149,13 @@ impl SpeechRecognition {
 impl SpeechRecognition {
     /// Getter of the `lang` attribute.
     /// [`SpeechRecognition.lang`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/lang)
-    pub fn lang(&self) -> String {
-        self.inner.get("lang").as_::<String>()
+    pub fn lang(&self) -> DOMString {
+        self.inner.get("lang").as_::<DOMString>()
     }
 
     /// Setter of the `lang` attribute.
     /// [`SpeechRecognition.lang`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/lang)
-    pub fn set_lang(&mut self, value: &str) {
+    pub fn set_lang(&mut self, value: &DOMString) {
         self.inner.set("lang", value);
     }
 }

@@ -58,15 +58,15 @@ jsbind::utils::impl_dyn_cast!(FontFaceVariationAxis);
 impl FontFaceVariationAxis {
     /// Getter of the `name` attribute.
     /// [`FontFaceVariationAxis.name`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceVariationAxis/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl FontFaceVariationAxis {
     /// Getter of the `axisTag` attribute.
     /// [`FontFaceVariationAxis.axisTag`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceVariationAxis/axisTag)
-    pub fn axis_tag(&self) -> String {
-        self.inner.get("axisTag").as_::<String>()
+    pub fn axis_tag(&self) -> DOMString {
+        self.inner.get("axisTag").as_::<DOMString>()
     }
 }
 impl FontFaceVariationAxis {

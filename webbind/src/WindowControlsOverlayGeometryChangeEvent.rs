@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(WindowControlsOverlayGeometryChangeEvent);
 
 impl WindowControlsOverlayGeometryChangeEvent {
     /// The `new WindowControlsOverlayGeometryChangeEvent(..)` constructor, creating a new WindowControlsOverlayGeometryChangeEvent instance
-    pub fn new(type_: &str, event_init_dict: &Any) -> WindowControlsOverlayGeometryChangeEvent {
+    pub fn new(
+        type_: &DOMString,
+        event_init_dict: &Any,
+    ) -> WindowControlsOverlayGeometryChangeEvent {
         Self {
             inner: Any::global("WindowControlsOverlayGeometryChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

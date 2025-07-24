@@ -65,10 +65,10 @@ impl AuthenticatorAttestationResponse {
 impl AuthenticatorAttestationResponse {
     /// The getTransports method.
     /// [`AuthenticatorAttestationResponse.getTransports`](https://developer.mozilla.org/en-US/docs/Web/API/AuthenticatorAttestationResponse/getTransports)
-    pub fn get_transports(&self) -> Sequence<String> {
+    pub fn get_transports(&self) -> Sequence<DOMString> {
         self.inner
             .call("getTransports", &[])
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<DOMString>>()
     }
 }
 impl AuthenticatorAttestationResponse {

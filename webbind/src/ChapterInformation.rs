@@ -51,29 +51,29 @@ impl From<&MediaImage> for Any {
 }
 
 impl MediaImage {
-    pub fn src(&self) -> String {
-        self.inner.get("src").as_::<String>()
+    pub fn src(&self) -> USVString {
+        self.inner.get("src").as_::<USVString>()
     }
 
-    pub fn set_src(&mut self, value: &str) {
+    pub fn set_src(&mut self, value: &USVString) {
         self.inner.set("src", value);
     }
 }
 impl MediaImage {
-    pub fn sizes(&self) -> String {
-        self.inner.get("sizes").as_::<String>()
+    pub fn sizes(&self) -> DOMString {
+        self.inner.get("sizes").as_::<DOMString>()
     }
 
-    pub fn set_sizes(&mut self, value: &str) {
+    pub fn set_sizes(&mut self, value: &DOMString) {
         self.inner.set("sizes", value);
     }
 }
 impl MediaImage {
-    pub fn type_(&self) -> String {
-        self.inner.get("type").as_::<String>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 
-    pub fn set_type_(&mut self, value: &str) {
+    pub fn set_type_(&mut self, value: &DOMString) {
         self.inner.set("type", value);
     }
 }
@@ -135,8 +135,8 @@ jsbind::utils::impl_dyn_cast!(ChapterInformation);
 impl ChapterInformation {
     /// Getter of the `title` attribute.
     /// [`ChapterInformation.title`](https://developer.mozilla.org/en-US/docs/Web/API/ChapterInformation/title)
-    pub fn title(&self) -> String {
-        self.inner.get("title").as_::<String>()
+    pub fn title(&self) -> DOMString {
+        self.inner.get("title").as_::<DOMString>()
     }
 }
 impl ChapterInformation {

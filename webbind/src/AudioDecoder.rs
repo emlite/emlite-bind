@@ -51,11 +51,11 @@ impl From<&AudioDecoderConfig> for Any {
 }
 
 impl AudioDecoderConfig {
-    pub fn codec(&self) -> String {
-        self.inner.get("codec").as_::<String>()
+    pub fn codec(&self) -> DOMString {
+        self.inner.get("codec").as_::<DOMString>()
     }
 
-    pub fn set_codec(&mut self, value: &str) {
+    pub fn set_codec(&mut self, value: &DOMString) {
         self.inner.set("codec", value);
     }
 }

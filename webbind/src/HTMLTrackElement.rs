@@ -68,52 +68,52 @@ impl HTMLTrackElement {
 impl HTMLTrackElement {
     /// Getter of the `kind` attribute.
     /// [`HTMLTrackElement.kind`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTrackElement/kind)
-    pub fn kind(&self) -> String {
-        self.inner.get("kind").as_::<String>()
+    pub fn kind(&self) -> DOMString {
+        self.inner.get("kind").as_::<DOMString>()
     }
 
     /// Setter of the `kind` attribute.
     /// [`HTMLTrackElement.kind`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTrackElement/kind)
-    pub fn set_kind(&mut self, value: &str) {
+    pub fn set_kind(&mut self, value: &DOMString) {
         self.inner.set("kind", value);
     }
 }
 impl HTMLTrackElement {
     /// Getter of the `src` attribute.
     /// [`HTMLTrackElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTrackElement/src)
-    pub fn src(&self) -> String {
-        self.inner.get("src").as_::<String>()
+    pub fn src(&self) -> USVString {
+        self.inner.get("src").as_::<USVString>()
     }
 
     /// Setter of the `src` attribute.
     /// [`HTMLTrackElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTrackElement/src)
-    pub fn set_src(&mut self, value: &str) {
+    pub fn set_src(&mut self, value: &USVString) {
         self.inner.set("src", value);
     }
 }
 impl HTMLTrackElement {
     /// Getter of the `srclang` attribute.
     /// [`HTMLTrackElement.srclang`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTrackElement/srclang)
-    pub fn srclang(&self) -> String {
-        self.inner.get("srclang").as_::<String>()
+    pub fn srclang(&self) -> DOMString {
+        self.inner.get("srclang").as_::<DOMString>()
     }
 
     /// Setter of the `srclang` attribute.
     /// [`HTMLTrackElement.srclang`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTrackElement/srclang)
-    pub fn set_srclang(&mut self, value: &str) {
+    pub fn set_srclang(&mut self, value: &DOMString) {
         self.inner.set("srclang", value);
     }
 }
 impl HTMLTrackElement {
     /// Getter of the `label` attribute.
     /// [`HTMLTrackElement.label`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTrackElement/label)
-    pub fn label(&self) -> String {
-        self.inner.get("label").as_::<String>()
+    pub fn label(&self) -> DOMString {
+        self.inner.get("label").as_::<DOMString>()
     }
 
     /// Setter of the `label` attribute.
     /// [`HTMLTrackElement.label`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTrackElement/label)
-    pub fn set_label(&mut self, value: &str) {
+    pub fn set_label(&mut self, value: &DOMString) {
         self.inner.set("label", value);
     }
 }

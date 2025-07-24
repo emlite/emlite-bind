@@ -84,15 +84,15 @@ impl IntersectionObserver {
 impl IntersectionObserver {
     /// Getter of the `rootMargin` attribute.
     /// [`IntersectionObserver.rootMargin`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin)
-    pub fn root_margin(&self) -> String {
-        self.inner.get("rootMargin").as_::<String>()
+    pub fn root_margin(&self) -> DOMString {
+        self.inner.get("rootMargin").as_::<DOMString>()
     }
 }
 impl IntersectionObserver {
     /// Getter of the `scrollMargin` attribute.
     /// [`IntersectionObserver.scrollMargin`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/scrollMargin)
-    pub fn scroll_margin(&self) -> String {
-        self.inner.get("scrollMargin").as_::<String>()
+    pub fn scroll_margin(&self) -> DOMString {
+        self.inner.get("scrollMargin").as_::<DOMString>()
     }
 }
 impl IntersectionObserver {

@@ -51,29 +51,29 @@ impl From<&FunctionParameter> for Any {
 }
 
 impl FunctionParameter {
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> CSSOMString {
+        self.inner.get("name").as_::<CSSOMString>()
     }
 
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &CSSOMString) {
         self.inner.set("name", value);
     }
 }
 impl FunctionParameter {
-    pub fn type_(&self) -> String {
-        self.inner.get("type").as_::<String>()
+    pub fn type_(&self) -> CSSOMString {
+        self.inner.get("type").as_::<CSSOMString>()
     }
 
-    pub fn set_type_(&mut self, value: &str) {
+    pub fn set_type_(&mut self, value: &CSSOMString) {
         self.inner.set("type", value);
     }
 }
 impl FunctionParameter {
-    pub fn default_value(&self) -> String {
-        self.inner.get("defaultValue").as_::<String>()
+    pub fn default_value(&self) -> CSSOMString {
+        self.inner.get("defaultValue").as_::<CSSOMString>()
     }
 
-    pub fn set_default_value(&mut self, value: &str) {
+    pub fn set_default_value(&mut self, value: &CSSOMString) {
         self.inner.set("defaultValue", value);
     }
 }
@@ -135,8 +135,8 @@ jsbind::utils::impl_dyn_cast!(CSSFunctionRule);
 impl CSSFunctionRule {
     /// Getter of the `name` attribute.
     /// [`CSSFunctionRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionRule/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> CSSOMString {
+        self.inner.get("name").as_::<CSSOMString>()
     }
 }
 impl CSSFunctionRule {
@@ -151,7 +151,7 @@ impl CSSFunctionRule {
 impl CSSFunctionRule {
     /// Getter of the `returnType` attribute.
     /// [`CSSFunctionRule.returnType`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionRule/returnType)
-    pub fn return_type(&self) -> String {
-        self.inner.get("returnType").as_::<String>()
+    pub fn return_type(&self) -> CSSOMString {
+        self.inner.get("returnType").as_::<CSSOMString>()
     }
 }

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(TextUpdateEvent);
 
 impl TextUpdateEvent {
     /// The `new TextUpdateEvent(..)` constructor, creating a new TextUpdateEvent instance
-    pub fn new0(type_: &str) -> TextUpdateEvent {
+    pub fn new0(type_: &DOMString) -> TextUpdateEvent {
         Self {
             inner: Any::global("TextUpdateEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl TextUpdateEvent {
     }
 
     /// The `new TextUpdateEvent(..)` constructor, creating a new TextUpdateEvent instance
-    pub fn new1(type_: &str, options: &Any) -> TextUpdateEvent {
+    pub fn new1(type_: &DOMString, options: &Any) -> TextUpdateEvent {
         Self {
             inner: Any::global("TextUpdateEvent")
                 .new(&[type_.into(), options.into()])
@@ -91,8 +91,8 @@ impl TextUpdateEvent {
 impl TextUpdateEvent {
     /// Getter of the `text` attribute.
     /// [`TextUpdateEvent.text`](https://developer.mozilla.org/en-US/docs/Web/API/TextUpdateEvent/text)
-    pub fn text(&self) -> String {
-        self.inner.get("text").as_::<String>()
+    pub fn text(&self) -> DOMString {
+        self.inner.get("text").as_::<DOMString>()
     }
 }
 impl TextUpdateEvent {

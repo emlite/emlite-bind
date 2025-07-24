@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(InputEvent);
 
 impl InputEvent {
     /// The `new InputEvent(..)` constructor, creating a new InputEvent instance
-    pub fn new0(type_: &str) -> InputEvent {
+    pub fn new0(type_: &DOMString) -> InputEvent {
         Self {
             inner: Any::global("InputEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl InputEvent {
     }
 
     /// The `new InputEvent(..)` constructor, creating a new InputEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> InputEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> InputEvent {
         Self {
             inner: Any::global("InputEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -77,8 +77,8 @@ impl InputEvent {
 impl InputEvent {
     /// Getter of the `data` attribute.
     /// [`InputEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/data)
-    pub fn data(&self) -> String {
-        self.inner.get("data").as_::<String>()
+    pub fn data(&self) -> USVString {
+        self.inner.get("data").as_::<USVString>()
     }
 }
 impl InputEvent {
@@ -91,8 +91,8 @@ impl InputEvent {
 impl InputEvent {
     /// Getter of the `inputType` attribute.
     /// [`InputEvent.inputType`](https://developer.mozilla.org/en-US/docs/Web/API/InputEvent/inputType)
-    pub fn input_type(&self) -> String {
-        self.inner.get("inputType").as_::<String>()
+    pub fn input_type(&self) -> DOMString {
+        self.inner.get("inputType").as_::<DOMString>()
     }
 }
 impl InputEvent {

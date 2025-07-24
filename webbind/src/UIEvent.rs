@@ -57,14 +57,14 @@ jsbind::utils::impl_dyn_cast!(UIEvent);
 
 impl UIEvent {
     /// The `new UIEvent(..)` constructor, creating a new UIEvent instance
-    pub fn new0(type_: &str) -> UIEvent {
+    pub fn new0(type_: &DOMString) -> UIEvent {
         Self {
             inner: Any::global("UIEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new UIEvent(..)` constructor, creating a new UIEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> UIEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> UIEvent {
         Self {
             inner: Any::global("UIEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -98,14 +98,14 @@ impl UIEvent {
 impl UIEvent {
     /// The initUIEvent method.
     /// [`UIEvent.initUIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/initUIEvent)
-    pub fn init_ui_event0(&self, type_arg: &str) -> Undefined {
+    pub fn init_ui_event0(&self, type_arg: &DOMString) -> Undefined {
         self.inner
             .call("initUIEvent", &[type_arg.into()])
             .as_::<Undefined>()
     }
     /// The initUIEvent method.
     /// [`UIEvent.initUIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/initUIEvent)
-    pub fn init_ui_event1(&self, type_arg: &str, bubbles_arg: bool) -> Undefined {
+    pub fn init_ui_event1(&self, type_arg: &DOMString, bubbles_arg: bool) -> Undefined {
         self.inner
             .call("initUIEvent", &[type_arg.into(), bubbles_arg.into()])
             .as_::<Undefined>()
@@ -114,7 +114,7 @@ impl UIEvent {
     /// [`UIEvent.initUIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/initUIEvent)
     pub fn init_ui_event2(
         &self,
-        type_arg: &str,
+        type_arg: &DOMString,
         bubbles_arg: bool,
         cancelable_arg: bool,
     ) -> Undefined {
@@ -129,7 +129,7 @@ impl UIEvent {
     /// [`UIEvent.initUIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/initUIEvent)
     pub fn init_ui_event3(
         &self,
-        type_arg: &str,
+        type_arg: &DOMString,
         bubbles_arg: bool,
         cancelable_arg: bool,
         view_arg: &Window,
@@ -150,7 +150,7 @@ impl UIEvent {
     /// [`UIEvent.initUIEvent`](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/initUIEvent)
     pub fn init_ui_event4(
         &self,
-        type_arg: &str,
+        type_arg: &DOMString,
         bubbles_arg: bool,
         cancelable_arg: bool,
         view_arg: &Window,

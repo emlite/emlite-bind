@@ -72,15 +72,15 @@ impl PerformanceLongAnimationFrameTiming {
 impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `name` attribute.
     /// [`PerformanceLongAnimationFrameTiming.name`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `entryType` attribute.
     /// [`PerformanceLongAnimationFrameTiming.entryType`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/entryType)
-    pub fn entry_type(&self) -> String {
-        self.inner.get("entryType").as_::<String>()
+    pub fn entry_type(&self) -> DOMString {
+        self.inner.get("entryType").as_::<DOMString>()
     }
 }
 impl PerformanceLongAnimationFrameTiming {

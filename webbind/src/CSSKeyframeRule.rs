@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(CSSKeyframeRule);
 impl CSSKeyframeRule {
     /// Getter of the `keyText` attribute.
     /// [`CSSKeyframeRule.keyText`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframeRule/keyText)
-    pub fn key_text(&self) -> String {
-        self.inner.get("keyText").as_::<String>()
+    pub fn key_text(&self) -> CSSOMString {
+        self.inner.get("keyText").as_::<CSSOMString>()
     }
 
     /// Setter of the `keyText` attribute.
     /// [`CSSKeyframeRule.keyText`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframeRule/keyText)
-    pub fn set_key_text(&mut self, value: &str) {
+    pub fn set_key_text(&mut self, value: &CSSOMString) {
         self.inner.set("keyText", value);
     }
 }

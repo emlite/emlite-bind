@@ -89,14 +89,14 @@ impl Response {
 impl Response {
     /// The redirect method.
     /// [`Response.redirect`](https://developer.mozilla.org/en-US/docs/Web/API/Response/redirect)
-    pub fn redirect0(url: &str) -> Response {
+    pub fn redirect0(url: &USVString) -> Response {
         Any::global("Response")
             .call("redirect", &[url.into()])
             .as_::<Response>()
     }
     /// The redirect method.
     /// [`Response.redirect`](https://developer.mozilla.org/en-US/docs/Web/API/Response/redirect)
-    pub fn redirect1(url: &str, status: u16) -> Response {
+    pub fn redirect1(url: &USVString, status: u16) -> Response {
         Any::global("Response")
             .call("redirect", &[url.into(), status.into()])
             .as_::<Response>()
@@ -119,8 +119,8 @@ impl Response {
 impl Response {
     /// Getter of the `url` attribute.
     /// [`Response.url`](https://developer.mozilla.org/en-US/docs/Web/API/Response/url)
-    pub fn url(&self) -> String {
-        self.inner.get("url").as_::<String>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 }
 impl Response {
@@ -147,8 +147,8 @@ impl Response {
 impl Response {
     /// Getter of the `statusText` attribute.
     /// [`Response.statusText`](https://developer.mozilla.org/en-US/docs/Web/API/Response/statusText)
-    pub fn status_text(&self) -> String {
-        self.inner.get("statusText").as_::<String>()
+    pub fn status_text(&self) -> ByteString {
+        self.inner.get("statusText").as_::<ByteString>()
     }
 }
 impl Response {
@@ -212,7 +212,7 @@ impl Response {
 impl Response {
     /// The text method.
     /// [`Response.text`](https://developer.mozilla.org/en-US/docs/Web/API/Response/text)
-    pub fn text(&self) -> Promise<String> {
-        self.inner.call("text", &[]).as_::<Promise<String>>()
+    pub fn text(&self) -> Promise<USVString> {
+        self.inner.call("text", &[]).as_::<Promise<USVString>>()
     }
 }

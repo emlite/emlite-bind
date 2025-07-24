@@ -60,11 +60,11 @@ impl ContactInfo {
     }
 }
 impl ContactInfo {
-    pub fn email(&self) -> Sequence<String> {
-        self.inner.get("email").as_::<Sequence<String>>()
+    pub fn email(&self) -> Sequence<DOMString> {
+        self.inner.get("email").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_email(&mut self, value: &Sequence<String>) {
+    pub fn set_email(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("email", value);
     }
 }
@@ -78,20 +78,20 @@ impl ContactInfo {
     }
 }
 impl ContactInfo {
-    pub fn name(&self) -> Sequence<String> {
-        self.inner.get("name").as_::<Sequence<String>>()
+    pub fn name(&self) -> Sequence<DOMString> {
+        self.inner.get("name").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_name(&mut self, value: &Sequence<String>) {
+    pub fn set_name(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("name", value);
     }
 }
 impl ContactInfo {
-    pub fn tel(&self) -> Sequence<String> {
-        self.inner.get("tel").as_::<Sequence<String>>()
+    pub fn tel(&self) -> Sequence<DOMString> {
+        self.inner.get("tel").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_tel(&mut self, value: &Sequence<String>) {
+    pub fn set_tel(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("tel", value);
     }
 }

@@ -51,11 +51,11 @@ impl From<&MediaKeysPolicy> for Any {
 }
 
 impl MediaKeysPolicy {
-    pub fn min_hdcp_version(&self) -> String {
-        self.inner.get("minHdcpVersion").as_::<String>()
+    pub fn min_hdcp_version(&self) -> DOMString {
+        self.inner.get("minHdcpVersion").as_::<DOMString>()
     }
 
-    pub fn set_min_hdcp_version(&mut self, value: &str) {
+    pub fn set_min_hdcp_version(&mut self, value: &DOMString) {
         self.inner.set("minHdcpVersion", value);
     }
 }

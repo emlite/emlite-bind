@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(CSSFontFeatureValuesRule);
 impl CSSFontFeatureValuesRule {
     /// Getter of the `fontFamily` attribute.
     /// [`CSSFontFeatureValuesRule.fontFamily`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFeatureValuesRule/fontFamily)
-    pub fn font_family(&self) -> String {
-        self.inner.get("fontFamily").as_::<String>()
+    pub fn font_family(&self) -> CSSOMString {
+        self.inner.get("fontFamily").as_::<CSSOMString>()
     }
 
     /// Setter of the `fontFamily` attribute.
     /// [`CSSFontFeatureValuesRule.fontFamily`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFeatureValuesRule/fontFamily)
-    pub fn set_font_family(&mut self, value: &str) {
+    pub fn set_font_family(&mut self, value: &CSSOMString) {
         self.inner.set("fontFamily", value);
     }
 }

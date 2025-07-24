@@ -574,11 +574,11 @@ impl GetAnimationsOptions {
     }
 }
 impl GetAnimationsOptions {
-    pub fn pseudo_element(&self) -> String {
-        self.inner.get("pseudoElement").as_::<String>()
+    pub fn pseudo_element(&self) -> CSSOMString {
+        self.inner.get("pseudoElement").as_::<CSSOMString>()
     }
 
-    pub fn set_pseudo_element(&mut self, value: &str) {
+    pub fn set_pseudo_element(&mut self, value: &CSSOMString) {
         self.inner.set("pseudoElement", value);
     }
 }
@@ -640,54 +640,54 @@ jsbind::utils::impl_dyn_cast!(Element);
 impl Element {
     /// Getter of the `namespaceURI` attribute.
     /// [`Element.namespaceURI`](https://developer.mozilla.org/en-US/docs/Web/API/Element/namespaceURI)
-    pub fn namespace_uri(&self) -> String {
-        self.inner.get("namespaceURI").as_::<String>()
+    pub fn namespace_uri(&self) -> DOMString {
+        self.inner.get("namespaceURI").as_::<DOMString>()
     }
 }
 impl Element {
     /// Getter of the `prefix` attribute.
     /// [`Element.prefix`](https://developer.mozilla.org/en-US/docs/Web/API/Element/prefix)
-    pub fn prefix(&self) -> String {
-        self.inner.get("prefix").as_::<String>()
+    pub fn prefix(&self) -> DOMString {
+        self.inner.get("prefix").as_::<DOMString>()
     }
 }
 impl Element {
     /// Getter of the `localName` attribute.
     /// [`Element.localName`](https://developer.mozilla.org/en-US/docs/Web/API/Element/localName)
-    pub fn local_name(&self) -> String {
-        self.inner.get("localName").as_::<String>()
+    pub fn local_name(&self) -> DOMString {
+        self.inner.get("localName").as_::<DOMString>()
     }
 }
 impl Element {
     /// Getter of the `tagName` attribute.
     /// [`Element.tagName`](https://developer.mozilla.org/en-US/docs/Web/API/Element/tagName)
-    pub fn tag_name(&self) -> String {
-        self.inner.get("tagName").as_::<String>()
+    pub fn tag_name(&self) -> DOMString {
+        self.inner.get("tagName").as_::<DOMString>()
     }
 }
 impl Element {
     /// Getter of the `id` attribute.
     /// [`Element.id`](https://developer.mozilla.org/en-US/docs/Web/API/Element/id)
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 
     /// Setter of the `id` attribute.
     /// [`Element.id`](https://developer.mozilla.org/en-US/docs/Web/API/Element/id)
-    pub fn set_id(&mut self, value: &str) {
+    pub fn set_id(&mut self, value: &DOMString) {
         self.inner.set("id", value);
     }
 }
 impl Element {
     /// Getter of the `className` attribute.
     /// [`Element.className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)
-    pub fn class_name(&self) -> String {
-        self.inner.get("className").as_::<String>()
+    pub fn class_name(&self) -> DOMString {
+        self.inner.get("className").as_::<DOMString>()
     }
 
     /// Setter of the `className` attribute.
     /// [`Element.className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className)
-    pub fn set_class_name(&mut self, value: &str) {
+    pub fn set_class_name(&mut self, value: &DOMString) {
         self.inner.set("className", value);
     }
 }
@@ -701,13 +701,13 @@ impl Element {
 impl Element {
     /// Getter of the `slot` attribute.
     /// [`Element.slot`](https://developer.mozilla.org/en-US/docs/Web/API/Element/slot)
-    pub fn slot(&self) -> String {
-        self.inner.get("slot").as_::<String>()
+    pub fn slot(&self) -> DOMString {
+        self.inner.get("slot").as_::<DOMString>()
     }
 
     /// Setter of the `slot` attribute.
     /// [`Element.slot`](https://developer.mozilla.org/en-US/docs/Web/API/Element/slot)
-    pub fn set_slot(&mut self, value: &str) {
+    pub fn set_slot(&mut self, value: &DOMString) {
         self.inner.set("slot", value);
     }
 }
@@ -728,34 +728,34 @@ impl Element {
 impl Element {
     /// The getAttributeNames method.
     /// [`Element.getAttributeNames`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttributeNames)
-    pub fn get_attribute_names(&self) -> Sequence<String> {
+    pub fn get_attribute_names(&self) -> Sequence<DOMString> {
         self.inner
             .call("getAttributeNames", &[])
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<DOMString>>()
     }
 }
 impl Element {
     /// The getAttribute method.
     /// [`Element.getAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute)
-    pub fn get_attribute(&self, qualified_name: &str) -> String {
+    pub fn get_attribute(&self, qualified_name: &DOMString) -> DOMString {
         self.inner
             .call("getAttribute", &[qualified_name.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl Element {
     /// The getAttributeNS method.
     /// [`Element.getAttributeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttributeNS)
-    pub fn get_attribute_ns(&self, namespace: &str, local_name: &str) -> String {
+    pub fn get_attribute_ns(&self, namespace: &DOMString, local_name: &DOMString) -> DOMString {
         self.inner
             .call("getAttributeNS", &[namespace.into(), local_name.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl Element {
     /// The setAttribute method.
     /// [`Element.setAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute)
-    pub fn set_attribute(&self, qualified_name: &str, value: &str) -> Undefined {
+    pub fn set_attribute(&self, qualified_name: &DOMString, value: &DOMString) -> Undefined {
         self.inner
             .call("setAttribute", &[qualified_name.into(), value.into()])
             .as_::<Undefined>()
@@ -766,9 +766,9 @@ impl Element {
     /// [`Element.setAttributeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttributeNS)
     pub fn set_attribute_ns(
         &self,
-        namespace: &str,
-        qualified_name: &str,
-        value: &str,
+        namespace: &DOMString,
+        qualified_name: &DOMString,
+        value: &DOMString,
     ) -> Undefined {
         self.inner
             .call(
@@ -781,7 +781,7 @@ impl Element {
 impl Element {
     /// The removeAttribute method.
     /// [`Element.removeAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttribute)
-    pub fn remove_attribute(&self, qualified_name: &str) -> Undefined {
+    pub fn remove_attribute(&self, qualified_name: &DOMString) -> Undefined {
         self.inner
             .call("removeAttribute", &[qualified_name.into()])
             .as_::<Undefined>()
@@ -790,7 +790,7 @@ impl Element {
 impl Element {
     /// The removeAttributeNS method.
     /// [`Element.removeAttributeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/removeAttributeNS)
-    pub fn remove_attribute_ns(&self, namespace: &str, local_name: &str) -> Undefined {
+    pub fn remove_attribute_ns(&self, namespace: &DOMString, local_name: &DOMString) -> Undefined {
         self.inner
             .call("removeAttributeNS", &[namespace.into(), local_name.into()])
             .as_::<Undefined>()
@@ -799,14 +799,14 @@ impl Element {
 impl Element {
     /// The toggleAttribute method.
     /// [`Element.toggleAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/toggleAttribute)
-    pub fn toggle_attribute0(&self, qualified_name: &str) -> bool {
+    pub fn toggle_attribute0(&self, qualified_name: &DOMString) -> bool {
         self.inner
             .call("toggleAttribute", &[qualified_name.into()])
             .as_::<bool>()
     }
     /// The toggleAttribute method.
     /// [`Element.toggleAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/toggleAttribute)
-    pub fn toggle_attribute1(&self, qualified_name: &str, force: bool) -> bool {
+    pub fn toggle_attribute1(&self, qualified_name: &DOMString, force: bool) -> bool {
         self.inner
             .call("toggleAttribute", &[qualified_name.into(), force.into()])
             .as_::<bool>()
@@ -815,7 +815,7 @@ impl Element {
 impl Element {
     /// The hasAttribute method.
     /// [`Element.hasAttribute`](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttribute)
-    pub fn has_attribute(&self, qualified_name: &str) -> bool {
+    pub fn has_attribute(&self, qualified_name: &DOMString) -> bool {
         self.inner
             .call("hasAttribute", &[qualified_name.into()])
             .as_::<bool>()
@@ -824,7 +824,7 @@ impl Element {
 impl Element {
     /// The hasAttributeNS method.
     /// [`Element.hasAttributeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/hasAttributeNS)
-    pub fn has_attribute_ns(&self, namespace: &str, local_name: &str) -> bool {
+    pub fn has_attribute_ns(&self, namespace: &DOMString, local_name: &DOMString) -> bool {
         self.inner
             .call("hasAttributeNS", &[namespace.into(), local_name.into()])
             .as_::<bool>()
@@ -833,7 +833,7 @@ impl Element {
 impl Element {
     /// The getAttributeNode method.
     /// [`Element.getAttributeNode`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttributeNode)
-    pub fn get_attribute_node(&self, qualified_name: &str) -> Attr {
+    pub fn get_attribute_node(&self, qualified_name: &DOMString) -> Attr {
         self.inner
             .call("getAttributeNode", &[qualified_name.into()])
             .as_::<Attr>()
@@ -842,7 +842,7 @@ impl Element {
 impl Element {
     /// The getAttributeNodeNS method.
     /// [`Element.getAttributeNodeNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttributeNodeNS)
-    pub fn get_attribute_node_ns(&self, namespace: &str, local_name: &str) -> Attr {
+    pub fn get_attribute_node_ns(&self, namespace: &DOMString, local_name: &DOMString) -> Attr {
         self.inner
             .call("getAttributeNodeNS", &[namespace.into(), local_name.into()])
             .as_::<Attr>()
@@ -903,7 +903,7 @@ impl Element {
 impl Element {
     /// The closest method.
     /// [`Element.closest`](https://developer.mozilla.org/en-US/docs/Web/API/Element/closest)
-    pub fn closest(&self, selectors: &str) -> Element {
+    pub fn closest(&self, selectors: &DOMString) -> Element {
         self.inner
             .call("closest", &[selectors.into()])
             .as_::<Element>()
@@ -912,7 +912,7 @@ impl Element {
 impl Element {
     /// The matches method.
     /// [`Element.matches`](https://developer.mozilla.org/en-US/docs/Web/API/Element/matches)
-    pub fn matches(&self, selectors: &str) -> bool {
+    pub fn matches(&self, selectors: &DOMString) -> bool {
         self.inner
             .call("matches", &[selectors.into()])
             .as_::<bool>()
@@ -921,7 +921,7 @@ impl Element {
 impl Element {
     /// The webkitMatchesSelector method.
     /// [`Element.webkitMatchesSelector`](https://developer.mozilla.org/en-US/docs/Web/API/Element/webkitMatchesSelector)
-    pub fn webkit_matches_selector(&self, selectors: &str) -> bool {
+    pub fn webkit_matches_selector(&self, selectors: &DOMString) -> bool {
         self.inner
             .call("webkitMatchesSelector", &[selectors.into()])
             .as_::<bool>()
@@ -930,7 +930,7 @@ impl Element {
 impl Element {
     /// The getElementsByTagName method.
     /// [`Element.getElementsByTagName`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName)
-    pub fn get_elements_by_tag_name(&self, qualified_name: &str) -> HTMLCollection {
+    pub fn get_elements_by_tag_name(&self, qualified_name: &DOMString) -> HTMLCollection {
         self.inner
             .call("getElementsByTagName", &[qualified_name.into()])
             .as_::<HTMLCollection>()
@@ -939,7 +939,11 @@ impl Element {
 impl Element {
     /// The getElementsByTagNameNS method.
     /// [`Element.getElementsByTagNameNS`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagNameNS)
-    pub fn get_elements_by_tag_name_ns(&self, namespace: &str, local_name: &str) -> HTMLCollection {
+    pub fn get_elements_by_tag_name_ns(
+        &self,
+        namespace: &DOMString,
+        local_name: &DOMString,
+    ) -> HTMLCollection {
         self.inner
             .call(
                 "getElementsByTagNameNS",
@@ -951,7 +955,7 @@ impl Element {
 impl Element {
     /// The getElementsByClassName method.
     /// [`Element.getElementsByClassName`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByClassName)
-    pub fn get_elements_by_class_name(&self, class_names: &str) -> HTMLCollection {
+    pub fn get_elements_by_class_name(&self, class_names: &DOMString) -> HTMLCollection {
         self.inner
             .call("getElementsByClassName", &[class_names.into()])
             .as_::<HTMLCollection>()
@@ -960,7 +964,7 @@ impl Element {
 impl Element {
     /// The insertAdjacentElement method.
     /// [`Element.insertAdjacentElement`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentElement)
-    pub fn insert_adjacent_element(&self, where_: &str, element: &Element) -> Element {
+    pub fn insert_adjacent_element(&self, where_: &DOMString, element: &Element) -> Element {
         self.inner
             .call("insertAdjacentElement", &[where_.into(), element.into()])
             .as_::<Element>()
@@ -969,7 +973,7 @@ impl Element {
 impl Element {
     /// The insertAdjacentText method.
     /// [`Element.insertAdjacentText`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentText)
-    pub fn insert_adjacent_text(&self, where_: &str, data: &str) -> Undefined {
+    pub fn insert_adjacent_text(&self, where_: &DOMString, data: &DOMString) -> Undefined {
         self.inner
             .call("insertAdjacentText", &[where_.into(), data.into()])
             .as_::<Undefined>()
@@ -1023,7 +1027,7 @@ impl Element {
 impl Element {
     /// The pseudo method.
     /// [`Element.pseudo`](https://developer.mozilla.org/en-US/docs/Web/API/Element/pseudo)
-    pub fn pseudo(&self, type_: &str) -> CSSPseudoElement {
+    pub fn pseudo(&self, type_: &CSSOMString) -> CSSPseudoElement {
         self.inner
             .call("pseudo", &[type_.into()])
             .as_::<CSSPseudoElement>()
@@ -1194,13 +1198,13 @@ impl Element {
 impl Element {
     /// Getter of the `elementTiming` attribute.
     /// [`Element.elementTiming`](https://developer.mozilla.org/en-US/docs/Web/API/Element/elementTiming)
-    pub fn element_timing(&self) -> String {
-        self.inner.get("elementTiming").as_::<String>()
+    pub fn element_timing(&self) -> DOMString {
+        self.inner.get("elementTiming").as_::<DOMString>()
     }
 
     /// Setter of the `elementTiming` attribute.
     /// [`Element.elementTiming`](https://developer.mozilla.org/en-US/docs/Web/API/Element/elementTiming)
-    pub fn set_element_timing(&mut self, value: &str) {
+    pub fn set_element_timing(&mut self, value: &DOMString) {
         self.inner.set("elementTiming", value);
     }
 }
@@ -1258,15 +1262,15 @@ impl Element {
 impl Element {
     /// The getHTML method.
     /// [`Element.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getHTML)
-    pub fn get_html0(&self) -> String {
-        self.inner.call("getHTML", &[]).as_::<String>()
+    pub fn get_html0(&self) -> DOMString {
+        self.inner.call("getHTML", &[]).as_::<DOMString>()
     }
     /// The getHTML method.
     /// [`Element.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/getHTML)
-    pub fn get_html1(&self, options: &GetHTMLOptions) -> String {
+    pub fn get_html1(&self, options: &GetHTMLOptions) -> DOMString {
         self.inner
             .call("getHTML", &[options.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl Element {
@@ -1298,7 +1302,7 @@ impl Element {
 impl Element {
     /// The insertAdjacentHTML method.
     /// [`Element.insertAdjacentHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML)
-    pub fn insert_adjacent_html(&self, position: &str, string: &Any) -> Undefined {
+    pub fn insert_adjacent_html(&self, position: &DOMString, string: &Any) -> Undefined {
         self.inner
             .call("insertAdjacentHTML", &[position.into(), string.into()])
             .as_::<Undefined>()
@@ -1350,8 +1354,8 @@ impl Element {
 impl Element {
     /// Getter of the `regionOverset` attribute.
     /// [`Element.regionOverset`](https://developer.mozilla.org/en-US/docs/Web/API/Element/regionOverset)
-    pub fn region_overset(&self) -> String {
-        self.inner.get("regionOverset").as_::<String>()
+    pub fn region_overset(&self) -> CSSOMString {
+        self.inner.get("regionOverset").as_::<CSSOMString>()
     }
 }
 impl Element {
@@ -1518,7 +1522,7 @@ impl Element {
 impl Element {
     /// The querySelector method.
     /// [`Element.querySelector`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector)
-    pub fn query_selector(&self, selectors: &str) -> Element {
+    pub fn query_selector(&self, selectors: &DOMString) -> Element {
         self.inner
             .call("querySelector", &[selectors.into()])
             .as_::<Element>()
@@ -1527,7 +1531,7 @@ impl Element {
 impl Element {
     /// The querySelectorAll method.
     /// [`Element.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll)
-    pub fn query_selector_all(&self, selectors: &str) -> NodeList {
+    pub fn query_selector_all(&self, selectors: &DOMString) -> NodeList {
         self.inner
             .call("querySelectorAll", &[selectors.into()])
             .as_::<NodeList>()
@@ -1589,13 +1593,13 @@ impl Element {
 impl Element {
     /// Getter of the `role` attribute.
     /// [`Element.role`](https://developer.mozilla.org/en-US/docs/Web/API/Element/role)
-    pub fn role(&self) -> String {
-        self.inner.get("role").as_::<String>()
+    pub fn role(&self) -> DOMString {
+        self.inner.get("role").as_::<DOMString>()
     }
 
     /// Setter of the `role` attribute.
     /// [`Element.role`](https://developer.mozilla.org/en-US/docs/Web/API/Element/role)
-    pub fn set_role(&mut self, value: &str) {
+    pub fn set_role(&mut self, value: &DOMString) {
         self.inner.set("role", value);
     }
 }
@@ -1617,130 +1621,132 @@ impl Element {
 impl Element {
     /// Getter of the `ariaAtomic` attribute.
     /// [`Element.ariaAtomic`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaAtomic)
-    pub fn aria_atomic(&self) -> String {
-        self.inner.get("ariaAtomic").as_::<String>()
+    pub fn aria_atomic(&self) -> DOMString {
+        self.inner.get("ariaAtomic").as_::<DOMString>()
     }
 
     /// Setter of the `ariaAtomic` attribute.
     /// [`Element.ariaAtomic`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaAtomic)
-    pub fn set_aria_atomic(&mut self, value: &str) {
+    pub fn set_aria_atomic(&mut self, value: &DOMString) {
         self.inner.set("ariaAtomic", value);
     }
 }
 impl Element {
     /// Getter of the `ariaAutoComplete` attribute.
     /// [`Element.ariaAutoComplete`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaAutoComplete)
-    pub fn aria_auto_complete(&self) -> String {
-        self.inner.get("ariaAutoComplete").as_::<String>()
+    pub fn aria_auto_complete(&self) -> DOMString {
+        self.inner.get("ariaAutoComplete").as_::<DOMString>()
     }
 
     /// Setter of the `ariaAutoComplete` attribute.
     /// [`Element.ariaAutoComplete`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaAutoComplete)
-    pub fn set_aria_auto_complete(&mut self, value: &str) {
+    pub fn set_aria_auto_complete(&mut self, value: &DOMString) {
         self.inner.set("ariaAutoComplete", value);
     }
 }
 impl Element {
     /// Getter of the `ariaBrailleLabel` attribute.
     /// [`Element.ariaBrailleLabel`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaBrailleLabel)
-    pub fn aria_braille_label(&self) -> String {
-        self.inner.get("ariaBrailleLabel").as_::<String>()
+    pub fn aria_braille_label(&self) -> DOMString {
+        self.inner.get("ariaBrailleLabel").as_::<DOMString>()
     }
 
     /// Setter of the `ariaBrailleLabel` attribute.
     /// [`Element.ariaBrailleLabel`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaBrailleLabel)
-    pub fn set_aria_braille_label(&mut self, value: &str) {
+    pub fn set_aria_braille_label(&mut self, value: &DOMString) {
         self.inner.set("ariaBrailleLabel", value);
     }
 }
 impl Element {
     /// Getter of the `ariaBrailleRoleDescription` attribute.
     /// [`Element.ariaBrailleRoleDescription`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaBrailleRoleDescription)
-    pub fn aria_braille_role_description(&self) -> String {
-        self.inner.get("ariaBrailleRoleDescription").as_::<String>()
+    pub fn aria_braille_role_description(&self) -> DOMString {
+        self.inner
+            .get("ariaBrailleRoleDescription")
+            .as_::<DOMString>()
     }
 
     /// Setter of the `ariaBrailleRoleDescription` attribute.
     /// [`Element.ariaBrailleRoleDescription`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaBrailleRoleDescription)
-    pub fn set_aria_braille_role_description(&mut self, value: &str) {
+    pub fn set_aria_braille_role_description(&mut self, value: &DOMString) {
         self.inner.set("ariaBrailleRoleDescription", value);
     }
 }
 impl Element {
     /// Getter of the `ariaBusy` attribute.
     /// [`Element.ariaBusy`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaBusy)
-    pub fn aria_busy(&self) -> String {
-        self.inner.get("ariaBusy").as_::<String>()
+    pub fn aria_busy(&self) -> DOMString {
+        self.inner.get("ariaBusy").as_::<DOMString>()
     }
 
     /// Setter of the `ariaBusy` attribute.
     /// [`Element.ariaBusy`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaBusy)
-    pub fn set_aria_busy(&mut self, value: &str) {
+    pub fn set_aria_busy(&mut self, value: &DOMString) {
         self.inner.set("ariaBusy", value);
     }
 }
 impl Element {
     /// Getter of the `ariaChecked` attribute.
     /// [`Element.ariaChecked`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaChecked)
-    pub fn aria_checked(&self) -> String {
-        self.inner.get("ariaChecked").as_::<String>()
+    pub fn aria_checked(&self) -> DOMString {
+        self.inner.get("ariaChecked").as_::<DOMString>()
     }
 
     /// Setter of the `ariaChecked` attribute.
     /// [`Element.ariaChecked`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaChecked)
-    pub fn set_aria_checked(&mut self, value: &str) {
+    pub fn set_aria_checked(&mut self, value: &DOMString) {
         self.inner.set("ariaChecked", value);
     }
 }
 impl Element {
     /// Getter of the `ariaColCount` attribute.
     /// [`Element.ariaColCount`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaColCount)
-    pub fn aria_col_count(&self) -> String {
-        self.inner.get("ariaColCount").as_::<String>()
+    pub fn aria_col_count(&self) -> DOMString {
+        self.inner.get("ariaColCount").as_::<DOMString>()
     }
 
     /// Setter of the `ariaColCount` attribute.
     /// [`Element.ariaColCount`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaColCount)
-    pub fn set_aria_col_count(&mut self, value: &str) {
+    pub fn set_aria_col_count(&mut self, value: &DOMString) {
         self.inner.set("ariaColCount", value);
     }
 }
 impl Element {
     /// Getter of the `ariaColIndex` attribute.
     /// [`Element.ariaColIndex`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaColIndex)
-    pub fn aria_col_index(&self) -> String {
-        self.inner.get("ariaColIndex").as_::<String>()
+    pub fn aria_col_index(&self) -> DOMString {
+        self.inner.get("ariaColIndex").as_::<DOMString>()
     }
 
     /// Setter of the `ariaColIndex` attribute.
     /// [`Element.ariaColIndex`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaColIndex)
-    pub fn set_aria_col_index(&mut self, value: &str) {
+    pub fn set_aria_col_index(&mut self, value: &DOMString) {
         self.inner.set("ariaColIndex", value);
     }
 }
 impl Element {
     /// Getter of the `ariaColIndexText` attribute.
     /// [`Element.ariaColIndexText`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaColIndexText)
-    pub fn aria_col_index_text(&self) -> String {
-        self.inner.get("ariaColIndexText").as_::<String>()
+    pub fn aria_col_index_text(&self) -> DOMString {
+        self.inner.get("ariaColIndexText").as_::<DOMString>()
     }
 
     /// Setter of the `ariaColIndexText` attribute.
     /// [`Element.ariaColIndexText`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaColIndexText)
-    pub fn set_aria_col_index_text(&mut self, value: &str) {
+    pub fn set_aria_col_index_text(&mut self, value: &DOMString) {
         self.inner.set("ariaColIndexText", value);
     }
 }
 impl Element {
     /// Getter of the `ariaColSpan` attribute.
     /// [`Element.ariaColSpan`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaColSpan)
-    pub fn aria_col_span(&self) -> String {
-        self.inner.get("ariaColSpan").as_::<String>()
+    pub fn aria_col_span(&self) -> DOMString {
+        self.inner.get("ariaColSpan").as_::<DOMString>()
     }
 
     /// Setter of the `ariaColSpan` attribute.
     /// [`Element.ariaColSpan`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaColSpan)
-    pub fn set_aria_col_span(&mut self, value: &str) {
+    pub fn set_aria_col_span(&mut self, value: &DOMString) {
         self.inner.set("ariaColSpan", value);
     }
 }
@@ -1762,13 +1768,13 @@ impl Element {
 impl Element {
     /// Getter of the `ariaCurrent` attribute.
     /// [`Element.ariaCurrent`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaCurrent)
-    pub fn aria_current(&self) -> String {
-        self.inner.get("ariaCurrent").as_::<String>()
+    pub fn aria_current(&self) -> DOMString {
+        self.inner.get("ariaCurrent").as_::<DOMString>()
     }
 
     /// Setter of the `ariaCurrent` attribute.
     /// [`Element.ariaCurrent`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaCurrent)
-    pub fn set_aria_current(&mut self, value: &str) {
+    pub fn set_aria_current(&mut self, value: &DOMString) {
         self.inner.set("ariaCurrent", value);
     }
 }
@@ -1790,13 +1796,13 @@ impl Element {
 impl Element {
     /// Getter of the `ariaDescription` attribute.
     /// [`Element.ariaDescription`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaDescription)
-    pub fn aria_description(&self) -> String {
-        self.inner.get("ariaDescription").as_::<String>()
+    pub fn aria_description(&self) -> DOMString {
+        self.inner.get("ariaDescription").as_::<DOMString>()
     }
 
     /// Setter of the `ariaDescription` attribute.
     /// [`Element.ariaDescription`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaDescription)
-    pub fn set_aria_description(&mut self, value: &str) {
+    pub fn set_aria_description(&mut self, value: &DOMString) {
         self.inner.set("ariaDescription", value);
     }
 }
@@ -1818,13 +1824,13 @@ impl Element {
 impl Element {
     /// Getter of the `ariaDisabled` attribute.
     /// [`Element.ariaDisabled`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaDisabled)
-    pub fn aria_disabled(&self) -> String {
-        self.inner.get("ariaDisabled").as_::<String>()
+    pub fn aria_disabled(&self) -> DOMString {
+        self.inner.get("ariaDisabled").as_::<DOMString>()
     }
 
     /// Setter of the `ariaDisabled` attribute.
     /// [`Element.ariaDisabled`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaDisabled)
-    pub fn set_aria_disabled(&mut self, value: &str) {
+    pub fn set_aria_disabled(&mut self, value: &DOMString) {
         self.inner.set("ariaDisabled", value);
     }
 }
@@ -1846,13 +1852,13 @@ impl Element {
 impl Element {
     /// Getter of the `ariaExpanded` attribute.
     /// [`Element.ariaExpanded`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaExpanded)
-    pub fn aria_expanded(&self) -> String {
-        self.inner.get("ariaExpanded").as_::<String>()
+    pub fn aria_expanded(&self) -> DOMString {
+        self.inner.get("ariaExpanded").as_::<DOMString>()
     }
 
     /// Setter of the `ariaExpanded` attribute.
     /// [`Element.ariaExpanded`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaExpanded)
-    pub fn set_aria_expanded(&mut self, value: &str) {
+    pub fn set_aria_expanded(&mut self, value: &DOMString) {
         self.inner.set("ariaExpanded", value);
     }
 }
@@ -1874,65 +1880,65 @@ impl Element {
 impl Element {
     /// Getter of the `ariaHasPopup` attribute.
     /// [`Element.ariaHasPopup`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaHasPopup)
-    pub fn aria_has_popup(&self) -> String {
-        self.inner.get("ariaHasPopup").as_::<String>()
+    pub fn aria_has_popup(&self) -> DOMString {
+        self.inner.get("ariaHasPopup").as_::<DOMString>()
     }
 
     /// Setter of the `ariaHasPopup` attribute.
     /// [`Element.ariaHasPopup`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaHasPopup)
-    pub fn set_aria_has_popup(&mut self, value: &str) {
+    pub fn set_aria_has_popup(&mut self, value: &DOMString) {
         self.inner.set("ariaHasPopup", value);
     }
 }
 impl Element {
     /// Getter of the `ariaHidden` attribute.
     /// [`Element.ariaHidden`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaHidden)
-    pub fn aria_hidden(&self) -> String {
-        self.inner.get("ariaHidden").as_::<String>()
+    pub fn aria_hidden(&self) -> DOMString {
+        self.inner.get("ariaHidden").as_::<DOMString>()
     }
 
     /// Setter of the `ariaHidden` attribute.
     /// [`Element.ariaHidden`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaHidden)
-    pub fn set_aria_hidden(&mut self, value: &str) {
+    pub fn set_aria_hidden(&mut self, value: &DOMString) {
         self.inner.set("ariaHidden", value);
     }
 }
 impl Element {
     /// Getter of the `ariaInvalid` attribute.
     /// [`Element.ariaInvalid`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaInvalid)
-    pub fn aria_invalid(&self) -> String {
-        self.inner.get("ariaInvalid").as_::<String>()
+    pub fn aria_invalid(&self) -> DOMString {
+        self.inner.get("ariaInvalid").as_::<DOMString>()
     }
 
     /// Setter of the `ariaInvalid` attribute.
     /// [`Element.ariaInvalid`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaInvalid)
-    pub fn set_aria_invalid(&mut self, value: &str) {
+    pub fn set_aria_invalid(&mut self, value: &DOMString) {
         self.inner.set("ariaInvalid", value);
     }
 }
 impl Element {
     /// Getter of the `ariaKeyShortcuts` attribute.
     /// [`Element.ariaKeyShortcuts`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaKeyShortcuts)
-    pub fn aria_key_shortcuts(&self) -> String {
-        self.inner.get("ariaKeyShortcuts").as_::<String>()
+    pub fn aria_key_shortcuts(&self) -> DOMString {
+        self.inner.get("ariaKeyShortcuts").as_::<DOMString>()
     }
 
     /// Setter of the `ariaKeyShortcuts` attribute.
     /// [`Element.ariaKeyShortcuts`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaKeyShortcuts)
-    pub fn set_aria_key_shortcuts(&mut self, value: &str) {
+    pub fn set_aria_key_shortcuts(&mut self, value: &DOMString) {
         self.inner.set("ariaKeyShortcuts", value);
     }
 }
 impl Element {
     /// Getter of the `ariaLabel` attribute.
     /// [`Element.ariaLabel`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaLabel)
-    pub fn aria_label(&self) -> String {
-        self.inner.get("ariaLabel").as_::<String>()
+    pub fn aria_label(&self) -> DOMString {
+        self.inner.get("ariaLabel").as_::<DOMString>()
     }
 
     /// Setter of the `ariaLabel` attribute.
     /// [`Element.ariaLabel`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaLabel)
-    pub fn set_aria_label(&mut self, value: &str) {
+    pub fn set_aria_label(&mut self, value: &DOMString) {
         self.inner.set("ariaLabel", value);
     }
 }
@@ -1954,78 +1960,78 @@ impl Element {
 impl Element {
     /// Getter of the `ariaLevel` attribute.
     /// [`Element.ariaLevel`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaLevel)
-    pub fn aria_level(&self) -> String {
-        self.inner.get("ariaLevel").as_::<String>()
+    pub fn aria_level(&self) -> DOMString {
+        self.inner.get("ariaLevel").as_::<DOMString>()
     }
 
     /// Setter of the `ariaLevel` attribute.
     /// [`Element.ariaLevel`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaLevel)
-    pub fn set_aria_level(&mut self, value: &str) {
+    pub fn set_aria_level(&mut self, value: &DOMString) {
         self.inner.set("ariaLevel", value);
     }
 }
 impl Element {
     /// Getter of the `ariaLive` attribute.
     /// [`Element.ariaLive`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaLive)
-    pub fn aria_live(&self) -> String {
-        self.inner.get("ariaLive").as_::<String>()
+    pub fn aria_live(&self) -> DOMString {
+        self.inner.get("ariaLive").as_::<DOMString>()
     }
 
     /// Setter of the `ariaLive` attribute.
     /// [`Element.ariaLive`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaLive)
-    pub fn set_aria_live(&mut self, value: &str) {
+    pub fn set_aria_live(&mut self, value: &DOMString) {
         self.inner.set("ariaLive", value);
     }
 }
 impl Element {
     /// Getter of the `ariaModal` attribute.
     /// [`Element.ariaModal`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaModal)
-    pub fn aria_modal(&self) -> String {
-        self.inner.get("ariaModal").as_::<String>()
+    pub fn aria_modal(&self) -> DOMString {
+        self.inner.get("ariaModal").as_::<DOMString>()
     }
 
     /// Setter of the `ariaModal` attribute.
     /// [`Element.ariaModal`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaModal)
-    pub fn set_aria_modal(&mut self, value: &str) {
+    pub fn set_aria_modal(&mut self, value: &DOMString) {
         self.inner.set("ariaModal", value);
     }
 }
 impl Element {
     /// Getter of the `ariaMultiLine` attribute.
     /// [`Element.ariaMultiLine`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaMultiLine)
-    pub fn aria_multi_line(&self) -> String {
-        self.inner.get("ariaMultiLine").as_::<String>()
+    pub fn aria_multi_line(&self) -> DOMString {
+        self.inner.get("ariaMultiLine").as_::<DOMString>()
     }
 
     /// Setter of the `ariaMultiLine` attribute.
     /// [`Element.ariaMultiLine`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaMultiLine)
-    pub fn set_aria_multi_line(&mut self, value: &str) {
+    pub fn set_aria_multi_line(&mut self, value: &DOMString) {
         self.inner.set("ariaMultiLine", value);
     }
 }
 impl Element {
     /// Getter of the `ariaMultiSelectable` attribute.
     /// [`Element.ariaMultiSelectable`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaMultiSelectable)
-    pub fn aria_multi_selectable(&self) -> String {
-        self.inner.get("ariaMultiSelectable").as_::<String>()
+    pub fn aria_multi_selectable(&self) -> DOMString {
+        self.inner.get("ariaMultiSelectable").as_::<DOMString>()
     }
 
     /// Setter of the `ariaMultiSelectable` attribute.
     /// [`Element.ariaMultiSelectable`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaMultiSelectable)
-    pub fn set_aria_multi_selectable(&mut self, value: &str) {
+    pub fn set_aria_multi_selectable(&mut self, value: &DOMString) {
         self.inner.set("ariaMultiSelectable", value);
     }
 }
 impl Element {
     /// Getter of the `ariaOrientation` attribute.
     /// [`Element.ariaOrientation`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaOrientation)
-    pub fn aria_orientation(&self) -> String {
-        self.inner.get("ariaOrientation").as_::<String>()
+    pub fn aria_orientation(&self) -> DOMString {
+        self.inner.get("ariaOrientation").as_::<DOMString>()
     }
 
     /// Setter of the `ariaOrientation` attribute.
     /// [`Element.ariaOrientation`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaOrientation)
-    pub fn set_aria_orientation(&mut self, value: &str) {
+    pub fn set_aria_orientation(&mut self, value: &DOMString) {
         self.inner.set("ariaOrientation", value);
     }
 }
@@ -2047,234 +2053,234 @@ impl Element {
 impl Element {
     /// Getter of the `ariaPlaceholder` attribute.
     /// [`Element.ariaPlaceholder`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaPlaceholder)
-    pub fn aria_placeholder(&self) -> String {
-        self.inner.get("ariaPlaceholder").as_::<String>()
+    pub fn aria_placeholder(&self) -> DOMString {
+        self.inner.get("ariaPlaceholder").as_::<DOMString>()
     }
 
     /// Setter of the `ariaPlaceholder` attribute.
     /// [`Element.ariaPlaceholder`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaPlaceholder)
-    pub fn set_aria_placeholder(&mut self, value: &str) {
+    pub fn set_aria_placeholder(&mut self, value: &DOMString) {
         self.inner.set("ariaPlaceholder", value);
     }
 }
 impl Element {
     /// Getter of the `ariaPosInSet` attribute.
     /// [`Element.ariaPosInSet`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaPosInSet)
-    pub fn aria_pos_in_set(&self) -> String {
-        self.inner.get("ariaPosInSet").as_::<String>()
+    pub fn aria_pos_in_set(&self) -> DOMString {
+        self.inner.get("ariaPosInSet").as_::<DOMString>()
     }
 
     /// Setter of the `ariaPosInSet` attribute.
     /// [`Element.ariaPosInSet`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaPosInSet)
-    pub fn set_aria_pos_in_set(&mut self, value: &str) {
+    pub fn set_aria_pos_in_set(&mut self, value: &DOMString) {
         self.inner.set("ariaPosInSet", value);
     }
 }
 impl Element {
     /// Getter of the `ariaPressed` attribute.
     /// [`Element.ariaPressed`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaPressed)
-    pub fn aria_pressed(&self) -> String {
-        self.inner.get("ariaPressed").as_::<String>()
+    pub fn aria_pressed(&self) -> DOMString {
+        self.inner.get("ariaPressed").as_::<DOMString>()
     }
 
     /// Setter of the `ariaPressed` attribute.
     /// [`Element.ariaPressed`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaPressed)
-    pub fn set_aria_pressed(&mut self, value: &str) {
+    pub fn set_aria_pressed(&mut self, value: &DOMString) {
         self.inner.set("ariaPressed", value);
     }
 }
 impl Element {
     /// Getter of the `ariaReadOnly` attribute.
     /// [`Element.ariaReadOnly`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaReadOnly)
-    pub fn aria_read_only(&self) -> String {
-        self.inner.get("ariaReadOnly").as_::<String>()
+    pub fn aria_read_only(&self) -> DOMString {
+        self.inner.get("ariaReadOnly").as_::<DOMString>()
     }
 
     /// Setter of the `ariaReadOnly` attribute.
     /// [`Element.ariaReadOnly`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaReadOnly)
-    pub fn set_aria_read_only(&mut self, value: &str) {
+    pub fn set_aria_read_only(&mut self, value: &DOMString) {
         self.inner.set("ariaReadOnly", value);
     }
 }
 impl Element {
     /// Getter of the `ariaRelevant` attribute.
     /// [`Element.ariaRelevant`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRelevant)
-    pub fn aria_relevant(&self) -> String {
-        self.inner.get("ariaRelevant").as_::<String>()
+    pub fn aria_relevant(&self) -> DOMString {
+        self.inner.get("ariaRelevant").as_::<DOMString>()
     }
 
     /// Setter of the `ariaRelevant` attribute.
     /// [`Element.ariaRelevant`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRelevant)
-    pub fn set_aria_relevant(&mut self, value: &str) {
+    pub fn set_aria_relevant(&mut self, value: &DOMString) {
         self.inner.set("ariaRelevant", value);
     }
 }
 impl Element {
     /// Getter of the `ariaRequired` attribute.
     /// [`Element.ariaRequired`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRequired)
-    pub fn aria_required(&self) -> String {
-        self.inner.get("ariaRequired").as_::<String>()
+    pub fn aria_required(&self) -> DOMString {
+        self.inner.get("ariaRequired").as_::<DOMString>()
     }
 
     /// Setter of the `ariaRequired` attribute.
     /// [`Element.ariaRequired`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRequired)
-    pub fn set_aria_required(&mut self, value: &str) {
+    pub fn set_aria_required(&mut self, value: &DOMString) {
         self.inner.set("ariaRequired", value);
     }
 }
 impl Element {
     /// Getter of the `ariaRoleDescription` attribute.
     /// [`Element.ariaRoleDescription`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRoleDescription)
-    pub fn aria_role_description(&self) -> String {
-        self.inner.get("ariaRoleDescription").as_::<String>()
+    pub fn aria_role_description(&self) -> DOMString {
+        self.inner.get("ariaRoleDescription").as_::<DOMString>()
     }
 
     /// Setter of the `ariaRoleDescription` attribute.
     /// [`Element.ariaRoleDescription`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRoleDescription)
-    pub fn set_aria_role_description(&mut self, value: &str) {
+    pub fn set_aria_role_description(&mut self, value: &DOMString) {
         self.inner.set("ariaRoleDescription", value);
     }
 }
 impl Element {
     /// Getter of the `ariaRowCount` attribute.
     /// [`Element.ariaRowCount`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRowCount)
-    pub fn aria_row_count(&self) -> String {
-        self.inner.get("ariaRowCount").as_::<String>()
+    pub fn aria_row_count(&self) -> DOMString {
+        self.inner.get("ariaRowCount").as_::<DOMString>()
     }
 
     /// Setter of the `ariaRowCount` attribute.
     /// [`Element.ariaRowCount`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRowCount)
-    pub fn set_aria_row_count(&mut self, value: &str) {
+    pub fn set_aria_row_count(&mut self, value: &DOMString) {
         self.inner.set("ariaRowCount", value);
     }
 }
 impl Element {
     /// Getter of the `ariaRowIndex` attribute.
     /// [`Element.ariaRowIndex`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRowIndex)
-    pub fn aria_row_index(&self) -> String {
-        self.inner.get("ariaRowIndex").as_::<String>()
+    pub fn aria_row_index(&self) -> DOMString {
+        self.inner.get("ariaRowIndex").as_::<DOMString>()
     }
 
     /// Setter of the `ariaRowIndex` attribute.
     /// [`Element.ariaRowIndex`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRowIndex)
-    pub fn set_aria_row_index(&mut self, value: &str) {
+    pub fn set_aria_row_index(&mut self, value: &DOMString) {
         self.inner.set("ariaRowIndex", value);
     }
 }
 impl Element {
     /// Getter of the `ariaRowIndexText` attribute.
     /// [`Element.ariaRowIndexText`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRowIndexText)
-    pub fn aria_row_index_text(&self) -> String {
-        self.inner.get("ariaRowIndexText").as_::<String>()
+    pub fn aria_row_index_text(&self) -> DOMString {
+        self.inner.get("ariaRowIndexText").as_::<DOMString>()
     }
 
     /// Setter of the `ariaRowIndexText` attribute.
     /// [`Element.ariaRowIndexText`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRowIndexText)
-    pub fn set_aria_row_index_text(&mut self, value: &str) {
+    pub fn set_aria_row_index_text(&mut self, value: &DOMString) {
         self.inner.set("ariaRowIndexText", value);
     }
 }
 impl Element {
     /// Getter of the `ariaRowSpan` attribute.
     /// [`Element.ariaRowSpan`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRowSpan)
-    pub fn aria_row_span(&self) -> String {
-        self.inner.get("ariaRowSpan").as_::<String>()
+    pub fn aria_row_span(&self) -> DOMString {
+        self.inner.get("ariaRowSpan").as_::<DOMString>()
     }
 
     /// Setter of the `ariaRowSpan` attribute.
     /// [`Element.ariaRowSpan`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaRowSpan)
-    pub fn set_aria_row_span(&mut self, value: &str) {
+    pub fn set_aria_row_span(&mut self, value: &DOMString) {
         self.inner.set("ariaRowSpan", value);
     }
 }
 impl Element {
     /// Getter of the `ariaSelected` attribute.
     /// [`Element.ariaSelected`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSelected)
-    pub fn aria_selected(&self) -> String {
-        self.inner.get("ariaSelected").as_::<String>()
+    pub fn aria_selected(&self) -> DOMString {
+        self.inner.get("ariaSelected").as_::<DOMString>()
     }
 
     /// Setter of the `ariaSelected` attribute.
     /// [`Element.ariaSelected`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSelected)
-    pub fn set_aria_selected(&mut self, value: &str) {
+    pub fn set_aria_selected(&mut self, value: &DOMString) {
         self.inner.set("ariaSelected", value);
     }
 }
 impl Element {
     /// Getter of the `ariaSetSize` attribute.
     /// [`Element.ariaSetSize`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSetSize)
-    pub fn aria_set_size(&self) -> String {
-        self.inner.get("ariaSetSize").as_::<String>()
+    pub fn aria_set_size(&self) -> DOMString {
+        self.inner.get("ariaSetSize").as_::<DOMString>()
     }
 
     /// Setter of the `ariaSetSize` attribute.
     /// [`Element.ariaSetSize`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSetSize)
-    pub fn set_aria_set_size(&mut self, value: &str) {
+    pub fn set_aria_set_size(&mut self, value: &DOMString) {
         self.inner.set("ariaSetSize", value);
     }
 }
 impl Element {
     /// Getter of the `ariaSort` attribute.
     /// [`Element.ariaSort`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSort)
-    pub fn aria_sort(&self) -> String {
-        self.inner.get("ariaSort").as_::<String>()
+    pub fn aria_sort(&self) -> DOMString {
+        self.inner.get("ariaSort").as_::<DOMString>()
     }
 
     /// Setter of the `ariaSort` attribute.
     /// [`Element.ariaSort`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaSort)
-    pub fn set_aria_sort(&mut self, value: &str) {
+    pub fn set_aria_sort(&mut self, value: &DOMString) {
         self.inner.set("ariaSort", value);
     }
 }
 impl Element {
     /// Getter of the `ariaValueMax` attribute.
     /// [`Element.ariaValueMax`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaValueMax)
-    pub fn aria_value_max(&self) -> String {
-        self.inner.get("ariaValueMax").as_::<String>()
+    pub fn aria_value_max(&self) -> DOMString {
+        self.inner.get("ariaValueMax").as_::<DOMString>()
     }
 
     /// Setter of the `ariaValueMax` attribute.
     /// [`Element.ariaValueMax`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaValueMax)
-    pub fn set_aria_value_max(&mut self, value: &str) {
+    pub fn set_aria_value_max(&mut self, value: &DOMString) {
         self.inner.set("ariaValueMax", value);
     }
 }
 impl Element {
     /// Getter of the `ariaValueMin` attribute.
     /// [`Element.ariaValueMin`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaValueMin)
-    pub fn aria_value_min(&self) -> String {
-        self.inner.get("ariaValueMin").as_::<String>()
+    pub fn aria_value_min(&self) -> DOMString {
+        self.inner.get("ariaValueMin").as_::<DOMString>()
     }
 
     /// Setter of the `ariaValueMin` attribute.
     /// [`Element.ariaValueMin`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaValueMin)
-    pub fn set_aria_value_min(&mut self, value: &str) {
+    pub fn set_aria_value_min(&mut self, value: &DOMString) {
         self.inner.set("ariaValueMin", value);
     }
 }
 impl Element {
     /// Getter of the `ariaValueNow` attribute.
     /// [`Element.ariaValueNow`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaValueNow)
-    pub fn aria_value_now(&self) -> String {
-        self.inner.get("ariaValueNow").as_::<String>()
+    pub fn aria_value_now(&self) -> DOMString {
+        self.inner.get("ariaValueNow").as_::<DOMString>()
     }
 
     /// Setter of the `ariaValueNow` attribute.
     /// [`Element.ariaValueNow`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaValueNow)
-    pub fn set_aria_value_now(&mut self, value: &str) {
+    pub fn set_aria_value_now(&mut self, value: &DOMString) {
         self.inner.set("ariaValueNow", value);
     }
 }
 impl Element {
     /// Getter of the `ariaValueText` attribute.
     /// [`Element.ariaValueText`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaValueText)
-    pub fn aria_value_text(&self) -> String {
-        self.inner.get("ariaValueText").as_::<String>()
+    pub fn aria_value_text(&self) -> DOMString {
+        self.inner.get("ariaValueText").as_::<DOMString>()
     }
 
     /// Setter of the `ariaValueText` attribute.
     /// [`Element.ariaValueText`](https://developer.mozilla.org/en-US/docs/Web/API/Element/ariaValueText)
-    pub fn set_aria_value_text(&mut self, value: &str) {
+    pub fn set_aria_value_text(&mut self, value: &DOMString) {
         self.inner.set("ariaValueText", value);
     }
 }

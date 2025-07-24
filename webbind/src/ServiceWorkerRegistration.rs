@@ -60,56 +60,56 @@ impl NotificationOptions {
     }
 }
 impl NotificationOptions {
-    pub fn lang(&self) -> String {
-        self.inner.get("lang").as_::<String>()
+    pub fn lang(&self) -> DOMString {
+        self.inner.get("lang").as_::<DOMString>()
     }
 
-    pub fn set_lang(&mut self, value: &str) {
+    pub fn set_lang(&mut self, value: &DOMString) {
         self.inner.set("lang", value);
     }
 }
 impl NotificationOptions {
-    pub fn body(&self) -> String {
-        self.inner.get("body").as_::<String>()
+    pub fn body(&self) -> DOMString {
+        self.inner.get("body").as_::<DOMString>()
     }
 
-    pub fn set_body(&mut self, value: &str) {
+    pub fn set_body(&mut self, value: &DOMString) {
         self.inner.set("body", value);
     }
 }
 impl NotificationOptions {
-    pub fn tag(&self) -> String {
-        self.inner.get("tag").as_::<String>()
+    pub fn tag(&self) -> DOMString {
+        self.inner.get("tag").as_::<DOMString>()
     }
 
-    pub fn set_tag(&mut self, value: &str) {
+    pub fn set_tag(&mut self, value: &DOMString) {
         self.inner.set("tag", value);
     }
 }
 impl NotificationOptions {
-    pub fn image(&self) -> String {
-        self.inner.get("image").as_::<String>()
+    pub fn image(&self) -> USVString {
+        self.inner.get("image").as_::<USVString>()
     }
 
-    pub fn set_image(&mut self, value: &str) {
+    pub fn set_image(&mut self, value: &USVString) {
         self.inner.set("image", value);
     }
 }
 impl NotificationOptions {
-    pub fn icon(&self) -> String {
-        self.inner.get("icon").as_::<String>()
+    pub fn icon(&self) -> USVString {
+        self.inner.get("icon").as_::<USVString>()
     }
 
-    pub fn set_icon(&mut self, value: &str) {
+    pub fn set_icon(&mut self, value: &USVString) {
         self.inner.set("icon", value);
     }
 }
 impl NotificationOptions {
-    pub fn badge(&self) -> String {
-        self.inner.get("badge").as_::<String>()
+    pub fn badge(&self) -> USVString {
+        self.inner.get("badge").as_::<USVString>()
     }
 
-    pub fn set_badge(&mut self, value: &str) {
+    pub fn set_badge(&mut self, value: &USVString) {
         self.inner.set("badge", value);
     }
 }
@@ -229,11 +229,11 @@ impl From<&GetNotificationOptions> for Any {
 }
 
 impl GetNotificationOptions {
-    pub fn tag(&self) -> String {
-        self.inner.get("tag").as_::<String>()
+    pub fn tag(&self) -> DOMString {
+        self.inner.get("tag").as_::<DOMString>()
     }
 
-    pub fn set_tag(&mut self, value: &str) {
+    pub fn set_tag(&mut self, value: &DOMString) {
         self.inner.set("tag", value);
     }
 }
@@ -325,8 +325,8 @@ impl ServiceWorkerRegistration {
 impl ServiceWorkerRegistration {
     /// Getter of the `scope` attribute.
     /// [`ServiceWorkerRegistration.scope`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/scope)
-    pub fn scope(&self) -> String {
-        self.inner.get("scope").as_::<String>()
+    pub fn scope(&self) -> USVString {
+        self.inner.get("scope").as_::<USVString>()
     }
 }
 impl ServiceWorkerRegistration {
@@ -400,7 +400,7 @@ impl ServiceWorkerRegistration {
 impl ServiceWorkerRegistration {
     /// The showNotification method.
     /// [`ServiceWorkerRegistration.showNotification`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
-    pub fn show_notification0(&self, title: &str) -> Promise<Undefined> {
+    pub fn show_notification0(&self, title: &DOMString) -> Promise<Undefined> {
         self.inner
             .call("showNotification", &[title.into()])
             .as_::<Promise<Undefined>>()
@@ -409,7 +409,7 @@ impl ServiceWorkerRegistration {
     /// [`ServiceWorkerRegistration.showNotification`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
     pub fn show_notification1(
         &self,
-        title: &str,
+        title: &DOMString,
         options: &NotificationOptions,
     ) -> Promise<Undefined> {
         self.inner

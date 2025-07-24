@@ -65,31 +65,31 @@ impl TextTrack {
 impl TextTrack {
     /// Getter of the `label` attribute.
     /// [`TextTrack.label`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack/label)
-    pub fn label(&self) -> String {
-        self.inner.get("label").as_::<String>()
+    pub fn label(&self) -> DOMString {
+        self.inner.get("label").as_::<DOMString>()
     }
 }
 impl TextTrack {
     /// Getter of the `language` attribute.
     /// [`TextTrack.language`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack/language)
-    pub fn language(&self) -> String {
-        self.inner.get("language").as_::<String>()
+    pub fn language(&self) -> DOMString {
+        self.inner.get("language").as_::<DOMString>()
     }
 }
 impl TextTrack {
     /// Getter of the `id` attribute.
     /// [`TextTrack.id`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack/id)
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 }
 impl TextTrack {
     /// Getter of the `inBandMetadataTrackDispatchType` attribute.
     /// [`TextTrack.inBandMetadataTrackDispatchType`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrack/inBandMetadataTrackDispatchType)
-    pub fn in_band_metadata_track_dispatch_type(&self) -> String {
+    pub fn in_band_metadata_track_dispatch_type(&self) -> DOMString {
         self.inner
             .get("inBandMetadataTrackDispatchType")
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl TextTrack {

@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(NamedFlow);
 impl NamedFlow {
     /// Getter of the `name` attribute.
     /// [`NamedFlow.name`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> CSSOMString {
+        self.inner.get("name").as_::<CSSOMString>()
     }
 }
 impl NamedFlow {

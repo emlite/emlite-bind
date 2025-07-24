@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(IDBIndex);
 impl IDBIndex {
     /// Getter of the `name` attribute.
     /// [`IDBIndex.name`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`IDBIndex.name`](https://developer.mozilla.org/en-US/docs/Web/API/IDBIndex/name)
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &DOMString) {
         self.inner.set("name", value);
     }
 }

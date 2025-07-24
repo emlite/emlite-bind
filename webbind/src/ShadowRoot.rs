@@ -122,15 +122,15 @@ impl ShadowRoot {
 impl ShadowRoot {
     /// The getHTML method.
     /// [`ShadowRoot.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/getHTML)
-    pub fn get_html0(&self) -> String {
-        self.inner.call("getHTML", &[]).as_::<String>()
+    pub fn get_html0(&self) -> DOMString {
+        self.inner.call("getHTML", &[]).as_::<DOMString>()
     }
     /// The getHTML method.
     /// [`ShadowRoot.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/getHTML)
-    pub fn get_html1(&self, options: &GetHTMLOptions) -> String {
+    pub fn get_html1(&self, options: &GetHTMLOptions) -> DOMString {
         self.inner
             .call("getHTML", &[options.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl ShadowRoot {

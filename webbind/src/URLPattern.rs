@@ -223,7 +223,7 @@ impl URLPattern {
     }
     /// The test method.
     /// [`URLPattern.test`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/test)
-    pub fn test2(&self, input: &Any, base_url: &str) -> bool {
+    pub fn test2(&self, input: &Any, base_url: &USVString) -> bool {
         self.inner
             .call("test", &[input.into(), base_url.into()])
             .as_::<bool>()
@@ -244,7 +244,7 @@ impl URLPattern {
     }
     /// The exec method.
     /// [`URLPattern.exec`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/exec)
-    pub fn exec2(&self, input: &Any, base_url: &str) -> URLPatternResult {
+    pub fn exec2(&self, input: &Any, base_url: &USVString) -> URLPatternResult {
         self.inner
             .call("exec", &[input.into(), base_url.into()])
             .as_::<URLPatternResult>()
@@ -253,57 +253,57 @@ impl URLPattern {
 impl URLPattern {
     /// Getter of the `protocol` attribute.
     /// [`URLPattern.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/protocol)
-    pub fn protocol(&self) -> String {
-        self.inner.get("protocol").as_::<String>()
+    pub fn protocol(&self) -> USVString {
+        self.inner.get("protocol").as_::<USVString>()
     }
 }
 impl URLPattern {
     /// Getter of the `username` attribute.
     /// [`URLPattern.username`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/username)
-    pub fn username(&self) -> String {
-        self.inner.get("username").as_::<String>()
+    pub fn username(&self) -> USVString {
+        self.inner.get("username").as_::<USVString>()
     }
 }
 impl URLPattern {
     /// Getter of the `password` attribute.
     /// [`URLPattern.password`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/password)
-    pub fn password(&self) -> String {
-        self.inner.get("password").as_::<String>()
+    pub fn password(&self) -> USVString {
+        self.inner.get("password").as_::<USVString>()
     }
 }
 impl URLPattern {
     /// Getter of the `hostname` attribute.
     /// [`URLPattern.hostname`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/hostname)
-    pub fn hostname(&self) -> String {
-        self.inner.get("hostname").as_::<String>()
+    pub fn hostname(&self) -> USVString {
+        self.inner.get("hostname").as_::<USVString>()
     }
 }
 impl URLPattern {
     /// Getter of the `port` attribute.
     /// [`URLPattern.port`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/port)
-    pub fn port(&self) -> String {
-        self.inner.get("port").as_::<String>()
+    pub fn port(&self) -> USVString {
+        self.inner.get("port").as_::<USVString>()
     }
 }
 impl URLPattern {
     /// Getter of the `pathname` attribute.
     /// [`URLPattern.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/pathname)
-    pub fn pathname(&self) -> String {
-        self.inner.get("pathname").as_::<String>()
+    pub fn pathname(&self) -> USVString {
+        self.inner.get("pathname").as_::<USVString>()
     }
 }
 impl URLPattern {
     /// Getter of the `search` attribute.
     /// [`URLPattern.search`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/search)
-    pub fn search(&self) -> String {
-        self.inner.get("search").as_::<String>()
+    pub fn search(&self) -> USVString {
+        self.inner.get("search").as_::<USVString>()
     }
 }
 impl URLPattern {
     /// Getter of the `hash` attribute.
     /// [`URLPattern.hash`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/hash)
-    pub fn hash(&self) -> String {
-        self.inner.get("hash").as_::<String>()
+    pub fn hash(&self) -> USVString {
+        self.inner.get("hash").as_::<USVString>()
     }
 }
 impl URLPattern {

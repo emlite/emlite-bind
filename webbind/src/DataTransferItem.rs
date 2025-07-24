@@ -58,15 +58,15 @@ jsbind::utils::impl_dyn_cast!(DataTransferItem);
 impl DataTransferItem {
     /// Getter of the `kind` attribute.
     /// [`DataTransferItem.kind`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItem/kind)
-    pub fn kind(&self) -> String {
-        self.inner.get("kind").as_::<String>()
+    pub fn kind(&self) -> DOMString {
+        self.inner.get("kind").as_::<DOMString>()
     }
 }
 impl DataTransferItem {
     /// Getter of the `type` attribute.
     /// [`DataTransferItem.type`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItem/type)
-    pub fn type_(&self) -> String {
-        self.inner.get("type").as_::<String>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 }
 impl DataTransferItem {

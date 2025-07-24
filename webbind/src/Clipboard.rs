@@ -51,11 +51,11 @@ impl From<&ClipboardUnsanitizedFormats> for Any {
 }
 
 impl ClipboardUnsanitizedFormats {
-    pub fn unsanitized(&self) -> Sequence<String> {
-        self.inner.get("unsanitized").as_::<Sequence<String>>()
+    pub fn unsanitized(&self) -> Sequence<DOMString> {
+        self.inner.get("unsanitized").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_unsanitized(&mut self, value: &Sequence<String>) {
+    pub fn set_unsanitized(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("unsanitized", value);
     }
 }
@@ -131,8 +131,8 @@ impl Clipboard {
 impl Clipboard {
     /// The readText method.
     /// [`Clipboard.readText`](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/readText)
-    pub fn read_text(&self) -> Promise<String> {
-        self.inner.call("readText", &[]).as_::<Promise<String>>()
+    pub fn read_text(&self) -> Promise<DOMString> {
+        self.inner.call("readText", &[]).as_::<Promise<DOMString>>()
     }
 }
 impl Clipboard {
@@ -147,7 +147,7 @@ impl Clipboard {
 impl Clipboard {
     /// The writeText method.
     /// [`Clipboard.writeText`](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText)
-    pub fn write_text(&self, data: &str) -> Promise<Undefined> {
+    pub fn write_text(&self, data: &DOMString) -> Promise<Undefined> {
         self.inner
             .call("writeText", &[data.into()])
             .as_::<Promise<Undefined>>()

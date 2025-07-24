@@ -241,14 +241,14 @@ impl CSSNumericValue {
 impl CSSNumericValue {
     /// The to method.
     /// [`CSSNumericValue.to`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue/to)
-    pub fn to(&self, unit: &str) -> CSSUnitValue {
+    pub fn to(&self, unit: &USVString) -> CSSUnitValue {
         self.inner.call("to", &[unit.into()]).as_::<CSSUnitValue>()
     }
 }
 impl CSSNumericValue {
     /// The toSum method.
     /// [`CSSNumericValue.toSum`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue/toSum)
-    pub fn to_sum(&self, units: &str) -> CSSMathSum {
+    pub fn to_sum(&self, units: &USVString) -> CSSMathSum {
         self.inner
             .call("toSum", &[units.into()])
             .as_::<CSSMathSum>()
@@ -264,7 +264,7 @@ impl CSSNumericValue {
 impl CSSNumericValue {
     /// The parse method.
     /// [`CSSNumericValue.parse`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNumericValue/parse)
-    pub fn parse(css_text: &str) -> CSSNumericValue {
+    pub fn parse(css_text: &USVString) -> CSSNumericValue {
         Any::global("CSSNumericValue")
             .call("parse", &[css_text.into()])
             .as_::<CSSNumericValue>()

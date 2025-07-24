@@ -58,22 +58,22 @@ jsbind::utils::impl_dyn_cast!(PerformanceResourceTiming);
 impl PerformanceResourceTiming {
     /// Getter of the `initiatorType` attribute.
     /// [`PerformanceResourceTiming.initiatorType`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/initiatorType)
-    pub fn initiator_type(&self) -> String {
-        self.inner.get("initiatorType").as_::<String>()
+    pub fn initiator_type(&self) -> DOMString {
+        self.inner.get("initiatorType").as_::<DOMString>()
     }
 }
 impl PerformanceResourceTiming {
     /// Getter of the `deliveryType` attribute.
     /// [`PerformanceResourceTiming.deliveryType`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/deliveryType)
-    pub fn delivery_type(&self) -> String {
-        self.inner.get("deliveryType").as_::<String>()
+    pub fn delivery_type(&self) -> DOMString {
+        self.inner.get("deliveryType").as_::<DOMString>()
     }
 }
 impl PerformanceResourceTiming {
     /// Getter of the `nextHopProtocol` attribute.
     /// [`PerformanceResourceTiming.nextHopProtocol`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/nextHopProtocol)
-    pub fn next_hop_protocol(&self) -> String {
-        self.inner.get("nextHopProtocol").as_::<String>()
+    pub fn next_hop_protocol(&self) -> ByteString {
+        self.inner.get("nextHopProtocol").as_::<ByteString>()
     }
 }
 impl PerformanceResourceTiming {
@@ -214,15 +214,15 @@ impl PerformanceResourceTiming {
 impl PerformanceResourceTiming {
     /// Getter of the `contentType` attribute.
     /// [`PerformanceResourceTiming.contentType`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/contentType)
-    pub fn content_type(&self) -> String {
-        self.inner.get("contentType").as_::<String>()
+    pub fn content_type(&self) -> DOMString {
+        self.inner.get("contentType").as_::<DOMString>()
     }
 }
 impl PerformanceResourceTiming {
     /// Getter of the `contentEncoding` attribute.
     /// [`PerformanceResourceTiming.contentEncoding`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/contentEncoding)
-    pub fn content_encoding(&self) -> String {
-        self.inner.get("contentEncoding").as_::<String>()
+    pub fn content_encoding(&self) -> DOMString {
+        self.inner.get("contentEncoding").as_::<DOMString>()
     }
 }
 impl PerformanceResourceTiming {

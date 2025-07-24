@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(Baseline);
 impl Baseline {
     /// Getter of the `name` attribute.
     /// [`Baseline.name`](https://developer.mozilla.org/en-US/docs/Web/API/Baseline/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl Baseline {

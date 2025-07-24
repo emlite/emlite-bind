@@ -72,15 +72,15 @@ impl FileSystemEntry {
 impl FileSystemEntry {
     /// Getter of the `name` attribute.
     /// [`FileSystemEntry.name`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemEntry/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 }
 impl FileSystemEntry {
     /// Getter of the `fullPath` attribute.
     /// [`FileSystemEntry.fullPath`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemEntry/fullPath)
-    pub fn full_path(&self) -> String {
-        self.inner.get("fullPath").as_::<String>()
+    pub fn full_path(&self) -> USVString {
+        self.inner.get("fullPath").as_::<USVString>()
     }
 }
 impl FileSystemEntry {

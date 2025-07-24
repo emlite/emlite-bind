@@ -51,29 +51,29 @@ impl From<&NotificationAction> for Any {
 }
 
 impl NotificationAction {
-    pub fn action(&self) -> String {
-        self.inner.get("action").as_::<String>()
+    pub fn action(&self) -> DOMString {
+        self.inner.get("action").as_::<DOMString>()
     }
 
-    pub fn set_action(&mut self, value: &str) {
+    pub fn set_action(&mut self, value: &DOMString) {
         self.inner.set("action", value);
     }
 }
 impl NotificationAction {
-    pub fn title(&self) -> String {
-        self.inner.get("title").as_::<String>()
+    pub fn title(&self) -> DOMString {
+        self.inner.get("title").as_::<DOMString>()
     }
 
-    pub fn set_title(&mut self, value: &str) {
+    pub fn set_title(&mut self, value: &DOMString) {
         self.inner.set("title", value);
     }
 }
 impl NotificationAction {
-    pub fn icon(&self) -> String {
-        self.inner.get("icon").as_::<String>()
+    pub fn icon(&self) -> USVString {
+        self.inner.get("icon").as_::<USVString>()
     }
 
-    pub fn set_icon(&mut self, value: &str) {
+    pub fn set_icon(&mut self, value: &USVString) {
         self.inner.set("icon", value);
     }
 }
@@ -134,7 +134,7 @@ jsbind::utils::impl_dyn_cast!(Notification);
 
 impl Notification {
     /// The `new Notification(..)` constructor, creating a new Notification instance
-    pub fn new0(title: &str) -> Notification {
+    pub fn new0(title: &DOMString) -> Notification {
         Self {
             inner: Any::global("Notification")
                 .new(&[title.into()])
@@ -143,7 +143,7 @@ impl Notification {
     }
 
     /// The `new Notification(..)` constructor, creating a new Notification instance
-    pub fn new1(title: &str, options: &NotificationOptions) -> Notification {
+    pub fn new1(title: &DOMString, options: &NotificationOptions) -> Notification {
         Self {
             inner: Any::global("Notification")
                 .new(&[title.into(), options.into()])
@@ -238,8 +238,8 @@ impl Notification {
 impl Notification {
     /// Getter of the `title` attribute.
     /// [`Notification.title`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/title)
-    pub fn title(&self) -> String {
-        self.inner.get("title").as_::<String>()
+    pub fn title(&self) -> DOMString {
+        self.inner.get("title").as_::<DOMString>()
     }
 }
 impl Notification {
@@ -252,43 +252,43 @@ impl Notification {
 impl Notification {
     /// Getter of the `lang` attribute.
     /// [`Notification.lang`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/lang)
-    pub fn lang(&self) -> String {
-        self.inner.get("lang").as_::<String>()
+    pub fn lang(&self) -> DOMString {
+        self.inner.get("lang").as_::<DOMString>()
     }
 }
 impl Notification {
     /// Getter of the `body` attribute.
     /// [`Notification.body`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/body)
-    pub fn body(&self) -> String {
-        self.inner.get("body").as_::<String>()
+    pub fn body(&self) -> DOMString {
+        self.inner.get("body").as_::<DOMString>()
     }
 }
 impl Notification {
     /// Getter of the `tag` attribute.
     /// [`Notification.tag`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/tag)
-    pub fn tag(&self) -> String {
-        self.inner.get("tag").as_::<String>()
+    pub fn tag(&self) -> DOMString {
+        self.inner.get("tag").as_::<DOMString>()
     }
 }
 impl Notification {
     /// Getter of the `image` attribute.
     /// [`Notification.image`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/image)
-    pub fn image(&self) -> String {
-        self.inner.get("image").as_::<String>()
+    pub fn image(&self) -> USVString {
+        self.inner.get("image").as_::<USVString>()
     }
 }
 impl Notification {
     /// Getter of the `icon` attribute.
     /// [`Notification.icon`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/icon)
-    pub fn icon(&self) -> String {
-        self.inner.get("icon").as_::<String>()
+    pub fn icon(&self) -> USVString {
+        self.inner.get("icon").as_::<USVString>()
     }
 }
 impl Notification {
     /// Getter of the `badge` attribute.
     /// [`Notification.badge`](https://developer.mozilla.org/en-US/docs/Web/API/Notification/badge)
-    pub fn badge(&self) -> String {
-        self.inner.get("badge").as_::<String>()
+    pub fn badge(&self) -> USVString {
+        self.inner.get("badge").as_::<USVString>()
     }
 }
 impl Notification {

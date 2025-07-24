@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(MediaDeviceInfo);
 impl MediaDeviceInfo {
     /// Getter of the `deviceId` attribute.
     /// [`MediaDeviceInfo.deviceId`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo/deviceId)
-    pub fn device_id(&self) -> String {
-        self.inner.get("deviceId").as_::<String>()
+    pub fn device_id(&self) -> DOMString {
+        self.inner.get("deviceId").as_::<DOMString>()
     }
 }
 impl MediaDeviceInfo {
@@ -72,15 +72,15 @@ impl MediaDeviceInfo {
 impl MediaDeviceInfo {
     /// Getter of the `label` attribute.
     /// [`MediaDeviceInfo.label`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo/label)
-    pub fn label(&self) -> String {
-        self.inner.get("label").as_::<String>()
+    pub fn label(&self) -> DOMString {
+        self.inner.get("label").as_::<DOMString>()
     }
 }
 impl MediaDeviceInfo {
     /// Getter of the `groupId` attribute.
     /// [`MediaDeviceInfo.groupId`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDeviceInfo/groupId)
-    pub fn group_id(&self) -> String {
-        self.inner.get("groupId").as_::<String>()
+    pub fn group_id(&self) -> DOMString {
+        self.inner.get("groupId").as_::<DOMString>()
     }
 }
 impl MediaDeviceInfo {

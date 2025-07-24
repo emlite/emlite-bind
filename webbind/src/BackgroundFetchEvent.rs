@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(BackgroundFetchEvent);
 
 impl BackgroundFetchEvent {
     /// The `new BackgroundFetchEvent(..)` constructor, creating a new BackgroundFetchEvent instance
-    pub fn new(type_: &str, init: &Any) -> BackgroundFetchEvent {
+    pub fn new(type_: &DOMString, init: &Any) -> BackgroundFetchEvent {
         Self {
             inner: Any::global("BackgroundFetchEvent")
                 .new(&[type_.into(), init.into()])

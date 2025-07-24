@@ -66,65 +66,65 @@ impl HTMLMetaElement {
 impl HTMLMetaElement {
     /// Getter of the `name` attribute.
     /// [`HTMLMetaElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMetaElement/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`HTMLMetaElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMetaElement/name)
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &DOMString) {
         self.inner.set("name", value);
     }
 }
 impl HTMLMetaElement {
     /// Getter of the `httpEquiv` attribute.
     /// [`HTMLMetaElement.httpEquiv`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMetaElement/httpEquiv)
-    pub fn http_equiv(&self) -> String {
-        self.inner.get("httpEquiv").as_::<String>()
+    pub fn http_equiv(&self) -> DOMString {
+        self.inner.get("httpEquiv").as_::<DOMString>()
     }
 
     /// Setter of the `httpEquiv` attribute.
     /// [`HTMLMetaElement.httpEquiv`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMetaElement/httpEquiv)
-    pub fn set_http_equiv(&mut self, value: &str) {
+    pub fn set_http_equiv(&mut self, value: &DOMString) {
         self.inner.set("httpEquiv", value);
     }
 }
 impl HTMLMetaElement {
     /// Getter of the `content` attribute.
     /// [`HTMLMetaElement.content`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMetaElement/content)
-    pub fn content(&self) -> String {
-        self.inner.get("content").as_::<String>()
+    pub fn content(&self) -> DOMString {
+        self.inner.get("content").as_::<DOMString>()
     }
 
     /// Setter of the `content` attribute.
     /// [`HTMLMetaElement.content`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMetaElement/content)
-    pub fn set_content(&mut self, value: &str) {
+    pub fn set_content(&mut self, value: &DOMString) {
         self.inner.set("content", value);
     }
 }
 impl HTMLMetaElement {
     /// Getter of the `media` attribute.
     /// [`HTMLMetaElement.media`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMetaElement/media)
-    pub fn media(&self) -> String {
-        self.inner.get("media").as_::<String>()
+    pub fn media(&self) -> DOMString {
+        self.inner.get("media").as_::<DOMString>()
     }
 
     /// Setter of the `media` attribute.
     /// [`HTMLMetaElement.media`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMetaElement/media)
-    pub fn set_media(&mut self, value: &str) {
+    pub fn set_media(&mut self, value: &DOMString) {
         self.inner.set("media", value);
     }
 }
 impl HTMLMetaElement {
     /// Getter of the `scheme` attribute.
     /// [`HTMLMetaElement.scheme`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMetaElement/scheme)
-    pub fn scheme(&self) -> String {
-        self.inner.get("scheme").as_::<String>()
+    pub fn scheme(&self) -> DOMString {
+        self.inner.get("scheme").as_::<DOMString>()
     }
 
     /// Setter of the `scheme` attribute.
     /// [`HTMLMetaElement.scheme`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMetaElement/scheme)
-    pub fn set_scheme(&mut self, value: &str) {
+    pub fn set_scheme(&mut self, value: &DOMString) {
         self.inner.set("scheme", value);
     }
 }

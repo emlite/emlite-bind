@@ -75,7 +75,7 @@ impl EditContext {
 impl EditContext {
     /// The updateText method.
     /// [`EditContext.updateText`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/updateText)
-    pub fn update_text(&self, range_start: u32, range_end: u32, text: &str) -> Undefined {
+    pub fn update_text(&self, range_start: u32, range_end: u32, text: &DOMString) -> Undefined {
         self.inner
             .call(
                 "updateText",
@@ -139,8 +139,8 @@ impl EditContext {
 impl EditContext {
     /// Getter of the `text` attribute.
     /// [`EditContext.text`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/text)
-    pub fn text(&self) -> String {
-        self.inner.get("text").as_::<String>()
+    pub fn text(&self) -> DOMString {
+        self.inner.get("text").as_::<DOMString>()
     }
 }
 impl EditContext {

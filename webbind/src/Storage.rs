@@ -65,21 +65,21 @@ impl Storage {
 impl Storage {
     /// The key method.
     /// [`Storage.key`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/key)
-    pub fn key(&self, index: u32) -> String {
-        self.inner.call("key", &[index.into()]).as_::<String>()
+    pub fn key(&self, index: u32) -> DOMString {
+        self.inner.call("key", &[index.into()]).as_::<DOMString>()
     }
 }
 impl Storage {
     /// The getItem method.
     /// [`Storage.getItem`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/getItem)
-    pub fn get_item(&self, key: &str) -> String {
-        self.inner.call("getItem", &[key.into()]).as_::<String>()
+    pub fn get_item(&self, key: &DOMString) -> DOMString {
+        self.inner.call("getItem", &[key.into()]).as_::<DOMString>()
     }
 }
 impl Storage {
     /// The setItem method.
     /// [`Storage.setItem`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/setItem)
-    pub fn set_item(&self, key: &str, value: &str) -> Undefined {
+    pub fn set_item(&self, key: &DOMString, value: &DOMString) -> Undefined {
         self.inner
             .call("setItem", &[key.into(), value.into()])
             .as_::<Undefined>()
@@ -88,7 +88,7 @@ impl Storage {
 impl Storage {
     /// The removeItem method.
     /// [`Storage.removeItem`](https://developer.mozilla.org/en-US/docs/Web/API/Storage/removeItem)
-    pub fn remove_item(&self, key: &str) -> Undefined {
+    pub fn remove_item(&self, key: &DOMString) -> Undefined {
         self.inner
             .call("removeItem", &[key.into()])
             .as_::<Undefined>()

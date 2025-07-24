@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(FocusEvent);
 
 impl FocusEvent {
     /// The `new FocusEvent(..)` constructor, creating a new FocusEvent instance
-    pub fn new0(type_: &str) -> FocusEvent {
+    pub fn new0(type_: &DOMString) -> FocusEvent {
         Self {
             inner: Any::global("FocusEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl FocusEvent {
     }
 
     /// The `new FocusEvent(..)` constructor, creating a new FocusEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> FocusEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> FocusEvent {
         Self {
             inner: Any::global("FocusEvent")
                 .new(&[type_.into(), event_init_dict.into()])

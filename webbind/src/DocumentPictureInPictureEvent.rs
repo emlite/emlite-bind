@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(DocumentPictureInPictureEvent);
 
 impl DocumentPictureInPictureEvent {
     /// The `new DocumentPictureInPictureEvent(..)` constructor, creating a new DocumentPictureInPictureEvent instance
-    pub fn new(type_: &str, event_init_dict: &Any) -> DocumentPictureInPictureEvent {
+    pub fn new(type_: &DOMString, event_init_dict: &Any) -> DocumentPictureInPictureEvent {
         Self {
             inner: Any::global("DocumentPictureInPictureEvent")
                 .new(&[type_.into(), event_init_dict.into()])

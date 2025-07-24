@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(CanvasGradient);
 impl CanvasGradient {
     /// The addColorStop method.
     /// [`CanvasGradient.addColorStop`](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient/addColorStop)
-    pub fn add_color_stop(&self, offset: f64, color: &str) -> Undefined {
+    pub fn add_color_stop(&self, offset: f64, color: &DOMString) -> Undefined {
         self.inner
             .call("addColorStop", &[offset.into(), color.into()])
             .as_::<Undefined>()

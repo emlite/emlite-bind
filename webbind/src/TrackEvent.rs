@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(TrackEvent);
 
 impl TrackEvent {
     /// The `new TrackEvent(..)` constructor, creating a new TrackEvent instance
-    pub fn new0(type_: &str) -> TrackEvent {
+    pub fn new0(type_: &DOMString) -> TrackEvent {
         Self {
             inner: Any::global("TrackEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl TrackEvent {
     }
 
     /// The `new TrackEvent(..)` constructor, creating a new TrackEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> TrackEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> TrackEvent {
         Self {
             inner: Any::global("TrackEvent")
                 .new(&[type_.into(), event_init_dict.into()])

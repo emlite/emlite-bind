@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(RTCPeerConnectionIceEvent);
 
 impl RTCPeerConnectionIceEvent {
     /// The `new RTCPeerConnectionIceEvent(..)` constructor, creating a new RTCPeerConnectionIceEvent instance
-    pub fn new0(type_: &str) -> RTCPeerConnectionIceEvent {
+    pub fn new0(type_: &DOMString) -> RTCPeerConnectionIceEvent {
         Self {
             inner: Any::global("RTCPeerConnectionIceEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl RTCPeerConnectionIceEvent {
     }
 
     /// The `new RTCPeerConnectionIceEvent(..)` constructor, creating a new RTCPeerConnectionIceEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> RTCPeerConnectionIceEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> RTCPeerConnectionIceEvent {
         Self {
             inner: Any::global("RTCPeerConnectionIceEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -84,7 +84,7 @@ impl RTCPeerConnectionIceEvent {
 impl RTCPeerConnectionIceEvent {
     /// Getter of the `url` attribute.
     /// [`RTCPeerConnectionIceEvent.url`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnectionIceEvent/url)
-    pub fn url(&self) -> String {
-        self.inner.get("url").as_::<String>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 }

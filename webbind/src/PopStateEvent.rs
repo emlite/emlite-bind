@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(PopStateEvent);
 
 impl PopStateEvent {
     /// The `new PopStateEvent(..)` constructor, creating a new PopStateEvent instance
-    pub fn new0(type_: &str) -> PopStateEvent {
+    pub fn new0(type_: &DOMString) -> PopStateEvent {
         Self {
             inner: Any::global("PopStateEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl PopStateEvent {
     }
 
     /// The `new PopStateEvent(..)` constructor, creating a new PopStateEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> PopStateEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> PopStateEvent {
         Self {
             inner: Any::global("PopStateEvent")
                 .new(&[type_.into(), event_init_dict.into()])

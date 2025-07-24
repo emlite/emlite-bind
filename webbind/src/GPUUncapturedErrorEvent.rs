@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(GPUUncapturedErrorEvent);
 
 impl GPUUncapturedErrorEvent {
     /// The `new GPUUncapturedErrorEvent(..)` constructor, creating a new GPUUncapturedErrorEvent instance
-    pub fn new(type_: &str, gpu_uncaptured_error_event_init_dict: &Any) -> GPUUncapturedErrorEvent {
+    pub fn new(
+        type_: &DOMString,
+        gpu_uncaptured_error_event_init_dict: &Any,
+    ) -> GPUUncapturedErrorEvent {
         Self {
             inner: Any::global("GPUUncapturedErrorEvent")
                 .new(&[type_.into(), gpu_uncaptured_error_event_init_dict.into()])

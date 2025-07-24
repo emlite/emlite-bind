@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(TrustedScript);
 impl TrustedScript {
     /// The toJSON method.
     /// [`TrustedScript.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedScript/toJSON)
-    pub fn to_json(&self) -> String {
-        self.inner.call("toJSON", &[]).as_::<String>()
+    pub fn to_json(&self) -> DOMString {
+        self.inner.call("toJSON", &[]).as_::<DOMString>()
     }
 }

@@ -58,22 +58,22 @@ jsbind::utils::impl_dyn_cast!(MimeType);
 impl MimeType {
     /// Getter of the `type` attribute.
     /// [`MimeType.type`](https://developer.mozilla.org/en-US/docs/Web/API/MimeType/type)
-    pub fn type_(&self) -> String {
-        self.inner.get("type").as_::<String>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 }
 impl MimeType {
     /// Getter of the `description` attribute.
     /// [`MimeType.description`](https://developer.mozilla.org/en-US/docs/Web/API/MimeType/description)
-    pub fn description(&self) -> String {
-        self.inner.get("description").as_::<String>()
+    pub fn description(&self) -> DOMString {
+        self.inner.get("description").as_::<DOMString>()
     }
 }
 impl MimeType {
     /// Getter of the `suffixes` attribute.
     /// [`MimeType.suffixes`](https://developer.mozilla.org/en-US/docs/Web/API/MimeType/suffixes)
-    pub fn suffixes(&self) -> String {
-        self.inner.get("suffixes").as_::<String>()
+    pub fn suffixes(&self) -> DOMString {
+        self.inner.get("suffixes").as_::<DOMString>()
     }
 }
 impl MimeType {

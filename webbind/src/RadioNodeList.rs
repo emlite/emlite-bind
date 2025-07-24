@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(RadioNodeList);
 impl RadioNodeList {
     /// Getter of the `value` attribute.
     /// [`RadioNodeList.value`](https://developer.mozilla.org/en-US/docs/Web/API/RadioNodeList/value)
-    pub fn value(&self) -> String {
-        self.inner.get("value").as_::<String>()
+    pub fn value(&self) -> DOMString {
+        self.inner.get("value").as_::<DOMString>()
     }
 
     /// Setter of the `value` attribute.
     /// [`RadioNodeList.value`](https://developer.mozilla.org/en-US/docs/Web/API/RadioNodeList/value)
-    pub fn set_value(&mut self, value: &str) {
+    pub fn set_value(&mut self, value: &DOMString) {
         self.inner.set("value", value);
     }
 }

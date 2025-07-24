@@ -119,22 +119,24 @@ impl AttributionImpressionOptions {
     }
 }
 impl AttributionImpressionOptions {
-    pub fn conversion_sites(&self) -> Sequence<String> {
-        self.inner.get("conversionSites").as_::<Sequence<String>>()
+    pub fn conversion_sites(&self) -> Sequence<USVString> {
+        self.inner
+            .get("conversionSites")
+            .as_::<Sequence<USVString>>()
     }
 
-    pub fn set_conversion_sites(&mut self, value: &Sequence<String>) {
+    pub fn set_conversion_sites(&mut self, value: &Sequence<USVString>) {
         self.inner.set("conversionSites", value);
     }
 }
 impl AttributionImpressionOptions {
-    pub fn conversion_callers(&self) -> Sequence<String> {
+    pub fn conversion_callers(&self) -> Sequence<USVString> {
         self.inner
             .get("conversionCallers")
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<USVString>>()
     }
 
-    pub fn set_conversion_callers(&mut self, value: &Sequence<String>) {
+    pub fn set_conversion_callers(&mut self, value: &Sequence<USVString>) {
         self.inner.set("conversionCallers", value);
     }
 }
@@ -257,11 +259,11 @@ impl From<&AttributionConversionOptions> for Any {
 }
 
 impl AttributionConversionOptions {
-    pub fn aggregation_service(&self) -> String {
-        self.inner.get("aggregationService").as_::<String>()
+    pub fn aggregation_service(&self) -> USVString {
+        self.inner.get("aggregationService").as_::<USVString>()
     }
 
-    pub fn set_aggregation_service(&mut self, value: &str) {
+    pub fn set_aggregation_service(&mut self, value: &USVString) {
         self.inner.set("aggregationService", value);
     }
 }
@@ -302,22 +304,24 @@ impl AttributionConversionOptions {
     }
 }
 impl AttributionConversionOptions {
-    pub fn impression_sites(&self) -> Sequence<String> {
-        self.inner.get("impressionSites").as_::<Sequence<String>>()
+    pub fn impression_sites(&self) -> Sequence<USVString> {
+        self.inner
+            .get("impressionSites")
+            .as_::<Sequence<USVString>>()
     }
 
-    pub fn set_impression_sites(&mut self, value: &Sequence<String>) {
+    pub fn set_impression_sites(&mut self, value: &Sequence<USVString>) {
         self.inner.set("impressionSites", value);
     }
 }
 impl AttributionConversionOptions {
-    pub fn impression_callers(&self) -> Sequence<String> {
+    pub fn impression_callers(&self) -> Sequence<USVString> {
         self.inner
             .get("impressionCallers")
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<USVString>>()
     }
 
-    pub fn set_impression_callers(&mut self, value: &Sequence<String>) {
+    pub fn set_impression_callers(&mut self, value: &Sequence<USVString>) {
         self.inner.set("impressionCallers", value);
     }
 }

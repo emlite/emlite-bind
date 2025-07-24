@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(NavigationEvent);
 
 impl NavigationEvent {
     /// The `new NavigationEvent(..)` constructor, creating a new NavigationEvent instance
-    pub fn new0(type_: &str) -> NavigationEvent {
+    pub fn new0(type_: &DOMString) -> NavigationEvent {
         Self {
             inner: Any::global("NavigationEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl NavigationEvent {
     }
 
     /// The `new NavigationEvent(..)` constructor, creating a new NavigationEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> NavigationEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> NavigationEvent {
         Self {
             inner: Any::global("NavigationEvent")
                 .new(&[type_.into(), event_init_dict.into()])

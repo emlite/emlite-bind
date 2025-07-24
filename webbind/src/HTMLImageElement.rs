@@ -68,78 +68,78 @@ impl HTMLImageElement {
 impl HTMLImageElement {
     /// Getter of the `alt` attribute.
     /// [`HTMLImageElement.alt`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/alt)
-    pub fn alt(&self) -> String {
-        self.inner.get("alt").as_::<String>()
+    pub fn alt(&self) -> DOMString {
+        self.inner.get("alt").as_::<DOMString>()
     }
 
     /// Setter of the `alt` attribute.
     /// [`HTMLImageElement.alt`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/alt)
-    pub fn set_alt(&mut self, value: &str) {
+    pub fn set_alt(&mut self, value: &DOMString) {
         self.inner.set("alt", value);
     }
 }
 impl HTMLImageElement {
     /// Getter of the `src` attribute.
     /// [`HTMLImageElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/src)
-    pub fn src(&self) -> String {
-        self.inner.get("src").as_::<String>()
+    pub fn src(&self) -> USVString {
+        self.inner.get("src").as_::<USVString>()
     }
 
     /// Setter of the `src` attribute.
     /// [`HTMLImageElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/src)
-    pub fn set_src(&mut self, value: &str) {
+    pub fn set_src(&mut self, value: &USVString) {
         self.inner.set("src", value);
     }
 }
 impl HTMLImageElement {
     /// Getter of the `srcset` attribute.
     /// [`HTMLImageElement.srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset)
-    pub fn srcset(&self) -> String {
-        self.inner.get("srcset").as_::<String>()
+    pub fn srcset(&self) -> USVString {
+        self.inner.get("srcset").as_::<USVString>()
     }
 
     /// Setter of the `srcset` attribute.
     /// [`HTMLImageElement.srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset)
-    pub fn set_srcset(&mut self, value: &str) {
+    pub fn set_srcset(&mut self, value: &USVString) {
         self.inner.set("srcset", value);
     }
 }
 impl HTMLImageElement {
     /// Getter of the `sizes` attribute.
     /// [`HTMLImageElement.sizes`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes)
-    pub fn sizes(&self) -> String {
-        self.inner.get("sizes").as_::<String>()
+    pub fn sizes(&self) -> DOMString {
+        self.inner.get("sizes").as_::<DOMString>()
     }
 
     /// Setter of the `sizes` attribute.
     /// [`HTMLImageElement.sizes`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes)
-    pub fn set_sizes(&mut self, value: &str) {
+    pub fn set_sizes(&mut self, value: &DOMString) {
         self.inner.set("sizes", value);
     }
 }
 impl HTMLImageElement {
     /// Getter of the `crossOrigin` attribute.
     /// [`HTMLImageElement.crossOrigin`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/crossOrigin)
-    pub fn cross_origin(&self) -> String {
-        self.inner.get("crossOrigin").as_::<String>()
+    pub fn cross_origin(&self) -> DOMString {
+        self.inner.get("crossOrigin").as_::<DOMString>()
     }
 
     /// Setter of the `crossOrigin` attribute.
     /// [`HTMLImageElement.crossOrigin`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/crossOrigin)
-    pub fn set_cross_origin(&mut self, value: &str) {
+    pub fn set_cross_origin(&mut self, value: &DOMString) {
         self.inner.set("crossOrigin", value);
     }
 }
 impl HTMLImageElement {
     /// Getter of the `useMap` attribute.
     /// [`HTMLImageElement.useMap`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/useMap)
-    pub fn use_map(&self) -> String {
-        self.inner.get("useMap").as_::<String>()
+    pub fn use_map(&self) -> DOMString {
+        self.inner.get("useMap").as_::<DOMString>()
     }
 
     /// Setter of the `useMap` attribute.
     /// [`HTMLImageElement.useMap`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/useMap)
-    pub fn set_use_map(&mut self, value: &str) {
+    pub fn set_use_map(&mut self, value: &DOMString) {
         self.inner.set("useMap", value);
     }
 }
@@ -206,59 +206,59 @@ impl HTMLImageElement {
 impl HTMLImageElement {
     /// Getter of the `currentSrc` attribute.
     /// [`HTMLImageElement.currentSrc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/currentSrc)
-    pub fn current_src(&self) -> String {
-        self.inner.get("currentSrc").as_::<String>()
+    pub fn current_src(&self) -> USVString {
+        self.inner.get("currentSrc").as_::<USVString>()
     }
 }
 impl HTMLImageElement {
     /// Getter of the `referrerPolicy` attribute.
     /// [`HTMLImageElement.referrerPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/referrerPolicy)
-    pub fn referrer_policy(&self) -> String {
-        self.inner.get("referrerPolicy").as_::<String>()
+    pub fn referrer_policy(&self) -> DOMString {
+        self.inner.get("referrerPolicy").as_::<DOMString>()
     }
 
     /// Setter of the `referrerPolicy` attribute.
     /// [`HTMLImageElement.referrerPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/referrerPolicy)
-    pub fn set_referrer_policy(&mut self, value: &str) {
+    pub fn set_referrer_policy(&mut self, value: &DOMString) {
         self.inner.set("referrerPolicy", value);
     }
 }
 impl HTMLImageElement {
     /// Getter of the `decoding` attribute.
     /// [`HTMLImageElement.decoding`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decoding)
-    pub fn decoding(&self) -> String {
-        self.inner.get("decoding").as_::<String>()
+    pub fn decoding(&self) -> DOMString {
+        self.inner.get("decoding").as_::<DOMString>()
     }
 
     /// Setter of the `decoding` attribute.
     /// [`HTMLImageElement.decoding`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decoding)
-    pub fn set_decoding(&mut self, value: &str) {
+    pub fn set_decoding(&mut self, value: &DOMString) {
         self.inner.set("decoding", value);
     }
 }
 impl HTMLImageElement {
     /// Getter of the `loading` attribute.
     /// [`HTMLImageElement.loading`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading)
-    pub fn loading(&self) -> String {
-        self.inner.get("loading").as_::<String>()
+    pub fn loading(&self) -> DOMString {
+        self.inner.get("loading").as_::<DOMString>()
     }
 
     /// Setter of the `loading` attribute.
     /// [`HTMLImageElement.loading`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/loading)
-    pub fn set_loading(&mut self, value: &str) {
+    pub fn set_loading(&mut self, value: &DOMString) {
         self.inner.set("loading", value);
     }
 }
 impl HTMLImageElement {
     /// Getter of the `fetchPriority` attribute.
     /// [`HTMLImageElement.fetchPriority`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/fetchPriority)
-    pub fn fetch_priority(&self) -> String {
-        self.inner.get("fetchPriority").as_::<String>()
+    pub fn fetch_priority(&self) -> DOMString {
+        self.inner.get("fetchPriority").as_::<DOMString>()
     }
 
     /// Setter of the `fetchPriority` attribute.
     /// [`HTMLImageElement.fetchPriority`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/fetchPriority)
-    pub fn set_fetch_priority(&mut self, value: &str) {
+    pub fn set_fetch_priority(&mut self, value: &DOMString) {
         self.inner.set("fetchPriority", value);
     }
 }
@@ -286,39 +286,39 @@ impl HTMLImageElement {
 impl HTMLImageElement {
     /// Getter of the `name` attribute.
     /// [`HTMLImageElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`HTMLImageElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/name)
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &DOMString) {
         self.inner.set("name", value);
     }
 }
 impl HTMLImageElement {
     /// Getter of the `lowsrc` attribute.
     /// [`HTMLImageElement.lowsrc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/lowsrc)
-    pub fn lowsrc(&self) -> String {
-        self.inner.get("lowsrc").as_::<String>()
+    pub fn lowsrc(&self) -> USVString {
+        self.inner.get("lowsrc").as_::<USVString>()
     }
 
     /// Setter of the `lowsrc` attribute.
     /// [`HTMLImageElement.lowsrc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/lowsrc)
-    pub fn set_lowsrc(&mut self, value: &str) {
+    pub fn set_lowsrc(&mut self, value: &USVString) {
         self.inner.set("lowsrc", value);
     }
 }
 impl HTMLImageElement {
     /// Getter of the `align` attribute.
     /// [`HTMLImageElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/align)
-    pub fn align(&self) -> String {
-        self.inner.get("align").as_::<String>()
+    pub fn align(&self) -> DOMString {
+        self.inner.get("align").as_::<DOMString>()
     }
 
     /// Setter of the `align` attribute.
     /// [`HTMLImageElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/align)
-    pub fn set_align(&mut self, value: &str) {
+    pub fn set_align(&mut self, value: &DOMString) {
         self.inner.set("align", value);
     }
 }
@@ -351,39 +351,39 @@ impl HTMLImageElement {
 impl HTMLImageElement {
     /// Getter of the `longDesc` attribute.
     /// [`HTMLImageElement.longDesc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/longDesc)
-    pub fn long_desc(&self) -> String {
-        self.inner.get("longDesc").as_::<String>()
+    pub fn long_desc(&self) -> USVString {
+        self.inner.get("longDesc").as_::<USVString>()
     }
 
     /// Setter of the `longDesc` attribute.
     /// [`HTMLImageElement.longDesc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/longDesc)
-    pub fn set_long_desc(&mut self, value: &str) {
+    pub fn set_long_desc(&mut self, value: &USVString) {
         self.inner.set("longDesc", value);
     }
 }
 impl HTMLImageElement {
     /// Getter of the `border` attribute.
     /// [`HTMLImageElement.border`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/border)
-    pub fn border(&self) -> String {
-        self.inner.get("border").as_::<String>()
+    pub fn border(&self) -> DOMString {
+        self.inner.get("border").as_::<DOMString>()
     }
 
     /// Setter of the `border` attribute.
     /// [`HTMLImageElement.border`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/border)
-    pub fn set_border(&mut self, value: &str) {
+    pub fn set_border(&mut self, value: &DOMString) {
         self.inner.set("border", value);
     }
 }
 impl HTMLImageElement {
     /// Getter of the `attributionSrc` attribute.
     /// [`HTMLImageElement.attributionSrc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/attributionSrc)
-    pub fn attribution_src(&self) -> String {
-        self.inner.get("attributionSrc").as_::<String>()
+    pub fn attribution_src(&self) -> USVString {
+        self.inner.get("attributionSrc").as_::<USVString>()
     }
 
     /// Setter of the `attributionSrc` attribute.
     /// [`HTMLImageElement.attributionSrc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/attributionSrc)
-    pub fn set_attribution_src(&mut self, value: &str) {
+    pub fn set_attribution_src(&mut self, value: &USVString) {
         self.inner.set("attributionSrc", value);
     }
 }

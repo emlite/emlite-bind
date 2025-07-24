@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(TextFormatUpdateEvent);
 
 impl TextFormatUpdateEvent {
     /// The `new TextFormatUpdateEvent(..)` constructor, creating a new TextFormatUpdateEvent instance
-    pub fn new0(type_: &str) -> TextFormatUpdateEvent {
+    pub fn new0(type_: &DOMString) -> TextFormatUpdateEvent {
         Self {
             inner: Any::global("TextFormatUpdateEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl TextFormatUpdateEvent {
     }
 
     /// The `new TextFormatUpdateEvent(..)` constructor, creating a new TextFormatUpdateEvent instance
-    pub fn new1(type_: &str, options: &Any) -> TextFormatUpdateEvent {
+    pub fn new1(type_: &DOMString, options: &Any) -> TextFormatUpdateEvent {
         Self {
             inner: Any::global("TextFormatUpdateEvent")
                 .new(&[type_.into(), options.into()])

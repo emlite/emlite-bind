@@ -123,14 +123,14 @@ impl TextDecoder {
     }
 
     /// The `new TextDecoder(..)` constructor, creating a new TextDecoder instance
-    pub fn new1(label: &str) -> TextDecoder {
+    pub fn new1(label: &DOMString) -> TextDecoder {
         Self {
             inner: Any::global("TextDecoder").new(&[label.into()]).as_::<Any>(),
         }
     }
 
     /// The `new TextDecoder(..)` constructor, creating a new TextDecoder instance
-    pub fn new2(label: &str, options: &Any) -> TextDecoder {
+    pub fn new2(label: &DOMString, options: &Any) -> TextDecoder {
         Self {
             inner: Any::global("TextDecoder")
                 .new(&[label.into(), options.into()])
@@ -141,27 +141,29 @@ impl TextDecoder {
 impl TextDecoder {
     /// The decode method.
     /// [`TextDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode)
-    pub fn decode0(&self) -> String {
-        self.inner.call("decode", &[]).as_::<String>()
+    pub fn decode0(&self) -> USVString {
+        self.inner.call("decode", &[]).as_::<USVString>()
     }
     /// The decode method.
     /// [`TextDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode)
-    pub fn decode1(&self, input: &Any) -> String {
-        self.inner.call("decode", &[input.into()]).as_::<String>()
+    pub fn decode1(&self, input: &Any) -> USVString {
+        self.inner
+            .call("decode", &[input.into()])
+            .as_::<USVString>()
     }
     /// The decode method.
     /// [`TextDecoder.decode`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode)
-    pub fn decode2(&self, input: &Any, options: &TextDecodeOptions) -> String {
+    pub fn decode2(&self, input: &Any, options: &TextDecodeOptions) -> USVString {
         self.inner
             .call("decode", &[input.into(), options.into()])
-            .as_::<String>()
+            .as_::<USVString>()
     }
 }
 impl TextDecoder {
     /// Getter of the `encoding` attribute.
     /// [`TextDecoder.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/encoding)
-    pub fn encoding(&self) -> String {
-        self.inner.get("encoding").as_::<String>()
+    pub fn encoding(&self) -> DOMString {
+        self.inner.get("encoding").as_::<DOMString>()
     }
 }
 impl TextDecoder {

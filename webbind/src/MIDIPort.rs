@@ -58,22 +58,22 @@ jsbind::utils::impl_dyn_cast!(MIDIPort);
 impl MIDIPort {
     /// Getter of the `id` attribute.
     /// [`MIDIPort.id`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIPort/id)
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 }
 impl MIDIPort {
     /// Getter of the `manufacturer` attribute.
     /// [`MIDIPort.manufacturer`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIPort/manufacturer)
-    pub fn manufacturer(&self) -> String {
-        self.inner.get("manufacturer").as_::<String>()
+    pub fn manufacturer(&self) -> DOMString {
+        self.inner.get("manufacturer").as_::<DOMString>()
     }
 }
 impl MIDIPort {
     /// Getter of the `name` attribute.
     /// [`MIDIPort.name`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIPort/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl MIDIPort {
@@ -86,8 +86,8 @@ impl MIDIPort {
 impl MIDIPort {
     /// Getter of the `version` attribute.
     /// [`MIDIPort.version`](https://developer.mozilla.org/en-US/docs/Web/API/MIDIPort/version)
-    pub fn version(&self) -> String {
-        self.inner.get("version").as_::<String>()
+    pub fn version(&self) -> DOMString {
+        self.inner.get("version").as_::<DOMString>()
     }
 }
 impl MIDIPort {

@@ -65,28 +65,28 @@ impl FontData {
 impl FontData {
     /// Getter of the `postscriptName` attribute.
     /// [`FontData.postscriptName`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/postscriptName)
-    pub fn postscript_name(&self) -> String {
-        self.inner.get("postscriptName").as_::<String>()
+    pub fn postscript_name(&self) -> USVString {
+        self.inner.get("postscriptName").as_::<USVString>()
     }
 }
 impl FontData {
     /// Getter of the `fullName` attribute.
     /// [`FontData.fullName`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/fullName)
-    pub fn full_name(&self) -> String {
-        self.inner.get("fullName").as_::<String>()
+    pub fn full_name(&self) -> USVString {
+        self.inner.get("fullName").as_::<USVString>()
     }
 }
 impl FontData {
     /// Getter of the `family` attribute.
     /// [`FontData.family`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/family)
-    pub fn family(&self) -> String {
-        self.inner.get("family").as_::<String>()
+    pub fn family(&self) -> USVString {
+        self.inner.get("family").as_::<USVString>()
     }
 }
 impl FontData {
     /// Getter of the `style` attribute.
     /// [`FontData.style`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/style)
-    pub fn style(&self) -> String {
-        self.inner.get("style").as_::<String>()
+    pub fn style(&self) -> USVString {
+        self.inner.get("style").as_::<USVString>()
     }
 }

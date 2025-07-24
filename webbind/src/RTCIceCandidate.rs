@@ -75,15 +75,15 @@ impl RTCIceCandidate {
 impl RTCIceCandidate {
     /// Getter of the `candidate` attribute.
     /// [`RTCIceCandidate.candidate`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/candidate)
-    pub fn candidate(&self) -> String {
-        self.inner.get("candidate").as_::<String>()
+    pub fn candidate(&self) -> DOMString {
+        self.inner.get("candidate").as_::<DOMString>()
     }
 }
 impl RTCIceCandidate {
     /// Getter of the `sdpMid` attribute.
     /// [`RTCIceCandidate.sdpMid`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/sdpMid)
-    pub fn sdp_mid(&self) -> String {
-        self.inner.get("sdpMid").as_::<String>()
+    pub fn sdp_mid(&self) -> DOMString {
+        self.inner.get("sdpMid").as_::<DOMString>()
     }
 }
 impl RTCIceCandidate {
@@ -96,8 +96,8 @@ impl RTCIceCandidate {
 impl RTCIceCandidate {
     /// Getter of the `foundation` attribute.
     /// [`RTCIceCandidate.foundation`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/foundation)
-    pub fn foundation(&self) -> String {
-        self.inner.get("foundation").as_::<String>()
+    pub fn foundation(&self) -> DOMString {
+        self.inner.get("foundation").as_::<DOMString>()
     }
 }
 impl RTCIceCandidate {
@@ -117,8 +117,8 @@ impl RTCIceCandidate {
 impl RTCIceCandidate {
     /// Getter of the `address` attribute.
     /// [`RTCIceCandidate.address`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/address)
-    pub fn address(&self) -> String {
-        self.inner.get("address").as_::<String>()
+    pub fn address(&self) -> DOMString {
+        self.inner.get("address").as_::<DOMString>()
     }
 }
 impl RTCIceCandidate {
@@ -152,8 +152,8 @@ impl RTCIceCandidate {
 impl RTCIceCandidate {
     /// Getter of the `relatedAddress` attribute.
     /// [`RTCIceCandidate.relatedAddress`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/relatedAddress)
-    pub fn related_address(&self) -> String {
-        self.inner.get("relatedAddress").as_::<String>()
+    pub fn related_address(&self) -> DOMString {
+        self.inner.get("relatedAddress").as_::<DOMString>()
     }
 }
 impl RTCIceCandidate {
@@ -166,8 +166,8 @@ impl RTCIceCandidate {
 impl RTCIceCandidate {
     /// Getter of the `usernameFragment` attribute.
     /// [`RTCIceCandidate.usernameFragment`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/usernameFragment)
-    pub fn username_fragment(&self) -> String {
-        self.inner.get("usernameFragment").as_::<String>()
+    pub fn username_fragment(&self) -> DOMString {
+        self.inner.get("usernameFragment").as_::<DOMString>()
     }
 }
 impl RTCIceCandidate {
@@ -182,8 +182,8 @@ impl RTCIceCandidate {
 impl RTCIceCandidate {
     /// Getter of the `url` attribute.
     /// [`RTCIceCandidate.url`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate/url)
-    pub fn url(&self) -> String {
-        self.inner.get("url").as_::<String>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 }
 impl RTCIceCandidate {

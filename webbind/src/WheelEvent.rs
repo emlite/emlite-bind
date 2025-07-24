@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(WheelEvent);
 
 impl WheelEvent {
     /// The `new WheelEvent(..)` constructor, creating a new WheelEvent instance
-    pub fn new0(type_: &str) -> WheelEvent {
+    pub fn new0(type_: &DOMString) -> WheelEvent {
         Self {
             inner: Any::global("WheelEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl WheelEvent {
     }
 
     /// The `new WheelEvent(..)` constructor, creating a new WheelEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> WheelEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> WheelEvent {
         Self {
             inner: Any::global("WheelEvent")
                 .new(&[type_.into(), event_init_dict.into()])

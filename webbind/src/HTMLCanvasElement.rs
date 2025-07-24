@@ -94,14 +94,14 @@ impl HTMLCanvasElement {
 impl HTMLCanvasElement {
     /// The getContext method.
     /// [`HTMLCanvasElement.getContext`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext)
-    pub fn get_context0(&self, context_id: &str) -> Any {
+    pub fn get_context0(&self, context_id: &DOMString) -> Any {
         self.inner
             .call("getContext", &[context_id.into()])
             .as_::<Any>()
     }
     /// The getContext method.
     /// [`HTMLCanvasElement.getContext`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext)
-    pub fn get_context1(&self, context_id: &str, options: &Any) -> Any {
+    pub fn get_context1(&self, context_id: &DOMString, options: &Any) -> Any {
         self.inner
             .call("getContext", &[context_id.into(), options.into()])
             .as_::<Any>()
@@ -110,22 +110,22 @@ impl HTMLCanvasElement {
 impl HTMLCanvasElement {
     /// The toDataURL method.
     /// [`HTMLCanvasElement.toDataURL`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL)
-    pub fn to_data_url0(&self) -> String {
-        self.inner.call("toDataURL", &[]).as_::<String>()
+    pub fn to_data_url0(&self) -> USVString {
+        self.inner.call("toDataURL", &[]).as_::<USVString>()
     }
     /// The toDataURL method.
     /// [`HTMLCanvasElement.toDataURL`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL)
-    pub fn to_data_url1(&self, type_: &str) -> String {
+    pub fn to_data_url1(&self, type_: &DOMString) -> USVString {
         self.inner
             .call("toDataURL", &[type_.into()])
-            .as_::<String>()
+            .as_::<USVString>()
     }
     /// The toDataURL method.
     /// [`HTMLCanvasElement.toDataURL`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL)
-    pub fn to_data_url2(&self, type_: &str, quality: &Any) -> String {
+    pub fn to_data_url2(&self, type_: &DOMString, quality: &Any) -> USVString {
         self.inner
             .call("toDataURL", &[type_.into(), quality.into()])
-            .as_::<String>()
+            .as_::<USVString>()
     }
 }
 impl HTMLCanvasElement {
@@ -138,14 +138,14 @@ impl HTMLCanvasElement {
     }
     /// The toBlob method.
     /// [`HTMLCanvasElement.toBlob`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob)
-    pub fn to_blob1(&self, callback: &Function, type_: &str) -> Undefined {
+    pub fn to_blob1(&self, callback: &Function, type_: &DOMString) -> Undefined {
         self.inner
             .call("toBlob", &[callback.into(), type_.into()])
             .as_::<Undefined>()
     }
     /// The toBlob method.
     /// [`HTMLCanvasElement.toBlob`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob)
-    pub fn to_blob2(&self, callback: &Function, type_: &str, quality: &Any) -> Undefined {
+    pub fn to_blob2(&self, callback: &Function, type_: &DOMString, quality: &Any) -> Undefined {
         self.inner
             .call("toBlob", &[callback.into(), type_.into(), quality.into()])
             .as_::<Undefined>()

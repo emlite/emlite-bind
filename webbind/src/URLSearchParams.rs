@@ -82,7 +82,7 @@ impl URLSearchParams {
 impl URLSearchParams {
     /// The append method.
     /// [`URLSearchParams.append`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/append)
-    pub fn append(&self, name: &str, value: &str) -> Undefined {
+    pub fn append(&self, name: &USVString, value: &USVString) -> Undefined {
         self.inner
             .call("append", &[name.into(), value.into()])
             .as_::<Undefined>()
@@ -91,12 +91,12 @@ impl URLSearchParams {
 impl URLSearchParams {
     /// The delete method.
     /// [`URLSearchParams.delete`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/delete)
-    pub fn delete0(&self, name: &str) -> Undefined {
+    pub fn delete0(&self, name: &USVString) -> Undefined {
         self.inner.call("delete", &[name.into()]).as_::<Undefined>()
     }
     /// The delete method.
     /// [`URLSearchParams.delete`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/delete)
-    pub fn delete1(&self, name: &str, value: &str) -> Undefined {
+    pub fn delete1(&self, name: &USVString, value: &USVString) -> Undefined {
         self.inner
             .call("delete", &[name.into(), value.into()])
             .as_::<Undefined>()
@@ -105,28 +105,28 @@ impl URLSearchParams {
 impl URLSearchParams {
     /// The get method.
     /// [`URLSearchParams.get`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/get)
-    pub fn get(&self, name: &str) -> String {
-        self.inner.call("get", &[name.into()]).as_::<String>()
+    pub fn get(&self, name: &USVString) -> USVString {
+        self.inner.call("get", &[name.into()]).as_::<USVString>()
     }
 }
 impl URLSearchParams {
     /// The getAll method.
     /// [`URLSearchParams.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/getAll)
-    pub fn get_all(&self, name: &str) -> Sequence<String> {
+    pub fn get_all(&self, name: &USVString) -> Sequence<USVString> {
         self.inner
             .call("getAll", &[name.into()])
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<USVString>>()
     }
 }
 impl URLSearchParams {
     /// The has method.
     /// [`URLSearchParams.has`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/has)
-    pub fn has0(&self, name: &str) -> bool {
+    pub fn has0(&self, name: &USVString) -> bool {
         self.inner.call("has", &[name.into()]).as_::<bool>()
     }
     /// The has method.
     /// [`URLSearchParams.has`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/has)
-    pub fn has1(&self, name: &str, value: &str) -> bool {
+    pub fn has1(&self, name: &USVString, value: &USVString) -> bool {
         self.inner
             .call("has", &[name.into(), value.into()])
             .as_::<bool>()
@@ -135,7 +135,7 @@ impl URLSearchParams {
 impl URLSearchParams {
     /// The set method.
     /// [`URLSearchParams.set`](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/set)
-    pub fn set(&self, name: &str, value: &str) -> Undefined {
+    pub fn set(&self, name: &USVString, value: &USVString) -> Undefined {
         self.inner
             .call("set", &[name.into(), value.into()])
             .as_::<Undefined>()

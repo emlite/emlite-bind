@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(FontFaceSetLoadEvent);
 
 impl FontFaceSetLoadEvent {
     /// The `new FontFaceSetLoadEvent(..)` constructor, creating a new FontFaceSetLoadEvent instance
-    pub fn new0(type_: &str) -> FontFaceSetLoadEvent {
+    pub fn new0(type_: &CSSOMString) -> FontFaceSetLoadEvent {
         Self {
             inner: Any::global("FontFaceSetLoadEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl FontFaceSetLoadEvent {
     }
 
     /// The `new FontFaceSetLoadEvent(..)` constructor, creating a new FontFaceSetLoadEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> FontFaceSetLoadEvent {
+    pub fn new1(type_: &CSSOMString, event_init_dict: &Any) -> FontFaceSetLoadEvent {
         Self {
             inner: Any::global("FontFaceSetLoadEvent")
                 .new(&[type_.into(), event_init_dict.into()])

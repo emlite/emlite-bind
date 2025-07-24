@@ -78,11 +78,11 @@ impl StorageInterestGroup {
     }
 }
 impl StorageInterestGroup {
-    pub fn joining_origin(&self) -> String {
-        self.inner.get("joiningOrigin").as_::<String>()
+    pub fn joining_origin(&self) -> USVString {
+        self.inner.get("joiningOrigin").as_::<USVString>()
     }
 
-    pub fn set_joining_origin(&mut self, value: &str) {
+    pub fn set_joining_origin(&mut self, value: &USVString) {
         self.inner.set("joiningOrigin", value);
     }
 }
@@ -189,7 +189,7 @@ jsbind::utils::impl_dyn_cast!(SharedStorageWorkletGlobalScope);
 impl SharedStorageWorkletGlobalScope {
     /// The register method.
     /// [`SharedStorageWorkletGlobalScope.register`](https://developer.mozilla.org/en-US/docs/Web/API/SharedStorageWorkletGlobalScope/register)
-    pub fn register(&self, name: &str, operation_ctor: &Function) -> Undefined {
+    pub fn register(&self, name: &DOMString, operation_ctor: &Function) -> Undefined {
         self.inner
             .call("register", &[name.into(), operation_ctor.into()])
             .as_::<Undefined>()

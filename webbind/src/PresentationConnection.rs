@@ -58,15 +58,15 @@ jsbind::utils::impl_dyn_cast!(PresentationConnection);
 impl PresentationConnection {
     /// Getter of the `id` attribute.
     /// [`PresentationConnection.id`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/id)
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> USVString {
+        self.inner.get("id").as_::<USVString>()
     }
 }
 impl PresentationConnection {
     /// Getter of the `url` attribute.
     /// [`PresentationConnection.url`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnection/url)
-    pub fn url(&self) -> String {
-        self.inner.get("url").as_::<String>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 }
 impl PresentationConnection {

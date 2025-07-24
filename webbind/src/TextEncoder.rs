@@ -139,7 +139,7 @@ impl TextEncoder {
     }
     /// The encode method.
     /// [`TextEncoder.encode`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/encode)
-    pub fn encode1(&self, input: &str) -> Uint8Array {
+    pub fn encode1(&self, input: &USVString) -> Uint8Array {
         self.inner
             .call("encode", &[input.into()])
             .as_::<Uint8Array>()
@@ -150,7 +150,7 @@ impl TextEncoder {
     /// [`TextEncoder.encodeInto`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/encodeInto)
     pub fn encode_into(
         &self,
-        source: &str,
+        source: &USVString,
         destination: &Uint8Array,
     ) -> TextEncoderEncodeIntoResult {
         self.inner
@@ -161,7 +161,7 @@ impl TextEncoder {
 impl TextEncoder {
     /// Getter of the `encoding` attribute.
     /// [`TextEncoder.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/encoding)
-    pub fn encoding(&self) -> String {
-        self.inner.get("encoding").as_::<String>()
+    pub fn encoding(&self) -> DOMString {
+        self.inner.get("encoding").as_::<DOMString>()
     }
 }

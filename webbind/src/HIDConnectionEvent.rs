@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(HIDConnectionEvent);
 
 impl HIDConnectionEvent {
     /// The `new HIDConnectionEvent(..)` constructor, creating a new HIDConnectionEvent instance
-    pub fn new(type_: &str, event_init_dict: &Any) -> HIDConnectionEvent {
+    pub fn new(type_: &DOMString, event_init_dict: &Any) -> HIDConnectionEvent {
         Self {
             inner: Any::global("HIDConnectionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

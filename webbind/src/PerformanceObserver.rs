@@ -51,20 +51,20 @@ impl From<&PerformanceObserverInit> for Any {
 }
 
 impl PerformanceObserverInit {
-    pub fn entry_types(&self) -> Sequence<String> {
-        self.inner.get("entryTypes").as_::<Sequence<String>>()
+    pub fn entry_types(&self) -> Sequence<DOMString> {
+        self.inner.get("entryTypes").as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_entry_types(&mut self, value: &Sequence<String>) {
+    pub fn set_entry_types(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("entryTypes", value);
     }
 }
 impl PerformanceObserverInit {
-    pub fn type_(&self) -> String {
-        self.inner.get("type").as_::<String>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 
-    pub fn set_type_(&mut self, value: &str) {
+    pub fn set_type_(&mut self, value: &DOMString) {
         self.inner.set("type", value);
     }
 }
@@ -173,9 +173,9 @@ impl PerformanceObserver {
 impl PerformanceObserver {
     /// Getter of the `supportedEntryTypes` static attribute.
     /// [`PerformanceObserver.supportedEntryTypes`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceObserver/supportedEntryTypes)
-    pub fn supported_entry_types() -> FrozenArray<String> {
+    pub fn supported_entry_types() -> FrozenArray<DOMString> {
         Any::global("PerformanceObserver")
             .get("supportedEntryTypes")
-            .as_::<FrozenArray<String>>()
+            .as_::<FrozenArray<DOMString>>()
     }
 }

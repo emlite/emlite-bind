@@ -87,11 +87,11 @@ impl EffectTiming {
     }
 }
 impl EffectTiming {
-    pub fn easing(&self) -> String {
-        self.inner.get("easing").as_::<String>()
+    pub fn easing(&self) -> DOMString {
+        self.inner.get("easing").as_::<DOMString>()
     }
 
-    pub fn set_easing(&mut self, value: &str) {
+    pub fn set_easing(&mut self, value: &DOMString) {
         self.inner.set("easing", value);
     }
 }

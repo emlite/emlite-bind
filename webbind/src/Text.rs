@@ -64,7 +64,7 @@ impl Text {
     }
 
     /// The `new Text(..)` constructor, creating a new Text instance
-    pub fn new1(data: &str) -> Text {
+    pub fn new1(data: &DOMString) -> Text {
         Self {
             inner: Any::global("Text")
                 .new(&[data.into()])
@@ -82,8 +82,8 @@ impl Text {
 impl Text {
     /// Getter of the `wholeText` attribute.
     /// [`Text.wholeText`](https://developer.mozilla.org/en-US/docs/Web/API/Text/wholeText)
-    pub fn whole_text(&self) -> String {
-        self.inner.get("wholeText").as_::<String>()
+    pub fn whole_text(&self) -> DOMString {
+        self.inner.get("wholeText").as_::<DOMString>()
     }
 }
 impl Text {

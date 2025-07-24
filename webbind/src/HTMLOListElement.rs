@@ -94,13 +94,13 @@ impl HTMLOListElement {
 impl HTMLOListElement {
     /// Getter of the `type` attribute.
     /// [`HTMLOListElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOListElement/type)
-    pub fn type_(&self) -> String {
-        self.inner.get("type").as_::<String>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 
     /// Setter of the `type` attribute.
     /// [`HTMLOListElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOListElement/type)
-    pub fn set_type_(&mut self, value: &str) {
+    pub fn set_type_(&mut self, value: &DOMString) {
         self.inner.set("type", value);
     }
 }

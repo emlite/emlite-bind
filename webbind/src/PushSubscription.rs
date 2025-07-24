@@ -51,11 +51,11 @@ impl From<&PushSubscriptionJSON> for Any {
 }
 
 impl PushSubscriptionJSON {
-    pub fn endpoint(&self) -> String {
-        self.inner.get("endpoint").as_::<String>()
+    pub fn endpoint(&self) -> USVString {
+        self.inner.get("endpoint").as_::<USVString>()
     }
 
-    pub fn set_endpoint(&mut self, value: &str) {
+    pub fn set_endpoint(&mut self, value: &USVString) {
         self.inner.set("endpoint", value);
     }
 }
@@ -69,11 +69,11 @@ impl PushSubscriptionJSON {
     }
 }
 impl PushSubscriptionJSON {
-    pub fn keys(&self) -> Record<String, String> {
-        self.inner.get("keys").as_::<Record<String, String>>()
+    pub fn keys(&self) -> Record<DOMString, USVString> {
+        self.inner.get("keys").as_::<Record<DOMString, USVString>>()
     }
 
-    pub fn set_keys(&mut self, value: &Record<String, String>) {
+    pub fn set_keys(&mut self, value: &Record<DOMString, USVString>) {
         self.inner.set("keys", value);
     }
 }
@@ -135,8 +135,8 @@ jsbind::utils::impl_dyn_cast!(PushSubscription);
 impl PushSubscription {
     /// Getter of the `endpoint` attribute.
     /// [`PushSubscription.endpoint`](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription/endpoint)
-    pub fn endpoint(&self) -> String {
-        self.inner.get("endpoint").as_::<String>()
+    pub fn endpoint(&self) -> USVString {
+        self.inner.get("endpoint").as_::<USVString>()
     }
 }
 impl PushSubscription {

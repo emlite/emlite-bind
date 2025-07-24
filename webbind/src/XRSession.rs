@@ -293,11 +293,11 @@ impl From<&XRTransientInputHitTestOptionsInit> for Any {
 }
 
 impl XRTransientInputHitTestOptionsInit {
-    pub fn profile(&self) -> String {
-        self.inner.get("profile").as_::<String>()
+    pub fn profile(&self) -> DOMString {
+        self.inner.get("profile").as_::<DOMString>()
     }
 
-    pub fn set_profile(&mut self, value: &str) {
+    pub fn set_profile(&mut self, value: &DOMString) {
         self.inner.set("profile", value);
     }
 }
@@ -482,10 +482,10 @@ impl XRSession {
 impl XRSession {
     /// Getter of the `enabledFeatures` attribute.
     /// [`XRSession.enabledFeatures`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/enabledFeatures)
-    pub fn enabled_features(&self) -> FrozenArray<String> {
+    pub fn enabled_features(&self) -> FrozenArray<DOMString> {
         self.inner
             .get("enabledFeatures")
-            .as_::<FrozenArray<String>>()
+            .as_::<FrozenArray<DOMString>>()
     }
 }
 impl XRSession {
@@ -688,16 +688,16 @@ impl XRSession {
 impl XRSession {
     /// Getter of the `persistentAnchors` attribute.
     /// [`XRSession.persistentAnchors`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/persistentAnchors)
-    pub fn persistent_anchors(&self) -> FrozenArray<String> {
+    pub fn persistent_anchors(&self) -> FrozenArray<DOMString> {
         self.inner
             .get("persistentAnchors")
-            .as_::<FrozenArray<String>>()
+            .as_::<FrozenArray<DOMString>>()
     }
 }
 impl XRSession {
     /// The restorePersistentAnchor method.
     /// [`XRSession.restorePersistentAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/restorePersistentAnchor)
-    pub fn restore_persistent_anchor(&self, uuid: &str) -> Promise<XRAnchor> {
+    pub fn restore_persistent_anchor(&self, uuid: &DOMString) -> Promise<XRAnchor> {
         self.inner
             .call("restorePersistentAnchor", &[uuid.into()])
             .as_::<Promise<XRAnchor>>()
@@ -706,7 +706,7 @@ impl XRSession {
 impl XRSession {
     /// The deletePersistentAnchor method.
     /// [`XRSession.deletePersistentAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/deletePersistentAnchor)
-    pub fn delete_persistent_anchor(&self, uuid: &str) -> Promise<Undefined> {
+    pub fn delete_persistent_anchor(&self, uuid: &DOMString) -> Promise<Undefined> {
         self.inner
             .call("deletePersistentAnchor", &[uuid.into()])
             .as_::<Promise<Undefined>>()

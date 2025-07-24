@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(PaymentManager);
 impl PaymentManager {
     /// Getter of the `userHint` attribute.
     /// [`PaymentManager.userHint`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentManager/userHint)
-    pub fn user_hint(&self) -> String {
-        self.inner.get("userHint").as_::<String>()
+    pub fn user_hint(&self) -> DOMString {
+        self.inner.get("userHint").as_::<DOMString>()
     }
 
     /// Setter of the `userHint` attribute.
     /// [`PaymentManager.userHint`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentManager/userHint)
-    pub fn set_user_hint(&mut self, value: &str) {
+    pub fn set_user_hint(&mut self, value: &DOMString) {
         self.inner.set("userHint", value);
     }
 }

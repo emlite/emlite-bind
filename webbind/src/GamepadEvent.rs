@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(GamepadEvent);
 
 impl GamepadEvent {
     /// The `new GamepadEvent(..)` constructor, creating a new GamepadEvent instance
-    pub fn new(type_: &str, event_init_dict: &Any) -> GamepadEvent {
+    pub fn new(type_: &DOMString, event_init_dict: &Any) -> GamepadEvent {
         Self {
             inner: Any::global("GamepadEvent")
                 .new(&[type_.into(), event_init_dict.into()])

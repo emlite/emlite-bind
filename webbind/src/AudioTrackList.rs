@@ -65,7 +65,7 @@ impl AudioTrackList {
 impl AudioTrackList {
     /// The getTrackById method.
     /// [`AudioTrackList.getTrackById`](https://developer.mozilla.org/en-US/docs/Web/API/AudioTrackList/getTrackById)
-    pub fn get_track_by_id(&self, id: &str) -> AudioTrack {
+    pub fn get_track_by_id(&self, id: &DOMString) -> AudioTrack {
         self.inner
             .call("getTrackById", &[id.into()])
             .as_::<AudioTrack>()

@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(CSSStyleDeclaration);
 impl CSSStyleDeclaration {
     /// Getter of the `cssText` attribute.
     /// [`CSSStyleDeclaration.cssText`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/cssText)
-    pub fn css_text(&self) -> String {
-        self.inner.get("cssText").as_::<String>()
+    pub fn css_text(&self) -> CSSOMString {
+        self.inner.get("cssText").as_::<CSSOMString>()
     }
 
     /// Setter of the `cssText` attribute.
     /// [`CSSStyleDeclaration.cssText`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/cssText)
-    pub fn set_css_text(&mut self, value: &str) {
+    pub fn set_css_text(&mut self, value: &CSSOMString) {
         self.inner.set("cssText", value);
     }
 }
@@ -78,39 +78,46 @@ impl CSSStyleDeclaration {
 impl CSSStyleDeclaration {
     /// The item method.
     /// [`CSSStyleDeclaration.item`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/item)
-    pub fn item(&self, index: u32) -> String {
-        self.inner.call("item", &[index.into()]).as_::<String>()
+    pub fn item(&self, index: u32) -> CSSOMString {
+        self.inner
+            .call("item", &[index.into()])
+            .as_::<CSSOMString>()
     }
 }
 impl CSSStyleDeclaration {
     /// The getPropertyValue method.
     /// [`CSSStyleDeclaration.getPropertyValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/getPropertyValue)
-    pub fn get_property_value(&self, property: &str) -> String {
+    pub fn get_property_value(&self, property: &CSSOMString) -> CSSOMString {
         self.inner
             .call("getPropertyValue", &[property.into()])
-            .as_::<String>()
+            .as_::<CSSOMString>()
     }
 }
 impl CSSStyleDeclaration {
     /// The getPropertyPriority method.
     /// [`CSSStyleDeclaration.getPropertyPriority`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/getPropertyPriority)
-    pub fn get_property_priority(&self, property: &str) -> String {
+    pub fn get_property_priority(&self, property: &CSSOMString) -> CSSOMString {
         self.inner
             .call("getPropertyPriority", &[property.into()])
-            .as_::<String>()
+            .as_::<CSSOMString>()
     }
 }
 impl CSSStyleDeclaration {
     /// The setProperty method.
     /// [`CSSStyleDeclaration.setProperty`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty)
-    pub fn set_property0(&self, property: &str, value: &str) -> Undefined {
+    pub fn set_property0(&self, property: &CSSOMString, value: &CSSOMString) -> Undefined {
         self.inner
             .call("setProperty", &[property.into(), value.into()])
             .as_::<Undefined>()
     }
     /// The setProperty method.
     /// [`CSSStyleDeclaration.setProperty`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/setProperty)
-    pub fn set_property1(&self, property: &str, value: &str, priority: &str) -> Undefined {
+    pub fn set_property1(
+        &self,
+        property: &CSSOMString,
+        value: &CSSOMString,
+        priority: &CSSOMString,
+    ) -> Undefined {
         self.inner
             .call(
                 "setProperty",
@@ -122,10 +129,10 @@ impl CSSStyleDeclaration {
 impl CSSStyleDeclaration {
     /// The removeProperty method.
     /// [`CSSStyleDeclaration.removeProperty`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleDeclaration/removeProperty)
-    pub fn remove_property(&self, property: &str) -> String {
+    pub fn remove_property(&self, property: &CSSOMString) -> CSSOMString {
         self.inner
             .call("removeProperty", &[property.into()])
-            .as_::<String>()
+            .as_::<CSSOMString>()
     }
 }
 impl CSSStyleDeclaration {

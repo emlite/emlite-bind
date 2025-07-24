@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(TrustedHTML);
 impl TrustedHTML {
     /// The toJSON method.
     /// [`TrustedHTML.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedHTML/toJSON)
-    pub fn to_json(&self) -> String {
-        self.inner.call("toJSON", &[]).as_::<String>()
+    pub fn to_json(&self) -> DOMString {
+        self.inner.call("toJSON", &[]).as_::<DOMString>()
     }
 }

@@ -58,63 +58,63 @@ jsbind::utils::impl_dyn_cast!(WorkerLocation);
 impl WorkerLocation {
     /// Getter of the `href` attribute.
     /// [`WorkerLocation.href`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/href)
-    pub fn href(&self) -> String {
-        self.inner.get("href").as_::<String>()
+    pub fn href(&self) -> USVString {
+        self.inner.get("href").as_::<USVString>()
     }
 }
 impl WorkerLocation {
     /// Getter of the `origin` attribute.
     /// [`WorkerLocation.origin`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/origin)
-    pub fn origin(&self) -> String {
-        self.inner.get("origin").as_::<String>()
+    pub fn origin(&self) -> USVString {
+        self.inner.get("origin").as_::<USVString>()
     }
 }
 impl WorkerLocation {
     /// Getter of the `protocol` attribute.
     /// [`WorkerLocation.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/protocol)
-    pub fn protocol(&self) -> String {
-        self.inner.get("protocol").as_::<String>()
+    pub fn protocol(&self) -> USVString {
+        self.inner.get("protocol").as_::<USVString>()
     }
 }
 impl WorkerLocation {
     /// Getter of the `host` attribute.
     /// [`WorkerLocation.host`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/host)
-    pub fn host(&self) -> String {
-        self.inner.get("host").as_::<String>()
+    pub fn host(&self) -> USVString {
+        self.inner.get("host").as_::<USVString>()
     }
 }
 impl WorkerLocation {
     /// Getter of the `hostname` attribute.
     /// [`WorkerLocation.hostname`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/hostname)
-    pub fn hostname(&self) -> String {
-        self.inner.get("hostname").as_::<String>()
+    pub fn hostname(&self) -> USVString {
+        self.inner.get("hostname").as_::<USVString>()
     }
 }
 impl WorkerLocation {
     /// Getter of the `port` attribute.
     /// [`WorkerLocation.port`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/port)
-    pub fn port(&self) -> String {
-        self.inner.get("port").as_::<String>()
+    pub fn port(&self) -> USVString {
+        self.inner.get("port").as_::<USVString>()
     }
 }
 impl WorkerLocation {
     /// Getter of the `pathname` attribute.
     /// [`WorkerLocation.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/pathname)
-    pub fn pathname(&self) -> String {
-        self.inner.get("pathname").as_::<String>()
+    pub fn pathname(&self) -> USVString {
+        self.inner.get("pathname").as_::<USVString>()
     }
 }
 impl WorkerLocation {
     /// Getter of the `search` attribute.
     /// [`WorkerLocation.search`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/search)
-    pub fn search(&self) -> String {
-        self.inner.get("search").as_::<String>()
+    pub fn search(&self) -> USVString {
+        self.inner.get("search").as_::<USVString>()
     }
 }
 impl WorkerLocation {
     /// Getter of the `hash` attribute.
     /// [`WorkerLocation.hash`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerLocation/hash)
-    pub fn hash(&self) -> String {
-        self.inner.get("hash").as_::<String>()
+    pub fn hash(&self) -> USVString {
+        self.inner.get("hash").as_::<USVString>()
     }
 }

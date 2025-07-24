@@ -66,7 +66,7 @@ impl DocumentFragment {
 impl DocumentFragment {
     /// The getElementById method.
     /// [`DocumentFragment.getElementById`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment/getElementById)
-    pub fn get_element_by_id(&self, element_id: &str) -> Element {
+    pub fn get_element_by_id(&self, element_id: &DOMString) -> Element {
         self.inner
             .call("getElementById", &[element_id.into()])
             .as_::<Element>()
@@ -139,7 +139,7 @@ impl DocumentFragment {
 impl DocumentFragment {
     /// The querySelector method.
     /// [`DocumentFragment.querySelector`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment/querySelector)
-    pub fn query_selector(&self, selectors: &str) -> Element {
+    pub fn query_selector(&self, selectors: &DOMString) -> Element {
         self.inner
             .call("querySelector", &[selectors.into()])
             .as_::<Element>()
@@ -148,7 +148,7 @@ impl DocumentFragment {
 impl DocumentFragment {
     /// The querySelectorAll method.
     /// [`DocumentFragment.querySelectorAll`](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment/querySelectorAll)
-    pub fn query_selector_all(&self, selectors: &str) -> NodeList {
+    pub fn query_selector_all(&self, selectors: &DOMString) -> NodeList {
         self.inner
             .call("querySelectorAll", &[selectors.into()])
             .as_::<NodeList>()

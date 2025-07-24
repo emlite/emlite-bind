@@ -72,15 +72,15 @@ impl PerformanceScriptTiming {
 impl PerformanceScriptTiming {
     /// Getter of the `name` attribute.
     /// [`PerformanceScriptTiming.name`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceScriptTiming/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl PerformanceScriptTiming {
     /// Getter of the `entryType` attribute.
     /// [`PerformanceScriptTiming.entryType`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceScriptTiming/entryType)
-    pub fn entry_type(&self) -> String {
-        self.inner.get("entryType").as_::<String>()
+    pub fn entry_type(&self) -> DOMString {
+        self.inner.get("entryType").as_::<DOMString>()
     }
 }
 impl PerformanceScriptTiming {
@@ -93,8 +93,8 @@ impl PerformanceScriptTiming {
 impl PerformanceScriptTiming {
     /// Getter of the `invoker` attribute.
     /// [`PerformanceScriptTiming.invoker`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceScriptTiming/invoker)
-    pub fn invoker(&self) -> String {
-        self.inner.get("invoker").as_::<String>()
+    pub fn invoker(&self) -> DOMString {
+        self.inner.get("invoker").as_::<DOMString>()
     }
 }
 impl PerformanceScriptTiming {
@@ -107,15 +107,15 @@ impl PerformanceScriptTiming {
 impl PerformanceScriptTiming {
     /// Getter of the `sourceURL` attribute.
     /// [`PerformanceScriptTiming.sourceURL`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceScriptTiming/sourceURL)
-    pub fn source_url(&self) -> String {
-        self.inner.get("sourceURL").as_::<String>()
+    pub fn source_url(&self) -> DOMString {
+        self.inner.get("sourceURL").as_::<DOMString>()
     }
 }
 impl PerformanceScriptTiming {
     /// Getter of the `sourceFunctionName` attribute.
     /// [`PerformanceScriptTiming.sourceFunctionName`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceScriptTiming/sourceFunctionName)
-    pub fn source_function_name(&self) -> String {
-        self.inner.get("sourceFunctionName").as_::<String>()
+    pub fn source_function_name(&self) -> DOMString {
+        self.inner.get("sourceFunctionName").as_::<DOMString>()
     }
 }
 impl PerformanceScriptTiming {

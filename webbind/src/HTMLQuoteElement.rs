@@ -68,13 +68,13 @@ impl HTMLQuoteElement {
 impl HTMLQuoteElement {
     /// Getter of the `cite` attribute.
     /// [`HTMLQuoteElement.cite`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLQuoteElement/cite)
-    pub fn cite(&self) -> String {
-        self.inner.get("cite").as_::<String>()
+    pub fn cite(&self) -> USVString {
+        self.inner.get("cite").as_::<USVString>()
     }
 
     /// Setter of the `cite` attribute.
     /// [`HTMLQuoteElement.cite`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLQuoteElement/cite)
-    pub fn set_cite(&mut self, value: &str) {
+    pub fn set_cite(&mut self, value: &USVString) {
         self.inner.set("cite", value);
     }
 }

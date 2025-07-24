@@ -51,11 +51,11 @@ impl From<&WindowPostMessageOptions> for Any {
 }
 
 impl WindowPostMessageOptions {
-    pub fn target_origin(&self) -> String {
-        self.inner.get("targetOrigin").as_::<String>()
+    pub fn target_origin(&self) -> USVString {
+        self.inner.get("targetOrigin").as_::<USVString>()
     }
 
-    pub fn set_target_origin(&mut self, value: &str) {
+    pub fn set_target_origin(&mut self, value: &USVString) {
         self.inner.set("targetOrigin", value);
     }
 }
@@ -169,11 +169,11 @@ impl From<&SaveFilePickerOptions> for Any {
 }
 
 impl SaveFilePickerOptions {
-    pub fn suggested_name(&self) -> String {
-        self.inner.get("suggestedName").as_::<String>()
+    pub fn suggested_name(&self) -> USVString {
+        self.inner.get("suggestedName").as_::<USVString>()
     }
 
-    pub fn set_suggested_name(&mut self, value: &str) {
+    pub fn set_suggested_name(&mut self, value: &USVString) {
         self.inner.set("suggestedName", value);
     }
 }
@@ -228,11 +228,11 @@ impl From<&DirectoryPickerOptions> for Any {
 }
 
 impl DirectoryPickerOptions {
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 
-    pub fn set_id(&mut self, value: &str) {
+    pub fn set_id(&mut self, value: &DOMString) {
         self.inner.set("id", value);
     }
 }
@@ -305,11 +305,13 @@ impl From<&QueryOptions> for Any {
 }
 
 impl QueryOptions {
-    pub fn postscript_names(&self) -> Sequence<String> {
-        self.inner.get("postscriptNames").as_::<Sequence<String>>()
+    pub fn postscript_names(&self) -> Sequence<DOMString> {
+        self.inner
+            .get("postscriptNames")
+            .as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_postscript_names(&mut self, value: &Sequence<String>) {
+    pub fn set_postscript_names(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("postscriptNames", value);
     }
 }
@@ -451,13 +453,13 @@ impl Window {
 impl Window {
     /// Getter of the `name` attribute.
     /// [`Window.name`](https://developer.mozilla.org/en-US/docs/Web/API/Window/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`Window.name`](https://developer.mozilla.org/en-US/docs/Web/API/Window/name)
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &DOMString) {
         self.inner.set("name", value);
     }
 }
@@ -536,13 +538,13 @@ impl Window {
 impl Window {
     /// Getter of the `status` attribute.
     /// [`Window.status`](https://developer.mozilla.org/en-US/docs/Web/API/Window/status)
-    pub fn status(&self) -> String {
-        self.inner.get("status").as_::<String>()
+    pub fn status(&self) -> DOMString {
+        self.inner.get("status").as_::<DOMString>()
     }
 
     /// Setter of the `status` attribute.
     /// [`Window.status`](https://developer.mozilla.org/en-US/docs/Web/API/Window/status)
-    pub fn set_status(&mut self, value: &str) {
+    pub fn set_status(&mut self, value: &DOMString) {
         self.inner.set("status", value);
     }
 }
@@ -637,19 +639,19 @@ impl Window {
     }
     /// The open method.
     /// [`Window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
-    pub fn open1(&self, url: &str) -> Any {
+    pub fn open1(&self, url: &USVString) -> Any {
         self.inner.call("open", &[url.into()]).as_::<Any>()
     }
     /// The open method.
     /// [`Window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
-    pub fn open2(&self, url: &str, target: &str) -> Any {
+    pub fn open2(&self, url: &USVString, target: &DOMString) -> Any {
         self.inner
             .call("open", &[url.into(), target.into()])
             .as_::<Any>()
     }
     /// The open method.
     /// [`Window.open`](https://developer.mozilla.org/en-US/docs/Web/API/Window/open)
-    pub fn open3(&self, url: &str, target: &str, features: &str) -> Any {
+    pub fn open3(&self, url: &USVString, target: &DOMString, features: &DOMString) -> Any {
         self.inner
             .call("open", &[url.into(), target.into(), features.into()])
             .as_::<Any>()
@@ -679,7 +681,7 @@ impl Window {
 impl Window {
     /// The alert method.
     /// [`Window.alert`](https://developer.mozilla.org/en-US/docs/Web/API/Window/alert)
-    pub fn alert(&self, message: &str) -> Undefined {
+    pub fn alert(&self, message: &DOMString) -> Undefined {
         self.inner
             .call("alert", &[message.into()])
             .as_::<Undefined>()
@@ -693,27 +695,29 @@ impl Window {
     }
     /// The confirm method.
     /// [`Window.confirm`](https://developer.mozilla.org/en-US/docs/Web/API/Window/confirm)
-    pub fn confirm1(&self, message: &str) -> bool {
+    pub fn confirm1(&self, message: &DOMString) -> bool {
         self.inner.call("confirm", &[message.into()]).as_::<bool>()
     }
 }
 impl Window {
     /// The prompt method.
     /// [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
-    pub fn prompt0(&self) -> String {
-        self.inner.call("prompt", &[]).as_::<String>()
+    pub fn prompt0(&self) -> DOMString {
+        self.inner.call("prompt", &[]).as_::<DOMString>()
     }
     /// The prompt method.
     /// [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
-    pub fn prompt1(&self, message: &str) -> String {
-        self.inner.call("prompt", &[message.into()]).as_::<String>()
+    pub fn prompt1(&self, message: &DOMString) -> DOMString {
+        self.inner
+            .call("prompt", &[message.into()])
+            .as_::<DOMString>()
     }
     /// The prompt method.
     /// [`Window.prompt`](https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt)
-    pub fn prompt2(&self, message: &str, default: &str) -> String {
+    pub fn prompt2(&self, message: &DOMString, default: &DOMString) -> DOMString {
         self.inner
             .call("prompt", &[message.into(), default.into()])
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl Window {
@@ -792,7 +796,7 @@ impl Window {
 impl Window {
     /// The matchMedia method.
     /// [`Window.matchMedia`](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia)
-    pub fn match_media(&self, query: &str) -> MediaQueryList {
+    pub fn match_media(&self, query: &CSSOMString) -> MediaQueryList {
         self.inner
             .call("matchMedia", &[query.into()])
             .as_::<MediaQueryList>()
@@ -976,7 +980,11 @@ impl Window {
     }
     /// The getComputedStyle method.
     /// [`Window.getComputedStyle`](https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle)
-    pub fn get_computed_style1(&self, elt: &Element, pseudo_elt: &str) -> CSSStyleDeclaration {
+    pub fn get_computed_style1(
+        &self,
+        elt: &Element,
+        pseudo_elt: &CSSOMString,
+    ) -> CSSStyleDeclaration {
         self.inner
             .call("getComputedStyle", &[elt.into(), pseudo_elt.into()])
             .as_::<CSSStyleDeclaration>()
@@ -987,7 +995,7 @@ impl Window {
     /// [`Window.getDigitalGoodsService`](https://developer.mozilla.org/en-US/docs/Web/API/Window/getDigitalGoodsService)
     pub fn get_digital_goods_service(
         &self,
-        service_provider: &str,
+        service_provider: &DOMString,
     ) -> Promise<DigitalGoodsService> {
         self.inner
             .call("getDigitalGoodsService", &[service_provider.into()])

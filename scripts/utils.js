@@ -65,10 +65,10 @@ export function rust(idlType) {
   const { n, unsigned } = flat(idlType);
   const jsbindMap = {
     undefined: "Undefined",
-    DOMString: "String",
-    USVString: "String",
-    ByteString: "String",
-    CSSOMString: "String",
+    DOMString: "DOMString",
+    USVString: "USVString",
+    ByteString: "ByteString",
+    CSSOMString: "CSSOMString",
     object: "Object",
     any: "Any",
     Uint8Array: "Uint8Array",

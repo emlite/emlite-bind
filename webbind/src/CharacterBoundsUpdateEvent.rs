@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CharacterBoundsUpdateEvent);
 
 impl CharacterBoundsUpdateEvent {
     /// The `new CharacterBoundsUpdateEvent(..)` constructor, creating a new CharacterBoundsUpdateEvent instance
-    pub fn new0(type_: &str) -> CharacterBoundsUpdateEvent {
+    pub fn new0(type_: &DOMString) -> CharacterBoundsUpdateEvent {
         Self {
             inner: Any::global("CharacterBoundsUpdateEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl CharacterBoundsUpdateEvent {
     }
 
     /// The `new CharacterBoundsUpdateEvent(..)` constructor, creating a new CharacterBoundsUpdateEvent instance
-    pub fn new1(type_: &str, options: &Any) -> CharacterBoundsUpdateEvent {
+    pub fn new1(type_: &DOMString, options: &Any) -> CharacterBoundsUpdateEvent {
         Self {
             inner: Any::global("CharacterBoundsUpdateEvent")
                 .new(&[type_.into(), options.into()])

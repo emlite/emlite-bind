@@ -64,7 +64,7 @@ impl Comment {
     }
 
     /// The `new Comment(..)` constructor, creating a new Comment instance
-    pub fn new1(data: &str) -> Comment {
+    pub fn new1(data: &DOMString) -> Comment {
         Self {
             inner: Any::global("Comment")
                 .new(&[data.into()])

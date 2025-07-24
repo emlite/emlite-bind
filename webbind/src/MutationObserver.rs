@@ -105,11 +105,13 @@ impl MutationObserverInit {
     }
 }
 impl MutationObserverInit {
-    pub fn attribute_filter(&self) -> Sequence<String> {
-        self.inner.get("attributeFilter").as_::<Sequence<String>>()
+    pub fn attribute_filter(&self) -> Sequence<DOMString> {
+        self.inner
+            .get("attributeFilter")
+            .as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_attribute_filter(&mut self, value: &Sequence<String>) {
+    pub fn set_attribute_filter(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("attributeFilter", value);
     }
 }

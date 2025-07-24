@@ -701,7 +701,7 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     /// The getFragDataLocation method.
     /// [`WebGL2RenderingContext.getFragDataLocation`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getFragDataLocation)
-    pub fn get_frag_data_location(&self, program: &WebGLProgram, name: &str) -> Any {
+    pub fn get_frag_data_location(&self, program: &WebGLProgram, name: &DOMString) -> Any {
         self.inner
             .call("getFragDataLocation", &[program.into(), name.into()])
             .as_::<Any>()
@@ -1839,7 +1839,7 @@ impl WebGL2RenderingContext {
     pub fn transform_feedback_varyings(
         &self,
         program: &WebGLProgram,
-        varyings: &Sequence<String>,
+        varyings: &Sequence<DOMString>,
         buffer_mode: &Any,
     ) -> Undefined {
         self.inner
@@ -1936,7 +1936,7 @@ impl WebGL2RenderingContext {
     pub fn get_uniform_indices(
         &self,
         program: &WebGLProgram,
-        uniform_names: &Sequence<String>,
+        uniform_names: &Sequence<DOMString>,
     ) -> Sequence<Any> {
         self.inner
             .call("getUniformIndices", &[program.into(), uniform_names.into()])
@@ -1963,7 +1963,11 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     /// The getUniformBlockIndex method.
     /// [`WebGL2RenderingContext.getUniformBlockIndex`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getUniformBlockIndex)
-    pub fn get_uniform_block_index(&self, program: &WebGLProgram, uniform_block_name: &str) -> Any {
+    pub fn get_uniform_block_index(
+        &self,
+        program: &WebGLProgram,
+        uniform_block_name: &DOMString,
+    ) -> Any {
         self.inner
             .call(
                 "getUniformBlockIndex",
@@ -1996,13 +2000,13 @@ impl WebGL2RenderingContext {
         &self,
         program: &WebGLProgram,
         uniform_block_index: &Any,
-    ) -> String {
+    ) -> DOMString {
         self.inner
             .call(
                 "getActiveUniformBlockName",
                 &[program.into(), uniform_block_index.into()],
             )
-            .as_::<String>()
+            .as_::<DOMString>()
     }
 }
 impl WebGL2RenderingContext {

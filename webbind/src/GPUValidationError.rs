@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(GPUValidationError);
 
 impl GPUValidationError {
     /// The `new GPUValidationError(..)` constructor, creating a new GPUValidationError instance
-    pub fn new(message: &str) -> GPUValidationError {
+    pub fn new(message: &DOMString) -> GPUValidationError {
         Self {
             inner: Any::global("GPUValidationError")
                 .new(&[message.into()])

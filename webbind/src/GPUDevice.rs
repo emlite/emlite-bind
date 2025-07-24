@@ -639,11 +639,11 @@ impl From<&GPUShaderModuleDescriptor> for Any {
 }
 
 impl GPUShaderModuleDescriptor {
-    pub fn code(&self) -> String {
-        self.inner.get("code").as_::<String>()
+    pub fn code(&self) -> USVString {
+        self.inner.get("code").as_::<USVString>()
     }
 
-    pub fn set_code(&mut self, value: &str) {
+    pub fn set_code(&mut self, value: &USVString) {
         self.inner.set("code", value);
     }
 }
@@ -1301,13 +1301,13 @@ impl GPUDevice {
 impl GPUDevice {
     /// Getter of the `label` attribute.
     /// [`GPUDevice.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/label)
-    pub fn label(&self) -> String {
-        self.inner.get("label").as_::<String>()
+    pub fn label(&self) -> USVString {
+        self.inner.get("label").as_::<USVString>()
     }
 
     /// Setter of the `label` attribute.
     /// [`GPUDevice.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/label)
-    pub fn set_label(&mut self, value: &str) {
+    pub fn set_label(&mut self, value: &USVString) {
         self.inner.set("label", value);
     }
 }

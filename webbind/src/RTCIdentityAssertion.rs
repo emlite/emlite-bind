@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(RTCIdentityAssertion);
 
 impl RTCIdentityAssertion {
     /// The `new RTCIdentityAssertion(..)` constructor, creating a new RTCIdentityAssertion instance
-    pub fn new(idp: &str, name: &str) -> RTCIdentityAssertion {
+    pub fn new(idp: &DOMString, name: &DOMString) -> RTCIdentityAssertion {
         Self {
             inner: Any::global("RTCIdentityAssertion")
                 .new(&[idp.into(), name.into()])
@@ -68,26 +68,26 @@ impl RTCIdentityAssertion {
 impl RTCIdentityAssertion {
     /// Getter of the `idp` attribute.
     /// [`RTCIdentityAssertion.idp`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityAssertion/idp)
-    pub fn idp(&self) -> String {
-        self.inner.get("idp").as_::<String>()
+    pub fn idp(&self) -> DOMString {
+        self.inner.get("idp").as_::<DOMString>()
     }
 
     /// Setter of the `idp` attribute.
     /// [`RTCIdentityAssertion.idp`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityAssertion/idp)
-    pub fn set_idp(&mut self, value: &str) {
+    pub fn set_idp(&mut self, value: &DOMString) {
         self.inner.set("idp", value);
     }
 }
 impl RTCIdentityAssertion {
     /// Getter of the `name` attribute.
     /// [`RTCIdentityAssertion.name`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityAssertion/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`RTCIdentityAssertion.name`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIdentityAssertion/name)
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &DOMString) {
         self.inner.set("name", value);
     }
 }

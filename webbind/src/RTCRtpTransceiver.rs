@@ -51,11 +51,11 @@ impl From<&RTCRtpCodec> for Any {
 }
 
 impl RTCRtpCodec {
-    pub fn mime_type(&self) -> String {
-        self.inner.get("mimeType").as_::<String>()
+    pub fn mime_type(&self) -> DOMString {
+        self.inner.get("mimeType").as_::<DOMString>()
     }
 
-    pub fn set_mime_type(&mut self, value: &str) {
+    pub fn set_mime_type(&mut self, value: &DOMString) {
         self.inner.set("mimeType", value);
     }
 }
@@ -78,11 +78,11 @@ impl RTCRtpCodec {
     }
 }
 impl RTCRtpCodec {
-    pub fn sdp_fmtp_line(&self) -> String {
-        self.inner.get("sdpFmtpLine").as_::<String>()
+    pub fn sdp_fmtp_line(&self) -> DOMString {
+        self.inner.get("sdpFmtpLine").as_::<DOMString>()
     }
 
-    pub fn set_sdp_fmtp_line(&mut self, value: &str) {
+    pub fn set_sdp_fmtp_line(&mut self, value: &DOMString) {
         self.inner.set("sdpFmtpLine", value);
     }
 }
@@ -144,8 +144,8 @@ jsbind::utils::impl_dyn_cast!(RTCRtpTransceiver);
 impl RTCRtpTransceiver {
     /// Getter of the `mid` attribute.
     /// [`RTCRtpTransceiver.mid`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpTransceiver/mid)
-    pub fn mid(&self) -> String {
-        self.inner.get("mid").as_::<String>()
+    pub fn mid(&self) -> DOMString {
+        self.inner.get("mid").as_::<DOMString>()
     }
 }
 impl RTCRtpTransceiver {

@@ -66,91 +66,91 @@ impl HTMLFormElement {
 impl HTMLFormElement {
     /// Getter of the `acceptCharset` attribute.
     /// [`HTMLFormElement.acceptCharset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/acceptCharset)
-    pub fn accept_charset(&self) -> String {
-        self.inner.get("acceptCharset").as_::<String>()
+    pub fn accept_charset(&self) -> DOMString {
+        self.inner.get("acceptCharset").as_::<DOMString>()
     }
 
     /// Setter of the `acceptCharset` attribute.
     /// [`HTMLFormElement.acceptCharset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/acceptCharset)
-    pub fn set_accept_charset(&mut self, value: &str) {
+    pub fn set_accept_charset(&mut self, value: &DOMString) {
         self.inner.set("acceptCharset", value);
     }
 }
 impl HTMLFormElement {
     /// Getter of the `action` attribute.
     /// [`HTMLFormElement.action`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/action)
-    pub fn action(&self) -> String {
-        self.inner.get("action").as_::<String>()
+    pub fn action(&self) -> USVString {
+        self.inner.get("action").as_::<USVString>()
     }
 
     /// Setter of the `action` attribute.
     /// [`HTMLFormElement.action`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/action)
-    pub fn set_action(&mut self, value: &str) {
+    pub fn set_action(&mut self, value: &USVString) {
         self.inner.set("action", value);
     }
 }
 impl HTMLFormElement {
     /// Getter of the `autocomplete` attribute.
     /// [`HTMLFormElement.autocomplete`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/autocomplete)
-    pub fn autocomplete(&self) -> String {
-        self.inner.get("autocomplete").as_::<String>()
+    pub fn autocomplete(&self) -> DOMString {
+        self.inner.get("autocomplete").as_::<DOMString>()
     }
 
     /// Setter of the `autocomplete` attribute.
     /// [`HTMLFormElement.autocomplete`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/autocomplete)
-    pub fn set_autocomplete(&mut self, value: &str) {
+    pub fn set_autocomplete(&mut self, value: &DOMString) {
         self.inner.set("autocomplete", value);
     }
 }
 impl HTMLFormElement {
     /// Getter of the `enctype` attribute.
     /// [`HTMLFormElement.enctype`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/enctype)
-    pub fn enctype(&self) -> String {
-        self.inner.get("enctype").as_::<String>()
+    pub fn enctype(&self) -> DOMString {
+        self.inner.get("enctype").as_::<DOMString>()
     }
 
     /// Setter of the `enctype` attribute.
     /// [`HTMLFormElement.enctype`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/enctype)
-    pub fn set_enctype(&mut self, value: &str) {
+    pub fn set_enctype(&mut self, value: &DOMString) {
         self.inner.set("enctype", value);
     }
 }
 impl HTMLFormElement {
     /// Getter of the `encoding` attribute.
     /// [`HTMLFormElement.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/encoding)
-    pub fn encoding(&self) -> String {
-        self.inner.get("encoding").as_::<String>()
+    pub fn encoding(&self) -> DOMString {
+        self.inner.get("encoding").as_::<DOMString>()
     }
 
     /// Setter of the `encoding` attribute.
     /// [`HTMLFormElement.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/encoding)
-    pub fn set_encoding(&mut self, value: &str) {
+    pub fn set_encoding(&mut self, value: &DOMString) {
         self.inner.set("encoding", value);
     }
 }
 impl HTMLFormElement {
     /// Getter of the `method` attribute.
     /// [`HTMLFormElement.method`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/method)
-    pub fn method(&self) -> String {
-        self.inner.get("method").as_::<String>()
+    pub fn method(&self) -> DOMString {
+        self.inner.get("method").as_::<DOMString>()
     }
 
     /// Setter of the `method` attribute.
     /// [`HTMLFormElement.method`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/method)
-    pub fn set_method(&mut self, value: &str) {
+    pub fn set_method(&mut self, value: &DOMString) {
         self.inner.set("method", value);
     }
 }
 impl HTMLFormElement {
     /// Getter of the `name` attribute.
     /// [`HTMLFormElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`HTMLFormElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/name)
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &DOMString) {
         self.inner.set("name", value);
     }
 }
@@ -170,26 +170,26 @@ impl HTMLFormElement {
 impl HTMLFormElement {
     /// Getter of the `target` attribute.
     /// [`HTMLFormElement.target`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/target)
-    pub fn target(&self) -> String {
-        self.inner.get("target").as_::<String>()
+    pub fn target(&self) -> DOMString {
+        self.inner.get("target").as_::<DOMString>()
     }
 
     /// Setter of the `target` attribute.
     /// [`HTMLFormElement.target`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/target)
-    pub fn set_target(&mut self, value: &str) {
+    pub fn set_target(&mut self, value: &DOMString) {
         self.inner.set("target", value);
     }
 }
 impl HTMLFormElement {
     /// Getter of the `rel` attribute.
     /// [`HTMLFormElement.rel`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/rel)
-    pub fn rel(&self) -> String {
-        self.inner.get("rel").as_::<String>()
+    pub fn rel(&self) -> DOMString {
+        self.inner.get("rel").as_::<DOMString>()
     }
 
     /// Setter of the `rel` attribute.
     /// [`HTMLFormElement.rel`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/rel)
-    pub fn set_rel(&mut self, value: &str) {
+    pub fn set_rel(&mut self, value: &DOMString) {
         self.inner.set("rel", value);
     }
 }

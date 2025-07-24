@@ -51,11 +51,11 @@ impl From<&ModuleExportDescriptor> for Any {
 }
 
 impl ModuleExportDescriptor {
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &USVString) {
         self.inner.set("name", value);
     }
 }
@@ -119,20 +119,20 @@ impl From<&ModuleImportDescriptor> for Any {
 }
 
 impl ModuleImportDescriptor {
-    pub fn module(&self) -> String {
-        self.inner.get("module").as_::<String>()
+    pub fn module(&self) -> USVString {
+        self.inner.get("module").as_::<USVString>()
     }
 
-    pub fn set_module(&mut self, value: &str) {
+    pub fn set_module(&mut self, value: &USVString) {
         self.inner.set("module", value);
     }
 }
 impl ModuleImportDescriptor {
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> USVString {
+        self.inner.get("name").as_::<USVString>()
     }
 
-    pub fn set_name(&mut self, value: &str) {
+    pub fn set_name(&mut self, value: &USVString) {
         self.inner.set("name", value);
     }
 }
@@ -229,7 +229,10 @@ impl Module {
 impl Module {
     /// The customSections method.
     /// [`Module.customSections`](https://developer.mozilla.org/en-US/docs/Web/API/Module/customSections)
-    pub fn custom_sections(module_object: &Module, section_name: &str) -> Sequence<ArrayBuffer> {
+    pub fn custom_sections(
+        module_object: &Module,
+        section_name: &DOMString,
+    ) -> Sequence<ArrayBuffer> {
         Any::global("Module")
             .call(
                 "customSections",

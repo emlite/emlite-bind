@@ -51,11 +51,11 @@ impl From<&IdentityCredentialDisconnectOptions> for Any {
 }
 
 impl IdentityCredentialDisconnectOptions {
-    pub fn account_hint(&self) -> String {
-        self.inner.get("accountHint").as_::<String>()
+    pub fn account_hint(&self) -> USVString {
+        self.inner.get("accountHint").as_::<USVString>()
     }
 
-    pub fn set_account_hint(&mut self, value: &str) {
+    pub fn set_account_hint(&mut self, value: &USVString) {
         self.inner.set("accountHint", value);
     }
 }
@@ -126,8 +126,8 @@ impl IdentityCredential {
 impl IdentityCredential {
     /// Getter of the `token` attribute.
     /// [`IdentityCredential.token`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredential/token)
-    pub fn token(&self) -> String {
-        self.inner.get("token").as_::<String>()
+    pub fn token(&self) -> USVString {
+        self.inner.get("token").as_::<USVString>()
     }
 }
 impl IdentityCredential {
@@ -140,7 +140,7 @@ impl IdentityCredential {
 impl IdentityCredential {
     /// Getter of the `configURL` attribute.
     /// [`IdentityCredential.configURL`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityCredential/configURL)
-    pub fn config_url(&self) -> String {
-        self.inner.get("configURL").as_::<String>()
+    pub fn config_url(&self) -> USVString {
+        self.inner.get("configURL").as_::<USVString>()
     }
 }

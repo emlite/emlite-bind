@@ -91,7 +91,7 @@ impl FileReader {
     }
     /// The readAsText method.
     /// [`FileReader.readAsText`](https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsText)
-    pub fn read_as_text1(&self, blob: &Blob, encoding: &str) -> Undefined {
+    pub fn read_as_text1(&self, blob: &Blob, encoding: &DOMString) -> Undefined {
         self.inner
             .call("readAsText", &[blob.into(), encoding.into()])
             .as_::<Undefined>()

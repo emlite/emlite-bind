@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(FontFace);
 
 impl FontFace {
     /// The `new FontFace(..)` constructor, creating a new FontFace instance
-    pub fn new0(family: &str, source: &Any) -> FontFace {
+    pub fn new0(family: &CSSOMString, source: &Any) -> FontFace {
         Self {
             inner: Any::global("FontFace")
                 .new(&[family.into(), source.into()])
@@ -66,7 +66,7 @@ impl FontFace {
     }
 
     /// The `new FontFace(..)` constructor, creating a new FontFace instance
-    pub fn new1(family: &str, source: &Any, descriptors: &Any) -> FontFace {
+    pub fn new1(family: &CSSOMString, source: &Any, descriptors: &Any) -> FontFace {
         Self {
             inner: Any::global("FontFace")
                 .new(&[family.into(), source.into(), descriptors.into()])
@@ -77,143 +77,143 @@ impl FontFace {
 impl FontFace {
     /// Getter of the `family` attribute.
     /// [`FontFace.family`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/family)
-    pub fn family(&self) -> String {
-        self.inner.get("family").as_::<String>()
+    pub fn family(&self) -> CSSOMString {
+        self.inner.get("family").as_::<CSSOMString>()
     }
 
     /// Setter of the `family` attribute.
     /// [`FontFace.family`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/family)
-    pub fn set_family(&mut self, value: &str) {
+    pub fn set_family(&mut self, value: &CSSOMString) {
         self.inner.set("family", value);
     }
 }
 impl FontFace {
     /// Getter of the `style` attribute.
     /// [`FontFace.style`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/style)
-    pub fn style(&self) -> String {
-        self.inner.get("style").as_::<String>()
+    pub fn style(&self) -> CSSOMString {
+        self.inner.get("style").as_::<CSSOMString>()
     }
 
     /// Setter of the `style` attribute.
     /// [`FontFace.style`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/style)
-    pub fn set_style(&mut self, value: &str) {
+    pub fn set_style(&mut self, value: &CSSOMString) {
         self.inner.set("style", value);
     }
 }
 impl FontFace {
     /// Getter of the `weight` attribute.
     /// [`FontFace.weight`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/weight)
-    pub fn weight(&self) -> String {
-        self.inner.get("weight").as_::<String>()
+    pub fn weight(&self) -> CSSOMString {
+        self.inner.get("weight").as_::<CSSOMString>()
     }
 
     /// Setter of the `weight` attribute.
     /// [`FontFace.weight`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/weight)
-    pub fn set_weight(&mut self, value: &str) {
+    pub fn set_weight(&mut self, value: &CSSOMString) {
         self.inner.set("weight", value);
     }
 }
 impl FontFace {
     /// Getter of the `stretch` attribute.
     /// [`FontFace.stretch`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/stretch)
-    pub fn stretch(&self) -> String {
-        self.inner.get("stretch").as_::<String>()
+    pub fn stretch(&self) -> CSSOMString {
+        self.inner.get("stretch").as_::<CSSOMString>()
     }
 
     /// Setter of the `stretch` attribute.
     /// [`FontFace.stretch`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/stretch)
-    pub fn set_stretch(&mut self, value: &str) {
+    pub fn set_stretch(&mut self, value: &CSSOMString) {
         self.inner.set("stretch", value);
     }
 }
 impl FontFace {
     /// Getter of the `unicodeRange` attribute.
     /// [`FontFace.unicodeRange`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/unicodeRange)
-    pub fn unicode_range(&self) -> String {
-        self.inner.get("unicodeRange").as_::<String>()
+    pub fn unicode_range(&self) -> CSSOMString {
+        self.inner.get("unicodeRange").as_::<CSSOMString>()
     }
 
     /// Setter of the `unicodeRange` attribute.
     /// [`FontFace.unicodeRange`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/unicodeRange)
-    pub fn set_unicode_range(&mut self, value: &str) {
+    pub fn set_unicode_range(&mut self, value: &CSSOMString) {
         self.inner.set("unicodeRange", value);
     }
 }
 impl FontFace {
     /// Getter of the `featureSettings` attribute.
     /// [`FontFace.featureSettings`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/featureSettings)
-    pub fn feature_settings(&self) -> String {
-        self.inner.get("featureSettings").as_::<String>()
+    pub fn feature_settings(&self) -> CSSOMString {
+        self.inner.get("featureSettings").as_::<CSSOMString>()
     }
 
     /// Setter of the `featureSettings` attribute.
     /// [`FontFace.featureSettings`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/featureSettings)
-    pub fn set_feature_settings(&mut self, value: &str) {
+    pub fn set_feature_settings(&mut self, value: &CSSOMString) {
         self.inner.set("featureSettings", value);
     }
 }
 impl FontFace {
     /// Getter of the `variationSettings` attribute.
     /// [`FontFace.variationSettings`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/variationSettings)
-    pub fn variation_settings(&self) -> String {
-        self.inner.get("variationSettings").as_::<String>()
+    pub fn variation_settings(&self) -> CSSOMString {
+        self.inner.get("variationSettings").as_::<CSSOMString>()
     }
 
     /// Setter of the `variationSettings` attribute.
     /// [`FontFace.variationSettings`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/variationSettings)
-    pub fn set_variation_settings(&mut self, value: &str) {
+    pub fn set_variation_settings(&mut self, value: &CSSOMString) {
         self.inner.set("variationSettings", value);
     }
 }
 impl FontFace {
     /// Getter of the `display` attribute.
     /// [`FontFace.display`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/display)
-    pub fn display(&self) -> String {
-        self.inner.get("display").as_::<String>()
+    pub fn display(&self) -> CSSOMString {
+        self.inner.get("display").as_::<CSSOMString>()
     }
 
     /// Setter of the `display` attribute.
     /// [`FontFace.display`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/display)
-    pub fn set_display(&mut self, value: &str) {
+    pub fn set_display(&mut self, value: &CSSOMString) {
         self.inner.set("display", value);
     }
 }
 impl FontFace {
     /// Getter of the `ascentOverride` attribute.
     /// [`FontFace.ascentOverride`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/ascentOverride)
-    pub fn ascent_override(&self) -> String {
-        self.inner.get("ascentOverride").as_::<String>()
+    pub fn ascent_override(&self) -> CSSOMString {
+        self.inner.get("ascentOverride").as_::<CSSOMString>()
     }
 
     /// Setter of the `ascentOverride` attribute.
     /// [`FontFace.ascentOverride`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/ascentOverride)
-    pub fn set_ascent_override(&mut self, value: &str) {
+    pub fn set_ascent_override(&mut self, value: &CSSOMString) {
         self.inner.set("ascentOverride", value);
     }
 }
 impl FontFace {
     /// Getter of the `descentOverride` attribute.
     /// [`FontFace.descentOverride`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/descentOverride)
-    pub fn descent_override(&self) -> String {
-        self.inner.get("descentOverride").as_::<String>()
+    pub fn descent_override(&self) -> CSSOMString {
+        self.inner.get("descentOverride").as_::<CSSOMString>()
     }
 
     /// Setter of the `descentOverride` attribute.
     /// [`FontFace.descentOverride`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/descentOverride)
-    pub fn set_descent_override(&mut self, value: &str) {
+    pub fn set_descent_override(&mut self, value: &CSSOMString) {
         self.inner.set("descentOverride", value);
     }
 }
 impl FontFace {
     /// Getter of the `lineGapOverride` attribute.
     /// [`FontFace.lineGapOverride`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/lineGapOverride)
-    pub fn line_gap_override(&self) -> String {
-        self.inner.get("lineGapOverride").as_::<String>()
+    pub fn line_gap_override(&self) -> CSSOMString {
+        self.inner.get("lineGapOverride").as_::<CSSOMString>()
     }
 
     /// Setter of the `lineGapOverride` attribute.
     /// [`FontFace.lineGapOverride`](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/lineGapOverride)
-    pub fn set_line_gap_override(&mut self, value: &str) {
+    pub fn set_line_gap_override(&mut self, value: &CSSOMString) {
         self.inner.set("lineGapOverride", value);
     }
 }

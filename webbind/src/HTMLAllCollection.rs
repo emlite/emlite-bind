@@ -65,7 +65,7 @@ impl HTMLAllCollection {
 impl HTMLAllCollection {
     /// The namedItem method.
     /// [`HTMLAllCollection.namedItem`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAllCollection/namedItem)
-    pub fn named_item(&self, name: &str) -> Any {
+    pub fn named_item(&self, name: &DOMString) -> Any {
         self.inner.call("namedItem", &[name.into()]).as_::<Any>()
     }
 }
@@ -77,7 +77,7 @@ impl HTMLAllCollection {
     }
     /// The item method.
     /// [`HTMLAllCollection.item`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAllCollection/item)
-    pub fn item1(&self, name_or_index: &str) -> Any {
+    pub fn item1(&self, name_or_index: &DOMString) -> Any {
         self.inner
             .call("item", &[name_or_index.into()])
             .as_::<Any>()

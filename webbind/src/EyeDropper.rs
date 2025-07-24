@@ -51,11 +51,11 @@ impl From<&ColorSelectionResult> for Any {
 }
 
 impl ColorSelectionResult {
-    pub fn s_rgb_hex(&self) -> String {
-        self.inner.get("sRGBHex").as_::<String>()
+    pub fn s_rgb_hex(&self) -> DOMString {
+        self.inner.get("sRGBHex").as_::<DOMString>()
     }
 
-    pub fn set_s_rgb_hex(&mut self, value: &str) {
+    pub fn set_s_rgb_hex(&mut self, value: &DOMString) {
         self.inner.set("sRGBHex", value);
     }
 }

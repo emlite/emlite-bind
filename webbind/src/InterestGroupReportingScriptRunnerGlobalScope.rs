@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(InterestGroupReportingScriptRunnerGlobalScope);
 impl InterestGroupReportingScriptRunnerGlobalScope {
     /// The sendReportTo method.
     /// [`InterestGroupReportingScriptRunnerGlobalScope.sendReportTo`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupReportingScriptRunnerGlobalScope/sendReportTo)
-    pub fn send_report_to(&self, url: &str) -> Undefined {
+    pub fn send_report_to(&self, url: &DOMString) -> Undefined {
         self.inner
             .call("sendReportTo", &[url.into()])
             .as_::<Undefined>()
@@ -67,7 +67,7 @@ impl InterestGroupReportingScriptRunnerGlobalScope {
 impl InterestGroupReportingScriptRunnerGlobalScope {
     /// The registerAdBeacon method.
     /// [`InterestGroupReportingScriptRunnerGlobalScope.registerAdBeacon`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupReportingScriptRunnerGlobalScope/registerAdBeacon)
-    pub fn register_ad_beacon(&self, map: &Record<String, String>) -> Undefined {
+    pub fn register_ad_beacon(&self, map: &Record<DOMString, USVString>) -> Undefined {
         self.inner
             .call("registerAdBeacon", &[map.into()])
             .as_::<Undefined>()
@@ -76,7 +76,7 @@ impl InterestGroupReportingScriptRunnerGlobalScope {
 impl InterestGroupReportingScriptRunnerGlobalScope {
     /// The registerAdMacro method.
     /// [`InterestGroupReportingScriptRunnerGlobalScope.registerAdMacro`](https://developer.mozilla.org/en-US/docs/Web/API/InterestGroupReportingScriptRunnerGlobalScope/registerAdMacro)
-    pub fn register_ad_macro(&self, name: &str, value: &str) -> Undefined {
+    pub fn register_ad_macro(&self, name: &DOMString, value: &USVString) -> Undefined {
         self.inner
             .call("registerAdMacro", &[name.into(), value.into()])
             .as_::<Undefined>()

@@ -113,14 +113,14 @@ impl History {
 impl History {
     /// The pushState method.
     /// [`History.pushState`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState)
-    pub fn push_state0(&self, data: &Any, unused: &str) -> Undefined {
+    pub fn push_state0(&self, data: &Any, unused: &DOMString) -> Undefined {
         self.inner
             .call("pushState", &[data.into(), unused.into()])
             .as_::<Undefined>()
     }
     /// The pushState method.
     /// [`History.pushState`](https://developer.mozilla.org/en-US/docs/Web/API/History/pushState)
-    pub fn push_state1(&self, data: &Any, unused: &str, url: &str) -> Undefined {
+    pub fn push_state1(&self, data: &Any, unused: &DOMString, url: &USVString) -> Undefined {
         self.inner
             .call("pushState", &[data.into(), unused.into(), url.into()])
             .as_::<Undefined>()
@@ -129,14 +129,14 @@ impl History {
 impl History {
     /// The replaceState method.
     /// [`History.replaceState`](https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState)
-    pub fn replace_state0(&self, data: &Any, unused: &str) -> Undefined {
+    pub fn replace_state0(&self, data: &Any, unused: &DOMString) -> Undefined {
         self.inner
             .call("replaceState", &[data.into(), unused.into()])
             .as_::<Undefined>()
     }
     /// The replaceState method.
     /// [`History.replaceState`](https://developer.mozilla.org/en-US/docs/Web/API/History/replaceState)
-    pub fn replace_state1(&self, data: &Any, unused: &str, url: &str) -> Undefined {
+    pub fn replace_state1(&self, data: &Any, unused: &DOMString, url: &USVString) -> Undefined {
         self.inner
             .call("replaceState", &[data.into(), unused.into(), url.into()])
             .as_::<Undefined>()

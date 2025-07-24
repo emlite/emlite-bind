@@ -58,14 +58,14 @@ jsbind::utils::impl_dyn_cast!(CSSContainerRule);
 impl CSSContainerRule {
     /// Getter of the `containerName` attribute.
     /// [`CSSContainerRule.containerName`](https://developer.mozilla.org/en-US/docs/Web/API/CSSContainerRule/containerName)
-    pub fn container_name(&self) -> String {
-        self.inner.get("containerName").as_::<String>()
+    pub fn container_name(&self) -> CSSOMString {
+        self.inner.get("containerName").as_::<CSSOMString>()
     }
 }
 impl CSSContainerRule {
     /// Getter of the `containerQuery` attribute.
     /// [`CSSContainerRule.containerQuery`](https://developer.mozilla.org/en-US/docs/Web/API/CSSContainerRule/containerQuery)
-    pub fn container_query(&self) -> String {
-        self.inner.get("containerQuery").as_::<String>()
+    pub fn container_query(&self) -> CSSOMString {
+        self.inner.get("containerQuery").as_::<CSSOMString>()
     }
 }

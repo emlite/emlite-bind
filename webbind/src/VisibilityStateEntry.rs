@@ -58,15 +58,15 @@ jsbind::utils::impl_dyn_cast!(VisibilityStateEntry);
 impl VisibilityStateEntry {
     /// Getter of the `name` attribute.
     /// [`VisibilityStateEntry.name`](https://developer.mozilla.org/en-US/docs/Web/API/VisibilityStateEntry/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl VisibilityStateEntry {
     /// Getter of the `entryType` attribute.
     /// [`VisibilityStateEntry.entryType`](https://developer.mozilla.org/en-US/docs/Web/API/VisibilityStateEntry/entryType)
-    pub fn entry_type(&self) -> String {
-        self.inner.get("entryType").as_::<String>()
+    pub fn entry_type(&self) -> DOMString {
+        self.inner.get("entryType").as_::<DOMString>()
     }
 }
 impl VisibilityStateEntry {

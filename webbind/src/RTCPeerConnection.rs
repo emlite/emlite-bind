@@ -128,11 +128,11 @@ impl RTCLocalSessionDescriptionInit {
     }
 }
 impl RTCLocalSessionDescriptionInit {
-    pub fn sdp(&self) -> String {
-        self.inner.get("sdp").as_::<String>()
+    pub fn sdp(&self) -> DOMString {
+        self.inner.get("sdp").as_::<DOMString>()
     }
 
-    pub fn set_sdp(&mut self, value: &str) {
+    pub fn set_sdp(&mut self, value: &DOMString) {
         self.inner.set("sdp", value);
     }
 }
@@ -196,11 +196,11 @@ impl RTCSessionDescriptionInit {
     }
 }
 impl RTCSessionDescriptionInit {
-    pub fn sdp(&self) -> String {
-        self.inner.get("sdp").as_::<String>()
+    pub fn sdp(&self) -> DOMString {
+        self.inner.get("sdp").as_::<DOMString>()
     }
 
-    pub fn set_sdp(&mut self, value: &str) {
+    pub fn set_sdp(&mut self, value: &DOMString) {
         self.inner.set("sdp", value);
     }
 }
@@ -363,29 +363,29 @@ impl From<&RTCIdentityProviderOptions> for Any {
 }
 
 impl RTCIdentityProviderOptions {
-    pub fn protocol(&self) -> String {
-        self.inner.get("protocol").as_::<String>()
+    pub fn protocol(&self) -> DOMString {
+        self.inner.get("protocol").as_::<DOMString>()
     }
 
-    pub fn set_protocol(&mut self, value: &str) {
+    pub fn set_protocol(&mut self, value: &DOMString) {
         self.inner.set("protocol", value);
     }
 }
 impl RTCIdentityProviderOptions {
-    pub fn username_hint(&self) -> String {
-        self.inner.get("usernameHint").as_::<String>()
+    pub fn username_hint(&self) -> DOMString {
+        self.inner.get("usernameHint").as_::<DOMString>()
     }
 
-    pub fn set_username_hint(&mut self, value: &str) {
+    pub fn set_username_hint(&mut self, value: &DOMString) {
         self.inner.set("usernameHint", value);
     }
 }
 impl RTCIdentityProviderOptions {
-    pub fn peer_identity(&self) -> String {
-        self.inner.get("peerIdentity").as_::<String>()
+    pub fn peer_identity(&self) -> DOMString {
+        self.inner.get("peerIdentity").as_::<DOMString>()
     }
 
-    pub fn set_peer_identity(&mut self, value: &str) {
+    pub fn set_peer_identity(&mut self, value: &DOMString) {
         self.inner.set("peerIdentity", value);
     }
 }
@@ -546,11 +546,11 @@ impl RTCDataChannelInit {
     }
 }
 impl RTCDataChannelInit {
-    pub fn protocol(&self) -> String {
-        self.inner.get("protocol").as_::<String>()
+    pub fn protocol(&self) -> USVString {
+        self.inner.get("protocol").as_::<USVString>()
     }
 
-    pub fn set_protocol(&mut self, value: &str) {
+    pub fn set_protocol(&mut self, value: &USVString) {
         self.inner.set("protocol", value);
     }
 }
@@ -986,7 +986,7 @@ impl RTCPeerConnection {
 impl RTCPeerConnection {
     /// The setIdentityProvider method.
     /// [`RTCPeerConnection.setIdentityProvider`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/setIdentityProvider)
-    pub fn set_identity_provider0(&self, provider: &str) -> Undefined {
+    pub fn set_identity_provider0(&self, provider: &DOMString) -> Undefined {
         self.inner
             .call("setIdentityProvider", &[provider.into()])
             .as_::<Undefined>()
@@ -995,7 +995,7 @@ impl RTCPeerConnection {
     /// [`RTCPeerConnection.setIdentityProvider`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/setIdentityProvider)
     pub fn set_identity_provider1(
         &self,
-        provider: &str,
+        provider: &DOMString,
         options: &RTCIdentityProviderOptions,
     ) -> Undefined {
         self.inner
@@ -1006,10 +1006,10 @@ impl RTCPeerConnection {
 impl RTCPeerConnection {
     /// The getIdentityAssertion method.
     /// [`RTCPeerConnection.getIdentityAssertion`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/getIdentityAssertion)
-    pub fn get_identity_assertion(&self) -> Promise<String> {
+    pub fn get_identity_assertion(&self) -> Promise<DOMString> {
         self.inner
             .call("getIdentityAssertion", &[])
-            .as_::<Promise<String>>()
+            .as_::<Promise<DOMString>>()
     }
 }
 impl RTCPeerConnection {
@@ -1024,15 +1024,15 @@ impl RTCPeerConnection {
 impl RTCPeerConnection {
     /// Getter of the `idpLoginUrl` attribute.
     /// [`RTCPeerConnection.idpLoginUrl`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/idpLoginUrl)
-    pub fn idp_login_url(&self) -> String {
-        self.inner.get("idpLoginUrl").as_::<String>()
+    pub fn idp_login_url(&self) -> DOMString {
+        self.inner.get("idpLoginUrl").as_::<DOMString>()
     }
 }
 impl RTCPeerConnection {
     /// Getter of the `idpErrorInfo` attribute.
     /// [`RTCPeerConnection.idpErrorInfo`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/idpErrorInfo)
-    pub fn idp_error_info(&self) -> String {
-        self.inner.get("idpErrorInfo").as_::<String>()
+    pub fn idp_error_info(&self) -> DOMString {
+        self.inner.get("idpErrorInfo").as_::<DOMString>()
     }
 }
 impl RTCPeerConnection {
@@ -1132,7 +1132,7 @@ impl RTCPeerConnection {
 impl RTCPeerConnection {
     /// The createDataChannel method.
     /// [`RTCPeerConnection.createDataChannel`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/createDataChannel)
-    pub fn create_data_channel0(&self, label: &str) -> RTCDataChannel {
+    pub fn create_data_channel0(&self, label: &USVString) -> RTCDataChannel {
         self.inner
             .call("createDataChannel", &[label.into()])
             .as_::<RTCDataChannel>()
@@ -1141,7 +1141,7 @@ impl RTCPeerConnection {
     /// [`RTCPeerConnection.createDataChannel`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/createDataChannel)
     pub fn create_data_channel1(
         &self,
-        label: &str,
+        label: &USVString,
         data_channel_dict: &RTCDataChannelInit,
     ) -> RTCDataChannel {
         self.inner

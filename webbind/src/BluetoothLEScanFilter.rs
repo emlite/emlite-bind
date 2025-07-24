@@ -75,15 +75,15 @@ impl BluetoothLEScanFilter {
 impl BluetoothLEScanFilter {
     /// Getter of the `name` attribute.
     /// [`BluetoothLEScanFilter.name`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScanFilter/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl BluetoothLEScanFilter {
     /// Getter of the `namePrefix` attribute.
     /// [`BluetoothLEScanFilter.namePrefix`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScanFilter/namePrefix)
-    pub fn name_prefix(&self) -> String {
-        self.inner.get("namePrefix").as_::<String>()
+    pub fn name_prefix(&self) -> DOMString {
+        self.inner.get("namePrefix").as_::<DOMString>()
     }
 }
 impl BluetoothLEScanFilter {

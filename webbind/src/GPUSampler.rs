@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(GPUSampler);
 impl GPUSampler {
     /// Getter of the `label` attribute.
     /// [`GPUSampler.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUSampler/label)
-    pub fn label(&self) -> String {
-        self.inner.get("label").as_::<String>()
+    pub fn label(&self) -> USVString {
+        self.inner.get("label").as_::<USVString>()
     }
 
     /// Setter of the `label` attribute.
     /// [`GPUSampler.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUSampler/label)
-    pub fn set_label(&mut self, value: &str) {
+    pub fn set_label(&mut self, value: &USVString) {
         self.inner.set("label", value);
     }
 }

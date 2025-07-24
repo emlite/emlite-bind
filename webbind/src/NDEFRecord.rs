@@ -68,22 +68,22 @@ impl NDEFRecord {
 impl NDEFRecord {
     /// Getter of the `recordType` attribute.
     /// [`NDEFRecord.recordType`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord/recordType)
-    pub fn record_type(&self) -> String {
-        self.inner.get("recordType").as_::<String>()
+    pub fn record_type(&self) -> USVString {
+        self.inner.get("recordType").as_::<USVString>()
     }
 }
 impl NDEFRecord {
     /// Getter of the `mediaType` attribute.
     /// [`NDEFRecord.mediaType`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord/mediaType)
-    pub fn media_type(&self) -> String {
-        self.inner.get("mediaType").as_::<String>()
+    pub fn media_type(&self) -> USVString {
+        self.inner.get("mediaType").as_::<USVString>()
     }
 }
 impl NDEFRecord {
     /// Getter of the `id` attribute.
     /// [`NDEFRecord.id`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord/id)
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> USVString {
+        self.inner.get("id").as_::<USVString>()
     }
 }
 impl NDEFRecord {
@@ -96,15 +96,15 @@ impl NDEFRecord {
 impl NDEFRecord {
     /// Getter of the `encoding` attribute.
     /// [`NDEFRecord.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord/encoding)
-    pub fn encoding(&self) -> String {
-        self.inner.get("encoding").as_::<String>()
+    pub fn encoding(&self) -> USVString {
+        self.inner.get("encoding").as_::<USVString>()
     }
 }
 impl NDEFRecord {
     /// Getter of the `lang` attribute.
     /// [`NDEFRecord.lang`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord/lang)
-    pub fn lang(&self) -> String {
-        self.inner.get("lang").as_::<String>()
+    pub fn lang(&self) -> USVString {
+        self.inner.get("lang").as_::<USVString>()
     }
 }
 impl NDEFRecord {

@@ -95,7 +95,7 @@ impl IDBTransaction {
 impl IDBTransaction {
     /// The objectStore method.
     /// [`IDBTransaction.objectStore`](https://developer.mozilla.org/en-US/docs/Web/API/IDBTransaction/objectStore)
-    pub fn object_store(&self, name: &str) -> IDBObjectStore {
+    pub fn object_store(&self, name: &DOMString) -> IDBObjectStore {
         self.inner
             .call("objectStore", &[name.into()])
             .as_::<IDBObjectStore>()

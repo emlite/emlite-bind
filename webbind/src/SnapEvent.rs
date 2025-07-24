@@ -57,14 +57,14 @@ jsbind::utils::impl_dyn_cast!(SnapEvent);
 
 impl SnapEvent {
     /// The `new SnapEvent(..)` constructor, creating a new SnapEvent instance
-    pub fn new0(type_: &str) -> SnapEvent {
+    pub fn new0(type_: &DOMString) -> SnapEvent {
         Self {
             inner: Any::global("SnapEvent").new(&[type_.into()]).as_::<Event>(),
         }
     }
 
     /// The `new SnapEvent(..)` constructor, creating a new SnapEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> SnapEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> SnapEvent {
         Self {
             inner: Any::global("SnapEvent")
                 .new(&[type_.into(), event_init_dict.into()])

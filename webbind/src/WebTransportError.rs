@@ -66,7 +66,7 @@ impl WebTransportError {
     }
 
     /// The `new WebTransportError(..)` constructor, creating a new WebTransportError instance
-    pub fn new1(message: &str) -> WebTransportError {
+    pub fn new1(message: &DOMString) -> WebTransportError {
         Self {
             inner: Any::global("WebTransportError")
                 .new(&[message.into()])
@@ -75,7 +75,7 @@ impl WebTransportError {
     }
 
     /// The `new WebTransportError(..)` constructor, creating a new WebTransportError instance
-    pub fn new2(message: &str, options: &Any) -> WebTransportError {
+    pub fn new2(message: &DOMString, options: &Any) -> WebTransportError {
         Self {
             inner: Any::global("WebTransportError")
                 .new(&[message.into(), options.into()])

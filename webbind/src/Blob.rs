@@ -89,8 +89,8 @@ impl Blob {
 impl Blob {
     /// Getter of the `type` attribute.
     /// [`Blob.type`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/type)
-    pub fn type_(&self) -> String {
-        self.inner.get("type").as_::<String>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 }
 impl Blob {
@@ -113,7 +113,7 @@ impl Blob {
     }
     /// The slice method.
     /// [`Blob.slice`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/slice)
-    pub fn slice3(&self, start: i64, end: i64, content_type: &str) -> Blob {
+    pub fn slice3(&self, start: i64, end: i64, content_type: &DOMString) -> Blob {
         self.inner
             .call("slice", &[start.into(), end.into(), content_type.into()])
             .as_::<Blob>()
@@ -129,8 +129,8 @@ impl Blob {
 impl Blob {
     /// The text method.
     /// [`Blob.text`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/text)
-    pub fn text(&self) -> Promise<String> {
-        self.inner.call("text", &[]).as_::<Promise<String>>()
+    pub fn text(&self) -> Promise<USVString> {
+        self.inner.call("text", &[]).as_::<Promise<USVString>>()
     }
 }
 impl Blob {

@@ -58,21 +58,21 @@ jsbind::utils::impl_dyn_cast!(RTCDTMFSender);
 impl RTCDTMFSender {
     /// The insertDTMF method.
     /// [`RTCDTMFSender.insertDTMF`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/insertDTMF)
-    pub fn insert_dtmf0(&self, tones: &str) -> Undefined {
+    pub fn insert_dtmf0(&self, tones: &DOMString) -> Undefined {
         self.inner
             .call("insertDTMF", &[tones.into()])
             .as_::<Undefined>()
     }
     /// The insertDTMF method.
     /// [`RTCDTMFSender.insertDTMF`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/insertDTMF)
-    pub fn insert_dtmf1(&self, tones: &str, duration: u32) -> Undefined {
+    pub fn insert_dtmf1(&self, tones: &DOMString, duration: u32) -> Undefined {
         self.inner
             .call("insertDTMF", &[tones.into(), duration.into()])
             .as_::<Undefined>()
     }
     /// The insertDTMF method.
     /// [`RTCDTMFSender.insertDTMF`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/insertDTMF)
-    pub fn insert_dtmf2(&self, tones: &str, duration: u32, inter_tone_gap: u32) -> Undefined {
+    pub fn insert_dtmf2(&self, tones: &DOMString, duration: u32, inter_tone_gap: u32) -> Undefined {
         self.inner
             .call(
                 "insertDTMF",
@@ -104,7 +104,7 @@ impl RTCDTMFSender {
 impl RTCDTMFSender {
     /// Getter of the `toneBuffer` attribute.
     /// [`RTCDTMFSender.toneBuffer`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFSender/toneBuffer)
-    pub fn tone_buffer(&self) -> String {
-        self.inner.get("toneBuffer").as_::<String>()
+    pub fn tone_buffer(&self) -> DOMString {
+        self.inner.get("toneBuffer").as_::<DOMString>()
     }
 }

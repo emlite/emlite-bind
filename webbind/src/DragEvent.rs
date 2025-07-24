@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(DragEvent);
 
 impl DragEvent {
     /// The `new DragEvent(..)` constructor, creating a new DragEvent instance
-    pub fn new0(type_: &str) -> DragEvent {
+    pub fn new0(type_: &DOMString) -> DragEvent {
         Self {
             inner: Any::global("DragEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl DragEvent {
     }
 
     /// The `new DragEvent(..)` constructor, creating a new DragEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> DragEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> DragEvent {
         Self {
             inner: Any::global("DragEvent")
                 .new(&[type_.into(), event_init_dict.into()])

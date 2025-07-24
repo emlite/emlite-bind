@@ -81,26 +81,26 @@ impl HTMLDialogElement {
 impl HTMLDialogElement {
     /// Getter of the `returnValue` attribute.
     /// [`HTMLDialogElement.returnValue`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue)
-    pub fn return_value(&self) -> String {
-        self.inner.get("returnValue").as_::<String>()
+    pub fn return_value(&self) -> DOMString {
+        self.inner.get("returnValue").as_::<DOMString>()
     }
 
     /// Setter of the `returnValue` attribute.
     /// [`HTMLDialogElement.returnValue`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue)
-    pub fn set_return_value(&mut self, value: &str) {
+    pub fn set_return_value(&mut self, value: &DOMString) {
         self.inner.set("returnValue", value);
     }
 }
 impl HTMLDialogElement {
     /// Getter of the `closedBy` attribute.
     /// [`HTMLDialogElement.closedBy`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy)
-    pub fn closed_by(&self) -> String {
-        self.inner.get("closedBy").as_::<String>()
+    pub fn closed_by(&self) -> DOMString {
+        self.inner.get("closedBy").as_::<DOMString>()
     }
 
     /// Setter of the `closedBy` attribute.
     /// [`HTMLDialogElement.closedBy`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/closedBy)
-    pub fn set_closed_by(&mut self, value: &str) {
+    pub fn set_closed_by(&mut self, value: &DOMString) {
         self.inner.set("closedBy", value);
     }
 }
@@ -126,7 +126,7 @@ impl HTMLDialogElement {
     }
     /// The close method.
     /// [`HTMLDialogElement.close`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close)
-    pub fn close1(&self, return_value: &str) -> Undefined {
+    pub fn close1(&self, return_value: &DOMString) -> Undefined {
         self.inner
             .call("close", &[return_value.into()])
             .as_::<Undefined>()
@@ -140,7 +140,7 @@ impl HTMLDialogElement {
     }
     /// The requestClose method.
     /// [`HTMLDialogElement.requestClose`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/requestClose)
-    pub fn request_close1(&self, return_value: &str) -> Undefined {
+    pub fn request_close1(&self, return_value: &DOMString) -> Undefined {
         self.inner
             .call("requestClose", &[return_value.into()])
             .as_::<Undefined>()

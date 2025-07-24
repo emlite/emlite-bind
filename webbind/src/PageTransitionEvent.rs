@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(PageTransitionEvent);
 
 impl PageTransitionEvent {
     /// The `new PageTransitionEvent(..)` constructor, creating a new PageTransitionEvent instance
-    pub fn new0(type_: &str) -> PageTransitionEvent {
+    pub fn new0(type_: &DOMString) -> PageTransitionEvent {
         Self {
             inner: Any::global("PageTransitionEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl PageTransitionEvent {
     }
 
     /// The `new PageTransitionEvent(..)` constructor, creating a new PageTransitionEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> PageTransitionEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> PageTransitionEvent {
         Self {
             inner: Any::global("PageTransitionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

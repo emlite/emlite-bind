@@ -118,14 +118,14 @@ impl FontFaceSet {
 impl FontFaceSet {
     /// The load method.
     /// [`FontFaceSet.load`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/load)
-    pub fn load0(&self, font: &str) -> Promise<Sequence<FontFace>> {
+    pub fn load0(&self, font: &CSSOMString) -> Promise<Sequence<FontFace>> {
         self.inner
             .call("load", &[font.into()])
             .as_::<Promise<Sequence<FontFace>>>()
     }
     /// The load method.
     /// [`FontFaceSet.load`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/load)
-    pub fn load1(&self, font: &str, text: &str) -> Promise<Sequence<FontFace>> {
+    pub fn load1(&self, font: &CSSOMString, text: &CSSOMString) -> Promise<Sequence<FontFace>> {
         self.inner
             .call("load", &[font.into(), text.into()])
             .as_::<Promise<Sequence<FontFace>>>()
@@ -134,12 +134,12 @@ impl FontFaceSet {
 impl FontFaceSet {
     /// The check method.
     /// [`FontFaceSet.check`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/check)
-    pub fn check0(&self, font: &str) -> bool {
+    pub fn check0(&self, font: &CSSOMString) -> bool {
         self.inner.call("check", &[font.into()]).as_::<bool>()
     }
     /// The check method.
     /// [`FontFaceSet.check`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSet/check)
-    pub fn check1(&self, font: &str, text: &str) -> bool {
+    pub fn check1(&self, font: &CSSOMString, text: &CSSOMString) -> bool {
         self.inner
             .call("check", &[font.into(), text.into()])
             .as_::<bool>()

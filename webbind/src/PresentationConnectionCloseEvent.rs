@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(PresentationConnectionCloseEvent);
 
 impl PresentationConnectionCloseEvent {
     /// The `new PresentationConnectionCloseEvent(..)` constructor, creating a new PresentationConnectionCloseEvent instance
-    pub fn new(type_: &str, event_init_dict: &Any) -> PresentationConnectionCloseEvent {
+    pub fn new(type_: &DOMString, event_init_dict: &Any) -> PresentationConnectionCloseEvent {
         Self {
             inner: Any::global("PresentationConnectionCloseEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -77,7 +77,7 @@ impl PresentationConnectionCloseEvent {
 impl PresentationConnectionCloseEvent {
     /// Getter of the `message` attribute.
     /// [`PresentationConnectionCloseEvent.message`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnectionCloseEvent/message)
-    pub fn message(&self) -> String {
-        self.inner.get("message").as_::<String>()
+    pub fn message(&self) -> DOMString {
+        self.inner.get("message").as_::<DOMString>()
     }
 }

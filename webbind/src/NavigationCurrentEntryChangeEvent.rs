@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(NavigationCurrentEntryChangeEvent);
 
 impl NavigationCurrentEntryChangeEvent {
     /// The `new NavigationCurrentEntryChangeEvent(..)` constructor, creating a new NavigationCurrentEntryChangeEvent instance
-    pub fn new(type_: &str, event_init_dict: &Any) -> NavigationCurrentEntryChangeEvent {
+    pub fn new(type_: &DOMString, event_init_dict: &Any) -> NavigationCurrentEntryChangeEvent {
         Self {
             inner: Any::global("NavigationCurrentEntryChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -134,7 +134,7 @@ jsbind::utils::impl_dyn_cast!(NavigateEvent);
 
 impl NavigateEvent {
     /// The `new NavigateEvent(..)` constructor, creating a new NavigateEvent instance
-    pub fn new(type_: &str, event_init_dict: &Any) -> NavigateEvent {
+    pub fn new(type_: &DOMString, event_init_dict: &Any) -> NavigateEvent {
         Self {
             inner: Any::global("NavigateEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -194,8 +194,8 @@ impl NavigateEvent {
 impl NavigateEvent {
     /// Getter of the `downloadRequest` attribute.
     /// [`NavigateEvent.downloadRequest`](https://developer.mozilla.org/en-US/docs/Web/API/NavigateEvent/downloadRequest)
-    pub fn download_request(&self) -> String {
-        self.inner.get("downloadRequest").as_::<String>()
+    pub fn download_request(&self) -> DOMString {
+        self.inner.get("downloadRequest").as_::<DOMString>()
     }
 }
 impl NavigateEvent {

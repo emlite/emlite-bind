@@ -58,22 +58,22 @@ jsbind::utils::impl_dyn_cast!(SpeechSynthesisVoice);
 impl SpeechSynthesisVoice {
     /// Getter of the `voiceURI` attribute.
     /// [`SpeechSynthesisVoice.voiceURI`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/voiceURI)
-    pub fn voice_uri(&self) -> String {
-        self.inner.get("voiceURI").as_::<String>()
+    pub fn voice_uri(&self) -> DOMString {
+        self.inner.get("voiceURI").as_::<DOMString>()
     }
 }
 impl SpeechSynthesisVoice {
     /// Getter of the `name` attribute.
     /// [`SpeechSynthesisVoice.name`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl SpeechSynthesisVoice {
     /// Getter of the `lang` attribute.
     /// [`SpeechSynthesisVoice.lang`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/lang)
-    pub fn lang(&self) -> String {
-        self.inner.get("lang").as_::<String>()
+    pub fn lang(&self) -> DOMString {
+        self.inner.get("lang").as_::<DOMString>()
     }
 }
 impl SpeechSynthesisVoice {

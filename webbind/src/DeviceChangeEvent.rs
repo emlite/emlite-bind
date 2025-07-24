@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(DeviceChangeEvent);
 
 impl DeviceChangeEvent {
     /// The `new DeviceChangeEvent(..)` constructor, creating a new DeviceChangeEvent instance
-    pub fn new0(type_: &str) -> DeviceChangeEvent {
+    pub fn new0(type_: &DOMString) -> DeviceChangeEvent {
         Self {
             inner: Any::global("DeviceChangeEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl DeviceChangeEvent {
     }
 
     /// The `new DeviceChangeEvent(..)` constructor, creating a new DeviceChangeEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> DeviceChangeEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> DeviceChangeEvent {
         Self {
             inner: Any::global("DeviceChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CSSParserAtRule);
 
 impl CSSParserAtRule {
     /// The `new CSSParserAtRule(..)` constructor, creating a new CSSParserAtRule instance
-    pub fn new0(name: &str, prelude: &Sequence<Any>) -> CSSParserAtRule {
+    pub fn new0(name: &DOMString, prelude: &Sequence<Any>) -> CSSParserAtRule {
         Self {
             inner: Any::global("CSSParserAtRule")
                 .new(&[name.into(), prelude.into()])
@@ -67,7 +67,7 @@ impl CSSParserAtRule {
 
     /// The `new CSSParserAtRule(..)` constructor, creating a new CSSParserAtRule instance
     pub fn new1(
-        name: &str,
+        name: &DOMString,
         prelude: &Sequence<Any>,
         body: &Sequence<CSSParserRule>,
     ) -> CSSParserAtRule {
@@ -81,8 +81,8 @@ impl CSSParserAtRule {
 impl CSSParserAtRule {
     /// Getter of the `name` attribute.
     /// [`CSSParserAtRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserAtRule/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl CSSParserAtRule {

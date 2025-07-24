@@ -65,7 +65,7 @@ impl VideoTrackList {
 impl VideoTrackList {
     /// The getTrackById method.
     /// [`VideoTrackList.getTrackById`](https://developer.mozilla.org/en-US/docs/Web/API/VideoTrackList/getTrackById)
-    pub fn get_track_by_id(&self, id: &str) -> VideoTrack {
+    pub fn get_track_by_id(&self, id: &DOMString) -> VideoTrack {
         self.inner
             .call("getTrackById", &[id.into()])
             .as_::<VideoTrack>()

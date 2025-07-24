@@ -68,26 +68,26 @@ impl HTMLScriptElement {
 impl HTMLScriptElement {
     /// Getter of the `type` attribute.
     /// [`HTMLScriptElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/type)
-    pub fn type_(&self) -> String {
-        self.inner.get("type").as_::<String>()
+    pub fn type_(&self) -> DOMString {
+        self.inner.get("type").as_::<DOMString>()
     }
 
     /// Setter of the `type` attribute.
     /// [`HTMLScriptElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/type)
-    pub fn set_type_(&mut self, value: &str) {
+    pub fn set_type_(&mut self, value: &DOMString) {
         self.inner.set("type", value);
     }
 }
 impl HTMLScriptElement {
     /// Getter of the `src` attribute.
     /// [`HTMLScriptElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/src)
-    pub fn src(&self) -> String {
-        self.inner.get("src").as_::<String>()
+    pub fn src(&self) -> USVString {
+        self.inner.get("src").as_::<USVString>()
     }
 
     /// Setter of the `src` attribute.
     /// [`HTMLScriptElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/src)
-    pub fn set_src(&mut self, value: &str) {
+    pub fn set_src(&mut self, value: &USVString) {
         self.inner.set("src", value);
     }
 }
@@ -140,72 +140,72 @@ impl HTMLScriptElement {
 impl HTMLScriptElement {
     /// Getter of the `crossOrigin` attribute.
     /// [`HTMLScriptElement.crossOrigin`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/crossOrigin)
-    pub fn cross_origin(&self) -> String {
-        self.inner.get("crossOrigin").as_::<String>()
+    pub fn cross_origin(&self) -> DOMString {
+        self.inner.get("crossOrigin").as_::<DOMString>()
     }
 
     /// Setter of the `crossOrigin` attribute.
     /// [`HTMLScriptElement.crossOrigin`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/crossOrigin)
-    pub fn set_cross_origin(&mut self, value: &str) {
+    pub fn set_cross_origin(&mut self, value: &DOMString) {
         self.inner.set("crossOrigin", value);
     }
 }
 impl HTMLScriptElement {
     /// Getter of the `referrerPolicy` attribute.
     /// [`HTMLScriptElement.referrerPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/referrerPolicy)
-    pub fn referrer_policy(&self) -> String {
-        self.inner.get("referrerPolicy").as_::<String>()
+    pub fn referrer_policy(&self) -> DOMString {
+        self.inner.get("referrerPolicy").as_::<DOMString>()
     }
 
     /// Setter of the `referrerPolicy` attribute.
     /// [`HTMLScriptElement.referrerPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/referrerPolicy)
-    pub fn set_referrer_policy(&mut self, value: &str) {
+    pub fn set_referrer_policy(&mut self, value: &DOMString) {
         self.inner.set("referrerPolicy", value);
     }
 }
 impl HTMLScriptElement {
     /// Getter of the `integrity` attribute.
     /// [`HTMLScriptElement.integrity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/integrity)
-    pub fn integrity(&self) -> String {
-        self.inner.get("integrity").as_::<String>()
+    pub fn integrity(&self) -> DOMString {
+        self.inner.get("integrity").as_::<DOMString>()
     }
 
     /// Setter of the `integrity` attribute.
     /// [`HTMLScriptElement.integrity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/integrity)
-    pub fn set_integrity(&mut self, value: &str) {
+    pub fn set_integrity(&mut self, value: &DOMString) {
         self.inner.set("integrity", value);
     }
 }
 impl HTMLScriptElement {
     /// Getter of the `fetchPriority` attribute.
     /// [`HTMLScriptElement.fetchPriority`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/fetchPriority)
-    pub fn fetch_priority(&self) -> String {
-        self.inner.get("fetchPriority").as_::<String>()
+    pub fn fetch_priority(&self) -> DOMString {
+        self.inner.get("fetchPriority").as_::<DOMString>()
     }
 
     /// Setter of the `fetchPriority` attribute.
     /// [`HTMLScriptElement.fetchPriority`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/fetchPriority)
-    pub fn set_fetch_priority(&mut self, value: &str) {
+    pub fn set_fetch_priority(&mut self, value: &DOMString) {
         self.inner.set("fetchPriority", value);
     }
 }
 impl HTMLScriptElement {
     /// Getter of the `text` attribute.
     /// [`HTMLScriptElement.text`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/text)
-    pub fn text(&self) -> String {
-        self.inner.get("text").as_::<String>()
+    pub fn text(&self) -> DOMString {
+        self.inner.get("text").as_::<DOMString>()
     }
 
     /// Setter of the `text` attribute.
     /// [`HTMLScriptElement.text`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/text)
-    pub fn set_text(&mut self, value: &str) {
+    pub fn set_text(&mut self, value: &DOMString) {
         self.inner.set("text", value);
     }
 }
 impl HTMLScriptElement {
     /// The supports method.
     /// [`HTMLScriptElement.supports`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/supports)
-    pub fn supports(type_: &str) -> bool {
+    pub fn supports(type_: &DOMString) -> bool {
         Any::global("HTMLScriptElement")
             .call("supports", &[type_.into()])
             .as_::<bool>()
@@ -214,52 +214,52 @@ impl HTMLScriptElement {
 impl HTMLScriptElement {
     /// Getter of the `charset` attribute.
     /// [`HTMLScriptElement.charset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/charset)
-    pub fn charset(&self) -> String {
-        self.inner.get("charset").as_::<String>()
+    pub fn charset(&self) -> DOMString {
+        self.inner.get("charset").as_::<DOMString>()
     }
 
     /// Setter of the `charset` attribute.
     /// [`HTMLScriptElement.charset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/charset)
-    pub fn set_charset(&mut self, value: &str) {
+    pub fn set_charset(&mut self, value: &DOMString) {
         self.inner.set("charset", value);
     }
 }
 impl HTMLScriptElement {
     /// Getter of the `event` attribute.
     /// [`HTMLScriptElement.event`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/event)
-    pub fn event(&self) -> String {
-        self.inner.get("event").as_::<String>()
+    pub fn event(&self) -> DOMString {
+        self.inner.get("event").as_::<DOMString>()
     }
 
     /// Setter of the `event` attribute.
     /// [`HTMLScriptElement.event`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/event)
-    pub fn set_event(&mut self, value: &str) {
+    pub fn set_event(&mut self, value: &DOMString) {
         self.inner.set("event", value);
     }
 }
 impl HTMLScriptElement {
     /// Getter of the `htmlFor` attribute.
     /// [`HTMLScriptElement.htmlFor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/htmlFor)
-    pub fn html_for(&self) -> String {
-        self.inner.get("htmlFor").as_::<String>()
+    pub fn html_for(&self) -> DOMString {
+        self.inner.get("htmlFor").as_::<DOMString>()
     }
 
     /// Setter of the `htmlFor` attribute.
     /// [`HTMLScriptElement.htmlFor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/htmlFor)
-    pub fn set_html_for(&mut self, value: &str) {
+    pub fn set_html_for(&mut self, value: &DOMString) {
         self.inner.set("htmlFor", value);
     }
 }
 impl HTMLScriptElement {
     /// Getter of the `attributionSrc` attribute.
     /// [`HTMLScriptElement.attributionSrc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/attributionSrc)
-    pub fn attribution_src(&self) -> String {
-        self.inner.get("attributionSrc").as_::<String>()
+    pub fn attribution_src(&self) -> USVString {
+        self.inner.get("attributionSrc").as_::<USVString>()
     }
 
     /// Setter of the `attributionSrc` attribute.
     /// [`HTMLScriptElement.attributionSrc`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement/attributionSrc)
-    pub fn set_attribution_src(&mut self, value: &str) {
+    pub fn set_attribution_src(&mut self, value: &USVString) {
         self.inner.set("attributionSrc", value);
     }
 }

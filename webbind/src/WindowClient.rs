@@ -74,10 +74,10 @@ impl WindowClient {
 impl WindowClient {
     /// Getter of the `ancestorOrigins` attribute.
     /// [`WindowClient.ancestorOrigins`](https://developer.mozilla.org/en-US/docs/Web/API/WindowClient/ancestorOrigins)
-    pub fn ancestor_origins(&self) -> FrozenArray<String> {
+    pub fn ancestor_origins(&self) -> FrozenArray<USVString> {
         self.inner
             .get("ancestorOrigins")
-            .as_::<FrozenArray<String>>()
+            .as_::<FrozenArray<USVString>>()
     }
 }
 impl WindowClient {
@@ -90,7 +90,7 @@ impl WindowClient {
 impl WindowClient {
     /// The navigate method.
     /// [`WindowClient.navigate`](https://developer.mozilla.org/en-US/docs/Web/API/WindowClient/navigate)
-    pub fn navigate(&self, url: &str) -> Promise<WindowClient> {
+    pub fn navigate(&self, url: &USVString) -> Promise<WindowClient> {
         self.inner
             .call("navigate", &[url.into()])
             .as_::<Promise<WindowClient>>()

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(GPUOutOfMemoryError);
 
 impl GPUOutOfMemoryError {
     /// The `new GPUOutOfMemoryError(..)` constructor, creating a new GPUOutOfMemoryError instance
-    pub fn new(message: &str) -> GPUOutOfMemoryError {
+    pub fn new(message: &DOMString) -> GPUOutOfMemoryError {
         Self {
             inner: Any::global("GPUOutOfMemoryError")
                 .new(&[message.into()])

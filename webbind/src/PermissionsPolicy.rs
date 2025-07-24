@@ -58,14 +58,14 @@ jsbind::utils::impl_dyn_cast!(PermissionsPolicy);
 impl PermissionsPolicy {
     /// The allowsFeature method.
     /// [`PermissionsPolicy.allowsFeature`](https://developer.mozilla.org/en-US/docs/Web/API/PermissionsPolicy/allowsFeature)
-    pub fn allows_feature0(&self, feature: &str) -> bool {
+    pub fn allows_feature0(&self, feature: &DOMString) -> bool {
         self.inner
             .call("allowsFeature", &[feature.into()])
             .as_::<bool>()
     }
     /// The allowsFeature method.
     /// [`PermissionsPolicy.allowsFeature`](https://developer.mozilla.org/en-US/docs/Web/API/PermissionsPolicy/allowsFeature)
-    pub fn allows_feature1(&self, feature: &str, origin: &str) -> bool {
+    pub fn allows_feature1(&self, feature: &DOMString, origin: &DOMString) -> bool {
         self.inner
             .call("allowsFeature", &[feature.into(), origin.into()])
             .as_::<bool>()
@@ -74,25 +74,27 @@ impl PermissionsPolicy {
 impl PermissionsPolicy {
     /// The features method.
     /// [`PermissionsPolicy.features`](https://developer.mozilla.org/en-US/docs/Web/API/PermissionsPolicy/features)
-    pub fn features(&self) -> Sequence<String> {
-        self.inner.call("features", &[]).as_::<Sequence<String>>()
+    pub fn features(&self) -> Sequence<DOMString> {
+        self.inner
+            .call("features", &[])
+            .as_::<Sequence<DOMString>>()
     }
 }
 impl PermissionsPolicy {
     /// The allowedFeatures method.
     /// [`PermissionsPolicy.allowedFeatures`](https://developer.mozilla.org/en-US/docs/Web/API/PermissionsPolicy/allowedFeatures)
-    pub fn allowed_features(&self) -> Sequence<String> {
+    pub fn allowed_features(&self) -> Sequence<DOMString> {
         self.inner
             .call("allowedFeatures", &[])
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<DOMString>>()
     }
 }
 impl PermissionsPolicy {
     /// The getAllowlistForFeature method.
     /// [`PermissionsPolicy.getAllowlistForFeature`](https://developer.mozilla.org/en-US/docs/Web/API/PermissionsPolicy/getAllowlistForFeature)
-    pub fn get_allowlist_for_feature(&self, feature: &str) -> Sequence<String> {
+    pub fn get_allowlist_for_feature(&self, feature: &DOMString) -> Sequence<DOMString> {
         self.inner
             .call("getAllowlistForFeature", &[feature.into()])
-            .as_::<Sequence<String>>()
+            .as_::<Sequence<DOMString>>()
     }
 }

@@ -58,22 +58,22 @@ jsbind::utils::impl_dyn_cast!(NavigationHistoryEntry);
 impl NavigationHistoryEntry {
     /// Getter of the `url` attribute.
     /// [`NavigationHistoryEntry.url`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationHistoryEntry/url)
-    pub fn url(&self) -> String {
-        self.inner.get("url").as_::<String>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 }
 impl NavigationHistoryEntry {
     /// Getter of the `key` attribute.
     /// [`NavigationHistoryEntry.key`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationHistoryEntry/key)
-    pub fn key(&self) -> String {
-        self.inner.get("key").as_::<String>()
+    pub fn key(&self) -> DOMString {
+        self.inner.get("key").as_::<DOMString>()
     }
 }
 impl NavigationHistoryEntry {
     /// Getter of the `id` attribute.
     /// [`NavigationHistoryEntry.id`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationHistoryEntry/id)
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 }
 impl NavigationHistoryEntry {

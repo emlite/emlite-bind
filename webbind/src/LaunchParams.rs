@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(LaunchParams);
 impl LaunchParams {
     /// Getter of the `targetURL` attribute.
     /// [`LaunchParams.targetURL`](https://developer.mozilla.org/en-US/docs/Web/API/LaunchParams/targetURL)
-    pub fn target_url(&self) -> String {
-        self.inner.get("targetURL").as_::<String>()
+    pub fn target_url(&self) -> DOMString {
+        self.inner.get("targetURL").as_::<DOMString>()
     }
 }
 impl LaunchParams {

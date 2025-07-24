@@ -66,7 +66,7 @@ impl GPUPipelineError {
     }
 
     /// The `new GPUPipelineError(..)` constructor, creating a new GPUPipelineError instance
-    pub fn new1(message: &str) -> GPUPipelineError {
+    pub fn new1(message: &DOMString) -> GPUPipelineError {
         Self {
             inner: Any::global("GPUPipelineError")
                 .new(&[message.into()])
@@ -75,7 +75,7 @@ impl GPUPipelineError {
     }
 
     /// The `new GPUPipelineError(..)` constructor, creating a new GPUPipelineError instance
-    pub fn new2(message: &str, options: &Any) -> GPUPipelineError {
+    pub fn new2(message: &DOMString, options: &Any) -> GPUPipelineError {
         Self {
             inner: Any::global("GPUPipelineError")
                 .new(&[message.into(), options.into()])

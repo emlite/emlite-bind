@@ -66,26 +66,26 @@ impl HTMLModElement {
 impl HTMLModElement {
     /// Getter of the `cite` attribute.
     /// [`HTMLModElement.cite`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLModElement/cite)
-    pub fn cite(&self) -> String {
-        self.inner.get("cite").as_::<String>()
+    pub fn cite(&self) -> USVString {
+        self.inner.get("cite").as_::<USVString>()
     }
 
     /// Setter of the `cite` attribute.
     /// [`HTMLModElement.cite`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLModElement/cite)
-    pub fn set_cite(&mut self, value: &str) {
+    pub fn set_cite(&mut self, value: &USVString) {
         self.inner.set("cite", value);
     }
 }
 impl HTMLModElement {
     /// Getter of the `dateTime` attribute.
     /// [`HTMLModElement.dateTime`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLModElement/dateTime)
-    pub fn date_time(&self) -> String {
-        self.inner.get("dateTime").as_::<String>()
+    pub fn date_time(&self) -> DOMString {
+        self.inner.get("dateTime").as_::<DOMString>()
     }
 
     /// Setter of the `dateTime` attribute.
     /// [`HTMLModElement.dateTime`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLModElement/dateTime)
-    pub fn set_date_time(&mut self, value: &str) {
+    pub fn set_date_time(&mut self, value: &DOMString) {
         self.inner.set("dateTime", value);
     }
 }

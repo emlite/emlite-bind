@@ -51,11 +51,11 @@ impl From<&HandwritingPrediction> for Any {
 }
 
 impl HandwritingPrediction {
-    pub fn text(&self) -> String {
-        self.inner.get("text").as_::<String>()
+    pub fn text(&self) -> DOMString {
+        self.inner.get("text").as_::<DOMString>()
     }
 
-    pub fn set_text(&mut self, value: &str) {
+    pub fn set_text(&mut self, value: &DOMString) {
         self.inner.set("text", value);
     }
 }

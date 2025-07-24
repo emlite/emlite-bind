@@ -51,29 +51,29 @@ impl From<&ContentDescription> for Any {
 }
 
 impl ContentDescription {
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 
-    pub fn set_id(&mut self, value: &str) {
+    pub fn set_id(&mut self, value: &DOMString) {
         self.inner.set("id", value);
     }
 }
 impl ContentDescription {
-    pub fn title(&self) -> String {
-        self.inner.get("title").as_::<String>()
+    pub fn title(&self) -> DOMString {
+        self.inner.get("title").as_::<DOMString>()
     }
 
-    pub fn set_title(&mut self, value: &str) {
+    pub fn set_title(&mut self, value: &DOMString) {
         self.inner.set("title", value);
     }
 }
 impl ContentDescription {
-    pub fn description(&self) -> String {
-        self.inner.get("description").as_::<String>()
+    pub fn description(&self) -> DOMString {
+        self.inner.get("description").as_::<DOMString>()
     }
 
-    pub fn set_description(&mut self, value: &str) {
+    pub fn set_description(&mut self, value: &DOMString) {
         self.inner.set("description", value);
     }
 }
@@ -96,11 +96,11 @@ impl ContentDescription {
     }
 }
 impl ContentDescription {
-    pub fn url(&self) -> String {
-        self.inner.get("url").as_::<String>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 
-    pub fn set_url(&mut self, value: &str) {
+    pub fn set_url(&mut self, value: &USVString) {
         self.inner.set("url", value);
     }
 }
@@ -171,7 +171,7 @@ impl ContentIndex {
 impl ContentIndex {
     /// The delete method.
     /// [`ContentIndex.delete`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndex/delete)
-    pub fn delete(&self, id: &str) -> Promise<Undefined> {
+    pub fn delete(&self, id: &DOMString) -> Promise<Undefined> {
         self.inner
             .call("delete", &[id.into()])
             .as_::<Promise<Undefined>>()

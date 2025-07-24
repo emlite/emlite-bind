@@ -51,11 +51,11 @@ impl From<&AudioOutputOptions> for Any {
 }
 
 impl AudioOutputOptions {
-    pub fn device_id(&self) -> String {
-        self.inner.get("deviceId").as_::<String>()
+    pub fn device_id(&self) -> DOMString {
+        self.inner.get("deviceId").as_::<DOMString>()
     }
 
-    pub fn set_device_id(&mut self, value: &str) {
+    pub fn set_device_id(&mut self, value: &DOMString) {
         self.inner.set("deviceId", value);
     }
 }
@@ -119,20 +119,22 @@ impl CaptureHandleConfig {
     }
 }
 impl CaptureHandleConfig {
-    pub fn handle(&self) -> String {
-        self.inner.get("handle").as_::<String>()
+    pub fn handle(&self) -> DOMString {
+        self.inner.get("handle").as_::<DOMString>()
     }
 
-    pub fn set_handle(&mut self, value: &str) {
+    pub fn set_handle(&mut self, value: &DOMString) {
         self.inner.set("handle", value);
     }
 }
 impl CaptureHandleConfig {
-    pub fn permitted_origins(&self) -> Sequence<String> {
-        self.inner.get("permittedOrigins").as_::<Sequence<String>>()
+    pub fn permitted_origins(&self) -> Sequence<DOMString> {
+        self.inner
+            .get("permittedOrigins")
+            .as_::<Sequence<DOMString>>()
     }
 
-    pub fn set_permitted_origins(&mut self, value: &Sequence<String>) {
+    pub fn set_permitted_origins(&mut self, value: &Sequence<DOMString>) {
         self.inner.set("permittedOrigins", value);
     }
 }
@@ -282,11 +284,11 @@ impl From<&MediaStreamConstraints> for Any {
 }
 
 impl MediaStreamConstraints {
-    pub fn peer_identity(&self) -> String {
-        self.inner.get("peerIdentity").as_::<String>()
+    pub fn peer_identity(&self) -> DOMString {
+        self.inner.get("peerIdentity").as_::<DOMString>()
     }
 
-    pub fn set_peer_identity(&mut self, value: &str) {
+    pub fn set_peer_identity(&mut self, value: &DOMString) {
         self.inner.set("peerIdentity", value);
     }
 }
@@ -534,7 +536,7 @@ impl MediaDevices {
 impl MediaDevices {
     /// The setSupportedCaptureActions method.
     /// [`MediaDevices.setSupportedCaptureActions`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/setSupportedCaptureActions)
-    pub fn set_supported_capture_actions(&self, actions: &Sequence<String>) -> Undefined {
+    pub fn set_supported_capture_actions(&self, actions: &Sequence<DOMString>) -> Undefined {
         self.inner
             .call("setSupportedCaptureActions", &[actions.into()])
             .as_::<Undefined>()

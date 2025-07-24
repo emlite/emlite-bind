@@ -68,8 +68,8 @@ impl MediaStream {
 impl MediaStream {
     /// Getter of the `id` attribute.
     /// [`MediaStream.id`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/id)
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 }
 impl MediaStream {
@@ -102,7 +102,7 @@ impl MediaStream {
 impl MediaStream {
     /// The getTrackById method.
     /// [`MediaStream.getTrackById`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/getTrackById)
-    pub fn get_track_by_id(&self, track_id: &str) -> MediaStreamTrack {
+    pub fn get_track_by_id(&self, track_id: &DOMString) -> MediaStreamTrack {
         self.inner
             .call("getTrackById", &[track_id.into()])
             .as_::<MediaStreamTrack>()

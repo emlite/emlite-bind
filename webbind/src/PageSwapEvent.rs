@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(PageSwapEvent);
 
 impl PageSwapEvent {
     /// The `new PageSwapEvent(..)` constructor, creating a new PageSwapEvent instance
-    pub fn new0(type_: &str) -> PageSwapEvent {
+    pub fn new0(type_: &DOMString) -> PageSwapEvent {
         Self {
             inner: Any::global("PageSwapEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl PageSwapEvent {
     }
 
     /// The `new PageSwapEvent(..)` constructor, creating a new PageSwapEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> PageSwapEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> PageSwapEvent {
         Self {
             inner: Any::global("PageSwapEvent")
                 .new(&[type_.into(), event_init_dict.into()])

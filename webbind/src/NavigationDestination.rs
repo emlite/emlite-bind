@@ -58,22 +58,22 @@ jsbind::utils::impl_dyn_cast!(NavigationDestination);
 impl NavigationDestination {
     /// Getter of the `url` attribute.
     /// [`NavigationDestination.url`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationDestination/url)
-    pub fn url(&self) -> String {
-        self.inner.get("url").as_::<String>()
+    pub fn url(&self) -> USVString {
+        self.inner.get("url").as_::<USVString>()
     }
 }
 impl NavigationDestination {
     /// Getter of the `key` attribute.
     /// [`NavigationDestination.key`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationDestination/key)
-    pub fn key(&self) -> String {
-        self.inner.get("key").as_::<String>()
+    pub fn key(&self) -> DOMString {
+        self.inner.get("key").as_::<DOMString>()
     }
 }
 impl NavigationDestination {
     /// Getter of the `id` attribute.
     /// [`NavigationDestination.id`](https://developer.mozilla.org/en-US/docs/Web/API/NavigationDestination/id)
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 }
 impl NavigationDestination {

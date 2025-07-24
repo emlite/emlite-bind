@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(Font);
 impl Font {
     /// Getter of the `name` attribute.
     /// [`Font.name`](https://developer.mozilla.org/en-US/docs/Web/API/Font/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl Font {

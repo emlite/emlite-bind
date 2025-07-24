@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(MIDIMessageEvent);
 
 impl MIDIMessageEvent {
     /// The `new MIDIMessageEvent(..)` constructor, creating a new MIDIMessageEvent instance
-    pub fn new0(type_: &str) -> MIDIMessageEvent {
+    pub fn new0(type_: &DOMString) -> MIDIMessageEvent {
         Self {
             inner: Any::global("MIDIMessageEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl MIDIMessageEvent {
     }
 
     /// The `new MIDIMessageEvent(..)` constructor, creating a new MIDIMessageEvent instance
-    pub fn new1(type_: &str, event_init_dict: &Any) -> MIDIMessageEvent {
+    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> MIDIMessageEvent {
         Self {
             inner: Any::global("MIDIMessageEvent")
                 .new(&[type_.into(), event_init_dict.into()])

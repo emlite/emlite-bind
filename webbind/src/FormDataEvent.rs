@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(FormDataEvent);
 
 impl FormDataEvent {
     /// The `new FormDataEvent(..)` constructor, creating a new FormDataEvent instance
-    pub fn new(type_: &str, event_init_dict: &Any) -> FormDataEvent {
+    pub fn new(type_: &DOMString, event_init_dict: &Any) -> FormDataEvent {
         Self {
             inner: Any::global("FormDataEvent")
                 .new(&[type_.into(), event_init_dict.into()])

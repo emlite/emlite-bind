@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(WebGLContextEvent);
 
 impl WebGLContextEvent {
     /// The `new WebGLContextEvent(..)` constructor, creating a new WebGLContextEvent instance
-    pub fn new0(type_: &str) -> WebGLContextEvent {
+    pub fn new0(type_: &DOMString) -> WebGLContextEvent {
         Self {
             inner: Any::global("WebGLContextEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl WebGLContextEvent {
     }
 
     /// The `new WebGLContextEvent(..)` constructor, creating a new WebGLContextEvent instance
-    pub fn new1(type_: &str, event_init: &Any) -> WebGLContextEvent {
+    pub fn new1(type_: &DOMString, event_init: &Any) -> WebGLContextEvent {
         Self {
             inner: Any::global("WebGLContextEvent")
                 .new(&[type_.into(), event_init.into()])
@@ -77,7 +77,7 @@ impl WebGLContextEvent {
 impl WebGLContextEvent {
     /// Getter of the `statusMessage` attribute.
     /// [`WebGLContextEvent.statusMessage`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLContextEvent/statusMessage)
-    pub fn status_message(&self) -> String {
-        self.inner.get("statusMessage").as_::<String>()
+    pub fn status_message(&self) -> DOMString {
+        self.inner.get("statusMessage").as_::<DOMString>()
     }
 }

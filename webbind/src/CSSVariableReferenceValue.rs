@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CSSVariableReferenceValue);
 
 impl CSSVariableReferenceValue {
     /// The `new CSSVariableReferenceValue(..)` constructor, creating a new CSSVariableReferenceValue instance
-    pub fn new0(variable: &str) -> CSSVariableReferenceValue {
+    pub fn new0(variable: &USVString) -> CSSVariableReferenceValue {
         Self {
             inner: Any::global("CSSVariableReferenceValue")
                 .new(&[variable.into()])
@@ -66,7 +66,7 @@ impl CSSVariableReferenceValue {
     }
 
     /// The `new CSSVariableReferenceValue(..)` constructor, creating a new CSSVariableReferenceValue instance
-    pub fn new1(variable: &str, fallback: &CSSUnparsedValue) -> CSSVariableReferenceValue {
+    pub fn new1(variable: &USVString, fallback: &CSSUnparsedValue) -> CSSVariableReferenceValue {
         Self {
             inner: Any::global("CSSVariableReferenceValue")
                 .new(&[variable.into(), fallback.into()])
@@ -77,13 +77,13 @@ impl CSSVariableReferenceValue {
 impl CSSVariableReferenceValue {
     /// Getter of the `variable` attribute.
     /// [`CSSVariableReferenceValue.variable`](https://developer.mozilla.org/en-US/docs/Web/API/CSSVariableReferenceValue/variable)
-    pub fn variable(&self) -> String {
-        self.inner.get("variable").as_::<String>()
+    pub fn variable(&self) -> USVString {
+        self.inner.get("variable").as_::<USVString>()
     }
 
     /// Setter of the `variable` attribute.
     /// [`CSSVariableReferenceValue.variable`](https://developer.mozilla.org/en-US/docs/Web/API/CSSVariableReferenceValue/variable)
-    pub fn set_variable(&mut self, value: &str) {
+    pub fn set_variable(&mut self, value: &USVString) {
         self.inner.set("variable", value);
     }
 }

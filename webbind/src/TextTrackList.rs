@@ -65,7 +65,7 @@ impl TextTrackList {
 impl TextTrackList {
     /// The getTrackById method.
     /// [`TextTrackList.getTrackById`](https://developer.mozilla.org/en-US/docs/Web/API/TextTrackList/getTrackById)
-    pub fn get_track_by_id(&self, id: &str) -> TextTrack {
+    pub fn get_track_by_id(&self, id: &DOMString) -> TextTrack {
         self.inner
             .call("getTrackById", &[id.into()])
             .as_::<TextTrack>()

@@ -166,13 +166,15 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// Getter of the `globalCompositeOperation` attribute.
     /// [`PaintRenderingContext2D.globalCompositeOperation`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/globalCompositeOperation)
-    pub fn global_composite_operation(&self) -> String {
-        self.inner.get("globalCompositeOperation").as_::<String>()
+    pub fn global_composite_operation(&self) -> DOMString {
+        self.inner
+            .get("globalCompositeOperation")
+            .as_::<DOMString>()
     }
 
     /// Setter of the `globalCompositeOperation` attribute.
     /// [`PaintRenderingContext2D.globalCompositeOperation`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/globalCompositeOperation)
-    pub fn set_global_composite_operation(&mut self, value: &str) {
+    pub fn set_global_composite_operation(&mut self, value: &DOMString) {
         self.inner.set("globalCompositeOperation", value);
     }
 }
@@ -284,7 +286,7 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// The createPattern method.
     /// [`PaintRenderingContext2D.createPattern`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/createPattern)
-    pub fn create_pattern(&self, image: &Any, repetition: &str) -> CanvasPattern {
+    pub fn create_pattern(&self, image: &Any, repetition: &DOMString) -> CanvasPattern {
         self.inner
             .call("createPattern", &[image.into(), repetition.into()])
             .as_::<CanvasPattern>()
@@ -332,13 +334,13 @@ impl PaintRenderingContext2D {
 impl PaintRenderingContext2D {
     /// Getter of the `shadowColor` attribute.
     /// [`PaintRenderingContext2D.shadowColor`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowColor)
-    pub fn shadow_color(&self) -> String {
-        self.inner.get("shadowColor").as_::<String>()
+    pub fn shadow_color(&self) -> DOMString {
+        self.inner.get("shadowColor").as_::<DOMString>()
     }
 
     /// Setter of the `shadowColor` attribute.
     /// [`PaintRenderingContext2D.shadowColor`](https://developer.mozilla.org/en-US/docs/Web/API/PaintRenderingContext2D/shadowColor)
-    pub fn set_shadow_color(&mut self, value: &str) {
+    pub fn set_shadow_color(&mut self, value: &DOMString) {
         self.inner.set("shadowColor", value);
     }
 }

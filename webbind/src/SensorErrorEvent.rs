@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(SensorErrorEvent);
 
 impl SensorErrorEvent {
     /// The `new SensorErrorEvent(..)` constructor, creating a new SensorErrorEvent instance
-    pub fn new(type_: &str, error_event_init_dict: &Any) -> SensorErrorEvent {
+    pub fn new(type_: &DOMString, error_event_init_dict: &Any) -> SensorErrorEvent {
         Self {
             inner: Any::global("SensorErrorEvent")
                 .new(&[type_.into(), error_event_init_dict.into()])

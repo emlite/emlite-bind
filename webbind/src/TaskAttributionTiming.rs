@@ -72,43 +72,43 @@ impl TaskAttributionTiming {
 impl TaskAttributionTiming {
     /// Getter of the `name` attribute.
     /// [`TaskAttributionTiming.name`](https://developer.mozilla.org/en-US/docs/Web/API/TaskAttributionTiming/name)
-    pub fn name(&self) -> String {
-        self.inner.get("name").as_::<String>()
+    pub fn name(&self) -> DOMString {
+        self.inner.get("name").as_::<DOMString>()
     }
 }
 impl TaskAttributionTiming {
     /// Getter of the `entryType` attribute.
     /// [`TaskAttributionTiming.entryType`](https://developer.mozilla.org/en-US/docs/Web/API/TaskAttributionTiming/entryType)
-    pub fn entry_type(&self) -> String {
-        self.inner.get("entryType").as_::<String>()
+    pub fn entry_type(&self) -> DOMString {
+        self.inner.get("entryType").as_::<DOMString>()
     }
 }
 impl TaskAttributionTiming {
     /// Getter of the `containerType` attribute.
     /// [`TaskAttributionTiming.containerType`](https://developer.mozilla.org/en-US/docs/Web/API/TaskAttributionTiming/containerType)
-    pub fn container_type(&self) -> String {
-        self.inner.get("containerType").as_::<String>()
+    pub fn container_type(&self) -> DOMString {
+        self.inner.get("containerType").as_::<DOMString>()
     }
 }
 impl TaskAttributionTiming {
     /// Getter of the `containerSrc` attribute.
     /// [`TaskAttributionTiming.containerSrc`](https://developer.mozilla.org/en-US/docs/Web/API/TaskAttributionTiming/containerSrc)
-    pub fn container_src(&self) -> String {
-        self.inner.get("containerSrc").as_::<String>()
+    pub fn container_src(&self) -> DOMString {
+        self.inner.get("containerSrc").as_::<DOMString>()
     }
 }
 impl TaskAttributionTiming {
     /// Getter of the `containerId` attribute.
     /// [`TaskAttributionTiming.containerId`](https://developer.mozilla.org/en-US/docs/Web/API/TaskAttributionTiming/containerId)
-    pub fn container_id(&self) -> String {
-        self.inner.get("containerId").as_::<String>()
+    pub fn container_id(&self) -> DOMString {
+        self.inner.get("containerId").as_::<DOMString>()
     }
 }
 impl TaskAttributionTiming {
     /// Getter of the `containerName` attribute.
     /// [`TaskAttributionTiming.containerName`](https://developer.mozilla.org/en-US/docs/Web/API/TaskAttributionTiming/containerName)
-    pub fn container_name(&self) -> String {
-        self.inner.get("containerName").as_::<String>()
+    pub fn container_name(&self) -> DOMString {
+        self.inner.get("containerName").as_::<DOMString>()
     }
 }
 impl TaskAttributionTiming {

@@ -51,11 +51,11 @@ impl From<&PaymentDetailsUpdate> for Any {
 }
 
 impl PaymentDetailsUpdate {
-    pub fn error(&self) -> String {
-        self.inner.get("error").as_::<String>()
+    pub fn error(&self) -> DOMString {
+        self.inner.get("error").as_::<DOMString>()
     }
 
-    pub fn set_error(&mut self, value: &str) {
+    pub fn set_error(&mut self, value: &DOMString) {
         self.inner.set("error", value);
     }
 }
@@ -211,8 +211,8 @@ impl PaymentRequest {
 impl PaymentRequest {
     /// Getter of the `id` attribute.
     /// [`PaymentRequest.id`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/id)
-    pub fn id(&self) -> String {
-        self.inner.get("id").as_::<String>()
+    pub fn id(&self) -> DOMString {
+        self.inner.get("id").as_::<DOMString>()
     }
 }
 impl PaymentRequest {
@@ -225,8 +225,8 @@ impl PaymentRequest {
 impl PaymentRequest {
     /// Getter of the `shippingOption` attribute.
     /// [`PaymentRequest.shippingOption`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/shippingOption)
-    pub fn shipping_option(&self) -> String {
-        self.inner.get("shippingOption").as_::<String>()
+    pub fn shipping_option(&self) -> DOMString {
+        self.inner.get("shippingOption").as_::<DOMString>()
     }
 }
 impl PaymentRequest {

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(WorkletAnimation);
 
 impl WorkletAnimation {
     /// The `new WorkletAnimation(..)` constructor, creating a new WorkletAnimation instance
-    pub fn new0(animator_name: &str) -> WorkletAnimation {
+    pub fn new0(animator_name: &DOMString) -> WorkletAnimation {
         Self {
             inner: Any::global("WorkletAnimation")
                 .new(&[animator_name.into()])
@@ -66,7 +66,7 @@ impl WorkletAnimation {
     }
 
     /// The `new WorkletAnimation(..)` constructor, creating a new WorkletAnimation instance
-    pub fn new1(animator_name: &str, effects: &Any) -> WorkletAnimation {
+    pub fn new1(animator_name: &DOMString, effects: &Any) -> WorkletAnimation {
         Self {
             inner: Any::global("WorkletAnimation")
                 .new(&[animator_name.into(), effects.into()])
@@ -76,7 +76,7 @@ impl WorkletAnimation {
 
     /// The `new WorkletAnimation(..)` constructor, creating a new WorkletAnimation instance
     pub fn new2(
-        animator_name: &str,
+        animator_name: &DOMString,
         effects: &Any,
         timeline: &AnimationTimeline,
     ) -> WorkletAnimation {
@@ -89,7 +89,7 @@ impl WorkletAnimation {
 
     /// The `new WorkletAnimation(..)` constructor, creating a new WorkletAnimation instance
     pub fn new3(
-        animator_name: &str,
+        animator_name: &DOMString,
         effects: &Any,
         timeline: &AnimationTimeline,
         options: &Any,
@@ -109,7 +109,7 @@ impl WorkletAnimation {
 impl WorkletAnimation {
     /// Getter of the `animatorName` attribute.
     /// [`WorkletAnimation.animatorName`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletAnimation/animatorName)
-    pub fn animator_name(&self) -> String {
-        self.inner.get("animatorName").as_::<String>()
+    pub fn animator_name(&self) -> DOMString {
+        self.inner.get("animatorName").as_::<DOMString>()
     }
 }

@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(MediaKeySystemAccess);
 impl MediaKeySystemAccess {
     /// Getter of the `keySystem` attribute.
     /// [`MediaKeySystemAccess.keySystem`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySystemAccess/keySystem)
-    pub fn key_system(&self) -> String {
-        self.inner.get("keySystem").as_::<String>()
+    pub fn key_system(&self) -> DOMString {
+        self.inner.get("keySystem").as_::<DOMString>()
     }
 }
 impl MediaKeySystemAccess {
