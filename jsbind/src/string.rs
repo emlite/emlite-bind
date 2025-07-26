@@ -13,6 +13,18 @@ macro_rules! declare_string {
 
         bind!($name);
 
+        impl From<$name> for Option<String> {
+            fn from(s: $name) -> Self {
+                s.as_::<Self>()
+            }
+        }
+
+        impl From<$name> for Option<&str> {
+            fn from(s: $name) -> Self {
+                s.as_::<Self>()
+            }
+        }
+
         impl From<&str> for $name {
             fn from(s: &str) -> Self {
                 if core::any::TypeId::of::<$name>() == core::any::TypeId::of::<ByteString>() {
@@ -63,6 +75,11 @@ macro_rules! declare_string {
             /// Borrow the JavaScript string as `&str` (UTF‑8 view).
             pub fn as_str(&self) -> Option<&str> {
                 self.inner.as_::<Option<&str>>()
+            }
+
+            /// Borrow the JavaScript string as `&str` (UTF‑8 view).
+            pub fn to_string(&self) -> Option<String> {
+                self.inner.as_::<Option<String>>()
             }
 
             /// Number of UTF-16 code units (`JSString.length`).
