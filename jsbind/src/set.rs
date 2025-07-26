@@ -196,8 +196,12 @@ where
 
 impl<T> core::fmt::Display for TypedSet<T> {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
-        let s: String = self.inner.call("toString", &[]).as_();
-        f.write_str(&s)
+        let s: Option<String> = self.inner.call("toString", &[]).as_();
+        if let Some(s) = s {
+            f.write_str(&s)
+        } else {
+            f.write_str("Set")
+        }
     }
 }
 
@@ -384,8 +388,12 @@ where
 
 impl<T> core::fmt::Display for TypedWeakSet<T> {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
-        let s: String = self.inner.call("toString", &[]).as_();
-        f.write_str(&s)
+        let s: Option<String> = self.inner.call("toString", &[]).as_();
+        if let Some(s) = s {
+            f.write_str(&s)
+        } else {
+            f.write_str("WeakSet")
+        }
     }
 }
 

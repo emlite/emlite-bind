@@ -283,7 +283,7 @@ export function generate(specAst) {
       src.push(
         `impl FromVal for ${e.name} {`,
         `    fn from_val(v: &Any) -> Self {`,
-        `         match v.as_::<&str>() {`
+        `         match v.as_::<Option<&str>>().unwrap() {`
       );
       for (const v of e.values) {
         src.push(

@@ -19,22 +19,22 @@ impl URL {
         }
     }
 
-    pub fn href(&self) -> String {
-        self.inner.get("href").as_::<String>()
+    pub fn href(&self) -> Option<String> {
+        self.inner.get("href").as_::<Option<String>>()
     }
     pub fn set_href(&mut self, v: &str) {
         self.inner.set("href", v);
     }
 
-    pub fn protocol(&self) -> String {
-        self.inner.get("protocol").as_::<String>()
+    pub fn protocol(&self) -> Option<String> {
+        self.inner.get("protocol").as_::<Option<String>>()
     }
     pub fn set_protocol(&mut self, v: &str) {
         self.inner.set("protocol", v);
     }
 
-    pub fn pathname(&self) -> String {
-        self.inner.get("pathname").as_::<String>()
+    pub fn pathname(&self) -> Option<String> {
+        self.inner.get("pathname").as_::<Option<String>>()
     }
     pub fn set_pathname(&mut self, v: &str) {
         self.inner.set("pathname", v);
@@ -55,12 +55,12 @@ bind!(URLSearchParams);
 impl_dyn_cast!(URLSearchParams);
 
 impl URLSearchParams {
-    pub fn get(&self, key: &str) -> Option<String> {
+    pub fn get(&self, key: &str) -> Option<Option<String>> {
         let v = self.inner.get(key);
         if v.is_null() {
             None
         } else {
-            Some(v.as_::<String>())
+            Some(v.as_::<Option<String>>())
         }
     }
 

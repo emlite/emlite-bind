@@ -144,4 +144,8 @@ impl<T> crate::prelude::DynCast for Promise<T> {
     fn unchecked_from_val_ref(v: &Any) -> &Self {
         unsafe { &*(v as *const Any as *const Self) }
     }
+    #[inline]
+    fn unchecked_from_val_mut(v: &mut Any) -> &mut Self {
+        unsafe { &mut *(v as *mut Any as *mut Self) }
+    }
 }

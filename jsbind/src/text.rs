@@ -55,7 +55,7 @@ impl TextDecoder {
     }
 
     /// `decoder.decode(input)` – UTF-8 → `String`.
-    pub fn decode(&self, bytes: &Uint8Array) -> String {
+    pub fn decode(&self, bytes: &Uint8Array) -> Option<String> {
         self.inner.call("decode", &[bytes.clone().into()]).as_()
     }
 }

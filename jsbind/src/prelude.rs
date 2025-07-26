@@ -49,7 +49,7 @@ pub fn parse_float(src: &str) -> f64 {
 /// * implements `AsRef<Val>` and `Into<Val>`
 pub trait DynCast
 where
-    Self: AsRef<emlite::Val> + Into<emlite::Val>,
+    Self: AsRef<emlite::Val> + Into<emlite::Val> + AsMut<emlite::Val>,
 {
     fn has_type<T>(&self) -> bool
     where
@@ -80,6 +80,17 @@ where
         }
     }
 
+    fn dyn_mut<T>(&mut self) -> Option<&mut T>
+    where
+        T: DynCast,
+    {
+        if self.has_type::<T>() {
+            Some(self.unchecked_mut())
+        } else {
+            None
+        }
+    }
+
     fn unchecked_into<T>(self) -> T
     where
         T: DynCast,
@@ -92,6 +103,13 @@ where
         T: DynCast,
     {
         T::unchecked_from_val_ref(self.as_ref())
+    }
+
+    fn unchecked_mut<T>(&mut self) -> &mut T
+    where
+        T: DynCast,
+    {
+        T::unchecked_from_val_mut(self.as_mut())
     }
 
     fn is_instance_of<T>(&self) -> bool
@@ -114,6 +132,9 @@ where
 
     /// Zero-cost unchecked conversion from `&Val` into `&Self`.
     fn unchecked_from_val_ref(v: &emlite::Val) -> &Self;
+
+    /// Zero-cost unchecked conversion from `&mut Val` into `&mut Self`.
+    fn unchecked_from_val_mut(v: &mut emlite::Val) -> &mut Self;
 }
 
 /// Throws a JS exception.

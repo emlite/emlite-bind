@@ -17,19 +17,19 @@ macro_rules! declare_error {
                     .as_::<Self>()
             }
             /// JS `err.message`
-            pub fn message(&self) -> String  { self.inner.get("message").as_() }
+            pub fn message(&self) -> Option<String>  { self.inner.get("message").as_() }
             /// JS `err.name`
-            pub fn name(&self)    -> String  { self.inner.get("name").as_() }
+            pub fn name(&self)    -> Option<String>  { self.inner.get("name").as_() }
             /// JS `err.stack` (may be `undefined`)
             pub fn stack(&self)   -> Option<String> {
                 let s = self.inner.get("stack");
-                if s.is_undefined() { None } else { Some(s.as_()) }
+                if s.is_undefined() { None } else { s.as_() }
             }
         }
 
         impl core::fmt::Display for $base {
             fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
-                write!(f, "{}: {}", self.name(), self.message())
+                write!(f, "{:?}: {:?}", self.name(), self.message())
             }
         }
         impl core::error::Error for $base {}
@@ -49,13 +49,13 @@ macro_rules! declare_error {
                         .as_::<Self>()
                 }
                 // Re-export the common helpers by delegation.
-                pub fn message(&self) -> String        { <$base>::from(self.clone()).message() }
-                pub fn name(&self)    -> String        { <$base>::from(self.clone()).name() }
+                pub fn message(&self) -> Option<String>        { <$base>::from(self.clone()).message() }
+                pub fn name(&self)    -> Option<String>        { <$base>::from(self.clone()).name() }
                 pub fn stack(&self)   -> Option<String>{ <$base>::from(self.clone()).stack() }
             }
             impl core::fmt::Display for $name {
                 fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
-                    write!(f, "{}: {}", self.name(), self.message())
+                    write!(f, "{:?}: {:?}", self.name(), self.message())
                 }
             }
             impl core::error::Error for $name {}

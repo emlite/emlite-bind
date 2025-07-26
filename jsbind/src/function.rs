@@ -82,8 +82,12 @@ impl From<Closure> for Function {
 impl core::fmt::Display for Function {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         // JS › fn.toString()
-        let s: String = self.inner.call("toString", &[]).as_();
-        f.write_str(&s)
+        let s: Option<String> = self.inner.call("toString", &[]).as_();
+        if let Some(s) = s {
+            f.write_str(&s)
+        } else {
+            f.write_str("unnamed")
+        }
     }
 }
 

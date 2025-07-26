@@ -12,9 +12,9 @@ fn main() {
 
     // Convert Any back to Rust types using as_::<T>()
     let n: i32 = num.as_();
-    let s: String = text.as_();
+    let s: Option<String> = text.as_();
     let b: bool = boolean.as_();
     println!("Extracted i32: {}", n);
-    println!("Extracted String: {}", s);
+    println!("Extracted String: {:?}", s);
     println!("Extracted bool: {}", b);
 }

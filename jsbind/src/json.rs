@@ -35,7 +35,7 @@ impl JSON {
     ///
     /// `space` mirrors the optional 3rd arg of JS `stringify`
     /// (`number` → indent, `string` → prefix).
-    pub fn stringify(value: &Any, replacer: Option<&Any>, space: Option<&Any>) -> String {
+    pub fn stringify(value: &Any, replacer: Option<&Any>, space: Option<&Any>) -> Option<String> {
         let mut args = vec![value.clone()];
         if let Some(r) = replacer {
             args.push(r.clone());
@@ -43,6 +43,6 @@ impl JSON {
         if let Some(s) = space {
             args.push(s.clone());
         }
-        Self::obj().call("stringify", &args).as_::<String>()
+        Self::obj().call("stringify", &args).as_::<Option<String>>()
     }
 }

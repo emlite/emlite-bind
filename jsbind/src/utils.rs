@@ -75,6 +75,10 @@ macro_rules! impl_dyn_cast {
             fn unchecked_from_val_ref(v: &$crate::prelude::Any) -> &Self {
                 unsafe { &*(v as *const $crate::prelude::Any as *const Self) }
             }
+            #[inline]
+            fn unchecked_from_val_mut(v: &mut $crate::prelude::Any) -> &mut Self {
+                unsafe { &mut *(v as *mut $crate::prelude::Any as *mut Self) }
+            }
         }
     };
     ($ty:ty, $global_ctor:expr) => {
@@ -92,6 +96,10 @@ macro_rules! impl_dyn_cast {
             #[inline]
             fn unchecked_from_val_ref(v: &$crate::prelude::Any) -> &Self {
                 unsafe { &*(v as *const $crate::prelude::Any as *const Self) }
+            }
+            #[inline]
+            fn unchecked_from_val_mut(v: &mut $crate::prelude::Any) -> &mut Self {
+                unsafe { &mut *(v as *mut $crate::prelude::Any as *mut Self) }
             }
         }
     };

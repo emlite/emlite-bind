@@ -2,6 +2,7 @@ use crate::any::Any;
 use crate::utils::*;
 use alloc::string::String;
 use alloc::vec::Vec;
+use alloc::format;
 
 /// One-to-one wrapper around a JS `Date` instance.
 #[derive(Clone, Debug, PartialOrd)]
@@ -47,17 +48,17 @@ impl Date {
     }
 
     /// `Date.prototype.toISOString`
-    pub fn to_iso_string(&self) -> String {
-        self.inner.call("toISOString", &[]).as_::<String>()
+    pub fn to_iso_string(&self) -> Option<String> {
+        self.inner.call("toISOString", &[]).as_::<Option<String>>()
     }
 
     /// `Date.prototype.toUTCString`
-    pub fn to_utc_string(&self) -> String {
-        self.inner.call("toUTCString", &[]).as_::<String>()
+    pub fn to_utc_string(&self) -> Option<String> {
+        self.inner.call("toUTCString", &[]).as_::<Option<String>>()
     }
 
     /// `Date.prototype.toLocaleString`
-    pub fn to_locale_string(&self, locales: Option<&Any>, opts: Option<&Any>) -> String {
+    pub fn to_locale_string(&self, locales: Option<&Any>, opts: Option<&Any>) -> Option<String> {
         let mut a = Vec::new();
         if let Some(l) = locales {
             a.push(l.clone());
@@ -65,7 +66,7 @@ impl Date {
         if let Some(o) = opts {
             a.push(o.clone());
         }
-        self.inner.call("toLocaleString", &a).as_::<String>()
+        self.inner.call("toLocaleString", &a).as_::<Option<String>>()
     }
 }
 
@@ -83,7 +84,7 @@ impl Date {
 
 impl core::fmt::Display for Date {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
-        f.write_str(&self.to_iso_string())
+        f.write_str(&format!("{:?}", self.to_iso_string()))
     }
 }
 impl PartialEq for Date {

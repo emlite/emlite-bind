@@ -30,7 +30,7 @@ macro_rules! declare_string {
 
         impl AsRef<str> for $name {
             fn as_ref(&self) -> &str {
-                self.as_str()
+                self.as_str().unwrap()
             }
         }
 
@@ -48,24 +48,21 @@ macro_rules! declare_string {
             fn unchecked_from_val_ref(v: &emlite::Val) -> &Self {
                 unsafe { &*(v as *const emlite::Val as *const Self) }
             }
+
+            #[inline]
+            fn unchecked_from_val_mut(v: &mut emlite::Val) -> &mut Self {
+                unsafe { &mut *(v as *mut emlite::Val as *mut Self) }
+            }
         }
 
         impl $name {
-            /// Number of UTF‑8 bytes (same as `str::len()`).
-            pub fn byte_len(&self) -> usize {
-                self.as_str().len()
-            }
             /// `len() == 0` convenience.
             pub fn is_empty(&self) -> bool {
                 self.length() == 0
             }
-            /// Scalar lookup; returns `None` if index is out of bounds.
-            pub fn char_at(&self, i: usize) -> Option<char> {
-                self.as_str().chars().nth(i)
-            }
             /// Borrow the JavaScript string as `&str` (UTF‑8 view).
-            pub fn as_str(&self) -> &str {
-                self.inner.as_::<&str>()
+            pub fn as_str(&self) -> Option<&str> {
+                self.inner.as_::<Option<&str>>()
             }
 
             /// Number of UTF-16 code units (`JSString.length`).
@@ -254,7 +251,11 @@ macro_rules! declare_string {
 
         impl core::fmt::Display for $name {
             fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
-                f.write_str(self.as_str())
+                if let Some(s) = self.as_str() {
+                    f.write_str(s)
+                } else {
+                    f.write_str("undefined")
+                }
             }
         }
 
@@ -267,7 +268,7 @@ macro_rules! declare_string {
 
         impl PartialEq<str> for $name {
             fn eq(&self, other: &str) -> bool {
-                self.as_str() == other
+                self.as_str() == Some(other)
             }
         }
     };

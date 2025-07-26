@@ -7,7 +7,7 @@ pub enum SecurityPolicyViolationEventDisposition {
 }
 impl FromVal for SecurityPolicyViolationEventDisposition {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "enforce" => Self::ENFORCE,
             "report" => Self::REPORT,
             _ => unreachable!(),
@@ -44,7 +44,7 @@ pub enum EndingType {
 }
 impl FromVal for EndingType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "transparent" => Self::TRANSPARENT,
             "native" => Self::NATIVE,
             _ => unreachable!(),
@@ -81,7 +81,7 @@ pub enum IDBRequestReadyState {
 }
 impl FromVal for IDBRequestReadyState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "pending" => Self::PENDING,
             "done" => Self::DONE,
             _ => unreachable!(),
@@ -119,7 +119,7 @@ pub enum IDBTransactionDurability {
 }
 impl FromVal for IDBTransactionDurability {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "default" => Self::DEFAULT,
             "strict" => Self::STRICT,
             "relaxed" => Self::RELAXED,
@@ -161,7 +161,7 @@ pub enum IDBCursorDirection {
 }
 impl FromVal for IDBCursorDirection {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "next" => Self::NEXT,
             "nextunique" => Self::NEXTUNIQUE,
             "prev" => Self::PREV,
@@ -205,7 +205,7 @@ pub enum IDBTransactionMode {
 }
 impl FromVal for IDBTransactionMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "readonly" => Self::READONLY,
             "readwrite" => Self::READWRITE,
             "versionchange" => Self::VERSIONCHANGE,
@@ -245,7 +245,7 @@ pub enum AccelerometerLocalCoordinateSystem {
 }
 impl FromVal for AccelerometerLocalCoordinateSystem {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "device" => Self::DEVICE,
             "screen" => Self::SCREEN,
             _ => unreachable!(),
@@ -286,7 +286,7 @@ pub enum AudioSessionType {
 }
 impl FromVal for AudioSessionType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "auto" => Self::AUTO,
             "playback" => Self::PLAYBACK,
             "transient" => Self::TRANSIENT,
@@ -336,7 +336,7 @@ pub enum AudioSessionState {
 }
 impl FromVal for AudioSessionState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "inactive" => Self::INACTIVE,
             "active" => Self::ACTIVE,
             "interrupted" => Self::INTERRUPTED,
@@ -377,7 +377,7 @@ pub enum AutoplayPolicy {
 }
 impl FromVal for AutoplayPolicy {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "allowed" => Self::ALLOWED,
             "allowed-muted" => Self::ALLOWED_MUTED,
             "disallowed" => Self::DISALLOWED,
@@ -417,7 +417,7 @@ pub enum AutoplayPolicyMediaType {
 }
 impl FromVal for AutoplayPolicyMediaType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "mediaelement" => Self::MEDIAELEMENT,
             "audiocontext" => Self::AUDIOCONTEXT,
             _ => unreachable!(),
@@ -455,7 +455,7 @@ pub enum BackgroundFetchResult {
 }
 impl FromVal for BackgroundFetchResult {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "" => Self::NONE,
             "success" => Self::SUCCESS,
             "failure" => Self::FAILURE,
@@ -499,7 +499,7 @@ pub enum BackgroundFetchFailureReason {
 }
 impl FromVal for BackgroundFetchFailureReason {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "" => Self::NONE,
             "aborted" => Self::ABORTED,
             "bad-status" => Self::BAD_STATUS,
@@ -553,7 +553,7 @@ pub enum PresentationStyle {
 }
 impl FromVal for PresentationStyle {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "unspecified" => Self::UNSPECIFIED,
             "inline" => Self::INLINE,
             "attachment" => Self::ATTACHMENT,
@@ -594,7 +594,7 @@ pub enum CompressionFormat {
 }
 impl FromVal for CompressionFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "deflate" => Self::DEFLATE,
             "deflate-raw" => Self::DEFLATE_RAW,
             "gzip" => Self::GZIP,
@@ -633,7 +633,7 @@ pub enum PressureSource {
 }
 impl FromVal for PressureSource {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "cpu" => Self::CPU,
             _ => unreachable!(),
         }
@@ -669,7 +669,7 @@ pub enum PressureState {
 }
 impl FromVal for PressureState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "nominal" => Self::NOMINAL,
             "fair" => Self::FAIR,
             "serious" => Self::SERIOUS,
@@ -715,7 +715,7 @@ pub enum ContactProperty {
 }
 impl FromVal for ContactProperty {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "address" => Self::ADDRESS,
             "email" => Self::EMAIL,
             "icon" => Self::ICON,
@@ -764,7 +764,7 @@ pub enum ContentCategory {
 }
 impl FromVal for ContentCategory {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "" => Self::NONE,
             "homepage" => Self::HOMEPAGE,
             "article" => Self::ARTICLE,
@@ -811,7 +811,7 @@ pub enum CookieSameSite {
 }
 impl FromVal for CookieSameSite {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "strict" => Self::STRICT,
             "lax" => Self::LAX,
             "none" => Self::NONE,
@@ -853,7 +853,7 @@ pub enum CredentialMediationRequirement {
 }
 impl FromVal for CredentialMediationRequirement {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "silent" => Self::SILENT,
             "optional" => Self::OPTIONAL,
             "conditional" => Self::CONDITIONAL,
@@ -898,7 +898,7 @@ pub enum ScriptingPolicyViolationType {
 }
 impl FromVal for ScriptingPolicyViolationType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "externalScript" => Self::EXTERNAL_SCRIPT,
             "inlineScript" => Self::INLINE_SCRIPT,
             "inlineEventHandler" => Self::INLINE_EVENT_HANDLER,
@@ -943,7 +943,7 @@ pub enum FontFaceLoadStatus {
 }
 impl FromVal for FontFaceLoadStatus {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "unloaded" => Self::UNLOADED,
             "loading" => Self::LOADING,
             "loaded" => Self::LOADED,
@@ -986,7 +986,7 @@ pub enum FontFaceSetLoadStatus {
 }
 impl FromVal for FontFaceSetLoadStatus {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "loading" => Self::LOADING,
             "loaded" => Self::LOADED,
             _ => unreachable!(),
@@ -1024,7 +1024,7 @@ pub enum HighlightType {
 }
 impl FromVal for HighlightType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "highlight" => Self::HIGHLIGHT,
             "spelling-error" => Self::SPELLING_ERROR,
             "grammar-error" => Self::GRAMMAR_ERROR,
@@ -1064,7 +1064,7 @@ pub enum ChildDisplayType {
 }
 impl FromVal for ChildDisplayType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "block" => Self::BLOCK,
             "normal" => Self::NORMAL,
             _ => unreachable!(),
@@ -1101,7 +1101,7 @@ pub enum LayoutSizingMode {
 }
 impl FromVal for LayoutSizingMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "block-like" => Self::BLOCK_LIKE,
             "manual" => Self::MANUAL,
             _ => unreachable!(),
@@ -1140,7 +1140,7 @@ pub enum BlockFragmentationType {
 }
 impl FromVal for BlockFragmentationType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "page" => Self::PAGE,
             "column" => Self::COLUMN,
@@ -1186,7 +1186,7 @@ pub enum BreakType {
 }
 impl FromVal for BreakType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "line" => Self::LINE,
             "column" => Self::COLUMN,
@@ -1234,7 +1234,7 @@ pub enum SpatialNavigationDirection {
 }
 impl FromVal for SpatialNavigationDirection {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "up" => Self::UP,
             "down" => Self::DOWN,
             "left" => Self::LEFT,
@@ -1277,7 +1277,7 @@ pub enum FocusableAreaSearchMode {
 }
 impl FromVal for FocusableAreaSearchMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "visible" => Self::VISIBLE,
             "all" => Self::ALL,
             _ => unreachable!(),
@@ -1319,7 +1319,7 @@ pub enum CSSNumericBaseType {
 }
 impl FromVal for CSSNumericBaseType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "length" => Self::LENGTH,
             "angle" => Self::ANGLE,
             "time" => Self::TIME,
@@ -1376,7 +1376,7 @@ pub enum CSSMathOperator {
 }
 impl FromVal for CSSMathOperator {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "sum" => Self::SUM,
             "product" => Self::PRODUCT,
             "negate" => Self::NEGATE,
@@ -1429,7 +1429,7 @@ pub enum ScrollBehavior {
 }
 impl FromVal for ScrollBehavior {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "auto" => Self::AUTO,
             "instant" => Self::INSTANT,
             "smooth" => Self::SMOOTH,
@@ -1471,7 +1471,7 @@ pub enum ScrollLogicalPosition {
 }
 impl FromVal for ScrollLogicalPosition {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "start" => Self::START,
             "center" => Self::CENTER,
             "end" => Self::END,
@@ -1514,7 +1514,7 @@ pub enum ScrollIntoViewContainer {
 }
 impl FromVal for ScrollIntoViewContainer {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "all" => Self::ALL,
             "nearest" => Self::NEAREST,
             _ => unreachable!(),
@@ -1553,7 +1553,7 @@ pub enum CSSBoxType {
 }
 impl FromVal for CSSBoxType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "margin" => Self::MARGIN,
             "border" => Self::BORDER,
             "padding" => Self::PADDING,
@@ -1596,7 +1596,7 @@ pub enum DevicePostureType {
 }
 impl FromVal for DevicePostureType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "continuous" => Self::CONTINUOUS,
             "folded" => Self::FOLDED,
             _ => unreachable!(),
@@ -1633,7 +1633,7 @@ pub enum ItemType {
 }
 impl FromVal for ItemType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "product" => Self::PRODUCT,
             "subscription" => Self::SUBSCRIPTION,
             _ => unreachable!(),
@@ -1670,7 +1670,7 @@ pub enum ShadowRootMode {
 }
 impl FromVal for ShadowRootMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "open" => Self::OPEN,
             "closed" => Self::CLOSED,
             _ => unreachable!(),
@@ -1707,7 +1707,7 @@ pub enum SlotAssignmentMode {
 }
 impl FromVal for SlotAssignmentMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "manual" => Self::MANUAL,
             "named" => Self::NAMED,
             _ => unreachable!(),
@@ -1747,7 +1747,7 @@ pub enum UnderlineStyle {
 }
 impl FromVal for UnderlineStyle {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "solid" => Self::SOLID,
             "dotted" => Self::DOTTED,
@@ -1794,7 +1794,7 @@ pub enum UnderlineThickness {
 }
 impl FromVal for UnderlineThickness {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "thin" => Self::THIN,
             "thick" => Self::THICK,
@@ -1835,7 +1835,7 @@ pub enum MediaKeysRequirement {
 }
 impl FromVal for MediaKeysRequirement {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "required" => Self::REQUIRED,
             "optional" => Self::OPTIONAL,
             "not-allowed" => Self::NOT_ALLOWED,
@@ -1875,7 +1875,7 @@ pub enum MediaKeySessionType {
 }
 impl FromVal for MediaKeySessionType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "temporary" => Self::TEMPORARY,
             "persistent-license" => Self::PERSISTENT_LICENSE,
             _ => unreachable!(),
@@ -1915,7 +1915,7 @@ pub enum MediaKeySessionClosedReason {
 }
 impl FromVal for MediaKeySessionClosedReason {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "internal-error" => Self::INTERNAL_ERROR,
             "closed-by-application" => Self::CLOSED_BY_APPLICATION,
             "release-acknowledged" => Self::RELEASE_ACKNOWLEDGED,
@@ -1975,7 +1975,7 @@ pub enum MediaKeyStatus {
 }
 impl FromVal for MediaKeyStatus {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "usable" => Self::USABLE,
             "expired" => Self::EXPIRED,
             "released" => Self::RELEASED,
@@ -2032,7 +2032,7 @@ pub enum MediaKeyMessageType {
 }
 impl FromVal for MediaKeyMessageType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "license-request" => Self::LICENSE_REQUEST,
             "license-renewal" => Self::LICENSE_RENEWAL,
             "license-release" => Self::LICENSE_RELEASE,
@@ -2081,7 +2081,7 @@ pub enum IdentityCredentialRequestOptionsContext {
 }
 impl FromVal for IdentityCredentialRequestOptionsContext {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "signin" => Self::SIGNIN,
             "signup" => Self::SIGNUP,
             "use" => Self::USE_,
@@ -2124,7 +2124,7 @@ pub enum IdentityCredentialRequestOptionsMode {
 }
 impl FromVal for IdentityCredentialRequestOptionsMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "active" => Self::ACTIVE,
             "passive" => Self::PASSIVE,
             _ => unreachable!(),
@@ -2160,7 +2160,7 @@ pub enum OpaqueProperty {
 }
 impl FromVal for OpaqueProperty {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "opaque" => Self::OPAQUE,
             _ => unreachable!(),
         }
@@ -2197,7 +2197,7 @@ pub enum FenceReportingDestination {
 }
 impl FromVal for FenceReportingDestination {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "buyer" => Self::BUYER,
             "seller" => Self::SELLER,
             "component-seller" => Self::COMPONENT_SELLER,
@@ -2266,7 +2266,7 @@ pub enum RequestDestination {
 }
 impl FromVal for RequestDestination {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "" => Self::NONE,
             "audio" => Self::AUDIO,
             "audioworklet" => Self::AUDIOWORKLET,
@@ -2362,7 +2362,7 @@ pub enum RequestMode {
 }
 impl FromVal for RequestMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "navigate" => Self::NAVIGATE,
             "same-origin" => Self::SAME_ORIGIN,
             "no-cors" => Self::NO_CORS,
@@ -2406,7 +2406,7 @@ pub enum RequestCredentials {
 }
 impl FromVal for RequestCredentials {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "omit" => Self::OMIT,
             "same-origin" => Self::SAME_ORIGIN,
             "include" => Self::INCLUDE,
@@ -2450,7 +2450,7 @@ pub enum RequestCache {
 }
 impl FromVal for RequestCache {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "default" => Self::DEFAULT,
             "no-store" => Self::NO_STORE,
             "reload" => Self::RELOAD,
@@ -2500,7 +2500,7 @@ pub enum RequestRedirect {
 }
 impl FromVal for RequestRedirect {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "follow" => Self::FOLLOW,
             "error" => Self::ERROR,
             "manual" => Self::MANUAL,
@@ -2539,7 +2539,7 @@ pub enum RequestDuplex {
 }
 impl FromVal for RequestDuplex {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "half" => Self::HALF,
             _ => unreachable!(),
         }
@@ -2574,7 +2574,7 @@ pub enum RequestPriority {
 }
 impl FromVal for RequestPriority {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "high" => Self::HIGH,
             "low" => Self::LOW,
             "auto" => Self::AUTO,
@@ -2618,7 +2618,7 @@ pub enum ResponseType {
 }
 impl FromVal for ResponseType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "basic" => Self::BASIC,
             "cors" => Self::CORS,
             "default" => Self::DEFAULT,
@@ -2667,7 +2667,7 @@ pub enum FileSystemPermissionMode {
 }
 impl FromVal for FileSystemPermissionMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "read" => Self::READ,
             "readwrite" => Self::READWRITE,
             _ => unreachable!(),
@@ -2708,7 +2708,7 @@ pub enum WellKnownDirectory {
 }
 impl FromVal for WellKnownDirectory {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "desktop" => Self::DESKTOP,
             "documents" => Self::DOCUMENTS,
             "downloads" => Self::DOWNLOADS,
@@ -2757,7 +2757,7 @@ pub enum FileSystemHandleKind {
 }
 impl FromVal for FileSystemHandleKind {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "file" => Self::FILE,
             "directory" => Self::DIRECTORY,
             _ => unreachable!(),
@@ -2795,7 +2795,7 @@ pub enum WriteCommandType {
 }
 impl FromVal for WriteCommandType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "write" => Self::WRITE,
             "seek" => Self::SEEK,
             "truncate" => Self::TRUNCATE,
@@ -2836,7 +2836,7 @@ pub enum FullscreenNavigationUI {
 }
 impl FromVal for FullscreenNavigationUI {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "auto" => Self::AUTO,
             "show" => Self::SHOW,
             "hide" => Self::HIDE,
@@ -2877,7 +2877,7 @@ pub enum GamepadHand {
 }
 impl FromVal for GamepadHand {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "" => Self::NONE,
             "left" => Self::LEFT,
             "right" => Self::RIGHT,
@@ -2918,7 +2918,7 @@ pub enum GamepadMappingType {
 }
 impl FromVal for GamepadMappingType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "" => Self::NONE,
             "standard" => Self::STANDARD,
             "xr-standard" => Self::XR_STANDARD,
@@ -2958,7 +2958,7 @@ pub enum GamepadHapticsResult {
 }
 impl FromVal for GamepadHapticsResult {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "complete" => Self::COMPLETE,
             "preempted" => Self::PREEMPTED,
             _ => unreachable!(),
@@ -2995,7 +2995,7 @@ pub enum GamepadHapticEffectType {
 }
 impl FromVal for GamepadHapticEffectType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "dual-rumble" => Self::DUAL_RUMBLE,
             "trigger-rumble" => Self::TRIGGER_RUMBLE,
             _ => unreachable!(),
@@ -3032,7 +3032,7 @@ pub enum GyroscopeLocalCoordinateSystem {
 }
 impl FromVal for GyroscopeLocalCoordinateSystem {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "device" => Self::DEVICE,
             "screen" => Self::SCREEN,
             _ => unreachable!(),
@@ -3069,7 +3069,7 @@ pub enum HandwritingRecognitionType {
 }
 impl FromVal for HandwritingRecognitionType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "text" => Self::TEXT,
             "per-character" => Self::PER_CHARACTER,
             _ => unreachable!(),
@@ -3107,7 +3107,7 @@ pub enum HandwritingInputType {
 }
 impl FromVal for HandwritingInputType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "mouse" => Self::MOUSE,
             "stylus" => Self::STYLUS,
             "touch" => Self::TOUCH,
@@ -3148,7 +3148,7 @@ pub enum DocumentReadyState {
 }
 impl FromVal for DocumentReadyState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "loading" => Self::LOADING,
             "interactive" => Self::INTERACTIVE,
             "complete" => Self::COMPLETE,
@@ -3188,7 +3188,7 @@ pub enum DocumentVisibilityState {
 }
 impl FromVal for DocumentVisibilityState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "visible" => Self::VISIBLE,
             "hidden" => Self::HIDDEN,
             _ => unreachable!(),
@@ -3226,7 +3226,7 @@ pub enum CanPlayTypeResult {
 }
 impl FromVal for CanPlayTypeResult {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "" => Self::NONE,
             "maybe" => Self::MAYBE,
             "probably" => Self::PROBABLY,
@@ -3267,7 +3267,7 @@ pub enum TextTrackMode {
 }
 impl FromVal for TextTrackMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "disabled" => Self::DISABLED,
             "hidden" => Self::HIDDEN,
             "showing" => Self::SHOWING,
@@ -3310,7 +3310,7 @@ pub enum TextTrackKind {
 }
 impl FromVal for TextTrackKind {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "subtitles" => Self::SUBTITLES,
             "captions" => Self::CAPTIONS,
             "descriptions" => Self::DESCRIPTIONS,
@@ -3358,7 +3358,7 @@ pub enum SelectionMode {
 }
 impl FromVal for SelectionMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "select" => Self::SELECT,
             "start" => Self::START,
             "end" => Self::END,
@@ -3401,7 +3401,7 @@ pub enum PredefinedColorSpace {
 }
 impl FromVal for PredefinedColorSpace {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "srgb" => Self::SRGB,
             "display-p3" => Self::DISPLAY_P3,
             _ => unreachable!(),
@@ -3438,7 +3438,7 @@ pub enum CanvasColorType {
 }
 impl FromVal for CanvasColorType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "unorm8" => Self::UNORM8,
             "float16" => Self::FLOAT16,
             _ => unreachable!(),
@@ -3475,7 +3475,7 @@ pub enum CanvasFillRule {
 }
 impl FromVal for CanvasFillRule {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "nonzero" => Self::NONZERO,
             "evenodd" => Self::EVENODD,
             _ => unreachable!(),
@@ -3513,7 +3513,7 @@ pub enum ImageSmoothingQuality {
 }
 impl FromVal for ImageSmoothingQuality {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "low" => Self::LOW,
             "medium" => Self::MEDIUM,
             "high" => Self::HIGH,
@@ -3554,7 +3554,7 @@ pub enum CanvasLineCap {
 }
 impl FromVal for CanvasLineCap {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "butt" => Self::BUTT,
             "round" => Self::ROUND,
             "square" => Self::SQUARE,
@@ -3595,7 +3595,7 @@ pub enum CanvasLineJoin {
 }
 impl FromVal for CanvasLineJoin {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "round" => Self::ROUND,
             "bevel" => Self::BEVEL,
             "miter" => Self::MITER,
@@ -3638,7 +3638,7 @@ pub enum CanvasTextAlign {
 }
 impl FromVal for CanvasTextAlign {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "start" => Self::START,
             "end" => Self::END,
             "left" => Self::LEFT,
@@ -3688,7 +3688,7 @@ pub enum CanvasTextBaseline {
 }
 impl FromVal for CanvasTextBaseline {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "top" => Self::TOP,
             "hanging" => Self::HANGING,
             "middle" => Self::MIDDLE,
@@ -3738,7 +3738,7 @@ pub enum CanvasDirection {
 }
 impl FromVal for CanvasDirection {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "ltr" => Self::LTR,
             "rtl" => Self::RTL,
             "inherit" => Self::INHERIT,
@@ -3779,7 +3779,7 @@ pub enum CanvasFontKerning {
 }
 impl FromVal for CanvasFontKerning {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "auto" => Self::AUTO,
             "normal" => Self::NORMAL,
             "none" => Self::NONE,
@@ -3826,7 +3826,7 @@ pub enum CanvasFontStretch {
 }
 impl FromVal for CanvasFontStretch {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "ultra-condensed" => Self::ULTRA_CONDENSED,
             "extra-condensed" => Self::EXTRA_CONDENSED,
             "condensed" => Self::CONDENSED,
@@ -3889,7 +3889,7 @@ pub enum CanvasFontVariantCaps {
 }
 impl FromVal for CanvasFontVariantCaps {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "normal" => Self::NORMAL,
             "small-caps" => Self::SMALL_CAPS,
             "all-small-caps" => Self::ALL_SMALL_CAPS,
@@ -3943,7 +3943,7 @@ pub enum CanvasTextRendering {
 }
 impl FromVal for CanvasTextRendering {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "auto" => Self::AUTO,
             "optimizeSpeed" => Self::OPTIMIZE_SPEED,
             "optimizeLegibility" => Self::OPTIMIZE_LEGIBILITY,
@@ -3989,7 +3989,7 @@ pub enum OffscreenRenderingContextId {
 }
 impl FromVal for OffscreenRenderingContextId {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "2d" => Self::_2D,
             "bitmaprenderer" => Self::BITMAPRENDERER,
             "webgl" => Self::WEBGL,
@@ -4035,7 +4035,7 @@ pub enum ScrollRestoration {
 }
 impl FromVal for ScrollRestoration {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "auto" => Self::AUTO,
             "manual" => Self::MANUAL,
             _ => unreachable!(),
@@ -4073,7 +4073,7 @@ pub enum NavigationHistoryBehavior {
 }
 impl FromVal for NavigationHistoryBehavior {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "auto" => Self::AUTO,
             "push" => Self::PUSH,
             "replace" => Self::REPLACE,
@@ -4115,7 +4115,7 @@ pub enum NavigationType {
 }
 impl FromVal for NavigationType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "push" => Self::PUSH,
             "replace" => Self::REPLACE,
             "reload" => Self::RELOAD,
@@ -4158,7 +4158,7 @@ pub enum NavigationFocusReset {
 }
 impl FromVal for NavigationFocusReset {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "after-transition" => Self::AFTER_TRANSITION,
             "manual" => Self::MANUAL,
             _ => unreachable!(),
@@ -4195,7 +4195,7 @@ pub enum NavigationScrollBehavior {
 }
 impl FromVal for NavigationScrollBehavior {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "after-transition" => Self::AFTER_TRANSITION,
             "manual" => Self::MANUAL,
             _ => unreachable!(),
@@ -4235,7 +4235,7 @@ pub enum DOMParserSupportedType {
 }
 impl FromVal for DOMParserSupportedType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "text/html" => Self::TEXT_HTML,
             "text/xml" => Self::TEXT_XML,
             "application/xml" => Self::APPLICATION_XML,
@@ -4281,7 +4281,7 @@ pub enum ImageDataPixelFormat {
 }
 impl FromVal for ImageDataPixelFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "rgba-unorm8" => Self::RGBA_UNORM8,
             "rgba-float16" => Self::RGBA_FLOAT16,
             _ => unreachable!(),
@@ -4318,7 +4318,7 @@ pub enum ImageOrientation {
 }
 impl FromVal for ImageOrientation {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "from-image" => Self::FROM_IMAGE,
             "flipY" => Self::FLIP_Y,
             _ => unreachable!(),
@@ -4356,7 +4356,7 @@ pub enum PremultiplyAlpha {
 }
 impl FromVal for PremultiplyAlpha {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "premultiply" => Self::PREMULTIPLY,
             "default" => Self::DEFAULT,
@@ -4396,7 +4396,7 @@ pub enum ColorSpaceConversion {
 }
 impl FromVal for ColorSpaceConversion {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "default" => Self::DEFAULT,
             _ => unreachable!(),
@@ -4435,7 +4435,7 @@ pub enum ResizeQuality {
 }
 impl FromVal for ResizeQuality {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "pixelated" => Self::PIXELATED,
             "low" => Self::LOW,
             "medium" => Self::MEDIUM,
@@ -4478,7 +4478,7 @@ pub enum WorkerType {
 }
 impl FromVal for WorkerType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "classic" => Self::CLASSIC,
             "module" => Self::MODULE,
             _ => unreachable!(),
@@ -4515,7 +4515,7 @@ pub enum UserIdleState {
 }
 impl FromVal for UserIdleState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "active" => Self::ACTIVE,
             "idle" => Self::IDLE,
             _ => unreachable!(),
@@ -4552,7 +4552,7 @@ pub enum ScreenIdleState {
 }
 impl FromVal for ScreenIdleState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "locked" => Self::LOCKED,
             "unlocked" => Self::UNLOCKED,
             _ => unreachable!(),
@@ -4590,7 +4590,7 @@ pub enum RedEyeReduction {
 }
 impl FromVal for RedEyeReduction {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "never" => Self::NEVER,
             "always" => Self::ALWAYS,
             "controllable" => Self::CONTROLLABLE,
@@ -4631,7 +4631,7 @@ pub enum FillLightMode {
 }
 impl FromVal for FillLightMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "auto" => Self::AUTO,
             "off" => Self::OFF,
             "flash" => Self::FLASH,
@@ -4673,7 +4673,7 @@ pub enum MeteringMode {
 }
 impl FromVal for MeteringMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "manual" => Self::MANUAL,
             "single-shot" => Self::SINGLE_SHOT,
@@ -4716,7 +4716,7 @@ pub enum LoginStatus {
 }
 impl FromVal for LoginStatus {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "logged-in" => Self::LOGGED_IN,
             "logged-out" => Self::LOGGED_OUT,
             _ => unreachable!(),
@@ -4757,7 +4757,7 @@ pub enum ScriptInvokerType {
 }
 impl FromVal for ScriptInvokerType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "classic-script" => Self::CLASSIC_SCRIPT,
             "module-script" => Self::MODULE_SCRIPT,
             "event-listener" => Self::EVENT_LISTENER,
@@ -4809,7 +4809,7 @@ pub enum ScriptWindowAttribution {
 }
 impl FromVal for ScriptWindowAttribution {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "self" => Self::SELF_,
             "descendant" => Self::DESCENDANT,
             "ancestor" => Self::ANCESTOR,
@@ -4855,7 +4855,7 @@ pub enum MagnetometerLocalCoordinateSystem {
 }
 impl FromVal for MagnetometerLocalCoordinateSystem {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "device" => Self::DEVICE,
             "screen" => Self::SCREEN,
             _ => unreachable!(),
@@ -4892,7 +4892,7 @@ pub enum AppBannerPromptOutcome {
 }
 impl FromVal for AppBannerPromptOutcome {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "accepted" => Self::ACCEPTED,
             "dismissed" => Self::DISMISSED,
             _ => unreachable!(),
@@ -4930,7 +4930,7 @@ pub enum MediaDecodingType {
 }
 impl FromVal for MediaDecodingType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "file" => Self::FILE,
             "media-source" => Self::MEDIA_SOURCE,
             "webrtc" => Self::WEBRTC,
@@ -4970,7 +4970,7 @@ pub enum MediaEncodingType {
 }
 impl FromVal for MediaEncodingType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "record" => Self::RECORD,
             "webrtc" => Self::WEBRTC,
             _ => unreachable!(),
@@ -5008,7 +5008,7 @@ pub enum HdrMetadataType {
 }
 impl FromVal for HdrMetadataType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "smpteSt2086" => Self::SMPTE_ST2086,
             "smpteSt2094-10" => Self::SMPTE_ST2094_10,
             "smpteSt2094-40" => Self::SMPTE_ST2094_40,
@@ -5049,7 +5049,7 @@ pub enum ColorGamut {
 }
 impl FromVal for ColorGamut {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "srgb" => Self::SRGB,
             "p3" => Self::P3,
             "rec2020" => Self::REC2020,
@@ -5090,7 +5090,7 @@ pub enum TransferFunction {
 }
 impl FromVal for TransferFunction {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "srgb" => Self::SRGB,
             "pq" => Self::PQ,
             "hlg" => Self::HLG,
@@ -5131,7 +5131,7 @@ pub enum ReadyState {
 }
 impl FromVal for ReadyState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "closed" => Self::CLOSED,
             "open" => Self::OPEN,
             "ended" => Self::ENDED,
@@ -5171,7 +5171,7 @@ pub enum EndOfStreamError {
 }
 impl FromVal for EndOfStreamError {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "network" => Self::NETWORK,
             "decode" => Self::DECODE,
             _ => unreachable!(),
@@ -5208,7 +5208,7 @@ pub enum AppendMode {
 }
 impl FromVal for AppendMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "segments" => Self::SEGMENTS,
             "sequence" => Self::SEQUENCE,
             _ => unreachable!(),
@@ -5245,7 +5245,7 @@ pub enum MockCapturePromptResult {
 }
 impl FromVal for MockCapturePromptResult {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "granted" => Self::GRANTED,
             "denied" => Self::DENIED,
             _ => unreachable!(),
@@ -5284,7 +5284,7 @@ pub enum CaptureAction {
 }
 impl FromVal for CaptureAction {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "next" => Self::NEXT,
             "previous" => Self::PREVIOUS,
             "first" => Self::FIRST,
@@ -5327,7 +5327,7 @@ pub enum MediaStreamTrackState {
 }
 impl FromVal for MediaStreamTrackState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "live" => Self::LIVE,
             "ended" => Self::ENDED,
             _ => unreachable!(),
@@ -5366,7 +5366,7 @@ pub enum VideoFacingModeEnum {
 }
 impl FromVal for VideoFacingModeEnum {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "user" => Self::USER,
             "environment" => Self::ENVIRONMENT,
             "left" => Self::LEFT,
@@ -5409,7 +5409,7 @@ pub enum VideoResizeModeEnum {
 }
 impl FromVal for VideoResizeModeEnum {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "crop-and-scale" => Self::CROP_AND_SCALE,
             _ => unreachable!(),
@@ -5446,7 +5446,7 @@ pub enum EchoCancellationModeEnum {
 }
 impl FromVal for EchoCancellationModeEnum {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "all" => Self::ALL,
             "remote-only" => Self::REMOTE_ONLY,
             _ => unreachable!(),
@@ -5484,7 +5484,7 @@ pub enum MediaDeviceKind {
 }
 impl FromVal for MediaDeviceKind {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "audioinput" => Self::AUDIOINPUT,
             "audiooutput" => Self::AUDIOOUTPUT,
             "videoinput" => Self::VIDEOINPUT,
@@ -5525,7 +5525,7 @@ pub enum MediaSessionPlaybackState {
 }
 impl FromVal for MediaSessionPlaybackState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "paused" => Self::PAUSED,
             "playing" => Self::PLAYING,
@@ -5580,7 +5580,7 @@ pub enum MediaSessionAction {
 }
 impl FromVal for MediaSessionAction {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "play" => Self::PLAY,
             "pause" => Self::PAUSE,
             "seekbackward" => Self::SEEKBACKWARD,
@@ -5662,7 +5662,7 @@ pub enum BitrateMode {
 }
 impl FromVal for BitrateMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "constant" => Self::CONSTANT,
             "variable" => Self::VARIABLE,
             _ => unreachable!(),
@@ -5700,7 +5700,7 @@ pub enum RecordingState {
 }
 impl FromVal for RecordingState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "inactive" => Self::INACTIVE,
             "recording" => Self::RECORDING,
             "paused" => Self::PAUSED,
@@ -5741,7 +5741,7 @@ pub enum RTCDegradationPreference {
 }
 impl FromVal for RTCDegradationPreference {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "maintain-framerate" => Self::MAINTAIN_FRAMERATE,
             "maintain-resolution" => Self::MAINTAIN_RESOLUTION,
             "balanced" => Self::BALANCED,
@@ -5783,7 +5783,7 @@ pub enum NavigationTimingType {
 }
 impl FromVal for NavigationTimingType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "navigate" => Self::NAVIGATE,
             "reload" => Self::RELOAD,
             "back_forward" => Self::BACK_FORWARD,
@@ -5833,7 +5833,7 @@ pub enum ConnectionType {
 }
 impl FromVal for ConnectionType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "bluetooth" => Self::BLUETOOTH,
             "cellular" => Self::CELLULAR,
             "ethernet" => Self::ETHERNET,
@@ -5893,7 +5893,7 @@ pub enum EffectiveConnectionType {
 }
 impl FromVal for EffectiveConnectionType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "2g" => Self::_2G,
             "3g" => Self::_3G,
             "4g" => Self::_4G,
@@ -5937,7 +5937,7 @@ pub enum NotificationPermission {
 }
 impl FromVal for NotificationPermission {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "default" => Self::DEFAULT,
             "denied" => Self::DENIED,
             "granted" => Self::GRANTED,
@@ -5978,7 +5978,7 @@ pub enum NotificationDirection {
 }
 impl FromVal for NotificationDirection {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "auto" => Self::AUTO,
             "ltr" => Self::LTR,
             "rtl" => Self::RTL,
@@ -6018,7 +6018,7 @@ pub enum OrientationSensorLocalCoordinateSystem {
 }
 impl FromVal for OrientationSensorLocalCoordinateSystem {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "device" => Self::DEVICE,
             "screen" => Self::SCREEN,
             _ => unreachable!(),
@@ -6055,7 +6055,7 @@ pub enum ClientLifecycleState {
 }
 impl FromVal for ClientLifecycleState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "active" => Self::ACTIVE,
             "frozen" => Self::FROZEN,
             _ => unreachable!(),
@@ -6094,7 +6094,7 @@ pub enum PaymentDelegation {
 }
 impl FromVal for PaymentDelegation {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "shippingAddress" => Self::SHIPPING_ADDRESS,
             "payerName" => Self::PAYER_NAME,
             "payerPhone" => Self::PAYER_PHONE,
@@ -6138,7 +6138,7 @@ pub enum PaymentShippingType {
 }
 impl FromVal for PaymentShippingType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "shipping" => Self::SHIPPING,
             "delivery" => Self::DELIVERY,
             "pickup" => Self::PICKUP,
@@ -6179,7 +6179,7 @@ pub enum PaymentComplete {
 }
 impl FromVal for PaymentComplete {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "fail" => Self::FAIL,
             "success" => Self::SUCCESS,
             "unknown" => Self::UNKNOWN,
@@ -6220,7 +6220,7 @@ pub enum PermissionState {
 }
 impl FromVal for PermissionState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "granted" => Self::GRANTED,
             "denied" => Self::DENIED,
             "prompt" => Self::PROMPT,
@@ -6262,7 +6262,7 @@ pub enum PointerAxis {
 }
 impl FromVal for PointerAxis {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "block" => Self::BLOCK,
             "inline" => Self::INLINE,
             "x" => Self::X,
@@ -6307,7 +6307,7 @@ pub enum PresentationConnectionState {
 }
 impl FromVal for PresentationConnectionState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "connecting" => Self::CONNECTING,
             "connected" => Self::CONNECTED,
             "closed" => Self::CLOSED,
@@ -6351,7 +6351,7 @@ pub enum PresentationConnectionCloseReason {
 }
 impl FromVal for PresentationConnectionCloseReason {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "error" => Self::ERROR,
             "closed" => Self::CLOSED,
             "wentaway" => Self::WENTAWAY,
@@ -6391,7 +6391,7 @@ pub enum PrivateAttributionAggregationProtocol {
 }
 impl FromVal for PrivateAttributionAggregationProtocol {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "dap-12-histogram" => Self::DAP_12_HISTOGRAM,
             "tee-00" => Self::TEE_00,
             _ => unreachable!(),
@@ -6431,7 +6431,7 @@ pub enum AttributionLogic {
 }
 impl FromVal for AttributionLogic {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "last-touch" => Self::LAST_TOUCH,
             _ => unreachable!(),
         }
@@ -6466,7 +6466,7 @@ pub enum IPAddressSpace {
 }
 impl FromVal for IPAddressSpace {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "public" => Self::PUBLIC,
             "private" => Self::PRIVATE,
             "local" => Self::LOCAL,
@@ -6506,7 +6506,7 @@ pub enum PushEncryptionKeyName {
 }
 impl FromVal for PushEncryptionKeyName {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "p256dh" => Self::P256DH,
             "auth" => Self::AUTH,
             _ => unreachable!(),
@@ -6550,7 +6550,7 @@ pub enum ReferrerPolicy {
 }
 impl FromVal for ReferrerPolicy {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "" => Self::NONE,
             "no-referrer" => Self::NO_REFERRER,
             "no-referrer-when-downgrade" => Self::NO_REFERRER_WHEN_DOWNGRADE,
@@ -6613,7 +6613,7 @@ pub enum RemotePlaybackState {
 }
 impl FromVal for RemotePlaybackState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "connecting" => Self::CONNECTING,
             "connected" => Self::CONNECTED,
             "disconnected" => Self::DISCONNECTED,
@@ -6654,7 +6654,7 @@ pub enum ResizeObserverBoxOptions {
 }
 impl FromVal for ResizeObserverBoxOptions {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "border-box" => Self::BORDER_BOX,
             "content-box" => Self::CONTENT_BOX,
             "device-pixel-content-box" => Self::DEVICE_PIXEL_CONTENT_BOX,
@@ -6698,7 +6698,7 @@ pub enum RenderBlockingStatusType {
 }
 impl FromVal for RenderBlockingStatusType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "blocking" => Self::BLOCKING,
             "non-blocking" => Self::NON_BLOCKING,
             _ => unreachable!(),
@@ -6735,7 +6735,7 @@ pub enum SameSiteCookiesType {
 }
 impl FromVal for SameSiteCookiesType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "all" => Self::ALL,
             "none" => Self::NONE,
             _ => unreachable!(),
@@ -6771,7 +6771,7 @@ pub enum SanitizerPresets {
 }
 impl FromVal for SanitizerPresets {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "default" => Self::DEFAULT,
             _ => unreachable!(),
         }
@@ -6806,7 +6806,7 @@ pub enum TaskPriority {
 }
 impl FromVal for TaskPriority {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "user-blocking" => Self::USER_BLOCKING,
             "user-visible" => Self::USER_VISIBLE,
             "background" => Self::BACKGROUND,
@@ -6847,7 +6847,7 @@ pub enum CaptureStartFocusBehavior {
 }
 impl FromVal for CaptureStartFocusBehavior {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "focus-capturing-application" => Self::FOCUS_CAPTURING_APPLICATION,
             "focus-captured-surface" => Self::FOCUS_CAPTURED_SURFACE,
             "no-focus-change" => Self::NO_FOCUS_CHANGE,
@@ -6895,7 +6895,7 @@ pub enum SelfCapturePreferenceEnum {
 }
 impl FromVal for SelfCapturePreferenceEnum {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "include" => Self::INCLUDE,
             "exclude" => Self::EXCLUDE,
             _ => unreachable!(),
@@ -6932,7 +6932,7 @@ pub enum SystemAudioPreferenceEnum {
 }
 impl FromVal for SystemAudioPreferenceEnum {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "include" => Self::INCLUDE,
             "exclude" => Self::EXCLUDE,
             _ => unreachable!(),
@@ -6970,7 +6970,7 @@ pub enum WindowAudioPreferenceEnum {
 }
 impl FromVal for WindowAudioPreferenceEnum {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "system" => Self::SYSTEM,
             "window" => Self::WINDOW,
             "exclude" => Self::EXCLUDE,
@@ -7010,7 +7010,7 @@ pub enum SurfaceSwitchingPreferenceEnum {
 }
 impl FromVal for SurfaceSwitchingPreferenceEnum {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "include" => Self::INCLUDE,
             "exclude" => Self::EXCLUDE,
             _ => unreachable!(),
@@ -7047,7 +7047,7 @@ pub enum MonitorTypeSurfacesEnum {
 }
 impl FromVal for MonitorTypeSurfacesEnum {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "include" => Self::INCLUDE,
             "exclude" => Self::EXCLUDE,
             _ => unreachable!(),
@@ -7085,7 +7085,7 @@ pub enum DisplayCaptureSurfaceType {
 }
 impl FromVal for DisplayCaptureSurfaceType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "monitor" => Self::MONITOR,
             "window" => Self::WINDOW,
             "browser" => Self::BROWSER,
@@ -7126,7 +7126,7 @@ pub enum CursorCaptureConstraint {
 }
 impl FromVal for CursorCaptureConstraint {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "never" => Self::NEVER,
             "always" => Self::ALWAYS,
             "motion" => Self::MOTION,
@@ -7172,7 +7172,7 @@ pub enum OrientationLockType {
 }
 impl FromVal for OrientationLockType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "any" => Self::ANY,
             "natural" => Self::NATURAL,
             "landscape" => Self::LANDSCAPE,
@@ -7229,7 +7229,7 @@ pub enum OrientationType {
 }
 impl FromVal for OrientationType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "portrait-primary" => Self::PORTRAIT_PRIMARY,
             "portrait-secondary" => Self::PORTRAIT_SECONDARY,
             "landscape-primary" => Self::LANDSCAPE_PRIMARY,
@@ -7271,7 +7271,7 @@ pub enum WakeLockType {
 }
 impl FromVal for WakeLockType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "screen" => Self::SCREEN,
             _ => unreachable!(),
         }
@@ -7307,7 +7307,7 @@ pub enum ScrollAxis {
 }
 impl FromVal for ScrollAxis {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "block" => Self::BLOCK,
             "inline" => Self::INLINE,
             "x" => Self::X,
@@ -7353,7 +7353,7 @@ pub enum SecurePaymentConfirmationAvailability {
 }
 impl FromVal for SecurePaymentConfirmationAvailability {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "available" => Self::AVAILABLE,
             "unavailable-unknown-reason" => Self::UNAVAILABLE_UNKNOWN_REASON,
             "unavailable-feature-not-enabled" => Self::UNAVAILABLE_FEATURE_NOT_ENABLED,
@@ -7402,7 +7402,7 @@ pub enum ParityType {
 }
 impl FromVal for ParityType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "even" => Self::EVEN,
             "odd" => Self::ODD,
@@ -7442,7 +7442,7 @@ pub enum FlowControlType {
 }
 impl FromVal for FlowControlType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "hardware" => Self::HARDWARE,
             _ => unreachable!(),
@@ -7483,7 +7483,7 @@ pub enum ServiceWorkerState {
 }
 impl FromVal for ServiceWorkerState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "parsed" => Self::PARSED,
             "installing" => Self::INSTALLING,
             "installed" => Self::INSTALLED,
@@ -7533,7 +7533,7 @@ pub enum ServiceWorkerUpdateViaCache {
 }
 impl FromVal for ServiceWorkerUpdateViaCache {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "imports" => Self::IMPORTS,
             "all" => Self::ALL,
             "none" => Self::NONE,
@@ -7575,7 +7575,7 @@ pub enum FrameType {
 }
 impl FromVal for FrameType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "auxiliary" => Self::AUXILIARY,
             "top-level" => Self::TOP_LEVEL,
             "nested" => Self::NESTED,
@@ -7620,7 +7620,7 @@ pub enum ClientType {
 }
 impl FromVal for ClientType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "window" => Self::WINDOW,
             "worker" => Self::WORKER,
             "sharedworker" => Self::SHAREDWORKER,
@@ -7663,7 +7663,7 @@ pub enum RunningStatus {
 }
 impl FromVal for RunningStatus {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "running" => Self::RUNNING,
             "not-running" => Self::NOT_RUNNING,
             _ => unreachable!(),
@@ -7702,7 +7702,7 @@ pub enum RouterSourceEnum {
 }
 impl FromVal for RouterSourceEnum {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "cache" => Self::CACHE,
             "fetch-event" => Self::FETCH_EVENT,
             "network" => Self::NETWORK,
@@ -7750,7 +7750,7 @@ pub enum LandmarkType {
 }
 impl FromVal for LandmarkType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "mouth" => Self::MOUTH,
             "eye" => Self::EYE,
             "nose" => Self::NOSE,
@@ -7802,7 +7802,7 @@ pub enum BarcodeFormat {
 }
 impl FromVal for BarcodeFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "aztec" => Self::AZTEC,
             "code_128" => Self::CODE_128,
             "code_39" => Self::CODE_39,
@@ -7881,7 +7881,7 @@ pub enum SpeechRecognitionErrorCode {
 }
 impl FromVal for SpeechRecognitionErrorCode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "no-speech" => Self::NO_SPEECH,
             "aborted" => Self::ABORTED,
             "audio-capture" => Self::AUDIO_CAPTURE,
@@ -7942,7 +7942,7 @@ pub enum AvailabilityStatus {
 }
 impl FromVal for AvailabilityStatus {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "unavailable" => Self::UNAVAILABLE,
             "downloadable" => Self::DOWNLOADABLE,
             "downloading" => Self::DOWNLOADING,
@@ -7995,7 +7995,7 @@ pub enum SpeechSynthesisErrorCode {
 }
 impl FromVal for SpeechSynthesisErrorCode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "canceled" => Self::CANCELED,
             "interrupted" => Self::INTERRUPTED,
             "audio-busy" => Self::AUDIO_BUSY,
@@ -8061,7 +8061,7 @@ pub enum ReadableStreamReaderMode {
 }
 impl FromVal for ReadableStreamReaderMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "byob" => Self::BYOB,
             _ => unreachable!(),
         }
@@ -8094,7 +8094,7 @@ pub enum ReadableStreamType {
 }
 impl FromVal for ReadableStreamType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "bytes" => Self::BYTES,
             _ => unreachable!(),
         }
@@ -8128,7 +8128,7 @@ pub enum TouchType {
 }
 impl FromVal for TouchType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "direct" => Self::DIRECT,
             "stylus" => Self::STYLUS,
             _ => unreachable!(),
@@ -8165,7 +8165,7 @@ pub enum RefreshPolicy {
 }
 impl FromVal for RefreshPolicy {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "refresh" => Self::REFRESH,
             _ => unreachable!(),
@@ -8201,7 +8201,7 @@ pub enum TokenVersion {
 }
 impl FromVal for TokenVersion {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "1" => Self::_1,
             _ => unreachable!(),
         }
@@ -8236,7 +8236,7 @@ pub enum OperationType {
 }
 impl FromVal for OperationType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "token-request" => Self::TOKEN_REQUEST,
             "send-redemption-record" => Self::SEND_REDEMPTION_RECORD,
             "token-redemption" => Self::TOKEN_REDEMPTION,
@@ -8278,7 +8278,7 @@ pub enum KAnonStatus {
 }
 impl FromVal for KAnonStatus {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "passedAndEnforced" => Self::PASSED_AND_ENFORCED,
             "passedNotEnforced" => Self::PASSED_NOT_ENFORCED,
             "belowThreshold" => Self::BELOW_THRESHOLD,
@@ -8323,7 +8323,7 @@ pub enum ImportExportKind {
 }
 impl FromVal for ImportExportKind {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "function" => Self::FUNCTION,
             "table" => Self::TABLE,
             "memory" => Self::MEMORY,
@@ -8366,7 +8366,7 @@ pub enum TableKind {
 }
 impl FromVal for TableKind {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "externref" => Self::EXTERNREF,
             "anyfunc" => Self::ANYFUNC,
             _ => unreachable!(),
@@ -8408,7 +8408,7 @@ pub enum ValueType {
 }
 impl FromVal for ValueType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "i32" => Self::I32_,
             "i64" => Self::I64_,
             "f32" => Self::F32_,
@@ -8460,7 +8460,7 @@ pub enum IterationCompositeOperation {
 }
 impl FromVal for IterationCompositeOperation {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "replace" => Self::REPLACE,
             "accumulate" => Self::ACCUMULATE,
             _ => unreachable!(),
@@ -8499,7 +8499,7 @@ pub enum AnimationTriggerBehavior {
 }
 impl FromVal for AnimationTriggerBehavior {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "once" => Self::ONCE,
             "repeat" => Self::REPEAT,
             "alternate" => Self::ALTERNATE,
@@ -8544,7 +8544,7 @@ pub enum AnimationPlayState {
 }
 impl FromVal for AnimationPlayState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "idle" => Self::IDLE,
             "running" => Self::RUNNING,
             "paused" => Self::PAUSED,
@@ -8588,7 +8588,7 @@ pub enum AnimationReplaceState {
 }
 impl FromVal for AnimationReplaceState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "active" => Self::ACTIVE,
             "removed" => Self::REMOVED,
             "persisted" => Self::PERSISTED,
@@ -8631,7 +8631,7 @@ pub enum FillMode {
 }
 impl FromVal for FillMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "forwards" => Self::FORWARDS,
             "backwards" => Self::BACKWARDS,
@@ -8679,7 +8679,7 @@ pub enum PlaybackDirection {
 }
 impl FromVal for PlaybackDirection {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "normal" => Self::NORMAL,
             "reverse" => Self::REVERSE,
             "alternate" => Self::ALTERNATE,
@@ -8723,7 +8723,7 @@ pub enum CompositeOperation {
 }
 impl FromVal for CompositeOperation {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "replace" => Self::REPLACE,
             "add" => Self::ADD,
             "accumulate" => Self::ACCUMULATE,
@@ -8765,7 +8765,7 @@ pub enum CompositeOperationOrAuto {
 }
 impl FromVal for CompositeOperationOrAuto {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "replace" => Self::REPLACE,
             "add" => Self::ADD,
             "accumulate" => Self::ACCUMULATE,
@@ -8808,7 +8808,7 @@ pub enum LockMode {
 }
 impl FromVal for LockMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "shared" => Self::SHARED,
             "exclusive" => Self::EXCLUSIVE,
             _ => unreachable!(),
@@ -8844,7 +8844,7 @@ pub enum OTPCredentialTransportType {
 }
 impl FromVal for OTPCredentialTransportType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "sms" => Self::SMS,
             _ => unreachable!(),
         }
@@ -8880,7 +8880,7 @@ pub enum AudioContextState {
 }
 impl FromVal for AudioContextState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "suspended" => Self::SUSPENDED,
             "running" => Self::RUNNING,
             "closed" => Self::CLOSED,
@@ -8923,7 +8923,7 @@ pub enum AudioContextRenderSizeCategory {
 }
 impl FromVal for AudioContextRenderSizeCategory {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "default" => Self::DEFAULT,
             "hardware" => Self::HARDWARE,
             _ => unreachable!(),
@@ -8961,7 +8961,7 @@ pub enum AudioContextLatencyCategory {
 }
 impl FromVal for AudioContextLatencyCategory {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "balanced" => Self::BALANCED,
             "interactive" => Self::INTERACTIVE,
             "playback" => Self::PLAYBACK,
@@ -9000,7 +9000,7 @@ pub enum AudioSinkType {
 }
 impl FromVal for AudioSinkType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             _ => unreachable!(),
         }
@@ -9035,7 +9035,7 @@ pub enum ChannelCountMode {
 }
 impl FromVal for ChannelCountMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "max" => Self::MAX,
             "clamped-max" => Self::CLAMPED_MAX,
             "explicit" => Self::EXPLICIT,
@@ -9075,7 +9075,7 @@ pub enum ChannelInterpretation {
 }
 impl FromVal for ChannelInterpretation {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "speakers" => Self::SPEAKERS,
             "discrete" => Self::DISCRETE,
             _ => unreachable!(),
@@ -9112,7 +9112,7 @@ pub enum AutomationRate {
 }
 impl FromVal for AutomationRate {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "a-rate" => Self::A_RATE,
             "k-rate" => Self::K_RATE,
             _ => unreachable!(),
@@ -9155,7 +9155,7 @@ pub enum BiquadFilterType {
 }
 impl FromVal for BiquadFilterType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "lowpass" => Self::LOWPASS,
             "highpass" => Self::HIGHPASS,
             "bandpass" => Self::BANDPASS,
@@ -9213,7 +9213,7 @@ pub enum OscillatorType {
 }
 impl FromVal for OscillatorType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "sine" => Self::SINE,
             "square" => Self::SQUARE,
             "sawtooth" => Self::SAWTOOTH,
@@ -9259,7 +9259,7 @@ pub enum PanningModelType {
 }
 impl FromVal for PanningModelType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "equalpower" => Self::EQUALPOWER,
             "HRTF" => Self::HRTF,
             _ => unreachable!(),
@@ -9297,7 +9297,7 @@ pub enum DistanceModelType {
 }
 impl FromVal for DistanceModelType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "linear" => Self::LINEAR,
             "inverse" => Self::INVERSE,
             "exponential" => Self::EXPONENTIAL,
@@ -9338,7 +9338,7 @@ pub enum OverSampleType {
 }
 impl FromVal for OverSampleType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "2x" => Self::_2X,
             "4x" => Self::_4X,
@@ -9378,7 +9378,7 @@ pub enum AuthenticatorAttachment {
 }
 impl FromVal for AuthenticatorAttachment {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "platform" => Self::PLATFORM,
             "cross-platform" => Self::CROSS_PLATFORM,
             _ => unreachable!(),
@@ -9416,7 +9416,7 @@ pub enum ResidentKeyRequirement {
 }
 impl FromVal for ResidentKeyRequirement {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "discouraged" => Self::DISCOURAGED,
             "preferred" => Self::PREFERRED,
             "required" => Self::REQUIRED,
@@ -9458,7 +9458,7 @@ pub enum AttestationConveyancePreference {
 }
 impl FromVal for AttestationConveyancePreference {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "indirect" => Self::INDIRECT,
             "direct" => Self::DIRECT,
@@ -9501,7 +9501,7 @@ pub enum TokenBindingStatus {
 }
 impl FromVal for TokenBindingStatus {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "present" => Self::PRESENT,
             "supported" => Self::SUPPORTED,
             _ => unreachable!(),
@@ -9537,7 +9537,7 @@ pub enum PublicKeyCredentialType {
 }
 impl FromVal for PublicKeyCredentialType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "public-key" => Self::PUBLIC_KEY,
             _ => unreachable!(),
         }
@@ -9575,7 +9575,7 @@ pub enum AuthenticatorTransport {
 }
 impl FromVal for AuthenticatorTransport {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "usb" => Self::USB,
             "nfc" => Self::NFC,
             "ble" => Self::BLE,
@@ -9625,7 +9625,7 @@ pub enum UserVerificationRequirement {
 }
 impl FromVal for UserVerificationRequirement {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "required" => Self::REQUIRED,
             "preferred" => Self::PREFERRED,
             "discouraged" => Self::DISCOURAGED,
@@ -9672,7 +9672,7 @@ pub enum ClientCapability {
 }
 impl FromVal for ClientCapability {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "conditionalCreate" => Self::CONDITIONAL_CREATE,
             "conditionalGet" => Self::CONDITIONAL_GET,
             "hybridTransport" => Self::HYBRID_TRANSPORT,
@@ -9743,7 +9743,7 @@ pub enum PublicKeyCredentialHint {
 }
 impl FromVal for PublicKeyCredentialHint {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "security-key" => Self::SECURITY_KEY,
             "client-device" => Self::CLIENT_DEVICE,
             "hybrid" => Self::HYBRID,
@@ -9783,7 +9783,7 @@ pub enum LargeBlobSupport {
 }
 impl FromVal for LargeBlobSupport {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "required" => Self::REQUIRED,
             "preferred" => Self::PREFERRED,
             _ => unreachable!(),
@@ -9820,7 +9820,7 @@ pub enum AacBitstreamFormat {
 }
 impl FromVal for AacBitstreamFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "aac" => Self::AAC,
             "adts" => Self::ADTS,
             _ => unreachable!(),
@@ -9857,7 +9857,7 @@ pub enum AvcBitstreamFormat {
 }
 impl FromVal for AvcBitstreamFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "annexb" => Self::ANNEXB,
             "avc" => Self::AVC,
             _ => unreachable!(),
@@ -9894,7 +9894,7 @@ pub enum HevcBitstreamFormat {
 }
 impl FromVal for HevcBitstreamFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "annexb" => Self::ANNEXB,
             "hevc" => Self::HEVC,
             _ => unreachable!(),
@@ -9931,7 +9931,7 @@ pub enum OpusBitstreamFormat {
 }
 impl FromVal for OpusBitstreamFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "opus" => Self::OPUS,
             "ogg" => Self::OGG,
             _ => unreachable!(),
@@ -9969,7 +9969,7 @@ pub enum OpusSignal {
 }
 impl FromVal for OpusSignal {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "auto" => Self::AUTO,
             "music" => Self::MUSIC,
             "voice" => Self::VOICE,
@@ -10010,7 +10010,7 @@ pub enum OpusApplication {
 }
 impl FromVal for OpusApplication {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "voip" => Self::VOIP,
             "audio" => Self::AUDIO,
             "lowdelay" => Self::LOWDELAY,
@@ -10051,7 +10051,7 @@ pub enum HardwareAcceleration {
 }
 impl FromVal for HardwareAcceleration {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "no-preference" => Self::NO_PREFERENCE,
             "prefer-hardware" => Self::PREFER_HARDWARE,
             "prefer-software" => Self::PREFER_SOFTWARE,
@@ -10091,7 +10091,7 @@ pub enum AlphaOption {
 }
 impl FromVal for AlphaOption {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "keep" => Self::KEEP,
             "discard" => Self::DISCARD,
             _ => unreachable!(),
@@ -10128,7 +10128,7 @@ pub enum LatencyMode {
 }
 impl FromVal for LatencyMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "quality" => Self::QUALITY,
             "realtime" => Self::REALTIME,
             _ => unreachable!(),
@@ -10166,7 +10166,7 @@ pub enum VideoEncoderBitrateMode {
 }
 impl FromVal for VideoEncoderBitrateMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "constant" => Self::CONSTANT,
             "variable" => Self::VARIABLE,
             "quantizer" => Self::QUANTIZER,
@@ -10207,7 +10207,7 @@ pub enum CodecState {
 }
 impl FromVal for CodecState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "unconfigured" => Self::UNCONFIGURED,
             "configured" => Self::CONFIGURED,
             "closed" => Self::CLOSED,
@@ -10247,7 +10247,7 @@ pub enum EncodedAudioChunkType {
 }
 impl FromVal for EncodedAudioChunkType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "key" => Self::KEY,
             "delta" => Self::DELTA,
             _ => unreachable!(),
@@ -10284,7 +10284,7 @@ pub enum EncodedVideoChunkType {
 }
 impl FromVal for EncodedVideoChunkType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "key" => Self::KEY,
             "delta" => Self::DELTA,
             _ => unreachable!(),
@@ -10327,7 +10327,7 @@ pub enum AudioSampleFormat {
 }
 impl FromVal for AudioSampleFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "u8" => Self::U8_,
             "s16" => Self::S16,
             "s32" => Self::S32,
@@ -10403,7 +10403,7 @@ pub enum VideoPixelFormat {
 }
 impl FromVal for VideoPixelFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "I420" => Self::I420,
             "I420P10" => Self::I420_P10,
             "I420P12" => Self::I420_P12,
@@ -10506,7 +10506,7 @@ pub enum VideoColorPrimaries {
 }
 impl FromVal for VideoColorPrimaries {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "bt709" => Self::BT709,
             "bt470bg" => Self::BT470BG,
             "smpte170m" => Self::SMPTE170M,
@@ -10556,7 +10556,7 @@ pub enum VideoTransferCharacteristics {
 }
 impl FromVal for VideoTransferCharacteristics {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "bt709" => Self::BT709,
             "smpte170m" => Self::SMPTE170M,
             "iec61966-2-1" => Self::IEC61966_2_1,
@@ -10608,7 +10608,7 @@ pub enum VideoMatrixCoefficients {
 }
 impl FromVal for VideoMatrixCoefficients {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "rgb" => Self::RGB,
             "bt709" => Self::BT709,
             "bt470bg" => Self::BT470BG,
@@ -10655,7 +10655,7 @@ pub enum KeyType {
 }
 impl FromVal for KeyType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "public" => Self::PUBLIC,
             "private" => Self::PRIVATE,
             "secret" => Self::SECRET,
@@ -10701,7 +10701,7 @@ pub enum KeyUsage {
 }
 impl FromVal for KeyUsage {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "encrypt" => Self::ENCRYPT,
             "decrypt" => Self::DECRYPT,
             "sign" => Self::SIGN,
@@ -10758,7 +10758,7 @@ pub enum KeyFormat {
 }
 impl FromVal for KeyFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "raw" => Self::RAW_,
             "spki" => Self::SPKI,
             "pkcs8" => Self::PKCS8,
@@ -10802,7 +10802,7 @@ pub enum WebGLPowerPreference {
 }
 impl FromVal for WebGLPowerPreference {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "default" => Self::DEFAULT,
             "low-power" => Self::LOW_POWER,
             "high-performance" => Self::HIGH_PERFORMANCE,
@@ -10842,7 +10842,7 @@ pub enum GPUPowerPreference {
 }
 impl FromVal for GPUPowerPreference {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "low-power" => Self::LOW_POWER,
             "high-performance" => Self::HIGH_PERFORMANCE,
             _ => unreachable!(),
@@ -10897,7 +10897,7 @@ pub enum GPUFeatureName {
 }
 impl FromVal for GPUFeatureName {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "core-features-and-limits" => Self::CORE_FEATURES_AND_LIMITS,
             "depth-clip-control" => Self::DEPTH_CLIP_CONTROL,
             "depth32float-stencil8" => Self::DEPTH32FLOAT_STENCIL8,
@@ -10997,7 +10997,7 @@ pub enum GPUBufferMapState {
 }
 impl FromVal for GPUBufferMapState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "unmapped" => Self::UNMAPPED,
             "pending" => Self::PENDING,
             "mapped" => Self::MAPPED,
@@ -11038,7 +11038,7 @@ pub enum GPUTextureDimension {
 }
 impl FromVal for GPUTextureDimension {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "1d" => Self::_1D,
             "2d" => Self::_2D,
             "3d" => Self::_3D,
@@ -11082,7 +11082,7 @@ pub enum GPUTextureViewDimension {
 }
 impl FromVal for GPUTextureViewDimension {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "1d" => Self::_1D,
             "2d" => Self::_2D,
             "2d-array" => Self::_2D_ARRAY,
@@ -11132,7 +11132,7 @@ pub enum GPUTextureAspect {
 }
 impl FromVal for GPUTextureAspect {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "all" => Self::ALL,
             "stencil-only" => Self::STENCIL_ONLY,
             "depth-only" => Self::DEPTH_ONLY,
@@ -11271,7 +11271,7 @@ pub enum GPUTextureFormat {
 }
 impl FromVal for GPUTextureFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "r8unorm" => Self::R8UNORM,
             "r8snorm" => Self::R8SNORM,
             "r8uint" => Self::R8UINT,
@@ -11606,7 +11606,7 @@ pub enum GPUAddressMode {
 }
 impl FromVal for GPUAddressMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "clamp-to-edge" => Self::CLAMP_TO_EDGE,
             "repeat" => Self::REPEAT,
             "mirror-repeat" => Self::MIRROR_REPEAT,
@@ -11646,7 +11646,7 @@ pub enum GPUFilterMode {
 }
 impl FromVal for GPUFilterMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "nearest" => Self::NEAREST,
             "linear" => Self::LINEAR,
             _ => unreachable!(),
@@ -11683,7 +11683,7 @@ pub enum GPUMipmapFilterMode {
 }
 impl FromVal for GPUMipmapFilterMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "nearest" => Self::NEAREST,
             "linear" => Self::LINEAR,
             _ => unreachable!(),
@@ -11726,7 +11726,7 @@ pub enum GPUCompareFunction {
 }
 impl FromVal for GPUCompareFunction {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "never" => Self::NEVER,
             "less" => Self::LESS,
             "equal" => Self::EQUAL,
@@ -11782,7 +11782,7 @@ pub enum GPUBufferBindingType {
 }
 impl FromVal for GPUBufferBindingType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "uniform" => Self::UNIFORM,
             "storage" => Self::STORAGE,
             "read-only-storage" => Self::READ_ONLY_STORAGE,
@@ -11823,7 +11823,7 @@ pub enum GPUSamplerBindingType {
 }
 impl FromVal for GPUSamplerBindingType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "filtering" => Self::FILTERING,
             "non-filtering" => Self::NON_FILTERING,
             "comparison" => Self::COMPARISON,
@@ -11866,7 +11866,7 @@ pub enum GPUTextureSampleType {
 }
 impl FromVal for GPUTextureSampleType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "float" => Self::FLOAT,
             "unfilterable-float" => Self::UNFILTERABLE_FLOAT,
             "depth" => Self::DEPTH,
@@ -11913,7 +11913,7 @@ pub enum GPUStorageTextureAccess {
 }
 impl FromVal for GPUStorageTextureAccess {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "write-only" => Self::WRITE_ONLY,
             "read-only" => Self::READ_ONLY,
             "read-write" => Self::READ_WRITE,
@@ -11954,7 +11954,7 @@ pub enum GPUCompilationMessageType {
 }
 impl FromVal for GPUCompilationMessageType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "error" => Self::ERROR,
             "warning" => Self::WARNING,
             "info" => Self::INFO,
@@ -11994,7 +11994,7 @@ pub enum GPUPipelineErrorReason {
 }
 impl FromVal for GPUPipelineErrorReason {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "validation" => Self::VALIDATION,
             "internal" => Self::INTERNAL,
             _ => unreachable!(),
@@ -12030,7 +12030,7 @@ pub enum GPUAutoLayoutMode {
 }
 impl FromVal for GPUAutoLayoutMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "auto" => Self::AUTO,
             _ => unreachable!(),
         }
@@ -12067,7 +12067,7 @@ pub enum GPUPrimitiveTopology {
 }
 impl FromVal for GPUPrimitiveTopology {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "point-list" => Self::POINT_LIST,
             "line-list" => Self::LINE_LIST,
             "line-strip" => Self::LINE_STRIP,
@@ -12113,7 +12113,7 @@ pub enum GPUFrontFace {
 }
 impl FromVal for GPUFrontFace {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "ccw" => Self::CCW,
             "cw" => Self::CW,
             _ => unreachable!(),
@@ -12151,7 +12151,7 @@ pub enum GPUCullMode {
 }
 impl FromVal for GPUCullMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "front" => Self::FRONT,
             "back" => Self::BACK,
@@ -12206,7 +12206,7 @@ pub enum GPUBlendFactor {
 }
 impl FromVal for GPUBlendFactor {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "zero" => Self::ZERO,
             "one" => Self::ONE,
             "src" => Self::SRC,
@@ -12291,7 +12291,7 @@ pub enum GPUBlendOperation {
 }
 impl FromVal for GPUBlendOperation {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "add" => Self::ADD,
             "subtract" => Self::SUBTRACT,
             "reverse-subtract" => Self::REVERSE_SUBTRACT,
@@ -12343,7 +12343,7 @@ pub enum GPUStencilOperation {
 }
 impl FromVal for GPUStencilOperation {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "keep" => Self::KEEP,
             "zero" => Self::ZERO,
             "replace" => Self::REPLACE,
@@ -12398,7 +12398,7 @@ pub enum GPUIndexFormat {
 }
 impl FromVal for GPUIndexFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "uint16" => Self::UINT16,
             "uint32" => Self::UINT32,
             _ => unreachable!(),
@@ -12474,7 +12474,7 @@ pub enum GPUVertexFormat {
 }
 impl FromVal for GPUVertexFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "uint8" => Self::UINT8,
             "uint8x2" => Self::UINT8X2,
             "uint8x4" => Self::UINT8X4,
@@ -12628,7 +12628,7 @@ pub enum GPUVertexStepMode {
 }
 impl FromVal for GPUVertexStepMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "vertex" => Self::VERTEX,
             "instance" => Self::INSTANCE,
             _ => unreachable!(),
@@ -12665,7 +12665,7 @@ pub enum GPULoadOp {
 }
 impl FromVal for GPULoadOp {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "load" => Self::LOAD,
             "clear" => Self::CLEAR,
             _ => unreachable!(),
@@ -12702,7 +12702,7 @@ pub enum GPUStoreOp {
 }
 impl FromVal for GPUStoreOp {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "store" => Self::STORE,
             "discard" => Self::DISCARD,
             _ => unreachable!(),
@@ -12739,7 +12739,7 @@ pub enum GPUQueryType {
 }
 impl FromVal for GPUQueryType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "occlusion" => Self::OCCLUSION,
             "timestamp" => Self::TIMESTAMP,
             _ => unreachable!(),
@@ -12776,7 +12776,7 @@ pub enum GPUCanvasAlphaMode {
 }
 impl FromVal for GPUCanvasAlphaMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "opaque" => Self::OPAQUE,
             "premultiplied" => Self::PREMULTIPLIED,
             _ => unreachable!(),
@@ -12813,7 +12813,7 @@ pub enum GPUCanvasToneMappingMode {
 }
 impl FromVal for GPUCanvasToneMappingMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "standard" => Self::STANDARD,
             "extended" => Self::EXTENDED,
             _ => unreachable!(),
@@ -12850,7 +12850,7 @@ pub enum GPUDeviceLostReason {
 }
 impl FromVal for GPUDeviceLostReason {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "unknown" => Self::UNKNOWN,
             "destroyed" => Self::DESTROYED,
             _ => unreachable!(),
@@ -12888,7 +12888,7 @@ pub enum GPUErrorFilter {
 }
 impl FromVal for GPUErrorFilter {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "validation" => Self::VALIDATION,
             "out-of-memory" => Self::OUT_OF_MEMORY,
             "internal" => Self::INTERNAL,
@@ -12933,7 +12933,7 @@ pub enum HIDUnitSystem {
 }
 impl FromVal for HIDUnitSystem {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "si-linear" => Self::SI_LINEAR,
             "si-rotation" => Self::SI_ROTATION,
@@ -12985,7 +12985,7 @@ pub enum MIDIPortType {
 }
 impl FromVal for MIDIPortType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "input" => Self::INPUT,
             "output" => Self::OUTPUT,
             _ => unreachable!(),
@@ -13022,7 +13022,7 @@ pub enum MIDIPortDeviceState {
 }
 impl FromVal for MIDIPortDeviceState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "disconnected" => Self::DISCONNECTED,
             "connected" => Self::CONNECTED,
             _ => unreachable!(),
@@ -13060,7 +13060,7 @@ pub enum MIDIPortConnectionState {
 }
 impl FromVal for MIDIPortConnectionState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "open" => Self::OPEN,
             "closed" => Self::CLOSED,
             "pending" => Self::PENDING,
@@ -13101,7 +13101,7 @@ pub enum MLPowerPreference {
 }
 impl FromVal for MLPowerPreference {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "default" => Self::DEFAULT,
             "high-performance" => Self::HIGH_PERFORMANCE,
             "low-power" => Self::LOW_POWER,
@@ -13141,7 +13141,7 @@ pub enum MLInputOperandLayout {
 }
 impl FromVal for MLInputOperandLayout {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "nchw" => Self::NCHW,
             "nhwc" => Self::NHWC,
             _ => unreachable!(),
@@ -13184,7 +13184,7 @@ pub enum MLOperandDataType {
 }
 impl FromVal for MLOperandDataType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "float32" => Self::FLOAT32,
             "float16" => Self::FLOAT16,
             "int32" => Self::INT32,
@@ -13241,7 +13241,7 @@ pub enum MLConv2dFilterOperandLayout {
 }
 impl FromVal for MLConv2dFilterOperandLayout {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "oihw" => Self::OIHW,
             "hwio" => Self::HWIO,
             "ohwi" => Self::OHWI,
@@ -13285,7 +13285,7 @@ pub enum MLConvTranspose2dFilterOperandLayout {
 }
 impl FromVal for MLConvTranspose2dFilterOperandLayout {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "iohw" => Self::IOHW,
             "hwoi" => Self::HWOI,
             "ohwi" => Self::OHWI,
@@ -13325,7 +13325,7 @@ pub enum MLGruWeightLayout {
 }
 impl FromVal for MLGruWeightLayout {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "zrn" => Self::ZRN,
             "rzn" => Self::RZN,
             _ => unreachable!(),
@@ -13363,7 +13363,7 @@ pub enum MLRecurrentNetworkActivation {
 }
 impl FromVal for MLRecurrentNetworkActivation {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "relu" => Self::RELU,
             "sigmoid" => Self::SIGMOID,
             "tanh" => Self::TANH,
@@ -13404,7 +13404,7 @@ pub enum MLRecurrentNetworkDirection {
 }
 impl FromVal for MLRecurrentNetworkDirection {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "forward" => Self::FORWARD,
             "backward" => Self::BACKWARD,
             "both" => Self::BOTH,
@@ -13444,7 +13444,7 @@ pub enum MLLstmWeightLayout {
 }
 impl FromVal for MLLstmWeightLayout {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "iofg" => Self::IOFG,
             "ifgo" => Self::IFGO,
             _ => unreachable!(),
@@ -13482,7 +13482,7 @@ pub enum MLPaddingMode {
 }
 impl FromVal for MLPaddingMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "constant" => Self::CONSTANT,
             "edge" => Self::EDGE,
             "reflection" => Self::REFLECTION,
@@ -13522,7 +13522,7 @@ pub enum MLRoundingType {
 }
 impl FromVal for MLRoundingType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "floor" => Self::FLOOR,
             "ceil" => Self::CEIL,
             _ => unreachable!(),
@@ -13559,7 +13559,7 @@ pub enum MLInterpolationMode {
 }
 impl FromVal for MLInterpolationMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "nearest-neighbor" => Self::NEAREST_NEIGHBOR,
             "linear" => Self::LINEAR,
             _ => unreachable!(),
@@ -13596,7 +13596,7 @@ pub enum SFrameTransformRole {
 }
 impl FromVal for SFrameTransformRole {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "encrypt" => Self::ENCRYPT,
             "decrypt" => Self::DECRYPT,
             _ => unreachable!(),
@@ -13634,7 +13634,7 @@ pub enum SFrameTransformErrorEventType {
 }
 impl FromVal for SFrameTransformErrorEventType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "authentication" => Self::AUTHENTICATION,
             "keyID" => Self::KEY_ID,
             "syntax" => Self::SYNTAX,
@@ -13675,7 +13675,7 @@ pub enum RTCEncodedVideoFrameType {
 }
 impl FromVal for RTCEncodedVideoFrameType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "empty" => Self::EMPTY,
             "key" => Self::KEY,
             "delta" => Self::DELTA,
@@ -13721,7 +13721,7 @@ pub enum RTCErrorDetailTypeIdp {
 }
 impl FromVal for RTCErrorDetailTypeIdp {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "idp-bad-script-failure" => Self::IDP_BAD_SCRIPT_FAILURE,
             "idp-execution-failure" => Self::IDP_EXECUTION_FAILURE,
             "idp-load-failure" => Self::IDP_LOAD_FAILURE,
@@ -13778,7 +13778,7 @@ pub enum RTCPriorityType {
 }
 impl FromVal for RTCPriorityType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "very-low" => Self::VERY_LOW,
             "low" => Self::LOW,
             "medium" => Self::MEDIUM,
@@ -13833,7 +13833,7 @@ pub enum RTCStatsType {
 }
 impl FromVal for RTCStatsType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "codec" => Self::CODEC,
             "inbound-rtp" => Self::INBOUND_RTP,
             "outbound-rtp" => Self::OUTBOUND_RTP,
@@ -13908,7 +13908,7 @@ pub enum RTCQualityLimitationReason {
 }
 impl FromVal for RTCQualityLimitationReason {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "cpu" => Self::CPU,
             "bandwidth" => Self::BANDWIDTH,
@@ -13952,7 +13952,7 @@ pub enum RTCDtlsRole {
 }
 impl FromVal for RTCDtlsRole {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "client" => Self::CLIENT,
             "server" => Self::SERVER,
             "unknown" => Self::UNKNOWN,
@@ -13995,7 +13995,7 @@ pub enum RTCStatsIceCandidatePairState {
 }
 impl FromVal for RTCStatsIceCandidatePairState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "frozen" => Self::FROZEN,
             "waiting" => Self::WAITING,
             "in-progress" => Self::IN_PROGRESS,
@@ -14041,7 +14041,7 @@ pub enum RTCIceTransportPolicy {
 }
 impl FromVal for RTCIceTransportPolicy {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "relay" => Self::RELAY,
             "all" => Self::ALL,
             _ => unreachable!(),
@@ -14079,7 +14079,7 @@ pub enum RTCBundlePolicy {
 }
 impl FromVal for RTCBundlePolicy {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "balanced" => Self::BALANCED,
             "max-compat" => Self::MAX_COMPAT,
             "max-bundle" => Self::MAX_BUNDLE,
@@ -14118,7 +14118,7 @@ pub enum RTCRtcpMuxPolicy {
 }
 impl FromVal for RTCRtcpMuxPolicy {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "require" => Self::REQUIRE,
             _ => unreachable!(),
         }
@@ -14156,7 +14156,7 @@ pub enum RTCSignalingState {
 }
 impl FromVal for RTCSignalingState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "stable" => Self::STABLE,
             "have-local-offer" => Self::HAVE_LOCAL_OFFER,
             "have-remote-offer" => Self::HAVE_REMOTE_OFFER,
@@ -14206,7 +14206,7 @@ pub enum RTCIceGatheringState {
 }
 impl FromVal for RTCIceGatheringState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "new" => Self::NEW,
             "gathering" => Self::GATHERING,
             "complete" => Self::COMPLETE,
@@ -14250,7 +14250,7 @@ pub enum RTCPeerConnectionState {
 }
 impl FromVal for RTCPeerConnectionState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "closed" => Self::CLOSED,
             "failed" => Self::FAILED,
             "disconnected" => Self::DISCONNECTED,
@@ -14304,7 +14304,7 @@ pub enum RTCIceConnectionState {
 }
 impl FromVal for RTCIceConnectionState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "closed" => Self::CLOSED,
             "failed" => Self::FAILED,
             "disconnected" => Self::DISCONNECTED,
@@ -14358,7 +14358,7 @@ pub enum RTCSdpType {
 }
 impl FromVal for RTCSdpType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "offer" => Self::OFFER,
             "pranswer" => Self::PRANSWER,
             "answer" => Self::ANSWER,
@@ -14401,7 +14401,7 @@ pub enum RTCIceProtocol {
 }
 impl FromVal for RTCIceProtocol {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "udp" => Self::UDP,
             "tcp" => Self::TCP,
             _ => unreachable!(),
@@ -14439,7 +14439,7 @@ pub enum RTCIceTcpCandidateType {
 }
 impl FromVal for RTCIceTcpCandidateType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "active" => Self::ACTIVE,
             "passive" => Self::PASSIVE,
             "so" => Self::SO,
@@ -14481,7 +14481,7 @@ pub enum RTCIceCandidateType {
 }
 impl FromVal for RTCIceCandidateType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "host" => Self::HOST,
             "srflx" => Self::SRFLX,
             "prflx" => Self::PRFLX,
@@ -14525,7 +14525,7 @@ pub enum RTCIceServerTransportProtocol {
 }
 impl FromVal for RTCIceServerTransportProtocol {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "udp" => Self::UDP,
             "tcp" => Self::TCP,
             "tls" => Self::TLS,
@@ -14568,7 +14568,7 @@ pub enum RTCRtpTransceiverDirection {
 }
 impl FromVal for RTCRtpTransceiverDirection {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "sendrecv" => Self::SENDRECV,
             "sendonly" => Self::SENDONLY,
             "recvonly" => Self::RECVONLY,
@@ -14617,7 +14617,7 @@ pub enum RTCDtlsTransportState {
 }
 impl FromVal for RTCDtlsTransportState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "new" => Self::NEW,
             "connecting" => Self::CONNECTING,
             "connected" => Self::CONNECTED,
@@ -14664,7 +14664,7 @@ pub enum RTCIceGathererState {
 }
 impl FromVal for RTCIceGathererState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "new" => Self::NEW,
             "gathering" => Self::GATHERING,
             "complete" => Self::COMPLETE,
@@ -14709,7 +14709,7 @@ pub enum RTCIceTransportState {
 }
 impl FromVal for RTCIceTransportState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "closed" => Self::CLOSED,
             "failed" => Self::FAILED,
             "disconnected" => Self::DISCONNECTED,
@@ -14762,7 +14762,7 @@ pub enum RTCIceRole {
 }
 impl FromVal for RTCIceRole {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "unknown" => Self::UNKNOWN,
             "controlling" => Self::CONTROLLING,
             "controlled" => Self::CONTROLLED,
@@ -14802,7 +14802,7 @@ pub enum RTCIceComponent {
 }
 impl FromVal for RTCIceComponent {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "rtp" => Self::RTP,
             "rtcp" => Self::RTCP,
             _ => unreachable!(),
@@ -14840,7 +14840,7 @@ pub enum RTCSctpTransportState {
 }
 impl FromVal for RTCSctpTransportState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "connecting" => Self::CONNECTING,
             "connected" => Self::CONNECTED,
             "closed" => Self::CLOSED,
@@ -14882,7 +14882,7 @@ pub enum RTCDataChannelState {
 }
 impl FromVal for RTCDataChannelState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "connecting" => Self::CONNECTING,
             "open" => Self::OPEN,
             "closing" => Self::CLOSING,
@@ -14930,7 +14930,7 @@ pub enum RTCErrorDetailType {
 }
 impl FromVal for RTCErrorDetailType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "data-channel-failure" => Self::DATA_CHANNEL_FAILURE,
             "dtls-failure" => Self::DTLS_FAILURE,
             "fingerprint-failure" => Self::FINGERPRINT_FAILURE,
@@ -14986,7 +14986,7 @@ pub enum BinaryType {
 }
 impl FromVal for BinaryType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "blob" => Self::BLOB,
             "arraybuffer" => Self::ARRAYBUFFER,
             _ => unreachable!(),
@@ -15024,7 +15024,7 @@ pub enum WebTransportReliabilityMode {
 }
 impl FromVal for WebTransportReliabilityMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "pending" => Self::PENDING,
             "reliable-only" => Self::RELIABLE_ONLY,
             "supports-unreliable" => Self::SUPPORTS_UNRELIABLE,
@@ -15065,7 +15065,7 @@ pub enum WebTransportCongestionControl {
 }
 impl FromVal for WebTransportCongestionControl {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "default" => Self::DEFAULT,
             "throughput" => Self::THROUGHPUT,
             "low-latency" => Self::LOW_LATENCY,
@@ -15105,7 +15105,7 @@ pub enum WebTransportErrorSource {
 }
 impl FromVal for WebTransportErrorSource {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "stream" => Self::STREAM,
             "session" => Self::SESSION,
             _ => unreachable!(),
@@ -15143,7 +15143,7 @@ pub enum USBTransferStatus {
 }
 impl FromVal for USBTransferStatus {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "ok" => Self::OK,
             "stall" => Self::STALL,
             "babble" => Self::BABBLE,
@@ -15184,7 +15184,7 @@ pub enum USBRequestType {
 }
 impl FromVal for USBRequestType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "standard" => Self::STANDARD,
             "class" => Self::CLASS,
             "vendor" => Self::VENDOR,
@@ -15226,7 +15226,7 @@ pub enum USBRecipient {
 }
 impl FromVal for USBRecipient {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "device" => Self::DEVICE,
             "interface" => Self::INTERFACE,
             "endpoint" => Self::ENDPOINT,
@@ -15269,7 +15269,7 @@ pub enum USBDirection {
 }
 impl FromVal for USBDirection {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "in" => Self::IN_,
             "out" => Self::OUT,
             _ => unreachable!(),
@@ -15307,7 +15307,7 @@ pub enum USBEndpointType {
 }
 impl FromVal for USBEndpointType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "bulk" => Self::BULK,
             "interrupt" => Self::INTERRUPT,
             "isochronous" => Self::ISOCHRONOUS,
@@ -15346,7 +15346,7 @@ pub enum AutoKeyword {
 }
 impl FromVal for AutoKeyword {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "auto" => Self::AUTO,
             _ => unreachable!(),
         }
@@ -15381,7 +15381,7 @@ pub enum DirectionSetting {
 }
 impl FromVal for DirectionSetting {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "" => Self::NONE,
             "rl" => Self::RL,
             "lr" => Self::LR,
@@ -15422,7 +15422,7 @@ pub enum LineAlignSetting {
 }
 impl FromVal for LineAlignSetting {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "start" => Self::START,
             "center" => Self::CENTER,
             "end" => Self::END,
@@ -15464,7 +15464,7 @@ pub enum PositionAlignSetting {
 }
 impl FromVal for PositionAlignSetting {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "line-left" => Self::LINE_LEFT,
             "center" => Self::CENTER,
             "line-right" => Self::LINE_RIGHT,
@@ -15510,7 +15510,7 @@ pub enum AlignSetting {
 }
 impl FromVal for AlignSetting {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "start" => Self::START,
             "center" => Self::CENTER,
             "end" => Self::END,
@@ -15556,7 +15556,7 @@ pub enum ScrollSetting {
 }
 impl FromVal for ScrollSetting {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "" => Self::NONE,
             "up" => Self::UP,
             _ => unreachable!(),
@@ -15594,7 +15594,7 @@ pub enum XREnvironmentBlendMode {
 }
 impl FromVal for XREnvironmentBlendMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "opaque" => Self::OPAQUE,
             "alpha-blend" => Self::ALPHA_BLEND,
             "additive" => Self::ADDITIVE,
@@ -15634,7 +15634,7 @@ pub enum XRInteractionMode {
 }
 impl FromVal for XRInteractionMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "screen-space" => Self::SCREEN_SPACE,
             "world-space" => Self::WORLD_SPACE,
             _ => unreachable!(),
@@ -15671,7 +15671,7 @@ pub enum XRDepthType {
 }
 impl FromVal for XRDepthType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "raw" => Self::RAW_,
             "smooth" => Self::SMOOTH,
             _ => unreachable!(),
@@ -15708,7 +15708,7 @@ pub enum XRDepthUsage {
 }
 impl FromVal for XRDepthUsage {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "cpu-optimized" => Self::CPU_OPTIMIZED,
             "gpu-optimized" => Self::GPU_OPTIMIZED,
             _ => unreachable!(),
@@ -15746,7 +15746,7 @@ pub enum XRDepthDataFormat {
 }
 impl FromVal for XRDepthDataFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "luminance-alpha" => Self::LUMINANCE_ALPHA,
             "float32" => Self::FLOAT32,
             "unsigned-short" => Self::UNSIGNED_SHORT,
@@ -15787,7 +15787,7 @@ pub enum XRDOMOverlayType {
 }
 impl FromVal for XRDOMOverlayType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "screen" => Self::SCREEN,
             "floating" => Self::FLOATING,
             "head-locked" => Self::HEAD_LOCKED,
@@ -15850,7 +15850,7 @@ pub enum XRHandJoint {
 }
 impl FromVal for XRHandJoint {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "wrist" => Self::WRIST,
             "thumb-metacarpal" => Self::THUMB_METACARPAL,
             "thumb-phalanx-proximal" => Self::THUMB_PHALANX_PROXIMAL,
@@ -15985,7 +15985,7 @@ pub enum XRHitTestTrackableType {
 }
 impl FromVal for XRHitTestTrackableType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "point" => Self::POINT,
             "plane" => Self::PLANE,
             "mesh" => Self::MESH,
@@ -16025,7 +16025,7 @@ pub enum XRReflectionFormat {
 }
 impl FromVal for XRReflectionFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "srgba8" => Self::SRGBA8,
             "rgba16f" => Self::RGBA16F,
             _ => unreachable!(),
@@ -16062,7 +16062,7 @@ pub enum XRPlaneOrientation {
 }
 impl FromVal for XRPlaneOrientation {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "horizontal" => Self::HORIZONTAL,
             "vertical" => Self::VERTICAL,
             _ => unreachable!(),
@@ -16100,7 +16100,7 @@ pub enum XRSessionMode {
 }
 impl FromVal for XRSessionMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "inline" => Self::INLINE,
             "immersive-vr" => Self::IMMERSIVE_VR,
             "immersive-ar" => Self::IMMERSIVE_AR,
@@ -16141,7 +16141,7 @@ pub enum XRVisibilityState {
 }
 impl FromVal for XRVisibilityState {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "visible" => Self::VISIBLE,
             "visible-blurred" => Self::VISIBLE_BLURRED,
             "hidden" => Self::HIDDEN,
@@ -16184,7 +16184,7 @@ pub enum XRReferenceSpaceType {
 }
 impl FromVal for XRReferenceSpaceType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "viewer" => Self::VIEWER,
             "local" => Self::LOCAL,
             "local-floor" => Self::LOCAL_FLOOR,
@@ -16231,7 +16231,7 @@ pub enum XREye {
 }
 impl FromVal for XREye {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "left" => Self::LEFT,
             "right" => Self::RIGHT,
@@ -16272,7 +16272,7 @@ pub enum XRHandedness {
 }
 impl FromVal for XRHandedness {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "none" => Self::NONE,
             "left" => Self::LEFT,
             "right" => Self::RIGHT,
@@ -16314,7 +16314,7 @@ pub enum XRTargetRayMode {
 }
 impl FromVal for XRTargetRayMode {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "gaze" => Self::GAZE,
             "tracked-pointer" => Self::TRACKED_POINTER,
             "screen" => Self::SCREEN,
@@ -16360,7 +16360,7 @@ pub enum XRLayerLayout {
 }
 impl FromVal for XRLayerLayout {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "default" => Self::DEFAULT,
             "mono" => Self::MONO,
             "stereo" => Self::STEREO,
@@ -16407,7 +16407,7 @@ pub enum XRLayerQuality {
 }
 impl FromVal for XRLayerQuality {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "default" => Self::DEFAULT,
             "text-optimized" => Self::TEXT_OPTIMIZED,
             "graphics-optimized" => Self::GRAPHICS_OPTIMIZED,
@@ -16447,7 +16447,7 @@ pub enum XRTextureType {
 }
 impl FromVal for XRTextureType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "texture" => Self::TEXTURE,
             "texture-array" => Self::TEXTURE_ARRAY,
             _ => unreachable!(),
@@ -16486,7 +16486,7 @@ pub enum SummarizerType {
 }
 impl FromVal for SummarizerType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "tldr" => Self::TLDR,
             "teaser" => Self::TEASER,
             "key-points" => Self::KEY_POINTS,
@@ -16529,7 +16529,7 @@ pub enum SummarizerFormat {
 }
 impl FromVal for SummarizerFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "plain-text" => Self::PLAIN_TEXT,
             "markdown" => Self::MARKDOWN,
             _ => unreachable!(),
@@ -16567,7 +16567,7 @@ pub enum SummarizerLength {
 }
 impl FromVal for SummarizerLength {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "short" => Self::SHORT,
             "medium" => Self::MEDIUM,
             "long" => Self::LONG,
@@ -16608,7 +16608,7 @@ pub enum WriterTone {
 }
 impl FromVal for WriterTone {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "formal" => Self::FORMAL,
             "neutral" => Self::NEUTRAL,
             "casual" => Self::CASUAL,
@@ -16648,7 +16648,7 @@ pub enum WriterFormat {
 }
 impl FromVal for WriterFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "plain-text" => Self::PLAIN_TEXT,
             "markdown" => Self::MARKDOWN,
             _ => unreachable!(),
@@ -16686,7 +16686,7 @@ pub enum WriterLength {
 }
 impl FromVal for WriterLength {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "short" => Self::SHORT,
             "medium" => Self::MEDIUM,
             "long" => Self::LONG,
@@ -16727,7 +16727,7 @@ pub enum RewriterTone {
 }
 impl FromVal for RewriterTone {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "as-is" => Self::AS_IS,
             "more-formal" => Self::MORE_FORMAL,
             "more-casual" => Self::MORE_CASUAL,
@@ -16768,7 +16768,7 @@ pub enum RewriterFormat {
 }
 impl FromVal for RewriterFormat {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "as-is" => Self::AS_IS,
             "plain-text" => Self::PLAIN_TEXT,
             "markdown" => Self::MARKDOWN,
@@ -16809,7 +16809,7 @@ pub enum RewriterLength {
 }
 impl FromVal for RewriterLength {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "as-is" => Self::AS_IS,
             "shorter" => Self::SHORTER,
             "longer" => Self::LONGER,
@@ -16851,7 +16851,7 @@ pub enum Availability {
 }
 impl FromVal for Availability {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "unavailable" => Self::UNAVAILABLE,
             "downloadable" => Self::DOWNLOADABLE,
             "downloading" => Self::DOWNLOADING,
@@ -16898,7 +16898,7 @@ pub enum XMLHttpRequestResponseType {
 }
 impl FromVal for XMLHttpRequestResponseType {
     fn from_val(v: &Any) -> Self {
-        match v.as_::<&str>() {
+        match v.as_::<Option<&str>>().unwrap() {
             "" => Self::NONE,
             "arraybuffer" => Self::ARRAYBUFFER,
             "blob" => Self::BLOB,
