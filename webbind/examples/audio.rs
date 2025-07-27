@@ -1,10 +1,5 @@
 use jsbind::prelude::*;
-use webbind::audio_param::AudioParam;
-use webbind::html_button_element::HTMLButtonElement;
-use webbind::node::Node;
-use webbind::pointer_event::PointerEvent;
-use webbind::window;
-use webbind::{audio_context::AudioContext, enums::OscillatorType};
+use webbind::*;
 
 fn main() {
     let context = AudioContext::new0();

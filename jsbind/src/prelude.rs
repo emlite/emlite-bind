@@ -1,5 +1,7 @@
 pub use emlite::Console;
 pub use emlite::FromVal;
+use alloc::string::String;
+use alloc::vec::Vec;
 
 pub use crate::any::{Any, AnyHandle};
 pub use crate::array::{
@@ -259,4 +261,79 @@ where
             }
         }
     }
+}
+
+/// Lossless: bytes -> base64
+pub fn btoa_bytes(bytes: &[u8]) -> String {
+    // Fast path for Node: Buffer.from(u8[]).toString("base64")
+    if Any::global_this().has("Buffer") {
+        let buffer = Any::global("Buffer");
+        let arr = Sequence::new_from_slice(bytes); // JS array of numbers 0..255
+        let buf = buffer.call("from", &[arr.into()]);
+        return buf.call("toString", &[Any::from("base64")]).as_::<Option<String>>().unwrap_throw();
+    }
+
+    // Browser/WASI-in-browser: build a binary string and call btoa()
+    // Use chunking to avoid "maximum call stack size exceeded" with large arrays.
+    let arr = Sequence::new_from_slice(bytes);
+    let to_b64 = Function::new(
+        &["a"],
+        r#"
+        let s = '';
+        const CHUNK = 0x8000; // 32 KiB per apply() call
+        for (let i = 0; i < a.length; i += CHUNK) {
+            s += String.fromCharCode.apply(null, a.slice(i, i + CHUNK));
+        }
+        return btoa(s);
+        "#,
+    );
+    to_b64.call(&Any::undefined(), &[arr.into()]).as_::<Option<String>>().unwrap_throw()
+}
+
+/// Lossless: base64 -> bytes
+pub fn atob_to_bytes(b64: &str) -> Vec<u8> {
+    // Fast path for Node: Array.from(Buffer.from(b64, 'base64'))
+    if Any::global_this().has("Buffer") {
+        let buffer = Any::global("Buffer");
+        let buf = buffer.call("from", &[Any::from(b64), Any::from("base64")]);
+        let arr = Any::global("Array").call("from", &[buf]);
+        return arr.to_vec::<u8>();
+    }
+
+    // Browser/WASI-in-browser: atob() -> binary string -> array of byte values
+    let from_b64 = Function::new(
+        &["b64"],
+        r#"
+        const bin = atob(b64);
+        const out = new Array(bin.length);
+        for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i) & 0xff;
+        return out;
+        "#,
+    );
+    from_b64
+        .call(&Any::undefined(), &[Any::from(b64)])
+        .to_vec::<u8>()
+}
+
+/// UTF‑8 text -> base64 (convenience)
+pub fn btoa_utf8(s: &str) -> String {
+    let enc = TextEncoder::new();             // JS TextEncoder
+    let u8s = enc.encode(s);                  // -> Uint8Array (jsbind alias)
+    btoa_bytes(&u8s.to_vec())
+}
+
+/// base64 -> UTF‑8 text (convenience)
+pub fn atob_utf8(b64: &str) -> Option<String> {
+    // Prefer Node's native decode when available
+    if Any::global_this().has("Buffer") {
+        let buffer = Any::global("Buffer");
+        let buf = buffer.call("from", &[Any::from(b64), Any::from("base64")]);
+        return buf.call("toString", &[Any::from("utf8")]).as_::<Option<String>>();
+    }
+
+    // Browser/WASI-in-browser: decode to bytes, then TextDecoder
+    let bytes = atob_to_bytes(b64);
+    let dec = TextDecoder::new(Some("utf-8"), None);
+    let seq = Sequence::new_from_slice(&bytes); // jsbind's Uint8Array alias is a Sequence<u8>
+    dec.decode(&seq) // Option<String>
 }
