@@ -64,7 +64,7 @@ impl TextDecoderStream {
     }
 
     /// The `new TextDecoderStream(..)` constructor, creating a new TextDecoderStream instance
-    pub fn new1(label: &DOMString) -> TextDecoderStream {
+    pub fn new1(label: &JsString) -> TextDecoderStream {
         Self {
             inner: Any::global("TextDecoderStream")
                 .new(&[label.into()])
@@ -73,7 +73,7 @@ impl TextDecoderStream {
     }
 
     /// The `new TextDecoderStream(..)` constructor, creating a new TextDecoderStream instance
-    pub fn new2(label: &DOMString, options: &Any) -> TextDecoderStream {
+    pub fn new2(label: &JsString, options: &Any) -> TextDecoderStream {
         Self {
             inner: Any::global("TextDecoderStream")
                 .new(&[label.into(), options.into()])
@@ -84,8 +84,8 @@ impl TextDecoderStream {
 impl TextDecoderStream {
     /// Getter of the `encoding` attribute.
     /// [`TextDecoderStream.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoderStream/encoding)
-    pub fn encoding(&self) -> DOMString {
-        self.inner.get("encoding").as_::<DOMString>()
+    pub fn encoding(&self) -> JsString {
+        self.inner.get("encoding").as_::<JsString>()
     }
 }
 impl TextDecoderStream {

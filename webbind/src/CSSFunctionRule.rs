@@ -51,29 +51,29 @@ impl From<&FunctionParameter> for Any {
 }
 
 impl FunctionParameter {
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 
-    pub fn set_name(&mut self, value: &CSSOMString) {
+    pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
     }
 }
 impl FunctionParameter {
-    pub fn type_(&self) -> CSSOMString {
-        self.inner.get("type").as_::<CSSOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 
-    pub fn set_type_(&mut self, value: &CSSOMString) {
+    pub fn set_type_(&mut self, value: &JsString) {
         self.inner.set("type", value);
     }
 }
 impl FunctionParameter {
-    pub fn default_value(&self) -> CSSOMString {
-        self.inner.get("defaultValue").as_::<CSSOMString>()
+    pub fn default_value(&self) -> JsString {
+        self.inner.get("defaultValue").as_::<JsString>()
     }
 
-    pub fn set_default_value(&mut self, value: &CSSOMString) {
+    pub fn set_default_value(&mut self, value: &JsString) {
         self.inner.set("defaultValue", value);
     }
 }
@@ -135,23 +135,23 @@ jsbind::utils::impl_dyn_cast!(CSSFunctionRule);
 impl CSSFunctionRule {
     /// Getter of the `name` attribute.
     /// [`CSSFunctionRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionRule/name)
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl CSSFunctionRule {
     /// The getParameters method.
     /// [`CSSFunctionRule.getParameters`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionRule/getParameters)
-    pub fn get_parameters(&self) -> Sequence<FunctionParameter> {
+    pub fn get_parameters(&self) -> TypedArray<FunctionParameter> {
         self.inner
             .call("getParameters", &[])
-            .as_::<Sequence<FunctionParameter>>()
+            .as_::<TypedArray<FunctionParameter>>()
     }
 }
 impl CSSFunctionRule {
     /// Getter of the `returnType` attribute.
     /// [`CSSFunctionRule.returnType`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionRule/returnType)
-    pub fn return_type(&self) -> CSSOMString {
-        self.inner.get("returnType").as_::<CSSOMString>()
+    pub fn return_type(&self) -> JsString {
+        self.inner.get("returnType").as_::<JsString>()
     }
 }

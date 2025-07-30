@@ -51,11 +51,11 @@ impl From<&IdentityResolveOptions> for Any {
 }
 
 impl IdentityResolveOptions {
-    pub fn account_id(&self) -> USVString {
-        self.inner.get("accountId").as_::<USVString>()
+    pub fn account_id(&self) -> JsString {
+        self.inner.get("accountId").as_::<JsString>()
     }
 
-    pub fn set_account_id(&mut self, value: &USVString) {
+    pub fn set_account_id(&mut self, value: &JsString) {
         self.inner.set("accountId", value);
     }
 }
@@ -110,38 +110,38 @@ impl From<&IdentityUserInfo> for Any {
 }
 
 impl IdentityUserInfo {
-    pub fn email(&self) -> USVString {
-        self.inner.get("email").as_::<USVString>()
+    pub fn email(&self) -> JsString {
+        self.inner.get("email").as_::<JsString>()
     }
 
-    pub fn set_email(&mut self, value: &USVString) {
+    pub fn set_email(&mut self, value: &JsString) {
         self.inner.set("email", value);
     }
 }
 impl IdentityUserInfo {
-    pub fn name(&self) -> USVString {
-        self.inner.get("name").as_::<USVString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 
-    pub fn set_name(&mut self, value: &USVString) {
+    pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
     }
 }
 impl IdentityUserInfo {
-    pub fn given_name(&self) -> USVString {
-        self.inner.get("givenName").as_::<USVString>()
+    pub fn given_name(&self) -> JsString {
+        self.inner.get("givenName").as_::<JsString>()
     }
 
-    pub fn set_given_name(&mut self, value: &USVString) {
+    pub fn set_given_name(&mut self, value: &JsString) {
         self.inner.set("givenName", value);
     }
 }
 impl IdentityUserInfo {
-    pub fn picture(&self) -> USVString {
-        self.inner.get("picture").as_::<USVString>()
+    pub fn picture(&self) -> JsString {
+        self.inner.get("picture").as_::<JsString>()
     }
 
-    pub fn set_picture(&mut self, value: &USVString) {
+    pub fn set_picture(&mut self, value: &JsString) {
         self.inner.set("picture", value);
     }
 }
@@ -196,20 +196,20 @@ impl From<&IdentityProviderConfig> for Any {
 }
 
 impl IdentityProviderConfig {
-    pub fn config_url(&self) -> USVString {
-        self.inner.get("configURL").as_::<USVString>()
+    pub fn config_url(&self) -> JsString {
+        self.inner.get("configURL").as_::<JsString>()
     }
 
-    pub fn set_config_url(&mut self, value: &USVString) {
+    pub fn set_config_url(&mut self, value: &JsString) {
         self.inner.set("configURL", value);
     }
 }
 impl IdentityProviderConfig {
-    pub fn client_id(&self) -> USVString {
-        self.inner.get("clientId").as_::<USVString>()
+    pub fn client_id(&self) -> JsString {
+        self.inner.get("clientId").as_::<JsString>()
     }
 
-    pub fn set_client_id(&mut self, value: &USVString) {
+    pub fn set_client_id(&mut self, value: &JsString) {
         self.inner.set("clientId", value);
     }
 }
@@ -280,14 +280,14 @@ impl IdentityProvider {
 impl IdentityProvider {
     /// The resolve method.
     /// [`IdentityProvider.resolve`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityProvider/resolve)
-    pub fn resolve0(token: &DOMString) -> Promise<Undefined> {
+    pub fn resolve0(token: &JsString) -> Promise<Undefined> {
         Any::global("IdentityProvider")
             .call("resolve", &[token.into()])
             .as_::<Promise<Undefined>>()
     }
     /// The resolve method.
     /// [`IdentityProvider.resolve`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityProvider/resolve)
-    pub fn resolve1(token: &DOMString, options: &IdentityResolveOptions) -> Promise<Undefined> {
+    pub fn resolve1(token: &JsString, options: &IdentityResolveOptions) -> Promise<Undefined> {
         Any::global("IdentityProvider")
             .call("resolve", &[token.into(), options.into()])
             .as_::<Promise<Undefined>>()
@@ -296,9 +296,9 @@ impl IdentityProvider {
 impl IdentityProvider {
     /// The getUserInfo method.
     /// [`IdentityProvider.getUserInfo`](https://developer.mozilla.org/en-US/docs/Web/API/IdentityProvider/getUserInfo)
-    pub fn get_user_info(config: &IdentityProviderConfig) -> Promise<Sequence<IdentityUserInfo>> {
+    pub fn get_user_info(config: &IdentityProviderConfig) -> Promise<TypedArray<IdentityUserInfo>> {
         Any::global("IdentityProvider")
             .call("getUserInfo", &[config.into()])
-            .as_::<Promise<Sequence<IdentityUserInfo>>>()
+            .as_::<Promise<TypedArray<IdentityUserInfo>>>()
     }
 }

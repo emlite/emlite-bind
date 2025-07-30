@@ -375,10 +375,10 @@ jsbind::utils::impl_dyn_cast!(Navigation);
 impl Navigation {
     /// The entries method.
     /// [`Navigation.entries`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/entries)
-    pub fn entries(&self) -> Sequence<NavigationHistoryEntry> {
+    pub fn entries(&self) -> TypedArray<NavigationHistoryEntry> {
         self.inner
             .call("entries", &[])
-            .as_::<Sequence<NavigationHistoryEntry>>()
+            .as_::<TypedArray<NavigationHistoryEntry>>()
     }
 }
 impl Navigation {
@@ -430,7 +430,7 @@ impl Navigation {
 impl Navigation {
     /// The navigate method.
     /// [`Navigation.navigate`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/navigate)
-    pub fn navigate0(&self, url: &USVString) -> NavigationResult {
+    pub fn navigate0(&self, url: &JsString) -> NavigationResult {
         self.inner
             .call("navigate", &[url.into()])
             .as_::<NavigationResult>()
@@ -439,7 +439,7 @@ impl Navigation {
     /// [`Navigation.navigate`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/navigate)
     pub fn navigate1(
         &self,
-        url: &USVString,
+        url: &JsString,
         options: &NavigationNavigateOptions,
     ) -> NavigationResult {
         self.inner
@@ -464,14 +464,14 @@ impl Navigation {
 impl Navigation {
     /// The traverseTo method.
     /// [`Navigation.traverseTo`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/traverseTo)
-    pub fn traverse_to0(&self, key: &DOMString) -> NavigationResult {
+    pub fn traverse_to0(&self, key: &JsString) -> NavigationResult {
         self.inner
             .call("traverseTo", &[key.into()])
             .as_::<NavigationResult>()
     }
     /// The traverseTo method.
     /// [`Navigation.traverseTo`](https://developer.mozilla.org/en-US/docs/Web/API/Navigation/traverseTo)
-    pub fn traverse_to1(&self, key: &DOMString, options: &NavigationOptions) -> NavigationResult {
+    pub fn traverse_to1(&self, key: &JsString, options: &NavigationOptions) -> NavigationResult {
         self.inner
             .call("traverseTo", &[key.into(), options.into()])
             .as_::<NavigationResult>()

@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(OrientationSensor);
 impl OrientationSensor {
     /// Getter of the `quaternion` attribute.
     /// [`OrientationSensor.quaternion`](https://developer.mozilla.org/en-US/docs/Web/API/OrientationSensor/quaternion)
-    pub fn quaternion(&self) -> FrozenArray<f64> {
-        self.inner.get("quaternion").as_::<FrozenArray<f64>>()
+    pub fn quaternion(&self) -> TypedArray<f64> {
+        self.inner.get("quaternion").as_::<TypedArray<f64>>()
     }
 }
 impl OrientationSensor {

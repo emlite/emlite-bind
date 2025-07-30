@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(MediaList);
 impl MediaList {
     /// Getter of the `mediaText` attribute.
     /// [`MediaList.mediaText`](https://developer.mozilla.org/en-US/docs/Web/API/MediaList/mediaText)
-    pub fn media_text(&self) -> CSSOMString {
-        self.inner.get("mediaText").as_::<CSSOMString>()
+    pub fn media_text(&self) -> JsString {
+        self.inner.get("mediaText").as_::<JsString>()
     }
 
     /// Setter of the `mediaText` attribute.
     /// [`MediaList.mediaText`](https://developer.mozilla.org/en-US/docs/Web/API/MediaList/mediaText)
-    pub fn set_media_text(&mut self, value: &CSSOMString) {
+    pub fn set_media_text(&mut self, value: &JsString) {
         self.inner.set("mediaText", value);
     }
 }
@@ -78,16 +78,14 @@ impl MediaList {
 impl MediaList {
     /// The item method.
     /// [`MediaList.item`](https://developer.mozilla.org/en-US/docs/Web/API/MediaList/item)
-    pub fn item(&self, index: u32) -> CSSOMString {
-        self.inner
-            .call("item", &[index.into()])
-            .as_::<CSSOMString>()
+    pub fn item(&self, index: u32) -> JsString {
+        self.inner.call("item", &[index.into()]).as_::<JsString>()
     }
 }
 impl MediaList {
     /// The appendMedium method.
     /// [`MediaList.appendMedium`](https://developer.mozilla.org/en-US/docs/Web/API/MediaList/appendMedium)
-    pub fn append_medium(&self, medium: &CSSOMString) -> Undefined {
+    pub fn append_medium(&self, medium: &JsString) -> Undefined {
         self.inner
             .call("appendMedium", &[medium.into()])
             .as_::<Undefined>()
@@ -96,7 +94,7 @@ impl MediaList {
 impl MediaList {
     /// The deleteMedium method.
     /// [`MediaList.deleteMedium`](https://developer.mozilla.org/en-US/docs/Web/API/MediaList/deleteMedium)
-    pub fn delete_medium(&self, medium: &CSSOMString) -> Undefined {
+    pub fn delete_medium(&self, medium: &JsString) -> Undefined {
         self.inner
             .call("deleteMedium", &[medium.into()])
             .as_::<Undefined>()

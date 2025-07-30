@@ -58,14 +58,14 @@ jsbind::utils::impl_dyn_cast!(CSSViewTransitionRule);
 impl CSSViewTransitionRule {
     /// Getter of the `navigation` attribute.
     /// [`CSSViewTransitionRule.navigation`](https://developer.mozilla.org/en-US/docs/Web/API/CSSViewTransitionRule/navigation)
-    pub fn navigation(&self) -> CSSOMString {
-        self.inner.get("navigation").as_::<CSSOMString>()
+    pub fn navigation(&self) -> JsString {
+        self.inner.get("navigation").as_::<JsString>()
     }
 }
 impl CSSViewTransitionRule {
     /// Getter of the `types` attribute.
     /// [`CSSViewTransitionRule.types`](https://developer.mozilla.org/en-US/docs/Web/API/CSSViewTransitionRule/types)
-    pub fn types(&self) -> FrozenArray<CSSOMString> {
-        self.inner.get("types").as_::<FrozenArray<CSSOMString>>()
+    pub fn types(&self) -> TypedArray<JsString> {
+        self.inner.get("types").as_::<TypedArray<JsString>>()
     }
 }

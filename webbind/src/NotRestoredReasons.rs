@@ -58,47 +58,47 @@ jsbind::utils::impl_dyn_cast!(NotRestoredReasons);
 impl NotRestoredReasons {
     /// Getter of the `src` attribute.
     /// [`NotRestoredReasons.src`](https://developer.mozilla.org/en-US/docs/Web/API/NotRestoredReasons/src)
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> JsString {
+        self.inner.get("src").as_::<JsString>()
     }
 }
 impl NotRestoredReasons {
     /// Getter of the `id` attribute.
     /// [`NotRestoredReasons.id`](https://developer.mozilla.org/en-US/docs/Web/API/NotRestoredReasons/id)
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> JsString {
+        self.inner.get("id").as_::<JsString>()
     }
 }
 impl NotRestoredReasons {
     /// Getter of the `name` attribute.
     /// [`NotRestoredReasons.name`](https://developer.mozilla.org/en-US/docs/Web/API/NotRestoredReasons/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl NotRestoredReasons {
     /// Getter of the `url` attribute.
     /// [`NotRestoredReasons.url`](https://developer.mozilla.org/en-US/docs/Web/API/NotRestoredReasons/url)
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> JsString {
+        self.inner.get("url").as_::<JsString>()
     }
 }
 impl NotRestoredReasons {
     /// Getter of the `reasons` attribute.
     /// [`NotRestoredReasons.reasons`](https://developer.mozilla.org/en-US/docs/Web/API/NotRestoredReasons/reasons)
-    pub fn reasons(&self) -> FrozenArray<NotRestoredReasonDetails> {
+    pub fn reasons(&self) -> TypedArray<NotRestoredReasonDetails> {
         self.inner
             .get("reasons")
-            .as_::<FrozenArray<NotRestoredReasonDetails>>()
+            .as_::<TypedArray<NotRestoredReasonDetails>>()
     }
 }
 impl NotRestoredReasons {
     /// Getter of the `children` attribute.
     /// [`NotRestoredReasons.children`](https://developer.mozilla.org/en-US/docs/Web/API/NotRestoredReasons/children)
-    pub fn children(&self) -> FrozenArray<NotRestoredReasons> {
+    pub fn children(&self) -> TypedArray<NotRestoredReasons> {
         self.inner
             .get("children")
-            .as_::<FrozenArray<NotRestoredReasons>>()
+            .as_::<TypedArray<NotRestoredReasons>>()
     }
 }
 impl NotRestoredReasons {

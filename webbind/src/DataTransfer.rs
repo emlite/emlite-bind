@@ -66,26 +66,26 @@ impl DataTransfer {
 impl DataTransfer {
     /// Getter of the `dropEffect` attribute.
     /// [`DataTransfer.dropEffect`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/dropEffect)
-    pub fn drop_effect(&self) -> DOMString {
-        self.inner.get("dropEffect").as_::<DOMString>()
+    pub fn drop_effect(&self) -> JsString {
+        self.inner.get("dropEffect").as_::<JsString>()
     }
 
     /// Setter of the `dropEffect` attribute.
     /// [`DataTransfer.dropEffect`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/dropEffect)
-    pub fn set_drop_effect(&mut self, value: &DOMString) {
+    pub fn set_drop_effect(&mut self, value: &JsString) {
         self.inner.set("dropEffect", value);
     }
 }
 impl DataTransfer {
     /// Getter of the `effectAllowed` attribute.
     /// [`DataTransfer.effectAllowed`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/effectAllowed)
-    pub fn effect_allowed(&self) -> DOMString {
-        self.inner.get("effectAllowed").as_::<DOMString>()
+    pub fn effect_allowed(&self) -> JsString {
+        self.inner.get("effectAllowed").as_::<JsString>()
     }
 
     /// Setter of the `effectAllowed` attribute.
     /// [`DataTransfer.effectAllowed`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/effectAllowed)
-    pub fn set_effect_allowed(&mut self, value: &DOMString) {
+    pub fn set_effect_allowed(&mut self, value: &JsString) {
         self.inner.set("effectAllowed", value);
     }
 }
@@ -108,23 +108,23 @@ impl DataTransfer {
 impl DataTransfer {
     /// Getter of the `types` attribute.
     /// [`DataTransfer.types`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/types)
-    pub fn types(&self) -> FrozenArray<DOMString> {
-        self.inner.get("types").as_::<FrozenArray<DOMString>>()
+    pub fn types(&self) -> TypedArray<JsString> {
+        self.inner.get("types").as_::<TypedArray<JsString>>()
     }
 }
 impl DataTransfer {
     /// The getData method.
     /// [`DataTransfer.getData`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/getData)
-    pub fn get_data(&self, format: &DOMString) -> DOMString {
+    pub fn get_data(&self, format: &JsString) -> JsString {
         self.inner
             .call("getData", &[format.into()])
-            .as_::<DOMString>()
+            .as_::<JsString>()
     }
 }
 impl DataTransfer {
     /// The setData method.
     /// [`DataTransfer.setData`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData)
-    pub fn set_data(&self, format: &DOMString, data: &DOMString) -> Undefined {
+    pub fn set_data(&self, format: &JsString, data: &JsString) -> Undefined {
         self.inner
             .call("setData", &[format.into(), data.into()])
             .as_::<Undefined>()
@@ -138,7 +138,7 @@ impl DataTransfer {
     }
     /// The clearData method.
     /// [`DataTransfer.clearData`](https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/clearData)
-    pub fn clear_data1(&self, format: &DOMString) -> Undefined {
+    pub fn clear_data1(&self, format: &JsString) -> Undefined {
         self.inner
             .call("clearData", &[format.into()])
             .as_::<Undefined>()

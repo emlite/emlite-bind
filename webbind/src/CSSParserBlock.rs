@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CSSParserBlock);
 
 impl CSSParserBlock {
     /// The `new CSSParserBlock(..)` constructor, creating a new CSSParserBlock instance
-    pub fn new(name: &DOMString, body: &Sequence<CSSParserValue>) -> CSSParserBlock {
+    pub fn new(name: &JsString, body: &TypedArray<CSSParserValue>) -> CSSParserBlock {
         Self {
             inner: Any::global("CSSParserBlock")
                 .new(&[name.into(), body.into()])
@@ -68,14 +68,14 @@ impl CSSParserBlock {
 impl CSSParserBlock {
     /// Getter of the `name` attribute.
     /// [`CSSParserBlock.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserBlock/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl CSSParserBlock {
     /// Getter of the `body` attribute.
     /// [`CSSParserBlock.body`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserBlock/body)
-    pub fn body(&self) -> FrozenArray<CSSParserValue> {
-        self.inner.get("body").as_::<FrozenArray<CSSParserValue>>()
+    pub fn body(&self) -> TypedArray<CSSParserValue> {
+        self.inner.get("body").as_::<TypedArray<CSSParserValue>>()
     }
 }

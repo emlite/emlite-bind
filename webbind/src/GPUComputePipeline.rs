@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(GPUComputePipeline);
 impl GPUComputePipeline {
     /// Getter of the `label` attribute.
     /// [`GPUComputePipeline.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePipeline/label)
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
     }
 
     /// Setter of the `label` attribute.
     /// [`GPUComputePipeline.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUComputePipeline/label)
-    pub fn set_label(&mut self, value: &USVString) {
+    pub fn set_label(&mut self, value: &JsString) {
         self.inner.set("label", value);
     }
 }

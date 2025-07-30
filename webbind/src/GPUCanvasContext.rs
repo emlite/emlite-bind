@@ -78,13 +78,13 @@ impl GPUCanvasConfiguration {
     }
 }
 impl GPUCanvasConfiguration {
-    pub fn view_formats(&self) -> Sequence<GPUTextureFormat> {
+    pub fn view_formats(&self) -> TypedArray<GPUTextureFormat> {
         self.inner
             .get("viewFormats")
-            .as_::<Sequence<GPUTextureFormat>>()
+            .as_::<TypedArray<GPUTextureFormat>>()
     }
 
-    pub fn set_view_formats(&mut self, value: &Sequence<GPUTextureFormat>) {
+    pub fn set_view_formats(&mut self, value: &TypedArray<GPUTextureFormat>) {
         self.inner.set("viewFormats", value);
     }
 }

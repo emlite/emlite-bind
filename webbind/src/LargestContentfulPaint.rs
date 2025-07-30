@@ -72,15 +72,15 @@ impl LargestContentfulPaint {
 impl LargestContentfulPaint {
     /// Getter of the `id` attribute.
     /// [`LargestContentfulPaint.id`](https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint/id)
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> JsString {
+        self.inner.get("id").as_::<JsString>()
     }
 }
 impl LargestContentfulPaint {
     /// Getter of the `url` attribute.
     /// [`LargestContentfulPaint.url`](https://developer.mozilla.org/en-US/docs/Web/API/LargestContentfulPaint/url)
-    pub fn url(&self) -> DOMString {
-        self.inner.get("url").as_::<DOMString>()
+    pub fn url(&self) -> JsString {
+        self.inner.get("url").as_::<JsString>()
     }
 }
 impl LargestContentfulPaint {

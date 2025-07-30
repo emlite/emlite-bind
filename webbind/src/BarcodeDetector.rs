@@ -60,11 +60,11 @@ impl DetectedBarcode {
     }
 }
 impl DetectedBarcode {
-    pub fn raw_value(&self) -> DOMString {
-        self.inner.get("rawValue").as_::<DOMString>()
+    pub fn raw_value(&self) -> JsString {
+        self.inner.get("rawValue").as_::<JsString>()
     }
 
-    pub fn set_raw_value(&mut self, value: &DOMString) {
+    pub fn set_raw_value(&mut self, value: &JsString) {
         self.inner.set("rawValue", value);
     }
 }
@@ -78,11 +78,11 @@ impl DetectedBarcode {
     }
 }
 impl DetectedBarcode {
-    pub fn corner_points(&self) -> Sequence<Any> {
-        self.inner.get("cornerPoints").as_::<Sequence<Any>>()
+    pub fn corner_points(&self) -> TypedArray<Any> {
+        self.inner.get("cornerPoints").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_corner_points(&mut self, value: &Sequence<Any>) {
+    pub fn set_corner_points(&mut self, value: &TypedArray<Any>) {
         self.inner.set("cornerPoints", value);
     }
 }
@@ -161,18 +161,18 @@ impl BarcodeDetector {
 impl BarcodeDetector {
     /// The getSupportedFormats method.
     /// [`BarcodeDetector.getSupportedFormats`](https://developer.mozilla.org/en-US/docs/Web/API/BarcodeDetector/getSupportedFormats)
-    pub fn get_supported_formats() -> Promise<Sequence<BarcodeFormat>> {
+    pub fn get_supported_formats() -> Promise<TypedArray<BarcodeFormat>> {
         Any::global("BarcodeDetector")
             .call("getSupportedFormats", &[])
-            .as_::<Promise<Sequence<BarcodeFormat>>>()
+            .as_::<Promise<TypedArray<BarcodeFormat>>>()
     }
 }
 impl BarcodeDetector {
     /// The detect method.
     /// [`BarcodeDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/BarcodeDetector/detect)
-    pub fn detect(&self, image: &Any) -> Promise<Sequence<DetectedBarcode>> {
+    pub fn detect(&self, image: &Any) -> Promise<TypedArray<DetectedBarcode>> {
         self.inner
             .call("detect", &[image.into()])
-            .as_::<Promise<Sequence<DetectedBarcode>>>()
+            .as_::<Promise<TypedArray<DetectedBarcode>>>()
     }
 }

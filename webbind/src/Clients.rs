@@ -126,30 +126,30 @@ jsbind::utils::impl_dyn_cast!(Clients);
 impl Clients {
     /// The get method.
     /// [`Clients.get`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/get)
-    pub fn get(&self, id: &DOMString) -> Promise<Any> {
+    pub fn get(&self, id: &JsString) -> Promise<Any> {
         self.inner.call("get", &[id.into()]).as_::<Promise<Any>>()
     }
 }
 impl Clients {
     /// The matchAll method.
     /// [`Clients.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll)
-    pub fn match_all0(&self) -> Promise<FrozenArray<Client>> {
+    pub fn match_all0(&self) -> Promise<TypedArray<Client>> {
         self.inner
             .call("matchAll", &[])
-            .as_::<Promise<FrozenArray<Client>>>()
+            .as_::<Promise<TypedArray<Client>>>()
     }
     /// The matchAll method.
     /// [`Clients.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/matchAll)
-    pub fn match_all1(&self, options: &ClientQueryOptions) -> Promise<FrozenArray<Client>> {
+    pub fn match_all1(&self, options: &ClientQueryOptions) -> Promise<TypedArray<Client>> {
         self.inner
             .call("matchAll", &[options.into()])
-            .as_::<Promise<FrozenArray<Client>>>()
+            .as_::<Promise<TypedArray<Client>>>()
     }
 }
 impl Clients {
     /// The openWindow method.
     /// [`Clients.openWindow`](https://developer.mozilla.org/en-US/docs/Web/API/Clients/openWindow)
-    pub fn open_window(&self, url: &USVString) -> Promise<WindowClient> {
+    pub fn open_window(&self, url: &JsString) -> Promise<WindowClient> {
         self.inner
             .call("openWindow", &[url.into()])
             .as_::<Promise<WindowClient>>()

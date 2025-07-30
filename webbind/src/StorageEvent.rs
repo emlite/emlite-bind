@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(StorageEvent);
 
 impl StorageEvent {
     /// The `new StorageEvent(..)` constructor, creating a new StorageEvent instance
-    pub fn new0(type_: &DOMString) -> StorageEvent {
+    pub fn new0(type_: &JsString) -> StorageEvent {
         Self {
             inner: Any::global("StorageEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl StorageEvent {
     }
 
     /// The `new StorageEvent(..)` constructor, creating a new StorageEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> StorageEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> StorageEvent {
         Self {
             inner: Any::global("StorageEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -77,29 +77,29 @@ impl StorageEvent {
 impl StorageEvent {
     /// Getter of the `key` attribute.
     /// [`StorageEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/key)
-    pub fn key(&self) -> DOMString {
-        self.inner.get("key").as_::<DOMString>()
+    pub fn key(&self) -> JsString {
+        self.inner.get("key").as_::<JsString>()
     }
 }
 impl StorageEvent {
     /// Getter of the `oldValue` attribute.
     /// [`StorageEvent.oldValue`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/oldValue)
-    pub fn old_value(&self) -> DOMString {
-        self.inner.get("oldValue").as_::<DOMString>()
+    pub fn old_value(&self) -> JsString {
+        self.inner.get("oldValue").as_::<JsString>()
     }
 }
 impl StorageEvent {
     /// Getter of the `newValue` attribute.
     /// [`StorageEvent.newValue`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/newValue)
-    pub fn new_value(&self) -> DOMString {
-        self.inner.get("newValue").as_::<DOMString>()
+    pub fn new_value(&self) -> JsString {
+        self.inner.get("newValue").as_::<JsString>()
     }
 }
 impl StorageEvent {
     /// Getter of the `url` attribute.
     /// [`StorageEvent.url`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/url)
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> JsString {
+        self.inner.get("url").as_::<JsString>()
     }
 }
 impl StorageEvent {
@@ -112,14 +112,14 @@ impl StorageEvent {
 impl StorageEvent {
     /// The initStorageEvent method.
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
-    pub fn init_storage_event0(&self, type_: &DOMString) -> Undefined {
+    pub fn init_storage_event0(&self, type_: &JsString) -> Undefined {
         self.inner
             .call("initStorageEvent", &[type_.into()])
             .as_::<Undefined>()
     }
     /// The initStorageEvent method.
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
-    pub fn init_storage_event1(&self, type_: &DOMString, bubbles: bool) -> Undefined {
+    pub fn init_storage_event1(&self, type_: &JsString, bubbles: bool) -> Undefined {
         self.inner
             .call("initStorageEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
@@ -128,7 +128,7 @@ impl StorageEvent {
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
     pub fn init_storage_event2(
         &self,
-        type_: &DOMString,
+        type_: &JsString,
         bubbles: bool,
         cancelable: bool,
     ) -> Undefined {
@@ -143,10 +143,10 @@ impl StorageEvent {
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
     pub fn init_storage_event3(
         &self,
-        type_: &DOMString,
+        type_: &JsString,
         bubbles: bool,
         cancelable: bool,
-        key: &DOMString,
+        key: &JsString,
     ) -> Undefined {
         self.inner
             .call(
@@ -159,11 +159,11 @@ impl StorageEvent {
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
     pub fn init_storage_event4(
         &self,
-        type_: &DOMString,
+        type_: &JsString,
         bubbles: bool,
         cancelable: bool,
-        key: &DOMString,
-        old_value: &DOMString,
+        key: &JsString,
+        old_value: &JsString,
     ) -> Undefined {
         self.inner
             .call(
@@ -182,12 +182,12 @@ impl StorageEvent {
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
     pub fn init_storage_event5(
         &self,
-        type_: &DOMString,
+        type_: &JsString,
         bubbles: bool,
         cancelable: bool,
-        key: &DOMString,
-        old_value: &DOMString,
-        new_value: &DOMString,
+        key: &JsString,
+        old_value: &JsString,
+        new_value: &JsString,
     ) -> Undefined {
         self.inner
             .call(
@@ -207,13 +207,13 @@ impl StorageEvent {
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
     pub fn init_storage_event6(
         &self,
-        type_: &DOMString,
+        type_: &JsString,
         bubbles: bool,
         cancelable: bool,
-        key: &DOMString,
-        old_value: &DOMString,
-        new_value: &DOMString,
-        url: &USVString,
+        key: &JsString,
+        old_value: &JsString,
+        new_value: &JsString,
+        url: &JsString,
     ) -> Undefined {
         self.inner
             .call(
@@ -234,13 +234,13 @@ impl StorageEvent {
     /// [`StorageEvent.initStorageEvent`](https://developer.mozilla.org/en-US/docs/Web/API/StorageEvent/initStorageEvent)
     pub fn init_storage_event7(
         &self,
-        type_: &DOMString,
+        type_: &JsString,
         bubbles: bool,
         cancelable: bool,
-        key: &DOMString,
-        old_value: &DOMString,
-        new_value: &DOMString,
-        url: &USVString,
+        key: &JsString,
+        old_value: &JsString,
+        new_value: &JsString,
+        url: &JsString,
         storage_area: &Storage,
     ) -> Undefined {
         self.inner

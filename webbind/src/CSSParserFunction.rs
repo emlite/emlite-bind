@@ -57,7 +57,10 @@ jsbind::utils::impl_dyn_cast!(CSSParserFunction);
 
 impl CSSParserFunction {
     /// The `new CSSParserFunction(..)` constructor, creating a new CSSParserFunction instance
-    pub fn new(name: &DOMString, args: &Sequence<Sequence<CSSParserValue>>) -> CSSParserFunction {
+    pub fn new(
+        name: &JsString,
+        args: &TypedArray<TypedArray<CSSParserValue>>,
+    ) -> CSSParserFunction {
         Self {
             inner: Any::global("CSSParserFunction")
                 .new(&[name.into(), args.into()])
@@ -68,16 +71,16 @@ impl CSSParserFunction {
 impl CSSParserFunction {
     /// Getter of the `name` attribute.
     /// [`CSSParserFunction.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserFunction/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl CSSParserFunction {
     /// Getter of the `args` attribute.
     /// [`CSSParserFunction.args`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserFunction/args)
-    pub fn args(&self) -> FrozenArray<FrozenArray<CSSParserValue>> {
+    pub fn args(&self) -> TypedArray<TypedArray<CSSParserValue>> {
         self.inner
             .get("args")
-            .as_::<FrozenArray<FrozenArray<CSSParserValue>>>()
+            .as_::<TypedArray<TypedArray<CSSParserValue>>>()
     }
 }

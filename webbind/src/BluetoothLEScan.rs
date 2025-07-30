@@ -58,10 +58,10 @@ jsbind::utils::impl_dyn_cast!(BluetoothLEScan);
 impl BluetoothLEScan {
     /// Getter of the `filters` attribute.
     /// [`BluetoothLEScan.filters`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScan/filters)
-    pub fn filters(&self) -> FrozenArray<BluetoothLEScanFilter> {
+    pub fn filters(&self) -> TypedArray<BluetoothLEScanFilter> {
         self.inner
             .get("filters")
-            .as_::<FrozenArray<BluetoothLEScanFilter>>()
+            .as_::<TypedArray<BluetoothLEScanFilter>>()
     }
 }
 impl BluetoothLEScan {

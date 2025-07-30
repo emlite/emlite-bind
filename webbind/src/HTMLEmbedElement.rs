@@ -68,52 +68,52 @@ impl HTMLEmbedElement {
 impl HTMLEmbedElement {
     /// Getter of the `src` attribute.
     /// [`HTMLEmbedElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/src)
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> JsString {
+        self.inner.get("src").as_::<JsString>()
     }
 
     /// Setter of the `src` attribute.
     /// [`HTMLEmbedElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/src)
-    pub fn set_src(&mut self, value: &USVString) {
+    pub fn set_src(&mut self, value: &JsString) {
         self.inner.set("src", value);
     }
 }
 impl HTMLEmbedElement {
     /// Getter of the `type` attribute.
     /// [`HTMLEmbedElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 
     /// Setter of the `type` attribute.
     /// [`HTMLEmbedElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/type)
-    pub fn set_type_(&mut self, value: &DOMString) {
+    pub fn set_type_(&mut self, value: &JsString) {
         self.inner.set("type", value);
     }
 }
 impl HTMLEmbedElement {
     /// Getter of the `width` attribute.
     /// [`HTMLEmbedElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/width)
-    pub fn width(&self) -> DOMString {
-        self.inner.get("width").as_::<DOMString>()
+    pub fn width(&self) -> JsString {
+        self.inner.get("width").as_::<JsString>()
     }
 
     /// Setter of the `width` attribute.
     /// [`HTMLEmbedElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/width)
-    pub fn set_width(&mut self, value: &DOMString) {
+    pub fn set_width(&mut self, value: &JsString) {
         self.inner.set("width", value);
     }
 }
 impl HTMLEmbedElement {
     /// Getter of the `height` attribute.
     /// [`HTMLEmbedElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/height)
-    pub fn height(&self) -> DOMString {
-        self.inner.get("height").as_::<DOMString>()
+    pub fn height(&self) -> JsString {
+        self.inner.get("height").as_::<JsString>()
     }
 
     /// Setter of the `height` attribute.
     /// [`HTMLEmbedElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/height)
-    pub fn set_height(&mut self, value: &DOMString) {
+    pub fn set_height(&mut self, value: &JsString) {
         self.inner.set("height", value);
     }
 }
@@ -127,26 +127,26 @@ impl HTMLEmbedElement {
 impl HTMLEmbedElement {
     /// Getter of the `align` attribute.
     /// [`HTMLEmbedElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/align)
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> JsString {
+        self.inner.get("align").as_::<JsString>()
     }
 
     /// Setter of the `align` attribute.
     /// [`HTMLEmbedElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/align)
-    pub fn set_align(&mut self, value: &DOMString) {
+    pub fn set_align(&mut self, value: &JsString) {
         self.inner.set("align", value);
     }
 }
 impl HTMLEmbedElement {
     /// Getter of the `name` attribute.
     /// [`HTMLEmbedElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`HTMLEmbedElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLEmbedElement/name)
-    pub fn set_name(&mut self, value: &DOMString) {
+    pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
     }
 }

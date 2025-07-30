@@ -82,14 +82,14 @@ impl FormData {
 impl FormData {
     /// The append method.
     /// [`FormData.append`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/append)
-    pub fn append0(&self, name: &USVString, blob_value: &Blob) -> Undefined {
+    pub fn append0(&self, name: &JsString, blob_value: &Blob) -> Undefined {
         self.inner
             .call("append", &[name.into(), blob_value.into()])
             .as_::<Undefined>()
     }
     /// The append method.
     /// [`FormData.append`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/append)
-    pub fn append1(&self, name: &USVString, blob_value: &Blob, filename: &USVString) -> Undefined {
+    pub fn append1(&self, name: &JsString, blob_value: &Blob, filename: &JsString) -> Undefined {
         self.inner
             .call("append", &[name.into(), blob_value.into(), filename.into()])
             .as_::<Undefined>()
@@ -98,44 +98,44 @@ impl FormData {
 impl FormData {
     /// The delete method.
     /// [`FormData.delete`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/delete)
-    pub fn delete(&self, name: &USVString) -> Undefined {
+    pub fn delete(&self, name: &JsString) -> Undefined {
         self.inner.call("delete", &[name.into()]).as_::<Undefined>()
     }
 }
 impl FormData {
     /// The get method.
     /// [`FormData.get`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/get)
-    pub fn get(&self, name: &USVString) -> Any {
+    pub fn get(&self, name: &JsString) -> Any {
         self.inner.call("get", &[name.into()]).as_::<Any>()
     }
 }
 impl FormData {
     /// The getAll method.
     /// [`FormData.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/getAll)
-    pub fn get_all(&self, name: &USVString) -> Sequence<Any> {
+    pub fn get_all(&self, name: &JsString) -> TypedArray<Any> {
         self.inner
             .call("getAll", &[name.into()])
-            .as_::<Sequence<Any>>()
+            .as_::<TypedArray<Any>>()
     }
 }
 impl FormData {
     /// The has method.
     /// [`FormData.has`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/has)
-    pub fn has(&self, name: &USVString) -> bool {
+    pub fn has(&self, name: &JsString) -> bool {
         self.inner.call("has", &[name.into()]).as_::<bool>()
     }
 }
 impl FormData {
     /// The set method.
     /// [`FormData.set`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/set)
-    pub fn set0(&self, name: &USVString, blob_value: &Blob) -> Undefined {
+    pub fn set0(&self, name: &JsString, blob_value: &Blob) -> Undefined {
         self.inner
             .call("set", &[name.into(), blob_value.into()])
             .as_::<Undefined>()
     }
     /// The set method.
     /// [`FormData.set`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/set)
-    pub fn set1(&self, name: &USVString, blob_value: &Blob, filename: &USVString) -> Undefined {
+    pub fn set1(&self, name: &JsString, blob_value: &Blob, filename: &JsString) -> Undefined {
         self.inner
             .call("set", &[name.into(), blob_value.into(), filename.into()])
             .as_::<Undefined>()

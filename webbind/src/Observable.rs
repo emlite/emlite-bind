@@ -250,17 +250,17 @@ impl Observable {
 impl Observable {
     /// The toArray method.
     /// [`Observable.toArray`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/toArray)
-    pub fn to_array0(&self) -> Promise<Sequence<Any>> {
+    pub fn to_array0(&self) -> Promise<TypedArray<Any>> {
         self.inner
             .call("toArray", &[])
-            .as_::<Promise<Sequence<Any>>>()
+            .as_::<Promise<TypedArray<Any>>>()
     }
     /// The toArray method.
     /// [`Observable.toArray`](https://developer.mozilla.org/en-US/docs/Web/API/Observable/toArray)
-    pub fn to_array1(&self, options: &SubscribeOptions) -> Promise<Sequence<Any>> {
+    pub fn to_array1(&self, options: &SubscribeOptions) -> Promise<TypedArray<Any>> {
         self.inner
             .call("toArray", &[options.into()])
-            .as_::<Promise<Sequence<Any>>>()
+            .as_::<Promise<TypedArray<Any>>>()
     }
 }
 impl Observable {

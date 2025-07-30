@@ -116,7 +116,7 @@ impl SubtleCrypto {
         &self,
         algorithm: &Any,
         extractable: bool,
-        key_usages: &Sequence<KeyUsage>,
+        key_usages: &TypedArray<KeyUsage>,
     ) -> Promise<Any> {
         self.inner
             .call(
@@ -135,7 +135,7 @@ impl SubtleCrypto {
         base_key: &CryptoKey,
         derived_key_type: &Any,
         extractable: bool,
-        key_usages: &Sequence<KeyUsage>,
+        key_usages: &TypedArray<KeyUsage>,
     ) -> Promise<CryptoKey> {
         self.inner
             .call(
@@ -184,7 +184,7 @@ impl SubtleCrypto {
         key_data: &Any,
         algorithm: &Any,
         extractable: bool,
-        key_usages: &Sequence<KeyUsage>,
+        key_usages: &TypedArray<KeyUsage>,
     ) -> Promise<CryptoKey> {
         self.inner
             .call(
@@ -243,7 +243,7 @@ impl SubtleCrypto {
         unwrap_algorithm: &Any,
         unwrapped_key_algorithm: &Any,
         extractable: bool,
-        key_usages: &Sequence<KeyUsage>,
+        key_usages: &TypedArray<KeyUsage>,
     ) -> Promise<CryptoKey> {
         self.inner
             .call(

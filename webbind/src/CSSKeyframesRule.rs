@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(CSSKeyframesRule);
 impl CSSKeyframesRule {
     /// Getter of the `name` attribute.
     /// [`CSSKeyframesRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule/name)
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`CSSKeyframesRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule/name)
-    pub fn set_name(&mut self, value: &CSSOMString) {
+    pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
     }
 }
@@ -85,7 +85,7 @@ impl CSSKeyframesRule {
 impl CSSKeyframesRule {
     /// The appendRule method.
     /// [`CSSKeyframesRule.appendRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule/appendRule)
-    pub fn append_rule(&self, rule: &CSSOMString) -> Undefined {
+    pub fn append_rule(&self, rule: &JsString) -> Undefined {
         self.inner
             .call("appendRule", &[rule.into()])
             .as_::<Undefined>()
@@ -94,7 +94,7 @@ impl CSSKeyframesRule {
 impl CSSKeyframesRule {
     /// The deleteRule method.
     /// [`CSSKeyframesRule.deleteRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule/deleteRule)
-    pub fn delete_rule(&self, select: &CSSOMString) -> Undefined {
+    pub fn delete_rule(&self, select: &JsString) -> Undefined {
         self.inner
             .call("deleteRule", &[select.into()])
             .as_::<Undefined>()
@@ -103,7 +103,7 @@ impl CSSKeyframesRule {
 impl CSSKeyframesRule {
     /// The findRule method.
     /// [`CSSKeyframesRule.findRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSKeyframesRule/findRule)
-    pub fn find_rule(&self, select: &CSSOMString) -> CSSKeyframeRule {
+    pub fn find_rule(&self, select: &JsString) -> CSSKeyframeRule {
         self.inner
             .call("findRule", &[select.into()])
             .as_::<CSSKeyframeRule>()

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(AudioWorkletNode);
 
 impl AudioWorkletNode {
     /// The `new AudioWorkletNode(..)` constructor, creating a new AudioWorkletNode instance
-    pub fn new0(context: &BaseAudioContext, name: &DOMString) -> AudioWorkletNode {
+    pub fn new0(context: &BaseAudioContext, name: &JsString) -> AudioWorkletNode {
         Self {
             inner: Any::global("AudioWorkletNode")
                 .new(&[context.into(), name.into()])
@@ -66,7 +66,7 @@ impl AudioWorkletNode {
     }
 
     /// The `new AudioWorkletNode(..)` constructor, creating a new AudioWorkletNode instance
-    pub fn new1(context: &BaseAudioContext, name: &DOMString, options: &Any) -> AudioWorkletNode {
+    pub fn new1(context: &BaseAudioContext, name: &JsString, options: &Any) -> AudioWorkletNode {
         Self {
             inner: Any::global("AudioWorkletNode")
                 .new(&[context.into(), name.into(), options.into()])

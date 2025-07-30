@@ -69,11 +69,11 @@ impl RewriterCreateOptions {
     }
 }
 impl RewriterCreateOptions {
-    pub fn shared_context(&self) -> DOMString {
-        self.inner.get("sharedContext").as_::<DOMString>()
+    pub fn shared_context(&self) -> JsString {
+        self.inner.get("sharedContext").as_::<JsString>()
     }
 
-    pub fn set_shared_context(&mut self, value: &DOMString) {
+    pub fn set_shared_context(&mut self, value: &JsString) {
         self.inner.set("sharedContext", value);
     }
 }
@@ -155,33 +155,33 @@ impl RewriterCreateCoreOptions {
     }
 }
 impl RewriterCreateCoreOptions {
-    pub fn expected_input_languages(&self) -> Sequence<DOMString> {
+    pub fn expected_input_languages(&self) -> TypedArray<JsString> {
         self.inner
             .get("expectedInputLanguages")
-            .as_::<Sequence<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_expected_input_languages(&mut self, value: &Sequence<DOMString>) {
+    pub fn set_expected_input_languages(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("expectedInputLanguages", value);
     }
 }
 impl RewriterCreateCoreOptions {
-    pub fn expected_context_languages(&self) -> Sequence<DOMString> {
+    pub fn expected_context_languages(&self) -> TypedArray<JsString> {
         self.inner
             .get("expectedContextLanguages")
-            .as_::<Sequence<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_expected_context_languages(&mut self, value: &Sequence<DOMString>) {
+    pub fn set_expected_context_languages(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("expectedContextLanguages", value);
     }
 }
 impl RewriterCreateCoreOptions {
-    pub fn output_language(&self) -> DOMString {
-        self.inner.get("outputLanguage").as_::<DOMString>()
+    pub fn output_language(&self) -> JsString {
+        self.inner.get("outputLanguage").as_::<JsString>()
     }
 
-    pub fn set_output_language(&mut self, value: &DOMString) {
+    pub fn set_output_language(&mut self, value: &JsString) {
         self.inner.set("outputLanguage", value);
     }
 }
@@ -236,11 +236,11 @@ impl From<&RewriterRewriteOptions> for Any {
 }
 
 impl RewriterRewriteOptions {
-    pub fn context(&self) -> DOMString {
-        self.inner.get("context").as_::<DOMString>()
+    pub fn context(&self) -> JsString {
+        self.inner.get("context").as_::<JsString>()
     }
 
-    pub fn set_context(&mut self, value: &DOMString) {
+    pub fn set_context(&mut self, value: &JsString) {
         self.inner.set("context", value);
     }
 }
@@ -343,27 +343,27 @@ impl Rewriter {
 impl Rewriter {
     /// The rewrite method.
     /// [`Rewriter.rewrite`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewrite)
-    pub fn rewrite0(&self, input: &DOMString) -> Promise<DOMString> {
+    pub fn rewrite0(&self, input: &JsString) -> Promise<JsString> {
         self.inner
             .call("rewrite", &[input.into()])
-            .as_::<Promise<DOMString>>()
+            .as_::<Promise<JsString>>()
     }
     /// The rewrite method.
     /// [`Rewriter.rewrite`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewrite)
     pub fn rewrite1(
         &self,
-        input: &DOMString,
+        input: &JsString,
         options: &RewriterRewriteOptions,
-    ) -> Promise<DOMString> {
+    ) -> Promise<JsString> {
         self.inner
             .call("rewrite", &[input.into(), options.into()])
-            .as_::<Promise<DOMString>>()
+            .as_::<Promise<JsString>>()
     }
 }
 impl Rewriter {
     /// The rewriteStreaming method.
     /// [`Rewriter.rewriteStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewriteStreaming)
-    pub fn rewrite_streaming0(&self, input: &DOMString) -> ReadableStream {
+    pub fn rewrite_streaming0(&self, input: &JsString) -> ReadableStream {
         self.inner
             .call("rewriteStreaming", &[input.into()])
             .as_::<ReadableStream>()
@@ -372,7 +372,7 @@ impl Rewriter {
     /// [`Rewriter.rewriteStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/rewriteStreaming)
     pub fn rewrite_streaming1(
         &self,
-        input: &DOMString,
+        input: &JsString,
         options: &RewriterRewriteOptions,
     ) -> ReadableStream {
         self.inner
@@ -383,8 +383,8 @@ impl Rewriter {
 impl Rewriter {
     /// Getter of the `sharedContext` attribute.
     /// [`Rewriter.sharedContext`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/sharedContext)
-    pub fn shared_context(&self) -> DOMString {
-        self.inner.get("sharedContext").as_::<DOMString>()
+    pub fn shared_context(&self) -> JsString {
+        self.inner.get("sharedContext").as_::<JsString>()
     }
 }
 impl Rewriter {
@@ -411,32 +411,32 @@ impl Rewriter {
 impl Rewriter {
     /// Getter of the `expectedInputLanguages` attribute.
     /// [`Rewriter.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/expectedInputLanguages)
-    pub fn expected_input_languages(&self) -> FrozenArray<DOMString> {
+    pub fn expected_input_languages(&self) -> TypedArray<JsString> {
         self.inner
             .get("expectedInputLanguages")
-            .as_::<FrozenArray<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 }
 impl Rewriter {
     /// Getter of the `expectedContextLanguages` attribute.
     /// [`Rewriter.expectedContextLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/expectedContextLanguages)
-    pub fn expected_context_languages(&self) -> FrozenArray<DOMString> {
+    pub fn expected_context_languages(&self) -> TypedArray<JsString> {
         self.inner
             .get("expectedContextLanguages")
-            .as_::<FrozenArray<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 }
 impl Rewriter {
     /// Getter of the `outputLanguage` attribute.
     /// [`Rewriter.outputLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/outputLanguage)
-    pub fn output_language(&self) -> DOMString {
-        self.inner.get("outputLanguage").as_::<DOMString>()
+    pub fn output_language(&self) -> JsString {
+        self.inner.get("outputLanguage").as_::<JsString>()
     }
 }
 impl Rewriter {
     /// The measureInputUsage method.
     /// [`Rewriter.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/measureInputUsage)
-    pub fn measure_input_usage0(&self, input: &DOMString) -> Promise<f64> {
+    pub fn measure_input_usage0(&self, input: &JsString) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into()])
             .as_::<Promise<f64>>()
@@ -445,7 +445,7 @@ impl Rewriter {
     /// [`Rewriter.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Rewriter/measureInputUsage)
     pub fn measure_input_usage1(
         &self,
-        input: &DOMString,
+        input: &JsString,
         options: &RewriterRewriteOptions,
     ) -> Promise<f64> {
         self.inner

@@ -164,13 +164,13 @@ impl PhotoCapabilities {
     }
 }
 impl PhotoCapabilities {
-    pub fn fill_light_mode(&self) -> Sequence<FillLightMode> {
+    pub fn fill_light_mode(&self) -> TypedArray<FillLightMode> {
         self.inner
             .get("fillLightMode")
-            .as_::<Sequence<FillLightMode>>()
+            .as_::<TypedArray<FillLightMode>>()
     }
 
-    pub fn set_fill_light_mode(&mut self, value: &Sequence<FillLightMode>) {
+    pub fn set_fill_light_mode(&mut self, value: &TypedArray<FillLightMode>) {
         self.inner.set("fillLightMode", value);
     }
 }

@@ -57,14 +57,14 @@ jsbind::utils::impl_dyn_cast!(URL);
 
 impl URL {
     /// The `new URL(..)` constructor, creating a new URL instance
-    pub fn new0(url: &USVString) -> URL {
+    pub fn new0(url: &JsString) -> URL {
         Self {
             inner: Any::global("URL").new(&[url.into()]).as_::<Any>(),
         }
     }
 
     /// The `new URL(..)` constructor, creating a new URL instance
-    pub fn new1(url: &USVString, base: &USVString) -> URL {
+    pub fn new1(url: &JsString, base: &JsString) -> URL {
         Self {
             inner: Any::global("URL")
                 .new(&[url.into(), base.into()])
@@ -75,12 +75,12 @@ impl URL {
 impl URL {
     /// The parse method.
     /// [`URL.parse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/parse)
-    pub fn parse0(url: &USVString) -> URL {
+    pub fn parse0(url: &JsString) -> URL {
         Any::global("URL").call("parse", &[url.into()]).as_::<URL>()
     }
     /// The parse method.
     /// [`URL.parse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/parse)
-    pub fn parse1(url: &USVString, base: &USVString) -> URL {
+    pub fn parse1(url: &JsString, base: &JsString) -> URL {
         Any::global("URL")
             .call("parse", &[url.into(), base.into()])
             .as_::<URL>()
@@ -89,14 +89,14 @@ impl URL {
 impl URL {
     /// The canParse method.
     /// [`URL.canParse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse)
-    pub fn can_parse0(url: &USVString) -> bool {
+    pub fn can_parse0(url: &JsString) -> bool {
         Any::global("URL")
             .call("canParse", &[url.into()])
             .as_::<bool>()
     }
     /// The canParse method.
     /// [`URL.canParse`](https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse)
-    pub fn can_parse1(url: &USVString, base: &USVString) -> bool {
+    pub fn can_parse1(url: &JsString, base: &JsString) -> bool {
         Any::global("URL")
             .call("canParse", &[url.into(), base.into()])
             .as_::<bool>()
@@ -105,124 +105,124 @@ impl URL {
 impl URL {
     /// Getter of the `href` attribute.
     /// [`URL.href`](https://developer.mozilla.org/en-US/docs/Web/API/URL/href)
-    pub fn href(&self) -> USVString {
-        self.inner.get("href").as_::<USVString>()
+    pub fn href(&self) -> JsString {
+        self.inner.get("href").as_::<JsString>()
     }
 
     /// Setter of the `href` attribute.
     /// [`URL.href`](https://developer.mozilla.org/en-US/docs/Web/API/URL/href)
-    pub fn set_href(&mut self, value: &USVString) {
+    pub fn set_href(&mut self, value: &JsString) {
         self.inner.set("href", value);
     }
 }
 impl URL {
     /// Getter of the `origin` attribute.
     /// [`URL.origin`](https://developer.mozilla.org/en-US/docs/Web/API/URL/origin)
-    pub fn origin(&self) -> USVString {
-        self.inner.get("origin").as_::<USVString>()
+    pub fn origin(&self) -> JsString {
+        self.inner.get("origin").as_::<JsString>()
     }
 }
 impl URL {
     /// Getter of the `protocol` attribute.
     /// [`URL.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/URL/protocol)
-    pub fn protocol(&self) -> USVString {
-        self.inner.get("protocol").as_::<USVString>()
+    pub fn protocol(&self) -> JsString {
+        self.inner.get("protocol").as_::<JsString>()
     }
 
     /// Setter of the `protocol` attribute.
     /// [`URL.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/URL/protocol)
-    pub fn set_protocol(&mut self, value: &USVString) {
+    pub fn set_protocol(&mut self, value: &JsString) {
         self.inner.set("protocol", value);
     }
 }
 impl URL {
     /// Getter of the `username` attribute.
     /// [`URL.username`](https://developer.mozilla.org/en-US/docs/Web/API/URL/username)
-    pub fn username(&self) -> USVString {
-        self.inner.get("username").as_::<USVString>()
+    pub fn username(&self) -> JsString {
+        self.inner.get("username").as_::<JsString>()
     }
 
     /// Setter of the `username` attribute.
     /// [`URL.username`](https://developer.mozilla.org/en-US/docs/Web/API/URL/username)
-    pub fn set_username(&mut self, value: &USVString) {
+    pub fn set_username(&mut self, value: &JsString) {
         self.inner.set("username", value);
     }
 }
 impl URL {
     /// Getter of the `password` attribute.
     /// [`URL.password`](https://developer.mozilla.org/en-US/docs/Web/API/URL/password)
-    pub fn password(&self) -> USVString {
-        self.inner.get("password").as_::<USVString>()
+    pub fn password(&self) -> JsString {
+        self.inner.get("password").as_::<JsString>()
     }
 
     /// Setter of the `password` attribute.
     /// [`URL.password`](https://developer.mozilla.org/en-US/docs/Web/API/URL/password)
-    pub fn set_password(&mut self, value: &USVString) {
+    pub fn set_password(&mut self, value: &JsString) {
         self.inner.set("password", value);
     }
 }
 impl URL {
     /// Getter of the `host` attribute.
     /// [`URL.host`](https://developer.mozilla.org/en-US/docs/Web/API/URL/host)
-    pub fn host(&self) -> USVString {
-        self.inner.get("host").as_::<USVString>()
+    pub fn host(&self) -> JsString {
+        self.inner.get("host").as_::<JsString>()
     }
 
     /// Setter of the `host` attribute.
     /// [`URL.host`](https://developer.mozilla.org/en-US/docs/Web/API/URL/host)
-    pub fn set_host(&mut self, value: &USVString) {
+    pub fn set_host(&mut self, value: &JsString) {
         self.inner.set("host", value);
     }
 }
 impl URL {
     /// Getter of the `hostname` attribute.
     /// [`URL.hostname`](https://developer.mozilla.org/en-US/docs/Web/API/URL/hostname)
-    pub fn hostname(&self) -> USVString {
-        self.inner.get("hostname").as_::<USVString>()
+    pub fn hostname(&self) -> JsString {
+        self.inner.get("hostname").as_::<JsString>()
     }
 
     /// Setter of the `hostname` attribute.
     /// [`URL.hostname`](https://developer.mozilla.org/en-US/docs/Web/API/URL/hostname)
-    pub fn set_hostname(&mut self, value: &USVString) {
+    pub fn set_hostname(&mut self, value: &JsString) {
         self.inner.set("hostname", value);
     }
 }
 impl URL {
     /// Getter of the `port` attribute.
     /// [`URL.port`](https://developer.mozilla.org/en-US/docs/Web/API/URL/port)
-    pub fn port(&self) -> USVString {
-        self.inner.get("port").as_::<USVString>()
+    pub fn port(&self) -> JsString {
+        self.inner.get("port").as_::<JsString>()
     }
 
     /// Setter of the `port` attribute.
     /// [`URL.port`](https://developer.mozilla.org/en-US/docs/Web/API/URL/port)
-    pub fn set_port(&mut self, value: &USVString) {
+    pub fn set_port(&mut self, value: &JsString) {
         self.inner.set("port", value);
     }
 }
 impl URL {
     /// Getter of the `pathname` attribute.
     /// [`URL.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/URL/pathname)
-    pub fn pathname(&self) -> USVString {
-        self.inner.get("pathname").as_::<USVString>()
+    pub fn pathname(&self) -> JsString {
+        self.inner.get("pathname").as_::<JsString>()
     }
 
     /// Setter of the `pathname` attribute.
     /// [`URL.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/URL/pathname)
-    pub fn set_pathname(&mut self, value: &USVString) {
+    pub fn set_pathname(&mut self, value: &JsString) {
         self.inner.set("pathname", value);
     }
 }
 impl URL {
     /// Getter of the `search` attribute.
     /// [`URL.search`](https://developer.mozilla.org/en-US/docs/Web/API/URL/search)
-    pub fn search(&self) -> USVString {
-        self.inner.get("search").as_::<USVString>()
+    pub fn search(&self) -> JsString {
+        self.inner.get("search").as_::<JsString>()
     }
 
     /// Setter of the `search` attribute.
     /// [`URL.search`](https://developer.mozilla.org/en-US/docs/Web/API/URL/search)
-    pub fn set_search(&mut self, value: &USVString) {
+    pub fn set_search(&mut self, value: &JsString) {
         self.inner.set("search", value);
     }
 }
@@ -236,36 +236,36 @@ impl URL {
 impl URL {
     /// Getter of the `hash` attribute.
     /// [`URL.hash`](https://developer.mozilla.org/en-US/docs/Web/API/URL/hash)
-    pub fn hash(&self) -> USVString {
-        self.inner.get("hash").as_::<USVString>()
+    pub fn hash(&self) -> JsString {
+        self.inner.get("hash").as_::<JsString>()
     }
 
     /// Setter of the `hash` attribute.
     /// [`URL.hash`](https://developer.mozilla.org/en-US/docs/Web/API/URL/hash)
-    pub fn set_hash(&mut self, value: &USVString) {
+    pub fn set_hash(&mut self, value: &JsString) {
         self.inner.set("hash", value);
     }
 }
 impl URL {
     /// The toJSON method.
     /// [`URL.toJSON`](https://developer.mozilla.org/en-US/docs/Web/API/URL/toJSON)
-    pub fn to_json(&self) -> USVString {
-        self.inner.call("toJSON", &[]).as_::<USVString>()
+    pub fn to_json(&self) -> JsString {
+        self.inner.call("toJSON", &[]).as_::<JsString>()
     }
 }
 impl URL {
     /// The createObjectURL method.
     /// [`URL.createObjectURL`](https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL)
-    pub fn create_object_url(obj: &Any) -> DOMString {
+    pub fn create_object_url(obj: &Any) -> JsString {
         Any::global("URL")
             .call("createObjectURL", &[obj.into()])
-            .as_::<DOMString>()
+            .as_::<JsString>()
     }
 }
 impl URL {
     /// The revokeObjectURL method.
     /// [`URL.revokeObjectURL`](https://developer.mozilla.org/en-US/docs/Web/API/URL/revokeObjectURL)
-    pub fn revoke_object_url(url: &DOMString) -> Undefined {
+    pub fn revoke_object_url(url: &JsString) -> Undefined {
         Any::global("URL")
             .call("revokeObjectURL", &[url.into()])
             .as_::<Undefined>()

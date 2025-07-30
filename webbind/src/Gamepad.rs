@@ -144,8 +144,8 @@ jsbind::utils::impl_dyn_cast!(Gamepad);
 impl Gamepad {
     /// Getter of the `id` attribute.
     /// [`Gamepad.id`](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad/id)
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> JsString {
+        self.inner.get("id").as_::<JsString>()
     }
 }
 impl Gamepad {
@@ -179,24 +179,22 @@ impl Gamepad {
 impl Gamepad {
     /// Getter of the `axes` attribute.
     /// [`Gamepad.axes`](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad/axes)
-    pub fn axes(&self) -> FrozenArray<f64> {
-        self.inner.get("axes").as_::<FrozenArray<f64>>()
+    pub fn axes(&self) -> TypedArray<f64> {
+        self.inner.get("axes").as_::<TypedArray<f64>>()
     }
 }
 impl Gamepad {
     /// Getter of the `buttons` attribute.
     /// [`Gamepad.buttons`](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad/buttons)
-    pub fn buttons(&self) -> FrozenArray<GamepadButton> {
-        self.inner
-            .get("buttons")
-            .as_::<FrozenArray<GamepadButton>>()
+    pub fn buttons(&self) -> TypedArray<GamepadButton> {
+        self.inner.get("buttons").as_::<TypedArray<GamepadButton>>()
     }
 }
 impl Gamepad {
     /// Getter of the `touches` attribute.
     /// [`Gamepad.touches`](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad/touches)
-    pub fn touches(&self) -> FrozenArray<GamepadTouch> {
-        self.inner.get("touches").as_::<FrozenArray<GamepadTouch>>()
+    pub fn touches(&self) -> TypedArray<GamepadTouch> {
+        self.inner.get("touches").as_::<TypedArray<GamepadTouch>>()
     }
 }
 impl Gamepad {
@@ -218,10 +216,10 @@ impl Gamepad {
 impl Gamepad {
     /// Getter of the `hapticActuators` attribute.
     /// [`Gamepad.hapticActuators`](https://developer.mozilla.org/en-US/docs/Web/API/Gamepad/hapticActuators)
-    pub fn haptic_actuators(&self) -> FrozenArray<GamepadHapticActuator> {
+    pub fn haptic_actuators(&self) -> TypedArray<GamepadHapticActuator> {
         self.inner
             .get("hapticActuators")
-            .as_::<FrozenArray<GamepadHapticActuator>>()
+            .as_::<TypedArray<GamepadHapticActuator>>()
     }
 }
 impl Gamepad {

@@ -66,13 +66,13 @@ impl HTMLDivElement {
 impl HTMLDivElement {
     /// Getter of the `align` attribute.
     /// [`HTMLDivElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDivElement/align)
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> JsString {
+        self.inner.get("align").as_::<JsString>()
     }
 
     /// Setter of the `align` attribute.
     /// [`HTMLDivElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDivElement/align)
-    pub fn set_align(&mut self, value: &DOMString) {
+    pub fn set_align(&mut self, value: &JsString) {
         self.inner.set("align", value);
     }
 }

@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(WebGLObject);
 impl WebGLObject {
     /// Getter of the `label` attribute.
     /// [`WebGLObject.label`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLObject/label)
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
     }
 
     /// Setter of the `label` attribute.
     /// [`WebGLObject.label`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLObject/label)
-    pub fn set_label(&mut self, value: &USVString) {
+    pub fn set_label(&mut self, value: &JsString) {
         self.inner.set("label", value);
     }
 }

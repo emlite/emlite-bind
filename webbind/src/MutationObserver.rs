@@ -105,13 +105,13 @@ impl MutationObserverInit {
     }
 }
 impl MutationObserverInit {
-    pub fn attribute_filter(&self) -> Sequence<DOMString> {
+    pub fn attribute_filter(&self) -> TypedArray<JsString> {
         self.inner
             .get("attributeFilter")
-            .as_::<Sequence<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_attribute_filter(&mut self, value: &Sequence<DOMString>) {
+    pub fn set_attribute_filter(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("attributeFilter", value);
     }
 }
@@ -206,9 +206,9 @@ impl MutationObserver {
 impl MutationObserver {
     /// The takeRecords method.
     /// [`MutationObserver.takeRecords`](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver/takeRecords)
-    pub fn take_records(&self) -> Sequence<MutationRecord> {
+    pub fn take_records(&self) -> TypedArray<MutationRecord> {
         self.inner
             .call("takeRecords", &[])
-            .as_::<Sequence<MutationRecord>>()
+            .as_::<TypedArray<MutationRecord>>()
     }
 }

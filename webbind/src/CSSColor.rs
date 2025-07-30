@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CSSColor);
 
 impl CSSColor {
     /// The `new CSSColor(..)` constructor, creating a new CSSColor instance
-    pub fn new0(color_space: &Any, channels: &Sequence<Any>) -> CSSColor {
+    pub fn new0(color_space: &Any, channels: &TypedArray<Any>) -> CSSColor {
         Self {
             inner: Any::global("CSSColor")
                 .new(&[color_space.into(), channels.into()])
@@ -66,7 +66,7 @@ impl CSSColor {
     }
 
     /// The `new CSSColor(..)` constructor, creating a new CSSColor instance
-    pub fn new1(color_space: &Any, channels: &Sequence<Any>, alpha: &Any) -> CSSColor {
+    pub fn new1(color_space: &Any, channels: &TypedArray<Any>, alpha: &Any) -> CSSColor {
         Self {
             inner: Any::global("CSSColor")
                 .new(&[color_space.into(), channels.into(), alpha.into()])
@@ -90,13 +90,13 @@ impl CSSColor {
 impl CSSColor {
     /// Getter of the `channels` attribute.
     /// [`CSSColor.channels`](https://developer.mozilla.org/en-US/docs/Web/API/CSSColor/channels)
-    pub fn channels(&self) -> ObservableArray<Any> {
-        self.inner.get("channels").as_::<ObservableArray<Any>>()
+    pub fn channels(&self) -> TypedArray<Any> {
+        self.inner.get("channels").as_::<TypedArray<Any>>()
     }
 
     /// Setter of the `channels` attribute.
     /// [`CSSColor.channels`](https://developer.mozilla.org/en-US/docs/Web/API/CSSColor/channels)
-    pub fn set_channels(&mut self, value: &ObservableArray<Any>) {
+    pub fn set_channels(&mut self, value: &TypedArray<Any>) {
         self.inner.set("channels", value);
     }
 }

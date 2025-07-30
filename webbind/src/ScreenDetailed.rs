@@ -107,7 +107,7 @@ impl ScreenDetailed {
 impl ScreenDetailed {
     /// Getter of the `label` attribute.
     /// [`ScreenDetailed.label`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenDetailed/label)
-    pub fn label(&self) -> DOMString {
-        self.inner.get("label").as_::<DOMString>()
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
     }
 }

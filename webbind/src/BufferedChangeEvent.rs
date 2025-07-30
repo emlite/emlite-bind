@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(BufferedChangeEvent);
 
 impl BufferedChangeEvent {
     /// The `new BufferedChangeEvent(..)` constructor, creating a new BufferedChangeEvent instance
-    pub fn new0(type_: &DOMString) -> BufferedChangeEvent {
+    pub fn new0(type_: &JsString) -> BufferedChangeEvent {
         Self {
             inner: Any::global("BufferedChangeEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl BufferedChangeEvent {
     }
 
     /// The `new BufferedChangeEvent(..)` constructor, creating a new BufferedChangeEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> BufferedChangeEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> BufferedChangeEvent {
         Self {
             inner: Any::global("BufferedChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

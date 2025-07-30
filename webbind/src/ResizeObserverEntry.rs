@@ -72,27 +72,27 @@ impl ResizeObserverEntry {
 impl ResizeObserverEntry {
     /// Getter of the `borderBoxSize` attribute.
     /// [`ResizeObserverEntry.borderBoxSize`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry/borderBoxSize)
-    pub fn border_box_size(&self) -> FrozenArray<ResizeObserverSize> {
+    pub fn border_box_size(&self) -> TypedArray<ResizeObserverSize> {
         self.inner
             .get("borderBoxSize")
-            .as_::<FrozenArray<ResizeObserverSize>>()
+            .as_::<TypedArray<ResizeObserverSize>>()
     }
 }
 impl ResizeObserverEntry {
     /// Getter of the `contentBoxSize` attribute.
     /// [`ResizeObserverEntry.contentBoxSize`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry/contentBoxSize)
-    pub fn content_box_size(&self) -> FrozenArray<ResizeObserverSize> {
+    pub fn content_box_size(&self) -> TypedArray<ResizeObserverSize> {
         self.inner
             .get("contentBoxSize")
-            .as_::<FrozenArray<ResizeObserverSize>>()
+            .as_::<TypedArray<ResizeObserverSize>>()
     }
 }
 impl ResizeObserverEntry {
     /// Getter of the `devicePixelContentBoxSize` attribute.
     /// [`ResizeObserverEntry.devicePixelContentBoxSize`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserverEntry/devicePixelContentBoxSize)
-    pub fn device_pixel_content_box_size(&self) -> FrozenArray<ResizeObserverSize> {
+    pub fn device_pixel_content_box_size(&self) -> TypedArray<ResizeObserverSize> {
         self.inner
             .get("devicePixelContentBoxSize")
-            .as_::<FrozenArray<ResizeObserverSize>>()
+            .as_::<TypedArray<ResizeObserverSize>>()
     }
 }

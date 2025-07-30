@@ -122,15 +122,15 @@ impl ShadowRoot {
 impl ShadowRoot {
     /// The getHTML method.
     /// [`ShadowRoot.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/getHTML)
-    pub fn get_html0(&self) -> DOMString {
-        self.inner.call("getHTML", &[]).as_::<DOMString>()
+    pub fn get_html0(&self) -> JsString {
+        self.inner.call("getHTML", &[]).as_::<JsString>()
     }
     /// The getHTML method.
     /// [`ShadowRoot.getHTML`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/getHTML)
-    pub fn get_html1(&self, options: &GetHTMLOptions) -> DOMString {
+    pub fn get_html1(&self, options: &GetHTMLOptions) -> JsString {
         self.inner
             .call("getHTML", &[options.into()])
-            .as_::<DOMString>()
+            .as_::<JsString>()
     }
 }
 impl ShadowRoot {
@@ -149,9 +149,9 @@ impl ShadowRoot {
 impl ShadowRoot {
     /// The getAnimations method.
     /// [`ShadowRoot.getAnimations`](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot/getAnimations)
-    pub fn get_animations(&self) -> Sequence<Animation> {
+    pub fn get_animations(&self) -> TypedArray<Animation> {
         self.inner
             .call("getAnimations", &[])
-            .as_::<Sequence<Animation>>()
+            .as_::<TypedArray<Animation>>()
     }
 }

@@ -58,26 +58,26 @@ jsbind::utils::impl_dyn_cast!(SVGScriptElement);
 impl SVGScriptElement {
     /// Getter of the `type` attribute.
     /// [`SVGScriptElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/SVGScriptElement/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 
     /// Setter of the `type` attribute.
     /// [`SVGScriptElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/SVGScriptElement/type)
-    pub fn set_type_(&mut self, value: &DOMString) {
+    pub fn set_type_(&mut self, value: &JsString) {
         self.inner.set("type", value);
     }
 }
 impl SVGScriptElement {
     /// Getter of the `crossOrigin` attribute.
     /// [`SVGScriptElement.crossOrigin`](https://developer.mozilla.org/en-US/docs/Web/API/SVGScriptElement/crossOrigin)
-    pub fn cross_origin(&self) -> DOMString {
-        self.inner.get("crossOrigin").as_::<DOMString>()
+    pub fn cross_origin(&self) -> JsString {
+        self.inner.get("crossOrigin").as_::<JsString>()
     }
 
     /// Setter of the `crossOrigin` attribute.
     /// [`SVGScriptElement.crossOrigin`](https://developer.mozilla.org/en-US/docs/Web/API/SVGScriptElement/crossOrigin)
-    pub fn set_cross_origin(&mut self, value: &DOMString) {
+    pub fn set_cross_origin(&mut self, value: &JsString) {
         self.inner.set("crossOrigin", value);
     }
 }

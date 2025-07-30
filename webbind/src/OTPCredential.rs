@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(OTPCredential);
 impl OTPCredential {
     /// Getter of the `code` attribute.
     /// [`OTPCredential.code`](https://developer.mozilla.org/en-US/docs/Web/API/OTPCredential/code)
-    pub fn code(&self) -> DOMString {
-        self.inner.get("code").as_::<DOMString>()
+    pub fn code(&self) -> JsString {
+        self.inner.get("code").as_::<JsString>()
     }
 }

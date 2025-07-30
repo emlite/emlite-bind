@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(USBIsochronousInTransferResult);
 impl USBIsochronousInTransferResult {
     /// The `new USBIsochronousInTransferResult(..)` constructor, creating a new USBIsochronousInTransferResult instance
     pub fn new0(
-        packets: &Sequence<USBIsochronousInTransferPacket>,
+        packets: &TypedArray<USBIsochronousInTransferPacket>,
     ) -> USBIsochronousInTransferResult {
         Self {
             inner: Any::global("USBIsochronousInTransferResult")
@@ -69,7 +69,7 @@ impl USBIsochronousInTransferResult {
 
     /// The `new USBIsochronousInTransferResult(..)` constructor, creating a new USBIsochronousInTransferResult instance
     pub fn new1(
-        packets: &Sequence<USBIsochronousInTransferPacket>,
+        packets: &TypedArray<USBIsochronousInTransferPacket>,
         data: &DataView,
     ) -> USBIsochronousInTransferResult {
         Self {
@@ -89,9 +89,9 @@ impl USBIsochronousInTransferResult {
 impl USBIsochronousInTransferResult {
     /// Getter of the `packets` attribute.
     /// [`USBIsochronousInTransferResult.packets`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousInTransferResult/packets)
-    pub fn packets(&self) -> FrozenArray<USBIsochronousInTransferPacket> {
+    pub fn packets(&self) -> TypedArray<USBIsochronousInTransferPacket> {
         self.inner
             .get("packets")
-            .as_::<FrozenArray<USBIsochronousInTransferPacket>>()
+            .as_::<TypedArray<USBIsochronousInTransferPacket>>()
     }
 }

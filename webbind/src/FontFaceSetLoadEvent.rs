@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(FontFaceSetLoadEvent);
 
 impl FontFaceSetLoadEvent {
     /// The `new FontFaceSetLoadEvent(..)` constructor, creating a new FontFaceSetLoadEvent instance
-    pub fn new0(type_: &CSSOMString) -> FontFaceSetLoadEvent {
+    pub fn new0(type_: &JsString) -> FontFaceSetLoadEvent {
         Self {
             inner: Any::global("FontFaceSetLoadEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl FontFaceSetLoadEvent {
     }
 
     /// The `new FontFaceSetLoadEvent(..)` constructor, creating a new FontFaceSetLoadEvent instance
-    pub fn new1(type_: &CSSOMString, event_init_dict: &Any) -> FontFaceSetLoadEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> FontFaceSetLoadEvent {
         Self {
             inner: Any::global("FontFaceSetLoadEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -77,7 +77,7 @@ impl FontFaceSetLoadEvent {
 impl FontFaceSetLoadEvent {
     /// Getter of the `fontfaces` attribute.
     /// [`FontFaceSetLoadEvent.fontfaces`](https://developer.mozilla.org/en-US/docs/Web/API/FontFaceSetLoadEvent/fontfaces)
-    pub fn fontfaces(&self) -> FrozenArray<FontFace> {
-        self.inner.get("fontfaces").as_::<FrozenArray<FontFace>>()
+    pub fn fontfaces(&self) -> TypedArray<FontFace> {
+        self.inner.get("fontfaces").as_::<TypedArray<FontFace>>()
     }
 }

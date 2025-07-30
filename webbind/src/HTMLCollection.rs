@@ -72,7 +72,7 @@ impl HTMLCollection {
 impl HTMLCollection {
     /// The namedItem method.
     /// [`HTMLCollection.namedItem`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection/namedItem)
-    pub fn named_item(&self, name: &DOMString) -> Element {
+    pub fn named_item(&self, name: &JsString) -> Element {
         self.inner
             .call("namedItem", &[name.into()])
             .as_::<Element>()

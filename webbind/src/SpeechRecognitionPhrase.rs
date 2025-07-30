@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(SpeechRecognitionPhrase);
 
 impl SpeechRecognitionPhrase {
     /// The `new SpeechRecognitionPhrase(..)` constructor, creating a new SpeechRecognitionPhrase instance
-    pub fn new0(phrase: &DOMString) -> SpeechRecognitionPhrase {
+    pub fn new0(phrase: &JsString) -> SpeechRecognitionPhrase {
         Self {
             inner: Any::global("SpeechRecognitionPhrase")
                 .new(&[phrase.into()])
@@ -66,7 +66,7 @@ impl SpeechRecognitionPhrase {
     }
 
     /// The `new SpeechRecognitionPhrase(..)` constructor, creating a new SpeechRecognitionPhrase instance
-    pub fn new1(phrase: &DOMString, boost: f32) -> SpeechRecognitionPhrase {
+    pub fn new1(phrase: &JsString, boost: f32) -> SpeechRecognitionPhrase {
         Self {
             inner: Any::global("SpeechRecognitionPhrase")
                 .new(&[phrase.into(), boost.into()])
@@ -77,8 +77,8 @@ impl SpeechRecognitionPhrase {
 impl SpeechRecognitionPhrase {
     /// Getter of the `phrase` attribute.
     /// [`SpeechRecognitionPhrase.phrase`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionPhrase/phrase)
-    pub fn phrase(&self) -> DOMString {
-        self.inner.get("phrase").as_::<DOMString>()
+    pub fn phrase(&self) -> JsString {
+        self.inner.get("phrase").as_::<JsString>()
     }
 }
 impl SpeechRecognitionPhrase {

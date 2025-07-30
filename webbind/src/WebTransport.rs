@@ -218,11 +218,11 @@ impl WebTransportCloseInfo {
     }
 }
 impl WebTransportCloseInfo {
-    pub fn reason(&self) -> USVString {
-        self.inner.get("reason").as_::<USVString>()
+    pub fn reason(&self) -> JsString {
+        self.inner.get("reason").as_::<JsString>()
     }
 
-    pub fn set_reason(&mut self, value: &USVString) {
+    pub fn set_reason(&mut self, value: &JsString) {
         self.inner.set("reason", value);
     }
 }
@@ -342,14 +342,14 @@ jsbind::utils::impl_dyn_cast!(WebTransport);
 
 impl WebTransport {
     /// The `new WebTransport(..)` constructor, creating a new WebTransport instance
-    pub fn new0(url: &USVString) -> WebTransport {
+    pub fn new0(url: &JsString) -> WebTransport {
         Self {
             inner: Any::global("WebTransport").new(&[url.into()]).as_::<Any>(),
         }
     }
 
     /// The `new WebTransport(..)` constructor, creating a new WebTransport instance
-    pub fn new1(url: &USVString, options: &Any) -> WebTransport {
+    pub fn new1(url: &JsString, options: &Any) -> WebTransport {
         Self {
             inner: Any::global("WebTransport")
                 .new(&[url.into(), options.into()])
@@ -442,8 +442,8 @@ impl WebTransport {
 impl WebTransport {
     /// Getter of the `protocol` attribute.
     /// [`WebTransport.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/WebTransport/protocol)
-    pub fn protocol(&self) -> DOMString {
-        self.inner.get("protocol").as_::<DOMString>()
+    pub fn protocol(&self) -> JsString {
+        self.inner.get("protocol").as_::<JsString>()
     }
 }
 impl WebTransport {

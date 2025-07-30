@@ -154,7 +154,7 @@ impl AudioParam {
     /// [`AudioParam.setValueCurveAtTime`](https://developer.mozilla.org/en-US/docs/Web/API/AudioParam/setValueCurveAtTime)
     pub fn set_value_curve_at_time(
         &self,
-        values: Sequence<f32>,
+        values: TypedArray<f32>,
         start_time: f64,
         duration: f64,
     ) -> AudioParam {

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(InstallEvent);
 
 impl InstallEvent {
     /// The `new InstallEvent(..)` constructor, creating a new InstallEvent instance
-    pub fn new0(type_: &DOMString) -> InstallEvent {
+    pub fn new0(type_: &JsString) -> InstallEvent {
         Self {
             inner: Any::global("InstallEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl InstallEvent {
     }
 
     /// The `new InstallEvent(..)` constructor, creating a new InstallEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> InstallEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> InstallEvent {
         Self {
             inner: Any::global("InstallEvent")
                 .new(&[type_.into(), event_init_dict.into()])

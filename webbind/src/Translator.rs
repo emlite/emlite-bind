@@ -119,20 +119,20 @@ impl From<&TranslatorCreateCoreOptions> for Any {
 }
 
 impl TranslatorCreateCoreOptions {
-    pub fn source_language(&self) -> DOMString {
-        self.inner.get("sourceLanguage").as_::<DOMString>()
+    pub fn source_language(&self) -> JsString {
+        self.inner.get("sourceLanguage").as_::<JsString>()
     }
 
-    pub fn set_source_language(&mut self, value: &DOMString) {
+    pub fn set_source_language(&mut self, value: &JsString) {
         self.inner.set("sourceLanguage", value);
     }
 }
 impl TranslatorCreateCoreOptions {
-    pub fn target_language(&self) -> DOMString {
-        self.inner.get("targetLanguage").as_::<DOMString>()
+    pub fn target_language(&self) -> JsString {
+        self.inner.get("targetLanguage").as_::<JsString>()
     }
 
-    pub fn set_target_language(&mut self, value: &DOMString) {
+    pub fn set_target_language(&mut self, value: &JsString) {
         self.inner.set("targetLanguage", value);
     }
 }
@@ -271,27 +271,27 @@ impl Translator {
 impl Translator {
     /// The translate method.
     /// [`Translator.translate`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/translate)
-    pub fn translate0(&self, input: &DOMString) -> Promise<DOMString> {
+    pub fn translate0(&self, input: &JsString) -> Promise<JsString> {
         self.inner
             .call("translate", &[input.into()])
-            .as_::<Promise<DOMString>>()
+            .as_::<Promise<JsString>>()
     }
     /// The translate method.
     /// [`Translator.translate`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/translate)
     pub fn translate1(
         &self,
-        input: &DOMString,
+        input: &JsString,
         options: &TranslatorTranslateOptions,
-    ) -> Promise<DOMString> {
+    ) -> Promise<JsString> {
         self.inner
             .call("translate", &[input.into(), options.into()])
-            .as_::<Promise<DOMString>>()
+            .as_::<Promise<JsString>>()
     }
 }
 impl Translator {
     /// The translateStreaming method.
     /// [`Translator.translateStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/translateStreaming)
-    pub fn translate_streaming0(&self, input: &DOMString) -> ReadableStream {
+    pub fn translate_streaming0(&self, input: &JsString) -> ReadableStream {
         self.inner
             .call("translateStreaming", &[input.into()])
             .as_::<ReadableStream>()
@@ -300,7 +300,7 @@ impl Translator {
     /// [`Translator.translateStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/translateStreaming)
     pub fn translate_streaming1(
         &self,
-        input: &DOMString,
+        input: &JsString,
         options: &TranslatorTranslateOptions,
     ) -> ReadableStream {
         self.inner
@@ -311,21 +311,21 @@ impl Translator {
 impl Translator {
     /// Getter of the `sourceLanguage` attribute.
     /// [`Translator.sourceLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/sourceLanguage)
-    pub fn source_language(&self) -> DOMString {
-        self.inner.get("sourceLanguage").as_::<DOMString>()
+    pub fn source_language(&self) -> JsString {
+        self.inner.get("sourceLanguage").as_::<JsString>()
     }
 }
 impl Translator {
     /// Getter of the `targetLanguage` attribute.
     /// [`Translator.targetLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/targetLanguage)
-    pub fn target_language(&self) -> DOMString {
-        self.inner.get("targetLanguage").as_::<DOMString>()
+    pub fn target_language(&self) -> JsString {
+        self.inner.get("targetLanguage").as_::<JsString>()
     }
 }
 impl Translator {
     /// The measureInputUsage method.
     /// [`Translator.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/measureInputUsage)
-    pub fn measure_input_usage0(&self, input: &DOMString) -> Promise<f64> {
+    pub fn measure_input_usage0(&self, input: &JsString) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into()])
             .as_::<Promise<f64>>()
@@ -334,7 +334,7 @@ impl Translator {
     /// [`Translator.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Translator/measureInputUsage)
     pub fn measure_input_usage1(
         &self,
-        input: &DOMString,
+        input: &JsString,
         options: &TranslatorTranslateOptions,
     ) -> Promise<f64> {
         self.inner

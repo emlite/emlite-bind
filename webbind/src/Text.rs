@@ -64,7 +64,7 @@ impl Text {
     }
 
     /// The `new Text(..)` constructor, creating a new Text instance
-    pub fn new1(data: &DOMString) -> Text {
+    pub fn new1(data: &JsString) -> Text {
         Self {
             inner: Any::global("Text")
                 .new(&[data.into()])
@@ -82,24 +82,24 @@ impl Text {
 impl Text {
     /// Getter of the `wholeText` attribute.
     /// [`Text.wholeText`](https://developer.mozilla.org/en-US/docs/Web/API/Text/wholeText)
-    pub fn whole_text(&self) -> DOMString {
-        self.inner.get("wholeText").as_::<DOMString>()
+    pub fn whole_text(&self) -> JsString {
+        self.inner.get("wholeText").as_::<JsString>()
     }
 }
 impl Text {
     /// The getBoxQuads method.
     /// [`Text.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Text/getBoxQuads)
-    pub fn get_box_quads0(&self) -> Sequence<DOMQuad> {
+    pub fn get_box_quads0(&self) -> TypedArray<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[])
-            .as_::<Sequence<DOMQuad>>()
+            .as_::<TypedArray<DOMQuad>>()
     }
     /// The getBoxQuads method.
     /// [`Text.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/Text/getBoxQuads)
-    pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> Sequence<DOMQuad> {
+    pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> TypedArray<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[options.into()])
-            .as_::<Sequence<DOMQuad>>()
+            .as_::<TypedArray<DOMQuad>>()
     }
 }
 impl Text {

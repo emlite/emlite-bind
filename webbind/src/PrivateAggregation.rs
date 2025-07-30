@@ -205,8 +205,8 @@ impl PrivateAggregation {
     /// [`PrivateAggregation.contributeToHistogramOnEvent`](https://developer.mozilla.org/en-US/docs/Web/API/PrivateAggregation/contributeToHistogramOnEvent)
     pub fn contribute_to_histogram_on_event(
         &self,
-        event: &DOMString,
-        contribution: &Record<DOMString, Any>,
+        event: &JsString,
+        contribution: &Record<JsString, Any>,
     ) -> Undefined {
         self.inner
             .call(

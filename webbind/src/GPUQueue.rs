@@ -280,7 +280,7 @@ jsbind::utils::impl_dyn_cast!(GPUQueue);
 impl GPUQueue {
     /// The submit method.
     /// [`GPUQueue.submit`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/submit)
-    pub fn submit(&self, command_buffers: &Sequence<GPUCommandBuffer>) -> Undefined {
+    pub fn submit(&self, command_buffers: &TypedArray<GPUCommandBuffer>) -> Undefined {
         self.inner
             .call("submit", &[command_buffers.into()])
             .as_::<Undefined>()
@@ -394,13 +394,13 @@ impl GPUQueue {
 impl GPUQueue {
     /// Getter of the `label` attribute.
     /// [`GPUQueue.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/label)
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
     }
 
     /// Setter of the `label` attribute.
     /// [`GPUQueue.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQueue/label)
-    pub fn set_label(&mut self, value: &USVString) {
+    pub fn set_label(&mut self, value: &JsString) {
         self.inner.set("label", value);
     }
 }

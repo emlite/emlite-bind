@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(GPUError);
 impl GPUError {
     /// Getter of the `message` attribute.
     /// [`GPUError.message`](https://developer.mozilla.org/en-US/docs/Web/API/GPUError/message)
-    pub fn message(&self) -> DOMString {
-        self.inner.get("message").as_::<DOMString>()
+    pub fn message(&self) -> JsString {
+        self.inner.get("message").as_::<JsString>()
     }
 }

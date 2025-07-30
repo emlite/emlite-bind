@@ -51,49 +51,49 @@ impl From<&SanitizerConfig> for Any {
 }
 
 impl SanitizerConfig {
-    pub fn elements(&self) -> Sequence<Any> {
-        self.inner.get("elements").as_::<Sequence<Any>>()
+    pub fn elements(&self) -> TypedArray<Any> {
+        self.inner.get("elements").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_elements(&mut self, value: &Sequence<Any>) {
+    pub fn set_elements(&mut self, value: &TypedArray<Any>) {
         self.inner.set("elements", value);
     }
 }
 impl SanitizerConfig {
-    pub fn remove_elements(&self) -> Sequence<Any> {
-        self.inner.get("removeElements").as_::<Sequence<Any>>()
+    pub fn remove_elements(&self) -> TypedArray<Any> {
+        self.inner.get("removeElements").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_remove_elements(&mut self, value: &Sequence<Any>) {
+    pub fn set_remove_elements(&mut self, value: &TypedArray<Any>) {
         self.inner.set("removeElements", value);
     }
 }
 impl SanitizerConfig {
-    pub fn replace_with_children_elements(&self) -> Sequence<Any> {
+    pub fn replace_with_children_elements(&self) -> TypedArray<Any> {
         self.inner
             .get("replaceWithChildrenElements")
-            .as_::<Sequence<Any>>()
+            .as_::<TypedArray<Any>>()
     }
 
-    pub fn set_replace_with_children_elements(&mut self, value: &Sequence<Any>) {
+    pub fn set_replace_with_children_elements(&mut self, value: &TypedArray<Any>) {
         self.inner.set("replaceWithChildrenElements", value);
     }
 }
 impl SanitizerConfig {
-    pub fn attributes(&self) -> Sequence<Any> {
-        self.inner.get("attributes").as_::<Sequence<Any>>()
+    pub fn attributes(&self) -> TypedArray<Any> {
+        self.inner.get("attributes").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_attributes(&mut self, value: &Sequence<Any>) {
+    pub fn set_attributes(&mut self, value: &TypedArray<Any>) {
         self.inner.set("attributes", value);
     }
 }
 impl SanitizerConfig {
-    pub fn remove_attributes(&self) -> Sequence<Any> {
-        self.inner.get("removeAttributes").as_::<Sequence<Any>>()
+    pub fn remove_attributes(&self) -> TypedArray<Any> {
+        self.inner.get("removeAttributes").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_remove_attributes(&mut self, value: &Sequence<Any>) {
+    pub fn set_remove_attributes(&mut self, value: &TypedArray<Any>) {
         self.inner.set("removeAttributes", value);
     }
 }

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(ClipboardItem);
 
 impl ClipboardItem {
     /// The `new ClipboardItem(..)` constructor, creating a new ClipboardItem instance
-    pub fn new0(items: &Record<DOMString, Any>) -> ClipboardItem {
+    pub fn new0(items: &Record<JsString, Any>) -> ClipboardItem {
         Self {
             inner: Any::global("ClipboardItem")
                 .new(&[items.into()])
@@ -66,7 +66,7 @@ impl ClipboardItem {
     }
 
     /// The `new ClipboardItem(..)` constructor, creating a new ClipboardItem instance
-    pub fn new1(items: &Record<DOMString, Any>, options: &Any) -> ClipboardItem {
+    pub fn new1(items: &Record<JsString, Any>, options: &Any) -> ClipboardItem {
         Self {
             inner: Any::global("ClipboardItem")
                 .new(&[items.into(), options.into()])
@@ -86,14 +86,14 @@ impl ClipboardItem {
 impl ClipboardItem {
     /// Getter of the `types` attribute.
     /// [`ClipboardItem.types`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem/types)
-    pub fn types(&self) -> FrozenArray<DOMString> {
-        self.inner.get("types").as_::<FrozenArray<DOMString>>()
+    pub fn types(&self) -> TypedArray<JsString> {
+        self.inner.get("types").as_::<TypedArray<JsString>>()
     }
 }
 impl ClipboardItem {
     /// The getType method.
     /// [`ClipboardItem.getType`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem/getType)
-    pub fn get_type(&self, type_: &DOMString) -> Promise<Blob> {
+    pub fn get_type(&self, type_: &JsString) -> Promise<Blob> {
         self.inner
             .call("getType", &[type_.into()])
             .as_::<Promise<Blob>>()
@@ -102,7 +102,7 @@ impl ClipboardItem {
 impl ClipboardItem {
     /// The supports method.
     /// [`ClipboardItem.supports`](https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem/supports)
-    pub fn supports(type_: &DOMString) -> bool {
+    pub fn supports(type_: &JsString) -> bool {
         Any::global("ClipboardItem")
             .call("supports", &[type_.into()])
             .as_::<bool>()

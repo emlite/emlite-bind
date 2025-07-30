@@ -58,41 +58,41 @@ jsbind::utils::impl_dyn_cast!(Attr);
 impl Attr {
     /// Getter of the `namespaceURI` attribute.
     /// [`Attr.namespaceURI`](https://developer.mozilla.org/en-US/docs/Web/API/Attr/namespaceURI)
-    pub fn namespace_uri(&self) -> DOMString {
-        self.inner.get("namespaceURI").as_::<DOMString>()
+    pub fn namespace_uri(&self) -> JsString {
+        self.inner.get("namespaceURI").as_::<JsString>()
     }
 }
 impl Attr {
     /// Getter of the `prefix` attribute.
     /// [`Attr.prefix`](https://developer.mozilla.org/en-US/docs/Web/API/Attr/prefix)
-    pub fn prefix(&self) -> DOMString {
-        self.inner.get("prefix").as_::<DOMString>()
+    pub fn prefix(&self) -> JsString {
+        self.inner.get("prefix").as_::<JsString>()
     }
 }
 impl Attr {
     /// Getter of the `localName` attribute.
     /// [`Attr.localName`](https://developer.mozilla.org/en-US/docs/Web/API/Attr/localName)
-    pub fn local_name(&self) -> DOMString {
-        self.inner.get("localName").as_::<DOMString>()
+    pub fn local_name(&self) -> JsString {
+        self.inner.get("localName").as_::<JsString>()
     }
 }
 impl Attr {
     /// Getter of the `name` attribute.
     /// [`Attr.name`](https://developer.mozilla.org/en-US/docs/Web/API/Attr/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl Attr {
     /// Getter of the `value` attribute.
     /// [`Attr.value`](https://developer.mozilla.org/en-US/docs/Web/API/Attr/value)
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> JsString {
+        self.inner.get("value").as_::<JsString>()
     }
 
     /// Setter of the `value` attribute.
     /// [`Attr.value`](https://developer.mozilla.org/en-US/docs/Web/API/Attr/value)
-    pub fn set_value(&mut self, value: &DOMString) {
+    pub fn set_value(&mut self, value: &JsString) {
         self.inner.set("value", value);
     }
 }

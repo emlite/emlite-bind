@@ -60,11 +60,11 @@ impl HighlightHitResult {
     }
 }
 impl HighlightHitResult {
-    pub fn ranges(&self) -> Sequence<AbstractRange> {
-        self.inner.get("ranges").as_::<Sequence<AbstractRange>>()
+    pub fn ranges(&self) -> TypedArray<AbstractRange> {
+        self.inner.get("ranges").as_::<TypedArray<AbstractRange>>()
     }
 
-    pub fn set_ranges(&mut self, value: &Sequence<AbstractRange>) {
+    pub fn set_ranges(&mut self, value: &TypedArray<AbstractRange>) {
         self.inner.set("ranges", value);
     }
 }
@@ -119,11 +119,13 @@ impl From<&HighlightsFromPointOptions> for Any {
 }
 
 impl HighlightsFromPointOptions {
-    pub fn shadow_roots(&self) -> Sequence<ShadowRoot> {
-        self.inner.get("shadowRoots").as_::<Sequence<ShadowRoot>>()
+    pub fn shadow_roots(&self) -> TypedArray<ShadowRoot> {
+        self.inner
+            .get("shadowRoots")
+            .as_::<TypedArray<ShadowRoot>>()
     }
 
-    pub fn set_shadow_roots(&mut self, value: &Sequence<ShadowRoot>) {
+    pub fn set_shadow_roots(&mut self, value: &TypedArray<ShadowRoot>) {
         self.inner.set("shadowRoots", value);
     }
 }
@@ -185,10 +187,10 @@ jsbind::utils::impl_dyn_cast!(HighlightRegistry);
 impl HighlightRegistry {
     /// The highlightsFromPoint method.
     /// [`HighlightRegistry.highlightsFromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/highlightsFromPoint)
-    pub fn highlights_from_point0(&self, x: f32, y: f32) -> Sequence<HighlightHitResult> {
+    pub fn highlights_from_point0(&self, x: f32, y: f32) -> TypedArray<HighlightHitResult> {
         self.inner
             .call("highlightsFromPoint", &[x.into(), y.into()])
-            .as_::<Sequence<HighlightHitResult>>()
+            .as_::<TypedArray<HighlightHitResult>>()
     }
     /// The highlightsFromPoint method.
     /// [`HighlightRegistry.highlightsFromPoint`](https://developer.mozilla.org/en-US/docs/Web/API/HighlightRegistry/highlightsFromPoint)
@@ -197,9 +199,9 @@ impl HighlightRegistry {
         x: f32,
         y: f32,
         options: &HighlightsFromPointOptions,
-    ) -> Sequence<HighlightHitResult> {
+    ) -> TypedArray<HighlightHitResult> {
         self.inner
             .call("highlightsFromPoint", &[x.into(), y.into(), options.into()])
-            .as_::<Sequence<HighlightHitResult>>()
+            .as_::<TypedArray<HighlightHitResult>>()
     }
 }

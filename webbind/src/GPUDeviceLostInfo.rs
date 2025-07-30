@@ -65,7 +65,7 @@ impl GPUDeviceLostInfo {
 impl GPUDeviceLostInfo {
     /// Getter of the `message` attribute.
     /// [`GPUDeviceLostInfo.message`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDeviceLostInfo/message)
-    pub fn message(&self) -> DOMString {
-        self.inner.get("message").as_::<DOMString>()
+    pub fn message(&self) -> JsString {
+        self.inner.get("message").as_::<JsString>()
     }
 }

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(ExtendableCookieChangeEvent);
 
 impl ExtendableCookieChangeEvent {
     /// The `new ExtendableCookieChangeEvent(..)` constructor, creating a new ExtendableCookieChangeEvent instance
-    pub fn new0(type_: &DOMString) -> ExtendableCookieChangeEvent {
+    pub fn new0(type_: &JsString) -> ExtendableCookieChangeEvent {
         Self {
             inner: Any::global("ExtendableCookieChangeEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl ExtendableCookieChangeEvent {
     }
 
     /// The `new ExtendableCookieChangeEvent(..)` constructor, creating a new ExtendableCookieChangeEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> ExtendableCookieChangeEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> ExtendableCookieChangeEvent {
         Self {
             inner: Any::global("ExtendableCookieChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -77,18 +77,18 @@ impl ExtendableCookieChangeEvent {
 impl ExtendableCookieChangeEvent {
     /// Getter of the `changed` attribute.
     /// [`ExtendableCookieChangeEvent.changed`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableCookieChangeEvent/changed)
-    pub fn changed(&self) -> FrozenArray<CookieListItem> {
+    pub fn changed(&self) -> TypedArray<CookieListItem> {
         self.inner
             .get("changed")
-            .as_::<FrozenArray<CookieListItem>>()
+            .as_::<TypedArray<CookieListItem>>()
     }
 }
 impl ExtendableCookieChangeEvent {
     /// Getter of the `deleted` attribute.
     /// [`ExtendableCookieChangeEvent.deleted`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableCookieChangeEvent/deleted)
-    pub fn deleted(&self) -> FrozenArray<CookieListItem> {
+    pub fn deleted(&self) -> TypedArray<CookieListItem> {
         self.inner
             .get("deleted")
-            .as_::<FrozenArray<CookieListItem>>()
+            .as_::<TypedArray<CookieListItem>>()
     }
 }

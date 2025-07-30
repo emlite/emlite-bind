@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(CSSPseudoElement);
 impl CSSPseudoElement {
     /// Getter of the `type` attribute.
     /// [`CSSPseudoElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/type)
-    pub fn type_(&self) -> CSSOMString {
-        self.inner.get("type").as_::<CSSOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 }
 impl CSSPseudoElement {
@@ -79,7 +79,7 @@ impl CSSPseudoElement {
 impl CSSPseudoElement {
     /// The pseudo method.
     /// [`CSSPseudoElement.pseudo`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/pseudo)
-    pub fn pseudo(&self, type_: &CSSOMString) -> CSSPseudoElement {
+    pub fn pseudo(&self, type_: &JsString) -> CSSPseudoElement {
         self.inner
             .call("pseudo", &[type_.into()])
             .as_::<CSSPseudoElement>()
@@ -88,17 +88,17 @@ impl CSSPseudoElement {
 impl CSSPseudoElement {
     /// The getBoxQuads method.
     /// [`CSSPseudoElement.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/getBoxQuads)
-    pub fn get_box_quads0(&self) -> Sequence<DOMQuad> {
+    pub fn get_box_quads0(&self) -> TypedArray<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[])
-            .as_::<Sequence<DOMQuad>>()
+            .as_::<TypedArray<DOMQuad>>()
     }
     /// The getBoxQuads method.
     /// [`CSSPseudoElement.getBoxQuads`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPseudoElement/getBoxQuads)
-    pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> Sequence<DOMQuad> {
+    pub fn get_box_quads1(&self, options: &BoxQuadOptions) -> TypedArray<DOMQuad> {
         self.inner
             .call("getBoxQuads", &[options.into()])
-            .as_::<Sequence<DOMQuad>>()
+            .as_::<TypedArray<DOMQuad>>()
     }
 }
 impl CSSPseudoElement {

@@ -58,9 +58,9 @@ jsbind::utils::impl_dyn_cast!(WEBGL_compressed_texture_astc);
 impl WEBGL_compressed_texture_astc {
     /// The getSupportedProfiles method.
     /// [`WEBGL_compressed_texture_astc.getSupportedProfiles`](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_compressed_texture_astc/getSupportedProfiles)
-    pub fn get_supported_profiles(&self) -> Sequence<DOMString> {
+    pub fn get_supported_profiles(&self) -> TypedArray<JsString> {
         self.inner
             .call("getSupportedProfiles", &[])
-            .as_::<Sequence<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 }

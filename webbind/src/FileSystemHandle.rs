@@ -124,8 +124,8 @@ impl FileSystemHandle {
 impl FileSystemHandle {
     /// Getter of the `name` attribute.
     /// [`FileSystemHandle.name`](https://developer.mozilla.org/en-US/docs/Web/API/FileSystemHandle/name)
-    pub fn name(&self) -> USVString {
-        self.inner.get("name").as_::<USVString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl FileSystemHandle {

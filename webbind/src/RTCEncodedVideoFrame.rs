@@ -60,11 +60,11 @@ impl RTCEncodedVideoFrameMetadata {
     }
 }
 impl RTCEncodedVideoFrameMetadata {
-    pub fn dependencies(&self) -> Sequence<u64> {
-        self.inner.get("dependencies").as_::<Sequence<u64>>()
+    pub fn dependencies(&self) -> TypedArray<u64> {
+        self.inner.get("dependencies").as_::<TypedArray<u64>>()
     }
 
-    pub fn set_dependencies(&mut self, value: Sequence<u64>) {
+    pub fn set_dependencies(&mut self, value: TypedArray<u64>) {
         self.inner.set("dependencies", value);
     }
 }

@@ -51,11 +51,11 @@ impl From<&AudioOutputOptions> for Any {
 }
 
 impl AudioOutputOptions {
-    pub fn device_id(&self) -> DOMString {
-        self.inner.get("deviceId").as_::<DOMString>()
+    pub fn device_id(&self) -> JsString {
+        self.inner.get("deviceId").as_::<JsString>()
     }
 
-    pub fn set_device_id(&mut self, value: &DOMString) {
+    pub fn set_device_id(&mut self, value: &JsString) {
         self.inner.set("deviceId", value);
     }
 }
@@ -119,22 +119,22 @@ impl CaptureHandleConfig {
     }
 }
 impl CaptureHandleConfig {
-    pub fn handle(&self) -> DOMString {
-        self.inner.get("handle").as_::<DOMString>()
+    pub fn handle(&self) -> JsString {
+        self.inner.get("handle").as_::<JsString>()
     }
 
-    pub fn set_handle(&mut self, value: &DOMString) {
+    pub fn set_handle(&mut self, value: &JsString) {
         self.inner.set("handle", value);
     }
 }
 impl CaptureHandleConfig {
-    pub fn permitted_origins(&self) -> Sequence<DOMString> {
+    pub fn permitted_origins(&self) -> TypedArray<JsString> {
         self.inner
             .get("permittedOrigins")
-            .as_::<Sequence<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_permitted_origins(&mut self, value: &Sequence<DOMString>) {
+    pub fn set_permitted_origins(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("permittedOrigins", value);
     }
 }
@@ -284,11 +284,11 @@ impl From<&MediaStreamConstraints> for Any {
 }
 
 impl MediaStreamConstraints {
-    pub fn peer_identity(&self) -> DOMString {
-        self.inner.get("peerIdentity").as_::<DOMString>()
+    pub fn peer_identity(&self) -> JsString {
+        self.inner.get("peerIdentity").as_::<JsString>()
     }
 
-    pub fn set_peer_identity(&mut self, value: &DOMString) {
+    pub fn set_peer_identity(&mut self, value: &JsString) {
         self.inner.set("peerIdentity", value);
     }
 }
@@ -495,10 +495,10 @@ impl MediaDevices {
 impl MediaDevices {
     /// The enumerateDevices method.
     /// [`MediaDevices.enumerateDevices`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices)
-    pub fn enumerate_devices(&self) -> Promise<Sequence<MediaDeviceInfo>> {
+    pub fn enumerate_devices(&self) -> Promise<TypedArray<MediaDeviceInfo>> {
         self.inner
             .call("enumerateDevices", &[])
-            .as_::<Promise<Sequence<MediaDeviceInfo>>>()
+            .as_::<Promise<TypedArray<MediaDeviceInfo>>>()
     }
 }
 impl MediaDevices {
@@ -536,7 +536,7 @@ impl MediaDevices {
 impl MediaDevices {
     /// The setSupportedCaptureActions method.
     /// [`MediaDevices.setSupportedCaptureActions`](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/setSupportedCaptureActions)
-    pub fn set_supported_capture_actions(&self, actions: &Sequence<DOMString>) -> Undefined {
+    pub fn set_supported_capture_actions(&self, actions: &TypedArray<JsString>) -> Undefined {
         self.inner
             .call("setSupportedCaptureActions", &[actions.into()])
             .as_::<Undefined>()

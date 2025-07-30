@@ -135,8 +135,8 @@ jsbind::utils::impl_dyn_cast!(BackgroundFetchRegistration);
 impl BackgroundFetchRegistration {
     /// Getter of the `id` attribute.
     /// [`BackgroundFetchRegistration.id`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/id)
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> JsString {
+        self.inner.get("id").as_::<JsString>()
     }
 }
 impl BackgroundFetchRegistration {
@@ -233,17 +233,17 @@ impl BackgroundFetchRegistration {
 impl BackgroundFetchRegistration {
     /// The matchAll method.
     /// [`BackgroundFetchRegistration.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/matchAll)
-    pub fn match_all0(&self) -> Promise<Sequence<BackgroundFetchRecord>> {
+    pub fn match_all0(&self) -> Promise<TypedArray<BackgroundFetchRecord>> {
         self.inner
             .call("matchAll", &[])
-            .as_::<Promise<Sequence<BackgroundFetchRecord>>>()
+            .as_::<Promise<TypedArray<BackgroundFetchRecord>>>()
     }
     /// The matchAll method.
     /// [`BackgroundFetchRegistration.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/matchAll)
-    pub fn match_all1(&self, request: &Any) -> Promise<Sequence<BackgroundFetchRecord>> {
+    pub fn match_all1(&self, request: &Any) -> Promise<TypedArray<BackgroundFetchRecord>> {
         self.inner
             .call("matchAll", &[request.into()])
-            .as_::<Promise<Sequence<BackgroundFetchRecord>>>()
+            .as_::<Promise<TypedArray<BackgroundFetchRecord>>>()
     }
     /// The matchAll method.
     /// [`BackgroundFetchRegistration.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchRegistration/matchAll)
@@ -251,9 +251,9 @@ impl BackgroundFetchRegistration {
         &self,
         request: &Any,
         options: &CacheQueryOptions,
-    ) -> Promise<Sequence<BackgroundFetchRecord>> {
+    ) -> Promise<TypedArray<BackgroundFetchRecord>> {
         self.inner
             .call("matchAll", &[request.into(), options.into()])
-            .as_::<Promise<Sequence<BackgroundFetchRecord>>>()
+            .as_::<Promise<TypedArray<BackgroundFetchRecord>>>()
     }
 }

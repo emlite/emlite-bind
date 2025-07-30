@@ -93,7 +93,7 @@ impl XRRenderState {
 impl XRRenderState {
     /// Getter of the `layers` attribute.
     /// [`XRRenderState.layers`](https://developer.mozilla.org/en-US/docs/Web/API/XRRenderState/layers)
-    pub fn layers(&self) -> FrozenArray<XRLayer> {
-        self.inner.get("layers").as_::<FrozenArray<XRLayer>>()
+    pub fn layers(&self) -> TypedArray<XRLayer> {
+        self.inner.get("layers").as_::<TypedArray<XRLayer>>()
     }
 }

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(AudioProcessingEvent);
 
 impl AudioProcessingEvent {
     /// The `new AudioProcessingEvent(..)` constructor, creating a new AudioProcessingEvent instance
-    pub fn new(type_: &DOMString, event_init_dict: &Any) -> AudioProcessingEvent {
+    pub fn new(type_: &JsString, event_init_dict: &Any) -> AudioProcessingEvent {
         Self {
             inner: Any::global("AudioProcessingEvent")
                 .new(&[type_.into(), event_init_dict.into()])

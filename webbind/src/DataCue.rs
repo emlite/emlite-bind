@@ -66,7 +66,7 @@ impl DataCue {
     }
 
     /// The `new DataCue(..)` constructor, creating a new DataCue instance
-    pub fn new1(start_time: f64, end_time: f64, value: &Any, type_: &DOMString) -> DataCue {
+    pub fn new1(start_time: f64, end_time: f64, value: &Any, type_: &JsString) -> DataCue {
         Self {
             inner: Any::global("DataCue")
                 .new(&[
@@ -95,7 +95,7 @@ impl DataCue {
 impl DataCue {
     /// Getter of the `type` attribute.
     /// [`DataCue.type`](https://developer.mozilla.org/en-US/docs/Web/API/DataCue/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 }

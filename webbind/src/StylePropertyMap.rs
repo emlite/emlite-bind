@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(StylePropertyMap);
 impl StylePropertyMap {
     /// The set method.
     /// [`StylePropertyMap.set`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMap/set)
-    pub fn set(&self, property: &USVString, values: &Any) -> Undefined {
+    pub fn set(&self, property: &JsString, values: &Any) -> Undefined {
         self.inner
             .call("set", &[property.into(), values.into()])
             .as_::<Undefined>()
@@ -67,7 +67,7 @@ impl StylePropertyMap {
 impl StylePropertyMap {
     /// The append method.
     /// [`StylePropertyMap.append`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMap/append)
-    pub fn append(&self, property: &USVString, values: &Any) -> Undefined {
+    pub fn append(&self, property: &JsString, values: &Any) -> Undefined {
         self.inner
             .call("append", &[property.into(), values.into()])
             .as_::<Undefined>()
@@ -76,7 +76,7 @@ impl StylePropertyMap {
 impl StylePropertyMap {
     /// The delete method.
     /// [`StylePropertyMap.delete`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMap/delete)
-    pub fn delete(&self, property: &USVString) -> Undefined {
+    pub fn delete(&self, property: &JsString) -> Undefined {
         self.inner
             .call("delete", &[property.into()])
             .as_::<Undefined>()

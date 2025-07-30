@@ -122,20 +122,20 @@ impl GPURenderBundleEncoder {
 impl GPURenderBundleEncoder {
     /// Getter of the `label` attribute.
     /// [`GPURenderBundleEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/label)
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
     }
 
     /// Setter of the `label` attribute.
     /// [`GPURenderBundleEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/label)
-    pub fn set_label(&mut self, value: &USVString) {
+    pub fn set_label(&mut self, value: &JsString) {
         self.inner.set("label", value);
     }
 }
 impl GPURenderBundleEncoder {
     /// The pushDebugGroup method.
     /// [`GPURenderBundleEncoder.pushDebugGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/pushDebugGroup)
-    pub fn push_debug_group(&self, group_label: &USVString) -> Undefined {
+    pub fn push_debug_group(&self, group_label: &JsString) -> Undefined {
         self.inner
             .call("pushDebugGroup", &[group_label.into()])
             .as_::<Undefined>()
@@ -151,7 +151,7 @@ impl GPURenderBundleEncoder {
 impl GPURenderBundleEncoder {
     /// The insertDebugMarker method.
     /// [`GPURenderBundleEncoder.insertDebugMarker`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderBundleEncoder/insertDebugMarker)
-    pub fn insert_debug_marker(&self, marker_label: &USVString) -> Undefined {
+    pub fn insert_debug_marker(&self, marker_label: &JsString) -> Undefined {
         self.inner
             .call("insertDebugMarker", &[marker_label.into()])
             .as_::<Undefined>()

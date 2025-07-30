@@ -58,15 +58,15 @@ jsbind::utils::impl_dyn_cast!(BluetoothPermissionResult);
 impl BluetoothPermissionResult {
     /// Getter of the `devices` attribute.
     /// [`BluetoothPermissionResult.devices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothPermissionResult/devices)
-    pub fn devices(&self) -> FrozenArray<BluetoothDevice> {
+    pub fn devices(&self) -> TypedArray<BluetoothDevice> {
         self.inner
             .get("devices")
-            .as_::<FrozenArray<BluetoothDevice>>()
+            .as_::<TypedArray<BluetoothDevice>>()
     }
 
     /// Setter of the `devices` attribute.
     /// [`BluetoothPermissionResult.devices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothPermissionResult/devices)
-    pub fn set_devices(&mut self, value: &FrozenArray<BluetoothDevice>) {
+    pub fn set_devices(&mut self, value: &TypedArray<BluetoothDevice>) {
         self.inner.set("devices", value);
     }
 }

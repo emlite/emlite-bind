@@ -51,47 +51,49 @@ impl From<&ContactInfo> for Any {
 }
 
 impl ContactInfo {
-    pub fn address(&self) -> Sequence<ContactAddress> {
-        self.inner.get("address").as_::<Sequence<ContactAddress>>()
+    pub fn address(&self) -> TypedArray<ContactAddress> {
+        self.inner
+            .get("address")
+            .as_::<TypedArray<ContactAddress>>()
     }
 
-    pub fn set_address(&mut self, value: &Sequence<ContactAddress>) {
+    pub fn set_address(&mut self, value: &TypedArray<ContactAddress>) {
         self.inner.set("address", value);
     }
 }
 impl ContactInfo {
-    pub fn email(&self) -> Sequence<DOMString> {
-        self.inner.get("email").as_::<Sequence<DOMString>>()
+    pub fn email(&self) -> TypedArray<JsString> {
+        self.inner.get("email").as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_email(&mut self, value: &Sequence<DOMString>) {
+    pub fn set_email(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("email", value);
     }
 }
 impl ContactInfo {
-    pub fn icon(&self) -> Sequence<Blob> {
-        self.inner.get("icon").as_::<Sequence<Blob>>()
+    pub fn icon(&self) -> TypedArray<Blob> {
+        self.inner.get("icon").as_::<TypedArray<Blob>>()
     }
 
-    pub fn set_icon(&mut self, value: &Sequence<Blob>) {
+    pub fn set_icon(&mut self, value: &TypedArray<Blob>) {
         self.inner.set("icon", value);
     }
 }
 impl ContactInfo {
-    pub fn name(&self) -> Sequence<DOMString> {
-        self.inner.get("name").as_::<Sequence<DOMString>>()
+    pub fn name(&self) -> TypedArray<JsString> {
+        self.inner.get("name").as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_name(&mut self, value: &Sequence<DOMString>) {
+    pub fn set_name(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("name", value);
     }
 }
 impl ContactInfo {
-    pub fn tel(&self) -> Sequence<DOMString> {
-        self.inner.get("tel").as_::<Sequence<DOMString>>()
+    pub fn tel(&self) -> TypedArray<JsString> {
+        self.inner.get("tel").as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_tel(&mut self, value: &Sequence<DOMString>) {
+    pub fn set_tel(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("tel", value);
     }
 }
@@ -212,10 +214,10 @@ jsbind::utils::impl_dyn_cast!(ContactsManager);
 impl ContactsManager {
     /// The getProperties method.
     /// [`ContactsManager.getProperties`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager/getProperties)
-    pub fn get_properties(&self) -> Promise<Sequence<ContactProperty>> {
+    pub fn get_properties(&self) -> Promise<TypedArray<ContactProperty>> {
         self.inner
             .call("getProperties", &[])
-            .as_::<Promise<Sequence<ContactProperty>>>()
+            .as_::<Promise<TypedArray<ContactProperty>>>()
     }
 }
 impl ContactsManager {
@@ -223,21 +225,21 @@ impl ContactsManager {
     /// [`ContactsManager.select`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager/select)
     pub fn select0(
         &self,
-        properties: &Sequence<ContactProperty>,
-    ) -> Promise<Sequence<ContactInfo>> {
+        properties: &TypedArray<ContactProperty>,
+    ) -> Promise<TypedArray<ContactInfo>> {
         self.inner
             .call("select", &[properties.into()])
-            .as_::<Promise<Sequence<ContactInfo>>>()
+            .as_::<Promise<TypedArray<ContactInfo>>>()
     }
     /// The select method.
     /// [`ContactsManager.select`](https://developer.mozilla.org/en-US/docs/Web/API/ContactsManager/select)
     pub fn select1(
         &self,
-        properties: &Sequence<ContactProperty>,
+        properties: &TypedArray<ContactProperty>,
         options: &ContactsSelectOptions,
-    ) -> Promise<Sequence<ContactInfo>> {
+    ) -> Promise<TypedArray<ContactInfo>> {
         self.inner
             .call("select", &[properties.into(), options.into()])
-            .as_::<Promise<Sequence<ContactInfo>>>()
+            .as_::<Promise<TypedArray<ContactInfo>>>()
     }
 }

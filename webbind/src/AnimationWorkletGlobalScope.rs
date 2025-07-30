@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(AnimationWorkletGlobalScope);
 impl AnimationWorkletGlobalScope {
     /// The registerAnimator method.
     /// [`AnimationWorkletGlobalScope.registerAnimator`](https://developer.mozilla.org/en-US/docs/Web/API/AnimationWorkletGlobalScope/registerAnimator)
-    pub fn register_animator(&self, name: &DOMString, animator_ctor: &Function) -> Undefined {
+    pub fn register_animator(&self, name: &JsString, animator_ctor: &Function) -> Undefined {
         self.inner
             .call("registerAnimator", &[name.into(), animator_ctor.into()])
             .as_::<Undefined>()

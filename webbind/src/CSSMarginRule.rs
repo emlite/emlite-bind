@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(CSSMarginRule);
 impl CSSMarginRule {
     /// Getter of the `name` attribute.
     /// [`CSSMarginRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSMarginRule/name)
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl CSSMarginRule {

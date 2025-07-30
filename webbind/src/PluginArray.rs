@@ -79,7 +79,7 @@ impl PluginArray {
 impl PluginArray {
     /// The namedItem method.
     /// [`PluginArray.namedItem`](https://developer.mozilla.org/en-US/docs/Web/API/PluginArray/namedItem)
-    pub fn named_item(&self, name: &DOMString) -> Plugin {
+    pub fn named_item(&self, name: &JsString) -> Plugin {
         self.inner.call("namedItem", &[name.into()]).as_::<Plugin>()
     }
 }

@@ -58,14 +58,14 @@ jsbind::utils::impl_dyn_cast!(CSSNamespaceRule);
 impl CSSNamespaceRule {
     /// Getter of the `namespaceURI` attribute.
     /// [`CSSNamespaceRule.namespaceURI`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNamespaceRule/namespaceURI)
-    pub fn namespace_uri(&self) -> CSSOMString {
-        self.inner.get("namespaceURI").as_::<CSSOMString>()
+    pub fn namespace_uri(&self) -> JsString {
+        self.inner.get("namespaceURI").as_::<JsString>()
     }
 }
 impl CSSNamespaceRule {
     /// Getter of the `prefix` attribute.
     /// [`CSSNamespaceRule.prefix`](https://developer.mozilla.org/en-US/docs/Web/API/CSSNamespaceRule/prefix)
-    pub fn prefix(&self) -> CSSOMString {
-        self.inner.get("prefix").as_::<CSSOMString>()
+    pub fn prefix(&self) -> JsString {
+        self.inner.get("prefix").as_::<JsString>()
     }
 }

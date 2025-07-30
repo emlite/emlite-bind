@@ -75,16 +75,16 @@ impl USBConfiguration {
 impl USBConfiguration {
     /// Getter of the `configurationName` attribute.
     /// [`USBConfiguration.configurationName`](https://developer.mozilla.org/en-US/docs/Web/API/USBConfiguration/configurationName)
-    pub fn configuration_name(&self) -> DOMString {
-        self.inner.get("configurationName").as_::<DOMString>()
+    pub fn configuration_name(&self) -> JsString {
+        self.inner.get("configurationName").as_::<JsString>()
     }
 }
 impl USBConfiguration {
     /// Getter of the `interfaces` attribute.
     /// [`USBConfiguration.interfaces`](https://developer.mozilla.org/en-US/docs/Web/API/USBConfiguration/interfaces)
-    pub fn interfaces(&self) -> FrozenArray<USBInterface> {
+    pub fn interfaces(&self) -> TypedArray<USBInterface> {
         self.inner
             .get("interfaces")
-            .as_::<FrozenArray<USBInterface>>()
+            .as_::<TypedArray<USBInterface>>()
     }
 }

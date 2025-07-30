@@ -58,15 +58,13 @@ jsbind::utils::impl_dyn_cast!(BluetoothLEScanPermissionResult);
 impl BluetoothLEScanPermissionResult {
     /// Getter of the `scans` attribute.
     /// [`BluetoothLEScanPermissionResult.scans`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScanPermissionResult/scans)
-    pub fn scans(&self) -> FrozenArray<BluetoothLEScan> {
-        self.inner
-            .get("scans")
-            .as_::<FrozenArray<BluetoothLEScan>>()
+    pub fn scans(&self) -> TypedArray<BluetoothLEScan> {
+        self.inner.get("scans").as_::<TypedArray<BluetoothLEScan>>()
     }
 
     /// Setter of the `scans` attribute.
     /// [`BluetoothLEScanPermissionResult.scans`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScanPermissionResult/scans)
-    pub fn set_scans(&mut self, value: &FrozenArray<BluetoothLEScan>) {
+    pub fn set_scans(&mut self, value: &TypedArray<BluetoothLEScan>) {
         self.inner.set("scans", value);
     }
 }

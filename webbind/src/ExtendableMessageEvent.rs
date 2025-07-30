@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(ExtendableMessageEvent);
 
 impl ExtendableMessageEvent {
     /// The `new ExtendableMessageEvent(..)` constructor, creating a new ExtendableMessageEvent instance
-    pub fn new0(type_: &DOMString) -> ExtendableMessageEvent {
+    pub fn new0(type_: &JsString) -> ExtendableMessageEvent {
         Self {
             inner: Any::global("ExtendableMessageEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl ExtendableMessageEvent {
     }
 
     /// The `new ExtendableMessageEvent(..)` constructor, creating a new ExtendableMessageEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> ExtendableMessageEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> ExtendableMessageEvent {
         Self {
             inner: Any::global("ExtendableMessageEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -84,15 +84,15 @@ impl ExtendableMessageEvent {
 impl ExtendableMessageEvent {
     /// Getter of the `origin` attribute.
     /// [`ExtendableMessageEvent.origin`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableMessageEvent/origin)
-    pub fn origin(&self) -> USVString {
-        self.inner.get("origin").as_::<USVString>()
+    pub fn origin(&self) -> JsString {
+        self.inner.get("origin").as_::<JsString>()
     }
 }
 impl ExtendableMessageEvent {
     /// Getter of the `lastEventId` attribute.
     /// [`ExtendableMessageEvent.lastEventId`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableMessageEvent/lastEventId)
-    pub fn last_event_id(&self) -> DOMString {
-        self.inner.get("lastEventId").as_::<DOMString>()
+    pub fn last_event_id(&self) -> JsString {
+        self.inner.get("lastEventId").as_::<JsString>()
     }
 }
 impl ExtendableMessageEvent {
@@ -105,7 +105,7 @@ impl ExtendableMessageEvent {
 impl ExtendableMessageEvent {
     /// Getter of the `ports` attribute.
     /// [`ExtendableMessageEvent.ports`](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableMessageEvent/ports)
-    pub fn ports(&self) -> FrozenArray<Any> {
-        self.inner.get("ports").as_::<FrozenArray<Any>>()
+    pub fn ports(&self) -> TypedArray<Any> {
+        self.inner.get("ports").as_::<TypedArray<Any>>()
     }
 }

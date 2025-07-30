@@ -66,26 +66,26 @@ impl HTMLModElement {
 impl HTMLModElement {
     /// Getter of the `cite` attribute.
     /// [`HTMLModElement.cite`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLModElement/cite)
-    pub fn cite(&self) -> USVString {
-        self.inner.get("cite").as_::<USVString>()
+    pub fn cite(&self) -> JsString {
+        self.inner.get("cite").as_::<JsString>()
     }
 
     /// Setter of the `cite` attribute.
     /// [`HTMLModElement.cite`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLModElement/cite)
-    pub fn set_cite(&mut self, value: &USVString) {
+    pub fn set_cite(&mut self, value: &JsString) {
         self.inner.set("cite", value);
     }
 }
 impl HTMLModElement {
     /// Getter of the `dateTime` attribute.
     /// [`HTMLModElement.dateTime`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLModElement/dateTime)
-    pub fn date_time(&self) -> DOMString {
-        self.inner.get("dateTime").as_::<DOMString>()
+    pub fn date_time(&self) -> JsString {
+        self.inner.get("dateTime").as_::<JsString>()
     }
 
     /// Setter of the `dateTime` attribute.
     /// [`HTMLModElement.dateTime`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLModElement/dateTime)
-    pub fn set_date_time(&mut self, value: &DOMString) {
+    pub fn set_date_time(&mut self, value: &JsString) {
         self.inner.set("dateTime", value);
     }
 }

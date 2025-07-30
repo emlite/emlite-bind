@@ -82,46 +82,46 @@ impl HTMLOutputElement {
 impl HTMLOutputElement {
     /// Getter of the `name` attribute.
     /// [`HTMLOutputElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`HTMLOutputElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/name)
-    pub fn set_name(&mut self, value: &DOMString) {
+    pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
     }
 }
 impl HTMLOutputElement {
     /// Getter of the `type` attribute.
     /// [`HTMLOutputElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 }
 impl HTMLOutputElement {
     /// Getter of the `defaultValue` attribute.
     /// [`HTMLOutputElement.defaultValue`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/defaultValue)
-    pub fn default_value(&self) -> DOMString {
-        self.inner.get("defaultValue").as_::<DOMString>()
+    pub fn default_value(&self) -> JsString {
+        self.inner.get("defaultValue").as_::<JsString>()
     }
 
     /// Setter of the `defaultValue` attribute.
     /// [`HTMLOutputElement.defaultValue`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/defaultValue)
-    pub fn set_default_value(&mut self, value: &DOMString) {
+    pub fn set_default_value(&mut self, value: &JsString) {
         self.inner.set("defaultValue", value);
     }
 }
 impl HTMLOutputElement {
     /// Getter of the `value` attribute.
     /// [`HTMLOutputElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/value)
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> JsString {
+        self.inner.get("value").as_::<JsString>()
     }
 
     /// Setter of the `value` attribute.
     /// [`HTMLOutputElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/value)
-    pub fn set_value(&mut self, value: &DOMString) {
+    pub fn set_value(&mut self, value: &JsString) {
         self.inner.set("value", value);
     }
 }
@@ -142,8 +142,8 @@ impl HTMLOutputElement {
 impl HTMLOutputElement {
     /// Getter of the `validationMessage` attribute.
     /// [`HTMLOutputElement.validationMessage`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/validationMessage)
-    pub fn validation_message(&self) -> DOMString {
-        self.inner.get("validationMessage").as_::<DOMString>()
+    pub fn validation_message(&self) -> JsString {
+        self.inner.get("validationMessage").as_::<JsString>()
     }
 }
 impl HTMLOutputElement {
@@ -163,7 +163,7 @@ impl HTMLOutputElement {
 impl HTMLOutputElement {
     /// The setCustomValidity method.
     /// [`HTMLOutputElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOutputElement/setCustomValidity)
-    pub fn set_custom_validity(&self, error: &DOMString) -> Undefined {
+    pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
         self.inner
             .call("setCustomValidity", &[error.into()])
             .as_::<Undefined>()

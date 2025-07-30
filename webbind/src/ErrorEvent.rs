@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(ErrorEvent);
 
 impl ErrorEvent {
     /// The `new ErrorEvent(..)` constructor, creating a new ErrorEvent instance
-    pub fn new0(type_: &DOMString) -> ErrorEvent {
+    pub fn new0(type_: &JsString) -> ErrorEvent {
         Self {
             inner: Any::global("ErrorEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl ErrorEvent {
     }
 
     /// The `new ErrorEvent(..)` constructor, creating a new ErrorEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> ErrorEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> ErrorEvent {
         Self {
             inner: Any::global("ErrorEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -77,15 +77,15 @@ impl ErrorEvent {
 impl ErrorEvent {
     /// Getter of the `message` attribute.
     /// [`ErrorEvent.message`](https://developer.mozilla.org/en-US/docs/Web/API/ErrorEvent/message)
-    pub fn message(&self) -> DOMString {
-        self.inner.get("message").as_::<DOMString>()
+    pub fn message(&self) -> JsString {
+        self.inner.get("message").as_::<JsString>()
     }
 }
 impl ErrorEvent {
     /// Getter of the `filename` attribute.
     /// [`ErrorEvent.filename`](https://developer.mozilla.org/en-US/docs/Web/API/ErrorEvent/filename)
-    pub fn filename(&self) -> USVString {
-        self.inner.get("filename").as_::<USVString>()
+    pub fn filename(&self) -> JsString {
+        self.inner.get("filename").as_::<JsString>()
     }
 }
 impl ErrorEvent {

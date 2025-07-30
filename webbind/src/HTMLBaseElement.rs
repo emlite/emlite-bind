@@ -66,26 +66,26 @@ impl HTMLBaseElement {
 impl HTMLBaseElement {
     /// Getter of the `href` attribute.
     /// [`HTMLBaseElement.href`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBaseElement/href)
-    pub fn href(&self) -> USVString {
-        self.inner.get("href").as_::<USVString>()
+    pub fn href(&self) -> JsString {
+        self.inner.get("href").as_::<JsString>()
     }
 
     /// Setter of the `href` attribute.
     /// [`HTMLBaseElement.href`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBaseElement/href)
-    pub fn set_href(&mut self, value: &USVString) {
+    pub fn set_href(&mut self, value: &JsString) {
         self.inner.set("href", value);
     }
 }
 impl HTMLBaseElement {
     /// Getter of the `target` attribute.
     /// [`HTMLBaseElement.target`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBaseElement/target)
-    pub fn target(&self) -> DOMString {
-        self.inner.get("target").as_::<DOMString>()
+    pub fn target(&self) -> JsString {
+        self.inner.get("target").as_::<JsString>()
     }
 
     /// Setter of the `target` attribute.
     /// [`HTMLBaseElement.target`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLBaseElement/target)
-    pub fn set_target(&mut self, value: &DOMString) {
+    pub fn set_target(&mut self, value: &JsString) {
         self.inner.set("target", value);
     }
 }

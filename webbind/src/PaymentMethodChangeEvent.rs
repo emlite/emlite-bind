@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(PaymentMethodChangeEvent);
 
 impl PaymentMethodChangeEvent {
     /// The `new PaymentMethodChangeEvent(..)` constructor, creating a new PaymentMethodChangeEvent instance
-    pub fn new0(type_: &DOMString) -> PaymentMethodChangeEvent {
+    pub fn new0(type_: &JsString) -> PaymentMethodChangeEvent {
         Self {
             inner: Any::global("PaymentMethodChangeEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl PaymentMethodChangeEvent {
     }
 
     /// The `new PaymentMethodChangeEvent(..)` constructor, creating a new PaymentMethodChangeEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> PaymentMethodChangeEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> PaymentMethodChangeEvent {
         Self {
             inner: Any::global("PaymentMethodChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -77,8 +77,8 @@ impl PaymentMethodChangeEvent {
 impl PaymentMethodChangeEvent {
     /// Getter of the `methodName` attribute.
     /// [`PaymentMethodChangeEvent.methodName`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentMethodChangeEvent/methodName)
-    pub fn method_name(&self) -> DOMString {
-        self.inner.get("methodName").as_::<DOMString>()
+    pub fn method_name(&self) -> JsString {
+        self.inner.get("methodName").as_::<JsString>()
     }
 }
 impl PaymentMethodChangeEvent {

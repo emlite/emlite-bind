@@ -64,7 +64,7 @@ impl DOMException {
     }
 
     /// The `new DOMException(..)` constructor, creating a new DOMException instance
-    pub fn new1(message: &DOMString) -> DOMException {
+    pub fn new1(message: &JsString) -> DOMException {
         Self {
             inner: Any::global("DOMException")
                 .new(&[message.into()])
@@ -73,7 +73,7 @@ impl DOMException {
     }
 
     /// The `new DOMException(..)` constructor, creating a new DOMException instance
-    pub fn new2(message: &DOMString, name: &DOMString) -> DOMException {
+    pub fn new2(message: &JsString, name: &JsString) -> DOMException {
         Self {
             inner: Any::global("DOMException")
                 .new(&[message.into(), name.into()])
@@ -84,15 +84,15 @@ impl DOMException {
 impl DOMException {
     /// Getter of the `name` attribute.
     /// [`DOMException.name`](https://developer.mozilla.org/en-US/docs/Web/API/DOMException/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl DOMException {
     /// Getter of the `message` attribute.
     /// [`DOMException.message`](https://developer.mozilla.org/en-US/docs/Web/API/DOMException/message)
-    pub fn message(&self) -> DOMString {
-        self.inner.get("message").as_::<DOMString>()
+    pub fn message(&self) -> JsString {
+        self.inner.get("message").as_::<JsString>()
     }
 }
 impl DOMException {

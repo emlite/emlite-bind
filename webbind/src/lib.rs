@@ -3545,6 +3545,10 @@ pub use speech_recognition_event::*;
 pub mod speech_recognition_phrase;
 pub use speech_recognition_phrase::*;
 
+#[path = "SpeechRecognitionPhraseList.rs"]
+pub mod speech_recognition_phrase_list;
+pub use speech_recognition_phrase_list::*;
+
 #[path = "SpeechRecognitionResult.rs"]
 pub mod speech_recognition_result;
 pub use speech_recognition_result::*;

@@ -51,11 +51,11 @@ impl From<&ModuleExportDescriptor> for Any {
 }
 
 impl ModuleExportDescriptor {
-    pub fn name(&self) -> USVString {
-        self.inner.get("name").as_::<USVString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 
-    pub fn set_name(&mut self, value: &USVString) {
+    pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
     }
 }
@@ -119,20 +119,20 @@ impl From<&ModuleImportDescriptor> for Any {
 }
 
 impl ModuleImportDescriptor {
-    pub fn module(&self) -> USVString {
-        self.inner.get("module").as_::<USVString>()
+    pub fn module(&self) -> JsString {
+        self.inner.get("module").as_::<JsString>()
     }
 
-    pub fn set_module(&mut self, value: &USVString) {
+    pub fn set_module(&mut self, value: &JsString) {
         self.inner.set("module", value);
     }
 }
 impl ModuleImportDescriptor {
-    pub fn name(&self) -> USVString {
-        self.inner.get("name").as_::<USVString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 
-    pub fn set_name(&mut self, value: &USVString) {
+    pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
     }
 }
@@ -211,19 +211,19 @@ impl Module {
 impl Module {
     /// The exports method.
     /// [`Module.exports`](https://developer.mozilla.org/en-US/docs/Web/API/Module/exports)
-    pub fn exports(module_object: &Module) -> Sequence<ModuleExportDescriptor> {
+    pub fn exports(module_object: &Module) -> TypedArray<ModuleExportDescriptor> {
         Any::global("Module")
             .call("exports", &[module_object.into()])
-            .as_::<Sequence<ModuleExportDescriptor>>()
+            .as_::<TypedArray<ModuleExportDescriptor>>()
     }
 }
 impl Module {
     /// The imports method.
     /// [`Module.imports`](https://developer.mozilla.org/en-US/docs/Web/API/Module/imports)
-    pub fn imports(module_object: &Module) -> Sequence<ModuleImportDescriptor> {
+    pub fn imports(module_object: &Module) -> TypedArray<ModuleImportDescriptor> {
         Any::global("Module")
             .call("imports", &[module_object.into()])
-            .as_::<Sequence<ModuleImportDescriptor>>()
+            .as_::<TypedArray<ModuleImportDescriptor>>()
     }
 }
 impl Module {
@@ -231,13 +231,13 @@ impl Module {
     /// [`Module.customSections`](https://developer.mozilla.org/en-US/docs/Web/API/Module/customSections)
     pub fn custom_sections(
         module_object: &Module,
-        section_name: &DOMString,
-    ) -> Sequence<ArrayBuffer> {
+        section_name: &JsString,
+    ) -> TypedArray<ArrayBuffer> {
         Any::global("Module")
             .call(
                 "customSections",
                 &[module_object.into(), section_name.into()],
             )
-            .as_::<Sequence<ArrayBuffer>>()
+            .as_::<TypedArray<ArrayBuffer>>()
     }
 }

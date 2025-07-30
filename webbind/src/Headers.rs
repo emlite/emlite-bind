@@ -73,7 +73,7 @@ impl Headers {
 impl Headers {
     /// The append method.
     /// [`Headers.append`](https://developer.mozilla.org/en-US/docs/Web/API/Headers/append)
-    pub fn append(&self, name: &ByteString, value: &ByteString) -> Undefined {
+    pub fn append(&self, name: &JsString, value: &JsString) -> Undefined {
         self.inner
             .call("append", &[name.into(), value.into()])
             .as_::<Undefined>()
@@ -82,37 +82,37 @@ impl Headers {
 impl Headers {
     /// The delete method.
     /// [`Headers.delete`](https://developer.mozilla.org/en-US/docs/Web/API/Headers/delete)
-    pub fn delete(&self, name: &ByteString) -> Undefined {
+    pub fn delete(&self, name: &JsString) -> Undefined {
         self.inner.call("delete", &[name.into()]).as_::<Undefined>()
     }
 }
 impl Headers {
     /// The get method.
     /// [`Headers.get`](https://developer.mozilla.org/en-US/docs/Web/API/Headers/get)
-    pub fn get(&self, name: &ByteString) -> ByteString {
-        self.inner.call("get", &[name.into()]).as_::<ByteString>()
+    pub fn get(&self, name: &JsString) -> JsString {
+        self.inner.call("get", &[name.into()]).as_::<JsString>()
     }
 }
 impl Headers {
     /// The getSetCookie method.
     /// [`Headers.getSetCookie`](https://developer.mozilla.org/en-US/docs/Web/API/Headers/getSetCookie)
-    pub fn get_set_cookie(&self) -> Sequence<ByteString> {
+    pub fn get_set_cookie(&self) -> TypedArray<JsString> {
         self.inner
             .call("getSetCookie", &[])
-            .as_::<Sequence<ByteString>>()
+            .as_::<TypedArray<JsString>>()
     }
 }
 impl Headers {
     /// The has method.
     /// [`Headers.has`](https://developer.mozilla.org/en-US/docs/Web/API/Headers/has)
-    pub fn has(&self, name: &ByteString) -> bool {
+    pub fn has(&self, name: &JsString) -> bool {
         self.inner.call("has", &[name.into()]).as_::<bool>()
     }
 }
 impl Headers {
     /// The set method.
     /// [`Headers.set`](https://developer.mozilla.org/en-US/docs/Web/API/Headers/set)
-    pub fn set(&self, name: &ByteString, value: &ByteString) -> Undefined {
+    pub fn set(&self, name: &JsString, value: &JsString) -> Undefined {
         self.inner
             .call("set", &[name.into(), value.into()])
             .as_::<Undefined>()

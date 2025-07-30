@@ -226,7 +226,7 @@ impl SourceBuffer {
 impl SourceBuffer {
     /// The changeType method.
     /// [`SourceBuffer.changeType`](https://developer.mozilla.org/en-US/docs/Web/API/SourceBuffer/changeType)
-    pub fn change_type(&self, type_: &DOMString) -> Undefined {
+    pub fn change_type(&self, type_: &JsString) -> Undefined {
         self.inner
             .call("changeType", &[type_.into()])
             .as_::<Undefined>()

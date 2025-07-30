@@ -79,8 +79,8 @@ impl PerformanceElementTiming {
 impl PerformanceElementTiming {
     /// Getter of the `identifier` attribute.
     /// [`PerformanceElementTiming.identifier`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceElementTiming/identifier)
-    pub fn identifier(&self) -> DOMString {
-        self.inner.get("identifier").as_::<DOMString>()
+    pub fn identifier(&self) -> JsString {
+        self.inner.get("identifier").as_::<JsString>()
     }
 }
 impl PerformanceElementTiming {
@@ -100,8 +100,8 @@ impl PerformanceElementTiming {
 impl PerformanceElementTiming {
     /// Getter of the `id` attribute.
     /// [`PerformanceElementTiming.id`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceElementTiming/id)
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> JsString {
+        self.inner.get("id").as_::<JsString>()
     }
 }
 impl PerformanceElementTiming {
@@ -114,8 +114,8 @@ impl PerformanceElementTiming {
 impl PerformanceElementTiming {
     /// Getter of the `url` attribute.
     /// [`PerformanceElementTiming.url`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceElementTiming/url)
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> JsString {
+        self.inner.get("url").as_::<JsString>()
     }
 }
 impl PerformanceElementTiming {

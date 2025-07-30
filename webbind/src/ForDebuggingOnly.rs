@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(ForDebuggingOnly);
 impl ForDebuggingOnly {
     /// The reportAdAuctionWin method.
     /// [`ForDebuggingOnly.reportAdAuctionWin`](https://developer.mozilla.org/en-US/docs/Web/API/ForDebuggingOnly/reportAdAuctionWin)
-    pub fn report_ad_auction_win(&self, url: &USVString) -> Undefined {
+    pub fn report_ad_auction_win(&self, url: &JsString) -> Undefined {
         self.inner
             .call("reportAdAuctionWin", &[url.into()])
             .as_::<Undefined>()
@@ -67,7 +67,7 @@ impl ForDebuggingOnly {
 impl ForDebuggingOnly {
     /// The reportAdAuctionLoss method.
     /// [`ForDebuggingOnly.reportAdAuctionLoss`](https://developer.mozilla.org/en-US/docs/Web/API/ForDebuggingOnly/reportAdAuctionLoss)
-    pub fn report_ad_auction_loss(&self, url: &USVString) -> Undefined {
+    pub fn report_ad_auction_loss(&self, url: &JsString) -> Undefined {
         self.inner
             .call("reportAdAuctionLoss", &[url.into()])
             .as_::<Undefined>()

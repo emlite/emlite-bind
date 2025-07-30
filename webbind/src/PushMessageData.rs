@@ -86,7 +86,7 @@ impl PushMessageData {
 impl PushMessageData {
     /// The text method.
     /// [`PushMessageData.text`](https://developer.mozilla.org/en-US/docs/Web/API/PushMessageData/text)
-    pub fn text(&self) -> USVString {
-        self.inner.call("text", &[]).as_::<USVString>()
+    pub fn text(&self) -> JsString {
+        self.inner.call("text", &[]).as_::<JsString>()
     }
 }

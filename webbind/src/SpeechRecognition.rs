@@ -51,11 +51,11 @@ impl From<&SpeechRecognitionOptions> for Any {
 }
 
 impl SpeechRecognitionOptions {
-    pub fn langs(&self) -> Sequence<DOMString> {
-        self.inner.get("langs").as_::<Sequence<DOMString>>()
+    pub fn langs(&self) -> TypedArray<JsString> {
+        self.inner.get("langs").as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_langs(&mut self, value: &Sequence<DOMString>) {
+    pub fn set_langs(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("langs", value);
     }
 }
@@ -149,13 +149,13 @@ impl SpeechRecognition {
 impl SpeechRecognition {
     /// Getter of the `lang` attribute.
     /// [`SpeechRecognition.lang`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/lang)
-    pub fn lang(&self) -> DOMString {
-        self.inner.get("lang").as_::<DOMString>()
+    pub fn lang(&self) -> JsString {
+        self.inner.get("lang").as_::<JsString>()
     }
 
     /// Setter of the `lang` attribute.
     /// [`SpeechRecognition.lang`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/lang)
-    pub fn set_lang(&mut self, value: &DOMString) {
+    pub fn set_lang(&mut self, value: &JsString) {
         self.inner.set("lang", value);
     }
 }
@@ -214,15 +214,15 @@ impl SpeechRecognition {
 impl SpeechRecognition {
     /// Getter of the `phrases` attribute.
     /// [`SpeechRecognition.phrases`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/phrases)
-    pub fn phrases(&self) -> ObservableArray<SpeechRecognitionPhrase> {
+    pub fn phrases(&self) -> SpeechRecognitionPhraseList {
         self.inner
             .get("phrases")
-            .as_::<ObservableArray<SpeechRecognitionPhrase>>()
+            .as_::<SpeechRecognitionPhraseList>()
     }
 
     /// Setter of the `phrases` attribute.
     /// [`SpeechRecognition.phrases`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/phrases)
-    pub fn set_phrases(&mut self, value: &ObservableArray<SpeechRecognitionPhrase>) {
+    pub fn set_phrases(&mut self, value: &SpeechRecognitionPhraseList) {
         self.inner.set("phrases", value);
     }
 }

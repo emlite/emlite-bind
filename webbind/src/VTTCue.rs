@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(VTTCue);
 
 impl VTTCue {
     /// The `new VTTCue(..)` constructor, creating a new VTTCue instance
-    pub fn new(start_time: f64, end_time: f64, text: &DOMString) -> VTTCue {
+    pub fn new(start_time: f64, end_time: f64, text: &JsString) -> VTTCue {
         Self {
             inner: Any::global("VTTCue")
                 .new(&[start_time.into(), end_time.into(), text.into()])
@@ -187,13 +187,13 @@ impl VTTCue {
 impl VTTCue {
     /// Getter of the `text` attribute.
     /// [`VTTCue.text`](https://developer.mozilla.org/en-US/docs/Web/API/VTTCue/text)
-    pub fn text(&self) -> DOMString {
-        self.inner.get("text").as_::<DOMString>()
+    pub fn text(&self) -> JsString {
+        self.inner.get("text").as_::<JsString>()
     }
 
     /// Setter of the `text` attribute.
     /// [`VTTCue.text`](https://developer.mozilla.org/en-US/docs/Web/API/VTTCue/text)
-    pub fn set_text(&mut self, value: &DOMString) {
+    pub fn set_text(&mut self, value: &JsString) {
         self.inner.set("text", value);
     }
 }

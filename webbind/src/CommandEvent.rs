@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CommandEvent);
 
 impl CommandEvent {
     /// The `new CommandEvent(..)` constructor, creating a new CommandEvent instance
-    pub fn new0(type_: &DOMString) -> CommandEvent {
+    pub fn new0(type_: &JsString) -> CommandEvent {
         Self {
             inner: Any::global("CommandEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl CommandEvent {
     }
 
     /// The `new CommandEvent(..)` constructor, creating a new CommandEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> CommandEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> CommandEvent {
         Self {
             inner: Any::global("CommandEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -84,7 +84,7 @@ impl CommandEvent {
 impl CommandEvent {
     /// Getter of the `command` attribute.
     /// [`CommandEvent.command`](https://developer.mozilla.org/en-US/docs/Web/API/CommandEvent/command)
-    pub fn command(&self) -> DOMString {
-        self.inner.get("command").as_::<DOMString>()
+    pub fn command(&self) -> JsString {
+        self.inner.get("command").as_::<JsString>()
     }
 }

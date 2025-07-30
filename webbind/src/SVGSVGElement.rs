@@ -385,7 +385,7 @@ impl SVGSVGElement {
 impl SVGSVGElement {
     /// The getElementById method.
     /// [`SVGSVGElement.getElementById`](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement/getElementById)
-    pub fn get_element_by_id(&self, element_id: &DOMString) -> Element {
+    pub fn get_element_by_id(&self, element_id: &JsString) -> Element {
         self.inner
             .call("getElementById", &[element_id.into()])
             .as_::<Element>()

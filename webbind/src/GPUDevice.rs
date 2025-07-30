@@ -182,13 +182,13 @@ impl GPUTextureDescriptor {
     }
 }
 impl GPUTextureDescriptor {
-    pub fn view_formats(&self) -> Sequence<GPUTextureFormat> {
+    pub fn view_formats(&self) -> TypedArray<GPUTextureFormat> {
         self.inner
             .get("viewFormats")
-            .as_::<Sequence<GPUTextureFormat>>()
+            .as_::<TypedArray<GPUTextureFormat>>()
     }
 
-    pub fn set_view_formats(&mut self, value: &Sequence<GPUTextureFormat>) {
+    pub fn set_view_formats(&mut self, value: &TypedArray<GPUTextureFormat>) {
         self.inner.set("viewFormats", value);
     }
 }
@@ -451,11 +451,11 @@ impl From<&GPUBindGroupLayoutDescriptor> for Any {
 }
 
 impl GPUBindGroupLayoutDescriptor {
-    pub fn entries(&self) -> Sequence<Any> {
-        self.inner.get("entries").as_::<Sequence<Any>>()
+    pub fn entries(&self) -> TypedArray<Any> {
+        self.inner.get("entries").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_entries(&mut self, value: &Sequence<Any>) {
+    pub fn set_entries(&mut self, value: &TypedArray<Any>) {
         self.inner.set("entries", value);
     }
 }
@@ -510,13 +510,13 @@ impl From<&GPUPipelineLayoutDescriptor> for Any {
 }
 
 impl GPUPipelineLayoutDescriptor {
-    pub fn bind_group_layouts(&self) -> Sequence<GPUBindGroupLayout> {
+    pub fn bind_group_layouts(&self) -> TypedArray<GPUBindGroupLayout> {
         self.inner
             .get("bindGroupLayouts")
-            .as_::<Sequence<GPUBindGroupLayout>>()
+            .as_::<TypedArray<GPUBindGroupLayout>>()
     }
 
-    pub fn set_bind_group_layouts(&mut self, value: &Sequence<GPUBindGroupLayout>) {
+    pub fn set_bind_group_layouts(&mut self, value: &TypedArray<GPUBindGroupLayout>) {
         self.inner.set("bindGroupLayouts", value);
     }
 }
@@ -580,11 +580,11 @@ impl GPUBindGroupDescriptor {
     }
 }
 impl GPUBindGroupDescriptor {
-    pub fn entries(&self) -> Sequence<Any> {
-        self.inner.get("entries").as_::<Sequence<Any>>()
+    pub fn entries(&self) -> TypedArray<Any> {
+        self.inner.get("entries").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_entries(&mut self, value: &Sequence<Any>) {
+    pub fn set_entries(&mut self, value: &TypedArray<Any>) {
         self.inner.set("entries", value);
     }
 }
@@ -639,20 +639,20 @@ impl From<&GPUShaderModuleDescriptor> for Any {
 }
 
 impl GPUShaderModuleDescriptor {
-    pub fn code(&self) -> USVString {
-        self.inner.get("code").as_::<USVString>()
+    pub fn code(&self) -> JsString {
+        self.inner.get("code").as_::<JsString>()
     }
 
-    pub fn set_code(&mut self, value: &USVString) {
+    pub fn set_code(&mut self, value: &JsString) {
         self.inner.set("code", value);
     }
 }
 impl GPUShaderModuleDescriptor {
-    pub fn compilation_hints(&self) -> Sequence<Any> {
-        self.inner.get("compilationHints").as_::<Sequence<Any>>()
+    pub fn compilation_hints(&self) -> TypedArray<Any> {
+        self.inner.get("compilationHints").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_compilation_hints(&mut self, value: &Sequence<Any>) {
+    pub fn set_compilation_hints(&mut self, value: &TypedArray<Any>) {
         self.inner.set("compilationHints", value);
     }
 }
@@ -1301,13 +1301,13 @@ impl GPUDevice {
 impl GPUDevice {
     /// Getter of the `label` attribute.
     /// [`GPUDevice.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/label)
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
     }
 
     /// Setter of the `label` attribute.
     /// [`GPUDevice.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUDevice/label)
-    pub fn set_label(&mut self, value: &USVString) {
+    pub fn set_label(&mut self, value: &JsString) {
         self.inner.set("label", value);
     }
 }

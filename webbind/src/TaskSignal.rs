@@ -117,14 +117,14 @@ jsbind::utils::impl_dyn_cast!(TaskSignal);
 impl TaskSignal {
     /// The any method.
     /// [`TaskSignal.any`](https://developer.mozilla.org/en-US/docs/Web/API/TaskSignal/any)
-    pub fn any0(signals: &Sequence<AbortSignal>) -> TaskSignal {
+    pub fn any0(signals: &TypedArray<AbortSignal>) -> TaskSignal {
         Any::global("TaskSignal")
             .call("any", &[signals.into()])
             .as_::<TaskSignal>()
     }
     /// The any method.
     /// [`TaskSignal.any`](https://developer.mozilla.org/en-US/docs/Web/API/TaskSignal/any)
-    pub fn any1(signals: &Sequence<AbortSignal>, init: &TaskSignalAnyInit) -> TaskSignal {
+    pub fn any1(signals: &TypedArray<AbortSignal>, init: &TaskSignalAnyInit) -> TaskSignal {
         Any::global("TaskSignal")
             .call("any", &[signals.into(), init.into()])
             .as_::<TaskSignal>()

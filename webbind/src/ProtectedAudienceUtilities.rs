@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(ProtectedAudienceUtilities);
 impl ProtectedAudienceUtilities {
     /// The encodeUtf8 method.
     /// [`ProtectedAudienceUtilities.encodeUtf8`](https://developer.mozilla.org/en-US/docs/Web/API/ProtectedAudienceUtilities/encodeUtf8)
-    pub fn encode_utf8(&self, input: &USVString) -> Uint8Array {
+    pub fn encode_utf8(&self, input: &JsString) -> Uint8Array {
         self.inner
             .call("encodeUtf8", &[input.into()])
             .as_::<Uint8Array>()
@@ -67,9 +67,9 @@ impl ProtectedAudienceUtilities {
 impl ProtectedAudienceUtilities {
     /// The decodeUtf8 method.
     /// [`ProtectedAudienceUtilities.decodeUtf8`](https://developer.mozilla.org/en-US/docs/Web/API/ProtectedAudienceUtilities/decodeUtf8)
-    pub fn decode_utf8(&self, bytes: &Uint8Array) -> USVString {
+    pub fn decode_utf8(&self, bytes: &Uint8Array) -> JsString {
         self.inner
             .call("decodeUtf8", &[bytes.into()])
-            .as_::<USVString>()
+            .as_::<JsString>()
     }
 }

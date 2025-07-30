@@ -65,72 +65,70 @@ impl ContactAddress {
 impl ContactAddress {
     /// Getter of the `city` attribute.
     /// [`ContactAddress.city`](https://developer.mozilla.org/en-US/docs/Web/API/ContactAddress/city)
-    pub fn city(&self) -> DOMString {
-        self.inner.get("city").as_::<DOMString>()
+    pub fn city(&self) -> JsString {
+        self.inner.get("city").as_::<JsString>()
     }
 }
 impl ContactAddress {
     /// Getter of the `country` attribute.
     /// [`ContactAddress.country`](https://developer.mozilla.org/en-US/docs/Web/API/ContactAddress/country)
-    pub fn country(&self) -> DOMString {
-        self.inner.get("country").as_::<DOMString>()
+    pub fn country(&self) -> JsString {
+        self.inner.get("country").as_::<JsString>()
     }
 }
 impl ContactAddress {
     /// Getter of the `dependentLocality` attribute.
     /// [`ContactAddress.dependentLocality`](https://developer.mozilla.org/en-US/docs/Web/API/ContactAddress/dependentLocality)
-    pub fn dependent_locality(&self) -> DOMString {
-        self.inner.get("dependentLocality").as_::<DOMString>()
+    pub fn dependent_locality(&self) -> JsString {
+        self.inner.get("dependentLocality").as_::<JsString>()
     }
 }
 impl ContactAddress {
     /// Getter of the `organization` attribute.
     /// [`ContactAddress.organization`](https://developer.mozilla.org/en-US/docs/Web/API/ContactAddress/organization)
-    pub fn organization(&self) -> DOMString {
-        self.inner.get("organization").as_::<DOMString>()
+    pub fn organization(&self) -> JsString {
+        self.inner.get("organization").as_::<JsString>()
     }
 }
 impl ContactAddress {
     /// Getter of the `phone` attribute.
     /// [`ContactAddress.phone`](https://developer.mozilla.org/en-US/docs/Web/API/ContactAddress/phone)
-    pub fn phone(&self) -> DOMString {
-        self.inner.get("phone").as_::<DOMString>()
+    pub fn phone(&self) -> JsString {
+        self.inner.get("phone").as_::<JsString>()
     }
 }
 impl ContactAddress {
     /// Getter of the `postalCode` attribute.
     /// [`ContactAddress.postalCode`](https://developer.mozilla.org/en-US/docs/Web/API/ContactAddress/postalCode)
-    pub fn postal_code(&self) -> DOMString {
-        self.inner.get("postalCode").as_::<DOMString>()
+    pub fn postal_code(&self) -> JsString {
+        self.inner.get("postalCode").as_::<JsString>()
     }
 }
 impl ContactAddress {
     /// Getter of the `recipient` attribute.
     /// [`ContactAddress.recipient`](https://developer.mozilla.org/en-US/docs/Web/API/ContactAddress/recipient)
-    pub fn recipient(&self) -> DOMString {
-        self.inner.get("recipient").as_::<DOMString>()
+    pub fn recipient(&self) -> JsString {
+        self.inner.get("recipient").as_::<JsString>()
     }
 }
 impl ContactAddress {
     /// Getter of the `region` attribute.
     /// [`ContactAddress.region`](https://developer.mozilla.org/en-US/docs/Web/API/ContactAddress/region)
-    pub fn region(&self) -> DOMString {
-        self.inner.get("region").as_::<DOMString>()
+    pub fn region(&self) -> JsString {
+        self.inner.get("region").as_::<JsString>()
     }
 }
 impl ContactAddress {
     /// Getter of the `sortingCode` attribute.
     /// [`ContactAddress.sortingCode`](https://developer.mozilla.org/en-US/docs/Web/API/ContactAddress/sortingCode)
-    pub fn sorting_code(&self) -> DOMString {
-        self.inner.get("sortingCode").as_::<DOMString>()
+    pub fn sorting_code(&self) -> JsString {
+        self.inner.get("sortingCode").as_::<JsString>()
     }
 }
 impl ContactAddress {
     /// Getter of the `addressLine` attribute.
     /// [`ContactAddress.addressLine`](https://developer.mozilla.org/en-US/docs/Web/API/ContactAddress/addressLine)
-    pub fn address_line(&self) -> FrozenArray<DOMString> {
-        self.inner
-            .get("addressLine")
-            .as_::<FrozenArray<DOMString>>()
+    pub fn address_line(&self) -> TypedArray<JsString> {
+        self.inner.get("addressLine").as_::<TypedArray<JsString>>()
     }
 }

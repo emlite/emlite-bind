@@ -68,22 +68,22 @@ impl NDEFRecord {
 impl NDEFRecord {
     /// Getter of the `recordType` attribute.
     /// [`NDEFRecord.recordType`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord/recordType)
-    pub fn record_type(&self) -> USVString {
-        self.inner.get("recordType").as_::<USVString>()
+    pub fn record_type(&self) -> JsString {
+        self.inner.get("recordType").as_::<JsString>()
     }
 }
 impl NDEFRecord {
     /// Getter of the `mediaType` attribute.
     /// [`NDEFRecord.mediaType`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord/mediaType)
-    pub fn media_type(&self) -> USVString {
-        self.inner.get("mediaType").as_::<USVString>()
+    pub fn media_type(&self) -> JsString {
+        self.inner.get("mediaType").as_::<JsString>()
     }
 }
 impl NDEFRecord {
     /// Getter of the `id` attribute.
     /// [`NDEFRecord.id`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord/id)
-    pub fn id(&self) -> USVString {
-        self.inner.get("id").as_::<USVString>()
+    pub fn id(&self) -> JsString {
+        self.inner.get("id").as_::<JsString>()
     }
 }
 impl NDEFRecord {
@@ -96,23 +96,23 @@ impl NDEFRecord {
 impl NDEFRecord {
     /// Getter of the `encoding` attribute.
     /// [`NDEFRecord.encoding`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord/encoding)
-    pub fn encoding(&self) -> USVString {
-        self.inner.get("encoding").as_::<USVString>()
+    pub fn encoding(&self) -> JsString {
+        self.inner.get("encoding").as_::<JsString>()
     }
 }
 impl NDEFRecord {
     /// Getter of the `lang` attribute.
     /// [`NDEFRecord.lang`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord/lang)
-    pub fn lang(&self) -> USVString {
-        self.inner.get("lang").as_::<USVString>()
+    pub fn lang(&self) -> JsString {
+        self.inner.get("lang").as_::<JsString>()
     }
 }
 impl NDEFRecord {
     /// The toRecords method.
     /// [`NDEFRecord.toRecords`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFRecord/toRecords)
-    pub fn to_records(&self) -> Sequence<NDEFRecord> {
+    pub fn to_records(&self) -> TypedArray<NDEFRecord> {
         self.inner
             .call("toRecords", &[])
-            .as_::<Sequence<NDEFRecord>>()
+            .as_::<TypedArray<NDEFRecord>>()
     }
 }

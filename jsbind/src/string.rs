@@ -27,9 +27,6 @@ macro_rules! declare_string {
 
         impl From<&str> for $name {
             fn from(s: &str) -> Self {
-                if core::any::TypeId::of::<$name>() == core::any::TypeId::of::<ByteString>() {
-                    assert!(s.is_ascii(), "ByteString must be ASCII/Latin-1");
-                }
                 emlite::Val::from(s).as_::<Self>()
             }
         }
@@ -215,10 +212,10 @@ macro_rules! declare_string {
                 .as_::<Self>()
             }
             /// [`String.prototype.split`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/split)
-            pub fn split(&self, sep: &str) -> crate::sequence::Sequence<Self> {
+            pub fn split(&self, sep: &str) -> crate::array::TypedArray<Self> {
                 self.inner
                     .call("split", &[sep.into()])
-                    .as_::<crate::sequence::Sequence<Self>>()
+                    .as_::<crate::array::TypedArray<Self>>()
             }
             /// [`String.prototype.startsWith`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith)
             pub fn starts_with(&self, pat: &str) -> bool {
@@ -291,7 +288,4 @@ macro_rules! declare_string {
     };
 }
 
-declare_string!(ByteString);
-declare_string!(DOMString);
-declare_string!(CSSOMString);
-declare_string!(USVString);
+declare_string!(JsString);

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CSSParserAtRule);
 
 impl CSSParserAtRule {
     /// The `new CSSParserAtRule(..)` constructor, creating a new CSSParserAtRule instance
-    pub fn new0(name: &DOMString, prelude: &Sequence<Any>) -> CSSParserAtRule {
+    pub fn new0(name: &JsString, prelude: &TypedArray<Any>) -> CSSParserAtRule {
         Self {
             inner: Any::global("CSSParserAtRule")
                 .new(&[name.into(), prelude.into()])
@@ -67,9 +67,9 @@ impl CSSParserAtRule {
 
     /// The `new CSSParserAtRule(..)` constructor, creating a new CSSParserAtRule instance
     pub fn new1(
-        name: &DOMString,
-        prelude: &Sequence<Any>,
-        body: &Sequence<CSSParserRule>,
+        name: &JsString,
+        prelude: &TypedArray<Any>,
+        body: &TypedArray<CSSParserRule>,
     ) -> CSSParserAtRule {
         Self {
             inner: Any::global("CSSParserAtRule")
@@ -81,23 +81,23 @@ impl CSSParserAtRule {
 impl CSSParserAtRule {
     /// Getter of the `name` attribute.
     /// [`CSSParserAtRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserAtRule/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl CSSParserAtRule {
     /// Getter of the `prelude` attribute.
     /// [`CSSParserAtRule.prelude`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserAtRule/prelude)
-    pub fn prelude(&self) -> FrozenArray<CSSParserValue> {
+    pub fn prelude(&self) -> TypedArray<CSSParserValue> {
         self.inner
             .get("prelude")
-            .as_::<FrozenArray<CSSParserValue>>()
+            .as_::<TypedArray<CSSParserValue>>()
     }
 }
 impl CSSParserAtRule {
     /// Getter of the `body` attribute.
     /// [`CSSParserAtRule.body`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserAtRule/body)
-    pub fn body(&self) -> FrozenArray<CSSParserRule> {
-        self.inner.get("body").as_::<FrozenArray<CSSParserRule>>()
+    pub fn body(&self) -> TypedArray<CSSParserRule> {
+        self.inner.get("body").as_::<TypedArray<CSSParserRule>>()
     }
 }

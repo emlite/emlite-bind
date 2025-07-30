@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(MediaStream);
 
 impl MediaStream {
     /// The `new MediaStream(..)` constructor, creating a new MediaStream instance
-    pub fn new(tracks: &Sequence<MediaStreamTrack>) -> MediaStream {
+    pub fn new(tracks: &TypedArray<MediaStreamTrack>) -> MediaStream {
         Self {
             inner: Any::global("MediaStream")
                 .new(&[tracks.into()])
@@ -68,41 +68,41 @@ impl MediaStream {
 impl MediaStream {
     /// Getter of the `id` attribute.
     /// [`MediaStream.id`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/id)
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> JsString {
+        self.inner.get("id").as_::<JsString>()
     }
 }
 impl MediaStream {
     /// The getAudioTracks method.
     /// [`MediaStream.getAudioTracks`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/getAudioTracks)
-    pub fn get_audio_tracks(&self) -> Sequence<MediaStreamTrack> {
+    pub fn get_audio_tracks(&self) -> TypedArray<MediaStreamTrack> {
         self.inner
             .call("getAudioTracks", &[])
-            .as_::<Sequence<MediaStreamTrack>>()
+            .as_::<TypedArray<MediaStreamTrack>>()
     }
 }
 impl MediaStream {
     /// The getVideoTracks method.
     /// [`MediaStream.getVideoTracks`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/getVideoTracks)
-    pub fn get_video_tracks(&self) -> Sequence<MediaStreamTrack> {
+    pub fn get_video_tracks(&self) -> TypedArray<MediaStreamTrack> {
         self.inner
             .call("getVideoTracks", &[])
-            .as_::<Sequence<MediaStreamTrack>>()
+            .as_::<TypedArray<MediaStreamTrack>>()
     }
 }
 impl MediaStream {
     /// The getTracks method.
     /// [`MediaStream.getTracks`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/getTracks)
-    pub fn get_tracks(&self) -> Sequence<MediaStreamTrack> {
+    pub fn get_tracks(&self) -> TypedArray<MediaStreamTrack> {
         self.inner
             .call("getTracks", &[])
-            .as_::<Sequence<MediaStreamTrack>>()
+            .as_::<TypedArray<MediaStreamTrack>>()
     }
 }
 impl MediaStream {
     /// The getTrackById method.
     /// [`MediaStream.getTrackById`](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream/getTrackById)
-    pub fn get_track_by_id(&self, track_id: &DOMString) -> MediaStreamTrack {
+    pub fn get_track_by_id(&self, track_id: &JsString) -> MediaStreamTrack {
         self.inner
             .call("getTrackById", &[track_id.into()])
             .as_::<MediaStreamTrack>()

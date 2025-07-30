@@ -58,10 +58,10 @@ jsbind::utils::impl_dyn_cast!(PresentationConnectionList);
 impl PresentationConnectionList {
     /// Getter of the `connections` attribute.
     /// [`PresentationConnectionList.connections`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationConnectionList/connections)
-    pub fn connections(&self) -> FrozenArray<PresentationConnection> {
+    pub fn connections(&self) -> TypedArray<PresentationConnection> {
         self.inner
             .get("connections")
-            .as_::<FrozenArray<PresentationConnection>>()
+            .as_::<TypedArray<PresentationConnection>>()
     }
 }
 impl PresentationConnectionList {

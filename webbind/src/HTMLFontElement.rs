@@ -66,39 +66,39 @@ impl HTMLFontElement {
 impl HTMLFontElement {
     /// Getter of the `color` attribute.
     /// [`HTMLFontElement.color`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFontElement/color)
-    pub fn color(&self) -> DOMString {
-        self.inner.get("color").as_::<DOMString>()
+    pub fn color(&self) -> JsString {
+        self.inner.get("color").as_::<JsString>()
     }
 
     /// Setter of the `color` attribute.
     /// [`HTMLFontElement.color`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFontElement/color)
-    pub fn set_color(&mut self, value: &DOMString) {
+    pub fn set_color(&mut self, value: &JsString) {
         self.inner.set("color", value);
     }
 }
 impl HTMLFontElement {
     /// Getter of the `face` attribute.
     /// [`HTMLFontElement.face`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFontElement/face)
-    pub fn face(&self) -> DOMString {
-        self.inner.get("face").as_::<DOMString>()
+    pub fn face(&self) -> JsString {
+        self.inner.get("face").as_::<JsString>()
     }
 
     /// Setter of the `face` attribute.
     /// [`HTMLFontElement.face`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFontElement/face)
-    pub fn set_face(&mut self, value: &DOMString) {
+    pub fn set_face(&mut self, value: &JsString) {
         self.inner.set("face", value);
     }
 }
 impl HTMLFontElement {
     /// Getter of the `size` attribute.
     /// [`HTMLFontElement.size`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFontElement/size)
-    pub fn size(&self) -> DOMString {
-        self.inner.get("size").as_::<DOMString>()
+    pub fn size(&self) -> JsString {
+        self.inner.get("size").as_::<JsString>()
     }
 
     /// Setter of the `size` attribute.
     /// [`HTMLFontElement.size`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFontElement/size)
-    pub fn set_size(&mut self, value: &DOMString) {
+    pub fn set_size(&mut self, value: &JsString) {
         self.inner.set("size", value);
     }
 }

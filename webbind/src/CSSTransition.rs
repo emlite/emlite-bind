@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(CSSTransition);
 impl CSSTransition {
     /// Getter of the `transitionProperty` attribute.
     /// [`CSSTransition.transitionProperty`](https://developer.mozilla.org/en-US/docs/Web/API/CSSTransition/transitionProperty)
-    pub fn transition_property(&self) -> CSSOMString {
-        self.inner.get("transitionProperty").as_::<CSSOMString>()
+    pub fn transition_property(&self) -> JsString {
+        self.inner.get("transitionProperty").as_::<JsString>()
     }
 }

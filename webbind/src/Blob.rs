@@ -64,14 +64,14 @@ impl Blob {
     }
 
     /// The `new Blob(..)` constructor, creating a new Blob instance
-    pub fn new1(blob_parts: &Sequence<Any>) -> Blob {
+    pub fn new1(blob_parts: &TypedArray<Any>) -> Blob {
         Self {
             inner: Any::global("Blob").new(&[blob_parts.into()]).as_::<Any>(),
         }
     }
 
     /// The `new Blob(..)` constructor, creating a new Blob instance
-    pub fn new2(blob_parts: &Sequence<Any>, options: &Any) -> Blob {
+    pub fn new2(blob_parts: &TypedArray<Any>, options: &Any) -> Blob {
         Self {
             inner: Any::global("Blob")
                 .new(&[blob_parts.into(), options.into()])
@@ -89,8 +89,8 @@ impl Blob {
 impl Blob {
     /// Getter of the `type` attribute.
     /// [`Blob.type`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 }
 impl Blob {
@@ -113,7 +113,7 @@ impl Blob {
     }
     /// The slice method.
     /// [`Blob.slice`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/slice)
-    pub fn slice3(&self, start: i64, end: i64, content_type: &DOMString) -> Blob {
+    pub fn slice3(&self, start: i64, end: i64, content_type: &JsString) -> Blob {
         self.inner
             .call("slice", &[start.into(), end.into(), content_type.into()])
             .as_::<Blob>()
@@ -129,8 +129,8 @@ impl Blob {
 impl Blob {
     /// The text method.
     /// [`Blob.text`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/text)
-    pub fn text(&self) -> Promise<USVString> {
-        self.inner.call("text", &[]).as_::<Promise<USVString>>()
+    pub fn text(&self) -> Promise<JsString> {
+        self.inner.call("text", &[]).as_::<Promise<JsString>>()
     }
 }
 impl Blob {

@@ -58,9 +58,9 @@ jsbind::utils::impl_dyn_cast!(WorkletGroupEffect);
 impl WorkletGroupEffect {
     /// The getChildren method.
     /// [`WorkletGroupEffect.getChildren`](https://developer.mozilla.org/en-US/docs/Web/API/WorkletGroupEffect/getChildren)
-    pub fn get_children(&self) -> Sequence<WorkletAnimationEffect> {
+    pub fn get_children(&self) -> TypedArray<WorkletAnimationEffect> {
         self.inner
             .call("getChildren", &[])
-            .as_::<Sequence<WorkletAnimationEffect>>()
+            .as_::<TypedArray<WorkletAnimationEffect>>()
     }
 }

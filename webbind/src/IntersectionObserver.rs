@@ -84,22 +84,22 @@ impl IntersectionObserver {
 impl IntersectionObserver {
     /// Getter of the `rootMargin` attribute.
     /// [`IntersectionObserver.rootMargin`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/rootMargin)
-    pub fn root_margin(&self) -> DOMString {
-        self.inner.get("rootMargin").as_::<DOMString>()
+    pub fn root_margin(&self) -> JsString {
+        self.inner.get("rootMargin").as_::<JsString>()
     }
 }
 impl IntersectionObserver {
     /// Getter of the `scrollMargin` attribute.
     /// [`IntersectionObserver.scrollMargin`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/scrollMargin)
-    pub fn scroll_margin(&self) -> DOMString {
-        self.inner.get("scrollMargin").as_::<DOMString>()
+    pub fn scroll_margin(&self) -> JsString {
+        self.inner.get("scrollMargin").as_::<JsString>()
     }
 }
 impl IntersectionObserver {
     /// Getter of the `thresholds` attribute.
     /// [`IntersectionObserver.thresholds`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/thresholds)
-    pub fn thresholds(&self) -> FrozenArray<f64> {
-        self.inner.get("thresholds").as_::<FrozenArray<f64>>()
+    pub fn thresholds(&self) -> TypedArray<f64> {
+        self.inner.get("thresholds").as_::<TypedArray<f64>>()
     }
 }
 impl IntersectionObserver {
@@ -144,9 +144,9 @@ impl IntersectionObserver {
 impl IntersectionObserver {
     /// The takeRecords method.
     /// [`IntersectionObserver.takeRecords`](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/takeRecords)
-    pub fn take_records(&self) -> Sequence<IntersectionObserverEntry> {
+    pub fn take_records(&self) -> TypedArray<IntersectionObserverEntry> {
         self.inner
             .call("takeRecords", &[])
-            .as_::<Sequence<IntersectionObserverEntry>>()
+            .as_::<TypedArray<IntersectionObserverEntry>>()
     }
 }

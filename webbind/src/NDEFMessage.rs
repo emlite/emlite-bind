@@ -68,7 +68,7 @@ impl NDEFMessage {
 impl NDEFMessage {
     /// Getter of the `records` attribute.
     /// [`NDEFMessage.records`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFMessage/records)
-    pub fn records(&self) -> FrozenArray<NDEFRecord> {
-        self.inner.get("records").as_::<FrozenArray<NDEFRecord>>()
+    pub fn records(&self) -> TypedArray<NDEFRecord> {
+        self.inner.get("records").as_::<TypedArray<NDEFRecord>>()
     }
 }

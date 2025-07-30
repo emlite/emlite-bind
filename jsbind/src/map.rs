@@ -1,6 +1,6 @@
 use crate::any::Any;
+use crate::array::Array;
 use crate::record::Record;
-use crate::sequence::Sequence;
 use core::marker::PhantomData;
 use core::ops::{Deref, DerefMut};
 use emlite::FromVal;
@@ -126,7 +126,7 @@ impl<K, V> TypedMap<K, V> {
 }
 
 pub struct TypedMapIter<'a, K, V> {
-    it: Sequence<Any>,
+    it: Array,
     idx: usize,
     _phantom: PhantomData<(&'a K, &'a V)>,
 }
@@ -145,7 +145,7 @@ where
         let vec = emlite::Val::global("Array")
             .new(&[])
             .call("from", &[iter])
-            .as_::<Sequence<Any>>();
+            .as_::<Array>();
         TypedMapIter {
             it: vec,
             idx: 0,
@@ -307,7 +307,7 @@ impl<K, V> TypedWeakMap<K, V> {
 }
 
 pub struct TypedWeakMapIter<'a, K, V> {
-    it: Sequence<Any>,
+    it: Array,
     idx: usize,
     _phantom: PhantomData<(&'a K, &'a V)>,
 }
@@ -326,7 +326,7 @@ where
         let vec = emlite::Val::global("Array")
             .new(&[])
             .call("from", &[iter])
-            .as_::<Sequence<Any>>();
+            .as_::<Array>();
         TypedWeakMapIter {
             it: vec,
             idx: 0,

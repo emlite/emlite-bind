@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(CSSConditionRule);
 impl CSSConditionRule {
     /// Getter of the `conditionText` attribute.
     /// [`CSSConditionRule.conditionText`](https://developer.mozilla.org/en-US/docs/Web/API/CSSConditionRule/conditionText)
-    pub fn condition_text(&self) -> CSSOMString {
-        self.inner.get("conditionText").as_::<CSSOMString>()
+    pub fn condition_text(&self) -> JsString {
+        self.inner.get("conditionText").as_::<JsString>()
     }
 }

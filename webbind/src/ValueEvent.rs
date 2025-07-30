@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(ValueEvent);
 
 impl ValueEvent {
     /// The `new ValueEvent(..)` constructor, creating a new ValueEvent instance
-    pub fn new0(type_: &DOMString) -> ValueEvent {
+    pub fn new0(type_: &JsString) -> ValueEvent {
         Self {
             inner: Any::global("ValueEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl ValueEvent {
     }
 
     /// The `new ValueEvent(..)` constructor, creating a new ValueEvent instance
-    pub fn new1(type_: &DOMString, init_dict: &Any) -> ValueEvent {
+    pub fn new1(type_: &JsString, init_dict: &Any) -> ValueEvent {
         Self {
             inner: Any::global("ValueEvent")
                 .new(&[type_.into(), init_dict.into()])

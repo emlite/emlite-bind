@@ -58,28 +58,28 @@ jsbind::utils::impl_dyn_cast!(CSSFontPaletteValuesRule);
 impl CSSFontPaletteValuesRule {
     /// Getter of the `name` attribute.
     /// [`CSSFontPaletteValuesRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontPaletteValuesRule/name)
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl CSSFontPaletteValuesRule {
     /// Getter of the `fontFamily` attribute.
     /// [`CSSFontPaletteValuesRule.fontFamily`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontPaletteValuesRule/fontFamily)
-    pub fn font_family(&self) -> CSSOMString {
-        self.inner.get("fontFamily").as_::<CSSOMString>()
+    pub fn font_family(&self) -> JsString {
+        self.inner.get("fontFamily").as_::<JsString>()
     }
 }
 impl CSSFontPaletteValuesRule {
     /// Getter of the `basePalette` attribute.
     /// [`CSSFontPaletteValuesRule.basePalette`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontPaletteValuesRule/basePalette)
-    pub fn base_palette(&self) -> CSSOMString {
-        self.inner.get("basePalette").as_::<CSSOMString>()
+    pub fn base_palette(&self) -> JsString {
+        self.inner.get("basePalette").as_::<JsString>()
     }
 }
 impl CSSFontPaletteValuesRule {
     /// Getter of the `overrideColors` attribute.
     /// [`CSSFontPaletteValuesRule.overrideColors`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontPaletteValuesRule/overrideColors)
-    pub fn override_colors(&self) -> CSSOMString {
-        self.inner.get("overrideColors").as_::<CSSOMString>()
+    pub fn override_colors(&self) -> JsString {
+        self.inner.get("overrideColors").as_::<JsString>()
     }
 }

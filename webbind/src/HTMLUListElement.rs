@@ -81,13 +81,13 @@ impl HTMLUListElement {
 impl HTMLUListElement {
     /// Getter of the `type` attribute.
     /// [`HTMLUListElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLUListElement/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 
     /// Setter of the `type` attribute.
     /// [`HTMLUListElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLUListElement/type)
-    pub fn set_type_(&mut self, value: &DOMString) {
+    pub fn set_type_(&mut self, value: &JsString) {
         self.inner.set("type", value);
     }
 }

@@ -117,7 +117,7 @@ jsbind::utils::impl_dyn_cast!(BackgroundFetchManager);
 impl BackgroundFetchManager {
     /// The fetch method.
     /// [`BackgroundFetchManager.fetch`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchManager/fetch)
-    pub fn fetch0(&self, id: &DOMString, requests: &Any) -> Promise<BackgroundFetchRegistration> {
+    pub fn fetch0(&self, id: &JsString, requests: &Any) -> Promise<BackgroundFetchRegistration> {
         self.inner
             .call("fetch", &[id.into(), requests.into()])
             .as_::<Promise<BackgroundFetchRegistration>>()
@@ -126,7 +126,7 @@ impl BackgroundFetchManager {
     /// [`BackgroundFetchManager.fetch`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchManager/fetch)
     pub fn fetch1(
         &self,
-        id: &DOMString,
+        id: &JsString,
         requests: &Any,
         options: &BackgroundFetchOptions,
     ) -> Promise<BackgroundFetchRegistration> {
@@ -138,7 +138,7 @@ impl BackgroundFetchManager {
 impl BackgroundFetchManager {
     /// The get method.
     /// [`BackgroundFetchManager.get`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchManager/get)
-    pub fn get(&self, id: &DOMString) -> Promise<BackgroundFetchRegistration> {
+    pub fn get(&self, id: &JsString) -> Promise<BackgroundFetchRegistration> {
         self.inner
             .call("get", &[id.into()])
             .as_::<Promise<BackgroundFetchRegistration>>()
@@ -147,9 +147,9 @@ impl BackgroundFetchManager {
 impl BackgroundFetchManager {
     /// The getIds method.
     /// [`BackgroundFetchManager.getIds`](https://developer.mozilla.org/en-US/docs/Web/API/BackgroundFetchManager/getIds)
-    pub fn get_ids(&self) -> Promise<Sequence<DOMString>> {
+    pub fn get_ids(&self) -> Promise<TypedArray<JsString>> {
         self.inner
             .call("getIds", &[])
-            .as_::<Promise<Sequence<DOMString>>>()
+            .as_::<Promise<TypedArray<JsString>>>()
     }
 }

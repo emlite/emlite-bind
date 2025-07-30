@@ -51,20 +51,20 @@ impl From<&RTCDtlsFingerprint> for Any {
 }
 
 impl RTCDtlsFingerprint {
-    pub fn algorithm(&self) -> DOMString {
-        self.inner.get("algorithm").as_::<DOMString>()
+    pub fn algorithm(&self) -> JsString {
+        self.inner.get("algorithm").as_::<JsString>()
     }
 
-    pub fn set_algorithm(&mut self, value: &DOMString) {
+    pub fn set_algorithm(&mut self, value: &JsString) {
         self.inner.set("algorithm", value);
     }
 }
 impl RTCDtlsFingerprint {
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> JsString {
+        self.inner.get("value").as_::<JsString>()
     }
 
-    pub fn set_value(&mut self, value: &DOMString) {
+    pub fn set_value(&mut self, value: &JsString) {
         self.inner.set("value", value);
     }
 }
@@ -133,9 +133,9 @@ impl RTCCertificate {
 impl RTCCertificate {
     /// The getFingerprints method.
     /// [`RTCCertificate.getFingerprints`](https://developer.mozilla.org/en-US/docs/Web/API/RTCCertificate/getFingerprints)
-    pub fn get_fingerprints(&self) -> Sequence<RTCDtlsFingerprint> {
+    pub fn get_fingerprints(&self) -> TypedArray<RTCDtlsFingerprint> {
         self.inner
             .call("getFingerprints", &[])
-            .as_::<Sequence<RTCDtlsFingerprint>>()
+            .as_::<TypedArray<RTCDtlsFingerprint>>()
     }
 }

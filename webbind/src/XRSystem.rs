@@ -51,24 +51,24 @@ impl From<&XRSessionInit> for Any {
 }
 
 impl XRSessionInit {
-    pub fn required_features(&self) -> Sequence<DOMString> {
+    pub fn required_features(&self) -> TypedArray<JsString> {
         self.inner
             .get("requiredFeatures")
-            .as_::<Sequence<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_required_features(&mut self, value: &Sequence<DOMString>) {
+    pub fn set_required_features(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("requiredFeatures", value);
     }
 }
 impl XRSessionInit {
-    pub fn optional_features(&self) -> Sequence<DOMString> {
+    pub fn optional_features(&self) -> TypedArray<JsString> {
         self.inner
             .get("optionalFeatures")
-            .as_::<Sequence<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_optional_features(&mut self, value: &Sequence<DOMString>) {
+    pub fn set_optional_features(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("optionalFeatures", value);
     }
 }

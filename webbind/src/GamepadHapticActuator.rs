@@ -162,10 +162,10 @@ jsbind::utils::impl_dyn_cast!(GamepadHapticActuator);
 impl GamepadHapticActuator {
     /// Getter of the `effects` attribute.
     /// [`GamepadHapticActuator.effects`](https://developer.mozilla.org/en-US/docs/Web/API/GamepadHapticActuator/effects)
-    pub fn effects(&self) -> FrozenArray<GamepadHapticEffectType> {
+    pub fn effects(&self) -> TypedArray<GamepadHapticEffectType> {
         self.inner
             .get("effects")
-            .as_::<FrozenArray<GamepadHapticEffectType>>()
+            .as_::<TypedArray<GamepadHapticEffectType>>()
     }
 }
 impl GamepadHapticActuator {

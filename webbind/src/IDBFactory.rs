@@ -51,11 +51,11 @@ impl From<&IDBDatabaseInfo> for Any {
 }
 
 impl IDBDatabaseInfo {
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 
-    pub fn set_name(&mut self, value: &DOMString) {
+    pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
     }
 }
@@ -126,14 +126,14 @@ jsbind::utils::impl_dyn_cast!(IDBFactory);
 impl IDBFactory {
     /// The open method.
     /// [`IDBFactory.open`](https://developer.mozilla.org/en-US/docs/Web/API/IDBFactory/open)
-    pub fn open0(&self, name: &DOMString) -> IDBOpenDBRequest {
+    pub fn open0(&self, name: &JsString) -> IDBOpenDBRequest {
         self.inner
             .call("open", &[name.into()])
             .as_::<IDBOpenDBRequest>()
     }
     /// The open method.
     /// [`IDBFactory.open`](https://developer.mozilla.org/en-US/docs/Web/API/IDBFactory/open)
-    pub fn open1(&self, name: &DOMString, version: u64) -> IDBOpenDBRequest {
+    pub fn open1(&self, name: &JsString, version: u64) -> IDBOpenDBRequest {
         self.inner
             .call("open", &[name.into(), version.into()])
             .as_::<IDBOpenDBRequest>()
@@ -142,7 +142,7 @@ impl IDBFactory {
 impl IDBFactory {
     /// The deleteDatabase method.
     /// [`IDBFactory.deleteDatabase`](https://developer.mozilla.org/en-US/docs/Web/API/IDBFactory/deleteDatabase)
-    pub fn delete_database(&self, name: &DOMString) -> IDBOpenDBRequest {
+    pub fn delete_database(&self, name: &JsString) -> IDBOpenDBRequest {
         self.inner
             .call("deleteDatabase", &[name.into()])
             .as_::<IDBOpenDBRequest>()
@@ -151,10 +151,10 @@ impl IDBFactory {
 impl IDBFactory {
     /// The databases method.
     /// [`IDBFactory.databases`](https://developer.mozilla.org/en-US/docs/Web/API/IDBFactory/databases)
-    pub fn databases(&self) -> Promise<Sequence<IDBDatabaseInfo>> {
+    pub fn databases(&self) -> Promise<TypedArray<IDBDatabaseInfo>> {
         self.inner
             .call("databases", &[])
-            .as_::<Promise<Sequence<IDBDatabaseInfo>>>()
+            .as_::<Promise<TypedArray<IDBDatabaseInfo>>>()
     }
 }
 impl IDBFactory {

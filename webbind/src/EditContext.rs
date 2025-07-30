@@ -75,7 +75,7 @@ impl EditContext {
 impl EditContext {
     /// The updateText method.
     /// [`EditContext.updateText`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/updateText)
-    pub fn update_text(&self, range_start: u32, range_end: u32, text: &DOMString) -> Undefined {
+    pub fn update_text(&self, range_start: u32, range_end: u32, text: &JsString) -> Undefined {
         self.inner
             .call(
                 "updateText",
@@ -117,7 +117,7 @@ impl EditContext {
     pub fn update_character_bounds(
         &self,
         range_start: u32,
-        character_bounds: &Sequence<DOMRect>,
+        character_bounds: &TypedArray<DOMRect>,
     ) -> Undefined {
         self.inner
             .call(
@@ -130,17 +130,17 @@ impl EditContext {
 impl EditContext {
     /// The attachedElements method.
     /// [`EditContext.attachedElements`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/attachedElements)
-    pub fn attached_elements(&self) -> Sequence<HTMLElement> {
+    pub fn attached_elements(&self) -> TypedArray<HTMLElement> {
         self.inner
             .call("attachedElements", &[])
-            .as_::<Sequence<HTMLElement>>()
+            .as_::<TypedArray<HTMLElement>>()
     }
 }
 impl EditContext {
     /// Getter of the `text` attribute.
     /// [`EditContext.text`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/text)
-    pub fn text(&self) -> DOMString {
-        self.inner.get("text").as_::<DOMString>()
+    pub fn text(&self) -> JsString {
+        self.inner.get("text").as_::<JsString>()
     }
 }
 impl EditContext {
@@ -167,10 +167,10 @@ impl EditContext {
 impl EditContext {
     /// The characterBounds method.
     /// [`EditContext.characterBounds`](https://developer.mozilla.org/en-US/docs/Web/API/EditContext/characterBounds)
-    pub fn character_bounds(&self) -> Sequence<DOMRect> {
+    pub fn character_bounds(&self) -> TypedArray<DOMRect> {
         self.inner
             .call("characterBounds", &[])
-            .as_::<Sequence<DOMRect>>()
+            .as_::<TypedArray<DOMRect>>()
     }
 }
 impl EditContext {

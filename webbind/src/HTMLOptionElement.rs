@@ -88,13 +88,13 @@ impl HTMLOptionElement {
 impl HTMLOptionElement {
     /// Getter of the `label` attribute.
     /// [`HTMLOptionElement.label`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/label)
-    pub fn label(&self) -> DOMString {
-        self.inner.get("label").as_::<DOMString>()
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
     }
 
     /// Setter of the `label` attribute.
     /// [`HTMLOptionElement.label`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/label)
-    pub fn set_label(&mut self, value: &DOMString) {
+    pub fn set_label(&mut self, value: &JsString) {
         self.inner.set("label", value);
     }
 }
@@ -127,26 +127,26 @@ impl HTMLOptionElement {
 impl HTMLOptionElement {
     /// Getter of the `value` attribute.
     /// [`HTMLOptionElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/value)
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> JsString {
+        self.inner.get("value").as_::<JsString>()
     }
 
     /// Setter of the `value` attribute.
     /// [`HTMLOptionElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/value)
-    pub fn set_value(&mut self, value: &DOMString) {
+    pub fn set_value(&mut self, value: &JsString) {
         self.inner.set("value", value);
     }
 }
 impl HTMLOptionElement {
     /// Getter of the `text` attribute.
     /// [`HTMLOptionElement.text`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/text)
-    pub fn text(&self) -> DOMString {
-        self.inner.get("text").as_::<DOMString>()
+    pub fn text(&self) -> JsString {
+        self.inner.get("text").as_::<JsString>()
     }
 
     /// Setter of the `text` attribute.
     /// [`HTMLOptionElement.text`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptionElement/text)
-    pub fn set_text(&mut self, value: &DOMString) {
+    pub fn set_text(&mut self, value: &JsString) {
         self.inner.set("text", value);
     }
 }

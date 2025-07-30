@@ -51,11 +51,11 @@ impl From<&InkTrailStyle> for Any {
 }
 
 impl InkTrailStyle {
-    pub fn color(&self) -> DOMString {
-        self.inner.get("color").as_::<DOMString>()
+    pub fn color(&self) -> JsString {
+        self.inner.get("color").as_::<JsString>()
     }
 
-    pub fn set_color(&mut self, value: &DOMString) {
+    pub fn set_color(&mut self, value: &JsString) {
         self.inner.set("color", value);
     }
 }

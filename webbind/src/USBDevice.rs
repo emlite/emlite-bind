@@ -230,22 +230,22 @@ impl USBDevice {
 impl USBDevice {
     /// Getter of the `manufacturerName` attribute.
     /// [`USBDevice.manufacturerName`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/manufacturerName)
-    pub fn manufacturer_name(&self) -> DOMString {
-        self.inner.get("manufacturerName").as_::<DOMString>()
+    pub fn manufacturer_name(&self) -> JsString {
+        self.inner.get("manufacturerName").as_::<JsString>()
     }
 }
 impl USBDevice {
     /// Getter of the `productName` attribute.
     /// [`USBDevice.productName`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/productName)
-    pub fn product_name(&self) -> DOMString {
-        self.inner.get("productName").as_::<DOMString>()
+    pub fn product_name(&self) -> JsString {
+        self.inner.get("productName").as_::<JsString>()
     }
 }
 impl USBDevice {
     /// Getter of the `serialNumber` attribute.
     /// [`USBDevice.serialNumber`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/serialNumber)
-    pub fn serial_number(&self) -> DOMString {
-        self.inner.get("serialNumber").as_::<DOMString>()
+    pub fn serial_number(&self) -> JsString {
+        self.inner.get("serialNumber").as_::<JsString>()
     }
 }
 impl USBDevice {
@@ -258,10 +258,10 @@ impl USBDevice {
 impl USBDevice {
     /// Getter of the `configurations` attribute.
     /// [`USBDevice.configurations`](https://developer.mozilla.org/en-US/docs/Web/API/USBDevice/configurations)
-    pub fn configurations(&self) -> FrozenArray<USBConfiguration> {
+    pub fn configurations(&self) -> TypedArray<USBConfiguration> {
         self.inner
             .get("configurations")
-            .as_::<FrozenArray<USBConfiguration>>()
+            .as_::<TypedArray<USBConfiguration>>()
     }
 }
 impl USBDevice {
@@ -404,7 +404,7 @@ impl USBDevice {
     pub fn isochronous_transfer_in(
         &self,
         endpoint_number: u8,
-        packet_lengths: Sequence<u32>,
+        packet_lengths: TypedArray<u32>,
     ) -> Promise<USBIsochronousInTransferResult> {
         self.inner
             .call(
@@ -421,7 +421,7 @@ impl USBDevice {
         &self,
         endpoint_number: u8,
         data: &Any,
-        packet_lengths: Sequence<u32>,
+        packet_lengths: TypedArray<u32>,
     ) -> Promise<USBIsochronousOutTransferResult> {
         self.inner
             .call(

@@ -51,20 +51,22 @@ impl From<&HandwritingPrediction> for Any {
 }
 
 impl HandwritingPrediction {
-    pub fn text(&self) -> DOMString {
-        self.inner.get("text").as_::<DOMString>()
+    pub fn text(&self) -> JsString {
+        self.inner.get("text").as_::<JsString>()
     }
 
-    pub fn set_text(&mut self, value: &DOMString) {
+    pub fn set_text(&mut self, value: &JsString) {
         self.inner.set("text", value);
     }
 }
 impl HandwritingPrediction {
-    pub fn segmentation_result(&self) -> Sequence<Any> {
-        self.inner.get("segmentationResult").as_::<Sequence<Any>>()
+    pub fn segmentation_result(&self) -> TypedArray<Any> {
+        self.inner
+            .get("segmentationResult")
+            .as_::<TypedArray<Any>>()
     }
 
-    pub fn set_segmentation_result(&mut self, value: &Sequence<Any>) {
+    pub fn set_segmentation_result(&mut self, value: &TypedArray<Any>) {
         self.inner.set("segmentationResult", value);
     }
 }
@@ -151,18 +153,18 @@ impl HandwritingDrawing {
 impl HandwritingDrawing {
     /// The getStrokes method.
     /// [`HandwritingDrawing.getStrokes`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingDrawing/getStrokes)
-    pub fn get_strokes(&self) -> Sequence<HandwritingStroke> {
+    pub fn get_strokes(&self) -> TypedArray<HandwritingStroke> {
         self.inner
             .call("getStrokes", &[])
-            .as_::<Sequence<HandwritingStroke>>()
+            .as_::<TypedArray<HandwritingStroke>>()
     }
 }
 impl HandwritingDrawing {
     /// The getPrediction method.
     /// [`HandwritingDrawing.getPrediction`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingDrawing/getPrediction)
-    pub fn get_prediction(&self) -> Promise<Sequence<HandwritingPrediction>> {
+    pub fn get_prediction(&self) -> Promise<TypedArray<HandwritingPrediction>> {
         self.inner
             .call("getPrediction", &[])
-            .as_::<Promise<Sequence<HandwritingPrediction>>>()
+            .as_::<Promise<TypedArray<HandwritingPrediction>>>()
     }
 }

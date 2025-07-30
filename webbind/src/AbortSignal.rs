@@ -83,7 +83,7 @@ impl AbortSignal {
 impl AbortSignal {
     /// The any method.
     /// [`AbortSignal.any`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/any)
-    pub fn any(signals: &Sequence<AbortSignal>) -> AbortSignal {
+    pub fn any(signals: &TypedArray<AbortSignal>) -> AbortSignal {
         Any::global("AbortSignal")
             .call("any", &[signals.into()])
             .as_::<AbortSignal>()

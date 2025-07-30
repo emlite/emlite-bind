@@ -68,26 +68,26 @@ impl HTMLFrameSetElement {
 impl HTMLFrameSetElement {
     /// Getter of the `cols` attribute.
     /// [`HTMLFrameSetElement.cols`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameSetElement/cols)
-    pub fn cols(&self) -> DOMString {
-        self.inner.get("cols").as_::<DOMString>()
+    pub fn cols(&self) -> JsString {
+        self.inner.get("cols").as_::<JsString>()
     }
 
     /// Setter of the `cols` attribute.
     /// [`HTMLFrameSetElement.cols`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameSetElement/cols)
-    pub fn set_cols(&mut self, value: &DOMString) {
+    pub fn set_cols(&mut self, value: &JsString) {
         self.inner.set("cols", value);
     }
 }
 impl HTMLFrameSetElement {
     /// Getter of the `rows` attribute.
     /// [`HTMLFrameSetElement.rows`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameSetElement/rows)
-    pub fn rows(&self) -> DOMString {
-        self.inner.get("rows").as_::<DOMString>()
+    pub fn rows(&self) -> JsString {
+        self.inner.get("rows").as_::<JsString>()
     }
 
     /// Setter of the `rows` attribute.
     /// [`HTMLFrameSetElement.rows`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFrameSetElement/rows)
-    pub fn set_rows(&mut self, value: &DOMString) {
+    pub fn set_rows(&mut self, value: &JsString) {
         self.inner.set("rows", value);
     }
 }

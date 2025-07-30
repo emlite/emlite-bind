@@ -84,13 +84,13 @@ impl Animation {
 impl Animation {
     /// Getter of the `id` attribute.
     /// [`Animation.id`](https://developer.mozilla.org/en-US/docs/Web/API/Animation/id)
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> JsString {
+        self.inner.get("id").as_::<JsString>()
     }
 
     /// Setter of the `id` attribute.
     /// [`Animation.id`](https://developer.mozilla.org/en-US/docs/Web/API/Animation/id)
-    pub fn set_id(&mut self, value: &DOMString) {
+    pub fn set_id(&mut self, value: &JsString) {
         self.inner.set("id", value);
     }
 }

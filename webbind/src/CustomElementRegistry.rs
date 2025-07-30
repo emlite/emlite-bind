@@ -51,11 +51,11 @@ impl From<&ElementDefinitionOptions> for Any {
 }
 
 impl ElementDefinitionOptions {
-    pub fn extends(&self) -> DOMString {
-        self.inner.get("extends").as_::<DOMString>()
+    pub fn extends(&self) -> JsString {
+        self.inner.get("extends").as_::<JsString>()
     }
 
-    pub fn set_extends(&mut self, value: &DOMString) {
+    pub fn set_extends(&mut self, value: &JsString) {
         self.inner.set("extends", value);
     }
 }
@@ -125,7 +125,7 @@ impl CustomElementRegistry {
 impl CustomElementRegistry {
     /// The define method.
     /// [`CustomElementRegistry.define`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define)
-    pub fn define0(&self, name: &DOMString, constructor: &Function) -> Undefined {
+    pub fn define0(&self, name: &JsString, constructor: &Function) -> Undefined {
         self.inner
             .call("define", &[name.into(), constructor.into()])
             .as_::<Undefined>()
@@ -134,7 +134,7 @@ impl CustomElementRegistry {
     /// [`CustomElementRegistry.define`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define)
     pub fn define1(
         &self,
-        name: &DOMString,
+        name: &JsString,
         constructor: &Function,
         options: &ElementDefinitionOptions,
     ) -> Undefined {
@@ -146,23 +146,23 @@ impl CustomElementRegistry {
 impl CustomElementRegistry {
     /// The get method.
     /// [`CustomElementRegistry.get`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/get)
-    pub fn get(&self, name: &DOMString) -> Any {
+    pub fn get(&self, name: &JsString) -> Any {
         self.inner.call("get", &[name.into()]).as_::<Any>()
     }
 }
 impl CustomElementRegistry {
     /// The getName method.
     /// [`CustomElementRegistry.getName`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/getName)
-    pub fn get_name(&self, constructor: &Function) -> DOMString {
+    pub fn get_name(&self, constructor: &Function) -> JsString {
         self.inner
             .call("getName", &[constructor.into()])
-            .as_::<DOMString>()
+            .as_::<JsString>()
     }
 }
 impl CustomElementRegistry {
     /// The whenDefined method.
     /// [`CustomElementRegistry.whenDefined`](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/whenDefined)
-    pub fn when_defined(&self, name: &DOMString) -> Promise<Function> {
+    pub fn when_defined(&self, name: &JsString) -> Promise<Function> {
         self.inner
             .call("whenDefined", &[name.into()])
             .as_::<Promise<Function>>()

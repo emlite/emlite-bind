@@ -1,4 +1,4 @@
-use crate::{any::Any, function::Function, sequence::Sequence};
+use crate::{any::Any, array::Array, function::Function};
 use core::marker::PhantomData;
 use core::ops::{Deref, DerefMut};
 use emlite::FromVal;
@@ -74,7 +74,7 @@ impl<T> Default for Promise<T> {
 
 impl<T> Promise<T> {
     /// JavaScript `Promise.all(iterable)`
-    pub fn all(iterable: &Sequence<Any>) -> Self {
+    pub fn all(iterable: &Array) -> Self {
         emlite::Val::global("Promise")
             .call("all", &[iterable.clone().into()])
             .as_::<Self>()

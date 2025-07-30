@@ -12,7 +12,7 @@ fn main() {
     println!("Created rejected Promise: {:?}", rejected);
 
     // Use Promise.all
-    let arr = Sequence::from(vec![
+    let arr = TypedArray::from(vec![
         Promise::<Any>::resolve(&Any::from(1)).into(),
         Promise::<Any>::resolve(&Any::from(2)).into(),
     ]);

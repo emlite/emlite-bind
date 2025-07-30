@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CloseEvent);
 
 impl CloseEvent {
     /// The `new CloseEvent(..)` constructor, creating a new CloseEvent instance
-    pub fn new0(type_: &DOMString) -> CloseEvent {
+    pub fn new0(type_: &JsString) -> CloseEvent {
         Self {
             inner: Any::global("CloseEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl CloseEvent {
     }
 
     /// The `new CloseEvent(..)` constructor, creating a new CloseEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> CloseEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> CloseEvent {
         Self {
             inner: Any::global("CloseEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -91,7 +91,7 @@ impl CloseEvent {
 impl CloseEvent {
     /// Getter of the `reason` attribute.
     /// [`CloseEvent.reason`](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent/reason)
-    pub fn reason(&self) -> USVString {
-        self.inner.get("reason").as_::<USVString>()
+    pub fn reason(&self) -> JsString {
+        self.inner.get("reason").as_::<JsString>()
     }
 }

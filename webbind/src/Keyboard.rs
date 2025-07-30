@@ -63,7 +63,7 @@ impl Keyboard {
     }
     /// The lock method.
     /// [`Keyboard.lock`](https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/lock)
-    pub fn lock1(&self, key_codes: &Sequence<DOMString>) -> Promise<Undefined> {
+    pub fn lock1(&self, key_codes: &TypedArray<JsString>) -> Promise<Undefined> {
         self.inner
             .call("lock", &[key_codes.into()])
             .as_::<Promise<Undefined>>()

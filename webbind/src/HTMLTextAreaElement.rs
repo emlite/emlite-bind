@@ -68,13 +68,13 @@ impl HTMLTextAreaElement {
 impl HTMLTextAreaElement {
     /// Getter of the `autocomplete` attribute.
     /// [`HTMLTextAreaElement.autocomplete`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/autocomplete)
-    pub fn autocomplete(&self) -> DOMString {
-        self.inner.get("autocomplete").as_::<DOMString>()
+    pub fn autocomplete(&self) -> JsString {
+        self.inner.get("autocomplete").as_::<JsString>()
     }
 
     /// Setter of the `autocomplete` attribute.
     /// [`HTMLTextAreaElement.autocomplete`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/autocomplete)
-    pub fn set_autocomplete(&mut self, value: &DOMString) {
+    pub fn set_autocomplete(&mut self, value: &JsString) {
         self.inner.set("autocomplete", value);
     }
 }
@@ -94,13 +94,13 @@ impl HTMLTextAreaElement {
 impl HTMLTextAreaElement {
     /// Getter of the `dirName` attribute.
     /// [`HTMLTextAreaElement.dirName`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/dirName)
-    pub fn dir_name(&self) -> DOMString {
-        self.inner.get("dirName").as_::<DOMString>()
+    pub fn dir_name(&self) -> JsString {
+        self.inner.get("dirName").as_::<JsString>()
     }
 
     /// Setter of the `dirName` attribute.
     /// [`HTMLTextAreaElement.dirName`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/dirName)
-    pub fn set_dir_name(&mut self, value: &DOMString) {
+    pub fn set_dir_name(&mut self, value: &JsString) {
         self.inner.set("dirName", value);
     }
 }
@@ -153,26 +153,26 @@ impl HTMLTextAreaElement {
 impl HTMLTextAreaElement {
     /// Getter of the `name` attribute.
     /// [`HTMLTextAreaElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`HTMLTextAreaElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/name)
-    pub fn set_name(&mut self, value: &DOMString) {
+    pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
     }
 }
 impl HTMLTextAreaElement {
     /// Getter of the `placeholder` attribute.
     /// [`HTMLTextAreaElement.placeholder`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/placeholder)
-    pub fn placeholder(&self) -> DOMString {
-        self.inner.get("placeholder").as_::<DOMString>()
+    pub fn placeholder(&self) -> JsString {
+        self.inner.get("placeholder").as_::<JsString>()
     }
 
     /// Setter of the `placeholder` attribute.
     /// [`HTMLTextAreaElement.placeholder`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/placeholder)
-    pub fn set_placeholder(&mut self, value: &DOMString) {
+    pub fn set_placeholder(&mut self, value: &JsString) {
         self.inner.set("placeholder", value);
     }
 }
@@ -218,46 +218,46 @@ impl HTMLTextAreaElement {
 impl HTMLTextAreaElement {
     /// Getter of the `wrap` attribute.
     /// [`HTMLTextAreaElement.wrap`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/wrap)
-    pub fn wrap(&self) -> DOMString {
-        self.inner.get("wrap").as_::<DOMString>()
+    pub fn wrap(&self) -> JsString {
+        self.inner.get("wrap").as_::<JsString>()
     }
 
     /// Setter of the `wrap` attribute.
     /// [`HTMLTextAreaElement.wrap`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/wrap)
-    pub fn set_wrap(&mut self, value: &DOMString) {
+    pub fn set_wrap(&mut self, value: &JsString) {
         self.inner.set("wrap", value);
     }
 }
 impl HTMLTextAreaElement {
     /// Getter of the `type` attribute.
     /// [`HTMLTextAreaElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 }
 impl HTMLTextAreaElement {
     /// Getter of the `defaultValue` attribute.
     /// [`HTMLTextAreaElement.defaultValue`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/defaultValue)
-    pub fn default_value(&self) -> DOMString {
-        self.inner.get("defaultValue").as_::<DOMString>()
+    pub fn default_value(&self) -> JsString {
+        self.inner.get("defaultValue").as_::<JsString>()
     }
 
     /// Setter of the `defaultValue` attribute.
     /// [`HTMLTextAreaElement.defaultValue`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/defaultValue)
-    pub fn set_default_value(&mut self, value: &DOMString) {
+    pub fn set_default_value(&mut self, value: &JsString) {
         self.inner.set("defaultValue", value);
     }
 }
 impl HTMLTextAreaElement {
     /// Getter of the `value` attribute.
     /// [`HTMLTextAreaElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/value)
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> JsString {
+        self.inner.get("value").as_::<JsString>()
     }
 
     /// Setter of the `value` attribute.
     /// [`HTMLTextAreaElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/value)
-    pub fn set_value(&mut self, value: &DOMString) {
+    pub fn set_value(&mut self, value: &JsString) {
         self.inner.set("value", value);
     }
 }
@@ -285,8 +285,8 @@ impl HTMLTextAreaElement {
 impl HTMLTextAreaElement {
     /// Getter of the `validationMessage` attribute.
     /// [`HTMLTextAreaElement.validationMessage`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/validationMessage)
-    pub fn validation_message(&self) -> DOMString {
-        self.inner.get("validationMessage").as_::<DOMString>()
+    pub fn validation_message(&self) -> JsString {
+        self.inner.get("validationMessage").as_::<JsString>()
     }
 }
 impl HTMLTextAreaElement {
@@ -306,7 +306,7 @@ impl HTMLTextAreaElement {
 impl HTMLTextAreaElement {
     /// The setCustomValidity method.
     /// [`HTMLTextAreaElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setCustomValidity)
-    pub fn set_custom_validity(&self, error: &DOMString) -> Undefined {
+    pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
         self.inner
             .call("setCustomValidity", &[error.into()])
             .as_::<Undefined>()
@@ -355,20 +355,20 @@ impl HTMLTextAreaElement {
 impl HTMLTextAreaElement {
     /// Getter of the `selectionDirection` attribute.
     /// [`HTMLTextAreaElement.selectionDirection`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/selectionDirection)
-    pub fn selection_direction(&self) -> DOMString {
-        self.inner.get("selectionDirection").as_::<DOMString>()
+    pub fn selection_direction(&self) -> JsString {
+        self.inner.get("selectionDirection").as_::<JsString>()
     }
 
     /// Setter of the `selectionDirection` attribute.
     /// [`HTMLTextAreaElement.selectionDirection`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/selectionDirection)
-    pub fn set_selection_direction(&mut self, value: &DOMString) {
+    pub fn set_selection_direction(&mut self, value: &JsString) {
         self.inner.set("selectionDirection", value);
     }
 }
 impl HTMLTextAreaElement {
     /// The setRangeText method.
     /// [`HTMLTextAreaElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setRangeText)
-    pub fn set_range_text0(&self, replacement: &DOMString, start: u32, end: u32) -> Undefined {
+    pub fn set_range_text0(&self, replacement: &JsString, start: u32, end: u32) -> Undefined {
         self.inner
             .call(
                 "setRangeText",
@@ -380,7 +380,7 @@ impl HTMLTextAreaElement {
     /// [`HTMLTextAreaElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setRangeText)
     pub fn set_range_text1(
         &self,
-        replacement: &DOMString,
+        replacement: &JsString,
         start: u32,
         end: u32,
         selection_mode: &SelectionMode,
@@ -408,7 +408,7 @@ impl HTMLTextAreaElement {
     }
     /// The setSelectionRange method.
     /// [`HTMLTextAreaElement.setSelectionRange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/setSelectionRange)
-    pub fn set_selection_range1(&self, start: u32, end: u32, direction: &DOMString) -> Undefined {
+    pub fn set_selection_range1(&self, start: u32, end: u32, direction: &JsString) -> Undefined {
         self.inner
             .call(
                 "setSelectionRange",

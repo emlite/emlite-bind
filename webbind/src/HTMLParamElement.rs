@@ -68,52 +68,52 @@ impl HTMLParamElement {
 impl HTMLParamElement {
     /// Getter of the `name` attribute.
     /// [`HTMLParamElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParamElement/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`HTMLParamElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParamElement/name)
-    pub fn set_name(&mut self, value: &DOMString) {
+    pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
     }
 }
 impl HTMLParamElement {
     /// Getter of the `value` attribute.
     /// [`HTMLParamElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParamElement/value)
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> JsString {
+        self.inner.get("value").as_::<JsString>()
     }
 
     /// Setter of the `value` attribute.
     /// [`HTMLParamElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParamElement/value)
-    pub fn set_value(&mut self, value: &DOMString) {
+    pub fn set_value(&mut self, value: &JsString) {
         self.inner.set("value", value);
     }
 }
 impl HTMLParamElement {
     /// Getter of the `type` attribute.
     /// [`HTMLParamElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParamElement/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 
     /// Setter of the `type` attribute.
     /// [`HTMLParamElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParamElement/type)
-    pub fn set_type_(&mut self, value: &DOMString) {
+    pub fn set_type_(&mut self, value: &JsString) {
         self.inner.set("type", value);
     }
 }
 impl HTMLParamElement {
     /// Getter of the `valueType` attribute.
     /// [`HTMLParamElement.valueType`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParamElement/valueType)
-    pub fn value_type(&self) -> DOMString {
-        self.inner.get("valueType").as_::<DOMString>()
+    pub fn value_type(&self) -> JsString {
+        self.inner.get("valueType").as_::<JsString>()
     }
 
     /// Setter of the `valueType` attribute.
     /// [`HTMLParamElement.valueType`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLParamElement/valueType)
-    pub fn set_value_type(&mut self, value: &DOMString) {
+    pub fn set_value_type(&mut self, value: &JsString) {
         self.inner.set("valueType", value);
     }
 }

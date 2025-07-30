@@ -58,39 +58,39 @@ jsbind::utils::impl_dyn_cast!(SVGStyleElement);
 impl SVGStyleElement {
     /// Getter of the `type` attribute.
     /// [`SVGStyleElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStyleElement/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 
     /// Setter of the `type` attribute.
     /// [`SVGStyleElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStyleElement/type)
-    pub fn set_type_(&mut self, value: &DOMString) {
+    pub fn set_type_(&mut self, value: &JsString) {
         self.inner.set("type", value);
     }
 }
 impl SVGStyleElement {
     /// Getter of the `media` attribute.
     /// [`SVGStyleElement.media`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStyleElement/media)
-    pub fn media(&self) -> DOMString {
-        self.inner.get("media").as_::<DOMString>()
+    pub fn media(&self) -> JsString {
+        self.inner.get("media").as_::<JsString>()
     }
 
     /// Setter of the `media` attribute.
     /// [`SVGStyleElement.media`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStyleElement/media)
-    pub fn set_media(&mut self, value: &DOMString) {
+    pub fn set_media(&mut self, value: &JsString) {
         self.inner.set("media", value);
     }
 }
 impl SVGStyleElement {
     /// Getter of the `title` attribute.
     /// [`SVGStyleElement.title`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStyleElement/title)
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> JsString {
+        self.inner.get("title").as_::<JsString>()
     }
 
     /// Setter of the `title` attribute.
     /// [`SVGStyleElement.title`](https://developer.mozilla.org/en-US/docs/Web/API/SVGStyleElement/title)
-    pub fn set_title(&mut self, value: &DOMString) {
+    pub fn set_title(&mut self, value: &JsString) {
         self.inner.set("title", value);
     }
 }

@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(MediaKeySession);
 impl MediaKeySession {
     /// Getter of the `sessionId` attribute.
     /// [`MediaKeySession.sessionId`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/sessionId)
-    pub fn session_id(&self) -> DOMString {
-        self.inner.get("sessionId").as_::<DOMString>()
+    pub fn session_id(&self) -> JsString {
+        self.inner.get("sessionId").as_::<JsString>()
     }
 }
 impl MediaKeySession {
@@ -116,7 +116,7 @@ impl MediaKeySession {
     /// [`MediaKeySession.generateRequest`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/generateRequest)
     pub fn generate_request(
         &self,
-        init_data_type: &DOMString,
+        init_data_type: &JsString,
         init_data: &Any,
     ) -> Promise<Undefined> {
         self.inner
@@ -130,7 +130,7 @@ impl MediaKeySession {
 impl MediaKeySession {
     /// The load method.
     /// [`MediaKeySession.load`](https://developer.mozilla.org/en-US/docs/Web/API/MediaKeySession/load)
-    pub fn load(&self, session_id: &DOMString) -> Promise<bool> {
+    pub fn load(&self, session_id: &JsString) -> Promise<bool> {
         self.inner
             .call("load", &[session_id.into()])
             .as_::<Promise<bool>>()

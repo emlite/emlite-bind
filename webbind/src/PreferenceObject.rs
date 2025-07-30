@@ -58,24 +58,22 @@ jsbind::utils::impl_dyn_cast!(PreferenceObject);
 impl PreferenceObject {
     /// Getter of the `override` attribute.
     /// [`PreferenceObject.override`](https://developer.mozilla.org/en-US/docs/Web/API/PreferenceObject/override)
-    pub fn override_(&self) -> DOMString {
-        self.inner.get("override").as_::<DOMString>()
+    pub fn override_(&self) -> JsString {
+        self.inner.get("override").as_::<JsString>()
     }
 }
 impl PreferenceObject {
     /// Getter of the `value` attribute.
     /// [`PreferenceObject.value`](https://developer.mozilla.org/en-US/docs/Web/API/PreferenceObject/value)
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> JsString {
+        self.inner.get("value").as_::<JsString>()
     }
 }
 impl PreferenceObject {
     /// Getter of the `validValues` attribute.
     /// [`PreferenceObject.validValues`](https://developer.mozilla.org/en-US/docs/Web/API/PreferenceObject/validValues)
-    pub fn valid_values(&self) -> FrozenArray<DOMString> {
-        self.inner
-            .get("validValues")
-            .as_::<FrozenArray<DOMString>>()
+    pub fn valid_values(&self) -> TypedArray<JsString> {
+        self.inner.get("validValues").as_::<TypedArray<JsString>>()
     }
 }
 impl PreferenceObject {
@@ -88,7 +86,7 @@ impl PreferenceObject {
 impl PreferenceObject {
     /// The requestOverride method.
     /// [`PreferenceObject.requestOverride`](https://developer.mozilla.org/en-US/docs/Web/API/PreferenceObject/requestOverride)
-    pub fn request_override(&self, value: &DOMString) -> Promise<Undefined> {
+    pub fn request_override(&self, value: &JsString) -> Promise<Undefined> {
         self.inner
             .call("requestOverride", &[value.into()])
             .as_::<Promise<Undefined>>()

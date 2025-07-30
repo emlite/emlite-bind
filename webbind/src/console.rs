@@ -56,7 +56,7 @@ pub fn table1(tabular_data: &Any) -> Undefined {
         .as_::<Undefined>()
 }
 
-pub fn table2(tabular_data: &Any, properties: &Sequence<DOMString>) -> Undefined {
+pub fn table2(tabular_data: &Any, properties: &TypedArray<JsString>) -> Undefined {
     Any::global("console")
         .call("table", &[tabular_data.into(), properties.into()])
         .as_::<Undefined>()
@@ -100,7 +100,7 @@ pub fn count0() -> Undefined {
     Any::global("console").call("count", &[]).as_::<Undefined>()
 }
 
-pub fn count1(label: &DOMString) -> Undefined {
+pub fn count1(label: &JsString) -> Undefined {
     Any::global("console")
         .call("count", &[label.into()])
         .as_::<Undefined>()
@@ -112,7 +112,7 @@ pub fn count_reset0() -> Undefined {
         .as_::<Undefined>()
 }
 
-pub fn count_reset1(label: &DOMString) -> Undefined {
+pub fn count_reset1(label: &JsString) -> Undefined {
     Any::global("console")
         .call("countReset", &[label.into()])
         .as_::<Undefined>()
@@ -140,7 +140,7 @@ pub fn time0() -> Undefined {
     Any::global("console").call("time", &[]).as_::<Undefined>()
 }
 
-pub fn time1(label: &DOMString) -> Undefined {
+pub fn time1(label: &JsString) -> Undefined {
     Any::global("console")
         .call("time", &[label.into()])
         .as_::<Undefined>()
@@ -152,13 +152,13 @@ pub fn time_log0() -> Undefined {
         .as_::<Undefined>()
 }
 
-pub fn time_log1(label: &DOMString) -> Undefined {
+pub fn time_log1(label: &JsString) -> Undefined {
     Any::global("console")
         .call("timeLog", &[label.into()])
         .as_::<Undefined>()
 }
 
-pub fn time_log2(label: &DOMString, data: &Any) -> Undefined {
+pub fn time_log2(label: &JsString, data: &Any) -> Undefined {
     Any::global("console")
         .call("timeLog", &[label.into(), data.into()])
         .as_::<Undefined>()
@@ -170,7 +170,7 @@ pub fn time_end0() -> Undefined {
         .as_::<Undefined>()
 }
 
-pub fn time_end1(label: &DOMString) -> Undefined {
+pub fn time_end1(label: &JsString) -> Undefined {
     Any::global("console")
         .call("timeEnd", &[label.into()])
         .as_::<Undefined>()

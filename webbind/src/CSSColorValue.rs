@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(CSSColorValue);
 impl CSSColorValue {
     /// The parse method.
     /// [`CSSColorValue.parse`](https://developer.mozilla.org/en-US/docs/Web/API/CSSColorValue/parse)
-    pub fn parse(css_text: &USVString) -> Any {
+    pub fn parse(css_text: &JsString) -> Any {
         Any::global("CSSColorValue")
             .call("parse", &[css_text.into()])
             .as_::<Any>()

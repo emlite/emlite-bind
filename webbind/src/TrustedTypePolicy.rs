@@ -58,14 +58,14 @@ jsbind::utils::impl_dyn_cast!(TrustedTypePolicy);
 impl TrustedTypePolicy {
     /// Getter of the `name` attribute.
     /// [`TrustedTypePolicy.name`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicy/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl TrustedTypePolicy {
     /// The createHTML method.
     /// [`TrustedTypePolicy.createHTML`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicy/createHTML)
-    pub fn create_html(&self, input: &DOMString, arguments: &Any) -> TrustedHTML {
+    pub fn create_html(&self, input: &JsString, arguments: &Any) -> TrustedHTML {
         self.inner
             .call("createHTML", &[input.into(), arguments.into()])
             .as_::<TrustedHTML>()
@@ -74,7 +74,7 @@ impl TrustedTypePolicy {
 impl TrustedTypePolicy {
     /// The createScript method.
     /// [`TrustedTypePolicy.createScript`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicy/createScript)
-    pub fn create_script(&self, input: &DOMString, arguments: &Any) -> TrustedScript {
+    pub fn create_script(&self, input: &JsString, arguments: &Any) -> TrustedScript {
         self.inner
             .call("createScript", &[input.into(), arguments.into()])
             .as_::<TrustedScript>()
@@ -83,7 +83,7 @@ impl TrustedTypePolicy {
 impl TrustedTypePolicy {
     /// The createScriptURL method.
     /// [`TrustedTypePolicy.createScriptURL`](https://developer.mozilla.org/en-US/docs/Web/API/TrustedTypePolicy/createScriptURL)
-    pub fn create_script_url(&self, input: &DOMString, arguments: &Any) -> TrustedScriptURL {
+    pub fn create_script_url(&self, input: &JsString, arguments: &Any) -> TrustedScriptURL {
         self.inner
             .call("createScriptURL", &[input.into(), arguments.into()])
             .as_::<TrustedScriptURL>()

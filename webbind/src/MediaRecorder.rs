@@ -84,8 +84,8 @@ impl MediaRecorder {
 impl MediaRecorder {
     /// Getter of the `mimeType` attribute.
     /// [`MediaRecorder.mimeType`](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/mimeType)
-    pub fn mime_type(&self) -> DOMString {
-        self.inner.get("mimeType").as_::<DOMString>()
+    pub fn mime_type(&self) -> JsString {
+        self.inner.get("mimeType").as_::<JsString>()
     }
 }
 impl MediaRecorder {
@@ -239,7 +239,7 @@ impl MediaRecorder {
 impl MediaRecorder {
     /// The isTypeSupported method.
     /// [`MediaRecorder.isTypeSupported`](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/isTypeSupported)
-    pub fn is_type_supported(type_: &DOMString) -> bool {
+    pub fn is_type_supported(type_: &JsString) -> bool {
         Any::global("MediaRecorder")
             .call("isTypeSupported", &[type_.into()])
             .as_::<bool>()

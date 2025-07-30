@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(CSSFontFeatureValuesMap);
 impl CSSFontFeatureValuesMap {
     /// The set method.
     /// [`CSSFontFeatureValuesMap.set`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFontFeatureValuesMap/set)
-    pub fn set(&self, feature_value_name: &CSSOMString, values: &Any) -> Undefined {
+    pub fn set(&self, feature_value_name: &JsString, values: &Any) -> Undefined {
         self.inner
             .call("set", &[feature_value_name.into(), values.into()])
             .as_::<Undefined>()

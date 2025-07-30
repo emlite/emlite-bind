@@ -100,52 +100,52 @@ impl HTMLTableSectionElement {
 impl HTMLTableSectionElement {
     /// Getter of the `align` attribute.
     /// [`HTMLTableSectionElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement/align)
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> JsString {
+        self.inner.get("align").as_::<JsString>()
     }
 
     /// Setter of the `align` attribute.
     /// [`HTMLTableSectionElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement/align)
-    pub fn set_align(&mut self, value: &DOMString) {
+    pub fn set_align(&mut self, value: &JsString) {
         self.inner.set("align", value);
     }
 }
 impl HTMLTableSectionElement {
     /// Getter of the `ch` attribute.
     /// [`HTMLTableSectionElement.ch`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement/ch)
-    pub fn ch(&self) -> DOMString {
-        self.inner.get("ch").as_::<DOMString>()
+    pub fn ch(&self) -> JsString {
+        self.inner.get("ch").as_::<JsString>()
     }
 
     /// Setter of the `ch` attribute.
     /// [`HTMLTableSectionElement.ch`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement/ch)
-    pub fn set_ch(&mut self, value: &DOMString) {
+    pub fn set_ch(&mut self, value: &JsString) {
         self.inner.set("ch", value);
     }
 }
 impl HTMLTableSectionElement {
     /// Getter of the `chOff` attribute.
     /// [`HTMLTableSectionElement.chOff`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement/chOff)
-    pub fn ch_off(&self) -> DOMString {
-        self.inner.get("chOff").as_::<DOMString>()
+    pub fn ch_off(&self) -> JsString {
+        self.inner.get("chOff").as_::<JsString>()
     }
 
     /// Setter of the `chOff` attribute.
     /// [`HTMLTableSectionElement.chOff`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement/chOff)
-    pub fn set_ch_off(&mut self, value: &DOMString) {
+    pub fn set_ch_off(&mut self, value: &JsString) {
         self.inner.set("chOff", value);
     }
 }
 impl HTMLTableSectionElement {
     /// Getter of the `vAlign` attribute.
     /// [`HTMLTableSectionElement.vAlign`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement/vAlign)
-    pub fn v_align(&self) -> DOMString {
-        self.inner.get("vAlign").as_::<DOMString>()
+    pub fn v_align(&self) -> JsString {
+        self.inner.get("vAlign").as_::<JsString>()
     }
 
     /// Setter of the `vAlign` attribute.
     /// [`HTMLTableSectionElement.vAlign`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableSectionElement/vAlign)
-    pub fn set_v_align(&mut self, value: &DOMString) {
+    pub fn set_v_align(&mut self, value: &JsString) {
         self.inner.set("vAlign", value);
     }
 }

@@ -81,26 +81,26 @@ impl HTMLFencedFrameElement {
 impl HTMLFencedFrameElement {
     /// Getter of the `width` attribute.
     /// [`HTMLFencedFrameElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/width)
-    pub fn width(&self) -> DOMString {
-        self.inner.get("width").as_::<DOMString>()
+    pub fn width(&self) -> JsString {
+        self.inner.get("width").as_::<JsString>()
     }
 
     /// Setter of the `width` attribute.
     /// [`HTMLFencedFrameElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/width)
-    pub fn set_width(&mut self, value: &DOMString) {
+    pub fn set_width(&mut self, value: &JsString) {
         self.inner.set("width", value);
     }
 }
 impl HTMLFencedFrameElement {
     /// Getter of the `height` attribute.
     /// [`HTMLFencedFrameElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/height)
-    pub fn height(&self) -> DOMString {
-        self.inner.get("height").as_::<DOMString>()
+    pub fn height(&self) -> JsString {
+        self.inner.get("height").as_::<JsString>()
     }
 
     /// Setter of the `height` attribute.
     /// [`HTMLFencedFrameElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/height)
-    pub fn set_height(&mut self, value: &DOMString) {
+    pub fn set_height(&mut self, value: &JsString) {
         self.inner.set("height", value);
     }
 }
@@ -114,13 +114,13 @@ impl HTMLFencedFrameElement {
 impl HTMLFencedFrameElement {
     /// Getter of the `allow` attribute.
     /// [`HTMLFencedFrameElement.allow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/allow)
-    pub fn allow(&self) -> DOMString {
-        self.inner.get("allow").as_::<DOMString>()
+    pub fn allow(&self) -> JsString {
+        self.inner.get("allow").as_::<JsString>()
     }
 
     /// Setter of the `allow` attribute.
     /// [`HTMLFencedFrameElement.allow`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFencedFrameElement/allow)
-    pub fn set_allow(&mut self, value: &DOMString) {
+    pub fn set_allow(&mut self, value: &JsString) {
         self.inner.set("allow", value);
     }
 }

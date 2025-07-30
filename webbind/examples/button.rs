@@ -22,7 +22,7 @@ fn main() {
 
     button.set_text_content(&"Click me".into());
     button.add_event_listener0(
-        // or &DOMString::from("click"),
+        // or &JsString::from("click"),
         &"click".into(),
         &Closure::bind1(move |p: PointerEvent| {
             con.log(&[p.client_x().into()]);

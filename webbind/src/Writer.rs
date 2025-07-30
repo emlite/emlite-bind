@@ -69,11 +69,11 @@ impl WriterCreateOptions {
     }
 }
 impl WriterCreateOptions {
-    pub fn shared_context(&self) -> DOMString {
-        self.inner.get("sharedContext").as_::<DOMString>()
+    pub fn shared_context(&self) -> JsString {
+        self.inner.get("sharedContext").as_::<JsString>()
     }
 
-    pub fn set_shared_context(&mut self, value: &DOMString) {
+    pub fn set_shared_context(&mut self, value: &JsString) {
         self.inner.set("sharedContext", value);
     }
 }
@@ -155,33 +155,33 @@ impl WriterCreateCoreOptions {
     }
 }
 impl WriterCreateCoreOptions {
-    pub fn expected_input_languages(&self) -> Sequence<DOMString> {
+    pub fn expected_input_languages(&self) -> TypedArray<JsString> {
         self.inner
             .get("expectedInputLanguages")
-            .as_::<Sequence<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_expected_input_languages(&mut self, value: &Sequence<DOMString>) {
+    pub fn set_expected_input_languages(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("expectedInputLanguages", value);
     }
 }
 impl WriterCreateCoreOptions {
-    pub fn expected_context_languages(&self) -> Sequence<DOMString> {
+    pub fn expected_context_languages(&self) -> TypedArray<JsString> {
         self.inner
             .get("expectedContextLanguages")
-            .as_::<Sequence<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_expected_context_languages(&mut self, value: &Sequence<DOMString>) {
+    pub fn set_expected_context_languages(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("expectedContextLanguages", value);
     }
 }
 impl WriterCreateCoreOptions {
-    pub fn output_language(&self) -> DOMString {
-        self.inner.get("outputLanguage").as_::<DOMString>()
+    pub fn output_language(&self) -> JsString {
+        self.inner.get("outputLanguage").as_::<JsString>()
     }
 
-    pub fn set_output_language(&mut self, value: &DOMString) {
+    pub fn set_output_language(&mut self, value: &JsString) {
         self.inner.set("outputLanguage", value);
     }
 }
@@ -236,11 +236,11 @@ impl From<&WriterWriteOptions> for Any {
 }
 
 impl WriterWriteOptions {
-    pub fn context(&self) -> DOMString {
-        self.inner.get("context").as_::<DOMString>()
+    pub fn context(&self) -> JsString {
+        self.inner.get("context").as_::<JsString>()
     }
 
-    pub fn set_context(&mut self, value: &DOMString) {
+    pub fn set_context(&mut self, value: &JsString) {
         self.inner.set("context", value);
     }
 }
@@ -343,23 +343,23 @@ impl Writer {
 impl Writer {
     /// The write method.
     /// [`Writer.write`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/write)
-    pub fn write0(&self, input: &DOMString) -> Promise<DOMString> {
+    pub fn write0(&self, input: &JsString) -> Promise<JsString> {
         self.inner
             .call("write", &[input.into()])
-            .as_::<Promise<DOMString>>()
+            .as_::<Promise<JsString>>()
     }
     /// The write method.
     /// [`Writer.write`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/write)
-    pub fn write1(&self, input: &DOMString, options: &WriterWriteOptions) -> Promise<DOMString> {
+    pub fn write1(&self, input: &JsString, options: &WriterWriteOptions) -> Promise<JsString> {
         self.inner
             .call("write", &[input.into(), options.into()])
-            .as_::<Promise<DOMString>>()
+            .as_::<Promise<JsString>>()
     }
 }
 impl Writer {
     /// The writeStreaming method.
     /// [`Writer.writeStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/writeStreaming)
-    pub fn write_streaming0(&self, input: &DOMString) -> ReadableStream {
+    pub fn write_streaming0(&self, input: &JsString) -> ReadableStream {
         self.inner
             .call("writeStreaming", &[input.into()])
             .as_::<ReadableStream>()
@@ -368,7 +368,7 @@ impl Writer {
     /// [`Writer.writeStreaming`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/writeStreaming)
     pub fn write_streaming1(
         &self,
-        input: &DOMString,
+        input: &JsString,
         options: &WriterWriteOptions,
     ) -> ReadableStream {
         self.inner
@@ -379,8 +379,8 @@ impl Writer {
 impl Writer {
     /// Getter of the `sharedContext` attribute.
     /// [`Writer.sharedContext`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/sharedContext)
-    pub fn shared_context(&self) -> DOMString {
-        self.inner.get("sharedContext").as_::<DOMString>()
+    pub fn shared_context(&self) -> JsString {
+        self.inner.get("sharedContext").as_::<JsString>()
     }
 }
 impl Writer {
@@ -407,32 +407,32 @@ impl Writer {
 impl Writer {
     /// Getter of the `expectedInputLanguages` attribute.
     /// [`Writer.expectedInputLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/expectedInputLanguages)
-    pub fn expected_input_languages(&self) -> FrozenArray<DOMString> {
+    pub fn expected_input_languages(&self) -> TypedArray<JsString> {
         self.inner
             .get("expectedInputLanguages")
-            .as_::<FrozenArray<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 }
 impl Writer {
     /// Getter of the `expectedContextLanguages` attribute.
     /// [`Writer.expectedContextLanguages`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/expectedContextLanguages)
-    pub fn expected_context_languages(&self) -> FrozenArray<DOMString> {
+    pub fn expected_context_languages(&self) -> TypedArray<JsString> {
         self.inner
             .get("expectedContextLanguages")
-            .as_::<FrozenArray<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 }
 impl Writer {
     /// Getter of the `outputLanguage` attribute.
     /// [`Writer.outputLanguage`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/outputLanguage)
-    pub fn output_language(&self) -> DOMString {
-        self.inner.get("outputLanguage").as_::<DOMString>()
+    pub fn output_language(&self) -> JsString {
+        self.inner.get("outputLanguage").as_::<JsString>()
     }
 }
 impl Writer {
     /// The measureInputUsage method.
     /// [`Writer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/measureInputUsage)
-    pub fn measure_input_usage0(&self, input: &DOMString) -> Promise<f64> {
+    pub fn measure_input_usage0(&self, input: &JsString) -> Promise<f64> {
         self.inner
             .call("measureInputUsage", &[input.into()])
             .as_::<Promise<f64>>()
@@ -441,7 +441,7 @@ impl Writer {
     /// [`Writer.measureInputUsage`](https://developer.mozilla.org/en-US/docs/Web/API/Writer/measureInputUsage)
     pub fn measure_input_usage1(
         &self,
-        input: &DOMString,
+        input: &JsString,
         options: &WriterWriteOptions,
     ) -> Promise<f64> {
         self.inner

@@ -65,7 +65,7 @@ impl MLOperand {
 impl MLOperand {
     /// Getter of the `shape` attribute.
     /// [`MLOperand.shape`](https://developer.mozilla.org/en-US/docs/Web/API/MLOperand/shape)
-    pub fn shape(&self) -> FrozenArray<u32> {
-        self.inner.get("shape").as_::<FrozenArray<u32>>()
+    pub fn shape(&self) -> TypedArray<u32> {
+        self.inner.get("shape").as_::<TypedArray<u32>>()
     }
 }

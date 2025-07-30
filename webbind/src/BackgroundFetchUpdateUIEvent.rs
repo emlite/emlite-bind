@@ -51,20 +51,20 @@ impl From<&BackgroundFetchUIOptions> for Any {
 }
 
 impl BackgroundFetchUIOptions {
-    pub fn icons(&self) -> Sequence<Any> {
-        self.inner.get("icons").as_::<Sequence<Any>>()
+    pub fn icons(&self) -> TypedArray<Any> {
+        self.inner.get("icons").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_icons(&mut self, value: &Sequence<Any>) {
+    pub fn set_icons(&mut self, value: &TypedArray<Any>) {
         self.inner.set("icons", value);
     }
 }
 impl BackgroundFetchUIOptions {
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> JsString {
+        self.inner.get("title").as_::<JsString>()
     }
 
-    pub fn set_title(&mut self, value: &DOMString) {
+    pub fn set_title(&mut self, value: &JsString) {
         self.inner.set("title", value);
     }
 }
@@ -125,7 +125,7 @@ jsbind::utils::impl_dyn_cast!(BackgroundFetchUpdateUIEvent);
 
 impl BackgroundFetchUpdateUIEvent {
     /// The `new BackgroundFetchUpdateUIEvent(..)` constructor, creating a new BackgroundFetchUpdateUIEvent instance
-    pub fn new(type_: &DOMString, init: &Any) -> BackgroundFetchUpdateUIEvent {
+    pub fn new(type_: &JsString, init: &Any) -> BackgroundFetchUpdateUIEvent {
         Self {
             inner: Any::global("BackgroundFetchUpdateUIEvent")
                 .new(&[type_.into(), init.into()])

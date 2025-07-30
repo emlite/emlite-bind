@@ -58,15 +58,15 @@ jsbind::utils::impl_dyn_cast!(Credential);
 impl Credential {
     /// Getter of the `id` attribute.
     /// [`Credential.id`](https://developer.mozilla.org/en-US/docs/Web/API/Credential/id)
-    pub fn id(&self) -> USVString {
-        self.inner.get("id").as_::<USVString>()
+    pub fn id(&self) -> JsString {
+        self.inner.get("id").as_::<JsString>()
     }
 }
 impl Credential {
     /// Getter of the `type` attribute.
     /// [`Credential.type`](https://developer.mozilla.org/en-US/docs/Web/API/Credential/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 }
 impl Credential {

@@ -68,65 +68,65 @@ impl HTMLSourceElement {
 impl HTMLSourceElement {
     /// Getter of the `src` attribute.
     /// [`HTMLSourceElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/src)
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> JsString {
+        self.inner.get("src").as_::<JsString>()
     }
 
     /// Setter of the `src` attribute.
     /// [`HTMLSourceElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/src)
-    pub fn set_src(&mut self, value: &USVString) {
+    pub fn set_src(&mut self, value: &JsString) {
         self.inner.set("src", value);
     }
 }
 impl HTMLSourceElement {
     /// Getter of the `type` attribute.
     /// [`HTMLSourceElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 
     /// Setter of the `type` attribute.
     /// [`HTMLSourceElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/type)
-    pub fn set_type_(&mut self, value: &DOMString) {
+    pub fn set_type_(&mut self, value: &JsString) {
         self.inner.set("type", value);
     }
 }
 impl HTMLSourceElement {
     /// Getter of the `srcset` attribute.
     /// [`HTMLSourceElement.srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/srcset)
-    pub fn srcset(&self) -> USVString {
-        self.inner.get("srcset").as_::<USVString>()
+    pub fn srcset(&self) -> JsString {
+        self.inner.get("srcset").as_::<JsString>()
     }
 
     /// Setter of the `srcset` attribute.
     /// [`HTMLSourceElement.srcset`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/srcset)
-    pub fn set_srcset(&mut self, value: &USVString) {
+    pub fn set_srcset(&mut self, value: &JsString) {
         self.inner.set("srcset", value);
     }
 }
 impl HTMLSourceElement {
     /// Getter of the `sizes` attribute.
     /// [`HTMLSourceElement.sizes`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/sizes)
-    pub fn sizes(&self) -> DOMString {
-        self.inner.get("sizes").as_::<DOMString>()
+    pub fn sizes(&self) -> JsString {
+        self.inner.get("sizes").as_::<JsString>()
     }
 
     /// Setter of the `sizes` attribute.
     /// [`HTMLSourceElement.sizes`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/sizes)
-    pub fn set_sizes(&mut self, value: &DOMString) {
+    pub fn set_sizes(&mut self, value: &JsString) {
         self.inner.set("sizes", value);
     }
 }
 impl HTMLSourceElement {
     /// Getter of the `media` attribute.
     /// [`HTMLSourceElement.media`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/media)
-    pub fn media(&self) -> DOMString {
-        self.inner.get("media").as_::<DOMString>()
+    pub fn media(&self) -> JsString {
+        self.inner.get("media").as_::<JsString>()
     }
 
     /// Setter of the `media` attribute.
     /// [`HTMLSourceElement.media`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSourceElement/media)
-    pub fn set_media(&mut self, value: &DOMString) {
+    pub fn set_media(&mut self, value: &JsString) {
         self.inner.set("media", value);
     }
 }

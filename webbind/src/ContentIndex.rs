@@ -51,29 +51,29 @@ impl From<&ContentDescription> for Any {
 }
 
 impl ContentDescription {
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> JsString {
+        self.inner.get("id").as_::<JsString>()
     }
 
-    pub fn set_id(&mut self, value: &DOMString) {
+    pub fn set_id(&mut self, value: &JsString) {
         self.inner.set("id", value);
     }
 }
 impl ContentDescription {
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> JsString {
+        self.inner.get("title").as_::<JsString>()
     }
 
-    pub fn set_title(&mut self, value: &DOMString) {
+    pub fn set_title(&mut self, value: &JsString) {
         self.inner.set("title", value);
     }
 }
 impl ContentDescription {
-    pub fn description(&self) -> DOMString {
-        self.inner.get("description").as_::<DOMString>()
+    pub fn description(&self) -> JsString {
+        self.inner.get("description").as_::<JsString>()
     }
 
-    pub fn set_description(&mut self, value: &DOMString) {
+    pub fn set_description(&mut self, value: &JsString) {
         self.inner.set("description", value);
     }
 }
@@ -87,20 +87,20 @@ impl ContentDescription {
     }
 }
 impl ContentDescription {
-    pub fn icons(&self) -> Sequence<Any> {
-        self.inner.get("icons").as_::<Sequence<Any>>()
+    pub fn icons(&self) -> TypedArray<Any> {
+        self.inner.get("icons").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_icons(&mut self, value: &Sequence<Any>) {
+    pub fn set_icons(&mut self, value: &TypedArray<Any>) {
         self.inner.set("icons", value);
     }
 }
 impl ContentDescription {
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> JsString {
+        self.inner.get("url").as_::<JsString>()
     }
 
-    pub fn set_url(&mut self, value: &USVString) {
+    pub fn set_url(&mut self, value: &JsString) {
         self.inner.set("url", value);
     }
 }
@@ -171,7 +171,7 @@ impl ContentIndex {
 impl ContentIndex {
     /// The delete method.
     /// [`ContentIndex.delete`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndex/delete)
-    pub fn delete(&self, id: &DOMString) -> Promise<Undefined> {
+    pub fn delete(&self, id: &JsString) -> Promise<Undefined> {
         self.inner
             .call("delete", &[id.into()])
             .as_::<Promise<Undefined>>()
@@ -180,9 +180,9 @@ impl ContentIndex {
 impl ContentIndex {
     /// The getAll method.
     /// [`ContentIndex.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/ContentIndex/getAll)
-    pub fn get_all(&self) -> Promise<Sequence<ContentDescription>> {
+    pub fn get_all(&self) -> Promise<TypedArray<ContentDescription>> {
         self.inner
             .call("getAll", &[])
-            .as_::<Promise<Sequence<ContentDescription>>>()
+            .as_::<Promise<TypedArray<ContentDescription>>>()
     }
 }

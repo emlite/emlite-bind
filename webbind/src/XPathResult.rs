@@ -72,8 +72,8 @@ impl XPathResult {
 impl XPathResult {
     /// Getter of the `stringValue` attribute.
     /// [`XPathResult.stringValue`](https://developer.mozilla.org/en-US/docs/Web/API/XPathResult/stringValue)
-    pub fn string_value(&self) -> DOMString {
-        self.inner.get("stringValue").as_::<DOMString>()
+    pub fn string_value(&self) -> JsString {
+        self.inner.get("stringValue").as_::<JsString>()
     }
 }
 impl XPathResult {

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(RTCDTMFToneChangeEvent);
 
 impl RTCDTMFToneChangeEvent {
     /// The `new RTCDTMFToneChangeEvent(..)` constructor, creating a new RTCDTMFToneChangeEvent instance
-    pub fn new0(type_: &DOMString) -> RTCDTMFToneChangeEvent {
+    pub fn new0(type_: &JsString) -> RTCDTMFToneChangeEvent {
         Self {
             inner: Any::global("RTCDTMFToneChangeEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl RTCDTMFToneChangeEvent {
     }
 
     /// The `new RTCDTMFToneChangeEvent(..)` constructor, creating a new RTCDTMFToneChangeEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> RTCDTMFToneChangeEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> RTCDTMFToneChangeEvent {
         Self {
             inner: Any::global("RTCDTMFToneChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -77,7 +77,7 @@ impl RTCDTMFToneChangeEvent {
 impl RTCDTMFToneChangeEvent {
     /// Getter of the `tone` attribute.
     /// [`RTCDTMFToneChangeEvent.tone`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDTMFToneChangeEvent/tone)
-    pub fn tone(&self) -> DOMString {
-        self.inner.get("tone").as_::<DOMString>()
+    pub fn tone(&self) -> JsString {
+        self.inner.get("tone").as_::<JsString>()
     }
 }

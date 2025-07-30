@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(Viewport);
 impl Viewport {
     /// Getter of the `segments` attribute.
     /// [`Viewport.segments`](https://developer.mozilla.org/en-US/docs/Web/API/Viewport/segments)
-    pub fn segments(&self) -> FrozenArray<DOMRect> {
-        self.inner.get("segments").as_::<FrozenArray<DOMRect>>()
+    pub fn segments(&self) -> TypedArray<DOMRect> {
+        self.inner.get("segments").as_::<TypedArray<DOMRect>>()
     }
 }

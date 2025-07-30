@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(ExtendableEvent);
 
 impl ExtendableEvent {
     /// The `new ExtendableEvent(..)` constructor, creating a new ExtendableEvent instance
-    pub fn new0(type_: &DOMString) -> ExtendableEvent {
+    pub fn new0(type_: &JsString) -> ExtendableEvent {
         Self {
             inner: Any::global("ExtendableEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl ExtendableEvent {
     }
 
     /// The `new ExtendableEvent(..)` constructor, creating a new ExtendableEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> ExtendableEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> ExtendableEvent {
         Self {
             inner: Any::global("ExtendableEvent")
                 .new(&[type_.into(), event_init_dict.into()])

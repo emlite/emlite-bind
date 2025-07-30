@@ -72,7 +72,7 @@ impl NamedNodeMap {
 impl NamedNodeMap {
     /// The getNamedItem method.
     /// [`NamedNodeMap.getNamedItem`](https://developer.mozilla.org/en-US/docs/Web/API/NamedNodeMap/getNamedItem)
-    pub fn get_named_item(&self, qualified_name: &DOMString) -> Attr {
+    pub fn get_named_item(&self, qualified_name: &JsString) -> Attr {
         self.inner
             .call("getNamedItem", &[qualified_name.into()])
             .as_::<Attr>()
@@ -81,7 +81,7 @@ impl NamedNodeMap {
 impl NamedNodeMap {
     /// The getNamedItemNS method.
     /// [`NamedNodeMap.getNamedItemNS`](https://developer.mozilla.org/en-US/docs/Web/API/NamedNodeMap/getNamedItemNS)
-    pub fn get_named_item_ns(&self, namespace: &DOMString, local_name: &DOMString) -> Attr {
+    pub fn get_named_item_ns(&self, namespace: &JsString, local_name: &JsString) -> Attr {
         self.inner
             .call("getNamedItemNS", &[namespace.into(), local_name.into()])
             .as_::<Attr>()
@@ -108,7 +108,7 @@ impl NamedNodeMap {
 impl NamedNodeMap {
     /// The removeNamedItem method.
     /// [`NamedNodeMap.removeNamedItem`](https://developer.mozilla.org/en-US/docs/Web/API/NamedNodeMap/removeNamedItem)
-    pub fn remove_named_item(&self, qualified_name: &DOMString) -> Attr {
+    pub fn remove_named_item(&self, qualified_name: &JsString) -> Attr {
         self.inner
             .call("removeNamedItem", &[qualified_name.into()])
             .as_::<Attr>()
@@ -117,7 +117,7 @@ impl NamedNodeMap {
 impl NamedNodeMap {
     /// The removeNamedItemNS method.
     /// [`NamedNodeMap.removeNamedItemNS`](https://developer.mozilla.org/en-US/docs/Web/API/NamedNodeMap/removeNamedItemNS)
-    pub fn remove_named_item_ns(&self, namespace: &DOMString, local_name: &DOMString) -> Attr {
+    pub fn remove_named_item_ns(&self, namespace: &JsString, local_name: &JsString) -> Attr {
         self.inner
             .call("removeNamedItemNS", &[namespace.into(), local_name.into()])
             .as_::<Attr>()

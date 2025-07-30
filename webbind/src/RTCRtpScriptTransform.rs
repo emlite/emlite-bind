@@ -78,7 +78,7 @@ impl RTCRtpScriptTransform {
     pub fn new2(
         worker: &Worker,
         options: &Any,
-        transfer: &Sequence<Object>,
+        transfer: &TypedArray<Object>,
     ) -> RTCRtpScriptTransform {
         Self {
             inner: Any::global("RTCRtpScriptTransform")

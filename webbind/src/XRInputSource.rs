@@ -86,8 +86,8 @@ impl XRInputSource {
 impl XRInputSource {
     /// Getter of the `profiles` attribute.
     /// [`XRInputSource.profiles`](https://developer.mozilla.org/en-US/docs/Web/API/XRInputSource/profiles)
-    pub fn profiles(&self) -> FrozenArray<DOMString> {
-        self.inner.get("profiles").as_::<FrozenArray<DOMString>>()
+    pub fn profiles(&self) -> TypedArray<JsString> {
+        self.inner.get("profiles").as_::<TypedArray<JsString>>()
     }
 }
 impl XRInputSource {

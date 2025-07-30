@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(ToggleEvent);
 
 impl ToggleEvent {
     /// The `new ToggleEvent(..)` constructor, creating a new ToggleEvent instance
-    pub fn new0(type_: &DOMString) -> ToggleEvent {
+    pub fn new0(type_: &JsString) -> ToggleEvent {
         Self {
             inner: Any::global("ToggleEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl ToggleEvent {
     }
 
     /// The `new ToggleEvent(..)` constructor, creating a new ToggleEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> ToggleEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> ToggleEvent {
         Self {
             inner: Any::global("ToggleEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -77,15 +77,15 @@ impl ToggleEvent {
 impl ToggleEvent {
     /// Getter of the `oldState` attribute.
     /// [`ToggleEvent.oldState`](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState)
-    pub fn old_state(&self) -> DOMString {
-        self.inner.get("oldState").as_::<DOMString>()
+    pub fn old_state(&self) -> JsString {
+        self.inner.get("oldState").as_::<JsString>()
     }
 }
 impl ToggleEvent {
     /// Getter of the `newState` attribute.
     /// [`ToggleEvent.newState`](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState)
-    pub fn new_state(&self) -> DOMString {
-        self.inner.get("newState").as_::<DOMString>()
+    pub fn new_state(&self) -> JsString {
+        self.inner.get("newState").as_::<JsString>()
     }
 }
 impl ToggleEvent {

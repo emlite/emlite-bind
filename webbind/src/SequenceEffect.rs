@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(SequenceEffect);
 
 impl SequenceEffect {
     /// The `new SequenceEffect(..)` constructor, creating a new SequenceEffect instance
-    pub fn new0(children: &Sequence<AnimationEffect>) -> SequenceEffect {
+    pub fn new0(children: &TypedArray<AnimationEffect>) -> SequenceEffect {
         Self {
             inner: Any::global("SequenceEffect")
                 .new(&[children.into()])
@@ -66,7 +66,7 @@ impl SequenceEffect {
     }
 
     /// The `new SequenceEffect(..)` constructor, creating a new SequenceEffect instance
-    pub fn new1(children: &Sequence<AnimationEffect>, timing: &Any) -> SequenceEffect {
+    pub fn new1(children: &TypedArray<AnimationEffect>, timing: &Any) -> SequenceEffect {
         Self {
             inner: Any::global("SequenceEffect")
                 .new(&[children.into(), timing.into()])

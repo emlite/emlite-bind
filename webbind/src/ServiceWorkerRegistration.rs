@@ -60,56 +60,56 @@ impl NotificationOptions {
     }
 }
 impl NotificationOptions {
-    pub fn lang(&self) -> DOMString {
-        self.inner.get("lang").as_::<DOMString>()
+    pub fn lang(&self) -> JsString {
+        self.inner.get("lang").as_::<JsString>()
     }
 
-    pub fn set_lang(&mut self, value: &DOMString) {
+    pub fn set_lang(&mut self, value: &JsString) {
         self.inner.set("lang", value);
     }
 }
 impl NotificationOptions {
-    pub fn body(&self) -> DOMString {
-        self.inner.get("body").as_::<DOMString>()
+    pub fn body(&self) -> JsString {
+        self.inner.get("body").as_::<JsString>()
     }
 
-    pub fn set_body(&mut self, value: &DOMString) {
+    pub fn set_body(&mut self, value: &JsString) {
         self.inner.set("body", value);
     }
 }
 impl NotificationOptions {
-    pub fn tag(&self) -> DOMString {
-        self.inner.get("tag").as_::<DOMString>()
+    pub fn tag(&self) -> JsString {
+        self.inner.get("tag").as_::<JsString>()
     }
 
-    pub fn set_tag(&mut self, value: &DOMString) {
+    pub fn set_tag(&mut self, value: &JsString) {
         self.inner.set("tag", value);
     }
 }
 impl NotificationOptions {
-    pub fn image(&self) -> USVString {
-        self.inner.get("image").as_::<USVString>()
+    pub fn image(&self) -> JsString {
+        self.inner.get("image").as_::<JsString>()
     }
 
-    pub fn set_image(&mut self, value: &USVString) {
+    pub fn set_image(&mut self, value: &JsString) {
         self.inner.set("image", value);
     }
 }
 impl NotificationOptions {
-    pub fn icon(&self) -> USVString {
-        self.inner.get("icon").as_::<USVString>()
+    pub fn icon(&self) -> JsString {
+        self.inner.get("icon").as_::<JsString>()
     }
 
-    pub fn set_icon(&mut self, value: &USVString) {
+    pub fn set_icon(&mut self, value: &JsString) {
         self.inner.set("icon", value);
     }
 }
 impl NotificationOptions {
-    pub fn badge(&self) -> USVString {
-        self.inner.get("badge").as_::<USVString>()
+    pub fn badge(&self) -> JsString {
+        self.inner.get("badge").as_::<JsString>()
     }
 
-    pub fn set_badge(&mut self, value: &USVString) {
+    pub fn set_badge(&mut self, value: &JsString) {
         self.inner.set("badge", value);
     }
 }
@@ -168,13 +168,13 @@ impl NotificationOptions {
     }
 }
 impl NotificationOptions {
-    pub fn actions(&self) -> Sequence<NotificationAction> {
+    pub fn actions(&self) -> TypedArray<NotificationAction> {
         self.inner
             .get("actions")
-            .as_::<Sequence<NotificationAction>>()
+            .as_::<TypedArray<NotificationAction>>()
     }
 
-    pub fn set_actions(&mut self, value: &Sequence<NotificationAction>) {
+    pub fn set_actions(&mut self, value: &TypedArray<NotificationAction>) {
         self.inner.set("actions", value);
     }
 }
@@ -229,11 +229,11 @@ impl From<&GetNotificationOptions> for Any {
 }
 
 impl GetNotificationOptions {
-    pub fn tag(&self) -> DOMString {
-        self.inner.get("tag").as_::<DOMString>()
+    pub fn tag(&self) -> JsString {
+        self.inner.get("tag").as_::<JsString>()
     }
 
-    pub fn set_tag(&mut self, value: &DOMString) {
+    pub fn set_tag(&mut self, value: &JsString) {
         self.inner.set("tag", value);
     }
 }
@@ -325,8 +325,8 @@ impl ServiceWorkerRegistration {
 impl ServiceWorkerRegistration {
     /// Getter of the `scope` attribute.
     /// [`ServiceWorkerRegistration.scope`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/scope)
-    pub fn scope(&self) -> USVString {
-        self.inner.get("scope").as_::<USVString>()
+    pub fn scope(&self) -> JsString {
+        self.inner.get("scope").as_::<JsString>()
     }
 }
 impl ServiceWorkerRegistration {
@@ -400,7 +400,7 @@ impl ServiceWorkerRegistration {
 impl ServiceWorkerRegistration {
     /// The showNotification method.
     /// [`ServiceWorkerRegistration.showNotification`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
-    pub fn show_notification0(&self, title: &DOMString) -> Promise<Undefined> {
+    pub fn show_notification0(&self, title: &JsString) -> Promise<Undefined> {
         self.inner
             .call("showNotification", &[title.into()])
             .as_::<Promise<Undefined>>()
@@ -409,7 +409,7 @@ impl ServiceWorkerRegistration {
     /// [`ServiceWorkerRegistration.showNotification`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification)
     pub fn show_notification1(
         &self,
-        title: &DOMString,
+        title: &JsString,
         options: &NotificationOptions,
     ) -> Promise<Undefined> {
         self.inner
@@ -420,20 +420,20 @@ impl ServiceWorkerRegistration {
 impl ServiceWorkerRegistration {
     /// The getNotifications method.
     /// [`ServiceWorkerRegistration.getNotifications`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/getNotifications)
-    pub fn get_notifications0(&self) -> Promise<Sequence<Notification>> {
+    pub fn get_notifications0(&self) -> Promise<TypedArray<Notification>> {
         self.inner
             .call("getNotifications", &[])
-            .as_::<Promise<Sequence<Notification>>>()
+            .as_::<Promise<TypedArray<Notification>>>()
     }
     /// The getNotifications method.
     /// [`ServiceWorkerRegistration.getNotifications`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/getNotifications)
     pub fn get_notifications1(
         &self,
         filter: &GetNotificationOptions,
-    ) -> Promise<Sequence<Notification>> {
+    ) -> Promise<TypedArray<Notification>> {
         self.inner
             .call("getNotifications", &[filter.into()])
-            .as_::<Promise<Sequence<Notification>>>()
+            .as_::<Promise<TypedArray<Notification>>>()
     }
 }
 impl ServiceWorkerRegistration {

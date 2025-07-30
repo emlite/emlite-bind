@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(PushEvent);
 
 impl PushEvent {
     /// The `new PushEvent(..)` constructor, creating a new PushEvent instance
-    pub fn new0(type_: &DOMString) -> PushEvent {
+    pub fn new0(type_: &JsString) -> PushEvent {
         Self {
             inner: Any::global("PushEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl PushEvent {
     }
 
     /// The `new PushEvent(..)` constructor, creating a new PushEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> PushEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> PushEvent {
         Self {
             inner: Any::global("PushEvent")
                 .new(&[type_.into(), event_init_dict.into()])

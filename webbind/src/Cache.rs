@@ -74,17 +74,17 @@ impl Cache {
 impl Cache {
     /// The matchAll method.
     /// [`Cache.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/matchAll)
-    pub fn match_all0(&self) -> Promise<FrozenArray<Response>> {
+    pub fn match_all0(&self) -> Promise<TypedArray<Response>> {
         self.inner
             .call("matchAll", &[])
-            .as_::<Promise<FrozenArray<Response>>>()
+            .as_::<Promise<TypedArray<Response>>>()
     }
     /// The matchAll method.
     /// [`Cache.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/matchAll)
-    pub fn match_all1(&self, request: &Any) -> Promise<FrozenArray<Response>> {
+    pub fn match_all1(&self, request: &Any) -> Promise<TypedArray<Response>> {
         self.inner
             .call("matchAll", &[request.into()])
-            .as_::<Promise<FrozenArray<Response>>>()
+            .as_::<Promise<TypedArray<Response>>>()
     }
     /// The matchAll method.
     /// [`Cache.matchAll`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/matchAll)
@@ -92,10 +92,10 @@ impl Cache {
         &self,
         request: &Any,
         options: &CacheQueryOptions,
-    ) -> Promise<FrozenArray<Response>> {
+    ) -> Promise<TypedArray<Response>> {
         self.inner
             .call("matchAll", &[request.into(), options.into()])
-            .as_::<Promise<FrozenArray<Response>>>()
+            .as_::<Promise<TypedArray<Response>>>()
     }
 }
 impl Cache {
@@ -110,7 +110,7 @@ impl Cache {
 impl Cache {
     /// The addAll method.
     /// [`Cache.addAll`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/addAll)
-    pub fn add_all(&self, requests: &Sequence<Any>) -> Promise<Undefined> {
+    pub fn add_all(&self, requests: &TypedArray<Any>) -> Promise<Undefined> {
         self.inner
             .call("addAll", &[requests.into()])
             .as_::<Promise<Undefined>>()
@@ -144,17 +144,17 @@ impl Cache {
 impl Cache {
     /// The keys method.
     /// [`Cache.keys`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/keys)
-    pub fn keys0(&self) -> Promise<FrozenArray<Request>> {
+    pub fn keys0(&self) -> Promise<TypedArray<Request>> {
         self.inner
             .call("keys", &[])
-            .as_::<Promise<FrozenArray<Request>>>()
+            .as_::<Promise<TypedArray<Request>>>()
     }
     /// The keys method.
     /// [`Cache.keys`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/keys)
-    pub fn keys1(&self, request: &Any) -> Promise<FrozenArray<Request>> {
+    pub fn keys1(&self, request: &Any) -> Promise<TypedArray<Request>> {
         self.inner
             .call("keys", &[request.into()])
-            .as_::<Promise<FrozenArray<Request>>>()
+            .as_::<Promise<TypedArray<Request>>>()
     }
     /// The keys method.
     /// [`Cache.keys`](https://developer.mozilla.org/en-US/docs/Web/API/Cache/keys)
@@ -162,9 +162,9 @@ impl Cache {
         &self,
         request: &Any,
         options: &CacheQueryOptions,
-    ) -> Promise<FrozenArray<Request>> {
+    ) -> Promise<TypedArray<Request>> {
         self.inner
             .call("keys", &[request.into(), options.into()])
-            .as_::<Promise<FrozenArray<Request>>>()
+            .as_::<Promise<TypedArray<Request>>>()
     }
 }

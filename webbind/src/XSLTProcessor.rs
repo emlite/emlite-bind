@@ -95,8 +95,8 @@ impl XSLTProcessor {
     /// [`XSLTProcessor.setParameter`](https://developer.mozilla.org/en-US/docs/Web/API/XSLTProcessor/setParameter)
     pub fn set_parameter(
         &self,
-        namespace_uri: &DOMString,
-        local_name: &DOMString,
+        namespace_uri: &JsString,
+        local_name: &JsString,
         value: &Any,
     ) -> Undefined {
         self.inner
@@ -110,7 +110,7 @@ impl XSLTProcessor {
 impl XSLTProcessor {
     /// The getParameter method.
     /// [`XSLTProcessor.getParameter`](https://developer.mozilla.org/en-US/docs/Web/API/XSLTProcessor/getParameter)
-    pub fn get_parameter(&self, namespace_uri: &DOMString, local_name: &DOMString) -> Any {
+    pub fn get_parameter(&self, namespace_uri: &JsString, local_name: &JsString) -> Any {
         self.inner
             .call("getParameter", &[namespace_uri.into(), local_name.into()])
             .as_::<Any>()
@@ -119,7 +119,7 @@ impl XSLTProcessor {
 impl XSLTProcessor {
     /// The removeParameter method.
     /// [`XSLTProcessor.removeParameter`](https://developer.mozilla.org/en-US/docs/Web/API/XSLTProcessor/removeParameter)
-    pub fn remove_parameter(&self, namespace_uri: &DOMString, local_name: &DOMString) -> Undefined {
+    pub fn remove_parameter(&self, namespace_uri: &JsString, local_name: &JsString) -> Undefined {
         self.inner
             .call(
                 "removeParameter",

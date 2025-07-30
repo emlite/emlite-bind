@@ -51,11 +51,11 @@ impl From<&GPURequestAdapterOptions> for Any {
 }
 
 impl GPURequestAdapterOptions {
-    pub fn feature_level(&self) -> DOMString {
-        self.inner.get("featureLevel").as_::<DOMString>()
+    pub fn feature_level(&self) -> JsString {
+        self.inner.get("featureLevel").as_::<JsString>()
     }
 
-    pub fn set_feature_level(&mut self, value: &DOMString) {
+    pub fn set_feature_level(&mut self, value: &JsString) {
         self.inner.set("featureLevel", value);
     }
 }

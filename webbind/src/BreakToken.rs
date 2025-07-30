@@ -58,10 +58,10 @@ jsbind::utils::impl_dyn_cast!(BreakToken);
 impl BreakToken {
     /// Getter of the `childBreakTokens` attribute.
     /// [`BreakToken.childBreakTokens`](https://developer.mozilla.org/en-US/docs/Web/API/BreakToken/childBreakTokens)
-    pub fn child_break_tokens(&self) -> FrozenArray<ChildBreakToken> {
+    pub fn child_break_tokens(&self) -> TypedArray<ChildBreakToken> {
         self.inner
             .get("childBreakTokens")
-            .as_::<FrozenArray<ChildBreakToken>>()
+            .as_::<TypedArray<ChildBreakToken>>()
     }
 }
 impl BreakToken {

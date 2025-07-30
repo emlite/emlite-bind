@@ -58,22 +58,22 @@ jsbind::utils::impl_dyn_cast!(Plugin);
 impl Plugin {
     /// Getter of the `name` attribute.
     /// [`Plugin.name`](https://developer.mozilla.org/en-US/docs/Web/API/Plugin/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl Plugin {
     /// Getter of the `description` attribute.
     /// [`Plugin.description`](https://developer.mozilla.org/en-US/docs/Web/API/Plugin/description)
-    pub fn description(&self) -> DOMString {
-        self.inner.get("description").as_::<DOMString>()
+    pub fn description(&self) -> JsString {
+        self.inner.get("description").as_::<JsString>()
     }
 }
 impl Plugin {
     /// Getter of the `filename` attribute.
     /// [`Plugin.filename`](https://developer.mozilla.org/en-US/docs/Web/API/Plugin/filename)
-    pub fn filename(&self) -> DOMString {
-        self.inner.get("filename").as_::<DOMString>()
+    pub fn filename(&self) -> JsString {
+        self.inner.get("filename").as_::<JsString>()
     }
 }
 impl Plugin {
@@ -93,7 +93,7 @@ impl Plugin {
 impl Plugin {
     /// The namedItem method.
     /// [`Plugin.namedItem`](https://developer.mozilla.org/en-US/docs/Web/API/Plugin/namedItem)
-    pub fn named_item(&self, name: &DOMString) -> MimeType {
+    pub fn named_item(&self, name: &JsString) -> MimeType {
         self.inner
             .call("namedItem", &[name.into()])
             .as_::<MimeType>()

@@ -137,20 +137,20 @@ impl From<&LockManagerSnapshot> for Any {
 }
 
 impl LockManagerSnapshot {
-    pub fn held(&self) -> Sequence<Any> {
-        self.inner.get("held").as_::<Sequence<Any>>()
+    pub fn held(&self) -> TypedArray<Any> {
+        self.inner.get("held").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_held(&mut self, value: &Sequence<Any>) {
+    pub fn set_held(&mut self, value: &TypedArray<Any>) {
         self.inner.set("held", value);
     }
 }
 impl LockManagerSnapshot {
-    pub fn pending(&self) -> Sequence<Any> {
-        self.inner.get("pending").as_::<Sequence<Any>>()
+    pub fn pending(&self) -> TypedArray<Any> {
+        self.inner.get("pending").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_pending(&mut self, value: &Sequence<Any>) {
+    pub fn set_pending(&mut self, value: &TypedArray<Any>) {
         self.inner.set("pending", value);
     }
 }
@@ -214,7 +214,7 @@ impl LockManager {
     /// [`LockManager.request`](https://developer.mozilla.org/en-US/docs/Web/API/LockManager/request)
     pub fn request(
         &self,
-        name: &DOMString,
+        name: &JsString,
         options: &LockOptions,
         callback: &Function,
     ) -> Promise<Any> {

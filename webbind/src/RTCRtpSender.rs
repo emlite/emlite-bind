@@ -51,20 +51,20 @@ impl From<&RTCRtpCapabilities> for Any {
 }
 
 impl RTCRtpCapabilities {
-    pub fn codecs(&self) -> Sequence<RTCRtpCodec> {
-        self.inner.get("codecs").as_::<Sequence<RTCRtpCodec>>()
+    pub fn codecs(&self) -> TypedArray<RTCRtpCodec> {
+        self.inner.get("codecs").as_::<TypedArray<RTCRtpCodec>>()
     }
 
-    pub fn set_codecs(&mut self, value: &Sequence<RTCRtpCodec>) {
+    pub fn set_codecs(&mut self, value: &TypedArray<RTCRtpCodec>) {
         self.inner.set("codecs", value);
     }
 }
 impl RTCRtpCapabilities {
-    pub fn header_extensions(&self) -> Sequence<Any> {
-        self.inner.get("headerExtensions").as_::<Sequence<Any>>()
+    pub fn header_extensions(&self) -> TypedArray<Any> {
+        self.inner.get("headerExtensions").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_header_extensions(&mut self, value: &Sequence<Any>) {
+    pub fn set_header_extensions(&mut self, value: &TypedArray<Any>) {
         self.inner.set("headerExtensions", value);
     }
 }
@@ -119,20 +119,20 @@ impl From<&RTCRtpSendParameters> for Any {
 }
 
 impl RTCRtpSendParameters {
-    pub fn transaction_id(&self) -> DOMString {
-        self.inner.get("transactionId").as_::<DOMString>()
+    pub fn transaction_id(&self) -> JsString {
+        self.inner.get("transactionId").as_::<JsString>()
     }
 
-    pub fn set_transaction_id(&mut self, value: &DOMString) {
+    pub fn set_transaction_id(&mut self, value: &JsString) {
         self.inner.set("transactionId", value);
     }
 }
 impl RTCRtpSendParameters {
-    pub fn encodings(&self) -> Sequence<Any> {
-        self.inner.get("encodings").as_::<Sequence<Any>>()
+    pub fn encodings(&self) -> TypedArray<Any> {
+        self.inner.get("encodings").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_encodings(&mut self, value: &Sequence<Any>) {
+    pub fn set_encodings(&mut self, value: &TypedArray<Any>) {
         self.inner.set("encodings", value);
     }
 }
@@ -258,7 +258,7 @@ impl RTCRtpSender {
 impl RTCRtpSender {
     /// The getCapabilities method.
     /// [`RTCRtpSender.getCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/getCapabilities)
-    pub fn get_capabilities(kind: &DOMString) -> RTCRtpCapabilities {
+    pub fn get_capabilities(kind: &JsString) -> RTCRtpCapabilities {
         Any::global("RTCRtpSender")
             .call("getCapabilities", &[kind.into()])
             .as_::<RTCRtpCapabilities>()
@@ -346,7 +346,7 @@ impl RTCRtpSender {
     }
     /// The generateKeyFrame method.
     /// [`RTCRtpSender.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/generateKeyFrame)
-    pub fn generate_key_frame1(&self, rids: &Sequence<DOMString>) -> Promise<Undefined> {
+    pub fn generate_key_frame1(&self, rids: &TypedArray<JsString>) -> Promise<Undefined> {
         self.inner
             .call("generateKeyFrame", &[rids.into()])
             .as_::<Promise<Undefined>>()

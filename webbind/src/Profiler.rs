@@ -51,38 +51,38 @@ impl From<&ProfilerTrace> for Any {
 }
 
 impl ProfilerTrace {
-    pub fn resources(&self) -> Sequence<Any> {
-        self.inner.get("resources").as_::<Sequence<Any>>()
+    pub fn resources(&self) -> TypedArray<Any> {
+        self.inner.get("resources").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_resources(&mut self, value: &Sequence<Any>) {
+    pub fn set_resources(&mut self, value: &TypedArray<Any>) {
         self.inner.set("resources", value);
     }
 }
 impl ProfilerTrace {
-    pub fn frames(&self) -> Sequence<Any> {
-        self.inner.get("frames").as_::<Sequence<Any>>()
+    pub fn frames(&self) -> TypedArray<Any> {
+        self.inner.get("frames").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_frames(&mut self, value: &Sequence<Any>) {
+    pub fn set_frames(&mut self, value: &TypedArray<Any>) {
         self.inner.set("frames", value);
     }
 }
 impl ProfilerTrace {
-    pub fn stacks(&self) -> Sequence<Any> {
-        self.inner.get("stacks").as_::<Sequence<Any>>()
+    pub fn stacks(&self) -> TypedArray<Any> {
+        self.inner.get("stacks").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_stacks(&mut self, value: &Sequence<Any>) {
+    pub fn set_stacks(&mut self, value: &TypedArray<Any>) {
         self.inner.set("stacks", value);
     }
 }
 impl ProfilerTrace {
-    pub fn samples(&self) -> Sequence<Any> {
-        self.inner.get("samples").as_::<Sequence<Any>>()
+    pub fn samples(&self) -> TypedArray<Any> {
+        self.inner.get("samples").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_samples(&mut self, value: &Sequence<Any>) {
+    pub fn set_samples(&mut self, value: &TypedArray<Any>) {
         self.inner.set("samples", value);
     }
 }

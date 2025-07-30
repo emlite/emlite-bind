@@ -149,23 +149,23 @@ impl SVGPathElement {
 impl SVGPathElement {
     /// The getPathData method.
     /// [`SVGPathElement.getPathData`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPathElement/getPathData)
-    pub fn get_path_data0(&self) -> Sequence<SVGPathSegment> {
+    pub fn get_path_data0(&self) -> TypedArray<SVGPathSegment> {
         self.inner
             .call("getPathData", &[])
-            .as_::<Sequence<SVGPathSegment>>()
+            .as_::<TypedArray<SVGPathSegment>>()
     }
     /// The getPathData method.
     /// [`SVGPathElement.getPathData`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPathElement/getPathData)
-    pub fn get_path_data1(&self, settings: &SVGPathDataSettings) -> Sequence<SVGPathSegment> {
+    pub fn get_path_data1(&self, settings: &SVGPathDataSettings) -> TypedArray<SVGPathSegment> {
         self.inner
             .call("getPathData", &[settings.into()])
-            .as_::<Sequence<SVGPathSegment>>()
+            .as_::<TypedArray<SVGPathSegment>>()
     }
 }
 impl SVGPathElement {
     /// The setPathData method.
     /// [`SVGPathElement.setPathData`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPathElement/setPathData)
-    pub fn set_path_data(&self, path_data: &Sequence<SVGPathSegment>) -> Undefined {
+    pub fn set_path_data(&self, path_data: &TypedArray<SVGPathSegment>) -> Undefined {
         self.inner
             .call("setPathData", &[path_data.into()])
             .as_::<Undefined>()

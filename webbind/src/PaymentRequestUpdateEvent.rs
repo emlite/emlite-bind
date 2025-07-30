@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(PaymentRequestUpdateEvent);
 
 impl PaymentRequestUpdateEvent {
     /// The `new PaymentRequestUpdateEvent(..)` constructor, creating a new PaymentRequestUpdateEvent instance
-    pub fn new0(type_: &DOMString) -> PaymentRequestUpdateEvent {
+    pub fn new0(type_: &JsString) -> PaymentRequestUpdateEvent {
         Self {
             inner: Any::global("PaymentRequestUpdateEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl PaymentRequestUpdateEvent {
     }
 
     /// The `new PaymentRequestUpdateEvent(..)` constructor, creating a new PaymentRequestUpdateEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> PaymentRequestUpdateEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> PaymentRequestUpdateEvent {
         Self {
             inner: Any::global("PaymentRequestUpdateEvent")
                 .new(&[type_.into(), event_init_dict.into()])

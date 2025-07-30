@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(CSSStyleProperties);
 impl CSSStyleProperties {
     /// Getter of the `cssFloat` attribute.
     /// [`CSSStyleProperties.cssFloat`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleProperties/cssFloat)
-    pub fn css_float(&self) -> CSSOMString {
-        self.inner.get("cssFloat").as_::<CSSOMString>()
+    pub fn css_float(&self) -> JsString {
+        self.inner.get("cssFloat").as_::<JsString>()
     }
 
     /// Setter of the `cssFloat` attribute.
     /// [`CSSStyleProperties.cssFloat`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleProperties/cssFloat)
-    pub fn set_css_float(&mut self, value: &CSSOMString) {
+    pub fn set_css_float(&mut self, value: &JsString) {
         self.inner.set("cssFloat", value);
     }
 }

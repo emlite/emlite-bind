@@ -51,22 +51,22 @@ impl From<&SerialPortRequestOptions> for Any {
 }
 
 impl SerialPortRequestOptions {
-    pub fn filters(&self) -> Sequence<Any> {
-        self.inner.get("filters").as_::<Sequence<Any>>()
+    pub fn filters(&self) -> TypedArray<Any> {
+        self.inner.get("filters").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_filters(&mut self, value: &Sequence<Any>) {
+    pub fn set_filters(&mut self, value: &TypedArray<Any>) {
         self.inner.set("filters", value);
     }
 }
 impl SerialPortRequestOptions {
-    pub fn allowed_bluetooth_service_class_ids(&self) -> Sequence<Any> {
+    pub fn allowed_bluetooth_service_class_ids(&self) -> TypedArray<Any> {
         self.inner
             .get("allowedBluetoothServiceClassIds")
-            .as_::<Sequence<Any>>()
+            .as_::<TypedArray<Any>>()
     }
 
-    pub fn set_allowed_bluetooth_service_class_ids(&mut self, value: &Sequence<Any>) {
+    pub fn set_allowed_bluetooth_service_class_ids(&mut self, value: &TypedArray<Any>) {
         self.inner.set("allowedBluetoothServiceClassIds", value);
     }
 }
@@ -154,10 +154,10 @@ impl Serial {
 impl Serial {
     /// The getPorts method.
     /// [`Serial.getPorts`](https://developer.mozilla.org/en-US/docs/Web/API/Serial/getPorts)
-    pub fn get_ports(&self) -> Promise<Sequence<SerialPort>> {
+    pub fn get_ports(&self) -> Promise<TypedArray<SerialPort>> {
         self.inner
             .call("getPorts", &[])
-            .as_::<Promise<Sequence<SerialPort>>>()
+            .as_::<Promise<TypedArray<SerialPort>>>()
     }
 }
 impl Serial {

@@ -1,8 +1,8 @@
 use crate::any::Any;
 use crate::utils::*;
+use alloc::format;
 use alloc::string::String;
 use alloc::vec::Vec;
-use alloc::format;
 
 /// One-to-one wrapper around a JS `Date` instance.
 #[derive(Clone, Debug, PartialOrd)]
@@ -66,7 +66,9 @@ impl Date {
         if let Some(o) = opts {
             a.push(o.clone());
         }
-        self.inner.call("toLocaleString", &a).as_::<Option<String>>()
+        self.inner
+            .call("toLocaleString", &a)
+            .as_::<Option<String>>()
     }
 }
 

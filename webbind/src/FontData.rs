@@ -65,28 +65,28 @@ impl FontData {
 impl FontData {
     /// Getter of the `postscriptName` attribute.
     /// [`FontData.postscriptName`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/postscriptName)
-    pub fn postscript_name(&self) -> USVString {
-        self.inner.get("postscriptName").as_::<USVString>()
+    pub fn postscript_name(&self) -> JsString {
+        self.inner.get("postscriptName").as_::<JsString>()
     }
 }
 impl FontData {
     /// Getter of the `fullName` attribute.
     /// [`FontData.fullName`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/fullName)
-    pub fn full_name(&self) -> USVString {
-        self.inner.get("fullName").as_::<USVString>()
+    pub fn full_name(&self) -> JsString {
+        self.inner.get("fullName").as_::<JsString>()
     }
 }
 impl FontData {
     /// Getter of the `family` attribute.
     /// [`FontData.family`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/family)
-    pub fn family(&self) -> USVString {
-        self.inner.get("family").as_::<USVString>()
+    pub fn family(&self) -> JsString {
+        self.inner.get("family").as_::<JsString>()
     }
 }
 impl FontData {
     /// Getter of the `style` attribute.
     /// [`FontData.style`](https://developer.mozilla.org/en-US/docs/Web/API/FontData/style)
-    pub fn style(&self) -> USVString {
-        self.inner.get("style").as_::<USVString>()
+    pub fn style(&self) -> JsString {
+        self.inner.get("style").as_::<JsString>()
     }
 }

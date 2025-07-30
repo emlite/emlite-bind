@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CookieChangeEvent);
 
 impl CookieChangeEvent {
     /// The `new CookieChangeEvent(..)` constructor, creating a new CookieChangeEvent instance
-    pub fn new0(type_: &DOMString) -> CookieChangeEvent {
+    pub fn new0(type_: &JsString) -> CookieChangeEvent {
         Self {
             inner: Any::global("CookieChangeEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl CookieChangeEvent {
     }
 
     /// The `new CookieChangeEvent(..)` constructor, creating a new CookieChangeEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> CookieChangeEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> CookieChangeEvent {
         Self {
             inner: Any::global("CookieChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -77,18 +77,18 @@ impl CookieChangeEvent {
 impl CookieChangeEvent {
     /// Getter of the `changed` attribute.
     /// [`CookieChangeEvent.changed`](https://developer.mozilla.org/en-US/docs/Web/API/CookieChangeEvent/changed)
-    pub fn changed(&self) -> FrozenArray<CookieListItem> {
+    pub fn changed(&self) -> TypedArray<CookieListItem> {
         self.inner
             .get("changed")
-            .as_::<FrozenArray<CookieListItem>>()
+            .as_::<TypedArray<CookieListItem>>()
     }
 }
 impl CookieChangeEvent {
     /// Getter of the `deleted` attribute.
     /// [`CookieChangeEvent.deleted`](https://developer.mozilla.org/en-US/docs/Web/API/CookieChangeEvent/deleted)
-    pub fn deleted(&self) -> FrozenArray<CookieListItem> {
+    pub fn deleted(&self) -> TypedArray<CookieListItem> {
         self.inner
             .get("deleted")
-            .as_::<FrozenArray<CookieListItem>>()
+            .as_::<TypedArray<CookieListItem>>()
     }
 }

@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(CSSPageRule);
 impl CSSPageRule {
     /// Getter of the `selectorText` attribute.
     /// [`CSSPageRule.selectorText`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageRule/selectorText)
-    pub fn selector_text(&self) -> CSSOMString {
-        self.inner.get("selectorText").as_::<CSSOMString>()
+    pub fn selector_text(&self) -> JsString {
+        self.inner.get("selectorText").as_::<JsString>()
     }
 
     /// Setter of the `selectorText` attribute.
     /// [`CSSPageRule.selectorText`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPageRule/selectorText)
-    pub fn set_selector_text(&mut self, value: &CSSOMString) {
+    pub fn set_selector_text(&mut self, value: &JsString) {
         self.inner.set("selectorText", value);
     }
 }

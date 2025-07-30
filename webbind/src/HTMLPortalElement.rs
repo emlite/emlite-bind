@@ -127,26 +127,26 @@ impl HTMLPortalElement {
 impl HTMLPortalElement {
     /// Getter of the `src` attribute.
     /// [`HTMLPortalElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/src)
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> JsString {
+        self.inner.get("src").as_::<JsString>()
     }
 
     /// Setter of the `src` attribute.
     /// [`HTMLPortalElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/src)
-    pub fn set_src(&mut self, value: &USVString) {
+    pub fn set_src(&mut self, value: &JsString) {
         self.inner.set("src", value);
     }
 }
 impl HTMLPortalElement {
     /// Getter of the `referrerPolicy` attribute.
     /// [`HTMLPortalElement.referrerPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/referrerPolicy)
-    pub fn referrer_policy(&self) -> DOMString {
-        self.inner.get("referrerPolicy").as_::<DOMString>()
+    pub fn referrer_policy(&self) -> JsString {
+        self.inner.get("referrerPolicy").as_::<JsString>()
     }
 
     /// Setter of the `referrerPolicy` attribute.
     /// [`HTMLPortalElement.referrerPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLPortalElement/referrerPolicy)
-    pub fn set_referrer_policy(&mut self, value: &DOMString) {
+    pub fn set_referrer_policy(&mut self, value: &JsString) {
         self.inner.set("referrerPolicy", value);
     }
 }

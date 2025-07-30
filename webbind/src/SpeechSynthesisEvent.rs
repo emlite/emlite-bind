@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(SpeechSynthesisEvent);
 
 impl SpeechSynthesisEvent {
     /// The `new SpeechSynthesisEvent(..)` constructor, creating a new SpeechSynthesisEvent instance
-    pub fn new(type_: &DOMString, event_init_dict: &Any) -> SpeechSynthesisEvent {
+    pub fn new(type_: &JsString, event_init_dict: &Any) -> SpeechSynthesisEvent {
         Self {
             inner: Any::global("SpeechSynthesisEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -98,7 +98,7 @@ impl SpeechSynthesisEvent {
 impl SpeechSynthesisEvent {
     /// Getter of the `name` attribute.
     /// [`SpeechSynthesisEvent.name`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisEvent/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }

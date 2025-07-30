@@ -72,10 +72,10 @@ impl RTCDtlsTransport {
 impl RTCDtlsTransport {
     /// The getRemoteCertificates method.
     /// [`RTCDtlsTransport.getRemoteCertificates`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDtlsTransport/getRemoteCertificates)
-    pub fn get_remote_certificates(&self) -> Sequence<ArrayBuffer> {
+    pub fn get_remote_certificates(&self) -> TypedArray<ArrayBuffer> {
         self.inner
             .call("getRemoteCertificates", &[])
-            .as_::<Sequence<ArrayBuffer>>()
+            .as_::<TypedArray<ArrayBuffer>>()
     }
 }
 impl RTCDtlsTransport {

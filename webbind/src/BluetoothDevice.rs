@@ -117,15 +117,15 @@ jsbind::utils::impl_dyn_cast!(BluetoothDevice);
 impl BluetoothDevice {
     /// Getter of the `id` attribute.
     /// [`BluetoothDevice.id`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/id)
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> JsString {
+        self.inner.get("id").as_::<JsString>()
     }
 }
 impl BluetoothDevice {
     /// Getter of the `name` attribute.
     /// [`BluetoothDevice.name`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothDevice/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl BluetoothDevice {

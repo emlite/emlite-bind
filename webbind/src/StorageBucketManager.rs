@@ -135,18 +135,14 @@ jsbind::utils::impl_dyn_cast!(StorageBucketManager);
 impl StorageBucketManager {
     /// The open method.
     /// [`StorageBucketManager.open`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucketManager/open)
-    pub fn open0(&self, name: &DOMString) -> Promise<StorageBucket> {
+    pub fn open0(&self, name: &JsString) -> Promise<StorageBucket> {
         self.inner
             .call("open", &[name.into()])
             .as_::<Promise<StorageBucket>>()
     }
     /// The open method.
     /// [`StorageBucketManager.open`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucketManager/open)
-    pub fn open1(
-        &self,
-        name: &DOMString,
-        options: &StorageBucketOptions,
-    ) -> Promise<StorageBucket> {
+    pub fn open1(&self, name: &JsString, options: &StorageBucketOptions) -> Promise<StorageBucket> {
         self.inner
             .call("open", &[name.into(), options.into()])
             .as_::<Promise<StorageBucket>>()
@@ -155,16 +151,16 @@ impl StorageBucketManager {
 impl StorageBucketManager {
     /// The keys method.
     /// [`StorageBucketManager.keys`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucketManager/keys)
-    pub fn keys(&self) -> Promise<Sequence<DOMString>> {
+    pub fn keys(&self) -> Promise<TypedArray<JsString>> {
         self.inner
             .call("keys", &[])
-            .as_::<Promise<Sequence<DOMString>>>()
+            .as_::<Promise<TypedArray<JsString>>>()
     }
 }
 impl StorageBucketManager {
     /// The delete method.
     /// [`StorageBucketManager.delete`](https://developer.mozilla.org/en-US/docs/Web/API/StorageBucketManager/delete)
-    pub fn delete(&self, name: &DOMString) -> Promise<Undefined> {
+    pub fn delete(&self, name: &JsString) -> Promise<Undefined> {
         self.inner
             .call("delete", &[name.into()])
             .as_::<Promise<Undefined>>()

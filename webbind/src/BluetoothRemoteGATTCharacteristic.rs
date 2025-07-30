@@ -99,20 +99,20 @@ impl BluetoothRemoteGATTCharacteristic {
 impl BluetoothRemoteGATTCharacteristic {
     /// The getDescriptors method.
     /// [`BluetoothRemoteGATTCharacteristic.getDescriptors`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/getDescriptors)
-    pub fn get_descriptors0(&self) -> Promise<Sequence<BluetoothRemoteGATTDescriptor>> {
+    pub fn get_descriptors0(&self) -> Promise<TypedArray<BluetoothRemoteGATTDescriptor>> {
         self.inner
             .call("getDescriptors", &[])
-            .as_::<Promise<Sequence<BluetoothRemoteGATTDescriptor>>>()
+            .as_::<Promise<TypedArray<BluetoothRemoteGATTDescriptor>>>()
     }
     /// The getDescriptors method.
     /// [`BluetoothRemoteGATTCharacteristic.getDescriptors`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTCharacteristic/getDescriptors)
     pub fn get_descriptors1(
         &self,
         descriptor: &Any,
-    ) -> Promise<Sequence<BluetoothRemoteGATTDescriptor>> {
+    ) -> Promise<TypedArray<BluetoothRemoteGATTDescriptor>> {
         self.inner
             .call("getDescriptors", &[descriptor.into()])
-            .as_::<Promise<Sequence<BluetoothRemoteGATTDescriptor>>>()
+            .as_::<Promise<TypedArray<BluetoothRemoteGATTDescriptor>>>()
     }
 }
 impl BluetoothRemoteGATTCharacteristic {

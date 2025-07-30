@@ -58,10 +58,10 @@ jsbind::utils::impl_dyn_cast!(ScreenDetails);
 impl ScreenDetails {
     /// Getter of the `screens` attribute.
     /// [`ScreenDetails.screens`](https://developer.mozilla.org/en-US/docs/Web/API/ScreenDetails/screens)
-    pub fn screens(&self) -> FrozenArray<ScreenDetailed> {
+    pub fn screens(&self) -> TypedArray<ScreenDetailed> {
         self.inner
             .get("screens")
-            .as_::<FrozenArray<ScreenDetailed>>()
+            .as_::<TypedArray<ScreenDetailed>>()
     }
 }
 impl ScreenDetails {

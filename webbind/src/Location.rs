@@ -58,125 +58,125 @@ jsbind::utils::impl_dyn_cast!(Location);
 impl Location {
     /// Getter of the `href` attribute.
     /// [`Location.href`](https://developer.mozilla.org/en-US/docs/Web/API/Location/href)
-    pub fn href(&self) -> USVString {
-        self.inner.get("href").as_::<USVString>()
+    pub fn href(&self) -> JsString {
+        self.inner.get("href").as_::<JsString>()
     }
 
     /// Setter of the `href` attribute.
     /// [`Location.href`](https://developer.mozilla.org/en-US/docs/Web/API/Location/href)
-    pub fn set_href(&mut self, value: &USVString) {
+    pub fn set_href(&mut self, value: &JsString) {
         self.inner.set("href", value);
     }
 }
 impl Location {
     /// Getter of the `origin` attribute.
     /// [`Location.origin`](https://developer.mozilla.org/en-US/docs/Web/API/Location/origin)
-    pub fn origin(&self) -> USVString {
-        self.inner.get("origin").as_::<USVString>()
+    pub fn origin(&self) -> JsString {
+        self.inner.get("origin").as_::<JsString>()
     }
 }
 impl Location {
     /// Getter of the `protocol` attribute.
     /// [`Location.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/Location/protocol)
-    pub fn protocol(&self) -> USVString {
-        self.inner.get("protocol").as_::<USVString>()
+    pub fn protocol(&self) -> JsString {
+        self.inner.get("protocol").as_::<JsString>()
     }
 
     /// Setter of the `protocol` attribute.
     /// [`Location.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/Location/protocol)
-    pub fn set_protocol(&mut self, value: &USVString) {
+    pub fn set_protocol(&mut self, value: &JsString) {
         self.inner.set("protocol", value);
     }
 }
 impl Location {
     /// Getter of the `host` attribute.
     /// [`Location.host`](https://developer.mozilla.org/en-US/docs/Web/API/Location/host)
-    pub fn host(&self) -> USVString {
-        self.inner.get("host").as_::<USVString>()
+    pub fn host(&self) -> JsString {
+        self.inner.get("host").as_::<JsString>()
     }
 
     /// Setter of the `host` attribute.
     /// [`Location.host`](https://developer.mozilla.org/en-US/docs/Web/API/Location/host)
-    pub fn set_host(&mut self, value: &USVString) {
+    pub fn set_host(&mut self, value: &JsString) {
         self.inner.set("host", value);
     }
 }
 impl Location {
     /// Getter of the `hostname` attribute.
     /// [`Location.hostname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/hostname)
-    pub fn hostname(&self) -> USVString {
-        self.inner.get("hostname").as_::<USVString>()
+    pub fn hostname(&self) -> JsString {
+        self.inner.get("hostname").as_::<JsString>()
     }
 
     /// Setter of the `hostname` attribute.
     /// [`Location.hostname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/hostname)
-    pub fn set_hostname(&mut self, value: &USVString) {
+    pub fn set_hostname(&mut self, value: &JsString) {
         self.inner.set("hostname", value);
     }
 }
 impl Location {
     /// Getter of the `port` attribute.
     /// [`Location.port`](https://developer.mozilla.org/en-US/docs/Web/API/Location/port)
-    pub fn port(&self) -> USVString {
-        self.inner.get("port").as_::<USVString>()
+    pub fn port(&self) -> JsString {
+        self.inner.get("port").as_::<JsString>()
     }
 
     /// Setter of the `port` attribute.
     /// [`Location.port`](https://developer.mozilla.org/en-US/docs/Web/API/Location/port)
-    pub fn set_port(&mut self, value: &USVString) {
+    pub fn set_port(&mut self, value: &JsString) {
         self.inner.set("port", value);
     }
 }
 impl Location {
     /// Getter of the `pathname` attribute.
     /// [`Location.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname)
-    pub fn pathname(&self) -> USVString {
-        self.inner.get("pathname").as_::<USVString>()
+    pub fn pathname(&self) -> JsString {
+        self.inner.get("pathname").as_::<JsString>()
     }
 
     /// Setter of the `pathname` attribute.
     /// [`Location.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname)
-    pub fn set_pathname(&mut self, value: &USVString) {
+    pub fn set_pathname(&mut self, value: &JsString) {
         self.inner.set("pathname", value);
     }
 }
 impl Location {
     /// Getter of the `search` attribute.
     /// [`Location.search`](https://developer.mozilla.org/en-US/docs/Web/API/Location/search)
-    pub fn search(&self) -> USVString {
-        self.inner.get("search").as_::<USVString>()
+    pub fn search(&self) -> JsString {
+        self.inner.get("search").as_::<JsString>()
     }
 
     /// Setter of the `search` attribute.
     /// [`Location.search`](https://developer.mozilla.org/en-US/docs/Web/API/Location/search)
-    pub fn set_search(&mut self, value: &USVString) {
+    pub fn set_search(&mut self, value: &JsString) {
         self.inner.set("search", value);
     }
 }
 impl Location {
     /// Getter of the `hash` attribute.
     /// [`Location.hash`](https://developer.mozilla.org/en-US/docs/Web/API/Location/hash)
-    pub fn hash(&self) -> USVString {
-        self.inner.get("hash").as_::<USVString>()
+    pub fn hash(&self) -> JsString {
+        self.inner.get("hash").as_::<JsString>()
     }
 
     /// Setter of the `hash` attribute.
     /// [`Location.hash`](https://developer.mozilla.org/en-US/docs/Web/API/Location/hash)
-    pub fn set_hash(&mut self, value: &USVString) {
+    pub fn set_hash(&mut self, value: &JsString) {
         self.inner.set("hash", value);
     }
 }
 impl Location {
     /// The assign method.
     /// [`Location.assign`](https://developer.mozilla.org/en-US/docs/Web/API/Location/assign)
-    pub fn assign(&self, url: &USVString) -> Undefined {
+    pub fn assign(&self, url: &JsString) -> Undefined {
         self.inner.call("assign", &[url.into()]).as_::<Undefined>()
     }
 }
 impl Location {
     /// The replace method.
     /// [`Location.replace`](https://developer.mozilla.org/en-US/docs/Web/API/Location/replace)
-    pub fn replace(&self, url: &USVString) -> Undefined {
+    pub fn replace(&self, url: &JsString) -> Undefined {
         self.inner.call("replace", &[url.into()]).as_::<Undefined>()
     }
 }

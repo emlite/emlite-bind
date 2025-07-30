@@ -51,20 +51,20 @@ impl From<&ItemDetails> for Any {
 }
 
 impl ItemDetails {
-    pub fn item_id(&self) -> DOMString {
-        self.inner.get("itemId").as_::<DOMString>()
+    pub fn item_id(&self) -> JsString {
+        self.inner.get("itemId").as_::<JsString>()
     }
 
-    pub fn set_item_id(&mut self, value: &DOMString) {
+    pub fn set_item_id(&mut self, value: &JsString) {
         self.inner.set("itemId", value);
     }
 }
 impl ItemDetails {
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> JsString {
+        self.inner.get("title").as_::<JsString>()
     }
 
-    pub fn set_title(&mut self, value: &DOMString) {
+    pub fn set_title(&mut self, value: &JsString) {
         self.inner.set("title", value);
     }
 }
@@ -87,38 +87,38 @@ impl ItemDetails {
     }
 }
 impl ItemDetails {
-    pub fn description(&self) -> DOMString {
-        self.inner.get("description").as_::<DOMString>()
+    pub fn description(&self) -> JsString {
+        self.inner.get("description").as_::<JsString>()
     }
 
-    pub fn set_description(&mut self, value: &DOMString) {
+    pub fn set_description(&mut self, value: &JsString) {
         self.inner.set("description", value);
     }
 }
 impl ItemDetails {
-    pub fn icon_ur_ls(&self) -> Sequence<DOMString> {
-        self.inner.get("iconURLs").as_::<Sequence<DOMString>>()
+    pub fn icon_ur_ls(&self) -> TypedArray<JsString> {
+        self.inner.get("iconURLs").as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_icon_ur_ls(&mut self, value: &Sequence<DOMString>) {
+    pub fn set_icon_ur_ls(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("iconURLs", value);
     }
 }
 impl ItemDetails {
-    pub fn subscription_period(&self) -> DOMString {
-        self.inner.get("subscriptionPeriod").as_::<DOMString>()
+    pub fn subscription_period(&self) -> JsString {
+        self.inner.get("subscriptionPeriod").as_::<JsString>()
     }
 
-    pub fn set_subscription_period(&mut self, value: &DOMString) {
+    pub fn set_subscription_period(&mut self, value: &JsString) {
         self.inner.set("subscriptionPeriod", value);
     }
 }
 impl ItemDetails {
-    pub fn free_trial_period(&self) -> DOMString {
-        self.inner.get("freeTrialPeriod").as_::<DOMString>()
+    pub fn free_trial_period(&self) -> JsString {
+        self.inner.get("freeTrialPeriod").as_::<JsString>()
     }
 
-    pub fn set_free_trial_period(&mut self, value: &DOMString) {
+    pub fn set_free_trial_period(&mut self, value: &JsString) {
         self.inner.set("freeTrialPeriod", value);
     }
 }
@@ -132,11 +132,11 @@ impl ItemDetails {
     }
 }
 impl ItemDetails {
-    pub fn introductory_price_period(&self) -> DOMString {
-        self.inner.get("introductoryPricePeriod").as_::<DOMString>()
+    pub fn introductory_price_period(&self) -> JsString {
+        self.inner.get("introductoryPricePeriod").as_::<JsString>()
     }
 
-    pub fn set_introductory_price_period(&mut self, value: &DOMString) {
+    pub fn set_introductory_price_period(&mut self, value: &JsString) {
         self.inner.set("introductoryPricePeriod", value);
     }
 }
@@ -200,20 +200,20 @@ impl From<&PurchaseDetails> for Any {
 }
 
 impl PurchaseDetails {
-    pub fn item_id(&self) -> DOMString {
-        self.inner.get("itemId").as_::<DOMString>()
+    pub fn item_id(&self) -> JsString {
+        self.inner.get("itemId").as_::<JsString>()
     }
 
-    pub fn set_item_id(&mut self, value: &DOMString) {
+    pub fn set_item_id(&mut self, value: &JsString) {
         self.inner.set("itemId", value);
     }
 }
 impl PurchaseDetails {
-    pub fn purchase_token(&self) -> DOMString {
-        self.inner.get("purchaseToken").as_::<DOMString>()
+    pub fn purchase_token(&self) -> JsString {
+        self.inner.get("purchaseToken").as_::<JsString>()
     }
 
-    pub fn set_purchase_token(&mut self, value: &DOMString) {
+    pub fn set_purchase_token(&mut self, value: &JsString) {
         self.inner.set("purchaseToken", value);
     }
 }
@@ -275,34 +275,34 @@ jsbind::utils::impl_dyn_cast!(DigitalGoodsService);
 impl DigitalGoodsService {
     /// The getDetails method.
     /// [`DigitalGoodsService.getDetails`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalGoodsService/getDetails)
-    pub fn get_details(&self, item_ids: &Sequence<DOMString>) -> Promise<Sequence<ItemDetails>> {
+    pub fn get_details(&self, item_ids: &TypedArray<JsString>) -> Promise<TypedArray<ItemDetails>> {
         self.inner
             .call("getDetails", &[item_ids.into()])
-            .as_::<Promise<Sequence<ItemDetails>>>()
+            .as_::<Promise<TypedArray<ItemDetails>>>()
     }
 }
 impl DigitalGoodsService {
     /// The listPurchases method.
     /// [`DigitalGoodsService.listPurchases`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalGoodsService/listPurchases)
-    pub fn list_purchases(&self) -> Promise<Sequence<PurchaseDetails>> {
+    pub fn list_purchases(&self) -> Promise<TypedArray<PurchaseDetails>> {
         self.inner
             .call("listPurchases", &[])
-            .as_::<Promise<Sequence<PurchaseDetails>>>()
+            .as_::<Promise<TypedArray<PurchaseDetails>>>()
     }
 }
 impl DigitalGoodsService {
     /// The listPurchaseHistory method.
     /// [`DigitalGoodsService.listPurchaseHistory`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalGoodsService/listPurchaseHistory)
-    pub fn list_purchase_history(&self) -> Promise<Sequence<PurchaseDetails>> {
+    pub fn list_purchase_history(&self) -> Promise<TypedArray<PurchaseDetails>> {
         self.inner
             .call("listPurchaseHistory", &[])
-            .as_::<Promise<Sequence<PurchaseDetails>>>()
+            .as_::<Promise<TypedArray<PurchaseDetails>>>()
     }
 }
 impl DigitalGoodsService {
     /// The consume method.
     /// [`DigitalGoodsService.consume`](https://developer.mozilla.org/en-US/docs/Web/API/DigitalGoodsService/consume)
-    pub fn consume(&self, purchase_token: &DOMString) -> Promise<Undefined> {
+    pub fn consume(&self, purchase_token: &JsString) -> Promise<Undefined> {
         self.inner
             .call("consume", &[purchase_token.into()])
             .as_::<Promise<Undefined>>()

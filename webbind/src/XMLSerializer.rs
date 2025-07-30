@@ -66,9 +66,9 @@ impl XMLSerializer {
 impl XMLSerializer {
     /// The serializeToString method.
     /// [`XMLSerializer.serializeToString`](https://developer.mozilla.org/en-US/docs/Web/API/XMLSerializer/serializeToString)
-    pub fn serialize_to_string(&self, root: &Node) -> DOMString {
+    pub fn serialize_to_string(&self, root: &Node) -> JsString {
         self.inner
             .call("serializeToString", &[root.into()])
-            .as_::<DOMString>()
+            .as_::<JsString>()
     }
 }

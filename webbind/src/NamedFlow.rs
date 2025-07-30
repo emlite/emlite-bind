@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(NamedFlow);
 impl NamedFlow {
     /// Getter of the `name` attribute.
     /// [`NamedFlow.name`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/name)
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl NamedFlow {
@@ -72,10 +72,10 @@ impl NamedFlow {
 impl NamedFlow {
     /// The getRegions method.
     /// [`NamedFlow.getRegions`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/getRegions)
-    pub fn get_regions(&self) -> Sequence<Element> {
+    pub fn get_regions(&self) -> TypedArray<Element> {
         self.inner
             .call("getRegions", &[])
-            .as_::<Sequence<Element>>()
+            .as_::<TypedArray<Element>>()
     }
 }
 impl NamedFlow {
@@ -88,16 +88,16 @@ impl NamedFlow {
 impl NamedFlow {
     /// The getContent method.
     /// [`NamedFlow.getContent`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/getContent)
-    pub fn get_content(&self) -> Sequence<Node> {
-        self.inner.call("getContent", &[]).as_::<Sequence<Node>>()
+    pub fn get_content(&self) -> TypedArray<Node> {
+        self.inner.call("getContent", &[]).as_::<TypedArray<Node>>()
     }
 }
 impl NamedFlow {
     /// The getRegionsByContent method.
     /// [`NamedFlow.getRegionsByContent`](https://developer.mozilla.org/en-US/docs/Web/API/NamedFlow/getRegionsByContent)
-    pub fn get_regions_by_content(&self, node: &Node) -> Sequence<Element> {
+    pub fn get_regions_by_content(&self, node: &Node) -> TypedArray<Element> {
         self.inner
             .call("getRegionsByContent", &[node.into()])
-            .as_::<Sequence<Element>>()
+            .as_::<TypedArray<Element>>()
     }
 }

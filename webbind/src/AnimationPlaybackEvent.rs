@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(AnimationPlaybackEvent);
 
 impl AnimationPlaybackEvent {
     /// The `new AnimationPlaybackEvent(..)` constructor, creating a new AnimationPlaybackEvent instance
-    pub fn new0(type_: &DOMString) -> AnimationPlaybackEvent {
+    pub fn new0(type_: &JsString) -> AnimationPlaybackEvent {
         Self {
             inner: Any::global("AnimationPlaybackEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl AnimationPlaybackEvent {
     }
 
     /// The `new AnimationPlaybackEvent(..)` constructor, creating a new AnimationPlaybackEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> AnimationPlaybackEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> AnimationPlaybackEvent {
         Self {
             inner: Any::global("AnimationPlaybackEvent")
                 .new(&[type_.into(), event_init_dict.into()])

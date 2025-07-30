@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(RTCPeerConnectionIceErrorEvent);
 
 impl RTCPeerConnectionIceErrorEvent {
     /// The `new RTCPeerConnectionIceErrorEvent(..)` constructor, creating a new RTCPeerConnectionIceErrorEvent instance
-    pub fn new(type_: &DOMString, event_init_dict: &Any) -> RTCPeerConnectionIceErrorEvent {
+    pub fn new(type_: &JsString, event_init_dict: &Any) -> RTCPeerConnectionIceErrorEvent {
         Self {
             inner: Any::global("RTCPeerConnectionIceErrorEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -68,8 +68,8 @@ impl RTCPeerConnectionIceErrorEvent {
 impl RTCPeerConnectionIceErrorEvent {
     /// Getter of the `address` attribute.
     /// [`RTCPeerConnectionIceErrorEvent.address`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnectionIceErrorEvent/address)
-    pub fn address(&self) -> DOMString {
-        self.inner.get("address").as_::<DOMString>()
+    pub fn address(&self) -> JsString {
+        self.inner.get("address").as_::<JsString>()
     }
 }
 impl RTCPeerConnectionIceErrorEvent {
@@ -82,8 +82,8 @@ impl RTCPeerConnectionIceErrorEvent {
 impl RTCPeerConnectionIceErrorEvent {
     /// Getter of the `url` attribute.
     /// [`RTCPeerConnectionIceErrorEvent.url`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnectionIceErrorEvent/url)
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> JsString {
+        self.inner.get("url").as_::<JsString>()
     }
 }
 impl RTCPeerConnectionIceErrorEvent {
@@ -96,7 +96,7 @@ impl RTCPeerConnectionIceErrorEvent {
 impl RTCPeerConnectionIceErrorEvent {
     /// Getter of the `errorText` attribute.
     /// [`RTCPeerConnectionIceErrorEvent.errorText`](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnectionIceErrorEvent/errorText)
-    pub fn error_text(&self) -> USVString {
-        self.inner.get("errorText").as_::<USVString>()
+    pub fn error_text(&self) -> JsString {
+        self.inner.get("errorText").as_::<JsString>()
     }
 }

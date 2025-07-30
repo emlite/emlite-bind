@@ -79,13 +79,13 @@ impl GPUQuerySet {
 impl GPUQuerySet {
     /// Getter of the `label` attribute.
     /// [`GPUQuerySet.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQuerySet/label)
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
     }
 
     /// Setter of the `label` attribute.
     /// [`GPUQuerySet.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPUQuerySet/label)
-    pub fn set_label(&mut self, value: &USVString) {
+    pub fn set_label(&mut self, value: &JsString) {
         self.inner.set("label", value);
     }
 }

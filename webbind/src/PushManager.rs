@@ -126,10 +126,10 @@ jsbind::utils::impl_dyn_cast!(PushManager);
 impl PushManager {
     /// Getter of the `supportedContentEncodings` static attribute.
     /// [`PushManager.supportedContentEncodings`](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/supportedContentEncodings)
-    pub fn supported_content_encodings() -> FrozenArray<DOMString> {
+    pub fn supported_content_encodings() -> TypedArray<JsString> {
         Any::global("PushManager")
             .get("supportedContentEncodings")
-            .as_::<FrozenArray<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 }
 impl PushManager {

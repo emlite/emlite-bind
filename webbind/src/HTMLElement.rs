@@ -125,26 +125,26 @@ impl HTMLElement {
 impl HTMLElement {
     /// Getter of the `title` attribute.
     /// [`HTMLElement.title`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/title)
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> JsString {
+        self.inner.get("title").as_::<JsString>()
     }
 
     /// Setter of the `title` attribute.
     /// [`HTMLElement.title`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/title)
-    pub fn set_title(&mut self, value: &DOMString) {
+    pub fn set_title(&mut self, value: &JsString) {
         self.inner.set("title", value);
     }
 }
 impl HTMLElement {
     /// Getter of the `lang` attribute.
     /// [`HTMLElement.lang`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/lang)
-    pub fn lang(&self) -> DOMString {
-        self.inner.get("lang").as_::<DOMString>()
+    pub fn lang(&self) -> JsString {
+        self.inner.get("lang").as_::<JsString>()
     }
 
     /// Setter of the `lang` attribute.
     /// [`HTMLElement.lang`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/lang)
-    pub fn set_lang(&mut self, value: &DOMString) {
+    pub fn set_lang(&mut self, value: &JsString) {
         self.inner.set("lang", value);
     }
 }
@@ -164,13 +164,13 @@ impl HTMLElement {
 impl HTMLElement {
     /// Getter of the `dir` attribute.
     /// [`HTMLElement.dir`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dir)
-    pub fn dir(&self) -> DOMString {
-        self.inner.get("dir").as_::<DOMString>()
+    pub fn dir(&self) -> JsString {
+        self.inner.get("dir").as_::<JsString>()
     }
 
     /// Setter of the `dir` attribute.
     /// [`HTMLElement.dir`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dir)
-    pub fn set_dir(&mut self, value: &DOMString) {
+    pub fn set_dir(&mut self, value: &JsString) {
         self.inner.set("dir", value);
     }
 }
@@ -210,21 +210,21 @@ impl HTMLElement {
 impl HTMLElement {
     /// Getter of the `accessKey` attribute.
     /// [`HTMLElement.accessKey`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/accessKey)
-    pub fn access_key(&self) -> DOMString {
-        self.inner.get("accessKey").as_::<DOMString>()
+    pub fn access_key(&self) -> JsString {
+        self.inner.get("accessKey").as_::<JsString>()
     }
 
     /// Setter of the `accessKey` attribute.
     /// [`HTMLElement.accessKey`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/accessKey)
-    pub fn set_access_key(&mut self, value: &DOMString) {
+    pub fn set_access_key(&mut self, value: &JsString) {
         self.inner.set("accessKey", value);
     }
 }
 impl HTMLElement {
     /// Getter of the `accessKeyLabel` attribute.
     /// [`HTMLElement.accessKeyLabel`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/accessKeyLabel)
-    pub fn access_key_label(&self) -> DOMString {
-        self.inner.get("accessKeyLabel").as_::<DOMString>()
+    pub fn access_key_label(&self) -> JsString {
+        self.inner.get("accessKeyLabel").as_::<JsString>()
     }
 }
 impl HTMLElement {
@@ -256,26 +256,26 @@ impl HTMLElement {
 impl HTMLElement {
     /// Getter of the `writingSuggestions` attribute.
     /// [`HTMLElement.writingSuggestions`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/writingSuggestions)
-    pub fn writing_suggestions(&self) -> DOMString {
-        self.inner.get("writingSuggestions").as_::<DOMString>()
+    pub fn writing_suggestions(&self) -> JsString {
+        self.inner.get("writingSuggestions").as_::<JsString>()
     }
 
     /// Setter of the `writingSuggestions` attribute.
     /// [`HTMLElement.writingSuggestions`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/writingSuggestions)
-    pub fn set_writing_suggestions(&mut self, value: &DOMString) {
+    pub fn set_writing_suggestions(&mut self, value: &JsString) {
         self.inner.set("writingSuggestions", value);
     }
 }
 impl HTMLElement {
     /// Getter of the `autocapitalize` attribute.
     /// [`HTMLElement.autocapitalize`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/autocapitalize)
-    pub fn autocapitalize(&self) -> DOMString {
-        self.inner.get("autocapitalize").as_::<DOMString>()
+    pub fn autocapitalize(&self) -> JsString {
+        self.inner.get("autocapitalize").as_::<JsString>()
     }
 
     /// Setter of the `autocapitalize` attribute.
     /// [`HTMLElement.autocapitalize`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/autocapitalize)
-    pub fn set_autocapitalize(&mut self, value: &DOMString) {
+    pub fn set_autocapitalize(&mut self, value: &JsString) {
         self.inner.set("autocapitalize", value);
     }
 }
@@ -295,26 +295,26 @@ impl HTMLElement {
 impl HTMLElement {
     /// Getter of the `innerText` attribute.
     /// [`HTMLElement.innerText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText)
-    pub fn inner_text(&self) -> DOMString {
-        self.inner.get("innerText").as_::<DOMString>()
+    pub fn inner_text(&self) -> JsString {
+        self.inner.get("innerText").as_::<JsString>()
     }
 
     /// Setter of the `innerText` attribute.
     /// [`HTMLElement.innerText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/innerText)
-    pub fn set_inner_text(&mut self, value: &DOMString) {
+    pub fn set_inner_text(&mut self, value: &JsString) {
         self.inner.set("innerText", value);
     }
 }
 impl HTMLElement {
     /// Getter of the `outerText` attribute.
     /// [`HTMLElement.outerText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/outerText)
-    pub fn outer_text(&self) -> DOMString {
-        self.inner.get("outerText").as_::<DOMString>()
+    pub fn outer_text(&self) -> JsString {
+        self.inner.get("outerText").as_::<JsString>()
     }
 
     /// Setter of the `outerText` attribute.
     /// [`HTMLElement.outerText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/outerText)
-    pub fn set_outer_text(&mut self, value: &DOMString) {
+    pub fn set_outer_text(&mut self, value: &JsString) {
         self.inner.set("outerText", value);
     }
 }
@@ -365,13 +365,13 @@ impl HTMLElement {
 impl HTMLElement {
     /// Getter of the `popover` attribute.
     /// [`HTMLElement.popover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/popover)
-    pub fn popover(&self) -> DOMString {
-        self.inner.get("popover").as_::<DOMString>()
+    pub fn popover(&self) -> JsString {
+        self.inner.get("popover").as_::<JsString>()
     }
 
     /// Setter of the `popover` attribute.
     /// [`HTMLElement.popover`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/popover)
-    pub fn set_popover(&mut self, value: &DOMString) {
+    pub fn set_popover(&mut self, value: &JsString) {
         self.inner.set("popover", value);
     }
 }
@@ -453,13 +453,13 @@ impl HTMLElement {
 impl HTMLElement {
     /// Getter of the `virtualKeyboardPolicy` attribute.
     /// [`HTMLElement.virtualKeyboardPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/virtualKeyboardPolicy)
-    pub fn virtual_keyboard_policy(&self) -> DOMString {
-        self.inner.get("virtualKeyboardPolicy").as_::<DOMString>()
+    pub fn virtual_keyboard_policy(&self) -> JsString {
+        self.inner.get("virtualKeyboardPolicy").as_::<JsString>()
     }
 
     /// Setter of the `virtualKeyboardPolicy` attribute.
     /// [`HTMLElement.virtualKeyboardPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/virtualKeyboardPolicy)
-    pub fn set_virtual_keyboard_policy(&mut self, value: &DOMString) {
+    pub fn set_virtual_keyboard_policy(&mut self, value: &JsString) {
         self.inner.set("virtualKeyboardPolicy", value);
     }
 }
@@ -473,13 +473,13 @@ impl HTMLElement {
 impl HTMLElement {
     /// Getter of the `nonce` attribute.
     /// [`HTMLElement.nonce`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/nonce)
-    pub fn nonce(&self) -> DOMString {
-        self.inner.get("nonce").as_::<DOMString>()
+    pub fn nonce(&self) -> JsString {
+        self.inner.get("nonce").as_::<JsString>()
     }
 
     /// Setter of the `nonce` attribute.
     /// [`HTMLElement.nonce`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/nonce)
-    pub fn set_nonce(&mut self, value: &DOMString) {
+    pub fn set_nonce(&mut self, value: &JsString) {
         self.inner.set("nonce", value);
     }
 }

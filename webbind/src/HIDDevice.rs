@@ -78,40 +78,40 @@ impl HIDCollectionInfo {
     }
 }
 impl HIDCollectionInfo {
-    pub fn children(&self) -> Sequence<HIDCollectionInfo> {
+    pub fn children(&self) -> TypedArray<HIDCollectionInfo> {
         self.inner
             .get("children")
-            .as_::<Sequence<HIDCollectionInfo>>()
+            .as_::<TypedArray<HIDCollectionInfo>>()
     }
 
-    pub fn set_children(&mut self, value: &Sequence<HIDCollectionInfo>) {
+    pub fn set_children(&mut self, value: &TypedArray<HIDCollectionInfo>) {
         self.inner.set("children", value);
     }
 }
 impl HIDCollectionInfo {
-    pub fn input_reports(&self) -> Sequence<Any> {
-        self.inner.get("inputReports").as_::<Sequence<Any>>()
+    pub fn input_reports(&self) -> TypedArray<Any> {
+        self.inner.get("inputReports").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_input_reports(&mut self, value: &Sequence<Any>) {
+    pub fn set_input_reports(&mut self, value: &TypedArray<Any>) {
         self.inner.set("inputReports", value);
     }
 }
 impl HIDCollectionInfo {
-    pub fn output_reports(&self) -> Sequence<Any> {
-        self.inner.get("outputReports").as_::<Sequence<Any>>()
+    pub fn output_reports(&self) -> TypedArray<Any> {
+        self.inner.get("outputReports").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_output_reports(&mut self, value: &Sequence<Any>) {
+    pub fn set_output_reports(&mut self, value: &TypedArray<Any>) {
         self.inner.set("outputReports", value);
     }
 }
 impl HIDCollectionInfo {
-    pub fn feature_reports(&self) -> Sequence<Any> {
-        self.inner.get("featureReports").as_::<Sequence<Any>>()
+    pub fn feature_reports(&self) -> TypedArray<Any> {
+        self.inner.get("featureReports").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_feature_reports(&mut self, value: &Sequence<Any>) {
+    pub fn set_feature_reports(&mut self, value: &TypedArray<Any>) {
         self.inner.set("featureReports", value);
     }
 }
@@ -207,17 +207,17 @@ impl HIDDevice {
 impl HIDDevice {
     /// Getter of the `productName` attribute.
     /// [`HIDDevice.productName`](https://developer.mozilla.org/en-US/docs/Web/API/HIDDevice/productName)
-    pub fn product_name(&self) -> DOMString {
-        self.inner.get("productName").as_::<DOMString>()
+    pub fn product_name(&self) -> JsString {
+        self.inner.get("productName").as_::<JsString>()
     }
 }
 impl HIDDevice {
     /// Getter of the `collections` attribute.
     /// [`HIDDevice.collections`](https://developer.mozilla.org/en-US/docs/Web/API/HIDDevice/collections)
-    pub fn collections(&self) -> FrozenArray<HIDCollectionInfo> {
+    pub fn collections(&self) -> TypedArray<HIDCollectionInfo> {
         self.inner
             .get("collections")
-            .as_::<FrozenArray<HIDCollectionInfo>>()
+            .as_::<TypedArray<HIDCollectionInfo>>()
     }
 }
 impl HIDDevice {

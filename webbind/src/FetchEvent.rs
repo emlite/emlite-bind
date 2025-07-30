@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(FetchEvent);
 
 impl FetchEvent {
     /// The `new FetchEvent(..)` constructor, creating a new FetchEvent instance
-    pub fn new(type_: &DOMString, event_init_dict: &Any) -> FetchEvent {
+    pub fn new(type_: &JsString, event_init_dict: &Any) -> FetchEvent {
         Self {
             inner: Any::global("FetchEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -82,22 +82,22 @@ impl FetchEvent {
 impl FetchEvent {
     /// Getter of the `clientId` attribute.
     /// [`FetchEvent.clientId`](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/clientId)
-    pub fn client_id(&self) -> DOMString {
-        self.inner.get("clientId").as_::<DOMString>()
+    pub fn client_id(&self) -> JsString {
+        self.inner.get("clientId").as_::<JsString>()
     }
 }
 impl FetchEvent {
     /// Getter of the `resultingClientId` attribute.
     /// [`FetchEvent.resultingClientId`](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/resultingClientId)
-    pub fn resulting_client_id(&self) -> DOMString {
-        self.inner.get("resultingClientId").as_::<DOMString>()
+    pub fn resulting_client_id(&self) -> JsString {
+        self.inner.get("resultingClientId").as_::<JsString>()
     }
 }
 impl FetchEvent {
     /// Getter of the `replacesClientId` attribute.
     /// [`FetchEvent.replacesClientId`](https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/replacesClientId)
-    pub fn replaces_client_id(&self) -> DOMString {
-        self.inner.get("replacesClientId").as_::<DOMString>()
+    pub fn replaces_client_id(&self) -> JsString {
+        self.inner.get("replacesClientId").as_::<JsString>()
     }
 }
 impl FetchEvent {

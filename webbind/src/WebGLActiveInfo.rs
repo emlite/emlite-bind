@@ -72,7 +72,7 @@ impl WebGLActiveInfo {
 impl WebGLActiveInfo {
     /// Getter of the `name` attribute.
     /// [`WebGLActiveInfo.name`](https://developer.mozilla.org/en-US/docs/Web/API/WebGLActiveInfo/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }

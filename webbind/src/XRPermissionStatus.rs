@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(XRPermissionStatus);
 impl XRPermissionStatus {
     /// Getter of the `granted` attribute.
     /// [`XRPermissionStatus.granted`](https://developer.mozilla.org/en-US/docs/Web/API/XRPermissionStatus/granted)
-    pub fn granted(&self) -> FrozenArray<DOMString> {
-        self.inner.get("granted").as_::<FrozenArray<DOMString>>()
+    pub fn granted(&self) -> TypedArray<JsString> {
+        self.inner.get("granted").as_::<TypedArray<JsString>>()
     }
 
     /// Setter of the `granted` attribute.
     /// [`XRPermissionStatus.granted`](https://developer.mozilla.org/en-US/docs/Web/API/XRPermissionStatus/granted)
-    pub fn set_granted(&mut self, value: &FrozenArray<DOMString>) {
+    pub fn set_granted(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("granted", value);
     }
 }

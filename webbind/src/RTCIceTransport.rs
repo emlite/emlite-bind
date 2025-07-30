@@ -51,20 +51,20 @@ impl From<&RTCIceParameters> for Any {
 }
 
 impl RTCIceParameters {
-    pub fn username_fragment(&self) -> DOMString {
-        self.inner.get("usernameFragment").as_::<DOMString>()
+    pub fn username_fragment(&self) -> JsString {
+        self.inner.get("usernameFragment").as_::<JsString>()
     }
 
-    pub fn set_username_fragment(&mut self, value: &DOMString) {
+    pub fn set_username_fragment(&mut self, value: &JsString) {
         self.inner.set("usernameFragment", value);
     }
 }
 impl RTCIceParameters {
-    pub fn password(&self) -> DOMString {
-        self.inner.get("password").as_::<DOMString>()
+    pub fn password(&self) -> JsString {
+        self.inner.get("password").as_::<JsString>()
     }
 
-    pub fn set_password(&mut self, value: &DOMString) {
+    pub fn set_password(&mut self, value: &JsString) {
         self.inner.set("password", value);
     }
 }
@@ -130,11 +130,11 @@ impl RTCIceGatherOptions {
     }
 }
 impl RTCIceGatherOptions {
-    pub fn ice_servers(&self) -> Sequence<Any> {
-        self.inner.get("iceServers").as_::<Sequence<Any>>()
+    pub fn ice_servers(&self) -> TypedArray<Any> {
+        self.inner.get("iceServers").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_ice_servers(&mut self, value: &Sequence<Any>) {
+    pub fn set_ice_servers(&mut self, value: &TypedArray<Any>) {
         self.inner.set("iceServers", value);
     }
 }
@@ -189,20 +189,20 @@ impl From<&RTCIceCandidateInit> for Any {
 }
 
 impl RTCIceCandidateInit {
-    pub fn candidate(&self) -> DOMString {
-        self.inner.get("candidate").as_::<DOMString>()
+    pub fn candidate(&self) -> JsString {
+        self.inner.get("candidate").as_::<JsString>()
     }
 
-    pub fn set_candidate(&mut self, value: &DOMString) {
+    pub fn set_candidate(&mut self, value: &JsString) {
         self.inner.set("candidate", value);
     }
 }
 impl RTCIceCandidateInit {
-    pub fn sdp_mid(&self) -> DOMString {
-        self.inner.get("sdpMid").as_::<DOMString>()
+    pub fn sdp_mid(&self) -> JsString {
+        self.inner.get("sdpMid").as_::<JsString>()
     }
 
-    pub fn set_sdp_mid(&mut self, value: &DOMString) {
+    pub fn set_sdp_mid(&mut self, value: &JsString) {
         self.inner.set("sdpMid", value);
     }
 }
@@ -216,11 +216,11 @@ impl RTCIceCandidateInit {
     }
 }
 impl RTCIceCandidateInit {
-    pub fn username_fragment(&self) -> DOMString {
-        self.inner.get("usernameFragment").as_::<DOMString>()
+    pub fn username_fragment(&self) -> JsString {
+        self.inner.get("usernameFragment").as_::<JsString>()
     }
 
-    pub fn set_username_fragment(&mut self, value: &DOMString) {
+    pub fn set_username_fragment(&mut self, value: &JsString) {
         self.inner.set("usernameFragment", value);
     }
 }
@@ -312,19 +312,19 @@ impl RTCIceTransport {
 impl RTCIceTransport {
     /// The getLocalCandidates method.
     /// [`RTCIceTransport.getLocalCandidates`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/getLocalCandidates)
-    pub fn get_local_candidates(&self) -> Sequence<RTCIceCandidate> {
+    pub fn get_local_candidates(&self) -> TypedArray<RTCIceCandidate> {
         self.inner
             .call("getLocalCandidates", &[])
-            .as_::<Sequence<RTCIceCandidate>>()
+            .as_::<TypedArray<RTCIceCandidate>>()
     }
 }
 impl RTCIceTransport {
     /// The getRemoteCandidates method.
     /// [`RTCIceTransport.getRemoteCandidates`](https://developer.mozilla.org/en-US/docs/Web/API/RTCIceTransport/getRemoteCandidates)
-    pub fn get_remote_candidates(&self) -> Sequence<RTCIceCandidate> {
+    pub fn get_remote_candidates(&self) -> TypedArray<RTCIceCandidate> {
         self.inner
             .call("getRemoteCandidates", &[])
-            .as_::<Sequence<RTCIceCandidate>>()
+            .as_::<TypedArray<RTCIceCandidate>>()
     }
 }
 impl RTCIceTransport {

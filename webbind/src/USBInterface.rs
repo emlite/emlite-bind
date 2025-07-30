@@ -82,10 +82,10 @@ impl USBInterface {
 impl USBInterface {
     /// Getter of the `alternates` attribute.
     /// [`USBInterface.alternates`](https://developer.mozilla.org/en-US/docs/Web/API/USBInterface/alternates)
-    pub fn alternates(&self) -> FrozenArray<USBAlternateInterface> {
+    pub fn alternates(&self) -> TypedArray<USBAlternateInterface> {
         self.inner
             .get("alternates")
-            .as_::<FrozenArray<USBAlternateInterface>>()
+            .as_::<TypedArray<USBAlternateInterface>>()
     }
 }
 impl USBInterface {

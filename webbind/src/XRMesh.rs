@@ -65,10 +65,8 @@ impl XRMesh {
 impl XRMesh {
     /// Getter of the `vertices` attribute.
     /// [`XRMesh.vertices`](https://developer.mozilla.org/en-US/docs/Web/API/XRMesh/vertices)
-    pub fn vertices(&self) -> FrozenArray<Float32Array> {
-        self.inner
-            .get("vertices")
-            .as_::<FrozenArray<Float32Array>>()
+    pub fn vertices(&self) -> TypedArray<Float32Array> {
+        self.inner.get("vertices").as_::<TypedArray<Float32Array>>()
     }
 }
 impl XRMesh {
@@ -88,7 +86,7 @@ impl XRMesh {
 impl XRMesh {
     /// Getter of the `semanticLabel` attribute.
     /// [`XRMesh.semanticLabel`](https://developer.mozilla.org/en-US/docs/Web/API/XRMesh/semanticLabel)
-    pub fn semantic_label(&self) -> DOMString {
-        self.inner.get("semanticLabel").as_::<DOMString>()
+    pub fn semantic_label(&self) -> JsString {
+        self.inner.get("semanticLabel").as_::<JsString>()
     }
 }

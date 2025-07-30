@@ -58,14 +58,14 @@ jsbind::utils::impl_dyn_cast!(CSSScopeRule);
 impl CSSScopeRule {
     /// Getter of the `start` attribute.
     /// [`CSSScopeRule.start`](https://developer.mozilla.org/en-US/docs/Web/API/CSSScopeRule/start)
-    pub fn start(&self) -> CSSOMString {
-        self.inner.get("start").as_::<CSSOMString>()
+    pub fn start(&self) -> JsString {
+        self.inner.get("start").as_::<JsString>()
     }
 }
 impl CSSScopeRule {
     /// Getter of the `end` attribute.
     /// [`CSSScopeRule.end`](https://developer.mozilla.org/en-US/docs/Web/API/CSSScopeRule/end)
-    pub fn end(&self) -> CSSOMString {
-        self.inner.get("end").as_::<CSSOMString>()
+    pub fn end(&self) -> JsString {
+        self.inner.get("end").as_::<JsString>()
     }
 }

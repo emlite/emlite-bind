@@ -114,65 +114,65 @@ impl HTMLTableRowElement {
 impl HTMLTableRowElement {
     /// Getter of the `align` attribute.
     /// [`HTMLTableRowElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/align)
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> JsString {
+        self.inner.get("align").as_::<JsString>()
     }
 
     /// Setter of the `align` attribute.
     /// [`HTMLTableRowElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/align)
-    pub fn set_align(&mut self, value: &DOMString) {
+    pub fn set_align(&mut self, value: &JsString) {
         self.inner.set("align", value);
     }
 }
 impl HTMLTableRowElement {
     /// Getter of the `ch` attribute.
     /// [`HTMLTableRowElement.ch`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/ch)
-    pub fn ch(&self) -> DOMString {
-        self.inner.get("ch").as_::<DOMString>()
+    pub fn ch(&self) -> JsString {
+        self.inner.get("ch").as_::<JsString>()
     }
 
     /// Setter of the `ch` attribute.
     /// [`HTMLTableRowElement.ch`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/ch)
-    pub fn set_ch(&mut self, value: &DOMString) {
+    pub fn set_ch(&mut self, value: &JsString) {
         self.inner.set("ch", value);
     }
 }
 impl HTMLTableRowElement {
     /// Getter of the `chOff` attribute.
     /// [`HTMLTableRowElement.chOff`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/chOff)
-    pub fn ch_off(&self) -> DOMString {
-        self.inner.get("chOff").as_::<DOMString>()
+    pub fn ch_off(&self) -> JsString {
+        self.inner.get("chOff").as_::<JsString>()
     }
 
     /// Setter of the `chOff` attribute.
     /// [`HTMLTableRowElement.chOff`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/chOff)
-    pub fn set_ch_off(&mut self, value: &DOMString) {
+    pub fn set_ch_off(&mut self, value: &JsString) {
         self.inner.set("chOff", value);
     }
 }
 impl HTMLTableRowElement {
     /// Getter of the `vAlign` attribute.
     /// [`HTMLTableRowElement.vAlign`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/vAlign)
-    pub fn v_align(&self) -> DOMString {
-        self.inner.get("vAlign").as_::<DOMString>()
+    pub fn v_align(&self) -> JsString {
+        self.inner.get("vAlign").as_::<JsString>()
     }
 
     /// Setter of the `vAlign` attribute.
     /// [`HTMLTableRowElement.vAlign`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/vAlign)
-    pub fn set_v_align(&mut self, value: &DOMString) {
+    pub fn set_v_align(&mut self, value: &JsString) {
         self.inner.set("vAlign", value);
     }
 }
 impl HTMLTableRowElement {
     /// Getter of the `bgColor` attribute.
     /// [`HTMLTableRowElement.bgColor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/bgColor)
-    pub fn bg_color(&self) -> DOMString {
-        self.inner.get("bgColor").as_::<DOMString>()
+    pub fn bg_color(&self) -> JsString {
+        self.inner.get("bgColor").as_::<JsString>()
     }
 
     /// Setter of the `bgColor` attribute.
     /// [`HTMLTableRowElement.bgColor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableRowElement/bgColor)
-    pub fn set_bg_color(&mut self, value: &DOMString) {
+    pub fn set_bg_color(&mut self, value: &JsString) {
         self.inner.set("bgColor", value);
     }
 }

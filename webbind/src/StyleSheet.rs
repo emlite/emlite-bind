@@ -58,15 +58,15 @@ jsbind::utils::impl_dyn_cast!(StyleSheet);
 impl StyleSheet {
     /// Getter of the `type` attribute.
     /// [`StyleSheet.type`](https://developer.mozilla.org/en-US/docs/Web/API/StyleSheet/type)
-    pub fn type_(&self) -> CSSOMString {
-        self.inner.get("type").as_::<CSSOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 }
 impl StyleSheet {
     /// Getter of the `href` attribute.
     /// [`StyleSheet.href`](https://developer.mozilla.org/en-US/docs/Web/API/StyleSheet/href)
-    pub fn href(&self) -> USVString {
-        self.inner.get("href").as_::<USVString>()
+    pub fn href(&self) -> JsString {
+        self.inner.get("href").as_::<JsString>()
     }
 }
 impl StyleSheet {
@@ -86,8 +86,8 @@ impl StyleSheet {
 impl StyleSheet {
     /// Getter of the `title` attribute.
     /// [`StyleSheet.title`](https://developer.mozilla.org/en-US/docs/Web/API/StyleSheet/title)
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> JsString {
+        self.inner.get("title").as_::<JsString>()
     }
 }
 impl StyleSheet {

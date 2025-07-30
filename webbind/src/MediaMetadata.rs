@@ -75,61 +75,61 @@ impl MediaMetadata {
 impl MediaMetadata {
     /// Getter of the `title` attribute.
     /// [`MediaMetadata.title`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/title)
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> JsString {
+        self.inner.get("title").as_::<JsString>()
     }
 
     /// Setter of the `title` attribute.
     /// [`MediaMetadata.title`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/title)
-    pub fn set_title(&mut self, value: &DOMString) {
+    pub fn set_title(&mut self, value: &JsString) {
         self.inner.set("title", value);
     }
 }
 impl MediaMetadata {
     /// Getter of the `artist` attribute.
     /// [`MediaMetadata.artist`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/artist)
-    pub fn artist(&self) -> DOMString {
-        self.inner.get("artist").as_::<DOMString>()
+    pub fn artist(&self) -> JsString {
+        self.inner.get("artist").as_::<JsString>()
     }
 
     /// Setter of the `artist` attribute.
     /// [`MediaMetadata.artist`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/artist)
-    pub fn set_artist(&mut self, value: &DOMString) {
+    pub fn set_artist(&mut self, value: &JsString) {
         self.inner.set("artist", value);
     }
 }
 impl MediaMetadata {
     /// Getter of the `album` attribute.
     /// [`MediaMetadata.album`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/album)
-    pub fn album(&self) -> DOMString {
-        self.inner.get("album").as_::<DOMString>()
+    pub fn album(&self) -> JsString {
+        self.inner.get("album").as_::<JsString>()
     }
 
     /// Setter of the `album` attribute.
     /// [`MediaMetadata.album`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/album)
-    pub fn set_album(&mut self, value: &DOMString) {
+    pub fn set_album(&mut self, value: &JsString) {
         self.inner.set("album", value);
     }
 }
 impl MediaMetadata {
     /// Getter of the `artwork` attribute.
     /// [`MediaMetadata.artwork`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/artwork)
-    pub fn artwork(&self) -> FrozenArray<Object> {
-        self.inner.get("artwork").as_::<FrozenArray<Object>>()
+    pub fn artwork(&self) -> TypedArray<Object> {
+        self.inner.get("artwork").as_::<TypedArray<Object>>()
     }
 
     /// Setter of the `artwork` attribute.
     /// [`MediaMetadata.artwork`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/artwork)
-    pub fn set_artwork(&mut self, value: &FrozenArray<Object>) {
+    pub fn set_artwork(&mut self, value: &TypedArray<Object>) {
         self.inner.set("artwork", value);
     }
 }
 impl MediaMetadata {
     /// Getter of the `chapterInfo` attribute.
     /// [`MediaMetadata.chapterInfo`](https://developer.mozilla.org/en-US/docs/Web/API/MediaMetadata/chapterInfo)
-    pub fn chapter_info(&self) -> FrozenArray<ChapterInformation> {
+    pub fn chapter_info(&self) -> TypedArray<ChapterInformation> {
         self.inner
             .get("chapterInfo")
-            .as_::<FrozenArray<ChapterInformation>>()
+            .as_::<TypedArray<ChapterInformation>>()
     }
 }

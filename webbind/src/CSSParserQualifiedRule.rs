@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CSSParserQualifiedRule);
 
 impl CSSParserQualifiedRule {
     /// The `new CSSParserQualifiedRule(..)` constructor, creating a new CSSParserQualifiedRule instance
-    pub fn new0(prelude: &Sequence<Any>) -> CSSParserQualifiedRule {
+    pub fn new0(prelude: &TypedArray<Any>) -> CSSParserQualifiedRule {
         Self {
             inner: Any::global("CSSParserQualifiedRule")
                 .new(&[prelude.into()])
@@ -66,7 +66,10 @@ impl CSSParserQualifiedRule {
     }
 
     /// The `new CSSParserQualifiedRule(..)` constructor, creating a new CSSParserQualifiedRule instance
-    pub fn new1(prelude: &Sequence<Any>, body: &Sequence<CSSParserRule>) -> CSSParserQualifiedRule {
+    pub fn new1(
+        prelude: &TypedArray<Any>,
+        body: &TypedArray<CSSParserRule>,
+    ) -> CSSParserQualifiedRule {
         Self {
             inner: Any::global("CSSParserQualifiedRule")
                 .new(&[prelude.into(), body.into()])
@@ -77,16 +80,16 @@ impl CSSParserQualifiedRule {
 impl CSSParserQualifiedRule {
     /// Getter of the `prelude` attribute.
     /// [`CSSParserQualifiedRule.prelude`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserQualifiedRule/prelude)
-    pub fn prelude(&self) -> FrozenArray<CSSParserValue> {
+    pub fn prelude(&self) -> TypedArray<CSSParserValue> {
         self.inner
             .get("prelude")
-            .as_::<FrozenArray<CSSParserValue>>()
+            .as_::<TypedArray<CSSParserValue>>()
     }
 }
 impl CSSParserQualifiedRule {
     /// Getter of the `body` attribute.
     /// [`CSSParserQualifiedRule.body`](https://developer.mozilla.org/en-US/docs/Web/API/CSSParserQualifiedRule/body)
-    pub fn body(&self) -> FrozenArray<CSSParserRule> {
-        self.inner.get("body").as_::<FrozenArray<CSSParserRule>>()
+    pub fn body(&self) -> TypedArray<CSSParserRule> {
+        self.inner.get("body").as_::<TypedArray<CSSParserRule>>()
     }
 }

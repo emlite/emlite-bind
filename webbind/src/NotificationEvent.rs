@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(NotificationEvent);
 
 impl NotificationEvent {
     /// The `new NotificationEvent(..)` constructor, creating a new NotificationEvent instance
-    pub fn new(type_: &DOMString, event_init_dict: &Any) -> NotificationEvent {
+    pub fn new(type_: &JsString, event_init_dict: &Any) -> NotificationEvent {
         Self {
             inner: Any::global("NotificationEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -75,7 +75,7 @@ impl NotificationEvent {
 impl NotificationEvent {
     /// Getter of the `action` attribute.
     /// [`NotificationEvent.action`](https://developer.mozilla.org/en-US/docs/Web/API/NotificationEvent/action)
-    pub fn action(&self) -> DOMString {
-        self.inner.get("action").as_::<DOMString>()
+    pub fn action(&self) -> JsString {
+        self.inner.get("action").as_::<JsString>()
     }
 }

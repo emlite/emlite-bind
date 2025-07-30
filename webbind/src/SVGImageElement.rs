@@ -95,13 +95,13 @@ impl SVGImageElement {
 impl SVGImageElement {
     /// Getter of the `crossOrigin` attribute.
     /// [`SVGImageElement.crossOrigin`](https://developer.mozilla.org/en-US/docs/Web/API/SVGImageElement/crossOrigin)
-    pub fn cross_origin(&self) -> DOMString {
-        self.inner.get("crossOrigin").as_::<DOMString>()
+    pub fn cross_origin(&self) -> JsString {
+        self.inner.get("crossOrigin").as_::<JsString>()
     }
 
     /// Setter of the `crossOrigin` attribute.
     /// [`SVGImageElement.crossOrigin`](https://developer.mozilla.org/en-US/docs/Web/API/SVGImageElement/crossOrigin)
-    pub fn set_cross_origin(&mut self, value: &DOMString) {
+    pub fn set_cross_origin(&mut self, value: &JsString) {
         self.inner.set("crossOrigin", value);
     }
 }

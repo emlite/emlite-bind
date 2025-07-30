@@ -81,13 +81,13 @@ impl HTMLStyleElement {
 impl HTMLStyleElement {
     /// Getter of the `media` attribute.
     /// [`HTMLStyleElement.media`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLStyleElement/media)
-    pub fn media(&self) -> DOMString {
-        self.inner.get("media").as_::<DOMString>()
+    pub fn media(&self) -> JsString {
+        self.inner.get("media").as_::<JsString>()
     }
 
     /// Setter of the `media` attribute.
     /// [`HTMLStyleElement.media`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLStyleElement/media)
-    pub fn set_media(&mut self, value: &DOMString) {
+    pub fn set_media(&mut self, value: &JsString) {
         self.inner.set("media", value);
     }
 }
@@ -101,13 +101,13 @@ impl HTMLStyleElement {
 impl HTMLStyleElement {
     /// Getter of the `type` attribute.
     /// [`HTMLStyleElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLStyleElement/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 
     /// Setter of the `type` attribute.
     /// [`HTMLStyleElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLStyleElement/type)
-    pub fn set_type_(&mut self, value: &DOMString) {
+    pub fn set_type_(&mut self, value: &JsString) {
         self.inner.set("type", value);
     }
 }

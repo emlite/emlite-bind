@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(PushSubscriptionChangeEvent);
 
 impl PushSubscriptionChangeEvent {
     /// The `new PushSubscriptionChangeEvent(..)` constructor, creating a new PushSubscriptionChangeEvent instance
-    pub fn new0(type_: &DOMString) -> PushSubscriptionChangeEvent {
+    pub fn new0(type_: &JsString) -> PushSubscriptionChangeEvent {
         Self {
             inner: Any::global("PushSubscriptionChangeEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl PushSubscriptionChangeEvent {
     }
 
     /// The `new PushSubscriptionChangeEvent(..)` constructor, creating a new PushSubscriptionChangeEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> PushSubscriptionChangeEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> PushSubscriptionChangeEvent {
         Self {
             inner: Any::global("PushSubscriptionChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

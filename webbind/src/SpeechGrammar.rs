@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(SpeechGrammar);
 impl SpeechGrammar {
     /// Getter of the `src` attribute.
     /// [`SpeechGrammar.src`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammar/src)
-    pub fn src(&self) -> DOMString {
-        self.inner.get("src").as_::<DOMString>()
+    pub fn src(&self) -> JsString {
+        self.inner.get("src").as_::<JsString>()
     }
 
     /// Setter of the `src` attribute.
     /// [`SpeechGrammar.src`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechGrammar/src)
-    pub fn set_src(&mut self, value: &DOMString) {
+    pub fn set_src(&mut self, value: &JsString) {
         self.inner.set("src", value);
     }
 }

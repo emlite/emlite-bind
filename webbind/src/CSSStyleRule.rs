@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(CSSStyleRule);
 impl CSSStyleRule {
     /// Getter of the `selectorText` attribute.
     /// [`CSSStyleRule.selectorText`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleRule/selectorText)
-    pub fn selector_text(&self) -> CSSOMString {
-        self.inner.get("selectorText").as_::<CSSOMString>()
+    pub fn selector_text(&self) -> JsString {
+        self.inner.get("selectorText").as_::<JsString>()
     }
 
     /// Setter of the `selectorText` attribute.
     /// [`CSSStyleRule.selectorText`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleRule/selectorText)
-    pub fn set_selector_text(&mut self, value: &CSSOMString) {
+    pub fn set_selector_text(&mut self, value: &JsString) {
         self.inner.set("selectorText", value);
     }
 }

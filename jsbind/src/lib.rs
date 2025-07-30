@@ -16,7 +16,6 @@ mod promise;
 mod record;
 mod reflect;
 pub mod response;
-mod sequence;
 mod set;
 mod string;
 mod text;

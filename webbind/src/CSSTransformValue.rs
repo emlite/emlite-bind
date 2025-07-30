@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CSSTransformValue);
 
 impl CSSTransformValue {
     /// The `new CSSTransformValue(..)` constructor, creating a new CSSTransformValue instance
-    pub fn new(transforms: &Sequence<CSSTransformComponent>) -> CSSTransformValue {
+    pub fn new(transforms: &TypedArray<CSSTransformComponent>) -> CSSTransformValue {
         Self {
             inner: Any::global("CSSTransformValue")
                 .new(&[transforms.into()])

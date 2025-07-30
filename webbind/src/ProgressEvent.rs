@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(ProgressEvent);
 
 impl ProgressEvent {
     /// The `new ProgressEvent(..)` constructor, creating a new ProgressEvent instance
-    pub fn new0(type_: &DOMString) -> ProgressEvent {
+    pub fn new0(type_: &JsString) -> ProgressEvent {
         Self {
             inner: Any::global("ProgressEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl ProgressEvent {
     }
 
     /// The `new ProgressEvent(..)` constructor, creating a new ProgressEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> ProgressEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> ProgressEvent {
         Self {
             inner: Any::global("ProgressEvent")
                 .new(&[type_.into(), event_init_dict.into()])

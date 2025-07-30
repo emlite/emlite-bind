@@ -65,8 +65,8 @@ impl MLTensor {
 impl MLTensor {
     /// Getter of the `shape` attribute.
     /// [`MLTensor.shape`](https://developer.mozilla.org/en-US/docs/Web/API/MLTensor/shape)
-    pub fn shape(&self) -> FrozenArray<u32> {
-        self.inner.get("shape").as_::<FrozenArray<u32>>()
+    pub fn shape(&self) -> TypedArray<u32> {
+        self.inner.get("shape").as_::<TypedArray<u32>>()
     }
 }
 impl MLTensor {

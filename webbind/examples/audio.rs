@@ -20,7 +20,7 @@ fn main() {
 
     button.set_text_content(&"Click me".into());
     button.add_event_listener0(
-        &DOMString::from("click"),
+        &JsString::from("click"),
         &Closure::bind1(move |_p: PointerEvent| {
             println!("Playing");
             oscillator.connect0(context.destination().unchecked_ref::<AudioParam>());

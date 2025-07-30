@@ -1,4 +1,4 @@
-use crate::{any::Any, function::Function, sequence::Sequence};
+use crate::{any::Any, array::Array, function::Function};
 use alloc::vec;
 use alloc::vec::Vec;
 
@@ -14,7 +14,7 @@ impl Reflect {
     }
 
     /// [`Reflect.apply`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect/apply)
-    pub fn apply(target: &Function, this_arg: &Any, arguments: &Sequence<Any>) -> Any {
+    pub fn apply(target: &Function, this_arg: &Any, arguments: &Array) -> Any {
         Self::obj()
             .call(
                 "apply",
@@ -28,7 +28,7 @@ impl Reflect {
     }
 
     /// [`Reflect.construct`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect/construct)
-    pub fn construct(target: &Function, args: &Sequence<Any>, new_target: Option<&Any>) -> Any {
+    pub fn construct(target: &Function, args: &Array, new_target: Option<&Any>) -> Any {
         let mut params: Vec<emlite::Val> = vec![target.clone().into(), args.clone().into()];
         if let Some(nt) = new_target {
             params.push(nt.clone());
@@ -96,7 +96,7 @@ impl Reflect {
     }
 
     /// [`Reflect.ownKeys`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect/ownKeys)
-    pub fn own_keys(target: &Any) -> Sequence<Any> {
+    pub fn own_keys(target: &Any) -> Array {
         Self::obj().call("ownKeys", &[target.clone()]).as_()
     }
 

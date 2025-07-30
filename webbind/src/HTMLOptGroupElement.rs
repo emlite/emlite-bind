@@ -81,13 +81,13 @@ impl HTMLOptGroupElement {
 impl HTMLOptGroupElement {
     /// Getter of the `label` attribute.
     /// [`HTMLOptGroupElement.label`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptGroupElement/label)
-    pub fn label(&self) -> DOMString {
-        self.inner.get("label").as_::<DOMString>()
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
     }
 
     /// Setter of the `label` attribute.
     /// [`HTMLOptGroupElement.label`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOptGroupElement/label)
-    pub fn set_label(&mut self, value: &DOMString) {
+    pub fn set_label(&mut self, value: &JsString) {
         self.inner.set("label", value);
     }
 }

@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(CSSLayerBlockRule);
 impl CSSLayerBlockRule {
     /// Getter of the `name` attribute.
     /// [`CSSLayerBlockRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSLayerBlockRule/name)
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }

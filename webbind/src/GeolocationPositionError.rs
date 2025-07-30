@@ -65,7 +65,7 @@ impl GeolocationPositionError {
 impl GeolocationPositionError {
     /// Getter of the `message` attribute.
     /// [`GeolocationPositionError.message`](https://developer.mozilla.org/en-US/docs/Web/API/GeolocationPositionError/message)
-    pub fn message(&self) -> DOMString {
-        self.inner.get("message").as_::<DOMString>()
+    pub fn message(&self) -> JsString {
+        self.inner.get("message").as_::<JsString>()
     }
 }

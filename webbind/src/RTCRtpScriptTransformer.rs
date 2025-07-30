@@ -72,7 +72,7 @@ impl RTCRtpScriptTransformer {
     }
     /// The generateKeyFrame method.
     /// [`RTCRtpScriptTransformer.generateKeyFrame`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpScriptTransformer/generateKeyFrame)
-    pub fn generate_key_frame1(&self, rid: &DOMString) -> Promise<u64> {
+    pub fn generate_key_frame1(&self, rid: &JsString) -> Promise<u64> {
         self.inner
             .call("generateKeyFrame", &[rid.into()])
             .as_::<Promise<u64>>()

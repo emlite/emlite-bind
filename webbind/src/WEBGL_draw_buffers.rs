@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(WEBGL_draw_buffers);
 impl WEBGL_draw_buffers {
     /// The drawBuffersWEBGL method.
     /// [`WEBGL_draw_buffers.drawBuffersWEBGL`](https://developer.mozilla.org/en-US/docs/Web/API/WEBGL_draw_buffers/drawBuffersWEBGL)
-    pub fn draw_buffers_webgl(&self, buffers: &Sequence<Any>) -> Undefined {
+    pub fn draw_buffers_webgl(&self, buffers: &TypedArray<Any>) -> Undefined {
         self.inner
             .call("drawBuffersWEBGL", &[buffers.into()])
             .as_::<Undefined>()

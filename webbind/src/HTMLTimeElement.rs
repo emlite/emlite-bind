@@ -66,13 +66,13 @@ impl HTMLTimeElement {
 impl HTMLTimeElement {
     /// Getter of the `dateTime` attribute.
     /// [`HTMLTimeElement.dateTime`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/dateTime)
-    pub fn date_time(&self) -> DOMString {
-        self.inner.get("dateTime").as_::<DOMString>()
+    pub fn date_time(&self) -> JsString {
+        self.inner.get("dateTime").as_::<JsString>()
     }
 
     /// Setter of the `dateTime` attribute.
     /// [`HTMLTimeElement.dateTime`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/dateTime)
-    pub fn set_date_time(&mut self, value: &DOMString) {
+    pub fn set_date_time(&mut self, value: &JsString) {
         self.inner.set("dateTime", value);
     }
 }

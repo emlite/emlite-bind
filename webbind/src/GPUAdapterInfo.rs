@@ -58,29 +58,29 @@ jsbind::utils::impl_dyn_cast!(GPUAdapterInfo);
 impl GPUAdapterInfo {
     /// Getter of the `vendor` attribute.
     /// [`GPUAdapterInfo.vendor`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapterInfo/vendor)
-    pub fn vendor(&self) -> DOMString {
-        self.inner.get("vendor").as_::<DOMString>()
+    pub fn vendor(&self) -> JsString {
+        self.inner.get("vendor").as_::<JsString>()
     }
 }
 impl GPUAdapterInfo {
     /// Getter of the `architecture` attribute.
     /// [`GPUAdapterInfo.architecture`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapterInfo/architecture)
-    pub fn architecture(&self) -> DOMString {
-        self.inner.get("architecture").as_::<DOMString>()
+    pub fn architecture(&self) -> JsString {
+        self.inner.get("architecture").as_::<JsString>()
     }
 }
 impl GPUAdapterInfo {
     /// Getter of the `device` attribute.
     /// [`GPUAdapterInfo.device`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapterInfo/device)
-    pub fn device(&self) -> DOMString {
-        self.inner.get("device").as_::<DOMString>()
+    pub fn device(&self) -> JsString {
+        self.inner.get("device").as_::<JsString>()
     }
 }
 impl GPUAdapterInfo {
     /// Getter of the `description` attribute.
     /// [`GPUAdapterInfo.description`](https://developer.mozilla.org/en-US/docs/Web/API/GPUAdapterInfo/description)
-    pub fn description(&self) -> DOMString {
-        self.inner.get("description").as_::<DOMString>()
+    pub fn description(&self) -> JsString {
+        self.inner.get("description").as_::<JsString>()
     }
 }
 impl GPUAdapterInfo {

@@ -58,33 +58,28 @@ jsbind::utils::impl_dyn_cast!(TextEvent);
 impl TextEvent {
     /// Getter of the `data` attribute.
     /// [`TextEvent.data`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/data)
-    pub fn data(&self) -> DOMString {
-        self.inner.get("data").as_::<DOMString>()
+    pub fn data(&self) -> JsString {
+        self.inner.get("data").as_::<JsString>()
     }
 }
 impl TextEvent {
     /// The initTextEvent method.
     /// [`TextEvent.initTextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/initTextEvent)
-    pub fn init_text_event0(&self, type_: &DOMString) -> Undefined {
+    pub fn init_text_event0(&self, type_: &JsString) -> Undefined {
         self.inner
             .call("initTextEvent", &[type_.into()])
             .as_::<Undefined>()
     }
     /// The initTextEvent method.
     /// [`TextEvent.initTextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/initTextEvent)
-    pub fn init_text_event1(&self, type_: &DOMString, bubbles: bool) -> Undefined {
+    pub fn init_text_event1(&self, type_: &JsString, bubbles: bool) -> Undefined {
         self.inner
             .call("initTextEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
     }
     /// The initTextEvent method.
     /// [`TextEvent.initTextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/initTextEvent)
-    pub fn init_text_event2(
-        &self,
-        type_: &DOMString,
-        bubbles: bool,
-        cancelable: bool,
-    ) -> Undefined {
+    pub fn init_text_event2(&self, type_: &JsString, bubbles: bool, cancelable: bool) -> Undefined {
         self.inner
             .call(
                 "initTextEvent",
@@ -96,7 +91,7 @@ impl TextEvent {
     /// [`TextEvent.initTextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/initTextEvent)
     pub fn init_text_event3(
         &self,
-        type_: &DOMString,
+        type_: &JsString,
         bubbles: bool,
         cancelable: bool,
         view: &Window,
@@ -112,11 +107,11 @@ impl TextEvent {
     /// [`TextEvent.initTextEvent`](https://developer.mozilla.org/en-US/docs/Web/API/TextEvent/initTextEvent)
     pub fn init_text_event4(
         &self,
-        type_: &DOMString,
+        type_: &JsString,
         bubbles: bool,
         cancelable: bool,
         view: &Window,
-        data: &DOMString,
+        data: &JsString,
     ) -> Undefined {
         self.inner
             .call(

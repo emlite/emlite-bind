@@ -119,24 +119,24 @@ impl AttributionImpressionOptions {
     }
 }
 impl AttributionImpressionOptions {
-    pub fn conversion_sites(&self) -> Sequence<USVString> {
+    pub fn conversion_sites(&self) -> TypedArray<JsString> {
         self.inner
             .get("conversionSites")
-            .as_::<Sequence<USVString>>()
+            .as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_conversion_sites(&mut self, value: &Sequence<USVString>) {
+    pub fn set_conversion_sites(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("conversionSites", value);
     }
 }
 impl AttributionImpressionOptions {
-    pub fn conversion_callers(&self) -> Sequence<USVString> {
+    pub fn conversion_callers(&self) -> TypedArray<JsString> {
         self.inner
             .get("conversionCallers")
-            .as_::<Sequence<USVString>>()
+            .as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_conversion_callers(&mut self, value: &Sequence<USVString>) {
+    pub fn set_conversion_callers(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("conversionCallers", value);
     }
 }
@@ -259,11 +259,11 @@ impl From<&AttributionConversionOptions> for Any {
 }
 
 impl AttributionConversionOptions {
-    pub fn aggregation_service(&self) -> USVString {
-        self.inner.get("aggregationService").as_::<USVString>()
+    pub fn aggregation_service(&self) -> JsString {
+        self.inner.get("aggregationService").as_::<JsString>()
     }
 
-    pub fn set_aggregation_service(&mut self, value: &USVString) {
+    pub fn set_aggregation_service(&mut self, value: &JsString) {
         self.inner.set("aggregationService", value);
     }
 }
@@ -295,33 +295,33 @@ impl AttributionConversionOptions {
     }
 }
 impl AttributionConversionOptions {
-    pub fn match_values(&self) -> Sequence<u32> {
-        self.inner.get("matchValues").as_::<Sequence<u32>>()
+    pub fn match_values(&self) -> TypedArray<u32> {
+        self.inner.get("matchValues").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_match_values(&mut self, value: Sequence<u32>) {
+    pub fn set_match_values(&mut self, value: TypedArray<u32>) {
         self.inner.set("matchValues", value);
     }
 }
 impl AttributionConversionOptions {
-    pub fn impression_sites(&self) -> Sequence<USVString> {
+    pub fn impression_sites(&self) -> TypedArray<JsString> {
         self.inner
             .get("impressionSites")
-            .as_::<Sequence<USVString>>()
+            .as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_impression_sites(&mut self, value: &Sequence<USVString>) {
+    pub fn set_impression_sites(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("impressionSites", value);
     }
 }
 impl AttributionConversionOptions {
-    pub fn impression_callers(&self) -> Sequence<USVString> {
+    pub fn impression_callers(&self) -> TypedArray<JsString> {
         self.inner
             .get("impressionCallers")
-            .as_::<Sequence<USVString>>()
+            .as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_impression_callers(&mut self, value: &Sequence<USVString>) {
+    pub fn set_impression_callers(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("impressionCallers", value);
     }
 }

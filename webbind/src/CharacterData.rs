@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(CharacterData);
 impl CharacterData {
     /// Getter of the `data` attribute.
     /// [`CharacterData.data`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterData/data)
-    pub fn data(&self) -> DOMString {
-        self.inner.get("data").as_::<DOMString>()
+    pub fn data(&self) -> JsString {
+        self.inner.get("data").as_::<JsString>()
     }
 
     /// Setter of the `data` attribute.
     /// [`CharacterData.data`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterData/data)
-    pub fn set_data(&mut self, value: &DOMString) {
+    pub fn set_data(&mut self, value: &JsString) {
         self.inner.set("data", value);
     }
 }
@@ -78,16 +78,16 @@ impl CharacterData {
 impl CharacterData {
     /// The substringData method.
     /// [`CharacterData.substringData`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterData/substringData)
-    pub fn substring_data(&self, offset: u32, count: u32) -> DOMString {
+    pub fn substring_data(&self, offset: u32, count: u32) -> JsString {
         self.inner
             .call("substringData", &[offset.into(), count.into()])
-            .as_::<DOMString>()
+            .as_::<JsString>()
     }
 }
 impl CharacterData {
     /// The appendData method.
     /// [`CharacterData.appendData`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterData/appendData)
-    pub fn append_data(&self, data: &DOMString) -> Undefined {
+    pub fn append_data(&self, data: &JsString) -> Undefined {
         self.inner
             .call("appendData", &[data.into()])
             .as_::<Undefined>()
@@ -96,7 +96,7 @@ impl CharacterData {
 impl CharacterData {
     /// The insertData method.
     /// [`CharacterData.insertData`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterData/insertData)
-    pub fn insert_data(&self, offset: u32, data: &DOMString) -> Undefined {
+    pub fn insert_data(&self, offset: u32, data: &JsString) -> Undefined {
         self.inner
             .call("insertData", &[offset.into(), data.into()])
             .as_::<Undefined>()
@@ -114,7 +114,7 @@ impl CharacterData {
 impl CharacterData {
     /// The replaceData method.
     /// [`CharacterData.replaceData`](https://developer.mozilla.org/en-US/docs/Web/API/CharacterData/replaceData)
-    pub fn replace_data(&self, offset: u32, count: u32, data: &DOMString) -> Undefined {
+    pub fn replace_data(&self, offset: u32, count: u32, data: &JsString) -> Undefined {
         self.inner
             .call("replaceData", &[offset.into(), count.into(), data.into()])
             .as_::<Undefined>()

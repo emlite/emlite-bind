@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(PaymentManager);
 impl PaymentManager {
     /// Getter of the `userHint` attribute.
     /// [`PaymentManager.userHint`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentManager/userHint)
-    pub fn user_hint(&self) -> DOMString {
-        self.inner.get("userHint").as_::<DOMString>()
+    pub fn user_hint(&self) -> JsString {
+        self.inner.get("userHint").as_::<JsString>()
     }
 
     /// Setter of the `userHint` attribute.
     /// [`PaymentManager.userHint`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentManager/userHint)
-    pub fn set_user_hint(&mut self, value: &DOMString) {
+    pub fn set_user_hint(&mut self, value: &JsString) {
         self.inner.set("userHint", value);
     }
 }
@@ -73,7 +73,7 @@ impl PaymentManager {
     /// [`PaymentManager.enableDelegations`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentManager/enableDelegations)
     pub fn enable_delegations(
         &self,
-        delegations: &Sequence<PaymentDelegation>,
+        delegations: &TypedArray<PaymentDelegation>,
     ) -> Promise<Undefined> {
         self.inner
             .call("enableDelegations", &[delegations.into()])

@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(HTMLFormControlsCollection);
 impl HTMLFormControlsCollection {
     /// The namedItem method.
     /// [`HTMLFormControlsCollection.namedItem`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormControlsCollection/namedItem)
-    pub fn named_item(&self, name: &DOMString) -> Any {
+    pub fn named_item(&self, name: &JsString) -> Any {
         self.inner.call("namedItem", &[name.into()]).as_::<Any>()
     }
 }

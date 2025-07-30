@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(Client);
 impl Client {
     /// Getter of the `url` attribute.
     /// [`Client.url`](https://developer.mozilla.org/en-US/docs/Web/API/Client/url)
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> JsString {
+        self.inner.get("url").as_::<JsString>()
     }
 }
 impl Client {
@@ -72,8 +72,8 @@ impl Client {
 impl Client {
     /// Getter of the `id` attribute.
     /// [`Client.id`](https://developer.mozilla.org/en-US/docs/Web/API/Client/id)
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> JsString {
+        self.inner.get("id").as_::<JsString>()
     }
 }
 impl Client {

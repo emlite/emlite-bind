@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(GroupEffect);
 
 impl GroupEffect {
     /// The `new GroupEffect(..)` constructor, creating a new GroupEffect instance
-    pub fn new0(children: &Sequence<AnimationEffect>) -> GroupEffect {
+    pub fn new0(children: &TypedArray<AnimationEffect>) -> GroupEffect {
         Self {
             inner: Any::global("GroupEffect")
                 .new(&[children.into()])
@@ -66,7 +66,7 @@ impl GroupEffect {
     }
 
     /// The `new GroupEffect(..)` constructor, creating a new GroupEffect instance
-    pub fn new1(children: &Sequence<AnimationEffect>, timing: &Any) -> GroupEffect {
+    pub fn new1(children: &TypedArray<AnimationEffect>, timing: &Any) -> GroupEffect {
         Self {
             inner: Any::global("GroupEffect")
                 .new(&[children.into(), timing.into()])

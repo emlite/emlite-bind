@@ -51,11 +51,11 @@ impl From<&StructuredSerializeOptions> for Any {
 }
 
 impl StructuredSerializeOptions {
-    pub fn transfer(&self) -> Sequence<Object> {
-        self.inner.get("transfer").as_::<Sequence<Object>>()
+    pub fn transfer(&self) -> TypedArray<Object> {
+        self.inner.get("transfer").as_::<TypedArray<Object>>()
     }
 
-    pub fn set_transfer(&mut self, value: &Sequence<Object>) {
+    pub fn set_transfer(&mut self, value: &TypedArray<Object>) {
         self.inner.set("transfer", value);
     }
 }

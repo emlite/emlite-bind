@@ -58,7 +58,10 @@ jsbind::utils::impl_dyn_cast!(CookieStoreManager);
 impl CookieStoreManager {
     /// The subscribe method.
     /// [`CookieStoreManager.subscribe`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStoreManager/subscribe)
-    pub fn subscribe(&self, subscriptions: &Sequence<CookieStoreGetOptions>) -> Promise<Undefined> {
+    pub fn subscribe(
+        &self,
+        subscriptions: &TypedArray<CookieStoreGetOptions>,
+    ) -> Promise<Undefined> {
         self.inner
             .call("subscribe", &[subscriptions.into()])
             .as_::<Promise<Undefined>>()
@@ -67,10 +70,10 @@ impl CookieStoreManager {
 impl CookieStoreManager {
     /// The getSubscriptions method.
     /// [`CookieStoreManager.getSubscriptions`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStoreManager/getSubscriptions)
-    pub fn get_subscriptions(&self) -> Promise<Sequence<CookieStoreGetOptions>> {
+    pub fn get_subscriptions(&self) -> Promise<TypedArray<CookieStoreGetOptions>> {
         self.inner
             .call("getSubscriptions", &[])
-            .as_::<Promise<Sequence<CookieStoreGetOptions>>>()
+            .as_::<Promise<TypedArray<CookieStoreGetOptions>>>()
     }
 }
 impl CookieStoreManager {
@@ -78,7 +81,7 @@ impl CookieStoreManager {
     /// [`CookieStoreManager.unsubscribe`](https://developer.mozilla.org/en-US/docs/Web/API/CookieStoreManager/unsubscribe)
     pub fn unsubscribe(
         &self,
-        subscriptions: &Sequence<CookieStoreGetOptions>,
+        subscriptions: &TypedArray<CookieStoreGetOptions>,
     ) -> Promise<Undefined> {
         self.inner
             .call("unsubscribe", &[subscriptions.into()])

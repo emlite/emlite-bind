@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(CSSLayerStatementRule);
 impl CSSLayerStatementRule {
     /// Getter of the `nameList` attribute.
     /// [`CSSLayerStatementRule.nameList`](https://developer.mozilla.org/en-US/docs/Web/API/CSSLayerStatementRule/nameList)
-    pub fn name_list(&self) -> FrozenArray<CSSOMString> {
-        self.inner.get("nameList").as_::<FrozenArray<CSSOMString>>()
+    pub fn name_list(&self) -> TypedArray<JsString> {
+        self.inner.get("nameList").as_::<TypedArray<JsString>>()
     }
 }

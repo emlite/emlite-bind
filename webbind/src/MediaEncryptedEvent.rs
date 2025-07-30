@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(MediaEncryptedEvent);
 
 impl MediaEncryptedEvent {
     /// The `new MediaEncryptedEvent(..)` constructor, creating a new MediaEncryptedEvent instance
-    pub fn new0(type_: &DOMString) -> MediaEncryptedEvent {
+    pub fn new0(type_: &JsString) -> MediaEncryptedEvent {
         Self {
             inner: Any::global("MediaEncryptedEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl MediaEncryptedEvent {
     }
 
     /// The `new MediaEncryptedEvent(..)` constructor, creating a new MediaEncryptedEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> MediaEncryptedEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> MediaEncryptedEvent {
         Self {
             inner: Any::global("MediaEncryptedEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -77,8 +77,8 @@ impl MediaEncryptedEvent {
 impl MediaEncryptedEvent {
     /// Getter of the `initDataType` attribute.
     /// [`MediaEncryptedEvent.initDataType`](https://developer.mozilla.org/en-US/docs/Web/API/MediaEncryptedEvent/initDataType)
-    pub fn init_data_type(&self) -> DOMString {
-        self.inner.get("initDataType").as_::<DOMString>()
+    pub fn init_data_type(&self) -> JsString {
+        self.inner.get("initDataType").as_::<JsString>()
     }
 }
 impl MediaEncryptedEvent {

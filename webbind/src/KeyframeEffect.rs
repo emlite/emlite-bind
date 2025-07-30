@@ -81,13 +81,13 @@ impl KeyframeEffect {
 impl KeyframeEffect {
     /// Getter of the `pseudoElement` attribute.
     /// [`KeyframeEffect.pseudoElement`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/pseudoElement)
-    pub fn pseudo_element(&self) -> CSSOMString {
-        self.inner.get("pseudoElement").as_::<CSSOMString>()
+    pub fn pseudo_element(&self) -> JsString {
+        self.inner.get("pseudoElement").as_::<JsString>()
     }
 
     /// Setter of the `pseudoElement` attribute.
     /// [`KeyframeEffect.pseudoElement`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/pseudoElement)
-    pub fn set_pseudo_element(&mut self, value: &CSSOMString) {
+    pub fn set_pseudo_element(&mut self, value: &JsString) {
         self.inner.set("pseudoElement", value);
     }
 }
@@ -107,10 +107,10 @@ impl KeyframeEffect {
 impl KeyframeEffect {
     /// The getKeyframes method.
     /// [`KeyframeEffect.getKeyframes`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/getKeyframes)
-    pub fn get_keyframes(&self) -> Sequence<Object> {
+    pub fn get_keyframes(&self) -> TypedArray<Object> {
         self.inner
             .call("getKeyframes", &[])
-            .as_::<Sequence<Object>>()
+            .as_::<TypedArray<Object>>()
     }
 }
 impl KeyframeEffect {

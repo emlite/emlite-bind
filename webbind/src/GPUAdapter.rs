@@ -51,24 +51,24 @@ impl From<&GPUDeviceDescriptor> for Any {
 }
 
 impl GPUDeviceDescriptor {
-    pub fn required_features(&self) -> Sequence<GPUFeatureName> {
+    pub fn required_features(&self) -> TypedArray<GPUFeatureName> {
         self.inner
             .get("requiredFeatures")
-            .as_::<Sequence<GPUFeatureName>>()
+            .as_::<TypedArray<GPUFeatureName>>()
     }
 
-    pub fn set_required_features(&mut self, value: &Sequence<GPUFeatureName>) {
+    pub fn set_required_features(&mut self, value: &TypedArray<GPUFeatureName>) {
         self.inner.set("requiredFeatures", value);
     }
 }
 impl GPUDeviceDescriptor {
-    pub fn required_limits(&self) -> Record<DOMString, Any> {
+    pub fn required_limits(&self) -> Record<JsString, Any> {
         self.inner
             .get("requiredLimits")
-            .as_::<Record<DOMString, Any>>()
+            .as_::<Record<JsString, Any>>()
     }
 
-    pub fn set_required_limits(&mut self, value: &Record<DOMString, Any>) {
+    pub fn set_required_limits(&mut self, value: &Record<JsString, Any>) {
         self.inner.set("requiredLimits", value);
     }
 }

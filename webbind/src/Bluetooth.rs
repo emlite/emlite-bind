@@ -51,40 +51,40 @@ impl From<&RequestDeviceOptions> for Any {
 }
 
 impl RequestDeviceOptions {
-    pub fn filters(&self) -> Sequence<Any> {
-        self.inner.get("filters").as_::<Sequence<Any>>()
+    pub fn filters(&self) -> TypedArray<Any> {
+        self.inner.get("filters").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_filters(&mut self, value: &Sequence<Any>) {
+    pub fn set_filters(&mut self, value: &TypedArray<Any>) {
         self.inner.set("filters", value);
     }
 }
 impl RequestDeviceOptions {
-    pub fn exclusion_filters(&self) -> Sequence<Any> {
-        self.inner.get("exclusionFilters").as_::<Sequence<Any>>()
+    pub fn exclusion_filters(&self) -> TypedArray<Any> {
+        self.inner.get("exclusionFilters").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_exclusion_filters(&mut self, value: &Sequence<Any>) {
+    pub fn set_exclusion_filters(&mut self, value: &TypedArray<Any>) {
         self.inner.set("exclusionFilters", value);
     }
 }
 impl RequestDeviceOptions {
-    pub fn optional_services(&self) -> Sequence<Any> {
-        self.inner.get("optionalServices").as_::<Sequence<Any>>()
+    pub fn optional_services(&self) -> TypedArray<Any> {
+        self.inner.get("optionalServices").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_optional_services(&mut self, value: &Sequence<Any>) {
+    pub fn set_optional_services(&mut self, value: &TypedArray<Any>) {
         self.inner.set("optionalServices", value);
     }
 }
 impl RequestDeviceOptions {
-    pub fn optional_manufacturer_data(&self) -> Sequence<u16> {
+    pub fn optional_manufacturer_data(&self) -> TypedArray<u16> {
         self.inner
             .get("optionalManufacturerData")
-            .as_::<Sequence<u16>>()
+            .as_::<TypedArray<u16>>()
     }
 
-    pub fn set_optional_manufacturer_data(&mut self, value: Sequence<u16>) {
+    pub fn set_optional_manufacturer_data(&mut self, value: TypedArray<u16>) {
         self.inner.set("optionalManufacturerData", value);
     }
 }
@@ -148,11 +148,11 @@ impl From<&BluetoothLEScanOptions> for Any {
 }
 
 impl BluetoothLEScanOptions {
-    pub fn filters(&self) -> Sequence<Any> {
-        self.inner.get("filters").as_::<Sequence<Any>>()
+    pub fn filters(&self) -> TypedArray<Any> {
+        self.inner.get("filters").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_filters(&mut self, value: &Sequence<Any>) {
+    pub fn set_filters(&mut self, value: &TypedArray<Any>) {
         self.inner.set("filters", value);
     }
 }
@@ -261,10 +261,10 @@ impl Bluetooth {
 impl Bluetooth {
     /// The getDevices method.
     /// [`Bluetooth.getDevices`](https://developer.mozilla.org/en-US/docs/Web/API/Bluetooth/getDevices)
-    pub fn get_devices(&self) -> Promise<Sequence<BluetoothDevice>> {
+    pub fn get_devices(&self) -> Promise<TypedArray<BluetoothDevice>> {
         self.inner
             .call("getDevices", &[])
-            .as_::<Promise<Sequence<BluetoothDevice>>>()
+            .as_::<Promise<TypedArray<BluetoothDevice>>>()
     }
 }
 impl Bluetooth {

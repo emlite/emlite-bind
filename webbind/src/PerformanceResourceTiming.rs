@@ -58,22 +58,22 @@ jsbind::utils::impl_dyn_cast!(PerformanceResourceTiming);
 impl PerformanceResourceTiming {
     /// Getter of the `initiatorType` attribute.
     /// [`PerformanceResourceTiming.initiatorType`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/initiatorType)
-    pub fn initiator_type(&self) -> DOMString {
-        self.inner.get("initiatorType").as_::<DOMString>()
+    pub fn initiator_type(&self) -> JsString {
+        self.inner.get("initiatorType").as_::<JsString>()
     }
 }
 impl PerformanceResourceTiming {
     /// Getter of the `deliveryType` attribute.
     /// [`PerformanceResourceTiming.deliveryType`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/deliveryType)
-    pub fn delivery_type(&self) -> DOMString {
-        self.inner.get("deliveryType").as_::<DOMString>()
+    pub fn delivery_type(&self) -> JsString {
+        self.inner.get("deliveryType").as_::<JsString>()
     }
 }
 impl PerformanceResourceTiming {
     /// Getter of the `nextHopProtocol` attribute.
     /// [`PerformanceResourceTiming.nextHopProtocol`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/nextHopProtocol)
-    pub fn next_hop_protocol(&self) -> ByteString {
-        self.inner.get("nextHopProtocol").as_::<ByteString>()
+    pub fn next_hop_protocol(&self) -> JsString {
+        self.inner.get("nextHopProtocol").as_::<JsString>()
     }
 }
 impl PerformanceResourceTiming {
@@ -214,15 +214,15 @@ impl PerformanceResourceTiming {
 impl PerformanceResourceTiming {
     /// Getter of the `contentType` attribute.
     /// [`PerformanceResourceTiming.contentType`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/contentType)
-    pub fn content_type(&self) -> DOMString {
-        self.inner.get("contentType").as_::<DOMString>()
+    pub fn content_type(&self) -> JsString {
+        self.inner.get("contentType").as_::<JsString>()
     }
 }
 impl PerformanceResourceTiming {
     /// Getter of the `contentEncoding` attribute.
     /// [`PerformanceResourceTiming.contentEncoding`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/contentEncoding)
-    pub fn content_encoding(&self) -> DOMString {
-        self.inner.get("contentEncoding").as_::<DOMString>()
+    pub fn content_encoding(&self) -> JsString {
+        self.inner.get("contentEncoding").as_::<JsString>()
     }
 }
 impl PerformanceResourceTiming {
@@ -235,9 +235,9 @@ impl PerformanceResourceTiming {
 impl PerformanceResourceTiming {
     /// Getter of the `serverTiming` attribute.
     /// [`PerformanceResourceTiming.serverTiming`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming/serverTiming)
-    pub fn server_timing(&self) -> FrozenArray<PerformanceServerTiming> {
+    pub fn server_timing(&self) -> TypedArray<PerformanceServerTiming> {
         self.inner
             .get("serverTiming")
-            .as_::<FrozenArray<PerformanceServerTiming>>()
+            .as_::<TypedArray<PerformanceServerTiming>>()
     }
 }

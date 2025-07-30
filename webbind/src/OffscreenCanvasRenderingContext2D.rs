@@ -182,15 +182,13 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// Getter of the `globalCompositeOperation` attribute.
     /// [`OffscreenCanvasRenderingContext2D.globalCompositeOperation`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/globalCompositeOperation)
-    pub fn global_composite_operation(&self) -> DOMString {
-        self.inner
-            .get("globalCompositeOperation")
-            .as_::<DOMString>()
+    pub fn global_composite_operation(&self) -> JsString {
+        self.inner.get("globalCompositeOperation").as_::<JsString>()
     }
 
     /// Setter of the `globalCompositeOperation` attribute.
     /// [`OffscreenCanvasRenderingContext2D.globalCompositeOperation`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/globalCompositeOperation)
-    pub fn set_global_composite_operation(&mut self, value: &DOMString) {
+    pub fn set_global_composite_operation(&mut self, value: &JsString) {
         self.inner.set("globalCompositeOperation", value);
     }
 }
@@ -302,7 +300,7 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The createPattern method.
     /// [`OffscreenCanvasRenderingContext2D.createPattern`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/createPattern)
-    pub fn create_pattern(&self, image: &Any, repetition: &DOMString) -> CanvasPattern {
+    pub fn create_pattern(&self, image: &Any, repetition: &JsString) -> CanvasPattern {
         self.inner
             .call("createPattern", &[image.into(), repetition.into()])
             .as_::<CanvasPattern>()
@@ -350,26 +348,26 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// Getter of the `shadowColor` attribute.
     /// [`OffscreenCanvasRenderingContext2D.shadowColor`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/shadowColor)
-    pub fn shadow_color(&self) -> DOMString {
-        self.inner.get("shadowColor").as_::<DOMString>()
+    pub fn shadow_color(&self) -> JsString {
+        self.inner.get("shadowColor").as_::<JsString>()
     }
 
     /// Setter of the `shadowColor` attribute.
     /// [`OffscreenCanvasRenderingContext2D.shadowColor`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/shadowColor)
-    pub fn set_shadow_color(&mut self, value: &DOMString) {
+    pub fn set_shadow_color(&mut self, value: &JsString) {
         self.inner.set("shadowColor", value);
     }
 }
 impl OffscreenCanvasRenderingContext2D {
     /// Getter of the `filter` attribute.
     /// [`OffscreenCanvasRenderingContext2D.filter`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/filter)
-    pub fn filter(&self) -> DOMString {
-        self.inner.get("filter").as_::<DOMString>()
+    pub fn filter(&self) -> JsString {
+        self.inner.get("filter").as_::<JsString>()
     }
 
     /// Setter of the `filter` attribute.
     /// [`OffscreenCanvasRenderingContext2D.filter`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/filter)
-    pub fn set_filter(&mut self, value: &DOMString) {
+    pub fn set_filter(&mut self, value: &JsString) {
         self.inner.set("filter", value);
     }
 }
@@ -479,14 +477,14 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The fillText method.
     /// [`OffscreenCanvasRenderingContext2D.fillText`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/fillText)
-    pub fn fill_text0(&self, text: &DOMString, x: f64, y: f64) -> Undefined {
+    pub fn fill_text0(&self, text: &JsString, x: f64, y: f64) -> Undefined {
         self.inner
             .call("fillText", &[text.into(), x.into(), y.into()])
             .as_::<Undefined>()
     }
     /// The fillText method.
     /// [`OffscreenCanvasRenderingContext2D.fillText`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/fillText)
-    pub fn fill_text1(&self, text: &DOMString, x: f64, y: f64, max_width: f64) -> Undefined {
+    pub fn fill_text1(&self, text: &JsString, x: f64, y: f64, max_width: f64) -> Undefined {
         self.inner
             .call(
                 "fillText",
@@ -498,14 +496,14 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The strokeText method.
     /// [`OffscreenCanvasRenderingContext2D.strokeText`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/strokeText)
-    pub fn stroke_text0(&self, text: &DOMString, x: f64, y: f64) -> Undefined {
+    pub fn stroke_text0(&self, text: &JsString, x: f64, y: f64) -> Undefined {
         self.inner
             .call("strokeText", &[text.into(), x.into(), y.into()])
             .as_::<Undefined>()
     }
     /// The strokeText method.
     /// [`OffscreenCanvasRenderingContext2D.strokeText`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/strokeText)
-    pub fn stroke_text1(&self, text: &DOMString, x: f64, y: f64, max_width: f64) -> Undefined {
+    pub fn stroke_text1(&self, text: &JsString, x: f64, y: f64, max_width: f64) -> Undefined {
         self.inner
             .call(
                 "strokeText",
@@ -517,7 +515,7 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The measureText method.
     /// [`OffscreenCanvasRenderingContext2D.measureText`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/measureText)
-    pub fn measure_text(&self, text: &DOMString) -> TextMetrics {
+    pub fn measure_text(&self, text: &JsString) -> TextMetrics {
         self.inner
             .call("measureText", &[text.into()])
             .as_::<TextMetrics>()
@@ -678,7 +676,7 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The setLineDash method.
     /// [`OffscreenCanvasRenderingContext2D.setLineDash`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/setLineDash)
-    pub fn set_line_dash(&self, segments: Sequence<f64>) -> Undefined {
+    pub fn set_line_dash(&self, segments: TypedArray<f64>) -> Undefined {
         self.inner
             .call("setLineDash", &[segments.into()])
             .as_::<Undefined>()
@@ -687,8 +685,8 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// The getLineDash method.
     /// [`OffscreenCanvasRenderingContext2D.getLineDash`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/getLineDash)
-    pub fn get_line_dash(&self) -> Sequence<f64> {
-        self.inner.call("getLineDash", &[]).as_::<Sequence<f64>>()
+    pub fn get_line_dash(&self) -> TypedArray<f64> {
+        self.inner.call("getLineDash", &[]).as_::<TypedArray<f64>>()
     }
 }
 impl OffscreenCanvasRenderingContext2D {
@@ -707,26 +705,26 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// Getter of the `lang` attribute.
     /// [`OffscreenCanvasRenderingContext2D.lang`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/lang)
-    pub fn lang(&self) -> DOMString {
-        self.inner.get("lang").as_::<DOMString>()
+    pub fn lang(&self) -> JsString {
+        self.inner.get("lang").as_::<JsString>()
     }
 
     /// Setter of the `lang` attribute.
     /// [`OffscreenCanvasRenderingContext2D.lang`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/lang)
-    pub fn set_lang(&mut self, value: &DOMString) {
+    pub fn set_lang(&mut self, value: &JsString) {
         self.inner.set("lang", value);
     }
 }
 impl OffscreenCanvasRenderingContext2D {
     /// Getter of the `font` attribute.
     /// [`OffscreenCanvasRenderingContext2D.font`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/font)
-    pub fn font(&self) -> DOMString {
-        self.inner.get("font").as_::<DOMString>()
+    pub fn font(&self) -> JsString {
+        self.inner.get("font").as_::<JsString>()
     }
 
     /// Setter of the `font` attribute.
     /// [`OffscreenCanvasRenderingContext2D.font`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/font)
-    pub fn set_font(&mut self, value: &DOMString) {
+    pub fn set_font(&mut self, value: &JsString) {
         self.inner.set("font", value);
     }
 }
@@ -772,13 +770,13 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// Getter of the `letterSpacing` attribute.
     /// [`OffscreenCanvasRenderingContext2D.letterSpacing`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/letterSpacing)
-    pub fn letter_spacing(&self) -> DOMString {
-        self.inner.get("letterSpacing").as_::<DOMString>()
+    pub fn letter_spacing(&self) -> JsString {
+        self.inner.get("letterSpacing").as_::<JsString>()
     }
 
     /// Setter of the `letterSpacing` attribute.
     /// [`OffscreenCanvasRenderingContext2D.letterSpacing`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/letterSpacing)
-    pub fn set_letter_spacing(&mut self, value: &DOMString) {
+    pub fn set_letter_spacing(&mut self, value: &JsString) {
         self.inner.set("letterSpacing", value);
     }
 }
@@ -839,13 +837,13 @@ impl OffscreenCanvasRenderingContext2D {
 impl OffscreenCanvasRenderingContext2D {
     /// Getter of the `wordSpacing` attribute.
     /// [`OffscreenCanvasRenderingContext2D.wordSpacing`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/wordSpacing)
-    pub fn word_spacing(&self) -> DOMString {
-        self.inner.get("wordSpacing").as_::<DOMString>()
+    pub fn word_spacing(&self) -> JsString {
+        self.inner.get("wordSpacing").as_::<JsString>()
     }
 
     /// Setter of the `wordSpacing` attribute.
     /// [`OffscreenCanvasRenderingContext2D.wordSpacing`](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvasRenderingContext2D/wordSpacing)
-    pub fn set_word_spacing(&mut self, value: &DOMString) {
+    pub fn set_word_spacing(&mut self, value: &JsString) {
         self.inner.set("wordSpacing", value);
     }
 }

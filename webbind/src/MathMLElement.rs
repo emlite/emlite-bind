@@ -85,13 +85,13 @@ impl MathMLElement {
 impl MathMLElement {
     /// Getter of the `nonce` attribute.
     /// [`MathMLElement.nonce`](https://developer.mozilla.org/en-US/docs/Web/API/MathMLElement/nonce)
-    pub fn nonce(&self) -> DOMString {
-        self.inner.get("nonce").as_::<DOMString>()
+    pub fn nonce(&self) -> JsString {
+        self.inner.get("nonce").as_::<JsString>()
     }
 
     /// Setter of the `nonce` attribute.
     /// [`MathMLElement.nonce`](https://developer.mozilla.org/en-US/docs/Web/API/MathMLElement/nonce)
-    pub fn set_nonce(&mut self, value: &DOMString) {
+    pub fn set_nonce(&mut self, value: &JsString) {
         self.inner.set("nonce", value);
     }
 }

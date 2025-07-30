@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(PerformanceServerTiming);
 impl PerformanceServerTiming {
     /// Getter of the `name` attribute.
     /// [`PerformanceServerTiming.name`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceServerTiming/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl PerformanceServerTiming {
@@ -72,8 +72,8 @@ impl PerformanceServerTiming {
 impl PerformanceServerTiming {
     /// Getter of the `description` attribute.
     /// [`PerformanceServerTiming.description`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceServerTiming/description)
-    pub fn description(&self) -> DOMString {
-        self.inner.get("description").as_::<DOMString>()
+    pub fn description(&self) -> JsString {
+        self.inner.get("description").as_::<JsString>()
     }
 }
 impl PerformanceServerTiming {

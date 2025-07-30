@@ -51,31 +51,31 @@ impl From<&FenceEvent> for Any {
 }
 
 impl FenceEvent {
-    pub fn event_type(&self) -> DOMString {
-        self.inner.get("eventType").as_::<DOMString>()
+    pub fn event_type(&self) -> JsString {
+        self.inner.get("eventType").as_::<JsString>()
     }
 
-    pub fn set_event_type(&mut self, value: &DOMString) {
+    pub fn set_event_type(&mut self, value: &JsString) {
         self.inner.set("eventType", value);
     }
 }
 impl FenceEvent {
-    pub fn event_data(&self) -> DOMString {
-        self.inner.get("eventData").as_::<DOMString>()
+    pub fn event_data(&self) -> JsString {
+        self.inner.get("eventData").as_::<JsString>()
     }
 
-    pub fn set_event_data(&mut self, value: &DOMString) {
+    pub fn set_event_data(&mut self, value: &JsString) {
         self.inner.set("eventData", value);
     }
 }
 impl FenceEvent {
-    pub fn destination(&self) -> Sequence<FenceReportingDestination> {
+    pub fn destination(&self) -> TypedArray<FenceReportingDestination> {
         self.inner
             .get("destination")
-            .as_::<Sequence<FenceReportingDestination>>()
+            .as_::<TypedArray<FenceReportingDestination>>()
     }
 
-    pub fn set_destination(&mut self, value: &Sequence<FenceReportingDestination>) {
+    pub fn set_destination(&mut self, value: &TypedArray<FenceReportingDestination>) {
         self.inner.set("destination", value);
     }
 }
@@ -98,11 +98,11 @@ impl FenceEvent {
     }
 }
 impl FenceEvent {
-    pub fn destination_url(&self) -> USVString {
-        self.inner.get("destinationURL").as_::<USVString>()
+    pub fn destination_url(&self) -> JsString {
+        self.inner.get("destinationURL").as_::<JsString>()
     }
 
-    pub fn set_destination_url(&mut self, value: &USVString) {
+    pub fn set_destination_url(&mut self, value: &JsString) {
         self.inner.set("destinationURL", value);
     }
 }
@@ -194,10 +194,10 @@ impl Fence {
 impl Fence {
     /// The getNestedConfigs method.
     /// [`Fence.getNestedConfigs`](https://developer.mozilla.org/en-US/docs/Web/API/Fence/getNestedConfigs)
-    pub fn get_nested_configs(&self) -> Sequence<FencedFrameConfig> {
+    pub fn get_nested_configs(&self) -> TypedArray<FencedFrameConfig> {
         self.inner
             .call("getNestedConfigs", &[])
-            .as_::<Sequence<FencedFrameConfig>>()
+            .as_::<TypedArray<FencedFrameConfig>>()
     }
 }
 impl Fence {

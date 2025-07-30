@@ -68,13 +68,13 @@ impl HTMLButtonElement {
 impl HTMLButtonElement {
     /// Getter of the `command` attribute.
     /// [`HTMLButtonElement.command`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/command)
-    pub fn command(&self) -> DOMString {
-        self.inner.get("command").as_::<DOMString>()
+    pub fn command(&self) -> JsString {
+        self.inner.get("command").as_::<JsString>()
     }
 
     /// Setter of the `command` attribute.
     /// [`HTMLButtonElement.command`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/command)
-    pub fn set_command(&mut self, value: &DOMString) {
+    pub fn set_command(&mut self, value: &JsString) {
         self.inner.set("command", value);
     }
 }
@@ -114,39 +114,39 @@ impl HTMLButtonElement {
 impl HTMLButtonElement {
     /// Getter of the `formAction` attribute.
     /// [`HTMLButtonElement.formAction`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/formAction)
-    pub fn form_action(&self) -> USVString {
-        self.inner.get("formAction").as_::<USVString>()
+    pub fn form_action(&self) -> JsString {
+        self.inner.get("formAction").as_::<JsString>()
     }
 
     /// Setter of the `formAction` attribute.
     /// [`HTMLButtonElement.formAction`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/formAction)
-    pub fn set_form_action(&mut self, value: &USVString) {
+    pub fn set_form_action(&mut self, value: &JsString) {
         self.inner.set("formAction", value);
     }
 }
 impl HTMLButtonElement {
     /// Getter of the `formEnctype` attribute.
     /// [`HTMLButtonElement.formEnctype`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/formEnctype)
-    pub fn form_enctype(&self) -> DOMString {
-        self.inner.get("formEnctype").as_::<DOMString>()
+    pub fn form_enctype(&self) -> JsString {
+        self.inner.get("formEnctype").as_::<JsString>()
     }
 
     /// Setter of the `formEnctype` attribute.
     /// [`HTMLButtonElement.formEnctype`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/formEnctype)
-    pub fn set_form_enctype(&mut self, value: &DOMString) {
+    pub fn set_form_enctype(&mut self, value: &JsString) {
         self.inner.set("formEnctype", value);
     }
 }
 impl HTMLButtonElement {
     /// Getter of the `formMethod` attribute.
     /// [`HTMLButtonElement.formMethod`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/formMethod)
-    pub fn form_method(&self) -> DOMString {
-        self.inner.get("formMethod").as_::<DOMString>()
+    pub fn form_method(&self) -> JsString {
+        self.inner.get("formMethod").as_::<JsString>()
     }
 
     /// Setter of the `formMethod` attribute.
     /// [`HTMLButtonElement.formMethod`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/formMethod)
-    pub fn set_form_method(&mut self, value: &DOMString) {
+    pub fn set_form_method(&mut self, value: &JsString) {
         self.inner.set("formMethod", value);
     }
 }
@@ -166,52 +166,52 @@ impl HTMLButtonElement {
 impl HTMLButtonElement {
     /// Getter of the `formTarget` attribute.
     /// [`HTMLButtonElement.formTarget`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/formTarget)
-    pub fn form_target(&self) -> DOMString {
-        self.inner.get("formTarget").as_::<DOMString>()
+    pub fn form_target(&self) -> JsString {
+        self.inner.get("formTarget").as_::<JsString>()
     }
 
     /// Setter of the `formTarget` attribute.
     /// [`HTMLButtonElement.formTarget`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/formTarget)
-    pub fn set_form_target(&mut self, value: &DOMString) {
+    pub fn set_form_target(&mut self, value: &JsString) {
         self.inner.set("formTarget", value);
     }
 }
 impl HTMLButtonElement {
     /// Getter of the `name` attribute.
     /// [`HTMLButtonElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`HTMLButtonElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/name)
-    pub fn set_name(&mut self, value: &DOMString) {
+    pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
     }
 }
 impl HTMLButtonElement {
     /// Getter of the `type` attribute.
     /// [`HTMLButtonElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 
     /// Setter of the `type` attribute.
     /// [`HTMLButtonElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/type)
-    pub fn set_type_(&mut self, value: &DOMString) {
+    pub fn set_type_(&mut self, value: &JsString) {
         self.inner.set("type", value);
     }
 }
 impl HTMLButtonElement {
     /// Getter of the `value` attribute.
     /// [`HTMLButtonElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/value)
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> JsString {
+        self.inner.get("value").as_::<JsString>()
     }
 
     /// Setter of the `value` attribute.
     /// [`HTMLButtonElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/value)
-    pub fn set_value(&mut self, value: &DOMString) {
+    pub fn set_value(&mut self, value: &JsString) {
         self.inner.set("value", value);
     }
 }
@@ -232,8 +232,8 @@ impl HTMLButtonElement {
 impl HTMLButtonElement {
     /// Getter of the `validationMessage` attribute.
     /// [`HTMLButtonElement.validationMessage`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/validationMessage)
-    pub fn validation_message(&self) -> DOMString {
-        self.inner.get("validationMessage").as_::<DOMString>()
+    pub fn validation_message(&self) -> JsString {
+        self.inner.get("validationMessage").as_::<JsString>()
     }
 }
 impl HTMLButtonElement {
@@ -253,7 +253,7 @@ impl HTMLButtonElement {
 impl HTMLButtonElement {
     /// The setCustomValidity method.
     /// [`HTMLButtonElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/setCustomValidity)
-    pub fn set_custom_validity(&self, error: &DOMString) -> Undefined {
+    pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
         self.inner
             .call("setCustomValidity", &[error.into()])
             .as_::<Undefined>()
@@ -282,13 +282,13 @@ impl HTMLButtonElement {
 impl HTMLButtonElement {
     /// Getter of the `popoverTargetAction` attribute.
     /// [`HTMLButtonElement.popoverTargetAction`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/popoverTargetAction)
-    pub fn popover_target_action(&self) -> DOMString {
-        self.inner.get("popoverTargetAction").as_::<DOMString>()
+    pub fn popover_target_action(&self) -> JsString {
+        self.inner.get("popoverTargetAction").as_::<JsString>()
     }
 
     /// Setter of the `popoverTargetAction` attribute.
     /// [`HTMLButtonElement.popoverTargetAction`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/popoverTargetAction)
-    pub fn set_popover_target_action(&mut self, value: &DOMString) {
+    pub fn set_popover_target_action(&mut self, value: &JsString) {
         self.inner.set("popoverTargetAction", value);
     }
 }

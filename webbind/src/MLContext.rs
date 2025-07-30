@@ -128,11 +128,11 @@ impl MLOperandDescriptor {
     }
 }
 impl MLOperandDescriptor {
-    pub fn shape(&self) -> Sequence<u32> {
-        self.inner.get("shape").as_::<Sequence<u32>>()
+    pub fn shape(&self) -> TypedArray<u32> {
+        self.inner.get("shape").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_shape(&mut self, value: Sequence<u32>) {
+    pub fn set_shape(&mut self, value: TypedArray<u32>) {
         self.inner.set("shape", value);
     }
 }
@@ -246,11 +246,11 @@ impl From<&MLContextLostInfo> for Any {
 }
 
 impl MLContextLostInfo {
-    pub fn message(&self) -> DOMString {
-        self.inner.get("message").as_::<DOMString>()
+    pub fn message(&self) -> JsString {
+        self.inner.get("message").as_::<JsString>()
     }
 
-    pub fn set_message(&mut self, value: &DOMString) {
+    pub fn set_message(&mut self, value: &JsString) {
         self.inner.set("message", value);
     }
 }

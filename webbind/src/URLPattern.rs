@@ -51,11 +51,11 @@ impl From<&URLPatternResult> for Any {
 }
 
 impl URLPatternResult {
-    pub fn inputs(&self) -> Sequence<Any> {
-        self.inner.get("inputs").as_::<Sequence<Any>>()
+    pub fn inputs(&self) -> TypedArray<Any> {
+        self.inner.get("inputs").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_inputs(&mut self, value: &Sequence<Any>) {
+    pub fn set_inputs(&mut self, value: &TypedArray<Any>) {
         self.inner.set("inputs", value);
     }
 }
@@ -223,7 +223,7 @@ impl URLPattern {
     }
     /// The test method.
     /// [`URLPattern.test`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/test)
-    pub fn test2(&self, input: &Any, base_url: &USVString) -> bool {
+    pub fn test2(&self, input: &Any, base_url: &JsString) -> bool {
         self.inner
             .call("test", &[input.into(), base_url.into()])
             .as_::<bool>()
@@ -244,7 +244,7 @@ impl URLPattern {
     }
     /// The exec method.
     /// [`URLPattern.exec`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/exec)
-    pub fn exec2(&self, input: &Any, base_url: &USVString) -> URLPatternResult {
+    pub fn exec2(&self, input: &Any, base_url: &JsString) -> URLPatternResult {
         self.inner
             .call("exec", &[input.into(), base_url.into()])
             .as_::<URLPatternResult>()
@@ -253,57 +253,57 @@ impl URLPattern {
 impl URLPattern {
     /// Getter of the `protocol` attribute.
     /// [`URLPattern.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/protocol)
-    pub fn protocol(&self) -> USVString {
-        self.inner.get("protocol").as_::<USVString>()
+    pub fn protocol(&self) -> JsString {
+        self.inner.get("protocol").as_::<JsString>()
     }
 }
 impl URLPattern {
     /// Getter of the `username` attribute.
     /// [`URLPattern.username`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/username)
-    pub fn username(&self) -> USVString {
-        self.inner.get("username").as_::<USVString>()
+    pub fn username(&self) -> JsString {
+        self.inner.get("username").as_::<JsString>()
     }
 }
 impl URLPattern {
     /// Getter of the `password` attribute.
     /// [`URLPattern.password`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/password)
-    pub fn password(&self) -> USVString {
-        self.inner.get("password").as_::<USVString>()
+    pub fn password(&self) -> JsString {
+        self.inner.get("password").as_::<JsString>()
     }
 }
 impl URLPattern {
     /// Getter of the `hostname` attribute.
     /// [`URLPattern.hostname`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/hostname)
-    pub fn hostname(&self) -> USVString {
-        self.inner.get("hostname").as_::<USVString>()
+    pub fn hostname(&self) -> JsString {
+        self.inner.get("hostname").as_::<JsString>()
     }
 }
 impl URLPattern {
     /// Getter of the `port` attribute.
     /// [`URLPattern.port`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/port)
-    pub fn port(&self) -> USVString {
-        self.inner.get("port").as_::<USVString>()
+    pub fn port(&self) -> JsString {
+        self.inner.get("port").as_::<JsString>()
     }
 }
 impl URLPattern {
     /// Getter of the `pathname` attribute.
     /// [`URLPattern.pathname`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/pathname)
-    pub fn pathname(&self) -> USVString {
-        self.inner.get("pathname").as_::<USVString>()
+    pub fn pathname(&self) -> JsString {
+        self.inner.get("pathname").as_::<JsString>()
     }
 }
 impl URLPattern {
     /// Getter of the `search` attribute.
     /// [`URLPattern.search`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/search)
-    pub fn search(&self) -> USVString {
-        self.inner.get("search").as_::<USVString>()
+    pub fn search(&self) -> JsString {
+        self.inner.get("search").as_::<JsString>()
     }
 }
 impl URLPattern {
     /// Getter of the `hash` attribute.
     /// [`URLPattern.hash`](https://developer.mozilla.org/en-US/docs/Web/API/URLPattern/hash)
-    pub fn hash(&self) -> USVString {
-        self.inner.get("hash").as_::<USVString>()
+    pub fn hash(&self) -> JsString {
+        self.inner.get("hash").as_::<JsString>()
     }
 }
 impl URLPattern {

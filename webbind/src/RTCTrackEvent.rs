@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(RTCTrackEvent);
 
 impl RTCTrackEvent {
     /// The `new RTCTrackEvent(..)` constructor, creating a new RTCTrackEvent instance
-    pub fn new(type_: &DOMString, event_init_dict: &Any) -> RTCTrackEvent {
+    pub fn new(type_: &JsString, event_init_dict: &Any) -> RTCTrackEvent {
         Self {
             inner: Any::global("RTCTrackEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -82,8 +82,8 @@ impl RTCTrackEvent {
 impl RTCTrackEvent {
     /// Getter of the `streams` attribute.
     /// [`RTCTrackEvent.streams`](https://developer.mozilla.org/en-US/docs/Web/API/RTCTrackEvent/streams)
-    pub fn streams(&self) -> FrozenArray<MediaStream> {
-        self.inner.get("streams").as_::<FrozenArray<MediaStream>>()
+    pub fn streams(&self) -> TypedArray<MediaStream> {
+        self.inner.get("streams").as_::<TypedArray<MediaStream>>()
     }
 }
 impl RTCTrackEvent {

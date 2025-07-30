@@ -68,52 +68,52 @@ impl HTMLMarqueeElement {
 impl HTMLMarqueeElement {
     /// Getter of the `behavior` attribute.
     /// [`HTMLMarqueeElement.behavior`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement/behavior)
-    pub fn behavior(&self) -> DOMString {
-        self.inner.get("behavior").as_::<DOMString>()
+    pub fn behavior(&self) -> JsString {
+        self.inner.get("behavior").as_::<JsString>()
     }
 
     /// Setter of the `behavior` attribute.
     /// [`HTMLMarqueeElement.behavior`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement/behavior)
-    pub fn set_behavior(&mut self, value: &DOMString) {
+    pub fn set_behavior(&mut self, value: &JsString) {
         self.inner.set("behavior", value);
     }
 }
 impl HTMLMarqueeElement {
     /// Getter of the `bgColor` attribute.
     /// [`HTMLMarqueeElement.bgColor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement/bgColor)
-    pub fn bg_color(&self) -> DOMString {
-        self.inner.get("bgColor").as_::<DOMString>()
+    pub fn bg_color(&self) -> JsString {
+        self.inner.get("bgColor").as_::<JsString>()
     }
 
     /// Setter of the `bgColor` attribute.
     /// [`HTMLMarqueeElement.bgColor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement/bgColor)
-    pub fn set_bg_color(&mut self, value: &DOMString) {
+    pub fn set_bg_color(&mut self, value: &JsString) {
         self.inner.set("bgColor", value);
     }
 }
 impl HTMLMarqueeElement {
     /// Getter of the `direction` attribute.
     /// [`HTMLMarqueeElement.direction`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement/direction)
-    pub fn direction(&self) -> DOMString {
-        self.inner.get("direction").as_::<DOMString>()
+    pub fn direction(&self) -> JsString {
+        self.inner.get("direction").as_::<JsString>()
     }
 
     /// Setter of the `direction` attribute.
     /// [`HTMLMarqueeElement.direction`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement/direction)
-    pub fn set_direction(&mut self, value: &DOMString) {
+    pub fn set_direction(&mut self, value: &JsString) {
         self.inner.set("direction", value);
     }
 }
 impl HTMLMarqueeElement {
     /// Getter of the `height` attribute.
     /// [`HTMLMarqueeElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement/height)
-    pub fn height(&self) -> DOMString {
-        self.inner.get("height").as_::<DOMString>()
+    pub fn height(&self) -> JsString {
+        self.inner.get("height").as_::<JsString>()
     }
 
     /// Setter of the `height` attribute.
     /// [`HTMLMarqueeElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement/height)
-    pub fn set_height(&mut self, value: &DOMString) {
+    pub fn set_height(&mut self, value: &JsString) {
         self.inner.set("height", value);
     }
 }
@@ -198,13 +198,13 @@ impl HTMLMarqueeElement {
 impl HTMLMarqueeElement {
     /// Getter of the `width` attribute.
     /// [`HTMLMarqueeElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement/width)
-    pub fn width(&self) -> DOMString {
-        self.inner.get("width").as_::<DOMString>()
+    pub fn width(&self) -> JsString {
+        self.inner.get("width").as_::<JsString>()
     }
 
     /// Setter of the `width` attribute.
     /// [`HTMLMarqueeElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMarqueeElement/width)
-    pub fn set_width(&mut self, value: &DOMString) {
+    pub fn set_width(&mut self, value: &JsString) {
         self.inner.set("width", value);
     }
 }

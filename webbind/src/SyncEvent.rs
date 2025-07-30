@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(SyncEvent);
 
 impl SyncEvent {
     /// The `new SyncEvent(..)` constructor, creating a new SyncEvent instance
-    pub fn new(type_: &DOMString, init: &Any) -> SyncEvent {
+    pub fn new(type_: &JsString, init: &Any) -> SyncEvent {
         Self {
             inner: Any::global("SyncEvent")
                 .new(&[type_.into(), init.into()])
@@ -68,8 +68,8 @@ impl SyncEvent {
 impl SyncEvent {
     /// Getter of the `tag` attribute.
     /// [`SyncEvent.tag`](https://developer.mozilla.org/en-US/docs/Web/API/SyncEvent/tag)
-    pub fn tag(&self) -> DOMString {
-        self.inner.get("tag").as_::<DOMString>()
+    pub fn tag(&self) -> JsString {
+        self.inner.get("tag").as_::<JsString>()
     }
 }
 impl SyncEvent {

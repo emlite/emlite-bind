@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(PresentationRequest);
 
 impl PresentationRequest {
     /// The `new PresentationRequest(..)` constructor, creating a new PresentationRequest instance
-    pub fn new(urls: &Sequence<USVString>) -> PresentationRequest {
+    pub fn new(urls: &TypedArray<JsString>) -> PresentationRequest {
         Self {
             inner: Any::global("PresentationRequest")
                 .new(&[urls.into()])
@@ -77,7 +77,7 @@ impl PresentationRequest {
 impl PresentationRequest {
     /// The reconnect method.
     /// [`PresentationRequest.reconnect`](https://developer.mozilla.org/en-US/docs/Web/API/PresentationRequest/reconnect)
-    pub fn reconnect(&self, presentation_id: &USVString) -> Promise<PresentationConnection> {
+    pub fn reconnect(&self, presentation_id: &JsString) -> Promise<PresentationConnection> {
         self.inner
             .call("reconnect", &[presentation_id.into()])
             .as_::<Promise<PresentationConnection>>()

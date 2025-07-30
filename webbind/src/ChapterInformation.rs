@@ -51,29 +51,29 @@ impl From<&MediaImage> for Any {
 }
 
 impl MediaImage {
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> JsString {
+        self.inner.get("src").as_::<JsString>()
     }
 
-    pub fn set_src(&mut self, value: &USVString) {
+    pub fn set_src(&mut self, value: &JsString) {
         self.inner.set("src", value);
     }
 }
 impl MediaImage {
-    pub fn sizes(&self) -> DOMString {
-        self.inner.get("sizes").as_::<DOMString>()
+    pub fn sizes(&self) -> JsString {
+        self.inner.get("sizes").as_::<JsString>()
     }
 
-    pub fn set_sizes(&mut self, value: &DOMString) {
+    pub fn set_sizes(&mut self, value: &JsString) {
         self.inner.set("sizes", value);
     }
 }
 impl MediaImage {
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 
-    pub fn set_type_(&mut self, value: &DOMString) {
+    pub fn set_type_(&mut self, value: &JsString) {
         self.inner.set("type", value);
     }
 }
@@ -135,8 +135,8 @@ jsbind::utils::impl_dyn_cast!(ChapterInformation);
 impl ChapterInformation {
     /// Getter of the `title` attribute.
     /// [`ChapterInformation.title`](https://developer.mozilla.org/en-US/docs/Web/API/ChapterInformation/title)
-    pub fn title(&self) -> DOMString {
-        self.inner.get("title").as_::<DOMString>()
+    pub fn title(&self) -> JsString {
+        self.inner.get("title").as_::<JsString>()
     }
 }
 impl ChapterInformation {
@@ -149,7 +149,7 @@ impl ChapterInformation {
 impl ChapterInformation {
     /// Getter of the `artwork` attribute.
     /// [`ChapterInformation.artwork`](https://developer.mozilla.org/en-US/docs/Web/API/ChapterInformation/artwork)
-    pub fn artwork(&self) -> FrozenArray<MediaImage> {
-        self.inner.get("artwork").as_::<FrozenArray<MediaImage>>()
+    pub fn artwork(&self) -> TypedArray<MediaImage> {
+        self.inner.get("artwork").as_::<TypedArray<MediaImage>>()
     }
 }

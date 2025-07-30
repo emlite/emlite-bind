@@ -68,21 +68,21 @@ impl PasswordCredential {
 impl PasswordCredential {
     /// Getter of the `password` attribute.
     /// [`PasswordCredential.password`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential/password)
-    pub fn password(&self) -> USVString {
-        self.inner.get("password").as_::<USVString>()
+    pub fn password(&self) -> JsString {
+        self.inner.get("password").as_::<JsString>()
     }
 }
 impl PasswordCredential {
     /// Getter of the `name` attribute.
     /// [`PasswordCredential.name`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential/name)
-    pub fn name(&self) -> USVString {
-        self.inner.get("name").as_::<USVString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl PasswordCredential {
     /// Getter of the `iconURL` attribute.
     /// [`PasswordCredential.iconURL`](https://developer.mozilla.org/en-US/docs/Web/API/PasswordCredential/iconURL)
-    pub fn icon_url(&self) -> USVString {
-        self.inner.get("iconURL").as_::<USVString>()
+    pub fn icon_url(&self) -> JsString {
+        self.inner.get("iconURL").as_::<JsString>()
     }
 }

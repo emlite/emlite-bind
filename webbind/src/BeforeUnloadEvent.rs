@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(BeforeUnloadEvent);
 impl BeforeUnloadEvent {
     /// Getter of the `returnValue` attribute.
     /// [`BeforeUnloadEvent.returnValue`](https://developer.mozilla.org/en-US/docs/Web/API/BeforeUnloadEvent/returnValue)
-    pub fn return_value(&self) -> DOMString {
-        self.inner.get("returnValue").as_::<DOMString>()
+    pub fn return_value(&self) -> JsString {
+        self.inner.get("returnValue").as_::<JsString>()
     }
 
     /// Setter of the `returnValue` attribute.
     /// [`BeforeUnloadEvent.returnValue`](https://developer.mozilla.org/en-US/docs/Web/API/BeforeUnloadEvent/returnValue)
-    pub fn set_return_value(&mut self, value: &DOMString) {
+    pub fn set_return_value(&mut self, value: &JsString) {
         self.inner.set("returnValue", value);
     }
 }

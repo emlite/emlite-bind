@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(USBPermissionResult);
 impl USBPermissionResult {
     /// Getter of the `devices` attribute.
     /// [`USBPermissionResult.devices`](https://developer.mozilla.org/en-US/docs/Web/API/USBPermissionResult/devices)
-    pub fn devices(&self) -> FrozenArray<USBDevice> {
-        self.inner.get("devices").as_::<FrozenArray<USBDevice>>()
+    pub fn devices(&self) -> TypedArray<USBDevice> {
+        self.inner.get("devices").as_::<TypedArray<USBDevice>>()
     }
 
     /// Setter of the `devices` attribute.
     /// [`USBPermissionResult.devices`](https://developer.mozilla.org/en-US/docs/Web/API/USBPermissionResult/devices)
-    pub fn set_devices(&mut self, value: &FrozenArray<USBDevice>) {
+    pub fn set_devices(&mut self, value: &TypedArray<USBDevice>) {
         self.inner.set("devices", value);
     }
 }

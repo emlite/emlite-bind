@@ -57,14 +57,14 @@ jsbind::utils::impl_dyn_cast!(Event);
 
 impl Event {
     /// The `new Event(..)` constructor, creating a new Event instance
-    pub fn new0(type_: &DOMString) -> Event {
+    pub fn new0(type_: &JsString) -> Event {
         Self {
             inner: Any::global("Event").new(&[type_.into()]).as_::<Any>(),
         }
     }
 
     /// The `new Event(..)` constructor, creating a new Event instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> Event {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> Event {
         Self {
             inner: Any::global("Event")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -75,8 +75,8 @@ impl Event {
 impl Event {
     /// Getter of the `type` attribute.
     /// [`Event.type`](https://developer.mozilla.org/en-US/docs/Web/API/Event/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 }
 impl Event {
@@ -103,10 +103,10 @@ impl Event {
 impl Event {
     /// The composedPath method.
     /// [`Event.composedPath`](https://developer.mozilla.org/en-US/docs/Web/API/Event/composedPath)
-    pub fn composed_path(&self) -> Sequence<EventTarget> {
+    pub fn composed_path(&self) -> TypedArray<EventTarget> {
         self.inner
             .call("composedPath", &[])
-            .as_::<Sequence<EventTarget>>()
+            .as_::<TypedArray<EventTarget>>()
     }
 }
 impl Event {
@@ -210,21 +210,21 @@ impl Event {
 impl Event {
     /// The initEvent method.
     /// [`Event.initEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Event/initEvent)
-    pub fn init_event0(&self, type_: &DOMString) -> Undefined {
+    pub fn init_event0(&self, type_: &JsString) -> Undefined {
         self.inner
             .call("initEvent", &[type_.into()])
             .as_::<Undefined>()
     }
     /// The initEvent method.
     /// [`Event.initEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Event/initEvent)
-    pub fn init_event1(&self, type_: &DOMString, bubbles: bool) -> Undefined {
+    pub fn init_event1(&self, type_: &JsString, bubbles: bool) -> Undefined {
         self.inner
             .call("initEvent", &[type_.into(), bubbles.into()])
             .as_::<Undefined>()
     }
     /// The initEvent method.
     /// [`Event.initEvent`](https://developer.mozilla.org/en-US/docs/Web/API/Event/initEvent)
-    pub fn init_event2(&self, type_: &DOMString, bubbles: bool, cancelable: bool) -> Undefined {
+    pub fn init_event2(&self, type_: &JsString, bubbles: bool, cancelable: bool) -> Undefined {
         self.inner
             .call(
                 "initEvent",

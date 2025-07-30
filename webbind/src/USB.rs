@@ -51,20 +51,20 @@ impl From<&USBDeviceRequestOptions> for Any {
 }
 
 impl USBDeviceRequestOptions {
-    pub fn filters(&self) -> Sequence<Any> {
-        self.inner.get("filters").as_::<Sequence<Any>>()
+    pub fn filters(&self) -> TypedArray<Any> {
+        self.inner.get("filters").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_filters(&mut self, value: &Sequence<Any>) {
+    pub fn set_filters(&mut self, value: &TypedArray<Any>) {
         self.inner.set("filters", value);
     }
 }
 impl USBDeviceRequestOptions {
-    pub fn exclusion_filters(&self) -> Sequence<Any> {
-        self.inner.get("exclusionFilters").as_::<Sequence<Any>>()
+    pub fn exclusion_filters(&self) -> TypedArray<Any> {
+        self.inner.get("exclusionFilters").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_exclusion_filters(&mut self, value: &Sequence<Any>) {
+    pub fn set_exclusion_filters(&mut self, value: &TypedArray<Any>) {
         self.inner.set("exclusionFilters", value);
     }
 }
@@ -152,10 +152,10 @@ impl USB {
 impl USB {
     /// The getDevices method.
     /// [`USB.getDevices`](https://developer.mozilla.org/en-US/docs/Web/API/USB/getDevices)
-    pub fn get_devices(&self) -> Promise<Sequence<USBDevice>> {
+    pub fn get_devices(&self) -> Promise<TypedArray<USBDevice>> {
         self.inner
             .call("getDevices", &[])
-            .as_::<Promise<Sequence<USBDevice>>>()
+            .as_::<Promise<TypedArray<USBDevice>>>()
     }
 }
 impl USB {

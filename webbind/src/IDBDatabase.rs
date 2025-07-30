@@ -187,8 +187,8 @@ jsbind::utils::impl_dyn_cast!(IDBDatabase);
 impl IDBDatabase {
     /// Getter of the `name` attribute.
     /// [`IDBDatabase.name`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl IDBDatabase {
@@ -246,7 +246,7 @@ impl IDBDatabase {
 impl IDBDatabase {
     /// The createObjectStore method.
     /// [`IDBDatabase.createObjectStore`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/createObjectStore)
-    pub fn create_object_store0(&self, name: &DOMString) -> IDBObjectStore {
+    pub fn create_object_store0(&self, name: &JsString) -> IDBObjectStore {
         self.inner
             .call("createObjectStore", &[name.into()])
             .as_::<IDBObjectStore>()
@@ -255,7 +255,7 @@ impl IDBDatabase {
     /// [`IDBDatabase.createObjectStore`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/createObjectStore)
     pub fn create_object_store1(
         &self,
-        name: &DOMString,
+        name: &JsString,
         options: &IDBObjectStoreParameters,
     ) -> IDBObjectStore {
         self.inner
@@ -266,7 +266,7 @@ impl IDBDatabase {
 impl IDBDatabase {
     /// The deleteObjectStore method.
     /// [`IDBDatabase.deleteObjectStore`](https://developer.mozilla.org/en-US/docs/Web/API/IDBDatabase/deleteObjectStore)
-    pub fn delete_object_store(&self, name: &DOMString) -> Undefined {
+    pub fn delete_object_store(&self, name: &JsString) -> Undefined {
         self.inner
             .call("deleteObjectStore", &[name.into()])
             .as_::<Undefined>()

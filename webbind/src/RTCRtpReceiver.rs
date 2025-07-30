@@ -258,7 +258,7 @@ impl RTCRtpReceiver {
 impl RTCRtpReceiver {
     /// The getCapabilities method.
     /// [`RTCRtpReceiver.getCapabilities`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver/getCapabilities)
-    pub fn get_capabilities(kind: &DOMString) -> RTCRtpCapabilities {
+    pub fn get_capabilities(kind: &JsString) -> RTCRtpCapabilities {
         Any::global("RTCRtpReceiver")
             .call("getCapabilities", &[kind.into()])
             .as_::<RTCRtpCapabilities>()
@@ -276,19 +276,19 @@ impl RTCRtpReceiver {
 impl RTCRtpReceiver {
     /// The getContributingSources method.
     /// [`RTCRtpReceiver.getContributingSources`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver/getContributingSources)
-    pub fn get_contributing_sources(&self) -> Sequence<RTCRtpContributingSource> {
+    pub fn get_contributing_sources(&self) -> TypedArray<RTCRtpContributingSource> {
         self.inner
             .call("getContributingSources", &[])
-            .as_::<Sequence<RTCRtpContributingSource>>()
+            .as_::<TypedArray<RTCRtpContributingSource>>()
     }
 }
 impl RTCRtpReceiver {
     /// The getSynchronizationSources method.
     /// [`RTCRtpReceiver.getSynchronizationSources`](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpReceiver/getSynchronizationSources)
-    pub fn get_synchronization_sources(&self) -> Sequence<RTCRtpSynchronizationSource> {
+    pub fn get_synchronization_sources(&self) -> TypedArray<RTCRtpSynchronizationSource> {
         self.inner
             .call("getSynchronizationSources", &[])
-            .as_::<Sequence<RTCRtpSynchronizationSource>>()
+            .as_::<TypedArray<RTCRtpSynchronizationSource>>()
     }
 }
 impl RTCRtpReceiver {

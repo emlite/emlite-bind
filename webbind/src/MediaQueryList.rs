@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(MediaQueryList);
 impl MediaQueryList {
     /// Getter of the `media` attribute.
     /// [`MediaQueryList.media`](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/media)
-    pub fn media(&self) -> CSSOMString {
-        self.inner.get("media").as_::<CSSOMString>()
+    pub fn media(&self) -> JsString {
+        self.inner.get("media").as_::<JsString>()
     }
 }
 impl MediaQueryList {

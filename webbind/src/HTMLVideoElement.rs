@@ -108,13 +108,13 @@ impl HTMLVideoElement {
 impl HTMLVideoElement {
     /// Getter of the `poster` attribute.
     /// [`HTMLVideoElement.poster`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/poster)
-    pub fn poster(&self) -> USVString {
-        self.inner.get("poster").as_::<USVString>()
+    pub fn poster(&self) -> JsString {
+        self.inner.get("poster").as_::<JsString>()
     }
 
     /// Setter of the `poster` attribute.
     /// [`HTMLVideoElement.poster`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLVideoElement/poster)
-    pub fn set_poster(&mut self, value: &USVString) {
+    pub fn set_poster(&mut self, value: &JsString) {
         self.inner.set("poster", value);
     }
 }

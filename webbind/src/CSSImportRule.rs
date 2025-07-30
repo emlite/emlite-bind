@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(CSSImportRule);
 impl CSSImportRule {
     /// Getter of the `href` attribute.
     /// [`CSSImportRule.href`](https://developer.mozilla.org/en-US/docs/Web/API/CSSImportRule/href)
-    pub fn href(&self) -> USVString {
-        self.inner.get("href").as_::<USVString>()
+    pub fn href(&self) -> JsString {
+        self.inner.get("href").as_::<JsString>()
     }
 }
 impl CSSImportRule {
@@ -79,14 +79,14 @@ impl CSSImportRule {
 impl CSSImportRule {
     /// Getter of the `layerName` attribute.
     /// [`CSSImportRule.layerName`](https://developer.mozilla.org/en-US/docs/Web/API/CSSImportRule/layerName)
-    pub fn layer_name(&self) -> CSSOMString {
-        self.inner.get("layerName").as_::<CSSOMString>()
+    pub fn layer_name(&self) -> JsString {
+        self.inner.get("layerName").as_::<JsString>()
     }
 }
 impl CSSImportRule {
     /// Getter of the `supportsText` attribute.
     /// [`CSSImportRule.supportsText`](https://developer.mozilla.org/en-US/docs/Web/API/CSSImportRule/supportsText)
-    pub fn supports_text(&self) -> CSSOMString {
-        self.inner.get("supportsText").as_::<CSSOMString>()
+    pub fn supports_text(&self) -> JsString {
+        self.inner.get("supportsText").as_::<JsString>()
     }
 }

@@ -68,28 +68,28 @@ impl FederatedCredential {
 impl FederatedCredential {
     /// Getter of the `provider` attribute.
     /// [`FederatedCredential.provider`](https://developer.mozilla.org/en-US/docs/Web/API/FederatedCredential/provider)
-    pub fn provider(&self) -> USVString {
-        self.inner.get("provider").as_::<USVString>()
+    pub fn provider(&self) -> JsString {
+        self.inner.get("provider").as_::<JsString>()
     }
 }
 impl FederatedCredential {
     /// Getter of the `protocol` attribute.
     /// [`FederatedCredential.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/FederatedCredential/protocol)
-    pub fn protocol(&self) -> DOMString {
-        self.inner.get("protocol").as_::<DOMString>()
+    pub fn protocol(&self) -> JsString {
+        self.inner.get("protocol").as_::<JsString>()
     }
 }
 impl FederatedCredential {
     /// Getter of the `name` attribute.
     /// [`FederatedCredential.name`](https://developer.mozilla.org/en-US/docs/Web/API/FederatedCredential/name)
-    pub fn name(&self) -> USVString {
-        self.inner.get("name").as_::<USVString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl FederatedCredential {
     /// Getter of the `iconURL` attribute.
     /// [`FederatedCredential.iconURL`](https://developer.mozilla.org/en-US/docs/Web/API/FederatedCredential/iconURL)
-    pub fn icon_url(&self) -> USVString {
-        self.inner.get("iconURL").as_::<USVString>()
+    pub fn icon_url(&self) -> JsString {
+        self.inner.get("iconURL").as_::<JsString>()
     }
 }

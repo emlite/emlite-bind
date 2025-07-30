@@ -72,24 +72,24 @@ impl PerformanceLongTaskTiming {
 impl PerformanceLongTaskTiming {
     /// Getter of the `name` attribute.
     /// [`PerformanceLongTaskTiming.name`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl PerformanceLongTaskTiming {
     /// Getter of the `entryType` attribute.
     /// [`PerformanceLongTaskTiming.entryType`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming/entryType)
-    pub fn entry_type(&self) -> DOMString {
-        self.inner.get("entryType").as_::<DOMString>()
+    pub fn entry_type(&self) -> JsString {
+        self.inner.get("entryType").as_::<JsString>()
     }
 }
 impl PerformanceLongTaskTiming {
     /// Getter of the `attribution` attribute.
     /// [`PerformanceLongTaskTiming.attribution`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongTaskTiming/attribution)
-    pub fn attribution(&self) -> FrozenArray<TaskAttributionTiming> {
+    pub fn attribution(&self) -> TypedArray<TaskAttributionTiming> {
         self.inner
             .get("attribution")
-            .as_::<FrozenArray<TaskAttributionTiming>>()
+            .as_::<TypedArray<TaskAttributionTiming>>()
     }
 }
 impl PerformanceLongTaskTiming {

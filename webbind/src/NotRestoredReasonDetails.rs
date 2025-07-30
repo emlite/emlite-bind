@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(NotRestoredReasonDetails);
 impl NotRestoredReasonDetails {
     /// Getter of the `reason` attribute.
     /// [`NotRestoredReasonDetails.reason`](https://developer.mozilla.org/en-US/docs/Web/API/NotRestoredReasonDetails/reason)
-    pub fn reason(&self) -> DOMString {
-        self.inner.get("reason").as_::<DOMString>()
+    pub fn reason(&self) -> JsString {
+        self.inner.get("reason").as_::<JsString>()
     }
 }
 impl NotRestoredReasonDetails {

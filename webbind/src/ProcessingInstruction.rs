@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(ProcessingInstruction);
 impl ProcessingInstruction {
     /// Getter of the `target` attribute.
     /// [`ProcessingInstruction.target`](https://developer.mozilla.org/en-US/docs/Web/API/ProcessingInstruction/target)
-    pub fn target(&self) -> DOMString {
-        self.inner.get("target").as_::<DOMString>()
+    pub fn target(&self) -> JsString {
+        self.inner.get("target").as_::<JsString>()
     }
 }
 impl ProcessingInstruction {

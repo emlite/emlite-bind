@@ -27,8 +27,8 @@ impl Response {
         self.inner.get("headers")
     }
 
-    /// `response.text()` – consumes the body and resolves to DOMString.
-    pub fn text(&self) -> Promise<String> {
+    /// `response.text()` – consumes the body and resolves to JsString.
+    pub fn text(&self) -> Promise<JsString> {
         self.inner.call("text", &[]).as_::<Promise<_>>()
     }
     /// `response.json()` – resolves to any JS value (`Any`).

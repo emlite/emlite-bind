@@ -68,13 +68,13 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// Getter of the `accept` attribute.
     /// [`HTMLInputElement.accept`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/accept)
-    pub fn accept(&self) -> DOMString {
-        self.inner.get("accept").as_::<DOMString>()
+    pub fn accept(&self) -> JsString {
+        self.inner.get("accept").as_::<JsString>()
     }
 
     /// Setter of the `accept` attribute.
     /// [`HTMLInputElement.accept`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/accept)
-    pub fn set_accept(&mut self, value: &DOMString) {
+    pub fn set_accept(&mut self, value: &JsString) {
         self.inner.set("accept", value);
     }
 }
@@ -94,26 +94,26 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// Getter of the `alt` attribute.
     /// [`HTMLInputElement.alt`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/alt)
-    pub fn alt(&self) -> DOMString {
-        self.inner.get("alt").as_::<DOMString>()
+    pub fn alt(&self) -> JsString {
+        self.inner.get("alt").as_::<JsString>()
     }
 
     /// Setter of the `alt` attribute.
     /// [`HTMLInputElement.alt`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/alt)
-    pub fn set_alt(&mut self, value: &DOMString) {
+    pub fn set_alt(&mut self, value: &JsString) {
         self.inner.set("alt", value);
     }
 }
 impl HTMLInputElement {
     /// Getter of the `autocomplete` attribute.
     /// [`HTMLInputElement.autocomplete`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/autocomplete)
-    pub fn autocomplete(&self) -> DOMString {
-        self.inner.get("autocomplete").as_::<DOMString>()
+    pub fn autocomplete(&self) -> JsString {
+        self.inner.get("autocomplete").as_::<JsString>()
     }
 
     /// Setter of the `autocomplete` attribute.
     /// [`HTMLInputElement.autocomplete`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/autocomplete)
-    pub fn set_autocomplete(&mut self, value: &DOMString) {
+    pub fn set_autocomplete(&mut self, value: &JsString) {
         self.inner.set("autocomplete", value);
     }
 }
@@ -146,26 +146,26 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// Getter of the `colorSpace` attribute.
     /// [`HTMLInputElement.colorSpace`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/colorSpace)
-    pub fn color_space(&self) -> DOMString {
-        self.inner.get("colorSpace").as_::<DOMString>()
+    pub fn color_space(&self) -> JsString {
+        self.inner.get("colorSpace").as_::<JsString>()
     }
 
     /// Setter of the `colorSpace` attribute.
     /// [`HTMLInputElement.colorSpace`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/colorSpace)
-    pub fn set_color_space(&mut self, value: &DOMString) {
+    pub fn set_color_space(&mut self, value: &JsString) {
         self.inner.set("colorSpace", value);
     }
 }
 impl HTMLInputElement {
     /// Getter of the `dirName` attribute.
     /// [`HTMLInputElement.dirName`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/dirName)
-    pub fn dir_name(&self) -> DOMString {
-        self.inner.get("dirName").as_::<DOMString>()
+    pub fn dir_name(&self) -> JsString {
+        self.inner.get("dirName").as_::<JsString>()
     }
 
     /// Setter of the `dirName` attribute.
     /// [`HTMLInputElement.dirName`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/dirName)
-    pub fn set_dir_name(&mut self, value: &DOMString) {
+    pub fn set_dir_name(&mut self, value: &JsString) {
         self.inner.set("dirName", value);
     }
 }
@@ -205,39 +205,39 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// Getter of the `formAction` attribute.
     /// [`HTMLInputElement.formAction`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/formAction)
-    pub fn form_action(&self) -> USVString {
-        self.inner.get("formAction").as_::<USVString>()
+    pub fn form_action(&self) -> JsString {
+        self.inner.get("formAction").as_::<JsString>()
     }
 
     /// Setter of the `formAction` attribute.
     /// [`HTMLInputElement.formAction`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/formAction)
-    pub fn set_form_action(&mut self, value: &USVString) {
+    pub fn set_form_action(&mut self, value: &JsString) {
         self.inner.set("formAction", value);
     }
 }
 impl HTMLInputElement {
     /// Getter of the `formEnctype` attribute.
     /// [`HTMLInputElement.formEnctype`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/formEnctype)
-    pub fn form_enctype(&self) -> DOMString {
-        self.inner.get("formEnctype").as_::<DOMString>()
+    pub fn form_enctype(&self) -> JsString {
+        self.inner.get("formEnctype").as_::<JsString>()
     }
 
     /// Setter of the `formEnctype` attribute.
     /// [`HTMLInputElement.formEnctype`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/formEnctype)
-    pub fn set_form_enctype(&mut self, value: &DOMString) {
+    pub fn set_form_enctype(&mut self, value: &JsString) {
         self.inner.set("formEnctype", value);
     }
 }
 impl HTMLInputElement {
     /// Getter of the `formMethod` attribute.
     /// [`HTMLInputElement.formMethod`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/formMethod)
-    pub fn form_method(&self) -> DOMString {
-        self.inner.get("formMethod").as_::<DOMString>()
+    pub fn form_method(&self) -> JsString {
+        self.inner.get("formMethod").as_::<JsString>()
     }
 
     /// Setter of the `formMethod` attribute.
     /// [`HTMLInputElement.formMethod`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/formMethod)
-    pub fn set_form_method(&mut self, value: &DOMString) {
+    pub fn set_form_method(&mut self, value: &JsString) {
         self.inner.set("formMethod", value);
     }
 }
@@ -257,13 +257,13 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// Getter of the `formTarget` attribute.
     /// [`HTMLInputElement.formTarget`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/formTarget)
-    pub fn form_target(&self) -> DOMString {
-        self.inner.get("formTarget").as_::<DOMString>()
+    pub fn form_target(&self) -> JsString {
+        self.inner.get("formTarget").as_::<JsString>()
     }
 
     /// Setter of the `formTarget` attribute.
     /// [`HTMLInputElement.formTarget`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/formTarget)
-    pub fn set_form_target(&mut self, value: &DOMString) {
+    pub fn set_form_target(&mut self, value: &JsString) {
         self.inner.set("formTarget", value);
     }
 }
@@ -303,13 +303,13 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// Getter of the `max` attribute.
     /// [`HTMLInputElement.max`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/max)
-    pub fn max(&self) -> DOMString {
-        self.inner.get("max").as_::<DOMString>()
+    pub fn max(&self) -> JsString {
+        self.inner.get("max").as_::<JsString>()
     }
 
     /// Setter of the `max` attribute.
     /// [`HTMLInputElement.max`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/max)
-    pub fn set_max(&mut self, value: &DOMString) {
+    pub fn set_max(&mut self, value: &JsString) {
         self.inner.set("max", value);
     }
 }
@@ -329,13 +329,13 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// Getter of the `min` attribute.
     /// [`HTMLInputElement.min`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/min)
-    pub fn min(&self) -> DOMString {
-        self.inner.get("min").as_::<DOMString>()
+    pub fn min(&self) -> JsString {
+        self.inner.get("min").as_::<JsString>()
     }
 
     /// Setter of the `min` attribute.
     /// [`HTMLInputElement.min`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/min)
-    pub fn set_min(&mut self, value: &DOMString) {
+    pub fn set_min(&mut self, value: &JsString) {
         self.inner.set("min", value);
     }
 }
@@ -368,39 +368,39 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// Getter of the `name` attribute.
     /// [`HTMLInputElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`HTMLInputElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/name)
-    pub fn set_name(&mut self, value: &DOMString) {
+    pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
     }
 }
 impl HTMLInputElement {
     /// Getter of the `pattern` attribute.
     /// [`HTMLInputElement.pattern`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/pattern)
-    pub fn pattern(&self) -> DOMString {
-        self.inner.get("pattern").as_::<DOMString>()
+    pub fn pattern(&self) -> JsString {
+        self.inner.get("pattern").as_::<JsString>()
     }
 
     /// Setter of the `pattern` attribute.
     /// [`HTMLInputElement.pattern`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/pattern)
-    pub fn set_pattern(&mut self, value: &DOMString) {
+    pub fn set_pattern(&mut self, value: &JsString) {
         self.inner.set("pattern", value);
     }
 }
 impl HTMLInputElement {
     /// Getter of the `placeholder` attribute.
     /// [`HTMLInputElement.placeholder`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/placeholder)
-    pub fn placeholder(&self) -> DOMString {
-        self.inner.get("placeholder").as_::<DOMString>()
+    pub fn placeholder(&self) -> JsString {
+        self.inner.get("placeholder").as_::<JsString>()
     }
 
     /// Setter of the `placeholder` attribute.
     /// [`HTMLInputElement.placeholder`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/placeholder)
-    pub fn set_placeholder(&mut self, value: &DOMString) {
+    pub fn set_placeholder(&mut self, value: &JsString) {
         self.inner.set("placeholder", value);
     }
 }
@@ -446,65 +446,65 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// Getter of the `src` attribute.
     /// [`HTMLInputElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/src)
-    pub fn src(&self) -> USVString {
-        self.inner.get("src").as_::<USVString>()
+    pub fn src(&self) -> JsString {
+        self.inner.get("src").as_::<JsString>()
     }
 
     /// Setter of the `src` attribute.
     /// [`HTMLInputElement.src`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/src)
-    pub fn set_src(&mut self, value: &USVString) {
+    pub fn set_src(&mut self, value: &JsString) {
         self.inner.set("src", value);
     }
 }
 impl HTMLInputElement {
     /// Getter of the `step` attribute.
     /// [`HTMLInputElement.step`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/step)
-    pub fn step(&self) -> DOMString {
-        self.inner.get("step").as_::<DOMString>()
+    pub fn step(&self) -> JsString {
+        self.inner.get("step").as_::<JsString>()
     }
 
     /// Setter of the `step` attribute.
     /// [`HTMLInputElement.step`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/step)
-    pub fn set_step(&mut self, value: &DOMString) {
+    pub fn set_step(&mut self, value: &JsString) {
         self.inner.set("step", value);
     }
 }
 impl HTMLInputElement {
     /// Getter of the `type` attribute.
     /// [`HTMLInputElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 
     /// Setter of the `type` attribute.
     /// [`HTMLInputElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/type)
-    pub fn set_type_(&mut self, value: &DOMString) {
+    pub fn set_type_(&mut self, value: &JsString) {
         self.inner.set("type", value);
     }
 }
 impl HTMLInputElement {
     /// Getter of the `defaultValue` attribute.
     /// [`HTMLInputElement.defaultValue`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/defaultValue)
-    pub fn default_value(&self) -> DOMString {
-        self.inner.get("defaultValue").as_::<DOMString>()
+    pub fn default_value(&self) -> JsString {
+        self.inner.get("defaultValue").as_::<JsString>()
     }
 
     /// Setter of the `defaultValue` attribute.
     /// [`HTMLInputElement.defaultValue`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/defaultValue)
-    pub fn set_default_value(&mut self, value: &DOMString) {
+    pub fn set_default_value(&mut self, value: &JsString) {
         self.inner.set("defaultValue", value);
     }
 }
 impl HTMLInputElement {
     /// Getter of the `value` attribute.
     /// [`HTMLInputElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/value)
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> JsString {
+        self.inner.get("value").as_::<JsString>()
     }
 
     /// Setter of the `value` attribute.
     /// [`HTMLInputElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/value)
-    pub fn set_value(&mut self, value: &DOMString) {
+    pub fn set_value(&mut self, value: &JsString) {
         self.inner.set("value", value);
     }
 }
@@ -588,8 +588,8 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// Getter of the `validationMessage` attribute.
     /// [`HTMLInputElement.validationMessage`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/validationMessage)
-    pub fn validation_message(&self) -> DOMString {
-        self.inner.get("validationMessage").as_::<DOMString>()
+    pub fn validation_message(&self) -> JsString {
+        self.inner.get("validationMessage").as_::<JsString>()
     }
 }
 impl HTMLInputElement {
@@ -609,7 +609,7 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// The setCustomValidity method.
     /// [`HTMLInputElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setCustomValidity)
-    pub fn set_custom_validity(&self, error: &DOMString) -> Undefined {
+    pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
         self.inner
             .call("setCustomValidity", &[error.into()])
             .as_::<Undefined>()
@@ -658,20 +658,20 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// Getter of the `selectionDirection` attribute.
     /// [`HTMLInputElement.selectionDirection`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/selectionDirection)
-    pub fn selection_direction(&self) -> DOMString {
-        self.inner.get("selectionDirection").as_::<DOMString>()
+    pub fn selection_direction(&self) -> JsString {
+        self.inner.get("selectionDirection").as_::<JsString>()
     }
 
     /// Setter of the `selectionDirection` attribute.
     /// [`HTMLInputElement.selectionDirection`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/selectionDirection)
-    pub fn set_selection_direction(&mut self, value: &DOMString) {
+    pub fn set_selection_direction(&mut self, value: &JsString) {
         self.inner.set("selectionDirection", value);
     }
 }
 impl HTMLInputElement {
     /// The setRangeText method.
     /// [`HTMLInputElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setRangeText)
-    pub fn set_range_text0(&self, replacement: &DOMString, start: u32, end: u32) -> Undefined {
+    pub fn set_range_text0(&self, replacement: &JsString, start: u32, end: u32) -> Undefined {
         self.inner
             .call(
                 "setRangeText",
@@ -683,7 +683,7 @@ impl HTMLInputElement {
     /// [`HTMLInputElement.setRangeText`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setRangeText)
     pub fn set_range_text1(
         &self,
-        replacement: &DOMString,
+        replacement: &JsString,
         start: u32,
         end: u32,
         selection_mode: &SelectionMode,
@@ -711,7 +711,7 @@ impl HTMLInputElement {
     }
     /// The setSelectionRange method.
     /// [`HTMLInputElement.setSelectionRange`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange)
-    pub fn set_selection_range1(&self, start: u32, end: u32, direction: &DOMString) -> Undefined {
+    pub fn set_selection_range1(&self, start: u32, end: u32, direction: &JsString) -> Undefined {
         self.inner
             .call(
                 "setSelectionRange",
@@ -743,48 +743,48 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// Getter of the `webkitEntries` attribute.
     /// [`HTMLInputElement.webkitEntries`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/webkitEntries)
-    pub fn webkit_entries(&self) -> FrozenArray<FileSystemEntry> {
+    pub fn webkit_entries(&self) -> TypedArray<FileSystemEntry> {
         self.inner
             .get("webkitEntries")
-            .as_::<FrozenArray<FileSystemEntry>>()
+            .as_::<TypedArray<FileSystemEntry>>()
     }
 }
 impl HTMLInputElement {
     /// Getter of the `capture` attribute.
     /// [`HTMLInputElement.capture`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/capture)
-    pub fn capture(&self) -> DOMString {
-        self.inner.get("capture").as_::<DOMString>()
+    pub fn capture(&self) -> JsString {
+        self.inner.get("capture").as_::<JsString>()
     }
 
     /// Setter of the `capture` attribute.
     /// [`HTMLInputElement.capture`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/capture)
-    pub fn set_capture(&mut self, value: &DOMString) {
+    pub fn set_capture(&mut self, value: &JsString) {
         self.inner.set("capture", value);
     }
 }
 impl HTMLInputElement {
     /// Getter of the `align` attribute.
     /// [`HTMLInputElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/align)
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> JsString {
+        self.inner.get("align").as_::<JsString>()
     }
 
     /// Setter of the `align` attribute.
     /// [`HTMLInputElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/align)
-    pub fn set_align(&mut self, value: &DOMString) {
+    pub fn set_align(&mut self, value: &JsString) {
         self.inner.set("align", value);
     }
 }
 impl HTMLInputElement {
     /// Getter of the `useMap` attribute.
     /// [`HTMLInputElement.useMap`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/useMap)
-    pub fn use_map(&self) -> DOMString {
-        self.inner.get("useMap").as_::<DOMString>()
+    pub fn use_map(&self) -> JsString {
+        self.inner.get("useMap").as_::<JsString>()
     }
 
     /// Setter of the `useMap` attribute.
     /// [`HTMLInputElement.useMap`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/useMap)
-    pub fn set_use_map(&mut self, value: &DOMString) {
+    pub fn set_use_map(&mut self, value: &JsString) {
         self.inner.set("useMap", value);
     }
 }
@@ -804,13 +804,13 @@ impl HTMLInputElement {
 impl HTMLInputElement {
     /// Getter of the `popoverTargetAction` attribute.
     /// [`HTMLInputElement.popoverTargetAction`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/popoverTargetAction)
-    pub fn popover_target_action(&self) -> DOMString {
-        self.inner.get("popoverTargetAction").as_::<DOMString>()
+    pub fn popover_target_action(&self) -> JsString {
+        self.inner.get("popoverTargetAction").as_::<JsString>()
     }
 
     /// Setter of the `popoverTargetAction` attribute.
     /// [`HTMLInputElement.popoverTargetAction`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/popoverTargetAction)
-    pub fn set_popover_target_action(&mut self, value: &DOMString) {
+    pub fn set_popover_target_action(&mut self, value: &JsString) {
         self.inner.set("popoverTargetAction", value);
     }
 }

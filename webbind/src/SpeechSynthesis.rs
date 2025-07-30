@@ -122,9 +122,9 @@ impl SpeechSynthesis {
 impl SpeechSynthesis {
     /// The getVoices method.
     /// [`SpeechSynthesis.getVoices`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/getVoices)
-    pub fn get_voices(&self) -> Sequence<SpeechSynthesisVoice> {
+    pub fn get_voices(&self) -> TypedArray<SpeechSynthesisVoice> {
         self.inner
             .call("getVoices", &[])
-            .as_::<Sequence<SpeechSynthesisVoice>>()
+            .as_::<TypedArray<SpeechSynthesisVoice>>()
     }
 }

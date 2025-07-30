@@ -72,15 +72,15 @@ impl PerformanceLongAnimationFrameTiming {
 impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `name` attribute.
     /// [`PerformanceLongAnimationFrameTiming.name`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `entryType` attribute.
     /// [`PerformanceLongAnimationFrameTiming.entryType`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/entryType)
-    pub fn entry_type(&self) -> DOMString {
-        self.inner.get("entryType").as_::<DOMString>()
+    pub fn entry_type(&self) -> JsString {
+        self.inner.get("entryType").as_::<JsString>()
     }
 }
 impl PerformanceLongAnimationFrameTiming {
@@ -114,10 +114,10 @@ impl PerformanceLongAnimationFrameTiming {
 impl PerformanceLongAnimationFrameTiming {
     /// Getter of the `scripts` attribute.
     /// [`PerformanceLongAnimationFrameTiming.scripts`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceLongAnimationFrameTiming/scripts)
-    pub fn scripts(&self) -> FrozenArray<PerformanceScriptTiming> {
+    pub fn scripts(&self) -> TypedArray<PerformanceScriptTiming> {
         self.inner
             .get("scripts")
-            .as_::<FrozenArray<PerformanceScriptTiming>>()
+            .as_::<TypedArray<PerformanceScriptTiming>>()
     }
 }
 impl PerformanceLongAnimationFrameTiming {

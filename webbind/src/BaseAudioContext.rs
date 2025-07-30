@@ -303,8 +303,8 @@ impl BaseAudioContext {
     /// [`BaseAudioContext.createIIRFilter`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createIIRFilter)
     pub fn create_iir_filter(
         &self,
-        feedforward: Sequence<f64>,
-        feedback: Sequence<f64>,
+        feedforward: TypedArray<f64>,
+        feedback: TypedArray<f64>,
     ) -> IIRFilterNode {
         self.inner
             .call("createIIRFilter", &[feedforward.into(), feedback.into()])
@@ -330,7 +330,11 @@ impl BaseAudioContext {
 impl BaseAudioContext {
     /// The createPeriodicWave method.
     /// [`BaseAudioContext.createPeriodicWave`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createPeriodicWave)
-    pub fn create_periodic_wave0(&self, real: Sequence<f32>, imag: Sequence<f32>) -> PeriodicWave {
+    pub fn create_periodic_wave0(
+        &self,
+        real: TypedArray<f32>,
+        imag: TypedArray<f32>,
+    ) -> PeriodicWave {
         self.inner
             .call("createPeriodicWave", &[real.into(), imag.into()])
             .as_::<PeriodicWave>()
@@ -339,8 +343,8 @@ impl BaseAudioContext {
     /// [`BaseAudioContext.createPeriodicWave`](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/createPeriodicWave)
     pub fn create_periodic_wave1(
         &self,
-        real: Sequence<f32>,
-        imag: Sequence<f32>,
+        real: TypedArray<f32>,
+        imag: TypedArray<f32>,
         constraints: &PeriodicWaveConstraints,
     ) -> PeriodicWave {
         self.inner

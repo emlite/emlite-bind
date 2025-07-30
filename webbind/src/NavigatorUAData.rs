@@ -51,20 +51,20 @@ impl From<&NavigatorUABrandVersion> for Any {
 }
 
 impl NavigatorUABrandVersion {
-    pub fn brand(&self) -> DOMString {
-        self.inner.get("brand").as_::<DOMString>()
+    pub fn brand(&self) -> JsString {
+        self.inner.get("brand").as_::<JsString>()
     }
 
-    pub fn set_brand(&mut self, value: &DOMString) {
+    pub fn set_brand(&mut self, value: &JsString) {
         self.inner.set("brand", value);
     }
 }
 impl NavigatorUABrandVersion {
-    pub fn version(&self) -> DOMString {
-        self.inner.get("version").as_::<DOMString>()
+    pub fn version(&self) -> JsString {
+        self.inner.get("version").as_::<JsString>()
     }
 
-    pub fn set_version(&mut self, value: &DOMString) {
+    pub fn set_version(&mut self, value: &JsString) {
         self.inner.set("version", value);
     }
 }
@@ -119,60 +119,60 @@ impl From<&UADataValues> for Any {
 }
 
 impl UADataValues {
-    pub fn architecture(&self) -> DOMString {
-        self.inner.get("architecture").as_::<DOMString>()
+    pub fn architecture(&self) -> JsString {
+        self.inner.get("architecture").as_::<JsString>()
     }
 
-    pub fn set_architecture(&mut self, value: &DOMString) {
+    pub fn set_architecture(&mut self, value: &JsString) {
         self.inner.set("architecture", value);
     }
 }
 impl UADataValues {
-    pub fn bitness(&self) -> DOMString {
-        self.inner.get("bitness").as_::<DOMString>()
+    pub fn bitness(&self) -> JsString {
+        self.inner.get("bitness").as_::<JsString>()
     }
 
-    pub fn set_bitness(&mut self, value: &DOMString) {
+    pub fn set_bitness(&mut self, value: &JsString) {
         self.inner.set("bitness", value);
     }
 }
 impl UADataValues {
-    pub fn brands(&self) -> Sequence<NavigatorUABrandVersion> {
+    pub fn brands(&self) -> TypedArray<NavigatorUABrandVersion> {
         self.inner
             .get("brands")
-            .as_::<Sequence<NavigatorUABrandVersion>>()
+            .as_::<TypedArray<NavigatorUABrandVersion>>()
     }
 
-    pub fn set_brands(&mut self, value: &Sequence<NavigatorUABrandVersion>) {
+    pub fn set_brands(&mut self, value: &TypedArray<NavigatorUABrandVersion>) {
         self.inner.set("brands", value);
     }
 }
 impl UADataValues {
-    pub fn form_factors(&self) -> Sequence<DOMString> {
-        self.inner.get("formFactors").as_::<Sequence<DOMString>>()
+    pub fn form_factors(&self) -> TypedArray<JsString> {
+        self.inner.get("formFactors").as_::<TypedArray<JsString>>()
     }
 
-    pub fn set_form_factors(&mut self, value: &Sequence<DOMString>) {
+    pub fn set_form_factors(&mut self, value: &TypedArray<JsString>) {
         self.inner.set("formFactors", value);
     }
 }
 impl UADataValues {
-    pub fn full_version_list(&self) -> Sequence<NavigatorUABrandVersion> {
+    pub fn full_version_list(&self) -> TypedArray<NavigatorUABrandVersion> {
         self.inner
             .get("fullVersionList")
-            .as_::<Sequence<NavigatorUABrandVersion>>()
+            .as_::<TypedArray<NavigatorUABrandVersion>>()
     }
 
-    pub fn set_full_version_list(&mut self, value: &Sequence<NavigatorUABrandVersion>) {
+    pub fn set_full_version_list(&mut self, value: &TypedArray<NavigatorUABrandVersion>) {
         self.inner.set("fullVersionList", value);
     }
 }
 impl UADataValues {
-    pub fn model(&self) -> DOMString {
-        self.inner.get("model").as_::<DOMString>()
+    pub fn model(&self) -> JsString {
+        self.inner.get("model").as_::<JsString>()
     }
 
-    pub fn set_model(&mut self, value: &DOMString) {
+    pub fn set_model(&mut self, value: &JsString) {
         self.inner.set("model", value);
     }
 }
@@ -186,29 +186,29 @@ impl UADataValues {
     }
 }
 impl UADataValues {
-    pub fn platform(&self) -> DOMString {
-        self.inner.get("platform").as_::<DOMString>()
+    pub fn platform(&self) -> JsString {
+        self.inner.get("platform").as_::<JsString>()
     }
 
-    pub fn set_platform(&mut self, value: &DOMString) {
+    pub fn set_platform(&mut self, value: &JsString) {
         self.inner.set("platform", value);
     }
 }
 impl UADataValues {
-    pub fn platform_version(&self) -> DOMString {
-        self.inner.get("platformVersion").as_::<DOMString>()
+    pub fn platform_version(&self) -> JsString {
+        self.inner.get("platformVersion").as_::<JsString>()
     }
 
-    pub fn set_platform_version(&mut self, value: &DOMString) {
+    pub fn set_platform_version(&mut self, value: &JsString) {
         self.inner.set("platformVersion", value);
     }
 }
 impl UADataValues {
-    pub fn ua_full_version(&self) -> DOMString {
-        self.inner.get("uaFullVersion").as_::<DOMString>()
+    pub fn ua_full_version(&self) -> JsString {
+        self.inner.get("uaFullVersion").as_::<JsString>()
     }
 
-    pub fn set_ua_full_version(&mut self, value: &DOMString) {
+    pub fn set_ua_full_version(&mut self, value: &JsString) {
         self.inner.set("uaFullVersion", value);
     }
 }
@@ -272,13 +272,13 @@ impl From<&UALowEntropyJSON> for Any {
 }
 
 impl UALowEntropyJSON {
-    pub fn brands(&self) -> Sequence<NavigatorUABrandVersion> {
+    pub fn brands(&self) -> TypedArray<NavigatorUABrandVersion> {
         self.inner
             .get("brands")
-            .as_::<Sequence<NavigatorUABrandVersion>>()
+            .as_::<TypedArray<NavigatorUABrandVersion>>()
     }
 
-    pub fn set_brands(&mut self, value: &Sequence<NavigatorUABrandVersion>) {
+    pub fn set_brands(&mut self, value: &TypedArray<NavigatorUABrandVersion>) {
         self.inner.set("brands", value);
     }
 }
@@ -292,11 +292,11 @@ impl UALowEntropyJSON {
     }
 }
 impl UALowEntropyJSON {
-    pub fn platform(&self) -> DOMString {
-        self.inner.get("platform").as_::<DOMString>()
+    pub fn platform(&self) -> JsString {
+        self.inner.get("platform").as_::<JsString>()
     }
 
-    pub fn set_platform(&mut self, value: &DOMString) {
+    pub fn set_platform(&mut self, value: &JsString) {
         self.inner.set("platform", value);
     }
 }
@@ -358,10 +358,10 @@ jsbind::utils::impl_dyn_cast!(NavigatorUAData);
 impl NavigatorUAData {
     /// Getter of the `brands` attribute.
     /// [`NavigatorUAData.brands`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorUAData/brands)
-    pub fn brands(&self) -> FrozenArray<NavigatorUABrandVersion> {
+    pub fn brands(&self) -> TypedArray<NavigatorUABrandVersion> {
         self.inner
             .get("brands")
-            .as_::<FrozenArray<NavigatorUABrandVersion>>()
+            .as_::<TypedArray<NavigatorUABrandVersion>>()
     }
 }
 impl NavigatorUAData {
@@ -374,14 +374,14 @@ impl NavigatorUAData {
 impl NavigatorUAData {
     /// Getter of the `platform` attribute.
     /// [`NavigatorUAData.platform`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorUAData/platform)
-    pub fn platform(&self) -> DOMString {
-        self.inner.get("platform").as_::<DOMString>()
+    pub fn platform(&self) -> JsString {
+        self.inner.get("platform").as_::<JsString>()
     }
 }
 impl NavigatorUAData {
     /// The getHighEntropyValues method.
     /// [`NavigatorUAData.getHighEntropyValues`](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorUAData/getHighEntropyValues)
-    pub fn get_high_entropy_values(&self, hints: &Sequence<DOMString>) -> Promise<UADataValues> {
+    pub fn get_high_entropy_values(&self, hints: &TypedArray<JsString>) -> Promise<UADataValues> {
         self.inner
             .call("getHighEntropyValues", &[hints.into()])
             .as_::<Promise<UADataValues>>()

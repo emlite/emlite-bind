@@ -65,10 +65,10 @@ export function rust(idlType) {
   const { n, unsigned } = flat(idlType);
   const jsbindMap = {
     undefined: "Undefined",
-    DOMString: "DOMString",
-    USVString: "USVString",
-    ByteString: "ByteString",
-    CSSOMString: "CSSOMString",
+    DOMString: "JsString",
+    USVString: "JsString",
+    ByteString: "JsString",
+    CSSOMString: "JsString",
     object: "Object",
     any: "Any",
     Uint8Array: "Uint8Array",
@@ -92,7 +92,7 @@ export function rust(idlType) {
     const elem = Array.isArray(inner) ? inner[0] : inner;
 
     if (idlType.generic === "sequence") {
-      return `Sequence<${rust(elem)}>`;
+      return `TypedArray<${rust(elem)}>`;
     }
 
     if (idlType.generic === "Promise") {
@@ -100,11 +100,11 @@ export function rust(idlType) {
     }
 
     if (idlType.generic === "FrozenArray") {
-      return `FrozenArray<${rust(elem)}>`;
+      return `TypedArray<${rust(elem)}>`;
     }
 
     if (idlType.generic === "ObservableArray") {
-      return `ObservableArray<${rust(elem)}>`;
+      return `TypedArray<${rust(elem)}>`;
     }
 
     if (idlType.generic === "record") {

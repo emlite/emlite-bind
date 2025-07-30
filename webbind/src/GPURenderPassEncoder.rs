@@ -131,7 +131,7 @@ impl GPURenderPassEncoder {
 impl GPURenderPassEncoder {
     /// The executeBundles method.
     /// [`GPURenderPassEncoder.executeBundles`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPassEncoder/executeBundles)
-    pub fn execute_bundles(&self, bundles: &Sequence<GPURenderBundle>) -> Undefined {
+    pub fn execute_bundles(&self, bundles: &TypedArray<GPURenderBundle>) -> Undefined {
         self.inner
             .call("executeBundles", &[bundles.into()])
             .as_::<Undefined>()
@@ -147,20 +147,20 @@ impl GPURenderPassEncoder {
 impl GPURenderPassEncoder {
     /// Getter of the `label` attribute.
     /// [`GPURenderPassEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPassEncoder/label)
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
     }
 
     /// Setter of the `label` attribute.
     /// [`GPURenderPassEncoder.label`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPassEncoder/label)
-    pub fn set_label(&mut self, value: &USVString) {
+    pub fn set_label(&mut self, value: &JsString) {
         self.inner.set("label", value);
     }
 }
 impl GPURenderPassEncoder {
     /// The pushDebugGroup method.
     /// [`GPURenderPassEncoder.pushDebugGroup`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPassEncoder/pushDebugGroup)
-    pub fn push_debug_group(&self, group_label: &USVString) -> Undefined {
+    pub fn push_debug_group(&self, group_label: &JsString) -> Undefined {
         self.inner
             .call("pushDebugGroup", &[group_label.into()])
             .as_::<Undefined>()
@@ -176,7 +176,7 @@ impl GPURenderPassEncoder {
 impl GPURenderPassEncoder {
     /// The insertDebugMarker method.
     /// [`GPURenderPassEncoder.insertDebugMarker`](https://developer.mozilla.org/en-US/docs/Web/API/GPURenderPassEncoder/insertDebugMarker)
-    pub fn insert_debug_marker(&self, marker_label: &USVString) -> Undefined {
+    pub fn insert_debug_marker(&self, marker_label: &JsString) -> Undefined {
         self.inner
             .call("insertDebugMarker", &[marker_label.into()])
             .as_::<Undefined>()

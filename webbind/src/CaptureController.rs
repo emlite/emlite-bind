@@ -90,10 +90,10 @@ impl CaptureController {
 impl CaptureController {
     /// The getSupportedZoomLevels method.
     /// [`CaptureController.getSupportedZoomLevels`](https://developer.mozilla.org/en-US/docs/Web/API/CaptureController/getSupportedZoomLevels)
-    pub fn get_supported_zoom_levels(&self) -> Sequence<i32> {
+    pub fn get_supported_zoom_levels(&self) -> TypedArray<i32> {
         self.inner
             .call("getSupportedZoomLevels", &[])
-            .as_::<Sequence<i32>>()
+            .as_::<TypedArray<i32>>()
     }
 }
 impl CaptureController {

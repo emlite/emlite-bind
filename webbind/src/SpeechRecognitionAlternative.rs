@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(SpeechRecognitionAlternative);
 impl SpeechRecognitionAlternative {
     /// Getter of the `transcript` attribute.
     /// [`SpeechRecognitionAlternative.transcript`](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognitionAlternative/transcript)
-    pub fn transcript(&self) -> DOMString {
-        self.inner.get("transcript").as_::<DOMString>()
+    pub fn transcript(&self) -> JsString {
+        self.inner.get("transcript").as_::<JsString>()
     }
 }
 impl SpeechRecognitionAlternative {

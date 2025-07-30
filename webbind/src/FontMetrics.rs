@@ -65,8 +65,8 @@ impl FontMetrics {
 impl FontMetrics {
     /// Getter of the `advances` attribute.
     /// [`FontMetrics.advances`](https://developer.mozilla.org/en-US/docs/Web/API/FontMetrics/advances)
-    pub fn advances(&self) -> FrozenArray<f64> {
-        self.inner.get("advances").as_::<FrozenArray<f64>>()
+    pub fn advances(&self) -> TypedArray<f64> {
+        self.inner.get("advances").as_::<TypedArray<f64>>()
     }
 }
 impl FontMetrics {
@@ -142,14 +142,14 @@ impl FontMetrics {
 impl FontMetrics {
     /// Getter of the `baselines` attribute.
     /// [`FontMetrics.baselines`](https://developer.mozilla.org/en-US/docs/Web/API/FontMetrics/baselines)
-    pub fn baselines(&self) -> FrozenArray<Baseline> {
-        self.inner.get("baselines").as_::<FrozenArray<Baseline>>()
+    pub fn baselines(&self) -> TypedArray<Baseline> {
+        self.inner.get("baselines").as_::<TypedArray<Baseline>>()
     }
 }
 impl FontMetrics {
     /// Getter of the `fonts` attribute.
     /// [`FontMetrics.fonts`](https://developer.mozilla.org/en-US/docs/Web/API/FontMetrics/fonts)
-    pub fn fonts(&self) -> FrozenArray<Font> {
-        self.inner.get("fonts").as_::<FrozenArray<Font>>()
+    pub fn fonts(&self) -> TypedArray<Font> {
+        self.inner.get("fonts").as_::<TypedArray<Font>>()
     }
 }

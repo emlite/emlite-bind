@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(SecurityPolicyViolationEvent);
 
 impl SecurityPolicyViolationEvent {
     /// The `new SecurityPolicyViolationEvent(..)` constructor, creating a new SecurityPolicyViolationEvent instance
-    pub fn new0(type_: &DOMString) -> SecurityPolicyViolationEvent {
+    pub fn new0(type_: &JsString) -> SecurityPolicyViolationEvent {
         Self {
             inner: Any::global("SecurityPolicyViolationEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl SecurityPolicyViolationEvent {
     }
 
     /// The `new SecurityPolicyViolationEvent(..)` constructor, creating a new SecurityPolicyViolationEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> SecurityPolicyViolationEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> SecurityPolicyViolationEvent {
         Self {
             inner: Any::global("SecurityPolicyViolationEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -77,57 +77,57 @@ impl SecurityPolicyViolationEvent {
 impl SecurityPolicyViolationEvent {
     /// Getter of the `documentURI` attribute.
     /// [`SecurityPolicyViolationEvent.documentURI`](https://developer.mozilla.org/en-US/docs/Web/API/SecurityPolicyViolationEvent/documentURI)
-    pub fn document_uri(&self) -> USVString {
-        self.inner.get("documentURI").as_::<USVString>()
+    pub fn document_uri(&self) -> JsString {
+        self.inner.get("documentURI").as_::<JsString>()
     }
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `referrer` attribute.
     /// [`SecurityPolicyViolationEvent.referrer`](https://developer.mozilla.org/en-US/docs/Web/API/SecurityPolicyViolationEvent/referrer)
-    pub fn referrer(&self) -> USVString {
-        self.inner.get("referrer").as_::<USVString>()
+    pub fn referrer(&self) -> JsString {
+        self.inner.get("referrer").as_::<JsString>()
     }
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `blockedURI` attribute.
     /// [`SecurityPolicyViolationEvent.blockedURI`](https://developer.mozilla.org/en-US/docs/Web/API/SecurityPolicyViolationEvent/blockedURI)
-    pub fn blocked_uri(&self) -> USVString {
-        self.inner.get("blockedURI").as_::<USVString>()
+    pub fn blocked_uri(&self) -> JsString {
+        self.inner.get("blockedURI").as_::<JsString>()
     }
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `effectiveDirective` attribute.
     /// [`SecurityPolicyViolationEvent.effectiveDirective`](https://developer.mozilla.org/en-US/docs/Web/API/SecurityPolicyViolationEvent/effectiveDirective)
-    pub fn effective_directive(&self) -> DOMString {
-        self.inner.get("effectiveDirective").as_::<DOMString>()
+    pub fn effective_directive(&self) -> JsString {
+        self.inner.get("effectiveDirective").as_::<JsString>()
     }
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `violatedDirective` attribute.
     /// [`SecurityPolicyViolationEvent.violatedDirective`](https://developer.mozilla.org/en-US/docs/Web/API/SecurityPolicyViolationEvent/violatedDirective)
-    pub fn violated_directive(&self) -> DOMString {
-        self.inner.get("violatedDirective").as_::<DOMString>()
+    pub fn violated_directive(&self) -> JsString {
+        self.inner.get("violatedDirective").as_::<JsString>()
     }
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `originalPolicy` attribute.
     /// [`SecurityPolicyViolationEvent.originalPolicy`](https://developer.mozilla.org/en-US/docs/Web/API/SecurityPolicyViolationEvent/originalPolicy)
-    pub fn original_policy(&self) -> DOMString {
-        self.inner.get("originalPolicy").as_::<DOMString>()
+    pub fn original_policy(&self) -> JsString {
+        self.inner.get("originalPolicy").as_::<JsString>()
     }
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `sourceFile` attribute.
     /// [`SecurityPolicyViolationEvent.sourceFile`](https://developer.mozilla.org/en-US/docs/Web/API/SecurityPolicyViolationEvent/sourceFile)
-    pub fn source_file(&self) -> USVString {
-        self.inner.get("sourceFile").as_::<USVString>()
+    pub fn source_file(&self) -> JsString {
+        self.inner.get("sourceFile").as_::<JsString>()
     }
 }
 impl SecurityPolicyViolationEvent {
     /// Getter of the `sample` attribute.
     /// [`SecurityPolicyViolationEvent.sample`](https://developer.mozilla.org/en-US/docs/Web/API/SecurityPolicyViolationEvent/sample)
-    pub fn sample(&self) -> DOMString {
-        self.inner.get("sample").as_::<DOMString>()
+    pub fn sample(&self) -> JsString {
+        self.inner.get("sample").as_::<JsString>()
     }
 }
 impl SecurityPolicyViolationEvent {

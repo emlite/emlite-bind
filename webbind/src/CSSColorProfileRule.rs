@@ -58,28 +58,28 @@ jsbind::utils::impl_dyn_cast!(CSSColorProfileRule);
 impl CSSColorProfileRule {
     /// Getter of the `name` attribute.
     /// [`CSSColorProfileRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSColorProfileRule/name)
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl CSSColorProfileRule {
     /// Getter of the `src` attribute.
     /// [`CSSColorProfileRule.src`](https://developer.mozilla.org/en-US/docs/Web/API/CSSColorProfileRule/src)
-    pub fn src(&self) -> CSSOMString {
-        self.inner.get("src").as_::<CSSOMString>()
+    pub fn src(&self) -> JsString {
+        self.inner.get("src").as_::<JsString>()
     }
 }
 impl CSSColorProfileRule {
     /// Getter of the `renderingIntent` attribute.
     /// [`CSSColorProfileRule.renderingIntent`](https://developer.mozilla.org/en-US/docs/Web/API/CSSColorProfileRule/renderingIntent)
-    pub fn rendering_intent(&self) -> CSSOMString {
-        self.inner.get("renderingIntent").as_::<CSSOMString>()
+    pub fn rendering_intent(&self) -> JsString {
+        self.inner.get("renderingIntent").as_::<JsString>()
     }
 }
 impl CSSColorProfileRule {
     /// Getter of the `components` attribute.
     /// [`CSSColorProfileRule.components`](https://developer.mozilla.org/en-US/docs/Web/API/CSSColorProfileRule/components)
-    pub fn components(&self) -> CSSOMString {
-        self.inner.get("components").as_::<CSSOMString>()
+    pub fn components(&self) -> JsString {
+        self.inner.get("components").as_::<JsString>()
     }
 }

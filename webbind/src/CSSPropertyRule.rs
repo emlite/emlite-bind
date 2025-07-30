@@ -58,15 +58,15 @@ jsbind::utils::impl_dyn_cast!(CSSPropertyRule);
 impl CSSPropertyRule {
     /// Getter of the `name` attribute.
     /// [`CSSPropertyRule.name`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPropertyRule/name)
-    pub fn name(&self) -> CSSOMString {
-        self.inner.get("name").as_::<CSSOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl CSSPropertyRule {
     /// Getter of the `syntax` attribute.
     /// [`CSSPropertyRule.syntax`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPropertyRule/syntax)
-    pub fn syntax(&self) -> CSSOMString {
-        self.inner.get("syntax").as_::<CSSOMString>()
+    pub fn syntax(&self) -> JsString {
+        self.inner.get("syntax").as_::<JsString>()
     }
 }
 impl CSSPropertyRule {
@@ -79,7 +79,7 @@ impl CSSPropertyRule {
 impl CSSPropertyRule {
     /// Getter of the `initialValue` attribute.
     /// [`CSSPropertyRule.initialValue`](https://developer.mozilla.org/en-US/docs/Web/API/CSSPropertyRule/initialValue)
-    pub fn initial_value(&self) -> CSSOMString {
-        self.inner.get("initialValue").as_::<CSSOMString>()
+    pub fn initial_value(&self) -> JsString {
+        self.inner.get("initialValue").as_::<JsString>()
     }
 }

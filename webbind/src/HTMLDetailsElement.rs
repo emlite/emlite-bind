@@ -68,13 +68,13 @@ impl HTMLDetailsElement {
 impl HTMLDetailsElement {
     /// Getter of the `name` attribute.
     /// [`HTMLDetailsElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDetailsElement/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`HTMLDetailsElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDetailsElement/name)
-    pub fn set_name(&mut self, value: &DOMString) {
+    pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
     }
 }

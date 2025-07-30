@@ -89,12 +89,12 @@ impl CSSStyleSheet {
 impl CSSStyleSheet {
     /// The insertRule method.
     /// [`CSSStyleSheet.insertRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/insertRule)
-    pub fn insert_rule0(&self, rule: &CSSOMString) -> u32 {
+    pub fn insert_rule0(&self, rule: &JsString) -> u32 {
         self.inner.call("insertRule", &[rule.into()]).as_::<u32>()
     }
     /// The insertRule method.
     /// [`CSSStyleSheet.insertRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/insertRule)
-    pub fn insert_rule1(&self, rule: &CSSOMString, index: u32) -> u32 {
+    pub fn insert_rule1(&self, rule: &JsString, index: u32) -> u32 {
         self.inner
             .call("insertRule", &[rule.into(), index.into()])
             .as_::<u32>()
@@ -112,7 +112,7 @@ impl CSSStyleSheet {
 impl CSSStyleSheet {
     /// The replace method.
     /// [`CSSStyleSheet.replace`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/replace)
-    pub fn replace(&self, text: &USVString) -> Promise<CSSStyleSheet> {
+    pub fn replace(&self, text: &JsString) -> Promise<CSSStyleSheet> {
         self.inner
             .call("replace", &[text.into()])
             .as_::<Promise<CSSStyleSheet>>()
@@ -121,7 +121,7 @@ impl CSSStyleSheet {
 impl CSSStyleSheet {
     /// The replaceSync method.
     /// [`CSSStyleSheet.replaceSync`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/replaceSync)
-    pub fn replace_sync(&self, text: &USVString) -> Undefined {
+    pub fn replace_sync(&self, text: &JsString) -> Undefined {
         self.inner
             .call("replaceSync", &[text.into()])
             .as_::<Undefined>()
@@ -142,19 +142,19 @@ impl CSSStyleSheet {
     }
     /// The addRule method.
     /// [`CSSStyleSheet.addRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/addRule)
-    pub fn add_rule1(&self, selector: &DOMString) -> i32 {
+    pub fn add_rule1(&self, selector: &JsString) -> i32 {
         self.inner.call("addRule", &[selector.into()]).as_::<i32>()
     }
     /// The addRule method.
     /// [`CSSStyleSheet.addRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/addRule)
-    pub fn add_rule2(&self, selector: &DOMString, style: &DOMString) -> i32 {
+    pub fn add_rule2(&self, selector: &JsString, style: &JsString) -> i32 {
         self.inner
             .call("addRule", &[selector.into(), style.into()])
             .as_::<i32>()
     }
     /// The addRule method.
     /// [`CSSStyleSheet.addRule`](https://developer.mozilla.org/en-US/docs/Web/API/CSSStyleSheet/addRule)
-    pub fn add_rule3(&self, selector: &DOMString, style: &DOMString, index: u32) -> i32 {
+    pub fn add_rule3(&self, selector: &JsString, style: &JsString, index: u32) -> i32 {
         self.inner
             .call("addRule", &[selector.into(), style.into(), index.into()])
             .as_::<i32>()

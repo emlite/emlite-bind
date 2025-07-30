@@ -60,11 +60,11 @@ impl DetectedFace {
     }
 }
 impl DetectedFace {
-    pub fn landmarks(&self) -> Sequence<Any> {
-        self.inner.get("landmarks").as_::<Sequence<Any>>()
+    pub fn landmarks(&self) -> TypedArray<Any> {
+        self.inner.get("landmarks").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_landmarks(&mut self, value: &Sequence<Any>) {
+    pub fn set_landmarks(&mut self, value: &TypedArray<Any>) {
         self.inner.set("landmarks", value);
     }
 }
@@ -143,9 +143,9 @@ impl FaceDetector {
 impl FaceDetector {
     /// The detect method.
     /// [`FaceDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/FaceDetector/detect)
-    pub fn detect(&self, image: &Any) -> Promise<Sequence<DetectedFace>> {
+    pub fn detect(&self, image: &Any) -> Promise<TypedArray<DetectedFace>> {
         self.inner
             .call("detect", &[image.into()])
-            .as_::<Promise<Sequence<DetectedFace>>>()
+            .as_::<Promise<TypedArray<DetectedFace>>>()
     }
 }

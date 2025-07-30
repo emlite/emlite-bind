@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(WebSocket);
 
 impl WebSocket {
     /// The `new WebSocket(..)` constructor, creating a new WebSocket instance
-    pub fn new0(url: &USVString) -> WebSocket {
+    pub fn new0(url: &JsString) -> WebSocket {
         Self {
             inner: Any::global("WebSocket")
                 .new(&[url.into()])
@@ -66,7 +66,7 @@ impl WebSocket {
     }
 
     /// The `new WebSocket(..)` constructor, creating a new WebSocket instance
-    pub fn new1(url: &USVString, protocols: &Any) -> WebSocket {
+    pub fn new1(url: &JsString, protocols: &Any) -> WebSocket {
         Self {
             inner: Any::global("WebSocket")
                 .new(&[url.into(), protocols.into()])
@@ -77,8 +77,8 @@ impl WebSocket {
 impl WebSocket {
     /// Getter of the `url` attribute.
     /// [`WebSocket.url`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/url)
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> JsString {
+        self.inner.get("url").as_::<JsString>()
     }
 }
 impl WebSocket {
@@ -137,15 +137,15 @@ impl WebSocket {
 impl WebSocket {
     /// Getter of the `extensions` attribute.
     /// [`WebSocket.extensions`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/extensions)
-    pub fn extensions(&self) -> DOMString {
-        self.inner.get("extensions").as_::<DOMString>()
+    pub fn extensions(&self) -> JsString {
+        self.inner.get("extensions").as_::<JsString>()
     }
 }
 impl WebSocket {
     /// Getter of the `protocol` attribute.
     /// [`WebSocket.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/protocol)
-    pub fn protocol(&self) -> DOMString {
-        self.inner.get("protocol").as_::<DOMString>()
+    pub fn protocol(&self) -> JsString {
+        self.inner.get("protocol").as_::<JsString>()
     }
 }
 impl WebSocket {
@@ -161,7 +161,7 @@ impl WebSocket {
     }
     /// The close method.
     /// [`WebSocket.close`](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close)
-    pub fn close2(&self, code: u16, reason: &USVString) -> Undefined {
+    pub fn close2(&self, code: u16, reason: &JsString) -> Undefined {
         self.inner
             .call("close", &[code.into(), reason.into()])
             .as_::<Undefined>()

@@ -65,10 +65,10 @@ impl XRPlane {
 impl XRPlane {
     /// Getter of the `polygon` attribute.
     /// [`XRPlane.polygon`](https://developer.mozilla.org/en-US/docs/Web/API/XRPlane/polygon)
-    pub fn polygon(&self) -> FrozenArray<DOMPointReadOnly> {
+    pub fn polygon(&self) -> TypedArray<DOMPointReadOnly> {
         self.inner
             .get("polygon")
-            .as_::<FrozenArray<DOMPointReadOnly>>()
+            .as_::<TypedArray<DOMPointReadOnly>>()
     }
 }
 impl XRPlane {
@@ -88,7 +88,7 @@ impl XRPlane {
 impl XRPlane {
     /// Getter of the `semanticLabel` attribute.
     /// [`XRPlane.semanticLabel`](https://developer.mozilla.org/en-US/docs/Web/API/XRPlane/semanticLabel)
-    pub fn semantic_label(&self) -> DOMString {
-        self.inner.get("semanticLabel").as_::<DOMString>()
+    pub fn semantic_label(&self) -> JsString {
+        self.inner.get("semanticLabel").as_::<JsString>()
     }
 }

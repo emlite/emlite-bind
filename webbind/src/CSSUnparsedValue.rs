@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(CSSUnparsedValue);
 
 impl CSSUnparsedValue {
     /// The `new CSSUnparsedValue(..)` constructor, creating a new CSSUnparsedValue instance
-    pub fn new(members: &Sequence<Any>) -> CSSUnparsedValue {
+    pub fn new(members: &TypedArray<Any>) -> CSSUnparsedValue {
         Self {
             inner: Any::global("CSSUnparsedValue")
                 .new(&[members.into()])

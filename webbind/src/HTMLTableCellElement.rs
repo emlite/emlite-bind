@@ -94,13 +94,13 @@ impl HTMLTableCellElement {
 impl HTMLTableCellElement {
     /// Getter of the `headers` attribute.
     /// [`HTMLTableCellElement.headers`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/headers)
-    pub fn headers(&self) -> DOMString {
-        self.inner.get("headers").as_::<DOMString>()
+    pub fn headers(&self) -> JsString {
+        self.inner.get("headers").as_::<JsString>()
     }
 
     /// Setter of the `headers` attribute.
     /// [`HTMLTableCellElement.headers`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/headers)
-    pub fn set_headers(&mut self, value: &DOMString) {
+    pub fn set_headers(&mut self, value: &JsString) {
         self.inner.set("headers", value);
     }
 }
@@ -114,104 +114,104 @@ impl HTMLTableCellElement {
 impl HTMLTableCellElement {
     /// Getter of the `scope` attribute.
     /// [`HTMLTableCellElement.scope`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/scope)
-    pub fn scope(&self) -> DOMString {
-        self.inner.get("scope").as_::<DOMString>()
+    pub fn scope(&self) -> JsString {
+        self.inner.get("scope").as_::<JsString>()
     }
 
     /// Setter of the `scope` attribute.
     /// [`HTMLTableCellElement.scope`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/scope)
-    pub fn set_scope(&mut self, value: &DOMString) {
+    pub fn set_scope(&mut self, value: &JsString) {
         self.inner.set("scope", value);
     }
 }
 impl HTMLTableCellElement {
     /// Getter of the `abbr` attribute.
     /// [`HTMLTableCellElement.abbr`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/abbr)
-    pub fn abbr(&self) -> DOMString {
-        self.inner.get("abbr").as_::<DOMString>()
+    pub fn abbr(&self) -> JsString {
+        self.inner.get("abbr").as_::<JsString>()
     }
 
     /// Setter of the `abbr` attribute.
     /// [`HTMLTableCellElement.abbr`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/abbr)
-    pub fn set_abbr(&mut self, value: &DOMString) {
+    pub fn set_abbr(&mut self, value: &JsString) {
         self.inner.set("abbr", value);
     }
 }
 impl HTMLTableCellElement {
     /// Getter of the `align` attribute.
     /// [`HTMLTableCellElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/align)
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> JsString {
+        self.inner.get("align").as_::<JsString>()
     }
 
     /// Setter of the `align` attribute.
     /// [`HTMLTableCellElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/align)
-    pub fn set_align(&mut self, value: &DOMString) {
+    pub fn set_align(&mut self, value: &JsString) {
         self.inner.set("align", value);
     }
 }
 impl HTMLTableCellElement {
     /// Getter of the `axis` attribute.
     /// [`HTMLTableCellElement.axis`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/axis)
-    pub fn axis(&self) -> DOMString {
-        self.inner.get("axis").as_::<DOMString>()
+    pub fn axis(&self) -> JsString {
+        self.inner.get("axis").as_::<JsString>()
     }
 
     /// Setter of the `axis` attribute.
     /// [`HTMLTableCellElement.axis`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/axis)
-    pub fn set_axis(&mut self, value: &DOMString) {
+    pub fn set_axis(&mut self, value: &JsString) {
         self.inner.set("axis", value);
     }
 }
 impl HTMLTableCellElement {
     /// Getter of the `height` attribute.
     /// [`HTMLTableCellElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/height)
-    pub fn height(&self) -> DOMString {
-        self.inner.get("height").as_::<DOMString>()
+    pub fn height(&self) -> JsString {
+        self.inner.get("height").as_::<JsString>()
     }
 
     /// Setter of the `height` attribute.
     /// [`HTMLTableCellElement.height`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/height)
-    pub fn set_height(&mut self, value: &DOMString) {
+    pub fn set_height(&mut self, value: &JsString) {
         self.inner.set("height", value);
     }
 }
 impl HTMLTableCellElement {
     /// Getter of the `width` attribute.
     /// [`HTMLTableCellElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/width)
-    pub fn width(&self) -> DOMString {
-        self.inner.get("width").as_::<DOMString>()
+    pub fn width(&self) -> JsString {
+        self.inner.get("width").as_::<JsString>()
     }
 
     /// Setter of the `width` attribute.
     /// [`HTMLTableCellElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/width)
-    pub fn set_width(&mut self, value: &DOMString) {
+    pub fn set_width(&mut self, value: &JsString) {
         self.inner.set("width", value);
     }
 }
 impl HTMLTableCellElement {
     /// Getter of the `ch` attribute.
     /// [`HTMLTableCellElement.ch`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/ch)
-    pub fn ch(&self) -> DOMString {
-        self.inner.get("ch").as_::<DOMString>()
+    pub fn ch(&self) -> JsString {
+        self.inner.get("ch").as_::<JsString>()
     }
 
     /// Setter of the `ch` attribute.
     /// [`HTMLTableCellElement.ch`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/ch)
-    pub fn set_ch(&mut self, value: &DOMString) {
+    pub fn set_ch(&mut self, value: &JsString) {
         self.inner.set("ch", value);
     }
 }
 impl HTMLTableCellElement {
     /// Getter of the `chOff` attribute.
     /// [`HTMLTableCellElement.chOff`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/chOff)
-    pub fn ch_off(&self) -> DOMString {
-        self.inner.get("chOff").as_::<DOMString>()
+    pub fn ch_off(&self) -> JsString {
+        self.inner.get("chOff").as_::<JsString>()
     }
 
     /// Setter of the `chOff` attribute.
     /// [`HTMLTableCellElement.chOff`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/chOff)
-    pub fn set_ch_off(&mut self, value: &DOMString) {
+    pub fn set_ch_off(&mut self, value: &JsString) {
         self.inner.set("chOff", value);
     }
 }
@@ -231,26 +231,26 @@ impl HTMLTableCellElement {
 impl HTMLTableCellElement {
     /// Getter of the `vAlign` attribute.
     /// [`HTMLTableCellElement.vAlign`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/vAlign)
-    pub fn v_align(&self) -> DOMString {
-        self.inner.get("vAlign").as_::<DOMString>()
+    pub fn v_align(&self) -> JsString {
+        self.inner.get("vAlign").as_::<JsString>()
     }
 
     /// Setter of the `vAlign` attribute.
     /// [`HTMLTableCellElement.vAlign`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/vAlign)
-    pub fn set_v_align(&mut self, value: &DOMString) {
+    pub fn set_v_align(&mut self, value: &JsString) {
         self.inner.set("vAlign", value);
     }
 }
 impl HTMLTableCellElement {
     /// Getter of the `bgColor` attribute.
     /// [`HTMLTableCellElement.bgColor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/bgColor)
-    pub fn bg_color(&self) -> DOMString {
-        self.inner.get("bgColor").as_::<DOMString>()
+    pub fn bg_color(&self) -> JsString {
+        self.inner.get("bgColor").as_::<JsString>()
     }
 
     /// Setter of the `bgColor` attribute.
     /// [`HTMLTableCellElement.bgColor`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableCellElement/bgColor)
-    pub fn set_bg_color(&mut self, value: &DOMString) {
+    pub fn set_bg_color(&mut self, value: &JsString) {
         self.inner.set("bgColor", value);
     }
 }

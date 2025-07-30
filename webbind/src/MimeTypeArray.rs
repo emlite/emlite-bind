@@ -72,7 +72,7 @@ impl MimeTypeArray {
 impl MimeTypeArray {
     /// The namedItem method.
     /// [`MimeTypeArray.namedItem`](https://developer.mozilla.org/en-US/docs/Web/API/MimeTypeArray/namedItem)
-    pub fn named_item(&self, name: &DOMString) -> MimeType {
+    pub fn named_item(&self, name: &JsString) -> MimeType {
         self.inner
             .call("namedItem", &[name.into()])
             .as_::<MimeType>()

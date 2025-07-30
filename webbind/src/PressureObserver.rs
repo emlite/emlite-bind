@@ -163,18 +163,18 @@ impl PressureObserver {
 impl PressureObserver {
     /// The takeRecords method.
     /// [`PressureObserver.takeRecords`](https://developer.mozilla.org/en-US/docs/Web/API/PressureObserver/takeRecords)
-    pub fn take_records(&self) -> Sequence<PressureRecord> {
+    pub fn take_records(&self) -> TypedArray<PressureRecord> {
         self.inner
             .call("takeRecords", &[])
-            .as_::<Sequence<PressureRecord>>()
+            .as_::<TypedArray<PressureRecord>>()
     }
 }
 impl PressureObserver {
     /// Getter of the `knownSources` static attribute.
     /// [`PressureObserver.knownSources`](https://developer.mozilla.org/en-US/docs/Web/API/PressureObserver/knownSources)
-    pub fn known_sources() -> FrozenArray<PressureSource> {
+    pub fn known_sources() -> TypedArray<PressureSource> {
         Any::global("PressureObserver")
             .get("knownSources")
-            .as_::<FrozenArray<PressureSource>>()
+            .as_::<TypedArray<PressureSource>>()
     }
 }

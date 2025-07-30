@@ -60,20 +60,20 @@ impl DetectedText {
     }
 }
 impl DetectedText {
-    pub fn raw_value(&self) -> DOMString {
-        self.inner.get("rawValue").as_::<DOMString>()
+    pub fn raw_value(&self) -> JsString {
+        self.inner.get("rawValue").as_::<JsString>()
     }
 
-    pub fn set_raw_value(&mut self, value: &DOMString) {
+    pub fn set_raw_value(&mut self, value: &JsString) {
         self.inner.set("rawValue", value);
     }
 }
 impl DetectedText {
-    pub fn corner_points(&self) -> Sequence<Any> {
-        self.inner.get("cornerPoints").as_::<Sequence<Any>>()
+    pub fn corner_points(&self) -> TypedArray<Any> {
+        self.inner.get("cornerPoints").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_corner_points(&mut self, value: &Sequence<Any>) {
+    pub fn set_corner_points(&mut self, value: &TypedArray<Any>) {
         self.inner.set("cornerPoints", value);
     }
 }
@@ -143,9 +143,9 @@ impl TextDetector {
 impl TextDetector {
     /// The detect method.
     /// [`TextDetector.detect`](https://developer.mozilla.org/en-US/docs/Web/API/TextDetector/detect)
-    pub fn detect(&self, image: &Any) -> Promise<Sequence<DetectedText>> {
+    pub fn detect(&self, image: &Any) -> Promise<TypedArray<DetectedText>> {
         self.inner
             .call("detect", &[image.into()])
-            .as_::<Promise<Sequence<DetectedText>>>()
+            .as_::<Promise<TypedArray<DetectedText>>>()
     }
 }

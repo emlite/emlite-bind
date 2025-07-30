@@ -91,20 +91,20 @@ impl BluetoothRemoteGATTService {
 impl BluetoothRemoteGATTService {
     /// The getCharacteristics method.
     /// [`BluetoothRemoteGATTService.getCharacteristics`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/getCharacteristics)
-    pub fn get_characteristics0(&self) -> Promise<Sequence<BluetoothRemoteGATTCharacteristic>> {
+    pub fn get_characteristics0(&self) -> Promise<TypedArray<BluetoothRemoteGATTCharacteristic>> {
         self.inner
             .call("getCharacteristics", &[])
-            .as_::<Promise<Sequence<BluetoothRemoteGATTCharacteristic>>>()
+            .as_::<Promise<TypedArray<BluetoothRemoteGATTCharacteristic>>>()
     }
     /// The getCharacteristics method.
     /// [`BluetoothRemoteGATTService.getCharacteristics`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/getCharacteristics)
     pub fn get_characteristics1(
         &self,
         characteristic: &Any,
-    ) -> Promise<Sequence<BluetoothRemoteGATTCharacteristic>> {
+    ) -> Promise<TypedArray<BluetoothRemoteGATTCharacteristic>> {
         self.inner
             .call("getCharacteristics", &[characteristic.into()])
-            .as_::<Promise<Sequence<BluetoothRemoteGATTCharacteristic>>>()
+            .as_::<Promise<TypedArray<BluetoothRemoteGATTCharacteristic>>>()
     }
 }
 impl BluetoothRemoteGATTService {
@@ -119,20 +119,20 @@ impl BluetoothRemoteGATTService {
 impl BluetoothRemoteGATTService {
     /// The getIncludedServices method.
     /// [`BluetoothRemoteGATTService.getIncludedServices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/getIncludedServices)
-    pub fn get_included_services0(&self) -> Promise<Sequence<BluetoothRemoteGATTService>> {
+    pub fn get_included_services0(&self) -> Promise<TypedArray<BluetoothRemoteGATTService>> {
         self.inner
             .call("getIncludedServices", &[])
-            .as_::<Promise<Sequence<BluetoothRemoteGATTService>>>()
+            .as_::<Promise<TypedArray<BluetoothRemoteGATTService>>>()
     }
     /// The getIncludedServices method.
     /// [`BluetoothRemoteGATTService.getIncludedServices`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothRemoteGATTService/getIncludedServices)
     pub fn get_included_services1(
         &self,
         service: &Any,
-    ) -> Promise<Sequence<BluetoothRemoteGATTService>> {
+    ) -> Promise<TypedArray<BluetoothRemoteGATTService>> {
         self.inner
             .call("getIncludedServices", &[service.into()])
-            .as_::<Promise<Sequence<BluetoothRemoteGATTService>>>()
+            .as_::<Promise<TypedArray<BluetoothRemoteGATTService>>>()
     }
 }
 impl BluetoothRemoteGATTService {

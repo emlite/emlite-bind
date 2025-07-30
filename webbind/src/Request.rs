@@ -75,15 +75,15 @@ impl Request {
 impl Request {
     /// Getter of the `method` attribute.
     /// [`Request.method`](https://developer.mozilla.org/en-US/docs/Web/API/Request/method)
-    pub fn method(&self) -> ByteString {
-        self.inner.get("method").as_::<ByteString>()
+    pub fn method(&self) -> JsString {
+        self.inner.get("method").as_::<JsString>()
     }
 }
 impl Request {
     /// Getter of the `url` attribute.
     /// [`Request.url`](https://developer.mozilla.org/en-US/docs/Web/API/Request/url)
-    pub fn url(&self) -> USVString {
-        self.inner.get("url").as_::<USVString>()
+    pub fn url(&self) -> JsString {
+        self.inner.get("url").as_::<JsString>()
     }
 }
 impl Request {
@@ -103,8 +103,8 @@ impl Request {
 impl Request {
     /// Getter of the `referrer` attribute.
     /// [`Request.referrer`](https://developer.mozilla.org/en-US/docs/Web/API/Request/referrer)
-    pub fn referrer(&self) -> USVString {
-        self.inner.get("referrer").as_::<USVString>()
+    pub fn referrer(&self) -> JsString {
+        self.inner.get("referrer").as_::<JsString>()
     }
 }
 impl Request {
@@ -145,8 +145,8 @@ impl Request {
 impl Request {
     /// Getter of the `integrity` attribute.
     /// [`Request.integrity`](https://developer.mozilla.org/en-US/docs/Web/API/Request/integrity)
-    pub fn integrity(&self) -> DOMString {
-        self.inner.get("integrity").as_::<DOMString>()
+    pub fn integrity(&self) -> JsString {
+        self.inner.get("integrity").as_::<JsString>()
     }
 }
 impl Request {
@@ -252,7 +252,7 @@ impl Request {
 impl Request {
     /// The text method.
     /// [`Request.text`](https://developer.mozilla.org/en-US/docs/Web/API/Request/text)
-    pub fn text(&self) -> Promise<USVString> {
-        self.inner.call("text", &[]).as_::<Promise<USVString>>()
+    pub fn text(&self) -> Promise<JsString> {
+        self.inner.call("text", &[]).as_::<Promise<JsString>>()
     }
 }

@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(USBConnectionEvent);
 
 impl USBConnectionEvent {
     /// The `new USBConnectionEvent(..)` constructor, creating a new USBConnectionEvent instance
-    pub fn new(type_: &DOMString, event_init_dict: &Any) -> USBConnectionEvent {
+    pub fn new(type_: &JsString, event_init_dict: &Any) -> USBConnectionEvent {
         Self {
             inner: Any::global("USBConnectionEvent")
                 .new(&[type_.into(), event_init_dict.into()])

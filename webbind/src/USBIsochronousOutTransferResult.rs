@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(USBIsochronousOutTransferResult);
 impl USBIsochronousOutTransferResult {
     /// The `new USBIsochronousOutTransferResult(..)` constructor, creating a new USBIsochronousOutTransferResult instance
     pub fn new(
-        packets: &Sequence<USBIsochronousOutTransferPacket>,
+        packets: &TypedArray<USBIsochronousOutTransferPacket>,
     ) -> USBIsochronousOutTransferResult {
         Self {
             inner: Any::global("USBIsochronousOutTransferResult")
@@ -70,9 +70,9 @@ impl USBIsochronousOutTransferResult {
 impl USBIsochronousOutTransferResult {
     /// Getter of the `packets` attribute.
     /// [`USBIsochronousOutTransferResult.packets`](https://developer.mozilla.org/en-US/docs/Web/API/USBIsochronousOutTransferResult/packets)
-    pub fn packets(&self) -> FrozenArray<USBIsochronousOutTransferPacket> {
+    pub fn packets(&self) -> TypedArray<USBIsochronousOutTransferPacket> {
         self.inner
             .get("packets")
-            .as_::<FrozenArray<USBIsochronousOutTransferPacket>>()
+            .as_::<TypedArray<USBIsochronousOutTransferPacket>>()
     }
 }

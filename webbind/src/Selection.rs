@@ -51,11 +51,13 @@ impl From<&GetComposedRangesOptions> for Any {
 }
 
 impl GetComposedRangesOptions {
-    pub fn shadow_roots(&self) -> Sequence<ShadowRoot> {
-        self.inner.get("shadowRoots").as_::<Sequence<ShadowRoot>>()
+    pub fn shadow_roots(&self) -> TypedArray<ShadowRoot> {
+        self.inner
+            .get("shadowRoots")
+            .as_::<TypedArray<ShadowRoot>>()
     }
 
-    pub fn set_shadow_roots(&mut self, value: &Sequence<ShadowRoot>) {
+    pub fn set_shadow_roots(&mut self, value: &TypedArray<ShadowRoot>) {
         self.inner.set("shadowRoots", value);
     }
 }
@@ -159,15 +161,15 @@ impl Selection {
 impl Selection {
     /// Getter of the `type` attribute.
     /// [`Selection.type`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 }
 impl Selection {
     /// Getter of the `direction` attribute.
     /// [`Selection.direction`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/direction)
-    pub fn direction(&self) -> DOMString {
-        self.inner.get("direction").as_::<DOMString>()
+    pub fn direction(&self) -> JsString {
+        self.inner.get("direction").as_::<JsString>()
     }
 }
 impl Selection {
@@ -214,20 +216,20 @@ impl Selection {
 impl Selection {
     /// The getComposedRanges method.
     /// [`Selection.getComposedRanges`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/getComposedRanges)
-    pub fn get_composed_ranges0(&self) -> Sequence<StaticRange> {
+    pub fn get_composed_ranges0(&self) -> TypedArray<StaticRange> {
         self.inner
             .call("getComposedRanges", &[])
-            .as_::<Sequence<StaticRange>>()
+            .as_::<TypedArray<StaticRange>>()
     }
     /// The getComposedRanges method.
     /// [`Selection.getComposedRanges`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/getComposedRanges)
     pub fn get_composed_ranges1(
         &self,
         options: &GetComposedRangesOptions,
-    ) -> Sequence<StaticRange> {
+    ) -> TypedArray<StaticRange> {
         self.inner
             .call("getComposedRanges", &[options.into()])
-            .as_::<Sequence<StaticRange>>()
+            .as_::<TypedArray<StaticRange>>()
     }
 }
 impl Selection {
@@ -330,14 +332,14 @@ impl Selection {
     }
     /// The modify method.
     /// [`Selection.modify`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/modify)
-    pub fn modify1(&self, alter: &DOMString) -> Undefined {
+    pub fn modify1(&self, alter: &JsString) -> Undefined {
         self.inner
             .call("modify", &[alter.into()])
             .as_::<Undefined>()
     }
     /// The modify method.
     /// [`Selection.modify`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/modify)
-    pub fn modify2(&self, alter: &DOMString, direction: &DOMString) -> Undefined {
+    pub fn modify2(&self, alter: &JsString, direction: &JsString) -> Undefined {
         self.inner
             .call("modify", &[alter.into(), direction.into()])
             .as_::<Undefined>()
@@ -346,9 +348,9 @@ impl Selection {
     /// [`Selection.modify`](https://developer.mozilla.org/en-US/docs/Web/API/Selection/modify)
     pub fn modify3(
         &self,
-        alter: &DOMString,
-        direction: &DOMString,
-        granularity: &DOMString,
+        alter: &JsString,
+        direction: &JsString,
+        granularity: &JsString,
     ) -> Undefined {
         self.inner
             .call(

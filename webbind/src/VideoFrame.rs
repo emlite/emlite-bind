@@ -110,11 +110,11 @@ impl VideoFrameCopyToOptions {
     }
 }
 impl VideoFrameCopyToOptions {
-    pub fn layout(&self) -> Sequence<PlaneLayout> {
-        self.inner.get("layout").as_::<Sequence<PlaneLayout>>()
+    pub fn layout(&self) -> TypedArray<PlaneLayout> {
+        self.inner.get("layout").as_::<TypedArray<PlaneLayout>>()
     }
 
-    pub fn set_layout(&mut self, value: &Sequence<PlaneLayout>) {
+    pub fn set_layout(&mut self, value: &TypedArray<PlaneLayout>) {
         self.inner.set("layout", value);
     }
 }
@@ -377,10 +377,10 @@ impl VideoFrame {
 impl VideoFrame {
     /// The copyTo method.
     /// [`VideoFrame.copyTo`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/copyTo)
-    pub fn copy_to0(&self, destination: &Any) -> Promise<Sequence<PlaneLayout>> {
+    pub fn copy_to0(&self, destination: &Any) -> Promise<TypedArray<PlaneLayout>> {
         self.inner
             .call("copyTo", &[destination.into()])
-            .as_::<Promise<Sequence<PlaneLayout>>>()
+            .as_::<Promise<TypedArray<PlaneLayout>>>()
     }
     /// The copyTo method.
     /// [`VideoFrame.copyTo`](https://developer.mozilla.org/en-US/docs/Web/API/VideoFrame/copyTo)
@@ -388,10 +388,10 @@ impl VideoFrame {
         &self,
         destination: &Any,
         options: &VideoFrameCopyToOptions,
-    ) -> Promise<Sequence<PlaneLayout>> {
+    ) -> Promise<TypedArray<PlaneLayout>> {
         self.inner
             .call("copyTo", &[destination.into(), options.into()])
-            .as_::<Promise<Sequence<PlaneLayout>>>()
+            .as_::<Promise<TypedArray<PlaneLayout>>>()
     }
 }
 impl VideoFrame {

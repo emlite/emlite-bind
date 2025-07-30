@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(KeyboardEvent);
 
 impl KeyboardEvent {
     /// The `new KeyboardEvent(..)` constructor, creating a new KeyboardEvent instance
-    pub fn new0(type_: &DOMString) -> KeyboardEvent {
+    pub fn new0(type_: &JsString) -> KeyboardEvent {
         Self {
             inner: Any::global("KeyboardEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl KeyboardEvent {
     }
 
     /// The `new KeyboardEvent(..)` constructor, creating a new KeyboardEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> KeyboardEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> KeyboardEvent {
         Self {
             inner: Any::global("KeyboardEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -77,15 +77,15 @@ impl KeyboardEvent {
 impl KeyboardEvent {
     /// Getter of the `key` attribute.
     /// [`KeyboardEvent.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key)
-    pub fn key(&self) -> DOMString {
-        self.inner.get("key").as_::<DOMString>()
+    pub fn key(&self) -> JsString {
+        self.inner.get("key").as_::<JsString>()
     }
 }
 impl KeyboardEvent {
     /// Getter of the `code` attribute.
     /// [`KeyboardEvent.code`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code)
-    pub fn code(&self) -> DOMString {
-        self.inner.get("code").as_::<DOMString>()
+    pub fn code(&self) -> JsString {
+        self.inner.get("code").as_::<JsString>()
     }
 }
 impl KeyboardEvent {
@@ -140,7 +140,7 @@ impl KeyboardEvent {
 impl KeyboardEvent {
     /// The getModifierState method.
     /// [`KeyboardEvent.getModifierState`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState)
-    pub fn get_modifier_state(&self, key_arg: &DOMString) -> bool {
+    pub fn get_modifier_state(&self, key_arg: &JsString) -> bool {
         self.inner
             .call("getModifierState", &[key_arg.into()])
             .as_::<bool>()
@@ -149,14 +149,14 @@ impl KeyboardEvent {
 impl KeyboardEvent {
     /// The initKeyboardEvent method.
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
-    pub fn init_keyboard_event0(&self, type_arg: &DOMString) -> Undefined {
+    pub fn init_keyboard_event0(&self, type_arg: &JsString) -> Undefined {
         self.inner
             .call("initKeyboardEvent", &[type_arg.into()])
             .as_::<Undefined>()
     }
     /// The initKeyboardEvent method.
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
-    pub fn init_keyboard_event1(&self, type_arg: &DOMString, bubbles_arg: bool) -> Undefined {
+    pub fn init_keyboard_event1(&self, type_arg: &JsString, bubbles_arg: bool) -> Undefined {
         self.inner
             .call("initKeyboardEvent", &[type_arg.into(), bubbles_arg.into()])
             .as_::<Undefined>()
@@ -165,7 +165,7 @@ impl KeyboardEvent {
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
     pub fn init_keyboard_event2(
         &self,
-        type_arg: &DOMString,
+        type_arg: &JsString,
         bubbles_arg: bool,
         cancelable_arg: bool,
     ) -> Undefined {
@@ -180,7 +180,7 @@ impl KeyboardEvent {
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
     pub fn init_keyboard_event3(
         &self,
-        type_arg: &DOMString,
+        type_arg: &JsString,
         bubbles_arg: bool,
         cancelable_arg: bool,
         view_arg: &Window,
@@ -201,11 +201,11 @@ impl KeyboardEvent {
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
     pub fn init_keyboard_event4(
         &self,
-        type_arg: &DOMString,
+        type_arg: &JsString,
         bubbles_arg: bool,
         cancelable_arg: bool,
         view_arg: &Window,
-        key_arg: &DOMString,
+        key_arg: &JsString,
     ) -> Undefined {
         self.inner
             .call(
@@ -224,11 +224,11 @@ impl KeyboardEvent {
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
     pub fn init_keyboard_event5(
         &self,
-        type_arg: &DOMString,
+        type_arg: &JsString,
         bubbles_arg: bool,
         cancelable_arg: bool,
         view_arg: &Window,
-        key_arg: &DOMString,
+        key_arg: &JsString,
         location_arg: u32,
     ) -> Undefined {
         self.inner
@@ -249,11 +249,11 @@ impl KeyboardEvent {
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
     pub fn init_keyboard_event6(
         &self,
-        type_arg: &DOMString,
+        type_arg: &JsString,
         bubbles_arg: bool,
         cancelable_arg: bool,
         view_arg: &Window,
-        key_arg: &DOMString,
+        key_arg: &JsString,
         location_arg: u32,
         ctrl_key: bool,
     ) -> Undefined {
@@ -276,11 +276,11 @@ impl KeyboardEvent {
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
     pub fn init_keyboard_event7(
         &self,
-        type_arg: &DOMString,
+        type_arg: &JsString,
         bubbles_arg: bool,
         cancelable_arg: bool,
         view_arg: &Window,
-        key_arg: &DOMString,
+        key_arg: &JsString,
         location_arg: u32,
         ctrl_key: bool,
         alt_key: bool,
@@ -305,11 +305,11 @@ impl KeyboardEvent {
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
     pub fn init_keyboard_event8(
         &self,
-        type_arg: &DOMString,
+        type_arg: &JsString,
         bubbles_arg: bool,
         cancelable_arg: bool,
         view_arg: &Window,
-        key_arg: &DOMString,
+        key_arg: &JsString,
         location_arg: u32,
         ctrl_key: bool,
         alt_key: bool,
@@ -336,11 +336,11 @@ impl KeyboardEvent {
     /// [`KeyboardEvent.initKeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/initKeyboardEvent)
     pub fn init_keyboard_event9(
         &self,
-        type_arg: &DOMString,
+        type_arg: &JsString,
         bubbles_arg: bool,
         cancelable_arg: bool,
         view_arg: &Window,
-        key_arg: &DOMString,
+        key_arg: &JsString,
         location_arg: u32,
         ctrl_key: bool,
         alt_key: bool,

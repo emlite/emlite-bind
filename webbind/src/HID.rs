@@ -51,20 +51,20 @@ impl From<&HIDDeviceRequestOptions> for Any {
 }
 
 impl HIDDeviceRequestOptions {
-    pub fn filters(&self) -> Sequence<Any> {
-        self.inner.get("filters").as_::<Sequence<Any>>()
+    pub fn filters(&self) -> TypedArray<Any> {
+        self.inner.get("filters").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_filters(&mut self, value: &Sequence<Any>) {
+    pub fn set_filters(&mut self, value: &TypedArray<Any>) {
         self.inner.set("filters", value);
     }
 }
 impl HIDDeviceRequestOptions {
-    pub fn exclusion_filters(&self) -> Sequence<Any> {
-        self.inner.get("exclusionFilters").as_::<Sequence<Any>>()
+    pub fn exclusion_filters(&self) -> TypedArray<Any> {
+        self.inner.get("exclusionFilters").as_::<TypedArray<Any>>()
     }
 
-    pub fn set_exclusion_filters(&mut self, value: &Sequence<Any>) {
+    pub fn set_exclusion_filters(&mut self, value: &TypedArray<Any>) {
         self.inner.set("exclusionFilters", value);
     }
 }
@@ -152,10 +152,10 @@ impl HID {
 impl HID {
     /// The getDevices method.
     /// [`HID.getDevices`](https://developer.mozilla.org/en-US/docs/Web/API/HID/getDevices)
-    pub fn get_devices(&self) -> Promise<Sequence<HIDDevice>> {
+    pub fn get_devices(&self) -> Promise<TypedArray<HIDDevice>> {
         self.inner
             .call("getDevices", &[])
-            .as_::<Promise<Sequence<HIDDevice>>>()
+            .as_::<Promise<TypedArray<HIDDevice>>>()
     }
 }
 impl HID {
@@ -164,9 +164,9 @@ impl HID {
     pub fn request_device(
         &self,
         options: &HIDDeviceRequestOptions,
-    ) -> Promise<Sequence<HIDDevice>> {
+    ) -> Promise<TypedArray<HIDDevice>> {
         self.inner
             .call("requestDevice", &[options.into()])
-            .as_::<Promise<Sequence<HIDDevice>>>()
+            .as_::<Promise<TypedArray<HIDDevice>>>()
     }
 }

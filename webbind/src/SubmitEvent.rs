@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(SubmitEvent);
 
 impl SubmitEvent {
     /// The `new SubmitEvent(..)` constructor, creating a new SubmitEvent instance
-    pub fn new0(type_: &DOMString) -> SubmitEvent {
+    pub fn new0(type_: &JsString) -> SubmitEvent {
         Self {
             inner: Any::global("SubmitEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl SubmitEvent {
     }
 
     /// The `new SubmitEvent(..)` constructor, creating a new SubmitEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> SubmitEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> SubmitEvent {
         Self {
             inner: Any::global("SubmitEvent")
                 .new(&[type_.into(), event_init_dict.into()])

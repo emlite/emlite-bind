@@ -205,11 +205,11 @@ impl From<&MLOperatorOptions> for Any {
 }
 
 impl MLOperatorOptions {
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
     }
 
-    pub fn set_label(&mut self, value: &USVString) {
+    pub fn set_label(&mut self, value: &JsString) {
         self.inner.set("label", value);
     }
 }
@@ -332,29 +332,29 @@ impl From<&MLConv2dOptions> for Any {
 }
 
 impl MLConv2dOptions {
-    pub fn padding(&self) -> Sequence<u32> {
-        self.inner.get("padding").as_::<Sequence<u32>>()
+    pub fn padding(&self) -> TypedArray<u32> {
+        self.inner.get("padding").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_padding(&mut self, value: Sequence<u32>) {
+    pub fn set_padding(&mut self, value: TypedArray<u32>) {
         self.inner.set("padding", value);
     }
 }
 impl MLConv2dOptions {
-    pub fn strides(&self) -> Sequence<u32> {
-        self.inner.get("strides").as_::<Sequence<u32>>()
+    pub fn strides(&self) -> TypedArray<u32> {
+        self.inner.get("strides").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_strides(&mut self, value: Sequence<u32>) {
+    pub fn set_strides(&mut self, value: TypedArray<u32>) {
         self.inner.set("strides", value);
     }
 }
 impl MLConv2dOptions {
-    pub fn dilations(&self) -> Sequence<u32> {
-        self.inner.get("dilations").as_::<Sequence<u32>>()
+    pub fn dilations(&self) -> TypedArray<u32> {
+        self.inner.get("dilations").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_dilations(&mut self, value: Sequence<u32>) {
+    pub fn set_dilations(&mut self, value: TypedArray<u32>) {
         self.inner.set("dilations", value);
     }
 }
@@ -447,47 +447,47 @@ impl From<&MLConvTranspose2dOptions> for Any {
 }
 
 impl MLConvTranspose2dOptions {
-    pub fn padding(&self) -> Sequence<u32> {
-        self.inner.get("padding").as_::<Sequence<u32>>()
+    pub fn padding(&self) -> TypedArray<u32> {
+        self.inner.get("padding").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_padding(&mut self, value: Sequence<u32>) {
+    pub fn set_padding(&mut self, value: TypedArray<u32>) {
         self.inner.set("padding", value);
     }
 }
 impl MLConvTranspose2dOptions {
-    pub fn strides(&self) -> Sequence<u32> {
-        self.inner.get("strides").as_::<Sequence<u32>>()
+    pub fn strides(&self) -> TypedArray<u32> {
+        self.inner.get("strides").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_strides(&mut self, value: Sequence<u32>) {
+    pub fn set_strides(&mut self, value: TypedArray<u32>) {
         self.inner.set("strides", value);
     }
 }
 impl MLConvTranspose2dOptions {
-    pub fn dilations(&self) -> Sequence<u32> {
-        self.inner.get("dilations").as_::<Sequence<u32>>()
+    pub fn dilations(&self) -> TypedArray<u32> {
+        self.inner.get("dilations").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_dilations(&mut self, value: Sequence<u32>) {
+    pub fn set_dilations(&mut self, value: TypedArray<u32>) {
         self.inner.set("dilations", value);
     }
 }
 impl MLConvTranspose2dOptions {
-    pub fn output_padding(&self) -> Sequence<u32> {
-        self.inner.get("outputPadding").as_::<Sequence<u32>>()
+    pub fn output_padding(&self) -> TypedArray<u32> {
+        self.inner.get("outputPadding").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_output_padding(&mut self, value: Sequence<u32>) {
+    pub fn set_output_padding(&mut self, value: TypedArray<u32>) {
         self.inner.set("outputPadding", value);
     }
 }
 impl MLConvTranspose2dOptions {
-    pub fn output_sizes(&self) -> Sequence<u32> {
-        self.inner.get("outputSizes").as_::<Sequence<u32>>()
+    pub fn output_sizes(&self) -> TypedArray<u32> {
+        self.inner.get("outputSizes").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_output_sizes(&mut self, value: Sequence<u32>) {
+    pub fn set_output_sizes(&mut self, value: TypedArray<u32>) {
         self.inner.set("outputSizes", value);
     }
 }
@@ -926,13 +926,13 @@ impl MLGruOptions {
     }
 }
 impl MLGruOptions {
-    pub fn activations(&self) -> Sequence<MLRecurrentNetworkActivation> {
+    pub fn activations(&self) -> TypedArray<MLRecurrentNetworkActivation> {
         self.inner
             .get("activations")
-            .as_::<Sequence<MLRecurrentNetworkActivation>>()
+            .as_::<TypedArray<MLRecurrentNetworkActivation>>()
     }
 
-    pub fn set_activations(&mut self, value: &Sequence<MLRecurrentNetworkActivation>) {
+    pub fn set_activations(&mut self, value: &TypedArray<MLRecurrentNetworkActivation>) {
         self.inner.set("activations", value);
     }
 }
@@ -1023,13 +1023,13 @@ impl MLGruCellOptions {
     }
 }
 impl MLGruCellOptions {
-    pub fn activations(&self) -> Sequence<MLRecurrentNetworkActivation> {
+    pub fn activations(&self) -> TypedArray<MLRecurrentNetworkActivation> {
         self.inner
             .get("activations")
-            .as_::<Sequence<MLRecurrentNetworkActivation>>()
+            .as_::<TypedArray<MLRecurrentNetworkActivation>>()
     }
 
-    pub fn set_activations(&mut self, value: &Sequence<MLRecurrentNetworkActivation>) {
+    pub fn set_activations(&mut self, value: &TypedArray<MLRecurrentNetworkActivation>) {
         self.inner.set("activations", value);
     }
 }
@@ -1256,11 +1256,11 @@ impl MLLayerNormalizationOptions {
     }
 }
 impl MLLayerNormalizationOptions {
-    pub fn axes(&self) -> Sequence<u32> {
-        self.inner.get("axes").as_::<Sequence<u32>>()
+    pub fn axes(&self) -> TypedArray<u32> {
+        self.inner.get("axes").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_axes(&mut self, value: Sequence<u32>) {
+    pub fn set_axes(&mut self, value: TypedArray<u32>) {
         self.inner.set("axes", value);
     }
 }
@@ -1525,13 +1525,13 @@ impl MLLstmOptions {
     }
 }
 impl MLLstmOptions {
-    pub fn activations(&self) -> Sequence<MLRecurrentNetworkActivation> {
+    pub fn activations(&self) -> TypedArray<MLRecurrentNetworkActivation> {
         self.inner
             .get("activations")
-            .as_::<Sequence<MLRecurrentNetworkActivation>>()
+            .as_::<TypedArray<MLRecurrentNetworkActivation>>()
     }
 
-    pub fn set_activations(&mut self, value: &Sequence<MLRecurrentNetworkActivation>) {
+    pub fn set_activations(&mut self, value: &TypedArray<MLRecurrentNetworkActivation>) {
         self.inner.set("activations", value);
     }
 }
@@ -1622,13 +1622,13 @@ impl MLLstmCellOptions {
     }
 }
 impl MLLstmCellOptions {
-    pub fn activations(&self) -> Sequence<MLRecurrentNetworkActivation> {
+    pub fn activations(&self) -> TypedArray<MLRecurrentNetworkActivation> {
         self.inner
             .get("activations")
-            .as_::<Sequence<MLRecurrentNetworkActivation>>()
+            .as_::<TypedArray<MLRecurrentNetworkActivation>>()
     }
 
-    pub fn set_activations(&mut self, value: &Sequence<MLRecurrentNetworkActivation>) {
+    pub fn set_activations(&mut self, value: &TypedArray<MLRecurrentNetworkActivation>) {
         self.inner.set("activations", value);
     }
 }
@@ -1751,38 +1751,38 @@ impl From<&MLPool2dOptions> for Any {
 }
 
 impl MLPool2dOptions {
-    pub fn window_dimensions(&self) -> Sequence<u32> {
-        self.inner.get("windowDimensions").as_::<Sequence<u32>>()
+    pub fn window_dimensions(&self) -> TypedArray<u32> {
+        self.inner.get("windowDimensions").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_window_dimensions(&mut self, value: Sequence<u32>) {
+    pub fn set_window_dimensions(&mut self, value: TypedArray<u32>) {
         self.inner.set("windowDimensions", value);
     }
 }
 impl MLPool2dOptions {
-    pub fn padding(&self) -> Sequence<u32> {
-        self.inner.get("padding").as_::<Sequence<u32>>()
+    pub fn padding(&self) -> TypedArray<u32> {
+        self.inner.get("padding").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_padding(&mut self, value: Sequence<u32>) {
+    pub fn set_padding(&mut self, value: TypedArray<u32>) {
         self.inner.set("padding", value);
     }
 }
 impl MLPool2dOptions {
-    pub fn strides(&self) -> Sequence<u32> {
-        self.inner.get("strides").as_::<Sequence<u32>>()
+    pub fn strides(&self) -> TypedArray<u32> {
+        self.inner.get("strides").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_strides(&mut self, value: Sequence<u32>) {
+    pub fn set_strides(&mut self, value: TypedArray<u32>) {
         self.inner.set("strides", value);
     }
 }
 impl MLPool2dOptions {
-    pub fn dilations(&self) -> Sequence<u32> {
-        self.inner.get("dilations").as_::<Sequence<u32>>()
+    pub fn dilations(&self) -> TypedArray<u32> {
+        self.inner.get("dilations").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_dilations(&mut self, value: Sequence<u32>) {
+    pub fn set_dilations(&mut self, value: TypedArray<u32>) {
         self.inner.set("dilations", value);
     }
 }
@@ -1805,11 +1805,11 @@ impl MLPool2dOptions {
     }
 }
 impl MLPool2dOptions {
-    pub fn output_sizes(&self) -> Sequence<u32> {
-        self.inner.get("outputSizes").as_::<Sequence<u32>>()
+    pub fn output_sizes(&self) -> TypedArray<u32> {
+        self.inner.get("outputSizes").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_output_sizes(&mut self, value: Sequence<u32>) {
+    pub fn set_output_sizes(&mut self, value: TypedArray<u32>) {
         self.inner.set("outputSizes", value);
     }
 }
@@ -1864,11 +1864,11 @@ impl From<&MLReduceOptions> for Any {
 }
 
 impl MLReduceOptions {
-    pub fn axes(&self) -> Sequence<u32> {
-        self.inner.get("axes").as_::<Sequence<u32>>()
+    pub fn axes(&self) -> TypedArray<u32> {
+        self.inner.get("axes").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_axes(&mut self, value: Sequence<u32>) {
+    pub fn set_axes(&mut self, value: TypedArray<u32>) {
         self.inner.set("axes", value);
     }
 }
@@ -1941,29 +1941,29 @@ impl MLResample2dOptions {
     }
 }
 impl MLResample2dOptions {
-    pub fn scales(&self) -> Sequence<f32> {
-        self.inner.get("scales").as_::<Sequence<f32>>()
+    pub fn scales(&self) -> TypedArray<f32> {
+        self.inner.get("scales").as_::<TypedArray<f32>>()
     }
 
-    pub fn set_scales(&mut self, value: Sequence<f32>) {
+    pub fn set_scales(&mut self, value: TypedArray<f32>) {
         self.inner.set("scales", value);
     }
 }
 impl MLResample2dOptions {
-    pub fn sizes(&self) -> Sequence<u32> {
-        self.inner.get("sizes").as_::<Sequence<u32>>()
+    pub fn sizes(&self) -> TypedArray<u32> {
+        self.inner.get("sizes").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_sizes(&mut self, value: Sequence<u32>) {
+    pub fn set_sizes(&mut self, value: TypedArray<u32>) {
         self.inner.set("sizes", value);
     }
 }
 impl MLResample2dOptions {
-    pub fn axes(&self) -> Sequence<u32> {
-        self.inner.get("axes").as_::<Sequence<u32>>()
+    pub fn axes(&self) -> TypedArray<u32> {
+        self.inner.get("axes").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_axes(&mut self, value: Sequence<u32>) {
+    pub fn set_axes(&mut self, value: TypedArray<u32>) {
         self.inner.set("axes", value);
     }
 }
@@ -2018,11 +2018,11 @@ impl From<&MLReverseOptions> for Any {
 }
 
 impl MLReverseOptions {
-    pub fn axes(&self) -> Sequence<u32> {
-        self.inner.get("axes").as_::<Sequence<u32>>()
+    pub fn axes(&self) -> TypedArray<u32> {
+        self.inner.get("axes").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_axes(&mut self, value: Sequence<u32>) {
+    pub fn set_axes(&mut self, value: TypedArray<u32>) {
         self.inner.set("axes", value);
     }
 }
@@ -2136,11 +2136,11 @@ impl From<&MLSliceOptions> for Any {
 }
 
 impl MLSliceOptions {
-    pub fn strides(&self) -> Sequence<u32> {
-        self.inner.get("strides").as_::<Sequence<u32>>()
+    pub fn strides(&self) -> TypedArray<u32> {
+        self.inner.get("strides").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_strides(&mut self, value: Sequence<u32>) {
+    pub fn set_strides(&mut self, value: TypedArray<u32>) {
         self.inner.set("strides", value);
     }
 }
@@ -2254,11 +2254,11 @@ impl From<&MLTransposeOptions> for Any {
 }
 
 impl MLTransposeOptions {
-    pub fn permutation(&self) -> Sequence<u32> {
-        self.inner.get("permutation").as_::<Sequence<u32>>()
+    pub fn permutation(&self) -> TypedArray<u32> {
+        self.inner.get("permutation").as_::<TypedArray<u32>>()
     }
 
-    pub fn set_permutation(&mut self, value: Sequence<u32>) {
+    pub fn set_permutation(&mut self, value: TypedArray<u32>) {
         self.inner.set("permutation", value);
     }
 }
@@ -2398,7 +2398,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The input method.
     /// [`MLGraphBuilder.input`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/input)
-    pub fn input(&self, name: &USVString, descriptor: &MLOperandDescriptor) -> MLOperand {
+    pub fn input(&self, name: &JsString, descriptor: &MLOperandDescriptor) -> MLOperand {
         self.inner
             .call("input", &[name.into(), descriptor.into()])
             .as_::<MLOperand>()
@@ -2535,7 +2535,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The concat method.
     /// [`MLGraphBuilder.concat`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/concat)
-    pub fn concat0(&self, inputs: &Sequence<MLOperand>, axis: u32) -> MLOperand {
+    pub fn concat0(&self, inputs: &TypedArray<MLOperand>, axis: u32) -> MLOperand {
         self.inner
             .call("concat", &[inputs.into(), axis.into()])
             .as_::<MLOperand>()
@@ -2544,7 +2544,7 @@ impl MLGraphBuilder {
     /// [`MLGraphBuilder.concat`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/concat)
     pub fn concat1(
         &self,
-        inputs: &Sequence<MLOperand>,
+        inputs: &TypedArray<MLOperand>,
         axis: u32,
         options: &MLOperatorOptions,
     ) -> MLOperand {
@@ -3217,7 +3217,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The expand method.
     /// [`MLGraphBuilder.expand`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/expand)
-    pub fn expand0(&self, input: &MLOperand, new_shape: Sequence<u32>) -> MLOperand {
+    pub fn expand0(&self, input: &MLOperand, new_shape: TypedArray<u32>) -> MLOperand {
         self.inner
             .call("expand", &[input.into(), new_shape.into()])
             .as_::<MLOperand>()
@@ -3227,7 +3227,7 @@ impl MLGraphBuilder {
     pub fn expand1(
         &self,
         input: &MLOperand,
-        new_shape: Sequence<u32>,
+        new_shape: TypedArray<u32>,
         options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
@@ -3341,7 +3341,7 @@ impl MLGraphBuilder {
         recurrent_weight: &MLOperand,
         steps: u32,
         hidden_size: u32,
-    ) -> Sequence<MLOperand> {
+    ) -> TypedArray<MLOperand> {
         self.inner
             .call(
                 "gru",
@@ -3353,7 +3353,7 @@ impl MLGraphBuilder {
                     hidden_size.into(),
                 ],
             )
-            .as_::<Sequence<MLOperand>>()
+            .as_::<TypedArray<MLOperand>>()
     }
     /// The gru method.
     /// [`MLGraphBuilder.gru`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/gru)
@@ -3365,7 +3365,7 @@ impl MLGraphBuilder {
         steps: u32,
         hidden_size: u32,
         options: &MLGruOptions,
-    ) -> Sequence<MLOperand> {
+    ) -> TypedArray<MLOperand> {
         self.inner
             .call(
                 "gru",
@@ -3378,7 +3378,7 @@ impl MLGraphBuilder {
                     options.into(),
                 ],
             )
-            .as_::<Sequence<MLOperand>>()
+            .as_::<TypedArray<MLOperand>>()
     }
 }
 impl MLGraphBuilder {
@@ -3545,7 +3545,7 @@ impl MLGraphBuilder {
         recurrent_weight: &MLOperand,
         steps: u32,
         hidden_size: u32,
-    ) -> Sequence<MLOperand> {
+    ) -> TypedArray<MLOperand> {
         self.inner
             .call(
                 "lstm",
@@ -3557,7 +3557,7 @@ impl MLGraphBuilder {
                     hidden_size.into(),
                 ],
             )
-            .as_::<Sequence<MLOperand>>()
+            .as_::<TypedArray<MLOperand>>()
     }
     /// The lstm method.
     /// [`MLGraphBuilder.lstm`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/lstm)
@@ -3569,7 +3569,7 @@ impl MLGraphBuilder {
         steps: u32,
         hidden_size: u32,
         options: &MLLstmOptions,
-    ) -> Sequence<MLOperand> {
+    ) -> TypedArray<MLOperand> {
         self.inner
             .call(
                 "lstm",
@@ -3582,7 +3582,7 @@ impl MLGraphBuilder {
                     options.into(),
                 ],
             )
-            .as_::<Sequence<MLOperand>>()
+            .as_::<TypedArray<MLOperand>>()
     }
 }
 impl MLGraphBuilder {
@@ -3596,7 +3596,7 @@ impl MLGraphBuilder {
         hidden_state: &MLOperand,
         cell_state: &MLOperand,
         hidden_size: u32,
-    ) -> Sequence<MLOperand> {
+    ) -> TypedArray<MLOperand> {
         self.inner
             .call(
                 "lstmCell",
@@ -3609,7 +3609,7 @@ impl MLGraphBuilder {
                     hidden_size.into(),
                 ],
             )
-            .as_::<Sequence<MLOperand>>()
+            .as_::<TypedArray<MLOperand>>()
     }
     /// The lstmCell method.
     /// [`MLGraphBuilder.lstmCell`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/lstmCell)
@@ -3622,7 +3622,7 @@ impl MLGraphBuilder {
         cell_state: &MLOperand,
         hidden_size: u32,
         options: &MLLstmCellOptions,
-    ) -> Sequence<MLOperand> {
+    ) -> TypedArray<MLOperand> {
         self.inner
             .call(
                 "lstmCell",
@@ -3636,7 +3636,7 @@ impl MLGraphBuilder {
                     options.into(),
                 ],
             )
-            .as_::<Sequence<MLOperand>>()
+            .as_::<TypedArray<MLOperand>>()
     }
 }
 impl MLGraphBuilder {
@@ -3661,8 +3661,8 @@ impl MLGraphBuilder {
     pub fn pad0(
         &self,
         input: &MLOperand,
-        beginning_padding: Sequence<u32>,
-        ending_padding: Sequence<u32>,
+        beginning_padding: TypedArray<u32>,
+        ending_padding: TypedArray<u32>,
     ) -> MLOperand {
         self.inner
             .call(
@@ -3680,8 +3680,8 @@ impl MLGraphBuilder {
     pub fn pad1(
         &self,
         input: &MLOperand,
-        beginning_padding: Sequence<u32>,
-        ending_padding: Sequence<u32>,
+        beginning_padding: TypedArray<u32>,
+        ending_padding: TypedArray<u32>,
         options: &MLPadOptions,
     ) -> MLOperand {
         self.inner
@@ -3959,7 +3959,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The reshape method.
     /// [`MLGraphBuilder.reshape`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/reshape)
-    pub fn reshape0(&self, input: &MLOperand, new_shape: Sequence<u32>) -> MLOperand {
+    pub fn reshape0(&self, input: &MLOperand, new_shape: TypedArray<u32>) -> MLOperand {
         self.inner
             .call("reshape", &[input.into(), new_shape.into()])
             .as_::<MLOperand>()
@@ -3969,7 +3969,7 @@ impl MLGraphBuilder {
     pub fn reshape1(
         &self,
         input: &MLOperand,
-        new_shape: Sequence<u32>,
+        new_shape: TypedArray<u32>,
         options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner
@@ -4078,8 +4078,8 @@ impl MLGraphBuilder {
     pub fn slice0(
         &self,
         input: &MLOperand,
-        starts: Sequence<u32>,
-        sizes: Sequence<u32>,
+        starts: TypedArray<u32>,
+        sizes: TypedArray<u32>,
     ) -> MLOperand {
         self.inner
             .call("slice", &[input.into(), starts.into(), sizes.into()])
@@ -4090,8 +4090,8 @@ impl MLGraphBuilder {
     pub fn slice1(
         &self,
         input: &MLOperand,
-        starts: Sequence<u32>,
-        sizes: Sequence<u32>,
+        starts: TypedArray<u32>,
+        sizes: TypedArray<u32>,
         options: &MLSliceOptions,
     ) -> MLOperand {
         self.inner
@@ -4153,10 +4153,10 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The split method.
     /// [`MLGraphBuilder.split`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/split)
-    pub fn split0(&self, input: &MLOperand, splits: &Any) -> Sequence<MLOperand> {
+    pub fn split0(&self, input: &MLOperand, splits: &Any) -> TypedArray<MLOperand> {
         self.inner
             .call("split", &[input.into(), splits.into()])
-            .as_::<Sequence<MLOperand>>()
+            .as_::<TypedArray<MLOperand>>()
     }
     /// The split method.
     /// [`MLGraphBuilder.split`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/split)
@@ -4165,10 +4165,10 @@ impl MLGraphBuilder {
         input: &MLOperand,
         splits: &Any,
         options: &MLSplitOptions,
-    ) -> Sequence<MLOperand> {
+    ) -> TypedArray<MLOperand> {
         self.inner
             .call("split", &[input.into(), splits.into(), options.into()])
-            .as_::<Sequence<MLOperand>>()
+            .as_::<TypedArray<MLOperand>>()
     }
 }
 impl MLGraphBuilder {
@@ -4188,7 +4188,7 @@ impl MLGraphBuilder {
 impl MLGraphBuilder {
     /// The tile method.
     /// [`MLGraphBuilder.tile`](https://developer.mozilla.org/en-US/docs/Web/API/MLGraphBuilder/tile)
-    pub fn tile0(&self, input: &MLOperand, repetitions: Sequence<u32>) -> MLOperand {
+    pub fn tile0(&self, input: &MLOperand, repetitions: TypedArray<u32>) -> MLOperand {
         self.inner
             .call("tile", &[input.into(), repetitions.into()])
             .as_::<MLOperand>()
@@ -4198,7 +4198,7 @@ impl MLGraphBuilder {
     pub fn tile1(
         &self,
         input: &MLOperand,
-        repetitions: Sequence<u32>,
+        repetitions: TypedArray<u32>,
         options: &MLOperatorOptions,
     ) -> MLOperand {
         self.inner

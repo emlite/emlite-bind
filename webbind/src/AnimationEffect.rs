@@ -114,11 +114,11 @@ impl OptionalEffectTiming {
     }
 }
 impl OptionalEffectTiming {
-    pub fn easing(&self) -> DOMString {
-        self.inner.get("easing").as_::<DOMString>()
+    pub fn easing(&self) -> JsString {
+        self.inner.get("easing").as_::<JsString>()
     }
 
-    pub fn set_easing(&mut self, value: &DOMString) {
+    pub fn set_easing(&mut self, value: &JsString) {
         self.inner.set("easing", value);
     }
 }

@@ -75,22 +75,22 @@ impl BluetoothLEScanFilter {
 impl BluetoothLEScanFilter {
     /// Getter of the `name` attribute.
     /// [`BluetoothLEScanFilter.name`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScanFilter/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl BluetoothLEScanFilter {
     /// Getter of the `namePrefix` attribute.
     /// [`BluetoothLEScanFilter.namePrefix`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScanFilter/namePrefix)
-    pub fn name_prefix(&self) -> DOMString {
-        self.inner.get("namePrefix").as_::<DOMString>()
+    pub fn name_prefix(&self) -> JsString {
+        self.inner.get("namePrefix").as_::<JsString>()
     }
 }
 impl BluetoothLEScanFilter {
     /// Getter of the `services` attribute.
     /// [`BluetoothLEScanFilter.services`](https://developer.mozilla.org/en-US/docs/Web/API/BluetoothLEScanFilter/services)
-    pub fn services(&self) -> FrozenArray<Any> {
-        self.inner.get("services").as_::<FrozenArray<Any>>()
+    pub fn services(&self) -> TypedArray<Any> {
+        self.inner.get("services").as_::<TypedArray<Any>>()
     }
 }
 impl BluetoothLEScanFilter {

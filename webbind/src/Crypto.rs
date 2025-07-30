@@ -74,7 +74,7 @@ impl Crypto {
 impl Crypto {
     /// The randomUUID method.
     /// [`Crypto.randomUUID`](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID)
-    pub fn random_uuid(&self) -> DOMString {
-        self.inner.call("randomUUID", &[]).as_::<DOMString>()
+    pub fn random_uuid(&self) -> JsString {
+        self.inner.call("randomUUID", &[]).as_::<JsString>()
     }
 }

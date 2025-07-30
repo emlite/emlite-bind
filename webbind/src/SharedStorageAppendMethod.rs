@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(SharedStorageAppendMethod);
 
 impl SharedStorageAppendMethod {
     /// The `new SharedStorageAppendMethod(..)` constructor, creating a new SharedStorageAppendMethod instance
-    pub fn new0(key: &DOMString, value: &DOMString) -> SharedStorageAppendMethod {
+    pub fn new0(key: &JsString, value: &JsString) -> SharedStorageAppendMethod {
         Self {
             inner: Any::global("SharedStorageAppendMethod")
                 .new(&[key.into(), value.into()])
@@ -67,8 +67,8 @@ impl SharedStorageAppendMethod {
 
     /// The `new SharedStorageAppendMethod(..)` constructor, creating a new SharedStorageAppendMethod instance
     pub fn new1(
-        key: &DOMString,
-        value: &DOMString,
+        key: &JsString,
+        value: &JsString,
         options: &SharedStorageModifierMethodOptions,
     ) -> SharedStorageAppendMethod {
         Self {

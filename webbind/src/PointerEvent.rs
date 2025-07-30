@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(PointerEvent);
 
 impl PointerEvent {
     /// The `new PointerEvent(..)` constructor, creating a new PointerEvent instance
-    pub fn new0(type_: &DOMString) -> PointerEvent {
+    pub fn new0(type_: &JsString) -> PointerEvent {
         Self {
             inner: Any::global("PointerEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl PointerEvent {
     }
 
     /// The `new PointerEvent(..)` constructor, creating a new PointerEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> PointerEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> PointerEvent {
         Self {
             inner: Any::global("PointerEvent")
                 .new(&[type_.into(), event_init_dict.into()])
@@ -147,8 +147,8 @@ impl PointerEvent {
 impl PointerEvent {
     /// Getter of the `pointerType` attribute.
     /// [`PointerEvent.pointerType`](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent/pointerType)
-    pub fn pointer_type(&self) -> DOMString {
-        self.inner.get("pointerType").as_::<DOMString>()
+    pub fn pointer_type(&self) -> JsString {
+        self.inner.get("pointerType").as_::<JsString>()
     }
 }
 impl PointerEvent {
@@ -168,18 +168,18 @@ impl PointerEvent {
 impl PointerEvent {
     /// The getCoalescedEvents method.
     /// [`PointerEvent.getCoalescedEvents`](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent/getCoalescedEvents)
-    pub fn get_coalesced_events(&self) -> Sequence<PointerEvent> {
+    pub fn get_coalesced_events(&self) -> TypedArray<PointerEvent> {
         self.inner
             .call("getCoalescedEvents", &[])
-            .as_::<Sequence<PointerEvent>>()
+            .as_::<TypedArray<PointerEvent>>()
     }
 }
 impl PointerEvent {
     /// The getPredictedEvents method.
     /// [`PointerEvent.getPredictedEvents`](https://developer.mozilla.org/en-US/docs/Web/API/PointerEvent/getPredictedEvents)
-    pub fn get_predicted_events(&self) -> Sequence<PointerEvent> {
+    pub fn get_predicted_events(&self) -> TypedArray<PointerEvent> {
         self.inner
             .call("getPredictedEvents", &[])
-            .as_::<Sequence<PointerEvent>>()
+            .as_::<TypedArray<PointerEvent>>()
     }
 }

@@ -58,13 +58,13 @@ jsbind::utils::impl_dyn_cast!(CSSFunctionDescriptors);
 impl CSSFunctionDescriptors {
     /// Getter of the `result` attribute.
     /// [`CSSFunctionDescriptors.result`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionDescriptors/result)
-    pub fn result(&self) -> CSSOMString {
-        self.inner.get("result").as_::<CSSOMString>()
+    pub fn result(&self) -> JsString {
+        self.inner.get("result").as_::<JsString>()
     }
 
     /// Setter of the `result` attribute.
     /// [`CSSFunctionDescriptors.result`](https://developer.mozilla.org/en-US/docs/Web/API/CSSFunctionDescriptors/result)
-    pub fn set_result(&mut self, value: &CSSOMString) {
+    pub fn set_result(&mut self, value: &JsString) {
         self.inner.set("result", value);
     }
 }

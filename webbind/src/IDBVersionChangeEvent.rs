@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(IDBVersionChangeEvent);
 
 impl IDBVersionChangeEvent {
     /// The `new IDBVersionChangeEvent(..)` constructor, creating a new IDBVersionChangeEvent instance
-    pub fn new0(type_: &DOMString) -> IDBVersionChangeEvent {
+    pub fn new0(type_: &JsString) -> IDBVersionChangeEvent {
         Self {
             inner: Any::global("IDBVersionChangeEvent")
                 .new(&[type_.into()])
@@ -66,7 +66,7 @@ impl IDBVersionChangeEvent {
     }
 
     /// The `new IDBVersionChangeEvent(..)` constructor, creating a new IDBVersionChangeEvent instance
-    pub fn new1(type_: &DOMString, event_init_dict: &Any) -> IDBVersionChangeEvent {
+    pub fn new1(type_: &JsString, event_init_dict: &Any) -> IDBVersionChangeEvent {
         Self {
             inner: Any::global("IDBVersionChangeEvent")
                 .new(&[type_.into(), event_init_dict.into()])

@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(XRViewerPose);
 impl XRViewerPose {
     /// Getter of the `views` attribute.
     /// [`XRViewerPose.views`](https://developer.mozilla.org/en-US/docs/Web/API/XRViewerPose/views)
-    pub fn views(&self) -> FrozenArray<XRView> {
-        self.inner.get("views").as_::<FrozenArray<XRView>>()
+    pub fn views(&self) -> TypedArray<XRView> {
+        self.inner.get("views").as_::<TypedArray<XRView>>()
     }
 }

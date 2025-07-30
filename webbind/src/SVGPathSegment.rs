@@ -58,26 +58,26 @@ jsbind::utils::impl_dyn_cast!(SVGPathSegment);
 impl SVGPathSegment {
     /// Getter of the `type` attribute.
     /// [`SVGPathSegment.type`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPathSegment/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 
     /// Setter of the `type` attribute.
     /// [`SVGPathSegment.type`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPathSegment/type)
-    pub fn set_type_(&mut self, value: &DOMString) {
+    pub fn set_type_(&mut self, value: &JsString) {
         self.inner.set("type", value);
     }
 }
 impl SVGPathSegment {
     /// Getter of the `values` attribute.
     /// [`SVGPathSegment.values`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPathSegment/values)
-    pub fn values(&self) -> FrozenArray<f32> {
-        self.inner.get("values").as_::<FrozenArray<f32>>()
+    pub fn values(&self) -> TypedArray<f32> {
+        self.inner.get("values").as_::<TypedArray<f32>>()
     }
 
     /// Setter of the `values` attribute.
     /// [`SVGPathSegment.values`](https://developer.mozilla.org/en-US/docs/Web/API/SVGPathSegment/values)
-    pub fn set_values(&mut self, value: FrozenArray<f32>) {
+    pub fn set_values(&mut self, value: TypedArray<f32>) {
         self.inner.set("values", value);
     }
 }

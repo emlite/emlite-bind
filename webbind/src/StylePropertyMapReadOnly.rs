@@ -58,23 +58,23 @@ jsbind::utils::impl_dyn_cast!(StylePropertyMapReadOnly);
 impl StylePropertyMapReadOnly {
     /// The get method.
     /// [`StylePropertyMapReadOnly.get`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMapReadOnly/get)
-    pub fn get(&self, property: &USVString) -> Any {
+    pub fn get(&self, property: &JsString) -> Any {
         self.inner.call("get", &[property.into()]).as_::<Any>()
     }
 }
 impl StylePropertyMapReadOnly {
     /// The getAll method.
     /// [`StylePropertyMapReadOnly.getAll`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMapReadOnly/getAll)
-    pub fn get_all(&self, property: &USVString) -> Sequence<CSSStyleValue> {
+    pub fn get_all(&self, property: &JsString) -> TypedArray<CSSStyleValue> {
         self.inner
             .call("getAll", &[property.into()])
-            .as_::<Sequence<CSSStyleValue>>()
+            .as_::<TypedArray<CSSStyleValue>>()
     }
 }
 impl StylePropertyMapReadOnly {
     /// The has method.
     /// [`StylePropertyMapReadOnly.has`](https://developer.mozilla.org/en-US/docs/Web/API/StylePropertyMapReadOnly/has)
-    pub fn has(&self, property: &USVString) -> bool {
+    pub fn has(&self, property: &JsString) -> bool {
         self.inner.call("has", &[property.into()]).as_::<bool>()
     }
 }

@@ -81,65 +81,65 @@ impl HTMLTableColElement {
 impl HTMLTableColElement {
     /// Getter of the `align` attribute.
     /// [`HTMLTableColElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/align)
-    pub fn align(&self) -> DOMString {
-        self.inner.get("align").as_::<DOMString>()
+    pub fn align(&self) -> JsString {
+        self.inner.get("align").as_::<JsString>()
     }
 
     /// Setter of the `align` attribute.
     /// [`HTMLTableColElement.align`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/align)
-    pub fn set_align(&mut self, value: &DOMString) {
+    pub fn set_align(&mut self, value: &JsString) {
         self.inner.set("align", value);
     }
 }
 impl HTMLTableColElement {
     /// Getter of the `ch` attribute.
     /// [`HTMLTableColElement.ch`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/ch)
-    pub fn ch(&self) -> DOMString {
-        self.inner.get("ch").as_::<DOMString>()
+    pub fn ch(&self) -> JsString {
+        self.inner.get("ch").as_::<JsString>()
     }
 
     /// Setter of the `ch` attribute.
     /// [`HTMLTableColElement.ch`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/ch)
-    pub fn set_ch(&mut self, value: &DOMString) {
+    pub fn set_ch(&mut self, value: &JsString) {
         self.inner.set("ch", value);
     }
 }
 impl HTMLTableColElement {
     /// Getter of the `chOff` attribute.
     /// [`HTMLTableColElement.chOff`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/chOff)
-    pub fn ch_off(&self) -> DOMString {
-        self.inner.get("chOff").as_::<DOMString>()
+    pub fn ch_off(&self) -> JsString {
+        self.inner.get("chOff").as_::<JsString>()
     }
 
     /// Setter of the `chOff` attribute.
     /// [`HTMLTableColElement.chOff`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/chOff)
-    pub fn set_ch_off(&mut self, value: &DOMString) {
+    pub fn set_ch_off(&mut self, value: &JsString) {
         self.inner.set("chOff", value);
     }
 }
 impl HTMLTableColElement {
     /// Getter of the `vAlign` attribute.
     /// [`HTMLTableColElement.vAlign`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/vAlign)
-    pub fn v_align(&self) -> DOMString {
-        self.inner.get("vAlign").as_::<DOMString>()
+    pub fn v_align(&self) -> JsString {
+        self.inner.get("vAlign").as_::<JsString>()
     }
 
     /// Setter of the `vAlign` attribute.
     /// [`HTMLTableColElement.vAlign`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/vAlign)
-    pub fn set_v_align(&mut self, value: &DOMString) {
+    pub fn set_v_align(&mut self, value: &JsString) {
         self.inner.set("vAlign", value);
     }
 }
 impl HTMLTableColElement {
     /// Getter of the `width` attribute.
     /// [`HTMLTableColElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/width)
-    pub fn width(&self) -> DOMString {
-        self.inner.get("width").as_::<DOMString>()
+    pub fn width(&self) -> JsString {
+        self.inner.get("width").as_::<JsString>()
     }
 
     /// Setter of the `width` attribute.
     /// [`HTMLTableColElement.width`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTableColElement/width)
-    pub fn set_width(&mut self, value: &DOMString) {
+    pub fn set_width(&mut self, value: &JsString) {
         self.inner.set("width", value);
     }
 }

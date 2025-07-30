@@ -58,9 +58,9 @@ jsbind::utils::impl_dyn_cast!(GPUCompilationInfo);
 impl GPUCompilationInfo {
     /// Getter of the `messages` attribute.
     /// [`GPUCompilationInfo.messages`](https://developer.mozilla.org/en-US/docs/Web/API/GPUCompilationInfo/messages)
-    pub fn messages(&self) -> FrozenArray<GPUCompilationMessage> {
+    pub fn messages(&self) -> TypedArray<GPUCompilationMessage> {
         self.inner
             .get("messages")
-            .as_::<FrozenArray<GPUCompilationMessage>>()
+            .as_::<TypedArray<GPUCompilationMessage>>()
     }
 }

@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(RTCDataChannel);
 impl RTCDataChannel {
     /// Getter of the `label` attribute.
     /// [`RTCDataChannel.label`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/label)
-    pub fn label(&self) -> USVString {
-        self.inner.get("label").as_::<USVString>()
+    pub fn label(&self) -> JsString {
+        self.inner.get("label").as_::<JsString>()
     }
 }
 impl RTCDataChannel {
@@ -86,8 +86,8 @@ impl RTCDataChannel {
 impl RTCDataChannel {
     /// Getter of the `protocol` attribute.
     /// [`RTCDataChannel.protocol`](https://developer.mozilla.org/en-US/docs/Web/API/RTCDataChannel/protocol)
-    pub fn protocol(&self) -> USVString {
-        self.inner.get("protocol").as_::<USVString>()
+    pub fn protocol(&self) -> JsString {
+        self.inner.get("protocol").as_::<JsString>()
     }
 }
 impl RTCDataChannel {

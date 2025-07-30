@@ -133,7 +133,7 @@ impl XRFrame {
     /// [`XRFrame.fillJointRadii`](https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/fillJointRadii)
     pub fn fill_joint_radii(
         &self,
-        joint_spaces: &Sequence<XRJointSpace>,
+        joint_spaces: &TypedArray<XRJointSpace>,
         radii: &Float32Array,
     ) -> bool {
         self.inner
@@ -146,7 +146,7 @@ impl XRFrame {
     /// [`XRFrame.fillPoses`](https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/fillPoses)
     pub fn fill_poses(
         &self,
-        spaces: &Sequence<XRSpace>,
+        spaces: &TypedArray<XRSpace>,
         base_space: &XRSpace,
         transforms: &Float32Array,
     ) -> bool {
@@ -164,10 +164,10 @@ impl XRFrame {
     pub fn get_hit_test_results(
         &self,
         hit_test_source: &XRHitTestSource,
-    ) -> Sequence<XRHitTestResult> {
+    ) -> TypedArray<XRHitTestResult> {
         self.inner
             .call("getHitTestResults", &[hit_test_source.into()])
-            .as_::<Sequence<XRHitTestResult>>()
+            .as_::<TypedArray<XRHitTestResult>>()
     }
 }
 impl XRFrame {
@@ -176,13 +176,13 @@ impl XRFrame {
     pub fn get_hit_test_results_for_transient_input(
         &self,
         hit_test_source: &XRTransientInputHitTestSource,
-    ) -> Sequence<XRTransientInputHitTestResult> {
+    ) -> TypedArray<XRTransientInputHitTestResult> {
         self.inner
             .call(
                 "getHitTestResultsForTransientInput",
                 &[hit_test_source.into()],
             )
-            .as_::<Sequence<XRTransientInputHitTestResult>>()
+            .as_::<TypedArray<XRTransientInputHitTestResult>>()
     }
 }
 impl XRFrame {

@@ -51,11 +51,11 @@ impl From<&AudioEncoderConfig> for Any {
 }
 
 impl AudioEncoderConfig {
-    pub fn codec(&self) -> DOMString {
-        self.inner.get("codec").as_::<DOMString>()
+    pub fn codec(&self) -> JsString {
+        self.inner.get("codec").as_::<JsString>()
     }
 
-    pub fn set_codec(&mut self, value: &DOMString) {
+    pub fn set_codec(&mut self, value: &JsString) {
         self.inner.set("codec", value);
     }
 }

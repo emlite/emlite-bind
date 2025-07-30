@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(SFrameTransformErrorEvent);
 
 impl SFrameTransformErrorEvent {
     /// The `new SFrameTransformErrorEvent(..)` constructor, creating a new SFrameTransformErrorEvent instance
-    pub fn new(type_: &DOMString, event_init_dict: &Any) -> SFrameTransformErrorEvent {
+    pub fn new(type_: &JsString, event_init_dict: &Any) -> SFrameTransformErrorEvent {
         Self {
             inner: Any::global("SFrameTransformErrorEvent")
                 .new(&[type_.into(), event_init_dict.into()])

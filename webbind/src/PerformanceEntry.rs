@@ -65,15 +65,15 @@ impl PerformanceEntry {
 impl PerformanceEntry {
     /// Getter of the `name` attribute.
     /// [`PerformanceEntry.name`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl PerformanceEntry {
     /// Getter of the `entryType` attribute.
     /// [`PerformanceEntry.entryType`](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceEntry/entryType)
-    pub fn entry_type(&self) -> DOMString {
-        self.inner.get("entryType").as_::<DOMString>()
+    pub fn entry_type(&self) -> JsString {
+        self.inner.get("entryType").as_::<JsString>()
     }
 }
 impl PerformanceEntry {

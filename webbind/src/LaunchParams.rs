@@ -58,16 +58,16 @@ jsbind::utils::impl_dyn_cast!(LaunchParams);
 impl LaunchParams {
     /// Getter of the `targetURL` attribute.
     /// [`LaunchParams.targetURL`](https://developer.mozilla.org/en-US/docs/Web/API/LaunchParams/targetURL)
-    pub fn target_url(&self) -> DOMString {
-        self.inner.get("targetURL").as_::<DOMString>()
+    pub fn target_url(&self) -> JsString {
+        self.inner.get("targetURL").as_::<JsString>()
     }
 }
 impl LaunchParams {
     /// Getter of the `files` attribute.
     /// [`LaunchParams.files`](https://developer.mozilla.org/en-US/docs/Web/API/LaunchParams/files)
-    pub fn files(&self) -> FrozenArray<FileSystemHandle> {
+    pub fn files(&self) -> TypedArray<FileSystemHandle> {
         self.inner
             .get("files")
-            .as_::<FrozenArray<FileSystemHandle>>()
+            .as_::<TypedArray<FileSystemHandle>>()
     }
 }

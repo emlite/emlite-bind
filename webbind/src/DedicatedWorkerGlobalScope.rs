@@ -58,8 +58,8 @@ jsbind::utils::impl_dyn_cast!(DedicatedWorkerGlobalScope);
 impl DedicatedWorkerGlobalScope {
     /// Getter of the `name` attribute.
     /// [`DedicatedWorkerGlobalScope.name`](https://developer.mozilla.org/en-US/docs/Web/API/DedicatedWorkerGlobalScope/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 }
 impl DedicatedWorkerGlobalScope {

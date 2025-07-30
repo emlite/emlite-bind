@@ -91,13 +91,13 @@ impl SVGLength {
 impl SVGLength {
     /// Getter of the `valueAsString` attribute.
     /// [`SVGLength.valueAsString`](https://developer.mozilla.org/en-US/docs/Web/API/SVGLength/valueAsString)
-    pub fn value_as_string(&self) -> DOMString {
-        self.inner.get("valueAsString").as_::<DOMString>()
+    pub fn value_as_string(&self) -> JsString {
+        self.inner.get("valueAsString").as_::<JsString>()
     }
 
     /// Setter of the `valueAsString` attribute.
     /// [`SVGLength.valueAsString`](https://developer.mozilla.org/en-US/docs/Web/API/SVGLength/valueAsString)
-    pub fn set_value_as_string(&mut self, value: &DOMString) {
+    pub fn set_value_as_string(&mut self, value: &JsString) {
         self.inner.set("valueAsString", value);
     }
 }

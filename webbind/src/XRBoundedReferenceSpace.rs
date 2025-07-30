@@ -58,9 +58,9 @@ jsbind::utils::impl_dyn_cast!(XRBoundedReferenceSpace);
 impl XRBoundedReferenceSpace {
     /// Getter of the `boundsGeometry` attribute.
     /// [`XRBoundedReferenceSpace.boundsGeometry`](https://developer.mozilla.org/en-US/docs/Web/API/XRBoundedReferenceSpace/boundsGeometry)
-    pub fn bounds_geometry(&self) -> FrozenArray<DOMPointReadOnly> {
+    pub fn bounds_geometry(&self) -> TypedArray<DOMPointReadOnly> {
         self.inner
             .get("boundsGeometry")
-            .as_::<FrozenArray<DOMPointReadOnly>>()
+            .as_::<TypedArray<DOMPointReadOnly>>()
     }
 }

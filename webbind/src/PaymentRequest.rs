@@ -51,11 +51,11 @@ impl From<&PaymentDetailsUpdate> for Any {
 }
 
 impl PaymentDetailsUpdate {
-    pub fn error(&self) -> DOMString {
-        self.inner.get("error").as_::<DOMString>()
+    pub fn error(&self) -> JsString {
+        self.inner.get("error").as_::<JsString>()
     }
 
-    pub fn set_error(&mut self, value: &DOMString) {
+    pub fn set_error(&mut self, value: &JsString) {
         self.inner.set("error", value);
     }
 }
@@ -152,7 +152,7 @@ jsbind::utils::impl_dyn_cast!(PaymentRequest);
 
 impl PaymentRequest {
     /// The `new PaymentRequest(..)` constructor, creating a new PaymentRequest instance
-    pub fn new0(method_data: &Sequence<PaymentMethodData>, details: &Any) -> PaymentRequest {
+    pub fn new0(method_data: &TypedArray<PaymentMethodData>, details: &Any) -> PaymentRequest {
         Self {
             inner: Any::global("PaymentRequest")
                 .new(&[method_data.into(), details.into()])
@@ -162,7 +162,7 @@ impl PaymentRequest {
 
     /// The `new PaymentRequest(..)` constructor, creating a new PaymentRequest instance
     pub fn new1(
-        method_data: &Sequence<PaymentMethodData>,
+        method_data: &TypedArray<PaymentMethodData>,
         details: &Any,
         options: &Any,
     ) -> PaymentRequest {
@@ -211,8 +211,8 @@ impl PaymentRequest {
 impl PaymentRequest {
     /// Getter of the `id` attribute.
     /// [`PaymentRequest.id`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/id)
-    pub fn id(&self) -> DOMString {
-        self.inner.get("id").as_::<DOMString>()
+    pub fn id(&self) -> JsString {
+        self.inner.get("id").as_::<JsString>()
     }
 }
 impl PaymentRequest {
@@ -225,8 +225,8 @@ impl PaymentRequest {
 impl PaymentRequest {
     /// Getter of the `shippingOption` attribute.
     /// [`PaymentRequest.shippingOption`](https://developer.mozilla.org/en-US/docs/Web/API/PaymentRequest/shippingOption)
-    pub fn shipping_option(&self) -> DOMString {
-        self.inner.get("shippingOption").as_::<DOMString>()
+    pub fn shipping_option(&self) -> JsString {
+        self.inner.get("shippingOption").as_::<JsString>()
     }
 }
 impl PaymentRequest {

@@ -96,16 +96,14 @@ impl USBAlternateInterface {
 impl USBAlternateInterface {
     /// Getter of the `interfaceName` attribute.
     /// [`USBAlternateInterface.interfaceName`](https://developer.mozilla.org/en-US/docs/Web/API/USBAlternateInterface/interfaceName)
-    pub fn interface_name(&self) -> DOMString {
-        self.inner.get("interfaceName").as_::<DOMString>()
+    pub fn interface_name(&self) -> JsString {
+        self.inner.get("interfaceName").as_::<JsString>()
     }
 }
 impl USBAlternateInterface {
     /// Getter of the `endpoints` attribute.
     /// [`USBAlternateInterface.endpoints`](https://developer.mozilla.org/en-US/docs/Web/API/USBAlternateInterface/endpoints)
-    pub fn endpoints(&self) -> FrozenArray<USBEndpoint> {
-        self.inner
-            .get("endpoints")
-            .as_::<FrozenArray<USBEndpoint>>()
+    pub fn endpoints(&self) -> TypedArray<USBEndpoint> {
+        self.inner.get("endpoints").as_::<TypedArray<USBEndpoint>>()
     }
 }

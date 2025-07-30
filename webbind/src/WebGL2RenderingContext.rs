@@ -213,7 +213,7 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     /// The invalidateFramebuffer method.
     /// [`WebGL2RenderingContext.invalidateFramebuffer`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/invalidateFramebuffer)
-    pub fn invalidate_framebuffer(&self, target: &Any, attachments: &Sequence<Any>) -> Undefined {
+    pub fn invalidate_framebuffer(&self, target: &Any, attachments: &TypedArray<Any>) -> Undefined {
         self.inner
             .call(
                 "invalidateFramebuffer",
@@ -228,7 +228,7 @@ impl WebGL2RenderingContext {
     pub fn invalidate_sub_framebuffer(
         &self,
         target: &Any,
-        attachments: &Sequence<Any>,
+        attachments: &TypedArray<Any>,
         x: &Any,
         y: &Any,
         width: &Any,
@@ -701,7 +701,7 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     /// The getFragDataLocation method.
     /// [`WebGL2RenderingContext.getFragDataLocation`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/getFragDataLocation)
-    pub fn get_frag_data_location(&self, program: &WebGLProgram, name: &DOMString) -> Any {
+    pub fn get_frag_data_location(&self, program: &WebGLProgram, name: &JsString) -> Any {
         self.inner
             .call("getFragDataLocation", &[program.into(), name.into()])
             .as_::<Any>()
@@ -1462,7 +1462,7 @@ impl WebGL2RenderingContext {
 impl WebGL2RenderingContext {
     /// The drawBuffers method.
     /// [`WebGL2RenderingContext.drawBuffers`](https://developer.mozilla.org/en-US/docs/Web/API/WebGL2RenderingContext/drawBuffers)
-    pub fn draw_buffers(&self, buffers: &Sequence<Any>) -> Undefined {
+    pub fn draw_buffers(&self, buffers: &TypedArray<Any>) -> Undefined {
         self.inner
             .call("drawBuffers", &[buffers.into()])
             .as_::<Undefined>()
@@ -1839,7 +1839,7 @@ impl WebGL2RenderingContext {
     pub fn transform_feedback_varyings(
         &self,
         program: &WebGLProgram,
-        varyings: &Sequence<DOMString>,
+        varyings: &TypedArray<JsString>,
         buffer_mode: &Any,
     ) -> Undefined {
         self.inner
@@ -1936,11 +1936,11 @@ impl WebGL2RenderingContext {
     pub fn get_uniform_indices(
         &self,
         program: &WebGLProgram,
-        uniform_names: &Sequence<DOMString>,
-    ) -> Sequence<Any> {
+        uniform_names: &TypedArray<JsString>,
+    ) -> TypedArray<Any> {
         self.inner
             .call("getUniformIndices", &[program.into(), uniform_names.into()])
-            .as_::<Sequence<Any>>()
+            .as_::<TypedArray<Any>>()
     }
 }
 impl WebGL2RenderingContext {
@@ -1949,7 +1949,7 @@ impl WebGL2RenderingContext {
     pub fn get_active_uniforms(
         &self,
         program: &WebGLProgram,
-        uniform_indices: &Sequence<Any>,
+        uniform_indices: &TypedArray<Any>,
         pname: &Any,
     ) -> Any {
         self.inner
@@ -1966,7 +1966,7 @@ impl WebGL2RenderingContext {
     pub fn get_uniform_block_index(
         &self,
         program: &WebGLProgram,
-        uniform_block_name: &DOMString,
+        uniform_block_name: &JsString,
     ) -> Any {
         self.inner
             .call(
@@ -2000,13 +2000,13 @@ impl WebGL2RenderingContext {
         &self,
         program: &WebGLProgram,
         uniform_block_index: &Any,
-    ) -> DOMString {
+    ) -> JsString {
         self.inner
             .call(
                 "getActiveUniformBlockName",
                 &[program.into(), uniform_block_index.into()],
             )
-            .as_::<DOMString>()
+            .as_::<JsString>()
     }
 }
 impl WebGL2RenderingContext {

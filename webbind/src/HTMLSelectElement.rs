@@ -68,13 +68,13 @@ impl HTMLSelectElement {
 impl HTMLSelectElement {
     /// Getter of the `autocomplete` attribute.
     /// [`HTMLSelectElement.autocomplete`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/autocomplete)
-    pub fn autocomplete(&self) -> DOMString {
-        self.inner.get("autocomplete").as_::<DOMString>()
+    pub fn autocomplete(&self) -> JsString {
+        self.inner.get("autocomplete").as_::<JsString>()
     }
 
     /// Setter of the `autocomplete` attribute.
     /// [`HTMLSelectElement.autocomplete`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/autocomplete)
-    pub fn set_autocomplete(&mut self, value: &DOMString) {
+    pub fn set_autocomplete(&mut self, value: &JsString) {
         self.inner.set("autocomplete", value);
     }
 }
@@ -114,13 +114,13 @@ impl HTMLSelectElement {
 impl HTMLSelectElement {
     /// Getter of the `name` attribute.
     /// [`HTMLSelectElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/name)
-    pub fn name(&self) -> DOMString {
-        self.inner.get("name").as_::<DOMString>()
+    pub fn name(&self) -> JsString {
+        self.inner.get("name").as_::<JsString>()
     }
 
     /// Setter of the `name` attribute.
     /// [`HTMLSelectElement.name`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/name)
-    pub fn set_name(&mut self, value: &DOMString) {
+    pub fn set_name(&mut self, value: &JsString) {
         self.inner.set("name", value);
     }
 }
@@ -153,8 +153,8 @@ impl HTMLSelectElement {
 impl HTMLSelectElement {
     /// Getter of the `type` attribute.
     /// [`HTMLSelectElement.type`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/type)
-    pub fn type_(&self) -> DOMString {
-        self.inner.get("type").as_::<DOMString>()
+    pub fn type_(&self) -> JsString {
+        self.inner.get("type").as_::<JsString>()
     }
 }
 impl HTMLSelectElement {
@@ -189,7 +189,7 @@ impl HTMLSelectElement {
 impl HTMLSelectElement {
     /// The namedItem method.
     /// [`HTMLSelectElement.namedItem`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/namedItem)
-    pub fn named_item(&self, name: &DOMString) -> HTMLOptionElement {
+    pub fn named_item(&self, name: &JsString) -> HTMLOptionElement {
         self.inner
             .call("namedItem", &[name.into()])
             .as_::<HTMLOptionElement>()
@@ -241,13 +241,13 @@ impl HTMLSelectElement {
 impl HTMLSelectElement {
     /// Getter of the `value` attribute.
     /// [`HTMLSelectElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/value)
-    pub fn value(&self) -> DOMString {
-        self.inner.get("value").as_::<DOMString>()
+    pub fn value(&self) -> JsString {
+        self.inner.get("value").as_::<JsString>()
     }
 
     /// Setter of the `value` attribute.
     /// [`HTMLSelectElement.value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/value)
-    pub fn set_value(&mut self, value: &DOMString) {
+    pub fn set_value(&mut self, value: &JsString) {
         self.inner.set("value", value);
     }
 }
@@ -268,8 +268,8 @@ impl HTMLSelectElement {
 impl HTMLSelectElement {
     /// Getter of the `validationMessage` attribute.
     /// [`HTMLSelectElement.validationMessage`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/validationMessage)
-    pub fn validation_message(&self) -> DOMString {
-        self.inner.get("validationMessage").as_::<DOMString>()
+    pub fn validation_message(&self) -> JsString {
+        self.inner.get("validationMessage").as_::<JsString>()
     }
 }
 impl HTMLSelectElement {
@@ -289,7 +289,7 @@ impl HTMLSelectElement {
 impl HTMLSelectElement {
     /// The setCustomValidity method.
     /// [`HTMLSelectElement.setCustomValidity`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/setCustomValidity)
-    pub fn set_custom_validity(&self, error: &DOMString) -> Undefined {
+    pub fn set_custom_validity(&self, error: &JsString) -> Undefined {
         self.inner
             .call("setCustomValidity", &[error.into()])
             .as_::<Undefined>()

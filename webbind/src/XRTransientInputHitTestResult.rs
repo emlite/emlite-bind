@@ -65,9 +65,9 @@ impl XRTransientInputHitTestResult {
 impl XRTransientInputHitTestResult {
     /// Getter of the `results` attribute.
     /// [`XRTransientInputHitTestResult.results`](https://developer.mozilla.org/en-US/docs/Web/API/XRTransientInputHitTestResult/results)
-    pub fn results(&self) -> FrozenArray<XRHitTestResult> {
+    pub fn results(&self) -> TypedArray<XRHitTestResult> {
         self.inner
             .get("results")
-            .as_::<FrozenArray<XRHitTestResult>>()
+            .as_::<TypedArray<XRHitTestResult>>()
     }
 }

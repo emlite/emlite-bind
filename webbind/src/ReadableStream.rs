@@ -379,9 +379,9 @@ impl ReadableStream {
 impl ReadableStream {
     /// The tee method.
     /// [`ReadableStream.tee`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee)
-    pub fn tee(&self) -> Sequence<ReadableStream> {
+    pub fn tee(&self) -> TypedArray<ReadableStream> {
         self.inner
             .call("tee", &[])
-            .as_::<Sequence<ReadableStream>>()
+            .as_::<TypedArray<ReadableStream>>()
     }
 }

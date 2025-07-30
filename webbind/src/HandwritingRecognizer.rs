@@ -51,29 +51,29 @@ impl From<&HandwritingHints> for Any {
 }
 
 impl HandwritingHints {
-    pub fn recognition_type(&self) -> DOMString {
-        self.inner.get("recognitionType").as_::<DOMString>()
+    pub fn recognition_type(&self) -> JsString {
+        self.inner.get("recognitionType").as_::<JsString>()
     }
 
-    pub fn set_recognition_type(&mut self, value: &DOMString) {
+    pub fn set_recognition_type(&mut self, value: &JsString) {
         self.inner.set("recognitionType", value);
     }
 }
 impl HandwritingHints {
-    pub fn input_type(&self) -> DOMString {
-        self.inner.get("inputType").as_::<DOMString>()
+    pub fn input_type(&self) -> JsString {
+        self.inner.get("inputType").as_::<JsString>()
     }
 
-    pub fn set_input_type(&mut self, value: &DOMString) {
+    pub fn set_input_type(&mut self, value: &JsString) {
         self.inner.set("inputType", value);
     }
 }
 impl HandwritingHints {
-    pub fn text_context(&self) -> DOMString {
-        self.inner.get("textContext").as_::<DOMString>()
+    pub fn text_context(&self) -> JsString {
+        self.inner.get("textContext").as_::<JsString>()
     }
 
-    pub fn set_text_context(&mut self, value: &DOMString) {
+    pub fn set_text_context(&mut self, value: &JsString) {
         self.inner.set("textContext", value);
     }
 }

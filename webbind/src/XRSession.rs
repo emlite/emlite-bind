@@ -96,11 +96,11 @@ impl XRRenderStateInit {
     }
 }
 impl XRRenderStateInit {
-    pub fn layers(&self) -> Sequence<XRLayer> {
-        self.inner.get("layers").as_::<Sequence<XRLayer>>()
+    pub fn layers(&self) -> TypedArray<XRLayer> {
+        self.inner.get("layers").as_::<TypedArray<XRLayer>>()
     }
 
-    pub fn set_layers(&mut self, value: &Sequence<XRLayer>) {
+    pub fn set_layers(&mut self, value: &TypedArray<XRLayer>) {
         self.inner.set("layers", value);
     }
 }
@@ -223,13 +223,13 @@ impl XRHitTestOptionsInit {
     }
 }
 impl XRHitTestOptionsInit {
-    pub fn entity_types(&self) -> Sequence<XRHitTestTrackableType> {
+    pub fn entity_types(&self) -> TypedArray<XRHitTestTrackableType> {
         self.inner
             .get("entityTypes")
-            .as_::<Sequence<XRHitTestTrackableType>>()
+            .as_::<TypedArray<XRHitTestTrackableType>>()
     }
 
-    pub fn set_entity_types(&mut self, value: &Sequence<XRHitTestTrackableType>) {
+    pub fn set_entity_types(&mut self, value: &TypedArray<XRHitTestTrackableType>) {
         self.inner.set("entityTypes", value);
     }
 }
@@ -293,22 +293,22 @@ impl From<&XRTransientInputHitTestOptionsInit> for Any {
 }
 
 impl XRTransientInputHitTestOptionsInit {
-    pub fn profile(&self) -> DOMString {
-        self.inner.get("profile").as_::<DOMString>()
+    pub fn profile(&self) -> JsString {
+        self.inner.get("profile").as_::<JsString>()
     }
 
-    pub fn set_profile(&mut self, value: &DOMString) {
+    pub fn set_profile(&mut self, value: &JsString) {
         self.inner.set("profile", value);
     }
 }
 impl XRTransientInputHitTestOptionsInit {
-    pub fn entity_types(&self) -> Sequence<XRHitTestTrackableType> {
+    pub fn entity_types(&self) -> TypedArray<XRHitTestTrackableType> {
         self.inner
             .get("entityTypes")
-            .as_::<Sequence<XRHitTestTrackableType>>()
+            .as_::<TypedArray<XRHitTestTrackableType>>()
     }
 
-    pub fn set_entity_types(&mut self, value: &Sequence<XRHitTestTrackableType>) {
+    pub fn set_entity_types(&mut self, value: &TypedArray<XRHitTestTrackableType>) {
         self.inner.set("entityTypes", value);
     }
 }
@@ -482,10 +482,10 @@ impl XRSession {
 impl XRSession {
     /// Getter of the `enabledFeatures` attribute.
     /// [`XRSession.enabledFeatures`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/enabledFeatures)
-    pub fn enabled_features(&self) -> FrozenArray<DOMString> {
+    pub fn enabled_features(&self) -> TypedArray<JsString> {
         self.inner
             .get("enabledFeatures")
-            .as_::<FrozenArray<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 }
 impl XRSession {
@@ -688,16 +688,16 @@ impl XRSession {
 impl XRSession {
     /// Getter of the `persistentAnchors` attribute.
     /// [`XRSession.persistentAnchors`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/persistentAnchors)
-    pub fn persistent_anchors(&self) -> FrozenArray<DOMString> {
+    pub fn persistent_anchors(&self) -> TypedArray<JsString> {
         self.inner
             .get("persistentAnchors")
-            .as_::<FrozenArray<DOMString>>()
+            .as_::<TypedArray<JsString>>()
     }
 }
 impl XRSession {
     /// The restorePersistentAnchor method.
     /// [`XRSession.restorePersistentAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/restorePersistentAnchor)
-    pub fn restore_persistent_anchor(&self, uuid: &DOMString) -> Promise<XRAnchor> {
+    pub fn restore_persistent_anchor(&self, uuid: &JsString) -> Promise<XRAnchor> {
         self.inner
             .call("restorePersistentAnchor", &[uuid.into()])
             .as_::<Promise<XRAnchor>>()
@@ -706,7 +706,7 @@ impl XRSession {
 impl XRSession {
     /// The deletePersistentAnchor method.
     /// [`XRSession.deletePersistentAnchor`](https://developer.mozilla.org/en-US/docs/Web/API/XRSession/deletePersistentAnchor)
-    pub fn delete_persistent_anchor(&self, uuid: &DOMString) -> Promise<Undefined> {
+    pub fn delete_persistent_anchor(&self, uuid: &JsString) -> Promise<Undefined> {
         self.inner
             .call("deletePersistentAnchor", &[uuid.into()])
             .as_::<Promise<Undefined>>()

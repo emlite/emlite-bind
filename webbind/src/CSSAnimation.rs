@@ -58,7 +58,7 @@ jsbind::utils::impl_dyn_cast!(CSSAnimation);
 impl CSSAnimation {
     /// Getter of the `animationName` attribute.
     /// [`CSSAnimation.animationName`](https://developer.mozilla.org/en-US/docs/Web/API/CSSAnimation/animationName)
-    pub fn animation_name(&self) -> CSSOMString {
-        self.inner.get("animationName").as_::<CSSOMString>()
+    pub fn animation_name(&self) -> JsString {
+        self.inner.get("animationName").as_::<JsString>()
     }
 }

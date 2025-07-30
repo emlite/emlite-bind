@@ -1,17 +1,222 @@
 use crate::any::Any;
-use crate::sequence::Sequence;
 use crate::utils::*;
 use alloc::vec;
+use alloc::vec::Vec;
+use core::marker::PhantomData;
+use core::ops::{Deref, DerefMut};
 use emlite::FromVal;
 
-/// Generic WebIDL typed array ([spec § 2.7]).
-///
-/// This is nothing more than a `Sequence<T>` with a canonical name that
-/// matches the WebIDL grammar.  All sequence helpers (`len`, `push`, `get`,
-/// `iter`, …) are therefore immediately available.
-///
-/// [spec § 2.7]: https://webidl.spec.whatwg.org/#idl-typedarray
-pub type TypedArray<T> = Sequence<T>;
+/// Parameterised wrapper around a JavaScript array object. No concrete JS type, but needed for WebIDL
+#[derive(Clone, Debug, PartialEq, PartialOrd)]
+#[repr(transparent)]
+pub struct TypedArray<T> {
+    inner: emlite::Val,
+    phantom: PhantomData<T>,
+}
+
+impl<T> emlite::FromVal for TypedArray<T> {
+    fn from_val(v: &emlite::Val) -> Self {
+        Self {
+            inner: v.clone(),
+            phantom: PhantomData,
+        }
+    }
+    fn take_ownership(v: emlite::env::Handle) -> Self {
+        Self::from_val(&emlite::Val::take_ownership(v))
+    }
+    fn as_handle(&self) -> emlite::env::Handle {
+        self.inner.as_handle()
+    }
+}
+
+impl<T> From<TypedArray<T>> for emlite::Val {
+    fn from(x: TypedArray<T>) -> emlite::Val {
+        let handle = x.inner.as_handle();
+        core::mem::forget(x);
+        emlite::Val::take_ownership(handle)
+    }
+}
+
+impl<T> From<&TypedArray<T>> for emlite::Val {
+    fn from(x: &TypedArray<T>) -> emlite::Val {
+        x.inner.clone()
+    }
+}
+
+impl<T> Deref for TypedArray<T> {
+    type Target = emlite::Val;
+
+    fn deref(&self) -> &Self::Target {
+        &self.inner
+    }
+}
+
+impl<T> DerefMut for TypedArray<T> {
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.inner
+    }
+}
+
+impl<T> AsRef<emlite::Val> for TypedArray<T> {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+
+impl<T> AsMut<emlite::Val> for TypedArray<T> {
+    fn as_mut(&mut self) -> &mut emlite::Val {
+        &mut self.inner
+    }
+}
+
+impl<T> TypedArray<T> {
+    /// Construct a new JS array from a Rust slice, pushing each element
+    /// through `Into<Val>`.
+    pub fn new_from_slice(slice: &[T]) -> Self
+    where
+        T: Clone + Into<emlite::Val>,
+    {
+        let arr = emlite::Val::array();
+        for v in slice {
+            arr.call("push", &[v.clone().into()]);
+        }
+        Self {
+            inner: arr,
+            phantom: PhantomData,
+        }
+    }
+
+    /// Number of elements (`array.length`).
+    #[inline]
+    pub fn len(&self) -> usize {
+        self.inner.get("length").as_::<usize>()
+    }
+    /// True when `len() == 0`.
+    #[inline]
+    pub fn is_empty(&self) -> bool {
+        self.len() == 0
+    }
+
+    /// Push a single element to the end of the array.
+    pub fn push(&mut self, value: T)
+    where
+        T: Into<emlite::Val>,
+    {
+        self.inner.call("push", &[value.into()]);
+    }
+
+    /// Return a copy of the element at `idx` converted to `T`.
+    pub fn get(&self, idx: usize) -> Option<T>
+    where
+        T: FromVal,
+    {
+        let v = self.inner.get(idx);
+        if v.is_undefined() {
+            None
+        } else {
+            Some(v.as_::<T>())
+        }
+    }
+
+    /// Returns whether a value exists in the TypedArray.
+    pub fn has(&self, val: T) -> bool
+    where
+        emlite::Val: From<T>,
+    {
+        self.inner.has(val)
+    }
+
+    pub fn set(&self, idx: usize, val: T)
+    where
+        T: FromVal,
+        emlite::Val: From<T>,
+    {
+        self.inner.set(idx, val);
+    }
+
+    /// Returns a Rust Vec from a TypedArray
+    pub fn to_vec(&self) -> Vec<T>
+    where
+        T: FromVal,
+    {
+        self.iter().collect()
+    }
+}
+
+pub struct TypedArrayIter<'a, T> {
+    parent: &'a TypedArray<T>,
+    idx: usize,
+    len: usize,
+}
+
+impl<T> Iterator for TypedArrayIter<'_, T>
+where
+    T: FromVal,
+{
+    type Item = T;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        if self.idx < self.len {
+            let v = self.parent.get(self.idx);
+            self.idx += 1;
+            v
+        } else {
+            None
+        }
+    }
+
+    fn size_hint(&self) -> (usize, Option<usize>) {
+        let remain = self.len - self.idx;
+        (remain, Some(remain))
+    }
+}
+
+impl<'a, T> IntoIterator for &'a TypedArray<T>
+where
+    T: FromVal,
+{
+    type Item = T;
+    type IntoIter = TypedArrayIter<'a, T>;
+
+    fn into_iter(self) -> Self::IntoIter {
+        TypedArrayIter {
+            parent: self,
+            idx: 0,
+            len: self.len(),
+        }
+    }
+}
+
+impl<T> TypedArray<T>
+where
+    T: FromVal,
+{
+    /// Return an iterator over owned elements.
+    pub fn iter(&self) -> TypedArrayIter<'_, T> {
+        self.into_iter()
+    }
+}
+
+impl<T: Clone> From<Vec<T>> for TypedArray<T>
+where
+    emlite::Val: From<T>,
+{
+    #[inline]
+    fn from(buf: Vec<T>) -> Self {
+        // One copy from Wasm linear memory → JS Uint8Array.
+        Self::new_from_slice(&buf)
+    }
+}
+
+impl<T: Clone> From<&[T]> for TypedArray<T>
+where
+    emlite::Val: From<T>,
+{
+    #[inline]
+    fn from(slice: &[T]) -> Self {
+        Self::new_from_slice(slice)
+    }
+}
 
 /// An immutable view of a typed array (WebIDL frozen array).
 ///
@@ -43,9 +248,9 @@ crate::utils::impl_dyn_cast!(Float64Array, "Float64Array");
 
 /// Heterogeneous JavaScript `Array` (equivalent to `Vec<JsValue>`).
 ///
-/// Using `Sequence<Any>` means every element is an arbitrary JS value that can
+/// Using `TypedArray<Any>` means every element is an arbitrary JS value that can
 /// be converted on demand with `as_::<T>()`.
-pub type Array = Sequence<Any>;
+pub type Array = TypedArray<Any>;
 
 crate::utils::impl_dyn_cast!(Array, "Array");
 

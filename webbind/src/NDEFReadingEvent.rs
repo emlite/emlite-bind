@@ -57,7 +57,7 @@ jsbind::utils::impl_dyn_cast!(NDEFReadingEvent);
 
 impl NDEFReadingEvent {
     /// The `new NDEFReadingEvent(..)` constructor, creating a new NDEFReadingEvent instance
-    pub fn new(type_: &DOMString, reading_event_init_dict: &Any) -> NDEFReadingEvent {
+    pub fn new(type_: &JsString, reading_event_init_dict: &Any) -> NDEFReadingEvent {
         Self {
             inner: Any::global("NDEFReadingEvent")
                 .new(&[type_.into(), reading_event_init_dict.into()])
@@ -68,8 +68,8 @@ impl NDEFReadingEvent {
 impl NDEFReadingEvent {
     /// Getter of the `serialNumber` attribute.
     /// [`NDEFReadingEvent.serialNumber`](https://developer.mozilla.org/en-US/docs/Web/API/NDEFReadingEvent/serialNumber)
-    pub fn serial_number(&self) -> DOMString {
-        self.inner.get("serialNumber").as_::<DOMString>()
+    pub fn serial_number(&self) -> JsString {
+        self.inner.get("serialNumber").as_::<JsString>()
     }
 }
 impl NDEFReadingEvent {

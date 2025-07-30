@@ -152,10 +152,10 @@ impl HandwritingStroke {
 impl HandwritingStroke {
     /// The getPoints method.
     /// [`HandwritingStroke.getPoints`](https://developer.mozilla.org/en-US/docs/Web/API/HandwritingStroke/getPoints)
-    pub fn get_points(&self) -> Sequence<HandwritingPoint> {
+    pub fn get_points(&self) -> TypedArray<HandwritingPoint> {
         self.inner
             .call("getPoints", &[])
-            .as_::<Sequence<HandwritingPoint>>()
+            .as_::<TypedArray<HandwritingPoint>>()
     }
 }
 impl HandwritingStroke {

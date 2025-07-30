@@ -66,7 +66,7 @@ impl RTCError {
     }
 
     /// The `new RTCError(..)` constructor, creating a new RTCError instance
-    pub fn new1(init: &Any, message: &DOMString) -> RTCError {
+    pub fn new1(init: &Any, message: &JsString) -> RTCError {
         Self {
             inner: Any::global("RTCError")
                 .new(&[init.into(), message.into()])

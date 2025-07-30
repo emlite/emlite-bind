@@ -109,13 +109,13 @@ impl SVGMarkerElement {
 impl SVGMarkerElement {
     /// Getter of the `orient` attribute.
     /// [`SVGMarkerElement.orient`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMarkerElement/orient)
-    pub fn orient(&self) -> DOMString {
-        self.inner.get("orient").as_::<DOMString>()
+    pub fn orient(&self) -> JsString {
+        self.inner.get("orient").as_::<JsString>()
     }
 
     /// Setter of the `orient` attribute.
     /// [`SVGMarkerElement.orient`](https://developer.mozilla.org/en-US/docs/Web/API/SVGMarkerElement/orient)
-    pub fn set_orient(&mut self, value: &DOMString) {
+    pub fn set_orient(&mut self, value: &JsString) {
         self.inner.set("orient", value);
     }
 }

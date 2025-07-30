@@ -51,11 +51,11 @@ impl From<&RegistrationOptions> for Any {
 }
 
 impl RegistrationOptions {
-    pub fn scope(&self) -> USVString {
-        self.inner.get("scope").as_::<USVString>()
+    pub fn scope(&self) -> JsString {
+        self.inner.get("scope").as_::<JsString>()
     }
 
-    pub fn set_scope(&mut self, value: &USVString) {
+    pub fn set_scope(&mut self, value: &JsString) {
         self.inner.set("scope", value);
     }
 }
@@ -180,7 +180,7 @@ impl ServiceWorkerContainer {
     }
     /// The getRegistration method.
     /// [`ServiceWorkerContainer.getRegistration`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/getRegistration)
-    pub fn get_registration1(&self, client_url: &USVString) -> Promise<Any> {
+    pub fn get_registration1(&self, client_url: &JsString) -> Promise<Any> {
         self.inner
             .call("getRegistration", &[client_url.into()])
             .as_::<Promise<Any>>()
@@ -189,10 +189,10 @@ impl ServiceWorkerContainer {
 impl ServiceWorkerContainer {
     /// The getRegistrations method.
     /// [`ServiceWorkerContainer.getRegistrations`](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/getRegistrations)
-    pub fn get_registrations(&self) -> Promise<FrozenArray<ServiceWorkerRegistration>> {
+    pub fn get_registrations(&self) -> Promise<TypedArray<ServiceWorkerRegistration>> {
         self.inner
             .call("getRegistrations", &[])
-            .as_::<Promise<FrozenArray<ServiceWorkerRegistration>>>()
+            .as_::<Promise<TypedArray<ServiceWorkerRegistration>>>()
     }
 }
 impl ServiceWorkerContainer {

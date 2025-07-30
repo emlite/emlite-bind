@@ -79,10 +79,10 @@ impl LayoutShift {
 impl LayoutShift {
     /// Getter of the `sources` attribute.
     /// [`LayoutShift.sources`](https://developer.mozilla.org/en-US/docs/Web/API/LayoutShift/sources)
-    pub fn sources(&self) -> FrozenArray<LayoutShiftAttribution> {
+    pub fn sources(&self) -> TypedArray<LayoutShiftAttribution> {
         self.inner
             .get("sources")
-            .as_::<FrozenArray<LayoutShiftAttribution>>()
+            .as_::<TypedArray<LayoutShiftAttribution>>()
     }
 }
 impl LayoutShift {

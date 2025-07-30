@@ -57,10 +57,7 @@ jsbind::utils::impl_dyn_cast!(TaskPriorityChangeEvent);
 
 impl TaskPriorityChangeEvent {
     /// The `new TaskPriorityChangeEvent(..)` constructor, creating a new TaskPriorityChangeEvent instance
-    pub fn new(
-        type_: &DOMString,
-        priority_change_event_init_dict: &Any,
-    ) -> TaskPriorityChangeEvent {
+    pub fn new(type_: &JsString, priority_change_event_init_dict: &Any) -> TaskPriorityChangeEvent {
         Self {
             inner: Any::global("TaskPriorityChangeEvent")
                 .new(&[type_.into(), priority_change_event_init_dict.into()])
