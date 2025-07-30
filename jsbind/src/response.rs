@@ -1,6 +1,5 @@
 use crate::utils::*;
-use crate::{any::Any, array::ArrayBuffer, promise::Promise};
-use alloc::string::String;
+use crate::{any::Any, array::ArrayBuffer, promise::Promise, string::JsString};
 
 /// JavaScript `Response` object returned by `fetch`. There is also a Response object in webbind.
 /// This requires a javascript runtime which supports Response and fetch!

@@ -66,6 +66,12 @@ impl<K, V> AsMut<emlite::Val> for Record<K, V> {
 }
 
 impl<K, V> Record<K, V> {
+    pub fn new() -> Self {
+        Self {
+            inner: emlite::Val::object(),
+            _phantom: PhantomData,
+        }
+    }
     /// Set keyed `item` to `val`
     pub fn set(&self, item: K, val: V)
     where

@@ -1,6 +1,6 @@
 [package]
 name = "jsbind"
-version = "0.1.19"
+version = "0.1.20"
 edition = "2024"
 description = "Bindings for basic JS types required for webbind"
 documentation = "https://docs.rs/jsbind"
