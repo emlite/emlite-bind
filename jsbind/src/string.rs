@@ -75,7 +75,7 @@ macro_rules! declare_string {
             }
 
             /// Borrow the JavaScript string as `&str` (UTF‑8 view).
-            pub fn to_string(&self) -> Option<String> {
+            pub fn to_std_string(&self) -> Option<String> {
                 self.inner.as_::<Option<String>>()
             }
 
@@ -260,6 +260,17 @@ macro_rules! declare_string {
             /// [`String.prototype.trimStart`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/trimStart)
             pub fn trim_start(&self) -> Self {
                 self.inner.call("trimStart", &[]).as_::<Self>()
+            }
+
+            pub fn substr(&self, from: isize, length: Option<isize>) -> Self {
+                match length {
+                    Some(l) => self.inner.call("substr", &[from.into(), l.into()]),
+                    None => self.inner.call("substr", &[from.into()]),
+                }.as_::<Self>()
+            }
+
+            pub fn value_of(&self) -> Self {
+                self.inner.call("valueOf", &[]).as_::<Self>()
             }
         }
 
