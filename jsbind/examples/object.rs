@@ -1,6 +1,7 @@
 use jsbind::prelude::*;
 
 fn main() {
+    emlite::init();
     // Create a new JS object
     let obj = Object::new();
     println!("Created Object: {:?}", obj);

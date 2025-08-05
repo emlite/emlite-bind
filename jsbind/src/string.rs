@@ -1,6 +1,7 @@
 use crate::any::Any;
 use crate::utils::*;
 use alloc::string::String;
+use alloc::vec::Vec;
 
 macro_rules! declare_string {
     ($name:ident) => {

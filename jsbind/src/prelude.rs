@@ -1,5 +1,6 @@
 pub use emlite::Console;
 pub use emlite::FromVal;
+pub use emlite;
 
 pub use crate::any::{Any, AnyHandle};
 pub use crate::array::{

@@ -1,6 +1,7 @@
 use jsbind::prelude::*;
 
 fn main() {
+    emlite::init();
     // Create a JS function: function add(a, b) { return a + b; }
     let f = Function::new(&["a", "b"], "return a + b;");
     println!("Created Function: {:?}", f);

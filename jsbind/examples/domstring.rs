@@ -1,6 +1,7 @@
 use jsbind::prelude::*;
 
 fn main() {
+    emlite::init();
     // UTF-8 string example
     let s: JsString = "Hello".into();
     Console::get().log(&[s.clone().into()]);

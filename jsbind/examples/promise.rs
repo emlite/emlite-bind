@@ -1,6 +1,7 @@
 use jsbind::prelude::*;
 
 fn main() {
+    emlite::init();
     // Create a resolved Promise with a value
     let value = Any::from(42);
     let promise = Promise::<Any>::resolve(&value);

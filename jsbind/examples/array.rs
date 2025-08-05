@@ -3,6 +3,7 @@
 use jsbind::prelude::*;
 
 fn main() {
+    emlite::init();
     // Create a TypedArray from a Vec of Any
     let seq = TypedArray::from(vec![Any::from(1), Any::from(2), Any::from(3)]);
     println!("Created TypedArray: {:?}", seq);

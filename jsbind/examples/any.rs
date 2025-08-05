@@ -1,6 +1,7 @@
 use jsbind::prelude::*;
 
 fn main() {
+    emlite::init();
     // Create Any from different Rust types
     let num = Any::from(123);
     let text = Any::from("hello");
