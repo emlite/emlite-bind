@@ -25,6 +25,12 @@ macro_rules! declare_string {
             }
         }
 
+        impl From<$name> for Option<Vec<u16>> {
+            fn from(s: $name) -> Self {
+                s.as_::<Self>()
+            }
+        }
+
         impl From<&str> for $name {
             fn from(s: &str) -> Self {
                 emlite::Val::from(s).as_::<Self>()
@@ -34,6 +40,24 @@ macro_rules! declare_string {
         impl From<String> for $name {
             fn from(s: String) -> Self {
                 emlite::Val::from(&s).as_::<Self>()
+            }
+        }
+
+        impl From<&[u16]> for $name {
+            fn from(s: &[u16]) -> Self {
+                emlite::Val::from(s).as_::<Self>()
+            }
+        }
+
+        impl From<Vec<u16>> for $name {
+            fn from(s: Vec<u16>) -> Self {
+                emlite::Val::from(s).as_::<Self>()
+            }
+        }
+
+        impl From<&Vec<u16>> for $name {
+            fn from(s: &Vec<u16>) -> Self {
+                emlite::Val::from(s).as_::<Self>()
             }
         }
 
@@ -65,6 +89,23 @@ macro_rules! declare_string {
         }
 
         impl $name {
+            /// Create a new JavaScript string from UTF-16 data.
+            pub fn from_utf16(utf16: &[u16]) -> Self {
+                Self::from(utf16)
+            }
+
+            /// Create a new JavaScript string from UTF-16 Vec.
+            pub fn from_utf16_vec(utf16: Vec<u16>) -> Self {
+                Self::from(utf16)
+            }
+
+            /// Convert a Rust String to a JavaScript string via UTF-16.
+            /// This can be useful when you want to ensure UTF-16 encoding path.
+            pub fn from_string_via_utf16(s: &str) -> Self {
+                let utf16: Vec<u16> = s.encode_utf16().collect();
+                Self::from_utf16(&utf16)
+            }
+
             /// `len() == 0` convenience.
             pub fn is_empty(&self) -> bool {
                 self.length() == 0
@@ -77,6 +118,26 @@ macro_rules! declare_string {
             /// Borrow the JavaScript string as `&str` (UTF‑8 view).
             pub fn to_std_string(&self) -> Option<String> {
                 self.inner.as_::<Option<String>>()
+            }
+
+            /// Extract the JavaScript string as UTF-16 Vec<u16>.
+            pub fn to_utf16(&self) -> Option<Vec<u16>> {
+                self.inner.as_::<Option<Vec<u16>>>()
+            }
+
+            /// Extract the JavaScript string as UTF-16 with Result error handling.
+            pub fn to_utf16_result(&self) -> Result<Vec<u16>, emlite::Val> {
+                self.inner.as_::<Result<Vec<u16>, emlite::Val>>()
+            }
+
+            /// Converts UTF-16 Vec<u16> to Rust String, if possible.
+            pub fn utf16_to_string(utf16: &[u16]) -> Result<String, core::char::DecodeUtf16Error> {
+                char::decode_utf16(utf16.iter().cloned()).collect()
+            }
+
+            /// Extracts UTF-16 data and converts to Rust String.
+            pub fn to_string_from_utf16(&self) -> Option<String> {
+                self.to_utf16().and_then(|utf16| Self::utf16_to_string(&utf16).ok())
             }
 
             /// Number of UTF-16 code units (`JSString.length`).
