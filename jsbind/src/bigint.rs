@@ -1,8 +1,8 @@
 use crate::error::{RangeError, SyntaxError};
 use crate::utils::bind;
 use alloc::format;
-use alloc::string::String;
 use alloc::str::FromStr;
+use alloc::string::String;
 
 /// JavaScript BigInt type.
 ///

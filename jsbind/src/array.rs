@@ -262,10 +262,7 @@ impl<T> TypedArray<T> {
     ) -> Any {
         let initial_value = initial_value.cloned().unwrap_or_else(Any::undefined);
         self.inner
-            .call(
-                "reduceRight",
-                &[callbackfn.clone().into(), initial_value],
-            )
+            .call("reduceRight", &[callbackfn.clone().into(), initial_value])
             .as_::<Any>()
     }
 
