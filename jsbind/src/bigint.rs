@@ -2,6 +2,7 @@ use crate::error::{RangeError, SyntaxError};
 use crate::utils::bind;
 use alloc::format;
 use alloc::string::String;
+use alloc::str::FromStr;
 
 /// JavaScript BigInt type.
 ///
@@ -15,28 +16,17 @@ pub struct BigInt {
 
 bind!(BigInt);
 
-impl BigInt {
-    /// Creates a new BigInt from a string.
-    ///
-    /// # Arguments
-    /// * `value` - String representation of the number
-    ///
-    /// # Returns
-    /// Result containing the BigInt or a SyntaxError if the string is invalid
-    ///
-    /// # Examples
-    /// ```rust
-    /// use jsbind::prelude::*;
-    ///
-    /// let big_num = BigInt::from_str("123456789012345678901234567890").unwrap();
-    /// assert!(BigInt::from_str("invalid").is_err());
-    /// ```
-    pub fn from_str(value: &str) -> Result<Self, SyntaxError> {
+impl FromStr for BigInt {
+    type Err = SyntaxError;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
         let ctor = emlite::Val::global("BigInt");
-        let result = ctor.invoke(&[value.into()]);
+        let result = ctor.invoke(&[s.into()]);
         result.as_::<Result<Self, SyntaxError>>()
     }
+}
 
+impl BigInt {
     /// Creates a new BigInt from an i64.
     ///
     /// # Arguments  

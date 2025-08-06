@@ -92,12 +92,12 @@ impl core::fmt::Display for Function {
     }
 }
 
-impl<'a> From<&'a Closure> for Function {
+impl From<&Closure> for Function {
     fn from(c: &Closure) -> Self {
         c.clone().into()
     }
 }
-impl<'a> From<&'a Function> for Closure {
+impl From<&Function> for Closure {
     fn from(f: &Function) -> Self {
         f.clone().as_()
     }

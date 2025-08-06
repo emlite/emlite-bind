@@ -14,10 +14,10 @@ impl crate::prelude::DynCast for Any {
     }
     #[inline]
     fn unchecked_from_val_ref(v: &emlite::Val) -> &Self {
-        unsafe { &*(v as *const emlite::Val as *const Self) }
+        unsafe { &*(v as *const emlite::Val) }
     }
     #[inline]
     fn unchecked_from_val_mut(v: &mut emlite::Val) -> &mut Self {
-        unsafe { &mut *(v as *mut emlite::Val as *mut Self) }
+        unsafe { &mut *(v as *mut emlite::Val) }
     }
 }

@@ -67,6 +67,12 @@ impl<T> AsMut<emlite::Val> for TypedSet<T> {
     }
 }
 
+impl<T> Default for TypedSet<T> {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl<T> TypedSet<T> {
     /// `new Set()` — empty set.
     pub fn new() -> Self {
@@ -132,6 +138,11 @@ impl<T> TypedSet<T> {
     pub fn len(&self) -> usize {
         self.inner.get("length").as_::<usize>()
     }
+
+    #[inline]
+    pub fn is_empty(&self) -> bool {
+        self.len() == 0
+    }
 }
 
 pub struct TypedSetIter<'a, T> {
@@ -160,7 +171,7 @@ where
     }
 }
 
-impl<'a, T> Iterator for TypedSetIter<'a, T>
+impl<T> Iterator for TypedSetIter<'_, T>
 where
     T: FromVal,
 {
@@ -259,6 +270,12 @@ impl<T> DerefMut for TypedWeakSet<T> {
     }
 }
 
+impl<T> Default for TypedWeakSet<T> {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl<T> TypedWeakSet<T> {
     /// `new WeakSet()` — empty set.
     pub fn new() -> Self {
@@ -324,6 +341,11 @@ impl<T> TypedWeakSet<T> {
     pub fn len(&self) -> usize {
         self.inner.get("length").as_::<usize>()
     }
+
+    #[inline]
+    pub fn is_empty(&self) -> bool {
+        self.len() == 0
+    }
 }
 
 pub struct TypedWeakSetIter<'a, T> {
@@ -352,7 +374,7 @@ where
     }
 }
 
-impl<'a, T> Iterator for TypedWeakSetIter<'a, T>
+impl<T> Iterator for TypedWeakSetIter<'_, T>
 where
     T: FromVal,
 {

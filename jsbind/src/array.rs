@@ -209,21 +209,21 @@ impl<T> TypedArray<T> {
     pub fn every(&self, predicate: &crate::function::Function, this_arg: Option<&Any>) -> bool {
         let this_arg = this_arg.cloned().unwrap_or_else(Any::undefined);
         self.inner
-            .call("every", &[predicate.clone().into(), this_arg.into()])
+            .call("every", &[predicate.clone().into(), this_arg])
             .as_::<bool>()
     }
 
     pub fn some(&self, predicate: &crate::function::Function, this_arg: Option<&Any>) -> bool {
         let this_arg = this_arg.cloned().unwrap_or_else(Any::undefined);
         self.inner
-            .call("some", &[predicate.clone().into(), this_arg.into()])
+            .call("some", &[predicate.clone().into(), this_arg])
             .as_::<bool>()
     }
 
     pub fn for_each(&self, callbackfn: &crate::function::Function, this_arg: Option<&Any>) {
         let this_arg = this_arg.cloned().unwrap_or_else(Any::undefined);
         self.inner
-            .call("forEach", &[callbackfn.clone().into(), this_arg.into()]);
+            .call("forEach", &[callbackfn.clone().into(), this_arg]);
     }
 
     pub fn map(
@@ -233,14 +233,14 @@ impl<T> TypedArray<T> {
     ) -> TypedArray<Any> {
         let this_arg = this_arg.cloned().unwrap_or_else(Any::undefined);
         self.inner
-            .call("map", &[callbackfn.clone().into(), this_arg.into()])
+            .call("map", &[callbackfn.clone().into(), this_arg])
             .as_::<TypedArray<Any>>()
     }
 
     pub fn filter(&self, predicate: &crate::function::Function, this_arg: Option<&Any>) -> Self {
         let this_arg = this_arg.cloned().unwrap_or_else(Any::undefined);
         self.inner
-            .call("filter", &[predicate.clone().into(), this_arg.into()])
+            .call("filter", &[predicate.clone().into(), this_arg])
             .as_::<Self>()
     }
 
@@ -251,7 +251,7 @@ impl<T> TypedArray<T> {
     ) -> Any {
         let initial_value = initial_value.cloned().unwrap_or_else(Any::undefined);
         self.inner
-            .call("reduce", &[callbackfn.clone().into(), initial_value.into()])
+            .call("reduce", &[callbackfn.clone().into(), initial_value])
             .as_::<Any>()
     }
 
@@ -264,7 +264,7 @@ impl<T> TypedArray<T> {
         self.inner
             .call(
                 "reduceRight",
-                &[callbackfn.clone().into(), initial_value.into()],
+                &[callbackfn.clone().into(), initial_value],
             )
             .as_::<Any>()
     }

@@ -70,6 +70,12 @@ impl<K, V> AsMut<emlite::Val> for TypedMap<K, V> {
 pub type Map = TypedMap<Any, Any>;
 crate::utils::impl_dyn_cast!(Map, "Map");
 
+impl<K, V> Default for TypedMap<K, V> {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl<K, V> TypedMap<K, V> {
     /// `new Map(iterable?)`
     pub fn new() -> Self {
@@ -154,7 +160,7 @@ where
     }
 }
 
-impl<'a, K, V> Iterator for TypedMapIter<'a, K, V>
+impl<K, V> Iterator for TypedMapIter<'_, K, V>
 where
     K: FromVal,
     V: FromVal,
@@ -165,11 +171,7 @@ where
         if self.idx < self.it.len() {
             let pair = self.it.get(self.idx); // [key,val]
             self.idx += 1;
-            if let Some(p) = pair {
-                Some((p.get(0).as_::<K>(), p.get(1).as_::<V>()))
-            } else {
-                None
-            }
+            pair.map(|p| (p.get(0).as_::<K>(), p.get(1).as_::<V>()))
         } else {
             None
         }
@@ -184,7 +186,7 @@ where
     fn from(rec: Record<K, V>) -> Self {
         let map_ctor = emlite::Val::global("Map");
         // TypedMap entries: Object.entries(obj)
-        let entries = emlite::Val::global("Object").call("entries", &[rec.clone().into()]);
+        let entries = emlite::Val::global("Object").call("entries", &[rec.clone()]);
         map_ctor.new(&[entries]).as_::<Self>()
     }
 }
@@ -248,6 +250,12 @@ impl<K, V> AsRef<emlite::Val> for TypedWeakMap<K, V> {
 impl<K, V> AsMut<emlite::Val> for TypedWeakMap<K, V> {
     fn as_mut(&mut self) -> &mut emlite::Val {
         &mut self.inner
+    }
+}
+
+impl<K, V> Default for TypedWeakMap<K, V> {
+    fn default() -> Self {
+        Self::new()
     }
 }
 
@@ -335,7 +343,7 @@ where
     }
 }
 
-impl<'a, K, V> Iterator for TypedWeakMapIter<'a, K, V>
+impl<K, V> Iterator for TypedWeakMapIter<'_, K, V>
 where
     K: FromVal,
     V: FromVal,
@@ -346,11 +354,7 @@ where
         if self.idx < self.it.len() {
             let pair = self.it.get(self.idx); // [key,val]
             self.idx += 1;
-            if let Some(p) = pair {
-                Some((p.get(0).as_::<K>(), p.get(1).as_::<V>()))
-            } else {
-                None
-            }
+            pair.map(|p| (p.get(0).as_::<K>(), p.get(1).as_::<V>()))
         } else {
             None
         }
@@ -365,7 +369,7 @@ where
     fn from(rec: Record<K, V>) -> Self {
         let map_ctor = emlite::Val::global("WeakMap");
         // TypedWeakMap entries: Object.entries(obj)
-        let entries = emlite::Val::global("Object").call("entries", &[rec.clone().into()]);
+        let entries = emlite::Val::global("Object").call("entries", &[rec.clone()]);
         map_ctor.new(&[entries]).as_::<Self>()
     }
 }

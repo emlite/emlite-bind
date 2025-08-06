@@ -11,6 +11,12 @@ pub struct TextEncoder {
 bind!(TextEncoder);
 impl_dyn_cast!(TextEncoder);
 
+impl Default for TextEncoder {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl TextEncoder {
     /// `new TextEncoder()` (always UTF-8 in browsers/Node).
     pub fn new() -> Self {

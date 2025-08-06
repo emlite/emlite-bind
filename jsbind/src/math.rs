@@ -25,7 +25,7 @@ impl Math {
     pub const LOG2E: f64 = core::f64::consts::LOG2_E;
     pub const LOG10E: f64 = core::f64::consts::LOG10_E;
     pub const PI: f64 = core::f64::consts::PI;
-    pub const SQRT1_2: f64 = 0.707_106_781_186_547_6; // 1/√2
+    pub const SQRT1_2: f64 = core::f64::consts::FRAC_1_SQRT_2; // 1/√2
     pub const SQRT2: f64 = core::f64::consts::SQRT_2;
 
     unary! {

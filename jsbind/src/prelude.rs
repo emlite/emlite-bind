@@ -55,7 +55,7 @@ pub fn parse_int(src: &str, radix: Option<i32>) -> Result<i32, JsError> {
     let g = emlite::Val::global("parseInt");
     let result = match radix {
         Some(r) => {
-            if r < 2 || r > 36 {
+            if !(2..=36).contains(&r) {
                 return Err(JsError::new("Radix must be between 2 and 36"));
             }
             g.invoke(&[src.into(), r.into()])

@@ -65,6 +65,12 @@ impl<K, V> AsMut<emlite::Val> for Record<K, V> {
     }
 }
 
+impl<K, V> Default for Record<K, V> {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl<K, V> Record<K, V> {
     pub fn new() -> Self {
         Self {
