@@ -1,5 +1,6 @@
 use crate::any::Any;
 use crate::array::Array;
+use crate::error::JsError;
 use crate::utils::*;
 use alloc::string::String;
 use alloc::vec::Vec;
@@ -34,22 +35,22 @@ impl Function {
     /// `new Function(arg1, arg2, ..., body)`.
     ///
     /// ```
-    /// let f = Function::new(&["a", "b"], "return a + b;");
-    /// let sum: i32 = f.call(&Any::undefined(), &[1.into(), 2.into()]).as_();
+    /// let f = Function::new(&["a", "b"], "return a + b;").unwrap();
+    /// let sum: i32 = f.call(&Any::undefined(), &[1.into(), 2.into()]).unwrap().as_();
     /// assert_eq!(sum, 3);
     /// ```
-    pub fn new<S: AsRef<str>>(args: &[S], body: &str) -> Self {
+    pub fn new<S: AsRef<str>>(args: &[S], body: &str) -> Result<Self, JsError> {
         let ctor = emlite::Val::global("Function");
         let mut a: Vec<emlite::Val> = args.iter().map(|s| s.as_ref().into()).collect();
         a.push(body.into());
-        ctor.new(&a).as_::<Self>()
+        ctor.new(&a).as_::<Result<Self, JsError>>()
     }
 }
 
 impl Function {
     /// Call `fn.call(this, …args)`.  
     /// Returns the raw JS value so the caller can choose the concrete type.
-    pub fn call(&self, this_arg: &Any, args: &[Any]) -> Any {
+    pub fn call(&self, this_arg: &Any, args: &[Any]) -> Result<Any, JsError> {
         // prepend `this` then use `Function.prototype.call`
         let mut v: Vec<emlite::Val> = Vec::with_capacity(args.len() + 1);
         v.push(this_arg.clone());
@@ -58,18 +59,18 @@ impl Function {
     }
 
     /// Call `fn.apply(this, args_array)`.
-    pub fn apply(&self, this_arg: &Any, args_array: &Array) -> Any {
+    pub fn apply(&self, this_arg: &Any, args_array: &Array) -> Result<Any, JsError> {
         self.inner
             .call("apply", &[this_arg.clone(), args_array.clone().into()])
             .as_()
     }
 
     /// Bind a new `this` argument (`fn.bind(this, …pre_args)`).
-    pub fn bind(&self, this_arg: &Any, pre_args: &[Any]) -> Self {
+    pub fn bind(&self, this_arg: &Any, pre_args: &[Any]) -> Result<Self, JsError> {
         let mut a: Vec<emlite::Val> = Vec::with_capacity(pre_args.len() + 1);
         a.push(this_arg.clone());
         a.extend(pre_args.iter().cloned());
-        self.inner.call("bind", &a).as_::<Self>()
+        self.inner.call("bind", &a).as_::<Result<Self, JsError>>()
     }
 }
 

@@ -1,12 +1,15 @@
+pub use emlite;
 pub use emlite::Console;
 pub use emlite::FromVal;
-pub use emlite;
+
+use alloc::{format, vec};
 
 pub use crate::any::{Any, AnyHandle};
 pub use crate::array::{
     Array, ArrayBuffer, DataView, Endian, Float32Array, Float64Array, FrozenArray, Int8Array,
     Int32Array, ObservableArray, TypedArray, Uint8Array, Uint32Array,
 };
+pub use crate::bigint::BigInt;
 pub use crate::date::Date;
 pub use crate::error::*;
 pub use crate::function::{Closure, Function};
@@ -18,28 +21,82 @@ pub use crate::object::Object;
 pub use crate::promise::Promise;
 pub use crate::record::Record;
 pub use crate::reflect::Reflect;
+pub use crate::regexp::{RegExp, RegExpFlags};
 pub use crate::response::{fetch, fetch_val};
 pub use crate::set::*;
 pub use crate::string::JsString;
+pub use crate::symbol::Symbol;
 pub use crate::text::{TextDecoder, TextEncoder};
 pub use crate::time::*;
 pub use crate::undefined::Undefined;
 pub use crate::url::URL;
 
 /// Parse `src` with an optional `radix`.  Mirrors `parseInt(str, radix)`.
-pub fn parse_int(src: &str, radix: Option<i32>) -> i32 {
+///
+/// # Arguments
+/// * `src` - String to parse
+/// * `radix` - Optional radix (2-36)
+///
+/// # Returns
+/// Result containing parsed integer or error
+///
+/// # Examples
+/// ```rust
+/// use jsbind::prelude::*;
+///
+/// let result = parse_int("42", None);
+/// assert!(result.is_ok());
+/// assert_eq!(result.unwrap(), 42);
+///
+/// let error_result = parse_int("not_a_number", None);
+/// assert!(error_result.is_err());
+/// ```
+pub fn parse_int(src: &str, radix: Option<i32>) -> Result<i32, JsError> {
     let g = emlite::Val::global("parseInt");
-    match radix {
-        Some(r) => g.invoke(&[src.into(), r.into()]).as_::<i32>(),
-        None => g.invoke(&[src.into()]).as_::<i32>(),
+    let result = match radix {
+        Some(r) => {
+            if r < 2 || r > 36 {
+                return Err(JsError::new("Radix must be between 2 and 36"));
+            }
+            g.invoke(&[src.into(), r.into()])
+        }
+        None => g.invoke(&[src.into()]),
+    };
+
+    if is_nan(&result) {
+        Err(JsError::new(&format!("Invalid number format: '{}'", src)))
+    } else {
+        Ok(result.as_::<i32>())
     }
 }
 
 /// Parse a floating-point value – identical to JS `parseFloat(str)`.
-pub fn parse_float(src: &str) -> f64 {
-    emlite::Val::global("parseFloat")
-        .invoke(&[src.into()])
-        .as_::<f64>()
+///
+/// # Arguments
+/// * `src` - String to parse
+///
+/// # Returns
+/// Result containing parsed float or error
+///
+/// # Examples
+/// ```rust
+/// use jsbind::prelude::*;
+///
+/// let result = parse_float("3.14");
+/// assert!(result.is_ok());
+/// assert_eq!(result.unwrap(), 3.14);
+///
+/// let error_result = parse_float("not_a_number");
+/// assert!(error_result.is_err());
+/// ```
+pub fn parse_float(src: &str) -> Result<f64, JsError> {
+    let result = emlite::Val::global("parseFloat").invoke(&[src.into()]);
+
+    if is_nan(&result) {
+        Err(JsError::new(&format!("Invalid number format: '{}'", src)))
+    } else {
+        Ok(result.as_::<f64>())
+    }
 }
 
 /// Trait analogous to `wasm-bindgen::JsCast`.
@@ -261,10 +318,173 @@ where
     }
 }
 
-pub fn btoa(data: &JsString) -> JsString {
-    emlite::Val::global("btoa").invoke(&[data.into()]).as_::<JsString>()
+/// Encode string to base64.
+///
+/// # Arguments  
+/// * `data` - String to encode
+///
+/// # Returns
+/// Result containing base64 encoded string or error
+///
+/// # Examples
+/// ```rust
+/// use jsbind::prelude::*;
+///
+/// let input = JsString::from("Hello World");
+/// let result = btoa(&input);
+/// assert!(result.is_ok());
+/// ```
+pub fn btoa(data: &JsString) -> Result<JsString, JsError> {
+    let result = emlite::Val::global("btoa").invoke(&[data.into()]);
+    result.as_::<Result<JsString, JsError>>()
 }
 
-pub fn atob(encoded: &JsString) -> JsString {
-    emlite::Val::global("atob").invoke(&[encoded.into()]).as_::<JsString>()
+/// Decode base64 string.
+///
+/// # Arguments
+/// * `encoded` - Base64 encoded string  
+///
+/// # Returns
+/// Result containing decoded string or error
+///
+/// # Examples
+/// ```rust
+/// use jsbind::prelude::*;
+///
+/// let encoded = JsString::from("SGVsbG8gV29ybGQ=");
+/// let result = atob(&encoded);
+/// assert!(result.is_ok());
+/// ```
+pub fn atob(encoded: &JsString) -> Result<JsString, JsError> {
+    let result = emlite::Val::global("atob").invoke(&[encoded.into()]);
+    result.as_::<Result<JsString, JsError>>()
+}
+
+/// Checks if a value is NaN.
+///
+/// # Arguments
+/// * `value` - Value to check
+///
+/// # Returns
+/// `true` if the value is NaN, `false` otherwise
+///
+/// # Examples
+/// ```rust
+/// use jsbind::prelude::*;
+///
+/// assert!(is_nan(&(0.0/0.0).into()));
+/// assert!(!is_nan(&42.into()));
+/// ```
+pub fn is_nan<T>(value: &T) -> bool
+where
+    T: AsRef<emlite::Val>,
+{
+    emlite::Val::global("isNaN")
+        .invoke(&[value.as_ref().clone()])
+        .as_::<bool>()
+}
+
+/// Queues a microtask to be executed.
+///
+/// # Arguments
+/// * `callback` - Function to execute as microtask
+///
+/// # Examples
+/// ```rust
+/// use jsbind::prelude::*;
+///
+/// let callback = Function::from_closure(|| {
+///     Console::get().log(&["Microtask executed!".into()]);
+/// });
+/// queue_microtask(&callback);
+/// ```
+pub fn queue_microtask(callback: &Function) {
+    emlite::Val::global("queueMicrotask").invoke(&[callback.into()]);
+}
+
+/// Options for structured cloning operations.
+#[derive(Clone, Debug)]
+pub struct JsStructuredSerializeOptions {
+    inner: emlite::Val,
+}
+
+impl JsStructuredSerializeOptions {
+    /// Creates a new JsStructuredSerializeOptions object.
+    pub fn new() -> Self {
+        Self {
+            inner: emlite::Val::object(),
+        }
+    }
+
+    /// Gets the transfer list for transferable objects.
+    pub fn transfer(&self) -> Option<TypedArray<Object>> {
+        let val = self.inner.get("transfer");
+        if val.is_undefined() {
+            None
+        } else {
+            Some(val.as_::<TypedArray<Object>>())
+        }
+    }
+
+    /// Sets the transfer list for transferable objects.
+    pub fn set_transfer(&self, transfer: &TypedArray<Object>) {
+        self.inner.set("transfer", transfer);
+    }
+}
+
+impl Default for JsStructuredSerializeOptions {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl AsRef<emlite::Val> for JsStructuredSerializeOptions {
+    fn as_ref(&self) -> &emlite::Val {
+        &self.inner
+    }
+}
+
+impl From<JsStructuredSerializeOptions> for emlite::Val {
+    fn from(options: JsStructuredSerializeOptions) -> Self {
+        options.inner
+    }
+}
+
+impl From<&JsStructuredSerializeOptions> for emlite::Val {
+    fn from(options: &JsStructuredSerializeOptions) -> Self {
+        options.inner.clone()
+    }
+}
+
+/// Performs a structured clone of a value.
+///
+/// # Arguments
+/// * `value` - The value to clone
+/// * `options` - Optional structured clone options
+///
+/// # Returns
+/// Deep clone of the input value
+///
+/// # Examples
+/// ```rust
+/// use jsbind::prelude::*;
+///
+/// let obj = Object::new();
+/// obj.set("key", "value");
+///
+/// let cloned = structured_clone(&obj, None);
+/// // cloned is a deep copy of obj
+/// ```
+pub fn structured_clone<T>(value: &T, options: Option<&JsStructuredSerializeOptions>) -> T
+where
+    T: emlite::FromVal + AsRef<emlite::Val>,
+{
+    let args = match options {
+        Some(opts) => vec![value.as_ref().clone(), opts.into()],
+        None => vec![value.as_ref().clone()],
+    };
+
+    emlite::Val::global("structuredClone")
+        .invoke(&args)
+        .as_::<T>()
 }

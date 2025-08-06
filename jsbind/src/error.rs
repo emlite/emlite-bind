@@ -1,5 +1,6 @@
 use crate::utils::*;
 use alloc::string::String;
+use emlite::{FromJsError, Val};
 
 macro_rules! declare_error {
     ($base:ident $(, $name:ident)*) => {
@@ -34,6 +35,13 @@ macro_rules! declare_error {
         }
         impl core::error::Error for $base {}
 
+        /// Implement FromJsError for the base error type to enable Result<T, Error> conversions
+        impl FromJsError for $base {
+            fn from_js_error(val: &Val) -> Self {
+                val.as_::<Self>()
+            }
+        }
+
         $(
             #[derive(Clone, Debug, PartialEq, PartialOrd)]
             #[repr(transparent)]
@@ -62,12 +70,19 @@ macro_rules! declare_error {
             impl From<$name> for $base {
                 fn from(e: $name) -> $base { e.inner.clone().as_::<$base>() }
             }
+
+            /// Implement FromJsError for derived error types
+            impl FromJsError for $name {
+                fn from_js_error(val: &Val) -> Self {
+                    val.as_::<Self>()
+                }
+            }
         )*
     };
 }
 
 declare_error!(
-    Error,
+    JsError,
     EvalError,
     RangeError,
     ReferenceError,

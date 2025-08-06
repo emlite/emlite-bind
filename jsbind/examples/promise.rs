@@ -24,11 +24,13 @@ fn main() {
     let on_fulfilled = Function::new(
         &["value"],
         "console.log('Promise fulfilled with:', value); return 'ok';",
-    );
+    )
+    .unwrap();
     let on_rejected = Function::new(
         &["reason"],
         "console.log('Promise rejected with:', reason); return 'fail';",
-    );
+    )
+    .unwrap();
     let chained = promise.then(&on_fulfilled, &on_rejected);
     let caught = chained.catch(&on_rejected);
     let finalized = caught.finally(&on_fulfilled);

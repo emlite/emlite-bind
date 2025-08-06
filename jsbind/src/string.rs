@@ -126,11 +126,6 @@ macro_rules! declare_string {
                 self.inner.as_::<Option<Vec<u16>>>()
             }
 
-            /// Extract the JavaScript string as UTF-16 with Result error handling.
-            pub fn to_utf16_result(&self) -> Result<Vec<u16>, emlite::Val> {
-                self.inner.as_::<Result<Vec<u16>, emlite::Val>>()
-            }
-
             /// Converts UTF-16 Vec<u16> to Rust String, if possible.
             pub fn utf16_to_string(utf16: &[u16]) -> Result<String, core::char::DecodeUtf16Error> {
                 char::decode_utf16(utf16.iter().cloned()).collect()
@@ -138,7 +133,8 @@ macro_rules! declare_string {
 
             /// Extracts UTF-16 data and converts to Rust String.
             pub fn to_string_from_utf16(&self) -> Option<String> {
-                self.to_utf16().and_then(|utf16| Self::utf16_to_string(&utf16).ok())
+                self.to_utf16()
+                    .and_then(|utf16| Self::utf16_to_string(&utf16).ok())
             }
 
             /// Number of UTF-16 code units (`JSString.length`).
@@ -328,7 +324,8 @@ macro_rules! declare_string {
                 match length {
                     Some(l) => self.inner.call("substr", &[from.into(), l.into()]),
                     None => self.inner.call("substr", &[from.into()]),
-                }.as_::<Self>()
+                }
+                .as_::<Self>()
             }
 
             pub fn value_of(&self) -> Self {

@@ -1,3 +1,4 @@
+use crate::error::TypeError;
 use crate::utils::*;
 use alloc::string::String;
 
@@ -10,13 +11,30 @@ bind!(URL);
 impl_dyn_cast!(URL);
 
 impl URL {
-    /// `new URL(input, base?)`
-    pub fn new(input: &str, base: Option<&str>) -> Self {
+    /// Creates a new URL object with error handling.
+    ///
+    /// # Arguments
+    /// * `input` - URL string to parse
+    /// * `base` - Optional base URL string
+    ///
+    /// # Returns
+    /// Result containing the URL object or a TypeError if the URL is malformed
+    ///
+    /// # Examples
+    /// ```rust
+    /// use jsbind::prelude::*;
+    ///
+    /// let url = URL::new("https://example.com", None).unwrap();
+    /// let relative = URL::new("/path", Some("https://example.com")).unwrap();
+    /// assert!(URL::new("invalid-url", None).is_err());
+    /// ```
+    pub fn new(input: &str, base: Option<&str>) -> Result<Self, TypeError> {
         let ctor = emlite::Val::global("URL");
-        match base {
-            Some(b) => ctor.new(&[input.into(), b.into()]).as_::<Self>(),
-            None => ctor.new(&[input.into()]).as_::<Self>(),
-        }
+        let result = match base {
+            Some(b) => ctor.new(&[input.into(), b.into()]),
+            None => ctor.new(&[input.into()]),
+        };
+        result.as_::<Result<Self, TypeError>>()
     }
 
     pub fn href(&self) -> Option<String> {
@@ -55,12 +73,12 @@ bind!(URLSearchParams);
 impl_dyn_cast!(URLSearchParams);
 
 impl URLSearchParams {
-    pub fn get(&self, key: &str) -> Option<Option<String>> {
-        let v = self.inner.get(key);
+    pub fn get(&self, key: &str) -> Option<String> {
+        let v = self.inner.call("get", &[key.into()]);
         if v.is_null() {
             None
         } else {
-            Some(v.as_::<Option<String>>())
+            v.as_::<Option<String>>()
         }
     }
 

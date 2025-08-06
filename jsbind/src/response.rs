@@ -1,5 +1,5 @@
 use crate::utils::*;
-use crate::{any::Any, array::ArrayBuffer, promise::Promise, string::JsString};
+use crate::{any::Any, array::ArrayBuffer, error::*, promise::Promise, string::JsString};
 
 /// JavaScript `Response` object returned by `fetch`. There is also a Response object in webbind.
 /// This requires a javascript runtime which supports Response and fetch!
@@ -27,16 +27,16 @@ impl Response {
     }
 
     /// `response.text()` – consumes the body and resolves to JsString.
-    pub fn text(&self) -> Promise<JsString> {
+    pub fn text(&self) -> Promise<Result<JsString, JsError>> {
         self.inner.call("text", &[]).as_::<Promise<_>>()
     }
     /// `response.json()` – resolves to any JS value (`Any`).
-    pub fn json(&self) -> Promise<Any> {
+    pub fn json(&self) -> Promise<Result<Any, JsError>> {
         self.inner.call("json", &[]).as_::<Promise<_>>()
     }
     /// `response.arrayBuffer()` – resolves to `ArrayBuffer`; we map to
     /// `Uint8Array` for easy use in Rust.
-    pub fn array_buffer(&self) -> Promise<ArrayBuffer> {
+    pub fn array_buffer(&self) -> Promise<Result<ArrayBuffer, JsError>> {
         self.inner.call("arrayBuffer", &[]).as_::<Promise<_>>()
     }
 }
@@ -54,7 +54,7 @@ impl Response {
 ///     println!("{}", txt);
 /// }
 /// ```
-pub fn fetch(input: &str, init: Option<&Any>) -> Promise<Response> {
+pub fn fetch(input: &str, init: Option<&Any>) -> Promise<Result<Response, JsError>> {
     let fetch_fn = emlite::Val::global("fetch");
     match init {
         Some(i) => fetch_fn.invoke(&[input.into(), i.clone()]),
@@ -64,7 +64,7 @@ pub fn fetch(input: &str, init: Option<&Any>) -> Promise<Response> {
 }
 
 /* Convenience: fetch with Request object or other Any */
-pub fn fetch_val(input: &Any, init: Option<&Any>) -> Promise<Response> {
+pub fn fetch_val(input: &Any, init: Option<&Any>) -> Promise<Result<Response, JsError>> {
     let fetch_fn = emlite::Val::global("fetch");
     match init {
         Some(i) => fetch_fn.invoke(&[input.clone(), i.clone()]),

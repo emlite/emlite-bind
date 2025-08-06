@@ -143,11 +143,15 @@ impl<T> TypedArray<T> {
     }
 
     pub fn to_string(&self) -> crate::string::JsString {
-        self.inner.call("toString", &[]).as_::<crate::string::JsString>()
+        self.inner
+            .call("toString", &[])
+            .as_::<crate::string::JsString>()
     }
 
     pub fn to_locale_string(&self) -> crate::string::JsString {
-        self.inner.call("toLocaleString", &[]).as_::<crate::string::JsString>()
+        self.inner
+            .call("toLocaleString", &[])
+            .as_::<crate::string::JsString>()
     }
 
     pub fn pop(&self) -> Any {
@@ -159,7 +163,9 @@ impl<T> TypedArray<T> {
     }
 
     pub fn join(&self, separator: &crate::string::JsString) -> crate::string::JsString {
-        self.inner.call("join", &[separator.clone().into()]).as_::<crate::string::JsString>()
+        self.inner
+            .call("join", &[separator.clone().into()])
+            .as_::<crate::string::JsString>()
     }
 
     pub fn reverse(&self) -> Self {
@@ -171,11 +177,15 @@ impl<T> TypedArray<T> {
     }
 
     pub fn sort(&self, compare_fn: &crate::function::Function) -> Self {
-        self.inner.call("sort", &[compare_fn.clone().into()]).as_::<Self>()
+        self.inner
+            .call("sort", &[compare_fn.clone().into()])
+            .as_::<Self>()
     }
 
     pub fn splice(&self, start: usize, delete_count: usize, items: &Self) -> Self {
-        self.inner.call("splice", &[start.into(), delete_count.into(), items.into()]).as_::<Self>()
+        self.inner
+            .call("splice", &[start.into(), delete_count.into(), items.into()])
+            .as_::<Self>()
     }
 
     pub fn unshift(&self, items: &Self) -> usize {
@@ -184,47 +194,79 @@ impl<T> TypedArray<T> {
 
     pub fn index_of(&self, search_element: &Any, from_index: Option<usize>) -> isize {
         let from_index = from_index.unwrap_or(0);
-        self.inner.call("indexOf", &[search_element.clone(), from_index.into()]).as_::<isize>()
+        self.inner
+            .call("indexOf", &[search_element.clone(), from_index.into()])
+            .as_::<isize>()
     }
 
     pub fn last_index_of(&self, search_element: &Any, from_index: Option<usize>) -> isize {
         let from_index = from_index.unwrap_or(0);
-        self.inner.call("lastIndexOf", &[search_element.clone(), from_index.into()]).as_::<isize>()
+        self.inner
+            .call("lastIndexOf", &[search_element.clone(), from_index.into()])
+            .as_::<isize>()
     }
 
     pub fn every(&self, predicate: &crate::function::Function, this_arg: Option<&Any>) -> bool {
         let this_arg = this_arg.cloned().unwrap_or_else(Any::undefined);
-        self.inner.call("every", &[predicate.clone().into(), this_arg.into()]).as_::<bool>()
+        self.inner
+            .call("every", &[predicate.clone().into(), this_arg.into()])
+            .as_::<bool>()
     }
 
     pub fn some(&self, predicate: &crate::function::Function, this_arg: Option<&Any>) -> bool {
         let this_arg = this_arg.cloned().unwrap_or_else(Any::undefined);
-        self.inner.call("some", &[predicate.clone().into(), this_arg.into()]).as_::<bool>()
+        self.inner
+            .call("some", &[predicate.clone().into(), this_arg.into()])
+            .as_::<bool>()
     }
 
     pub fn for_each(&self, callbackfn: &crate::function::Function, this_arg: Option<&Any>) {
         let this_arg = this_arg.cloned().unwrap_or_else(Any::undefined);
-        self.inner.call("forEach", &[callbackfn.clone().into(), this_arg.into()]);
+        self.inner
+            .call("forEach", &[callbackfn.clone().into(), this_arg.into()]);
     }
 
-    pub fn map(&self, callbackfn: &crate::function::Function, this_arg: Option<&Any>) -> TypedArray<Any> {
+    pub fn map(
+        &self,
+        callbackfn: &crate::function::Function,
+        this_arg: Option<&Any>,
+    ) -> TypedArray<Any> {
         let this_arg = this_arg.cloned().unwrap_or_else(Any::undefined);
-        self.inner.call("map", &[callbackfn.clone().into(), this_arg.into()]).as_::<TypedArray<Any>>()
+        self.inner
+            .call("map", &[callbackfn.clone().into(), this_arg.into()])
+            .as_::<TypedArray<Any>>()
     }
 
     pub fn filter(&self, predicate: &crate::function::Function, this_arg: Option<&Any>) -> Self {
         let this_arg = this_arg.cloned().unwrap_or_else(Any::undefined);
-        self.inner.call("filter", &[predicate.clone().into(), this_arg.into()]).as_::<Self>()
+        self.inner
+            .call("filter", &[predicate.clone().into(), this_arg.into()])
+            .as_::<Self>()
     }
 
-    pub fn reduce(&self, callbackfn: &crate::function::Function, initial_value: Option<&Any>) -> Any {
+    pub fn reduce(
+        &self,
+        callbackfn: &crate::function::Function,
+        initial_value: Option<&Any>,
+    ) -> Any {
         let initial_value = initial_value.cloned().unwrap_or_else(Any::undefined);
-        self.inner.call("reduce", &[callbackfn.clone().into(), initial_value.into()]).as_::<Any>()
+        self.inner
+            .call("reduce", &[callbackfn.clone().into(), initial_value.into()])
+            .as_::<Any>()
     }
 
-    pub fn reduce_right(&self, callbackfn: &crate::function::Function, initial_value: Option<&Any>) -> Any {
+    pub fn reduce_right(
+        &self,
+        callbackfn: &crate::function::Function,
+        initial_value: Option<&Any>,
+    ) -> Any {
         let initial_value = initial_value.cloned().unwrap_or_else(Any::undefined);
-        self.inner.call("reduceRight", &[callbackfn.clone().into(), initial_value.into()]).as_::<Any>()
+        self.inner
+            .call(
+                "reduceRight",
+                &[callbackfn.clone().into(), initial_value.into()],
+            )
+            .as_::<Any>()
     }
 
     pub fn entries(&self) -> Any {
