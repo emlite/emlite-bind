@@ -58,11 +58,6 @@ fn new_syntax_error(msg: &str) -> SyntaxError {
 }
 
 impl RegExp {
-    /// Gets the JS `RegExp` constructor (parity with C++ `instance()`).
-    pub fn instance() -> emlite::Val {
-        emlite::Val::global("RegExp")
-    }
-
     /// Creates a new RegExp from a pattern string and optional flags.
     ///
     /// ```
@@ -100,12 +95,12 @@ impl RegExp {
         }
     }
 
-    /// STL-like contains check (parity with C++ `contains`).
+    /// STL-like contains check.
     pub fn contains(&self, text: &str) -> bool {
         self.test(text)
     }
 
-    /// STL-like find operation (first match) (parity with C++ `find`).
+    /// STL-like find operation (first match).
     pub fn find(&self, text: &str) -> Option<TypedArray<JsString>> {
         self.exec(text)
     }
@@ -153,9 +148,7 @@ impl RegExp {
         self.inner.call("toString", &[]).as_::<Option<String>>()
     }
 
-    // ---------- Static convenience constructors (parity with C++) ----------
-
-    /// Creates RegExp that matches literal text (parity with C++ `literal`).
+    /// Creates RegExp that matches literal text.
     pub fn literal(text: &str) -> Result<Self, SyntaxError> {
         let escaped = Self::escape(text);
         Self::new(&escaped, None)
@@ -189,7 +182,6 @@ impl RegExp {
     /// Gets **all** matches in a string (requires the global flag).
     ///
     /// Returns a `Vec` of match arrays in the same shape as `exec`.
-    /// (C++ version uses `str.matchAll(this)` and returns an Array; here we iterate with `exec`.)
     pub fn find_all(&self, text: &str) -> Result<Vec<TypedArray<JsString>>, SyntaxError> {
         if !self.global() {
             return Err(new_syntax_error(
@@ -197,7 +189,6 @@ impl RegExp {
             ));
         }
         let mut out = Vec::new();
-        // Reset start position as in C++ iterator begin()
         self.set_last_index(0);
 
         loop {
@@ -210,9 +201,7 @@ impl RegExp {
         Ok(out)
     }
 
-    // ---------- Iteration over global matches (parity with C++ MatchIterator) ----------
-
-    /// Creates an iterator over **global** matches (like `begin(text)` in C++).
+    /// Creates an iterator over **global** matches.
     ///
     /// Use as: `for m in regex.begin("...")? { ... }`
     pub fn begin(&self, text: &str) -> Result<MatchIter, SyntaxError> {
@@ -226,7 +215,7 @@ impl RegExp {
             text: text.to_string(),
             at_end: false,
         };
-        // Ensure iteration starts at index 0 (parity with C++)
+        // Ensure iteration starts at index 0 
         it.regexp.set("lastIndex", 0);
         Ok(it)
     }

@@ -1,5 +1,6 @@
 use crate::utils::bind;
 use alloc::string::String;
+use emlite::FromVal;
 
 /// JavaScript Symbol type.
 ///
@@ -122,6 +123,61 @@ impl Symbol {
             .unwrap_or_default()
     }
 
+    /// Gets primitive symbol value as string.
+    ///
+    /// # Returns
+    /// String representation of the symbol
+    ///
+    /// # Examples
+    /// ```rust
+    /// use jsbind::prelude::*;
+    ///
+    /// let sym = Symbol::new(Some("test"));
+    /// let value = sym.value_of();
+    /// ```
+    pub fn value_of(&self) -> String {
+        self.inner
+            .call("valueOf", &[])
+            .as_::<Option<String>>()
+            .unwrap_or_default()
+    }
+
+    /// Checks if symbol has no description.
+    ///
+    /// # Returns
+    /// `true` if description is undefined
+    ///
+    /// # Examples
+    /// ```rust
+    /// use jsbind::prelude::*;
+    ///
+    /// let sym1 = Symbol::new(None);
+    /// assert!(sym1.is_empty());
+    ///
+    /// let sym2 = Symbol::new(Some("test"));
+    /// assert!(!sym2.is_empty());
+    /// ```
+    pub fn is_empty(&self) -> bool {
+        self.description().is_none()
+    }
+
+    /// Gets hash code for symbol.
+    ///
+    /// # Returns
+    /// Hash value based on unique handle
+    ///
+    /// # Examples
+    /// ```rust
+    /// use jsbind::prelude::*;
+    ///
+    /// let sym = Symbol::new(Some("test"));
+    /// let hash_val = sym.get_hash();
+    /// ```
+    pub fn get_hash(&self) -> u64 {
+        // Simple hash based on the handle value
+        self.inner.as_handle() as u64
+    }
+
     // Well-known symbols
 
     /// Symbol.asyncIterator
@@ -213,6 +269,32 @@ impl Symbol {
         Self {
             inner: emlite::Val::global("Symbol").get("unscopables"),
         }
+    }
+}
+
+impl PartialEq for Symbol {
+    fn eq(&self, other: &Self) -> bool {
+        self.inner.as_handle() == other.inner.as_handle()
+    }
+}
+
+impl Eq for Symbol {}
+
+impl PartialOrd for Symbol {
+    fn partial_cmp(&self, other: &Self) -> Option<core::cmp::Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl Ord for Symbol {
+    fn cmp(&self, other: &Self) -> core::cmp::Ordering {
+        self.inner.as_handle().cmp(&other.inner.as_handle())
+    }
+}
+
+impl core::hash::Hash for Symbol {
+    fn hash<H: core::hash::Hasher>(&self, state: &mut H) {
+        self.inner.as_handle().hash(state);
     }
 }
 

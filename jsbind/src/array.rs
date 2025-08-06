@@ -1,4 +1,5 @@
 use crate::any::Any;
+use crate::error::JsError;
 use crate::utils::*;
 use alloc::vec;
 use alloc::vec::Vec;
@@ -154,8 +155,16 @@ impl<T> TypedArray<T> {
             .as_::<crate::string::JsString>()
     }
 
-    pub fn pop(&self) -> Any {
-        self.inner.call("pop", &[]).as_::<Any>()
+    pub fn pop(&self) -> Option<T>
+    where
+        T: FromVal,
+    {
+        let result = self.inner.call("pop", &[]);
+        if result.is_undefined() {
+            None
+        } else {
+            Some(result.as_::<T>())
+        }
     }
 
     pub fn concat(&self, items: &Self) -> Self {
@@ -172,8 +181,16 @@ impl<T> TypedArray<T> {
         self.inner.call("reverse", &[]).as_::<Self>()
     }
 
-    pub fn shift(&self) -> Any {
-        self.inner.call("shift", &[]).as_::<Any>()
+    pub fn shift(&self) -> Option<T>
+    where
+        T: FromVal,
+    {
+        let result = self.inner.call("shift", &[]);
+        if result.is_undefined() {
+            None
+        } else {
+            Some(result.as_::<T>())
+        }
     }
 
     pub fn sort(&self, compare_fn: &crate::function::Function) -> Self {
@@ -244,26 +261,31 @@ impl<T> TypedArray<T> {
             .as_::<Self>()
     }
 
-    pub fn reduce(
-        &self,
-        callbackfn: &crate::function::Function,
-        initial_value: Option<&Any>,
-    ) -> Any {
-        let initial_value = initial_value.cloned().unwrap_or_else(Any::undefined);
+    pub fn reduce(&self, callbackfn: &crate::function::Function, initial_value: Option<&T>) -> T
+    where
+        T: FromVal + Into<emlite::Val> + Clone + Default,
+    {
+        let initial_value = initial_value.cloned().unwrap_or_default();
         self.inner
-            .call("reduce", &[callbackfn.clone().into(), initial_value])
-            .as_::<Any>()
+            .call("reduce", &[callbackfn.clone().into(), initial_value.into()])
+            .as_::<T>()
     }
 
     pub fn reduce_right(
         &self,
         callbackfn: &crate::function::Function,
-        initial_value: Option<&Any>,
-    ) -> Any {
-        let initial_value = initial_value.cloned().unwrap_or_else(Any::undefined);
+        initial_value: Option<&T>,
+    ) -> T
+    where
+        T: FromVal + Into<emlite::Val> + Clone + Default,
+    {
+        let initial_value = initial_value.cloned().unwrap_or_default();
         self.inner
-            .call("reduceRight", &[callbackfn.clone().into(), initial_value])
-            .as_::<Any>()
+            .call(
+                "reduceRight",
+                &[callbackfn.clone().into(), initial_value.into()],
+            )
+            .as_::<T>()
     }
 
     pub fn entries(&self) -> Any {
@@ -476,21 +498,21 @@ pub struct DataView {
 macro_rules! rw {
     ($get:ident, $set:ident, $ty:ty) => {
         #[doc = concat!("Reads a `", stringify!($ty), "` at byteOffset with the specified endianness.")]
-        pub fn $get(&self, byte_offset: usize, endian: Option<Endian>) -> $ty {
+        pub fn $get(&self, byte_offset: usize, endian: Option<Endian>) -> Result<$ty, JsError> {
             self.inner
                 .call(
                     concat!("get", stringify!($get)),
                     &[byte_offset.into(),  endian.unwrap_or(Endian::Little).to_str().into()],
                 )
-                .as_::<$ty>()
+                .as_::<Result<$ty, JsError>>()
         }
 
         #[doc = concat!("Writes value as `", stringify!($ty), "` at byteOffset using the specified endianness.")]
-        pub fn $set(&self, byte_offset: usize, value: $ty, endian: Option<Endian>) {
+        pub fn $set(&self, byte_offset: usize, value: $ty, endian: Option<Endian>) -> Result<(), JsError> {
             self.inner.call(
                 concat!("set", stringify!($get)),
                 &[byte_offset.into(), value.into(), endian.unwrap_or(Endian::Little).to_str().into()],
-            );
+            ).as_()
         }
     };
 }

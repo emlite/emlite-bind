@@ -204,6 +204,90 @@ impl BigInt {
             )))
         }
     }
+
+    /// Power operation
+    pub fn pow(&self, other: &BigInt) -> BigInt {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) ** ({})",
+            self.to_string_repr(),
+            other.to_string_repr()
+        )
+        .into()]);
+        Self { inner: result }
+    }
+
+    /// Gets hash code for BigInt  
+    pub fn get_hash(&self) -> u64 {
+        use emlite::FromVal;
+        // Simple hash based on the handle value
+        self.inner.as_handle() as u64
+    }
+
+    /// Checks if BigInt equals zero
+    pub fn is_zero(&self) -> bool {
+        self == &Self::zero()
+    }
+
+    /// Checks if BigInt is positive
+    pub fn is_positive(&self) -> bool {
+        self > &Self::zero()
+    }
+
+    /// Checks if BigInt is negative
+    pub fn is_negative(&self) -> bool {
+        self < &Self::zero()
+    }
+
+    /// Gets absolute value
+    pub fn abs(&self) -> BigInt {
+        if self.is_negative() {
+            -self
+        } else {
+            self.clone()
+        }
+    }
+
+    /// Creates BigInt(0)
+    pub fn zero() -> BigInt {
+        Self::from_i64(0)
+    }
+
+    /// Creates BigInt(1)
+    pub fn one() -> BigInt {
+        Self::from_i64(1)
+    }
+
+    /// Creates BigInt(-1)
+    pub fn minus_one() -> BigInt {
+        Self::from_i64(-1)
+    }
+
+    /// Returns signed n-bit BigInt value
+    pub fn as_int_n(width: u32, bigint: &BigInt) -> BigInt {
+        let result =
+            emlite::Val::global("BigInt").call("asIntN", &[width.into(), bigint.inner.clone()]);
+        Self { inner: result }
+    }
+
+    /// Returns unsigned n-bit BigInt value  
+    pub fn as_uint_n(width: u32, bigint: &BigInt) -> BigInt {
+        let result =
+            emlite::Val::global("BigInt").call("asUintN", &[width.into(), bigint.inner.clone()]);
+        Self { inner: result }
+    }
+
+    /// Converts BigInt to locale-specific string
+    pub fn to_locale_string(&self) -> String {
+        self.inner
+            .call("toLocaleString", &[])
+            .as_::<Option<String>>()
+            .unwrap_or_default()
+    }
+
+    /// Parses BigInt from string with error checking
+    pub fn parse(s: &str) -> Result<BigInt, SyntaxError> {
+        Self::from_str(s)
+    }
 }
 
 impl crate::prelude::DynCast for BigInt {
@@ -227,5 +311,478 @@ impl crate::prelude::DynCast for BigInt {
 impl core::fmt::Display for BigInt {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         write!(f, "{}", self.to_string_repr())
+    }
+}
+
+// Arithmetic operators
+impl core::ops::Add for BigInt {
+    type Output = BigInt;
+    fn add(self, rhs: BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) + ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Add for &BigInt {
+    type Output = BigInt;
+    fn add(self, rhs: &BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) + ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Sub for BigInt {
+    type Output = BigInt;
+    fn sub(self, rhs: BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) - ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Sub for &BigInt {
+    type Output = BigInt;
+    fn sub(self, rhs: &BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) - ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Mul for BigInt {
+    type Output = BigInt;
+    fn mul(self, rhs: BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) * ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Mul for &BigInt {
+    type Output = BigInt;
+    fn mul(self, rhs: &BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) * ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Div for BigInt {
+    type Output = BigInt;
+    fn div(self, rhs: BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) / ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Div for &BigInt {
+    type Output = BigInt;
+    fn div(self, rhs: &BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) / ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Rem for BigInt {
+    type Output = BigInt;
+    fn rem(self, rhs: BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) % ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Rem for &BigInt {
+    type Output = BigInt;
+    fn rem(self, rhs: &BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) % ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Neg for BigInt {
+    type Output = BigInt;
+    fn neg(self) -> Self::Output {
+        let result =
+            emlite::Val::global("eval").invoke(&[format!("-({})", self.to_string_repr()).into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Neg for &BigInt {
+    type Output = BigInt;
+    fn neg(self) -> Self::Output {
+        let result =
+            emlite::Val::global("eval").invoke(&[format!("-({})", self.to_string_repr()).into()]);
+        BigInt { inner: result }
+    }
+}
+
+// Bitwise operators
+impl core::ops::BitAnd for BigInt {
+    type Output = BigInt;
+    fn bitand(self, rhs: BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) & ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::BitAnd for &BigInt {
+    type Output = BigInt;
+    fn bitand(self, rhs: &BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) & ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::BitOr for BigInt {
+    type Output = BigInt;
+    fn bitor(self, rhs: BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) | ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::BitOr for &BigInt {
+    type Output = BigInt;
+    fn bitor(self, rhs: &BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) | ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::BitXor for BigInt {
+    type Output = BigInt;
+    fn bitxor(self, rhs: BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) ^ ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::BitXor for &BigInt {
+    type Output = BigInt;
+    fn bitxor(self, rhs: &BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) ^ ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Not for BigInt {
+    type Output = BigInt;
+    fn not(self) -> Self::Output {
+        let result =
+            emlite::Val::global("eval").invoke(&[format!("~({})", self.to_string_repr()).into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Not for &BigInt {
+    type Output = BigInt;
+    fn not(self) -> Self::Output {
+        let result =
+            emlite::Val::global("eval").invoke(&[format!("~({})", self.to_string_repr()).into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Shl<BigInt> for BigInt {
+    type Output = BigInt;
+    fn shl(self, rhs: BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) << ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Shl<&BigInt> for &BigInt {
+    type Output = BigInt;
+    fn shl(self, rhs: &BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) << ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Shr<BigInt> for BigInt {
+    type Output = BigInt;
+    fn shr(self, rhs: BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) >> ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+impl core::ops::Shr<&BigInt> for &BigInt {
+    type Output = BigInt;
+    fn shr(self, rhs: &BigInt) -> Self::Output {
+        let result = emlite::Val::global("eval").invoke(&[format!(
+            "({}) >> ({})",
+            self.to_string_repr(),
+            rhs.to_string_repr()
+        )
+        .into()]);
+        BigInt { inner: result }
+    }
+}
+
+// Comparison operators
+impl PartialEq for BigInt {
+    fn eq(&self, other: &Self) -> bool {
+        emlite::Val::global("eval")
+            .invoke(&[format!(
+                "({}) === ({})",
+                self.to_string_repr(),
+                other.to_string_repr()
+            )
+            .into()])
+            .as_::<bool>()
+    }
+}
+
+impl Eq for BigInt {}
+
+impl PartialOrd for BigInt {
+    fn partial_cmp(&self, other: &Self) -> Option<core::cmp::Ordering> {
+        Some(self.cmp(other))
+    }
+}
+
+impl Ord for BigInt {
+    fn cmp(&self, other: &Self) -> core::cmp::Ordering {
+        let lt = emlite::Val::global("eval")
+            .invoke(&[format!("({}) < ({})", self.to_string_repr(), other.to_string_repr()).into()])
+            .as_::<bool>();
+        let gt = emlite::Val::global("eval")
+            .invoke(&[format!("({}) > ({})", self.to_string_repr(), other.to_string_repr()).into()])
+            .as_::<bool>();
+
+        if lt {
+            core::cmp::Ordering::Less
+        } else if gt {
+            core::cmp::Ordering::Greater
+        } else {
+            core::cmp::Ordering::Equal
+        }
+    }
+}
+
+impl core::hash::Hash for BigInt {
+    fn hash<H: core::hash::Hasher>(&self, state: &mut H) {
+        use emlite::FromVal;
+        self.inner.as_handle().hash(state);
+    }
+}
+
+// Assignment operators
+impl core::ops::AddAssign for BigInt {
+    fn add_assign(&mut self, rhs: BigInt) {
+        *self = core::mem::take(self) + rhs;
+    }
+}
+
+impl core::ops::AddAssign<&BigInt> for BigInt {
+    fn add_assign(&mut self, rhs: &BigInt) {
+        *self = &*self + rhs;
+    }
+}
+
+impl core::ops::SubAssign for BigInt {
+    fn sub_assign(&mut self, rhs: BigInt) {
+        *self = core::mem::take(self) - rhs;
+    }
+}
+
+impl core::ops::SubAssign<&BigInt> for BigInt {
+    fn sub_assign(&mut self, rhs: &BigInt) {
+        *self = &*self - rhs;
+    }
+}
+
+impl core::ops::MulAssign for BigInt {
+    fn mul_assign(&mut self, rhs: BigInt) {
+        *self = core::mem::take(self) * rhs;
+    }
+}
+
+impl core::ops::MulAssign<&BigInt> for BigInt {
+    fn mul_assign(&mut self, rhs: &BigInt) {
+        *self = &*self * rhs;
+    }
+}
+
+impl core::ops::DivAssign for BigInt {
+    fn div_assign(&mut self, rhs: BigInt) {
+        *self = core::mem::take(self) / rhs;
+    }
+}
+
+impl core::ops::DivAssign<&BigInt> for BigInt {
+    fn div_assign(&mut self, rhs: &BigInt) {
+        *self = &*self / rhs;
+    }
+}
+
+impl core::ops::RemAssign for BigInt {
+    fn rem_assign(&mut self, rhs: BigInt) {
+        *self = core::mem::take(self) % rhs;
+    }
+}
+
+impl core::ops::RemAssign<&BigInt> for BigInt {
+    fn rem_assign(&mut self, rhs: &BigInt) {
+        *self = &*self % rhs;
+    }
+}
+
+impl core::ops::BitAndAssign for BigInt {
+    fn bitand_assign(&mut self, rhs: BigInt) {
+        *self = core::mem::take(self) & rhs;
+    }
+}
+
+impl core::ops::BitAndAssign<&BigInt> for BigInt {
+    fn bitand_assign(&mut self, rhs: &BigInt) {
+        *self = &*self & rhs;
+    }
+}
+
+impl core::ops::BitOrAssign for BigInt {
+    fn bitor_assign(&mut self, rhs: BigInt) {
+        *self = core::mem::take(self) | rhs;
+    }
+}
+
+impl core::ops::BitOrAssign<&BigInt> for BigInt {
+    fn bitor_assign(&mut self, rhs: &BigInt) {
+        *self = &*self | rhs;
+    }
+}
+
+impl core::ops::BitXorAssign for BigInt {
+    fn bitxor_assign(&mut self, rhs: BigInt) {
+        *self = core::mem::take(self) ^ rhs;
+    }
+}
+
+impl core::ops::BitXorAssign<&BigInt> for BigInt {
+    fn bitxor_assign(&mut self, rhs: &BigInt) {
+        *self = &*self ^ rhs;
+    }
+}
+
+impl core::ops::ShlAssign<BigInt> for BigInt {
+    fn shl_assign(&mut self, rhs: BigInt) {
+        *self = core::mem::take(self) << rhs;
+    }
+}
+
+impl core::ops::ShlAssign<&BigInt> for BigInt {
+    fn shl_assign(&mut self, rhs: &BigInt) {
+        *self = &*self << rhs;
+    }
+}
+
+impl core::ops::ShrAssign<BigInt> for BigInt {
+    fn shr_assign(&mut self, rhs: BigInt) {
+        *self = core::mem::take(self) >> rhs;
+    }
+}
+
+impl core::ops::ShrAssign<&BigInt> for BigInt {
+    fn shr_assign(&mut self, rhs: &BigInt) {
+        *self = &*self >> rhs;
+    }
+}
+
+impl Default for BigInt {
+    fn default() -> Self {
+        Self::zero()
     }
 }

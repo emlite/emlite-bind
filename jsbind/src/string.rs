@@ -331,6 +331,36 @@ macro_rules! declare_string {
             pub fn value_of(&self) -> Self {
                 self.inner.call("valueOf", &[]).as_::<Self>()
             }
+
+            /// Gets character at specified index
+            /// @param i character index
+            /// @returns character at index as String
+            pub fn char_at(&self, i: usize) -> Self {
+                self.inner.call("charAt", &[i.into()]).as_::<Self>()
+            }
+
+            /// Converts string to C string
+            /// @returns pointer to null-terminated C string
+            /// Note: This returns the UTF-8 representation as a String since we can't return raw pointers
+            pub fn c_str(&self) -> Option<String> {
+                self.to_std_string()
+            }
+
+            /// Gets the byte length of the string in UTF-8 encoding
+            /// @returns number of bytes in UTF-8 representation
+            pub fn byte_len(&self) -> usize {
+                if let Some(s) = self.as_str() {
+                    s.len()
+                } else {
+                    0
+                }
+            }
+
+            /// Converts to string representation
+            /// @returns string representation
+            pub fn to_string(&self) -> Self {
+                self.inner.call("toString", &[]).as_::<Self>()
+            }
         }
 
         impl core::fmt::Display for $name {

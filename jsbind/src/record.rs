@@ -109,4 +109,12 @@ impl<K, V> Record<K, V> {
     {
         self.inner.has(item)
     }
+
+    /// Gets the number of properties in the object
+    /// Note: JavaScript objects don't have a built-in size property like arrays,
+    /// so this counts enumerable properties using Object.keys()
+    pub fn size(&self) -> usize {
+        let keys = emlite::Val::global("Object").call("keys", &[self.inner.clone()]);
+        keys.get("length").as_::<usize>()
+    }
 }
