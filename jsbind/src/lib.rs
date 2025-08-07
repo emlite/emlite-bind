@@ -12,6 +12,7 @@ mod json;
 mod map;
 mod math;
 mod null;
+mod number;
 mod object;
 pub mod prelude;
 mod promise;

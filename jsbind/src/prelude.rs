@@ -17,6 +17,7 @@ pub use crate::json::JSON;
 pub use crate::map::*;
 pub use crate::math::Math;
 pub use crate::null::Null;
+pub use crate::number::Number;
 pub use crate::object::Object;
 pub use crate::promise::Promise;
 pub use crate::record::Record;
